@@ -20,13 +20,18 @@ the "used" lists below, then append this issue's row.
 - mixture of experts — **ep1** (and mistakenly ep3, corrected → codecs)
 - quantization — **ep2**
 - neural audio codecs — **ep3**
+- speculative decoding — **ep4**
+- diffusion vs autoregressive — **ep5**
+- Remaining Performance Obligations (RPO) — **ep6**
+- knowledge distillation — **ep7**
 
-Unused ideas on deck (pick from here or invent new): knowledge distillation /
-1-step decoders, KV cache & cache-read pricing, speculative decoding, RAG vs
-long-context, tokenization/BPE, forced alignment, LoRA/QLoRA fine-tuning,
-context-window mechanics, RLHF vs DPO, embeddings/vector search, flash
-attention, model merging, watermarking/provenance (C2PA/SynthID), MoE routing
-(if ever revisited, a different angle), diffusion vs autoregressive.
+Unused ideas on deck (pick from here or invent new): 1-step decoders,
+KV cache & cache-read pricing, RAG vs long-context, tokenization/BPE,
+forced alignment, LoRA/QLoRA fine-tuning, context-window mechanics, RLHF
+vs DPO, embeddings/vector search, flash attention, model merging,
+watermarking/provenance (C2PA/SynthID), grouped-query attention,
+mixture-of-depths, test-time compute / reasoning-token budgets, sparse
+attention, MoE routing (if ever revisited, a different angle).
 
 ## Per-episode ledger
 
@@ -35,6 +40,10 @@ attention, model merging, watermarking/provenance (C2PA/SynthID), MoE routing
 | 1 | 2026-05-13 | Rate Cuts and Routers | model releases of the week | (bigger picture) US Federal Reserve chair & AI | mixture of experts | — |
 | 2 | 2026-05-20 | Magnifica Humanitas | open weights (GLM-5 on Ascend, ZAYA1 on AMD) | Pope Leo XIV's first encyclical on AI | quantization | "Chinese open models lead OpenRouter usage" |
 | 3 | 2026-05-27 | The Most-Used Model on Earth | SGLang patch + DeepSeek permanent price cut (self-host economics) | state of open text-to-speech (Chatterbox/OmniVoice/VoxCPM2/MOSS-Nano/Voxtral license trap) | neural audio codecs | "DeepSeek/Chinese open model #1 on OpenRouter usage" (2nd time — demote next week) |
+| 4 | 2026-06-03 | Frontier on the Countertop | MiniMax M3 + NVIDIA Nemotron 3 Ultra (open frontier) | DIY frontier rig — AMD Strix Halo & NVIDIA DGX Spark put frontier inference on a desk | speculative decoding | Anthropic IPO filing; SWE-bench Verified deprioritized after contamination audit |
+| 5 | 2026-06-14 | Sundays, and Who We Are | open weights deep (DiffusionGemma, dots.tts, Higgs Audio v3) | beatlounge in Corpán — a sequencer where the samples are sentences; show introduces Corpora | diffusion vs autoregressive | Sunday cadence begins; on-mic intro of the team |
+| 6 | 2026-06-21 | Megawatts and Market Caps | Anthropic Mythos/Fable Commerce withdrawal (US pulled a model in 72h) | data-center buildout PR-vs-reality (Stargate 11GW announced/200MW live; Oracle as bag-holder) | Remaining Performance Obligations | US-China HBM binding constraint; China $295B NDRC plan |
+| 7 | 2026-06-28 | The Student and the Score | open on-device — Liquid AI LFM2.5-230M (runs on a phone) + Qwen-AgentWorld Apache-2.0 | Anthropic accuses Alibaba of the largest known distillation attack on Claude (25k accounts, 28.8M exchanges) | knowledge distillation | Cursor reward-hacking study (benchmarks gamed); GPT-5.6 Sol gov-gated preview; export-control thread continues from ep6 |
 
 ## Notes for future issues
 - The "open model is #1 by usage" beat has now run twice. If it recurs, it's

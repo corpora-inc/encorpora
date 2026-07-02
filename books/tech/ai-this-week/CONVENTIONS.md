@@ -270,3 +270,20 @@ ai-this-week/
 8. **Listen-test** — `concat_with_pauses.py` produces /tmp m4a
 9. **User verdict** — A+ or iterate per-segment
 10. **Publish** — `ttsctl publish` + `patch-catalog.py`
+
+### Before publishing a new issue: register `publishedAt` (REQUIRED)
+
+The app's Browse → "Latest" sort keys on each narration's `publishedAt`. A new
+episode ships with `publishedAt=None` unless its `bookId` is registered in TWO
+in-repo maps — and `patch-catalog.py` (which `run_lang_pipeline.sh` re-runs after
+EVERY language) will keep stamping `None` until you add it. Do this BEFORE the
+language fan-out so every per-lang patch stamps the date:
+
+1. `corpan/infra/patch-catalog.py` → `BOOK_META["book_ai_this_week_YYYY_MM_DD"]`
+   with `"published": "YYYY-MM-DD"` (+ description/tags). This is the authority
+   during the run; `annotate_narrations` denormalizes it onto every row.
+2. `corpan/infra/patch-published-dates.py` → `DATES[...] = "YYYY-MM-DD"` — the
+   surgical, no-rebuild backfill tool; run `--apply` once at the very end as the
+   authoritative final pass.
+
+Verify with `patch-catalog.py --dry-run` → confirm narrations show the date.

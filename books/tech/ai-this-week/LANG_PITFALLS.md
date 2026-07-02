@@ -47,6 +47,21 @@ this lang across Tolstoy/Three Questions, Soul Food, Train.
   per book + 14 pipeline cycles. Train (with anti-leak translation):
   0 hand-rewrites + 10 cycles.
 
+### sr ↔ hr — Serbo-Croatian sibling gap (FIXED ep7)
+
+Serbian (`sr`) and Croatian (`hr`) are the same spoken language; Whisper
+auto-detect labels Serbian audio as `hr`, so EVERY sr segment raised
+`language_leak: expected=sr detected=hr` and retried forever (ep7 sr sat
+at 11/142 DONE after ~1h46m; ep6 only shipped it by grinding retries
+overnight). Root cause: `sr`/`hr` were **missing** from
+`validation.sibling_languages` in narration.yaml.
+
+- **Fix (ep7)**: added `sr: [hr, bs]` and `hr: [sr, bs]` to
+  `sibling_languages`. sr then converges in minutes like any other lang.
+- **Carry forward**: every new episode's narration.yaml (copied from the
+  prior pack) must keep the sr/hr sibling entries. If sr ever plateaus on
+  language_leak again, this is the first thing to check.
+
 ### Tier B — clean after one fix (1.10×–1.30×)
 
 | Lang | Issue | Fix shipped |
