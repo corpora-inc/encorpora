@@ -1,0 +1,2446 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_boreal_forest",
+  "total_segments": 165,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Boreal Forest",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Boreal Forest",
+      "text_markdown": "The Boreal Forest"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Where This Biome Grows",
+      "text_markdown": "Where This Biome Grows"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welcome to the boreal forest.",
+      "text_markdown": "Welcome to the boreal forest.",
+      "tts": {
+        "text": "Welcome to the boreal forest.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is one of the great biomes of the world.",
+      "text_markdown": "This is one of the great biomes of the world.",
+      "tts": {
+        "text": "This is one of the great biomes of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "text_markdown": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "tts": {
+        "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest is a wide green belt of evergreen trees that runs across the top of the world.",
+      "text_markdown": "The boreal forest is a wide green belt of evergreen trees that runs across the top of the world.",
+      "tts": {
+        "text": "The boreal forest is a wide green belt of evergreen trees that runs across the top of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is also called the taiga.",
+      "text_markdown": "It is also called the taiga.",
+      "tts": {
+        "text": "It is also called the taiga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest is the largest land biome on Earth.",
+      "text_markdown": "The boreal forest is the largest land biome on Earth.",
+      "tts": {
+        "text": "The boreal forest is the largest land biome on Earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you flew high above the world, you would see this dark green belt stretching almost all the way around.",
+      "text_markdown": "If you flew high above the world, you would see this dark green belt stretching almost all the way around.",
+      "tts": {
+        "text": "If you flew high above the world, you would see this dark green belt stretching almost all the way around.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows across most of Canada and Alaska, in North America.",
+      "text_markdown": "It grows across most of Canada and Alaska, in North America.",
+      "tts": {
+        "text": "It grows across most of Canada and Alaska, in North America.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows across Norway, Sweden, and Finland, in northern Europe.",
+      "text_markdown": "It grows across Norway, Sweden, and Finland, in northern Europe.",
+      "tts": {
+        "text": "It grows across Norway, Sweden, and Finland, in northern Europe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows across Russia, all the way from Europe to the Pacific Ocean.",
+      "text_markdown": "It grows across Russia, all the way from Europe to the Pacific Ocean.",
+      "tts": {
+        "text": "It grows across Russia, all the way from Europe to the Pacific Ocean.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In each of these places, the forest looks very much the same.",
+      "text_markdown": "In each of these places, the forest looks very much the same.",
+      "tts": {
+        "text": "In each of these places, the forest looks very much the same.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tall pointed trees stand close together, with soft moss and small bushes on the ground.",
+      "text_markdown": "Tall pointed trees stand close together, with soft moss and small bushes on the ground.",
+      "tts": {
+        "text": "Tall pointed trees stand close together, with soft moss and small bushes on the ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are many lakes, rivers, and bogs between the trees.",
+      "text_markdown": "There are many lakes, rivers, and bogs between the trees.",
+      "tts": {
+        "text": "There are many lakes, rivers, and bogs between the trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest sits just south of the tundra and just north of the temperate forests.",
+      "text_markdown": "The boreal forest sits just south of the tundra and just north of the temperate forests.",
+      "tts": {
+        "text": "The boreal forest sits just south of the tundra and just north of the temperate forests.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is not a warm place.",
+      "text_markdown": "It is not a warm place.",
+      "tts": {
+        "text": "It is not a warm place.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Long, very cold winters are the rule here, with deep snow on the ground for many months.",
+      "text_markdown": "Long, very cold winters are the rule here, with deep snow on the ground for many months.",
+      "tts": {
+        "text": "Long, very cold winters are the rule here, with deep snow on the ground for many months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The summers are short and cool, with long days and bright nights.",
+      "text_markdown": "The summers are short and cool, with long days and bright nights.",
+      "tts": {
+        "text": "The summers are short and cool, with long days and bright nights.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Few people live in the boreal forest, but it is full of life.",
+      "text_markdown": "Few people live in the boreal forest, but it is full of life.",
+      "tts": {
+        "text": "Few people live in the boreal forest, but it is full of life.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is home to bears, wolves, moose, owls, and many other animals.",
+      "text_markdown": "It is home to bears, wolves, moose, owls, and many other animals.",
+      "tts": {
+        "text": "It is home to bears, wolves, moose, owls, and many other animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "And it grows quietly across more land than any other forest on Earth.",
+      "text_markdown": "And it grows quietly across more land than any other forest on Earth.",
+      "tts": {
+        "text": "And it grows quietly across more land than any other forest on Earth.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Weather",
+      "text_markdown": "The Weather"
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest is cold for most of the year.",
+      "text_markdown": "The boreal forest is cold for most of the year.",
+      "tts": {
+        "text": "The boreal forest is cold for most of the year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The winter here is long and dark.",
+      "text_markdown": "The winter here is long and dark.",
+      "tts": {
+        "text": "The winter here is long and dark.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the northern parts of the forest, winter can last for seven or eight months.",
+      "text_markdown": "In the northern parts of the forest, winter can last for seven or eight months.",
+      "tts": {
+        "text": "In the northern parts of the forest, winter can last for seven or eight months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The air can drop to forty below zero, in either Celsius or Fahrenheit.",
+      "text_markdown": "The air can drop to forty below zero, in either Celsius or Fahrenheit.",
+      "tts": {
+        "text": "The air can drop to forty below zero, in either Celsius or Fahrenheit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is one of the coldest places on Earth where trees can still grow.",
+      "text_markdown": "That is one of the coldest places on Earth where trees can still grow.",
+      "tts": {
+        "text": "That is one of the coldest places on Earth where trees can still grow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heavy snow covers the ground from autumn to late spring.",
+      "text_markdown": "Heavy snow covers the ground from autumn to late spring.",
+      "tts": {
+        "text": "Heavy snow covers the ground from autumn to late spring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The lakes and rivers freeze over, sometimes with ice as thick as a person is tall.",
+      "text_markdown": "The lakes and rivers freeze over, sometimes with ice as thick as a person is tall.",
+      "tts": {
+        "text": "The lakes and rivers freeze over, sometimes with ice as thick as a person is tall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the deep north, the sun barely rises above the trees on the shortest winter days.",
+      "text_markdown": "In the deep north, the sun barely rises above the trees on the shortest winter days.",
+      "tts": {
+        "text": "In the deep north, the sun barely rises above the trees on the shortest winter days.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then comes the spring melt.",
+      "text_markdown": "Then comes the spring melt.",
+      "tts": {
+        "text": "Then comes the spring melt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The snow turns to water, and the rivers run high and cold.",
+      "text_markdown": "The snow turns to water, and the rivers run high and cold.",
+      "tts": {
+        "text": "The snow turns to water, and the rivers run high and cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The ground stays soft and wet for many weeks.",
+      "text_markdown": "The ground stays soft and wet for many weeks.",
+      "tts": {
+        "text": "The ground stays soft and wet for many weeks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The summer is short, but it is full of life.",
+      "text_markdown": "The summer is short, but it is full of life.",
+      "tts": {
+        "text": "The summer is short, but it is full of life.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In June and July, the sun stays in the sky for most of the night.",
+      "text_markdown": "In June and July, the sun stays in the sky for most of the night.",
+      "tts": {
+        "text": "In June and July, the sun stays in the sky for most of the night.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The forest grows quickly to make the most of the warm light.",
+      "text_markdown": "The forest grows quickly to make the most of the warm light.",
+      "tts": {
+        "text": "The forest grows quickly to make the most of the warm light.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Summer days can be warm, but the nights are usually cool.",
+      "text_markdown": "Summer days can be warm, but the nights are usually cool.",
+      "tts": {
+        "text": "Summer days can be warm, but the nights are usually cool.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "By August, the cold begins to creep back in.",
+      "text_markdown": "By August, the cold begins to creep back in.",
+      "tts": {
+        "text": "By August, the cold begins to creep back in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Autumn is short and golden.",
+      "text_markdown": "Autumn is short and golden.",
+      "tts": {
+        "text": "Autumn is short and golden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the snow returns, and the long winter begins again.",
+      "text_markdown": "Then the snow returns, and the long winter begins again.",
+      "tts": {
+        "text": "Then the snow returns, and the long winter begins again.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Land and the Water",
+      "text_markdown": "The Land and the Water"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest grows over old, quiet land.",
+      "text_markdown": "The boreal forest grows over old, quiet land.",
+      "tts": {
+        "text": "The boreal forest grows over old, quiet land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Long ago, great sheets of ice covered all of this country.",
+      "text_markdown": "Long ago, great sheets of ice covered all of this country.",
+      "tts": {
+        "text": "Long ago, great sheets of ice covered all of this country.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The ice was thicker than the tallest mountains we know today.",
+      "text_markdown": "The ice was thicker than the tallest mountains we know today.",
+      "tts": {
+        "text": "The ice was thicker than the tallest mountains we know today.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the ice melted, many thousands of years ago, it left the land flat and scratched and full of holes.",
+      "text_markdown": "When the ice melted, many thousands of years ago, it left the land flat and scratched and full of holes.",
+      "tts": {
+        "text": "When the ice melted, many thousands of years ago, it left the land flat and scratched and full of holes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The holes filled with water.",
+      "text_markdown": "The holes filled with water.",
+      "tts": {
+        "text": "The holes filled with water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is why the boreal forest has so many lakes.",
+      "text_markdown": "That is why the boreal forest has so many lakes.",
+      "tts": {
+        "text": "That is why the boreal forest has so many lakes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Canada alone has more lakes than the rest of the world put together.",
+      "text_markdown": "Canada alone has more lakes than the rest of the world put together.",
+      "tts": {
+        "text": "Canada alone has more lakes than the rest of the world put together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of them sit inside the boreal forest, shining like dark mirrors between the trees.",
+      "text_markdown": "Many of them sit inside the boreal forest, shining like dark mirrors between the trees.",
+      "tts": {
+        "text": "Many of them sit inside the boreal forest, shining like dark mirrors between the trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wide slow rivers cross the forest, carrying meltwater to the great northern seas.",
+      "text_markdown": "Wide slow rivers cross the forest, carrying meltwater to the great northern seas.",
+      "tts": {
+        "text": "Wide slow rivers cross the forest, carrying meltwater to the great northern seas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Between the lakes and the rivers, there are soft, wet places called bogs.",
+      "text_markdown": "Between the lakes and the rivers, there are soft, wet places called bogs.",
+      "tts": {
+        "text": "Between the lakes and the rivers, there are soft, wet places called bogs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A bog is a piece of ground where water sits on top of the soil all year.",
+      "text_markdown": "A bog is a piece of ground where water sits on top of the soil all year.",
+      "tts": {
+        "text": "A bog is a piece of ground where water sits on top of the soil all year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mosses grow thick on the bog, soft and deep underfoot.",
+      "text_markdown": "Mosses grow thick on the bog, soft and deep underfoot.",
+      "tts": {
+        "text": "Mosses grow thick on the bog, soft and deep underfoot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Below the surface, the bog water is cold and brown.",
+      "text_markdown": "Below the surface, the bog water is cold and brown.",
+      "tts": {
+        "text": "Below the surface, the bog water is cold and brown.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The soil of the boreal forest is poor and thin.",
+      "text_markdown": "The soil of the boreal forest is poor and thin.",
+      "tts": {
+        "text": "The soil of the boreal forest is poor and thin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pine needles and dead leaves break down slowly in the cold.",
+      "text_markdown": "Pine needles and dead leaves break down slowly in the cold.",
+      "tts": {
+        "text": "Pine needles and dead leaves break down slowly in the cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The good food for plants takes a long time to build up.",
+      "text_markdown": "The good food for plants takes a long time to build up.",
+      "tts": {
+        "text": "The good food for plants takes a long time to build up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the far north of the boreal forest, the ground deeper than a meter or two stays frozen all year.",
+      "text_markdown": "In the far north of the boreal forest, the ground deeper than a meter or two stays frozen all year.",
+      "tts": {
+        "text": "In the far north of the boreal forest, the ground deeper than a meter or two stays frozen all year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This frozen ground is called permafrost.",
+      "text_markdown": "This frozen ground is called permafrost.",
+      "tts": {
+        "text": "This frozen ground is called permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Even on a hot summer day, the soil under the moss is cold to the touch.",
+      "text_markdown": "Even on a hot summer day, the soil under the moss is cold to the touch.",
+      "tts": {
+        "text": "Even on a hot summer day, the soil under the moss is cold to the touch.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Trees",
+      "text_markdown": "The Trees"
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The trees of the boreal forest are mostly evergreen.",
+      "text_markdown": "The trees of the boreal forest are mostly evergreen.",
+      "tts": {
+        "text": "The trees of the boreal forest are mostly evergreen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They do not drop all their leaves at the end of summer.",
+      "text_markdown": "They do not drop all their leaves at the end of summer.",
+      "tts": {
+        "text": "They do not drop all their leaves at the end of summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Instead, they hold tiny green needles all year long.",
+      "text_markdown": "Instead, they hold tiny green needles all year long.",
+      "tts": {
+        "text": "Instead, they hold tiny green needles all year long.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A needle is small and tough.",
+      "text_markdown": "A needle is small and tough.",
+      "tts": {
+        "text": "A needle is small and tough.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It does not lose much water to the wind, and it does not break under the snow.",
+      "text_markdown": "It does not lose much water to the wind, and it does not break under the snow.",
+      "tts": {
+        "text": "It does not lose much water to the wind, and it does not break under the snow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the trees grow in the shape of a tall, narrow cone.",
+      "text_markdown": "Many of the trees grow in the shape of a tall, narrow cone.",
+      "tts": {
+        "text": "Many of the trees grow in the shape of a tall, narrow cone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When heavy snow falls on a tree shaped like a cone, it slides off easily.",
+      "text_markdown": "When heavy snow falls on a tree shaped like a cone, it slides off easily.",
+      "tts": {
+        "text": "When heavy snow falls on a tree shaped like a cone, it slides off easily.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The most common boreal trees are spruce, pine, fir, and larch.",
+      "text_markdown": "The most common boreal trees are spruce, pine, fir, and larch.",
+      "tts": {
+        "text": "The most common boreal trees are spruce, pine, fir, and larch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spruce trees have short, sharp needles and small cones that hang down.",
+      "text_markdown": "Spruce trees have short, sharp needles and small cones that hang down.",
+      "tts": {
+        "text": "Spruce trees have short, sharp needles and small cones that hang down.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pine trees have long, soft needles that grow in little bundles of two or three.",
+      "text_markdown": "Pine trees have long, soft needles that grow in little bundles of two or three.",
+      "tts": {
+        "text": "Pine trees have long, soft needles that grow in little bundles of two or three.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fir trees have flat, soft needles and tall cones that point straight up.",
+      "text_markdown": "Fir trees have flat, soft needles and tall cones that point straight up.",
+      "tts": {
+        "text": "Fir trees have flat, soft needles and tall cones that point straight up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The larch is the only common boreal tree that drops its needles in the autumn.",
+      "text_markdown": "The larch is the only common boreal tree that drops its needles in the autumn.",
+      "tts": {
+        "text": "The larch is the only common boreal tree that drops its needles in the autumn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Before it drops them, the larch turns bright gold.",
+      "text_markdown": "Before it drops them, the larch turns bright gold.",
+      "tts": {
+        "text": "Before it drops them, the larch turns bright gold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A great larch forest in October looks like a sea of gold across the cold land.",
+      "text_markdown": "A great larch forest in October looks like a sea of gold across the cold land.",
+      "tts": {
+        "text": "A great larch forest in October looks like a sea of gold across the cold land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In all of these forests, the trees stand close together.",
+      "text_markdown": "In all of these forests, the trees stand close together.",
+      "tts": {
+        "text": "In all of these forests, the trees stand close together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The branches are thick at the top and bare near the bottom, where the sun does not reach.",
+      "text_markdown": "The branches are thick at the top and bare near the bottom, where the sun does not reach.",
+      "tts": {
+        "text": "The branches are thick at the top and bare near the bottom, where the sun does not reach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The shade between the trees is deep and quiet.",
+      "text_markdown": "The shade between the trees is deep and quiet.",
+      "tts": {
+        "text": "The shade between the trees is deep and quiet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On the floor of the forest, the green is not in the leaves but in the moss.",
+      "text_markdown": "On the floor of the forest, the green is not in the leaves but in the moss.",
+      "tts": {
+        "text": "On the floor of the forest, the green is not in the leaves but in the moss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soft thick moss covers the ground, the fallen logs, and the rocks.",
+      "text_markdown": "Soft thick moss covers the ground, the fallen logs, and the rocks.",
+      "tts": {
+        "text": "Soft thick moss covers the ground, the fallen logs, and the rocks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mushrooms of many shapes and colors push up through the moss in the late summer.",
+      "text_markdown": "Mushrooms of many shapes and colors push up through the moss in the late summer.",
+      "tts": {
+        "text": "Mushrooms of many shapes and colors push up through the moss in the late summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Small berries grow on tiny bushes among the moss.",
+      "text_markdown": "Small berries grow on tiny bushes among the moss.",
+      "tts": {
+        "text": "Small berries grow on tiny bushes among the moss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sweet wild blueberries, red cranberries, and small black crowberries all grow here.",
+      "text_markdown": "Sweet wild blueberries, red cranberries, and small black crowberries all grow here.",
+      "tts": {
+        "text": "Sweet wild blueberries, red cranberries, and small black crowberries all grow here.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the brief summer, the people and the animals of the forest gather them by the basket.",
+      "text_markdown": "In the brief summer, the people and the animals of the forest gather them by the basket.",
+      "tts": {
+        "text": "In the brief summer, the people and the animals of the forest gather them by the basket.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Animals",
+      "text_markdown": "The Animals"
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest is home to many animals that know how to live in the cold.",
+      "text_markdown": "The boreal forest is home to many animals that know how to live in the cold.",
+      "tts": {
+        "text": "The boreal forest is home to many animals that know how to live in the cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most of them have thick fur, fat under their skin, or both.",
+      "text_markdown": "Most of them have thick fur, fat under their skin, or both.",
+      "tts": {
+        "text": "Most of them have thick fur, fat under their skin, or both.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The biggest animal of the boreal forest is the moose.",
+      "text_markdown": "The biggest animal of the boreal forest is the moose.",
+      "tts": {
+        "text": "The biggest animal of the boreal forest is the moose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A moose is a very tall deer with a long face and a heavy body.",
+      "text_markdown": "A moose is a very tall deer with a long face and a heavy body.",
+      "tts": {
+        "text": "A moose is a very tall deer with a long face and a heavy body.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A grown moose can be taller than the tallest person, with great wide antlers on its head.",
+      "text_markdown": "A grown moose can be taller than the tallest person, with great wide antlers on its head.",
+      "tts": {
+        "text": "A grown moose can be taller than the tallest person, with great wide antlers on its head.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It feeds on water plants in the summer and on twigs and bark in the winter.",
+      "text_markdown": "It feeds on water plants in the summer and on twigs and bark in the winter.",
+      "tts": {
+        "text": "It feeds on water plants in the summer and on twigs and bark in the winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A moose is shy, but if you meet one, you will not forget it.",
+      "text_markdown": "A moose is shy, but if you meet one, you will not forget it.",
+      "tts": {
+        "text": "A moose is shy, but if you meet one, you will not forget it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Brown bears live in many parts of the boreal forest.",
+      "text_markdown": "Brown bears live in many parts of the boreal forest.",
+      "tts": {
+        "text": "Brown bears live in many parts of the boreal forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, a brown bear eats berries, fish, roots, and small animals.",
+      "text_markdown": "In the summer, a brown bear eats berries, fish, roots, and small animals.",
+      "tts": {
+        "text": "In the summer, a brown bear eats berries, fish, roots, and small animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, it eats as much as it can to grow a thick layer of fat.",
+      "text_markdown": "In the autumn, it eats as much as it can to grow a thick layer of fat.",
+      "tts": {
+        "text": "In the autumn, it eats as much as it can to grow a thick layer of fat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then it sleeps in a den under the snow all winter long.",
+      "text_markdown": "Then it sleeps in a den under the snow all winter long.",
+      "tts": {
+        "text": "Then it sleeps in a den under the snow all winter long.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolves hunt across the forest in family groups called packs.",
+      "text_markdown": "Wolves hunt across the forest in family groups called packs.",
+      "tts": {
+        "text": "Wolves hunt across the forest in family groups called packs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A wolf pack can travel many miles in a single day.",
+      "text_markdown": "A wolf pack can travel many miles in a single day.",
+      "tts": {
+        "text": "A wolf pack can travel many miles in a single day.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wolves hunt moose, deer, and smaller animals.",
+      "text_markdown": "The wolves hunt moose, deer, and smaller animals.",
+      "tts": {
+        "text": "The wolves hunt moose, deer, and smaller animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the deep snow, they walk in a line, each wolf stepping in the tracks of the one in front.",
+      "text_markdown": "In the deep snow, they walk in a line, each wolf stepping in the tracks of the one in front.",
+      "tts": {
+        "text": "In the deep snow, they walk in a line, each wolf stepping in the tracks of the one in front.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The lynx is a wild cat of the boreal forest.",
+      "text_markdown": "The lynx is a wild cat of the boreal forest.",
+      "tts": {
+        "text": "The lynx is a wild cat of the boreal forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It has thick gray fur, a short tail, and pointed tufts of hair at the tips of its ears.",
+      "text_markdown": "It has thick gray fur, a short tail, and pointed tufts of hair at the tips of its ears.",
+      "tts": {
+        "text": "It has thick gray fur, a short tail, and pointed tufts of hair at the tips of its ears.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Its big furry feet act like snowshoes in the deep snow.",
+      "text_markdown": "Its big furry feet act like snowshoes in the deep snow.",
+      "tts": {
+        "text": "Its big furry feet act like snowshoes in the deep snow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The lynx mostly hunts the snowshoe hare.",
+      "text_markdown": "The lynx mostly hunts the snowshoe hare.",
+      "tts": {
+        "text": "The lynx mostly hunts the snowshoe hare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The snowshoe hare turns brown in summer and white in winter, to match the ground.",
+      "text_markdown": "The snowshoe hare turns brown in summer and white in winter, to match the ground.",
+      "tts": {
+        "text": "The snowshoe hare turns brown in summer and white in winter, to match the ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beavers live in the rivers and lakes of the forest.",
+      "text_markdown": "Beavers live in the rivers and lakes of the forest.",
+      "tts": {
+        "text": "Beavers live in the rivers and lakes of the forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A beaver cuts down trees with its strong teeth and builds dams and lodges of wood and mud.",
+      "text_markdown": "A beaver cuts down trees with its strong teeth and builds dams and lodges of wood and mud.",
+      "tts": {
+        "text": "A beaver cuts down trees with its strong teeth and builds dams and lodges of wood and mud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A beaver pond can change a whole stretch of forest into a quiet pool full of life.",
+      "text_markdown": "A beaver pond can change a whole stretch of forest into a quiet pool full of life.",
+      "tts": {
+        "text": "A beaver pond can change a whole stretch of forest into a quiet pool full of life.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "High in the trees, red squirrels chatter loudly and gather pine cones for the winter.",
+      "text_markdown": "High in the trees, red squirrels chatter loudly and gather pine cones for the winter.",
+      "tts": {
+        "text": "High in the trees, red squirrels chatter loudly and gather pine cones for the winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolverines, martens, and minks slip silently through the underbrush.",
+      "text_markdown": "Wolverines, martens, and minks slip silently through the underbrush.",
+      "tts": {
+        "text": "Wolverines, martens, and minks slip silently through the underbrush.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many kinds of owls hunt at night.",
+      "text_markdown": "Many kinds of owls hunt at night.",
+      "tts": {
+        "text": "Many kinds of owls hunt at night.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The great gray owl is one of the tallest owls in the world, and it lives in the boreal forest.",
+      "text_markdown": "The great gray owl is one of the tallest owls in the world, and it lives in the boreal forest.",
+      "tts": {
+        "text": "The great gray owl is one of the tallest owls in the world, and it lives in the boreal forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ravens fly between the trees, calling to each other in many different voices.",
+      "text_markdown": "Ravens fly between the trees, calling to each other in many different voices.",
+      "tts": {
+        "text": "Ravens fly between the trees, calling to each other in many different voices.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the short summer, swarms of mosquitoes and small flies fill the air.",
+      "text_markdown": "In the short summer, swarms of mosquitoes and small flies fill the air.",
+      "tts": {
+        "text": "In the short summer, swarms of mosquitoes and small flies fill the air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For a few weeks, the forest is alive with the buzzing of insects, the songs of small birds, and the splash of fish in the lakes.",
+      "text_markdown": "For a few weeks, the forest is alive with the buzzing of insects, the songs of small birds, and the splash of fish in the lakes.",
+      "tts": {
+        "text": "For a few weeks, the forest is alive with the buzzing of insects, the songs of small birds, and the splash of fish in the lakes.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The People",
+      "text_markdown": "The People"
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest is one of the emptiest places on Earth.",
+      "text_markdown": "The boreal forest is one of the emptiest places on Earth.",
+      "tts": {
+        "text": "The boreal forest is one of the emptiest places on Earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Long winters and thin soil make it hard to grow food here.",
+      "text_markdown": "Long winters and thin soil make it hard to grow food here.",
+      "tts": {
+        "text": "Long winters and thin soil make it hard to grow food here.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But people have lived in this great forest for many thousands of years.",
+      "text_markdown": "But people have lived in this great forest for many thousands of years.",
+      "tts": {
+        "text": "But people have lived in this great forest for many thousands of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In northern Europe, the Sami people have lived in the boreal forest and the tundra above it for a very long time.",
+      "text_markdown": "In northern Europe, the Sami people have lived in the boreal forest and the tundra above it for a very long time.",
+      "tts": {
+        "text": "In northern Europe, the Sami people have lived in the boreal forest and the tundra above it for a very long time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Sami herd reindeer across the cold lands of Norway, Sweden, Finland, and Russia.",
+      "text_markdown": "The Sami herd reindeer across the cold lands of Norway, Sweden, Finland, and Russia.",
+      "tts": {
+        "text": "The Sami herd reindeer across the cold lands of Norway, Sweden, Finland, and Russia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A reindeer can find food in the snow, and it gives the people meat, milk, and skins.",
+      "text_markdown": "A reindeer can find food in the snow, and it gives the people meat, milk, and skins.",
+      "tts": {
+        "text": "A reindeer can find food in the snow, and it gives the people meat, milk, and skins.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The reindeer also pulls sleds across the winter snow.",
+      "text_markdown": "The reindeer also pulls sleds across the winter snow.",
+      "tts": {
+        "text": "The reindeer also pulls sleds across the winter snow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Siberia, in northern Russia, many groups of people have made the boreal forest their home.",
+      "text_markdown": "In Siberia, in northern Russia, many groups of people have made the boreal forest their home.",
+      "tts": {
+        "text": "In Siberia, in northern Russia, many groups of people have made the boreal forest their home.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Evenki, the Khanty, the Nenets, and others have hunted, fished, and herded reindeer here for many generations.",
+      "text_markdown": "The Evenki, the Khanty, the Nenets, and others have hunted, fished, and herded reindeer here for many generations.",
+      "tts": {
+        "text": "The Evenki, the Khanty, the Nenets, and others have hunted, fished, and herded reindeer here for many generations.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Canada and Alaska, many First Nations peoples and the Dene have lived in the boreal forest for thousands of years.",
+      "text_markdown": "In Canada and Alaska, many First Nations peoples and the Dene have lived in the boreal forest for thousands of years.",
+      "tts": {
+        "text": "In Canada and Alaska, many First Nations peoples and the Dene have lived in the boreal forest for thousands of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They have hunted moose and caribou, fished in the cold rivers, and gathered berries in the brief summer.",
+      "text_markdown": "They have hunted moose and caribou, fished in the cold rivers, and gathered berries in the brief summer.",
+      "tts": {
+        "text": "They have hunted moose and caribou, fished in the cold rivers, and gathered berries in the brief summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Across all of these lands, the people built warm winter clothes from animal skins and fur.",
+      "text_markdown": "Across all of these lands, the people built warm winter clothes from animal skins and fur.",
+      "tts": {
+        "text": "Across all of these lands, the people built warm winter clothes from animal skins and fur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They built houses of wood, bark, and skin, with small openings to keep out the cold.",
+      "text_markdown": "They built houses of wood, bark, and skin, with small openings to keep out the cold.",
+      "tts": {
+        "text": "They built houses of wood, bark, and skin, with small openings to keep out the cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They learned to travel on snowshoes and on long thin skis, and later with dog sleds.",
+      "text_markdown": "They learned to travel on snowshoes and on long thin skis, and later with dog sleds.",
+      "tts": {
+        "text": "They learned to travel on snowshoes and on long thin skis, and later with dog sleds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In summer, they traveled by canoe, by long birchbark boat, or by reindeer.",
+      "text_markdown": "In summer, they traveled by canoe, by long birchbark boat, or by reindeer.",
+      "tts": {
+        "text": "In summer, they traveled by canoe, by long birchbark boat, or by reindeer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These people learned the names of every tree and every animal in the forest.",
+      "text_markdown": "These people learned the names of every tree and every animal in the forest.",
+      "tts": {
+        "text": "These people learned the names of every tree and every animal in the forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They learned where the berry patches were, and where the fish were thickest.",
+      "text_markdown": "They learned where the berry patches were, and where the fish were thickest.",
+      "tts": {
+        "text": "They learned where the berry patches were, and where the fish were thickest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They learned which mushrooms could be eaten and which could not.",
+      "text_markdown": "They learned which mushrooms could be eaten and which could not.",
+      "tts": {
+        "text": "They learned which mushrooms could be eaten and which could not.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They learned how to read the snow for the tracks of moose and bear.",
+      "text_markdown": "They learned how to read the snow for the tracks of moose and bear.",
+      "tts": {
+        "text": "They learned how to read the snow for the tracks of moose and bear.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In more recent times, other people have come to the forest to cut wood, to dig for ore, or to live in small towns along the rivers.",
+      "text_markdown": "In more recent times, other people have come to the forest to cut wood, to dig for ore, or to live in small towns along the rivers.",
+      "tts": {
+        "text": "In more recent times, other people have come to the forest to cut wood, to dig for ore, or to live in small towns along the rivers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But for most of its long history, the boreal forest has been a quiet place.",
+      "text_markdown": "But for most of its long history, the boreal forest has been a quiet place.",
+      "tts": {
+        "text": "But for most of its long history, the boreal forest has been a quiet place.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A place where small groups of people share the land with the trees, the animals, and the cold.",
+      "text_markdown": "A place where small groups of people share the land with the trees, the animals, and the cold.",
+      "tts": {
+        "text": "A place where small groups of people share the land with the trees, the animals, and the cold.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Biome Today",
+      "text_markdown": "The Biome Today"
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest is huge, but it is not as untouched as it looks.",
+      "text_markdown": "The boreal forest is huge, but it is not as untouched as it looks.",
+      "tts": {
+        "text": "The boreal forest is huge, but it is not as untouched as it looks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For more than a hundred years, people have cut large amounts of wood from this forest.",
+      "text_markdown": "For more than a hundred years, people have cut large amounts of wood from this forest.",
+      "tts": {
+        "text": "For more than a hundred years, people have cut large amounts of wood from this forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The tall straight trees make good lumber and good paper.",
+      "text_markdown": "The tall straight trees make good lumber and good paper.",
+      "tts": {
+        "text": "The tall straight trees make good lumber and good paper.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In many parts of the boreal forest, whole sections of trees have been cut down and slowly grown back.",
+      "text_markdown": "In many parts of the boreal forest, whole sections of trees have been cut down and slowly grown back.",
+      "tts": {
+        "text": "In many parts of the boreal forest, whole sections of trees have been cut down and slowly grown back.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boreal forest also holds an enormous amount of carbon, in the trees and in the soil and bogs below.",
+      "text_markdown": "The boreal forest also holds an enormous amount of carbon, in the trees and in the soil and bogs below.",
+      "tts": {
+        "text": "The boreal forest also holds an enormous amount of carbon, in the trees and in the soil and bogs below.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Healthy boreal soil keeps that carbon locked safely away from the air.",
+      "text_markdown": "Healthy boreal soil keeps that carbon locked safely away from the air.",
+      "tts": {
+        "text": "Healthy boreal soil keeps that carbon locked safely away from the air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the trees and soil are kept whole, the forest helps keep the air of the whole Earth in balance.",
+      "text_markdown": "When the trees and soil are kept whole, the forest helps keep the air of the whole Earth in balance.",
+      "tts": {
+        "text": "When the trees and soil are kept whole, the forest helps keep the air of the whole Earth in balance.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In recent years, the boreal forest has grown warmer.",
+      "text_markdown": "In recent years, the boreal forest has grown warmer.",
+      "tts": {
+        "text": "In recent years, the boreal forest has grown warmer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Long warm summers have brought larger forest fires than the people of the north remember.",
+      "text_markdown": "Long warm summers have brought larger forest fires than the people of the north remember.",
+      "tts": {
+        "text": "Long warm summers have brought larger forest fires than the people of the north remember.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some of these fires now last for weeks and burn through millions of trees.",
+      "text_markdown": "Some of these fires now last for weeks and burn through millions of trees.",
+      "tts": {
+        "text": "Some of these fires now last for weeks and burn through millions of trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the far north, the warmer summers have begun to soften the permafrost.",
+      "text_markdown": "In the far north, the warmer summers have begun to soften the permafrost.",
+      "tts": {
+        "text": "In the far north, the warmer summers have begun to soften the permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many people and groups today are working to take care of the boreal forest.",
+      "text_markdown": "Many people and groups today are working to take care of the boreal forest.",
+      "tts": {
+        "text": "Many people and groups today are working to take care of the boreal forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They set aside large parks where the forest can grow as it always has.",
+      "text_markdown": "They set aside large parks where the forest can grow as it always has.",
+      "tts": {
+        "text": "They set aside large parks where the forest can grow as it always has.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They help the people who have lived there for many generations care for their own lands.",
+      "text_markdown": "They help the people who have lived there for many generations care for their own lands.",
+      "tts": {
+        "text": "They help the people who have lived there for many generations care for their own lands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They study the forest to understand how it lives and how to keep it whole.",
+      "text_markdown": "They study the forest to understand how it lives and how to keep it whole.",
+      "tts": {
+        "text": "They study the forest to understand how it lives and how to keep it whole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A healthy boreal forest is a great green blanket that helps keep the world cool.",
+      "text_markdown": "A healthy boreal forest is a great green blanket that helps keep the world cool.",
+      "tts": {
+        "text": "A healthy boreal forest is a great green blanket that helps keep the world cool.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is worth our care.",
+      "text_markdown": "It is worth our care.",
+      "tts": {
+        "text": "It is worth our care.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Closing",
+      "text_markdown": "Closing"
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the boreal forest.",
+      "text_markdown": "That is the boreal forest.",
+      "tts": {
+        "text": "That is the boreal forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A wide green belt of evergreen trees, lakes, and quiet snow that runs almost all the way around the top of the world.",
+      "text_markdown": "A wide green belt of evergreen trees, lakes, and quiet snow that runs almost all the way around the top of the world.",
+      "tts": {
+        "text": "A wide green belt of evergreen trees, lakes, and quiet snow that runs almost all the way around the top of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you ever stand in one, be still for a minute.",
+      "text_markdown": "If you ever stand in one, be still for a minute.",
+      "tts": {
+        "text": "If you ever stand in one, be still for a minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Listen to the wind in the high needles.",
+      "text_markdown": "Listen to the wind in the high needles.",
+      "tts": {
+        "text": "Listen to the wind in the high needles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-163",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watch the sun coming through the trees onto the moss.",
+      "text_markdown": "Watch the sun coming through the trees onto the moss.",
+      "tts": {
+        "text": "Watch the sun coming through the trees onto the moss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch09-164",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Smell the cold pine air.",
+      "text_markdown": "Smell the cold pine air.",
+      "tts": {
+        "text": "Smell the cold pine air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-165",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will feel the slow, patient heart of the biome beating around you.",
+      "text_markdown": "You will feel the slow, patient heart of the biome beating around you.",
+      "tts": {
+        "text": "You will feel the slow, patient heart of the biome beating around you.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

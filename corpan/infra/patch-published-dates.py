@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
-Surgical publishedAt backfill for catalog-v2.json.
+Surgical catalog-v2.json patcher — publishedAt + missing book rows.
 
 `patch-catalog.py` REBUILDS the entire books array from its in-repo BOOK_META +
 asset-urls.json, which clobbers cover art and descriptions that the backend
 `ttsctl publish` has since written. To fix only the Browse → "Latest" sort we
 do the minimal thing: fetch the live catalog, set publishedAt on the narrations
-(and book rows) for a small set of books, and put it back. Everything else is
-preserved byte-for-byte.
+(and book rows), append any missing book rows (with full metadata + cover URL),
+and put it back. Everything else is preserved byte-for-byte.
+
+Why book-row injection lives here: `ttsctl publish` stamps publishedAt and
+narration entries but does NOT create new `books[]` rows. Without a row, the
+book's cover/title/description never shows up in Browse even though
+narrations are live. This used to be `patch-catalog.py`'s job, which is now
+dead. So this script picks it up — surgically.
 
 Dry-run by default; pass --apply to upload + invalidate CloudFront.
 """
@@ -82,12 +88,56 @@ DATES = {
     "book_ai_this_week_2026_05_27": "2026-05-27",
     "book_ai_this_week_2026_06_03": "2026-06-03",
     "book_ai_this_week_2026_06_14": "2026-06-14",
+    "book_ai_this_week_2026_06_21": "2026-06-21",
+    "book_ai_this_week_2026_06_28": "2026-06-28",
     # ── Biomes of the World (new series, sequential daily) ─────────────
     "book_biomes_tropical_rainforest": "2026-06-14",
     "book_biomes_tropical_savanna":    "2026-06-15",
     "book_biomes_hot_desert":          "2026-06-16",
     "book_biomes_temperate_forest":    "2026-06-17",
     "book_biomes_temperate_grassland": "2026-06-18",
+    "book_biomes_mediterranean":       "2026-06-19",
+    "book_biomes_boreal_forest":       "2026-06-20",
+}
+
+
+# Full book-row metadata for any book that isn't yet in catalog.books[].
+# Append-only — never edits an existing row. Keys match the live catalog
+# schema (bookId/title/description/coverImageUrl/series/primaryLanguage/tags).
+# publishedAt is filled from DATES at write time.
+CDN_BASE = "https://d38iwc9748jekz.cloudfront.net"
+BIOMES_TAGS = ["nature", "biomes", "science", "language-learning"]
+BOOK_ROWS: dict[str, dict] = {
+    "book_biomes_mediterranean": {
+        "title": "The Mediterranean Biome",
+        "description": (
+            "A short, plain-spoken tour of the Mediterranean biome — hot "
+            "dry summers and mild wet winters, the fragrant low shrublands "
+            "and silver-leaved olive trees, and the people whose food and "
+            "farming grew up with the long blue summer. Found in five small "
+            "corners of the Earth. Book six of the Biomes of the World series."
+        ),
+        "coverImageUrl": f"{CDN_BASE}/books/book_biomes_mediterranean/cover.jpg",
+        "series": "Biomes of the World",
+        "primaryLanguage": "en",
+        "tags": BIOMES_TAGS,
+    },
+    "book_biomes_boreal_forest": {
+        "title": "The Boreal Forest",
+        "description": (
+            "A short, plain-spoken tour of the boreal forest — the great "
+            "green belt of evergreen trees, lakes, and quiet snow that runs "
+            "almost all the way around the top of the world. The taiga: "
+            "long cold winters, brief bright summers, moose and brown bear "
+            "and lynx, the Sami and Evenki and Dene who have lived among "
+            "the trees for thousands of years. Book seven of the Biomes "
+            "of the World series."
+        ),
+        "coverImageUrl": f"{CDN_BASE}/books/book_biomes_boreal_forest/cover.jpg",
+        "series": "Biomes of the World",
+        "primaryLanguage": "en",
+        "tags": BIOMES_TAGS,
+    },
 }
 
 
@@ -144,8 +194,21 @@ def main() -> None:
             b["publishedAt"] = d
             b_changed += 1
 
+    existing_ids = {b.get("bookId") for b in cat.get("books", [])}
+    b_added = 0
+    for bid, meta in BOOK_ROWS.items():
+        if bid in existing_ids:
+            continue
+        row = {"bookId": bid, **meta}
+        if bid in DATES:
+            row["publishedAt"] = DATES[bid]
+        cat.setdefault("books", []).append(row)
+        b_added += 1
+        print(f"  + added book row: {bid}")
+
     print(f"  narrations updated: {n_changed}")
     print(f"  books updated:      {b_changed}")
+    print(f"  books added:        {b_added}")
     cat["generatedAt"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
     body = json.dumps(cat, ensure_ascii=False, indent=2).encode("utf-8")

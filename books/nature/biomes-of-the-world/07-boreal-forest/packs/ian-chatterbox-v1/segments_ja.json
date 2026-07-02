@@ -1,0 +1,2446 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_boreal_forest",
+  "total_segments": 165,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Boreal Forest",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "北方林",
+      "text_markdown": "北方林"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "このバイオームが広がる場所",
+      "text_markdown": "このバイオームが広がる場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林へようこそ。",
+      "text_markdown": "北方林へようこそ。",
+      "tts": {
+        "text": "北方林へようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは、世界の大きなバイオームの一つです。",
+      "text_markdown": "ここは、世界の大きなバイオームの一つです。",
+      "tts": {
+        "text": "ここは、世界の大きなバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、地球の中で、独自の気候と、植物と、動物を持つ場所のことです。",
+      "text_markdown": "バイオームとは、地球の中で、独自の気候と、植物と、動物を持つ場所のことです。",
+      "tts": {
+        "text": "バイオームとは、地球の中で、独自の気候と、植物と、動物を持つ場所のことです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林は、世界のてっぺんを横切るように広がる、常緑樹の広い緑のベルトです。",
+      "text_markdown": "北方林は、世界のてっぺんを横切るように広がる、常緑樹の広い緑のベルトです。",
+      "tts": {
+        "text": "北方林は、世界のてっぺんを横切るように広がる、常緑樹の広い緑のベルトです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "タイガとも呼ばれます。",
+      "text_markdown": "タイガとも呼ばれます。",
+      "tts": {
+        "text": "タイガとも呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林は、地球で最も大きな陸のバイオームです。",
+      "text_markdown": "北方林は、地球で最も大きな陸のバイオームです。",
+      "tts": {
+        "text": "北方林は、地球で最も大きな陸のバイオームです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界の高い空を飛んでみたら、この深い緑のベルトが、地球をほとんど一周している様子が見えるでしょう。",
+      "text_markdown": "世界の高い空を飛んでみたら、この深い緑のベルトが、地球をほとんど一周している様子が見えるでしょう。",
+      "tts": {
+        "text": "世界の高い空を飛んでみたら、この深い緑のベルトが、地球をほとんど一周している様子が見えるでしょう。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカでは、カナダとアラスカのほとんどに広がっています。",
+      "text_markdown": "北アメリカでは、カナダとアラスカのほとんどに広がっています。",
+      "tts": {
+        "text": "北アメリカでは、カナダとアラスカのほとんどに広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北ヨーロッパでは、ノルウェー、スウェーデン、フィンランドに広がっています。",
+      "text_markdown": "北ヨーロッパでは、ノルウェー、スウェーデン、フィンランドに広がっています。",
+      "tts": {
+        "text": "北ヨーロッパでは、ノルウェー、スウェーデン、フィンランドに広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロシアでは、ヨーロッパから太平洋まで、ずっと広がっています。",
+      "text_markdown": "ロシアでは、ヨーロッパから太平洋まで、ずっと広がっています。",
+      "tts": {
+        "text": "ロシアでは、ヨーロッパから太平洋まで、ずっと広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの場所でも、森のすがたはとてもよく似ています。",
+      "text_markdown": "どの場所でも、森のすがたはとてもよく似ています。",
+      "tts": {
+        "text": "どの場所でも、森のすがたはとてもよく似ています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とがった背の高い木々がぎっしりと立ち並び、地面にはやわらかい苔と、小さな低木が広がっています。",
+      "text_markdown": "とがった背の高い木々がぎっしりと立ち並び、地面にはやわらかい苔と、小さな低木が広がっています。",
+      "tts": {
+        "text": "とがった背の高い木々がぎっしりと立ち並び、地面にはやわらかい苔と、小さな低木が広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々の間には、たくさんの湖と、川と、湿地があります。",
+      "text_markdown": "木々の間には、たくさんの湖と、川と、湿地があります。",
+      "tts": {
+        "text": "木々の間には、たくさんの湖と、川と、湿地があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林は、ツンドラのすぐ南、温帯林のすぐ北に広がっています。",
+      "text_markdown": "北方林は、ツンドラのすぐ南、温帯林のすぐ北に広がっています。",
+      "tts": {
+        "text": "北方林は、ツンドラのすぐ南、温帯林のすぐ北に広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あたたかい場所ではありません。",
+      "text_markdown": "あたたかい場所ではありません。",
+      "tts": {
+        "text": "あたたかい場所ではありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここでは、長くてとても寒い冬がふつうで、地面は何ヶ月もの間、深い雪に覆われます。",
+      "text_markdown": "ここでは、長くてとても寒い冬がふつうで、地面は何ヶ月もの間、深い雪に覆われます。",
+      "tts": {
+        "text": "ここでは、長くてとても寒い冬がふつうで、地面は何ヶ月もの間、深い雪に覆われます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏は短くて涼しく、昼が長く、夜も明るいのです。",
+      "text_markdown": "夏は短くて涼しく、昼が長く、夜も明るいのです。",
+      "tts": {
+        "text": "夏は短くて涼しく、昼が長く、夜も明るいのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林に住む人は多くありませんが、生き物にあふれた場所です。",
+      "text_markdown": "北方林に住む人は多くありませんが、生き物にあふれた場所です。",
+      "tts": {
+        "text": "北方林に住む人は多くありませんが、生き物にあふれた場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クマや、オオカミ、ヘラジカ、フクロウなど、たくさんの動物たちのすみかです。",
+      "text_markdown": "クマや、オオカミ、ヘラジカ、フクロウなど、たくさんの動物たちのすみかです。",
+      "tts": {
+        "text": "クマや、オオカミ、ヘラジカ、フクロウなど、たくさんの動物たちのすみかです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして地球上のどの森よりも広い土地に、しずかに広がっているのです。",
+      "text_markdown": "そして地球上のどの森よりも広い土地に、しずかに広がっているのです。",
+      "tts": {
+        "text": "そして地球上のどの森よりも広い土地に、しずかに広がっているのです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "気候",
+      "text_markdown": "気候"
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林は、一年のほとんどが寒い場所です。",
+      "text_markdown": "北方林は、一年のほとんどが寒い場所です。",
+      "tts": {
+        "text": "北方林は、一年のほとんどが寒い場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここの冬は、長くて暗いのです。",
+      "text_markdown": "ここの冬は、長くて暗いのです。",
+      "tts": {
+        "text": "ここの冬は、長くて暗いのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森の北の方では、冬が七ヶ月、あるいは八ヶ月も続くことがあります。",
+      "text_markdown": "森の北の方では、冬が七ヶ月、あるいは八ヶ月も続くことがあります。",
+      "tts": {
+        "text": "森の北の方では、冬が七ヶ月、あるいは八ヶ月も続くことがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "気温は、摂氏でも華氏でも、零下四十度まで下がることがあります。",
+      "text_markdown": "気温は、摂氏でも華氏でも、零下四十度まで下がることがあります。",
+      "tts": {
+        "text": "気温は、摂氏でも華氏でも、零下四十度まで下がることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そこは、木がまだ育つことのできる、地球上で最も寒い場所の一つです。",
+      "text_markdown": "そこは、木がまだ育つことのできる、地球上で最も寒い場所の一つです。",
+      "tts": {
+        "text": "そこは、木がまだ育つことのできる、地球上で最も寒い場所の一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋から春の終わりまで、深い雪が地面を覆います。",
+      "text_markdown": "秋から春の終わりまで、深い雪が地面を覆います。",
+      "tts": {
+        "text": "秋から春の終わりまで、深い雪が地面を覆います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "湖や川は凍りつき、ときには人の背丈ほどもある厚い氷ができます。",
+      "text_markdown": "湖や川は凍りつき、ときには人の背丈ほどもある厚い氷ができます。",
+      "tts": {
+        "text": "湖や川は凍りつき、ときには人の背丈ほどもある厚い氷ができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ずっと北の方では、冬の一番短い日には、太陽は木々の上にやっと顔を出すぐらいです。",
+      "text_markdown": "ずっと北の方では、冬の一番短い日には、太陽は木々の上にやっと顔を出すぐらいです。",
+      "tts": {
+        "text": "ずっと北の方では、冬の一番短い日には、太陽は木々の上にやっと顔を出すぐらいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて、春の雪解けの季節がやってきます。",
+      "text_markdown": "やがて、春の雪解けの季節がやってきます。",
+      "tts": {
+        "text": "やがて、春の雪解けの季節がやってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雪は水に変わり、川は冷たい水を勢いよく流します。",
+      "text_markdown": "雪は水に変わり、川は冷たい水を勢いよく流します。",
+      "tts": {
+        "text": "雪は水に変わり、川は冷たい水を勢いよく流します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地面は何週間もの間、やわらかく湿ったままです。",
+      "text_markdown": "地面は何週間もの間、やわらかく湿ったままです。",
+      "tts": {
+        "text": "地面は何週間もの間、やわらかく湿ったままです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏は短いですが、生き物にあふれています。",
+      "text_markdown": "夏は短いですが、生き物にあふれています。",
+      "tts": {
+        "text": "夏は短いですが、生き物にあふれています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "六月と七月には、太陽は夜のほとんどの時間、空に残っています。",
+      "text_markdown": "六月と七月には、太陽は夜のほとんどの時間、空に残っています。",
+      "tts": {
+        "text": "六月と七月には、太陽は夜のほとんどの時間、空に残っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森は、あたたかい光をたっぷり使うために、急いで育ちます。",
+      "text_markdown": "森は、あたたかい光をたっぷり使うために、急いで育ちます。",
+      "tts": {
+        "text": "森は、あたたかい光をたっぷり使うために、急いで育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏の昼はあたたかくなることもありますが、夜はたいてい涼しいのです。",
+      "text_markdown": "夏の昼はあたたかくなることもありますが、夜はたいてい涼しいのです。",
+      "tts": {
+        "text": "夏の昼はあたたかくなることもありますが、夜はたいてい涼しいのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "八月になると、寒さが少しずつ戻ってきます。",
+      "text_markdown": "八月になると、寒さが少しずつ戻ってきます。",
+      "tts": {
+        "text": "八月になると、寒さが少しずつ戻ってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋は短く、黄金色にかがやきます。",
+      "text_markdown": "秋は短く、黄金色にかがやきます。",
+      "tts": {
+        "text": "秋は短く、黄金色にかがやきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そしてまた雪が降り、長い冬がふたたび始まります。",
+      "text_markdown": "そしてまた雪が降り、長い冬がふたたび始まります。",
+      "tts": {
+        "text": "そしてまた雪が降り、長い冬がふたたび始まります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地と水",
+      "text_markdown": "土地と水"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林は、古くてしずかな大地の上に広がっています。",
+      "text_markdown": "北方林は、古くてしずかな大地の上に広がっています。",
+      "tts": {
+        "text": "北方林は、古くてしずかな大地の上に広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "はるか昔、巨大な氷の板がこの土地をすべて覆っていました。",
+      "text_markdown": "はるか昔、巨大な氷の板がこの土地をすべて覆っていました。",
+      "tts": {
+        "text": "はるか昔、巨大な氷の板がこの土地をすべて覆っていました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その氷は、今わたしたちが知っているどんな高い山よりも厚かったのです。",
+      "text_markdown": "その氷は、今わたしたちが知っているどんな高い山よりも厚かったのです。",
+      "tts": {
+        "text": "その氷は、今わたしたちが知っているどんな高い山よりも厚かったのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年も前にその氷が解けたとき、大地は平らになり、削られ、たくさんの穴があきました。",
+      "text_markdown": "何千年も前にその氷が解けたとき、大地は平らになり、削られ、たくさんの穴があきました。",
+      "tts": {
+        "text": "何千年も前にその氷が解けたとき、大地は平らになり、削られ、たくさんの穴があきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その穴には水がたまりました。",
+      "text_markdown": "その穴には水がたまりました。",
+      "tts": {
+        "text": "その穴には水がたまりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、北方林にはこんなにたくさんの湖があるのです。",
+      "text_markdown": "だから、北方林にはこんなにたくさんの湖があるのです。",
+      "tts": {
+        "text": "だから、北方林にはこんなにたくさんの湖があるのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カナダだけでも、世界の他の国を全部合わせたよりも多くの湖があります。",
+      "text_markdown": "カナダだけでも、世界の他の国を全部合わせたよりも多くの湖があります。",
+      "tts": {
+        "text": "カナダだけでも、世界の他の国を全部合わせたよりも多くの湖があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その多くは北方林の中にあり、木々の間で暗い鏡のように光っています。",
+      "text_markdown": "その多くは北方林の中にあり、木々の間で暗い鏡のように光っています。",
+      "tts": {
+        "text": "その多くは北方林の中にあり、木々の間で暗い鏡のように光っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "広くてゆっくりと流れる川が森を横切り、雪解け水を北の大きな海まで運んでいきます。",
+      "text_markdown": "広くてゆっくりと流れる川が森を横切り、雪解け水を北の大きな海まで運んでいきます。",
+      "tts": {
+        "text": "広くてゆっくりと流れる川が森を横切り、雪解け水を北の大きな海まで運んでいきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "湖と川の間には、湿地と呼ばれる、やわらかく湿った場所があります。",
+      "text_markdown": "湖と川の間には、湿地と呼ばれる、やわらかく湿った場所があります。",
+      "tts": {
+        "text": "湖と川の間には、湿地と呼ばれる、やわらかく湿った場所があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "湿地とは、一年中、土の上に水がたまっている場所のことです。",
+      "text_markdown": "湿地とは、一年中、土の上に水がたまっている場所のことです。",
+      "tts": {
+        "text": "湿地とは、一年中、土の上に水がたまっている場所のことです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "湿地には苔が厚く生え、足の下ではやわらかく、深く沈みます。",
+      "text_markdown": "湿地には苔が厚く生え、足の下ではやわらかく、深く沈みます。",
+      "tts": {
+        "text": "湿地には苔が厚く生え、足の下ではやわらかく、深く沈みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "表面の下では、湿地の水は冷たく、茶色をしています。",
+      "text_markdown": "表面の下では、湿地の水は冷たく、茶色をしています。",
+      "tts": {
+        "text": "表面の下では、湿地の水は冷たく、茶色をしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林の土は、栄養が少なくて薄いのです。",
+      "text_markdown": "北方林の土は、栄養が少なくて薄いのです。",
+      "tts": {
+        "text": "北方林の土は、栄養が少なくて薄いのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "松の葉や枯れた葉は、寒さの中でゆっくりと分解されます。",
+      "text_markdown": "松の葉や枯れた葉は、寒さの中でゆっくりと分解されます。",
+      "tts": {
+        "text": "松の葉や枯れた葉は、寒さの中でゆっくりと分解されます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "植物にとって良い栄養が積み重なるには、長い時間がかかります。",
+      "text_markdown": "植物にとって良い栄養が積み重なるには、長い時間がかかります。",
+      "tts": {
+        "text": "植物にとって良い栄養が積み重なるには、長い時間がかかります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林のずっと北の方では、地面の一、二メートルより深いところは、一年中凍ったままです。",
+      "text_markdown": "北方林のずっと北の方では、地面の一、二メートルより深いところは、一年中凍ったままです。",
+      "tts": {
+        "text": "北方林のずっと北の方では、地面の一、二メートルより深いところは、一年中凍ったままです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この凍った地面は、永久凍土と呼ばれます。",
+      "text_markdown": "この凍った地面は、永久凍土と呼ばれます。",
+      "tts": {
+        "text": "この凍った地面は、永久凍土と呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暑い夏の日でも、苔の下の土は、さわるとひんやりと冷たいのです。",
+      "text_markdown": "暑い夏の日でも、苔の下の土は、さわるとひんやりと冷たいのです。",
+      "tts": {
+        "text": "暑い夏の日でも、苔の下の土は、さわるとひんやりと冷たいのです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "木々",
+      "text_markdown": "木々"
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林の木々は、ほとんどが常緑樹です。",
+      "text_markdown": "北方林の木々は、ほとんどが常緑樹です。",
+      "tts": {
+        "text": "北方林の木々は、ほとんどが常緑樹です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏の終わりに、葉を全部落とすことはありません。",
+      "text_markdown": "夏の終わりに、葉を全部落とすことはありません。",
+      "tts": {
+        "text": "夏の終わりに、葉を全部落とすことはありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そのかわりに、一年中、小さな緑の針葉をつけ続けます。",
+      "text_markdown": "そのかわりに、一年中、小さな緑の針葉をつけ続けます。",
+      "tts": {
+        "text": "そのかわりに、一年中、小さな緑の針葉をつけ続けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "針葉は小さくて丈夫です。",
+      "text_markdown": "針葉は小さくて丈夫です。",
+      "tts": {
+        "text": "針葉は小さくて丈夫です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風に水分をあまり奪われず、雪の重みで折れることもありません。",
+      "text_markdown": "風に水分をあまり奪われず、雪の重みで折れることもありません。",
+      "tts": {
+        "text": "風に水分をあまり奪われず、雪の重みで折れることもありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの木は、背が高く細長い、円すいの形に育ちます。",
+      "text_markdown": "多くの木は、背が高く細長い、円すいの形に育ちます。",
+      "tts": {
+        "text": "多くの木は、背が高く細長い、円すいの形に育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "円すいの形をした木に重い雪が降っても、雪はすべり落ちやすいのです。",
+      "text_markdown": "円すいの形をした木に重い雪が降っても、雪はすべり落ちやすいのです。",
+      "tts": {
+        "text": "円すいの形をした木に重い雪が降っても、雪はすべり落ちやすいのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林で最もよく見られる木は、トウヒ、マツ、モミ、カラマツです。",
+      "text_markdown": "北方林で最もよく見られる木は、トウヒ、マツ、モミ、カラマツです。",
+      "tts": {
+        "text": "北方林で最もよく見られる木は、トウヒ、マツ、モミ、カラマツです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トウヒは、短くて鋭い針葉と、下に垂れる小さな球果を持っています。",
+      "text_markdown": "トウヒは、短くて鋭い針葉と、下に垂れる小さな球果を持っています。",
+      "tts": {
+        "text": "トウヒは、短くて鋭い針葉と、下に垂れる小さな球果を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マツは、長くてやわらかい針葉が、二本か三本の小さな束になって生えます。",
+      "text_markdown": "マツは、長くてやわらかい針葉が、二本か三本の小さな束になって生えます。",
+      "tts": {
+        "text": "マツは、長くてやわらかい針葉が、二本か三本の小さな束になって生えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モミは、平たくてやわらかい針葉と、まっすぐ上を向く高い球果を持っています。",
+      "text_markdown": "モミは、平たくてやわらかい針葉と、まっすぐ上を向く高い球果を持っています。",
+      "tts": {
+        "text": "モミは、平たくてやわらかい針葉と、まっすぐ上を向く高い球果を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カラマツは、秋に針葉を落とす、北方林で唯一よく見られる木です。",
+      "text_markdown": "カラマツは、秋に針葉を落とす、北方林で唯一よく見られる木です。",
+      "tts": {
+        "text": "カラマツは、秋に針葉を落とす、北方林で唯一よく見られる木です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉を落とす前、カラマツはあざやかな黄金色に変わります。",
+      "text_markdown": "葉を落とす前、カラマツはあざやかな黄金色に変わります。",
+      "tts": {
+        "text": "葉を落とす前、カラマツはあざやかな黄金色に変わります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十月の大きなカラマツの森は、冷たい大地に広がる黄金の海のように見えます。",
+      "text_markdown": "十月の大きなカラマツの森は、冷たい大地に広がる黄金の海のように見えます。",
+      "tts": {
+        "text": "十月の大きなカラマツの森は、冷たい大地に広がる黄金の海のように見えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの森ではどこでも、木々はぎっしりと並んで立っています。",
+      "text_markdown": "これらの森ではどこでも、木々はぎっしりと並んで立っています。",
+      "tts": {
+        "text": "これらの森ではどこでも、木々はぎっしりと並んで立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "枝は上のほうでは茂っていて、太陽の届かない下のほうでは、ほとんどありません。",
+      "text_markdown": "枝は上のほうでは茂っていて、太陽の届かない下のほうでは、ほとんどありません。",
+      "tts": {
+        "text": "枝は上のほうでは茂っていて、太陽の届かない下のほうでは、ほとんどありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々の間の日かげは、深くて、しずかです。",
+      "text_markdown": "木々の間の日かげは、深くて、しずかです。",
+      "tts": {
+        "text": "木々の間の日かげは、深くて、しずかです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森の地面では、緑は葉ではなく、苔の色です。",
+      "text_markdown": "森の地面では、緑は葉ではなく、苔の色です。",
+      "tts": {
+        "text": "森の地面では、緑は葉ではなく、苔の色です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やわらかく厚い苔が、地面や、倒れた木、岩を覆っています。",
+      "text_markdown": "やわらかく厚い苔が、地面や、倒れた木、岩を覆っています。",
+      "tts": {
+        "text": "やわらかく厚い苔が、地面や、倒れた木、岩を覆っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏の終わりには、いろいろな形と色のキノコが、苔の間から顔を出します。",
+      "text_markdown": "夏の終わりには、いろいろな形と色のキノコが、苔の間から顔を出します。",
+      "tts": {
+        "text": "夏の終わりには、いろいろな形と色のキノコが、苔の間から顔を出します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "苔の間にある小さな低木には、小さな実がなります。",
+      "text_markdown": "苔の間にある小さな低木には、小さな実がなります。",
+      "tts": {
+        "text": "苔の間にある小さな低木には、小さな実がなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "甘い野生のブルーベリー、赤いクランベリー、小さく黒いクロウベリーが、ここにみんな実ります。",
+      "text_markdown": "甘い野生のブルーベリー、赤いクランベリー、小さく黒いクロウベリーが、ここにみんな実ります。",
+      "tts": {
+        "text": "甘い野生のブルーベリー、赤いクランベリー、小さく黒いクロウベリーが、ここにみんな実ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "The Trees",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短い夏の間、森の人々や動物たちは、それらを籠いっぱいに集めます。",
+      "text_markdown": "短い夏の間、森の人々や動物たちは、それらを籠いっぱいに集めます。",
+      "tts": {
+        "text": "短い夏の間、森の人々や動物たちは、それらを籠いっぱいに集めます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物たち",
+      "text_markdown": "動物たち"
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林は、寒さの中で生きる方法を知る、たくさんの動物たちのすみかです。",
+      "text_markdown": "北方林は、寒さの中で生きる方法を知る、たくさんの動物たちのすみかです。",
+      "tts": {
+        "text": "北方林は、寒さの中で生きる方法を知る、たくさんの動物たちのすみかです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そのほとんどは、分厚い毛皮や、皮膚の下の脂肪、あるいはその両方を持っています。",
+      "text_markdown": "そのほとんどは、分厚い毛皮や、皮膚の下の脂肪、あるいはその両方を持っています。",
+      "tts": {
+        "text": "そのほとんどは、分厚い毛皮や、皮膚の下の脂肪、あるいはその両方を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林で一番大きな動物は、ヘラジカです。",
+      "text_markdown": "北方林で一番大きな動物は、ヘラジカです。",
+      "tts": {
+        "text": "北方林で一番大きな動物は、ヘラジカです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘラジカは、長い顔と重たい体をした、とても背の高いシカです。",
+      "text_markdown": "ヘラジカは、長い顔と重たい体をした、とても背の高いシカです。",
+      "tts": {
+        "text": "ヘラジカは、長い顔と重たい体をした、とても背の高いシカです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大人のヘラジカは、いちばん背の高い人よりも大きく、頭には大きく広がった角を持っています。",
+      "text_markdown": "大人のヘラジカは、いちばん背の高い人よりも大きく、頭には大きく広がった角を持っています。",
+      "tts": {
+        "text": "大人のヘラジカは、いちばん背の高い人よりも大きく、頭には大きく広がった角を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には水草を、冬には小枝や木の皮を食べます。",
+      "text_markdown": "夏には水草を、冬には小枝や木の皮を食べます。",
+      "tts": {
+        "text": "夏には水草を、冬には小枝や木の皮を食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘラジカははずかしがり屋ですが、もし出会ったら、忘れられないでしょう。",
+      "text_markdown": "ヘラジカははずかしがり屋ですが、もし出会ったら、忘れられないでしょう。",
+      "tts": {
+        "text": "ヘラジカははずかしがり屋ですが、もし出会ったら、忘れられないでしょう。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヒグマは、北方林の多くの場所に住んでいます。",
+      "text_markdown": "ヒグマは、北方林の多くの場所に住んでいます。",
+      "tts": {
+        "text": "ヒグマは、北方林の多くの場所に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏になると、ヒグマは木の実や、魚、根っこ、小さな動物を食べます。",
+      "text_markdown": "夏になると、ヒグマは木の実や、魚、根っこ、小さな動物を食べます。",
+      "tts": {
+        "text": "夏になると、ヒグマは木の実や、魚、根っこ、小さな動物を食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、分厚い脂肪をたくわえるために、できるだけたくさん食べます。",
+      "text_markdown": "秋には、分厚い脂肪をたくわえるために、できるだけたくさん食べます。",
+      "tts": {
+        "text": "秋には、分厚い脂肪をたくわえるために、できるだけたくさん食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして冬の間ずっと、雪の下のすみかで眠るのです。",
+      "text_markdown": "そして冬の間ずっと、雪の下のすみかで眠るのです。",
+      "tts": {
+        "text": "そして冬の間ずっと、雪の下のすみかで眠るのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミは、群れと呼ばれる家族の集まりで、森のあちこちを狩ります。",
+      "text_markdown": "オオカミは、群れと呼ばれる家族の集まりで、森のあちこちを狩ります。",
+      "tts": {
+        "text": "オオカミは、群れと呼ばれる家族の集まりで、森のあちこちを狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミの群れは、一日に何キロもの距離を移動できます。",
+      "text_markdown": "オオカミの群れは、一日に何キロもの距離を移動できます。",
+      "tts": {
+        "text": "オオカミの群れは、一日に何キロもの距離を移動できます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミたちは、ヘラジカやシカ、もっと小さな動物を狩ります。",
+      "text_markdown": "オオカミたちは、ヘラジカやシカ、もっと小さな動物を狩ります。",
+      "tts": {
+        "text": "オオカミたちは、ヘラジカやシカ、もっと小さな動物を狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "深い雪の中では、一列に並んで歩き、それぞれのオオカミが前のオオカミの足跡をふみます。",
+      "text_markdown": "深い雪の中では、一列に並んで歩き、それぞれのオオカミが前のオオカミの足跡をふみます。",
+      "tts": {
+        "text": "深い雪の中では、一列に並んで歩き、それぞれのオオカミが前のオオカミの足跡をふみます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオヤマネコは、北方林にすむ野生のネコです。",
+      "text_markdown": "オオヤマネコは、北方林にすむ野生のネコです。",
+      "tts": {
+        "text": "オオヤマネコは、北方林にすむ野生のネコです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "分厚い灰色の毛皮と、短いしっぽを持ち、耳の先にはとがった毛のふさがあります。",
+      "text_markdown": "分厚い灰色の毛皮と、短いしっぽを持ち、耳の先にはとがった毛のふさがあります。",
+      "tts": {
+        "text": "分厚い灰色の毛皮と、短いしっぽを持ち、耳の先にはとがった毛のふさがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きくて毛深い足は、深い雪の上ではかんじきのように役立ちます。",
+      "text_markdown": "大きくて毛深い足は、深い雪の上ではかんじきのように役立ちます。",
+      "tts": {
+        "text": "大きくて毛深い足は、深い雪の上ではかんじきのように役立ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオヤマネコは、おもにカンジキウサギを狩ります。",
+      "text_markdown": "オオヤマネコは、おもにカンジキウサギを狩ります。",
+      "tts": {
+        "text": "オオヤマネコは、おもにカンジキウサギを狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンジキウサギは、地面の色に合わせて、夏には茶色に、冬には白くなります。",
+      "text_markdown": "カンジキウサギは、地面の色に合わせて、夏には茶色に、冬には白くなります。",
+      "tts": {
+        "text": "カンジキウサギは、地面の色に合わせて、夏には茶色に、冬には白くなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ビーバーは、森の川や湖に住んでいます。",
+      "text_markdown": "ビーバーは、森の川や湖に住んでいます。",
+      "tts": {
+        "text": "ビーバーは、森の川や湖に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ビーバーは、強い歯で木を切り倒し、木と泥でダムや巣を作ります。",
+      "text_markdown": "ビーバーは、強い歯で木を切り倒し、木と泥でダムや巣を作ります。",
+      "tts": {
+        "text": "ビーバーは、強い歯で木を切り倒し、木と泥でダムや巣を作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ビーバーが作る池は、森の一帯を、生き物にあふれたしずかな水辺に変えてしまいます。",
+      "text_markdown": "ビーバーが作る池は、森の一帯を、生き物にあふれたしずかな水辺に変えてしまいます。",
+      "tts": {
+        "text": "ビーバーが作る池は、森の一帯を、生き物にあふれたしずかな水辺に変えてしまいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木の高いところでは、アカリスがにぎやかに鳴き、冬にそなえてマツぼっくりを集めます。",
+      "text_markdown": "木の高いところでは、アカリスがにぎやかに鳴き、冬にそなえてマツぼっくりを集めます。",
+      "tts": {
+        "text": "木の高いところでは、アカリスがにぎやかに鳴き、冬にそなえてマツぼっくりを集めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クズリや、テンや、ミンクが、しずかにやぶの中をすり抜けていきます。",
+      "text_markdown": "クズリや、テンや、ミンクが、しずかにやぶの中をすり抜けていきます。",
+      "tts": {
+        "text": "クズリや、テンや、ミンクが、しずかにやぶの中をすり抜けていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "いろいろな種類のフクロウが、夜に狩りをします。",
+      "text_markdown": "いろいろな種類のフクロウが、夜に狩りをします。",
+      "tts": {
+        "text": "いろいろな種類のフクロウが、夜に狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カラフトフクロウは、世界で最も背の高いフクロウの一つで、北方林にすんでいます。",
+      "text_markdown": "カラフトフクロウは、世界で最も背の高いフクロウの一つで、北方林にすんでいます。",
+      "tts": {
+        "text": "カラフトフクロウは、世界で最も背の高いフクロウの一つで、北方林にすんでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ワタリガラスたちが木々の間を飛び、いろいろな声で呼び合います。",
+      "text_markdown": "ワタリガラスたちが木々の間を飛び、いろいろな声で呼び合います。",
+      "tts": {
+        "text": "ワタリガラスたちが木々の間を飛び、いろいろな声で呼び合います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短い夏には、たくさんの蚊と小さなハエが、空中をうめつくします。",
+      "text_markdown": "短い夏には、たくさんの蚊と小さなハエが、空中をうめつくします。",
+      "tts": {
+        "text": "短い夏には、たくさんの蚊と小さなハエが、空中をうめつくします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほんの数週間、森は虫の羽音と、小鳥のさえずりと、湖で魚がはねる音でにぎわいます。",
+      "text_markdown": "ほんの数週間、森は虫の羽音と、小鳥のさえずりと、湖で魚がはねる音でにぎわいます。",
+      "tts": {
+        "text": "ほんの数週間、森は虫の羽音と、小鳥のさえずりと、湖で魚がはねる音でにぎわいます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林は、地球上で最も人の少ない場所の一つです。",
+      "text_markdown": "北方林は、地球上で最も人の少ない場所の一つです。",
+      "tts": {
+        "text": "北方林は、地球上で最も人の少ない場所の一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い冬と薄い土のせいで、ここで食べ物を育てるのはむずかしいのです。",
+      "text_markdown": "長い冬と薄い土のせいで、ここで食べ物を育てるのはむずかしいのです。",
+      "tts": {
+        "text": "長い冬と薄い土のせいで、ここで食べ物を育てるのはむずかしいのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それでも人々は、この大きな森に何千年もの間、住んできました。",
+      "text_markdown": "それでも人々は、この大きな森に何千年もの間、住んできました。",
+      "tts": {
+        "text": "それでも人々は、この大きな森に何千年もの間、住んできました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北ヨーロッパでは、サーミの人々が、北方林と、そのさらに北のツンドラに、とても長い間住んできました。",
+      "text_markdown": "北ヨーロッパでは、サーミの人々が、北方林と、そのさらに北のツンドラに、とても長い間住んできました。",
+      "tts": {
+        "text": "北ヨーロッパでは、サーミの人々が、北方林と、そのさらに北のツンドラに、とても長い間住んできました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サーミの人々は、ノルウェー、スウェーデン、フィンランド、ロシアの寒い土地で、トナカイの群れを育てています。",
+      "text_markdown": "サーミの人々は、ノルウェー、スウェーデン、フィンランド、ロシアの寒い土地で、トナカイの群れを育てています。",
+      "tts": {
+        "text": "サーミの人々は、ノルウェー、スウェーデン、フィンランド、ロシアの寒い土地で、トナカイの群れを育てています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トナカイは雪の中でも食べ物を見つけることができ、人々に肉や、乳、毛皮を与えてくれます。",
+      "text_markdown": "トナカイは雪の中でも食べ物を見つけることができ、人々に肉や、乳、毛皮を与えてくれます。",
+      "tts": {
+        "text": "トナカイは雪の中でも食べ物を見つけることができ、人々に肉や、乳、毛皮を与えてくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トナカイは、冬の雪の上でそりも引いてくれます。",
+      "text_markdown": "トナカイは、冬の雪の上でそりも引いてくれます。",
+      "tts": {
+        "text": "トナカイは、冬の雪の上でそりも引いてくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロシア北部のシベリアでは、たくさんの民族の人々が、北方林を自分たちの家にしてきました。",
+      "text_markdown": "ロシア北部のシベリアでは、たくさんの民族の人々が、北方林を自分たちの家にしてきました。",
+      "tts": {
+        "text": "ロシア北部のシベリアでは、たくさんの民族の人々が、北方林を自分たちの家にしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エヴェンキや、ハンティ、ネネツなどの人々が、何世代にもわたって、ここで狩りや漁をしたり、トナカイを育てたりしてきました。",
+      "text_markdown": "エヴェンキや、ハンティ、ネネツなどの人々が、何世代にもわたって、ここで狩りや漁をしたり、トナカイを育てたりしてきました。",
+      "tts": {
+        "text": "エヴェンキや、ハンティ、ネネツなどの人々が、何世代にもわたって、ここで狩りや漁をしたり、トナカイを育てたりしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カナダとアラスカでは、多くの先住民の人々や、デネの人々が、何千年もの間、北方林で暮らしてきました。",
+      "text_markdown": "カナダとアラスカでは、多くの先住民の人々や、デネの人々が、何千年もの間、北方林で暮らしてきました。",
+      "tts": {
+        "text": "カナダとアラスカでは、多くの先住民の人々や、デネの人々が、何千年もの間、北方林で暮らしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘラジカやカリブーを狩り、冷たい川で魚をとり、短い夏に木の実を集めてきました。",
+      "text_markdown": "ヘラジカやカリブーを狩り、冷たい川で魚をとり、短い夏に木の実を集めてきました。",
+      "tts": {
+        "text": "ヘラジカやカリブーを狩り、冷たい川で魚をとり、短い夏に木の実を集めてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの土地のどこでも、人々は動物の皮と毛皮から、あたたかい冬の服を作りました。",
+      "text_markdown": "これらの土地のどこでも、人々は動物の皮と毛皮から、あたたかい冬の服を作りました。",
+      "tts": {
+        "text": "これらの土地のどこでも、人々は動物の皮と毛皮から、あたたかい冬の服を作りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木と、樹皮と、皮で、寒さを防ぐ小さな入り口の家を建てました。",
+      "text_markdown": "木と、樹皮と、皮で、寒さを防ぐ小さな入り口の家を建てました。",
+      "tts": {
+        "text": "木と、樹皮と、皮で、寒さを防ぐ小さな入り口の家を建てました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "かんじきや、長くて細いスキー、そして後には犬ぞりで旅をすることを覚えました。",
+      "text_markdown": "かんじきや、長くて細いスキー、そして後には犬ぞりで旅をすることを覚えました。",
+      "tts": {
+        "text": "かんじきや、長くて細いスキー、そして後には犬ぞりで旅をすることを覚えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、カヌーや、長い白樺の樹皮の舟、あるいはトナカイで旅をしました。",
+      "text_markdown": "夏には、カヌーや、長い白樺の樹皮の舟、あるいはトナカイで旅をしました。",
+      "tts": {
+        "text": "夏には、カヌーや、長い白樺の樹皮の舟、あるいはトナカイで旅をしました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この人々は、森のすべての木と、すべての動物の名前を覚えました。",
+      "text_markdown": "この人々は、森のすべての木と、すべての動物の名前を覚えました。",
+      "tts": {
+        "text": "この人々は、森のすべての木と、すべての動物の名前を覚えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どこに木の実の茂みがあり、どこに魚がいちばん多く集まるかを知っていました。",
+      "text_markdown": "どこに木の実の茂みがあり、どこに魚がいちばん多く集まるかを知っていました。",
+      "tts": {
+        "text": "どこに木の実の茂みがあり、どこに魚がいちばん多く集まるかを知っていました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どのキノコが食べられて、どのキノコが食べられないかも覚えました。",
+      "text_markdown": "どのキノコが食べられて、どのキノコが食べられないかも覚えました。",
+      "tts": {
+        "text": "どのキノコが食べられて、どのキノコが食べられないかも覚えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雪の上のヘラジカやクマの足跡を読みとることも覚えました。",
+      "text_markdown": "雪の上のヘラジカやクマの足跡を読みとることも覚えました。",
+      "tts": {
+        "text": "雪の上のヘラジカやクマの足跡を読みとることも覚えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もっと最近になって、別の人々がやってきて、木を切ったり、鉱石を掘ったり、川沿いの小さな町に住んだりするようになりました。",
+      "text_markdown": "もっと最近になって、別の人々がやってきて、木を切ったり、鉱石を掘ったり、川沿いの小さな町に住んだりするようになりました。",
+      "tts": {
+        "text": "もっと最近になって、別の人々がやってきて、木を切ったり、鉱石を掘ったり、川沿いの小さな町に住んだりするようになりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それでも、その長い歴史のほとんどで、北方林はしずかな場所でした。",
+      "text_markdown": "それでも、その長い歴史のほとんどで、北方林はしずかな場所でした。",
+      "tts": {
+        "text": "それでも、その長い歴史のほとんどで、北方林はしずかな場所でした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さな集まりの人々が、木々や、動物たちや、寒さとともに、土地を分け合う場所だったのです。",
+      "text_markdown": "小さな集まりの人々が、木々や、動物たちや、寒さとともに、土地を分け合う場所だったのです。",
+      "tts": {
+        "text": "小さな集まりの人々が、木々や、動物たちや、寒さとともに、土地を分け合う場所だったのです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今のバイオーム",
+      "text_markdown": "今のバイオーム"
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林はとても広いですが、見た目ほど手つかずではありません。",
+      "text_markdown": "北方林はとても広いですが、見た目ほど手つかずではありません。",
+      "tts": {
+        "text": "北方林はとても広いですが、見た目ほど手つかずではありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "百年以上もの間、人々はこの森からたくさんの木を切り出してきました。",
+      "text_markdown": "百年以上もの間、人々はこの森からたくさんの木を切り出してきました。",
+      "tts": {
+        "text": "百年以上もの間、人々はこの森からたくさんの木を切り出してきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "背が高くまっすぐな木々は、よい材木と、よい紙になります。",
+      "text_markdown": "背が高くまっすぐな木々は、よい材木と、よい紙になります。",
+      "tts": {
+        "text": "背が高くまっすぐな木々は、よい材木と、よい紙になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林の多くの場所では、ひと区画の木々がまるごと切り倒され、ゆっくりと育ち直してきました。",
+      "text_markdown": "北方林の多くの場所では、ひと区画の木々がまるごと切り倒され、ゆっくりと育ち直してきました。",
+      "tts": {
+        "text": "北方林の多くの場所では、ひと区画の木々がまるごと切り倒され、ゆっくりと育ち直してきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方林はまた、木々の中や、その下の土と湿地の中に、ものすごい量の炭素をたくわえています。",
+      "text_markdown": "北方林はまた、木々の中や、その下の土と湿地の中に、ものすごい量の炭素をたくわえています。",
+      "tts": {
+        "text": "北方林はまた、木々の中や、その下の土と湿地の中に、ものすごい量の炭素をたくわえています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "健やかな北方林の土は、その炭素を空気からしっかりとしまっておきます。",
+      "text_markdown": "健やかな北方林の土は、その炭素を空気からしっかりとしまっておきます。",
+      "tts": {
+        "text": "健やかな北方林の土は、その炭素を空気からしっかりとしまっておきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々と土がそのまま残されていれば、森は地球全体の空気のバランスを保つ手助けをしてくれます。",
+      "text_markdown": "木々と土がそのまま残されていれば、森は地球全体の空気のバランスを保つ手助けをしてくれます。",
+      "tts": {
+        "text": "木々と土がそのまま残されていれば、森は地球全体の空気のバランスを保つ手助けをしてくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "近年、北方林はだんだん暖かくなってきました。",
+      "text_markdown": "近年、北方林はだんだん暖かくなってきました。",
+      "tts": {
+        "text": "近年、北方林はだんだん暖かくなってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長くてあたたかい夏が、北の人々が覚えているよりも大きな森林火災を引き起こしています。",
+      "text_markdown": "長くてあたたかい夏が、北の人々が覚えているよりも大きな森林火災を引き起こしています。",
+      "tts": {
+        "text": "長くてあたたかい夏が、北の人々が覚えているよりも大きな森林火災を引き起こしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そうした火事は、いまでは何週間も続き、何百万本もの木を焼くこともあります。",
+      "text_markdown": "そうした火事は、いまでは何週間も続き、何百万本もの木を焼くこともあります。",
+      "tts": {
+        "text": "そうした火事は、いまでは何週間も続き、何百万本もの木を焼くこともあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ずっと北の方では、あたたかくなった夏が、永久凍土をゆるめ始めています。",
+      "text_markdown": "ずっと北の方では、あたたかくなった夏が、永久凍土をゆるめ始めています。",
+      "tts": {
+        "text": "ずっと北の方では、あたたかくなった夏が、永久凍土をゆるめ始めています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日、たくさんの人々や団体が、北方林を守るために働いています。",
+      "text_markdown": "今日、たくさんの人々や団体が、北方林を守るために働いています。",
+      "tts": {
+        "text": "今日、たくさんの人々や団体が、北方林を守るために働いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森が昔と同じように育つことができる、大きな公園を作っています。",
+      "text_markdown": "森が昔と同じように育つことができる、大きな公園を作っています。",
+      "tts": {
+        "text": "森が昔と同じように育つことができる、大きな公園を作っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何世代にもわたってそこで暮らしてきた人々が、自分たちの土地を守ることを助けています。",
+      "text_markdown": "何世代にもわたってそこで暮らしてきた人々が、自分たちの土地を守ることを助けています。",
+      "tts": {
+        "text": "何世代にもわたってそこで暮らしてきた人々が、自分たちの土地を守ることを助けています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森がどのように生きていて、どうすればまるごと守れるのかを知るために、研究もしています。",
+      "text_markdown": "森がどのように生きていて、どうすればまるごと守れるのかを知るために、研究もしています。",
+      "tts": {
+        "text": "森がどのように生きていて、どうすればまるごと守れるのかを知るために、研究もしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "健やかな北方林は、世界を涼しく保つ手助けをする、大きな緑の毛布です。",
+      "text_markdown": "健やかな北方林は、世界を涼しく保つ手助けをする、大きな緑の毛布です。",
+      "tts": {
+        "text": "健やかな北方林は、世界を涼しく保つ手助けをする、大きな緑の毛布です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わたしたちが大切にする値打ちのある森です。",
+      "text_markdown": "わたしたちが大切にする値打ちのある森です。",
+      "tts": {
+        "text": "わたしたちが大切にする値打ちのある森です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "おわりに",
+      "text_markdown": "おわりに"
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが北方林です。",
+      "text_markdown": "それが北方林です。",
+      "tts": {
+        "text": "それが北方林です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "常緑樹と、湖と、しずかな雪の広い緑のベルトが、世界のてっぺんをほとんど一周しているのです。",
+      "text_markdown": "常緑樹と、湖と、しずかな雪の広い緑のベルトが、世界のてっぺんをほとんど一周しているのです。",
+      "tts": {
+        "text": "常緑樹と、湖と、しずかな雪の広い緑のベルトが、世界のてっぺんをほとんど一周しているのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしいつかその森の中に立つことがあったら、一分間だけじっとしてみてください。",
+      "text_markdown": "もしいつかその森の中に立つことがあったら、一分間だけじっとしてみてください。",
+      "tts": {
+        "text": "もしいつかその森の中に立つことがあったら、一分間だけじっとしてみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い針葉の中をふく風の音を聞いてみてください。",
+      "text_markdown": "高い針葉の中をふく風の音を聞いてみてください。",
+      "tts": {
+        "text": "高い針葉の中をふく風の音を聞いてみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-163",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々の間を通って、苔の上にさしこむ太陽を見つめてください。",
+      "text_markdown": "木々の間を通って、苔の上にさしこむ太陽を見つめてください。",
+      "tts": {
+        "text": "木々の間を通って、苔の上にさしこむ太陽を見つめてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch09-164",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冷たい松のかおりをかいでみてください。",
+      "text_markdown": "冷たい松のかおりをかいでみてください。",
+      "tts": {
+        "text": "冷たい松のかおりをかいでみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-165",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ゆっくりと、辛抱強く脈打つバイオームの心臓を、あなたの周りに感じることができるでしょう。",
+      "text_markdown": "ゆっくりと、辛抱強く脈打つバイオームの心臓を、あなたの周りに感じることができるでしょう。",
+      "tts": {
+        "text": "ゆっくりと、辛抱強く脈打つバイオームの心臓を、あなたの周りに感じることができるでしょう。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

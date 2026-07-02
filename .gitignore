@@ -47,13 +47,15 @@ voices/samples/
 # rehydrate via corpan/infra/hydrate-voices.sh
 voices/data/samples/
 
-# Derived pack data — managed by ttsctl push/pull (S3 pack-store)
-**/pack/segments_*.json
+# Derived pack data — managed by ttsctl push/pull (S3 pack-store).
+# NOTE (2026-07-02): `segments_<lang>.json` is NOT derived — it is the
+# authored translation, treated as source code, versioned in git. Only
+# the truly regenerable outputs (alignment, audio_manifest, pipeline_state)
+# stay ignored.
 **/pack/alignment_*.json
 **/pack/audio_manifest_*.json
 **/pack/pipeline_state_*.json
 **/pack/.packstore.json
-**/packs/*/segments_*.json
 **/packs/*/alignment_*.json
 **/packs/*/audio_manifest_*.json
 **/packs/*/pipeline_state_*.json

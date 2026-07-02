@@ -926,6 +926,32 @@ BOOKS: list[BookSpec] = [
             "rendered animals, no text. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_boreal_forest",
+        title="The Boreal Forest",
+        description=(
+            "A short, plain-spoken tour of the boreal forest — the "
+            "great green belt of evergreen trees, lakes, and quiet "
+            "snow that runs almost all the way around the top of the "
+            "world. The taiga: long cold winters, brief bright "
+            "summers, moose and brown bear and lynx, the Sami and "
+            "Evenki and Dene who have lived among the trees for "
+            "thousands of years. Book seven of the Biomes of the "
+            "World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a vast boreal forest at dawn "
+            "in late winter. Tall pointed spruce and pine trees stand "
+            "close together, their dark green needles dusted with "
+            "snow. A still frozen lake reflects the pale sky between "
+            "the trees, and soft cold mist drifts low along the "
+            "ground. A few shafts of pale gold sunlight catch on the "
+            "snow. Painterly digital art, restrained palette of deep "
+            "evergreen, soft blue-grey, pale gold, and snow white, "
+            "contemplative and quiet, no people, no clearly rendered "
+            "animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 

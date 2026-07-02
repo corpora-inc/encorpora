@@ -1,0 +1,2447 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_boreal_forest",
+  "language": "ko",
+  "total_segments": 165,
+  "segments": [
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 1,
+      "heading_level": 1,
+      "id": "ch01-001",
+      "paragraph_id": "p1",
+      "text": "북방림",
+      "text_markdown": "북방림",
+      "title": "북방림"
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 2,
+      "heading_level": 1,
+      "id": "ch02-002",
+      "paragraph_id": "p2",
+      "text": "이 생물군계가 자라는 곳",
+      "text_markdown": "이 생물군계가 자라는 곳",
+      "title": "이 생물군계가 자라는 곳"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-003",
+      "paragraph_id": "p3",
+      "text": "북방림에 오신 것을 환영합니다.",
+      "text_markdown": "북방림에 오신 것을 환영합니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "북방림에 오신 것을 환영합니다.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-004",
+      "paragraph_id": "p4",
+      "text": "이곳은 세계의 위대한 생물군계 중 하나입니다.",
+      "text_markdown": "이곳은 세계의 위대한 생물군계 중 하나입니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이곳은 세계의 위대한 생물군계 중 하나입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-005",
+      "paragraph_id": "p5",
+      "text": "생물군계는 고유한 날씨, 식물, 동물을 가진 지구의 한 부분입니다.",
+      "text_markdown": "생물군계는 고유한 날씨, 식물, 동물을 가진 지구의 한 부분입니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "생물군계는 고유한 날씨, 식물, 동물을 가진 지구의 한 부분입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-006",
+      "paragraph_id": "p6",
+      "text": "북방림은 지구의 북쪽을 가로지르는 넓은 상록수림의 녹색 지대입니다.",
+      "text_markdown": "북방림은 지구의 북쪽을 가로지르는 넓은 상록수림의 녹색 지대입니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "북방림은 지구의 북쪽을 가로지르는 넓은 상록수림의 녹색 지대입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-007",
+      "paragraph_id": "p7",
+      "text": "이곳은 또한 타이가라고도 불립니다.",
+      "text_markdown": "이곳은 또한 타이가라고도 불립니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이곳은 또한 타이가라고도 불립니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-008",
+      "paragraph_id": "p8",
+      "text": "북방림은 지구상에서 가장 큰 육상 생물군계입니다.",
+      "text_markdown": "북방림은 지구상에서 가장 큰 육상 생물군계입니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "북방림은 지구상에서 가장 큰 육상 생물군계입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-009",
+      "paragraph_id": "p9",
+      "text": "세상 위로 높이 날아간다면, 거의 지구 전체를 둘러싸고 있는 이 짙은 녹색 지대를 볼 수 있을 것입니다.",
+      "text_markdown": "세상 위로 높이 날아간다면, 거의 지구 전체를 둘러싸고 있는 이 짙은 녹색 지대를 볼 수 있을 것입니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "세상 위로 높이 날아간다면, 거의 지구 전체를 둘러싸고 있는 이 짙은 녹색 지대를 볼 수 있을 것입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-010",
+      "paragraph_id": "p10",
+      "text": "이곳은 북미의 캐나다와 알래스카 대부분 지역에 걸쳐 자랍니다.",
+      "text_markdown": "이곳은 북미의 캐나다와 알래스카 대부분 지역에 걸쳐 자랍니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이곳은 북미의 캐나다와 알래스카 대부분 지역에 걸쳐 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-011",
+      "paragraph_id": "p11",
+      "text": "이곳은 북유럽의 노르웨이, 스웨덴, 핀란드에 걸쳐 자랍니다.",
+      "text_markdown": "이곳은 북유럽의 노르웨이, 스웨덴, 핀란드에 걸쳐 자랍니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이곳은 북유럽의 노르웨이, 스웨덴, 핀란드에 걸쳐 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-012",
+      "paragraph_id": "p12",
+      "text": "이곳은 유럽에서 태평양까지 러시아 전역에 걸쳐 자랍니다.",
+      "text_markdown": "이곳은 유럽에서 태평양까지 러시아 전역에 걸쳐 자랍니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이곳은 유럽에서 태평양까지 러시아 전역에 걸쳐 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-013",
+      "paragraph_id": "p13",
+      "text": "이 모든 지역에서 숲은 거의 똑같은 모습을 하고 있습니다.",
+      "text_markdown": "이 모든 지역에서 숲은 거의 똑같은 모습을 하고 있습니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이 모든 지역에서 숲은 거의 똑같은 모습을 하고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-014",
+      "paragraph_id": "p14",
+      "text": "키 크고 뾰족한 나무들이 빽빽하게 서 있고, 땅에는 부드러운 이끼와 작은 관목들이 있습니다.",
+      "text_markdown": "키 크고 뾰족한 나무들이 빽빽하게 서 있고, 땅에는 부드러운 이끼와 작은 관목들이 있습니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "키 크고 뾰족한 나무들이 빽빽하게 서 있고, 땅에는 부드러운 이끼와 작은 관목들이 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-015",
+      "paragraph_id": "p15",
+      "text": "나무들 사이에는 많은 호수, 강, 습지가 있습니다.",
+      "text_markdown": "나무들 사이에는 많은 호수, 강, 습지가 있습니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "나무들 사이에는 많은 호수, 강, 습지가 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-016",
+      "paragraph_id": "p16",
+      "text": "북방림은 툰드라 바로 남쪽, 온대림 바로 북쪽에 위치합니다.",
+      "text_markdown": "북방림은 툰드라 바로 남쪽, 온대림 바로 북쪽에 위치합니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "북방림은 툰드라 바로 남쪽, 온대림 바로 북쪽에 위치합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-017",
+      "paragraph_id": "p17",
+      "text": "이곳은 따뜻한 곳이 아닙니다.",
+      "text_markdown": "이곳은 따뜻한 곳이 아닙니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이곳은 따뜻한 곳이 아닙니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-018",
+      "paragraph_id": "p18",
+      "text": "길고 매우 추운 겨울이 이곳의 특징이며, 여러 달 동안 땅에 깊은 눈이 쌓여 있습니다.",
+      "text_markdown": "길고 매우 추운 겨울이 이곳의 특징이며, 여러 달 동안 땅에 깊은 눈이 쌓여 있습니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "길고 매우 추운 겨울이 이곳의 특징이며, 여러 달 동안 땅에 깊은 눈이 쌓여 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-019",
+      "paragraph_id": "p19",
+      "text": "여름은 짧고 시원하며, 낮은 길고 밤은 밝습니다.",
+      "text_markdown": "여름은 짧고 시원하며, 낮은 길고 밤은 밝습니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "여름은 짧고 시원하며, 낮은 길고 밤은 밝습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-020",
+      "paragraph_id": "p20",
+      "text": "북방림에는 사람이 거의 살지 않지만, 생명으로 가득합니다.",
+      "text_markdown": "북방림에는 사람이 거의 살지 않지만, 생명으로 가득합니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "북방림에는 사람이 거의 살지 않지만, 생명으로 가득합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-021",
+      "paragraph_id": "p21",
+      "text": "이곳은 곰, 늑대, 무스, 올빼미 등 많은 동물의 서식지입니다.",
+      "text_markdown": "이곳은 곰, 늑대, 무스, 올빼미 등 많은 동물의 서식지입니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "이곳은 곰, 늑대, 무스, 올빼미 등 많은 동물의 서식지입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-022",
+      "paragraph_id": "p22",
+      "text": "그리고 지구상의 어떤 숲보다 더 넓은 땅에 조용히 자라고 있습니다.",
+      "text_markdown": "그리고 지구상의 어떤 숲보다 더 넓은 땅에 조용히 자라고 있습니다.",
+      "title": "이 생물군계가 자라는 곳",
+      "tts": {
+        "text": "그리고 지구상의 어떤 숲보다 더 넓은 땅에 조용히 자라고 있습니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 3,
+      "heading_level": 1,
+      "id": "ch03-023",
+      "paragraph_id": "p23",
+      "text": "날씨",
+      "text_markdown": "날씨",
+      "title": "날씨"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-024",
+      "paragraph_id": "p24",
+      "text": "북방림은 일년 중 대부분이 춥습니다.",
+      "text_markdown": "북방림은 일년 중 대부분이 춥습니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "북방림은 일년 중 대부분이 춥습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-025",
+      "paragraph_id": "p25",
+      "text": "이곳의 겨울은 길고 어둡습니다.",
+      "text_markdown": "이곳의 겨울은 길고 어둡습니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "이곳의 겨울은 길고 어둡습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-026",
+      "paragraph_id": "p26",
+      "text": "숲의 북부 지역에서는 겨울이 일곱 또는 여덟 개월 동안 지속될 수 있습니다.",
+      "text_markdown": "숲의 북부 지역에서는 겨울이 7~8개월 동안 지속될 수 있습니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "숲의 북부 지역에서는 겨울이 일곱 또는 여덟 개월 동안 지속될 수 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-027",
+      "paragraph_id": "p27",
+      "text": "기온은 섭씨 또는 화씨로 영하 사십 도까지 떨어질 수 있습니다.",
+      "text_markdown": "기온은 섭씨 또는 화씨로 영하 40도까지 떨어질 수 있습니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "기온은 섭씨 또는 화씨로 영하 사십 도까지 떨어질 수 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-028",
+      "paragraph_id": "p28",
+      "text": "그곳은 나무가 여전히 자랄 수 있는 지구상에서 가장 추운 곳 중 하나입니다.",
+      "text_markdown": "그곳은 나무가 여전히 자랄 수 있는 지구상에서 가장 추운 곳 중 하나입니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "그곳은 나무가 여전히 자랄 수 있는 지구상에서 가장 추운 곳 중 하나입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-029",
+      "paragraph_id": "p29",
+      "text": "가을부터 늦봄까지 땅은 폭설로 덮여 있습니다.",
+      "text_markdown": "가을부터 늦봄까지 땅은 폭설로 덮여 있습니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "가을부터 늦봄까지 땅은 폭설로 덮여 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-030",
+      "paragraph_id": "p30",
+      "text": "호수와 강은 얼어붙는데, 때로는 사람 키만큼 두꺼운 얼음이 얼기도 합니다.",
+      "text_markdown": "호수와 강은 얼어붙는데, 때로는 사람 키만큼 두꺼운 얼음이 얼기도 합니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "호수와 강은 얼어붙는데, 때로는 사람 키만큼 두꺼운 얼음이 얼기도 합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-031",
+      "paragraph_id": "p31",
+      "text": "깊은 북쪽에서는 가장 짧은 겨울날에도 해가 나무 위로 거의 뜨지 않습니다.",
+      "text_markdown": "깊은 북쪽에서는 가장 짧은 겨울날에도 해가 나무 위로 거의 뜨지 않습니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "깊은 북쪽에서는 가장 짧은 겨울날에도 해가 나무 위로 거의 뜨지 않습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-032",
+      "paragraph_id": "p32",
+      "text": "그러고 나면 봄 해빙기가 찾아옵니다.",
+      "text_markdown": "그러고 나면 봄 해빙기가 찾아옵니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "그러고 나면 봄 해빙기가 찾아옵니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-033",
+      "paragraph_id": "p33",
+      "text": "눈은 물이 되고, 강물은 높고 차갑게 흐릅니다.",
+      "text_markdown": "눈은 물이 되고, 강물은 높고 차갑게 흐릅니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "눈은 물이 되고, 강물은 높고 차갑게 흐릅니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-034",
+      "paragraph_id": "p34",
+      "text": "땅은 여러 주 동안 부드럽고 축축한 상태를 유지합니다.",
+      "text_markdown": "땅은 여러 주 동안 부드럽고 축축한 상태를 유지합니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "땅은 여러 주 동안 부드럽고 축축한 상태를 유지합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-035",
+      "paragraph_id": "p35",
+      "text": "여름은 짧지만 생명으로 가득합니다.",
+      "text_markdown": "여름은 짧지만 생명으로 가득합니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "여름은 짧지만 생명으로 가득합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-036",
+      "paragraph_id": "p36",
+      "text": "유월과 칠월에는 해가 밤의 대부분 동안 하늘에 머무릅니다.",
+      "text_markdown": "6월과 7월에는 해가 밤의 대부분 동안 하늘에 머무릅니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "유월과 칠월에는 해가 밤의 대부분 동안 하늘에 머무릅니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-037",
+      "paragraph_id": "p37",
+      "text": "숲은 따뜻한 빛을 최대한 활용하기 위해 빠르게 자랍니다.",
+      "text_markdown": "숲은 따뜻한 빛을 최대한 활용하기 위해 빠르게 자랍니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "숲은 따뜻한 빛을 최대한 활용하기 위해 빠르게 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-038",
+      "paragraph_id": "p38",
+      "text": "여름낮은 따뜻할 수 있지만, 밤은 대개 시원합니다.",
+      "text_markdown": "여름낮은 따뜻할 수 있지만, 밤은 대개 시원합니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "여름낮은 따뜻할 수 있지만, 밤은 대개 시원합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-039",
+      "paragraph_id": "p39",
+      "text": "팔월이 되면 추위가 다시 스며들기 시작합니다.",
+      "text_markdown": "8월이 되면 추위가 다시 스며들기 시작합니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "팔월이 되면 추위가 다시 스며들기 시작합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-040",
+      "paragraph_id": "p40",
+      "text": "가을은 짧고 황금빛입니다.",
+      "text_markdown": "가을은 짧고 황금빛입니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "가을은 짧고 황금빛입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-041",
+      "paragraph_id": "p41",
+      "text": "그러고 나면 눈이 다시 내리고, 긴 겨울이 다시 시작됩니다.",
+      "text_markdown": "그러고 나면 눈이 다시 내리고, 긴 겨울이 다시 시작됩니다.",
+      "title": "날씨",
+      "tts": {
+        "text": "그러고 나면 눈이 다시 내리고, 긴 겨울이 다시 시작됩니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 4,
+      "heading_level": 1,
+      "id": "ch04-042",
+      "paragraph_id": "p42",
+      "text": "땅과 물",
+      "text_markdown": "땅과 물",
+      "title": "땅과 물"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-043",
+      "paragraph_id": "p43",
+      "text": "북방림은 오래되고 고요한 땅 위에 자랍니다.",
+      "text_markdown": "북방림은 오래되고 고요한 땅 위에 자랍니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "북방림은 오래되고 고요한 땅 위에 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-044",
+      "paragraph_id": "p44",
+      "text": "오래전, 거대한 얼음층이 이 나라 전체를 덮었습니다.",
+      "text_markdown": "오래전, 거대한 얼음층이 이 나라 전체를 덮었습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "오래전, 거대한 얼음층이 이 나라 전체를 덮었습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-045",
+      "paragraph_id": "p45",
+      "text": "그 얼음은 오늘날 우리가 아는 가장 높은 산보다 두꺼웠습니다.",
+      "text_markdown": "그 얼음은 오늘날 우리가 아는 가장 높은 산보다 두꺼웠습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "그 얼음은 오늘날 우리가 아는 가장 높은 산보다 두꺼웠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-046",
+      "paragraph_id": "p46",
+      "text": "수천 년 전 얼음이 녹았을 때, 땅은 평평하고 긁히고 구멍투성이로 남겨졌습니다.",
+      "text_markdown": "수천 년 전 얼음이 녹았을 때, 땅은 평평하고 긁히고 구멍투성이로 남겨졌습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "수천 년 전 얼음이 녹았을 때, 땅은 평평하고 긁히고 구멍투성이로 남겨졌습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-047",
+      "paragraph_id": "p47",
+      "text": "그 구멍들은 물로 채워졌습니다.",
+      "text_markdown": "그 구멍들은 물로 채워졌습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "그 구멍들은 물로 채워졌습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-048",
+      "paragraph_id": "p48",
+      "text": "이것이 북방림에 그렇게 많은 호수가 있는 이유입니다.",
+      "text_markdown": "이것이 북방림에 그렇게 많은 호수가 있는 이유입니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "이것이 북방림에 그렇게 많은 호수가 있는 이유입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-049",
+      "paragraph_id": "p49",
+      "text": "캐나다만 해도 전 세계의 다른 모든 나라를 합친 것보다 더 많은 호수를 가지고 있습니다.",
+      "text_markdown": "캐나다만 해도 전 세계의 다른 모든 나라를 합친 것보다 더 많은 호수를 가지고 있습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "캐나다만 해도 전 세계의 다른 모든 나라를 합친 것보다 더 많은 호수를 가지고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-050",
+      "paragraph_id": "p50",
+      "text": "그들 중 많은 수가 북방림 안에 자리 잡고 있으며, 나무들 사이에서 어두운 거울처럼 빛납니다.",
+      "text_markdown": "그들 중 많은 수가 북방림 안에 자리 잡고 있으며, 나무들 사이에서 어두운 거울처럼 빛납니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "그들 중 많은 수가 북방림 안에 자리 잡고 있으며, 나무들 사이에서 어두운 거울처럼 빛납니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-051",
+      "paragraph_id": "p51",
+      "text": "넓고 느린 강들이 숲을 가로질러 녹은 물을 거대한 북쪽 바다로 운반합니다.",
+      "text_markdown": "넓고 느린 강들이 숲을 가로질러 녹은 물을 거대한 북쪽 바다로 운반합니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "넓고 느린 강들이 숲을 가로질러 녹은 물을 거대한 북쪽 바다로 운반합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-052",
+      "paragraph_id": "p52",
+      "text": "호수와 강 사이에는 이탄지라고 불리는 부드럽고 축축한 장소들이 있습니다.",
+      "text_markdown": "호수와 강 사이에는 이탄지라고 불리는 부드럽고 축축한 장소들이 있습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "호수와 강 사이에는 이탄지라고 불리는 부드럽고 축축한 장소들이 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-053",
+      "paragraph_id": "p53",
+      "text": "이탄지는 일 년 내내 흙 위에 물이 고여 있는 땅입니다.",
+      "text_markdown": "이탄지는 일 년 내내 흙 위에 물이 고여 있는 땅입니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "이탄지는 일 년 내내 흙 위에 물이 고여 있는 땅입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-054",
+      "paragraph_id": "p54",
+      "text": "이탄지에는 이끼가 두껍게 자라 발밑이 부드럽고 깊습니다.",
+      "text_markdown": "이탄지에는 이끼가 두껍게 자라 발밑이 부드럽고 깊습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "이탄지에는 이끼가 두껍게 자라 발밑이 부드럽고 깊습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-055",
+      "paragraph_id": "p55",
+      "text": "표면 아래 이탄지 물은 차갑고 갈색입니다.",
+      "text_markdown": "표면 아래 이탄지 물은 차갑고 갈색입니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "표면 아래 이탄지 물은 차갑고 갈색입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-056",
+      "paragraph_id": "p56",
+      "text": "북방림의 토양은 척박하고 얇습니다.",
+      "text_markdown": "북방림의 토양은 척박하고 얇습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "북방림의 토양은 척박하고 얇습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-057",
+      "paragraph_id": "p57",
+      "text": "소나무 잎과 죽은 잎들은 추위 속에서 천천히 분해됩니다.",
+      "text_markdown": "소나무 잎과 죽은 잎들은 추위 속에서 천천히 분해됩니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "소나무 잎과 죽은 잎들은 추위 속에서 천천히 분해됩니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-058",
+      "paragraph_id": "p58",
+      "text": "식물에 좋은 영양분이 쌓이는 데는 오랜 시간이 걸립니다.",
+      "text_markdown": "식물에 좋은 영양분이 쌓이는 데는 오랜 시간이 걸립니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "식물에 좋은 영양분이 쌓이는 데는 오랜 시간이 걸립니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-059",
+      "paragraph_id": "p59",
+      "text": "북방림의 먼 북쪽에서는 일 미터나 이 미터보다 깊은 땅이 일 년 내내 얼어 있습니다.",
+      "text_markdown": "북방림의 먼 북쪽에서는 1미터나 2미터보다 깊은 땅이 일 년 내내 얼어 있습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "북방림의 먼 북쪽에서는 일 미터나 이 미터보다 깊은 땅이 일 년 내내 얼어 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-060",
+      "paragraph_id": "p60",
+      "text": "이 얼어붙은 땅을 영구 동토층이라고 부릅니다.",
+      "text_markdown": "이 얼어붙은 땅을 영구 동토층이라고 부릅니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "이 얼어붙은 땅을 영구 동토층이라고 부릅니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-061",
+      "paragraph_id": "p61",
+      "text": "뜨거운 여름날에도 이끼 아래 흙은 만지면 차갑습니다.",
+      "text_markdown": "뜨거운 여름날에도 이끼 아래 흙은 만지면 차갑습니다.",
+      "title": "땅과 물",
+      "tts": {
+        "text": "뜨거운 여름날에도 이끼 아래 흙은 만지면 차갑습니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 5,
+      "heading_level": 1,
+      "id": "ch05-062",
+      "paragraph_id": "p62",
+      "text": "나무들",
+      "text_markdown": "나무들",
+      "title": "나무들"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-063",
+      "paragraph_id": "p63",
+      "text": "북방림의 나무들은 대부분 상록수입니다.",
+      "text_markdown": "북방림의 나무들은 대부분 상록수입니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "북방림의 나무들은 대부분 상록수입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-064",
+      "paragraph_id": "p64",
+      "text": "여름이 끝날 때 모든 잎을 떨어뜨리지 않습니다.",
+      "text_markdown": "여름이 끝날 때 모든 잎을 떨어뜨리지 않습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "여름이 끝날 때 모든 잎을 떨어뜨리지 않습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-065",
+      "paragraph_id": "p65",
+      "text": "대신, 일 년 내내 작은 녹색 바늘잎을 유지합니다.",
+      "text_markdown": "대신, 일 년 내내 작은 녹색 바늘잎을 유지합니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "대신, 일 년 내내 작은 녹색 바늘잎을 유지합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-066",
+      "paragraph_id": "p66",
+      "text": "바늘잎은 작고 강합니다.",
+      "text_markdown": "바늘잎은 작고 강합니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "바늘잎은 작고 강합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-067",
+      "paragraph_id": "p67",
+      "text": "바람에 수분을 많이 잃지 않으며, 눈 아래에서도 부러지지 않습니다.",
+      "text_markdown": "바람에 수분을 많이 잃지 않으며, 눈 아래에서도 부러지지 않습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "바람에 수분을 많이 잃지 않으며, 눈 아래에서도 부러지지 않습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-068",
+      "paragraph_id": "p68",
+      "text": "많은 나무들이 높고 좁은 원뿔 모양으로 자랍니다.",
+      "text_markdown": "많은 나무들이 높고 좁은 원뿔 모양으로 자랍니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "많은 나무들이 높고 좁은 원뿔 모양으로 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-069",
+      "paragraph_id": "p69",
+      "text": "원뿔 모양의 나무에 많은 눈이 내리면 쉽게 미끄러져 내려갑니다.",
+      "text_markdown": "원뿔 모양의 나무에 많은 눈이 내리면 쉽게 미끄러져 내려갑니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "원뿔 모양의 나무에 많은 눈이 내리면 쉽게 미끄러져 내려갑니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-070",
+      "paragraph_id": "p70",
+      "text": "가장 흔한 북방림 나무는 가문비나무, 소나무, 전나무, 그리고 낙엽송입니다.",
+      "text_markdown": "가장 흔한 북방림 나무는 가문비나무, 소나무, 전나무, 그리고 낙엽송입니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "가장 흔한 북방림 나무는 가문비나무, 소나무, 전나무, 그리고 낙엽송입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-071",
+      "paragraph_id": "p71",
+      "text": "가문비나무는 짧고 뾰족한 바늘잎과 아래로 매달린 작은 솔방울을 가지고 있습니다.",
+      "text_markdown": "가문비나무는 짧고 뾰족한 바늘잎과 아래로 매달린 작은 솔방울을 가지고 있습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "가문비나무는 짧고 뾰족한 바늘잎과 아래로 매달린 작은 솔방울을 가지고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-072",
+      "paragraph_id": "p72",
+      "text": "소나무는 두세 개씩 작은 다발로 자라는 길고 부드러운 바늘잎을 가지고 있습니다.",
+      "text_markdown": "소나무는 두세 개씩 작은 다발로 자라는 길고 부드러운 바늘잎을 가지고 있습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "소나무는 두세 개씩 작은 다발로 자라는 길고 부드러운 바늘잎을 가지고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-073",
+      "paragraph_id": "p73",
+      "text": "전나무는 평평하고 부드러운 바늘잎과 위로 곧게 솟은 키 큰 솔방울을 가지고 있습니다.",
+      "text_markdown": "전나무는 평평하고 부드러운 바늘잎과 위로 곧게 솟은 키 큰 솔방울을 가지고 있습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "전나무는 평평하고 부드러운 바늘잎과 위로 곧게 솟은 키 큰 솔방울을 가지고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-074",
+      "paragraph_id": "p74",
+      "text": "낙엽송은 가을에 바늘잎을 떨어뜨리는 유일한 흔한 북방림 나무입니다.",
+      "text_markdown": "낙엽송은 가을에 바늘잎을 떨어뜨리는 유일한 흔한 북방림 나무입니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "낙엽송은 가을에 바늘잎을 떨어뜨리는 유일한 흔한 북방림 나무입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-075",
+      "paragraph_id": "p75",
+      "text": "잎을 떨어뜨리기 전에 낙엽송은 밝은 금색으로 변합니다.",
+      "text_markdown": "잎을 떨어뜨리기 전에 낙엽송은 밝은 금색으로 변합니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "잎을 떨어뜨리기 전에 낙엽송은 밝은 금색으로 변합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-076",
+      "paragraph_id": "p76",
+      "text": "시월의 거대한 낙엽송 숲은 차가운 땅 위로 황금빛 바다처럼 보입니다.",
+      "text_markdown": "10월의 거대한 낙엽송 숲은 차가운 땅 위로 황금빛 바다처럼 보입니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "시월의 거대한 낙엽송 숲은 차가운 땅 위로 황금빛 바다처럼 보입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-077",
+      "paragraph_id": "p77",
+      "text": "이 모든 숲에서 나무들은 서로 가까이 서 있습니다.",
+      "text_markdown": "이 모든 숲에서 나무들은 서로 가까이 서 있습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "이 모든 숲에서 나무들은 서로 가까이 서 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-078",
+      "paragraph_id": "p78",
+      "text": "가지들은 위쪽은 무성하고 햇빛이 닿지 않는 아래쪽은 앙상합니다.",
+      "text_markdown": "가지들은 위쪽은 무성하고 햇빛이 닿지 않는 아래쪽은 앙상합니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "가지들은 위쪽은 무성하고 햇빛이 닿지 않는 아래쪽은 앙상합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-079",
+      "paragraph_id": "p79",
+      "text": "나무들 사이의 그늘은 깊고 고요합니다.",
+      "text_markdown": "나무들 사이의 그늘은 깊고 고요합니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "나무들 사이의 그늘은 깊고 고요합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-080",
+      "paragraph_id": "p80",
+      "text": "숲 바닥의 녹색은 잎이 아니라 이끼에 있습니다.",
+      "text_markdown": "숲 바닥의 녹색은 잎이 아니라 이끼에 있습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "숲 바닥의 녹색은 잎이 아니라 이끼에 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-081",
+      "paragraph_id": "p81",
+      "text": "부드럽고 두꺼운 이끼가 땅, 쓰러진 통나무, 바위를 덮고 있습니다.",
+      "text_markdown": "부드럽고 두꺼운 이끼가 땅, 쓰러진 통나무, 바위를 덮고 있습니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "부드럽고 두꺼운 이끼가 땅, 쓰러진 통나무, 바위를 덮고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-082",
+      "paragraph_id": "p82",
+      "text": "늦여름에는 다양한 모양과 색깔의 버섯들이 이끼를 뚫고 올라옵니다.",
+      "text_markdown": "늦여름에는 다양한 모양과 색깔의 버섯들이 이끼를 뚫고 올라옵니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "늦여름에는 다양한 모양과 색깔의 버섯들이 이끼를 뚫고 올라옵니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-083",
+      "paragraph_id": "p83",
+      "text": "작은 열매들이 이끼 사이의 작은 관목에서 자랍니다.",
+      "text_markdown": "작은 열매들이 이끼 사이의 작은 관목에서 자랍니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "작은 열매들이 이끼 사이의 작은 관목에서 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-084",
+      "paragraph_id": "p84",
+      "text": "달콤한 야생 블루베리, 붉은 크랜베리, 작은 검은 시로미가 모두 이곳에서 자랍니다.",
+      "text_markdown": "달콤한 야생 블루베리, 붉은 크랜베리, 작은 검은 시로미가 모두 이곳에서 자랍니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "달콤한 야생 블루베리, 붉은 크랜베리, 작은 검은 시로미가 모두 이곳에서 자랍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-085",
+      "paragraph_id": "p85",
+      "text": "짧은 여름 동안 숲의 사람들과 동물들은 바구니 가득 열매를 모읍니다.",
+      "text_markdown": "짧은 여름 동안 숲의 사람들과 동물들은 바구니 가득 열매를 모읍니다.",
+      "title": "나무들",
+      "tts": {
+        "text": "짧은 여름 동안 숲의 사람들과 동물들은 바구니 가득 열매를 모읍니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 6,
+      "heading_level": 1,
+      "id": "ch06-086",
+      "paragraph_id": "p86",
+      "text": "동물들",
+      "text_markdown": "동물들",
+      "title": "동물들"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-087",
+      "paragraph_id": "p87",
+      "text": "북방림은 추위 속에서 살아가는 법을 아는 많은 동물들의 보금자리입니다.",
+      "text_markdown": "북방림은 추위 속에서 살아가는 법을 아는 많은 동물들의 보금자리입니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "북방림은 추위 속에서 살아가는 법을 아는 많은 동물들의 보금자리입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-088",
+      "paragraph_id": "p88",
+      "text": "대부분은 두꺼운 털이나 피부 아래 지방, 또는 둘 다를 가지고 있습니다.",
+      "text_markdown": "대부분은 두꺼운 털이나 피부 아래 지방, 또는 둘 다를 가지고 있습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "대부분은 두꺼운 털이나 피부 아래 지방, 또는 둘 다를 가지고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-089",
+      "paragraph_id": "p89",
+      "text": "북방림에서 가장 큰 동물은 무스입니다.",
+      "text_markdown": "북방림에서 가장 큰 동물은 무스입니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "북방림에서 가장 큰 동물은 무스입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-090",
+      "paragraph_id": "p90",
+      "text": "무스는 긴 얼굴과 육중한 몸을 가진 매우 키 큰 사슴입니다.",
+      "text_markdown": "무스는 긴 얼굴과 육중한 몸을 가진 매우 키 큰 사슴입니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "무스는 긴 얼굴과 육중한 몸을 가진 매우 키 큰 사슴입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-091",
+      "paragraph_id": "p91",
+      "text": "다 자란 무스는 가장 키 큰 사람보다도 키가 크며, 머리에는 크고 넓은 뿔이 있습니다.",
+      "text_markdown": "다 자란 무스는 가장 키 큰 사람보다도 키가 크며, 머리에는 크고 넓은 뿔이 있습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "다 자란 무스는 가장 키 큰 사람보다도 키가 크며, 머리에는 크고 넓은 뿔이 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-092",
+      "paragraph_id": "p92",
+      "text": "여름에는 수생 식물을 먹고, 겨울에는 잔가지와 나무껍질을 먹습니다.",
+      "text_markdown": "여름에는 수생 식물을 먹고, 겨울에는 잔가지와 나무껍질을 먹습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "여름에는 수생 식물을 먹고, 겨울에는 잔가지와 나무껍질을 먹습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-093",
+      "paragraph_id": "p93",
+      "text": "무스는 수줍음이 많지만, 만약 무스를 만나게 된다면 잊지 못할 것입니다.",
+      "text_markdown": "무스는 수줍음이 많지만, 만약 무스를 만나게 된다면 잊지 못할 것입니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "무스는 수줍음이 많지만, 만약 무스를 만나게 된다면 잊지 못할 것입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-094",
+      "paragraph_id": "p94",
+      "text": "불곰은 북방림의 여러 지역에 서식합니다.",
+      "text_markdown": "불곰은 북방림의 여러 지역에 서식합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "불곰은 북방림의 여러 지역에 서식합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-095",
+      "paragraph_id": "p95",
+      "text": "여름에는 불곰이 딸기, 물고기, 뿌리, 작은 동물들을 먹습니다.",
+      "text_markdown": "여름에는 불곰이 딸기, 물고기, 뿌리, 작은 동물들을 먹습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "여름에는 불곰이 딸기, 물고기, 뿌리, 작은 동물들을 먹습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-096",
+      "paragraph_id": "p96",
+      "text": "가을에는 두꺼운 지방층을 만들기 위해 최대한 많이 먹습니다.",
+      "text_markdown": "가을에는 두꺼운 지방층을 만들기 위해 최대한 많이 먹습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "가을에는 두꺼운 지방층을 만들기 위해 최대한 많이 먹습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-097",
+      "paragraph_id": "p97",
+      "text": "그리고 겨울 내내 눈 아래 굴에서 잠을 잡니다.",
+      "text_markdown": "그리고 겨울 내내 눈 아래 굴에서 잠을 잡니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "그리고 겨울 내내 눈 아래 굴에서 잠을 잡니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-098",
+      "paragraph_id": "p98",
+      "text": "늑대들은 무리라고 불리는 가족 단위로 숲을 가로지르며 사냥합니다.",
+      "text_markdown": "늑대들은 무리라고 불리는 가족 단위로 숲을 가로지르며 사냥합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "늑대들은 무리라고 불리는 가족 단위로 숲을 가로지르며 사냥합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-099",
+      "paragraph_id": "p99",
+      "text": "늑대 무리는 하루에 수 마일을 이동할 수 있습니다.",
+      "text_markdown": "늑대 무리는 하루에 수 마일을 이동할 수 있습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "늑대 무리는 하루에 수 마일을 이동할 수 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-100",
+      "paragraph_id": "p100",
+      "text": "늑대들은 무스, 사슴, 그리고 더 작은 동물들을 사냥합니다.",
+      "text_markdown": "늑대들은 무스, 사슴, 그리고 더 작은 동물들을 사냥합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "늑대들은 무스, 사슴, 그리고 더 작은 동물들을 사냥합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-101",
+      "paragraph_id": "p101",
+      "text": "깊은 눈 속에서 그들은 일렬로 걷는데, 각 늑대는 앞에 가는 늑대의 발자국을 따라 걷습니다.",
+      "text_markdown": "깊은 눈 속에서 그들은 일렬로 걷는데, 각 늑대는 앞에 가는 늑대의 발자국을 따라 걷습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "깊은 눈 속에서 그들은 일렬로 걷는데, 각 늑대는 앞에 가는 늑대의 발자국을 따라 걷습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-102",
+      "paragraph_id": "p102",
+      "text": "스라소니는 북방림의 야생 고양이입니다.",
+      "text_markdown": "스라소니는 북방림의 야생 고양이입니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "스라소니는 북방림의 야생 고양이입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-103",
+      "paragraph_id": "p103",
+      "text": "두꺼운 회색 털과 짧은 꼬리, 그리고 귀 끝에는 뾰족한 털 뭉치가 있습니다.",
+      "text_markdown": "두꺼운 회색 털과 짧은 꼬리, 그리고 귀 끝에는 뾰족한 털 뭉치가 있습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "두꺼운 회색 털과 짧은 꼬리, 그리고 귀 끝에는 뾰족한 털 뭉치가 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-104",
+      "paragraph_id": "p104",
+      "text": "크고 털이 많은 발은 깊은 눈 속에서 설피처럼 작용합니다.",
+      "text_markdown": "크고 털이 많은 발은 깊은 눈 속에서 설피처럼 작용합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "크고 털이 많은 발은 깊은 눈 속에서 설피처럼 작용합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-105",
+      "paragraph_id": "p105",
+      "text": "스라소니는 주로 설피토끼를 사냥합니다.",
+      "text_markdown": "스라소니는 주로 설피토끼를 사냥합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "스라소니는 주로 설피토끼를 사냥합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-106",
+      "paragraph_id": "p106",
+      "text": "설피토끼는 여름에는 갈색으로, 겨울에는 흰색으로 변하여 땅과 어울립니다.",
+      "text_markdown": "설피토끼는 여름에는 갈색으로, 겨울에는 흰색으로 변하여 땅과 어울립니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "설피토끼는 여름에는 갈색으로, 겨울에는 흰색으로 변하여 땅과 어울립니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-107",
+      "paragraph_id": "p107",
+      "text": "비버는 숲의 강과 호수에 서식합니다.",
+      "text_markdown": "비버는 숲의 강과 호수에 서식합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "비버는 숲의 강과 호수에 서식합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-108",
+      "paragraph_id": "p108",
+      "text": "비버는 튼튼한 이빨로 나무를 베어내고 나무와 진흙으로 댐과 보금자리를 만듭니다.",
+      "text_markdown": "비버는 튼튼한 이빨로 나무를 베어내고 나무와 진흙으로 댐과 보금자리를 만듭니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "비버는 튼튼한 이빨로 나무를 베어내고 나무와 진흙으로 댐과 보금자리를 만듭니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-109",
+      "paragraph_id": "p109",
+      "text": "비버 연못은 숲의 전체 구간을 생명으로 가득 찬 고요한 웅덩이로 바꿀 수 있습니다.",
+      "text_markdown": "비버 연못은 숲의 전체 구간을 생명으로 가득 찬 고요한 웅덩이로 바꿀 수 있습니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "비버 연못은 숲의 전체 구간을 생명으로 가득 찬 고요한 웅덩이로 바꿀 수 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-110",
+      "paragraph_id": "p110",
+      "text": "나무 높은 곳에서 붉은 다람쥐들이 시끄럽게 지저귀며 겨울을 위해 솔방울을 모읍니다.",
+      "text_markdown": "나무 높은 곳에서 붉은 다람쥐들이 시끄럽게 지저귀며 겨울을 위해 솔방울을 모읍니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "나무 높은 곳에서 붉은 다람쥐들이 시끄럽게 지저귀며 겨울을 위해 솔방울을 모읍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-111",
+      "paragraph_id": "p111",
+      "text": "울버린, 담비, 밍크는 덤불 속을 소리 없이 미끄러지듯 지나갑니다.",
+      "text_markdown": "울버린, 담비, 밍크는 덤불 속을 소리 없이 미끄러지듯 지나갑니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "울버린, 담비, 밍크는 덤불 속을 소리 없이 미끄러지듯 지나갑니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-112",
+      "paragraph_id": "p112",
+      "text": "많은 종류의 올빼미들이 밤에 사냥합니다.",
+      "text_markdown": "많은 종류의 올빼미들이 밤에 사냥합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "많은 종류의 올빼미들이 밤에 사냥합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-113",
+      "paragraph_id": "p113",
+      "text": "큰회색올빼미는 세계에서 가장 키가 큰 올빼미 중 하나이며, 북방림에 서식합니다.",
+      "text_markdown": "큰회색올빼미는 세계에서 가장 키가 큰 올빼미 중 하나이며, 북방림에 서식합니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "큰회색올빼미는 세계에서 가장 키가 큰 올빼미 중 하나이며, 북방림에 서식합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-114",
+      "paragraph_id": "p114",
+      "text": "큰까마귀들은 나무 사이를 날아다니며 다양한 목소리로 서로를 부릅니다.",
+      "text_markdown": "큰까마귀들은 나무 사이를 날아다니며 다양한 목소리로 서로를 부릅니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "큰까마귀들은 나무 사이를 날아다니며 다양한 목소리로 서로를 부릅니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-115",
+      "paragraph_id": "p115",
+      "text": "짧은 여름에는 모기와 작은 파리 떼가 공기를 가득 채웁니다.",
+      "text_markdown": "짧은 여름에는 모기와 작은 파리 떼가 공기를 가득 채웁니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "짧은 여름에는 모기와 작은 파리 떼가 공기를 가득 채웁니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-116",
+      "paragraph_id": "p116",
+      "text": "몇 주 동안 숲은 곤충의 윙윙거림, 작은 새들의 노래, 호수에서 물고기가 첨벙거리는 소리로 활기찹니다.",
+      "text_markdown": "몇 주 동안 숲은 곤충의 윙윙거림, 작은 새들의 노래, 호수에서 물고기가 첨벙거리는 소리로 활기찹니다.",
+      "title": "동물들",
+      "tts": {
+        "text": "몇 주 동안 숲은 곤충의 윙윙거림, 작은 새들의 노래, 호수에서 물고기가 첨벙거리는 소리로 활기찹니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 7,
+      "heading_level": 1,
+      "id": "ch07-117",
+      "paragraph_id": "p117",
+      "text": "사람들",
+      "text_markdown": "사람들",
+      "title": "사람들"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-118",
+      "paragraph_id": "p118",
+      "text": "북방림은 지구상에서 가장 황량한 곳 중 하나입니다.",
+      "text_markdown": "북방림은 지구상에서 가장 황량한 곳 중 하나입니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "북방림은 지구상에서 가장 황량한 곳 중 하나입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-119",
+      "paragraph_id": "p119",
+      "text": "긴 겨울과 척박한 토양 때문에 이곳에서 식량을 재배하기 어렵습니다.",
+      "text_markdown": "긴 겨울과 척박한 토양 때문에 이곳에서 식량을 재배하기 어렵습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "긴 겨울과 척박한 토양 때문에 이곳에서 식량을 재배하기 어렵습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-120",
+      "paragraph_id": "p120",
+      "text": "하지만 사람들은 수천 년 동안 이 거대한 숲에서 살아왔습니다.",
+      "text_markdown": "하지만 사람들은 수천 년 동안 이 거대한 숲에서 살아왔습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "하지만 사람들은 수천 년 동안 이 거대한 숲에서 살아왔습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-121",
+      "paragraph_id": "p121",
+      "text": "북유럽에서 사미족은 매우 오랜 시간 동안 타이가 숲과 그 위의 툰드라에서 살아왔습니다.",
+      "text_markdown": "북유럽에서 사미족은 매우 오랜 시간 동안 타이가 숲과 그 위의 툰드라에서 살아왔습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "북유럽에서 사미족은 매우 오랜 시간 동안 타이가 숲과 그 위의 툰드라에서 살아왔습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-122",
+      "paragraph_id": "p122",
+      "text": "사미족은 노르웨이, 스웨덴, 핀란드, 러시아의 추운 땅을 가로질러 순록을 방목합니다.",
+      "text_markdown": "사미족은 노르웨이, 스웨덴, 핀란드, 러시아의 추운 땅을 가로질러 순록을 방목합니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "사미족은 노르웨이, 스웨덴, 핀란드, 러시아의 추운 땅을 가로질러 순록을 방목합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-123",
+      "paragraph_id": "p123",
+      "text": "순록은 눈 속에서 먹이를 찾을 수 있으며, 사람들에게 고기, 우유, 가죽을 제공합니다.",
+      "text_markdown": "순록은 눈 속에서 먹이를 찾을 수 있으며, 사람들에게 고기, 우유, 가죽을 제공합니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "순록은 눈 속에서 먹이를 찾을 수 있으며, 사람들에게 고기, 우유, 가죽을 제공합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-124",
+      "paragraph_id": "p124",
+      "text": "순록은 또한 겨울 눈 위에서 썰매를 끕니다.",
+      "text_markdown": "순록은 또한 겨울 눈 위에서 썰매를 끕니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "순록은 또한 겨울 눈 위에서 썰매를 끕니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-125",
+      "paragraph_id": "p125",
+      "text": "러시아 북부 시베리아에서는 많은 민족 집단이 타이가 숲을 그들의 고향으로 삼았습니다.",
+      "text_markdown": "러시아 북부 시베리아에서는 많은 민족 집단이 타이가 숲을 그들의 고향으로 삼았습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "러시아 북부 시베리아에서는 많은 민족 집단이 타이가 숲을 그들의 고향으로 삼았습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-126",
+      "paragraph_id": "p126",
+      "text": "에벤키족, 한티족, 네네츠족 등은 여러 세대에 걸쳐 이곳에서 사냥하고, 낚시하고, 순록을 길러왔습니다.",
+      "text_markdown": "에벤키족, 한티족, 네네츠족 등은 여러 세대에 걸쳐 이곳에서 사냥하고, 낚시하고, 순록을 길러왔습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "에벤키족, 한티족, 네네츠족 등은 여러 세대에 걸쳐 이곳에서 사냥하고, 낚시하고, 순록을 길러왔습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-127",
+      "paragraph_id": "p127",
+      "text": "캐나다와 알래스카에서는 많은 원주민(First Nations)과 데네족이 수천 년 동안 타이가 숲에서 살아왔습니다.",
+      "text_markdown": "캐나다와 알래스카에서는 많은 원주민(First Nations)과 데네족이 수천 년 동안 타이가 숲에서 살아왔습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "캐나다와 알래스카에서는 많은 원주민(First Nations)과 데네족이 수천 년 동안 타이가 숲에서 살아왔습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-128",
+      "paragraph_id": "p128",
+      "text": "그들은 무스와 순록을 사냥하고, 차가운 강에서 낚시하며, 짧은 여름 동안 베리류를 채집했습니다.",
+      "text_markdown": "그들은 무스와 순록을 사냥하고, 차가운 강에서 낚시하며, 짧은 여름 동안 베리류를 채집했습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "그들은 무스와 순록을 사냥하고, 차가운 강에서 낚시하며, 짧은 여름 동안 베리류를 채집했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-129",
+      "paragraph_id": "p129",
+      "text": "이 모든 땅에서 사람들은 동물의 가죽과 털로 따뜻한 겨울옷을 만들었습니다.",
+      "text_markdown": "이 모든 땅에서 사람들은 동물의 가죽과 털로 따뜻한 겨울옷을 만들었습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "이 모든 땅에서 사람들은 동물의 가죽과 털로 따뜻한 겨울옷을 만들었습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-130",
+      "paragraph_id": "p130",
+      "text": "그들은 추위를 막기 위해 작은 입구를 가진 나무, 나무껍질, 가죽으로 집을 지었습니다.",
+      "text_markdown": "그들은 추위를 막기 위해 작은 입구를 가진 나무, 나무껍질, 가죽으로 집을 지었습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "그들은 추위를 막기 위해 작은 입구를 가진 나무, 나무껍질, 가죽으로 집을 지었습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-131",
+      "paragraph_id": "p131",
+      "text": "그들은 설피와 길고 얇은 스키로 이동하는 법을 배웠고, 나중에는 개썰매를 이용했습니다.",
+      "text_markdown": "그들은 설피와 길고 얇은 스키로 이동하는 법을 배웠고, 나중에는 개썰매를 이용했습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "그들은 설피와 길고 얇은 스키로 이동하는 법을 배웠고, 나중에는 개썰매를 이용했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-132",
+      "paragraph_id": "p132",
+      "text": "여름에는 카누, 긴 자작나무 껍질 보트, 또는 순록을 타고 이동했습니다.",
+      "text_markdown": "여름에는 카누, 긴 자작나무 껍질 보트, 또는 순록을 타고 이동했습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "여름에는 카누, 긴 자작나무 껍질 보트, 또는 순록을 타고 이동했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-133",
+      "paragraph_id": "p133",
+      "text": "이 사람들은 숲의 모든 나무와 모든 동물의 이름을 배웠습니다.",
+      "text_markdown": "이 사람들은 숲의 모든 나무와 모든 동물의 이름을 배웠습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "이 사람들은 숲의 모든 나무와 모든 동물의 이름을 배웠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-134",
+      "paragraph_id": "p134",
+      "text": "그들은 베리밭이 어디에 있는지, 그리고 물고기가 가장 많은 곳이 어디인지 배웠습니다.",
+      "text_markdown": "그들은 베리밭이 어디에 있는지, 그리고 물고기가 가장 많은 곳이 어디인지 배웠습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "그들은 베리밭이 어디에 있는지, 그리고 물고기가 가장 많은 곳이 어디인지 배웠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-135",
+      "paragraph_id": "p135",
+      "text": "그들은 어떤 버섯을 먹을 수 있고 어떤 버섯을 먹을 수 없는지 배웠습니다.",
+      "text_markdown": "그들은 어떤 버섯을 먹을 수 있고 어떤 버섯을 먹을 수 없는지 배웠습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "그들은 어떤 버섯을 먹을 수 있고 어떤 버섯을 먹을 수 없는지 배웠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-136",
+      "paragraph_id": "p136",
+      "text": "그들은 눈 위에서 무스와 곰의 발자국을 읽는 법을 배웠습니다.",
+      "text_markdown": "그들은 눈 위에서 무스와 곰의 발자국을 읽는 법을 배웠습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "그들은 눈 위에서 무스와 곰의 발자국을 읽는 법을 배웠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-137",
+      "paragraph_id": "p137",
+      "text": "더 최근에는 다른 사람들이 나무를 베거나, 광석을 캐거나, 강을 따라 작은 마을에 살기 위해 숲으로 왔습니다.",
+      "text_markdown": "더 최근에는 다른 사람들이 나무를 베거나, 광석을 캐거나, 강을 따라 작은 마을에 살기 위해 숲으로 왔습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "더 최근에는 다른 사람들이 나무를 베거나, 광석을 캐거나, 강을 따라 작은 마을에 살기 위해 숲으로 왔습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-138",
+      "paragraph_id": "p138",
+      "text": "그러나 오랜 역사 대부분 동안 타이가 숲은 조용한 곳이었습니다.",
+      "text_markdown": "그러나 오랜 역사 대부분 동안 타이가 숲은 조용한 곳이었습니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "그러나 오랜 역사 대부분 동안 타이가 숲은 조용한 곳이었습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-139",
+      "paragraph_id": "p139",
+      "text": "소수의 사람들이 나무, 동물, 그리고 추위와 땅을 공유하는 곳입니다.",
+      "text_markdown": "소수의 사람들이 나무, 동물, 그리고 추위와 땅을 공유하는 곳입니다.",
+      "title": "사람들",
+      "tts": {
+        "text": "소수의 사람들이 나무, 동물, 그리고 추위와 땅을 공유하는 곳입니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 8,
+      "heading_level": 1,
+      "id": "ch08-140",
+      "paragraph_id": "p140",
+      "text": "오늘날의 생물군계",
+      "text_markdown": "오늘날의 생물군계",
+      "title": "오늘날의 생물군계"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-141",
+      "paragraph_id": "p141",
+      "text": "타이가 숲은 거대하지만, 겉보기만큼 손대지 않은 상태는 아닙니다.",
+      "text_markdown": "타이가 숲은 거대하지만, 겉보기만큼 손대지 않은 상태는 아닙니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "타이가 숲은 거대하지만, 겉보기만큼 손대지 않은 상태는 아닙니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-142",
+      "paragraph_id": "p142",
+      "text": "백 년이 넘는 시간 동안 사람들은 이 숲에서 많은 양의 나무를 베어냈습니다.",
+      "text_markdown": "백 년이 넘는 시간 동안 사람들은 이 숲에서 많은 양의 나무를 베어냈습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "백 년이 넘는 시간 동안 사람들은 이 숲에서 많은 양의 나무를 베어냈습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-143",
+      "paragraph_id": "p143",
+      "text": "키 크고 곧은 나무들은 좋은 목재와 좋은 종이를 만듭니다.",
+      "text_markdown": "키 크고 곧은 나무들은 좋은 목재와 좋은 종이를 만듭니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "키 크고 곧은 나무들은 좋은 목재와 좋은 종이를 만듭니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-144",
+      "paragraph_id": "p144",
+      "text": "타이가 숲의 많은 지역에서 나무 전체 구역이 벌목된 후 천천히 다시 자라났습니다.",
+      "text_markdown": "타이가 숲의 많은 지역에서 나무 전체 구역이 벌목된 후 천천히 다시 자라났습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "타이가 숲의 많은 지역에서 나무 전체 구역이 벌목된 후 천천히 다시 자라났습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-145",
+      "paragraph_id": "p145",
+      "text": "타이가 숲은 또한 나무와 아래의 토양 및 습지에 엄청난 양의 탄소를 저장하고 있습니다.",
+      "text_markdown": "타이가 숲은 또한 나무와 아래의 토양 및 습지에 엄청난 양의 탄소를 저장하고 있습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "타이가 숲은 또한 나무와 아래의 토양 및 습지에 엄청난 양의 탄소를 저장하고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-146",
+      "paragraph_id": "p146",
+      "text": "건강한 타이가 토양은 그 탄소를 공기로부터 안전하게 격리시킵니다.",
+      "text_markdown": "건강한 타이가 토양은 그 탄소를 공기로부터 안전하게 격리시킵니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "건강한 타이가 토양은 그 탄소를 공기로부터 안전하게 격리시킵니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-147",
+      "paragraph_id": "p147",
+      "text": "나무와 토양이 온전하게 유지될 때, 숲은 지구 전체의 공기 균형을 유지하는 데 도움을 줍니다.",
+      "text_markdown": "나무와 토양이 온전하게 유지될 때, 숲은 지구 전체의 공기 균형을 유지하는 데 도움을 줍니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "나무와 토양이 온전하게 유지될 때, 숲은 지구 전체의 공기 균형을 유지하는 데 도움을 줍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-148",
+      "paragraph_id": "p148",
+      "text": "최근 몇 년 동안 타이가 숲은 더 따뜻해졌습니다.",
+      "text_markdown": "최근 몇 년 동안 타이가 숲은 더 따뜻해졌습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "최근 몇 년 동안 타이가 숲은 더 따뜻해졌습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-149",
+      "paragraph_id": "p149",
+      "text": "길고 따뜻한 여름은 북부 사람들이 기억하는 것보다 더 큰 산불을 가져왔습니다.",
+      "text_markdown": "길고 따뜻한 여름은 북부 사람들이 기억하는 것보다 더 큰 산불을 가져왔습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "길고 따뜻한 여름은 북부 사람들이 기억하는 것보다 더 큰 산불을 가져왔습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-150",
+      "paragraph_id": "p150",
+      "text": "이 산불 중 일부는 이제 몇 주 동안 지속되며 수백만 그루의 나무를 태웁니다.",
+      "text_markdown": "이 산불 중 일부는 이제 몇 주 동안 지속되며 수백만 그루의 나무를 태웁니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "이 산불 중 일부는 이제 몇 주 동안 지속되며 수백만 그루의 나무를 태웁니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-151",
+      "paragraph_id": "p151",
+      "text": "아주 먼 북쪽에서는 따뜻해진 여름이 영구 동토층을 녹이기 시작했습니다.",
+      "text_markdown": "아주 먼 북쪽에서는 따뜻해진 여름이 영구 동토층을 녹이기 시작했습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "아주 먼 북쪽에서는 따뜻해진 여름이 영구 동토층을 녹이기 시작했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-152",
+      "paragraph_id": "p152",
+      "text": "오늘날 많은 사람들과 단체들이 북방림을 보호하기 위해 노력하고 있습니다.",
+      "text_markdown": "오늘날 많은 사람들과 단체들이 북방림을 보호하기 위해 노력하고 있습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "오늘날 많은 사람들과 단체들이 북방림을 보호하기 위해 노력하고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-153",
+      "paragraph_id": "p153",
+      "text": "그들은 숲이 항상 그래왔듯이 자랄 수 있도록 넓은 공원들을 지정했습니다.",
+      "text_markdown": "그들은 숲이 항상 그래왔듯이 자랄 수 있도록 넓은 공원들을 지정했습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "그들은 숲이 항상 그래왔듯이 자랄 수 있도록 넓은 공원들을 지정했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-154",
+      "paragraph_id": "p154",
+      "text": "그들은 여러 세대 동안 그곳에 살아온 사람들이 자신들의 땅을 돌볼 수 있도록 돕습니다.",
+      "text_markdown": "그들은 여러 세대 동안 그곳에 살아온 사람들이 자신들의 땅을 돌볼 수 있도록 돕습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "그들은 여러 세대 동안 그곳에 살아온 사람들이 자신들의 땅을 돌볼 수 있도록 돕습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-155",
+      "paragraph_id": "p155",
+      "text": "그들은 숲이 어떻게 살아가고 어떻게 온전하게 유지될 수 있는지 이해하기 위해 숲을 연구합니다.",
+      "text_markdown": "그들은 숲이 어떻게 살아가고 어떻게 온전하게 유지될 수 있는지 이해하기 위해 숲을 연구합니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "그들은 숲이 어떻게 살아가고 어떻게 온전하게 유지될 수 있는지 이해하기 위해 숲을 연구합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-156",
+      "paragraph_id": "p156",
+      "text": "건강한 북방림은 세상을 시원하게 유지하는 데 도움이 되는 거대한 녹색 담요입니다.",
+      "text_markdown": "건강한 북방림은 세상을 시원하게 유지하는 데 도움이 되는 거대한 녹색 담요입니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "건강한 북방림은 세상을 시원하게 유지하는 데 도움이 되는 거대한 녹색 담요입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-157",
+      "paragraph_id": "p157",
+      "text": "우리의 보살핌을 받을 가치가 있습니다.",
+      "text_markdown": "우리의 보살핌을 받을 가치가 있습니다.",
+      "title": "오늘날의 생물군계",
+      "tts": {
+        "text": "우리의 보살핌을 받을 가치가 있습니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 9,
+      "heading_level": 1,
+      "id": "ch09-158",
+      "paragraph_id": "p158",
+      "text": "마무리",
+      "text_markdown": "마무리",
+      "title": "마무리"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 9,
+      "id": "ch09-159",
+      "paragraph_id": "p159",
+      "text": "이것이 바로 북방림입니다.",
+      "text_markdown": "이것이 바로 북방림입니다.",
+      "title": "마무리",
+      "tts": {
+        "text": "이것이 바로 북방림입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 9,
+      "id": "ch09-160",
+      "paragraph_id": "p160",
+      "text": "세상 꼭대기를 거의 한 바퀴 두르고 있는 상록수, 호수, 그리고 고요한 눈으로 이루어진 넓은 녹색 지대입니다.",
+      "text_markdown": "세상 꼭대기를 거의 한 바퀴 두르고 있는 상록수, 호수, 그리고 고요한 눈으로 이루어진 넓은 녹색 지대입니다.",
+      "title": "마무리",
+      "tts": {
+        "text": "세상 꼭대기를 거의 한 바퀴 두르고 있는 상록수, 호수, 그리고 고요한 눈으로 이루어진 넓은 녹색 지대입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 9,
+      "id": "ch09-161",
+      "paragraph_id": "p161",
+      "text": "만약 그곳에 서게 된다면, 잠시 동안 가만히 있어 보세요.",
+      "text_markdown": "만약 그곳에 서게 된다면, 잠시 동안 가만히 있어 보세요.",
+      "title": "마무리",
+      "tts": {
+        "text": "만약 그곳에 서게 된다면, 잠시 동안 가만히 있어 보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 9,
+      "id": "ch09-162",
+      "paragraph_id": "p162",
+      "text": "높은 솔잎 사이로 부는 바람 소리에 귀 기울여 보세요.",
+      "text_markdown": "높은 솔잎 사이로 부는 바람 소리에 귀 기울여 보세요.",
+      "title": "마무리",
+      "tts": {
+        "text": "높은 솔잎 사이로 부는 바람 소리에 귀 기울여 보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 9,
+      "id": "ch09-163",
+      "paragraph_id": "p163",
+      "text": "나무 사이로 이끼 위로 비치는 햇살을 바라보세요.",
+      "text_markdown": "나무 사이로 이끼 위로 비치는 햇살을 바라보세요.",
+      "title": "마무리",
+      "tts": {
+        "text": "나무 사이로 이끼 위로 비치는 햇살을 바라보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 9,
+      "id": "ch09-164",
+      "paragraph_id": "p164",
+      "text": "차가운 소나무 향을 맡아보세요.",
+      "text_markdown": "차가운 소나무 향을 맡아보세요.",
+      "title": "마무리",
+      "tts": {
+        "text": "차가운 소나무 향을 맡아보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 9,
+      "id": "ch09-165",
+      "paragraph_id": "p165",
+      "text": "당신 주변에서 생물군계의 느리고 인내심 있는 심장이 뛰는 것을 느낄 것입니다.",
+      "text_markdown": "당신 주변에서 생물군계의 느리고 인내심 있는 심장이 뛰는 것을 느낄 것입니다.",
+      "title": "마무리",
+      "tts": {
+        "text": "당신 주변에서 생물군계의 느리고 인내심 있는 심장이 뛰는 것을 느낄 것입니다.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}
