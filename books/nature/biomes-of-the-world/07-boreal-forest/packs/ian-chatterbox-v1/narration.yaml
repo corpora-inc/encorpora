@@ -165,6 +165,17 @@ validation:
   max_stacked_words: 3
   min_trailing_silence_ms: 75
   max_inter_word_gap_ms: 3000
+  # Acoustically near-identical language pairs Whisper mistags on short
+  # segments (ms↔id, short nl↔en, Scandinavian cross-tags). Downgrades
+  # language_leak to non-blocking when detected ∈ sibling[target]. Prevents
+  # 166-cycle GPU burn on a single FP segment. See feedback_sibling_languages_fp_burn.
+  sibling_languages:
+    ms: [id]
+    id: [ms]
+    nl: [en, af]
+    da: ['no', sv]
+    'no': [da, sv]
+    sv: [da, 'no']
   max_sec_per_char:
     en: 0.12
     es: 0.12

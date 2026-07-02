@@ -165,6 +165,19 @@ validation:
   max_stacked_words: 3
   min_trailing_silence_ms: 75
   max_inter_word_gap_ms: 3000
+  # Acoustically near-identical language pairs. Whisper's language
+  # detector routinely mistags these on short/ambiguous segments, e.g.
+  # Malay heard as Indonesian ("Ini salah satu biom..."), or short Dutch
+  # heard as English ("De zomer is kort en koel" -> "The Zomer is court
+  # and cool"). Where detected ∈ sibling_languages[target], the leak is
+  # downgraded to non-blocking. Tundra ms/nl both stuck 166 cycles on FPs.
+  sibling_languages:
+    ms: [id]
+    id: [ms]
+    nl: [en, af]
+    da: ['no', sv]
+    'no': [da, sv]
+    sv: [da, 'no']
   max_sec_per_char:
     en: 0.12
     es: 0.12
