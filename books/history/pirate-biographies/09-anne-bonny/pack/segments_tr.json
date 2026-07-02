@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_anne_bonny",
+  "language": "tr",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Karayipler'i dehşete düşüren bir kadının gerçek hikâyesidir.",
+      "text_markdown": "Bu, Karayipler'i dehşete düşüren bir kadının gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, Karayipler'i dehşete düşüren bir kadının gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Anne Bonny'ydi ve tarihin en ünlü korsanlarından biriydi.",
+      "text_markdown": "Adı Anne Bonny'ydi ve tarihin en ünlü korsanlarından biriydi.",
+      "tts": {
+        "text": "Adı Anne Bonny'ydi ve tarihin en ünlü korsanlarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1697 yılı civarında İrlanda'da doğdu ve sömürge dönemi Güney Karolina'da büyüdü.",
+      "text_markdown": "1697 yılı civarında İrlanda'da doğdu ve sömürge dönemi Güney Karolina'da büyüdü.",
+      "tts": {
+        "text": "Bin altı yüz doksan yedi yılı civarında İrlanda'da doğdu ve sömürge dönemi Güney Karolina'da büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny, dünyasının kadınlara dayatmaya çalıştığı her kuralı yıktı.",
+      "text_markdown": "Anne Bonny, dünyasının kadınlara dayatmaya çalıştığı her kuralı yıktı.",
+      "tts": {
+        "text": "Anne Bonny, dünyasının kadınlara dayatmaya çalıştığı her kuralı yıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saygın bir hayatı bırakıp korsanlarla birlikte yelken açtı.",
+      "text_markdown": "Saygın bir hayatı bırakıp korsanlarla birlikte yelken açtı.",
+      "tts": {
+        "text": "Saygın bir hayatı bırakıp korsanlarla birlikte yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşlarda çarpıştı ve deneyimli denizcilerin saygısını kazandı.",
+      "text_markdown": "Savaşlarda çarpıştı ve deneyimli denizcilerin saygısını kazandı.",
+      "tts": {
+        "text": "Savaşlarda çarpıştı ve deneyimli denizcilerin saygısını kazandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi bize ağırlıklı olarak 1724'te yayımlanan tek bir kaynaktan ulaşmaktadır.",
+      "text_markdown": "Hikâyesi bize ağırlıklı olarak 1724'te yayımlanan tek bir kaynaktan ulaşmaktadır.",
+      "tts": {
+        "text": "Hikâyesi bize ağırlıklı olarak bin yedi yüz yirmi dörtte yayımlanan tek bir kaynaktan ulaşmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kaynak, Kaptan Charles Johnson'ın en kötü şöhretli korsanlar hakkındaki kitabıdır.",
+      "text_markdown": "Bu kaynak, Kaptan Charles Johnson'ın en kötü şöhretli korsanlar hakkındaki kitabıdır.",
+      "tts": {
+        "text": "Bu kaynak, Kaptan Charles Johnson'ın en kötü şöhretli korsanlar hakkındaki kitabıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anne'in hikâyesinin ne kadarının gerçek, ne kadarının efsane olduğundan emin olamayız.",
+      "text_markdown": "Anne'in hikâyesinin ne kadarının gerçek, ne kadarının efsane olduğundan emin olamayız.",
+      "tts": {
+        "text": "Anne'in hikâyesinin ne kadarının gerçek, ne kadarının efsane olduğundan emin olamayız.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bildiklerimiz bile yeterince olağanüstüdür.",
+      "text_markdown": "Bildiklerimiz bile yeterince olağanüstüdür.",
+      "tts": {
+        "text": "Bildiklerimiz bile yeterince olağanüstüdür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu onun hikâyesidir; tarihî kayıtların izin verdiği kadar dürüstçe anlatılmıştır.",
+      "text_markdown": "Bu onun hikâyesidir; tarihî kayıtların izin verdiği kadar dürüstçe anlatılmıştır.",
+      "tts": {
+        "text": "Bu onun hikâyesidir; tarihî kayıtların izin verdiği kadar dürüstçe anlatılmıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Anne Bonny'nin Bildiği Dünya",
+      "text_markdown": "Anne Bonny'nin Bildiği Dünya"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny, tarihçilerin Korsanlığın Altın Çağı dediği bir dönemde yaşadı.",
+      "text_markdown": "Anne Bonny, tarihçilerin Korsanlığın Altın Çağı dediği bir dönemde yaşadı.",
+      "tts": {
+        "text": "Anne Bonny, tarihçilerin Korsanlığın Altın Çağı dediği bir dönemde yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu dönem kabaca 1680'den 1730'a kadar sürdü.",
+      "text_markdown": "Bu dönem kabaca 1680'den 1730'a kadar sürdü.",
+      "tts": {
+        "text": "Bu dönem kabaca bin altı yüz seksenden bin yedi yüz otuza kadar sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Binlerce korsan Karayipler'de, Atlantik'te ve Hint Okyanusu'nda dolaşıyordu.",
+      "text_markdown": "Binlerce korsan Karayipler'de, Atlantik'te ve Hint Okyanusu'nda dolaşıyordu.",
+      "tts": {
+        "text": "Binlerce korsan Karayipler'de, Atlantik'te ve Hint Okyanusu'nda dolaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karayip Denizi, Kuzey Amerika ile Güney Amerika arasında yer alır.",
+      "text_markdown": "Karayip Denizi, Kuzey Amerika ile Güney Amerika arasında yer alır.",
+      "tts": {
+        "text": "Karayip Denizi, Kuzey Amerika ile Güney Amerika arasında yer alır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Büyüklü küçüklü yüzlerce adayla bezelidir.",
+      "text_markdown": "Büyüklü küçüklü yüzlerce adayla bezelidir.",
+      "tts": {
+        "text": "Büyüklü küçüklü yüzlerce adayla bezelidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1700'lerin başında Avrupa imparatorlukları bu adalar için sürekli savaştı.",
+      "text_markdown": "1700'lerin başında Avrupa imparatorlukları bu adalar için sürekli savaştı.",
+      "tts": {
+        "text": "Bin yedi yüzlerin başında Avrupa imparatorlukları bu adalar için sürekli savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanya, İngiltere, Fransa ve Hollanda'nın tümü orada toprak iddia ediyordu.",
+      "text_markdown": "İspanya, İngiltere, Fransa ve Hollanda'nın tümü orada toprak iddia ediyordu.",
+      "tts": {
+        "text": "İspanya, İngiltere, Fransa ve Hollanda'nın tümü orada toprak iddia ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karayip ekonomisi şeker, tütün ve köle emeğine dayanıyordu.",
+      "text_markdown": "Karayip ekonomisi şeker, tütün ve köle emeğine dayanıyordu.",
+      "tts": {
+        "text": "Karayip ekonomisi şeker, tütün ve köle emeğine dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jamaika ve Barbados gibi adalardaki devasa şeker plantasyonları muazzam zenginlik yarattı.",
+      "text_markdown": "Jamaika ve Barbados gibi adalardaki devasa şeker plantasyonları muazzam zenginlik yarattı.",
+      "tts": {
+        "text": "Jamaika ve Barbados gibi adalardaki devasa şeker plantasyonları muazzam zenginlik yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu zenginlik gemilerle taşınıyordu ve Karayipler'i korsanlar için karşı konulmaz kılıyordu.",
+      "text_markdown": "Bu zenginlik gemilerle taşınıyordu ve Karayipler'i korsanlar için karşı konulmaz kılıyordu.",
+      "tts": {
+        "text": "Bu zenginlik gemilerle taşınıyordu ve Karayipler'i korsanlar için karşı konulmaz kılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şeker, Atlantik dünyasının en değerli malıydı.",
+      "text_markdown": "Şeker, Atlantik dünyasının en değerli malıydı.",
+      "tts": {
+        "text": "Şeker, Atlantik dünyasının en değerli malıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üretimi, vahşi koşullarda muazzam miktarda emek gerektiriyordu.",
+      "text_markdown": "Üretimi, vahşi koşullarda muazzam miktarda emek gerektiriyordu.",
+      "tts": {
+        "text": "Üretimi, vahşi koşullarda muazzam miktarda emek gerektiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Milyonlarca köleleştirilmiş Afrikalı, plantasyonlarda çalıştırılmak üzere Karayipler'e getirildi.",
+      "text_markdown": "Milyonlarca köleleştirilmiş Afrikalı, plantasyonlarda çalıştırılmak üzere Karayipler'e getirildi.",
+      "tts": {
+        "text": "Milyonlarca köleleştirilmiş Afrikalı, plantasyonlarda çalıştırılmak üzere Karayipler'e getirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şekerden elde edilen kârlar imparatorlukları finanse etti ve Avrupa'da büyük şehirler inşa etti.",
+      "text_markdown": "Şekerden elde edilen kârlar imparatorlukları finanse etti ve Avrupa'da büyük şehirler inşa etti.",
+      "tts": {
+        "text": "Şekerden elde edilen kârlar imparatorlukları finanse etti ve Avrupa'da büyük şehirler inşa etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol Veraset Savaşı 1713'te sona erdi.",
+      "text_markdown": "İspanyol Veraset Savaşı 1713'te sona erdi.",
+      "tts": {
+        "text": "İspanyol Veraset Savaşı bin yedi yüz on üçte sona erdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu savaş sırasında hükümetler, korsan avcısı olarak bilinen özel gemi kaptanlarını tuttu.",
+      "text_markdown": "Bu savaş sırasında hükümetler, korsan avcısı olarak bilinen özel gemi kaptanlarını tuttu.",
+      "tts": {
+        "text": "Bu savaş sırasında hükümetler, korsan avcısı olarak bilinen özel gemi kaptanlarını tuttu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan avcıları, kaptan patentası denilen resmi belgeler taşırdı.",
+      "text_markdown": "Korsan avcıları, kaptan patentası denilen resmi belgeler taşırdı.",
+      "tts": {
+        "text": "Korsan avcıları, kaptan patentası denilen resmi belgeler taşırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu belgeler onlara düşman gemilerine saldırma konusunda yasal izin veriyordu.",
+      "text_markdown": "Bu belgeler onlara düşman gemilerine saldırma konusunda yasal izin veriyordu.",
+      "tts": {
+        "text": "Bu belgeler onlara düşman gemilerine saldırma konusunda yasal izin veriyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş bittiğinde binlerce korsan avcısı aniden işsiz kaldı.",
+      "text_markdown": "Savaş bittiğinde binlerce korsan avcısı aniden işsiz kaldı.",
+      "tts": {
+        "text": "Savaş bittiğinde binlerce korsan avcısı aniden işsiz kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğunun denizcilik ve savaşma dışında başka bir becerisi yoktu.",
+      "text_markdown": "Çoğunun denizcilik ve savaşma dışında başka bir becerisi yoktu.",
+      "tts": {
+        "text": "Çoğunun denizcilik ve savaşma dışında başka bir becerisi yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları hayatta kalmanın başka yolunu göremediği için korsanlığa yöneldi.",
+      "text_markdown": "Bazıları hayatta kalmanın başka yolunu göremediği için korsanlığa yöneldi.",
+      "tts": {
+        "text": "Bazıları hayatta kalmanın başka yolunu göremediği için korsanlığa yöneldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğerleri yoksulluk yerine özgürlüğü tercih ettikleri için korsan oldu.",
+      "text_markdown": "Diğerleri yoksulluk yerine özgürlüğü tercih ettikleri için korsan oldu.",
+      "tts": {
+        "text": "Diğerleri yoksulluk yerine özgürlüğü tercih ettikleri için korsan oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahamalar'daki New Providence Adası'nda bulunan Nassau, bir korsan sığınağına dönüştü.",
+      "text_markdown": "Bahamalar'daki New Providence Adası'nda bulunan Nassau, bir korsan sığınağına dönüştü.",
+      "tts": {
+        "text": "Bahamalar'daki New Providence Adası'nda bulunan Nassau, bir korsan sığınağına dönüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1716'ya kadar yüzlerce korsan orada toplanmıştı.",
+      "text_markdown": "1716'ya kadar yüzlerce korsan orada toplanmıştı.",
+      "tts": {
+        "text": "Bin yedi yüz on altıya kadar yüzlerce korsan orada toplanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı tarihçilerin korsan cumhuriyeti dediği şeyi yarattılar.",
+      "text_markdown": "Bazı tarihçilerin korsan cumhuriyeti dediği şeyi yarattılar.",
+      "tts": {
+        "text": "Bazı tarihçilerin korsan cumhuriyeti dediği şeyi yarattılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nassau'nun iyi bir limanı, tatlı suyu vardı ve donanmaların saldırması zordu.",
+      "text_markdown": "Nassau'nun iyi bir limanı, tatlı suyu vardı ve donanmaların saldırması zordu.",
+      "tts": {
+        "text": "Nassau'nun iyi bir limanı, tatlı suyu vardı ve donanmaların saldırması zordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau'daki korsan cumhuriyetinin resmi bir hükümeti yoktu.",
+      "text_markdown": "Nassau'daki korsan cumhuriyetinin resmi bir hükümeti yoktu.",
+      "tts": {
+        "text": "Nassau'daki korsan cumhuriyetinin resmi bir hükümeti yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar kendi liderlerini seçiyor ve anlaşmazlıkları kendi aralarında çözüyordu.",
+      "text_markdown": "Korsanlar kendi liderlerini seçiyor ve anlaşmazlıkları kendi aralarında çözüyordu.",
+      "tts": {
+        "text": "Korsanlar kendi liderlerini seçiyor ve anlaşmazlıkları kendi aralarında çözüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tavernalar, genelevler ve pazarlar çalıntı mallarla gelişiyordu.",
+      "text_markdown": "Tavernalar, genelevler ve pazarlar çalıntı mallarla gelişiyordu.",
+      "tts": {
+        "text": "Tavernalar, genelevler ve pazarlar çalıntı mallarla gelişiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Batı Yarımküre'nin en kanunsuz yerlerinden biriydi.",
+      "text_markdown": "Batı Yarımküre'nin en kanunsuz yerlerinden biriydi.",
+      "tts": {
+        "text": "Batı Yarımküre'nin en kanunsuz yerlerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718'de İngiliz Krallığı, Woodes Rogers'ı yeni vali olarak Nassau'ya gönderdi.",
+      "text_markdown": "1718'de İngiliz Krallığı, Woodes Rogers'ı yeni vali olarak Nassau'ya gönderdi.",
+      "tts": {
+        "text": "Bin yedi yüz on sekizde İngiliz Krallığı, Woodes Rogers'ı yeni vali olarak Nassau'ya gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rogers, korsanları iyi anlayan eski bir korsan avcısıydı.",
+      "text_markdown": "Rogers, korsanları iyi anlayan eski bir korsan avcısıydı.",
+      "tts": {
+        "text": "Rogers, korsanları iyi anlayan eski bir korsan avcısıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teslim olup bu işi bırakan herhangi bir korsana kraliyet affı teklif etti.",
+      "text_markdown": "Teslim olup bu işi bırakan herhangi bir korsana kraliyet affı teklif etti.",
+      "tts": {
+        "text": "Teslim olup bu işi bırakan herhangi bir korsana kraliyet affı teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçok korsan teklifi kabul etti, ama hepsi samimi değildi.",
+      "text_markdown": "Birçok korsan teklifi kabul etti, ama hepsi samimi değildi.",
+      "tts": {
+        "text": "Birçok korsan teklifi kabul etti, ama hepsi samimi değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rogers ayrıca affı reddeden korsanların asılacağını açıkça belirtti.",
+      "text_markdown": "Rogers ayrıca affı reddeden korsanların asılacağını açıkça belirtti.",
+      "tts": {
+        "text": "Rogers ayrıca affı reddeden korsanların asılacağını açıkça belirtti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ciddi olduğunu kanıtlamak için birkaç korsanı alenen idam ettirdi.",
+      "text_markdown": "Ciddi olduğunu kanıtlamak için birkaç korsanı alenen idam ettirdi.",
+      "tts": {
+        "text": "Ciddi olduğunu kanıtlamak için birkaç korsanı alenen idam ettirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nassau'daki korsan cumhuriyeti dönemi sona ermek üzereydi.",
+      "text_markdown": "Nassau'daki korsan cumhuriyeti dönemi sona ermek üzereydi.",
+      "tts": {
+        "text": "Nassau'daki korsan cumhuriyeti dönemi sona ermek üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu arada Kuzey Amerika'daki İngiliz sömürgeleri hızla büyüyordu.",
+      "text_markdown": "Bu arada Kuzey Amerika'daki İngiliz sömürgeleri hızla büyüyordu.",
+      "tts": {
+        "text": "Bu arada Kuzey Amerika'daki İngiliz sömürgeleri hızla büyüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güney Karolina sömürgesindeki Charleston, en zengin limanlardan biriydi.",
+      "text_markdown": "Güney Karolina sömürgesindeki Charleston, en zengin limanlardan biriydi.",
+      "tts": {
+        "text": "Güney Karolina sömürgesindeki Charleston, en zengin limanlardan biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pirinç, çivit ve köle ticaretinin merkeziydi.",
+      "text_markdown": "Pirinç, çivit ve köle ticaretinin merkeziydi.",
+      "tts": {
+        "text": "Pirinç, çivit ve köle ticaretinin merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Charleston'ın tüccarları hırslı ve çoğu zaman acımasızdı.",
+      "text_markdown": "Charleston'ın tüccarları hırslı ve çoğu zaman acımasızdı.",
+      "tts": {
+        "text": "Charleston'ın tüccarları hırslı ve çoğu zaman acımasızdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700'lerin başında İngiliz toplumunda kadınların çok az seçeneği vardı.",
+      "text_markdown": "1700'lerin başında İngiliz toplumunda kadınların çok az seçeneği vardı.",
+      "tts": {
+        "text": "Bin yedi yüzlerin başında İngiliz toplumunda kadınların çok az seçeneği vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mülk sahibi olamaz, oy kullanamaz veya kamu görevi üstlenemezlerdi.",
+      "text_markdown": "Mülk sahibi olamaz, oy kullanamaz veya kamu görevi üstlenemezlerdi.",
+      "tts": {
+        "text": "Mülk sahibi olamaz, oy kullanamaz veya kamu görevi üstlenemezlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilikle birlikte bir kadının yasal kimliği kocasının kimliğine dahil olurdu.",
+      "text_markdown": "Evlilikle birlikte bir kadının yasal kimliği kocasının kimliğine dahil olurdu.",
+      "tts": {
+        "text": "Evlilikle birlikte bir kadının yasal kimliği kocasının kimliğine dahil olurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlarla birlikte savaşan bir kadın fikri neredeyse akıl almaz bir şeydi.",
+      "text_markdown": "Korsanlarla birlikte savaşan bir kadın fikri neredeyse akıl almaz bir şeydi.",
+      "tts": {
+        "text": "Korsanlarla birlikte savaşan bir kadın fikri neredeyse akıl almaz bir şeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yine de deniz, toplumun kurallarına uymayı reddeden insanları her zaman cezbetmişti.",
+      "text_markdown": "Yine de deniz, toplumun kurallarına uymayı reddeden insanları her zaman cezbetmişti.",
+      "tts": {
+        "text": "Yine de deniz, toplumun kurallarına uymayı reddeden insanları her zaman cezbetmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan gemileri kendi kurallarıyla işlerdi ve bazı mürettebatlar şaşırtıcı derecede demokratikti.",
+      "text_markdown": "Korsan gemileri kendi kurallarıyla işlerdi ve bazı mürettebatlar şaşırtıcı derecede demokratikti.",
+      "tts": {
+        "text": "Korsan gemileri kendi kurallarıyla işlerdi ve bazı mürettebatlar şaşırtıcı derecede demokratikti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaptanlar seçimle belirlenir ve oylama ile görevden alınabilirdi.",
+      "text_markdown": "Kaptanlar seçimle belirlenir ve oylama ile görevden alınabilirdi.",
+      "tts": {
+        "text": "Kaptanlar seçimle belirlenir ve oylama ile görevden alınabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ganimet, üzerinde anlaşılan paylara göre bölüştürülürdü.",
+      "text_markdown": "Ganimet, üzerinde anlaşılan paylara göre bölüştürülürdü.",
+      "tts": {
+        "text": "Ganimet, üzerinde anlaşılan paylara göre bölüştürülürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny Nassau'ya vardığında girdiği dünya buydu.",
+      "text_markdown": "Anne Bonny Nassau'ya vardığında girdiği dünya buydu.",
+      "tts": {
+        "text": "Anne Bonny Nassau'ya vardığında girdiği dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şiddet, fırsat ve radikal özgürlük dünyasıydı.",
+      "text_markdown": "Şiddet, fırsat ve radikal özgürlük dünyasıydı.",
+      "tts": {
+        "text": "Şiddet, fırsat ve radikal özgürlük dünyasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "Anne Bonny'nin Bildiği Dünya",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aynı zamanda hızla kaybolan bir dünyaydı.",
+      "text_markdown": "Aynı zamanda hızla kaybolan bir dünyaydı.",
+      "tts": {
+        "text": "Aynı zamanda hızla kaybolan bir dünyaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny, 1697 yılı civarında İrlanda'nın Cork kontluğundaki küçük bir liman kasabası olan Kinsale'de doğdu.",
+      "text_markdown": "Anne Bonny, 1697 yılı civarında İrlanda'nın Cork kontluğundaki küçük bir liman kasabası olan Kinsale'de doğdu.",
+      "tts": {
+        "text": "Anne Bonny, bin altı yüz doksan yedi yılı civarında İrlanda'nın Cork kontluğundaki küçük bir liman kasabası olan Kinsale'de doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı kaynaklar doğumunu 1698 veya 1700 olarak gösterir, ancak çoğu tarihçi 1697'yi tercih eder.",
+      "text_markdown": "Bazı kaynaklar doğumunu 1698 veya 1700 olarak gösterir, ancak çoğu tarihçi 1697'yi tercih eder.",
+      "tts": {
+        "text": "Bazı kaynaklar doğumunu bin altı yüz doksan sekiz veya bin yedi yüz olarak gösterir, ancak çoğu tarihçi bin altı yüz doksan yediyi tercih eder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Babası, Kinsale'de başarılı bir avukat olan William Cormac'tı.",
+      "text_markdown": "Babası, Kinsale'de başarılı bir avukat olan William Cormac'tı.",
+      "tts": {
+        "text": "Babası, Kinsale'de başarılı bir avukat olan William Cormac'tı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Annesi, Cormac ailesinde hizmetçi olan Mary Brennan'dı.",
+      "text_markdown": "Annesi, Cormac ailesinde hizmetçi olan Mary Brennan'dı.",
+      "tts": {
+        "text": "Annesi, Cormac ailesinde hizmetçi olan Mary Brennan'dı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anne, evlilik dışı doğan gayri meşru kızlarıydı.",
+      "text_markdown": "Anne, evlilik dışı doğan gayri meşru kızlarıydı.",
+      "tts": {
+        "text": "Anne, evlilik dışı doğan gayri meşru kızlarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "On sekizinci yüzyıl İrlandası'nda bu ciddi bir skandaldı.",
+      "text_markdown": "On sekizinci yüzyıl İrlandası'nda bu ciddi bir skandaldı.",
+      "tts": {
+        "text": "On sekizinci yüzyıl İrlandası'nda bu ciddi bir skandaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "William Cormac'ın karısı ilişkiyi keşfetti ve onu terk etti.",
+      "text_markdown": "William Cormac'ın karısı ilişkiyi keşfetti ve onu terk etti.",
+      "tts": {
+        "text": "William Cormac'ın karısı ilişkiyi keşfetti ve onu terk etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Skandal, Kinsale'deki hukuk mesleğini mahvetti.",
+      "text_markdown": "Skandal, Kinsale'deki hukuk mesleğini mahvetti.",
+      "tts": {
+        "text": "Skandal, Kinsale'deki hukuk mesleğini mahvetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Müvekkilleri onu terk etti ve itibarı yerle bir oldu.",
+      "text_markdown": "Müvekkilleri onu terk etti ve itibarı yerle bir oldu.",
+      "tts": {
+        "text": "Müvekkilleri onu terk etti ve itibarı yerle bir oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cormac, Amerikan sömürgelerinde yeniden başlamaya karar verdi.",
+      "text_markdown": "Cormac, Amerikan sömürgelerinde yeniden başlamaya karar verdi.",
+      "tts": {
+        "text": "Cormac, Amerikan sömürgelerinde yeniden başlamaya karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mary Brennan ve küçük Anne'i yanına alarak Güney Karolina'daki Charleston'a gitti.",
+      "text_markdown": "Mary Brennan ve küçük Anne'i yanına alarak Güney Karolina'daki Charleston'a gitti.",
+      "tts": {
+        "text": "Mary Brennan ve küçük Anne'i yanına alarak Güney Karolina'daki Charleston'a gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İlk başta Anne'i erkek çocuk gibi giydirdi ve ona Andy dedi.",
+      "text_markdown": "İlk başta Anne'i erkek çocuk gibi giydirdi ve ona Andy dedi.",
+      "tts": {
+        "text": "İlk başta Anne'i erkek çocuk gibi giydirdi ve ona Andy dedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnsanlara çocuğun bir akrabasının oğlu olduğunu ve onu hukuk katibi olarak yetiştirdiğini söyledi.",
+      "text_markdown": "İnsanlara çocuğun bir akrabasının oğlu olduğunu ve onu hukuk katibi olarak yetiştirdiğini söyledi.",
+      "tts": {
+        "text": "İnsanlara çocuğun bir akrabasının oğlu olduğunu ve onu hukuk katibi olarak yetiştirdiğini söyledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aldatmaca uzun sürmedi, ama Cormac yine de Charleston'da başarılı oldu.",
+      "text_markdown": "Aldatmaca uzun sürmedi, ama Cormac yine de Charleston'da başarılı oldu.",
+      "tts": {
+        "text": "Aldatmaca uzun sürmedi, ama Cormac yine de Charleston'da başarılı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başarılı bir tüccar oldu ve sonunda bir plantasyon edindi.",
+      "text_markdown": "Başarılı bir tüccar oldu ve sonunda bir plantasyon edindi.",
+      "tts": {
+        "text": "Başarılı bir tüccar oldu ve sonunda bir plantasyon edindi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plantasyonda muhtemelen bölgenin başlıca ticari ürünleri olan pirinç veya çivit yetiştiriliyordu.",
+      "text_markdown": "Plantasyonda muhtemelen bölgenin başlıca ticari ürünleri olan pirinç veya çivit yetiştiriliyordu.",
+      "tts": {
+        "text": "Plantasyonda muhtemelen bölgenin başlıca ticari ürünleri olan pirinç veya çivit yetiştiriliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anne, çoğu sömürge çocuğuyla karşılaştırıldığında görece konforlu bir ortamda büyüdü.",
+      "text_markdown": "Anne, çoğu sömürge çocuğuyla karşılaştırıldığında görece konforlu bir ortamda büyüdü.",
+      "tts": {
+        "text": "Anne, çoğu sömürge çocuğuyla karşılaştırıldığında görece konforlu bir ortamda büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne'in geride bıraktığı kasaba Kinsale, İrlanda'nın güney kıyısında işlek bir limandı.",
+      "text_markdown": "Anne'in geride bıraktığı kasaba Kinsale, İrlanda'nın güney kıyısında işlek bir limandı.",
+      "tts": {
+        "text": "Anne'in geride bıraktığı kasaba Kinsale, İrlanda'nın güney kıyısında işlek bir limandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz ve İspanyol kuvvetleri arasındaki ünlü bir savaşın meydana geldiği yerdi.",
+      "text_markdown": "İngiliz ve İspanyol kuvvetleri arasındaki ünlü bir savaşın meydana geldiği yerdi.",
+      "tts": {
+        "text": "İngiliz ve İspanyol kuvvetleri arasındaki ünlü bir savaşın meydana geldiği yerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kasabanın nüfusu İrlandalı ve İngiliz yerleşimcilerin karışımıydı.",
+      "text_markdown": "Kasabanın nüfusu İrlandalı ve İngiliz yerleşimcilerin karışımıydı.",
+      "tts": {
+        "text": "Kasabanın nüfusu İrlandalı ve İngiliz yerleşimcilerin karışımıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anne bir daha doğduğu topraklara dönmeyecekti.",
+      "text_markdown": "Anne bir daha doğduğu topraklara dönmeyecekti.",
+      "tts": {
+        "text": "Anne bir daha doğduğu topraklara dönmeyecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan Johnson'ın anlatımına göre Anne, çocukluktan beri sert bir mizaca sahipti.",
+      "text_markdown": "Kaptan Johnson'ın anlatımına göre Anne, çocukluktan beri sert bir mizaca sahipti.",
+      "tts": {
+        "text": "Kaptan Johnson'ın anlatımına göre Anne, çocukluktan beri sert bir mizaca sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir hikâyeye göre öfke nöbetinde bir sofra bıçağıyla hizmetçi kızı bıçaklamıştı.",
+      "text_markdown": "Bir hikâyeye göre öfke nöbetinde bir sofra bıçağıyla hizmetçi kızı bıçaklamıştı.",
+      "tts": {
+        "text": "Bir hikâyeye göre öfke nöbetinde bir sofra bıçağıyla hizmetçi kızı bıçaklamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu hikâye ister doğru ister abartılmış olsun, şiddete yatkınlık konusundaki ününü pekiştirdi.",
+      "text_markdown": "Bu hikâye ister doğru ister abartılmış olsun, şiddete yatkınlık konusundaki ününü pekiştirdi.",
+      "tts": {
+        "text": "Bu hikâye ister doğru ister abartılmış olsun, şiddete yatkınlık konusundaki ününü pekiştirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne'in annesi Mary Brennan, Anne daha gençken öldü.",
+      "text_markdown": "Anne'in annesi Mary Brennan, Anne daha gençken öldü.",
+      "tts": {
+        "text": "Anne'in annesi Mary Brennan, Anne daha gençken öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mary'nin ölümünün kesin tarihi ve nedeni bilinmemektedir.",
+      "text_markdown": "Mary'nin ölümünün kesin tarihi ve nedeni bilinmemektedir.",
+      "tts": {
+        "text": "Mary'nin ölümünün kesin tarihi ve nedeni bilinmemektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bundan sonra Anne ağırlıklı olarak babası tarafından büyütüldü.",
+      "text_markdown": "Bundan sonra Anne ağırlıklı olarak babası tarafından büyütüldü.",
+      "tts": {
+        "text": "Bundan sonra Anne ağırlıklı olarak babası tarafından büyütüldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ergenlik çağında Anne'in kızıl saçlı olduğu ve çekici bulunduğu söylenir.",
+      "text_markdown": "Ergenlik çağında Anne'in kızıl saçlı olduğu ve çekici bulunduğu söylenir.",
+      "tts": {
+        "text": "Ergenlik çağında Anne'in kızıl saçlı olduğu ve çekici bulunduğu söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayrıca iradeli ve kontrol edilmesi güç biri olduğu da söylenirdi.",
+      "text_markdown": "Ayrıca iradeli ve kontrol edilmesi güç biri olduğu da söylenirdi.",
+      "tts": {
+        "text": "Ayrıca iradeli ve kontrol edilmesi güç biri olduğu da söylenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babası, zengin bir adamla evlenip ailenin itibarını artırmasını umuyordu.",
+      "text_markdown": "Babası, zengin bir adamla evlenip ailenin itibarını artırmasını umuyordu.",
+      "tts": {
+        "text": "Babası, zengin bir adamla evlenip ailenin itibarını artırmasını umuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On sekizinci yüzyılın başlarında Charleston, sert bir sınır kasabasıydı.",
+      "text_markdown": "On sekizinci yüzyılın başlarında Charleston, sert bir sınır kasabasıydı.",
+      "tts": {
+        "text": "On sekizinci yüzyılın başlarında Charleston, sert bir sınır kasabasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zengin çiftçiler, denizciler, askerler ve tüccarlarla yan yana yaşardı.",
+      "text_markdown": "Zengin çiftçiler, denizciler, askerler ve tüccarlarla yan yana yaşardı.",
+      "tts": {
+        "text": "Zengin çiftçiler, denizciler, askerler ve tüccarlarla yan yana yaşardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Liman, Atlantik dünyasının her yerinden gemiler getirirdi.",
+      "text_markdown": "Liman, Atlantik dünyasının her yerinden gemiler getirirdi.",
+      "tts": {
+        "text": "Liman, Atlantik dünyasının her yerinden gemiler getirirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anne, deniz hikâyeleriyle çevrili bir şekilde büyüdü.",
+      "text_markdown": "Anne, deniz hikâyeleriyle çevrili bir şekilde büyüdü.",
+      "tts": {
+        "text": "Anne, deniz hikâyeleriyle çevrili bir şekilde büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunun yerine, 1718 civarında Anne, James Bonny ile evlendi.",
+      "text_markdown": "Bunun yerine, 1718 civarında Anne, James Bonny ile evlendi.",
+      "tts": {
+        "text": "Bunun yerine, bin yedi yüz on sekiz civarında Anne, James Bonny ile evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "James Bonny, parası ve geleceği olmayan küçük çaplı bir korsandı.",
+      "text_markdown": "James Bonny, parası ve geleceği olmayan küçük çaplı bir korsandı.",
+      "tts": {
+        "text": "James Bonny, parası ve geleceği olmayan küçük çaplı bir korsandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı tarihçiler, Anne'in babasının plantasyonunu ele geçirme umuduyla onunla evlendiğine inanır.",
+      "text_markdown": "Bazı tarihçiler, Anne'in babasının plantasyonunu ele geçirme umuduyla onunla evlendiğine inanır.",
+      "tts": {
+        "text": "Bazı tarihçiler, Anne'in babasının plantasyonunu ele geçirme umuduyla onunla evlendiğine inanır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "William Cormac bu evliliğe çok kızdı.",
+      "text_markdown": "William Cormac bu evliliğe çok kızdı.",
+      "tts": {
+        "text": "William Cormac bu evliliğe çok kızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anne'i tamamen evlatlıktan reddetti ve ona herhangi bir miras vermeyi reddetti.",
+      "text_markdown": "Anne'i tamamen evlatlıktan reddetti ve ona herhangi bir miras vermeyi reddetti.",
+      "tts": {
+        "text": "Anne'i tamamen evlatlıktan reddetti ve ona herhangi bir miras vermeyi reddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir efsaneye göre Anne, intikam olarak babasının plantasyonunu ateşe verdi.",
+      "text_markdown": "Bir efsaneye göre Anne, intikam olarak babasının plantasyonunu ateşe verdi.",
+      "tts": {
+        "text": "Bir efsaneye göre Anne, intikam olarak babasının plantasyonunu ateşe verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tarihçiler bunun gerçekten olup olmadığını doğrulayamıyor.",
+      "text_markdown": "Tarihçiler bunun gerçekten olup olmadığını doğrulayamıyor.",
+      "tts": {
+        "text": "Tarihçiler bunun gerçekten olup olmadığını doğrulayamıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne ve James Bonny, Bahamalar'daki Nassau'ya gitti.",
+      "text_markdown": "Anne ve James Bonny, Bahamalar'daki Nassau'ya gitti.",
+      "tts": {
+        "text": "Anne ve James Bonny, Bahamalar'daki Nassau'ya gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vardıklarında Nassau hâlâ kanunsuz bir korsan sığınağıydı.",
+      "text_markdown": "Vardıklarında Nassau hâlâ kanunsuz bir korsan sığınağıydı.",
+      "tts": {
+        "text": "Vardıklarında Nassau hâlâ kanunsuz bir korsan sığınağıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "James Bonny, Vali Woodes Rogers için muhbir olarak çalışmaya başladı.",
+      "text_markdown": "James Bonny, Vali Woodes Rogers için muhbir olarak çalışmaya başladı.",
+      "tts": {
+        "text": "James Bonny, Vali Woodes Rogers için muhbir olarak çalışmaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Para karşılığında korsan faaliyetlerini bildirdi.",
+      "text_markdown": "Para karşılığında korsan faaliyetlerini bildirdi.",
+      "tts": {
+        "text": "Para karşılığında korsan faaliyetlerini bildirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne, kocasının muhbirlik işinden nefret ediyordu.",
+      "text_markdown": "Anne, kocasının muhbirlik işinden nefret ediyordu.",
+      "tts": {
+        "text": "Anne, kocasının muhbirlik işinden nefret ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanları yetkililerden çok daha ilginç buluyordu.",
+      "text_markdown": "Korsanları yetkililerden çok daha ilginç buluyordu.",
+      "tts": {
+        "text": "Korsanları yetkililerden çok daha ilginç buluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nassau'nun tavernalarında ve rıhtımlarında vakit geçirmeye başladı.",
+      "text_markdown": "Nassau'nun tavernalarında ve rıhtımlarında vakit geçirmeye başladı.",
+      "tts": {
+        "text": "Nassau'nun tavernalarında ve rıhtımlarında vakit geçirmeye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hayatını sonsuza dek değiştiren yer orası oldu.",
+      "text_markdown": "Hayatını sonsuza dek değiştiren yer orası oldu.",
+      "tts": {
+        "text": "Hayatını sonsuza dek değiştiren yer orası oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Yükseliş",
+      "text_markdown": "Yükseliş"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau'da Anne Bonny, John Rackham adında bir korsan kaptanıyla tanıştı.",
+      "text_markdown": "Nassau'da Anne Bonny, John Rackham adında bir korsan kaptanıyla tanıştı.",
+      "tts": {
+        "text": "Nassau'da Anne Bonny, John Rackham adında bir korsan kaptanıyla tanıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rackham, giydiği renkli patiska kıyafetler nedeniyle Calico Jack olarak bilinirdi.",
+      "text_markdown": "Rackham, giydiği renkli patiska kıyafetler nedeniyle Calico Jack olarak bilinirdi.",
+      "tts": {
+        "text": "Rackham, giydiği renkli patiska kıyafetler nedeniyle Calico Jack olarak bilinirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çekici, cesur ve James Bonny'den tamamen farklıydı.",
+      "text_markdown": "Çekici, cesur ve James Bonny'den tamamen farklıydı.",
+      "tts": {
+        "text": "Çekici, cesur ve James Bonny'den tamamen farklıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne ve Calico Jack tutkulu bir ilişkiye başladı.",
+      "text_markdown": "Anne ve Calico Jack tutkulu bir ilişkiye başladı.",
+      "tts": {
+        "text": "Anne ve Calico Jack tutkulu bir ilişkiye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rackham, eş satışı denilen bir işlemle Anne'i kocasından satın almayı teklif etti.",
+      "text_markdown": "Rackham, eş satışı denilen bir işlemle Anne'i kocasından satın almayı teklif etti.",
+      "tts": {
+        "text": "Rackham, eş satışı denilen bir işlemle Anne'i kocasından satın almayı teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eş satışı, sömürge dünyasının bazı bölgelerinde kaba ama tanınmış bir gelenekti.",
+      "text_markdown": "Eş satışı, sömürge dünyasının bazı bölgelerinde kaba ama tanınmış bir gelenekti.",
+      "tts": {
+        "text": "Eş satışı, sömürge dünyasının bazı bölgelerinde kaba ama tanınmış bir gelenekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "James Bonny teklifi reddetti ve Vali Rogers'a şikâyette bulundu.",
+      "text_markdown": "James Bonny teklifi reddetti ve Vali Rogers'a şikâyette bulundu.",
+      "tts": {
+        "text": "James Bonny teklifi reddetti ve Vali Rogers'a şikâyette bulundu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rogers, Anne kocasına dönmezse halkın önünde kırbaçlanacağını tehdidinde bulundu.",
+      "text_markdown": "Rogers, Anne kocasına dönmezse halkın önünde kırbaçlanacağını tehdidinde bulundu.",
+      "tts": {
+        "text": "Rogers, Anne kocasına dönmezse halkın önünde kırbaçlanacağını tehdidinde bulundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anne'in itaat etmeye niyeti yoktu.",
+      "text_markdown": "Anne'in itaat etmeye niyeti yoktu.",
+      "tts": {
+        "text": "Anne'in itaat etmeye niyeti yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun yerine o ve Calico Jack, Nassau limanından bir süvari gemisi çalıp yelken açtı.",
+      "text_markdown": "Bunun yerine o ve Calico Jack, Nassau limanından bir süvari gemisi çalıp yelken açtı.",
+      "tts": {
+        "text": "Bunun yerine o ve Calico Jack, Nassau limanından bir süvari gemisi çalıp yelken açtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rackham daha önce Rogers'tan Kral'ın Affı'nı kabul etmişti.",
+      "text_markdown": "Rackham daha önce Rogers'tan Kral'ın Affı'nı kabul etmişti.",
+      "tts": {
+        "text": "Rackham daha önce Rogers'tan Kral'ın Affı'nı kabul etmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlığa dönerek kendini yeniden kanun kaçağı yaptı.",
+      "text_markdown": "Korsanlığa dönerek kendini yeniden kanun kaçağı yaptı.",
+      "tts": {
+        "text": "Korsanlığa dönerek kendini yeniden kanun kaçağı yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anne Bonny, mürettebatın tam bir üyesi olarak onunla birlikte yelken açtı.",
+      "text_markdown": "Anne Bonny, mürettebatın tam bir üyesi olarak onunla birlikte yelken açtı.",
+      "tts": {
+        "text": "Anne Bonny, mürettebatın tam bir üyesi olarak onunla birlikte yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu andan itibaren o bir korsandı.",
+      "text_markdown": "Bu andan itibaren o bir korsandı.",
+      "tts": {
+        "text": "Bu andan itibaren o bir korsandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne'in kendini erkek kılığına sokup sokmadığı tarihçiler arasında tartışmalıdır.",
+      "text_markdown": "Anne'in kendini erkek kılığına sokup sokmadığı tarihçiler arasında tartışmalıdır.",
+      "tts": {
+        "text": "Anne'in kendini erkek kılığına sokup sokmadığı tarihçiler arasında tartışmalıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı anlatımlara göre sorun çıkarmamak için erkek gibi giyinip savaştı.",
+      "text_markdown": "Bazı anlatımlara göre sorun çıkarmamak için erkek gibi giyinip savaştı.",
+      "tts": {
+        "text": "Bazı anlatımlara göre sorun çıkarmamak için erkek gibi giyinip savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğer anlatımlar, mürettebatın başından beri onun kadın olduğunu bildiğini ileri sürer.",
+      "text_markdown": "Diğer anlatımlar, mürettebatın başından beri onun kadın olduğunu bildiğini ileri sürer.",
+      "tts": {
+        "text": "Diğer anlatımlar, mürettebatın başından beri onun kadın olduğunu bildiğini ileri sürer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her halükârda savaşçı ve denizci olarak kabul edildi.",
+      "text_markdown": "Her halükârda savaşçı ve denizci olarak kabul edildi.",
+      "tts": {
+        "text": "Her halükârda savaşçı ve denizci olarak kabul edildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rackham'ın mürettebatı hızlı ve manevra yapması kolay küçük bir süvari gemisi kullanıyordu.",
+      "text_markdown": "Rackham'ın mürettebatı hızlı ve manevra yapması kolay küçük bir süvari gemisi kullanıyordu.",
+      "tts": {
+        "text": "Rackham'ın mürettebatı hızlı ve manevra yapması kolay küçük bir süvari gemisi kullanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Balıkçı teknelerini, ticaret gemilerini ve küçük ticaret gemilerini hedef aldılar.",
+      "text_markdown": "Balıkçı teknelerini, ticaret gemilerini ve küçük ticaret gemilerini hedef aldılar.",
+      "tts": {
+        "text": "Balıkçı teknelerini, ticaret gemilerini ve küçük ticaret gemilerini hedef aldılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jamaika, Hispaniola ve Küba kıyıları boyunca baskın yaptılar.",
+      "text_markdown": "Jamaika, Hispaniola ve Küba kıyıları boyunca baskın yaptılar.",
+      "tts": {
+        "text": "Jamaika, Hispaniola ve Küba kıyıları boyunca baskın yaptılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Avlanma sahaları batı Karayipler boyunca uzanıyordu.",
+      "text_markdown": "Avlanma sahaları batı Karayipler boyunca uzanıyordu.",
+      "tts": {
+        "text": "Avlanma sahaları batı Karayipler boyunca uzanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rackham, zenginlik ya da güç açısından büyük korsan kaptanlarından biri değildi.",
+      "text_markdown": "Rackham, zenginlik ya da güç açısından büyük korsan kaptanlarından biri değildi.",
+      "tts": {
+        "text": "Rackham, zenginlik ya da güç açısından büyük korsan kaptanlarından biri değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mürettebatı küçüktü, belki bir düzineden yirmi kişiye kadar.",
+      "text_markdown": "Mürettebatı küçüktü, belki bir düzineden yirmi kişiye kadar.",
+      "tts": {
+        "text": "Mürettebatı küçüktü, belki bir düzineden yirmi kişiye kadar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ganimetleri, Karasakal gibi korsanlarınkiyle karşılaştırıldığında mütevazıydı.",
+      "text_markdown": "Ganimetleri, Karasakal gibi korsanlarınkiyle karşılaştırıldığında mütevazıydı.",
+      "tts": {
+        "text": "Ganimetleri, Karasakal gibi korsanlarınkiyle karşılaştırıldığında mütevazıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama Anne Bonny'nin varlığı mürettebatı efsanevi kıldı.",
+      "text_markdown": "Ama Anne Bonny'nin varlığı mürettebatı efsanevi kıldı.",
+      "tts": {
+        "text": "Ama Anne Bonny'nin varlığı mürettebatı efsanevi kıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İşte bu dönemde Anne, Mary Read ile tanıştı.",
+      "text_markdown": "İşte bu dönemde Anne, Mary Read ile tanıştı.",
+      "tts": {
+        "text": "İşte bu dönemde Anne, Mary Read ile tanıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mary Read, Rackham'ın gemisinde yolculuk eden bir başka kadındı.",
+      "text_markdown": "Mary Read, Rackham'ın gemisinde yolculuk eden bir başka kadındı.",
+      "tts": {
+        "text": "Mary Read, Rackham'ın gemisinde yolculuk eden bir başka kadındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mary, hayatının büyük bölümünü erkek kılığında geçirmişti.",
+      "text_markdown": "Mary, hayatının büyük bölümünü erkek kılığında geçirmişti.",
+      "tts": {
+        "text": "Mary, hayatının büyük bölümünü erkek kılığında geçirmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary Read, İngiltere'de doğmuş ve annesi tarafından erkek çocuk olarak büyütülmüştü.",
+      "text_markdown": "Mary Read, İngiltere'de doğmuş ve annesi tarafından erkek çocuk olarak büyütülmüştü.",
+      "tts": {
+        "text": "Mary Read, İngiltere'de doğmuş ve annesi tarafından erkek çocuk olarak büyütülmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Annesi, erkek çocuğa yönelik bir mirası almak için onu erkek kılığına sokmuştu.",
+      "text_markdown": "Annesi, erkek çocuğa yönelik bir mirası almak için onu erkek kılığına sokmuştu.",
+      "tts": {
+        "text": "Annesi, erkek çocuğa yönelik bir mirası almak için onu erkek kılığına sokmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mary, denize yönelmeden önce erkek kılığında İngiliz ordusunda görev yapmıştı.",
+      "text_markdown": "Mary, denize yönelmeden önce erkek kılığında İngiliz ordusunda görev yapmıştı.",
+      "tts": {
+        "text": "Mary, denize yönelmeden önce erkek kılığında İngiliz ordusunda görev yapmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanyol Veraset Savaşı sırasında Flanders'da savaşmıştı.",
+      "text_markdown": "İspanyol Veraset Savaşı sırasında Flanders'da savaşmıştı.",
+      "tts": {
+        "text": "İspanyol Veraset Savaşı sırasında Flanders'da savaşmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary, Flanders'da bir asker arkadaşıyla da evlenmişti.",
+      "text_markdown": "Mary, Flanders'da bir asker arkadaşıyla da evlenmişti.",
+      "tts": {
+        "text": "Mary, Flanders'da bir asker arkadaşıyla da evlenmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kocası öldüğünde deniz yaşamına döndü.",
+      "text_markdown": "Kocası öldüğünde deniz yaşamına döndü.",
+      "tts": {
+        "text": "Kocası öldüğünde deniz yaşamına döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karayipler'e giden ve korsanlar tarafından ele geçirilen bir gemide bulunuyordu.",
+      "text_markdown": "Karayipler'e giden ve korsanlar tarafından ele geçirilen bir gemide bulunuyordu.",
+      "tts": {
+        "text": "Karayipler'e giden ve korsanlar tarafından ele geçirilen bir gemide bulunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rackham'ın mürettebatına böyle katıldı.",
+      "text_markdown": "Rackham'ın mürettebatına böyle katıldı.",
+      "tts": {
+        "text": "Rackham'ın mürettebatına böyle katıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Johnson'ın anlatımına göre Anne başlangıçta Mary'ye ilgi duydu ve onu erkek sandı.",
+      "text_markdown": "Johnson'ın anlatımına göre Anne başlangıçta Mary'ye ilgi duydu ve onu erkek sandı.",
+      "tts": {
+        "text": "Johnson'ın anlatımına göre Anne başlangıçta Mary'ye ilgi duydu ve onu erkek sandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anne, Mary'nin gerçek kimliğini keşfettiğinde yakın arkadaş ve müttefik oldular.",
+      "text_markdown": "Anne, Mary'nin gerçek kimliğini keşfettiğinde yakın arkadaş ve müttefik oldular.",
+      "tts": {
+        "text": "Anne, Mary'nin gerçek kimliğini keşfettiğinde yakın arkadaş ve müttefik oldular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Calico Jack'in gerçeği öğrenmeden önce kıskançlık duyduğu söylenir.",
+      "text_markdown": "Calico Jack'in gerçeği öğrenmeden önce kıskançlık duyduğu söylenir.",
+      "tts": {
+        "text": "Calico Jack'in gerçeği öğrenmeden önce kıskançlık duyduğu söylenir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne ve Mary, ikisi de savaşta kendilerini defalarca kanıtladı.",
+      "text_markdown": "Anne ve Mary, ikisi de savaşta kendilerini defalarca kanıtladı.",
+      "tts": {
+        "text": "Anne ve Mary, ikisi de savaşta kendilerini defalarca kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tanıklar daha sonra iki kadının gemideki en azılı savaşçılar olduğuna tanıklık etti.",
+      "text_markdown": "Tanıklar daha sonra iki kadının gemideki en azılı savaşçılar olduğuna tanıklık etti.",
+      "tts": {
+        "text": "Tanıklar daha sonra iki kadının gemideki en azılı savaşçılar olduğuna tanıklık etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pala ve tabancaları ustalık ve vahşetle kullandılar.",
+      "text_markdown": "Pala ve tabancaları ustalık ve vahşetle kullandılar.",
+      "tts": {
+        "text": "Pala ve tabancaları ustalık ve vahşetle kullandılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mürettebat, Jamaika yakınlarındaki sularda küçük gemilere baskın düzenledi.",
+      "text_markdown": "Mürettebat, Jamaika yakınlarındaki sularda küçük gemilere baskın düzenledi.",
+      "tts": {
+        "text": "Mürettebat, Jamaika yakınlarındaki sularda küçük gemilere baskın düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kargo, yiyecek, silah ele geçirdiler ve zaman zaman yeni mürettebat üyeleri aldılar.",
+      "text_markdown": "Kargo, yiyecek, silah ele geçirdiler ve zaman zaman yeni mürettebat üyeleri aldılar.",
+      "tts": {
+        "text": "Kargo, yiyecek, silah ele geçirdiler ve zaman zaman yeni mürettebat üyeleri aldılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ele geçirilen denizcilerden bazıları, denizde sürüklenmeye bırakılmaktansa korsanlara katılmayı tercih etti.",
+      "text_markdown": "Ele geçirilen denizcilerden bazıları, denizde sürüklenmeye bırakılmaktansa korsanlara katılmayı tercih etti.",
+      "tts": {
+        "text": "Ele geçirilen denizcilerden bazıları, denizde sürüklenmeye bırakılmaktansa korsanlara katılmayı tercih etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karayipler'de korsanlık 1720'ye kadar giderek daha tehlikeli hale geliyordu.",
+      "text_markdown": "Karayipler'de korsanlık 1720'ye kadar giderek daha tehlikeli hale geliyordu.",
+      "tts": {
+        "text": "Karayipler'de korsanlık bin yedi yüz yirmiye kadar giderek daha tehlikeli hale geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz Donanması devriyeleri ve korsan avını artırmıştı.",
+      "text_markdown": "İngiliz Donanması devriyeleri ve korsan avını artırmıştı.",
+      "tts": {
+        "text": "İngiliz Donanması devriyeleri ve korsan avını artırmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vali Rogers, korsan avcılarına korsanları görür görmez yakalamak veya öldürmek yetkisi vermişti.",
+      "text_markdown": "Vali Rogers, korsan avcılarına korsanları görür görmez yakalamak veya öldürmek yetkisi vermişti.",
+      "tts": {
+        "text": "Vali Rogers, korsan avcılarına korsanları görür görmez yakalamak veya öldürmek yetkisi vermişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bölgedeki her korsan mürettebatının çevresindeki ilmik sıkılaşıyordu.",
+      "text_markdown": "Bölgedeki her korsan mürettebatının çevresindeki ilmik sıkılaşıyordu.",
+      "tts": {
+        "text": "Bölgedeki her korsan mürettebatının çevresindeki ilmik sıkılaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tehlikeye rağmen Rackham'ın mürettebatı, 1720 yazı ve sonbaharı boyunca baskınlara devam etti.",
+      "text_markdown": "Tehlikeye rağmen Rackham'ın mürettebatı, 1720 yazı ve sonbaharı boyunca baskınlara devam etti.",
+      "tts": {
+        "text": "Tehlikeye rağmen Rackham'ın mürettebatı, bin yedi yüz yirmi yazı ve sonbaharı boyunca baskınlara devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan hayatını bırakmak istemiyorlar ya da bırakamıyorlardı.",
+      "text_markdown": "Korsan hayatını bırakmak istemiyorlar ya da bırakamıyorlardı.",
+      "tts": {
+        "text": "Korsan hayatını bırakmak istemiyorlar ya da bırakamıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Yükseliş",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şansları tükenmek üzereydi.",
+      "text_markdown": "Şansları tükenmek üzereydi.",
+      "tts": {
+        "text": "Şansları tükenmek üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Doruğunda",
+      "text_markdown": "Doruğunda"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir korsan gemisindeki hayat, romantik hikâyelerin anlattığından çok farklıydı.",
+      "text_markdown": "Bir korsan gemisindeki hayat, romantik hikâyelerin anlattığından çok farklıydı.",
+      "tts": {
+        "text": "Bir korsan gemisindeki hayat, romantik hikâyelerin anlattığından çok farklıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dar, pis ve çoğu zaman sıkıcıydı.",
+      "text_markdown": "Dar, pis ve çoğu zaman sıkıcıydı.",
+      "tts": {
+        "text": "Dar, pis ve çoğu zaman sıkıcıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizciler peksimet, tuzlu et ve bulabildikleri taze yiyecekleri yerdi.",
+      "text_markdown": "Denizciler peksimet, tuzlu et ve bulabildikleri taze yiyecekleri yerdi.",
+      "tts": {
+        "text": "Denizciler peksimet, tuzlu et ve bulabildikleri taze yiyecekleri yerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uzun yolculuklarda tatlı su her zaman kıttı.",
+      "text_markdown": "Uzun yolculuklarda tatlı su her zaman kıttı.",
+      "tts": {
+        "text": "Uzun yolculuklarda tatlı su her zaman kıttı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar susuz kalmamak için rom, bira veya su ile alkol karışımı içerdi.",
+      "text_markdown": "Korsanlar susuz kalmamak için rom, bira veya su ile alkol karışımı içerdi.",
+      "tts": {
+        "text": "Korsanlar susuz kalmamak için rom, bira veya su ile alkol karışımı içerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hastalık, savaştan çok daha fazla denizciyi öldürdü.",
+      "text_markdown": "Hastalık, savaştan çok daha fazla denizciyi öldürdü.",
+      "tts": {
+        "text": "Hastalık, savaştan çok daha fazla denizciyi öldürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İskorbüt, dizanteri ve tropikal ateşler sürekli tehditlerdi.",
+      "text_markdown": "İskorbüt, dizanteri ve tropikal ateşler sürekli tehditlerdi.",
+      "tts": {
+        "text": "İskorbüt, dizanteri ve tropikal ateşler sürekli tehditlerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rackham'ın süvari gemisi hız için tasarlanmış küçük, tek direkli bir tekneydi.",
+      "text_markdown": "Rackham'ın süvari gemisi hız için tasarlanmış küçük, tek direkli bir tekneydi.",
+      "tts": {
+        "text": "Rackham'ın süvari gemisi hız için tasarlanmış küçük, tek direkli bir tekneydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çok sayıda mürettebat veya ağır yük taşıyamazdı.",
+      "text_markdown": "Çok sayıda mürettebat veya ağır yük taşıyamazdı.",
+      "tts": {
+        "text": "Çok sayıda mürettebat veya ağır yük taşıyamazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama ticaret gemilerini yakalamaya yetecek kadar hızlı ve savaş gemilerinden kaçmaya yetecek kadar çevikti.",
+      "text_markdown": "Ama ticaret gemilerini yakalamaya yetecek kadar hızlı ve savaş gemilerinden kaçmaya yetecek kadar çevikti.",
+      "tts": {
+        "text": "Ama ticaret gemilerini yakalamaya yetecek kadar hızlı ve savaş gemilerinden kaçmaya yetecek kadar çevikti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir süvari gemisi küçük bir mürettebatla idare edilebilirdi ve bu Rackham'a mükemmel uyuyordu.",
+      "text_markdown": "Bir süvari gemisi küçük bir mürettebatla idare edilebilirdi ve bu Rackham'a mükemmel uyuyordu.",
+      "tts": {
+        "text": "Bir süvari gemisi küçük bir mürettebatla idare edilebilirdi ve bu Rackham'a mükemmel uyuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha az mürettebat, her kişi için daha büyük ganimet payı anlamına geliyordu.",
+      "text_markdown": "Daha az mürettebat, her kişi için daha büyük ganimet payı anlamına geliyordu.",
+      "tts": {
+        "text": "Daha az mürettebat, her kişi için daha büyük ganimet payı anlamına geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Süvari gemisinin sığ su çekmesi, büyük gemilerin giremeyeceği koylara ve kıyı girintilerine saklanmasını da sağlıyordu.",
+      "text_markdown": "Süvari gemisinin sığ su çekmesi, büyük gemilerin giremeyeceği koylara ve kıyı girintilerine saklanmasını da sağlıyordu.",
+      "tts": {
+        "text": "Süvari gemisinin sığ su çekmesi, büyük gemilerin giremeyeceği koylara ve kıyı girintilerine saklanmasını da sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan mürettebatları, maddeler denilen yazılı kurallar bütünüyle kendilerini yönetirdi.",
+      "text_markdown": "Korsan mürettebatları, maddeler denilen yazılı kurallar bütünüyle kendilerini yönetirdi.",
+      "tts": {
+        "text": "Korsan mürettebatları, maddeler denilen yazılı kurallar bütünüyle kendilerini yönetirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her mürettebat üyesi katılmadan önce maddeleri imzalar veya işaretlerdi.",
+      "text_markdown": "Her mürettebat üyesi katılmadan önce maddeleri imzalar veya işaretlerdi.",
+      "tts": {
+        "text": "Her mürettebat üyesi katılmadan önce maddeleri imzalar veya işaretlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maddeler, ganimetin nasıl paylaşılacağını belirliyordu.",
+      "text_markdown": "Maddeler, ganimetin nasıl paylaşılacağını belirliyordu.",
+      "tts": {
+        "text": "Maddeler, ganimetin nasıl paylaşılacağını belirliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ayrıca dövüş, kumar ve anlaşmazlıkların çözümü için kurallar koyuyordu.",
+      "text_markdown": "Ayrıca dövüş, kumar ve anlaşmazlıkların çözümü için kurallar koyuyordu.",
+      "tts": {
+        "text": "Ayrıca dövüş, kumar ve anlaşmazlıkların çözümü için kurallar koyuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan, mürettebatın oyuyla seçilirdi.",
+      "text_markdown": "Kaptan, mürettebatın oyuyla seçilirdi.",
+      "tts": {
+        "text": "Kaptan, mürettebatın oyuyla seçilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mürettebat güvenini kaybederse kaptan her an görevden alınabilirdi.",
+      "text_markdown": "Mürettebat güvenini kaybederse kaptan her an görevden alınabilirdi.",
+      "tts": {
+        "text": "Mürettebat güvenini kaybederse kaptan her an görevden alınabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Levazım subayı bir tür birinci subay ve arabulucu görevini üstlenirdi.",
+      "text_markdown": "Levazım subayı bir tür birinci subay ve arabulucu görevini üstlenirdi.",
+      "tts": {
+        "text": "Levazım subayı bir tür birinci subay ve arabulucu görevini üstlenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu demokratik sistem zamanı için olağanüstüydü.",
+      "text_markdown": "Bu demokratik sistem zamanı için olağanüstüydü.",
+      "tts": {
+        "text": "Bu demokratik sistem zamanı için olağanüstüydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny ve Mary Read bu sistemde eşit olarak faaliyet gösterdi.",
+      "text_markdown": "Anne Bonny ve Mary Read bu sistemde eşit olarak faaliyet gösterdi.",
+      "tts": {
+        "text": "Anne Bonny ve Mary Read bu sistemde eşit olarak faaliyet gösterdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erkek mürettebat üyeleri gibi ganimetten pay aldılar.",
+      "text_markdown": "Erkek mürettebat üyeleri gibi ganimetten pay aldılar.",
+      "tts": {
+        "text": "Erkek mürettebat üyeleri gibi ganimetten pay aldılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş yetenekleri gemide onlara saygı kazandırdı.",
+      "text_markdown": "Savaş yetenekleri gemide onlara saygı kazandırdı.",
+      "tts": {
+        "text": "Savaş yetenekleri gemide onlara saygı kazandırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karayip korsanlarının silahları çeşitli ve öldürücüydü.",
+      "text_markdown": "Karayip korsanlarının silahları çeşitli ve öldürücüydü.",
+      "tts": {
+        "text": "Karayip korsanlarının silahları çeşitli ve öldürücüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pala, denizde yakın dövüşte tercih edilen silahtı.",
+      "text_markdown": "Pala, denizde yakın dövüşte tercih edilen silahtı.",
+      "tts": {
+        "text": "Pala, denizde yakın dövüşte tercih edilen silahtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çakmaklı tabancalar taşınırdı ancak yeniden doldurulmadan önce yalnızca bir atış yapılabilirdi.",
+      "text_markdown": "Çakmaklı tabancalar taşınırdı ancak yeniden doldurulmadan önce yalnızca bir atış yapılabilirdi.",
+      "tts": {
+        "text": "Çakmaklı tabancalar taşınırdı ancak yeniden doldurulmadan önce yalnızca bir atış yapılabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Borda baltaları, hançerler ve ateş çömleği denilen el bombaları da yaygındı.",
+      "text_markdown": "Borda baltaları, hançerler ve ateş çömleği denilen el bombaları da yaygındı.",
+      "tts": {
+        "text": "Borda baltaları, hançerler ve ateş çömleği denilen el bombaları da yaygındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar bir gemiye saldırdığında ilk hedef mürettebatı korkutarak teslim olmaya zorlamaktı.",
+      "text_markdown": "Korsanlar bir gemiye saldırdığında ilk hedef mürettebatı korkutarak teslim olmaya zorlamaktı.",
+      "tts": {
+        "text": "Korsanlar bir gemiye saldırdığında ilk hedef mürettebatı korkutarak teslim olmaya zorlamaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jolly Roger bayrağını dalgalandırmak psikolojik bir silaktı.",
+      "text_markdown": "Jolly Roger bayrağını dalgalandırmak psikolojik bir silaktı.",
+      "tts": {
+        "text": "Jolly Roger bayrağını dalgalandırmak psikolojik bir silaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret gemisi mürettebatlarının çoğu direniş ölüm anlamına geldiği için savaşmadan teslim oldu.",
+      "text_markdown": "Ticaret gemisi mürettebatlarının çoğu direniş ölüm anlamına geldiği için savaşmadan teslim oldu.",
+      "tts": {
+        "text": "Ticaret gemisi mürettebatlarının çoğu direniş ölüm anlamına geldiği için savaşmadan teslim oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Calico Jack'in kendi bayrağı ayırt edici bir tasarıma sahipti.",
+      "text_markdown": "Calico Jack'in kendi bayrağı ayırt edici bir tasarıma sahipti.",
+      "tts": {
+        "text": "Calico Jack'in kendi bayrağı ayırt edici bir tasarıma sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siyah zemin üzerinde çapraz iki kılıcın üstünde beyaz bir kafatası gösteriyordu.",
+      "text_markdown": "Siyah zemin üzerinde çapraz iki kılıcın üstünde beyaz bir kafatası gösteriyordu.",
+      "tts": {
+        "text": "Siyah zemin üzerinde çapraz iki kılıcın üstünde beyaz bir kafatası gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu tasarım, tarihteki en tanınmış korsan bayraklarından biridir.",
+      "text_markdown": "Bu tasarım, tarihteki en tanınmış korsan bayraklarından biridir.",
+      "tts": {
+        "text": "Bu tasarım, tarihteki en tanınmış korsan bayraklarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan bayraklarının pek çok modern tasviri Rackham'ın tasarımına dayanır.",
+      "text_markdown": "Korsan bayraklarının pek çok modern tasviri Rackham'ın tasarımına dayanır.",
+      "tts": {
+        "text": "Korsan bayraklarının pek çok modern tasviri Rackham'ın tasarımına dayanır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny'nin şiddete yatkınlığı konusundaki ünü, korsan topluluğunda iyice yerleşmişti.",
+      "text_markdown": "Anne Bonny'nin şiddete yatkınlığı konusundaki ünü, korsan topluluğunda iyice yerleşmişti.",
+      "tts": {
+        "text": "Anne Bonny'nin şiddete yatkınlığı konusundaki ünü, korsan topluluğunda iyice yerleşmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha sonraki davasında tanıklar onu savaşmaya hevesli biri olarak tanımladı.",
+      "text_markdown": "Daha sonraki davasında tanıklar onu savaşmaya hevesli biri olarak tanımladı.",
+      "tts": {
+        "text": "Daha sonraki davasında tanıklar onu savaşmaya hevesli biri olarak tanımladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Direnen esir denizcilere küfrettiği ve onları tehdit ettiği söylenir.",
+      "text_markdown": "Direnen esir denizcilere küfrettiği ve onları tehdit ettiği söylenir.",
+      "tts": {
+        "text": "Direnen esir denizcilere küfrettiği ve onları tehdit ettiği söylenir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary Read eşit derecede korkunç bir varlıktı.",
+      "text_markdown": "Mary Read eşit derecede korkunç bir varlıktı.",
+      "tts": {
+        "text": "Mary Read eşit derecede korkunç bir varlıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir hikâyeye göre Mary, önemsediği bir erkeği korumak için bir korsan yoldaşını düelloya davet etmiştir.",
+      "text_markdown": "Bir hikâyeye göre Mary, önemsediği bir erkeği korumak için bir korsan yoldaşını düelloya davet etmiştir.",
+      "tts": {
+        "text": "Bir hikâyeye göre Mary, önemsediği bir erkeği korumak için bir korsan yoldaşını düelloya davet etmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teke tek dövüşte diğer korsanı öldürdü.",
+      "text_markdown": "Teke tek dövüşte diğer korsanı öldürdü.",
+      "tts": {
+        "text": "Teke tek dövüşte diğer korsanı öldürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu hikâye doğru olsun ya da olmasın, ne kadar tehlikeli görüldüğünü yansıtır.",
+      "text_markdown": "Bu hikâye doğru olsun ya da olmasın, ne kadar tehlikeli görüldüğünü yansıtır.",
+      "tts": {
+        "text": "Bu hikâye doğru olsun ya da olmasın, ne kadar tehlikeli görüldüğünü yansıtır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720 yazında mürettebat Jamaika'nın kuzey kıyısı boyunca yelken açtı.",
+      "text_markdown": "1720 yazında mürettebat Jamaika'nın kuzey kıyısı boyunca yelken açtı.",
+      "tts": {
+        "text": "Bin yedi yüz yirmi yazında mürettebat Jamaika'nın kuzey kıyısı boyunca yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç balıkçı teknesini ve bir ticaret uskunu ele geçirdiler.",
+      "text_markdown": "Birkaç balıkçı teknesini ve bir ticaret uskunu ele geçirdiler.",
+      "tts": {
+        "text": "Birkaç balıkçı teknesini ve bir ticaret uskunu ele geçirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ganimetler küçüktü ama mürettebatı besleyip donatmaya yetti.",
+      "text_markdown": "Ganimetler küçüktü ama mürettebatı besleyip donatmaya yetti.",
+      "tts": {
+        "text": "Ganimetler küçüktü ama mürettebatı besleyip donatmaya yetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jamaika valisi Sir Nicholas Lawes, Rackham'a karşı bir bildiri yayımladı.",
+      "text_markdown": "Jamaika valisi Sir Nicholas Lawes, Rackham'a karşı bir bildiri yayımladı.",
+      "tts": {
+        "text": "Jamaika valisi Sir Nicholas Lawes, Rackham'a karşı bir bildiri yayımladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bildiride Rackham ve mürettebatındaki isimsiz iki kadın özellikle belirtildi.",
+      "text_markdown": "Bildiride Rackham ve mürettebatındaki isimsiz iki kadın özellikle belirtildi.",
+      "tts": {
+        "text": "Bildiride Rackham ve mürettebatındaki isimsiz iki kadın özellikle belirtildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, kadın korsanları tanıyan nadir resmi belgelerden biriydi.",
+      "text_markdown": "Bu, kadın korsanları tanıyan nadir resmi belgelerden biriydi.",
+      "tts": {
+        "text": "Bu, kadın korsanları tanıyan nadir resmi belgelerden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yetkililer, Rackham'ın mürettebatını yakalamak için deneyimli denizciler tuttu.",
+      "text_markdown": "Yetkililer, Rackham'ın mürettebatını yakalamak için deneyimli denizciler tuttu.",
+      "tts": {
+        "text": "Yetkililer, Rackham'ın mürettebatını yakalamak için deneyimli denizciler tuttu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaptan Jonathan Barnet, bir korsan avcısı olarak görevlendirildi.",
+      "text_markdown": "Kaptan Jonathan Barnet, bir korsan avcısı olarak görevlendirildi.",
+      "tts": {
+        "text": "Kaptan Jonathan Barnet, bir korsan avcısı olarak görevlendirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barnet, Jamaika çevresindeki suları iyi tanıyor ve onları bulmaya kararlıydı.",
+      "text_markdown": "Barnet, Jamaika çevresindeki suları iyi tanıyor ve onları bulmaya kararlıydı.",
+      "tts": {
+        "text": "Barnet, Jamaika çevresindeki suları iyi tanıyor ve onları bulmaya kararlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Doruğunda",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Calico Jack ve mürettebatı üzerindeki av sıkılaşıyordu.",
+      "text_markdown": "Calico Jack ve mürettebatı üzerindeki av sıkılaşıyordu.",
+      "tts": {
+        "text": "Calico Jack ve mürettebatı üzerindeki av sıkılaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ekim 1720'de Kaptan Jonathan Barnet, Rackham'ın süvari gemisini Jamaika'nın batı ucunda demirli halde buldu.",
+      "text_markdown": "Ekim 1720'de Kaptan Jonathan Barnet, Rackham'ın süvari gemisini Jamaika'nın batı ucunda demirli halde buldu.",
+      "tts": {
+        "text": "Ekim bin yedi yüz yirmide Kaptan Jonathan Barnet, Rackham'ın süvari gemisini Jamaika'nın batı ucunda demirli halde buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar, küçük bir koyda Negril Burnu yakınında demirlemişti.",
+      "text_markdown": "Korsanlar, küçük bir koyda Negril Burnu yakınında demirlemişti.",
+      "tts": {
+        "text": "Korsanlar, küçük bir koyda Negril Burnu yakınında demirlemişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barnet'ın gemisi yaklaştığında gece vakti idi.",
+      "text_markdown": "Barnet'ın gemisi yaklaştığında gece vakti idi.",
+      "tts": {
+        "text": "Barnet'ın gemisi yaklaştığında gece vakti idi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rackham'ın mürettebatının çoğu güverte altında sarhoş ya da uykudaydı.",
+      "text_markdown": "Rackham'ın mürettebatının çoğu güverte altında sarhoş ya da uykudaydı.",
+      "tts": {
+        "text": "Rackham'ın mürettebatının çoğu güverte altında sarhoş ya da uykudaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O gün daha erken küçük bir balıkçı teknesini ele geçirdikten sonra kutlama yapıyorlardı.",
+      "text_markdown": "O gün daha erken küçük bir balıkçı teknesini ele geçirdikten sonra kutlama yapıyorlardı.",
+      "tts": {
+        "text": "O gün daha erken küçük bir balıkçı teknesini ele geçirdikten sonra kutlama yapıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mürettebat bir saldırıya tamamen hazırlıksızdı.",
+      "text_markdown": "Mürettebat bir saldırıya tamamen hazırlıksızdı.",
+      "tts": {
+        "text": "Mürettebat bir saldırıya tamamen hazırlıksızdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barnet'ın adamları ateş açtığında korsanların çoğu güverte altına saklandı.",
+      "text_markdown": "Barnet'ın adamları ateş açtığında korsanların çoğu güverte altına saklandı.",
+      "tts": {
+        "text": "Barnet'ın adamları ateş açtığında korsanların çoğu güverte altına saklandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dava tanıklıklarına göre Anne Bonny ve Mary Read, karşılık verenler arasındaydı.",
+      "text_markdown": "Dava tanıklıklarına göre Anne Bonny ve Mary Read, karşılık verenler arasındaydı.",
+      "tts": {
+        "text": "Dava tanıklıklarına göre Anne Bonny ve Mary Read, karşılık verenler arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Saldırganlara tabancayla ateş ettiler ve pala salladılar.",
+      "text_markdown": "Saldırganlara tabancayla ateş ettiler ve pala salladılar.",
+      "tts": {
+        "text": "Saldırganlara tabancayla ateş ettiler ve pala salladılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne'in aşağıda saklanan adamlara çıkıp savaşmaları için bağırdığı söylenir.",
+      "text_markdown": "Anne'in aşağıda saklanan adamlara çıkıp savaşmaları için bağırdığı söylenir.",
+      "tts": {
+        "text": "Anne'in aşağıda saklanan adamlara çıkıp savaşmaları için bağırdığı söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Reddetiklerinde öfkeyle tabancasını ambar içine ateşledi.",
+      "text_markdown": "Reddetiklerinde öfkeyle tabancasını ambar içine ateşledi.",
+      "tts": {
+        "text": "Reddetiklerinde öfkeyle tabancasını ambar içine ateşledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anne ve Mary'nin cesaretine rağmen korsanlar çabucak alt edildi.",
+      "text_markdown": "Anne ve Mary'nin cesaretine rağmen korsanlar çabucak alt edildi.",
+      "tts": {
+        "text": "Anne ve Mary'nin cesaretine rağmen korsanlar çabucak alt edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barnet'ın mürettebatı tüm gemiyi ele geçirdi.",
+      "text_markdown": "Barnet'ın mürettebatı tüm gemiyi ele geçirdi.",
+      "tts": {
+        "text": "Barnet'ın mürettebatı tüm gemiyi ele geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakalanan korsanlar yargılanmak üzere Jamaika'daki Spanish Town'a götürüldü.",
+      "text_markdown": "Yakalanan korsanlar yargılanmak üzere Jamaika'daki Spanish Town'a götürüldü.",
+      "tts": {
+        "text": "Yakalanan korsanlar yargılanmak üzere Jamaika'daki Spanish Town'a götürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanish Town o dönemde Jamaika'nın başkentiydi.",
+      "text_markdown": "Spanish Town o dönemde Jamaika'nın başkentiydi.",
+      "tts": {
+        "text": "Spanish Town o dönemde Jamaika'nın başkentiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dava, Kasım 1720'de Deniz Hukuku Mahkemesi önünde görüldü.",
+      "text_markdown": "Dava, Kasım 1720'de Deniz Hukuku Mahkemesi önünde görüldü.",
+      "tts": {
+        "text": "Dava, Kasım bin yedi yüz yirmide Deniz Hukuku Mahkemesi önünde görüldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk olarak 16 Kasım 1720'de Calico Jack Rackham yargılandı.",
+      "text_markdown": "İlk olarak 16 Kasım 1720'de Calico Jack Rackham yargılandı.",
+      "tts": {
+        "text": "İlk olarak on altı Kasım bin yedi yüz yirmide Calico Jack Rackham yargılandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlıktan suçlu bulundu ve asılarak idama mahkûm edildi.",
+      "text_markdown": "Korsanlıktan suçlu bulundu ve asılarak idama mahkûm edildi.",
+      "tts": {
+        "text": "Korsanlıktan suçlu bulundu ve asılarak idama mahkûm edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cesedi, diğerlerine ibret olsun diye darağacı adı verilen metal bir kafeste sergilendi.",
+      "text_markdown": "Cesedi, diğerlerine ibret olsun diye darağacı adı verilen metal bir kafeste sergilendi.",
+      "tts": {
+        "text": "Cesedi, diğerlerine ibret olsun diye darağacı adı verilen metal bir kafeste sergilendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Darağacı, geçen gemilerin görebileceği küçük bir adaya yerleştirildi.",
+      "text_markdown": "Darağacı, geçen gemilerin görebileceği küçük bir adaya yerleştirildi.",
+      "tts": {
+        "text": "Darağacı, geçen gemilerin görebileceği küçük bir adaya yerleştirildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İdamından önce Anne Bonny'nin Calico Jack'i hücresinde ziyaret etmesine izin verildi.",
+      "text_markdown": "İdamından önce Anne Bonny'nin Calico Jack'i hücresinde ziyaret etmesine izin verildi.",
+      "tts": {
+        "text": "İdamından önce Anne Bonny'nin Calico Jack'i hücresinde ziyaret etmesine izin verildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Johnson'ın anlatımına göre ona hiçbir merhamet göstermedi.",
+      "text_markdown": "Johnson'ın anlatımına göre ona hiçbir merhamet göstermedi.",
+      "tts": {
+        "text": "Johnson'ın anlatımına göre ona hiçbir merhamet göstermedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eğer erkek gibi savaşsaydın köpek gibi asılman gerekmezdi dediği söylenir.",
+      "text_markdown": "Eğer erkek gibi savaşsaydın köpek gibi asılman gerekmezdi dediği söylenir.",
+      "tts": {
+        "text": "Eğer erkek gibi savaşsaydın köpek gibi asılman gerekmezdi dediği söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, korsan tarihinin en ünlü sözlerinden biri oldu.",
+      "text_markdown": "Bu, korsan tarihinin en ünlü sözlerinden biri oldu.",
+      "tts": {
+        "text": "Bu, korsan tarihinin en ünlü sözlerinden biri oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny ve Mary Read, 28 Kasım 1720'de yargılandı.",
+      "text_markdown": "Anne Bonny ve Mary Read, 28 Kasım 1720'de yargılandı.",
+      "tts": {
+        "text": "Anne Bonny ve Mary Read, yirmi sekiz Kasım bin yedi yüz yirmide yargılandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birden fazla tanık aleyhlerinde ifade verdi.",
+      "text_markdown": "Birden fazla tanık aleyhlerinde ifade verdi.",
+      "tts": {
+        "text": "Birden fazla tanık aleyhlerinde ifade verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yakalanan balıkçılar ve denizciler, kadınların silahlarla kendilerine nasıl saldırdığını anlattı.",
+      "text_markdown": "Yakalanan balıkçılar ve denizciler, kadınların silahlarla kendilerine nasıl saldırdığını anlattı.",
+      "tts": {
+        "text": "Yakalanan balıkçılar ve denizciler, kadınların silahlarla kendilerine nasıl saldırdığını anlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her iki kadın da suçlu bulundu ve asılmaya mahkûm edildi.",
+      "text_markdown": "Her iki kadın da suçlu bulundu ve asılmaya mahkûm edildi.",
+      "tts": {
+        "text": "Her iki kadın da suçlu bulundu ve asılmaya mahkûm edildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama hem Anne hem de Mary'nin yasal bir kaçış yolu vardı.",
+      "text_markdown": "Ama hem Anne hem de Mary'nin yasal bir kaçış yolu vardı.",
+      "tts": {
+        "text": "Ama hem Anne hem de Mary'nin yasal bir kaçış yolu vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her kadın hamile olduğunu beyan etti.",
+      "text_markdown": "Her kadın hamile olduğunu beyan etti.",
+      "tts": {
+        "text": "Her kadın hamile olduğunu beyan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz hukukuna göre hamile bir kadın idam edilemezdi.",
+      "text_markdown": "İngiliz hukukuna göre hamile bir kadın idam edilemezdi.",
+      "tts": {
+        "text": "İngiliz hukukuna göre hamile bir kadın idam edilemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu yasal korumaya hamilelik savunması denirdi.",
+      "text_markdown": "Bu yasal korumaya hamilelik savunması denirdi.",
+      "tts": {
+        "text": "Bu yasal korumaya hamilelik savunması denirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her iki kadın da muayene edildi ve hamile oldukları doğrulandı.",
+      "text_markdown": "Her iki kadın da muayene edildi ve hamile oldukları doğrulandı.",
+      "tts": {
+        "text": "Her iki kadın da muayene edildi ve hamile oldukları doğrulandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İdamları süresiz olarak ertelendi.",
+      "text_markdown": "İdamları süresiz olarak ertelendi.",
+      "tts": {
+        "text": "İdamları süresiz olarak ertelendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çocuklarının doğumunu beklemek üzere hapishaneye geri gönderildiler.",
+      "text_markdown": "Çocuklarının doğumunu beklemek üzere hapishaneye geri gönderildiler.",
+      "tts": {
+        "text": "Çocuklarının doğumunu beklemek üzere hapishaneye geri gönderildiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mary Read hapisten sağ çıkamadı.",
+      "text_markdown": "Mary Read hapisten sağ çıkamadı.",
+      "tts": {
+        "text": "Mary Read hapisten sağ çıkamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muhtemelen Jamaika hapishanelerinde yaygın bir ateş hastalığına yakalandı.",
+      "text_markdown": "Muhtemelen Jamaika hapishanelerinde yaygın bir ateş hastalığına yakalandı.",
+      "tts": {
+        "text": "Muhtemelen Jamaika hapishanelerinde yaygın bir ateş hastalığına yakalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mary Read, Nisan 1721'de hapiste öldü.",
+      "text_markdown": "Mary Read, Nisan 1721'de hapiste öldü.",
+      "tts": {
+        "text": "Mary Read, Nisan bin yedi yüz yirmi birde hapiste öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jamaika'daki Saint Catherine bucağında defnedildi.",
+      "text_markdown": "Jamaika'daki Saint Catherine bucağında defnedildi.",
+      "tts": {
+        "text": "Jamaika'daki Saint Catherine bucağında defnedildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny'nin kaderi, korsan tarihinin en büyük gizemlerinden biridir.",
+      "text_markdown": "Anne Bonny'nin kaderi, korsan tarihinin en büyük gizemlerinden biridir.",
+      "tts": {
+        "text": "Anne Bonny'nin kaderi, korsan tarihinin en büyük gizemlerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İdamına dair hiçbir kayıt yoktur.",
+      "text_markdown": "İdamına dair hiçbir kayıt yoktur.",
+      "tts": {
+        "text": "İdamına dair hiçbir kayıt yoktur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Serbest bırakılmasına dair hiçbir kayıt yoktur.",
+      "text_markdown": "Serbest bırakılmasına dair hiçbir kayıt yoktur.",
+      "tts": {
+        "text": "Serbest bırakılmasına dair hiçbir kayıt yoktur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Davadan sonra tarihî kayıtlardan tamamen kaybolur.",
+      "text_markdown": "Davadan sonra tarihî kayıtlardan tamamen kaybolur.",
+      "tts": {
+        "text": "Davadan sonra tarihî kayıtlardan tamamen kaybolur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En yaygın teori, babasının onu hapisten fidye ödeyerek çıkardığıdır.",
+      "text_markdown": "En yaygın teori, babasının onu hapisten fidye ödeyerek çıkardığıdır.",
+      "tts": {
+        "text": "En yaygın teori, babasının onu hapisten fidye ödeyerek çıkardığıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "William Cormac hâlâ Charleston'da zengin bir adamdı.",
+      "text_markdown": "William Cormac hâlâ Charleston'da zengin bir adamdı.",
+      "tts": {
+        "text": "William Cormac hâlâ Charleston'da zengin bir adamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sessizce serbest bırakılmasını ayarlayacak araçlara ve bağlantılara sahipti.",
+      "text_markdown": "Sessizce serbest bırakılmasını ayarlayacak araçlara ve bağlantılara sahipti.",
+      "tts": {
+        "text": "Sessizce serbest bırakılmasını ayarlayacak araçlara ve bağlantılara sahipti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı tarihçiler Anne'in Charleston'a dönüp farklı bir isimle yaşadığına inanır.",
+      "text_markdown": "Bazı tarihçiler Anne'in Charleston'a dönüp farklı bir isimle yaşadığına inanır.",
+      "tts": {
+        "text": "Bazı tarihçiler Anne'in Charleston'a dönüp farklı bir isimle yaşadığına inanır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir teori onu evlenip çocuk sahibi olan Anne Burleigh adında bir kadınla özdeşleştirir.",
+      "text_markdown": "Bir teori onu evlenip çocuk sahibi olan Anne Burleigh adında bir kadınla özdeşleştirir.",
+      "tts": {
+        "text": "Bir teori onu evlenip çocuk sahibi olan Anne Burleigh adında bir kadınla özdeşleştirir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu teori doğruysa Anne Bonny yaklaşık seksen iki yaşına kadar yaşamıştır.",
+      "text_markdown": "Bu teori doğruysa Anne Bonny yaklaşık seksen iki yaşına kadar yaşamıştır.",
+      "tts": {
+        "text": "Bu teori doğruysa Anne Bonny yaklaşık seksen iki yaşına kadar yaşamıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlığın Altın Çağı'nın sona ermesinden çok sonra, 1782 civarında ölmüş olurdu.",
+      "text_markdown": "Korsanlığın Altın Çağı'nın sona ermesinden çok sonra, 1782 civarında ölmüş olurdu.",
+      "tts": {
+        "text": "Korsanlığın Altın Çağı'nın sona ermesinden çok sonra, bin yedi yüz seksen iki civarında ölmüş olurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny, tarihin en ünlü korsanlarından biridir.",
+      "text_markdown": "Anne Bonny, tarihin en ünlü korsanlarından biridir.",
+      "tts": {
+        "text": "Anne Bonny, tarihin en ünlü korsanlarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlığının ölçeğiyle değil, kim olduğuyla ünlüdür.",
+      "text_markdown": "Korsanlığının ölçeğiyle değil, kim olduğuyla ünlüdür.",
+      "tts": {
+        "text": "Korsanlığının ölçeğiyle değil, kim olduğuyla ünlüdür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir korsan gemisinde erkeklerle birlikte savaşan bir kadın, her çağda olağanüstü bir şeydi.",
+      "text_markdown": "Bir korsan gemisinde erkeklerle birlikte savaşan bir kadın, her çağda olağanüstü bir şeydi.",
+      "tts": {
+        "text": "Bir korsan gemisinde erkeklerle birlikte savaşan bir kadın, her çağda olağanüstü bir şeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi, korsanlığın yalnızca erkeklere ait bir faaliyet olduğu düşüncesine meydan okur.",
+      "text_markdown": "Hikâyesi, korsanlığın yalnızca erkeklere ait bir faaliyet olduğu düşüncesine meydan okur.",
+      "tts": {
+        "text": "Hikâyesi, korsanlığın yalnızca erkeklere ait bir faaliyet olduğu düşüncesine meydan okur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anne ve Mary Read, kadınların da savaşta eşit derecede korkunç olabileceğini kanıtladı.",
+      "text_markdown": "Anne ve Mary Read, kadınların da savaşta eşit derecede korkunç olabileceğini kanıtladı.",
+      "tts": {
+        "text": "Anne ve Mary Read, kadınların da savaşta eşit derecede korkunç olabileceğini kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Örnekleri nesiller boyu yazarları, sanatçıları ve tarihçileri ilham verdi.",
+      "text_markdown": "Örnekleri nesiller boyu yazarları, sanatçıları ve tarihçileri ilham verdi.",
+      "tts": {
+        "text": "Örnekleri nesiller boyu yazarları, sanatçıları ve tarihçileri ilham verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan Charles Johnson'ın 1724'te yayımlanan kitabı, Anne'in hikâyesinin birincil kaynağıdır.",
+      "text_markdown": "Kaptan Charles Johnson'ın 1724'te yayımlanan kitabı, Anne'in hikâyesinin birincil kaynağıdır.",
+      "tts": {
+        "text": "Kaptan Charles Johnson'ın bin yedi yüz yirmi dörtte yayımlanan kitabı, Anne'in hikâyesinin birincil kaynağıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tam adı, En Kötü Şöhretli Korsanların Soygunlarının ve Cinayetlerinin Genel Tarihidir.",
+      "text_markdown": "Tam adı, En Kötü Şöhretli Korsanların Soygunlarının ve Cinayetlerinin Genel Tarihidir.",
+      "tts": {
+        "text": "Tam adı, En Kötü Şöhretli Korsanların Soygunlarının ve Cinayetlerinin Genel Tarihidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çok satanlar listesine girdi ve yüzyıllar boyunca dünyanın korsanları nasıl hayal ettiğini şekillendirdi.",
+      "text_markdown": "Çok satanlar listesine girdi ve yüzyıllar boyunca dünyanın korsanları nasıl hayal ettiğini şekillendirdi.",
+      "tts": {
+        "text": "Çok satanlar listesine girdi ve yüzyıllar boyunca dünyanın korsanları nasıl hayal ettiğini şekillendirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler Johnson'ın anlatımının aslında ne kadar güvenilir olduğunu tartışır.",
+      "text_markdown": "Tarihçiler Johnson'ın anlatımının aslında ne kadar güvenilir olduğunu tartışır.",
+      "tts": {
+        "text": "Tarihçiler Johnson'ın anlatımının aslında ne kadar güvenilir olduğunu tartışır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı ayrıntılar mahkeme kayıtları ve diğer belgelerle örtüşür.",
+      "text_markdown": "Bazı ayrıntılar mahkeme kayıtları ve diğer belgelerle örtüşür.",
+      "tts": {
+        "text": "Bazı ayrıntılar mahkeme kayıtları ve diğer belgelerle örtüşür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğer ayrıntılar dramatik etki için süslenmiş ya da uydurulmuş gibi görünür.",
+      "text_markdown": "Diğer ayrıntılar dramatik etki için süslenmiş ya da uydurulmuş gibi görünür.",
+      "tts": {
+        "text": "Diğer ayrıntılar dramatik etki için süslenmiş ya da uydurulmuş gibi görünür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gerçeği efsaneden ayırmak, korsan tarihinin süregelen zorluklarından biridir.",
+      "text_markdown": "Gerçeği efsaneden ayırmak, korsan tarihinin süregelen zorluklarından biridir.",
+      "tts": {
+        "text": "Gerçeği efsaneden ayırmak, korsan tarihinin süregelen zorluklarından biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jamaika Spanish Town'daki dava kayıtları en güvenilir kanıtları sağlar.",
+      "text_markdown": "Jamaika Spanish Town'daki dava kayıtları en güvenilir kanıtları sağlar.",
+      "tts": {
+        "text": "Jamaika Spanish Town'daki dava kayıtları en güvenilir kanıtları sağlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İki kadının Rackham'ın gemisinde savaştığını doğrularlar.",
+      "text_markdown": "İki kadının Rackham'ın gemisinde savaştığını doğrularlar.",
+      "tts": {
+        "text": "İki kadının Rackham'ın gemisinde savaştığını doğrularlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anne ve Mary'yi savaşırken gören tanıkların ifadelerini doğrularlar.",
+      "text_markdown": "Anne ve Mary'yi savaşırken gören tanıkların ifadelerini doğrularlar.",
+      "tts": {
+        "text": "Anne ve Mary'yi savaşırken gören tanıkların ifadelerini doğrularlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu kayıtlar, korsan araştırmalarındaki en önemli belgeler arasındadır.",
+      "text_markdown": "Bu kayıtlar, korsan araştırmalarındaki en önemli belgeler arasındadır.",
+      "tts": {
+        "text": "Bu kayıtlar, korsan araştırmalarındaki en önemli belgeler arasındadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anne Bonny yüzlerce roman, film, televizyon dizisi ve video oyununda yer alır.",
+      "text_markdown": "Anne Bonny yüzlerce roman, film, televizyon dizisi ve video oyununda yer alır.",
+      "tts": {
+        "text": "Anne Bonny yüzlerce roman, film, televizyon dizisi ve video oyununda yer alır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adaletsiz otoriteye karşı isyanın simgesi haline geldi.",
+      "text_markdown": "Adaletsiz otoriteye karşı isyanın simgesi haline geldi.",
+      "tts": {
+        "text": "Adaletsiz otoriteye karşı isyanın simgesi haline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toplumun ona biçtiği rolü kabul etmeyi reddetmesi, yüzyıllar boyunca yankı bulur.",
+      "text_markdown": "Toplumun ona biçtiği rolü kabul etmeyi reddetmesi, yüzyıllar boyunca yankı bulur.",
+      "tts": {
+        "text": "Toplumun ona biçtiği rolü kabul etmeyi reddetmesi, yüzyıllar boyunca yankı bulur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ortadan kayboluşunun gizemi, efsanesine yalnızca katkıda bulunur.",
+      "text_markdown": "Ortadan kayboluşunun gizemi, efsanesine yalnızca katkıda bulunur.",
+      "tts": {
+        "text": "Ortadan kayboluşunun gizemi, efsanesine yalnızca katkıda bulunur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hapiste mi öldüğünü, sessizce mi yaşadığını, yoksa başka bir isimle tekrar yelken mi açtığını bilmiyoruz.",
+      "text_markdown": "Hapiste mi öldüğünü, sessizce mi yaşadığını, yoksa başka bir isimle tekrar yelken mi açtığını bilmiyoruz.",
+      "tts": {
+        "text": "Hapiste mi öldüğünü, sessizce mi yaşadığını, yoksa başka bir isimle tekrar yelken mi açtığını bilmiyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu belirsizlik, her neslin hikâyesine kendi sonunu hayal etmesine olanak tanır.",
+      "text_markdown": "Bu belirsizlik, her neslin hikâyesine kendi sonunu hayal etmesine olanak tanır.",
+      "tts": {
+        "text": "Bu belirsizlik, her neslin hikâyesine kendi sonunu hayal etmesine olanak tanır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şüpheye yer bırakmayan şey cesaretiydi.",
+      "text_markdown": "Şüpheye yer bırakmayan şey cesaretiydi.",
+      "tts": {
+        "text": "Şüpheye yer bırakmayan şey cesaretiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Etrafındaki erkekler korkudan saklanırken Anne Bonny ayağa kalkıp savaştı.",
+      "text_markdown": "Etrafındaki erkekler korkudan saklanırken Anne Bonny ayağa kalkıp savaştı.",
+      "tts": {
+        "text": "Etrafındaki erkekler korkudan saklanırken Anne Bonny ayağa kalkıp savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yeminli tanıklar tarafından doğrulanan bu tek gerçek, onun en hakiki mirasıdır.",
+      "text_markdown": "Yeminli tanıklar tarafından doğrulanan bu tek gerçek, onun en hakiki mirasıdır.",
+      "tts": {
+        "text": "Yeminli tanıklar tarafından doğrulanan bu tek gerçek, onun en hakiki mirasıdır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

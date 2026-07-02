@@ -1,0 +1,4502 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sir_francis_drake",
+  "language": "tr",
+  "total_segments": 301,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, tüm dünyayı dolaşan bir adamın gerçek hikâyesidir.",
+      "text_markdown": "Bu, tüm dünyayı dolaşan bir adamın gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, tüm dünyayı dolaşan bir adamın gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Francis Drake'ti ve tarihin en ünlü denizcilerinden biri oldu.",
+      "text_markdown": "Adı Francis Drake'ti ve tarihin en ünlü denizcilerinden biri oldu.",
+      "tts": {
+        "text": "Adı Francis Drake'ti ve tarihin en ünlü denizcilerinden biri oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiltere için o, ulusu istiladan kurtaran bir kahramandı.",
+      "text_markdown": "İngiltere için o, ulusu istiladan kurtaran bir kahramandı.",
+      "tts": {
+        "text": "İngiltere için o, ulusu istiladan kurtaran bir kahramandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya için o El Draque'ydi, Ejderha, denizlerin en korkulan korsanı.",
+      "text_markdown": "İspanya için o El Draque'ydi, Ejderha, denizlerin en korkulan korsanı.",
+      "tts": {
+        "text": "İspanya için o El Draque'ydi, Ejderha, denizlerin en korkulan korsanı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O aynı anda ikisi birden idi.",
+      "text_markdown": "O aynı anda ikisi birden idi.",
+      "tts": {
+        "text": "O aynı anda ikisi birden idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kahraman mı yoksa kötü adam mı olduğu tamamen okyanusun hangi tarafında durduğunuza bağlıydı.",
+      "text_markdown": "Kahraman mı yoksa kötü adam mı olduğu tamamen okyanusun hangi tarafında durduğunuza bağlıydı.",
+      "tts": {
+        "text": "Kahraman mı yoksa kötü adam mı olduğu tamamen okyanusun hangi tarafında durduğunuza bağlıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake, Avrupa tarihinin en dramatik yüzyıllarından birinde yaşadı.",
+      "text_markdown": "Drake, Avrupa tarihinin en dramatik yüzyıllarından birinde yaşadı.",
+      "tts": {
+        "text": "Drake, Avrupa tarihinin en dramatik yüzyıllarından birinde yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İmparatorluklar çarpışıyordu, dinler ulusları bölüyordu ve dünya ilk kez haritaya çiziliyordu.",
+      "text_markdown": "İmparatorluklar çarpışıyordu, dinler ulusları bölüyordu ve dünya ilk kez haritaya çiziliyordu.",
+      "tts": {
+        "text": "İmparatorluklar çarpışıyordu, dinler ulusları bölüyordu ve dünya ilk kez haritaya çiziliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayatı tüm bu güçler tarafından şekillendirildi.",
+      "text_markdown": "Hayatı tüm bu güçler tarafından şekillendirildi.",
+      "tts": {
+        "text": "Hayatı tüm bu güçler tarafından şekillendirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu onun hikâyesidir.",
+      "text_markdown": "Bu onun hikâyesidir.",
+      "tts": {
+        "text": "Bu onun hikâyesidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Drake'in Bildiği Dünya",
+      "text_markdown": "Drake'in Bildiği Dünya"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis Drake, İngiltere Kralı Sekizinci Henry döneminde doğdu.",
+      "text_markdown": "Francis Drake, İngiltere Kralı Sekizinci Henry döneminde doğdu.",
+      "tts": {
+        "text": "Francis Drake, İngiltere Kralı Sekizinci Henry döneminde doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Henry, Roma'daki Katolik Kilisesi ile bağlarını koparmış ve İngiltere Kilisesi'ni kurmuştu.",
+      "text_markdown": "Henry, Roma'daki Katolik Kilisesi ile bağlarını koparmış ve İngiltere Kilisesi'ni kurmuştu.",
+      "tts": {
+        "text": "Henry, Roma'daki Katolik Kilisesi ile bağlarını koparmış ve İngiltere Kilisesi'ni kurmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu karar İngiltere'yi nesiller boyu din temelinde böldü.",
+      "text_markdown": "Bu karar İngiltere'yi nesiller boyu din temelinde böldü.",
+      "tts": {
+        "text": "Bu karar İngiltere'yi nesiller boyu din temelinde böldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry öldükten sonra İngiltere yıllarca dini kargaşa yaşadı.",
+      "text_markdown": "Henry öldükten sonra İngiltere yıllarca dini kargaşa yaşadı.",
+      "tts": {
+        "text": "Henry öldükten sonra İngiltere yıllarca dini kargaşa yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oğlu Altıncı Edward Protestan'dı.",
+      "text_markdown": "Oğlu Altıncı Edward Protestan'dı.",
+      "tts": {
+        "text": "Oğlu Altıncı Edward Protestan'dı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kızı Birinci Mary Katolik'ti ve Reformasyonu tersine çevirmeye çalıştı.",
+      "text_markdown": "Kızı Birinci Mary Katolik'ti ve Reformasyonu tersine çevirmeye çalıştı.",
+      "tts": {
+        "text": "Kızı Birinci Mary Katolik'ti ve Reformasyonu tersine çevirmeye çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O kadar çok Protestan'ı idam ettirdi ki Kanlı Mary adını aldı.",
+      "text_markdown": "O kadar çok Protestan'ı idam ettirdi ki Kanlı Mary adını aldı.",
+      "tts": {
+        "text": "O kadar çok Protestan'ı idam ettirdi ki Kanlı Mary adını aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1558'de Birinci Elizabeth kraliçe oldu.",
+      "text_markdown": "1558'de Birinci Elizabeth kraliçe oldu.",
+      "tts": {
+        "text": "Bin beş yüz elli sekiz yılında Birinci Elizabeth kraliçe oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Protestan, zeki ve siyasi açıdan ustaydı.",
+      "text_markdown": "Protestan, zeki ve siyasi açıdan ustaydı.",
+      "tts": {
+        "text": "Protestan, zeki ve siyasi açıdan ustaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümdarlığı kırk beş yıl sürecek ve Elizabeth dönemi olarak bilinecekti.",
+      "text_markdown": "Hükümdarlığı kırk beş yıl sürecek ve Elizabeth dönemi olarak bilinecekti.",
+      "tts": {
+        "text": "Hükümdarlığı kırk beş yıl sürecek ve Elizabeth dönemi olarak bilinecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hükümdarlığı sırasında İngiltere, küresel güç için İspanya'ya meydan okumaya başladı.",
+      "text_markdown": "Hükümdarlığı sırasında İngiltere, küresel güç için İspanya'ya meydan okumaya başladı.",
+      "tts": {
+        "text": "Hükümdarlığı sırasında İngiltere, küresel güç için İspanya'ya meydan okumaya başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İkinci Felipe yönetimindeki İspanya dünyanın en güçlü imparatorluğuydu.",
+      "text_markdown": "İkinci Felipe yönetimindeki İspanya dünyanın en güçlü imparatorluğuydu.",
+      "tts": {
+        "text": "İkinci Felipe yönetimindeki İspanya dünyanın en güçlü imparatorluğuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol toprakları Meksika'dan Şili'ye kadar Amerika kıtasına yayılıyordu.",
+      "text_markdown": "İspanyol toprakları Meksika'dan Şili'ye kadar Amerika kıtasına yayılıyordu.",
+      "tts": {
+        "text": "İspanyol toprakları Meksika'dan Şili'ye kadar Amerika kıtasına yayılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanya ayrıca Filipinler'i, İtalya'nın bir kısmını ve Hollanda'yı kontrol ediyordu.",
+      "text_markdown": "İspanya ayrıca Filipinler'i, İtalya'nın bir kısmını ve Hollanda'yı kontrol ediyordu.",
+      "tts": {
+        "text": "İspanya ayrıca Filipinler'i, İtalya'nın bir kısmını ve Hollanda'yı kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Amerika'dan akan zenginlik İspanya'yı olağanüstü zengin yapıyordu.",
+      "text_markdown": "Amerika'dan akan zenginlik İspanya'yı olağanüstü zengin yapıyordu.",
+      "tts": {
+        "text": "Amerika'dan akan zenginlik İspanya'yı olağanüstü zengin yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Peru ve Meksika madenlerinden çıkan gümüş İspanyol gücünün temeliydi.",
+      "text_markdown": "Peru ve Meksika madenlerinden çıkan gümüş İspanyol gücünün temeliydi.",
+      "tts": {
+        "text": "Peru ve Meksika madenlerinden çıkan gümüş İspanyol gücünün temeliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hazine filoları bu gümüşü devasa konvoylarla Atlantik'in karşısına taşıyordu.",
+      "text_markdown": "Hazine filoları bu gümüşü devasa konvoylarla Atlantik'in karşısına taşıyordu.",
+      "tts": {
+        "text": "Hazine filoları bu gümüşü devasa konvoylarla Atlantik'in karşısına taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu konvoylar, saldırmaya yeterince cesur olan herkes için cazip hedeflerdi.",
+      "text_markdown": "Bu konvoylar, saldırmaya yeterince cesur olan herkes için cazip hedeflerdi.",
+      "tts": {
+        "text": "Bu konvoylar, saldırmaya yeterince cesur olan herkes için cazip hedeflerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dünyanın en güçlü donanması olan İspanyol Donanması bu sevkiyatları koruyordu.",
+      "text_markdown": "Dünyanın en güçlü donanması olan İspanyol Donanması bu sevkiyatları koruyordu.",
+      "tts": {
+        "text": "Dünyanın en güçlü donanması olan İspanyol Donanması bu sevkiyatları koruyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1494 tarihli Tordesillas Antlaşması dünyayı İspanya ve Portekiz arasında bölmüştü.",
+      "text_markdown": "1494 tarihli Tordesillas Antlaşması dünyayı İspanya ve Portekiz arasında bölmüştü.",
+      "tts": {
+        "text": "Bin dört yüz doksan dört tarihli Tordesillas Antlaşması dünyayı İspanya ve Portekiz arasında bölmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere, Fransa ve Hollanda tamamen dışlanmıştı.",
+      "text_markdown": "İngiltere, Fransa ve Hollanda tamamen dışlanmıştı.",
+      "tts": {
+        "text": "İngiltere, Fransa ve Hollanda tamamen dışlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu uluslar antlaşmayı reddetti ve her yerde ticaret ve keşif yapma hakkını talep etti.",
+      "text_markdown": "Bu uluslar antlaşmayı reddetti ve her yerde ticaret ve keşif yapma hakkını talep etti.",
+      "tts": {
+        "text": "Bu uluslar antlaşmayı reddetti ve her yerde ticaret ve keşif yapma hakkını talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu anlaşmazlık yüzyıllarca süren çatışmanın temel nedenlerinden biriydi.",
+      "text_markdown": "Bu anlaşmazlık yüzyıllarca süren çatışmanın temel nedenlerinden biriydi.",
+      "tts": {
+        "text": "Bu anlaşmazlık yüzyıllarca süren çatışmanın temel nedenlerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güneybatı İngiltere'deki Devon bir denizcilik kültürü merkeziydi.",
+      "text_markdown": "Güneybatı İngiltere'deki Devon bir denizcilik kültürü merkeziydi.",
+      "tts": {
+        "text": "Güneybatı İngiltere'deki Devon bir denizcilik kültürü merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Devon erkekleri balıkçı, tüccar ve giderek artan ölçüde akıncıydı.",
+      "text_markdown": "Devon erkekleri balıkçı, tüccar ve giderek artan ölçüde akıncıydı.",
+      "tts": {
+        "text": "Devon erkekleri balıkçı, tüccar ve giderek artan ölçüde akıncıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İlçe İngiltere'nin en büyük deniz kaptanlarından bazılarını yetiştirdi.",
+      "text_markdown": "İlçe İngiltere'nin en büyük deniz kaptanlarından bazılarını yetiştirdi.",
+      "tts": {
+        "text": "İlçe İngiltere'nin en büyük deniz kaptanlarından bazılarını yetiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Francis Drake, Walter Raleigh ve John Hawkins hepsi Devon'dandı.",
+      "text_markdown": "Francis Drake, Walter Raleigh ve John Hawkins hepsi Devon'dandı.",
+      "tts": {
+        "text": "Francis Drake, Walter Raleigh ve John Hawkins hepsi Devon'dandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On altıncı yüzyılın ortasında İngiliz Donanması İspanya'nınkiyle karşılaştırıldığında küçüktü.",
+      "text_markdown": "On altıncı yüzyılın ortasında İngiliz Donanması İspanya'nınkiyle karşılaştırıldığında küçüktü.",
+      "tts": {
+        "text": "On altıncı yüzyılın ortasında İngiliz Donanması İspanya'nınkiyle karşılaştırıldığında küçüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere doğrudan bir karşılaşmada İspanya'ya gemi karşı gemi denk gelemezdi.",
+      "text_markdown": "İngiltere doğrudan bir karşılaşmada İspanya'ya gemi karşı gemi denk gelemezdi.",
+      "tts": {
+        "text": "İngiltere doğrudan bir karşılaşmada İspanya'ya gemi karşı gemi denk gelemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun yerine İngilizler baskın ve taciz stratejisi geliştirdi.",
+      "text_markdown": "Bunun yerine İngilizler baskın ve taciz stratejisi geliştirdi.",
+      "tts": {
+        "text": "Bunun yerine İngilizler baskın ve taciz stratejisi geliştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hızlı, iyi silahlı gemiler İspanyol hazine konvoylarına saldırıp bir filo tepki vermeden önce kaçabilirdi.",
+      "text_markdown": "Hızlı, iyi silahlı gemiler İspanyol hazine konvoylarına saldırıp bir filo tepki vermeden önce kaçabilirdi.",
+      "tts": {
+        "text": "Hızlı, iyi silahlı gemiler İspanyol hazine konvoylarına saldırıp bir filo tepki vermeden önce kaçabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlık İngiltere'nin İspanya'ya karşı gayri resmi silahı oldu.",
+      "text_markdown": "Korsanlık İngiltere'nin İspanya'ya karşı gayri resmi silahı oldu.",
+      "tts": {
+        "text": "Korsanlık İngiltere'nin İspanya'ya karşı gayri resmi silahı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elizabeth krallığını riske atmadan açıkça savaş ilan edemezdi.",
+      "text_markdown": "Elizabeth krallığını riske atmadan açıkça savaş ilan edemezdi.",
+      "tts": {
+        "text": "Elizabeth krallığını riske atmadan açıkça savaş ilan edemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama sessizce deniz kaptanlarına İspanyol gemilerine saldırma yetkisi verebilirdi.",
+      "text_markdown": "Ama sessizce deniz kaptanlarına İspanyol gemilerine saldırma yetkisi verebilirdi.",
+      "tts": {
+        "text": "Ama sessizce deniz kaptanlarına İspanyol gemilerine saldırma yetkisi verebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yakalanırlarsa herhangi bir müdahaleyi inkâr edebilirdi.",
+      "text_markdown": "Yakalanırlarsa herhangi bir müdahaleyi inkâr edebilirdi.",
+      "tts": {
+        "text": "Yakalanırlarsa herhangi bir müdahaleyi inkâr edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Köle ticareti bu dönemde zaten İngiliz denizciliğinin bir parçasıydı.",
+      "text_markdown": "Köle ticareti bu dönemde zaten İngiliz denizciliğinin bir parçasıydı.",
+      "tts": {
+        "text": "Köle ticareti bu dönemde zaten İngiliz denizciliğinin bir parçasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz kaptanlar Batı Afrika'da insanları kaçırıyor veya satın alıyorlardı.",
+      "text_markdown": "İngiliz kaptanlar Batı Afrika'da insanları kaçırıyor veya satın alıyorlardı.",
+      "tts": {
+        "text": "İngiliz kaptanlar Batı Afrika'da insanları kaçırıyor veya satın alıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onları Amerika'ya taşıyıp İspanyol sömürgecilere satıyorlardı.",
+      "text_markdown": "Onları Amerika'ya taşıyıp İspanyol sömürgecilere satıyorlardı.",
+      "tts": {
+        "text": "Onları Amerika'ya taşıyıp İspanyol sömürgecilere satıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu vahşi ticaret o dönem Avrupalıların çoğu tarafından meşru bir iş olarak görülüyordu.",
+      "text_markdown": "Bu vahşi ticaret o dönem Avrupalıların çoğu tarafından meşru bir iş olarak görülüyordu.",
+      "tts": {
+        "text": "Bu vahşi ticaret o dönem Avrupalıların çoğu tarafından meşru bir iş olarak görülüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake'in yaşamı boyunca dünya hâlâ keşfedilip haritalanıyordu.",
+      "text_markdown": "Drake'in yaşamı boyunca dünya hâlâ keşfedilip haritalanıyordu.",
+      "tts": {
+        "text": "Drake'in yaşamı boyunca dünya hâlâ keşfedilip haritalanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupalılar kıtaların temel biçimlerini biliyorlardı ama ayrıntıları bilmiyorlardı.",
+      "text_markdown": "Avrupalılar kıtaların temel biçimlerini biliyorlardı ama ayrıntıları bilmiyorlardı.",
+      "tts": {
+        "text": "Avrupalılar kıtaların temel biçimlerini biliyorlardı ama ayrıntıları bilmiyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pasifik Okyanusu Avrupalı denizciler için büyük ölçüde bilinmiyordu.",
+      "text_markdown": "Pasifik Okyanusu Avrupalı denizciler için büyük ölçüde bilinmiyordu.",
+      "tts": {
+        "text": "Pasifik Okyanusu Avrupalı denizciler için büyük ölçüde bilinmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çoğu kıtanın iç kısımları bir sır olarak kalıyordu.",
+      "text_markdown": "Çoğu kıtanın iç kısımları bir sır olarak kalıyordu.",
+      "tts": {
+        "text": "Çoğu kıtanın iç kısımları bir sır olarak kalıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Navigasyon pusula, usturlap ve tahmini seyire dayanıyordu.",
+      "text_markdown": "Navigasyon pusula, usturlap ve tahmini seyire dayanıyordu.",
+      "tts": {
+        "text": "Navigasyon pusula, usturlap ve tahmini seyire dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deniz haritaları çoğu zaman yanlıştı, özellikle bilinmeyen sular için.",
+      "text_markdown": "Deniz haritaları çoğu zaman yanlıştı, özellikle bilinmeyen sular için.",
+      "tts": {
+        "text": "Deniz haritaları çoğu zaman yanlıştı, özellikle bilinmeyen sular için.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir kaptanın becerisi ve deneyimi herhangi bir aletten daha önemliydi.",
+      "text_markdown": "Bir kaptanın becerisi ve deneyimi herhangi bir aletten daha önemliydi.",
+      "tts": {
+        "text": "Bir kaptanın becerisi ve deneyimi herhangi bir aletten daha önemliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz hatalara tolerans göstermezdi.",
+      "text_markdown": "Deniz hatalara tolerans göstermezdi.",
+      "tts": {
+        "text": "Deniz hatalara tolerans göstermezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis Drake'i şekillendiren dünya buydu.",
+      "text_markdown": "Francis Drake'i şekillendiren dünya buydu.",
+      "tts": {
+        "text": "Francis Drake'i şekillendiren dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dini çatışma, emperyalist rekabet ve uçsuz bucaksız bilinmeyen okyanusların dünyası.",
+      "text_markdown": "Dini çatışma, emperyalist rekabet ve uçsuz bucaksız bilinmeyen okyanusların dünyası.",
+      "tts": {
+        "text": "Dini çatışma, emperyalist rekabet ve uçsuz bucaksız bilinmeyen okyanusların dünyası.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Drake'in Bildiği Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mütevazı bir aileden gelen cesur bir denizcinin tarihin akışını değiştirebileceği bir dünyaydı.",
+      "text_markdown": "Mütevazı bir aileden gelen cesur bir denizcinin tarihin akışını değiştirebileceği bir dünyaydı.",
+      "tts": {
+        "text": "Mütevazı bir aileden gelen cesur bir denizcinin tarihin akışını değiştirebileceği bir dünyaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis Drake yaklaşık 1540'ta İngiltere'nin Devon bölgesindeki Tavistock'ta doğdu.",
+      "text_markdown": "Francis Drake yaklaşık 1540'ta İngiltere'nin Devon bölgesindeki Tavistock'ta doğdu.",
+      "tts": {
+        "text": "Francis Drake yaklaşık bin beş yüz kırk yılında İngiltere'nin Devon bölgesindeki Tavistock'ta doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Edmund Drake ve eşinin on iki oğlunun en büyüğüydü.",
+      "text_markdown": "Edmund Drake ve eşinin on iki oğlunun en büyüğüydü.",
+      "tts": {
+        "text": "Edmund Drake ve eşinin on iki oğlunun en büyüğüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aile mütevazı bir gelire sahipti.",
+      "text_markdown": "Aile mütevazı bir gelire sahipti.",
+      "tts": {
+        "text": "Aile mütevazı bir gelire sahipti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Edmund Drake sonradan Protestan vaiz olan bir çiftçiydi.",
+      "text_markdown": "Edmund Drake sonradan Protestan vaiz olan bir çiftçiydi.",
+      "tts": {
+        "text": "Edmund Drake sonradan Protestan vaiz olan bir çiftçiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kent'teki deniz tersanelerinde denizcilere ve işçilere İncil okurdu.",
+      "text_markdown": "Kent'teki deniz tersanelerinde denizcilere ve işçilere İncil okurdu.",
+      "tts": {
+        "text": "Kent'teki deniz tersanelerinde denizcilere ve işçilere İncil okurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güçlü Protestan inancı genç Francis'in dünya görüşünü şekillendirdi.",
+      "text_markdown": "Güçlü Protestan inancı genç Francis'in dünya görüşünü şekillendirdi.",
+      "tts": {
+        "text": "Güçlü Protestan inancı genç Francis'in dünya görüşünü şekillendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake, Katolik İspanya'nın her şeyin düşmanı olduğuna inanarak büyüdü.",
+      "text_markdown": "Drake, Katolik İspanya'nın her şeyin düşmanı olduğuna inanarak büyüdü.",
+      "tts": {
+        "text": "Drake, Katolik İspanya'nın her şeyin düşmanı olduğuna inanarak büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis küçükken aile Kent'e taşındı.",
+      "text_markdown": "Francis küçükken aile Kent'e taşındı.",
+      "tts": {
+        "text": "Francis küçükken aile Kent'e taşındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir Katolik ayaklanması sırasında Devon'u terk etmek zorunda kalmışlardı.",
+      "text_markdown": "Bir Katolik ayaklanması sırasında Devon'u terk etmek zorunda kalmışlardı.",
+      "tts": {
+        "text": "Bir Katolik ayaklanması sırasında Devon'u terk etmek zorunda kalmışlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kent'te Medway Nehri ve kraliyet tersaneleri yakınında yaşadılar.",
+      "text_markdown": "Kent'te Medway Nehri ve kraliyet tersaneleri yakınında yaşadılar.",
+      "tts": {
+        "text": "Kent'te Medway Nehri ve kraliyet tersaneleri yakınında yaşadılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Genç çocuk gemiler, denizciler ve deniz kokusunun ortasında büyüdü.",
+      "text_markdown": "Genç çocuk gemiler, denizciler ve deniz kokusunun ortasında büyüdü.",
+      "tts": {
+        "text": "Genç çocuk gemiler, denizciler ve deniz kokusunun ortasında büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ergenliğinde Francis küçük bir kıyı ticaret gemisinin kaptanının yanına çırak verildi.",
+      "text_markdown": "Ergenliğinde Francis küçük bir kıyı ticaret gemisinin kaptanının yanına çırak verildi.",
+      "tts": {
+        "text": "Ergenliğinde Francis küçük bir kıyı ticaret gemisinin kaptanının yanına çırak verildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thames haliçi ve İngiliz Kanalı'nın dar, tehlikeli sularında yelken açmayı öğrendi.",
+      "text_markdown": "Thames haliçi ve İngiliz Kanalı'nın dar, tehlikeli sularında yelken açmayı öğrendi.",
+      "tts": {
+        "text": "Thames haliçi ve İngiliz Kanalı'nın dar, tehlikeli sularında yelken açmayı öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunlar Avrupa'nın en zor sularından bazılarıydı.",
+      "text_markdown": "Bunlar Avrupa'nın en zor sularından bazılarıydı.",
+      "tts": {
+        "text": "Bunlar Avrupa'nın en zor sularından bazılarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Orada öğrendiği beceriler hayatının geri kalanında ona hizmet edecekti.",
+      "text_markdown": "Orada öğrendiği beceriler hayatının geri kalanında ona hizmet edecekti.",
+      "tts": {
+        "text": "Orada öğrendiği beceriler hayatının geri kalanında ona hizmet edecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaşlı gemi kaptanı öldüğünde vasiyetnamesinde gemisini Drake'e bıraktı.",
+      "text_markdown": "Yaşlı gemi kaptanı öldüğünde vasiyetnamesinde gemisini Drake'e bıraktı.",
+      "tts": {
+        "text": "Yaşlı gemi kaptanı öldüğünde vasiyetnamesinde gemisini Drake'e bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu serveti olmayan genç bir adam için olağanüstü bir hediyeydi.",
+      "text_markdown": "Bu serveti olmayan genç bir adam için olağanüstü bir hediyeydi.",
+      "tts": {
+        "text": "Bu serveti olmayan genç bir adam için olağanüstü bir hediyeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake'in artık ne kadar küçük olursa olsun kendi gemisi vardı.",
+      "text_markdown": "Drake'in artık ne kadar küçük olursa olsun kendi gemisi vardı.",
+      "tts": {
+        "text": "Drake'in artık ne kadar küçük olursa olsun kendi gemisi vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daha geniş denizlerde servetini aramaya hazırdı.",
+      "text_markdown": "Daha geniş denizlerde servetini aramaya hazırdı.",
+      "tts": {
+        "text": "Daha geniş denizlerde servetini aramaya hazırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake'in kuzeni İngiltere'nin en önde gelen deniz kaptanlarından biri olan John Hawkins'ti.",
+      "text_markdown": "Drake'in kuzeni İngiltere'nin en önde gelen deniz kaptanlarından biri olan John Hawkins'ti.",
+      "tts": {
+        "text": "Drake'in kuzeni İngiltere'nin en önde gelen deniz kaptanlarından biri olan John Hawkins'ti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hawkins Batı Afrika ve Karayipler'e ticaret seferleri düzenliyordu.",
+      "text_markdown": "Hawkins Batı Afrika ve Karayipler'e ticaret seferleri düzenliyordu.",
+      "tts": {
+        "text": "Hawkins Batı Afrika ve Karayipler'e ticaret seferleri düzenliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu seferler köleleştirilmiş Afrikalıların yakalanmasını ve satışını içeriyordu.",
+      "text_markdown": "Bu seferler köleleştirilmiş Afrikalıların yakalanmasını ve satışını içeriyordu.",
+      "tts": {
+        "text": "Bu seferler köleleştirilmiş Afrikalıların yakalanmasını ve satışını içeriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake bu seferlerden birkaçına Hawkins ile katıldı.",
+      "text_markdown": "Drake bu seferlerden birkaçına Hawkins ile katıldı.",
+      "tts": {
+        "text": "Drake bu seferlerden birkaçına Hawkins ile katıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1567'de Drake, Hawkins ile birlikte Karayipler'e büyük bir sefere çıktı.",
+      "text_markdown": "1567'de Drake, Hawkins ile birlikte Karayipler'e büyük bir sefere çıktı.",
+      "tts": {
+        "text": "Bin beş yüz altmış yedi yılında Drake, Hawkins ile birlikte Karayipler'e büyük bir sefere çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Köleleştirilmiş insanları Afrika'dan İspanyol kolonilerine satmak üzere taşıdılar.",
+      "text_markdown": "Köleleştirilmiş insanları Afrika'dan İspanyol kolonilerine satmak üzere taşıdılar.",
+      "tts": {
+        "text": "Köleleştirilmiş insanları Afrika'dan İspanyol kolonilerine satmak üzere taşıdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerika'daki İspanyol yetkilileri İngiliz tüccarları geri çevirmesi gerekiyordu.",
+      "text_markdown": "Amerika'daki İspanyol yetkilileri İngiliz tüccarları geri çevirmesi gerekiyordu.",
+      "tts": {
+        "text": "Amerika'daki İspanyol yetkilileri İngiliz tüccarları geri çevirmesi gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama yerel yetkililer kuralları görmezden gelerek köleleri sık sık satın aldılar.",
+      "text_markdown": "Ama yerel yetkililer kuralları görmezden gelerek köleleri sık sık satın aldılar.",
+      "tts": {
+        "text": "Ama yerel yetkililer kuralları görmezden gelerek köleleri sık sık satın aldılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sefer Meksika'daki bir liman olan San Juan de Ulúa'da başını belaya soktu.",
+      "text_markdown": "Sefer Meksika'daki bir liman olan San Juan de Ulúa'da başını belaya soktu.",
+      "tts": {
+        "text": "Sefer Meksika'daki bir liman olan San Juan de Ulúa'da başını belaya soktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hawkins'in filosu orada tamir için durmuştu.",
+      "text_markdown": "Hawkins'in filosu orada tamir için durmuştu.",
+      "tts": {
+        "text": "Hawkins'in filosu orada tamir için durmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir İspanyol hazine filosu geldi ve dostluk numarası yaptıktan sonra İngiliz gemilerine saldırdı.",
+      "text_markdown": "Bir İspanyol hazine filosu geldi ve dostluk numarası yaptıktan sonra İngiliz gemilerine saldırdı.",
+      "tts": {
+        "text": "Bir İspanyol hazine filosu geldi ve dostluk numarası yaptıktan sonra İngiliz gemilerine saldırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1568'deki San Juan de Ulúa Muharebesi İngilizler için bir felaketti.",
+      "text_markdown": "1568'deki San Juan de Ulúa Muharebesi İngilizler için bir felaketti.",
+      "tts": {
+        "text": "Bin beş yüz altmış sekiz yılındaki San Juan de Ulúa Muharebesi İngilizler için bir felaketti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hawkins'in gemilerinin çoğu batırıldı veya ele geçirildi.",
+      "text_markdown": "Hawkins'in gemilerinin çoğu batırıldı veya ele geçirildi.",
+      "tts": {
+        "text": "Hawkins'in gemilerinin çoğu batırıldı veya ele geçirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzlerce İngiliz denizci öldürüldü veya Meksika'da mahsur bırakıldı.",
+      "text_markdown": "Yüzlerce İngiliz denizci öldürüldü veya Meksika'da mahsur bırakıldı.",
+      "tts": {
+        "text": "Yüzlerce İngiliz denizci öldürüldü veya Meksika'da mahsur bırakıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake küçük bir gemiyle kaçtı ama deneyim onu derinden etkiledi.",
+      "text_markdown": "Drake küçük bir gemiyle kaçtı ama deneyim onu derinden etkiledi.",
+      "tts": {
+        "text": "Drake küçük bir gemiyle kaçtı ama deneyim onu derinden etkiledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake, San Juan de Ulúa'daki ihanet için İspanya'yı asla affetmedi.",
+      "text_markdown": "Drake, San Juan de Ulúa'daki ihanet için İspanya'yı asla affetmedi.",
+      "tts": {
+        "text": "Drake, San Juan de Ulúa'daki ihanet için İspanya'yı asla affetmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol saldırısını hain ve onursuz buldu.",
+      "text_markdown": "İspanyol saldırısını hain ve onursuz buldu.",
+      "tts": {
+        "text": "İspanyol saldırısını hain ve onursuz buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O günden itibaren hayatını İspanya'dan intikam almaya adadı.",
+      "text_markdown": "O günden itibaren hayatını İspanya'dan intikam almaya adadı.",
+      "tts": {
+        "text": "O günden itibaren hayatını İspanya'dan intikam almaya adadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kişisel nefreti İngiltere'nin ulusal çıkarlarıyla mükemmel uyum içindeydi.",
+      "text_markdown": "Kişisel nefreti İngiltere'nin ulusal çıkarlarıyla mükemmel uyum içindeydi.",
+      "tts": {
+        "text": "Kişisel nefreti İngiltere'nin ulusal çıkarlarıyla mükemmel uyum içindeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake karşılık vermeye kararlı olarak İngiltere'ye döndü.",
+      "text_markdown": "Drake karşılık vermeye kararlı olarak İngiltere'ye döndü.",
+      "tts": {
+        "text": "Drake karşılık vermeye kararlı olarak İngiltere'ye döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol gemilerine ve yerleşimlerine bağımsız baskınlar planlamaya başladı.",
+      "text_markdown": "İspanyol gemilerine ve yerleşimlerine bağımsız baskınlar planlamaya başladı.",
+      "tts": {
+        "text": "İspanyol gemilerine ve yerleşimlerine bağımsız baskınlar planlamaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karayipler hakkında elde edilebilen her haritayı ve raporu inceledi.",
+      "text_markdown": "Karayipler hakkında elde edilebilen her haritayı ve raporu inceledi.",
+      "tts": {
+        "text": "Karayipler hakkında elde edilebilen her haritayı ve raporu inceledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanyol Ana Karası'na gitmiş her denizciye danıştı.",
+      "text_markdown": "İspanyol Ana Karası'na gitmiş her denizciye danıştı.",
+      "tts": {
+        "text": "İspanyol Ana Karası'na gitmiş her denizciye danıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol Ana Karası, İspanya'nın Amerika'daki kıta topraklarının adıydı.",
+      "text_markdown": "İspanyol Ana Karası, İspanya'nın Amerika'daki kıta topraklarının adıydı.",
+      "tts": {
+        "text": "İspanyol Ana Karası, İspanya'nın Amerika'daki kıta topraklarının adıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Florida'dan Güney Amerika'nın kuzey kıyısına kadar uzanıyordu.",
+      "text_markdown": "Florida'dan Güney Amerika'nın kuzey kıyısına kadar uzanıyordu.",
+      "tts": {
+        "text": "Florida'dan Güney Amerika'nın kuzey kıyısına kadar uzanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol Ana Karası'nın hazine limanları gümüş ve altının gemilere yüklendiği yerlerdi.",
+      "text_markdown": "İspanyol Ana Karası'nın hazine limanları gümüş ve altının gemilere yüklendiği yerlerdi.",
+      "tts": {
+        "text": "İspanyol Ana Karası'nın hazine limanları gümüş ve altının gemilere yüklendiği yerlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu limanlar Drake'in birincil hedefleriydi.",
+      "text_markdown": "Bu limanlar Drake'in birincil hedefleriydi.",
+      "tts": {
+        "text": "Bu limanlar Drake'in birincil hedefleriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Güce Yükseliş",
+      "text_markdown": "Güce Yükseliş"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1572'de Drake, İspanyol Ana Karası'na ilk bağımsız baskınını başlattı.",
+      "text_markdown": "1572'de Drake, İspanyol Ana Karası'na ilk bağımsız baskınını başlattı.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş iki yılında Drake, İspanyol Ana Karası'na ilk bağımsız baskınını başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Panama Kıstağı'ndaki Nombre de Dios limanına saldırdı.",
+      "text_markdown": "Panama Kıstağı'ndaki Nombre de Dios limanına saldırdı.",
+      "tts": {
+        "text": "Panama Kıstağı'ndaki Nombre de Dios limanına saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nombre de Dios, Peru gümüşünün ana toplanma noktalarından biriydi.",
+      "text_markdown": "Nombre de Dios, Peru gümüşünün ana toplanma noktalarından biriydi.",
+      "tts": {
+        "text": "Nombre de Dios, Peru gümüşünün ana toplanma noktalarından biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baskın cesurdu ama neredeyse ölümcül oldu.",
+      "text_markdown": "Baskın cesurdu ama neredeyse ölümcül oldu.",
+      "tts": {
+        "text": "Baskın cesurdu ama neredeyse ölümcül oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drake saldırı sırasında bir tüfek mermisiyle yaralandı.",
+      "text_markdown": "Drake saldırı sırasında bir tüfek mermisiyle yaralandı.",
+      "tts": {
+        "text": "Drake saldırı sırasında bir tüfek mermisiyle yaralandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O kadar çok kan kaybetti ki adamları onu teknelere taşımak zorunda kaldı.",
+      "text_markdown": "O kadar çok kan kaybetti ki adamları onu teknelere taşımak zorunda kaldı.",
+      "tts": {
+        "text": "O kadar çok kan kaybetti ki adamları onu teknelere taşımak zorunda kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Az ganimetle ama İspanyol savunması hakkında değerli bilgilerle kaçtılar.",
+      "text_markdown": "Az ganimetle ama İspanyol savunması hakkında değerli bilgilerle kaçtılar.",
+      "tts": {
+        "text": "Az ganimetle ama İspanyol savunması hakkında değerli bilgilerle kaçtılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake pes etmedi.",
+      "text_markdown": "Drake pes etmedi.",
+      "tts": {
+        "text": "Drake pes etmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ormanda özgürce yaşayan kaçak köleleştirilmiş Afrikalı bir grup olan Cimarron'larla ittifak kurdu.",
+      "text_markdown": "Ormanda özgürce yaşayan kaçak köleleştirilmiş Afrikalı bir grup olan Cimarron'larla ittifak kurdu.",
+      "tts": {
+        "text": "Ormanda özgürce yaşayan kaçak köleleştirilmiş Afrikalı bir grup olan Cimarron'larla ittifak kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cimarron'lar İspanyollardan nefret ediyordu ve onlara karşı savaşan herkese yardım etmeye istekliydi.",
+      "text_markdown": "Cimarron'lar İspanyollardan nefret ediyordu ve onlara karşı savaşan herkese yardım etmeye istekliydi.",
+      "tts": {
+        "text": "Cimarron'lar İspanyollardan nefret ediyordu ve onlara karşı savaşan herkese yardım etmeye istekliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ormanı, patikları ve İspanyol katır kervanlarının düzenini biliyorlardı.",
+      "text_markdown": "Ormanı, patikları ve İspanyol katır kervanlarının düzenini biliyorlardı.",
+      "tts": {
+        "text": "Ormanı, patikları ve İspanyol katır kervanlarının düzenini biliyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cimarron'ları kılavuz alarak Drake Panama Kıstağı'nı yürüyerek geçti.",
+      "text_markdown": "Cimarron'ları kılavuz alarak Drake Panama Kıstağı'nı yürüyerek geçti.",
+      "tts": {
+        "text": "Cimarron'ları kılavuz alarak Drake Panama Kıstağı'nı yürüyerek geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Günlerce yoğun tropikal ormanda yol açtılar.",
+      "text_markdown": "Günlerce yoğun tropikal ormanda yol açtılar.",
+      "tts": {
+        "text": "Günlerce yoğun tropikal ormanda yol açtılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir sırtın tepesinde Drake yüksek bir ağaca tırmandı.",
+      "text_markdown": "Bir sırtın tepesinde Drake yüksek bir ağaca tırmandı.",
+      "tts": {
+        "text": "Bir sırtın tepesinde Drake yüksek bir ağaca tırmandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Oradan Pasifik Okyanusu'nu gören ilk İngilizlerden biri oldu.",
+      "text_markdown": "Oradan Pasifik Okyanusu'nu gören ilk İngilizlerden biri oldu.",
+      "tts": {
+        "text": "Oradan Pasifik Okyanusu'nu gören ilk İngilizlerden biri oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake'in o büyük okyanusta bir gün yelken açmasına izin vermesi için Tanrı'ya dua ettiği söylenir.",
+      "text_markdown": "Drake'in o büyük okyanusta bir gün yelken açmasına izin vermesi için Tanrı'ya dua ettiği söylenir.",
+      "tts": {
+        "text": "Drake'in o büyük okyanusta bir gün yelken açmasına izin vermesi için Tanrı'ya dua ettiği söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu an hayatının en ünlü hikâyelerinden biri oldu.",
+      "text_markdown": "Bu an hayatının en ünlü hikâyelerinden biri oldu.",
+      "tts": {
+        "text": "Bu an hayatının en ünlü hikâyelerinden biri oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pasifik manzarası onu hırsla doldurdu.",
+      "text_markdown": "Pasifik manzarası onu hırsla doldurdu.",
+      "tts": {
+        "text": "Pasifik manzarası onu hırsla doldurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanya'nın Pasifik kolonilerinin neredeyse savunmasız olduğunu fark etti.",
+      "text_markdown": "İspanya'nın Pasifik kolonilerinin neredeyse savunmasız olduğunu fark etti.",
+      "tts": {
+        "text": "İspanya'nın Pasifik kolonilerinin neredeyse savunmasız olduğunu fark etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake ve Cimarron'lar gümüş ve altın taşıyan bir İspanyol katır kervanına pusu kurdu.",
+      "text_markdown": "Drake ve Cimarron'lar gümüş ve altın taşıyan bir İspanyol katır kervanına pusu kurdu.",
+      "tts": {
+        "text": "Drake ve Cimarron'lar gümüş ve altın taşıyan bir İspanyol katır kervanına pusu kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hazine Panama'nın Pasifik tarafından Atlantik tarafına taşınıyordu.",
+      "text_markdown": "Hazine Panama'nın Pasifik tarafından Atlantik tarafına taşınıyordu.",
+      "tts": {
+        "text": "Hazine Panama'nın Pasifik tarafından Atlantik tarafına taşınıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Akıncılar muazzam miktarda kıymetli maden ele geçirdi.",
+      "text_markdown": "Akıncılar muazzam miktarda kıymetli maden ele geçirdi.",
+      "tts": {
+        "text": "Akıncılar muazzam miktarda kıymetli maden ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake zengin ve ünlü olarak İngiltere'ye döndü.",
+      "text_markdown": "Drake zengin ve ünlü olarak İngiltere'ye döndü.",
+      "tts": {
+        "text": "Drake zengin ve ünlü olarak İngiltere'ye döndü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliçe Elizabeth bu cesur genç kaptana dikkat etti.",
+      "text_markdown": "Kraliçe Elizabeth bu cesur genç kaptana dikkat etti.",
+      "tts": {
+        "text": "Kraliçe Elizabeth bu cesur genç kaptana dikkat etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barış zamanında İspanya'ya bir saldırıyı açıkça övemezdi.",
+      "text_markdown": "Barış zamanında İspanya'ya bir saldırıyı açıkça övemezdi.",
+      "tts": {
+        "text": "Barış zamanında İspanya'ya bir saldırıyı açıkça övemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama özel olarak rakibini zayıflatan her şeyden memnundu.",
+      "text_markdown": "Ama özel olarak rakibini zayıflatan her şeyden memnundu.",
+      "tts": {
+        "text": "Ama özel olarak rakibini zayıflatan her şeyden memnundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake kraliçenin yakın çevresinde dolaşmaya başladı.",
+      "text_markdown": "Drake kraliçenin yakın çevresinde dolaşmaya başladı.",
+      "tts": {
+        "text": "Drake kraliçenin yakın çevresinde dolaşmaya başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577'de Elizabeth gizlice Drake'e Pasifik'e bir sefer düzenleme yetkisi verdi.",
+      "text_markdown": "1577'de Elizabeth gizlice Drake'e Pasifik'e bir sefer düzenleme yetkisi verdi.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş yedi yılında Elizabeth gizlice Drake'e Pasifik'e bir sefer düzenleme yetkisi verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculuğun resmi amacı keşifti.",
+      "text_markdown": "Yolculuğun resmi amacı keşifti.",
+      "tts": {
+        "text": "Yolculuğun resmi amacı keşifti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gerçek amaç Güney Amerika'nın Pasifik kıyısındaki İspanyol mülklerini yağmalamaktı.",
+      "text_markdown": "Gerçek amaç Güney Amerika'nın Pasifik kıyısındaki İspanyol mülklerini yağmalamaktı.",
+      "tts": {
+        "text": "Gerçek amaç Güney Amerika'nın Pasifik kıyısındaki İspanyol mülklerini yağmalamaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kraliçe bu girişime kendi parasını yatırdı.",
+      "text_markdown": "Kraliçe bu girişime kendi parasını yatırdı.",
+      "tts": {
+        "text": "Kraliçe bu girişime kendi parasını yatırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake beş gemi ve yaklaşık yüz altmış adamla Plymouth'tan yelken açtı.",
+      "text_markdown": "Drake beş gemi ve yaklaşık yüz altmış adamla Plymouth'tan yelken açtı.",
+      "tts": {
+        "text": "Drake beş gemi ve yaklaşık yüz altmış adamla Plymouth'tan yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Amiral gemisi sonradan Golden Hind olarak yeniden adlandırdığı Pelican'dı.",
+      "text_markdown": "Amiral gemisi sonradan Golden Hind olarak yeniden adlandırdığı Pelican'dı.",
+      "tts": {
+        "text": "Amiral gemisi sonradan Golden Hind olarak yeniden adlandırdığı Pelican'dı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Filo Güney Amerika kıyısına doğru Atlantik'i güneye geçti.",
+      "text_markdown": "Filo Güney Amerika kıyısına doğru Atlantik'i güneye geçti.",
+      "tts": {
+        "text": "Filo Güney Amerika kıyısına doğru Atlantik'i güneye geçti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Atlantik kıyısı boyunca yolculuk zordu.",
+      "text_markdown": "Atlantik kıyısı boyunca yolculuk zordu.",
+      "tts": {
+        "text": "Atlantik kıyısı boyunca yolculuk zordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir gemi denize elverişsiz olduğu için kasıtlı olarak batırıldı.",
+      "text_markdown": "Bir gemi denize elverişsiz olduğu için kasıtlı olarak batırıldı.",
+      "tts": {
+        "text": "Bir gemi denize elverişsiz olduğu için kasıtlı olarak batırıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake ayrıca Thomas Doughty adlı bir beyefendiden otoritesine yönelik ciddi bir meydan okumayla başa çıkmak zorunda kaldı.",
+      "text_markdown": "Drake ayrıca Thomas Doughty adlı bir beyefendiden otoritesine yönelik ciddi bir meydan okumayla başa çıkmak zorunda kaldı.",
+      "tts": {
+        "text": "Drake ayrıca Thomas Doughty adlı bir beyefendiden otoritesine yönelik ciddi bir meydan okumayla başa çıkmak zorunda kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake, Doughty'yi isyan suçuyla yargılayıp idam ettirdi.",
+      "text_markdown": "Drake, Doughty'yi isyan suçuyla yargılayıp idam ettirdi.",
+      "tts": {
+        "text": "Drake, Doughty'yi isyan suçuyla yargılayıp idam ettirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filo Güney Amerika'nın güney ucundaki Macellan Boğazı'na girdi.",
+      "text_markdown": "Filo Güney Amerika'nın güney ucundaki Macellan Boğazı'na girdi.",
+      "tts": {
+        "text": "Filo Güney Amerika'nın güney ucundaki Macellan Boğazı'na girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Boğaz dar, tehlikeli ve şiddetli fırtınalarla doluydu.",
+      "text_markdown": "Boğaz dar, tehlikeli ve şiddetli fırtınalarla doluydu.",
+      "tts": {
+        "text": "Boğaz dar, tehlikeli ve şiddetli fırtınalarla doluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Boğazı geçmek 16 gün sürdü.",
+      "text_markdown": "Boğazı geçmek 16 gün sürdü.",
+      "tts": {
+        "text": "Boğazı geçmek on altı gün sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yalnızca Golden Hind ve diğer iki gemi geçişten sağ kurtuldu.",
+      "text_markdown": "Yalnızca Golden Hind ve diğer iki gemi geçişten sağ kurtuldu.",
+      "tts": {
+        "text": "Yalnızca Golden Hind ve diğer iki gemi geçişten sağ kurtuldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pasifik'e çıktıktan sonra korkunç bir fırtına kalan gemileri vurdu.",
+      "text_markdown": "Pasifik'e çıktıktan sonra korkunç bir fırtına kalan gemileri vurdu.",
+      "tts": {
+        "text": "Pasifik'e çıktıktan sonra korkunç bir fırtına kalan gemileri vurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir gemi boğazdan geri itildi ve İngiltere'ye döndü.",
+      "text_markdown": "Bir gemi boğazdan geri itildi ve İngiltere'ye döndü.",
+      "tts": {
+        "text": "Bir gemi boğazdan geri itildi ve İngiltere'ye döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğer gemi tamamen kayboldu.",
+      "text_markdown": "Diğer gemi tamamen kayboldu.",
+      "tts": {
+        "text": "Diğer gemi tamamen kayboldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake uçsuz bucaksız ve bilinmeyen bir okyanustan Golden Hind'de yapayalnızdı.",
+      "text_markdown": "Drake uçsuz bucaksız ve bilinmeyen bir okyanustan Golden Hind'de yapayalnızdı.",
+      "tts": {
+        "text": "Drake uçsuz bucaksız ve bilinmeyen bir okyanustan Golden Hind'de yapayalnızdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake Güney Amerika'nın Pasifik kıyısı boyunca kuzeye yelken açtı.",
+      "text_markdown": "Drake Güney Amerika'nın Pasifik kıyısı boyunca kuzeye yelken açtı.",
+      "tts": {
+        "text": "Drake Güney Amerika'nın Pasifik kıyısı boyunca kuzeye yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oradaki İspanyol kolonileri denizden hiç saldırıya uğramamıştı.",
+      "text_markdown": "Oradaki İspanyol kolonileri denizden hiç saldırıya uğramamıştı.",
+      "tts": {
+        "text": "Oradaki İspanyol kolonileri denizden hiç saldırıya uğramamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiçbir düşman gemisi Pasifik'e girmediği için savunmaları yoktu.",
+      "text_markdown": "Hiçbir düşman gemisi Pasifik'e girmediği için savunmaları yoktu.",
+      "tts": {
+        "text": "Hiçbir düşman gemisi Pasifik'e girmediği için savunmaları yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake liman liman yağmalayarak neredeyse hiç direnişle karşılaşmadı.",
+      "text_markdown": "Drake liman liman yağmalayarak neredeyse hiç direnişle karşılaşmadı.",
+      "tts": {
+        "text": "Drake liman liman yağmalayarak neredeyse hiç direnişle karşılaşmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muazzam miktarda gümüş, altın ve değerli taş ele geçirdi.",
+      "text_markdown": "Muazzam miktarda gümüş, altın ve değerli taş ele geçirdi.",
+      "tts": {
+        "text": "Muazzam miktarda gümüş, altın ve değerli taş ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En büyük ödülü İspanyol hazine gemisi Nuestra Señora de la Concepción'du.",
+      "text_markdown": "En büyük ödülü İspanyol hazine gemisi Nuestra Señora de la Concepción'du.",
+      "tts": {
+        "text": "En büyük ödülü İspanyol hazine gemisi Nuestra Señora de la Concepción'du.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemi hazineyle o kadar ağır yüklüydü ki yükü aktarmak günler aldı.",
+      "text_markdown": "Gemi hazineyle o kadar ağır yüklüydü ki yükü aktarmak günler aldı.",
+      "tts": {
+        "text": "Gemi hazineyle o kadar ağır yüklüydü ki yükü aktarmak günler aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Güce Yükseliş",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ele geçirilen hazinenin değeri bugünkü parayla milyonlara denk gelecek kadar şaşırtıcıydı.",
+      "text_markdown": "Ele geçirilen hazinenin değeri bugünkü parayla milyonlara denk gelecek kadar şaşırtıcıydı.",
+      "tts": {
+        "text": "Ele geçirilen hazinenin değeri bugünkü parayla milyonlara denk gelecek kadar şaşırtıcıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zirvede",
+      "text_markdown": "Zirvede"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake geldiği yoldan geri dönemezdi.",
+      "text_markdown": "Drake geldiği yoldan geri dönemezdi.",
+      "tts": {
+        "text": "Drake geldiği yoldan geri dönemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyollar artık onu tüm Güney Amerika kıyısı boyunca avlıyordu.",
+      "text_markdown": "İspanyollar artık onu tüm Güney Amerika kıyısı boyunca avlıyordu.",
+      "tts": {
+        "text": "İspanyollar artık onu tüm Güney Amerika kıyısı boyunca avlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Macellan Boğazı'ndan geri dönmek intihar olurdu.",
+      "text_markdown": "Macellan Boğazı'ndan geri dönmek intihar olurdu.",
+      "tts": {
+        "text": "Macellan Boğazı'ndan geri dönmek intihar olurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dünya etrafında batıya devam etmeye karar verdi.",
+      "text_markdown": "Dünya etrafında batıya devam etmeye karar verdi.",
+      "tts": {
+        "text": "Dünya etrafında batıya devam etmeye karar verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Önce Drake Orta ve Kuzey Amerika kıyısı boyunca kuzeye yelken açtı.",
+      "text_markdown": "Önce Drake Orta ve Kuzey Amerika kıyısı boyunca kuzeye yelken açtı.",
+      "tts": {
+        "text": "Önce Drake Orta ve Kuzey Amerika kıyısı boyunca kuzeye yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler ne kadar kuzeye gittiğini tartışıyor.",
+      "text_markdown": "Tarihçiler ne kadar kuzeye gittiğini tartışıyor.",
+      "tts": {
+        "text": "Tarihçiler ne kadar kuzeye gittiğini tartışıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları bugünkü Oregon bölgesine hatta Vancouver Adası'na ulaştığına inanıyor.",
+      "text_markdown": "Bazıları bugünkü Oregon bölgesine hatta Vancouver Adası'na ulaştığına inanıyor.",
+      "tts": {
+        "text": "Bazıları bugünkü Oregon bölgesine hatta Vancouver Adası'na ulaştığına inanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğerleri kuzey sınırını San Francisco Körfezi yakınlarına koyuyor.",
+      "text_markdown": "Diğerleri kuzey sınırını San Francisco Körfezi yakınlarına koyuyor.",
+      "tts": {
+        "text": "Diğerleri kuzey sınırını San Francisco Körfezi yakınlarına koyuyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake Kaliforniya kıyısında bir yere çıkıp toprakları İngiltere adına talep etti.",
+      "text_markdown": "Drake Kaliforniya kıyısında bir yere çıkıp toprakları İngiltere adına talep etti.",
+      "tts": {
+        "text": "Drake Kaliforniya kıyısında bir yere çıkıp toprakları İngiltere adına talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buraya Yeni Britanya anlamına gelen Nova Albion adını verdi.",
+      "text_markdown": "Buraya Yeni Britanya anlamına gelen Nova Albion adını verdi.",
+      "tts": {
+        "text": "Buraya Yeni Britanya anlamına gelen Nova Albion adını verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemisini tamir edip mürettebatını dinlendirerek birkaç hafta karada geçirdi.",
+      "text_markdown": "Gemisini tamir edip mürettebatını dinlendirerek birkaç hafta karada geçirdi.",
+      "tts": {
+        "text": "Gemisini tamir edip mürettebatını dinlendirerek birkaç hafta karada geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yerel yerli halklarla dostane ilişkiler kurduğu söylenir.",
+      "text_markdown": "Yerel yerli halklarla dostane ilişkiler kurduğu söylenir.",
+      "tts": {
+        "text": "Yerel yerli halklarla dostane ilişkiler kurduğu söylenir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nova Albion'dan Drake batıya dönerek Pasifik Okyanusu'nu geçti.",
+      "text_markdown": "Nova Albion'dan Drake batıya dönerek Pasifik Okyanusu'nu geçti.",
+      "tts": {
+        "text": "Nova Albion'dan Drake batıya dönerek Pasifik Okyanusu'nu geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geçiş 68 gün sürdü.",
+      "text_markdown": "Geçiş 68 gün sürdü.",
+      "tts": {
+        "text": "Geçiş altmış sekiz gün sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İkmal için az sayıda adanın bulunduğu uçsuz bucaksız ve ıssız bir okyanus genişliğiydi.",
+      "text_markdown": "İkmal için az sayıda adanın bulunduğu uçsuz bucaksız ve ıssız bir okyanus genişliğiydi.",
+      "tts": {
+        "text": "İkmal için az sayıda adanın bulunduğu uçsuz bucaksız ve ıssız bir okyanus genişliğiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mürettebat azalan erzak ve yakalayabildikleri balıkla hayatta kaldı.",
+      "text_markdown": "Mürettebat azalan erzak ve yakalayabildikleri balıkla hayatta kaldı.",
+      "tts": {
+        "text": "Mürettebat azalan erzak ve yakalayabildikleri balıkla hayatta kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake bugün Endonezya'daki Maluku olarak bilinen Baharat Adaları'na ulaştı.",
+      "text_markdown": "Drake bugün Endonezya'daki Maluku olarak bilinen Baharat Adaları'na ulaştı.",
+      "tts": {
+        "text": "Drake bugün Endonezya'daki Maluku olarak bilinen Baharat Adaları'na ulaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu adalar karanfil, muskat ve altından daha değerli diğer baharatların kaynağıydı.",
+      "text_markdown": "Bu adalar karanfil, muskat ve altından daha değerli diğer baharatların kaynağıydı.",
+      "tts": {
+        "text": "Bu adalar karanfil, muskat ve altından daha değerli diğer baharatların kaynağıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake Ternate Sultanı ile bir ticaret anlaşması müzakere etti.",
+      "text_markdown": "Drake Ternate Sultanı ile bir ticaret anlaşması müzakere etti.",
+      "tts": {
+        "text": "Drake Ternate Sultanı ile bir ticaret anlaşması müzakere etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Golden Hind'e altı ton karanfil yükledi.",
+      "text_markdown": "Golden Hind'e altı ton karanfil yükledi.",
+      "tts": {
+        "text": "Golden Hind'e altı ton karanfil yükledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemi Doğu Hint Adaları'nda bir resifde neredeyse felaketle sonuçlanacaktı.",
+      "text_markdown": "Gemi Doğu Hint Adaları'nda bir resifde neredeyse felaketle sonuçlanacaktı.",
+      "tts": {
+        "text": "Gemi Doğu Hint Adaları'nda bir resifde neredeyse felaketle sonuçlanacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Golden Hind karaya oturdu ve yirmi saat boyunca sıkıştı.",
+      "text_markdown": "Golden Hind karaya oturdu ve yirmi saat boyunca sıkıştı.",
+      "tts": {
+        "text": "Golden Hind karaya oturdu ve yirmi saat boyunca sıkıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Drake gemiyi yüzdürecek kadar hafifletmek için yükü denize atmak zorunda kaldı.",
+      "text_markdown": "Drake gemiyi yüzdürecek kadar hafifletmek için yükü denize atmak zorunda kaldı.",
+      "tts": {
+        "text": "Drake gemiyi yüzdürecek kadar hafifletmek için yükü denize atmak zorunda kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tüm yolculuğun en korkutucu anlarından biriydi.",
+      "text_markdown": "Tüm yolculuğun en korkutucu anlarından biriydi.",
+      "tts": {
+        "text": "Tüm yolculuğun en korkutucu anlarından biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake Hint Okyanusu'nu geçti ve Afrika'nın güney ucundaki Ümit Burnu'nu dolandı.",
+      "text_markdown": "Drake Hint Okyanusu'nu geçti ve Afrika'nın güney ucundaki Ümit Burnu'nu dolandı.",
+      "tts": {
+        "text": "Drake Hint Okyanusu'nu geçti ve Afrika'nın güney ucundaki Ümit Burnu'nu dolandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atlantik Okyanusu'ndan kuzeye yelken açtı.",
+      "text_markdown": "Atlantik Okyanusu'ndan kuzeye yelken açtı.",
+      "tts": {
+        "text": "Atlantik Okyanusu'ndan kuzeye yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "26 Eylül 1580'de Golden Hind Plymouth limanına girdi.",
+      "text_markdown": "26 Eylül 1580'de Golden Hind Plymouth limanına girdi.",
+      "tts": {
+        "text": "Yirmi altı Eylül bin beş yüz seksen yılında Golden Hind Plymouth limanına girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake yaklaşık üç yıldır denizdeydi.",
+      "text_markdown": "Drake yaklaşık üç yıldır denizdeydi.",
+      "tts": {
+        "text": "Drake yaklaşık üç yıldır denizdeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake dünyanın tam çevresini dolaşarak sağ kalan ilk kaptandı.",
+      "text_markdown": "Drake dünyanın tam çevresini dolaşarak sağ kalan ilk kaptandı.",
+      "tts": {
+        "text": "Drake dünyanın tam çevresini dolaşarak sağ kalan ilk kaptandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ferdinand Macellan ilk dünya turunu başlatmıştı ama Filipinler'de öldürülmüştü.",
+      "text_markdown": "Ferdinand Macellan ilk dünya turunu başlatmıştı ama Filipinler'de öldürülmüştü.",
+      "tts": {
+        "text": "Ferdinand Macellan ilk dünya turunu başlatmıştı ama Filipinler'de öldürülmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Macellan'ın gemilerinden yalnızca biri başka bir kaptan altında yolculuğu tamamladı.",
+      "text_markdown": "Macellan'ın gemilerinden yalnızca biri başka bir kaptan altında yolculuğu tamamladı.",
+      "tts": {
+        "text": "Macellan'ın gemilerinden yalnızca biri başka bir kaptan altında yolculuğu tamamladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake dünya çevresinde bir seferi yönetip sağ dönen ilk kişiydi.",
+      "text_markdown": "Drake dünya çevresinde bir seferi yönetip sağ dönen ilk kişiydi.",
+      "tts": {
+        "text": "Drake dünya çevresinde bir seferi yönetip sağ dönen ilk kişiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake'in getirdiği hazine olağanüstüydü.",
+      "text_markdown": "Drake'in getirdiği hazine olağanüstüydü.",
+      "tts": {
+        "text": "Drake'in getirdiği hazine olağanüstüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tahminlere göre İngiliz Krallığı'nın tüm yıllık gelirinden daha değerliydi.",
+      "text_markdown": "Tahminlere göre İngiliz Krallığı'nın tüm yıllık gelirinden daha değerliydi.",
+      "tts": {
+        "text": "Tahminlere göre İngiliz Krallığı'nın tüm yıllık gelirinden daha değerliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kraliçe Elizabeth'in tek başına payı bile muazzamdı.",
+      "text_markdown": "Kraliçe Elizabeth'in tek başına payı bile muazzamdı.",
+      "tts": {
+        "text": "Kraliçe Elizabeth'in tek başına payı bile muazzamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yolculuktaki yatırımcılar binlerce yüzde getiri elde etti.",
+      "text_markdown": "Yolculuktaki yatırımcılar binlerce yüzde getiri elde etti.",
+      "tts": {
+        "text": "Yolculuktaki yatırımcılar binlerce yüzde getiri elde etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "4 Nisan 1581'de Kraliçe Elizabeth Deptford'daki Golden Hind'i ziyaret etti.",
+      "text_markdown": "4 Nisan 1581'de Kraliçe Elizabeth Deptford'daki Golden Hind'i ziyaret etti.",
+      "tts": {
+        "text": "Dört Nisan bin beş yüz seksen bir yılında Kraliçe Elizabeth Deptford'daki Golden Hind'i ziyaret etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drake'i gemisinin güvertesinde şövalye ilan etti.",
+      "text_markdown": "Drake'i gemisinin güvertesinde şövalye ilan etti.",
+      "tts": {
+        "text": "Drake'i gemisinin güvertesinde şövalye ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sir Francis Drake oldu.",
+      "text_markdown": "Sir Francis Drake oldu.",
+      "tts": {
+        "text": "Sir Francis Drake oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanyol büyükelçisi öfkeliydi ve bunu kralına hakaret olarak nitelendirdi.",
+      "text_markdown": "İspanyol büyükelçisi öfkeliydi ve bunu kralına hakaret olarak nitelendirdi.",
+      "tts": {
+        "text": "İspanyol büyükelçisi öfkeliydi ve bunu kralına hakaret olarak nitelendirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake İngiltere'nin en zengin ve ünlü adamlarından biri oldu.",
+      "text_markdown": "Drake İngiltere'nin en zengin ve ünlü adamlarından biri oldu.",
+      "tts": {
+        "text": "Drake İngiltere'nin en zengin ve ünlü adamlarından biri oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Devon'daki büyük bir mülk olan Buckland Manastırı'nı satın aldı.",
+      "text_markdown": "Devon'daki büyük bir mülk olan Buckland Manastırı'nı satın aldı.",
+      "tts": {
+        "text": "Devon'daki büyük bir mülk olan Buckland Manastırı'nı satın aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plymouth belediye başkanı olarak görev yaptı.",
+      "text_markdown": "Plymouth belediye başkanı olarak görev yaptı.",
+      "tts": {
+        "text": "Plymouth belediye başkanı olarak görev yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Parlamentoya seçildi.",
+      "text_markdown": "Parlamentoya seçildi.",
+      "tts": {
+        "text": "Parlamentoya seçildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1585'te Elizabeth Drake'i bir kez daha İspanyol Karayipleri'ni yağmalamaya gönderdi.",
+      "text_markdown": "1585'te Elizabeth Drake'i bir kez daha İspanyol Karayipleri'ni yağmalamaya gönderdi.",
+      "tts": {
+        "text": "Bin beş yüz seksen beş yılında Elizabeth Drake'i bir kez daha İspanyol Karayipleri'ni yağmalamaya gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kez yirmiden fazla gemi ve iki binden fazla askerden oluşan bir filoyla yelken açtı.",
+      "text_markdown": "Bu kez yirmiden fazla gemi ve iki binden fazla askerden oluşan bir filoyla yelken açtı.",
+      "tts": {
+        "text": "Bu kez yirmiden fazla gemi ve iki binden fazla askerden oluşan bir filoyla yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hispaniola adasındaki Santo Domingo şehrini yağmaladı.",
+      "text_markdown": "Hispaniola adasındaki Santo Domingo şehrini yağmaladı.",
+      "tts": {
+        "text": "Hispaniola adasındaki Santo Domingo şehrini yağmaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ardından bugünkü Kolombiya'daki Cartagena şehrini ele geçirip fidye istedi.",
+      "text_markdown": "Ardından bugünkü Kolombiya'daki Cartagena şehrini ele geçirip fidye istedi.",
+      "tts": {
+        "text": "Ardından bugünkü Kolombiya'daki Cartagena şehrini ele geçirip fidye istedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu baskınlar İspanya'yı aşağıladı ve İngiliz güvenini artırdı.",
+      "text_markdown": "Bu baskınlar İspanya'yı aşağıladı ve İngiliz güvenini artırdı.",
+      "tts": {
+        "text": "Bu baskınlar İspanya'yı aşağıladı ve İngiliz güvenini artırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kral İkinci Felipe'yi İngiltere'yi istila etmeye kışkırtmaya da yardımcı oldular.",
+      "text_markdown": "Kral İkinci Felipe'yi İngiltere'yi istila etmeye kışkırtmaya da yardımcı oldular.",
+      "tts": {
+        "text": "Kral İkinci Felipe'yi İngiltere'yi istila etmeye kışkırtmaya da yardımcı oldular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvede",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın en büyük iki deniz gücü arasındaki çarpışma yaklaşıyordu.",
+      "text_markdown": "Dünyanın en büyük iki deniz gücü arasındaki çarpışma yaklaşıyordu.",
+      "tts": {
+        "text": "Dünyanın en büyük iki deniz gücü arasındaki çarpışma yaklaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1587'de Drake deniz tarihinin en cesur baskınlarından birini gerçekleştirdi.",
+      "text_markdown": "1587'de Drake deniz tarihinin en cesur baskınlarından birini gerçekleştirdi.",
+      "tts": {
+        "text": "Bin beş yüz seksen yedi yılında Drake deniz tarihinin en cesur baskınlarından birini gerçekleştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol limanı Kadiz'e girerek orada toplanan filoya saldırdı.",
+      "text_markdown": "İspanyol limanı Kadiz'e girerek orada toplanan filoya saldırdı.",
+      "tts": {
+        "text": "İspanyol limanı Kadiz'e girerek orada toplanan filoya saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yaklaşık otuz gemiyi yok etti veya ele geçirdi.",
+      "text_markdown": "Yaklaşık otuz gemiyi yok etti veya ele geçirdi.",
+      "tts": {
+        "text": "Yaklaşık otuz gemiyi yok etti veya ele geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake bu baskını İspanya Kralı'nın sakalını yakmak olarak adlandırdı.",
+      "text_markdown": "Drake bu baskını İspanya Kralı'nın sakalını yakmak olarak adlandırdı.",
+      "tts": {
+        "text": "Drake bu baskını İspanya Kralı'nın sakalını yakmak olarak adlandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saldırı İspanyol Armadası'nı en az bir yıl geciktirdi.",
+      "text_markdown": "Saldırı İspanyol Armadası'nı en az bir yıl geciktirdi.",
+      "tts": {
+        "text": "Saldırı İspanyol Armadası'nı en az bir yıl geciktirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanya'nın istila için ihtiyaç duyduğu erzak ve donanımı da yok etti.",
+      "text_markdown": "İspanya'nın istila için ihtiyaç duyduğu erzak ve donanımı da yok etti.",
+      "tts": {
+        "text": "İspanya'nın istila için ihtiyaç duyduğu erzak ve donanımı da yok etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake bir kez daha kahraman olarak İngiltere'ye döndü.",
+      "text_markdown": "Drake bir kez daha kahraman olarak İngiltere'ye döndü.",
+      "tts": {
+        "text": "Drake bir kez daha kahraman olarak İngiltere'ye döndü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1588'de Kral İkinci Felipe sonunda büyük istila filosunu gönderdi.",
+      "text_markdown": "1588'de Kral İkinci Felipe sonunda büyük istila filosunu gönderdi.",
+      "tts": {
+        "text": "Bin beş yüz seksen sekiz yılında Kral İkinci Felipe sonunda büyük istila filosunu gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol Armadası yaklaşık 130 gemiden oluşuyordu.",
+      "text_markdown": "İspanyol Armadası yaklaşık 130 gemiden oluşuyordu.",
+      "tts": {
+        "text": "İspanyol Armadası yaklaşık yüz otuz gemiden oluşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O zamana kadar Avrupa tarihinde toplanmış en büyük deniz kuvvetiydi.",
+      "text_markdown": "O zamana kadar Avrupa tarihinde toplanmış en büyük deniz kuvvetiydi.",
+      "tts": {
+        "text": "O zamana kadar Avrupa tarihinde toplanmış en büyük deniz kuvvetiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Görevi Hollanda'dan bir orduyu İngiliz Kanalı'nın karşısına geçirmekti.",
+      "text_markdown": "Görevi Hollanda'dan bir orduyu İngiliz Kanalı'nın karşısına geçirmekti.",
+      "tts": {
+        "text": "Görevi Hollanda'dan bir orduyu İngiliz Kanalı'nın karşısına geçirmekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake, Lord Howard of Effingham komutasındaki İngiliz filosunun tümamirali olarak görev yaptı.",
+      "text_markdown": "Drake, Lord Howard of Effingham komutasındaki İngiliz filosunun tümamirali olarak görev yaptı.",
+      "tts": {
+        "text": "Drake, Lord Howard of Effingham komutasındaki İngiliz filosunun tümamirali olarak görev yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz gemileri genellikle İspanyol kalyonlarından daha küçük ve hızlıydı.",
+      "text_markdown": "İngiliz gemileri genellikle İspanyol kalyonlarından daha küçük ve hızlıydı.",
+      "tts": {
+        "text": "İngiliz gemileri genellikle İspanyol kalyonlarından daha küçük ve hızlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz topçuluğu daha üstündü; daha uzun menzilli toplar ve daha iyi eğitilmiş mürettebata sahipti.",
+      "text_markdown": "İngiliz topçuluğu daha üstündü; daha uzun menzilli toplar ve daha iyi eğitilmiş mürettebata sahipti.",
+      "tts": {
+        "text": "İngiliz topçuluğu daha üstündü; daha uzun menzilli toplar ve daha iyi eğitilmiş mürettebata sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama Armada'nın devasa boyutu korkutucuydu.",
+      "text_markdown": "Ama Armada'nın devasa boyutu korkutucuydu.",
+      "tts": {
+        "text": "Ama Armada'nın devasa boyutu korkutucuydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz filosu Armada İngiliz Kanalı'ndan geçerken onu taciz etti.",
+      "text_markdown": "İngiliz filosu Armada İngiliz Kanalı'ndan geçerken onu taciz etti.",
+      "tts": {
+        "text": "İngiliz filosu Armada İngiliz Kanalı'ndan geçerken onu taciz etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha hızlı gemilerini ve uzun menzilli toplarını kullanarak mesafeden saldırdılar.",
+      "text_markdown": "Daha hızlı gemilerini ve uzun menzilli toplarını kullanarak mesafeden saldırdılar.",
+      "tts": {
+        "text": "Daha hızlı gemilerini ve uzun menzilli toplarını kullanarak mesafeden saldırdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol düzeni tuttu ama İngilizler hedeflerine ulaşmasını engelledi.",
+      "text_markdown": "İspanyol düzeni tuttu ama İngilizler hedeflerine ulaşmasını engelledi.",
+      "tts": {
+        "text": "İspanyol düzeni tuttu ama İngilizler hedeflerine ulaşmasını engelledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Belirleyici an Flanders kıyısındaki Gravelines'de geldi.",
+      "text_markdown": "Belirleyici an Flanders kıyısındaki Gravelines'de geldi.",
+      "tts": {
+        "text": "Belirleyici an Flanders kıyısındaki Gravelines'de geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler gece demir atmış Armada'ya ateş gemileri gönderdi.",
+      "text_markdown": "İngilizler gece demir atmış Armada'ya ateş gemileri gönderdi.",
+      "tts": {
+        "text": "İngilizler gece demir atmış Armada'ya ateş gemileri gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yanan gemiler İspanyol gemilerini panikle dağılmaya zorladı.",
+      "text_markdown": "Yanan gemiler İspanyol gemilerini panikle dağılmaya zorladı.",
+      "tts": {
+        "text": "Yanan gemiler İspanyol gemilerini panikle dağılmaya zorladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Armada'yı koruyan sıkı düzen kırılmıştı.",
+      "text_markdown": "Armada'yı koruyan sıkı düzen kırılmıştı.",
+      "tts": {
+        "text": "Armada'yı koruyan sıkı düzen kırılmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizler dağılmış İspanyol filosuna yıkıcı etkiyle saldırdı.",
+      "text_markdown": "İngilizler dağılmış İspanyol filosuna yıkıcı etkiyle saldırdı.",
+      "tts": {
+        "text": "İngilizler dağılmış İspanyol filosuna yıkıcı etkiyle saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok İspanyol gemisi battı veya kıyıya sürüklendi.",
+      "text_markdown": "Birçok İspanyol gemisi battı veya kıyıya sürüklendi.",
+      "tts": {
+        "text": "Birçok İspanyol gemisi battı veya kıyıya sürüklendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Armada yeniden toparlanamadı ve rüzgâr tarafından kuzeye sürüklendi.",
+      "text_markdown": "Armada yeniden toparlanamadı ve rüzgâr tarafından kuzeye sürüklendi.",
+      "tts": {
+        "text": "Armada yeniden toparlanamadı ve rüzgâr tarafından kuzeye sürüklendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanya'ya dönmek için İskoçya ve İrlanda çevresinden dolaşmak zorunda kaldı.",
+      "text_markdown": "İspanya'ya dönmek için İskoçya ve İrlanda çevresinden dolaşmak zorunda kaldı.",
+      "tts": {
+        "text": "İspanya'ya dönmek için İskoçya ve İrlanda çevresinden dolaşmak zorunda kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uzun dönüş yolculuğu sırasında fırtınalar birçok İspanyol gemisini yok etti.",
+      "text_markdown": "Uzun dönüş yolculuğu sırasında fırtınalar birçok İspanyol gemisini yok etti.",
+      "tts": {
+        "text": "Uzun dönüş yolculuğu sırasında fırtınalar birçok İspanyol gemisini yok etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İskoçya ve İrlanda'nın kayalık kıyılarında gemiler parçalandı.",
+      "text_markdown": "İskoçya ve İrlanda'nın kayalık kıyılarında gemiler parçalandı.",
+      "tts": {
+        "text": "İskoçya ve İrlanda'nın kayalık kıyılarında gemiler parçalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orijinal 130 gemiden yalnızca yaklaşık 65'i İspanya'ya dönebildi.",
+      "text_markdown": "Orijinal 130 gemiden yalnızca yaklaşık 65'i İspanya'ya dönebildi.",
+      "tts": {
+        "text": "Orijinal yüz otuz gemiden yalnızca yaklaşık altmış beşi İspanya'ya dönebildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Binlerce İspanyol denizci ve asker öldü.",
+      "text_markdown": "Binlerce İspanyol denizci ve asker öldü.",
+      "tts": {
+        "text": "Binlerce İspanyol denizci ve asker öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol Armadası'nın yenilgisi Avrupa tarihinde bir dönüm noktasıydı.",
+      "text_markdown": "İspanyol Armadası'nın yenilgisi Avrupa tarihinde bir dönüm noktasıydı.",
+      "tts": {
+        "text": "İspanyol Armadası'nın yenilgisi Avrupa tarihinde bir dönüm noktasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya'nın denizde yenilmez olmadığını kanıtladı.",
+      "text_markdown": "İspanya'nın denizde yenilmez olmadığını kanıtladı.",
+      "tts": {
+        "text": "İspanya'nın denizde yenilmez olmadığını kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiltere'ye kendi imparatorluğunu genişletme güvenini verdi.",
+      "text_markdown": "İngiltere'ye kendi imparatorluğunu genişletme güvenini verdi.",
+      "tts": {
+        "text": "İngiltere'ye kendi imparatorluğunu genişletme güvenini verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake ulusun kurtarıcılarından biri olarak kutlandı.",
+      "text_markdown": "Drake ulusun kurtarıcılarından biri olarak kutlandı.",
+      "tts": {
+        "text": "Drake ulusun kurtarıcılarından biri olarak kutlandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama Drake'in son yılları başarısızlık ve hayal kırıklığı getirdi.",
+      "text_markdown": "Ama Drake'in son yılları başarısızlık ve hayal kırıklığı getirdi.",
+      "tts": {
+        "text": "Ama Drake'in son yılları başarısızlık ve hayal kırıklığı getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1589'da İngiliz Armadası adı verilen İspanya'ya karşı bir karşı saldırı yönetti.",
+      "text_markdown": "1589'da İngiliz Armadası adı verilen İspanya'ya karşı bir karşı saldırı yönetti.",
+      "tts": {
+        "text": "Bin beş yüz seksen dokuz yılında İngiliz Armadası adı verilen İspanya'ya karşı bir karşı saldırı yönetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sefer maliyetli bir felaketti.",
+      "text_markdown": "Sefer maliyetli bir felaketti.",
+      "tts": {
+        "text": "Sefer maliyetli bir felaketti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Drake ana hedeflerinden hiçbirini başaramadı.",
+      "text_markdown": "Drake ana hedeflerinden hiçbirini başaramadı.",
+      "tts": {
+        "text": "Drake ana hedeflerinden hiçbirini başaramadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1595'te Drake son kez Karayipler'e yelken açtı.",
+      "text_markdown": "1595'te Drake son kez Karayipler'e yelken açtı.",
+      "tts": {
+        "text": "Bin beş yüz doksan beş yılında Drake son kez Karayipler'e yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eski ortağı John Hawkins eşlik ediyordu.",
+      "text_markdown": "Eski ortağı John Hawkins eşlik ediyordu.",
+      "tts": {
+        "text": "Eski ortağı John Hawkins eşlik ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sefer başından beri kötü şansa maruz kaldı.",
+      "text_markdown": "Sefer başından beri kötü şansa maruz kaldı.",
+      "tts": {
+        "text": "Sefer başından beri kötü şansa maruz kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hawkins hastalandı ve Porto Riko açıklarında öldü.",
+      "text_markdown": "Hawkins hastalandı ve Porto Riko açıklarında öldü.",
+      "tts": {
+        "text": "Hawkins hastalandı ve Porto Riko açıklarında öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake Porto Riko'daki San Juan'a saldırdı ama İspanyol savunucuları tarafından püskürtüldü.",
+      "text_markdown": "Drake Porto Riko'daki San Juan'a saldırdı ama İspanyol savunucuları tarafından püskürtüldü.",
+      "tts": {
+        "text": "Drake Porto Riko'daki San Juan'a saldırdı ama İspanyol savunucuları tarafından püskürtüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç küçük hedefi yağmaladı ama çok az hazine buldu.",
+      "text_markdown": "Birkaç küçük hedefi yağmaladı ama çok az hazine buldu.",
+      "tts": {
+        "text": "Birkaç küçük hedefi yağmaladı ama çok az hazine buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyollar Drake'in önceki baskınlarından bu yana savunmalarını güçlendirmişti.",
+      "text_markdown": "İspanyollar Drake'in önceki baskınlarından bu yana savunmalarını güçlendirmişti.",
+      "tts": {
+        "text": "İspanyollar Drake'in önceki baskınlarından bu yana savunmalarını güçlendirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kolay yağma dönemi sona ermişti.",
+      "text_markdown": "Kolay yağma dönemi sona ermişti.",
+      "tts": {
+        "text": "Kolay yağma dönemi sona ermişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake ciddi bir bağırsak hastalığı olan dizanteriye yakalandı.",
+      "text_markdown": "Drake ciddi bir bağırsak hastalığı olan dizanteriye yakalandı.",
+      "tts": {
+        "text": "Drake ciddi bir bağırsak hastalığı olan dizanteriye yakalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filo Panama kıyısı boyunca ilerlerken durumu hızla kötüleşti.",
+      "text_markdown": "Filo Panama kıyısı boyunca ilerlerken durumu hızla kötüleşti.",
+      "tts": {
+        "text": "Filo Panama kıyısı boyunca ilerlerken durumu hızla kötüleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sir Francis Drake 28 Ocak 1596'da Portobelo kasabası yakınında gemisinde öldü.",
+      "text_markdown": "Sir Francis Drake 28 Ocak 1596'da Portobelo kasabası yakınında gemisinde öldü.",
+      "tts": {
+        "text": "Sir Francis Drake yirmi sekiz Ocak bin beş yüz doksan altı yılında Portobelo kasabası yakınında gemisinde öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yaklaşık elli altı yaşındaydı.",
+      "text_markdown": "Yaklaşık elli altı yaşındaydı.",
+      "tts": {
+        "text": "Yaklaşık elli altı yaşındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake kurşun bir tabutta denize gömüldü.",
+      "text_markdown": "Drake kurşun bir tabutta denize gömüldü.",
+      "tts": {
+        "text": "Drake kurşun bir tabutta denize gömüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bedeni defalarca yağmaladığı deniz olan Karayipler'in sularına indirildi.",
+      "text_markdown": "Bedeni defalarca yağmaladığı deniz olan Karayipler'in sularına indirildi.",
+      "tts": {
+        "text": "Bedeni defalarca yağmaladığı deniz olan Karayipler'in sularına indirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tabutu birçok modern girişime rağmen hiç bulunamadı.",
+      "text_markdown": "Tabutu birçok modern girişime rağmen hiç bulunamadı.",
+      "tts": {
+        "text": "Tabutu birçok modern girişime rağmen hiç bulunamadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sir Francis Drake deniz tarihinin en karmaşık miraslarından birini bıraktı.",
+      "text_markdown": "Sir Francis Drake deniz tarihinin en karmaşık miraslarından birini bıraktı.",
+      "tts": {
+        "text": "Sir Francis Drake deniz tarihinin en karmaşık miraslarından birini bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aynı anda hem ulusal bir kahraman hem de uluslararası bir suçluydu.",
+      "text_markdown": "Aynı anda hem ulusal bir kahraman hem de uluslararası bir suçluydu.",
+      "tts": {
+        "text": "Aynı anda hem ulusal bir kahraman hem de uluslararası bir suçluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Değerlendirme tamamen bakış açısına bağlıdır.",
+      "text_markdown": "Değerlendirme tamamen bakış açısına bağlıdır.",
+      "tts": {
+        "text": "Değerlendirme tamamen bakış açısına bağlıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiltere'de Drake dünyayı dolaşan ve Armada'yı yenen adam olarak anılır.",
+      "text_markdown": "İngiltere'de Drake dünyayı dolaşan ve Armada'yı yenen adam olarak anılır.",
+      "tts": {
+        "text": "İngiltere'de Drake dünyayı dolaşan ve Armada'yı yenen adam olarak anılır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Plymouth ve diğer İngiliz şehirlerinde heykelleri dikilmiştir.",
+      "text_markdown": "Plymouth ve diğer İngiliz şehirlerinde heykelleri dikilmiştir.",
+      "tts": {
+        "text": "Plymouth ve diğer İngiliz şehirlerinde heykelleri dikilmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plymouth Sound'daki Drake Adası onun adını taşır.",
+      "text_markdown": "Plymouth Sound'daki Drake Adası onun adını taşır.",
+      "tts": {
+        "text": "Plymouth Sound'daki Drake Adası onun adını taşır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Britanya denizcilik tarihinin en çok saygı duyulan figürlerinden biridir.",
+      "text_markdown": "Britanya denizcilik tarihinin en çok saygı duyulan figürlerinden biridir.",
+      "tts": {
+        "text": "Britanya denizcilik tarihinin en çok saygı duyulan figürlerinden biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya ve Latin Amerika'da Drake'in anısı çok farklıdır.",
+      "text_markdown": "İspanya ve Latin Amerika'da Drake'in anısı çok farklıdır.",
+      "tts": {
+        "text": "İspanya ve Latin Amerika'da Drake'in anısı çok farklıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehirleri yakan ve hazineler çalan acımasız bir korsan olarak anılır.",
+      "text_markdown": "Şehirleri yakan ve hazineler çalan acımasız bir korsan olarak anılır.",
+      "tts": {
+        "text": "Şehirleri yakan ve hazineler çalan acımasız bir korsan olarak anılır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Panama, Kolombiya ve diğer ülkelerde sömürge şiddetinin simgesidir.",
+      "text_markdown": "Panama, Kolombiya ve diğer ülkelerde sömürge şiddetinin simgesidir.",
+      "tts": {
+        "text": "Panama, Kolombiya ve diğer ülkelerde sömürge şiddetinin simgesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El Draque adı İspanyolca konuşulan kültürlerde hâlâ ağırlık taşır.",
+      "text_markdown": "El Draque adı İspanyolca konuşulan kültürlerde hâlâ ağırlık taşır.",
+      "tts": {
+        "text": "El Draque adı İspanyolca konuşulan kültürlerde hâlâ ağırlık taşır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drake'in köle ticaretine katılımı sicilinin kaçınılmaz bir parçasıdır.",
+      "text_markdown": "Drake'in köle ticaretine katılımı sicilinin kaçınılmaz bir parçasıdır.",
+      "tts": {
+        "text": "Drake'in köle ticaretine katılımı sicilinin kaçınılmaz bir parçasıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrikalıları kaçırıp köle olarak satan yolculuklara katıldı.",
+      "text_markdown": "Afrikalıları kaçırıp köle olarak satan yolculuklara katıldı.",
+      "tts": {
+        "text": "Afrikalıları kaçırıp köle olarak satan yolculuklara katıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kariyerinin bu yönü İngiliz kahramanlık anlatılarında sıklıkla küçümsenir.",
+      "text_markdown": "Kariyerinin bu yönü İngiliz kahramanlık anlatılarında sıklıkla küçümsenir.",
+      "tts": {
+        "text": "Kariyerinin bu yönü İngiliz kahramanlık anlatılarında sıklıkla küçümsenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama bu adamı ve çağını anlamak için merkezidir.",
+      "text_markdown": "Ama bu adamı ve çağını anlamak için merkezidir.",
+      "tts": {
+        "text": "Ama bu adamı ve çağını anlamak için merkezidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney Amerika ile Antarktika arasındaki tehlikeli boğaz olan Drake Geçidi onun adını taşır.",
+      "text_markdown": "Güney Amerika ile Antarktika arasındaki tehlikeli boğaz olan Drake Geçidi onun adını taşır.",
+      "tts": {
+        "text": "Güney Amerika ile Antarktika arasındaki tehlikeli boğaz olan Drake Geçidi onun adını taşır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaliforniya'daki Drake Körfezi Nova Albion'a çıkışının muhtemel yerini işaret eder.",
+      "text_markdown": "Kaliforniya'daki Drake Körfezi Nova Albion'a çıkışının muhtemel yerini işaret eder.",
+      "tts": {
+        "text": "Kaliforniya'daki Drake Körfezi Nova Albion'a çıkışının muhtemel yerini işaret eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın dört bir yanındaki coğrafi özellikler onun adını taşır.",
+      "text_markdown": "Dünyanın dört bir yanındaki coğrafi özellikler onun adını taşır.",
+      "tts": {
+        "text": "Dünyanın dört bir yanındaki coğrafi özellikler onun adını taşır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kalıcı efsanelerden biri Drake'in Davulu hikâyesidir.",
+      "text_markdown": "En kalıcı efsanelerden biri Drake'in Davulu hikâyesidir.",
+      "tts": {
+        "text": "En kalıcı efsanelerden biri Drake'in Davulu hikâyesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geleneğe göre İngiltere tehlikede olduğunda Drake'in davulu kendiliğinden çalacaktır.",
+      "text_markdown": "Geleneğe göre İngiltere tehlikede olduğunda Drake'in davulu kendiliğinden çalacaktır.",
+      "tts": {
+        "text": "Geleneğe göre İngiltere tehlikede olduğunda Drake'in davulu kendiliğinden çalacaktır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Buckland Manastırı'nda saklanan davulun büyük askeri olaylardan önce duyulduğu söylenir.",
+      "text_markdown": "Buckland Manastırı'nda saklanan davulun büyük askeri olaylardan önce duyulduğu söylenir.",
+      "tts": {
+        "text": "Buckland Manastırı'nda saklanan davulun büyük askeri olaylardan önce duyulduğu söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Efsane Drake'in İngiliz ulusal kimliğine ne kadar derinden işlendiğini yansıtır.",
+      "text_markdown": "Efsane Drake'in İngiliz ulusal kimliğine ne kadar derinden işlendiğini yansıtır.",
+      "tts": {
+        "text": "Efsane Drake'in İngiliz ulusal kimliğine ne kadar derinden işlendiğini yansıtır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan ile korsanlık yapan arasındaki ayrım her zaman siyasiydi.",
+      "text_markdown": "Korsan ile korsanlık yapan arasındaki ayrım her zaman siyasiydi.",
+      "tts": {
+        "text": "Korsan ile korsanlık yapan arasındaki ayrım her zaman siyasiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drake'in kraliçesinden İspanyol gemilerine saldırma yetkisi vardı.",
+      "text_markdown": "Drake'in kraliçesinden İspanyol gemilerine saldırma yetkisi vardı.",
+      "tts": {
+        "text": "Drake'in kraliçesinden İspanyol gemilerine saldırma yetkisi vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz bakış açısından bu onu meşru bir deniz komutanı yapıyordu.",
+      "text_markdown": "İngiliz bakış açısından bu onu meşru bir deniz komutanı yapıyordu.",
+      "tts": {
+        "text": "İngiliz bakış açısından bu onu meşru bir deniz komutanı yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanyol bakış açısından bir taç koruması altındaki sıradan bir hırsızdı.",
+      "text_markdown": "İspanyol bakış açısından bir taç koruması altındaki sıradan bir hırsızdı.",
+      "tts": {
+        "text": "İspanyol bakış açısından bir taç koruması altındaki sıradan bir hırsızdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnkâr edilemez olan başarısının boyutudur.",
+      "text_markdown": "İnkâr edilemez olan başarısının boyutudur.",
+      "tts": {
+        "text": "İnkâr edilemez olan başarısının boyutudur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Modern bir tenis kortundan uzun olmayan ahşap bir gemide tüm gezegeni dolaştı.",
+      "text_markdown": "Modern bir tenis kortundan uzun olmayan ahşap bir gemide tüm gezegeni dolaştı.",
+      "tts": {
+        "text": "Modern bir tenis kortundan uzun olmayan ahşap bir gemide tüm gezegeni dolaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın en büyük imparatorluğuna meydan okudu ve bunu anlatacak kadar yaşadı.",
+      "text_markdown": "Dünyanın en büyük imparatorluğuna meydan okudu ve bunu anlatacak kadar yaşadı.",
+      "tts": {
+        "text": "Dünyanın en büyük imparatorluğuna meydan okudu ve bunu anlatacak kadar yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sir Francis Drake'in hikâyesi dünyanın onu geçecek kadar cesur olanlara ait olduğunun kanıtıdır.",
+      "text_markdown": "Sir Francis Drake'in hikâyesi dünyanın onu geçecek kadar cesur olanlara ait olduğunun kanıtıdır.",
+      "tts": {
+        "text": "Sir Francis Drake'in hikâyesi dünyanın onu geçecek kadar cesur olanlara ait olduğunun kanıtıdır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

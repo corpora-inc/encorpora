@@ -1,0 +1,4397 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_kanhoji_angre",
+  "language": "zh",
+  "total_segments": 294,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是坎霍吉·安格雷的真实故事，他是印度康坎海岸上从未被击败的海军统帅。",
+      "text_markdown": "这是坎霍吉·安格雷的真实故事，他是印度康坎海岸上从未被击败的海军统帅。",
+      "tts": {
+        "text": "这是坎霍吉·安格雷的真实故事，他是印度康坎海岸上从未被击败的海军统帅。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他效力于马拉塔帝国，掌控印度西海岸近三十年。",
+      "text_markdown": "他效力于马拉塔帝国，掌控印度西海岸近三十年。",
+      "tts": {
+        "text": "他效力于马拉塔帝国，掌控印度西海岸近三十年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国东印度公司、葡萄牙帝国和荷兰共和国都未能将他击败。",
+      "text_markdown": "英国东印度公司、葡萄牙帝国和荷兰共和国都未能将他击败。",
+      "tts": {
+        "text": "英国东印度公司、葡萄牙帝国和荷兰共和国都未能将他击败。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷在印度之外鲜为人知。",
+      "text_markdown": "坎霍吉·安格雷在印度之外鲜为人知。",
+      "tts": {
+        "text": "坎霍吉·安格雷在印度之外鲜为人知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在欧洲史书中，他常被轻蔑地称为海盗。",
+      "text_markdown": "在欧洲史书中，他常被轻蔑地称为海盗。",
+      "tts": {
+        "text": "在欧洲史书中，他常被轻蔑地称为海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在印度史书中，他被颂扬为抵御外国殖民者的爱国者。",
+      "text_markdown": "在印度史书中，他被颂扬为抵御外国殖民者的爱国者。",
+      "tts": {
+        "text": "在印度史书中，他被颂扬为抵御外国殖民者的爱国者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真相一如既往，比任何一种说法都要复杂。",
+      "text_markdown": "真相一如既往，比任何一种说法都要复杂。",
+      "tts": {
+        "text": "真相一如既往，比任何一种说法都要复杂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷活跃于一个海盗行为、海战和合法统治之间界限模糊到难以辨认的时代。",
+      "text_markdown": "坎霍吉·安格雷活跃于一个海盗行为、海战和合法统治之间界限模糊到难以辨认的时代。",
+      "tts": {
+        "text": "坎霍吉·安格雷活跃于一个海盗行为、海战和合法统治之间界限模糊到难以辨认的时代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本书以历史记录所能允许的最大准确度和细致程度讲述他的故事。",
+      "text_markdown": "本书以历史记录所能允许的最大准确度和细致程度讲述他的故事。",
+      "tts": {
+        "text": "本书以历史记录所能允许的最大准确度和细致程度讲述他的故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本书中的每一项论断都以马拉塔、英国、葡萄牙和荷兰的史料为依据。",
+      "text_markdown": "本书中的每一项论断都以马拉塔、英国、葡萄牙和荷兰的史料为依据。",
+      "tts": {
+        "text": "本书中的每一项论断都以马拉塔、英国、葡萄牙和荷兰的史料为依据。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当这些史料相互矛盾时，我们指出分歧。",
+      "text_markdown": "当这些史料相互矛盾时，我们指出分歧。",
+      "tts": {
+        "text": "当这些史料相互矛盾时，我们指出分歧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当记录沉默时，我们不做推测。",
+      "text_markdown": "当记录沉默时，我们不做推测。",
+      "tts": {
+        "text": "当记录沉默时，我们不做推测。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "康坎海岸的世界",
+      "text_markdown": "康坎海岸的世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "康坎海岸是沿印度西缘延伸的一条狭长地带。",
+      "text_markdown": "康坎海岸是沿印度西缘延伸的一条狭长地带。",
+      "tts": {
+        "text": "康坎海岸是沿印度西缘延伸的一条狭长地带。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从北部的现代孟买延伸至南部的果阿。",
+      "text_markdown": "从北部的现代孟买延伸至南部的果阿。",
+      "tts": {
+        "text": "从北部的现代孟买延伸至南部的果阿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西面是阿拉伯海，东面是西高止山脉，将海岸与德干高原隔开。",
+      "text_markdown": "西面是阿拉伯海，东面是西高止山脉，将海岸与德干高原隔开。",
+      "tts": {
+        "text": "西面是阿拉伯海，东面是西高止山脉，将海岸与德干高原隔开。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海岸线崎岖不平，深深凹陷。",
+      "text_markdown": "海岸线崎岖不平，深深凹陷。",
+      "tts": {
+        "text": "海岸线崎岖不平，深深凹陷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "岩石海岬、隐蔽的海湾和潮汐溪流构成了完美适合海战的地貌。",
+      "text_markdown": "岩石海岬、隐蔽的海湾和潮汐溪流构成了完美适合海战的地貌。",
+      "tts": {
+        "text": "岩石海岬、隐蔽的海湾和潮汐溪流构成了完美适合海战的地貌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "吹过阿拉伯海的季风决定着这片海岸的生活节奏。",
+      "text_markdown": "吹过阿拉伯海的季风决定着这片海岸的生活节奏。",
+      "tts": {
+        "text": "吹过阿拉伯海的季风决定着这片海岸的生活节奏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船只只能在特定月份航行，季风的时间决定了何时可以进行贸易和战争。",
+      "text_markdown": "船只只能在特定月份航行，季风的时间决定了何时可以进行贸易和战争。",
+      "tts": {
+        "text": "船只只能在特定月份航行，季风的时间决定了何时可以进行贸易和战争。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数个世纪以来，康坎海岸一直是世界上最繁忙的海上通道之一。",
+      "text_markdown": "数个世纪以来，康坎海岸一直是世界上最繁忙的海上通道之一。",
+      "tts": {
+        "text": "数个世纪以来，康坎海岸一直是世界上最繁忙的海上通道之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿拉伯帆船在印度与波斯湾及东非港口之间运送香料、纺织品和宝石。",
+      "text_markdown": "阿拉伯帆船在印度与波斯湾及东非港口之间运送香料、纺织品和宝石。",
+      "tts": {
+        "text": "阿拉伯帆船在印度与波斯湾及东非港口之间运送香料、纺织品和宝石。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "印度商人与亚洲各地的买家交易胡椒、豆蔻、肉桂和棉花。",
+      "text_markdown": "印度商人与亚洲各地的买家交易胡椒、豆蔻、肉桂和棉花。",
+      "tts": {
+        "text": "印度商人与亚洲各地的买家交易胡椒、豆蔻、肉桂和棉花。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种贸易产生的财富引起了遥远帝国的注意。",
+      "text_markdown": "这种贸易产生的财富引起了遥远帝国的注意。",
+      "tts": {
+        "text": "这种贸易产生的财富引起了遥远帝国的注意。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葡萄牙人于1498年到达印度海岸，当时瓦斯科·达伽马驶入卡利卡特港。",
+      "text_markdown": "葡萄牙人于1498年到达印度海岸，当时瓦斯科·达伽马驶入卡利卡特港。",
+      "tts": {
+        "text": "葡萄牙人于一千四百九十八年到达印度海岸，当时瓦斯科·达伽马驶入卡利卡特港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几年之内，葡萄牙人沿印度整个西海岸建立了设防贸易站。",
+      "text_markdown": "几年之内，葡萄牙人沿印度整个西海岸建立了设防贸易站。",
+      "tts": {
+        "text": "几年之内，葡萄牙人沿印度整个西海岸建立了设防贸易站。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "果阿成为葡萄牙印度帝国的首都，这个殖民帝国从莫桑比克延伸到澳门。",
+      "text_markdown": "果阿成为葡萄牙印度帝国的首都，这个殖民帝国从莫桑比克延伸到澳门。",
+      "tts": {
+        "text": "果阿成为葡萄牙印度帝国的首都，这个殖民帝国从莫桑比克延伸到澳门。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "葡萄牙人利用优越的海军火力主宰了印度洋贸易。",
+      "text_markdown": "葡萄牙人利用优越的海军火力主宰了印度洋贸易。",
+      "tts": {
+        "text": "葡萄牙人利用优越的海军火力主宰了印度洋贸易。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葡萄牙人引入了一种称为卡尔塔斯的通行证制度。",
+      "text_markdown": "葡萄牙人引入了一种称为卡尔塔斯的通行证制度。",
+      "tts": {
+        "text": "葡萄牙人引入了一种称为卡尔塔斯的通行证制度。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "任何希望在阿拉伯海进行贸易的印度船只都必须从葡萄牙人那里购买卡尔塔斯。",
+      "text_markdown": "任何希望在阿拉伯海进行贸易的印度船只都必须从葡萄牙人那里购买卡尔塔斯。",
+      "tts": {
+        "text": "任何希望在阿拉伯海进行贸易的印度船只都必须从葡萄牙人那里购买卡尔塔斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有卡尔塔斯的船只可能被没收，船员被囚禁或杀害。",
+      "text_markdown": "没有卡尔塔斯的船只可能被没收，船员被囚禁或杀害。",
+      "tts": {
+        "text": "没有卡尔塔斯的船只可能被没收，船员被囚禁或杀害。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一制度赋予葡萄牙人对印度洋贸易的有效控制。",
+      "text_markdown": "这一制度赋予葡萄牙人对印度洋贸易的有效控制。",
+      "tts": {
+        "text": "这一制度赋予葡萄牙人对印度洋贸易的有效控制。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "荷兰人于十七世纪初到来。",
+      "text_markdown": "荷兰人于十七世纪初到来。",
+      "tts": {
+        "text": "荷兰人于十七世纪初到来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "荷兰东印度公司在印度海岸建立贸易站，与葡萄牙人激烈竞争。",
+      "text_markdown": "荷兰东印度公司在印度海岸建立贸易站，与葡萄牙人激烈竞争。",
+      "tts": {
+        "text": "荷兰东印度公司在印度海岸建立贸易站，与葡萄牙人激烈竞争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国东印度公司紧随其后。",
+      "text_markdown": "英国东印度公司紧随其后。",
+      "tts": {
+        "text": "英国东印度公司紧随其后。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到十七世纪末，三个欧洲强国竞相争夺印度海上贸易的控制权。",
+      "text_markdown": "到十七世纪末，三个欧洲强国竞相争夺印度海上贸易的控制权。",
+      "tts": {
+        "text": "到十七世纪末，三个欧洲强国竞相争夺印度海上贸易的控制权。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与此同时，在康坎海岸上方的德干高原上，一个新的印度势力正在崛起。",
+      "text_markdown": "与此同时，在康坎海岸上方的德干高原上，一个新的印度势力正在崛起。",
+      "tts": {
+        "text": "与此同时，在康坎海岸上方的德干高原上，一个新的印度势力正在崛起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "马拉塔帝国由希瓦吉·博恩斯莱于十七世纪六十年代创建。",
+      "text_markdown": "马拉塔帝国由希瓦吉·博恩斯莱于十七世纪六十年代创建。",
+      "tts": {
+        "text": "马拉塔帝国由希瓦吉·博恩斯莱于十七世纪六十年代创建。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "希瓦吉是一位军事天才，从日渐衰落的莫卧儿帝国中开辟出一个独立王国。",
+      "text_markdown": "希瓦吉是一位军事天才，从日渐衰落的莫卧儿帝国中开辟出一个独立王国。",
+      "tts": {
+        "text": "希瓦吉是一位军事天才，从日渐衰落的莫卧儿帝国中开辟出一个独立王国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他认识到控制海岸对帝国存亡至关重要。",
+      "text_markdown": "他认识到控制海岸对帝国存亡至关重要。",
+      "tts": {
+        "text": "他认识到控制海岸对帝国存亡至关重要。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "希瓦吉从零开始建立了一支海军。",
+      "text_markdown": "希瓦吉从零开始建立了一支海军。",
+      "tts": {
+        "text": "希瓦吉从零开始建立了一支海军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他沿康坎海岸修建要塞，并建造战舰巡逻水域。",
+      "text_markdown": "他沿康坎海岸修建要塞，并建造战舰巡逻水域。",
+      "tts": {
+        "text": "他沿康坎海岸修建要塞，并建造战舰巡逻水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他任命了海军指挥官，并设立了萨尔凯尔即大都督的职位。",
+      "text_markdown": "他任命了海军指挥官，并设立了萨尔凯尔即大都督的职位。",
+      "tts": {
+        "text": "他任命了海军指挥官，并设立了萨尔凯尔即大都督的职位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "马拉塔海军的使命是保护马拉塔贸易并抵御欧洲入侵。",
+      "text_markdown": "马拉塔海军的使命是保护马拉塔贸易并抵御欧洲入侵。",
+      "tts": {
+        "text": "马拉塔海军的使命是保护马拉塔贸易并抵御欧洲入侵。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "希瓦吉于1680年去世后，马拉塔帝国经历了一段动荡时期。",
+      "text_markdown": "希瓦吉于1680年去世后，马拉塔帝国经历了一段动荡时期。",
+      "tts": {
+        "text": "希瓦吉于一千六百八十年去世后，马拉塔帝国经历了一段动荡时期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的继任者们与内部纷争和外部威胁作斗争。",
+      "text_markdown": "他的继任者们与内部纷争和外部威胁作斗争。",
+      "tts": {
+        "text": "他的继任者们与内部纷争和外部威胁作斗争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "莫卧儿皇帝奥朗则布发动了对德干的大规模入侵，持续了数十年。",
+      "text_markdown": "莫卧儿皇帝奥朗则布发动了对德干的大规模入侵，持续了数十年。",
+      "tts": {
+        "text": "莫卧儿皇帝奥朗则布发动了对德干的大规模入侵，持续了数十年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在这段混乱时期，马拉塔海军在一系列被任命的将领指挥下继续沿海岸活动。",
+      "text_markdown": "在这段混乱时期，马拉塔海军在一系列被任命的将领指挥下继续沿海岸活动。",
+      "tts": {
+        "text": "在这段混乱时期，马拉塔海军在一系列被任命的将领指挥下继续沿海岸活动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欧洲贸易公司利用这种不稳定来扩大影响力。",
+      "text_markdown": "欧洲贸易公司利用这种不稳定来扩大影响力。",
+      "tts": {
+        "text": "欧洲贸易公司利用这种不稳定来扩大影响力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国东印度公司在康坎海岸北部的岛屿群孟买设立了总部。",
+      "text_markdown": "英国东印度公司在康坎海岸北部的岛屿群孟买设立了总部。",
+      "tts": {
+        "text": "英国东印度公司在康坎海岸北部的岛屿群孟买设立了总部。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "葡萄牙人控制着果阿和几个较小的飞地。",
+      "text_markdown": "葡萄牙人控制着果阿和几个较小的飞地。",
+      "tts": {
+        "text": "葡萄牙人控制着果阿和几个较小的飞地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "荷兰人在海岸各处维持着贸易站。",
+      "text_markdown": "荷兰人在海岸各处维持着贸易站。",
+      "tts": {
+        "text": "荷兰人在海岸各处维持着贸易站。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "莫卧儿帝国在印度称霸超过一个世纪。",
+      "text_markdown": "莫卧儿帝国在印度称霸超过一个世纪。",
+      "tts": {
+        "text": "莫卧儿帝国在印度称霸超过一个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在阿克巴皇帝统治下的鼎盛时期，莫卧儿帝国控制了印度次大陆的大部分地区。",
+      "text_markdown": "在阿克巴皇帝统治下的鼎盛时期，莫卧儿帝国控制了印度次大陆的大部分地区。",
+      "tts": {
+        "text": "在阿克巴皇帝统治下的鼎盛时期，莫卧儿帝国控制了印度次大陆的大部分地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但到十七世纪末，帝国在奥朗则布在德干无休止战争的重压下崩溃。",
+      "text_markdown": "但到十七世纪末，帝国在奥朗则布在德干无休止战争的重压下崩溃。",
+      "tts": {
+        "text": "但到十七世纪末，帝国在奥朗则布在德干无休止战争的重压下崩溃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种衰落为马拉塔等地方势力争取独立创造了机会。",
+      "text_markdown": "这种衰落为马拉塔等地方势力争取独立创造了机会。",
+      "tts": {
+        "text": "这种衰落为马拉塔等地方势力争取独立创造了机会。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "香料贸易使印度海岸对欧洲商人具有极高价值。",
+      "text_markdown": "香料贸易使印度海岸对欧洲商人具有极高价值。",
+      "tts": {
+        "text": "香料贸易使印度海岸对欧洲商人具有极高价值。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "马拉巴尔海岸的胡椒、豆蔻和肉桂在欧洲市场上价值与其同等重量的白银。",
+      "text_markdown": "马拉巴尔海岸的胡椒、豆蔻和肉桂在欧洲市场上价值与其同等重量的白银。",
+      "tts": {
+        "text": "马拉巴尔海岸的胡椒、豆蔻和肉桂在欧洲市场上价值与其同等重量的白银。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对这些香料的控制推动了欧洲向印度洋的全面扩张。",
+      "text_markdown": "对这些香料的控制推动了欧洲向印度洋的全面扩张。",
+      "tts": {
+        "text": "对这些香料的控制推动了欧洲向印度洋的全面扩张。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "康坎海岸上的每一座要塞、每一个贸易站、每一场海战，归根结底都是关于谁将从这种贸易中获利。",
+      "text_markdown": "康坎海岸上的每一座要塞、每一个贸易站、每一场海战，归根结底都是关于谁将从这种贸易中获利。",
+      "tts": {
+        "text": "康坎海岸上的每一座要塞、每一个贸易站、每一场海战，归根结底都是关于谁将从这种贸易中获利。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这个帝国争霸、殖民野心和海上战争的世界里，坎霍吉·安格雷诞生了。",
+      "text_markdown": "在这个帝国争霸、殖民野心和海上战争的世界里，坎霍吉·安格雷诞生了。",
+      "tts": {
+        "text": "在这个帝国争霸、殖民野心和海上战争的世界里，坎霍吉·安格雷诞生了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他将把毕生精力投入到保卫康坎海岸，抵御那些决心控制它的列强。",
+      "text_markdown": "他将把毕生精力投入到保卫康坎海岸，抵御那些决心控制它的列强。",
+      "tts": {
+        "text": "他将把毕生精力投入到保卫康坎海岸，抵御那些决心控制它的列强。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "康坎海岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将成为印度有史以来最有效的海军指挥官。",
+      "text_markdown": "他将成为印度有史以来最有效的海军指挥官。",
+      "tts": {
+        "text": "他将成为印度有史以来最有效的海军指挥官。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷于1669年出生在孟买以南康坎海岸的阿里巴格镇。",
+      "text_markdown": "坎霍吉·安格雷于1669年出生在孟买以南康坎海岸的阿里巴格镇。",
+      "tts": {
+        "text": "坎霍吉·安格雷于一千六百六十九年出生在孟买以南康坎海岸的阿里巴格镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的家族属于马拉塔武士种姓。",
+      "text_markdown": "他的家族属于马拉塔武士种姓。",
+      "tts": {
+        "text": "他的家族属于马拉塔武士种姓。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们有着悠久的军事服役和效忠马拉塔统治者的传统。",
+      "text_markdown": "他们有着悠久的军事服役和效忠马拉塔统治者的传统。",
+      "tts": {
+        "text": "他们有着悠久的军事服役和效忠马拉塔统治者的传统。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉在一个由战争、海上贸易和抵御外国势力塑造的世界中长大。",
+      "text_markdown": "坎霍吉在一个由战争、海上贸易和抵御外国势力塑造的世界中长大。",
+      "tts": {
+        "text": "坎霍吉在一个由战争、海上贸易和抵御外国势力塑造的世界中长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的父亲图科吉·安格雷在马拉塔军中服役。",
+      "text_markdown": "他的父亲图科吉·安格雷在马拉塔军中服役。",
+      "tts": {
+        "text": "他的父亲图科吉·安格雷在马拉塔军中服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "安格雷家族与马拉塔宫廷以及希瓦吉所建海岸要塞网络有着密切联系。",
+      "text_markdown": "安格雷家族与马拉塔宫廷以及希瓦吉所建海岸要塞网络有着密切联系。",
+      "tts": {
+        "text": "安格雷家族与马拉塔宫廷以及希瓦吉所建海岸要塞网络有着密切联系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "年幼的坎霍吉在人们期望他同样为马拉塔事业效力的环境中成长。",
+      "text_markdown": "年幼的坎霍吉在人们期望他同样为马拉塔事业效力的环境中成长。",
+      "tts": {
+        "text": "年幼的坎霍吉在人们期望他同样为马拉塔事业效力的环境中成长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他从小就接受了陆战和海战的双重训练。",
+      "text_markdown": "他从小就接受了陆战和海战的双重训练。",
+      "tts": {
+        "text": "他从小就接受了陆战和海战的双重训练。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "康坎海岸是一个严酷的训练场。",
+      "text_markdown": "康坎海岸是一个严酷的训练场。",
+      "tts": {
+        "text": "康坎海岸是一个严酷的训练场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海域危险重重，有强劲的水流、隐藏的暗礁和难以预测的季风暴。",
+      "text_markdown": "海域危险重重，有强劲的水流、隐藏的暗礁和难以预测的季风暴。",
+      "tts": {
+        "text": "海域危险重重，有强劲的水流、隐藏的暗礁和难以预测的季风暴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在这些水域航行需要对每个海湾、每个海岬和每个潮汐规律的深入了解。",
+      "text_markdown": "在这些水域航行需要对每个海湾、每个海岬和每个潮汐规律的深入了解。",
+      "tts": {
+        "text": "在这些水域航行需要对每个海湾、每个海岬和每个潮汐规律的深入了解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉年轻时驾着小船沿海岸航行，习得了这些知识。",
+      "text_markdown": "坎霍吉年轻时驾着小船沿海岸航行，习得了这些知识。",
+      "tts": {
+        "text": "坎霍吉年轻时驾着小船沿海岸航行，习得了这些知识。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他以年轻军官的身份加入了马拉塔海军。",
+      "text_markdown": "他以年轻军官的身份加入了马拉塔海军。",
+      "tts": {
+        "text": "他以年轻军官的身份加入了马拉塔海军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当时的马拉塔海军以包括维杰杜尔格、辛杜杜尔格和科拉巴在内的一系列海岸要塞为基地。",
+      "text_markdown": "当时的马拉塔海军以包括维杰杜尔格、辛杜杜尔格和科拉巴在内的一系列海岸要塞为基地。",
+      "tts": {
+        "text": "当时的马拉塔海军以包括维杰杜尔格、辛杜杜尔格和科拉巴在内的一系列海岸要塞为基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些要塞建在岩石岛屿和海岬上，从海上几乎无法攻击。",
+      "text_markdown": "这些要塞建在岩石岛屿和海岬上，从海上几乎无法攻击。",
+      "tts": {
+        "text": "这些要塞建在岩石岛屿和海岬上，从海上几乎无法攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "希瓦吉专门将其设计为能承受海军炮击。",
+      "text_markdown": "希瓦吉专门将其设计为能承受海军炮击。",
+      "tts": {
+        "text": "希瓦吉专门将其设计为能承受海军炮击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉在马拉塔海军中迅速晋升。",
+      "text_markdown": "坎霍吉在马拉塔海军中迅速晋升。",
+      "tts": {
+        "text": "坎霍吉在马拉塔海军中迅速晋升。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在与莫卧儿和锡迪海军的小规模冲突中表现出色。",
+      "text_markdown": "他在与莫卧儿和锡迪海军的小规模冲突中表现出色。",
+      "tts": {
+        "text": "他在与莫卧儿和锡迪海军的小规模冲突中表现出色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "锡迪人是以孟买南部詹吉拉要塞为据点的阿比西尼亚族群。",
+      "text_markdown": "锡迪人是以孟买南部詹吉拉要塞为据点的阿比西尼亚族群。",
+      "tts": {
+        "text": "锡迪人是以孟买南部詹吉拉要塞为据点的阿比西尼亚族群。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们与马拉塔人争夺海岸控制权长达数十年。",
+      "text_markdown": "他们与马拉塔人争夺海岸控制权长达数十年。",
+      "tts": {
+        "text": "他们与马拉塔人争夺海岸控制权长达数十年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1698年，坎霍吉被任命为萨尔凯尔，即马拉塔海军大都督。",
+      "text_markdown": "1698年，坎霍吉被任命为萨尔凯尔，即马拉塔海军大都督。",
+      "tts": {
+        "text": "一千六百九十八年，坎霍吉被任命为萨尔凯尔，即马拉塔海军大都督。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当时他大约二十九岁。",
+      "text_markdown": "当时他大约二十九岁。",
+      "tts": {
+        "text": "当时他大约二十九岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这一任命来自马拉塔国王拉贾拉姆，他认可了坎霍吉卓越的海军才能。",
+      "text_markdown": "这一任命来自马拉塔国王拉贾拉姆，他认可了坎霍吉卓越的海军才能。",
+      "tts": {
+        "text": "这一任命来自马拉塔国王拉贾拉姆，他认可了坎霍吉卓越的海军才能。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是坎霍吉将终身担任的职位。",
+      "text_markdown": "这是坎霍吉将终身担任的职位。",
+      "tts": {
+        "text": "这是坎霍吉将终身担任的职位。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "作为萨尔凯尔，坎霍吉统帅康坎海岸沿线的所有马拉塔海军力量。",
+      "text_markdown": "作为萨尔凯尔，坎霍吉统帅康坎海岸沿线的所有马拉塔海军力量。",
+      "tts": {
+        "text": "作为萨尔凯尔，坎霍吉统帅康坎海岸沿线的所有马拉塔海军力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他掌控着一支战舰舰队和一个设防基地网络。",
+      "text_markdown": "他掌控着一支战舰舰队和一个设防基地网络。",
+      "tts": {
+        "text": "他掌控着一支战舰舰队和一个设防基地网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他负责防御海岸、保护马拉塔贸易并抵抗欧洲入侵。",
+      "text_markdown": "他负责防御海岸、保护马拉塔贸易并抵抗欧洲入侵。",
+      "tts": {
+        "text": "他负责防御海岸、保护马拉塔贸易并抵抗欧洲入侵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是一项艰巨的责任，他全心全意地承担了起来。",
+      "text_markdown": "这是一项艰巨的责任，他全心全意地承担了起来。",
+      "tts": {
+        "text": "这是一项艰巨的责任，他全心全意地承担了起来。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这一任命正值关键时刻。",
+      "text_markdown": "这一任命正值关键时刻。",
+      "tts": {
+        "text": "这一任命正值关键时刻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莫卧儿对德干的入侵正处于顶峰。",
+      "text_markdown": "莫卧儿对德干的入侵正处于顶峰。",
+      "tts": {
+        "text": "莫卧儿对德干的入侵正处于顶峰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "马拉塔王国在陆地上为生存而战。",
+      "text_markdown": "马拉塔王国在陆地上为生存而战。",
+      "tts": {
+        "text": "马拉塔王国在陆地上为生存而战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海洋是马拉塔人唯一仍能施展力量的领域，坎霍吉决心充分利用它。",
+      "text_markdown": "海洋是马拉塔人唯一仍能施展力量的领域，坎霍吉决心充分利用它。",
+      "tts": {
+        "text": "海洋是马拉塔人唯一仍能施展力量的领域，坎霍吉决心充分利用它。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉在阿里巴格附近的科拉巴岛堡建立了主要基地。",
+      "text_markdown": "坎霍吉在阿里巴格附近的科拉巴岛堡建立了主要基地。",
+      "tts": {
+        "text": "坎霍吉在阿里巴格附近的科拉巴岛堡建立了主要基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从科拉巴出发，他可以控制通往孟买的海上通道和海岸的主要贸易航线。",
+      "text_markdown": "从科拉巴出发，他可以控制通往孟买的海上通道和海岸的主要贸易航线。",
+      "tts": {
+        "text": "从科拉巴出发，他可以控制通往孟买的海上通道和海岸的主要贸易航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在岛上增设了炮台，并扩建了港口以容纳不断壮大的舰队。",
+      "text_markdown": "他在岛上增设了炮台，并扩建了港口以容纳不断壮大的舰队。",
+      "tts": {
+        "text": "他在岛上增设了炮台，并扩建了港口以容纳不断壮大的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "科拉巴将在此后三十年间一直是他的总部。",
+      "text_markdown": "科拉巴将在此后三十年间一直是他的总部。",
+      "tts": {
+        "text": "科拉巴将在此后三十年间一直是他的总部。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他还加强了维杰杜尔格要塞——海岸上最强大的马拉塔海军基地。",
+      "text_markdown": "他还加强了维杰杜尔格要塞——海岸上最强大的马拉塔海军基地。",
+      "tts": {
+        "text": "他还加强了维杰杜尔格要塞——海岸上最强大的马拉塔海军基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "维杰杜尔格建在伸入阿拉伯海的岩石海岬上。",
+      "text_markdown": "维杰杜尔格建在伸入阿拉伯海的岩石海岬上。",
+      "tts": {
+        "text": "维杰杜尔格建在伸入阿拉伯海的岩石海岬上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它有三重城墙、地下通道和一个能庇护整支舰队的防护港。",
+      "text_markdown": "它有三重城墙、地下通道和一个能庇护整支舰队的防护港。",
+      "tts": {
+        "text": "它有三重城墙、地下通道和一个能庇护整支舰队的防护港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在坎霍吉的指挥下，维杰杜尔格变得几乎不可攻破。",
+      "text_markdown": "在坎霍吉的指挥下，维杰杜尔格变得几乎不可攻破。",
+      "tts": {
+        "text": "在坎霍吉的指挥下，维杰杜尔格变得几乎不可攻破。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "康坎的沿海社区由渔民、商人和战士混合组成。",
+      "text_markdown": "康坎的沿海社区由渔民、商人和战士混合组成。",
+      "tts": {
+        "text": "康坎的沿海社区由渔民、商人和战士混合组成。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多家庭身兼多职，和平时捕鱼，战时应召作战。",
+      "text_markdown": "许多家庭身兼多职，和平时捕鱼，战时应召作战。",
+      "tts": {
+        "text": "许多家庭身兼多职，和平时捕鱼，战时应召作战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种航海技能与军事准备的结合使他们成为海军力量的理想兵源。",
+      "text_markdown": "这种航海技能与军事准备的结合使他们成为海军力量的理想兵源。",
+      "tts": {
+        "text": "这种航海技能与军事准备的结合使他们成为海军力量的理想兵源。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉从这些社区中招募了最忠诚、最能干的水手。",
+      "text_markdown": "坎霍吉从这些社区中招募了最忠诚、最能干的水手。",
+      "tts": {
+        "text": "坎霍吉从这些社区中招募了最忠诚、最能干的水手。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从这些基地出发，坎霍吉开始建设印度洋最有效的海军力量。",
+      "text_markdown": "从这些基地出发，坎霍吉开始建设印度洋最有效的海军力量。",
+      "tts": {
+        "text": "从这些基地出发，坎霍吉开始建设印度洋最有效的海军力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从康坎沿海社区招募技术娴熟的水手。",
+      "text_markdown": "他从康坎沿海社区招募技术娴熟的水手。",
+      "tts": {
+        "text": "他从康坎沿海社区招募技术娴熟的水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他建造了专为印度海岸特殊条件设计的新型战舰。",
+      "text_markdown": "他建造了专为印度海岸特殊条件设计的新型战舰。",
+      "tts": {
+        "text": "他建造了专为印度海岸特殊条件设计的新型战舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他还发展了将在未来数年令欧洲海军指挥官沮丧不已的战术。",
+      "text_markdown": "他还发展了将在未来数年令欧洲海军指挥官沮丧不已的战术。",
+      "tts": {
+        "text": "他还发展了将在未来数年令欧洲海军指挥官沮丧不已的战术。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起",
+      "text_markdown": "崛起"
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷对康坎海岸的控制是系统性的、不留余地的。",
+      "text_markdown": "坎霍吉·安格雷对康坎海岸的控制是系统性的、不留余地的。",
+      "tts": {
+        "text": "坎霍吉·安格雷对康坎海岸的控制是系统性的、不留余地的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他并不追求一场戏剧性的大胜。",
+      "text_markdown": "他并不追求一场戏剧性的大胜。",
+      "tts": {
+        "text": "他并不追求一场戏剧性的大胜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "相反，他通过海军技术、战略筑城和精明外交的结合，逐步积累实力。",
+      "text_markdown": "相反，他通过海军技术、战略筑城和精明外交的结合，逐步积累实力。",
+      "tts": {
+        "text": "相反，他通过海军技术、战略筑城和精明外交的结合，逐步积累实力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "被任命为萨尔凯尔后不到十年，他就成为印度西海岸无可争议的主宰者。",
+      "text_markdown": "被任命为萨尔凯尔后不到十年，他就成为印度西海岸无可争议的主宰者。",
+      "tts": {
+        "text": "被任命为萨尔凯尔后不到十年，他就成为印度西海岸无可争议的主宰者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "早期的主要对手是以詹吉拉为基地的锡迪舰队。",
+      "text_markdown": "早期的主要对手是以詹吉拉为基地的锡迪舰队。",
+      "tts": {
+        "text": "早期的主要对手是以詹吉拉为基地的锡迪舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "锡迪人与莫卧儿帝国结盟，对马拉塔的沿海定居点构成持续威胁。",
+      "text_markdown": "锡迪人与莫卧儿帝国结盟，对马拉塔的沿海定居点构成持续威胁。",
+      "tts": {
+        "text": "锡迪人与莫卧儿帝国结盟，对马拉塔的沿海定居点构成持续威胁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "坎霍吉对锡迪人发起了长期作战，逐步削弱其力量并将其逼回岛屿要塞。",
+      "text_markdown": "坎霍吉对锡迪人发起了长期作战，逐步削弱其力量并将其逼回岛屿要塞。",
+      "tts": {
+        "text": "坎霍吉对锡迪人发起了长期作战，逐步削弱其力量并将其逼回岛屿要塞。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他始终未能攻下詹吉拉本身，但将锡迪舰队消除为重大威胁。",
+      "text_markdown": "他始终未能攻下詹吉拉本身，但将锡迪舰队消除为重大威胁。",
+      "tts": {
+        "text": "他始终未能攻下詹吉拉本身，但将锡迪舰队消除为重大威胁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他与欧洲贸易公司的关系更为复杂。",
+      "text_markdown": "他与欧洲贸易公司的关系更为复杂。",
+      "tts": {
+        "text": "他与欧洲贸易公司的关系更为复杂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国东印度公司总部设在孟买，就在坎霍吉科拉巴总部的正北方。",
+      "text_markdown": "英国东印度公司总部设在孟买，就在坎霍吉科拉巴总部的正北方。",
+      "tts": {
+        "text": "英国东印度公司总部设在孟买，就在坎霍吉科拉巴总部的正北方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "公司希望不受限制地进入印度沿海贸易。",
+      "text_markdown": "公司希望不受限制地进入印度沿海贸易。",
+      "tts": {
+        "text": "公司希望不受限制地进入印度沿海贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉坚持马拉塔水域的所有船只必须持有马拉塔通行证，否则将被没收。",
+      "text_markdown": "坎霍吉坚持马拉塔水域的所有船只必须持有马拉塔通行证，否则将被没收。",
+      "tts": {
+        "text": "坎霍吉坚持马拉塔水域的所有船只必须持有马拉塔通行证，否则将被没收。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这一要求是葡萄牙卡尔塔斯制度的镜像。",
+      "text_markdown": "这一要求是葡萄牙卡尔塔斯制度的镜像。",
+      "tts": {
+        "text": "这一要求是葡萄牙卡尔塔斯制度的镜像。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "欧洲人已向印度航运征收通行证长达两个世纪。",
+      "text_markdown": "欧洲人已向印度航运征收通行证长达两个世纪。",
+      "tts": {
+        "text": "欧洲人已向印度航运征收通行证长达两个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "现在一位印度指挥官对欧洲船只提出了同样的要求。",
+      "text_markdown": "现在一位印度指挥官对欧洲船只提出了同样的要求。",
+      "tts": {
+        "text": "现在一位印度指挥官对欧洲船只提出了同样的要求。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英国人觉得这不可忍受，但无力阻止。",
+      "text_markdown": "英国人觉得这不可忍受，但无力阻止。",
+      "tts": {
+        "text": "英国人觉得这不可忍受，但无力阻止。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与英国的第一次重大对抗发生在1702年。",
+      "text_markdown": "与英国的第一次重大对抗发生在1702年。",
+      "tts": {
+        "text": "与英国的第一次重大对抗发生在一千七百零二年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "坎霍吉的舰队扣押了一艘未持马拉塔通行证航行的英国商船。",
+      "text_markdown": "坎霍吉的舰队扣押了一艘未持马拉塔通行证航行的英国商船。",
+      "tts": {
+        "text": "坎霍吉的舰队扣押了一艘未持马拉塔通行证航行的英国商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "孟买的英国总督要求归还船只。",
+      "text_markdown": "孟买的英国总督要求归还船只。",
+      "tts": {
+        "text": "孟买的英国总督要求归还船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉拒绝了，认为马拉塔水域中的任何船只都应受马拉塔管辖。",
+      "text_markdown": "坎霍吉拒绝了，认为马拉塔水域中的任何船只都应受马拉塔管辖。",
+      "tts": {
+        "text": "坎霍吉拒绝了，认为马拉塔水域中的任何船只都应受马拉塔管辖。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国派出海军远征队惩罚坎霍吉。",
+      "text_markdown": "英国派出海军远征队惩罚坎霍吉。",
+      "tts": {
+        "text": "英国派出海军远征队惩罚坎霍吉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对他科拉巴基地的进攻彻底失败。",
+      "text_markdown": "对他科拉巴基地的进攻彻底失败。",
+      "tts": {
+        "text": "对他科拉巴基地的进攻彻底失败。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "坎霍吉的海岸炮台重创英国舰船，将其击退。",
+      "text_markdown": "坎霍吉的海岸炮台重创英国舰船，将其击退。",
+      "tts": {
+        "text": "坎霍吉的海岸炮台重创英国舰船，将其击退。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英国在这次交战中损失了士兵、舰船和尊严。",
+      "text_markdown": "英国在这次交战中损失了士兵、舰船和尊严。",
+      "tts": {
+        "text": "英国在这次交战中损失了士兵、舰船和尊严。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这一模式在此后几十年中多次重演。",
+      "text_markdown": "这一模式在此后几十年中多次重演。",
+      "tts": {
+        "text": "这一模式在此后几十年中多次重演。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国人派遣舰队进攻坎霍吉的某个基地。",
+      "text_markdown": "英国人派遣舰队进攻坎霍吉的某个基地。",
+      "tts": {
+        "text": "英国人派遣舰队进攻坎霍吉的某个基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "坎霍吉利用对海岸的了解、要塞和更快的船只进行反制。",
+      "text_markdown": "坎霍吉利用对海岸的了解、要塞和更快的船只进行反制。",
+      "tts": {
+        "text": "坎霍吉利用对海岸的了解、要塞和更快的船只进行反制。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英国人无功而返。",
+      "text_markdown": "英国人无功而返。",
+      "tts": {
+        "text": "英国人无功而返。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葡萄牙人的境遇也好不到哪里去。",
+      "text_markdown": "葡萄牙人的境遇也好不到哪里去。",
+      "tts": {
+        "text": "葡萄牙人的境遇也好不到哪里去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们曾在印度海岸称霸两个世纪。",
+      "text_markdown": "他们曾在印度海岸称霸两个世纪。",
+      "tts": {
+        "text": "他们曾在印度海岸称霸两个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但他们的海军力量正在衰落，驻军人员不足。",
+      "text_markdown": "但他们的海军力量正在衰落，驻军人员不足。",
+      "tts": {
+        "text": "但他们的海军力量正在衰落，驻军人员不足。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉袭击了葡萄牙船只，并攻占了他们沿海的几个小型前哨站。",
+      "text_markdown": "坎霍吉袭击了葡萄牙船只，并攻占了他们沿海的几个小型前哨站。",
+      "tts": {
+        "text": "坎霍吉袭击了葡萄牙船只，并攻占了他们沿海的几个小型前哨站。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "荷兰东印度公司也与坎霍吉发生了冲突。",
+      "text_markdown": "荷兰东印度公司也与坎霍吉发生了冲突。",
+      "tts": {
+        "text": "荷兰东印度公司也与坎霍吉发生了冲突。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "未持通行证进入马拉塔水域的荷兰船只被扣押。",
+      "text_markdown": "未持通行证进入马拉塔水域的荷兰船只被扣押。",
+      "tts": {
+        "text": "未持通行证进入马拉塔水域的荷兰船只被扣押。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "荷兰人先是试图谈判，然后威胁，最后进攻。",
+      "text_markdown": "荷兰人先是试图谈判，然后威胁，最后进攻。",
+      "tts": {
+        "text": "荷兰人先是试图谈判，然后威胁，最后进攻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "和英国人、葡萄牙人一样，他们也未能将坎霍吉从沿海据点赶走。",
+      "text_markdown": "和英国人、葡萄牙人一样，他们也未能将坎霍吉从沿海据点赶走。",
+      "tts": {
+        "text": "和英国人、葡萄牙人一样，他们也未能将坎霍吉从沿海据点赶走。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1712年，英国和葡萄牙组成联合舰队进攻坎霍吉在科拉巴的基地。",
+      "text_markdown": "1712年，英国和葡萄牙组成联合舰队进攻坎霍吉在科拉巴的基地。",
+      "tts": {
+        "text": "一千七百一十二年，英国和葡萄牙组成联合舰队进攻坎霍吉在科拉巴的基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是欧洲列强联合对付共同敌人的罕见事例之一。",
+      "text_markdown": "这是欧洲列强联合对付共同敌人的罕见事例之一。",
+      "tts": {
+        "text": "这是欧洲列强联合对付共同敌人的罕见事例之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "联合舰队对科拉巴持续炮击了数日。",
+      "text_markdown": "联合舰队对科拉巴持续炮击了数日。",
+      "tts": {
+        "text": "联合舰队对科拉巴持续炮击了数日。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉的防线坚守住了，盟军蒙受重大损失后撤退。",
+      "text_markdown": "坎霍吉的防线坚守住了，盟军蒙受重大损失后撤退。",
+      "tts": {
+        "text": "坎霍吉的防线坚守住了，盟军蒙受重大损失后撤退。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年的第二次联合进攻也遭遇了同样的命运。",
+      "text_markdown": "1718年的第二次联合进攻也遭遇了同样的命运。",
+      "tts": {
+        "text": "一千七百一十八年的第二次联合进攻也遭遇了同样的命运。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国和葡萄牙再次集结兵力进攻科拉巴。",
+      "text_markdown": "英国和葡萄牙再次集结兵力进攻科拉巴。",
+      "tts": {
+        "text": "英国和葡萄牙再次集结兵力进攻科拉巴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "坎霍吉的海岸炮台和海军战术再次击败了他们。",
+      "text_markdown": "坎霍吉的海岸炮台和海军战术再次击败了他们。",
+      "tts": {
+        "text": "坎霍吉的海岸炮台和海军战术再次击败了他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "欧洲列强被迫接受坎霍吉无法用武力铲除的事实。",
+      "text_markdown": "欧洲列强被迫接受坎霍吉无法用武力铲除的事实。",
+      "tts": {
+        "text": "欧洲列强被迫接受坎霍吉无法用武力铲除的事实。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉的成功不仅仅依靠防御战。",
+      "text_markdown": "坎霍吉的成功不仅仅依靠防御战。",
+      "tts": {
+        "text": "坎霍吉的成功不仅仅依靠防御战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在整个生涯中积极袭击欧洲船只。",
+      "text_markdown": "他在整个生涯中积极袭击欧洲船只。",
+      "tts": {
+        "text": "他在整个生涯中积极袭击欧洲船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他那快速灵活的船只拦截商船，夺取货物，然后消失在海岸沿线的水道和海湾迷宫中。",
+      "text_markdown": "他那快速灵活的船只拦截商船，夺取货物，然后消失在海岸沿线的水道和海湾迷宫中。",
+      "tts": {
+        "text": "他那快速灵活的船只拦截商船，夺取货物，然后消失在海岸沿线的水道和海湾迷宫中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "欧洲公司每年因他的袭击损失巨额资金。",
+      "text_markdown": "欧洲公司每年因他的袭击损失巨额资金。",
+      "tts": {
+        "text": "欧洲公司每年因他的袭击损失巨额资金。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国东印度公司这一时期的记录充满了对坎霍吉·安格雷的抱怨。",
+      "text_markdown": "英国东印度公司这一时期的记录充满了对坎霍吉·安格雷的抱怨。",
+      "tts": {
+        "text": "英国东印度公司这一时期的记录充满了对坎霍吉·安格雷的抱怨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们称他为海盗、祸害和合法贸易的威胁。",
+      "text_markdown": "他们称他为海盗、祸害和合法贸易的威胁。",
+      "tts": {
+        "text": "他们称他为海盗、祸害和合法贸易的威胁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但从马拉塔的角度来看，坎霍吉做的恰恰是欧洲人几个世纪以来一直在做的事。",
+      "text_markdown": "但从马拉塔的角度来看，坎霍吉做的恰恰是欧洲人几个世纪以来一直在做的事。",
+      "tts": {
+        "text": "但从马拉塔的角度来看，坎霍吉做的恰恰是欧洲人几个世纪以来一直在做的事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他控制海域，对贸易征税，利用海军力量保护君主的利益。",
+      "text_markdown": "他控制海域，对贸易征税，利用海军力量保护君主的利益。",
+      "tts": {
+        "text": "他控制海域，对贸易征税，利用海军力量保护君主的利益。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到十八世纪二十年代，坎霍吉控制了从孟买到拉特纳吉里以南的整个康坎海岸。",
+      "text_markdown": "到十八世纪二十年代，坎霍吉控制了从孟买到拉特纳吉里以南的整个康坎海岸。",
+      "tts": {
+        "text": "到十八世纪二十年代，坎霍吉控制了从孟买到拉特纳吉里以南的整个康坎海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的舰队拥有数十艘战舰和数百艘小型船只。",
+      "text_markdown": "他的舰队拥有数十艘战舰和数百艘小型船只。",
+      "tts": {
+        "text": "他的舰队拥有数十艘战舰和数百艘小型船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他那设防基地的连锁将海岸变成了没有他的许可就无法通过的走廊。",
+      "text_markdown": "他那设防基地的连锁将海岸变成了没有他的许可就无法通过的走廊。",
+      "tts": {
+        "text": "他那设防基地的连锁将海岸变成了没有他的许可就无法通过的走廊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他实际上是印度西海的主宰者。",
+      "text_markdown": "他实际上是印度西海的主宰者。",
+      "tts": {
+        "text": "他实际上是印度西海的主宰者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "鼎盛时期",
+      "text_markdown": "鼎盛时期"
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在权力的巅峰，坎霍吉·安格雷是印度洋最重要的海军指挥官。",
+      "text_markdown": "在权力的巅峰，坎霍吉·安格雷是印度洋最重要的海军指挥官。",
+      "tts": {
+        "text": "在权力的巅峰，坎霍吉·安格雷是印度洋最重要的海军指挥官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的舰队控制着孟买到果阿之间的海上通道——亚洲最繁忙的贸易航线之一。",
+      "text_markdown": "他的舰队控制着孟买到果阿之间的海上通道——亚洲最繁忙的贸易航线之一。",
+      "tts": {
+        "text": "他的舰队控制着孟买到果阿之间的海上通道——亚洲最繁忙的贸易航线之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在印度西海岸运营的每一家欧洲贸易公司都必须顾及他的实力。",
+      "text_markdown": "在印度西海岸运营的每一家欧洲贸易公司都必须顾及他的实力。",
+      "tts": {
+        "text": "在印度西海岸运营的每一家欧洲贸易公司都必须顾及他的实力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有他的同意，任何货物都不安全。",
+      "text_markdown": "没有他的同意，任何货物都不安全。",
+      "tts": {
+        "text": "没有他的同意，任何货物都不安全。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉的舰队专为康坎海岸的特殊条件而设计。",
+      "text_markdown": "坎霍吉的舰队专为康坎海岸的特殊条件而设计。",
+      "tts": {
+        "text": "坎霍吉的舰队专为康坎海岸的特殊条件而设计。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最大的船只是格拉布——双桅浅吃水战舰，能在近岸航行。",
+      "text_markdown": "最大的船只是格拉布——双桅浅吃水战舰，能在近岸航行。",
+      "tts": {
+        "text": "最大的船只是格拉布——双桅浅吃水战舰，能在近岸航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他还使用加利瓦特——更小的桨驱动快船，速度快且机动性极强。",
+      "text_markdown": "他还使用加利瓦特——更小的桨驱动快船，速度快且机动性极强。",
+      "tts": {
+        "text": "他还使用加利瓦特——更小的桨驱动快船，速度快且机动性极强。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些加利瓦特能在欧洲船只无法跟进的潮汐水道和浅水区作战。",
+      "text_markdown": "这些加利瓦特能在欧洲船只无法跟进的潮汐水道和浅水区作战。",
+      "tts": {
+        "text": "这些加利瓦特能在欧洲船只无法跟进的潮汐水道和浅水区作战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "格拉布和加利瓦特的组合具有毁灭性效果。",
+      "text_markdown": "格拉布和加利瓦特的组合具有毁灭性效果。",
+      "tts": {
+        "text": "格拉布和加利瓦特的组合具有毁灭性效果。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "格拉布在炮击距离与敌舰交战，以持续火力削弱对手。",
+      "text_markdown": "格拉布在炮击距离与敌舰交战，以持续火力削弱对手。",
+      "tts": {
+        "text": "格拉布在炮击距离与敌舰交战，以持续火力削弱对手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "然后加利瓦特蜂拥而上，船员从多个方向同时登上敌舰。",
+      "text_markdown": "然后加利瓦特蜂拥而上，船员从多个方向同时登上敌舰。",
+      "tts": {
+        "text": "然后加利瓦特蜂拥而上，船员从多个方向同时登上敌舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "受过大型舰船间舷侧炮击训练的欧洲舰长对这种蜂群战术毫无对策。",
+      "text_markdown": "受过大型舰船间舷侧炮击训练的欧洲舰长对这种蜂群战术毫无对策。",
+      "tts": {
+        "text": "受过大型舰船间舷侧炮击训练的欧洲舰长对这种蜂群战术毫无对策。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉的海岸防御工事同样令人生畏。",
+      "text_markdown": "坎霍吉的海岸防御工事同样令人生畏。",
+      "tts": {
+        "text": "坎霍吉的海岸防御工事同样令人生畏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的要塞建在岩石岛屿和海岬上，从海上几乎不可能强攻。",
+      "text_markdown": "他的要塞建在岩石岛屿和海岬上，从海上几乎不可能强攻。",
+      "tts": {
+        "text": "他的要塞建在岩石岛屿和海岬上，从海上几乎不可能强攻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "城墙足够厚实，能承受欧洲战舰的炮火。",
+      "text_markdown": "城墙足够厚实，能承受欧洲战舰的炮火。",
+      "tts": {
+        "text": "城墙足够厚实，能承受欧洲战舰的炮火。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地下通道连接防御工事的各个部分，使守军能在不被发现的情况下移动。",
+      "text_markdown": "地下通道连接防御工事的各个部分，使守军能在不被发现的情况下移动。",
+      "tts": {
+        "text": "地下通道连接防御工事的各个部分，使守军能在不被发现的情况下移动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维杰杜尔格是他防御网络的明珠。",
+      "text_markdown": "维杰杜尔格是他防御网络的明珠。",
+      "tts": {
+        "text": "维杰杜尔格是他防御网络的明珠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "要塞矗立在三面环海的岩石海岬上。",
+      "text_markdown": "要塞矗立在三面环海的岩石海岬上。",
+      "tts": {
+        "text": "要塞矗立在三面环海的岩石海岬上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它的三重城墙围出了足以在季风季节庇护整支舰队的面积。",
+      "text_markdown": "它的三重城墙围出了足以在季风季节庇护整支舰队的面积。",
+      "tts": {
+        "text": "它的三重城墙围出了足以在季风季节庇护整支舰队的面积。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "见过它的欧洲海军军官将其描述为他们所遇到的最坚固的防御工事之一。",
+      "text_markdown": "见过它的欧洲海军军官将其描述为他们所遇到的最坚固的防御工事之一。",
+      "tts": {
+        "text": "见过它的欧洲海军军官将其描述为他们所遇到的最坚固的防御工事之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉通过税收、贸易和战利品的组合维持舰队。",
+      "text_markdown": "坎霍吉通过税收、贸易和战利品的组合维持舰队。",
+      "tts": {
+        "text": "坎霍吉通过税收、贸易和战利品的组合维持舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "持有马拉塔通行证的船只缴纳用于资助海军的费用。",
+      "text_markdown": "持有马拉塔通行证的船只缴纳用于资助海军的费用。",
+      "tts": {
+        "text": "持有马拉塔通行证的船只缴纳用于资助海军的费用。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有通行证的船只被没收，货物被出售。",
+      "text_markdown": "没有通行证的船只被没收，货物被出售。",
+      "tts": {
+        "text": "没有通行证的船只被没收，货物被出售。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一收入体系高效且可自我维持。",
+      "text_markdown": "这一收入体系高效且可自我维持。",
+      "tts": {
+        "text": "这一收入体系高效且可自我维持。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "萨塔拉的马拉塔政府认可坎霍吉的价值。",
+      "text_markdown": "萨塔拉的马拉塔政府认可坎霍吉的价值。",
+      "tts": {
+        "text": "萨塔拉的马拉塔政府认可坎霍吉的价值。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是帝国抵御欧洲海军力量的盾牌。",
+      "text_markdown": "他是帝国抵御欧洲海军力量的盾牌。",
+      "tts": {
+        "text": "他是帝国抵御欧洲海军力量的盾牌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有他的舰队，马拉塔海岸将面临封锁和入侵的威胁。",
+      "text_markdown": "没有他的舰队，马拉塔海岸将面临封锁和入侵的威胁。",
+      "tts": {
+        "text": "没有他的舰队，马拉塔海岸将面临封锁和入侵的威胁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "马拉塔帝国首相佩什瓦在坎霍吉的整个生涯中都与他保持着密切关系。",
+      "text_markdown": "马拉塔帝国首相佩什瓦在坎霍吉的整个生涯中都与他保持着密切关系。",
+      "tts": {
+        "text": "马拉塔帝国首相佩什瓦在坎霍吉的整个生涯中都与他保持着密切关系。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉还维持着一个精密的情报网络。",
+      "text_markdown": "坎霍吉还维持着一个精密的情报网络。",
+      "tts": {
+        "text": "坎霍吉还维持着一个精密的情报网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在孟买、果阿和海岸主要贸易港口都有情报人员。",
+      "text_markdown": "他在孟买、果阿和海岸主要贸易港口都有情报人员。",
+      "tts": {
+        "text": "他在孟买、果阿和海岸主要贸易港口都有情报人员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他知道珍贵货船何时起航以及计划走哪条航线。",
+      "text_markdown": "他知道珍贵货船何时起航以及计划走哪条航线。",
+      "tts": {
+        "text": "他知道珍贵货船何时起航以及计划走哪条航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些情报使他对欧洲对手拥有决定性优势。",
+      "text_markdown": "这些情报使他对欧洲对手拥有决定性优势。",
+      "tts": {
+        "text": "这些情报使他对欧洲对手拥有决定性优势。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国东印度公司多次尝试与坎霍吉谈判。",
+      "text_markdown": "英国东印度公司多次尝试与坎霍吉谈判。",
+      "tts": {
+        "text": "英国东印度公司多次尝试与坎霍吉谈判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们提出贸易让步、金钱支付和外交承认。",
+      "text_markdown": "他们提出贸易让步、金钱支付和外交承认。",
+      "tts": {
+        "text": "他们提出贸易让步、金钱支付和外交承认。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "坎霍吉听取了每一项提议，但从未在根本立场上让步。",
+      "text_markdown": "坎霍吉听取了每一项提议，但从未在根本立场上让步。",
+      "tts": {
+        "text": "坎霍吉听取了每一项提议，但从未在根本立场上让步。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "康坎海岸是马拉塔领土，马拉塔水域中的所有船只都须遵守马拉塔法律。",
+      "text_markdown": "康坎海岸是马拉塔领土，马拉塔水域中的所有船只都须遵守马拉塔法律。",
+      "tts": {
+        "text": "康坎海岸是马拉塔领土，马拉塔水域中的所有船只都须遵守马拉塔法律。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的个人生活围绕家庭和信仰展开。",
+      "text_markdown": "他的个人生活围绕家庭和信仰展开。",
+      "tts": {
+        "text": "他的个人生活围绕家庭和信仰展开。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一位虔诚的印度教徒，资助海岸沿线的寺庙和宗教机构。",
+      "text_markdown": "他是一位虔诚的印度教徒，资助海岸沿线的寺庙和宗教机构。",
+      "tts": {
+        "text": "他是一位虔诚的印度教徒，资助海岸沿线的寺庙和宗教机构。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他有几个儿子，都受过海战和行政训练。",
+      "text_markdown": "他有几个儿子，都受过海战和行政训练。",
+      "tts": {
+        "text": "他有几个儿子，都受过海战和行政训练。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他打算让家族在他去世后继续其事业。",
+      "text_markdown": "他打算让家族在他去世后继续其事业。",
+      "tts": {
+        "text": "他打算让家族在他去世后继续其事业。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉以刚柔并济的方式治理其控制下的沿海社区。",
+      "text_markdown": "坎霍吉以刚柔并济的方式治理其控制下的沿海社区。",
+      "tts": {
+        "text": "坎霍吉以刚柔并济的方式治理其控制下的沿海社区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他保护渔业社区免受欧洲侵犯。",
+      "text_markdown": "他保护渔业社区免受欧洲侵犯。",
+      "tts": {
+        "text": "他保护渔业社区免受欧洲侵犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他维持着海岸沿线港口和市场的秩序。",
+      "text_markdown": "他维持着海岸沿线港口和市场的秩序。",
+      "tts": {
+        "text": "他维持着海岸沿线港口和市场的秩序。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "许多沿海社区视他为保护者而非统治者。",
+      "text_markdown": "许多沿海社区视他为保护者而非统治者。",
+      "tts": {
+        "text": "许多沿海社区视他为保护者而非统治者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在事业的顶峰，坎霍吉·安格雷取得了非凡的成就。",
+      "text_markdown": "在事业的顶峰，坎霍吉·安格雷取得了非凡的成就。",
+      "tts": {
+        "text": "在事业的顶峰，坎霍吉·安格雷取得了非凡的成就。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他建立了一支能抵御亚洲三支最强大的欧洲海军的力量。",
+      "text_markdown": "他建立了一支能抵御亚洲三支最强大的欧洲海军的力量。",
+      "tts": {
+        "text": "他建立了一支能抵御亚洲三支最强大的欧洲海军的力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是用本地资源、本地知识和本地战术做到这一切的。",
+      "text_markdown": "他是用本地资源、本地知识和本地战术做到这一切的。",
+      "tts": {
+        "text": "他是用本地资源、本地知识和本地战术做到这一切的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "鼎盛时期",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他证明了印度海军力量能够以自己的方式挑战欧洲的霸权。",
+      "text_markdown": "他证明了印度海军力量能够以自己的方式挑战欧洲的霸权。",
+      "tts": {
+        "text": "他证明了印度海军力量能够以自己的方式挑战欧洲的霸权。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "终章",
+      "text_markdown": "终章"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在最后的岁月里，坎霍吉·安格雷仍然活跃在指挥岗位上。",
+      "text_markdown": "在最后的岁月里，坎霍吉·安格雷仍然活跃在指挥岗位上。",
+      "tts": {
+        "text": "在最后的岁月里，坎霍吉·安格雷仍然活跃在指挥岗位上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "与许多在去世前权力已经衰退的历史人物不同，坎霍吉坚守其位直到最后。",
+      "text_markdown": "与许多在去世前权力已经衰退的历史人物不同，坎霍吉坚守其位直到最后。",
+      "tts": {
+        "text": "与许多在去世前权力已经衰退的历史人物不同，坎霍吉坚守其位直到最后。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的舰队继续巡逻海岸，要塞保持满员驻守，他的权威没有受到挑战。",
+      "text_markdown": "他的舰队继续巡逻海岸，要塞保持满员驻守，他的权威没有受到挑战。",
+      "tts": {
+        "text": "他的舰队继续巡逻海岸，要塞保持满员驻守，他的权威没有受到挑战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在他的整个生涯中，他从未在战斗中被击败。",
+      "text_markdown": "在他的整个生涯中，他从未在战斗中被击败。",
+      "tts": {
+        "text": "在他的整个生涯中，他从未在战斗中被击败。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪二十年代，马拉塔帝国内部的政治局势变得更加复杂。",
+      "text_markdown": "十八世纪二十年代，马拉塔帝国内部的政治局势变得更加复杂。",
+      "tts": {
+        "text": "十八世纪二十年代，马拉塔帝国内部的政治局势变得更加复杂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "佩什瓦巴拉吉·维什瓦纳特集中了权力，削弱了马拉塔国王的权威。",
+      "text_markdown": "佩什瓦巴拉吉·维什瓦纳特集中了权力，削弱了马拉塔国王的权威。",
+      "tts": {
+        "text": "佩什瓦巴拉吉·维什瓦纳特集中了权力，削弱了马拉塔国王的权威。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴拉吉去世后，他的儿子巴吉·拉奥成为佩什瓦。",
+      "text_markdown": "巴拉吉去世后，他的儿子巴吉·拉奥成为佩什瓦。",
+      "tts": {
+        "text": "巴拉吉去世后，他的儿子巴吉·拉奥成为佩什瓦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "巴吉·拉奥是出色的陆战指挥官，但在海军防御上严重依赖坎霍吉。",
+      "text_markdown": "巴吉·拉奥是出色的陆战指挥官，但在海军防御上严重依赖坎霍吉。",
+      "tts": {
+        "text": "巴吉·拉奥是出色的陆战指挥官，但在海军防御上严重依赖坎霍吉。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉在效忠马拉塔国家和保持作战自主权之间维持着微妙的平衡。",
+      "text_markdown": "坎霍吉在效忠马拉塔国家和保持作战自主权之间维持着微妙的平衡。",
+      "tts": {
+        "text": "坎霍吉在效忠马拉塔国家和保持作战自主权之间维持着微妙的平衡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在原则上接受国王和佩什瓦的权威。",
+      "text_markdown": "他在原则上接受国王和佩什瓦的权威。",
+      "tts": {
+        "text": "他在原则上接受国王和佩什瓦的权威。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但实际上，他将海军作为自主运作来管理。",
+      "text_markdown": "但实际上，他将海军作为自主运作来管理。",
+      "tts": {
+        "text": "但实际上，他将海军作为自主运作来管理。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "马拉塔政府容忍这种安排，因为坎霍吉不可或缺。",
+      "text_markdown": "马拉塔政府容忍这种安排，因为坎霍吉不可或缺。",
+      "tts": {
+        "text": "马拉塔政府容忍这种安排，因为坎霍吉不可或缺。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欧洲列强继续尝试各种策略对付他。",
+      "text_markdown": "欧洲列强继续尝试各种策略对付他。",
+      "tts": {
+        "text": "欧洲列强继续尝试各种策略对付他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国人试图施加经济压力，限制与坎霍吉交易的印度商人。",
+      "text_markdown": "英国人试图施加经济压力，限制与坎霍吉交易的印度商人。",
+      "tts": {
+        "text": "英国人试图施加经济压力，限制与坎霍吉交易的印度商人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "葡萄牙人试图与锡迪人和其他地方势力结盟。",
+      "text_markdown": "葡萄牙人试图与锡迪人和其他地方势力结盟。",
+      "tts": {
+        "text": "葡萄牙人试图与锡迪人和其他地方势力结盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些策略都未能削弱坎霍吉对海岸的控制。",
+      "text_markdown": "这些策略都未能削弱坎霍吉对海岸的控制。",
+      "tts": {
+        "text": "这些策略都未能削弱坎霍吉对海岸的控制。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年，英国对坎霍吉的基地发动了又一次海军远征。",
+      "text_markdown": "1720年，英国对坎霍吉的基地发动了又一次海军远征。",
+      "tts": {
+        "text": "一千七百二十年，英国对坎霍吉的基地发动了又一次海军远征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "远征队包括数艘战舰和大批士兵。",
+      "text_markdown": "远征队包括数艘战舰和大批士兵。",
+      "tts": {
+        "text": "远征队包括数艘战舰和大批士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "坎霍吉的防线再次坚守住了，英国被迫撤退。",
+      "text_markdown": "坎霍吉的防线再次坚守住了，英国被迫撤退。",
+      "tts": {
+        "text": "坎霍吉的防线再次坚守住了，英国被迫撤退。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是他在世时英国最后几次大规模进攻之一。",
+      "text_markdown": "这是他在世时英国最后几次大规模进攻之一。",
+      "tts": {
+        "text": "这是他在世时英国最后几次大规模进攻之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷于1729年7月4日在阿里巴格的基地去世。",
+      "text_markdown": "坎霍吉·安格雷于1729年7月4日在阿里巴格的基地去世。",
+      "tts": {
+        "text": "坎霍吉·安格雷于一千七百二十九年七月四日在阿里巴格的基地去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他当时大约六十岁。",
+      "text_markdown": "他当时大约六十岁。",
+      "tts": {
+        "text": "他当时大约六十岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他死于自然原因，而非战场。",
+      "text_markdown": "他死于自然原因，而非战场。",
+      "tts": {
+        "text": "他死于自然原因，而非战场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他担任马拉塔海军萨尔凯尔共三十一年。",
+      "text_markdown": "他担任马拉塔海军萨尔凯尔共三十一年。",
+      "tts": {
+        "text": "他担任马拉塔海军萨尔凯尔共三十一年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的去世立即造成了权力真空。",
+      "text_markdown": "他的去世立即造成了权力真空。",
+      "tts": {
+        "text": "他的去世立即造成了权力真空。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的儿子们瓜分了他的领土和舰队。",
+      "text_markdown": "他的儿子们瓜分了他的领土和舰队。",
+      "tts": {
+        "text": "他的儿子们瓜分了他的领土和舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "坎霍吉凭个人权威维持的团结开始破裂。",
+      "text_markdown": "坎霍吉凭个人权威维持的团结开始破裂。",
+      "tts": {
+        "text": "坎霍吉凭个人权威维持的团结开始破裂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "失去他的领导后，马拉塔海军司令部因内部争斗而削弱。",
+      "text_markdown": "失去他的领导后，马拉塔海军司令部因内部争斗而削弱。",
+      "tts": {
+        "text": "失去他的领导后，马拉塔海军司令部因内部争斗而削弱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的儿子桑巴吉·安格雷最初接管了舰队。",
+      "text_markdown": "他的儿子桑巴吉·安格雷最初接管了舰队。",
+      "tts": {
+        "text": "他的儿子桑巴吉·安格雷最初接管了舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但兄弟间的争斗导致了冲突。",
+      "text_markdown": "但兄弟间的争斗导致了冲突。",
+      "tts": {
+        "text": "但兄弟间的争斗导致了冲突。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "马拉塔政府介入，安格雷家族的权力逐渐缩小。",
+      "text_markdown": "马拉塔政府介入，安格雷家族的权力逐渐缩小。",
+      "tts": {
+        "text": "马拉塔政府介入，安格雷家族的权力逐渐缩小。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "欧洲各公司密切关注着这些事态发展。",
+      "text_markdown": "欧洲各公司密切关注着这些事态发展。",
+      "tts": {
+        "text": "欧洲各公司密切关注着这些事态发展。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1756年，在坎霍吉去世近三十年后，英国和马拉塔联合进攻了维杰杜尔格的安格雷据点。",
+      "text_markdown": "1756年，在坎霍吉去世近三十年后，英国和马拉塔联合进攻了维杰杜尔格的安格雷据点。",
+      "tts": {
+        "text": "一千七百五十六年，在坎霍吉去世近三十年后，英国和马拉塔联合进攻了维杰杜尔格的安格雷据点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在坎霍吉统治下固若金汤的要塞终于陷落。",
+      "text_markdown": "在坎霍吉统治下固若金汤的要塞终于陷落。",
+      "tts": {
+        "text": "在坎霍吉统治下固若金汤的要塞终于陷落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它的陷落移除了英国在印度海岸建立海军霸权的最后一道重大障碍。",
+      "text_markdown": "它的陷落移除了英国在印度海岸建立海军霸权的最后一道重大障碍。",
+      "tts": {
+        "text": "它的陷落移除了英国在印度海岸建立海军霸权的最后一道重大障碍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉所定义的时代结束了。",
+      "text_markdown": "坎霍吉所定义的时代结束了。",
+      "tts": {
+        "text": "坎霍吉所定义的时代结束了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "马拉塔帝国在海军领导层变动的同时继续在陆地上扩张。",
+      "text_markdown": "马拉塔帝国在海军领导层变动的同时继续在陆地上扩张。",
+      "tts": {
+        "text": "马拉塔帝国在海军领导层变动的同时继续在陆地上扩张。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "佩什瓦巴吉·拉奥将马拉塔领土扩展到中部和北部印度。",
+      "text_markdown": "佩什瓦巴吉·拉奥将马拉塔领土扩展到中部和北部印度。",
+      "tts": {
+        "text": "佩什瓦巴吉·拉奥将马拉塔领土扩展到中部和北部印度。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但没有坎霍吉统一的海军指挥，海岸日益脆弱。",
+      "text_markdown": "但没有坎霍吉统一的海军指挥，海岸日益脆弱。",
+      "tts": {
+        "text": "但没有坎霍吉统一的海军指挥，海岸日益脆弱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英国东印度公司认识到这一薄弱环节，并据此制定了计划。",
+      "text_markdown": "英国东印度公司认识到这一薄弱环节，并据此制定了计划。",
+      "tts": {
+        "text": "英国东印度公司认识到这一薄弱环节，并据此制定了计划。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷从未败绩的记录是印度军事史上最显著的成就之一。",
+      "text_markdown": "坎霍吉·安格雷从未败绩的记录是印度军事史上最显著的成就之一。",
+      "tts": {
+        "text": "坎霍吉·安格雷从未败绩的记录是印度军事史上最显著的成就之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三十年间，他抵御了世界上最强大的海军力量。",
+      "text_markdown": "三十年间，他抵御了世界上最强大的海军力量。",
+      "tts": {
+        "text": "三十年间，他抵御了世界上最强大的海军力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他用本地船只、本地船员和本地战术做到了这一点。",
+      "text_markdown": "他用本地船只、本地船员和本地战术做到了这一点。",
+      "tts": {
+        "text": "他用本地船只、本地船员和本地战术做到了这一点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有一位欧洲指挥官找到过打败他的方法。",
+      "text_markdown": "没有一位欧洲指挥官找到过打败他的方法。",
+      "tts": {
+        "text": "没有一位欧洲指挥官找到过打败他的方法。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷的遗产与谁有权定义海盗这一问题紧密相连。",
+      "text_markdown": "坎霍吉·安格雷的遗产与谁有权定义海盗这一问题紧密相连。",
+      "tts": {
+        "text": "坎霍吉·安格雷的遗产与谁有权定义海盗这一问题紧密相连。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国东印度公司称他为海盗，因为他扰乱了他们的贸易。",
+      "text_markdown": "英国东印度公司称他为海盗，因为他扰乱了他们的贸易。",
+      "tts": {
+        "text": "英国东印度公司称他为海盗，因为他扰乱了他们的贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "马拉塔帝国称他为海军统帅，因为他保卫了他们的海岸。",
+      "text_markdown": "马拉塔帝国称他为海军统帅，因为他保卫了他们的海岸。",
+      "tts": {
+        "text": "马拉塔帝国称他为海军统帅，因为他保卫了他们的海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "两种描述都包含部分真相。",
+      "text_markdown": "两种描述都包含部分真相。",
+      "tts": {
+        "text": "两种描述都包含部分真相。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗的标签是一种政治武器，而非中立的描述。",
+      "text_markdown": "海盗的标签是一种政治武器，而非中立的描述。",
+      "tts": {
+        "text": "海盗的标签是一种政治武器，而非中立的描述。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "欧洲贸易公司将自己的规则强加于印度洋，并将任何抵抗这些规则的人称为罪犯。",
+      "text_markdown": "欧洲贸易公司将自己的规则强加于印度洋，并将任何抵抗这些规则的人称为罪犯。",
+      "tts": {
+        "text": "欧洲贸易公司将自己的规则强加于印度洋，并将任何抵抗这些规则的人称为罪犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "按照这个定义，任何主张印度水域主权的印度统治者都是海盗。",
+      "text_markdown": "按照这个定义，任何主张印度水域主权的印度统治者都是海盗。",
+      "tts": {
+        "text": "按照这个定义，任何主张印度水域主权的印度统治者都是海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坎霍吉彻底拒绝了这种逻辑，历史在很大程度上证明了他的正确。",
+      "text_markdown": "坎霍吉彻底拒绝了这种逻辑，历史在很大程度上证明了他的正确。",
+      "tts": {
+        "text": "坎霍吉彻底拒绝了这种逻辑，历史在很大程度上证明了他的正确。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在现代印度，坎霍吉·安格雷被公认为民族英雄。",
+      "text_markdown": "在现代印度，坎霍吉·安格雷被公认为民族英雄。",
+      "tts": {
+        "text": "在现代印度，坎霍吉·安格雷被公认为民族英雄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "印度海军以他的名字命名了孟买的一处海岸设施。",
+      "text_markdown": "印度海军以他的名字命名了孟买的一处海岸设施。",
+      "tts": {
+        "text": "印度海军以他的名字命名了孟买的一处海岸设施。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的雕像矗立在康坎海岸的显要位置。",
+      "text_markdown": "他的雕像矗立在康坎海岸的显要位置。",
+      "tts": {
+        "text": "他的雕像矗立在康坎海岸的显要位置。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他被铭记为印度海军力量的先驱和印度主权的捍卫者。",
+      "text_markdown": "他被铭记为印度海军力量的先驱和印度主权的捍卫者。",
+      "tts": {
+        "text": "他被铭记为印度海军力量的先驱和印度主权的捍卫者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的军事创新影响了几代人的印度海军思想。",
+      "text_markdown": "他的军事创新影响了几代人的印度海军思想。",
+      "tts": {
+        "text": "他的军事创新影响了几代人的印度海军思想。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "快速小型船只与设防海岸基地的结合是后来印度海军指挥官研究和借鉴的学说。",
+      "text_markdown": "快速小型船只与设防海岸基地的结合是后来印度海军指挥官研究和借鉴的学说。",
+      "tts": {
+        "text": "快速小型船只与设防海岸基地的结合是后来印度海军指挥官研究和借鉴的学说。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他强调本地潮汐、海流和海岸地理知识而非单纯火力优势的理念，至今仍与海军战略密切相关。",
+      "text_markdown": "他强调本地潮汐、海流和海岸地理知识而非单纯火力优势的理念，至今仍与海军战略密切相关。",
+      "tts": {
+        "text": "他强调本地潮汐、海流和海岸地理知识而非单纯火力优势的理念，至今仍与海军战略密切相关。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他证明了拥有本地优势的较小力量能够抵御技术上更先进的敌人。",
+      "text_markdown": "他证明了拥有本地优势的较小力量能够抵御技术上更先进的敌人。",
+      "tts": {
+        "text": "他证明了拥有本地优势的较小力量能够抵御技术上更先进的敌人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "维杰杜尔格要塞至今仍屹立在康坎海岸。",
+      "text_markdown": "维杰杜尔格要塞至今仍屹立在康坎海岸。",
+      "tts": {
+        "text": "维杰杜尔格要塞至今仍屹立在康坎海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它雄伟的城墙和防护港是坎霍吉所建海军力量的纪念碑。",
+      "text_markdown": "它雄伟的城墙和防护港是坎霍吉所建海军力量的纪念碑。",
+      "tts": {
+        "text": "它雄伟的城墙和防护港是坎霍吉所建海军力量的纪念碑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "游客仍然可以看到炮台、地下通道和曾经庇护他舰队的港湾。",
+      "text_markdown": "游客仍然可以看到炮台、地下通道和曾经庇护他舰队的港湾。",
+      "tts": {
+        "text": "游客仍然可以看到炮台、地下通道和曾经庇护他舰队的港湾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它是现存最精美的马拉塔军事建筑范例之一。",
+      "text_markdown": "它是现存最精美的马拉塔军事建筑范例之一。",
+      "tts": {
+        "text": "它是现存最精美的马拉塔军事建筑范例之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉·安格雷的生平提出了关于亚洲殖民主义历史的重要问题。",
+      "text_markdown": "坎霍吉·安格雷的生平提出了关于亚洲殖民主义历史的重要问题。",
+      "tts": {
+        "text": "坎霍吉·安格雷的生平提出了关于亚洲殖民主义历史的重要问题。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "欧洲贸易公司将其扩张描绘为文明和合法贸易的进步。",
+      "text_markdown": "欧洲贸易公司将其扩张描绘为文明和合法贸易的进步。",
+      "tts": {
+        "text": "欧洲贸易公司将其扩张描绘为文明和合法贸易的进步。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但从坎霍吉这样的印度统治者的角度来看，欧洲人才是入侵者。",
+      "text_markdown": "但从坎霍吉这样的印度统治者的角度来看，欧洲人才是入侵者。",
+      "tts": {
+        "text": "但从坎霍吉这样的印度统治者的角度来看，欧洲人才是入侵者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们用武力强加规则，并将对这些规则的抵抗称为犯罪。",
+      "text_markdown": "他们用武力强加规则，并将对这些规则的抵抗称为犯罪。",
+      "tts": {
+        "text": "他们用武力强加规则，并将对这些规则的抵抗称为犯罪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坎霍吉所成就的不是海盗行为，而是主权。",
+      "text_markdown": "坎霍吉所成就的不是海盗行为，而是主权。",
+      "tts": {
+        "text": "坎霍吉所成就的不是海盗行为，而是主权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他控制着自己的水域，对过境贸易征税，保护人民免受外国侵略。",
+      "text_markdown": "他控制着自己的水域，对过境贸易征税，保护人民免受外国侵略。",
+      "tts": {
+        "text": "他控制着自己的水域，对过境贸易征税，保护人民免受外国侵略。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他坚持了三十一年，从未输过一场战斗。",
+      "text_markdown": "他坚持了三十一年，从未输过一场战斗。",
+      "tts": {
+        "text": "他坚持了三十一年，从未输过一场战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在印度洋的漫长历史中，无人能与这一记录比肩。",
+      "text_markdown": "在印度洋的漫长历史中，无人能与这一记录比肩。",
+      "tts": {
+        "text": "在印度洋的漫长历史中，无人能与这一记录比肩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他的一生证明，海洋的历史属于每一个曾在其上航行的国家。",
+      "text_markdown": "他的一生证明，海洋的历史属于每一个曾在其上航行的国家。",
+      "tts": {
+        "text": "他的一生证明，海洋的历史属于每一个曾在其上航行的国家。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

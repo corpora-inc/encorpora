@@ -1,0 +1,4607 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_morgan",
+  "language": "it",
+  "total_segments": 308,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nota per il lettore",
+      "text_markdown": "Nota per il lettore"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la storia di Henry Morgan, il più grande bucaniere nella storia dei Caraibi.",
+      "text_markdown": "Questa è la storia di Henry Morgan, il più grande bucaniere nella storia dei Caraibi.",
+      "tts": {
+        "text": "Questa è la storia di Henry Morgan, il più grande bucaniere nella storia dei Caraibi.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saccheggiò le città più ricche dell'impero spagnolo e non fu mai punito per questo.",
+      "text_markdown": "Saccheggiò le città più ricche dell'impero spagnolo e non fu mai punito per questo.",
+      "tts": {
+        "text": "Saccheggiò le città più ricche dell'impero spagnolo e non fu mai punito per questo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan visse in un'epoca in cui il confine tra pirateria e patriottismo veniva deliberatamente sfumato.",
+      "text_markdown": "Morgan visse in un'epoca in cui il confine tra pirateria e patriottismo veniva deliberatamente sfumato.",
+      "tts": {
+        "text": "Morgan visse in un'epoca in cui il confine tra pirateria e patriottismo veniva deliberatamente sfumato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'Inghilterra usava uomini come lui per indebolire la Spagna senza dichiarare apertamente guerra.",
+      "text_markdown": "L'Inghilterra usava uomini come lui per indebolire la Spagna senza dichiarare apertamente guerra.",
+      "tts": {
+        "text": "L'Inghilterra usava uomini come lui per indebolire la Spagna senza dichiarare apertamente guerra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Assaltò città, incendiò borghi e torturò prigionieri per ottenere informazioni sull'oro nascosto.",
+      "text_markdown": "Assaltò città, incendiò borghi e torturò prigionieri per ottenere informazioni sull'oro nascosto.",
+      "tts": {
+        "text": "Assaltò città, incendiò borghi e torturò prigionieri per ottenere informazioni sull'oro nascosto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eppure morì come Sir Henry Morgan, cavaliere del Regno e vicegovernatore della Giamaica.",
+      "text_markdown": "Eppure morì come Sir Henry Morgan, cavaliere del Regno e vicegovernatore della Giamaica.",
+      "tts": {
+        "text": "Eppure morì come Sir Henry Morgan, cavaliere del Regno e vicegovernatore della Giamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La sua storia solleva domande difficili sulla violenza, l'impero e le ricompense concesse a chi serve nazioni potenti.",
+      "text_markdown": "La sua storia solleva domande difficili sulla violenza, l'impero e le ricompense concesse a chi serve nazioni potenti.",
+      "tts": {
+        "text": "La sua storia solleva domande difficili sulla violenza, l'impero e le ricompense concesse a chi serve nazioni potenti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli eventi qui descritti si basano su documenti storici, compresi atti processuali e resoconti di prima mano.",
+      "text_markdown": "Gli eventi qui descritti si basano su documenti storici, compresi atti processuali e resoconti di prima mano.",
+      "tts": {
+        "text": "Gli eventi qui descritti si basano su documenti storici, compresi atti processuali e resoconti di prima mano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota per il lettore",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dove i dettagli sono incerti, il testo lo precisa.",
+      "text_markdown": "Dove i dettagli sono incerti, il testo lo precisa.",
+      "tts": {
+        "text": "Dove i dettagli sono incerti, il testo lo precisa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il mondo che lo plasmò",
+      "text_markdown": "Il mondo che lo plasmò"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Mar dei Caraibi nel XVII secolo era la distesa d'acqua più contesa della Terra.",
+      "text_markdown": "Il Mar dei Caraibi nel XVII secolo era la distesa d'acqua più contesa della Terra.",
+      "tts": {
+        "text": "Il Mar dei Caraibi nel diciassettesimo secolo era la distesa d'acqua più contesa della Terra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spagna, Inghilterra, Francia e Paesi Bassi rivendicavano tutti isole e coste nella regione.",
+      "text_markdown": "Spagna, Inghilterra, Francia e Paesi Bassi rivendicavano tutti isole e coste nella regione.",
+      "tts": {
+        "text": "Spagna, Inghilterra, Francia e Paesi Bassi rivendicavano tutti isole e coste nella regione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ogni nazione costruì fortezze, fondò colonie e inviò navi da guerra per difendere il proprio territorio.",
+      "text_markdown": "Ogni nazione costruì fortezze, fondò colonie e inviò navi da guerra per difendere il proprio territorio.",
+      "tts": {
+        "text": "Ogni nazione costruì fortezze, fondò colonie e inviò navi da guerra per difendere il proprio territorio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Spagna era arrivata per prima e aveva rivendicato la fetta più grande.",
+      "text_markdown": "La Spagna era arrivata per prima e aveva rivendicato la fetta più grande.",
+      "tts": {
+        "text": "La Spagna era arrivata per prima e aveva rivendicato la fetta più grande.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo impero si estendeva dal Messico al Perù, da Cuba alle Filippine.",
+      "text_markdown": "Il suo impero si estendeva dal Messico al Perù, da Cuba alle Filippine.",
+      "tts": {
+        "text": "Il suo impero si estendeva dal Messico al Perù, da Cuba alle Filippine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ogni anno, flotte di tesori trasportavano argento e oro dalle Americhe a Siviglia.",
+      "text_markdown": "Ogni anno, flotte di tesori trasportavano argento e oro dalle Americhe a Siviglia.",
+      "tts": {
+        "text": "Ogni anno, flotte di tesori trasportavano argento e oro dalle Americhe a Siviglia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa ricchezza rese la Spagna la nazione più ricca d'Europa per oltre un secolo.",
+      "text_markdown": "Questa ricchezza rese la Spagna la nazione più ricca d'Europa per oltre un secolo.",
+      "tts": {
+        "text": "Questa ricchezza rese la Spagna la nazione più ricca d'Europa per oltre un secolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ma la rese anche un bersaglio.",
+      "text_markdown": "Ma la rese anche un bersaglio.",
+      "tts": {
+        "text": "Ma la rese anche un bersaglio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli spagnoli rivendicavano l'intero Mar dei Caraibi come loro dominio esclusivo.",
+      "text_markdown": "Gli spagnoli rivendicavano l'intero Mar dei Caraibi come loro dominio esclusivo.",
+      "tts": {
+        "text": "Gli spagnoli rivendicavano l'intero Mar dei Caraibi come loro dominio esclusivo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Insistevano che nessun'altra nazione avesse il diritto di commerciare, insediarsi o navigare in quelle acque.",
+      "text_markdown": "Insistevano che nessun'altra nazione avesse il diritto di commerciare, insediarsi o navigare in quelle acque.",
+      "tts": {
+        "text": "Insistevano che nessun'altra nazione avesse il diritto di commerciare, insediarsi o navigare in quelle acque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questa pretesa si basava su un decreto papale del 1493 che divideva il Nuovo Mondo tra Spagna e Portogallo.",
+      "text_markdown": "Questa pretesa si basava su un decreto papale del 1493 che divideva il Nuovo Mondo tra Spagna e Portogallo.",
+      "tts": {
+        "text": "Questa pretesa si basava su un decreto papale del millequattrocentonovantatré che divideva il Nuovo Mondo tra Spagna e Portogallo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inghilterra, Francia e Paesi Bassi non riconobbero questo decreto.",
+      "text_markdown": "Inghilterra, Francia e Paesi Bassi non riconobbero questo decreto.",
+      "tts": {
+        "text": "Inghilterra, Francia e Paesi Bassi non riconobbero questo decreto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sostenevano che nessun papa avesse l'autorità di regalare continenti.",
+      "text_markdown": "Sostenevano che nessun papa avesse l'autorità di regalare continenti.",
+      "tts": {
+        "text": "Sostenevano che nessun papa avesse l'autorità di regalare continenti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questo disaccordo era alla radice di un secolo di guerre nei Caraibi.",
+      "text_markdown": "Questo disaccordo era alla radice di un secolo di guerre nei Caraibi.",
+      "tts": {
+        "text": "Questo disaccordo era alla radice di un secolo di guerre nei Caraibi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'economia dell'Inghilterra era molto più piccola di quella della Spagna all'inizio del XVII secolo.",
+      "text_markdown": "L'economia dell'Inghilterra era molto più piccola di quella della Spagna all'inizio del XVII secolo.",
+      "tts": {
+        "text": "L'economia dell'Inghilterra era molto più piccola di quella della Spagna all'inizio del diciassettesimo secolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le colonie inglesi nei Caraibi erano povere e vulnerabili.",
+      "text_markdown": "Le colonie inglesi nei Caraibi erano povere e vulnerabili.",
+      "tts": {
+        "text": "Le colonie inglesi nei Caraibi erano povere e vulnerabili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sopravvivevano con zucchero, tabacco e tutto ciò che potevano sottrarre agli spagnoli.",
+      "text_markdown": "Sopravvivevano con zucchero, tabacco e tutto ciò che potevano sottrarre agli spagnoli.",
+      "tts": {
+        "text": "Sopravvivevano con zucchero, tabacco e tutto ciò che potevano sottrarre agli spagnoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il governo inglese incoraggiava segretamente gli attacchi al commercio e agli insediamenti spagnoli.",
+      "text_markdown": "Il governo inglese incoraggiava segretamente gli attacchi al commercio e agli insediamenti spagnoli.",
+      "tts": {
+        "text": "Il governo inglese incoraggiava segretamente gli attacchi al commercio e agli insediamenti spagnoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un corsaro era un privato cittadino a cui veniva rilasciato un documento legale chiamato lettera di corsa.",
+      "text_markdown": "Un corsaro era un privato cittadino a cui veniva rilasciato un documento legale chiamato lettera di corsa.",
+      "tts": {
+        "text": "Un corsaro era un privato cittadino a cui veniva rilasciato un documento legale chiamato lettera di corsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questa lettera lo autorizzava ad attaccare navi nemiche per conto del suo paese.",
+      "text_markdown": "Questa lettera lo autorizzava ad attaccare navi nemiche per conto del suo paese.",
+      "tts": {
+        "text": "Questa lettera lo autorizzava ad attaccare navi nemiche per conto del suo paese.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La differenza tra un corsaro e un pirata era semplicemente un pezzo di carta.",
+      "text_markdown": "La differenza tra un corsaro e un pirata era semplicemente un pezzo di carta.",
+      "tts": {
+        "text": "La differenza tra un corsaro e un pirata era semplicemente un pezzo di carta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Senza la lettera, eri un criminale.",
+      "text_markdown": "Senza la lettera, eri un criminale.",
+      "tts": {
+        "text": "Senza la lettera, eri un criminale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Con essa, eri un patriota.",
+      "text_markdown": "Con essa, eri un patriota.",
+      "tts": {
+        "text": "Con essa, eri un patriota.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Giamaica era il possedimento caraibico più importante dell'Inghilterra.",
+      "text_markdown": "La Giamaica era il possedimento caraibico più importante dell'Inghilterra.",
+      "tts": {
+        "text": "La Giamaica era il possedimento caraibico più importante dell'Inghilterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'Inghilterra l'aveva strappata alla Spagna nel 1655, appena dieci anni prima dell'arrivo di Morgan.",
+      "text_markdown": "L'Inghilterra l'aveva strappata alla Spagna nel 1655, appena dieci anni prima dell'arrivo di Morgan.",
+      "tts": {
+        "text": "L'Inghilterra l'aveva strappata alla Spagna nel milleseicentocinquantacinque, appena dieci anni prima dell'arrivo di Morgan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'isola era ancora scarsamente difesa e sottosviluppata.",
+      "text_markdown": "L'isola era ancora scarsamente difesa e sottosviluppata.",
+      "tts": {
+        "text": "L'isola era ancora scarsamente difesa e sottosviluppata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua capitale, Port Royal, sorgeva su una stretta lingua di sabbia all'ingresso del porto di Kingston.",
+      "text_markdown": "La sua capitale, Port Royal, sorgeva su una stretta lingua di sabbia all'ingresso del porto di Kingston.",
+      "tts": {
+        "text": "La sua capitale, Port Royal, sorgeva su una stretta lingua di sabbia all'ingresso del porto di Kingston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La città era affollata, rumorosa e piena di taverne e bische.",
+      "text_markdown": "La città era affollata, rumorosa e piena di taverne e bische.",
+      "tts": {
+        "text": "La città era affollata, rumorosa e piena di taverne e bische.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Port Royal divenne nota come la città più malvagia della Terra.",
+      "text_markdown": "Port Royal divenne nota come la città più malvagia della Terra.",
+      "tts": {
+        "text": "Port Royal divenne nota come la città più malvagia della Terra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I bucanieri vi sperperavano il bottino in rum, donne e dadi.",
+      "text_markdown": "I bucanieri vi sperperavano il bottino in rum, donne e dadi.",
+      "tts": {
+        "text": "I bucanieri vi sperperavano il bottino in rum, donne e dadi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un uomo poteva dilapidare una fortuna in una sola notte ed essere di nuovo in mare entro una settimana.",
+      "text_markdown": "Un uomo poteva dilapidare una fortuna in una sola notte ed essere di nuovo in mare entro una settimana.",
+      "tts": {
+        "text": "Un uomo poteva dilapidare una fortuna in una sola notte ed essere di nuovo in mare entro una settimana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I governatori della Giamaica dipendevano dai bucanieri per la difesa.",
+      "text_markdown": "I governatori della Giamaica dipendevano dai bucanieri per la difesa.",
+      "tts": {
+        "text": "I governatori della Giamaica dipendevano dai bucanieri per la difesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'isola non disponeva di una marina abbastanza forte per respingere un attacco spagnolo.",
+      "text_markdown": "L'isola non disponeva di una marina abbastanza forte per respingere un attacco spagnolo.",
+      "tts": {
+        "text": "L'isola non disponeva di una marina abbastanza forte per respingere un attacco spagnolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Così i governatori rilasciavano lettere di corsa e lasciavano combattere i bucanieri.",
+      "text_markdown": "Così i governatori rilasciavano lettere di corsa e lasciavano combattere i bucanieri.",
+      "tts": {
+        "text": "Così i governatori rilasciavano lettere di corsa e lasciavano combattere i bucanieri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I bucanieri erano un gruppo eterogeneo di marinai inglesi, francesi, olandesi e africani.",
+      "text_markdown": "I bucanieri erano un gruppo eterogeneo di marinai inglesi, francesi, olandesi e africani.",
+      "tts": {
+        "text": "I bucanieri erano un gruppo eterogeneo di marinai inglesi, francesi, olandesi e africani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Molti erano ex servi a contratto o schiavi fuggitivi.",
+      "text_markdown": "Molti erano ex servi a contratto o schiavi fuggitivi.",
+      "tts": {
+        "text": "Molti erano ex servi a contratto o schiavi fuggitivi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Conducevano vite dure e avevano poco da perdere.",
+      "text_markdown": "Conducevano vite dure e avevano poco da perdere.",
+      "tts": {
+        "text": "Conducevano vite dure e avevano poco da perdere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La parola bucaniere deriva dal francese boucanier, che significa colui che affumica la carne.",
+      "text_markdown": "La parola bucaniere deriva dal francese boucanier, che significa colui che affumica la carne.",
+      "tts": {
+        "text": "La parola bucaniere deriva dal francese boucanier, che significa colui che affumica la carne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I primi bucanieri erano cacciatori dell'isola di Hispaniola che affumicavano bestiame e maiali selvatici.",
+      "text_markdown": "I primi bucanieri erano cacciatori dell'isola di Hispaniola che affumicavano bestiame e maiali selvatici.",
+      "tts": {
+        "text": "I primi bucanieri erano cacciatori dell'isola di Hispaniola che affumicavano bestiame e maiali selvatici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quando gli spagnoli li cacciarono, si volsero al mare per sopravvivere.",
+      "text_markdown": "Quando gli spagnoli li cacciarono, si volsero al mare per sopravvivere.",
+      "tts": {
+        "text": "Quando gli spagnoli li cacciarono, si volsero al mare per sopravvivere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Negli anni Sessanta del Seicento, i bucanieri erano diventati una temibile forza combattente.",
+      "text_markdown": "Negli anni Sessanta del Seicento, i bucanieri erano diventati una temibile forza combattente.",
+      "tts": {
+        "text": "Negli anni sessanta del seicento, i bucanieri erano diventati una temibile forza combattente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Combattevano con moschetti, sciabole da abbordaggio e puro coraggio.",
+      "text_markdown": "Combattevano con moschetti, sciabole da abbordaggio e puro coraggio.",
+      "tts": {
+        "text": "Combattevano con moschetti, sciabole da abbordaggio e puro coraggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Erano abili nell'abbordaggio di navi e nell'assalto di posizioni fortificate.",
+      "text_markdown": "Erano abili nell'abbordaggio di navi e nell'assalto di posizioni fortificate.",
+      "tts": {
+        "text": "Erano abili nell'abbordaggio di navi e nell'assalto di posizioni fortificate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Spagna considerava illegale qualsiasi presenza straniera nei Caraibi.",
+      "text_markdown": "La Spagna considerava illegale qualsiasi presenza straniera nei Caraibi.",
+      "tts": {
+        "text": "La Spagna considerava illegale qualsiasi presenza straniera nei Caraibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Agli occhi degli spagnoli, ogni colono inglese era un intruso e ogni nave inglese una preda legittima.",
+      "text_markdown": "Agli occhi degli spagnoli, ogni colono inglese era un intruso e ogni nave inglese una preda legittima.",
+      "tts": {
+        "text": "Agli occhi degli spagnoli, ogni colono inglese era un intruso e ogni nave inglese una preda legittima.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa ostilità reciproca creò un ciclo interminabile di incursioni e rappresaglie.",
+      "text_markdown": "Questa ostilità reciproca creò un ciclo interminabile di incursioni e rappresaglie.",
+      "tts": {
+        "text": "Questa ostilità reciproca creò un ciclo interminabile di incursioni e rappresaglie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli spagnoli attaccavano gli insediamenti inglesi e gli inglesi attaccavano quelli spagnoli.",
+      "text_markdown": "Gli spagnoli attaccavano gli insediamenti inglesi e gli inglesi attaccavano quelli spagnoli.",
+      "tts": {
+        "text": "Gli spagnoli attaccavano gli insediamenti inglesi e gli inglesi attaccavano quelli spagnoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Il mondo che lo plasmò",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In questo mondo violento, Henry Morgan arrivò come un giovane in cerca di opportunità.",
+      "text_markdown": "In questo mondo violento, Henry Morgan arrivò come un giovane in cerca di opportunità.",
+      "tts": {
+        "text": "In questo mondo violento, Henry Morgan arrivò come un giovane in cerca di opportunità.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Un gallese nei Caraibi",
+      "text_markdown": "Un gallese nei Caraibi"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan nacque intorno al 1635 a Llanrumney, un villaggio nel Galles sud-orientale.",
+      "text_markdown": "Henry Morgan nacque intorno al 1635 a Llanrumney, un villaggio nel Galles sud-orientale.",
+      "tts": {
+        "text": "Henry Morgan nacque intorno al milleseicentotrentacinque a Llanrumney, un villaggio nel Galles sud-orientale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua famiglia faceva parte della piccola nobiltà gallese, il che significava che possedeva terre e influenza locale.",
+      "text_markdown": "La sua famiglia faceva parte della piccola nobiltà gallese, il che significava che possedeva terre e influenza locale.",
+      "tts": {
+        "text": "La sua famiglia faceva parte della piccola nobiltà gallese, il che significava che possedeva terre e influenza locale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Due dei suoi zii prestarono servizio come ufficiali militari durante la guerra civile inglese.",
+      "text_markdown": "Due dei suoi zii prestarono servizio come ufficiali militari durante la guerra civile inglese.",
+      "tts": {
+        "text": "Due dei suoi zii prestarono servizio come ufficiali militari durante la guerra civile inglese.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Galles negli anni Trenta del Seicento era una regione rurale e relativamente povera della Gran Bretagna.",
+      "text_markdown": "Il Galles negli anni Trenta del Seicento era una regione rurale e relativamente povera della Gran Bretagna.",
+      "tts": {
+        "text": "Il Galles negli anni trenta del seicento era una regione rurale e relativamente povera della Gran Bretagna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La piccola nobiltà gallese possedeva proprietà modeste rispetto ai grandi proprietari terrieri inglesi.",
+      "text_markdown": "La piccola nobiltà gallese possedeva proprietà modeste rispetto ai grandi proprietari terrieri inglesi.",
+      "tts": {
+        "text": "La piccola nobiltà gallese possedeva proprietà modeste rispetto ai grandi proprietari terrieri inglesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma apprezzava il servizio militare e l'onore familiare sopra ogni cosa.",
+      "text_markdown": "Ma apprezzava il servizio militare e l'onore familiare sopra ogni cosa.",
+      "tts": {
+        "text": "Ma apprezzava il servizio militare e l'onore familiare sopra ogni cosa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si sa molto poco dell'infanzia di Morgan.",
+      "text_markdown": "Si sa molto poco dell'infanzia di Morgan.",
+      "tts": {
+        "text": "Si sa molto poco dell'infanzia di Morgan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Non scrisse mai dei suoi primi anni, e nessun registro scolastico è sopravvissuto.",
+      "text_markdown": "Non scrisse mai dei suoi primi anni, e nessun registro scolastico è sopravvissuto.",
+      "tts": {
+        "text": "Non scrisse mai dei suoi primi anni, e nessun registro scolastico è sopravvissuto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli storici ritengono che abbia ricevuto un'istruzione di base ma non una formazione universitaria.",
+      "text_markdown": "Gli storici ritengono che abbia ricevuto un'istruzione di base ma non una formazione universitaria.",
+      "tts": {
+        "text": "Gli storici ritengono che abbia ricevuto un'istruzione di base ma non una formazione universitaria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A un certo punto alla fine degli anni Cinquanta del Seicento, Morgan salpò per i Caraibi.",
+      "text_markdown": "A un certo punto alla fine degli anni Cinquanta del Seicento, Morgan salpò per i Caraibi.",
+      "tts": {
+        "text": "A un certo punto alla fine degli anni cinquanta del seicento, Morgan salpò per i Caraibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Come vi sia arrivato è oggetto di dibattito.",
+      "text_markdown": "Come vi sia arrivato è oggetto di dibattito.",
+      "tts": {
+        "text": "Come vi sia arrivato è oggetto di dibattito.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una versione sostiene che fu rapito da ragazzo a Bristol e venduto come servo a contratto alle Barbados.",
+      "text_markdown": "Una versione sostiene che fu rapito da ragazzo a Bristol e venduto come servo a contratto alle Barbados.",
+      "tts": {
+        "text": "Una versione sostiene che fu rapito da ragazzo a Bristol e venduto come servo a contratto alle Barbados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan stesso smentì in seguito questa storia, definendola diffamazione.",
+      "text_markdown": "Morgan stesso smentì in seguito questa storia, definendola diffamazione.",
+      "tts": {
+        "text": "Morgan stesso smentì in seguito questa storia, definendola diffamazione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fece causa a un editore che aveva pubblicato l'affermazione e ottenne un risarcimento.",
+      "text_markdown": "Fece causa a un editore che aveva pubblicato l'affermazione e ottenne un risarcimento.",
+      "tts": {
+        "text": "Fece causa a un editore che aveva pubblicato l'affermazione e ottenne un risarcimento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una spiegazione più probabile è che Morgan sia arrivato nei Caraibi come soldato.",
+      "text_markdown": "Una spiegazione più probabile è che Morgan sia arrivato nei Caraibi come soldato.",
+      "tts": {
+        "text": "Una spiegazione più probabile è che Morgan sia arrivato nei Caraibi come soldato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nel 1655, l'Inghilterra inviò una grande spedizione militare per conquistare territorio spagnolo.",
+      "text_markdown": "Nel 1655, l'Inghilterra inviò una grande spedizione militare per conquistare territorio spagnolo.",
+      "tts": {
+        "text": "Nel milleseicentocinquantacinque, l'Inghilterra inviò una grande spedizione militare per conquistare territorio spagnolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La flotta non riuscì a prendere Hispaniola ma conquistò con successo la Giamaica.",
+      "text_markdown": "La flotta non riuscì a prendere Hispaniola ma conquistò con successo la Giamaica.",
+      "tts": {
+        "text": "La flotta non riuscì a prendere Hispaniola ma conquistò con successo la Giamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa spedizione fu nota come il Western Design.",
+      "text_markdown": "Questa spedizione fu nota come il Western Design.",
+      "tts": {
+        "text": "Questa spedizione fu nota come il Western Design.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu ordinata da Oliver Cromwell, il Lord Protettore d'Inghilterra.",
+      "text_markdown": "Fu ordinata da Oliver Cromwell, il Lord Protettore d'Inghilterra.",
+      "tts": {
+        "text": "Fu ordinata da Oliver Cromwell, il Lord Protettore d'Inghilterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cromwell voleva spezzare il dominio della Spagna sui Caraibi ed espandere il potere inglese.",
+      "text_markdown": "Cromwell voleva spezzare il dominio della Spagna sui Caraibi ed espandere il potere inglese.",
+      "tts": {
+        "text": "Cromwell voleva spezzare il dominio della Spagna sui Caraibi ed espandere il potere inglese.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan potrebbe aver fatto parte di questa spedizione o essere arrivato poco dopo.",
+      "text_markdown": "Morgan potrebbe aver fatto parte di questa spedizione o essere arrivato poco dopo.",
+      "tts": {
+        "text": "Morgan potrebbe aver fatto parte di questa spedizione o essere arrivato poco dopo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In ogni caso, all'inizio degli anni Sessanta del Seicento era stabilito in Giamaica.",
+      "text_markdown": "In ogni caso, all'inizio degli anni Sessanta del Seicento era stabilito in Giamaica.",
+      "tts": {
+        "text": "In ogni caso, all'inizio degli anni sessanta del seicento era stabilito in Giamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si dimostrò rapidamente un combattente capace e ambizioso.",
+      "text_markdown": "Si dimostrò rapidamente un combattente capace e ambizioso.",
+      "tts": {
+        "text": "Si dimostrò rapidamente un combattente capace e ambizioso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nel 1663, si unì a una spedizione bucaniera contro insediamenti spagnoli in America Centrale.",
+      "text_markdown": "Nel 1663, si unì a una spedizione bucaniera contro insediamenti spagnoli in America Centrale.",
+      "tts": {
+        "text": "Nel milleseicentosessantatré, si unì a una spedizione bucaniera contro insediamenti spagnoli in America Centrale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I razziatori attaccarono città lungo la costa degli attuali Nicaragua e Honduras.",
+      "text_markdown": "I razziatori attaccarono città lungo la costa degli attuali Nicaragua e Honduras.",
+      "tts": {
+        "text": "I razziatori attaccarono città lungo la costa degli attuali Nicaragua e Honduras.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa prima spedizione fu guidata da un bucaniere veterano di nome Christopher Myngs.",
+      "text_markdown": "Questa prima spedizione fu guidata da un bucaniere veterano di nome Christopher Myngs.",
+      "tts": {
+        "text": "Questa prima spedizione fu guidata da un bucaniere veterano di nome Christopher Myngs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Myngs era un razziatore audace ed esperto che insegnò il mestiere ai bucanieri più giovani.",
+      "text_markdown": "Myngs era un razziatore audace ed esperto che insegnò il mestiere ai bucanieri più giovani.",
+      "tts": {
+        "text": "Myngs era un razziatore audace ed esperto che insegnò il mestiere ai bucanieri più giovani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan lo osservò e imparò da lui con attenzione.",
+      "text_markdown": "Morgan lo osservò e imparò da lui con attenzione.",
+      "tts": {
+        "text": "Morgan lo osservò e imparò da lui con attenzione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan apprese durante queste prime incursioni le tattiche che avrebbero definito la sua carriera.",
+      "text_markdown": "Morgan apprese durante queste prime incursioni le tattiche che avrebbero definito la sua carriera.",
+      "tts": {
+        "text": "Morgan apprese durante queste prime incursioni le tattiche che avrebbero definito la sua carriera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Studiò come muovere grandi gruppi di uomini attraverso il terreno della giungla.",
+      "text_markdown": "Studiò come muovere grandi gruppi di uomini attraverso il terreno della giungla.",
+      "tts": {
+        "text": "Studiò come muovere grandi gruppi di uomini attraverso il terreno della giungla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Imparò a colpire rapidamente e ritirarsi prima che arrivassero i rinforzi spagnoli.",
+      "text_markdown": "Imparò a colpire rapidamente e ritirarsi prima che arrivassero i rinforzi spagnoli.",
+      "tts": {
+        "text": "Imparò a colpire rapidamente e ritirarsi prima che arrivassero i rinforzi spagnoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1665, Morgan salpò con il famoso bucaniere Edward Mansfield per un'incursione contro l'isola di Providence.",
+      "text_markdown": "Nel 1665, Morgan salpò con il famoso bucaniere Edward Mansfield per un'incursione contro l'isola di Providence.",
+      "tts": {
+        "text": "Nel milleseicentosessantacinque, Morgan salpò con il famoso bucaniere Edward Mansfield per un'incursione contro l'isola di Providence.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Providence era una piccola isola al largo della costa del Nicaragua che la Spagna aveva riconquistato dall'Inghilterra anni prima.",
+      "text_markdown": "Providence era una piccola isola al largo della costa del Nicaragua che la Spagna aveva riconquistato dall'Inghilterra anni prima.",
+      "tts": {
+        "text": "Providence era una piccola isola al largo della costa del Nicaragua che la Spagna aveva riconquistato dall'Inghilterra anni prima.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La flotta di Mansfield prese l'isola facilmente.",
+      "text_markdown": "La flotta di Mansfield prese l'isola facilmente.",
+      "tts": {
+        "text": "La flotta di Mansfield prese l'isola facilmente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ma la spedizione rivelò problemi nella leadership dei bucanieri.",
+      "text_markdown": "Ma la spedizione rivelò problemi nella leadership dei bucanieri.",
+      "tts": {
+        "text": "Ma la spedizione rivelò problemi nella leadership dei bucanieri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli uomini litigarono sulla divisione del bottino, e molti disertarono.",
+      "text_markdown": "Gli uomini litigarono sulla divisione del bottino, e molti disertarono.",
+      "tts": {
+        "text": "Gli uomini litigarono sulla divisione del bottino, e molti disertarono.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando Mansfield morì nel 1667, i bucanieri avevano bisogno di un nuovo capo.",
+      "text_markdown": "Quando Mansfield morì nel 1667, i bucanieri avevano bisogno di un nuovo capo.",
+      "tts": {
+        "text": "Quando Mansfield morì nel milleseicentosessantasette, i bucanieri avevano bisogno di un nuovo capo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan fu scelto per sostituirlo.",
+      "text_markdown": "Morgan fu scelto per sostituirlo.",
+      "tts": {
+        "text": "Morgan fu scelto per sostituirlo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva appena trent'anni, ma si era già guadagnato una reputazione per audacia e abilità tattica.",
+      "text_markdown": "Aveva appena trent'anni, ma si era già guadagnato una reputazione per audacia e abilità tattica.",
+      "tts": {
+        "text": "Aveva appena trent'anni, ma si era già guadagnato una reputazione per audacia e abilità tattica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Più o meno nello stesso periodo, Morgan sposò sua moglie, Mary Elizabeth.",
+      "text_markdown": "Più o meno nello stesso periodo, Morgan sposò sua moglie, Mary Elizabeth.",
+      "tts": {
+        "text": "Più o meno nello stesso periodo, Morgan sposò sua moglie, Mary Elizabeth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era la figlia di suo zio Edward Morgan, che era stato vicegovernatore della Giamaica.",
+      "text_markdown": "Era la figlia di suo zio Edward Morgan, che era stato vicegovernatore della Giamaica.",
+      "tts": {
+        "text": "Era la figlia di suo zio Edward Morgan, che era stato vicegovernatore della Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il matrimonio lo legò all'élite coloniale dell'isola.",
+      "text_markdown": "Il matrimonio lo legò all'élite coloniale dell'isola.",
+      "tts": {
+        "text": "Il matrimonio lo legò all'élite coloniale dell'isola.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan era ora sia un capitano bucaniere sia un membro della classe dei piantatori giamaicani.",
+      "text_markdown": "Morgan era ora sia un capitano bucaniere sia un membro della classe dei piantatori giamaicani.",
+      "tts": {
+        "text": "Morgan era ora sia un capitano bucaniere sia un membro della classe dei piantatori giamaicani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Possedeva terre e schiavi, e capiva la politica tanto quanto la guerra.",
+      "text_markdown": "Possedeva terre e schiavi, e capiva la politica tanto quanto la guerra.",
+      "tts": {
+        "text": "Possedeva terre e schiavi, e capiva la politica tanto quanto la guerra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Coltivò uno stretto rapporto con Sir Thomas Modyford, il governatore della Giamaica.",
+      "text_markdown": "Coltivò uno stretto rapporto con Sir Thomas Modyford, il governatore della Giamaica.",
+      "tts": {
+        "text": "Coltivò uno stretto rapporto con Sir Thomas Modyford, il governatore della Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Modyford si affidava a Morgan per guidare la difesa dell'isola contro l'aggressione spagnola.",
+      "text_markdown": "Modyford si affidava a Morgan per guidare la difesa dell'isola contro l'aggressione spagnola.",
+      "tts": {
+        "text": "Modyford si affidava a Morgan per guidare la difesa dell'isola contro l'aggressione spagnola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In cambio, Modyford fornì a Morgan la copertura legale di cui aveva bisogno per attaccare obiettivi spagnoli.",
+      "text_markdown": "In cambio, Modyford fornì a Morgan la copertura legale di cui aveva bisogno per attaccare obiettivi spagnoli.",
+      "tts": {
+        "text": "In cambio, Modyford fornì a Morgan la copertura legale di cui aveva bisogno per attaccare obiettivi spagnoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa alleanza tra governatore e bucaniere avrebbe ridisegnato l'equilibrio di potere nei Caraibi.",
+      "text_markdown": "Questa alleanza tra governatore e bucaniere avrebbe ridisegnato l'equilibrio di potere nei Caraibi.",
+      "tts": {
+        "text": "Questa alleanza tra governatore e bucaniere avrebbe ridisegnato l'equilibrio di potere nei Caraibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Un gallese nei Caraibi",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan stava per intraprendere una serie di incursioni che lo avrebbero reso l'uomo più temuto dei mari spagnoli.",
+      "text_markdown": "Morgan stava per intraprendere una serie di incursioni che lo avrebbero reso l'uomo più temuto dei mari spagnoli.",
+      "tts": {
+        "text": "Morgan stava per intraprendere una serie di incursioni che lo avrebbero reso l'uomo più temuto dei mari spagnoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le incursioni che scossero un impero",
+      "text_markdown": "Le incursioni che scossero un impero"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il primo grande comando indipendente di Morgan arrivò nel 1668.",
+      "text_markdown": "Il primo grande comando indipendente di Morgan arrivò nel 1668.",
+      "tts": {
+        "text": "Il primo grande comando indipendente di Morgan arrivò nel milleseicentosessantotto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il governatore Modyford gli rilasciò un incarico per raccogliere informazioni sui piani spagnoli di attaccare la Giamaica.",
+      "text_markdown": "Il governatore Modyford gli rilasciò un incarico per raccogliere informazioni sui piani spagnoli di attaccare la Giamaica.",
+      "tts": {
+        "text": "Il governatore Modyford gli rilasciò un incarico per raccogliere informazioni sui piani spagnoli di attaccare la Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan interpretò questo incarico in modo molto ampio.",
+      "text_markdown": "Morgan interpretò questo incarico in modo molto ampio.",
+      "tts": {
+        "text": "Morgan interpretò questo incarico in modo molto ampio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Radunò una flotta di dodici navi e oltre settecento uomini.",
+      "text_markdown": "Radunò una flotta di dodici navi e oltre settecento uomini.",
+      "tts": {
+        "text": "Radunò una flotta di dodici navi e oltre settecento uomini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo obiettivo era Portobelo, una delle città più fortificate delle Americhe.",
+      "text_markdown": "Il suo obiettivo era Portobelo, una delle città più fortificate delle Americhe.",
+      "tts": {
+        "text": "Il suo obiettivo era Portobelo, una delle città più fortificate delle Americhe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portobelo si trovava sulla costa caraibica dell'attuale Panama.",
+      "text_markdown": "Portobelo si trovava sulla costa caraibica dell'attuale Panama.",
+      "tts": {
+        "text": "Portobelo si trovava sulla costa caraibica dell'attuale Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era il punto in cui l'argento sudamericano veniva caricato sulle navi dirette in Spagna.",
+      "text_markdown": "Era il punto in cui l'argento sudamericano veniva caricato sulle navi dirette in Spagna.",
+      "tts": {
+        "text": "Era il punto in cui l'argento sudamericano veniva caricato sulle navi dirette in Spagna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La città era difesa da tre forti di pietra e una guarnigione di soldati professionisti.",
+      "text_markdown": "La città era difesa da tre forti di pietra e una guarnigione di soldati professionisti.",
+      "tts": {
+        "text": "La città era difesa da tre forti di pietra e una guarnigione di soldati professionisti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nessuno si aspettava un attacco a Portobelo.",
+      "text_markdown": "Nessuno si aspettava un attacco a Portobelo.",
+      "tts": {
+        "text": "Nessuno si aspettava un attacco a Portobelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli spagnoli la consideravano inespugnabile.",
+      "text_markdown": "Gli spagnoli la consideravano inespugnabile.",
+      "tts": {
+        "text": "Gli spagnoli la consideravano inespugnabile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fu esattamente per questo che Morgan la scelse.",
+      "text_markdown": "Fu esattamente per questo che Morgan la scelse.",
+      "tts": {
+        "text": "Fu esattamente per questo che Morgan la scelse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli uomini di Morgan sbarcarono di notte a diversi chilometri dalla città.",
+      "text_markdown": "Gli uomini di Morgan sbarcarono di notte a diversi chilometri dalla città.",
+      "tts": {
+        "text": "Gli uomini di Morgan sbarcarono di notte a diversi chilometri dalla città.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pagaiarono a riva in canoe e strisciarono nella giungla nell'oscurità.",
+      "text_markdown": "Pagaiarono a riva in canoe e strisciarono nella giungla nell'oscurità.",
+      "tts": {
+        "text": "Pagaiarono a riva in canoe e strisciarono nella giungla nell'oscurità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Attaccarono il primo forte all'alba, cogliendo i difensori completamente di sorpresa.",
+      "text_markdown": "Attaccarono il primo forte all'alba, cogliendo i difensori completamente di sorpresa.",
+      "tts": {
+        "text": "Attaccarono il primo forte all'alba, cogliendo i difensori completamente di sorpresa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli spagnoli si difesero coraggiosamente, ma furono sopraffatti dalla velocità dell'assalto.",
+      "text_markdown": "Gli spagnoli si difesero coraggiosamente, ma furono sopraffatti dalla velocità dell'assalto.",
+      "tts": {
+        "text": "Gli spagnoli si difesero coraggiosamente, ma furono sopraffatti dalla velocità dell'assalto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I bucanieri di Morgan erano combattenti di strada esperti che eccellevano nel combattimento ravvicinato.",
+      "text_markdown": "I bucanieri di Morgan erano combattenti di strada esperti che eccellevano nel combattimento ravvicinato.",
+      "tts": {
+        "text": "I bucanieri di Morgan erano combattenti di strada esperti che eccellevano nel combattimento ravvicinato.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan usò una tattica che inorridì i suoi nemici.",
+      "text_markdown": "Morgan usò una tattica che inorridì i suoi nemici.",
+      "tts": {
+        "text": "Morgan usò una tattica che inorridì i suoi nemici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Costrinse monaci e suore catturati a portare scale fino alle mura del secondo forte.",
+      "text_markdown": "Costrinse monaci e suore catturati a portare scale fino alle mura del secondo forte.",
+      "tts": {
+        "text": "Costrinse monaci e suore catturati a portare scale fino alle mura del secondo forte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I difensori spagnoli non potevano sparare sui propri confratelli religiosi.",
+      "text_markdown": "I difensori spagnoli non potevano sparare sui propri confratelli religiosi.",
+      "tts": {
+        "text": "I difensori spagnoli non potevano sparare sui propri confratelli religiosi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In due giorni, tutti e tre i forti erano caduti.",
+      "text_markdown": "In due giorni, tutti e tre i forti erano caduti.",
+      "tts": {
+        "text": "In due giorni, tutti e tre i forti erano caduti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I bucanieri di Morgan saccheggiarono la città per due settimane.",
+      "text_markdown": "I bucanieri di Morgan saccheggiarono la città per due settimane.",
+      "tts": {
+        "text": "I bucanieri di Morgan saccheggiarono la città per due settimane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Torturarono i prigionieri per far rivelare dove erano nascosti oro e oggetti di valore.",
+      "text_markdown": "Torturarono i prigionieri per far rivelare dove erano nascosti oro e oggetti di valore.",
+      "tts": {
+        "text": "Torturarono i prigionieri per far rivelare dove erano nascosti oro e oggetti di valore.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il bottino totale di Portobelo fu enorme.",
+      "text_markdown": "Il bottino totale di Portobelo fu enorme.",
+      "tts": {
+        "text": "Il bottino totale di Portobelo fu enorme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli storici stimano che il bottino valesse oltre 250.000 pezzi da otto.",
+      "text_markdown": "Gli storici stimano che il bottino valesse oltre 250.000 pezzi da otto.",
+      "tts": {
+        "text": "Gli storici stimano che il bottino valesse oltre duecentocinquantamila pezzi da otto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ogni semplice marinaio ricevette una quota pari a diversi anni di salario onesto.",
+      "text_markdown": "Ogni semplice marinaio ricevette una quota pari a diversi anni di salario onesto.",
+      "tts": {
+        "text": "Ogni semplice marinaio ricevette una quota pari a diversi anni di salario onesto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan tornò a Port Royal come un eroe.",
+      "text_markdown": "Morgan tornò a Port Royal come un eroe.",
+      "tts": {
+        "text": "Morgan tornò a Port Royal come un eroe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il successo dell'incursione a Portobelo attirò centinaia di uomini sotto la bandiera di Morgan.",
+      "text_markdown": "Il successo dell'incursione a Portobelo attirò centinaia di uomini sotto la bandiera di Morgan.",
+      "tts": {
+        "text": "Il successo dell'incursione a Portobelo attirò centinaia di uomini sotto la bandiera di Morgan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bucanieri da tutti i Caraibi volevano navigare con l'uomo che aveva conquistato una città inespugnabile.",
+      "text_markdown": "Bucanieri da tutti i Caraibi volevano navigare con l'uomo che aveva conquistato una città inespugnabile.",
+      "tts": {
+        "text": "Bucanieri da tutti i Caraibi volevano navigare con l'uomo che aveva conquistato una città inespugnabile.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All'inizio del 1669, Morgan ripartì, questa volta con Maracaibo come obiettivo.",
+      "text_markdown": "All'inizio del 1669, Morgan ripartì, questa volta con Maracaibo come obiettivo.",
+      "tts": {
+        "text": "All'inizio del milleseicentosessantanove, Morgan ripartì, questa volta con Maracaibo come obiettivo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maracaibo era una ricca città commerciale sulle rive del lago di Maracaibo, nell'attuale Venezuela.",
+      "text_markdown": "Maracaibo era una ricca città commerciale sulle rive del lago di Maracaibo, nell'attuale Venezuela.",
+      "tts": {
+        "text": "Maracaibo era una ricca città commerciale sulle rive del lago di Maracaibo, nell'attuale Venezuela.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per raggiungere la città, la flotta di Morgan doveva attraversare uno stretto canale sorvegliato da un forte.",
+      "text_markdown": "Per raggiungere la città, la flotta di Morgan doveva attraversare uno stretto canale sorvegliato da un forte.",
+      "tts": {
+        "text": "Per raggiungere la città, la flotta di Morgan doveva attraversare uno stretto canale sorvegliato da un forte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I bucanieri presero d'assalto il forte e lo trovarono abbandonato.",
+      "text_markdown": "I bucanieri presero d'assalto il forte e lo trovarono abbandonato.",
+      "tts": {
+        "text": "I bucanieri presero d'assalto il forte e lo trovarono abbandonato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La guarnigione spagnola era fuggita, lasciando i cannoni carichi.",
+      "text_markdown": "La guarnigione spagnola era fuggita, lasciando i cannoni carichi.",
+      "tts": {
+        "text": "La guarnigione spagnola era fuggita, lasciando i cannoni carichi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli uomini di Morgan entrarono a Maracaibo e la trovarono quasi deserta.",
+      "text_markdown": "Gli uomini di Morgan entrarono a Maracaibo e la trovarono quasi deserta.",
+      "tts": {
+        "text": "Gli uomini di Morgan entrarono a Maracaibo e la trovarono quasi deserta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli abitanti erano fuggiti nella campagna circostante con i loro oggetti di valore.",
+      "text_markdown": "Gli abitanti erano fuggiti nella campagna circostante con i loro oggetti di valore.",
+      "tts": {
+        "text": "Gli abitanti erano fuggiti nella campagna circostante con i loro oggetti di valore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan inviò squadre di razzia per rintracciarli.",
+      "text_markdown": "Morgan inviò squadre di razzia per rintracciarli.",
+      "tts": {
+        "text": "Morgan inviò squadre di razzia per rintracciarli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I bucanieri trascorsero settimane alla ricerca di tesori nascosti.",
+      "text_markdown": "I bucanieri trascorsero settimane alla ricerca di tesori nascosti.",
+      "tts": {
+        "text": "I bucanieri trascorsero settimane alla ricerca di tesori nascosti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Usarono la tortura per estorcere informazioni ai civili catturati.",
+      "text_markdown": "Usarono la tortura per estorcere informazioni ai civili catturati.",
+      "tts": {
+        "text": "Usarono la tortura per estorcere informazioni ai civili catturati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questi metodi erano brutali, persino per i duri standard dell'epoca.",
+      "text_markdown": "Questi metodi erano brutali, persino per i duri standard dell'epoca.",
+      "tts": {
+        "text": "Questi metodi erano brutali, persino per i duri standard dell'epoca.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando Morgan cercò di lasciare Maracaibo, trovò il canale bloccato.",
+      "text_markdown": "Quando Morgan cercò di lasciare Maracaibo, trovò il canale bloccato.",
+      "tts": {
+        "text": "Quando Morgan cercò di lasciare Maracaibo, trovò il canale bloccato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tre navi da guerra spagnole erano arrivate e avevano riconquistato il forte.",
+      "text_markdown": "Tre navi da guerra spagnole erano arrivate e avevano riconquistato il forte.",
+      "tts": {
+        "text": "Tre navi da guerra spagnole erano arrivate e avevano riconquistato il forte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan era intrappolato nel lago con l'intera flotta.",
+      "text_markdown": "Morgan era intrappolato nel lago con l'intera flotta.",
+      "tts": {
+        "text": "Morgan era intrappolato nel lago con l'intera flotta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'ammiraglio spagnolo inviò a Morgan un messaggio chiedendo la resa.",
+      "text_markdown": "L'ammiraglio spagnolo inviò a Morgan un messaggio chiedendo la resa.",
+      "tts": {
+        "text": "L'ammiraglio spagnolo inviò a Morgan un messaggio chiedendo la resa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Promise un salvacondotto se i bucanieri avessero restituito tutto il bottino.",
+      "text_markdown": "Promise un salvacondotto se i bucanieri avessero restituito tutto il bottino.",
+      "tts": {
+        "text": "Promise un salvacondotto se i bucanieri avessero restituito tutto il bottino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan rifiutò.",
+      "text_markdown": "Morgan rifiutò.",
+      "tts": {
+        "text": "Morgan rifiutò.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Invece, Morgan escogitò un brillante piano di fuga.",
+      "text_markdown": "Invece, Morgan escogitò un brillante piano di fuga.",
+      "tts": {
+        "text": "Invece, Morgan escogitò un brillante piano di fuga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inviò un brulotto carico di esplosivi direttamente contro la nave ammiraglia spagnola.",
+      "text_markdown": "Inviò un brulotto carico di esplosivi direttamente contro la nave ammiraglia spagnola.",
+      "tts": {
+        "text": "Inviò un brulotto carico di esplosivi direttamente contro la nave ammiraglia spagnola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La nave ammiraglia esplose e affondò.",
+      "text_markdown": "La nave ammiraglia esplose e affondò.",
+      "tts": {
+        "text": "La nave ammiraglia esplose e affondò.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La seconda nave spagnola si incagliò e fu catturata.",
+      "text_markdown": "La seconda nave spagnola si incagliò e fu catturata.",
+      "tts": {
+        "text": "La seconda nave spagnola si incagliò e fu catturata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La terza si ritirò sotto la protezione dei cannoni del forte.",
+      "text_markdown": "La terza si ritirò sotto la protezione dei cannoni del forte.",
+      "tts": {
+        "text": "La terza si ritirò sotto la protezione dei cannoni del forte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan ingannò quindi il comandante del forte con un semplice stratagemma.",
+      "text_markdown": "Morgan ingannò quindi il comandante del forte con un semplice stratagemma.",
+      "tts": {
+        "text": "Morgan ingannò quindi il comandante del forte con un semplice stratagemma.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inviò barche piene di uomini verso la riva come se preparasse un attacco terrestre.",
+      "text_markdown": "Inviò barche piene di uomini verso la riva come se preparasse un attacco terrestre.",
+      "tts": {
+        "text": "Inviò barche piene di uomini verso la riva come se preparasse un attacco terrestre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli uomini si nascosero sul fondo delle barche e furono riportati indietro senza essere visti.",
+      "text_markdown": "Gli uomini si nascosero sul fondo delle barche e furono riportati indietro senza essere visti.",
+      "tts": {
+        "text": "Gli uomini si nascosero sul fondo delle barche e furono riportati indietro senza essere visti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il comandante spagnolo spostò i cannoni verso il lato di terra del forte.",
+      "text_markdown": "Il comandante spagnolo spostò i cannoni verso il lato di terra del forte.",
+      "tts": {
+        "text": "Il comandante spagnolo spostò i cannoni verso il lato di terra del forte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quella notte, Morgan fece passare la flotta davanti alle mura marittime indifese.",
+      "text_markdown": "Quella notte, Morgan fece passare la flotta davanti alle mura marittime indifese.",
+      "tts": {
+        "text": "Quella notte, Morgan fece passare la flotta davanti alle mura marittime indifese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "All'alba, i bucanieri erano al sicuro in mare aperto.",
+      "text_markdown": "All'alba, i bucanieri erano al sicuro in mare aperto.",
+      "tts": {
+        "text": "All'alba, i bucanieri erano al sicuro in mare aperto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'incursione di Maracaibo confermò la reputazione di Morgan come il più grande comandante bucaniere vivente.",
+      "text_markdown": "L'incursione di Maracaibo confermò la reputazione di Morgan come il più grande comandante bucaniere vivente.",
+      "tts": {
+        "text": "L'incursione di Maracaibo confermò la reputazione di Morgan come il più grande comandante bucaniere vivente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era astuto, spietato e apparentemente inarrestabile.",
+      "text_markdown": "Era astuto, spietato e apparentemente inarrestabile.",
+      "tts": {
+        "text": "Era astuto, spietato e apparentemente inarrestabile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Le incursioni che scossero un impero",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il suo prossimo obiettivo sarebbe stato il più audace di tutti.",
+      "text_markdown": "Il suo prossimo obiettivo sarebbe stato il più audace di tutti.",
+      "tts": {
+        "text": "Il suo prossimo obiettivo sarebbe stato il più audace di tutti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il saccheggio di Panama",
+      "text_markdown": "Il saccheggio di Panama"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1670, Morgan iniziò a pianificare l'incursione più ambiziosa della sua carriera.",
+      "text_markdown": "Nel 1670, Morgan iniziò a pianificare l'incursione più ambiziosa della sua carriera.",
+      "tts": {
+        "text": "Nel milleseicentosettanta, Morgan iniziò a pianificare l'incursione più ambiziosa della sua carriera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo obiettivo era Panama, la città più ricca di tutte le Americhe.",
+      "text_markdown": "Il suo obiettivo era Panama, la città più ricca di tutte le Americhe.",
+      "tts": {
+        "text": "Il suo obiettivo era Panama, la città più ricca di tutte le Americhe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama si trovava sulla costa del Pacifico dell'istmo di Panama.",
+      "text_markdown": "Panama si trovava sulla costa del Pacifico dell'istmo di Panama.",
+      "tts": {
+        "text": "Panama si trovava sulla costa del Pacifico dell'istmo di Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tutto l'argento e l'oro del Perù vi transitavano diretti in Spagna.",
+      "text_markdown": "Tutto l'argento e l'oro del Perù vi transitavano diretti in Spagna.",
+      "tts": {
+        "text": "Tutto l'argento e l'oro del Perù vi transitavano diretti in Spagna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La città ospitava migliaia di persone e alcuni dei più bei edifici del Nuovo Mondo.",
+      "text_markdown": "La città ospitava migliaia di persone e alcuni dei più bei edifici del Nuovo Mondo.",
+      "tts": {
+        "text": "La città ospitava migliaia di persone e alcuni dei più bei edifici del Nuovo Mondo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama aveva grandi chiese, magazzini in pietra e una cattedrale con un alto campanile.",
+      "text_markdown": "Panama aveva grandi chiese, magazzini in pietra e una cattedrale con un alto campanile.",
+      "tts": {
+        "text": "Panama aveva grandi chiese, magazzini in pietra e una cattedrale con un alto campanile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ricchi mercanti vivevano in case con tetti di tegole e balconi in ferro.",
+      "text_markdown": "Ricchi mercanti vivevano in case con tetti di tegole e balconi in ferro.",
+      "tts": {
+        "text": "Ricchi mercanti vivevano in case con tetti di tegole e balconi in ferro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era il gioiello dell'impero pacifico della Spagna.",
+      "text_markdown": "Era il gioiello dell'impero pacifico della Spagna.",
+      "tts": {
+        "text": "Era il gioiello dell'impero pacifico della Spagna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per raggiungere Panama, Morgan avrebbe dovuto attraversare l'intero istmo a piedi.",
+      "text_markdown": "Per raggiungere Panama, Morgan avrebbe dovuto attraversare l'intero istmo a piedi.",
+      "tts": {
+        "text": "Per raggiungere Panama, Morgan avrebbe dovuto attraversare l'intero istmo a piedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il viaggio significava farsi strada attraverso una fitta giungla tropicale per giorni.",
+      "text_markdown": "Il viaggio significava farsi strada attraverso una fitta giungla tropicale per giorni.",
+      "tts": {
+        "text": "Il viaggio significava farsi strada attraverso una fitta giungla tropicale per giorni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nessuna forza bucaniera aveva mai tentato qualcosa di così pericoloso.",
+      "text_markdown": "Nessuna forza bucaniera aveva mai tentato qualcosa di così pericoloso.",
+      "tts": {
+        "text": "Nessuna forza bucaniera aveva mai tentato qualcosa di così pericoloso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan radunò il più grande esercito bucaniere mai assemblato.",
+      "text_markdown": "Morgan radunò il più grande esercito bucaniere mai assemblato.",
+      "tts": {
+        "text": "Morgan radunò il più grande esercito bucaniere mai assemblato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oltre 1.800 uomini si unirono a lui, navigando in una flotta di 36 navi.",
+      "text_markdown": "Oltre 1.800 uomini si unirono a lui, navigando in una flotta di 36 navi.",
+      "tts": {
+        "text": "Oltre milleottocento uomini si unirono a lui, navigando in una flotta di trentasei navi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si radunarono sull'isola di Providence nel dicembre 1670.",
+      "text_markdown": "Si radunarono sull'isola di Providence nel dicembre 1670.",
+      "tts": {
+        "text": "Si radunarono sull'isola di Providence nel dicembre milleseicentosettanta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il primo passo era conquistare la fortezza di San Lorenzo alla foce del fiume Chagres.",
+      "text_markdown": "Il primo passo era conquistare la fortezza di San Lorenzo alla foce del fiume Chagres.",
+      "tts": {
+        "text": "Il primo passo era conquistare la fortezza di San Lorenzo alla foce del fiume Chagres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Questo forte sorvegliava la via fluviale verso l'interno di Panama.",
+      "text_markdown": "Questo forte sorvegliava la via fluviale verso l'interno di Panama.",
+      "tts": {
+        "text": "Questo forte sorvegliava la via fluviale verso l'interno di Panama.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan inviò un'avanguardia di 400 uomini per prendere il forte.",
+      "text_markdown": "Morgan inviò un'avanguardia di 400 uomini per prendere il forte.",
+      "tts": {
+        "text": "Morgan inviò un'avanguardia di quattrocento uomini per prendere il forte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'assalto fu feroce.",
+      "text_markdown": "L'assalto fu feroce.",
+      "tts": {
+        "text": "L'assalto fu feroce.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I bucanieri attaccarono le mura con granate e scale d'assalto.",
+      "text_markdown": "I bucanieri attaccarono le mura con granate e scale d'assalto.",
+      "tts": {
+        "text": "I bucanieri attaccarono le mura con granate e scale d'assalto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante la battaglia, uno dei bucanieri fu colpito da una freccia.",
+      "text_markdown": "Durante la battaglia, uno dei bucanieri fu colpito da una freccia.",
+      "tts": {
+        "text": "Durante la battaglia, uno dei bucanieri fu colpito da una freccia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La estrasse dal corpo, la avvolse nel cotone e la sparò dal suo moschetto.",
+      "text_markdown": "La estrasse dal corpo, la avvolse nel cotone e la sparò dal suo moschetto.",
+      "tts": {
+        "text": "La estrasse dal corpo, la avvolse nel cotone e la sparò dal suo moschetto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La freccia infuocata diede fuoco al tetto di paglia del forte.",
+      "text_markdown": "La freccia infuocata diede fuoco al tetto di paglia del forte.",
+      "tts": {
+        "text": "La freccia infuocata diede fuoco al tetto di paglia del forte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il fuoco si propagò rapidamente alle strutture in legno all'interno del forte.",
+      "text_markdown": "Il fuoco si propagò rapidamente alle strutture in legno all'interno del forte.",
+      "tts": {
+        "text": "Il fuoco si propagò rapidamente alle strutture in legno all'interno del forte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La santabarbara esplose, uccidendo decine di difensori spagnoli.",
+      "text_markdown": "La santabarbara esplose, uccidendo decine di difensori spagnoli.",
+      "tts": {
+        "text": "La santabarbara esplose, uccidendo decine di difensori spagnoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al mattino, il forte era in mano ai bucanieri.",
+      "text_markdown": "Al mattino, il forte era in mano ai bucanieri.",
+      "tts": {
+        "text": "Al mattino, il forte era in mano ai bucanieri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan condusse poi il grosso delle sue forze risalendo il fiume Chagres in canoa.",
+      "text_markdown": "Morgan condusse poi il grosso delle sue forze risalendo il fiume Chagres in canoa.",
+      "tts": {
+        "text": "Morgan condusse poi il grosso delle sue forze risalendo il fiume Chagres in canoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il viaggio durò nove giorni attraverso uno dei terreni più difficili della Terra.",
+      "text_markdown": "Il viaggio durò nove giorni attraverso uno dei terreni più difficili della Terra.",
+      "tts": {
+        "text": "Il viaggio durò nove giorni attraverso uno dei terreni più difficili della Terra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli uomini finirono il cibo al terzo giorno.",
+      "text_markdown": "Gli uomini finirono il cibo al terzo giorno.",
+      "tts": {
+        "text": "Gli uomini finirono il cibo al terzo giorno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mangiarono sacche di cuoio, bollirono le scarpe e masticarono foglie.",
+      "text_markdown": "Mangiarono sacche di cuoio, bollirono le scarpe e masticarono foglie.",
+      "tts": {
+        "text": "Mangiarono sacche di cuoio, bollirono le scarpe e masticarono foglie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alcuni uomini crollarono per la fame e dovettero essere trasportati dai compagni.",
+      "text_markdown": "Alcuni uomini crollarono per la fame e dovettero essere trasportati dai compagni.",
+      "tts": {
+        "text": "Alcuni uomini crollarono per la fame e dovettero essere trasportati dai compagni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando finalmente raggiunsero il versante del Pacifico dell'istmo, gli uomini esultarono.",
+      "text_markdown": "Quando finalmente raggiunsero il versante del Pacifico dell'istmo, gli uomini esultarono.",
+      "tts": {
+        "text": "Quando finalmente raggiunsero il versante del Pacifico dell'istmo, gli uomini esultarono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Potevano vedere le torri di Panama in lontananza.",
+      "text_markdown": "Potevano vedere le torri di Panama in lontananza.",
+      "tts": {
+        "text": "Potevano vedere le torri di Panama in lontananza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il governatore spagnolo aveva radunato una forza di circa 2.600 uomini per difendere la città.",
+      "text_markdown": "Il governatore spagnolo aveva radunato una forza di circa 2.600 uomini per difendere la città.",
+      "tts": {
+        "text": "Il governatore spagnolo aveva radunato una forza di circa duemilaseicento uomini per difendere la città.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aveva anche portato due mandrie di tori selvatici, che intendeva lanciare in stampede contro le file dei bucanieri.",
+      "text_markdown": "Aveva anche portato due mandrie di tori selvatici, che intendeva lanciare in stampede contro le file dei bucanieri.",
+      "tts": {
+        "text": "Aveva anche portato due mandrie di tori selvatici, che intendeva lanciare in stampede contro le file dei bucanieri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Battaglia di Panama ebbe luogo il 28 gennaio 1671.",
+      "text_markdown": "La Battaglia di Panama ebbe luogo il 28 gennaio 1671.",
+      "tts": {
+        "text": "La Battaglia di Panama ebbe luogo il ventotto gennaio milleseicentosettantuno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan schierò i suoi uomini su terreno aperto fuori dalle mura della città.",
+      "text_markdown": "Morgan schierò i suoi uomini su terreno aperto fuori dalle mura della città.",
+      "tts": {
+        "text": "Morgan schierò i suoi uomini su terreno aperto fuori dalle mura della città.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La cavalleria spagnola caricò per prima, ma i bucanieri tennero duro.",
+      "text_markdown": "La cavalleria spagnola caricò per prima, ma i bucanieri tennero duro.",
+      "tts": {
+        "text": "La cavalleria spagnola caricò per prima, ma i bucanieri tennero duro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il loro fuoco di moschetto era devastante a distanza ravvicinata.",
+      "text_markdown": "Il loro fuoco di moschetto era devastante a distanza ravvicinata.",
+      "tts": {
+        "text": "Il loro fuoco di moschetto era devastante a distanza ravvicinata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La cavalleria fu fatta a pezzi in pochi minuti.",
+      "text_markdown": "La cavalleria fu fatta a pezzi in pochi minuti.",
+      "tts": {
+        "text": "La cavalleria fu fatta a pezzi in pochi minuti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tori furono liberati, ma fuggirono nella direzione sbagliata.",
+      "text_markdown": "I tori furono liberati, ma fuggirono nella direzione sbagliata.",
+      "tts": {
+        "text": "I tori furono liberati, ma fuggirono nella direzione sbagliata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alcuni corsero indietro attraverso le linee spagnole, aggiungendo confusione.",
+      "text_markdown": "Alcuni corsero indietro attraverso le linee spagnole, aggiungendo confusione.",
+      "tts": {
+        "text": "Alcuni corsero indietro attraverso le linee spagnole, aggiungendo confusione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La fanteria spagnola si sbandò e fuggì verso la città.",
+      "text_markdown": "La fanteria spagnola si sbandò e fuggì verso la città.",
+      "tts": {
+        "text": "La fanteria spagnola si sbandò e fuggì verso la città.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I bucanieri di Morgan li inseguirono per le strade.",
+      "text_markdown": "I bucanieri di Morgan li inseguirono per le strade.",
+      "tts": {
+        "text": "I bucanieri di Morgan li inseguirono per le strade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I combattimenti furono selvaggi e corpo a corpo in molti punti.",
+      "text_markdown": "I combattimenti furono selvaggi e corpo a corpo in molti punti.",
+      "tts": {
+        "text": "I combattimenti furono selvaggi e corpo a corpo in molti punti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante la battaglia o poco dopo, un grande incendio scoppiò a Panama.",
+      "text_markdown": "Durante la battaglia o poco dopo, un grande incendio scoppiò a Panama.",
+      "tts": {
+        "text": "Durante la battaglia o poco dopo, un grande incendio scoppiò a Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se lo appiccarono gli uomini di Morgan o i difensori spagnoli resta controverso.",
+      "text_markdown": "Se lo appiccarono gli uomini di Morgan o i difensori spagnoli resta controverso.",
+      "tts": {
+        "text": "Se lo appiccarono gli uomini di Morgan o i difensori spagnoli resta controverso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'incendio distrusse la maggior parte della città in poche ore.",
+      "text_markdown": "L'incendio distrusse la maggior parte della città in poche ore.",
+      "tts": {
+        "text": "L'incendio distrusse la maggior parte della città in poche ore.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I bucanieri trascorsero quattro settimane a cercare tesori tra le rovine.",
+      "text_markdown": "I bucanieri trascorsero quattro settimane a cercare tesori tra le rovine.",
+      "tts": {
+        "text": "I bucanieri trascorsero quattro settimane a cercare tesori tra le rovine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Interrogarono prigionieri e scavarono tra le macerie.",
+      "text_markdown": "Interrogarono prigionieri e scavarono tra le macerie.",
+      "tts": {
+        "text": "Interrogarono prigionieri e scavarono tra le macerie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gran parte della ricchezza della città era stata caricata su navi e inviata a sud prima della battaglia.",
+      "text_markdown": "Gran parte della ricchezza della città era stata caricata su navi e inviata a sud prima della battaglia.",
+      "tts": {
+        "text": "Gran parte della ricchezza della città era stata caricata su navi e inviata a sud prima della battaglia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il bottino fu inferiore a quanto gli uomini si aspettavano.",
+      "text_markdown": "Il bottino fu inferiore a quanto gli uomini si aspettavano.",
+      "tts": {
+        "text": "Il bottino fu inferiore a quanto gli uomini si aspettavano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quando le quote furono divise, ogni uomo ricevette molto meno di quanto aveva guadagnato a Portobelo.",
+      "text_markdown": "Quando le quote furono divise, ogni uomo ricevette molto meno di quanto aveva guadagnato a Portobelo.",
+      "tts": {
+        "text": "Quando le quote furono divise, ogni uomo ricevette molto meno di quanto aveva guadagnato a Portobelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Molti accusarono Morgan di nascondere tesori per sé.",
+      "text_markdown": "Molti accusarono Morgan di nascondere tesori per sé.",
+      "tts": {
+        "text": "Molti accusarono Morgan di nascondere tesori per sé.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan negò queste accuse, ma il malcontento non cessò mai.",
+      "text_markdown": "Morgan negò queste accuse, ma il malcontento non cessò mai.",
+      "tts": {
+        "text": "Morgan negò queste accuse, ma il malcontento non cessò mai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Condusse il suo esercito indietro attraverso l'istmo fino alla costa caraibica.",
+      "text_markdown": "Condusse il suo esercito indietro attraverso l'istmo fino alla costa caraibica.",
+      "tts": {
+        "text": "Condusse il suo esercito indietro attraverso l'istmo fino alla costa caraibica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All'insaputa di Morgan, un trattato di pace era già stato firmato tra Inghilterra e Spagna.",
+      "text_markdown": "All'insaputa di Morgan, un trattato di pace era già stato firmato tra Inghilterra e Spagna.",
+      "tts": {
+        "text": "All'insaputa di Morgan, un trattato di pace era già stato firmato tra Inghilterra e Spagna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il Trattato di Madrid fu concordato nel luglio 1670, mesi prima dell'incursione a Panama.",
+      "text_markdown": "Il Trattato di Madrid fu concordato nel luglio 1670, mesi prima dell'incursione a Panama.",
+      "tts": {
+        "text": "Il Trattato di Madrid fu concordato nel luglio milleseicentosettanta, mesi prima dell'incursione a Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In base ai suoi termini, entrambe le nazioni concordarono di cessare gli attacchi alle colonie dell'altra.",
+      "text_markdown": "In base ai suoi termini, entrambe le nazioni concordarono di cessare gli attacchi alle colonie dell'altra.",
+      "tts": {
+        "text": "In base ai suoi termini, entrambe le nazioni concordarono di cessare gli attacchi alle colonie dell'altra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La distruzione di Panama provocò una crisi diplomatica.",
+      "text_markdown": "La distruzione di Panama provocò una crisi diplomatica.",
+      "tts": {
+        "text": "La distruzione di Panama provocò una crisi diplomatica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Spagna era furiosa e chiese che l'Inghilterra punisse i responsabili.",
+      "text_markdown": "La Spagna era furiosa e chiese che l'Inghilterra punisse i responsabili.",
+      "tts": {
+        "text": "La Spagna era furiosa e chiese che l'Inghilterra punisse i responsabili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "Il saccheggio di Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il saccheggio di Panama fu la violazione più clamorosa del nuovo trattato che si potesse immaginare.",
+      "text_markdown": "Il saccheggio di Panama fu la violazione più clamorosa del nuovo trattato che si potesse immaginare.",
+      "tts": {
+        "text": "Il saccheggio di Panama fu la violazione più clamorosa del nuovo trattato che si potesse immaginare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Da pirata a governatore",
+      "text_markdown": "Da pirata a governatore"
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il governo inglese doveva placare l'ira della Spagna.",
+      "text_markdown": "Il governo inglese doveva placare l'ira della Spagna.",
+      "tts": {
+        "text": "Il governo inglese doveva placare l'ira della Spagna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nel 1672, sia il governatore Modyford sia Henry Morgan furono richiamati a Londra.",
+      "text_markdown": "Nel 1672, sia il governatore Modyford sia Henry Morgan furono richiamati a Londra.",
+      "tts": {
+        "text": "Nel milleseicentosettantadue, sia il governatore Modyford sia Henry Morgan furono richiamati a Londra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Modyford fu imprigionato nella Torre di Londra come punizione simbolica.",
+      "text_markdown": "Modyford fu imprigionato nella Torre di Londra come punizione simbolica.",
+      "tts": {
+        "text": "Modyford fu imprigionato nella Torre di Londra come punizione simbolica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan arrivò in Inghilterra aspettandosi di essere processato.",
+      "text_markdown": "Morgan arrivò in Inghilterra aspettandosi di essere processato.",
+      "tts": {
+        "text": "Morgan arrivò in Inghilterra aspettandosi di essere processato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Invece, si ritrovò trattato più come una celebrità che come un criminale.",
+      "text_markdown": "Invece, si ritrovò trattato più come una celebrità che come un criminale.",
+      "tts": {
+        "text": "Invece, si ritrovò trattato più come una celebrità che come un criminale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il re Carlo II era segretamente entusiasta delle imprese di Morgan.",
+      "text_markdown": "Il re Carlo II era segretamente entusiasta delle imprese di Morgan.",
+      "tts": {
+        "text": "Il re Carlo secondo era segretamente entusiasta delle imprese di Morgan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il saccheggio di Panama aveva umiliato la Spagna e dimostrato il potere inglese nei Caraibi.",
+      "text_markdown": "Il saccheggio di Panama aveva umiliato la Spagna e dimostrato il potere inglese nei Caraibi.",
+      "tts": {
+        "text": "Il saccheggio di Panama aveva umiliato la Spagna e dimostrato il potere inglese nei Caraibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Erano risultati che il re accoglieva con favore, anche se non poteva dirlo pubblicamente.",
+      "text_markdown": "Erano risultati che il re accoglieva con favore, anche se non poteva dirlo pubblicamente.",
+      "tts": {
+        "text": "Erano risultati che il re accoglieva con favore, anche se non poteva dirlo pubblicamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan trascorse quasi tre anni a Londra.",
+      "text_markdown": "Morgan trascorse quasi tre anni a Londra.",
+      "tts": {
+        "text": "Morgan trascorse quasi tre anni a Londra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cenò con aristocratici, consigliò il governo sugli affari caraibici e visse agiatamente.",
+      "text_markdown": "Cenò con aristocratici, consigliò il governo sugli affari caraibici e visse agiatamente.",
+      "tts": {
+        "text": "Cenò con aristocratici, consigliò il governo sugli affari caraibici e visse agiatamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Divenne una figura familiare nei caffè e nei salotti della capitale.",
+      "text_markdown": "Divenne una figura familiare nei caffè e nei salotti della capitale.",
+      "tts": {
+        "text": "Divenne una figura familiare nei caffè e nei salotti della capitale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1674, il re Carlo prese una decisione sorprendente.",
+      "text_markdown": "Nel 1674, il re Carlo prese una decisione sorprendente.",
+      "tts": {
+        "text": "Nel milleseicentosettantaquattro, il re Carlo prese una decisione sorprendente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nominò cavaliere Henry Morgan, facendone Sir Henry Morgan.",
+      "text_markdown": "Nominò cavaliere Henry Morgan, facendone Sir Henry Morgan.",
+      "tts": {
+        "text": "Nominò cavaliere Henry Morgan, facendone Sir Henry Morgan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Poi lo nominò vicegovernatore della Giamaica.",
+      "text_markdown": "Poi lo nominò vicegovernatore della Giamaica.",
+      "tts": {
+        "text": "Poi lo nominò vicegovernatore della Giamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'uomo che aveva saccheggiato Panama in violazione di un trattato di pace veniva ora rimandato a governare la Giamaica.",
+      "text_markdown": "L'uomo che aveva saccheggiato Panama in violazione di un trattato di pace veniva ora rimandato a governare la Giamaica.",
+      "tts": {
+        "text": "L'uomo che aveva saccheggiato Panama in violazione di un trattato di pace veniva ora rimandato a governare la Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu uno dei più notevoli rovesci di fortuna della storia coloniale.",
+      "text_markdown": "Fu uno dei più notevoli rovesci di fortuna della storia coloniale.",
+      "tts": {
+        "text": "Fu uno dei più notevoli rovesci di fortuna della storia coloniale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan tornò in Giamaica nel 1676 e assunse le sue nuove funzioni.",
+      "text_markdown": "Morgan tornò in Giamaica nel 1676 e assunse le sue nuove funzioni.",
+      "tts": {
+        "text": "Morgan tornò in Giamaica nel milleseicentosettantasei e assunse le sue nuove funzioni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo ruolo era servire sotto il nuovo governatore, Lord Vaughan.",
+      "text_markdown": "Il suo ruolo era servire sotto il nuovo governatore, Lord Vaughan.",
+      "tts": {
+        "text": "Il suo ruolo era servire sotto il nuovo governatore, Lord Vaughan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ironicamente, uno dei compiti di Morgan era reprimere la pirateria.",
+      "text_markdown": "Ironicamente, uno dei compiti di Morgan era reprimere la pirateria.",
+      "tts": {
+        "text": "Ironicamente, uno dei compiti di Morgan era reprimere la pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'Inghilterra ora voleva la pace con la Spagna, e i bucanieri non erano più utili.",
+      "text_markdown": "L'Inghilterra ora voleva la pace con la Spagna, e i bucanieri non erano più utili.",
+      "tts": {
+        "text": "L'Inghilterra ora voleva la pace con la Spagna, e i bucanieri non erano più utili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ci si aspettava che Morgan mettesse in riga i suoi ex camerati.",
+      "text_markdown": "Ci si aspettava che Morgan mettesse in riga i suoi ex camerati.",
+      "tts": {
+        "text": "Ci si aspettava che Morgan mettesse in riga i suoi ex camerati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Svolse questo compito con entusiasmo alterno.",
+      "text_markdown": "Svolse questo compito con entusiasmo alterno.",
+      "tts": {
+        "text": "Svolse questo compito con entusiasmo alterno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arrestò alcuni pirati e ne fece impiccare qualcuno, ma fu anche accusato di aiutarne segretamente altri.",
+      "text_markdown": "Arrestò alcuni pirati e ne fece impiccare qualcuno, ma fu anche accusato di aiutarne segretamente altri.",
+      "tts": {
+        "text": "Arrestò alcuni pirati e ne fece impiccare qualcuno, ma fu anche accusato di aiutarne segretamente altri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le sue lealtà furono sempre complicate.",
+      "text_markdown": "Le sue lealtà furono sempre complicate.",
+      "tts": {
+        "text": "Le sue lealtà furono sempre complicate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lord Vaughan e Morgan si scontravano frequentemente.",
+      "text_markdown": "Lord Vaughan e Morgan si scontravano frequentemente.",
+      "tts": {
+        "text": "Lord Vaughan e Morgan si scontravano frequentemente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vaughan considerava Morgan rozzo e inaffidabile.",
+      "text_markdown": "Vaughan considerava Morgan rozzo e inaffidabile.",
+      "tts": {
+        "text": "Vaughan considerava Morgan rozzo e inaffidabile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan considerava Vaughan un leader debole che non comprendeva le realtà dei Caraibi.",
+      "text_markdown": "Morgan considerava Vaughan un leader debole che non comprendeva le realtà dei Caraibi.",
+      "tts": {
+        "text": "Morgan considerava Vaughan un leader debole che non comprendeva le realtà dei Caraibi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Con il passare degli anni, Morgan si adagiò nella vita di ricco piantatore giamaicano.",
+      "text_markdown": "Con il passare degli anni, Morgan si adagiò nella vita di ricco piantatore giamaicano.",
+      "tts": {
+        "text": "Con il passare degli anni, Morgan si adagiò nella vita di ricco piantatore giamaicano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Possedeva diverse grandi tenute e centinaia di lavoratori schiavizzati.",
+      "text_markdown": "Possedeva diverse grandi tenute e centinaia di lavoratori schiavizzati.",
+      "tts": {
+        "text": "Possedeva diverse grandi tenute e centinaia di lavoratori schiavizzati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beveva anche pesantemente.",
+      "text_markdown": "Beveva anche pesantemente.",
+      "tts": {
+        "text": "Beveva anche pesantemente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I visitatori lo descrivevano con il volto arrossato, in sovrappeso e spesso malato.",
+      "text_markdown": "I visitatori lo descrivevano con il volto arrossato, in sovrappeso e spesso malato.",
+      "tts": {
+        "text": "I visitatori lo descrivevano con il volto arrossato, in sovrappeso e spesso malato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua salute declinò costantemente per tutti gli anni Ottanta del Seicento.",
+      "text_markdown": "La sua salute declinò costantemente per tutti gli anni Ottanta del Seicento.",
+      "tts": {
+        "text": "La sua salute declinò costantemente per tutti gli anni ottanta del seicento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1683, fu rimosso dal Consiglio della Giamaica dal nuovo governatore.",
+      "text_markdown": "Nel 1683, fu rimosso dal Consiglio della Giamaica dal nuovo governatore.",
+      "tts": {
+        "text": "Nel milleseicentottantatré, fu rimosso dal Consiglio della Giamaica dal nuovo governatore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan fu accusato di essere troppo indulgente con i pirati e troppo spesso ubriaco per governare.",
+      "text_markdown": "Morgan fu accusato di essere troppo indulgente con i pirati e troppo spesso ubriaco per governare.",
+      "tts": {
+        "text": "Morgan fu accusato di essere troppo indulgente con i pirati e troppo spesso ubriaco per governare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trascorse i suoi ultimi anni nella sua piantagione, in gran parte fuori dalla vita pubblica.",
+      "text_markdown": "Trascorse i suoi ultimi anni nella sua piantagione, in gran parte fuori dalla vita pubblica.",
+      "tts": {
+        "text": "Trascorse i suoi ultimi anni nella sua piantagione, in gran parte fuori dalla vita pubblica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un medico di nome Hans Sloane visitò Morgan nei suoi ultimi mesi.",
+      "text_markdown": "Un medico di nome Hans Sloane visitò Morgan nei suoi ultimi mesi.",
+      "tts": {
+        "text": "Un medico di nome Hans Sloane visitò Morgan nei suoi ultimi mesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sloane descrisse Morgan come deperito e con la pelle giallastra, chiaro segno di insufficienza epatica.",
+      "text_markdown": "Sloane descrisse Morgan come deperito e con la pelle giallastra, chiaro segno di insufficienza epatica.",
+      "tts": {
+        "text": "Sloane descrisse Morgan come deperito e con la pelle giallastra, chiaro segno di insufficienza epatica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan morì il 25 agosto 1688, all'età di 53 anni.",
+      "text_markdown": "Henry Morgan morì il 25 agosto 1688, all'età di 53 anni.",
+      "tts": {
+        "text": "Henry Morgan morì il venticinque agosto milleseicentottantotto, all'età di cinquantatré anni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La causa della morte fu quasi certamente una malattia epatica causata da anni di forte consumo di alcol.",
+      "text_markdown": "La causa della morte fu quasi certamente una malattia epatica causata da anni di forte consumo di alcol.",
+      "tts": {
+        "text": "La causa della morte fu quasi certamente una malattia epatica causata da anni di forte consumo di alcol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli furono concessi funerali di Stato a Port Royal.",
+      "text_markdown": "Gli furono concessi funerali di Stato a Port Royal.",
+      "tts": {
+        "text": "Gli furono concessi funerali di Stato a Port Royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le navi nel porto spararono i loro cannoni in segno di saluto.",
+      "text_markdown": "Le navi nel porto spararono i loro cannoni in segno di saluto.",
+      "tts": {
+        "text": "Le navi nel porto spararono i loro cannoni in segno di saluto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fu sepolto nel cimitero di Palisadoes con vista sul mare.",
+      "text_markdown": "Fu sepolto nel cimitero di Palisadoes con vista sul mare.",
+      "tts": {
+        "text": "Fu sepolto nel cimitero di Palisadoes con vista sul mare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quattro anni dopo, nel 1692, un potente terremoto distrusse Port Royal.",
+      "text_markdown": "Quattro anni dopo, nel 1692, un potente terremoto distrusse Port Royal.",
+      "tts": {
+        "text": "Quattro anni dopo, nel milleseicentonovantadue, un potente terremoto distrusse Port Royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Due terzi della città scivolarono in mare.",
+      "text_markdown": "Due terzi della città scivolarono in mare.",
+      "tts": {
+        "text": "Due terzi della città scivolarono in mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La tomba di Morgan era tra le parti del cimitero inghiottite dall'oceano.",
+      "text_markdown": "La tomba di Morgan era tra le parti del cimitero inghiottite dall'oceano.",
+      "tts": {
+        "text": "La tomba di Morgan era tra le parti del cimitero inghiottite dall'oceano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suo corpo non è mai stato recuperato.",
+      "text_markdown": "Il suo corpo non è mai stato recuperato.",
+      "tts": {
+        "text": "Il suo corpo non è mai stato recuperato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Da pirata a governatore",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La città più malvagia della Terra, e il più famoso bucaniere che la chiamò casa, scomparvero entrambi sotto le onde.",
+      "text_markdown": "La città più malvagia della Terra, e il più famoso bucaniere che la chiamò casa, scomparvero entrambi sotto le onde.",
+      "tts": {
+        "text": "La città più malvagia della Terra, e il più famoso bucaniere che la chiamò casa, scomparvero entrambi sotto le onde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La leggenda del capitano Morgan",
+      "text_markdown": "La leggenda del capitano Morgan"
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La storia di Henry Morgan è stata raccontata e rinarrata per più di trecento anni.",
+      "text_markdown": "La storia di Henry Morgan è stata raccontata e rinarrata per più di trecento anni.",
+      "tts": {
+        "text": "La storia di Henry Morgan è stata raccontata e rinarrata per più di trecento anni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "È uno dei pirati più famosi della storia, anche se ha sempre insistito di non essere affatto un pirata.",
+      "text_markdown": "È uno dei pirati più famosi della storia, anche se ha sempre insistito di non essere affatto un pirata.",
+      "tts": {
+        "text": "È uno dei pirati più famosi della storia, anche se ha sempre insistito di non essere affatto un pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Già durante la sua vita, Morgan stava diventando una leggenda.",
+      "text_markdown": "Già durante la sua vita, Morgan stava diventando una leggenda.",
+      "tts": {
+        "text": "Già durante la sua vita, Morgan stava diventando una leggenda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uno scrittore olandese di nome Alexandre Exquemelin pubblicò un resoconto delle incursioni di Morgan nel 1678.",
+      "text_markdown": "Uno scrittore olandese di nome Alexandre Exquemelin pubblicò un resoconto delle incursioni di Morgan nel 1678.",
+      "tts": {
+        "text": "Uno scrittore olandese di nome Alexandre Exquemelin pubblicò un resoconto delle incursioni di Morgan nel milleseicentosettantotto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il libro si intitolava I Bucanieri d'America.",
+      "text_markdown": "Il libro si intitolava I Bucanieri d'America.",
+      "tts": {
+        "text": "Il libro si intitolava I Bucanieri d'America.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Exquemelin aveva servito sotto Morgan e fu testimone di molti degli eventi che descrisse.",
+      "text_markdown": "Exquemelin aveva servito sotto Morgan e fu testimone di molti degli eventi che descrisse.",
+      "tts": {
+        "text": "Exquemelin aveva servito sotto Morgan e fu testimone di molti degli eventi che descrisse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo libro divenne un bestseller in tutta Europa.",
+      "text_markdown": "Il suo libro divenne un bestseller in tutta Europa.",
+      "tts": {
+        "text": "Il suo libro divenne un bestseller in tutta Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plasmò l'immagine popolare dei bucanieri caraibici per secoli.",
+      "text_markdown": "Plasmò l'immagine popolare dei bucanieri caraibici per secoli.",
+      "tts": {
+        "text": "Plasmò l'immagine popolare dei bucanieri caraibici per secoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan citò in giudizio l'editore inglese per aver affermato che era stato un servo a contratto.",
+      "text_markdown": "Morgan citò in giudizio l'editore inglese per aver affermato che era stato un servo a contratto.",
+      "tts": {
+        "text": "Morgan citò in giudizio l'editore inglese per aver affermato che era stato un servo a contratto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vinse la causa e ottenne un risarcimento, ma il libro continuò a vendere.",
+      "text_markdown": "Vinse la causa e ottenne un risarcimento, ma il libro continuò a vendere.",
+      "tts": {
+        "text": "Vinse la causa e ottenne un risarcimento, ma il libro continuò a vendere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'eredità di Morgan è complicata.",
+      "text_markdown": "L'eredità di Morgan è complicata.",
+      "tts": {
+        "text": "L'eredità di Morgan è complicata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Per gli inglesi, fu un eroe nazionale che protesse la Giamaica e umiliò la Spagna.",
+      "text_markdown": "Per gli inglesi, fu un eroe nazionale che protesse la Giamaica e umiliò la Spagna.",
+      "tts": {
+        "text": "Per gli inglesi, fu un eroe nazionale che protesse la Giamaica e umiliò la Spagna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Per gli spagnoli, fu un criminale di guerra che bruciò città e torturò innocenti.",
+      "text_markdown": "Per gli spagnoli, fu un criminale di guerra che bruciò città e torturò innocenti.",
+      "tts": {
+        "text": "Per gli spagnoli, fu un criminale di guerra che bruciò città e torturò innocenti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli storici moderni lo vedono come un prodotto del suo tempo.",
+      "text_markdown": "Gli storici moderni lo vedono come un prodotto del suo tempo.",
+      "tts": {
+        "text": "Gli storici moderni lo vedono come un prodotto del suo tempo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La violenza che commise fu estrema, ma fu esercitata con il pieno sostegno del suo governo.",
+      "text_markdown": "La violenza che commise fu estrema, ma fu esercitata con il pieno sostegno del suo governo.",
+      "tts": {
+        "text": "La violenza che commise fu estrema, ma fu esercitata con il pieno sostegno del suo governo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan non fu unico nella sua brutalità.",
+      "text_markdown": "Morgan non fu unico nella sua brutalità.",
+      "tts": {
+        "text": "Morgan non fu unico nella sua brutalità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soldati spagnoli commisero atrocità simili contro i coloni inglesi.",
+      "text_markdown": "Soldati spagnoli commisero atrocità simili contro i coloni inglesi.",
+      "tts": {
+        "text": "Soldati spagnoli commisero atrocità simili contro i coloni inglesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La differenza è che Morgan ebbe successo su una scala spettacolare.",
+      "text_markdown": "La differenza è che Morgan ebbe successo su una scala spettacolare.",
+      "tts": {
+        "text": "La differenza è che Morgan ebbe successo su una scala spettacolare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oggi, il nome di Morgan è più noto per una marca di rum.",
+      "text_markdown": "Oggi, il nome di Morgan è più noto per una marca di rum.",
+      "tts": {
+        "text": "Oggi, il nome di Morgan è più noto per una marca di rum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'ironia è difficile da ignorare, dato che l'alcol probabilmente lo uccise.",
+      "text_markdown": "L'ironia è difficile da ignorare, dato che l'alcol probabilmente lo uccise.",
+      "tts": {
+        "text": "L'ironia è difficile da ignorare, dato che l'alcol probabilmente lo uccise.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Archeologi subacquei hanno esplorato le rovine sommerse di Port Royal.",
+      "text_markdown": "Archeologi subacquei hanno esplorato le rovine sommerse di Port Royal.",
+      "tts": {
+        "text": "Archeologi subacquei hanno esplorato le rovine sommerse di Port Royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hanno trovato edifici, taverne e manufatti dell'epoca di Morgan conservati sotto il mare.",
+      "text_markdown": "Hanno trovato edifici, taverne e manufatti dell'epoca di Morgan conservati sotto il mare.",
+      "tts": {
+        "text": "Hanno trovato edifici, taverne e manufatti dell'epoca di Morgan conservati sotto il mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma la tomba di Morgan resta introvabile.",
+      "text_markdown": "Ma la tomba di Morgan resta introvabile.",
+      "tts": {
+        "text": "Ma la tomba di Morgan resta introvabile.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan visse in un mondo in cui il confine tra legge e crimine era tracciato da uomini potenti per il proprio tornaconto.",
+      "text_markdown": "Henry Morgan visse in un mondo in cui il confine tra legge e crimine era tracciato da uomini potenti per il proprio tornaconto.",
+      "tts": {
+        "text": "Henry Morgan visse in un mondo in cui il confine tra legge e crimine era tracciato da uomini potenti per il proprio tornaconto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sfruttò quel confine meglio di chiunque altro.",
+      "text_markdown": "Sfruttò quel confine meglio di chiunque altro.",
+      "tts": {
+        "text": "Sfruttò quel confine meglio di chiunque altro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fu un pirata che divenne cavaliere.",
+      "text_markdown": "Fu un pirata che divenne cavaliere.",
+      "tts": {
+        "text": "Fu un pirata che divenne cavaliere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu un criminale che divenne governatore.",
+      "text_markdown": "Fu un criminale che divenne governatore.",
+      "tts": {
+        "text": "Fu un criminale che divenne governatore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leggenda del capitano Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua storia è un promemoria del fatto che gli eroi e i cattivi della storia sono spesso le stesse persone, viste da sponde diverse.",
+      "text_markdown": "La sua storia è un promemoria del fatto che gli eroi e i cattivi della storia sono spesso le stesse persone, viste da sponde diverse.",
+      "tts": {
+        "text": "La sua storia è un promemoria del fatto che gli eroi e i cattivi della storia sono spesso le stesse persone, viste da sponde diverse.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

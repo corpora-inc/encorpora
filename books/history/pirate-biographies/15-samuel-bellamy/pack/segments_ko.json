@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_samuel_bellamy",
+  "language": "ko",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 보내는 글",
+      "text_markdown": "독자에게 보내는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 스스로를 바다의 로빈 후드라 불렀던 해적 새뮤얼 벨라미의 이야기이다.",
+      "text_markdown": "이것은 스스로를 바다의 로빈 후드라 불렀던 해적 새뮤얼 벨라미의 이야기이다.",
+      "tts": {
+        "text": "이것은 스스로를 바다의 로빈 후드라 불렀던 해적 새뮤얼 벨라미의 이야기이다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 활동은 겨우 일 년에 불과했지만, 오늘날까지 남는 역사의 흔적을 남겼다.",
+      "text_markdown": "그의 활동은 겨우 일 년에 불과했지만, 오늘날까지 남는 역사의 흔적을 남겼다.",
+      "tts": {
+        "text": "그의 활동은 겨우 일 년에 불과했지만, 오늘날까지 남는 역사의 흔적을 남겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 황금시대에서 가장 성공한 해적 중 한 명이었다.",
+      "text_markdown": "벨라미는 황금시대에서 가장 성공한 해적 중 한 명이었다.",
+      "tts": {
+        "text": "벨라미는 황금시대에서 가장 성공한 해적 중 한 명이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 불과 열한 달 만에 오십 척이 넘는 배를 나포했다.",
+      "text_markdown": "그는 불과 열한 달 만에 오십 척이 넘는 배를 나포했다.",
+      "tts": {
+        "text": "그는 불과 열한 달 만에 오십 척이 넘는 배를 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 정의, 불평등, 그리고 지배 계급의 위선에 대해 연설했다.",
+      "text_markdown": "그는 정의, 불평등, 그리고 지배 계급의 위선에 대해 연설했다.",
+      "tts": {
+        "text": "그는 정의, 불평등, 그리고 지배 계급의 위선에 대해 연설했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 28세의 나이에 케이프 코드 앞바다의 폭풍 속에서 목숨을 잃었다.",
+      "text_markdown": "그는 28세의 나이에 케이프 코드 앞바다의 폭풍 속에서 목숨을 잃었다.",
+      "tts": {
+        "text": "그는 이십팔 세의 나이에 케이프 코드 앞바다의 폭풍 속에서 목숨을 잃었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 기함 위다호는 그와 함께 침몰하여 260년 넘게 해저에 잠들어 있었다.",
+      "text_markdown": "그의 기함 위다호는 그와 함께 침몰하여 260년 넘게 해저에 잠들어 있었다.",
+      "tts": {
+        "text": "그의 기함 위다호는 그와 함께 침몰하여 이백육십 년 넘게 해저에 잠들어 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984년, 배리 클리포드라는 탐험가가 그 난파선을 발견했다.",
+      "text_markdown": "1984년, 배리 클리포드라는 탐험가가 그 난파선을 발견했다.",
+      "tts": {
+        "text": "천구백팔십사 년, 배리 클리포드라는 탐험가가 그 난파선을 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 지금까지 발견된 유일하게 인증된 해적선 난파선으로 남아 있다.",
+      "text_markdown": "이것은 지금까지 발견된 유일하게 인증된 해적선 난파선으로 남아 있다.",
+      "tts": {
+        "text": "이것은 지금까지 발견된 유일하게 인증된 해적선 난파선으로 남아 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호에서 회수된 유물들은 해적 생활에 대한 우리의 이해를 완전히 바꾸어 놓았다.",
+      "text_markdown": "위다호에서 회수된 유물들은 해적 생활에 대한 우리의 이해를 완전히 바꾸어 놓았다.",
+      "tts": {
+        "text": "위다호에서 회수된 유물들은 해적 생활에 대한 우리의 이해를 완전히 바꾸어 놓았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 그 유물들과 그것들을 바다 밑으로 가져간 배의 주인에 대한 이야기이다.",
+      "text_markdown": "이것은 그 유물들과 그것들을 바다 밑으로 가져간 배의 주인에 대한 이야기이다.",
+      "tts": {
+        "text": "이것은 그 유물들과 그것들을 바다 밑으로 가져간 배의 주인에 대한 이야기이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적의 황금시대",
+      "text_markdown": "해적의 황금시대"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700년대 초반은 해적의 황금시대로 알려져 있다.",
+      "text_markdown": "1700년대 초반은 해적의 황금시대로 알려져 있다.",
+      "tts": {
+        "text": "천칠백 년대 초반은 해적의 황금시대로 알려져 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 시기에 수천 명의 사람들이 대서양과 카리브해 전역에서 해적이 되었다.",
+      "text_markdown": "이 시기에 수천 명의 사람들이 대서양과 카리브해 전역에서 해적이 되었다.",
+      "tts": {
+        "text": "이 시기에 수천 명의 사람들이 대서양과 카리브해 전역에서 해적이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 설탕, 담배, 천, 그리고 노예로 끌려가는 사람들을 실은 상선을 습격했다.",
+      "text_markdown": "그들은 설탕, 담배, 천, 그리고 노예로 끌려가는 사람들을 실은 상선을 습격했다.",
+      "tts": {
+        "text": "그들은 설탕, 담배, 천, 그리고 노예로 끌려가는 사람들을 실은 상선을 습격했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "황금시대는 대략 1715년경에 시작되어 1720년대 중반까지 지속되었다.",
+      "text_markdown": "황금시대는 대략 1715년경에 시작되어 1720년대 중반까지 지속되었다.",
+      "tts": {
+        "text": "황금시대는 대략 천칠백십오 년경에 시작되어 천칠백이십 년대 중반까지 지속되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 스페인 왕위 계승 전쟁의 종식으로 촉발되었다.",
+      "text_markdown": "이것은 스페인 왕위 계승 전쟁의 종식으로 촉발되었다.",
+      "tts": {
+        "text": "이것은 스페인 왕위 계승 전쟁의 종식으로 촉발되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전쟁이 끝나자 수천 명의 선원들이 갑자기 실직하게 되었다.",
+      "text_markdown": "전쟁이 끝나자 수천 명의 선원들이 갑자기 실직하게 되었다.",
+      "tts": {
+        "text": "전쟁이 끝나자 수천 명의 선원들이 갑자기 실직하게 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 왕위 계승 전쟁은 십 년 넘게 지속되었다.",
+      "text_markdown": "스페인 왕위 계승 전쟁은 십 년 넘게 지속되었다.",
+      "tts": {
+        "text": "스페인 왕위 계승 전쟁은 십 년 넘게 지속되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거의 모든 유럽 강대국이 스페인 왕위를 누가 물려받을 것인지를 놓고 싸웠다.",
+      "text_markdown": "거의 모든 유럽 강대국이 스페인 왕위를 누가 물려받을 것인지를 놓고 싸웠다.",
+      "tts": {
+        "text": "거의 모든 유럽 강대국이 스페인 왕위를 누가 물려받을 것인지를 놓고 싸웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 분쟁은 식민지까지 확대되었고, 육지에서만큼이나 바다에서도 치열하게 벌어졌다.",
+      "text_markdown": "이 분쟁은 식민지까지 확대되었고, 육지에서만큼이나 바다에서도 치열하게 벌어졌다.",
+      "tts": {
+        "text": "이 분쟁은 식민지까지 확대되었고, 육지에서만큼이나 바다에서도 치열하게 벌어졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전쟁 중 많은 선원들이 사략선원으로 복무하며 정부를 위해 적의 배를 습격했다.",
+      "text_markdown": "전쟁 중 많은 선원들이 사략선원으로 복무하며 정부를 위해 적의 배를 습격했다.",
+      "tts": {
+        "text": "전쟁 중 많은 선원들이 사략선원으로 복무하며 정부를 위해 적의 배를 습격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이제 평화가 찾아오면서 사략 허가장은 더 이상 발급되지 않았다.",
+      "text_markdown": "이제 평화가 찾아오면서 사략 허가장은 더 이상 발급되지 않았다.",
+      "tts": {
+        "text": "이제 평화가 찾아오면서 사략 허가장은 더 이상 발급되지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전쟁에서 배운 기술은 평시에는 합법적인 용도가 없었다.",
+      "text_markdown": "전쟁에서 배운 기술은 평시에는 합법적인 용도가 없었다.",
+      "tts": {
+        "text": "전쟁에서 배운 기술은 평시에는 합법적인 용도가 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700년대 초 일반 선원의 삶은 가혹하고 급여도 적었다.",
+      "text_markdown": "1700년대 초 일반 선원의 삶은 가혹하고 급여도 적었다.",
+      "tts": {
+        "text": "천칠백 년대 초 일반 선원의 삶은 가혹하고 급여도 적었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상선 선장들은 폭군처럼 배를 지배했다.",
+      "text_markdown": "상선 선장들은 폭군처럼 배를 지배했다.",
+      "tts": {
+        "text": "상선 선장들은 폭군처럼 배를 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "채찍질, 기아 임금, 그리고 위험한 작업 환경이 일상이었다.",
+      "text_markdown": "채찍질, 기아 임금, 그리고 위험한 작업 환경이 일상이었다.",
+      "tts": {
+        "text": "채찍질, 기아 임금, 그리고 위험한 작업 환경이 일상이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일반 선원은 한 달에 약 일 파운드를 벌었다.",
+      "text_markdown": "일반 선원은 한 달에 약 일 파운드를 벌었다.",
+      "tts": {
+        "text": "일반 선원은 한 달에 약 일 파운드를 벌었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "성공한 해적은 하루 만에 그만큼을 벌 수 있었다.",
+      "text_markdown": "성공한 해적은 하루 만에 그만큼을 벌 수 있었다.",
+      "tts": {
+        "text": "성공한 해적은 하루 만에 그만큼을 벌 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "잃을 것이 없는 사람들에게 해적이 되려는 경제적 동기는 압도적이었다.",
+      "text_markdown": "잃을 것이 없는 사람들에게 해적이 되려는 경제적 동기는 압도적이었다.",
+      "tts": {
+        "text": "잃을 것이 없는 사람들에게 해적이 되려는 경제적 동기는 압도적이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 선원들이 해적 행위를 이 잔혹함에서의 탈출로 여겼다.",
+      "text_markdown": "많은 선원들이 해적 행위를 이 잔혹함에서의 탈출로 여겼다.",
+      "tts": {
+        "text": "많은 선원들이 해적 행위를 이 잔혹함에서의 탈출로 여겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적선에서 선장은 선원들에 의해 선출되었다.",
+      "text_markdown": "해적선에서 선장은 선원들에 의해 선출되었다.",
+      "tts": {
+        "text": "해적선에서 선장은 선원들에 의해 선출되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "약탈품은 합의된 규칙에 따라 분배되었고, 모든 사람에게 투표권이 있었다.",
+      "text_markdown": "약탈품은 합의된 규칙에 따라 분배되었고, 모든 사람에게 투표권이 있었다.",
+      "tts": {
+        "text": "약탈품은 합의된 규칙에 따라 분배되었고, 모든 사람에게 투표권이 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적선은 여러 면에서 작은 떠다니는 민주주의 사회였다.",
+      "text_markdown": "해적선은 여러 면에서 작은 떠다니는 민주주의 사회였다.",
+      "tts": {
+        "text": "해적선은 여러 면에서 작은 떠다니는 민주주의 사회였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들에게는 성문화된 행동 규범, 선출된 장교, 그리고 부상당한 선원에 대한 보상 체계가 있었다.",
+      "text_markdown": "그들에게는 성문화된 행동 규범, 선출된 장교, 그리고 부상당한 선원에 대한 보상 체계가 있었다.",
+      "tts": {
+        "text": "그들에게는 성문화된 행동 규범, 선출된 장교, 그리고 부상당한 선원에 대한 보상 체계가 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 관행은 일반 시민에게 거의 정치적 권리가 없던 시대에 놀라운 것이었다.",
+      "text_markdown": "이러한 관행은 일반 시민에게 거의 정치적 권리가 없던 시대에 놀라운 것이었다.",
+      "tts": {
+        "text": "이러한 관행은 일반 시민에게 거의 정치적 권리가 없던 시대에 놀라운 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바하마는 해적 세계의 비공식 수도가 되었다.",
+      "text_markdown": "바하마는 해적 세계의 비공식 수도가 되었다.",
+      "tts": {
+        "text": "바하마는 해적 세계의 비공식 수도가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "뉴프로비던스 섬의 나소 마을은 무법의 피난처였다.",
+      "text_markdown": "뉴프로비던스 섬의 나소 마을은 무법의 피난처였다.",
+      "tts": {
+        "text": "뉴프로비던스 섬의 나소 마을은 무법의 피난처였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수백 명의 해적이 그곳에서 공공연히 살았고, 그들을 막을 총독이나 수비대도 없었다.",
+      "text_markdown": "수백 명의 해적이 그곳에서 공공연히 살았고, 그들을 막을 총독이나 수비대도 없었다.",
+      "tts": {
+        "text": "수백 명의 해적이 그곳에서 공공연히 살았고, 그들을 막을 총독이나 수비대도 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "식민 열강은 해적 행위를 근절하기로 결심했다.",
+      "text_markdown": "식민 열강은 해적 행위를 근절하기로 결심했다.",
+      "tts": {
+        "text": "식민 열강은 해적 행위를 근절하기로 결심했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적의 공격은 무역을 방해하고 상인들에게 막대한 손실을 입혔다.",
+      "text_markdown": "해적의 공격은 무역을 방해하고 상인들에게 막대한 손실을 입혔다.",
+      "tts": {
+        "text": "해적의 공격은 무역을 방해하고 상인들에게 막대한 손실을 입혔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "각국 정부는 해적 체포에 현상금을 걸고 군함을 보내 그들을 추적했다.",
+      "text_markdown": "각국 정부는 해적 체포에 현상금을 걸고 군함을 보내 그들을 추적했다.",
+      "tts": {
+        "text": "각국 정부는 해적 체포에 현상금을 걸고 군함을 보내 그들을 추적했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "특히 영국은 해적 기소에 적극적이었다.",
+      "text_markdown": "특히 영국은 해적 기소에 적극적이었다.",
+      "tts": {
+        "text": "특히 영국은 해적 기소에 적극적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잡힌 해적들은 해사 법원에서 재판을 받았고 거의 항상 교수형에 처해졌다.",
+      "text_markdown": "잡힌 해적들은 해사 법원에서 재판을 받았고 거의 항상 교수형에 처해졌다.",
+      "tts": {
+        "text": "잡힌 해적들은 해사 법원에서 재판을 받았고 거의 항상 교수형에 처해졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 시신은 때때로 항구 입구의 철제 우리에 전시되어 다른 이들에게 경고로 사용되었다.",
+      "text_markdown": "그들의 시신은 때때로 항구 입구의 철제 우리에 전시되어 다른 이들에게 경고로 사용되었다.",
+      "tts": {
+        "text": "그들의 시신은 때때로 항구 입구의 철제 우리에 전시되어 다른 이들에게 경고로 사용되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시대에 대서양 노예 무역은 최고조에 달했다.",
+      "text_markdown": "이 시대에 대서양 노예 무역은 최고조에 달했다.",
+      "tts": {
+        "text": "이 시대에 대서양 노예 무역은 최고조에 달했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "배들은 서아프리카에서 노예가 된 아프리카인들을 카리브해와 아메리카 식민지로 실어 날랐다.",
+      "text_markdown": "배들은 서아프리카에서 노예가 된 아프리카인들을 카리브해와 아메리카 식민지로 실어 날랐다.",
+      "tts": {
+        "text": "배들은 서아프리카에서 노예가 된 아프리카인들을 카리브해와 아메리카 식민지로 실어 날랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 노예선들은 귀중한 화물을 싣고 있었기 때문에 해적들의 빈번한 표적이 되었다.",
+      "text_markdown": "이 노예선들은 귀중한 화물을 싣고 있었기 때문에 해적들의 빈번한 표적이 되었다.",
+      "tts": {
+        "text": "이 노예선들은 귀중한 화물을 싣고 있었기 때문에 해적들의 빈번한 표적이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미의 기함이 될 배도 바로 그런 선박 중 하나였다.",
+      "text_markdown": "벨라미의 기함이 될 배도 바로 그런 선박 중 하나였다.",
+      "tts": {
+        "text": "벨라미의 기함이 될 배도 바로 그런 선박 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "위다 갤리호는 런던에서 건조된 노예선으로, 서아프리카의 교역소 위다의 이름을 따서 명명되었다.",
+      "text_markdown": "위다 갤리호는 런던에서 건조된 노예선으로, 서아프리카의 교역소 위다의 이름을 따서 명명되었다.",
+      "tts": {
+        "text": "위다 갤리호는 런던에서 건조된 노예선으로, 서아프리카의 교역소 위다의 이름을 따서 명명되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뉴잉글랜드 연안의 바다는 놀랄 만큼 활발한 해적 사냥터였다.",
+      "text_markdown": "뉴잉글랜드 연안의 바다는 놀랄 만큼 활발한 해적 사냥터였다.",
+      "tts": {
+        "text": "뉴잉글랜드 연안의 바다는 놀랄 만큼 활발한 해적 사냥터였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "식민지와 유럽 사이를 오가는 배들이 끊임없이 이 해역을 통과했다.",
+      "text_markdown": "식민지와 유럽 사이를 오가는 배들이 끊임없이 이 해역을 통과했다.",
+      "tts": {
+        "text": "식민지와 유럽 사이를 오가는 배들이 끊임없이 이 해역을 통과했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "케이프 코드는 위험한 여울과 이동하는 모래톱으로 인해 온갖 종류의 배들의 무덤이었다.",
+      "text_markdown": "케이프 코드는 위험한 여울과 이동하는 모래톱으로 인해 온갖 종류의 배들의 무덤이었다.",
+      "tts": {
+        "text": "케이프 코드는 위험한 여울과 이동하는 모래톱으로 인해 온갖 종류의 배들의 무덤이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700년대 초 케이프 코드에 살던 사람들은 난파선을 잘 알고 있었다.",
+      "text_markdown": "1700년대 초 케이프 코드에 살던 사람들은 난파선을 잘 알고 있었다.",
+      "tts": {
+        "text": "천칠백 년대 초 케이프 코드에 살던 사람들은 난파선을 잘 알고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 난파된 배에서 목재, 화물, 삭구를 건져내는 것을 일상의 일부로 삼았다.",
+      "text_markdown": "그들은 난파된 배에서 목재, 화물, 삭구를 건져내는 것을 일상의 일부로 삼았다.",
+      "tts": {
+        "text": "그들은 난파된 배에서 목재, 화물, 삭구를 건져내는 것을 일상의 일부로 삼았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 거짓 신호등으로 배를 암초로 유인한다는 소문이 있었다.",
+      "text_markdown": "일부는 거짓 신호등으로 배를 암초로 유인한다는 소문이 있었다.",
+      "tts": {
+        "text": "일부는 거짓 신호등으로 배를 암초로 유인한다는 소문이 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가난, 불평등, 그리고 해상 폭력의 이 세계가 새뮤얼 벨라미를 만들어 냈다.",
+      "text_markdown": "가난, 불평등, 그리고 해상 폭력의 이 세계가 새뮤얼 벨라미를 만들어 냈다.",
+      "tts": {
+        "text": "가난, 불평등, 그리고 해상 폭력의 이 세계가 새뮤얼 벨라미를 만들어 냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "해적의 황금시대",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 아무것도 없는 곳에서 왔고, 짧은 일 년 동안 가능한 모든 것을 차지했다.",
+      "text_markdown": "그는 아무것도 없는 곳에서 왔고, 짧은 일 년 동안 가능한 모든 것을 차지했다.",
+      "tts": {
+        "text": "그는 아무것도 없는 곳에서 왔고, 짧은 일 년 동안 가능한 모든 것을 차지했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "데번에서 온 소년",
+      "text_markdown": "데번에서 온 소년"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "새뮤얼 벨라미는 잉글랜드 남서부 데번 주에서 태어났다.",
+      "text_markdown": "새뮤얼 벨라미는 잉글랜드 남서부 데번 주에서 태어났다.",
+      "tts": {
+        "text": "새뮤얼 벨라미는 잉글랜드 남서부 데번 주에서 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그가 태어난 해는 1689년이 가장 유력하지만, 세례 기록은 발견되지 않았다.",
+      "text_markdown": "그가 태어난 해는 1689년이 가장 유력하지만, 세례 기록은 발견되지 않았다.",
+      "tts": {
+        "text": "그가 태어난 해는 천육백팔십구 년이 가장 유력하지만, 세례 기록은 발견되지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "데번은 선원, 어부, 선장을 배출해 온 오랜 역사를 가진 해양 주였다.",
+      "text_markdown": "데번은 선원, 어부, 선장을 배출해 온 오랜 역사를 가진 해양 주였다.",
+      "tts": {
+        "text": "데번은 선원, 어부, 선장을 배출해 온 오랜 역사를 가진 해양 주였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가장 유명한 영국 항해사 중 한 명인 프랜시스 드레이크 경은 백여 년 전에 그곳에서 태어났다.",
+      "text_markdown": "가장 유명한 영국 항해사 중 한 명인 프랜시스 드레이크 경은 백여 년 전에 그곳에서 태어났다.",
+      "tts": {
+        "text": "가장 유명한 영국 항해사 중 한 명인 프랜시스 드레이크 경은 백여 년 전에 그곳에서 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바다는 이 지역의 정체성에 깊이 스며들어 있었다.",
+      "text_markdown": "바다는 이 지역의 정체성에 깊이 스며들어 있었다.",
+      "tts": {
+        "text": "바다는 이 지역의 정체성에 깊이 스며들어 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "데번의 해안 마을은 어선, 무역선, 해군 함정으로 붐볐다.",
+      "text_markdown": "데번의 해안 마을은 어선, 무역선, 해군 함정으로 붐볐다.",
+      "tts": {
+        "text": "데번의 해안 마을은 어선, 무역선, 해군 함정으로 붐볐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "소년들은 항구에서 배가 오가는 것을 보며 자랐다.",
+      "text_markdown": "소년들은 항구에서 배가 오가는 것을 보며 자랐다.",
+      "tts": {
+        "text": "소년들은 항구에서 배가 오가는 것을 보며 자랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 이들이 직접 바다로 나가는 꿈을 꾸었다.",
+      "text_markdown": "많은 이들이 직접 바다로 나가는 꿈을 꾸었다.",
+      "tts": {
+        "text": "많은 이들이 직접 바다로 나가는 꿈을 꾸었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미의 가족이나 어린 시절에 대해서는 거의 알려진 바가 없다.",
+      "text_markdown": "벨라미의 가족이나 어린 시절에 대해서는 거의 알려진 바가 없다.",
+      "tts": {
+        "text": "벨라미의 가족이나 어린 시절에 대해서는 거의 알려진 바가 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "역사학자들은 그의 가족이 가난했다고 믿고 있다.",
+      "text_markdown": "역사학자들은 그의 가족이 가난했다고 믿고 있다.",
+      "tts": {
+        "text": "역사학자들은 그의 가족이 가난했다고 믿고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 데번의 많은 가난한 아이들처럼 소년 시절에 바다로 나갔을 가능성이 높다.",
+      "text_markdown": "그는 데번의 많은 가난한 아이들처럼 소년 시절에 바다로 나갔을 가능성이 높다.",
+      "tts": {
+        "text": "그는 데번의 많은 가난한 아이들처럼 소년 시절에 바다로 나갔을 가능성이 높다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어느 시점에서 벨라미는 영국 해군에서 복무했다.",
+      "text_markdown": "어느 시점에서 벨라미는 영국 해군에서 복무했다.",
+      "tts": {
+        "text": "어느 시점에서 벨라미는 영국 해군에서 복무했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 1713년에 끝난 스페인 왕위 계승 전쟁에서 싸웠을 가능성이 있다.",
+      "text_markdown": "그는 1713년에 끝난 스페인 왕위 계승 전쟁에서 싸웠을 가능성이 있다.",
+      "tts": {
+        "text": "그는 천칠백십삼 년에 끝난 스페인 왕위 계승 전쟁에서 싸웠을 가능성이 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전쟁 후, 그는 연금도 전망도 없이 제대했다.",
+      "text_markdown": "전쟁 후, 그는 연금도 전망도 없이 제대했다.",
+      "tts": {
+        "text": "전쟁 후, 그는 연금도 전망도 없이 제대했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 해군은 더 이상 필요하지 않게 된 선원들을 홀대했다.",
+      "text_markdown": "영국 해군은 더 이상 필요하지 않게 된 선원들을 홀대했다.",
+      "tts": {
+        "text": "영국 해군은 더 이상 필요하지 않게 된 선원들을 홀대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "왕실을 위해 목숨을 걸었던 사람들이 보상 없이 버려졌다.",
+      "text_markdown": "왕실을 위해 목숨을 걸었던 사람들이 보상 없이 버려졌다.",
+      "tts": {
+        "text": "왕실을 위해 목숨을 걸었던 사람들이 보상 없이 버려졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 부당함은 벨라미에게 깊은 상처를 남겼다.",
+      "text_markdown": "이 부당함은 벨라미에게 깊은 상처를 남겼다.",
+      "tts": {
+        "text": "이 부당함은 벨라미에게 깊은 상처를 남겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수천 명의 다른 전직 선원들처럼, 벨라미는 자신이 필요 없는 세상에 내팽개쳐졌다.",
+      "text_markdown": "수천 명의 다른 전직 선원들처럼, 벨라미는 자신이 필요 없는 세상에 내팽개쳐졌다.",
+      "tts": {
+        "text": "수천 명의 다른 전직 선원들처럼, 벨라미는 자신이 필요 없는 세상에 내팽개쳐졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해군에서 배운 기술은 육지에서는 아무 가치가 없었다.",
+      "text_markdown": "해군에서 배운 기술은 육지에서는 아무 가치가 없었다.",
+      "tts": {
+        "text": "해군에서 배운 기술은 육지에서는 아무 가치가 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1714년이나 1715년경, 벨라미는 아메리카 식민지로 항해했다.",
+      "text_markdown": "1714년이나 1715년경, 벨라미는 아메리카 식민지로 항해했다.",
+      "tts": {
+        "text": "천칠백십사 년이나 천칠백십오 년경, 벨라미는 아메리카 식민지로 항해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 매사추세츠 식민지의 케이프 코드에 도착했다.",
+      "text_markdown": "그는 매사추세츠 식민지의 케이프 코드에 도착했다.",
+      "tts": {
+        "text": "그는 매사추세츠 식민지의 케이프 코드에 도착했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700년대 초의 케이프 코드는 외지고 바람이 세차게 부는 곳이었다.",
+      "text_markdown": "1700년대 초의 케이프 코드는 외지고 바람이 세차게 부는 곳이었다.",
+      "tts": {
+        "text": "천칠백 년대 초의 케이프 코드는 외지고 바람이 세차게 부는 곳이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모래 토양은 농사에 적합하지 않았고, 대부분의 사람들은 바다에서 생계를 꾸렸다.",
+      "text_markdown": "모래 토양은 농사에 적합하지 않았고, 대부분의 사람들은 바다에서 생계를 꾸렸다.",
+      "tts": {
+        "text": "모래 토양은 농사에 적합하지 않았고, 대부분의 사람들은 바다에서 생계를 꾸렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "공동체는 작고 종교적이며 외지인을 경계했다.",
+      "text_markdown": "공동체는 작고 종교적이며 외지인을 경계했다.",
+      "tts": {
+        "text": "공동체는 작고 종교적이며 외지인을 경계했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지역 전설에 따르면, 벨라미는 이스트햄 마을에서 마리아 할렛이라는 젊은 여인을 만났다.",
+      "text_markdown": "지역 전설에 따르면, 벨라미는 이스트햄 마을에서 마리아 할렛이라는 젊은 여인을 만났다.",
+      "tts": {
+        "text": "지역 전설에 따르면, 벨라미는 이스트햄 마을에서 마리아 할렛이라는 젊은 여인을 만났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마리아는 케이프 코드의 존경받는 가문 출신이었다.",
+      "text_markdown": "마리아는 케이프 코드의 존경받는 가문 출신이었다.",
+      "tts": {
+        "text": "마리아는 케이프 코드의 존경받는 가문 출신이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이야기에 따르면, 벨라미는 그녀와 사랑에 빠져 부자가 되어 돌아오겠다고 약속했다.",
+      "text_markdown": "이야기에 따르면, 벨라미는 그녀와 사랑에 빠져 부자가 되어 돌아오겠다고 약속했다.",
+      "tts": {
+        "text": "이야기에 따르면, 벨라미는 그녀와 사랑에 빠져 부자가 되어 돌아오겠다고 약속했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 사랑 이야기가 사실인지 단순한 민간 전승인지는 확실히 알 수 없다.",
+      "text_markdown": "이 사랑 이야기가 사실인지 단순한 민간 전승인지는 확실히 알 수 없다.",
+      "tts": {
+        "text": "이 사랑 이야기가 사실인지 단순한 민간 전승인지는 확실히 알 수 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 이야기는 삼 세기 동안 전해져 왔으며 케이프 코드의 전통에 깊이 뿌리내리고 있다.",
+      "text_markdown": "이 이야기는 삼 세기 동안 전해져 왔으며 케이프 코드의 전통에 깊이 뿌리내리고 있다.",
+      "tts": {
+        "text": "이 이야기는 삼 세기 동안 전해져 왔으며 케이프 코드의 전통에 깊이 뿌리내리고 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알려진 것은 벨라미가 보물의 가능성에 이끌렸다는 것이다.",
+      "text_markdown": "알려진 것은 벨라미가 보물의 가능성에 이끌렸다는 것이다.",
+      "tts": {
+        "text": "알려진 것은 벨라미가 보물의 가능성에 이끌렸다는 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1715년, 스페인 보물 함대가 플로리다 해안에서 허리케인에 의해 파괴되었다.",
+      "text_markdown": "1715년, 스페인 보물 함대가 플로리다 해안에서 허리케인에 의해 파괴되었다.",
+      "tts": {
+        "text": "천칠백십오 년, 스페인 보물 함대가 플로리다 해안에서 허리케인에 의해 파괴되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "열한 척의 배가 침몰하여 수백만 페소에 달하는 은과 금이 해저에 흩어졌다.",
+      "text_markdown": "열한 척의 배가 침몰하여 수백만 페소에 달하는 은과 금이 해저에 흩어졌다.",
+      "tts": {
+        "text": "열한 척의 배가 침몰하여 수백만 페소에 달하는 은과 금이 해저에 흩어졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "난파 소식은 식민지 전역에 빠르게 퍼졌다.",
+      "text_markdown": "난파 소식은 식민지 전역에 빠르게 퍼졌다.",
+      "tts": {
+        "text": "난파 소식은 식민지 전역에 빠르게 퍼졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수백 명의 사람들이 보물을 건져내기를 기대하며 플로리다로 몰려들었다.",
+      "text_markdown": "수백 명의 사람들이 보물을 건져내기를 기대하며 플로리다로 몰려들었다.",
+      "tts": {
+        "text": "수백 명의 사람들이 보물을 건져내기를 기대하며 플로리다로 몰려들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벨라미도 그들 중 한 명이었다.",
+      "text_markdown": "벨라미도 그들 중 한 명이었다.",
+      "tts": {
+        "text": "벨라미도 그들 중 한 명이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 나이가 많고 부유한 폴스그레이브 윌리엄스라는 사람과 손을 잡았다.",
+      "text_markdown": "그는 나이가 많고 부유한 폴스그레이브 윌리엄스라는 사람과 손을 잡았다.",
+      "tts": {
+        "text": "그는 나이가 많고 부유한 폴스그레이브 윌리엄스라는 사람과 손을 잡았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "윌리엄스는 로드아일랜드의 전 법무장관의 아들이었다.",
+      "text_markdown": "윌리엄스는 로드아일랜드의 전 법무장관의 아들이었다.",
+      "tts": {
+        "text": "윌리엄스는 로드아일랜드의 전 법무장관의 아들이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그가 작은 배에 자금을 대고, 두 사람은 플로리다로 남하했다.",
+      "text_markdown": "그가 작은 배에 자금을 대고, 두 사람은 플로리다로 남하했다.",
+      "tts": {
+        "text": "그가 작은 배에 자금을 대고, 두 사람은 플로리다로 남하했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "인양 작업은 실패로 끝났다.",
+      "text_markdown": "인양 작업은 실패로 끝났다.",
+      "tts": {
+        "text": "인양 작업은 실패로 끝났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 사람들은 이미 보물의 대부분을 회수했고 남은 것을 경비하고 있었다.",
+      "text_markdown": "스페인 사람들은 이미 보물의 대부분을 회수했고 남은 것을 경비하고 있었다.",
+      "tts": {
+        "text": "스페인 사람들은 이미 보물의 대부분을 회수했고 남은 것을 경비하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벨라미와 윌리엄스는 빈손으로 돌아왔다.",
+      "text_markdown": "벨라미와 윌리엄스는 빈손으로 돌아왔다.",
+      "tts": {
+        "text": "벨라미와 윌리엄스는 빈손으로 돌아왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "빈털터리에 좌절한 두 사람은 해적의 무리로 흘러들어 갔다.",
+      "text_markdown": "빈털터리에 좌절한 두 사람은 해적의 무리로 흘러들어 갔다.",
+      "tts": {
+        "text": "빈털터리에 좌절한 두 사람은 해적의 무리로 흘러들어 갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 바하마를 기지로 활동하는 벤저민 호니골드라는 해적 선장을 만났다.",
+      "text_markdown": "그들은 바하마를 기지로 활동하는 벤저민 호니골드라는 해적 선장을 만났다.",
+      "tts": {
+        "text": "그들은 바하마를 기지로 활동하는 벤저민 호니골드라는 해적 선장을 만났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "호니골드는 그들을 선원으로 초대했다.",
+      "text_markdown": "호니골드는 그들을 선원으로 초대했다.",
+      "tts": {
+        "text": "호니골드는 그들을 선원으로 초대했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "호니골드는 경험 많은 해적이었지만, 많은 부하들을 분노케 하는 규칙이 있었다.",
+      "text_markdown": "호니골드는 경험 많은 해적이었지만, 많은 부하들을 분노케 하는 규칙이 있었다.",
+      "tts": {
+        "text": "호니골드는 경험 많은 해적이었지만, 많은 부하들을 분노케 하는 규칙이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 영국 배를 공격하는 것을 거부했다.",
+      "text_markdown": "그는 영국 배를 공격하는 것을 거부했다.",
+      "tts": {
+        "text": "그는 영국 배를 공격하는 것을 거부했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 자신을 일반 범죄자가 아닌 애국자로 여기며 다른 나라의 배만 습격했다.",
+      "text_markdown": "그는 자신을 일반 범죄자가 아닌 애국자로 여기며 다른 나라의 배만 습격했다.",
+      "tts": {
+        "text": "그는 자신을 일반 범죄자가 아닌 애국자로 여기며 다른 나라의 배만 습격했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미에게는 그런 양심의 가책이 없었다.",
+      "text_markdown": "벨라미에게는 그런 양심의 가책이 없었다.",
+      "tts": {
+        "text": "벨라미에게는 그런 양심의 가책이 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 국적에 관계없이 부자의 배는 모두 정당한 표적이라고 믿었다.",
+      "text_markdown": "그는 국적에 관계없이 부자의 배는 모두 정당한 표적이라고 믿었다.",
+      "tts": {
+        "text": "그는 국적에 관계없이 부자의 배는 모두 정당한 표적이라고 믿었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 견해는 선원 대다수에게 인기가 있었다.",
+      "text_markdown": "그의 견해는 선원 대다수에게 인기가 있었다.",
+      "tts": {
+        "text": "그의 견해는 선원 대다수에게 인기가 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1716년 말, 선원들은 호니골드를 선장에서 해임하는 투표를 했다.",
+      "text_markdown": "1716년 말, 선원들은 호니골드를 선장에서 해임하는 투표를 했다.",
+      "tts": {
+        "text": "천칠백십육 년 말, 선원들은 호니골드를 선장에서 해임하는 투표를 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 그 자리에 새뮤얼 벨라미를 선출했다.",
+      "text_markdown": "그들은 그 자리에 새뮤얼 벨라미를 선출했다.",
+      "tts": {
+        "text": "그들은 그 자리에 새뮤얼 벨라미를 선출했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대략 27세의 나이에, 벨라미는 이제 자신의 해적선 선장이 되었다.",
+      "text_markdown": "대략 27세의 나이에, 벨라미는 이제 자신의 해적선 선장이 되었다.",
+      "tts": {
+        "text": "대략 이십칠 세의 나이에, 벨라미는 이제 자신의 해적선 선장이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "호니골드는 소수의 충실한 추종자와 함께 평화롭게 떠났다.",
+      "text_markdown": "호니골드는 소수의 충실한 추종자와 함께 평화롭게 떠났다.",
+      "tts": {
+        "text": "호니골드는 소수의 충실한 추종자와 함께 평화롭게 떠났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "데번에서 온 소년",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 나중에 왕의 사면을 받아들이고 스스로 해적 사냥꾼이 되었다.",
+      "text_markdown": "그는 나중에 왕의 사면을 받아들이고 스스로 해적 사냥꾼이 되었다.",
+      "tts": {
+        "text": "그는 나중에 왕의 사면을 받아들이고 스스로 해적 사냥꾼이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적의 왕자",
+      "text_markdown": "해적의 왕자"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 지휘권을 잡자마자 지체하지 않았다.",
+      "text_markdown": "벨라미는 지휘권을 잡자마자 지체하지 않았다.",
+      "tts": {
+        "text": "벨라미는 지휘권을 잡자마자 지체하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 카리브해와 대서양 연안을 항해하며 배를 차례차례 나포했다.",
+      "text_markdown": "그는 카리브해와 대서양 연안을 항해하며 배를 차례차례 나포했다.",
+      "tts": {
+        "text": "그는 카리브해와 대서양 연안을 항해하며 배를 차례차례 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나포한 선박이 함대에 추가되면서 그의 함대는 빠르게 성장했다.",
+      "text_markdown": "나포한 선박이 함대에 추가되면서 그의 함대는 빠르게 성장했다.",
+      "tts": {
+        "text": "나포한 선박이 함대에 추가되면서 그의 함대는 빠르게 성장했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 카리스마와 유창한 연설로 유명했다.",
+      "text_markdown": "벨라미는 카리스마와 유창한 연설로 유명했다.",
+      "tts": {
+        "text": "벨라미는 카리스마와 유창한 연설로 유명했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 소수가 모든 것을 소유하고 나머지는 아무것도 가지지 못하는 세상의 부당함에 대해 말했다.",
+      "text_markdown": "그는 소수가 모든 것을 소유하고 나머지는 아무것도 가지지 못하는 세상의 부당함에 대해 말했다.",
+      "tts": {
+        "text": "그는 소수가 모든 것을 소유하고 나머지는 아무것도 가지지 못하는 세상의 부당함에 대해 말했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "찰스 존슨 선장의 유명한 해적 관련 저서에 따르면, 벨라미는 한 번 포로로 잡은 상선 선장에게 연설했다.",
+      "text_markdown": "찰스 존슨 선장의 유명한 해적 관련 저서에 따르면, 벨라미는 한 번 포로로 잡은 상선 선장에게 연설했다.",
+      "tts": {
+        "text": "찰스 존슨 선장의 유명한 해적 관련 저서에 따르면, 벨라미는 한 번 포로로 잡은 상선 선장에게 연설했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 그 사람에게 해적과 상인의 유일한 차이는 상인이 법의 보호 아래 약탈한다는 것이라고 말했다.",
+      "text_markdown": "그는 그 사람에게 해적과 상인의 유일한 차이는 상인이 법의 보호 아래 약탈한다는 것이라고 말했다.",
+      "tts": {
+        "text": "그는 그 사람에게 해적과 상인의 유일한 차이는 상인이 법의 보호 아래 약탈한다는 것이라고 말했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 자신과 부하들은 자신들의 용기로 필요한 것을 취하는 정직한 사람들이라고 선언했다.",
+      "text_markdown": "벨라미는 자신과 부하들은 자신들의 용기로 필요한 것을 취하는 정직한 사람들이라고 선언했다.",
+      "tts": {
+        "text": "벨라미는 자신과 부하들은 자신들의 용기로 필요한 것을 취하는 정직한 사람들이라고 선언했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 부자의 노예가 되느니 차라리 자유로운 해적이 되겠다고 말했다.",
+      "text_markdown": "그는 부자의 노예가 되느니 차라리 자유로운 해적이 되겠다고 말했다.",
+      "tts": {
+        "text": "그는 부자의 노예가 되느니 차라리 자유로운 해적이 되겠다고 말했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 말들은 정확하든 아니든 해적 반란의 정신을 담고 있었다.",
+      "text_markdown": "이 말들은 정확하든 아니든 해적 반란의 정신을 담고 있었다.",
+      "tts": {
+        "text": "이 말들은 정확하든 아니든 해적 반란의 정신을 담고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 검은 머리카락 때문에 블랙 샘이라는 별명을 얻었다고 전해진다.",
+      "text_markdown": "벨라미는 검은 머리카락 때문에 블랙 샘이라는 별명을 얻었다고 전해진다.",
+      "tts": {
+        "text": "벨라미는 검은 머리카락 때문에 블랙 샘이라는 별명을 얻었다고 전해진다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "당대의 많은 남성들과 달리, 그는 분칠한 가발을 쓰기를 거부했다.",
+      "text_markdown": "당대의 많은 남성들과 달리, 그는 분칠한 가발을 쓰기를 거부했다.",
+      "tts": {
+        "text": "당대의 많은 남성들과 달리, 그는 분칠한 가발을 쓰기를 거부했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 긴 검은 머리를 간단한 리본으로 뒤로 묶었다.",
+      "text_markdown": "그는 긴 검은 머리를 간단한 리본으로 뒤로 묶었다.",
+      "tts": {
+        "text": "그는 긴 검은 머리를 간단한 리본으로 뒤로 묶었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 외모는 전설의 일부가 되었다.",
+      "text_markdown": "그의 외모는 전설의 일부가 되었다.",
+      "tts": {
+        "text": "그의 외모는 전설의 일부가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가발이 부와 지위를 상징하던 시대에, 벨라미의 맨머리는 반항의 표현이었다.",
+      "text_markdown": "가발이 부와 지위를 상징하던 시대에, 벨라미의 맨머리는 반항의 표현이었다.",
+      "tts": {
+        "text": "가발이 부와 지위를 상징하던 시대에, 벨라미의 맨머리는 반항의 표현이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 선원은 어떤 기준으로 보아도 다양했다.",
+      "text_markdown": "그의 선원은 어떤 기준으로 보아도 다양했다.",
+      "tts": {
+        "text": "그의 선원은 어떤 기준으로 보아도 다양했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국인, 아일랜드인, 스코틀랜드인, 프랑스인, 네덜란드인, 아메리카 원주민, 아프리카인 모두가 그의 배에서 복무했다.",
+      "text_markdown": "영국인, 아일랜드인, 스코틀랜드인, 프랑스인, 네덜란드인, 아메리카 원주민, 아프리카인 모두가 그의 배에서 복무했다.",
+      "tts": {
+        "text": "영국인, 아일랜드인, 스코틀랜드인, 프랑스인, 네덜란드인, 아메리카 원주민, 아프리카인 모두가 그의 배에서 복무했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사학자들은 그의 선원 중 대략 절반이 아프리카계였을 것으로 추정한다.",
+      "text_markdown": "역사학자들은 그의 선원 중 대략 절반이 아프리카계였을 것으로 추정한다.",
+      "tts": {
+        "text": "역사학자들은 그의 선원 중 대략 절반이 아프리카계였을 것으로 추정한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 사람들 중 일부는 나포된 노예선에서 해방된 자들이었다.",
+      "text_markdown": "이 사람들 중 일부는 나포된 노예선에서 해방된 자들이었다.",
+      "tts": {
+        "text": "이 사람들 중 일부는 나포된 노예선에서 해방된 자들이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다른 이들은 카리브해 전역의 항구에서 자발적으로 합류했다.",
+      "text_markdown": "다른 이들은 카리브해 전역의 항구에서 자발적으로 합류했다.",
+      "tts": {
+        "text": "다른 이들은 카리브해 전역의 항구에서 자발적으로 합류했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벨라미의 배에서 흑인과 백인은 나란히 복무하며 약탈품을 평등하게 나누었다.",
+      "text_markdown": "벨라미의 배에서 흑인과 백인은 나란히 복무하며 약탈품을 평등하게 나누었다.",
+      "tts": {
+        "text": "벨라미의 배에서 흑인과 백인은 나란히 복무하며 약탈품을 평등하게 나누었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이러한 인종적 평등은 당시로서는 비범한 것이었다.",
+      "text_markdown": "이러한 인종적 평등은 당시로서는 비범한 것이었다.",
+      "tts": {
+        "text": "이러한 인종적 평등은 당시로서는 비범한 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "식민지 세계에서 흑인들은 압도적으로 노예 상태에 놓여 있었다.",
+      "text_markdown": "식민지 세계에서 흑인들은 압도적으로 노예 상태에 놓여 있었다.",
+      "tts": {
+        "text": "식민지 세계에서 흑인들은 압도적으로 노예 상태에 놓여 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적선은 농장 제도의 잔인한 위계질서에 대한 드문 대안을 제공했다.",
+      "text_markdown": "해적선은 농장 제도의 잔인한 위계질서에 대한 드문 대안을 제공했다.",
+      "tts": {
+        "text": "해적선은 농장 제도의 잔인한 위계질서에 대한 드문 대안을 제공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미의 호위선 선장은 보물 인양 시절부터의 원래 파트너인 폴스그레이브 윌리엄스였다.",
+      "text_markdown": "벨라미의 호위선 선장은 보물 인양 시절부터의 원래 파트너인 폴스그레이브 윌리엄스였다.",
+      "tts": {
+        "text": "벨라미의 호위선 선장은 보물 인양 시절부터의 원래 파트너인 폴스그레이브 윌리엄스였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "윌리엄스는 별도의 배를 지휘하며 벨라미의 함대의 일원으로 함께 항해했다.",
+      "text_markdown": "윌리엄스는 별도의 배를 지휘하며 벨라미의 함대의 일원으로 함께 항해했다.",
+      "tts": {
+        "text": "윌리엄스는 별도의 배를 지휘하며 벨라미의 함대의 일원으로 함께 항해했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "두 사람은 서로를 완전히 신뢰했다.",
+      "text_markdown": "두 사람은 서로를 완전히 신뢰했다.",
+      "tts": {
+        "text": "두 사람은 서로를 완전히 신뢰했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717년 2월, 벨라미는 최대의 전리품을 손에 넣었다.",
+      "text_markdown": "1717년 2월, 벨라미는 최대의 전리품을 손에 넣었다.",
+      "tts": {
+        "text": "천칠백십칠 년 이월, 벨라미는 최대의 전리품을 손에 넣었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 함대는 쿠바와 히스파니올라 사이의 윈드워드 해협에서 위다 갤리호와 조우했다.",
+      "text_markdown": "그의 함대는 쿠바와 히스파니올라 사이의 윈드워드 해협에서 위다 갤리호와 조우했다.",
+      "tts": {
+        "text": "그의 함대는 쿠바와 히스파니올라 사이의 윈드워드 해협에서 위다 갤리호와 조우했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호는 세 개의 돛대를 가진 갤리선으로, 빠르고 중무장했다.",
+      "text_markdown": "위다호는 세 개의 돛대를 가진 갤리선으로, 빠르고 중무장했다.",
+      "tts": {
+        "text": "위다호는 세 개의 돛대를 가진 갤리선으로, 빠르고 중무장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1715년 런던에서 건조되었으며 길이는 102피트였다.",
+      "text_markdown": "1715년 런던에서 건조되었으며 길이는 102피트였다.",
+      "tts": {
+        "text": "천칠백십오 년 런던에서 건조되었으며 길이는 백이 피트였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "노예 무역을 위해 설계되었으며 최근 처녀 항해를 마쳤다.",
+      "text_markdown": "노예 무역을 위해 설계되었으며 최근 처녀 항해를 마쳤다.",
+      "tts": {
+        "text": "노예 무역을 위해 설계되었으며 최근 처녀 항해를 마쳤다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호는 오늘날의 베냉 해안에서 자메이카까지 300명 이상의 노예가 된 아프리카인을 실어 날랐다.",
+      "text_markdown": "위다호는 오늘날의 베냉 해안에서 자메이카까지 300명 이상의 노예가 된 아프리카인을 실어 날랐다.",
+      "tts": {
+        "text": "위다호는 오늘날의 베냉 해안에서 자메이카까지 삼백 명 이상의 노예가 된 아프리카인을 실어 날랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "인간 화물을 팔고 이제 노예 무역의 수익으로 가득 실려 있었다.",
+      "text_markdown": "인간 화물을 팔고 이제 노예 무역의 수익으로 가득 실려 있었다.",
+      "tts": {
+        "text": "인간 화물을 팔고 이제 노예 무역의 수익으로 가득 실려 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선창에는 인디고, 설탕, 그리고 은화와 금화가 든 궤짝이 있었다.",
+      "text_markdown": "선창에는 인디고, 설탕, 그리고 은화와 금화가 든 궤짝이 있었다.",
+      "tts": {
+        "text": "선창에는 인디고, 설탕, 그리고 은화와 금화가 든 궤짝이 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 삼 일 동안 위다호를 추격했다.",
+      "text_markdown": "벨라미는 삼 일 동안 위다호를 추격했다.",
+      "tts": {
+        "text": "벨라미는 삼 일 동안 위다호를 추격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "선장 로렌스 프린스는 해적들을 따돌리려 했지만, 위다호는 화물로 무거웠다.",
+      "text_markdown": "선장 로렌스 프린스는 해적들을 따돌리려 했지만, 위다호는 화물로 무거웠다.",
+      "tts": {
+        "text": "선장 로렌스 프린스는 해적들을 따돌리려 했지만, 위다호는 화물로 무거웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벨라미의 가벼운 배들이 꾸준히 거리를 좁혔다.",
+      "text_markdown": "벨라미의 가벼운 배들이 꾸준히 거리를 좁혔다.",
+      "tts": {
+        "text": "벨라미의 가벼운 배들이 꾸준히 거리를 좁혔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미의 배가 마침내 옆에 다가서자, 프린스 선장은 싸우지 않고 항복했다.",
+      "text_markdown": "벨라미의 배가 마침내 옆에 다가서자, 프린스 선장은 싸우지 않고 항복했다.",
+      "tts": {
+        "text": "벨라미의 배가 마침내 옆에 다가서자, 프린스 선장은 싸우지 않고 항복했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 해적 함대에 대한 저항이 자신과 선원의 죽음을 의미한다는 것을 알고 있었다.",
+      "text_markdown": "그는 해적 함대에 대한 저항이 자신과 선원의 죽음을 의미한다는 것을 알고 있었다.",
+      "tts": {
+        "text": "그는 해적 함대에 대한 저항이 자신과 선원의 죽음을 의미한다는 것을 알고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 평소의 공정함으로 포로가 된 선원들을 대했다.",
+      "text_markdown": "벨라미는 평소의 공정함으로 포로가 된 선원들을 대했다.",
+      "tts": {
+        "text": "벨라미는 평소의 공정함으로 포로가 된 선원들을 대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 프린스 선장에게 작은 배를 주고 떠나도록 허락했다.",
+      "text_markdown": "그는 프린스 선장에게 작은 배를 주고 떠나도록 허락했다.",
+      "tts": {
+        "text": "그는 프린스 선장에게 작은 배를 주고 떠나도록 허락했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "위다호의 원래 선원 몇 명은 떠나기보다 해적에 합류하기를 선택했다.",
+      "text_markdown": "위다호의 원래 선원 몇 명은 떠나기보다 해적에 합류하기를 선택했다.",
+      "tts": {
+        "text": "위다호의 원래 선원 몇 명은 떠나기보다 해적에 합류하기를 선택했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 즉시 위다호를 기함으로 삼았다.",
+      "text_markdown": "벨라미는 즉시 위다호를 기함으로 삼았다.",
+      "tts": {
+        "text": "벨라미는 즉시 위다호를 기함으로 삼았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 갑판에 추가 대포를 장착하여 총 무장을 28문으로 늘렸다.",
+      "text_markdown": "그는 갑판에 추가 대포를 장착하여 총 무장을 28문으로 늘렸다.",
+      "tts": {
+        "text": "그는 갑판에 추가 대포를 장착하여 총 무장을 이십팔 문으로 늘렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이제 위다호는 대서양에서 가장 강력한 해적선 중 하나가 되었다.",
+      "text_markdown": "이제 위다호는 대서양에서 가장 강력한 해적선 중 하나가 되었다.",
+      "tts": {
+        "text": "이제 위다호는 대서양에서 가장 강력한 해적선 중 하나가 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호의 선창에는 20,000에서 30,000파운드 가치의 보물이 있었을 것으로 추정된다.",
+      "text_markdown": "위다호의 선창에는 20,000에서 30,000파운드 가치의 보물이 있었을 것으로 추정된다.",
+      "tts": {
+        "text": "위다호의 선창에는 이만에서 삼만 파운드 가치의 보물이 있었을 것으로 추정된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "현대 가치로 환산하면 수백만 달러에 해당한다.",
+      "text_markdown": "현대 가치로 환산하면 수백만 달러에 해당한다.",
+      "tts": {
+        "text": "현대 가치로 환산하면 수백만 달러에 해당한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이것은 대서양에서 탈취된 해적 전리품 중 최대 규모 중 하나였다.",
+      "text_markdown": "이것은 대서양에서 탈취된 해적 전리품 중 최대 규모 중 하나였다.",
+      "tts": {
+        "text": "이것은 대서양에서 탈취된 해적 전리품 중 최대 규모 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호를 탈취한 후, 벨라미는 아메리카 해안을 따라 북상했다.",
+      "text_markdown": "위다호를 탈취한 후, 벨라미는 아메리카 해안을 따라 북상했다.",
+      "tts": {
+        "text": "위다호를 탈취한 후, 벨라미는 아메리카 해안을 따라 북상했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 가는 길에 계속 배를 나포했다.",
+      "text_markdown": "그는 가는 길에 계속 배를 나포했다.",
+      "tts": {
+        "text": "그는 가는 길에 계속 배를 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1717년 봄까지 그는 해적선으로 구성된 소함대를 지휘하고 있었다.",
+      "text_markdown": "1717년 봄까지 그는 해적선으로 구성된 소함대를 지휘하고 있었다.",
+      "tts": {
+        "text": "천칠백십칠 년 봄까지 그는 해적선으로 구성된 소함대를 지휘하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사학자들은 벨라미가 케이프 코드로 향하고 있었다고 믿고 있다.",
+      "text_markdown": "역사학자들은 벨라미가 케이프 코드로 향하고 있었다고 믿고 있다.",
+      "tts": {
+        "text": "역사학자들은 벨라미가 케이프 코드로 향하고 있었다고 믿고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마리아 할렛의 전설이 사실이라면, 그는 돌아오겠다고 약속한 여인에게 돌아가는 길이었을 수도 있다.",
+      "text_markdown": "마리아 할렛의 전설이 사실이라면, 그는 돌아오겠다고 약속한 여인에게 돌아가는 길이었을 수도 있다.",
+      "tts": {
+        "text": "마리아 할렛의 전설이 사실이라면, 그는 돌아오겠다고 약속한 여인에게 돌아가는 길이었을 수도 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 왕자",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "또한 배를 수리하고 약탈품을 나누기 위한 조용한 항구를 찾고 있었을 수도 있다.",
+      "text_markdown": "또한 배를 수리하고 약탈품을 나누기 위한 조용한 항구를 찾고 있었을 수도 있다.",
+      "tts": {
+        "text": "또한 배를 수리하고 약탈품을 나누기 위한 조용한 항구를 찾고 있었을 수도 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "위다호의 왕",
+      "text_markdown": "위다호의 왕"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717년 4월, 새뮤얼 벨라미는 권력의 정점에 있었다.",
+      "text_markdown": "1717년 4월, 새뮤얼 벨라미는 권력의 정점에 있었다.",
+      "tts": {
+        "text": "천칠백십칠 년 사월, 새뮤얼 벨라미는 권력의 정점에 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 함대, 약 150명의 선원, 그리고 막대한 약탈품을 지휘하고 있었다.",
+      "text_markdown": "그는 함대, 약 150명의 선원, 그리고 막대한 약탈품을 지휘하고 있었다.",
+      "tts": {
+        "text": "그는 함대, 약 백오십 명의 선원, 그리고 막대한 약탈품을 지휘하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 일 년도 안 되는 기간에 오십 척 이상의 배를 나포했다.",
+      "text_markdown": "그는 일 년도 안 되는 기간에 오십 척 이상의 배를 나포했다.",
+      "tts": {
+        "text": "그는 일 년도 안 되는 기간에 오십 척 이상의 배를 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대서양에서 이렇게 짧은 시간에 이토록 활발하고 성공적인 해적은 없었다.",
+      "text_markdown": "대서양에서 이렇게 짧은 시간에 이토록 활발하고 성공적인 해적은 없었다.",
+      "tts": {
+        "text": "대서양에서 이렇게 짧은 시간에 이토록 활발하고 성공적인 해적은 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미의 지휘 아래 위다호는 무시무시한 전함이었다.",
+      "text_markdown": "벨라미의 지휘 아래 위다호는 무시무시한 전함이었다.",
+      "tts": {
+        "text": "벨라미의 지휘 아래 위다호는 무시무시한 전함이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "28문의 대포는 저항할 만큼 어리석은 어떤 상선이라도 궤멸시킬 수 있었다.",
+      "text_markdown": "28문의 대포는 저항할 만큼 어리석은 어떤 상선이라도 궤멸시킬 수 있었다.",
+      "tts": {
+        "text": "이십팔 문의 대포는 저항할 만큼 어리석은 어떤 상선이라도 궤멸시킬 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대부분의 배는 해적 깃발을 보자마자 항복했다.",
+      "text_markdown": "대부분의 배는 해적 깃발을 보자마자 항복했다.",
+      "tts": {
+        "text": "대부분의 배는 해적 깃발을 보자마자 항복했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 민주주의 원칙에 따라 배를 운영했다.",
+      "text_markdown": "벨라미는 민주주의 원칙에 따라 배를 운영했다.",
+      "tts": {
+        "text": "벨라미는 민주주의 원칙에 따라 배를 운영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "주요 결정은 투표에 부쳐졌다.",
+      "text_markdown": "주요 결정은 투표에 부쳐졌다.",
+      "tts": {
+        "text": "주요 결정은 투표에 부쳐졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원들이 선장에 대한 신뢰를 잃으면 언제든지 해임할 수 있었다.",
+      "text_markdown": "선원들이 선장에 대한 신뢰를 잃으면 언제든지 해임할 수 있었다.",
+      "tts": {
+        "text": "선원들이 선장에 대한 신뢰를 잃으면 언제든지 해임할 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선원들에게는 승선 시 모든 사람이 서명하거나 표시하는 합의 조항이 있었다.",
+      "text_markdown": "선원들에게는 승선 시 모든 사람이 서명하거나 표시하는 합의 조항이 있었다.",
+      "tts": {
+        "text": "선원들에게는 승선 시 모든 사람이 서명하거나 표시하는 합의 조항이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 조항은 약탈품의 분배, 행동 규범, 부상에 대한 보상을 규정했다.",
+      "text_markdown": "이 조항은 약탈품의 분배, 행동 규범, 부상에 대한 보상을 규정했다.",
+      "tts": {
+        "text": "이 조항은 약탈품의 분배, 행동 규범, 부상에 대한 보상을 규정했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투에서 팔다리를 잃은 사람은 보상으로 약탈품의 추가 몫을 받았다.",
+      "text_markdown": "전투에서 팔다리를 잃은 사람은 보상으로 약탈품의 추가 몫을 받았다.",
+      "tts": {
+        "text": "전투에서 팔다리를 잃은 사람은 보상으로 약탈품의 추가 몫을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 1700년대의 노동 세계 어디에도 존재하지 않았던 장애 보험의 한 형태였다.",
+      "text_markdown": "이것은 1700년대의 노동 세계 어디에도 존재하지 않았던 장애 보험의 한 형태였다.",
+      "tts": {
+        "text": "이것은 천칠백 년대의 노동 세계 어디에도 존재하지 않았던 장애 보험의 한 형태였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미의 병참장교는 아프리카계 남성으로, 당시로서는 매우 이례적이었다.",
+      "text_markdown": "벨라미의 병참장교는 아프리카계 남성으로, 당시로서는 매우 이례적이었다.",
+      "tts": {
+        "text": "벨라미의 병참장교는 아프리카계 남성으로, 당시로서는 매우 이례적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "병참장교는 해적선에서 두 번째로 강력한 직위였다.",
+      "text_markdown": "병참장교는 해적선에서 두 번째로 강력한 직위였다.",
+      "tts": {
+        "text": "병참장교는 해적선에서 두 번째로 강력한 직위였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 식량, 물, 약탈품의 분배를 관리했다.",
+      "text_markdown": "그는 식량, 물, 약탈품의 분배를 관리했다.",
+      "tts": {
+        "text": "그는 식량, 물, 약탈품의 분배를 관리했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호에서의 생활은 낙원이 아니었다.",
+      "text_markdown": "위다호에서의 생활은 낙원이 아니었다.",
+      "tts": {
+        "text": "위다호에서의 생활은 낙원이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "배는 비좁았고, 음식은 종종 썩어 있었으며, 질병의 위협은 끊이지 않았다.",
+      "text_markdown": "배는 비좁았고, 음식은 종종 썩어 있었으며, 질병의 위협은 끊이지 않았다.",
+      "tts": {
+        "text": "배는 비좁았고, 음식은 종종 썩어 있었으며, 질병의 위협은 끊이지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 당시 가난한 사람들에게 주어진 다른 선택지와 비교하면, 어느 정도의 자유와 존엄을 제공했다.",
+      "text_markdown": "하지만 당시 가난한 사람들에게 주어진 다른 선택지와 비교하면, 어느 정도의 자유와 존엄을 제공했다.",
+      "tts": {
+        "text": "하지만 당시 가난한 사람들에게 주어진 다른 선택지와 비교하면, 어느 정도의 자유와 존엄을 제공했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미는 포로가 된 선원들을 비교적 자비롭게 대하는 관행을 계속했다.",
+      "text_markdown": "벨라미는 포로가 된 선원들을 비교적 자비롭게 대하는 관행을 계속했다.",
+      "tts": {
+        "text": "벨라미는 포로가 된 선원들을 비교적 자비롭게 대하는 관행을 계속했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "평화롭게 항복한 자에게 폭력을 사용하는 일은 드물었다.",
+      "text_markdown": "평화롭게 항복한 자에게 폭력을 사용하는 일은 드물었다.",
+      "tts": {
+        "text": "평화롭게 항복한 자에게 폭력을 사용하는 일은 드물었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 종종 잡은 선원들을 항구에 도달할 수 있을 만큼의 식량과 함께 풀어주었다.",
+      "text_markdown": "그는 종종 잡은 선원들을 항구에 도달할 수 있을 만큼의 식량과 함께 풀어주었다.",
+      "tts": {
+        "text": "그는 종종 잡은 선원들을 항구에 도달할 수 있을 만큼의 식량과 함께 풀어주었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이러한 공정함의 명성은 전략적으로 유용했다.",
+      "text_markdown": "이러한 공정함의 명성은 전략적으로 유용했다.",
+      "tts": {
+        "text": "이러한 공정함의 명성은 전략적으로 유용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "좋은 대우를 받을 것을 아는 상선 선장들에게는 싸울 이유가 거의 없었다.",
+      "text_markdown": "좋은 대우를 받을 것을 아는 상선 선장들에게는 싸울 이유가 거의 없었다.",
+      "tts": {
+        "text": "좋은 대우를 받을 것을 아는 상선 선장들에게는 싸울 이유가 거의 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벨라미의 대포 앞에서 항복은 단순히 합리적인 선택이었다.",
+      "text_markdown": "벨라미의 대포 앞에서 항복은 단순히 합리적인 선택이었다.",
+      "tts": {
+        "text": "벨라미의 대포 앞에서 항복은 단순히 합리적인 선택이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 모든 포로 선원이 부드럽게 대우받은 것은 아니었다.",
+      "text_markdown": "그러나 모든 포로 선원이 부드럽게 대우받은 것은 아니었다.",
+      "tts": {
+        "text": "그러나 모든 포로 선원이 부드럽게 대우받은 것은 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "저항한 자들은 때때로 구타당하거나 배를 불태워졌다.",
+      "text_markdown": "저항한 자들은 때때로 구타당하거나 배를 불태워졌다.",
+      "tts": {
+        "text": "저항한 자들은 때때로 구타당하거나 배를 불태워졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벨라미는 필요하다고 판단하면 폭력에 대해 실용적이었다.",
+      "text_markdown": "벨라미는 필요하다고 판단하면 폭력에 대해 실용적이었다.",
+      "tts": {
+        "text": "벨라미는 필요하다고 판단하면 폭력에 대해 실용적이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사월 초, 벨라미의 함대는 버지니아와 캐롤라이나 해안을 따라 북상하고 있었다.",
+      "text_markdown": "사월 초, 벨라미의 함대는 버지니아와 캐롤라이나 해안을 따라 북상하고 있었다.",
+      "tts": {
+        "text": "사월 초, 벨라미의 함대는 버지니아와 캐롤라이나 해안을 따라 북상하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 도중에 몇 척의 배를 더 나포했다.",
+      "text_markdown": "그는 도중에 몇 척의 배를 더 나포했다.",
+      "tts": {
+        "text": "그는 도중에 몇 척의 배를 더 나포했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 마지막 나포 중 하나는 메리 앤호라는 상선이었다.",
+      "text_markdown": "그의 마지막 나포 중 하나는 메리 앤호라는 상선이었다.",
+      "tts": {
+        "text": "그의 마지막 나포 중 하나는 메리 앤호라는 상선이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 마데이라 포도주 화물을 빼앗고 선원 몇 명을 강제로 합류시켰다.",
+      "text_markdown": "그는 마데이라 포도주 화물을 빼앗고 선원 몇 명을 강제로 합류시켰다.",
+      "tts": {
+        "text": "그는 마데이라 포도주 화물을 빼앗고 선원 몇 명을 강제로 합류시켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 강제 징집된 자들은 후에 난파 후 이어진 재판에서 중요한 역할을 하게 된다.",
+      "text_markdown": "이 강제 징집된 자들은 후에 난파 후 이어진 재판에서 중요한 역할을 하게 된다.",
+      "tts": {
+        "text": "이 강제 징집된 자들은 후에 난파 후 이어진 재판에서 중요한 역할을 하게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 또한 피셔호라는 슬루프를 나포하여 식량과 선원 일부를 빼앗았다.",
+      "text_markdown": "그는 또한 피셔호라는 슬루프를 나포하여 식량과 선원 일부를 빼앗았다.",
+      "tts": {
+        "text": "그는 또한 피셔호라는 슬루프를 나포하여 식량과 선원 일부를 빼앗았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로들은 항의했지만, 벨라미는 그들의 불만을 무시했다.",
+      "text_markdown": "포로들은 항의했지만, 벨라미는 그들의 불만을 무시했다.",
+      "tts": {
+        "text": "포로들은 항의했지만, 벨라미는 그들의 불만을 무시했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사월이 지나면서 날씨는 점점 더 불안정해졌다.",
+      "text_markdown": "사월이 지나면서 날씨는 점점 더 불안정해졌다.",
+      "tts": {
+        "text": "사월이 지나면서 날씨는 점점 더 불안정해졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "뉴잉글랜드 해안의 봄 폭풍은 악명 높게 위험했다.",
+      "text_markdown": "뉴잉글랜드 해안의 봄 폭풍은 악명 높게 위험했다.",
+      "tts": {
+        "text": "뉴잉글랜드 해안의 봄 폭풍은 악명 높게 위험했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "케이프 코드 앞바다는 서부 대서양에서 가장 위험한 해역 중 하나였다.",
+      "text_markdown": "케이프 코드 앞바다는 서부 대서양에서 가장 위험한 해역 중 하나였다.",
+      "tts": {
+        "text": "케이프 코드 앞바다는 서부 대서양에서 가장 위험한 해역 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717년 4월 26일, 벨라미의 함대는 남쪽에서 케이프 코드에 접근하고 있었다.",
+      "text_markdown": "1717년 4월 26일, 벨라미의 함대는 남쪽에서 케이프 코드에 접근하고 있었다.",
+      "tts": {
+        "text": "천칠백십칠 년 사월 이십육 일, 벨라미의 함대는 남쪽에서 케이프 코드에 접근하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수평선 너머로 강력한 폭풍이 형성되고 있었다.",
+      "text_markdown": "수평선 너머로 강력한 폭풍이 형성되고 있었다.",
+      "tts": {
+        "text": "수평선 너머로 강력한 폭풍이 형성되고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바다가 거세지고 바람이 북동쪽으로 변하고 있었다.",
+      "text_markdown": "바다가 거세지고 바람이 북동쪽으로 변하고 있었다.",
+      "tts": {
+        "text": "바다가 거세지고 바람이 북동쪽으로 변하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "케이프 코드 앞바다의 북동 폭풍은 대서양 해안에서 가장 두려운 기상 현상 중 하나였다.",
+      "text_markdown": "케이프 코드 앞바다의 북동 폭풍은 대서양 해안에서 가장 두려운 기상 현상 중 하나였다.",
+      "tts": {
+        "text": "케이프 코드 앞바다의 북동 폭풍은 대서양 해안에서 가장 두려운 기상 현상 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 파도를 바깥 해안에 늘어선 얕은 모래톱으로 곧바로 몰아갔다.",
+      "text_markdown": "그것은 파도를 바깥 해안에 늘어선 얕은 모래톱으로 곧바로 몰아갔다.",
+      "tts": {
+        "text": "그것은 파도를 바깥 해안에 늘어선 얕은 모래톱으로 곧바로 몰아갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미에게는 두 가지 선택지가 있었다.",
+      "text_markdown": "벨라미에게는 두 가지 선택지가 있었다.",
+      "tts": {
+        "text": "벨라미에게는 두 가지 선택지가 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함대를 바다 쪽으로 돌려 깊은 물에서 폭풍을 버틸 수도 있었다.",
+      "text_markdown": "함대를 바다 쪽으로 돌려 깊은 물에서 폭풍을 버틸 수도 있었다.",
+      "tts": {
+        "text": "함대를 바다 쪽으로 돌려 깊은 물에서 폭풍을 버틸 수도 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아니면 전진하여 폭풍이 닥치기 전에 케이프의 끝을 돌아갈 수도 있었다.",
+      "text_markdown": "아니면 전진하여 폭풍이 닥치기 전에 케이프의 끝을 돌아갈 수도 있었다.",
+      "tts": {
+        "text": "아니면 전진하여 폭풍이 닥치기 전에 케이프의 끝을 돌아갈 수도 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 전진하기로 했다.",
+      "text_markdown": "그는 전진하기로 했다.",
+      "tts": {
+        "text": "그는 전진하기로 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "위다호의 왕",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 그가 내리는 마지막 결정이 되었다.",
+      "text_markdown": "그것은 그가 내리는 마지막 결정이 되었다.",
+      "tts": {
+        "text": "그것은 그가 내리는 마지막 결정이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "폭풍",
+      "text_markdown": "폭풍"
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717년 4월 26일 밤, 폭풍이 몰아쳤다.",
+      "text_markdown": "1717년 4월 26일 밤, 폭풍이 몰아쳤다.",
+      "tts": {
+        "text": "천칠백십칠 년 사월 이십육 일 밤, 폭풍이 몰아쳤다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "맹렬한 비와 치솟는 파도를 동반한 격렬한 북동 폭풍이었다.",
+      "text_markdown": "맹렬한 비와 치솟는 파도를 동반한 격렬한 북동 폭풍이었다.",
+      "tts": {
+        "text": "맹렬한 비와 치솟는 파도를 동반한 격렬한 북동 폭풍이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "시야가 거의 제로로 떨어졌다.",
+      "text_markdown": "시야가 거의 제로로 떨어졌다.",
+      "tts": {
+        "text": "시야가 거의 제로로 떨어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "위다호의 선원들은 해안도, 별도, 심지어 함대의 다른 배도 볼 수 없었다.",
+      "text_markdown": "위다호의 선원들은 해안도, 별도, 심지어 함대의 다른 배도 볼 수 없었다.",
+      "tts": {
+        "text": "위다호의 선원들은 해안도, 별도, 심지어 함대의 다른 배도 볼 수 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 해안에서 가장 위험한 해역을 눈먼 채 항해하고 있었다.",
+      "text_markdown": "그들은 해안에서 가장 위험한 해역을 눈먼 채 항해하고 있었다.",
+      "tts": {
+        "text": "그들은 해안에서 가장 위험한 해역을 눈먼 채 항해하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바람은 비명 같은 소리를 내며 삭구 사이로 울부짖었다.",
+      "text_markdown": "바람은 비명 같은 소리를 내며 삭구 사이로 울부짖었다.",
+      "tts": {
+        "text": "바람은 비명 같은 소리를 내며 삭구 사이로 울부짖었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "파도가 뱃머리를 넘어 갑판을 휩쓸었다.",
+      "text_markdown": "파도가 뱃머리를 넘어 갑판을 휩쓸었다.",
+      "tts": {
+        "text": "파도가 뱃머리를 넘어 갑판을 휩쓸었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원들은 바다로 쓸려 나가지 않으려고 밧줄과 난간에 매달렸다.",
+      "text_markdown": "선원들은 바다로 쓸려 나가지 않으려고 밧줄과 난간에 매달렸다.",
+      "tts": {
+        "text": "선원들은 바다로 쓸려 나가지 않으려고 밧줄과 난간에 매달렸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자정이 지난 어느 시점에, 위다호는 웰플릿 해안의 모래톱에 부딪혔다.",
+      "text_markdown": "자정이 지난 어느 시점에, 위다호는 웰플릿 해안의 모래톱에 부딪혔다.",
+      "tts": {
+        "text": "자정이 지난 어느 시점에, 위다호는 웰플릿 해안의 모래톱에 부딪혔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "충격은 갑작스럽고 격렬했다.",
+      "text_markdown": "충격은 갑작스럽고 격렬했다.",
+      "tts": {
+        "text": "충격은 갑작스럽고 격렬했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배는 옆으로 기울며 부서지는 파도 속에서 산산조각 나기 시작했다.",
+      "text_markdown": "배는 옆으로 기울며 부서지는 파도 속에서 산산조각 나기 시작했다.",
+      "tts": {
+        "text": "배는 옆으로 기울며 부서지는 파도 속에서 산산조각 나기 시작했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파도는 거대했고, 어떤 것은 30피트 높이에 달했다.",
+      "text_markdown": "파도는 거대했고, 어떤 것은 30피트 높이에 달했다.",
+      "tts": {
+        "text": "파도는 거대했고, 어떤 것은 삼십 피트 높이에 달했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "파도는 무시무시한 힘으로 난파된 배 위로 쏟아져 내렸다.",
+      "text_markdown": "파도는 무시무시한 힘으로 난파된 배 위로 쏟아져 내렸다.",
+      "tts": {
+        "text": "파도는 무시무시한 힘으로 난파된 배 위로 쏟아져 내렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "돛대가 부러져 바다에 빠지며 삭구와 선원들을 함께 끌고 갔다.",
+      "text_markdown": "돛대가 부러져 바다에 빠지며 삭구와 선원들을 함께 끌고 갔다.",
+      "tts": {
+        "text": "돛대가 부러져 바다에 빠지며 삭구와 선원들을 함께 끌고 갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호의 무거운 대포가 거치대에서 떨어져 나왔다.",
+      "text_markdown": "위다호의 무거운 대포가 거치대에서 떨어져 나왔다.",
+      "tts": {
+        "text": "위다호의 무거운 대포가 거치대에서 떨어져 나왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대포들이 갑판을 가로질러 굴러가며 가는 길에 있는 모든 것을 짓눌렀다.",
+      "text_markdown": "대포들이 갑판을 가로질러 굴러가며 가는 길에 있는 모든 것을 짓눌렀다.",
+      "tts": {
+        "text": "대포들이 갑판을 가로질러 굴러가며 가는 길에 있는 모든 것을 짓눌렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선창의 보물이 이동하면서 배가 전복되었다.",
+      "text_markdown": "선창의 보물이 이동하면서 배가 전복되었다.",
+      "tts": {
+        "text": "선창의 보물이 이동하면서 배가 전복되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호가 부딪힌 모래톱은 해안에서 불과 500피트 거리에 있었다.",
+      "text_markdown": "위다호가 부딪힌 모래톱은 해안에서 불과 500피트 거리에 있었다.",
+      "tts": {
+        "text": "위다호가 부딪힌 모래톱은 해안에서 불과 오백 피트 거리에 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 그런 상황에서 500피트의 파도는 망망대해만큼이나 치명적이었다.",
+      "text_markdown": "그러나 그런 상황에서 500피트의 파도는 망망대해만큼이나 치명적이었다.",
+      "tts": {
+        "text": "그러나 그런 상황에서 오백 피트의 파도는 망망대해만큼이나 치명적이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호에 탑승한 약 146명 중 단 두 명만 생존했다.",
+      "text_markdown": "위다호에 탑승한 약 146명 중 단 두 명만 생존했다.",
+      "tts": {
+        "text": "위다호에 탑승한 약 백사십육 명 중 단 두 명만 생존했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 강제로 선원이 된 목수 토머스 데이비스와 미스키토인과 유럽인 혼혈의 항해사 존 줄리안이었다.",
+      "text_markdown": "그들은 강제로 선원이 된 목수 토머스 데이비스와 미스키토인과 유럽인 혼혈의 항해사 존 줄리안이었다.",
+      "tts": {
+        "text": "그들은 강제로 선원이 된 목수 토머스 데이비스와 미스키토인과 유럽인 혼혈의 항해사 존 줄리안이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "새뮤얼 벨라미는 사망자 중에 있었다.",
+      "text_markdown": "새뮤얼 벨라미는 사망자 중에 있었다.",
+      "tts": {
+        "text": "새뮤얼 벨라미는 사망자 중에 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 시신은 끝내 확인되지 않았다.",
+      "text_markdown": "그의 시신은 끝내 확인되지 않았다.",
+      "tts": {
+        "text": "그의 시신은 끝내 확인되지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 28세였다.",
+      "text_markdown": "그는 28세였다.",
+      "tts": {
+        "text": "그는 이십팔 세였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벨라미의 함대에 속한 다른 배들도 폭풍에 휘말렸다.",
+      "text_markdown": "벨라미의 함대에 속한 다른 배들도 폭풍에 휘말렸다.",
+      "tts": {
+        "text": "벨라미의 함대에 속한 다른 배들도 폭풍에 휘말렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "메리 앤호는 같은 해안 근처에서 좌초했다.",
+      "text_markdown": "메리 앤호는 같은 해안 근처에서 좌초했다.",
+      "tts": {
+        "text": "메리 앤호는 같은 해안 근처에서 좌초했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원 중 일곱 명이 살아남아 지역 당국에 체포되었다.",
+      "text_markdown": "선원 중 일곱 명이 살아남아 지역 당국에 체포되었다.",
+      "tts": {
+        "text": "선원 중 일곱 명이 살아남아 지역 당국에 체포되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아침이 되자, 웰플릿 주민들은 해변이 잔해로 뒤덮인 것을 발견했다.",
+      "text_markdown": "아침이 되자, 웰플릿 주민들은 해변이 잔해로 뒤덮인 것을 발견했다.",
+      "tts": {
+        "text": "아침이 되자, 웰플릿 주민들은 해변이 잔해로 뒤덮인 것을 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "목재, 밧줄, 천, 그리고 시신이 모래사장에 흩어져 있었다.",
+      "text_markdown": "목재, 밧줄, 천, 그리고 시신이 모래사장에 흩어져 있었다.",
+      "tts": {
+        "text": "목재, 밧줄, 천, 그리고 시신이 모래사장에 흩어져 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "파도가 칠 때마다 동전과 보석 조각이 밀려 올라왔다.",
+      "text_markdown": "파도가 칠 때마다 동전과 보석 조각이 밀려 올라왔다.",
+      "tts": {
+        "text": "파도가 칠 때마다 동전과 보석 조각이 밀려 올라왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "주민들은 즉시 건질 수 있는 것을 건져 올리기 시작했다.",
+      "text_markdown": "주민들은 즉시 건질 수 있는 것을 건져 올리기 시작했다.",
+      "tts": {
+        "text": "주민들은 즉시 건질 수 있는 것을 건져 올리기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 잔해에서 동전, 무기, 그리고 가치 있는 모든 것을 수거했다.",
+      "text_markdown": "그들은 잔해에서 동전, 무기, 그리고 가치 있는 모든 것을 수거했다.",
+      "tts": {
+        "text": "그들은 잔해에서 동전, 무기, 그리고 가치 있는 모든 것을 수거했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "식민지 총독이 현장을 확보하기 위해 군인을 보냈지만, 많은 것이 이미 가져가진 후였다.",
+      "text_markdown": "식민지 총독이 현장을 확보하기 위해 군인을 보냈지만, 많은 것이 이미 가져가진 후였다.",
+      "tts": {
+        "text": "식민지 총독이 현장을 확보하기 위해 군인을 보냈지만, 많은 것이 이미 가져가진 후였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호와 메리 앤호에서 살아남은 아홉 명의 해적이 체포되어 보스턴으로 압송되었다.",
+      "text_markdown": "위다호와 메리 앤호에서 살아남은 아홉 명의 해적이 체포되어 보스턴으로 압송되었다.",
+      "tts": {
+        "text": "위다호와 메리 앤호에서 살아남은 아홉 명의 해적이 체포되어 보스턴으로 압송되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1717년 10월에 재판에 회부되었다.",
+      "text_markdown": "1717년 10월에 재판에 회부되었다.",
+      "tts": {
+        "text": "천칠백십칠 년 시월에 재판에 회부되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 재판은 식민지 시대 미국 역사에서 가장 세간의 이목을 끈 재판 중 하나였다.",
+      "text_markdown": "이 재판은 식민지 시대 미국 역사에서 가장 세간의 이목을 끈 재판 중 하나였다.",
+      "tts": {
+        "text": "이 재판은 식민지 시대 미국 역사에서 가장 세간의 이목을 끈 재판 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유명한 청교도 목사 코튼 매더가 수감자들을 방문하여 회개에 대해 설교했다.",
+      "text_markdown": "유명한 청교도 목사 코튼 매더가 수감자들을 방문하여 회개에 대해 설교했다.",
+      "tts": {
+        "text": "유명한 청교도 목사 코튼 매더가 수감자들을 방문하여 회개에 대해 설교했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 데이비스는 강제로 선원이 되었음을 증명할 수 있었기에 무죄를 선고받았다.",
+      "text_markdown": "토머스 데이비스는 강제로 선원이 되었음을 증명할 수 있었기에 무죄를 선고받았다.",
+      "tts": {
+        "text": "토머스 데이비스는 강제로 선원이 되었음을 증명할 수 있었기에 무죄를 선고받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "또 다른 사람도 비슷한 사유로 무죄를 선고받았다.",
+      "text_markdown": "또 다른 사람도 비슷한 사유로 무죄를 선고받았다.",
+      "tts": {
+        "text": "또 다른 사람도 비슷한 사유로 무죄를 선고받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여섯 명이 유죄 판결을 받고 사형을 선고받았다.",
+      "text_markdown": "여섯 명이 유죄 판결을 받고 사형을 선고받았다.",
+      "tts": {
+        "text": "여섯 명이 유죄 판결을 받고 사형을 선고받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 1717년 11월 15일 보스턴 항의 찰스타운 페리에서 교수형에 처해졌다.",
+      "text_markdown": "그들은 1717년 11월 15일 보스턴 항의 찰스타운 페리에서 교수형에 처해졌다.",
+      "tts": {
+        "text": "그들은 천칠백십칠 년 십일월 십오 일 보스턴 항의 찰스타운 페리에서 교수형에 처해졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "코튼 매더는 처형장에서 설교를 했다.",
+      "text_markdown": "코튼 매더는 처형장에서 설교를 했다.",
+      "tts": {
+        "text": "코튼 매더는 처형장에서 설교를 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미스키토인 항해사 존 줄리안은 교수형에 처해지지 않았다.",
+      "text_markdown": "미스키토인 항해사 존 줄리안은 교수형에 처해지지 않았다.",
+      "tts": {
+        "text": "미스키토인 항해사 존 줄리안은 교수형에 처해지지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대신 노예로 팔렸다.",
+      "text_markdown": "대신 노예로 팔렸다.",
+      "tts": {
+        "text": "대신 노예로 팔렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 이후의 그의 운명은 알려지지 않았지만, 일부 기록에 따르면 탈출을 시도하다 사망했다고 한다.",
+      "text_markdown": "그 이후의 그의 운명은 알려지지 않았지만, 일부 기록에 따르면 탈출을 시도하다 사망했다고 한다.",
+      "tts": {
+        "text": "그 이후의 그의 운명은 알려지지 않았지만, 일부 기록에 따르면 탈출을 시도하다 사망했다고 한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호의 잔해는 웰플릿 앞바다의 모래 속으로 가라앉았다.",
+      "text_markdown": "위다호의 잔해는 웰플릿 앞바다의 모래 속으로 가라앉았다.",
+      "tts": {
+        "text": "위다호의 잔해는 웰플릿 앞바다의 모래 속으로 가라앉았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몇 년 안에 이동하는 모래가 완전히 묻어 버렸다.",
+      "text_markdown": "몇 년 안에 이동하는 모래가 완전히 묻어 버렸다.",
+      "tts": {
+        "text": "몇 년 안에 이동하는 모래가 완전히 묻어 버렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "폭풍",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이백오십 년이 넘는 세월 동안, 위다호는 해저 아래에 숨겨져 있었다.",
+      "text_markdown": "이백오십 년이 넘는 세월 동안, 위다호는 해저 아래에 숨겨져 있었다.",
+      "tts": {
+        "text": "이백오십 년이 넘는 세월 동안, 위다호는 해저 아래에 숨겨져 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "시간이 잊은 배",
+      "text_markdown": "시간이 잊은 배"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "267년 동안 위다호의 잔해는 지역 전설에 불과했다.",
+      "text_markdown": "267년 동안 위다호의 잔해는 지역 전설에 불과했다.",
+      "tts": {
+        "text": "이백육십칠 년 동안 위다호의 잔해는 지역 전설에 불과했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "케이프 코드 사람들은 해안 어딘가에 묻힌 해적선에 대한 이야기를 전했다.",
+      "text_markdown": "케이프 코드 사람들은 해안 어딘가에 묻힌 해적선에 대한 이야기를 전했다.",
+      "tts": {
+        "text": "케이프 코드 사람들은 해안 어딘가에 묻힌 해적선에 대한 이야기를 전했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 정확히 어디에 있는지 아는 사람은 아무도 없었다.",
+      "text_markdown": "그러나 정확히 어디에 있는지 아는 사람은 아무도 없었다.",
+      "tts": {
+        "text": "그러나 정확히 어디에 있는지 아는 사람은 아무도 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1980년대에 배리 클리포드라는 수중 탐험가가 위다호를 찾는 데 집착하게 되었다.",
+      "text_markdown": "1980년대에 배리 클리포드라는 수중 탐험가가 위다호를 찾는 데 집착하게 되었다.",
+      "tts": {
+        "text": "천구백팔십 년대에 배리 클리포드라는 수중 탐험가가 위다호를 찾는 데 집착하게 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "클리포드는 케이프 코드에서 삼촌으로부터 해적선 이야기를 들으며 자랐다.",
+      "text_markdown": "클리포드는 케이프 코드에서 삼촌으로부터 해적선 이야기를 들으며 자랐다.",
+      "tts": {
+        "text": "클리포드는 케이프 코드에서 삼촌으로부터 해적선 이야기를 들으며 자랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 난파선 위치를 좁히기 위해 수년간 역사 기록을 조사했다.",
+      "text_markdown": "그는 난파선 위치를 좁히기 위해 수년간 역사 기록을 조사했다.",
+      "tts": {
+        "text": "그는 난파선 위치를 좁히기 위해 수년간 역사 기록을 조사했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984년, 클리포드와 그의 잠수팀이 난파선을 발견했다.",
+      "text_markdown": "1984년, 클리포드와 그의 잠수팀이 난파선을 발견했다.",
+      "tts": {
+        "text": "천구백팔십사 년, 클리포드와 그의 잠수팀이 난파선을 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "핵심 증거는 배의 종으로, 거기에는 'The Whydah Gally 1716'이라는 글자가 새겨져 있었다.",
+      "text_markdown": "핵심 증거는 배의 종으로, 거기에는 'The Whydah Gally 1716'이라는 글자가 새겨져 있었다.",
+      "tts": {
+        "text": "핵심 증거는 배의 종으로, 거기에는 '더 위다 갤리 천칠백십육'이라는 글자가 새겨져 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 종은 난파선이 위다호임을 의심의 여지 없이 증명했다.",
+      "text_markdown": "이 종은 난파선이 위다호임을 의심의 여지 없이 증명했다.",
+      "tts": {
+        "text": "이 종은 난파선이 위다호임을 의심의 여지 없이 증명했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "물리적 증거를 통해 해적선 난파선이 확실히 확인된 것은 이것이 최초이자 유일한 사례이다.",
+      "text_markdown": "물리적 증거를 통해 해적선 난파선이 확실히 확인된 것은 이것이 최초이자 유일한 사례이다.",
+      "tts": {
+        "text": "물리적 증거를 통해 해적선 난파선이 확실히 확인된 것은 이것이 최초이자 유일한 사례이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이후 수십 년 동안 클리포드의 팀은 난파선에서 200,000점 이상의 유물을 회수했다.",
+      "text_markdown": "이후 수십 년 동안 클리포드의 팀은 난파선에서 200,000점 이상의 유물을 회수했다.",
+      "tts": {
+        "text": "이후 수십 년 동안 클리포드의 팀은 난파선에서 이십만 점 이상의 유물을 회수했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여기에는 금화, 은괴, 무기, 항해 기구, 의복 조각, 개인 소지품이 포함되었다.",
+      "text_markdown": "여기에는 금화, 은괴, 무기, 항해 기구, 의복 조각, 개인 소지품이 포함되었다.",
+      "tts": {
+        "text": "여기에는 금화, 은괴, 무기, 항해 기구, 의복 조각, 개인 소지품이 포함되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유물들은 어떤 문서도 제공할 수 없었던 해적 생활의 세부 사항을 드러냈다.",
+      "text_markdown": "유물들은 어떤 문서도 제공할 수 없었던 해적 생활의 세부 사항을 드러냈다.",
+      "tts": {
+        "text": "유물들은 어떤 문서도 제공할 수 없었던 해적 생활의 세부 사항을 드러냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "고고학자들은 서아프리카의 금 장신구를 유럽 은화와 함께 발견했다.",
+      "text_markdown": "고고학자들은 서아프리카의 금 장신구를 유럽 은화와 함께 발견했다.",
+      "tts": {
+        "text": "고고학자들은 서아프리카의 금 장신구를 유럽 은화와 함께 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "비단 리본, 커프스 단추, 권총 탄환도 발견되었다.",
+      "text_markdown": "비단 리본, 커프스 단추, 권총 탄환도 발견되었다.",
+      "tts": {
+        "text": "비단 리본, 커프스 단추, 권총 탄환도 발견되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유물의 다양성은 선원이 다민족이었음을 확인해 주었다.",
+      "text_markdown": "유물의 다양성은 선원이 다민족이었음을 확인해 주었다.",
+      "tts": {
+        "text": "유물의 다양성은 선원이 다민족이었음을 확인해 주었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽, 아프리카, 아메리카의 물건들이 모두 뒤섞여 발견되었다.",
+      "text_markdown": "유럽, 아프리카, 아메리카의 물건들이 모두 뒤섞여 발견되었다.",
+      "tts": {
+        "text": "유럽, 아프리카, 아메리카의 물건들이 모두 뒤섞여 발견되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "위다호의 선원은 대서양 세계의 축소판이었다.",
+      "text_markdown": "위다호의 선원은 대서양 세계의 축소판이었다.",
+      "tts": {
+        "text": "위다호의 선원은 대서양 세계의 축소판이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위다호에 헌정된 박물관이 케이프 코드에 설립되었다.",
+      "text_markdown": "위다호에 헌정된 박물관이 케이프 코드에 설립되었다.",
+      "tts": {
+        "text": "위다호에 헌정된 박물관이 케이프 코드에 설립되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "난파선에서 회수된 유물을 전시하고 새뮤얼 벨라미와 그의 선원들의 이야기를 전한다.",
+      "text_markdown": "난파선에서 회수된 유물을 전시하고 새뮤얼 벨라미와 그의 선원들의 이야기를 전한다.",
+      "tts": {
+        "text": "난파선에서 회수된 유물을 전시하고 새뮤얼 벨라미와 그의 선원들의 이야기를 전한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "매년 수천 명의 방문객이 찾아온다.",
+      "text_markdown": "매년 수천 명의 방문객이 찾아온다.",
+      "tts": {
+        "text": "매년 수천 명의 방문객이 찾아온다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "새뮤얼 벨라미의 해적 활동은 겨우 열한 달 동안 지속되었다.",
+      "text_markdown": "새뮤얼 벨라미의 해적 활동은 겨우 열한 달 동안 지속되었다.",
+      "tts": {
+        "text": "새뮤얼 벨라미의 해적 활동은 겨우 열한 달 동안 지속되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 기간에 그는 대부분의 해적이 평생 동안 나포한 것보다 더 많은 배를 나포했다.",
+      "text_markdown": "그 기간에 그는 대부분의 해적이 평생 동안 나포한 것보다 더 많은 배를 나포했다.",
+      "tts": {
+        "text": "그 기간에 그는 대부분의 해적이 평생 동안 나포한 것보다 더 많은 배를 나포했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 불평등과 속박의 시대에 정의와 자유를 이야기했다.",
+      "text_markdown": "그는 불평등과 속박의 시대에 정의와 자유를 이야기했다.",
+      "tts": {
+        "text": "그는 불평등과 속박의 시대에 정의와 자유를 이야기했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "민주주의 자체가 급진적인 사상이었던 시대에 그는 배를 민주적으로 운영했다.",
+      "text_markdown": "민주주의 자체가 급진적인 사상이었던 시대에 그는 배를 민주적으로 운영했다.",
+      "tts": {
+        "text": "민주주의 자체가 급진적인 사상이었던 시대에 그는 배를 민주적으로 운영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p115",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나머지 세계가 피부색으로 사람들을 나누었을 때, 그는 모든 인종의 사람을 환영했다.",
+      "text_markdown": "나머지 세계가 피부색으로 사람들을 나누었을 때, 그는 모든 인종의 사람을 환영했다.",
+      "tts": {
+        "text": "나머지 세계가 피부색으로 사람들을 나누었을 때, 그는 모든 인종의 사람을 환영했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 또한 일하는 사람들의 것을 훔치고 정직한 선원들의 생계를 방해한 도둑이기도 했다.",
+      "text_markdown": "그는 또한 일하는 사람들의 것을 훔치고 정직한 선원들의 생계를 방해한 도둑이기도 했다.",
+      "tts": {
+        "text": "그는 또한 일하는 사람들의 것을 훔치고 정직한 선원들의 생계를 방해한 도둑이기도 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "평등에 대한 그의 이상은 총구를 겨눠 약탈한 상인들에게는 미치지 않았다.",
+      "text_markdown": "평등에 대한 그의 이상은 총구를 겨눠 약탈한 상인들에게는 미치지 않았다.",
+      "tts": {
+        "text": "평등에 대한 그의 이상은 총구를 겨눠 약탈한 상인들에게는 미치지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "누구도 그를 심판하기 전에 바다가 새뮤얼 벨라미를 앗아갔다.",
+      "text_markdown": "누구도 그를 심판하기 전에 바다가 새뮤얼 벨라미를 앗아갔다.",
+      "tts": {
+        "text": "누구도 그를 심판하기 전에 바다가 새뮤얼 벨라미를 앗아갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 그의 배는 모래 속에 묻힌 채 살아남아 자신의 이야기를 전할 날을 기다렸다.",
+      "text_markdown": "그러나 그의 배는 모래 속에 묻힌 채 살아남아 자신의 이야기를 전할 날을 기다렸다.",
+      "tts": {
+        "text": "그러나 그의 배는 모래 속에 묻힌 채 살아남아 자신의 이야기를 전할 날을 기다렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "시간이 잊은 배",
+      "paragraph_id": "p117",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "위다호는 그 배를 항해했던 사람들의 목소리가 잠든 지 오랜 후에도 그들을 대신하여 말하고 있다.",
+      "text_markdown": "위다호는 그 배를 항해했던 사람들의 목소리가 잠든 지 오랜 후에도 그들을 대신하여 말하고 있다.",
+      "tts": {
+        "text": "위다호는 그 배를 항해했던 사람들의 목소리가 잠든 지 오랜 후에도 그들을 대신하여 말하고 있다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

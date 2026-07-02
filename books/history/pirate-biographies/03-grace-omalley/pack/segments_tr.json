@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_grace_omalley",
+  "language": "tr",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, İrlanda'nın batı kıyısının korsan kraliçesi Grace O'Malley'in gerçek hikâyesidir.",
+      "text_markdown": "Bu, İrlanda'nın batı kıyısının korsan kraliçesi Grace O'Malley'in gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, İrlanda'nın batı kıyısının korsan kraliçesi Grace O'Malley'in gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gal şeflerinin, klan savaşlarının ve Atlantik fırtınalarının dünyasına doğdu.",
+      "text_markdown": "Gal şeflerinin, klan savaşlarının ve Atlantik fırtınalarının dünyasına doğdu.",
+      "tts": {
+        "text": "Gal şeflerinin, klan savaşlarının ve Atlantik fırtınalarının dünyasına doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz Tacı'nın fethettip tanınmaz hâle getirdiği bir dünyada öldü.",
+      "text_markdown": "İngiliz Tacı'nın fethettip tanınmaz hâle getirdiği bir dünyada öldü.",
+      "tts": {
+        "text": "İngiliz Tacı'nın fethettip tanınmaz hâle getirdiği bir dünyada öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley, İrlanda tarihinin en çalkantılı yüzyıllarından birini yaşadı.",
+      "text_markdown": "Grace O'Malley, İrlanda tarihinin en çalkantılı yüzyıllarından birini yaşadı.",
+      "tts": {
+        "text": "Grace O'Malley, İrlanda tarihinin en çalkantılı yüzyıllarından birini yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir gemi filosuna komuta etti, İngiliz ordularıyla savaştı, hapsedilmekten kurtuldu ve üç kocasından uzun yaşadı.",
+      "text_markdown": "Bir gemi filosuna komuta etti, İngiliz ordularıyla savaştı, hapsedilmekten kurtuldu ve üç kocasından uzun yaşadı.",
+      "tts": {
+        "text": "Bir gemi filosuna komuta etti, İngiliz ordularıyla savaştı, hapsedilmekten kurtuldu ve üç kocasından uzun yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir keresinde Londra'ya yelken açıp Kraliçe Birinci Elizabeth ile yüz yüze görüştü.",
+      "text_markdown": "Bir keresinde Londra'ya yelken açıp Kraliçe Birinci Elizabeth ile yüz yüze görüştü.",
+      "tts": {
+        "text": "Bir keresinde Londra'ya yelken açıp Kraliçe Birinci Elizabeth ile yüz yüze görüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İrlandaca adı Grainne Mhaol'dı ve bugün İrlanda'da hâlâ bu adla bilinmektedir.",
+      "text_markdown": "İrlandaca adı Grainne Mhaol'dı ve bugün İrlanda'da hâlâ bu adla bilinmektedir.",
+      "tts": {
+        "text": "İrlandaca adı Grainne Mhaol'dı ve bugün İrlanda'da hâlâ bu adla bilinmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kitap, tarihî kayıtların elverdiği ölçüde onun hikâyesini anlatır.",
+      "text_markdown": "Bu kitap, tarihî kayıtların elverdiği ölçüde onun hikâyesini anlatır.",
+      "tts": {
+        "text": "Bu kitap, tarihî kayıtların elverdiği ölçüde onun hikâyesini anlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kayıtların sessiz kaldığı yerlerde bunu dürüstçe belirtiriz.",
+      "text_markdown": "Kayıtların sessiz kaldığı yerlerde bunu dürüstçe belirtiriz.",
+      "tts": {
+        "text": "Kayıtların sessiz kaldığı yerlerde bunu dürüstçe belirtiriz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayatı, herhangi bir bireyden çok daha büyük güçler tarafından şekillendirildi.",
+      "text_markdown": "Hayatı, herhangi bir bireyden çok daha büyük güçler tarafından şekillendirildi.",
+      "tts": {
+        "text": "Hayatı, herhangi bir bireyden çok daha büyük güçler tarafından şekillendirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tudor hanedanının İrlanda'yı fethi, Gal klan sisteminin yıkılması ve İngiliz sömürge gücünün yükselişi, onun hikâyesinin arka planını oluşturur.",
+      "text_markdown": "Tudor hanedanının İrlanda'yı fethi, Gal klan sisteminin yıkılması ve İngiliz sömürge gücünün yükselişi, onun hikâyesinin arka planını oluşturur.",
+      "tts": {
+        "text": "Tudor hanedanının İrlanda'yı fethi, Gal klan sisteminin yıkılması ve İngiliz sömürge gücünün yükselişi, onun hikâyesinin arka planını oluşturur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace O'Malley'i anlamak için önce onun doğduğu dünyayı anlamak gerekir.",
+      "text_markdown": "Grace O'Malley'i anlamak için önce onun doğduğu dünyayı anlamak gerekir.",
+      "tts": {
+        "text": "Grace O'Malley'i anlamak için önce onun doğduğu dünyayı anlamak gerekir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gal İrlanda'sının Dünyası",
+      "text_markdown": "Gal İrlanda'sının Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On altıncı yüzyılda İrlanda bölünmüş bir adaydı.",
+      "text_markdown": "On altıncı yüzyılda İrlanda bölünmüş bir adaydı.",
+      "tts": {
+        "text": "On altıncı yüzyılda İrlanda bölünmüş bir adaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dublin merkezli doğu kıyısı İngiliz yerleşimciler tarafından kontrol ediliyor ve İngiliz hukukuyla yönetiliyordu.",
+      "text_markdown": "Dublin merkezli doğu kıyısı İngiliz yerleşimciler tarafından kontrol ediliyor ve İngiliz hukukuyla yönetiliyordu.",
+      "tts": {
+        "text": "Dublin merkezli doğu kıyısı İngiliz yerleşimciler tarafından kontrol ediliyor ve İngiliz hukukuyla yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu bölge Pale olarak biliniyordu ve ötesinde İngilizlerin güçlükle anlayabildiği bir dünya uzanıyordu.",
+      "text_markdown": "Bu bölge Pale olarak biliniyordu ve ötesinde İngilizlerin güçlükle anlayabildiği bir dünya uzanıyordu.",
+      "tts": {
+        "text": "Bu bölge Pale olarak biliniyordu ve ötesinde İngilizlerin güçlükle anlayabildiği bir dünya uzanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pale'in batısında İrlanda, Gal şefleri tarafından yönetiliyordu.",
+      "text_markdown": "Pale'in batısında İrlanda, Gal şefleri tarafından yönetiliyordu.",
+      "tts": {
+        "text": "Pale'in batısında İrlanda, Gal şefleri tarafından yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu şefler topraklarını kadim Brehon hukukuna göre yönetiyorlardı.",
+      "text_markdown": "Bu şefler topraklarını kadim Brehon hukukuna göre yönetiyorlardı.",
+      "tts": {
+        "text": "Bu şefler topraklarını kadim Brehon hukukuna göre yönetiyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Brehon hukuku, İngiliz ortak hukukundan daha eski, toprak mülkiyetinden evliliğe her şeyi düzenleyen karmaşık bir hukuk sistemiydi.",
+      "text_markdown": "Brehon hukuku, İngiliz ortak hukukundan daha eski, toprak mülkiyetinden evliliğe her şeyi düzenleyen karmaşık bir hukuk sistemiydi.",
+      "tts": {
+        "text": "Brehon hukuku, İngiliz ortak hukukundan daha eski, toprak mülkiyetinden evliliğe her şeyi düzenleyen karmaşık bir hukuk sistemiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngiltere yasalarıyla hiçbir benzerliği yoktu.",
+      "text_markdown": "İngiltere yasalarıyla hiçbir benzerliği yoktu.",
+      "tts": {
+        "text": "İngiltere yasalarıyla hiçbir benzerliği yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Brehon hukukuna göre toprak bireylere değil klana aitti.",
+      "text_markdown": "Brehon hukukuna göre toprak bireylere değil klana aitti.",
+      "tts": {
+        "text": "Brehon hukukuna göre toprak bireylere değil klana aitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir şef görevini otomatik olarak miras almıyordu.",
+      "text_markdown": "Bir şef görevini otomatik olarak miras almıyordu.",
+      "tts": {
+        "text": "Bir şef görevini otomatik olarak miras almıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun yerine klanın ileri gelen erkekleri, yönetici aileden en yetenekli adayı seçerdi.",
+      "text_markdown": "Bunun yerine klanın ileri gelen erkekleri, yönetici aileden en yetenekli adayı seçerdi.",
+      "tts": {
+        "text": "Bunun yerine klanın ileri gelen erkekleri, yönetici aileden en yetenekli adayı seçerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu sistem, liderliğin kazanıldığı, babadan oğula basitçe geçmediği anlamına geliyordu.",
+      "text_markdown": "Bu sistem, liderliğin kazanıldığı, babadan oğula basitçe geçmediği anlamına geliyordu.",
+      "tts": {
+        "text": "Bu sistem, liderliğin kazanıldığı, babadan oğula basitçe geçmediği anlamına geliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İrlanda'nın batı kıyısına Atlas Okyanusu hükmediyordu.",
+      "text_markdown": "İrlanda'nın batı kıyısına Atlas Okyanusu hükmediyordu.",
+      "tts": {
+        "text": "İrlanda'nın batı kıyısına Atlas Okyanusu hükmediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deniz, kıyı boyundaki toplulukların yaşamının her yönünü şekillendiriyordu.",
+      "text_markdown": "Deniz, kıyı boyundaki toplulukların yaşamının her yönünü şekillendiriyordu.",
+      "tts": {
+        "text": "Deniz, kıyı boyundaki toplulukların yaşamının her yönünü şekillendiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Balıkçılık, ticaret ve akınlar kıyı ekonomisinin temelleriydi.",
+      "text_markdown": "Balıkçılık, ticaret ve akınlar kıyı ekonomisinin temelleriydi.",
+      "tts": {
+        "text": "Balıkçılık, ticaret ve akınlar kıyı ekonomisinin temelleriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En iyi limanları kontrol eden klanlar en zengin ve en güçlülerdi.",
+      "text_markdown": "En iyi limanları kontrol eden klanlar en zengin ve en güçlülerdi.",
+      "tts": {
+        "text": "En iyi limanları kontrol eden klanlar en zengin ve en güçlülerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İrlanda'nın batısındaki Connacht eyaleti, en güçlü Gal klanlarından bazılarına ev sahipliği yapıyordu.",
+      "text_markdown": "İrlanda'nın batısındaki Connacht eyaleti, en güçlü Gal klanlarından bazılarına ev sahipliği yapıyordu.",
+      "tts": {
+        "text": "İrlanda'nın batısındaki Connacht eyaleti, en güçlü Gal klanlarından bazılarına ev sahipliği yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O'Flaherty'ler güney Connacht'ın büyük bölümünü kontrol ediyordu.",
+      "text_markdown": "O'Flaherty'ler güney Connacht'ın büyük bölümünü kontrol ediyordu.",
+      "tts": {
+        "text": "O'Flaherty'ler güney Connacht'ın büyük bölümünü kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tamamen Galleşmiş Norman yerleşimcilerin torunları olan Burke'lar kuzeyde geniş toprakları kontrol ediyordu.",
+      "text_markdown": "Tamamen Galleşmiş Norman yerleşimcilerin torunları olan Burke'lar kuzeyde geniş toprakları kontrol ediyordu.",
+      "tts": {
+        "text": "Tamamen Galleşmiş Norman yerleşimcilerin torunları olan Burke'lar kuzeyde geniş toprakları kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve O'Malley'ler Clew Körfezi'ni ve çevresindeki kıyı şeridini kontrol ediyordu.",
+      "text_markdown": "Ve O'Malley'ler Clew Körfezi'ni ve çevresindeki kıyı şeridini kontrol ediyordu.",
+      "tts": {
+        "text": "Ve O'Malley'ler Clew Körfezi'ni ve çevresindeki kıyı şeridini kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Clew Körfezi, Avrupa'nın en dikkat çekici doğal limanlarından biridir.",
+      "text_markdown": "Clew Körfezi, Avrupa'nın en dikkat çekici doğal limanlarından biridir.",
+      "tts": {
+        "text": "Clew Körfezi, Avrupa'nın en dikkat çekici doğal limanlarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İçinde Clare Adası'nın kütlesiyle Atlantik fırtınalarından korunan yüzlerce küçük ada bulunur.",
+      "text_markdown": "İçinde Clare Adası'nın kütlesiyle Atlantik fırtınalarından korunan yüzlerce küçük ada bulunur.",
+      "tts": {
+        "text": "İçinde Clare Adası'nın kütlesiyle Atlantik fırtınalarından korunan yüzlerce küçük ada bulunur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Körfez, bir gemi filosu için mükemmel bir demirleme yeri sağlıyordu.",
+      "text_markdown": "Körfez, bir gemi filosu için mükemmel bir demirleme yeri sağlıyordu.",
+      "tts": {
+        "text": "Körfez, bir gemi filosu için mükemmel bir demirleme yeri sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Clew Körfezi'ni kontrol eden, batı kıyısındaki en zengin balıkçılık alanlarına erişimi kontrol ediyordu.",
+      "text_markdown": "Clew Körfezi'ni kontrol eden, batı kıyısındaki en zengin balıkçılık alanlarına erişimi kontrol ediyordu.",
+      "tts": {
+        "text": "Clew Körfezi'ni kontrol eden, batı kıyısındaki en zengin balıkçılık alanlarına erişimi kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O'Malley klanı yüzyıllardır denizciydi.",
+      "text_markdown": "O'Malley klanı yüzyıllardır denizciydi.",
+      "tts": {
+        "text": "O'Malley klanı yüzyıllardır denizciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İrlandacadan çevrilen sloganları karada ve denizde güçlü idi.",
+      "text_markdown": "İrlandacadan çevrilen sloganları karada ve denizde güçlü idi.",
+      "tts": {
+        "text": "İrlandacadan çevrilen sloganları karada ve denizde güçlü idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sularını kullanan balıkçı teknelerinden geçiş ücreti alıyorlardı.",
+      "text_markdown": "Sularını kullanan balıkçı teknelerinden geçiş ücreti alıyorlardı.",
+      "tts": {
+        "text": "Sularını kullanan balıkçı teknelerinden geçiş ücreti alıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İspanya, İskoçya ve batı Fransa limanlarıyla ticaret yapıyorlardı.",
+      "text_markdown": "İspanya, İskoçya ve batı Fransa limanlarıyla ticaret yapıyorlardı.",
+      "tts": {
+        "text": "İspanya, İskoçya ve batı Fransa limanlarıyla ticaret yapıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz Tacı on ikinci yüzyıldan beri tüm İrlanda üzerinde hâkimiyet iddia ediyordu.",
+      "text_markdown": "İngiliz Tacı on ikinci yüzyıldan beri tüm İrlanda üzerinde hâkimiyet iddia ediyordu.",
+      "tts": {
+        "text": "İngiliz Tacı on ikinci yüzyıldan beri tüm İrlanda üzerinde hâkimiyet iddia ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama bu sürenin büyük bölümünde İngiliz kontrolü Pale ve birkaç kıyı kasabasıyla sınırlıydı.",
+      "text_markdown": "Ama bu sürenin büyük bölümünde İngiliz kontrolü Pale ve birkaç kıyı kasabasıyla sınırlıydı.",
+      "tts": {
+        "text": "Ama bu sürenin büyük bölümünde İngiliz kontrolü Pale ve birkaç kıyı kasabasıyla sınırlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Batıdaki Gal şefleri nesiller boyu fiilen bağımsız olmuşlardı.",
+      "text_markdown": "Batıdaki Gal şefleri nesiller boyu fiilen bağımsız olmuşlardı.",
+      "tts": {
+        "text": "Batıdaki Gal şefleri nesiller boyu fiilen bağımsız olmuşlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu bağımsızlık sona ermek üzereydi.",
+      "text_markdown": "Bu bağımsızlık sona ermek üzereydi.",
+      "tts": {
+        "text": "Bu bağımsızlık sona ermek üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kral Sekizinci Henry, tüm İrlanda üzerinde doğrudan İngiliz yönetimi politikasını başlattı.",
+      "text_markdown": "Kral Sekizinci Henry, tüm İrlanda üzerinde doğrudan İngiliz yönetimi politikasını başlattı.",
+      "tts": {
+        "text": "Kral Sekizinci Henry, tüm İrlanda üzerinde doğrudan İngiliz yönetimi politikasını başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gal şeflerinden İngiliz hukukuna boyun eğmelerini ve topraklarını Tac'a teslim etmelerini talep etti.",
+      "text_markdown": "Gal şeflerinden İngiliz hukukuna boyun eğmelerini ve topraklarını Tac'a teslim etmelerini talep etti.",
+      "tts": {
+        "text": "Gal şeflerinden İngiliz hukukuna boyun eğmelerini ve topraklarını Tac'a teslim etmelerini talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında Taç, toprakları İngiliz yasal unvanlarıyla yeniden verecekti.",
+      "text_markdown": "Karşılığında Taç, toprakları İngiliz yasal unvanlarıyla yeniden verecekti.",
+      "tts": {
+        "text": "Karşılığında Taç, toprakları İngiliz yasal unvanlarıyla yeniden verecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu politikaya teslim ve yeniden bağış denildi ve Gal toplumunun kalbine saplanan bir darbe oldu.",
+      "text_markdown": "Bu politikaya teslim ve yeniden bağış denildi ve Gal toplumunun kalbine saplanan bir darbe oldu.",
+      "tts": {
+        "text": "Bu politikaya teslim ve yeniden bağış denildi ve Gal toplumunun kalbine saplanan bir darbe oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pek çok şef bu politikaya şiddetle direndi.",
+      "text_markdown": "Pek çok şef bu politikaya şiddetle direndi.",
+      "tts": {
+        "text": "Pek çok şef bu politikaya şiddetle direndi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunu, ailelerinin yüzyıllardır sahip olduğu toprakların çalınması olarak gördüler.",
+      "text_markdown": "Bunu, ailelerinin yüzyıllardır sahip olduğu toprakların çalınması olarak gördüler.",
+      "tts": {
+        "text": "Bunu, ailelerinin yüzyıllardır sahip olduğu toprakların çalınması olarak gördüler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri yeni sistem altında güçlerini korumayı umarak İngiliz unvanlarını kabul ettiler.",
+      "text_markdown": "Diğerleri yeni sistem altında güçlerini korumayı umarak İngiliz unvanlarını kabul ettiler.",
+      "tts": {
+        "text": "Diğerleri yeni sistem altında güçlerini korumayı umarak İngiliz unvanlarını kabul ettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonuç, ada genelinde onlarca yıl süren çatışma, müzakere ve ihanetti.",
+      "text_markdown": "Sonuç, ada genelinde onlarca yıl süren çatışma, müzakere ve ihanetti.",
+      "tts": {
+        "text": "Sonuç, ada genelinde onlarca yıl süren çatışma, müzakere ve ihanetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliçe Birinci Elizabeth, babasının İrlanda politikalarını sürdürdü ve yoğunlaştırdı.",
+      "text_markdown": "Kraliçe Birinci Elizabeth, babasının İrlanda politikalarını sürdürdü ve yoğunlaştırdı.",
+      "tts": {
+        "text": "Kraliçe Birinci Elizabeth, babasının İrlanda politikalarını sürdürdü ve yoğunlaştırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz hukukunu ada genelinde uygulamak için valiler ve ordular gönderdi.",
+      "text_markdown": "İngiliz hukukunu ada genelinde uygulamak için valiler ve ordular gönderdi.",
+      "tts": {
+        "text": "İngiliz hukukunu ada genelinde uygulamak için valiler ve ordular gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tudor fethi vahşiydi; katliamlar, zorla yerinden etmeler ve Gal kültürünün kasıtlı imhası içeriyordu.",
+      "text_markdown": "Tudor fethi vahşiydi; katliamlar, zorla yerinden etmeler ve Gal kültürünün kasıtlı imhası içeriyordu.",
+      "tts": {
+        "text": "Tudor fethi vahşiydi; katliamlar, zorla yerinden etmeler ve Gal kültürünün kasıtlı imhası içeriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley, Gal bağımsızlığının ölmekte olduğu bu dünyada doğdu.",
+      "text_markdown": "Grace O'Malley, Gal bağımsızlığının ölmekte olduğu bu dünyada doğdu.",
+      "tts": {
+        "text": "Grace O'Malley, Gal bağımsızlığının ölmekte olduğu bu dünyada doğdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyolların da İrlanda kıyıları boyunca çıkarları vardı.",
+      "text_markdown": "İspanyolların da İrlanda kıyıları boyunca çıkarları vardı.",
+      "tts": {
+        "text": "İspanyolların da İrlanda kıyıları boyunca çıkarları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya, İngiltere'nin en büyük rakibiydi ve İrlanda, bir İspanyol işgali için potansiyel üsler sunuyordu.",
+      "text_markdown": "İspanya, İngiltere'nin en büyük rakibiydi ve İrlanda, bir İspanyol işgali için potansiyel üsler sunuyordu.",
+      "tts": {
+        "text": "İspanya, İngiltere'nin en büyük rakibiydi ve İrlanda, bir İspanyol işgali için potansiyel üsler sunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İrlandalı şefler İspanyol tüccarlarla ticari ilişkiler sürdürüyordu.",
+      "text_markdown": "İrlandalı şefler İspanyol tüccarlarla ticari ilişkiler sürdürüyordu.",
+      "tts": {
+        "text": "İrlandalı şefler İspanyol tüccarlarla ticari ilişkiler sürdürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Gal İrlanda'sının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu bağlantılar yüzyıl ilerledikçe siyasi açıdan tehlikeli hâle gelecekti.",
+      "text_markdown": "Bu bağlantılar yüzyıl ilerledikçe siyasi açıdan tehlikeli hâle gelecekti.",
+      "tts": {
+        "text": "Bu bağlantılar yüzyıl ilerledikçe siyasi açıdan tehlikeli hâle gelecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley, 1530 civarında Clew Körfezi'nin ağzındaki Clare Adası'nda doğdu.",
+      "text_markdown": "Grace O'Malley, 1530 civarında Clew Körfezi'nin ağzındaki Clare Adası'nda doğdu.",
+      "tts": {
+        "text": "Grace O'Malley, bin beş yüz otuz civarında Clew Körfezi'nin ağzındaki Clare Adası'nda doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babası, O'Malley klanının şefi Dubhdara O'Malley idi.",
+      "text_markdown": "Babası, O'Malley klanının şefi Dubhdara O'Malley idi.",
+      "tts": {
+        "text": "Babası, O'Malley klanının şefi Dubhdara O'Malley idi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Koyu saçları ve gücü nedeniyle Kara Meşe olarak tanınırdı.",
+      "text_markdown": "Koyu saçları ve gücü nedeniyle Kara Meşe olarak tanınırdı.",
+      "tts": {
+        "text": "Koyu saçları ve gücü nedeniyle Kara Meşe olarak tanınırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Annesinin adı Margaret olarak kaydedilmiş olsa da hakkında başka pek az şey bilinmektedir.",
+      "text_markdown": "Annesinin adı Margaret olarak kaydedilmiş olsa da hakkında başka pek az şey bilinmektedir.",
+      "tts": {
+        "text": "Annesinin adı Margaret olarak kaydedilmiş olsa da hakkında başka pek az şey bilinmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace denizle çevrili bir ortamda büyüdü.",
+      "text_markdown": "Grace denizle çevrili bir ortamda büyüdü.",
+      "tts": {
+        "text": "Grace denizle çevrili bir ortamda büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Clare Adası, Clew Körfezi'nin girişinde yer alır ve Atlantik'in tüm gücüne açıktır.",
+      "text_markdown": "Clare Adası, Clew Körfezi'nin girişinde yer alır ve Atlantik'in tüm gücüne açıktır.",
+      "tts": {
+        "text": "Clare Adası, Clew Körfezi'nin girişinde yer alır ve Atlantik'in tüm gücüne açıktır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ada küçük, rüzgârlı ve güzeldir.",
+      "text_markdown": "Ada küçük, rüzgârlı ve güzeldir.",
+      "tts": {
+        "text": "Ada küçük, rüzgârlı ve güzeldir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O'Malley klanının kalesi ve deniz operasyonlarının üssüydü.",
+      "text_markdown": "O'Malley klanının kalesi ve deniz operasyonlarının üssüydü.",
+      "tts": {
+        "text": "O'Malley klanının kalesi ve deniz operasyonlarının üssüydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace erken yaşlardan itibaren denizciliğe yatkınlık gösterdi.",
+      "text_markdown": "Grace erken yaşlardan itibaren denizciliğe yatkınlık gösterdi.",
+      "tts": {
+        "text": "Grace erken yaşlardan itibaren denizciliğe yatkınlık gösterdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çocukken babasının ticaret seferlerine katılmayı talep ettiği söylenir.",
+      "text_markdown": "Çocukken babasının ticaret seferlerine katılmayı talep ettiği söylenir.",
+      "tts": {
+        "text": "Çocukken babasının ticaret seferlerine katılmayı talep ettiği söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uzun saçlarının geminin halatlarına takılacağı söylenince saçlarını kısa kesti.",
+      "text_markdown": "Uzun saçlarının geminin halatlarına takılacağı söylenince saçlarını kısa kesti.",
+      "tts": {
+        "text": "Uzun saçlarının geminin halatlarına takılacağı söylenince saçlarını kısa kesti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu hikâye tamamen doğru olsun ya da olmasın, ona kel Grace anlamına gelen Grainne Mhaol lakabını kazandırdı.",
+      "text_markdown": "Bu hikâye tamamen doğru olsun ya da olmasın, ona kel Grace anlamına gelen Grainne Mhaol lakabını kazandırdı.",
+      "tts": {
+        "text": "Bu hikâye tamamen doğru olsun ya da olmasın, ona kel Grace anlamına gelen Grainne Mhaol lakabını kazandırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yıldızları, gelgitleri ve deniz kuşlarının davranışlarını gözlemleyerek navigasyon öğrendi.",
+      "text_markdown": "Yıldızları, gelgitleri ve deniz kuşlarının davranışlarını gözlemleyerek navigasyon öğrendi.",
+      "tts": {
+        "text": "Yıldızları, gelgitleri ve deniz kuşlarının davranışlarını gözlemleyerek navigasyon öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Clew Körfezi çevresindeki tehlikeli akıntıları ve ötesindeki açık Atlantik'i öğrendi.",
+      "text_markdown": "Clew Körfezi çevresindeki tehlikeli akıntıları ve ötesindeki açık Atlantik'i öğrendi.",
+      "tts": {
+        "text": "Clew Körfezi çevresindeki tehlikeli akıntıları ve ötesindeki açık Atlantik'i öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendi gemisinin iki katı büyüklüğündeki gemileri yok edebilecek fırtınalarda gemi kullanmayı öğrendi.",
+      "text_markdown": "Kendi gemisinin iki katı büyüklüğündeki gemileri yok edebilecek fırtınalarda gemi kullanmayı öğrendi.",
+      "tts": {
+        "text": "Kendi gemisinin iki katı büyüklüğündeki gemileri yok edebilecek fırtınalarda gemi kullanmayı öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bunlar, ustalaşması yıllar alan becerilerdi ve o bunlara genç yaşta ustalaştı.",
+      "text_markdown": "Bunlar, ustalaşması yıllar alan becerilerdi ve o bunlara genç yaşta ustalaştı.",
+      "tts": {
+        "text": "Bunlar, ustalaşması yıllar alan becerilerdi ve o bunlara genç yaşta ustalaştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace'in eğitimi denizcilikle sınırlı değildi.",
+      "text_markdown": "Grace'in eğitimi denizcilikle sınırlı değildi.",
+      "tts": {
+        "text": "Grace'in eğitimi denizcilikle sınırlı değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir şefin kızı olarak Gal dünyasının siyasi sanatlarını öğrenmiş olmalıydı.",
+      "text_markdown": "Bir şefin kızı olarak Gal dünyasının siyasi sanatlarını öğrenmiş olmalıydı.",
+      "tts": {
+        "text": "Bir şefin kızı olarak Gal dünyasının siyasi sanatlarını öğrenmiş olmalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İttifakları, toprak iddialarını ve klanları birbirine bağlayan karmaşık yükümlülükler ağını anlıyordu.",
+      "text_markdown": "İttifakları, toprak iddialarını ve klanları birbirine bağlayan karmaşık yükümlülükler ağını anlıyordu.",
+      "tts": {
+        "text": "İttifakları, toprak iddialarını ve klanları birbirine bağlayan karmaşık yükümlülükler ağını anlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İrlandaca konuşuyordu ve muhtemelen biraz İngilizce ve belki de Latince öğrenmişti.",
+      "text_markdown": "İrlandaca konuşuyordu ve muhtemelen biraz İngilizce ve belki de Latince öğrenmişti.",
+      "tts": {
+        "text": "İrlandaca konuşuyordu ve muhtemelen biraz İngilizce ve belki de Latince öğrenmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1546 civarında, yaklaşık on altı yaşındayken Grace, Donal O'Flaherty ile evlendi.",
+      "text_markdown": "1546 civarında, yaklaşık on altı yaşındayken Grace, Donal O'Flaherty ile evlendi.",
+      "tts": {
+        "text": "Bin beş yüz kırk altı civarında, yaklaşık on altı yaşındayken Grace, Donal O'Flaherty ile evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Donal, Clew Körfezi'nin güneyindeki Connemara'da O'Flaherty şefliğinin varisiydi.",
+      "text_markdown": "Donal, Clew Körfezi'nin güneyindeki Connemara'da O'Flaherty şefliğinin varisiydi.",
+      "tts": {
+        "text": "Donal, Clew Körfezi'nin güneyindeki Connemara'da O'Flaherty şefliğinin varisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilik, iki güçlü Gal klanı arasında siyasi bir ittifaktı.",
+      "text_markdown": "Evlilik, iki güçlü Gal klanı arasında siyasi bir ittifaktı.",
+      "tts": {
+        "text": "Evlilik, iki güçlü Gal klanı arasında siyasi bir ittifaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace'e O'Flaherty topraklarının limanlarına ve bölgelerine erişim sağladı.",
+      "text_markdown": "Grace'e O'Flaherty topraklarının limanlarına ve bölgelerine erişim sağladı.",
+      "tts": {
+        "text": "Grace'e O'Flaherty topraklarının limanlarına ve bölgelerine erişim sağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donal O'Flaherty, Savaşların Donal'ı olarak biliniyordu.",
+      "text_markdown": "Donal O'Flaherty, Savaşların Donal'ı olarak biliniyordu.",
+      "tts": {
+        "text": "Donal O'Flaherty, Savaşların Donal'ı olarak biliniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saldırgandı ve komşu klanlarla sık sık husumete karışırdı.",
+      "text_markdown": "Saldırgandı ve komşu klanlarla sık sık husumete karışırdı.",
+      "tts": {
+        "text": "Saldırgandı ve komşu klanlarla sık sık husumete karışırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace evlilikleri süresince ona üç çocuk doğurdu.",
+      "text_markdown": "Grace evlilikleri süresince ona üç çocuk doğurdu.",
+      "tts": {
+        "text": "Grace evlilikleri süresince ona üç çocuk doğurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak geleneğe göre kısa sürede ikisinin daha yetenekli lideri oldu.",
+      "text_markdown": "Ancak geleneğe göre kısa sürede ikisinin daha yetenekli lideri oldu.",
+      "tts": {
+        "text": "Ancak geleneğe göre kısa sürede ikisinin daha yetenekli lideri oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donal rakip bir klanla çatışmada öldürülünce Grace onun filosunun ve takipçilerinin kontrolünü ele geçirdi.",
+      "text_markdown": "Donal rakip bir klanla çatışmada öldürülünce Grace onun filosunun ve takipçilerinin kontrolünü ele geçirdi.",
+      "tts": {
+        "text": "Donal rakip bir klanla çatışmada öldürülünce Grace onun filosunun ve takipçilerinin kontrolünü ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Brehon hukukuna göre onun mülkü üzerinde otomatik bir hakkı yoktu.",
+      "text_markdown": "Brehon hukukuna göre onun mülkü üzerinde otomatik bir hakkı yoktu.",
+      "tts": {
+        "text": "Brehon hukukuna göre onun mülkü üzerinde otomatik bir hakkı yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak yıllarca süren ortak denizcilik deneyimiyle mürettebatının sadakatini kazanmıştı.",
+      "text_markdown": "Ancak yıllarca süren ortak denizcilik deneyimiyle mürettebatının sadakatini kazanmıştı.",
+      "tts": {
+        "text": "Ancak yıllarca süren ortak denizcilik deneyimiyle mürettebatının sadakatini kazanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Adamlar onu takip etmeyi seçtiler ve o kendi hakkıyla bir komutan oldu.",
+      "text_markdown": "Adamlar onu takip etmeyi seçtiler ve o kendi hakkıyla bir komutan oldu.",
+      "tts": {
+        "text": "Adamlar onu takip etmeyi seçtiler ve o kendi hakkıyla bir komutan oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace takipçileri ve gemileriyle Clew Körfezi'ne döndü.",
+      "text_markdown": "Grace takipçileri ve gemileriyle Clew Körfezi'ne döndü.",
+      "tts": {
+        "text": "Grace takipçileri ve gemileriyle Clew Körfezi'ne döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Clare Adası'nda üssünü kurdu ve bir filo inşa etmeye başladı.",
+      "text_markdown": "Clare Adası'nda üssünü kurdu ve bir filo inşa etmeye başladı.",
+      "tts": {
+        "text": "Clare Adası'nda üssünü kurdu ve bir filo inşa etmeye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Balıkçı teknelerinden geçiş ücreti alıyor, yabancı tüccarlarla ticaret yapıyor ve rakip klanların gemilerini yağmalıyordu.",
+      "text_markdown": "Balıkçı teknelerinden geçiş ücreti alıyor, yabancı tüccarlarla ticaret yapıyor ve rakip klanların gemilerini yağmalıyordu.",
+      "tts": {
+        "text": "Balıkçı teknelerinden geçiş ücreti alıyor, yabancı tüccarlarla ticaret yapıyor ve rakip klanların gemilerini yağmalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birkaç yıl içinde İrlanda'nın batı kıyısındaki en güçlü figürlerden biri oldu.",
+      "text_markdown": "Birkaç yıl içinde İrlanda'nın batı kıyısındaki en güçlü figürlerden biri oldu.",
+      "tts": {
+        "text": "Birkaç yıl içinde İrlanda'nın batı kıyısındaki en güçlü figürlerden biri oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1566 civarında ikinci kez, Demir Richard olarak bilinen Richard Burke ile evlendi.",
+      "text_markdown": "1566 civarında ikinci kez, Demir Richard olarak bilinen Richard Burke ile evlendi.",
+      "tts": {
+        "text": "Bin beş yüz altmış altı civarında ikinci kez, Demir Richard olarak bilinen Richard Burke ile evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Richard, Mayo kontluğundaki Burke klanının güçlü bir kolunun şefiydi.",
+      "text_markdown": "Richard, Mayo kontluğundaki Burke klanının güçlü bir kolunun şefiydi.",
+      "tts": {
+        "text": "Richard, Mayo kontluğundaki Burke klanının güçlü bir kolunun şefiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ünlü bir hikâyeye göre Grace, onu Brehon hukukuyla bir yıllığına nikahlayıp sonra kendi kalesinden dışarı kilitledi.",
+      "text_markdown": "Ünlü bir hikâyeye göre Grace, onu Brehon hukukuyla bir yıllığına nikahlayıp sonra kendi kalesinden dışarı kilitledi.",
+      "tts": {
+        "text": "Ünlü bir hikâyeye göre Grace, onu Brehon hukukuyla bir yıllığına nikahlayıp sonra kendi kalesinden dışarı kilitledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu hikâye tamamen doğru olsun ya da olmasın, cesur ve alışılmadık eylem konusundaki şöhretini yansıtır.",
+      "text_markdown": "Bu hikâye tamamen doğru olsun ya da olmasın, cesur ve alışılmadık eylem konusundaki şöhretini yansıtır.",
+      "tts": {
+        "text": "Bu hikâye tamamen doğru olsun ya da olmasın, cesur ve alışılmadık eylem konusundaki şöhretini yansıtır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace ve Richard aslında renkli hikâyelere rağmen uzun yıllar birlikte kaldılar.",
+      "text_markdown": "Grace ve Richard aslında renkli hikâyelere rağmen uzun yıllar birlikte kaldılar.",
+      "tts": {
+        "text": "Grace ve Richard aslında renkli hikâyelere rağmen uzun yıllar birlikte kaldılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tibbot adında bir oğulları oldu; o daha sonra İrlanda tarihinde önemli bir rol oynayacaktı.",
+      "text_markdown": "Tibbot adında bir oğulları oldu; o daha sonra İrlanda tarihinde önemli bir rol oynayacaktı.",
+      "tts": {
+        "text": "Tibbot adında bir oğulları oldu; o daha sonra İrlanda tarihinde önemli bir rol oynayacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilik Grace'e ek topraklar, gemiler ve siyasi bağlantılar kazandırdı.",
+      "text_markdown": "Evlilik Grace'e ek topraklar, gemiler ve siyasi bağlantılar kazandırdı.",
+      "tts": {
+        "text": "Evlilik Grace'e ek topraklar, gemiler ve siyasi bağlantılar kazandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Artık batı kıyısındaki ve belki de tüm İrlanda'daki en güçlü kadındı.",
+      "text_markdown": "Artık batı kıyısındaki ve belki de tüm İrlanda'daki en güçlü kadındı.",
+      "tts": {
+        "text": "Artık batı kıyısındaki ve belki de tüm İrlanda'daki en güçlü kadındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filosu zirve döneminde yirmi gemiye ulaştı.",
+      "text_markdown": "Filosu zirve döneminde yirmi gemiye ulaştı.",
+      "tts": {
+        "text": "Filosu zirve döneminde yirmi gemiye ulaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar büyük savaş gemileri değil, çalkantılı Atlantik sularına uygun sağlam kadırga tipi teknelerdi.",
+      "text_markdown": "Bunlar büyük savaş gemileri değil, çalkantılı Atlantik sularına uygun sağlam kadırga tipi teknelerdi.",
+      "tts": {
+        "text": "Bunlar büyük savaş gemileri değil, çalkantılı Atlantik sularına uygun sağlam kadırga tipi teknelerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticari mallar, savaşçılar ve hızla yok olan bir Gal dünyasının umutlarını taşıyorlardı.",
+      "text_markdown": "Ticari mallar, savaşçılar ve hızla yok olan bir Gal dünyasının umutlarını taşıyorlardı.",
+      "tts": {
+        "text": "Ticari mallar, savaşçılar ve hızla yok olan bir Gal dünyasının umutlarını taşıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley, tanıdığı dünya yok edilirken tam o anda bir deniz imparatorluğu inşa ediyordu.",
+      "text_markdown": "Grace O'Malley, tanıdığı dünya yok edilirken tam o anda bir deniz imparatorluğu inşa ediyordu.",
+      "tts": {
+        "text": "Grace O'Malley, tanıdığı dünya yok edilirken tam o anda bir deniz imparatorluğu inşa ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İktidara Yükseliş",
+      "text_markdown": "İktidara Yükseliş"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley'in gücü üç temele dayanıyordu: gemiler, ittifaklar ve cesaret.",
+      "text_markdown": "Grace O'Malley'in gücü üç temele dayanıyordu: gemiler, ittifaklar ve cesaret.",
+      "tts": {
+        "text": "Grace O'Malley'in gücü üç temele dayanıyordu: gemiler, ittifaklar ve cesaret.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu ona batı kıyısı boyunca deniz yollarının kontrolünü veriyordu.",
+      "text_markdown": "Filosu ona batı kıyısı boyunca deniz yollarının kontrolünü veriyordu.",
+      "tts": {
+        "text": "Filosu ona batı kıyısı boyunca deniz yollarının kontrolünü veriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilikleri ve aile bağları ona en güçlü Gal klanlarıyla ittifaklar sağlıyordu.",
+      "text_markdown": "Evlilikleri ve aile bağları ona en güçlü Gal klanlarıyla ittifaklar sağlıyordu.",
+      "tts": {
+        "text": "Evlilikleri ve aile bağları ona en güçlü Gal klanlarıyla ittifaklar sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kişisel cesareti ise başka türlü asla bir kadını takip etmeyecek erkeklerin bağlılığını kazandı.",
+      "text_markdown": "Kişisel cesareti ise başka türlü asla bir kadını takip etmeyecek erkeklerin bağlılığını kazandı.",
+      "tts": {
+        "text": "Kişisel cesareti ise başka türlü asla bir kadını takip etmeyecek erkeklerin bağlılığını kazandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geçiş ücreti ödemeden sularından geçen ticaret gemilerini yağmalıyordu.",
+      "text_markdown": "Geçiş ücreti ödemeden sularından geçen ticaret gemilerini yağmalıyordu.",
+      "tts": {
+        "text": "Geçiş ücreti ödemeden sularından geçen ticaret gemilerini yağmalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Topraklarına meydan okuyan rakip klanların gemilerine saldırıyordu.",
+      "text_markdown": "Topraklarına meydan okuyan rakip klanların gemilerine saldırıyordu.",
+      "tts": {
+        "text": "Topraklarına meydan okuyan rakip klanların gemilerine saldırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol ve İskoç tüccarlarla ticaret yapıyor; İrlanda derileri, balık ve yününü şarap, tuz ve silahla değiştiriyordu.",
+      "text_markdown": "İspanyol ve İskoç tüccarlarla ticaret yapıyor; İrlanda derileri, balık ve yününü şarap, tuz ve silahla değiştiriyordu.",
+      "tts": {
+        "text": "İspanyol ve İskoç tüccarlarla ticaret yapıyor; İrlanda derileri, balık ve yününü şarap, tuz ve silahla değiştiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Faaliyetleri onu zengin ve batı kıyısı genelinde siyasi açıdan etkili kıldı.",
+      "text_markdown": "Faaliyetleri onu zengin ve batı kıyısı genelinde siyasi açıdan etkili kıldı.",
+      "tts": {
+        "text": "Faaliyetleri onu zengin ve batı kıyısı genelinde siyasi açıdan etkili kıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Connacht'taki İngiliz yetkilileri onu tehlikeli bir asi olarak görüyordu.",
+      "text_markdown": "Connacht'taki İngiliz yetkilileri onu tehlikeli bir asi olarak görüyordu.",
+      "tts": {
+        "text": "Connacht'taki İngiliz yetkilileri onu tehlikeli bir asi olarak görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sir Richard Bingham, 1584'te Connacht'ın İngiliz valisi olarak atandı.",
+      "text_markdown": "Sir Richard Bingham, 1584'te Connacht'ın İngiliz valisi olarak atandı.",
+      "tts": {
+        "text": "Sir Richard Bingham, bin beş yüz seksen dörtte Connacht'ın İngiliz valisi olarak atandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bingham, Gal direnişini ezmeye kararlı acımasız bir yöneticiydi.",
+      "text_markdown": "Bingham, Gal direnişini ezmeye kararlı acımasız bir yöneticiydi.",
+      "tts": {
+        "text": "Bingham, Gal direnişini ezmeye kararlı acımasız bir yöneticiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley'i başlıca hedeflerinden biri olarak görüyordu.",
+      "text_markdown": "Grace O'Malley'i başlıca hedeflerinden biri olarak görüyordu.",
+      "tts": {
+        "text": "Grace O'Malley'i başlıca hedeflerinden biri olarak görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bingham sığırlarına el koydu ve birçok kez tutuklamaya çalıştı.",
+      "text_markdown": "Bingham sığırlarına el koydu ve birçok kez tutuklamaya çalıştı.",
+      "tts": {
+        "text": "Bingham sığırlarına el koydu ve birçok kez tutuklamaya çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En büyük oğlu Owen'ı yakalayıp öldürttü.",
+      "text_markdown": "En büyük oğlu Owen'ı yakalayıp öldürttü.",
+      "tts": {
+        "text": "En büyük oğlu Owen'ı yakalayıp öldürttü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Erkek kardeşini ve birkaç taraftarını hapsetti.",
+      "text_markdown": "Erkek kardeşini ve birkaç taraftarını hapsetti.",
+      "tts": {
+        "text": "Erkek kardeşini ve birkaç taraftarını hapsetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ona karşı yürüttüğü kampanya kişisel ve kindarydı.",
+      "text_markdown": "Ona karşı yürüttüğü kampanya kişisel ve kindarydı.",
+      "tts": {
+        "text": "Ona karşı yürüttüğü kampanya kişisel ve kindarydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace, elindeki her araçla Bingham'a direndi.",
+      "text_markdown": "Grace, elindeki her araçla Bingham'a direndi.",
+      "tts": {
+        "text": "Grace, elindeki her araçla Bingham'a direndi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz ikmal gemilerine baskınlar düzenledi.",
+      "text_markdown": "İngiliz ikmal gemilerine baskınlar düzenledi.",
+      "tts": {
+        "text": "İngiliz ikmal gemilerine baskınlar düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bingham'ın kuvvetlerinden kaçan Gal asilerine sığınak sağladı.",
+      "text_markdown": "Bingham'ın kuvvetlerinden kaçan Gal asilerine sığınak sağladı.",
+      "tts": {
+        "text": "Bingham'ın kuvvetlerinden kaçan Gal asilerine sığınak sağladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kıyı şeridi bilgisini kullanarak İngiliz devriyelerinden kaçıyor ve en az bekledikleri yerde vuruyor.",
+      "text_markdown": "Kıyı şeridi bilgisini kullanarak İngiliz devriyelerinden kaçıyor ve en az bekledikleri yerde vuruyor.",
+      "tts": {
+        "text": "Kıyı şeridi bilgisini kullanarak İngiliz devriyelerinden kaçıyor ve en az bekledikleri yerde vuruyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama Bingham'ın kaynakları onunkilerden çok daha fazlaydı.",
+      "text_markdown": "Ama Bingham'ın kaynakları onunkilerden çok daha fazlaydı.",
+      "tts": {
+        "text": "Ama Bingham'ın kaynakları onunkilerden çok daha fazlaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz askerlerine, topçuya ve Taç'ın desteğine komuta ediyordu.",
+      "text_markdown": "İngiliz askerlerine, topçuya ve Taç'ın desteğine komuta ediyordu.",
+      "tts": {
+        "text": "İngiliz askerlerine, topçuya ve Taç'ın desteğine komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace, Avrupa'nın en güçlü krallığına karşı kaybedilecek bir savaş veriyordu.",
+      "text_markdown": "Grace, Avrupa'nın en güçlü krallığına karşı kaybedilecek bir savaş veriyordu.",
+      "tts": {
+        "text": "Grace, Avrupa'nın en güçlü krallığına karşı kaybedilecek bir savaş veriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bin beş yüz doksanlı yılların başında seçenekleri tükeniyordu.",
+      "text_markdown": "Bin beş yüz doksanlı yılların başında seçenekleri tükeniyordu.",
+      "tts": {
+        "text": "Bin beş yüz doksanlı yılların başında seçenekleri tükeniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1593'te Grace, Tudor döneminin tarihindeki en olağanüstü kararlardan birini aldı.",
+      "text_markdown": "1593'te Grace, Tudor döneminin tarihindeki en olağanüstü kararlardan birini aldı.",
+      "tts": {
+        "text": "Bin beş yüz doksan üçte Grace, Tudor döneminin tarihindeki en olağanüstü kararlardan birini aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bingham'ı tamamen devre dışı bırakıp doğrudan Kraliçe Birinci Elizabeth'e başvurmaya karar verdi.",
+      "text_markdown": "Bingham'ı tamamen devre dışı bırakıp doğrudan Kraliçe Birinci Elizabeth'e başvurmaya karar verdi.",
+      "tts": {
+        "text": "Bingham'ı tamamen devre dışı bırakıp doğrudan Kraliçe Birinci Elizabeth'e başvurmaya karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kraliçe'ye Bingham'a ilişkin şikâyetlerini özetleyen bir dilekçe yazdı.",
+      "text_markdown": "Kraliçe'ye Bingham'a ilişkin şikâyetlerini özetleyen bir dilekçe yazdı.",
+      "tts": {
+        "text": "Kraliçe'ye Bingham'a ilişkin şikâyetlerini özetleyen bir dilekçe yazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ardından davasını şahsen sunmak üzere İngiltere'ye yelken açtı.",
+      "text_markdown": "Ardından davasını şahsen sunmak üzere İngiltere'ye yelken açtı.",
+      "tts": {
+        "text": "Ardından davasını şahsen sunmak üzere İngiltere'ye yelken açtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley ile Kraliçe Elizabeth'in buluşması Londra'daki Greenwich Sarayı'nda gerçekleşti.",
+      "text_markdown": "Grace O'Malley ile Kraliçe Elizabeth'in buluşması Londra'daki Greenwich Sarayı'nda gerçekleşti.",
+      "tts": {
+        "text": "Grace O'Malley ile Kraliçe Elizabeth'in buluşması Londra'daki Greenwich Sarayı'nda gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kesin tarih kaydedilmemiştir, ancak 1593 Eylül'ünde gerçekleşti.",
+      "text_markdown": "Kesin tarih kaydedilmemiştir, ancak 1593 Eylül'ünde gerçekleşti.",
+      "tts": {
+        "text": "Kesin tarih kaydedilmemiştir, ancak bin beş yüz doksan üç Eylül'ünde gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On altıncı yüzyılın en olağanüstü iki kadını yüz yüze durdu.",
+      "text_markdown": "On altıncı yüzyılın en olağanüstü iki kadını yüz yüze durdu.",
+      "tts": {
+        "text": "On altıncı yüzyılın en olağanüstü iki kadını yüz yüze durdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Biri Avrupa'nın en güçlü krallığını yönetiyordu; diğeri Atlantik'in kıyısında bir filoya hükmediyordu.",
+      "text_markdown": "Biri Avrupa'nın en güçlü krallığını yönetiyordu; diğeri Atlantik'in kıyısında bir filoya hükmediyordu.",
+      "tts": {
+        "text": "Biri Avrupa'nın en güçlü krallığını yönetiyordu; diğeri Atlantik'in kıyısında bir filoya hükmediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace toplantıyı her iki kadının da konuştuğu Latince ile yürüttü.",
+      "text_markdown": "Grace toplantıyı her iki kadının da konuştuğu Latince ile yürüttü.",
+      "tts": {
+        "text": "Grace toplantıyı her iki kadının da konuştuğu Latince ile yürüttü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elizabeth'in önünde eğilmeyi reddederek kendisinin de kendi hakkıyla bir hükümdar olduğunu savundu.",
+      "text_markdown": "Elizabeth'in önünde eğilmeyi reddederek kendisinin de kendi hakkıyla bir hükümdar olduğunu savundu.",
+      "tts": {
+        "text": "Elizabeth'in önünde eğilmeyi reddederek kendisinin de kendi hakkıyla bir hükümdar olduğunu savundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dilekçesini netlik ve güçle sundu.",
+      "text_markdown": "Dilekçesini netlik ve güçle sundu.",
+      "tts": {
+        "text": "Dilekçesini netlik ve güçle sundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elizabeth'in onun cesaretinden ve duruşundan etkilendiği bildirilir.",
+      "text_markdown": "Elizabeth'in onun cesaretinden ve duruşundan etkilendiği bildirilir.",
+      "tts": {
+        "text": "Elizabeth'in onun cesaretinden ve duruşundan etkilendiği bildirilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elizabeth, Grace'in taleplerinin birçoğunu kabul etti.",
+      "text_markdown": "Elizabeth, Grace'in taleplerinin birçoğunu kabul etti.",
+      "tts": {
+        "text": "Elizabeth, Grace'in taleplerinin birçoğunu kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bingham'a Grace'in hapsedilen aile üyelerini serbest bırakmasını emretti.",
+      "text_markdown": "Bingham'a Grace'in hapsedilen aile üyelerini serbest bırakmasını emretti.",
+      "tts": {
+        "text": "Bingham'a Grace'in hapsedilen aile üyelerini serbest bırakmasını emretti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace'e denizcilik faaliyetlerini sürdürme hakkı tanıdı.",
+      "text_markdown": "Grace'e denizcilik faaliyetlerini sürdürme hakkı tanıdı.",
+      "tts": {
+        "text": "Grace'e denizcilik faaliyetlerini sürdürme hakkı tanıdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace ve takipçileri için koruma mektupları yazdı.",
+      "text_markdown": "Grace ve takipçileri için koruma mektupları yazdı.",
+      "tts": {
+        "text": "Grace ve takipçileri için koruma mektupları yazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Greenwich'teki buluşma Grace O'Malley için diplomatik bir zaferdi.",
+      "text_markdown": "Greenwich'teki buluşma Grace O'Malley için diplomatik bir zaferdi.",
+      "tts": {
+        "text": "Greenwich'teki buluşma Grace O'Malley için diplomatik bir zaferdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İrlanda'daki İngiliz sömürge yönetiminin üstünden atlamıştı.",
+      "text_markdown": "İrlanda'daki İngiliz sömürge yönetiminin üstünden atlamıştı.",
+      "tts": {
+        "text": "İrlanda'daki İngiliz sömürge yönetiminin üstünden atlamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümdarla doğrudan müzakere etmiş ve gerçek tavizler elde etmişti.",
+      "text_markdown": "Hükümdarla doğrudan müzakere etmiş ve gerçek tavizler elde etmişti.",
+      "tts": {
+        "text": "Hükümdarla doğrudan müzakere etmiş ve gerçek tavizler elde etmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Başka hiçbir Gal şefi buna benzer bir şey başaramamıştı.",
+      "text_markdown": "Başka hiçbir Gal şefi buna benzer bir şey başaramamıştı.",
+      "tts": {
+        "text": "Başka hiçbir Gal şefi buna benzer bir şey başaramamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama zafer kırılgan ve geçiciydi.",
+      "text_markdown": "Ama zafer kırılgan ve geçiciydi.",
+      "tts": {
+        "text": "Ama zafer kırılgan ve geçiciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bingham kendi kraliçesi tarafından geçersiz kılınmaya içerlemişti.",
+      "text_markdown": "Bingham kendi kraliçesi tarafından geçersiz kılınmaya içerlemişti.",
+      "tts": {
+        "text": "Bingham kendi kraliçesi tarafından geçersiz kılınmaya içerlemişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elizabeth'in emirlerini uygulamayı sürüncemede bıraktı.",
+      "text_markdown": "Elizabeth'in emirlerini uygulamayı sürüncemede bıraktı.",
+      "tts": {
+        "text": "Elizabeth'in emirlerini uygulamayı sürüncemede bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gal İrlanda'sını yok eden yapısal güçler herhangi bir tek müzakereden bağımsız olarak devam etti.",
+      "text_markdown": "Gal İrlanda'sını yok eden yapısal güçler herhangi bir tek müzakereden bağımsız olarak devam etti.",
+      "tts": {
+        "text": "Gal İrlanda'sını yok eden yapısal güçler herhangi bir tek müzakereden bağımsız olarak devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Grace bir muharebe kazanmıştı ama savaş çoktan kaybedilmişti.",
+      "text_markdown": "Grace bir muharebe kazanmıştı ama savaş çoktan kaybedilmişti.",
+      "tts": {
+        "text": "Grace bir muharebe kazanmıştı ama savaş çoktan kaybedilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dokuz Yıl Savaşları bin beş yüz doksanlı yıllarda İrlanda genelinde patlak verdi.",
+      "text_markdown": "Dokuz Yıl Savaşları bin beş yüz doksanlı yıllarda İrlanda genelinde patlak verdi.",
+      "tts": {
+        "text": "Dokuz Yıl Savaşları bin beş yüz doksanlı yıllarda İrlanda genelinde patlak verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gal şefleri İngiliz yönetimine karşı son, umutsuz bir isyana kalktılar.",
+      "text_markdown": "Gal şefleri İngiliz yönetimine karşı son, umutsuz bir isyana kalktılar.",
+      "tts": {
+        "text": "Gal şefleri İngiliz yönetimine karşı son, umutsuz bir isyana kalktılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş İngiliz zaferiyle ve eski Gal düzeninin tamamen yok edilmesiyle sona erdi.",
+      "text_markdown": "Savaş İngiliz zaferiyle ve eski Gal düzeninin tamamen yok edilmesiyle sona erdi.",
+      "tts": {
+        "text": "Savaş İngiliz zaferiyle ve eski Gal düzeninin tamamen yok edilmesiyle sona erdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidara Yükseliş",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley, uğruna savaştığı dünyanın etrafında çöküşünü görecek kadar yaşadı.",
+      "text_markdown": "Grace O'Malley, uğruna savaştığı dünyanın etrafında çöküşünü görecek kadar yaşadı.",
+      "tts": {
+        "text": "Grace O'Malley, uğruna savaştığı dünyanın etrafında çöküşünü görecek kadar yaşadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zirvedeyken",
+      "text_markdown": "Zirvedeyken"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin beş yüz yetmişli ve bin beş yüz seksenli yıllardaki gücünün zirvesinde Grace O'Malley batı denizine hükmediyordu.",
+      "text_markdown": "Bin beş yüz yetmişli ve bin beş yüz seksenli yıllardaki gücünün zirvesinde Grace O'Malley batı denizine hükmediyordu.",
+      "tts": {
+        "text": "Bin beş yüz yetmişli ve bin beş yüz seksenli yıllardaki gücünün zirvesinde Grace O'Malley batı denizine hükmediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu Galway Körfezi'nden Donegal'a kadar sulara hâkimdi.",
+      "text_markdown": "Filosu Galway Körfezi'nden Donegal'a kadar sulara hâkimdi.",
+      "tts": {
+        "text": "Filosu Galway Körfezi'nden Donegal'a kadar sulara hâkimdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiçbir gemi onun bilgisi dışında ve genellikle ona ücret ödemeden bölgesinden geçemezdi.",
+      "text_markdown": "Hiçbir gemi onun bilgisi dışında ve genellikle ona ücret ödemeden bölgesinden geçemezdi.",
+      "tts": {
+        "text": "Hiçbir gemi onun bilgisi dışında ve genellikle ona ücret ödemeden bölgesinden geçemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İrlanda Atlantik kıyısının tartışmasız deniz gücüydü.",
+      "text_markdown": "İrlanda Atlantik kıyısının tartışmasız deniz gücüydü.",
+      "tts": {
+        "text": "İrlanda Atlantik kıyısının tartışmasız deniz gücüydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başlıca kaleleri Clare Adası, Rockfleet Kalesi ve kıyı boyunca birkaç müstahkem mevziydi.",
+      "text_markdown": "Başlıca kaleleri Clare Adası, Rockfleet Kalesi ve kıyı boyunca birkaç müstahkem mevziydi.",
+      "tts": {
+        "text": "Başlıca kaleleri Clare Adası, Rockfleet Kalesi ve kıyı boyunca birkaç müstahkem mevziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Carrickahowley olarak da bilinen Rockfleet Kalesi, Clew Körfezi'ndeki dar bir koyda yükselir.",
+      "text_markdown": "Carrickahowley olarak da bilinen Rockfleet Kalesi, Clew Körfezi'ndeki dar bir koyda yükselir.",
+      "tts": {
+        "text": "Carrickahowley olarak da bilinen Rockfleet Kalesi, Clew Körfezi'ndeki dar bir koyda yükselir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Küçük ama heybetli bir kule evdir; üç tarafı suyla çevrilidir.",
+      "text_markdown": "Küçük ama heybetli bir kule evdir; üç tarafı suyla çevrilidir.",
+      "tts": {
+        "text": "Küçük ama heybetli bir kule evdir; üç tarafı suyla çevrilidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rivayete göre Grace, geceleri sudaki herhangi bir hareketi hissedebilmek için gemisinin bağlama halatını yatağının direğine bağlardı.",
+      "text_markdown": "Rivayete göre Grace, geceleri sudaki herhangi bir hareketi hissedebilmek için gemisinin bağlama halatını yatağının direğine bağlardı.",
+      "tts": {
+        "text": "Rivayete göre Grace, geceleri sudaki herhangi bir hareketi hissedebilmek için gemisinin bağlama halatını yatağının direğine bağlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace birkaç yüz kişilik bir savaş gücü bulunduruyordu.",
+      "text_markdown": "Grace birkaç yüz kişilik bir savaş gücü bulunduruyordu.",
+      "tts": {
+        "text": "Grace birkaç yüz kişilik bir savaş gücü bulunduruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar profesyonel askerler değil, sadakat, akrabalık ve öz çıkar güdüsüyle ona hizmet eden klan üyeleriydi.",
+      "text_markdown": "Bunlar profesyonel askerler değil, sadakat, akrabalık ve öz çıkar güdüsüyle ona hizmet eden klan üyeleriydi.",
+      "tts": {
+        "text": "Bunlar profesyonel askerler değil, sadakat, akrabalık ve öz çıkar güdüsüyle ona hizmet eden klan üyeleriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemilerinde mürettebat olarak görev yapıyor, kalelerini savunuyor ve akınlarda onun yanında savaşıyorlardı.",
+      "text_markdown": "Gemilerinde mürettebat olarak görev yapıyor, kalelerini savunuyor ve akınlarda onun yanında savaşıyorlardı.",
+      "tts": {
+        "text": "Gemilerinde mürettebat olarak görev yapıyor, kalelerini savunuyor ve akınlarda onun yanında savaşıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onları besliyor, ücretlerini ödüyor ve bizzat tehlikeye yönlendiriyordu.",
+      "text_markdown": "Onları besliyor, ücretlerini ödüyor ve bizzat tehlikeye yönlendiriyordu.",
+      "tts": {
+        "text": "Onları besliyor, ücretlerini ödüyor ve bizzat tehlikeye yönlendiriyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemileri, Atlantik kıyısına uygun sağlam, sığ su çekimli kadırgalardı.",
+      "text_markdown": "Gemileri, Atlantik kıyısına uygun sağlam, sığ su çekimli kadırgalardı.",
+      "tts": {
+        "text": "Gemileri, Atlantik kıyısına uygun sağlam, sığ su çekimli kadırgalardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha derin gemilerin giremediği Clew Körfezi çevresindeki tehlikeli sularda seyredilebiliyorlardı.",
+      "text_markdown": "Daha derin gemilerin giremediği Clew Körfezi çevresindeki tehlikeli sularda seyredilebiliyorlardı.",
+      "tts": {
+        "text": "Daha derin gemilerin giremediği Clew Körfezi çevresindeki tehlikeli sularda seyredilebiliyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret gemilerini yakalayacak kadar hızlı ve savaş gemilerinden kaçacak kadar manevra kabiliyetliydiler.",
+      "text_markdown": "Ticaret gemilerini yakalayacak kadar hızlı ve savaş gemilerinden kaçacak kadar manevra kabiliyetliydiler.",
+      "tts": {
+        "text": "Ticaret gemilerini yakalayacak kadar hızlı ve savaş gemilerinden kaçacak kadar manevra kabiliyetliydiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tasarım, O'Malley klanı tarafından nesiller boyu mükemmelleştirilmişti.",
+      "text_markdown": "Tasarım, O'Malley klanı tarafından nesiller boyu mükemmelleştirilmişti.",
+      "tts": {
+        "text": "Tasarım, O'Malley klanı tarafından nesiller boyu mükemmelleştirilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace yabancı tüccarlarla geniş çapta ticaret yapıyordu.",
+      "text_markdown": "Grace yabancı tüccarlarla geniş çapta ticaret yapıyordu.",
+      "tts": {
+        "text": "Grace yabancı tüccarlarla geniş çapta ticaret yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol gemileri İrlanda kıyılarına şarap, demir ve tuz getiriyordu.",
+      "text_markdown": "İspanyol gemileri İrlanda kıyılarına şarap, demir ve tuz getiriyordu.",
+      "tts": {
+        "text": "İspanyol gemileri İrlanda kıyılarına şarap, demir ve tuz getiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında Grace tuzlanmış balık, sığır derisi ve yün ihraç ediyordu.",
+      "text_markdown": "Karşılığında Grace tuzlanmış balık, sığır derisi ve yün ihraç ediyordu.",
+      "tts": {
+        "text": "Karşılığında Grace tuzlanmış balık, sığır derisi ve yün ihraç ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ticaret teknik olarak İngiliz hukukuna göre yasadışıydı, ama İngiliz hukuku vahşi Atlantik kıyısında pek anlam taşımıyordu.",
+      "text_markdown": "Bu ticaret teknik olarak İngiliz hukukuna göre yasadışıydı, ama İngiliz hukuku vahşi Atlantik kıyısında pek anlam taşımıyordu.",
+      "tts": {
+        "text": "Bu ticaret teknik olarak İngiliz hukukuna göre yasadışıydı, ama İngiliz hukuku vahşi Atlantik kıyısında pek anlam taşımıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayrıca geçiş ücreti ödemeyi reddeden gemileri de yağmalıyordu.",
+      "text_markdown": "Ayrıca geçiş ücreti ödemeyi reddeden gemileri de yağmalıyordu.",
+      "tts": {
+        "text": "Ayrıca geçiş ücreti ödemeyi reddeden gemileri de yağmalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz tüccarlar, rakip İrlandalı klanlar ve İskoç ticaret erbabı onun elinden kayıplar yaşadı.",
+      "text_markdown": "İngiliz tüccarlar, rakip İrlandalı klanlar ve İskoç ticaret erbabı onun elinden kayıplar yaşadı.",
+      "tts": {
+        "text": "İngiliz tüccarlar, rakip İrlandalı klanlar ve İskoç ticaret erbabı onun elinden kayıplar yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baskınları rastgele değil, hesaplıydı.",
+      "text_markdown": "Baskınları rastgele değil, hesaplıydı.",
+      "tts": {
+        "text": "Baskınları rastgele değil, hesaplıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Değerli yük taşıdığını bildiği gemileri hedef alıyor, çok iyi korunanlardan kaçınıyordu.",
+      "text_markdown": "Değerli yük taşıdığını bildiği gemileri hedef alıyor, çok iyi korunanlardan kaçınıyordu.",
+      "tts": {
+        "text": "Değerli yük taşıdığını bildiği gemileri hedef alıyor, çok iyi korunanlardan kaçınıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace her iki kocasından çocuk sahibi oldu ve onları lider olarak yetiştirdi.",
+      "text_markdown": "Grace her iki kocasından çocuk sahibi oldu ve onları lider olarak yetiştirdi.",
+      "tts": {
+        "text": "Grace her iki kocasından çocuk sahibi oldu ve onları lider olarak yetiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oğulları filosunda kaptan ve kendi başlarına siyasi figür olarak görev yaptılar.",
+      "text_markdown": "Oğulları filosunda kaptan ve kendi başlarına siyasi figür olarak görev yaptılar.",
+      "tts": {
+        "text": "Oğulları filosunda kaptan ve kendi başlarına siyasi figür olarak görev yaptılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gelini Margaret onun adına mülkleri yönetiyordu.",
+      "text_markdown": "Gelini Margaret onun adına mülkleri yönetiyordu.",
+      "tts": {
+        "text": "Gelini Margaret onun adına mülkleri yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O'Malley ağı, kan bağı ve Grace'in kişilik gücüyle bir arada tutulan bir aile girişimiydi.",
+      "text_markdown": "O'Malley ağı, kan bağı ve Grace'in kişilik gücüyle bir arada tutulan bir aile girişimiydi.",
+      "tts": {
+        "text": "O'Malley ağı, kan bağı ve Grace'in kişilik gücüyle bir arada tutulan bir aile girişimiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Atlantik kıyısındaki yaşam fiziksel olarak zorlayıcı ve çoğu zaman tehlikeliydi.",
+      "text_markdown": "Atlantik kıyısındaki yaşam fiziksel olarak zorlayıcı ve çoğu zaman tehlikeliydi.",
+      "tts": {
+        "text": "Atlantik kıyısındaki yaşam fiziksel olarak zorlayıcı ve çoğu zaman tehlikeliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hava sertti; yılın büyük bölümünde açık denizden fırtınalar gelirdi.",
+      "text_markdown": "Hava sertti; yılın büyük bölümünde açık denizden fırtınalar gelirdi.",
+      "tts": {
+        "text": "Hava sertti; yılın büyük bölümünde açık denizden fırtınalar gelirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tekneler açık veya kısmen güverteli olup elementlerden çok az koruma sağlıyordu.",
+      "text_markdown": "Tekneler açık veya kısmen güverteli olup elementlerden çok az koruma sağlıyordu.",
+      "tts": {
+        "text": "Tekneler açık veya kısmen güverteli olup elementlerden çok az koruma sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace bu koşullara on yıllar boyunca katlandı; altmışlı yaşlarına kadar denize açılmaya ve savaşmaya devam etti.",
+      "text_markdown": "Grace bu koşullara on yıllar boyunca katlandı; altmışlı yaşlarına kadar denize açılmaya ve savaşmaya devam etti.",
+      "tts": {
+        "text": "Grace bu koşullara on yıllar boyunca katlandı; altmışlı yaşlarına kadar denize açılmaya ve savaşmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaştaki kişisel cesareti ile tanınırdı.",
+      "text_markdown": "Savaştaki kişisel cesareti ile tanınırdı.",
+      "tts": {
+        "text": "Savaştaki kişisel cesareti ile tanınırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ünlü bir hikâye, oğlu Tibbot'u doğurduktan bir gün sonra gemisine yapılan bir saldırıyı püskürttüğünü anlatır.",
+      "text_markdown": "Ünlü bir hikâye, oğlu Tibbot'u doğurduktan bir gün sonra gemisine yapılan bir saldırıyı püskürttüğünü anlatır.",
+      "tts": {
+        "text": "Ünlü bir hikâye, oğlu Tibbot'u doğurduktan bir gün sonra gemisine yapılan bir saldırıyı püskürttüğünü anlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yatağından kalktığı, silah aldığı ve savunmayı güverteden yönettiği söylenir.",
+      "text_markdown": "Yatağından kalktığı, silah aldığı ve savunmayı güverteden yönettiği söylenir.",
+      "tts": {
+        "text": "Yatağından kalktığı, silah aldığı ve savunmayı güverteden yönettiği söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu hikâyenin her ayrıntısı doğru olsun ya da olmasın, onu efsane yapan ruhu yansıtır.",
+      "text_markdown": "Bu hikâyenin her ayrıntısı doğru olsun ya da olmasın, onu efsane yapan ruhu yansıtır.",
+      "tts": {
+        "text": "Bu hikâyenin her ayrıntısı doğru olsun ya da olmasın, onu efsane yapan ruhu yansıtır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gücünü destekleyen Gal dünyası karmaşık ve gelişmiş bir toplumdu.",
+      "text_markdown": "Gücünü destekleyen Gal dünyası karmaşık ve gelişmiş bir toplumdu.",
+      "tts": {
+        "text": "Gücünü destekleyen Gal dünyası karmaşık ve gelişmiş bir toplumdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendi hukuk sistemi, edebiyatı, müziği ve yönetim biçimleri vardı.",
+      "text_markdown": "Kendi hukuk sistemi, edebiyatı, müziği ve yönetim biçimleri vardı.",
+      "tts": {
+        "text": "Kendi hukuk sistemi, edebiyatı, müziği ve yönetim biçimleri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz sömürgeciler onu barbar diye reddetse de kesinlikle basit değildi.",
+      "text_markdown": "İngiliz sömürgeciler onu barbar diye reddetse de kesinlikle basit değildi.",
+      "tts": {
+        "text": "İngiliz sömürgeciler onu barbar diye reddetse de kesinlikle basit değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley bu dünyanın bir ürünüydü ve bağımsızlık ile cesaret değerlerini somutlaştırıyordu.",
+      "text_markdown": "Grace O'Malley bu dünyanın bir ürünüydü ve bağımsızlık ile cesaret değerlerini somutlaştırıyordu.",
+      "tts": {
+        "text": "Grace O'Malley bu dünyanın bir ürünüydü ve bağımsızlık ile cesaret değerlerini somutlaştırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace ayrıca batı kıyısı boyunca istihbarat ağları da sürdürüyordu.",
+      "text_markdown": "Grace ayrıca batı kıyısı boyunca istihbarat ağları da sürdürüyordu.",
+      "tts": {
+        "text": "Grace ayrıca batı kıyısı boyunca istihbarat ağları da sürdürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galway'de, Connacht limanlarında ve İngiliz garnizon kasabalarında muhbirleri vardı.",
+      "text_markdown": "Galway'de, Connacht limanlarında ve İngiliz garnizon kasabalarında muhbirleri vardı.",
+      "tts": {
+        "text": "Galway'de, Connacht limanlarında ve İngiliz garnizon kasabalarında muhbirleri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiliz ikmal gemilerinin ne zaman geldiğini ve ne yük taşıdığını biliyordu.",
+      "text_markdown": "İngiliz ikmal gemilerinin ne zaman geldiğini ve ne yük taşıdığını biliyordu.",
+      "tts": {
+        "text": "İngiliz ikmal gemilerinin ne zaman geldiğini ve ne yük taşıdığını biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu bilgi ona hem ticarette hem de akınlarda belirleyici bir avantaj sağlıyordu.",
+      "text_markdown": "Bu bilgi ona hem ticarette hem de akınlarda belirleyici bir avantaj sağlıyordu.",
+      "tts": {
+        "text": "Bu bilgi ona hem ticarette hem de akınlarda belirleyici bir avantaj sağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya ile ticari bağlantıları özellikle değerliydi.",
+      "text_markdown": "İspanya ile ticari bağlantıları özellikle değerliydi.",
+      "tts": {
+        "text": "İspanya ile ticari bağlantıları özellikle değerliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol tüccarlar İrlanda balığı ve derileri için yüksek fiyatlar ödüyordu.",
+      "text_markdown": "İspanyol tüccarlar İrlanda balığı ve derileri için yüksek fiyatlar ödüyordu.",
+      "tts": {
+        "text": "İspanyol tüccarlar İrlanda balığı ve derileri için yüksek fiyatlar ödüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında batı İrlanda'da kıt olan şarap, silah ve demir tedarik ediyorlardı.",
+      "text_markdown": "Karşılığında batı İrlanda'da kıt olan şarap, silah ve demir tedarik ediyorlardı.",
+      "tts": {
+        "text": "Karşılığında batı İrlanda'da kıt olan şarap, silah ve demir tedarik ediyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ticari bağlar Grace'i Connacht'ın en zengin kişilerinden biri yaptı.",
+      "text_markdown": "Bu ticari bağlar Grace'i Connacht'ın en zengin kişilerinden biri yaptı.",
+      "tts": {
+        "text": "Bu ticari bağlar Grace'i Connacht'ın en zengin kişilerinden biri yaptı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gücünün zirvesinde Grace O'Malley İrlanda'nın en güçlü kadınıydı.",
+      "text_markdown": "Gücünün zirvesinde Grace O'Malley İrlanda'nın en güçlü kadınıydı.",
+      "tts": {
+        "text": "Gücünün zirvesinde Grace O'Malley İrlanda'nın en güçlü kadınıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir İngiliz valisine ve hiçbir Gal üst yöneticisine hesap vermiyordu.",
+      "text_markdown": "Hiçbir İngiliz valisine ve hiçbir Gal üst yöneticisine hesap vermiyordu.",
+      "tts": {
+        "text": "Hiçbir İngiliz valisine ve hiçbir Gal üst yöneticisine hesap vermiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendi ittifaklarını kuruyor, kendi savaşlarını veriyor ve kendi halkını yönetiyordu.",
+      "text_markdown": "Kendi ittifaklarını kuruyor, kendi savaşlarını veriyor ve kendi halkını yönetiyordu.",
+      "tts": {
+        "text": "Kendi ittifaklarını kuruyor, kendi savaşlarını veriyor ve kendi halkını yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her pratik anlamda denizin hükümdarıydı.",
+      "text_markdown": "Her pratik anlamda denizin hükümdarıydı.",
+      "tts": {
+        "text": "Her pratik anlamda denizin hükümdarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley'in hayatının son on yılı kayıp ve gerilemeyle damgalandı.",
+      "text_markdown": "Grace O'Malley'in hayatının son on yılı kayıp ve gerilemeyle damgalandı.",
+      "tts": {
+        "text": "Grace O'Malley'in hayatının son on yılı kayıp ve gerilemeyle damgalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere'nin İrlanda'yı fethi bin beş yüz doksanlı yıllarda hız kazandı.",
+      "text_markdown": "İngiltere'nin İrlanda'yı fethi bin beş yüz doksanlı yıllarda hız kazandı.",
+      "tts": {
+        "text": "İngiltere'nin İrlanda'yı fethi bin beş yüz doksanlı yıllarda hız kazandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzyıllardır iktidarda olan Gal şefleri topraklarından ve unvanlarından soyuldu.",
+      "text_markdown": "Yüzyıllardır iktidarda olan Gal şefleri topraklarından ve unvanlarından soyuldu.",
+      "tts": {
+        "text": "Yüzyıllardır iktidarda olan Gal şefleri topraklarından ve unvanlarından soyuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace'in doğduğundan beri bildiği dünya sistematik olarak yıkılıyordu.",
+      "text_markdown": "Grace'in doğduğundan beri bildiği dünya sistematik olarak yıkılıyordu.",
+      "tts": {
+        "text": "Grace'in doğduğundan beri bildiği dünya sistematik olarak yıkılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1594'ten 1603'e kadar süren Dokuz Yıl Savaşları, Gal direnişinin son perdesi oldu.",
+      "text_markdown": "1594'ten 1603'e kadar süren Dokuz Yıl Savaşları, Gal direnişinin son perdesi oldu.",
+      "tts": {
+        "text": "Bin beş yüz doksan dörtten bin altı yüz üçe kadar süren Dokuz Yıl Savaşları, Gal direnişinin son perdesi oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tyrone'lu Hugh O'Neill önderliğindeki İrlandalı şefler İngiliz yönetimine karşı büyük bir isyan başlattı.",
+      "text_markdown": "Tyrone'lu Hugh O'Neill önderliğindeki İrlandalı şefler İngiliz yönetimine karşı büyük bir isyan başlattı.",
+      "tts": {
+        "text": "Tyrone'lu Hugh O'Neill önderliğindeki İrlandalı şefler İngiliz yönetimine karşı büyük bir isyan başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir süreliğine isyan başarılı oldu ve İrlanda'nın büyük bölümünde İngiliz otoritesi çöktü.",
+      "text_markdown": "Bir süreliğine isyan başarılı oldu ve İrlanda'nın büyük bölümünde İngiliz otoritesi çöktü.",
+      "tts": {
+        "text": "Bir süreliğine isyan başarılı oldu ve İrlanda'nın büyük bölümünde İngiliz otoritesi çöktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama İngiltere İrlanda'ya asker ve kaynak akıttı ve isyan sonunda bastırıldı.",
+      "text_markdown": "Ama İngiltere İrlanda'ya asker ve kaynak akıttı ve isyan sonunda bastırıldı.",
+      "tts": {
+        "text": "Ama İngiltere İrlanda'ya asker ve kaynak akıttı ve isyan sonunda bastırıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dokuz Yıl Savaşları'nda Grace O'Malley'in rolü tarihî kayıtlardan net değildir.",
+      "text_markdown": "Dokuz Yıl Savaşları'nda Grace O'Malley'in rolü tarihî kayıtlardan net değildir.",
+      "tts": {
+        "text": "Dokuz Yıl Savaşları'nda Grace O'Malley'in rolü tarihî kayıtlardan net değildir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaş sırasında altmışlı yaşlarındaydı ve filosuna eskisi gibi komuta edememiş olabilir.",
+      "text_markdown": "Savaş sırasında altmışlı yaşlarındaydı ve filosuna eskisi gibi komuta edememiş olabilir.",
+      "tts": {
+        "text": "Savaş sırasında altmışlı yaşlarındaydı ve filosuna eskisi gibi komuta edememiş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı kaynaklar isyanı desteklediğini, bazıları ise ihtiyatlı bir tarafsızlık sürdürdüğünü ileri sürer.",
+      "text_markdown": "Bazı kaynaklar isyanı desteklediğini, bazıları ise ihtiyatlı bir tarafsızlık sürdürdüğünü ileri sürer.",
+      "tts": {
+        "text": "Bazı kaynaklar isyanı desteklediğini, bazıları ise ihtiyatlı bir tarafsızlık sürdürdüğünü ileri sürer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kesin olan, İngiliz zaferinin Gal bağımsızlığının her türlü olasılığını sona erdirdiğidir.",
+      "text_markdown": "Kesin olan, İngiliz zaferinin Gal bağımsızlığının her türlü olasılığını sona erdirdiğidir.",
+      "tts": {
+        "text": "Kesin olan, İngiliz zaferinin Gal bağımsızlığının her türlü olasılığını sona erdirdiğidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eski düşmanı Richard Bingham, 1596'da İngiltere'ye geri çağrılmıştı.",
+      "text_markdown": "Eski düşmanı Richard Bingham, 1596'da İngiltere'ye geri çağrılmıştı.",
+      "tts": {
+        "text": "Eski düşmanı Richard Bingham, bin beş yüz doksan altıda İngiltere'ye geri çağrılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halefi Grace ve ailesine biraz daha az düşmancıldı.",
+      "text_markdown": "Halefi Grace ve ailesine biraz daha az düşmancıldı.",
+      "tts": {
+        "text": "Halefi Grace ve ailesine biraz daha az düşmancıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama yapısal gerçeklik değişmemişti.",
+      "text_markdown": "Ama yapısal gerçeklik değişmemişti.",
+      "tts": {
+        "text": "Ama yapısal gerçeklik değişmemişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İngiliz hukuku Brehon hukukunun, İngiliz toprak sahipleri de ada genelinde Gal şeflerinin yerini alıyordu.",
+      "text_markdown": "İngiliz hukuku Brehon hukukunun, İngiliz toprak sahipleri de ada genelinde Gal şeflerinin yerini alıyordu.",
+      "tts": {
+        "text": "İngiliz hukuku Brehon hukukunun, İngiliz toprak sahipleri de ada genelinde Gal şeflerinin yerini alıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace'in oğlu Tibbot sonunda İngilizlerle barış yaptı.",
+      "text_markdown": "Grace'in oğlu Tibbot sonunda İngilizlerle barış yaptı.",
+      "tts": {
+        "text": "Grace'in oğlu Tibbot sonunda İngilizlerle barış yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz otoritesine boyun eğdi ve İngiliz unvanı aldı.",
+      "text_markdown": "İngiliz otoritesine boyun eğdi ve İngiliz unvanı aldı.",
+      "tts": {
+        "text": "İngiliz otoritesine boyun eğdi ve İngiliz unvanı aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mayo Vikontu oldu ve hayatının geri kalanında İngiliz Tacı'na sadakatle hizmet etti.",
+      "text_markdown": "Mayo Vikontu oldu ve hayatının geri kalanında İngiliz Tacı'na sadakatle hizmet etti.",
+      "tts": {
+        "text": "Mayo Vikontu oldu ve hayatının geri kalanında İngiliz Tacı'na sadakatle hizmet etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu pragmatik bir karardı, ama annesinin savaştığı her şeyin ölümünü temsil ediyordu.",
+      "text_markdown": "Bu pragmatik bir karardı, ama annesinin savaştığı her şeyin ölümünü temsil ediyordu.",
+      "tts": {
+        "text": "Bu pragmatik bir karardı, ama annesinin savaştığı her şeyin ölümünü temsil ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley, Kraliçe Birinci Elizabeth'in de öldüğü yıl olan 1603 civarında öldü.",
+      "text_markdown": "Grace O'Malley, Kraliçe Birinci Elizabeth'in de öldüğü yıl olan 1603 civarında öldü.",
+      "tts": {
+        "text": "Grace O'Malley, Kraliçe Birinci Elizabeth'in de öldüğü yıl olan bin altı yüz üç civarında öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ölümünün kesin tarihi ve koşulları kayıtlara geçmemiştir.",
+      "text_markdown": "Ölümünün kesin tarihi ve koşulları kayıtlara geçmemiştir.",
+      "tts": {
+        "text": "Ölümünün kesin tarihi ve koşulları kayıtlara geçmemiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On yıllardır kalesi olan Clew Körfezi'ndeki Rockfleet Kalesi'nde öldüğüne inanılmaktadır.",
+      "text_markdown": "On yıllardır kalesi olan Clew Körfezi'ndeki Rockfleet Kalesi'nde öldüğüne inanılmaktadır.",
+      "tts": {
+        "text": "On yıllardır kalesi olan Clew Körfezi'ndeki Rockfleet Kalesi'nde öldüğüne inanılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yaklaşık yetmiş üç yaşındaydı.",
+      "text_markdown": "Yaklaşık yetmiş üç yaşındaydı.",
+      "tts": {
+        "text": "Yaklaşık yetmiş üç yaşındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley'in yaşadığı dönemden hiçbir portresi günümüze ulaşmamıştır.",
+      "text_markdown": "Grace O'Malley'in yaşadığı dönemden hiçbir portresi günümüze ulaşmamıştır.",
+      "tts": {
+        "text": "Grace O'Malley'in yaşadığı dönemden hiçbir portresi günümüze ulaşmamıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nasıl göründüğünü bilmiyoruz.",
+      "text_markdown": "Nasıl göründüğünü bilmiyoruz.",
+      "tts": {
+        "text": "Nasıl göründüğünü bilmiyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendi eliyle yazılmış mektuplarımız yok.",
+      "text_markdown": "Kendi eliyle yazılmış mektuplarımız yok.",
+      "tts": {
+        "text": "Kendi eliyle yazılmış mektuplarımız yok.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elimizde olan İngiliz devlet belgeleri, dilekçeler ve İrlanda'nın batısının sözlü gelenekleridir.",
+      "text_markdown": "Elimizde olan İngiliz devlet belgeleri, dilekçeler ve İrlanda'nın batısının sözlü gelenekleridir.",
+      "tts": {
+        "text": "Elimizde olan İngiliz devlet belgeleri, dilekçeler ve İrlanda'nın batısının sözlü gelenekleridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz kayıtları onu kötü şöhretli bir hain ve eyaletteki tüm isyanların dadısı olarak tanımlar.",
+      "text_markdown": "İngiliz kayıtları onu kötü şöhretli bir hain ve eyaletteki tüm isyanların dadısı olarak tanımlar.",
+      "tts": {
+        "text": "İngiliz kayıtları onu kötü şöhretli bir hain ve eyaletteki tüm isyanların dadısı olarak tanımlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar düşmanlarının sözleridir ve öyle okunmalıdır.",
+      "text_markdown": "Bunlar düşmanlarının sözleridir ve öyle okunmalıdır.",
+      "tts": {
+        "text": "Bunlar düşmanlarının sözleridir ve öyle okunmalıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama düşmanları bile onun gücünü, zekâsını ve cesaretini kabul ediyordu.",
+      "text_markdown": "Ama düşmanları bile onun gücünü, zekâsını ve cesaretini kabul ediyordu.",
+      "tts": {
+        "text": "Ama düşmanları bile onun gücünü, zekâsını ve cesaretini kabul ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onu yok etmek isteyenleri bile etkiliyordu.",
+      "text_markdown": "Onu yok etmek isteyenleri bile etkiliyordu.",
+      "tts": {
+        "text": "Onu yok etmek isteyenleri bile etkiliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gal düzeni ondan ancak birkaç yıl sonra ayakta kalabildi.",
+      "text_markdown": "Gal düzeni ondan ancak birkaç yıl sonra ayakta kalabildi.",
+      "tts": {
+        "text": "Gal düzeni ondan ancak birkaç yıl sonra ayakta kalabildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1607'deki Kontların Kaçışı, Gal aristokrat gücünün son çöküşünü işaret etti.",
+      "text_markdown": "1607'deki Kontların Kaçışı, Gal aristokrat gücünün son çöküşünü işaret etti.",
+      "tts": {
+        "text": "Bin altı yüz yedideki Kontların Kaçışı, Gal aristokrat gücünün son çöküşünü işaret etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ulster'in sömürgeleştirilmesi başladı ve el konulan İrlanda toprakları İngiliz ve İskoç yerleşimcilere verildi.",
+      "text_markdown": "Ulster'in sömürgeleştirilmesi başladı ve el konulan İrlanda toprakları İngiliz ve İskoç yerleşimcilere verildi.",
+      "tts": {
+        "text": "Ulster'in sömürgeleştirilmesi başladı ve el konulan İrlanda toprakları İngiliz ve İskoç yerleşimcilere verildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ortaya çıkan İrlanda, bağımsız klanların yurdu değil bir sömürge mülküydü.",
+      "text_markdown": "Ortaya çıkan İrlanda, bağımsız klanların yurdu değil bir sömürge mülküydü.",
+      "tts": {
+        "text": "Ortaya çıkan İrlanda, bağımsız klanların yurdu değil bir sömürge mülküydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiltere'nin İrlanda'yı sömürgeleştirmesi plantasyon adı verilen bir sistemle ilerledi.",
+      "text_markdown": "İngiltere'nin İrlanda'yı sömürgeleştirmesi plantasyon adı verilen bir sistemle ilerledi.",
+      "tts": {
+        "text": "İngiltere'nin İrlanda'yı sömürgeleştirmesi plantasyon adı verilen bir sistemle ilerledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu sistemde İrlanda toprakları el konulup İngiliz ve İskoç yerleşimcilere veriliyordu.",
+      "text_markdown": "Bu sistemde İrlanda toprakları el konulup İngiliz ve İskoç yerleşimcilere veriliyordu.",
+      "tts": {
+        "text": "Bu sistemde İrlanda toprakları el konulup İngiliz ve İskoç yerleşimcilere veriliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yerli halk yerinden edildi ya da ailelerinin nesiller boyu sahip olduğu topraklarda kiracı konumuna düşürüldü.",
+      "text_markdown": "Yerli halk yerinden edildi ya da ailelerinin nesiller boyu sahip olduğu topraklarda kiracı konumuna düşürüldü.",
+      "tts": {
+        "text": "Yerli halk yerinden edildi ya da ailelerinin nesiller boyu sahip olduğu topraklarda kiracı konumuna düşürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu süreç Grace'in ölümünden sonra on yıllar boyunca devam ederek tüm adayı dönüştürdü.",
+      "text_markdown": "Bu süreç Grace'in ölümünden sonra on yıllar boyunca devam ederek tüm adayı dönüştürdü.",
+      "tts": {
+        "text": "Bu süreç Grace'in ölümünden sonra on yıllar boyunca devam ederek tüm adayı dönüştürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley bir dünyanın sonunda ve bir başkasının başlangıcında yaşadı.",
+      "text_markdown": "Grace O'Malley bir dünyanın sonunda ve bir başkasının başlangıcında yaşadı.",
+      "tts": {
+        "text": "Grace O'Malley bir dünyanın sonunda ve bir başkasının başlangıcında yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünyasını yıkan güçleri durduramazdı.",
+      "text_markdown": "Dünyasını yıkan güçleri durduramazdı.",
+      "tts": {
+        "text": "Dünyasını yıkan güçleri durduramazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama neredeyse herkesten daha uzun, daha ustaca ve daha büyük bir ruhla onlarla savaştı.",
+      "text_markdown": "Ama neredeyse herkesten daha uzun, daha ustaca ve daha büyük bir ruhla onlarla savaştı.",
+      "tts": {
+        "text": "Ama neredeyse herkesten daha uzun, daha ustaca ve daha büyük bir ruhla onlarla savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hayatı, kararlı bir bireyin ezici zorluklara karşı neler başarabileceğinin kanıtıdır.",
+      "text_markdown": "Hayatı, kararlı bir bireyin ezici zorluklara karşı neler başarabileceğinin kanıtıdır.",
+      "tts": {
+        "text": "Hayatı, kararlı bir bireyin ezici zorluklara karşı neler başarabileceğinin kanıtıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley, İrlanda tarihinin en çok anılan figürlerinden biridir.",
+      "text_markdown": "Grace O'Malley, İrlanda tarihinin en çok anılan figürlerinden biridir.",
+      "tts": {
+        "text": "Grace O'Malley, İrlanda tarihinin en çok anılan figürlerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İrlanda'daki her okul çocuğu onun adını bilir.",
+      "text_markdown": "İrlanda'daki her okul çocuğu onun adını bilir.",
+      "tts": {
+        "text": "İrlanda'daki her okul çocuğu onun adını bilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İrlanda bağımsızlığının, kadın güçlendirilmesinin ve sömürgeciliğe direncin simgesidir.",
+      "text_markdown": "İrlanda bağımsızlığının, kadın güçlendirilmesinin ve sömürgeciliğe direncin simgesidir.",
+      "tts": {
+        "text": "İrlanda bağımsızlığının, kadın güçlendirilmesinin ve sömürgeciliğe direncin simgesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hikâyesi yüzyıllardır şarkılarda, tiyatro oyunlarında, romanlarda ve filmlerde anlatılmaktadır.",
+      "text_markdown": "Hikâyesi yüzyıllardır şarkılarda, tiyatro oyunlarında, romanlarda ve filmlerde anlatılmaktadır.",
+      "tts": {
+        "text": "Hikâyesi yüzyıllardır şarkılarda, tiyatro oyunlarında, romanlarda ve filmlerde anlatılmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rockfleet Kalesi hâlâ Clew Körfezi kıyısında ayaktadır.",
+      "text_markdown": "Rockfleet Kalesi hâlâ Clew Körfezi kıyısında ayaktadır.",
+      "tts": {
+        "text": "Rockfleet Kalesi hâlâ Clew Körfezi kıyısında ayaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğduğu Clare Adası hâlâ yerleşim yeridir ve feribot ile ziyaret edilebilir.",
+      "text_markdown": "Doğduğu Clare Adası hâlâ yerleşim yeridir ve feribot ile ziyaret edilebilir.",
+      "tts": {
+        "text": "Doğduğu Clare Adası hâlâ yerleşim yeridir ve feribot ile ziyaret edilebilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Clare Adası'ndaki manastırı, onun mezarı olduğuna inanılan yapıyı barındırır.",
+      "text_markdown": "Clare Adası'ndaki manastırı, onun mezarı olduğuna inanılan yapıyı barındırır.",
+      "tts": {
+        "text": "Clare Adası'ndaki manastırı, onun mezarı olduğuna inanılan yapıyı barındırır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dünyanın dört bir yanından ziyaretçiler onun yaşadığı ve hükmettiği yerleri görmeye gelir.",
+      "text_markdown": "Dünyanın dört bir yanından ziyaretçiler onun yaşadığı ve hükmettiği yerleri görmeye gelir.",
+      "tts": {
+        "text": "Dünyanın dört bir yanından ziyaretçiler onun yaşadığı ve hükmettiği yerleri görmeye gelir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İrlanda halk geleneğinde Grace O'Malley, Gal batısının ruhunu temsil eder.",
+      "text_markdown": "İrlanda halk geleneğinde Grace O'Malley, Gal batısının ruhunu temsil eder.",
+      "tts": {
+        "text": "İrlanda halk geleneğinde Grace O'Malley, Gal batısının ruhunu temsil eder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hakkındaki hikâyeler dört yüzyıldan fazla süredir sözlü olarak aktarılmaktadır.",
+      "text_markdown": "Hakkındaki hikâyeler dört yüzyıldan fazla süredir sözlü olarak aktarılmaktadır.",
+      "tts": {
+        "text": "Hakkındaki hikâyeler dört yüzyıldan fazla süredir sözlü olarak aktarılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu hikâyelerin birçoğu süslenmiş veya efsaneleşmiştir.",
+      "text_markdown": "Bu hikâyelerin birçoğu süslenmiş veya efsaneleşmiştir.",
+      "tts": {
+        "text": "Bu hikâyelerin birçoğu süslenmiş veya efsaneleşmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama etkisi gerçek ve derin olan gerçek bir tarihî kişiliği yansıtırlar.",
+      "text_markdown": "Ama etkisi gerçek ve derin olan gerçek bir tarihî kişiliği yansıtırlar.",
+      "tts": {
+        "text": "Ama etkisi gerçek ve derin olan gerçek bir tarihî kişiliği yansıtırlar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birinci Elizabeth ile buluşması, Tudor döneminin en olağanüstü diplomatik karşılaşmalarından biri olmaya devam etmektedir.",
+      "text_markdown": "Birinci Elizabeth ile buluşması, Tudor döneminin en olağanüstü diplomatik karşılaşmalarından biri olmaya devam etmektedir.",
+      "tts": {
+        "text": "Birinci Elizabeth ile buluşması, Tudor döneminin en olağanüstü diplomatik karşılaşmalarından biri olmaya devam etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir Gal şefi, bir kadın, bir korsan, Avrupa'nın en güçlü sarayına girdi ve eşit olarak müzakere etti.",
+      "text_markdown": "Bir Gal şefi, bir kadın, bir korsan, Avrupa'nın en güçlü sarayına girdi ve eşit olarak müzakere etti.",
+      "tts": {
+        "text": "Bir Gal şefi, bir kadın, bir korsan, Avrupa'nın en güçlü sarayına girdi ve eşit olarak müzakere etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O eylemin cesareti yüzyıllar sonra hâlâ yankılanır.",
+      "text_markdown": "O eylemin cesareti yüzyıllar sonra hâlâ yankılanır.",
+      "tts": {
+        "text": "O eylemin cesareti yüzyıllar sonra hâlâ yankılanır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gücün her zaman doğum veya cinsiyetle tanımlanmadığı bir dünyadan söz eder.",
+      "text_markdown": "Gücün her zaman doğum veya cinsiyetle tanımlanmadığı bir dünyadan söz eder.",
+      "tts": {
+        "text": "Gücün her zaman doğum veya cinsiyetle tanımlanmadığı bir dünyadan söz eder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler Grace O'Malley'i erken modern dönemde kadın liderliğinin bir vaka çalışması olarak incelemeye devam etmektedir.",
+      "text_markdown": "Tarihçiler Grace O'Malley'i erken modern dönemde kadın liderliğinin bir vaka çalışması olarak incelemeye devam etmektedir.",
+      "tts": {
+        "text": "Tarihçiler Grace O'Malley'i erken modern dönemde kadın liderliğinin bir vaka çalışması olarak incelemeye devam etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erkeklerin hâkim olduğu bir dünyada faaliyet gösteriyordu, ama savaşta ve denizde erkeklere komuta ediyordu.",
+      "text_markdown": "Erkeklerin hâkim olduğu bir dünyada faaliyet gösteriyordu, ama savaşta ve denizde erkeklere komuta ediyordu.",
+      "tts": {
+        "text": "Erkeklerin hâkim olduğu bir dünyada faaliyet gösteriyordu, ama savaşta ve denizde erkeklere komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hem Gal hem de İngiliz karmaşık siyasi sistemlerinde beceri ve kurnazlıkla yolunu buldu.",
+      "text_markdown": "Hem Gal hem de İngiliz karmaşık siyasi sistemlerinde beceri ve kurnazlıkla yolunu buldu.",
+      "tts": {
+        "text": "Hem Gal hem de İngiliz karmaşık siyasi sistemlerinde beceri ve kurnazlıkla yolunu buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kariyeri, derinden ataerkil toplumlarda bile kadınların gerçek güç kullanabildiğini göstermektedir.",
+      "text_markdown": "Kariyeri, derinden ataerkil toplumlarda bile kadınların gerçek güç kullanabildiğini göstermektedir.",
+      "tts": {
+        "text": "Kariyeri, derinden ataerkil toplumlarda bile kadınların gerçek güç kullanabildiğini göstermektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace'in korumak için savaştığı Gal dünyasının yıkılması İrlanda tarihinin büyük tragedyalarından biridir.",
+      "text_markdown": "Grace'in korumak için savaştığı Gal dünyasının yıkılması İrlanda tarihinin büyük tragedyalarından biridir.",
+      "tts": {
+        "text": "Grace'in korumak için savaştığı Gal dünyasının yıkılması İrlanda tarihinin büyük tragedyalarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendi yasaları, edebiyatı ve gelenekleri olan bütün bir medeniyet, sömürge gücü tarafından kasıtlı olarak söküldü.",
+      "text_markdown": "Kendi yasaları, edebiyatı ve gelenekleri olan bütün bir medeniyet, sömürge gücü tarafından kasıtlı olarak söküldü.",
+      "tts": {
+        "text": "Kendi yasaları, edebiyatı ve gelenekleri olan bütün bir medeniyet, sömürge gücü tarafından kasıtlı olarak söküldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace O'Malley o medeniyetin son savunucularından biriydi.",
+      "text_markdown": "Grace O'Malley o medeniyetin son savunucularından biriydi.",
+      "tts": {
+        "text": "Grace O'Malley o medeniyetin son savunucularından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hikâyesi, sömürgeciliğin ve bedellerinin daha geniş anlatısından ayrılamaz.",
+      "text_markdown": "Hikâyesi, sömürgeciliğin ve bedellerinin daha geniş anlatısından ayrılamaz.",
+      "tts": {
+        "text": "Hikâyesi, sömürgeciliğin ve bedellerinin daha geniş anlatısından ayrılamaz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley'in hikâyesini kalıcı kılan sadece ne yaptığı değil, kim olduğudur.",
+      "text_markdown": "Grace O'Malley'in hikâyesini kalıcı kılan sadece ne yaptığı değil, kim olduğudur.",
+      "tts": {
+        "text": "Grace O'Malley'in hikâyesini kalıcı kılan sadece ne yaptığı değil, kim olduğudur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anne, eş, savaşçı, tüccar, diplomat ve korsandı.",
+      "text_markdown": "Anne, eş, savaşçı, tüccar, diplomat ve korsandı.",
+      "tts": {
+        "text": "Anne, eş, savaşçı, tüccar, diplomat ve korsandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyasının ona dayatmaya çalıştığı her kategoriye meydan okudu.",
+      "text_markdown": "Dünyasının ona dayatmaya çalıştığı her kategoriye meydan okudu.",
+      "tts": {
+        "text": "Dünyasının ona dayatmaya çalıştığı her kategoriye meydan okudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bilinen dünyanın ucunda, vahşi bir kıyıda, kendi koşullarında yaşadı.",
+      "text_markdown": "Bilinen dünyanın ucunda, vahşi bir kıyıda, kendi koşullarında yaşadı.",
+      "tts": {
+        "text": "Bilinen dünyanın ucunda, vahşi bir kıyıda, kendi koşullarında yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is why her name is still spoken four centuries after her death.",
+      "text_markdown": "That is why her name is still spoken four centuries after her death.",
+      "tts": {
+        "text": "That is why her name is still spoken four centuries after her death.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

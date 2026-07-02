@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_grace_omalley",
+  "language": "ko",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말",
+      "text_markdown": "독자에게 드리는 말"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 아일랜드 서해안의 해적 여왕 그레이스 오말리의 실화입니다.",
+      "text_markdown": "이것은 아일랜드 서해안의 해적 여왕 그레이스 오말리의 실화입니다.",
+      "tts": {
+        "text": "이것은 아일랜드 서해안의 해적 여왕 그레이스 오말리의 실화입니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 게일족 족장들, 부족 간 전쟁, 그리고 대서양 폭풍의 세계에서 태어났습니다.",
+      "text_markdown": "그녀는 게일족 족장들, 부족 간 전쟁, 그리고 대서양 폭풍의 세계에서 태어났습니다.",
+      "tts": {
+        "text": "그녀는 게일족 족장들, 부족 간 전쟁, 그리고 대서양 폭풍의 세계에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀가 세상을 떠날 때, 잉글랜드 왕실은 그 세계를 정복하고 알아볼 수 없을 정도로 바꿔 놓았습니다.",
+      "text_markdown": "그녀가 세상을 떠날 때, 잉글랜드 왕실은 그 세계를 정복하고 알아볼 수 없을 정도로 바꿔 놓았습니다.",
+      "tts": {
+        "text": "그녀가 세상을 떠날 때, 잉글랜드 왕실은 그 세계를 정복하고 알아볼 수 없을 정도로 바꿔 놓았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리는 아일랜드 역사상 가장 격동적인 세기를 살았습니다.",
+      "text_markdown": "그레이스 오말리는 아일랜드 역사상 가장 격동적인 세기를 살았습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 아일랜드 역사상 가장 격동적인 세기를 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 함대를 지휘하고, 잉글랜드 군대와 싸우고, 투옥에서 살아남았으며, 세 남편보다 오래 살았습니다.",
+      "text_markdown": "그녀는 함대를 지휘하고, 잉글랜드 군대와 싸우고, 투옥에서 살아남았으며, 세 남편보다 오래 살았습니다.",
+      "tts": {
+        "text": "그녀는 함대를 지휘하고, 잉글랜드 군대와 싸우고, 투옥에서 살아남았으며, 세 남편보다 오래 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 한때 런던까지 항해하여 엘리자베스 일세 여왕과 직접 만났습니다.",
+      "text_markdown": "그녀는 한때 런던까지 항해하여 엘리자베스 일세 여왕과 직접 만났습니다.",
+      "tts": {
+        "text": "그녀는 한때 런던까지 항해하여 엘리자베스 일세 여왕과 직접 만났습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 아일랜드 이름은 그라니아 월이었으며, 오늘날에도 아일랜드에서는 이 이름으로 알려져 있습니다.",
+      "text_markdown": "그녀의 아일랜드 이름은 그라니아 월이었으며, 오늘날에도 아일랜드에서는 이 이름으로 알려져 있습니다.",
+      "tts": {
+        "text": "그녀의 아일랜드 이름은 그라니아 월이었으며, 오늘날에도 아일랜드에서는 이 이름으로 알려져 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 책은 역사 기록이 허락하는 범위에서 그녀의 이야기를 들려줍니다.",
+      "text_markdown": "이 책은 역사 기록이 허락하는 범위에서 그녀의 이야기를 들려줍니다.",
+      "tts": {
+        "text": "이 책은 역사 기록이 허락하는 범위에서 그녀의 이야기를 들려줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기록이 침묵하는 곳에서는 우리도 솔직히 그렇다고 말합니다.",
+      "text_markdown": "기록이 침묵하는 곳에서는 우리도 솔직히 그렇다고 말합니다.",
+      "tts": {
+        "text": "기록이 침묵하는 곳에서는 우리도 솔직히 그렇다고 말합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 삶은 어떤 한 개인보다 훨씬 큰 힘에 의해 형성되었습니다.",
+      "text_markdown": "그녀의 삶은 어떤 한 개인보다 훨씬 큰 힘에 의해 형성되었습니다.",
+      "tts": {
+        "text": "그녀의 삶은 어떤 한 개인보다 훨씬 큰 힘에 의해 형성되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "튜더 왕조의 아일랜드 정복, 게일 부족 제도의 파괴, 그리고 잉글랜드 식민 권력의 부상이 그녀 이야기의 배경을 이루고 있습니다.",
+      "text_markdown": "튜더 왕조의 아일랜드 정복, 게일 부족 제도의 파괴, 그리고 잉글랜드 식민 권력의 부상이 그녀 이야기의 배경을 이루고 있습니다.",
+      "tts": {
+        "text": "튜더 왕조의 아일랜드 정복, 게일 부족 제도의 파괴, 그리고 잉글랜드 식민 권력의 부상이 그녀 이야기의 배경을 이루고 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그레이스 오말리를 이해하려면, 먼저 그녀가 태어난 세계를 이해해야 합니다.",
+      "text_markdown": "그레이스 오말리를 이해하려면, 먼저 그녀가 태어난 세계를 이해해야 합니다.",
+      "tts": {
+        "text": "그레이스 오말리를 이해하려면, 먼저 그녀가 태어난 세계를 이해해야 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "게일 아일랜드의 세계",
+      "text_markdown": "게일 아일랜드의 세계"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십육 세기의 아일랜드는 분열된 섬이었습니다.",
+      "text_markdown": "십육 세기의 아일랜드는 분열된 섬이었습니다.",
+      "tts": {
+        "text": "십육 세기의 아일랜드는 분열된 섬이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "더블린을 중심으로 한 동부 해안은 잉글랜드 정착민들이 지배하고 잉글랜드 법으로 통치되었습니다.",
+      "text_markdown": "더블린을 중심으로 한 동부 해안은 잉글랜드 정착민들이 지배하고 잉글랜드 법으로 통치되었습니다.",
+      "tts": {
+        "text": "더블린을 중심으로 한 동부 해안은 잉글랜드 정착민들이 지배하고 잉글랜드 법으로 통치되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 지역은 페일이라고 알려졌으며, 그 너머에는 잉글랜드인들이 거의 이해하지 못하는 세계가 있었습니다.",
+      "text_markdown": "이 지역은 페일이라고 알려졌으며, 그 너머에는 잉글랜드인들이 거의 이해하지 못하는 세계가 있었습니다.",
+      "tts": {
+        "text": "이 지역은 페일이라고 알려졌으며, 그 너머에는 잉글랜드인들이 거의 이해하지 못하는 세계가 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페일 서쪽에서는 아일랜드가 게일족 족장들에 의해 통치되었습니다.",
+      "text_markdown": "페일 서쪽에서는 아일랜드가 게일족 족장들에 의해 통치되었습니다.",
+      "tts": {
+        "text": "페일 서쪽에서는 아일랜드가 게일족 족장들에 의해 통치되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 족장들은 고대 브레헌 법에 따라 자신의 영토를 다스렸습니다.",
+      "text_markdown": "이 족장들은 고대 브레헌 법에 따라 자신의 영토를 다스렸습니다.",
+      "tts": {
+        "text": "이 족장들은 고대 브레헌 법에 따라 자신의 영토를 다스렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "브레헌 법은 잉글랜드 보통법보다 오래된 복잡한 법 체계로, 토지 소유부터 결혼까지 모든 것을 규율했습니다.",
+      "text_markdown": "브레헌 법은 잉글랜드 보통법보다 오래된 복잡한 법 체계로, 토지 소유부터 결혼까지 모든 것을 규율했습니다.",
+      "tts": {
+        "text": "브레헌 법은 잉글랜드 보통법보다 오래된 복잡한 법 체계로, 토지 소유부터 결혼까지 모든 것을 규율했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잉글랜드의 법률과는 전혀 닮지 않았습니다.",
+      "text_markdown": "잉글랜드의 법률과는 전혀 닮지 않았습니다.",
+      "tts": {
+        "text": "잉글랜드의 법률과는 전혀 닮지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "브레헌 법에 따르면, 토지는 개인이 아닌 부족의 것이었습니다.",
+      "text_markdown": "브레헌 법에 따르면, 토지는 개인이 아닌 부족의 것이었습니다.",
+      "tts": {
+        "text": "브레헌 법에 따르면, 토지는 개인이 아닌 부족의 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "족장은 자동으로 그 자리를 물려받지 않았습니다.",
+      "text_markdown": "족장은 자동으로 그 자리를 물려받지 않았습니다.",
+      "tts": {
+        "text": "족장은 자동으로 그 자리를 물려받지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신, 부족의 유력자들이 통치 가문에서 가장 유능한 후보를 선출했습니다.",
+      "text_markdown": "대신, 부족의 유력자들이 통치 가문에서 가장 유능한 후보를 선출했습니다.",
+      "tts": {
+        "text": "대신, 부족의 유력자들이 통치 가문에서 가장 유능한 후보를 선출했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 제도는 지도력이 획득하는 것이지, 단순히 아버지에서 아들로 전해지는 것이 아님을 의미했습니다.",
+      "text_markdown": "이 제도는 지도력이 획득하는 것이지, 단순히 아버지에서 아들로 전해지는 것이 아님을 의미했습니다.",
+      "tts": {
+        "text": "이 제도는 지도력이 획득하는 것이지, 단순히 아버지에서 아들로 전해지는 것이 아님을 의미했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아일랜드의 서해안은 대서양이 지배하고 있었습니다.",
+      "text_markdown": "아일랜드의 서해안은 대서양이 지배하고 있었습니다.",
+      "tts": {
+        "text": "아일랜드의 서해안은 대서양이 지배하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바다는 해안가 공동체의 삶의 모든 면을 형성했습니다.",
+      "text_markdown": "바다는 해안가 공동체의 삶의 모든 면을 형성했습니다.",
+      "tts": {
+        "text": "바다는 해안가 공동체의 삶의 모든 면을 형성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어업, 무역, 약탈이 해안 경제의 기반이었습니다.",
+      "text_markdown": "어업, 무역, 약탈이 해안 경제의 기반이었습니다.",
+      "tts": {
+        "text": "어업, 무역, 약탈이 해안 경제의 기반이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "가장 좋은 항구를 장악한 부족이 가장 부유하고 강력했습니다.",
+      "text_markdown": "가장 좋은 항구를 장악한 부족이 가장 부유하고 강력했습니다.",
+      "tts": {
+        "text": "가장 좋은 항구를 장악한 부족이 가장 부유하고 강력했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아일랜드 서부의 코노트 주에는 가장 강력한 게일 부족들이 일부 살고 있었습니다.",
+      "text_markdown": "아일랜드 서부의 코노트 주에는 가장 강력한 게일 부족들이 일부 살고 있었습니다.",
+      "tts": {
+        "text": "아일랜드 서부의 코노트 주에는 가장 강력한 게일 부족들이 일부 살고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오플래허티 가문이 코노트 남부의 대부분을 지배했습니다.",
+      "text_markdown": "오플래허티 가문이 코노트 남부의 대부분을 지배했습니다.",
+      "tts": {
+        "text": "오플래허티 가문이 코노트 남부의 대부분을 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "완전히 게일화된 노르만 정착민의 후손인 버크 가문이 북부의 넓은 영토를 지배했습니다.",
+      "text_markdown": "완전히 게일화된 노르만 정착민의 후손인 버크 가문이 북부의 넓은 영토를 지배했습니다.",
+      "tts": {
+        "text": "완전히 게일화된 노르만 정착민의 후손인 버크 가문이 북부의 넓은 영토를 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 오말리 가문이 클루 만과 주변 해안선을 지배했습니다.",
+      "text_markdown": "그리고 오말리 가문이 클루 만과 주변 해안선을 지배했습니다.",
+      "tts": {
+        "text": "그리고 오말리 가문이 클루 만과 주변 해안선을 지배했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "클루 만은 유럽에서 가장 주목할 만한 천연 항구 중 하나입니다.",
+      "text_markdown": "클루 만은 유럽에서 가장 주목할 만한 천연 항구 중 하나입니다.",
+      "tts": {
+        "text": "클루 만은 유럽에서 가장 주목할 만한 천연 항구 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수백 개의 작은 섬이 있으며, 클레어 섬의 거대한 몸체가 대서양 폭풍으로부터 보호해 줍니다.",
+      "text_markdown": "수백 개의 작은 섬이 있으며, 클레어 섬의 거대한 몸체가 대서양 폭풍으로부터 보호해 줍니다.",
+      "tts": {
+        "text": "수백 개의 작은 섬이 있으며, 클레어 섬의 거대한 몸체가 대서양 폭풍으로부터 보호해 줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 만은 함대를 위한 완벽한 정박지를 제공했습니다.",
+      "text_markdown": "이 만은 함대를 위한 완벽한 정박지를 제공했습니다.",
+      "tts": {
+        "text": "이 만은 함대를 위한 완벽한 정박지를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "클루 만을 지배하는 자가 서해안에서 가장 풍요로운 어장으로의 접근을 지배했습니다.",
+      "text_markdown": "클루 만을 지배하는 자가 서해안에서 가장 풍요로운 어장으로의 접근을 지배했습니다.",
+      "tts": {
+        "text": "클루 만을 지배하는 자가 서해안에서 가장 풍요로운 어장으로의 접근을 지배했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오말리 부족은 수 세기 동안 뱃사람들이었습니다.",
+      "text_markdown": "오말리 부족은 수 세기 동안 뱃사람들이었습니다.",
+      "tts": {
+        "text": "오말리 부족은 수 세기 동안 뱃사람들이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아일랜드어에서 번역한 그들의 가훈은 육지에서도 바다에서도 강하다였습니다.",
+      "text_markdown": "아일랜드어에서 번역한 그들의 가훈은 육지에서도 바다에서도 강하다였습니다.",
+      "tts": {
+        "text": "아일랜드어에서 번역한 그들의 가훈은 육지에서도 바다에서도 강하다였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 자신들의 수역을 이용하는 어선에 통행료를 부과했습니다.",
+      "text_markdown": "그들은 자신들의 수역을 이용하는 어선에 통행료를 부과했습니다.",
+      "tts": {
+        "text": "그들은 자신들의 수역을 이용하는 어선에 통행료를 부과했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인, 스코틀랜드, 그리고 프랑스 서부의 항구들과 교역했습니다.",
+      "text_markdown": "스페인, 스코틀랜드, 그리고 프랑스 서부의 항구들과 교역했습니다.",
+      "tts": {
+        "text": "스페인, 스코틀랜드, 그리고 프랑스 서부의 항구들과 교역했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드 왕실은 십이 세기부터 전 아일랜드에 대한 종주권을 주장해 왔습니다.",
+      "text_markdown": "잉글랜드 왕실은 십이 세기부터 전 아일랜드에 대한 종주권을 주장해 왔습니다.",
+      "tts": {
+        "text": "잉글랜드 왕실은 십이 세기부터 전 아일랜드에 대한 종주권을 주장해 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하지만 그 기간 대부분 동안 잉글랜드의 통제는 페일과 몇몇 해안 도시에 국한되었습니다.",
+      "text_markdown": "하지만 그 기간 대부분 동안 잉글랜드의 통제는 페일과 몇몇 해안 도시에 국한되었습니다.",
+      "tts": {
+        "text": "하지만 그 기간 대부분 동안 잉글랜드의 통제는 페일과 몇몇 해안 도시에 국한되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "서부의 게일 족장들은 여러 세대에 걸쳐 사실상 독립적이었습니다.",
+      "text_markdown": "서부의 게일 족장들은 여러 세대에 걸쳐 사실상 독립적이었습니다.",
+      "tts": {
+        "text": "서부의 게일 족장들은 여러 세대에 걸쳐 사실상 독립적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 독립은 곧 끝나려 하고 있었습니다.",
+      "text_markdown": "그 독립은 곧 끝나려 하고 있었습니다.",
+      "tts": {
+        "text": "그 독립은 곧 끝나려 하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 팔세 왕은 전 아일랜드에 대한 잉글랜드의 직접 통치라는 새 정책을 시작했습니다.",
+      "text_markdown": "헨리 팔세 왕은 전 아일랜드에 대한 잉글랜드의 직접 통치라는 새 정책을 시작했습니다.",
+      "tts": {
+        "text": "헨리 팔세 왕은 전 아일랜드에 대한 잉글랜드의 직접 통치라는 새 정책을 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 게일 족장들에게 잉글랜드 법에 복종하고 토지를 왕실에 양도할 것을 요구했습니다.",
+      "text_markdown": "그는 게일 족장들에게 잉글랜드 법에 복종하고 토지를 왕실에 양도할 것을 요구했습니다.",
+      "tts": {
+        "text": "그는 게일 족장들에게 잉글랜드 법에 복종하고 토지를 왕실에 양도할 것을 요구했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 대가로 왕실은 잉글랜드 법적 권원으로 토지를 재수여하겠다고 했습니다.",
+      "text_markdown": "그 대가로 왕실은 잉글랜드 법적 권원으로 토지를 재수여하겠다고 했습니다.",
+      "tts": {
+        "text": "그 대가로 왕실은 잉글랜드 법적 권원으로 토지를 재수여하겠다고 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 정책은 항복과 재수여라 불렸으며, 게일 사회의 핵심을 타격했습니다.",
+      "text_markdown": "이 정책은 항복과 재수여라 불렸으며, 게일 사회의 핵심을 타격했습니다.",
+      "tts": {
+        "text": "이 정책은 항복과 재수여라 불렸으며, 게일 사회의 핵심을 타격했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 족장들이 이 정책에 격렬히 저항했습니다.",
+      "text_markdown": "많은 족장들이 이 정책에 격렬히 저항했습니다.",
+      "tts": {
+        "text": "많은 족장들이 이 정책에 격렬히 저항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 이것을 가문이 수 세기 동안 보유해 온 토지의 절도로 보았습니다.",
+      "text_markdown": "그들은 이것을 가문이 수 세기 동안 보유해 온 토지의 절도로 보았습니다.",
+      "tts": {
+        "text": "그들은 이것을 가문이 수 세기 동안 보유해 온 토지의 절도로 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 새 체제 하에서 권력을 유지하기를 바라며 잉글랜드 작위를 받아들였습니다.",
+      "text_markdown": "다른 이들은 새 체제 하에서 권력을 유지하기를 바라며 잉글랜드 작위를 받아들였습니다.",
+      "tts": {
+        "text": "다른 이들은 새 체제 하에서 권력을 유지하기를 바라며 잉글랜드 작위를 받아들였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 결과 섬 전역에서 수십 년간의 갈등, 협상, 배신이 이어졌습니다.",
+      "text_markdown": "그 결과 섬 전역에서 수십 년간의 갈등, 협상, 배신이 이어졌습니다.",
+      "tts": {
+        "text": "그 결과 섬 전역에서 수십 년간의 갈등, 협상, 배신이 이어졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "엘리자베스 일세 여왕은 아버지의 아일랜드 정책을 계속하고 강화했습니다.",
+      "text_markdown": "엘리자베스 일세 여왕은 아버지의 아일랜드 정책을 계속하고 강화했습니다.",
+      "tts": {
+        "text": "엘리자베스 일세 여왕은 아버지의 아일랜드 정책을 계속하고 강화했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 섬 전역에 잉글랜드 법을 시행하기 위해 총독과 군대를 보냈습니다.",
+      "text_markdown": "그녀는 섬 전역에 잉글랜드 법을 시행하기 위해 총독과 군대를 보냈습니다.",
+      "tts": {
+        "text": "그녀는 섬 전역에 잉글랜드 법을 시행하기 위해 총독과 군대를 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "튜더 왕조의 정복은 잔인했으며, 학살, 강제 이주, 게일 문화의 의도적 파괴를 수반했습니다.",
+      "text_markdown": "튜더 왕조의 정복은 잔인했으며, 학살, 강제 이주, 게일 문화의 의도적 파괴를 수반했습니다.",
+      "tts": {
+        "text": "튜더 왕조의 정복은 잔인했으며, 학살, 강제 이주, 게일 문화의 의도적 파괴를 수반했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그레이스 오말리는 이 게일 독립이 소멸해 가는 세계에서 태어났습니다.",
+      "text_markdown": "그레이스 오말리는 이 게일 독립이 소멸해 가는 세계에서 태어났습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 이 게일 독립이 소멸해 가는 세계에서 태어났습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인도 아일랜드 해안을 따라 이해관계를 가지고 있었습니다.",
+      "text_markdown": "스페인도 아일랜드 해안을 따라 이해관계를 가지고 있었습니다.",
+      "tts": {
+        "text": "스페인도 아일랜드 해안을 따라 이해관계를 가지고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인은 잉글랜드의 최대 라이벌이었고, 아일랜드는 스페인 침공의 잠재적 기지를 제공했습니다.",
+      "text_markdown": "스페인은 잉글랜드의 최대 라이벌이었고, 아일랜드는 스페인 침공의 잠재적 기지를 제공했습니다.",
+      "tts": {
+        "text": "스페인은 잉글랜드의 최대 라이벌이었고, 아일랜드는 스페인 침공의 잠재적 기지를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아일랜드 족장들은 스페인 상인들과 무역 관계를 유지했습니다.",
+      "text_markdown": "아일랜드 족장들은 스페인 상인들과 무역 관계를 유지했습니다.",
+      "tts": {
+        "text": "아일랜드 족장들은 스페인 상인들과 무역 관계를 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "게일 아일랜드의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 연결은 세기가 진행됨에 따라 정치적으로 위험해질 것이었습니다.",
+      "text_markdown": "이러한 연결은 세기가 진행됨에 따라 정치적으로 위험해질 것이었습니다.",
+      "tts": {
+        "text": "이러한 연결은 세기가 진행됨에 따라 정치적으로 위험해질 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리는 1530년경 클루 만 입구의 클레어 섬에서 태어났습니다.",
+      "text_markdown": "그레이스 오말리는 1530년경 클루 만 입구의 클레어 섬에서 태어났습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 천오백삼십 년경 클루 만 입구의 클레어 섬에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 아버지는 오말리 부족의 족장 두다라 오말리였습니다.",
+      "text_markdown": "그녀의 아버지는 오말리 부족의 족장 두다라 오말리였습니다.",
+      "tts": {
+        "text": "그녀의 아버지는 오말리 부족의 족장 두다라 오말리였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 검은 머리카락과 강인한 체력으로 인해 검은 참나무라 불렸습니다.",
+      "text_markdown": "그는 검은 머리카락과 강인한 체력으로 인해 검은 참나무라 불렸습니다.",
+      "tts": {
+        "text": "그는 검은 머리카락과 강인한 체력으로 인해 검은 참나무라 불렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어머니의 이름은 마거릿으로 기록되어 있지만, 그녀에 대해 알려진 것은 거의 없습니다.",
+      "text_markdown": "어머니의 이름은 마거릿으로 기록되어 있지만, 그녀에 대해 알려진 것은 거의 없습니다.",
+      "tts": {
+        "text": "어머니의 이름은 마거릿으로 기록되어 있지만, 그녀에 대해 알려진 것은 거의 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 바다에 둘러싸여 자랐습니다.",
+      "text_markdown": "그레이스는 바다에 둘러싸여 자랐습니다.",
+      "tts": {
+        "text": "그레이스는 바다에 둘러싸여 자랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "클레어 섬은 클루 만 입구에 위치해 대서양의 위력에 완전히 노출되어 있습니다.",
+      "text_markdown": "클레어 섬은 클루 만 입구에 위치해 대서양의 위력에 완전히 노출되어 있습니다.",
+      "tts": {
+        "text": "클레어 섬은 클루 만 입구에 위치해 대서양의 위력에 완전히 노출되어 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 섬은 작고, 바람에 씻기고, 아름다운 곳입니다.",
+      "text_markdown": "이 섬은 작고, 바람에 씻기고, 아름다운 곳입니다.",
+      "tts": {
+        "text": "이 섬은 작고, 바람에 씻기고, 아름다운 곳입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "오말리 부족의 거점이자 해상 작전의 기지였습니다.",
+      "text_markdown": "오말리 부족의 거점이자 해상 작전의 기지였습니다.",
+      "tts": {
+        "text": "오말리 부족의 거점이자 해상 작전의 기지였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어린 나이부터 그레이스는 항해에 소질을 보였습니다.",
+      "text_markdown": "어린 나이부터 그레이스는 항해에 소질을 보였습니다.",
+      "tts": {
+        "text": "어린 나이부터 그레이스는 항해에 소질을 보였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어린 시절 아버지의 무역 항해에 동행하겠다고 요구했다고 전해집니다.",
+      "text_markdown": "어린 시절 아버지의 무역 항해에 동행하겠다고 요구했다고 전해집니다.",
+      "tts": {
+        "text": "어린 시절 아버지의 무역 항해에 동행하겠다고 요구했다고 전해집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "긴 머리가 배의 삭구에 걸린다는 말을 들었을 때 그녀는 머리를 짧게 잘랐습니다.",
+      "text_markdown": "긴 머리가 배의 삭구에 걸린다는 말을 들었을 때 그녀는 머리를 짧게 잘랐습니다.",
+      "tts": {
+        "text": "긴 머리가 배의 삭구에 걸린다는 말을 들었을 때 그녀는 머리를 짧게 잘랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 이야기가 완전히 사실이든 아니든, 그녀에게 대머리 그레이스라는 뜻의 그라니아 월이라는 별명을 안겨 주었습니다.",
+      "text_markdown": "이 이야기가 완전히 사실이든 아니든, 그녀에게 대머리 그레이스라는 뜻의 그라니아 월이라는 별명을 안겨 주었습니다.",
+      "tts": {
+        "text": "이 이야기가 완전히 사실이든 아니든, 그녀에게 대머리 그레이스라는 뜻의 그라니아 월이라는 별명을 안겨 주었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "별, 조수, 바닷새의 행동을 관찰하며 항해술을 배웠습니다.",
+      "text_markdown": "별, 조수, 바닷새의 행동을 관찰하며 항해술을 배웠습니다.",
+      "tts": {
+        "text": "별, 조수, 바닷새의 행동을 관찰하며 항해술을 배웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "클루 만 주변의 위험한 해류와 그 너머 대양에 대해 배웠습니다.",
+      "text_markdown": "클루 만 주변의 위험한 해류와 그 너머 대양에 대해 배웠습니다.",
+      "tts": {
+        "text": "클루 만 주변의 위험한 해류와 그 너머 대양에 대해 배웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자기 배의 두 배 크기의 선박도 파괴할 수 있는 폭풍 속에서 배를 다루는 법을 배웠습니다.",
+      "text_markdown": "자기 배의 두 배 크기의 선박도 파괴할 수 있는 폭풍 속에서 배를 다루는 법을 배웠습니다.",
+      "tts": {
+        "text": "자기 배의 두 배 크기의 선박도 파괴할 수 있는 폭풍 속에서 배를 다루는 법을 배웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 기술은 습득하는 데 수년이 걸렸지만, 그녀는 젊은 나이에 숙달했습니다.",
+      "text_markdown": "이 기술은 습득하는 데 수년이 걸렸지만, 그녀는 젊은 나이에 숙달했습니다.",
+      "tts": {
+        "text": "이 기술은 습득하는 데 수년이 걸렸지만, 그녀는 젊은 나이에 숙달했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스의 교육은 항해에만 국한되지 않았습니다.",
+      "text_markdown": "그레이스의 교육은 항해에만 국한되지 않았습니다.",
+      "tts": {
+        "text": "그레이스의 교육은 항해에만 국한되지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "족장의 딸로서 게일 세계의 정치적 기술을 배웠을 것입니다.",
+      "text_markdown": "족장의 딸로서 게일 세계의 정치적 기술을 배웠을 것입니다.",
+      "tts": {
+        "text": "족장의 딸로서 게일 세계의 정치적 기술을 배웠을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동맹, 영토 주장, 부족들을 묶는 복잡한 의무의 그물망을 이해했습니다.",
+      "text_markdown": "동맹, 영토 주장, 부족들을 묶는 복잡한 의무의 그물망을 이해했습니다.",
+      "tts": {
+        "text": "동맹, 영토 주장, 부족들을 묶는 복잡한 의무의 그물망을 이해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아일랜드어를 말했고, 아마 영어와 라틴어도 약간 배웠을 것입니다.",
+      "text_markdown": "아일랜드어를 말했고, 아마 영어와 라틴어도 약간 배웠을 것입니다.",
+      "tts": {
+        "text": "아일랜드어를 말했고, 아마 영어와 라틴어도 약간 배웠을 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1546년경, 약 열여섯 살 때 그레이스는 도널 오플래허티와 결혼했습니다.",
+      "text_markdown": "1546년경, 약 열여섯 살 때 그레이스는 도널 오플래허티와 결혼했습니다.",
+      "tts": {
+        "text": "천오백사십육 년경, 약 열여섯 살 때 그레이스는 도널 오플래허티와 결혼했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도널은 클루 만 남쪽 코네마라의 오플래허티 가문 족장 후계자였습니다.",
+      "text_markdown": "도널은 클루 만 남쪽 코네마라의 오플래허티 가문 족장 후계자였습니다.",
+      "tts": {
+        "text": "도널은 클루 만 남쪽 코네마라의 오플래허티 가문 족장 후계자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 결혼은 두 강력한 게일 부족 간의 정치적 동맹이었습니다.",
+      "text_markdown": "이 결혼은 두 강력한 게일 부족 간의 정치적 동맹이었습니다.",
+      "tts": {
+        "text": "이 결혼은 두 강력한 게일 부족 간의 정치적 동맹이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이로써 그레이스는 오플래허티 영지의 항구와 영토에 접근할 수 있게 되었습니다.",
+      "text_markdown": "이로써 그레이스는 오플래허티 영지의 항구와 영토에 접근할 수 있게 되었습니다.",
+      "tts": {
+        "text": "이로써 그레이스는 오플래허티 영지의 항구와 영토에 접근할 수 있게 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "도널 오플래허티는 전투의 도널로 알려져 있었습니다.",
+      "text_markdown": "도널 오플래허티는 전투의 도널로 알려져 있었습니다.",
+      "tts": {
+        "text": "도널 오플래허티는 전투의 도널로 알려져 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 공격적이었고 이웃 부족들과 빈번히 분쟁에 휘말렸습니다.",
+      "text_markdown": "그는 공격적이었고 이웃 부족들과 빈번히 분쟁에 휘말렸습니다.",
+      "tts": {
+        "text": "그는 공격적이었고 이웃 부족들과 빈번히 분쟁에 휘말렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그레이스는 결혼 기간 동안 세 자녀를 낳았습니다.",
+      "text_markdown": "그레이스는 결혼 기간 동안 세 자녀를 낳았습니다.",
+      "tts": {
+        "text": "그레이스는 결혼 기간 동안 세 자녀를 낳았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 전통에 따르면, 그녀가 곧 둘 중 더 유능한 지도자가 되었습니다.",
+      "text_markdown": "그러나 전통에 따르면, 그녀가 곧 둘 중 더 유능한 지도자가 되었습니다.",
+      "tts": {
+        "text": "그러나 전통에 따르면, 그녀가 곧 둘 중 더 유능한 지도자가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "도널이 적대 부족과의 전투에서 사망하자 그레이스는 그의 함대와 추종자들을 장악했습니다.",
+      "text_markdown": "도널이 적대 부족과의 전투에서 사망하자 그레이스는 그의 함대와 추종자들을 장악했습니다.",
+      "tts": {
+        "text": "도널이 적대 부족과의 전투에서 사망하자 그레이스는 그의 함대와 추종자들을 장악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "브레헌 법에 따르면 그녀에게는 그의 재산에 대한 자동적 권리가 없었습니다.",
+      "text_markdown": "브레헌 법에 따르면 그녀에게는 그의 재산에 대한 자동적 권리가 없었습니다.",
+      "tts": {
+        "text": "브레헌 법에 따르면 그녀에게는 그의 재산에 대한 자동적 권리가 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 그녀는 수년간의 공동 항해를 통해 선원들의 충성을 얻었습니다.",
+      "text_markdown": "그러나 그녀는 수년간의 공동 항해를 통해 선원들의 충성을 얻었습니다.",
+      "tts": {
+        "text": "그러나 그녀는 수년간의 공동 항해를 통해 선원들의 충성을 얻었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "남자들은 그녀를 따르기로 선택했고, 그녀는 당당한 지휘관이 되었습니다.",
+      "text_markdown": "남자들은 그녀를 따르기로 선택했고, 그녀는 당당한 지휘관이 되었습니다.",
+      "tts": {
+        "text": "남자들은 그녀를 따르기로 선택했고, 그녀는 당당한 지휘관이 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 추종자들과 배를 이끌고 클루 만으로 돌아왔습니다.",
+      "text_markdown": "그레이스는 추종자들과 배를 이끌고 클루 만으로 돌아왔습니다.",
+      "tts": {
+        "text": "그레이스는 추종자들과 배를 이끌고 클루 만으로 돌아왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "클레어 섬에 기지를 세우고 함대 건설을 시작했습니다.",
+      "text_markdown": "클레어 섬에 기지를 세우고 함대 건설을 시작했습니다.",
+      "tts": {
+        "text": "클레어 섬에 기지를 세우고 함대 건설을 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어선에 통행료를 부과하고, 외국 상인들과 교역하며, 적대 부족의 선박을 약탈했습니다.",
+      "text_markdown": "어선에 통행료를 부과하고, 외국 상인들과 교역하며, 적대 부족의 선박을 약탈했습니다.",
+      "tts": {
+        "text": "어선에 통행료를 부과하고, 외국 상인들과 교역하며, 적대 부족의 선박을 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "몇 년 안에 아일랜드 서해안에서 가장 강력한 인물 중 하나가 되었습니다.",
+      "text_markdown": "몇 년 안에 아일랜드 서해안에서 가장 강력한 인물 중 하나가 되었습니다.",
+      "tts": {
+        "text": "몇 년 안에 아일랜드 서해안에서 가장 강력한 인물 중 하나가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀는 1566년경 철의 리처드로 알려진 리처드 버크와 두 번째 결혼을 했습니다.",
+      "text_markdown": "그녀는 1566년경 철의 리처드로 알려진 리처드 버크와 두 번째 결혼을 했습니다.",
+      "tts": {
+        "text": "그녀는 천오백육십육 년경 철의 리처드로 알려진 리처드 버크와 두 번째 결혼을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "리처드는 메이요 카운티에 있는 버크 가문의 유력한 분파의 족장이었습니다.",
+      "text_markdown": "리처드는 메이요 카운티에 있는 버크 가문의 유력한 분파의 족장이었습니다.",
+      "tts": {
+        "text": "리처드는 메이요 카운티에 있는 버크 가문의 유력한 분파의 족장이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유명한 이야기에 따르면 그레이스는 브레헌 법에 따라 일 년간 결혼한 후 그를 자기 성에서 쫓아냈다고 합니다.",
+      "text_markdown": "유명한 이야기에 따르면 그레이스는 브레헌 법에 따라 일 년간 결혼한 후 그를 자기 성에서 쫓아냈다고 합니다.",
+      "tts": {
+        "text": "유명한 이야기에 따르면 그레이스는 브레헌 법에 따라 일 년간 결혼한 후 그를 자기 성에서 쫓아냈다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 이야기가 완전히 정확한지 여부와 관계없이, 대담하고 파격적인 행동이라는 그녀의 명성을 반영합니다.",
+      "text_markdown": "이 이야기가 완전히 정확한지 여부와 관계없이, 대담하고 파격적인 행동이라는 그녀의 명성을 반영합니다.",
+      "tts": {
+        "text": "이 이야기가 완전히 정확한지 여부와 관계없이, 대담하고 파격적인 행동이라는 그녀의 명성을 반영합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다채로운 이야기에도 불구하고, 그레이스와 리처드는 실제로 오랫동안 함께했습니다.",
+      "text_markdown": "다채로운 이야기에도 불구하고, 그레이스와 리처드는 실제로 오랫동안 함께했습니다.",
+      "tts": {
+        "text": "다채로운 이야기에도 불구하고, 그레이스와 리처드는 실제로 오랫동안 함께했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들에게는 티봇이라는 아들이 있었는데, 나중에 아일랜드 역사에서 중요한 역할을 하게 됩니다.",
+      "text_markdown": "그들에게는 티봇이라는 아들이 있었는데, 나중에 아일랜드 역사에서 중요한 역할을 하게 됩니다.",
+      "tts": {
+        "text": "그들에게는 티봇이라는 아들이 있었는데, 나중에 아일랜드 역사에서 중요한 역할을 하게 됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 결혼은 그레이스에게 추가 영토, 선박, 정치적 인맥을 가져다주었습니다.",
+      "text_markdown": "이 결혼은 그레이스에게 추가 영토, 선박, 정치적 인맥을 가져다주었습니다.",
+      "tts": {
+        "text": "이 결혼은 그레이스에게 추가 영토, 선박, 정치적 인맥을 가져다주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 이제 서해안에서 가장 강력한 여성이었으며, 아마 전 아일랜드에서도 가장 강력한 여성이었습니다.",
+      "text_markdown": "그녀는 이제 서해안에서 가장 강력한 여성이었으며, 아마 전 아일랜드에서도 가장 강력한 여성이었습니다.",
+      "tts": {
+        "text": "그녀는 이제 서해안에서 가장 강력한 여성이었으며, 아마 전 아일랜드에서도 가장 강력한 여성이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 함대는 전성기에 이십 척에 달했습니다.",
+      "text_markdown": "그녀의 함대는 전성기에 이십 척에 달했습니다.",
+      "tts": {
+        "text": "그녀의 함대는 전성기에 이십 척에 달했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대형 전함이 아니라 거친 대서양 해역에 적합한 튼튼한 갤리선이었습니다.",
+      "text_markdown": "대형 전함이 아니라 거친 대서양 해역에 적합한 튼튼한 갤리선이었습니다.",
+      "tts": {
+        "text": "대형 전함이 아니라 거친 대서양 해역에 적합한 튼튼한 갤리선이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "교역품, 전사들, 그리고 빠르게 사라져 가는 게일 세계의 희망을 실어 날랐습니다.",
+      "text_markdown": "교역품, 전사들, 그리고 빠르게 사라져 가는 게일 세계의 희망을 실어 날랐습니다.",
+      "tts": {
+        "text": "교역품, 전사들, 그리고 빠르게 사라져 가는 게일 세계의 희망을 실어 날랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그레이스 오말리는 자신이 알던 세계가 파괴되고 있던 바로 그 순간에 해상 제국을 건설하고 있었습니다.",
+      "text_markdown": "그레이스 오말리는 자신이 알던 세계가 파괴되고 있던 바로 그 순간에 해상 제국을 건설하고 있었습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 자신이 알던 세계가 파괴되고 있던 바로 그 순간에 해상 제국을 건설하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력으로의 부상",
+      "text_markdown": "권력으로의 부상"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리의 권력은 세 가지 기반 위에 서 있었습니다: 함선, 동맹, 그리고 담대함.",
+      "text_markdown": "그레이스 오말리의 권력은 세 가지 기반 위에 서 있었습니다: 함선, 동맹, 그리고 담대함.",
+      "tts": {
+        "text": "그레이스 오말리의 권력은 세 가지 기반 위에 서 있었습니다: 함선, 동맹, 그리고 담대함.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함대가 서해안 항로의 지배권을 부여했습니다.",
+      "text_markdown": "함대가 서해안 항로의 지배권을 부여했습니다.",
+      "tts": {
+        "text": "함대가 서해안 항로의 지배권을 부여했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "결혼과 가문의 유대가 가장 강력한 게일 부족들과의 동맹을 제공했습니다.",
+      "text_markdown": "결혼과 가문의 유대가 가장 강력한 게일 부족들과의 동맹을 제공했습니다.",
+      "tts": {
+        "text": "결혼과 가문의 유대가 가장 강력한 게일 부족들과의 동맹을 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "개인적 용기가 그렇지 않았다면 결코 여성을 따르지 않았을 남자들의 충성을 얻었습니다.",
+      "text_markdown": "개인적 용기가 그렇지 않았다면 결코 여성을 따르지 않았을 남자들의 충성을 얻었습니다.",
+      "tts": {
+        "text": "개인적 용기가 그렇지 않았다면 결코 여성을 따르지 않았을 남자들의 충성을 얻었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "통행료를 내지 않고 자신의 해역을 통과하는 상선을 약탈했습니다.",
+      "text_markdown": "통행료를 내지 않고 자신의 해역을 통과하는 상선을 약탈했습니다.",
+      "tts": {
+        "text": "통행료를 내지 않고 자신의 해역을 통과하는 상선을 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자신의 영역에 도전하는 적대 부족의 선박을 공격했습니다.",
+      "text_markdown": "자신의 영역에 도전하는 적대 부족의 선박을 공격했습니다.",
+      "tts": {
+        "text": "자신의 영역에 도전하는 적대 부족의 선박을 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인과 스코틀랜드 상인들과 교역하며 아일랜드의 가죽, 생선, 양모를 와인, 소금, 무기와 교환했습니다.",
+      "text_markdown": "스페인과 스코틀랜드 상인들과 교역하며 아일랜드의 가죽, 생선, 양모를 와인, 소금, 무기와 교환했습니다.",
+      "tts": {
+        "text": "스페인과 스코틀랜드 상인들과 교역하며 아일랜드의 가죽, 생선, 양모를 와인, 소금, 무기와 교환했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 활동은 그녀를 부유하게 만들고 서해안 전역에 정치적 영향력을 갖게 했습니다.",
+      "text_markdown": "이러한 활동은 그녀를 부유하게 만들고 서해안 전역에 정치적 영향력을 갖게 했습니다.",
+      "tts": {
+        "text": "이러한 활동은 그녀를 부유하게 만들고 서해안 전역에 정치적 영향력을 갖게 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "코노트의 잉글랜드 당국은 그녀를 위험한 반역자로 여겼습니다.",
+      "text_markdown": "코노트의 잉글랜드 당국은 그녀를 위험한 반역자로 여겼습니다.",
+      "tts": {
+        "text": "코노트의 잉글랜드 당국은 그녀를 위험한 반역자로 여겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "리처드 빙엄 경은 1584년에 코노트의 잉글랜드 총독으로 임명되었습니다.",
+      "text_markdown": "리처드 빙엄 경은 1584년에 코노트의 잉글랜드 총독으로 임명되었습니다.",
+      "tts": {
+        "text": "리처드 빙엄 경은 천오백팔십사 년에 코노트의 잉글랜드 총독으로 임명되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "빙엄은 게일족의 저항을 분쇄하겠다고 결의한 냉혹한 행정관이었습니다.",
+      "text_markdown": "빙엄은 게일족의 저항을 분쇄하겠다고 결의한 냉혹한 행정관이었습니다.",
+      "tts": {
+        "text": "빙엄은 게일족의 저항을 분쇄하겠다고 결의한 냉혹한 행정관이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 그레이스 오말리를 주요 표적 중 하나로 보았습니다.",
+      "text_markdown": "그는 그레이스 오말리를 주요 표적 중 하나로 보았습니다.",
+      "tts": {
+        "text": "그는 그레이스 오말리를 주요 표적 중 하나로 보았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "빙엄은 그녀의 가축을 빼앗고 여러 차례 체포를 시도했습니다.",
+      "text_markdown": "빙엄은 그녀의 가축을 빼앗고 여러 차례 체포를 시도했습니다.",
+      "tts": {
+        "text": "빙엄은 그녀의 가축을 빼앗고 여러 차례 체포를 시도했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 장남 오언을 사로잡아 살해했습니다.",
+      "text_markdown": "그녀의 장남 오언을 사로잡아 살해했습니다.",
+      "tts": {
+        "text": "그녀의 장남 오언을 사로잡아 살해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 형제와 여러 추종자들을 투옥했습니다.",
+      "text_markdown": "그녀의 형제와 여러 추종자들을 투옥했습니다.",
+      "tts": {
+        "text": "그녀의 형제와 여러 추종자들을 투옥했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 그녀에 대한 캠페인은 개인적이고 복수심에 찬 것이었습니다.",
+      "text_markdown": "그의 그녀에 대한 캠페인은 개인적이고 복수심에 찬 것이었습니다.",
+      "tts": {
+        "text": "그의 그녀에 대한 캠페인은 개인적이고 복수심에 찬 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 가용한 모든 수단으로 빙엄에 맞섰습니다.",
+      "text_markdown": "그레이스는 가용한 모든 수단으로 빙엄에 맞섰습니다.",
+      "tts": {
+        "text": "그레이스는 가용한 모든 수단으로 빙엄에 맞섰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드 보급선에 대한 습격을 감행했습니다.",
+      "text_markdown": "잉글랜드 보급선에 대한 습격을 감행했습니다.",
+      "tts": {
+        "text": "잉글랜드 보급선에 대한 습격을 감행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "빙엄의 군대로부터 도주하는 게일 반군들을 숨겨 주었습니다.",
+      "text_markdown": "빙엄의 군대로부터 도주하는 게일 반군들을 숨겨 주었습니다.",
+      "tts": {
+        "text": "빙엄의 군대로부터 도주하는 게일 반군들을 숨겨 주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해안선에 대한 지식을 이용하여 잉글랜드 순찰을 피하고 예상치 못한 곳을 공격했습니다.",
+      "text_markdown": "해안선에 대한 지식을 이용하여 잉글랜드 순찰을 피하고 예상치 못한 곳을 공격했습니다.",
+      "tts": {
+        "text": "해안선에 대한 지식을 이용하여 잉글랜드 순찰을 피하고 예상치 못한 곳을 공격했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 빙엄의 자원은 그녀의 것보다 훨씬 컸습니다.",
+      "text_markdown": "그러나 빙엄의 자원은 그녀의 것보다 훨씬 컸습니다.",
+      "tts": {
+        "text": "그러나 빙엄의 자원은 그녀의 것보다 훨씬 컸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 잉글랜드 병사, 대포, 왕실의 지원을 지휘했습니다.",
+      "text_markdown": "그는 잉글랜드 병사, 대포, 왕실의 지원을 지휘했습니다.",
+      "tts": {
+        "text": "그는 잉글랜드 병사, 대포, 왕실의 지원을 지휘했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그레이스는 유럽에서 가장 강력한 왕국을 상대로 패배가 정해진 전쟁을 치르고 있었습니다.",
+      "text_markdown": "그레이스는 유럽에서 가장 강력한 왕국을 상대로 패배가 정해진 전쟁을 치르고 있었습니다.",
+      "tts": {
+        "text": "그레이스는 유럽에서 가장 강력한 왕국을 상대로 패배가 정해진 전쟁을 치르고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "천오백구십 년대 초반, 그녀에게는 선택지가 바닥나고 있었습니다.",
+      "text_markdown": "천오백구십 년대 초반, 그녀에게는 선택지가 바닥나고 있었습니다.",
+      "tts": {
+        "text": "천오백구십 년대 초반, 그녀에게는 선택지가 바닥나고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1593년, 그레이스는 튜더 시대 역사상 가장 비범한 결정 중 하나를 내렸습니다.",
+      "text_markdown": "1593년, 그레이스는 튜더 시대 역사상 가장 비범한 결정 중 하나를 내렸습니다.",
+      "tts": {
+        "text": "천오백구십삼 년, 그레이스는 튜더 시대 역사상 가장 비범한 결정 중 하나를 내렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "빙엄을 완전히 우회하여 엘리자베스 일세 여왕에게 직접 호소하기로 결정한 것입니다.",
+      "text_markdown": "빙엄을 완전히 우회하여 엘리자베스 일세 여왕에게 직접 호소하기로 결정한 것입니다.",
+      "tts": {
+        "text": "빙엄을 완전히 우회하여 엘리자베스 일세 여왕에게 직접 호소하기로 결정한 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여왕에게 빙엄에 대한 불만을 담은 탄원서를 작성했습니다.",
+      "text_markdown": "여왕에게 빙엄에 대한 불만을 담은 탄원서를 작성했습니다.",
+      "tts": {
+        "text": "여왕에게 빙엄에 대한 불만을 담은 탄원서를 작성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 직접 잉글랜드까지 항해하여 자신의 사건을 진술했습니다.",
+      "text_markdown": "그리고 직접 잉글랜드까지 항해하여 자신의 사건을 진술했습니다.",
+      "tts": {
+        "text": "그리고 직접 잉글랜드까지 항해하여 자신의 사건을 진술했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리와 엘리자베스 여왕의 만남은 런던의 그리니치 궁전에서 이루어졌습니다.",
+      "text_markdown": "그레이스 오말리와 엘리자베스 여왕의 만남은 런던의 그리니치 궁전에서 이루어졌습니다.",
+      "tts": {
+        "text": "그레이스 오말리와 엘리자베스 여왕의 만남은 런던의 그리니치 궁전에서 이루어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정확한 날짜는 기록되어 있지 않지만, 1593년 구월에 일어났습니다.",
+      "text_markdown": "정확한 날짜는 기록되어 있지 않지만, 1593년 구월에 일어났습니다.",
+      "tts": {
+        "text": "정확한 날짜는 기록되어 있지 않지만, 천오백구십삼 년 구월에 일어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "십육 세기 가장 뛰어난 두 여성이 서로 마주 섰습니다.",
+      "text_markdown": "십육 세기 가장 뛰어난 두 여성이 서로 마주 섰습니다.",
+      "tts": {
+        "text": "십육 세기 가장 뛰어난 두 여성이 서로 마주 섰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "한 사람은 유럽에서 가장 강력한 왕국을 통치했고, 다른 한 사람은 대서양 끝에서 함대를 이끌었습니다.",
+      "text_markdown": "한 사람은 유럽에서 가장 강력한 왕국을 통치했고, 다른 한 사람은 대서양 끝에서 함대를 이끌었습니다.",
+      "tts": {
+        "text": "한 사람은 유럽에서 가장 강력한 왕국을 통치했고, 다른 한 사람은 대서양 끝에서 함대를 이끌었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 두 여성 모두 구사할 수 있는 라틴어로 회담을 진행했습니다.",
+      "text_markdown": "그레이스는 두 여성 모두 구사할 수 있는 라틴어로 회담을 진행했습니다.",
+      "tts": {
+        "text": "그레이스는 두 여성 모두 구사할 수 있는 라틴어로 회담을 진행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자신도 주권자라고 주장하며 엘리자베스에게 고개 숙이기를 거부했습니다.",
+      "text_markdown": "자신도 주권자라고 주장하며 엘리자베스에게 고개 숙이기를 거부했습니다.",
+      "tts": {
+        "text": "자신도 주권자라고 주장하며 엘리자베스에게 고개 숙이기를 거부했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "명확하고 힘 있게 탄원서를 제출했습니다.",
+      "text_markdown": "명확하고 힘 있게 탄원서를 제출했습니다.",
+      "tts": {
+        "text": "명확하고 힘 있게 탄원서를 제출했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "엘리자베스는 그녀의 용기와 품격에 감명받은 것으로 전해집니다.",
+      "text_markdown": "엘리자베스는 그녀의 용기와 품격에 감명받은 것으로 전해집니다.",
+      "tts": {
+        "text": "엘리자베스는 그녀의 용기와 품격에 감명받은 것으로 전해집니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "엘리자베스는 그레이스의 여러 요구에 동의했습니다.",
+      "text_markdown": "엘리자베스는 그레이스의 여러 요구에 동의했습니다.",
+      "tts": {
+        "text": "엘리자베스는 그레이스의 여러 요구에 동의했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "빙엄에게 그레이스의 투옥된 가족을 석방하라고 명령했습니다.",
+      "text_markdown": "빙엄에게 그레이스의 투옥된 가족을 석방하라고 명령했습니다.",
+      "tts": {
+        "text": "빙엄에게 그레이스의 투옥된 가족을 석방하라고 명령했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그레이스에게 해상 활동을 계속할 권리를 부여했습니다.",
+      "text_markdown": "그레이스에게 해상 활동을 계속할 권리를 부여했습니다.",
+      "tts": {
+        "text": "그레이스에게 해상 활동을 계속할 권리를 부여했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그레이스와 추종자들을 위한 보호서를 작성했습니다.",
+      "text_markdown": "그레이스와 추종자들을 위한 보호서를 작성했습니다.",
+      "tts": {
+        "text": "그레이스와 추종자들을 위한 보호서를 작성했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그리니치에서의 만남은 그레이스 오말리에게 외교적 승리였습니다.",
+      "text_markdown": "그리니치에서의 만남은 그레이스 오말리에게 외교적 승리였습니다.",
+      "tts": {
+        "text": "그리니치에서의 만남은 그레이스 오말리에게 외교적 승리였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 아일랜드에서의 잉글랜드 식민 행정부의 머리 위를 넘어갔습니다.",
+      "text_markdown": "그녀는 아일랜드에서의 잉글랜드 식민 행정부의 머리 위를 넘어갔습니다.",
+      "tts": {
+        "text": "그녀는 아일랜드에서의 잉글랜드 식민 행정부의 머리 위를 넘어갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "군주와 직접 협상하여 실질적인 양보를 이끌어냈습니다.",
+      "text_markdown": "군주와 직접 협상하여 실질적인 양보를 이끌어냈습니다.",
+      "tts": {
+        "text": "군주와 직접 협상하여 실질적인 양보를 이끌어냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다른 어떤 게일 족장도 이에 비견될 만한 것을 성취하지 못했습니다.",
+      "text_markdown": "다른 어떤 게일 족장도 이에 비견될 만한 것을 성취하지 못했습니다.",
+      "tts": {
+        "text": "다른 어떤 게일 족장도 이에 비견될 만한 것을 성취하지 못했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 승리는 취약하고 일시적이었습니다.",
+      "text_markdown": "그러나 승리는 취약하고 일시적이었습니다.",
+      "tts": {
+        "text": "그러나 승리는 취약하고 일시적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "빙엄은 자신의 여왕에 의해 부정된 것에 분개했습니다.",
+      "text_markdown": "빙엄은 자신의 여왕에 의해 부정된 것에 분개했습니다.",
+      "tts": {
+        "text": "빙엄은 자신의 여왕에 의해 부정된 것에 분개했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "엘리자베스의 명령 이행을 질질 끌었습니다.",
+      "text_markdown": "엘리자베스의 명령 이행을 질질 끌었습니다.",
+      "tts": {
+        "text": "엘리자베스의 명령 이행을 질질 끌었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "게일 아일랜드를 파괴하는 구조적 힘은 어떤 개별 협상과 관계없이 계속되었습니다.",
+      "text_markdown": "게일 아일랜드를 파괴하는 구조적 힘은 어떤 개별 협상과 관계없이 계속되었습니다.",
+      "tts": {
+        "text": "게일 아일랜드를 파괴하는 구조적 힘은 어떤 개별 협상과 관계없이 계속되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그레이스는 전투 하나를 이겼지만, 전쟁은 이미 진 것이었습니다.",
+      "text_markdown": "그레이스는 전투 하나를 이겼지만, 전쟁은 이미 진 것이었습니다.",
+      "tts": {
+        "text": "그레이스는 전투 하나를 이겼지만, 전쟁은 이미 진 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "구년 전쟁이 천오백구십 년대에 아일랜드 전역에서 발발했습니다.",
+      "text_markdown": "구년 전쟁이 천오백구십 년대에 아일랜드 전역에서 발발했습니다.",
+      "tts": {
+        "text": "구년 전쟁이 천오백구십 년대에 아일랜드 전역에서 발발했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "게일 족장들이 잉글랜드 통치에 대한 최후의 절박한 반란을 일으켰습니다.",
+      "text_markdown": "게일 족장들이 잉글랜드 통치에 대한 최후의 절박한 반란을 일으켰습니다.",
+      "tts": {
+        "text": "게일 족장들이 잉글랜드 통치에 대한 최후의 절박한 반란을 일으켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전쟁은 잉글랜드의 승리와 옛 게일 질서의 완전한 파괴로 끝났습니다.",
+      "text_markdown": "전쟁은 잉글랜드의 승리와 옛 게일 질서의 완전한 파괴로 끝났습니다.",
+      "tts": {
+        "text": "전쟁은 잉글랜드의 승리와 옛 게일 질서의 완전한 파괴로 끝났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그레이스 오말리는 자신이 싸워 온 세계가 무너지는 것을 지켜보며 살아남았습니다.",
+      "text_markdown": "그레이스 오말리는 자신이 싸워 온 세계가 무너지는 것을 지켜보며 살아남았습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 자신이 싸워 온 세계가 무너지는 것을 지켜보며 살아남았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "절정기",
+      "text_markdown": "절정기"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천오백칠십 년대와 천오백팔십 년대의 권력 절정기에, 그레이스 오말리는 서부 바다를 지배했습니다.",
+      "text_markdown": "천오백칠십 년대와 천오백팔십 년대의 권력 절정기에, 그레이스 오말리는 서부 바다를 지배했습니다.",
+      "tts": {
+        "text": "천오백칠십 년대와 천오백팔십 년대의 권력 절정기에, 그레이스 오말리는 서부 바다를 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 함대는 골웨이 만에서 도니골까지의 해역을 장악했습니다.",
+      "text_markdown": "그녀의 함대는 골웨이 만에서 도니골까지의 해역을 장악했습니다.",
+      "tts": {
+        "text": "그녀의 함대는 골웨이 만에서 도니골까지의 해역을 장악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 영역을 통과하는 배 중 그녀가 모르는 채로, 그리고 대개 요금을 내지 않고 지나가는 배는 없었습니다.",
+      "text_markdown": "그녀의 영역을 통과하는 배 중 그녀가 모르는 채로, 그리고 대개 요금을 내지 않고 지나가는 배는 없었습니다.",
+      "tts": {
+        "text": "그녀의 영역을 통과하는 배 중 그녀가 모르는 채로, 그리고 대개 요금을 내지 않고 지나가는 배는 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 아일랜드 대서양 연안의 확고부동한 해상 지배자였습니다.",
+      "text_markdown": "그녀는 아일랜드 대서양 연안의 확고부동한 해상 지배자였습니다.",
+      "tts": {
+        "text": "그녀는 아일랜드 대서양 연안의 확고부동한 해상 지배자였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "주요 거점은 클레어 섬, 록플리트 성, 해안을 따른 여러 요새였습니다.",
+      "text_markdown": "주요 거점은 클레어 섬, 록플리트 성, 해안을 따른 여러 요새였습니다.",
+      "tts": {
+        "text": "주요 거점은 클레어 섬, 록플리트 성, 해안을 따른 여러 요새였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "록플리트 성은 캐리카하울리라고도 불리며, 클루 만의 좁은 후미에 서 있습니다.",
+      "text_markdown": "록플리트 성은 캐리카하울리라고도 불리며, 클루 만의 좁은 후미에 서 있습니다.",
+      "tts": {
+        "text": "록플리트 성은 캐리카하울리라고도 불리며, 클루 만의 좁은 후미에 서 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "작지만 견고한 탑 형태의 건물로, 삼면이 물로 둘러싸여 있습니다.",
+      "text_markdown": "작지만 견고한 탑 형태의 건물로, 삼면이 물로 둘러싸여 있습니다.",
+      "tts": {
+        "text": "작지만 견고한 탑 형태의 건물로, 삼면이 물로 둘러싸여 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전설에 따르면 그레이스는 밤에 물의 이상을 감지하기 위해 배의 계류 밧줄을 침대 기둥에 묶어 두었다고 합니다.",
+      "text_markdown": "전설에 따르면 그레이스는 밤에 물의 이상을 감지하기 위해 배의 계류 밧줄을 침대 기둥에 묶어 두었다고 합니다.",
+      "tts": {
+        "text": "전설에 따르면 그레이스는 밤에 물의 이상을 감지하기 위해 배의 계류 밧줄을 침대 기둥에 묶어 두었다고 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 수백 명의 전투 병력을 유지했습니다.",
+      "text_markdown": "그레이스는 수백 명의 전투 병력을 유지했습니다.",
+      "tts": {
+        "text": "그레이스는 수백 명의 전투 병력을 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "직업 군인이 아니라 충성심, 혈연, 자기 이익에서 그녀를 섬기는 부족민들이었습니다.",
+      "text_markdown": "직업 군인이 아니라 충성심, 혈연, 자기 이익에서 그녀를 섬기는 부족민들이었습니다.",
+      "tts": {
+        "text": "직업 군인이 아니라 충성심, 혈연, 자기 이익에서 그녀를 섬기는 부족민들이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 배에 승선하고, 성을 지키고, 약탈에서 함께 싸웠습니다.",
+      "text_markdown": "그녀의 배에 승선하고, 성을 지키고, 약탈에서 함께 싸웠습니다.",
+      "tts": {
+        "text": "그녀의 배에 승선하고, 성을 지키고, 약탈에서 함께 싸웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 그들을 먹이고, 보수를 주고, 직접 위험 속으로 이끌었습니다.",
+      "text_markdown": "그녀는 그들을 먹이고, 보수를 주고, 직접 위험 속으로 이끌었습니다.",
+      "tts": {
+        "text": "그녀는 그들을 먹이고, 보수를 주고, 직접 위험 속으로 이끌었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 배는 대서양 연안에 적합한 견고한 얕은 흘수의 갤리선이었습니다.",
+      "text_markdown": "그녀의 배는 대서양 연안에 적합한 견고한 얕은 흘수의 갤리선이었습니다.",
+      "tts": {
+        "text": "그녀의 배는 대서양 연안에 적합한 견고한 얕은 흘수의 갤리선이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "더 깊은 흘수의 배가 진입할 수 없는 클루 만 주변의 위험한 수역을 항해할 수 있었습니다.",
+      "text_markdown": "더 깊은 흘수의 배가 진입할 수 없는 클루 만 주변의 위험한 수역을 항해할 수 있었습니다.",
+      "tts": {
+        "text": "더 깊은 흘수의 배가 진입할 수 없는 클루 만 주변의 위험한 수역을 항해할 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "상선을 추격할 만큼 빠르고 군함을 피할 만큼 기동성이 좋았습니다.",
+      "text_markdown": "상선을 추격할 만큼 빠르고 군함을 피할 만큼 기동성이 좋았습니다.",
+      "tts": {
+        "text": "상선을 추격할 만큼 빠르고 군함을 피할 만큼 기동성이 좋았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 설계는 오말리 가문에 의해 여러 세대에 걸쳐 완성되었습니다.",
+      "text_markdown": "그 설계는 오말리 가문에 의해 여러 세대에 걸쳐 완성되었습니다.",
+      "tts": {
+        "text": "그 설계는 오말리 가문에 의해 여러 세대에 걸쳐 완성되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 외국 상인들과 광범위하게 교역했습니다.",
+      "text_markdown": "그레이스는 외국 상인들과 광범위하게 교역했습니다.",
+      "tts": {
+        "text": "그레이스는 외국 상인들과 광범위하게 교역했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 배들이 와인, 철, 소금을 아일랜드 해안으로 가져왔습니다.",
+      "text_markdown": "스페인 배들이 와인, 철, 소금을 아일랜드 해안으로 가져왔습니다.",
+      "tts": {
+        "text": "스페인 배들이 와인, 철, 소금을 아일랜드 해안으로 가져왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 대가로 그레이스는 염장 생선, 소가죽, 양모를 수출했습니다.",
+      "text_markdown": "그 대가로 그레이스는 염장 생선, 소가죽, 양모를 수출했습니다.",
+      "tts": {
+        "text": "그 대가로 그레이스는 염장 생선, 소가죽, 양모를 수출했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 교역은 잉글랜드 법상 엄밀히 불법이었지만, 거친 대서양 연안에서 잉글랜드 법은 거의 의미가 없었습니다.",
+      "text_markdown": "이 교역은 잉글랜드 법상 엄밀히 불법이었지만, 거친 대서양 연안에서 잉글랜드 법은 거의 의미가 없었습니다.",
+      "tts": {
+        "text": "이 교역은 잉글랜드 법상 엄밀히 불법이었지만, 거친 대서양 연안에서 잉글랜드 법은 거의 의미가 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "통행료 납부를 거부하는 선박도 약탈했습니다.",
+      "text_markdown": "통행료 납부를 거부하는 선박도 약탈했습니다.",
+      "tts": {
+        "text": "통행료 납부를 거부하는 선박도 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드 상인, 경쟁 아일랜드 부족, 스코틀랜드 무역상 모두 그녀에게 손실을 입었습니다.",
+      "text_markdown": "잉글랜드 상인, 경쟁 아일랜드 부족, 스코틀랜드 무역상 모두 그녀에게 손실을 입었습니다.",
+      "tts": {
+        "text": "잉글랜드 상인, 경쟁 아일랜드 부족, 스코틀랜드 무역상 모두 그녀에게 손실을 입었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 습격은 무작위가 아니라 계산된 것이었습니다.",
+      "text_markdown": "그녀의 습격은 무작위가 아니라 계산된 것이었습니다.",
+      "tts": {
+        "text": "그녀의 습격은 무작위가 아니라 계산된 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "귀중한 화물을 싣고 있다고 알고 있는 배를 노리고, 방어가 너무 견고한 배는 피했습니다.",
+      "text_markdown": "귀중한 화물을 싣고 있다고 알고 있는 배를 노리고, 방어가 너무 견고한 배는 피했습니다.",
+      "tts": {
+        "text": "귀중한 화물을 싣고 있다고 알고 있는 배를 노리고, 방어가 너무 견고한 배는 피했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 두 남편에게서 자녀를 얻어 지도자로 키웠습니다.",
+      "text_markdown": "그레이스는 두 남편에게서 자녀를 얻어 지도자로 키웠습니다.",
+      "tts": {
+        "text": "그레이스는 두 남편에게서 자녀를 얻어 지도자로 키웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아들들은 함대의 선장으로, 그리고 독자적인 정치인으로 활동했습니다.",
+      "text_markdown": "아들들은 함대의 선장으로, 그리고 독자적인 정치인으로 활동했습니다.",
+      "tts": {
+        "text": "아들들은 함대의 선장으로, 그리고 독자적인 정치인으로 활동했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "며느리 마거릿이 그녀를 대신하여 영지를 관리했습니다.",
+      "text_markdown": "며느리 마거릿이 그녀를 대신하여 영지를 관리했습니다.",
+      "tts": {
+        "text": "며느리 마거릿이 그녀를 대신하여 영지를 관리했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "오말리 네트워크는 혈연과 그레이스의 인격적 힘으로 결속된 가족 사업이었습니다.",
+      "text_markdown": "오말리 네트워크는 혈연과 그레이스의 인격적 힘으로 결속된 가족 사업이었습니다.",
+      "tts": {
+        "text": "오말리 네트워크는 혈연과 그레이스의 인격적 힘으로 결속된 가족 사업이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "대서양 연안에서의 삶은 체력적으로 힘들고 종종 위험했습니다.",
+      "text_markdown": "대서양 연안에서의 삶은 체력적으로 힘들고 종종 위험했습니다.",
+      "tts": {
+        "text": "대서양 연안에서의 삶은 체력적으로 힘들고 종종 위험했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "날씨는 거칠었고 일 년 대부분 바다에서 폭풍이 밀려왔습니다.",
+      "text_markdown": "날씨는 거칠었고 일 년 대부분 바다에서 폭풍이 밀려왔습니다.",
+      "tts": {
+        "text": "날씨는 거칠었고 일 년 대부분 바다에서 폭풍이 밀려왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배는 개방형이거나 부분적으로만 갑판이 있어 비바람을 거의 막아 주지 못했습니다.",
+      "text_markdown": "배는 개방형이거나 부분적으로만 갑판이 있어 비바람을 거의 막아 주지 못했습니다.",
+      "tts": {
+        "text": "배는 개방형이거나 부분적으로만 갑판이 있어 비바람을 거의 막아 주지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그레이스는 수십 년간 이런 조건을 견디며 육십 대까지 항해하고 전투했습니다.",
+      "text_markdown": "그레이스는 수십 년간 이런 조건을 견디며 육십 대까지 항해하고 전투했습니다.",
+      "tts": {
+        "text": "그레이스는 수십 년간 이런 조건을 견디며 육십 대까지 항해하고 전투했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투에서의 개인적 용기로 유명했습니다.",
+      "text_markdown": "전투에서의 개인적 용기로 유명했습니다.",
+      "tts": {
+        "text": "전투에서의 개인적 용기로 유명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유명한 이야기에 따르면, 아들 티봇을 출산한 다음 날 배에 대한 공격을 물리쳤다고 합니다.",
+      "text_markdown": "유명한 이야기에 따르면, 아들 티봇을 출산한 다음 날 배에 대한 공격을 물리쳤다고 합니다.",
+      "tts": {
+        "text": "유명한 이야기에 따르면, 아들 티봇을 출산한 다음 날 배에 대한 공격을 물리쳤다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "침대에서 일어나 무기를 잡고 갑판에서 방어를 지휘했다고 전해집니다.",
+      "text_markdown": "침대에서 일어나 무기를 잡고 갑판에서 방어를 지휘했다고 전해집니다.",
+      "tts": {
+        "text": "침대에서 일어나 무기를 잡고 갑판에서 방어를 지휘했다고 전해집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 이야기의 세부 사항이 모두 정확한지와 관계없이, 그녀를 전설로 만든 정신을 담고 있습니다.",
+      "text_markdown": "이 이야기의 세부 사항이 모두 정확한지와 관계없이, 그녀를 전설로 만든 정신을 담고 있습니다.",
+      "tts": {
+        "text": "이 이야기의 세부 사항이 모두 정확한지와 관계없이, 그녀를 전설로 만든 정신을 담고 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 권력을 뒷받침한 게일 세계는 복잡하고 세련된 사회였습니다.",
+      "text_markdown": "그녀의 권력을 뒷받침한 게일 세계는 복잡하고 세련된 사회였습니다.",
+      "tts": {
+        "text": "그녀의 권력을 뒷받침한 게일 세계는 복잡하고 세련된 사회였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "고유한 법 체계, 문학, 음악, 통치 형태를 갖추고 있었습니다.",
+      "text_markdown": "고유한 법 체계, 문학, 음악, 통치 형태를 갖추고 있었습니다.",
+      "tts": {
+        "text": "고유한 법 체계, 문학, 음악, 통치 형태를 갖추고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "잉글랜드 식민자들은 이를 야만적이라 무시했지만, 결코 단순하지 않았습니다.",
+      "text_markdown": "잉글랜드 식민자들은 이를 야만적이라 무시했지만, 결코 단순하지 않았습니다.",
+      "tts": {
+        "text": "잉글랜드 식민자들은 이를 야만적이라 무시했지만, 결코 단순하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그레이스 오말리는 이 세계의 산물이었고, 독립과 용기라는 그 가치를 체현했습니다.",
+      "text_markdown": "그레이스 오말리는 이 세계의 산물이었고, 독립과 용기라는 그 가치를 체현했습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 이 세계의 산물이었고, 독립과 용기라는 그 가치를 체현했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스는 서해안 전역에 정보망도 유지했습니다.",
+      "text_markdown": "그레이스는 서해안 전역에 정보망도 유지했습니다.",
+      "tts": {
+        "text": "그레이스는 서해안 전역에 정보망도 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "골웨이, 코노트의 항구들, 잉글랜드 주둔 도시들에 정보원을 두고 있었습니다.",
+      "text_markdown": "골웨이, 코노트의 항구들, 잉글랜드 주둔 도시들에 정보원을 두고 있었습니다.",
+      "tts": {
+        "text": "골웨이, 코노트의 항구들, 잉글랜드 주둔 도시들에 정보원을 두고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "잉글랜드 보급선이 언제 도착하고 어떤 화물을 싣고 있는지 알았습니다.",
+      "text_markdown": "잉글랜드 보급선이 언제 도착하고 어떤 화물을 싣고 있는지 알았습니다.",
+      "tts": {
+        "text": "잉글랜드 보급선이 언제 도착하고 어떤 화물을 싣고 있는지 알았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 정보는 교역과 약탈 모두에서 결정적 우위를 제공했습니다.",
+      "text_markdown": "이 정보는 교역과 약탈 모두에서 결정적 우위를 제공했습니다.",
+      "tts": {
+        "text": "이 정보는 교역과 약탈 모두에서 결정적 우위를 제공했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인과의 무역 관계는 특히 가치가 있었습니다.",
+      "text_markdown": "스페인과의 무역 관계는 특히 가치가 있었습니다.",
+      "tts": {
+        "text": "스페인과의 무역 관계는 특히 가치가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 상인들은 아일랜드 생선과 가죽에 높은 가격을 지불했습니다.",
+      "text_markdown": "스페인 상인들은 아일랜드 생선과 가죽에 높은 가격을 지불했습니다.",
+      "tts": {
+        "text": "스페인 상인들은 아일랜드 생선과 가죽에 높은 가격을 지불했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신 서부 아일랜드에서 부족한 와인, 무기, 철을 공급했습니다.",
+      "text_markdown": "대신 서부 아일랜드에서 부족한 와인, 무기, 철을 공급했습니다.",
+      "tts": {
+        "text": "대신 서부 아일랜드에서 부족한 와인, 무기, 철을 공급했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 무역 연결은 그레이스를 코노트에서 가장 부유한 인물 중 하나로 만들었습니다.",
+      "text_markdown": "이러한 무역 연결은 그레이스를 코노트에서 가장 부유한 인물 중 하나로 만들었습니다.",
+      "tts": {
+        "text": "이러한 무역 연결은 그레이스를 코노트에서 가장 부유한 인물 중 하나로 만들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "권력의 절정기에 그레이스 오말리는 아일랜드에서 가장 강력한 여성이었습니다.",
+      "text_markdown": "권력의 절정기에 그레이스 오말리는 아일랜드에서 가장 강력한 여성이었습니다.",
+      "tts": {
+        "text": "권력의 절정기에 그레이스 오말리는 아일랜드에서 가장 강력한 여성이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어떤 잉글랜드 총독에게도, 어떤 게일 영주에게도 보고하지 않았습니다.",
+      "text_markdown": "어떤 잉글랜드 총독에게도, 어떤 게일 영주에게도 보고하지 않았습니다.",
+      "tts": {
+        "text": "어떤 잉글랜드 총독에게도, 어떤 게일 영주에게도 보고하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자신의 동맹을 맺고, 자신의 전쟁을 치르고, 자신의 백성을 다스렸습니다.",
+      "text_markdown": "자신의 동맹을 맺고, 자신의 전쟁을 치르고, 자신의 백성을 다스렸습니다.",
+      "tts": {
+        "text": "자신의 동맹을 맺고, 자신의 전쟁을 치르고, 자신의 백성을 다스렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 실질적인 의미에서 그녀는 바다의 주권자였습니다.",
+      "text_markdown": "모든 실질적인 의미에서 그녀는 바다의 주권자였습니다.",
+      "tts": {
+        "text": "모든 실질적인 의미에서 그녀는 바다의 주권자였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "종말",
+      "text_markdown": "종말"
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리 인생의 마지막 십 년은 상실과 쇠퇴로 점철되었습니다.",
+      "text_markdown": "그레이스 오말리 인생의 마지막 십 년은 상실과 쇠퇴로 점철되었습니다.",
+      "tts": {
+        "text": "그레이스 오말리 인생의 마지막 십 년은 상실과 쇠퇴로 점철되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드의 아일랜드 정복은 천오백구십 년대 내내 가속화되었습니다.",
+      "text_markdown": "잉글랜드의 아일랜드 정복은 천오백구십 년대 내내 가속화되었습니다.",
+      "tts": {
+        "text": "잉글랜드의 아일랜드 정복은 천오백구십 년대 내내 가속화되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수 세기 동안 권력을 유지해 온 게일 족장들이 토지와 작위를 박탈당했습니다.",
+      "text_markdown": "수 세기 동안 권력을 유지해 온 게일 족장들이 토지와 작위를 박탈당했습니다.",
+      "tts": {
+        "text": "수 세기 동안 권력을 유지해 온 게일 족장들이 토지와 작위를 박탈당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그레이스가 태어날 때부터 알았던 세계가 체계적으로 파괴되고 있었습니다.",
+      "text_markdown": "그레이스가 태어날 때부터 알았던 세계가 체계적으로 파괴되고 있었습니다.",
+      "tts": {
+        "text": "그레이스가 태어날 때부터 알았던 세계가 체계적으로 파괴되고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1594년부터 1603년까지 지속된 구년 전쟁은 게일 저항의 마지막 장이었습니다.",
+      "text_markdown": "1594년부터 1603년까지 지속된 구년 전쟁은 게일 저항의 마지막 장이었습니다.",
+      "tts": {
+        "text": "천오백구십사 년부터 천육백삼 년까지 지속된 구년 전쟁은 게일 저항의 마지막 장이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "타이론의 휴 오닐 휘하의 아일랜드 족장들이 잉글랜드 통치에 대한 대규모 반란을 일으켰습니다.",
+      "text_markdown": "타이론의 휴 오닐 휘하의 아일랜드 족장들이 잉글랜드 통치에 대한 대규모 반란을 일으켰습니다.",
+      "tts": {
+        "text": "타이론의 휴 오닐 휘하의 아일랜드 족장들이 잉글랜드 통치에 대한 대규모 반란을 일으켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "한동안 반란은 성공했고, 아일랜드 대부분에서 잉글랜드의 권위가 무너졌습니다.",
+      "text_markdown": "한동안 반란은 성공했고, 아일랜드 대부분에서 잉글랜드의 권위가 무너졌습니다.",
+      "tts": {
+        "text": "한동안 반란은 성공했고, 아일랜드 대부분에서 잉글랜드의 권위가 무너졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 잉글랜드는 아일랜드에 병력과 자원을 쏟아부었고, 반란은 결국 진압되었습니다.",
+      "text_markdown": "그러나 잉글랜드는 아일랜드에 병력과 자원을 쏟아부었고, 반란은 결국 진압되었습니다.",
+      "tts": {
+        "text": "그러나 잉글랜드는 아일랜드에 병력과 자원을 쏟아부었고, 반란은 결국 진압되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "구년 전쟁에서 그레이스 오말리의 역할은 역사 기록상 불분명합니다.",
+      "text_markdown": "구년 전쟁에서 그레이스 오말리의 역할은 역사 기록상 불분명합니다.",
+      "tts": {
+        "text": "구년 전쟁에서 그레이스 오말리의 역할은 역사 기록상 불분명합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전쟁 중 그녀는 육십 대였으며, 예전처럼 함대를 지휘할 수 없었을 수 있습니다.",
+      "text_markdown": "전쟁 중 그녀는 육십 대였으며, 예전처럼 함대를 지휘할 수 없었을 수 있습니다.",
+      "tts": {
+        "text": "전쟁 중 그녀는 육십 대였으며, 예전처럼 함대를 지휘할 수 없었을 수 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부 기록은 그녀가 반란을 지지했다고 시사하고, 다른 기록은 신중한 중립을 유지했다고 시사합니다.",
+      "text_markdown": "일부 기록은 그녀가 반란을 지지했다고 시사하고, 다른 기록은 신중한 중립을 유지했다고 시사합니다.",
+      "tts": {
+        "text": "일부 기록은 그녀가 반란을 지지했다고 시사하고, 다른 기록은 신중한 중립을 유지했다고 시사합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "확실한 것은 잉글랜드의 승리가 게일 독립의 모든 가능성을 끝냈다는 것입니다.",
+      "text_markdown": "확실한 것은 잉글랜드의 승리가 게일 독립의 모든 가능성을 끝냈다는 것입니다.",
+      "tts": {
+        "text": "확실한 것은 잉글랜드의 승리가 게일 독립의 모든 가능성을 끝냈다는 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 오랜 적 리처드 빙엄은 1596년에 잉글랜드로 소환되었습니다.",
+      "text_markdown": "그녀의 오랜 적 리처드 빙엄은 1596년에 잉글랜드로 소환되었습니다.",
+      "tts": {
+        "text": "그녀의 오랜 적 리처드 빙엄은 천오백구십육 년에 잉글랜드로 소환되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "후임자는 그레이스와 그녀의 가족에게 다소 덜 적대적이었습니다.",
+      "text_markdown": "후임자는 그레이스와 그녀의 가족에게 다소 덜 적대적이었습니다.",
+      "tts": {
+        "text": "후임자는 그레이스와 그녀의 가족에게 다소 덜 적대적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 구조적 현실은 변하지 않았습니다.",
+      "text_markdown": "그러나 구조적 현실은 변하지 않았습니다.",
+      "tts": {
+        "text": "그러나 구조적 현실은 변하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잉글랜드 법이 브레헌 법을 대체하고, 잉글랜드 지주들이 섬 전역에서 게일 족장을 대체하고 있었습니다.",
+      "text_markdown": "잉글랜드 법이 브레헌 법을 대체하고, 잉글랜드 지주들이 섬 전역에서 게일 족장을 대체하고 있었습니다.",
+      "tts": {
+        "text": "잉글랜드 법이 브레헌 법을 대체하고, 잉글랜드 지주들이 섬 전역에서 게일 족장을 대체하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스의 아들 티봇은 결국 잉글랜드와 화해했습니다.",
+      "text_markdown": "그레이스의 아들 티봇은 결국 잉글랜드와 화해했습니다.",
+      "tts": {
+        "text": "그레이스의 아들 티봇은 결국 잉글랜드와 화해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드 권위에 복종하고 잉글랜드 작위를 받았습니다.",
+      "text_markdown": "잉글랜드 권위에 복종하고 잉글랜드 작위를 받았습니다.",
+      "tts": {
+        "text": "잉글랜드 권위에 복종하고 잉글랜드 작위를 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "메이요 자작이 되어 남은 생애 동안 잉글랜드 왕실에 충성스럽게 봉사했습니다.",
+      "text_markdown": "메이요 자작이 되어 남은 생애 동안 잉글랜드 왕실에 충성스럽게 봉사했습니다.",
+      "tts": {
+        "text": "메이요 자작이 되어 남은 생애 동안 잉글랜드 왕실에 충성스럽게 봉사했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "실용적인 결정이었지만, 어머니가 싸워 온 모든 것의 죽음을 의미했습니다.",
+      "text_markdown": "실용적인 결정이었지만, 어머니가 싸워 온 모든 것의 죽음을 의미했습니다.",
+      "tts": {
+        "text": "실용적인 결정이었지만, 어머니가 싸워 온 모든 것의 죽음을 의미했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리는 1603년경에 사망했으며, 엘리자베스 일세 여왕도 같은 해에 세상을 떠났습니다.",
+      "text_markdown": "그레이스 오말리는 1603년경에 사망했으며, 엘리자베스 일세 여왕도 같은 해에 세상을 떠났습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 천육백삼 년경에 사망했으며, 엘리자베스 일세 여왕도 같은 해에 세상을 떠났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사망의 정확한 날짜와 상황은 기록되어 있지 않습니다.",
+      "text_markdown": "사망의 정확한 날짜와 상황은 기록되어 있지 않습니다.",
+      "tts": {
+        "text": "사망의 정확한 날짜와 상황은 기록되어 있지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수십 년간 그녀의 거점이었던 클루 만의 록플리트 성에서 사망한 것으로 여겨집니다.",
+      "text_markdown": "수십 년간 그녀의 거점이었던 클루 만의 록플리트 성에서 사망한 것으로 여겨집니다.",
+      "tts": {
+        "text": "수십 년간 그녀의 거점이었던 클루 만의 록플리트 성에서 사망한 것으로 여겨집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "약 칠십삼 세였습니다.",
+      "text_markdown": "약 칠십삼 세였습니다.",
+      "tts": {
+        "text": "약 칠십삼 세였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "생전의 그레이스 오말리 초상화는 남아 있지 않습니다.",
+      "text_markdown": "생전의 그레이스 오말리 초상화는 남아 있지 않습니다.",
+      "tts": {
+        "text": "생전의 그레이스 오말리 초상화는 남아 있지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀가 어떻게 생겼는지 알 수 없습니다.",
+      "text_markdown": "그녀가 어떻게 생겼는지 알 수 없습니다.",
+      "tts": {
+        "text": "그녀가 어떻게 생겼는지 알 수 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀가 직접 쓴 편지도 없습니다.",
+      "text_markdown": "그녀가 직접 쓴 편지도 없습니다.",
+      "tts": {
+        "text": "그녀가 직접 쓴 편지도 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "남아 있는 것은 잉글랜드 국가 문서, 탄원서, 아일랜드 서부의 구전 전통입니다.",
+      "text_markdown": "남아 있는 것은 잉글랜드 국가 문서, 탄원서, 아일랜드 서부의 구전 전통입니다.",
+      "tts": {
+        "text": "남아 있는 것은 잉글랜드 국가 문서, 탄원서, 아일랜드 서부의 구전 전통입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드 기록은 그녀를 악명 높은 반역자이자 이 지방의 모든 반란의 양육자로 묘사합니다.",
+      "text_markdown": "잉글랜드 기록은 그녀를 악명 높은 반역자이자 이 지방의 모든 반란의 양육자로 묘사합니다.",
+      "tts": {
+        "text": "잉글랜드 기록은 그녀를 악명 높은 반역자이자 이 지방의 모든 반란의 양육자로 묘사합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 적들의 말이며, 그렇게 읽어야 합니다.",
+      "text_markdown": "이것은 적들의 말이며, 그렇게 읽어야 합니다.",
+      "tts": {
+        "text": "이것은 적들의 말이며, 그렇게 읽어야 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 적들조차 그녀의 권력, 지성, 용기를 인정했습니다.",
+      "text_markdown": "그러나 적들조차 그녀의 권력, 지성, 용기를 인정했습니다.",
+      "tts": {
+        "text": "그러나 적들조차 그녀의 권력, 지성, 용기를 인정했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀를 파멸시키려는 자들마저 감탄하게 만들었습니다.",
+      "text_markdown": "그녀를 파멸시키려는 자들마저 감탄하게 만들었습니다.",
+      "tts": {
+        "text": "그녀를 파멸시키려는 자들마저 감탄하게 만들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "게일 질서는 그녀보다 몇 년밖에 더 존속하지 못했습니다.",
+      "text_markdown": "게일 질서는 그녀보다 몇 년밖에 더 존속하지 못했습니다.",
+      "tts": {
+        "text": "게일 질서는 그녀보다 몇 년밖에 더 존속하지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1607년 백작들의 도주는 게일 귀족 권력의 최종적 붕괴를 표시했습니다.",
+      "text_markdown": "1607년 백작들의 도주는 게일 귀족 권력의 최종적 붕괴를 표시했습니다.",
+      "tts": {
+        "text": "천육백칠 년 백작들의 도주는 게일 귀족 권력의 최종적 붕괴를 표시했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "얼스터의 식민이 시작되었고 잉글랜드와 스코틀랜드 정착민에게 몰수된 아일랜드 토지가 주어졌습니다.",
+      "text_markdown": "얼스터의 식민이 시작되었고 잉글랜드와 스코틀랜드 정착민에게 몰수된 아일랜드 토지가 주어졌습니다.",
+      "tts": {
+        "text": "얼스터의 식민이 시작되었고 잉글랜드와 스코틀랜드 정착민에게 몰수된 아일랜드 토지가 주어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 결과 나타난 아일랜드는 독립 부족의 땅이 아니라 식민 소유지였습니다.",
+      "text_markdown": "그 결과 나타난 아일랜드는 독립 부족의 땅이 아니라 식민 소유지였습니다.",
+      "tts": {
+        "text": "그 결과 나타난 아일랜드는 독립 부족의 땅이 아니라 식민 소유지였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드의 아일랜드 식민화는 플랜테이션이라 불리는 제도를 통해 진행되었습니다.",
+      "text_markdown": "잉글랜드의 아일랜드 식민화는 플랜테이션이라 불리는 제도를 통해 진행되었습니다.",
+      "tts": {
+        "text": "잉글랜드의 아일랜드 식민화는 플랜테이션이라 불리는 제도를 통해 진행되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 제도 하에서 아일랜드 토지가 몰수되어 잉글랜드와 스코틀랜드 정착민에게 주어졌습니다.",
+      "text_markdown": "이 제도 하에서 아일랜드 토지가 몰수되어 잉글랜드와 스코틀랜드 정착민에게 주어졌습니다.",
+      "tts": {
+        "text": "이 제도 하에서 아일랜드 토지가 몰수되어 잉글랜드와 스코틀랜드 정착민에게 주어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "원주민은 추방되거나 대대로 가문이 소유해 온 토지의 소작인으로 전락했습니다.",
+      "text_markdown": "원주민은 추방되거나 대대로 가문이 소유해 온 토지의 소작인으로 전락했습니다.",
+      "tts": {
+        "text": "원주민은 추방되거나 대대로 가문이 소유해 온 토지의 소작인으로 전락했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 과정은 그레이스의 사후 수십 년 동안 계속되며 섬 전체를 변모시켰습니다.",
+      "text_markdown": "이 과정은 그레이스의 사후 수십 년 동안 계속되며 섬 전체를 변모시켰습니다.",
+      "tts": {
+        "text": "이 과정은 그레이스의 사후 수십 년 동안 계속되며 섬 전체를 변모시켰습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리는 한 세계의 끝과 다른 세계의 시작에 살았습니다.",
+      "text_markdown": "그레이스 오말리는 한 세계의 끝과 다른 세계의 시작에 살았습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 한 세계의 끝과 다른 세계의 시작에 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자신의 세계를 파괴하는 힘을 막을 수 없었습니다.",
+      "text_markdown": "자신의 세계를 파괴하는 힘을 막을 수 없었습니다.",
+      "tts": {
+        "text": "자신의 세계를 파괴하는 힘을 막을 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 거의 누구보다도 더 오래, 더 능숙하게, 더 불굴의 정신으로 그것과 싸웠습니다.",
+      "text_markdown": "그러나 거의 누구보다도 더 오래, 더 능숙하게, 더 불굴의 정신으로 그것과 싸웠습니다.",
+      "tts": {
+        "text": "그러나 거의 누구보다도 더 오래, 더 능숙하게, 더 불굴의 정신으로 그것과 싸웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 삶은 압도적인 역경에 맞서 한 사람의 결의가 무엇을 이룰 수 있는지를 보여주는 증거입니다.",
+      "text_markdown": "그녀의 삶은 압도적인 역경에 맞서 한 사람의 결의가 무엇을 이룰 수 있는지를 보여주는 증거입니다.",
+      "tts": {
+        "text": "그녀의 삶은 압도적인 역경에 맞서 한 사람의 결의가 무엇을 이룰 수 있는지를 보여주는 증거입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리는 아일랜드 역사에서 가장 존경받는 인물 중 하나입니다.",
+      "text_markdown": "그레이스 오말리는 아일랜드 역사에서 가장 존경받는 인물 중 하나입니다.",
+      "tts": {
+        "text": "그레이스 오말리는 아일랜드 역사에서 가장 존경받는 인물 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아일랜드의 모든 학생이 그녀의 이름을 압니다.",
+      "text_markdown": "아일랜드의 모든 학생이 그녀의 이름을 압니다.",
+      "tts": {
+        "text": "아일랜드의 모든 학생이 그녀의 이름을 압니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 아일랜드 독립, 여성 역량 강화, 식민주의에 대한 저항의 상징입니다.",
+      "text_markdown": "그녀는 아일랜드 독립, 여성 역량 강화, 식민주의에 대한 저항의 상징입니다.",
+      "tts": {
+        "text": "그녀는 아일랜드 독립, 여성 역량 강화, 식민주의에 대한 저항의 상징입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 이야기는 수 세기 동안 노래, 연극, 소설, 영화로 전해져 왔습니다.",
+      "text_markdown": "그녀의 이야기는 수 세기 동안 노래, 연극, 소설, 영화로 전해져 왔습니다.",
+      "tts": {
+        "text": "그녀의 이야기는 수 세기 동안 노래, 연극, 소설, 영화로 전해져 왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "록플리트 성은 여전히 클루 만 기슭에 서 있습니다.",
+      "text_markdown": "록플리트 성은 여전히 클루 만 기슭에 서 있습니다.",
+      "tts": {
+        "text": "록플리트 성은 여전히 클루 만 기슭에 서 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀가 태어난 클레어 섬은 여전히 사람이 살고 있으며 페리로 방문할 수 있습니다.",
+      "text_markdown": "그녀가 태어난 클레어 섬은 여전히 사람이 살고 있으며 페리로 방문할 수 있습니다.",
+      "tts": {
+        "text": "그녀가 태어난 클레어 섬은 여전히 사람이 살고 있으며 페리로 방문할 수 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "클레어 섬에 있는 그녀의 수도원에는 그녀의 무덤으로 여겨지는 것이 있습니다.",
+      "text_markdown": "클레어 섬에 있는 그녀의 수도원에는 그녀의 무덤으로 여겨지는 것이 있습니다.",
+      "tts": {
+        "text": "클레어 섬에 있는 그녀의 수도원에는 그녀의 무덤으로 여겨지는 것이 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전 세계에서 방문객들이 그녀가 살고 통치했던 장소를 보러 옵니다.",
+      "text_markdown": "전 세계에서 방문객들이 그녀가 살고 통치했던 장소를 보러 옵니다.",
+      "tts": {
+        "text": "전 세계에서 방문객들이 그녀가 살고 통치했던 장소를 보러 옵니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아일랜드 민간 전통에서 그레이스 오말리는 게일 서부의 정신을 대표합니다.",
+      "text_markdown": "아일랜드 민간 전통에서 그레이스 오말리는 게일 서부의 정신을 대표합니다.",
+      "tts": {
+        "text": "아일랜드 민간 전통에서 그레이스 오말리는 게일 서부의 정신을 대표합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀에 대한 이야기는 사백 년 이상 구전으로 전해져 왔습니다.",
+      "text_markdown": "그녀에 대한 이야기는 사백 년 이상 구전으로 전해져 왔습니다.",
+      "tts": {
+        "text": "그녀에 대한 이야기는 사백 년 이상 구전으로 전해져 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 이야기 중 많은 것이 윤색되었거나 전설적입니다.",
+      "text_markdown": "이 이야기 중 많은 것이 윤색되었거나 전설적입니다.",
+      "tts": {
+        "text": "이 이야기 중 많은 것이 윤색되었거나 전설적입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 그것들은 영향력이 실질적이고 깊었던 진짜 역사적 인물을 반영합니다.",
+      "text_markdown": "그러나 그것들은 영향력이 실질적이고 깊었던 진짜 역사적 인물을 반영합니다.",
+      "tts": {
+        "text": "그러나 그것들은 영향력이 실질적이고 깊었던 진짜 역사적 인물을 반영합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "엘리자베스 일세와의 만남은 튜더 시대의 가장 비범한 외교적 만남 중 하나로 남아 있습니다.",
+      "text_markdown": "엘리자베스 일세와의 만남은 튜더 시대의 가장 비범한 외교적 만남 중 하나로 남아 있습니다.",
+      "tts": {
+        "text": "엘리자베스 일세와의 만남은 튜더 시대의 가장 비범한 외교적 만남 중 하나로 남아 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "게일 족장, 여성, 해적이 유럽에서 가장 강력한 궁전에 들어가 동등한 입장에서 협상했습니다.",
+      "text_markdown": "게일 족장, 여성, 해적이 유럽에서 가장 강력한 궁전에 들어가 동등한 입장에서 협상했습니다.",
+      "tts": {
+        "text": "게일 족장, 여성, 해적이 유럽에서 가장 강력한 궁전에 들어가 동등한 입장에서 협상했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 행동의 대담함은 수 세기가 지난 지금도 울림을 줍니다.",
+      "text_markdown": "그 행동의 대담함은 수 세기가 지난 지금도 울림을 줍니다.",
+      "tts": {
+        "text": "그 행동의 대담함은 수 세기가 지난 지금도 울림을 줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그것은 권력이 항상 출생이나 성별에 의해 정의되지 않았던 세계를 이야기합니다.",
+      "text_markdown": "그것은 권력이 항상 출생이나 성별에 의해 정의되지 않았던 세계를 이야기합니다.",
+      "tts": {
+        "text": "그것은 권력이 항상 출생이나 성별에 의해 정의되지 않았던 세계를 이야기합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사가들은 근세 초기 여성 리더십의 사례 연구로서 그레이스 오말리를 계속 연구하고 있습니다.",
+      "text_markdown": "역사가들은 근세 초기 여성 리더십의 사례 연구로서 그레이스 오말리를 계속 연구하고 있습니다.",
+      "tts": {
+        "text": "역사가들은 근세 초기 여성 리더십의 사례 연구로서 그레이스 오말리를 계속 연구하고 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남성이 지배하는 세계에서 활동했으면서도, 전투와 바다에서 남성을 지휘했습니다.",
+      "text_markdown": "남성이 지배하는 세계에서 활동했으면서도, 전투와 바다에서 남성을 지휘했습니다.",
+      "tts": {
+        "text": "남성이 지배하는 세계에서 활동했으면서도, 전투와 바다에서 남성을 지휘했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "게일과 잉글랜드 양쪽의 복잡한 정치 체제를 기술과 지략으로 헤쳐 나갔습니다.",
+      "text_markdown": "게일과 잉글랜드 양쪽의 복잡한 정치 체제를 기술과 지략으로 헤쳐 나갔습니다.",
+      "tts": {
+        "text": "게일과 잉글랜드 양쪽의 복잡한 정치 체제를 기술과 지략으로 헤쳐 나갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 경력은 깊이 가부장적인 사회에서도 여성이 실질적 권력을 행사할 수 있었음을 보여줍니다.",
+      "text_markdown": "그녀의 경력은 깊이 가부장적인 사회에서도 여성이 실질적 권력을 행사할 수 있었음을 보여줍니다.",
+      "tts": {
+        "text": "그녀의 경력은 깊이 가부장적인 사회에서도 여성이 실질적 권력을 행사할 수 있었음을 보여줍니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스가 지키려 한 게일 세계의 파괴는 아일랜드 역사의 위대한 비극 중 하나입니다.",
+      "text_markdown": "그레이스가 지키려 한 게일 세계의 파괴는 아일랜드 역사의 위대한 비극 중 하나입니다.",
+      "tts": {
+        "text": "그레이스가 지키려 한 게일 세계의 파괴는 아일랜드 역사의 위대한 비극 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "고유한 법률, 문학, 관습을 가진 문명 전체가 식민 세력에 의해 의도적으로 해체되었습니다.",
+      "text_markdown": "고유한 법률, 문학, 관습을 가진 문명 전체가 식민 세력에 의해 의도적으로 해체되었습니다.",
+      "tts": {
+        "text": "고유한 법률, 문학, 관습을 가진 문명 전체가 식민 세력에 의해 의도적으로 해체되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그레이스 오말리는 그 문명의 마지막 수호자 중 한 명이었습니다.",
+      "text_markdown": "그레이스 오말리는 그 문명의 마지막 수호자 중 한 명이었습니다.",
+      "tts": {
+        "text": "그레이스 오말리는 그 문명의 마지막 수호자 중 한 명이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 이야기는 식민주의와 그 대가라는 더 큰 이야기와 분리될 수 없습니다.",
+      "text_markdown": "그녀의 이야기는 식민주의와 그 대가라는 더 큰 이야기와 분리될 수 없습니다.",
+      "tts": {
+        "text": "그녀의 이야기는 식민주의와 그 대가라는 더 큰 이야기와 분리될 수 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그레이스 오말리의 이야기가 지속되는 것은 그녀가 무엇을 했는지만이 아니라, 그녀가 어떤 사람이었는지 때문입니다.",
+      "text_markdown": "그레이스 오말리의 이야기가 지속되는 것은 그녀가 무엇을 했는지만이 아니라, 그녀가 어떤 사람이었는지 때문입니다.",
+      "tts": {
+        "text": "그레이스 오말리의 이야기가 지속되는 것은 그녀가 무엇을 했는지만이 아니라, 그녀가 어떤 사람이었는지 때문입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 어머니, 아내, 전사, 상인, 외교관, 그리고 해적이었습니다.",
+      "text_markdown": "그녀는 어머니, 아내, 전사, 상인, 외교관, 그리고 해적이었습니다.",
+      "tts": {
+        "text": "그녀는 어머니, 아내, 전사, 상인, 외교관, 그리고 해적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 세계가 부여하려 한 모든 범주에 도전했습니다.",
+      "text_markdown": "그녀의 세계가 부여하려 한 모든 범주에 도전했습니다.",
+      "tts": {
+        "text": "그녀의 세계가 부여하려 한 모든 범주에 도전했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 알려진 세계의 끝, 거친 해안에서 자신만의 방식으로 살았습니다.",
+      "text_markdown": "그녀는 알려진 세계의 끝, 거친 해안에서 자신만의 방식으로 살았습니다.",
+      "tts": {
+        "text": "그녀는 알려진 세계의 끝, 거친 해안에서 자신만의 방식으로 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is why her name is still spoken four centuries after her death.",
+      "text_markdown": "That is why her name is still spoken four centuries after her death.",
+      "tts": {
+        "text": "That is why her name is still spoken four centuries after her death.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

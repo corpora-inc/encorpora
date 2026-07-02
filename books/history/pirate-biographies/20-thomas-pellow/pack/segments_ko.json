@@ -1,0 +1,4352 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_thomas_pellow",
+  "language": "ko",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게",
+      "text_markdown": "독자에게"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 해적의 관점에서 전해지는 해적 이야기가 아닙니다.",
+      "text_markdown": "이것은 해적의 관점에서 전해지는 해적 이야기가 아닙니다.",
+      "tts": {
+        "text": "이것은 해적의 관점에서 전해지는 해적 이야기가 아닙니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 납치된 사람의 이야기입니다.",
+      "text_markdown": "이것은 납치된 사람의 이야기입니다.",
+      "tts": {
+        "text": "이것은 납치된 사람의 이야기입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로는 콘월 출신의 영국 소년이었습니다.",
+      "text_markdown": "토머스 펠로는 콘월 출신의 영국 소년이었습니다.",
+      "tts": {
+        "text": "토머스 펠로는 콘월 출신의 영국 소년이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "열한 살의 나이에 바르바리 해적에게 포로로 잡혀 모로코로 끌려갔습니다.",
+      "text_markdown": "열한 살의 나이에 바르바리 해적에게 포로로 잡혀 모로코로 끌려갔습니다.",
+      "tts": {
+        "text": "열한 살의 나이에 바르바리 해적에게 포로로 잡혀 모로코로 끌려갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 이십삼 년 동안 고향에 돌아가지 못할 것이었습니다.",
+      "text_markdown": "그는 이십삼 년 동안 고향에 돌아가지 못할 것이었습니다.",
+      "tts": {
+        "text": "그는 이십삼 년 동안 고향에 돌아가지 못할 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 세월 동안 이슬람교로 개종을 강요당하고, 군인으로 훈련받았으며, 북아프리카 역사상 가장 강력하고 잔인한 통치자 중 한 명을 섬기도록 강제되었습니다.",
+      "text_markdown": "그 세월 동안 이슬람교로 개종을 강요당하고, 군인으로 훈련받았으며, 북아프리카 역사상 가장 강력하고 잔인한 통치자 중 한 명을 섬기도록 강제되었습니다.",
+      "tts": {
+        "text": "그 세월 동안 이슬람교로 개종을 강요당하고, 군인으로 훈련받았으며, 북아프리카 역사상 가장 강력하고 잔인한 통치자 중 한 명을 섬기도록 강제되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 어떤 아이도 절대 보아서는 안 될 것들을 목격했습니다.",
+      "text_markdown": "그는 어떤 아이도 절대 보아서는 안 될 것들을 목격했습니다.",
+      "tts": {
+        "text": "그는 어떤 아이도 절대 보아서는 안 될 것들을 목격했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마침내 탈출하여 영국으로 돌아온 후, 그는 포로 생활의 회고록을 썼습니다.",
+      "text_markdown": "마침내 탈출하여 영국으로 돌아온 후, 그는 포로 생활의 회고록을 썼습니다.",
+      "tts": {
+        "text": "마침내 탈출하여 영국으로 돌아온 후, 그는 포로 생활의 회고록을 썼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 18세기의 가장 주목할 만한 문서 중 하나입니다.",
+      "text_markdown": "이것은 18세기의 가장 주목할 만한 문서 중 하나입니다.",
+      "tts": {
+        "text": "이것은 십팔세기의 가장 주목할 만한 문서 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가장 고통스러운 문서 중 하나이기도 합니다.",
+      "text_markdown": "가장 고통스러운 문서 중 하나이기도 합니다.",
+      "tts": {
+        "text": "가장 고통스러운 문서 중 하나이기도 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 이야기는 해적 행위가 모든 사람에게 모험이 아니었음을 상기시킵니다.",
+      "text_markdown": "그의 이야기는 해적 행위가 모든 사람에게 모험이 아니었음을 상기시킵니다.",
+      "tts": {
+        "text": "그의 이야기는 해적 행위가 모든 사람에게 모험이 아니었음을 상기시킵니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바다를 택한 모든 해적 뒤에는 아무런 선택권도 없었던 수백 명의 사람들이 있었습니다.",
+      "text_markdown": "바다를 택한 모든 해적 뒤에는 아무런 선택권도 없었던 수백 명의 사람들이 있었습니다.",
+      "tts": {
+        "text": "바다를 택한 모든 해적 뒤에는 아무런 선택권도 없었던 수백 명의 사람들이 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "바르바리 해안의 세계",
+      "text_markdown": "바르바리 해안의 세계"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바르바리 해안은 북아프리카 해안의 유럽식 이름이었습니다.",
+      "text_markdown": "바르바리 해안은 북아프리카 해안의 유럽식 이름이었습니다.",
+      "tts": {
+        "text": "바르바리 해안은 북아프리카 해안의 유럽식 이름이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "서쪽의 모로코에서 동쪽의 리비아까지 뻗어 있었습니다.",
+      "text_markdown": "서쪽의 모로코에서 동쪽의 리비아까지 뻗어 있었습니다.",
+      "tts": {
+        "text": "서쪽의 모로코에서 동쪽의 리비아까지 뻗어 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수 세기 동안 세계에서 가장 두려운 해적들의 본거지였습니다.",
+      "text_markdown": "수 세기 동안 세계에서 가장 두려운 해적들의 본거지였습니다.",
+      "tts": {
+        "text": "수 세기 동안 세계에서 가장 두려운 해적들의 본거지였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바르바리 해적들은 보통 해적이 아니었습니다.",
+      "text_markdown": "바르바리 해적들은 보통 해적이 아니었습니다.",
+      "tts": {
+        "text": "바르바리 해적들은 보통 해적이 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "북아프리카 국가들의 축복과 종종 직접적인 지원 아래 활동했습니다.",
+      "text_markdown": "북아프리카 국가들의 축복과 종종 직접적인 지원 아래 활동했습니다.",
+      "tts": {
+        "text": "북아프리카 국가들의 축복과 종종 직접적인 지원 아래 활동했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모로코, 알제, 튀니스, 트리폴리 모두 해적 습격으로 이익을 얻었습니다.",
+      "text_markdown": "모로코, 알제, 튀니스, 트리폴리 모두 해적 습격으로 이익을 얻었습니다.",
+      "tts": {
+        "text": "모로코, 알제, 튀니스, 트리폴리 모두 해적 습격으로 이익을 얻었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 유럽 선박과 해안 마을을 습격했습니다.",
+      "text_markdown": "해적들은 유럽 선박과 해안 마을을 습격했습니다.",
+      "tts": {
+        "text": "해적들은 유럽 선박과 해안 마을을 습격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "배를 나포하고, 화물을 약탈하며, 포로를 잡았습니다.",
+      "text_markdown": "배를 나포하고, 화물을 약탈하며, 포로를 잡았습니다.",
+      "tts": {
+        "text": "배를 나포하고, 화물을 약탈하며, 포로를 잡았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포로는 모든 전리품 중 가장 가치 있는 것이었습니다.",
+      "text_markdown": "포로는 모든 전리품 중 가장 가치 있는 것이었습니다.",
+      "tts": {
+        "text": "포로는 모든 전리품 중 가장 가치 있는 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로들은 가족에게서 거액의 몸값을 받고 돌려보내질 수 있었습니다.",
+      "text_markdown": "포로들은 가족에게서 거액의 몸값을 받고 돌려보내질 수 있었습니다.",
+      "tts": {
+        "text": "포로들은 가족에게서 거액의 몸값을 받고 돌려보내질 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몸값을 받을 수 없는 자들은 노예로 팔렸습니다.",
+      "text_markdown": "몸값을 받을 수 없는 자들은 노예로 팔렸습니다.",
+      "tts": {
+        "text": "몸값을 받을 수 없는 자들은 노예로 팔렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사학자들은 1530년에서 1780년 사이에 백만 명 이상의 유럽인이 바르바리 해적에게 노예가 되었다고 추정합니다.",
+      "text_markdown": "역사학자들은 1530년에서 1780년 사이에 백만 명 이상의 유럽인이 바르바리 해적에게 노예가 되었다고 추정합니다.",
+      "tts": {
+        "text": "역사학자들은 천오백삼십 년에서 천칠백팔십 년 사이에 백만 명 이상의 유럽인이 바르바리 해적에게 노예가 되었다고 추정합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 노예 무역의 다른 면이었습니다.",
+      "text_markdown": "이것은 노예 무역의 다른 면이었습니다.",
+      "tts": {
+        "text": "이것은 노예 무역의 다른 면이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽 강국들이 아프리카인들을 노예로 삼아 대서양 너머로 보내는 동안, 북아프리카 강국들은 유럽인들을 노예로 삼아 자국 땅에서 일하게 했습니다.",
+      "text_markdown": "유럽 강국들이 아프리카인들을 노예로 삼아 대서양 너머로 보내는 동안, 북아프리카 강국들은 유럽인들을 노예로 삼아 자국 땅에서 일하게 했습니다.",
+      "tts": {
+        "text": "유럽 강국들이 아프리카인들을 노예로 삼아 대서양 너머로 보내는 동안, 북아프리카 강국들은 유럽인들을 노예로 삼아 자국 땅에서 일하게 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "고통은 지중해 양쪽 모두에서 현실이었습니다.",
+      "text_markdown": "고통은 지중해 양쪽 모두에서 현실이었습니다.",
+      "tts": {
+        "text": "고통은 지중해 양쪽 모두에서 현실이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모로코 대서양 연안의 해적 항구 살레는 특히 악명 높았습니다.",
+      "text_markdown": "모로코 대서양 연안의 해적 항구 살레는 특히 악명 높았습니다.",
+      "tts": {
+        "text": "모로코 대서양 연안의 해적 항구 살레는 특히 악명 높았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "살레의 해적들은 살레 해적으로 알려져 있었습니다.",
+      "text_markdown": "살레의 해적들은 살레 해적으로 알려져 있었습니다.",
+      "tts": {
+        "text": "살레의 해적들은 살레 해적으로 알려져 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "지중해를 훨씬 넘어 아이슬란드와 아일랜드까지 북쪽으로 습격했습니다.",
+      "text_markdown": "지중해를 훨씬 넘어 아이슬란드와 아일랜드까지 북쪽으로 습격했습니다.",
+      "tts": {
+        "text": "지중해를 훨씬 넘어 아이슬란드와 아일랜드까지 북쪽으로 습격했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1631년 살레 해적들이 아일랜드의 볼티모어 마을을 습격하여 100명 이상을 납치했습니다.",
+      "text_markdown": "1631년 살레 해적들이 아일랜드의 볼티모어 마을을 습격하여 100명 이상을 납치했습니다.",
+      "tts": {
+        "text": "천육백삼십일 년 살레 해적들이 아일랜드의 볼티모어 마을을 습격하여 백 명 이상을 납치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대부분은 다시는 볼 수 없었습니다.",
+      "text_markdown": "대부분은 다시는 볼 수 없었습니다.",
+      "tts": {
+        "text": "대부분은 다시는 볼 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이것이 토머스 펠로가 끌려들어갈 세계였습니다.",
+      "text_markdown": "이것이 토머스 펠로가 끌려들어갈 세계였습니다.",
+      "tts": {
+        "text": "이것이 토머스 펠로가 끌려들어갈 세계였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "18세기 초 모로코는 술탄 물레이 이스마일이 다스리고 있었습니다.",
+      "text_markdown": "18세기 초 모로코는 술탄 물레이 이스마일이 다스리고 있었습니다.",
+      "tts": {
+        "text": "십팔세기 초 모로코는 술탄 물레이 이스마일이 다스리고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 모로코 역사상 가장 오래 통치한 군주 중 한 명으로, 1672년부터 1727년까지 통치했습니다.",
+      "text_markdown": "그는 모로코 역사상 가장 오래 통치한 군주 중 한 명으로, 1672년부터 1727년까지 통치했습니다.",
+      "tts": {
+        "text": "그는 모로코 역사상 가장 오래 통치한 군주 중 한 명으로, 천육백칠십이 년부터 천칠백이십칠 년까지 통치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가장 잔인한 통치자 중 한 명이기도 했습니다.",
+      "text_markdown": "가장 잔인한 통치자 중 한 명이기도 했습니다.",
+      "tts": {
+        "text": "가장 잔인한 통치자 중 한 명이기도 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "물레이 이스마일은 모로코를 위대한 제국으로 만들겠다는 꿈을 꾸었습니다.",
+      "text_markdown": "물레이 이스마일은 모로코를 위대한 제국으로 만들겠다는 꿈을 꾸었습니다.",
+      "tts": {
+        "text": "물레이 이스마일은 모로코를 위대한 제국으로 만들겠다는 꿈을 꾸었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수도 메크네스에 거대한 궁전 단지를 건설했습니다.",
+      "text_markdown": "수도 메크네스에 거대한 궁전 단지를 건설했습니다.",
+      "tts": {
+        "text": "수도 메크네스에 거대한 궁전 단지를 건설했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "건설은 유럽인과 아프리카인을 포함한 수만 명의 노예에 의해 이루어졌습니다.",
+      "text_markdown": "건설은 유럽인과 아프리카인을 포함한 수만 명의 노예에 의해 이루어졌습니다.",
+      "tts": {
+        "text": "건설은 유럽인과 아프리카인을 포함한 수만 명의 노예에 의해 이루어졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "술탄은 극단적인 폭력 행위로 유명했습니다.",
+      "text_markdown": "술탄은 극단적인 폭력 행위로 유명했습니다.",
+      "tts": {
+        "text": "술탄은 극단적인 폭력 행위로 유명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마음에 들지 않는 하인과 궁정인을 직접 죽였습니다.",
+      "text_markdown": "마음에 들지 않는 하인과 궁정인을 직접 죽였습니다.",
+      "tts": {
+        "text": "마음에 들지 않는 하인과 궁정인을 직접 죽였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "외국 대사들은 변덕스럽게 행해지는 처형을 목격했다고 보고했습니다.",
+      "text_markdown": "외국 대사들은 변덕스럽게 행해지는 처형을 목격했다고 보고했습니다.",
+      "tts": {
+        "text": "외국 대사들은 변덕스럽게 행해지는 처형을 목격했다고 보고했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "공포가 그의 권력의 기반이었습니다.",
+      "text_markdown": "공포가 그의 권력의 기반이었습니다.",
+      "tts": {
+        "text": "공포가 그의 권력의 기반이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "흑인 근위대로 알려진 노예화된 흑인 병사들의 친위대를 포함한 거대한 군대를 유지했습니다.",
+      "text_markdown": "흑인 근위대로 알려진 노예화된 흑인 병사들의 친위대를 포함한 거대한 군대를 유지했습니다.",
+      "tts": {
+        "text": "흑인 근위대로 알려진 노예화된 흑인 병사들의 친위대를 포함한 거대한 군대를 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 군대는 술탄에게 맹렬히 충성했으며 군사력이자 공포의 도구로 기능했습니다.",
+      "text_markdown": "이 군대는 술탄에게 맹렬히 충성했으며 군사력이자 공포의 도구로 기능했습니다.",
+      "tts": {
+        "text": "이 군대는 술탄에게 맹렬히 충성했으며 군사력이자 공포의 도구로 기능했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모로코의 유럽인 포로들은 다양한 역할을 수행했습니다.",
+      "text_markdown": "모로코의 유럽인 포로들은 다양한 역할을 수행했습니다.",
+      "tts": {
+        "text": "모로코의 유럽인 포로들은 다양한 역할을 수행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부는 술탄의 궁전 건설에 중노동에 동원되었습니다.",
+      "text_markdown": "일부는 술탄의 궁전 건설에 중노동에 동원되었습니다.",
+      "tts": {
+        "text": "일부는 술탄의 궁전 건설에 중노동에 동원되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 군인이나 행정관으로 훈련받았습니다.",
+      "text_markdown": "다른 이들은 군인이나 행정관으로 훈련받았습니다.",
+      "tts": {
+        "text": "다른 이들은 군인이나 행정관으로 훈련받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "소수는 개인 하인으로 유지되었습니다.",
+      "text_markdown": "소수는 개인 하인으로 유지되었습니다.",
+      "tts": {
+        "text": "소수는 개인 하인으로 유지되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이슬람교로 개종한 포로들은 다소 나은 대우를 받았습니다.",
+      "text_markdown": "이슬람교로 개종한 포로들은 다소 나은 대우를 받았습니다.",
+      "tts": {
+        "text": "이슬람교로 개종한 포로들은 다소 나은 대우를 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "개종이 자유를 보장하지는 않았지만, 더 높은 지위로 가는 문을 열었습니다.",
+      "text_markdown": "개종이 자유를 보장하지는 않았지만, 더 높은 지위로 가는 문을 열었습니다.",
+      "tts": {
+        "text": "개종이 자유를 보장하지는 않았지만, 더 높은 지위로 가는 문을 열었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 유럽인이 고문이나 죽음의 위협 아래 개종했습니다.",
+      "text_markdown": "많은 유럽인이 고문이나 죽음의 위협 아래 개종했습니다.",
+      "tts": {
+        "text": "많은 유럽인이 고문이나 죽음의 위협 아래 개종했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 정부들은 때때로 자국민의 석방을 위해 협상했습니다.",
+      "text_markdown": "유럽 정부들은 때때로 자국민의 석방을 위해 협상했습니다.",
+      "tts": {
+        "text": "유럽 정부들은 때때로 자국민의 석방을 위해 협상했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몸값 지불은 흔한 일이었습니다.",
+      "text_markdown": "몸값 지불은 흔한 일이었습니다.",
+      "tts": {
+        "text": "몸값 지불은 흔한 일이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "종교 수도회, 특히 삼위일체회와 메르세드회는 포로 구출에 헌신했습니다.",
+      "text_markdown": "종교 수도회, 특히 삼위일체회와 메르세드회는 포로 구출에 헌신했습니다.",
+      "tts": {
+        "text": "종교 수도회, 특히 삼위일체회와 메르세드회는 포로 구출에 헌신했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 몸값 과정은 느리고, 비싸며, 신뢰할 수 없었습니다.",
+      "text_markdown": "그러나 몸값 과정은 느리고, 비싸며, 신뢰할 수 없었습니다.",
+      "tts": {
+        "text": "그러나 몸값 과정은 느리고, 비싸며, 신뢰할 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 포로는 결코 몸값이 지불되지 않았습니다.",
+      "text_markdown": "많은 포로는 결코 몸값이 지불되지 않았습니다.",
+      "tts": {
+        "text": "많은 포로는 결코 몸값이 지불되지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 고향에서 멀리 떨어진 모로코에서 살다가 죽었습니다.",
+      "text_markdown": "그들은 고향에서 멀리 떨어진 모로코에서 살다가 죽었습니다.",
+      "tts": {
+        "text": "그들은 고향에서 멀리 떨어진 모로코에서 살다가 죽었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "바르바리 해안의 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "토머스 펠로는 하마터면 그들 중 한 명이 될 뻔했습니다.",
+      "text_markdown": "토머스 펠로는 하마터면 그들 중 한 명이 될 뻔했습니다.",
+      "tts": {
+        "text": "토머스 펠로는 하마터면 그들 중 한 명이 될 뻔했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로는 1704년 잉글랜드 남서쪽 끝 콘월의 펜린 마을에서 태어났습니다.",
+      "text_markdown": "토머스 펠로는 1704년 잉글랜드 남서쪽 끝 콘월의 펜린 마을에서 태어났습니다.",
+      "tts": {
+        "text": "토머스 펠로는 천칠백사 년 잉글랜드 남서쪽 끝 콘월의 펜린 마을에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "콘월은 해양 지역이었습니다.",
+      "text_markdown": "콘월은 해양 지역이었습니다.",
+      "tts": {
+        "text": "콘월은 해양 지역이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그곳 사람들은 대대로 바다에서 생계를 꾸려왔습니다.",
+      "text_markdown": "그곳 사람들은 대대로 바다에서 생계를 꾸려왔습니다.",
+      "tts": {
+        "text": "그곳 사람들은 대대로 바다에서 생계를 꾸려왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스의 삼촌인 존 펠로 선장은 유럽과 지중해 항구들과 교역하는 상선 선원이었습니다.",
+      "text_markdown": "토머스의 삼촌인 존 펠로 선장은 유럽과 지중해 항구들과 교역하는 상선 선원이었습니다.",
+      "tts": {
+        "text": "토머스의 삼촌인 존 펠로 선장은 유럽과 지중해 항구들과 교역하는 상선 선원이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무역의 위험을 잘 아는 숙련된 선원이었습니다.",
+      "text_markdown": "무역의 위험을 잘 아는 숙련된 선원이었습니다.",
+      "tts": {
+        "text": "무역의 위험을 잘 아는 숙련된 선원이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 위험들 중에서 바르바리 해적이 가장 두려운 존재였습니다.",
+      "text_markdown": "그 위험들 중에서 바르바리 해적이 가장 두려운 존재였습니다.",
+      "tts": {
+        "text": "그 위험들 중에서 바르바리 해적이 가장 두려운 존재였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1715년, 토머스가 겨우 열한 살이었을 때, 삼촌은 그를 자신의 배 프랜시스호에 태웠습니다.",
+      "text_markdown": "1715년, 토머스가 겨우 열한 살이었을 때, 삼촌은 그를 자신의 배 프랜시스호에 태웠습니다.",
+      "tts": {
+        "text": "천칠백십오 년, 토머스가 겨우 열한 살이었을 때, 삼촌은 그를 자신의 배 프랜시스호에 태웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "항해는 지중해로의 무역 원정이 될 예정이었습니다.",
+      "text_markdown": "항해는 지중해로의 무역 원정이 될 예정이었습니다.",
+      "tts": {
+        "text": "항해는 지중해로의 무역 원정이 될 예정이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "소년에게는 교육이자 가업을 배울 기회가 될 것이었습니다.",
+      "text_markdown": "소년에게는 교육이자 가업을 배울 기회가 될 것이었습니다.",
+      "tts": {
+        "text": "소년에게는 교육이자 가업을 배울 기회가 될 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스는 바다로 나가게 되어 신이 났습니다.",
+      "text_markdown": "토머스는 바다로 나가게 되어 신이 났습니다.",
+      "tts": {
+        "text": "토머스는 바다로 나가게 되어 신이 났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "콘월의 대부분의 소년들처럼, 먼 항구와 해양 항해 이야기를 들으며 자랐습니다.",
+      "text_markdown": "콘월의 대부분의 소년들처럼, 먼 항구와 해양 항해 이야기를 들으며 자랐습니다.",
+      "tts": {
+        "text": "콘월의 대부분의 소년들처럼, 먼 항구와 해양 항해 이야기를 들으며 자랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바다에서의 삶의 현실은 이야기와는 크게 다를 것이었습니다.",
+      "text_markdown": "바다에서의 삶의 현실은 이야기와는 크게 다를 것이었습니다.",
+      "tts": {
+        "text": "바다에서의 삶의 현실은 이야기와는 크게 다를 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프랜시스호는 소규모 승무원과 함께 팔머스를 출항했습니다.",
+      "text_markdown": "프랜시스호는 소규모 승무원과 함께 팔머스를 출항했습니다.",
+      "tts": {
+        "text": "프랜시스호는 소규모 승무원과 함께 팔머스를 출항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "펠로 선장은 영국 상품을 지중해 제품과 교환할 계획이었습니다.",
+      "text_markdown": "펠로 선장은 영국 상품을 지중해 제품과 교환할 계획이었습니다.",
+      "tts": {
+        "text": "펠로 선장은 영국 상품을 지중해 제품과 교환할 계획이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "항로는 스페인과 포르투갈 해안을 따라갈 예정이었습니다.",
+      "text_markdown": "항로는 스페인과 포르투갈 해안을 따라갈 예정이었습니다.",
+      "tts": {
+        "text": "항로는 스페인과 포르투갈 해안을 따라갈 예정이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아프리카 해안 어딘가에서 재난이 닥쳤습니다.",
+      "text_markdown": "북아프리카 해안 어딘가에서 재난이 닥쳤습니다.",
+      "tts": {
+        "text": "북아프리카 해안 어딘가에서 재난이 닥쳤습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "살레에서 온 해적들이 프랜시스호를 발견하고 추격을 시작했습니다.",
+      "text_markdown": "살레에서 온 해적들이 프랜시스호를 발견하고 추격을 시작했습니다.",
+      "tts": {
+        "text": "살레에서 온 해적들이 프랜시스호를 발견하고 추격을 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "상선은 빠르고 잘 무장된 해적선의 상대가 되지 못했습니다.",
+      "text_markdown": "상선은 빠르고 잘 무장된 해적선의 상대가 되지 못했습니다.",
+      "tts": {
+        "text": "상선은 빠르고 잘 무장된 해적선의 상대가 되지 못했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "펠로 선장은 도망치려 했지만, 프랜시스호는 너무 느렸습니다.",
+      "text_markdown": "펠로 선장은 도망치려 했지만, 프랜시스호는 너무 느렸습니다.",
+      "tts": {
+        "text": "펠로 선장은 도망치려 했지만, 프랜시스호는 너무 느렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들이 거리를 좁히고 경고 사격을 했습니다.",
+      "text_markdown": "해적들이 거리를 좁히고 경고 사격을 했습니다.",
+      "tts": {
+        "text": "해적들이 거리를 좁히고 경고 사격을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "프랜시스호의 승무원은 항복하는 것 외에 선택의 여지가 없었습니다.",
+      "text_markdown": "프랜시스호의 승무원은 항복하는 것 외에 선택의 여지가 없었습니다.",
+      "tts": {
+        "text": "프랜시스호의 승무원은 항복하는 것 외에 선택의 여지가 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들이 배에 올라타 승무원을 포로로 잡았습니다.",
+      "text_markdown": "해적들이 배에 올라타 승무원을 포로로 잡았습니다.",
+      "tts": {
+        "text": "해적들이 배에 올라타 승무원을 포로로 잡았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "토머스는 무장한 남자들이 갑판을 휩쓰는 것을 지켜보았습니다.",
+      "text_markdown": "토머스는 무장한 남자들이 갑판을 휩쓰는 것을 지켜보았습니다.",
+      "tts": {
+        "text": "토머스는 무장한 남자들이 갑판을 휩쓰는 것을 지켜보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 공포에 질렸습니다.",
+      "text_markdown": "그는 공포에 질렸습니다.",
+      "tts": {
+        "text": "그는 공포에 질렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "폭력적인 낯선 사람들 사이에 홀로 남겨진 아이였습니다.",
+      "text_markdown": "폭력적인 낯선 사람들 사이에 홀로 남겨진 아이였습니다.",
+      "tts": {
+        "text": "폭력적인 낯선 사람들 사이에 홀로 남겨진 아이였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로들은 살레로 이송된 후 술탄의 수도 메크네스까지 내륙으로 행군했습니다.",
+      "text_markdown": "포로들은 살레로 이송된 후 술탄의 수도 메크네스까지 내륙으로 행군했습니다.",
+      "tts": {
+        "text": "포로들은 살레로 이송된 후 술탄의 수도 메크네스까지 내륙으로 행군했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여정은 며칠이 걸렸습니다.",
+      "text_markdown": "여정은 며칠이 걸렸습니다.",
+      "tts": {
+        "text": "여정은 며칠이 걸렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "토머스는 북아프리카의 태양 아래 사슬에 묶여 걸었고, 언어를 이해할 수 없는 사람들에게 둘러싸여 있었습니다.",
+      "text_markdown": "토머스는 북아프리카의 태양 아래 사슬에 묶여 걸었고, 언어를 이해할 수 없는 사람들에게 둘러싸여 있었습니다.",
+      "tts": {
+        "text": "토머스는 북아프리카의 태양 아래 사슬에 묶여 걸었고, 언어를 이해할 수 없는 사람들에게 둘러싸여 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메크네스에 도착했을 때, 토머스는 처음으로 술탄의 궁전을 보았습니다.",
+      "text_markdown": "메크네스에 도착했을 때, 토머스는 처음으로 술탄의 궁전을 보았습니다.",
+      "tts": {
+        "text": "메크네스에 도착했을 때, 토머스는 처음으로 술탄의 궁전을 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거대했습니다. 안뜰, 정원, 거대한 벽으로 이루어진 광활한 단지였습니다.",
+      "text_markdown": "거대했습니다. 안뜰, 정원, 거대한 벽으로 이루어진 광활한 단지였습니다.",
+      "tts": {
+        "text": "거대했습니다. 안뜰, 정원, 거대한 벽으로 이루어진 광활한 단지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "또한 노예의 노동으로 지어진 고통의 장소이기도 했습니다.",
+      "text_markdown": "또한 노예의 노동으로 지어진 고통의 장소이기도 했습니다.",
+      "tts": {
+        "text": "또한 노예의 노동으로 지어진 고통의 장소이기도 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로들은 술탄 물레이 이스마일 앞에 끌려갔습니다.",
+      "text_markdown": "포로들은 술탄 물레이 이스마일 앞에 끌려갔습니다.",
+      "tts": {
+        "text": "포로들은 술탄 물레이 이스마일 앞에 끌려갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄은 농부가 가축을 검사하듯 그들을 살펴보았습니다.",
+      "text_markdown": "술탄은 농부가 가축을 검사하듯 그들을 살펴보았습니다.",
+      "tts": {
+        "text": "술탄은 농부가 가축을 검사하듯 그들을 살펴보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "누가 일할지, 누가 몸값을 받을 수 있을지, 누가 그의 궁정에서 봉사할지를 결정했습니다.",
+      "text_markdown": "누가 일할지, 누가 몸값을 받을 수 있을지, 누가 그의 궁정에서 봉사할지를 결정했습니다.",
+      "tts": {
+        "text": "누가 일할지, 누가 몸값을 받을 수 있을지, 누가 그의 궁정에서 봉사할지를 결정했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "존 펠로 선장은 결국 몸값이 지불되어 풀려났습니다.",
+      "text_markdown": "존 펠로 선장은 결국 몸값이 지불되어 풀려났습니다.",
+      "tts": {
+        "text": "존 펠로 선장은 결국 몸값이 지불되어 풀려났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드로 돌아갔지만 조카의 석방은 확보하지 못했습니다.",
+      "text_markdown": "잉글랜드로 돌아갔지만 조카의 석방은 확보하지 못했습니다.",
+      "tts": {
+        "text": "잉글랜드로 돌아갔지만 조카의 석방은 확보하지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "토머스는 모로코에 홀로 남겨졌고, 외롭고 두려웠습니다.",
+      "text_markdown": "토머스는 모로코에 홀로 남겨졌고, 외롭고 두려웠습니다.",
+      "tts": {
+        "text": "토머스는 모로코에 홀로 남겨졌고, 외롭고 두려웠습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소년은 열한 살이었습니다.",
+      "text_markdown": "소년은 열한 살이었습니다.",
+      "tts": {
+        "text": "소년은 열한 살이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "집에서 수천 마일 떨어진 곳에 있었습니다.",
+      "text_markdown": "집에서 수천 마일 떨어진 곳에 있었습니다.",
+      "tts": {
+        "text": "집에서 수천 마일 떨어진 곳에 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "잉글랜드를 다시 볼 수 있을지 알 수 없었습니다.",
+      "text_markdown": "잉글랜드를 다시 볼 수 있을지 알 수 없었습니다.",
+      "tts": {
+        "text": "잉글랜드를 다시 볼 수 있을지 알 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 포로 생활이 시작되었습니다.",
+      "text_markdown": "그의 포로 생활이 시작되었습니다.",
+      "tts": {
+        "text": "그의 포로 생활이 시작되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 부모님은 아들에게 무슨 일이 일어났는지 궁금해했을 것입니다.",
+      "text_markdown": "그의 부모님은 아들에게 무슨 일이 일어났는지 궁금해했을 것입니다.",
+      "tts": {
+        "text": "그의 부모님은 아들에게 무슨 일이 일어났는지 궁금해했을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바다 건너에서는 어떤 소식도 전해질 수 없었습니다.",
+      "text_markdown": "바다 건너에서는 어떤 소식도 전해질 수 없었습니다.",
+      "tts": {
+        "text": "바다 건너에서는 어떤 소식도 전해질 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들이 아는 한, 토머스는 죽었습니다.",
+      "text_markdown": "그들이 아는 한, 토머스는 죽었습니다.",
+      "tts": {
+        "text": "그들이 아는 한, 토머스는 죽었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "포로",
+      "text_markdown": "포로"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로의 포로 생활 초기 몇 년은 이슬람교로의 개종 압박으로 정의되었습니다.",
+      "text_markdown": "토머스 펠로의 포로 생활 초기 몇 년은 이슬람교로의 개종 압박으로 정의되었습니다.",
+      "tts": {
+        "text": "토머스 펠로의 포로 생활 초기 몇 년은 이슬람교로의 개종 압박으로 정의되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄의 궁정은 유럽인 포로들에게 기독교 신앙을 버리라고 요구했습니다.",
+      "text_markdown": "술탄의 궁정은 유럽인 포로들에게 기독교 신앙을 버리라고 요구했습니다.",
+      "tts": {
+        "text": "술탄의 궁정은 유럽인 포로들에게 기독교 신앙을 버리라고 요구했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "개종한 자들은 더 나은 대우를 받았습니다.",
+      "text_markdown": "개종한 자들은 더 나은 대우를 받았습니다.",
+      "tts": {
+        "text": "개종한 자들은 더 나은 대우를 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "거부한 자들은 처벌을 받았습니다.",
+      "text_markdown": "거부한 자들은 처벌을 받았습니다.",
+      "tts": {
+        "text": "거부한 자들은 처벌을 받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스는 처음에 저항했습니다.",
+      "text_markdown": "토머스는 처음에 저항했습니다.",
+      "tts": {
+        "text": "토머스는 처음에 저항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기독교 국가 출신의 소년이었고, 신앙은 그에게 남은 유일한 고향의 흔적이었습니다.",
+      "text_markdown": "기독교 국가 출신의 소년이었고, 신앙은 그에게 남은 유일한 고향의 흔적이었습니다.",
+      "tts": {
+        "text": "기독교 국가 출신의 소년이었고, 신앙은 그에게 남은 유일한 고향의 흔적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "낯선 세계에서 마지막으로 익숙한 것에 매달리는 아이의 절박함으로 그것에 매달렸습니다.",
+      "text_markdown": "낯선 세계에서 마지막으로 익숙한 것에 매달리는 아이의 절박함으로 그것에 매달렸습니다.",
+      "tts": {
+        "text": "낯선 세계에서 마지막으로 익숙한 것에 매달리는 아이의 절박함으로 그것에 매달렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 압박은 가차 없었습니다.",
+      "text_markdown": "그러나 압박은 가차 없었습니다.",
+      "tts": {
+        "text": "그러나 압박은 가차 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "구타당하고 고문당했습니다.",
+      "text_markdown": "구타당하고 고문당했습니다.",
+      "tts": {
+        "text": "구타당하고 고문당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 기록에 따르면, 의지를 꺾기 위해 설계된 수개월간의 학대를 받았습니다.",
+      "text_markdown": "그의 기록에 따르면, 의지를 꺾기 위해 설계된 수개월간의 학대를 받았습니다.",
+      "tts": {
+        "text": "그의 기록에 따르면, 의지를 꺾기 위해 설계된 수개월간의 학대를 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "방법은 잔인하고 체계적이었습니다.",
+      "text_markdown": "방법은 잔인하고 체계적이었습니다.",
+      "tts": {
+        "text": "방법은 잔인하고 체계적이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "결국 토머스는 굴복했습니다.",
+      "text_markdown": "결국 토머스는 굴복했습니다.",
+      "tts": {
+        "text": "결국 토머스는 굴복했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이슬람교로 개종하고 무슬림 이름을 택했습니다.",
+      "text_markdown": "이슬람교로 개종하고 무슬림 이름을 택했습니다.",
+      "tts": {
+        "text": "이슬람교로 개종하고 무슬림 이름을 택했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나중에 이것을 포로 생활에서 가장 고통스러운 순간이라고 묘사할 것입니다.",
+      "text_markdown": "나중에 이것을 포로 생활에서 가장 고통스러운 순간이라고 묘사할 것입니다.",
+      "tts": {
+        "text": "나중에 이것을 포로 생활에서 가장 고통스러운 순간이라고 묘사할 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "자신이 믿는 모든 것을 배신했다고 느꼈습니다.",
+      "text_markdown": "자신이 믿는 모든 것을 배신했다고 느꼈습니다.",
+      "tts": {
+        "text": "자신이 믿는 모든 것을 배신했다고 느꼈습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현대의 독자들은 그를 판단할 때 신중해야 합니다.",
+      "text_markdown": "현대의 독자들은 그를 판단할 때 신중해야 합니다.",
+      "tts": {
+        "text": "현대의 독자들은 그를 판단할 때 신중해야 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어른들에게 고문당하는 외로운 아이였습니다.",
+      "text_markdown": "어른들에게 고문당하는 외로운 아이였습니다.",
+      "tts": {
+        "text": "어른들에게 고문당하는 외로운 아이였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 개종은 생존 전략이었지 자유로운 선택이 아니었습니다.",
+      "text_markdown": "그의 개종은 생존 전략이었지 자유로운 선택이 아니었습니다.",
+      "tts": {
+        "text": "그의 개종은 생존 전략이었지 자유로운 선택이 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "수천 명의 다른 포로들이 같은 견딜 수 없는 조건에서 같은 결정을 내렸습니다.",
+      "text_markdown": "수천 명의 다른 포로들이 같은 견딜 수 없는 조건에서 같은 결정을 내렸습니다.",
+      "tts": {
+        "text": "수천 명의 다른 포로들이 같은 견딜 수 없는 조건에서 같은 결정을 내렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "개종 후 토머스는 술탄의 군대에서 군인으로 훈련받았습니다.",
+      "text_markdown": "개종 후 토머스는 술탄의 군대에서 군인으로 훈련받았습니다.",
+      "tts": {
+        "text": "개종 후 토머스는 술탄의 군대에서 군인으로 훈련받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "말 타기, 사격, 전투를 배웠습니다.",
+      "text_markdown": "말 타기, 사격, 전투를 배웠습니다.",
+      "tts": {
+        "text": "말 타기, 사격, 전투를 배웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아랍어에 능통해지고 모로코 관습에 익숙해졌습니다.",
+      "text_markdown": "아랍어에 능통해지고 모로코 관습에 익숙해졌습니다.",
+      "tts": {
+        "text": "아랍어에 능통해지고 모로코 관습에 익숙해졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모로코 내륙의 군사 작전에 배치되었습니다.",
+      "text_markdown": "모로코 내륙의 군사 작전에 배치되었습니다.",
+      "tts": {
+        "text": "모로코 내륙의 군사 작전에 배치되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄은 반란 부족에 대한 통제를 유지하기 위해 끊임없이 싸웠습니다.",
+      "text_markdown": "술탄은 반란 부족에 대한 통제를 유지하기 위해 끊임없이 싸웠습니다.",
+      "tts": {
+        "text": "술탄은 반란 부족에 대한 통제를 유지하기 위해 끊임없이 싸웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "토머스는 이 작전에서 군인으로 싸웠습니다. 한때의 포로가 이제 포획자를 섬기고 있었습니다.",
+      "text_markdown": "토머스는 이 작전에서 군인으로 싸웠습니다. 한때의 포로가 이제 포획자를 섬기고 있었습니다.",
+      "tts": {
+        "text": "토머스는 이 작전에서 군인으로 싸웠습니다. 한때의 포로가 이제 포획자를 섬기고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그가 목격한 폭력은 충격적이었습니다.",
+      "text_markdown": "그가 목격한 폭력은 충격적이었습니다.",
+      "tts": {
+        "text": "그가 목격한 폭력은 충격적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "반란에 대한 술탄의 처벌은 잔혹하고 공개적이었습니다.",
+      "text_markdown": "반란에 대한 술탄의 처벌은 잔혹하고 공개적이었습니다.",
+      "tts": {
+        "text": "반란에 대한 술탄의 처벌은 잔혹하고 공개적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "패배한 적들은 대규모 시범 처형으로 사형당했습니다.",
+      "text_markdown": "패배한 적들은 대규모 시범 처형으로 사형당했습니다.",
+      "tts": {
+        "text": "패배한 적들은 대규모 시범 처형으로 사형당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "토머스는 평생 그를 괴롭히게 될 것들을 보았습니다.",
+      "text_markdown": "토머스는 평생 그를 괴롭히게 될 것들을 보았습니다.",
+      "tts": {
+        "text": "토머스는 평생 그를 괴롭히게 될 것들을 보았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메크네스 궁전의 지속적인 건설도 목격했습니다.",
+      "text_markdown": "메크네스 궁전의 지속적인 건설도 목격했습니다.",
+      "tts": {
+        "text": "메크네스 궁전의 지속적인 건설도 목격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수천 명의 노예가 술탄의 비전을 실현하기 위해 밤낮으로 일했습니다.",
+      "text_markdown": "수천 명의 노예가 술탄의 비전을 실현하기 위해 밤낮으로 일했습니다.",
+      "tts": {
+        "text": "수천 명의 노예가 술탄의 비전을 실현하기 위해 밤낮으로 일했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "쓰러진 노동자들은 때때로 그들이 짓고 있던 벽에 산 채로 묻혔습니다.",
+      "text_markdown": "쓰러진 노동자들은 때때로 그들이 짓고 있던 벽에 산 채로 묻혔습니다.",
+      "tts": {
+        "text": "쓰러진 노동자들은 때때로 그들이 짓고 있던 벽에 산 채로 묻혔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "물레이 이스마일의 궁전은 베르사유와 경쟁하기 위한 것이었습니다.",
+      "text_markdown": "물레이 이스마일의 궁전은 베르사유와 경쟁하기 위한 것이었습니다.",
+      "tts": {
+        "text": "물레이 이스마일의 궁전은 베르사유와 경쟁하기 위한 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄은 프랑스 왕의 웅장한 궁전 소문을 듣고 그것을 능가하겠다고 결심했습니다.",
+      "text_markdown": "술탄은 프랑스 왕의 웅장한 궁전 소문을 듣고 그것을 능가하겠다고 결심했습니다.",
+      "tts": {
+        "text": "술탄은 프랑스 왕의 웅장한 궁전 소문을 듣고 그것을 능가하겠다고 결심했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "결과는 경관을 가로질러 수 마일에 걸친 거대한 단지였습니다.",
+      "text_markdown": "결과는 경관을 가로질러 수 마일에 걸친 거대한 단지였습니다.",
+      "tts": {
+        "text": "결과는 경관을 가로질러 수 마일에 걸친 거대한 단지였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스는 수년간 술탄의 군대에서 복무했습니다.",
+      "text_markdown": "토머스는 수년간 술탄의 군대에서 복무했습니다.",
+      "tts": {
+        "text": "토머스는 수년간 술탄의 군대에서 복무했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "계급을 올려 어느 정도의 신뢰와 책임을 얻었습니다.",
+      "text_markdown": "계급을 올려 어느 정도의 신뢰와 책임을 얻었습니다.",
+      "tts": {
+        "text": "계급을 올려 어느 정도의 신뢰와 책임을 얻었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 자신이 포로라는 사실을 결코 잊지 않았습니다.",
+      "text_markdown": "그러나 자신이 포로라는 사실을 결코 잊지 않았습니다.",
+      "tts": {
+        "text": "그러나 자신이 포로라는 사실을 결코 잊지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "집에 가고 싶다는 마음을 결코 멈추지 않았습니다.",
+      "text_markdown": "집에 가고 싶다는 마음을 결코 멈추지 않았습니다.",
+      "tts": {
+        "text": "집에 가고 싶다는 마음을 결코 멈추지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모로코의 다른 유럽인 포로들과 연락했습니다.",
+      "text_markdown": "모로코의 다른 유럽인 포로들과 연락했습니다.",
+      "tts": {
+        "text": "모로코의 다른 유럽인 포로들과 연락했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전국에 흩어진 수백 명이 있었습니다.",
+      "text_markdown": "전국에 흩어진 수백 명이 있었습니다.",
+      "tts": {
+        "text": "전국에 흩어진 수백 명이 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "정보를 공유하고 서로를 지원하는 지하 공동체를 형성했습니다.",
+      "text_markdown": "정보를 공유하고 서로를 지원하는 지하 공동체를 형성했습니다.",
+      "tts": {
+        "text": "정보를 공유하고 서로를 지원하는 지하 공동체를 형성했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 포로들은 새로운 삶에 적응하고 진심으로 개종했습니다.",
+      "text_markdown": "일부 포로들은 새로운 삶에 적응하고 진심으로 개종했습니다.",
+      "tts": {
+        "text": "일부 포로들은 새로운 삶에 적응하고 진심으로 개종했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다른 이들은 원래의 신앙을 비밀리에 유지하며 닫힌 문 뒤에서 기독교를 실천했습니다.",
+      "text_markdown": "다른 이들은 원래의 신앙을 비밀리에 유지하며 닫힌 문 뒤에서 기독교를 실천했습니다.",
+      "tts": {
+        "text": "다른 이들은 원래의 신앙을 비밀리에 유지하며 닫힌 문 뒤에서 기독교를 실천했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "토머스는 이 두 세계 사이 어딘가에 존재했습니다.",
+      "text_markdown": "토머스는 이 두 세계 사이 어딘가에 존재했습니다.",
+      "tts": {
+        "text": "토머스는 이 두 세계 사이 어딘가에 존재했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "공적인 자리에서는 충성스러운 무슬림 군인 역할을 했습니다.",
+      "text_markdown": "공적인 자리에서는 충성스러운 무슬림 군인 역할을 했습니다.",
+      "tts": {
+        "text": "공적인 자리에서는 충성스러운 무슬림 군인 역할을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사적으로는 콘월의 기억과 탈출의 희망을 키웠습니다.",
+      "text_markdown": "사적으로는 콘월의 기억과 탈출의 희망을 키웠습니다.",
+      "tts": {
+        "text": "사적으로는 콘월의 기억과 탈출의 희망을 키웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이중적 존재의 피로감은 극심했습니다.",
+      "text_markdown": "이중적 존재의 피로감은 극심했습니다.",
+      "tts": {
+        "text": "이중적 존재의 피로감은 극심했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "항상 연기하고, 항상 진정한 자아를 숨기고 있었습니다.",
+      "text_markdown": "항상 연기하고, 항상 진정한 자아를 숨기고 있었습니다.",
+      "tts": {
+        "text": "항상 연기하고, 항상 진정한 자아를 숨기고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세월이 흘렀습니다.",
+      "text_markdown": "세월이 흘렀습니다.",
+      "tts": {
+        "text": "세월이 흘렀습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "토머스는 술탄을 섬기며 소년에서 어른으로 성장했습니다.",
+      "text_markdown": "토머스는 술탄을 섬기며 소년에서 어른으로 성장했습니다.",
+      "tts": {
+        "text": "토머스는 술탄을 섬기며 소년에서 어른으로 성장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모로코에서 계절이 바뀌고, 잉글랜드는 희미해져가는 기억이 되었습니다.",
+      "text_markdown": "모로코에서 계절이 바뀌고, 잉글랜드는 희미해져가는 기억이 되었습니다.",
+      "tts": {
+        "text": "모로코에서 계절이 바뀌고, 잉글랜드는 희미해져가는 기억이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "포로",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 탈출의 열망은 결코 사라지지 않았습니다.",
+      "text_markdown": "그러나 탈출의 열망은 결코 사라지지 않았습니다.",
+      "tts": {
+        "text": "그러나 탈출의 열망은 결코 사라지지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "포로 생활",
+      "text_markdown": "포로 생활"
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1727년, 술탄 물레이 이스마일이 55년의 통치 끝에 사망했습니다.",
+      "text_markdown": "1727년, 술탄 물레이 이스마일이 55년의 통치 끝에 사망했습니다.",
+      "tts": {
+        "text": "천칠백이십칠 년, 술탄 물레이 이스마일이 오십오 년의 통치 끝에 사망했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 죽음은 모로코를 혼란에 빠뜨렸습니다.",
+      "text_markdown": "그의 죽음은 모로코를 혼란에 빠뜨렸습니다.",
+      "tts": {
+        "text": "그의 죽음은 모로코를 혼란에 빠뜨렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수많은 아들이 왕위를 놓고 다투며 격렬한 계승 위기가 발생했습니다.",
+      "text_markdown": "수많은 아들이 왕위를 놓고 다투며 격렬한 계승 위기가 발생했습니다.",
+      "tts": {
+        "text": "수많은 아들이 왕위를 놓고 다투며 격렬한 계승 위기가 발생했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이후 십 년은 내전, 기근, 역병으로 점철되었습니다.",
+      "text_markdown": "이후 십 년은 내전, 기근, 역병으로 점철되었습니다.",
+      "tts": {
+        "text": "이후 십 년은 내전, 기근, 역병으로 점철되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "경쟁하는 왕자들이 전국에서 서로 싸웠습니다.",
+      "text_markdown": "경쟁하는 왕자들이 전국에서 서로 싸웠습니다.",
+      "tts": {
+        "text": "경쟁하는 왕자들이 전국에서 서로 싸웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "군대가 파벌 노선을 따라 분열되었습니다.",
+      "text_markdown": "군대가 파벌 노선을 따라 분열되었습니다.",
+      "tts": {
+        "text": "군대가 파벌 노선을 따라 분열되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아무도 안전하지 않았습니다.",
+      "text_markdown": "아무도 안전하지 않았습니다.",
+      "tts": {
+        "text": "아무도 안전하지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로에게 혼란은 위험이자 기회였습니다.",
+      "text_markdown": "토머스 펠로에게 혼란은 위험이자 기회였습니다.",
+      "tts": {
+        "text": "토머스 펠로에게 혼란은 위험이자 기회였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "중앙 권력의 붕괴는 포로를 관리하는 규칙이 덜 엄격하게 시행됨을 의미했습니다.",
+      "text_markdown": "중앙 권력의 붕괴는 포로를 관리하는 규칙이 덜 엄격하게 시행됨을 의미했습니다.",
+      "tts": {
+        "text": "중앙 권력의 붕괴는 포로를 관리하는 규칙이 덜 엄격하게 시행됨을 의미했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "경비원들은 내전에 정신이 팔려 있었습니다.",
+      "text_markdown": "경비원들은 내전에 정신이 팔려 있었습니다.",
+      "tts": {
+        "text": "경비원들은 내전에 정신이 팔려 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "탈출이 마침내 가능할 수도 있었습니다.",
+      "text_markdown": "탈출이 마침내 가능할 수도 있었습니다.",
+      "tts": {
+        "text": "탈출이 마침내 가능할 수도 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 모로코에서의 탈출은 극히 어려웠습니다.",
+      "text_markdown": "그러나 모로코에서의 탈출은 극히 어려웠습니다.",
+      "tts": {
+        "text": "그러나 모로코에서의 탈출은 극히 어려웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "나라가 광활하고 낯선 곳이었습니다.",
+      "text_markdown": "나라가 광활하고 낯선 곳이었습니다.",
+      "tts": {
+        "text": "나라가 광활하고 낯선 곳이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽인은 즉시 알아볼 수 있을 것이었습니다.",
+      "text_markdown": "유럽인은 즉시 알아볼 수 있을 것이었습니다.",
+      "tts": {
+        "text": "유럽인은 즉시 알아볼 수 있을 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다시 잡힌 노예에 대한 처벌은 가혹했고, 종종 죽음이었습니다.",
+      "text_markdown": "다시 잡힌 노예에 대한 처벌은 가혹했고, 종종 죽음이었습니다.",
+      "tts": {
+        "text": "다시 잡힌 노예에 대한 처벌은 가혹했고, 종종 죽음이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스는 신중하게 계획해야 했습니다.",
+      "text_markdown": "토머스는 신중하게 계획해야 했습니다.",
+      "tts": {
+        "text": "토머스는 신중하게 계획해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "식량, 경로, 동맹이 필요했습니다.",
+      "text_markdown": "식량, 경로, 동맹이 필요했습니다.",
+      "tts": {
+        "text": "식량, 경로, 동맹이 필요했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽행 배를 찾을 수 있는 항구에 도달하기 위해 적대적인 영토를 수백 마일 이동해야 했습니다.",
+      "text_markdown": "유럽행 배를 찾을 수 있는 항구에 도달하기 위해 적대적인 영토를 수백 마일 이동해야 했습니다.",
+      "tts": {
+        "text": "유럽행 배를 찾을 수 있는 항구에 도달하기 위해 적대적인 영토를 수백 마일 이동해야 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "몇 달간 준비했습니다.",
+      "text_markdown": "몇 달간 준비했습니다.",
+      "tts": {
+        "text": "몇 달간 준비했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "음식, 물, 북쪽 경로에 대한 정보를 모았습니다.",
+      "text_markdown": "음식, 물, 북쪽 경로에 대한 정보를 모았습니다.",
+      "tts": {
+        "text": "음식, 물, 북쪽 경로에 대한 정보를 모았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함께 탈출할 의향이 있는 다른 포로들을 찾아냈습니다.",
+      "text_markdown": "함께 탈출할 의향이 있는 다른 포로들을 찾아냈습니다.",
+      "tts": {
+        "text": "함께 탈출할 의향이 있는 다른 포로들을 찾아냈습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스는 또한 수년간의 조건화를 극복해야 했습니다.",
+      "text_markdown": "토머스는 또한 수년간의 조건화를 극복해야 했습니다.",
+      "tts": {
+        "text": "토머스는 또한 수년간의 조건화를 극복해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어린 시절부터 포로였습니다.",
+      "text_markdown": "어린 시절부터 포로였습니다.",
+      "tts": {
+        "text": "어린 시절부터 포로였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "술탄의 궁정이 그가 알고 있는 유일한 성인 생활이었습니다.",
+      "text_markdown": "술탄의 궁정이 그가 알고 있는 유일한 성인 생활이었습니다.",
+      "tts": {
+        "text": "술탄의 궁정이 그가 알고 있는 유일한 성인 생활이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "떠나는 것은 익숙한 모든 것을 버리는 것을 의미했습니다. 설령 그 익숙함이 감옥이었더라도.",
+      "text_markdown": "떠나는 것은 익숙한 모든 것을 버리는 것을 의미했습니다. 설령 그 익숙함이 감옥이었더라도.",
+      "tts": {
+        "text": "떠나는 것은 익숙한 모든 것을 버리는 것을 의미했습니다. 설령 그 익숙함이 감옥이었더라도.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "장기 포로 생활의 심리적 피해는 과소평가될 수 없습니다.",
+      "text_markdown": "장기 포로 생활의 심리적 피해는 과소평가될 수 없습니다.",
+      "tts": {
+        "text": "장기 포로 생활의 심리적 피해는 과소평가될 수 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수십 년을 속박 속에서 보낸 포로들은 종종 자유를 상상하기 어려워했습니다.",
+      "text_markdown": "수십 년을 속박 속에서 보낸 포로들은 종종 자유를 상상하기 어려워했습니다.",
+      "tts": {
+        "text": "수십 년을 속박 속에서 보낸 포로들은 종종 자유를 상상하기 어려워했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포로 생활에서 생존하도록 적응했고, 그 적응이 해방을 더 어렵게 만들었습니다.",
+      "text_markdown": "포로 생활에서 생존하도록 적응했고, 그 적응이 해방을 더 어렵게 만들었습니다.",
+      "tts": {
+        "text": "포로 생활에서 생존하도록 적응했고, 그 적응이 해방을 더 어렵게 만들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스는 이십 년 이상 술탄과 그의 후계자들을 섬겼습니다.",
+      "text_markdown": "토머스는 이십 년 이상 술탄과 그의 후계자들을 섬겼습니다.",
+      "tts": {
+        "text": "토머스는 이십 년 이상 술탄과 그의 후계자들을 섬겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아랍어를 유창하게 구사했습니다.",
+      "text_markdown": "아랍어를 유창하게 구사했습니다.",
+      "tts": {
+        "text": "아랍어를 유창하게 구사했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모로코 관습을 속속들이 알았습니다.",
+      "text_markdown": "모로코 관습을 속속들이 알았습니다.",
+      "tts": {
+        "text": "모로코 관습을 속속들이 알았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여러 면에서 탈출하고 싶어하는 세계의 일부가 되어 있었습니다.",
+      "text_markdown": "여러 면에서 탈출하고 싶어하는 세계의 일부가 되어 있었습니다.",
+      "tts": {
+        "text": "여러 면에서 탈출하고 싶어하는 세계의 일부가 되어 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 여전히 콘월을 기억했습니다.",
+      "text_markdown": "그러나 여전히 콘월을 기억했습니다.",
+      "tts": {
+        "text": "그러나 여전히 콘월을 기억했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "푸른 언덕과 차가운 바다를 기억했습니다.",
+      "text_markdown": "푸른 언덕과 차가운 바다를 기억했습니다.",
+      "tts": {
+        "text": "푸른 언덕과 차가운 바다를 기억했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가족을 기억했습니다. 비록 그 오랜 세월 후 그들의 얼굴이 희미해졌을 것이지만.",
+      "text_markdown": "가족을 기억했습니다. 비록 그 오랜 세월 후 그들의 얼굴이 희미해졌을 것이지만.",
+      "tts": {
+        "text": "가족을 기억했습니다. 비록 그 오랜 세월 후 그들의 얼굴이 희미해졌을 것이지만.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "고향의 기억은 그가 진정 누구인지를 연결해주는 실이었습니다.",
+      "text_markdown": "고향의 기억은 그가 진정 누구인지를 연결해주는 실이었습니다.",
+      "tts": {
+        "text": "고향의 기억은 그가 진정 누구인지를 연결해주는 실이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "내전의 세월 동안 토머스는 모든 편에서 저지른 잔학 행위를 목격했습니다.",
+      "text_markdown": "내전의 세월 동안 토머스는 모든 편에서 저지른 잔학 행위를 목격했습니다.",
+      "tts": {
+        "text": "내전의 세월 동안 토머스는 모든 편에서 저지른 잔학 행위를 목격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도시가 약탈당했습니다.",
+      "text_markdown": "도시가 약탈당했습니다.",
+      "tts": {
+        "text": "도시가 약탈당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "주민이 학살당했습니다.",
+      "text_markdown": "주민이 학살당했습니다.",
+      "tts": {
+        "text": "주민이 학살당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "섬기도록 강요당한 나라가 스스로를 찢어발기고 있었습니다.",
+      "text_markdown": "섬기도록 강요당한 나라가 스스로를 찢어발기고 있었습니다.",
+      "tts": {
+        "text": "섬기도록 강요당한 나라가 스스로를 찢어발기고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기근이 시골을 휩쓰는 것을 보았습니다.",
+      "text_markdown": "기근이 시골을 휩쓰는 것을 보았습니다.",
+      "tts": {
+        "text": "기근이 시골을 휩쓰는 것을 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "메크네스의 거리에서 사람들이 죽어갔습니다.",
+      "text_markdown": "메크네스의 거리에서 사람들이 죽어갔습니다.",
+      "tts": {
+        "text": "메크네스의 거리에서 사람들이 죽어갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "물레이 이스마일이 지은 장엄한 궁전이 그것을 유지할 노예 군단 없이 무너지기 시작했습니다.",
+      "text_markdown": "물레이 이스마일이 지은 장엄한 궁전이 그것을 유지할 노예 군단 없이 무너지기 시작했습니다.",
+      "tts": {
+        "text": "물레이 이스마일이 지은 장엄한 궁전이 그것을 유지할 노예 군단 없이 무너지기 시작했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 붕괴와 고통의 분위기 속에서 토머스는 결심했습니다.",
+      "text_markdown": "이 붕괴와 고통의 분위기 속에서 토머스는 결심했습니다.",
+      "tts": {
+        "text": "이 붕괴와 고통의 분위기 속에서 토머스는 결심했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "탈출하거나 시도하다 죽거나.",
+      "text_markdown": "탈출하거나 시도하다 죽거나.",
+      "tts": {
+        "text": "탈출하거나 시도하다 죽거나.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "포로 생활",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무너져가는 국가에서 포로로 남은 생을 보낼 수는 없었습니다.",
+      "text_markdown": "무너져가는 국가에서 포로로 남은 생을 보낼 수는 없었습니다.",
+      "tts": {
+        "text": "무너져가는 국가에서 포로로 남은 생을 보낼 수는 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "탈출",
+      "text_markdown": "탈출"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1738년, 토머스 펠로는 자유를 향한 탈출을 감행했습니다.",
+      "text_markdown": "1738년, 토머스 펠로는 자유를 향한 탈출을 감행했습니다.",
+      "tts": {
+        "text": "천칠백삼십팔 년, 토머스 펠로는 자유를 향한 탈출을 감행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "진행 중인 내전으로 인한 혼란 기간에 자리를 빠져나갔습니다.",
+      "text_markdown": "진행 중인 내전으로 인한 혼란 기간에 자리를 빠져나갔습니다.",
+      "tts": {
+        "text": "진행 중인 내전으로 인한 혼란 기간에 자리를 빠져나갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "서른네 살이었습니다.",
+      "text_markdown": "서른네 살이었습니다.",
+      "tts": {
+        "text": "서른네 살이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이십삼 년간 포로였습니다.",
+      "text_markdown": "이십삼 년간 포로였습니다.",
+      "tts": {
+        "text": "이십삼 년간 포로였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북쪽으로의 여정은 참혹했습니다.",
+      "text_markdown": "북쪽으로의 여정은 참혹했습니다.",
+      "tts": {
+        "text": "북쪽으로의 여정은 참혹했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "주로 밤에 이동하고 낮에는 숨었습니다.",
+      "text_markdown": "주로 밤에 이동하고 낮에는 숨었습니다.",
+      "tts": {
+        "text": "주로 밤에 이동하고 낮에는 숨었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알아볼 수 있는 길과 마을을 피했습니다.",
+      "text_markdown": "알아볼 수 있는 길과 마을을 피했습니다.",
+      "tts": {
+        "text": "알아볼 수 있는 길과 마을을 피했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "익숙하면서도 적대적인 풍경 속에 홀로 있었습니다.",
+      "text_markdown": "익숙하면서도 적대적인 풍경 속에 홀로 있었습니다.",
+      "tts": {
+        "text": "익숙하면서도 적대적인 풍경 속에 홀로 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "언어와 관습을 알았지만 도망자였습니다.",
+      "text_markdown": "언어와 관습을 알았지만 도망자였습니다.",
+      "tts": {
+        "text": "언어와 관습을 알았지만 도망자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 정체를 발견한 사람은 누구든 보상을 받고 그를 신고할 수 있었습니다.",
+      "text_markdown": "그의 정체를 발견한 사람은 누구든 보상을 받고 그를 신고할 수 있었습니다.",
+      "tts": {
+        "text": "그의 정체를 발견한 사람은 누구든 보상을 받고 그를 신고할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "찾거나 훔칠 수 있는 음식으로 연명했습니다.",
+      "text_markdown": "찾거나 훔칠 수 있는 음식으로 연명했습니다.",
+      "tts": {
+        "text": "찾거나 훔칠 수 있는 음식으로 연명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "감히 다가갈 수 있을 때 개울과 우물에서 물을 마셨습니다.",
+      "text_markdown": "감히 다가갈 수 있을 때 개울과 우물에서 물을 마셨습니다.",
+      "tts": {
+        "text": "감히 다가갈 수 있을 때 개울과 우물에서 물을 마셨습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "육체적 고난은 극심했지만 계속 북쪽으로 나아갔습니다.",
+      "text_markdown": "육체적 고난은 극심했지만 계속 북쪽으로 나아갔습니다.",
+      "tts": {
+        "text": "육체적 고난은 극심했지만 계속 북쪽으로 나아갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "때때로 예상치 못한 곳에서 도움을 받았습니다.",
+      "text_markdown": "때때로 예상치 못한 곳에서 도움을 받았습니다.",
+      "tts": {
+        "text": "때때로 예상치 못한 곳에서 도움을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 모로코인이 그를 불쌍히 여겨 음식이나 은신처를 제공했습니다.",
+      "text_markdown": "일부 모로코인이 그를 불쌍히 여겨 음식이나 은신처를 제공했습니다.",
+      "tts": {
+        "text": "일부 모로코인이 그를 불쌍히 여겨 음식이나 은신처를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모든 사람이 적은 아니었습니다.",
+      "text_markdown": "모든 사람이 적은 아니었습니다.",
+      "tts": {
+        "text": "모든 사람이 적은 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "도주 중에도 토머스는 인간의 친절을 만났습니다.",
+      "text_markdown": "도주 중에도 토머스는 인간의 친절을 만났습니다.",
+      "tts": {
+        "text": "도주 중에도 토머스는 인간의 친절을 만났습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 선박을 찾을 수 있는 항구를 목표로 해안으로 향했습니다.",
+      "text_markdown": "유럽 선박을 찾을 수 있는 항구를 목표로 해안으로 향했습니다.",
+      "tts": {
+        "text": "유럽 선박을 찾을 수 있는 항구를 목표로 해안으로 향했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여정은 수 주간의 고된 여행이었습니다.",
+      "text_markdown": "여정은 수 주간의 고된 여행이었습니다.",
+      "tts": {
+        "text": "여정은 수 주간의 고된 여행이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "매일 다시 붙잡힐 위험이 있었습니다.",
+      "text_markdown": "매일 다시 붙잡힐 위험이 있었습니다.",
+      "tts": {
+        "text": "매일 다시 붙잡힐 위험이 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마침내 해안에 도달하여 유럽행 배에 자리를 얻었습니다.",
+      "text_markdown": "마침내 해안에 도달하여 유럽행 배에 자리를 얻었습니다.",
+      "tts": {
+        "text": "마침내 해안에 도달하여 유럽행 배에 자리를 얻었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자리를 어떻게 확보했는지의 세부 사항은 그의 기록에서 불분명합니다.",
+      "text_markdown": "자리를 어떻게 확보했는지의 세부 사항은 그의 기록에서 불분명합니다.",
+      "tts": {
+        "text": "자리를 어떻게 확보했는지의 세부 사항은 그의 기록에서 불분명합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "분명한 것은 모로코를 뒤로하고 지중해를 건넜다는 것입니다.",
+      "text_markdown": "분명한 것은 모로코를 뒤로하고 지중해를 건넜다는 것입니다.",
+      "tts": {
+        "text": "분명한 것은 모로코를 뒤로하고 지중해를 건넜다는 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스가 마침내 잉글랜드에 도착했을 때, 그는 자기 나라에서 이방인이었습니다.",
+      "text_markdown": "토머스가 마침내 잉글랜드에 도착했을 때, 그는 자기 나라에서 이방인이었습니다.",
+      "tts": {
+        "text": "토머스가 마침내 잉글랜드에 도착했을 때, 그는 자기 나라에서 이방인이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "열한 살 소년으로 떠났습니다.",
+      "text_markdown": "열한 살 소년으로 떠났습니다.",
+      "tts": {
+        "text": "열한 살 소년으로 떠났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "서른네 살 남자로 돌아왔습니다.",
+      "text_markdown": "서른네 살 남자로 돌아왔습니다.",
+      "tts": {
+        "text": "서른네 살 남자로 돌아왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 것이 변해 있었습니다. 나라도, 그 사람도.",
+      "text_markdown": "모든 것이 변해 있었습니다. 나라도, 그 사람도.",
+      "tts": {
+        "text": "모든 것이 변해 있었습니다. 나라도, 그 사람도.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가족은 그를 거의 알아보지 못했습니다.",
+      "text_markdown": "가족은 그를 거의 알아보지 못했습니다.",
+      "tts": {
+        "text": "가족은 그를 거의 알아보지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "인생의 절반 이상을 떠나 있었습니다.",
+      "text_markdown": "인생의 절반 이상을 떠나 있었습니다.",
+      "tts": {
+        "text": "인생의 절반 이상을 떠나 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "억양이 있는 말투, 다른 움직임, 그리고 그들이 결코 이해할 수 없는 경험의 무게를 지고 있었습니다.",
+      "text_markdown": "억양이 있는 말투, 다른 움직임, 그리고 그들이 결코 이해할 수 없는 경험의 무게를 지고 있었습니다.",
+      "tts": {
+        "text": "억양이 있는 말투, 다른 움직임, 그리고 그들이 결코 이해할 수 없는 경험의 무게를 지고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정상적인 생활로의 복귀는 극히 어려웠습니다.",
+      "text_markdown": "정상적인 생활로의 복귀는 극히 어려웠습니다.",
+      "tts": {
+        "text": "정상적인 생활로의 복귀는 극히 어려웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "토머스는 성인 생활 전체를 이국의 문화에서 속박 상태로 보냈습니다.",
+      "text_markdown": "토머스는 성인 생활 전체를 이국의 문화에서 속박 상태로 보냈습니다.",
+      "tts": {
+        "text": "토머스는 성인 생활 전체를 이국의 문화에서 속박 상태로 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모로코에서 배운 기술은 콘월에서 쓸모가 없었습니다.",
+      "text_markdown": "모로코에서 배운 기술은 콘월에서 쓸모가 없었습니다.",
+      "tts": {
+        "text": "모로코에서 배운 기술은 콘월에서 쓸모가 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "집에 돌아온 남자는 떠났던 소년이 아니었습니다.",
+      "text_markdown": "집에 돌아온 남자는 떠났던 소년이 아니었습니다.",
+      "tts": {
+        "text": "집에 돌아온 남자는 떠났던 소년이 아니었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "결국 회고록을 써서 '토머스 펠로의 오랜 포로 생활과 모험의 역사'라는 제목으로 출판했습니다.",
+      "text_markdown": "결국 회고록을 써서 '토머스 펠로의 오랜 포로 생활과 모험의 역사'라는 제목으로 출판했습니다.",
+      "tts": {
+        "text": "결국 회고록을 써서 '토머스 펠로의 오랜 포로 생활과 모험의 역사'라는 제목으로 출판했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "책은 그의 포획, 강제 개종, 복무 기간, 탈출을 생생하게 묘사했습니다.",
+      "text_markdown": "책은 그의 포획, 강제 개종, 복무 기간, 탈출을 생생하게 묘사했습니다.",
+      "tts": {
+        "text": "책은 그의 포획, 강제 개종, 복무 기간, 탈출을 생생하게 묘사했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "회고록은 잉글랜드에서 인기를 끌었습니다.",
+      "text_markdown": "회고록은 잉글랜드에서 인기를 끌었습니다.",
+      "tts": {
+        "text": "회고록은 잉글랜드에서 인기를 끌었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이국적인 동방에 대한 대중의 매혹과 바르바리 노예 무역에 대한 공포를 충족시켰습니다.",
+      "text_markdown": "이국적인 동방에 대한 대중의 매혹과 바르바리 노예 무역에 대한 공포를 충족시켰습니다.",
+      "tts": {
+        "text": "이국적인 동방에 대한 대중의 매혹과 바르바리 노예 무역에 대한 공포를 충족시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "격렬한 종교 갈등 시기에 반이슬람 선전으로도 기능했습니다.",
+      "text_markdown": "격렬한 종교 갈등 시기에 반이슬람 선전으로도 기능했습니다.",
+      "tts": {
+        "text": "격렬한 종교 갈등 시기에 반이슬람 선전으로도 기능했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현대 역사학자들은 토머스의 기록을 존중과 신중함으로 다룹니다.",
+      "text_markdown": "현대 역사학자들은 토머스의 기록을 존중과 신중함으로 다룹니다.",
+      "tts": {
+        "text": "현대 역사학자들은 토머스의 기록을 존중과 신중함으로 다룹니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 세부 사항은 독자들을 위해 과장되거나 미화되었을 수 있습니다.",
+      "text_markdown": "일부 세부 사항은 독자들을 위해 과장되거나 미화되었을 수 있습니다.",
+      "tts": {
+        "text": "일부 세부 사항은 독자들을 위해 과장되거나 미화되었을 수 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 이야기의 핵심은 다른 역사적 증거로 뒷받침됩니다.",
+      "text_markdown": "그러나 이야기의 핵심은 다른 역사적 증거로 뒷받침됩니다.",
+      "tts": {
+        "text": "그러나 이야기의 핵심은 다른 역사적 증거로 뒷받침됩니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로의 사망 일자와 상황은 알려지지 않았습니다.",
+      "text_markdown": "토머스 펠로의 사망 일자와 상황은 알려지지 않았습니다.",
+      "tts": {
+        "text": "토머스 펠로의 사망 일자와 상황은 알려지지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "회고록 출판 후 역사 기록에서 사라집니다.",
+      "text_markdown": "회고록 출판 후 역사 기록에서 사라집니다.",
+      "tts": {
+        "text": "회고록 출판 후 역사 기록에서 사라집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "탈출",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이십삼 년의 포로 생활을 견뎌낸 남자는 조용히 무명 속으로 사라졌습니다.",
+      "text_markdown": "이십삼 년의 포로 생활을 견뎌낸 남자는 조용히 무명 속으로 사라졌습니다.",
+      "tts": {
+        "text": "이십삼 년의 포로 생활을 견뎌낸 남자는 조용히 무명 속으로 사라졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로의 회고록은 바르바리 노예 무역에 관한 가장 중요한 문서 중 하나입니다.",
+      "text_markdown": "토머스 펠로의 회고록은 바르바리 노예 무역에 관한 가장 중요한 문서 중 하나입니다.",
+      "tts": {
+        "text": "토머스 펠로의 회고록은 바르바리 노예 무역에 관한 가장 중요한 문서 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모로코에서의 유럽인 포로 생활에 대한 직접적인 기록을 제공합니다.",
+      "text_markdown": "모로코에서의 유럽인 포로 생활에 대한 직접적인 기록을 제공합니다.",
+      "tts": {
+        "text": "모로코에서의 유럽인 포로 생활에 대한 직접적인 기록을 제공합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이처럼 상세하고 개인적인 증언을 제공하는 다른 자료는 거의 없습니다.",
+      "text_markdown": "이처럼 상세하고 개인적인 증언을 제공하는 다른 자료는 거의 없습니다.",
+      "tts": {
+        "text": "이처럼 상세하고 개인적인 증언을 제공하는 다른 자료는 거의 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 이야기는 종종 간과되는 역사의 한 장을 비추어 줍니다.",
+      "text_markdown": "그의 이야기는 종종 간과되는 역사의 한 장을 비추어 줍니다.",
+      "tts": {
+        "text": "그의 이야기는 종종 간과되는 역사의 한 장을 비추어 줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "북아프리카 국가들에 의한 유럽인 노예화는 수 세기 동안 지속되었습니다.",
+      "text_markdown": "북아프리카 국가들에 의한 유럽인 노예화는 수 세기 동안 지속되었습니다.",
+      "tts": {
+        "text": "북아프리카 국가들에 의한 유럽인 노예화는 수 세기 동안 지속되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수백만 명에게 영향을 미치고 지중해 세계의 정치를 형성했습니다.",
+      "text_markdown": "수백만 명에게 영향을 미치고 지중해 세계의 정치를 형성했습니다.",
+      "tts": {
+        "text": "수백만 명에게 영향을 미치고 지중해 세계의 정치를 형성했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스가 유지를 도왔던 메크네스의 궁전은 오늘날에도 부분적으로 남아 있습니다.",
+      "text_markdown": "토머스가 유지를 도왔던 메크네스의 궁전은 오늘날에도 부분적으로 남아 있습니다.",
+      "tts": {
+        "text": "토머스가 유지를 도왔던 메크네스의 궁전은 오늘날에도 부분적으로 남아 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유네스코 세계문화유산입니다.",
+      "text_markdown": "유네스코 세계문화유산입니다.",
+      "tts": {
+        "text": "유네스코 세계문화유산입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "관광객들이 한때 노예들이 고된 노동을 했던 같은 안뜰을 걷고 있습니다.",
+      "text_markdown": "관광객들이 한때 노예들이 고된 노동을 했던 같은 안뜰을 걷고 있습니다.",
+      "tts": {
+        "text": "관광객들이 한때 노예들이 고된 노동을 했던 같은 안뜰을 걷고 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "폐허의 아름다움은 그것을 세운 고통을 숨기고 있습니다.",
+      "text_markdown": "폐허의 아름다움은 그것을 세운 고통을 숨기고 있습니다.",
+      "tts": {
+        "text": "폐허의 아름다움은 그것을 세운 고통을 숨기고 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스가 섬긴 술탄 물레이 이스마일은 모로코와 유럽에서 다르게 기억됩니다.",
+      "text_markdown": "토머스가 섬긴 술탄 물레이 이스마일은 모로코와 유럽에서 다르게 기억됩니다.",
+      "tts": {
+        "text": "토머스가 섬긴 술탄 물레이 이스마일은 모로코와 유럽에서 다르게 기억됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모로코에서는 나라를 통일한 강력한 통치자로 기려집니다.",
+      "text_markdown": "모로코에서는 나라를 통일한 강력한 통치자로 기려집니다.",
+      "tts": {
+        "text": "모로코에서는 나라를 통일한 강력한 통치자로 기려집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽에서는 수천 명을 노예로 만든 폭군으로 기억됩니다.",
+      "text_markdown": "유럽에서는 수천 명을 노예로 만든 폭군으로 기억됩니다.",
+      "tts": {
+        "text": "유럽에서는 수천 명을 노예로 만든 폭군으로 기억됩니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "두 관점 모두 진실을 담고 있습니다.",
+      "text_markdown": "두 관점 모두 진실을 담고 있습니다.",
+      "tts": {
+        "text": "두 관점 모두 진실을 담고 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "역사는 복잡하며, 강력한 통치자들은 복잡한 유산을 남깁니다.",
+      "text_markdown": "역사는 복잡하며, 강력한 통치자들은 복잡한 유산을 남깁니다.",
+      "tts": {
+        "text": "역사는 복잡하며, 강력한 통치자들은 복잡한 유산을 남깁니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "메크네스를 지은 노예들은 물레이 이스마일을 위대한 왕이라 부르지 않았을 것입니다.",
+      "text_markdown": "메크네스를 지은 노예들은 물레이 이스마일을 위대한 왕이라 부르지 않았을 것입니다.",
+      "tts": {
+        "text": "메크네스를 지은 노예들은 물레이 이스마일을 위대한 왕이라 부르지 않았을 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로의 이야기는 정체성에 대한 어려운 질문도 제기합니다.",
+      "text_markdown": "토머스 펠로의 이야기는 정체성에 대한 어려운 질문도 제기합니다.",
+      "tts": {
+        "text": "토머스 펠로의 이야기는 정체성에 대한 어려운 질문도 제기합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모로코에서 이십삼 년을 보낸 후, 토머스는 여전히 영국인이었을까요?",
+      "text_markdown": "모로코에서 이십삼 년을 보낸 후, 토머스는 여전히 영국인이었을까요?",
+      "tts": {
+        "text": "모로코에서 이십삼 년을 보낸 후, 토머스는 여전히 영국인이었을까요?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여전히 기독교인이었을까요?",
+      "text_markdown": "여전히 기독교인이었을까요?",
+      "tts": {
+        "text": "여전히 기독교인이었을까요?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p89",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "답은 단순하지 않습니다.",
+      "text_markdown": "답은 단순하지 않습니다.",
+      "tts": {
+        "text": "답은 단순하지 않습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잉글랜드보다 모로코에서 더 많은 시간을 보냈습니다.",
+      "text_markdown": "잉글랜드보다 모로코에서 더 많은 시간을 보냈습니다.",
+      "tts": {
+        "text": "잉글랜드보다 모로코에서 더 많은 시간을 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 원어민보다 아랍어를 더 잘 했습니다.",
+      "text_markdown": "많은 원어민보다 아랍어를 더 잘 했습니다.",
+      "tts": {
+        "text": "많은 원어민보다 아랍어를 더 잘 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모로코 전쟁에서 싸웠고 모로코 관습에 따라 살았습니다.",
+      "text_markdown": "모로코 전쟁에서 싸웠고 모로코 관습에 따라 살았습니다.",
+      "tts": {
+        "text": "모로코 전쟁에서 싸웠고 모로코 관습에 따라 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "포로와 참여자 사이의 경계가 수십 년에 걸쳐 흐려졌습니다.",
+      "text_markdown": "포로와 참여자 사이의 경계가 수십 년에 걸쳐 흐려졌습니다.",
+      "tts": {
+        "text": "포로와 참여자 사이의 경계가 수십 년에 걸쳐 흐려졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 강제 개종은 특별한 일이 아니었습니다.",
+      "text_markdown": "그의 강제 개종은 특별한 일이 아니었습니다.",
+      "tts": {
+        "text": "그의 강제 개종은 특별한 일이 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수천 명의 유럽인 포로가 이슬람교로 개종을 강요당했습니다.",
+      "text_markdown": "수천 명의 유럽인 포로가 이슬람교로 개종을 강요당했습니다.",
+      "tts": {
+        "text": "수천 명의 유럽인 포로가 이슬람교로 개종을 강요당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 결국 기독교로 돌아갔습니다.",
+      "text_markdown": "일부는 결국 기독교로 돌아갔습니다.",
+      "tts": {
+        "text": "일부는 결국 기독교로 돌아갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다른 이들은 평생 무슬림으로 남았습니다.",
+      "text_markdown": "다른 이들은 평생 무슬림으로 남았습니다.",
+      "tts": {
+        "text": "다른 이들은 평생 무슬림으로 남았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "강제 개종과 진정한 개종 사이의 경계는 종종 불분명했습니다.",
+      "text_markdown": "강제 개종과 진정한 개종 사이의 경계는 종종 불분명했습니다.",
+      "tts": {
+        "text": "강제 개종과 진정한 개종 사이의 경계는 종종 불분명했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바르바리 노예 무역은 토머스의 탈출 이후 수십 년간 계속되었습니다.",
+      "text_markdown": "바르바리 노예 무역은 토머스의 탈출 이후 수십 년간 계속되었습니다.",
+      "tts": {
+        "text": "바르바리 노예 무역은 토머스의 탈출 이후 수십 년간 계속되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽과 미국의 해군력이 마침내 해적을 진압한 것은 19세기 초가 되어서였습니다.",
+      "text_markdown": "유럽과 미국의 해군력이 마침내 해적을 진압한 것은 19세기 초가 되어서였습니다.",
+      "tts": {
+        "text": "유럽과 미국의 해군력이 마침내 해적을 진압한 것은 십구세기 초가 되어서였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미국은 1801년과 1815년에 바르바리 국가들과 두 차례 전쟁을 벌였습니다.",
+      "text_markdown": "미국은 1801년과 1815년에 바르바리 국가들과 두 차례 전쟁을 벌였습니다.",
+      "tts": {
+        "text": "미국은 천팔백일 년과 천팔백십오 년에 바르바리 국가들과 두 차례 전쟁을 벌였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토머스 펠로의 이야기는 궁극적으로 생존의 이야기입니다.",
+      "text_markdown": "토머스 펠로의 이야기는 궁극적으로 생존의 이야기입니다.",
+      "tts": {
+        "text": "토머스 펠로의 이야기는 궁극적으로 생존의 이야기입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이십삼 년의 포로 생활, 강제 개종, 폭력, 고립을 견뎠습니다.",
+      "text_markdown": "이십삼 년의 포로 생활, 강제 개종, 폭력, 고립을 견뎠습니다.",
+      "tts": {
+        "text": "이십삼 년의 포로 생활, 강제 개종, 폭력, 고립을 견뎠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 모든 것에서 살아남아 집으로 가는 길을 찾았습니다.",
+      "text_markdown": "그 모든 것에서 살아남아 집으로 가는 길을 찾았습니다.",
+      "tts": {
+        "text": "그 모든 것에서 살아남아 집으로 가는 길을 찾았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 회고록은 한 사람이 얼마나 견딜 수 있으면서도 여전히 자기 자신으로 남을 수 있는지에 대한 증언입니다.",
+      "text_markdown": "그의 회고록은 한 사람이 얼마나 견딜 수 있으면서도 여전히 자기 자신으로 남을 수 있는지에 대한 증언입니다.",
+      "tts": {
+        "text": "그의 회고록은 한 사람이 얼마나 견딜 수 있으면서도 여전히 자기 자신으로 남을 수 있는지에 대한 증언입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 모든 세월을 통해, 그 모든 거리를 넘어, 토머스 펠로는 결코 집에 가고 싶어하는 콘월의 소년이기를 멈추지 않았습니다.",
+      "text_markdown": "그 모든 세월을 통해, 그 모든 거리를 넘어, 토머스 펠로는 결코 집에 가고 싶어하는 콘월의 소년이기를 멈추지 않았습니다.",
+      "tts": {
+        "text": "그 모든 세월을 통해, 그 모든 거리를 넘어, 토머스 펠로는 결코 집에 가고 싶어하는 콘월의 소년이기를 멈추지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

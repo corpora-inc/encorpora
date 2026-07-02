@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_samuel_bellamy",
+  "language": "tr",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, kendini Denizlerin Robin Hood'u olarak adlandıran bir korsan olan Samuel Bellamy'nin hikâyesidir.",
+      "text_markdown": "Bu, kendini Denizlerin Robin Hood'u olarak adlandıran bir korsan olan Samuel Bellamy'nin hikâyesidir.",
+      "tts": {
+        "text": "Bu, kendini Denizlerin Robin Hood'u olarak adlandıran bir korsan olan Samuel Bellamy'nin hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kariyeri ancak bir yıl sürdü, ancak bugüne kadar süren bir iz bıraktı.",
+      "text_markdown": "Kariyeri ancak bir yıl sürdü, ancak bugüne kadar süren bir iz bıraktı.",
+      "tts": {
+        "text": "Kariyeri ancak bir yıl sürdü, ancak bugüne kadar süren bir iz bıraktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy, Altın Çağ'ın en başarılı korsanlarından biriydi.",
+      "text_markdown": "Bellamy, Altın Çağ'ın en başarılı korsanlarından biriydi.",
+      "tts": {
+        "text": "Bellamy, Altın Çağ'ın en başarılı korsanlarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sadece on bir ayda elliden fazla gemi ele geçirdi.",
+      "text_markdown": "Sadece on bir ayda elliden fazla gemi ele geçirdi.",
+      "tts": {
+        "text": "Sadece on bir ayda elliden fazla gemi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adalet, eşitsizlik ve yönetici sınıfın ikiyüzlülüğü hakkında konuşmalar yaptı.",
+      "text_markdown": "Adalet, eşitsizlik ve yönetici sınıfın ikiyüzlülüğü hakkında konuşmalar yaptı.",
+      "tts": {
+        "text": "Adalet, eşitsizlik ve yönetici sınıfın ikiyüzlülüğü hakkında konuşmalar yaptı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "28 yaşında Cape Cod açıklarında bir fırtınada hayatını kaybetti.",
+      "text_markdown": "28 yaşında Cape Cod açıklarında bir fırtınada hayatını kaybetti.",
+      "tts": {
+        "text": "Yirmi sekiz yaşında Cape Cod açıklarında bir fırtınada hayatını kaybetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Amiral gemisi Whydah, onunla birlikte battı ve 260 yılı aşkın süre okyanus tabanında yattı.",
+      "text_markdown": "Amiral gemisi Whydah, onunla birlikte battı ve 260 yılı aşkın süre okyanus tabanında yattı.",
+      "tts": {
+        "text": "Amiral gemisi Whydah, onunla birlikte battı ve iki yüz altmış yılı aşkın süre okyanus tabanında yattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984'te Barry Clifford adlı bir kaşif enkazı buldu.",
+      "text_markdown": "1984'te Barry Clifford adlı bir kaşif enkazı buldu.",
+      "tts": {
+        "text": "Bin dokuz yüz seksen dörtte Barry Clifford adlı bir kaşif enkazı buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bugüne kadar keşfedilen tek doğrulanmış korsan gemi enkazı olmaya devam etmektedir.",
+      "text_markdown": "Bugüne kadar keşfedilen tek doğrulanmış korsan gemi enkazı olmaya devam etmektedir.",
+      "tts": {
+        "text": "Bugüne kadar keşfedilen tek doğrulanmış korsan gemi enkazı olmaya devam etmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'tan çıkarılan eserler, korsan yaşamına dair anlayışımızı tamamen değiştirdi.",
+      "text_markdown": "Whydah'tan çıkarılan eserler, korsan yaşamına dair anlayışımızı tamamen değiştirdi.",
+      "tts": {
+        "text": "Whydah'tan çıkarılan eserler, korsan yaşamına dair anlayışımızı tamamen değiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, o eserlerin ve gemisi onları denizin dibine taşıyan adamın hikâyesidir.",
+      "text_markdown": "Bu, o eserlerin ve gemisi onları denizin dibine taşıyan adamın hikâyesidir.",
+      "tts": {
+        "text": "Bu, o eserlerin ve gemisi onları denizin dibine taşıyan adamın hikâyesidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsanlığın Altın Çağı",
+      "text_markdown": "Korsanlığın Altın Çağı"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700'lerin başı, Korsanlığın Altın Çağı olarak bilinir.",
+      "text_markdown": "1700'lerin başı, Korsanlığın Altın Çağı olarak bilinir.",
+      "tts": {
+        "text": "Bin yedi yüzlerin başı, Korsanlığın Altın Çağı olarak bilinir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu dönemde binlerce adam Atlantik Okyanusu ve Karayip Denizi'nde korsanlığa yöneldi.",
+      "text_markdown": "Bu dönemde binlerce adam Atlantik Okyanusu ve Karayip Denizi'nde korsanlığa yöneldi.",
+      "tts": {
+        "text": "Bu dönemde binlerce adam Atlantik Okyanusu ve Karayip Denizi'nde korsanlığa yöneldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şeker, tütün, kumaş ve köleleştirilmiş insanlar taşıyan ticaret gemilerine saldırdılar.",
+      "text_markdown": "Şeker, tütün, kumaş ve köleleştirilmiş insanlar taşıyan ticaret gemilerine saldırdılar.",
+      "tts": {
+        "text": "Şeker, tütün, kumaş ve köleleştirilmiş insanlar taşıyan ticaret gemilerine saldırdılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altın Çağ yaklaşık 1715 civarında başladı ve 1720'lerin ortasına kadar sürdü.",
+      "text_markdown": "Altın Çağ yaklaşık 1715 civarında başladı ve 1720'lerin ortasına kadar sürdü.",
+      "tts": {
+        "text": "Altın Çağ yaklaşık bin yedi yüz on beş civarında başladı ve bin yedi yüz yirmilerin ortasına kadar sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya Veraset Savaşı'nın sona ermesiyle tetiklendi.",
+      "text_markdown": "İspanya Veraset Savaşı'nın sona ermesiyle tetiklendi.",
+      "tts": {
+        "text": "İspanya Veraset Savaşı'nın sona ermesiyle tetiklendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş sona erdiğinde binlerce denizci aniden işsiz kaldı.",
+      "text_markdown": "Savaş sona erdiğinde binlerce denizci aniden işsiz kaldı.",
+      "tts": {
+        "text": "Savaş sona erdiğinde binlerce denizci aniden işsiz kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya Veraset Savaşı on yıldan fazla sürmüştü.",
+      "text_markdown": "İspanya Veraset Savaşı on yıldan fazla sürmüştü.",
+      "tts": {
+        "text": "İspanya Veraset Savaşı on yıldan fazla sürmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Neredeyse her büyük Avrupa gücü İspanya tahtını kimin miras alacağı konusunda savaşıyordu.",
+      "text_markdown": "Neredeyse her büyük Avrupa gücü İspanya tahtını kimin miras alacağı konusunda savaşıyordu.",
+      "tts": {
+        "text": "Neredeyse her büyük Avrupa gücü İspanya tahtını kimin miras alacağı konusunda savaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çatışma sömürgelere yayıldı ve karada olduğu kadar denizde de sürdü.",
+      "text_markdown": "Çatışma sömürgelere yayıldı ve karada olduğu kadar denizde de sürdü.",
+      "tts": {
+        "text": "Çatışma sömürgelere yayıldı ve karada olduğu kadar denizde de sürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş sırasında pek çok denizci özel korsan olarak hizmet etti ve hükümetleri adına düşman gemilerine baskın düzenledi.",
+      "text_markdown": "Savaş sırasında pek çok denizci özel korsan olarak hizmet etti ve hükümetleri adına düşman gemilerine baskın düzenledi.",
+      "tts": {
+        "text": "Savaş sırasında pek çok denizci özel korsan olarak hizmet etti ve hükümetleri adına düşman gemilerine baskın düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Artık barış geldiğine göre, korsanlık belgeleri de sona ermişti.",
+      "text_markdown": "Artık barış geldiğine göre, korsanlık belgeleri de sona ermişti.",
+      "tts": {
+        "text": "Artık barış geldiğine göre, korsanlık belgeleri de sona ermişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaşta öğrendikleri becerilerin barış zamanında yasal bir kullanımı yoktu.",
+      "text_markdown": "Savaşta öğrendikleri becerilerin barış zamanında yasal bir kullanımı yoktu.",
+      "tts": {
+        "text": "Savaşta öğrendikleri becerilerin barış zamanında yasal bir kullanımı yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700'lerin başında sıradan bir denizcinin hayatı sert ve düşük ücretliydi.",
+      "text_markdown": "1700'lerin başında sıradan bir denizcinin hayatı sert ve düşük ücretliydi.",
+      "tts": {
+        "text": "Bin yedi yüzlerin başında sıradan bir denizcinin hayatı sert ve düşük ücretliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticaret gemisi kaptanları gemilerini birer tiran gibi yönetiyordu.",
+      "text_markdown": "Ticaret gemisi kaptanları gemilerini birer tiran gibi yönetiyordu.",
+      "tts": {
+        "text": "Ticaret gemisi kaptanları gemilerini birer tiran gibi yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kırbaçlama, açlık ücretleri ve tehlikeli çalışma koşulları olağandı.",
+      "text_markdown": "Kırbaçlama, açlık ücretleri ve tehlikeli çalışma koşulları olağandı.",
+      "tts": {
+        "text": "Kırbaçlama, açlık ücretleri ve tehlikeli çalışma koşulları olağandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıradan bir denizci ayda yaklaşık bir pound kazanıyordu.",
+      "text_markdown": "Sıradan bir denizci ayda yaklaşık bir pound kazanıyordu.",
+      "tts": {
+        "text": "Sıradan bir denizci ayda yaklaşık bir pound kazanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başarılı bir korsan tek bir günde o kadar kazanabilirdi.",
+      "text_markdown": "Başarılı bir korsan tek bir günde o kadar kazanabilirdi.",
+      "tts": {
+        "text": "Başarılı bir korsan tek bir günde o kadar kazanabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaybedecek hiçbir şeyi olmayan adamlar için korsan olmanın ekonomik teşviki ezici boyuttaydı.",
+      "text_markdown": "Kaybedecek hiçbir şeyi olmayan adamlar için korsan olmanın ekonomik teşviki ezici boyuttaydı.",
+      "tts": {
+        "text": "Kaybedecek hiçbir şeyi olmayan adamlar için korsan olmanın ekonomik teşviki ezici boyuttaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pek çok denizci korsanlığı bu zulümden bir kaçış olarak gördü.",
+      "text_markdown": "Pek çok denizci korsanlığı bu zulümden bir kaçış olarak gördü.",
+      "tts": {
+        "text": "Pek çok denizci korsanlığı bu zulümden bir kaçış olarak gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan gemisinde kaptan, mürettebat tarafından seçilirdi.",
+      "text_markdown": "Korsan gemisinde kaptan, mürettebat tarafından seçilirdi.",
+      "tts": {
+        "text": "Korsan gemisinde kaptan, mürettebat tarafından seçilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ganimet üzerinde anlaşılan kurallara göre bölünürdü ve her adamın oy hakkı vardı.",
+      "text_markdown": "Ganimet üzerinde anlaşılan kurallara göre bölünürdü ve her adamın oy hakkı vardı.",
+      "tts": {
+        "text": "Ganimet üzerinde anlaşılan kurallara göre bölünürdü ve her adamın oy hakkı vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan gemileri birçok açıdan küçük yüzen demokrasilerdi.",
+      "text_markdown": "Korsan gemileri birçok açıdan küçük yüzen demokrasilerdi.",
+      "tts": {
+        "text": "Korsan gemileri birçok açıdan küçük yüzen demokrasilerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yazılı davranış kuralları, seçilmiş subayları ve yaralı mürettebat üyelerini tazmin etme sistemleri vardı.",
+      "text_markdown": "Yazılı davranış kuralları, seçilmiş subayları ve yaralı mürettebat üyelerini tazmin etme sistemleri vardı.",
+      "tts": {
+        "text": "Yazılı davranış kuralları, seçilmiş subayları ve yaralı mürettebat üyelerini tazmin etme sistemleri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu uygulamalar, sıradan insanların neredeyse hiçbir siyasi hakkının olmadığı bir çağ için dikkat çekiciydi.",
+      "text_markdown": "Bu uygulamalar, sıradan insanların neredeyse hiçbir siyasi hakkının olmadığı bir çağ için dikkat çekiciydi.",
+      "tts": {
+        "text": "Bu uygulamalar, sıradan insanların neredeyse hiçbir siyasi hakkının olmadığı bir çağ için dikkat çekiciydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahamalar, korsan dünyasının gayriresmî başkenti oldu.",
+      "text_markdown": "Bahamalar, korsan dünyasının gayriresmî başkenti oldu.",
+      "tts": {
+        "text": "Bahamalar, korsan dünyasının gayriresmî başkenti oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New Providence adasındaki Nassau kasabası kanunsuz bir sığınaktı.",
+      "text_markdown": "New Providence adasındaki Nassau kasabası kanunsuz bir sığınaktı.",
+      "tts": {
+        "text": "New Providence adasındaki Nassau kasabası kanunsuz bir sığınaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzlerce korsan orada açıkça yaşıyordu; onları durduracak ne bir vali ne de bir garnizon vardı.",
+      "text_markdown": "Yüzlerce korsan orada açıkça yaşıyordu; onları durduracak ne bir vali ne de bir garnizon vardı.",
+      "tts": {
+        "text": "Yüzlerce korsan orada açıkça yaşıyordu; onları durduracak ne bir vali ne de bir garnizon vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sömürgeci güçler korsanlığı kökünden kazımaya kararlıydı.",
+      "text_markdown": "Sömürgeci güçler korsanlığı kökünden kazımaya kararlıydı.",
+      "tts": {
+        "text": "Sömürgeci güçler korsanlığı kökünden kazımaya kararlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan saldırıları ticareti bozuyor ve tüccarlara büyük paralar kaybettiriyordu.",
+      "text_markdown": "Korsan saldırıları ticareti bozuyor ve tüccarlara büyük paralar kaybettiriyordu.",
+      "tts": {
+        "text": "Korsan saldırıları ticareti bozuyor ve tüccarlara büyük paralar kaybettiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümetler korsanların yakalanması için ödüller koydu ve onları avlamak için savaş gemileri gönderdi.",
+      "text_markdown": "Hükümetler korsanların yakalanması için ödüller koydu ve onları avlamak için savaş gemileri gönderdi.",
+      "tts": {
+        "text": "Hükümetler korsanların yakalanması için ödüller koydu ve onları avlamak için savaş gemileri gönderdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Özellikle İngiltere korsanları yargılamada son derece agresifti.",
+      "text_markdown": "Özellikle İngiltere korsanları yargılamada son derece agresifti.",
+      "tts": {
+        "text": "Özellikle İngiltere korsanları yargılamada son derece agresifti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakalanan korsanlar denizcilik mahkemelerinde yargılanır ve neredeyse her zaman asılırdı.",
+      "text_markdown": "Yakalanan korsanlar denizcilik mahkemelerinde yargılanır ve neredeyse her zaman asılırdı.",
+      "tts": {
+        "text": "Yakalanan korsanlar denizcilik mahkemelerinde yargılanır ve neredeyse her zaman asılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cesetleri bazen liman girişlerinde demir kafeslerde diğerlerine uyarı olarak sergilenirdi.",
+      "text_markdown": "Cesetleri bazen liman girişlerinde demir kafeslerde diğerlerine uyarı olarak sergilenirdi.",
+      "tts": {
+        "text": "Cesetleri bazen liman girişlerinde demir kafeslerde diğerlerine uyarı olarak sergilenirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde Atlantik köle ticareti doruğundaydı.",
+      "text_markdown": "Bu dönemde Atlantik köle ticareti doruğundaydı.",
+      "tts": {
+        "text": "Bu dönemde Atlantik köle ticareti doruğundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemiler köleleştirilmiş Afrikalıları Batı Afrika'dan Karayipler'e ve Amerikan sömürgelerine taşıyordu.",
+      "text_markdown": "Gemiler köleleştirilmiş Afrikalıları Batı Afrika'dan Karayipler'e ve Amerikan sömürgelerine taşıyordu.",
+      "tts": {
+        "text": "Gemiler köleleştirilmiş Afrikalıları Batı Afrika'dan Karayipler'e ve Amerikan sömürgelerine taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu köle gemileri değerli yük taşıdıkları için korsanların sık hedefi oluyordu.",
+      "text_markdown": "Bu köle gemileri değerli yük taşıdıkları için korsanların sık hedefi oluyordu.",
+      "tts": {
+        "text": "Bu köle gemileri değerli yük taşıdıkları için korsanların sık hedefi oluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin amiral gemisi olacak gemi de böyle bir gemiydi.",
+      "text_markdown": "Bellamy'nin amiral gemisi olacak gemi de böyle bir gemiydi.",
+      "tts": {
+        "text": "Bellamy'nin amiral gemisi olacak gemi de böyle bir gemiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Whydah Gally, Londra'da inşa edilmiş ve Batı Afrika ticaret merkezi Ouidah'ın adını almış bir köle gemisiydi.",
+      "text_markdown": "Whydah Gally, Londra'da inşa edilmiş ve Batı Afrika ticaret merkezi Ouidah'ın adını almış bir köle gemisiydi.",
+      "tts": {
+        "text": "Whydah Gally, Londra'da inşa edilmiş ve Batı Afrika ticaret merkezi Ouidah'ın adını almış bir köle gemisiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New England kıyılarındaki sular şaşırtıcı derecede aktif korsan avlama alanlarıydı.",
+      "text_markdown": "New England kıyılarındaki sular şaşırtıcı derecede aktif korsan avlama alanlarıydı.",
+      "tts": {
+        "text": "New England kıyılarındaki sular şaşırtıcı derecede aktif korsan avlama alanlarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sömürgeler ile Avrupa arasında seyahat eden gemiler bu sulardan sürekli geçiyordu.",
+      "text_markdown": "Sömürgeler ile Avrupa arasında seyahat eden gemiler bu sulardan sürekli geçiyordu.",
+      "tts": {
+        "text": "Sömürgeler ile Avrupa arasında seyahat eden gemiler bu sulardan sürekli geçiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cape Cod, tehlikeli sığlıkları ve kayarak yer değiştiren kum sırtlarıyla her türden gemi için bir mezarlıktı.",
+      "text_markdown": "Cape Cod, tehlikeli sığlıkları ve kayarak yer değiştiren kum sırtlarıyla her türden gemi için bir mezarlıktı.",
+      "tts": {
+        "text": "Cape Cod, tehlikeli sığlıkları ve kayarak yer değiştiren kum sırtlarıyla her türden gemi için bir mezarlıktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700'lerin başında Cape Cod'da yaşayan insanlar gemi enkazlarına aşinaydı.",
+      "text_markdown": "1700'lerin başında Cape Cod'da yaşayan insanlar gemi enkazlarına aşinaydı.",
+      "tts": {
+        "text": "Bin yedi yüzlerin başında Cape Cod'da yaşayan insanlar gemi enkazlarına aşinaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Batık gemilerden kereste, yük ve arma kurtarmak hayatlarının olağan bir parçasıydı.",
+      "text_markdown": "Batık gemilerden kereste, yük ve arma kurtarmak hayatlarının olağan bir parçasıydı.",
+      "tts": {
+        "text": "Batık gemilerden kereste, yük ve arma kurtarmak hayatlarının olağan bir parçasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazılarının sahte sinyal ateşleriyle gemileri kayalıklara çektiği söyleniyordu.",
+      "text_markdown": "Bazılarının sahte sinyal ateşleriyle gemileri kayalıklara çektiği söyleniyordu.",
+      "tts": {
+        "text": "Bazılarının sahte sinyal ateşleriyle gemileri kayalıklara çektiği söyleniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samuel Bellamy'yi yaratan, yoksulluk, eşitsizlik ve deniz şiddetinin bu dünyasıydı.",
+      "text_markdown": "Samuel Bellamy'yi yaratan, yoksulluk, eşitsizlik ve deniz şiddetinin bu dünyasıydı.",
+      "tts": {
+        "text": "Samuel Bellamy'yi yaratan, yoksulluk, eşitsizlik ve deniz şiddetinin bu dünyasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Korsanlığın Altın Çağı",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir şeyden geldi ve kısa bir yıl boyunca alabildiği her şeyi aldı.",
+      "text_markdown": "Hiçbir şeyden geldi ve kısa bir yıl boyunca alabildiği her şeyi aldı.",
+      "tts": {
+        "text": "Hiçbir şeyden geldi ve kısa bir yıl boyunca alabildiği her şeyi aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Devon'lu Çocuk",
+      "text_markdown": "Devon'lu Çocuk"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samuel Bellamy, İngiltere'nin güneybatısındaki Devon kontluğunda doğdu.",
+      "text_markdown": "Samuel Bellamy, İngiltere'nin güneybatısındaki Devon kontluğunda doğdu.",
+      "tts": {
+        "text": "Samuel Bellamy, İngiltere'nin güneybatısındaki Devon kontluğunda doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğum yılı büyük olasılıkla 1689'du, ancak hiçbir vaftiz kaydı bulunamadı.",
+      "text_markdown": "Doğum yılı büyük olasılıkla 1689'du, ancak hiçbir vaftiz kaydı bulunamadı.",
+      "tts": {
+        "text": "Doğum yılı büyük olasılıkla bin altı yüz seksen dokuzdu, ancak hiçbir vaftiz kaydı bulunamadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Devon, denizci, balıkçı ve deniz kaptanı yetiştirme konusunda uzun bir geçmişe sahip bir denizcilik kontluğuydu.",
+      "text_markdown": "Devon, denizci, balıkçı ve deniz kaptanı yetiştirme konusunda uzun bir geçmişe sahip bir denizcilik kontluğuydu.",
+      "tts": {
+        "text": "Devon, denizci, balıkçı ve deniz kaptanı yetiştirme konusunda uzun bir geçmişe sahip bir denizcilik kontluğuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En ünlü İngiliz denizcilerinden biri olan Sir Francis Drake, bir asırdan fazla bir süre önce orada doğmuştu.",
+      "text_markdown": "En ünlü İngiliz denizcilerinden biri olan Sir Francis Drake, bir asırdan fazla bir süre önce orada doğmuştu.",
+      "tts": {
+        "text": "En ünlü İngiliz denizcilerinden biri olan Sir Francis Drake, bir asırdan fazla bir süre önce orada doğmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deniz, bölgenin kimliğine işlenmişti.",
+      "text_markdown": "Deniz, bölgenin kimliğine işlenmişti.",
+      "tts": {
+        "text": "Deniz, bölgenin kimliğine işlenmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Devon'un kıyı kasabaları balıkçı tekneleri, ticaret gemileri ve donanma gemileriyle hareketliydi.",
+      "text_markdown": "Devon'un kıyı kasabaları balıkçı tekneleri, ticaret gemileri ve donanma gemileriyle hareketliydi.",
+      "tts": {
+        "text": "Devon'un kıyı kasabaları balıkçı tekneleri, ticaret gemileri ve donanma gemileriyle hareketliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erkek çocuklar limanlardan gemilerin gelip gidişini izleyerek büyüdü.",
+      "text_markdown": "Erkek çocuklar limanlardan gemilerin gelip gidişini izleyerek büyüdü.",
+      "tts": {
+        "text": "Erkek çocuklar limanlardan gemilerin gelip gidişini izleyerek büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pek çoğu kendileri denize açılmayı hayal etti.",
+      "text_markdown": "Pek çoğu kendileri denize açılmayı hayal etti.",
+      "tts": {
+        "text": "Pek çoğu kendileri denize açılmayı hayal etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin ailesi veya çocukluğu hakkında çok az şey biliniyor.",
+      "text_markdown": "Bellamy'nin ailesi veya çocukluğu hakkında çok az şey biliniyor.",
+      "tts": {
+        "text": "Bellamy'nin ailesi veya çocukluğu hakkında çok az şey biliniyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler ailesinin yoksul olduğuna inanıyor.",
+      "text_markdown": "Tarihçiler ailesinin yoksul olduğuna inanıyor.",
+      "tts": {
+        "text": "Tarihçiler ailesinin yoksul olduğuna inanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Devon'un pek çok yoksul çocuğu gibi, muhtemelen çocukken denize çıktı.",
+      "text_markdown": "Devon'un pek çok yoksul çocuğu gibi, muhtemelen çocukken denize çıktı.",
+      "tts": {
+        "text": "Devon'un pek çok yoksul çocuğu gibi, muhtemelen çocukken denize çıktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir noktada Bellamy, Kraliyet Donanması'nda görev yaptı.",
+      "text_markdown": "Bir noktada Bellamy, Kraliyet Donanması'nda görev yaptı.",
+      "tts": {
+        "text": "Bir noktada Bellamy, Kraliyet Donanması'nda görev yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1713'te sona eren İspanya Veraset Savaşı'nda savaşmış olabilir.",
+      "text_markdown": "1713'te sona eren İspanya Veraset Savaşı'nda savaşmış olabilir.",
+      "tts": {
+        "text": "Bin yedi yüz on üçte sona eren İspanya Veraset Savaşı'nda savaşmış olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaştan sonra emekli maaşı ve gelecek umudu olmadan terhis edildi.",
+      "text_markdown": "Savaştan sonra emekli maaşı ve gelecek umudu olmadan terhis edildi.",
+      "tts": {
+        "text": "Savaştan sonra emekli maaşı ve gelecek umudu olmadan terhis edildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliyet Donanması, denizcilerine artık ihtiyaç duyulmadığında kötü davranıyordu.",
+      "text_markdown": "Kraliyet Donanması, denizcilerine artık ihtiyaç duyulmadığında kötü davranıyordu.",
+      "tts": {
+        "text": "Kraliyet Donanması, denizcilerine artık ihtiyaç duyulmadığında kötü davranıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Taç için hayatını riske atan adamlar tazminatsız bir kenara atıldı.",
+      "text_markdown": "Taç için hayatını riske atan adamlar tazminatsız bir kenara atıldı.",
+      "tts": {
+        "text": "Taç için hayatını riske atan adamlar tazminatsız bir kenara atıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu adaletsizlik Bellamy'de derin bir iz bıraktı.",
+      "text_markdown": "Bu adaletsizlik Bellamy'de derin bir iz bıraktı.",
+      "tts": {
+        "text": "Bu adaletsizlik Bellamy'de derin bir iz bıraktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Binlerce eski denizci gibi Bellamy de kendine ihtiyaç duymayan bir dünyada kıyıya atılmış buldu.",
+      "text_markdown": "Binlerce eski denizci gibi Bellamy de kendine ihtiyaç duymayan bir dünyada kıyıya atılmış buldu.",
+      "tts": {
+        "text": "Binlerce eski denizci gibi Bellamy de kendine ihtiyaç duymayan bir dünyada kıyıya atılmış buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Donanmada öğrendiği beceriler karada hiçbir işe yaramıyordu.",
+      "text_markdown": "Donanmada öğrendiği beceriler karada hiçbir işe yaramıyordu.",
+      "tts": {
+        "text": "Donanmada öğrendiği beceriler karada hiçbir işe yaramıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1714 veya 1715 civarında Bellamy, Amerikan sömürgelerine yelken açtı.",
+      "text_markdown": "1714 veya 1715 civarında Bellamy, Amerikan sömürgelerine yelken açtı.",
+      "tts": {
+        "text": "Bin yedi yüz on dört veya bin yedi yüz on beş civarında Bellamy, Amerikan sömürgelerine yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Massachusetts sömürgesindeki Cape Cod'a vardı.",
+      "text_markdown": "Massachusetts sömürgesindeki Cape Cod'a vardı.",
+      "tts": {
+        "text": "Massachusetts sömürgesindeki Cape Cod'a vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700'lerin başında Cape Cod ıssız ve rüzgârlı bir yerdi.",
+      "text_markdown": "1700'lerin başında Cape Cod ıssız ve rüzgârlı bir yerdi.",
+      "tts": {
+        "text": "Bin yedi yüzlerin başında Cape Cod ıssız ve rüzgârlı bir yerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kumlu toprağı tarım için elverişsizdi ve çoğu insan geçimini denizden sağlıyordu.",
+      "text_markdown": "Kumlu toprağı tarım için elverişsizdi ve çoğu insan geçimini denizden sağlıyordu.",
+      "tts": {
+        "text": "Kumlu toprağı tarım için elverişsizdi ve çoğu insan geçimini denizden sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Topluluklar küçük, dindar ve yabancılara karşı kuşkuluydu.",
+      "text_markdown": "Topluluklar küçük, dindar ve yabancılara karşı kuşkuluydu.",
+      "tts": {
+        "text": "Topluluklar küçük, dindar ve yabancılara karşı kuşkuluydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yerel efsaneye göre Bellamy, Eastham kasabasında Maria Hallett adlı genç bir kadınla tanıştı.",
+      "text_markdown": "Yerel efsaneye göre Bellamy, Eastham kasabasında Maria Hallett adlı genç bir kadınla tanıştı.",
+      "tts": {
+        "text": "Yerel efsaneye göre Bellamy, Eastham kasabasında Maria Hallett adlı genç bir kadınla tanıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maria, saygın bir Cape Cod ailesindendi.",
+      "text_markdown": "Maria, saygın bir Cape Cod ailesindendi.",
+      "tts": {
+        "text": "Maria, saygın bir Cape Cod ailesindendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hikâyeye göre Bellamy ona âşık oldu ve zengin bir adam olarak dönmeye söz verdi.",
+      "text_markdown": "Hikâyeye göre Bellamy ona âşık oldu ve zengin bir adam olarak dönmeye söz verdi.",
+      "tts": {
+        "text": "Hikâyeye göre Bellamy ona âşık oldu ve zengin bir adam olarak dönmeye söz verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu aşk hikâyesinin gerçek mi yoksa sadece halk hikâyesi mi olduğunu kesin olarak bilmek mümkün değil.",
+      "text_markdown": "Bu aşk hikâyesinin gerçek mi yoksa sadece halk hikâyesi mi olduğunu kesin olarak bilmek mümkün değil.",
+      "tts": {
+        "text": "Bu aşk hikâyesinin gerçek mi yoksa sadece halk hikâyesi mi olduğunu kesin olarak bilmek mümkün değil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üç yüzyıldır tekrarlanmakta ve Cape Cod geleneğine derinden yerleşmiş durumdadır.",
+      "text_markdown": "Üç yüzyıldır tekrarlanmakta ve Cape Cod geleneğine derinden yerleşmiş durumdadır.",
+      "tts": {
+        "text": "Üç yüzyıldır tekrarlanmakta ve Cape Cod geleneğine derinden yerleşmiş durumdadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bilinen şu ki Bellamy, hazine olasılığına kapılmıştı.",
+      "text_markdown": "Bilinen şu ki Bellamy, hazine olasılığına kapılmıştı.",
+      "tts": {
+        "text": "Bilinen şu ki Bellamy, hazine olasılığına kapılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1715'te bir İspanyol hazine filosu, Florida kıyılarında bir kasırga tarafından yok edildi.",
+      "text_markdown": "1715'te bir İspanyol hazine filosu, Florida kıyılarında bir kasırga tarafından yok edildi.",
+      "tts": {
+        "text": "Bin yedi yüz on beşte bir İspanyol hazine filosu, Florida kıyılarında bir kasırga tarafından yok edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On bir gemi battı ve milyonlarca peso değerinde gümüş ve altın deniz tabanına saçıldı.",
+      "text_markdown": "On bir gemi battı ve milyonlarca peso değerinde gümüş ve altın deniz tabanına saçıldı.",
+      "tts": {
+        "text": "On bir gemi battı ve milyonlarca peso değerinde gümüş ve altın deniz tabanına saçıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Enkaz haberi sömürgelere hızla yayıldı.",
+      "text_markdown": "Enkaz haberi sömürgelere hızla yayıldı.",
+      "tts": {
+        "text": "Enkaz haberi sömürgelere hızla yayıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yüzlerce adam hazineyi kurtarma umuduyla Florida'ya akın etti.",
+      "text_markdown": "Yüzlerce adam hazineyi kurtarma umuduyla Florida'ya akın etti.",
+      "tts": {
+        "text": "Yüzlerce adam hazineyi kurtarma umuduyla Florida'ya akın etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy de onların arasındaydı.",
+      "text_markdown": "Bellamy de onların arasındaydı.",
+      "tts": {
+        "text": "Bellamy de onların arasındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha yaşlı ve zengin olan Paulsgrave Williams adlı biriyle ortaklık kurdu.",
+      "text_markdown": "Daha yaşlı ve zengin olan Paulsgrave Williams adlı biriyle ortaklık kurdu.",
+      "tts": {
+        "text": "Daha yaşlı ve zengin olan Paulsgrave Williams adlı biriyle ortaklık kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Williams, Rhode Island'ın eski başsavcısının oğluydu.",
+      "text_markdown": "Williams, Rhode Island'ın eski başsavcısının oğluydu.",
+      "tts": {
+        "text": "Williams, Rhode Island'ın eski başsavcısının oğluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Küçük bir gemiyi finanse etti ve iki adam güneye, Florida'ya yelken açtı.",
+      "text_markdown": "Küçük bir gemiyi finanse etti ve iki adam güneye, Florida'ya yelken açtı.",
+      "tts": {
+        "text": "Küçük bir gemiyi finanse etti ve iki adam güneye, Florida'ya yelken açtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kurtarma operasyonu başarısız oldu.",
+      "text_markdown": "Kurtarma operasyonu başarısız oldu.",
+      "tts": {
+        "text": "Kurtarma operasyonu başarısız oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyollar hazinenin büyük bölümünü zaten toplamıştı ve kalanı koruyorlardı.",
+      "text_markdown": "İspanyollar hazinenin büyük bölümünü zaten toplamıştı ve kalanı koruyorlardı.",
+      "tts": {
+        "text": "İspanyollar hazinenin büyük bölümünü zaten toplamıştı ve kalanı koruyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy ve Williams eli boş döndü.",
+      "text_markdown": "Bellamy ve Williams eli boş döndü.",
+      "tts": {
+        "text": "Bellamy ve Williams eli boş döndü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meteliksiz ve hayal kırıklığına uğramış iki adam, korsanların arasına sürüklendi.",
+      "text_markdown": "Meteliksiz ve hayal kırıklığına uğramış iki adam, korsanların arasına sürüklendi.",
+      "tts": {
+        "text": "Meteliksiz ve hayal kırıklığına uğramış iki adam, korsanların arasına sürüklendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bahamalar'dan faaliyet gösteren Benjamin Hornigold adlı bir korsan kaptanıyla tanıştılar.",
+      "text_markdown": "Bahamalar'dan faaliyet gösteren Benjamin Hornigold adlı bir korsan kaptanıyla tanıştılar.",
+      "tts": {
+        "text": "Bahamalar'dan faaliyet gösteren Benjamin Hornigold adlı bir korsan kaptanıyla tanıştılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold onları mürettebatına katılmaya davet etti.",
+      "text_markdown": "Hornigold onları mürettebatına katılmaya davet etti.",
+      "tts": {
+        "text": "Hornigold onları mürettebatına katılmaya davet etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold deneyimli bir korsandı ama adamlarının çoğunu kızdıran bir kuralı vardı.",
+      "text_markdown": "Hornigold deneyimli bir korsandı ama adamlarının çoğunu kızdıran bir kuralı vardı.",
+      "tts": {
+        "text": "Hornigold deneyimli bir korsandı ama adamlarının çoğunu kızdıran bir kuralı vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz gemilerine saldırmayı reddediyordu.",
+      "text_markdown": "İngiliz gemilerine saldırmayı reddediyordu.",
+      "tts": {
+        "text": "İngiliz gemilerine saldırmayı reddediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendini sıradan bir suçlu değil, bir vatansever olarak görüyordu ve yalnızca diğer ulusların gemilerine saldırıyordu.",
+      "text_markdown": "Kendini sıradan bir suçlu değil, bir vatansever olarak görüyordu ve yalnızca diğer ulusların gemilerine saldırıyordu.",
+      "tts": {
+        "text": "Kendini sıradan bir suçlu değil, bir vatansever olarak görüyordu ve yalnızca diğer ulusların gemilerine saldırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin böyle vicdani kaygıları yoktu.",
+      "text_markdown": "Bellamy'nin böyle vicdani kaygıları yoktu.",
+      "tts": {
+        "text": "Bellamy'nin böyle vicdani kaygıları yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Milliyeti ne olursa olsun zengin bir adamın gemisinin meşru bir hedef olduğuna inanıyordu.",
+      "text_markdown": "Milliyeti ne olursa olsun zengin bir adamın gemisinin meşru bir hedef olduğuna inanıyordu.",
+      "tts": {
+        "text": "Milliyeti ne olursa olsun zengin bir adamın gemisinin meşru bir hedef olduğuna inanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Görüşleri mürettebatın çoğunluğu arasında popülerdi.",
+      "text_markdown": "Görüşleri mürettebatın çoğunluğu arasında popülerdi.",
+      "tts": {
+        "text": "Görüşleri mürettebatın çoğunluğu arasında popülerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1716'nın sonlarında mürettebat Hornigold'u kaptanlıktan almak için oy kullandı.",
+      "text_markdown": "1716'nın sonlarında mürettebat Hornigold'u kaptanlıktan almak için oy kullandı.",
+      "tts": {
+        "text": "Bin yedi yüz on altının sonlarında mürettebat Hornigold'u kaptanlıktan almak için oy kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onun yerine Samuel Bellamy'yi seçtiler.",
+      "text_markdown": "Onun yerine Samuel Bellamy'yi seçtiler.",
+      "tts": {
+        "text": "Onun yerine Samuel Bellamy'yi seçtiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yaklaşık 27 yaşında Bellamy artık kendi korsan gemisinin kaptanıydı.",
+      "text_markdown": "Yaklaşık 27 yaşında Bellamy artık kendi korsan gemisinin kaptanıydı.",
+      "tts": {
+        "text": "Yaklaşık yirmi yedi yaşında Bellamy artık kendi korsan gemisinin kaptanıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold, az sayıda sadık takipçisiyle birlikte barışçıl bir şekilde ayrıldı.",
+      "text_markdown": "Hornigold, az sayıda sadık takipçisiyle birlikte barışçıl bir şekilde ayrıldı.",
+      "tts": {
+        "text": "Hornigold, az sayıda sadık takipçisiyle birlikte barışçıl bir şekilde ayrıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Devon'lu Çocuk",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha sonra kraliyet affını kabul edecek ve kendisi bir korsan avcısı olacaktı.",
+      "text_markdown": "Daha sonra kraliyet affını kabul edecek ve kendisi bir korsan avcısı olacaktı.",
+      "tts": {
+        "text": "Daha sonra kraliyet affını kabul edecek ve kendisi bir korsan avcısı olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsanların Prensi",
+      "text_markdown": "Korsanların Prensi"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy komutayı alır almaz hiç vakit kaybetmedi.",
+      "text_markdown": "Bellamy komutayı alır almaz hiç vakit kaybetmedi.",
+      "tts": {
+        "text": "Bellamy komutayı alır almaz hiç vakit kaybetmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karayipler'de ve Atlantik kıyısında seyrederek birbiri ardına gemi ele geçirdi.",
+      "text_markdown": "Karayipler'de ve Atlantik kıyısında seyrederek birbiri ardına gemi ele geçirdi.",
+      "tts": {
+        "text": "Karayipler'de ve Atlantik kıyısında seyrederek birbiri ardına gemi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ele geçirilen gemiler filosuna eklendikçe filosu hızla büyüdü.",
+      "text_markdown": "Ele geçirilen gemiler filosuna eklendikçe filosu hızla büyüdü.",
+      "tts": {
+        "text": "Ele geçirilen gemiler filosuna eklendikçe filosu hızla büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy karizması ve etkili konuşmalarıyla tanınıyordu.",
+      "text_markdown": "Bellamy karizması ve etkili konuşmalarıyla tanınıyordu.",
+      "tts": {
+        "text": "Bellamy karizması ve etkili konuşmalarıyla tanınıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç kişinin her şeye sahip olduğu ve geri kalanın hiçbir şeyi olmadığı bir dünyanın adaletsizliğinden söz etti.",
+      "text_markdown": "Birkaç kişinin her şeye sahip olduğu ve geri kalanın hiçbir şeyi olmadığı bir dünyanın adaletsizliğinden söz etti.",
+      "tts": {
+        "text": "Birkaç kişinin her şeye sahip olduğu ve geri kalanın hiçbir şeyi olmadığı bir dünyanın adaletsizliğinden söz etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan Charles Johnson'ın korsanlar hakkındaki ünlü kitabına göre, Bellamy bir keresinde ele geçirilen bir ticaret kaptanına hitap etti.",
+      "text_markdown": "Kaptan Charles Johnson'ın korsanlar hakkındaki ünlü kitabına göre, Bellamy bir keresinde ele geçirilen bir ticaret kaptanına hitap etti.",
+      "tts": {
+        "text": "Kaptan Charles Johnson'ın korsanlar hakkındaki ünlü kitabına göre, Bellamy bir keresinde ele geçirilen bir ticaret kaptanına hitap etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adama, bir korsan ile tüccar arasındaki tek farkın, tüccarın kanunun koruması altında soyması olduğunu söyledi.",
+      "text_markdown": "Adama, bir korsan ile tüccar arasındaki tek farkın, tüccarın kanunun koruması altında soyması olduğunu söyledi.",
+      "tts": {
+        "text": "Adama, bir korsan ile tüccar arasındaki tek farkın, tüccarın kanunun koruması altında soyması olduğunu söyledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy, kendisinin ve adamlarının kendi cesaretiyle ihtiyaç duydukları şeyi alan dürüst insanlar olduğunu ilan etti.",
+      "text_markdown": "Bellamy, kendisinin ve adamlarının kendi cesaretiyle ihtiyaç duydukları şeyi alan dürüst insanlar olduğunu ilan etti.",
+      "tts": {
+        "text": "Bellamy, kendisinin ve adamlarının kendi cesaretiyle ihtiyaç duydukları şeyi alan dürüst insanlar olduğunu ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zenginlerin kölesi olmaktansa özgür bir korsan olmayı tercih edeceğini söyledi.",
+      "text_markdown": "Zenginlerin kölesi olmaktansa özgür bir korsan olmayı tercih edeceğini söyledi.",
+      "tts": {
+        "text": "Zenginlerin kölesi olmaktansa özgür bir korsan olmayı tercih edeceğini söyledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu sözler, tam olarak doğru olsun ya da olmasın, korsan isyanının ruhunu yakalıyordu.",
+      "text_markdown": "Bu sözler, tam olarak doğru olsun ya da olmasın, korsan isyanının ruhunu yakalıyordu.",
+      "tts": {
+        "text": "Bu sözler, tam olarak doğru olsun ya da olmasın, korsan isyanının ruhunu yakalıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'ye, rivayete göre koyu renk saçları nedeniyle Kara Sam lakabı verildi.",
+      "text_markdown": "Bellamy'ye, rivayete göre koyu renk saçları nedeniyle Kara Sam lakabı verildi.",
+      "tts": {
+        "text": "Bellamy'ye, rivayete göre koyu renk saçları nedeniyle Kara Sam lakabı verildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Döneminin pek çok erkeğinin aksine pudrali peruk takmayı reddetti.",
+      "text_markdown": "Döneminin pek çok erkeğinin aksine pudrali peruk takmayı reddetti.",
+      "tts": {
+        "text": "Döneminin pek çok erkeğinin aksine pudrali peruk takmayı reddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uzun siyah saçlarını basit bir kurdeleyle arkadan bağlıyordu.",
+      "text_markdown": "Uzun siyah saçlarını basit bir kurdeleyle arkadan bağlıyordu.",
+      "tts": {
+        "text": "Uzun siyah saçlarını basit bir kurdeleyle arkadan bağlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Görünüşü efsanesinin bir parçası oldu.",
+      "text_markdown": "Görünüşü efsanesinin bir parçası oldu.",
+      "tts": {
+        "text": "Görünüşü efsanesinin bir parçası oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perukların zenginlik ve statü simgesi olduğu bir çağda, Bellamy'nin çıplak başı bir meydan okuma ifadesiydi.",
+      "text_markdown": "Perukların zenginlik ve statü simgesi olduğu bir çağda, Bellamy'nin çıplak başı bir meydan okuma ifadesiydi.",
+      "tts": {
+        "text": "Perukların zenginlik ve statü simgesi olduğu bir çağda, Bellamy'nin çıplak başı bir meydan okuma ifadesiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mürettebatı her ölçüye göre çeşitliydi.",
+      "text_markdown": "Mürettebatı her ölçüye göre çeşitliydi.",
+      "tts": {
+        "text": "Mürettebatı her ölçüye göre çeşitliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler, İrlandalılar, İskoçlar, Fransızlar, Hollandalılar, Yerli Amerikalılar ve Afrikalılar hepsi gemilerinde görev yapıyordu.",
+      "text_markdown": "İngilizler, İrlandalılar, İskoçlar, Fransızlar, Hollandalılar, Yerli Amerikalılar ve Afrikalılar hepsi gemilerinde görev yapıyordu.",
+      "tts": {
+        "text": "İngilizler, İrlandalılar, İskoçlar, Fransızlar, Hollandalılar, Yerli Amerikalılar ve Afrikalılar hepsi gemilerinde görev yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler mürettebatının yaklaşık yarısının Afrika kökenli olduğunu tahmin ediyor.",
+      "text_markdown": "Tarihçiler mürettebatının yaklaşık yarısının Afrika kökenli olduğunu tahmin ediyor.",
+      "tts": {
+        "text": "Tarihçiler mürettebatının yaklaşık yarısının Afrika kökenli olduğunu tahmin ediyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu adamlardan bazıları ele geçirilen köle gemilerinden kurtarılmıştı.",
+      "text_markdown": "Bu adamlardan bazıları ele geçirilen köle gemilerinden kurtarılmıştı.",
+      "tts": {
+        "text": "Bu adamlardan bazıları ele geçirilen köle gemilerinden kurtarılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diğerleri Karayipler'deki limanlardan gönüllü olarak katılmıştı.",
+      "text_markdown": "Diğerleri Karayipler'deki limanlardan gönüllü olarak katılmıştı.",
+      "tts": {
+        "text": "Diğerleri Karayipler'deki limanlardan gönüllü olarak katılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy'nin gemilerinde siyah ve beyaz adamlar yan yana görev yapıyor ve ganimetleri eşit olarak paylaşıyordu.",
+      "text_markdown": "Bellamy'nin gemilerinde siyah ve beyaz adamlar yan yana görev yapıyor ve ganimetleri eşit olarak paylaşıyordu.",
+      "tts": {
+        "text": "Bellamy'nin gemilerinde siyah ve beyaz adamlar yan yana görev yapıyor ve ganimetleri eşit olarak paylaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu ırk eşitliği dönem için olağanüstüydü.",
+      "text_markdown": "Bu ırk eşitliği dönem için olağanüstüydü.",
+      "tts": {
+        "text": "Bu ırk eşitliği dönem için olağanüstüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sömürge dünyasında siyah insanlar büyük çoğunlukla köleleştirilmişti.",
+      "text_markdown": "Sömürge dünyasında siyah insanlar büyük çoğunlukla köleleştirilmişti.",
+      "tts": {
+        "text": "Sömürge dünyasında siyah insanlar büyük çoğunlukla köleleştirilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan gemileri, plantasyon sisteminin acımasız hiyerarşisine nadir bir alternatif sunuyordu.",
+      "text_markdown": "Korsan gemileri, plantasyon sisteminin acımasız hiyerarşisine nadir bir alternatif sunuyordu.",
+      "tts": {
+        "text": "Korsan gemileri, plantasyon sisteminin acımasız hiyerarşisine nadir bir alternatif sunuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin refakatçi kaptanı, hazine kurtarma günlerinden ortağı olan Paulsgrave Williams'dı.",
+      "text_markdown": "Bellamy'nin refakatçi kaptanı, hazine kurtarma günlerinden ortağı olan Paulsgrave Williams'dı.",
+      "tts": {
+        "text": "Bellamy'nin refakatçi kaptanı, hazine kurtarma günlerinden ortağı olan Paulsgrave Williams'dı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Williams ayrı bir gemiye komuta ediyor ve filosunun parçası olarak Bellamy ile birlikte seyrediyordu.",
+      "text_markdown": "Williams ayrı bir gemiye komuta ediyor ve filosunun parçası olarak Bellamy ile birlikte seyrediyordu.",
+      "tts": {
+        "text": "Williams ayrı bir gemiye komuta ediyor ve filosunun parçası olarak Bellamy ile birlikte seyrediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İki adam birbirlerine tamamen güveniyordu.",
+      "text_markdown": "İki adam birbirlerine tamamen güveniyordu.",
+      "tts": {
+        "text": "İki adam birbirlerine tamamen güveniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şubat 1717'de Bellamy en büyük ganimetini elde etti.",
+      "text_markdown": "Şubat 1717'de Bellamy en büyük ganimetini elde etti.",
+      "tts": {
+        "text": "Bin yedi yüz on yedinin Şubat ayında Bellamy en büyük ganimetini elde etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu, Küba ile Hispaniola arasındaki Rüzgâraltı Geçidi'nde Whydah Gally ile karşılaştı.",
+      "text_markdown": "Filosu, Küba ile Hispaniola arasındaki Rüzgâraltı Geçidi'nde Whydah Gally ile karşılaştı.",
+      "tts": {
+        "text": "Filosu, Küba ile Hispaniola arasındaki Rüzgâraltı Geçidi'nde Whydah Gally ile karşılaştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah üç direkli bir kadırga gemisiydi, hızlı ve ağır silahlıydı.",
+      "text_markdown": "Whydah üç direkli bir kadırga gemisiydi, hızlı ve ağır silahlıydı.",
+      "tts": {
+        "text": "Whydah üç direkli bir kadırga gemisiydi, hızlı ve ağır silahlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1715'te Londra'da inşa edilmişti ve 102 fit uzunluğundaydı.",
+      "text_markdown": "1715'te Londra'da inşa edilmişti ve 102 fit uzunluğundaydı.",
+      "tts": {
+        "text": "Bin yedi yüz on beşte Londra'da inşa edilmişti ve yüz iki fit uzunluğundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Köle ticareti için tasarlanmıştı ve yakın zamanda ilk yolculuğunu tamamlamıştı.",
+      "text_markdown": "Köle ticareti için tasarlanmıştı ve yakın zamanda ilk yolculuğunu tamamlamıştı.",
+      "tts": {
+        "text": "Köle ticareti için tasarlanmıştı ve yakın zamanda ilk yolculuğunu tamamlamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah, günümüz Benin kıyılarından Jamaika'ya 300'den fazla köleleştirilmiş Afrikalı taşımıştı.",
+      "text_markdown": "Whydah, günümüz Benin kıyılarından Jamaika'ya 300'den fazla köleleştirilmiş Afrikalı taşımıştı.",
+      "tts": {
+        "text": "Whydah, günümüz Benin kıyılarından Jamaika'ya üç yüzden fazla köleleştirilmiş Afrikalı taşımıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsan yükünü satmıştı ve şimdi köle ticaretinin kârıyla yüklüydü.",
+      "text_markdown": "İnsan yükünü satmıştı ve şimdi köle ticaretinin kârıyla yüklüydü.",
+      "tts": {
+        "text": "İnsan yükünü satmıştı ve şimdi köle ticaretinin kârıyla yüklüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ambarında çivit boyası, şeker ve gümüş ile altın sikke sandıkları vardı.",
+      "text_markdown": "Ambarında çivit boyası, şeker ve gümüş ile altın sikke sandıkları vardı.",
+      "tts": {
+        "text": "Ambarında çivit boyası, şeker ve gümüş ile altın sikke sandıkları vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy, Whydah'ı üç gün kovaladı.",
+      "text_markdown": "Bellamy, Whydah'ı üç gün kovaladı.",
+      "tts": {
+        "text": "Bellamy, Whydah'ı üç gün kovaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geminin kaptanı Lawrence Prince korsanlardan kaçmaya çalıştı, ancak Whydah yükle ağırdı.",
+      "text_markdown": "Geminin kaptanı Lawrence Prince korsanlardan kaçmaya çalıştı, ancak Whydah yükle ağırdı.",
+      "tts": {
+        "text": "Geminin kaptanı Lawrence Prince korsanlardan kaçmaya çalıştı, ancak Whydah yükle ağırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy'nin daha hafif gemileri mesafeyi istikrarlı bir şekilde kapattı.",
+      "text_markdown": "Bellamy'nin daha hafif gemileri mesafeyi istikrarlı bir şekilde kapattı.",
+      "tts": {
+        "text": "Bellamy'nin daha hafif gemileri mesafeyi istikrarlı bir şekilde kapattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin gemileri sonunda yanaştığında, Kaptan Prince savaşmadan teslim oldu.",
+      "text_markdown": "Bellamy'nin gemileri sonunda yanaştığında, Kaptan Prince savaşmadan teslim oldu.",
+      "tts": {
+        "text": "Bellamy'nin gemileri sonunda yanaştığında, Kaptan Prince savaşmadan teslim oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan filosuna direnminin kendisi ve mürettebatı için ölüm anlamına geleceğini biliyordu.",
+      "text_markdown": "Korsan filosuna direnminin kendisi ve mürettebatı için ölüm anlamına geleceğini biliyordu.",
+      "tts": {
+        "text": "Korsan filosuna direnminin kendisi ve mürettebatı için ölüm anlamına geleceğini biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy, ele geçirilen mürettebata alışılmış adaleti ile davrandı.",
+      "text_markdown": "Bellamy, ele geçirilen mürettebata alışılmış adaleti ile davrandı.",
+      "tts": {
+        "text": "Bellamy, ele geçirilen mürettebata alışılmış adaleti ile davrandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaptan Prince'e daha küçük bir gemi verdi ve yelken açmasına izin verdi.",
+      "text_markdown": "Kaptan Prince'e daha küçük bir gemi verdi ve yelken açmasına izin verdi.",
+      "tts": {
+        "text": "Kaptan Prince'e daha küçük bir gemi verdi ve yelken açmasına izin verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Whydah'ın orijinal mürettebatından birkaçı ayrılmak yerine korsanlara katılmayı seçti.",
+      "text_markdown": "Whydah'ın orijinal mürettebatından birkaçı ayrılmak yerine korsanlara katılmayı seçti.",
+      "tts": {
+        "text": "Whydah'ın orijinal mürettebatından birkaçı ayrılmak yerine korsanlara katılmayı seçti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy derhal Whydah'ı amiral gemisi yaptı.",
+      "text_markdown": "Bellamy derhal Whydah'ı amiral gemisi yaptı.",
+      "tts": {
+        "text": "Bellamy derhal Whydah'ı amiral gemisi yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güvertesine ek toplar yerleştirerek toplam silahlanmasını 28 topa çıkardı.",
+      "text_markdown": "Güvertesine ek toplar yerleştirerek toplam silahlanmasını 28 topa çıkardı.",
+      "tts": {
+        "text": "Güvertesine ek toplar yerleştirerek toplam silahlanmasını yirmi sekiz topa çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Artık Atlantik'teki en güçlü korsan gemilerinden biriydi.",
+      "text_markdown": "Artık Atlantik'teki en güçlü korsan gemilerinden biriydi.",
+      "tts": {
+        "text": "Artık Atlantik'teki en güçlü korsan gemilerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'ın ambarında 20.000 ila 30.000 İngiliz sterlini değerinde hazine olduğu tahmin ediliyordu.",
+      "text_markdown": "Whydah'ın ambarında 20.000 ila 30.000 İngiliz sterlini değerinde hazine olduğu tahmin ediliyordu.",
+      "tts": {
+        "text": "Whydah'ın ambarında yirmi bin ila otuz bin İngiliz sterlini değerinde hazine olduğu tahmin ediliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Günümüz değerleriyle bu, milyonlarca dolar ederdi.",
+      "text_markdown": "Günümüz değerleriyle bu, milyonlarca dolar ederdi.",
+      "tts": {
+        "text": "Günümüz değerleriyle bu, milyonlarca dolar ederdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Atlantik'te ele geçirilen en büyük korsan ganimetlerinden biriydi.",
+      "text_markdown": "Atlantik'te ele geçirilen en büyük korsan ganimetlerinden biriydi.",
+      "tts": {
+        "text": "Atlantik'te ele geçirilen en büyük korsan ganimetlerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'ı ele geçirdikten sonra Bellamy, Amerikan kıyısı boyunca kuzeye yelken açtı.",
+      "text_markdown": "Whydah'ı ele geçirdikten sonra Bellamy, Amerikan kıyısı boyunca kuzeye yelken açtı.",
+      "tts": {
+        "text": "Whydah'ı ele geçirdikten sonra Bellamy, Amerikan kıyısı boyunca kuzeye yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yol boyunca gemi ele geçirmeye devam etti.",
+      "text_markdown": "Yol boyunca gemi ele geçirmeye devam etti.",
+      "tts": {
+        "text": "Yol boyunca gemi ele geçirmeye devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1717 baharına kadar küçük bir korsan filotillasına komuta ediyordu.",
+      "text_markdown": "1717 baharına kadar küçük bir korsan filotillasına komuta ediyordu.",
+      "tts": {
+        "text": "Bin yedi yüz on yedi baharına kadar küçük bir korsan filotillasına komuta ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler Bellamy'nin Cape Cod'a doğru gittiğine inanıyor.",
+      "text_markdown": "Tarihçiler Bellamy'nin Cape Cod'a doğru gittiğine inanıyor.",
+      "tts": {
+        "text": "Tarihçiler Bellamy'nin Cape Cod'a doğru gittiğine inanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maria Hallett efsanesi doğruysa, geri döneceğine söz verdiği kadına dönüyor olabilirdi.",
+      "text_markdown": "Maria Hallett efsanesi doğruysa, geri döneceğine söz verdiği kadına dönüyor olabilirdi.",
+      "tts": {
+        "text": "Maria Hallett efsanesi doğruysa, geri döneceğine söz verdiği kadına dönüyor olabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Prensi",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayrıca gemilerini onarmak ve ganimetleri paylaşmak için sakin bir liman arıyor da olabilirdi.",
+      "text_markdown": "Ayrıca gemilerini onarmak ve ganimetleri paylaşmak için sakin bir liman arıyor da olabilirdi.",
+      "tts": {
+        "text": "Ayrıca gemilerini onarmak ve ganimetleri paylaşmak için sakin bir liman arıyor da olabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Whydah'ın Kralı",
+      "text_markdown": "Whydah'ın Kralı"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nisan 1717'de Samuel Bellamy gücünün zirvesindeydi.",
+      "text_markdown": "Nisan 1717'de Samuel Bellamy gücünün zirvesindeydi.",
+      "tts": {
+        "text": "Bin yedi yüz on yedinin Nisan ayında Samuel Bellamy gücünün zirvesindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir gemi filosuna, yaklaşık 150 kişilik bir mürettebata ve ganimet olarak bir servete komuta ediyordu.",
+      "text_markdown": "Bir gemi filosuna, yaklaşık 150 kişilik bir mürettebata ve ganimet olarak bir servete komuta ediyordu.",
+      "tts": {
+        "text": "Bir gemi filosuna, yaklaşık yüz elli kişilik bir mürettebata ve ganimet olarak bir servete komuta ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir yıldan kısa sürede elliden fazla gemi ele geçirmişti.",
+      "text_markdown": "Bir yıldan kısa sürede elliden fazla gemi ele geçirmişti.",
+      "tts": {
+        "text": "Bir yıldan kısa sürede elliden fazla gemi ele geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atlantik'te hiçbir korsan bu kadar kısa sürede bu kadar aktif veya başarılı olmamıştı.",
+      "text_markdown": "Atlantik'te hiçbir korsan bu kadar kısa sürede bu kadar aktif veya başarılı olmamıştı.",
+      "tts": {
+        "text": "Atlantik'te hiçbir korsan bu kadar kısa sürede bu kadar aktif veya başarılı olmamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin komutasındaki Whydah müthiş bir savaş gemisiydi.",
+      "text_markdown": "Bellamy'nin komutasındaki Whydah müthiş bir savaş gemisiydi.",
+      "tts": {
+        "text": "Bellamy'nin komutasındaki Whydah müthiş bir savaş gemisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "28 topu, direnmek gibi bir aptallık yapan herhangi bir ticaret gemisini harap edebilirdi.",
+      "text_markdown": "28 topu, direnmek gibi bir aptallık yapan herhangi bir ticaret gemisini harap edebilirdi.",
+      "tts": {
+        "text": "Yirmi sekiz topu, direnmek gibi bir aptallık yapan herhangi bir ticaret gemisini harap edebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çoğu gemi korsan bayrağını görür görmez teslim oluyordu.",
+      "text_markdown": "Çoğu gemi korsan bayrağını görür görmez teslim oluyordu.",
+      "tts": {
+        "text": "Çoğu gemi korsan bayrağını görür görmez teslim oluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy gemisini demokratik ilkelere göre yönetiyordu.",
+      "text_markdown": "Bellamy gemisini demokratik ilkelere göre yönetiyordu.",
+      "tts": {
+        "text": "Bellamy gemisini demokratik ilkelere göre yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Önemli kararlar oylamaya sunulurdu.",
+      "text_markdown": "Önemli kararlar oylamaya sunulurdu.",
+      "tts": {
+        "text": "Önemli kararlar oylamaya sunulurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mürettebat güvenini kaybederse kaptan her an görevden alınabilirdi.",
+      "text_markdown": "Mürettebat güvenini kaybederse kaptan her an görevden alınabilirdi.",
+      "tts": {
+        "text": "Mürettebat güvenini kaybederse kaptan her an görevden alınabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mürettebatın, her adamın gemiye geldiğinde imzaladığı veya işaretlediği anlaşma maddeleri vardı.",
+      "text_markdown": "Mürettebatın, her adamın gemiye geldiğinde imzaladığı veya işaretlediği anlaşma maddeleri vardı.",
+      "tts": {
+        "text": "Mürettebatın, her adamın gemiye geldiğinde imzaladığı veya işaretlediği anlaşma maddeleri vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu maddeler ganimet paylaşımını, davranış kurallarını ve yaralanmalar için tazminatı düzenliyordu.",
+      "text_markdown": "Bu maddeler ganimet paylaşımını, davranış kurallarını ve yaralanmalar için tazminatı düzenliyordu.",
+      "tts": {
+        "text": "Bu maddeler ganimet paylaşımını, davranış kurallarını ve yaralanmalar için tazminatı düzenliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaşta bir uzvunu kaybeden adam tazminat olarak ganimetin fazladan paylarını alırdı.",
+      "text_markdown": "Savaşta bir uzvunu kaybeden adam tazminat olarak ganimetin fazladan paylarını alırdı.",
+      "tts": {
+        "text": "Savaşta bir uzvunu kaybeden adam tazminat olarak ganimetin fazladan paylarını alırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, 1700'lerin çalışma dünyasında başka hiçbir yerde bulunmayan bir engelli sigortası biçimiydi.",
+      "text_markdown": "Bu, 1700'lerin çalışma dünyasında başka hiçbir yerde bulunmayan bir engelli sigortası biçimiydi.",
+      "tts": {
+        "text": "Bu, bin yedi yüzlerin çalışma dünyasında başka hiçbir yerde bulunmayan bir engelli sigortası biçimiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin ambar memuru Afrika kökenli bir adamdı ki bu dönem için son derece alışılmadıktı.",
+      "text_markdown": "Bellamy'nin ambar memuru Afrika kökenli bir adamdı ki bu dönem için son derece alışılmadıktı.",
+      "tts": {
+        "text": "Bellamy'nin ambar memuru Afrika kökenli bir adamdı ki bu dönem için son derece alışılmadıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ambar memuru korsan gemisindeki en güçlü ikinci subaydı.",
+      "text_markdown": "Ambar memuru korsan gemisindeki en güçlü ikinci subaydı.",
+      "tts": {
+        "text": "Ambar memuru korsan gemisindeki en güçlü ikinci subaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yiyecek, su ve ganimet dağıtımını yönetirdi.",
+      "text_markdown": "Yiyecek, su ve ganimet dağıtımını yönetirdi.",
+      "tts": {
+        "text": "Yiyecek, su ve ganimet dağıtımını yönetirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'taki yaşam cennet değildi.",
+      "text_markdown": "Whydah'taki yaşam cennet değildi.",
+      "tts": {
+        "text": "Whydah'taki yaşam cennet değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemi dardı, yiyecekler sıklıkla çürüktü ve hastalık tehdidi sürekli mevcuttu.",
+      "text_markdown": "Gemi dardı, yiyecekler sıklıkla çürüktü ve hastalık tehdidi sürekli mevcuttu.",
+      "tts": {
+        "text": "Gemi dardı, yiyecekler sıklıkla çürüktü ve hastalık tehdidi sürekli mevcuttu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak dönemin yoksul adamlarına sunulan alternatiflere kıyasla, bir ölçüde özgürlük ve onur sunuyordu.",
+      "text_markdown": "Ancak dönemin yoksul adamlarına sunulan alternatiflere kıyasla, bir ölçüde özgürlük ve onur sunuyordu.",
+      "tts": {
+        "text": "Ancak dönemin yoksul adamlarına sunulan alternatiflere kıyasla, bir ölçüde özgürlük ve onur sunuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy ele geçirilen mürettebatlara görece merhametle davranma uygulamasını sürdürdü.",
+      "text_markdown": "Bellamy ele geçirilen mürettebatlara görece merhametle davranma uygulamasını sürdürdü.",
+      "tts": {
+        "text": "Bellamy ele geçirilen mürettebatlara görece merhametle davranma uygulamasını sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barışçıl bir şekilde teslim olanlara karşı nadiren şiddet kullanırdı.",
+      "text_markdown": "Barışçıl bir şekilde teslim olanlara karşı nadiren şiddet kullanırdı.",
+      "tts": {
+        "text": "Barışçıl bir şekilde teslim olanlara karşı nadiren şiddet kullanırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ele geçirilen denizcileri çoğu zaman limana ulaşmaya yetecek erzakla serbest bırakırdı.",
+      "text_markdown": "Ele geçirilen denizcileri çoğu zaman limana ulaşmaya yetecek erzakla serbest bırakırdı.",
+      "tts": {
+        "text": "Ele geçirilen denizcileri çoğu zaman limana ulaşmaya yetecek erzakla serbest bırakırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu adalet ünü stratejik olarak işe yarıyordu.",
+      "text_markdown": "Bu adalet ünü stratejik olarak işe yarıyordu.",
+      "tts": {
+        "text": "Bu adalet ünü stratejik olarak işe yarıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İyi muamele göreceklerini bilen ticaret kaptanlarının savaşmak için pek az nedeni vardı.",
+      "text_markdown": "İyi muamele göreceklerini bilen ticaret kaptanlarının savaşmak için pek az nedeni vardı.",
+      "tts": {
+        "text": "İyi muamele göreceklerini bilen ticaret kaptanlarının savaşmak için pek az nedeni vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy'nin toplarıyla karşı karşıya gelince teslim olmak basitçe mantıklı seçimdi.",
+      "text_markdown": "Bellamy'nin toplarıyla karşı karşıya gelince teslim olmak basitçe mantıklı seçimdi.",
+      "tts": {
+        "text": "Bellamy'nin toplarıyla karşı karşıya gelince teslim olmak basitçe mantıklı seçimdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak ele geçirilen her denizci nazikçe muamele görmüyordu.",
+      "text_markdown": "Ancak ele geçirilen her denizci nazikçe muamele görmüyordu.",
+      "tts": {
+        "text": "Ancak ele geçirilen her denizci nazikçe muamele görmüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Direnenler bazen dövülür veya gemileri yakılırdı.",
+      "text_markdown": "Direnenler bazen dövülür veya gemileri yakılırdı.",
+      "tts": {
+        "text": "Direnenler bazen dövülür veya gemileri yakılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy, şiddeti gerekli gördüğünde pragmatikti.",
+      "text_markdown": "Bellamy, şiddeti gerekli gördüğünde pragmatikti.",
+      "tts": {
+        "text": "Bellamy, şiddeti gerekli gördüğünde pragmatikti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nisan başında Bellamy'nin filosu Virginia ve Carolinas kıyısı boyunca kuzeye doğru ilerliyordu.",
+      "text_markdown": "Nisan başında Bellamy'nin filosu Virginia ve Carolinas kıyısı boyunca kuzeye doğru ilerliyordu.",
+      "tts": {
+        "text": "Nisan başında Bellamy'nin filosu Virginia ve Carolinas kıyısı boyunca kuzeye doğru ilerliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yol boyunca birkaç gemi daha ele geçirdi.",
+      "text_markdown": "Yol boyunca birkaç gemi daha ele geçirdi.",
+      "tts": {
+        "text": "Yol boyunca birkaç gemi daha ele geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son ele geçirdiklerinden biri Mary Anne adlı bir ticaret gemisiydi.",
+      "text_markdown": "Son ele geçirdiklerinden biri Mary Anne adlı bir ticaret gemisiydi.",
+      "tts": {
+        "text": "Son ele geçirdiklerinden biri Mary Anne adlı bir ticaret gemisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Madeira şarabı yükünü aldı ve mürettebatından birkaçını kendisine katılmaya zorladı.",
+      "text_markdown": "Madeira şarabı yükünü aldı ve mürettebatından birkaçını kendisine katılmaya zorladı.",
+      "tts": {
+        "text": "Madeira şarabı yükünü aldı ve mürettebatından birkaçını kendisine katılmaya zorladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu zorla alınan adamlar daha sonra enkaz sonrası davada önemli bir rol oynayacaktı.",
+      "text_markdown": "Bu zorla alınan adamlar daha sonra enkaz sonrası davada önemli bir rol oynayacaktı.",
+      "tts": {
+        "text": "Bu zorla alınan adamlar daha sonra enkaz sonrası davada önemli bir rol oynayacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayrıca Fisher adlı bir slup da ele geçirdi ve erzakını ve mürettebatının bir kısmını aldı.",
+      "text_markdown": "Ayrıca Fisher adlı bir slup da ele geçirdi ve erzakını ve mürettebatının bir kısmını aldı.",
+      "tts": {
+        "text": "Ayrıca Fisher adlı bir slup da ele geçirdi ve erzakını ve mürettebatının bir kısmını aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esir alınan adamlar itiraz etti ama Bellamy şikâyetlerini görmezden geldi.",
+      "text_markdown": "Esir alınan adamlar itiraz etti ama Bellamy şikâyetlerini görmezden geldi.",
+      "tts": {
+        "text": "Esir alınan adamlar itiraz etti ama Bellamy şikâyetlerini görmezden geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nisan ilerledikçe hava giderek daha kararsız hâle geldi.",
+      "text_markdown": "Nisan ilerledikçe hava giderek daha kararsız hâle geldi.",
+      "tts": {
+        "text": "Nisan ilerledikçe hava giderek daha kararsız hâle geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New England kıyıları boyunca bahar fırtınaları son derece tehlikeliydi.",
+      "text_markdown": "New England kıyıları boyunca bahar fırtınaları son derece tehlikeliydi.",
+      "tts": {
+        "text": "New England kıyıları boyunca bahar fırtınaları son derece tehlikeliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cape Cod açıklarındaki sular batı Atlantik'teki en tehlikeli sulardan biriydi.",
+      "text_markdown": "Cape Cod açıklarındaki sular batı Atlantik'teki en tehlikeli sulardan biriydi.",
+      "tts": {
+        "text": "Cape Cod açıklarındaki sular batı Atlantik'teki en tehlikeli sulardan biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "26 Nisan 1717'de Bellamy'nin filosu güneyden Cape Cod'a yaklaşıyordu.",
+      "text_markdown": "26 Nisan 1717'de Bellamy'nin filosu güneyden Cape Cod'a yaklaşıyordu.",
+      "tts": {
+        "text": "Bin yedi yüz on yedinin yirmi altı Nisanında Bellamy'nin filosu güneyden Cape Cod'a yaklaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ufukta güçlü bir fırtına oluşuyordu.",
+      "text_markdown": "Ufukta güçlü bir fırtına oluşuyordu.",
+      "tts": {
+        "text": "Ufukta güçlü bir fırtına oluşuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deniz kabarmaya başlamıştı ve rüzgâr kuzeydoğuya dönüyordu.",
+      "text_markdown": "Deniz kabarmaya başlamıştı ve rüzgâr kuzeydoğuya dönüyordu.",
+      "tts": {
+        "text": "Deniz kabarmaya başlamıştı ve rüzgâr kuzeydoğuya dönüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cape Cod açıklarında bir kuzeydoğu fırtınası Atlantik kıyısındaki en korkulan hava olaylarından biriydi.",
+      "text_markdown": "Cape Cod açıklarında bir kuzeydoğu fırtınası Atlantik kıyısındaki en korkulan hava olaylarından biriydi.",
+      "tts": {
+        "text": "Cape Cod açıklarında bir kuzeydoğu fırtınası Atlantik kıyısındaki en korkulan hava olaylarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dalgaları doğrudan dış kıyıyı çevreleyen sığ kum sırtlarına iterdi.",
+      "text_markdown": "Dalgaları doğrudan dış kıyıyı çevreleyen sığ kum sırtlarına iterdi.",
+      "tts": {
+        "text": "Dalgaları doğrudan dış kıyıyı çevreleyen sığ kum sırtlarına iterdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin iki seçeneği vardı.",
+      "text_markdown": "Bellamy'nin iki seçeneği vardı.",
+      "tts": {
+        "text": "Bellamy'nin iki seçeneği vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosunu açık denize çevirip derin suda fırtınayı atlatabilirdi.",
+      "text_markdown": "Filosunu açık denize çevirip derin suda fırtınayı atlatabilirdi.",
+      "tts": {
+        "text": "Filosunu açık denize çevirip derin suda fırtınayı atlatabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ya da ilerlemeye devam edip fırtına vurmadan burnun ucunu dönmeye çalışabilirdi.",
+      "text_markdown": "Ya da ilerlemeye devam edip fırtına vurmadan burnun ucunu dönmeye çalışabilirdi.",
+      "tts": {
+        "text": "Ya da ilerlemeye devam edip fırtına vurmadan burnun ucunu dönmeye çalışabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlerlemeye devam etmeyi seçti.",
+      "text_markdown": "İlerlemeye devam etmeyi seçti.",
+      "tts": {
+        "text": "İlerlemeye devam etmeyi seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Whydah'ın Kralı",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, alacağı son karar oldu.",
+      "text_markdown": "Bu, alacağı son karar oldu.",
+      "tts": {
+        "text": "Bu, alacağı son karar oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Fırtına",
+      "text_markdown": "Fırtına"
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fırtına 26 Nisan 1717 gecesi vurdu.",
+      "text_markdown": "Fırtına 26 Nisan 1717 gecesi vurdu.",
+      "tts": {
+        "text": "Fırtına bin yedi yüz on yedinin yirmi altı Nisan gecesi vurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sağanak yağmur ve devasa dalgalarla şiddetli bir kuzeydoğu fırtınasıydı.",
+      "text_markdown": "Sağanak yağmur ve devasa dalgalarla şiddetli bir kuzeydoğu fırtınasıydı.",
+      "tts": {
+        "text": "Sağanak yağmur ve devasa dalgalarla şiddetli bir kuzeydoğu fırtınasıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Görüş neredeyse sıfıra düştü.",
+      "text_markdown": "Görüş neredeyse sıfıra düştü.",
+      "tts": {
+        "text": "Görüş neredeyse sıfıra düştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Whydah mürettebatı kıyıyı, yıldızları, hatta filolarındaki diğer gemileri bile göremiyordu.",
+      "text_markdown": "Whydah mürettebatı kıyıyı, yıldızları, hatta filolarındaki diğer gemileri bile göremiyordu.",
+      "tts": {
+        "text": "Whydah mürettebatı kıyıyı, yıldızları, hatta filolarındaki diğer gemileri bile göremiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyıdaki en tehlikeli sulardan bazılarında kör olarak seyrediyorlardı.",
+      "text_markdown": "Kıyıdaki en tehlikeli sulardan bazılarında kör olarak seyrediyorlardı.",
+      "tts": {
+        "text": "Kıyıdaki en tehlikeli sulardan bazılarında kör olarak seyrediyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rüzgâr, çığlık benzeri bir sesle arma arasında uğulduyordu.",
+      "text_markdown": "Rüzgâr, çığlık benzeri bir sesle arma arasında uğulduyordu.",
+      "tts": {
+        "text": "Rüzgâr, çığlık benzeri bir sesle arma arasında uğulduyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dalgalar pruvanın üzerinden kırılıyor ve güverteyi süpürüyordu.",
+      "text_markdown": "Dalgalar pruvanın üzerinden kırılıyor ve güverteyi süpürüyordu.",
+      "tts": {
+        "text": "Dalgalar pruvanın üzerinden kırılıyor ve güverteyi süpürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlar denize sürüklenmemek için halatlara ve korkuluklara sarıldı.",
+      "text_markdown": "Adamlar denize sürüklenmemek için halatlara ve korkuluklara sarıldı.",
+      "tts": {
+        "text": "Adamlar denize sürüklenmemek için halatlara ve korkuluklara sarıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gece yarısından sonra Whydah, Wellfleet kıyılarında bir kum sırtına çarptı.",
+      "text_markdown": "Gece yarısından sonra Whydah, Wellfleet kıyılarında bir kum sırtına çarptı.",
+      "tts": {
+        "text": "Gece yarısından sonra Whydah, Wellfleet kıyılarında bir kum sırtına çarptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çarpma ani ve şiddetliydi.",
+      "text_markdown": "Çarpma ani ve şiddetliydi.",
+      "tts": {
+        "text": "Çarpma ani ve şiddetliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemi yana yattı ve dalgaların altında parçalanmaya başladı.",
+      "text_markdown": "Gemi yana yattı ve dalgaların altında parçalanmaya başladı.",
+      "tts": {
+        "text": "Gemi yana yattı ve dalgaların altında parçalanmaya başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dalgalar devasa boyuttaydı, bazıları 30 fit yüksekliğe ulaşıyordu.",
+      "text_markdown": "Dalgalar devasa boyuttaydı, bazıları 30 fit yüksekliğe ulaşıyordu.",
+      "tts": {
+        "text": "Dalgalar devasa boyuttaydı, bazıları otuz fit yüksekliğe ulaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korkunç bir güçle hasarlı geminin üzerine çarptılar.",
+      "text_markdown": "Korkunç bir güçle hasarlı geminin üzerine çarptılar.",
+      "tts": {
+        "text": "Korkunç bir güçle hasarlı geminin üzerine çarptılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Direkler kırılıp denize düştü, armayı ve adamları da beraberlerinde sürükledi.",
+      "text_markdown": "Direkler kırılıp denize düştü, armayı ve adamları da beraberlerinde sürükledi.",
+      "tts": {
+        "text": "Direkler kırılıp denize düştü, armayı ve adamları da beraberlerinde sürükledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'ın ağır topları yataklarından koptu.",
+      "text_markdown": "Whydah'ın ağır topları yataklarından koptu.",
+      "tts": {
+        "text": "Whydah'ın ağır topları yataklarından koptu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güverte boyunca yuvarlanarak yollarındaki her şeyi ezdi.",
+      "text_markdown": "Güverte boyunca yuvarlanarak yollarındaki her şeyi ezdi.",
+      "tts": {
+        "text": "Güverte boyunca yuvarlanarak yollarındaki her şeyi ezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ambardaki hazine kaydı ve gemi alabora oldu.",
+      "text_markdown": "Ambardaki hazine kaydı ve gemi alabora oldu.",
+      "tts": {
+        "text": "Ambardaki hazine kaydı ve gemi alabora oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'ın çarptığı kum sırtı kıyıdan yalnızca 500 fit uzaklıktaydı.",
+      "text_markdown": "Whydah'ın çarptığı kum sırtı kıyıdan yalnızca 500 fit uzaklıktaydı.",
+      "tts": {
+        "text": "Whydah'ın çarptığı kum sırtı kıyıdan yalnızca beş yüz fit uzaklıktaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak o koşullarda 500 fitlik dalga açık okyanus kadar ölümcüldü.",
+      "text_markdown": "Ancak o koşullarda 500 fitlik dalga açık okyanus kadar ölümcüldü.",
+      "tts": {
+        "text": "Ancak o koşullarda beş yüz fitlik dalga açık okyanus kadar ölümcüldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'ta bulunan yaklaşık 146 kişiden yalnızca ikisi hayatta kaldı.",
+      "text_markdown": "Whydah'ta bulunan yaklaşık 146 kişiden yalnızca ikisi hayatta kaldı.",
+      "tts": {
+        "text": "Whydah'ta bulunan yaklaşık yüz kırk altı kişiden yalnızca ikisi hayatta kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar, mürettebata katılmaya zorlanan marangoz Thomas Davis ve Miskito ile Avrupa karışımı soydan gelen kılavuz John Julian'dı.",
+      "text_markdown": "Bunlar, mürettebata katılmaya zorlanan marangoz Thomas Davis ve Miskito ile Avrupa karışımı soydan gelen kılavuz John Julian'dı.",
+      "tts": {
+        "text": "Bunlar, mürettebata katılmaya zorlanan marangoz Thomas Davis ve Miskito ile Avrupa karışımı soydan gelen kılavuz John Julian'dı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samuel Bellamy ölenler arasındaydı.",
+      "text_markdown": "Samuel Bellamy ölenler arasındaydı.",
+      "tts": {
+        "text": "Samuel Bellamy ölenler arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cesedi hiçbir zaman teşhis edilemedi.",
+      "text_markdown": "Cesedi hiçbir zaman teşhis edilemedi.",
+      "tts": {
+        "text": "Cesedi hiçbir zaman teşhis edilemedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "28 yaşındaydı.",
+      "text_markdown": "28 yaşındaydı.",
+      "tts": {
+        "text": "Yirmi sekiz yaşındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy'nin filosundaki diğer gemiler de fırtınaya yakalandı.",
+      "text_markdown": "Bellamy'nin filosundaki diğer gemiler de fırtınaya yakalandı.",
+      "tts": {
+        "text": "Bellamy'nin filosundaki diğer gemiler de fırtınaya yakalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mary Anne aynı sahil şeridinin yakınında karaya oturdu.",
+      "text_markdown": "Mary Anne aynı sahil şeridinin yakınında karaya oturdu.",
+      "tts": {
+        "text": "Mary Anne aynı sahil şeridinin yakınında karaya oturdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mürettebatından yedisi hayatta kaldı ve yerel yetkililer tarafından yakalandı.",
+      "text_markdown": "Mürettebatından yedisi hayatta kaldı ve yerel yetkililer tarafından yakalandı.",
+      "tts": {
+        "text": "Mürettebatından yedisi hayatta kaldı ve yerel yetkililer tarafından yakalandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sabah, Wellfleet halkı sahilin enkazla kaplı olduğunu gördü.",
+      "text_markdown": "Sabah, Wellfleet halkı sahilin enkazla kaplı olduğunu gördü.",
+      "tts": {
+        "text": "Sabah, Wellfleet halkı sahilin enkazla kaplı olduğunu gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kereste, halat, kumaş ve cesetler kumların üzerinde dağınık bir şekilde yatıyordu.",
+      "text_markdown": "Kereste, halat, kumaş ve cesetler kumların üzerinde dağınık bir şekilde yatıyordu.",
+      "tts": {
+        "text": "Kereste, halat, kumaş ve cesetler kumların üzerinde dağınık bir şekilde yatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her dalga ile sikkeler ve mücevher parçaları kıyıya vuruyordu.",
+      "text_markdown": "Her dalga ile sikkeler ve mücevher parçaları kıyıya vuruyordu.",
+      "tts": {
+        "text": "Her dalga ile sikkeler ve mücevher parçaları kıyıya vuruyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yöre halkı toparlayabildiğini toplamakta vakit kaybetmedi.",
+      "text_markdown": "Yöre halkı toparlayabildiğini toplamakta vakit kaybetmedi.",
+      "tts": {
+        "text": "Yöre halkı toparlayabildiğini toplamakta vakit kaybetmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enkazdan sikkeler, silahlar ve değeri olan her şeyi topladılar.",
+      "text_markdown": "Enkazdan sikkeler, silahlar ve değeri olan her şeyi topladılar.",
+      "tts": {
+        "text": "Enkazdan sikkeler, silahlar ve değeri olan her şeyi topladılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sömürge valisi bölgeyi güvenceye almak için askerler gönderdi ama çoğu şey çoktan alınmıştı.",
+      "text_markdown": "Sömürge valisi bölgeyi güvenceye almak için askerler gönderdi ama çoğu şey çoktan alınmıştı.",
+      "tts": {
+        "text": "Sömürge valisi bölgeyi güvenceye almak için askerler gönderdi ama çoğu şey çoktan alınmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah ve Mary Anne'den hayatta kalan dokuz korsan tutuklanarak Boston'a getirildi.",
+      "text_markdown": "Whydah ve Mary Anne'den hayatta kalan dokuz korsan tutuklanarak Boston'a getirildi.",
+      "tts": {
+        "text": "Whydah ve Mary Anne'den hayatta kalan dokuz korsan tutuklanarak Boston'a getirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ekim 1717'de yargılandılar.",
+      "text_markdown": "Ekim 1717'de yargılandılar.",
+      "tts": {
+        "text": "Bin yedi yüz on yedinin Ekim ayında yargılandılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dava, sömürge dönemi Amerikan tarihinin en sansasyonel davalarından biriydi.",
+      "text_markdown": "Dava, sömürge dönemi Amerikan tarihinin en sansasyonel davalarından biriydi.",
+      "tts": {
+        "text": "Dava, sömürge dönemi Amerikan tarihinin en sansasyonel davalarından biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ünlü Püriten papaz Cotton Mather mahkûmları ziyaret etti ve onlara tövbe hakkında vaaz verdi.",
+      "text_markdown": "Ünlü Püriten papaz Cotton Mather mahkûmları ziyaret etti ve onlara tövbe hakkında vaaz verdi.",
+      "tts": {
+        "text": "Ünlü Püriten papaz Cotton Mather mahkûmları ziyaret etti ve onlara tövbe hakkında vaaz verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Davis, mürettebata katılmaya zorlandığını kanıtlayabildiği için beraat etti.",
+      "text_markdown": "Thomas Davis, mürettebata katılmaya zorlandığını kanıtlayabildiği için beraat etti.",
+      "tts": {
+        "text": "Thomas Davis, mürettebata katılmaya zorlandığını kanıtlayabildiği için beraat etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başka bir adam da benzer gerekçelerle beraat etti.",
+      "text_markdown": "Başka bir adam da benzer gerekçelerle beraat etti.",
+      "tts": {
+        "text": "Başka bir adam da benzer gerekçelerle beraat etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altı adam suçlu bulundu ve ölüme mahkûm edildi.",
+      "text_markdown": "Altı adam suçlu bulundu ve ölüme mahkûm edildi.",
+      "tts": {
+        "text": "Altı adam suçlu bulundu ve ölüme mahkûm edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "15 Kasım 1717'de Boston Limanı'ndaki Charlestown İskelesi'nde asıldılar.",
+      "text_markdown": "15 Kasım 1717'de Boston Limanı'ndaki Charlestown İskelesi'nde asıldılar.",
+      "tts": {
+        "text": "Bin yedi yüz on yedinin on beş Kasımında Boston Limanı'ndaki Charlestown İskelesi'nde asıldılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cotton Mather infaz sırasında bir vaaz verdi.",
+      "text_markdown": "Cotton Mather infaz sırasında bir vaaz verdi.",
+      "tts": {
+        "text": "Cotton Mather infaz sırasında bir vaaz verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miskito kılavuz John Julian asılmadı.",
+      "text_markdown": "Miskito kılavuz John Julian asılmadı.",
+      "tts": {
+        "text": "Miskito kılavuz John Julian asılmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunun yerine köle olarak satıldı.",
+      "text_markdown": "Bunun yerine köle olarak satıldı.",
+      "tts": {
+        "text": "Bunun yerine köle olarak satıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bundan sonraki kaderi bilinmiyor, ancak bazı kayıtlar kaçmaya çalışırken öldüğünü öne sürüyor.",
+      "text_markdown": "Bundan sonraki kaderi bilinmiyor, ancak bazı kayıtlar kaçmaya çalışırken öldüğünü öne sürüyor.",
+      "tts": {
+        "text": "Bundan sonraki kaderi bilinmiyor, ancak bazı kayıtlar kaçmaya çalışırken öldüğünü öne sürüyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Whydah'ın enkazı Wellfleet açıklarında kuma gömüldü.",
+      "text_markdown": "Whydah'ın enkazı Wellfleet açıklarında kuma gömüldü.",
+      "tts": {
+        "text": "Whydah'ın enkazı Wellfleet açıklarında kuma gömüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç yıl içinde kayarak yer değiştiren kumlar onu tamamen gömdü.",
+      "text_markdown": "Birkaç yıl içinde kayarak yer değiştiren kumlar onu tamamen gömdü.",
+      "tts": {
+        "text": "Birkaç yıl içinde kayarak yer değiştiren kumlar onu tamamen gömdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fırtına",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İki buçuk asırdan fazla bir süre Whydah okyanus tabanının altında gizli kaldı.",
+      "text_markdown": "İki buçuk asırdan fazla bir süre Whydah okyanus tabanının altında gizli kaldı.",
+      "tts": {
+        "text": "İki buçuk asırdan fazla bir süre Whydah okyanus tabanının altında gizli kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zamanın Unuttuğu Gemi",
+      "text_markdown": "Zamanın Unuttuğu Gemi"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "267 yıl boyunca Whydah'ın enkazı yerel bir efsaneden ibaret kaldı.",
+      "text_markdown": "267 yıl boyunca Whydah'ın enkazı yerel bir efsaneden ibaret kaldı.",
+      "tts": {
+        "text": "İki yüz altmış yedi yıl boyunca Whydah'ın enkazı yerel bir efsaneden ibaret kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cape Cod'daki insanlar, kıyı açıklarında bir yere gömülü korsan gemisi hakkında hikâyeler anlatıyordu.",
+      "text_markdown": "Cape Cod'daki insanlar, kıyı açıklarında bir yere gömülü korsan gemisi hakkında hikâyeler anlatıyordu.",
+      "tts": {
+        "text": "Cape Cod'daki insanlar, kıyı açıklarında bir yere gömülü korsan gemisi hakkında hikâyeler anlatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak tam olarak nerede olduğunu kimse bilmiyordu.",
+      "text_markdown": "Ancak tam olarak nerede olduğunu kimse bilmiyordu.",
+      "tts": {
+        "text": "Ancak tam olarak nerede olduğunu kimse bilmiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1980'lerde Barry Clifford adlı bir sualtı kaşifi Whydah'ı bulmaya kafayı taktı.",
+      "text_markdown": "1980'lerde Barry Clifford adlı bir sualtı kaşifi Whydah'ı bulmaya kafayı taktı.",
+      "tts": {
+        "text": "Bin dokuz yüz seksenlerde Barry Clifford adlı bir sualtı kaşifi Whydah'ı bulmaya kafayı taktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Clifford Cape Cod'da amcasından korsan gemisi hikâyeleri dinleyerek büyümüştü.",
+      "text_markdown": "Clifford Cape Cod'da amcasından korsan gemisi hikâyeleri dinleyerek büyümüştü.",
+      "tts": {
+        "text": "Clifford Cape Cod'da amcasından korsan gemisi hikâyeleri dinleyerek büyümüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Enkaz alanını daraltmak için yıllarca tarihî kayıtları araştırdı.",
+      "text_markdown": "Enkaz alanını daraltmak için yıllarca tarihî kayıtları araştırdı.",
+      "tts": {
+        "text": "Enkaz alanını daraltmak için yıllarca tarihî kayıtları araştırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1984'te Clifford ve dalış ekibi enkazı buldu.",
+      "text_markdown": "1984'te Clifford ve dalış ekibi enkazı buldu.",
+      "tts": {
+        "text": "Bin dokuz yüz seksen dörtte Clifford ve dalış ekibi enkazı buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kilit kanıt, üzerinde 'The Whydah Gally 1716' yazan gemi çanıydı.",
+      "text_markdown": "Kilit kanıt, üzerinde 'The Whydah Gally 1716' yazan gemi çanıydı.",
+      "tts": {
+        "text": "Kilit kanıt, üzerinde 'The Whydah Gally bin yedi yüz on altı' yazan gemi çanıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu çan, enkazın Whydah olduğunu kuşkuya yer bırakmayacak şekilde kanıtladı.",
+      "text_markdown": "Bu çan, enkazın Whydah olduğunu kuşkuya yer bırakmayacak şekilde kanıtladı.",
+      "tts": {
+        "text": "Bu çan, enkazın Whydah olduğunu kuşkuya yer bırakmayacak şekilde kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, fiziksel kanıtlarla bir korsan gemi enkazının kesin olarak teşhis edildiği ilk ve tek vakadır.",
+      "text_markdown": "Bu, fiziksel kanıtlarla bir korsan gemi enkazının kesin olarak teşhis edildiği ilk ve tek vakadır.",
+      "tts": {
+        "text": "Bu, fiziksel kanıtlarla bir korsan gemi enkazının kesin olarak teşhis edildiği ilk ve tek vakadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Takip eden on yıllarda Clifford'un ekibi enkazdan 200.000'den fazla eser çıkardı.",
+      "text_markdown": "Takip eden on yıllarda Clifford'un ekibi enkazdan 200.000'den fazla eser çıkardı.",
+      "tts": {
+        "text": "Takip eden on yıllarda Clifford'un ekibi enkazdan iki yüz binden fazla eser çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar arasında altın sikkeler, gümüş külçeler, silahlar, navigasyon aletleri, giysi parçaları ve kişisel eşyalar vardı.",
+      "text_markdown": "Bunlar arasında altın sikkeler, gümüş külçeler, silahlar, navigasyon aletleri, giysi parçaları ve kişisel eşyalar vardı.",
+      "tts": {
+        "text": "Bunlar arasında altın sikkeler, gümüş külçeler, silahlar, navigasyon aletleri, giysi parçaları ve kişisel eşyalar vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eserler, hiçbir yazılı belgenin sağlayamayacağı korsan yaşamı ayrıntılarını ortaya çıkardı.",
+      "text_markdown": "Eserler, hiçbir yazılı belgenin sağlayamayacağı korsan yaşamı ayrıntılarını ortaya çıkardı.",
+      "tts": {
+        "text": "Eserler, hiçbir yazılı belgenin sağlayamayacağı korsan yaşamı ayrıntılarını ortaya çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arkeologlar Batı Afrika altın takılarını Avrupa gümüş sikkeleriyle yan yana buldu.",
+      "text_markdown": "Arkeologlar Batı Afrika altın takılarını Avrupa gümüş sikkeleriyle yan yana buldu.",
+      "tts": {
+        "text": "Arkeologlar Batı Afrika altın takılarını Avrupa gümüş sikkeleriyle yan yana buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İpek kurdeleler, kol düğmeleri ve tabanca mermisi buldular.",
+      "text_markdown": "İpek kurdeleler, kol düğmeleri ve tabanca mermisi buldular.",
+      "tts": {
+        "text": "İpek kurdeleler, kol düğmeleri ve tabanca mermisi buldular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eserlerin çeşitliliği mürettebatın çok etnikli olduğunu doğruladı.",
+      "text_markdown": "Eserlerin çeşitliliği mürettebatın çok etnikli olduğunu doğruladı.",
+      "tts": {
+        "text": "Eserlerin çeşitliliği mürettebatın çok etnikli olduğunu doğruladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupa, Afrika ve Amerika'dan gelen nesneler hep bir arada karışık olarak bulundu.",
+      "text_markdown": "Avrupa, Afrika ve Amerika'dan gelen nesneler hep bir arada karışık olarak bulundu.",
+      "tts": {
+        "text": "Avrupa, Afrika ve Amerika'dan gelen nesneler hep bir arada karışık olarak bulundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Whydah'ın mürettebatı Atlantik dünyasının bir kesitiydi.",
+      "text_markdown": "Whydah'ın mürettebatı Atlantik dünyasının bir kesitiydi.",
+      "tts": {
+        "text": "Whydah'ın mürettebatı Atlantik dünyasının bir kesitiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cape Cod'da Whydah'a adanmış bir müze kuruldu.",
+      "text_markdown": "Cape Cod'da Whydah'a adanmış bir müze kuruldu.",
+      "tts": {
+        "text": "Cape Cod'da Whydah'a adanmış bir müze kuruldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enkazdan çıkan eserleri sergilemekte ve Samuel Bellamy ile mürettebatının hikâyesini anlatmaktadır.",
+      "text_markdown": "Enkazdan çıkan eserleri sergilemekte ve Samuel Bellamy ile mürettebatının hikâyesini anlatmaktadır.",
+      "tts": {
+        "text": "Enkazdan çıkan eserleri sergilemekte ve Samuel Bellamy ile mürettebatının hikâyesini anlatmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her yıl binlerce ziyaretçi onu görmeye geliyor.",
+      "text_markdown": "Her yıl binlerce ziyaretçi onu görmeye geliyor.",
+      "tts": {
+        "text": "Her yıl binlerce ziyaretçi onu görmeye geliyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samuel Bellamy'nin kariyeri sadece on bir ay sürdü.",
+      "text_markdown": "Samuel Bellamy'nin kariyeri sadece on bir ay sürdü.",
+      "tts": {
+        "text": "Samuel Bellamy'nin kariyeri sadece on bir ay sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu sürede, çoğu korsanın ömür boyu ele geçirdiğinden daha fazla gemi aldı.",
+      "text_markdown": "Bu sürede, çoğu korsanın ömür boyu ele geçirdiğinden daha fazla gemi aldı.",
+      "tts": {
+        "text": "Bu sürede, çoğu korsanın ömür boyu ele geçirdiğinden daha fazla gemi aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eşitsizlik ve esaret çağında adalet ve özgürlükten söz etti.",
+      "text_markdown": "Eşitsizlik ve esaret çağında adalet ve özgürlükten söz etti.",
+      "tts": {
+        "text": "Eşitsizlik ve esaret çağında adalet ve özgürlükten söz etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Demokrasinin kendisi radikal bir fikirken gemisini bir demokrasi olarak yönetti.",
+      "text_markdown": "Demokrasinin kendisi radikal bir fikirken gemisini bir demokrasi olarak yönetti.",
+      "tts": {
+        "text": "Demokrasinin kendisi radikal bir fikirken gemisini bir demokrasi olarak yönetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p115",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın geri kalanı insanları rengine göre ayırırken o her ırktan insanı kabul etti.",
+      "text_markdown": "Dünyanın geri kalanı insanları rengine göre ayırırken o her ırktan insanı kabul etti.",
+      "tts": {
+        "text": "Dünyanın geri kalanı insanları rengine göre ayırırken o her ırktan insanı kabul etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayrıca çalışan insanlardan çalan ve dürüst denizcilerin geçimini bozan bir hırsızdı.",
+      "text_markdown": "Ayrıca çalışan insanlardan çalan ve dürüst denizcilerin geçimini bozan bir hırsızdı.",
+      "tts": {
+        "text": "Ayrıca çalışan insanlardan çalan ve dürüst denizcilerin geçimini bozan bir hırsızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eşitlik idealleri, silah zoruyla soyduğu tüccarlara uzanmıyordu.",
+      "text_markdown": "Eşitlik idealleri, silah zoruyla soyduğu tüccarlara uzanmıyordu.",
+      "tts": {
+        "text": "Eşitlik idealleri, silah zoruyla soyduğu tüccarlara uzanmıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deniz, herhangi biri onu yargılayamadan Samuel Bellamy'yi aldı.",
+      "text_markdown": "Deniz, herhangi biri onu yargılayamadan Samuel Bellamy'yi aldı.",
+      "tts": {
+        "text": "Deniz, herhangi biri onu yargılayamadan Samuel Bellamy'yi aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama gemisi kuma gömülü olarak hayatta kaldı, hikâyesini anlatmayı bekliyordu.",
+      "text_markdown": "Ama gemisi kuma gömülü olarak hayatta kaldı, hikâyesini anlatmayı bekliyordu.",
+      "tts": {
+        "text": "Ama gemisi kuma gömülü olarak hayatta kaldı, hikâyesini anlatmayı bekliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Zamanın Unuttuğu Gemi",
+      "paragraph_id": "p117",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Whydah, onu süren adamların sesleri susmuş olsa da, onlar adına konuşmaya devam ediyor.",
+      "text_markdown": "Whydah, onu süren adamların sesleri susmuş olsa da, onlar adına konuşmaya devam ediyor.",
+      "tts": {
+        "text": "Whydah, onu süren adamların sesleri susmuş olsa da, onlar adına konuşmaya devam ediyor.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

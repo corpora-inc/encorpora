@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_every",
+  "language": "ko",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 글",
+      "text_markdown": "독자에게 드리는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 역사상 가장 큰 강탈을 성공시키고 사라진 해적의 실화입니다.",
+      "text_markdown": "이것은 역사상 가장 큰 강탈을 성공시키고 사라진 해적의 실화입니다.",
+      "tts": {
+        "text": "이것은 역사상 가장 큰 강탈을 성공시키고 사라진 해적의 실화입니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 헨리 에브리였으며, 한때 지구상에서 가장 수배된 남자였습니다.",
+      "text_markdown": "그의 이름은 헨리 에브리였으며, 한때 지구상에서 가장 수배된 남자였습니다.",
+      "tts": {
+        "text": "그의 이름은 헨리 에브리였으며, 한때 지구상에서 가장 수배된 남자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어떤 정부도 그를 잡지 못했고, 그가 어디서 어떻게 죽었는지 아무도 모릅니다.",
+      "text_markdown": "어떤 정부도 그를 잡지 못했고, 그가 어디서 어떻게 죽었는지 아무도 모릅니다.",
+      "tts": {
+        "text": "어떤 정부도 그를 잡지 못했고, 그가 어디서 어떻게 죽었는지 아무도 모릅니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "단 한 번의 공격으로 에브리는 수백만의 가치가 있는 보물을 차지했습니다.",
+      "text_markdown": "단 한 번의 공격으로 에브리는 수백만의 가치가 있는 보물을 차지했습니다.",
+      "tts": {
+        "text": "단 한 번의 공격으로 에브리는 수백만의 가치가 있는 보물을 차지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 범죄는 두 제국 사이에 외교 위기를 일으켰습니다.",
+      "text_markdown": "그의 범죄는 두 제국 사이에 외교 위기를 일으켰습니다.",
+      "tts": {
+        "text": "그의 범죄는 두 제국 사이에 외교 위기를 일으켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 세계에서 가장 강력한 기업인 동인도 회사를 거의 파괴할 뻔했습니다.",
+      "text_markdown": "그것은 세계에서 가장 강력한 기업인 동인도 회사를 거의 파괴할 뻔했습니다.",
+      "tts": {
+        "text": "그것은 세계에서 가장 강력한 기업인 동인도 회사를 거의 파괴할 뻔했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 십칠 세기 후반 인도양의 무역로로 여러분을 안내할 것입니다.",
+      "text_markdown": "이 책은 십칠 세기 후반 인도양의 무역로로 여러분을 안내할 것입니다.",
+      "tts": {
+        "text": "이 책은 십칠 세기 후반 인도양의 무역로로 여러분을 안내할 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러분은 에브리를 잉글랜드의 부두에서 마다가스카르의 해안까지 따라가게 됩니다.",
+      "text_markdown": "여러분은 에브리를 잉글랜드의 부두에서 마다가스카르의 해안까지 따라가게 됩니다.",
+      "tts": {
+        "text": "여러분은 에브리를 잉글랜드의 부두에서 마다가스카르의 해안까지 따라가게 됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 책의 모든 내용은 역사적 기록, 재판 기록, 목격자 증언에 기반합니다.",
+      "text_markdown": "이 책의 모든 내용은 역사적 기록, 재판 기록, 목격자 증언에 기반합니다.",
+      "tts": {
+        "text": "이 책의 모든 내용은 역사적 기록, 재판 기록, 목격자 증언에 기반합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사실이 불확실한 경우, 우리는 분명히 그렇게 밝힐 것입니다.",
+      "text_markdown": "사실이 불확실한 경우, 우리는 분명히 그렇게 밝힐 것입니다.",
+      "tts": {
+        "text": "사실이 불확실한 경우, 우리는 분명히 그렇게 밝힐 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "인도양 무역의 세계",
+      "text_markdown": "인도양 무역의 세계"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십칠 세기에 인도양은 지구상에서 가장 부유한 교역 지대였습니다.",
+      "text_markdown": "십칠 세기에 인도양은 지구상에서 가장 부유한 교역 지대였습니다.",
+      "tts": {
+        "text": "십칠 세기에 인도양은 지구상에서 가장 부유한 교역 지대였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "배들은 인도, 아라비아, 동아프리카, 동남아시아 사이에서 비단, 향신료, 보석, 금을 운반했습니다.",
+      "text_markdown": "배들은 인도, 아라비아, 동아프리카, 동남아시아 사이에서 비단, 향신료, 보석, 금을 운반했습니다.",
+      "tts": {
+        "text": "배들은 인도, 아라비아, 동아프리카, 동남아시아 사이에서 비단, 향신료, 보석, 금을 운반했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 무역로는 유럽인들이 도착하기 훨씬 전부터 수천 년 동안 운영되어 왔습니다.",
+      "text_markdown": "이 무역로는 유럽인들이 도착하기 훨씬 전부터 수천 년 동안 운영되어 왔습니다.",
+      "tts": {
+        "text": "이 무역로는 유럽인들이 도착하기 훨씬 전부터 수천 년 동안 운영되어 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 바다를 통해 흐르는 부는 거의 상상을 초월했습니다.",
+      "text_markdown": "이 바다를 통해 흐르는 부는 거의 상상을 초월했습니다.",
+      "tts": {
+        "text": "이 바다를 통해 흐르는 부는 거의 상상을 초월했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시기에 무굴 제국은 인도 아대륙의 대부분을 지배했습니다.",
+      "text_markdown": "이 시기에 무굴 제국은 인도 아대륙의 대부분을 지배했습니다.",
+      "tts": {
+        "text": "이 시기에 무굴 제국은 인도 아대륙의 대부분을 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 세계에서 가장 부유하고 가장 강력한 제국 중 하나였습니다.",
+      "text_markdown": "그것은 세계에서 가장 부유하고 가장 강력한 제국 중 하나였습니다.",
+      "tts": {
+        "text": "그것은 세계에서 가장 부유하고 가장 강력한 제국 중 하나였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무굴 황제들은 방대한 군대를 지휘하며 비범한 사치 속에서 살았습니다.",
+      "text_markdown": "무굴 황제들은 방대한 군대를 지휘하며 비범한 사치 속에서 살았습니다.",
+      "tts": {
+        "text": "무굴 황제들은 방대한 군대를 지휘하며 비범한 사치 속에서 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들의 궁전은 금, 보석, 그리고 지구상에서 가장 정교한 직물로 장식되었습니다.",
+      "text_markdown": "그들의 궁전은 금, 보석, 그리고 지구상에서 가장 정교한 직물로 장식되었습니다.",
+      "tts": {
+        "text": "그들의 궁전은 금, 보석, 그리고 지구상에서 가장 정교한 직물로 장식되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "매년 무굴 귀족들은 메카 순례 항해를 위해 배를 보냈습니다.",
+      "text_markdown": "매년 무굴 귀족들은 메카 순례 항해를 위해 배를 보냈습니다.",
+      "tts": {
+        "text": "매년 무굴 귀족들은 메카 순례 항해를 위해 배를 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 순례선들은 막대한 양의 교역품도 실었습니다.",
+      "text_markdown": "이 순례선들은 막대한 양의 교역품도 실었습니다.",
+      "tts": {
+        "text": "이 순례선들은 막대한 양의 교역품도 실었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "금, 은, 보석, 비단이 화물칸을 가득 채웠습니다.",
+      "text_markdown": "금, 은, 보석, 비단이 화물칸을 가득 채웠습니다.",
+      "tts": {
+        "text": "금, 은, 보석, 비단이 화물칸을 가득 채웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "연례 순례 함대는 어느 바다에서든 가장 부유한 표적이었습니다.",
+      "text_markdown": "연례 순례 함대는 어느 바다에서든 가장 부유한 표적이었습니다.",
+      "tts": {
+        "text": "연례 순례 함대는 어느 바다에서든 가장 부유한 표적이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "홍해는 인도양과 이슬람의 성지를 잇는 관문이었습니다.",
+      "text_markdown": "홍해는 인도양과 이슬람의 성지를 잇는 관문이었습니다.",
+      "tts": {
+        "text": "홍해는 인도양과 이슬람의 성지를 잇는 관문이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "인도에서 온 배들은 홍해를 거슬러 올라가 메카의 관문인 제다 항구로 향했습니다.",
+      "text_markdown": "인도에서 온 배들은 홍해를 거슬러 올라가 메카의 관문인 제다 항구로 향했습니다.",
+      "tts": {
+        "text": "인도에서 온 배들은 홍해를 거슬러 올라가 메카의 관문인 제다 항구로 향했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "홍해 남단의 좁은 바브엘만데브 해협은 천연의 병목 지점이었습니다.",
+      "text_markdown": "홍해 남단의 좁은 바브엘만데브 해협은 천연의 병목 지점이었습니다.",
+      "tts": {
+        "text": "홍해 남단의 좁은 바브엘만데브 해협은 천연의 병목 지점이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 해협에서 기다리는 해적은 세계에서 가장 부유한 배를 가로챌 수 있었습니다.",
+      "text_markdown": "그 해협에서 기다리는 해적은 세계에서 가장 부유한 배를 가로챌 수 있었습니다.",
+      "tts": {
+        "text": "그 해협에서 기다리는 해적은 세계에서 가장 부유한 배를 가로챌 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 열강은 천사백 년대 후반부터 인도양으로 진출하고 있었습니다.",
+      "text_markdown": "유럽 열강은 천사백 년대 후반부터 인도양으로 진출하고 있었습니다.",
+      "tts": {
+        "text": "유럽 열강은 천사백 년대 후반부터 인도양으로 진출하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포르투갈이 최초였고, 네덜란드, 잉글랜드, 프랑스가 뒤를 이었습니다.",
+      "text_markdown": "포르투갈이 최초였고, 네덜란드, 잉글랜드, 프랑스가 뒤를 이었습니다.",
+      "tts": {
+        "text": "포르투갈이 최초였고, 네덜란드, 잉글랜드, 프랑스가 뒤를 이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 인도와 동남아시아 해안을 따라 팩토리라 불리는 무역 거점을 설립했습니다.",
+      "text_markdown": "그들은 인도와 동남아시아 해안을 따라 팩토리라 불리는 무역 거점을 설립했습니다.",
+      "tts": {
+        "text": "그들은 인도와 동남아시아 해안을 따라 팩토리라 불리는 무역 거점을 설립했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 전초기지들은 미래 식민 제국의 토대가 되었습니다.",
+      "text_markdown": "이 전초기지들은 미래 식민 제국의 토대가 되었습니다.",
+      "tts": {
+        "text": "이 전초기지들은 미래 식민 제국의 토대가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 동인도 회사는 이 지역에서 가장 중요한 영국의 존재였습니다.",
+      "text_markdown": "영국 동인도 회사는 이 지역에서 가장 중요한 영국의 존재였습니다.",
+      "tts": {
+        "text": "영국 동인도 회사는 이 지역에서 가장 중요한 영국의 존재였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1600년에 엘리자베스 여왕 일세로부터 왕실 칙허장을 받았습니다.",
+      "text_markdown": "1600년에 엘리자베스 여왕 일세로부터 왕실 칙허장을 받았습니다.",
+      "tts": {
+        "text": "천육백 년에 엘리자베스 여왕 일세로부터 왕실 칙허장을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 회사는 아시아와의 모든 영국 무역에 대한 법적 독점권을 가지고 있었습니다.",
+      "text_markdown": "이 회사는 아시아와의 모든 영국 무역에 대한 법적 독점권을 가지고 있었습니다.",
+      "tts": {
+        "text": "이 회사는 아시아와의 모든 영국 무역에 대한 법적 독점권을 가지고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이윤은 막대했으며, 주주 중에는 잉글랜드에서 가장 영향력 있는 인물들이 포함되어 있었습니다.",
+      "text_markdown": "이윤은 막대했으며, 주주 중에는 잉글랜드에서 가장 영향력 있는 인물들이 포함되어 있었습니다.",
+      "tts": {
+        "text": "이윤은 막대했으며, 주주 중에는 잉글랜드에서 가장 영향력 있는 인물들이 포함되어 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동인도 회사는 무굴 황제의 허가를 받아 운영되었습니다.",
+      "text_markdown": "동인도 회사는 무굴 황제의 허가를 받아 운영되었습니다.",
+      "tts": {
+        "text": "동인도 회사는 무굴 황제의 허가를 받아 운영되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무굴의 호의 없이는, 회사는 인도 항구에서 무역을 할 수 없었습니다.",
+      "text_markdown": "무굴의 호의 없이는, 회사는 인도 항구에서 무역을 할 수 없었습니다.",
+      "tts": {
+        "text": "무굴의 호의 없이는, 회사는 인도 항구에서 무역을 할 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 관계는 취약했으며 상호 신뢰에 의존했습니다.",
+      "text_markdown": "이 관계는 취약했으며 상호 신뢰에 의존했습니다.",
+      "tts": {
+        "text": "이 관계는 취약했으며 상호 신뢰에 의존했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국 해적의 무굴 선박 공격은 이 신뢰를 완전히 파괴할 수 있었습니다.",
+      "text_markdown": "영국 해적의 무굴 선박 공격은 이 신뢰를 완전히 파괴할 수 있었습니다.",
+      "tts": {
+        "text": "영국 해적의 무굴 선박 공격은 이 신뢰를 완전히 파괴할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 해적들은 수십 년 동안 인도양 선박을 약탈해 왔습니다.",
+      "text_markdown": "유럽 해적들은 수십 년 동안 인도양 선박을 약탈해 왔습니다.",
+      "tts": {
+        "text": "유럽 해적들은 수십 년 동안 인도양 선박을 약탈해 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아프리카 동해안의 마다가스카르 섬은 해적 기지 역할을 했습니다.",
+      "text_markdown": "아프리카 동해안의 마다가스카르 섬은 해적 기지 역할을 했습니다.",
+      "tts": {
+        "text": "아프리카 동해안의 마다가스카르 섬은 해적 기지 역할을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적들은 수많은 항구에 숨고, 신선한 식량과 물을 보급하며, 사냥감을 기다릴 수 있었습니다.",
+      "text_markdown": "해적들은 수많은 항구에 숨고, 신선한 식량과 물을 보급하며, 사냥감을 기다릴 수 있었습니다.",
+      "tts": {
+        "text": "해적들은 수많은 항구에 숨고, 신선한 식량과 물을 보급하며, 사냥감을 기다릴 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "마다가스카르에서 인도 해안의 분주한 항로까지는 짧은 항해 거리였습니다.",
+      "text_markdown": "마다가스카르에서 인도 해안의 분주한 항로까지는 짧은 항해 거리였습니다.",
+      "tts": {
+        "text": "마다가스카르에서 인도 해안의 분주한 항로까지는 짧은 항해 거리였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "인도와 홍해 사이의 항로는 파이럿 라운드라고 불렸습니다.",
+      "text_markdown": "인도와 홍해 사이의 항로는 파이럿 라운드라고 불렸습니다.",
+      "tts": {
+        "text": "인도와 홍해 사이의 항로는 파이럿 라운드라고 불렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국과 미국의 해적들은 이 사냥터에 도달하기 위해 지구 반 바퀴를 항해했습니다.",
+      "text_markdown": "영국과 미국의 해적들은 이 사냥터에 도달하기 위해 지구 반 바퀴를 항해했습니다.",
+      "tts": {
+        "text": "영국과 미국의 해적들은 이 사냥터에 도달하기 위해 지구 반 바퀴를 항해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "보상은 긴 여정을 감수할 만한 가치가 있었습니다.",
+      "text_markdown": "보상은 긴 여정을 감수할 만한 가치가 있었습니다.",
+      "tts": {
+        "text": "보상은 긴 여정을 감수할 만한 가치가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "인도의 보물선 한 척은 카리브해 상선 수십 척보다 더 많은 부를 실을 수 있었습니다.",
+      "text_markdown": "인도의 보물선 한 척은 카리브해 상선 수십 척보다 더 많은 부를 실을 수 있었습니다.",
+      "tts": {
+        "text": "인도의 보물선 한 척은 카리브해 상선 수십 척보다 더 많은 부를 실을 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천육백구십 년대에 일반 영국 선원의 삶은 가혹했습니다.",
+      "text_markdown": "천육백구십 년대에 일반 영국 선원의 삶은 가혹했습니다.",
+      "tts": {
+        "text": "천육백구십 년대에 일반 영국 선원의 삶은 가혹했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "임금은 낮고, 규율은 잔인하며, 질병이 만연했습니다.",
+      "text_markdown": "임금은 낮고, 규율은 잔인하며, 질병이 만연했습니다.",
+      "tts": {
+        "text": "임금은 낮고, 규율은 잔인하며, 질병이 만연했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 선원들이 프랑스와의 전쟁에 복무했다가 평화가 오면서 실업자가 되었습니다.",
+      "text_markdown": "많은 선원들이 프랑스와의 전쟁에 복무했다가 평화가 오면서 실업자가 되었습니다.",
+      "tts": {
+        "text": "많은 선원들이 프랑스와의 전쟁에 복무했다가 평화가 오면서 실업자가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "인도양은 빈곤과 억압으로부터의 매력적인 탈출구를 제공했습니다.",
+      "text_markdown": "인도양은 빈곤과 억압으로부터의 매력적인 탈출구를 제공했습니다.",
+      "tts": {
+        "text": "인도양은 빈곤과 억압으로부터의 매력적인 탈출구를 제공했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아메리카의 식민지 총독들은 때때로 인도양 해적들을 비밀리에 지원했습니다.",
+      "text_markdown": "아메리카의 식민지 총독들은 때때로 인도양 해적들을 비밀리에 지원했습니다.",
+      "tts": {
+        "text": "아메리카의 식민지 총독들은 때때로 인도양 해적들을 비밀리에 지원했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 훔친 부를 식민지 항구로 가져와 지역 경제를 활성화시켰습니다.",
+      "text_markdown": "해적들은 훔친 부를 식민지 항구로 가져와 지역 경제를 활성화시켰습니다.",
+      "tts": {
+        "text": "해적들은 훔친 부를 식민지 항구로 가져와 지역 경제를 활성화시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "뉴욕, 로드아일랜드, 캐롤라이나의 관리들은 눈을 감아주는 것으로 알려져 있었습니다.",
+      "text_markdown": "뉴욕, 로드아일랜드, 캐롤라이나의 관리들은 눈을 감아주는 것으로 알려져 있었습니다.",
+      "tts": {
+        "text": "뉴욕, 로드아일랜드, 캐롤라이나의 관리들은 눈을 감아주는 것으로 알려져 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 부패로 인해 해적들은 거의 처벌받지 않고 활동할 수 있었습니다.",
+      "text_markdown": "이러한 부패로 인해 해적들은 거의 처벌받지 않고 활동할 수 있었습니다.",
+      "tts": {
+        "text": "이러한 부패로 인해 해적들은 거의 처벌받지 않고 활동할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 헨리 에브리가 해적이 되었을 때 발을 들인 세계였습니다.",
+      "text_markdown": "이것이 헨리 에브리가 해적이 되었을 때 발을 들인 세계였습니다.",
+      "tts": {
+        "text": "이것이 헨리 에브리가 해적이 되었을 때 발을 들인 세계였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "제국의 부가 최소한의 호위만으로 공해를 가로지르는 세계였습니다.",
+      "text_markdown": "제국의 부가 최소한의 호위만으로 공해를 가로지르는 세계였습니다.",
+      "tts": {
+        "text": "제국의 부가 최소한의 호위만으로 공해를 가로지르는 세계였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무굴 황제는 유럽 국가들이 자국민을 통제할 것이라고 신뢰했습니다.",
+      "text_markdown": "무굴 황제는 유럽 국가들이 자국민을 통제할 것이라고 신뢰했습니다.",
+      "tts": {
+        "text": "무굴 황제는 유럽 국가들이 자국민을 통제할 것이라고 신뢰했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "인도양 무역의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 신뢰는 곧 산산조각 날 참이었습니다.",
+      "text_markdown": "그 신뢰는 곧 산산조각 날 참이었습니다.",
+      "tts": {
+        "text": "그 신뢰는 곧 산산조각 날 참이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "반란자의 탄생",
+      "text_markdown": "반란자의 탄생"
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 에브리는 아마도 1659년경 잉글랜드 서부에서 태어났습니다.",
+      "text_markdown": "헨리 에브리는 아마도 1659년경 잉글랜드 서부에서 태어났습니다.",
+      "tts": {
+        "text": "헨리 에브리는 아마도 천육백오십구 년경 잉글랜드 서부에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 역사학자들은 그가 데번의 뉴턴 페러스 마을 출신이라고 믿습니다.",
+      "text_markdown": "일부 역사학자들은 그가 데번의 뉴턴 페러스 마을 출신이라고 믿습니다.",
+      "tts": {
+        "text": "일부 역사학자들은 그가 데번의 뉴턴 페러스 마을 출신이라고 믿습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "데번은 해양 카운티로, 많은 젊은이들이 바다로 나갔습니다.",
+      "text_markdown": "데번은 해양 카운티로, 많은 젊은이들이 바다로 나갔습니다.",
+      "tts": {
+        "text": "데번은 해양 카운티로, 많은 젊은이들이 바다로 나갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 어린 시절이나 가족에 대해서는 거의 알려진 바가 없습니다.",
+      "text_markdown": "그의 어린 시절이나 가족에 대해서는 거의 알려진 바가 없습니다.",
+      "tts": {
+        "text": "그의 어린 시절이나 가족에 대해서는 거의 알려진 바가 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사적 기록에는 그의 이름이 여러 다른 철자로 나타납니다.",
+      "text_markdown": "역사적 기록에는 그의 이름이 여러 다른 철자로 나타납니다.",
+      "tts": {
+        "text": "역사적 기록에는 그의 이름이 여러 다른 철자로 나타납니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "에브리, 에이버리, 에보리, 아이보리 모두 당시 문서에서 발견됩니다.",
+      "text_markdown": "에브리, 에이버리, 에보리, 아이보리 모두 당시 문서에서 발견됩니다.",
+      "tts": {
+        "text": "에브리, 에이버리, 에보리, 아이보리 모두 당시 문서에서 발견됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이것은 철자법이 표준화되지 않았던 시대에 전형적인 일이었습니다.",
+      "text_markdown": "이것은 철자법이 표준화되지 않았던 시대에 전형적인 일이었습니다.",
+      "tts": {
+        "text": "이것은 철자법이 표준화되지 않았던 시대에 전형적인 일이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대부분의 역사학자들은 가장 공식적인 기록에 나타나는 에브리라는 철자를 사용합니다.",
+      "text_markdown": "대부분의 역사학자들은 가장 공식적인 기록에 나타나는 에브리라는 철자를 사용합니다.",
+      "tts": {
+        "text": "대부분의 역사학자들은 가장 공식적인 기록에 나타나는 에브리라는 철자를 사용합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리는 당시 대부분의 선원들처럼 어린 나이에 바다로 나갔습니다.",
+      "text_markdown": "에브리는 당시 대부분의 선원들처럼 어린 나이에 바다로 나갔습니다.",
+      "tts": {
+        "text": "에브리는 당시 대부분의 선원들처럼 어린 나이에 바다로 나갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상선에서, 그리고 아마도 왕립 해군 함선에서도 복무했을 것입니다.",
+      "text_markdown": "상선에서, 그리고 아마도 왕립 해군 함선에서도 복무했을 것입니다.",
+      "tts": {
+        "text": "상선에서, 그리고 아마도 왕립 해군 함선에서도 복무했을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "천육백구십 년대에 이르러 그는 경험이 풍부하고 유능한 뱃사람이 되었습니다.",
+      "text_markdown": "천육백구십 년대에 이르러 그는 경험이 풍부하고 유능한 뱃사람이 되었습니다.",
+      "tts": {
+        "text": "천육백구십 년대에 이르러 그는 경험이 풍부하고 유능한 뱃사람이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 항해술, 선박 운용, 선원 관리를 이해했습니다.",
+      "text_markdown": "그는 항해술, 선박 운용, 선원 관리를 이해했습니다.",
+      "tts": {
+        "text": "그는 항해술, 선박 운용, 선원 관리를 이해했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적이 되기 전 에브리가 노예 무역에 관여했다는 증거가 있습니다.",
+      "text_markdown": "해적이 되기 전 에브리가 노예 무역에 관여했다는 증거가 있습니다.",
+      "tts": {
+        "text": "해적이 되기 전 에브리가 노예 무역에 관여했다는 증거가 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "노예가 된 아프리카인들을 대서양 너머로 운반하는 배에서 복무했을 수 있습니다.",
+      "text_markdown": "노예가 된 아프리카인들을 대서양 너머로 운반하는 배에서 복무했을 수 있습니다.",
+      "tts": {
+        "text": "노예가 된 아프리카인들을 대서양 너머로 운반하는 배에서 복무했을 수 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "노예 무역은 합법적이고 수익성이 있었지만, 끔찍하게 잔인했습니다.",
+      "text_markdown": "노예 무역은 합법적이고 수익성이 있었지만, 끔찍하게 잔인했습니다.",
+      "tts": {
+        "text": "노예 무역은 합법적이고 수익성이 있었지만, 끔찍하게 잔인했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그것은 비교적 높은 보수를 주는 몇 안 되는 해상 무역 중 하나였습니다.",
+      "text_markdown": "그것은 비교적 높은 보수를 주는 몇 안 되는 해상 무역 중 하나였습니다.",
+      "tts": {
+        "text": "그것은 비교적 높은 보수를 주는 몇 안 되는 해상 무역 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1693년, 에브리는 찰스 이세호라는 사략선에 일등 항해사로 승선했습니다.",
+      "text_markdown": "1693년, 에브리는 찰스 이세호라는 사략선에 일등 항해사로 승선했습니다.",
+      "tts": {
+        "text": "천육백구십삼 년, 에브리는 찰스 이세호라는 사략선에 일등 항해사로 승선했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 배는 스페인 정부가 고용한 소규모 함대의 일부였습니다.",
+      "text_markdown": "그 배는 스페인 정부가 고용한 소규모 함대의 일부였습니다.",
+      "tts": {
+        "text": "그 배는 스페인 정부가 고용한 소규모 함대의 일부였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인은 영국 사략선이 카리브해에서 프랑스 밀수업자들을 공격하기를 원했습니다.",
+      "text_markdown": "스페인은 영국 사략선이 카리브해에서 프랑스 밀수업자들을 공격하기를 원했습니다.",
+      "tts": {
+        "text": "스페인은 영국 사략선이 카리브해에서 프랑스 밀수업자들을 공격하기를 원했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이것은 합법적이고 잠재적으로 수익성 있는 사업으로 보였습니다.",
+      "text_markdown": "이것은 합법적이고 잠재적으로 수익성 있는 사업으로 보였습니다.",
+      "tts": {
+        "text": "이것은 합법적이고 잠재적으로 수익성 있는 사업으로 보였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "찰스 이세호는 스페인 항구 라코루냐에 정박하여 명령을 기다리고 있었습니다.",
+      "text_markdown": "찰스 이세호는 스페인 항구 라코루냐에 정박하여 명령을 기다리고 있었습니다.",
+      "tts": {
+        "text": "찰스 이세호는 스페인 항구 라코루냐에 정박하여 명령을 기다리고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "선원들은 급여도 임무도 없이 몇 달째 항구에 발이 묶여 있었습니다.",
+      "text_markdown": "선원들은 급여도 임무도 없이 몇 달째 항구에 발이 묶여 있었습니다.",
+      "tts": {
+        "text": "선원들은 급여도 임무도 없이 몇 달째 항구에 발이 묶여 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원들은 안절부절못하며 분노했습니다.",
+      "text_markdown": "선원들은 안절부절못하며 분노했습니다.",
+      "tts": {
+        "text": "선원들은 안절부절못하며 분노했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 빠른 이익을 위해 계약한 것이지, 끝없는 대기를 위한 것이 아니었습니다.",
+      "text_markdown": "그들은 빠른 이익을 위해 계약한 것이지, 끝없는 대기를 위한 것이 아니었습니다.",
+      "tts": {
+        "text": "그들은 빠른 이익을 위해 계약한 것이지, 끝없는 대기를 위한 것이 아니었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선장은 찰스 깁슨이라는 사람이었습니다.",
+      "text_markdown": "선장은 찰스 깁슨이라는 사람이었습니다.",
+      "tts": {
+        "text": "선장은 찰스 깁슨이라는 사람이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 가혹한 규율과 어긴 약속 때문에 선원들에게 널리 미움을 받았습니다.",
+      "text_markdown": "그는 가혹한 규율과 어긴 약속 때문에 선원들에게 널리 미움을 받았습니다.",
+      "tts": {
+        "text": "그는 가혹한 규율과 어긴 약속 때문에 선원들에게 널리 미움을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원들은 복무 조건에 대해 속았다고 느꼈습니다.",
+      "text_markdown": "선원들은 복무 조건에 대해 속았다고 느꼈습니다.",
+      "tts": {
+        "text": "선원들은 복무 조건에 대해 속았다고 느꼈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "좌절감과 분노가 갑판 아래에서 곪고 있었습니다.",
+      "text_markdown": "좌절감과 분노가 갑판 아래에서 곪고 있었습니다.",
+      "tts": {
+        "text": "좌절감과 분노가 갑판 아래에서 곪고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1694년 6월 6일 밤, 헨리 에브리는 반란을 이끌었습니다.",
+      "text_markdown": "1694년 6월 6일 밤, 헨리 에브리는 반란을 이끌었습니다.",
+      "tts": {
+        "text": "천육백구십사 년 유월 육일 밤, 헨리 에브리는 반란을 이끌었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "깁슨 선장이 선실에서 잠든 사이, 에브리와 동맹자들은 배를 장악했습니다.",
+      "text_markdown": "깁슨 선장이 선실에서 잠든 사이, 에브리와 동맹자들은 배를 장악했습니다.",
+      "tts": {
+        "text": "깁슨 선장이 선실에서 잠든 사이, 에브리와 동맹자들은 배를 장악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "반란은 치밀하게 계획되었고 최소한의 폭력으로 실행되었습니다.",
+      "text_markdown": "반란은 치밀하게 계획되었고 최소한의 폭력으로 실행되었습니다.",
+      "tts": {
+        "text": "반란은 치밀하게 계획되었고 최소한의 폭력으로 실행되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "새벽까지 에브리는 선박을 완전히 장악했습니다.",
+      "text_markdown": "새벽까지 에브리는 선박을 완전히 장악했습니다.",
+      "tts": {
+        "text": "새벽까지 에브리는 선박을 완전히 장악했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리는 깁슨과 충성스러운 선원들에게 선택권을 주었습니다.",
+      "text_markdown": "에브리는 깁슨과 충성스러운 선원들에게 선택권을 주었습니다.",
+      "tts": {
+        "text": "에브리는 깁슨과 충성스러운 선원들에게 선택권을 주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "반란에 합류하거나 육지에 내려지는 것이었습니다.",
+      "text_markdown": "반란에 합류하거나 육지에 내려지는 것이었습니다.",
+      "tts": {
+        "text": "반란에 합류하거나 육지에 내려지는 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "약 16명이 떠나기를 선택했고, 그들은 작은 보트에 실려 해안에 내려졌습니다.",
+      "text_markdown": "약 16명이 떠나기를 선택했고, 그들은 작은 보트에 실려 해안에 내려졌습니다.",
+      "tts": {
+        "text": "약 열여섯 명이 떠나기를 선택했고, 그들은 작은 보트에 실려 해안에 내려졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "나머지 선원들은 모험과 부를 열망하며 에브리에게 운명을 맡겼습니다.",
+      "text_markdown": "나머지 선원들은 모험과 부를 열망하며 에브리에게 운명을 맡겼습니다.",
+      "tts": {
+        "text": "나머지 선원들은 모험과 부를 열망하며 에브리에게 운명을 맡겼습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리는 배의 이름을 팬시호로 바꾸었습니다.",
+      "text_markdown": "에브리는 배의 이름을 팬시호로 바꾸었습니다.",
+      "tts": {
+        "text": "에브리는 배의 이름을 팬시호로 바꾸었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 행운을 찾기 위해 인도양으로 항해할 것이라고 선언했습니다.",
+      "text_markdown": "그는 행운을 찾기 위해 인도양으로 항해할 것이라고 선언했습니다.",
+      "tts": {
+        "text": "그는 행운을 찾기 위해 인도양으로 항해할 것이라고 선언했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원들은 이 발표에 환호했습니다.",
+      "text_markdown": "선원들은 이 발표에 환호했습니다.",
+      "tts": {
+        "text": "선원들은 이 발표에 환호했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리는 역사의 흐름을 바꿀 해적 행위를 막 저지른 것이었습니다.",
+      "text_markdown": "에브리는 역사의 흐름을 바꿀 해적 행위를 막 저지른 것이었습니다.",
+      "tts": {
+        "text": "에브리는 역사의 흐름을 바꿀 해적 행위를 막 저지른 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "인도양으로 향하기 전, 에브리는 아프리카 해안을 따라 남하했습니다.",
+      "text_markdown": "인도양으로 향하기 전, 에브리는 아프리카 해안을 따라 남하했습니다.",
+      "tts": {
+        "text": "인도양으로 향하기 전, 에브리는 아프리카 해안을 따라 남하했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러 항구에 정박하여 보급품을 싣고 추가 선원을 모집했습니다.",
+      "text_markdown": "여러 항구에 정박하여 보급품을 싣고 추가 선원을 모집했습니다.",
+      "tts": {
+        "text": "여러 항구에 정박하여 보급품을 싣고 추가 선원을 모집했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 배의 해적들이 에브리의 높아지는 명성에 이끌려 팬시호에 합류했습니다.",
+      "text_markdown": "다른 배의 해적들이 에브리의 높아지는 명성에 이끌려 팬시호에 합류했습니다.",
+      "tts": {
+        "text": "다른 배의 해적들이 에브리의 높아지는 명성에 이끌려 팬시호에 합류했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "마다가스카르에 도착할 때쯤 그의 선원은 대규모였고 무장도 잘 되어 있었습니다.",
+      "text_markdown": "마다가스카르에 도착할 때쯤 그의 선원은 대규모였고 무장도 잘 되어 있었습니다.",
+      "tts": {
+        "text": "마다가스카르에 도착할 때쯤 그의 선원은 대규모였고 무장도 잘 되어 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리는 뛰어난 지도자이자 항해사임을 증명했습니다.",
+      "text_markdown": "에브리는 뛰어난 지도자이자 항해사임을 증명했습니다.",
+      "tts": {
+        "text": "에브리는 뛰어난 지도자이자 항해사임을 증명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잔인함에 의지하지 않고 규율을 유지했습니다.",
+      "text_markdown": "잔인함에 의지하지 않고 규율을 유지했습니다.",
+      "tts": {
+        "text": "잔인함에 의지하지 않고 규율을 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "빠르게 결정을 내리고 부하들과 명확하게 소통했습니다.",
+      "text_markdown": "빠르게 결정을 내리고 부하들과 명확하게 소통했습니다.",
+      "tts": {
+        "text": "빠르게 결정을 내리고 부하들과 명확하게 소통했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "반란자의 탄생",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "선원들은 그를 완전히 신뢰했으며, 그들의 충성은 가장 큰 꿈을 넘어서는 보상을 받게 됩니다.",
+      "text_markdown": "선원들은 그를 완전히 신뢰했으며, 그들의 충성은 가장 큰 꿈을 넘어서는 보상을 받게 됩니다.",
+      "tts": {
+        "text": "선원들은 그를 완전히 신뢰했으며, 그들의 충성은 가장 큰 꿈을 넘어서는 보상을 받게 됩니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "최대의 전리품",
+      "text_markdown": "최대의 전리품"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1695년, 에브리는 팬시호를 홍해 입구까지 항해시켰습니다.",
+      "text_markdown": "1695년, 에브리는 팬시호를 홍해 입구까지 항해시켰습니다.",
+      "tts": {
+        "text": "천육백구십오 년, 에브리는 팬시호를 홍해 입구까지 항해시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 연례 무굴 순례 함대가 곧 지나갈 것을 알고 있었습니다.",
+      "text_markdown": "그는 연례 무굴 순례 함대가 곧 지나갈 것을 알고 있었습니다.",
+      "tts": {
+        "text": "그는 연례 무굴 순례 함대가 곧 지나갈 것을 알고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 배들은 메카 순례 후 인도로 귀환하는 중이었습니다.",
+      "text_markdown": "이 배들은 메카 순례 후 인도로 귀환하는 중이었습니다.",
+      "tts": {
+        "text": "이 배들은 메카 순례 후 인도로 귀환하는 중이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "화물칸은 보물로 넘칠 것이었습니다.",
+      "text_markdown": "화물칸은 보물로 넘칠 것이었습니다.",
+      "tts": {
+        "text": "화물칸은 보물로 넘칠 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해협에서 기다리고 있는 해적은 에브리만이 아니었습니다.",
+      "text_markdown": "해협에서 기다리고 있는 해적은 에브리만이 아니었습니다.",
+      "tts": {
+        "text": "해협에서 기다리고 있는 해적은 에브리만이 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러 척의 다른 해적선이 같은 병목 지점에 모여 있었습니다.",
+      "text_markdown": "여러 척의 다른 해적선이 같은 병목 지점에 모여 있었습니다.",
+      "tts": {
+        "text": "여러 척의 다른 해적선이 같은 병목 지점에 모여 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그중에는 로드아일랜드 출신의 유명한 미국 해적 토머스 튜가 지휘하는 배도 있었습니다.",
+      "text_markdown": "그중에는 로드아일랜드 출신의 유명한 미국 해적 토머스 튜가 지휘하는 배도 있었습니다.",
+      "tts": {
+        "text": "그중에는 로드아일랜드 출신의 유명한 미국 해적 토머스 튜가 지휘하는 배도 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리는 다른 선장들을 설득하여 임시 동맹을 결성했습니다.",
+      "text_markdown": "에브리는 다른 선장들을 설득하여 임시 동맹을 결성했습니다.",
+      "tts": {
+        "text": "에브리는 다른 선장들을 설득하여 임시 동맹을 결성했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 에브리가 소함대의 제독 역할을 할 것에 동의했습니다.",
+      "text_markdown": "해적들은 에브리가 소함대의 제독 역할을 할 것에 동의했습니다.",
+      "tts": {
+        "text": "해적들은 에브리가 소함대의 제독 역할을 할 것에 동의했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "불과 일 년 전에 해적이 된 사람에게 이것은 놀라운 성과였습니다.",
+      "text_markdown": "불과 일 년 전에 해적이 된 사람에게 이것은 놀라운 성과였습니다.",
+      "tts": {
+        "text": "불과 일 년 전에 해적이 된 사람에게 이것은 놀라운 성과였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 타고난 권위와 명확한 사고력이 그를 다른 해적 지도자들과 구별되게 했습니다.",
+      "text_markdown": "그의 타고난 권위와 명확한 사고력이 그를 다른 해적 지도자들과 구별되게 했습니다.",
+      "tts": {
+        "text": "그의 타고난 권위와 명확한 사고력이 그를 다른 해적 지도자들과 구별되게 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다른 선장들은 그의 판단을 존중하고 전투에서 그의 신호를 따르기로 동의했습니다.",
+      "text_markdown": "다른 선장들은 그의 판단을 존중하고 전투에서 그의 신호를 따르기로 동의했습니다.",
+      "tts": {
+        "text": "다른 선장들은 그의 판단을 존중하고 전투에서 그의 신호를 따르기로 동의했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "무굴 함대는 1695년 9월에 나타났습니다.",
+      "text_markdown": "무굴 함대는 1695년 9월에 나타났습니다.",
+      "tts": {
+        "text": "무굴 함대는 천육백구십오 년 구월에 나타났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "약 25척의 선박으로 구성되었으며, 여러 척의 대형 무장 선박이 포함되어 있었습니다.",
+      "text_markdown": "약 25척의 선박으로 구성되었으며, 여러 척의 대형 무장 선박이 포함되어 있었습니다.",
+      "tts": {
+        "text": "약 이십오 척의 선박으로 구성되었으며, 여러 척의 대형 무장 선박이 포함되어 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적들이 공격했지만, 무굴 호위함들은 맹렬히 맞섰습니다.",
+      "text_markdown": "해적들이 공격했지만, 무굴 호위함들은 맹렬히 맞섰습니다.",
+      "tts": {
+        "text": "해적들이 공격했지만, 무굴 호위함들은 맹렬히 맞섰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "토머스 튜는 첫 교전에서 전사했고, 포탄에 의해 복부가 찢어졌습니다.",
+      "text_markdown": "토머스 튜는 첫 교전에서 전사했고, 포탄에 의해 복부가 찢어졌습니다.",
+      "tts": {
+        "text": "토머스 튜는 첫 교전에서 전사했고, 포탄에 의해 복부가 찢어졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "튜의 죽음 이후 대부분의 해적선은 공격을 중단했습니다.",
+      "text_markdown": "튜의 죽음 이후 대부분의 해적선은 공격을 중단했습니다.",
+      "tts": {
+        "text": "튜의 죽음 이후 대부분의 해적선은 공격을 중단했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무굴 함대는 흩어졌고, 각 선박이 서로 다른 방향으로 도주했습니다.",
+      "text_markdown": "무굴 함대는 흩어졌고, 각 선박이 서로 다른 방향으로 도주했습니다.",
+      "tts": {
+        "text": "무굴 함대는 흩어졌고, 각 선박이 서로 다른 방향으로 도주했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 에브리와 팬시호는 홀로 추격을 계속했습니다.",
+      "text_markdown": "그러나 에브리와 팬시호는 홀로 추격을 계속했습니다.",
+      "tts": {
+        "text": "그러나 에브리와 팬시호는 홀로 추격을 계속했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 인생 최대의 전리품을 놓칠 생각이 없었습니다.",
+      "text_markdown": "그는 인생 최대의 전리품을 놓칠 생각이 없었습니다.",
+      "tts": {
+        "text": "그는 인생 최대의 전리품을 놓칠 생각이 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리는 먼저 파테 무함마드호라는 배를 나포했습니다.",
+      "text_markdown": "에브리는 먼저 파테 무함마드호라는 배를 나포했습니다.",
+      "tts": {
+        "text": "에브리는 먼저 파테 무함마드호라는 배를 나포했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 화물의 가치는 5만에서 6만 파운드 사이로, 막대한 재산이었습니다.",
+      "text_markdown": "그 화물의 가치는 5만에서 6만 파운드 사이로, 막대한 재산이었습니다.",
+      "tts": {
+        "text": "그 화물의 가치는 오만에서 육만 파운드 사이로, 막대한 재산이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "에브리의 선원들은 배를 약탈하고 놓아주었습니다.",
+      "text_markdown": "에브리의 선원들은 배를 약탈하고 놓아주었습니다.",
+      "tts": {
+        "text": "에브리의 선원들은 배를 약탈하고 놓아주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 에브리는 더 큰 전리품이 아직 앞에서 도주하고 있음을 알고 있었습니다.",
+      "text_markdown": "하지만 에브리는 더 큰 전리품이 아직 앞에서 도주하고 있음을 알고 있었습니다.",
+      "tts": {
+        "text": "하지만 에브리는 더 큰 전리품이 아직 앞에서 도주하고 있음을 알고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "간지 이 사와이호는 무굴 함대에서 가장 큰 배였습니다.",
+      "text_markdown": "간지 이 사와이호는 무굴 함대에서 가장 큰 배였습니다.",
+      "tts": {
+        "text": "간지 이 사와이호는 무굴 함대에서 가장 큰 배였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이름은 비할 데 없는 보물이라는 뜻이었고, 이름값을 했습니다.",
+      "text_markdown": "이름은 비할 데 없는 보물이라는 뜻이었고, 이름값을 했습니다.",
+      "tts": {
+        "text": "이름은 비할 데 없는 보물이라는 뜻이었고, 이름값을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 배는 무굴 황제 아우랑제브 본인의 소유였습니다.",
+      "text_markdown": "이 배는 무굴 황제 아우랑제브 본인의 소유였습니다.",
+      "tts": {
+        "text": "이 배는 무굴 황제 아우랑제브 본인의 소유였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "62문의 대포와 400명 이상의 병사를 탑재하여, 에브리의 선원 수를 훨씬 넘어섰습니다.",
+      "text_markdown": "62문의 대포와 400명 이상의 병사를 탑재하여, 에브리의 선원 수를 훨씬 넘어섰습니다.",
+      "tts": {
+        "text": "육십이 문의 대포와 사백 명 이상의 병사를 탑재하여, 에브리의 선원 수를 훨씬 넘어섰습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "팬시호는 긴 추격 끝에 간지 이 사와이호를 따라잡았습니다.",
+      "text_markdown": "팬시호는 긴 추격 끝에 간지 이 사와이호를 따라잡았습니다.",
+      "tts": {
+        "text": "팬시호는 긴 추격 끝에 간지 이 사와이호를 따라잡았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이어진 사건은 해적 역사상 가장 중요한 해전 중 하나였습니다.",
+      "text_markdown": "이어진 사건은 해적 역사상 가장 중요한 해전 중 하나였습니다.",
+      "tts": {
+        "text": "이어진 사건은 해적 역사상 가장 중요한 해전 중 하나였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "에브리는 거대한 무굴 선박에 포격을 개시했습니다.",
+      "text_markdown": "에브리는 거대한 무굴 선박에 포격을 개시했습니다.",
+      "tts": {
+        "text": "에브리는 거대한 무굴 선박에 포격을 개시했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "초기 포탄이 간지 이 사와이호의 주돛대에 명중하여 기동 능력을 무력화시켰습니다.",
+      "text_markdown": "초기 포탄이 간지 이 사와이호의 주돛대에 명중하여 기동 능력을 무력화시켰습니다.",
+      "tts": {
+        "text": "초기 포탄이 간지 이 사와이호의 주돛대에 명중하여 기동 능력을 무력화시켰습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이어서 간지 이 사와이호 자체의 대포 한 문이 갑판에서 폭발했습니다.",
+      "text_markdown": "이어서 간지 이 사와이호 자체의 대포 한 문이 갑판에서 폭발했습니다.",
+      "tts": {
+        "text": "이어서 간지 이 사와이호 자체의 대포 한 문이 갑판에서 폭발했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "폭발로 여러 명의 무굴 포수가 사망하고 방어진이 혼란에 빠졌습니다.",
+      "text_markdown": "폭발로 여러 명의 무굴 포수가 사망하고 방어진이 혼란에 빠졌습니다.",
+      "tts": {
+        "text": "폭발로 여러 명의 무굴 포수가 사망하고 방어진이 혼란에 빠졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "에브리는 기회를 포착하고 부하들에게 승선을 명령했습니다.",
+      "text_markdown": "에브리는 기회를 포착하고 부하들에게 승선을 명령했습니다.",
+      "tts": {
+        "text": "에브리는 기회를 포착하고 부하들에게 승선을 명령했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적들이 무굴 선박의 난간을 넘어 밀려들었습니다.",
+      "text_markdown": "해적들이 무굴 선박의 난간을 넘어 밀려들었습니다.",
+      "tts": {
+        "text": "해적들이 무굴 선박의 난간을 넘어 밀려들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투는 격렬했지만 비교적 짧았습니다.",
+      "text_markdown": "전투는 격렬했지만 비교적 짧았습니다.",
+      "tts": {
+        "text": "전투는 격렬했지만 비교적 짧았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무굴 병사들은 수적 우위에도 불구하고 대포 폭발로 사기가 꺾였습니다.",
+      "text_markdown": "무굴 병사들은 수적 우위에도 불구하고 대포 폭발로 사기가 꺾였습니다.",
+      "tts": {
+        "text": "무굴 병사들은 수적 우위에도 불구하고 대포 폭발로 사기가 꺾였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 선장은 방어를 지휘하는 대신 갑판 아래에 숨었습니다.",
+      "text_markdown": "그들의 선장은 방어를 지휘하는 대신 갑판 아래에 숨었습니다.",
+      "tts": {
+        "text": "그들의 선장은 방어를 지휘하는 대신 갑판 아래에 숨었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "몇 시간 후, 해적들이 배를 장악했습니다.",
+      "text_markdown": "몇 시간 후, 해적들이 배를 장악했습니다.",
+      "tts": {
+        "text": "몇 시간 후, 해적들이 배를 장악했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "간지 이 사와이호의 선창에서 해적들이 발견한 것에 그들은 경악했습니다.",
+      "text_markdown": "간지 이 사와이호의 선창에서 해적들이 발견한 것에 그들은 경악했습니다.",
+      "tts": {
+        "text": "간지 이 사와이호의 선창에서 해적들이 발견한 것에 그들은 경악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "금화와 은화가 상자와 통에 쌓여 있었습니다.",
+      "text_markdown": "금화와 은화가 상자와 통에 쌓여 있었습니다.",
+      "tts": {
+        "text": "금화와 은화가 상자와 통에 쌓여 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "보석, 고급 비단, 상아가 모든 공간을 가득 채우고 있었습니다.",
+      "text_markdown": "보석, 고급 비단, 상아가 모든 공간을 가득 채우고 있었습니다.",
+      "tts": {
+        "text": "보석, 고급 비단, 상아가 모든 공간을 가득 채우고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "총 가치는 20만에서 60만 파운드로 추정되었습니다.",
+      "text_markdown": "총 가치는 20만에서 60만 파운드로 추정되었습니다.",
+      "tts": {
+        "text": "총 가치는 이십만에서 육십만 파운드로 추정되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이를 비교하면, 숙련된 영국 노동자는 연간 약 10파운드를 벌었습니다.",
+      "text_markdown": "이를 비교하면, 숙련된 영국 노동자는 연간 약 10파운드를 벌었습니다.",
+      "tts": {
+        "text": "이를 비교하면, 숙련된 영국 노동자는 연간 약 십 파운드를 벌었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "각 해적의 전리품 몫은 남은 평생을 살기에 충분했습니다.",
+      "text_markdown": "각 해적의 전리품 몫은 남은 평생을 살기에 충분했습니다.",
+      "tts": {
+        "text": "각 해적의 전리품 몫은 남은 평생을 살기에 충분했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "헨리 에브리는 해적 역사상 가장 풍부한 전리품 중 하나를 차지한 것이었습니다.",
+      "text_markdown": "헨리 에브리는 해적 역사상 가장 풍부한 전리품 중 하나를 차지한 것이었습니다.",
+      "tts": {
+        "text": "헨리 에브리는 해적 역사상 가장 풍부한 전리품 중 하나를 차지한 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 전에도 그 후에도 단일 습격에서 이만큼 빼앗은 해적은 없었습니다.",
+      "text_markdown": "그 전에도 그 후에도 단일 습격에서 이만큼 빼앗은 해적은 없었습니다.",
+      "tts": {
+        "text": "그 전에도 그 후에도 단일 습격에서 이만큼 빼앗은 해적은 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 간지 이 사와이호를 약탈하는 데 며칠을 보냈습니다.",
+      "text_markdown": "해적들은 간지 이 사와이호를 약탈하는 데 며칠을 보냈습니다.",
+      "tts": {
+        "text": "해적들은 간지 이 사와이호를 약탈하는 데 며칠을 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 승객과 선원에게 끔찍한 폭력을 가했습니다.",
+      "text_markdown": "그들은 승객과 선원에게 끔찍한 폭력을 가했습니다.",
+      "tts": {
+        "text": "그들은 승객과 선원에게 끔찍한 폭력을 가했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "당대의 기록은 나포된 배 위에서의 강도, 폭행, 살인을 묘사합니다.",
+      "text_markdown": "당대의 기록은 나포된 배 위에서의 강도, 폭행, 살인을 묘사합니다.",
+      "tts": {
+        "text": "당대의 기록은 나포된 배 위에서의 강도, 폭행, 살인을 묘사합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "공격의 잔인함은 심각한 정치적 결과를 초래할 것이었습니다.",
+      "text_markdown": "공격의 잔인함은 심각한 정치적 결과를 초래할 것이었습니다.",
+      "tts": {
+        "text": "공격의 잔인함은 심각한 정치적 결과를 초래할 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "배의 귀중품을 모두 약탈한 후, 에브리는 간지 이 사와이호를 풀어주었습니다.",
+      "text_markdown": "배의 귀중품을 모두 약탈한 후, 에브리는 간지 이 사와이호를 풀어주었습니다.",
+      "tts": {
+        "text": "배의 귀중품을 모두 약탈한 후, 에브리는 간지 이 사와이호를 풀어주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "파손된 배는 인도의 수라트 항구로 힘겹게 돌아갔습니다.",
+      "text_markdown": "파손된 배는 인도의 수라트 항구로 힘겹게 돌아갔습니다.",
+      "tts": {
+        "text": "파손된 배는 인도의 수라트 항구로 힘겹게 돌아갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "생존자들이 자신들의 이야기를 전하자, 반응은 폭발적이었습니다.",
+      "text_markdown": "생존자들이 자신들의 이야기를 전하자, 반응은 폭발적이었습니다.",
+      "tts": {
+        "text": "생존자들이 자신들의 이야기를 전하자, 반응은 폭발적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "최대의 전리품",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리는 인도와의 영국 무역 역사상 최악의 외교 위기를 막 일으킨 것이었습니다.",
+      "text_markdown": "에브리는 인도와의 영국 무역 역사상 최악의 외교 위기를 막 일으킨 것이었습니다.",
+      "tts": {
+        "text": "에브리는 인도와의 영국 무역 역사상 최악의 외교 위기를 막 일으킨 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "지구상에서 가장 수배된 남자",
+      "text_markdown": "지구상에서 가장 수배된 남자"
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "공격 소식이 무굴 황제 아우랑제브에게 전해지자, 그의 분노는 엄청났습니다.",
+      "text_markdown": "공격 소식이 무굴 황제 아우랑제브에게 전해지자, 그의 분노는 엄청났습니다.",
+      "tts": {
+        "text": "공격 소식이 무굴 황제 아우랑제브에게 전해지자, 그의 분노는 엄청났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "간지 이 사와이호는 그의 개인 선박이었으며, 승객에는 왕실 구성원이 포함되어 있었습니다.",
+      "text_markdown": "간지 이 사와이호는 그의 개인 선박이었으며, 승객에는 왕실 구성원이 포함되어 있었습니다.",
+      "tts": {
+        "text": "간지 이 사와이호는 그의 개인 선박이었으며, 승객에는 왕실 구성원이 포함되어 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "황제는 이 공격을 이슬람 자체에 대한 모독으로 여겼습니다. 배에는 메카에서 돌아오는 순례자들이 타고 있었기 때문입니다.",
+      "text_markdown": "황제는 이 공격을 이슬람 자체에 대한 모독으로 여겼습니다. 배에는 메카에서 돌아오는 순례자들이 타고 있었기 때문입니다.",
+      "tts": {
+        "text": "황제는 이 공격을 이슬람 자체에 대한 모독으로 여겼습니다. 배에는 메카에서 돌아오는 순례자들이 타고 있었기 때문입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 영국인들이 책임을 져야 한다고 요구했습니다.",
+      "text_markdown": "그는 영국인들이 책임을 져야 한다고 요구했습니다.",
+      "tts": {
+        "text": "그는 영국인들이 책임을 져야 한다고 요구했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아우랑제브는 수라트 시의 모든 영국 상인의 체포를 명령했습니다.",
+      "text_markdown": "아우랑제브는 수라트 시의 모든 영국 상인의 체포를 명령했습니다.",
+      "tts": {
+        "text": "아우랑제브는 수라트 시의 모든 영국 상인의 체포를 명령했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동인도 회사의 직원들은 투옥되었습니다.",
+      "text_markdown": "동인도 회사의 직원들은 투옥되었습니다.",
+      "tts": {
+        "text": "동인도 회사의 직원들은 투옥되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 무역 거점은 무굴 군사들에게 포위되었습니다.",
+      "text_markdown": "그들의 무역 거점은 무굴 군사들에게 포위되었습니다.",
+      "tts": {
+        "text": "그들의 무역 거점은 무굴 군사들에게 포위되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "인도에서의 모든 영국 무역이 무기한 중단되었습니다.",
+      "text_markdown": "인도에서의 모든 영국 무역이 무기한 중단되었습니다.",
+      "tts": {
+        "text": "인도에서의 모든 영국 무역이 무기한 중단되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동인도 회사는 공황 상태에 빠졌습니다.",
+      "text_markdown": "동인도 회사는 공황 상태에 빠졌습니다.",
+      "tts": {
+        "text": "동인도 회사는 공황 상태에 빠졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 명의 해적 선장 때문에 인도에서의 전체 사업이 위험에 처했습니다.",
+      "text_markdown": "한 명의 해적 선장 때문에 인도에서의 전체 사업이 위험에 처했습니다.",
+      "tts": {
+        "text": "한 명의 해적 선장 때문에 인도에서의 전체 사업이 위험에 처했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "회사의 이익은 무굴의 호의에 의존했는데, 그 호의는 하룻밤 사이에 사라졌습니다.",
+      "text_markdown": "회사의 이익은 무굴의 호의에 의존했는데, 그 호의는 하룻밤 사이에 사라졌습니다.",
+      "tts": {
+        "text": "회사의 이익은 무굴의 호의에 의존했는데, 그 호의는 하룻밤 사이에 사라졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 영국 정부에 즉각적인 행동을 취하도록 압박했습니다.",
+      "text_markdown": "그들은 영국 정부에 즉각적인 행동을 취하도록 압박했습니다.",
+      "tts": {
+        "text": "그들은 영국 정부에 즉각적인 행동을 취하도록 압박했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 정부는 헨리 에브리의 체포를 위한 전 세계 수배령을 발부했습니다.",
+      "text_markdown": "영국 정부는 헨리 에브리의 체포를 위한 전 세계 수배령을 발부했습니다.",
+      "tts": {
+        "text": "영국 정부는 헨리 에브리의 체포를 위한 전 세계 수배령을 발부했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전례 없는 금액인 500파운드의 현상금이 그의 머리에 걸렸습니다.",
+      "text_markdown": "전례 없는 금액인 500파운드의 현상금이 그의 머리에 걸렸습니다.",
+      "tts": {
+        "text": "전례 없는 금액인 오백 파운드의 현상금이 그의 머리에 걸렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이것은 기록된 역사상 최초의 전 세계적 수색이었습니다.",
+      "text_markdown": "이것은 기록된 역사상 최초의 전 세계적 수색이었습니다.",
+      "tts": {
+        "text": "이것은 기록된 역사상 최초의 전 세계적 수색이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영어권 세계의 모든 항구에 에브리와 그의 선원들에 대한 인상착의가 전달되었습니다.",
+      "text_markdown": "영어권 세계의 모든 항구에 에브리와 그의 선원들에 대한 인상착의가 전달되었습니다.",
+      "tts": {
+        "text": "영어권 세계의 모든 항구에 에브리와 그의 선원들에 대한 인상착의가 전달되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동인도 회사는 정부 현상금에 자체 보상금을 추가했습니다.",
+      "text_markdown": "동인도 회사는 정부 현상금에 자체 보상금을 추가했습니다.",
+      "tts": {
+        "text": "동인도 회사는 정부 현상금에 자체 보상금을 추가했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "또한 자수하여 에브리에게 불리한 증언을 하는 선원에게는 무조건적인 사면을 약속했습니다.",
+      "text_markdown": "또한 자수하여 에브리에게 불리한 증언을 하는 선원에게는 무조건적인 사면을 약속했습니다.",
+      "tts": {
+        "text": "또한 자수하여 에브리에게 불리한 증언을 하는 선원에게는 무조건적인 사면을 약속했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "회사는 에브리를 찾아 무굴 황제에게 정의가 실현될 것임을 보여주기 위해 필사적이었습니다.",
+      "text_markdown": "회사는 에브리를 찾아 무굴 황제에게 정의가 실현될 것임을 보여주기 위해 필사적이었습니다.",
+      "tts": {
+        "text": "회사는 에브리를 찾아 무굴 황제에게 정의가 실현될 것임을 보여주기 위해 필사적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "기업으로서의 생존이 그것에 달려 있었습니다.",
+      "text_markdown": "기업으로서의 생존이 그것에 달려 있었습니다.",
+      "tts": {
+        "text": "기업으로서의 생존이 그것에 달려 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한편, 에브리는 가능한 한 빠르게 인도양에서 벗어나고 있었습니다.",
+      "text_markdown": "한편, 에브리는 가능한 한 빠르게 인도양에서 벗어나고 있었습니다.",
+      "tts": {
+        "text": "한편, 에브리는 가능한 한 빠르게 인도양에서 벗어나고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "범행 현장 근처에 머무는 것은 자살 행위임을 알고 있었습니다.",
+      "text_markdown": "범행 현장 근처에 머무는 것은 자살 행위임을 알고 있었습니다.",
+      "tts": {
+        "text": "범행 현장 근처에 머무는 것은 자살 행위임을 알고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "서인도양의 레위니옹 섬으로 향했습니다.",
+      "text_markdown": "서인도양의 레위니옹 섬으로 향했습니다.",
+      "tts": {
+        "text": "서인도양의 레위니옹 섬으로 향했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그곳에서 선원들 사이에 보물을 분배했습니다.",
+      "text_markdown": "그곳에서 선원들 사이에 보물을 분배했습니다.",
+      "tts": {
+        "text": "그곳에서 선원들 사이에 보물을 분배했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일반 해적 한 명 한 명이 수백 파운드 상당의 몫을 받았습니다.",
+      "text_markdown": "일반 해적 한 명 한 명이 수백 파운드 상당의 몫을 받았습니다.",
+      "tts": {
+        "text": "일반 해적 한 명 한 명이 수백 파운드 상당의 몫을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "에브리 자신은 선장으로서 더 큰 몫을 받았습니다.",
+      "text_markdown": "에브리 자신은 선장으로서 더 큰 몫을 받았습니다.",
+      "tts": {
+        "text": "에브리 자신은 선장으로서 더 큰 몫을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 이제 상상을 초월하는 부자가 되었습니다.",
+      "text_markdown": "그들은 이제 상상을 초월하는 부자가 되었습니다.",
+      "tts": {
+        "text": "그들은 이제 상상을 초월하는 부자가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "문제는 그것을 쓸 수 있을 만큼 오래 살아남을 수 있는가였습니다.",
+      "text_markdown": "문제는 그것을 쓸 수 있을 만큼 오래 살아남을 수 있는가였습니다.",
+      "tts": {
+        "text": "문제는 그것을 쓸 수 있을 만큼 오래 살아남을 수 있는가였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리는 팬시호를 타고 대서양을 건너 바하마의 뉴프로비던스 섬으로 향했습니다.",
+      "text_markdown": "에브리는 팬시호를 타고 대서양을 건너 바하마의 뉴프로비던스 섬으로 향했습니다.",
+      "tts": {
+        "text": "에브리는 팬시호를 타고 대서양을 건너 바하마의 뉴프로비던스 섬으로 향했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1696년 4월에 도착했으며, 해적 경력의 시작이 된 반란 이후 거의 2년 만이었습니다.",
+      "text_markdown": "1696년 4월에 도착했으며, 해적 경력의 시작이 된 반란 이후 거의 2년 만이었습니다.",
+      "tts": {
+        "text": "천육백구십육 년 사월에 도착했으며, 해적 경력의 시작이 된 반란 이후 거의 이 년 만이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바하마 총독 니콜라스 트로트는 해적들을 보호하기로 동의했습니다.",
+      "text_markdown": "바하마 총독 니콜라스 트로트는 해적들을 보호하기로 동의했습니다.",
+      "tts": {
+        "text": "바하마 총독 니콜라스 트로트는 해적들을 보호하기로 동의했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리는 상아, 현금, 그리고 팬시호 자체로 트로트에게 뇌물을 준 것으로 전해집니다.",
+      "text_markdown": "에브리는 상아, 현금, 그리고 팬시호 자체로 트로트에게 뇌물을 준 것으로 전해집니다.",
+      "tts": {
+        "text": "에브리는 상아, 현금, 그리고 팬시호 자체로 트로트에게 뇌물을 준 것으로 전해집니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "트로트 총독은 에브리의 선원들에게 사면장을 발급하며 무고한 선원으로 위장시켰습니다.",
+      "text_markdown": "트로트 총독은 에브리의 선원들에게 사면장을 발급하며 무고한 선원으로 위장시켰습니다.",
+      "tts": {
+        "text": "트로트 총독은 에브리의 선원들에게 사면장을 발급하며 무고한 선원으로 위장시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 카리브해와 아메리카 식민지 전역으로 흩어졌습니다.",
+      "text_markdown": "해적들은 카리브해와 아메리카 식민지 전역으로 흩어졌습니다.",
+      "tts": {
+        "text": "해적들은 카리브해와 아메리카 식민지 전역으로 흩어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 뉴욕으로, 다른 이들은 필라델피아나 찰스턴으로 향했습니다.",
+      "text_markdown": "일부는 뉴욕으로, 다른 이들은 필라델피아나 찰스턴으로 향했습니다.",
+      "tts": {
+        "text": "일부는 뉴욕으로, 다른 이들은 필라델피아나 찰스턴으로 향했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 훔친 무굴 보물을 가지고 최대한 숨기며 이동했습니다.",
+      "text_markdown": "그들은 훔친 무굴 보물을 가지고 최대한 숨기며 이동했습니다.",
+      "tts": {
+        "text": "그들은 훔친 무굴 보물을 가지고 최대한 숨기며 이동했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리 자신은 종적을 감추었습니다.",
+      "text_markdown": "에브리 자신은 종적을 감추었습니다.",
+      "tts": {
+        "text": "에브리 자신은 종적을 감추었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것이 그의 이야기에서 가장 놀라운 부분입니다.",
+      "text_markdown": "이것이 그의 이야기에서 가장 놀라운 부분입니다.",
+      "tts": {
+        "text": "이것이 그의 이야기에서 가장 놀라운 부분입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세계가 경험한 가장 집중적인 수색의 대상이었음에도, 그는 결코 발견되지 않았습니다.",
+      "text_markdown": "세계가 경험한 가장 집중적인 수색의 대상이었음에도, 그는 결코 발견되지 않았습니다.",
+      "tts": {
+        "text": "세계가 경험한 가장 집중적인 수색의 대상이었음에도, 그는 결코 발견되지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바다가 그를 삼킨 것처럼 완전히 사라졌습니다.",
+      "text_markdown": "바다가 그를 삼킨 것처럼 완전히 사라졌습니다.",
+      "tts": {
+        "text": "바다가 그를 삼킨 것처럼 완전히 사라졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선원 몇몇은 결국 체포되어 런던에서 재판을 받았습니다.",
+      "text_markdown": "선원 몇몇은 결국 체포되어 런던에서 재판을 받았습니다.",
+      "tts": {
+        "text": "선원 몇몇은 결국 체포되어 런던에서 재판을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1696년에 6명이 교수형에 처해졌으며, 시신은 경고로 전시되었습니다.",
+      "text_markdown": "1696년에 6명이 교수형에 처해졌으며, 시신은 경고로 전시되었습니다.",
+      "tts": {
+        "text": "천육백구십육 년에 여섯 명이 교수형에 처해졌으며, 시신은 경고로 전시되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 잡힌 사람들은 선원 중 하위 구성원이었습니다.",
+      "text_markdown": "그러나 잡힌 사람들은 선원 중 하위 구성원이었습니다.",
+      "tts": {
+        "text": "그러나 잡힌 사람들은 선원 중 하위 구성원이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리 자신은 자유로운 몸이었습니다.",
+      "text_markdown": "에브리 자신은 자유로운 몸이었습니다.",
+      "tts": {
+        "text": "에브리 자신은 자유로운 몸이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "런던에서의 재판은 영국 대중을 사로잡은 대 센세이션이었습니다.",
+      "text_markdown": "런던에서의 재판은 영국 대중을 사로잡은 대 센세이션이었습니다.",
+      "tts": {
+        "text": "런던에서의 재판은 영국 대중을 사로잡은 대 센세이션이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "신문들은 증언에 대한 상세한 기사를 실었습니다.",
+      "text_markdown": "신문들은 증언에 대한 상세한 기사를 실었습니다.",
+      "tts": {
+        "text": "신문들은 증언에 대한 상세한 기사를 실었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "황제의 보물을 훔친 평범한 선원의 이야기는 모든 사회 계층의 사람들을 매료시켰습니다.",
+      "text_markdown": "황제의 보물을 훔친 평범한 선원의 이야기는 모든 사회 계층의 사람들을 매료시켰습니다.",
+      "tts": {
+        "text": "황제의 보물을 훔친 평범한 선원의 이야기는 모든 사회 계층의 사람들을 매료시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리는 그 시대 가장 유명한 범죄자가 되었습니다.",
+      "text_markdown": "에브리는 그 시대 가장 유명한 범죄자가 되었습니다.",
+      "tts": {
+        "text": "에브리는 그 시대 가장 유명한 범죄자가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "무굴 제국과의 외교 위기를 해결하는 데 수년이 걸렸습니다.",
+      "text_markdown": "무굴 제국과의 외교 위기를 해결하는 데 수년이 걸렸습니다.",
+      "tts": {
+        "text": "무굴 제국과의 외교 위기를 해결하는 데 수년이 걸렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동인도 회사는 결국 배상금을 지불하고 해상 순찰을 강화했습니다.",
+      "text_markdown": "동인도 회사는 결국 배상금을 지불하고 해상 순찰을 강화했습니다.",
+      "tts": {
+        "text": "동인도 회사는 결국 배상금을 지불하고 해상 순찰을 강화했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무굴과 영국의 무역은 재개되었지만, 관계는 영구적으로 손상되었습니다.",
+      "text_markdown": "무굴과 영국의 무역은 재개되었지만, 관계는 영구적으로 손상되었습니다.",
+      "tts": {
+        "text": "무굴과 영국의 무역은 재개되었지만, 관계는 영구적으로 손상되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "지구상에서 가장 수배된 남자",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 사건은 유럽 해적이 대제국의 안정을 위협할 수 있음을 보여주었습니다.",
+      "text_markdown": "이 사건은 유럽 해적이 대제국의 안정을 위협할 수 있음을 보여주었습니다.",
+      "tts": {
+        "text": "이 사건은 유럽 해적이 대제국의 안정을 위협할 수 있음을 보여주었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "실종",
+      "text_markdown": "실종"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 에브리의 실종은 해적 역사의 위대한 미해결 미스터리 중 하나입니다.",
+      "text_markdown": "헨리 에브리의 실종은 해적 역사의 위대한 미해결 미스터리 중 하나입니다.",
+      "tts": {
+        "text": "헨리 에브리의 실종은 해적 역사의 위대한 미해결 미스터리 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바하마를 떠난 후, 그는 다시는 확실하게 목격되지 않았습니다.",
+      "text_markdown": "바하마를 떠난 후, 그는 다시는 확실하게 목격되지 않았습니다.",
+      "tts": {
+        "text": "바하마를 떠난 후, 그는 다시는 확실하게 목격되지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사학자들은 그에게 무슨 일이 있었는지에 대해 많은 이론을 제시했지만, 어느 것도 증명할 수 없습니다.",
+      "text_markdown": "역사학자들은 그에게 무슨 일이 있었는지에 대해 많은 이론을 제시했지만, 어느 것도 증명할 수 없습니다.",
+      "tts": {
+        "text": "역사학자들은 그에게 무슨 일이 있었는지에 대해 많은 이론을 제시했지만, 어느 것도 증명할 수 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한 이론은 에브리가 가명으로 잉글랜드로 돌아갔다고 합니다.",
+      "text_markdown": "한 이론은 에브리가 가명으로 잉글랜드로 돌아갔다고 합니다.",
+      "tts": {
+        "text": "한 이론은 에브리가 가명으로 잉글랜드로 돌아갔다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드는 큰 나라였고, 돈이 있는 사람은 런던 같은 도시에 쉽게 섞여들 수 있었습니다.",
+      "text_markdown": "잉글랜드는 큰 나라였고, 돈이 있는 사람은 런던 같은 도시에 쉽게 섞여들 수 있었습니다.",
+      "tts": {
+        "text": "잉글랜드는 큰 나라였고, 돈이 있는 사람은 런던 같은 도시에 쉽게 섞여들 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사치스런 소비를 피했다면, 조용한 무명 속에서 여생을 보냈을 수 있습니다.",
+      "text_markdown": "사치스런 소비를 피했다면, 조용한 무명 속에서 여생을 보냈을 수 있습니다.",
+      "tts": {
+        "text": "사치스런 소비를 피했다면, 조용한 무명 속에서 여생을 보냈을 수 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이것은 보다 그럴듯한 이론 중 하나로 여겨집니다.",
+      "text_markdown": "이것은 보다 그럴듯한 이론 중 하나로 여겨집니다.",
+      "tts": {
+        "text": "이것은 보다 그럴듯한 이론 중 하나로 여겨집니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또 다른 이론은 에브리가 아일랜드로 갔다고 주장합니다.",
+      "text_markdown": "또 다른 이론은 에브리가 아일랜드로 갔다고 주장합니다.",
+      "tts": {
+        "text": "또 다른 이론은 에브리가 아일랜드로 갔다고 주장합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아일랜드는 잉글랜드보다 느슨하게 통제되었고, 항구는 대서양 횡단 항해로 분주했습니다.",
+      "text_markdown": "아일랜드는 잉글랜드보다 느슨하게 통제되었고, 항구는 대서양 횡단 항해로 분주했습니다.",
+      "tts": {
+        "text": "아일랜드는 잉글랜드보다 느슨하게 통제되었고, 항구는 대서양 횡단 항해로 분주했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "부유한 이방인은 그곳에서 더 적은 주목을 끌었을 것입니다.",
+      "text_markdown": "부유한 이방인은 그곳에서 더 적은 주목을 끌었을 것입니다.",
+      "tts": {
+        "text": "부유한 이방인은 그곳에서 더 적은 주목을 끌었을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "일부 기록은 그를 항구 도시 코크에 놓습니다.",
+      "text_markdown": "일부 기록은 그를 항구 도시 코크에 놓습니다.",
+      "tts": {
+        "text": "일부 기록은 그를 항구 도시 코크에 놓습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세 번째 이론은 에브리가 동아프리카 해안이나 마다가스카르로 갔다고 합니다.",
+      "text_markdown": "세 번째 이론은 에브리가 동아프리카 해안이나 마다가스카르로 갔다고 합니다.",
+      "tts": {
+        "text": "세 번째 이론은 에브리가 동아프리카 해안이나 마다가스카르로 갔다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 해적들이 마다가스카르에서 은퇴하여 현지 주민들 사이에서 살았습니다.",
+      "text_markdown": "많은 해적들이 마다가스카르에서 은퇴하여 현지 주민들 사이에서 살았습니다.",
+      "tts": {
+        "text": "많은 해적들이 마다가스카르에서 은퇴하여 현지 주민들 사이에서 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 현지 여성과 결혼하여 소규모 족장이 되기도 했습니다.",
+      "text_markdown": "일부는 현지 여성과 결혼하여 소규모 족장이 되기도 했습니다.",
+      "tts": {
+        "text": "일부는 현지 여성과 결혼하여 소규모 족장이 되기도 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리는 막대한 재산으로 그런 곳에서 편안하게 살 수 있었을 것입니다.",
+      "text_markdown": "에브리는 막대한 재산으로 그런 곳에서 편안하게 살 수 있었을 것입니다.",
+      "tts": {
+        "text": "에브리는 막대한 재산으로 그런 곳에서 편안하게 살 수 있었을 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 낭만적인 이론은 에브리가 가난 속에서 죽었다고 합니다.",
+      "text_markdown": "가장 낭만적인 이론은 에브리가 가난 속에서 죽었다고 합니다.",
+      "tts": {
+        "text": "가장 낭만적인 이론은 에브리가 가난 속에서 죽었다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 기록에 따르면, 그는 훔친 보석을 처리한 브리스톨 상인들에게 사기를 당했습니다.",
+      "text_markdown": "이 기록에 따르면, 그는 훔친 보석을 처리한 브리스톨 상인들에게 사기를 당했습니다.",
+      "tts": {
+        "text": "이 기록에 따르면, 그는 훔친 보석을 처리한 브리스톨 상인들에게 사기를 당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 보석의 실제 가치보다 훨씬 적은 금액을 주었고, 그에게는 법적 구제 방법이 없었습니다.",
+      "text_markdown": "그들은 보석의 실제 가치보다 훨씬 적은 금액을 주었고, 그에게는 법적 구제 방법이 없었습니다.",
+      "tts": {
+        "text": "그들은 보석의 실제 가치보다 훨씬 적은 금액을 주었고, 그에게는 법적 구제 방법이 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "자신이 훔친 재산에 접근하지 못한 채 빈털터리로 죽었다고 합니다.",
+      "text_markdown": "자신이 훔친 재산에 접근하지 못한 채 빈털터리로 죽었다고 합니다.",
+      "tts": {
+        "text": "자신이 훔친 재산에 접근하지 못한 채 빈털터리로 죽었다고 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 빈곤 이야기는 에브리의 실종 수십 년 후에 출판된 책에서 처음 등장했습니다.",
+      "text_markdown": "이 빈곤 이야기는 에브리의 실종 수십 년 후에 출판된 책에서 처음 등장했습니다.",
+      "tts": {
+        "text": "이 빈곤 이야기는 에브리의 실종 수십 년 후에 출판된 책에서 처음 등장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대부분의 역사학자들은 이를 신뢰할 수 없다고 봅니다.",
+      "text_markdown": "대부분의 역사학자들은 이를 신뢰할 수 없다고 봅니다.",
+      "tts": {
+        "text": "대부분의 역사학자들은 이를 신뢰할 수 없다고 봅니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "범죄는 결국 대가를 치른다는 교훈적 이야기로 만들어졌을 수 있습니다.",
+      "text_markdown": "범죄는 결국 대가를 치른다는 교훈적 이야기로 만들어졌을 수 있습니다.",
+      "tts": {
+        "text": "범죄는 결국 대가를 치른다는 교훈적 이야기로 만들어졌을 수 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "진실은 헨리 에브리에게 무슨 일이 일어났는지 아무도 모른다는 것입니다.",
+      "text_markdown": "진실은 헨리 에브리에게 무슨 일이 일어났는지 아무도 모른다는 것입니다.",
+      "tts": {
+        "text": "진실은 헨리 에브리에게 무슨 일이 일어났는지 아무도 모른다는 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "확실한 것은 그가 완전히 법의 심판을 피했다는 것입니다.",
+      "text_markdown": "확실한 것은 그가 완전히 법의 심판을 피했다는 것입니다.",
+      "tts": {
+        "text": "확실한 것은 그가 완전히 법의 심판을 피했다는 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 황금시대의 주요 해적 중 유일하게 체포되지 않고, 전투에서 죽지 않고, 재판에 서지 않은 인물이었습니다.",
+      "text_markdown": "그는 황금시대의 주요 해적 중 유일하게 체포되지 않고, 전투에서 죽지 않고, 재판에 서지 않은 인물이었습니다.",
+      "tts": {
+        "text": "그는 황금시대의 주요 해적 중 유일하게 체포되지 않고, 전투에서 죽지 않고, 재판에 서지 않은 인물이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 체제를 완전히 이겼습니다.",
+      "text_markdown": "그는 체제를 완전히 이겼습니다.",
+      "tts": {
+        "text": "그는 체제를 완전히 이겼습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 정부는 결국 수색을 포기했습니다.",
+      "text_markdown": "영국 정부는 결국 수색을 포기했습니다.",
+      "tts": {
+        "text": "영국 정부는 결국 수색을 포기했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다른 해적들이 떠오르고 쓰러졌으며, 다른 위기들이 주의를 요했습니다.",
+      "text_markdown": "다른 해적들이 떠오르고 쓰러졌으며, 다른 위기들이 주의를 요했습니다.",
+      "tts": {
+        "text": "다른 해적들이 떠오르고 쓰러졌으며, 다른 위기들이 주의를 요했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "에브리는 공식적인 관심에서 사라졌지만, 그의 전설은 커져만 갔습니다.",
+      "text_markdown": "에브리는 공식적인 관심에서 사라졌지만, 그의 전설은 커져만 갔습니다.",
+      "tts": {
+        "text": "에브리는 공식적인 관심에서 사라졌지만, 그의 전설은 커져만 갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "체포된 선원들은 재판 중에 일부 정보를 제공했습니다.",
+      "text_markdown": "체포된 선원들은 재판 중에 일부 정보를 제공했습니다.",
+      "tts": {
+        "text": "체포된 선원들은 재판 중에 일부 정보를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 간지 이 사와이호에 대한 공격과 보물 분배에 대해 묘사했습니다.",
+      "text_markdown": "그들은 간지 이 사와이호에 대한 공격과 보물 분배에 대해 묘사했습니다.",
+      "tts": {
+        "text": "그들은 간지 이 사와이호에 대한 공격과 보물 분배에 대해 묘사했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 그들 중 누구도 바하마 이후 에브리가 어디로 갔는지 알지 못했습니다.",
+      "text_markdown": "그러나 그들 중 누구도 바하마 이후 에브리가 어디로 갔는지 알지 못했습니다.",
+      "tts": {
+        "text": "그러나 그들 중 누구도 바하마 이후 에브리가 어디로 갔는지 알지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아는 사람이 있었더라도, 그 비밀을 무덤까지 가져갔습니다.",
+      "text_markdown": "아는 사람이 있었더라도, 그 비밀을 무덤까지 가져갔습니다.",
+      "tts": {
+        "text": "아는 사람이 있었더라도, 그 비밀을 무덤까지 가져갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리에 대한 수색은 국제법에서 중요한 선례를 확립했습니다.",
+      "text_markdown": "에브리에 대한 수색은 국제법에서 중요한 선례를 확립했습니다.",
+      "tts": {
+        "text": "에브리에 대한 수색은 국제법에서 중요한 선례를 확립했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정부들이 범죄자를 추적하기 위해 국경을 넘어 협력한 최초의 사례 중 하나였습니다.",
+      "text_markdown": "정부들이 범죄자를 추적하기 위해 국경을 넘어 협력한 최초의 사례 중 하나였습니다.",
+      "tts": {
+        "text": "정부들이 범죄자를 추적하기 위해 국경을 넘어 협력한 최초의 사례 중 하나였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "현상금 제도, 제보자에 대한 사면, 수배 통보의 전 세계 배포는 모두 혁신이었습니다.",
+      "text_markdown": "현상금 제도, 제보자에 대한 사면, 수배 통보의 전 세계 배포는 모두 혁신이었습니다.",
+      "tts": {
+        "text": "현상금 제도, 제보자에 대한 사면, 수배 통보의 전 세계 배포는 모두 혁신이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "헨리 에브리의 범죄는 국제 형사 사법의 현대적 틀을 만드는 데 기여했습니다.",
+      "text_markdown": "헨리 에브리의 범죄는 국제 형사 사법의 현대적 틀을 만드는 데 기여했습니다.",
+      "tts": {
+        "text": "헨리 에브리의 범죄는 국제 형사 사법의 현대적 틀을 만드는 데 기여했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2023년, 로드아일랜드의 고고학자들이 아랍 동전 컬렉션을 발견했습니다.",
+      "text_markdown": "2023년, 로드아일랜드의 고고학자들이 아랍 동전 컬렉션을 발견했습니다.",
+      "tts": {
+        "text": "이천이십삼 년, 로드아일랜드의 고고학자들이 아랍 동전 컬렉션을 발견했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동전들은 올바른 시대의 것이며 무굴 제국의 것으로 보입니다.",
+      "text_markdown": "동전들은 올바른 시대의 것이며 무굴 제국의 것으로 보입니다.",
+      "tts": {
+        "text": "동전들은 올바른 시대의 것이며 무굴 제국의 것으로 보입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사학자들은 그것이 간지 이 사와이호 보물의 일부일 수 있다고 믿습니다.",
+      "text_markdown": "역사학자들은 그것이 간지 이 사와이호 보물의 일부일 수 있다고 믿습니다.",
+      "tts": {
+        "text": "역사학자들은 그것이 간지 이 사와이호 보물의 일부일 수 있다고 믿습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "실종",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 동전들은 에브리의 선원들이 훔친 재산을 아메리카 식민지로 가져왔다는 물적 증거입니다.",
+      "text_markdown": "이 동전들은 에브리의 선원들이 훔친 재산을 아메리카 식민지로 가져왔다는 물적 증거입니다.",
+      "tts": {
+        "text": "이 동전들은 에브리의 선원들이 훔친 재산을 아메리카 식민지로 가져왔다는 물적 증거입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적왕의 유산",
+      "text_markdown": "해적왕의 유산"
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 에브리의 이야기는 즉시 대중의 상상력을 사로잡았습니다.",
+      "text_markdown": "헨리 에브리의 이야기는 즉시 대중의 상상력을 사로잡았습니다.",
+      "tts": {
+        "text": "헨리 에브리의 이야기는 즉시 대중의 상상력을 사로잡았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1713년에 런던에서 '성공한 해적'이라는 연극이 공연되었습니다.",
+      "text_markdown": "1713년에 런던에서 '성공한 해적'이라는 연극이 공연되었습니다.",
+      "tts": {
+        "text": "천칠백십삼 년에 런던에서 성공한 해적이라는 연극이 공연되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "에브리의 모험을 극적으로 묘사하고 그를 낭만적인 반역자로 그렸습니다.",
+      "text_markdown": "에브리의 모험을 극적으로 묘사하고 그를 낭만적인 반역자로 그렸습니다.",
+      "tts": {
+        "text": "에브리의 모험을 극적으로 묘사하고 그를 낭만적인 반역자로 그렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 연극은 대단히 인기가 많았고 여러 차례 공연되었습니다.",
+      "text_markdown": "이 연극은 대단히 인기가 많았고 여러 차례 공연되었습니다.",
+      "tts": {
+        "text": "이 연극은 대단히 인기가 많았고 여러 차례 공연되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리는 대중적 상상 속에서 민중의 영웅이 되었습니다.",
+      "text_markdown": "에브리는 대중적 상상 속에서 민중의 영웅이 되었습니다.",
+      "tts": {
+        "text": "에브리는 대중적 상상 속에서 민중의 영웅이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그에 대한 발라드가 잉글랜드 전역의 술집에서 불렸습니다.",
+      "text_markdown": "그에 대한 발라드가 잉글랜드 전역의 술집에서 불렸습니다.",
+      "tts": {
+        "text": "그에 대한 발라드가 잉글랜드 전역의 술집에서 불렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유명한 발라드 하나는 위대한 황제를 굴복시킨 해적의 왕으로 그를 묘사했습니다.",
+      "text_markdown": "유명한 발라드 하나는 위대한 황제를 굴복시킨 해적의 왕으로 그를 묘사했습니다.",
+      "tts": {
+        "text": "유명한 발라드 하나는 위대한 황제를 굴복시킨 해적의 왕으로 그를 묘사했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "엄격한 신분 제도의 시대에, 그의 이야기는 자유와 부를 꿈꾸는 평범한 사람들에게 호소했습니다.",
+      "text_markdown": "엄격한 신분 제도의 시대에, 그의 이야기는 자유와 부를 꿈꾸는 평범한 사람들에게 호소했습니다.",
+      "tts": {
+        "text": "엄격한 신분 제도의 시대에, 그의 이야기는 자유와 부를 꿈꾸는 평범한 사람들에게 호소했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리의 성공은 그의 뒤를 따른 한 세대의 해적들에게 영감을 주었습니다.",
+      "text_markdown": "에브리의 성공은 그의 뒤를 따른 한 세대의 해적들에게 영감을 주었습니다.",
+      "tts": {
+        "text": "에브리의 성공은 그의 뒤를 따른 한 세대의 해적들에게 영감을 주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 유명한 습격 이후 인도양의 파이럿 라운드는 자주 다니는 항로가 되었습니다.",
+      "text_markdown": "그의 유명한 습격 이후 인도양의 파이럿 라운드는 자주 다니는 항로가 되었습니다.",
+      "tts": {
+        "text": "그의 유명한 습격 이후 인도양의 파이럿 라운드는 자주 다니는 항로가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "윌리엄 키드, 로버트 컬리포드 등의 해적들이 에브리의 성공을 재현하려 했습니다.",
+      "text_markdown": "윌리엄 키드, 로버트 컬리포드 등의 해적들이 에브리의 성공을 재현하려 했습니다.",
+      "tts": {
+        "text": "윌리엄 키드, 로버트 컬리포드 등의 해적들이 에브리의 성공을 재현하려 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아무도 그의 업적에 필적하지 못했고, 대부분 폭력적이거나 불명예스러운 최후를 맞았습니다.",
+      "text_markdown": "아무도 그의 업적에 필적하지 못했고, 대부분 폭력적이거나 불명예스러운 최후를 맞았습니다.",
+      "tts": {
+        "text": "아무도 그의 업적에 필적하지 못했고, 대부분 폭력적이거나 불명예스러운 최후를 맞았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리의 습격이 가져온 외교적 결과는 수십 년간 지속되었습니다.",
+      "text_markdown": "에브리의 습격이 가져온 외교적 결과는 수십 년간 지속되었습니다.",
+      "tts": {
+        "text": "에브리의 습격이 가져온 외교적 결과는 수십 년간 지속되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동인도 회사는 해적 진압을 진지하게 받아들일 수밖에 없었습니다.",
+      "text_markdown": "동인도 회사는 해적 진압을 진지하게 받아들일 수밖에 없었습니다.",
+      "tts": {
+        "text": "동인도 회사는 해적 진압을 진지하게 받아들일 수밖에 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "인도양 선박에 대한 해군 호위 자금 지원을 시작했습니다.",
+      "text_markdown": "인도양 선박에 대한 해군 호위 자금 지원을 시작했습니다.",
+      "tts": {
+        "text": "인도양 선박에 대한 해군 호위 자금 지원을 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 해적 토벌 작전은 궁극적으로 회사가 인도 무역에 대한 통제를 강화하는 데 기여했습니다.",
+      "text_markdown": "이러한 해적 토벌 작전은 궁극적으로 회사가 인도 무역에 대한 통제를 강화하는 데 기여했습니다.",
+      "tts": {
+        "text": "이러한 해적 토벌 작전은 궁극적으로 회사가 인도 무역에 대한 통제를 강화하는 데 기여했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 역사학자들은 에브리의 습격이 실제로 인도에서의 영국 식민지화를 가속시켰다고 주장합니다.",
+      "text_markdown": "일부 역사학자들은 에브리의 습격이 실제로 인도에서의 영국 식민지화를 가속시켰다고 주장합니다.",
+      "tts": {
+        "text": "일부 역사학자들은 에브리의 습격이 실제로 인도에서의 영국 식민지화를 가속시켰다고 주장합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "위기는 동인도 회사가 더 강력한 군사 역량을 구축하도록 강제했습니다.",
+      "text_markdown": "위기는 동인도 회사가 더 강력한 군사 역량을 구축하도록 강제했습니다.",
+      "tts": {
+        "text": "위기는 동인도 회사가 더 강력한 군사 역량을 구축하도록 강제했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 군사력은 나중에 해적뿐만 아니라 인도 국가들에 대해서도 사용되었습니다.",
+      "text_markdown": "이러한 군사력은 나중에 해적뿐만 아니라 인도 국가들에 대해서도 사용되었습니다.",
+      "tts": {
+        "text": "이러한 군사력은 나중에 해적뿐만 아니라 인도 국가들에 대해서도 사용되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리의 습격에서 시작된 일련의 사건들은 궁극적으로 영국의 인도 정복에 기여했습니다.",
+      "text_markdown": "에브리의 습격에서 시작된 일련의 사건들은 궁극적으로 영국의 인도 정복에 기여했습니다.",
+      "tts": {
+        "text": "에브리의 습격에서 시작된 일련의 사건들은 궁극적으로 영국의 인도 정복에 기여했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "에브리의 이야기는 역사상 가장 유명한 해적 소설에도 영향을 미쳤습니다.",
+      "text_markdown": "에브리의 이야기는 역사상 가장 유명한 해적 소설에도 영향을 미쳤습니다.",
+      "tts": {
+        "text": "에브리의 이야기는 역사상 가장 유명한 해적 소설에도 영향을 미쳤습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다니엘 디포는 자신의 소설 일부에 에브리의 삶에서 영감을 얻은 것으로 여겨집니다.",
+      "text_markdown": "다니엘 디포는 자신의 소설 일부에 에브리의 삶에서 영감을 얻은 것으로 여겨집니다.",
+      "tts": {
+        "text": "다니엘 디포는 자신의 소설 일부에 에브리의 삶에서 영감을 얻은 것으로 여겨집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "보물을 가지고 도망쳐 영원히 사라지는 해적이라는 발상은 모험 문학의 단골 소재가 되었습니다.",
+      "text_markdown": "보물을 가지고 도망쳐 영원히 사라지는 해적이라는 발상은 모험 문학의 단골 소재가 되었습니다.",
+      "tts": {
+        "text": "보물을 가지고 도망쳐 영원히 사라지는 해적이라는 발상은 모험 문학의 단골 소재가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "에브리의 실제 삶은 대부분의 허구적 해적 이야기보다 더 극적이었습니다.",
+      "text_markdown": "에브리의 실제 삶은 대부분의 허구적 해적 이야기보다 더 극적이었습니다.",
+      "tts": {
+        "text": "에브리의 실제 삶은 대부분의 허구적 해적 이야기보다 더 극적이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "헨리 에브리는 해적의 역사에서 독보적인 존재로 남아 있습니다.",
+      "text_markdown": "헨리 에브리는 해적의 역사에서 독보적인 존재로 남아 있습니다.",
+      "tts": {
+        "text": "헨리 에브리는 해적의 역사에서 독보적인 존재로 남아 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 황금시대에서 가장 부유한 단일 해적 행위를 저질렀습니다.",
+      "text_markdown": "그는 황금시대에서 가장 부유한 단일 해적 행위를 저질렀습니다.",
+      "tts": {
+        "text": "그는 황금시대에서 가장 부유한 단일 해적 행위를 저질렀습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "두 제국을 뒤흔든 국제적 위기를 일으켰습니다.",
+      "text_markdown": "두 제국을 뒤흔든 국제적 위기를 일으켰습니다.",
+      "tts": {
+        "text": "두 제국을 뒤흔든 국제적 위기를 일으켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "해적왕의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 그는 비밀을 안고 미지의 세계로 그냥 사라졌습니다.",
+      "text_markdown": "그리고 그는 비밀을 안고 미지의 세계로 그냥 사라졌습니다.",
+      "tts": {
+        "text": "그리고 그는 비밀을 안고 미지의 세계로 그냥 사라졌습니다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

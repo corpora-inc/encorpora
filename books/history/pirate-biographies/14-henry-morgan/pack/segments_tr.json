@@ -1,0 +1,4607 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_morgan",
+  "language": "tr",
+  "total_segments": 308,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Karayip tarihinin en başarılı korsanı Henry Morgan'ın hikâyesidir.",
+      "text_markdown": "Bu, Karayip tarihinin en başarılı korsanı Henry Morgan'ın hikâyesidir.",
+      "tts": {
+        "text": "Bu, Karayip tarihinin en başarılı korsanı Henry Morgan'ın hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol imparatorluğunun en zengin şehirlerini yağmaladı ve bunun için hiçbir zaman cezalandırılmadı.",
+      "text_markdown": "İspanyol imparatorluğunun en zengin şehirlerini yağmaladı ve bunun için hiçbir zaman cezalandırılmadı.",
+      "tts": {
+        "text": "İspanyol imparatorluğunun en zengin şehirlerini yağmaladı ve bunun için hiçbir zaman cezalandırılmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, korsanlık ile vatanseverlik arasındaki çizginin kasıtlı olarak bulanıklaştırıldığı bir dönemde yaşadı.",
+      "text_markdown": "Morgan, korsanlık ile vatanseverlik arasındaki çizginin kasıtlı olarak bulanıklaştırıldığı bir dönemde yaşadı.",
+      "tts": {
+        "text": "Morgan, korsanlık ile vatanseverlik arasındaki çizginin kasıtlı olarak bulanıklaştırıldığı bir dönemde yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere, açık savaş ilan etmeden İspanya'yı zayıflatmak için onun gibi adamları kullandı.",
+      "text_markdown": "İngiltere, açık savaş ilan etmeden İspanya'yı zayıflatmak için onun gibi adamları kullandı.",
+      "tts": {
+        "text": "İngiltere, açık savaş ilan etmeden İspanya'yı zayıflatmak için onun gibi adamları kullandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kasabalara baskın düzenledi, şehirleri yaktı ve gizli altın hakkında bilgi almak için esirlere işkence yaptı.",
+      "text_markdown": "Kasabalara baskın düzenledi, şehirleri yaktı ve gizli altın hakkında bilgi almak için esirlere işkence yaptı.",
+      "tts": {
+        "text": "Kasabalara baskın düzenledi, şehirleri yaktı ve gizli altın hakkında bilgi almak için esirlere işkence yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yine de Krallık Şövalyesi ve Jamaika Vali Yardımcısı Sir Henry Morgan olarak öldü.",
+      "text_markdown": "Yine de Krallık Şövalyesi ve Jamaika Vali Yardımcısı Sir Henry Morgan olarak öldü.",
+      "tts": {
+        "text": "Yine de Krallık Şövalyesi ve Jamaika Vali Yardımcısı Sir Henry Morgan olarak öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi; şiddet, imparatorluk ve güçlü uluslara hizmet edenlere verilen ödüller hakkında zor sorular ortaya koymaktadır.",
+      "text_markdown": "Hikâyesi; şiddet, imparatorluk ve güçlü uluslara hizmet edenlere verilen ödüller hakkında zor sorular ortaya koymaktadır.",
+      "tts": {
+        "text": "Hikâyesi; şiddet, imparatorluk ve güçlü uluslara hizmet edenlere verilen ödüller hakkında zor sorular ortaya koymaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada anlatılan olaylar, mahkeme tutanakları ve görgü tanığı ifadeleri dahil tarihî kaynaklara dayanmaktadır.",
+      "text_markdown": "Burada anlatılan olaylar, mahkeme tutanakları ve görgü tanığı ifadeleri dahil tarihî kaynaklara dayanmaktadır.",
+      "tts": {
+        "text": "Burada anlatılan olaylar, mahkeme tutanakları ve görgü tanığı ifadeleri dahil tarihî kaynaklara dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayrıntıların belirsiz olduğu yerlerde metin bunu açıkça belirtir.",
+      "text_markdown": "Ayrıntıların belirsiz olduğu yerlerde metin bunu açıkça belirtir.",
+      "tts": {
+        "text": "Ayrıntıların belirsiz olduğu yerlerde metin bunu açıkça belirtir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Onu Yaratan Dünya",
+      "text_markdown": "Onu Yaratan Dünya"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On yedinci yüzyılda Karayip Denizi, Dünya'nın en çekişmeli su kütlesiydi.",
+      "text_markdown": "On yedinci yüzyılda Karayip Denizi, Dünya'nın en çekişmeli su kütlesiydi.",
+      "tts": {
+        "text": "On yedinci yüzyılda Karayip Denizi, Dünya'nın en çekişmeli su kütlesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya, İngiltere, Fransa ve Hollanda bölgedeki adalar ve kıyı şeritleri üzerinde hak iddia ediyordu.",
+      "text_markdown": "İspanya, İngiltere, Fransa ve Hollanda bölgedeki adalar ve kıyı şeritleri üzerinde hak iddia ediyordu.",
+      "tts": {
+        "text": "İspanya, İngiltere, Fransa ve Hollanda bölgedeki adalar ve kıyı şeritleri üzerinde hak iddia ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her ulus kaleler inşa etti, koloniler kurdu ve topraklarını savunmak için savaş gemileri gönderdi.",
+      "text_markdown": "Her ulus kaleler inşa etti, koloniler kurdu ve topraklarını savunmak için savaş gemileri gönderdi.",
+      "tts": {
+        "text": "Her ulus kaleler inşa etti, koloniler kurdu ve topraklarını savunmak için savaş gemileri gönderdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya ilk gelen olmuş ve en büyük payı talep etmişti.",
+      "text_markdown": "İspanya ilk gelen olmuş ve en büyük payı talep etmişti.",
+      "tts": {
+        "text": "İspanya ilk gelen olmuş ve en büyük payı talep etmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İmparatorluğu Meksika'dan Peru'ya, Küba'dan Filipinler'e kadar uzanıyordu.",
+      "text_markdown": "İmparatorluğu Meksika'dan Peru'ya, Küba'dan Filipinler'e kadar uzanıyordu.",
+      "tts": {
+        "text": "İmparatorluğu Meksika'dan Peru'ya, Küba'dan Filipinler'e kadar uzanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her yıl hazine filoları, Amerika kıtasından Sevilla'ya gümüş ve altın taşırdı.",
+      "text_markdown": "Her yıl hazine filoları, Amerika kıtasından Sevilla'ya gümüş ve altın taşırdı.",
+      "tts": {
+        "text": "Her yıl hazine filoları, Amerika kıtasından Sevilla'ya gümüş ve altın taşırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu zenginlik İspanya'yı bir asırdan fazla süre boyunca Avrupa'nın en zengin ulusu yaptı.",
+      "text_markdown": "Bu zenginlik İspanya'yı bir asırdan fazla süre boyunca Avrupa'nın en zengin ulusu yaptı.",
+      "tts": {
+        "text": "Bu zenginlik İspanya'yı bir asırdan fazla süre boyunca Avrupa'nın en zengin ulusu yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama aynı zamanda İspanya'yı bir hedef haline getirdi.",
+      "text_markdown": "Ama aynı zamanda İspanya'yı bir hedef haline getirdi.",
+      "tts": {
+        "text": "Ama aynı zamanda İspanya'yı bir hedef haline getirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyollar tüm Karayipleri kendi münhasır alanları olarak talep ediyordu.",
+      "text_markdown": "İspanyollar tüm Karayipleri kendi münhasır alanları olarak talep ediyordu.",
+      "tts": {
+        "text": "İspanyollar tüm Karayipleri kendi münhasır alanları olarak talep ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başka hiçbir ulusun bu sularda ticaret yapma, yerleşme veya seyrüsefer hakkı olmadığını savunuyorlardı.",
+      "text_markdown": "Başka hiçbir ulusun bu sularda ticaret yapma, yerleşme veya seyrüsefer hakkı olmadığını savunuyorlardı.",
+      "tts": {
+        "text": "Başka hiçbir ulusun bu sularda ticaret yapma, yerleşme veya seyrüsefer hakkı olmadığını savunuyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu iddia, 1493'te Yeni Dünya'yı İspanya ile Portekiz arasında paylaştıran bir papalık kararnamesine dayanıyordu.",
+      "text_markdown": "Bu iddia, 1493'te Yeni Dünya'yı İspanya ile Portekiz arasında paylaştıran bir papalık kararnamesine dayanıyordu.",
+      "tts": {
+        "text": "Bu iddia, bin dört yüz doksan üçte Yeni Dünya'yı İspanya ile Portekiz arasında paylaştıran bir papalık kararnamesine dayanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiltere, Fransa ve Hollanda bu kararnameyi tanımadı.",
+      "text_markdown": "İngiltere, Fransa ve Hollanda bu kararnameyi tanımadı.",
+      "tts": {
+        "text": "İngiltere, Fransa ve Hollanda bu kararnameyi tanımadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir papanın kıtaları bağışlama yetkisinin olmadığını savundular.",
+      "text_markdown": "Hiçbir papanın kıtaları bağışlama yetkisinin olmadığını savundular.",
+      "tts": {
+        "text": "Hiçbir papanın kıtaları bağışlama yetkisinin olmadığını savundular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu anlaşmazlık, Karayiplerde bir yüzyıllık savaşın temelinde yatıyordu.",
+      "text_markdown": "Bu anlaşmazlık, Karayiplerde bir yüzyıllık savaşın temelinde yatıyordu.",
+      "tts": {
+        "text": "Bu anlaşmazlık, Karayiplerde bir yüzyıllık savaşın temelinde yatıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiltere'nin ekonomisi, on yedinci yüzyılın başlarında İspanya'nınkinden çok daha küçüktü.",
+      "text_markdown": "İngiltere'nin ekonomisi, on yedinci yüzyılın başlarında İspanya'nınkinden çok daha küçüktü.",
+      "tts": {
+        "text": "İngiltere'nin ekonomisi, on yedinci yüzyılın başlarında İspanya'nınkinden çok daha küçüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karayiplerdeki İngiliz kolonileri fakir ve savunmasızdı.",
+      "text_markdown": "Karayiplerdeki İngiliz kolonileri fakir ve savunmasızdı.",
+      "tts": {
+        "text": "Karayiplerdeki İngiliz kolonileri fakir ve savunmasızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şeker, tütün ve İspanyollardan alabilecekleri her şeyle ayakta kalıyorlardı.",
+      "text_markdown": "Şeker, tütün ve İspanyollardan alabilecekleri her şeyle ayakta kalıyorlardı.",
+      "tts": {
+        "text": "Şeker, tütün ve İspanyollardan alabilecekleri her şeyle ayakta kalıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz hükümeti, İspanyol ticaretine ve yerleşimlerine yönelik saldırıları sessizce teşvik ediyordu.",
+      "text_markdown": "İngiliz hükümeti, İspanyol ticaretine ve yerleşimlerine yönelik saldırıları sessizce teşvik ediyordu.",
+      "tts": {
+        "text": "İngiliz hükümeti, İspanyol ticaretine ve yerleşimlerine yönelik saldırıları sessizce teşvik ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir korsan, corso mektubu denilen yasal bir belge verilen özel bir vatandaştı.",
+      "text_markdown": "Bir korsan, corso mektubu denilen yasal bir belge verilen özel bir vatandaştı.",
+      "tts": {
+        "text": "Bir korsan, corso mektubu denilen yasal bir belge verilen özel bir vatandaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu mektup onu, ülkesi adına düşman gemilerine saldırma yetkisi veriyordu.",
+      "text_markdown": "Bu mektup onu, ülkesi adına düşman gemilerine saldırma yetkisi veriyordu.",
+      "tts": {
+        "text": "Bu mektup onu, ülkesi adına düşman gemilerine saldırma yetkisi veriyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir korsan ile bir haydut arasındaki fark sadece bir parça kâğıttı.",
+      "text_markdown": "Bir korsan ile bir haydut arasındaki fark sadece bir parça kâğıttı.",
+      "tts": {
+        "text": "Bir korsan ile bir haydut arasındaki fark sadece bir parça kâğıttı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mektup olmadan suçluydunuz.",
+      "text_markdown": "Mektup olmadan suçluydunuz.",
+      "tts": {
+        "text": "Mektup olmadan suçluydunuz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mektupla vatanseverdiniz.",
+      "text_markdown": "Mektupla vatanseverdiniz.",
+      "tts": {
+        "text": "Mektupla vatanseverdiniz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jamaika, İngiltere'nin Karayiplerdeki en önemli toprağıydı.",
+      "text_markdown": "Jamaika, İngiltere'nin Karayiplerdeki en önemli toprağıydı.",
+      "tts": {
+        "text": "Jamaika, İngiltere'nin Karayiplerdeki en önemli toprağıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere onu 1655'te İspanya'dan almıştı, Morgan'ın gelişinden sadece on yıl önce.",
+      "text_markdown": "İngiltere onu 1655'te İspanya'dan almıştı, Morgan'ın gelişinden sadece on yıl önce.",
+      "tts": {
+        "text": "İngiltere onu bin altı yüz elli beşte İspanya'dan almıştı, Morgan'ın gelişinden sadece on yıl önce.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada hâlâ zayıf savunuluyordu ve az gelişmişti.",
+      "text_markdown": "Ada hâlâ zayıf savunuluyordu ve az gelişmişti.",
+      "tts": {
+        "text": "Ada hâlâ zayıf savunuluyordu ve az gelişmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başkenti Port Royal, Kingston Limanı'nın girişindeki dar bir kum şeridinde yer alıyordu.",
+      "text_markdown": "Başkenti Port Royal, Kingston Limanı'nın girişindeki dar bir kum şeridinde yer alıyordu.",
+      "tts": {
+        "text": "Başkenti Port Royal, Kingston Limanı'nın girişindeki dar bir kum şeridinde yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehir kalabalık, gürültülü ve tavernalar ile kumarhânelerle doluydu.",
+      "text_markdown": "Şehir kalabalık, gürültülü ve tavernalar ile kumarhânelerle doluydu.",
+      "tts": {
+        "text": "Şehir kalabalık, gürültülü ve tavernalar ile kumarhânelerle doluydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Port Royal, Dünya'nın en günahkâr şehri olarak tanındı.",
+      "text_markdown": "Port Royal, Dünya'nın en günahkâr şehri olarak tanındı.",
+      "tts": {
+        "text": "Port Royal, Dünya'nın en günahkâr şehri olarak tanındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar ganimetlerini orada rom, kadın ve zar için harcarlardı.",
+      "text_markdown": "Korsanlar ganimetlerini orada rom, kadın ve zar için harcarlardı.",
+      "tts": {
+        "text": "Korsanlar ganimetlerini orada rom, kadın ve zar için harcarlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir adam bir gecede bir servet saçabilir ve bir hafta içinde denize dönebilirdi.",
+      "text_markdown": "Bir adam bir gecede bir servet saçabilir ve bir hafta içinde denize dönebilirdi.",
+      "tts": {
+        "text": "Bir adam bir gecede bir servet saçabilir ve bir hafta içinde denize dönebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jamaika valileri savunma için korsanlara bağımlıydı.",
+      "text_markdown": "Jamaika valileri savunma için korsanlara bağımlıydı.",
+      "tts": {
+        "text": "Jamaika valileri savunma için korsanlara bağımlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adanın bir İspanyol saldırısını püskürtecek kadar güçlü bir donanması yoktu.",
+      "text_markdown": "Adanın bir İspanyol saldırısını püskürtecek kadar güçlü bir donanması yoktu.",
+      "tts": {
+        "text": "Adanın bir İspanyol saldırısını püskürtecek kadar güçlü bir donanması yoktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu yüzden valiler corso mektupları düzenliyor ve savaşı korsanlara bırakıyordu.",
+      "text_markdown": "Bu yüzden valiler corso mektupları düzenliyor ve savaşı korsanlara bırakıyordu.",
+      "tts": {
+        "text": "Bu yüzden valiler corso mektupları düzenliyor ve savaşı korsanlara bırakıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar İngiliz, Fransız, Hollandalı ve Afrikalı denizcilerden oluşan karma bir gruptu.",
+      "text_markdown": "Korsanlar İngiliz, Fransız, Hollandalı ve Afrikalı denizcilerden oluşan karma bir gruptu.",
+      "tts": {
+        "text": "Korsanlar İngiliz, Fransız, Hollandalı ve Afrikalı denizcilerden oluşan karma bir gruptu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğu eski sözleşmeli hizmetkâr veya kaçak köleydi.",
+      "text_markdown": "Çoğu eski sözleşmeli hizmetkâr veya kaçak köleydi.",
+      "tts": {
+        "text": "Çoğu eski sözleşmeli hizmetkâr veya kaçak köleydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zorlu hayatlar yaşıyorlardı ve kaybedecek çok az şeyleri vardı.",
+      "text_markdown": "Zorlu hayatlar yaşıyorlardı ve kaybedecek çok az şeyleri vardı.",
+      "tts": {
+        "text": "Zorlu hayatlar yaşıyorlardı ve kaybedecek çok az şeyleri vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan sözcüğü, et tütsüleyen kişi anlamına gelen Fransızca boucanier kelimesinden gelir.",
+      "text_markdown": "Korsan sözcüğü, et tütsüleyen kişi anlamına gelen Fransızca boucanier kelimesinden gelir.",
+      "tts": {
+        "text": "Korsan sözcüğü, et tütsüleyen kişi anlamına gelen Fransızca boucanier kelimesinden gelir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İlk korsanlar, Hispaniola adasında yabani sığır ve domuz tütsüleyen avcılardı.",
+      "text_markdown": "İlk korsanlar, Hispaniola adasında yabani sığır ve domuz tütsüleyen avcılardı.",
+      "tts": {
+        "text": "İlk korsanlar, Hispaniola adasında yabani sığır ve domuz tütsüleyen avcılardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyollar onları kovunca, hayatta kalmak için denize yöneldiler.",
+      "text_markdown": "İspanyollar onları kovunca, hayatta kalmak için denize yöneldiler.",
+      "tts": {
+        "text": "İspanyollar onları kovunca, hayatta kalmak için denize yöneldiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1660'larda korsanlar zorlu bir savaş gücüne dönüşmüştü.",
+      "text_markdown": "1660'larda korsanlar zorlu bir savaş gücüne dönüşmüştü.",
+      "tts": {
+        "text": "Bin altı yüz altmışlarda korsanlar zorlu bir savaş gücüne dönüşmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüfekler, palaları ve ham cesaretle savaşıyorlardı.",
+      "text_markdown": "Tüfekler, palaları ve ham cesaretle savaşıyorlardı.",
+      "tts": {
+        "text": "Tüfekler, palaları ve ham cesaretle savaşıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemi ele geçirme ve tahkimli mevzilere saldırma konusunda ustaydılar.",
+      "text_markdown": "Gemi ele geçirme ve tahkimli mevzilere saldırma konusunda ustaydılar.",
+      "tts": {
+        "text": "Gemi ele geçirme ve tahkimli mevzilere saldırma konusunda ustaydılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya, Karayiplerdeki tüm yabancı varlığını yasadışı kabul ediyordu.",
+      "text_markdown": "İspanya, Karayiplerdeki tüm yabancı varlığını yasadışı kabul ediyordu.",
+      "tts": {
+        "text": "İspanya, Karayiplerdeki tüm yabancı varlığını yasadışı kabul ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyolların gözünde her İngiliz yerleşimci bir izinsiz girişçi, her İngiliz gemisi ise meşru avdı.",
+      "text_markdown": "İspanyolların gözünde her İngiliz yerleşimci bir izinsiz girişçi, her İngiliz gemisi ise meşru avdı.",
+      "tts": {
+        "text": "İspanyolların gözünde her İngiliz yerleşimci bir izinsiz girişçi, her İngiliz gemisi ise meşru avdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu karşılıklı düşmanlık, bitmek bilmeyen bir baskın ve misilleme döngüsü yarattı.",
+      "text_markdown": "Bu karşılıklı düşmanlık, bitmek bilmeyen bir baskın ve misilleme döngüsü yarattı.",
+      "tts": {
+        "text": "Bu karşılıklı düşmanlık, bitmek bilmeyen bir baskın ve misilleme döngüsü yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyollar İngiliz yerleşimlerine saldırdı, İngilizler ise İspanyol yerleşimlerine saldırdı.",
+      "text_markdown": "İspanyollar İngiliz yerleşimlerine saldırdı, İngilizler ise İspanyol yerleşimlerine saldırdı.",
+      "tts": {
+        "text": "İspanyollar İngiliz yerleşimlerine saldırdı, İngilizler ise İspanyol yerleşimlerine saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Onu Yaratan Dünya",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu şiddet dolu dünyaya Henry Morgan, fırsat arayan genç bir adam olarak geldi.",
+      "text_markdown": "Bu şiddet dolu dünyaya Henry Morgan, fırsat arayan genç bir adam olarak geldi.",
+      "tts": {
+        "text": "Bu şiddet dolu dünyaya Henry Morgan, fırsat arayan genç bir adam olarak geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Karayiplerde Bir Galliler",
+      "text_markdown": "Karayiplerde Bir Galliler"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan, 1635 civarında Güneydoğu Galler'deki bir köy olan Llanrumney'de doğdu.",
+      "text_markdown": "Henry Morgan, 1635 civarında Güneydoğu Galler'deki bir köy olan Llanrumney'de doğdu.",
+      "tts": {
+        "text": "Henry Morgan, bin altı yüz otuz beş civarında Güneydoğu Galler'deki bir köy olan Llanrumney'de doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ailesi Galli küçük soylulara mensuptu, bu da toprak sahibi olup yerel nüfuza sahip oldukları anlamına geliyordu.",
+      "text_markdown": "Ailesi Galli küçük soylulara mensuptu, bu da toprak sahibi olup yerel nüfuza sahip oldukları anlamına geliyordu.",
+      "tts": {
+        "text": "Ailesi Galli küçük soylulara mensuptu, bu da toprak sahibi olup yerel nüfuza sahip oldukları anlamına geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İki amcası İngiliz İç Savaşı sırasında subay olarak görev yapmıştı.",
+      "text_markdown": "İki amcası İngiliz İç Savaşı sırasında subay olarak görev yapmıştı.",
+      "tts": {
+        "text": "İki amcası İngiliz İç Savaşı sırasında subay olarak görev yapmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1630'larda Galler, Büyük Britanya'nın kırsal ve nispeten yoksul bir bölgesiydi.",
+      "text_markdown": "1630'larda Galler, Büyük Britanya'nın kırsal ve nispeten yoksul bir bölgesiydi.",
+      "tts": {
+        "text": "Bin altı yüz otuzlarda Galler, Büyük Britanya'nın kırsal ve nispeten yoksul bir bölgesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galli küçük soylular, büyük İngiliz toprak sahiplerine kıyasla mütevazı mülklere sahipti.",
+      "text_markdown": "Galli küçük soylular, büyük İngiliz toprak sahiplerine kıyasla mütevazı mülklere sahipti.",
+      "tts": {
+        "text": "Galli küçük soylular, büyük İngiliz toprak sahiplerine kıyasla mütevazı mülklere sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama askerlik hizmetini ve aile onurunu her şeyin üstünde tutuyorlardı.",
+      "text_markdown": "Ama askerlik hizmetini ve aile onurunu her şeyin üstünde tutuyorlardı.",
+      "tts": {
+        "text": "Ama askerlik hizmetini ve aile onurunu her şeyin üstünde tutuyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan'ın çocukluğu hakkında çok az şey bilinmektedir.",
+      "text_markdown": "Morgan'ın çocukluğu hakkında çok az şey bilinmektedir.",
+      "tts": {
+        "text": "Morgan'ın çocukluğu hakkında çok az şey bilinmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İlk yılları hakkında hiçbir zaman yazmadı ve hiçbir okul kaydı günümüze ulaşmadı.",
+      "text_markdown": "İlk yılları hakkında hiçbir zaman yazmadı ve hiçbir okul kaydı günümüze ulaşmadı.",
+      "tts": {
+        "text": "İlk yılları hakkında hiçbir zaman yazmadı ve hiçbir okul kaydı günümüze ulaşmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler, temel bir eğitim aldığına ancak üniversite görmediğine inanmaktadır.",
+      "text_markdown": "Tarihçiler, temel bir eğitim aldığına ancak üniversite görmediğine inanmaktadır.",
+      "tts": {
+        "text": "Tarihçiler, temel bir eğitim aldığına ancak üniversite görmediğine inanmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1650'lerin sonlarında bir noktada Morgan Karayiplere yelken açtı.",
+      "text_markdown": "1650'lerin sonlarında bir noktada Morgan Karayiplere yelken açtı.",
+      "tts": {
+        "text": "Bin altı yüz ellilerin sonlarında bir noktada Morgan Karayiplere yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oraya nasıl ulaştığı tartışmalıdır.",
+      "text_markdown": "Oraya nasıl ulaştığı tartışmalıdır.",
+      "tts": {
+        "text": "Oraya nasıl ulaştığı tartışmalıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir rivayete göre çocukken Bristol'da kaçırılmış ve Barbados'ta sözleşmeli hizmetkâr olarak satılmıştır.",
+      "text_markdown": "Bir rivayete göre çocukken Bristol'da kaçırılmış ve Barbados'ta sözleşmeli hizmetkâr olarak satılmıştır.",
+      "tts": {
+        "text": "Bir rivayete göre çocukken Bristol'da kaçırılmış ve Barbados'ta sözleşmeli hizmetkâr olarak satılmıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan'ın kendisi bunu daha sonra inkâr ederek iftira olarak nitelendirdi.",
+      "text_markdown": "Morgan'ın kendisi bunu daha sonra inkâr ederek iftira olarak nitelendirdi.",
+      "tts": {
+        "text": "Morgan'ın kendisi bunu daha sonra inkâr ederek iftira olarak nitelendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu iddiayı basan yayıncıya dava açtı ve tazminat kazandı.",
+      "text_markdown": "Bu iddiayı basan yayıncıya dava açtı ve tazminat kazandı.",
+      "tts": {
+        "text": "Bu iddiayı basan yayıncıya dava açtı ve tazminat kazandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha muhtemel bir açıklama, Morgan'ın Karayiplere asker olarak geldiğidir.",
+      "text_markdown": "Daha muhtemel bir açıklama, Morgan'ın Karayiplere asker olarak geldiğidir.",
+      "tts": {
+        "text": "Daha muhtemel bir açıklama, Morgan'ın Karayiplere asker olarak geldiğidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1655'te İngiltere, İspanyol topraklarını ele geçirmek için büyük bir askerî sefer gönderdi.",
+      "text_markdown": "1655'te İngiltere, İspanyol topraklarını ele geçirmek için büyük bir askerî sefer gönderdi.",
+      "tts": {
+        "text": "Bin altı yüz elli beşte İngiltere, İspanyol topraklarını ele geçirmek için büyük bir askerî sefer gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Filo Hispaniola'yı almayı başaramadı ama Jamaika'yı başarıyla ele geçirdi.",
+      "text_markdown": "Filo Hispaniola'yı almayı başaramadı ama Jamaika'yı başarıyla ele geçirdi.",
+      "tts": {
+        "text": "Filo Hispaniola'yı almayı başaramadı ama Jamaika'yı başarıyla ele geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu sefer Western Design olarak biliniyordu.",
+      "text_markdown": "Bu sefer Western Design olarak biliniyordu.",
+      "tts": {
+        "text": "Bu sefer Western Design olarak biliniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere Lord Protektörü Oliver Cromwell tarafından emredilmişti.",
+      "text_markdown": "İngiltere Lord Protektörü Oliver Cromwell tarafından emredilmişti.",
+      "tts": {
+        "text": "İngiltere Lord Protektörü Oliver Cromwell tarafından emredilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cromwell, İspanya'nın Karayipler üzerindeki hâkimiyetini kırmak ve İngiliz gücünü genişletmek istiyordu.",
+      "text_markdown": "Cromwell, İspanya'nın Karayipler üzerindeki hâkimiyetini kırmak ve İngiliz gücünü genişletmek istiyordu.",
+      "tts": {
+        "text": "Cromwell, İspanya'nın Karayipler üzerindeki hâkimiyetini kırmak ve İngiliz gücünü genişletmek istiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan bu seferin parçası olmuş veya kısa süre sonra gelmiş olabilir.",
+      "text_markdown": "Morgan bu seferin parçası olmuş veya kısa süre sonra gelmiş olabilir.",
+      "tts": {
+        "text": "Morgan bu seferin parçası olmuş veya kısa süre sonra gelmiş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her halükârda, 1660'ların başında Jamaika'da yerleşik hale gelmişti.",
+      "text_markdown": "Her halükârda, 1660'ların başında Jamaika'da yerleşik hale gelmişti.",
+      "tts": {
+        "text": "Her halükârda, bin altı yüz altmışların başında Jamaika'da yerleşik hale gelmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yetenekli ve hırslı bir savaşçı olduğunu hızla kanıtladı.",
+      "text_markdown": "Yetenekli ve hırslı bir savaşçı olduğunu hızla kanıtladı.",
+      "tts": {
+        "text": "Yetenekli ve hırslı bir savaşçı olduğunu hızla kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1663'te, Orta Amerika'daki İspanyol yerleşimlerine karşı bir korsan seferine katıldı.",
+      "text_markdown": "1663'te, Orta Amerika'daki İspanyol yerleşimlerine karşı bir korsan seferine katıldı.",
+      "tts": {
+        "text": "Bin altı yüz altmış üçte, Orta Amerika'daki İspanyol yerleşimlerine karşı bir korsan seferine katıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Akıncılar, günümüz Nikaragua ve Honduras kıyıları boyunca kasabalara saldırdı.",
+      "text_markdown": "Akıncılar, günümüz Nikaragua ve Honduras kıyıları boyunca kasabalara saldırdı.",
+      "tts": {
+        "text": "Akıncılar, günümüz Nikaragua ve Honduras kıyıları boyunca kasabalara saldırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu erken sefer, Christopher Myngs adlı deneyimli bir korsan tarafından yönetilmişti.",
+      "text_markdown": "Bu erken sefer, Christopher Myngs adlı deneyimli bir korsan tarafından yönetilmişti.",
+      "tts": {
+        "text": "Bu erken sefer, Christopher Myngs adlı deneyimli bir korsan tarafından yönetilmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Myngs, genç korsanlara zanaatlarını öğreten cesur ve deneyimli bir yağmacıydı.",
+      "text_markdown": "Myngs, genç korsanlara zanaatlarını öğreten cesur ve deneyimli bir yağmacıydı.",
+      "tts": {
+        "text": "Myngs, genç korsanlara zanaatlarını öğreten cesur ve deneyimli bir yağmacıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan onu dikkatle izledi ve ondan öğrendi.",
+      "text_markdown": "Morgan onu dikkatle izledi ve ondan öğrendi.",
+      "tts": {
+        "text": "Morgan onu dikkatle izledi ve ondan öğrendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, kariyerini tanımlayacak taktikleri bu ilk baskınlar sırasında öğrendi.",
+      "text_markdown": "Morgan, kariyerini tanımlayacak taktikleri bu ilk baskınlar sırasında öğrendi.",
+      "tts": {
+        "text": "Morgan, kariyerini tanımlayacak taktikleri bu ilk baskınlar sırasında öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Büyük insan gruplarını orman arazisinden nasıl geçireceğini inceledi.",
+      "text_markdown": "Büyük insan gruplarını orman arazisinden nasıl geçireceğini inceledi.",
+      "tts": {
+        "text": "Büyük insan gruplarını orman arazisinden nasıl geçireceğini inceledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hızlı vurup İspanyol takviye kuvvetleri gelmeden çekilmeyi öğrendi.",
+      "text_markdown": "Hızlı vurup İspanyol takviye kuvvetleri gelmeden çekilmeyi öğrendi.",
+      "tts": {
+        "text": "Hızlı vurup İspanyol takviye kuvvetleri gelmeden çekilmeyi öğrendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1665'te Morgan, ünlü korsan Edward Mansfield ile Providence adasına bir baskın için yelken açtı.",
+      "text_markdown": "1665'te Morgan, ünlü korsan Edward Mansfield ile Providence adasına bir baskın için yelken açtı.",
+      "tts": {
+        "text": "Bin altı yüz altmış beşte Morgan, ünlü korsan Edward Mansfield ile Providence adasına bir baskın için yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Providence, İspanya'nın yıllar önce İngiltere'den geri aldığı Nikaragua açıklarındaki küçük bir adaydı.",
+      "text_markdown": "Providence, İspanya'nın yıllar önce İngiltere'den geri aldığı Nikaragua açıklarındaki küçük bir adaydı.",
+      "tts": {
+        "text": "Providence, İspanya'nın yıllar önce İngiltere'den geri aldığı Nikaragua açıklarındaki küçük bir adaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mansfield'ın filosu adayı kolayca ele geçirdi.",
+      "text_markdown": "Mansfield'ın filosu adayı kolayca ele geçirdi.",
+      "tts": {
+        "text": "Mansfield'ın filosu adayı kolayca ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak sefer, korsan liderliğindeki sorunları ortaya koydu.",
+      "text_markdown": "Ancak sefer, korsan liderliğindeki sorunları ortaya koydu.",
+      "tts": {
+        "text": "Ancak sefer, korsan liderliğindeki sorunları ortaya koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlar ganimetin nasıl paylaşılacağı konusunda tartıştı ve birçoğu firar etti.",
+      "text_markdown": "Adamlar ganimetin nasıl paylaşılacağı konusunda tartıştı ve birçoğu firar etti.",
+      "tts": {
+        "text": "Adamlar ganimetin nasıl paylaşılacağı konusunda tartıştı ve birçoğu firar etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mansfield 1667'de öldüğünde, korsanların yeni bir lidere ihtiyacı vardı.",
+      "text_markdown": "Mansfield 1667'de öldüğünde, korsanların yeni bir lidere ihtiyacı vardı.",
+      "tts": {
+        "text": "Mansfield bin altı yüz altmış yedide öldüğünde, korsanların yeni bir lidere ihtiyacı vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onun yerini almak için Morgan seçildi.",
+      "text_markdown": "Onun yerini almak için Morgan seçildi.",
+      "tts": {
+        "text": "Onun yerini almak için Morgan seçildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Henüz otuz yaşındaydı ama cesaret ve taktik becerisiyle çoktan bir ün kazanmıştı.",
+      "text_markdown": "Henüz otuz yaşındaydı ama cesaret ve taktik becerisiyle çoktan bir ün kazanmıştı.",
+      "tts": {
+        "text": "Henüz otuz yaşındaydı ama cesaret ve taktik becerisiyle çoktan bir ün kazanmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aynı dönemde Morgan, eşi Mary Elizabeth ile evlendi.",
+      "text_markdown": "Aynı dönemde Morgan, eşi Mary Elizabeth ile evlendi.",
+      "tts": {
+        "text": "Aynı dönemde Morgan, eşi Mary Elizabeth ile evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mary Elizabeth, amcası Edward Morgan'ın kızıydı; Edward Morgan daha önce Jamaika vali yardımcılığı yapmıştı.",
+      "text_markdown": "Mary Elizabeth, amcası Edward Morgan'ın kızıydı; Edward Morgan daha önce Jamaika vali yardımcılığı yapmıştı.",
+      "tts": {
+        "text": "Mary Elizabeth, amcası Edward Morgan'ın kızıydı; Edward Morgan daha önce Jamaika vali yardımcılığı yapmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Evlilik onu adanın koloni elitine bağladı.",
+      "text_markdown": "Evlilik onu adanın koloni elitine bağladı.",
+      "tts": {
+        "text": "Evlilik onu adanın koloni elitine bağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan artık hem bir korsan kaptanı hem de Jamaika'nın çiftçi sınıfının bir üyesiydi.",
+      "text_markdown": "Morgan artık hem bir korsan kaptanı hem de Jamaika'nın çiftçi sınıfının bir üyesiydi.",
+      "tts": {
+        "text": "Morgan artık hem bir korsan kaptanı hem de Jamaika'nın çiftçi sınıfının bir üyesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toprakları ve köleleri vardı; siyaseti savaş kadar iyi anlıyordu.",
+      "text_markdown": "Toprakları ve köleleri vardı; siyaseti savaş kadar iyi anlıyordu.",
+      "tts": {
+        "text": "Toprakları ve köleleri vardı; siyaseti savaş kadar iyi anlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jamaika valisi Sir Thomas Modyford ile yakın bir ilişki geliştirdi.",
+      "text_markdown": "Jamaika valisi Sir Thomas Modyford ile yakın bir ilişki geliştirdi.",
+      "tts": {
+        "text": "Jamaika valisi Sir Thomas Modyford ile yakın bir ilişki geliştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Modyford, adanın İspanyol saldırganlığına karşı savunmasını yönetmesi için Morgan'a güveniyordu.",
+      "text_markdown": "Modyford, adanın İspanyol saldırganlığına karşı savunmasını yönetmesi için Morgan'a güveniyordu.",
+      "tts": {
+        "text": "Modyford, adanın İspanyol saldırganlığına karşı savunmasını yönetmesi için Morgan'a güveniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında Modyford, Morgan'a İspanyol hedeflere saldırması için gereken yasal örtüyü sağladı.",
+      "text_markdown": "Karşılığında Modyford, Morgan'a İspanyol hedeflere saldırması için gereken yasal örtüyü sağladı.",
+      "tts": {
+        "text": "Karşılığında Modyford, Morgan'a İspanyol hedeflere saldırması için gereken yasal örtüyü sağladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vali ile korsan arasındaki bu ortaklık, Karayiplerdeki güç dengesini yeniden şekillendirecekti.",
+      "text_markdown": "Vali ile korsan arasındaki bu ortaklık, Karayiplerdeki güç dengesini yeniden şekillendirecekti.",
+      "tts": {
+        "text": "Vali ile korsan arasındaki bu ortaklık, Karayiplerdeki güç dengesini yeniden şekillendirecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Karayiplerde Bir Galliler",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan, onu İspanyol Anayolunun en korkulan adamı yapacak bir dizi baskına çıkmak üzereydi.",
+      "text_markdown": "Morgan, onu İspanyol Anayolunun en korkulan adamı yapacak bir dizi baskına çıkmak üzereydi.",
+      "tts": {
+        "text": "Morgan, onu İspanyol Anayolunun en korkulan adamı yapacak bir dizi baskına çıkmak üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bir İmparatorluğu Sarsan Baskınlar",
+      "text_markdown": "Bir İmparatorluğu Sarsan Baskınlar"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan'ın ilk büyük bağımsız komutanlığı 1668'de geldi.",
+      "text_markdown": "Morgan'ın ilk büyük bağımsız komutanlığı 1668'de geldi.",
+      "tts": {
+        "text": "Morgan'ın ilk büyük bağımsız komutanlığı bin altı yüz altmış sekizde geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vali Modyford, İspanyolların Jamaika'ya saldırı planları hakkında istihbarat toplaması için ona bir görev verdi.",
+      "text_markdown": "Vali Modyford, İspanyolların Jamaika'ya saldırı planları hakkında istihbarat toplaması için ona bir görev verdi.",
+      "tts": {
+        "text": "Vali Modyford, İspanyolların Jamaika'ya saldırı planları hakkında istihbarat toplaması için ona bir görev verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan bu görevi çok geniş yorumladı.",
+      "text_markdown": "Morgan bu görevi çok geniş yorumladı.",
+      "tts": {
+        "text": "Morgan bu görevi çok geniş yorumladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On iki gemi ve yedi yüzün üzerinde adamdan oluşan bir filo topladı.",
+      "text_markdown": "On iki gemi ve yedi yüzün üzerinde adamdan oluşan bir filo topladı.",
+      "tts": {
+        "text": "On iki gemi ve yedi yüzün üzerinde adamdan oluşan bir filo topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hedefi, Amerika kıtasının en güçlü şekilde tahkim edilmiş şehirlerinden biri olan Portobelo'ydu.",
+      "text_markdown": "Hedefi, Amerika kıtasının en güçlü şekilde tahkim edilmiş şehirlerinden biri olan Portobelo'ydu.",
+      "tts": {
+        "text": "Hedefi, Amerika kıtasının en güçlü şekilde tahkim edilmiş şehirlerinden biri olan Portobelo'ydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portobelo, günümüz Panama'sının Karayip kıyısında yer alıyordu.",
+      "text_markdown": "Portobelo, günümüz Panama'sının Karayip kıyısında yer alıyordu.",
+      "tts": {
+        "text": "Portobelo, günümüz Panama'sının Karayip kıyısında yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güney Amerika gümüşünün İspanya'ya gönderilmek üzere gemilere yüklendiği noktaydı.",
+      "text_markdown": "Güney Amerika gümüşünün İspanya'ya gönderilmek üzere gemilere yüklendiği noktaydı.",
+      "tts": {
+        "text": "Güney Amerika gümüşünün İspanya'ya gönderilmek üzere gemilere yüklendiği noktaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehir, üç taş kale ve profesyonel askerlerden oluşan bir garnizon tarafından savunuluyordu.",
+      "text_markdown": "Şehir, üç taş kale ve profesyonel askerlerden oluşan bir garnizon tarafından savunuluyordu.",
+      "tts": {
+        "text": "Şehir, üç taş kale ve profesyonel askerlerden oluşan bir garnizon tarafından savunuluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiç kimse Portobelo'ya bir saldırı beklemiyordu.",
+      "text_markdown": "Hiç kimse Portobelo'ya bir saldırı beklemiyordu.",
+      "tts": {
+        "text": "Hiç kimse Portobelo'ya bir saldırı beklemiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyollar onu ele geçirilemez kabul ediyordu.",
+      "text_markdown": "İspanyollar onu ele geçirilemez kabul ediyordu.",
+      "tts": {
+        "text": "İspanyollar onu ele geçirilemez kabul ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan'ın onu seçmesinin nedeni tam olarak buydu.",
+      "text_markdown": "Morgan'ın onu seçmesinin nedeni tam olarak buydu.",
+      "tts": {
+        "text": "Morgan'ın onu seçmesinin nedeni tam olarak buydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan'ın adamları gece vakti şehirden birkaç mil uzakta karaya çıktı.",
+      "text_markdown": "Morgan'ın adamları gece vakti şehirden birkaç mil uzakta karaya çıktı.",
+      "tts": {
+        "text": "Morgan'ın adamları gece vakti şehirden birkaç mil uzakta karaya çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanolarla kıyıya kürek çektiler ve karanlıkta ormandan süzüldüler.",
+      "text_markdown": "Kanolarla kıyıya kürek çektiler ve karanlıkta ormandan süzüldüler.",
+      "tts": {
+        "text": "Kanolarla kıyıya kürek çektiler ve karanlıkta ormandan süzüldüler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şafakta ilk kaleye saldırdılar ve savunucuları tamamen hazırlıksız yakaladılar.",
+      "text_markdown": "Şafakta ilk kaleye saldırdılar ve savunucuları tamamen hazırlıksız yakaladılar.",
+      "tts": {
+        "text": "Şafakta ilk kaleye saldırdılar ve savunucuları tamamen hazırlıksız yakaladılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyollar cesurca karşılık verdi, ancak saldırının hızı karşısında ezildiler.",
+      "text_markdown": "İspanyollar cesurca karşılık verdi, ancak saldırının hızı karşısında ezildiler.",
+      "tts": {
+        "text": "İspanyollar cesurca karşılık verdi, ancak saldırının hızı karşısında ezildiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan'ın korsanları, yakın dövüşte üstün olan deneyimli sokak savaşçılarıydı.",
+      "text_markdown": "Morgan'ın korsanları, yakın dövüşte üstün olan deneyimli sokak savaşçılarıydı.",
+      "tts": {
+        "text": "Morgan'ın korsanları, yakın dövüşte üstün olan deneyimli sokak savaşçılarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, düşmanlarını dehşete düşüren bir taktik kullandı.",
+      "text_markdown": "Morgan, düşmanlarını dehşete düşüren bir taktik kullandı.",
+      "tts": {
+        "text": "Morgan, düşmanlarını dehşete düşüren bir taktik kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ele geçirilen keşiş ve rahibeleri, ikinci kalenin duvarlarına merdiven taşımaya zorladı.",
+      "text_markdown": "Ele geçirilen keşiş ve rahibeleri, ikinci kalenin duvarlarına merdiven taşımaya zorladı.",
+      "tts": {
+        "text": "Ele geçirilen keşiş ve rahibeleri, ikinci kalenin duvarlarına merdiven taşımaya zorladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol savunucuları kendi din kardeşlerine ateş edemezdi.",
+      "text_markdown": "İspanyol savunucuları kendi din kardeşlerine ateş edemezdi.",
+      "tts": {
+        "text": "İspanyol savunucuları kendi din kardeşlerine ateş edemezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İki gün içinde üç kalenin tamamı düşmüştü.",
+      "text_markdown": "İki gün içinde üç kalenin tamamı düşmüştü.",
+      "tts": {
+        "text": "İki gün içinde üç kalenin tamamı düşmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan'ın korsanları şehri iki hafta boyunca yağmaladı.",
+      "text_markdown": "Morgan'ın korsanları şehri iki hafta boyunca yağmaladı.",
+      "tts": {
+        "text": "Morgan'ın korsanları şehri iki hafta boyunca yağmaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altın ve değerli eşyaların nerede gizlendiğini öğrenmek için esirlere işkence yaptılar.",
+      "text_markdown": "Altın ve değerli eşyaların nerede gizlendiğini öğrenmek için esirlere işkence yaptılar.",
+      "tts": {
+        "text": "Altın ve değerli eşyaların nerede gizlendiğini öğrenmek için esirlere işkence yaptılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portobelo'dan elde edilen toplam ganimet muazzamdı.",
+      "text_markdown": "Portobelo'dan elde edilen toplam ganimet muazzamdı.",
+      "tts": {
+        "text": "Portobelo'dan elde edilen toplam ganimet muazzamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler ganimetin 250.000 sekizliğin üzerinde değere sahip olduğunu tahmin etmektedir.",
+      "text_markdown": "Tarihçiler ganimetin 250.000 sekizliğin üzerinde değere sahip olduğunu tahmin etmektedir.",
+      "tts": {
+        "text": "Tarihçiler ganimetin iki yüz elli bin sekizliğin üzerinde değere sahip olduğunu tahmin etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her sıradan denizci, birkaç yıllık dürüst ücrete denk bir pay aldı.",
+      "text_markdown": "Her sıradan denizci, birkaç yıllık dürüst ücrete denk bir pay aldı.",
+      "tts": {
+        "text": "Her sıradan denizci, birkaç yıllık dürüst ücrete denk bir pay aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, Port Royal'a bir kahraman olarak döndü.",
+      "text_markdown": "Morgan, Port Royal'a bir kahraman olarak döndü.",
+      "tts": {
+        "text": "Morgan, Port Royal'a bir kahraman olarak döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Portobelo baskınının başarısı, Morgan'ın bayrağı altına yüzlerce adam daha çekti.",
+      "text_markdown": "Portobelo baskınının başarısı, Morgan'ın bayrağı altına yüzlerce adam daha çekti.",
+      "tts": {
+        "text": "Portobelo baskınının başarısı, Morgan'ın bayrağı altına yüzlerce adam daha çekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tüm Karayiplerden korsanlar, ele geçirilemez bir şehri almış adamla yelken açmak istiyordu.",
+      "text_markdown": "Tüm Karayiplerden korsanlar, ele geçirilemez bir şehri almış adamla yelken açmak istiyordu.",
+      "tts": {
+        "text": "Tüm Karayiplerden korsanlar, ele geçirilemez bir şehri almış adamla yelken açmak istiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1669'un başlarında Morgan tekrar yola çıktı, bu sefer hedefi Maracaibo'ydu.",
+      "text_markdown": "1669'un başlarında Morgan tekrar yola çıktı, bu sefer hedefi Maracaibo'ydu.",
+      "tts": {
+        "text": "Bin altı yüz altmış dokuzun başlarında Morgan tekrar yola çıktı, bu sefer hedefi Maracaibo'ydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maracaibo, günümüz Venezuela'sında Maracaibo Gölü kıyısında zengin bir ticaret şehriydi.",
+      "text_markdown": "Maracaibo, günümüz Venezuela'sında Maracaibo Gölü kıyısında zengin bir ticaret şehriydi.",
+      "tts": {
+        "text": "Maracaibo, günümüz Venezuela'sında Maracaibo Gölü kıyısında zengin bir ticaret şehriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şehre ulaşmak için Morgan'ın filosu, bir kale tarafından korunan dar bir kanaldan geçmek zorundaydı.",
+      "text_markdown": "Şehre ulaşmak için Morgan'ın filosu, bir kale tarafından korunan dar bir kanaldan geçmek zorundaydı.",
+      "tts": {
+        "text": "Şehre ulaşmak için Morgan'ın filosu, bir kale tarafından korunan dar bir kanaldan geçmek zorundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar kaleyi bastı ve terk edilmiş buldu.",
+      "text_markdown": "Korsanlar kaleyi bastı ve terk edilmiş buldu.",
+      "tts": {
+        "text": "Korsanlar kaleyi bastı ve terk edilmiş buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol garnizonu kaçmış, dolu topları arkasında bırakmıştı.",
+      "text_markdown": "İspanyol garnizonu kaçmış, dolu topları arkasında bırakmıştı.",
+      "tts": {
+        "text": "İspanyol garnizonu kaçmış, dolu topları arkasında bırakmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan'ın adamları Maracaibo'ya girdi ve neredeyse ıssız buldu.",
+      "text_markdown": "Morgan'ın adamları Maracaibo'ya girdi ve neredeyse ıssız buldu.",
+      "tts": {
+        "text": "Morgan'ın adamları Maracaibo'ya girdi ve neredeyse ıssız buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halk, değerli eşyalarıyla birlikte çevredeki kırsal alana kaçmıştı.",
+      "text_markdown": "Halk, değerli eşyalarıyla birlikte çevredeki kırsal alana kaçmıştı.",
+      "tts": {
+        "text": "Halk, değerli eşyalarıyla birlikte çevredeki kırsal alana kaçmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan onları bulmak için arama ekipleri gönderdi.",
+      "text_markdown": "Morgan onları bulmak için arama ekipleri gönderdi.",
+      "tts": {
+        "text": "Morgan onları bulmak için arama ekipleri gönderdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar haftalarca gizli hazineler aradı.",
+      "text_markdown": "Korsanlar haftalarca gizli hazineler aradı.",
+      "tts": {
+        "text": "Korsanlar haftalarca gizli hazineler aradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakalanan sivillerden bilgi almak için işkence kullandılar.",
+      "text_markdown": "Yakalanan sivillerden bilgi almak için işkence kullandılar.",
+      "tts": {
+        "text": "Yakalanan sivillerden bilgi almak için işkence kullandılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu yöntemler, dönemin sert standartlarına göre bile acımasızdı.",
+      "text_markdown": "Bu yöntemler, dönemin sert standartlarına göre bile acımasızdı.",
+      "tts": {
+        "text": "Bu yöntemler, dönemin sert standartlarına göre bile acımasızdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan Maracaibo'dan ayrılmaya çalıştığında kanalın kapatıldığını gördü.",
+      "text_markdown": "Morgan Maracaibo'dan ayrılmaya çalıştığında kanalın kapatıldığını gördü.",
+      "tts": {
+        "text": "Morgan Maracaibo'dan ayrılmaya çalıştığında kanalın kapatıldığını gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üç İspanyol savaş gemisi gelmiş ve kaleyi geri almıştı.",
+      "text_markdown": "Üç İspanyol savaş gemisi gelmiş ve kaleyi geri almıştı.",
+      "tts": {
+        "text": "Üç İspanyol savaş gemisi gelmiş ve kaleyi geri almıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan, tüm filosuyla birlikte gölün içinde tuzağa düşmüştü.",
+      "text_markdown": "Morgan, tüm filosuyla birlikte gölün içinde tuzağa düşmüştü.",
+      "tts": {
+        "text": "Morgan, tüm filosuyla birlikte gölün içinde tuzağa düşmüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol amiral, Morgan'a teslim olmasını talep eden bir mesaj gönderdi.",
+      "text_markdown": "İspanyol amiral, Morgan'a teslim olmasını talep eden bir mesaj gönderdi.",
+      "tts": {
+        "text": "İspanyol amiral, Morgan'a teslim olmasını talep eden bir mesaj gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar tüm ganimetlerini geri verirlerse güvenli geçiş vaat etti.",
+      "text_markdown": "Korsanlar tüm ganimetlerini geri verirlerse güvenli geçiş vaat etti.",
+      "tts": {
+        "text": "Korsanlar tüm ganimetlerini geri verirlerse güvenli geçiş vaat etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan reddetti.",
+      "text_markdown": "Morgan reddetti.",
+      "tts": {
+        "text": "Morgan reddetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunun yerine Morgan parlak bir kaçış planı tasarladı.",
+      "text_markdown": "Bunun yerine Morgan parlak bir kaçış planı tasarladı.",
+      "tts": {
+        "text": "Bunun yerine Morgan parlak bir kaçış planı tasarladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Patlayıcılarla dolu bir ateş gemisini doğrudan İspanyol amiral gemisine gönderdi.",
+      "text_markdown": "Patlayıcılarla dolu bir ateş gemisini doğrudan İspanyol amiral gemisine gönderdi.",
+      "tts": {
+        "text": "Patlayıcılarla dolu bir ateş gemisini doğrudan İspanyol amiral gemisine gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amiral gemi patladı ve battı.",
+      "text_markdown": "Amiral gemi patladı ve battı.",
+      "tts": {
+        "text": "Amiral gemi patladı ve battı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İkinci İspanyol gemisi karaya oturdu ve ele geçirildi.",
+      "text_markdown": "İkinci İspanyol gemisi karaya oturdu ve ele geçirildi.",
+      "tts": {
+        "text": "İkinci İspanyol gemisi karaya oturdu ve ele geçirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üçüncüsü kalenin toplarının korumasına çekildi.",
+      "text_markdown": "Üçüncüsü kalenin toplarının korumasına çekildi.",
+      "tts": {
+        "text": "Üçüncüsü kalenin toplarının korumasına çekildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan daha sonra kale komutanını basit bir hile ile kandırdı.",
+      "text_markdown": "Morgan daha sonra kale komutanını basit bir hile ile kandırdı.",
+      "tts": {
+        "text": "Morgan daha sonra kale komutanını basit bir hile ile kandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kara saldırısı hazırlığı yapar gibi kıyıya doğru adam dolu kayıklar gönderdi.",
+      "text_markdown": "Kara saldırısı hazırlığı yapar gibi kıyıya doğru adam dolu kayıklar gönderdi.",
+      "tts": {
+        "text": "Kara saldırısı hazırlığı yapar gibi kıyıya doğru adam dolu kayıklar gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adamlar kayıkların dibine gizlendi ve görülmeden geri kürek çekildi.",
+      "text_markdown": "Adamlar kayıkların dibine gizlendi ve görülmeden geri kürek çekildi.",
+      "tts": {
+        "text": "Adamlar kayıkların dibine gizlendi ve görülmeden geri kürek çekildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol komutan toplarını kalenin kara tarafına çevirdi.",
+      "text_markdown": "İspanyol komutan toplarını kalenin kara tarafına çevirdi.",
+      "tts": {
+        "text": "İspanyol komutan toplarını kalenin kara tarafına çevirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O gece Morgan filosuyla savunmasız deniz duvarlarının önünden geçti.",
+      "text_markdown": "O gece Morgan filosuyla savunmasız deniz duvarlarının önünden geçti.",
+      "tts": {
+        "text": "O gece Morgan filosuyla savunmasız deniz duvarlarının önünden geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sabah olduğunda korsanlar güvenle açık denizdeydi.",
+      "text_markdown": "Sabah olduğunda korsanlar güvenle açık denizdeydi.",
+      "tts": {
+        "text": "Sabah olduğunda korsanlar güvenle açık denizdeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maracaibo baskını, Morgan'ın yaşayan en büyük korsan komutan olarak ününü pekiştirdi.",
+      "text_markdown": "Maracaibo baskını, Morgan'ın yaşayan en büyük korsan komutan olarak ününü pekiştirdi.",
+      "tts": {
+        "text": "Maracaibo baskını, Morgan'ın yaşayan en büyük korsan komutan olarak ününü pekiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kurnaz, acımasız ve görünüşe göre durdurulamazdı.",
+      "text_markdown": "Kurnaz, acımasız ve görünüşe göre durdurulamazdı.",
+      "tts": {
+        "text": "Kurnaz, acımasız ve görünüşe göre durdurulamazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bir İmparatorluğu Sarsan Baskınlar",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir sonraki hedefi, hepsinin en cüretkârı olacaktı.",
+      "text_markdown": "Bir sonraki hedefi, hepsinin en cüretkârı olacaktı.",
+      "tts": {
+        "text": "Bir sonraki hedefi, hepsinin en cüretkârı olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Panama'nın Yağmalanması",
+      "text_markdown": "Panama'nın Yağmalanması"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1670'te Morgan, kariyerinin en iddialı baskınını planlamaya başladı.",
+      "text_markdown": "1670'te Morgan, kariyerinin en iddialı baskınını planlamaya başladı.",
+      "tts": {
+        "text": "Bin altı yüz yetmişte Morgan, kariyerinin en iddialı baskınını planlamaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hedefi, tüm Amerika kıtasının en zengin şehri olan Panama'ydı.",
+      "text_markdown": "Hedefi, tüm Amerika kıtasının en zengin şehri olan Panama'ydı.",
+      "tts": {
+        "text": "Hedefi, tüm Amerika kıtasının en zengin şehri olan Panama'ydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama, Panama Kıstağı'nın Pasifik kıyısında yer alıyordu.",
+      "text_markdown": "Panama, Panama Kıstağı'nın Pasifik kıyısında yer alıyordu.",
+      "tts": {
+        "text": "Panama, Panama Kıstağı'nın Pasifik kıyısında yer alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Peru'dan gelen tüm gümüş ve altın, İspanya'ya giderken buradan geçerdi.",
+      "text_markdown": "Peru'dan gelen tüm gümüş ve altın, İspanya'ya giderken buradan geçerdi.",
+      "tts": {
+        "text": "Peru'dan gelen tüm gümüş ve altın, İspanya'ya giderken buradan geçerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehir binlerce kişiye ev sahipliği yapıyor ve Yeni Dünya'nın en güzel yapılarından bazılarını barındırıyordu.",
+      "text_markdown": "Şehir binlerce kişiye ev sahipliği yapıyor ve Yeni Dünya'nın en güzel yapılarından bazılarını barındırıyordu.",
+      "tts": {
+        "text": "Şehir binlerce kişiye ev sahipliği yapıyor ve Yeni Dünya'nın en güzel yapılarından bazılarını barındırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama'da büyük kiliseler, taş depolar ve yüksek bir çan kulesine sahip bir katedral vardı.",
+      "text_markdown": "Panama'da büyük kiliseler, taş depolar ve yüksek bir çan kulesine sahip bir katedral vardı.",
+      "tts": {
+        "text": "Panama'da büyük kiliseler, taş depolar ve yüksek bir çan kulesine sahip bir katedral vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zengin tüccarlar kiremit çatılı ve demir balkonlu evlerde yaşıyordu.",
+      "text_markdown": "Zengin tüccarlar kiremit çatılı ve demir balkonlu evlerde yaşıyordu.",
+      "tts": {
+        "text": "Zengin tüccarlar kiremit çatılı ve demir balkonlu evlerde yaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanya'nın Pasifik imparatorluğunun mücevheriydi.",
+      "text_markdown": "İspanya'nın Pasifik imparatorluğunun mücevheriydi.",
+      "tts": {
+        "text": "İspanya'nın Pasifik imparatorluğunun mücevheriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama'ya ulaşmak için Morgan'ın tüm kıstağı yürüyerek geçmesi gerekecekti.",
+      "text_markdown": "Panama'ya ulaşmak için Morgan'ın tüm kıstağı yürüyerek geçmesi gerekecekti.",
+      "tts": {
+        "text": "Panama'ya ulaşmak için Morgan'ın tüm kıstağı yürüyerek geçmesi gerekecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculuk, günlerce yoğun tropikal ormandan geçmeyi gerektiriyordu.",
+      "text_markdown": "Yolculuk, günlerce yoğun tropikal ormandan geçmeyi gerektiriyordu.",
+      "tts": {
+        "text": "Yolculuk, günlerce yoğun tropikal ormandan geçmeyi gerektiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiçbir korsan kuvveti daha önce bu kadar tehlikeli bir şey denemememişti.",
+      "text_markdown": "Hiçbir korsan kuvveti daha önce bu kadar tehlikeli bir şey denemememişti.",
+      "tts": {
+        "text": "Hiçbir korsan kuvveti daha önce bu kadar tehlikeli bir şey denemememişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, şimdiye kadar toplanmış en büyük korsan ordusunu bir araya getirdi.",
+      "text_markdown": "Morgan, şimdiye kadar toplanmış en büyük korsan ordusunu bir araya getirdi.",
+      "tts": {
+        "text": "Morgan, şimdiye kadar toplanmış en büyük korsan ordusunu bir araya getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1.800'den fazla adam ona katıldı ve 36 gemilik bir filoda yelken açtı.",
+      "text_markdown": "1.800'den fazla adam ona katıldı ve 36 gemilik bir filoda yelken açtı.",
+      "tts": {
+        "text": "Bin sekiz yüzden fazla adam ona katıldı ve otuz altı gemilik bir filoda yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aralık 1670'te Providence Adası'nda toplandılar.",
+      "text_markdown": "Aralık 1670'te Providence Adası'nda toplandılar.",
+      "tts": {
+        "text": "Aralık bin altı yüz yetmişte Providence Adası'nda toplandılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk adım, Chagres Nehri'nin ağzındaki San Lorenzo kalesini ele geçirmekti.",
+      "text_markdown": "İlk adım, Chagres Nehri'nin ağzındaki San Lorenzo kalesini ele geçirmekti.",
+      "tts": {
+        "text": "İlk adım, Chagres Nehri'nin ağzındaki San Lorenzo kalesini ele geçirmekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kale, Panama'nın iç kesimlerine giden nehir yolunu koruyordu.",
+      "text_markdown": "Bu kale, Panama'nın iç kesimlerine giden nehir yolunu koruyordu.",
+      "tts": {
+        "text": "Bu kale, Panama'nın iç kesimlerine giden nehir yolunu koruyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, kaleyi almak için 400 kişilik bir öncü kuvvet gönderdi.",
+      "text_markdown": "Morgan, kaleyi almak için 400 kişilik bir öncü kuvvet gönderdi.",
+      "tts": {
+        "text": "Morgan, kaleyi almak için dört yüz kişilik bir öncü kuvvet gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saldırı şiddetliydi.",
+      "text_markdown": "Saldırı şiddetliydi.",
+      "tts": {
+        "text": "Saldırı şiddetliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar duvarları el bombaları ve tırmanma merdivenleriyle saldırdı.",
+      "text_markdown": "Korsanlar duvarları el bombaları ve tırmanma merdivenleriyle saldırdı.",
+      "tts": {
+        "text": "Korsanlar duvarları el bombaları ve tırmanma merdivenleriyle saldırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş sırasında korsanlardan biri okla vuruldu.",
+      "text_markdown": "Savaş sırasında korsanlardan biri okla vuruldu.",
+      "tts": {
+        "text": "Savaş sırasında korsanlardan biri okla vuruldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oku vücudundan çıkardı, pamukla sardı ve tüfeğinden geri ateşledi.",
+      "text_markdown": "Oku vücudundan çıkardı, pamukla sardı ve tüfeğinden geri ateşledi.",
+      "tts": {
+        "text": "Oku vücudundan çıkardı, pamukla sardı ve tüfeğinden geri ateşledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alev alev yanan ok, kalenin sazdan çatısını tutuşturdu.",
+      "text_markdown": "Alev alev yanan ok, kalenin sazdan çatısını tutuşturdu.",
+      "tts": {
+        "text": "Alev alev yanan ok, kalenin sazdan çatısını tutuşturdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ateş, kalenin içindeki ahşap yapılara hızla yayıldı.",
+      "text_markdown": "Ateş, kalenin içindeki ahşap yapılara hızla yayıldı.",
+      "tts": {
+        "text": "Ateş, kalenin içindeki ahşap yapılara hızla yayıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barut deposu patladı ve düzinelerce İspanyol savunucuyu öldürdü.",
+      "text_markdown": "Barut deposu patladı ve düzinelerce İspanyol savunucuyu öldürdü.",
+      "tts": {
+        "text": "Barut deposu patladı ve düzinelerce İspanyol savunucuyu öldürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sabah olduğunda kale korsanların eline geçmişti.",
+      "text_markdown": "Sabah olduğunda kale korsanların eline geçmişti.",
+      "tts": {
+        "text": "Sabah olduğunda kale korsanların eline geçmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardından Morgan, ana kuvvetini kanolarla Chagres Nehri'ni yukarı doğru yönlendirdi.",
+      "text_markdown": "Ardından Morgan, ana kuvvetini kanolarla Chagres Nehri'ni yukarı doğru yönlendirdi.",
+      "tts": {
+        "text": "Ardından Morgan, ana kuvvetini kanolarla Chagres Nehri'ni yukarı doğru yönlendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculuk, Dünya'nın en zorlu arazilerinden birinden geçerek dokuz gün sürdü.",
+      "text_markdown": "Yolculuk, Dünya'nın en zorlu arazilerinden birinden geçerek dokuz gün sürdü.",
+      "tts": {
+        "text": "Yolculuk, Dünya'nın en zorlu arazilerinden birinden geçerek dokuz gün sürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adamların yiyeceği üçüncü günde tükendi.",
+      "text_markdown": "Adamların yiyeceği üçüncü günde tükendi.",
+      "tts": {
+        "text": "Adamların yiyeceği üçüncü günde tükendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deri çantalar yediler, ayakkabılarını kaynattılar ve yaprak çiğnediler.",
+      "text_markdown": "Deri çantalar yediler, ayakkabılarını kaynattılar ve yaprak çiğnediler.",
+      "tts": {
+        "text": "Deri çantalar yediler, ayakkabılarını kaynattılar ve yaprak çiğnediler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı adamlar açlıktan yığılıp kaldı ve yoldaşları tarafından taşınmak zorunda kaldı.",
+      "text_markdown": "Bazı adamlar açlıktan yığılıp kaldı ve yoldaşları tarafından taşınmak zorunda kaldı.",
+      "tts": {
+        "text": "Bazı adamlar açlıktan yığılıp kaldı ve yoldaşları tarafından taşınmak zorunda kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonunda kıstağın Pasifik tarafına ulaştıklarında adamlar sevinç çığlıkları attı.",
+      "text_markdown": "Sonunda kıstağın Pasifik tarafına ulaştıklarında adamlar sevinç çığlıkları attı.",
+      "tts": {
+        "text": "Sonunda kıstağın Pasifik tarafına ulaştıklarında adamlar sevinç çığlıkları attı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uzakta Panama'nın kulelerini görebiliyorlardı.",
+      "text_markdown": "Uzakta Panama'nın kulelerini görebiliyorlardı.",
+      "tts": {
+        "text": "Uzakta Panama'nın kulelerini görebiliyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol valisi şehri savunmak için yaklaşık 2.600 kişilik bir kuvvet toplamıştı.",
+      "text_markdown": "İspanyol valisi şehri savunmak için yaklaşık 2.600 kişilik bir kuvvet toplamıştı.",
+      "tts": {
+        "text": "İspanyol valisi şehri savunmak için yaklaşık iki bin altı yüz kişilik bir kuvvet toplamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayrıca korsan saflarına doğru sürmeyi planladığı iki yabani boğa sürüsü getirmişti.",
+      "text_markdown": "Ayrıca korsan saflarına doğru sürmeyi planladığı iki yabani boğa sürüsü getirmişti.",
+      "tts": {
+        "text": "Ayrıca korsan saflarına doğru sürmeyi planladığı iki yabani boğa sürüsü getirmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama Muharebesi 28 Ocak 1671'de gerçekleşti.",
+      "text_markdown": "Panama Muharebesi 28 Ocak 1671'de gerçekleşti.",
+      "tts": {
+        "text": "Panama Muharebesi yirmi sekiz Ocak bin altı yüz yetmiş birde gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan adamlarını şehir surlarının dışındaki açık araziye yerleştirdi.",
+      "text_markdown": "Morgan adamlarını şehir surlarının dışındaki açık araziye yerleştirdi.",
+      "tts": {
+        "text": "Morgan adamlarını şehir surlarının dışındaki açık araziye yerleştirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol süvarisi önce saldırdı ama korsanlar dimdik durdu.",
+      "text_markdown": "İspanyol süvarisi önce saldırdı ama korsanlar dimdik durdu.",
+      "tts": {
+        "text": "İspanyol süvarisi önce saldırdı ama korsanlar dimdik durdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüfek ateşleri yakın mesafede yıkıcıydı.",
+      "text_markdown": "Tüfek ateşleri yakın mesafede yıkıcıydı.",
+      "tts": {
+        "text": "Tüfek ateşleri yakın mesafede yıkıcıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Süvari dakikalar içinde paramparça edildi.",
+      "text_markdown": "Süvari dakikalar içinde paramparça edildi.",
+      "tts": {
+        "text": "Süvari dakikalar içinde paramparça edildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Boğalar serbest bırakıldı ama yanlış yöne koştular.",
+      "text_markdown": "Boğalar serbest bırakıldı ama yanlış yöne koştular.",
+      "tts": {
+        "text": "Boğalar serbest bırakıldı ama yanlış yöne koştular.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları İspanyol hatları boyunca geri koşarak kargaşayı artırdı.",
+      "text_markdown": "Bazıları İspanyol hatları boyunca geri koşarak kargaşayı artırdı.",
+      "tts": {
+        "text": "Bazıları İspanyol hatları boyunca geri koşarak kargaşayı artırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanyol piyadeleri bozguna uğrayıp şehre doğru kaçtı.",
+      "text_markdown": "İspanyol piyadeleri bozguna uğrayıp şehre doğru kaçtı.",
+      "tts": {
+        "text": "İspanyol piyadeleri bozguna uğrayıp şehre doğru kaçtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan'ın korsanları onları sokaklarda kovaladı.",
+      "text_markdown": "Morgan'ın korsanları onları sokaklarda kovaladı.",
+      "tts": {
+        "text": "Morgan'ın korsanları onları sokaklarda kovaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş pek çok yerde vahşi ve göğüs göğse oldu.",
+      "text_markdown": "Savaş pek çok yerde vahşi ve göğüs göğse oldu.",
+      "tts": {
+        "text": "Savaş pek çok yerde vahşi ve göğüs göğse oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş sırasında veya hemen sonrasında Panama'da büyük bir yangın çıktı.",
+      "text_markdown": "Savaş sırasında veya hemen sonrasında Panama'da büyük bir yangın çıktı.",
+      "tts": {
+        "text": "Savaş sırasında veya hemen sonrasında Panama'da büyük bir yangın çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yangını Morgan'ın adamlarının mı yoksa İspanyol savunucuların mı çıkardığı tartışmalı olmaya devam etmektedir.",
+      "text_markdown": "Yangını Morgan'ın adamlarının mı yoksa İspanyol savunucuların mı çıkardığı tartışmalı olmaya devam etmektedir.",
+      "tts": {
+        "text": "Yangını Morgan'ın adamlarının mı yoksa İspanyol savunucuların mı çıkardığı tartışmalı olmaya devam etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yangın, şehrin büyük bölümünü saatler içinde yok etti.",
+      "text_markdown": "Yangın, şehrin büyük bölümünü saatler içinde yok etti.",
+      "tts": {
+        "text": "Yangın, şehrin büyük bölümünü saatler içinde yok etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar dört hafta boyunca yıkıntılar arasında hazine aradı.",
+      "text_markdown": "Korsanlar dört hafta boyunca yıkıntılar arasında hazine aradı.",
+      "tts": {
+        "text": "Korsanlar dört hafta boyunca yıkıntılar arasında hazine aradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esirleri sorguladılar ve moloz arasında kazdılar.",
+      "text_markdown": "Esirleri sorguladılar ve moloz arasında kazdılar.",
+      "tts": {
+        "text": "Esirleri sorguladılar ve moloz arasında kazdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehrin servetinin büyük kısmı savaştan önce gemilere yüklenmiş ve güneye gönderilmişti.",
+      "text_markdown": "Şehrin servetinin büyük kısmı savaştan önce gemilere yüklenmiş ve güneye gönderilmişti.",
+      "tts": {
+        "text": "Şehrin servetinin büyük kısmı savaştan önce gemilere yüklenmiş ve güneye gönderilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ganimet, adamların beklediğinden azdı.",
+      "text_markdown": "Ganimet, adamların beklediğinden azdı.",
+      "tts": {
+        "text": "Ganimet, adamların beklediğinden azdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Paylar bölündüğünde, her adam Portobelo'da kazandığından çok daha az aldı.",
+      "text_markdown": "Paylar bölündüğünde, her adam Portobelo'da kazandığından çok daha az aldı.",
+      "tts": {
+        "text": "Paylar bölündüğünde, her adam Portobelo'da kazandığından çok daha az aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pek çoğu Morgan'ı hazineyi kendine sakladığı suçlamasıyla itham etti.",
+      "text_markdown": "Pek çoğu Morgan'ı hazineyi kendine sakladığı suçlamasıyla itham etti.",
+      "tts": {
+        "text": "Pek çoğu Morgan'ı hazineyi kendine sakladığı suçlamasıyla itham etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan bu suçlamaları reddetti ama homurdanmalar hiç kesilmedi.",
+      "text_markdown": "Morgan bu suçlamaları reddetti ama homurdanmalar hiç kesilmedi.",
+      "tts": {
+        "text": "Morgan bu suçlamaları reddetti ama homurdanmalar hiç kesilmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordusunu kıstağı geçerek Karayip kıyısına geri götürdü.",
+      "text_markdown": "Ordusunu kıstağı geçerek Karayip kıyısına geri götürdü.",
+      "tts": {
+        "text": "Ordusunu kıstağı geçerek Karayip kıyısına geri götürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan'ın haberi olmadan, İngiltere ile İspanya arasında zaten bir barış antlaşması imzalanmıştı.",
+      "text_markdown": "Morgan'ın haberi olmadan, İngiltere ile İspanya arasında zaten bir barış antlaşması imzalanmıştı.",
+      "tts": {
+        "text": "Morgan'ın haberi olmadan, İngiltere ile İspanya arasında zaten bir barış antlaşması imzalanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Madrid Antlaşması, Temmuz 1670'te, Panama baskınından aylar önce üzerinde anlaşmaya varılmıştı.",
+      "text_markdown": "Madrid Antlaşması, Temmuz 1670'te, Panama baskınından aylar önce üzerinde anlaşmaya varılmıştı.",
+      "tts": {
+        "text": "Madrid Antlaşması, Temmuz bin altı yüz yetmişte, Panama baskınından aylar önce üzerinde anlaşmaya varılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Antlaşma koşullarına göre her iki ulus da birbirinin kolonilerine saldırmayı durdurmayı kabul etti.",
+      "text_markdown": "Antlaşma koşullarına göre her iki ulus da birbirinin kolonilerine saldırmayı durdurmayı kabul etti.",
+      "tts": {
+        "text": "Antlaşma koşullarına göre her iki ulus da birbirinin kolonilerine saldırmayı durdurmayı kabul etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama'nın tahribi diplomatik bir krize neden oldu.",
+      "text_markdown": "Panama'nın tahribi diplomatik bir krize neden oldu.",
+      "tts": {
+        "text": "Panama'nın tahribi diplomatik bir krize neden oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya öfkeliydi ve İngiltere'nin sorumluları cezalandırmasını talep etti.",
+      "text_markdown": "İspanya öfkeliydi ve İngiltere'nin sorumluları cezalandırmasını talep etti.",
+      "tts": {
+        "text": "İspanya öfkeliydi ve İngiltere'nin sorumluları cezalandırmasını talep etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "Panama'nın Yağmalanması",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Panama'nın yağmalanması, yeni antlaşmanın düşünülebilecek en dramatik ihlaliydi.",
+      "text_markdown": "Panama'nın yağmalanması, yeni antlaşmanın düşünülebilecek en dramatik ihlaliydi.",
+      "tts": {
+        "text": "Panama'nın yağmalanması, yeni antlaşmanın düşünülebilecek en dramatik ihlaliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsandan Valiye",
+      "text_markdown": "Korsandan Valiye"
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiliz hükümetinin İspanya'nın öfkesini yatıştırması gerekiyordu.",
+      "text_markdown": "İngiliz hükümetinin İspanya'nın öfkesini yatıştırması gerekiyordu.",
+      "tts": {
+        "text": "İngiliz hükümetinin İspanya'nın öfkesini yatıştırması gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1672'de hem Vali Modyford hem de Henry Morgan Londra'ya geri çağrıldı.",
+      "text_markdown": "1672'de hem Vali Modyford hem de Henry Morgan Londra'ya geri çağrıldı.",
+      "tts": {
+        "text": "Bin altı yüz yetmiş ikide hem Vali Modyford hem de Henry Morgan Londra'ya geri çağrıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Modyford sembolik bir ceza olarak Londra Kulesi'ne hapsedildi.",
+      "text_markdown": "Modyford sembolik bir ceza olarak Londra Kulesi'ne hapsedildi.",
+      "tts": {
+        "text": "Modyford sembolik bir ceza olarak Londra Kulesi'ne hapsedildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, yargılanmayı bekleyerek İngiltere'ye geldi.",
+      "text_markdown": "Morgan, yargılanmayı bekleyerek İngiltere'ye geldi.",
+      "tts": {
+        "text": "Morgan, yargılanmayı bekleyerek İngiltere'ye geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunun yerine suçludan çok ünlü biri gibi muamele gördü.",
+      "text_markdown": "Bunun yerine suçludan çok ünlü biri gibi muamele gördü.",
+      "tts": {
+        "text": "Bunun yerine suçludan çok ünlü biri gibi muamele gördü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kral İkinci Charles, Morgan'ın kahramanlıklarından gizlice memnundu.",
+      "text_markdown": "Kral İkinci Charles, Morgan'ın kahramanlıklarından gizlice memnundu.",
+      "tts": {
+        "text": "Kral ikinci Charles, Morgan'ın kahramanlıklarından gizlice memnundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Panama'nın yağmalanması İspanya'yı utandırmış ve İngiliz gücünü Karayipler'de göstermişti.",
+      "text_markdown": "Panama'nın yağmalanması İspanya'yı utandırmış ve İngiliz gücünü Karayipler'de göstermişti.",
+      "tts": {
+        "text": "Panama'nın yağmalanması İspanya'yı utandırmış ve İngiliz gücünü Karayipler'de göstermişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunlar kralın memnuniyetle karşıladığı, ancak açıkça söyleyemeyeceği sonuçlardı.",
+      "text_markdown": "Bunlar kralın memnuniyetle karşıladığı, ancak açıkça söyleyemeyeceği sonuçlardı.",
+      "tts": {
+        "text": "Bunlar kralın memnuniyetle karşıladığı, ancak açıkça söyleyemeyeceği sonuçlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan yaklaşık üç yılını Londra'da geçirdi.",
+      "text_markdown": "Morgan yaklaşık üç yılını Londra'da geçirdi.",
+      "tts": {
+        "text": "Morgan yaklaşık üç yılını Londra'da geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aristokratlarla yemek yedi, hükümete Karayip meseleleri hakkında danışmanlık yaptı ve rahat yaşadı.",
+      "text_markdown": "Aristokratlarla yemek yedi, hükümete Karayip meseleleri hakkında danışmanlık yaptı ve rahat yaşadı.",
+      "tts": {
+        "text": "Aristokratlarla yemek yedi, hükümete Karayip meseleleri hakkında danışmanlık yaptı ve rahat yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başkentin kahvehanelerinde ve salonlarında tanıdık bir figür haline geldi.",
+      "text_markdown": "Başkentin kahvehanelerinde ve salonlarında tanıdık bir figür haline geldi.",
+      "tts": {
+        "text": "Başkentin kahvehanelerinde ve salonlarında tanıdık bir figür haline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1674'te Kral Charles çarpıcı bir karar verdi.",
+      "text_markdown": "1674'te Kral Charles çarpıcı bir karar verdi.",
+      "tts": {
+        "text": "Bin altı yüz yetmiş dörtte Kral Charles çarpıcı bir karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Henry Morgan'a şövalyelik vererek onu Sir Henry Morgan yaptı.",
+      "text_markdown": "Henry Morgan'a şövalyelik vererek onu Sir Henry Morgan yaptı.",
+      "tts": {
+        "text": "Henry Morgan'a şövalyelik vererek onu Sir Henry Morgan yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ardından Morgan'ı Jamaika vali yardımcısı olarak atadı.",
+      "text_markdown": "Ardından Morgan'ı Jamaika vali yardımcısı olarak atadı.",
+      "tts": {
+        "text": "Ardından Morgan'ı Jamaika vali yardımcısı olarak atadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barış antlaşmasını ihlal ederek Panama'yı yağmalamış olan adam, şimdi Jamaika'yı yönetmek üzere geri gönderiliyordu.",
+      "text_markdown": "Barış antlaşmasını ihlal ederek Panama'yı yağmalamış olan adam, şimdi Jamaika'yı yönetmek üzere geri gönderiliyordu.",
+      "tts": {
+        "text": "Barış antlaşmasını ihlal ederek Panama'yı yağmalamış olan adam, şimdi Jamaika'yı yönetmek üzere geri gönderiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, koloni tarihinin en dikkat çekici kader dönüşlerinden biriydi.",
+      "text_markdown": "Bu, koloni tarihinin en dikkat çekici kader dönüşlerinden biriydi.",
+      "tts": {
+        "text": "Bu, koloni tarihinin en dikkat çekici kader dönüşlerinden biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan 1676'da Jamaika'ya döndü ve yeni görevlerini üstlendi.",
+      "text_markdown": "Morgan 1676'da Jamaika'ya döndü ve yeni görevlerini üstlendi.",
+      "tts": {
+        "text": "Morgan bin altı yüz yetmiş altıda Jamaika'ya döndü ve yeni görevlerini üstlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Görevi yeni vali Lord Vaughan'ın emrinde hizmet etmekti.",
+      "text_markdown": "Görevi yeni vali Lord Vaughan'ın emrinde hizmet etmekti.",
+      "tts": {
+        "text": "Görevi yeni vali Lord Vaughan'ın emrinde hizmet etmekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İronik bir şekilde, Morgan'ın görevlerinden biri korsanlığı bastırmaktı.",
+      "text_markdown": "İronik bir şekilde, Morgan'ın görevlerinden biri korsanlığı bastırmaktı.",
+      "tts": {
+        "text": "İronik bir şekilde, Morgan'ın görevlerinden biri korsanlığı bastırmaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere artık İspanya ile barış istiyordu ve korsanlar artık işe yaramıyordu.",
+      "text_markdown": "İngiltere artık İspanya ile barış istiyordu ve korsanlar artık işe yaramıyordu.",
+      "tts": {
+        "text": "İngiltere artık İspanya ile barış istiyordu ve korsanlar artık işe yaramıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan'ın eski yoldaşlarını hizaya getirmesi bekleniyordu.",
+      "text_markdown": "Morgan'ın eski yoldaşlarını hizaya getirmesi bekleniyordu.",
+      "tts": {
+        "text": "Morgan'ın eski yoldaşlarını hizaya getirmesi bekleniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu görevi karışık bir hevesle yerine getirdi.",
+      "text_markdown": "Bu görevi karışık bir hevesle yerine getirdi.",
+      "tts": {
+        "text": "Bu görevi karışık bir hevesle yerine getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç korsanı tutukladı ve birkaçını astı, ancak gizlice başkalarına yardım etmekle de suçlandı.",
+      "text_markdown": "Birkaç korsanı tutukladı ve birkaçını astı, ancak gizlice başkalarına yardım etmekle de suçlandı.",
+      "tts": {
+        "text": "Birkaç korsanı tutukladı ve birkaçını astı, ancak gizlice başkalarına yardım etmekle de suçlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sadakatleri her zaman karmaşıktı.",
+      "text_markdown": "Sadakatleri her zaman karmaşıktı.",
+      "tts": {
+        "text": "Sadakatleri her zaman karmaşıktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lord Vaughan ve Morgan sık sık çatışıyordu.",
+      "text_markdown": "Lord Vaughan ve Morgan sık sık çatışıyordu.",
+      "tts": {
+        "text": "Lord Vaughan ve Morgan sık sık çatışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vaughan, Morgan'ı kaba ve güvenilmez buluyordu.",
+      "text_markdown": "Vaughan, Morgan'ı kaba ve güvenilmez buluyordu.",
+      "tts": {
+        "text": "Vaughan, Morgan'ı kaba ve güvenilmez buluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan, Vaughan'ı Karayipler'in gerçeklerini anlamayan zayıf bir lider olarak görüyordu.",
+      "text_markdown": "Morgan, Vaughan'ı Karayipler'in gerçeklerini anlamayan zayıf bir lider olarak görüyordu.",
+      "tts": {
+        "text": "Morgan, Vaughan'ı Karayipler'in gerçeklerini anlamayan zayıf bir lider olarak görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yıllar geçtikçe Morgan, zengin bir Jamaikalı çiftçinin hayatına yerleşti.",
+      "text_markdown": "Yıllar geçtikçe Morgan, zengin bir Jamaikalı çiftçinin hayatına yerleşti.",
+      "tts": {
+        "text": "Yıllar geçtikçe Morgan, zengin bir Jamaikalı çiftçinin hayatına yerleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç büyük çiftliğe ve yüzlerce köleleştirilmiş işçiye sahipti.",
+      "text_markdown": "Birkaç büyük çiftliğe ve yüzlerce köleleştirilmiş işçiye sahipti.",
+      "tts": {
+        "text": "Birkaç büyük çiftliğe ve yüzlerce köleleştirilmiş işçiye sahipti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aynı zamanda aşırı içki içiyordu.",
+      "text_markdown": "Aynı zamanda aşırı içki içiyordu.",
+      "tts": {
+        "text": "Aynı zamanda aşırı içki içiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ziyaretçiler onu kırmızı yüzlü, kilolu ve sık sık hasta olarak tanımlıyordu.",
+      "text_markdown": "Ziyaretçiler onu kırmızı yüzlü, kilolu ve sık sık hasta olarak tanımlıyordu.",
+      "tts": {
+        "text": "Ziyaretçiler onu kırmızı yüzlü, kilolu ve sık sık hasta olarak tanımlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sağlığı 1680'ler boyunca istikrarlı bir şekilde bozuldu.",
+      "text_markdown": "Sağlığı 1680'ler boyunca istikrarlı bir şekilde bozuldu.",
+      "tts": {
+        "text": "Sağlığı bin altı yüz seksenlerde istikrarlı bir şekilde bozuldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1683'te yeni vali tarafından Jamaika Konseyi'nden uzaklaştırıldı.",
+      "text_markdown": "1683'te yeni vali tarafından Jamaika Konseyi'nden uzaklaştırıldı.",
+      "tts": {
+        "text": "Bin altı yüz seksen üçte yeni vali tarafından Jamaika Konseyi'nden uzaklaştırıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan, korsanlara karşı çok müsamahakâr olmak ve yönetmek için çok sık sarhoş olmakla suçlandı.",
+      "text_markdown": "Morgan, korsanlara karşı çok müsamahakâr olmak ve yönetmek için çok sık sarhoş olmakla suçlandı.",
+      "tts": {
+        "text": "Morgan, korsanlara karşı çok müsamahakâr olmak ve yönetmek için çok sık sarhoş olmakla suçlandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son yıllarını çiftliğinde, büyük ölçüde kamusal yaşamın dışında geçirdi.",
+      "text_markdown": "Son yıllarını çiftliğinde, büyük ölçüde kamusal yaşamın dışında geçirdi.",
+      "tts": {
+        "text": "Son yıllarını çiftliğinde, büyük ölçüde kamusal yaşamın dışında geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hans Sloane adında bir doktor, son aylarında Morgan'ı ziyaret etti.",
+      "text_markdown": "Hans Sloane adında bir doktor, son aylarında Morgan'ı ziyaret etti.",
+      "tts": {
+        "text": "Hans Sloane adında bir doktor, son aylarında Morgan'ı ziyaret etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sloane, Morgan'ı bitkin ve sarı tenli olarak tanımladı; bu, açık bir karaciğer yetmezliği belirtisiydi.",
+      "text_markdown": "Sloane, Morgan'ı bitkin ve sarı tenli olarak tanımladı; bu, açık bir karaciğer yetmezliği belirtisiydi.",
+      "tts": {
+        "text": "Sloane, Morgan'ı bitkin ve sarı tenli olarak tanımladı; bu, açık bir karaciğer yetmezliği belirtisiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan, 25 Ağustos 1688'de 53 yaşında öldü.",
+      "text_markdown": "Henry Morgan, 25 Ağustos 1688'de 53 yaşında öldü.",
+      "tts": {
+        "text": "Henry Morgan, yirmi beş Ağustos bin altı yüz seksen sekizde elli üç yaşında öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ölüm nedeni neredeyse kesin olarak yıllarca süren aşırı alkol tüketiminin neden olduğu karaciğer hastalığıydı.",
+      "text_markdown": "Ölüm nedeni neredeyse kesin olarak yıllarca süren aşırı alkol tüketiminin neden olduğu karaciğer hastalığıydı.",
+      "tts": {
+        "text": "Ölüm nedeni neredeyse kesin olarak yıllarca süren aşırı alkol tüketiminin neden olduğu karaciğer hastalığıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Port Royal'da devlet töreniyle defnedildi.",
+      "text_markdown": "Port Royal'da devlet töreniyle defnedildi.",
+      "tts": {
+        "text": "Port Royal'da devlet töreniyle defnedildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Limandaki gemiler selam nişanesi olarak toplarını ateşledi.",
+      "text_markdown": "Limandaki gemiler selam nişanesi olarak toplarını ateşledi.",
+      "tts": {
+        "text": "Limandaki gemiler selam nişanesi olarak toplarını ateşledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denize bakan Palisadoes mezarlığına gömüldü.",
+      "text_markdown": "Denize bakan Palisadoes mezarlığına gömüldü.",
+      "tts": {
+        "text": "Denize bakan Palisadoes mezarlığına gömüldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dört yıl sonra, 1692'de büyük bir deprem Port Royal'ı yıktı.",
+      "text_markdown": "Dört yıl sonra, 1692'de büyük bir deprem Port Royal'ı yıktı.",
+      "tts": {
+        "text": "Dört yıl sonra, bin altı yüz doksan ikide büyük bir deprem Port Royal'ı yıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehrin üçte ikisi denize kaydı.",
+      "text_markdown": "Şehrin üçte ikisi denize kaydı.",
+      "tts": {
+        "text": "Şehrin üçte ikisi denize kaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan'ın mezarı, okyanus tarafından yutulan mezarlık bölümleri arasındaydı.",
+      "text_markdown": "Morgan'ın mezarı, okyanus tarafından yutulan mezarlık bölümleri arasındaydı.",
+      "tts": {
+        "text": "Morgan'ın mezarı, okyanus tarafından yutulan mezarlık bölümleri arasındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cesedi hiçbir zaman bulunamadı.",
+      "text_markdown": "Cesedi hiçbir zaman bulunamadı.",
+      "tts": {
+        "text": "Cesedi hiçbir zaman bulunamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Korsandan Valiye",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünya'nın en günahkâr şehri ve onu yurt edinen en ünlü korsan, ikisi de dalgaların altında kayboldu.",
+      "text_markdown": "Dünya'nın en günahkâr şehri ve onu yurt edinen en ünlü korsan, ikisi de dalgaların altında kayboldu.",
+      "tts": {
+        "text": "Dünya'nın en günahkâr şehri ve onu yurt edinen en ünlü korsan, ikisi de dalgaların altında kayboldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kaptan Morgan'ın Efsanesi",
+      "text_markdown": "Kaptan Morgan'ın Efsanesi"
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan'ın hikâyesi üç yüz yıldan fazla süredir anlatılmakta ve yeniden anlatılmaktadır.",
+      "text_markdown": "Henry Morgan'ın hikâyesi üç yüz yıldan fazla süredir anlatılmakta ve yeniden anlatılmaktadır.",
+      "tts": {
+        "text": "Henry Morgan'ın hikâyesi üç yüz yıldan fazla süredir anlatılmakta ve yeniden anlatılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihin en ünlü korsanlarından biridir, ancak kendisi hiçbir zaman korsan olmadığını ısrarla savunmuştur.",
+      "text_markdown": "Tarihin en ünlü korsanlarından biridir, ancak kendisi hiçbir zaman korsan olmadığını ısrarla savunmuştur.",
+      "tts": {
+        "text": "Tarihin en ünlü korsanlarından biridir, ancak kendisi hiçbir zaman korsan olmadığını ısrarla savunmuştur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha hayattayken Morgan bir efsane haline geliyordu.",
+      "text_markdown": "Daha hayattayken Morgan bir efsane haline geliyordu.",
+      "tts": {
+        "text": "Daha hayattayken Morgan bir efsane haline geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alexandre Exquemelin adlı bir Hollandalı yazar, Morgan'ın baskınlarının bir anlatısını 1678'de yayımladı.",
+      "text_markdown": "Alexandre Exquemelin adlı bir Hollandalı yazar, Morgan'ın baskınlarının bir anlatısını 1678'de yayımladı.",
+      "tts": {
+        "text": "Alexandre Exquemelin adlı bir Hollandalı yazar, Morgan'ın baskınlarının bir anlatısını bin altı yüz yetmiş sekizde yayımladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kitabın adı Amerika'nın Korsanları'ydı.",
+      "text_markdown": "Kitabın adı Amerika'nın Korsanları'ydı.",
+      "tts": {
+        "text": "Kitabın adı Amerika'nın Korsanları'ydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Exquemelin, Morgan'ın emrinde hizmet etmiş ve anlattığı olayların birçoğuna tanıklık etmişti.",
+      "text_markdown": "Exquemelin, Morgan'ın emrinde hizmet etmiş ve anlattığı olayların birçoğuna tanıklık etmişti.",
+      "tts": {
+        "text": "Exquemelin, Morgan'ın emrinde hizmet etmiş ve anlattığı olayların birçoğuna tanıklık etmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kitabı tüm Avrupa'da çok satan bir eser oldu.",
+      "text_markdown": "Kitabı tüm Avrupa'da çok satan bir eser oldu.",
+      "tts": {
+        "text": "Kitabı tüm Avrupa'da çok satan bir eser oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca Karayip korsanlarının popüler imajını şekillendirdi.",
+      "text_markdown": "Yüzyıllar boyunca Karayip korsanlarının popüler imajını şekillendirdi.",
+      "tts": {
+        "text": "Yüzyıllar boyunca Karayip korsanlarının popüler imajını şekillendirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan, sözleşmeli hizmetkâr olduğunu iddia eden İngiliz yayıncıya dava açtı.",
+      "text_markdown": "Morgan, sözleşmeli hizmetkâr olduğunu iddia eden İngiliz yayıncıya dava açtı.",
+      "tts": {
+        "text": "Morgan, sözleşmeli hizmetkâr olduğunu iddia eden İngiliz yayıncıya dava açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Davayı kazandı ve tazminat aldı, ama kitap satılmaya devam etti.",
+      "text_markdown": "Davayı kazandı ve tazminat aldı, ama kitap satılmaya devam etti.",
+      "tts": {
+        "text": "Davayı kazandı ve tazminat aldı, ama kitap satılmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan'ın mirası karmaşıktır.",
+      "text_markdown": "Morgan'ın mirası karmaşıktır.",
+      "tts": {
+        "text": "Morgan'ın mirası karmaşıktır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizler için Jamaika'yı koruyan ve İspanya'yı aşağılayan bir ulusal kahramandı.",
+      "text_markdown": "İngilizler için Jamaika'yı koruyan ve İspanya'yı aşağılayan bir ulusal kahramandı.",
+      "tts": {
+        "text": "İngilizler için Jamaika'yı koruyan ve İspanya'yı aşağılayan bir ulusal kahramandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p114",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyollar için şehirleri yakan ve masumları işkence eden bir savaş suçlusuydu.",
+      "text_markdown": "İspanyollar için şehirleri yakan ve masumları işkence eden bir savaş suçlusuydu.",
+      "tts": {
+        "text": "İspanyollar için şehirleri yakan ve masumları işkence eden bir savaş suçlusuydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern tarihçiler onu döneminin bir ürünü olarak görmektedir.",
+      "text_markdown": "Modern tarihçiler onu döneminin bir ürünü olarak görmektedir.",
+      "tts": {
+        "text": "Modern tarihçiler onu döneminin bir ürünü olarak görmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İşlediği şiddet aşırıydı, ancak hükümetinin tam desteğiyle gerçekleştirilmişti.",
+      "text_markdown": "İşlediği şiddet aşırıydı, ancak hükümetinin tam desteğiyle gerçekleştirilmişti.",
+      "tts": {
+        "text": "İşlediği şiddet aşırıydı, ancak hükümetinin tam desteğiyle gerçekleştirilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan vahşetinde benzersiz değildi.",
+      "text_markdown": "Morgan vahşetinde benzersiz değildi.",
+      "tts": {
+        "text": "Morgan vahşetinde benzersiz değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol askerler de İngiliz yerleşimcilere benzer vahşetler uyguladı.",
+      "text_markdown": "İspanyol askerler de İngiliz yerleşimcilere benzer vahşetler uyguladı.",
+      "tts": {
+        "text": "İspanyol askerler de İngiliz yerleşimcilere benzer vahşetler uyguladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p116",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fark, Morgan'ın bu denli görkemli bir ölçekte başarılı olmasıydı.",
+      "text_markdown": "Fark, Morgan'ın bu denli görkemli bir ölçekte başarılı olmasıydı.",
+      "tts": {
+        "text": "Fark, Morgan'ın bu denli görkemli bir ölçekte başarılı olmasıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün Morgan'ın adı en çok bir rom markasıyla bilinmektedir.",
+      "text_markdown": "Bugün Morgan'ın adı en çok bir rom markasıyla bilinmektedir.",
+      "tts": {
+        "text": "Bugün Morgan'ın adı en çok bir rom markasıyla bilinmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alkolün muhtemelen onu öldürdüğü düşünüldüğünde ironinin kaçırılması güçtür.",
+      "text_markdown": "Alkolün muhtemelen onu öldürdüğü düşünüldüğünde ironinin kaçırılması güçtür.",
+      "tts": {
+        "text": "Alkolün muhtemelen onu öldürdüğü düşünüldüğünde ironinin kaçırılması güçtür.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su altı arkeologları Port Royal'ın batık kalıntılarını keşfetmiştir.",
+      "text_markdown": "Su altı arkeologları Port Royal'ın batık kalıntılarını keşfetmiştir.",
+      "tts": {
+        "text": "Su altı arkeologları Port Royal'ın batık kalıntılarını keşfetmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p118",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan döneminden kalma binalar, tavernalar ve eserler denizin altında korunmuş halde bulunmuştur.",
+      "text_markdown": "Morgan döneminden kalma binalar, tavernalar ve eserler denizin altında korunmuş halde bulunmuştur.",
+      "tts": {
+        "text": "Morgan döneminden kalma binalar, tavernalar ve eserler denizin altında korunmuş halde bulunmuştur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p118",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Morgan'ın kendi mezarı hâlâ kayıptır.",
+      "text_markdown": "Ancak Morgan'ın kendi mezarı hâlâ kayıptır.",
+      "tts": {
+        "text": "Ancak Morgan'ın kendi mezarı hâlâ kayıptır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan, hukuk ile suç arasındaki çizginin güçlü adamlar tarafından kendi çıkarları için çizildiği bir dünyada yaşadı.",
+      "text_markdown": "Henry Morgan, hukuk ile suç arasındaki çizginin güçlü adamlar tarafından kendi çıkarları için çizildiği bir dünyada yaşadı.",
+      "tts": {
+        "text": "Henry Morgan, hukuk ile suç arasındaki çizginin güçlü adamlar tarafından kendi çıkarları için çizildiği bir dünyada yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu çizgiyi herkesten daha iyi istismar etti.",
+      "text_markdown": "Bu çizgiyi herkesten daha iyi istismar etti.",
+      "tts": {
+        "text": "Bu çizgiyi herkesten daha iyi istismar etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şövalye olan bir korsandı.",
+      "text_markdown": "Şövalye olan bir korsandı.",
+      "tts": {
+        "text": "Şövalye olan bir korsandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vali olan bir suçluydu.",
+      "text_markdown": "Vali olan bir suçluydu.",
+      "tts": {
+        "text": "Vali olan bir suçluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kaptan Morgan'ın Efsanesi",
+      "paragraph_id": "p120",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hikâyesi, tarihin kahramanları ve kötülerinin çoğu zaman aynı insanlar olduğunun, sadece farklı kıyılardan bakıldığının bir hatırlatıcısıdır.",
+      "text_markdown": "Hikâyesi, tarihin kahramanları ve kötülerinin çoğu zaman aynı insanlar olduğunun, sadece farklı kıyılardan bakıldığının bir hatırlatıcısıdır.",
+      "tts": {
+        "text": "Hikâyesi, tarihin kahramanları ve kötülerinin çoğu zaman aynı insanlar olduğunun, sadece farklı kıyılardan bakıldığının bir hatırlatıcısıdır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

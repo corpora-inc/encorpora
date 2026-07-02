@@ -1,0 +1,4622 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_rahmah_ibn_jabir",
+  "language": "de",
+  "total_segments": 309,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Anmerkung für den Leser",
+      "text_markdown": "Anmerkung für den Leser"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies ist die Geschichte eines Mannes, der sein gesamtes Leben im Krieg verbrachte.",
+      "text_markdown": "Dies ist die Geschichte eines Mannes, der sein gesamtes Leben im Krieg verbrachte.",
+      "tts": {
+        "text": "Dies ist die Geschichte eines Mannes, der sein gesamtes Leben im Krieg verbrachte.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir al-Jalahimah war ein Pirat, ein Krieger und ein Mann, den eine einzige Fehde verzehrte, die mehr als vierzig Jahre dauerte.",
+      "text_markdown": "Rahmah ibn Jabir al-Jalahimah war ein Pirat, ein Krieger und ein Mann, den eine einzige Fehde verzehrte, die mehr als vierzig Jahre dauerte.",
+      "tts": {
+        "text": "Rahmah ibn Jabir al-Jalahimah war ein Pirat, ein Krieger und ein Mann, den eine einzige Fehde verzehrte, die mehr als vierzig Jahre dauerte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er kämpfte auf den Gewässern des Persischen Golfs zu einer Zeit, als dieses Gewässer einer der umkämpftesten Orte der Erde war.",
+      "text_markdown": "Er kämpfte auf den Gewässern des Persischen Golfs zu einer Zeit, als dieses Gewässer einer der umkämpftesten Orte der Erde war.",
+      "tts": {
+        "text": "Er kämpfte auf den Gewässern des Persischen Golfs zu einer Zeit, als dieses Gewässer einer der umkämpftesten Orte der Erde war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perlen, Handel und Stammesstolz trieben Männer dazu, auf diesen flachen, türkisfarbenen Meeren zu töten und zu sterben.",
+      "text_markdown": "Perlen, Handel und Stammesstolz trieben Männer dazu, auf diesen flachen, türkisfarbenen Meeren zu töten und zu sterben.",
+      "tts": {
+        "text": "Perlen, Handel und Stammesstolz trieben Männer dazu, auf diesen flachen, türkisfarbenen Meeren zu töten und zu sterben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Briten nannten die Region die Piratenküste.",
+      "text_markdown": "Die Briten nannten die Region die Piratenküste.",
+      "tts": {
+        "text": "Die Briten nannten die Region die Piratenküste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie meinten es als Verurteilung.",
+      "text_markdown": "Sie meinten es als Verurteilung.",
+      "tts": {
+        "text": "Sie meinten es als Verurteilung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Menschen, die dort lebten, sahen es anders.",
+      "text_markdown": "Die Menschen, die dort lebten, sahen es anders.",
+      "tts": {
+        "text": "Die Menschen, die dort lebten, sahen es anders.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Für sie war das Meer ein Schlachtfeld, und die Kontrolle über das Wasser bedeutete Überleben.",
+      "text_markdown": "Für sie war das Meer ein Schlachtfeld, und die Kontrolle über das Wasser bedeutete Überleben.",
+      "tts": {
+        "text": "Für sie war das Meer ein Schlachtfeld, und die Kontrolle über das Wasser bedeutete Überleben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir verstand dies besser als jeder andere.",
+      "text_markdown": "Rahmah ibn Jabir verstand dies besser als jeder andere.",
+      "tts": {
+        "text": "Rahmah ibn Jabir verstand dies besser als jeder andere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er kämpfte, bis nichts mehr zum Kämpfen übrig war.",
+      "text_markdown": "Er kämpfte, bis nichts mehr zum Kämpfen übrig war.",
+      "tts": {
+        "text": "Er kämpfte, bis nichts mehr zum Kämpfen übrig war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sein Tod, als er kam, war der dramatischste Abgang in der Geschichte der Piraterie am Golf.",
+      "text_markdown": "Sein Tod, als er kam, war der dramatischste Abgang in der Geschichte der Piraterie am Golf.",
+      "tts": {
+        "text": "Sein Tod, als er kam, war der dramatischste Abgang in der Geschichte der Piraterie am Golf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Anmerkung für den Leser",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er wählte den Tod nach seinen eigenen Bedingungen, in Feuer und Donner, und nahm seine Feinde mit sich.",
+      "text_markdown": "Er wählte den Tod nach seinen eigenen Bedingungen, in Feuer und Donner, und nahm seine Feinde mit sich.",
+      "tts": {
+        "text": "Er wählte den Tod nach seinen eigenen Bedingungen, in Feuer und Donner, und nahm seine Feinde mit sich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Welt des Persischen Golfs",
+      "text_markdown": "Die Welt des Persischen Golfs"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Persische Golf ist ein flaches Gewässer, das sich über etwa 600 Meilen zwischen der Arabischen Halbinsel und der Küste des Iran erstreckt.",
+      "text_markdown": "Der Persische Golf ist ein flaches Gewässer, das sich über etwa 600 Meilen zwischen der Arabischen Halbinsel und der Küste des Iran erstreckt.",
+      "tts": {
+        "text": "Der Persische Golf ist ein flaches Gewässer, das sich über etwa sechshundert Meilen zwischen der Arabischen Halbinsel und der Küste des Iran erstreckt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er ist selten tiefer als 200 Fuß.",
+      "text_markdown": "Er ist selten tiefer als 200 Fuß.",
+      "tts": {
+        "text": "Er ist selten tiefer als zweihundert Fuß.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "An vielen Stellen kann ein Schiff den sandigen Grund durch kristallklares Wasser sehen.",
+      "text_markdown": "An vielen Stellen kann ein Schiff den sandigen Grund durch kristallklares Wasser sehen.",
+      "tts": {
+        "text": "An vielen Stellen kann ein Schiff den sandigen Grund durch kristallklares Wasser sehen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trotz seiner bescheidenen Größe ist der Golf seit Jahrtausenden ein Handelsknotenpunkt.",
+      "text_markdown": "Trotz seiner bescheidenen Größe ist der Golf seit Jahrtausenden ein Handelsknotenpunkt.",
+      "tts": {
+        "text": "Trotz seiner bescheidenen Größe ist der Golf seit Jahrtausenden ein Handelsknotenpunkt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Schiffe transportieren seit der Antike Waren zwischen Mesopotamien, Indien und Afrika durch diese Gewässer.",
+      "text_markdown": "Schiffe transportieren seit der Antike Waren zwischen Mesopotamien, Indien und Afrika durch diese Gewässer.",
+      "tts": {
+        "text": "Schiffe transportieren seit der Antike Waren zwischen Mesopotamien, Indien und Afrika durch diese Gewässer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Golf verbindet den Indischen Ozean mit einigen der ältesten Zivilisationen der Erde.",
+      "text_markdown": "Der Golf verbindet den Indischen Ozean mit einigen der ältesten Zivilisationen der Erde.",
+      "tts": {
+        "text": "Der Golf verbindet den Indischen Ozean mit einigen der ältesten Zivilisationen der Erde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im achtzehnten Jahrhundert war die wertvollste Ressource im Golf nicht das Öl.",
+      "text_markdown": "Im achtzehnten Jahrhundert war die wertvollste Ressource im Golf nicht das Öl.",
+      "tts": {
+        "text": "Im achtzehnten Jahrhundert war die wertvollste Ressource im Golf nicht das Öl.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Öl würde erst ein weiteres Jahrhundert später entdeckt werden.",
+      "text_markdown": "Öl würde erst ein weiteres Jahrhundert später entdeckt werden.",
+      "tts": {
+        "text": "Öl würde erst ein weiteres Jahrhundert später entdeckt werden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Schatz des Golfs waren Perlen.",
+      "text_markdown": "Der Schatz des Golfs waren Perlen.",
+      "tts": {
+        "text": "Der Schatz des Golfs waren Perlen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Perlenbänke des Golfs gehörten zu den reichsten der Welt.",
+      "text_markdown": "Die Perlenbänke des Golfs gehörten zu den reichsten der Welt.",
+      "tts": {
+        "text": "Die Perlenbänke des Golfs gehörten zu den reichsten der Welt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Taucher stürzten sich mit nichts als einer Nasenklammer und einem Steingewicht auf den Meeresboden und hielten minutenlang den Atem an.",
+      "text_markdown": "Taucher stürzten sich mit nichts als einer Nasenklammer und einem Steingewicht auf den Meeresboden und hielten minutenlang den Atem an.",
+      "tts": {
+        "text": "Taucher stürzten sich mit nichts als einer Nasenklammer und einem Steingewicht auf den Meeresboden und hielten minutenlang den Atem an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Perlen, die sie heraufholten, waren in ganz Asien und Europa begehrt.",
+      "text_markdown": "Die Perlen, die sie heraufholten, waren in ganz Asien und Europa begehrt.",
+      "tts": {
+        "text": "Die Perlen, die sie heraufholten, waren in ganz Asien und Europa begehrt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Kontrolle über die Perlenbänke bedeutete Reichtum und Macht.",
+      "text_markdown": "Die Kontrolle über die Perlenbänke bedeutete Reichtum und Macht.",
+      "tts": {
+        "text": "Die Kontrolle über die Perlenbänke bedeutete Reichtum und Macht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Stämme der arabischen Küste kämpften ständig um den Zugang zu den besten Tauchgründen.",
+      "text_markdown": "Die Stämme der arabischen Küste kämpften ständig um den Zugang zu den besten Tauchgründen.",
+      "tts": {
+        "text": "Die Stämme der arabischen Küste kämpften ständig um den Zugang zu den besten Tauchgründen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Stamm, der eine reiche Perlenbank kontrollierte, konnte seine Nachbarn beherrschen.",
+      "text_markdown": "Ein Stamm, der eine reiche Perlenbank kontrollierte, konnte seine Nachbarn beherrschen.",
+      "tts": {
+        "text": "Ein Stamm, der eine reiche Perlenbank kontrollierte, konnte seine Nachbarn beherrschen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die arabische Seite des Golfs war die Heimat Dutzender arabischer Stämme.",
+      "text_markdown": "Die arabische Seite des Golfs war die Heimat Dutzender arabischer Stämme.",
+      "tts": {
+        "text": "Die arabische Seite des Golfs war die Heimat Dutzender arabischer Stämme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diese Stämme waren lose in Konföderationen organisiert, die sich im Laufe der Zeit veränderten.",
+      "text_markdown": "Diese Stämme waren lose in Konföderationen organisiert, die sich im Laufe der Zeit veränderten.",
+      "tts": {
+        "text": "Diese Stämme waren lose in Konföderationen organisiert, die sich im Laufe der Zeit veränderten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Allianzen bildeten und lösten sich auf, als sich die Umstände änderten.",
+      "text_markdown": "Allianzen bildeten und lösten sich auf, als sich die Umstände änderten.",
+      "tts": {
+        "text": "Allianzen bildeten und lösten sich auf, als sich die Umstände änderten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine der wichtigsten Konföderationen war die Al Utoob.",
+      "text_markdown": "Eine der wichtigsten Konföderationen war die Al Utoob.",
+      "tts": {
+        "text": "Eine der wichtigsten Konföderationen war die Al Utoob.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Al Utoob stammten ursprünglich aus dem Najd, der zentralen Wüste der Arabischen Halbinsel.",
+      "text_markdown": "Die Al Utoob stammten ursprünglich aus dem Najd, der zentralen Wüste der Arabischen Halbinsel.",
+      "tts": {
+        "text": "Die Al Utoob stammten ursprünglich aus dem Najd, der zentralen Wüste der Arabischen Halbinsel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie waren auf der Suche nach besseren Möglichkeiten an die Küste gezogen.",
+      "text_markdown": "Sie waren auf der Suche nach besseren Möglichkeiten an die Küste gezogen.",
+      "tts": {
+        "text": "Sie waren auf der Suche nach besseren Möglichkeiten an die Küste gezogen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Al Utoob spalteten sich schließlich in mehrere mächtige Familien auf.",
+      "text_markdown": "Die Al Utoob spalteten sich schließlich in mehrere mächtige Familien auf.",
+      "tts": {
+        "text": "Die Al Utoob spalteten sich schließlich in mehrere mächtige Familien auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Familie Al Khalifa übernahm die Kontrolle über Bahrain.",
+      "text_markdown": "Die Familie Al Khalifa übernahm die Kontrolle über Bahrain.",
+      "tts": {
+        "text": "Die Familie Al Khalifa übernahm die Kontrolle über Bahrain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Familie Al Sabah etablierte sich in Kuwait.",
+      "text_markdown": "Die Familie Al Sabah etablierte sich in Kuwait.",
+      "tts": {
+        "text": "Die Familie Al Sabah etablierte sich in Kuwait.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Stamm der Jalahimah, Rahmahs Volk, siedelte sich an der Küste des heutigen Katar an.",
+      "text_markdown": "Der Stamm der Jalahimah, Rahmahs Volk, siedelte sich an der Küste des heutigen Katar an.",
+      "tts": {
+        "text": "Der Stamm der Jalahimah, Rahmahs Volk, siedelte sich an der Küste des heutigen Katar an.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahrain war der größte Preis am Golf.",
+      "text_markdown": "Bahrain war der größte Preis am Golf.",
+      "tts": {
+        "text": "Bahrain war der größte Preis am Golf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seine Perlenbänke waren die reichsten von allen.",
+      "text_markdown": "Seine Perlenbänke waren die reichsten von allen.",
+      "tts": {
+        "text": "Seine Perlenbänke waren die reichsten von allen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wer Bahrain kontrollierte, kontrollierte die wertvollste Ressource der Region.",
+      "text_markdown": "Wer Bahrain kontrollierte, kontrollierte die wertvollste Ressource der Region.",
+      "tts": {
+        "text": "Wer Bahrain kontrollierte, kontrollierte die wertvollste Ressource der Region.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Familie Al Khalifa eroberte Bahrain im Jahr 1783 und entriss es den Persern.",
+      "text_markdown": "Die Familie Al Khalifa eroberte Bahrain im Jahr 1783 und entriss es den Persern.",
+      "tts": {
+        "text": "Die Familie Al Khalifa eroberte Bahrain im Jahr siebzehnhundertdreiundachtzig und entriss es den Persern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diese Eroberung sollte enorme Folgen haben.",
+      "text_markdown": "Diese Eroberung sollte enorme Folgen haben.",
+      "tts": {
+        "text": "Diese Eroberung sollte enorme Folgen haben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie schuf ein Machtungleichgewicht, das Jahrzehnte voller Konflikte nähren sollte.",
+      "text_markdown": "Sie schuf ein Machtungleichgewicht, das Jahrzehnte voller Konflikte nähren sollte.",
+      "tts": {
+        "text": "Sie schuf ein Machtungleichgewicht, das Jahrzehnte voller Konflikte nähren sollte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Jalahimah glaubten, ihnen stehe ein Anteil am Reichtum Bahrains zu.",
+      "text_markdown": "Die Jalahimah glaubten, ihnen stehe ein Anteil am Reichtum Bahrains zu.",
+      "tts": {
+        "text": "Die Jalahimah glaubten, ihnen stehe ein Anteil am Reichtum Bahrains zu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie waren Teil der Konföderation der Al Utoob gewesen.",
+      "text_markdown": "Sie waren Teil der Konföderation der Al Utoob gewesen.",
+      "tts": {
+        "text": "Sie waren Teil der Konföderation der Al Utoob gewesen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie hatten an der Seite der Al Khalifa gekämpft.",
+      "text_markdown": "Sie hatten an der Seite der Al Khalifa gekämpft.",
+      "tts": {
+        "text": "Sie hatten an der Seite der Al Khalifa gekämpft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Doch die Al Khalifa behielten Bahrain für sich allein.",
+      "text_markdown": "Doch die Al Khalifa behielten Bahrain für sich allein.",
+      "tts": {
+        "text": "Doch die Al Khalifa behielten Bahrain für sich allein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieser empfundene Verrat war der Funke, der das Feuer von Rahmah ibn Jabirs lebenslangem Krieg entzündete.",
+      "text_markdown": "Dieser empfundene Verrat war der Funke, der das Feuer von Rahmah ibn Jabirs lebenslangem Krieg entzündete.",
+      "tts": {
+        "text": "Dieser empfundene Verrat war der Funke, der das Feuer von Rahmah ibn Jabirs lebenslangem Krieg entzündete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er würde den Rest seiner Tage damit verbringen, den Al Khalifa das zu entreißen, was er für rechtmäßig sein hielt.",
+      "text_markdown": "Er würde den Rest seiner Tage damit verbringen, den Al Khalifa das zu entreißen, was er für rechtmäßig sein hielt.",
+      "tts": {
+        "text": "Er würde den Rest seiner Tage damit verbringen, den Al Khalifa das zu entreißen, was er für rechtmäßig sein hielt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jenseits der Stammeskonflikte umkreisten größere Mächte den Golf.",
+      "text_markdown": "Jenseits der Stammeskonflikte umkreisten größere Mächte den Golf.",
+      "tts": {
+        "text": "Jenseits der Stammeskonflikte umkreisten größere Mächte den Golf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Omanische Reich mit Sitz in Maskat war eine bedeutende Seemacht im Indischen Ozean.",
+      "text_markdown": "Das Omanische Reich mit Sitz in Maskat war eine bedeutende Seemacht im Indischen Ozean.",
+      "tts": {
+        "text": "Das Omanische Reich mit Sitz in Maskat war eine bedeutende Seemacht im Indischen Ozean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Omanis hatten ihre eigenen Interessen im Handel und in der Politik des Golfs.",
+      "text_markdown": "Die Omanis hatten ihre eigenen Interessen im Handel und in der Politik des Golfs.",
+      "tts": {
+        "text": "Die Omanis hatten ihre eigenen Interessen im Handel und in der Politik des Golfs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die wahhabitische Bewegung breitete sich vom Landesinneren über Arabien aus.",
+      "text_markdown": "Die wahhabitische Bewegung breitete sich vom Landesinneren über Arabien aus.",
+      "tts": {
+        "text": "Die wahhabitische Bewegung breitete sich vom Landesinneren über Arabien aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das saudisch-wahhabitische Bündnis versuchte, die Küstenstämme unter ihre religiöse und politische Autorität zu bringen.",
+      "text_markdown": "Das saudisch-wahhabitische Bündnis versuchte, die Küstenstämme unter ihre religiöse und politische Autorität zu bringen.",
+      "tts": {
+        "text": "Das saudisch-wahhabitische Bündnis versuchte, die Küstenstämme unter ihre religiöse und politische Autorität zu bringen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Expansion fügte einer ohnehin schon volatilen Region eine weitere Konfliktebene hinzu.",
+      "text_markdown": "Ihre Expansion fügte einer ohnehin schon volatilen Region eine weitere Konfliktebene hinzu.",
+      "tts": {
+        "text": "Ihre Expansion fügte einer ohnehin schon volatilen Region eine weitere Konfliktebene hinzu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Und dann waren da die Briten.",
+      "text_markdown": "Und dann waren da die Briten.",
+      "tts": {
+        "text": "Und dann waren da die Briten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Britische Ostindien-Kompanie kontrollierte den Handel zwischen Indien und dem Golf.",
+      "text_markdown": "Die Britische Ostindien-Kompanie kontrollierte den Handel zwischen Indien und dem Golf.",
+      "tts": {
+        "text": "Die Britische Ostindien-Kompanie kontrollierte den Handel zwischen Indien und dem Golf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Britische Kriegsschiffe patrouillierten die Gewässer, und britische politische Agenten mischten sich in Stammesangelegenheiten ein.",
+      "text_markdown": "Britische Kriegsschiffe patrouillierten die Gewässer, und britische politische Agenten mischten sich in Stammesangelegenheiten ein.",
+      "tts": {
+        "text": "Britische Kriegsschiffe patrouillierten die Gewässer, und britische politische Agenten mischten sich in Stammesangelegenheiten ein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Briten wollten vor allem Stabilität.",
+      "text_markdown": "Die Briten wollten vor allem Stabilität.",
+      "tts": {
+        "text": "Die Briten wollten vor allem Stabilität.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Piraterie störte den Handel, und gestörter Handel bedeutete verlorene Gewinne.",
+      "text_markdown": "Piraterie störte den Handel, und gestörter Handel bedeutete verlorene Gewinne.",
+      "tts": {
+        "text": "Piraterie störte den Handel, und gestörter Handel bedeutete verlorene Gewinne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie würden schließlich ihren Willen am Golf mit Gewalt durchsetzen, indem sie Verträge unterzeichneten, die die Araber Waffenstillstände nannten und die Briten Kapitulationen.",
+      "text_markdown": "Sie würden schließlich ihren Willen am Golf mit Gewalt durchsetzen, indem sie Verträge unterzeichneten, die die Araber Waffenstillstände nannten und die Briten Kapitulationen.",
+      "tts": {
+        "text": "Sie würden schließlich ihren Willen am Golf mit Gewalt durchsetzen, indem sie Verträge unterzeichneten, die die Araber Waffenstillstände nannten und die Briten Kapitulationen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies war die Welt von Rahmah ibn Jabir.",
+      "text_markdown": "Dies war die Welt von Rahmah ibn Jabir.",
+      "tts": {
+        "text": "Dies war die Welt von Rahmah ibn Jabir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eine Welt aus Perlen und Blut, aus Stammesehre und unerbittlicher Rache.",
+      "text_markdown": "Eine Welt aus Perlen und Blut, aus Stammesehre und unerbittlicher Rache.",
+      "tts": {
+        "text": "Eine Welt aus Perlen und Blut, aus Stammesehre und unerbittlicher Rache.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-066",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt des Persischen Golfs",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eine Welt, in der ein einäugiger Pirat den gesamten Golf in Angst und Schrecken versetzen konnte.",
+      "text_markdown": "Eine Welt, in der ein einäugiger Pirat den gesamten Golf in Angst und Schrecken versetzen konnte.",
+      "tts": {
+        "text": "Eine Welt, in der ein einäugiger Pirat den gesamten Golf in Angst und Schrecken versetzen konnte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ursprünge",
+      "text_markdown": "Ursprünge"
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir al-Jalahimah wurde um 1760 an der Küste der Arabischen Halbinsel geboren.",
+      "text_markdown": "Rahmah ibn Jabir al-Jalahimah wurde um 1760 an der Küste der Arabischen Halbinsel geboren.",
+      "tts": {
+        "text": "Rahmah ibn Jabir al-Jalahimah wurde um siebzehnhundertsechzig an der Küste der Arabischen Halbinsel geboren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das genaue Datum seiner Geburt wurde nicht aufgezeichnet.",
+      "text_markdown": "Das genaue Datum seiner Geburt wurde nicht aufgezeichnet.",
+      "tts": {
+        "text": "Das genaue Datum seiner Geburt wurde nicht aufgezeichnet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sein Stamm, die Jalahimah, lebte in der Region, die heute Katar ist.",
+      "text_markdown": "Sein Stamm, die Jalahimah, lebte in der Region, die heute Katar ist.",
+      "tts": {
+        "text": "Sein Stamm, die Jalahimah, lebte in der Region, die heute Katar ist.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Jalahimah waren ein seefahrendes Volk.",
+      "text_markdown": "Die Jalahimah waren ein seefahrendes Volk.",
+      "tts": {
+        "text": "Die Jalahimah waren ein seefahrendes Volk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie fischten, tauchten nach Perlen und handelten entlang der Küste.",
+      "text_markdown": "Sie fischten, tauchten nach Perlen und handelten entlang der Küste.",
+      "tts": {
+        "text": "Sie fischten, tauchten nach Perlen und handelten entlang der Küste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Meer war ihr Lebensunterhalt und ihre Identität.",
+      "text_markdown": "Das Meer war ihr Lebensunterhalt und ihre Identität.",
+      "tts": {
+        "text": "Das Meer war ihr Lebensunterhalt und ihre Identität.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah wuchs in einer Welt auf, die von Stammestreue geprägt war.",
+      "text_markdown": "Rahmah wuchs in einer Welt auf, die von Stammestreue geprägt war.",
+      "tts": {
+        "text": "Rahmah wuchs in einer Welt auf, die von Stammestreue geprägt war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Stamm eines Mannes war seine Familie, seine Armee und seine Nation.",
+      "text_markdown": "Der Stamm eines Mannes war seine Familie, seine Armee und seine Nation.",
+      "tts": {
+        "text": "Der Stamm eines Mannes war seine Familie, seine Armee und seine Nation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seinen Stamm zu verraten war die schlimmste aller Sünden.",
+      "text_markdown": "Seinen Stamm zu verraten war die schlimmste aller Sünden.",
+      "tts": {
+        "text": "Seinen Stamm zu verraten war die schlimmste aller Sünden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein seinem Stamm zugefügtes Unrecht zu rächen war die höchste Pflicht.",
+      "text_markdown": "Ein seinem Stamm zugefügtes Unrecht zu rächen war die höchste Pflicht.",
+      "tts": {
+        "text": "Ein seinem Stamm zugefügtes Unrecht zu rächen war die höchste Pflicht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er lernte als Junge zu segeln und steuerte die Dhaus, die Arbeitspferde des Golfs.",
+      "text_markdown": "Er lernte als Junge zu segeln und steuerte die Dhaus, die Arbeitspferde des Golfs.",
+      "tts": {
+        "text": "Er lernte als Junge zu segeln und steuerte die Dhaus, die Arbeitspferde des Golfs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dhaus waren hölzerne Segelschiffe mit dreieckigen Lateinersegeln.",
+      "text_markdown": "Dhaus waren hölzerne Segelschiffe mit dreieckigen Lateinersegeln.",
+      "tts": {
+        "text": "Dhaus waren hölzerne Segelschiffe mit dreieckigen Lateinersegeln.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie wurden in diesen Gewässern seit Jahrhunderten verwendet.",
+      "text_markdown": "Sie wurden in diesen Gewässern seit Jahrhunderten verwendet.",
+      "tts": {
+        "text": "Sie wurden in diesen Gewässern seit Jahrhunderten verwendet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah lernte auch zu kämpfen.",
+      "text_markdown": "Rahmah lernte auch zu kämpfen.",
+      "tts": {
+        "text": "Rahmah lernte auch zu kämpfen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Von jedem Mann an der Golfküste wurde erwartet, sowohl Krieger als auch Seemann zu sein.",
+      "text_markdown": "Von jedem Mann an der Golfküste wurde erwartet, sowohl Krieger als auch Seemann zu sein.",
+      "tts": {
+        "text": "Von jedem Mann an der Golfküste wurde erwartet, sowohl Krieger als auch Seemann zu sein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Überfälle zwischen rivalisierenden Stämmen waren üblich.",
+      "text_markdown": "Überfälle zwischen rivalisierenden Stämmen waren üblich.",
+      "tts": {
+        "text": "Überfälle zwischen rivalisierenden Stämmen waren üblich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein Junge, der nicht mit Schwert und Muskete umgehen konnte, war eine Last.",
+      "text_markdown": "Ein Junge, der nicht mit Schwert und Muskete umgehen konnte, war eine Last.",
+      "tts": {
+        "text": "Ein Junge, der nicht mit Schwert und Muskete umgehen konnte, war eine Last.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das prägende Ereignis in Rahmahs frühem Leben war die Eroberung Bahrains durch die Al Khalifa.",
+      "text_markdown": "Das prägende Ereignis in Rahmahs frühem Leben war die Eroberung Bahrains durch die Al Khalifa.",
+      "tts": {
+        "text": "Das prägende Ereignis in Rahmahs frühem Leben war die Eroberung Bahrains durch die Al Khalifa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Jalahimah hatten erwartet, an der Beute dieses Sieges teilzuhaben.",
+      "text_markdown": "Die Jalahimah hatten erwartet, an der Beute dieses Sieges teilzuhaben.",
+      "tts": {
+        "text": "Die Jalahimah hatten erwartet, an der Beute dieses Sieges teilzuhaben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stattdessen beanspruchten die Al Khalifa Bahrain ganz für sich allein.",
+      "text_markdown": "Stattdessen beanspruchten die Al Khalifa Bahrain ganz für sich allein.",
+      "tts": {
+        "text": "Stattdessen beanspruchten die Al Khalifa Bahrain ganz für sich allein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Jalahimah wurden beiseitegedrängt.",
+      "text_markdown": "Die Jalahimah wurden beiseitegedrängt.",
+      "tts": {
+        "text": "Die Jalahimah wurden beiseitegedrängt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie erhielten keinen Anteil am Perlenreichtum.",
+      "text_markdown": "Sie erhielten keinen Anteil am Perlenreichtum.",
+      "tts": {
+        "text": "Sie erhielten keinen Anteil am Perlenreichtum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihnen wurde der Zugang zu den reichsten Tauchgründen verwehrt.",
+      "text_markdown": "Ihnen wurde der Zugang zu den reichsten Tauchgründen verwehrt.",
+      "tts": {
+        "text": "Ihnen wurde der Zugang zu den reichsten Tauchgründen verwehrt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Für Rahmah war dies eine Ungerechtigkeit, die er niemals akzeptieren würde.",
+      "text_markdown": "Für Rahmah war dies eine Ungerechtigkeit, die er niemals akzeptieren würde.",
+      "tts": {
+        "text": "Für Rahmah war dies eine Ungerechtigkeit, die er niemals akzeptieren würde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er begann bereits als junger Mann, Schiffe der Al Khalifa zu überfallen.",
+      "text_markdown": "Er begann bereits als junger Mann, Schiffe der Al Khalifa zu überfallen.",
+      "tts": {
+        "text": "Er begann bereits als junger Mann, Schiffe der Al Khalifa zu überfallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anfangs waren es kleine Angriffe.",
+      "text_markdown": "Anfangs waren es kleine Angriffe.",
+      "tts": {
+        "text": "Anfangs waren es kleine Angriffe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er lauerte einer Perlendau auf oder fing ein Handelsschiff ab.",
+      "text_markdown": "Er lauerte einer Perlendau auf oder fing ein Handelsschiff ab.",
+      "tts": {
+        "text": "Er lauerte einer Perlendau auf oder fing ein Handelsschiff ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Angriffe waren ebenso Akte der Rache wie Akte der Piraterie.",
+      "text_markdown": "Die Angriffe waren ebenso Akte der Rache wie Akte der Piraterie.",
+      "tts": {
+        "text": "Die Angriffe waren ebenso Akte der Rache wie Akte der Piraterie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah erwies sich als geborener Anführer.",
+      "text_markdown": "Rahmah erwies sich als geborener Anführer.",
+      "tts": {
+        "text": "Rahmah erwies sich als geborener Anführer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war furchtlos in der Schlacht und großzügig gegenüber seinen Gefolgsleuten.",
+      "text_markdown": "Er war furchtlos in der Schlacht und großzügig gegenüber seinen Gefolgsleuten.",
+      "tts": {
+        "text": "Er war furchtlos in der Schlacht und großzügig gegenüber seinen Gefolgsleuten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Männer strömten zu seinem Banner, angezogen von seinem Ruf und dem Versprechen von Beute.",
+      "text_markdown": "Männer strömten zu seinem Banner, angezogen von seinem Ruf und dem Versprechen von Beute.",
+      "tts": {
+        "text": "Männer strömten zu seinem Banner, angezogen von seinem Ruf und dem Versprechen von Beute.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er errichtete seine Basis in Khor Hassan, einer geschützten Bucht an der Küste Katars.",
+      "text_markdown": "Er errichtete seine Basis in Khor Hassan, einer geschützten Bucht an der Küste Katars.",
+      "tts": {
+        "text": "Er errichtete seine Basis in Khor Hassan, einer geschützten Bucht an der Küste Katars.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Von diesem Hafen aus konnte er Schiffe angreifen, die durch den Golf fuhren.",
+      "text_markdown": "Von diesem Hafen aus konnte er Schiffe angreifen, die durch den Golf fuhren.",
+      "tts": {
+        "text": "Von diesem Hafen aus konnte er Schiffe angreifen, die durch den Golf fuhren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Lage war strategisch hervorragend, nahe an den Hauptschifffahrtsrouten.",
+      "text_markdown": "Die Lage war strategisch hervorragend, nahe an den Hauptschifffahrtsrouten.",
+      "tts": {
+        "text": "Die Lage war strategisch hervorragend, nahe an den Hauptschifffahrtsrouten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seine Flotte wuchs stetig.",
+      "text_markdown": "Seine Flotte wuchs stetig.",
+      "tts": {
+        "text": "Seine Flotte wuchs stetig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er erwarb größere und besser bewaffnete Schiffe.",
+      "text_markdown": "Er erwarb größere und besser bewaffnete Schiffe.",
+      "tts": {
+        "text": "Er erwarb größere und besser bewaffnete Schiffe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er rekrutierte Anhänger aus dem gesamten Golf, darunter Männer aus Stämmen, die eigene Beschwerden gegen die Al Khalifa hatten.",
+      "text_markdown": "Er rekrutierte Anhänger aus dem gesamten Golf, darunter Männer aus Stämmen, die eigene Beschwerden gegen die Al Khalifa hatten.",
+      "tts": {
+        "text": "Er rekrutierte Anhänger aus dem gesamten Golf, darunter Männer aus Stämmen, die eigene Beschwerden gegen die Al Khalifa hatten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den siebzehnhundertneunziger Jahren war Rahmah ibn Jabir der gefürchtetste Pirat im Persischen Golf.",
+      "text_markdown": "In den siebzehnhundertneunziger Jahren war Rahmah ibn Jabir der gefürchtetste Pirat im Persischen Golf.",
+      "tts": {
+        "text": "In den siebzehnhundertneunziger Jahren war Rahmah ibn Jabir der gefürchtetste Pirat im Persischen Golf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Name wurde mit Schrecken von Händlern von Bahrain bis Maskat ausgesprochen.",
+      "text_markdown": "Sein Name wurde mit Schrecken von Händlern von Bahrain bis Maskat ausgesprochen.",
+      "tts": {
+        "text": "Sein Name wurde mit Schrecken von Händlern von Bahrain bis Maskat ausgesprochen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Al Khalifa betrachteten ihn als ihren gefährlichsten Feind.",
+      "text_markdown": "Die Al Khalifa betrachteten ihn als ihren gefährlichsten Feind.",
+      "tts": {
+        "text": "Die Al Khalifa betrachteten ihn als ihren gefährlichsten Feind.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In einer seiner vielen Schlachten verlor Rahmah ein Auge.",
+      "text_markdown": "In einer seiner vielen Schlachten verlor Rahmah ein Auge.",
+      "tts": {
+        "text": "In einer seiner vielen Schlachten verlor Rahmah ein Auge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Verletzung hätte die Karriere eines geringeren Mannes beendet.",
+      "text_markdown": "Die Verletzung hätte die Karriere eines geringeren Mannes beendet.",
+      "tts": {
+        "text": "Die Verletzung hätte die Karriere eines geringeren Mannes beendet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Für Rahmah war es nur ein Ehrenzeichen.",
+      "text_markdown": "Für Rahmah war es nur ein Ehrenzeichen.",
+      "tts": {
+        "text": "Für Rahmah war es nur ein Ehrenzeichen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er kämpfte mit derselben Wildheit weiter wie zuvor.",
+      "text_markdown": "Er kämpfte mit derselben Wildheit weiter wie zuvor.",
+      "tts": {
+        "text": "Er kämpfte mit derselben Wildheit weiter wie zuvor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Europäische Beobachter, die ihn trafen, beschrieben eine furchteinflößende Gestalt.",
+      "text_markdown": "Europäische Beobachter, die ihn trafen, beschrieben eine furchteinflößende Gestalt.",
+      "tts": {
+        "text": "Europäische Beobachter, die ihn trafen, beschrieben eine furchteinflößende Gestalt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war groß und hager, mit einem einzigen brennenden Auge und einem Gesicht, das von Jahren des Kampfes gezeichnet war.",
+      "text_markdown": "Er war groß und hager, mit einem einzigen brennenden Auge und einem Gesicht, das von Jahren des Kampfes gezeichnet war.",
+      "tts": {
+        "text": "Er war groß und hager, mit einem einzigen brennenden Auge und einem Gesicht, das von Jahren des Kampfes gezeichnet war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ursprünge",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Man sagte, seine Stimme trage über das Wasser und rallye seine Männer selbst im Chaos der Schlacht.",
+      "text_markdown": "Man sagte, seine Stimme trage über das Wasser und rallye seine Männer selbst im Chaos der Schlacht.",
+      "tts": {
+        "text": "Man sagte, seine Stimme trage über das Wasser und rallye seine Männer selbst im Chaos der Schlacht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der endlose Krieg",
+      "text_markdown": "Der endlose Krieg"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmahs Krieg gegen die Al Khalifa war keine Reihe einzelner Überfälle.",
+      "text_markdown": "Rahmahs Krieg gegen die Al Khalifa war keine Reihe einzelner Überfälle.",
+      "tts": {
+        "text": "Rahmahs Krieg gegen die Al Khalifa war keine Reihe einzelner Überfälle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es war ein anhaltender, jahrzehntelanger Feldzug unerbittlicher Aggression.",
+      "text_markdown": "Es war ein anhaltender, jahrzehntelanger Feldzug unerbittlicher Aggression.",
+      "tts": {
+        "text": "Es war ein anhaltender, jahrzehntelanger Feldzug unerbittlicher Aggression.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er griff ihre Schiffe, ihre Häfen und ihre Verbündeten mit gleicher Entschlossenheit an.",
+      "text_markdown": "Er griff ihre Schiffe, ihre Häfen und ihre Verbündeten mit gleicher Entschlossenheit an.",
+      "tts": {
+        "text": "Er griff ihre Schiffe, ihre Häfen und ihre Verbündeten mit gleicher Entschlossenheit an.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seine Taktik war einfach, aber wirkungsvoll.",
+      "text_markdown": "Seine Taktik war einfach, aber wirkungsvoll.",
+      "tts": {
+        "text": "Seine Taktik war einfach, aber wirkungsvoll.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er benutzte schnelle, wendige Dhaus, um langsamere Handelsschiffe abzufangen.",
+      "text_markdown": "Er benutzte schnelle, wendige Dhaus, um langsamere Handelsschiffe abzufangen.",
+      "tts": {
+        "text": "Er benutzte schnelle, wendige Dhaus, um langsamere Handelsschiffe abzufangen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Männer enterten feindliche Schiffe mit Schwertern, Dolchen und Musketen.",
+      "text_markdown": "Seine Männer enterten feindliche Schiffe mit Schwertern, Dolchen und Musketen.",
+      "tts": {
+        "text": "Seine Männer enterten feindliche Schiffe mit Schwertern, Dolchen und Musketen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Kämpfe waren brutal und fanden auf engem Raum statt.",
+      "text_markdown": "Die Kämpfe waren brutal und fanden auf engem Raum statt.",
+      "tts": {
+        "text": "Die Kämpfe waren brutal und fanden auf engem Raum statt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah zeigte wenig Gnade gegenüber denen, die Widerstand leisteten.",
+      "text_markdown": "Rahmah zeigte wenig Gnade gegenüber denen, die Widerstand leisteten.",
+      "tts": {
+        "text": "Rahmah zeigte wenig Gnade gegenüber denen, die Widerstand leisteten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gefangene Al-Khalifa-Seeleute wurden oft getötet oder versklavt.",
+      "text_markdown": "Gefangene Al-Khalifa-Seeleute wurden oft getötet oder versklavt.",
+      "tts": {
+        "text": "Gefangene Al-Khalifa-Seeleute wurden oft getötet oder versklavt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er wollte, dass die Al Khalifa das Meer selbst fürchteten.",
+      "text_markdown": "Er wollte, dass die Al Khalifa das Meer selbst fürchteten.",
+      "tts": {
+        "text": "Er wollte, dass die Al Khalifa das Meer selbst fürchteten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Al Khalifa schlugen mit ihrer eigenen Flotte zurück.",
+      "text_markdown": "Die Al Khalifa schlugen mit ihrer eigenen Flotte zurück.",
+      "tts": {
+        "text": "Die Al Khalifa schlugen mit ihrer eigenen Flotte zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie starteten wiederholte Angriffe auf Rahmahs Stützpunkte.",
+      "text_markdown": "Sie starteten wiederholte Angriffe auf Rahmahs Stützpunkte.",
+      "tts": {
+        "text": "Sie starteten wiederholte Angriffe auf Rahmahs Stützpunkte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mehrmals zwangen sie ihn, seine Position aufzugeben und sich in einen neuen Hafen zurückzuziehen.",
+      "text_markdown": "Mehrmals zwangen sie ihn, seine Position aufzugeben und sich in einen neuen Hafen zurückzuziehen.",
+      "tts": {
+        "text": "Mehrmals zwangen sie ihn, seine Position aufzugeben und sich in einen neuen Hafen zurückzuziehen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber Rahmah kam immer zurück.",
+      "text_markdown": "Aber Rahmah kam immer zurück.",
+      "tts": {
+        "text": "Aber Rahmah kam immer zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er gruppierte sich neu, rekrutierte neue Anhänger und kehrte in den Kampf zurück.",
+      "text_markdown": "Er gruppierte sich neu, rekrutierte neue Anhänger und kehrte in den Kampf zurück.",
+      "tts": {
+        "text": "Er gruppierte sich neu, rekrutierte neue Anhänger und kehrte in den Kampf zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Widerstandsfähigkeit war außergewöhnlich.",
+      "text_markdown": "Seine Widerstandsfähigkeit war außergewöhnlich.",
+      "tts": {
+        "text": "Seine Widerstandsfähigkeit war außergewöhnlich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Keine Niederlage war für ihn jemals endgültig.",
+      "text_markdown": "Keine Niederlage war für ihn jemals endgültig.",
+      "tts": {
+        "text": "Keine Niederlage war für ihn jemals endgültig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er schmiedete Allianzen mit jedem, der sich den Al Khalifa widersetzte.",
+      "text_markdown": "Er schmiedete Allianzen mit jedem, der sich den Al Khalifa widersetzte.",
+      "tts": {
+        "text": "Er schmiedete Allianzen mit jedem, der sich den Al Khalifa widersetzte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er verbündete sich mit den Wahhabiten, wenn es ihm passte.",
+      "text_markdown": "Er verbündete sich mit den Wahhabiten, wenn es ihm passte.",
+      "tts": {
+        "text": "Er verbündete sich mit den Wahhabiten, wenn es ihm passte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er verbündete sich mit den Omanis, wenn sie nützlich waren.",
+      "text_markdown": "Er verbündete sich mit den Omanis, wenn sie nützlich waren.",
+      "tts": {
+        "text": "Er verbündete sich mit den Omanis, wenn sie nützlich waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er kooperierte sogar gelegentlich mit den Briten.",
+      "text_markdown": "Er kooperierte sogar gelegentlich mit den Briten.",
+      "tts": {
+        "text": "Er kooperierte sogar gelegentlich mit den Briten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese Allianzen waren stets vorübergehend und stets strategisch.",
+      "text_markdown": "Diese Allianzen waren stets vorübergehend und stets strategisch.",
+      "tts": {
+        "text": "Diese Allianzen waren stets vorübergehend und stets strategisch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmahs einzige wahre Loyalität galt seinem Stamm und seiner Vendetta.",
+      "text_markdown": "Rahmahs einzige wahre Loyalität galt seinem Stamm und seiner Vendetta.",
+      "tts": {
+        "text": "Rahmahs einzige wahre Loyalität galt seinem Stamm und seiner Vendetta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er arbeitete mit jedem zusammen, der ihm helfen konnte, den Al Khalifa zu schaden.",
+      "text_markdown": "Er arbeitete mit jedem zusammen, der ihm helfen konnte, den Al Khalifa zu schaden.",
+      "tts": {
+        "text": "Er arbeitete mit jedem zusammen, der ihm helfen konnte, den Al Khalifa zu schaden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wahhabiten waren eine Zeit lang besonders wichtige Verbündete.",
+      "text_markdown": "Die Wahhabiten waren eine Zeit lang besonders wichtige Verbündete.",
+      "tts": {
+        "text": "Die Wahhabiten waren eine Zeit lang besonders wichtige Verbündete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der saudisch-wahhabitische Staat expandierte Ende des achtzehnten und Anfang des neunzehnten Jahrhunderts über Arabien.",
+      "text_markdown": "Der saudisch-wahhabitische Staat expandierte Ende des achtzehnten und Anfang des neunzehnten Jahrhunderts über Arabien.",
+      "tts": {
+        "text": "Der saudisch-wahhabitische Staat expandierte Ende des achtzehnten und Anfang des neunzehnten Jahrhunderts über Arabien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie sahen die Al Khalifa als Rivalen und unterstützten gerne Rahmahs Angriffe.",
+      "text_markdown": "Sie sahen die Al Khalifa als Rivalen und unterstützten gerne Rahmahs Angriffe.",
+      "tts": {
+        "text": "Sie sahen die Al Khalifa als Rivalen und unterstützten gerne Rahmahs Angriffe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mit wahhabitischer Unterstützung startete Rahmah einige seiner ehrgeizigsten Operationen.",
+      "text_markdown": "Mit wahhabitischer Unterstützung startete Rahmah einige seiner ehrgeizigsten Operationen.",
+      "tts": {
+        "text": "Mit wahhabitischer Unterstützung startete Rahmah einige seiner ehrgeizigsten Operationen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er blockierte Bahrains Häfen und schnitt den Handel der Insel ab.",
+      "text_markdown": "Er blockierte Bahrains Häfen und schnitt den Handel der Insel ab.",
+      "tts": {
+        "text": "Er blockierte Bahrains Häfen und schnitt den Handel der Insel ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er griff Konvois von Perlentauchern an, die von den Bänken zurückkehrten.",
+      "text_markdown": "Er griff Konvois von Perlentauchern an, die von den Bänken zurückkehrten.",
+      "tts": {
+        "text": "Er griff Konvois von Perlentauchern an, die von den Bänken zurückkehrten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er machte die Gewässer um Bahrain gefährlich für jeden, der den Al Khalifa treu war.",
+      "text_markdown": "Er machte die Gewässer um Bahrain gefährlich für jeden, der den Al Khalifa treu war.",
+      "tts": {
+        "text": "Er machte die Gewässer um Bahrain gefährlich für jeden, der den Al Khalifa treu war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Perlenhandel war die Lebensader Bahrains.",
+      "text_markdown": "Der Perlenhandel war die Lebensader Bahrains.",
+      "tts": {
+        "text": "Der Perlenhandel war die Lebensader Bahrains.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Indem er ihn störte, traf Rahmah das Fundament der Macht der Al Khalifa.",
+      "text_markdown": "Indem er ihn störte, traf Rahmah das Fundament der Macht der Al Khalifa.",
+      "tts": {
+        "text": "Indem er ihn störte, traf Rahmah das Fundament der Macht der Al Khalifa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eine Saison verlorener Perleneinnahmen konnte eine herrschende Familie mehr schwächen als eine militärische Niederlage.",
+      "text_markdown": "Eine Saison verlorener Perleneinnahmen konnte eine herrschende Familie mehr schwächen als eine militärische Niederlage.",
+      "tts": {
+        "text": "Eine Saison verlorener Perleneinnahmen konnte eine herrschende Familie mehr schwächen als eine militärische Niederlage.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Briten beobachteten diese Konflikte mit wachsender Sorge.",
+      "text_markdown": "Die Briten beobachteten diese Konflikte mit wachsender Sorge.",
+      "tts": {
+        "text": "Die Briten beobachteten diese Konflikte mit wachsender Sorge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeder Stammeskrieg störte den Handel, der durch den Golf floss.",
+      "text_markdown": "Jeder Stammeskrieg störte den Handel, der durch den Golf floss.",
+      "tts": {
+        "text": "Jeder Stammeskrieg störte den Handel, der durch den Golf floss.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Britische Händler verloren Geld, und britische Beamte verloren die Geduld.",
+      "text_markdown": "Britische Händler verloren Geld, und britische Beamte verloren die Geduld.",
+      "tts": {
+        "text": "Britische Händler verloren Geld, und britische Beamte verloren die Geduld.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Britische Agenten versuchten wiederholt, zwischen Rahmah und den Al Khalifa zu vermitteln.",
+      "text_markdown": "Britische Agenten versuchten wiederholt, zwischen Rahmah und den Al Khalifa zu vermitteln.",
+      "tts": {
+        "text": "Britische Agenten versuchten wiederholt, zwischen Rahmah und den Al Khalifa zu vermitteln.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie boten an, Waffenstillstände auszuhandeln und Streitigkeiten beizulegen.",
+      "text_markdown": "Sie boten an, Waffenstillstände auszuhandeln und Streitigkeiten beizulegen.",
+      "tts": {
+        "text": "Sie boten an, Waffenstillstände auszuhandeln und Streitigkeiten beizulegen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rahmah lehnte jedes Angebot ab.",
+      "text_markdown": "Rahmah lehnte jedes Angebot ab.",
+      "tts": {
+        "text": "Rahmah lehnte jedes Angebot ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er war nicht an Frieden interessiert.",
+      "text_markdown": "Er war nicht an Frieden interessiert.",
+      "tts": {
+        "text": "Er war nicht an Frieden interessiert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein britischer politischer Agent namens Francis Warden traf Rahmah und hinterließ eine detaillierte Beschreibung.",
+      "text_markdown": "Ein britischer politischer Agent namens Francis Warden traf Rahmah und hinterließ eine detaillierte Beschreibung.",
+      "tts": {
+        "text": "Ein britischer politischer Agent namens Francis Warden traf Rahmah und hinterließ eine detaillierte Beschreibung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er beschrieb den Piraten als höflich, aber unerbittlich.",
+      "text_markdown": "Er beschrieb den Piraten als höflich, aber unerbittlich.",
+      "tts": {
+        "text": "Er beschrieb den Piraten als höflich, aber unerbittlich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rahmah erklärte seine Position klar: Die Al Khalifa hatten gestohlen, was seinem Volk gehörte, und er würde kämpfen, bis es zurückgegeben werde.",
+      "text_markdown": "Rahmah erklärte seine Position klar: Die Al Khalifa hatten gestohlen, was seinem Volk gehörte, und er würde kämpfen, bis es zurückgegeben werde.",
+      "tts": {
+        "text": "Rahmah erklärte seine Position klar: Die Al Khalifa hatten gestohlen, was seinem Volk gehörte, und er würde kämpfen, bis es zurückgegeben werde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Briten waren frustriert über seine Sturheit.",
+      "text_markdown": "Die Briten waren frustriert über seine Sturheit.",
+      "tts": {
+        "text": "Die Briten waren frustriert über seine Sturheit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie konnten ihn weder bestechen noch bedrohen noch überzeugen.",
+      "text_markdown": "Sie konnten ihn weder bestechen noch bedrohen noch überzeugen.",
+      "tts": {
+        "text": "Sie konnten ihn weder bestechen noch bedrohen noch überzeugen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sein Hass auf die Al Khalifa war absolut und jenseits jeder Verhandlung.",
+      "text_markdown": "Sein Hass auf die Al Khalifa war absolut und jenseits jeder Verhandlung.",
+      "tts": {
+        "text": "Sein Hass auf die Al Khalifa war absolut und jenseits jeder Verhandlung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah verlegte seinen Stützpunkt während seiner langen Karriere mehrmals.",
+      "text_markdown": "Rahmah verlegte seinen Stützpunkt während seiner langen Karriere mehrmals.",
+      "tts": {
+        "text": "Rahmah verlegte seinen Stützpunkt während seiner langen Karriere mehrmals.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Als Khor Hassan zu gefährlich wurde, zog er nach Dammam an der arabischen Küste um.",
+      "text_markdown": "Als Khor Hassan zu gefährlich wurde, zog er nach Dammam an der arabischen Küste um.",
+      "tts": {
+        "text": "Als Khor Hassan zu gefährlich wurde, zog er nach Dammam an der arabischen Küste um.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dammam gab ihm Zugang zur saudisch-wahhabitischen Unterstützung und einer neuen Reihe von Häfen.",
+      "text_markdown": "Dammam gab ihm Zugang zur saudisch-wahhabitischen Unterstützung und einer neuen Reihe von Häfen.",
+      "tts": {
+        "text": "Dammam gab ihm Zugang zur saudisch-wahhabitischen Unterstützung und einer neuen Reihe von Häfen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Von Dammam aus setzte er seine Überfälle ohne Unterbrechung fort.",
+      "text_markdown": "Von Dammam aus setzte er seine Überfälle ohne Unterbrechung fort.",
+      "tts": {
+        "text": "Von Dammam aus setzte er seine Überfälle ohne Unterbrechung fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seine Flotte war nun beachtlich und umfasste Dutzende bewaffneter Dhaus.",
+      "text_markdown": "Seine Flotte war nun beachtlich und umfasste Dutzende bewaffneter Dhaus.",
+      "tts": {
+        "text": "Seine Flotte war nun beachtlich und umfasste Dutzende bewaffneter Dhaus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Der endlose Krieg",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er war nicht mehr nur ein Pirat, sondern eine regionale Macht für sich.",
+      "text_markdown": "Er war nicht mehr nur ein Pirat, sondern eine regionale Macht für sich.",
+      "tts": {
+        "text": "Er war nicht mehr nur ein Pirat, sondern eine regionale Macht für sich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Auf dem Höhepunkt",
+      "text_markdown": "Auf dem Höhepunkt"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zu Beginn des neunzehnten Jahrhunderts war Rahmah ibn Jabir auf dem Höhepunkt seiner Macht.",
+      "text_markdown": "Zu Beginn des neunzehnten Jahrhunderts war Rahmah ibn Jabir auf dem Höhepunkt seiner Macht.",
+      "tts": {
+        "text": "Zu Beginn des neunzehnten Jahrhunderts war Rahmah ibn Jabir auf dem Höhepunkt seiner Macht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er kontrollierte eine bedeutende Flotte und hatte Allianzen, die sich über den gesamten Golf erstreckten.",
+      "text_markdown": "Er kontrollierte eine bedeutende Flotte und hatte Allianzen, die sich über den gesamten Golf erstreckten.",
+      "tts": {
+        "text": "Er kontrollierte eine bedeutende Flotte und hatte Allianzen, die sich über den gesamten Golf erstreckten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sein Ruf war von der Straße von Hormus bis zur Küste Kuwaits gefürchtet.",
+      "text_markdown": "Sein Ruf war von der Straße von Hormus bis zur Küste Kuwaits gefürchtet.",
+      "tts": {
+        "text": "Sein Ruf war von der Straße von Hormus bis zur Küste Kuwaits gefürchtet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er war nach den Maßstäben seiner Zeit und seines Ortes ein alter Mann geworden.",
+      "text_markdown": "Er war nach den Maßstäben seiner Zeit und seines Ortes ein alter Mann geworden.",
+      "tts": {
+        "text": "Er war nach den Maßstäben seiner Zeit und seines Ortes ein alter Mann geworden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jahre des Kampfes hatten seinen Körper vernarbt und mitgenommen.",
+      "text_markdown": "Jahre des Kampfes hatten seinen Körper vernarbt und mitgenommen.",
+      "tts": {
+        "text": "Jahre des Kampfes hatten seinen Körper vernarbt und mitgenommen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er hatte ein Auge verloren und zahlreiche Wunden erlitten.",
+      "text_markdown": "Er hatte ein Auge verloren und zahlreiche Wunden erlitten.",
+      "tts": {
+        "text": "Er hatte ein Auge verloren und zahlreiche Wunden erlitten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aber sein Geist war ungebrochen.",
+      "text_markdown": "Aber sein Geist war ungebrochen.",
+      "tts": {
+        "text": "Aber sein Geist war ungebrochen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er führte Überfälle weiterhin persönlich an und stand am Bug seines Flaggschiffs.",
+      "text_markdown": "Er führte Überfälle weiterhin persönlich an und stand am Bug seines Flaggschiffs.",
+      "tts": {
+        "text": "Er führte Überfälle weiterhin persönlich an und stand am Bug seines Flaggschiffs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Man sagte, sein verbliebenes Auge brenne im Kampf mit einem wilden Licht.",
+      "text_markdown": "Man sagte, sein verbliebenes Auge brenne im Kampf mit einem wilden Licht.",
+      "tts": {
+        "text": "Man sagte, sein verbliebenes Auge brenne im Kampf mit einem wilden Licht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Männer glaubten, er sei von Gott gesegnet und könne nicht getötet werden.",
+      "text_markdown": "Seine Männer glaubten, er sei von Gott gesegnet und könne nicht getötet werden.",
+      "tts": {
+        "text": "Seine Männer glaubten, er sei von Gott gesegnet und könne nicht getötet werden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Europäische Besucher, die ihn in dieser Zeit trafen, waren fasziniert.",
+      "text_markdown": "Europäische Besucher, die ihn in dieser Zeit trafen, waren fasziniert.",
+      "tts": {
+        "text": "Europäische Besucher, die ihn in dieser Zeit trafen, waren fasziniert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war anders als jeder Pirat, dem sie zuvor begegnet waren.",
+      "text_markdown": "Er war anders als jeder Pirat, dem sie zuvor begegnet waren.",
+      "tts": {
+        "text": "Er war anders als jeder Pirat, dem sie zuvor begegnet waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er war kein gewöhnlicher Räuber, sondern ein Mann von Intelligenz und Zielstrebigkeit.",
+      "text_markdown": "Er war kein gewöhnlicher Räuber, sondern ein Mann von Intelligenz und Zielstrebigkeit.",
+      "tts": {
+        "text": "Er war kein gewöhnlicher Räuber, sondern ein Mann von Intelligenz und Zielstrebigkeit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein britischer Offizier beschrieb sein Treffen mit Rahmah auf dessen Schiff.",
+      "text_markdown": "Ein britischer Offizier beschrieb sein Treffen mit Rahmah auf dessen Schiff.",
+      "tts": {
+        "text": "Ein britischer Offizier beschrieb sein Treffen mit Rahmah auf dessen Schiff.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Pirat empfing ihn mit Höflichkeit und bot Kaffee und Datteln an.",
+      "text_markdown": "Der Pirat empfing ihn mit Höflichkeit und bot Kaffee und Datteln an.",
+      "tts": {
+        "text": "Der Pirat empfing ihn mit Höflichkeit und bot Kaffee und Datteln an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie diskutierten als Gleichgestellte über Politik und Handel.",
+      "text_markdown": "Sie diskutierten als Gleichgestellte über Politik und Handel.",
+      "tts": {
+        "text": "Sie diskutierten als Gleichgestellte über Politik und Handel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Offizier bemerkte, dass Rahmah mit der Autorität eines Herrschers sprach, nicht eines Verbrechers.",
+      "text_markdown": "Der Offizier bemerkte, dass Rahmah mit der Autorität eines Herrschers sprach, nicht eines Verbrechers.",
+      "tts": {
+        "text": "Der Offizier bemerkte, dass Rahmah mit der Autorität eines Herrschers sprach, nicht eines Verbrechers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmahs Haushalt umfasste seine Ehefrauen, seine Kinder und seine erweiterte Familie.",
+      "text_markdown": "Rahmahs Haushalt umfasste seine Ehefrauen, seine Kinder und seine erweiterte Familie.",
+      "tts": {
+        "text": "Rahmahs Haushalt umfasste seine Ehefrauen, seine Kinder und seine erweiterte Familie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie lebten an Bord seiner Schiffe oder in befestigten Anlagen an Land.",
+      "text_markdown": "Sie lebten an Bord seiner Schiffe oder in befestigten Anlagen an Land.",
+      "tts": {
+        "text": "Sie lebten an Bord seiner Schiffe oder in befestigten Anlagen an Land.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Familie war ständig unterwegs und folgte ihm von Stützpunkt zu Stützpunkt.",
+      "text_markdown": "Seine Familie war ständig unterwegs und folgte ihm von Stützpunkt zu Stützpunkt.",
+      "tts": {
+        "text": "Seine Familie war ständig unterwegs und folgte ihm von Stützpunkt zu Stützpunkt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sein Sohn Bishr wurde dazu erzogen, den Kampf fortzusetzen.",
+      "text_markdown": "Sein Sohn Bishr wurde dazu erzogen, den Kampf fortzusetzen.",
+      "tts": {
+        "text": "Sein Sohn Bishr wurde dazu erzogen, den Kampf fortzusetzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah nahm Bishr von klein auf mit auf seine Überfälle.",
+      "text_markdown": "Rahmah nahm Bishr von klein auf mit auf seine Überfälle.",
+      "tts": {
+        "text": "Rahmah nahm Bishr von klein auf mit auf seine Überfälle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er wollte, dass der Junge das Meer, den Kampf und den Hass auf die Al Khalifa lernte.",
+      "text_markdown": "Er wollte, dass der Junge das Meer, den Kampf und den Hass auf die Al Khalifa lernte.",
+      "tts": {
+        "text": "Er wollte, dass der Junge das Meer, den Kampf und den Hass auf die Al Khalifa lernte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Konflikt zwischen Rahmah und den Al Khalifa eskalierte weiter.",
+      "text_markdown": "Der Konflikt zwischen Rahmah und den Al Khalifa eskalierte weiter.",
+      "tts": {
+        "text": "Der Konflikt zwischen Rahmah und den Al Khalifa eskalierte weiter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Beide Seiten bauten größere Flotten und suchten mächtigere Verbündete.",
+      "text_markdown": "Beide Seiten bauten größere Flotten und suchten mächtigere Verbündete.",
+      "tts": {
+        "text": "Beide Seiten bauten größere Flotten und suchten mächtigere Verbündete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Golf wurde zunehmend militarisiert.",
+      "text_markdown": "Der Golf wurde zunehmend militarisiert.",
+      "tts": {
+        "text": "Der Golf wurde zunehmend militarisiert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1809 starteten die Briten eine große Marineexpedition gegen die Piraten des Golfs.",
+      "text_markdown": "Im Jahr 1809 starteten die Briten eine große Marineexpedition gegen die Piraten des Golfs.",
+      "tts": {
+        "text": "Im Jahr achtzehnhundertneun starteten die Briten eine große Marineexpedition gegen die Piraten des Golfs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr Hauptziel war die Qasimi-Flotte mit Stützpunkt in Ras al-Khaimah.",
+      "text_markdown": "Ihr Hauptziel war die Qasimi-Flotte mit Stützpunkt in Ras al-Khaimah.",
+      "tts": {
+        "text": "Ihr Hauptziel war die Qasimi-Flotte mit Stützpunkt in Ras al-Khaimah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Qasimi waren eine weitere mächtige Piratenkonföderation, getrennt von Rahmah.",
+      "text_markdown": "Die Qasimi waren eine weitere mächtige Piratenkonföderation, getrennt von Rahmah.",
+      "tts": {
+        "text": "Die Qasimi waren eine weitere mächtige Piratenkonföderation, getrennt von Rahmah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die britische Bombardierung von Ras al-Khaimah zerstörte einen Großteil der Qasimi-Flotte.",
+      "text_markdown": "Die britische Bombardierung von Ras al-Khaimah zerstörte einen Großteil der Qasimi-Flotte.",
+      "tts": {
+        "text": "Die britische Bombardierung von Ras al-Khaimah zerstörte einen Großteil der Qasimi-Flotte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aber sie beendete die Piraterie im Golf nicht.",
+      "text_markdown": "Aber sie beendete die Piraterie im Golf nicht.",
+      "tts": {
+        "text": "Aber sie beendete die Piraterie im Golf nicht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir setzte seine Operationen mit kaum einer Pause fort.",
+      "text_markdown": "Rahmah ibn Jabir setzte seine Operationen mit kaum einer Pause fort.",
+      "tts": {
+        "text": "Rahmah ibn Jabir setzte seine Operationen mit kaum einer Pause fort.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Briten fanden es schwierig, Rahmah einzuordnen.",
+      "text_markdown": "Die Briten fanden es schwierig, Rahmah einzuordnen.",
+      "tts": {
+        "text": "Die Briten fanden es schwierig, Rahmah einzuordnen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war eindeutig ein Pirat, doch er griff britische Schiffe nie direkt an.",
+      "text_markdown": "Er war eindeutig ein Pirat, doch er griff britische Schiffe nie direkt an.",
+      "tts": {
+        "text": "Er war eindeutig ein Pirat, doch er griff britische Schiffe nie direkt an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sein Krieg richtete sich ausschließlich gegen die Al Khalifa und ihre Verbündeten.",
+      "text_markdown": "Sein Krieg richtete sich ausschließlich gegen die Al Khalifa und ihre Verbündeten.",
+      "tts": {
+        "text": "Sein Krieg richtete sich ausschließlich gegen die Al Khalifa und ihre Verbündeten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In britischen Augen machte ihn das eher zu einem Ärgernis als zu einer direkten Bedrohung.",
+      "text_markdown": "In britischen Augen machte ihn das eher zu einem Ärgernis als zu einer direkten Bedrohung.",
+      "tts": {
+        "text": "In britischen Augen machte ihn das eher zu einem Ärgernis als zu einer direkten Bedrohung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah nutzte diese Ambiguität zu seinem Vorteil.",
+      "text_markdown": "Rahmah nutzte diese Ambiguität zu seinem Vorteil.",
+      "tts": {
+        "text": "Rahmah nutzte diese Ambiguität zu seinem Vorteil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er pflegte eine vorsichtige Beziehung zu den Briten.",
+      "text_markdown": "Er pflegte eine vorsichtige Beziehung zu den Briten.",
+      "tts": {
+        "text": "Er pflegte eine vorsichtige Beziehung zu den Briten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er provozierte sie nie zu Maßnahmen gegen ihn.",
+      "text_markdown": "Er provozierte sie nie zu Maßnahmen gegen ihn.",
+      "tts": {
+        "text": "Er provozierte sie nie zu Maßnahmen gegen ihn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er lieferte ihnen sogar Informationen über andere Piratengruppen.",
+      "text_markdown": "Er lieferte ihnen sogar Informationen über andere Piratengruppen.",
+      "tts": {
+        "text": "Er lieferte ihnen sogar Informationen über andere Piratengruppen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1820 erlegten die Briten den Golfstämmen den Allgemeinen Friedensvertrag auf.",
+      "text_markdown": "Im Jahr 1820 erlegten die Briten den Golfstämmen den Allgemeinen Friedensvertrag auf.",
+      "tts": {
+        "text": "Im Jahr achtzehnhundertzwanzig erlegten die Briten den Golfstämmen den Allgemeinen Friedensvertrag auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Vertrag war darauf ausgelegt, die Piraterie zu beenden und Stabilität für den Handel zu schaffen.",
+      "text_markdown": "Der Vertrag war darauf ausgelegt, die Piraterie zu beenden und Stabilität für den Handel zu schaffen.",
+      "tts": {
+        "text": "Der Vertrag war darauf ausgelegt, die Piraterie zu beenden und Stabilität für den Handel zu schaffen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die meisten Küstenherrscher unterzeichneten unter Druck.",
+      "text_markdown": "Die meisten Küstenherrscher unterzeichneten unter Druck.",
+      "tts": {
+        "text": "Die meisten Küstenherrscher unterzeichneten unter Druck.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah weigerte sich zu unterschreiben.",
+      "text_markdown": "Rahmah weigerte sich zu unterschreiben.",
+      "tts": {
+        "text": "Rahmah weigerte sich zu unterschreiben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er würde kein Abkommen akzeptieren, das die Kontrolle der Al Khalifa über Bahrain anerkannte.",
+      "text_markdown": "Er würde kein Abkommen akzeptieren, das die Kontrolle der Al Khalifa über Bahrain anerkannte.",
+      "tts": {
+        "text": "Er würde kein Abkommen akzeptieren, das die Kontrolle der Al Khalifa über Bahrain anerkannte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Briten nahmen seine Weigerung zur Kenntnis, handelten aber nicht sofort gegen ihn.",
+      "text_markdown": "Die Briten nahmen seine Weigerung zur Kenntnis, handelten aber nicht sofort gegen ihn.",
+      "tts": {
+        "text": "Die Briten nahmen seine Weigerung zur Kenntnis, handelten aber nicht sofort gegen ihn.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er war nun über sechzig Jahre alt.",
+      "text_markdown": "Er war nun über sechzig Jahre alt.",
+      "tts": {
+        "text": "Er war nun über sechzig Jahre alt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Körper versagte, aber sein Wille nicht.",
+      "text_markdown": "Sein Körper versagte, aber sein Wille nicht.",
+      "tts": {
+        "text": "Sein Körper versagte, aber sein Wille nicht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Auf dem Höhepunkt",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er segelte und kämpfte weiter, getrieben von einem Hass, den die Zeit nicht mindern konnte.",
+      "text_markdown": "Er segelte und kämpfte weiter, getrieben von einem Hass, den die Zeit nicht mindern konnte.",
+      "tts": {
+        "text": "Er segelte und kämpfte weiter, getrieben von einem Hass, den die Zeit nicht mindern konnte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Ende",
+      "text_markdown": "Das Ende"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bis 1826 wusste Rahmah ibn Jabir, dass seine Zeit ablief.",
+      "text_markdown": "Bis 1826 wusste Rahmah ibn Jabir, dass seine Zeit ablief.",
+      "tts": {
+        "text": "Bis achtzehnhundertsechsundzwanzig wusste Rahmah ibn Jabir, dass seine Zeit ablief.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war alt, auf einem Auge blind und zunehmend isoliert.",
+      "text_markdown": "Er war alt, auf einem Auge blind und zunehmend isoliert.",
+      "tts": {
+        "text": "Er war alt, auf einem Auge blind und zunehmend isoliert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine wahhabitischen Verbündeten waren Jahre zuvor von ägyptischen Streitkräften besiegt worden.",
+      "text_markdown": "Seine wahhabitischen Verbündeten waren Jahre zuvor von ägyptischen Streitkräften besiegt worden.",
+      "tts": {
+        "text": "Seine wahhabitischen Verbündeten waren Jahre zuvor von ägyptischen Streitkräften besiegt worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seine Flotte war kleiner als in seiner Blütezeit.",
+      "text_markdown": "Seine Flotte war kleiner als in seiner Blütezeit.",
+      "tts": {
+        "text": "Seine Flotte war kleiner als in seiner Blütezeit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber er weigerte sich aufzuhören zu kämpfen.",
+      "text_markdown": "Aber er weigerte sich aufzuhören zu kämpfen.",
+      "tts": {
+        "text": "Aber er weigerte sich aufzuhören zu kämpfen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitulation war undenkbar.",
+      "text_markdown": "Kapitulation war undenkbar.",
+      "tts": {
+        "text": "Kapitulation war undenkbar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Al Khalifa hielten immer noch Bahrain.",
+      "text_markdown": "Die Al Khalifa hielten immer noch Bahrain.",
+      "tts": {
+        "text": "Die Al Khalifa hielten immer noch Bahrain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Unrecht war nicht wiedergutgemacht worden.",
+      "text_markdown": "Das Unrecht war nicht wiedergutgemacht worden.",
+      "tts": {
+        "text": "Das Unrecht war nicht wiedergutgemacht worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Für Rahmah war das die einzige Tatsache, die zählte.",
+      "text_markdown": "Für Rahmah war das die einzige Tatsache, die zählte.",
+      "tts": {
+        "text": "Für Rahmah war das die einzige Tatsache, die zählte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Al Khalifa und ihre Verbündeten versammelten eine große Flotte, um Rahmah ein für alle Mal zu vernichten.",
+      "text_markdown": "Die Al Khalifa und ihre Verbündeten versammelten eine große Flotte, um Rahmah ein für alle Mal zu vernichten.",
+      "tts": {
+        "text": "Die Al Khalifa und ihre Verbündeten versammelten eine große Flotte, um Rahmah ein für alle Mal zu vernichten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie wurden von Schiffen aus Bahrain und von omanisch unterstützten Kräften unterstützt.",
+      "text_markdown": "Sie wurden von Schiffen aus Bahrain und von omanisch unterstützten Kräften unterstützt.",
+      "tts": {
+        "text": "Sie wurden von Schiffen aus Bahrain und von omanisch unterstützten Kräften unterstützt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die vereinte Flotte war weit größer als alles, was Rahmah aufbieten konnte.",
+      "text_markdown": "Die vereinte Flotte war weit größer als alles, was Rahmah aufbieten konnte.",
+      "tts": {
+        "text": "Die vereinte Flotte war weit größer als alles, was Rahmah aufbieten konnte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die letzte Schlacht fand in den Gewässern zwischen Katar und Bahrain statt.",
+      "text_markdown": "Die letzte Schlacht fand in den Gewässern zwischen Katar und Bahrain statt.",
+      "tts": {
+        "text": "Die letzte Schlacht fand in den Gewässern zwischen Katar und Bahrain statt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah segelte seinen Feinden mit einem kleinen Geschwader von Dhaus entgegen.",
+      "text_markdown": "Rahmah segelte seinen Feinden mit einem kleinen Geschwader von Dhaus entgegen.",
+      "tts": {
+        "text": "Rahmah segelte seinen Feinden mit einem kleinen Geschwader von Dhaus entgegen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er wusste, dass er zahlenmäßig unterlegen war.",
+      "text_markdown": "Er wusste, dass er zahlenmäßig unterlegen war.",
+      "tts": {
+        "text": "Er wusste, dass er zahlenmäßig unterlegen war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es war ihm gleichgültig.",
+      "text_markdown": "Es war ihm gleichgültig.",
+      "tts": {
+        "text": "Es war ihm gleichgültig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sein junger Sohn Bishr war mit ihm auf dem Flaggschiff.",
+      "text_markdown": "Sein junger Sohn Bishr war mit ihm auf dem Flaggschiff.",
+      "tts": {
+        "text": "Sein junger Sohn Bishr war mit ihm auf dem Flaggschiff.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah hatte den Jungen zu jeder großen Schlacht mitgebracht.",
+      "text_markdown": "Rahmah hatte den Jungen zu jeder großen Schlacht mitgebracht.",
+      "tts": {
+        "text": "Rahmah hatte den Jungen zu jeder großen Schlacht mitgebracht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dieses Mal würde es nicht anders sein.",
+      "text_markdown": "Dieses Mal würde es nicht anders sein.",
+      "tts": {
+        "text": "Dieses Mal würde es nicht anders sein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Schlacht begann am frühen Morgen.",
+      "text_markdown": "Die Schlacht begann am frühen Morgen.",
+      "tts": {
+        "text": "Die Schlacht begann am frühen Morgen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die beiden Flotten näherten sich einander über das flache, gleißende Wasser des Golfs.",
+      "text_markdown": "Die beiden Flotten näherten sich einander über das flache, gleißende Wasser des Golfs.",
+      "tts": {
+        "text": "Die beiden Flotten näherten sich einander über das flache, gleißende Wasser des Golfs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Luft füllte sich mit dem Knallen von Musketenfeuer und dem Krachen der Rümpfe.",
+      "text_markdown": "Die Luft füllte sich mit dem Knallen von Musketenfeuer und dem Krachen der Rümpfe.",
+      "tts": {
+        "text": "Die Luft füllte sich mit dem Knallen von Musketenfeuer und dem Krachen der Rümpfe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmahs Schiffe kämpften mit verzweifeltem Mut.",
+      "text_markdown": "Rahmahs Schiffe kämpften mit verzweifeltem Mut.",
+      "tts": {
+        "text": "Rahmahs Schiffe kämpften mit verzweifeltem Mut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie waren unterbewaffnet und in der Unterzahl, aber sie flohen nicht.",
+      "text_markdown": "Sie waren unterbewaffnet und in der Unterzahl, aber sie flohen nicht.",
+      "tts": {
+        "text": "Sie waren unterbewaffnet und in der Unterzahl, aber sie flohen nicht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihr Kapitän hätte es nicht erlaubt, und sie hätten ihn nicht durch die Bitte entehrt.",
+      "text_markdown": "Ihr Kapitän hätte es nicht erlaubt, und sie hätten ihn nicht durch die Bitte entehrt.",
+      "tts": {
+        "text": "Ihr Kapitän hätte es nicht erlaubt, und sie hätten ihn nicht durch die Bitte entehrt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eines nach dem anderen wurden Rahmahs Schiffe außer Gefecht gesetzt oder gekapert.",
+      "text_markdown": "Eines nach dem anderen wurden Rahmahs Schiffe außer Gefecht gesetzt oder gekapert.",
+      "tts": {
+        "text": "Eines nach dem anderen wurden Rahmahs Schiffe außer Gefecht gesetzt oder gekapert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die feindliche Flotte schloss sich um sein Flaggschiff.",
+      "text_markdown": "Die feindliche Flotte schloss sich um sein Flaggschiff.",
+      "tts": {
+        "text": "Die feindliche Flotte schloss sich um sein Flaggschiff.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Entertrupps machten sich bereit, sein Schiff zu stürmen.",
+      "text_markdown": "Entertrupps machten sich bereit, sein Schiff zu stürmen.",
+      "tts": {
+        "text": "Entertrupps machten sich bereit, sein Schiff zu stürmen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Ende nahte.",
+      "text_markdown": "Das Ende nahte.",
+      "tts": {
+        "text": "Das Ende nahte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Was als Nächstes geschah, ist zu einer der berühmtesten Geschichten in der Geschichte des Persischen Golfs geworden.",
+      "text_markdown": "Was als Nächstes geschah, ist zu einer der berühmtesten Geschichten in der Geschichte des Persischen Golfs geworden.",
+      "tts": {
+        "text": "Was als Nächstes geschah, ist zu einer der berühmtesten Geschichten in der Geschichte des Persischen Golfs geworden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir, als er sah, dass die Niederlage sicher war, traf seine letzte Entscheidung.",
+      "text_markdown": "Rahmah ibn Jabir, als er sah, dass die Niederlage sicher war, traf seine letzte Entscheidung.",
+      "tts": {
+        "text": "Rahmah ibn Jabir, als er sah, dass die Niederlage sicher war, traf seine letzte Entscheidung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er nahm seinen Sohn in die Arme.",
+      "text_markdown": "Er nahm seinen Sohn in die Arme.",
+      "tts": {
+        "text": "Er nahm seinen Sohn in die Arme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er ging unter Deck zur Pulverkammer, wo der Schießpulvervorrat des Schiffes gelagert war.",
+      "text_markdown": "Er ging unter Deck zur Pulverkammer, wo der Schießpulvervorrat des Schiffes gelagert war.",
+      "tts": {
+        "text": "Er ging unter Deck zur Pulverkammer, wo der Schießpulvervorrat des Schiffes gelagert war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er trug eine brennende Fackel.",
+      "text_markdown": "Er trug eine brennende Fackel.",
+      "tts": {
+        "text": "Er trug eine brennende Fackel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Einige Berichte sagen, er hielt inne, um zu beten.",
+      "text_markdown": "Einige Berichte sagen, er hielt inne, um zu beten.",
+      "tts": {
+        "text": "Einige Berichte sagen, er hielt inne, um zu beten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Andere sagen, er ging einfach wortlos hinein.",
+      "text_markdown": "Andere sagen, er ging einfach wortlos hinein.",
+      "tts": {
+        "text": "Andere sagen, er ging einfach wortlos hinein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Details variieren, aber das Ergebnis nicht.",
+      "text_markdown": "Die Details variieren, aber das Ergebnis nicht.",
+      "tts": {
+        "text": "Die Details variieren, aber das Ergebnis nicht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir berührte mit der Fackel das Schießpulver.",
+      "text_markdown": "Rahmah ibn Jabir berührte mit der Fackel das Schießpulver.",
+      "tts": {
+        "text": "Rahmah ibn Jabir berührte mit der Fackel das Schießpulver.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Explosion zerstörte sein Schiff augenblicklich.",
+      "text_markdown": "Die Explosion zerstörte sein Schiff augenblicklich.",
+      "tts": {
+        "text": "Die Explosion zerstörte sein Schiff augenblicklich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Explosion tötete Rahmah, seinen Sohn Bishr und die feindlichen Seeleute, die das Schiff geentert hatten.",
+      "text_markdown": "Die Explosion tötete Rahmah, seinen Sohn Bishr und die feindlichen Seeleute, die das Schiff geentert hatten.",
+      "tts": {
+        "text": "Die Explosion tötete Rahmah, seinen Sohn Bishr und die feindlichen Seeleute, die das Schiff geentert hatten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Druckwelle erschütterte jedes Schiff in der Umgebung.",
+      "text_markdown": "Die Druckwelle erschütterte jedes Schiff in der Umgebung.",
+      "tts": {
+        "text": "Die Druckwelle erschütterte jedes Schiff in der Umgebung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eine Säule aus Rauch und Feuer stieg aus dem Wasser.",
+      "text_markdown": "Eine Säule aus Rauch und Feuer stieg aus dem Wasser.",
+      "tts": {
+        "text": "Eine Säule aus Rauch und Feuer stieg aus dem Wasser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wo das Flaggschiff gewesen war, gab es nichts als brennende Trümmer.",
+      "text_markdown": "Wo das Flaggschiff gewesen war, gab es nichts als brennende Trümmer.",
+      "tts": {
+        "text": "Wo das Flaggschiff gewesen war, gab es nichts als brennende Trümmer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir wählte den Tod statt der Kapitulation.",
+      "text_markdown": "Rahmah ibn Jabir wählte den Tod statt der Kapitulation.",
+      "tts": {
+        "text": "Rahmah ibn Jabir wählte den Tod statt der Kapitulation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er entschied sich, seine Feinde mit sich zu nehmen, statt ihnen die Genugtuung zu geben, ihn gefangen zu nehmen.",
+      "text_markdown": "Er entschied sich, seine Feinde mit sich zu nehmen, statt ihnen die Genugtuung zu geben, ihn gefangen zu nehmen.",
+      "tts": {
+        "text": "Er entschied sich, seine Feinde mit sich zu nehmen, statt ihnen die Genugtuung zu geben, ihn gefangen zu nehmen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er wählte, seinen Krieg nach seinen eigenen Bedingungen zu beenden.",
+      "text_markdown": "Er wählte, seinen Krieg nach seinen eigenen Bedingungen zu beenden.",
+      "tts": {
+        "text": "Er wählte, seinen Krieg nach seinen eigenen Bedingungen zu beenden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Tod seines Sohnes Bishr ist der dunkelste Teil dieser Geschichte.",
+      "text_markdown": "Der Tod seines Sohnes Bishr ist der dunkelste Teil dieser Geschichte.",
+      "tts": {
+        "text": "Der Tod seines Sohnes Bishr ist der dunkelste Teil dieser Geschichte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah nahm ein Kind mit sich in die Pulverkammer.",
+      "text_markdown": "Rahmah nahm ein Kind mit sich in die Pulverkammer.",
+      "tts": {
+        "text": "Rahmah nahm ein Kind mit sich in die Pulverkammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er entschied, dass sein Sohn nicht als Gefangener der Al Khalifa leben würde.",
+      "text_markdown": "Er entschied, dass sein Sohn nicht als Gefangener der Al Khalifa leben würde.",
+      "tts": {
+        "text": "Er entschied, dass sein Sohn nicht als Gefangener der Al Khalifa leben würde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es ist eine Tat, die das moderne Empfinden entsetzt.",
+      "text_markdown": "Es ist eine Tat, die das moderne Empfinden entsetzt.",
+      "tts": {
+        "text": "Es ist eine Tat, die das moderne Empfinden entsetzt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Rahmahs Welt bedeutete Gefangennahme ohnehin Sklaverei oder Tod.",
+      "text_markdown": "In Rahmahs Welt bedeutete Gefangennahme ohnehin Sklaverei oder Tod.",
+      "tts": {
+        "text": "In Rahmahs Welt bedeutete Gefangennahme ohnehin Sklaverei oder Tod.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Das Ende",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er mag die Pulverkammer als Gnade gesehen haben.",
+      "text_markdown": "Er mag die Pulverkammer als Gnade gesehen haben.",
+      "tts": {
+        "text": "Er mag die Pulverkammer als Gnade gesehen haben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vermächtnis",
+      "text_markdown": "Vermächtnis"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabirs spektakulärer Tod stellte sicher, dass er nie vergessen werden würde.",
+      "text_markdown": "Rahmah ibn Jabirs spektakulärer Tod stellte sicher, dass er nie vergessen werden würde.",
+      "tts": {
+        "text": "Rahmah ibn Jabirs spektakulärer Tod stellte sicher, dass er nie vergessen werden würde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Explosion wurde von Hunderten von Seeleuten auf beiden Seiten bezeugt.",
+      "text_markdown": "Die Explosion wurde von Hunderten von Seeleuten auf beiden Seiten bezeugt.",
+      "tts": {
+        "text": "Die Explosion wurde von Hunderten von Seeleuten auf beiden Seiten bezeugt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Geschichte verbreitete sich innerhalb von Tagen über den gesamten Golf.",
+      "text_markdown": "Die Geschichte verbreitete sich innerhalb von Tagen über den gesamten Golf.",
+      "tts": {
+        "text": "Die Geschichte verbreitete sich innerhalb von Tagen über den gesamten Golf.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unter den arabischen Stämmen wurde er zur Legende.",
+      "text_markdown": "Unter den arabischen Stämmen wurde er zur Legende.",
+      "tts": {
+        "text": "Unter den arabischen Stämmen wurde er zur Legende.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er wurde als das ultimative Beispiel von Trotz angesehen.",
+      "text_markdown": "Er wurde als das ultimative Beispiel von Trotz angesehen.",
+      "tts": {
+        "text": "Er wurde als das ultimative Beispiel von Trotz angesehen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er hatte bis zum allerletzten Moment für seine Rechte gekämpft und war lieber gestorben als sich zu unterwerfen.",
+      "text_markdown": "Er hatte bis zum allerletzten Moment für seine Rechte gekämpft und war lieber gestorben als sich zu unterwerfen.",
+      "tts": {
+        "text": "Er hatte bis zum allerletzten Moment für seine Rechte gekämpft und war lieber gestorben als sich zu unterwerfen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Briten hielten seinen Tod in ihren offiziellen Depeschen fest.",
+      "text_markdown": "Die Briten hielten seinen Tod in ihren offiziellen Depeschen fest.",
+      "tts": {
+        "text": "Die Briten hielten seinen Tod in ihren offiziellen Depeschen fest.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie vermerkten das Ableben des hartnäckigsten Piraten des Golfs mit einer Mischung aus Erleichterung und Respekt.",
+      "text_markdown": "Sie vermerkten das Ableben des hartnäckigsten Piraten des Golfs mit einer Mischung aus Erleichterung und Respekt.",
+      "tts": {
+        "text": "Sie vermerkten das Ableben des hartnäckigsten Piraten des Golfs mit einer Mischung aus Erleichterung und Respekt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er war ein ständiges Problem für ihre Pläne gewesen, den Golf zu kontrollieren.",
+      "text_markdown": "Er war ein ständiges Problem für ihre Pläne gewesen, den Golf zu kontrollieren.",
+      "tts": {
+        "text": "Er war ein ständiges Problem für ihre Pläne gewesen, den Golf zu kontrollieren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Al Khalifa feierten seinen Tod als Sieg.",
+      "text_markdown": "Die Al Khalifa feierten seinen Tod als Sieg.",
+      "tts": {
+        "text": "Die Al Khalifa feierten seinen Tod als Sieg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr gefährlichster Feind war verschwunden.",
+      "text_markdown": "Ihr gefährlichster Feind war verschwunden.",
+      "tts": {
+        "text": "Ihr gefährlichster Feind war verschwunden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bahrain war nun sicherer als seit Jahrzehnten.",
+      "text_markdown": "Bahrain war nun sicherer als seit Jahrzehnten.",
+      "tts": {
+        "text": "Bahrain war nun sicherer als seit Jahrzehnten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p94",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Bedrohung durch die Jalahimah starb mit ihrem größten Kämpfer.",
+      "text_markdown": "Die Bedrohung durch die Jalahimah starb mit ihrem größten Kämpfer.",
+      "tts": {
+        "text": "Die Bedrohung durch die Jalahimah starb mit ihrem größten Kämpfer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Stamm der Jalahimah erlangte nie seine frühere Macht zurück.",
+      "text_markdown": "Der Stamm der Jalahimah erlangte nie seine frühere Macht zurück.",
+      "tts": {
+        "text": "Der Stamm der Jalahimah erlangte nie seine frühere Macht zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ohne Rahmahs erbitterte Führung verblassten sie allmählich als politische Kraft.",
+      "text_markdown": "Ohne Rahmahs erbitterte Führung verblassten sie allmählich als politische Kraft.",
+      "tts": {
+        "text": "Ohne Rahmahs erbitterte Führung verblassten sie allmählich als politische Kraft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Einige integrierten sich in andere Stämme.",
+      "text_markdown": "Einige integrierten sich in andere Stämme.",
+      "tts": {
+        "text": "Einige integrierten sich in andere Stämme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p95",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andere ließen sich in ein friedliches Leben entlang der Küste nieder.",
+      "text_markdown": "Andere ließen sich in ein friedliches Leben entlang der Küste nieder.",
+      "tts": {
+        "text": "Andere ließen sich in ein friedliches Leben entlang der Küste nieder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Persische Golf blieb noch Jahrzehnte nach Rahmahs Tod ein umkämpfter Wasserweg.",
+      "text_markdown": "Der Persische Golf blieb noch Jahrzehnte nach Rahmahs Tod ein umkämpfter Wasserweg.",
+      "tts": {
+        "text": "Der Persische Golf blieb noch Jahrzehnte nach Rahmahs Tod ein umkämpfter Wasserweg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Briten erzwangen schließlich 1853 einen dauerhaften Waffenstillstand, der der Region ihren kolonialen Namen gab: die Vertragsstaaten.",
+      "text_markdown": "Die Briten erzwangen schließlich 1853 einen dauerhaften Waffenstillstand, der der Region ihren kolonialen Namen gab: die Vertragsstaaten.",
+      "tts": {
+        "text": "Die Briten erzwangen schließlich achtzehnhundertdreiundfünfzig einen dauerhaften Waffenstillstand, der der Region ihren kolonialen Namen gab: die Vertragsstaaten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diese Staaten sind heute die Vereinigten Arabischen Emirate.",
+      "text_markdown": "Diese Staaten sind heute die Vereinigten Arabischen Emirate.",
+      "tts": {
+        "text": "Diese Staaten sind heute die Vereinigten Arabischen Emirate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahrain blieb unter der Herrschaft der Al Khalifa.",
+      "text_markdown": "Bahrain blieb unter der Herrschaft der Al Khalifa.",
+      "tts": {
+        "text": "Bahrain blieb unter der Herrschaft der Al Khalifa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Familie, gegen die Rahmah sein ganzes Leben lang kämpfte, regiert den Inselstaat noch heute.",
+      "text_markdown": "Die Familie, gegen die Rahmah sein ganzes Leben lang kämpfte, regiert den Inselstaat noch heute.",
+      "tts": {
+        "text": "Die Familie, gegen die Rahmah sein ganzes Leben lang kämpfte, regiert den Inselstaat noch heute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sein Krieg änderte letztendlich nichts an der politischen Landkarte.",
+      "text_markdown": "Sein Krieg änderte letztendlich nichts an der politischen Landkarte.",
+      "tts": {
+        "text": "Sein Krieg änderte letztendlich nichts an der politischen Landkarte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber die Geschichte von Rahmah ibn Jabir überdauert als eindrucksvolles Beispiel dafür, wie Stammesehre einen Mann über jede Vernunft hinaustreiben konnte.",
+      "text_markdown": "Aber die Geschichte von Rahmah ibn Jabir überdauert als eindrucksvolles Beispiel dafür, wie Stammesehre einen Mann über jede Vernunft hinaustreiben konnte.",
+      "tts": {
+        "text": "Aber die Geschichte von Rahmah ibn Jabir überdauert als eindrucksvolles Beispiel dafür, wie Stammesehre einen Mann über jede Vernunft hinaustreiben konnte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war brillant und mutig, aber er war auch vom Hass verzehrt.",
+      "text_markdown": "Er war brillant und mutig, aber er war auch vom Hass verzehrt.",
+      "tts": {
+        "text": "Er war brillant und mutig, aber er war auch vom Hass verzehrt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sein Krieg zerstörte seinen Stamm, tötete seinen Sohn und erreichte nichts Dauerhaftes.",
+      "text_markdown": "Sein Krieg zerstörte seinen Stamm, tötete seinen Sohn und erreichte nichts Dauerhaftes.",
+      "tts": {
+        "text": "Sein Krieg zerstörte seinen Stamm, tötete seinen Sohn und erreichte nichts Dauerhaftes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seine letzte Tat bleibt der meistdiskutierte Teil seines Vermächtnisses.",
+      "text_markdown": "Seine letzte Tat bleibt der meistdiskutierte Teil seines Vermächtnisses.",
+      "tts": {
+        "text": "Seine letzte Tat bleibt der meistdiskutierte Teil seines Vermächtnisses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "War es Mut oder Wahnsinn?",
+      "text_markdown": "War es Mut oder Wahnsinn?",
+      "tts": {
+        "text": "War es Mut oder Wahnsinn?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "War es der ultimative Ausdruck von Trotz, oder war es eine egoistische Tat, die sein eigenes Kind ermordete?",
+      "text_markdown": "War es der ultimative Ausdruck von Trotz, oder war es eine egoistische Tat, die sein eigenes Kind ermordete?",
+      "tts": {
+        "text": "War es der ultimative Ausdruck von Trotz, oder war es eine egoistische Tat, die sein eigenes Kind ermordete?",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese Fragen haben keine einfachen Antworten.",
+      "text_markdown": "Diese Fragen haben keine einfachen Antworten.",
+      "tts": {
+        "text": "Diese Fragen haben keine einfachen Antworten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rahmah ibn Jabir lebte in einer Welt mit anderen Werten als den unseren.",
+      "text_markdown": "Rahmah ibn Jabir lebte in einer Welt mit anderen Werten als den unseren.",
+      "tts": {
+        "text": "Rahmah ibn Jabir lebte in einer Welt mit anderen Werten als den unseren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gefangennahme bedeutete Demütigung, Versklavung oder Schlimmeres.",
+      "text_markdown": "Gefangennahme bedeutete Demütigung, Versklavung oder Schlimmeres.",
+      "tts": {
+        "text": "Gefangennahme bedeutete Demütigung, Versklavung oder Schlimmeres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p100",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In seiner Welt mag die Explosion als die einzige ehrenhafte Wahl erschienen sein.",
+      "text_markdown": "In seiner Welt mag die Explosion als die einzige ehrenhafte Wahl erschienen sein.",
+      "tts": {
+        "text": "In seiner Welt mag die Explosion als die einzige ehrenhafte Wahl erschienen sein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er bleibt eine der bemerkenswertesten Figuren in der Geschichte des Persischen Golfs.",
+      "text_markdown": "Er bleibt eine der bemerkenswertesten Figuren in der Geschichte des Persischen Golfs.",
+      "tts": {
+        "text": "Er bleibt eine der bemerkenswertesten Figuren in der Geschichte des Persischen Golfs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein einäugiger Pirat, der eine ganze Region mehr als vierzig Jahre lang in Angst hielt.",
+      "text_markdown": "Ein einäugiger Pirat, der eine ganze Region mehr als vierzig Jahre lang in Angst hielt.",
+      "tts": {
+        "text": "Ein einäugiger Pirat, der eine ganze Region mehr als vierzig Jahre lang in Angst hielt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Mann, der das Feuer der Kapitulation vorzog.",
+      "text_markdown": "Ein Mann, der das Feuer der Kapitulation vorzog.",
+      "tts": {
+        "text": "Ein Mann, der das Feuer der Kapitulation vorzog.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "Vermächtnis",
+      "paragraph_id": "p101",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Golf hat seinesgleichen seither nicht mehr gesehen.",
+      "text_markdown": "Der Golf hat seinesgleichen seither nicht mehr gesehen.",
+      "tts": {
+        "text": "Der Golf hat seinesgleichen seither nicht mehr gesehen.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

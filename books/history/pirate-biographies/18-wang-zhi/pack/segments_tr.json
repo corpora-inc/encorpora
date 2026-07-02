@@ -1,0 +1,4337 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_wang_zhi",
+  "language": "tr",
+  "total_segments": 290,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, hükümeti dürüst ticareti yasadışı ilan ettiği için korsan olan bir adamın hikayesidir.",
+      "text_markdown": "Bu, hükümeti dürüst ticareti yasadışı ilan ettiği için korsan olan bir adamın hikayesidir.",
+      "tts": {
+        "text": "Bu, hükümeti dürüst ticareti yasadışı ilan ettiği için korsan olan bir adamın hikayesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi bir kanun kaçağı olarak doğmadı.",
+      "text_markdown": "Wang Zhi bir kanun kaçağı olarak doğmadı.",
+      "tts": {
+        "text": "Wang Zhi bir kanun kaçağı olarak doğmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onu bir kanun kaçağına dönüştüren, kendi ülkesinin yasalarıydı.",
+      "text_markdown": "Onu bir kanun kaçağına dönüştüren, kendi ülkesinin yasalarıydı.",
+      "tts": {
+        "text": "Onu bir kanun kaçağına dönüştüren, kendi ülkesinin yasalarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ming hanedanı döneminde Çin, kendi halkının deniz aşırı yolculuk yapmasını yasakladı.",
+      "text_markdown": "Ming hanedanı döneminde Çin, kendi halkının deniz aşırı yolculuk yapmasını yasakladı.",
+      "tts": {
+        "text": "Ming hanedanı döneminde Çin, kendi halkının deniz aşırı yolculuk yapmasını yasakladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu yasak haijin olarak biliniyordu.",
+      "text_markdown": "Bu yasak haijin olarak biliniyordu.",
+      "tts": {
+        "text": "Bu yasak haijin olarak biliniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amacı kıyıları korumaktı, ancak bunun yerine denizde geniş bir suç dünyası yarattı.",
+      "text_markdown": "Amacı kıyıları korumaktı, ancak bunun yerine denizde geniş bir suç dünyası yarattı.",
+      "tts": {
+        "text": "Amacı kıyıları korumaktı, ancak bunun yerine denizde geniş bir suç dünyası yarattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi bu yeraltı dünyasının liderliğine yükseldi.",
+      "text_markdown": "Wang Zhi bu yeraltı dünyasının liderliğine yükseldi.",
+      "tts": {
+        "text": "Wang Zhi bu yeraltı dünyasının liderliğine yükseldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filolar komuta etti, ticaret yollarını kontrol etti ve Japonya kıyılarındaki adalarda bir krallık kurdu.",
+      "text_markdown": "Filolar komuta etti, ticaret yollarını kontrol etti ve Japonya kıyılarındaki adalarda bir krallık kurdu.",
+      "tts": {
+        "text": "Filolar komuta etti, ticaret yollarını kontrol etti ve Japonya kıyılarındaki adalarda bir krallık kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yetkililer onu korsan olarak adlandırdı.",
+      "text_markdown": "Yetkililer onu korsan olarak adlandırdı.",
+      "tts": {
+        "text": "Yetkililer onu korsan olarak adlandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O kendini tüccar olarak tanımlıyordu.",
+      "text_markdown": "O kendini tüccar olarak tanımlıyordu.",
+      "tts": {
+        "text": "O kendini tüccar olarak tanımlıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikayesi bizi zor bir soru sormaya zorluyor.",
+      "text_markdown": "Hikayesi bizi zor bir soru sormaya zorluyor.",
+      "tts": {
+        "text": "Hikayesi bizi zor bir soru sormaya zorluyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir hükümet tüm ticareti yasakladığında, kaçakçı bir suçlu mudur yoksa sadece yasal yolu kapatılmış bir iş insanı mıdır?",
+      "text_markdown": "Bir hükümet tüm ticareti yasakladığında, kaçakçı bir suçlu mudur yoksa sadece yasal yolu kapatılmış bir iş insanı mıdır?",
+      "tts": {
+        "text": "Bir hükümet tüm ticareti yasakladığında, kaçakçı bir suçlu mudur yoksa sadece yasal yolu kapatılmış bir iş insanı mıdır?",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ming Deniz Yasağının Dünyası",
+      "text_markdown": "Ming Deniz Yasağının Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On altıncı yüzyılın başlarında Çin, dünyanın en zengin ve en kalabalık ulusuydu.",
+      "text_markdown": "On altıncı yüzyılın başlarında Çin, dünyanın en zengin ve en kalabalık ulusuydu.",
+      "tts": {
+        "text": "On altıncı yüzyılın başlarında Çin, dünyanın en zengin ve en kalabalık ulusuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ming hanedanı bir buçuk yüzyıldan fazla bir süredir hüküm sürüyordu.",
+      "text_markdown": "Ming hanedanı bir buçuk yüzyıldan fazla bir süredir hüküm sürüyordu.",
+      "tts": {
+        "text": "Ming hanedanı bir buçuk yüzyıldan fazla bir süredir hüküm sürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başkenti Pekin, bir milyondan fazla insana ev sahipliği yapıyordu.",
+      "text_markdown": "Başkenti Pekin, bir milyondan fazla insana ev sahipliği yapıyordu.",
+      "tts": {
+        "text": "Başkenti Pekin, bir milyondan fazla insana ev sahipliği yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çin, tüm dünyanın arzuladığı ipek, porselen ve çay üretiyordu.",
+      "text_markdown": "Çin, tüm dünyanın arzuladığı ipek, porselen ve çay üretiyordu.",
+      "tts": {
+        "text": "Çin, tüm dünyanın arzuladığı ipek, porselen ve çay üretiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Japon gümüşü, Güneydoğu Asya baharatları ve Hint pamuğu Çin limanlarına akıyordu.",
+      "text_markdown": "Japon gümüşü, Güneydoğu Asya baharatları ve Hint pamuğu Çin limanlarına akıyordu.",
+      "tts": {
+        "text": "Japon gümüşü, Güneydoğu Asya baharatları ve Hint pamuğu Çin limanlarına akıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deniz ticareti, imparatorluk için muazzam bir zenginlik kaynağı olmalıydı.",
+      "text_markdown": "Deniz ticareti, imparatorluk için muazzam bir zenginlik kaynağı olmalıydı.",
+      "tts": {
+        "text": "Deniz ticareti, imparatorluk için muazzam bir zenginlik kaynağı olmalıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak Ming sarayı denizden korkuyordu.",
+      "text_markdown": "Ancak Ming sarayı denizden korkuyordu.",
+      "tts": {
+        "text": "Ancak Ming sarayı denizden korkuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar yüzyıllardır kıyıları yağmalıyordu.",
+      "text_markdown": "Korsanlar yüzyıllardır kıyıları yağmalıyordu.",
+      "tts": {
+        "text": "Korsanlar yüzyıllardır kıyıları yağmalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wokou olarak bilinen Japon akıncılar, on dördüncü yüzyıldan beri Çin ve Kore kıyılarına saldırıyordu.",
+      "text_markdown": "Wokou olarak bilinen Japon akıncılar, on dördüncü yüzyıldan beri Çin ve Kore kıyılarına saldırıyordu.",
+      "tts": {
+        "text": "Wokou olarak bilinen Japon akıncılar, on dördüncü yüzyıldan beri Çin ve Kore kıyılarına saldırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hükümetin yanıtı daha güçlü bir donanma kurmak olmadı.",
+      "text_markdown": "Hükümetin yanıtı daha güçlü bir donanma kurmak olmadı.",
+      "tts": {
+        "text": "Hükümetin yanıtı daha güçlü bir donanma kurmak olmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunun yerine Ming hanedanı, özel deniz ticaretini kesinlikle yasaklayan haijin'i dayattı.",
+      "text_markdown": "Bunun yerine Ming hanedanı, özel deniz ticaretini kesinlikle yasaklayan haijin'i dayattı.",
+      "tts": {
+        "text": "Bunun yerine Ming hanedanı, özel deniz ticaretini kesinlikle yasaklayan haijin'i dayattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir Çinli vatandaşın okyanus gemisi inşa etmesine izin verilmiyordu.",
+      "text_markdown": "Hiçbir Çinli vatandaşın okyanus gemisi inşa etmesine izin verilmiyordu.",
+      "tts": {
+        "text": "Hiçbir Çinli vatandaşın okyanus gemisi inşa etmesine izin verilmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiçbir Çinli tüccar yabancı ülkelere yelken açamazdı.",
+      "text_markdown": "Hiçbir Çinli tüccar yabancı ülkelere yelken açamazdı.",
+      "tts": {
+        "text": "Hiçbir Çinli tüccar yabancı ülkelere yelken açamazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz aşırı ticaret yaparken yakalanan herkes, ölüm dahil ağır cezalarla karşı karşıya kalırdı.",
+      "text_markdown": "Deniz aşırı ticaret yaparken yakalanan herkes, ölüm dahil ağır cezalarla karşı karşıya kalırdı.",
+      "tts": {
+        "text": "Deniz aşırı ticaret yaparken yakalanan herkes, ölüm dahil ağır cezalarla karşı karşıya kalırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yasağın arkasındaki mantık basitti.",
+      "text_markdown": "Yasağın arkasındaki mantık basitti.",
+      "tts": {
+        "text": "Yasağın arkasındaki mantık basitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir Çin gemisi yola çıkmazsa, korsanların ne hedefi ne de adamı olurdu.",
+      "text_markdown": "Hiçbir Çin gemisi yola çıkmazsa, korsanların ne hedefi ne de adamı olurdu.",
+      "tts": {
+        "text": "Hiçbir Çin gemisi yola çıkmazsa, korsanların ne hedefi ne de adamı olurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyılar güvende olurdu.",
+      "text_markdown": "Kıyılar güvende olurdu.",
+      "tts": {
+        "text": "Kıyılar güvende olurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gerçek tam tersiydi.",
+      "text_markdown": "Gerçek tam tersiydi.",
+      "tts": {
+        "text": "Gerçek tam tersiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haijin ticareti durdurmadı.",
+      "text_markdown": "Haijin ticareti durdurmadı.",
+      "tts": {
+        "text": "Haijin ticareti durdurmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tüm ticareti kaçakçıların eline itti.",
+      "text_markdown": "Tüm ticareti kaçakçıların eline itti.",
+      "tts": {
+        "text": "Tüm ticareti kaçakçıların eline itti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eskiden açıkça faaliyet gösteren tüccarlar artık gizlice çalışmak zorundaydı.",
+      "text_markdown": "Eskiden açıkça faaliyet gösteren tüccarlar artık gizlice çalışmak zorundaydı.",
+      "tts": {
+        "text": "Eskiden açıkça faaliyet gösteren tüccarlar artık gizlice çalışmak zorundaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kıyı toplulukları geçimleri için denize bağımlıydı.",
+      "text_markdown": "Kıyı toplulukları geçimleri için denize bağımlıydı.",
+      "tts": {
+        "text": "Kıyı toplulukları geçimleri için denize bağımlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Balıkçıların balık tutması gerekiyordu.",
+      "text_markdown": "Balıkçıların balık tutması gerekiyordu.",
+      "tts": {
+        "text": "Balıkçıların balık tutması gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tüccarların ticaret yapması gerekiyordu.",
+      "text_markdown": "Tüccarların ticaret yapması gerekiyordu.",
+      "tts": {
+        "text": "Tüccarların ticaret yapması gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hükümet bu faaliyetleri yasadışı ilan ettiğinde, tüm halk bir gecede kanun kaçağı oldu.",
+      "text_markdown": "Hükümet bu faaliyetleri yasadışı ilan ettiğinde, tüm halk bir gecede kanun kaçağı oldu.",
+      "tts": {
+        "text": "Hükümet bu faaliyetleri yasadışı ilan ettiğinde, tüm halk bir gecede kanun kaçağı oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güneydoğudaki Fujian ve Zhejiang eyaletleri en ağır darbeyi aldı.",
+      "text_markdown": "Güneydoğudaki Fujian ve Zhejiang eyaletleri en ağır darbeyi aldı.",
+      "tts": {
+        "text": "Güneydoğudaki Fujian ve Zhejiang eyaletleri en ağır darbeyi aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu bölgelerin ince, kayalık toprakları tarıma elverişsizdi.",
+      "text_markdown": "Bu bölgelerin ince, kayalık toprakları tarıma elverişsizdi.",
+      "tts": {
+        "text": "Bu bölgelerin ince, kayalık toprakları tarıma elverişsizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu eyaletlerin halkı hayatta kalmak için her zaman okyanusa bakmıştı.",
+      "text_markdown": "Bu eyaletlerin halkı hayatta kalmak için her zaman okyanusa bakmıştı.",
+      "tts": {
+        "text": "Bu eyaletlerin halkı hayatta kalmak için her zaman okyanusa bakmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yasal ticaret yasaklanınca kaçakçılık ağları hızla büyüdü.",
+      "text_markdown": "Yasal ticaret yasaklanınca kaçakçılık ağları hızla büyüdü.",
+      "tts": {
+        "text": "Yasal ticaret yasaklanınca kaçakçılık ağları hızla büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gizli limanlar kıyı şeridini kaplıyordu.",
+      "text_markdown": "Gizli limanlar kıyı şeridini kaplıyordu.",
+      "tts": {
+        "text": "Gizli limanlar kıyı şeridini kaplıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Silahlı filolar kaçakçıları hükümet devriyelerinden koruyordu.",
+      "text_markdown": "Silahlı filolar kaçakçıları hükümet devriyelerinden koruyordu.",
+      "tts": {
+        "text": "Silahlı filolar kaçakçıları hükümet devriyelerinden koruyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wokou kelimesi aslen Japon korsanları anlamına geliyordu.",
+      "text_markdown": "Wokou kelimesi aslen Japon korsanları anlamına geliyordu.",
+      "tts": {
+        "text": "Wokou kelimesi aslen Japon korsanları anlamına geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak on altıncı yüzyıla gelindiğinde Wokou kökten değişmişti.",
+      "text_markdown": "Ancak on altıncı yüzyıla gelindiğinde Wokou kökten değişmişti.",
+      "tts": {
+        "text": "Ancak on altıncı yüzyıla gelindiğinde Wokou kökten değişmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler, Wang Zhi döneminde sözde Japon korsanlarının yüzde yetmişe kadarının aslında Çinli olduğunu tahmin ediyor.",
+      "text_markdown": "Tarihçiler, Wang Zhi döneminde sözde Japon korsanlarının yüzde yetmişe kadarının aslında Çinli olduğunu tahmin ediyor.",
+      "tts": {
+        "text": "Tarihçiler, Wang Zhi döneminde sözde Japon korsanlarının yüzde yetmişe kadarının aslında Çinli olduğunu tahmin ediyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunlar yasanın dışına itilmiş Çinli tüccarlar, denizciler ve balıkçılardı.",
+      "text_markdown": "Bunlar yasanın dışına itilmiş Çinli tüccarlar, denizciler ve balıkçılardı.",
+      "tts": {
+        "text": "Bunlar yasanın dışına itilmiş Çinli tüccarlar, denizciler ve balıkçılardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Japonya, Ming hükümetinin erişim alanının dışında olduğu için Japon üslerini kullanıyorlardı.",
+      "text_markdown": "Japonya, Ming hükümetinin erişim alanının dışında olduğu için Japon üslerini kullanıyorlardı.",
+      "tts": {
+        "text": "Japonya, Ming hükümetinin erişim alanının dışında olduğu için Japon üslerini kullanıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wokou etiketi saray için uygun bir kurgu haline geldi.",
+      "text_markdown": "Wokou etiketi saray için uygun bir kurgu haline geldi.",
+      "tts": {
+        "text": "Wokou etiketi saray için uygun bir kurgu haline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde Japonya'nın kendisi de kargaşa içindeydi.",
+      "text_markdown": "Bu dönemde Japonya'nın kendisi de kargaşa içindeydi.",
+      "tts": {
+        "text": "Bu dönemde Japonya'nın kendisi de kargaşa içindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ülke, savaşan devletler çağı olan Sengoku dönemine girmişti.",
+      "text_markdown": "Ülke, savaşan devletler çağı olan Sengoku dönemine girmişti.",
+      "tts": {
+        "text": "Ülke, savaşan devletler çağı olan Sengoku dönemine girmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Merkezi otorite çökmüştü.",
+      "text_markdown": "Merkezi otorite çökmüştü.",
+      "tts": {
+        "text": "Merkezi otorite çökmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daimyo olarak bilinen bölge beyleri toprak için birbirleriyle savaşıyordu.",
+      "text_markdown": "Daimyo olarak bilinen bölge beyleri toprak için birbirleriyle savaşıyordu.",
+      "tts": {
+        "text": "Daimyo olarak bilinen bölge beyleri toprak için birbirleriyle savaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu Japon beylerinden bazıları Çinli kaçakçıları ve korsanları memnuniyetle karşılıyordu.",
+      "text_markdown": "Bu Japon beylerinden bazıları Çinli kaçakçıları ve korsanları memnuniyetle karşılıyordu.",
+      "tts": {
+        "text": "Bu Japon beylerinden bazıları Çinli kaçakçıları ve korsanları memnuniyetle karşılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yabancı tüccarlar topraklarına zenginlik getiriyordu.",
+      "text_markdown": "Yabancı tüccarlar topraklarına zenginlik getiriyordu.",
+      "tts": {
+        "text": "Yabancı tüccarlar topraklarına zenginlik getiriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşılığında korsanlar güvenli limanlar ve koruma elde ediyordu.",
+      "text_markdown": "Karşılığında korsanlar güvenli limanlar ve koruma elde ediyordu.",
+      "tts": {
+        "text": "Karşılığında korsanlar güvenli limanlar ve koruma elde ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portekizliler kısa süre önce Doğu Asya sularına ulaşmıştı.",
+      "text_markdown": "Portekizliler kısa süre önce Doğu Asya sularına ulaşmıştı.",
+      "tts": {
+        "text": "Portekizliler kısa süre önce Doğu Asya sularına ulaşmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çin'e 1513'te, Japonya'ya 1543'te ulaştılar.",
+      "text_markdown": "Çin'e 1513'te, Japonya'ya 1543'te ulaştılar.",
+      "tts": {
+        "text": "Çin'e bin beş yüz on üçte, Japonya'ya bin beş yüz kırk üçte ulaştılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ateşli silahlar, Avrupa malları ve Çin ipeği ile Japon gümüşüne duyulan büyük bir açlık getirdiler.",
+      "text_markdown": "Ateşli silahlar, Avrupa malları ve Çin ipeği ile Japon gümüşüne duyulan büyük bir açlık getirdiler.",
+      "tts": {
+        "text": "Ateşli silahlar, Avrupa malları ve Çin ipeği ile Japon gümüşüne duyulan büyük bir açlık getirdiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi'nin girdiği dünya buydu.",
+      "text_markdown": "Wang Zhi'nin girdiği dünya buydu.",
+      "tts": {
+        "text": "Wang Zhi'nin girdiği dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dürüst ticaretin suç olduğu bir dünya.",
+      "text_markdown": "Dürüst ticaretin suç olduğu bir dünya.",
+      "tts": {
+        "text": "Dürüst ticaretin suç olduğu bir dünya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ming Deniz Yasağının Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tüccar ile korsan arasındaki çizginin bir hükümet kararnamesiyle silindiği bir dünya.",
+      "text_markdown": "Tüccar ile korsan arasındaki çizginin bir hükümet kararnamesiyle silindiği bir dünya.",
+      "tts": {
+        "text": "Tüccar ile korsan arasındaki çizginin bir hükümet kararnamesiyle silindiği bir dünya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi, Çin'in iç kesimlerinde, Anhui eyaletinin She ilçesinde doğdu.",
+      "text_markdown": "Wang Zhi, Çin'in iç kesimlerinde, Anhui eyaletinin She ilçesinde doğdu.",
+      "tts": {
+        "text": "Wang Zhi, Çin'in iç kesimlerinde, Anhui eyaletinin She ilçesinde doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğum yılı kesin olarak bilinmiyor, ancak muhtemelen on altıncı yüzyılın başlarındaydı.",
+      "text_markdown": "Doğum yılı kesin olarak bilinmiyor, ancak muhtemelen on altıncı yüzyılın başlarındaydı.",
+      "tts": {
+        "text": "Doğum yılı kesin olarak bilinmiyor, ancak muhtemelen on altıncı yüzyılın başlarındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ailesi zengin değildi.",
+      "text_markdown": "Ailesi zengin değildi.",
+      "tts": {
+        "text": "Ailesi zengin değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anhui tüccarlarıyla tanınıyordu.",
+      "text_markdown": "Anhui tüccarlarıyla tanınıyordu.",
+      "tts": {
+        "text": "Anhui tüccarlarıyla tanınıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu bölgenin Huizhou tüccarları ticari becerileriyle tüm Çin'de ünlüydü.",
+      "text_markdown": "Bu bölgenin Huizhou tüccarları ticari becerileriyle tüm Çin'de ünlüydü.",
+      "tts": {
+        "text": "Bu bölgenin Huizhou tüccarları ticari becerileriyle tüm Çin'de ünlüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İmparatorluk genelinde tuz, çay, kereste ve diğer malları ticaretini yapıyorlardı.",
+      "text_markdown": "İmparatorluk genelinde tuz, çay, kereste ve diğer malları ticaretini yapıyorlardı.",
+      "tts": {
+        "text": "İmparatorluk genelinde tuz, çay, kereste ve diğer malları ticaretini yapıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi kariyerine tuz ticaretiyle başladı.",
+      "text_markdown": "Wang Zhi kariyerine tuz ticaretiyle başladı.",
+      "tts": {
+        "text": "Wang Zhi kariyerine tuz ticaretiyle başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tuz, Çin'deki en değerli mallardan biriydi.",
+      "text_markdown": "Tuz, Çin'deki en değerli mallardan biriydi.",
+      "tts": {
+        "text": "Tuz, Çin'deki en değerli mallardan biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümet tuz üretimi ve satışı üzerinde tekel sahibiydi.",
+      "text_markdown": "Hükümet tuz üretimi ve satışı üzerinde tekel sahibiydi.",
+      "tts": {
+        "text": "Hükümet tuz üretimi ve satışı üzerinde tekel sahibiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lisanssız tuz ticareti yapmak ağır bir suçtu.",
+      "text_markdown": "Lisanssız tuz ticareti yapmak ağır bir suçtu.",
+      "tts": {
+        "text": "Lisanssız tuz ticareti yapmak ağır bir suçtu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak tuz tekeli derinden yozlaşmıştı.",
+      "text_markdown": "Ancak tuz tekeli derinden yozlaşmıştı.",
+      "tts": {
+        "text": "Ancak tuz tekeli derinden yozlaşmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hükümet lisansları siyasi bağlantıları olanlara gidiyordu.",
+      "text_markdown": "Hükümet lisansları siyasi bağlantıları olanlara gidiyordu.",
+      "tts": {
+        "text": "Hükümet lisansları siyasi bağlantıları olanlara gidiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi gibi küçük tüccarlar yasal piyasadan dışlanıyordu.",
+      "text_markdown": "Wang Zhi gibi küçük tüccarlar yasal piyasadan dışlanıyordu.",
+      "tts": {
+        "text": "Wang Zhi gibi küçük tüccarlar yasal piyasadan dışlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçoğu tek seçenek olarak kaçakçılığa yöneldi.",
+      "text_markdown": "Birçoğu tek seçenek olarak kaçakçılığa yöneldi.",
+      "tts": {
+        "text": "Birçoğu tek seçenek olarak kaçakçılığa yöneldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi, deniz ticaretinin fırsatlarına çekilerek kıyıya taşındı.",
+      "text_markdown": "Wang Zhi, deniz ticaretinin fırsatlarına çekilerek kıyıya taşındı.",
+      "tts": {
+        "text": "Wang Zhi, deniz ticaretinin fırsatlarına çekilerek kıyıya taşındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zhejiang ve Fujian'ın hareketli liman bölgelerine yerleşti.",
+      "text_markdown": "Zhejiang ve Fujian'ın hareketli liman bölgelerine yerleşti.",
+      "tts": {
+        "text": "Zhejiang ve Fujian'ın hareketli liman bölgelerine yerleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Burada, haijin'e rağmen bir yeraltı ekonomisi gelişiyordu.",
+      "text_markdown": "Burada, haijin'e rağmen bir yeraltı ekonomisi gelişiyordu.",
+      "tts": {
+        "text": "Burada, haijin'e rağmen bir yeraltı ekonomisi gelişiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kurulu kaçakçılık ağlarıyla çalışmaya başladı.",
+      "text_markdown": "Kurulu kaçakçılık ağlarıyla çalışmaya başladı.",
+      "tts": {
+        "text": "Kurulu kaçakçılık ağlarıyla çalışmaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zeki, becerikli ve cesur olduğunu kanıtladı.",
+      "text_markdown": "Zeki, becerikli ve cesur olduğunu kanıtladı.",
+      "tts": {
+        "text": "Zeki, becerikli ve cesur olduğunu kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deniz yollarını, gizli limanları ve hükümet devriyelerinden kaçmanın yollarını öğrendi.",
+      "text_markdown": "Deniz yollarını, gizli limanları ve hükümet devriyelerinden kaçmanın yollarını öğrendi.",
+      "tts": {
+        "text": "Deniz yollarını, gizli limanları ve hükümet devriyelerinden kaçmanın yollarını öğrendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi kaçakçılık dünyasında hızla yükseldi.",
+      "text_markdown": "Wang Zhi kaçakçılık dünyasında hızla yükseldi.",
+      "tts": {
+        "text": "Wang Zhi kaçakçılık dünyasında hızla yükseldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sadece bir denizci ya da tüccar değildi.",
+      "text_markdown": "Sadece bir denizci ya da tüccar değildi.",
+      "tts": {
+        "text": "Sadece bir denizci ya da tüccar değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geniş mesafelerde karmaşık operasyonları yönetebilen bir organizatör, bir liderdi.",
+      "text_markdown": "Geniş mesafelerde karmaşık operasyonları yönetebilen bir organizatör, bir liderdi.",
+      "tts": {
+        "text": "Geniş mesafelerde karmaşık operasyonları yönetebilen bir organizatör, bir liderdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin beş yüz kırklarda, bir başka önde gelen kaçakçı ve korsan lideri Xu Hai ile bağlantı kurdu.",
+      "text_markdown": "Bin beş yüz kırklarda, bir başka önde gelen kaçakçı ve korsan lideri Xu Hai ile bağlantı kurdu.",
+      "tts": {
+        "text": "Bin beş yüz kırklarda, bir başka önde gelen kaçakçı ve korsan lideri Xu Hai ile bağlantı kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birlikte operasyonlarını önemli ölçüde genişlettiler.",
+      "text_markdown": "Birlikte operasyonlarını önemli ölçüde genişlettiler.",
+      "tts": {
+        "text": "Birlikte operasyonlarını önemli ölçüde genişlettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çin ipeğini Japon gümüşüyle takas ediyorlardı; son derece karlı bir ticaret.",
+      "text_markdown": "Çin ipeğini Japon gümüşüyle takas ediyorlardı; son derece karlı bir ticaret.",
+      "tts": {
+        "text": "Çin ipeğini Japon gümüşüyle takas ediyorlardı; son derece karlı bir ticaret.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Japonya ile Çin arasındaki gümüş fiyat farkı muazzamdı.",
+      "text_markdown": "Japonya ile Çin arasındaki gümüş fiyat farkı muazzamdı.",
+      "tts": {
+        "text": "Japonya ile Çin arasındaki gümüş fiyat farkı muazzamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gümüş Japonya'da bol, Çin'de ise kıttı.",
+      "text_markdown": "Gümüş Japonya'da bol, Çin'de ise kıttı.",
+      "tts": {
+        "text": "Gümüş Japonya'da bol, Çin'de ise kıttı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Japonya'dan Çin'e gümüş taşıyabilen bir tüccar yatırımını iki ya da üç katına çıkarabilirdi.",
+      "text_markdown": "Japonya'dan Çin'e gümüş taşıyabilen bir tüccar yatırımını iki ya da üç katına çıkarabilirdi.",
+      "tts": {
+        "text": "Japonya'dan Çin'e gümüş taşıyabilen bir tüccar yatırımını iki ya da üç katına çıkarabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak bu ticaret haijin altında tamamen yasadışıydı.",
+      "text_markdown": "Ancak bu ticaret haijin altında tamamen yasadışıydı.",
+      "tts": {
+        "text": "Ancak bu ticaret haijin altında tamamen yasadışıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her yolculuk tutuklanma ve idam riski taşıyordu.",
+      "text_markdown": "Her yolculuk tutuklanma ve idam riski taşıyordu.",
+      "tts": {
+        "text": "Her yolculuk tutuklanma ve idam riski taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi'nin Ming hükümetinin erişiminden uzak güvenli limanlara ihtiyacı vardı.",
+      "text_markdown": "Wang Zhi'nin Ming hükümetinin erişiminden uzak güvenli limanlara ihtiyacı vardı.",
+      "tts": {
+        "text": "Wang Zhi'nin Ming hükümetinin erişiminden uzak güvenli limanlara ihtiyacı vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onları Japonya'da buldu.",
+      "text_markdown": "Onları Japonya'da buldu.",
+      "tts": {
+        "text": "Onları Japonya'da buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kyushu'nun batı kıyısında uzak bir takımada olan Goto Adaları ana üssü oldu.",
+      "text_markdown": "Kyushu'nun batı kıyısında uzak bir takımada olan Goto Adaları ana üssü oldu.",
+      "tts": {
+        "text": "Kyushu'nun batı kıyısında uzak bir takımada olan Goto Adaları ana üssü oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yerel Japon beyleri onun varlığını hoş görüyor, hatta memnuniyetle karşılıyordu.",
+      "text_markdown": "Yerel Japon beyleri onun varlığını hoş görüyor, hatta memnuniyetle karşılıyordu.",
+      "tts": {
+        "text": "Yerel Japon beyleri onun varlığını hoş görüyor, hatta memnuniyetle karşılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi ayrıca Hirado Adası'nda bağlantılar kurdu.",
+      "text_markdown": "Wang Zhi ayrıca Hirado Adası'nda bağlantılar kurdu.",
+      "tts": {
+        "text": "Wang Zhi ayrıca Hirado Adası'nda bağlantılar kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hirado zaten uluslararası bir ticaret merkeziydi.",
+      "text_markdown": "Hirado zaten uluslararası bir ticaret merkeziydi.",
+      "tts": {
+        "text": "Hirado zaten uluslararası bir ticaret merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Portekizli tüccarlar oraya gelmeye başlamış, Avrupa ile Asya ticareti arasında bir bağ oluşturmuştu.",
+      "text_markdown": "Portekizli tüccarlar oraya gelmeye başlamış, Avrupa ile Asya ticareti arasında bir bağ oluşturmuştu.",
+      "tts": {
+        "text": "Portekizli tüccarlar oraya gelmeye başlamış, Avrupa ile Asya ticareti arasında bir bağ oluşturmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu ada üslerinden hareketle Wang Zhi bir ticaret imparatorluğu kurdu.",
+      "text_markdown": "Bu ada üslerinden hareketle Wang Zhi bir ticaret imparatorluğu kurdu.",
+      "tts": {
+        "text": "Bu ada üslerinden hareketle Wang Zhi bir ticaret imparatorluğu kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemileri ipek, porselen ve diğer Çin mallarını Japonya'ya taşıyordu.",
+      "text_markdown": "Gemileri ipek, porselen ve diğer Çin mallarını Japonya'ya taşıyordu.",
+      "tts": {
+        "text": "Gemileri ipek, porselen ve diğer Çin mallarını Japonya'ya taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gümüş, kılıç ve Japon bakırıyla geri dönüyorlardı.",
+      "text_markdown": "Gümüş, kılıç ve Japon bakırıyla geri dönüyorlardı.",
+      "tts": {
+        "text": "Gümüş, kılıç ve Japon bakırıyla geri dönüyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Basit bir kaçakçıdan fazlası olmaya başlıyordu.",
+      "text_markdown": "Basit bir kaçakçıdan fazlası olmaya başlıyordu.",
+      "tts": {
+        "text": "Basit bir kaçakçıdan fazlası olmaya başlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendi başına bir güç haline geliyordu.",
+      "text_markdown": "Kendi başına bir güç haline geliyordu.",
+      "tts": {
+        "text": "Kendi başına bir güç haline geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemileri, adamları, parası ve güvenli limanları vardı.",
+      "text_markdown": "Gemileri, adamları, parası ve güvenli limanları vardı.",
+      "tts": {
+        "text": "Gemileri, adamları, parası ve güvenli limanları vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir devlete çok benzeyen bir şey inşa ediyordu.",
+      "text_markdown": "Bir devlete çok benzeyen bir şey inşa ediyordu.",
+      "tts": {
+        "text": "Bir devlete çok benzeyen bir şey inşa ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsan Kral",
+      "text_markdown": "Korsan Kral"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin beş yüz kırkların sonlarına doğru Wang Zhi, Doğu Asya deniz ticaretinin en güçlü figürü haline gelmişti.",
+      "text_markdown": "Bin beş yüz kırkların sonlarına doğru Wang Zhi, Doğu Asya deniz ticaretinin en güçlü figürü haline gelmişti.",
+      "tts": {
+        "text": "Bin beş yüz kırkların sonlarına doğru Wang Zhi, Doğu Asya deniz ticaretinin en güçlü figürü haline gelmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yüzlerce gemi ve binlerce adamı komuta ediyordu.",
+      "text_markdown": "Yüzlerce gemi ve binlerce adamı komuta ediyordu.",
+      "tts": {
+        "text": "Yüzlerce gemi ve binlerce adamı komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret ağı Güneydoğu Asya'dan Kore'ye uzanıyordu.",
+      "text_markdown": "Ticaret ağı Güneydoğu Asya'dan Kore'ye uzanıyordu.",
+      "tts": {
+        "text": "Ticaret ağı Güneydoğu Asya'dan Kore'ye uzanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kendini kral ilan etti.",
+      "text_markdown": "Kendini kral ilan etti.",
+      "tts": {
+        "text": "Kendini kral ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Goto Adaları'nda başkenti olarak hizmet veren müstahkem bir üs inşa etti.",
+      "text_markdown": "Goto Adaları'nda başkenti olarak hizmet veren müstahkem bir üs inşa etti.",
+      "tts": {
+        "text": "Goto Adaları'nda başkenti olarak hizmet veren müstahkem bir üs inşa etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İpek cüppeler giyiyor ve bir feodal bey gibi saray düzenliyordu.",
+      "text_markdown": "İpek cüppeler giyiyor ve bir feodal bey gibi saray düzenliyordu.",
+      "tts": {
+        "text": "İpek cüppeler giyiyor ve bir feodal bey gibi saray düzenliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Takipçileri ona Huizhou Kralı diyordu.",
+      "text_markdown": "Takipçileri ona Huizhou Kralı diyordu.",
+      "tts": {
+        "text": "Takipçileri ona Huizhou Kralı diyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu isim Anhui eyaletindeki kökenlerini yansıtıyordu.",
+      "text_markdown": "Bu isim Anhui eyaletindeki kökenlerini yansıtıyordu.",
+      "tts": {
+        "text": "Bu isim Anhui eyaletindeki kökenlerini yansıtıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aynı zamanda Huizhou tüccar ağlarının kendilerinden birine duyduğu sadakati de yansıtıyordu.",
+      "text_markdown": "Aynı zamanda Huizhou tüccar ağlarının kendilerinden birine duyduğu sadakati de yansıtıyordu.",
+      "tts": {
+        "text": "Aynı zamanda Huizhou tüccar ağlarının kendilerinden birine duyduğu sadakati de yansıtıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi kendini korsan olarak görmüyordu.",
+      "text_markdown": "Wang Zhi kendini korsan olarak görmüyordu.",
+      "tts": {
+        "text": "Wang Zhi kendini korsan olarak görmüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yasanın dışına itilmiş bir tüccar olarak görüyordu.",
+      "text_markdown": "Yasanın dışına itilmiş bir tüccar olarak görüyordu.",
+      "tts": {
+        "text": "Yasanın dışına itilmiş bir tüccar olarak görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümet izin verse yasal olarak ticaret yapma arzusunu defalarca dile getirdi.",
+      "text_markdown": "Hükümet izin verse yasal olarak ticaret yapma arzusunu defalarca dile getirdi.",
+      "tts": {
+        "text": "Hükümet izin verse yasal olarak ticaret yapma arzusunu defalarca dile getirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak Ming sarayı yalnızca bir suçlu görüyordu.",
+      "text_markdown": "Ancak Ming sarayı yalnızca bir suçlu görüyordu.",
+      "tts": {
+        "text": "Ancak Ming sarayı yalnızca bir suçlu görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wokou saldırı raporları Pekin'e akıyordu.",
+      "text_markdown": "Wokou saldırı raporları Pekin'e akıyordu.",
+      "tts": {
+        "text": "Wokou saldırı raporları Pekin'e akıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyı eyaletleri kaos içindeydi.",
+      "text_markdown": "Kıyı eyaletleri kaos içindeydi.",
+      "tts": {
+        "text": "Kıyı eyaletleri kaos içindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şehirler yakılıyor, insanlar öldürülüyordu.",
+      "text_markdown": "Şehirler yakılıyor, insanlar öldürülüyordu.",
+      "tts": {
+        "text": "Şehirler yakılıyor, insanlar öldürülüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu şiddetin hepsi Wang Zhi'nin işi değildi.",
+      "text_markdown": "Bu şiddetin hepsi Wang Zhi'nin işi değildi.",
+      "tts": {
+        "text": "Bu şiddetin hepsi Wang Zhi'nin işi değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wokou tek bir birleşik güç değildi.",
+      "text_markdown": "Wokou tek bir birleşik güç değildi.",
+      "tts": {
+        "text": "Wokou tek bir birleşik güç değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Düzinelerce bağımsız korsan grubu kıyı boyunca faaliyet gösteriyordu.",
+      "text_markdown": "Düzinelerce bağımsız korsan grubu kıyı boyunca faaliyet gösteriyordu.",
+      "tts": {
+        "text": "Düzinelerce bağımsız korsan grubu kıyı boyunca faaliyet gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazıları Wang Zhi gibi tüccardı, ancak diğerleri sadece yağmacı ve hayduttu.",
+      "text_markdown": "Bazıları Wang Zhi gibi tüccardı, ancak diğerleri sadece yağmacı ve hayduttu.",
+      "tts": {
+        "text": "Bazıları Wang Zhi gibi tüccardı, ancak diğerleri sadece yağmacı ve hayduttu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yine de hükümet her şey için Wang Zhi'yi suçladı.",
+      "text_markdown": "Yine de hükümet her şey için Wang Zhi'yi suçladı.",
+      "tts": {
+        "text": "Yine de hükümet her şey için Wang Zhi'yi suçladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En tanınmış Wokou lideri olarak kıyı korsanlığının yüzü haline geldi.",
+      "text_markdown": "En tanınmış Wokou lideri olarak kıyı korsanlığının yüzü haline geldi.",
+      "tts": {
+        "text": "En tanınmış Wokou lideri olarak kıyı korsanlığının yüzü haline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her baskın, her saldırı, her yakılan köy onun etkisine bağlandı.",
+      "text_markdown": "Her baskın, her saldırı, her yakılan köy onun etkisine bağlandı.",
+      "tts": {
+        "text": "Her baskın, her saldırı, her yakılan köy onun etkisine bağlandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1553'te devasa bir Wokou saldırısı Yangtze Nehri deltasını vurdu.",
+      "text_markdown": "1553'te devasa bir Wokou saldırısı Yangtze Nehri deltasını vurdu.",
+      "tts": {
+        "text": "Bin beş yüz elli üçte devasa bir Wokou saldırısı Yangtze Nehri deltasını vurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akıncılar şehirleri kuşattı ve halkı terörize etti.",
+      "text_markdown": "Akıncılar şehirleri kuşattı ve halkı terörize etti.",
+      "tts": {
+        "text": "Akıncılar şehirleri kuşattı ve halkı terörize etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ming ordusu yanıt vermekte zorlanıyordu.",
+      "text_markdown": "Ming ordusu yanıt vermekte zorlanıyordu.",
+      "tts": {
+        "text": "Ming ordusu yanıt vermekte zorlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kıyı savunmaları onlarca yıldır ihmal edilmişti.",
+      "text_markdown": "Kıyı savunmaları onlarca yıldır ihmal edilmişti.",
+      "tts": {
+        "text": "Kıyı savunmaları onlarca yıldır ihmal edilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saray, krizle başa çıkmak için yeni askeri komutanlar atadı.",
+      "text_markdown": "Saray, krizle başa çıkmak için yeni askeri komutanlar atadı.",
+      "tts": {
+        "text": "Saray, krizle başa çıkmak için yeni askeri komutanlar atadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aralarında Çin tarihinde ünlenecek iki adam vardı.",
+      "text_markdown": "Aralarında Çin tarihinde ünlenecek iki adam vardı.",
+      "tts": {
+        "text": "Aralarında Çin tarihinde ünlenecek iki adam vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Qi Jiguang, kıyı ordusunu yeniden örgütleyecek parlak bir generaldi.",
+      "text_markdown": "Qi Jiguang, kıyı ordusunu yeniden örgütleyecek parlak bir generaldi.",
+      "tts": {
+        "text": "Qi Jiguang, kıyı ordusunu yeniden örgütleyecek parlak bir generaldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hu Zongxian, hem güç hem diplomasi kullanacak kurnaz bir stratejistti.",
+      "text_markdown": "Hu Zongxian, hem güç hem diplomasi kullanacak kurnaz bir stratejistti.",
+      "tts": {
+        "text": "Hu Zongxian, hem güç hem diplomasi kullanacak kurnaz bir stratejistti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian, tek başına askeri gücün Wokou'yu yenemeyeceğini anladı.",
+      "text_markdown": "Hu Zongxian, tek başına askeri gücün Wokou'yu yenemeyeceğini anladı.",
+      "tts": {
+        "text": "Hu Zongxian, tek başına askeri gücün Wokou'yu yenemeyeceğini anladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanların çok fazla gemisi, çok fazla üssü ve kıyı topluluklarından çok fazla desteği vardı.",
+      "text_markdown": "Korsanların çok fazla gemisi, çok fazla üssü ve kıyı topluluklarından çok fazla desteği vardı.",
+      "tts": {
+        "text": "Korsanların çok fazla gemisi, çok fazla üssü ve kıyı topluluklarından çok fazla desteği vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Farklı bir yaklaşıma ihtiyacı vardı.",
+      "text_markdown": "Farklı bir yaklaşıma ihtiyacı vardı.",
+      "tts": {
+        "text": "Farklı bir yaklaşıma ihtiyacı vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian böl ve yönet stratejisi geliştirdi.",
+      "text_markdown": "Hu Zongxian böl ve yönet stratejisi geliştirdi.",
+      "tts": {
+        "text": "Hu Zongxian böl ve yönet stratejisi geliştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wokou liderlerini birbirine düşürecekti.",
+      "text_markdown": "Wokou liderlerini birbirine düşürecekti.",
+      "tts": {
+        "text": "Wokou liderlerini birbirine düşürecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teslim olanlara af, redvedenlere yıkım teklif edecekti.",
+      "text_markdown": "Teslim olanlara af, redvedenlere yıkım teklif edecekti.",
+      "tts": {
+        "text": "Teslim olanlara af, redvedenlere yıkım teklif edecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birincil hedefi Wang Zhi'ydi.",
+      "text_markdown": "Birincil hedefi Wang Zhi'ydi.",
+      "tts": {
+        "text": "Birincil hedefi Wang Zhi'ydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En güçlü Wokou lideri etkisiz hale getirilebilirse, diğerleri dağılabilirdi.",
+      "text_markdown": "En güçlü Wokou lideri etkisiz hale getirilebilirse, diğerleri dağılabilirdi.",
+      "tts": {
+        "text": "En güçlü Wokou lideri etkisiz hale getirilebilirse, diğerleri dağılabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hu Zongxian, Goto Adaları'ndaki Wang Zhi'ye gizli mesajlar göndermeye başladı.",
+      "text_markdown": "Hu Zongxian, Goto Adaları'ndaki Wang Zhi'ye gizli mesajlar göndermeye başladı.",
+      "tts": {
+        "text": "Hu Zongxian, Goto Adaları'ndaki Wang Zhi'ye gizli mesajlar göndermeye başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mesajlar özenle hazırlanmıştı.",
+      "text_markdown": "Mesajlar özenle hazırlanmıştı.",
+      "tts": {
+        "text": "Mesajlar özenle hazırlanmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi'ye her zaman istediği şeyi sunuyorlardı: yasal ticaret hakları.",
+      "text_markdown": "Wang Zhi'ye her zaman istediği şeyi sunuyorlardı: yasal ticaret hakları.",
+      "tts": {
+        "text": "Wang Zhi'ye her zaman istediği şeyi sunuyorlardı, yasal ticaret hakları.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümet deniz yasağını onun için kişisel olarak kaldıracaktı.",
+      "text_markdown": "Hükümet deniz yasağını onun için kişisel olarak kaldıracaktı.",
+      "tts": {
+        "text": "Hükümet deniz yasağını onun için kişisel olarak kaldıracaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İmparatorun onayıyla açıkça ve yasal olarak ticaret yapabilecekti.",
+      "text_markdown": "İmparatorun onayıyla açıkça ve yasal olarak ticaret yapabilecekti.",
+      "tts": {
+        "text": "İmparatorun onayıyla açıkça ve yasal olarak ticaret yapabilecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi derinden cezbedildi.",
+      "text_markdown": "Wang Zhi derinden cezbedildi.",
+      "tts": {
+        "text": "Wang Zhi derinden cezbedildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yıllardır yasanın dışında faaliyet gösteriyordu.",
+      "text_markdown": "Yıllardır yasanın dışında faaliyet gösteriyordu.",
+      "tts": {
+        "text": "Yıllardır yasanın dışında faaliyet gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sürekli tehlike, silahlı eskort ihtiyacı ve idam tehdidi üzerinde ağır bir yük oluşturuyordu.",
+      "text_markdown": "Sürekli tehlike, silahlı eskort ihtiyacı ve idam tehdidi üzerinde ağır bir yük oluşturuyordu.",
+      "tts": {
+        "text": "Sürekli tehlike, silahlı eskort ihtiyacı ve idam tehdidi üzerinde ağır bir yük oluşturuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yasal ticaret barış ve istikrar anlamına gelecekti.",
+      "text_markdown": "Yasal ticaret barış ve istikrar anlamına gelecekti.",
+      "tts": {
+        "text": "Yasal ticaret barış ve istikrar anlamına gelecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu arada Hu Zongxian, Wang Zhi'nin müttefiklerine karşı harekete geçti.",
+      "text_markdown": "Bu arada Hu Zongxian, Wang Zhi'nin müttefiklerine karşı harekete geçti.",
+      "tts": {
+        "text": "Bu arada Hu Zongxian, Wang Zhi'nin müttefiklerine karşı harekete geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Xu Hai ve diğer korsan liderlerini etkisiz hale getirmek için rüşvet, tehdit ve askeri güç kullandı.",
+      "text_markdown": "Xu Hai ve diğer korsan liderlerini etkisiz hale getirmek için rüşvet, tehdit ve askeri güç kullandı.",
+      "tts": {
+        "text": "Xu Hai ve diğer korsan liderlerini etkisiz hale getirmek için rüşvet, tehdit ve askeri güç kullandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Xu Hai sonunda 1556'da öldürüldü; kendi takipçilerinden biri tarafından ihanete uğradığı söylenir.",
+      "text_markdown": "Xu Hai sonunda 1556'da öldürüldü; kendi takipçilerinden biri tarafından ihanete uğradığı söylenir.",
+      "tts": {
+        "text": "Xu Hai sonunda bin beş yüz elli altıda öldürüldü; kendi takipçilerinden biri tarafından ihanete uğradığı söylenir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi müttefiklerinin birer birer düştüğünü izledi.",
+      "text_markdown": "Wang Zhi müttefiklerinin birer birer düştüğünü izledi.",
+      "tts": {
+        "text": "Wang Zhi müttefiklerinin birer birer düştüğünü izledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir zamanlar sarsılmaz olan konumu giderek daha fazla yalnızlaşıyordu.",
+      "text_markdown": "Bir zamanlar sarsılmaz olan konumu giderek daha fazla yalnızlaşıyordu.",
+      "tts": {
+        "text": "Bir zamanlar sarsılmaz olan konumu giderek daha fazla yalnızlaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Af teklifi en iyi seçenek gibi görünmeye başladı.",
+      "text_markdown": "Af teklifi en iyi seçenek gibi görünmeye başladı.",
+      "tts": {
+        "text": "Af teklifi en iyi seçenek gibi görünmeye başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian, Wang Zhi ile şahsen görüşmek üzere Japonya'ya güvenilir bir elçi gönderdi.",
+      "text_markdown": "Hu Zongxian, Wang Zhi ile şahsen görüşmek üzere Japonya'ya güvenilir bir elçi gönderdi.",
+      "tts": {
+        "text": "Hu Zongxian, Wang Zhi ile şahsen görüşmek üzere Japonya'ya güvenilir bir elçi gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elçi hediyeler, resmi belgeler ve ayrıntılı vaatler taşıyordu.",
+      "text_markdown": "Elçi hediyeler, resmi belgeler ve ayrıntılı vaatler taşıyordu.",
+      "tts": {
+        "text": "Elçi hediyeler, resmi belgeler ve ayrıntılı vaatler taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi'ye teklifin samimi olduğunu güvence altına aldı.",
+      "text_markdown": "Wang Zhi'ye teklifin samimi olduğunu güvence altına aldı.",
+      "tts": {
+        "text": "Wang Zhi'ye teklifin samimi olduğunu güvence altına aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Müzakereler aylarca sürdü.",
+      "text_markdown": "Müzakereler aylarca sürdü.",
+      "tts": {
+        "text": "Müzakereler aylarca sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi temkinliydi.",
+      "text_markdown": "Wang Zhi temkinliydi.",
+      "tts": {
+        "text": "Wang Zhi temkinliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ming hükümetinin daha önce sözünden döndüğünü biliyordu.",
+      "text_markdown": "Ming hükümetinin daha önce sözünden döndüğünü biliyordu.",
+      "tts": {
+        "text": "Ming hükümetinin daha önce sözünden döndüğünü biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsan Kral",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak elçi ikna ediciydi ve şartlar cömert görünüyordu.",
+      "text_markdown": "Ancak elçi ikna ediciydi ve şartlar cömert görünüyordu.",
+      "tts": {
+        "text": "Ancak elçi ikna ediciydi ve şartlar cömert görünüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tuzak",
+      "text_markdown": "Tuzak"
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1557'de Wang Zhi hayatına mal olacak kararı aldı.",
+      "text_markdown": "1557'de Wang Zhi hayatına mal olacak kararı aldı.",
+      "tts": {
+        "text": "Bin beş yüz elli yedide Wang Zhi hayatına mal olacak kararı aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çin'e dönmeyi kabul etti.",
+      "text_markdown": "Çin'e dönmeyi kabul etti.",
+      "tts": {
+        "text": "Çin'e dönmeyi kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hu Zongxian'a teslim olacak, affı kabul edecek ve yasal bir tüccar olacaktı.",
+      "text_markdown": "Hu Zongxian'a teslim olacak, affı kabul edecek ve yasal bir tüccar olacaktı.",
+      "tts": {
+        "text": "Hu Zongxian'a teslim olacak, affı kabul edecek ve yasal bir tüccar olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Takipçileri onu bundan vazgeçirmeye çalıştı.",
+      "text_markdown": "Takipçileri onu bundan vazgeçirmeye çalıştı.",
+      "tts": {
+        "text": "Takipçileri onu bundan vazgeçirmeye çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçoğu teklifin bir tuzak olduğuna inanıyordu.",
+      "text_markdown": "Birçoğu teklifin bir tuzak olduğuna inanıyordu.",
+      "tts": {
+        "text": "Birçoğu teklifin bir tuzak olduğuna inanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güvende olduğu Japonya'da kalmasını istediler.",
+      "text_markdown": "Güvende olduğu Japonya'da kalmasını istediler.",
+      "tts": {
+        "text": "Güvende olduğu Japonya'da kalmasını istediler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak Wang Zhi sürgünden bıkmıştı.",
+      "text_markdown": "Ancak Wang Zhi sürgünden bıkmıştı.",
+      "tts": {
+        "text": "Ancak Wang Zhi sürgünden bıkmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anavatanını özlüyordu.",
+      "text_markdown": "Anavatanını özlüyordu.",
+      "tts": {
+        "text": "Anavatanını özlüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onun gücünde ve nüfuzundaki bir adamın kaçak hayatı değil, tanınmayı hak ettiğine inanıyordu.",
+      "text_markdown": "Onun gücünde ve nüfuzundaki bir adamın kaçak hayatı değil, tanınmayı hak ettiğine inanıyordu.",
+      "tts": {
+        "text": "Onun gücünde ve nüfuzundaki bir adamın kaçak hayatı değil, tanınmayı hak ettiğine inanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Goto Adaları'ndan küçük bir filoyla yelken açtı.",
+      "text_markdown": "Goto Adaları'ndan küçük bir filoyla yelken açtı.",
+      "tts": {
+        "text": "Goto Adaları'ndan küçük bir filoyla yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çinli yetkililere hediyeler getirdi.",
+      "text_markdown": "Çinli yetkililere hediyeler getirdi.",
+      "tts": {
+        "text": "Çinli yetkililere hediyeler getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En güzel cüppelerini giydi, sanki resmi bir karşılamaya geliyormuş gibi.",
+      "text_markdown": "En güzel cüppelerini giydi, sanki resmi bir karşılamaya geliyormuş gibi.",
+      "tts": {
+        "text": "En güzel cüppelerini giydi, sanki resmi bir karşılamaya geliyormuş gibi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çin kıyılarına vardığında Hu Zongxian onu büyük bir törenle karşıladı.",
+      "text_markdown": "Çin kıyılarına vardığında Hu Zongxian onu büyük bir törenle karşıladı.",
+      "tts": {
+        "text": "Çin kıyılarına vardığında Hu Zongxian onu büyük bir törenle karşıladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ziyafetler ve kibar sohbetler düzenlendi.",
+      "text_markdown": "Ziyafetler ve kibar sohbetler düzenlendi.",
+      "tts": {
+        "text": "Ziyafetler ve kibar sohbetler düzenlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi bir suçlu olarak değil, onur konuğu olarak ağırlandı.",
+      "text_markdown": "Wang Zhi bir suçlu olarak değil, onur konuğu olarak ağırlandı.",
+      "tts": {
+        "text": "Wang Zhi bir suçlu olarak değil, onur konuğu olarak ağırlandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hu Zongxian gerçekten af anlaşmasını onurlandırmak istemiş olabilir.",
+      "text_markdown": "Hu Zongxian gerçekten af anlaşmasını onurlandırmak istemiş olabilir.",
+      "tts": {
+        "text": "Hu Zongxian gerçekten af anlaşmasını onurlandırmak istemiş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler ihanetin onun fikri mi yoksa üstündeki yetkililerden mi geldiğini tartışıyor.",
+      "text_markdown": "Tarihçiler ihanetin onun fikri mi yoksa üstündeki yetkililerden mi geldiğini tartışıyor.",
+      "tts": {
+        "text": "Tarihçiler ihanetin onun fikri mi yoksa üstündeki yetkililerden mi geldiğini tartışıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kesin olan şu ki, Pekin'deki güçlü sesler Wang Zhi'nin idamını talep ediyordu.",
+      "text_markdown": "Kesin olan şu ki, Pekin'deki güçlü sesler Wang Zhi'nin idamını talep ediyordu.",
+      "tts": {
+        "text": "Kesin olan şu ki, Pekin'deki güçlü sesler Wang Zhi'nin idamını talep ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birçok saray yetkilisi bir korsana af verilmesini kabul edilemez bir zayıflık işareti olarak görüyordu.",
+      "text_markdown": "Birçok saray yetkilisi bir korsana af verilmesini kabul edilemez bir zayıflık işareti olarak görüyordu.",
+      "tts": {
+        "text": "Birçok saray yetkilisi bir korsana af verilmesini kabul edilemez bir zayıflık işareti olarak görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi'yi affetmenin başkalarını korsanlığa teşvik edeceğini savunuyorlardı.",
+      "text_markdown": "Wang Zhi'yi affetmenin başkalarını korsanlığa teşvik edeceğini savunuyorlardı.",
+      "tts": {
+        "text": "Wang Zhi'yi affetmenin başkalarını korsanlığa teşvik edeceğini savunuyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yasa yasaydı ve Wang Zhi onu onlarca yıldır çiğniyordu.",
+      "text_markdown": "Yasa yasaydı ve Wang Zhi onu onlarca yıldır çiğniyordu.",
+      "tts": {
+        "text": "Yasa yasaydı ve Wang Zhi onu onlarca yıldır çiğniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi varışından kısa süre sonra tutuklandı.",
+      "text_markdown": "Wang Zhi varışından kısa süre sonra tutuklandı.",
+      "tts": {
+        "text": "Wang Zhi varışından kısa süre sonra tutuklandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ziyafetler sona erdi.",
+      "text_markdown": "Ziyafetler sona erdi.",
+      "tts": {
+        "text": "Ziyafetler sona erdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vaatler buhar oldu.",
+      "text_markdown": "Vaatler buhar oldu.",
+      "tts": {
+        "text": "Vaatler buhar oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zincire vurulup hapse atıldı.",
+      "text_markdown": "Zincire vurulup hapse atıldı.",
+      "tts": {
+        "text": "Zincire vurulup hapse atıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaklaşık iki yıl hapiste tutuldu.",
+      "text_markdown": "Yaklaşık iki yıl hapiste tutuldu.",
+      "tts": {
+        "text": "Yaklaşık iki yıl hapiste tutuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu süre boyunca kaderi Ming sarayının en üst düzeylerinde tartışıldı.",
+      "text_markdown": "Bu süre boyunca kaderi Ming sarayının en üst düzeylerinde tartışıldı.",
+      "tts": {
+        "text": "Bu süre boyunca kaderi Ming sarayının en üst düzeylerinde tartışıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı yetkililer gönüllü olarak teslim olduğunu belirterek merhamet talep etti.",
+      "text_markdown": "Bazı yetkililer gönüllü olarak teslim olduğunu belirterek merhamet talep etti.",
+      "tts": {
+        "text": "Bazı yetkililer gönüllü olarak teslim olduğunu belirterek merhamet talep etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diğerleri ölüm cezası istedi.",
+      "text_markdown": "Diğerleri ölüm cezası istedi.",
+      "tts": {
+        "text": "Diğerleri ölüm cezası istedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wokou saldırılarında ölen binlerce kişiyi işaret ettiler.",
+      "text_markdown": "Wokou saldırılarında ölen binlerce kişiyi işaret ettiler.",
+      "tts": {
+        "text": "Wokou saldırılarında ölen binlerce kişiyi işaret ettiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi'nin tüm bunlardan sorumlu olduğunu savundular.",
+      "text_markdown": "Wang Zhi'nin tüm bunlardan sorumlu olduğunu savundular.",
+      "tts": {
+        "text": "Wang Zhi'nin tüm bunlardan sorumlu olduğunu savundular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi hapisteyken eski takipçileri Japonya'dan izliyordu.",
+      "text_markdown": "Wang Zhi hapisteyken eski takipçileri Japonya'dan izliyordu.",
+      "tts": {
+        "text": "Wang Zhi hapisteyken eski takipçileri Japonya'dan izliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İhanetten öfke duyuyorlardı.",
+      "text_markdown": "İhanetten öfke duyuyorlardı.",
+      "tts": {
+        "text": "İhanetten öfke duyuyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümet sözünü tutmamıştı.",
+      "text_markdown": "Hükümet sözünü tutmamıştı.",
+      "tts": {
+        "text": "Hükümet sözünü tutmamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kalan Wokou'larla barışçıl müzakere umudu artık yok edilmişti.",
+      "text_markdown": "Kalan Wokou'larla barışçıl müzakere umudu artık yok edilmişti.",
+      "tts": {
+        "text": "Kalan Wokou'larla barışçıl müzakere umudu artık yok edilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi'nin hapisten hayatı için yalvaran mektuplar yazdığı söylenir.",
+      "text_markdown": "Wang Zhi'nin hapisten hayatı için yalvaran mektuplar yazdığı söylenir.",
+      "tts": {
+        "text": "Wang Zhi'nin hapisten hayatı için yalvaran mektuplar yazdığı söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kalan Wokou'ları teslim olmaya ikna etmek için nüfuzunu kullanmayı teklif etti.",
+      "text_markdown": "Kalan Wokou'ları teslim olmaya ikna etmek için nüfuzunu kullanmayı teklif etti.",
+      "tts": {
+        "text": "Kalan Wokou'ları teslim olmaya ikna etmek için nüfuzunu kullanmayı teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onu öldürmenin korsanlık sorununu yalnızca kötüleştireceğini savundu.",
+      "text_markdown": "Onu öldürmenin korsanlık sorununu yalnızca kötüleştireceğini savundu.",
+      "tts": {
+        "text": "Onu öldürmenin korsanlık sorununu yalnızca kötüleştireceğini savundu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Argümanı hem kişisel çıkara dayalı hem de tamamen doğruydu.",
+      "text_markdown": "Argümanı hem kişisel çıkara dayalı hem de tamamen doğruydu.",
+      "tts": {
+        "text": "Argümanı hem kişisel çıkara dayalı hem de tamamen doğruydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak saray pratik çözümlerle ilgilenmiyordu.",
+      "text_markdown": "Ancak saray pratik çözümlerle ilgilenmiyordu.",
+      "tts": {
+        "text": "Ancak saray pratik çözümlerle ilgilenmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İbret vermekle ilgileniyordu.",
+      "text_markdown": "İbret vermekle ilgileniyordu.",
+      "tts": {
+        "text": "İbret vermekle ilgileniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ming sarayındaki tartışma ticaret politikasındaki derin bölünmeleri ortaya koydu.",
+      "text_markdown": "Ming sarayındaki tartışma ticaret politikasındaki derin bölünmeleri ortaya koydu.",
+      "tts": {
+        "text": "Ming sarayındaki tartışma ticaret politikasındaki derin bölünmeleri ortaya koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı yetkililer haijin'in korsanlığın temel nedeni olduğunu anlıyordu.",
+      "text_markdown": "Bazı yetkililer haijin'in korsanlığın temel nedeni olduğunu anlıyordu.",
+      "tts": {
+        "text": "Bazı yetkililer haijin'in korsanlığın temel nedeni olduğunu anlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret kısıtlamalarının gevşetilmesini savunuyorlardı.",
+      "text_markdown": "Ticaret kısıtlamalarının gevşetilmesini savunuyorlardı.",
+      "tts": {
+        "text": "Ticaret kısıtlamalarının gevşetilmesini savunuyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diğerleri dış ticaretin yozlaştırıcı ve tehlikeli olduğu geleneksel görüşe sarılıyordu.",
+      "text_markdown": "Diğerleri dış ticaretin yozlaştırıcı ve tehlikeli olduğu geleneksel görüşe sarılıyordu.",
+      "tts": {
+        "text": "Diğerleri dış ticaretin yozlaştırıcı ve tehlikeli olduğu geleneksel görüşe sarılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deniz yasağının gevşetilmemesi, daha sıkı uygulanması gerektiğine inanıyorlardı.",
+      "text_markdown": "Deniz yasağının gevşetilmemesi, daha sıkı uygulanması gerektiğine inanıyorlardı.",
+      "tts": {
+        "text": "Deniz yasağının gevşetilmemesi, daha sıkı uygulanması gerektiğine inanıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Tuzak",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu muhafazakarlar nihayetinde Wang Zhi'nin kaderi hakkındaki tartışmayı kazandı.",
+      "text_markdown": "Bu muhafazakarlar nihayetinde Wang Zhi'nin kaderi hakkındaki tartışmayı kazandı.",
+      "tts": {
+        "text": "Bu muhafazakarlar nihayetinde Wang Zhi'nin kaderi hakkındaki tartışmayı kazandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1559'da Pekin'den emir geldi.",
+      "text_markdown": "1559'da Pekin'den emir geldi.",
+      "tts": {
+        "text": "Bin beş yüz elli dokuzda Pekin'den emir geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wang Zhi idam edilecekti.",
+      "text_markdown": "Wang Zhi idam edilecekti.",
+      "tts": {
+        "text": "Wang Zhi idam edilecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ne af, ne bağışlama, ne merhamet olacaktı.",
+      "text_markdown": "Ne af, ne bağışlama, ne merhamet olacaktı.",
+      "tts": {
+        "text": "Ne af, ne bağışlama, ne merhamet olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi, Hangzhou'daki idam alanına getirildi.",
+      "text_markdown": "Wang Zhi, Hangzhou'daki idam alanına getirildi.",
+      "tts": {
+        "text": "Wang Zhi, Hangzhou'daki idam alanına getirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolunu izleyecek herkese uyarı olarak halka açık şekilde başı kesildi.",
+      "text_markdown": "Yolunu izleyecek herkese uyarı olarak halka açık şekilde başı kesildi.",
+      "tts": {
+        "text": "Yolunu izleyecek herkese uyarı olarak halka açık şekilde başı kesildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendini kral ilan eden adam sıradan bir suçlu olarak öldü.",
+      "text_markdown": "Kendini kral ilan eden adam sıradan bir suçlu olarak öldü.",
+      "tts": {
+        "text": "Kendini kral ilan eden adam sıradan bir suçlu olarak öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı rivayetlere göre Wang Zhi sonuna kadar meydan okudu.",
+      "text_markdown": "Bazı rivayetlere göre Wang Zhi sonuna kadar meydan okudu.",
+      "tts": {
+        "text": "Bazı rivayetlere göre Wang Zhi sonuna kadar meydan okudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendini hiçbir zaman korsan olarak görmediğini söylediği aktarılır.",
+      "text_markdown": "Kendini hiçbir zaman korsan olarak görmediğini söylediği aktarılır.",
+      "tts": {
+        "text": "Kendini hiçbir zaman korsan olarak görmediğini söylediği aktarılır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sadece ticaret yapmak istemişti.",
+      "text_markdown": "Sadece ticaret yapmak istemişti.",
+      "tts": {
+        "text": "Sadece ticaret yapmak istemişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ming sarayı, onun idamının Wokou sorununu sona erdireceğine inandı.",
+      "text_markdown": "Ming sarayı, onun idamının Wokou sorununu sona erdireceğine inandı.",
+      "tts": {
+        "text": "Ming sarayı, onun idamının Wokou sorununu sona erdireceğine inandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Feci şekilde yanılıyorlardı.",
+      "text_markdown": "Feci şekilde yanılıyorlardı.",
+      "tts": {
+        "text": "Feci şekilde yanılıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tam tersi oldu.",
+      "text_markdown": "Tam tersi oldu.",
+      "tts": {
+        "text": "Tam tersi oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi kendi yöntemiyle ılımlılaştırıcı bir güç olmuştu.",
+      "text_markdown": "Wang Zhi kendi yöntemiyle ılımlılaştırıcı bir güç olmuştu.",
+      "tts": {
+        "text": "Wang Zhi kendi yöntemiyle ılımlılaştırıcı bir güç olmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Takipçileri arasında disiplini sürdürmüştü.",
+      "text_markdown": "Takipçileri arasında disiplini sürdürmüştü.",
+      "tts": {
+        "text": "Takipçileri arasında disiplini sürdürmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümetle iletişim kanallarını açık tutmuştu.",
+      "text_markdown": "Hükümetle iletişim kanallarını açık tutmuştu.",
+      "tts": {
+        "text": "Hükümetle iletişim kanallarını açık tutmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wokou'nun en şiddet yanlısı unsurlarını dizginlemişti.",
+      "text_markdown": "Wokou'nun en şiddet yanlısı unsurlarını dizginlemişti.",
+      "tts": {
+        "text": "Wokou'nun en şiddet yanlısı unsurlarını dizginlemişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi'nin ölümüyle bu kısıtlamalar ortadan kalktı.",
+      "text_markdown": "Wang Zhi'nin ölümüyle bu kısıtlamalar ortadan kalktı.",
+      "tts": {
+        "text": "Wang Zhi'nin ölümüyle bu kısıtlamalar ortadan kalktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İhanetten öfkelenen eski takipçileri Çin kıyılarına bir intikam saldırısı dalgası başlattı.",
+      "text_markdown": "İhanetten öfkelenen eski takipçileri Çin kıyılarına bir intikam saldırısı dalgası başlattı.",
+      "tts": {
+        "text": "İhanetten öfkelenen eski takipçileri Çin kıyılarına bir intikam saldırısı dalgası başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Takip eden baskınlar daha önceki her şeyden çok daha yıkıcıydı.",
+      "text_markdown": "Takip eden baskınlar daha önceki her şeyden çok daha yıkıcıydı.",
+      "tts": {
+        "text": "Takip eden baskınlar daha önceki her şeyden çok daha yıkıcıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yeni Wokou liderleri ortaya çıktı; birçoğu Wang Zhi'den çok daha acımasızdı.",
+      "text_markdown": "Yeni Wokou liderleri ortaya çıktı; birçoğu Wang Zhi'den çok daha acımasızdı.",
+      "tts": {
+        "text": "Yeni Wokou liderleri ortaya çıktı; birçoğu Wang Zhi'den çok daha acımasızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Müzakereyle ilgilenmiyorlardı.",
+      "text_markdown": "Müzakereyle ilgilenmiyorlardı.",
+      "tts": {
+        "text": "Müzakereyle ilgilenmiyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hükümetin vaatlerine güvenen adamın başına geleni görmüşlerdi.",
+      "text_markdown": "Hükümetin vaatlerine güvenen adamın başına geleni görmüşlerdi.",
+      "tts": {
+        "text": "Hükümetin vaatlerine güvenen adamın başına geleni görmüşlerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ming ordusu, yeniden alevlenen korsanlığı bastırmak için yıllarca süren maliyetli seferlere zorlandı.",
+      "text_markdown": "Ming ordusu, yeniden alevlenen korsanlığı bastırmak için yıllarca süren maliyetli seferlere zorlandı.",
+      "tts": {
+        "text": "Ming ordusu, yeniden alevlenen korsanlığı bastırmak için yıllarca süren maliyetli seferlere zorlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "General Qi Jiguang, güneydoğu kıyısı boyunca Wokou saldırılarıyla savaşarak neredeyse on yıl geçirdi.",
+      "text_markdown": "General Qi Jiguang, güneydoğu kıyısı boyunca Wokou saldırılarıyla savaşarak neredeyse on yıl geçirdi.",
+      "tts": {
+        "text": "General Qi Jiguang, güneydoğu kıyısı boyunca Wokou saldırılarıyla savaşarak neredeyse on yıl geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çatışmalarda binlerce asker ve sivil hayatını kaybetti.",
+      "text_markdown": "Çatışmalarda binlerce asker ve sivil hayatını kaybetti.",
+      "tts": {
+        "text": "Çatışmalarda binlerce asker ve sivil hayatını kaybetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi'yi ölüme çeken yetkili Hu Zongxian gözden düştü.",
+      "text_markdown": "Wang Zhi'yi ölüme çeken yetkili Hu Zongxian gözden düştü.",
+      "tts": {
+        "text": "Wang Zhi'yi ölüme çeken yetkili Hu Zongxian gözden düştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha sonra yolsuzluk ve diğer suçlamalarla itham edildi.",
+      "text_markdown": "Daha sonra yolsuzluk ve diğer suçlamalarla itham edildi.",
+      "tts": {
+        "text": "Daha sonra yolsuzluk ve diğer suçlamalarla itham edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hapishanede harap bir adam olarak öldü.",
+      "text_markdown": "Hapishanede harap bir adam olarak öldü.",
+      "tts": {
+        "text": "Hapishanede harap bir adam olarak öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tarih onu kararsız duygularla anıyor.",
+      "text_markdown": "Tarih onu kararsız duygularla anıyor.",
+      "tts": {
+        "text": "Tarih onu kararsız duygularla anıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak bin beş yüz altmışların ortasında Ming hükümeti nihayet en kötü Wokou saldırılarını bastırabildi.",
+      "text_markdown": "Ancak bin beş yüz altmışların ortasında Ming hükümeti nihayet en kötü Wokou saldırılarını bastırabildi.",
+      "tts": {
+        "text": "Ancak bin beş yüz altmışların ortasında Ming hükümeti nihayet en kötü Wokou saldırılarını bastırabildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çözüm daha fazla idam ya da deniz yasağının daha sıkı uygulanması değildi.",
+      "text_markdown": "Çözüm daha fazla idam ya da deniz yasağının daha sıkı uygulanması değildi.",
+      "tts": {
+        "text": "Çözüm daha fazla idam ya da deniz yasağının daha sıkı uygulanması değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çözüm tam olarak Wang Zhi'nin her zaman istediği şeydi.",
+      "text_markdown": "Çözüm tam olarak Wang Zhi'nin her zaman istediği şeydi.",
+      "tts": {
+        "text": "Çözüm tam olarak Wang Zhi'nin her zaman istediği şeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1567'de Ming sarayı nihayet haijin'i gevşetti.",
+      "text_markdown": "1567'de Ming sarayı nihayet haijin'i gevşetti.",
+      "tts": {
+        "text": "Bin beş yüz altmış yedide Ming sarayı nihayet haijin'i gevşetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çinli tüccarlara ticaret yapmak üzere Güneydoğu Asya limanlarına yelken açma izni verildi.",
+      "text_markdown": "Çinli tüccarlara ticaret yapmak üzere Güneydoğu Asya limanlarına yelken açma izni verildi.",
+      "tts": {
+        "text": "Çinli tüccarlara ticaret yapmak üzere Güneydoğu Asya limanlarına yelken açma izni verildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adım kısmi ve temkinliydi, ancak temel bir politika değişikliğiydi.",
+      "text_markdown": "Adım kısmi ve temkinliydi, ancak temel bir politika değişikliğiydi.",
+      "tts": {
+        "text": "Adım kısmi ve temkinliydi, ancak temel bir politika değişikliğiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonuç hemen ve çarpıcı oldu.",
+      "text_markdown": "Sonuç hemen ve çarpıcı oldu.",
+      "tts": {
+        "text": "Sonuç hemen ve çarpıcı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kıyı boyunca korsanlık keskin bir şekilde azaldı.",
+      "text_markdown": "Kıyı boyunca korsanlık keskin bir şekilde azaldı.",
+      "tts": {
+        "text": "Kıyı boyunca korsanlık keskin bir şekilde azaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanlar yasal olarak ticaret yapabildiğinde korsan olmak için bir nedenleri yoktu.",
+      "text_markdown": "İnsanlar yasal olarak ticaret yapabildiğinde korsan olmak için bir nedenleri yoktu.",
+      "tts": {
+        "text": "İnsanlar yasal olarak ticaret yapabildiğinde korsan olmak için bir nedenleri yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi haklı çıkmıştı, ancak bunu görecek kadar yaşamadı.",
+      "text_markdown": "Wang Zhi haklı çıkmıştı, ancak bunu görecek kadar yaşamadı.",
+      "tts": {
+        "text": "Wang Zhi haklı çıkmıştı, ancak bunu görecek kadar yaşamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hükümet, daha sonra herkese izin vereceği şeyi yaptığı için bir adamı öldürmüştü.",
+      "text_markdown": "Hükümet, daha sonra herkese izin vereceği şeyi yaptığı için bir adamı öldürmüştü.",
+      "tts": {
+        "text": "Hükümet, daha sonra herkese izin vereceği şeyi yaptığı için bir adamı öldürmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İdamı hem bir trajedi hem de bir israftı.",
+      "text_markdown": "İdamı hem bir trajedi hem de bir israftı.",
+      "tts": {
+        "text": "İdamı hem bir trajedi hem de bir israftı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi'nin hikayesi yüzyıllar boyunca birçok farklı şekilde yorumlanmıştır.",
+      "text_markdown": "Wang Zhi'nin hikayesi yüzyıllar boyunca birçok farklı şekilde yorumlanmıştır.",
+      "tts": {
+        "text": "Wang Zhi'nin hikayesi yüzyıllar boyunca birçok farklı şekilde yorumlanmıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ming sarayı için ölümü hak eden bir suçluydu.",
+      "text_markdown": "Ming sarayı için ölümü hak eden bir suçluydu.",
+      "tts": {
+        "text": "Ming sarayı için ölümü hak eden bir suçluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonraki tarihçiler için başarısız bir politikanın belirtisiydi.",
+      "text_markdown": "Sonraki tarihçiler için başarısız bir politikanın belirtisiydi.",
+      "tts": {
+        "text": "Sonraki tarihçiler için başarısız bir politikanın belirtisiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern Çin'de itibarı yeniden değerlendirilmiştir.",
+      "text_markdown": "Modern Çin'de itibarı yeniden değerlendirilmiştir.",
+      "tts": {
+        "text": "Modern Çin'de itibarı yeniden değerlendirilmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı akademisyenler onu serbest ticaretin öncüsü, zamanının ötesinde bir adam olarak görüyor.",
+      "text_markdown": "Bazı akademisyenler onu serbest ticaretin öncüsü, zamanının ötesinde bir adam olarak görüyor.",
+      "tts": {
+        "text": "Bazı akademisyenler onu serbest ticaretin öncüsü, zamanının ötesinde bir adam olarak görüyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri hâlâ onu kıyılara şiddet getiren bir korsan olarak görüyor.",
+      "text_markdown": "Diğerleri hâlâ onu kıyılara şiddet getiren bir korsan olarak görüyor.",
+      "tts": {
+        "text": "Diğerleri hâlâ onu kıyılara şiddet getiren bir korsan olarak görüyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Japonya'da Wang Zhi farklı şekilde anılıyor.",
+      "text_markdown": "Japonya'da Wang Zhi farklı şekilde anılıyor.",
+      "tts": {
+        "text": "Japonya'da Wang Zhi farklı şekilde anılıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaşadığı adalara Çin kültürü ve ticaret malları getirmesiyle takdir ediliyor.",
+      "text_markdown": "Yaşadığı adalara Çin kültürü ve ticaret malları getirmesiyle takdir ediliyor.",
+      "tts": {
+        "text": "Yaşadığı adalara Çin kültürü ve ticaret malları getirmesiyle takdir ediliyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı kaynaklara göre Japon komşularına yeni zanaatlar ve teknolojiler tanıttı.",
+      "text_markdown": "Bazı kaynaklara göre Japon komşularına yeni zanaatlar ve teknolojiler tanıttı.",
+      "tts": {
+        "text": "Bazı kaynaklara göre Japon komşularına yeni zanaatlar ve teknolojiler tanıttı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Üssünü kurduğu Goto Adaları hâlâ onun varlığının anılarını koruyor.",
+      "text_markdown": "Üssünü kurduğu Goto Adaları hâlâ onun varlığının anılarını koruyor.",
+      "tts": {
+        "text": "Üssünü kurduğu Goto Adaları hâlâ onun varlığının anılarını koruyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yerel gelenekler bazı tapınakları ve simgeleri Çinli korsan kralla ilişkilendiriyor.",
+      "text_markdown": "Yerel gelenekler bazı tapınakları ve simgeleri Çinli korsan kralla ilişkilendiriyor.",
+      "tts": {
+        "text": "Yerel gelenekler bazı tapınakları ve simgeleri Çinli korsan kralla ilişkilendiriyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Peyzaja bıraktığı iz, onu öldüren hanedanın hafızasından daha uzun sürdü.",
+      "text_markdown": "Peyzaja bıraktığı iz, onu öldüren hanedanın hafızasından daha uzun sürdü.",
+      "tts": {
+        "text": "Peyzaja bıraktığı iz, onu öldüren hanedanın hafızasından daha uzun sürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi'nin hikayesi nihayetinde yasaklamanın sonuçlarıyla ilgilidir.",
+      "text_markdown": "Wang Zhi'nin hikayesi nihayetinde yasaklamanın sonuçlarıyla ilgilidir.",
+      "tts": {
+        "text": "Wang Zhi'nin hikayesi nihayetinde yasaklamanın sonuçlarıyla ilgilidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hükümetler insanların bağımlı olduğu bir faaliyeti yasakladığında o faaliyeti ortadan kaldırmazlar.",
+      "text_markdown": "Hükümetler insanların bağımlı olduğu bir faaliyeti yasakladığında o faaliyeti ortadan kaldırmazlar.",
+      "tts": {
+        "text": "Hükümetler insanların bağımlı olduğu bir faaliyeti yasakladığında o faaliyeti ortadan kaldırmazlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sadece yeraltına iterler ve sıradan insanları suçlu yaparlar.",
+      "text_markdown": "Sadece yeraltına iterler ve sıradan insanları suçlu yaparlar.",
+      "tts": {
+        "text": "Sadece yeraltına iterler ve sıradan insanları suçlu yaparlar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haijin, önlemek için tasarlandığı sorunu yarattı.",
+      "text_markdown": "Haijin, önlemek için tasarlandığı sorunu yarattı.",
+      "tts": {
+        "text": "Haijin, önlemek için tasarlandığı sorunu yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ticareti yasaklayarak Ming hanedanı, Doğu Asya tarihinin en büyük korsan filolarını yarattı.",
+      "text_markdown": "Ticareti yasaklayarak Ming hanedanı, Doğu Asya tarihinin en büyük korsan filolarını yarattı.",
+      "tts": {
+        "text": "Ticareti yasaklayarak Ming hanedanı, Doğu Asya tarihinin en büyük korsan filolarını yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En güçlü korsanı idam ederek sorunu ölçülemez derecede kötüleştirdiler.",
+      "text_markdown": "En güçlü korsanı idam ederek sorunu ölçülemez derecede kötüleştirdiler.",
+      "tts": {
+        "text": "En güçlü korsanı idam ederek sorunu ölçülemez derecede kötüleştirdiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çözüm nihayet geldiğinde ticareti yasallaştırmak oldu.",
+      "text_markdown": "Çözüm nihayet geldiğinde ticareti yasallaştırmak oldu.",
+      "tts": {
+        "text": "Çözüm nihayet geldiğinde ticareti yasallaştırmak oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En basit cevaptı ve ilk denenmesi gereken cevaptı.",
+      "text_markdown": "En basit cevaptı ve ilk denenmesi gereken cevaptı.",
+      "tts": {
+        "text": "En basit cevaptı ve ilk denenmesi gereken cevaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wang Zhi hayatını, hükümetin sonunda herkese verdiği şey için savaşarak geçirdi.",
+      "text_markdown": "Wang Zhi hayatını, hükümetin sonunda herkese verdiği şey için savaşarak geçirdi.",
+      "tts": {
+        "text": "Wang Zhi hayatını, hükümetin sonunda herkese verdiği şey için savaşarak geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikayesi tarih boyunca yankılanıyor.",
+      "text_markdown": "Hikayesi tarih boyunca yankılanıyor.",
+      "tts": {
+        "text": "Hikayesi tarih boyunca yankılanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir hükümet yaygın bir insan faaliyetini suç ilan ettiğinde sonuç tahmin edilebilir.",
+      "text_markdown": "Bir hükümet yaygın bir insan faaliyetini suç ilan ettiğinde sonuç tahmin edilebilir.",
+      "tts": {
+        "text": "Bir hükümet yaygın bir insan faaliyetini suç ilan ettiğinde sonuç tahmin edilebilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaçakçılar boşluğu doldurur, şiddet izler ve tedavi hastalıktan daha kötü olur.",
+      "text_markdown": "Kaçakçılar boşluğu doldurur, şiddet izler ve tedavi hastalıktan daha kötü olur.",
+      "tts": {
+        "text": "Kaçakçılar boşluğu doldurur, şiddet izler ve tedavi hastalıktan daha kötü olur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wang Zhi 1559'da öldü; krallığı olmayan bir korsan kral.",
+      "text_markdown": "Wang Zhi 1559'da öldü; krallığı olmayan bir korsan kral.",
+      "tts": {
+        "text": "Wang Zhi bin beş yüz elli dokuzda öldü; krallığı olmayan bir korsan kral.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sekiz yıl sonra uğruna savaştığı ticaret yasal hale geldi.",
+      "text_markdown": "Sekiz yıl sonra uğruna savaştığı ticaret yasal hale geldi.",
+      "tts": {
+        "text": "Sekiz yıl sonra uğruna savaştığı ticaret yasal hale geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Haklıydı ve onu öldüren adamlar bunu biliyordu.",
+      "text_markdown": "Haklıydı ve onu öldüren adamlar bunu biliyordu.",
+      "tts": {
+        "text": "Haklıydı ve onu öldüren adamlar bunu biliyordu.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

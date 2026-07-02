@@ -1,0 +1,4457 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sayyida_al_hurra",
+  "language": "de",
+  "total_segments": 298,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hinweis an den Leser",
+      "text_markdown": "Hinweis an den Leser"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies ist die wahre Geschichte einer Königin, die zur Piratin wurde.",
+      "text_markdown": "Dies ist die wahre Geschichte einer Königin, die zur Piratin wurde.",
+      "tts": {
+        "text": "Dies ist die wahre Geschichte einer Königin, die zur Piratin wurde.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr Name war Sayyida al-Hurra, und sie beherrschte die Gewässer des westlichen Mittelmeers.",
+      "text_markdown": "Ihr Name war Sayyida al-Hurra, und sie beherrschte die Gewässer des westlichen Mittelmeers.",
+      "tts": {
+        "text": "Ihr Name war Sayyida al-Hurra, und sie beherrschte die Gewässer des westlichen Mittelmeers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie war die letzte Frau in der islamischen Welt, die den Titel al-Hurra trug, was die Freie und Souveräne bedeutet.",
+      "text_markdown": "Sie war die letzte Frau in der islamischen Welt, die den Titel al-Hurra trug, was die Freie und Souveräne bedeutet.",
+      "tts": {
+        "text": "Sie war die letzte Frau in der islamischen Welt, die den Titel al-Hurra trug, was die Freie und Souveräne bedeutet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyidas Geschichte beginnt mit einer Katastrophe.",
+      "text_markdown": "Sayyidas Geschichte beginnt mit einer Katastrophe.",
+      "tts": {
+        "text": "Sayyidas Geschichte beginnt mit einer Katastrophe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Im Jahr 1492 fiel das letzte muslimische Königreich in Spanien vor den christlichen Armeen Ferdinands und Isabellas.",
+      "text_markdown": "Im Jahr 1492 fiel das letzte muslimische Königreich in Spanien vor den christlichen Armeen Ferdinands und Isabellas.",
+      "tts": {
+        "text": "Im Jahr vierzehnhundertzweiundneunzig fiel das letzte muslimische Königreich in Spanien vor den christlichen Armeen Ferdinands und Isabellas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hunderttausende Muslime wurden aus dem Land vertrieben, das ihre Familien seit Jahrhunderten Heimat genannt hatten.",
+      "text_markdown": "Hunderttausende Muslime wurden aus dem Land vertrieben, das ihre Familien seit Jahrhunderten Heimat genannt hatten.",
+      "tts": {
+        "text": "Hunderttausende Muslime wurden aus dem Land vertrieben, das ihre Familien seit Jahrhunderten Heimat genannt hatten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyidas Familie war unter ihnen.",
+      "text_markdown": "Sayyidas Familie war unter ihnen.",
+      "tts": {
+        "text": "Sayyidas Familie war unter ihnen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieses Buch wird Sie zu den Häfen und Festungen des westlichen Mittelmeers im sechzehnten Jahrhundert führen.",
+      "text_markdown": "Dieses Buch wird Sie zu den Häfen und Festungen des westlichen Mittelmeers im sechzehnten Jahrhundert führen.",
+      "tts": {
+        "text": "Dieses Buch wird Sie zu den Häfen und Festungen des westlichen Mittelmeers im sechzehnten Jahrhundert führen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie werden sehen, wie ein Flüchtlingsmädchen Königin, Diplomatin und Piratenherrin wurde.",
+      "text_markdown": "Sie werden sehen, wie ein Flüchtlingsmädchen Königin, Diplomatin und Piratenherrin wurde.",
+      "tts": {
+        "text": "Sie werden sehen, wie ein Flüchtlingsmädchen Königin, Diplomatin und Piratenherrin wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alles in diesem Buch basiert auf historischen Aufzeichnungen, obwohl die Quellen spärlicher sind als für europäische Piraten.",
+      "text_markdown": "Alles in diesem Buch basiert auf historischen Aufzeichnungen, obwohl die Quellen spärlicher sind als für europäische Piraten.",
+      "tts": {
+        "text": "Alles in diesem Buch basiert auf historischen Aufzeichnungen, obwohl die Quellen spärlicher sind als für europäische Piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Hinweis an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wenn die Fakten unsicher sind, werden wir das deutlich sagen.",
+      "text_markdown": "Wenn die Fakten unsicher sind, werden wir das deutlich sagen.",
+      "tts": {
+        "text": "Wenn die Fakten unsicher sind, werden wir das deutlich sagen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Welt zwischen zwei Glaubensrichtungen",
+      "text_markdown": "Die Welt zwischen zwei Glaubensrichtungen"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das westliche Mittelmeer war ein Schlachtfeld zwischen dem christlichen Europa und der islamischen Welt.",
+      "text_markdown": "Das westliche Mittelmeer war ein Schlachtfeld zwischen dem christlichen Europa und der islamischen Welt.",
+      "tts": {
+        "text": "Das westliche Mittelmeer war ein Schlachtfeld zwischen dem christlichen Europa und der islamischen Welt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jahrhundertelang hatten die beiden Zivilisationen um die Kontrolle dieses schmalen Meeres gerungen.",
+      "text_markdown": "Jahrhundertelang hatten die beiden Zivilisationen um die Kontrolle dieses schmalen Meeres gerungen.",
+      "tts": {
+        "text": "Jahrhundertelang hatten die beiden Zivilisationen um die Kontrolle dieses schmalen Meeres gerungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Straße von Gibraltar, an ihrer schmalsten Stelle nur neun Meilen breit, trennte sie.",
+      "text_markdown": "Die Straße von Gibraltar, an ihrer schmalsten Stelle nur neun Meilen breit, trennte sie.",
+      "tts": {
+        "text": "Die Straße von Gibraltar, an ihrer schmalsten Stelle nur neun Meilen breit, trennte sie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Kontrolle über die Meerenge bedeutete die Kontrolle über den Durchgang zwischen Atlantik und Mittelmeer.",
+      "text_markdown": "Die Kontrolle über die Meerenge bedeutete die Kontrolle über den Durchgang zwischen Atlantik und Mittelmeer.",
+      "tts": {
+        "text": "Die Kontrolle über die Meerenge bedeutete die Kontrolle über den Durchgang zwischen Atlantik und Mittelmeer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fast 800 Jahre lang hatten Muslime Teile der Iberischen Halbinsel regiert.",
+      "text_markdown": "Fast 800 Jahre lang hatten Muslime Teile der Iberischen Halbinsel regiert.",
+      "tts": {
+        "text": "Fast achthundert Jahre lang hatten Muslime Teile der Iberischen Halbinsel regiert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie nannten ihr Gebiet al-Andalus, und es war eine der fortschrittlichsten Zivilisationen im mittelalterlichen Europa.",
+      "text_markdown": "Sie nannten ihr Gebiet al-Andalus, und es war eine der fortschrittlichsten Zivilisationen im mittelalterlichen Europa.",
+      "tts": {
+        "text": "Sie nannten ihr Gebiet al-Andalus, und es war eine der fortschrittlichsten Zivilisationen im mittelalterlichen Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Städte hatten Bibliotheken, Universitäten und Krankenhäuser, als ein Großteil Europas noch in der Dunkelheit lag.",
+      "text_markdown": "Seine Städte hatten Bibliotheken, Universitäten und Krankenhäuser, als ein Großteil Europas noch in der Dunkelheit lag.",
+      "tts": {
+        "text": "Seine Städte hatten Bibliotheken, Universitäten und Krankenhäuser, als ein Großteil Europas noch in der Dunkelheit lag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Córdoba, Granada und Sevilla waren Juwelen islamischer Architektur und Gelehrsamkeit.",
+      "text_markdown": "Córdoba, Granada und Sevilla waren Juwelen islamischer Architektur und Gelehrsamkeit.",
+      "tts": {
+        "text": "Córdoba, Granada und Sevilla waren Juwelen islamischer Architektur und Gelehrsamkeit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al-Andalus war ein Zentrum intellektueller Errungenschaften.",
+      "text_markdown": "Al-Andalus war ein Zentrum intellektueller Errungenschaften.",
+      "tts": {
+        "text": "Al-Andalus war ein Zentrum intellektueller Errungenschaften.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muslimische, jüdische und christliche Gelehrte hatten jahrhundertelang Seite an Seite gearbeitet.",
+      "text_markdown": "Muslimische, jüdische und christliche Gelehrte hatten jahrhundertelang Seite an Seite gearbeitet.",
+      "tts": {
+        "text": "Muslimische, jüdische und christliche Gelehrte hatten jahrhundertelang Seite an Seite gearbeitet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie übersetzten griechische Philosophie, trieben die Mathematik voran und erzielten Durchbrüche in Medizin und Astronomie.",
+      "text_markdown": "Sie übersetzten griechische Philosophie, trieben die Mathematik voran und erzielten Durchbrüche in Medizin und Astronomie.",
+      "tts": {
+        "text": "Sie übersetzten griechische Philosophie, trieben die Mathematik voran und erzielten Durchbrüche in Medizin und Astronomie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Tradition der Gelehrsamkeit sollte die europäische Renaissance tiefgreifend beeinflussen.",
+      "text_markdown": "Diese Tradition der Gelehrsamkeit sollte die europäische Renaissance tiefgreifend beeinflussen.",
+      "tts": {
+        "text": "Diese Tradition der Gelehrsamkeit sollte die europäische Renaissance tiefgreifend beeinflussen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die christlichen Königreiche Nordspaniens hatten Jahrhunderte damit verbracht, in einer Kampagne namens Reconquista nach Süden vorzurücken.",
+      "text_markdown": "Die christlichen Königreiche Nordspaniens hatten Jahrhunderte damit verbracht, in einer Kampagne namens Reconquista nach Süden vorzurücken.",
+      "tts": {
+        "text": "Die christlichen Königreiche Nordspaniens hatten Jahrhunderte damit verbracht, in einer Kampagne namens Reconquista nach Süden vorzurücken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jahr für Jahr, Jahrzehnt für Jahrzehnt eroberten sie muslimisches Gebiet.",
+      "text_markdown": "Jahr für Jahr, Jahrzehnt für Jahrzehnt eroberten sie muslimisches Gebiet.",
+      "tts": {
+        "text": "Jahr für Jahr, Jahrzehnt für Jahrzehnt eroberten sie muslimisches Gebiet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ende des fünfzehnten Jahrhunderts war nur noch das kleine Königreich Granada unter muslimischer Herrschaft.",
+      "text_markdown": "Ende des fünfzehnten Jahrhunderts war nur noch das kleine Königreich Granada unter muslimischer Herrschaft.",
+      "tts": {
+        "text": "Ende des fünfzehnten Jahrhunderts war nur noch das kleine Königreich Granada unter muslimischer Herrschaft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sein Fall war nur eine Frage der Zeit.",
+      "text_markdown": "Sein Fall war nur eine Frage der Zeit.",
+      "tts": {
+        "text": "Sein Fall war nur eine Frage der Zeit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Granada fiel im Januar 1492 und beendete damit fast 8 Jahrhunderte muslimischer Präsenz in Spanien.",
+      "text_markdown": "Granada fiel im Januar 1492 und beendete damit fast 8 Jahrhunderte muslimischer Präsenz in Spanien.",
+      "tts": {
+        "text": "Granada fiel im Januar vierzehnhundertzweiundneunzig und beendete damit fast acht Jahrhunderte muslimischer Präsenz in Spanien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "König Ferdinand und Königin Isabella zogen triumphierend in den Alhambra-Palast ein.",
+      "text_markdown": "König Ferdinand und Königin Isabella zogen triumphierend in den Alhambra-Palast ein.",
+      "tts": {
+        "text": "König Ferdinand und Königin Isabella zogen triumphierend in den Alhambra-Palast ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der letzte muslimische Herrscher Spaniens, Muhammad der Zwölfte, ging ins Exil nach Marokko.",
+      "text_markdown": "Der letzte muslimische Herrscher Spaniens, Muhammad der Zwölfte, ging ins Exil nach Marokko.",
+      "tts": {
+        "text": "Der letzte muslimische Herrscher Spaniens, Muhammad der Zwölfte, ging ins Exil nach Marokko.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eine ganze Zivilisation war entwurzelt worden.",
+      "text_markdown": "Eine ganze Zivilisation war entwurzelt worden.",
+      "tts": {
+        "text": "Eine ganze Zivilisation war entwurzelt worden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Fall Granadas war eine Katastrophe für die muslimische Bevölkerung Spaniens.",
+      "text_markdown": "Der Fall Granadas war eine Katastrophe für die muslimische Bevölkerung Spaniens.",
+      "tts": {
+        "text": "Der Fall Granadas war eine Katastrophe für die muslimische Bevölkerung Spaniens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zunächst versprachen Ferdinand und Isabella, dass die Muslime ihre Religion und Bräuche behalten dürften.",
+      "text_markdown": "Zunächst versprachen Ferdinand und Isabella, dass die Muslime ihre Religion und Bräuche behalten dürften.",
+      "tts": {
+        "text": "Zunächst versprachen Ferdinand und Isabella, dass die Muslime ihre Religion und Bräuche behalten dürften.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diese Versprechen wurden bald gebrochen.",
+      "text_markdown": "Diese Versprechen wurden bald gebrochen.",
+      "tts": {
+        "text": "Diese Versprechen wurden bald gebrochen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muslime wurden gezwungen, zum Christentum zu konvertieren oder Spanien ganz zu verlassen.",
+      "text_markdown": "Muslime wurden gezwungen, zum Christentum zu konvertieren oder Spanien ganz zu verlassen.",
+      "tts": {
+        "text": "Muslime wurden gezwungen, zum Christentum zu konvertieren oder Spanien ganz zu verlassen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diejenigen, die sich weigerten zu konvertieren, wurden vertrieben.",
+      "text_markdown": "Diejenigen, die sich weigerten zu konvertieren, wurden vertrieben.",
+      "tts": {
+        "text": "Diejenigen, die sich weigerten zu konvertieren, wurden vertrieben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie flohen über die Straße von Gibraltar nach Marokko, Algerien und Tunesien.",
+      "text_markdown": "Sie flohen über die Straße von Gibraltar nach Marokko, Algerien und Tunesien.",
+      "tts": {
+        "text": "Sie flohen über die Straße von Gibraltar nach Marokko, Algerien und Tunesien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie kamen als Flüchtlinge an, trugen mit sich, was sie konnten, und trauerten um alles, was sie verloren hatten.",
+      "text_markdown": "Sie kamen als Flüchtlinge an, trugen mit sich, was sie konnten, und trauerten um alles, was sie verloren hatten.",
+      "tts": {
+        "text": "Sie kamen als Flüchtlinge an, trugen mit sich, was sie konnten, und trauerten um alles, was sie verloren hatten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Viele von ihnen brannten vor Verlangen nach Rache an der spanischen Krone.",
+      "text_markdown": "Viele von ihnen brannten vor Verlangen nach Rache an der spanischen Krone.",
+      "tts": {
+        "text": "Viele von ihnen brannten vor Verlangen nach Rache an der spanischen Krone.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Marokko war das Hauptziel dieser Flüchtlinge.",
+      "text_markdown": "Marokko war das Hauptziel dieser Flüchtlinge.",
+      "tts": {
+        "text": "Marokko war das Hauptziel dieser Flüchtlinge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die marokkanische Küste lag direkt gegenüber der Meerenge von Spanien.",
+      "text_markdown": "Die marokkanische Küste lag direkt gegenüber der Meerenge von Spanien.",
+      "tts": {
+        "text": "Die marokkanische Küste lag direkt gegenüber der Meerenge von Spanien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Städte wie Fès, Tanger und Tétouan nahmen große Zahlen andalusischer Flüchtlinge auf.",
+      "text_markdown": "Städte wie Fès, Tanger und Tétouan nahmen große Zahlen andalusischer Flüchtlinge auf.",
+      "tts": {
+        "text": "Städte wie Fès, Tanger und Tétouan nahmen große Zahlen andalusischer Flüchtlinge auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese vertriebenen Familien brachten ihre Fähigkeiten, ihr Wissen und ihren Zorn mit.",
+      "text_markdown": "Diese vertriebenen Familien brachten ihre Fähigkeiten, ihr Wissen und ihren Zorn mit.",
+      "tts": {
+        "text": "Diese vertriebenen Familien brachten ihre Fähigkeiten, ihr Wissen und ihren Zorn mit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Osmanische Reich war die größte islamische Macht dieser Ära.",
+      "text_markdown": "Das Osmanische Reich war die größte islamische Macht dieser Ära.",
+      "tts": {
+        "text": "Das Osmanische Reich war die größte islamische Macht dieser Ära.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Von seiner Hauptstadt Istanbul aus kontrollierte es ein riesiges Gebiet, das sich über drei Kontinente erstreckte.",
+      "text_markdown": "Von seiner Hauptstadt Istanbul aus kontrollierte es ein riesiges Gebiet, das sich über drei Kontinente erstreckte.",
+      "tts": {
+        "text": "Von seiner Hauptstadt Istanbul aus kontrollierte es ein riesiges Gebiet, das sich über drei Kontinente erstreckte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die osmanische Marine beherrschte das östliche Mittelmeer.",
+      "text_markdown": "Die osmanische Marine beherrschte das östliche Mittelmeer.",
+      "tts": {
+        "text": "Die osmanische Marine beherrschte das östliche Mittelmeer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Osmanische Korsaren, die von nordafrikanischen Häfen aus operierten, überfielen europäische Schiffe und Küsten.",
+      "text_markdown": "Osmanische Korsaren, die von nordafrikanischen Häfen aus operierten, überfielen europäische Schiffe und Küsten.",
+      "tts": {
+        "text": "Osmanische Korsaren, die von nordafrikanischen Häfen aus operierten, überfielen europäische Schiffe und Küsten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der berühmteste osmanische Korsar war Hayreddin Barbarossa.",
+      "text_markdown": "Der berühmteste osmanische Korsar war Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Der berühmteste osmanische Korsar war Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er operierte von der Küste Algeriens aus und befehligte eine mächtige Flotte.",
+      "text_markdown": "Er operierte von der Küste Algeriens aus und befehligte eine mächtige Flotte.",
+      "tts": {
+        "text": "Er operierte von der Küste Algeriens aus und befehligte eine mächtige Flotte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barbarossa war sowohl Pirat als auch Admiral der osmanischen Marine.",
+      "text_markdown": "Barbarossa war sowohl Pirat als auch Admiral der osmanischen Marine.",
+      "tts": {
+        "text": "Barbarossa war sowohl Pirat als auch Admiral der osmanischen Marine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seine Überfälle terrorisierten die Küsten Spaniens, Italiens und Frankreichs.",
+      "text_markdown": "Seine Überfälle terrorisierten die Küsten Spaniens, Italiens und Frankreichs.",
+      "tts": {
+        "text": "Seine Überfälle terrorisierten die Küsten Spaniens, Italiens und Frankreichs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spanien und Portugal bauten unterdessen riesige Überseeimperien auf.",
+      "text_markdown": "Spanien und Portugal bauten unterdessen riesige Überseeimperien auf.",
+      "tts": {
+        "text": "Spanien und Portugal bauten unterdessen riesige Überseeimperien auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie hatten die Amerikas kolonisiert und Handelsposten in Afrika und Asien errichtet.",
+      "text_markdown": "Sie hatten die Amerikas kolonisiert und Handelsposten in Afrika und Asien errichtet.",
+      "tts": {
+        "text": "Sie hatten die Amerikas kolonisiert und Handelsposten in Afrika und Asien errichtet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihr Reichtum hing von der sicheren Durchfahrt der Schiffe durch die Straße von Gibraltar ab.",
+      "text_markdown": "Ihr Reichtum hing von der sicheren Durchfahrt der Schiffe durch die Straße von Gibraltar ab.",
+      "tts": {
+        "text": "Ihr Reichtum hing von der sicheren Durchfahrt der Schiffe durch die Straße von Gibraltar ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jede Störung dieses Verkehrs bedrohte die wirtschaftlichen Grundlagen ihrer Imperien.",
+      "text_markdown": "Jede Störung dieses Verkehrs bedrohte die wirtschaftlichen Grundlagen ihrer Imperien.",
+      "tts": {
+        "text": "Jede Störung dieses Verkehrs bedrohte die wirtschaftlichen Grundlagen ihrer Imperien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Straße von Gibraltar war somit ein Ort von immenser strategischer Bedeutung.",
+      "text_markdown": "Die Straße von Gibraltar war somit ein Ort von immenser strategischer Bedeutung.",
+      "tts": {
+        "text": "Die Straße von Gibraltar war somit ein Ort von immenser strategischer Bedeutung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wer die Meerenge kontrollierte, kontrollierte den Reichtumsfluß zwischen Atlantik und Mittelmeer.",
+      "text_markdown": "Wer die Meerenge kontrollierte, kontrollierte den Reichtumsfluß zwischen Atlantik und Mittelmeer.",
+      "tts": {
+        "text": "Wer die Meerenge kontrollierte, kontrollierte den Reichtumsfluß zwischen Atlantik und Mittelmeer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es war das perfekte Jagdgebiet für jeden, der kühn genug war, die Großmächte herauszufordern.",
+      "text_markdown": "Es war das perfekte Jagdgebiet für jeden, der kühn genug war, die Großmächte herauszufordern.",
+      "tts": {
+        "text": "Es war das perfekte Jagdgebiet für jeden, der kühn genug war, die Großmächte herauszufordern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra sollte eine der kühnsten werden.",
+      "text_markdown": "Sayyida al-Hurra sollte eine der kühnsten werden.",
+      "tts": {
+        "text": "Sayyida al-Hurra sollte eine der kühnsten werden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piraterie im Mittelmeer unterschied sich von Piraterie in der Karibik.",
+      "text_markdown": "Piraterie im Mittelmeer unterschied sich von Piraterie in der Karibik.",
+      "tts": {
+        "text": "Piraterie im Mittelmeer unterschied sich von Piraterie in der Karibik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie war tief mit dem religiösen Konflikt zwischen Christen und Muslimen verflochten.",
+      "text_markdown": "Sie war tief mit dem religiösen Konflikt zwischen Christen und Muslimen verflochten.",
+      "tts": {
+        "text": "Sie war tief mit dem religiösen Konflikt zwischen Christen und Muslimen verflochten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muslimische Korsaren überfielen christliche Schiffe, und christliche Korsaren überfielen muslimische Schiffe.",
+      "text_markdown": "Muslimische Korsaren überfielen christliche Schiffe, und christliche Korsaren überfielen muslimische Schiffe.",
+      "tts": {
+        "text": "Muslimische Korsaren überfielen christliche Schiffe, und christliche Korsaren überfielen muslimische Schiffe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt zwischen zwei Glaubensrichtungen",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beide Seiten rechtfertigten ihre Angriffe als heiligen Krieg, obwohl sie persönlichen Profit suchten.",
+      "text_markdown": "Beide Seiten rechtfertigten ihre Angriffe als heiligen Krieg, obwohl sie persönlichen Profit suchten.",
+      "tts": {
+        "text": "Beide Seiten rechtfertigten ihre Angriffe als heiligen Krieg, obwohl sie persönlichen Profit suchten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Von Granada nach Tétouan",
+      "text_markdown": "Von Granada nach Tétouan"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra wurde um 1485 im Königreich Granada geboren.",
+      "text_markdown": "Sayyida al-Hurra wurde um 1485 im Königreich Granada geboren.",
+      "tts": {
+        "text": "Sayyida al-Hurra wurde um vierzehnhundertfünfundachtzig im Königreich Granada geboren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr Geburtsname war möglicherweise Lalla Aicha, obwohl dies unsicher ist.",
+      "text_markdown": "Ihr Geburtsname war möglicherweise Lalla Aicha, obwohl dies unsicher ist.",
+      "tts": {
+        "text": "Ihr Geburtsname war möglicherweise Lalla Aicha, obwohl dies unsicher ist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Titel Sayyida al-Hurra, unter dem die Geschichte sie erinnert, war ein Ehrentitel, der edle Dame, die Freie bedeutet.",
+      "text_markdown": "Der Titel Sayyida al-Hurra, unter dem die Geschichte sie erinnert, war ein Ehrentitel, der edle Dame, die Freie bedeutet.",
+      "tts": {
+        "text": "Der Titel Sayyida al-Hurra, unter dem die Geschichte sie erinnert, war ein Ehrentitel, der edle Dame, die Freie bedeutet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er wurde ihr später im Leben als Zeichen ihrer Macht und Unabhängigkeit verliehen.",
+      "text_markdown": "Er wurde ihr später im Leben als Zeichen ihrer Macht und Unabhängigkeit verliehen.",
+      "tts": {
+        "text": "Er wurde ihr später im Leben als Zeichen ihrer Macht und Unabhängigkeit verliehen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Familie gehörte der Rashid-Dynastie an, einem adligen Clan mit tiefen Wurzeln in der andalusischen Gesellschaft.",
+      "text_markdown": "Ihre Familie gehörte der Rashid-Dynastie an, einem adligen Clan mit tiefen Wurzeln in der andalusischen Gesellschaft.",
+      "tts": {
+        "text": "Ihre Familie gehörte der Rashid-Dynastie an, einem adligen Clan mit tiefen Wurzeln in der andalusischen Gesellschaft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr Vater, Moulay Ali ibn Rashid, war ein Mann von beträchtlichem politischem Einfluss.",
+      "text_markdown": "Ihr Vater, Moulay Ali ibn Rashid, war ein Mann von beträchtlichem politischem Einfluss.",
+      "tts": {
+        "text": "Ihr Vater, Moulay Ali ibn Rashid, war ein Mann von beträchtlichem politischem Einfluss.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Familie lebte in der Bergstadt Chefchaouen in der Rif-Region, nach ihrer früheren Abreise aus Granada.",
+      "text_markdown": "Die Familie lebte in der Bergstadt Chefchaouen in der Rif-Region, nach ihrer früheren Abreise aus Granada.",
+      "tts": {
+        "text": "Die Familie lebte in der Bergstadt Chefchaouen in der Rif-Region, nach ihrer früheren Abreise aus Granada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chefchaouen war von Flüchtlingen der Reconquista gegründet worden und diente als Basis des Widerstands gegen die Portugiesen.",
+      "text_markdown": "Chefchaouen war von Flüchtlingen der Reconquista gegründet worden und diente als Basis des Widerstands gegen die Portugiesen.",
+      "tts": {
+        "text": "Chefchaouen war von Flüchtlingen der Reconquista gegründet worden und diente als Basis des Widerstands gegen die Portugiesen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida wuchs in einer Atmosphäre des Lernens und politischen Bewusstseins auf.",
+      "text_markdown": "Sayyida wuchs in einer Atmosphäre des Lernens und politischen Bewusstseins auf.",
+      "tts": {
+        "text": "Sayyida wuchs in einer Atmosphäre des Lernens und politischen Bewusstseins auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihre Familie schätzte Bildung, und sie erhielt eine gründliche Ausbildung in Theologie, Sprachen und Diplomatie.",
+      "text_markdown": "Ihre Familie schätzte Bildung, und sie erhielt eine gründliche Ausbildung in Theologie, Sprachen und Diplomatie.",
+      "tts": {
+        "text": "Ihre Familie schätzte Bildung, und sie erhielt eine gründliche Ausbildung in Theologie, Sprachen und Diplomatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie sprach Arabisch und verstand wahrscheinlich Spanisch aufgrund des andalusischen Erbes ihrer Familie.",
+      "text_markdown": "Sie sprach Arabisch und verstand wahrscheinlich Spanisch aufgrund des andalusischen Erbes ihrer Familie.",
+      "tts": {
+        "text": "Sie sprach Arabisch und verstand wahrscheinlich Spanisch aufgrund des andalusischen Erbes ihrer Familie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Bildung war für Frauen der damaligen Zeit ungewöhnlich, aber die Familie Rashid war nicht gewöhnlich.",
+      "text_markdown": "Diese Bildung war für Frauen der damaligen Zeit ungewöhnlich, aber die Familie Rashid war nicht gewöhnlich.",
+      "tts": {
+        "text": "Diese Bildung war für Frauen der damaligen Zeit ungewöhnlich, aber die Familie Rashid war nicht gewöhnlich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Erfahrung des Exils prägte Sayyidas gesamtes Weltbild.",
+      "text_markdown": "Die Erfahrung des Exils prägte Sayyidas gesamtes Weltbild.",
+      "tts": {
+        "text": "Die Erfahrung des Exils prägte Sayyidas gesamtes Weltbild.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie wuchs mit Geschichten vom verlorenen Paradies al-Andalus auf.",
+      "text_markdown": "Sie wuchs mit Geschichten vom verlorenen Paradies al-Andalus auf.",
+      "tts": {
+        "text": "Sie wuchs mit Geschichten vom verlorenen Paradies al-Andalus auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die ältere Generation sprach mit tiefem Kummer von ihren schönen Häusern, Obstgärten und Bibliotheken.",
+      "text_markdown": "Die ältere Generation sprach mit tiefem Kummer von ihren schönen Häusern, Obstgärten und Bibliotheken.",
+      "tts": {
+        "text": "Die ältere Generation sprach mit tiefem Kummer von ihren schönen Häusern, Obstgärten und Bibliotheken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dieses kollektive Trauma der Enteignung schürte ein starkes Verlangen nach Vergeltung.",
+      "text_markdown": "Dieses kollektive Trauma der Enteignung schürte ein starkes Verlangen nach Vergeltung.",
+      "tts": {
+        "text": "Dieses kollektive Trauma der Enteignung schürte ein starkes Verlangen nach Vergeltung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chefchaouen selbst war ein bemerkenswerter Ort.",
+      "text_markdown": "Chefchaouen selbst war ein bemerkenswerter Ort.",
+      "tts": {
+        "text": "Chefchaouen selbst war ein bemerkenswerter Ort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eingebettet in die Rif-Berge war es eine Stadt mit blau getünchten Mauern und engen Gassen.",
+      "text_markdown": "Eingebettet in die Rif-Berge war es eine Stadt mit blau getünchten Mauern und engen Gassen.",
+      "tts": {
+        "text": "Eingebettet in die Rif-Berge war es eine Stadt mit blau getünchten Mauern und engen Gassen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Gründer hatten den Standort wegen seiner Verteidigungsfähigkeit gegen portugiesische Überfälle gewählt.",
+      "text_markdown": "Seine Gründer hatten den Standort wegen seiner Verteidigungsfähigkeit gegen portugiesische Überfälle gewählt.",
+      "tts": {
+        "text": "Seine Gründer hatten den Standort wegen seiner Verteidigungsfähigkeit gegen portugiesische Überfälle gewählt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Stadt wurde zu einem Zufluchtsort für andalusische Flüchtlinge und einem Zentrum des Widerstands.",
+      "text_markdown": "Die Stadt wurde zu einem Zufluchtsort für andalusische Flüchtlinge und einem Zentrum des Widerstands.",
+      "tts": {
+        "text": "Die Stadt wurde zu einem Zufluchtsort für andalusische Flüchtlinge und einem Zentrum des Widerstands.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noch jung, wurde Sayyida mit Abu al-Hassan al-Mandri verheiratet, dem Gouverneur von Tétouan.",
+      "text_markdown": "Noch jung, wurde Sayyida mit Abu al-Hassan al-Mandri verheiratet, dem Gouverneur von Tétouan.",
+      "tts": {
+        "text": "Noch jung, wurde Sayyida mit Abu al-Hassan al-Mandri verheiratet, dem Gouverneur von Tétouan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Al-Mandri war ein angesehener Anführer, der Tétouan aus Ruinen wieder aufgebaut hatte.",
+      "text_markdown": "Al-Mandri war ein angesehener Anführer, der Tétouan aus Ruinen wieder aufgebaut hatte.",
+      "tts": {
+        "text": "Al-Mandri war ein angesehener Anführer, der Tétouan aus Ruinen wieder aufgebaut hatte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Stadt war Jahrzehnte zuvor von den Portugiesen zerstört worden und erholte sich langsam.",
+      "text_markdown": "Die Stadt war Jahrzehnte zuvor von den Portugiesen zerstört worden und erholte sich langsam.",
+      "tts": {
+        "text": "Die Stadt war Jahrzehnte zuvor von den Portugiesen zerstört worden und erholte sich langsam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Ehe war ein politisches Bündnis zwischen zwei mächtigen Flüchtlingsfamilien.",
+      "text_markdown": "Die Ehe war ein politisches Bündnis zwischen zwei mächtigen Flüchtlingsfamilien.",
+      "tts": {
+        "text": "Die Ehe war ein politisches Bündnis zwischen zwei mächtigen Flüchtlingsfamilien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tétouan lag an der Nordküste Marokkos, nahe der Straße von Gibraltar.",
+      "text_markdown": "Tétouan lag an der Nordküste Marokkos, nahe der Straße von Gibraltar.",
+      "tts": {
+        "text": "Tétouan lag an der Nordküste Marokkos, nahe der Straße von Gibraltar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es war ideal positioniert für den Handel und für Überfälle auf europäische Schiffe.",
+      "text_markdown": "Es war ideal positioniert für den Handel und für Überfälle auf europäische Schiffe.",
+      "tts": {
+        "text": "Es war ideal positioniert für den Handel und für Überfälle auf europäische Schiffe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Stadt wurde zu einem blühenden Hafen, der hauptsächlich von andalusischen Flüchtlingen bewohnt war.",
+      "text_markdown": "Die Stadt wurde zu einem blühenden Hafen, der hauptsächlich von andalusischen Flüchtlingen bewohnt war.",
+      "tts": {
+        "text": "Die Stadt wurde zu einem blühenden Hafen, der hauptsächlich von andalusischen Flüchtlingen bewohnt war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Flüchtlinge brachten ihr Wissen über spanische Häfen, Buchten und Schifffahrtsrouten mit.",
+      "text_markdown": "Diese Flüchtlinge brachten ihr Wissen über spanische Häfen, Buchten und Schifffahrtsrouten mit.",
+      "tts": {
+        "text": "Diese Flüchtlinge brachten ihr Wissen über spanische Häfen, Buchten und Schifffahrtsrouten mit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida erwies sich als fähige Partnerin ihres Mannes bei der Regierung von Tétouan.",
+      "text_markdown": "Sayyida erwies sich als fähige Partnerin ihres Mannes bei der Regierung von Tétouan.",
+      "tts": {
+        "text": "Sayyida erwies sich als fähige Partnerin ihres Mannes bei der Regierung von Tétouan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie war an politischen Entscheidungen beteiligt und verstand die komplexe Diplomatie der Region.",
+      "text_markdown": "Sie war an politischen Entscheidungen beteiligt und verstand die komplexe Diplomatie der Region.",
+      "tts": {
+        "text": "Sie war an politischen Entscheidungen beteiligt und verstand die komplexe Diplomatie der Region.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Als ihr Mann starb, zog sich Sayyida nicht ins Privatleben zurück.",
+      "text_markdown": "Als ihr Mann starb, zog sich Sayyida nicht ins Privatleben zurück.",
+      "tts": {
+        "text": "Als ihr Mann starb, zog sich Sayyida nicht ins Privatleben zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Stattdessen übernahm sie selbst die Regierung von Tétouan.",
+      "text_markdown": "Stattdessen übernahm sie selbst die Regierung von Tétouan.",
+      "tts": {
+        "text": "Stattdessen übernahm sie selbst die Regierung von Tétouan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alleinige Herrscherin einer Stadt zu werden war eine außerordentliche Leistung für eine Frau in dieser Ära.",
+      "text_markdown": "Alleinige Herrscherin einer Stadt zu werden war eine außerordentliche Leistung für eine Frau in dieser Ära.",
+      "tts": {
+        "text": "Alleinige Herrscherin einer Stadt zu werden war eine außerordentliche Leistung für eine Frau in dieser Ära.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyida besaß die politischen Fähigkeiten, die Familienverbindungen und die persönliche Autorität, um die Macht zu halten.",
+      "text_markdown": "Sayyida besaß die politischen Fähigkeiten, die Familienverbindungen und die persönliche Autorität, um die Macht zu halten.",
+      "tts": {
+        "text": "Sayyida besaß die politischen Fähigkeiten, die Familienverbindungen und die persönliche Autorität, um die Macht zu halten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Menschen von Tétouan akzeptierten ihre Herrschaft, weil sie kompetent war und weil ihr verstorbener Mann ihr vertraut hatte.",
+      "text_markdown": "Die Menschen von Tétouan akzeptierten ihre Herrschaft, weil sie kompetent war und weil ihr verstorbener Mann ihr vertraut hatte.",
+      "tts": {
+        "text": "Die Menschen von Tétouan akzeptierten ihre Herrschaft, weil sie kompetent war und weil ihr verstorbener Mann ihr vertraut hatte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie war nun eine der mächtigsten Personen an der marokkanischen Küste.",
+      "text_markdown": "Sie war nun eine der mächtigsten Personen an der marokkanischen Küste.",
+      "tts": {
+        "text": "Sie war nun eine der mächtigsten Personen an der marokkanischen Küste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida hatte auch mächtige Verbündete.",
+      "text_markdown": "Sayyida hatte auch mächtige Verbündete.",
+      "tts": {
+        "text": "Sayyida hatte auch mächtige Verbündete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihre Familienverbindungen in Chefchaouen gaben ihr ein Unterstützungsnetzwerk in den Rif-Bergen.",
+      "text_markdown": "Ihre Familienverbindungen in Chefchaouen gaben ihr ein Unterstützungsnetzwerk in den Rif-Bergen.",
+      "tts": {
+        "text": "Ihre Familienverbindungen in Chefchaouen gaben ihr ein Unterstützungsnetzwerk in den Rif-Bergen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie unterhielt gute Beziehungen zur Wattasiden-Dynastie, die Marokko von Fès aus regierte.",
+      "text_markdown": "Sie unterhielt gute Beziehungen zur Wattasiden-Dynastie, die Marokko von Fès aus regierte.",
+      "tts": {
+        "text": "Sie unterhielt gute Beziehungen zur Wattasiden-Dynastie, die Marokko von Fès aus regierte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Allianzen schützten sie vor Rivalen, die eine weibliche Herrscherin hätten herausfordern können.",
+      "text_markdown": "Diese Allianzen schützten sie vor Rivalen, die eine weibliche Herrscherin hätten herausfordern können.",
+      "tts": {
+        "text": "Diese Allianzen schützten sie vor Rivalen, die eine weibliche Herrscherin hätten herausfordern können.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unter Sayyidas Herrschaft blühte Tétouan auf.",
+      "text_markdown": "Unter Sayyidas Herrschaft blühte Tétouan auf.",
+      "tts": {
+        "text": "Unter Sayyidas Herrschaft blühte Tétouan auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Handel floss durch seinen Hafen, und seine Bevölkerung wuchs.",
+      "text_markdown": "Der Handel floss durch seinen Hafen, und seine Bevölkerung wuchs.",
+      "tts": {
+        "text": "Der Handel floss durch seinen Hafen, und seine Bevölkerung wuchs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aber Sayyida hatte Ambitionen jenseits einfacher Regierung.",
+      "text_markdown": "Aber Sayyida hatte Ambitionen jenseits einfacher Regierung.",
+      "tts": {
+        "text": "Aber Sayyida hatte Ambitionen jenseits einfacher Regierung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie richtete ihren Blick auf das Meer und auf die europäischen Schiffe, die täglich die Straße von Gibraltar überquerten.",
+      "text_markdown": "Sie richtete ihren Blick auf das Meer und auf die europäischen Schiffe, die täglich die Straße von Gibraltar überquerten.",
+      "tts": {
+        "text": "Sie richtete ihren Blick auf das Meer und auf die europäischen Schiffe, die täglich die Straße von Gibraltar überquerten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Spanier und Portugiesen hatten mehrere marokkanische Küstenstädte erobert.",
+      "text_markdown": "Die Spanier und Portugiesen hatten mehrere marokkanische Küstenstädte erobert.",
+      "tts": {
+        "text": "Die Spanier und Portugiesen hatten mehrere marokkanische Küstenstädte erobert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ceuta, Tanger und andere Häfen standen unter europäischer Kontrolle.",
+      "text_markdown": "Ceuta, Tanger und andere Häfen standen unter europäischer Kontrolle.",
+      "tts": {
+        "text": "Ceuta, Tanger und andere Häfen standen unter europäischer Kontrolle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diese Besetzungen waren eine ständige Demütigung für das marokkanische Volk.",
+      "text_markdown": "Diese Besetzungen waren eine ständige Demütigung für das marokkanische Volk.",
+      "tts": {
+        "text": "Diese Besetzungen waren eine ständige Demütigung für das marokkanische Volk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Von Granada nach Tétouan",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida sah Korsarenaktivität als eine legitime Form des Widerstands gegen diese fremden Besatzer.",
+      "text_markdown": "Sayyida sah Korsarenaktivität als eine legitime Form des Widerstands gegen diese fremden Besatzer.",
+      "tts": {
+        "text": "Sayyida sah Korsarenaktivität als eine legitime Form des Widerstands gegen diese fremden Besatzer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Königin der Piraten",
+      "text_markdown": "Königin der Piraten"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra baute eine Korsarenflotte auf, die im gesamten westlichen Mittelmeer operierte.",
+      "text_markdown": "Sayyida al-Hurra baute eine Korsarenflotte auf, die im gesamten westlichen Mittelmeer operierte.",
+      "tts": {
+        "text": "Sayyida al-Hurra baute eine Korsarenflotte auf, die im gesamten westlichen Mittelmeer operierte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihre Schiffe griffen spanische und portugiesische Handelsschiffe an, die durch die Straße von Gibraltar fuhren.",
+      "text_markdown": "Ihre Schiffe griffen spanische und portugiesische Handelsschiffe an, die durch die Straße von Gibraltar fuhren.",
+      "tts": {
+        "text": "Ihre Schiffe griffen spanische und portugiesische Handelsschiffe an, die durch die Straße von Gibraltar fuhren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie organisierte diese Überfälle mit der Präzision eines militärischen Befehlshabers.",
+      "text_markdown": "Sie organisierte diese Überfälle mit der Präzision eines militärischen Befehlshabers.",
+      "tts": {
+        "text": "Sie organisierte diese Überfälle mit der Präzision eines militärischen Befehlshabers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jeder Angriff war geplant, um den Gewinn zu maximieren und das Risiko für ihre Schiffe und Mannschaften zu minimieren.",
+      "text_markdown": "Jeder Angriff war geplant, um den Gewinn zu maximieren und das Risiko für ihre Schiffe und Mannschaften zu minimieren.",
+      "tts": {
+        "text": "Jeder Angriff war geplant, um den Gewinn zu maximieren und das Risiko für ihre Schiffe und Mannschaften zu minimieren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Korsaren, die für Sayyida segelten, waren eine Mischung aus marokkanischen Seeleuten und andalusischen Flüchtlingen.",
+      "text_markdown": "Die Korsaren, die für Sayyida segelten, waren eine Mischung aus marokkanischen Seeleuten und andalusischen Flüchtlingen.",
+      "tts": {
+        "text": "Die Korsaren, die für Sayyida segelten, waren eine Mischung aus marokkanischen Seeleuten und andalusischen Flüchtlingen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Viele der Flüchtlinge waren ehemalige Seeleute, die die spanische Küste genau kannten.",
+      "text_markdown": "Viele der Flüchtlinge waren ehemalige Seeleute, die die spanische Küste genau kannten.",
+      "tts": {
+        "text": "Viele der Flüchtlinge waren ehemalige Seeleute, die die spanische Küste genau kannten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie kannten die Häfen, die Schifffahrtsrouten und die Fahrpläne der Handelskonvois.",
+      "text_markdown": "Sie kannten die Häfen, die Schifffahrtsrouten und die Fahrpläne der Handelskonvois.",
+      "tts": {
+        "text": "Sie kannten die Häfen, die Schifffahrtsrouten und die Fahrpläne der Handelskonvois.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Informationen gaben Sayyidas Flotte einen entscheidenden Vorteil.",
+      "text_markdown": "Diese Informationen gaben Sayyidas Flotte einen entscheidenden Vorteil.",
+      "tts": {
+        "text": "Diese Informationen gaben Sayyidas Flotte einen entscheidenden Vorteil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida schmiedete ein Bündnis mit Hayreddin Barbarossa, dem berühmten osmanischen Korsaren.",
+      "text_markdown": "Sayyida schmiedete ein Bündnis mit Hayreddin Barbarossa, dem berühmten osmanischen Korsaren.",
+      "tts": {
+        "text": "Sayyida schmiedete ein Bündnis mit Hayreddin Barbarossa, dem berühmten osmanischen Korsaren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbarossa kontrollierte das östliche Mittelmeer von seiner Basis in Algier aus.",
+      "text_markdown": "Barbarossa kontrollierte das östliche Mittelmeer von seiner Basis in Algier aus.",
+      "tts": {
+        "text": "Barbarossa kontrollierte das östliche Mittelmeer von seiner Basis in Algier aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemeinsam teilten sie das westliche Mittelmeer unter sich auf.",
+      "text_markdown": "Gemeinsam teilten sie das westliche Mittelmeer unter sich auf.",
+      "tts": {
+        "text": "Gemeinsam teilten sie das westliche Mittelmeer unter sich auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida kontrollierte die Gewässer nahe der Straße von Gibraltar, während Barbarossa weiter östlich dominierte.",
+      "text_markdown": "Sayyida kontrollierte die Gewässer nahe der Straße von Gibraltar, während Barbarossa weiter östlich dominierte.",
+      "tts": {
+        "text": "Sayyida kontrollierte die Gewässer nahe der Straße von Gibraltar, während Barbarossa weiter östlich dominierte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieses Bündnis machte Sayyida zu einer der wichtigsten Figuren der mediterranen Piraterie.",
+      "text_markdown": "Dieses Bündnis machte Sayyida zu einer der wichtigsten Figuren der mediterranen Piraterie.",
+      "tts": {
+        "text": "Dieses Bündnis machte Sayyida zu einer der wichtigsten Figuren der mediterranen Piraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie war die einzige bekannte Frau, die eine solche Partnerschaft mit Barbarossa eingegangen war.",
+      "text_markdown": "Sie war die einzige bekannte Frau, die eine solche Partnerschaft mit Barbarossa eingegangen war.",
+      "tts": {
+        "text": "Sie war die einzige bekannte Frau, die eine solche Partnerschaft mit Barbarossa eingegangen war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre vereinten Kräfte machten das westliche Mittelmeer äußerst gefährlich für die europäische Schifffahrt.",
+      "text_markdown": "Ihre vereinten Kräfte machten das westliche Mittelmeer äußerst gefährlich für die europäische Schifffahrt.",
+      "tts": {
+        "text": "Ihre vereinten Kräfte machten das westliche Mittelmeer äußerst gefährlich für die europäische Schifffahrt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spanien und Portugal hatten Mühe, ihre Handelsflotten vor dieser koordinierten Bedrohung zu schützen.",
+      "text_markdown": "Spanien und Portugal hatten Mühe, ihre Handelsflotten vor dieser koordinierten Bedrohung zu schützen.",
+      "tts": {
+        "text": "Spanien und Portugal hatten Mühe, ihre Handelsflotten vor dieser koordinierten Bedrohung zu schützen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyidas Korsaren raubten nicht einfach Schiffe aus und ließen sie frei.",
+      "text_markdown": "Sayyidas Korsaren raubten nicht einfach Schiffe aus und ließen sie frei.",
+      "tts": {
+        "text": "Sayyidas Korsaren raubten nicht einfach Schiffe aus und ließen sie frei.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie erbeuteten sowohl Ladung als auch Passagiere.",
+      "text_markdown": "Sie erbeuteten sowohl Ladung als auch Passagiere.",
+      "tts": {
+        "text": "Sie erbeuteten sowohl Ladung als auch Passagiere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Europäische Gefangene wurden gegen Lösegeld festgehalten, was zu einer wichtigen Einnahmequelle wurde.",
+      "text_markdown": "Europäische Gefangene wurden gegen Lösegeld festgehalten, was zu einer wichtigen Einnahmequelle wurde.",
+      "tts": {
+        "text": "Europäische Gefangene wurden gegen Lösegeld festgehalten, was zu einer wichtigen Einnahmequelle wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wohlhabende Gefangene konnten enorme Summen einbringen, bezahlt von ihren Familien oder Regierungen.",
+      "text_markdown": "Wohlhabende Gefangene konnten enorme Summen einbringen, bezahlt von ihren Familien oder Regierungen.",
+      "tts": {
+        "text": "Wohlhabende Gefangene konnten enorme Summen einbringen, bezahlt von ihren Familien oder Regierungen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Lösegeldhandel war ein komplexes Geschäft mit eigenen Regeln und Vermittlern.",
+      "text_markdown": "Der Lösegeldhandel war ein komplexes Geschäft mit eigenen Regeln und Vermittlern.",
+      "tts": {
+        "text": "Der Lösegeldhandel war ein komplexes Geschäft mit eigenen Regeln und Vermittlern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Religiöse Orden aus Spanien und Portugal waren auf die Verhandlung der Freilassung von Gefangenen spezialisiert.",
+      "text_markdown": "Religiöse Orden aus Spanien und Portugal waren auf die Verhandlung der Freilassung von Gefangenen spezialisiert.",
+      "tts": {
+        "text": "Religiöse Orden aus Spanien und Portugal waren auf die Verhandlung der Freilassung von Gefangenen spezialisiert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyida verhandelte mit diesen Vermittlern als Staatsoberhaupt, nicht bloß als Piratin.",
+      "text_markdown": "Sayyida verhandelte mit diesen Vermittlern als Staatsoberhaupt, nicht bloß als Piratin.",
+      "tts": {
+        "text": "Sayyida verhandelte mit diesen Vermittlern als Staatsoberhaupt, nicht bloß als Piratin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihre diplomatische Korrespondenz mit europäischen Regierungen hat in spanischen und portugiesischen Archiven überlebt.",
+      "text_markdown": "Ihre diplomatische Korrespondenz mit europäischen Regierungen hat in spanischen und portugiesischen Archiven überlebt.",
+      "tts": {
+        "text": "Ihre diplomatische Korrespondenz mit europäischen Regierungen hat in spanischen und portugiesischen Archiven überlebt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Europäische Quellen beschreiben Sayyida mit einer Mischung aus Furcht und widerwilligem Respekt.",
+      "text_markdown": "Europäische Quellen beschreiben Sayyida mit einer Mischung aus Furcht und widerwilligem Respekt.",
+      "tts": {
+        "text": "Europäische Quellen beschreiben Sayyida mit einer Mischung aus Furcht und widerwilligem Respekt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie nannten sie Piratenkönigin, obwohl sie sich selbst als legitime Herrscherin sah, die Krieg führte.",
+      "text_markdown": "Sie nannten sie Piratenkönigin, obwohl sie sich selbst als legitime Herrscherin sah, die Krieg führte.",
+      "tts": {
+        "text": "Sie nannten sie Piratenkönigin, obwohl sie sich selbst als legitime Herrscherin sah, die Krieg führte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In ihren Augen waren die Spanier und Portugiesen die Angreifer, die muslimisches Land gestohlen hatten.",
+      "text_markdown": "In ihren Augen waren die Spanier und Portugiesen die Angreifer, die muslimisches Land gestohlen hatten.",
+      "tts": {
+        "text": "In ihren Augen waren die Spanier und Portugiesen die Angreifer, die muslimisches Land gestohlen hatten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihre Überfälle waren Akte der Gerechtigkeit, kein bloßes Banditentum.",
+      "text_markdown": "Ihre Überfälle waren Akte der Gerechtigkeit, kein bloßes Banditentum.",
+      "tts": {
+        "text": "Ihre Überfälle waren Akte der Gerechtigkeit, kein bloßes Banditentum.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyidas Reichtum aus Piraterie und Lösegeld machte Tétouan zu einer der reichsten Städte Marokkos.",
+      "text_markdown": "Sayyidas Reichtum aus Piraterie und Lösegeld machte Tétouan zu einer der reichsten Städte Marokkos.",
+      "tts": {
+        "text": "Sayyidas Reichtum aus Piraterie und Lösegeld machte Tétouan zu einer der reichsten Städte Marokkos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie investierte in die Infrastruktur der Stadt, erweiterte ihren Hafen und stärkte ihre Verteidigung.",
+      "text_markdown": "Sie investierte in die Infrastruktur der Stadt, erweiterte ihren Hafen und stärkte ihre Verteidigung.",
+      "tts": {
+        "text": "Sie investierte in die Infrastruktur der Stadt, erweiterte ihren Hafen und stärkte ihre Verteidigung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Neue Moscheen, Märkte und Häuser wurden mit den Gewinnen ihrer Korsarenflotte gebaut.",
+      "text_markdown": "Neue Moscheen, Märkte und Häuser wurden mit den Gewinnen ihrer Korsarenflotte gebaut.",
+      "tts": {
+        "text": "Neue Moscheen, Märkte und Häuser wurden mit den Gewinnen ihrer Korsarenflotte gebaut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tétouan wurde zu einem blühenden Zentrum für Handel und Kultur.",
+      "text_markdown": "Tétouan wurde zu einem blühenden Zentrum für Handel und Kultur.",
+      "tts": {
+        "text": "Tétouan wurde zu einem blühenden Zentrum für Handel und Kultur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Kapitäne waren erfahrene Navigatoren, die jede Bucht und Strömung in der Meerenge kannten.",
+      "text_markdown": "Ihre Kapitäne waren erfahrene Navigatoren, die jede Bucht und Strömung in der Meerenge kannten.",
+      "tts": {
+        "text": "Ihre Kapitäne waren erfahrene Navigatoren, die jede Bucht und Strömung in der Meerenge kannten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie verwendeten schnelle, manövrierfähige Schiffe, die schwerere europäische Kriegsschiffe überholen konnten.",
+      "text_markdown": "Sie verwendeten schnelle, manövrierfähige Schiffe, die schwerere europäische Kriegsschiffe überholen konnten.",
+      "tts": {
+        "text": "Sie verwendeten schnelle, manövrierfähige Schiffe, die schwerere europäische Kriegsschiffe überholen konnten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie griffen bei Morgen- oder Abenddämmerung an, wenn die Sicht schlecht war.",
+      "text_markdown": "Sie griffen bei Morgen- oder Abenddämmerung an, wenn die Sicht schlecht war.",
+      "tts": {
+        "text": "Sie griffen bei Morgen- oder Abenddämmerung an, wenn die Sicht schlecht war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Überraschungsmoment war ihre stärkste Waffe.",
+      "text_markdown": "Das Überraschungsmoment war ihre stärkste Waffe.",
+      "tts": {
+        "text": "Das Überraschungsmoment war ihre stärkste Waffe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihr Ruf wuchs, bis er die Aufmerksamkeit des Wattasiden-Sultans selbst erregte.",
+      "text_markdown": "Ihr Ruf wuchs, bis er die Aufmerksamkeit des Wattasiden-Sultans selbst erregte.",
+      "tts": {
+        "text": "Ihr Ruf wuchs, bis er die Aufmerksamkeit des Wattasiden-Sultans selbst erregte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Sultan Ahmed al-Wattasi machte Sayyida um 1515 einen Heiratsantrag.",
+      "text_markdown": "Der Sultan Ahmed al-Wattasi machte Sayyida um 1515 einen Heiratsantrag.",
+      "tts": {
+        "text": "Der Sultan Ahmed al-Wattasi machte Sayyida um fünfzehnhundertfünfzehn einen Heiratsantrag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dies war eine bemerkenswerte Ehre für jede Frau der damaligen Zeit.",
+      "text_markdown": "Dies war eine bemerkenswerte Ehre für jede Frau der damaligen Zeit.",
+      "tts": {
+        "text": "Dies war eine bemerkenswerte Ehre für jede Frau der damaligen Zeit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es spiegelte auch die politische und wirtschaftliche Macht wider, die Sayyida angesammelt hatte.",
+      "text_markdown": "Es spiegelte auch die politische und wirtschaftliche Macht wider, die Sayyida angesammelt hatte.",
+      "tts": {
+        "text": "Es spiegelte auch die politische und wirtschaftliche Macht wider, die Sayyida angesammelt hatte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida stimmte der Ehe zu, aber zu ihren eigenen Bedingungen.",
+      "text_markdown": "Sayyida stimmte der Ehe zu, aber zu ihren eigenen Bedingungen.",
+      "tts": {
+        "text": "Sayyida stimmte der Ehe zu, aber zu ihren eigenen Bedingungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie bestand darauf, dass die Hochzeit in Tétouan stattfinde, nicht in Fès, wo der Sultan Hof hielt.",
+      "text_markdown": "Sie bestand darauf, dass die Hochzeit in Tétouan stattfinde, nicht in Fès, wo der Sultan Hof hielt.",
+      "tts": {
+        "text": "Sie bestand darauf, dass die Hochzeit in Tétouan stattfinde, nicht in Fès, wo der Sultan Hof hielt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dies war eine außergewöhnliche Bedingung, da die Konvention verlangte, dass die Braut zum Bräutigam reiste.",
+      "text_markdown": "Dies war eine außergewöhnliche Bedingung, da die Konvention verlangte, dass die Braut zum Bräutigam reiste.",
+      "tts": {
+        "text": "Dies war eine außergewöhnliche Bedingung, da die Konvention verlangte, dass die Braut zum Bräutigam reiste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Sultan stimmte zu und reiste nach Tétouan zur Zeremonie.",
+      "text_markdown": "Der Sultan stimmte zu und reiste nach Tétouan zur Zeremonie.",
+      "tts": {
+        "text": "Der Sultan stimmte zu und reiste nach Tétouan zur Zeremonie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies war der einzige dokumentierte Fall in der marokkanischen Geschichte, dass ein König zu seiner Braut für eine Hochzeit reiste.",
+      "text_markdown": "Dies war der einzige dokumentierte Fall in der marokkanischen Geschichte, dass ein König zu seiner Braut für eine Hochzeit reiste.",
+      "tts": {
+        "text": "Dies war der einzige dokumentierte Fall in der marokkanischen Geschichte, dass ein König zu seiner Braut für eine Hochzeit reiste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es bewies die immense Macht und das Prestige, die Sayyida erreicht hatte.",
+      "text_markdown": "Es bewies die immense Macht und das Prestige, die Sayyida erreicht hatte.",
+      "tts": {
+        "text": "Es bewies die immense Macht und das Prestige, die Sayyida erreicht hatte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Auch nach der Ehe regierte sie Tétouan weiterhin unabhängig.",
+      "text_markdown": "Auch nach der Ehe regierte sie Tétouan weiterhin unabhängig.",
+      "tts": {
+        "text": "Auch nach der Ehe regierte sie Tétouan weiterhin unabhängig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie war eine Königin aus eigenem Recht, nicht bloß die Frau eines Sultans.",
+      "text_markdown": "Sie war eine Königin aus eigenem Recht, nicht bloß die Frau eines Sultans.",
+      "tts": {
+        "text": "Sie war eine Königin aus eigenem Recht, nicht bloß die Frau eines Sultans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Ehe gab Sayyida zusätzlichen politischen Schutz.",
+      "text_markdown": "Die Ehe gab Sayyida zusätzlichen politischen Schutz.",
+      "tts": {
+        "text": "Die Ehe gab Sayyida zusätzlichen politischen Schutz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Als Frau des Sultans war sie für lokale Rivalen unangreifbar.",
+      "text_markdown": "Als Frau des Sultans war sie für lokale Rivalen unangreifbar.",
+      "tts": {
+        "text": "Als Frau des Sultans war sie für lokale Rivalen unangreifbar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Korsarenoperationen gingen mit noch größerem Selbstvertrauen weiter.",
+      "text_markdown": "Ihre Korsarenoperationen gingen mit noch größerem Selbstvertrauen weiter.",
+      "tts": {
+        "text": "Ihre Korsarenoperationen gingen mit noch größerem Selbstvertrauen weiter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das westliche Mittelmeer blieb ihr Reich.",
+      "text_markdown": "Das westliche Mittelmeer blieb ihr Reich.",
+      "tts": {
+        "text": "Das westliche Mittelmeer blieb ihr Reich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spanien versuchte wiederholt, mit Sayyida zu verhandeln, um ihre Überfälle zu stoppen.",
+      "text_markdown": "Spanien versuchte wiederholt, mit Sayyida zu verhandeln, um ihre Überfälle zu stoppen.",
+      "tts": {
+        "text": "Spanien versuchte wiederholt, mit Sayyida zu verhandeln, um ihre Überfälle zu stoppen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanische Gesandte reisten nach Tétouan, um die Freilassung von Gefangenen und die Möglichkeit eines Friedens zu besprechen.",
+      "text_markdown": "Spanische Gesandte reisten nach Tétouan, um die Freilassung von Gefangenen und die Möglichkeit eines Friedens zu besprechen.",
+      "tts": {
+        "text": "Spanische Gesandte reisten nach Tétouan, um die Freilassung von Gefangenen und die Möglichkeit eines Friedens zu besprechen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyida verhandelte hart und stimmte nie zu, ihre Korsarenoperationen vollständig einzustellen.",
+      "text_markdown": "Sayyida verhandelte hart und stimmte nie zu, ihre Korsarenoperationen vollständig einzustellen.",
+      "tts": {
+        "text": "Sayyida verhandelte hart und stimmte nie zu, ihre Korsarenoperationen vollständig einzustellen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie verstand, dass ihre Seemacht die Quelle ihres politischen Einflusses war.",
+      "text_markdown": "Sie verstand, dass ihre Seemacht die Quelle ihres politischen Einflusses war.",
+      "tts": {
+        "text": "Sie verstand, dass ihre Seemacht die Quelle ihres politischen Einflusses war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auch Portugal hatte Mühe, mit der Bedrohung umzugehen, die sie darstellte.",
+      "text_markdown": "Auch Portugal hatte Mühe, mit der Bedrohung umzugehen, die sie darstellte.",
+      "tts": {
+        "text": "Auch Portugal hatte Mühe, mit der Bedrohung umzugehen, die sie darstellte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Portugiesische Schiffe auf dem Weg zu ihren Kolonien in Afrika und Asien mussten die Straße von Gibraltar passieren.",
+      "text_markdown": "Portugiesische Schiffe auf dem Weg zu ihren Kolonien in Afrika und Asien mussten die Straße von Gibraltar passieren.",
+      "tts": {
+        "text": "Portugiesische Schiffe auf dem Weg zu ihren Kolonien in Afrika und Asien mussten die Straße von Gibraltar passieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyidas Korsaren machten diese Passage gefährlich und kostspielig.",
+      "text_markdown": "Sayyidas Korsaren machten diese Passage gefährlich und kostspielig.",
+      "tts": {
+        "text": "Sayyidas Korsaren machten diese Passage gefährlich und kostspielig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Königin der Piraten",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die portugiesische Regierung erwog militärische Maßnahmen gegen Tétouan, führte sie aber nie durch.",
+      "text_markdown": "Die portugiesische Regierung erwog militärische Maßnahmen gegen Tétouan, führte sie aber nie durch.",
+      "tts": {
+        "text": "Die portugiesische Regierung erwog militärische Maßnahmen gegen Tétouan, führte sie aber nie durch.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die souveräne Frau",
+      "text_markdown": "Die souveräne Frau"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auf dem Höhepunkt ihrer Macht kontrollierte Sayyida al-Hurra einen der strategisch wichtigsten Wasserstraßen der Welt.",
+      "text_markdown": "Auf dem Höhepunkt ihrer Macht kontrollierte Sayyida al-Hurra einen der strategisch wichtigsten Wasserstraßen der Welt.",
+      "tts": {
+        "text": "Auf dem Höhepunkt ihrer Macht kontrollierte Sayyida al-Hurra einen der strategisch wichtigsten Wasserstraßen der Welt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihre Korsarenflotte beherrschte die westlichen Zufahrten zur Straße von Gibraltar.",
+      "text_markdown": "Ihre Korsarenflotte beherrschte die westlichen Zufahrten zur Straße von Gibraltar.",
+      "tts": {
+        "text": "Ihre Korsarenflotte beherrschte die westlichen Zufahrten zur Straße von Gibraltar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kein europäisches Schiff konnte diese Gewässer passieren, ohne einen Angriff zu riskieren.",
+      "text_markdown": "Kein europäisches Schiff konnte diese Gewässer passieren, ohne einen Angriff zu riskieren.",
+      "tts": {
+        "text": "Kein europäisches Schiff konnte diese Gewässer passieren, ohne einen Angriff zu riskieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Tribut für den spanischen und portugiesischen Handel war schwerwiegend.",
+      "text_markdown": "Der Tribut für den spanischen und portugiesischen Handel war schwerwiegend.",
+      "tts": {
+        "text": "Der Tribut für den spanischen und portugiesischen Handel war schwerwiegend.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida regierte Tétouan mit einer Kombination aus militärischer Stärke und politischem Geschick.",
+      "text_markdown": "Sayyida regierte Tétouan mit einer Kombination aus militärischer Stärke und politischem Geschick.",
+      "tts": {
+        "text": "Sayyida regierte Tétouan mit einer Kombination aus militärischer Stärke und politischem Geschick.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie unterhielt ein Netzwerk von Informanten, die europäische Schiffsbewegungen verfolgten.",
+      "text_markdown": "Sie unterhielt ein Netzwerk von Informanten, die europäische Schiffsbewegungen verfolgten.",
+      "tts": {
+        "text": "Sie unterhielt ein Netzwerk von Informanten, die europäische Schiffsbewegungen verfolgten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie verhandelte Lösegeldabkommen mit europäischen Regierungen auf Augenhöhe.",
+      "text_markdown": "Sie verhandelte Lösegeldabkommen mit europäischen Regierungen auf Augenhöhe.",
+      "tts": {
+        "text": "Sie verhandelte Lösegeldabkommen mit europäischen Regierungen auf Augenhöhe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihr Hof in Tétouan war ein Zentrum politischer Aktivität und diplomatischer Intrigen.",
+      "text_markdown": "Ihr Hof in Tétouan war ein Zentrum politischer Aktivität und diplomatischer Intrigen.",
+      "tts": {
+        "text": "Ihr Hof in Tétouan war ein Zentrum politischer Aktivität und diplomatischer Intrigen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Titel al-Hurra trug eine tiefe Bedeutung in der islamischen Welt.",
+      "text_markdown": "Der Titel al-Hurra trug eine tiefe Bedeutung in der islamischen Welt.",
+      "tts": {
+        "text": "Der Titel al-Hurra trug eine tiefe Bedeutung in der islamischen Welt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er bedeutete, dass Sayyida keinem Mann Rechenschaft schuldete und in ihrem eigenen Namen regierte.",
+      "text_markdown": "Er bedeutete, dass Sayyida keinem Mann Rechenschaft schuldete und in ihrem eigenen Namen regierte.",
+      "tts": {
+        "text": "Er bedeutete, dass Sayyida keinem Mann Rechenschaft schuldete und in ihrem eigenen Namen regierte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie war die letzte Frau in der islamischen Geschichte, die diesen Titel trug.",
+      "text_markdown": "Sie war die letzte Frau in der islamischen Geschichte, die diesen Titel trug.",
+      "tts": {
+        "text": "Sie war die letzte Frau in der islamischen Geschichte, die diesen Titel trug.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Keine Frau vor oder nach ihr erreichte die gleiche Kombination aus politischer und militärischer Macht in der Region.",
+      "text_markdown": "Keine Frau vor oder nach ihr erreichte die gleiche Kombination aus politischer und militärischer Macht in der Region.",
+      "tts": {
+        "text": "Keine Frau vor oder nach ihr erreichte die gleiche Kombination aus politischer und militärischer Macht in der Region.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihr Erfolg beruhte auf der Gemeinschaft andalusischer Flüchtlinge, die Tétouan bevölkerten.",
+      "text_markdown": "Ihr Erfolg beruhte auf der Gemeinschaft andalusischer Flüchtlinge, die Tétouan bevölkerten.",
+      "tts": {
+        "text": "Ihr Erfolg beruhte auf der Gemeinschaft andalusischer Flüchtlinge, die Tétouan bevölkerten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diese Flüchtlinge lieferten einen stetigen Nachschub an gebildeten Verwaltern und erfahrenen Seeleuten.",
+      "text_markdown": "Diese Flüchtlinge lieferten einen stetigen Nachschub an gebildeten Verwaltern und erfahrenen Seeleuten.",
+      "tts": {
+        "text": "Diese Flüchtlinge lieferten einen stetigen Nachschub an gebildeten Verwaltern und erfahrenen Seeleuten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Kenntnis der spanischen Sprache und Kultur war für die Informationsgewinnung von unschätzbarem Wert.",
+      "text_markdown": "Ihre Kenntnis der spanischen Sprache und Kultur war für die Informationsgewinnung von unschätzbarem Wert.",
+      "tts": {
+        "text": "Ihre Kenntnis der spanischen Sprache und Kultur war für die Informationsgewinnung von unschätzbarem Wert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tétouan unter Sayyida war eine Stadt, die von der Erinnerung an al-Andalus und der Hoffnung auf Rache geprägt war.",
+      "text_markdown": "Tétouan unter Sayyida war eine Stadt, die von der Erinnerung an al-Andalus und der Hoffnung auf Rache geprägt war.",
+      "tts": {
+        "text": "Tétouan unter Sayyida war eine Stadt, die von der Erinnerung an al-Andalus und der Hoffnung auf Rache geprägt war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida unterhielt auch Beziehungen zu anderen nordafrikanischen Häfen.",
+      "text_markdown": "Sayyida unterhielt auch Beziehungen zu anderen nordafrikanischen Häfen.",
+      "tts": {
+        "text": "Sayyida unterhielt auch Beziehungen zu anderen nordafrikanischen Häfen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algier, Tunis und Salé waren allesamt Zentren der Korsarenaktivität.",
+      "text_markdown": "Algier, Tunis und Salé waren allesamt Zentren der Korsarenaktivität.",
+      "tts": {
+        "text": "Algier, Tunis und Salé waren allesamt Zentren der Korsarenaktivität.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie koordinierte sich mit den Führern dieser Städte, um Konflikte zu vermeiden und Informationen auszutauschen.",
+      "text_markdown": "Sie koordinierte sich mit den Führern dieser Städte, um Konflikte zu vermeiden und Informationen auszutauschen.",
+      "tts": {
+        "text": "Sie koordinierte sich mit den Führern dieser Städte, um Konflikte zu vermeiden und Informationen auszutauschen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dieses Netzwerk von Allianzen machte ihre Korsarenoperationen effektiver.",
+      "text_markdown": "Dieses Netzwerk von Allianzen machte ihre Korsarenoperationen effektiver.",
+      "tts": {
+        "text": "Dieses Netzwerk von Allianzen machte ihre Korsarenoperationen effektiver.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Europäische Berichte aus dieser Zeit sind voll von Beschwerden über Sayyidas Piraten.",
+      "text_markdown": "Europäische Berichte aus dieser Zeit sind voll von Beschwerden über Sayyidas Piraten.",
+      "tts": {
+        "text": "Europäische Berichte aus dieser Zeit sind voll von Beschwerden über Sayyidas Piraten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanische Botschafter schrieben Briefe, in denen sie Maßnahmen gegen die Piraten von Tétouan forderten.",
+      "text_markdown": "Spanische Botschafter schrieben Briefe, in denen sie Maßnahmen gegen die Piraten von Tétouan forderten.",
+      "tts": {
+        "text": "Spanische Botschafter schrieben Briefe, in denen sie Maßnahmen gegen die Piraten von Tétouan forderten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Portugiesische Händler baten ihren König um militärischen Schutz.",
+      "text_markdown": "Portugiesische Händler baten ihren König um militärischen Schutz.",
+      "tts": {
+        "text": "Portugiesische Händler baten ihren König um militärischen Schutz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der wirtschaftliche Schaden, den ihre Flotte verursachte, war bedeutend genug, um die europäische Politik zu beeinflussen.",
+      "text_markdown": "Der wirtschaftliche Schaden, den ihre Flotte verursachte, war bedeutend genug, um die europäische Politik zu beeinflussen.",
+      "tts": {
+        "text": "Der wirtschaftliche Schaden, den ihre Flotte verursachte, war bedeutend genug, um die europäische Politik zu beeinflussen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida selbst wurde sowohl gefürchtet als auch bewundert.",
+      "text_markdown": "Sayyida selbst wurde sowohl gefürchtet als auch bewundert.",
+      "tts": {
+        "text": "Sayyida selbst wurde sowohl gefürchtet als auch bewundert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie verkörperte etwas, das die europäischen Mächte zutiefst beunruhigend fanden.",
+      "text_markdown": "Sie verkörperte etwas, das die europäischen Mächte zutiefst beunruhigend fanden.",
+      "tts": {
+        "text": "Sie verkörperte etwas, das die europäischen Mächte zutiefst beunruhigend fanden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eine muslimische Frau mit echter politischer und militärischer Macht stellte jede ihrer Annahmen in Frage.",
+      "text_markdown": "Eine muslimische Frau mit echter politischer und militärischer Macht stellte jede ihrer Annahmen in Frage.",
+      "tts": {
+        "text": "Eine muslimische Frau mit echter politischer und militärischer Macht stellte jede ihrer Annahmen in Frage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihre bloße Existenz war eine Provokation für die europäische Ordnung.",
+      "text_markdown": "Ihre bloße Existenz war eine Provokation für die europäische Ordnung.",
+      "tts": {
+        "text": "Ihre bloße Existenz war eine Provokation für die europäische Ordnung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Leben in Tétouan unter Sayyidas Herrschaft spiegelte das kosmopolitische Erbe al-Andalus' wider.",
+      "text_markdown": "Das Leben in Tétouan unter Sayyidas Herrschaft spiegelte das kosmopolitische Erbe al-Andalus' wider.",
+      "tts": {
+        "text": "Das Leben in Tétouan unter Sayyidas Herrschaft spiegelte das kosmopolitische Erbe al-Andalus' wider.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Stadt hatte schöne Gärten, fließende Brunnen und weiß getünchte Häuser im andalusischen Stil.",
+      "text_markdown": "Die Stadt hatte schöne Gärten, fließende Brunnen und weiß getünchte Häuser im andalusischen Stil.",
+      "tts": {
+        "text": "Die Stadt hatte schöne Gärten, fließende Brunnen und weiß getünchte Häuser im andalusischen Stil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Handwerker stellten feine Keramiken, Textilien und Metallarbeiten her.",
+      "text_markdown": "Handwerker stellten feine Keramiken, Textilien und Metallarbeiten her.",
+      "tts": {
+        "text": "Handwerker stellten feine Keramiken, Textilien und Metallarbeiten her.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der kulturelle Reichtum der Stadt stand in scharfem Kontrast zur Gewalt des Korsarenhandels, der ihn finanzierte.",
+      "text_markdown": "Der kulturelle Reichtum der Stadt stand in scharfem Kontrast zur Gewalt des Korsarenhandels, der ihn finanzierte.",
+      "tts": {
+        "text": "Der kulturelle Reichtum der Stadt stand in scharfem Kontrast zur Gewalt des Korsarenhandels, der ihn finanzierte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyidas Flotte wuchs auf Dutzende von Schiffen an.",
+      "text_markdown": "Sayyidas Flotte wuchs auf Dutzende von Schiffen an.",
+      "tts": {
+        "text": "Sayyidas Flotte wuchs auf Dutzende von Schiffen an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Einige waren erbeutete europäische Schiffe, die gegen ihre früheren Besitzer eingesetzt wurden.",
+      "text_markdown": "Einige waren erbeutete europäische Schiffe, die gegen ihre früheren Besitzer eingesetzt wurden.",
+      "tts": {
+        "text": "Einige waren erbeutete europäische Schiffe, die gegen ihre früheren Besitzer eingesetzt wurden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Andere wurden in Tétouans eigenen Werften gebaut.",
+      "text_markdown": "Andere wurden in Tétouans eigenen Werften gebaut.",
+      "tts": {
+        "text": "Andere wurden in Tétouans eigenen Werften gebaut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Flotte war gut gepflegt und mit erfahrenen Seeleuten bemannt, die jede Strömung und Untiefe in der Meerenge kannten.",
+      "text_markdown": "Die Flotte war gut gepflegt und mit erfahrenen Seeleuten bemannt, die jede Strömung und Untiefe in der Meerenge kannten.",
+      "tts": {
+        "text": "Die Flotte war gut gepflegt und mit erfahrenen Seeleuten bemannt, die jede Strömung und Untiefe in der Meerenge kannten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Herrschaft repräsentierte eine kurze Periode, in der das Kräfteverhältnis im westlichen Mittelmeer umkämpft war.",
+      "text_markdown": "Ihre Herrschaft repräsentierte eine kurze Periode, in der das Kräfteverhältnis im westlichen Mittelmeer umkämpft war.",
+      "tts": {
+        "text": "Ihre Herrschaft repräsentierte eine kurze Periode, in der das Kräfteverhältnis im westlichen Mittelmeer umkämpft war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanien und Portugal hatten die größeren Flotten, aber sie konnten nicht überall gleichzeitig sein.",
+      "text_markdown": "Spanien und Portugal hatten die größeren Flotten, aber sie konnten nicht überall gleichzeitig sein.",
+      "tts": {
+        "text": "Spanien und Portugal hatten die größeren Flotten, aber sie konnten nicht überall gleichzeitig sein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sayyidas Korsaren nutzten die Lücken in der europäischen Marineabdeckung mit Präzision aus.",
+      "text_markdown": "Sayyidas Korsaren nutzten die Lücken in der europäischen Marineabdeckung mit Präzision aus.",
+      "tts": {
+        "text": "Sayyidas Korsaren nutzten die Lücken in der europäischen Marineabdeckung mit Präzision aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Für fast drei Jahrzehnte war sie die dominierende Kraft in ihrem Meeresabschnitt.",
+      "text_markdown": "Für fast drei Jahrzehnte war sie die dominierende Kraft in ihrem Meeresabschnitt.",
+      "tts": {
+        "text": "Für fast drei Jahrzehnte war sie die dominierende Kraft in ihrem Meeresabschnitt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Lösegeldwirtschaft, die sie verwaltete, war ausgeklügelt und gut organisiert.",
+      "text_markdown": "Die Lösegeldwirtschaft, die sie verwaltete, war ausgeklügelt und gut organisiert.",
+      "tts": {
+        "text": "Die Lösegeldwirtschaft, die sie verwaltete, war ausgeklügelt und gut organisiert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Preise wurden nach dem sozialen Rang des Gefangenen und der Zahlungsfähigkeit seiner Familie festgelegt.",
+      "text_markdown": "Die Preise wurden nach dem sozialen Rang des Gefangenen und der Zahlungsfähigkeit seiner Familie festgelegt.",
+      "tts": {
+        "text": "Die Preise wurden nach dem sozialen Rang des Gefangenen und der Zahlungsfähigkeit seiner Familie festgelegt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Verhandlungen konnten Monate oder sogar Jahre dauern.",
+      "text_markdown": "Verhandlungen konnten Monate oder sogar Jahre dauern.",
+      "tts": {
+        "text": "Verhandlungen konnten Monate oder sogar Jahre dauern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Einige Gefangene wurden während ihrer Gefangenschaft gut behandelt, während andere harte Bedingungen ertrugen.",
+      "text_markdown": "Einige Gefangene wurden während ihrer Gefangenschaft gut behandelt, während andere harte Bedingungen ertrugen.",
+      "tts": {
+        "text": "Einige Gefangene wurden während ihrer Gefangenschaft gut behandelt, während andere harte Bedingungen ertrugen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida sah ihre Korsarenaktivitäten nicht als Piraterie, sondern als Fortführung des Kampfes gegen die Reconquista.",
+      "text_markdown": "Sayyida sah ihre Korsarenaktivitäten nicht als Piraterie, sondern als Fortführung des Kampfes gegen die Reconquista.",
+      "tts": {
+        "text": "Sayyida sah ihre Korsarenaktivitäten nicht als Piraterie, sondern als Fortführung des Kampfes gegen die Reconquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Spanier hatten al-Andalus den Muslimen mit Gewalt genommen.",
+      "text_markdown": "Die Spanier hatten al-Andalus den Muslimen mit Gewalt genommen.",
+      "tts": {
+        "text": "Die Spanier hatten al-Andalus den Muslimen mit Gewalt genommen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In Sayyidas Sicht schlug sie einfach mit anderen Mitteln zurück.",
+      "text_markdown": "In Sayyidas Sicht schlug sie einfach mit anderen Mitteln zurück.",
+      "tts": {
+        "text": "In Sayyidas Sicht schlug sie einfach mit anderen Mitteln zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die souveräne Frau",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Rahmung gab ihren Handlungen in den Augen ihrer Gemeinschaft moralische Legitimität.",
+      "text_markdown": "Diese Rahmung gab ihren Handlungen in den Augen ihrer Gemeinschaft moralische Legitimität.",
+      "tts": {
+        "text": "Diese Rahmung gab ihren Handlungen in den Augen ihrer Gemeinschaft moralische Legitimität.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der Fall einer Königin",
+      "text_markdown": "Der Fall einer Königin"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida al-Hurras Macht war zwar beeindruckend, aber nicht unverwundbar.",
+      "text_markdown": "Sayyida al-Hurras Macht war zwar beeindruckend, aber nicht unverwundbar.",
+      "tts": {
+        "text": "Sayyida al-Hurras Macht war zwar beeindruckend, aber nicht unverwundbar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie hing von einem sorgfältigen Gleichgewicht aus Allianzen, militärischer Stärke und politischem Geschick ab.",
+      "text_markdown": "Sie hing von einem sorgfältigen Gleichgewicht aus Allianzen, militärischer Stärke und politischem Geschick ab.",
+      "tts": {
+        "text": "Sie hing von einem sorgfältigen Gleichgewicht aus Allianzen, militärischer Stärke und politischem Geschick ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Als sich dieses Gleichgewicht verschob, wurde ihre Position prekär.",
+      "text_markdown": "Als sich dieses Gleichgewicht verschob, wurde ihre Position prekär.",
+      "tts": {
+        "text": "Als sich dieses Gleichgewicht verschob, wurde ihre Position prekär.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Kräfte, die sie zu Fall bringen sollten, kamen nicht aus Europa, sondern aus ihrer eigenen Familie.",
+      "text_markdown": "Die Kräfte, die sie zu Fall bringen sollten, kamen nicht aus Europa, sondern aus ihrer eigenen Familie.",
+      "tts": {
+        "text": "Die Kräfte, die sie zu Fall bringen sollten, kamen nicht aus Europa, sondern aus ihrer eigenen Familie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Ehe mit dem Wattasiden-Sultan hatte ihr politischen Schutz geboten.",
+      "text_markdown": "Ihre Ehe mit dem Wattasiden-Sultan hatte ihr politischen Schutz geboten.",
+      "tts": {
+        "text": "Ihre Ehe mit dem Wattasiden-Sultan hatte ihr politischen Schutz geboten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aber die Wattasiden-Dynastie selbst schwächelte.",
+      "text_markdown": "Aber die Wattasiden-Dynastie selbst schwächelte.",
+      "tts": {
+        "text": "Aber die Wattasiden-Dynastie selbst schwächelte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rivalisierende Fraktionen kämpften innerhalb Marokkos um die Macht.",
+      "text_markdown": "Rivalisierende Fraktionen kämpften innerhalb Marokkos um die Macht.",
+      "tts": {
+        "text": "Rivalisierende Fraktionen kämpften innerhalb Marokkos um die Macht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Autorität des Sultans über entfernte Provinzen wie Tétouan wurde immer schwächer.",
+      "text_markdown": "Die Autorität des Sultans über entfernte Provinzen wie Tétouan wurde immer schwächer.",
+      "tts": {
+        "text": "Die Autorität des Sultans über entfernte Provinzen wie Tétouan wurde immer schwächer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyidas Stiefsohn, Moulay Ahmed al-Hassan al-Mandri, hatte eigene Ambitionen.",
+      "text_markdown": "Sayyidas Stiefsohn, Moulay Ahmed al-Hassan al-Mandri, hatte eigene Ambitionen.",
+      "tts": {
+        "text": "Sayyidas Stiefsohn, Moulay Ahmed al-Hassan al-Mandri, hatte eigene Ambitionen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er glaubte, dass Tétouan von einem Mann regiert werden sollte, nämlich von ihm selbst.",
+      "text_markdown": "Er glaubte, dass Tétouan von einem Mann regiert werden sollte, nämlich von ihm selbst.",
+      "tts": {
+        "text": "Er glaubte, dass Tétouan von einem Mann regiert werden sollte, nämlich von ihm selbst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er war verärgert über die lange Machtausübung seiner Stiefmutter.",
+      "text_markdown": "Er war verärgert über die lange Machtausübung seiner Stiefmutter.",
+      "tts": {
+        "text": "Er war verärgert über die lange Machtausübung seiner Stiefmutter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er begann, ihren Sturz zu planen.",
+      "text_markdown": "Er begann, ihren Sturz zu planen.",
+      "tts": {
+        "text": "Er begann, ihren Sturz zu planen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moulay Ahmed sammelte Anhänger unter denen, die mit Sayyidas Herrschaft unzufrieden waren.",
+      "text_markdown": "Moulay Ahmed sammelte Anhänger unter denen, die mit Sayyidas Herrschaft unzufrieden waren.",
+      "tts": {
+        "text": "Moulay Ahmed sammelte Anhänger unter denen, die mit Sayyidas Herrschaft unzufrieden waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Einige Männer in Tétouan fühlten sich unwohl, von einer Frau regiert zu werden, unabhängig von ihrer Kompetenz.",
+      "text_markdown": "Einige Männer in Tétouan fühlten sich unwohl, von einer Frau regiert zu werden, unabhängig von ihrer Kompetenz.",
+      "tts": {
+        "text": "Einige Männer in Tétouan fühlten sich unwohl, von einer Frau regiert zu werden, unabhängig von ihrer Kompetenz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Andere sahen eine Gelegenheit, für sich selbst Macht und Reichtum zu erlangen.",
+      "text_markdown": "Andere sahen eine Gelegenheit, für sich selbst Macht und Reichtum zu erlangen.",
+      "tts": {
+        "text": "Andere sahen eine Gelegenheit, für sich selbst Macht und Reichtum zu erlangen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Verschwörung wuchs im Verborgenen.",
+      "text_markdown": "Die Verschwörung wuchs im Verborgenen.",
+      "tts": {
+        "text": "Die Verschwörung wuchs im Verborgenen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um 1542 startete Moulay Ahmed einen Palastputsch gegen Sayyida.",
+      "text_markdown": "Um 1542 startete Moulay Ahmed einen Palastputsch gegen Sayyida.",
+      "tts": {
+        "text": "Um fünfzehnhundertzweiundvierzig startete Moulay Ahmed einen Palastputsch gegen Sayyida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Details des Putsches sind in den überlieferten Quellen nicht gut dokumentiert.",
+      "text_markdown": "Die Details des Putsches sind in den überlieferten Quellen nicht gut dokumentiert.",
+      "tts": {
+        "text": "Die Details des Putsches sind in den überlieferten Quellen nicht gut dokumentiert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bekannt ist, dass er die Kontrolle über Tétouan übernahm und Sayyida von der Macht entfernte.",
+      "text_markdown": "Bekannt ist, dass er die Kontrolle über Tétouan übernahm und Sayyida von der Macht entfernte.",
+      "tts": {
+        "text": "Bekannt ist, dass er die Kontrolle über Tétouan übernahm und Sayyida von der Macht entfernte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihre Herrschaft, die ungefähr drei Jahrzehnte gedauert hatte, war vorbei.",
+      "text_markdown": "Ihre Herrschaft, die ungefähr drei Jahrzehnte gedauert hatte, war vorbei.",
+      "tts": {
+        "text": "Ihre Herrschaft, die ungefähr drei Jahrzehnte gedauert hatte, war vorbei.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyida wurde ihres Titels, ihrer Autorität und ihres Reichtums beraubt.",
+      "text_markdown": "Sayyida wurde ihres Titels, ihrer Autorität und ihres Reichtums beraubt.",
+      "tts": {
+        "text": "Sayyida wurde ihres Titels, ihrer Autorität und ihres Reichtums beraubt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Korsarenflotte, die sie aufgebaut hatte, wurde ihr entzogen.",
+      "text_markdown": "Die Korsarenflotte, die sie aufgebaut hatte, wurde ihr entzogen.",
+      "tts": {
+        "text": "Die Korsarenflotte, die sie aufgebaut hatte, wurde ihr entzogen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie ging von einer der mächtigsten Personen Marokkos zu einer Privatperson ohne Einfluss über.",
+      "text_markdown": "Sie ging von einer der mächtigsten Personen Marokkos zu einer Privatperson ohne Einfluss über.",
+      "tts": {
+        "text": "Sie ging von einer der mächtigsten Personen Marokkos zu einer Privatperson ohne Einfluss über.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Fall war schnell und vollständig.",
+      "text_markdown": "Der Fall war schnell und vollständig.",
+      "tts": {
+        "text": "Der Fall war schnell und vollständig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach dem Machtverlust verschwand Sayyida fast vollständig aus den historischen Aufzeichnungen.",
+      "text_markdown": "Nach dem Machtverlust verschwand Sayyida fast vollständig aus den historischen Aufzeichnungen.",
+      "tts": {
+        "text": "Nach dem Machtverlust verschwand Sayyida fast vollständig aus den historischen Aufzeichnungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Keine zuverlässigen Quellen beschreiben ihr Leben nach dem Putsch.",
+      "text_markdown": "Keine zuverlässigen Quellen beschreiben ihr Leben nach dem Putsch.",
+      "tts": {
+        "text": "Keine zuverlässigen Quellen beschreiben ihr Leben nach dem Putsch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Möglicherweise zog sie sich nach Chefchaouen zurück, die Bergstadt, in der ihre Familie Wurzeln hatte.",
+      "text_markdown": "Möglicherweise zog sie sich nach Chefchaouen zurück, die Bergstadt, in der ihre Familie Wurzeln hatte.",
+      "tts": {
+        "text": "Möglicherweise zog sie sich nach Chefchaouen zurück, die Bergstadt, in der ihre Familie Wurzeln hatte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Möglicherweise verbrachte sie ihre verbleibenden Jahre in der Verborgenheit.",
+      "text_markdown": "Möglicherweise verbrachte sie ihre verbleibenden Jahre in der Verborgenheit.",
+      "tts": {
+        "text": "Möglicherweise verbrachte sie ihre verbleibenden Jahre in der Verborgenheit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historiker schätzen, dass Sayyida um 1561 starb, obwohl das Datum unsicher ist.",
+      "text_markdown": "Historiker schätzen, dass Sayyida um 1561 starb, obwohl das Datum unsicher ist.",
+      "tts": {
+        "text": "Historiker schätzen, dass Sayyida um fünfzehnhunderteinundsechzig starb, obwohl das Datum unsicher ist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wenn diese Schätzung stimmt, wurde sie ungefähr sechsundsiebzig Jahre alt.",
+      "text_markdown": "Wenn diese Schätzung stimmt, wurde sie ungefähr sechsundsiebzig Jahre alt.",
+      "tts": {
+        "text": "Wenn diese Schätzung stimmt, wurde sie ungefähr sechsundsiebzig Jahre alt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dies war ein außergewöhnlich langes Leben für die damalige Zeit.",
+      "text_markdown": "Dies war ein außergewöhnlich langes Leben für die damalige Zeit.",
+      "tts": {
+        "text": "Dies war ein außergewöhnlich langes Leben für die damalige Zeit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aber über ihre letzten Jahre ist nichts bekannt.",
+      "text_markdown": "Aber über ihre letzten Jahre ist nichts bekannt.",
+      "tts": {
+        "text": "Aber über ihre letzten Jahre ist nichts bekannt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Stadt Tétouan blieb auch nach Sayyidas Sturz ein Zentrum der Korsarenaktivität.",
+      "text_markdown": "Die Stadt Tétouan blieb auch nach Sayyidas Sturz ein Zentrum der Korsarenaktivität.",
+      "tts": {
+        "text": "Die Stadt Tétouan blieb auch nach Sayyidas Sturz ein Zentrum der Korsarenaktivität.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aber sie hatte nie wieder eine Anführerin ihres Kalibers.",
+      "text_markdown": "Aber sie hatte nie wieder eine Anführerin ihres Kalibers.",
+      "tts": {
+        "text": "Aber sie hatte nie wieder eine Anführerin ihres Kalibers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihren Nachfolgern fehlten ihr politisches Geschick und ihr Netzwerk internationaler Allianzen.",
+      "text_markdown": "Ihren Nachfolgern fehlten ihr politisches Geschick und ihr Netzwerk internationaler Allianzen.",
+      "tts": {
+        "text": "Ihren Nachfolgern fehlten ihr politisches Geschick und ihr Netzwerk internationaler Allianzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das goldene Zeitalter Tétouans als Piratenmacht endete mit ihr.",
+      "text_markdown": "Das goldene Zeitalter Tétouans als Piratenmacht endete mit ihr.",
+      "tts": {
+        "text": "Das goldene Zeitalter Tétouans als Piratenmacht endete mit ihr.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auch der breitere politische Kontext wandte sich gegen die Mittelmeerpiraterie.",
+      "text_markdown": "Auch der breitere politische Kontext wandte sich gegen die Mittelmeerpiraterie.",
+      "tts": {
+        "text": "Auch der breitere politische Kontext wandte sich gegen die Mittelmeerpiraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanien baute eine immer größere Marine zum Schutz seiner atlantischen Handelsrouten auf.",
+      "text_markdown": "Spanien baute eine immer größere Marine zum Schutz seiner atlantischen Handelsrouten auf.",
+      "tts": {
+        "text": "Spanien baute eine immer größere Marine zum Schutz seiner atlantischen Handelsrouten auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Osmanische Reich, das die nordafrikanischen Korsaren unterstützt hatte, begann seinen langen Niedergang.",
+      "text_markdown": "Das Osmanische Reich, das die nordafrikanischen Korsaren unterstützt hatte, begann seinen langen Niedergang.",
+      "tts": {
+        "text": "Das Osmanische Reich, das die nordafrikanischen Korsaren unterstützt hatte, begann seinen langen Niedergang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Welt, die Sayyidas Karriere ermöglicht hatte, verschwand langsam.",
+      "text_markdown": "Die Welt, die Sayyidas Karriere ermöglicht hatte, verschwand langsam.",
+      "tts": {
+        "text": "Die Welt, die Sayyidas Karriere ermöglicht hatte, verschwand langsam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihr Sturz war eine Erinnerung an die Zerbrechlichkeit der Macht in der vormodernen Welt.",
+      "text_markdown": "Ihr Sturz war eine Erinnerung an die Zerbrechlichkeit der Macht in der vormodernen Welt.",
+      "tts": {
+        "text": "Ihr Sturz war eine Erinnerung an die Zerbrechlichkeit der Macht in der vormodernen Welt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selbst eine so fähige Herrscherin wie Sayyida konnte von einem entschlossenen Rivalen mit den richtigen Verbindungen gestürzt werden.",
+      "text_markdown": "Selbst eine so fähige Herrscherin wie Sayyida konnte von einem entschlossenen Rivalen mit den richtigen Verbindungen gestürzt werden.",
+      "tts": {
+        "text": "Selbst eine so fähige Herrscherin wie Sayyida konnte von einem entschlossenen Rivalen mit den richtigen Verbindungen gestürzt werden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In einer Welt ohne verfassungsmäßige Schutzmechanismen hing die Macht ausschließlich von persönlichen Allianzen und militärischer Stärke ab.",
+      "text_markdown": "In einer Welt ohne verfassungsmäßige Schutzmechanismen hing die Macht ausschließlich von persönlichen Allianzen und militärischer Stärke ab.",
+      "tts": {
+        "text": "In einer Welt ohne verfassungsmäßige Schutzmechanismen hing die Macht ausschließlich von persönlichen Allianzen und militärischer Stärke ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Fall einer Königin",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wenn diese versagten, konnte selbst eine Königin fallen.",
+      "text_markdown": "Wenn diese versagten, konnte selbst eine Königin fallen.",
+      "tts": {
+        "text": "Wenn diese versagten, konnte selbst eine Königin fallen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Vermächtnis der freien Frau",
+      "text_markdown": "Das Vermächtnis der freien Frau"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Vermächtnis von Sayyida al-Hurra ist in den letzten Jahrzehnten erheblich gewachsen.",
+      "text_markdown": "Das Vermächtnis von Sayyida al-Hurra ist in den letzten Jahrzehnten erheblich gewachsen.",
+      "tts": {
+        "text": "Das Vermächtnis von Sayyida al-Hurra ist in den letzten Jahrzehnten erheblich gewachsen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jahrhundertelang war sie außerhalb Marokkos weitgehend vergessen.",
+      "text_markdown": "Jahrhundertelang war sie außerhalb Marokkos weitgehend vergessen.",
+      "tts": {
+        "text": "Jahrhundertelang war sie außerhalb Marokkos weitgehend vergessen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Europäische Geschichten der Piraterie konzentrierten sich fast ausschließlich auf männliche Piraten in der Karibik.",
+      "text_markdown": "Europäische Geschichten der Piraterie konzentrierten sich fast ausschließlich auf männliche Piraten in der Karibik.",
+      "tts": {
+        "text": "Europäische Geschichten der Piraterie konzentrierten sich fast ausschließlich auf männliche Piraten in der Karibik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyidas Geschichte wurde hauptsächlich in der marokkanischen mündlichen Überlieferung und arabischsprachigen Geschichtswerken bewahrt.",
+      "text_markdown": "Sayyidas Geschichte wurde hauptsächlich in der marokkanischen mündlichen Überlieferung und arabischsprachigen Geschichtswerken bewahrt.",
+      "tts": {
+        "text": "Sayyidas Geschichte wurde hauptsächlich in der marokkanischen mündlichen Überlieferung und arabischsprachigen Geschichtswerken bewahrt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moderne Historiker haben begonnen, ihre Geschichte wiederzuentdecken und zu feiern.",
+      "text_markdown": "Moderne Historiker haben begonnen, ihre Geschichte wiederzuentdecken und zu feiern.",
+      "tts": {
+        "text": "Moderne Historiker haben begonnen, ihre Geschichte wiederzuentdecken und zu feiern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie wird heute als eine der bemerkenswertesten Figuren der Ära der Mittelmeerpiraterie anerkannt.",
+      "text_markdown": "Sie wird heute als eine der bemerkenswertesten Figuren der Ära der Mittelmeerpiraterie anerkannt.",
+      "tts": {
+        "text": "Sie wird heute als eine der bemerkenswertesten Figuren der Ära der Mittelmeerpiraterie anerkannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Leistung, drei Jahrzehnte lang unabhängige Macht zu halten, gilt als außerordentlich.",
+      "text_markdown": "Ihre Leistung, drei Jahrzehnte lang unabhängige Macht zu halten, gilt als außerordentlich.",
+      "tts": {
+        "text": "Ihre Leistung, drei Jahrzehnte lang unabhängige Macht zu halten, gilt als außerordentlich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie wird als Beispiel weiblicher Führung in einer Zeit studiert, in der solche Führung äußerst selten war.",
+      "text_markdown": "Sie wird als Beispiel weiblicher Führung in einer Zeit studiert, in der solche Führung äußerst selten war.",
+      "tts": {
+        "text": "Sie wird als Beispiel weiblicher Führung in einer Zeit studiert, in der solche Führung äußerst selten war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Marokko wird Sayyida als Nationalheldin verehrt.",
+      "text_markdown": "In Marokko wird Sayyida als Nationalheldin verehrt.",
+      "tts": {
+        "text": "In Marokko wird Sayyida als Nationalheldin verehrt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie steht für den Widerstand der andalusischen Flüchtlinge, die sich weigerten, ihre Enteignung hinzunehmen.",
+      "text_markdown": "Sie steht für den Widerstand der andalusischen Flüchtlinge, die sich weigerten, ihre Enteignung hinzunehmen.",
+      "tts": {
+        "text": "Sie steht für den Widerstand der andalusischen Flüchtlinge, die sich weigerten, ihre Enteignung hinzunehmen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Stadt Tétouan ehrt ihr Andenken bis heute.",
+      "text_markdown": "Die Stadt Tétouan ehrt ihr Andenken bis heute.",
+      "tts": {
+        "text": "Die Stadt Tétouan ehrt ihr Andenken bis heute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihre Geschichte wird in marokkanischen Schulen als Beispiel für Mut und Unabhängigkeit gelehrt.",
+      "text_markdown": "Ihre Geschichte wird in marokkanischen Schulen als Beispiel für Mut und Unabhängigkeit gelehrt.",
+      "tts": {
+        "text": "Ihre Geschichte wird in marokkanischen Schulen als Beispiel für Mut und Unabhängigkeit gelehrt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sayyidas Bündnis mit Barbarossa ist historisch bedeutsam.",
+      "text_markdown": "Sayyidas Bündnis mit Barbarossa ist historisch bedeutsam.",
+      "tts": {
+        "text": "Sayyidas Bündnis mit Barbarossa ist historisch bedeutsam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es zeigt, dass die Welt der Mittelmeerpiraterie nicht nur eine Ansammlung einzelner Plünderer war.",
+      "text_markdown": "Es zeigt, dass die Welt der Mittelmeerpiraterie nicht nur eine Ansammlung einzelner Plünderer war.",
+      "tts": {
+        "text": "Es zeigt, dass die Welt der Mittelmeerpiraterie nicht nur eine Ansammlung einzelner Plünderer war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es war ein strategisches Netzwerk, koordiniert über große Entfernungen.",
+      "text_markdown": "Es war ein strategisches Netzwerk, koordiniert über große Entfernungen.",
+      "tts": {
+        "text": "Es war ein strategisches Netzwerk, koordiniert über große Entfernungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida spielte eine zentrale Rolle in diesem Netzwerk zu einer Zeit, als das Mittelmeer das umkämpfteste Meer der Welt war.",
+      "text_markdown": "Sayyida spielte eine zentrale Rolle in diesem Netzwerk zu einer Zeit, als das Mittelmeer das umkämpfteste Meer der Welt war.",
+      "tts": {
+        "text": "Sayyida spielte eine zentrale Rolle in diesem Netzwerk zu einer Zeit, als das Mittelmeer das umkämpfteste Meer der Welt war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Geschichte beleuchtet auch die komplexe Beziehung zwischen Piraterie und Staatskunst.",
+      "text_markdown": "Ihre Geschichte beleuchtet auch die komplexe Beziehung zwischen Piraterie und Staatskunst.",
+      "tts": {
+        "text": "Ihre Geschichte beleuchtet auch die komplexe Beziehung zwischen Piraterie und Staatskunst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayyida war gleichzeitig Königin, Piratin und Diplomatin.",
+      "text_markdown": "Sayyida war gleichzeitig Königin, Piratin und Diplomatin.",
+      "tts": {
+        "text": "Sayyida war gleichzeitig Königin, Piratin und Diplomatin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie nutzte Korsarenaktivität als Werkzeug der Außenpolitik, nicht bloß als Mittel, um reich zu werden.",
+      "text_markdown": "Sie nutzte Korsarenaktivität als Werkzeug der Außenpolitik, nicht bloß als Mittel, um reich zu werden.",
+      "tts": {
+        "text": "Sie nutzte Korsarenaktivität als Werkzeug der Außenpolitik, nicht bloß als Mittel, um reich zu werden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihre Karriere zeigt, dass die Grenze zwischen Piraterie und legitimem Krieg im Mittelmeer ebenso verschwommen war wie in der Karibik.",
+      "text_markdown": "Ihre Karriere zeigt, dass die Grenze zwischen Piraterie und legitimem Krieg im Mittelmeer ebenso verschwommen war wie in der Karibik.",
+      "tts": {
+        "text": "Ihre Karriere zeigt, dass die Grenze zwischen Piraterie und legitimem Krieg im Mittelmeer ebenso verschwommen war wie in der Karibik.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Titel al-Hurra bleibt ihr beständigstes Symbol.",
+      "text_markdown": "Der Titel al-Hurra bleibt ihr beständigstes Symbol.",
+      "tts": {
+        "text": "Der Titel al-Hurra bleibt ihr beständigstes Symbol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er bedeutete die freie Frau, die souveräne Frau, die Frau, die niemandem Rechenschaft schuldet.",
+      "text_markdown": "Er bedeutete die freie Frau, die souveräne Frau, die Frau, die niemandem Rechenschaft schuldet.",
+      "tts": {
+        "text": "Er bedeutete die freie Frau, die souveräne Frau, die Frau, die niemandem Rechenschaft schuldet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Keine Frau in der islamischen Welt hat diesen Titel seither getragen.",
+      "text_markdown": "Keine Frau in der islamischen Welt hat diesen Titel seither getragen.",
+      "tts": {
+        "text": "Keine Frau in der islamischen Welt hat diesen Titel seither getragen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayyida al-Hurra steht allein in der Geschichte, die Letzte ihrer Art.",
+      "text_markdown": "Sayyida al-Hurra steht allein in der Geschichte, die Letzte ihrer Art.",
+      "tts": {
+        "text": "Sayyida al-Hurra steht allein in der Geschichte, die Letzte ihrer Art.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heute suchen Gelehrte weiter nach neuen Dokumenten, die mehr über ihr Leben enthüllen könnten.",
+      "text_markdown": "Heute suchen Gelehrte weiter nach neuen Dokumenten, die mehr über ihr Leben enthüllen könnten.",
+      "tts": {
+        "text": "Heute suchen Gelehrte weiter nach neuen Dokumenten, die mehr über ihr Leben enthüllen könnten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Archive in Marokko, Spanien und Portugal bergen möglicherweise noch unentdeckte Briefe, Verträge und Berichte.",
+      "text_markdown": "Archive in Marokko, Spanien und Portugal bergen möglicherweise noch unentdeckte Briefe, Verträge und Berichte.",
+      "tts": {
+        "text": "Archive in Marokko, Spanien und Portugal bergen möglicherweise noch unentdeckte Briefe, Verträge und Berichte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jede neue Entdeckung fügt ein weiteres Stück zum Puzzle dieser außergewöhnlichen Frau hinzu.",
+      "text_markdown": "Jede neue Entdeckung fügt ein weiteres Stück zum Puzzle dieser außergewöhnlichen Frau hinzu.",
+      "tts": {
+        "text": "Jede neue Entdeckung fügt ein weiteres Stück zum Puzzle dieser außergewöhnlichen Frau hinzu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Das Vermächtnis der freien Frau",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die vollständige Geschichte von Sayyida al-Hurra muss noch geschrieben werden.",
+      "text_markdown": "Die vollständige Geschichte von Sayyida al-Hurra muss noch geschrieben werden.",
+      "tts": {
+        "text": "Die vollständige Geschichte von Sayyida al-Hurra muss noch geschrieben werden.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

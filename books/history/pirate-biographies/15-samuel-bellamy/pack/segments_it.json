@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_samuel_bellamy",
+  "language": "it",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Una nota per il lettore",
+      "text_markdown": "Una nota per il lettore"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la storia di Samuel Bellamy, un pirata che si definiva il Robin Hood del mare.",
+      "text_markdown": "Questa è la storia di Samuel Bellamy, un pirata che si definiva il Robin Hood del mare.",
+      "tts": {
+        "text": "Questa è la storia di Samuel Bellamy, un pirata che si definiva il Robin Hood del mare.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua carriera durò appena un anno, ma lasciò un segno nella storia che perdura ancora oggi.",
+      "text_markdown": "La sua carriera durò appena un anno, ma lasciò un segno nella storia che perdura ancora oggi.",
+      "tts": {
+        "text": "La sua carriera durò appena un anno, ma lasciò un segno nella storia che perdura ancora oggi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy fu uno dei pirati di maggior successo dell'Età d'oro.",
+      "text_markdown": "Bellamy fu uno dei pirati di maggior successo dell'Età d'oro.",
+      "tts": {
+        "text": "Bellamy fu uno dei pirati di maggior successo dell'Età d'oro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Catturò oltre cinquanta navi in soli undici mesi.",
+      "text_markdown": "Catturò oltre cinquanta navi in soli undici mesi.",
+      "tts": {
+        "text": "Catturò oltre cinquanta navi in soli undici mesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pronunciò discorsi sulla giustizia, la disuguaglianza e l'ipocrisia della classe dominante.",
+      "text_markdown": "Pronunciò discorsi sulla giustizia, la disuguaglianza e l'ipocrisia della classe dominante.",
+      "tts": {
+        "text": "Pronunciò discorsi sulla giustizia, la disuguaglianza e l'ipocrisia della classe dominante.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morì in una tempesta al largo di Cape Cod all'età di 28 anni.",
+      "text_markdown": "Morì in una tempesta al largo di Cape Cod all'età di 28 anni.",
+      "tts": {
+        "text": "Morì in una tempesta al largo di Cape Cod all'età di ventotto anni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua nave ammiraglia, la Whydah, affondò con lui e rimase sul fondo dell'oceano per oltre 260 anni.",
+      "text_markdown": "La sua nave ammiraglia, la Whydah, affondò con lui e rimase sul fondo dell'oceano per oltre 260 anni.",
+      "tts": {
+        "text": "La sua nave ammiraglia, la Whydah, affondò con lui e rimase sul fondo dell'oceano per oltre duecentosessanta anni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1984, un esploratore di nome Barry Clifford trovò il relitto.",
+      "text_markdown": "Nel 1984, un esploratore di nome Barry Clifford trovò il relitto.",
+      "tts": {
+        "text": "Nel millenovecentottantaquattro, un esploratore di nome Barry Clifford trovò il relitto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rimane l'unico relitto pirata autenticato mai scoperto.",
+      "text_markdown": "Rimane l'unico relitto pirata autenticato mai scoperto.",
+      "tts": {
+        "text": "Rimane l'unico relitto pirata autenticato mai scoperto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I manufatti recuperati dalla Whydah hanno trasformato la nostra comprensione della vita dei pirati.",
+      "text_markdown": "I manufatti recuperati dalla Whydah hanno trasformato la nostra comprensione della vita dei pirati.",
+      "tts": {
+        "text": "I manufatti recuperati dalla Whydah hanno trasformato la nostra comprensione della vita dei pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per il lettore",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Questa è la storia dietro quei manufatti e dell'uomo la cui nave li portò sul fondo del mare.",
+      "text_markdown": "Questa è la storia dietro quei manufatti e dell'uomo la cui nave li portò sul fondo del mare.",
+      "tts": {
+        "text": "Questa è la storia dietro quei manufatti e dell'uomo la cui nave li portò sul fondo del mare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "L'età d'oro della pirateria",
+      "text_markdown": "L'età d'oro della pirateria"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I primi anni del Settecento sono noti come l'Età d'oro della pirateria.",
+      "text_markdown": "I primi anni del Settecento sono noti come l'Età d'oro della pirateria.",
+      "tts": {
+        "text": "I primi anni del Settecento sono noti come l'Età d'oro della pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In questo periodo, migliaia di uomini si diedero alla pirateria nell'Oceano Atlantico e nel Mar dei Caraibi.",
+      "text_markdown": "In questo periodo, migliaia di uomini si diedero alla pirateria nell'Oceano Atlantico e nel Mar dei Caraibi.",
+      "tts": {
+        "text": "In questo periodo, migliaia di uomini si diedero alla pirateria nell'Oceano Atlantico e nel Mar dei Caraibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Predavano navi mercantili che trasportavano zucchero, tabacco, tessuti e persone ridotte in schiavitù.",
+      "text_markdown": "Predavano navi mercantili che trasportavano zucchero, tabacco, tessuti e persone ridotte in schiavitù.",
+      "tts": {
+        "text": "Predavano navi mercantili che trasportavano zucchero, tabacco, tessuti e persone ridotte in schiavitù.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'Età d'oro iniziò approssimativamente intorno al 1715 e durò fino alla metà degli anni 1720.",
+      "text_markdown": "L'Età d'oro iniziò approssimativamente intorno al 1715 e durò fino alla metà degli anni 1720.",
+      "tts": {
+        "text": "L'Età d'oro iniziò approssimativamente intorno al millesettecentoquindici e durò fino alla metà degli anni millesettecentoventi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu innescata dalla fine della Guerra di successione spagnola.",
+      "text_markdown": "Fu innescata dalla fine della Guerra di successione spagnola.",
+      "tts": {
+        "text": "Fu innescata dalla fine della Guerra di successione spagnola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quando la guerra finì, migliaia di marinai si trovarono improvvisamente senza lavoro.",
+      "text_markdown": "Quando la guerra finì, migliaia di marinai si trovarono improvvisamente senza lavoro.",
+      "tts": {
+        "text": "Quando la guerra finì, migliaia di marinai si trovarono improvvisamente senza lavoro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Guerra di successione spagnola era durata oltre un decennio.",
+      "text_markdown": "La Guerra di successione spagnola era durata oltre un decennio.",
+      "tts": {
+        "text": "La Guerra di successione spagnola era durata oltre un decennio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Coinvolse quasi tutte le grandi potenze europee nella lotta per chi avrebbe ereditato il trono spagnolo.",
+      "text_markdown": "Coinvolse quasi tutte le grandi potenze europee nella lotta per chi avrebbe ereditato il trono spagnolo.",
+      "tts": {
+        "text": "Coinvolse quasi tutte le grandi potenze europee nella lotta per chi avrebbe ereditato il trono spagnolo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il conflitto si estese alle colonie, dove fu combattuto in mare quanto sulla terraferma.",
+      "text_markdown": "Il conflitto si estese alle colonie, dove fu combattuto in mare quanto sulla terraferma.",
+      "tts": {
+        "text": "Il conflitto si estese alle colonie, dove fu combattuto in mare quanto sulla terraferma.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante la guerra, molti marinai avevano servito come corsari, saccheggiando navi nemiche per conto dei loro governi.",
+      "text_markdown": "Durante la guerra, molti marinai avevano servito come corsari, saccheggiando navi nemiche per conto dei loro governi.",
+      "tts": {
+        "text": "Durante la guerra, molti marinai avevano servito come corsari, saccheggiando navi nemiche per conto dei loro governi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ora che la pace era arrivata, non c'erano più lettere di corsa.",
+      "text_markdown": "Ora che la pace era arrivata, non c'erano più lettere di corsa.",
+      "tts": {
+        "text": "Ora che la pace era arrivata, non c'erano più lettere di corsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le competenze apprese in guerra non avevano alcun uso legale in tempo di pace.",
+      "text_markdown": "Le competenze apprese in guerra non avevano alcun uso legale in tempo di pace.",
+      "tts": {
+        "text": "Le competenze apprese in guerra non avevano alcun uso legale in tempo di pace.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vita di un marinaio comune nei primi anni del Settecento era dura e mal pagata.",
+      "text_markdown": "La vita di un marinaio comune nei primi anni del Settecento era dura e mal pagata.",
+      "tts": {
+        "text": "La vita di un marinaio comune nei primi anni del Settecento era dura e mal pagata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I capitani mercantili governavano le loro navi come tiranni.",
+      "text_markdown": "I capitani mercantili governavano le loro navi come tiranni.",
+      "tts": {
+        "text": "I capitani mercantili governavano le loro navi come tiranni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fustigazione, salari da fame e condizioni di lavoro pericolose erano la norma.",
+      "text_markdown": "Fustigazione, salari da fame e condizioni di lavoro pericolose erano la norma.",
+      "tts": {
+        "text": "Fustigazione, salari da fame e condizioni di lavoro pericolose erano la norma.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un marinaio comune guadagnava circa una sterlina al mese.",
+      "text_markdown": "Un marinaio comune guadagnava circa una sterlina al mese.",
+      "tts": {
+        "text": "Un marinaio comune guadagnava circa una sterlina al mese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un pirata di successo poteva guadagnare altrettanto in un solo giorno.",
+      "text_markdown": "Un pirata di successo poteva guadagnare altrettanto in un solo giorno.",
+      "tts": {
+        "text": "Un pirata di successo poteva guadagnare altrettanto in un solo giorno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'incentivo economico a diventare pirata era schiacciante per uomini che non avevano nulla da perdere.",
+      "text_markdown": "L'incentivo economico a diventare pirata era schiacciante per uomini che non avevano nulla da perdere.",
+      "tts": {
+        "text": "L'incentivo economico a diventare pirata era schiacciante per uomini che non avevano nulla da perdere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti marinai vedevano nella pirateria una via di fuga da questa crudeltà.",
+      "text_markdown": "Molti marinai vedevano nella pirateria una via di fuga da questa crudeltà.",
+      "tts": {
+        "text": "Molti marinai vedevano nella pirateria una via di fuga da questa crudeltà.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su una nave pirata, il capitano veniva eletto dall'equipaggio.",
+      "text_markdown": "Su una nave pirata, il capitano veniva eletto dall'equipaggio.",
+      "tts": {
+        "text": "Su una nave pirata, il capitano veniva eletto dall'equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il bottino veniva diviso secondo regole concordate, e ogni uomo aveva diritto di voto.",
+      "text_markdown": "Il bottino veniva diviso secondo regole concordate, e ogni uomo aveva diritto di voto.",
+      "tts": {
+        "text": "Il bottino veniva diviso secondo regole concordate, e ogni uomo aveva diritto di voto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le navi pirata erano, per molti aspetti, piccole democrazie galleggianti.",
+      "text_markdown": "Le navi pirata erano, per molti aspetti, piccole democrazie galleggianti.",
+      "tts": {
+        "text": "Le navi pirata erano, per molti aspetti, piccole democrazie galleggianti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avevano codici di condotta scritti, ufficiali eletti e sistemi per risarcire i membri dell'equipaggio feriti.",
+      "text_markdown": "Avevano codici di condotta scritti, ufficiali eletti e sistemi per risarcire i membri dell'equipaggio feriti.",
+      "tts": {
+        "text": "Avevano codici di condotta scritti, ufficiali eletti e sistemi per risarcire i membri dell'equipaggio feriti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Queste pratiche erano straordinarie per un'epoca in cui la gente comune non aveva quasi alcun diritto politico.",
+      "text_markdown": "Queste pratiche erano straordinarie per un'epoca in cui la gente comune non aveva quasi alcun diritto politico.",
+      "tts": {
+        "text": "Queste pratiche erano straordinarie per un'epoca in cui la gente comune non aveva quasi alcun diritto politico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le Bahamas divennero la capitale non ufficiale del mondo pirata.",
+      "text_markdown": "Le Bahamas divennero la capitale non ufficiale del mondo pirata.",
+      "tts": {
+        "text": "Le Bahamas divennero la capitale non ufficiale del mondo pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La città di Nassau sull'isola di New Providence era un rifugio senza legge.",
+      "text_markdown": "La città di Nassau sull'isola di New Providence era un rifugio senza legge.",
+      "tts": {
+        "text": "La città di Nassau sull'isola di New Providence era un rifugio senza legge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Centinaia di pirati vivevano lì apertamente, senza un governatore o una guarnigione a fermarli.",
+      "text_markdown": "Centinaia di pirati vivevano lì apertamente, senza un governatore o una guarnigione a fermarli.",
+      "tts": {
+        "text": "Centinaia di pirati vivevano lì apertamente, senza un governatore o una guarnigione a fermarli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le potenze coloniali erano determinate a sradicare la pirateria.",
+      "text_markdown": "Le potenze coloniali erano determinate a sradicare la pirateria.",
+      "tts": {
+        "text": "Le potenze coloniali erano determinate a sradicare la pirateria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli attacchi pirata interrompevano il commercio e costavano ai mercanti somme enormi.",
+      "text_markdown": "Gli attacchi pirata interrompevano il commercio e costavano ai mercanti somme enormi.",
+      "tts": {
+        "text": "Gli attacchi pirata interrompevano il commercio e costavano ai mercanti somme enormi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I governi offrivano ricompense per la cattura dei pirati e inviavano navi da guerra a dar loro la caccia.",
+      "text_markdown": "I governi offrivano ricompense per la cattura dei pirati e inviavano navi da guerra a dar loro la caccia.",
+      "tts": {
+        "text": "I governi offrivano ricompense per la cattura dei pirati e inviavano navi da guerra a dar loro la caccia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'Inghilterra in particolare era aggressiva nel perseguire i pirati.",
+      "text_markdown": "L'Inghilterra in particolare era aggressiva nel perseguire i pirati.",
+      "tts": {
+        "text": "L'Inghilterra in particolare era aggressiva nel perseguire i pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I pirati catturati venivano processati nei tribunali dell'ammiragliato e quasi sempre impiccati.",
+      "text_markdown": "I pirati catturati venivano processati nei tribunali dell'ammiragliato e quasi sempre impiccati.",
+      "tts": {
+        "text": "I pirati catturati venivano processati nei tribunali dell'ammiragliato e quasi sempre impiccati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I loro corpi venivano talvolta esposti in gabbie di ferro agli ingressi dei porti come monito per gli altri.",
+      "text_markdown": "I loro corpi venivano talvolta esposti in gabbie di ferro agli ingressi dei porti come monito per gli altri.",
+      "tts": {
+        "text": "I loro corpi venivano talvolta esposti in gabbie di ferro agli ingressi dei porti come monito per gli altri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La tratta atlantica degli schiavi era al suo apice durante quest'epoca.",
+      "text_markdown": "La tratta atlantica degli schiavi era al suo apice durante quest'epoca.",
+      "tts": {
+        "text": "La tratta atlantica degli schiavi era al suo apice durante quest'epoca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le navi trasportavano africani ridotti in schiavitù dall'Africa occidentale ai Caraibi e alle colonie americane.",
+      "text_markdown": "Le navi trasportavano africani ridotti in schiavitù dall'Africa occidentale ai Caraibi e alle colonie americane.",
+      "tts": {
+        "text": "Le navi trasportavano africani ridotti in schiavitù dall'Africa occidentale ai Caraibi e alle colonie americane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Queste navi negriere erano bersagli frequenti dei pirati perché trasportavano merci preziose.",
+      "text_markdown": "Queste navi negriere erano bersagli frequenti dei pirati perché trasportavano merci preziose.",
+      "tts": {
+        "text": "Queste navi negriere erano bersagli frequenti dei pirati perché trasportavano merci preziose.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La nave che sarebbe diventata l'ammiraglia di Bellamy era una di queste imbarcazioni.",
+      "text_markdown": "La nave che sarebbe diventata l'ammiraglia di Bellamy era una di queste imbarcazioni.",
+      "tts": {
+        "text": "La nave che sarebbe diventata l'ammiraglia di Bellamy era una di queste imbarcazioni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Whydah Gally era una nave negriera costruita a Londra e intitolata al porto commerciale dell'Africa occidentale di Ouidah.",
+      "text_markdown": "La Whydah Gally era una nave negriera costruita a Londra e intitolata al porto commerciale dell'Africa occidentale di Ouidah.",
+      "tts": {
+        "text": "La Whydah Gally era una nave negriera costruita a Londra e intitolata al porto commerciale dell'Africa occidentale di Ouidah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le acque al largo della costa del New England erano sorprendentemente attive come terreni di caccia pirata.",
+      "text_markdown": "Le acque al largo della costa del New England erano sorprendentemente attive come terreni di caccia pirata.",
+      "tts": {
+        "text": "Le acque al largo della costa del New England erano sorprendentemente attive come terreni di caccia pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le navi che viaggiavano tra le colonie e l'Europa attraversavano costantemente queste acque.",
+      "text_markdown": "Le navi che viaggiavano tra le colonie e l'Europa attraversavano costantemente queste acque.",
+      "tts": {
+        "text": "Le navi che viaggiavano tra le colonie e l'Europa attraversavano costantemente queste acque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cape Cod, con i suoi pericolosi bassifondi e le sue barre di sabbia mobili, era un cimitero per navi di ogni tipo.",
+      "text_markdown": "Cape Cod, con i suoi pericolosi bassifondi e le sue barre di sabbia mobili, era un cimitero per navi di ogni tipo.",
+      "tts": {
+        "text": "Cape Cod, con i suoi pericolosi bassifondi e le sue barre di sabbia mobili, era un cimitero per navi di ogni tipo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La gente che viveva a Cape Cod nei primi anni del Settecento conosceva bene i naufragi.",
+      "text_markdown": "La gente che viveva a Cape Cod nei primi anni del Settecento conosceva bene i naufragi.",
+      "tts": {
+        "text": "La gente che viveva a Cape Cod nei primi anni del Settecento conosceva bene i naufragi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Recuperavano legname, merci e sartiame dalle navi naufragate come parte regolare della vita.",
+      "text_markdown": "Recuperavano legname, merci e sartiame dalle navi naufragate come parte regolare della vita.",
+      "tts": {
+        "text": "Recuperavano legname, merci e sartiame dalle navi naufragate come parte regolare della vita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si diceva che alcuni attirassero le navi sugli scogli con falsi fuochi di segnalazione.",
+      "text_markdown": "Si diceva che alcuni attirassero le navi sugli scogli con falsi fuochi di segnalazione.",
+      "tts": {
+        "text": "Si diceva che alcuni attirassero le navi sugli scogli con falsi fuochi di segnalazione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fu questo mondo di povertà, disuguaglianza e violenza marittima a produrre Samuel Bellamy.",
+      "text_markdown": "Fu questo mondo di povertà, disuguaglianza e violenza marittima a produrre Samuel Bellamy.",
+      "tts": {
+        "text": "Fu questo mondo di povertà, disuguaglianza e violenza marittima a produrre Samuel Bellamy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "L'età d'oro della pirateria",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Veniva dal nulla e per un breve anno prese tutto ciò che poteva.",
+      "text_markdown": "Veniva dal nulla e per un breve anno prese tutto ciò che poteva.",
+      "tts": {
+        "text": "Veniva dal nulla e per un breve anno prese tutto ciò che poteva.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il ragazzo del Devon",
+      "text_markdown": "Il ragazzo del Devon"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samuel Bellamy nacque nella contea del Devon, nell'Inghilterra sudoccidentale.",
+      "text_markdown": "Samuel Bellamy nacque nella contea del Devon, nell'Inghilterra sudoccidentale.",
+      "tts": {
+        "text": "Samuel Bellamy nacque nella contea del Devon, nell'Inghilterra sudoccidentale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'anno più probabile della sua nascita fu il 1689, sebbene non sia stato trovato alcun registro battesimale.",
+      "text_markdown": "L'anno più probabile della sua nascita fu il 1689, sebbene non sia stato trovato alcun registro battesimale.",
+      "tts": {
+        "text": "L'anno più probabile della sua nascita fu il milleseicentottantanove, sebbene non sia stato trovato alcun registro battesimale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Devon era una contea marittima con una lunga tradizione nella formazione di marinai, pescatori e capitani di mare.",
+      "text_markdown": "Il Devon era una contea marittima con una lunga tradizione nella formazione di marinai, pescatori e capitani di mare.",
+      "tts": {
+        "text": "Il Devon era una contea marittima con una lunga tradizione nella formazione di marinai, pescatori e capitani di mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sir Francis Drake, uno dei più famosi navigatori inglesi, era nato lì oltre un secolo prima.",
+      "text_markdown": "Sir Francis Drake, uno dei più famosi navigatori inglesi, era nato lì oltre un secolo prima.",
+      "tts": {
+        "text": "Sir Francis Drake, uno dei più famosi navigatori inglesi, era nato lì oltre un secolo prima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il mare era intrecciato nell'identità della regione.",
+      "text_markdown": "Il mare era intrecciato nell'identità della regione.",
+      "tts": {
+        "text": "Il mare era intrecciato nell'identità della regione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le città costiere del Devon erano animate da pescherecci, navi mercantili e navi da guerra.",
+      "text_markdown": "Le città costiere del Devon erano animate da pescherecci, navi mercantili e navi da guerra.",
+      "tts": {
+        "text": "Le città costiere del Devon erano animate da pescherecci, navi mercantili e navi da guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I ragazzi crescevano osservando le navi andare e venire dai porti.",
+      "text_markdown": "I ragazzi crescevano osservando le navi andare e venire dai porti.",
+      "tts": {
+        "text": "I ragazzi crescevano osservando le navi andare e venire dai porti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Molti sognavano di prendere il mare loro stessi.",
+      "text_markdown": "Molti sognavano di prendere il mare loro stessi.",
+      "tts": {
+        "text": "Molti sognavano di prendere il mare loro stessi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si sa molto poco della famiglia o dell'infanzia di Bellamy.",
+      "text_markdown": "Si sa molto poco della famiglia o dell'infanzia di Bellamy.",
+      "tts": {
+        "text": "Si sa molto poco della famiglia o dell'infanzia di Bellamy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli storici ritengono che la sua famiglia fosse povera.",
+      "text_markdown": "Gli storici ritengono che la sua famiglia fosse povera.",
+      "tts": {
+        "text": "Gli storici ritengono che la sua famiglia fosse povera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Probabilmente andò per mare da ragazzo, come molti bambini poveri del Devon.",
+      "text_markdown": "Probabilmente andò per mare da ragazzo, come molti bambini poveri del Devon.",
+      "tts": {
+        "text": "Probabilmente andò per mare da ragazzo, come molti bambini poveri del Devon.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A un certo punto, Bellamy prestò servizio nella Royal Navy.",
+      "text_markdown": "A un certo punto, Bellamy prestò servizio nella Royal Navy.",
+      "tts": {
+        "text": "A un certo punto, Bellamy prestò servizio nella Royal Navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Potrebbe aver combattuto nella Guerra di successione spagnola, che terminò nel 1713.",
+      "text_markdown": "Potrebbe aver combattuto nella Guerra di successione spagnola, che terminò nel 1713.",
+      "tts": {
+        "text": "Potrebbe aver combattuto nella Guerra di successione spagnola, che terminò nel millesettecentotredici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dopo la guerra, fu congedato senza pensione e senza prospettive.",
+      "text_markdown": "Dopo la guerra, fu congedato senza pensione e senza prospettive.",
+      "tts": {
+        "text": "Dopo la guerra, fu congedato senza pensione e senza prospettive.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Royal Navy trattava male i suoi marinai una volta che non erano più necessari.",
+      "text_markdown": "La Royal Navy trattava male i suoi marinai una volta che non erano più necessari.",
+      "tts": {
+        "text": "La Royal Navy trattava male i suoi marinai una volta che non erano più necessari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uomini che avevano rischiato la vita per la corona venivano abbandonati senza alcun compenso.",
+      "text_markdown": "Uomini che avevano rischiato la vita per la corona venivano abbandonati senza alcun compenso.",
+      "tts": {
+        "text": "Uomini che avevano rischiato la vita per la corona venivano abbandonati senza alcun compenso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Questa ingiustizia lasciò un segno profondo in Bellamy.",
+      "text_markdown": "Questa ingiustizia lasciò un segno profondo in Bellamy.",
+      "tts": {
+        "text": "Questa ingiustizia lasciò un segno profondo in Bellamy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Come migliaia di altri ex marinai, Bellamy si ritrovò a terra in un mondo che non aveva bisogno di lui.",
+      "text_markdown": "Come migliaia di altri ex marinai, Bellamy si ritrovò a terra in un mondo che non aveva bisogno di lui.",
+      "tts": {
+        "text": "Come migliaia di altri ex marinai, Bellamy si ritrovò a terra in un mondo che non aveva bisogno di lui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le competenze apprese in marina non valevano nulla sulla terraferma.",
+      "text_markdown": "Le competenze apprese in marina non valevano nulla sulla terraferma.",
+      "tts": {
+        "text": "Le competenze apprese in marina non valevano nulla sulla terraferma.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Intorno al 1714 o 1715, Bellamy salpò verso le colonie americane.",
+      "text_markdown": "Intorno al 1714 o 1715, Bellamy salpò verso le colonie americane.",
+      "tts": {
+        "text": "Intorno al millesettecentoquattordici o millesettecentoquindici, Bellamy salpò verso le colonie americane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arrivò a Cape Cod, nella colonia del Massachusetts.",
+      "text_markdown": "Arrivò a Cape Cod, nella colonia del Massachusetts.",
+      "tts": {
+        "text": "Arrivò a Cape Cod, nella colonia del Massachusetts.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cape Cod nei primi anni del Settecento era un luogo remoto e battuto dal vento.",
+      "text_markdown": "Cape Cod nei primi anni del Settecento era un luogo remoto e battuto dal vento.",
+      "tts": {
+        "text": "Cape Cod nei primi anni del Settecento era un luogo remoto e battuto dal vento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il terreno sabbioso era inadatto all'agricoltura, e la maggior parte della gente viveva del mare.",
+      "text_markdown": "Il terreno sabbioso era inadatto all'agricoltura, e la maggior parte della gente viveva del mare.",
+      "tts": {
+        "text": "Il terreno sabbioso era inadatto all'agricoltura, e la maggior parte della gente viveva del mare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le comunità erano piccole, religiose e diffidenti verso gli estranei.",
+      "text_markdown": "Le comunità erano piccole, religiose e diffidenti verso gli estranei.",
+      "tts": {
+        "text": "Le comunità erano piccole, religiose e diffidenti verso gli estranei.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Secondo la leggenda locale, Bellamy incontrò una giovane donna di nome Maria Hallett nella città di Eastham.",
+      "text_markdown": "Secondo la leggenda locale, Bellamy incontrò una giovane donna di nome Maria Hallett nella città di Eastham.",
+      "tts": {
+        "text": "Secondo la leggenda locale, Bellamy incontrò una giovane donna di nome Maria Hallett nella città di Eastham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maria proveniva da una rispettabile famiglia di Cape Cod.",
+      "text_markdown": "Maria proveniva da una rispettabile famiglia di Cape Cod.",
+      "tts": {
+        "text": "Maria proveniva da una rispettabile famiglia di Cape Cod.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La storia racconta che Bellamy si innamorò di lei e promise di tornare come uomo ricco.",
+      "text_markdown": "La storia racconta che Bellamy si innamorò di lei e promise di tornare come uomo ricco.",
+      "tts": {
+        "text": "La storia racconta che Bellamy si innamorò di lei e promise di tornare come uomo ricco.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se questa storia d'amore sia vera o semplice folklore è impossibile saperlo con certezza.",
+      "text_markdown": "Se questa storia d'amore sia vera o semplice folklore è impossibile saperlo con certezza.",
+      "tts": {
+        "text": "Se questa storia d'amore sia vera o semplice folklore è impossibile saperlo con certezza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "È stata ripetuta per tre secoli ed è profondamente radicata nella tradizione di Cape Cod.",
+      "text_markdown": "È stata ripetuta per tre secoli ed è profondamente radicata nella tradizione di Cape Cod.",
+      "tts": {
+        "text": "È stata ripetuta per tre secoli ed è profondamente radicata nella tradizione di Cape Cod.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ciò che è noto è che Bellamy fu attratto dalla prospettiva di un tesoro.",
+      "text_markdown": "Ciò che è noto è che Bellamy fu attratto dalla prospettiva di un tesoro.",
+      "tts": {
+        "text": "Ciò che è noto è che Bellamy fu attratto dalla prospettiva di un tesoro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nel 1715, una flotta del tesoro spagnola fu distrutta da un uragano al largo della Florida.",
+      "text_markdown": "Nel 1715, una flotta del tesoro spagnola fu distrutta da un uragano al largo della Florida.",
+      "tts": {
+        "text": "Nel millesettecentoquindici, una flotta del tesoro spagnola fu distrutta da un uragano al largo della Florida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Undici navi affondarono, spargendo milioni di pesos in argento e oro sul fondale marino.",
+      "text_markdown": "Undici navi affondarono, spargendo milioni di pesos in argento e oro sul fondale marino.",
+      "tts": {
+        "text": "Undici navi affondarono, spargendo milioni di pesos in argento e oro sul fondale marino.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La notizia del naufragio si diffuse rapidamente nelle colonie.",
+      "text_markdown": "La notizia del naufragio si diffuse rapidamente nelle colonie.",
+      "tts": {
+        "text": "La notizia del naufragio si diffuse rapidamente nelle colonie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Centinaia di uomini si precipitarono in Florida sperando di recuperare il tesoro.",
+      "text_markdown": "Centinaia di uomini si precipitarono in Florida sperando di recuperare il tesoro.",
+      "tts": {
+        "text": "Centinaia di uomini si precipitarono in Florida sperando di recuperare il tesoro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy era tra loro.",
+      "text_markdown": "Bellamy era tra loro.",
+      "tts": {
+        "text": "Bellamy era tra loro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si associò a un uomo di nome Paulsgrave Williams, più anziano e più ricco.",
+      "text_markdown": "Si associò a un uomo di nome Paulsgrave Williams, più anziano e più ricco.",
+      "tts": {
+        "text": "Si associò a un uomo di nome Paulsgrave Williams, più anziano e più ricco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Williams era il figlio di un ex procuratore generale del Rhode Island.",
+      "text_markdown": "Williams era il figlio di un ex procuratore generale del Rhode Island.",
+      "tts": {
+        "text": "Williams era il figlio di un ex procuratore generale del Rhode Island.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Finanziò una piccola imbarcazione, e i due uomini salparono verso sud alla volta della Florida.",
+      "text_markdown": "Finanziò una piccola imbarcazione, e i due uomini salparono verso sud alla volta della Florida.",
+      "tts": {
+        "text": "Finanziò una piccola imbarcazione, e i due uomini salparono verso sud alla volta della Florida.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'operazione di recupero fu un fallimento.",
+      "text_markdown": "L'operazione di recupero fu un fallimento.",
+      "tts": {
+        "text": "L'operazione di recupero fu un fallimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli spagnoli avevano già recuperato gran parte del tesoro e sorvegliavano ciò che restava.",
+      "text_markdown": "Gli spagnoli avevano già recuperato gran parte del tesoro e sorvegliavano ciò che restava.",
+      "tts": {
+        "text": "Gli spagnoli avevano già recuperato gran parte del tesoro e sorvegliavano ciò che restava.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy e Williams tornarono a mani vuote.",
+      "text_markdown": "Bellamy e Williams tornarono a mani vuote.",
+      "tts": {
+        "text": "Bellamy e Williams tornarono a mani vuote.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al verde e frustrati, i due uomini scivolarono nella compagnia dei pirati.",
+      "text_markdown": "Al verde e frustrati, i due uomini scivolarono nella compagnia dei pirati.",
+      "tts": {
+        "text": "Al verde e frustrati, i due uomini scivolarono nella compagnia dei pirati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Incontrarono un capitano pirata di nome Benjamin Hornigold, che operava dalle Bahamas.",
+      "text_markdown": "Incontrarono un capitano pirata di nome Benjamin Hornigold, che operava dalle Bahamas.",
+      "tts": {
+        "text": "Incontrarono un capitano pirata di nome Benjamin Hornigold, che operava dalle Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold li invitò a unirsi al suo equipaggio.",
+      "text_markdown": "Hornigold li invitò a unirsi al suo equipaggio.",
+      "tts": {
+        "text": "Hornigold li invitò a unirsi al suo equipaggio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold era un pirata esperto, ma aveva una regola che irritava molti dei suoi uomini.",
+      "text_markdown": "Hornigold era un pirata esperto, ma aveva una regola che irritava molti dei suoi uomini.",
+      "tts": {
+        "text": "Hornigold era un pirata esperto, ma aveva una regola che irritava molti dei suoi uomini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si rifiutava di attaccare navi inglesi.",
+      "text_markdown": "Si rifiutava di attaccare navi inglesi.",
+      "tts": {
+        "text": "Si rifiutava di attaccare navi inglesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si considerava un patriota, non un criminale comune, e predava solo navi di altre nazioni.",
+      "text_markdown": "Si considerava un patriota, non un criminale comune, e predava solo navi di altre nazioni.",
+      "tts": {
+        "text": "Si considerava un patriota, non un criminale comune, e predava solo navi di altre nazioni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy non aveva tali scrupoli.",
+      "text_markdown": "Bellamy non aveva tali scrupoli.",
+      "tts": {
+        "text": "Bellamy non aveva tali scrupoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Credeva che la nave di qualsiasi uomo ricco fosse un bersaglio legittimo, indipendentemente dalla nazionalità.",
+      "text_markdown": "Credeva che la nave di qualsiasi uomo ricco fosse un bersaglio legittimo, indipendentemente dalla nazionalità.",
+      "tts": {
+        "text": "Credeva che la nave di qualsiasi uomo ricco fosse un bersaglio legittimo, indipendentemente dalla nazionalità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le sue opinioni erano popolari tra la maggioranza dell'equipaggio.",
+      "text_markdown": "Le sue opinioni erano popolari tra la maggioranza dell'equipaggio.",
+      "tts": {
+        "text": "Le sue opinioni erano popolari tra la maggioranza dell'equipaggio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alla fine del 1716, l'equipaggio votò per rimuovere Hornigold dal comando.",
+      "text_markdown": "Alla fine del 1716, l'equipaggio votò per rimuovere Hornigold dal comando.",
+      "tts": {
+        "text": "Alla fine del millesettecentosedici, l'equipaggio votò per rimuovere Hornigold dal comando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elessero Samuel Bellamy al suo posto.",
+      "text_markdown": "Elessero Samuel Bellamy al suo posto.",
+      "tts": {
+        "text": "Elessero Samuel Bellamy al suo posto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A circa 27 anni, Bellamy era ora il capitano della sua nave pirata.",
+      "text_markdown": "A circa 27 anni, Bellamy era ora il capitano della sua nave pirata.",
+      "tts": {
+        "text": "A circa ventisette anni, Bellamy era ora il capitano della sua nave pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold se ne andò pacificamente con un piccolo numero di seguaci fedeli.",
+      "text_markdown": "Hornigold se ne andò pacificamente con un piccolo numero di seguaci fedeli.",
+      "tts": {
+        "text": "Hornigold se ne andò pacificamente con un piccolo numero di seguaci fedeli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Il ragazzo del Devon",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In seguito avrebbe accettato il perdono reale e sarebbe diventato egli stesso un cacciatore di pirati.",
+      "text_markdown": "In seguito avrebbe accettato il perdono reale e sarebbe diventato egli stesso un cacciatore di pirati.",
+      "tts": {
+        "text": "In seguito avrebbe accettato il perdono reale e sarebbe diventato egli stesso un cacciatore di pirati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il principe dei pirati",
+      "text_markdown": "Il principe dei pirati"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy non perse tempo una volta assunto il comando.",
+      "text_markdown": "Bellamy non perse tempo una volta assunto il comando.",
+      "tts": {
+        "text": "Bellamy non perse tempo una volta assunto il comando.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navigò nei Caraibi e lungo la costa atlantica, catturando nave dopo nave.",
+      "text_markdown": "Navigò nei Caraibi e lungo la costa atlantica, catturando nave dopo nave.",
+      "tts": {
+        "text": "Navigò nei Caraibi e lungo la costa atlantica, catturando nave dopo nave.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua flotta crebbe rapidamente man mano che le navi catturate venivano aggiunte al suo squadrone.",
+      "text_markdown": "La sua flotta crebbe rapidamente man mano che le navi catturate venivano aggiunte al suo squadrone.",
+      "tts": {
+        "text": "La sua flotta crebbe rapidamente man mano che le navi catturate venivano aggiunte al suo squadrone.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy era noto per il suo carisma e i suoi discorsi eloquenti.",
+      "text_markdown": "Bellamy era noto per il suo carisma e i suoi discorsi eloquenti.",
+      "tts": {
+        "text": "Bellamy era noto per il suo carisma e i suoi discorsi eloquenti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parlava dell'ingiustizia di un mondo in cui pochi uomini possedevano tutto e il resto non aveva nulla.",
+      "text_markdown": "Parlava dell'ingiustizia di un mondo in cui pochi uomini possedevano tutto e il resto non aveva nulla.",
+      "tts": {
+        "text": "Parlava dell'ingiustizia di un mondo in cui pochi uomini possedevano tutto e il resto non aveva nulla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Secondo il famoso libro del Capitano Charles Johnson sui pirati, Bellamy una volta si rivolse a un capitano mercantile catturato.",
+      "text_markdown": "Secondo il famoso libro del Capitano Charles Johnson sui pirati, Bellamy una volta si rivolse a un capitano mercantile catturato.",
+      "tts": {
+        "text": "Secondo il famoso libro del Capitano Charles Johnson sui pirati, Bellamy una volta si rivolse a un capitano mercantile catturato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Disse all'uomo che l'unica differenza tra un pirata e un mercante era che il mercante derubava sotto la protezione della legge.",
+      "text_markdown": "Disse all'uomo che l'unica differenza tra un pirata e un mercante era che il mercante derubava sotto la protezione della legge.",
+      "tts": {
+        "text": "Disse all'uomo che l'unica differenza tra un pirata e un mercante era che il mercante derubava sotto la protezione della legge.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy dichiarò che lui e i suoi uomini erano uomini onesti che prendevano ciò di cui avevano bisogno con il proprio coraggio.",
+      "text_markdown": "Bellamy dichiarò che lui e i suoi uomini erano uomini onesti che prendevano ciò di cui avevano bisogno con il proprio coraggio.",
+      "tts": {
+        "text": "Bellamy dichiarò che lui e i suoi uomini erano uomini onesti che prendevano ciò di cui avevano bisogno con il proprio coraggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Disse che preferiva essere un pirata libero piuttosto che uno schiavo dei ricchi.",
+      "text_markdown": "Disse che preferiva essere un pirata libero piuttosto che uno schiavo dei ricchi.",
+      "tts": {
+        "text": "Disse che preferiva essere un pirata libero piuttosto che uno schiavo dei ricchi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Queste parole, che siano esattamente accurate o meno, catturarono lo spirito della ribellione pirata.",
+      "text_markdown": "Queste parole, che siano esattamente accurate o meno, catturarono lo spirito della ribellione pirata.",
+      "tts": {
+        "text": "Queste parole, che siano esattamente accurate o meno, catturarono lo spirito della ribellione pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy ottenne il soprannome di Black Sam, pare a causa dei suoi capelli scuri.",
+      "text_markdown": "Bellamy ottenne il soprannome di Black Sam, pare a causa dei suoi capelli scuri.",
+      "tts": {
+        "text": "Bellamy ottenne il soprannome di Black Sam, pare a causa dei suoi capelli scuri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A differenza di molti uomini della sua epoca, si rifiutava di indossare una parrucca incipriata.",
+      "text_markdown": "A differenza di molti uomini della sua epoca, si rifiutava di indossare una parrucca incipriata.",
+      "tts": {
+        "text": "A differenza di molti uomini della sua epoca, si rifiutava di indossare una parrucca incipriata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Legava i suoi lunghi capelli neri con un semplice nastro.",
+      "text_markdown": "Legava i suoi lunghi capelli neri con un semplice nastro.",
+      "tts": {
+        "text": "Legava i suoi lunghi capelli neri con un semplice nastro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suo aspetto divenne parte della sua leggenda.",
+      "text_markdown": "Il suo aspetto divenne parte della sua leggenda.",
+      "tts": {
+        "text": "Il suo aspetto divenne parte della sua leggenda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In un'epoca in cui le parrucche significavano ricchezza e status, la testa scoperta di Bellamy era una dichiarazione di sfida.",
+      "text_markdown": "In un'epoca in cui le parrucche significavano ricchezza e status, la testa scoperta di Bellamy era una dichiarazione di sfida.",
+      "tts": {
+        "text": "In un'epoca in cui le parrucche significavano ricchezza e status, la testa scoperta di Bellamy era una dichiarazione di sfida.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suo equipaggio era diversificato sotto ogni aspetto.",
+      "text_markdown": "Il suo equipaggio era diversificato sotto ogni aspetto.",
+      "tts": {
+        "text": "Il suo equipaggio era diversificato sotto ogni aspetto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inglesi, irlandesi, scozzesi, francesi, olandesi, nativi americani e africani servivano tutti sulle sue navi.",
+      "text_markdown": "Inglesi, irlandesi, scozzesi, francesi, olandesi, nativi americani e africani servivano tutti sulle sue navi.",
+      "tts": {
+        "text": "Inglesi, irlandesi, scozzesi, francesi, olandesi, nativi americani e africani servivano tutti sulle sue navi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli storici stimano che circa la metà del suo equipaggio fosse di origine africana.",
+      "text_markdown": "Gli storici stimano che circa la metà del suo equipaggio fosse di origine africana.",
+      "tts": {
+        "text": "Gli storici stimano che circa la metà del suo equipaggio fosse di origine africana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni di questi uomini erano stati liberati da navi negriere catturate.",
+      "text_markdown": "Alcuni di questi uomini erano stati liberati da navi negriere catturate.",
+      "tts": {
+        "text": "Alcuni di questi uomini erano stati liberati da navi negriere catturate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altri si erano uniti volontariamente da porti di tutto il Caribe.",
+      "text_markdown": "Altri si erano uniti volontariamente da porti di tutto il Caribe.",
+      "tts": {
+        "text": "Altri si erano uniti volontariamente da porti di tutto il Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sulle navi di Bellamy, uomini neri e bianchi servivano fianco a fianco e condividevano il bottino in parti uguali.",
+      "text_markdown": "Sulle navi di Bellamy, uomini neri e bianchi servivano fianco a fianco e condividevano il bottino in parti uguali.",
+      "tts": {
+        "text": "Sulle navi di Bellamy, uomini neri e bianchi servivano fianco a fianco e condividevano il bottino in parti uguali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa uguaglianza razziale era straordinaria per l'epoca.",
+      "text_markdown": "Questa uguaglianza razziale era straordinaria per l'epoca.",
+      "tts": {
+        "text": "Questa uguaglianza razziale era straordinaria per l'epoca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nel mondo coloniale, le persone di colore erano in stragrande maggioranza ridotte in schiavitù.",
+      "text_markdown": "Nel mondo coloniale, le persone di colore erano in stragrande maggioranza ridotte in schiavitù.",
+      "tts": {
+        "text": "Nel mondo coloniale, le persone di colore erano in stragrande maggioranza ridotte in schiavitù.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le navi pirata offrivano una rara alternativa alla brutale gerarchia del sistema delle piantagioni.",
+      "text_markdown": "Le navi pirata offrivano una rara alternativa alla brutale gerarchia del sistema delle piantagioni.",
+      "tts": {
+        "text": "Le navi pirata offrivano una rara alternativa alla brutale gerarchia del sistema delle piantagioni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il capitano della nave consorte di Bellamy era Paulsgrave Williams, il suo partner originario dai tempi del recupero del tesoro.",
+      "text_markdown": "Il capitano della nave consorte di Bellamy era Paulsgrave Williams, il suo partner originario dai tempi del recupero del tesoro.",
+      "tts": {
+        "text": "Il capitano della nave consorte di Bellamy era Paulsgrave Williams, il suo partner originario dai tempi del recupero del tesoro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Williams comandava una nave separata e navigava al fianco di Bellamy come parte della sua flotta.",
+      "text_markdown": "Williams comandava una nave separata e navigava al fianco di Bellamy come parte della sua flotta.",
+      "tts": {
+        "text": "Williams comandava una nave separata e navigava al fianco di Bellamy come parte della sua flotta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I due uomini si fidavano completamente l'uno dell'altro.",
+      "text_markdown": "I due uomini si fidavano completamente l'uno dell'altro.",
+      "tts": {
+        "text": "I due uomini si fidavano completamente l'uno dell'altro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel febbraio 1717, Bellamy ottenne il suo più grande bottino.",
+      "text_markdown": "Nel febbraio 1717, Bellamy ottenne il suo più grande bottino.",
+      "tts": {
+        "text": "Nel febbraio del millesettecentodiciassette, Bellamy ottenne il suo più grande bottino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La sua flotta incontrò la Whydah Gally nel Passaggio Sopravento tra Cuba e Hispaniola.",
+      "text_markdown": "La sua flotta incontrò la Whydah Gally nel Passaggio Sopravento tra Cuba e Hispaniola.",
+      "tts": {
+        "text": "La sua flotta incontrò la Whydah Gally nel Passaggio Sopravento tra Cuba e Hispaniola.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Whydah era un galeone a tre alberi, veloce e pesantemente armato.",
+      "text_markdown": "La Whydah era un galeone a tre alberi, veloce e pesantemente armato.",
+      "tts": {
+        "text": "La Whydah era un galeone a tre alberi, veloce e pesantemente armato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era stata costruita a Londra nel 1715 e misurava 102 piedi di lunghezza.",
+      "text_markdown": "Era stata costruita a Londra nel 1715 e misurava 102 piedi di lunghezza.",
+      "tts": {
+        "text": "Era stata costruita a Londra nel millesettecentoquindici e misurava centodue piedi di lunghezza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era stata progettata per il commercio degli schiavi e aveva recentemente completato il suo viaggio inaugurale.",
+      "text_markdown": "Era stata progettata per il commercio degli schiavi e aveva recentemente completato il suo viaggio inaugurale.",
+      "tts": {
+        "text": "Era stata progettata per il commercio degli schiavi e aveva recentemente completato il suo viaggio inaugurale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Whydah aveva trasportato oltre 300 africani ridotti in schiavitù dalla costa dell'odierno Benin alla Giamaica.",
+      "text_markdown": "La Whydah aveva trasportato oltre 300 africani ridotti in schiavitù dalla costa dell'odierno Benin alla Giamaica.",
+      "tts": {
+        "text": "La Whydah aveva trasportato oltre trecento africani ridotti in schiavitù dalla costa dell'odierno Benin alla Giamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aveva venduto il suo carico umano ed era ora carica dei profitti del commercio degli schiavi.",
+      "text_markdown": "Aveva venduto il suo carico umano ed era ora carica dei profitti del commercio degli schiavi.",
+      "tts": {
+        "text": "Aveva venduto il suo carico umano ed era ora carica dei profitti del commercio degli schiavi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La sua stiva conteneva indaco, zucchero e casse di monete d'argento e d'oro.",
+      "text_markdown": "La sua stiva conteneva indaco, zucchero e casse di monete d'argento e d'oro.",
+      "tts": {
+        "text": "La sua stiva conteneva indaco, zucchero e casse di monete d'argento e d'oro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy inseguì la Whydah per tre giorni.",
+      "text_markdown": "Bellamy inseguì la Whydah per tre giorni.",
+      "tts": {
+        "text": "Bellamy inseguì la Whydah per tre giorni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il capitano della nave, Lawrence Prince, tentò di sfuggire ai pirati, ma la Whydah era appesantita dal carico.",
+      "text_markdown": "Il capitano della nave, Lawrence Prince, tentò di sfuggire ai pirati, ma la Whydah era appesantita dal carico.",
+      "tts": {
+        "text": "Il capitano della nave, Lawrence Prince, tentò di sfuggire ai pirati, ma la Whydah era appesantita dal carico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le navi più leggere di Bellamy colmarono costantemente il divario.",
+      "text_markdown": "Le navi più leggere di Bellamy colmarono costantemente il divario.",
+      "tts": {
+        "text": "Le navi più leggere di Bellamy colmarono costantemente il divario.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando le navi di Bellamy finalmente si affiancarono, il Capitano Prince si arrese senza combattere.",
+      "text_markdown": "Quando le navi di Bellamy finalmente si affiancarono, il Capitano Prince si arrese senza combattere.",
+      "tts": {
+        "text": "Quando le navi di Bellamy finalmente si affiancarono, il Capitano Prince si arrese senza combattere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sapeva che resistere a una flotta pirata avrebbe significato la morte per lui e il suo equipaggio.",
+      "text_markdown": "Sapeva che resistere a una flotta pirata avrebbe significato la morte per lui e il suo equipaggio.",
+      "tts": {
+        "text": "Sapeva che resistere a una flotta pirata avrebbe significato la morte per lui e il suo equipaggio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy trattò l'equipaggio catturato con la sua consueta equità.",
+      "text_markdown": "Bellamy trattò l'equipaggio catturato con la sua consueta equità.",
+      "tts": {
+        "text": "Bellamy trattò l'equipaggio catturato con la sua consueta equità.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diede al Capitano Prince una nave più piccola e gli permise di andarsene.",
+      "text_markdown": "Diede al Capitano Prince una nave più piccola e gli permise di andarsene.",
+      "tts": {
+        "text": "Diede al Capitano Prince una nave più piccola e gli permise di andarsene.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diversi membri dell'equipaggio originale della Whydah scelsero di unirsi ai pirati piuttosto che partire.",
+      "text_markdown": "Diversi membri dell'equipaggio originale della Whydah scelsero di unirsi ai pirati piuttosto che partire.",
+      "tts": {
+        "text": "Diversi membri dell'equipaggio originale della Whydah scelsero di unirsi ai pirati piuttosto che partire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy fece immediatamente della Whydah la sua nave ammiraglia.",
+      "text_markdown": "Bellamy fece immediatamente della Whydah la sua nave ammiraglia.",
+      "tts": {
+        "text": "Bellamy fece immediatamente della Whydah la sua nave ammiraglia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Montò cannoni aggiuntivi sul ponte, portando il suo armamento totale a 28 pezzi.",
+      "text_markdown": "Montò cannoni aggiuntivi sul ponte, portando il suo armamento totale a 28 pezzi.",
+      "tts": {
+        "text": "Montò cannoni aggiuntivi sul ponte, portando il suo armamento totale a ventotto pezzi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era ora una delle più potenti navi pirata dell'Atlantico.",
+      "text_markdown": "Era ora una delle più potenti navi pirata dell'Atlantico.",
+      "tts": {
+        "text": "Era ora una delle più potenti navi pirata dell'Atlantico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il tesoro nella stiva della Whydah era stimato tra le 20.000 e le 30.000 sterline.",
+      "text_markdown": "Il tesoro nella stiva della Whydah era stimato tra le 20.000 e le 30.000 sterline.",
+      "tts": {
+        "text": "Il tesoro nella stiva della Whydah era stimato tra le ventimila e le trentamila sterline.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In termini moderni, equivarrebbe a milioni di dollari.",
+      "text_markdown": "In termini moderni, equivarrebbe a milioni di dollari.",
+      "tts": {
+        "text": "In termini moderni, equivarrebbe a milioni di dollari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fu uno dei più grandi bottini pirata mai presi nell'Atlantico.",
+      "text_markdown": "Fu uno dei più grandi bottini pirata mai presi nell'Atlantico.",
+      "tts": {
+        "text": "Fu uno dei più grandi bottini pirata mai presi nell'Atlantico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dopo aver preso la Whydah, Bellamy navigò verso nord lungo la costa americana.",
+      "text_markdown": "Dopo aver preso la Whydah, Bellamy navigò verso nord lungo la costa americana.",
+      "tts": {
+        "text": "Dopo aver preso la Whydah, Bellamy navigò verso nord lungo la costa americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Continuò a catturare navi lungo il percorso.",
+      "text_markdown": "Continuò a catturare navi lungo il percorso.",
+      "tts": {
+        "text": "Continuò a catturare navi lungo il percorso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nella primavera del 1717, comandava una piccola flottiglia di navi pirata.",
+      "text_markdown": "Nella primavera del 1717, comandava una piccola flottiglia di navi pirata.",
+      "tts": {
+        "text": "Nella primavera del millesettecentodiciassette, comandava una piccola flottiglia di navi pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli storici ritengono che Bellamy fosse diretto a Cape Cod.",
+      "text_markdown": "Gli storici ritengono che Bellamy fosse diretto a Cape Cod.",
+      "tts": {
+        "text": "Gli storici ritengono che Bellamy fosse diretto a Cape Cod.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se la leggenda di Maria Hallett è vera, stava forse tornando dalla donna a cui aveva promesso di tornare.",
+      "text_markdown": "Se la leggenda di Maria Hallett è vera, stava forse tornando dalla donna a cui aveva promesso di tornare.",
+      "tts": {
+        "text": "Se la leggenda di Maria Hallett è vera, stava forse tornando dalla donna a cui aveva promesso di tornare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Il principe dei pirati",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Potrebbe anche aver cercato un porto tranquillo per carenare le sue navi e dividere il bottino.",
+      "text_markdown": "Potrebbe anche aver cercato un porto tranquillo per carenare le sue navi e dividere il bottino.",
+      "tts": {
+        "text": "Potrebbe anche aver cercato un porto tranquillo per carenare le sue navi e dividere il bottino.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Re della Whydah",
+      "text_markdown": "Re della Whydah"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nell'aprile 1717, Samuel Bellamy era al culmine del suo potere.",
+      "text_markdown": "Nell'aprile 1717, Samuel Bellamy era al culmine del suo potere.",
+      "tts": {
+        "text": "Nell'aprile del millesettecentodiciassette, Samuel Bellamy era al culmine del suo potere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Comandava una flotta di navi, un equipaggio di circa 150 uomini e una fortuna in bottino.",
+      "text_markdown": "Comandava una flotta di navi, un equipaggio di circa 150 uomini e una fortuna in bottino.",
+      "tts": {
+        "text": "Comandava una flotta di navi, un equipaggio di circa centocinquanta uomini e una fortuna in bottino.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aveva catturato oltre cinquanta navi in meno di un anno.",
+      "text_markdown": "Aveva catturato oltre cinquanta navi in meno di un anno.",
+      "tts": {
+        "text": "Aveva catturato oltre cinquanta navi in meno di un anno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nessun pirata nell'Atlantico era stato più attivo o di maggior successo in così poco tempo.",
+      "text_markdown": "Nessun pirata nell'Atlantico era stato più attivo o di maggior successo in così poco tempo.",
+      "tts": {
+        "text": "Nessun pirata nell'Atlantico era stato più attivo o di maggior successo in così poco tempo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Whydah era una formidabile nave da guerra sotto il comando di Bellamy.",
+      "text_markdown": "La Whydah era una formidabile nave da guerra sotto il comando di Bellamy.",
+      "tts": {
+        "text": "La Whydah era una formidabile nave da guerra sotto il comando di Bellamy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I suoi 28 cannoni potevano devastare qualsiasi nave mercantile abbastanza sciocca da resistere.",
+      "text_markdown": "I suoi 28 cannoni potevano devastare qualsiasi nave mercantile abbastanza sciocca da resistere.",
+      "tts": {
+        "text": "I suoi ventotto cannoni potevano devastare qualsiasi nave mercantile abbastanza sciocca da resistere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La maggior parte delle navi si arrendeva alla vista della bandiera pirata.",
+      "text_markdown": "La maggior parte delle navi si arrendeva alla vista della bandiera pirata.",
+      "tts": {
+        "text": "La maggior parte delle navi si arrendeva alla vista della bandiera pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy gestiva la sua nave secondo principi democratici.",
+      "text_markdown": "Bellamy gestiva la sua nave secondo principi democratici.",
+      "tts": {
+        "text": "Bellamy gestiva la sua nave secondo principi democratici.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le decisioni importanti venivano messe ai voti.",
+      "text_markdown": "Le decisioni importanti venivano messe ai voti.",
+      "tts": {
+        "text": "Le decisioni importanti venivano messe ai voti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il capitano poteva essere rimosso in qualsiasi momento se l'equipaggio perdeva fiducia in lui.",
+      "text_markdown": "Il capitano poteva essere rimosso in qualsiasi momento se l'equipaggio perdeva fiducia in lui.",
+      "tts": {
+        "text": "Il capitano poteva essere rimosso in qualsiasi momento se l'equipaggio perdeva fiducia in lui.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'equipaggio aveva articoli di accordo che ogni uomo firmava o contrassegnava quando saliva a bordo.",
+      "text_markdown": "L'equipaggio aveva articoli di accordo che ogni uomo firmava o contrassegnava quando saliva a bordo.",
+      "tts": {
+        "text": "L'equipaggio aveva articoli di accordo che ogni uomo firmava o contrassegnava quando saliva a bordo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Questi articoli regolavano la divisione del bottino, le regole di condotta e il risarcimento per le ferite.",
+      "text_markdown": "Questi articoli regolavano la divisione del bottino, le regole di condotta e il risarcimento per le ferite.",
+      "tts": {
+        "text": "Questi articoli regolavano la divisione del bottino, le regole di condotta e il risarcimento per le ferite.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un uomo che perdeva un arto in battaglia riceveva quote extra del bottino come risarcimento.",
+      "text_markdown": "Un uomo che perdeva un arto in battaglia riceveva quote extra del bottino come risarcimento.",
+      "tts": {
+        "text": "Un uomo che perdeva un arto in battaglia riceveva quote extra del bottino come risarcimento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Questa era una forma di assicurazione per invalidità che non esisteva in nessun altro luogo nel mondo del lavoro del Settecento.",
+      "text_markdown": "Questa era una forma di assicurazione per invalidità che non esisteva in nessun altro luogo nel mondo del lavoro del Settecento.",
+      "tts": {
+        "text": "Questa era una forma di assicurazione per invalidità che non esisteva in nessun altro luogo nel mondo del lavoro del Settecento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il quartiermastro di Bellamy era un uomo di origine africana, cosa altamente insolita per l'epoca.",
+      "text_markdown": "Il quartiermastro di Bellamy era un uomo di origine africana, cosa altamente insolita per l'epoca.",
+      "tts": {
+        "text": "Il quartiermastro di Bellamy era un uomo di origine africana, cosa altamente insolita per l'epoca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il quartiermastro era il secondo ufficiale più potente su una nave pirata.",
+      "text_markdown": "Il quartiermastro era il secondo ufficiale più potente su una nave pirata.",
+      "tts": {
+        "text": "Il quartiermastro era il secondo ufficiale più potente su una nave pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gestiva la distribuzione di cibo, acqua e bottino.",
+      "text_markdown": "Gestiva la distribuzione di cibo, acqua e bottino.",
+      "tts": {
+        "text": "Gestiva la distribuzione di cibo, acqua e bottino.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vita a bordo della Whydah non era un paradiso.",
+      "text_markdown": "La vita a bordo della Whydah non era un paradiso.",
+      "tts": {
+        "text": "La vita a bordo della Whydah non era un paradiso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La nave era angusta, il cibo spesso marcio e la minaccia di malattie costante.",
+      "text_markdown": "La nave era angusta, il cibo spesso marcio e la minaccia di malattie costante.",
+      "tts": {
+        "text": "La nave era angusta, il cibo spesso marcio e la minaccia di malattie costante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma rispetto alle alternative disponibili per i poveri dell'epoca, offriva una misura di libertà e dignità.",
+      "text_markdown": "Ma rispetto alle alternative disponibili per i poveri dell'epoca, offriva una misura di libertà e dignità.",
+      "tts": {
+        "text": "Ma rispetto alle alternative disponibili per i poveri dell'epoca, offriva una misura di libertà e dignità.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy continuò la sua pratica di trattare gli equipaggi catturati con relativa clemenza.",
+      "text_markdown": "Bellamy continuò la sua pratica di trattare gli equipaggi catturati con relativa clemenza.",
+      "tts": {
+        "text": "Bellamy continuò la sua pratica di trattare gli equipaggi catturati con relativa clemenza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Raramente usava la violenza contro chi si arrendeva pacificamente.",
+      "text_markdown": "Raramente usava la violenza contro chi si arrendeva pacificamente.",
+      "tts": {
+        "text": "Raramente usava la violenza contro chi si arrendeva pacificamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spesso rilasciava i marinai catturati con provviste sufficienti per raggiungere un porto.",
+      "text_markdown": "Spesso rilasciava i marinai catturati con provviste sufficienti per raggiungere un porto.",
+      "tts": {
+        "text": "Spesso rilasciava i marinai catturati con provviste sufficienti per raggiungere un porto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa reputazione di equità era strategicamente utile.",
+      "text_markdown": "Questa reputazione di equità era strategicamente utile.",
+      "tts": {
+        "text": "Questa reputazione di equità era strategicamente utile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I capitani mercantili che sapevano di essere trattati bene avevano pochi motivi per combattere.",
+      "text_markdown": "I capitani mercantili che sapevano di essere trattati bene avevano pochi motivi per combattere.",
+      "tts": {
+        "text": "I capitani mercantili che sapevano di essere trattati bene avevano pochi motivi per combattere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La resa era semplicemente la scelta razionale di fronte ai cannoni di Bellamy.",
+      "text_markdown": "La resa era semplicemente la scelta razionale di fronte ai cannoni di Bellamy.",
+      "tts": {
+        "text": "La resa era semplicemente la scelta razionale di fronte ai cannoni di Bellamy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Non tutti i marinai catturati venivano trattati con gentilezza, tuttavia.",
+      "text_markdown": "Non tutti i marinai catturati venivano trattati con gentilezza, tuttavia.",
+      "tts": {
+        "text": "Non tutti i marinai catturati venivano trattati con gentilezza, tuttavia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chi resisteva veniva talvolta picchiato o vedeva la propria nave bruciata.",
+      "text_markdown": "Chi resisteva veniva talvolta picchiato o vedeva la propria nave bruciata.",
+      "tts": {
+        "text": "Chi resisteva veniva talvolta picchiato o vedeva la propria nave bruciata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bellamy era pragmatico riguardo alla violenza quando la riteneva necessaria.",
+      "text_markdown": "Bellamy era pragmatico riguardo alla violenza quando la riteneva necessaria.",
+      "tts": {
+        "text": "Bellamy era pragmatico riguardo alla violenza quando la riteneva necessaria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Agli inizi di aprile, la flotta di Bellamy navigava verso nord lungo la costa della Virginia e delle Caroline.",
+      "text_markdown": "Agli inizi di aprile, la flotta di Bellamy navigava verso nord lungo la costa della Virginia e delle Caroline.",
+      "tts": {
+        "text": "Agli inizi di aprile, la flotta di Bellamy navigava verso nord lungo la costa della Virginia e delle Caroline.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Catturò diverse altre prede lungo il cammino.",
+      "text_markdown": "Catturò diverse altre prede lungo il cammino.",
+      "tts": {
+        "text": "Catturò diverse altre prede lungo il cammino.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una delle sue ultime catture fu una nave mercantile chiamata Mary Anne.",
+      "text_markdown": "Una delle sue ultime catture fu una nave mercantile chiamata Mary Anne.",
+      "tts": {
+        "text": "Una delle sue ultime catture fu una nave mercantile chiamata Mary Anne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne prese il carico di vino di Madeira e costrinse diversi membri dell'equipaggio a unirsi a lui.",
+      "text_markdown": "Ne prese il carico di vino di Madeira e costrinse diversi membri dell'equipaggio a unirsi a lui.",
+      "tts": {
+        "text": "Ne prese il carico di vino di Madeira e costrinse diversi membri dell'equipaggio a unirsi a lui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Queste reclute forzate avrebbero poi svolto un ruolo cruciale nel processo che seguì il naufragio.",
+      "text_markdown": "Queste reclute forzate avrebbero poi svolto un ruolo cruciale nel processo che seguì il naufragio.",
+      "tts": {
+        "text": "Queste reclute forzate avrebbero poi svolto un ruolo cruciale nel processo che seguì il naufragio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Catturò anche uno sloop chiamato Fisher, prendendo le sue provviste e parte del suo equipaggio.",
+      "text_markdown": "Catturò anche uno sloop chiamato Fisher, prendendo le sue provviste e parte del suo equipaggio.",
+      "tts": {
+        "text": "Catturò anche uno sloop chiamato Fisher, prendendo le sue provviste e parte del suo equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli uomini catturati protestarono, ma Bellamy ignorò le loro lamentele.",
+      "text_markdown": "Gli uomini catturati protestarono, ma Bellamy ignorò le loro lamentele.",
+      "tts": {
+        "text": "Gli uomini catturati protestarono, ma Bellamy ignorò le loro lamentele.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Con il passare di aprile, il tempo divenne sempre più instabile.",
+      "text_markdown": "Con il passare di aprile, il tempo divenne sempre più instabile.",
+      "tts": {
+        "text": "Con il passare di aprile, il tempo divenne sempre più instabile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le tempeste primaverili lungo la costa del New England erano notoriamente pericolose.",
+      "text_markdown": "Le tempeste primaverili lungo la costa del New England erano notoriamente pericolose.",
+      "tts": {
+        "text": "Le tempeste primaverili lungo la costa del New England erano notoriamente pericolose.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le acque al largo di Cape Cod erano tra le più insidiose dell'Atlantico occidentale.",
+      "text_markdown": "Le acque al largo di Cape Cod erano tra le più insidiose dell'Atlantico occidentale.",
+      "tts": {
+        "text": "Le acque al largo di Cape Cod erano tra le più insidiose dell'Atlantico occidentale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il 26 aprile 1717, la flotta di Bellamy si avvicinava a Cape Cod da sud.",
+      "text_markdown": "Il 26 aprile 1717, la flotta di Bellamy si avvicinava a Cape Cod da sud.",
+      "tts": {
+        "text": "Il ventisei aprile millesettecentodiciassette, la flotta di Bellamy si avvicinava a Cape Cod da sud.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una potente tempesta si stava formando all'orizzonte.",
+      "text_markdown": "Una potente tempesta si stava formando all'orizzonte.",
+      "tts": {
+        "text": "Una potente tempesta si stava formando all'orizzonte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il mare si stava alzando e il vento stava girando a nordest.",
+      "text_markdown": "Il mare si stava alzando e il vento stava girando a nordest.",
+      "tts": {
+        "text": "Il mare si stava alzando e il vento stava girando a nordest.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una tempesta di nordest al largo di Cape Cod era uno degli eventi meteorologici più temuti della costa atlantica.",
+      "text_markdown": "Una tempesta di nordest al largo di Cape Cod era uno degli eventi meteorologici più temuti della costa atlantica.",
+      "tts": {
+        "text": "Una tempesta di nordest al largo di Cape Cod era uno degli eventi meteorologici più temuti della costa atlantica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spingeva le onde direttamente sulle barre sabbiose poco profonde che costeggiavano la riva esterna.",
+      "text_markdown": "Spingeva le onde direttamente sulle barre sabbiose poco profonde che costeggiavano la riva esterna.",
+      "tts": {
+        "text": "Spingeva le onde direttamente sulle barre sabbiose poco profonde che costeggiavano la riva esterna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bellamy aveva due scelte.",
+      "text_markdown": "Bellamy aveva due scelte.",
+      "tts": {
+        "text": "Bellamy aveva due scelte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Poteva dirigere la sua flotta verso il mare aperto e resistere alla tempesta in acque profonde.",
+      "text_markdown": "Poteva dirigere la sua flotta verso il mare aperto e resistere alla tempesta in acque profonde.",
+      "tts": {
+        "text": "Poteva dirigere la sua flotta verso il mare aperto e resistere alla tempesta in acque profonde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oppure poteva proseguire e tentare di doppiare la punta del Capo prima che la tempesta colpisse.",
+      "text_markdown": "Oppure poteva proseguire e tentare di doppiare la punta del Capo prima che la tempesta colpisse.",
+      "tts": {
+        "text": "Oppure poteva proseguire e tentare di doppiare la punta del Capo prima che la tempesta colpisse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Scelse di proseguire.",
+      "text_markdown": "Scelse di proseguire.",
+      "tts": {
+        "text": "Scelse di proseguire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Re della Whydah",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu l'ultima decisione che avrebbe mai preso.",
+      "text_markdown": "Fu l'ultima decisione che avrebbe mai preso.",
+      "tts": {
+        "text": "Fu l'ultima decisione che avrebbe mai preso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La tempesta",
+      "text_markdown": "La tempesta"
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La tempesta colpì nella notte del 26 aprile 1717.",
+      "text_markdown": "La tempesta colpì nella notte del 26 aprile 1717.",
+      "tts": {
+        "text": "La tempesta colpì nella notte del ventisei aprile millesettecentodiciassette.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu una violenta burrasca di nordest con pioggia battente e onde altissime.",
+      "text_markdown": "Fu una violenta burrasca di nordest con pioggia battente e onde altissime.",
+      "tts": {
+        "text": "Fu una violenta burrasca di nordest con pioggia battente e onde altissime.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La visibilità scese quasi a zero.",
+      "text_markdown": "La visibilità scese quasi a zero.",
+      "tts": {
+        "text": "La visibilità scese quasi a zero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'equipaggio della Whydah non riusciva a vedere la costa, le stelle o nemmeno le altre navi della loro flotta.",
+      "text_markdown": "L'equipaggio della Whydah non riusciva a vedere la costa, le stelle o nemmeno le altre navi della loro flotta.",
+      "tts": {
+        "text": "L'equipaggio della Whydah non riusciva a vedere la costa, le stelle o nemmeno le altre navi della loro flotta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Navigavano alla cieca attraverso alcune delle acque più pericolose della costa.",
+      "text_markdown": "Navigavano alla cieca attraverso alcune delle acque più pericolose della costa.",
+      "tts": {
+        "text": "Navigavano alla cieca attraverso alcune delle acque più pericolose della costa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il vento ululava tra il sartiame con un suono simile a urla.",
+      "text_markdown": "Il vento ululava tra il sartiame con un suono simile a urla.",
+      "tts": {
+        "text": "Il vento ululava tra il sartiame con un suono simile a urla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le onde si infrangevano sulla prua e spazzavano il ponte.",
+      "text_markdown": "Le onde si infrangevano sulla prua e spazzavano il ponte.",
+      "tts": {
+        "text": "Le onde si infrangevano sulla prua e spazzavano il ponte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli uomini si aggrappavano a corde e parapetti per non essere trascinati in mare.",
+      "text_markdown": "Gli uomini si aggrappavano a corde e parapetti per non essere trascinati in mare.",
+      "tts": {
+        "text": "Gli uomini si aggrappavano a corde e parapetti per non essere trascinati in mare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poco dopo la mezzanotte, la Whydah urtò una barra sabbiosa al largo della costa di Wellfleet.",
+      "text_markdown": "Poco dopo la mezzanotte, la Whydah urtò una barra sabbiosa al largo della costa di Wellfleet.",
+      "tts": {
+        "text": "Poco dopo la mezzanotte, la Whydah urtò una barra sabbiosa al largo della costa di Wellfleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'impatto fu improvviso e violento.",
+      "text_markdown": "L'impatto fu improvviso e violento.",
+      "tts": {
+        "text": "L'impatto fu improvviso e violento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La nave si inclinò su un fianco e cominciò a disintegrarsi nella risacca battente.",
+      "text_markdown": "La nave si inclinò su un fianco e cominciò a disintegrarsi nella risacca battente.",
+      "tts": {
+        "text": "La nave si inclinò su un fianco e cominciò a disintegrarsi nella risacca battente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le onde erano enormi, alcune alte fino a 30 piedi.",
+      "text_markdown": "Le onde erano enormi, alcune alte fino a 30 piedi.",
+      "tts": {
+        "text": "Le onde erano enormi, alcune alte fino a trenta piedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si abbattevano sulla nave sinistrata con forza terrificante.",
+      "text_markdown": "Si abbattevano sulla nave sinistrata con forza terrificante.",
+      "tts": {
+        "text": "Si abbattevano sulla nave sinistrata con forza terrificante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gli alberi si spezzarono e caddero in mare, trascinando con sé sartiame e uomini.",
+      "text_markdown": "Gli alberi si spezzarono e caddero in mare, trascinando con sé sartiame e uomini.",
+      "tts": {
+        "text": "Gli alberi si spezzarono e caddero in mare, trascinando con sé sartiame e uomini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pesanti cannoni della Whydah si staccarono dai loro supporti.",
+      "text_markdown": "I pesanti cannoni della Whydah si staccarono dai loro supporti.",
+      "tts": {
+        "text": "I pesanti cannoni della Whydah si staccarono dai loro supporti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rotolarono sul ponte, schiacciando tutto sul loro cammino.",
+      "text_markdown": "Rotolarono sul ponte, schiacciando tutto sul loro cammino.",
+      "tts": {
+        "text": "Rotolarono sul ponte, schiacciando tutto sul loro cammino.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il tesoro nella stiva si spostò e la nave si capovolse.",
+      "text_markdown": "Il tesoro nella stiva si spostò e la nave si capovolse.",
+      "tts": {
+        "text": "Il tesoro nella stiva si spostò e la nave si capovolse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La barra sabbiosa dove la Whydah si arenò era a soli 500 piedi dalla riva.",
+      "text_markdown": "La barra sabbiosa dove la Whydah si arenò era a soli 500 piedi dalla riva.",
+      "tts": {
+        "text": "La barra sabbiosa dove la Whydah si arenò era a soli cinquecento piedi dalla riva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ma in quelle condizioni, cinquecento piedi di risacca erano mortali come l'oceano aperto.",
+      "text_markdown": "Ma in quelle condizioni, cinquecento piedi di risacca erano mortali come l'oceano aperto.",
+      "tts": {
+        "text": "Ma in quelle condizioni, cinquecento piedi di risacca erano mortali come l'oceano aperto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dei circa 146 uomini a bordo della Whydah, solo due sopravvissero.",
+      "text_markdown": "Dei circa 146 uomini a bordo della Whydah, solo due sopravvissero.",
+      "tts": {
+        "text": "Dei circa centoquarantasei uomini a bordo della Whydah, solo due sopravvissero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erano Thomas Davis, un carpentiere costretto a unirsi all'equipaggio, e John Julian, un pilota di origine mista miskito ed europea.",
+      "text_markdown": "Erano Thomas Davis, un carpentiere costretto a unirsi all'equipaggio, e John Julian, un pilota di origine mista miskito ed europea.",
+      "tts": {
+        "text": "Erano Thomas Davis, un carpentiere costretto a unirsi all'equipaggio, e John Julian, un pilota di origine mista miskito ed europea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samuel Bellamy era tra i morti.",
+      "text_markdown": "Samuel Bellamy era tra i morti.",
+      "tts": {
+        "text": "Samuel Bellamy era tra i morti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il suo corpo non fu mai identificato.",
+      "text_markdown": "Il suo corpo non fu mai identificato.",
+      "tts": {
+        "text": "Il suo corpo non fu mai identificato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aveva 28 anni.",
+      "text_markdown": "Aveva 28 anni.",
+      "tts": {
+        "text": "Aveva ventotto anni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche le altre navi della flotta di Bellamy furono colte dalla tempesta.",
+      "text_markdown": "Anche le altre navi della flotta di Bellamy furono colte dalla tempesta.",
+      "tts": {
+        "text": "Anche le altre navi della flotta di Bellamy furono colte dalla tempesta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Mary Anne si arenò vicino allo stesso tratto di spiaggia.",
+      "text_markdown": "La Mary Anne si arenò vicino allo stesso tratto di spiaggia.",
+      "tts": {
+        "text": "La Mary Anne si arenò vicino allo stesso tratto di spiaggia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sette del suo equipaggio sopravvissero e furono catturati dalle autorità locali.",
+      "text_markdown": "Sette del suo equipaggio sopravvissero e furono catturati dalle autorità locali.",
+      "tts": {
+        "text": "Sette del suo equipaggio sopravvissero e furono catturati dalle autorità locali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al mattino, la gente di Wellfleet trovò la spiaggia coperta di relitti.",
+      "text_markdown": "Al mattino, la gente di Wellfleet trovò la spiaggia coperta di relitti.",
+      "tts": {
+        "text": "Al mattino, la gente di Wellfleet trovò la spiaggia coperta di relitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Legname, corde, tessuti e corpi giacevano sparsi sulla sabbia.",
+      "text_markdown": "Legname, corde, tessuti e corpi giacevano sparsi sulla sabbia.",
+      "tts": {
+        "text": "Legname, corde, tessuti e corpi giacevano sparsi sulla sabbia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Monete e gioielli venivano trascinati a riva da ogni onda.",
+      "text_markdown": "Monete e gioielli venivano trascinati a riva da ogni onda.",
+      "tts": {
+        "text": "Monete e gioielli venivano trascinati a riva da ogni onda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli abitanti del luogo non persero tempo a recuperare ciò che potevano.",
+      "text_markdown": "Gli abitanti del luogo non persero tempo a recuperare ciò che potevano.",
+      "tts": {
+        "text": "Gli abitanti del luogo non persero tempo a recuperare ciò che potevano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Raccolsero monete, armi e qualsiasi cosa di valore dal relitto.",
+      "text_markdown": "Raccolsero monete, armi e qualsiasi cosa di valore dal relitto.",
+      "tts": {
+        "text": "Raccolsero monete, armi e qualsiasi cosa di valore dal relitto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il governatore coloniale inviò soldati a mettere in sicurezza il sito, ma molto era già stato preso.",
+      "text_markdown": "Il governatore coloniale inviò soldati a mettere in sicurezza il sito, ma molto era già stato preso.",
+      "tts": {
+        "text": "Il governatore coloniale inviò soldati a mettere in sicurezza il sito, ma molto era già stato preso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nove pirati sopravvissuti della Whydah e della Mary Anne furono arrestati e portati a Boston.",
+      "text_markdown": "I nove pirati sopravvissuti della Whydah e della Mary Anne furono arrestati e portati a Boston.",
+      "tts": {
+        "text": "I nove pirati sopravvissuti della Whydah e della Mary Anne furono arrestati e portati a Boston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Furono processati nell'ottobre 1717.",
+      "text_markdown": "Furono processati nell'ottobre 1717.",
+      "tts": {
+        "text": "Furono processati nell'ottobre del millesettecentodiciassette.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il processo fu uno dei più sensazionali nella storia dell'America coloniale.",
+      "text_markdown": "Il processo fu uno dei più sensazionali nella storia dell'America coloniale.",
+      "tts": {
+        "text": "Il processo fu uno dei più sensazionali nella storia dell'America coloniale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il famoso ministro puritano Cotton Mather visitò i prigionieri e predicò loro sul pentimento.",
+      "text_markdown": "Il famoso ministro puritano Cotton Mather visitò i prigionieri e predicò loro sul pentimento.",
+      "tts": {
+        "text": "Il famoso ministro puritano Cotton Mather visitò i prigionieri e predicò loro sul pentimento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Davis fu assolto perché riuscì a dimostrare di essere stato costretto a unirsi all'equipaggio.",
+      "text_markdown": "Thomas Davis fu assolto perché riuscì a dimostrare di essere stato costretto a unirsi all'equipaggio.",
+      "tts": {
+        "text": "Thomas Davis fu assolto perché riuscì a dimostrare di essere stato costretto a unirsi all'equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un altro uomo fu ugualmente assolto per motivi simili.",
+      "text_markdown": "Un altro uomo fu ugualmente assolto per motivi simili.",
+      "tts": {
+        "text": "Un altro uomo fu ugualmente assolto per motivi simili.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sei uomini furono dichiarati colpevoli e condannati a morte.",
+      "text_markdown": "Sei uomini furono dichiarati colpevoli e condannati a morte.",
+      "tts": {
+        "text": "Sei uomini furono dichiarati colpevoli e condannati a morte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Furono impiccati il 15 novembre 1717 al traghetto di Charlestown nel porto di Boston.",
+      "text_markdown": "Furono impiccati il 15 novembre 1717 al traghetto di Charlestown nel porto di Boston.",
+      "tts": {
+        "text": "Furono impiccati il quindici novembre millesettecentodiciassette al traghetto di Charlestown nel porto di Boston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cotton Mather tenne un sermone all'esecuzione.",
+      "text_markdown": "Cotton Mather tenne un sermone all'esecuzione.",
+      "tts": {
+        "text": "Cotton Mather tenne un sermone all'esecuzione.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "John Julian, il pilota miskito, non fu impiccato.",
+      "text_markdown": "John Julian, il pilota miskito, non fu impiccato.",
+      "tts": {
+        "text": "John Julian, il pilota miskito, non fu impiccato.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu venduto come schiavo.",
+      "text_markdown": "Fu venduto come schiavo.",
+      "tts": {
+        "text": "Fu venduto come schiavo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il suo destino successivo è sconosciuto, sebbene alcuni documenti suggeriscano che morì tentando di fuggire.",
+      "text_markdown": "Il suo destino successivo è sconosciuto, sebbene alcuni documenti suggeriscano che morì tentando di fuggire.",
+      "tts": {
+        "text": "Il suo destino successivo è sconosciuto, sebbene alcuni documenti suggeriscano che morì tentando di fuggire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il relitto della Whydah si posò nella sabbia al largo di Wellfleet.",
+      "text_markdown": "Il relitto della Whydah si posò nella sabbia al largo di Wellfleet.",
+      "tts": {
+        "text": "Il relitto della Whydah si posò nella sabbia al largo di Wellfleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nel giro di pochi anni, le sabbie mobili lo seppellirono completamente.",
+      "text_markdown": "Nel giro di pochi anni, le sabbie mobili lo seppellirono completamente.",
+      "tts": {
+        "text": "Nel giro di pochi anni, le sabbie mobili lo seppellirono completamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "La tempesta",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Per oltre due secoli e mezzo, la Whydah rimase nascosta sotto il fondale marino.",
+      "text_markdown": "Per oltre due secoli e mezzo, la Whydah rimase nascosta sotto il fondale marino.",
+      "tts": {
+        "text": "Per oltre due secoli e mezzo, la Whydah rimase nascosta sotto il fondale marino.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La nave che il tempo dimenticò",
+      "text_markdown": "La nave che il tempo dimenticò"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per 267 anni, il relitto della Whydah non fu altro che una leggenda locale.",
+      "text_markdown": "Per 267 anni, il relitto della Whydah non fu altro che una leggenda locale.",
+      "tts": {
+        "text": "Per duecentosessantasette anni, il relitto della Whydah non fu altro che una leggenda locale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La gente di Cape Cod raccontava storie della nave pirata sepolta da qualche parte al largo della costa.",
+      "text_markdown": "La gente di Cape Cod raccontava storie della nave pirata sepolta da qualche parte al largo della costa.",
+      "tts": {
+        "text": "La gente di Cape Cod raccontava storie della nave pirata sepolta da qualche parte al largo della costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ma nessuno sapeva esattamente dove giacesse.",
+      "text_markdown": "Ma nessuno sapeva esattamente dove giacesse.",
+      "tts": {
+        "text": "Ma nessuno sapeva esattamente dove giacesse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Negli anni Ottanta, un esploratore subacqueo di nome Barry Clifford divenne ossessionato dal trovare la Whydah.",
+      "text_markdown": "Negli anni Ottanta, un esploratore subacqueo di nome Barry Clifford divenne ossessionato dal trovare la Whydah.",
+      "tts": {
+        "text": "Negli anni Ottanta, un esploratore subacqueo di nome Barry Clifford divenne ossessionato dal trovare la Whydah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Clifford era cresciuto a Cape Cod ascoltando le storie sulla nave pirata da suo zio.",
+      "text_markdown": "Clifford era cresciuto a Cape Cod ascoltando le storie sulla nave pirata da suo zio.",
+      "tts": {
+        "text": "Clifford era cresciuto a Cape Cod ascoltando le storie sulla nave pirata da suo zio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trascorse anni a studiare i documenti storici per restringere il sito del relitto.",
+      "text_markdown": "Trascorse anni a studiare i documenti storici per restringere il sito del relitto.",
+      "tts": {
+        "text": "Trascorse anni a studiare i documenti storici per restringere il sito del relitto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel 1984, Clifford e la sua squadra di sommozzatori trovarono il relitto.",
+      "text_markdown": "Nel 1984, Clifford e la sua squadra di sommozzatori trovarono il relitto.",
+      "tts": {
+        "text": "Nel millenovecentottantaquattro, Clifford e la sua squadra di sommozzatori trovarono il relitto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La prova decisiva fu la campana della nave, che recava l'iscrizione 'The Whydah Gally 1716'.",
+      "text_markdown": "La prova decisiva fu la campana della nave, che recava l'iscrizione 'The Whydah Gally 1716'.",
+      "tts": {
+        "text": "La prova decisiva fu la campana della nave, che recava l'iscrizione The Whydah Gally millesettecentosedici.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa campana dimostrò oltre ogni dubbio che il relitto era la Whydah.",
+      "text_markdown": "Questa campana dimostrò oltre ogni dubbio che il relitto era la Whydah.",
+      "tts": {
+        "text": "Questa campana dimostrò oltre ogni dubbio che il relitto era la Whydah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fu la prima e unica volta che un relitto pirata è stato identificato positivamente attraverso prove fisiche.",
+      "text_markdown": "Fu la prima e unica volta che un relitto pirata è stato identificato positivamente attraverso prove fisiche.",
+      "tts": {
+        "text": "Fu la prima e unica volta che un relitto pirata è stato identificato positivamente attraverso prove fisiche.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nei decenni successivi, la squadra di Clifford recuperò oltre 200.000 manufatti dal relitto.",
+      "text_markdown": "Nei decenni successivi, la squadra di Clifford recuperò oltre 200.000 manufatti dal relitto.",
+      "tts": {
+        "text": "Nei decenni successivi, la squadra di Clifford recuperò oltre duecentomila manufatti dal relitto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tra questi c'erano monete d'oro, lingotti d'argento, armi, strumenti di navigazione, frammenti di vestiti e oggetti personali.",
+      "text_markdown": "Tra questi c'erano monete d'oro, lingotti d'argento, armi, strumenti di navigazione, frammenti di vestiti e oggetti personali.",
+      "tts": {
+        "text": "Tra questi c'erano monete d'oro, lingotti d'argento, armi, strumenti di navigazione, frammenti di vestiti e oggetti personali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I manufatti rivelarono dettagli sulla vita dei pirati che nessun documento scritto poteva fornire.",
+      "text_markdown": "I manufatti rivelarono dettagli sulla vita dei pirati che nessun documento scritto poteva fornire.",
+      "tts": {
+        "text": "I manufatti rivelarono dettagli sulla vita dei pirati che nessun documento scritto poteva fornire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gli archeologi trovarono gioielli d'oro dell'Africa occidentale accanto a monete d'argento europee.",
+      "text_markdown": "Gli archeologi trovarono gioielli d'oro dell'Africa occidentale accanto a monete d'argento europee.",
+      "tts": {
+        "text": "Gli archeologi trovarono gioielli d'oro dell'Africa occidentale accanto a monete d'argento europee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trovarono nastri di seta, gemelli e pallottole di pistola.",
+      "text_markdown": "Trovarono nastri di seta, gemelli e pallottole di pistola.",
+      "tts": {
+        "text": "Trovarono nastri di seta, gemelli e pallottole di pistola.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La diversità dei manufatti confermò che l'equipaggio era multietnico.",
+      "text_markdown": "La diversità dei manufatti confermò che l'equipaggio era multietnico.",
+      "tts": {
+        "text": "La diversità dei manufatti confermò che l'equipaggio era multietnico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oggetti dall'Europa, dall'Africa e dalle Americhe furono tutti trovati mescolati insieme.",
+      "text_markdown": "Oggetti dall'Europa, dall'Africa e dalle Americhe furono tutti trovati mescolati insieme.",
+      "tts": {
+        "text": "Oggetti dall'Europa, dall'Africa e dalle Americhe furono tutti trovati mescolati insieme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'equipaggio della Whydah era uno spaccato del mondo atlantico.",
+      "text_markdown": "L'equipaggio della Whydah era uno spaccato del mondo atlantico.",
+      "tts": {
+        "text": "L'equipaggio della Whydah era uno spaccato del mondo atlantico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fu istituito un museo dedicato alla Whydah a Cape Cod.",
+      "text_markdown": "Fu istituito un museo dedicato alla Whydah a Cape Cod.",
+      "tts": {
+        "text": "Fu istituito un museo dedicato alla Whydah a Cape Cod.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Espone manufatti dal relitto e racconta la storia di Samuel Bellamy e del suo equipaggio.",
+      "text_markdown": "Espone manufatti dal relitto e racconta la storia di Samuel Bellamy e del suo equipaggio.",
+      "tts": {
+        "text": "Espone manufatti dal relitto e racconta la storia di Samuel Bellamy e del suo equipaggio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Migliaia di visitatori vengono a vederlo ogni anno.",
+      "text_markdown": "Migliaia di visitatori vengono a vederlo ogni anno.",
+      "tts": {
+        "text": "Migliaia di visitatori vengono a vederlo ogni anno.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La carriera di Samuel Bellamy durò solo undici mesi.",
+      "text_markdown": "La carriera di Samuel Bellamy durò solo undici mesi.",
+      "tts": {
+        "text": "La carriera di Samuel Bellamy durò solo undici mesi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In quel tempo, catturò più navi di quante la maggior parte dei pirati ne prendesse in tutta la vita.",
+      "text_markdown": "In quel tempo, catturò più navi di quante la maggior parte dei pirati ne prendesse in tutta la vita.",
+      "tts": {
+        "text": "In quel tempo, catturò più navi di quante la maggior parte dei pirati ne prendesse in tutta la vita.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parlò di giustizia e libertà in un'epoca di disuguaglianza e schiavitù.",
+      "text_markdown": "Parlò di giustizia e libertà in un'epoca di disuguaglianza e schiavitù.",
+      "tts": {
+        "text": "Parlò di giustizia e libertà in un'epoca di disuguaglianza e schiavitù.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Governò la sua nave come una democrazia quando la democrazia stessa era un'idea radicale.",
+      "text_markdown": "Governò la sua nave come una democrazia quando la democrazia stessa era un'idea radicale.",
+      "tts": {
+        "text": "Governò la sua nave come una democrazia quando la democrazia stessa era un'idea radicale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p115",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Accolse uomini di tutte le razze quando il resto del mondo li divideva per colore.",
+      "text_markdown": "Accolse uomini di tutte le razze quando il resto del mondo li divideva per colore.",
+      "tts": {
+        "text": "Accolse uomini di tutte le razze quando il resto del mondo li divideva per colore.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fu anche un ladro che rubò a gente che lavorava e interruppe il sostentamento di marinai onesti.",
+      "text_markdown": "Fu anche un ladro che rubò a gente che lavorava e interruppe il sostentamento di marinai onesti.",
+      "tts": {
+        "text": "Fu anche un ladro che rubò a gente che lavorava e interruppe il sostentamento di marinai onesti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I suoi ideali sull'uguaglianza non si estendevano ai mercanti che derubava sotto la minaccia delle armi.",
+      "text_markdown": "I suoi ideali sull'uguaglianza non si estendevano ai mercanti che derubava sotto la minaccia delle armi.",
+      "tts": {
+        "text": "I suoi ideali sull'uguaglianza non si estendevano ai mercanti che derubava sotto la minaccia delle armi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il mare prese Samuel Bellamy prima che qualcuno potesse giudicarlo.",
+      "text_markdown": "Il mare prese Samuel Bellamy prima che qualcuno potesse giudicarlo.",
+      "tts": {
+        "text": "Il mare prese Samuel Bellamy prima che qualcuno potesse giudicarlo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ma la sua nave sopravvisse, sepolta nella sabbia, in attesa di raccontare la sua storia.",
+      "text_markdown": "Ma la sua nave sopravvisse, sepolta nella sabbia, in attesa di raccontare la sua storia.",
+      "tts": {
+        "text": "Ma la sua nave sopravvisse, sepolta nella sabbia, in attesa di raccontare la sua storia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "La nave che il tempo dimenticò",
+      "paragraph_id": "p117",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La Whydah parla per gli uomini che navigarono su di lei, molto tempo dopo che le loro voci si sono spente.",
+      "text_markdown": "La Whydah parla per gli uomini che navigarono su di lei, molto tempo dopo che le loro voci si sono spente.",
+      "tts": {
+        "text": "La Whydah parla per gli uomini che navigarono su di lei, molto tempo dopo che le loro voci si sono spente.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

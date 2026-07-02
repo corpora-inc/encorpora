@@ -1,0 +1,4412 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_miguel_de_cervantes",
+  "language": "ja",
+  "total_segments": 295,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのメモ",
+      "text_markdown": "読者へのメモ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは海賊の物語ではない。",
+      "text_markdown": "これは海賊の物語ではない。",
+      "tts": {
+        "text": "これは海賊の物語ではない。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは海賊に捕らえられ、五年間囚われの身となった一人の男の物語である。",
+      "text_markdown": "これは海賊に捕らえられ、五年間囚われの身となった一人の男の物語である。",
+      "tts": {
+        "text": "これは海賊に捕らえられ、五年間囚われの身となった一人の男の物語である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ミゲル・デ・セルバンテスは、スペイン語圏最高の作家として記憶されている。",
+      "text_markdown": "ミゲル・デ・セルバンテスは、スペイン語圏最高の作家として記憶されている。",
+      "tts": {
+        "text": "ミゲル・デ・セルバンテスは、スペイン語圏最高の作家として記憶されている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は史上最も重要な小説の一つである『ドン・キホーテ』を著した。",
+      "text_markdown": "彼は史上最も重要な小説の一つである『ドン・キホーテ』を著した。",
+      "tts": {
+        "text": "彼は史上最も重要な小説の一つであるドン・キホーテを著した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし作家になる前、セルバンテスは兵士であった。",
+      "text_markdown": "しかし作家になる前、セルバンテスは兵士であった。",
+      "tts": {
+        "text": "しかし作家になる前、セルバンテスは兵士であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そして自由に物を書けるようになる前、彼は北アフリカで五年間奴隷として過ごした。",
+      "text_markdown": "そして自由に物を書けるようになる前、彼は北アフリカで五年間奴隷として過ごした。",
+      "tts": {
+        "text": "そして自由に物を書けるようになる前、彼は北アフリカで五年間奴隷として過ごした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の囚われの経験は、学者たちが今なお解き明かし続けている形で、その作品に影響を与えた。",
+      "text_markdown": "彼の囚われの経験は、学者たちが今なお解き明かし続けている形で、その作品に影響を与えた。",
+      "tts": {
+        "text": "彼の囚われの経験は、学者たちが今なお解き明かし続けている形で、その作品に影響を与えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "投獄、脱出、そして人間の忍耐を描いた場面が、彼の作品全体に登場する。",
+      "text_markdown": "投獄、脱出、そして人間の忍耐を描いた場面が、彼の作品全体に登場する。",
+      "tts": {
+        "text": "投獄、脱出、そして人間の忍耐を描いた場面が、彼の作品全体に登場する。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この物語は、セルバンテスが大いに苦しんだという理解のもとに語られている。",
+      "text_markdown": "この物語は、セルバンテスが大いに苦しんだという理解のもとに語られている。",
+      "tts": {
+        "text": "この物語は、セルバンテスが大いに苦しんだという理解のもとに語られている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の経験にふさわしい真剣さと敬意をもって描かれている。",
+      "text_markdown": "彼の経験にふさわしい真剣さと敬意をもって描かれている。",
+      "tts": {
+        "text": "彼の経験にふさわしい真剣さと敬意をもって描かれている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここに記された出来事は、セルバンテス自身の証言や同時代の記録を含む歴史的資料に基づいている。",
+      "text_markdown": "ここに記された出来事は、セルバンテス自身の証言や同時代の記録を含む歴史的資料に基づいている。",
+      "tts": {
+        "text": "ここに記された出来事は、セルバンテス自身の証言や同時代の記録を含む歴史的資料に基づいている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "詳細が不確かな場合は、本文中にその旨が記されている。",
+      "text_markdown": "詳細が不確かな場合は、本文中にその旨が記されている。",
+      "tts": {
+        "text": "詳細が不確かな場合は、本文中にその旨が記されている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "地中海世界",
+      "text_markdown": "地中海世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1500年代の地中海は世界の中心であった。",
+      "text_markdown": "1500年代の地中海は世界の中心であった。",
+      "tts": {
+        "text": "千五百年代の地中海は世界の中心であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三つの大陸と数十の王国、帝国、都市国家がその沿岸に並んでいた。",
+      "text_markdown": "三つの大陸と数十の王国、帝国、都市国家がその沿岸に並んでいた。",
+      "tts": {
+        "text": "三つの大陸と数十の王国、帝国、都市国家がその沿岸に並んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "貿易、戦争、そして文化交流が絶え間なくその海域を行き交っていた。",
+      "text_markdown": "貿易、戦争、そして文化交流が絶え間なくその海域を行き交っていた。",
+      "tts": {
+        "text": "貿易、戦争、そして文化交流が絶え間なくその海域を行き交っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時代、二つの大国が地中海を支配していた。",
+      "text_markdown": "この時代、二つの大国が地中海を支配していた。",
+      "tts": {
+        "text": "この時代、二つの大国が地中海を支配していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西ではスペイン帝国がヨーロッパで最も豊かで強力な国家であった。",
+      "text_markdown": "西ではスペイン帝国がヨーロッパで最も豊かで強力な国家であった。",
+      "tts": {
+        "text": "西ではスペイン帝国がヨーロッパで最も豊かで強力な国家であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "東ではオスマン帝国がハンガリーから北アフリカに至る広大な領土を支配していた。",
+      "text_markdown": "東ではオスマン帝国がハンガリーから北アフリカに至る広大な領土を支配していた。",
+      "tts": {
+        "text": "東ではオスマン帝国がハンガリーから北アフリカに至る広大な領土を支配していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この二つの帝国の対立は、単なる政治的なものではなかった。",
+      "text_markdown": "この二つの帝国の対立は、単なる政治的なものではなかった。",
+      "tts": {
+        "text": "この二つの帝国の対立は、単なる政治的なものではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは宗教的なものでもあった。",
+      "text_markdown": "それは宗教的なものでもあった。",
+      "tts": {
+        "text": "それは宗教的なものでもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインはカトリック・キリスト教世界の擁護者であり、オスマン帝国はイスラム世界を率いていた。",
+      "text_markdown": "スペインはカトリック・キリスト教世界の擁護者であり、オスマン帝国はイスラム世界を率いていた。",
+      "tts": {
+        "text": "スペインはカトリック・キリスト教世界の擁護者であり、オスマン帝国はイスラム世界を率いていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この宗教的側面が、対立をとりわけ苛烈なものにした。",
+      "text_markdown": "この宗教的側面が、対立をとりわけ苛烈なものにした。",
+      "tts": {
+        "text": "この宗教的側面が、対立をとりわけ苛烈なものにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "双方が、自分たちは神のために戦っていると信じていた。",
+      "text_markdown": "双方が、自分たちは神のために戦っていると信じていた。",
+      "tts": {
+        "text": "双方が、自分たちは神のために戦っていると信じていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕虜は交換や解放されるよりも、奴隷にされることが多かった。",
+      "text_markdown": "捕虜は交換や解放されるよりも、奴隷にされることが多かった。",
+      "tts": {
+        "text": "捕虜は交換や解放されるよりも、奴隷にされることが多かった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アフリカのバルバリア海岸は、海賊活動の一大拠点であった。",
+      "text_markdown": "北アフリカのバルバリア海岸は、海賊活動の一大拠点であった。",
+      "tts": {
+        "text": "北アフリカのバルバリア海岸は、海賊活動の一大拠点であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェ、チュニス、トリポリの各都市には、ヨーロッパの船舶や沿岸の町を襲撃する数千人の海賊が住んでいた。",
+      "text_markdown": "アルジェ、チュニス、トリポリの各都市には、ヨーロッパの船舶や沿岸の町を襲撃する数千人の海賊が住んでいた。",
+      "tts": {
+        "text": "アルジェ、チュニス、トリポリの各都市には、ヨーロッパの船舶や沿岸の町を襲撃する数千人の海賊が住んでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらのバルバリア海賊は、単なる海賊ではなかった。",
+      "text_markdown": "これらのバルバリア海賊は、単なる海賊ではなかった。",
+      "tts": {
+        "text": "これらのバルバリア海賊は、単なる海賊ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くはオスマン帝国や地元の支配者の公式な後ろ盾を得て活動していた。",
+      "text_markdown": "多くはオスマン帝国や地元の支配者の公式な後ろ盾を得て活動していた。",
+      "tts": {
+        "text": "多くはオスマン帝国や地元の支配者の公式な後ろ盾を得て活動していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは海上戦争、交易、奴隷貿易を含むより広い体制の一部であった。",
+      "text_markdown": "彼らは海上戦争、交易、奴隷貿易を含むより広い体制の一部であった。",
+      "tts": {
+        "text": "彼らは海上戦争、交易、奴隷貿易を含むより広い体制の一部であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隷貿易はバルバリア諸国の経済の中核であった。",
+      "text_markdown": "奴隷貿易はバルバリア諸国の経済の中核であった。",
+      "tts": {
+        "text": "奴隷貿易はバルバリア諸国の経済の中核であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕らえられたヨーロッパ人は、アルジェやチュニスなどの奴隷市場で売られた。",
+      "text_markdown": "捕らえられたヨーロッパ人は、アルジェやチュニスなどの奴隷市場で売られた。",
+      "tts": {
+        "text": "捕らえられたヨーロッパ人は、アルジェやチュニスなどの奴隷市場で売られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "裕福な、あるいは重要な捕虜は身代金で解放されることもあったが、その過程には何年もかかり、莫大な費用を要した。",
+      "text_markdown": "裕福な、あるいは重要な捕虜は身代金で解放されることもあったが、その過程には何年もかかり、莫大な費用を要した。",
+      "tts": {
+        "text": "裕福な、あるいは重要な捕虜は身代金で解放されることもあったが、その過程には何年もかかり、莫大な費用を要した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家の推定によれば、1500年から1800年の間に百万人以上のヨーロッパ人がバルバリア海賊によって奴隷にされた。",
+      "text_markdown": "歴史家の推定によれば、1500年から1800年の間に百万人以上のヨーロッパ人がバルバリア海賊によって奴隷にされた。",
+      "tts": {
+        "text": "歴史家の推定によれば、千五百年から千八百年の間に百万人以上のヨーロッパ人がバルバリア海賊によって奴隷にされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの捕虜は地中海沿岸のあらゆる国から連れてこられた。",
+      "text_markdown": "これらの捕虜は地中海沿岸のあらゆる国から連れてこられた。",
+      "tts": {
+        "text": "これらの捕虜は地中海沿岸のあらゆる国から連れてこられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン自体も海賊の襲撃の頻繁な標的であった。",
+      "text_markdown": "スペイン自体も海賊の襲撃の頻繁な標的であった。",
+      "tts": {
+        "text": "スペイン自体も海賊の襲撃の頻繁な標的であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アンダルシア、バレンシア、バレアレス諸島の沿岸の村々は定期的に攻撃された。",
+      "text_markdown": "アンダルシア、バレンシア、バレアレス諸島の沿岸の村々は定期的に攻撃された。",
+      "tts": {
+        "text": "アンダルシア、バレンシア、バレアレス諸島の沿岸の村々は定期的に攻撃された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインの海岸沿いには、襲撃者の接近を知らせるための監視塔が立ち並んでいた。",
+      "text_markdown": "スペインの海岸沿いには、襲撃者の接近を知らせるための監視塔が立ち並んでいた。",
+      "tts": {
+        "text": "スペインの海岸沿いには、襲撃者の接近を知らせるための監視塔が立ち並んでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イスラム圏からキリスト教徒の捕虜を身代金で解放するために、専門の修道会が設立された。",
+      "text_markdown": "イスラム圏からキリスト教徒の捕虜を身代金で解放するために、専門の修道会が設立された。",
+      "tts": {
+        "text": "イスラム圏からキリスト教徒の捕虜を身代金で解放するために、専門の修道会が設立された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その中で最も重要なのが、三位一体修道会として知られる至聖三位一体修道会であった。",
+      "text_markdown": "その中で最も重要なのが、三位一体修道会として知られる至聖三位一体修道会であった。",
+      "tts": {
+        "text": "その中で最も重要なのが、三位一体修道会として知られる至聖三位一体修道会であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三位一体会の修道士たちは、奴隷にされたキリスト教徒の解放を交渉するため北アフリカへ渡った。",
+      "text_markdown": "三位一体会の修道士たちは、奴隷にされたキリスト教徒の解放を交渉するため北アフリカへ渡った。",
+      "tts": {
+        "text": "三位一体会の修道士たちは、奴隷にされたキリスト教徒の解放を交渉するため北アフリカへ渡った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "身代金による解放の過程は遅く、費用がかかり、不確実であった。",
+      "text_markdown": "身代金による解放の過程は遅く、費用がかかり、不確実であった。",
+      "tts": {
+        "text": "身代金による解放の過程は遅く、費用がかかり、不確実であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家族は身代金を工面するために、懇願し、借金をし、持ち物すべてを売り払わなければならないことが多かった。",
+      "text_markdown": "家族は身代金を工面するために、懇願し、借金をし、持ち物すべてを売り払わなければならないことが多かった。",
+      "tts": {
+        "text": "家族は身代金を工面するために、懇願し、借金をし、持ち物すべてを売り払わなければならないことが多かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの捕虜は、誰かが迎えに来るまで何年も待ち続けた。",
+      "text_markdown": "多くの捕虜は、誰かが迎えに来るまで何年も待ち続けた。",
+      "tts": {
+        "text": "多くの捕虜は、誰かが迎えに来るまで何年も待ち続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中には一度も身代金が支払われなかった者もいた。",
+      "text_markdown": "中には一度も身代金が支払われなかった者もいた。",
+      "tts": {
+        "text": "中には一度も身代金が支払われなかった者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは一生を囚われの身で過ごし、採石場や農場で働かされ、あるいはガレー船の奴隷として櫂に繋がれた。",
+      "text_markdown": "彼らは一生を囚われの身で過ごし、採石場や農場で働かされ、あるいはガレー船の奴隷として櫂に繋がれた。",
+      "tts": {
+        "text": "彼らは一生を囚われの身で過ごし、採石場や農場で働かされ、あるいはガレー船の奴隷として櫂に繋がれた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これこそがミゲル・デ・セルバンテスを形作った世界であった。",
+      "text_markdown": "これこそがミゲル・デ・セルバンテスを形作った世界であった。",
+      "tts": {
+        "text": "これこそがミゲル・デ・セルバンテスを形作った世界であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はオスマン帝国とバルバリア海賊との闘いに規定されたスペインで育った。",
+      "text_markdown": "彼はオスマン帝国とバルバリア海賊との闘いに規定されたスペインで育った。",
+      "tts": {
+        "text": "彼はオスマン帝国とバルバリア海賊との闘いに規定されたスペインで育った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はその闘いを兵士として、そして捕虜として身をもって経験することになる。",
+      "text_markdown": "彼はその闘いを兵士として、そして捕虜として身をもって経験することになる。",
+      "tts": {
+        "text": "彼はその闘いを兵士として、そして捕虜として身をもって経験することになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "全盛期のオスマン帝国は、世界がそれまでに見た最大の帝国の一つであった。",
+      "text_markdown": "全盛期のオスマン帝国は、世界がそれまでに見た最大の帝国の一つであった。",
+      "tts": {
+        "text": "全盛期のオスマン帝国は、世界がそれまでに見た最大の帝国の一つであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その皇帝はボスポラス海峡に面した大都市コンスタンティノープルから統治した。",
+      "text_markdown": "その皇帝はボスポラス海峡に面した大都市コンスタンティノープルから統治した。",
+      "tts": {
+        "text": "その皇帝はボスポラス海峡に面した大都市コンスタンティノープルから統治した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帝国はインド洋からウィーンの門前に至る交易路を支配していた。",
+      "text_markdown": "帝国はインド洋からウィーンの門前に至る交易路を支配していた。",
+      "tts": {
+        "text": "帝国はインド洋からウィーンの門前に至る交易路を支配していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインの力はアメリカ大陸からの銀と対抗宗教改革の宗教的熱意によって支えられていた。",
+      "text_markdown": "スペインの力はアメリカ大陸からの銀と対抗宗教改革の宗教的熱意によって支えられていた。",
+      "tts": {
+        "text": "スペインの力はアメリカ大陸からの銀と対抗宗教改革の宗教的熱意によって支えられていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フェリペ二世は太陽の沈まない帝国を統治していた。",
+      "text_markdown": "フェリペ二世は太陽の沈まない帝国を統治していた。",
+      "tts": {
+        "text": "フェリペ二世は太陽の沈まない帝国を統治していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしスペインのヨーロッパと地中海での戦争は、銀が満たすよりも速く国庫を消耗させた。",
+      "text_markdown": "しかしスペインのヨーロッパと地中海での戦争は、銀が満たすよりも速く国庫を消耗させた。",
+      "tts": {
+        "text": "しかしスペインのヨーロッパと地中海での戦争は、銀が満たすよりも速く国庫を消耗させた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェの街は世界の海賊の首都であった。",
+      "text_markdown": "アルジェの街は世界の海賊の首都であった。",
+      "tts": {
+        "text": "アルジェの街は世界の海賊の首都であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "名目上はオスマン帝国の属州であったが、実際には海賊の船長たちが街を運営していた。",
+      "text_markdown": "名目上はオスマン帝国の属州であったが、実際には海賊の船長たちが街を運営していた。",
+      "tts": {
+        "text": "名目上はオスマン帝国の属州であったが、実際には海賊の船長たちが街を運営していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "襲撃と奴隷貿易からの富が、アルジェを地中海で最も裕福な都市の一つにしていた。",
+      "text_markdown": "襲撃と奴隷貿易からの富が、アルジェを地中海で最も裕福な都市の一つにしていた。",
+      "tts": {
+        "text": "襲撃と奴隷貿易からの富が、アルジェを地中海で最も裕福な都市の一つにしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "スペインの兵士",
+      "text_markdown": "スペインの兵士"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ミゲル・デ・セルバンテスは1547年9月29日、マドリード近郊の大学都市アルカラ・デ・エナーレスで生まれた。",
+      "text_markdown": "ミゲル・デ・セルバンテスは1547年9月29日、マドリード近郊の大学都市アルカラ・デ・エナーレスで生まれた。",
+      "tts": {
+        "text": "ミゲル・デ・セルバンテスは千五百四十七年九月二十九日、マドリード近郊の大学都市アルカラ・デ・エナーレスで生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "父ロドリゴ・デ・セルバンテスは、生計を立てるのに苦労していた理髪外科医であった。",
+      "text_markdown": "父ロドリゴ・デ・セルバンテスは、生計を立てるのに苦労していた理髪外科医であった。",
+      "tts": {
+        "text": "父ロドリゴ・デ・セルバンテスは、生計を立てるのに苦労していた理髪外科医であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一家はミゲルの幼少期に仕事を求めて町から町へと頻繁に引っ越した。",
+      "text_markdown": "一家はミゲルの幼少期に仕事を求めて町から町へと頻繁に引っ越した。",
+      "tts": {
+        "text": "一家はミゲルの幼少期に仕事を求めて町から町へと頻繁に引っ越した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはバリャドリード、コルドバ、セビリア、マドリードなど様々な場所に住んだ。",
+      "text_markdown": "彼らはバリャドリード、コルドバ、セビリア、マドリードなど様々な場所に住んだ。",
+      "tts": {
+        "text": "彼らはバリャドリード、コルドバ、セビリア、マドリードなど様々な場所に住んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "貧困は常に付きまとう伴侶であった。",
+      "text_markdown": "貧困は常に付きまとう伴侶であった。",
+      "tts": {
+        "text": "貧困は常に付きまとう伴侶であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "家計が苦しかったにもかかわらず、セルバンテスはまずまずの教育を受けた。",
+      "text_markdown": "家計が苦しかったにもかかわらず、セルバンテスはまずまずの教育を受けた。",
+      "tts": {
+        "text": "家計が苦しかったにもかかわらず、セルバンテスはまずまずの教育を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はマドリードの教師のもとで学び、文学と詩への情熱を育んだ。",
+      "text_markdown": "彼はマドリードの教師のもとで学び、文学と詩への情熱を育んだ。",
+      "tts": {
+        "text": "彼はマドリードの教師のもとで学び、文学と詩への情熱を育んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1500年代半ばのスペインは黄金時代を迎えていた。",
+      "text_markdown": "1500年代半ばのスペインは黄金時代を迎えていた。",
+      "tts": {
+        "text": "千五百年代半ばのスペインは黄金時代を迎えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "芸術、文学、宗教的熱狂が軍事的拡大と共に花開いていた。",
+      "text_markdown": "芸術、文学、宗教的熱狂が軍事的拡大と共に花開いていた。",
+      "tts": {
+        "text": "芸術、文学、宗教的熱狂が軍事的拡大と共に花開いていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大いなる野心と、さらに大きな不平等の時代であった。",
+      "text_markdown": "大いなる野心と、さらに大きな不平等の時代であった。",
+      "tts": {
+        "text": "大いなる野心と、さらに大きな不平等の時代であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1569年、セルバンテスはスペインを離れイタリアへ渡った。",
+      "text_markdown": "1569年、セルバンテスはスペインを離れイタリアへ渡った。",
+      "tts": {
+        "text": "千五百六十九年、セルバンテスはスペインを離れイタリアへ渡った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "出国の理由は議論の的となっている。",
+      "text_markdown": "出国の理由は議論の的となっている。",
+      "tts": {
+        "text": "出国の理由は議論の的となっている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "法的紛争から逃れていたのかもしれないし、単に冒険を求めていただけかもしれない。",
+      "text_markdown": "法的紛争から逃れていたのかもしれないし、単に冒険を求めていただけかもしれない。",
+      "tts": {
+        "text": "法的紛争から逃れていたのかもしれないし、単に冒険を求めていただけかもしれない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イタリアでセルバンテスはイタリアの芸術と文学に魅了された。",
+      "text_markdown": "イタリアでセルバンテスはイタリアの芸術と文学に魅了された。",
+      "tts": {
+        "text": "イタリアでセルバンテスはイタリアの芸術と文学に魅了された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はイタリアの偉大な詩人を読み、ルネサンスの文化を吸収した。",
+      "text_markdown": "彼はイタリアの偉大な詩人を読み、ルネサンスの文化を吸収した。",
+      "tts": {
+        "text": "彼はイタリアの偉大な詩人を読み、ルネサンスの文化を吸収した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの影響は彼の生涯を通じてその作品を形作ることになる。",
+      "text_markdown": "これらの影響は彼の生涯を通じてその作品を形作ることになる。",
+      "tts": {
+        "text": "これらの影響は彼の生涯を通じてその作品を形作ることになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はまたスペイン軍に入隊した。",
+      "text_markdown": "彼はまたスペイン軍に入隊した。",
+      "tts": {
+        "text": "彼はまたスペイン軍に入隊した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当時スペイン帝国の一部であったナポリに駐屯する連隊に加わった。",
+      "text_markdown": "当時スペイン帝国の一部であったナポリに駐屯する連隊に加わった。",
+      "tts": {
+        "text": "当時スペイン帝国の一部であったナポリに駐屯する連隊に加わった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1571年、オスマン帝国は大艦隊を東地中海に送り込んだ。",
+      "text_markdown": "1571年、オスマン帝国は大艦隊を東地中海に送り込んだ。",
+      "tts": {
+        "text": "千五百七十一年、オスマン帝国は大艦隊を東地中海に送り込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オスマン帝国はつい最近、ヴェネツィアからキプロス島を征服していた。",
+      "text_markdown": "オスマン帝国はつい最近、ヴェネツィアからキプロス島を征服していた。",
+      "tts": {
+        "text": "オスマン帝国はつい最近、ヴェネツィアからキプロス島を征服していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "キリスト教ヨーロッパは危機感を抱いた。",
+      "text_markdown": "キリスト教ヨーロッパは危機感を抱いた。",
+      "tts": {
+        "text": "キリスト教ヨーロッパは危機感を抱いた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "教皇ピウス五世はオスマンの脅威に対抗するため、キリスト教諸国による神聖同盟を組織した。",
+      "text_markdown": "教皇ピウス五世はオスマンの脅威に対抗するため、キリスト教諸国による神聖同盟を組織した。",
+      "tts": {
+        "text": "教皇ピウス五世はオスマンの脅威に対抗するため、キリスト教諸国による神聖同盟を組織した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン、ヴェネツィア、教皇領が船舶と兵士を提供した。",
+      "text_markdown": "スペイン、ヴェネツィア、教皇領が船舶と兵士を提供した。",
+      "tts": {
+        "text": "スペイン、ヴェネツィア、教皇領が船舶と兵士を提供した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "連合艦隊はシチリア島のメッシーナ港に集結した。",
+      "text_markdown": "連合艦隊はシチリア島のメッシーナ港に集結した。",
+      "tts": {
+        "text": "連合艦隊はシチリア島のメッシーナ港に集結した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ミゲル・デ・セルバンテスはスペインのガレー船の一隻に乗船していた。",
+      "text_markdown": "ミゲル・デ・セルバンテスはスペインのガレー船の一隻に乗船していた。",
+      "tts": {
+        "text": "ミゲル・デ・セルバンテスはスペインのガレー船の一隻に乗船していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は24歳で、位も名声もない一兵卒であった。",
+      "text_markdown": "彼は24歳で、位も名声もない一兵卒であった。",
+      "tts": {
+        "text": "彼は二十四歳で、位も名声もない一兵卒であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1571年10月7日、両艦隊はギリシャ沖のパトラス湾でレパントの海戦に臨んだ。",
+      "text_markdown": "1571年10月7日、両艦隊はギリシャ沖のパトラス湾でレパントの海戦に臨んだ。",
+      "tts": {
+        "text": "千五百七十一年十月七日、両艦隊はギリシャ沖のパトラス湾でレパントの海戦に臨んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは史上最大の海戦の一つであった。",
+      "text_markdown": "それは史上最大の海戦の一つであった。",
+      "tts": {
+        "text": "それは史上最大の海戦の一つであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四百隻を超える軍船が湾の狭い海域で激突した。",
+      "text_markdown": "400隻を超える軍船が湾の狭い海域で激突した。",
+      "tts": {
+        "text": "四百隻を超える軍船が湾の狭い海域で激突した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦いは凄惨で、船と船が接舷し、白兵戦が繰り広げられた。",
+      "text_markdown": "戦いは凄惨で、船と船が接舷し、白兵戦が繰り広げられた。",
+      "tts": {
+        "text": "戦いは凄惨で、船と船が接舷し、白兵戦が繰り広げられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一日の戦いで数万人の兵が命を落とした。",
+      "text_markdown": "一日の戦いで数万人の兵が命を落とした。",
+      "tts": {
+        "text": "一日の戦いで数万人の兵が命を落とした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは戦いの当日、熱病に冒されていた。",
+      "text_markdown": "セルバンテスは戦いの当日、熱病に冒されていた。",
+      "tts": {
+        "text": "セルバンテスは戦いの当日、熱病に冒されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "上官たちは甲板下にとどまることを許可した。",
+      "text_markdown": "上官たちは甲板下にとどまることを許可した。",
+      "tts": {
+        "text": "上官たちは甲板下にとどまることを許可した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は拒否し、仲間が血を流している間に隠れるくらいなら、戦って死ぬ方がましだと言った。",
+      "text_markdown": "彼は拒否し、仲間が血を流している間に隠れるくらいなら、戦って死ぬ方がましだと言った。",
+      "tts": {
+        "text": "彼は拒否し、仲間が血を流している間に隠れるくらいなら、戦って死ぬ方がましだと言った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦闘中、セルバンテスは三度負傷した。",
+      "text_markdown": "戦闘中、セルバンテスは三度負傷した。",
+      "tts": {
+        "text": "戦闘中、セルバンテスは三度負傷した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そのうち二つは胸の傷であった。",
+      "text_markdown": "そのうち二つは胸の傷であった。",
+      "tts": {
+        "text": "そのうち二つは胸の傷であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三つ目の傷は左手を砕き、永久に使えなくした。",
+      "text_markdown": "三つ目の傷は左手を砕き、永久に使えなくした。",
+      "tts": {
+        "text": "三つ目の傷は左手を砕き、永久に使えなくした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キリスト教連合艦隊はレパントで決定的な勝利を収めた。",
+      "text_markdown": "キリスト教連合艦隊はレパントで決定的な勝利を収めた。",
+      "tts": {
+        "text": "キリスト教連合艦隊はレパントで決定的な勝利を収めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オスマン海軍は事実上壊滅した。",
+      "text_markdown": "オスマン海軍は事実上壊滅した。",
+      "tts": {
+        "text": "オスマン海軍は事実上壊滅した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "キリスト教ヨーロッパ全土で、この勝利は奇跡として祝われた。",
+      "text_markdown": "キリスト教ヨーロッパ全土で、この勝利は奇跡として祝われた。",
+      "tts": {
+        "text": "キリスト教ヨーロッパ全土で、この勝利は奇跡として祝われた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスはメッシーナの病院で数ヶ月間、傷の回復に努めた。",
+      "text_markdown": "セルバンテスはメッシーナの病院で数ヶ月間、傷の回復に努めた。",
+      "tts": {
+        "text": "セルバンテスはメッシーナの病院で数ヶ月間、傷の回復に努めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はその傷痕を生涯背負うことになる。",
+      "text_markdown": "彼はその傷痕を生涯背負うことになる。",
+      "tts": {
+        "text": "彼はその傷痕を生涯背負うことになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は後に、自らの不自由な手を名誉の証、自分の時代最大の戦いに参加した証と呼んだ。",
+      "text_markdown": "彼は後に、自らの不自由な手を名誉の証、自分の時代最大の戦いに参加した証と呼んだ。",
+      "tts": {
+        "text": "彼は後に、自らの不自由な手を名誉の証、自分の時代最大の戦いに参加した証と呼んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "回復後、セルバンテスは地中海での兵役を続けた。",
+      "text_markdown": "回復後、セルバンテスは地中海での兵役を続けた。",
+      "tts": {
+        "text": "回復後、セルバンテスは地中海での兵役を続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はイタリア各地の駐屯地に配属され、さらにいくつかの軍事作戦に参加した。",
+      "text_markdown": "彼はイタリア各地の駐屯地に配属され、さらにいくつかの軍事作戦に参加した。",
+      "tts": {
+        "text": "彼はイタリア各地の駐屯地に配属され、さらにいくつかの軍事作戦に参加した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575年までに、セルバンテスは帰国する準備ができていた。",
+      "text_markdown": "1575年までに、セルバンテスは帰国する準備ができていた。",
+      "tts": {
+        "text": "千五百七十五年までに、セルバンテスは帰国する準備ができていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は六年間スペインに仕え、上官からの推薦状を携えていた。",
+      "text_markdown": "彼は六年間スペインに仕え、上官からの推薦状を携えていた。",
+      "tts": {
+        "text": "彼は六年間スペインに仕え、上官からの推薦状を携えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの推薦状が、スペインに戻ってからの任官や官職の獲得に役立つことを望んでいた。",
+      "text_markdown": "これらの推薦状が、スペインに戻ってからの任官や官職の獲得に役立つことを望んでいた。",
+      "tts": {
+        "text": "これらの推薦状が、スペインに戻ってからの任官や官職の獲得に役立つことを望んでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575年9月、セルバンテスと弟のロドリゴはナポリでガレー船ソル号に乗船した。",
+      "text_markdown": "1575年9月、セルバンテスと弟のロドリゴはナポリでガレー船ソル号に乗船した。",
+      "tts": {
+        "text": "千五百七十五年九月、セルバンテスと弟のロドリゴはナポリでガレー船ソル号に乗船した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはスペインへの帰路についていた。",
+      "text_markdown": "彼らはスペインへの帰路についていた。",
+      "tts": {
+        "text": "彼らはスペインへの帰路についていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "スペインの兵士",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは二度と到着することはなかった。",
+      "text_markdown": "彼らは二度と到着することはなかった。",
+      "tts": {
+        "text": "彼らは二度と到着することはなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊に捕らえられて",
+      "text_markdown": "海賊に捕らえられて"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575年9月26日、ガレー船ソル号がカタルーニャ沖を航行中に攻撃を受けた。",
+      "text_markdown": "1575年9月26日、ガレー船ソル号がカタルーニャ沖を航行中に攻撃を受けた。",
+      "tts": {
+        "text": "千五百七十五年九月二十六日、ガレー船ソル号がカタルーニャ沖を航行中に攻撃を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェから出撃したバルバリア海賊の艦隊が船を捕捉した。",
+      "text_markdown": "アルジェから出撃したバルバリア海賊の艦隊が船を捕捉した。",
+      "tts": {
+        "text": "アルジェから出撃したバルバリア海賊の艦隊が船を捕捉した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊艦隊を率いていたのは、イスラムに改宗したアルバニア人の背教者アルナウト・マミという船長であった。",
+      "text_markdown": "海賊艦隊を率いていたのは、イスラムに改宗したアルバニア人の背教者アルナウト・マミという船長であった。",
+      "tts": {
+        "text": "海賊艦隊を率いていたのは、イスラムに改宗したアルバニア人の背教者アルナウト・マミという船長であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "背教者は海賊の間では珍しくなかった。",
+      "text_markdown": "背教者は海賊の間では珍しくなかった。",
+      "tts": {
+        "text": "背教者は海賊の間では珍しくなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くはヨーロッパ生まれでイスラムに改宗し、バルバリア諸国に仕えるようになった者たちであった。",
+      "text_markdown": "多くはヨーロッパ生まれでイスラムに改宗し、バルバリア諸国に仕えるようになった者たちであった。",
+      "tts": {
+        "text": "多くはヨーロッパ生まれでイスラムに改宗し、バルバリア諸国に仕えるようになった者たちであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ソル号は小型のガレー船で、武装も貧弱で、兵士ではなく乗客を運んでいた。",
+      "text_markdown": "ソル号は小型のガレー船で、武装も貧弱で、兵士ではなく乗客を運んでいた。",
+      "tts": {
+        "text": "ソル号は小型のガレー船で、武装も貧弱で、兵士ではなく乗客を運んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊の軍船には到底太刀打ちできなかった。",
+      "text_markdown": "海賊の軍船には到底太刀打ちできなかった。",
+      "tts": {
+        "text": "海賊の軍船には到底太刀打ちできなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "短い抵抗の後、ソル号は拿捕された。",
+      "text_markdown": "短い抵抗の後、ソル号は拿捕された。",
+      "tts": {
+        "text": "短い抵抗の後、ソル号は拿捕された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスと弟ロドリゴは捕虜の中にいた。",
+      "text_markdown": "セルバンテスと弟ロドリゴは捕虜の中にいた。",
+      "tts": {
+        "text": "セルバンテスと弟ロドリゴは捕虜の中にいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちは捕虜を捜索し、貴重品や書類を探した。",
+      "text_markdown": "海賊たちは捕虜を捜索し、貴重品や書類を探した。",
+      "tts": {
+        "text": "海賊たちは捕虜を捜索し、貴重品や書類を探した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインの将軍たちからの推薦状を発見した海賊たちは、セルバンテスを大変重要な人物だと思い込んだ。",
+      "text_markdown": "スペインの将軍たちからの推薦状を発見した海賊たちは、セルバンテスを大変重要な人物だと思い込んだ。",
+      "tts": {
+        "text": "スペインの将軍たちからの推薦状を発見した海賊たちは、セルバンテスを大変重要な人物だと思い込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは身代金を500金エスクードという莫大な額に設定した。",
+      "text_markdown": "彼らは身代金を500金エスクードという莫大な額に設定した。",
+      "tts": {
+        "text": "彼らは身代金を五百金エスクードという莫大な額に設定した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "実際にはセルバンテスは質素な家庭の出身で、そのような身代金をとても払えるはずもなかった。",
+      "text_markdown": "実際にはセルバンテスは質素な家庭の出身で、そのような身代金をとても払えるはずもなかった。",
+      "tts": {
+        "text": "実際にはセルバンテスは質素な家庭の出身で、そのような身代金をとても払えるはずもなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の出世を助けるはずだった推薦状が、逆に囚われの身を終わらせることをはるかに困難にしたのであった。",
+      "text_markdown": "彼の出世を助けるはずだった推薦状が、逆に囚われの身を終わらせることをはるかに困難にしたのであった。",
+      "tts": {
+        "text": "彼の出世を助けるはずだった推薦状が、逆に囚われの身を終わらせることをはるかに困難にしたのであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕虜たちは北アフリカ最大にして最も強力な海賊都市アルジェへ連行された。",
+      "text_markdown": "捕虜たちは北アフリカ最大にして最も強力な海賊都市アルジェへ連行された。",
+      "tts": {
+        "text": "捕虜たちは北アフリカ最大にして最も強力な海賊都市アルジェへ連行された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェは人口10万人を超える都市で、モスク、市場、奴隷収容所が立ち並ぶ活気ある港町であった。",
+      "text_markdown": "アルジェは人口10万人を超える都市で、モスク、市場、奴隷収容所が立ち並ぶ活気ある港町であった。",
+      "tts": {
+        "text": "アルジェは人口十万人を超える都市で、モスク、市場、奴隷収容所が立ち並ぶ活気ある港町であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時期、常時約25,000人のキリスト教徒奴隷がアルジェに住んでいたと推定される。",
+      "text_markdown": "この時期、常時約25,000人のキリスト教徒奴隷がアルジェに住んでいたと推定される。",
+      "tts": {
+        "text": "この時期、常時約二万五千人のキリスト教徒奴隷がアルジェに住んでいたと推定される。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはスペイン、イタリア、フランス、ポルトガル、さらにはアイスランドやアイルランドといった遠方から連れてこられた。",
+      "text_markdown": "彼らはスペイン、イタリア、フランス、ポルトガル、さらにはアイスランドやアイルランドといった遠方から連れてこられた。",
+      "tts": {
+        "text": "彼らはスペイン、イタリア、フランス、ポルトガル、さらにはアイスランドやアイルランドといった遠方から連れてこられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは海賊船の船長を務めていたギリシャ人背教者ダリー・マミという主人に割り当てられた。",
+      "text_markdown": "セルバンテスは海賊船の船長を務めていたギリシャ人背教者ダリー・マミという主人に割り当てられた。",
+      "tts": {
+        "text": "セルバンテスは海賊船の船長を務めていたギリシャ人背教者ダリー・マミという主人に割り当てられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ダリー・マミは捕虜に対する残虐さで知られていた。",
+      "text_markdown": "ダリー・マミは捕虜に対する残虐さで知られていた。",
+      "tts": {
+        "text": "ダリー・マミは捕虜に対する残虐さで知られていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェにおける捕虜の待遇は千差万別であった。",
+      "text_markdown": "アルジェにおける捕虜の待遇は千差万別であった。",
+      "tts": {
+        "text": "アルジェにおける捕虜の待遇は千差万別であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "身代金を待つ裕福な捕虜は比較的快適に過ごせることもあった。",
+      "text_markdown": "身代金を待つ裕福な捕虜は比較的快適に過ごせることもあった。",
+      "tts": {
+        "text": "身代金を待つ裕福な捕虜は比較的快適に過ごせることもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "身代金の望みのない貧しい捕虜は重労働に従事させられた。",
+      "text_markdown": "身代金の望みのない貧しい捕虜は重労働に従事させられた。",
+      "tts": {
+        "text": "身代金の望みのない貧しい捕虜は重労働に従事させられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "採石場や建設工事で働かされる奴隷もいた。",
+      "text_markdown": "採石場や建設工事で働かされる奴隷もいた。",
+      "tts": {
+        "text": "採石場や建設工事で働かされる奴隷もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ガレー船の櫂に繋がれ、倒れるまで漕がされる者もいた。",
+      "text_markdown": "ガレー船の櫂に繋がれ、倒れるまで漕がされる者もいた。",
+      "tts": {
+        "text": "ガレー船の櫂に繋がれ、倒れるまで漕がされる者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最も悲惨な運命はバーニョと呼ばれる牢獄で、奴隷たちは過密で不衛生な独房に閉じ込められた。",
+      "text_markdown": "最も悲惨な運命はバーニョと呼ばれる牢獄で、奴隷たちは過密で不衛生な独房に閉じ込められた。",
+      "tts": {
+        "text": "最も悲惨な運命はバーニョと呼ばれる牢獄で、奴隷たちは過密で不衛生な独房に閉じ込められた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスはアルジェのバーニョで過ごした。",
+      "text_markdown": "セルバンテスはアルジェのバーニョで過ごした。",
+      "tts": {
+        "text": "セルバンテスはアルジェのバーニョで過ごした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はその時代のヨーロッパ人がめったに目にすることのない規模の苦しみを目撃した。",
+      "text_markdown": "彼はその時代のヨーロッパ人がめったに目にすることのない規模の苦しみを目撃した。",
+      "tts": {
+        "text": "彼はその時代のヨーロッパ人がめったに目にすることのない規模の苦しみを目撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その経験は彼に深い刻印を残した。",
+      "text_markdown": "その経験は彼に深い刻印を残した。",
+      "tts": {
+        "text": "その経験は彼に深い刻印を残した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕らえられるとほぼ同時に、セルバンテスは脱出の計画を立て始めた。",
+      "text_markdown": "捕らえられるとほぼ同時に、セルバンテスは脱出の計画を立て始めた。",
+      "tts": {
+        "text": "捕らえられるとほぼ同時に、セルバンテスは脱出の計画を立て始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は囚われの身を受動的に受け入れるような人間ではなかった。",
+      "text_markdown": "彼は囚われの身を受動的に受け入れるような人間ではなかった。",
+      "tts": {
+        "text": "彼は囚われの身を受動的に受け入れるような人間ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その後の五年間で、彼は四度の脱出を試みることになる。",
+      "text_markdown": "その後の五年間で、彼は四度の脱出を試みることになる。",
+      "tts": {
+        "text": "その後の五年間で、彼は四度の脱出を試みることになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の脱出の試みは1576年初頭に行われた。",
+      "text_markdown": "最初の脱出の試みは1576年初頭に行われた。",
+      "tts": {
+        "text": "最初の脱出の試みは千五百七十六年初頭に行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "セルバンテスはムーア人の案内人を雇い、自分と数人の捕虜をオランのスペイン要塞まで陸路で導かせようとした。",
+      "text_markdown": "セルバンテスはムーア人の案内人を雇い、自分と数人の捕虜をオランのスペイン要塞まで陸路で導かせようとした。",
+      "tts": {
+        "text": "セルバンテスはムーア人の案内人を雇い、自分と数人の捕虜をオランのスペイン要塞まで陸路で導かせようとした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オランは北アフリカ沿岸にあるスペインの前哨基地で、アルジェから数日の旅程であった。",
+      "text_markdown": "オランは北アフリカ沿岸にあるスペインの前哨基地で、アルジェから数日の旅程であった。",
+      "tts": {
+        "text": "オランは北アフリカ沿岸にあるスペインの前哨基地で、アルジェから数日の旅程であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "案内人は初日にして一行を見捨てた。",
+      "text_markdown": "案内人は初日にして一行を見捨てた。",
+      "tts": {
+        "text": "案内人は初日にして一行を見捨てた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "案内人を失った逃亡者たちは、見知らぬ敵対的な土地で道に迷った。",
+      "text_markdown": "案内人を失った逃亡者たちは、見知らぬ敵対的な土地で道に迷った。",
+      "tts": {
+        "text": "案内人を失った逃亡者たちは、見知らぬ敵対的な土地で道に迷った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはアルジェに戻ることを余儀なくされ、セルバンテスはより重い鎖で罰せられた。",
+      "text_markdown": "彼らはアルジェに戻ることを余儀なくされ、セルバンテスはより重い鎖で罰せられた。",
+      "tts": {
+        "text": "彼らはアルジェに戻ることを余儀なくされ、セルバンテスはより重い鎖で罰せられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "失敗にもかかわらず、セルバンテスは屈しなかった。",
+      "text_markdown": "失敗にもかかわらず、セルバンテスは屈しなかった。",
+      "tts": {
+        "text": "失敗にもかかわらず、セルバンテスは屈しなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は直ちに次の脱出計画に取りかかった。",
+      "text_markdown": "彼は直ちに次の脱出計画に取りかかった。",
+      "tts": {
+        "text": "彼は直ちに次の脱出計画に取りかかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一方、スペインにいた家族は必死に身代金を工面しようとしていた。",
+      "text_markdown": "一方、スペインにいた家族は必死に身代金を工面しようとしていた。",
+      "tts": {
+        "text": "一方、スペインにいた家族は必死に身代金を工面しようとしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "母と姉妹たちは持ち物を売り、誰彼構わず金を借りた。",
+      "text_markdown": "母と姉妹たちは持ち物を売り、誰彼構わず金を借りた。",
+      "tts": {
+        "text": "母と姉妹たちは持ち物を売り、誰彼構わず金を借りた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし500エスクードは彼らの手の届かない額であった。",
+      "text_markdown": "しかし500エスクードは彼らの手の届かない額であった。",
+      "tts": {
+        "text": "しかし五百エスクードは彼らの手の届かない額であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577年、家族はセルバンテスの弟ロドリゴの身代金をかき集めることに成功した。",
+      "text_markdown": "1577年、家族はセルバンテスの弟ロドリゴの身代金をかき集めることに成功した。",
+      "tts": {
+        "text": "千五百七十七年、家族はセルバンテスの弟ロドリゴの身代金をかき集めることに成功した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロドリゴは解放されスペインに帰国した。",
+      "text_markdown": "ロドリゴは解放されスペインに帰国した。",
+      "tts": {
+        "text": "ロドリゴは解放されスペインに帰国した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ミゲルはアルジェに残り、なおも待ち続けた。",
+      "text_markdown": "ミゲルはアルジェに残り、なおも待ち続けた。",
+      "tts": {
+        "text": "ミゲルはアルジェに残り、なおも待ち続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスを捕らえた海賊たちは、熟練した組織力のある船乗りであった。",
+      "text_markdown": "セルバンテスを捕らえた海賊たちは、熟練した組織力のある船乗りであった。",
+      "tts": {
+        "text": "セルバンテスを捕らえた海賊たちは、熟練した組織力のある船乗りであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは帆と櫂の両方を備えた高速ガレー船を操った。",
+      "text_markdown": "彼らは帆と櫂の両方を備えた高速ガレー船を操った。",
+      "tts": {
+        "text": "彼らは帆と櫂の両方を備えた高速ガレー船を操った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの船はほとんどの商船より速く、逃げようとする船も追いつくことができた。",
+      "text_markdown": "これらの船はほとんどの商船より速く、逃げようとする船も追いつくことができた。",
+      "tts": {
+        "text": "これらの船はほとんどの商船より速く、逃げようとする船も追いつくことができた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェの奴隷市場は地中海世界で最大級のものであった。",
+      "text_markdown": "アルジェの奴隷市場は地中海世界で最大級のものであった。",
+      "tts": {
+        "text": "アルジェの奴隷市場は地中海世界で最大級のものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕虜は検査され、値付けされ、最高値を付けた者に売られた。",
+      "text_markdown": "捕虜は検査され、値付けされ、最高値を付けた者に売られた。",
+      "tts": {
+        "text": "捕虜は検査され、値付けされ、最高値を付けた者に売られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "海賊に捕らえられて",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "若者、技能を持つ者、裕福と見なされた者が最も高い値を付けられた。",
+      "text_markdown": "若者、技能を持つ者、裕福と見なされた者が最も高い値を付けられた。",
+      "tts": {
+        "text": "若者、技能を持つ者、裕福と見なされた者が最も高い値を付けられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "アルジェでの五年間",
+      "text_markdown": "アルジェでの五年間"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスの二度目の脱出の試みは、一度目よりも大胆であった。",
+      "text_markdown": "セルバンテスの二度目の脱出の試みは、一度目よりも大胆であった。",
+      "tts": {
+        "text": "セルバンテスの二度目の脱出の試みは、一度目よりも大胆であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1577年、彼は約十五人の捕虜をまとめ、アルジェ郊外の洞窟に隠れるよう手配した。",
+      "text_markdown": "1577年、彼は約十五人の捕虜をまとめ、アルジェ郊外の洞窟に隠れるよう手配した。",
+      "tts": {
+        "text": "千五百七十七年、彼は約十五人の捕虜をまとめ、アルジェ郊外の洞窟に隠れるよう手配した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "計画はスペイン船が海岸まで迎えに来るのを待つというものであった。",
+      "text_markdown": "計画はスペイン船が海岸まで迎えに来るのを待つというものであった。",
+      "tts": {
+        "text": "計画はスペイン船が海岸まで迎えに来るのを待つというものであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "逃亡者たちは何ヶ月も洞窟に身を潜め、連絡係を務める仲間の捕虜から食料の供給を受けていた。",
+      "text_markdown": "逃亡者たちは何ヶ月も洞窟に身を潜め、連絡係を務める仲間の捕虜から食料の供給を受けていた。",
+      "tts": {
+        "text": "逃亡者たちは何ヶ月も洞窟に身を潜め、連絡係を務める仲間の捕虜から食料の供給を受けていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "環境は窮屈で恐怖に満ちていた。",
+      "text_markdown": "環境は窮屈で恐怖に満ちていた。",
+      "tts": {
+        "text": "環境は窮屈で恐怖に満ちていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "発覚すれば死、あるいはそれ以上の仕打ちが待っていた。",
+      "text_markdown": "発覚すれば死、あるいはそれ以上の仕打ちが待っていた。",
+      "tts": {
+        "text": "発覚すれば死、あるいはそれ以上の仕打ちが待っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインの救助船が送られたが、洞窟に到着する前に海賊に発見された。",
+      "text_markdown": "スペインの救助船が送られたが、洞窟に到着する前に海賊に発見された。",
+      "tts": {
+        "text": "スペインの救助船が送られたが、洞窟に到着する前に海賊に発見された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船は逃走し、逃亡者たちは取り残された。",
+      "text_markdown": "船は逃走し、逃亡者たちは取り残された。",
+      "tts": {
+        "text": "船は逃走し、逃亡者たちは取り残された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして連絡係が彼らを裏切った。",
+      "text_markdown": "そして連絡係が彼らを裏切った。",
+      "tts": {
+        "text": "そして連絡係が彼らを裏切った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はアルジェの支配者ハサン・パシャに洞窟の場所を明かした。",
+      "text_markdown": "彼はアルジェの支配者ハサン・パシャに洞窟の場所を明かした。",
+      "tts": {
+        "text": "彼はアルジェの支配者ハサン・パシャに洞窟の場所を明かした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "兵士たちが洞窟を包囲し、中にいた全員を捕らえた。",
+      "text_markdown": "兵士たちが洞窟を包囲し、中にいた全員を捕らえた。",
+      "tts": {
+        "text": "兵士たちが洞窟を包囲し、中にいた全員を捕らえた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは前に出て、脱出計画の全責任を負った。",
+      "text_markdown": "セルバンテスは前に出て、脱出計画の全責任を負った。",
+      "tts": {
+        "text": "セルバンテスは前に出て、脱出計画の全責任を負った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はハサン・パシャに、すべてを計画し組織したのは自分一人であると告げた。",
+      "text_markdown": "彼はハサン・パシャに、すべてを計画し組織したのは自分一人であると告げた。",
+      "tts": {
+        "text": "彼はハサン・パシャに、すべてを計画し組織したのは自分一人であると告げた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "仲間の捕虜を処罰から守るためであった。",
+      "text_markdown": "仲間の捕虜を処罰から守るためであった。",
+      "tts": {
+        "text": "仲間の捕虜を処罰から守るためであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハサン・パシャはセルバンテスの勇気に感銘を受けたと伝えられている。",
+      "text_markdown": "ハサン・パシャはセルバンテスの勇気に感銘を受けたと伝えられている。",
+      "tts": {
+        "text": "ハサン・パシャはセルバンテスの勇気に感銘を受けたと伝えられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "処刑する代わりに、パシャはダリー・マミからセルバンテスを買い取り、自らの個人的な奴隷とした。",
+      "text_markdown": "処刑する代わりに、パシャはダリー・マミからセルバンテスを買い取り、自らの個人的な奴隷とした。",
+      "tts": {
+        "text": "処刑する代わりに、パシャはダリー・マミからセルバンテスを買い取り、自らの個人的な奴隷とした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "高額な身代金の価値もまた、パシャの手を止めさせたかもしれない。",
+      "text_markdown": "高額な身代金の価値もまた、パシャの手を止めさせたかもしれない。",
+      "tts": {
+        "text": "高額な身代金の価値もまた、パシャの手を止めさせたかもしれない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パシャの奴隷としての生活はなおも囚われの身であったが、いくぶん良い待遇を伴っていた。",
+      "text_markdown": "パシャの奴隷としての生活はなおも囚われの身であったが、いくぶん良い待遇を伴っていた。",
+      "tts": {
+        "text": "パシャの奴隷としての生活はなおも囚われの身であったが、いくぶん良い待遇を伴っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "セルバンテスはバーニョではなくパシャの屋敷に留め置かれた。",
+      "text_markdown": "セルバンテスはバーニョではなくパシャの屋敷に留め置かれた。",
+      "tts": {
+        "text": "セルバンテスはバーニョではなくパシャの屋敷に留め置かれた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしセルバンテスは自由への希望を捨てなかった。",
+      "text_markdown": "しかしセルバンテスは自由への希望を捨てなかった。",
+      "tts": {
+        "text": "しかしセルバンテスは自由への希望を捨てなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1578年、彼は三度目の脱出を計画した。",
+      "text_markdown": "1578年、彼は三度目の脱出を計画した。",
+      "tts": {
+        "text": "千五百七十八年、彼は三度目の脱出を計画した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はオランのスペイン駐屯地に使者を送り、助けを求めた。",
+      "text_markdown": "彼はオランのスペイン駐屯地に使者を送り、助けを求めた。",
+      "tts": {
+        "text": "彼はオランのスペイン駐屯地に使者を送り、助けを求めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "使者はオランに到着する前にムーア人の巡回隊に捕まった。",
+      "text_markdown": "使者はオランに到着する前にムーア人の巡回隊に捕まった。",
+      "tts": {
+        "text": "使者はオランに到着する前にムーア人の巡回隊に捕まった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "尋問の下、使者は計画におけるセルバンテスの役割を明かした。",
+      "text_markdown": "尋問の下、使者は計画におけるセルバンテスの役割を明かした。",
+      "tts": {
+        "text": "尋問の下、使者は計画におけるセルバンテスの役割を明かした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "セルバンテスは再び罰せられたが、再び命は奪われなかった。",
+      "text_markdown": "セルバンテスは再び罰せられたが、再び命は奪われなかった。",
+      "tts": {
+        "text": "セルバンテスは再び罰せられたが、再び命は奪われなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四度目にして最後の脱出の試みは1579年に行われた。",
+      "text_markdown": "四度目にして最後の脱出の試みは1579年に行われた。",
+      "tts": {
+        "text": "四度目にして最後の脱出の試みは千五百七十九年に行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "セルバンテスは密かに、アルジェの海岸に船を手配し、六十人の捕虜を乗せる計画を立てた。",
+      "text_markdown": "セルバンテスは密かに、アルジェの海岸に船を手配し、六十人の捕虜を乗せる計画を立てた。",
+      "tts": {
+        "text": "セルバンテスは密かに、アルジェの海岸に船を手配し、六十人の捕虜を乗せる計画を立てた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは彼がこれまでに考案した中で最も精巧な脱出計画であった。",
+      "text_markdown": "それは彼がこれまでに考案した中で最も精巧な脱出計画であった。",
+      "tts": {
+        "text": "それは彼がこれまでに考案した中で最も精巧な脱出計画であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "またしても裏切り者が計画を暴露した。",
+      "text_markdown": "またしても裏切り者が計画を暴露した。",
+      "tts": {
+        "text": "またしても裏切り者が計画を暴露した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フアン・ブランコ・デ・パスという元ドミニコ会修道士がセルバンテスを当局に密告した。",
+      "text_markdown": "フアン・ブランコ・デ・パスという元ドミニコ会修道士がセルバンテスを当局に密告した。",
+      "tts": {
+        "text": "フアン・ブランコ・デ・パスという元ドミニコ会修道士がセルバンテスを当局に密告した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ブランコ・デ・パスは嫉妬から行動したと考える歴史家もいる。",
+      "text_markdown": "ブランコ・デ・パスは嫉妬から行動したと考える歴史家もいる。",
+      "tts": {
+        "text": "ブランコ・デ・パスは嫉妬から行動したと考える歴史家もいる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは鎖に繋がれてハサン・パシャの前に引き出された。",
+      "text_markdown": "セルバンテスは鎖に繋がれてハサン・パシャの前に引き出された。",
+      "tts": {
+        "text": "セルバンテスは鎖に繋がれてハサン・パシャの前に引き出された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "再び、彼は共謀者の名前を明かすことを拒否した。",
+      "text_markdown": "再び、彼は共謀者の名前を明かすことを拒否した。",
+      "tts": {
+        "text": "再び、彼は共謀者の名前を明かすことを拒否した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "再び、彼は単独の責任を主張した。",
+      "text_markdown": "再び、彼は単独の責任を主張した。",
+      "tts": {
+        "text": "再び、彼は単独の責任を主張した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パシャはセルバンテスを処刑すると脅した。",
+      "text_markdown": "パシャはセルバンテスを処刑すると脅した。",
+      "tts": {
+        "text": "パシャはセルバンテスを処刑すると脅した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はバスティナードを命じた。足の裏を棒で打つ拷問である。",
+      "text_markdown": "彼はバスティナードを命じた。足の裏を棒で打つ拷問である。",
+      "tts": {
+        "text": "彼はバスティナードを命じた。足の裏を棒で打つ拷問である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし死刑は執行されなかった。",
+      "text_markdown": "しかし死刑は執行されなかった。",
+      "tts": {
+        "text": "しかし死刑は執行されなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "なぜハサン・パシャがセルバンテスの命を助けたのか、学者たちは長年議論してきた。",
+      "text_markdown": "なぜハサン・パシャがセルバンテスの命を助けたのか、学者たちは長年議論してきた。",
+      "tts": {
+        "text": "なぜハサン・パシャがセルバンテスの命を助けたのか、学者たちは長年議論してきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も有力な説明は金銭的なものである。",
+      "text_markdown": "最も有力な説明は金銭的なものである。",
+      "tts": {
+        "text": "最も有力な説明は金銭的なものである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "セルバンテスの身代金は500エスクードに設定されており、彼を殺せばその金を失うことになる。",
+      "text_markdown": "セルバンテスの身代金は500エスクードに設定されており、彼を殺せばその金を失うことになる。",
+      "tts": {
+        "text": "セルバンテスの身代金は五百エスクードに設定されており、彼を殺せばその金を失うことになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パシャが心からセルバンテスの勇気に感嘆していた可能性もある。",
+      "text_markdown": "パシャが心からセルバンテスの勇気に感嘆していた可能性もある。",
+      "tts": {
+        "text": "パシャが心からセルバンテスの勇気に感嘆していた可能性もある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "四度の脱出未遂、そのたびに服従ではなく反抗で応じたことは、尋常ではなかった。",
+      "text_markdown": "四度の脱出未遂、そのたびに服従ではなく反抗で応じたことは、尋常ではなかった。",
+      "tts": {
+        "text": "四度の脱出未遂、そのたびに服従ではなく反抗で応じたことは、尋常ではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェでの年月の間、セルバンテスは周囲のすべてを観察していた。",
+      "text_markdown": "アルジェでの年月の間、セルバンテスは周囲のすべてを観察していた。",
+      "tts": {
+        "text": "アルジェでの年月の間、セルバンテスは周囲のすべてを観察していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は異なる宗教や文化の人々がこの街でどのように共存しているかを見つめた。",
+      "text_markdown": "彼は異なる宗教や文化の人々がこの街でどのように共存しているかを見つめた。",
+      "tts": {
+        "text": "彼は異なる宗教や文化の人々がこの街でどのように共存しているかを見つめた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は残酷さを目にしたが、思いがけない優しさも目にした。",
+      "text_markdown": "彼は残酷さを目にしたが、思いがけない優しさも目にした。",
+      "tts": {
+        "text": "彼は残酷さを目にしたが、思いがけない優しさも目にした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はヨーロッパ各地からの捕虜に出会い、それぞれが喪失と忍耐の物語を持っていた。",
+      "text_markdown": "彼はヨーロッパ各地からの捕虜に出会い、それぞれが喪失と忍耐の物語を持っていた。",
+      "tts": {
+        "text": "彼はヨーロッパ各地からの捕虜に出会い、それぞれが喪失と忍耐の物語を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "脱出、裏切り、改宗、そして生存の物語を聞いた。",
+      "text_markdown": "脱出、裏切り、改宗、そして生存の物語を聞いた。",
+      "tts": {
+        "text": "脱出、裏切り、改宗、そして生存の物語を聞いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの物語は彼の生涯を通じてその作品を満たすことになる。",
+      "text_markdown": "これらの物語は彼の生涯を通じてその作品を満たすことになる。",
+      "tts": {
+        "text": "これらの物語は彼の生涯を通じてその作品を満たすことになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年月が過ぎるにつれ、セルバンテスの身代金への希望は薄れていった。",
+      "text_markdown": "年月が過ぎるにつれ、セルバンテスの身代金への希望は薄れていった。",
+      "tts": {
+        "text": "年月が過ぎるにつれ、セルバンテスの身代金への希望は薄れていった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家族はロドリゴを解放するために資金を使い果たしていた。",
+      "text_markdown": "家族はロドリゴを解放するために資金を使い果たしていた。",
+      "tts": {
+        "text": "家族はロドリゴを解放するために資金を使い果たしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ミゲルに必要な500エスクードは途方もなく遠い金額に思えた。",
+      "text_markdown": "ミゲルに必要な500エスクードは途方もなく遠い金額に思えた。",
+      "tts": {
+        "text": "ミゲルに必要な五百エスクードは途方もなく遠い金額に思えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスはアルジェのキリスト教徒捕虜たちの間で指導者となった。",
+      "text_markdown": "セルバンテスはアルジェのキリスト教徒捕虜たちの間で指導者となった。",
+      "tts": {
+        "text": "セルバンテスはアルジェのキリスト教徒捕虜たちの間で指導者となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "仲間の囚人たちは、彼の勇気と自らの危険を顧みず他者を守る姿勢を尊敬していた。",
+      "text_markdown": "仲間の囚人たちは、彼の勇気と自らの危険を顧みず他者を守る姿勢を尊敬していた。",
+      "tts": {
+        "text": "仲間の囚人たちは、彼の勇気と自らの危険を顧みず他者を守る姿勢を尊敬していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は抵抗を組織し、脱出を計画し、絶望するしかなかった者たちの士気を保ち続けた。",
+      "text_markdown": "彼は抵抗を組織し、脱出を計画し、絶望するしかなかった者たちの士気を保ち続けた。",
+      "tts": {
+        "text": "彼は抵抗を組織し、脱出を計画し、絶望するしかなかった者たちの士気を保ち続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕虜の中には待遇を改善するためにイスラムに改宗する者もいた。",
+      "text_markdown": "捕虜の中には待遇を改善するためにイスラムに改宗する者もいた。",
+      "tts": {
+        "text": "捕虜の中には待遇を改善するためにイスラムに改宗する者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの背教者は同じキリスト教徒からは軽蔑されたが、捕囚者からはより良い扱いを受けた。",
+      "text_markdown": "これらの背教者は同じキリスト教徒からは軽蔑されたが、捕囚者からはより良い扱いを受けた。",
+      "tts": {
+        "text": "これらの背教者は同じキリスト教徒からは軽蔑されたが、捕囚者からはより良い扱いを受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "アルジェでの五年間",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "セルバンテスはその誘惑を理解していたが、自らは決して改宗しなかった。",
+      "text_markdown": "セルバンテスはその誘惑を理解していたが、自らは決して改宗しなかった。",
+      "tts": {
+        "text": "セルバンテスはその誘惑を理解していたが、自らは決して改宗しなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "身代金による解放",
+      "text_markdown": "身代金による解放"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1580年、三位一体会の修道士たちが身代金交渉のためアルジェにやって来た。",
+      "text_markdown": "1580年、三位一体会の修道士たちが身代金交渉のためアルジェにやって来た。",
+      "tts": {
+        "text": "千五百八十年、三位一体会の修道士たちが身代金交渉のためアルジェにやって来た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "至聖三位一体修道会は何世紀にもわたりこのような活動を行ってきた。",
+      "text_markdown": "至聖三位一体修道会は何世紀にもわたりこのような活動を行ってきた。",
+      "tts": {
+        "text": "至聖三位一体修道会は何世紀にもわたりこのような活動を行ってきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはスペイン全土で寄付を募り、その資金でキリスト教徒の捕虜を解放していた。",
+      "text_markdown": "彼らはスペイン全土で寄付を募り、その資金でキリスト教徒の捕虜を解放していた。",
+      "tts": {
+        "text": "彼らはスペイン全土で寄付を募り、その資金でキリスト教徒の捕虜を解放していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "身代金交渉の責任者は三位一体会修道士のフライ・フアン・ヒルであった。",
+      "text_markdown": "身代金交渉の責任者は三位一体会修道士のフライ・フアン・ヒルであった。",
+      "tts": {
+        "text": "身代金交渉の責任者は三位一体会修道士のフライ・フアン・ヒルであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は数人の捕虜を身代金で解放するのに十分な資金を持参していたが、全員分には足りなかった。",
+      "text_markdown": "彼は数人の捕虜を身代金で解放するのに十分な資金を持参していたが、全員分には足りなかった。",
+      "tts": {
+        "text": "彼は数人の捕虜を身代金で解放するのに十分な資金を持参していたが、全員分には足りなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスの母レオノール・デ・コルティナスは何年も三位一体会に嘆願し続けていた。",
+      "text_markdown": "セルバンテスの母レオノール・デ・コルティナスは何年も三位一体会に嘆願し続けていた。",
+      "tts": {
+        "text": "セルバンテスの母レオノール・デ・コルティナスは何年も三位一体会に嘆願し続けていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "集められるだけの金貨をすべて送っていた。",
+      "text_markdown": "集められるだけの金貨をすべて送っていた。",
+      "tts": {
+        "text": "集められるだけの金貨をすべて送っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし総額はなお500エスクードに満たなかった。",
+      "text_markdown": "しかし総額はなお500エスクードに満たなかった。",
+      "tts": {
+        "text": "しかし総額はなお五百エスクードに満たなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フライ・フアン・ヒルはハサン・パシャと直接交渉した。",
+      "text_markdown": "フライ・フアン・ヒルはハサン・パシャと直接交渉した。",
+      "tts": {
+        "text": "フライ・フアン・ヒルはハサン・パシャと直接交渉した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "パシャはアルジェを永久に離れ、奴隷を連れて行こうとしている最中であった。",
+      "text_markdown": "パシャはアルジェを永久に離れ、奴隷を連れて行こうとしている最中であった。",
+      "tts": {
+        "text": "パシャはアルジェを永久に離れ、奴隷を連れて行こうとしている最中であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今セルバンテスの身代金が支払われなければ、彼は二度と自由になれないかもしれなかった。",
+      "text_markdown": "今セルバンテスの身代金が支払われなければ、彼は二度と自由になれないかもしれなかった。",
+      "tts": {
+        "text": "今セルバンテスの身代金が支払われなければ、彼は二度と自由になれないかもしれなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "必死の交渉と現地のキリスト教商人からの資金の追加により、フライ・フアン・ヒルは身代金の全額を集めた。",
+      "text_markdown": "必死の交渉と現地のキリスト教商人からの資金の追加により、フライ・フアン・ヒルは身代金の全額を集めた。",
+      "tts": {
+        "text": "必死の交渉と現地のキリスト教商人からの資金の追加により、フライ・フアン・ヒルは身代金の全額を集めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はハサン・パシャに500エスクードを支払った。",
+      "text_markdown": "彼はハサン・パシャに500エスクードを支払った。",
+      "tts": {
+        "text": "彼はハサン・パシャに五百エスクードを支払った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1580年9月19日、ミゲル・デ・セルバンテスは自由の身となった。",
+      "text_markdown": "1580年9月19日、ミゲル・デ・セルバンテスは自由の身となった。",
+      "tts": {
+        "text": "千五百八十年九月十九日、ミゲル・デ・セルバンテスは自由の身となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はちょうど五年間、アルジェで囚われの身であった。",
+      "text_markdown": "彼はちょうど五年間、アルジェで囚われの身であった。",
+      "tts": {
+        "text": "彼はちょうど五年間、アルジェで囚われの身であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は33歳であった。",
+      "text_markdown": "彼は33歳であった。",
+      "tts": {
+        "text": "彼は三十三歳であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "左手はレパントでの負傷により永久に不自由であった。",
+      "text_markdown": "左手はレパントでの負傷により永久に不自由であった。",
+      "tts": {
+        "text": "左手はレパントでの負傷により永久に不自由であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その身体には五年間の囚われと罰の傷痕が刻まれていた。",
+      "text_markdown": "その身体には五年間の囚われと罰の傷痕が刻まれていた。",
+      "tts": {
+        "text": "その身体には五年間の囚われと罰の傷痕が刻まれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェを離れる前に、セルバンテスは囚われの間の自らの行動について、仲間の捕虜たちから宣誓証言を集めた。",
+      "text_markdown": "アルジェを離れる前に、セルバンテスは囚われの間の自らの行動について、仲間の捕虜たちから宣誓証言を集めた。",
+      "tts": {
+        "text": "アルジェを離れる前に、セルバンテスは囚われの間の自らの行動について、仲間の捕虜たちから宣誓証言を集めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの証人は、彼の四度の脱出未遂と仲間を裏切らなかったことを確認した。",
+      "text_markdown": "これらの証人は、彼の四度の脱出未遂と仲間を裏切らなかったことを確認した。",
+      "tts": {
+        "text": "これらの証人は、彼の四度の脱出未遂と仲間を裏切らなかったことを確認した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この文書は『アルジェの情報書』と呼ばれ、今日まで現存している。",
+      "text_markdown": "この文書は『アルジェの情報書』と呼ばれ、今日まで現存している。",
+      "tts": {
+        "text": "この文書はアルジェの情報書と呼ばれ、今日まで現存している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは1580年末にスペインに帰国した。",
+      "text_markdown": "セルバンテスは1580年末にスペインに帰国した。",
+      "tts": {
+        "text": "セルバンテスは千五百八十年末にスペインに帰国した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は無一文で、身体障害を負い、心に傷を抱えていた。",
+      "text_markdown": "彼は無一文で、身体障害を負い、心に傷を抱えていた。",
+      "tts": {
+        "text": "彼は無一文で、身体障害を負い、心に傷を抱えていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "軍務と苦難が官職を得る助けになることを望んでいた。",
+      "text_markdown": "軍務と苦難が官職を得る助けになることを望んでいた。",
+      "tts": {
+        "text": "軍務と苦難が官職を得る助けになることを望んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いくつかの職に応募したが、すべて断られた。",
+      "text_markdown": "いくつかの職に応募したが、すべて断られた。",
+      "tts": {
+        "text": "いくつかの職に応募したが、すべて断られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインの官僚機構には、縁故のない傷痍軍人の居場所はなかった。",
+      "text_markdown": "スペインの官僚機構には、縁故のない傷痍軍人の居場所はなかった。",
+      "tts": {
+        "text": "スペインの官僚機構には、縁故のない傷痍軍人の居場所はなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは執筆に転じた。",
+      "text_markdown": "セルバンテスは執筆に転じた。",
+      "tts": {
+        "text": "セルバンテスは執筆に転じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1585年、彼は最初の小説である牧歌的恋愛小説『ラ・ガラテア』を出版した。",
+      "text_markdown": "1585年、彼は最初の小説である牧歌的恋愛小説『ラ・ガラテア』を出版した。",
+      "tts": {
+        "text": "千五百八十五年、彼は最初の小説である牧歌的恋愛小説ラ・ガラテアを出版した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは控えめな注目を集めたが、ほとんど収入にはならなかった。",
+      "text_markdown": "それは控えめな注目を集めたが、ほとんど収入にはならなかった。",
+      "tts": {
+        "text": "それは控えめな注目を集めたが、ほとんど収入にはならなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その後の二十年間、彼は経済的に苦しみ続けた。",
+      "text_markdown": "その後の二十年間、彼は経済的に苦しみ続けた。",
+      "tts": {
+        "text": "その後の二十年間、彼は経済的に苦しみ続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "徴税吏やスペイン艦隊の調達係として働いた。",
+      "text_markdown": "徴税吏やスペイン艦隊の調達係として働いた。",
+      "tts": {
+        "text": "徴税吏やスペイン艦隊の調達係として働いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "会計上の不正があったとして、少なくとも二度投獄された。",
+      "text_markdown": "会計上の不正があったとして、少なくとも二度投獄された。",
+      "tts": {
+        "text": "会計上の不正があったとして、少なくとも二度投獄された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1605年、57歳のとき、セルバンテスは『ドン・キホーテ』の第一部を出版した。",
+      "text_markdown": "1605年、57歳のとき、セルバンテスは『ドン・キホーテ』の第一部を出版した。",
+      "tts": {
+        "text": "千六百五年、五十七歳のとき、セルバンテスはドン・キホーテの第一部を出版した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この本はたちまち大評判となった。",
+      "text_markdown": "この本はたちまち大評判となった。",
+      "tts": {
+        "text": "この本はたちまち大評判となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "『ドン・キホーテ』は、騎士道物語を読み過ぎて正気を失い、遍歴の騎士になろうと旅に出る老人の物語である。",
+      "text_markdown": "『ドン・キホーテ』は、騎士道物語を読み過ぎて正気を失い、遍歴の騎士になろうと旅に出る老人の物語である。",
+      "tts": {
+        "text": "ドン・キホーテは、騎士道物語を読み過ぎて正気を失い、遍歴の騎士になろうと旅に出る老人の物語である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "おかしくて、悲しくて、深く人間的な作品であった。",
+      "text_markdown": "おかしくて、悲しくて、深く人間的な作品であった。",
+      "tts": {
+        "text": "おかしくて、悲しくて、深く人間的な作品であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはしばしば最初の近代小説と呼ばれている。",
+      "text_markdown": "それはしばしば最初の近代小説と呼ばれている。",
+      "tts": {
+        "text": "それはしばしば最初の近代小説と呼ばれている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは1615年に『ドン・キホーテ』の第二部を出版した。",
+      "text_markdown": "セルバンテスは1615年に『ドン・キホーテ』の第二部を出版した。",
+      "tts": {
+        "text": "セルバンテスは千六百十五年にドン・キホーテの第二部を出版した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は生涯の最後まで書き続けた。",
+      "text_markdown": "彼は生涯の最後まで書き続けた。",
+      "tts": {
+        "text": "彼は生涯の最後まで書き続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ミゲル・デ・セルバンテスは1616年4月22日、マドリードで亡くなった。",
+      "text_markdown": "ミゲル・デ・セルバンテスは1616年4月22日、マドリードで亡くなった。",
+      "tts": {
+        "text": "ミゲル・デ・セルバンテスは千六百十六年四月二十二日、マドリードで亡くなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "享年68歳であった。",
+      "text_markdown": "享年68歳であった。",
+      "tts": {
+        "text": "享年六十八歳であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は貧困のうちに亡くなり、自らの功績にふさわしいと感じていた認知も報酬も受けることはなかった。",
+      "text_markdown": "彼は貧困のうちに亡くなり、自らの功績にふさわしいと感じていた認知も報酬も受けることはなかった。",
+      "tts": {
+        "text": "彼は貧困のうちに亡くなり、自らの功績にふさわしいと感じていた認知も報酬も受けることはなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "三位一体修道会は何世紀にもわたり数千人の捕虜の身代金を支払ってきた。",
+      "text_markdown": "三位一体修道会は何世紀にもわたり数千人の捕虜の身代金を支払ってきた。",
+      "tts": {
+        "text": "三位一体修道会は何世紀にもわたり数千人の捕虜の身代金を支払ってきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北アフリカへの使節は危険で費用のかかるものであった。",
+      "text_markdown": "北アフリカへの使節は危険で費用のかかるものであった。",
+      "tts": {
+        "text": "北アフリカへの使節は危険で費用のかかるものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "身代金による解放",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "修道士たちは大金を携えて敵地に赴き、信仰と身代金の慣例を信じていた。",
+      "text_markdown": "修道士たちは大金を携えて敵地に赴き、信仰と身代金の慣例を信じていた。",
+      "tts": {
+        "text": "修道士たちは大金を携えて敵地に赴き、信仰と身代金の慣例を信じていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "囚われ人の遺産",
+      "text_markdown": "囚われ人の遺産"
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェでのセルバンテスの囚われの経験は、その作品に消えない刻印を残した。",
+      "text_markdown": "アルジェでのセルバンテスの囚われの経験は、その作品に消えない刻印を残した。",
+      "tts": {
+        "text": "アルジェでのセルバンテスの囚われの経験は、その作品に消えない刻印を残した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "投獄、囚われ、そして脱出の場面が作品全体に登場する。",
+      "text_markdown": "投獄、囚われ、そして脱出の場面が作品全体に登場する。",
+      "tts": {
+        "text": "投獄、囚われ、そして脱出の場面が作品全体に登場する。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "『ドン・キホーテ』自体の中に、「捕虜の物語」として知られる長い挿話がある。",
+      "text_markdown": "『ドン・キホーテ』自体の中に、「捕虜の物語」として知られる長い挿話がある。",
+      "tts": {
+        "text": "ドン・キホーテ自体の中に、捕虜の物語として知られる長い挿話がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルバリア海賊に捕らえられ、アルジェで奴隷にされたスペイン兵の物語である。",
+      "text_markdown": "バルバリア海賊に捕らえられ、アルジェで奴隷にされたスペイン兵の物語である。",
+      "tts": {
+        "text": "バルバリア海賊に捕らえられ、アルジェで奴隷にされたスペイン兵の物語である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "セルバンテス自身の人生との類似は紛れもない。",
+      "text_markdown": "セルバンテス自身の人生との類似は紛れもない。",
+      "tts": {
+        "text": "セルバンテス自身の人生との類似は紛れもない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルジェでの生活を描いた戯曲『アルジェの牢獄』は、彼自身の体験に直接基づいている。",
+      "text_markdown": "アルジェでの生活を描いた戯曲『アルジェの牢獄』は、彼自身の体験に直接基づいている。",
+      "tts": {
+        "text": "アルジェでの生活を描いた戯曲アルジェの牢獄は、彼自身の体験に直接基づいている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "囚われの残酷さ、故郷への郷愁、そして捕囚者と被捕囚者の間の複雑な関係が描かれた。",
+      "text_markdown": "囚われの残酷さ、故郷への郷愁、そして捕囚者と被捕囚者の間の複雑な関係が描かれた。",
+      "tts": {
+        "text": "囚われの残酷さ、故郷への郷愁、そして捕囚者と被捕囚者の間の複雑な関係が描かれた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "学者たちは、セルバンテスのイスラム教徒の人物描写がその時代のほとんどのヨーロッパの作家よりも繊細であったと指摘している。",
+      "text_markdown": "学者たちは、セルバンテスのイスラム教徒の人物描写がその時代のほとんどのヨーロッパの作家よりも繊細であったと指摘している。",
+      "tts": {
+        "text": "学者たちは、セルバンテスのイスラム教徒の人物描写がその時代のほとんどのヨーロッパの作家よりも繊細であったと指摘している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は五年間イスラム教徒の中で暮らしていた。",
+      "text_markdown": "彼は五年間イスラム教徒の中で暮らしていた。",
+      "tts": {
+        "text": "彼は五年間イスラム教徒の中で暮らしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p109",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は彼らを単なる敵ではなく、一人一人の人間として見ていた。",
+      "text_markdown": "彼は彼らを単なる敵ではなく、一人一人の人間として見ていた。",
+      "tts": {
+        "text": "彼は彼らを単なる敵ではなく、一人一人の人間として見ていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "『ドン・キホーテ』は史上最も影響力のある書物の一つとなった。",
+      "text_markdown": "『ドン・キホーテ』は史上最も影響力のある書物の一つとなった。",
+      "tts": {
+        "text": "ドン・キホーテは史上最も影響力のある書物の一つとなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "聖書を除けば、他のどの本よりも多くの言語に翻訳されている。",
+      "text_markdown": "聖書を除けば、他のどの本よりも多くの言語に翻訳されている。",
+      "tts": {
+        "text": "聖書を除けば、他のどの本よりも多くの言語に翻訳されている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "理想主義、幻滅、そして世界をどう想像するかと実際の世界との間の隔たりという小説のテーマは、文化と世紀を超えて共鳴した。",
+      "text_markdown": "理想主義、幻滅、そして世界をどう想像するかと実際の世界との間の隔たりという小説のテーマは、文化と世紀を超えて共鳴した。",
+      "tts": {
+        "text": "理想主義、幻滅、そして世界をどう想像するかと実際の世界との間の隔たりという小説のテーマは、文化と世紀を超えて共鳴した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらのテーマの多くは、セルバンテス自身の苦い経験によって形作られた。",
+      "text_markdown": "これらのテーマの多くは、セルバンテス自身の苦い経験によって形作られた。",
+      "tts": {
+        "text": "これらのテーマの多くは、セルバンテス自身の苦い経験によって形作られた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セルバンテスは勇敢に戦いながら忘れ去られることの意味を知っていた。",
+      "text_markdown": "セルバンテスは勇敢に戦いながら忘れ去られることの意味を知っていた。",
+      "tts": {
+        "text": "セルバンテスは勇敢に戦いながら忘れ去られることの意味を知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "苦しみながら何の報いも受けないことの意味を知っていた。",
+      "text_markdown": "苦しみながら何の報いも受けないことの意味を知っていた。",
+      "tts": {
+        "text": "苦しみながら何の報いも受けないことの意味を知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はその知識を作品に注ぎ込んだ。",
+      "text_markdown": "彼はその知識を作品に注ぎ込んだ。",
+      "tts": {
+        "text": "彼はその知識を作品に注ぎ込んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日、セルバンテスは近代小説の父として称えられている。",
+      "text_markdown": "今日、セルバンテスは近代小説の父として称えられている。",
+      "tts": {
+        "text": "今日、セルバンテスは近代小説の父として称えられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の像がマドリードのスペイン広場に立っている。",
+      "text_markdown": "彼の像がマドリードのスペイン広場に立っている。",
+      "tts": {
+        "text": "彼の像がマドリードのスペイン広場に立っている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界中の大学、図書館、文化センターに彼の名が冠されている。",
+      "text_markdown": "世界中の大学、図書館、文化センターに彼の名が冠されている。",
+      "tts": {
+        "text": "世界中の大学、図書館、文化センターに彼の名が冠されている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の命日である4月23日は、ユネスコにより世界本の日として祝われている。",
+      "text_markdown": "彼の命日である4月23日は、ユネスコにより世界本の日として祝われている。",
+      "tts": {
+        "text": "彼の命日である四月二十三日は、ユネスコにより世界本の日として祝われている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界的に祝われる数少ない文学の祝日の一つである。",
+      "text_markdown": "世界的に祝われる数少ない文学の祝日の一つである。",
+      "tts": {
+        "text": "世界的に祝われる数少ない文学の祝日の一つである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ミゲル・デ・セルバンテスは海賊に捕らえられ、五年間奴隷にされ、祖国にほとんど忘れ去られた。",
+      "text_markdown": "ミゲル・デ・セルバンテスは海賊に捕らえられ、五年間奴隷にされ、祖国にほとんど忘れ去られた。",
+      "tts": {
+        "text": "ミゲル・デ・セルバンテスは海賊に捕らえられ、五年間奴隷にされ、祖国にほとんど忘れ去られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はそれに応えて、全世界が記憶する本を書いた。",
+      "text_markdown": "彼はそれに応えて、全世界が記憶する本を書いた。",
+      "tts": {
+        "text": "彼はそれに応えて、全世界が記憶する本を書いた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "囚われの身は彼を滅ぼさなかった。",
+      "text_markdown": "囚われの身は彼を滅ぼさなかった。",
+      "tts": {
+        "text": "囚われの身は彼を滅ぼさなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "囚われ人の遺産",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは彼の才能が鍛え上げられた炉となったのである。",
+      "text_markdown": "それは彼の才能が鍛え上げられた炉となったのである。",
+      "tts": {
+        "text": "それは彼の才能が鍛え上げられた炉となったのである。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

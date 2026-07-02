@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_anne_bonny",
+  "language": "ja",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのことば",
+      "text_markdown": "読者へのことば"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはカリブ海を恐怖に陥れた一人の女性についての実話です。",
+      "text_markdown": "これはカリブ海を恐怖に陥れた一人の女性についての実話です。",
+      "tts": {
+        "text": "これはカリブ海を恐怖に陥れた一人の女性についての実話です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の名はアン・ボニー、歴史上最も有名な海賊の一人でした。",
+      "text_markdown": "彼女の名はアン・ボニー、歴史上最も有名な海賊の一人でした。",
+      "tts": {
+        "text": "彼女の名はアン・ボニー、歴史上最も有名な海賊の一人でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は1697年頃にアイルランドで生まれ、植民地時代のサウスカロライナで育ちました。",
+      "text_markdown": "彼女は1697年頃にアイルランドで生まれ、植民地時代のサウスカロライナで育ちました。",
+      "tts": {
+        "text": "彼女は千六百九十七年頃にアイルランドで生まれ、植民地時代のサウスカロライナで育ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーは、彼女の世界が女性に課そうとしたあらゆる規則を破りました。",
+      "text_markdown": "アン・ボニーは、彼女の世界が女性に課そうとしたあらゆる規則を破りました。",
+      "tts": {
+        "text": "アン・ボニーは、彼女の世界が女性に課そうとしたあらゆる規則を破りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は立派な生活を捨てて海賊とともに航海しました。",
+      "text_markdown": "彼女は立派な生活を捨てて海賊とともに航海しました。",
+      "tts": {
+        "text": "彼女は立派な生活を捨てて海賊とともに航海しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は戦いに参加し、歴戦の船乗りたちの尊敬を勝ち取りました。",
+      "text_markdown": "彼女は戦いに参加し、歴戦の船乗りたちの尊敬を勝ち取りました。",
+      "tts": {
+        "text": "彼女は戦いに参加し、歴戦の船乗りたちの尊敬を勝ち取りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の物語は主に一つの資料から伝わっており、それは1724年に出版されました。",
+      "text_markdown": "彼女の物語は主に一つの資料から伝わっており、それは1724年に出版されました。",
+      "tts": {
+        "text": "彼女の物語は主に一つの資料から伝わっており、それは千七百二十四年に出版されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その資料はチャールズ・ジョンソン船長による最も悪名高い海賊たちについての書物です。",
+      "text_markdown": "その資料はチャールズ・ジョンソン船長による最も悪名高い海賊たちについての書物です。",
+      "tts": {
+        "text": "その資料はチャールズ・ジョンソン船長による最も悪名高い海賊たちについての書物です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アンの物語のどれだけが事実で、どれだけが伝説なのか、確かなことは言えません。",
+      "text_markdown": "アンの物語のどれだけが事実で、どれだけが伝説なのか、確かなことは言えません。",
+      "tts": {
+        "text": "アンの物語のどれだけが事実で、どれだけが伝説なのか、確かなことは言えません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "分かっていることだけでも十分に驚くべきものです。",
+      "text_markdown": "分かっていることだけでも十分に驚くべきものです。",
+      "tts": {
+        "text": "分かっていることだけでも十分に驚くべきものです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは彼女の物語であり、歴史的記録が許す限り正直に語られています。",
+      "text_markdown": "これは彼女の物語であり、歴史的記録が許す限り正直に語られています。",
+      "tts": {
+        "text": "これは彼女の物語であり、歴史的記録が許す限り正直に語られています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "アン・ボニーが知っていた世界",
+      "text_markdown": "アン・ボニーが知っていた世界"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーは、歴史家が海賊の黄金時代と呼ぶ時代に生きていました。",
+      "text_markdown": "アン・ボニーは、歴史家が海賊の黄金時代と呼ぶ時代に生きていました。",
+      "tts": {
+        "text": "アン・ボニーは、歴史家が海賊の黄金時代と呼ぶ時代に生きていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この時代はおよそ1680年から1730年まで続きました。",
+      "text_markdown": "この時代はおよそ1680年から1730年まで続きました。",
+      "tts": {
+        "text": "この時代はおよそ千六百八十年から千七百三十年まで続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何千もの海賊がカリブ海、大西洋、そしてインド洋を航行していました。",
+      "text_markdown": "何千もの海賊がカリブ海、大西洋、そしてインド洋を航行していました。",
+      "tts": {
+        "text": "何千もの海賊がカリブ海、大西洋、そしてインド洋を航行していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブ海は北アメリカと南アメリカの間に位置しています。",
+      "text_markdown": "カリブ海は北アメリカと南アメリカの間に位置しています。",
+      "tts": {
+        "text": "カリブ海は北アメリカと南アメリカの間に位置しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大小何百もの島々が点在しています。",
+      "text_markdown": "大小何百もの島々が点在しています。",
+      "tts": {
+        "text": "大小何百もの島々が点在しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1700年代初頭、ヨーロッパの帝国はこれらの島々をめぐって絶え間なく争いました。",
+      "text_markdown": "1700年代初頭、ヨーロッパの帝国はこれらの島々をめぐって絶え間なく争いました。",
+      "tts": {
+        "text": "千七百年代初頭、ヨーロッパの帝国はこれらの島々をめぐって絶え間なく争いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペイン、イングランド、フランス、そしてオランダがすべてそこに領土を主張しました。",
+      "text_markdown": "スペイン、イングランド、フランス、そしてオランダがすべてそこに領土を主張しました。",
+      "tts": {
+        "text": "スペイン、イングランド、フランス、そしてオランダがすべてそこに領土を主張しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブ海の経済は砂糖、タバコ、そして奴隷労働に依存していました。",
+      "text_markdown": "カリブ海の経済は砂糖、タバコ、そして奴隷労働に依存していました。",
+      "tts": {
+        "text": "カリブ海の経済は砂糖、タバコ、そして奴隷労働に依存していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャマイカやバルバドスなどの島々にある巨大な砂糖プランテーションは莫大な富を生み出しました。",
+      "text_markdown": "ジャマイカやバルバドスなどの島々にある巨大な砂糖プランテーションは莫大な富を生み出しました。",
+      "tts": {
+        "text": "ジャマイカやバルバドスなどの島々にある巨大な砂糖プランテーションは莫大な富を生み出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その富は船で運ばれたため、カリブ海は海賊にとって抗いがたい場所となりました。",
+      "text_markdown": "その富は船で運ばれたため、カリブ海は海賊にとって抗いがたい場所となりました。",
+      "tts": {
+        "text": "その富は船で運ばれたため、カリブ海は海賊にとって抗いがたい場所となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂糖は大西洋世界で最も価値のある商品でした。",
+      "text_markdown": "砂糖は大西洋世界で最も価値のある商品でした。",
+      "tts": {
+        "text": "砂糖は大西洋世界で最も価値のある商品でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その生産には過酷な条件での膨大な労働力が必要でした。",
+      "text_markdown": "その生産には過酷な条件での膨大な労働力が必要でした。",
+      "tts": {
+        "text": "その生産には過酷な条件での膨大な労働力が必要でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何百万人もの奴隷にされたアフリカ人がプランテーションで働かせるためにカリブ海に連れてこられました。",
+      "text_markdown": "何百万人もの奴隷にされたアフリカ人がプランテーションで働かせるためにカリブ海に連れてこられました。",
+      "tts": {
+        "text": "何百万人もの奴隷にされたアフリカ人がプランテーションで働かせるためにカリブ海に連れてこられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "砂糖からの利益は帝国に資金を提供し、ヨーロッパに偉大な都市を築きました。",
+      "text_markdown": "砂糖からの利益は帝国に資金を提供し、ヨーロッパに偉大な都市を築きました。",
+      "tts": {
+        "text": "砂糖からの利益は帝国に資金を提供し、ヨーロッパに偉大な都市を築きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン継承戦争は1713年に終結しました。",
+      "text_markdown": "スペイン継承戦争は1713年に終結しました。",
+      "tts": {
+        "text": "スペイン継承戦争は千七百十三年に終結しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その戦争中、政府は私掠船と呼ばれる民間の船長を雇いました。",
+      "text_markdown": "その戦争中、政府は私掠船と呼ばれる民間の船長を雇いました。",
+      "tts": {
+        "text": "その戦争中、政府は私掠船と呼ばれる民間の船長を雇いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "私掠船は私掠免許状と呼ばれる公式文書を携帯していました。",
+      "text_markdown": "私掠船は私掠免許状と呼ばれる公式文書を携帯していました。",
+      "tts": {
+        "text": "私掠船は私掠免許状と呼ばれる公式文書を携帯していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの文書は彼らに敵船を攻撃する法的許可を与えました。",
+      "text_markdown": "これらの文書は彼らに敵船を攻撃する法的許可を与えました。",
+      "tts": {
+        "text": "これらの文書は彼らに敵船を攻撃する法的許可を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦争が終わると、何千人もの私掠船乗りが突然職を失いました。",
+      "text_markdown": "戦争が終わると、何千人もの私掠船乗りが突然職を失いました。",
+      "tts": {
+        "text": "戦争が終わると、何千人もの私掠船乗りが突然職を失いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの多くは航海と戦闘以外の技能を持っていませんでした。",
+      "text_markdown": "彼らの多くは航海と戦闘以外の技能を持っていませんでした。",
+      "tts": {
+        "text": "彼らの多くは航海と戦闘以外の技能を持っていませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "生き残る他の方法がないと考え、海賊になった者もいました。",
+      "text_markdown": "生き残る他の方法がないと考え、海賊になった者もいました。",
+      "tts": {
+        "text": "生き残る他の方法がないと考え、海賊になった者もいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "貧困よりも自由を好んで海賊になった者もいました。",
+      "text_markdown": "貧困よりも自由を好んで海賊になった者もいました。",
+      "tts": {
+        "text": "貧困よりも自由を好んで海賊になった者もいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バハマのニュープロビデンス島にあるナッソーは海賊の拠点となりました。",
+      "text_markdown": "バハマのニュープロビデンス島にあるナッソーは海賊の拠点となりました。",
+      "tts": {
+        "text": "バハマのニュープロビデンス島にあるナッソーは海賊の拠点となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1716年までに、何百人もの海賊がそこに集まっていました。",
+      "text_markdown": "1716年までに、何百人もの海賊がそこに集まっていました。",
+      "tts": {
+        "text": "千七百十六年までに、何百人もの海賊がそこに集まっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは一部の歴史家が海賊共和国と呼ぶものを作り上げました。",
+      "text_markdown": "彼らは一部の歴史家が海賊共和国と呼ぶものを作り上げました。",
+      "tts": {
+        "text": "彼らは一部の歴史家が海賊共和国と呼ぶものを作り上げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ナッソーには良い港と真水があり、海軍が攻撃するのは困難でした。",
+      "text_markdown": "ナッソーには良い港と真水があり、海軍が攻撃するのは困難でした。",
+      "tts": {
+        "text": "ナッソーには良い港と真水があり、海軍が攻撃するのは困難でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ナッソーの海賊共和国には正式な政府がありませんでした。",
+      "text_markdown": "ナッソーの海賊共和国には正式な政府がありませんでした。",
+      "tts": {
+        "text": "ナッソーの海賊共和国には正式な政府がありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちは自分たちのリーダーを選び、紛争を自分たちで解決しました。",
+      "text_markdown": "海賊たちは自分たちのリーダーを選び、紛争を自分たちで解決しました。",
+      "tts": {
+        "text": "海賊たちは自分たちのリーダーを選び、紛争を自分たちで解決しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "居酒屋、売春宿、市場が盗品で繁盛しました。",
+      "text_markdown": "居酒屋、売春宿、市場が盗品で繁盛しました。",
+      "tts": {
+        "text": "居酒屋、売春宿、市場が盗品で繁盛しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そこは西半球で最も無法な場所の一つでした。",
+      "text_markdown": "そこは西半球で最も無法な場所の一つでした。",
+      "tts": {
+        "text": "そこは西半球で最も無法な場所の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年、イギリス国王はウッズ・ロジャーズを新総督としてナッソーに派遣しました。",
+      "text_markdown": "1718年、イギリス国王はウッズ・ロジャーズを新総督としてナッソーに派遣しました。",
+      "tts": {
+        "text": "千七百十八年、イギリス国王はウッズ・ロジャーズを新総督としてナッソーに派遣しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロジャーズ自身も元私掠船乗りであり、海賊をよく理解していました。",
+      "text_markdown": "ロジャーズ自身も元私掠船乗りであり、海賊をよく理解していました。",
+      "tts": {
+        "text": "ロジャーズ自身も元私掠船乗りであり、海賊をよく理解していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は降伏して海賊行為をやめる者に国王の恩赦を申し出ました。",
+      "text_markdown": "彼は降伏して海賊行為をやめる者に国王の恩赦を申し出ました。",
+      "tts": {
+        "text": "彼は降伏して海賊行為をやめる者に国王の恩赦を申し出ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くの海賊がその申し出を受け入れましたが、全員が本気だったわけではありません。",
+      "text_markdown": "多くの海賊がその申し出を受け入れましたが、全員が本気だったわけではありません。",
+      "tts": {
+        "text": "多くの海賊がその申し出を受け入れましたが、全員が本気だったわけではありません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロジャーズはまた、恩赦を拒否した海賊は絞首刑になると明言しました。",
+      "text_markdown": "ロジャーズはまた、恩赦を拒否した海賊は絞首刑になると明言しました。",
+      "tts": {
+        "text": "ロジャーズはまた、恩赦を拒否した海賊は絞首刑になると明言しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は本気であることを証明するために、数人の海賊を公開処刑しました。",
+      "text_markdown": "彼は本気であることを証明するために、数人の海賊を公開処刑しました。",
+      "tts": {
+        "text": "彼は本気であることを証明するために、数人の海賊を公開処刑しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ナッソーの海賊共和国の時代は終わりを迎えようとしていました。",
+      "text_markdown": "ナッソーの海賊共和国の時代は終わりを迎えようとしていました。",
+      "tts": {
+        "text": "ナッソーの海賊共和国の時代は終わりを迎えようとしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一方、北アメリカのイギリス植民地は急速に成長していました。",
+      "text_markdown": "一方、北アメリカのイギリス植民地は急速に成長していました。",
+      "tts": {
+        "text": "一方、北アメリカのイギリス植民地は急速に成長していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サウスカロライナ植民地のチャールストンは最も裕福な港の一つでした。",
+      "text_markdown": "サウスカロライナ植民地のチャールストンは最も裕福な港の一つでした。",
+      "tts": {
+        "text": "サウスカロライナ植民地のチャールストンは最も裕福な港の一つでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこは米、藍、そして奴隷の取引の中心地でした。",
+      "text_markdown": "そこは米、藍、そして奴隷の取引の中心地でした。",
+      "tts": {
+        "text": "そこは米、藍、そして奴隷の取引の中心地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "チャールストンの商人たちは野心的で、しばしば冷酷でした。",
+      "text_markdown": "チャールストンの商人たちは野心的で、しばしば冷酷でした。",
+      "tts": {
+        "text": "チャールストンの商人たちは野心的で、しばしば冷酷でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700年代初頭、イギリス社会で女性が持つ選択肢はごくわずかでした。",
+      "text_markdown": "1700年代初頭、イギリス社会で女性が持つ選択肢はごくわずかでした。",
+      "tts": {
+        "text": "千七百年代初頭、イギリス社会で女性が持つ選択肢はごくわずかでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女たちは財産を所有することも、投票することも、公職に就くこともできませんでした。",
+      "text_markdown": "彼女たちは財産を所有することも、投票することも、公職に就くこともできませんでした。",
+      "tts": {
+        "text": "彼女たちは財産を所有することも、投票することも、公職に就くこともできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "結婚すると、女性の法的な身分は夫のものに吸収されました。",
+      "text_markdown": "結婚すると、女性の法的な身分は夫のものに吸収されました。",
+      "tts": {
+        "text": "結婚すると、女性の法的な身分は夫のものに吸収されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊とともに戦う女性という考えは、ほぼ想像もできないことでした。",
+      "text_markdown": "海賊とともに戦う女性という考えは、ほぼ想像もできないことでした。",
+      "tts": {
+        "text": "海賊とともに戦う女性という考えは、ほぼ想像もできないことでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし海は常に、社会の規則に従うことを拒む人々を惹きつけてきました。",
+      "text_markdown": "しかし海は常に、社会の規則に従うことを拒む人々を惹きつけてきました。",
+      "tts": {
+        "text": "しかし海は常に、社会の規則に従うことを拒む人々を惹きつけてきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊船は独自の規則で運営され、一部の乗組員は驚くほど民主的でした。",
+      "text_markdown": "海賊船は独自の規則で運営され、一部の乗組員は驚くほど民主的でした。",
+      "tts": {
+        "text": "海賊船は独自の規則で運営され、一部の乗組員は驚くほど民主的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船長は選挙で選ばれ、投票で解任されることもありました。",
+      "text_markdown": "船長は選挙で選ばれ、投票で解任されることもありました。",
+      "tts": {
+        "text": "船長は選挙で選ばれ、投票で解任されることもありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "略奪品は合意された配分に従って分けられました。",
+      "text_markdown": "略奪品は合意された配分に従って分けられました。",
+      "tts": {
+        "text": "略奪品は合意された配分に従って分けられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーがナッソーに到着したとき、これが彼女が足を踏み入れた世界でした。",
+      "text_markdown": "アン・ボニーがナッソーに到着したとき、これが彼女が足を踏み入れた世界でした。",
+      "tts": {
+        "text": "アン・ボニーがナッソーに到着したとき、これが彼女が足を踏み入れた世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは暴力と機会と徹底的な自由の世界でした。",
+      "text_markdown": "それは暴力と機会と徹底的な自由の世界でした。",
+      "tts": {
+        "text": "それは暴力と機会と徹底的な自由の世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "アン・ボニーが知っていた世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはまた、急速に消えゆく世界でもありました。",
+      "text_markdown": "それはまた、急速に消えゆく世界でもありました。",
+      "tts": {
+        "text": "それはまた、急速に消えゆく世界でもありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーは1697年頃、アイルランドのコーク州にある小さな港町キンセールで生まれました。",
+      "text_markdown": "アン・ボニーは1697年頃、アイルランドのコーク州にある小さな港町キンセールで生まれました。",
+      "tts": {
+        "text": "アン・ボニーは千六百九十七年頃、アイルランドのコーク州にある小さな港町キンセールで生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部の資料では彼女の誕生を1698年や1700年としていますが、ほとんどの歴史家は1697年を支持しています。",
+      "text_markdown": "一部の資料では彼女の誕生を1698年や1700年としていますが、ほとんどの歴史家は1697年を支持しています。",
+      "tts": {
+        "text": "一部の資料では彼女の誕生を千六百九十八年や千七百年としていますが、ほとんどの歴史家は千六百九十七年を支持しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の父親はキンセールで成功した弁護士、ウィリアム・コーマックでした。",
+      "text_markdown": "彼女の父親はキンセールで成功した弁護士、ウィリアム・コーマックでした。",
+      "tts": {
+        "text": "彼女の父親はキンセールで成功した弁護士、ウィリアム・コーマックでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の母親はコーマック家の使用人、メアリー・ブレナンでした。",
+      "text_markdown": "彼女の母親はコーマック家の使用人、メアリー・ブレナンでした。",
+      "tts": {
+        "text": "彼女の母親はコーマック家の使用人、メアリー・ブレナンでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アンは二人の婚外子でした。",
+      "text_markdown": "アンは二人の婚外子でした。",
+      "tts": {
+        "text": "アンは二人の婚外子でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "十八世紀のアイルランドでは、これは深刻なスキャンダルでした。",
+      "text_markdown": "十八世紀のアイルランドでは、これは深刻なスキャンダルでした。",
+      "tts": {
+        "text": "十八世紀のアイルランドでは、これは深刻なスキャンダルでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィリアム・コーマックの妻は不倫を知り、彼のもとを去りました。",
+      "text_markdown": "ウィリアム・コーマックの妻は不倫を知り、彼のもとを去りました。",
+      "tts": {
+        "text": "ウィリアム・コーマックの妻は不倫を知り、彼のもとを去りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "このスキャンダルはキンセールでの彼の法律事務所を破壊しました。",
+      "text_markdown": "このスキャンダルはキンセールでの彼の法律事務所を破壊しました。",
+      "tts": {
+        "text": "このスキャンダルはキンセールでの彼の法律事務所を破壊しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "依頼人たちは彼を見捨て、彼の評判は地に落ちました。",
+      "text_markdown": "依頼人たちは彼を見捨て、彼の評判は地に落ちました。",
+      "tts": {
+        "text": "依頼人たちは彼を見捨て、彼の評判は地に落ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コーマックはアメリカ植民地でやり直すことを決意しました。",
+      "text_markdown": "コーマックはアメリカ植民地でやり直すことを決意しました。",
+      "tts": {
+        "text": "コーマックはアメリカ植民地でやり直すことを決意しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はメアリー・ブレナンと幼いアンをサウスカロライナのチャールストンに連れて行きました。",
+      "text_markdown": "彼はメアリー・ブレナンと幼いアンをサウスカロライナのチャールストンに連れて行きました。",
+      "tts": {
+        "text": "彼はメアリー・ブレナンと幼いアンをサウスカロライナのチャールストンに連れて行きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最初、彼はアンに男の子の服を着せ、アンディと呼びました。",
+      "text_markdown": "最初、彼はアンに男の子の服を着せ、アンディと呼びました。",
+      "tts": {
+        "text": "最初、彼はアンに男の子の服を着せ、アンディと呼びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は人々に、この子は親戚の息子で法律事務員として訓練していると話しました。",
+      "text_markdown": "彼は人々に、この子は親戚の息子で法律事務員として訓練していると話しました。",
+      "tts": {
+        "text": "彼は人々に、この子は親戚の息子で法律事務員として訓練していると話しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この偽りは長くは続きませんでしたが、コーマックはそれでもチャールストンで成功しました。",
+      "text_markdown": "この偽りは長くは続きませんでしたが、コーマックはそれでもチャールストンで成功しました。",
+      "tts": {
+        "text": "この偽りは長くは続きませんでしたが、コーマックはそれでもチャールストンで成功しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は成功した商人となり、やがてプランテーションを手に入れました。",
+      "text_markdown": "彼は成功した商人となり、やがてプランテーションを手に入れました。",
+      "tts": {
+        "text": "彼は成功した商人となり、やがてプランテーションを手に入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのプランテーションではおそらく米や藍が栽培されていました。これらはこの地域の主要な換金作物でした。",
+      "text_markdown": "そのプランテーションではおそらく米や藍が栽培されていました。これらはこの地域の主要な換金作物でした。",
+      "tts": {
+        "text": "そのプランテーションではおそらく米や藍が栽培されていました。これらはこの地域の主要な換金作物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アンはほとんどの植民地の子供たちと比べて、比較的裕福な環境で育ちました。",
+      "text_markdown": "アンはほとんどの植民地の子供たちと比べて、比較的裕福な環境で育ちました。",
+      "tts": {
+        "text": "アンはほとんどの植民地の子供たちと比べて、比較的裕福な環境で育ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンが後にしたキンセールという町は、アイルランド南岸の活気ある港でした。",
+      "text_markdown": "アンが後にしたキンセールという町は、アイルランド南岸の活気ある港でした。",
+      "tts": {
+        "text": "アンが後にしたキンセールという町は、アイルランド南岸の活気ある港でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこはかつてイングランド軍とスペイン軍の有名な戦いの舞台でした。",
+      "text_markdown": "そこはかつてイングランド軍とスペイン軍の有名な戦いの舞台でした。",
+      "tts": {
+        "text": "そこはかつてイングランド軍とスペイン軍の有名な戦いの舞台でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "町の住民はアイルランド人とイングランド人の入植者が混在していました。",
+      "text_markdown": "町の住民はアイルランド人とイングランド人の入植者が混在していました。",
+      "tts": {
+        "text": "町の住民はアイルランド人とイングランド人の入植者が混在していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アンは生まれた土地に二度と戻ることはありませんでした。",
+      "text_markdown": "アンは生まれた土地に二度と戻ることはありませんでした。",
+      "tts": {
+        "text": "アンは生まれた土地に二度と戻ることはありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジョンソン船長の記述によると、アンは子供の頃から激しい気性の持ち主でした。",
+      "text_markdown": "ジョンソン船長の記述によると、アンは子供の頃から激しい気性の持ち主でした。",
+      "tts": {
+        "text": "ジョンソン船長の記述によると、アンは子供の頃から激しい気性の持ち主でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ある話では、彼女は怒りの発作でテーブルナイフを使って使用人の少女を刺したと言われています。",
+      "text_markdown": "ある話では、彼女は怒りの発作でテーブルナイフを使って使用人の少女を刺したと言われています。",
+      "tts": {
+        "text": "ある話では、彼女は怒りの発作でテーブルナイフを使って使用人の少女を刺したと言われています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この話が真実か誇張かにかかわらず、暴力的な人物としての彼女の評判を確立しました。",
+      "text_markdown": "この話が真実か誇張かにかかわらず、暴力的な人物としての彼女の評判を確立しました。",
+      "tts": {
+        "text": "この話が真実か誇張かにかかわらず、暴力的な人物としての彼女の評判を確立しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンの母親メアリー・ブレナンは、アンがまだ幼い頃に亡くなりました。",
+      "text_markdown": "アンの母親メアリー・ブレナンは、アンがまだ幼い頃に亡くなりました。",
+      "tts": {
+        "text": "アンの母親メアリー・ブレナンは、アンがまだ幼い頃に亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "メアリーの死亡の正確な日付と原因は不明です。",
+      "text_markdown": "メアリーの死亡の正確な日付と原因は不明です。",
+      "tts": {
+        "text": "メアリーの死亡の正確な日付と原因は不明です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その後、アンは主に父親に育てられました。",
+      "text_markdown": "その後、アンは主に父親に育てられました。",
+      "tts": {
+        "text": "その後、アンは主に父親に育てられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十代の頃、アンは赤い髪をしており、魅力的だと見なされていたと言われています。",
+      "text_markdown": "十代の頃、アンは赤い髪をしており、魅力的だと見なされていたと言われています。",
+      "tts": {
+        "text": "十代の頃、アンは赤い髪をしており、魅力的だと見なされていたと言われています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はまた、意志が強く、手に負えないと言われていました。",
+      "text_markdown": "彼女はまた、意志が強く、手に負えないと言われていました。",
+      "tts": {
+        "text": "彼女はまた、意志が強く、手に負えないと言われていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "父親は彼女が裕福な男性と結婚し、家族の地位を向上させることを望んでいました。",
+      "text_markdown": "父親は彼女が裕福な男性と結婚し、家族の地位を向上させることを望んでいました。",
+      "tts": {
+        "text": "父親は彼女が裕福な男性と結婚し、家族の地位を向上させることを望んでいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世紀初頭のチャールストンは荒々しい辺境の町でした。",
+      "text_markdown": "十八世紀初頭のチャールストンは荒々しい辺境の町でした。",
+      "tts": {
+        "text": "十八世紀初頭のチャールストンは荒々しい辺境の町でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裕福なプランテーション主が船乗り、兵士、商人とともに暮らしていました。",
+      "text_markdown": "裕福なプランテーション主が船乗り、兵士、商人とともに暮らしていました。",
+      "tts": {
+        "text": "裕福なプランテーション主が船乗り、兵士、商人とともに暮らしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "港には大西洋世界中から船が訪れました。",
+      "text_markdown": "港には大西洋世界中から船が訪れました。",
+      "tts": {
+        "text": "港には大西洋世界中から船が訪れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アンは海の物語に囲まれて育ちました。",
+      "text_markdown": "アンは海の物語に囲まれて育ちました。",
+      "tts": {
+        "text": "アンは海の物語に囲まれて育ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし、1718年頃、アンはジェームズ・ボニーと結婚しました。",
+      "text_markdown": "しかし、1718年頃、アンはジェームズ・ボニーと結婚しました。",
+      "tts": {
+        "text": "しかし、千七百十八年頃、アンはジェームズ・ボニーと結婚しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジェームズ・ボニーは金も将来の見通しもない小物の海賊でした。",
+      "text_markdown": "ジェームズ・ボニーは金も将来の見通しもない小物の海賊でした。",
+      "tts": {
+        "text": "ジェームズ・ボニーは金も将来の見通しもない小物の海賊でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部の歴史家は、彼がアンの父親のプランテーションを得ることを期待してアンと結婚したと考えています。",
+      "text_markdown": "一部の歴史家は、彼がアンの父親のプランテーションを得ることを期待してアンと結婚したと考えています。",
+      "tts": {
+        "text": "一部の歴史家は、彼がアンの父親のプランテーションを得ることを期待してアンと結婚したと考えています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウィリアム・コーマックはこの結婚に激怒しました。",
+      "text_markdown": "ウィリアム・コーマックはこの結婚に激怒しました。",
+      "tts": {
+        "text": "ウィリアム・コーマックはこの結婚に激怒しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はアンを完全に勘当し、一切の遺産を与えることを拒否しました。",
+      "text_markdown": "彼はアンを完全に勘当し、一切の遺産を与えることを拒否しました。",
+      "tts": {
+        "text": "彼はアンを完全に勘当し、一切の遺産を与えることを拒否しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ある伝説では、アンは復讐のために父親のプランテーションに火を放ったとされています。",
+      "text_markdown": "ある伝説では、アンは復讐のために父親のプランテーションに火を放ったとされています。",
+      "tts": {
+        "text": "ある伝説では、アンは復讐のために父親のプランテーションに火を放ったとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "歴史家はこれが実際に起こったかどうか確認できません。",
+      "text_markdown": "歴史家はこれが実際に起こったかどうか確認できません。",
+      "tts": {
+        "text": "歴史家はこれが実際に起こったかどうか確認できません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンとジェームズ・ボニーはバハマのナッソーへ旅立ちました。",
+      "text_markdown": "アンとジェームズ・ボニーはバハマのナッソーへ旅立ちました。",
+      "tts": {
+        "text": "アンとジェームズ・ボニーはバハマのナッソーへ旅立ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らが到着した時、ナッソーはまだ無法地帯の海賊の拠点でした。",
+      "text_markdown": "彼らが到着した時、ナッソーはまだ無法地帯の海賊の拠点でした。",
+      "tts": {
+        "text": "彼らが到着した時、ナッソーはまだ無法地帯の海賊の拠点でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジェームズ・ボニーはウッズ・ロジャーズ総督の密告者として働き始めました。",
+      "text_markdown": "ジェームズ・ボニーはウッズ・ロジャーズ総督の密告者として働き始めました。",
+      "tts": {
+        "text": "ジェームズ・ボニーはウッズ・ロジャーズ総督の密告者として働き始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は金と引き換えに海賊の活動を報告しました。",
+      "text_markdown": "彼は金と引き換えに海賊の活動を報告しました。",
+      "tts": {
+        "text": "彼は金と引き換えに海賊の活動を報告しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンは密告者としての夫の仕事を軽蔑しました。",
+      "text_markdown": "アンは密告者としての夫の仕事を軽蔑しました。",
+      "tts": {
+        "text": "アンは密告者としての夫の仕事を軽蔑しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は当局よりも海賊たちの方がはるかに興味深いと思いました。",
+      "text_markdown": "彼女は当局よりも海賊たちの方がはるかに興味深いと思いました。",
+      "tts": {
+        "text": "彼女は当局よりも海賊たちの方がはるかに興味深いと思いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はナッソーの居酒屋や波止場で時間を過ごすようになりました。",
+      "text_markdown": "彼女はナッソーの居酒屋や波止場で時間を過ごすようになりました。",
+      "tts": {
+        "text": "彼女はナッソーの居酒屋や波止場で時間を過ごすようになりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そこで彼女の人生は永遠に変わりました。",
+      "text_markdown": "そこで彼女の人生は永遠に変わりました。",
+      "tts": {
+        "text": "そこで彼女の人生は永遠に変わりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力への台頭",
+      "text_markdown": "権力への台頭"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ナッソーで、アン・ボニーはジョン・ラカムという海賊の船長に出会いました。",
+      "text_markdown": "ナッソーで、アン・ボニーはジョン・ラカムという海賊の船長に出会いました。",
+      "tts": {
+        "text": "ナッソーで、アン・ボニーはジョン・ラカムという海賊の船長に出会いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラカムは色鮮やかなキャリコの服を着ていたことからキャリコ・ジャックとして知られていました。",
+      "text_markdown": "ラカムは色鮮やかなキャリコの服を着ていたことからキャリコ・ジャックとして知られていました。",
+      "tts": {
+        "text": "ラカムは色鮮やかなキャリコの服を着ていたことからキャリコ・ジャックとして知られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は魅力的で大胆で、ジェームズ・ボニーとはまったく異なる人物でした。",
+      "text_markdown": "彼は魅力的で大胆で、ジェームズ・ボニーとはまったく異なる人物でした。",
+      "tts": {
+        "text": "彼は魅力的で大胆で、ジェームズ・ボニーとはまったく異なる人物でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンとキャリコ・ジャックは情熱的な関係を始めました。",
+      "text_markdown": "アンとキャリコ・ジャックは情熱的な関係を始めました。",
+      "tts": {
+        "text": "アンとキャリコ・ジャックは情熱的な関係を始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラカムは妻売りと呼ばれる取引でアンを夫から買い取ることを申し出ました。",
+      "text_markdown": "ラカムは妻売りと呼ばれる取引でアンを夫から買い取ることを申し出ました。",
+      "tts": {
+        "text": "ラカムは妻売りと呼ばれる取引でアンを夫から買い取ることを申し出ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "妻売りは粗野ではありましたが、植民地世界の一部では認められた慣習でした。",
+      "text_markdown": "妻売りは粗野ではありましたが、植民地世界の一部では認められた慣習でした。",
+      "tts": {
+        "text": "妻売りは粗野ではありましたが、植民地世界の一部では認められた慣習でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ジェームズ・ボニーはその申し出を拒否し、ロジャーズ総督に苦情を訴えました。",
+      "text_markdown": "ジェームズ・ボニーはその申し出を拒否し、ロジャーズ総督に苦情を訴えました。",
+      "tts": {
+        "text": "ジェームズ・ボニーはその申し出を拒否し、ロジャーズ総督に苦情を訴えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロジャーズは、アンが夫の元に戻らなければ公開鞭打ちにすると脅しました。",
+      "text_markdown": "ロジャーズは、アンが夫の元に戻らなければ公開鞭打ちにすると脅しました。",
+      "tts": {
+        "text": "ロジャーズは、アンが夫の元に戻らなければ公開鞭打ちにすると脅しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アンには従う気はまったくありませんでした。",
+      "text_markdown": "アンには従う気はまったくありませんでした。",
+      "tts": {
+        "text": "アンには従う気はまったくありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "代わりに、彼女とキャリコ・ジャックはナッソー港からスループ船を盗んで出航しました。",
+      "text_markdown": "代わりに、彼女とキャリコ・ジャックはナッソー港からスループ船を盗んで出航しました。",
+      "tts": {
+        "text": "代わりに、彼女とキャリコ・ジャックはナッソー港からスループ船を盗んで出航しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラカムは以前ロジャーズから国王の恩赦を受け入れていました。",
+      "text_markdown": "ラカムは以前ロジャーズから国王の恩赦を受け入れていました。",
+      "tts": {
+        "text": "ラカムは以前ロジャーズから国王の恩赦を受け入れていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊行為に戻ることで、彼は再びお尋ね者となりました。",
+      "text_markdown": "海賊行為に戻ることで、彼は再びお尋ね者となりました。",
+      "tts": {
+        "text": "海賊行為に戻ることで、彼は再びお尋ね者となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アン・ボニーは乗組員の正式な一員として彼とともに航海しました。",
+      "text_markdown": "アン・ボニーは乗組員の正式な一員として彼とともに航海しました。",
+      "tts": {
+        "text": "アン・ボニーは乗組員の正式な一員として彼とともに航海しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この瞬間から、彼女は海賊でした。",
+      "text_markdown": "この瞬間から、彼女は海賊でした。",
+      "tts": {
+        "text": "この瞬間から、彼女は海賊でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンが男装していたかどうかは歴史家の間で議論されています。",
+      "text_markdown": "アンが男装していたかどうかは歴史家の間で議論されています。",
+      "tts": {
+        "text": "アンが男装していたかどうかは歴史家の間で議論されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部の記述では、彼女はトラブルを避けるために男装して戦ったとされています。",
+      "text_markdown": "一部の記述では、彼女はトラブルを避けるために男装して戦ったとされています。",
+      "tts": {
+        "text": "一部の記述では、彼女はトラブルを避けるために男装して戦ったとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "別の記述では、乗組員は最初から彼女が女性だと知っていたとされています。",
+      "text_markdown": "別の記述では、乗組員は最初から彼女が女性だと知っていたとされています。",
+      "tts": {
+        "text": "別の記述では、乗組員は最初から彼女が女性だと知っていたとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "いずれにせよ、彼女は戦士と船乗りとして受け入れられました。",
+      "text_markdown": "いずれにせよ、彼女は戦士と船乗りとして受け入れられました。",
+      "tts": {
+        "text": "いずれにせよ、彼女は戦士と船乗りとして受け入れられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラカムの乗組員は小型で高速かつ操縦しやすいスループ船を運用していました。",
+      "text_markdown": "ラカムの乗組員は小型で高速かつ操縦しやすいスループ船を運用していました。",
+      "tts": {
+        "text": "ラカムの乗組員は小型で高速かつ操縦しやすいスループ船を運用していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは漁船、商船、小型貿易船を狙いました。",
+      "text_markdown": "彼らは漁船、商船、小型貿易船を狙いました。",
+      "tts": {
+        "text": "彼らは漁船、商船、小型貿易船を狙いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはジャマイカ、イスパニョーラ、キューバの沿岸を襲撃しました。",
+      "text_markdown": "彼らはジャマイカ、イスパニョーラ、キューバの沿岸を襲撃しました。",
+      "tts": {
+        "text": "彼らはジャマイカ、イスパニョーラ、キューバの沿岸を襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らの狩り場は西カリブ海全域に広がっていました。",
+      "text_markdown": "彼らの狩り場は西カリブ海全域に広がっていました。",
+      "tts": {
+        "text": "彼らの狩り場は西カリブ海全域に広がっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラカムは富や権力の点で偉大な海賊船長の一人ではありませんでした。",
+      "text_markdown": "ラカムは富や権力の点で偉大な海賊船長の一人ではありませんでした。",
+      "tts": {
+        "text": "ラカムは富や権力の点で偉大な海賊船長の一人ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の乗組員は少なく、おそらく十二人から二十人ほどでした。",
+      "text_markdown": "彼の乗組員は少なく、おそらく十二人から二十人ほどでした。",
+      "tts": {
+        "text": "彼の乗組員は少なく、おそらく十二人から二十人ほどでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの戦利品は黒ひげのような海賊が得たものと比べると控えめでした。",
+      "text_markdown": "彼らの戦利品は黒ひげのような海賊が得たものと比べると控えめでした。",
+      "tts": {
+        "text": "彼らの戦利品は黒ひげのような海賊が得たものと比べると控えめでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしアン・ボニーの存在がこの乗組員を伝説にしました。",
+      "text_markdown": "しかしアン・ボニーの存在がこの乗組員を伝説にしました。",
+      "tts": {
+        "text": "しかしアン・ボニーの存在がこの乗組員を伝説にしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この頃、アンはメアリー・リードに出会いました。",
+      "text_markdown": "この頃、アンはメアリー・リードに出会いました。",
+      "tts": {
+        "text": "この頃、アンはメアリー・リードに出会いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "メアリー・リードはラカムの船に乗っていたもう一人の女性でした。",
+      "text_markdown": "メアリー・リードはラカムの船に乗っていたもう一人の女性でした。",
+      "tts": {
+        "text": "メアリー・リードはラカムの船に乗っていたもう一人の女性でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "メアリーは人生の大部分を男装して過ごしていました。",
+      "text_markdown": "メアリーは人生の大部分を男装して過ごしていました。",
+      "tts": {
+        "text": "メアリーは人生の大部分を男装して過ごしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メアリー・リードはイングランドで生まれ、母親によって男の子として育てられました。",
+      "text_markdown": "メアリー・リードはイングランドで生まれ、母親によって男の子として育てられました。",
+      "tts": {
+        "text": "メアリー・リードはイングランドで生まれ、母親によって男の子として育てられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "母親は男の子に与えられるはずの遺産を受け取るために彼女を男装させました。",
+      "text_markdown": "母親は男の子に与えられるはずの遺産を受け取るために彼女を男装させました。",
+      "tts": {
+        "text": "母親は男の子に与えられるはずの遺産を受け取るために彼女を男装させました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "メアリーは海に転じる前に、男装してイギリス軍に従軍しました。",
+      "text_markdown": "メアリーは海に転じる前に、男装してイギリス軍に従軍しました。",
+      "tts": {
+        "text": "メアリーは海に転じる前に、男装してイギリス軍に従軍しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女はスペイン継承戦争中にフランドルで戦いました。",
+      "text_markdown": "彼女はスペイン継承戦争中にフランドルで戦いました。",
+      "tts": {
+        "text": "彼女はスペイン継承戦争中にフランドルで戦いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メアリーはフランドルで同じ兵士と結婚もしていました。",
+      "text_markdown": "メアリーはフランドルで同じ兵士と結婚もしていました。",
+      "tts": {
+        "text": "メアリーはフランドルで同じ兵士と結婚もしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "夫が亡くなると、彼女は海の生活に戻りました。",
+      "text_markdown": "夫が亡くなると、彼女は海の生活に戻りました。",
+      "tts": {
+        "text": "夫が亡くなると、彼女は海の生活に戻りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女はカリブ海行きの船に乗っていましたが、その船が海賊に捕らえられました。",
+      "text_markdown": "彼女はカリブ海行きの船に乗っていましたが、その船が海賊に捕らえられました。",
+      "tts": {
+        "text": "彼女はカリブ海行きの船に乗っていましたが、その船が海賊に捕らえられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "こうして彼女はラカムの乗組員に加わることになりました。",
+      "text_markdown": "こうして彼女はラカムの乗組員に加わることになりました。",
+      "tts": {
+        "text": "こうして彼女はラカムの乗組員に加わることになりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジョンソンの記述によると、アンは最初メアリーを男性だと思い、惹かれました。",
+      "text_markdown": "ジョンソンの記述によると、アンは最初メアリーを男性だと思い、惹かれました。",
+      "tts": {
+        "text": "ジョンソンの記述によると、アンは最初メアリーを男性だと思い、惹かれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アンがメアリーの正体を知ると、二人は親しい友人そして同志となりました。",
+      "text_markdown": "アンがメアリーの正体を知ると、二人は親しい友人そして同志となりました。",
+      "tts": {
+        "text": "アンがメアリーの正体を知ると、二人は親しい友人そして同志となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "キャリコ・ジャックは真実を知る前に嫉妬したと言われています。",
+      "text_markdown": "キャリコ・ジャックは真実を知る前に嫉妬したと言われています。",
+      "tts": {
+        "text": "キャリコ・ジャックは真実を知る前に嫉妬したと言われています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンとメアリーは繰り返し戦いで自らの実力を証明しました。",
+      "text_markdown": "アンとメアリーは繰り返し戦いで自らの実力を証明しました。",
+      "tts": {
+        "text": "アンとメアリーは繰り返し戦いで自らの実力を証明しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "後に証人たちは、二人の女性が船上で最も勇猛な戦士だったと証言しました。",
+      "text_markdown": "後に証人たちは、二人の女性が船上で最も勇猛な戦士だったと証言しました。",
+      "tts": {
+        "text": "後に証人たちは、二人の女性が船上で最も勇猛な戦士だったと証言しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女たちは巧みさと獰猛さでカトラスと拳銃を振るいました。",
+      "text_markdown": "彼女たちは巧みさと獰猛さでカトラスと拳銃を振るいました。",
+      "tts": {
+        "text": "彼女たちは巧みさと獰猛さでカトラスと拳銃を振るいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乗組員はジャマイカ近海の小型船舶を襲撃しました。",
+      "text_markdown": "乗組員はジャマイカ近海の小型船舶を襲撃しました。",
+      "tts": {
+        "text": "乗組員はジャマイカ近海の小型船舶を襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは積荷、食料、武器を奪い、時には新しい乗組員を引き入れました。",
+      "text_markdown": "彼らは積荷、食料、武器を奪い、時には新しい乗組員を引き入れました。",
+      "tts": {
+        "text": "彼らは積荷、食料、武器を奪い、時には新しい乗組員を引き入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕らえられた船乗りの中には、漂流させられるよりも海賊に加わることを選んだ者もいました。",
+      "text_markdown": "捕らえられた船乗りの中には、漂流させられるよりも海賊に加わることを選んだ者もいました。",
+      "tts": {
+        "text": "捕らえられた船乗りの中には、漂流させられるよりも海賊に加わることを選んだ者もいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年までにカリブ海での海賊行為はますます危険になっていました。",
+      "text_markdown": "1720年までにカリブ海での海賊行為はますます危険になっていました。",
+      "tts": {
+        "text": "千七百二十年までにカリブ海での海賊行為はますます危険になっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス海軍は巡回と海賊狩りを強化していました。",
+      "text_markdown": "イギリス海軍は巡回と海賊狩りを強化していました。",
+      "tts": {
+        "text": "イギリス海軍は巡回と海賊狩りを強化していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロジャーズ総督は海賊狩りの者たちに、海賊を見つけ次第捕らえるか殺すことを許可していました。",
+      "text_markdown": "ロジャーズ総督は海賊狩りの者たちに、海賊を見つけ次第捕らえるか殺すことを許可していました。",
+      "tts": {
+        "text": "ロジャーズ総督は海賊狩りの者たちに、海賊を見つけ次第捕らえるか殺すことを許可していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この地域のすべての海賊団に対して、包囲網は狭まりつつありました。",
+      "text_markdown": "この地域のすべての海賊団に対して、包囲網は狭まりつつありました。",
+      "tts": {
+        "text": "この地域のすべての海賊団に対して、包囲網は狭まりつつありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "危険にもかかわらず、ラカムの乗組員は1720年の夏から秋にかけて襲撃を続けました。",
+      "text_markdown": "危険にもかかわらず、ラカムの乗組員は1720年の夏から秋にかけて襲撃を続けました。",
+      "tts": {
+        "text": "危険にもかかわらず、ラカムの乗組員は千七百二十年の夏から秋にかけて襲撃を続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは海賊の生活を諦めることを望まないか、できないように見えました。",
+      "text_markdown": "彼らは海賊の生活を諦めることを望まないか、できないように見えました。",
+      "tts": {
+        "text": "彼らは海賊の生活を諦めることを望まないか、できないように見えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの運は尽きようとしていました。",
+      "text_markdown": "彼らの運は尽きようとしていました。",
+      "tts": {
+        "text": "彼らの運は尽きようとしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "絶頂期",
+      "text_markdown": "絶頂期"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊船での生活はロマンチックな物語が示すようなものではまったくありませんでした。",
+      "text_markdown": "海賊船での生活はロマンチックな物語が示すようなものではまったくありませんでした。",
+      "tts": {
+        "text": "海賊船での生活はロマンチックな物語が示すようなものではまったくありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "窮屈で不潔で、しばしば退屈でした。",
+      "text_markdown": "窮屈で不潔で、しばしば退屈でした。",
+      "tts": {
+        "text": "窮屈で不潔で、しばしば退屈でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船乗りたちは乾パン、塩漬け肉、そして手に入る限りの新鮮な食べ物を食べました。",
+      "text_markdown": "船乗りたちは乾パン、塩漬け肉、そして手に入る限りの新鮮な食べ物を食べました。",
+      "tts": {
+        "text": "船乗りたちは乾パン、塩漬け肉、そして手に入る限りの新鮮な食べ物を食べました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い航海では真水は常に不足していました。",
+      "text_markdown": "長い航海では真水は常に不足していました。",
+      "tts": {
+        "text": "長い航海では真水は常に不足していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちは水分補給のためにラム酒、ビール、または水とアルコールの混合物を飲みました。",
+      "text_markdown": "海賊たちは水分補給のためにラム酒、ビール、または水とアルコールの混合物を飲みました。",
+      "tts": {
+        "text": "海賊たちは水分補給のためにラム酒、ビール、または水とアルコールの混合物を飲みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "病気は戦闘よりもはるかに多くの船乗りを殺しました。",
+      "text_markdown": "病気は戦闘よりもはるかに多くの船乗りを殺しました。",
+      "tts": {
+        "text": "病気は戦闘よりもはるかに多くの船乗りを殺しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "壊血病、赤痢、熱帯性の熱病は絶え間ない脅威でした。",
+      "text_markdown": "壊血病、赤痢、熱帯性の熱病は絶え間ない脅威でした。",
+      "tts": {
+        "text": "壊血病、赤痢、熱帯性の熱病は絶え間ない脅威でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラカムのスループ船は速度のために設計された小型の単マスト船でした。",
+      "text_markdown": "ラカムのスループ船は速度のために設計された小型の単マスト船でした。",
+      "tts": {
+        "text": "ラカムのスループ船は速度のために設計された小型の単マスト船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの乗組員や重い積荷を運ぶことはできませんでした。",
+      "text_markdown": "多くの乗組員や重い積荷を運ぶことはできませんでした。",
+      "tts": {
+        "text": "多くの乗組員や重い積荷を運ぶことはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし商船を追いつくのに十分な速さと、軍艦から逃れるのに十分な機敏さを備えていました。",
+      "text_markdown": "しかし商船を追いつくのに十分な速さと、軍艦から逃れるのに十分な機敏さを備えていました。",
+      "tts": {
+        "text": "しかし商船を追いつくのに十分な速さと、軍艦から逃れるのに十分な機敏さを備えていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スループ船は少人数の乗組員で操縦でき、これはラカムにぴったりでした。",
+      "text_markdown": "スループ船は少人数の乗組員で操縦でき、これはラカムにぴったりでした。",
+      "tts": {
+        "text": "スループ船は少人数の乗組員で操縦でき、これはラカムにぴったりでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員が少ないということは、一人当たりの略奪品の分け前が大きいということでした。",
+      "text_markdown": "乗組員が少ないということは、一人当たりの略奪品の分け前が大きいということでした。",
+      "tts": {
+        "text": "乗組員が少ないということは、一人当たりの略奪品の分け前が大きいということでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スループ船の浅い喫水により、大型船が入れない湾や入り江に隠れることもできました。",
+      "text_markdown": "スループ船の浅い喫水により、大型船が入れない湾や入り江に隠れることもできました。",
+      "tts": {
+        "text": "スループ船の浅い喫水により、大型船が入れない湾や入り江に隠れることもできました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊の乗組員は条項と呼ばれる文書化された規則で自治を行いました。",
+      "text_markdown": "海賊の乗組員は条項と呼ばれる文書化された規則で自治を行いました。",
+      "tts": {
+        "text": "海賊の乗組員は条項と呼ばれる文書化された規則で自治を行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "すべての乗組員は加入前に条項に署名または印を付けました。",
+      "text_markdown": "すべての乗組員は加入前に条項に署名または印を付けました。",
+      "tts": {
+        "text": "すべての乗組員は加入前に条項に署名または印を付けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "条項は略奪品の分配方法を規定していました。",
+      "text_markdown": "条項は略奪品の分配方法を規定していました。",
+      "tts": {
+        "text": "条項は略奪品の分配方法を規定していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "また、戦闘、賭博、紛争解決の規則も定めていました。",
+      "text_markdown": "また、戦闘、賭博、紛争解決の規則も定めていました。",
+      "tts": {
+        "text": "また、戦闘、賭博、紛争解決の規則も定めていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船長は乗組員の投票で選ばれました。",
+      "text_markdown": "船長は乗組員の投票で選ばれました。",
+      "tts": {
+        "text": "船長は乗組員の投票で選ばれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員が信頼を失えば、いつでも解任されることがありました。",
+      "text_markdown": "乗組員が信頼を失えば、いつでも解任されることがありました。",
+      "tts": {
+        "text": "乗組員が信頼を失えば、いつでも解任されることがありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "掌帆長は副長と調停者のような役割を果たしました。",
+      "text_markdown": "掌帆長は副長と調停者のような役割を果たしました。",
+      "tts": {
+        "text": "掌帆長は副長と調停者のような役割を果たしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この民主的な制度は当時としては注目に値するものでした。",
+      "text_markdown": "この民主的な制度は当時としては注目に値するものでした。",
+      "tts": {
+        "text": "この民主的な制度は当時としては注目に値するものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーとメアリー・リードはこの制度の中で対等に活動しました。",
+      "text_markdown": "アン・ボニーとメアリー・リードはこの制度の中で対等に活動しました。",
+      "tts": {
+        "text": "アン・ボニーとメアリー・リードはこの制度の中で対等に活動しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女たちは男性の乗組員と同じように略奪品の分け前を受け取りました。",
+      "text_markdown": "彼女たちは男性の乗組員と同じように略奪品の分け前を受け取りました。",
+      "tts": {
+        "text": "彼女たちは男性の乗組員と同じように略奪品の分け前を受け取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女たちの戦闘能力は船上で尊敬を勝ち取りました。",
+      "text_markdown": "彼女たちの戦闘能力は船上で尊敬を勝ち取りました。",
+      "tts": {
+        "text": "彼女たちの戦闘能力は船上で尊敬を勝ち取りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブ海の海賊の武器は多様で致命的でした。",
+      "text_markdown": "カリブ海の海賊の武器は多様で致命的でした。",
+      "tts": {
+        "text": "カリブ海の海賊の武器は多様で致命的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カトラスは海上での接近戦で好まれた武器でした。",
+      "text_markdown": "カトラスは海上での接近戦で好まれた武器でした。",
+      "tts": {
+        "text": "カトラスは海上での接近戦で好まれた武器でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フリントロック式拳銃は携帯されましたが、再装填前に一発しか撃てませんでした。",
+      "text_markdown": "フリントロック式拳銃は携帯されましたが、再装填前に一発しか撃てませんでした。",
+      "tts": {
+        "text": "フリントロック式拳銃は携帯されましたが、再装填前に一発しか撃てませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "乗り込み用の斧、短剣、そしてファイアポットと呼ばれる手榴弾も一般的でした。",
+      "text_markdown": "乗り込み用の斧、短剣、そしてファイアポットと呼ばれる手榴弾も一般的でした。",
+      "tts": {
+        "text": "乗り込み用の斧、短剣、そしてファイアポットと呼ばれる手榴弾も一般的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊が船を攻撃する際、最初の目標は乗組員を威嚇して降伏させることでした。",
+      "text_markdown": "海賊が船を攻撃する際、最初の目標は乗組員を威嚇して降伏させることでした。",
+      "tts": {
+        "text": "海賊が船を攻撃する際、最初の目標は乗組員を威嚇して降伏させることでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジョリー・ロジャーの旗を掲げることは心理的な武器でした。",
+      "text_markdown": "ジョリー・ロジャーの旗を掲げることは心理的な武器でした。",
+      "tts": {
+        "text": "ジョリー・ロジャーの旗を掲げることは心理的な武器でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ほとんどの商船の乗組員は抵抗すれば死を意味するため、戦わずに降伏しました。",
+      "text_markdown": "ほとんどの商船の乗組員は抵抗すれば死を意味するため、戦わずに降伏しました。",
+      "tts": {
+        "text": "ほとんどの商船の乗組員は抵抗すれば死を意味するため、戦わずに降伏しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キャリコ・ジャック独自の旗は特徴的でした。",
+      "text_markdown": "キャリコ・ジャック独自の旗は特徴的でした。",
+      "tts": {
+        "text": "キャリコ・ジャック独自の旗は特徴的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黒い背景に二本の交差した剣の上に白い骸骨が描かれていました。",
+      "text_markdown": "黒い背景に二本の交差した剣の上に白い骸骨が描かれていました。",
+      "tts": {
+        "text": "黒い背景に二本の交差した剣の上に白い骸骨が描かれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "このデザインは歴史上最も有名な海賊旗の一つです。",
+      "text_markdown": "このデザインは歴史上最も有名な海賊旗の一つです。",
+      "tts": {
+        "text": "このデザインは歴史上最も有名な海賊旗の一つです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊旗の現代的な描写の多くはラカムのデザインに基づいています。",
+      "text_markdown": "海賊旗の現代的な描写の多くはラカムのデザインに基づいています。",
+      "tts": {
+        "text": "海賊旗の現代的な描写の多くはラカムのデザインに基づいています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暴力に対するアン・ボニーの評判は海賊社会でよく知られていました。",
+      "text_markdown": "暴力に対するアン・ボニーの評判は海賊社会でよく知られていました。",
+      "tts": {
+        "text": "暴力に対するアン・ボニーの評判は海賊社会でよく知られていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "後の裁判での証人たちは彼女を戦闘に熱心だと描写しました。",
+      "text_markdown": "後の裁判での証人たちは彼女を戦闘に熱心だと描写しました。",
+      "tts": {
+        "text": "後の裁判での証人たちは彼女を戦闘に熱心だと描写しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は抵抗した捕虜の船乗りを罵倒し脅したと言われています。",
+      "text_markdown": "彼女は抵抗した捕虜の船乗りを罵倒し脅したと言われています。",
+      "tts": {
+        "text": "彼女は抵抗した捕虜の船乗りを罵倒し脅したと言われています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メアリー・リードも同様に恐るべき存在でした。",
+      "text_markdown": "メアリー・リードも同様に恐るべき存在でした。",
+      "tts": {
+        "text": "メアリー・リードも同様に恐るべき存在でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ある話では、メアリーは大切に思う男性を守るために仲間の海賊に決闘を挑んだとされています。",
+      "text_markdown": "ある話では、メアリーは大切に思う男性を守るために仲間の海賊に決闘を挑んだとされています。",
+      "tts": {
+        "text": "ある話では、メアリーは大切に思う男性を守るために仲間の海賊に決闘を挑んだとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は一対一の戦いでその海賊を殺しました。",
+      "text_markdown": "彼女は一対一の戦いでその海賊を殺しました。",
+      "tts": {
+        "text": "彼女は一対一の戦いでその海賊を殺しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この話が真実かどうかにかかわらず、彼女がどれほど危険だと見なされていたかを反映しています。",
+      "text_markdown": "この話が真実かどうかにかかわらず、彼女がどれほど危険だと見なされていたかを反映しています。",
+      "tts": {
+        "text": "この話が真実かどうかにかかわらず、彼女がどれほど危険だと見なされていたかを反映しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年の夏、乗組員はジャマイカの北海岸に沿って航海しました。",
+      "text_markdown": "1720年の夏、乗組員はジャマイカの北海岸に沿って航海しました。",
+      "tts": {
+        "text": "千七百二十年の夏、乗組員はジャマイカの北海岸に沿って航海しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは数隻の漁船と商船のスクーナーを拿捕しました。",
+      "text_markdown": "彼らは数隻の漁船と商船のスクーナーを拿捕しました。",
+      "tts": {
+        "text": "彼らは数隻の漁船と商船のスクーナーを拿捕しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦利品は小さなものでしたが、乗組員の食料と物資を確保しました。",
+      "text_markdown": "戦利品は小さなものでしたが、乗組員の食料と物資を確保しました。",
+      "tts": {
+        "text": "戦利品は小さなものでしたが、乗組員の食料と物資を確保しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャマイカ総督のサー・ニコラス・ローズはラカムに対する布告を出しました。",
+      "text_markdown": "ジャマイカ総督のサー・ニコラス・ローズはラカムに対する布告を出しました。",
+      "tts": {
+        "text": "ジャマイカ総督のサー・ニコラス・ローズはラカムに対する布告を出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "布告にはラカムと彼の乗組員の二人の無名の女性が明記されていました。",
+      "text_markdown": "布告にはラカムと彼の乗組員の二人の無名の女性が明記されていました。",
+      "tts": {
+        "text": "布告にはラカムと彼の乗組員の二人の無名の女性が明記されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これは女性海賊の存在を認めた数少ない公式文書の一つでした。",
+      "text_markdown": "これは女性海賊の存在を認めた数少ない公式文書の一つでした。",
+      "tts": {
+        "text": "これは女性海賊の存在を認めた数少ない公式文書の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当局はラカムの乗組員を追跡するために経験豊富な船乗りを雇いました。",
+      "text_markdown": "当局はラカムの乗組員を追跡するために経験豊富な船乗りを雇いました。",
+      "tts": {
+        "text": "当局はラカムの乗組員を追跡するために経験豊富な船乗りを雇いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジョナサン・バーネット船長が海賊狩りの任を受けました。",
+      "text_markdown": "ジョナサン・バーネット船長が海賊狩りの任を受けました。",
+      "tts": {
+        "text": "ジョナサン・バーネット船長が海賊狩りの任を受けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バーネットはジャマイカ周辺の海域をよく知っており、彼らを見つける決意をしていました。",
+      "text_markdown": "バーネットはジャマイカ周辺の海域をよく知っており、彼らを見つける決意をしていました。",
+      "tts": {
+        "text": "バーネットはジャマイカ周辺の海域をよく知っており、彼らを見つける決意をしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "キャリコ・ジャックとその乗組員への追跡は迫りつつありました。",
+      "text_markdown": "キャリコ・ジャックとその乗組員への追跡は迫りつつありました。",
+      "tts": {
+        "text": "キャリコ・ジャックとその乗組員への追跡は迫りつつありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終焉",
+      "text_markdown": "終焉"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年十月、ジョナサン・バーネット船長はジャマイカ西端沖に停泊するラカムのスループ船を発見しました。",
+      "text_markdown": "1720年十月、ジョナサン・バーネット船長はジャマイカ西端沖に停泊するラカムのスループ船を発見しました。",
+      "tts": {
+        "text": "千七百二十年十月、ジョナサン・バーネット船長はジャマイカ西端沖に停泊するラカムのスループ船を発見しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちはネグリルポイント近くの小さな湾に停泊していました。",
+      "text_markdown": "海賊たちはネグリルポイント近くの小さな湾に停泊していました。",
+      "tts": {
+        "text": "海賊たちはネグリルポイント近くの小さな湾に停泊していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バーネットの船が近づいたのは夜間でした。",
+      "text_markdown": "バーネットの船が近づいたのは夜間でした。",
+      "tts": {
+        "text": "バーネットの船が近づいたのは夜間でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラカムの乗組員のほとんどは甲板下で酔っ払うか眠っていました。",
+      "text_markdown": "ラカムの乗組員のほとんどは甲板下で酔っ払うか眠っていました。",
+      "tts": {
+        "text": "ラカムの乗組員のほとんどは甲板下で酔っ払うか眠っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その日早くに小さな漁船を捕らえた後、祝宴を開いていたのです。",
+      "text_markdown": "その日早くに小さな漁船を捕らえた後、祝宴を開いていたのです。",
+      "tts": {
+        "text": "その日早くに小さな漁船を捕らえた後、祝宴を開いていたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員は攻撃にまったく備えていませんでした。",
+      "text_markdown": "乗組員は攻撃にまったく備えていませんでした。",
+      "tts": {
+        "text": "乗組員は攻撃にまったく備えていませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーネットの部下が発砲すると、ほとんどの海賊は甲板下に隠れました。",
+      "text_markdown": "バーネットの部下が発砲すると、ほとんどの海賊は甲板下に隠れました。",
+      "tts": {
+        "text": "バーネットの部下が発砲すると、ほとんどの海賊は甲板下に隠れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裁判の証言によると、アン・ボニーとメアリー・リードは反撃した数少ない者のうちの二人でした。",
+      "text_markdown": "裁判の証言によると、アン・ボニーとメアリー・リードは反撃した数少ない者のうちの二人でした。",
+      "tts": {
+        "text": "裁判の証言によると、アン・ボニーとメアリー・リードは反撃した数少ない者のうちの二人でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女たちは攻撃者に向けて拳銃を撃ち、カトラスを振るいました。",
+      "text_markdown": "彼女たちは攻撃者に向けて拳銃を撃ち、カトラスを振るいました。",
+      "tts": {
+        "text": "彼女たちは攻撃者に向けて拳銃を撃ち、カトラスを振るいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンは甲板下に隠れている男たちに上がって戦えと叫んだと言われています。",
+      "text_markdown": "アンは甲板下に隠れている男たちに上がって戦えと叫んだと言われています。",
+      "tts": {
+        "text": "アンは甲板下に隠れている男たちに上がって戦えと叫んだと言われています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らが拒否すると、彼女は怒りのあまり船倉に向けて拳銃を撃ちました。",
+      "text_markdown": "彼らが拒否すると、彼女は怒りのあまり船倉に向けて拳銃を撃ちました。",
+      "tts": {
+        "text": "彼らが拒否すると、彼女は怒りのあまり船倉に向けて拳銃を撃ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アンとメアリーの勇敢さにもかかわらず、海賊たちはすぐに圧倒されました。",
+      "text_markdown": "アンとメアリーの勇敢さにもかかわらず、海賊たちはすぐに圧倒されました。",
+      "tts": {
+        "text": "アンとメアリーの勇敢さにもかかわらず、海賊たちはすぐに圧倒されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "バーネットの乗組員は船全体を拿捕しました。",
+      "text_markdown": "バーネットの乗組員は船全体を拿捕しました。",
+      "tts": {
+        "text": "バーネットの乗組員は船全体を拿捕しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕らえられた海賊たちは裁判のためにジャマイカのスパニッシュタウンに連行されました。",
+      "text_markdown": "捕らえられた海賊たちは裁判のためにジャマイカのスパニッシュタウンに連行されました。",
+      "tts": {
+        "text": "捕らえられた海賊たちは裁判のためにジャマイカのスパニッシュタウンに連行されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スパニッシュタウンは当時のジャマイカの首都でした。",
+      "text_markdown": "スパニッシュタウンは当時のジャマイカの首都でした。",
+      "tts": {
+        "text": "スパニッシュタウンは当時のジャマイカの首都でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "裁判は1720年十一月に海事副裁判所で行われました。",
+      "text_markdown": "裁判は1720年十一月に海事副裁判所で行われました。",
+      "tts": {
+        "text": "裁判は千七百二十年十一月に海事副裁判所で行われました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キャリコ・ジャック・ラカムは1720年十一月十六日に最初に裁かれました。",
+      "text_markdown": "キャリコ・ジャック・ラカムは1720年十一月十六日に最初に裁かれました。",
+      "tts": {
+        "text": "キャリコ・ジャック・ラカムは千七百二十年十一月十六日に最初に裁かれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は海賊行為の罪で有罪とされ、絞首刑を宣告されました。",
+      "text_markdown": "彼は海賊行為の罪で有罪とされ、絞首刑を宣告されました。",
+      "tts": {
+        "text": "彼は海賊行為の罪で有罪とされ、絞首刑を宣告されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の遺体は他の者への戒めとしてジベットと呼ばれる金属の檻に吊るされました。",
+      "text_markdown": "彼の遺体は他の者への戒めとしてジベットと呼ばれる金属の檻に吊るされました。",
+      "tts": {
+        "text": "彼の遺体は他の者への戒めとしてジベットと呼ばれる金属の檻に吊るされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ジベットは通過する船から見える小さな島に設置されました。",
+      "text_markdown": "ジベットは通過する船から見える小さな島に設置されました。",
+      "tts": {
+        "text": "ジベットは通過する船から見える小さな島に設置されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "処刑の前に、アン・ボニーはキャリコ・ジャックの独房を訪問することを許されました。",
+      "text_markdown": "処刑の前に、アン・ボニーはキャリコ・ジャックの独房を訪問することを許されました。",
+      "tts": {
+        "text": "処刑の前に、アン・ボニーはキャリコ・ジャックの独房を訪問することを許されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジョンソンの記述によると、彼女は彼に同情を見せませんでした。",
+      "text_markdown": "ジョンソンの記述によると、彼女は彼に同情を見せませんでした。",
+      "tts": {
+        "text": "ジョンソンの記述によると、彼女は彼に同情を見せませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女は、もし男らしく戦っていたなら犬のように吊るされる必要はなかったと彼に言ったとされています。",
+      "text_markdown": "彼女は、もし男らしく戦っていたなら犬のように吊るされる必要はなかったと彼に言ったとされています。",
+      "tts": {
+        "text": "彼女は、もし男らしく戦っていたなら犬のように吊るされる必要はなかったと彼に言ったとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これは海賊史上最も有名な台詞の一つとなりました。",
+      "text_markdown": "これは海賊史上最も有名な台詞の一つとなりました。",
+      "tts": {
+        "text": "これは海賊史上最も有名な台詞の一つとなりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーとメアリー・リードは1720年十一月二十八日に裁かれました。",
+      "text_markdown": "アン・ボニーとメアリー・リードは1720年十一月二十八日に裁かれました。",
+      "tts": {
+        "text": "アン・ボニーとメアリー・リードは千七百二十年十一月二十八日に裁かれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "複数の証人が彼女たちに不利な証言をしました。",
+      "text_markdown": "複数の証人が彼女たちに不利な証言をしました。",
+      "tts": {
+        "text": "複数の証人が彼女たちに不利な証言をしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕らえられた漁師や船乗りたちは、女性たちがどのように武器で攻撃してきたかを述べました。",
+      "text_markdown": "捕らえられた漁師や船乗りたちは、女性たちがどのように武器で攻撃してきたかを述べました。",
+      "tts": {
+        "text": "捕らえられた漁師や船乗りたちは、女性たちがどのように武器で攻撃してきたかを述べました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "両女性とも有罪となり、絞首刑を宣告されました。",
+      "text_markdown": "両女性とも有罪となり、絞首刑を宣告されました。",
+      "tts": {
+        "text": "両女性とも有罪となり、絞首刑を宣告されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし、アンとメアリーの双方に法的な逃げ道がありました。",
+      "text_markdown": "しかし、アンとメアリーの双方に法的な逃げ道がありました。",
+      "tts": {
+        "text": "しかし、アンとメアリーの双方に法的な逃げ道がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それぞれの女性が妊娠していると申告しました。",
+      "text_markdown": "それぞれの女性が妊娠していると申告しました。",
+      "tts": {
+        "text": "それぞれの女性が妊娠していると申告しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリスの法律では、妊娠中の女性は処刑できませんでした。",
+      "text_markdown": "イギリスの法律では、妊娠中の女性は処刑できませんでした。",
+      "tts": {
+        "text": "イギリスの法律では、妊娠中の女性は処刑できませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この法的保護はプリーディング・ザ・ベリーと呼ばれていました。",
+      "text_markdown": "この法的保護はプリーディング・ザ・ベリーと呼ばれていました。",
+      "tts": {
+        "text": "この法的保護はプリーディング・ザ・ベリーと呼ばれていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "両女性とも検査を受け、妊娠が確認されました。",
+      "text_markdown": "両女性とも検査を受け、妊娠が確認されました。",
+      "tts": {
+        "text": "両女性とも検査を受け、妊娠が確認されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女たちの処刑は無期限に延期されました。",
+      "text_markdown": "彼女たちの処刑は無期限に延期されました。",
+      "tts": {
+        "text": "彼女たちの処刑は無期限に延期されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女たちは子供の出産を待つために刑務所に戻されました。",
+      "text_markdown": "彼女たちは子供の出産を待つために刑務所に戻されました。",
+      "tts": {
+        "text": "彼女たちは子供の出産を待つために刑務所に戻されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メアリー・リードは生きて刑務所を出ることはありませんでした。",
+      "text_markdown": "メアリー・リードは生きて刑務所を出ることはありませんでした。",
+      "tts": {
+        "text": "メアリー・リードは生きて刑務所を出ることはありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は病に倒れました。おそらくジャマイカの刑務所で一般的な熱病でした。",
+      "text_markdown": "彼女は病に倒れました。おそらくジャマイカの刑務所で一般的な熱病でした。",
+      "tts": {
+        "text": "彼女は病に倒れました。おそらくジャマイカの刑務所で一般的な熱病でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "メアリー・リードは1721年四月に獄中で亡くなりました。",
+      "text_markdown": "メアリー・リードは1721年四月に獄中で亡くなりました。",
+      "tts": {
+        "text": "メアリー・リードは千七百二十一年四月に獄中で亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女はジャマイカのセント・キャサリン教区に埋葬されました。",
+      "text_markdown": "彼女はジャマイカのセント・キャサリン教区に埋葬されました。",
+      "tts": {
+        "text": "彼女はジャマイカのセント・キャサリン教区に埋葬されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーの運命は海賊史上最大の謎の一つです。",
+      "text_markdown": "アン・ボニーの運命は海賊史上最大の謎の一つです。",
+      "tts": {
+        "text": "アン・ボニーの運命は海賊史上最大の謎の一つです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女の処刑の記録はありません。",
+      "text_markdown": "彼女の処刑の記録はありません。",
+      "tts": {
+        "text": "彼女の処刑の記録はありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の釈放の記録もありません。",
+      "text_markdown": "彼女の釈放の記録もありません。",
+      "tts": {
+        "text": "彼女の釈放の記録もありません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "裁判の後、彼女は歴史の記録から姿を消します。",
+      "text_markdown": "裁判の後、彼女は歴史の記録から姿を消します。",
+      "tts": {
+        "text": "裁判の後、彼女は歴史の記録から姿を消します。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も一般的な説は、父親が身代金を払って彼女を刑務所から救い出したというものです。",
+      "text_markdown": "最も一般的な説は、父親が身代金を払って彼女を刑務所から救い出したというものです。",
+      "tts": {
+        "text": "最も一般的な説は、父親が身代金を払って彼女を刑務所から救い出したというものです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウィリアム・コーマックはまだチャールストンの裕福な人物でした。",
+      "text_markdown": "ウィリアム・コーマックはまだチャールストンの裕福な人物でした。",
+      "tts": {
+        "text": "ウィリアム・コーマックはまだチャールストンの裕福な人物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼には彼女の静かな釈放を手配するための財力と人脈がありました。",
+      "text_markdown": "彼には彼女の静かな釈放を手配するための財力と人脈がありました。",
+      "tts": {
+        "text": "彼には彼女の静かな釈放を手配するための財力と人脈がありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一部の歴史家は、アンがチャールストンに戻り別の名前で暮らしたと考えています。",
+      "text_markdown": "一部の歴史家は、アンがチャールストンに戻り別の名前で暮らしたと考えています。",
+      "tts": {
+        "text": "一部の歴史家は、アンがチャールストンに戻り別の名前で暮らしたと考えています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ある説では、彼女はアン・バーレイという名の女性で、結婚して子供をもうけたとされています。",
+      "text_markdown": "ある説では、彼女はアン・バーレイという名の女性で、結婚して子供をもうけたとされています。",
+      "tts": {
+        "text": "ある説では、彼女はアン・バーレイという名の女性で、結婚して子供をもうけたとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この説が正しければ、アン・ボニーは約八十二歳まで生きたことになります。",
+      "text_markdown": "この説が正しければ、アン・ボニーは約八十二歳まで生きたことになります。",
+      "tts": {
+        "text": "この説が正しければ、アン・ボニーは約八十二歳まで生きたことになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は海賊の黄金時代が終わってからずっと後の1782年頃に亡くなったことになります。",
+      "text_markdown": "彼女は海賊の黄金時代が終わってからずっと後の1782年頃に亡くなったことになります。",
+      "tts": {
+        "text": "彼女は海賊の黄金時代が終わってからずっと後の千七百八十二年頃に亡くなったことになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーは歴史上最も有名な海賊の一人です。",
+      "text_markdown": "アン・ボニーは歴史上最も有名な海賊の一人です。",
+      "tts": {
+        "text": "アン・ボニーは歴史上最も有名な海賊の一人です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女が有名なのは海賊行為の規模ではなく、彼女自身がどのような人物であったかによります。",
+      "text_markdown": "彼女が有名なのは海賊行為の規模ではなく、彼女自身がどのような人物であったかによります。",
+      "tts": {
+        "text": "彼女が有名なのは海賊行為の規模ではなく、彼女自身がどのような人物であったかによります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊船で男性とともに戦う女性は、どの時代においても驚異的でした。",
+      "text_markdown": "海賊船で男性とともに戦う女性は、どの時代においても驚異的でした。",
+      "tts": {
+        "text": "海賊船で男性とともに戦う女性は、どの時代においても驚異的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の物語は、海賊行為が男性だけの活動であったという考えに異議を唱えます。",
+      "text_markdown": "彼女の物語は、海賊行為が男性だけの活動であったという考えに異議を唱えます。",
+      "tts": {
+        "text": "彼女の物語は、海賊行為が男性だけの活動であったという考えに異議を唱えます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アンとメアリー・リードは、女性も戦闘において同じくらい恐るべき存在になれることを証明しました。",
+      "text_markdown": "アンとメアリー・リードは、女性も戦闘において同じくらい恐るべき存在になれることを証明しました。",
+      "tts": {
+        "text": "アンとメアリー・リードは、女性も戦闘において同じくらい恐るべき存在になれることを証明しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女たちの例は何世代もの作家、芸術家、歴史家を鼓舞しました。",
+      "text_markdown": "彼女たちの例は何世代もの作家、芸術家、歴史家を鼓舞しました。",
+      "tts": {
+        "text": "彼女たちの例は何世代もの作家、芸術家、歴史家を鼓舞しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724年に出版されたチャールズ・ジョンソン船長の本は、アンの物語の主要な資料です。",
+      "text_markdown": "1724年に出版されたチャールズ・ジョンソン船長の本は、アンの物語の主要な資料です。",
+      "tts": {
+        "text": "千七百二十四年に出版されたチャールズ・ジョンソン船長の本は、アンの物語の主要な資料です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "正式な題名は『最も悪名高き海賊たちの強盗と殺人の一般史』です。",
+      "text_markdown": "正式な題名は『最も悪名高き海賊たちの強盗と殺人の一般史』です。",
+      "tts": {
+        "text": "正式な題名は『最も悪名高き海賊たちの強盗と殺人の一般史』です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはベストセラーとなり、何世紀にもわたって世界が海賊をどのように想像するかを形作りました。",
+      "text_markdown": "それはベストセラーとなり、何世紀にもわたって世界が海賊をどのように想像するかを形作りました。",
+      "tts": {
+        "text": "それはベストセラーとなり、何世紀にもわたって世界が海賊をどのように想像するかを形作りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家はジョンソンの記述が実際にどれほど信頼できるかを議論しています。",
+      "text_markdown": "歴史家はジョンソンの記述が実際にどれほど信頼できるかを議論しています。",
+      "tts": {
+        "text": "歴史家はジョンソンの記述が実際にどれほど信頼できるかを議論しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部の詳細は法廷記録やその他の文書と一致しています。",
+      "text_markdown": "一部の詳細は法廷記録やその他の文書と一致しています。",
+      "tts": {
+        "text": "一部の詳細は法廷記録やその他の文書と一致しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その他の詳細は劇的な効果のために誇張または創作されたように見えます。",
+      "text_markdown": "その他の詳細は劇的な効果のために誇張または創作されたように見えます。",
+      "tts": {
+        "text": "その他の詳細は劇的な効果のために誇張または創作されたように見えます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "事実と伝説を分けることは、海賊史における継続的な課題の一つです。",
+      "text_markdown": "事実と伝説を分けることは、海賊史における継続的な課題の一つです。",
+      "tts": {
+        "text": "事実と伝説を分けることは、海賊史における継続的な課題の一つです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャマイカのスパニッシュタウンからの裁判記録が最も信頼できる証拠を提供しています。",
+      "text_markdown": "ジャマイカのスパニッシュタウンからの裁判記録が最も信頼できる証拠を提供しています。",
+      "tts": {
+        "text": "ジャマイカのスパニッシュタウンからの裁判記録が最も信頼できる証拠を提供しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それらは二人の女性がラカムの船上で戦ったことを確認しています。",
+      "text_markdown": "それらは二人の女性がラカムの船上で戦ったことを確認しています。",
+      "tts": {
+        "text": "それらは二人の女性がラカムの船上で戦ったことを確認しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それらはアンとメアリーの戦闘を目撃した証人の証言を裏付けています。",
+      "text_markdown": "それらはアンとメアリーの戦闘を目撃した証人の証言を裏付けています。",
+      "tts": {
+        "text": "それらはアンとメアリーの戦闘を目撃した証人の証言を裏付けています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの記録は海賊研究における最も重要な文書の一つです。",
+      "text_markdown": "これらの記録は海賊研究における最も重要な文書の一つです。",
+      "tts": {
+        "text": "これらの記録は海賊研究における最も重要な文書の一つです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アン・ボニーは何百もの小説、映画、テレビ番組、ビデオゲームに登場しています。",
+      "text_markdown": "アン・ボニーは何百もの小説、映画、テレビ番組、ビデオゲームに登場しています。",
+      "tts": {
+        "text": "アン・ボニーは何百もの小説、映画、テレビ番組、ビデオゲームに登場しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は不正な権力に対する反逆の象徴となりました。",
+      "text_markdown": "彼女は不正な権力に対する反逆の象徴となりました。",
+      "tts": {
+        "text": "彼女は不正な権力に対する反逆の象徴となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "社会が彼女に割り当てた役割を受け入れることを拒否した姿勢は、何世紀にもわたって共感を呼んでいます。",
+      "text_markdown": "社会が彼女に割り当てた役割を受け入れることを拒否した姿勢は、何世紀にもわたって共感を呼んでいます。",
+      "tts": {
+        "text": "社会が彼女に割り当てた役割を受け入れることを拒否した姿勢は、何世紀にもわたって共感を呼んでいます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼女の失踪の謎は伝説にさらなる彩りを加えるだけです。",
+      "text_markdown": "彼女の失踪の謎は伝説にさらなる彩りを加えるだけです。",
+      "tts": {
+        "text": "彼女の失踪の謎は伝説にさらなる彩りを加えるだけです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女が獄中で亡くなったのか、静かに暮らしたのか、別の名前で再び航海したのかは分かりません。",
+      "text_markdown": "彼女が獄中で亡くなったのか、静かに暮らしたのか、別の名前で再び航海したのかは分かりません。",
+      "tts": {
+        "text": "彼女が獄中で亡くなったのか、静かに暮らしたのか、別の名前で再び航海したのかは分かりません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この不確かさにより、すべての世代が彼女の物語に独自の結末を想像できます。",
+      "text_markdown": "この不確かさにより、すべての世代が彼女の物語に独自の結末を想像できます。",
+      "tts": {
+        "text": "この不確かさにより、すべての世代が彼女の物語に独自の結末を想像できます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "疑いなく残っているのは、彼女の勇気です。",
+      "text_markdown": "疑いなく残っているのは、彼女の勇気です。",
+      "tts": {
+        "text": "疑いなく残っているのは、彼女の勇気です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "周りの男たちが恐怖で隠れたとき、アン・ボニーは立ち上がって戦いました。",
+      "text_markdown": "周りの男たちが恐怖で隠れたとき、アン・ボニーは立ち上がって戦いました。",
+      "tts": {
+        "text": "周りの男たちが恐怖で隠れたとき、アン・ボニーは立ち上がって戦いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "宣誓した証人によって確認されたその一つの事実こそが、彼女の最も真実の遺産です。",
+      "text_markdown": "宣誓した証人によって確認されたその一つの事実こそが、彼女の最も真実の遺産です。",
+      "tts": {
+        "text": "宣誓した証人によって確認されたその一つの事実こそが、彼女の最も真実の遺産です。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

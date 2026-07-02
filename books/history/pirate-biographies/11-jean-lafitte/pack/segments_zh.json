@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jean_lafitte",
+  "language": "zh",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一个关于走私犯帮助赢得战争的真实故事。",
+      "text_markdown": "这是一个关于走私犯帮助赢得战争的真实故事。",
+      "tts": {
+        "text": "这是一个关于走私犯帮助赢得战争的真实故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字叫让·拉菲特，是美国历史上最引人入胜的亡命之徒之一。",
+      "text_markdown": "他的名字叫让·拉菲特，是美国历史上最引人入胜的亡命之徒之一。",
+      "tts": {
+        "text": "他的名字叫让·拉菲特，是美国历史上最引人入胜的亡命之徒之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他自称私掠船长，但美国政府称他为海盗。",
+      "text_markdown": "他自称私掠船长，但美国政府称他为海盗。",
+      "tts": {
+        "text": "他自称私掠船长，但美国政府称他为海盗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特在路易斯安那的沼泽地经营着一个走私帝国。",
+      "text_markdown": "拉菲特在路易斯安那的沼泽地经营着一个走私帝国。",
+      "tts": {
+        "text": "拉菲特在路易斯安那的沼泽地经营着一个走私帝国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当英国人试图攻占新奥尔良时，他选择为美国而战。",
+      "text_markdown": "当英国人试图攻占新奥尔良时，他选择为美国而战。",
+      "tts": {
+        "text": "当英国人试图攻占新奥尔良时，他选择为美国而战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的决定帮助改变了一八一二年战争的走向。",
+      "text_markdown": "他的决定帮助改变了一八一二年战争的走向。",
+      "tts": {
+        "text": "他的决定帮助改变了一八一二年战争的走向。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "关于拉菲特的几乎一切都笼罩在神秘之中。",
+      "text_markdown": "关于拉菲特的几乎一切都笼罩在神秘之中。",
+      "tts": {
+        "text": "关于拉菲特的几乎一切都笼罩在神秘之中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "我们不确切知道他出生在哪里。",
+      "text_markdown": "我们不确切知道他出生在哪里。",
+      "tts": {
+        "text": "我们不确切知道他出生在哪里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们不确切知道他何时或如何去世。",
+      "text_markdown": "我们不确切知道他何时或如何去世。",
+      "tts": {
+        "text": "我们不确切知道他何时或如何去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "甚至他的名字在不同来源中拼写也不同。",
+      "text_markdown": "甚至他的名字在不同来源中拼写也不同。",
+      "tts": {
+        "text": "甚至他的名字在不同来源中拼写也不同。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本书利用现有最佳证据讲述他的故事。",
+      "text_markdown": "本书利用现有最佳证据讲述他的故事。",
+      "tts": {
+        "text": "本书利用现有最佳证据讲述他的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在记录不确定的地方，我们会加以说明。",
+      "text_markdown": "在记录不确定的地方，我们会加以说明。",
+      "tts": {
+        "text": "在记录不确定的地方，我们会加以说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "墨西哥湾沿岸的世界",
+      "text_markdown": "墨西哥湾沿岸的世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让·拉菲特生活在北美历史上最动荡的时期之一。",
+      "text_markdown": "让·拉菲特生活在北美历史上最动荡的时期之一。",
+      "tts": {
+        "text": "让·拉菲特生活在北美历史上最动荡的时期之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帝国在崩溃，新国家在诞生，而墨西哥湾处于一切的中心。",
+      "text_markdown": "帝国在崩溃，新国家在诞生，而墨西哥湾处于一切的中心。",
+      "tts": {
+        "text": "帝国在崩溃，新国家在诞生，而墨西哥湾处于一切的中心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "墨西哥湾是一片广阔而温暖的水域，与美国、墨西哥和古巴接壤。",
+      "text_markdown": "墨西哥湾是一片广阔而温暖的水域，与美国、墨西哥和古巴接壤。",
+      "tts": {
+        "text": "墨西哥湾是一片广阔而温暖的水域，与美国、墨西哥和古巴接壤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的海岸线从佛罗里达的尖端延伸到尤卡坦半岛。",
+      "text_markdown": "它的海岸线从佛罗里达的尖端延伸到尤卡坦半岛。",
+      "tts": {
+        "text": "它的海岸线从佛罗里达的尖端延伸到尤卡坦半岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几个世纪以来，海湾一直是贸易、走私和冲突的交汇处。",
+      "text_markdown": "几个世纪以来，海湾一直是贸易、走私和冲突的交汇处。",
+      "tts": {
+        "text": "几个世纪以来，海湾一直是贸易、走私和冲突的交汇处。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新奥尔良位于密西西比河的入海口，这是北美最重要的水路。",
+      "text_markdown": "新奥尔良位于密西西比河的入海口，这是北美最重要的水路。",
+      "tts": {
+        "text": "新奥尔良位于密西西比河的入海口，这是北美最重要的水路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "谁控制了新奥尔良，谁就控制了广大地区的贸易。",
+      "text_markdown": "谁控制了新奥尔良，谁就控制了广大地区的贸易。",
+      "tts": {
+        "text": "谁控制了新奥尔良，谁就控制了广大地区的贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座城市于一七一八年由法国人建立。",
+      "text_markdown": "这座城市于一七一八年由法国人建立。",
+      "tts": {
+        "text": "这座城市于一七一八年由法国人建立。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "后来它被割让给西班牙，归还法国，最终卖给了美国。",
+      "text_markdown": "后来它被割让给西班牙，归还法国，最终卖给了美国。",
+      "tts": {
+        "text": "后来它被割让给西班牙，归还法国，最终卖给了美国。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1803年的路易斯安那购买是美国历史上最重要的事件之一。",
+      "text_markdown": "1803年的路易斯安那购买是美国历史上最重要的事件之一。",
+      "tts": {
+        "text": "一八零三年的路易斯安那购买是美国历史上最重要的事件之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "美国以大约一千五百万美元从法国购买了路易斯安那领地。",
+      "text_markdown": "美国以大约一千五百万美元从法国购买了路易斯安那领地。",
+      "tts": {
+        "text": "美国以大约一千五百万美元从法国购买了路易斯安那领地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这笔交易使这个年轻国家的面积翻了一番。",
+      "text_markdown": "这笔交易使这个年轻国家的面积翻了一番。",
+      "tts": {
+        "text": "这笔交易使这个年轻国家的面积翻了一番。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "新奥尔良这颗领地的明珠一夜之间成为了一座美国城市。",
+      "text_markdown": "新奥尔良这颗领地的明珠一夜之间成为了一座美国城市。",
+      "tts": {
+        "text": "新奥尔良这颗领地的明珠一夜之间成为了一座美国城市。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但新奥尔良与其他任何美国城市都不同。",
+      "text_markdown": "但新奥尔良与其他任何美国城市都不同。",
+      "tts": {
+        "text": "但新奥尔良与其他任何美国城市都不同。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的文化融合了法国、西班牙、非洲、加勒比和美洲原住民的影响。",
+      "text_markdown": "它的文化融合了法国、西班牙、非洲、加勒比和美洲原住民的影响。",
+      "tts": {
+        "text": "它的文化融合了法国、西班牙、非洲、加勒比和美洲原住民的影响。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "法语和西班牙语与英语一样普遍使用。",
+      "text_markdown": "法语和西班牙语与英语一样普遍使用。",
+      "tts": {
+        "text": "法语和西班牙语与英语一样普遍使用。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这座城市的饮食、音乐、建筑和风俗反映了这种非凡的融合。",
+      "text_markdown": "这座城市的饮食、音乐、建筑和风俗反映了这种非凡的融合。",
+      "tts": {
+        "text": "这座城市的饮食、音乐、建筑和风俗反映了这种非凡的融合。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一七九一年开始的海地革命深刻地影响了墨西哥湾沿岸。",
+      "text_markdown": "一七九一年开始的海地革命深刻地影响了墨西哥湾沿岸。",
+      "tts": {
+        "text": "一七九一年开始的海地革命深刻地影响了墨西哥湾沿岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法属殖民地圣多明各的被奴役者起来反抗他们的主人。",
+      "text_markdown": "法属殖民地圣多明各的被奴役者起来反抗他们的主人。",
+      "tts": {
+        "text": "法属殖民地圣多明各的被奴役者起来反抗他们的主人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "经过多年残酷的战斗，他们建立了独立的海地国家。",
+      "text_markdown": "经过多年残酷的战斗，他们建立了独立的海地国家。",
+      "tts": {
+        "text": "经过多年残酷的战斗，他们建立了独立的海地国家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "成千上万的海地难民逃到新奥尔良，带来了他们的文化。",
+      "text_markdown": "成千上万的海地难民逃到新奥尔良，带来了他们的文化。",
+      "tts": {
+        "text": "成千上万的海地难民逃到新奥尔良，带来了他们的文化。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隶贸易是墨西哥湾沿岸经济的核心。",
+      "text_markdown": "奴隶贸易是墨西哥湾沿岸经济的核心。",
+      "tts": {
+        "text": "奴隶贸易是墨西哥湾沿岸经济的核心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "路易斯安那的甘蔗种植园依赖于被奴役的劳动力。",
+      "text_markdown": "路易斯安那的甘蔗种植园依赖于被奴役的劳动力。",
+      "tts": {
+        "text": "路易斯安那的甘蔗种植园依赖于被奴役的劳动力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "棉花正在成为美国南方的王者。",
+      "text_markdown": "棉花正在成为美国南方的王者。",
+      "tts": {
+        "text": "棉花正在成为美国南方的王者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对被奴役者的需求创造了一个庞大而可怕的市场。",
+      "text_markdown": "对被奴役者的需求创造了一个庞大而可怕的市场。",
+      "tts": {
+        "text": "对被奴役者的需求创造了一个庞大而可怕的市场。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "走私是路易斯安那南部沼泽地的一种生活方式。",
+      "text_markdown": "走私是路易斯安那南部沼泽地的一种生活方式。",
+      "tts": {
+        "text": "走私是路易斯安那南部沼泽地的一种生活方式。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "河口三角洲是由缓慢流动的水道、沼泽和湿地组成的网络。",
+      "text_markdown": "河口三角洲是由缓慢流动的水道、沼泽和湿地组成的网络。",
+      "tts": {
+        "text": "河口三角洲是由缓慢流动的水道、沼泽和湿地组成的网络。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们在新奥尔良以南延伸数百公里。",
+      "text_markdown": "它们在新奥尔良以南延伸数百公里。",
+      "tts": {
+        "text": "它们在新奥尔良以南延伸数百公里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地形如此复杂，外来者可能会迷路好几天。",
+      "text_markdown": "地形如此复杂，外来者可能会迷路好几天。",
+      "tts": {
+        "text": "地形如此复杂，外来者可能会迷路好几天。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "美国政府对进入该国的商品征收进口税。",
+      "text_markdown": "美国政府对进入该国的商品征收进口税。",
+      "tts": {
+        "text": "美国政府对进入该国的商品征收进口税。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "走私者通过隐蔽的水路运入商品来逃避这些税收。",
+      "text_markdown": "走私者通过隐蔽的水路运入商品来逃避这些税收。",
+      "tts": {
+        "text": "走私者通过隐蔽的水路运入商品来逃避这些税收。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "新奥尔良的商人热切地以更低的价格购买走私商品。",
+      "text_markdown": "新奥尔良的商人热切地以更低的价格购买走私商品。",
+      "tts": {
+        "text": "新奥尔良的商人热切地以更低的价格购买走私商品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当局难以在广阔而无路可循的沼泽地带巡逻。",
+      "text_markdown": "当局难以在广阔而无路可循的沼泽地带巡逻。",
+      "tts": {
+        "text": "当局难以在广阔而无路可循的沼泽地带巡逻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十九世纪初，私掠活动仍然很普遍。",
+      "text_markdown": "十九世纪初，私掠活动仍然很普遍。",
+      "tts": {
+        "text": "十九世纪初，私掠活动仍然很普遍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私掠船长是经政府授权攻击敌方船只的私人船长。",
+      "text_markdown": "私掠船长是经政府授权攻击敌方船只的私人船长。",
+      "tts": {
+        "text": "私掠船长是经政府授权攻击敌方船只的私人船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "私掠船长和海盗之间的区别完全取决于文件。",
+      "text_markdown": "私掠船长和海盗之间的区别完全取决于文件。",
+      "tts": {
+        "text": "私掠船长和海盗之间的区别完全取决于文件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拥有有效文件的私掠船长是合法的；没有文件，他就是海盗。",
+      "text_markdown": "拥有有效文件的私掠船长是合法的；没有文件，他就是海盗。",
+      "tts": {
+        "text": "拥有有效文件的私掠船长是合法的；没有文件，他就是海盗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "加勒比和南美洲的许多小国签发了私掠许可证。",
+      "text_markdown": "加勒比和南美洲的许多小国签发了私掠许可证。",
+      "tts": {
+        "text": "加勒比和南美洲的许多小国签发了私掠许可证。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其中一些国家除了存在于纸面上几乎不存在。",
+      "text_markdown": "其中一些国家除了存在于纸面上几乎不存在。",
+      "tts": {
+        "text": "其中一些国家除了存在于纸面上几乎不存在。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "精明的私掠船长总能找到愿意授权他袭击的政府。",
+      "text_markdown": "精明的私掠船长总能找到愿意授权他袭击的政府。",
+      "tts": {
+        "text": "精明的私掠船长总能找到愿意授权他袭击的政府。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个法律灰色地带正是让·拉菲特活动的领域。",
+      "text_markdown": "这个法律灰色地带正是让·拉菲特活动的领域。",
+      "tts": {
+        "text": "这个法律灰色地带正是让·拉菲特活动的领域。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这一时期，西班牙在美洲的帝国正在崩溃。",
+      "text_markdown": "这一时期，西班牙在美洲的帝国正在崩溃。",
+      "tts": {
+        "text": "这一时期，西班牙在美洲的帝国正在崩溃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "革命在整个拉丁美洲爆发。",
+      "text_markdown": "革命在整个拉丁美洲爆发。",
+      "tts": {
+        "text": "革命在整个拉丁美洲爆发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙商船是私掠船长的脆弱目标。",
+      "text_markdown": "西班牙商船是私掠船长的脆弱目标。",
+      "tts": {
+        "text": "西班牙商船是私掠船长的脆弱目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "墨西哥湾充满了大胆而无良之人的机会。",
+      "text_markdown": "墨西哥湾充满了大胆而无良之人的机会。",
+      "tts": {
+        "text": "墨西哥湾充满了大胆而无良之人的机会。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "美国与英国之间的1812年战争于当年六月爆发。",
+      "text_markdown": "美国与英国之间的1812年战争于当年六月爆发。",
+      "tts": {
+        "text": "美国与英国之间的一八一二年战争于当年六月爆发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国人一直在干扰美国航运，并强征美国水手加入皇家海军。",
+      "text_markdown": "英国人一直在干扰美国航运，并强征美国水手加入皇家海军。",
+      "tts": {
+        "text": "英国人一直在干扰美国航运，并强征美国水手加入皇家海军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这场战争将持续两年多。",
+      "text_markdown": "这场战争将持续两年多。",
+      "tts": {
+        "text": "这场战争将持续两年多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它最戏剧性的时刻将在新奥尔良上演。",
+      "text_markdown": "它最戏剧性的时刻将在新奥尔良上演。",
+      "tts": {
+        "text": "它最戏剧性的时刻将在新奥尔良上演。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沼泽地区是各种野生动物的家园，生物多样性令人瞩目。",
+      "text_markdown": "沼泽地区是各种野生动物的家园，生物多样性令人瞩目。",
+      "tts": {
+        "text": "沼泽地区是各种野生动物的家园，生物多样性令人瞩目。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "墨西哥湾沿岸的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "短吻鳄、蛇和无数种鸟类栖息在沼泽中。",
+      "text_markdown": "短吻鳄、蛇和无数种鸟类栖息在沼泽中。",
+      "tts": {
+        "text": "短吻鳄、蛇和无数种鸟类栖息在沼泽中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让·拉菲特大约出生于1780年，但他确切的出生地存有争议。",
+      "text_markdown": "让·拉菲特大约出生于1780年，但他确切的出生地存有争议。",
+      "tts": {
+        "text": "让·拉菲特大约出生于一七八零年，但他确切的出生地存有争议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些资料说他出生在法国西南部的港口城市巴约讷。",
+      "text_markdown": "一些资料说他出生在法国西南部的港口城市巴约讷。",
+      "tts": {
+        "text": "一些资料说他出生在法国西南部的港口城市巴约讷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一些人认为他出生在法属殖民地圣多明各，即今天的海地。",
+      "text_markdown": "另一些人认为他出生在法属殖民地圣多明各，即今天的海地。",
+      "tts": {
+        "text": "另一些人认为他出生在法属殖民地圣多明各，即今天的海地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特本人故意培养了这种神秘感。",
+      "text_markdown": "拉菲特本人故意培养了这种神秘感。",
+      "tts": {
+        "text": "拉菲特本人故意培养了这种神秘感。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他很少谈论自己的出身，对不同的人讲述不同的故事。",
+      "text_markdown": "他很少谈论自己的出身，对不同的人讲述不同的故事。",
+      "tts": {
+        "text": "他很少谈论自己的出身，对不同的人讲述不同的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个没有明确过去的人更难被当局追踪。",
+      "text_markdown": "一个没有明确过去的人更难被当局追踪。",
+      "tts": {
+        "text": "一个没有明确过去的人更难被当局追踪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的兄弟皮埃尔·拉菲特是他一生中最亲密的伙伴。",
+      "text_markdown": "他的兄弟皮埃尔·拉菲特是他一生中最亲密的伙伴。",
+      "tts": {
+        "text": "他的兄弟皮埃尔·拉菲特是他一生中最亲密的伙伴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "皮埃尔比让年长，可能领导了他们早期的冒险事业。",
+      "text_markdown": "皮埃尔比让年长，可能领导了他们早期的冒险事业。",
+      "tts": {
+        "text": "皮埃尔比让年长，可能领导了他们早期的冒险事业。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "两兄弟在生意和麻烦中都形影不离。",
+      "text_markdown": "两兄弟在生意和麻烦中都形影不离。",
+      "tts": {
+        "text": "两兄弟在生意和麻烦中都形影不离。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特兄弟大约在1803年至1805年间到达新奥尔良。",
+      "text_markdown": "拉菲特兄弟大约在1803年至1805年间到达新奥尔良。",
+      "tts": {
+        "text": "拉菲特兄弟大约在一八零三年至一八零五年间到达新奥尔良。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这座城市正处于从法国控制向美国控制过渡的阶段。",
+      "text_markdown": "这座城市正处于从法国控制向美国控制过渡的阶段。",
+      "tts": {
+        "text": "这座城市正处于从法国控制向美国控制过渡的阶段。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "氛围混乱而充满机遇。",
+      "text_markdown": "氛围混乱而充满机遇。",
+      "tts": {
+        "text": "氛围混乱而充满机遇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "法律模糊，执法薄弱，财富正在被创造。",
+      "text_markdown": "法律模糊，执法薄弱，财富正在被创造。",
+      "tts": {
+        "text": "法律模糊，执法薄弱，财富正在被创造。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟二人最初以商人身份立足。",
+      "text_markdown": "兄弟二人最初以商人身份立足。",
+      "tts": {
+        "text": "兄弟二人最初以商人身份立足。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在法国区经营着一个仓库和一家铁匠铺。",
+      "text_markdown": "他们在法国区经营着一个仓库和一家铁匠铺。",
+      "tts": {
+        "text": "他们在法国区经营着一个仓库和一家铁匠铺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "铁匠铺可能是出售走私货物的幌子。",
+      "text_markdown": "铁匠铺可能是出售走私货物的幌子。",
+      "tts": {
+        "text": "铁匠铺可能是出售走私货物的幌子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "新奥尔良的一座建筑至今仍声称是拉菲特的原始铁匠铺。",
+      "text_markdown": "新奥尔良的一座建筑至今仍声称是拉菲特的原始铁匠铺。",
+      "tts": {
+        "text": "新奥尔良的一座建筑至今仍声称是拉菲特的原始铁匠铺。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让·拉菲特被描述为高大、英俊且魅力十足。",
+      "text_markdown": "让·拉菲特被描述为高大、英俊且魅力十足。",
+      "tts": {
+        "text": "让·拉菲特被描述为高大、英俊且魅力十足。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他能流利地说法语、英语、西班牙语，可能还有意大利语。",
+      "text_markdown": "他能流利地说法语、英语、西班牙语，可能还有意大利语。",
+      "tts": {
+        "text": "他能流利地说法语、英语、西班牙语，可能还有意大利语。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他穿着得体，举止彬彬有礼如同绅士。",
+      "text_markdown": "他穿着得体，举止彬彬有礼如同绅士。",
+      "tts": {
+        "text": "他穿着得体，举止彬彬有礼如同绅士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他能在商人、政客和亡命之徒之间游刃有余。",
+      "text_markdown": "他能在商人、政客和亡命之徒之间游刃有余。",
+      "tts": {
+        "text": "他能在商人、政客和亡命之徒之间游刃有余。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特在墨西哥湾沿岸建立了一个联络网。",
+      "text_markdown": "拉菲特在墨西哥湾沿岸建立了一个联络网。",
+      "tts": {
+        "text": "拉菲特在墨西哥湾沿岸建立了一个联络网。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他认识船长、仓库主人、种植园主和政府官员。",
+      "text_markdown": "他认识船长、仓库主人、种植园主和政府官员。",
+      "tts": {
+        "text": "他认识船长、仓库主人、种植园主和政府官员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其中一些人是合法的商人。",
+      "text_markdown": "其中一些人是合法的商人。",
+      "tts": {
+        "text": "其中一些人是合法的商人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "另一些是走私者、海盗和窃贼。",
+      "text_markdown": "另一些是走私者、海盗和窃贼。",
+      "tts": {
+        "text": "另一些是走私者、海盗和窃贼。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟二人很快从简单的贸易扩展到大规模走私。",
+      "text_markdown": "兄弟二人很快从简单的贸易扩展到大规模走私。",
+      "tts": {
+        "text": "兄弟二人很快从简单的贸易扩展到大规模走私。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们组织了对西班牙商船及其货物的劫掠和贩卖。",
+      "text_markdown": "他们组织了对西班牙商船及其货物的劫掠和贩卖。",
+      "tts": {
+        "text": "他们组织了对西班牙商船及其货物的劫掠和贩卖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们还贩卖被奴役的人，这是极其暴利的生意。",
+      "text_markdown": "他们还贩卖被奴役的人，这是极其暴利的生意。",
+      "tts": {
+        "text": "他们还贩卖被奴役的人，这是极其暴利的生意。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一八零八年通过的美国禁止进口被奴役者的法律只是推高了价格。",
+      "text_markdown": "一八零八年通过的美国禁止进口被奴役者的法律只是推高了价格。",
+      "tts": {
+        "text": "一八零八年通过的美国禁止进口被奴役者的法律只是推高了价格。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特以持有卡塔赫纳共和国的私掠许可证为自己的活动辩护。",
+      "text_markdown": "拉菲特以持有卡塔赫纳共和国的私掠许可证为自己的活动辩护。",
+      "tts": {
+        "text": "拉菲特以持有卡塔赫纳共和国的私掠许可证为自己的活动辩护。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "卡塔赫纳是今天哥伦比亚的一座城市，已宣布脱离西班牙独立。",
+      "text_markdown": "卡塔赫纳是今天哥伦比亚的一座城市，已宣布脱离西班牙独立。",
+      "tts": {
+        "text": "卡塔赫纳是今天哥伦比亚的一座城市，已宣布脱离西班牙独立。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它的私掠许可证授权攻击西班牙船只。",
+      "text_markdown": "它的私掠许可证授权攻击西班牙船只。",
+      "tts": {
+        "text": "它的私掠许可证授权攻击西班牙船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这给了拉菲特一层薄薄的合法外衣。",
+      "text_markdown": "这给了拉菲特一层薄薄的合法外衣。",
+      "tts": {
+        "text": "这给了拉菲特一层薄薄的合法外衣。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特是私掠船长还是海盗，取决于你问谁。",
+      "text_markdown": "拉菲特是私掠船长还是海盗，取决于你问谁。",
+      "tts": {
+        "text": "拉菲特是私掠船长还是海盗，取决于你问谁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "购买他廉价商品的新奥尔良商人称他为私掠船长。",
+      "text_markdown": "购买他廉价商品的新奥尔良商人称他为私掠船长。",
+      "tts": {
+        "text": "购买他廉价商品的新奥尔良商人称他为私掠船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙政府和美国当局称他为海盗。",
+      "text_markdown": "西班牙政府和美国当局称他为海盗。",
+      "tts": {
+        "text": "西班牙政府和美国当局称他为海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拉菲特始终坚持自己是合法商人。",
+      "text_markdown": "拉菲特始终坚持自己是合法商人。",
+      "tts": {
+        "text": "拉菲特始终坚持自己是合法商人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴拉塔里亚湾成为拉菲特走私帝国的中心。",
+      "text_markdown": "巴拉塔里亚湾成为拉菲特走私帝国的中心。",
+      "tts": {
+        "text": "巴拉塔里亚湾成为拉菲特走私帝国的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个海湾位于新奥尔良以南约八十公里处。",
+      "text_markdown": "这个海湾位于新奥尔良以南约八十公里处。",
+      "tts": {
+        "text": "这个海湾位于新奥尔良以南约八十公里处。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那是一个由岛屿、河口和隐蔽水道组成的迷宫。",
+      "text_markdown": "那是一个由岛屿、河口和隐蔽水道组成的迷宫。",
+      "tts": {
+        "text": "那是一个由岛屿、河口和隐蔽水道组成的迷宫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "格兰德特尔是海湾中的一个大岛，成为了拉菲特的总部。",
+      "text_markdown": "格兰德特尔是海湾中的一个大岛，成为了拉菲特的总部。",
+      "tts": {
+        "text": "格兰德特尔是海湾中的一个大岛，成为了拉菲特的总部。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从格兰德特尔，拉菲特以卓越的效率管理着他的事业。",
+      "text_markdown": "从格兰德特尔，拉菲特以卓越的效率管理着他的事业。",
+      "tts": {
+        "text": "从格兰德特尔，拉菲特以卓越的效率管理着他的事业。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "缴获的货物存放在岛上的仓库里。",
+      "text_markdown": "缴获的货物存放在岛上的仓库里。",
+      "tts": {
+        "text": "缴获的货物存放在岛上的仓库里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "定期举行的拍卖吸引了来自新奥尔良及其他地区的买家。",
+      "text_markdown": "定期举行的拍卖吸引了来自新奥尔良及其他地区的买家。",
+      "tts": {
+        "text": "定期举行的拍卖吸引了来自新奥尔良及其他地区的买家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在鼎盛时期，拉菲特的事业雇用了数百人。",
+      "text_markdown": "在鼎盛时期，拉菲特的事业雇用了数百人。",
+      "tts": {
+        "text": "在鼎盛时期，拉菲特的事业雇用了数百人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新奥尔良的法国区是这座城市社交生活的中心。",
+      "text_markdown": "新奥尔良的法国区是这座城市社交生活的中心。",
+      "tts": {
+        "text": "新奥尔良的法国区是这座城市社交生活的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "狭窄的街道两旁是商店、酒馆和带铁艺阳台的房屋。",
+      "text_markdown": "狭窄的街道两旁是商店、酒馆和带铁艺阳台的房屋。",
+      "tts": {
+        "text": "狭窄的街道两旁是商店、酒馆和带铁艺阳台的房屋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拉菲特在这个世界中游刃有余，每一步都在结交盟友。",
+      "text_markdown": "拉菲特在这个世界中游刃有余，每一步都在结交盟友。",
+      "tts": {
+        "text": "拉菲特在这个世界中游刃有余，每一步都在结交盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他能够从社会各阶层中赢得人心，这是他最强大的武器。",
+      "text_markdown": "他能够从社会各阶层中赢得人心，这是他最强大的武器。",
+      "tts": {
+        "text": "他能够从社会各阶层中赢得人心，这是他最强大的武器。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起之路",
+      "text_markdown": "崛起之路"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到一八一零年，让·拉菲特已是巴拉塔里亚湾无可争议的主人。",
+      "text_markdown": "到一八一零年，让·拉菲特已是巴拉塔里亚湾无可争议的主人。",
+      "tts": {
+        "text": "到一八一零年，让·拉菲特已是巴拉塔里亚湾无可争议的主人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的舰队有数十艘船。",
+      "text_markdown": "他的舰队有数十艘船。",
+      "tts": {
+        "text": "他的舰队有数十艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在整个墨西哥湾劫掠西班牙商船。",
+      "text_markdown": "他们在整个墨西哥湾劫掠西班牙商船。",
+      "tts": {
+        "text": "他们在整个墨西哥湾劫掠西班牙商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "战利品被带回格兰德特尔出售。",
+      "text_markdown": "战利品被带回格兰德特尔出售。",
+      "tts": {
+        "text": "战利品被带回格兰德特尔出售。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特通过一个精密的分销网络组织货物销售。",
+      "text_markdown": "拉菲特通过一个精密的分销网络组织货物销售。",
+      "tts": {
+        "text": "拉菲特通过一个精密的分销网络组织货物销售。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "小船通过沼泽地将走私货物运到新奥尔良附近的市场。",
+      "text_markdown": "小船通过沼泽地将走私货物运到新奥尔良附近的市场。",
+      "tts": {
+        "text": "小船通过沼泽地将走私货物运到新奥尔良附近的市场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "货物到达时的价格远低于合法市场价。",
+      "text_markdown": "货物到达时的价格远低于合法市场价。",
+      "tts": {
+        "text": "货物到达时的价格远低于合法市场价。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这使拉菲特在商人和普通消费者中都很受欢迎。",
+      "text_markdown": "这使拉菲特在商人和普通消费者中都很受欢迎。",
+      "tts": {
+        "text": "这使拉菲特在商人和普通消费者中都很受欢迎。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特出售的被奴役者是特别有利可图的商品。",
+      "text_markdown": "拉菲特出售的被奴役者是特别有利可图的商品。",
+      "tts": {
+        "text": "拉菲特出售的被奴役者是特别有利可图的商品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "联邦法律在一八零八年后禁止向美国进口被奴役者。",
+      "text_markdown": "联邦法律在一八零八年后禁止向美国进口被奴役者。",
+      "tts": {
+        "text": "联邦法律在一八零八年后禁止向美国进口被奴役者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但需求，尤其是在棉花种植区，依然巨大。",
+      "text_markdown": "但需求，尤其是在棉花种植区，依然巨大。",
+      "tts": {
+        "text": "但需求，尤其是在棉花种植区，依然巨大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "像拉菲特这样的走私者填补了供需之间的缺口。",
+      "text_markdown": "像拉菲特这样的走私者填补了供需之间的缺口。",
+      "tts": {
+        "text": "像拉菲特这样的走私者填补了供需之间的缺口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "路易斯安那州长威廉·克莱伯恩决心阻止拉菲特。",
+      "text_markdown": "路易斯安那州长威廉·克莱伯恩决心阻止拉菲特。",
+      "tts": {
+        "text": "路易斯安那州长威廉·克莱伯恩决心阻止拉菲特。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "克莱伯恩悬赏500美元捉拿拉菲特。",
+      "text_markdown": "克莱伯恩悬赏500美元捉拿拉菲特。",
+      "tts": {
+        "text": "克莱伯恩悬赏五百美元捉拿拉菲特。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他敦促联邦政府派遣海军力量摧毁巴拉塔里亚的行动。",
+      "text_markdown": "他敦促联邦政府派遣海军力量摧毁巴拉塔里亚的行动。",
+      "tts": {
+        "text": "他敦促联邦政府派遣海军力量摧毁巴拉塔里亚的行动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据一个著名传说，拉菲特以自己的悬赏回应。",
+      "text_markdown": "据一个著名传说，拉菲特以自己的悬赏回应。",
+      "tts": {
+        "text": "据一个著名传说，拉菲特以自己的悬赏回应。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据称他悬赏5,000美元捉拿州长克莱伯恩。",
+      "text_markdown": "据称他悬赏5,000美元捉拿州长克莱伯恩。",
+      "tts": {
+        "text": "据称他悬赏五千美元捉拿州长克莱伯恩。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个故事可能是杜撰的，但它完美地展现了拉菲特的大胆。",
+      "text_markdown": "这个故事可能是杜撰的，但它完美地展现了拉菲特的大胆。",
+      "tts": {
+        "text": "这个故事可能是杜撰的，但它完美地展现了拉菲特的大胆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他公然嘲弄试图逮捕他的人。",
+      "text_markdown": "他公然嘲弄试图逮捕他的人。",
+      "tts": {
+        "text": "他公然嘲弄试图逮捕他的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特与新奥尔良人的关系很复杂。",
+      "text_markdown": "拉菲特与新奥尔良人的关系很复杂。",
+      "tts": {
+        "text": "拉菲特与新奥尔良人的关系很复杂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多富有的市民购买他的商品，从他的走私中获益。",
+      "text_markdown": "许多富有的市民购买他的商品，从他的走私中获益。",
+      "tts": {
+        "text": "许多富有的市民购买他的商品，从他的走私中获益。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些律师和政客暗中受他资助。",
+      "text_markdown": "一些律师和政客暗中受他资助。",
+      "tts": {
+        "text": "一些律师和政客暗中受他资助。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但在公开场合，他们不能被看到支持一个众所周知的亡命之徒。",
+      "text_markdown": "但在公开场合，他们不能被看到支持一个众所周知的亡命之徒。",
+      "tts": {
+        "text": "但在公开场合，他们不能被看到支持一个众所周知的亡命之徒。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皮埃尔·拉菲特于一八一三年因海盗罪被捕。",
+      "text_markdown": "皮埃尔·拉菲特于一八一三年因海盗罪被捕。",
+      "tts": {
+        "text": "皮埃尔·拉菲特于一八一三年因海盗罪被捕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被关押在卡比尔多，新奥尔良的主要政府建筑中。",
+      "text_markdown": "他被关押在卡比尔多，新奥尔良的主要政府建筑中。",
+      "tts": {
+        "text": "他被关押在卡比尔多，新奥尔良的主要政府建筑中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让·拉菲特不辞辛劳地为释放兄弟而奔走。",
+      "text_markdown": "让·拉菲特不辞辛劳地为释放兄弟而奔走。",
+      "tts": {
+        "text": "让·拉菲特不辞辛劳地为释放兄弟而奔走。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "皮埃尔最终在神秘的情况下越狱。",
+      "text_markdown": "皮埃尔最终在神秘的情况下越狱。",
+      "tts": {
+        "text": "皮埃尔最终在神秘的情况下越狱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到一八一四年，一八一二年战争已进入关键阶段。",
+      "text_markdown": "到一八一四年，一八一二年战争已进入关键阶段。",
+      "tts": {
+        "text": "到一八一四年，一八一二年战争已进入关键阶段。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国人在欧洲击败了拿破仑，现在可以将全部军事力量集中在美国。",
+      "text_markdown": "英国人在欧洲击败了拿破仑，现在可以将全部军事力量集中在美国。",
+      "tts": {
+        "text": "英国人在欧洲击败了拿破仑，现在可以将全部军事力量集中在美国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们计划对新奥尔良发动大规模进攻，以夺取密西西比河的控制权。",
+      "text_markdown": "他们计划对新奥尔良发动大规模进攻，以夺取密西西比河的控制权。",
+      "tts": {
+        "text": "他们计划对新奥尔良发动大规模进攻，以夺取密西西比河的控制权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "如果新奥尔良沦陷，美国整个西部将被切断。",
+      "text_markdown": "如果新奥尔良沦陷，美国整个西部将被切断。",
+      "tts": {
+        "text": "如果新奥尔良沦陷，美国整个西部将被切断。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国军官向让·拉菲特提出了一个非凡的条件。",
+      "text_markdown": "英国军官向让·拉菲特提出了一个非凡的条件。",
+      "tts": {
+        "text": "英国军官向让·拉菲特提出了一个非凡的条件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们许诺给他30,000美元、皇家海军的军衔以及英国领土上的土地。",
+      "text_markdown": "他们许诺给他30,000美元、皇家海军的军衔以及英国领土上的土地。",
+      "tts": {
+        "text": "他们许诺给他三万美元、皇家海军的军衔以及英国领土上的土地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "作为交换，他们想要他对沼泽水道的了解和他的船队。",
+      "text_markdown": "作为交换，他们想要他对沼泽水道的了解和他的船队。",
+      "tts": {
+        "text": "作为交换，他们想要他对沼泽水道的了解和他的船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "英国人需要拉菲特帮助引导他们的入侵部队到达新奥尔良。",
+      "text_markdown": "英国人需要拉菲特帮助引导他们的入侵部队到达新奥尔良。",
+      "tts": {
+        "text": "英国人需要拉菲特帮助引导他们的入侵部队到达新奥尔良。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特似乎在认真考虑英国人的提议。",
+      "text_markdown": "拉菲特似乎在认真考虑英国人的提议。",
+      "tts": {
+        "text": "拉菲特似乎在认真考虑英国人的提议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他要求考虑时间，为自己争取了两周。",
+      "text_markdown": "他要求考虑时间，为自己争取了两周。",
+      "tts": {
+        "text": "他要求考虑时间，为自己争取了两周。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但暗地里，他已经做出了决定。",
+      "text_markdown": "但暗地里，他已经做出了决定。",
+      "tts": {
+        "text": "但暗地里，他已经做出了决定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他把英国人的计划和文件送给了州长克莱伯恩。",
+      "text_markdown": "他把英国人的计划和文件送给了州长克莱伯恩。",
+      "tts": {
+        "text": "他把英国人的计划和文件送给了州长克莱伯恩。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特给克莱伯恩的信是一篇说服的杰作。",
+      "text_markdown": "拉菲特给克莱伯恩的信是一篇说服的杰作。",
+      "tts": {
+        "text": "拉菲特给克莱伯恩的信是一篇说服的杰作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他将自己的手下、武器和对沼泽地的了解提供给美国事业。",
+      "text_markdown": "他将自己的手下、武器和对沼泽地的了解提供给美国事业。",
+      "tts": {
+        "text": "他将自己的手下、武器和对沼泽地的了解提供给美国事业。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "作为回报，他要求对自己和手下的全面赦免。",
+      "text_markdown": "作为回报，他要求对自己和手下的全面赦免。",
+      "tts": {
+        "text": "作为回报，他要求对自己和手下的全面赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他把自己塑造成不是寻求交易的罪犯，而是提供服务的爱国者。",
+      "text_markdown": "他把自己塑造成不是寻求交易的罪犯，而是提供服务的爱国者。",
+      "tts": {
+        "text": "他把自己塑造成不是寻求交易的罪犯，而是提供服务的爱国者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "克莱伯恩心存疑虑，但还是把拉菲特的情报转交给了军事当局。",
+      "text_markdown": "克莱伯恩心存疑虑，但还是把拉菲特的情报转交给了军事当局。",
+      "tts": {
+        "text": "克莱伯恩心存疑虑，但还是把拉菲特的情报转交给了军事当局。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些官员认为这是一个陷阱。",
+      "text_markdown": "一些官员认为这是一个陷阱。",
+      "tts": {
+        "text": "一些官员认为这是一个陷阱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "尽管拉菲特发出了警告，美国海军还是在一八一四年九月攻击了巴拉塔里亚湾。",
+      "text_markdown": "尽管拉菲特发出了警告，美国海军还是在一八一四年九月攻击了巴拉塔里亚湾。",
+      "tts": {
+        "text": "尽管拉菲特发出了警告，美国海军还是在一八一四年九月攻击了巴拉塔里亚湾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们摧毁了拉菲特的基地，俘虏了他的许多手下。",
+      "text_markdown": "他们摧毁了拉菲特的基地，俘虏了他的许多手下。",
+      "tts": {
+        "text": "他们摧毁了拉菲特的基地，俘虏了他的许多手下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特本人在巴拉塔里亚突袭中逃脱了抓捕。",
+      "text_markdown": "拉菲特本人在巴拉塔里亚突袭中逃脱了抓捕。",
+      "tts": {
+        "text": "拉菲特本人在巴拉塔里亚突袭中逃脱了抓捕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的仓库被烧毁，船只被没收。",
+      "text_markdown": "他的仓库被烧毁，船只被没收。",
+      "tts": {
+        "text": "他的仓库被烧毁，船只被没收。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他花费数年建立的事业在一天之内被摧毁。",
+      "text_markdown": "他花费数年建立的事业在一天之内被摧毁。",
+      "tts": {
+        "text": "他花费数年建立的事业在一天之内被摧毁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但英国人的入侵仍在逼近，而新奥尔良毫无准备。",
+      "text_markdown": "但英国人的入侵仍在逼近，而新奥尔良毫无准备。",
+      "tts": {
+        "text": "但英国人的入侵仍在逼近，而新奥尔良毫无准备。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安德鲁·杰克逊将军于一八一四年十二月抵达新奥尔良。",
+      "text_markdown": "安德鲁·杰克逊将军于一八一四年十二月抵达新奥尔良。",
+      "tts": {
+        "text": "安德鲁·杰克逊将军于一八一四年十二月抵达新奥尔良。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一个以果断行动著称的强硬边境军人。",
+      "text_markdown": "他是一个以果断行动著称的强硬边境军人。",
+      "tts": {
+        "text": "他是一个以果断行动著称的强硬边境军人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他发现这座城市的防御严重不足。",
+      "text_markdown": "他发现这座城市的防御严重不足。",
+      "tts": {
+        "text": "他发现这座城市的防御严重不足。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他需要能找到的每一个人、每一支枪和每一桶火药。",
+      "text_markdown": "他需要能找到的每一个人、每一支枪和每一桶火药。",
+      "tts": {
+        "text": "他需要能找到的每一个人、每一支枪和每一桶火药。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特找到杰克逊，提供了他的巴拉塔里亚人的服务。",
+      "text_markdown": "拉菲特找到杰克逊，提供了他的巴拉塔里亚人的服务。",
+      "tts": {
+        "text": "拉菲特找到杰克逊，提供了他的巴拉塔里亚人的服务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "杰克逊最初称巴拉塔里亚人为地狱强盗。",
+      "text_markdown": "杰克逊最初称巴拉塔里亚人为地狱强盗。",
+      "tts": {
+        "text": "杰克逊最初称巴拉塔里亚人为地狱强盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但面对英国威胁的现实，他接受了拉菲特的提议。",
+      "text_markdown": "但面对英国威胁的现实，他接受了拉菲特的提议。",
+      "tts": {
+        "text": "但面对英国威胁的现实，他接受了拉菲特的提议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拉菲特的手下带来了至关重要的燧石、火药和炮兵专业知识。",
+      "text_markdown": "拉菲特的手下带来了至关重要的燧石、火药和炮兵专业知识。",
+      "tts": {
+        "text": "拉菲特的手下带来了至关重要的燧石、火药和炮兵专业知识。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "巅峰时刻",
+      "text_markdown": "巅峰时刻"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新奥尔良之战发生在1815年1月8日。",
+      "text_markdown": "新奥尔良之战发生在1815年1月8日。",
+      "tts": {
+        "text": "新奥尔良之战发生在一八一五年一月八日。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一八一二年战争的最后一场大规模交战。",
+      "text_markdown": "这是一八一二年战争的最后一场大规模交战。",
+      "tts": {
+        "text": "这是一八一二年战争的最后一场大规模交战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "讽刺的是，和平条约已经在欧洲签署，但消息尚未传到美国。",
+      "text_markdown": "讽刺的是，和平条约已经在欧洲签署，但消息尚未传到美国。",
+      "tts": {
+        "text": "讽刺的是，和平条约已经在欧洲签署，但消息尚未传到美国。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人以大约八千名老兵发起进攻。",
+      "text_markdown": "英国人以大约八千名老兵发起进攻。",
+      "tts": {
+        "text": "英国人以大约八千名老兵发起进攻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些人中有许多曾在欧洲与拿破仑的军队作战。",
+      "text_markdown": "这些人中有许多曾在欧洲与拿破仑的军队作战。",
+      "tts": {
+        "text": "这些人中有许多曾在欧洲与拿破仑的军队作战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们被认为是世界上最好的士兵之一。",
+      "text_markdown": "他们被认为是世界上最好的士兵之一。",
+      "tts": {
+        "text": "他们被认为是世界上最好的士兵之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们的指挥官是爱德华·帕克南少将。",
+      "text_markdown": "他们的指挥官是爱德华·帕克南少将。",
+      "tts": {
+        "text": "他们的指挥官是爱德华·帕克南少将。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "杰克逊的防线横跨新奥尔良以南的夏尔梅特种植园。",
+      "text_markdown": "杰克逊的防线横跨新奥尔良以南的夏尔梅特种植园。",
+      "tts": {
+        "text": "杰克逊的防线横跨新奥尔良以南的夏尔梅特种植园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的部队利用一条运河和土质胸墙作为防御阵地。",
+      "text_markdown": "他的部队利用一条运河和土质胸墙作为防御阵地。",
+      "tts": {
+        "text": "他的部队利用一条运河和土质胸墙作为防御阵地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "美军防线包括正规军、民兵、自由黑人士兵、乔克托战士和巴拉塔里亚海盗。",
+      "text_markdown": "美军防线包括正规军、民兵、自由黑人士兵、乔克托战士和巴拉塔里亚海盗。",
+      "tts": {
+        "text": "美军防线包括正规军、民兵、自由黑人士兵、乔克托战士和巴拉塔里亚海盗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特的巴拉塔里亚人操纵着防线上关键的炮兵阵地。",
+      "text_markdown": "拉菲特的巴拉塔里亚人操纵着防线上关键的炮兵阵地。",
+      "tts": {
+        "text": "拉菲特的巴拉塔里亚人操纵着防线上关键的炮兵阵地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们是经验丰富的炮手，知道如何精确操作大炮。",
+      "text_markdown": "他们是经验丰富的炮手，知道如何精确操作大炮。",
+      "tts": {
+        "text": "他们是经验丰富的炮手，知道如何精确操作大炮。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拉菲特本人担任顾问，指挥炮位和物资的部署。",
+      "text_markdown": "拉菲特本人担任顾问，指挥炮位和物资的部署。",
+      "tts": {
+        "text": "拉菲特本人担任顾问，指挥炮位和物资的部署。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他对地形的了解对防御来说是无价的。",
+      "text_markdown": "他对地形的了解对防御来说是无价的。",
+      "tts": {
+        "text": "他对地形的了解对防御来说是无价的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人在开阔地带对美军工事发动了正面进攻。",
+      "text_markdown": "英国人在开阔地带对美军工事发动了正面进攻。",
+      "tts": {
+        "text": "英国人在开阔地带对美军工事发动了正面进攻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "美军的大炮和步枪火力摧毁了推进中的纵队。",
+      "text_markdown": "美军的大炮和步枪火力摧毁了推进中的纵队。",
+      "tts": {
+        "text": "美军的大炮和步枪火力摧毁了推进中的纵队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国士兵以非凡的勇气向前推进，但一波波地倒下。",
+      "text_markdown": "英国士兵以非凡的勇气向前推进，但一波波地倒下。",
+      "tts": {
+        "text": "英国士兵以非凡的勇气向前推进，但一波波地倒下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "帕克南将军在率领冲锋时阵亡。",
+      "text_markdown": "帕克南将军在率领冲锋时阵亡。",
+      "tts": {
+        "text": "帕克南将军在率领冲锋时阵亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战斗在不到两小时内结束。",
+      "text_markdown": "战斗在不到两小时内结束。",
+      "tts": {
+        "text": "战斗在不到两小时内结束。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英军伤亡约2,000人，包括阵亡、受伤和被俘。",
+      "text_markdown": "英军伤亡约2,000人，包括阵亡、受伤和被俘。",
+      "tts": {
+        "text": "英军伤亡约两千人，包括阵亡、受伤和被俘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "美军伤亡不到100人。",
+      "text_markdown": "美军伤亡不到100人。",
+      "tts": {
+        "text": "美军伤亡不到一百人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是军事史上最悬殊的胜利之一。",
+      "text_markdown": "这是军事史上最悬殊的胜利之一。",
+      "tts": {
+        "text": "这是军事史上最悬殊的胜利之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴拉塔里亚人因在战斗中的表现而受到赞扬。",
+      "text_markdown": "巴拉塔里亚人因在战斗中的表现而受到赞扬。",
+      "tts": {
+        "text": "巴拉塔里亚人因在战斗中的表现而受到赞扬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的炮火毁灭性且精准。",
+      "text_markdown": "他们的炮火毁灭性且精准。",
+      "tts": {
+        "text": "他们的炮火毁灭性且精准。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "杰克逊本人公开表彰了他们的勇敢和技艺。",
+      "text_markdown": "杰克逊本人公开表彰了他们的勇敢和技艺。",
+      "tts": {
+        "text": "杰克逊本人公开表彰了他们的勇敢和技艺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "几个月前还被称为海盗的人现在被作为英雄来庆祝。",
+      "text_markdown": "几个月前还被称为海盗的人现在被作为英雄来庆祝。",
+      "tts": {
+        "text": "几个月前还被称为海盗的人现在被作为英雄来庆祝。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新奥尔良的胜利使安德鲁·杰克逊成为民族英雄。",
+      "text_markdown": "新奥尔良的胜利使安德鲁·杰克逊成为民族英雄。",
+      "tts": {
+        "text": "新奥尔良的胜利使安德鲁·杰克逊成为民族英雄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它也将让·拉菲特从一个通缉犯变成了爱国者。",
+      "text_markdown": "它也将让·拉菲特从一个通缉犯变成了爱国者。",
+      "tts": {
+        "text": "它也将让·拉菲特从一个通缉犯变成了爱国者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这场战斗证明了拉菲特选择站在美国一方的决定是正确的。",
+      "text_markdown": "这场战斗证明了拉菲特选择站在美国一方的决定是正确的。",
+      "tts": {
+        "text": "这场战斗证明了拉菲特选择站在美国一方的决定是正确的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他把一切都押在了这个联盟上，而他赢了。",
+      "text_markdown": "他把一切都押在了这个联盟上，而他赢了。",
+      "tts": {
+        "text": "他把一切都押在了这个联盟上，而他赢了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "詹姆斯·麦迪逊总统对拉菲特和他所有的巴拉塔里亚人颁发了全面赦免。",
+      "text_markdown": "詹姆斯·麦迪逊总统对拉菲特和他所有的巴拉塔里亚人颁发了全面赦免。",
+      "tts": {
+        "text": "詹姆斯·麦迪逊总统对拉菲特和他所有的巴拉塔里亚人颁发了全面赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "赦免消除了之前所有的海盗和走私指控。",
+      "text_markdown": "赦免消除了之前所有的海盗和走私指控。",
+      "tts": {
+        "text": "赦免消除了之前所有的海盗和走私指控。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拉菲特在法律上和政治上都是自由人。",
+      "text_markdown": "拉菲特在法律上和政治上都是自由人。",
+      "tts": {
+        "text": "拉菲特在法律上和政治上都是自由人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在短暂的时刻，他是新奥尔良最受欢迎的人之一。",
+      "text_markdown": "在短暂的时刻，他是新奥尔良最受欢迎的人之一。",
+      "tts": {
+        "text": "在短暂的时刻，他是新奥尔良最受欢迎的人之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赦免给了拉菲特开始合法新生活的机会。",
+      "text_markdown": "赦免给了拉菲特开始合法新生活的机会。",
+      "tts": {
+        "text": "赦免给了拉菲特开始合法新生活的机会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他有人脉、智慧和魅力在任何领域取得成功。",
+      "text_markdown": "他有人脉、智慧和魅力在任何领域取得成功。",
+      "tts": {
+        "text": "他有人脉、智慧和魅力在任何领域取得成功。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多处于他这种位置的人都会抓住这个机会。",
+      "text_markdown": "许多处于他这种位置的人都会抓住这个机会。",
+      "tts": {
+        "text": "许多处于他这种位置的人都会抓住这个机会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但让·拉菲特不是普通人。",
+      "text_markdown": "但让·拉菲特不是普通人。",
+      "tts": {
+        "text": "但让·拉菲特不是普通人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大海和亡命之徒生活的诱惑被证明太强了。",
+      "text_markdown": "大海和亡命之徒生活的诱惑被证明太强了。",
+      "tts": {
+        "text": "大海和亡命之徒生活的诱惑被证明太强了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "战斗结束后不到两年，拉菲特又回到了走私和私掠活动中。",
+      "text_markdown": "战斗结束后不到两年，拉菲特又回到了走私和私掠活动中。",
+      "tts": {
+        "text": "战斗结束后不到两年，拉菲特又回到了走私和私掠活动中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他无法抗拒旧行当的自由和利润。",
+      "text_markdown": "他无法抗拒旧行当的自由和利润。",
+      "tts": {
+        "text": "他无法抗拒旧行当的自由和利润。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赦免救了他的命，但没有改变他的本性。",
+      "text_markdown": "赦免救了他的命，但没有改变他的本性。",
+      "tts": {
+        "text": "赦免救了他的命，但没有改变他的本性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "杰克逊在新奥尔良的防御策略构思精妙。",
+      "text_markdown": "杰克逊在新奥尔良的防御策略构思精妙。",
+      "tts": {
+        "text": "杰克逊在新奥尔良的防御策略构思精妙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他利用沼泽的自然地形将英国人引入一条狭窄的杀伤地带。",
+      "text_markdown": "他利用沼泽的自然地形将英国人引入一条狭窄的杀伤地带。",
+      "tts": {
+        "text": "他利用沼泽的自然地形将英国人引入一条狭窄的杀伤地带。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "美军防线前的泥泞田地成为推进中英军的死亡陷阱。",
+      "text_markdown": "美军防线前的泥泞田地成为推进中英军的死亡陷阱。",
+      "tts": {
+        "text": "美军防线前的泥泞田地成为推进中英军的死亡陷阱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "胜利的消息在美国各地引起了狂热的欢庆。",
+      "text_markdown": "胜利的消息在美国各地引起了狂热的欢庆。",
+      "tts": {
+        "text": "胜利的消息在美国各地引起了狂热的欢庆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "美国人将这场战斗视为他们年轻国家能够抵御任何强国的证明。",
+      "text_markdown": "美国人将这场战斗视为他们年轻国家能够抵御任何强国的证明。",
+      "tts": {
+        "text": "美国人将这场战斗视为他们年轻国家能够抵御任何强国的证明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "终局",
+      "text_markdown": "终局"
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到1817年，拉菲特在加尔维斯顿岛建立了一个新基地。",
+      "text_markdown": "到1817年，拉菲特在加尔维斯顿岛建立了一个新基地。",
+      "tts": {
+        "text": "到一八一七年，拉菲特在加尔维斯顿岛建立了一个新基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "加尔维斯顿位于当时属于西班牙的得克萨斯海岸。",
+      "text_markdown": "加尔维斯顿位于当时属于西班牙的得克萨斯海岸。",
+      "tts": {
+        "text": "加尔维斯顿位于当时属于西班牙的得克萨斯海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它远离美国管辖，且完美地适合墨西哥湾的活动。",
+      "text_markdown": "它远离美国管辖，且完美地适合墨西哥湾的活动。",
+      "tts": {
+        "text": "它远离美国管辖，且完美地适合墨西哥湾的活动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特把他的新定居点称为坎佩切。",
+      "text_markdown": "拉菲特把他的新定居点称为坎佩切。",
+      "tts": {
+        "text": "拉菲特把他的新定居点称为坎佩切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它迅速发展成一个繁荣的海盗社区。",
+      "text_markdown": "它迅速发展成一个繁荣的海盗社区。",
+      "tts": {
+        "text": "它迅速发展成一个繁荣的海盗社区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在鼎盛时期，坎佩切容纳了超过1,000人。",
+      "text_markdown": "在鼎盛时期，坎佩切容纳了超过1,000人。",
+      "tts": {
+        "text": "在鼎盛时期，坎佩切容纳了超过一千人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它有自己的政府、法庭和社会等级制度。",
+      "text_markdown": "它有自己的政府、法庭和社会等级制度。",
+      "tts": {
+        "text": "它有自己的政府、法庭和社会等级制度。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特宣布自己为加尔维斯顿的民政和军事长官。",
+      "text_markdown": "拉菲特宣布自己为加尔维斯顿的民政和军事长官。",
+      "tts": {
+        "text": "拉菲特宣布自己为加尔维斯顿的民政和军事长官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在定居点内执行严格的规则。",
+      "text_markdown": "他在定居点内执行严格的规则。",
+      "tts": {
+        "text": "他在定居点内执行严格的规则。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他坚持让手下只攻击持有有效私掠许可证的西班牙船只。",
+      "text_markdown": "他坚持让手下只攻击持有有效私掠许可证的西班牙船只。",
+      "tts": {
+        "text": "他坚持让手下只攻击持有有效私掠许可证的西班牙船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "美国船只应该不受侵犯。",
+      "text_markdown": "美国船只应该不受侵犯。",
+      "tts": {
+        "text": "美国船只应该不受侵犯。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在实践中，这条规则很难执行。",
+      "text_markdown": "在实践中，这条规则很难执行。",
+      "tts": {
+        "text": "在实践中，这条规则很难执行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉菲特的一些船长不顾他的命令攻击了美国船只。",
+      "text_markdown": "拉菲特的一些船长不顾他的命令攻击了美国船只。",
+      "tts": {
+        "text": "拉菲特的一些船长不顾他的命令攻击了美国船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些未经授权的袭击引起了美国政府不必要的关注。",
+      "text_markdown": "这些未经授权的袭击引起了美国政府不必要的关注。",
+      "tts": {
+        "text": "这些未经授权的袭击引起了美国政府不必要的关注。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拉菲特惩罚了违反他规则的船长，但损害已经造成。",
+      "text_markdown": "拉菲特惩罚了违反他规则的船长，但损害已经造成。",
+      "tts": {
+        "text": "拉菲特惩罚了违反他规则的船长，但损害已经造成。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "墨西哥湾的政治局势正在迅速变化。",
+      "text_markdown": "墨西哥湾的政治局势正在迅速变化。",
+      "tts": {
+        "text": "墨西哥湾的政治局势正在迅速变化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉丁美洲的革命正在重塑这个地区。",
+      "text_markdown": "拉丁美洲的革命正在重塑这个地区。",
+      "tts": {
+        "text": "拉丁美洲的革命正在重塑这个地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "新国家在诞生，旧帝国在消亡。",
+      "text_markdown": "新国家在诞生，旧帝国在消亡。",
+      "tts": {
+        "text": "新国家在诞生，旧帝国在消亡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "保护拉菲特的私掠许可证越来越难以获得。",
+      "text_markdown": "保护拉菲特的私掠许可证越来越难以获得。",
+      "tts": {
+        "text": "保护拉菲特的私掠许可证越来越难以获得。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "美国也在扩大其在墨西哥湾的海军存在。",
+      "text_markdown": "美国也在扩大其在墨西哥湾的海军存在。",
+      "tts": {
+        "text": "美国也在扩大其在墨西哥湾的海军存在。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海军奉命打击海盗活动并保护美国航运。",
+      "text_markdown": "海军奉命打击海盗活动并保护美国航运。",
+      "tts": {
+        "text": "海军奉命打击海盗活动并保护美国航运。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拉菲特在加尔维斯顿的定居点正在成为政府的尴尬。",
+      "text_markdown": "拉菲特在加尔维斯顿的定居点正在成为政府的尴尬。",
+      "tts": {
+        "text": "拉菲特在加尔维斯顿的定居点正在成为政府的尴尬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他曾帮助捍卫的国家现在把他视为问题。",
+      "text_markdown": "他曾帮助捍卫的国家现在把他视为问题。",
+      "tts": {
+        "text": "他曾帮助捍卫的国家现在把他视为问题。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一八一八年，一场毁灭性的飓风袭击了加尔维斯顿。",
+      "text_markdown": "一八一八年，一场毁灭性的飓风袭击了加尔维斯顿。",
+      "tts": {
+        "text": "一八一八年，一场毁灭性的飓风袭击了加尔维斯顿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "风暴摧毁了大部分定居点并击沉了拉菲特的几艘船。",
+      "text_markdown": "风暴摧毁了大部分定居点并击沉了拉菲特的几艘船。",
+      "tts": {
+        "text": "风暴摧毁了大部分定居点并击沉了拉菲特的几艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "重建缓慢而昂贵。",
+      "text_markdown": "重建缓慢而昂贵。",
+      "tts": {
+        "text": "重建缓慢而昂贵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "飓风是坎佩切从未完全恢复的一次打击。",
+      "text_markdown": "飓风是坎佩切从未完全恢复的一次打击。",
+      "tts": {
+        "text": "飓风是坎佩切从未完全恢复的一次打击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1821年，一艘美国军舰携带最后通牒抵达加尔维斯顿。",
+      "text_markdown": "1821年，一艘美国军舰携带最后通牒抵达加尔维斯顿。",
+      "tts": {
+        "text": "一八二一年，一艘美国军舰携带最后通牒抵达加尔维斯顿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉菲特被命令立即离开该岛。",
+      "text_markdown": "拉菲特被命令立即离开该岛。",
+      "tts": {
+        "text": "拉菲特被命令立即离开该岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他被告知，如果拒绝，海军将用武力将他驱逐。",
+      "text_markdown": "他被告知，如果拒绝，海军将用武力将他驱逐。",
+      "tts": {
+        "text": "他被告知，如果拒绝，海军将用武力将他驱逐。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特选择不再与美国第二次开战。",
+      "text_markdown": "拉菲特选择不再与美国第二次开战。",
+      "tts": {
+        "text": "拉菲特选择不再与美国第二次开战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他宁可烧毁坎佩切定居点也不愿将其交出。",
+      "text_markdown": "他宁可烧毁坎佩切定居点也不愿将其交出。",
+      "tts": {
+        "text": "他宁可烧毁坎佩切定居点也不愿将其交出。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "火光在水面上数公里外都能看到。",
+      "text_markdown": "火光在水面上数公里外都能看到。",
+      "tts": {
+        "text": "火光在水面上数公里外都能看到。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "然后他驶入墨西哥湾，消失了。",
+      "text_markdown": "然后他驶入墨西哥湾，消失了。",
+      "tts": {
+        "text": "然后他驶入墨西哥湾，消失了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让·拉菲特离开加尔维斯顿后发生了什么是历史上最大的谜团之一。",
+      "text_markdown": "让·拉菲特离开加尔维斯顿后发生了什么是历史上最大的谜团之一。",
+      "tts": {
+        "text": "让·拉菲特离开加尔维斯顿后发生了什么是历史上最大的谜团之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些记载说他继续在古巴和尤卡坦附近海域从事私掠活动。",
+      "text_markdown": "一些记载说他继续在古巴和尤卡坦附近海域从事私掠活动。",
+      "tts": {
+        "text": "一些记载说他继续在古巴和尤卡坦附近海域从事私掠活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一些说他用假名安静地定居在一个小镇。",
+      "text_markdown": "另一些说他用假名安静地定居在一个小镇。",
+      "tts": {
+        "text": "另一些说他用假名安静地定居在一个小镇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据信拉菲特约于1823年去世，但即使这一点也不确定。",
+      "text_markdown": "据信拉菲特约于1823年去世，但即使这一点也不确定。",
+      "tts": {
+        "text": "据信拉菲特约于一八二三年去世，但即使这一点也不确定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些历史学家认为他死于尤卡坦半岛的热病。",
+      "text_markdown": "一些历史学家认为他死于尤卡坦半岛的热病。",
+      "tts": {
+        "text": "一些历史学家认为他死于尤卡坦半岛的热病。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一些人将他的死亡时间推迟到了十九世纪五十年代。",
+      "text_markdown": "另一些人将他的死亡时间推迟到了十九世纪五十年代。",
+      "tts": {
+        "text": "另一些人将他的死亡时间推迟到了十九世纪五十年代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有任何墓地被确切认定为他的安息之地。",
+      "text_markdown": "没有任何墓地被确切认定为他的安息之地。",
+      "tts": {
+        "text": "没有任何墓地被确切认定为他的安息之地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的兄弟皮埃尔·拉菲特可能在同一时期去世。",
+      "text_markdown": "他的兄弟皮埃尔·拉菲特可能在同一时期去世。",
+      "tts": {
+        "text": "他的兄弟皮埃尔·拉菲特可能在同一时期去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "皮埃尔的命运同样不明。",
+      "text_markdown": "皮埃尔的命运同样不明。",
+      "tts": {
+        "text": "皮埃尔的命运同样不明。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一起建立帝国的兄弟二人一起消失了。",
+      "text_markdown": "一起建立帝国的兄弟二人一起消失了。",
+      "tts": {
+        "text": "一起建立帝国的兄弟二人一起消失了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们的故事如同开始时一样，在神秘中结束。",
+      "text_markdown": "他们的故事如同开始时一样，在神秘中结束。",
+      "tts": {
+        "text": "他们的故事如同开始时一样，在神秘中结束。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些传说声称拉菲特在墨西哥湾沿岸埋藏了宝藏。",
+      "text_markdown": "一些传说声称拉菲特在墨西哥湾沿岸埋藏了宝藏。",
+      "tts": {
+        "text": "一些传说声称拉菲特在墨西哥湾沿岸埋藏了宝藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "终局",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "寻宝者已经搜寻他的黄金近两百年而无果。",
+      "text_markdown": "寻宝者已经搜寻他的黄金近两百年而无果。",
+      "tts": {
+        "text": "寻宝者已经搜寻他的黄金近两百年而无果。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让·拉菲特是美国历史上最被浪漫化的人物之一。",
+      "text_markdown": "让·拉菲特是美国历史上最被浪漫化的人物之一。",
+      "tts": {
+        "text": "让·拉菲特是美国历史上最被浪漫化的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被记为新奥尔良的绅士海盗。",
+      "text_markdown": "他被记为新奥尔良的绅士海盗。",
+      "tts": {
+        "text": "他被记为新奥尔良的绅士海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "路易斯安那的一个国家历史公园以他的名字命名。",
+      "text_markdown": "路易斯安那的一个国家历史公园以他的名字命名。",
+      "tts": {
+        "text": "路易斯安那的一个国家历史公园以他的名字命名。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在新奥尔良之战中的角色确保了他在美国历史中的地位。",
+      "text_markdown": "他在新奥尔良之战中的角色确保了他在美国历史中的地位。",
+      "tts": {
+        "text": "他在新奥尔良之战中的角色确保了他在美国历史中的地位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他证明了一个亡命之徒也可以是爱国者。",
+      "text_markdown": "他证明了一个亡命之徒也可以是爱国者。",
+      "tts": {
+        "text": "他证明了一个亡命之徒也可以是爱国者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的炮手帮助拯救了一座城市，并让世界上最强大的海军蒙羞。",
+      "text_markdown": "他的炮手帮助拯救了一座城市，并让世界上最强大的海军蒙羞。",
+      "tts": {
+        "text": "他的炮手帮助拯救了一座城市，并让世界上最强大的海军蒙羞。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拉菲特出现在无数小说、电影和电视节目中。",
+      "text_markdown": "拉菲特出现在无数小说、电影和电视节目中。",
+      "tts": {
+        "text": "拉菲特出现在无数小说、电影和电视节目中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拜伦勋爵的诗作《海盗》可能部分受到拉菲特的启发。",
+      "text_markdown": "拜伦勋爵的诗作《海盗》可能部分受到拉菲特的启发。",
+      "tts": {
+        "text": "拜伦勋爵的诗作《海盗》可能部分受到拉菲特的启发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他被描绘成从英俊的英雄到冷血罪犯的各种形象。",
+      "text_markdown": "他被描绘成从英俊的英雄到冷血罪犯的各种形象。",
+      "tts": {
+        "text": "他被描绘成从英俊的英雄到冷血罪犯的各种形象。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "真相一如既往，存在于两者之间。",
+      "text_markdown": "真相一如既往，存在于两者之间。",
+      "tts": {
+        "text": "真相一如既往，存在于两者之间。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家继续争论拉菲特的性格和动机。",
+      "text_markdown": "历史学家继续争论拉菲特的性格和动机。",
+      "tts": {
+        "text": "历史学家继续争论拉菲特的性格和动机。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是热爱收养国的爱国者，还是为了自救而达成交易的罪犯？",
+      "text_markdown": "他是热爱收养国的爱国者，还是为了自救而达成交易的罪犯？",
+      "tts": {
+        "text": "他是热爱收养国的爱国者，还是为了自救而达成交易的罪犯？",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "证据支持这两种解释。",
+      "text_markdown": "证据支持这两种解释。",
+      "tts": {
+        "text": "证据支持这两种解释。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他是一个充满矛盾的人，无法用简单的标签定义。",
+      "text_markdown": "他是一个充满矛盾的人，无法用简单的标签定义。",
+      "tts": {
+        "text": "他是一个充满矛盾的人，无法用简单的标签定义。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他参与奴隶贸易是其遗产中最黑暗的部分。",
+      "text_markdown": "他参与奴隶贸易是其遗产中最黑暗的部分。",
+      "tts": {
+        "text": "他参与奴隶贸易是其遗产中最黑暗的部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉菲特为了利润买卖人口。",
+      "text_markdown": "拉菲特为了利润买卖人口。",
+      "tts": {
+        "text": "拉菲特为了利润买卖人口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个事实无法从他的故事中剥离，无论其余部分多么浪漫。",
+      "text_markdown": "这个事实无法从他的故事中剥离，无论其余部分多么浪漫。",
+      "tts": {
+        "text": "这个事实无法从他的故事中剥离，无论其余部分多么浪漫。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他出身和死亡的神秘只会增加他持久的魅力。",
+      "text_markdown": "他出身和死亡的神秘只会增加他持久的魅力。",
+      "tts": {
+        "text": "他出身和死亡的神秘只会增加他持久的魅力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个从虚无中出现又消失在虚无中的人对讲故事的人来说是不可抗拒的。",
+      "text_markdown": "一个从虚无中出现又消失在虚无中的人对讲故事的人来说是不可抗拒的。",
+      "tts": {
+        "text": "一个从虚无中出现又消失在虚无中的人对讲故事的人来说是不可抗拒的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让·拉菲特比任何人都更明白这一点。",
+      "text_markdown": "让·拉菲特比任何人都更明白这一点。",
+      "tts": {
+        "text": "让·拉菲特比任何人都更明白这一点。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他像策划袭击一样精心打造自己的传说。",
+      "text_markdown": "他像策划袭击一样精心打造自己的传说。",
+      "tts": {
+        "text": "他像策划袭击一样精心打造自己的传说。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是伪装大师，在舞厅和海盗船上同样自如。",
+      "text_markdown": "他是伪装大师，在舞厅和海盗船上同样自如。",
+      "tts": {
+        "text": "他是伪装大师，在舞厅和海盗船上同样自如。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "真实的拉菲特和他创造的神话之间的界限或许永远无法完全理清。",
+      "text_markdown": "真实的拉菲特和他创造的神话之间的界限或许永远无法完全理清。",
+      "tts": {
+        "text": "真实的拉菲特和他创造的神话之间的界限或许永远无法完全理清。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "显而易见的是，他塑造了墨西哥湾沿岸的历史。",
+      "text_markdown": "显而易见的是，他塑造了墨西哥湾沿岸的历史。",
+      "tts": {
+        "text": "显而易见的是，他塑造了墨西哥湾沿岸的历史。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在关键时刻出现在那里，并选择了行动。",
+      "text_markdown": "他在关键时刻出现在那里，并选择了行动。",
+      "tts": {
+        "text": "他在关键时刻出现在那里，并选择了行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "无论好坏，让·拉菲特在美国历史上留下了他的印记。",
+      "text_markdown": "无论好坏，让·拉菲特在美国历史上留下了他的印记。",
+      "tts": {
+        "text": "无论好坏，让·拉菲特在美国历史上留下了他的印记。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一份被称为让·拉菲特日记的文件在二十世纪浮出水面。",
+      "text_markdown": "一份被称为让·拉菲特日记的文件在二十世纪浮出水面。",
+      "tts": {
+        "text": "一份被称为让·拉菲特日记的文件在二十世纪浮出水面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大多数历史学家认为这份日记是伪造的，但争论仍在继续。",
+      "text_markdown": "大多数历史学家认为这份日记是伪造的，但争论仍在继续。",
+      "tts": {
+        "text": "大多数历史学家认为这份日记是伪造的，但争论仍在继续。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

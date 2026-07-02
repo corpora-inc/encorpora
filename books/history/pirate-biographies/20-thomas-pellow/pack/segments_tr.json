@@ -1,0 +1,4352 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_thomas_pellow",
+  "language": "tr",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, korsanın tarafından anlatılan bir korsan hikâyesi değildir.",
+      "text_markdown": "Bu, korsanın tarafından anlatılan bir korsan hikâyesi değildir.",
+      "tts": {
+        "text": "Bu, korsanın tarafından anlatılan bir korsan hikâyesi değildir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, kaçırılan birinin hikâyesidir.",
+      "text_markdown": "Bu, kaçırılan birinin hikâyesidir.",
+      "tts": {
+        "text": "Bu, kaçırılan birinin hikâyesidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow, Kornuall'dan İngiliz bir çocuktu.",
+      "text_markdown": "Thomas Pellow, Kornuall'dan İngiliz bir çocuktu.",
+      "tts": {
+        "text": "Thomas Pellow, Kornuall'dan İngiliz bir çocuktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On bir yaşında Berberi korsanları tarafından esir alınarak Fas'a götürüldü.",
+      "text_markdown": "On bir yaşında Berberi korsanları tarafından esir alınarak Fas'a götürüldü.",
+      "tts": {
+        "text": "On bir yaşında Berberi korsanları tarafından esir alınarak Fas'a götürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yirmi üç yıl boyunca evine dönemeyecekti.",
+      "text_markdown": "Yirmi üç yıl boyunca evine dönemeyecekti.",
+      "tts": {
+        "text": "Yirmi üç yıl boyunca evine dönemeyecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu yıllar boyunca İslam'a geçmeye zorlandı, asker olarak eğitildi ve Kuzey Afrika tarihinin en güçlü ve en acımasız hükümdarlarından birine hizmet etmeye mecbur bırakıldı.",
+      "text_markdown": "Bu yıllar boyunca İslam'a geçmeye zorlandı, asker olarak eğitildi ve Kuzey Afrika tarihinin en güçlü ve en acımasız hükümdarlarından birine hizmet etmeye mecbur bırakıldı.",
+      "tts": {
+        "text": "Bu yıllar boyunca İslam'a geçmeye zorlandı, asker olarak eğitildi ve Kuzey Afrika tarihinin en güçlü ve en acımasız hükümdarlarından birine hizmet etmeye mecbur bırakıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir çocuğun görmemesi gereken şeylere tanık oldu.",
+      "text_markdown": "Hiçbir çocuğun görmemesi gereken şeylere tanık oldu.",
+      "tts": {
+        "text": "Hiçbir çocuğun görmemesi gereken şeylere tanık oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonunda kaçıp İngiltere'ye döndüğünde, esaretinin anılarını yazdı.",
+      "text_markdown": "Sonunda kaçıp İngiltere'ye döndüğünde, esaretinin anılarını yazdı.",
+      "tts": {
+        "text": "Sonunda kaçıp İngiltere'ye döndüğünde, esaretinin anılarını yazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, XVIII. yüzyılın en dikkate değer belgelerinden biridir.",
+      "text_markdown": "Bu, XVIII. yüzyılın en dikkate değer belgelerinden biridir.",
+      "tts": {
+        "text": "Bu, on sekizinci yüzyılın en dikkate değer belgelerinden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aynı zamanda en acı verici olanlardan biridir.",
+      "text_markdown": "Aynı zamanda en acı verici olanlardan biridir.",
+      "tts": {
+        "text": "Aynı zamanda en acı verici olanlardan biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi bize korsanlığın herkes için bir macera olmadığını hatırlatır.",
+      "text_markdown": "Hikâyesi bize korsanlığın herkes için bir macera olmadığını hatırlatır.",
+      "tts": {
+        "text": "Hikâyesi bize korsanlığın herkes için bir macera olmadığını hatırlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Denizi seçen her korsan için, hiçbir seçeneği olmayan yüzlerce insan vardı.",
+      "text_markdown": "Denizi seçen her korsan için, hiçbir seçeneği olmayan yüzlerce insan vardı.",
+      "tts": {
+        "text": "Denizi seçen her korsan için, hiçbir seçeneği olmayan yüzlerce insan vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Berberi Kıyısının Dünyası",
+      "text_markdown": "Berberi Kıyısının Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Berberi Kıyısı, Kuzey Afrika kıyısının Avrupa'daki adıydı.",
+      "text_markdown": "Berberi Kıyısı, Kuzey Afrika kıyısının Avrupa'daki adıydı.",
+      "tts": {
+        "text": "Berberi Kıyısı, Kuzey Afrika kıyısının Avrupa'daki adıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Batıda Fas'tan doğuda Libya'ya kadar uzanıyordu.",
+      "text_markdown": "Batıda Fas'tan doğuda Libya'ya kadar uzanıyordu.",
+      "tts": {
+        "text": "Batıda Fas'tan doğuda Libya'ya kadar uzanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca dünyanın en korkulan korsanlarından bazılarına ev sahipliği yaptı.",
+      "text_markdown": "Yüzyıllar boyunca dünyanın en korkulan korsanlarından bazılarına ev sahipliği yaptı.",
+      "tts": {
+        "text": "Yüzyıllar boyunca dünyanın en korkulan korsanlarından bazılarına ev sahipliği yaptı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Berberi korsanları sıradan korsanlar değildi.",
+      "text_markdown": "Berberi korsanları sıradan korsanlar değildi.",
+      "tts": {
+        "text": "Berberi korsanları sıradan korsanlar değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzey Afrika devletlerinin onayı ve çoğu zaman doğrudan desteğiyle faaliyet gösteriyorlardı.",
+      "text_markdown": "Kuzey Afrika devletlerinin onayı ve çoğu zaman doğrudan desteğiyle faaliyet gösteriyorlardı.",
+      "tts": {
+        "text": "Kuzey Afrika devletlerinin onayı ve çoğu zaman doğrudan desteğiyle faaliyet gösteriyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fas, Cezayir, Tunus ve Trablusgarp'ın hepsi korsan baskınlarından kâr ediyordu.",
+      "text_markdown": "Fas, Cezayir, Tunus ve Trablusgarp'ın hepsi korsan baskınlarından kâr ediyordu.",
+      "tts": {
+        "text": "Fas, Cezayir, Tunus ve Trablusgarp'ın hepsi korsan baskınlarından kâr ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar Avrupa deniz ticaretine ve kıyı kasabalarına saldırıyordu.",
+      "text_markdown": "Korsanlar Avrupa deniz ticaretine ve kıyı kasabalarına saldırıyordu.",
+      "tts": {
+        "text": "Korsanlar Avrupa deniz ticaretine ve kıyı kasabalarına saldırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemileri ele geçiriyor, yükleri çalıyor ve esir alıyorlardı.",
+      "text_markdown": "Gemileri ele geçiriyor, yükleri çalıyor ve esir alıyorlardı.",
+      "tts": {
+        "text": "Gemileri ele geçiriyor, yükleri çalıyor ve esir alıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esirler, tüm ganimetlerin en değerlisiydi.",
+      "text_markdown": "Esirler, tüm ganimetlerin en değerlisiydi.",
+      "tts": {
+        "text": "Esirler, tüm ganimetlerin en değerlisiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esirler, ailelerinden büyük meblağlar karşılığında fidyeyle geri alınabiliyordu.",
+      "text_markdown": "Esirler, ailelerinden büyük meblağlar karşılığında fidyeyle geri alınabiliyordu.",
+      "tts": {
+        "text": "Esirler, ailelerinden büyük meblağlar karşılığında fidyeyle geri alınabiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fidyeyle kurtarılamayanlar köle olarak satılıyordu.",
+      "text_markdown": "Fidyeyle kurtarılamayanlar köle olarak satılıyordu.",
+      "tts": {
+        "text": "Fidyeyle kurtarılamayanlar köle olarak satılıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler, 1530 ile 1780 arasında bir milyondan fazla Avrupalının Berberi korsanları tarafından köleleştirildiğini tahmin ediyor.",
+      "text_markdown": "Tarihçiler, 1530 ile 1780 arasında bir milyondan fazla Avrupalının Berberi korsanları tarafından köleleştirildiğini tahmin ediyor.",
+      "tts": {
+        "text": "Tarihçiler, bin beş yüz otuz ile bin yedi yüz seksen arasında bir milyondan fazla Avrupalının Berberi korsanları tarafından köleleştirildiğini tahmin ediyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, köle ticaretinin diğer yüzüydü.",
+      "text_markdown": "Bu, köle ticaretinin diğer yüzüydü.",
+      "tts": {
+        "text": "Bu, köle ticaretinin diğer yüzüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupa güçleri Afrikalıları köleleştirip Atlantik'in ötesine gönderirken, Kuzey Afrika güçleri Avrupalıları köleleştirip kendi topraklarında çalıştırıyordu.",
+      "text_markdown": "Avrupa güçleri Afrikalıları köleleştirip Atlantik'in ötesine gönderirken, Kuzey Afrika güçleri Avrupalıları köleleştirip kendi topraklarında çalıştırıyordu.",
+      "tts": {
+        "text": "Avrupa güçleri Afrikalıları köleleştirip Atlantik'in ötesine gönderirken, Kuzey Afrika güçleri Avrupalıları köleleştirip kendi topraklarında çalıştırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Acı, Akdeniz'in her iki yakasında da gerçekti.",
+      "text_markdown": "Acı, Akdeniz'in her iki yakasında da gerçekti.",
+      "tts": {
+        "text": "Acı, Akdeniz'in her iki yakasında da gerçekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fas'ın Atlantik kıyısındaki korsan limanı Salé özellikle kötü şöhretliydi.",
+      "text_markdown": "Fas'ın Atlantik kıyısındaki korsan limanı Salé özellikle kötü şöhretliydi.",
+      "tts": {
+        "text": "Fas'ın Atlantik kıyısındaki korsan limanı Salé özellikle kötü şöhretliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Salé korsanları, Salé Akıncıları olarak biliniyordu.",
+      "text_markdown": "Salé korsanları, Salé Akıncıları olarak biliniyordu.",
+      "tts": {
+        "text": "Salé korsanları, Salé Akıncıları olarak biliniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Akdeniz'in çok ötesine geçerek İzlanda ve İrlanda'ya kadar kuzeye akınlar düzenlediler.",
+      "text_markdown": "Akdeniz'in çok ötesine geçerek İzlanda ve İrlanda'ya kadar kuzeye akınlar düzenlediler.",
+      "tts": {
+        "text": "Akdeniz'in çok ötesine geçerek İzlanda ve İrlanda'ya kadar kuzeye akınlar düzenlediler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1631'de Salé Akıncıları İrlanda'daki Baltimore köyüne baskın düzenleyip 100'den fazla kişiyi kaçırdı.",
+      "text_markdown": "1631'de Salé Akıncıları İrlanda'daki Baltimore köyüne baskın düzenleyip 100'den fazla kişiyi kaçırdı.",
+      "tts": {
+        "text": "Bin altı yüz otuz birde Salé Akıncıları İrlanda'daki Baltimore köyüne baskın düzenleyip yüzden fazla kişiyi kaçırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğu bir daha asla görülmedi.",
+      "text_markdown": "Çoğu bir daha asla görülmedi.",
+      "tts": {
+        "text": "Çoğu bir daha asla görülmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas Pellow'un sürükleneceği dünya buydu.",
+      "text_markdown": "Thomas Pellow'un sürükleneceği dünya buydu.",
+      "tts": {
+        "text": "Thomas Pellow'un sürükleneceği dünya buydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "XVIII. yüzyılın başlarında Fas, Sultan Mulay İsmail tarafından yönetiliyordu.",
+      "text_markdown": "XVIII. yüzyılın başlarında Fas, Sultan Mulay İsmail tarafından yönetiliyordu.",
+      "tts": {
+        "text": "On sekizinci yüzyılın başlarında Fas, Sultan Mulay İsmail tarafından yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fas tarihinin en uzun süre hüküm süren hükümdarlarından biriydi; 1672'den 1727'ye kadar hüküm sürdü.",
+      "text_markdown": "Fas tarihinin en uzun süre hüküm süren hükümdarlarından biriydi; 1672'den 1727'ye kadar hüküm sürdü.",
+      "tts": {
+        "text": "Fas tarihinin en uzun süre hüküm süren hükümdarlarından biriydi; bin altı yüz yetmiş ikiden bin yedi yüz yirmi yediye kadar hüküm sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aynı zamanda en acımasızlarından biriydi.",
+      "text_markdown": "Aynı zamanda en acımasızlarından biriydi.",
+      "tts": {
+        "text": "Aynı zamanda en acımasızlarından biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mulay İsmail, Fas'ı büyük bir imparatorluk yapmayı hayal ediyordu.",
+      "text_markdown": "Mulay İsmail, Fas'ı büyük bir imparatorluk yapmayı hayal ediyordu.",
+      "tts": {
+        "text": "Mulay İsmail, Fas'ı büyük bir imparatorluk yapmayı hayal ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başkenti Meknes'te devasa bir saray kompleksi inşa etti.",
+      "text_markdown": "Başkenti Meknes'te devasa bir saray kompleksi inşa etti.",
+      "tts": {
+        "text": "Başkenti Meknes'te devasa bir saray kompleksi inşa etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnşaat, hem Avrupalı hem de Afrikalı on binlerce köle tarafından gerçekleştirildi.",
+      "text_markdown": "İnşaat, hem Avrupalı hem de Afrikalı on binlerce köle tarafından gerçekleştirildi.",
+      "tts": {
+        "text": "İnşaat, hem Avrupalı hem de Afrikalı on binlerce köle tarafından gerçekleştirildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sultan, aşırı şiddet eylemleriyle tanınıyordu.",
+      "text_markdown": "Sultan, aşırı şiddet eylemleriyle tanınıyordu.",
+      "tts": {
+        "text": "Sultan, aşırı şiddet eylemleriyle tanınıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendisini memnun etmeyen hizmetkârları ve saray mensuplarını bizzat öldürüyordu.",
+      "text_markdown": "Kendisini memnun etmeyen hizmetkârları ve saray mensuplarını bizzat öldürüyordu.",
+      "tts": {
+        "text": "Kendisini memnun etmeyen hizmetkârları ve saray mensuplarını bizzat öldürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yabancı elçiler, anlık bir hevesle gerçekleştirilen idamlara tanık olduklarını bildirdi.",
+      "text_markdown": "Yabancı elçiler, anlık bir hevesle gerçekleştirilen idamlara tanık olduklarını bildirdi.",
+      "tts": {
+        "text": "Yabancı elçiler, anlık bir hevesle gerçekleştirilen idamlara tanık olduklarını bildirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korku, iktidarının temeliydi.",
+      "text_markdown": "Korku, iktidarının temeliydi.",
+      "tts": {
+        "text": "Korku, iktidarının temeliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kara Muhafızlar olarak bilinen köleleştirilmiş siyah askerlerden oluşan bir kişisel muhafız birliği dahil devasa bir ordu bulunduruyordu.",
+      "text_markdown": "Kara Muhafızlar olarak bilinen köleleştirilmiş siyah askerlerden oluşan bir kişisel muhafız birliği dahil devasa bir ordu bulunduruyordu.",
+      "tts": {
+        "text": "Kara Muhafızlar olarak bilinen köleleştirilmiş siyah askerlerden oluşan bir kişisel muhafız birliği dahil devasa bir ordu bulunduruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu ordu sultana son derece sadıktı ve hem askeri gücü hem de terör aracı olarak hizmet ediyordu.",
+      "text_markdown": "Bu ordu sultana son derece sadıktı ve hem askeri gücü hem de terör aracı olarak hizmet ediyordu.",
+      "tts": {
+        "text": "Bu ordu sultana son derece sadıktı ve hem askeri gücü hem de terör aracı olarak hizmet ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fas'taki Avrupalı esirler birçok rol üstleniyordu.",
+      "text_markdown": "Fas'taki Avrupalı esirler birçok rol üstleniyordu.",
+      "tts": {
+        "text": "Fas'taki Avrupalı esirler birçok rol üstleniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları sultanın saraylarını inşa ederek ağır işlere koşuluyordu.",
+      "text_markdown": "Bazıları sultanın saraylarını inşa ederek ağır işlere koşuluyordu.",
+      "tts": {
+        "text": "Bazıları sultanın saraylarını inşa ederek ağır işlere koşuluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri asker veya yönetici olarak eğitiliyordu.",
+      "text_markdown": "Diğerleri asker veya yönetici olarak eğitiliyordu.",
+      "tts": {
+        "text": "Diğerleri asker veya yönetici olarak eğitiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birkaçı kişisel hizmetkâr olarak tutuluyordu.",
+      "text_markdown": "Birkaçı kişisel hizmetkâr olarak tutuluyordu.",
+      "tts": {
+        "text": "Birkaçı kişisel hizmetkâr olarak tutuluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İslam'a geçen esirler biraz daha iyi muamele görüyordu.",
+      "text_markdown": "İslam'a geçen esirler biraz daha iyi muamele görüyordu.",
+      "tts": {
+        "text": "İslam'a geçen esirler biraz daha iyi muamele görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Din değiştirme özgürlüğü garanti etmiyordu ama daha yüksek mevkilere kapı açıyordu.",
+      "text_markdown": "Din değiştirme özgürlüğü garanti etmiyordu ama daha yüksek mevkilere kapı açıyordu.",
+      "tts": {
+        "text": "Din değiştirme özgürlüğü garanti etmiyordu ama daha yüksek mevkilere kapı açıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçok Avrupalı işkence veya ölüm tehdidi altında din değiştirdi.",
+      "text_markdown": "Birçok Avrupalı işkence veya ölüm tehdidi altında din değiştirdi.",
+      "tts": {
+        "text": "Birçok Avrupalı işkence veya ölüm tehdidi altında din değiştirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa hükümetleri zaman zaman vatandaşlarının serbest bırakılması için müzakere ediyordu.",
+      "text_markdown": "Avrupa hükümetleri zaman zaman vatandaşlarının serbest bırakılması için müzakere ediyordu.",
+      "tts": {
+        "text": "Avrupa hükümetleri zaman zaman vatandaşlarının serbest bırakılması için müzakere ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fidye ödemeleri yaygındı.",
+      "text_markdown": "Fidye ödemeleri yaygındı.",
+      "tts": {
+        "text": "Fidye ödemeleri yaygındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dini tarikatlar, özellikle Trinitaryanlar ve Mersedaryanlar, esirleri kurtarmaya kendilerini adamışlardı.",
+      "text_markdown": "Dini tarikatlar, özellikle Trinitaryanlar ve Mersedaryanlar, esirleri kurtarmaya kendilerini adamışlardı.",
+      "tts": {
+        "text": "Dini tarikatlar, özellikle Trinitaryanlar ve Mersedaryanlar, esirleri kurtarmaya kendilerini adamışlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak fidye süreci yavaş, pahalı ve güvenilmezdi.",
+      "text_markdown": "Ancak fidye süreci yavaş, pahalı ve güvenilmezdi.",
+      "tts": {
+        "text": "Ancak fidye süreci yavaş, pahalı ve güvenilmezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok esir asla fidyeyle kurtarılamadı.",
+      "text_markdown": "Birçok esir asla fidyeyle kurtarılamadı.",
+      "tts": {
+        "text": "Birçok esir asla fidyeyle kurtarılamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fas'ta yaşadılar ve öldüler, evlerinden uzakta.",
+      "text_markdown": "Fas'ta yaşadılar ve öldüler, evlerinden uzakta.",
+      "tts": {
+        "text": "Fas'ta yaşadılar ve öldüler, evlerinden uzakta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Berberi Kıyısının Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas Pellow neredeyse onlardan biri olacaktı.",
+      "text_markdown": "Thomas Pellow neredeyse onlardan biri olacaktı.",
+      "tts": {
+        "text": "Thomas Pellow neredeyse onlardan biri olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow, 1704'te İngiltere'nin güneybatı ucundaki Kornuall'ın Penryn kasabasında doğdu.",
+      "text_markdown": "Thomas Pellow, 1704'te İngiltere'nin güneybatı ucundaki Kornuall'ın Penryn kasabasında doğdu.",
+      "tts": {
+        "text": "Thomas Pellow, bin yedi yüz dörtte İngiltere'nin güneybatı ucundaki Kornuall'ın Penryn kasabasında doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kornuall bir denizcilik bölgesiydi.",
+      "text_markdown": "Kornuall bir denizcilik bölgesiydi.",
+      "tts": {
+        "text": "Kornuall bir denizcilik bölgesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanları nesiller boyu geçimlerini okyanustan sağlamıştı.",
+      "text_markdown": "İnsanları nesiller boyu geçimlerini okyanustan sağlamıştı.",
+      "tts": {
+        "text": "İnsanları nesiller boyu geçimlerini okyanustan sağlamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas'ın amcası Kaptan John Pellow, Avrupa ve Akdeniz limanlarıyla ticaret yapan bir tüccar denizciydi.",
+      "text_markdown": "Thomas'ın amcası Kaptan John Pellow, Avrupa ve Akdeniz limanlarıyla ticaret yapan bir tüccar denizciydi.",
+      "tts": {
+        "text": "Thomas'ın amcası Kaptan John Pellow, Avrupa ve Akdeniz limanlarıyla ticaret yapan bir tüccar denizciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mesleğin risklerini bilen deneyimli bir denizciydi.",
+      "text_markdown": "Mesleğin risklerini bilen deneyimli bir denizciydi.",
+      "tts": {
+        "text": "Mesleğin risklerini bilen deneyimli bir denizciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu riskler arasında Berberi korsanları en çok korkulan olanıydı.",
+      "text_markdown": "Bu riskler arasında Berberi korsanları en çok korkulan olanıydı.",
+      "tts": {
+        "text": "Bu riskler arasında Berberi korsanları en çok korkulan olanıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1715'te Thomas henüz on bir yaşındayken amcası onu gemisi Francis'e aldı.",
+      "text_markdown": "1715'te Thomas henüz on bir yaşındayken amcası onu gemisi Francis'e aldı.",
+      "tts": {
+        "text": "Bin yedi yüz on beşte Thomas henüz on bir yaşındayken amcası onu gemisi Francis'e aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculuk, Akdeniz'e bir ticaret seferi olacaktı.",
+      "text_markdown": "Yolculuk, Akdeniz'e bir ticaret seferi olacaktı.",
+      "tts": {
+        "text": "Yolculuk, Akdeniz'e bir ticaret seferi olacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çocuk için bir eğitim, aile mesleğini öğrenme fırsatı olması gerekiyordu.",
+      "text_markdown": "Çocuk için bir eğitim, aile mesleğini öğrenme fırsatı olması gerekiyordu.",
+      "tts": {
+        "text": "Çocuk için bir eğitim, aile mesleğini öğrenme fırsatı olması gerekiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas denize çıkmak için heyecanlıydı.",
+      "text_markdown": "Thomas denize çıkmak için heyecanlıydı.",
+      "tts": {
+        "text": "Thomas denize çıkmak için heyecanlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kornuall'daki çoğu erkek çocuk gibi, uzak limanlar ve okyanus yolculukları hakkında hikâyeler dinleyerek büyümüştü.",
+      "text_markdown": "Kornuall'daki çoğu erkek çocuk gibi, uzak limanlar ve okyanus yolculukları hakkında hikâyeler dinleyerek büyümüştü.",
+      "tts": {
+        "text": "Kornuall'daki çoğu erkek çocuk gibi, uzak limanlar ve okyanus yolculukları hakkında hikâyeler dinleyerek büyümüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizde hayatın gerçekliği hikâyelerden çok farklı olacaktı.",
+      "text_markdown": "Denizde hayatın gerçekliği hikâyelerden çok farklı olacaktı.",
+      "tts": {
+        "text": "Denizde hayatın gerçekliği hikâyelerden çok farklı olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis, küçük bir mürettebatla Falmouth'tan yelken açtı.",
+      "text_markdown": "Francis, küçük bir mürettebatla Falmouth'tan yelken açtı.",
+      "tts": {
+        "text": "Francis, küçük bir mürettebatla Falmouth'tan yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaptan Pellow, İngiliz mallarını Akdeniz ürünleriyle takas etmeyi planlıyordu.",
+      "text_markdown": "Kaptan Pellow, İngiliz mallarını Akdeniz ürünleriyle takas etmeyi planlıyordu.",
+      "tts": {
+        "text": "Kaptan Pellow, İngiliz mallarını Akdeniz ürünleriyle takas etmeyi planlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rota, onları İspanya ve Portekiz kıyıları boyunca götürecekti.",
+      "text_markdown": "Rota, onları İspanya ve Portekiz kıyıları boyunca götürecekti.",
+      "tts": {
+        "text": "Rota, onları İspanya ve Portekiz kıyıları boyunca götürecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Afrika kıyılarının bir yerinde felaket vurdu.",
+      "text_markdown": "Kuzey Afrika kıyılarının bir yerinde felaket vurdu.",
+      "tts": {
+        "text": "Kuzey Afrika kıyılarının bir yerinde felaket vurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Salé'den korsanlar Francis'i fark edip peşine düştü.",
+      "text_markdown": "Salé'den korsanlar Francis'i fark edip peşine düştü.",
+      "tts": {
+        "text": "Salé'den korsanlar Francis'i fark edip peşine düştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret gemisi, hızlı ve iyi silahlı korsan gemilerine karşı şansız kaldı.",
+      "text_markdown": "Ticaret gemisi, hızlı ve iyi silahlı korsan gemilerine karşı şansız kaldı.",
+      "tts": {
+        "text": "Ticaret gemisi, hızlı ve iyi silahlı korsan gemilerine karşı şansız kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan Pellow onlardan kaçmaya çalıştı ama Francis çok yavaştı.",
+      "text_markdown": "Kaptan Pellow onlardan kaçmaya çalıştı ama Francis çok yavaştı.",
+      "tts": {
+        "text": "Kaptan Pellow onlardan kaçmaya çalıştı ama Francis çok yavaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar mesafeyi kapatıp uyarı ateşi açtı.",
+      "text_markdown": "Korsanlar mesafeyi kapatıp uyarı ateşi açtı.",
+      "tts": {
+        "text": "Korsanlar mesafeyi kapatıp uyarı ateşi açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Francis'in mürettebatının teslim olmaktan başka çaresi kalmadı.",
+      "text_markdown": "Francis'in mürettebatının teslim olmaktan başka çaresi kalmadı.",
+      "tts": {
+        "text": "Francis'in mürettebatının teslim olmaktan başka çaresi kalmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar gemiye çıkıp mürettebatı esir aldı.",
+      "text_markdown": "Korsanlar gemiye çıkıp mürettebatı esir aldı.",
+      "tts": {
+        "text": "Korsanlar gemiye çıkıp mürettebatı esir aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas, silahlı adamların güverteyi istila etmesini izledi.",
+      "text_markdown": "Thomas, silahlı adamların güverteyi istila etmesini izledi.",
+      "tts": {
+        "text": "Thomas, silahlı adamların güverteyi istila etmesini izledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dehşete düşmüştü.",
+      "text_markdown": "Dehşete düşmüştü.",
+      "tts": {
+        "text": "Dehşete düşmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şiddet yanlısı yabancılar arasında yalnız bir çocuktu.",
+      "text_markdown": "Şiddet yanlısı yabancılar arasında yalnız bir çocuktu.",
+      "tts": {
+        "text": "Şiddet yanlısı yabancılar arasında yalnız bir çocuktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esirler Salé'ye götürüldü, ardından sultanın başkenti Meknes'e yürütüldü.",
+      "text_markdown": "Esirler Salé'ye götürüldü, ardından sultanın başkenti Meknes'e yürütüldü.",
+      "tts": {
+        "text": "Esirler Salé'ye götürüldü, ardından sultanın başkenti Meknes'e yürütüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculuk birkaç gün sürdü.",
+      "text_markdown": "Yolculuk birkaç gün sürdü.",
+      "tts": {
+        "text": "Yolculuk birkaç gün sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas, Kuzey Afrika güneşi altında zincirli olarak yürüdü, dilini anlayamadığı insanlarla çevrili.",
+      "text_markdown": "Thomas, Kuzey Afrika güneşi altında zincirli olarak yürüdü, dilini anlayamadığı insanlarla çevrili.",
+      "tts": {
+        "text": "Thomas, Kuzey Afrika güneşi altında zincirli olarak yürüdü, dilini anlayamadığı insanlarla çevrili.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meknes'e vardıklarında Thomas, sultanın sarayını ilk kez gördü.",
+      "text_markdown": "Meknes'e vardıklarında Thomas, sultanın sarayını ilk kez gördü.",
+      "tts": {
+        "text": "Meknes'e vardıklarında Thomas, sultanın sarayını ilk kez gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Devasa bir yapıydı; avlular, bahçeler ve büyük duvarlardan oluşan geniş bir kompleks.",
+      "text_markdown": "Devasa bir yapıydı; avlular, bahçeler ve büyük duvarlardan oluşan geniş bir kompleks.",
+      "tts": {
+        "text": "Devasa bir yapıydı; avlular, bahçeler ve büyük duvarlardan oluşan geniş bir kompleks.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aynı zamanda köle emeğiyle inşa edilmiş bir acı yeriydi.",
+      "text_markdown": "Aynı zamanda köle emeğiyle inşa edilmiş bir acı yeriydi.",
+      "tts": {
+        "text": "Aynı zamanda köle emeğiyle inşa edilmiş bir acı yeriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esirler Sultan Mulay İsmail'e sunuldu.",
+      "text_markdown": "Esirler Sultan Mulay İsmail'e sunuldu.",
+      "tts": {
+        "text": "Esirler Sultan Mulay İsmail'e sunuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultan onları bir çiftçinin hayvanlarını incelemesi gibi inceledi.",
+      "text_markdown": "Sultan onları bir çiftçinin hayvanlarını incelemesi gibi inceledi.",
+      "tts": {
+        "text": "Sultan onları bir çiftçinin hayvanlarını incelemesi gibi inceledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kimin çalışacağına, kimin fidyeyle kurtarılabileceğine ve kimin sarayında hizmet edeceğine karar verdi.",
+      "text_markdown": "Kimin çalışacağına, kimin fidyeyle kurtarılabileceğine ve kimin sarayında hizmet edeceğine karar verdi.",
+      "tts": {
+        "text": "Kimin çalışacağına, kimin fidyeyle kurtarılabileceğine ve kimin sarayında hizmet edeceğine karar verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan John Pellow sonunda fidyeyle kurtarıldı.",
+      "text_markdown": "Kaptan John Pellow sonunda fidyeyle kurtarıldı.",
+      "tts": {
+        "text": "Kaptan John Pellow sonunda fidyeyle kurtarıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere'ye döndü ama yeğeninin serbest bırakılmasını sağlayamadı.",
+      "text_markdown": "İngiltere'ye döndü ama yeğeninin serbest bırakılmasını sağlayamadı.",
+      "tts": {
+        "text": "İngiltere'ye döndü ama yeğeninin serbest bırakılmasını sağlayamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas, Fas'ta yalnız ve korkmuş olarak bırakıldı.",
+      "text_markdown": "Thomas, Fas'ta yalnız ve korkmuş olarak bırakıldı.",
+      "tts": {
+        "text": "Thomas, Fas'ta yalnız ve korkmuş olarak bırakıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çocuk on bir yaşındaydı.",
+      "text_markdown": "Çocuk on bir yaşındaydı.",
+      "tts": {
+        "text": "Çocuk on bir yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Evinden binlerce kilometre uzaktaydı.",
+      "text_markdown": "Evinden binlerce kilometre uzaktaydı.",
+      "tts": {
+        "text": "Evinden binlerce kilometre uzaktaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngiltere'yi bir daha görüp göremeyeceğini bilmiyordu.",
+      "text_markdown": "İngiltere'yi bir daha görüp göremeyeceğini bilmiyordu.",
+      "tts": {
+        "text": "İngiltere'yi bir daha görüp göremeyeceğini bilmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esareti başlamıştı.",
+      "text_markdown": "Esareti başlamıştı.",
+      "tts": {
+        "text": "Esareti başlamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ailesi oğullarına ne olduğunu merak etmiş olmalı.",
+      "text_markdown": "Ailesi oğullarına ne olduğunu merak etmiş olmalı.",
+      "tts": {
+        "text": "Ailesi oğullarına ne olduğunu merak etmiş olmalı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Denizin ötesinden hiçbir haber ulaşamıyordu.",
+      "text_markdown": "Denizin ötesinden hiçbir haber ulaşamıyordu.",
+      "tts": {
+        "text": "Denizin ötesinden hiçbir haber ulaşamıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bildikleri kadarıyla Thomas ölmüştü.",
+      "text_markdown": "Bildikleri kadarıyla Thomas ölmüştü.",
+      "tts": {
+        "text": "Bildikleri kadarıyla Thomas ölmüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tutsak",
+      "text_markdown": "Tutsak"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow'un esaretteki ilk yılları İslam'a geçme baskısıyla tanımlandı.",
+      "text_markdown": "Thomas Pellow'un esaretteki ilk yılları İslam'a geçme baskısıyla tanımlandı.",
+      "tts": {
+        "text": "Thomas Pellow'un esaretteki ilk yılları İslam'a geçme baskısıyla tanımlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultanın sarayı, Avrupalı esirlerin Hristiyan inançlarından vazgeçmelerini talep ediyordu.",
+      "text_markdown": "Sultanın sarayı, Avrupalı esirlerin Hristiyan inançlarından vazgeçmelerini talep ediyordu.",
+      "tts": {
+        "text": "Sultanın sarayı, Avrupalı esirlerin Hristiyan inançlarından vazgeçmelerini talep ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Din değiştirenler daha iyi muamele görüyordu.",
+      "text_markdown": "Din değiştirenler daha iyi muamele görüyordu.",
+      "tts": {
+        "text": "Din değiştirenler daha iyi muamele görüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Reddedenler cezalandırılıyordu.",
+      "text_markdown": "Reddedenler cezalandırılıyordu.",
+      "tts": {
+        "text": "Reddedenler cezalandırılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas başlangıçta direndi.",
+      "text_markdown": "Thomas başlangıçta direndi.",
+      "tts": {
+        "text": "Thomas başlangıçta direndi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hristiyan bir ülkeden gelen bir çocuktu ve inancı, evinden geriye kalan tek şeydi.",
+      "text_markdown": "Hristiyan bir ülkeden gelen bir çocuktu ve inancı, evinden geriye kalan tek şeydi.",
+      "tts": {
+        "text": "Hristiyan bir ülkeden gelen bir çocuktu ve inancı, evinden geriye kalan tek şeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yabancı bir dünyada son tanıdık şeye tutunan bir çocuğun çaresizliğiyle ona sarıldı.",
+      "text_markdown": "Yabancı bir dünyada son tanıdık şeye tutunan bir çocuğun çaresizliğiyle ona sarıldı.",
+      "tts": {
+        "text": "Yabancı bir dünyada son tanıdık şeye tutunan bir çocuğun çaresizliğiyle ona sarıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama baskı amansızdı.",
+      "text_markdown": "Ama baskı amansızdı.",
+      "tts": {
+        "text": "Ama baskı amansızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dövüldü ve işkence gördü.",
+      "text_markdown": "Dövüldü ve işkence gördü.",
+      "tts": {
+        "text": "Dövüldü ve işkence gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kendi anlatımına göre, iradesini kırmak için tasarlanmış aylarca süren istismara maruz kaldı.",
+      "text_markdown": "Kendi anlatımına göre, iradesini kırmak için tasarlanmış aylarca süren istismara maruz kaldı.",
+      "tts": {
+        "text": "Kendi anlatımına göre, iradesini kırmak için tasarlanmış aylarca süren istismara maruz kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yöntemler acımasız ve sistematikti.",
+      "text_markdown": "Yöntemler acımasız ve sistematikti.",
+      "tts": {
+        "text": "Yöntemler acımasız ve sistematikti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonunda Thomas boyun eğdi.",
+      "text_markdown": "Sonunda Thomas boyun eğdi.",
+      "tts": {
+        "text": "Sonunda Thomas boyun eğdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Müslüman bir isim alarak İslam'a geçti.",
+      "text_markdown": "Müslüman bir isim alarak İslam'a geçti.",
+      "tts": {
+        "text": "Müslüman bir isim alarak İslam'a geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha sonra bunu esaretinin en acı verici anı olarak tanımlayacaktı.",
+      "text_markdown": "Daha sonra bunu esaretinin en acı verici anı olarak tanımlayacaktı.",
+      "tts": {
+        "text": "Daha sonra bunu esaretinin en acı verici anı olarak tanımlayacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnandığı her şeye ihanet ettiğini hissetti.",
+      "text_markdown": "İnandığı her şeye ihanet ettiğini hissetti.",
+      "tts": {
+        "text": "İnandığı her şeye ihanet ettiğini hissetti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern okuyucular onu yargılarken dikkatli olmalıdır.",
+      "text_markdown": "Modern okuyucular onu yargılarken dikkatli olmalıdır.",
+      "tts": {
+        "text": "Modern okuyucular onu yargılarken dikkatli olmalıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yetişkinler tarafından işkence gören yalnız bir çocuktu.",
+      "text_markdown": "Yetişkinler tarafından işkence gören yalnız bir çocuktu.",
+      "tts": {
+        "text": "Yetişkinler tarafından işkence gören yalnız bir çocuktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Din değiştirmesi bir hayatta kalma stratejisiydi, özgür bir seçim değil.",
+      "text_markdown": "Din değiştirmesi bir hayatta kalma stratejisiydi, özgür bir seçim değil.",
+      "tts": {
+        "text": "Din değiştirmesi bir hayatta kalma stratejisiydi, özgür bir seçim değil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Binlerce başka esir de aynı dayanılmaz koşullar altında aynı kararı verdi.",
+      "text_markdown": "Binlerce başka esir de aynı dayanılmaz koşullar altında aynı kararı verdi.",
+      "tts": {
+        "text": "Binlerce başka esir de aynı dayanılmaz koşullar altında aynı kararı verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Din değiştirdikten sonra Thomas, sultanın ordusunda asker olarak eğitildi.",
+      "text_markdown": "Din değiştirdikten sonra Thomas, sultanın ordusunda asker olarak eğitildi.",
+      "tts": {
+        "text": "Din değiştirdikten sonra Thomas, sultanın ordusunda asker olarak eğitildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ata binmeyi, ateş etmeyi ve savaşmayı öğrendi.",
+      "text_markdown": "Ata binmeyi, ateş etmeyi ve savaşmayı öğrendi.",
+      "tts": {
+        "text": "Ata binmeyi, ateş etmeyi ve savaşmayı öğrendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arapçada akıcı hale geldi ve Fas geleneklerine aşina oldu.",
+      "text_markdown": "Arapçada akıcı hale geldi ve Fas geleneklerine aşina oldu.",
+      "tts": {
+        "text": "Arapçada akıcı hale geldi ve Fas geleneklerine aşina oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fas'ın iç bölgelerindeki askeri seferlere atandı.",
+      "text_markdown": "Fas'ın iç bölgelerindeki askeri seferlere atandı.",
+      "tts": {
+        "text": "Fas'ın iç bölgelerindeki askeri seferlere atandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultan, isyancı kabileler üzerindeki kontrolünü sürdürmek için sürekli savaşıyordu.",
+      "text_markdown": "Sultan, isyancı kabileler üzerindeki kontrolünü sürdürmek için sürekli savaşıyordu.",
+      "tts": {
+        "text": "Sultan, isyancı kabileler üzerindeki kontrolünü sürdürmek için sürekli savaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas bu seferlerde asker olarak savaştı; eski bir esir artık esir alanına hizmet ediyordu.",
+      "text_markdown": "Thomas bu seferlerde asker olarak savaştı; eski bir esir artık esir alanına hizmet ediyordu.",
+      "tts": {
+        "text": "Thomas bu seferlerde asker olarak savaştı; eski bir esir artık esir alanına hizmet ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanık olduğu şiddet sarsıcıydı.",
+      "text_markdown": "Tanık olduğu şiddet sarsıcıydı.",
+      "tts": {
+        "text": "Tanık olduğu şiddet sarsıcıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultanın isyana karşı cezaları vahşi ve kamuya açıktı.",
+      "text_markdown": "Sultanın isyana karşı cezaları vahşi ve kamuya açıktı.",
+      "tts": {
+        "text": "Sultanın isyana karşı cezaları vahşi ve kamuya açıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yenilen düşmanlar toplu gösterilerde idam ediliyordu.",
+      "text_markdown": "Yenilen düşmanlar toplu gösterilerde idam ediliyordu.",
+      "tts": {
+        "text": "Yenilen düşmanlar toplu gösterilerde idam ediliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas, hayatının geri kalanında peşini bırakmayacak şeyler gördü.",
+      "text_markdown": "Thomas, hayatının geri kalanında peşini bırakmayacak şeyler gördü.",
+      "tts": {
+        "text": "Thomas, hayatının geri kalanında peşini bırakmayacak şeyler gördü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meknes'teki sarayın devam eden inşaatına da tanık oldu.",
+      "text_markdown": "Meknes'teki sarayın devam eden inşaatına da tanık oldu.",
+      "tts": {
+        "text": "Meknes'teki sarayın devam eden inşaatına da tanık oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Binlerce köle sultanın vizyonunu gerçekleştirmek için gece gündüz çalışıyordu.",
+      "text_markdown": "Binlerce köle sultanın vizyonunu gerçekleştirmek için gece gündüz çalışıyordu.",
+      "tts": {
+        "text": "Binlerce köle sultanın vizyonunu gerçekleştirmek için gece gündüz çalışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yığılan işçiler bazen inşa ettikleri duvarlara diri diri gömülüyordu.",
+      "text_markdown": "Yığılan işçiler bazen inşa ettikleri duvarlara diri diri gömülüyordu.",
+      "tts": {
+        "text": "Yığılan işçiler bazen inşa ettikleri duvarlara diri diri gömülüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mulay İsmail'in sarayı Versay'la rekabet etmeyi amaçlıyordu.",
+      "text_markdown": "Mulay İsmail'in sarayı Versay'la rekabet etmeyi amaçlıyordu.",
+      "tts": {
+        "text": "Mulay İsmail'in sarayı Versay'la rekabet etmeyi amaçlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultan, Fransız kralının büyük sarayını duymuş ve onu aşmaya kararlıydı.",
+      "text_markdown": "Sultan, Fransız kralının büyük sarayını duymuş ve onu aşmaya kararlıydı.",
+      "tts": {
+        "text": "Sultan, Fransız kralının büyük sarayını duymuş ve onu aşmaya kararlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonuç, manzara boyunca kilometrelerce uzanan devasa bir kompleksti.",
+      "text_markdown": "Sonuç, manzara boyunca kilometrelerce uzanan devasa bir kompleksti.",
+      "tts": {
+        "text": "Sonuç, manzara boyunca kilometrelerce uzanan devasa bir kompleksti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas yıllarca sultanın kuvvetlerinde hizmet etti.",
+      "text_markdown": "Thomas yıllarca sultanın kuvvetlerinde hizmet etti.",
+      "tts": {
+        "text": "Thomas yıllarca sultanın kuvvetlerinde hizmet etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rütbe atlayarak bir dereceye kadar güven ve sorumluluk kazandı.",
+      "text_markdown": "Rütbe atlayarak bir dereceye kadar güven ve sorumluluk kazandı.",
+      "tts": {
+        "text": "Rütbe atlayarak bir dereceye kadar güven ve sorumluluk kazandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama bir mahkûm olduğunu asla unutmadı.",
+      "text_markdown": "Ama bir mahkûm olduğunu asla unutmadı.",
+      "tts": {
+        "text": "Ama bir mahkûm olduğunu asla unutmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eve dönmek istemekten asla vazgeçmedi.",
+      "text_markdown": "Eve dönmek istemekten asla vazgeçmedi.",
+      "tts": {
+        "text": "Eve dönmek istemekten asla vazgeçmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fas'taki diğer Avrupalı esirlerle temas kurdu.",
+      "text_markdown": "Fas'taki diğer Avrupalı esirlerle temas kurdu.",
+      "tts": {
+        "text": "Fas'taki diğer Avrupalı esirlerle temas kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ülke geneline yayılmış yüzlercesi vardı.",
+      "text_markdown": "Ülke geneline yayılmış yüzlercesi vardı.",
+      "tts": {
+        "text": "Ülke geneline yayılmış yüzlercesi vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bilgi paylaşan ve birbirini destekleyen bir yeraltı topluluğu oluşturdular.",
+      "text_markdown": "Bilgi paylaşan ve birbirini destekleyen bir yeraltı topluluğu oluşturdular.",
+      "tts": {
+        "text": "Bilgi paylaşan ve birbirini destekleyen bir yeraltı topluluğu oluşturdular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı esirler yeni hayatlarına uyum sağlayıp içtenlikle din değiştirdi.",
+      "text_markdown": "Bazı esirler yeni hayatlarına uyum sağlayıp içtenlikle din değiştirdi.",
+      "tts": {
+        "text": "Bazı esirler yeni hayatlarına uyum sağlayıp içtenlikle din değiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diğerleri orijinal inançlarını gizlice sürdürdü, kapalı kapılar ardında Hristiyanlığı yaşadı.",
+      "text_markdown": "Diğerleri orijinal inançlarını gizlice sürdürdü, kapalı kapılar ardında Hristiyanlığı yaşadı.",
+      "tts": {
+        "text": "Diğerleri orijinal inançlarını gizlice sürdürdü, kapalı kapılar ardında Hristiyanlığı yaşadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas, bu iki dünyanın arasında bir yerde var oldu.",
+      "text_markdown": "Thomas, bu iki dünyanın arasında bir yerde var oldu.",
+      "tts": {
+        "text": "Thomas, bu iki dünyanın arasında bir yerde var oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kamusal alanda sadık bir Müslüman asker rolünü oynadı.",
+      "text_markdown": "Kamusal alanda sadık bir Müslüman asker rolünü oynadı.",
+      "tts": {
+        "text": "Kamusal alanda sadık bir Müslüman asker rolünü oynadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Özel hayatında Kornuall anılarını ve kaçış umudunu besledi.",
+      "text_markdown": "Özel hayatında Kornuall anılarını ve kaçış umudunu besledi.",
+      "tts": {
+        "text": "Özel hayatında Kornuall anılarını ve kaçış umudunu besledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Varlığının ikiliği tüketiciydi.",
+      "text_markdown": "Varlığının ikiliği tüketiciydi.",
+      "tts": {
+        "text": "Varlığının ikiliği tüketiciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sürekli rol yapıyor, sürekli gerçek benliğini saklıyordu.",
+      "text_markdown": "Sürekli rol yapıyor, sürekli gerçek benliğini saklıyordu.",
+      "tts": {
+        "text": "Sürekli rol yapıyor, sürekli gerçek benliğini saklıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yıllar geçti.",
+      "text_markdown": "Yıllar geçti.",
+      "tts": {
+        "text": "Yıllar geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas, sultanın hizmetinde çocukluktan yetişkinliğe geçti.",
+      "text_markdown": "Thomas, sultanın hizmetinde çocukluktan yetişkinliğe geçti.",
+      "tts": {
+        "text": "Thomas, sultanın hizmetinde çocukluktan yetişkinliğe geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mevsimler Fas'ta değişti ve İngiltere solmakta olan bir anı haline geldi.",
+      "text_markdown": "Mevsimler Fas'ta değişti ve İngiltere solmakta olan bir anı haline geldi.",
+      "tts": {
+        "text": "Mevsimler Fas'ta değişti ve İngiltere solmakta olan bir anı haline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Tutsak",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama kaçma arzusu asla ölmedi.",
+      "text_markdown": "Ama kaçma arzusu asla ölmedi.",
+      "tts": {
+        "text": "Ama kaçma arzusu asla ölmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Esaret",
+      "text_markdown": "Esaret"
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1727'de Sultan Mulay İsmail, 55 yıllık bir saltanattan sonra öldü.",
+      "text_markdown": "1727'de Sultan Mulay İsmail, 55 yıllık bir saltanattan sonra öldü.",
+      "tts": {
+        "text": "Bin yedi yüz yirmi yedide Sultan Mulay İsmail, elli beş yıllık bir saltanattan sonra öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ölümü Fas'ı kaosa sürükledi.",
+      "text_markdown": "Ölümü Fas'ı kaosa sürükledi.",
+      "tts": {
+        "text": "Ölümü Fas'ı kaosa sürükledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çok sayıdaki oğlu taht için savaşırken şiddetli bir veraset krizi patlak verdi.",
+      "text_markdown": "Çok sayıdaki oğlu taht için savaşırken şiddetli bir veraset krizi patlak verdi.",
+      "tts": {
+        "text": "Çok sayıdaki oğlu taht için savaşırken şiddetli bir veraset krizi patlak verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonraki on yıl iç savaş, kıtlık ve veba ile damgalandı.",
+      "text_markdown": "Sonraki on yıl iç savaş, kıtlık ve veba ile damgalandı.",
+      "tts": {
+        "text": "Sonraki on yıl iç savaş, kıtlık ve veba ile damgalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rakip prensler ülke genelinde birbirleriyle savaştı.",
+      "text_markdown": "Rakip prensler ülke genelinde birbirleriyle savaştı.",
+      "tts": {
+        "text": "Rakip prensler ülke genelinde birbirleriyle savaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ordu hizipler halinde parçalandı.",
+      "text_markdown": "Ordu hizipler halinde parçalandı.",
+      "tts": {
+        "text": "Ordu hizipler halinde parçalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kimse güvende değildi.",
+      "text_markdown": "Kimse güvende değildi.",
+      "tts": {
+        "text": "Kimse güvende değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow için kaos hem bir tehlike hem de bir fırsattı.",
+      "text_markdown": "Thomas Pellow için kaos hem bir tehlike hem de bir fırsattı.",
+      "tts": {
+        "text": "Thomas Pellow için kaos hem bir tehlike hem de bir fırsattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Merkezi otoritenin çökmesi, esirleri yöneten kuralların daha az sıkı uygulanması anlamına geliyordu.",
+      "text_markdown": "Merkezi otoritenin çökmesi, esirleri yöneten kuralların daha az sıkı uygulanması anlamına geliyordu.",
+      "tts": {
+        "text": "Merkezi otoritenin çökmesi, esirleri yöneten kuralların daha az sıkı uygulanması anlamına geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gardiyanlar iç savaşla meşguldü.",
+      "text_markdown": "Gardiyanlar iç savaşla meşguldü.",
+      "tts": {
+        "text": "Gardiyanlar iç savaşla meşguldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kaçış sonunda mümkün olabilirdi.",
+      "text_markdown": "Kaçış sonunda mümkün olabilirdi.",
+      "tts": {
+        "text": "Kaçış sonunda mümkün olabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama Fas'tan kaçmak son derece zordu.",
+      "text_markdown": "Ama Fas'tan kaçmak son derece zordu.",
+      "tts": {
+        "text": "Ama Fas'tan kaçmak son derece zordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ülke uçsuz bucaksız ve tanıdık değildi.",
+      "text_markdown": "Ülke uçsuz bucaksız ve tanıdık değildi.",
+      "tts": {
+        "text": "Ülke uçsuz bucaksız ve tanıdık değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir Avrupalı hemen fark edilirdi.",
+      "text_markdown": "Bir Avrupalı hemen fark edilirdi.",
+      "tts": {
+        "text": "Bir Avrupalı hemen fark edilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yeniden yakalanan bir kölenin cezası ağırdı, çoğu zaman ölüm.",
+      "text_markdown": "Yeniden yakalanan bir kölenin cezası ağırdı, çoğu zaman ölüm.",
+      "tts": {
+        "text": "Yeniden yakalanan bir kölenin cezası ağırdı, çoğu zaman ölüm.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas'ın dikkatli planlama yapması gerekiyordu.",
+      "text_markdown": "Thomas'ın dikkatli planlama yapması gerekiyordu.",
+      "tts": {
+        "text": "Thomas'ın dikkatli planlama yapması gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erzak, bir güzergâh ve müttefiklere ihtiyacı vardı.",
+      "text_markdown": "Erzak, bir güzergâh ve müttefiklere ihtiyacı vardı.",
+      "tts": {
+        "text": "Erzak, bir güzergâh ve müttefiklere ihtiyacı vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrupa'ya geçiş bulabileceği bir limana ulaşmak için düşman topraklarından yüzlerce kilometre yol kat etmesi gerekiyordu.",
+      "text_markdown": "Avrupa'ya geçiş bulabileceği bir limana ulaşmak için düşman topraklarından yüzlerce kilometre yol kat etmesi gerekiyordu.",
+      "tts": {
+        "text": "Avrupa'ya geçiş bulabileceği bir limana ulaşmak için düşman topraklarından yüzlerce kilometre yol kat etmesi gerekiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aylarca hazırlandı.",
+      "text_markdown": "Aylarca hazırlandı.",
+      "tts": {
+        "text": "Aylarca hazırlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yiyecek, su ve kuzeye giden rota hakkında bilgi topladı.",
+      "text_markdown": "Yiyecek, su ve kuzeye giden rota hakkında bilgi topladı.",
+      "tts": {
+        "text": "Yiyecek, su ve kuzeye giden rota hakkında bilgi topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onunla birlikte kaçmaya istekli olabilecek diğer esirleri belirledi.",
+      "text_markdown": "Onunla birlikte kaçmaya istekli olabilecek diğer esirleri belirledi.",
+      "tts": {
+        "text": "Onunla birlikte kaçmaya istekli olabilecek diğer esirleri belirledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas'ın ayrıca yıllarca süren koşullanmayı aşması gerekiyordu.",
+      "text_markdown": "Thomas'ın ayrıca yıllarca süren koşullanmayı aşması gerekiyordu.",
+      "tts": {
+        "text": "Thomas'ın ayrıca yıllarca süren koşullanmayı aşması gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çocukluğundan beri esirdi.",
+      "text_markdown": "Çocukluğundan beri esirdi.",
+      "tts": {
+        "text": "Çocukluğundan beri esirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sultanın sarayı, bildiği tek yetişkin hayatıydı.",
+      "text_markdown": "Sultanın sarayı, bildiği tek yetişkin hayatıydı.",
+      "tts": {
+        "text": "Sultanın sarayı, bildiği tek yetişkin hayatıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ayrılmak, tanıdık olan her şeyi terk etmek demekti; tanıdık olan bir hapishane olsa bile.",
+      "text_markdown": "Ayrılmak, tanıdık olan her şeyi terk etmek demekti; tanıdık olan bir hapishane olsa bile.",
+      "tts": {
+        "text": "Ayrılmak, tanıdık olan her şeyi terk etmek demekti; tanıdık olan bir hapishane olsa bile.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uzun esaretin psikolojik bedeli abartılamaz.",
+      "text_markdown": "Uzun esaretin psikolojik bedeli abartılamaz.",
+      "tts": {
+        "text": "Uzun esaretin psikolojik bedeli abartılamaz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onlarca yılını kölelikte geçiren esirler çoğu zaman özgürlüğü hayal etmekte zorlanıyordu.",
+      "text_markdown": "Onlarca yılını kölelikte geçiren esirler çoğu zaman özgürlüğü hayal etmekte zorlanıyordu.",
+      "tts": {
+        "text": "Onlarca yılını kölelikte geçiren esirler çoğu zaman özgürlüğü hayal etmekte zorlanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esarette hayatta kalmaya adapte olmuşlardı ve bu adaptasyonlar özgürleşmeyi zorlaştırıyordu.",
+      "text_markdown": "Esarette hayatta kalmaya adapte olmuşlardı ve bu adaptasyonlar özgürleşmeyi zorlaştırıyordu.",
+      "tts": {
+        "text": "Esarette hayatta kalmaya adapte olmuşlardı ve bu adaptasyonlar özgürleşmeyi zorlaştırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas, sultana ve haleflerine yirmi yıldan fazla hizmet etmişti.",
+      "text_markdown": "Thomas, sultana ve haleflerine yirmi yıldan fazla hizmet etmişti.",
+      "tts": {
+        "text": "Thomas, sultana ve haleflerine yirmi yıldan fazla hizmet etmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akıcı bir şekilde Arapça konuşuyordu.",
+      "text_markdown": "Akıcı bir şekilde Arapça konuşuyordu.",
+      "tts": {
+        "text": "Akıcı bir şekilde Arapça konuşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fas adetlerini yakından biliyordu.",
+      "text_markdown": "Fas adetlerini yakından biliyordu.",
+      "tts": {
+        "text": "Fas adetlerini yakından biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçok açıdan, kaçmak istediği dünyanın bir parçası olmuştu.",
+      "text_markdown": "Birçok açıdan, kaçmak istediği dünyanın bir parçası olmuştu.",
+      "tts": {
+        "text": "Birçok açıdan, kaçmak istediği dünyanın bir parçası olmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama yine de Kornuall'ı hatırlıyordu.",
+      "text_markdown": "Ama yine de Kornuall'ı hatırlıyordu.",
+      "tts": {
+        "text": "Ama yine de Kornuall'ı hatırlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yeşil tepeleri ve soğuk denizi hatırlıyordu.",
+      "text_markdown": "Yeşil tepeleri ve soğuk denizi hatırlıyordu.",
+      "tts": {
+        "text": "Yeşil tepeleri ve soğuk denizi hatırlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ailesini hatırlıyordu, her ne kadar yüzleri bunca yıldan sonra silikleşmiş olsa da.",
+      "text_markdown": "Ailesini hatırlıyordu, her ne kadar yüzleri bunca yıldan sonra silikleşmiş olsa da.",
+      "tts": {
+        "text": "Ailesini hatırlıyordu, her ne kadar yüzleri bunca yıldan sonra silikleşmiş olsa da.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ev anısı, onu gerçekte kim olduğuyla bağlı tutan iplikti.",
+      "text_markdown": "Ev anısı, onu gerçekte kim olduğuyla bağlı tutan iplikti.",
+      "tts": {
+        "text": "Ev anısı, onu gerçekte kim olduğuyla bağlı tutan iplikti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İç savaş yıllarında Thomas, tüm tarafların işlediği vahşetlere tanık oldu.",
+      "text_markdown": "İç savaş yıllarında Thomas, tüm tarafların işlediği vahşetlere tanık oldu.",
+      "tts": {
+        "text": "İç savaş yıllarında Thomas, tüm tarafların işlediği vahşetlere tanık oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehirler yağmalandı.",
+      "text_markdown": "Şehirler yağmalandı.",
+      "tts": {
+        "text": "Şehirler yağmalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Halklar katledildi.",
+      "text_markdown": "Halklar katledildi.",
+      "tts": {
+        "text": "Halklar katledildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hizmet etmeye zorlandığı ülke kendini parçalıyordu.",
+      "text_markdown": "Hizmet etmeye zorlandığı ülke kendini parçalıyordu.",
+      "tts": {
+        "text": "Hizmet etmeye zorlandığı ülke kendini parçalıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kıtlığın kırsal alanları kasıp kavurduğunu gördü.",
+      "text_markdown": "Kıtlığın kırsal alanları kasıp kavurduğunu gördü.",
+      "tts": {
+        "text": "Kıtlığın kırsal alanları kasıp kavurduğunu gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsanlar Meknes sokaklarında ölüyordu.",
+      "text_markdown": "İnsanlar Meknes sokaklarında ölüyordu.",
+      "tts": {
+        "text": "İnsanlar Meknes sokaklarında ölüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mulay İsmail'in inşa ettiği muhteşem saray, onu bakacak köle ordusu olmadan çökmeye başladı.",
+      "text_markdown": "Mulay İsmail'in inşa ettiği muhteşem saray, onu bakacak köle ordusu olmadan çökmeye başladı.",
+      "tts": {
+        "text": "Mulay İsmail'in inşa ettiği muhteşem saray, onu bakacak köle ordusu olmadan çökmeye başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu çöküş ve ıstırap atmosferinde Thomas kararını verdi.",
+      "text_markdown": "Bu çöküş ve ıstırap atmosferinde Thomas kararını verdi.",
+      "tts": {
+        "text": "Bu çöküş ve ıstırap atmosferinde Thomas kararını verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ya kaçacak ya da deneyerek ölecekti.",
+      "text_markdown": "Ya kaçacak ya da deneyerek ölecekti.",
+      "tts": {
+        "text": "Ya kaçacak ya da deneyerek ölecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayatının geri kalanını çökmekte olan bir devlette mahkûm olarak geçiremezdi.",
+      "text_markdown": "Hayatının geri kalanını çökmekte olan bir devlette mahkûm olarak geçiremezdi.",
+      "tts": {
+        "text": "Hayatının geri kalanını çökmekte olan bir devlette mahkûm olarak geçiremezdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kaçış",
+      "text_markdown": "Kaçış"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1738'de Thomas Pellow özgürlüğe doğru kaçış hamlesini yaptı.",
+      "text_markdown": "1738'de Thomas Pellow özgürlüğe doğru kaçış hamlesini yaptı.",
+      "tts": {
+        "text": "Bin yedi yüz otuz sekizde Thomas Pellow özgürlüğe doğru kaçış hamlesini yaptı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Devam eden iç savaşın neden olduğu bir kargaşa döneminde görevinden sıyrıldı.",
+      "text_markdown": "Devam eden iç savaşın neden olduğu bir kargaşa döneminde görevinden sıyrıldı.",
+      "tts": {
+        "text": "Devam eden iç savaşın neden olduğu bir kargaşa döneminde görevinden sıyrıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otuz dört yaşındaydı.",
+      "text_markdown": "Otuz dört yaşındaydı.",
+      "tts": {
+        "text": "Otuz dört yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yirmi üç yıldır esirdi.",
+      "text_markdown": "Yirmi üç yıldır esirdi.",
+      "tts": {
+        "text": "Yirmi üç yıldır esirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzeye yolculuk dehşet vericiydi.",
+      "text_markdown": "Kuzeye yolculuk dehşet vericiydi.",
+      "tts": {
+        "text": "Kuzeye yolculuk dehşet vericiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğunlukla geceleri seyahat edip gündüzleri saklandı.",
+      "text_markdown": "Çoğunlukla geceleri seyahat edip gündüzleri saklandı.",
+      "tts": {
+        "text": "Çoğunlukla geceleri seyahat edip gündüzleri saklandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tanınabileceği yollardan ve kasabalardan kaçındı.",
+      "text_markdown": "Tanınabileceği yollardan ve kasabalardan kaçındı.",
+      "tts": {
+        "text": "Tanınabileceği yollardan ve kasabalardan kaçındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hem tanıdık hem de düşmanca olan bir manzarada yalnızdı.",
+      "text_markdown": "Hem tanıdık hem de düşmanca olan bir manzarada yalnızdı.",
+      "tts": {
+        "text": "Hem tanıdık hem de düşmanca olan bir manzarada yalnızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dili ve adetleri biliyordu ama bir kaçaktı.",
+      "text_markdown": "Dili ve adetleri biliyordu ama bir kaçaktı.",
+      "tts": {
+        "text": "Dili ve adetleri biliyordu ama bir kaçaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kimliğini keşfeden herkes onu ödül karşılığı ihbar edebilirdi.",
+      "text_markdown": "Kimliğini keşfeden herkes onu ödül karşılığı ihbar edebilirdi.",
+      "tts": {
+        "text": "Kimliğini keşfeden herkes onu ödül karşılığı ihbar edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bulabildiği veya çalabildiği her türlü yiyecekle hayatta kaldı.",
+      "text_markdown": "Bulabildiği veya çalabildiği her türlü yiyecekle hayatta kaldı.",
+      "tts": {
+        "text": "Bulabildiği veya çalabildiği her türlü yiyecekle hayatta kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşmaya cesaret ettiğinde derelerden ve kuyulardan su içti.",
+      "text_markdown": "Yaklaşmaya cesaret ettiğinde derelerden ve kuyulardan su içti.",
+      "tts": {
+        "text": "Yaklaşmaya cesaret ettiğinde derelerden ve kuyulardan su içti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fiziksel zorluklar aşırıydı ama kuzeye ilerlemeye devam etti.",
+      "text_markdown": "Fiziksel zorluklar aşırıydı ama kuzeye ilerlemeye devam etti.",
+      "tts": {
+        "text": "Fiziksel zorluklar aşırıydı ama kuzeye ilerlemeye devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zaman zaman beklenmedik kaynaklardan yardım buldu.",
+      "text_markdown": "Zaman zaman beklenmedik kaynaklardan yardım buldu.",
+      "tts": {
+        "text": "Zaman zaman beklenmedik kaynaklardan yardım buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı Faslılar ona acıyıp yiyecek veya barınak verdi.",
+      "text_markdown": "Bazı Faslılar ona acıyıp yiyecek veya barınak verdi.",
+      "tts": {
+        "text": "Bazı Faslılar ona acıyıp yiyecek veya barınak verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Herkes düşman değildi.",
+      "text_markdown": "Herkes düşman değildi.",
+      "tts": {
+        "text": "Herkes düşman değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kaçışı sırasında bile Thomas insani şefkatle karşılaştı.",
+      "text_markdown": "Kaçışı sırasında bile Thomas insani şefkatle karşılaştı.",
+      "tts": {
+        "text": "Kaçışı sırasında bile Thomas insani şefkatle karşılaştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa gemilerinin bulunabileceği bir limana yönelerek kıyıya ulaştı.",
+      "text_markdown": "Avrupa gemilerinin bulunabileceği bir limana yönelerek kıyıya ulaştı.",
+      "tts": {
+        "text": "Avrupa gemilerinin bulunabileceği bir limana yönelerek kıyıya ulaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculuk haftalarca süren yıpratıcı bir seyahatti.",
+      "text_markdown": "Yolculuk haftalarca süren yıpratıcı bir seyahatti.",
+      "tts": {
+        "text": "Yolculuk haftalarca süren yıpratıcı bir seyahatti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her gün yeniden yakalanma riskini taşıyordu.",
+      "text_markdown": "Her gün yeniden yakalanma riskini taşıyordu.",
+      "tts": {
+        "text": "Her gün yeniden yakalanma riskini taşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonunda kıyıya ulaştı ve Avrupa'ya giden bir gemide yer buldu.",
+      "text_markdown": "Sonunda kıyıya ulaştı ve Avrupa'ya giden bir gemide yer buldu.",
+      "tts": {
+        "text": "Sonunda kıyıya ulaştı ve Avrupa'ya giden bir gemide yer buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yerini nasıl güvence altına aldığının ayrıntıları anlatımında belirsiz.",
+      "text_markdown": "Yerini nasıl güvence altına aldığının ayrıntıları anlatımında belirsiz.",
+      "tts": {
+        "text": "Yerini nasıl güvence altına aldığının ayrıntıları anlatımında belirsiz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Açık olan şey, Fas'ı arkasında bırakıp Akdeniz'i geçerek yelken açtığıdır.",
+      "text_markdown": "Açık olan şey, Fas'ı arkasında bırakıp Akdeniz'i geçerek yelken açtığıdır.",
+      "tts": {
+        "text": "Açık olan şey, Fas'ı arkasında bırakıp Akdeniz'i geçerek yelken açtığıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas sonunda İngiltere'ye ulaştığında kendi ülkesinde bir yabancıydı.",
+      "text_markdown": "Thomas sonunda İngiltere'ye ulaştığında kendi ülkesinde bir yabancıydı.",
+      "tts": {
+        "text": "Thomas sonunda İngiltere'ye ulaştığında kendi ülkesinde bir yabancıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On bir yaşında bir çocuk olarak ayrılmıştı.",
+      "text_markdown": "On bir yaşında bir çocuk olarak ayrılmıştı.",
+      "tts": {
+        "text": "On bir yaşında bir çocuk olarak ayrılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otuz dört yaşında bir adam olarak döndü.",
+      "text_markdown": "Otuz dört yaşında bir adam olarak döndü.",
+      "tts": {
+        "text": "Otuz dört yaşında bir adam olarak döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her şey değişmişti; hem ülke hem de adam.",
+      "text_markdown": "Her şey değişmişti; hem ülke hem de adam.",
+      "tts": {
+        "text": "Her şey değişmişti; hem ülke hem de adam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ailesi onu zar zor tanıdı.",
+      "text_markdown": "Ailesi onu zar zor tanıdı.",
+      "tts": {
+        "text": "Ailesi onu zar zor tanıdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayatının yarısından fazlasını uzakta geçirmişti.",
+      "text_markdown": "Hayatının yarısından fazlasını uzakta geçirmişti.",
+      "tts": {
+        "text": "Hayatının yarısından fazlasını uzakta geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aksanlı konuşuyor, farklı hareket ediyor ve asla anlayamayacakları deneyimlerin ağırlığını taşıyordu.",
+      "text_markdown": "Aksanlı konuşuyor, farklı hareket ediyor ve asla anlayamayacakları deneyimlerin ağırlığını taşıyordu.",
+      "tts": {
+        "text": "Aksanlı konuşuyor, farklı hareket ediyor ve asla anlayamayacakları deneyimlerin ağırlığını taşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Normal hayata dönmek son derece zordu.",
+      "text_markdown": "Normal hayata dönmek son derece zordu.",
+      "tts": {
+        "text": "Normal hayata dönmek son derece zordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas, yetişkin hayatının tamamını yabancı bir kültürde kölelik koşullarında geçirmişti.",
+      "text_markdown": "Thomas, yetişkin hayatının tamamını yabancı bir kültürde kölelik koşullarında geçirmişti.",
+      "tts": {
+        "text": "Thomas, yetişkin hayatının tamamını yabancı bir kültürde kölelik koşullarında geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fas'ta öğrendiği beceriler Kornuall'da işe yaramıyordu.",
+      "text_markdown": "Fas'ta öğrendiği beceriler Kornuall'da işe yaramıyordu.",
+      "tts": {
+        "text": "Fas'ta öğrendiği beceriler Kornuall'da işe yaramıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eve dönen adam, giden çocuk değildi.",
+      "text_markdown": "Eve dönen adam, giden çocuk değildi.",
+      "tts": {
+        "text": "Eve dönen adam, giden çocuk değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonunda anılarını yazdı; Thomas Pellow'un Uzun Esareti ve Maceraları başlığıyla yayımlandı.",
+      "text_markdown": "Sonunda anılarını yazdı; Thomas Pellow'un Uzun Esareti ve Maceraları başlığıyla yayımlandı.",
+      "tts": {
+        "text": "Sonunda anılarını yazdı; Thomas Pellow'un Uzun Esareti ve Maceraları başlığıyla yayımlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kitap esir alınmasını, zorla din değiştirmesini, hizmet yıllarını ve kaçışını canlı ayrıntılarla anlatıyordu.",
+      "text_markdown": "Kitap esir alınmasını, zorla din değiştirmesini, hizmet yıllarını ve kaçışını canlı ayrıntılarla anlatıyordu.",
+      "tts": {
+        "text": "Kitap esir alınmasını, zorla din değiştirmesini, hizmet yıllarını ve kaçışını canlı ayrıntılarla anlatıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anılar İngiltere'de popüler oldu.",
+      "text_markdown": "Anılar İngiltere'de popüler oldu.",
+      "tts": {
+        "text": "Anılar İngiltere'de popüler oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halkın egzotik Doğu'ya olan ilgisini ve Berberi köle ticaretine olan dehşetini besledi.",
+      "text_markdown": "Halkın egzotik Doğu'ya olan ilgisini ve Berberi köle ticaretine olan dehşetini besledi.",
+      "tts": {
+        "text": "Halkın egzotik Doğu'ya olan ilgisini ve Berberi köle ticaretine olan dehşetini besledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoğun dini çatışma döneminde İslam karşıtı propaganda olarak da hizmet etti.",
+      "text_markdown": "Yoğun dini çatışma döneminde İslam karşıtı propaganda olarak da hizmet etti.",
+      "tts": {
+        "text": "Yoğun dini çatışma döneminde İslam karşıtı propaganda olarak da hizmet etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern tarihçiler Thomas'ın anlatımına hem saygı hem de ihtiyatla yaklaşıyor.",
+      "text_markdown": "Modern tarihçiler Thomas'ın anlatımına hem saygı hem de ihtiyatla yaklaşıyor.",
+      "tts": {
+        "text": "Modern tarihçiler Thomas'ın anlatımına hem saygı hem de ihtiyatla yaklaşıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı ayrıntılar okuyucu kitlesi için abartılmış veya süslenmiş olabilir.",
+      "text_markdown": "Bazı ayrıntılar okuyucu kitlesi için abartılmış veya süslenmiş olabilir.",
+      "tts": {
+        "text": "Bazı ayrıntılar okuyucu kitlesi için abartılmış veya süslenmiş olabilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama hikâyenin özü diğer tarihi kanıtlarla destekleniyor.",
+      "text_markdown": "Ama hikâyenin özü diğer tarihi kanıtlarla destekleniyor.",
+      "tts": {
+        "text": "Ama hikâyenin özü diğer tarihi kanıtlarla destekleniyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow'un ölüm tarihi ve koşulları bilinmiyor.",
+      "text_markdown": "Thomas Pellow'un ölüm tarihi ve koşulları bilinmiyor.",
+      "tts": {
+        "text": "Thomas Pellow'un ölüm tarihi ve koşulları bilinmiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anılarının yayımlanmasından sonra tarih kayıtlarından kayboluyor.",
+      "text_markdown": "Anılarının yayımlanmasından sonra tarih kayıtlarından kayboluyor.",
+      "tts": {
+        "text": "Anılarının yayımlanmasından sonra tarih kayıtlarından kayboluyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kaçış",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yirmi üç yıllık esaretten sağ kurtulan adam sessizce unutulmuşluğa gömüldü.",
+      "text_markdown": "Yirmi üç yıllık esaretten sağ kurtulan adam sessizce unutulmuşluğa gömüldü.",
+      "tts": {
+        "text": "Yirmi üç yıllık esaretten sağ kurtulan adam sessizce unutulmuşluğa gömüldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow'un anıları, Berberi köle ticareti hakkındaki en önemli belgelerden biridir.",
+      "text_markdown": "Thomas Pellow'un anıları, Berberi köle ticareti hakkındaki en önemli belgelerden biridir.",
+      "tts": {
+        "text": "Thomas Pellow'un anıları, Berberi köle ticareti hakkındaki en önemli belgelerden biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fas'ta Avrupalı bir esir olarak yaşamın ilk elden anlatımını sunar.",
+      "text_markdown": "Fas'ta Avrupalı bir esir olarak yaşamın ilk elden anlatımını sunar.",
+      "tts": {
+        "text": "Fas'ta Avrupalı bir esir olarak yaşamın ilk elden anlatımını sunar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çok az başka kaynak bu kadar ayrıntılı ve kişisel bir tanıklık sunar.",
+      "text_markdown": "Çok az başka kaynak bu kadar ayrıntılı ve kişisel bir tanıklık sunar.",
+      "tts": {
+        "text": "Çok az başka kaynak bu kadar ayrıntılı ve kişisel bir tanıklık sunar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi, sıklıkla göz ardı edilen bir tarih bölümünü aydınlatır.",
+      "text_markdown": "Hikâyesi, sıklıkla göz ardı edilen bir tarih bölümünü aydınlatır.",
+      "tts": {
+        "text": "Hikâyesi, sıklıkla göz ardı edilen bir tarih bölümünü aydınlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupalıların Kuzey Afrika devletleri tarafından köleleştirilmesi yüzyıllarca sürdü.",
+      "text_markdown": "Avrupalıların Kuzey Afrika devletleri tarafından köleleştirilmesi yüzyıllarca sürdü.",
+      "tts": {
+        "text": "Avrupalıların Kuzey Afrika devletleri tarafından köleleştirilmesi yüzyıllarca sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Milyonlarca insanı etkiledi ve Akdeniz dünyasının siyasetini şekillendirdi.",
+      "text_markdown": "Milyonlarca insanı etkiledi ve Akdeniz dünyasının siyasetini şekillendirdi.",
+      "tts": {
+        "text": "Milyonlarca insanı etkiledi ve Akdeniz dünyasının siyasetini şekillendirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas'ın bakımına yardım ettiği Meknes'teki saray bugün hâlâ kısmen ayaktadır.",
+      "text_markdown": "Thomas'ın bakımına yardım ettiği Meknes'teki saray bugün hâlâ kısmen ayaktadır.",
+      "tts": {
+        "text": "Thomas'ın bakımına yardım ettiği Meknes'teki saray bugün hâlâ kısmen ayaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "UNESCO Dünya Mirası Listesi'ndedir.",
+      "text_markdown": "UNESCO Dünya Mirası Listesi'ndedir.",
+      "tts": {
+        "text": "UNESCO Dünya Mirası Listesi'ndedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Turistler, kölelerin bir zamanlar çalıştığı aynı avlularda dolaşıyor.",
+      "text_markdown": "Turistler, kölelerin bir zamanlar çalıştığı aynı avlularda dolaşıyor.",
+      "tts": {
+        "text": "Turistler, kölelerin bir zamanlar çalıştığı aynı avlularda dolaşıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Harabelerin güzelliği, onları inşa eden acıyı gizliyor.",
+      "text_markdown": "Harabelerin güzelliği, onları inşa eden acıyı gizliyor.",
+      "tts": {
+        "text": "Harabelerin güzelliği, onları inşa eden acıyı gizliyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas'ın hizmet ettiği sultan Mulay İsmail, Fas'ta ve Avrupa'da farklı şekilde hatırlanıyor.",
+      "text_markdown": "Thomas'ın hizmet ettiği sultan Mulay İsmail, Fas'ta ve Avrupa'da farklı şekilde hatırlanıyor.",
+      "tts": {
+        "text": "Thomas'ın hizmet ettiği sultan Mulay İsmail, Fas'ta ve Avrupa'da farklı şekilde hatırlanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fas'ta ülkeyi birleştiren güçlü bir hükümdar olarak kutlanıyor.",
+      "text_markdown": "Fas'ta ülkeyi birleştiren güçlü bir hükümdar olarak kutlanıyor.",
+      "tts": {
+        "text": "Fas'ta ülkeyi birleştiren güçlü bir hükümdar olarak kutlanıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrupa'da binlerce kişiyi köleleştiren bir zorba olarak hatırlanıyor.",
+      "text_markdown": "Avrupa'da binlerce kişiyi köleleştiren bir zorba olarak hatırlanıyor.",
+      "tts": {
+        "text": "Avrupa'da binlerce kişiyi köleleştiren bir zorba olarak hatırlanıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her iki bakış açısı da gerçeği içeriyor.",
+      "text_markdown": "Her iki bakış açısı da gerçeği içeriyor.",
+      "tts": {
+        "text": "Her iki bakış açısı da gerçeği içeriyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarih karmaşıktır ve güçlü hükümdarlar karmaşık miraslar bırakır.",
+      "text_markdown": "Tarih karmaşıktır ve güçlü hükümdarlar karmaşık miraslar bırakır.",
+      "tts": {
+        "text": "Tarih karmaşıktır ve güçlü hükümdarlar karmaşık miraslar bırakır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Meknes'i inşa eden köleler Mulay İsmail'e büyük bir kral demezlerdi.",
+      "text_markdown": "Meknes'i inşa eden köleler Mulay İsmail'e büyük bir kral demezlerdi.",
+      "tts": {
+        "text": "Meknes'i inşa eden köleler Mulay İsmail'e büyük bir kral demezlerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow'un hikâyesi kimlik hakkında da zor sorular ortaya koyuyor.",
+      "text_markdown": "Thomas Pellow'un hikâyesi kimlik hakkında da zor sorular ortaya koyuyor.",
+      "tts": {
+        "text": "Thomas Pellow'un hikâyesi kimlik hakkında da zor sorular ortaya koyuyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fas'ta yirmi üç yıldan sonra Thomas hâlâ İngiliz miydi?",
+      "text_markdown": "Fas'ta yirmi üç yıldan sonra Thomas hâlâ İngiliz miydi?",
+      "tts": {
+        "text": "Fas'ta yirmi üç yıldan sonra Thomas hâlâ İngiliz miydi?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hâlâ Hristiyan mıydı?",
+      "text_markdown": "Hâlâ Hristiyan mıydı?",
+      "tts": {
+        "text": "Hâlâ Hristiyan mıydı?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p89",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cevaplar basit değil.",
+      "text_markdown": "Cevaplar basit değil.",
+      "tts": {
+        "text": "Cevaplar basit değil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayatının İngiltere'dekinden daha büyük bir kısmını Fas'ta geçirmişti.",
+      "text_markdown": "Hayatının İngiltere'dekinden daha büyük bir kısmını Fas'ta geçirmişti.",
+      "tts": {
+        "text": "Hayatının İngiltere'dekinden daha büyük bir kısmını Fas'ta geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arapçayı birçok anadil konuşurdan daha iyi konuşuyordu.",
+      "text_markdown": "Arapçayı birçok anadil konuşurdan daha iyi konuşuyordu.",
+      "tts": {
+        "text": "Arapçayı birçok anadil konuşurdan daha iyi konuşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fas savaşlarında savaşmış ve Fas adetlerine göre yaşamıştı.",
+      "text_markdown": "Fas savaşlarında savaşmış ve Fas adetlerine göre yaşamıştı.",
+      "tts": {
+        "text": "Fas savaşlarında savaşmış ve Fas adetlerine göre yaşamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p90",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tutsak ve katılımcı arasındaki çizgi onlarca yıl içinde bulanıklaşmıştı.",
+      "text_markdown": "Tutsak ve katılımcı arasındaki çizgi onlarca yıl içinde bulanıklaşmıştı.",
+      "tts": {
+        "text": "Tutsak ve katılımcı arasındaki çizgi onlarca yıl içinde bulanıklaşmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zorla din değiştirmesi benzersiz değildi.",
+      "text_markdown": "Zorla din değiştirmesi benzersiz değildi.",
+      "tts": {
+        "text": "Zorla din değiştirmesi benzersiz değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Binlerce Avrupalı esir İslam'a geçmeye zorlandı.",
+      "text_markdown": "Binlerce Avrupalı esir İslam'a geçmeye zorlandı.",
+      "tts": {
+        "text": "Binlerce Avrupalı esir İslam'a geçmeye zorlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları sonunda Hristiyanlığa geri döndü.",
+      "text_markdown": "Bazıları sonunda Hristiyanlığa geri döndü.",
+      "tts": {
+        "text": "Bazıları sonunda Hristiyanlığa geri döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğerleri hayatlarının geri kalanında Müslüman kaldı.",
+      "text_markdown": "Diğerleri hayatlarının geri kalanında Müslüman kaldı.",
+      "tts": {
+        "text": "Diğerleri hayatlarının geri kalanında Müslüman kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p91",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Zorla ve gerçek din değiştirme arasındaki sınır çoğu zaman belirsizdi.",
+      "text_markdown": "Zorla ve gerçek din değiştirme arasındaki sınır çoğu zaman belirsizdi.",
+      "tts": {
+        "text": "Zorla ve gerçek din değiştirme arasındaki sınır çoğu zaman belirsizdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Berberi köle ticareti Thomas'ın kaçışından onlarca yıl sonra da devam edecekti.",
+      "text_markdown": "Berberi köle ticareti Thomas'ın kaçışından onlarca yıl sonra da devam edecekti.",
+      "tts": {
+        "text": "Berberi köle ticareti Thomas'ın kaçışından onlarca yıl sonra da devam edecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanları nihayet bastıran Avrupa ve Amerikan deniz gücü ancak XIX. yüzyılın başlarında harekete geçebildi.",
+      "text_markdown": "Korsanları nihayet bastıran Avrupa ve Amerikan deniz gücü ancak XIX. yüzyılın başlarında harekete geçebildi.",
+      "tts": {
+        "text": "Korsanları nihayet bastıran Avrupa ve Amerikan deniz gücü ancak on dokuzuncu yüzyılın başlarında harekete geçebildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerika Birleşik Devletleri, 1801 ve 1815'te Berberi Devletlerine karşı iki savaş yürüttü.",
+      "text_markdown": "Amerika Birleşik Devletleri, 1801 ve 1815'te Berberi Devletlerine karşı iki savaş yürüttü.",
+      "tts": {
+        "text": "Amerika Birleşik Devletleri, bin sekiz yüz birde ve bin sekiz yüz on beşte Berberi Devletlerine karşı iki savaş yürüttü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow'un hikâyesi temelde bir hayatta kalma hikâyesidir.",
+      "text_markdown": "Thomas Pellow'un hikâyesi temelde bir hayatta kalma hikâyesidir.",
+      "tts": {
+        "text": "Thomas Pellow'un hikâyesi temelde bir hayatta kalma hikâyesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yirmi üç yıllık esaret, zorla din değiştirme, şiddet ve yalnızlığa katlandı.",
+      "text_markdown": "Yirmi üç yıllık esaret, zorla din değiştirme, şiddet ve yalnızlığa katlandı.",
+      "tts": {
+        "text": "Yirmi üç yıllık esaret, zorla din değiştirme, şiddet ve yalnızlığa katlandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hepsini atlattı ve eve giden yolu buldu.",
+      "text_markdown": "Hepsini atlattı ve eve giden yolu buldu.",
+      "tts": {
+        "text": "Hepsini atlattı ve eve giden yolu buldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anıları, bir insanın ne kadarına dayanıp yine de kendisi kalabileceğinin tanıklığıdır.",
+      "text_markdown": "Anıları, bir insanın ne kadarına dayanıp yine de kendisi kalabileceğinin tanıklığıdır.",
+      "tts": {
+        "text": "Anıları, bir insanın ne kadarına dayanıp yine de kendisi kalabileceğinin tanıklığıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüm o yıllar boyunca, tüm o mesafe boyunca, Thomas Pellow eve dönmek isteyen Kornuall'lı çocuk olmayı asla bırakmadı.",
+      "text_markdown": "Tüm o yıllar boyunca, tüm o mesafe boyunca, Thomas Pellow eve dönmek isteyen Kornuall'lı çocuk olmayı asla bırakmadı.",
+      "tts": {
+        "text": "Tüm o yıllar boyunca, tüm o mesafe boyunca, Thomas Pellow eve dönmek isteyen Kornuall'lı çocuk olmayı asla bırakmadı.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

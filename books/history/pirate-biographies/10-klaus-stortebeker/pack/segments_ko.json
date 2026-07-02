@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_klaus_stortebeker",
+  "language": "ko",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 보내는 글",
+      "text_markdown": "독자에게 보내는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 참수당한 후에도 몸이 계속 걸어간 해적의 실화이다.",
+      "text_markdown": "이것은 참수당한 후에도 몸이 계속 걸어간 해적의 실화이다.",
+      "tts": {
+        "text": "이것은 참수당한 후에도 몸이 계속 걸어간 해적의 실화이다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 클라우스 슈퇴르테베커였으며, 600년도 더 전에 북유럽의 바다를 공포에 떨게 했다.",
+      "text_markdown": "그의 이름은 클라우스 슈퇴르테베커였으며, 600년도 더 전에 북유럽의 바다를 공포에 떨게 했다.",
+      "tts": {
+        "text": "그의 이름은 클라우스 슈퇴르테베커였으며, 육백 년도 더 전에 북유럽의 바다를 공포에 떨게 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "적어도, 전설은 그렇게 전한다.",
+      "text_markdown": "적어도, 전설은 그렇게 전한다.",
+      "tts": {
+        "text": "적어도, 전설은 그렇게 전한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 독일 민속에서 가장 유명한 인물 중 하나이다.",
+      "text_markdown": "슈퇴르테베커는 독일 민속에서 가장 유명한 인물 중 하나이다.",
+      "tts": {
+        "text": "슈퇴르테베커는 독일 민속에서 가장 유명한 인물 중 하나이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이야기에는 전쟁, 해적 행위, 배신, 그리고 전설이 된 처형이 포함되어 있다.",
+      "text_markdown": "그의 이야기에는 전쟁, 해적 행위, 배신, 그리고 전설이 된 처형이 포함되어 있다.",
+      "tts": {
+        "text": "그의 이야기에는 전쟁, 해적 행위, 배신, 그리고 전설이 된 처형이 포함되어 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 강력한 상업 도시들이 북방의 무역로를 지배하던 시대에 살았다.",
+      "text_markdown": "그는 강력한 상업 도시들이 북방의 무역로를 지배하던 시대에 살았다.",
+      "tts": {
+        "text": "그는 강력한 상업 도시들이 북방의 무역로를 지배하던 시대에 살았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 이야기에서 사실과 신화를 구분하는 것이 항상 가능한 것은 아니다.",
+      "text_markdown": "그의 이야기에서 사실과 신화를 구분하는 것이 항상 가능한 것은 아니다.",
+      "tts": {
+        "text": "그의 이야기에서 사실과 신화를 구분하는 것이 항상 가능한 것은 아니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 생존 시기의 문서는 극소수만 남아 있다.",
+      "text_markdown": "그의 생존 시기의 문서는 극소수만 남아 있다.",
+      "tts": {
+        "text": "그의 생존 시기의 문서는 극소수만 남아 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "우리가 아는 대부분은 수십 년 또는 수 세기 후에 쓰인 연대기에서 비롯된다.",
+      "text_markdown": "우리가 아는 대부분은 수십 년 또는 수 세기 후에 쓰인 연대기에서 비롯된다.",
+      "tts": {
+        "text": "우리가 아는 대부분은 수십 년 또는 수 세기 후에 쓰인 연대기에서 비롯된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 보내는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 책은 사료가 허락하는 한 정직하게 그의 이야기를 전한다.",
+      "text_markdown": "이 책은 사료가 허락하는 한 정직하게 그의 이야기를 전한다.",
+      "tts": {
+        "text": "이 책은 사료가 허락하는 한 정직하게 그의 이야기를 전한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "북해의 세계",
+      "text_markdown": "북해의 세계"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "클라우스 슈퇴르테베커는 14세기 후반에 살았다.",
+      "text_markdown": "클라우스 슈퇴르테베커는 14세기 후반에 살았다.",
+      "tts": {
+        "text": "클라우스 슈퇴르테베커는 천삼백년대 후반에 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 시기는 유럽 역사에서 중세 후기에 해당한다.",
+      "text_markdown": "이 시기는 유럽 역사에서 중세 후기에 해당한다.",
+      "tts": {
+        "text": "이 시기는 유럽 역사에서 중세 후기에 해당한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "북유럽은 지중해 남부와는 매우 다른 곳이었다.",
+      "text_markdown": "북유럽은 지중해 남부와는 매우 다른 곳이었다.",
+      "tts": {
+        "text": "북유럽은 지중해 남부와는 매우 다른 곳이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "발트해와 북해는 북방 무역의 대동맥이었다.",
+      "text_markdown": "발트해와 북해는 북방 무역의 대동맥이었다.",
+      "tts": {
+        "text": "발트해와 북해는 북방 무역의 대동맥이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "배들은 스칸디나비아, 러시아, 잉글랜드, 독일 해안 사이에서 물품을 운반했다.",
+      "text_markdown": "배들은 스칸디나비아, 러시아, 잉글랜드, 독일 해안 사이에서 물품을 운반했다.",
+      "tts": {
+        "text": "배들은 스칸디나비아, 러시아, 잉글랜드, 독일 해안 사이에서 물품을 운반했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해상 항로를 지배하는 자가 막대한 부를 지배했다.",
+      "text_markdown": "해상 항로를 지배하는 자가 막대한 부를 지배했다.",
+      "tts": {
+        "text": "해상 항로를 지배하는 자가 막대한 부를 지배했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북방 무역에서 가장 강력한 세력은 한자 동맹이었다.",
+      "text_markdown": "북방 무역에서 가장 강력한 세력은 한자 동맹이었다.",
+      "tts": {
+        "text": "북방 무역에서 가장 강력한 세력은 한자 동맹이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한자 동맹은 북유럽 전역에 퍼져 있는 상업 도시들의 연합체였다.",
+      "text_markdown": "한자 동맹은 북유럽 전역에 퍼져 있는 상업 도시들의 연합체였다.",
+      "tts": {
+        "text": "한자 동맹은 북유럽 전역에 퍼져 있는 상업 도시들의 연합체였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나라도 왕국도 아닌, 무역을 위해 협력하는 도시 네트워크였다.",
+      "text_markdown": "나라도 왕국도 아닌, 무역을 위해 협력하는 도시 네트워크였다.",
+      "tts": {
+        "text": "나라도 왕국도 아닌, 무역을 위해 협력하는 도시 네트워크였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전성기에 한자 동맹은 거의 이백 개의 도시를 포함했다.",
+      "text_markdown": "전성기에 한자 동맹은 거의 이백 개의 도시를 포함했다.",
+      "tts": {
+        "text": "전성기에 한자 동맹은 거의 이백 개의 도시를 포함했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 중요한 한자 도시는 뤼베크, 함부르크, 브레멘, 로스토크, 단치히였다.",
+      "text_markdown": "가장 중요한 한자 도시는 뤼베크, 함부르크, 브레멘, 로스토크, 단치히였다.",
+      "tts": {
+        "text": "가장 중요한 한자 도시는 뤼베크, 함부르크, 브레멘, 로스토크, 단치히였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "뤼베크는 동맹의 비공식 수도로 여겨졌다.",
+      "text_markdown": "뤼베크는 동맹의 비공식 수도로 여겨졌다.",
+      "tts": {
+        "text": "뤼베크는 동맹의 비공식 수도로 여겨졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함부르크는 엘베강을 통해 북해로의 접근을 통제했다.",
+      "text_markdown": "함부르크는 엘베강을 통해 북해로의 접근을 통제했다.",
+      "tts": {
+        "text": "함부르크는 엘베강을 통해 북해로의 접근을 통제했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "브레멘은 북해의 또 다른 주요 무역항이었다.",
+      "text_markdown": "브레멘은 북해의 또 다른 주요 무역항이었다.",
+      "tts": {
+        "text": "브레멘은 북해의 또 다른 주요 무역항이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동맹은 러시아의 모피, 스칸디나비아의 목재, 프로이센의 곡물을 거래했다.",
+      "text_markdown": "동맹은 러시아의 모피, 스칸디나비아의 목재, 프로이센의 곡물을 거래했다.",
+      "tts": {
+        "text": "동맹은 러시아의 모피, 스칸디나비아의 목재, 프로이센의 곡물을 거래했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "발트해의 소금에 절인 청어는 가장 중요한 교역품 중 하나였다.",
+      "text_markdown": "발트해의 소금에 절인 청어는 가장 중요한 교역품 중 하나였다.",
+      "tts": {
+        "text": "발트해의 소금에 절인 청어는 가장 중요한 교역품 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "호박, 밀랍, 꿀이 동발트해에서 서쪽으로 흘러갔다.",
+      "text_markdown": "호박, 밀랍, 꿀이 동발트해에서 서쪽으로 흘러갔다.",
+      "tts": {
+        "text": "호박, 밀랍, 꿀이 동발트해에서 서쪽으로 흘러갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "플랑드르와 잉글랜드의 직물은 그 대가로 동쪽으로 이동했다.",
+      "text_markdown": "플랑드르와 잉글랜드의 직물은 그 대가로 동쪽으로 이동했다.",
+      "tts": {
+        "text": "플랑드르와 잉글랜드의 직물은 그 대가로 동쪽으로 이동했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한자 동맹은 무역 독점권을 무자비하게 시행했다.",
+      "text_markdown": "한자 동맹은 무역 독점권을 무자비하게 시행했다.",
+      "tts": {
+        "text": "한자 동맹은 무역 독점권을 무자비하게 시행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "비회원 도시들은 가장 수익성 높은 항로에서 배제되었다.",
+      "text_markdown": "비회원 도시들은 가장 수익성 높은 항로에서 배제되었다.",
+      "tts": {
+        "text": "비회원 도시들은 가장 수익성 높은 항로에서 배제되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동맹은 지역 전체를 굴복시키는 무역 금수 조치를 부과할 수 있었다.",
+      "text_markdown": "동맹은 지역 전체를 굴복시키는 무역 금수 조치를 부과할 수 있었다.",
+      "tts": {
+        "text": "동맹은 지역 전체를 굴복시키는 무역 금수 조치를 부과할 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "상선단을 보호하기 위해 자체 해군력을 유지했다.",
+      "text_markdown": "상선단을 보호하기 위해 자체 해군력을 유지했다.",
+      "tts": {
+        "text": "상선단을 보호하기 위해 자체 해군력을 유지했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이러한 방어에도 불구하고 해적 행위는 북방 해역에서 끊이지 않는 문제였다.",
+      "text_markdown": "이러한 방어에도 불구하고 해적 행위는 북방 해역에서 끊이지 않는 문제였다.",
+      "tts": {
+        "text": "이러한 방어에도 불구하고 해적 행위는 북방 해역에서 끊이지 않는 문제였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "발트해와 북해의 해안선은 섬과 만으로 가득했다.",
+      "text_markdown": "발트해와 북해의 해안선은 섬과 만으로 가득했다.",
+      "tts": {
+        "text": "발트해와 북해의 해안선은 섬과 만으로 가득했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적들은 대형 군함이 따라올 수 없는 얕은 물에 숨을 수 있었다.",
+      "text_markdown": "해적들은 대형 군함이 따라올 수 없는 얕은 물에 숨을 수 있었다.",
+      "tts": {
+        "text": "해적들은 대형 군함이 따라올 수 없는 얕은 물에 숨을 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "안개 낀 날씨와 짧은 겨울 낮은 상선에 대한 매복을 용이하게 했다.",
+      "text_markdown": "안개 낀 날씨와 짧은 겨울 낮은 상선에 대한 매복을 용이하게 했다.",
+      "tts": {
+        "text": "안개 낀 날씨와 짧은 겨울 낮은 상선에 대한 매복을 용이하게 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스칸디나비아의 정치 상황은 극히 복잡했다.",
+      "text_markdown": "스칸디나비아의 정치 상황은 극히 복잡했다.",
+      "tts": {
+        "text": "스칸디나비아의 정치 상황은 극히 복잡했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크, 스웨덴, 노르웨이는 끊임없이 서로 전쟁을 벌였다.",
+      "text_markdown": "덴마크, 스웨덴, 노르웨이는 끊임없이 서로 전쟁을 벌였다.",
+      "tts": {
+        "text": "덴마크, 스웨덴, 노르웨이는 끊임없이 서로 전쟁을 벌였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마르그레테 1세 여왕 치하에서 덴마크가 지배적인 세력이었다.",
+      "text_markdown": "마르그레테 1세 여왕 치하에서 덴마크가 지배적인 세력이었다.",
+      "tts": {
+        "text": "마르그레테 일세 여왕 치하에서 덴마크가 지배적인 세력이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 천삼백구십칠 년에 칼마르 동맹 아래 덴마크, 노르웨이, 스웨덴을 통합했다.",
+      "text_markdown": "그녀는 천삼백구십칠 년에 칼마르 동맹 아래 덴마크, 노르웨이, 스웨덴을 통합했다.",
+      "tts": {
+        "text": "그녀는 천삼백구십칠 년에 칼마르 동맹 아래 덴마크, 노르웨이, 스웨덴을 통합했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "칼마르 동맹 이전에 스웨덴은 덴마크의 지배에 저항했다.",
+      "text_markdown": "칼마르 동맹 이전에 스웨덴은 덴마크의 지배에 저항했다.",
+      "tts": {
+        "text": "칼마르 동맹 이전에 스웨덴은 덴마크의 지배에 저항했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "메클렌부르크의 알브레히트 왕이 스웨덴을 통치했지만 덴마크의 마르그레테에게 도전받았다.",
+      "text_markdown": "메클렌부르크의 알브레히트 왕이 스웨덴을 통치했지만 덴마크의 마르그레테에게 도전받았다.",
+      "tts": {
+        "text": "메클렌부르크의 알브레히트 왕이 스웨덴을 통치했지만 덴마크의 마르그레테에게 도전받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "마르그레테는 알브레히트를 물리치고 투옥했다.",
+      "text_markdown": "마르그레테는 알브레히트를 물리치고 투옥했다.",
+      "tts": {
+        "text": "마르그레테는 알브레히트를 물리치고 투옥했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "독일 도시 로스토크 등에 있던 알브레히트의 지지자들이 반격했다.",
+      "text_markdown": "독일 도시 로스토크 등에 있던 알브레히트의 지지자들이 반격했다.",
+      "tts": {
+        "text": "독일 도시 로스토크 등에 있던 알브레히트의 지지자들이 반격했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "덴마크와 알브레히트를 지지하는 도시들 사이의 이 전쟁이 해적에게 기회를 만들어 주었다.",
+      "text_markdown": "덴마크와 알브레히트를 지지하는 도시들 사이의 이 전쟁이 해적에게 기회를 만들어 주었다.",
+      "tts": {
+        "text": "덴마크와 알브레히트를 지지하는 도시들 사이의 이 전쟁이 해적에게 기회를 만들어 주었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도시들은 덴마크의 해운을 방해하고 포위된 스톡홀름에 보급품을 운송하기 위해 사략선을 고용했다.",
+      "text_markdown": "도시들은 덴마크의 해운을 방해하고 포위된 스톡홀름에 보급품을 운송하기 위해 사략선을 고용했다.",
+      "tts": {
+        "text": "도시들은 덴마크의 해운을 방해하고 포위된 스톡홀름에 보급품을 운송하기 위해 사략선을 고용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 사략선원들은 비탈리엔브뤼더라 불렸다.",
+      "text_markdown": "이 사략선원들은 비탈리엔브뤼더라 불렸다.",
+      "tts": {
+        "text": "이 사략선원들은 비탈리엔브뤼더라 불렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 이름은 식량을 뜻하는 라틴어에서 유래했는데, 그들의 임무가 보급품 운송이었기 때문이다.",
+      "text_markdown": "그 이름은 식량을 뜻하는 라틴어에서 유래했는데, 그들의 임무가 보급품 운송이었기 때문이다.",
+      "tts": {
+        "text": "그 이름은 식량을 뜻하는 라틴어에서 유래했는데, 그들의 임무가 보급품 운송이었기 때문이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "중세 독일의 도시 국가들은 유럽의 다른 어디에서도 볼 수 없는 독특한 존재였다.",
+      "text_markdown": "중세 독일의 도시 국가들은 유럽의 다른 어디에서도 볼 수 없는 독특한 존재였다.",
+      "tts": {
+        "text": "중세 독일의 도시 국가들은 유럽의 다른 어디에서도 볼 수 없는 독특한 존재였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "부유한 상인들로 구성된 선출 의회가 독립적으로 통치했다.",
+      "text_markdown": "부유한 상인들로 구성된 선출 의회가 독립적으로 통치했다.",
+      "tts": {
+        "text": "부유한 상인들로 구성된 선출 의회가 독립적으로 통치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자체 법률, 자체 민병대, 자체 해군을 보유했다.",
+      "text_markdown": "자체 법률, 자체 민병대, 자체 해군을 보유했다.",
+      "tts": {
+        "text": "자체 법률, 자체 민병대, 자체 해군을 보유했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 왕이나 군주에게도 충성을 빚지 않았다.",
+      "text_markdown": "어떤 왕이나 군주에게도 충성을 빚지 않았다.",
+      "tts": {
+        "text": "어떤 왕이나 군주에게도 충성을 빚지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커가 결국 최후를 맞이할 함부르크는 이러한 자랑스러운 도시 중 하나였다.",
+      "text_markdown": "슈퇴르테베커가 결국 최후를 맞이할 함부르크는 이러한 자랑스러운 도시 중 하나였다.",
+      "tts": {
+        "text": "슈퇴르테베커가 결국 최후를 맞이할 함부르크는 이러한 자랑스러운 도시 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "엘베강 위에 자리 잡고 있었으며 북해에서 약 백 킬로미터 떨어져 있었다.",
+      "text_markdown": "엘베강 위에 자리 잡고 있었으며 북해에서 약 백 킬로미터 떨어져 있었다.",
+      "tts": {
+        "text": "엘베강 위에 자리 잡고 있었으며 북해에서 약 백 킬로미터 떨어져 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함부르크의 상인들은 무역으로 부를 쌓았고 그 재산을 맹렬히 지켰다.",
+      "text_markdown": "함부르크의 상인들은 무역으로 부를 쌓았고 그 재산을 맹렬히 지켰다.",
+      "tts": {
+        "text": "함부르크의 상인들은 무역으로 부를 쌓았고 그 재산을 맹렬히 지켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "자신들의 해운을 위협하는 자에게는 어떤 관용도 보이지 않았다.",
+      "text_markdown": "자신들의 해운을 위협하는 자에게는 어떤 관용도 보이지 않았다.",
+      "tts": {
+        "text": "자신들의 해운을 위협하는 자에게는 어떤 관용도 보이지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 클라우스 슈퇴르테베커를 배출한 세계였다.",
+      "text_markdown": "이것이 클라우스 슈퇴르테베커를 배출한 세계였다.",
+      "tts": {
+        "text": "이것이 클라우스 슈퇴르테베커를 배출한 세계였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상인 왕자들, 전쟁하는 왕국들, 위험한 바다의 세계였다.",
+      "text_markdown": "상인 왕자들, 전쟁하는 왕국들, 위험한 바다의 세계였다.",
+      "tts": {
+        "text": "상인 왕자들, 전쟁하는 왕국들, 위험한 바다의 세계였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "북해의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그런 세계에서 빠른 배를 가진 대담한 남자는 영웅이 될 수도, 악당이 될 수도 있었다.",
+      "text_markdown": "그런 세계에서 빠른 배를 가진 대담한 남자는 영웅이 될 수도, 악당이 될 수도 있었다.",
+      "tts": {
+        "text": "그런 세계에서 빠른 배를 가진 대담한 남자는 영웅이 될 수도, 악당이 될 수도 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "클라우스 슈퇴르테베커는 1360년경에 태어났다.",
+      "text_markdown": "클라우스 슈퇴르테베커는 1360년경에 태어났다.",
+      "tts": {
+        "text": "클라우스 슈퇴르테베커는 천삼백육십 년경에 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 정확한 출생지는 알려져 있지 않다.",
+      "text_markdown": "그의 정확한 출생지는 알려져 있지 않다.",
+      "tts": {
+        "text": "그의 정확한 출생지는 알려져 있지 않다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부 역사학자들은 그가 발트해 연안의 한자 항구 도시 비스마르 출신이라고 믿는다.",
+      "text_markdown": "일부 역사학자들은 그가 발트해 연안의 한자 항구 도시 비스마르 출신이라고 믿는다.",
+      "tts": {
+        "text": "일부 역사학자들은 그가 발트해 연안의 한자 항구 도시 비스마르 출신이라고 믿는다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 본명은 니콜라우스 슈토르첸베허였을 수 있다.",
+      "text_markdown": "그의 본명은 니콜라우스 슈토르첸베허였을 수 있다.",
+      "tts": {
+        "text": "그의 본명은 니콜라우스 슈토르첸베허였을 수 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "슈퇴르테베커라는 이름은 저지 독일어의 별명이다.",
+      "text_markdown": "슈퇴르테베커라는 이름은 저지 독일어의 별명이다.",
+      "tts": {
+        "text": "슈퇴르테베커라는 이름은 저지 독일어의 별명이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "잔을 비워라 또는 컵을 들이켜라와 비슷한 뜻이다.",
+      "text_markdown": "잔을 비워라 또는 컵을 들이켜라와 비슷한 뜻이다.",
+      "tts": {
+        "text": "잔을 비워라 또는 컵을 들이켜라와 비슷한 뜻이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전설에 따르면, 슈퇴르테베커는 4리터짜리 맥주잔을 단숨에 비울 수 있었다고 한다.",
+      "text_markdown": "전설에 따르면, 슈퇴르테베커는 4리터짜리 맥주잔을 단숨에 비울 수 있었다고 한다.",
+      "tts": {
+        "text": "전설에 따르면, 슈퇴르테베커는 사 리터짜리 맥주잔을 단숨에 비울 수 있었다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사실이든 과장이든, 그 별명은 굳어졌다.",
+      "text_markdown": "사실이든 과장이든, 그 별명은 굳어졌다.",
+      "tts": {
+        "text": "사실이든 과장이든, 그 별명은 굳어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "인상적인 체력과 식욕을 가진 남자였음을 시사한다.",
+      "text_markdown": "인상적인 체력과 식욕을 가진 남자였음을 시사한다.",
+      "tts": {
+        "text": "인상적인 체력과 식욕을 가진 남자였음을 시사한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커의 어린 시절이나 가족에 대해서는 거의 알려진 것이 없다.",
+      "text_markdown": "슈퇴르테베커의 어린 시절이나 가족에 대해서는 거의 알려진 것이 없다.",
+      "tts": {
+        "text": "슈퇴르테베커의 어린 시절이나 가족에 대해서는 거의 알려진 것이 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "중세의 평민에 관한 기록은 극히 드물다.",
+      "text_markdown": "중세의 평민에 관한 기록은 극히 드물다.",
+      "tts": {
+        "text": "중세의 평민에 관한 기록은 극히 드물다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원이나 어부의 가정 출신이었을 수 있다.",
+      "text_markdown": "선원이나 어부의 가정 출신이었을 수 있다.",
+      "tts": {
+        "text": "선원이나 어부의 가정 출신이었을 수 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "더 유복한 배경에서 왔을 수도 있다.",
+      "text_markdown": "더 유복한 배경에서 왔을 수도 있다.",
+      "tts": {
+        "text": "더 유복한 배경에서 왔을 수도 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우리가 아는 것은 그가 비탈리엔브뤼더에 합류했다는 것이다.",
+      "text_markdown": "우리가 아는 것은 그가 비탈리엔브뤼더에 합류했다는 것이다.",
+      "tts": {
+        "text": "우리가 아는 것은 그가 비탈리엔브뤼더에 합류했다는 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더는 원래 합법적인 군사 임무를 가진 사략선이었다.",
+      "text_markdown": "비탈리엔브뤼더는 원래 합법적인 군사 임무를 가진 사략선이었다.",
+      "tts": {
+        "text": "비탈리엔브뤼더는 원래 합법적인 군사 임무를 가진 사략선이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스톡홀름에 대한 덴마크의 봉쇄를 돌파하기 위해 고용되었다.",
+      "text_markdown": "스톡홀름에 대한 덴마크의 봉쇄를 돌파하기 위해 고용되었다.",
+      "tts": {
+        "text": "스톡홀름에 대한 덴마크의 봉쇄를 돌파하기 위해 고용되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스웨덴의 수도 스톡홀름은 덴마크 군에 포위되어 있었다.",
+      "text_markdown": "스웨덴의 수도 스톡홀름은 덴마크 군에 포위되어 있었다.",
+      "tts": {
+        "text": "스웨덴의 수도 스톡홀름은 덴마크 군에 포위되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크 여왕 마르그레테는 스웨덴을 자신의 지배하에 두고자 했다.",
+      "text_markdown": "덴마크 여왕 마르그레테는 스웨덴을 자신의 지배하에 두고자 했다.",
+      "tts": {
+        "text": "덴마크 여왕 마르그레테는 스웨덴을 자신의 지배하에 두고자 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "도시는 굶주리고 있었고, 방어자들은 절박하게 보급품을 필요로 했다.",
+      "text_markdown": "도시는 굶주리고 있었고, 방어자들은 절박하게 보급품을 필요로 했다.",
+      "tts": {
+        "text": "도시는 굶주리고 있었고, 방어자들은 절박하게 보급품을 필요로 했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메클렌부르크의 알브레히트 왕을 지지하는 도시들이 구호 원정을 조직했다.",
+      "text_markdown": "메클렌부르크의 알브레히트 왕을 지지하는 도시들이 구호 원정을 조직했다.",
+      "tts": {
+        "text": "메클렌부르크의 알브레히트 왕을 지지하는 도시들이 구호 원정을 조직했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크 함대를 우회하여 스톡홀름에 식량을 전달하도록 사략선에 위임했다.",
+      "text_markdown": "덴마크 함대를 우회하여 스톡홀름에 식량을 전달하도록 사략선에 위임했다.",
+      "tts": {
+        "text": "덴마크 함대를 우회하여 스톡홀름에 식량을 전달하도록 사략선에 위임했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 사략선들은 사략 허가장을 받아 덴마크 선박에 대한 습격이 합법화되었다.",
+      "text_markdown": "이 사략선들은 사략 허가장을 받아 덴마크 선박에 대한 습격이 합법화되었다.",
+      "tts": {
+        "text": "이 사략선들은 사략 허가장을 받아 덴마크 선박에 대한 습격이 합법화되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이렇게 비탈리엔브뤼더가 탄생했다.",
+      "text_markdown": "이렇게 비탈리엔브뤼더가 탄생했다.",
+      "tts": {
+        "text": "이렇게 비탈리엔브뤼더가 탄생했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더는 임무에 효과적이었다.",
+      "text_markdown": "비탈리엔브뤼더는 임무에 효과적이었다.",
+      "tts": {
+        "text": "비탈리엔브뤼더는 임무에 효과적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덴마크의 봉쇄를 돌파하고 굶주린 도시에 식량을 가져다주었다.",
+      "text_markdown": "덴마크의 봉쇄를 돌파하고 굶주린 도시에 식량을 가져다주었다.",
+      "tts": {
+        "text": "덴마크의 봉쇄를 돌파하고 굶주린 도시에 식량을 가져다주었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "또한 덴마크와 노르웨이 상선을 큰 성공으로 습격했다.",
+      "text_markdown": "또한 덴마크와 노르웨이 상선을 큰 성공으로 습격했다.",
+      "tts": {
+        "text": "또한 덴마크와 노르웨이 상선을 큰 성공으로 습격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "선원들은 탈취한 전리품으로 부유해졌다.",
+      "text_markdown": "선원들은 탈취한 전리품으로 부유해졌다.",
+      "tts": {
+        "text": "선원들은 탈취한 전리품으로 부유해졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 임무는 온갖 종류의 사람들을 끌어들였다.",
+      "text_markdown": "이 임무는 온갖 종류의 사람들을 끌어들였다.",
+      "tts": {
+        "text": "이 임무는 온갖 종류의 사람들을 끌어들였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부는 경험 많은 선원과 병사였다.",
+      "text_markdown": "일부는 경험 많은 선원과 병사였다.",
+      "tts": {
+        "text": "일부는 경험 많은 선원과 병사였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 모험가, 무법자, 빚이나 사법으로부터 도망치는 사람들이었다.",
+      "text_markdown": "다른 이들은 모험가, 무법자, 빚이나 사법으로부터 도망치는 사람들이었다.",
+      "tts": {
+        "text": "다른 이들은 모험가, 무법자, 빚이나 사법으로부터 도망치는 사람들이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더는 바다에서 부와 자유를 찾는 모든 이에게 자석이 되었다.",
+      "text_markdown": "비탈리엔브뤼더는 바다에서 부와 자유를 찾는 모든 이에게 자석이 되었다.",
+      "tts": {
+        "text": "비탈리엔브뤼더는 바다에서 부와 자유를 찾는 모든 이에게 자석이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 빠르게 그룹 내 지도적 위치에 올랐다.",
+      "text_markdown": "슈퇴르테베커는 빠르게 그룹 내 지도적 위치에 올랐다.",
+      "tts": {
+        "text": "슈퇴르테베커는 빠르게 그룹 내 지도적 위치에 올랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 부상의 정확한 세부 사항은 역사 속에 사라졌다.",
+      "text_markdown": "그의 부상의 정확한 세부 사항은 역사 속에 사라졌다.",
+      "tts": {
+        "text": "그의 부상의 정확한 세부 사항은 역사 속에 사라졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "숙련된 선원, 맹렬한 전사, 타고난 지도자였음에 틀림없다.",
+      "text_markdown": "숙련된 선원, 맹렬한 전사, 타고난 지도자였음에 틀림없다.",
+      "tts": {
+        "text": "숙련된 선원, 맹렬한 전사, 타고난 지도자였음에 틀림없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전쟁이 끝날 무렵 그는 가장 저명한 비탈리엔브뤼더 중 하나였다.",
+      "text_markdown": "전쟁이 끝날 무렵 그는 가장 저명한 비탈리엔브뤼더 중 하나였다.",
+      "tts": {
+        "text": "전쟁이 끝날 무렵 그는 가장 저명한 비탈리엔브뤼더 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전쟁은 1395년 알브레히트 왕이 포로에서 풀려나면서 사실상 끝났다.",
+      "text_markdown": "전쟁은 1395년 알브레히트 왕이 포로에서 풀려나면서 사실상 끝났다.",
+      "tts": {
+        "text": "전쟁은 천삼백구십오 년 알브레히트 왕이 포로에서 풀려나면서 사실상 끝났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "교전 당사자들 사이에 평화 협정이 체결되었다.",
+      "text_markdown": "교전 당사자들 사이에 평화 협정이 체결되었다.",
+      "tts": {
+        "text": "교전 당사자들 사이에 평화 협정이 체결되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더를 인가한 사략 허가장이 철회되었다.",
+      "text_markdown": "비탈리엔브뤼더를 인가한 사략 허가장이 철회되었다.",
+      "tts": {
+        "text": "비탈리엔브뤼더를 인가한 사략 허가장이 철회되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 비탈리엔브뤼더는 멈출 생각이 없었다.",
+      "text_markdown": "하지만 비탈리엔브뤼더는 멈출 생각이 없었다.",
+      "tts": {
+        "text": "하지만 비탈리엔브뤼더는 멈출 생각이 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 공해에서의 부와 자유를 맛보았던 것이다.",
+      "text_markdown": "그들은 공해에서의 부와 자유를 맛보았던 것이다.",
+      "tts": {
+        "text": "그들은 공해에서의 부와 자유를 맛보았던 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "칼로 살아온 사람들에게 평범한 삶으로 돌아가는 것은 매력이 없었다.",
+      "text_markdown": "칼로 살아온 사람들에게 평범한 삶으로 돌아가는 것은 매력이 없었다.",
+      "tts": {
+        "text": "칼로 살아온 사람들에게 평범한 삶으로 돌아가는 것은 매력이 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "약탈을 계속했지만, 이제 그들은 사략선이 아닌 해적이었다.",
+      "text_markdown": "약탈을 계속했지만, 이제 그들은 사략선이 아닌 해적이었다.",
+      "tts": {
+        "text": "약탈을 계속했지만, 이제 그들은 사략선이 아닌 해적이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전설에 따르면, 그들의 좌우명은 대담하고 도전적이었다.",
+      "text_markdown": "전설에 따르면, 그들의 좌우명은 대담하고 도전적이었다.",
+      "tts": {
+        "text": "전설에 따르면, 그들의 좌우명은 대담하고 도전적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 스스로를 신의 벗이자 세상의 적이라 선언했다.",
+      "text_markdown": "그들은 스스로를 신의 벗이자 세상의 적이라 선언했다.",
+      "tts": {
+        "text": "그들은 스스로를 신의 벗이자 세상의 적이라 선언했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 문구는 그들의 무법자 정체성을 완벽하게 담았다.",
+      "text_markdown": "이 문구는 그들의 무법자 정체성을 완벽하게 담았다.",
+      "tts": {
+        "text": "이 문구는 그들의 무법자 정체성을 완벽하게 담았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 왕에게도, 어떤 도시에도, 어떤 법에도 복종하지 않았다.",
+      "text_markdown": "어떤 왕에게도, 어떤 도시에도, 어떤 법에도 복종하지 않았다.",
+      "tts": {
+        "text": "어떤 왕에게도, 어떤 도시에도, 어떤 법에도 복종하지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "중세의 선원들은 폭풍과 적선을 넘어서는 위험에 직면했다.",
+      "text_markdown": "중세의 선원들은 폭풍과 적선을 넘어서는 위험에 직면했다.",
+      "tts": {
+        "text": "중세의 선원들은 폭풍과 적선을 넘어서는 위험에 직면했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "질병과 영양실조는 긴 항해의 끊임없는 동반자였다.",
+      "text_markdown": "질병과 영양실조는 긴 항해의 끊임없는 동반자였다.",
+      "tts": {
+        "text": "질병과 영양실조는 긴 항해의 끊임없는 동반자였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더에 합류한 자는 힘들고 흔히 짧은 삶을 선택한 것이었다.",
+      "text_markdown": "비탈리엔브뤼더에 합류한 자는 힘들고 흔히 짧은 삶을 선택한 것이었다.",
+      "tts": {
+        "text": "비탈리엔브뤼더에 합류한 자는 힘들고 흔히 짧은 삶을 선택한 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력의 부상",
+      "text_markdown": "권력의 부상"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전쟁이 끝난 후, 비탈리엔브뤼더는 작전 기지가 필요했다.",
+      "text_markdown": "전쟁이 끝난 후, 비탈리엔브뤼더는 작전 기지가 필요했다.",
+      "tts": {
+        "text": "전쟁이 끝난 후, 비탈리엔브뤼더는 작전 기지가 필요했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 발트해의 고틀란드 섬을 점령했다.",
+      "text_markdown": "그들은 발트해의 고틀란드 섬을 점령했다.",
+      "tts": {
+        "text": "그들은 발트해의 고틀란드 섬을 점령했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "고틀란드는 스웨덴과 발트해 연안 사이에 전략적으로 위치한 큰 섬이었다.",
+      "text_markdown": "고틀란드는 스웨덴과 발트해 연안 사이에 전략적으로 위치한 큰 섬이었다.",
+      "tts": {
+        "text": "고틀란드는 스웨덴과 발트해 연안 사이에 전략적으로 위치한 큰 섬이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "고틀란드의 비스뷔는 한때 부유한 한자 무역 중심지였다.",
+      "text_markdown": "고틀란드의 비스뷔는 한때 부유한 한자 무역 중심지였다.",
+      "tts": {
+        "text": "고틀란드의 비스뷔는 한때 부유한 한자 무역 중심지였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들이 도착했을 때 이미 옛 영광에서 쇠퇴해 있었다.",
+      "text_markdown": "해적들이 도착했을 때 이미 옛 영광에서 쇠퇴해 있었다.",
+      "tts": {
+        "text": "해적들이 도착했을 때 이미 옛 영광에서 쇠퇴해 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더는 이 섬을 그들의 요새로 바꾸었다.",
+      "text_markdown": "비탈리엔브뤼더는 이 섬을 그들의 요새로 바꾸었다.",
+      "tts": {
+        "text": "비탈리엔브뤼더는 이 섬을 그들의 요새로 바꾸었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "고틀란드에서 발트해의 모든 방향으로 항행하는 선박을 습격할 수 있었다.",
+      "text_markdown": "고틀란드에서 발트해의 모든 방향으로 항행하는 선박을 습격할 수 있었다.",
+      "tts": {
+        "text": "고틀란드에서 발트해의 모든 방향으로 항행하는 선박을 습격할 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커와 그의 선원들은 뤼베크, 함부르크 및 기타 한자 도시의 상선을 공격했다.",
+      "text_markdown": "슈퇴르테베커와 그의 선원들은 뤼베크, 함부르크 및 기타 한자 도시의 상선을 공격했다.",
+      "tts": {
+        "text": "슈퇴르테베커와 그의 선원들은 뤼베크, 함부르크 및 기타 한자 도시의 상선을 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "곡물, 직물, 소금, 사치품의 화물을 탈취했다.",
+      "text_markdown": "곡물, 직물, 소금, 사치품의 화물을 탈취했다.",
+      "tts": {
+        "text": "곡물, 직물, 소금, 사치품의 화물을 탈취했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동맹이 세대에 걸쳐 유지해 온 무역로를 교란했다.",
+      "text_markdown": "동맹이 세대에 걸쳐 유지해 온 무역로를 교란했다.",
+      "tts": {
+        "text": "동맹이 세대에 걸쳐 유지해 온 무역로를 교란했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "경제적 피해는 막대했다.",
+      "text_markdown": "경제적 피해는 막대했다.",
+      "tts": {
+        "text": "경제적 피해는 막대했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한자 동맹은 분노했지만 효과적으로 대응하기 어려웠다.",
+      "text_markdown": "한자 동맹은 분노했지만 효과적으로 대응하기 어려웠다.",
+      "tts": {
+        "text": "한자 동맹은 분노했지만 효과적으로 대응하기 어려웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동맹은 무역 동맹이었지, 통합된 군사력이 아니었다.",
+      "text_markdown": "동맹은 무역 동맹이었지, 통합된 군사력이 아니었다.",
+      "tts": {
+        "text": "동맹은 무역 동맹이었지, 통합된 군사력이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "합동 해군 원정을 조직하려면 많은 독립 도시의 합의가 필요했다.",
+      "text_markdown": "합동 해군 원정을 조직하려면 많은 독립 도시의 합의가 필요했다.",
+      "tts": {
+        "text": "합동 해군 원정을 조직하려면 많은 독립 도시의 합의가 필요했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러는 동안 해적들은 계속 습격을 이어갔다.",
+      "text_markdown": "그러는 동안 해적들은 계속 습격을 이어갔다.",
+      "tts": {
+        "text": "그러는 동안 해적들은 계속 습격을 이어갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "고틀란드의 해적들은 상선만 공격한 것이 아니었다.",
+      "text_markdown": "고틀란드의 해적들은 상선만 공격한 것이 아니었다.",
+      "tts": {
+        "text": "고틀란드의 해적들은 상선만 공격한 것이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해안 도시와 어촌도 약탈했다.",
+      "text_markdown": "해안 도시와 어촌도 약탈했다.",
+      "tts": {
+        "text": "해안 도시와 어촌도 약탈했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "몸값을 위해 사람들을 납치하고 저항하는 정착지를 불태웠다.",
+      "text_markdown": "몸값을 위해 사람들을 납치하고 저항하는 정착지를 불태웠다.",
+      "tts": {
+        "text": "몸값을 위해 사람들을 납치하고 저항하는 정착지를 불태웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더에 대한 공포가 발트해 전역으로 퍼졌다.",
+      "text_markdown": "비탈리엔브뤼더에 대한 공포가 발트해 전역으로 퍼졌다.",
+      "tts": {
+        "text": "비탈리엔브뤼더에 대한 공포가 발트해 전역으로 퍼졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 비탈리엔브뤼더 중 가장 유명하고 두려운 존재가 되었다.",
+      "text_markdown": "슈퇴르테베커는 비탈리엔브뤼더 중 가장 유명하고 두려운 존재가 되었다.",
+      "tts": {
+        "text": "슈퇴르테베커는 비탈리엔브뤼더 중 가장 유명하고 두려운 존재가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 노브고로드에서 베르겐에 이르는 항구에서 두려움과 함께 언급되었다.",
+      "text_markdown": "그의 이름은 노브고로드에서 베르겐에 이르는 항구에서 두려움과 함께 언급되었다.",
+      "tts": {
+        "text": "그의 이름은 노브고로드에서 베르겐에 이르는 항구에서 두려움과 함께 언급되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그가 총지휘자였는지 단순히 가장 악명 높은 선장이었는지는 불분명하다.",
+      "text_markdown": "그가 총지휘자였는지 단순히 가장 악명 높은 선장이었는지는 불분명하다.",
+      "tts": {
+        "text": "그가 총지휘자였는지 단순히 가장 악명 높은 선장이었는지는 불분명하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "중세 연대기에는 다른 지도자들도 언급되어 있다.",
+      "text_markdown": "중세 연대기에는 다른 지도자들도 언급되어 있다.",
+      "tts": {
+        "text": "중세 연대기에는 다른 지도자들도 언급되어 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "중요한 동맹자 중 한 명은 또 다른 저명한 비탈리엔브뤼더 괴데케 미헬스였다.",
+      "text_markdown": "중요한 동맹자 중 한 명은 또 다른 저명한 비탈리엔브뤼더 괴데케 미헬스였다.",
+      "tts": {
+        "text": "중요한 동맹자 중 한 명은 또 다른 저명한 비탈리엔브뤼더 괴데케 미헬스였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "미헬스는 독자적으로 활동했지만 대규모 습격에서는 슈퇴르테베커와 협력했다.",
+      "text_markdown": "미헬스는 독자적으로 활동했지만 대규모 습격에서는 슈퇴르테베커와 협력했다.",
+      "tts": {
+        "text": "미헬스는 독자적으로 활동했지만 대규모 습격에서는 슈퇴르테베커와 협력했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함께 그들은 상당한 규모의 해적 함대를 지휘했다.",
+      "text_markdown": "함께 그들은 상당한 규모의 해적 함대를 지휘했다.",
+      "tts": {
+        "text": "함께 그들은 상당한 규모의 해적 함대를 지휘했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "튜턴 기사단이 마침내 고틀란드의 해적에 대해 조치를 취하기로 결정했다.",
+      "text_markdown": "튜턴 기사단이 마침내 고틀란드의 해적에 대해 조치를 취하기로 결정했다.",
+      "tts": {
+        "text": "튜턴 기사단이 마침내 고틀란드의 해적에 대해 조치를 취하기로 결정했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "튜턴 기사단은 프로이센에 본거지를 둔 강력한 군사 조직이었다.",
+      "text_markdown": "튜턴 기사단은 프로이센에 본거지를 둔 강력한 군사 조직이었다.",
+      "tts": {
+        "text": "튜턴 기사단은 프로이센에 본거지를 둔 강력한 군사 조직이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동발트해 연안을 따라 광대한 영토를 지배했다.",
+      "text_markdown": "동발트해 연안을 따라 광대한 영토를 지배했다.",
+      "tts": {
+        "text": "동발트해 연안을 따라 광대한 영토를 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적의 습격은 그들의 이익에도 위협이 되었다.",
+      "text_markdown": "해적의 습격은 그들의 이익에도 위협이 되었다.",
+      "tts": {
+        "text": "해적의 습격은 그들의 이익에도 위협이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1398년, 튜턴 기사단이 고틀란드 침공을 개시했다.",
+      "text_markdown": "1398년, 튜턴 기사단이 고틀란드 침공을 개시했다.",
+      "tts": {
+        "text": "천삼백구십팔 년, 튜턴 기사단이 고틀란드 침공을 개시했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "압도적인 병력으로 공격하여 섬을 점령했다.",
+      "text_markdown": "압도적인 병력으로 공격하여 섬을 점령했다.",
+      "tts": {
+        "text": "압도적인 병력으로 공격하여 섬을 점령했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 해적이 죽거나 포로가 되었다.",
+      "text_markdown": "많은 해적이 죽거나 포로가 되었다.",
+      "tts": {
+        "text": "많은 해적이 죽거나 포로가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 슈퇴르테베커는 그중에 없었다.",
+      "text_markdown": "하지만 슈퇴르테베커는 그중에 없었다.",
+      "tts": {
+        "text": "하지만 슈퇴르테베커는 그중에 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커와 많은 추종자들은 섬이 함락되기 전에 탈출했다.",
+      "text_markdown": "슈퇴르테베커와 많은 추종자들은 섬이 함락되기 전에 탈출했다.",
+      "tts": {
+        "text": "슈퇴르테베커와 많은 추종자들은 섬이 함락되기 전에 탈출했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "서쪽으로 항해하여 발트해를 뒤로했다.",
+      "text_markdown": "서쪽으로 항해하여 발트해를 뒤로했다.",
+      "tts": {
+        "text": "서쪽으로 항해하여 발트해를 뒤로했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "활동 무대를 북해로 옮겼다.",
+      "text_markdown": "활동 무대를 북해로 옮겼다.",
+      "tts": {
+        "text": "활동 무대를 북해로 옮겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적 경력의 새로운 단계가 시작되고 있었다.",
+      "text_markdown": "해적 경력의 새로운 단계가 시작되고 있었다.",
+      "tts": {
+        "text": "해적 경력의 새로운 단계가 시작되고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 동프리슬란트 해안을 따라 새로운 기지를 구축했다.",
+      "text_markdown": "슈퇴르테베커는 동프리슬란트 해안을 따라 새로운 기지를 구축했다.",
+      "tts": {
+        "text": "슈퇴르테베커는 동프리슬란트 해안을 따라 새로운 기지를 구축했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동프리슬란트는 습지, 섬, 소규모 독립 영토로 이루어진 지역이었다.",
+      "text_markdown": "동프리슬란트는 습지, 섬, 소규모 독립 영토로 이루어진 지역이었다.",
+      "tts": {
+        "text": "동프리슬란트는 습지, 섬, 소규모 독립 영토로 이루어진 지역이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "프리슬란트 해안을 통제하는 단일 권력은 없었다.",
+      "text_markdown": "프리슬란트 해안을 통제하는 단일 권력은 없었다.",
+      "tts": {
+        "text": "프리슬란트 해안을 통제하는 단일 권력은 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 정치적 분열은 해적에게 이상적인 은신처가 되었다.",
+      "text_markdown": "이 정치적 분열은 해적에게 이상적인 은신처가 되었다.",
+      "tts": {
+        "text": "이 정치적 분열은 해적에게 이상적인 은신처가 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "엠덴과 마리엔하페가 슈퇴르테베커 함대의 중요한 기지가 되었다.",
+      "text_markdown": "엠덴과 마리엔하페가 슈퇴르테베커 함대의 중요한 기지가 되었다.",
+      "tts": {
+        "text": "엠덴과 마리엔하페가 슈퇴르테베커 함대의 중요한 기지가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "현지 프리슬란트 추장들은 해적을 묵인하거나 적극적으로 지원했다.",
+      "text_markdown": "현지 프리슬란트 추장들은 해적을 묵인하거나 적극적으로 지원했다.",
+      "tts": {
+        "text": "현지 프리슬란트 추장들은 해적을 묵인하거나 적극적으로 지원했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적들은 현지 시장에서 돈을 썼고 이는 프리슬란트 경제에 이로웠다.",
+      "text_markdown": "해적들은 현지 시장에서 돈을 썼고 이는 프리슬란트 경제에 이로웠다.",
+      "tts": {
+        "text": "해적들은 현지 시장에서 돈을 썼고 이는 프리슬란트 경제에 이로웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "일부 추장은 안전한 항구를 대가로 전리품의 일부를 받았다.",
+      "text_markdown": "일부 추장은 안전한 항구를 대가로 전리품의 일부를 받았다.",
+      "tts": {
+        "text": "일부 추장은 안전한 항구를 대가로 전리품의 일부를 받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동프리슬란트에서 슈퇴르테베커의 배들은 북해 항로를 공격할 수 있었다.",
+      "text_markdown": "동프리슬란트에서 슈퇴르테베커의 배들은 북해 항로를 공격할 수 있었다.",
+      "tts": {
+        "text": "동프리슬란트에서 슈퇴르테베커의 배들은 북해 항로를 공격할 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잉글랜드, 플랑드르, 한자 항구 사이를 오가는 선박을 습격했다.",
+      "text_markdown": "잉글랜드, 플랑드르, 한자 항구 사이를 오가는 선박을 습격했다.",
+      "tts": {
+        "text": "잉글랜드, 플랑드르, 한자 항구 사이를 오가는 선박을 습격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "발트해에서 북해로의 이동은 활동 범위를 극적으로 확대했다.",
+      "text_markdown": "발트해에서 북해로의 이동은 활동 범위를 극적으로 확대했다.",
+      "tts": {
+        "text": "발트해에서 북해로의 이동은 활동 범위를 극적으로 확대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "북해의 어떤 상선도 안전하지 않았다.",
+      "text_markdown": "북해의 어떤 상선도 안전하지 않았다.",
+      "tts": {
+        "text": "북해의 어떤 상선도 안전하지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한자 동맹은 이제 두 바다에서 동시에 해적 공격에 직면했다.",
+      "text_markdown": "한자 동맹은 이제 두 바다에서 동시에 해적 공격에 직면했다.",
+      "tts": {
+        "text": "한자 동맹은 이제 두 바다에서 동시에 해적 공격에 직면했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "발트해에 남은 비탈리엔브뤼더는 그곳에서 습격을 계속했다.",
+      "text_markdown": "발트해에 남은 비탈리엔브뤼더는 그곳에서 습격을 계속했다.",
+      "tts": {
+        "text": "발트해에 남은 비탈리엔브뤼더는 그곳에서 습격을 계속했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "슈퇴르테베커의 세력은 북해를 공포에 빠뜨렸다.",
+      "text_markdown": "슈퇴르테베커의 세력은 북해를 공포에 빠뜨렸다.",
+      "tts": {
+        "text": "슈퇴르테베커의 세력은 북해를 공포에 빠뜨렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "동맹의 교역은 양방향에서 조여지고 있었다.",
+      "text_markdown": "동맹의 교역은 양방향에서 조여지고 있었다.",
+      "tts": {
+        "text": "동맹의 교역은 양방향에서 조여지고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더는 단순하지만 효과적인 습격 전략을 사용했다.",
+      "text_markdown": "비탈리엔브뤼더는 단순하지만 효과적인 습격 전략을 사용했다.",
+      "tts": {
+        "text": "비탈리엔브뤼더는 단순하지만 효과적인 습격 전략을 사용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알려진 항로 근처의 은폐된 만에서 기다렸다.",
+      "text_markdown": "알려진 항로 근처의 은폐된 만에서 기다렸다.",
+      "tts": {
+        "text": "알려진 항로 근처의 은폐된 만에서 기다렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "상선이 지나가면 쏟아져 나와 수적 우위로 제압했다.",
+      "text_markdown": "상선이 지나가면 쏟아져 나와 수적 우위로 제압했다.",
+      "tts": {
+        "text": "상선이 지나가면 쏟아져 나와 수적 우위로 제압했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포획된 선원들에게는 때때로 해적에 합류할 기회가 주어졌다.",
+      "text_markdown": "포획된 선원들에게는 때때로 해적에 합류할 기회가 주어졌다.",
+      "tts": {
+        "text": "포획된 선원들에게는 때때로 해적에 합류할 기회가 주어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 평범한 선원들은 한자 고용주에 대한 충성심이 거의 없었다.",
+      "text_markdown": "많은 평범한 선원들은 한자 고용주에 대한 충성심이 거의 없었다.",
+      "tts": {
+        "text": "많은 평범한 선원들은 한자 고용주에 대한 충성심이 거의 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "절정기",
+      "text_markdown": "절정기"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "권력의 절정기에 슈퇴르테베커는 여러 척의 배로 구성된 함대를 지휘했다.",
+      "text_markdown": "권력의 절정기에 슈퇴르테베커는 여러 척의 배로 구성된 함대를 지휘했다.",
+      "tts": {
+        "text": "권력의 절정기에 슈퇴르테베커는 여러 척의 배로 구성된 함대를 지휘했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정확한 수는 알 수 없지만, 연대기는 상당한 규모였음을 시사한다.",
+      "text_markdown": "정확한 수는 알 수 없지만, 연대기는 상당한 규모였음을 시사한다.",
+      "tts": {
+        "text": "정확한 수는 알 수 없지만, 연대기는 상당한 규모였음을 시사한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 선원은 수백 명에 달했을 수 있다.",
+      "text_markdown": "그의 선원은 수백 명에 달했을 수 있다.",
+      "tts": {
+        "text": "그의 선원은 수백 명에 달했을 수 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "발트해와 북해의 해적이 사용한 배는 코그선과 헐크선이라 불렸다.",
+      "text_markdown": "발트해와 북해의 해적이 사용한 배는 코그선과 헐크선이라 불렸다.",
+      "tts": {
+        "text": "발트해와 북해의 해적이 사용한 배는 코그선과 헐크선이라 불렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "코그선은 북방 해역에 적합한 견고한 평저 상선이었다.",
+      "text_markdown": "코그선은 북방 해역에 적합한 견고한 평저 상선이었다.",
+      "tts": {
+        "text": "코그선은 북방 해역에 적합한 견고한 평저 상선이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "코그선은 느렸지만 대량의 화물과 많은 선원을 실을 수 있었다.",
+      "text_markdown": "코그선은 느렸지만 대량의 화물과 많은 선원을 실을 수 있었다.",
+      "tts": {
+        "text": "코그선은 느렸지만 대량의 화물과 많은 선원을 실을 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적들은 종종 상선 코그를 포획하여 자신들의 용도로 개조했다.",
+      "text_markdown": "해적들은 종종 상선 코그를 포획하여 자신들의 용도로 개조했다.",
+      "tts": {
+        "text": "해적들은 종종 상선 코그를 포획하여 자신들의 용도로 개조했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북해에서의 항해는 위험하고 어려웠다.",
+      "text_markdown": "북해에서의 항해는 위험하고 어려웠다.",
+      "tts": {
+        "text": "북해에서의 항해는 위험하고 어려웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "중세의 선원들은 해안 지형, 태양의 위치, 경험에 의존했다.",
+      "text_markdown": "중세의 선원들은 해안 지형, 태양의 위치, 경험에 의존했다.",
+      "tts": {
+        "text": "중세의 선원들은 해안 지형, 태양의 위치, 경험에 의존했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나침반은 이용 가능했지만 아직 널리 신뢰받지는 못했다.",
+      "text_markdown": "나침반은 이용 가능했지만 아직 널리 신뢰받지는 못했다.",
+      "tts": {
+        "text": "나침반은 이용 가능했지만 아직 널리 신뢰받지는 못했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해도는 이후 세기에 비해 조잡했다.",
+      "text_markdown": "해도는 이후 세기에 비해 조잡했다.",
+      "tts": {
+        "text": "해도는 이후 세기에 비해 조잡했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북해의 폭풍은 그 격렬함으로 전설적이었다.",
+      "text_markdown": "북해의 폭풍은 그 격렬함으로 전설적이었다.",
+      "tts": {
+        "text": "북해의 폭풍은 그 격렬함으로 전설적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남부 북해의 얕은 바다는 가파르고 위험한 파도를 만들어냈다.",
+      "text_markdown": "남부 북해의 얕은 바다는 가파르고 위험한 파도를 만들어냈다.",
+      "tts": {
+        "text": "남부 북해의 얕은 바다는 가파르고 위험한 파도를 만들어냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배들은 경고 없이 모래톱이나 암석 해안에 밀려갈 수 있었다.",
+      "text_markdown": "배들은 경고 없이 모래톱이나 암석 해안에 밀려갈 수 있었다.",
+      "tts": {
+        "text": "배들은 경고 없이 모래톱이나 암석 해안에 밀려갈 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 항해는 죽음과의 도박이었다.",
+      "text_markdown": "모든 항해는 죽음과의 도박이었다.",
+      "tts": {
+        "text": "모든 항해는 죽음과의 도박이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커의 해적들은 곡물, 직물, 소금, 맥주를 운반하는 배를 공격했다.",
+      "text_markdown": "슈퇴르테베커의 해적들은 곡물, 직물, 소금, 맥주를 운반하는 배를 공격했다.",
+      "tts": {
+        "text": "슈퇴르테베커의 해적들은 곡물, 직물, 소금, 맥주를 운반하는 배를 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "북유럽 전역의 주식인 청어 화물도 탈취했다.",
+      "text_markdown": "북유럽 전역의 주식인 청어 화물도 탈취했다.",
+      "tts": {
+        "text": "북유럽 전역의 주식인 청어 화물도 탈취했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포도주, 향신료, 고급 직물 같은 사치품은 특히 선호되었다.",
+      "text_markdown": "포도주, 향신료, 고급 직물 같은 사치품은 특히 선호되었다.",
+      "tts": {
+        "text": "포도주, 향신료, 고급 직물 같은 사치품은 특히 선호되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "팔 수 있는 것이면 무엇이든 빼앗을 가치가 있었다.",
+      "text_markdown": "팔 수 있는 것이면 무엇이든 빼앗을 가치가 있었다.",
+      "tts": {
+        "text": "팔 수 있는 것이면 무엇이든 빼앗을 가치가 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전설에 따르면 슈퇴르테베커는 전리품을 가난한 사람들과 나누었다고 한다.",
+      "text_markdown": "전설에 따르면 슈퇴르테베커는 전리품을 가난한 사람들과 나누었다고 한다.",
+      "tts": {
+        "text": "전설에 따르면 슈퇴르테베커는 전리품을 가난한 사람들과 나누었다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 로빈 후드적 이미지는 수 세기 동안 그를 따라다녔다.",
+      "text_markdown": "이 로빈 후드적 이미지는 수 세기 동안 그를 따라다녔다.",
+      "tts": {
+        "text": "이 로빈 후드적 이미지는 수 세기 동안 그를 따라다녔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "실제로 가난한 사람들에게 나누어 주었는지는 확인이 불가능하다.",
+      "text_markdown": "실제로 가난한 사람들에게 나누어 주었는지는 확인이 불가능하다.",
+      "tts": {
+        "text": "실제로 가난한 사람들에게 나누어 주었는지는 확인이 불가능하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전설은 그의 사후에 이야기를 더 동정적으로 만들기 위해 생겨났을 수 있다.",
+      "text_markdown": "전설은 그의 사후에 이야기를 더 동정적으로 만들기 위해 생겨났을 수 있다.",
+      "tts": {
+        "text": "전설은 그의 사후에 이야기를 더 동정적으로 만들기 위해 생겨났을 수 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "확실한 것은 한자 도시들이 막대한 손실을 입었다는 것이다.",
+      "text_markdown": "확실한 것은 한자 도시들이 막대한 손실을 입었다는 것이다.",
+      "tts": {
+        "text": "확실한 것은 한자 도시들이 막대한 손실을 입었다는 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상선 항해에 대한 보험 비용이 급등했다.",
+      "text_markdown": "상선 항해에 대한 보험 비용이 급등했다.",
+      "tts": {
+        "text": "상선 항해에 대한 보험 비용이 급등했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부 무역로는 무장 호위 없이는 너무 위험해져서 사용할 수 없게 되었다.",
+      "text_markdown": "일부 무역로는 무장 호위 없이는 너무 위험해져서 사용할 수 없게 되었다.",
+      "tts": {
+        "text": "일부 무역로는 무장 호위 없이는 너무 위험해져서 사용할 수 없게 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "무역의 수호자로서의 동맹의 명성이 훼손되고 있었다.",
+      "text_markdown": "무역의 수호자로서의 동맹의 명성이 훼손되고 있었다.",
+      "tts": {
+        "text": "무역의 수호자로서의 동맹의 명성이 훼손되고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 발트해 경제에 필수적인 청어 어업도 교란했다.",
+      "text_markdown": "해적들은 발트해 경제에 필수적인 청어 어업도 교란했다.",
+      "tts": {
+        "text": "해적들은 발트해 경제에 필수적인 청어 어업도 교란했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "뤼베크와 다른 도시의 어선단이 해상에서 공격당했다.",
+      "text_markdown": "뤼베크와 다른 도시의 어선단이 해상에서 공격당했다.",
+      "tts": {
+        "text": "뤼베크와 다른 도시의 어선단이 해상에서 공격당했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "청어 가격이 올라 일반 사람들에게 고통을 초래했다.",
+      "text_markdown": "청어 가격이 올라 일반 사람들에게 고통을 초래했다.",
+      "tts": {
+        "text": "청어 가격이 올라 일반 사람들에게 고통을 초래했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이로써 해적은 부유한 상인만큼이나 서민에게도 미움을 받게 되었다.",
+      "text_markdown": "이로써 해적은 부유한 상인만큼이나 서민에게도 미움을 받게 되었다.",
+      "tts": {
+        "text": "이로써 해적은 부유한 상인만큼이나 서민에게도 미움을 받게 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커의 이름은 북해에서 위험의 대명사가 되었다.",
+      "text_markdown": "슈퇴르테베커의 이름은 북해에서 위험의 대명사가 되었다.",
+      "tts": {
+        "text": "슈퇴르테베커의 이름은 북해에서 위험의 대명사가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어머니들이 아이들에게 슈퇴르테베커가 올 것이라고 경고했다고 전해진다.",
+      "text_markdown": "어머니들이 아이들에게 슈퇴르테베커가 올 것이라고 경고했다고 전해진다.",
+      "tts": {
+        "text": "어머니들이 아이들에게 슈퇴르테베커가 올 것이라고 경고했다고 전해진다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "성공적인 습격 때마다 그의 명성은 높아졌다.",
+      "text_markdown": "성공적인 습격 때마다 그의 명성은 높아졌다.",
+      "tts": {
+        "text": "성공적인 습격 때마다 그의 명성은 높아졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "중세 해적선에서의 생활은 가혹하고 잔인했다.",
+      "text_markdown": "중세 해적선에서의 생활은 가혹하고 잔인했다.",
+      "tts": {
+        "text": "중세 해적선에서의 생활은 가혹하고 잔인했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거처는 비좁았고, 음식은 종종 상했으며, 깨끗한 물은 부족했다.",
+      "text_markdown": "거처는 비좁았고, 음식은 종종 상했으며, 깨끗한 물은 부족했다.",
+      "tts": {
+        "text": "거처는 비좁았고, 음식은 종종 상했으며, 깨끗한 물은 부족했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "질병이 며칠 만에 선원 전체를 휩쓸 수 있었다.",
+      "text_markdown": "질병이 며칠 만에 선원 전체를 휩쓸 수 있었다.",
+      "tts": {
+        "text": "질병이 며칠 만에 선원 전체를 휩쓸 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "폭력은 일상의 끊임없는 일부였다.",
+      "text_markdown": "폭력은 일상의 끊임없는 일부였다.",
+      "tts": {
+        "text": "폭력은 일상의 끊임없는 일부였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들 사이의 분쟁은 종종 주먹이나 칼날로 해결되었다.",
+      "text_markdown": "해적들 사이의 분쟁은 종종 주먹이나 칼날로 해결되었다.",
+      "tts": {
+        "text": "해적들 사이의 분쟁은 종종 주먹이나 칼날로 해결되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지도력은 선장이 전리품을 확보하고 질서를 유지하는 능력에 달려 있었다.",
+      "text_markdown": "지도력은 선장이 전리품을 확보하고 질서를 유지하는 능력에 달려 있었다.",
+      "tts": {
+        "text": "지도력은 선장이 전리품을 확보하고 질서를 유지하는 능력에 달려 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "실패한 선장은 도전받고 교체될 수 있었다.",
+      "text_markdown": "실패한 선장은 도전받고 교체될 수 있었다.",
+      "tts": {
+        "text": "실패한 선장은 도전받고 교체될 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 기술, 교활함, 인격의 힘으로 자신의 지위를 유지했다.",
+      "text_markdown": "슈퇴르테베커는 기술, 교활함, 인격의 힘으로 자신의 지위를 유지했다.",
+      "tts": {
+        "text": "슈퇴르테베커는 기술, 교활함, 인격의 힘으로 자신의 지위를 유지했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커를 숨겨준 프리슬란트 추장들은 위험한 게임을 하고 있었다.",
+      "text_markdown": "슈퇴르테베커를 숨겨준 프리슬란트 추장들은 위험한 게임을 하고 있었다.",
+      "tts": {
+        "text": "슈퇴르테베커를 숨겨준 프리슬란트 추장들은 위험한 게임을 하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한자 동맹은 파괴적인 무역 금수 조치를 부과할 수 있는 힘이 있었다.",
+      "text_markdown": "한자 동맹은 파괴적인 무역 금수 조치를 부과할 수 있는 힘이 있었다.",
+      "tts": {
+        "text": "한자 동맹은 파괴적인 무역 금수 조치를 부과할 수 있는 힘이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적을 숨긴 도시들은 모든 북방 무역에서 차단될 위험이 있었다.",
+      "text_markdown": "해적을 숨긴 도시들은 모든 북방 무역에서 차단될 위험이 있었다.",
+      "tts": {
+        "text": "해적을 숨긴 도시들은 모든 북방 무역에서 차단될 위험이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "슈퇴르테베커의 동맹자들에 대한 압력이 증가하고 있었다.",
+      "text_markdown": "슈퇴르테베커의 동맹자들에 대한 압력이 증가하고 있었다.",
+      "tts": {
+        "text": "슈퇴르테베커의 동맹자들에 대한 압력이 증가하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "특히 함부르크는 슈퇴르테베커를 섬멸하겠다고 결의했다.",
+      "text_markdown": "특히 함부르크는 슈퇴르테베커를 섬멸하겠다고 결의했다.",
+      "tts": {
+        "text": "특히 함부르크는 슈퇴르테베커를 섬멸하겠다고 결의했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도시의 상인들은 너무 많은 배와 돈을 잃었다.",
+      "text_markdown": "도시의 상인들은 너무 많은 배와 돈을 잃었다.",
+      "tts": {
+        "text": "도시의 상인들은 너무 많은 배와 돈을 잃었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 해적을 사냥하기 위해 특별히 설계된 함대를 건조하기 시작했다.",
+      "text_markdown": "그들은 해적을 사냥하기 위해 특별히 설계된 함대를 건조하기 시작했다.",
+      "tts": {
+        "text": "그들은 해적을 사냥하기 위해 특별히 설계된 함대를 건조하기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "슈퇴르테베커의 지배가 끝나가고 있었다.",
+      "text_markdown": "슈퇴르테베커의 지배가 끝나가고 있었다.",
+      "tts": {
+        "text": "슈퇴르테베커의 지배가 끝나가고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "맥주는 한자 네트워크에서 가장 많이 거래된 상품 중 하나였다.",
+      "text_markdown": "맥주는 한자 네트워크에서 가장 많이 거래된 상품 중 하나였다.",
+      "tts": {
+        "text": "맥주는 한자 네트워크에서 가장 많이 거래된 상품 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함부르크와 브레멘은 유럽 전역에 맥주를 수출하는 주요 양조 중심지였다.",
+      "text_markdown": "함부르크와 브레멘은 유럽 전역에 맥주를 수출하는 주요 양조 중심지였다.",
+      "tts": {
+        "text": "함부르크와 브레멘은 유럽 전역에 맥주를 수출하는 주요 양조 중심지였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정기",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "맥주 선적에 대한 해적 공격은 곡물에 대한 공격만큼이나 심각하게 받아들여졌다.",
+      "text_markdown": "맥주 선적에 대한 해적 공격은 곡물에 대한 공격만큼이나 심각하게 받아들여졌다.",
+      "tts": {
+        "text": "맥주 선적에 대한 해적 공격은 곡물에 대한 공격만큼이나 심각하게 받아들여졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "최후",
+      "text_markdown": "최후"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함부르크는 전함 함대를 조직하고 경험 많은 지휘관 아래 두었다.",
+      "text_markdown": "함부르크는 전함 함대를 조직하고 경험 많은 지휘관 아래 두었다.",
+      "tts": {
+        "text": "함부르크는 전함 함대를 조직하고 경험 많은 지휘관 아래 두었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함대는 시몬 폰 위트레흐트라는 사람이 이끌었다.",
+      "text_markdown": "함대는 시몬 폰 위트레흐트라는 사람이 이끌었다.",
+      "tts": {
+        "text": "함대는 시몬 폰 위트레흐트라는 사람이 이끌었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시몬은 능숙한 선원이자 단호한 해적 사냥꾼이었다.",
+      "text_markdown": "시몬은 능숙한 선원이자 단호한 해적 사냥꾼이었다.",
+      "tts": {
+        "text": "시몬은 능숙한 선원이자 단호한 해적 사냥꾼이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1401년, 시몬의 함대는 슈퇴르테베커를 추적하기 위해 함부르크를 출항했다.",
+      "text_markdown": "1401년, 시몬의 함대는 슈퇴르테베커를 추적하기 위해 함부르크를 출항했다.",
+      "tts": {
+        "text": "천사백일 년, 시몬의 함대는 슈퇴르테베커를 추적하기 위해 함부르크를 출항했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "북해와 프리슬란트 제도 주변 해역을 수색했다.",
+      "text_markdown": "북해와 프리슬란트 제도 주변 해역을 수색했다.",
+      "tts": {
+        "text": "북해와 프리슬란트 제도 주변 해역을 수색했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "광활한 북해에서 해적을 찾는 것은 쉬운 일이 아니었다.",
+      "text_markdown": "광활한 북해에서 해적을 찾는 것은 쉬운 일이 아니었다.",
+      "tts": {
+        "text": "광활한 북해에서 해적을 찾는 것은 쉬운 일이 아니었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함부르크 함대는 마침내 헬골란트 섬 근처에서 슈퇴르테베커의 배들을 만났다.",
+      "text_markdown": "함부르크 함대는 마침내 헬골란트 섬 근처에서 슈퇴르테베커의 배들을 만났다.",
+      "tts": {
+        "text": "함부르크 함대는 마침내 헬골란트 섬 근처에서 슈퇴르테베커의 배들을 만났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "헬골란트는 북해 먼바다에 있는 작은 바위섬이다.",
+      "text_markdown": "헬골란트는 북해 먼바다에 있는 작은 바위섬이다.",
+      "tts": {
+        "text": "헬골란트는 북해 먼바다에 있는 작은 바위섬이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "독일 해안을 항해하는 선원들에게 잘 알려진 랜드마크였다.",
+      "text_markdown": "독일 해안을 항해하는 선원들에게 잘 알려진 랜드마크였다.",
+      "tts": {
+        "text": "독일 해안을 항해하는 선원들에게 잘 알려진 랜드마크였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함부르크 전함과 해적 함대 사이에 치열한 전투가 벌어졌다.",
+      "text_markdown": "함부르크 전함과 해적 함대 사이에 치열한 전투가 벌어졌다.",
+      "tts": {
+        "text": "함부르크 전함과 해적 함대 사이에 치열한 전투가 벌어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전투는 잔혹했고 수 시간 동안 계속되었다.",
+      "text_markdown": "전투는 잔혹했고 수 시간 동안 계속되었다.",
+      "tts": {
+        "text": "전투는 잔혹했고 수 시간 동안 계속되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적들은 포로가 되면 확실한 죽음이라는 것을 알고 필사적으로 싸웠다.",
+      "text_markdown": "해적들은 포로가 되면 확실한 죽음이라는 것을 알고 필사적으로 싸웠다.",
+      "tts": {
+        "text": "해적들은 포로가 되면 확실한 죽음이라는 것을 알고 필사적으로 싸웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유명한 전설에 따르면, 슈퇴르테베커의 배에 탄 배신자가 전투의 향방을 결정했다.",
+      "text_markdown": "유명한 전설에 따르면, 슈퇴르테베커의 배에 탄 배신자가 전투의 향방을 결정했다.",
+      "tts": {
+        "text": "유명한 전설에 따르면, 슈퇴르테베커의 배에 탄 배신자가 전투의 향방을 결정했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 배신자는 녹은 납을 배의 키 사슬에 부었다고 한다.",
+      "text_markdown": "이 배신자는 녹은 납을 배의 키 사슬에 부었다고 한다.",
+      "tts": {
+        "text": "이 배신자는 녹은 납을 배의 키 사슬에 부었다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "작동하는 키가 없으면 배는 기동도 도주도 할 수 없었다.",
+      "text_markdown": "작동하는 키가 없으면 배는 기동도 도주도 할 수 없었다.",
+      "tts": {
+        "text": "작동하는 키가 없으면 배는 기동도 도주도 할 수 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "함부르크 함대는 무력화된 배에 승선하여 제압할 수 있었다.",
+      "text_markdown": "함부르크 함대는 무력화된 배에 승선하여 제압할 수 있었다.",
+      "tts": {
+        "text": "함부르크 함대는 무력화된 배에 승선하여 제압할 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 생포되어 사슬에 묶인 채 함부르크로 압송되었다.",
+      "text_markdown": "슈퇴르테베커는 생포되어 사슬에 묶인 채 함부르크로 압송되었다.",
+      "tts": {
+        "text": "슈퇴르테베커는 생포되어 사슬에 묶인 채 함부르크로 압송되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "시의회 앞에서 재판을 받았다.",
+      "text_markdown": "시의회 앞에서 재판을 받았다.",
+      "tts": {
+        "text": "시의회 앞에서 재판을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "결과는 처음부터 분명했다.",
+      "text_markdown": "결과는 처음부터 분명했다.",
+      "tts": {
+        "text": "결과는 처음부터 분명했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적 행위로 유죄가 선고되고 참수형을 선고받았다.",
+      "text_markdown": "해적 행위로 유죄가 선고되고 참수형을 선고받았다.",
+      "tts": {
+        "text": "해적 행위로 유죄가 선고되고 참수형을 선고받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처형은 1401년 10월 20일 함부르크의 그라스브루크에서 집행되었다.",
+      "text_markdown": "처형은 1401년 10월 20일 함부르크의 그라스브루크에서 집행되었다.",
+      "tts": {
+        "text": "처형은 천사백일 년 시월 이십일에 함부르크의 그라스브루크에서 집행되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그라스브루크는 항구 근처의 습지로, 공개 처형에 사용되었다.",
+      "text_markdown": "그라스브루크는 항구 근처의 습지로, 공개 처형에 사용되었다.",
+      "tts": {
+        "text": "그라스브루크는 항구 근처의 습지로, 공개 처형에 사용되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "악명 높은 해적의 죽음을 보려고 많은 군중이 모였다.",
+      "text_markdown": "악명 높은 해적의 죽음을 보려고 많은 군중이 모였다.",
+      "tts": {
+        "text": "악명 높은 해적의 죽음을 보려고 많은 군중이 모였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이곳에서 슈퇴르테베커에 관한 가장 유명한 전설이 펼쳐진다.",
+      "text_markdown": "이곳에서 슈퇴르테베커에 관한 가장 유명한 전설이 펼쳐진다.",
+      "tts": {
+        "text": "이곳에서 슈퇴르테베커에 관한 가장 유명한 전설이 펼쳐진다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "처형 전, 슈퇴르테베커는 함부르크 시장에게 청원을 했다고 전해진다.",
+      "text_markdown": "처형 전, 슈퇴르테베커는 함부르크 시장에게 청원을 했다고 전해진다.",
+      "tts": {
+        "text": "처형 전, 슈퇴르테베커는 함부르크 시장에게 청원을 했다고 전해진다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "참수 후 자신의 몸이 걸어 지나간 선원은 모두 석방해 달라고 요청했다.",
+      "text_markdown": "참수 후 자신의 몸이 걸어 지나간 선원은 모두 석방해 달라고 요청했다.",
+      "tts": {
+        "text": "참수 후 자신의 몸이 걸어 지나간 선원은 모두 석방해 달라고 요청했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "시장은 아마도 재미있어하며 그 요청을 수락했다.",
+      "text_markdown": "시장은 아마도 재미있어하며 그 요청을 수락했다.",
+      "tts": {
+        "text": "시장은 아마도 재미있어하며 그 요청을 수락했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 사형 집행인의 칼 한 번에 참수되었다.",
+      "text_markdown": "슈퇴르테베커는 사형 집행인의 칼 한 번에 참수되었다.",
+      "tts": {
+        "text": "슈퇴르테베커는 사형 집행인의 칼 한 번에 참수되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러자 전설에 따르면, 머리 없는 몸이 일어섰다.",
+      "text_markdown": "그러자 전설에 따르면, 머리 없는 몸이 일어섰다.",
+      "tts": {
+        "text": "그러자 전설에 따르면, 머리 없는 몸이 일어섰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "11명의 동료 옆을 걸어 지나간 후 사형 집행인이 그를 넘어뜨렸다.",
+      "text_markdown": "11명의 동료 옆을 걸어 지나간 후 사형 집행인이 그를 넘어뜨렸다.",
+      "tts": {
+        "text": "열한 명의 동료 옆을 걸어 지나간 후 사형 집행인이 그를 넘어뜨렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사형 집행인이 발을 내밀었다는 버전도 있고, 통나무를 던졌다는 버전도 있다.",
+      "text_markdown": "사형 집행인이 발을 내밀었다는 버전도 있고, 통나무를 던졌다는 버전도 있다.",
+      "tts": {
+        "text": "사형 집행인이 발을 내밀었다는 버전도 있고, 통나무를 던졌다는 버전도 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함부르크 시장은 약속을 지키기를 거부했다.",
+      "text_markdown": "함부르크 시장은 약속을 지키기를 거부했다.",
+      "tts": {
+        "text": "함부르크 시장은 약속을 지키기를 거부했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포획된 73명의 해적 모두가 그날 참수되었다.",
+      "text_markdown": "포획된 73명의 해적 모두가 그날 참수되었다.",
+      "tts": {
+        "text": "포획된 칠십삼 명의 해적 모두가 그날 참수되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 머리는 엘베강 둑을 따라 나무 말뚝 위에 전시되었다.",
+      "text_markdown": "그들의 머리는 엘베강 둑을 따라 나무 말뚝 위에 전시되었다.",
+      "tts": {
+        "text": "그들의 머리는 엘베강 둑을 따라 나무 말뚝 위에 전시되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적 행위를 고려하는 누구에게나 보내는 엄중한 경고였다.",
+      "text_markdown": "해적 행위를 고려하는 누구에게나 보내는 엄중한 경고였다.",
+      "tts": {
+        "text": "해적 행위를 고려하는 누구에게나 보내는 엄중한 경고였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또 다른 전설은 사형 집행인에게 팔이 피곤하지 않으냐고 물었다고 한다.",
+      "text_markdown": "또 다른 전설은 사형 집행인에게 팔이 피곤하지 않으냐고 물었다고 한다.",
+      "tts": {
+        "text": "또 다른 전설은 사형 집행인에게 팔이 피곤하지 않으냐고 물었다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 함부르크 시의회 전원의 목도 칠 수 있다고 대답했다고 전해진다.",
+      "text_markdown": "그는 함부르크 시의회 전원의 목도 칠 수 있다고 대답했다고 전해진다.",
+      "tts": {
+        "text": "그는 함부르크 시의회 전원의 목도 칠 수 있다고 대답했다고 전해진다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 불경에 대해 사형 집행인 자신도 처형당했다.",
+      "text_markdown": "이 불경에 대해 사형 집행인 자신도 처형당했다.",
+      "tts": {
+        "text": "이 불경에 대해 사형 집행인 자신도 처형당했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 처형 전설 중 어느 것이라도 사실인지 확인하는 것은 불가능하다.",
+      "text_markdown": "이 처형 전설 중 어느 것이라도 사실인지 확인하는 것은 불가능하다.",
+      "tts": {
+        "text": "이 처형 전설 중 어느 것이라도 사실인지 확인하는 것은 불가능하다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "괴데케 미헬스와 나머지 비탈리엔브뤼더는 슈퇴르테베커의 사후에도 습격을 계속했다.",
+      "text_markdown": "괴데케 미헬스와 나머지 비탈리엔브뤼더는 슈퇴르테베커의 사후에도 습격을 계속했다.",
+      "tts": {
+        "text": "괴데케 미헬스와 나머지 비탈리엔브뤼더는 슈퇴르테베커의 사후에도 습격을 계속했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하지만 함부르크 함대가 그들도 추적했다.",
+      "text_markdown": "하지만 함부르크 함대가 그들도 추적했다.",
+      "tts": {
+        "text": "하지만 함부르크 함대가 그들도 추적했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미헬스는 슈퇴르테베커 직후에 포획되어 처형되었다.",
+      "text_markdown": "미헬스는 슈퇴르테베커 직후에 포획되어 처형되었다.",
+      "tts": {
+        "text": "미헬스는 슈퇴르테베커 직후에 포획되어 처형되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더의 시대는 끝났다.",
+      "text_markdown": "비탈리엔브뤼더의 시대는 끝났다.",
+      "tts": {
+        "text": "비탈리엔브뤼더의 시대는 끝났다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비탈리엔브뤼더의 처형은 해적 행위를 고려하는 모든 이에게 보내는 메시지였다.",
+      "text_markdown": "비탈리엔브뤼더의 처형은 해적 행위를 고려하는 모든 이에게 보내는 메시지였다.",
+      "tts": {
+        "text": "비탈리엔브뤼더의 처형은 해적 행위를 고려하는 모든 이에게 보내는 메시지였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함부르크는 잘린 머리를 몇 달 동안 무서운 경고로 전시했다.",
+      "text_markdown": "함부르크는 잘린 머리를 몇 달 동안 무서운 경고로 전시했다.",
+      "tts": {
+        "text": "함부르크는 잘린 머리를 몇 달 동안 무서운 경고로 전시했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "클라우스 슈퇴르테베커는 북독일 민속에서 가장 유명한 인물 중 하나이다.",
+      "text_markdown": "클라우스 슈퇴르테베커는 북독일 민속에서 가장 유명한 인물 중 하나이다.",
+      "tts": {
+        "text": "클라우스 슈퇴르테베커는 북독일 민속에서 가장 유명한 인물 중 하나이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 전설은 육백 년 넘게 전해지고 다시 전해져 왔다.",
+      "text_markdown": "그의 전설은 육백 년 넘게 전해지고 다시 전해져 왔다.",
+      "tts": {
+        "text": "그의 전설은 육백 년 넘게 전해지고 다시 전해져 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적, 반항자, 민중 영웅으로 기억된다.",
+      "text_markdown": "해적, 반항자, 민중 영웅으로 기억된다.",
+      "tts": {
+        "text": "해적, 반항자, 민중 영웅으로 기억된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함부르크 역사 박물관의 두개골이 오랫동안 그의 것으로 여겨졌다.",
+      "text_markdown": "함부르크 역사 박물관의 두개골이 오랫동안 그의 것으로 여겨졌다.",
+      "tts": {
+        "text": "함부르크 역사 박물관의 두개골이 오랫동안 그의 것으로 여겨졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "큰 못이 박혀 있었는데, 처형 후 박힌 것으로 추정되었다.",
+      "text_markdown": "큰 못이 박혀 있었는데, 처형 후 박힌 것으로 추정되었다.",
+      "tts": {
+        "text": "큰 못이 박혀 있었는데, 처형 후 박힌 것으로 추정되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "DNA 검사와 법의학 분석이 그 두개골이 정말 그의 것인지에 대한 의문을 제기했다.",
+      "text_markdown": "DNA 검사와 법의학 분석이 그 두개골이 정말 그의 것인지에 대한 의문을 제기했다.",
+      "tts": {
+        "text": "DNA 검사와 법의학 분석이 그 두개골이 정말 그의 것인지에 대한 의문을 제기했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "박물관은 전시에서 제거했지만 전설은 계속된다.",
+      "text_markdown": "박물관은 전시에서 제거했지만 전설은 계속된다.",
+      "tts": {
+        "text": "박물관은 전시에서 제거했지만 전설은 계속된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함부르크와 북독일의 다른 도시에서 슈퇴르테베커의 동상을 찾을 수 있다.",
+      "text_markdown": "함부르크와 북독일의 다른 도시에서 슈퇴르테베커의 동상을 찾을 수 있다.",
+      "tts": {
+        "text": "함부르크와 북독일의 다른 도시에서 슈퇴르테베커의 동상을 찾을 수 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함부르크의 창고 지구 거리에 큰 청동 동상이 서 있다.",
+      "text_markdown": "함부르크의 창고 지구 거리에 큰 청동 동상이 서 있다.",
+      "tts": {
+        "text": "함부르크의 창고 지구 거리에 큰 청동 동상이 서 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자신감 있고 강인한 남자가 항구 쪽을 응시하는 모습을 묘사하고 있다.",
+      "text_markdown": "자신감 있고 강인한 남자가 항구 쪽을 응시하는 모습을 묘사하고 있다.",
+      "tts": {
+        "text": "자신감 있고 강인한 남자가 항구 쪽을 응시하는 모습을 묘사하고 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "매년 여름 뤼겐 섬의 야외 극장 축제에서 그의 삶에 관한 연극이 공연된다.",
+      "text_markdown": "매년 여름 뤼겐 섬의 야외 극장 축제에서 그의 삶에 관한 연극이 공연된다.",
+      "tts": {
+        "text": "매년 여름 뤼겐 섬의 야외 극장 축제에서 그의 삶에 관한 연극이 공연된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "슈퇴르테베커 축제는 매년 수만 명의 방문객을 끌어들인다.",
+      "text_markdown": "슈퇴르테베커 축제는 매년 수만 명의 방문객을 끌어들인다.",
+      "tts": {
+        "text": "슈퇴르테베커 축제는 매년 수만 명의 방문객을 끌어들인다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "독일에서 가장 인기 있는 야외 극장 행사 중 하나이다.",
+      "text_markdown": "독일에서 가장 인기 있는 야외 극장 행사 중 하나이다.",
+      "tts": {
+        "text": "독일에서 가장 인기 있는 야외 극장 행사 중 하나이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슈퇴르테베커는 영국 민속의 로빈 후드에 비유되어 왔다.",
+      "text_markdown": "슈퇴르테베커는 영국 민속의 로빈 후드에 비유되어 왔다.",
+      "tts": {
+        "text": "슈퇴르테베커는 영국 민속의 로빈 후드에 비유되어 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "둘 다 부자에게서 훔쳐 가난한 자에게 준 전설적인 무법자이다.",
+      "text_markdown": "둘 다 부자에게서 훔쳐 가난한 자에게 준 전설적인 무법자이다.",
+      "tts": {
+        "text": "둘 다 부자에게서 훔쳐 가난한 자에게 준 전설적인 무법자이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "두 이야기 모두 역사적 사실과 수 세기의 윤색이 섞여 있다.",
+      "text_markdown": "두 이야기 모두 역사적 사실과 수 세기의 윤색이 섞여 있다.",
+      "tts": {
+        "text": "두 이야기 모두 역사적 사실과 수 세기의 윤색이 섞여 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "로빈 후드와의 비교 덕분에 슈퇴르테베커의 전설은 국제적으로 이해하기 쉬워졌다.",
+      "text_markdown": "로빈 후드와의 비교 덕분에 슈퇴르테베커의 전설은 국제적으로 이해하기 쉬워졌다.",
+      "tts": {
+        "text": "로빈 후드와의 비교 덕분에 슈퇴르테베커의 전설은 국제적으로 이해하기 쉬워졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사학자들은 비탈리엔브뤼더가 자유 투사였는지 단순한 범죄자였는지 논쟁한다.",
+      "text_markdown": "역사학자들은 비탈리엔브뤼더가 자유 투사였는지 단순한 범죄자였는지 논쟁한다.",
+      "tts": {
+        "text": "역사학자들은 비탈리엔브뤼더가 자유 투사였는지 단순한 범죄자였는지 논쟁한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부는 한자 동맹의 독점에 저항한 사람들로 본다.",
+      "text_markdown": "일부는 한자 동맹의 독점에 저항한 사람들로 본다.",
+      "tts": {
+        "text": "일부는 한자 동맹의 독점에 저항한 사람들로 본다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 그들이 평범한 어부와 해안 마을 주민을 공포에 떨게 했다고 지적한다.",
+      "text_markdown": "다른 이들은 그들이 평범한 어부와 해안 마을 주민을 공포에 떨게 했다고 지적한다.",
+      "tts": {
+        "text": "다른 이들은 그들이 평범한 어부와 해안 마을 주민을 공포에 떨게 했다고 지적한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "진실에는 아마 양쪽 관점의 요소가 모두 포함되어 있을 것이다.",
+      "text_markdown": "진실에는 아마 양쪽 관점의 요소가 모두 포함되어 있을 것이다.",
+      "tts": {
+        "text": "진실에는 아마 양쪽 관점의 요소가 모두 포함되어 있을 것이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사적 기록이 알려주는 것은 제한적이지만 명확하다.",
+      "text_markdown": "역사적 기록이 알려주는 것은 제한적이지만 명확하다.",
+      "tts": {
+        "text": "역사적 기록이 알려주는 것은 제한적이지만 명확하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "슈퇴르테베커라는 이름의 남자가 발트해와 북해에서 해적 무리를 이끌었다.",
+      "text_markdown": "슈퇴르테베커라는 이름의 남자가 발트해와 북해에서 해적 무리를 이끌었다.",
+      "tts": {
+        "text": "슈퇴르테베커라는 이름의 남자가 발트해와 북해에서 해적 무리를 이끌었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 함부르크에 포로로 잡혀 처형되었다.",
+      "text_markdown": "그는 함부르크에 포로로 잡혀 처형되었다.",
+      "tts": {
+        "text": "그는 함부르크에 포로로 잡혀 처형되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 외 모든 것은 수 세기의 이야기가 빚어낸 전설이다.",
+      "text_markdown": "그 외 모든 것은 수 세기의 이야기가 빚어낸 전설이다.",
+      "tts": {
+        "text": "그 외 모든 것은 수 세기의 이야기가 빚어낸 전설이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전설이 계속되는 것은 인간 본성의 깊은 무언가에 호소하기 때문이다.",
+      "text_markdown": "전설이 계속되는 것은 인간 본성의 깊은 무언가에 호소하기 때문이다.",
+      "tts": {
+        "text": "전설이 계속되는 것은 인간 본성의 깊은 무언가에 호소하기 때문이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 사람이 권력자에게 맞서고 궁극의 대가를 치른다는 생각은 문화를 초월하여 공감을 준다.",
+      "text_markdown": "한 사람이 권력자에게 맞서고 궁극의 대가를 치른다는 생각은 문화를 초월하여 공감을 준다.",
+      "tts": {
+        "text": "한 사람이 권력자에게 맞서고 궁극의 대가를 치른다는 생각은 문화를 초월하여 공감을 준다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "클라우스 슈퇴르테베커의 이야기는 어떤 전설은 죽기를 거부한다는 증거이다.",
+      "text_markdown": "클라우스 슈퇴르테베커의 이야기는 어떤 전설은 죽기를 거부한다는 증거이다.",
+      "tts": {
+        "text": "클라우스 슈퇴르테베커의 이야기는 어떤 전설은 죽기를 거부한다는 증거이다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

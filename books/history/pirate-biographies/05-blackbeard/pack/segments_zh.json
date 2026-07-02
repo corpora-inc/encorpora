@@ -1,0 +1,4472 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "language": "zh",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是有史以来最令人恐惧的海盗的真实故事。",
+      "text_markdown": "这是有史以来最令人恐惧的海盗的真实故事。",
+      "tts": {
+        "text": "这是有史以来最令人恐惧的海盗的真实故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字叫爱德华·蒂奇，但世人记住的是他的绰号——黑胡子。",
+      "text_markdown": "他的名字叫爱德华·蒂奇，但世人记住的是他的绰号——黑胡子。",
+      "tts": {
+        "text": "他的名字叫爱德华·蒂奇，但世人记住的是他的绰号——黑胡子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他只横行海上大约2年，但他的传说已经持续了300多年。",
+      "text_markdown": "他只横行海上大约2年，但他的传说已经持续了300多年。",
+      "tts": {
+        "text": "他只横行海上大约两年，但他的传说已经持续了三百多年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子不像你在电影里看到的那些海盗。",
+      "text_markdown": "黑胡子不像你在电影里看到的那些海盗。",
+      "tts": {
+        "text": "黑胡子不像你在电影里看到的那些海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他更可怕。",
+      "text_markdown": "他更可怕。",
+      "tts": {
+        "text": "他更可怕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他把缓燃的引线编进他巨大的黑胡须里，在战斗前点燃它们。",
+      "text_markdown": "他把缓燃的引线编进他巨大的黑胡须里，在战斗前点燃它们。",
+      "tts": {
+        "text": "他把缓燃的引线编进他巨大的黑胡须里，在战斗前点燃它们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "烟雾缭绕在他脸上，使他看起来像一个从海中升起的恶魔。",
+      "text_markdown": "烟雾缭绕在他脸上，使他看起来像一个从海中升起的恶魔。",
+      "tts": {
+        "text": "烟雾缭绕在他脸上，使他看起来像一个从海中升起的恶魔。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这本书将带你走进十八世纪初的港口和航线。",
+      "text_markdown": "这本书将带你走进十八世纪初的港口和航线。",
+      "tts": {
+        "text": "这本书将带你走进十八世纪初的港口和航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你将看到普通水手如何变成亡命之徒，帝国又如何拼命阻止他们。",
+      "text_markdown": "你将看到普通水手如何变成亡命之徒，帝国又如何拼命阻止他们。",
+      "tts": {
+        "text": "你将看到普通水手如何变成亡命之徒，帝国又如何拼命阻止他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本书中的一切都基于历史档案、法庭文件和第一手资料。",
+      "text_markdown": "本书中的一切都基于历史档案、法庭文件和第一手资料。",
+      "tts": {
+        "text": "本书中的一切都基于历史档案、法庭文件和第一手资料。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当事实不确定时，我们会明确说明。",
+      "text_markdown": "当事实不确定时，我们会明确说明。",
+      "tts": {
+        "text": "当事实不确定时，我们会明确说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "塑造海盗的世界",
+      "text_markdown": "塑造海盗的世界"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪末是帝国和远洋贸易的时代。",
+      "text_markdown": "十七世纪末是帝国和远洋贸易的时代。",
+      "tts": {
+        "text": "十七世纪末是帝国和远洋贸易的时代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰、西班牙、法国和荷兰都在争夺美洲的殖民地。",
+      "text_markdown": "英格兰、西班牙、法国和荷兰都在争夺美洲的殖民地。",
+      "tts": {
+        "text": "英格兰、西班牙、法国和荷兰都在争夺美洲的殖民地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的商船载着糖、烟草、棉花和被奴役的人横渡大西洋。",
+      "text_markdown": "他们的商船载着糖、烟草、棉花和被奴役的人横渡大西洋。",
+      "tts": {
+        "text": "他们的商船载着糖、烟草、棉花和被奴役的人横渡大西洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "凡是有贵重货物在海上运输的地方，海盗就会如影随形。",
+      "text_markdown": "凡是有贵重货物在海上运输的地方，海盗就会如影随形。",
+      "tts": {
+        "text": "凡是有贵重货物在海上运输的地方，海盗就会如影随形。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "加勒比海是这场全球贸易的十字路口。",
+      "text_markdown": "加勒比海是这场全球贸易的十字路口。",
+      "tts": {
+        "text": "加勒比海是这场全球贸易的十字路口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数百座岛屿散布在佛罗里达和南美之间温暖的碧绿海水中。",
+      "text_markdown": "数百座岛屿散布在佛罗里达和南美之间温暖的碧绿海水中。",
+      "tts": {
+        "text": "数百座岛屿散布在佛罗里达和南美之间温暖的碧绿海水中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其中许多岛屿属于欧洲列强，被用作甘蔗种植园。",
+      "text_markdown": "其中许多岛屿属于欧洲列强，被用作甘蔗种植园。",
+      "tts": {
+        "text": "其中许多岛屿属于欧洲列强，被用作甘蔗种植园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "满载糖和朗姆酒的船只每周从加勒比港口驶向欧洲。",
+      "text_markdown": "满载糖和朗姆酒的船只每周从加勒比港口驶向欧洲。",
+      "tts": {
+        "text": "满载糖和朗姆酒的船只每周从加勒比港口驶向欧洲。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰和西班牙已经对抗了一个多世纪。",
+      "text_markdown": "英格兰和西班牙已经对抗了一个多世纪。",
+      "tts": {
+        "text": "英格兰和西班牙已经对抗了一个多世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国私掠船长弗朗西斯·德雷克爵士等人曾在十五世纪末袭击西班牙珍宝舰队。",
+      "text_markdown": "英国私掠船长弗朗西斯·德雷克爵士等人曾在十五世纪末袭击西班牙珍宝舰队。",
+      "tts": {
+        "text": "英国私掠船长弗朗西斯·德雷克爵士等人曾在十五世纪末袭击西班牙珍宝舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "私掠船长是获得政府授权攻击敌船的私人船长。",
+      "text_markdown": "私掠船长是获得政府授权攻击敌船的私人船长。",
+      "tts": {
+        "text": "私掠船长是获得政府授权攻击敌船的私人船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "私掠船长持有一份叫做私掠许可证的文件，使他们的攻击合法化。",
+      "text_markdown": "私掠船长持有一份叫做私掠许可证的文件，使他们的攻击合法化。",
+      "tts": {
+        "text": "私掠船长持有一份叫做私掠许可证的文件，使他们的攻击合法化。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮女王战争于1702年爆发，持续到1713年。",
+      "text_markdown": "安妮女王战争于1702年爆发，持续到1713年。",
+      "tts": {
+        "text": "安妮女王战争于一千七百零二年爆发，持续到一千七百一十三年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一场更大的欧洲冲突——西班牙王位继承战争的一部分。",
+      "text_markdown": "这是一场更大的欧洲冲突——西班牙王位继承战争的一部分。",
+      "tts": {
+        "text": "这是一场更大的欧洲冲突——西班牙王位继承战争的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英格兰及其盟友与法国和西班牙争夺贸易路线和领土的控制权。",
+      "text_markdown": "英格兰及其盟友与法国和西班牙争夺贸易路线和领土的控制权。",
+      "tts": {
+        "text": "英格兰及其盟友与法国和西班牙争夺贸易路线和领土的控制权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "战争期间，成千上万的水手在私掠船上服役，为了利润袭击敌国商船。",
+      "text_markdown": "战争期间，成千上万的水手在私掠船上服役，为了利润袭击敌国商船。",
+      "tts": {
+        "text": "战争期间，成千上万的水手在私掠船上服役，为了利润袭击敌国商船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当战争以1713年的乌特勒支条约结束时，一切都变了。",
+      "text_markdown": "当战争以1713年的乌特勒支条约结束时，一切都变了。",
+      "tts": {
+        "text": "当战争以一千七百一十三年的乌特勒支条约结束时，一切都变了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私掠许可证一夜之间被取消了。",
+      "text_markdown": "私掠许可证一夜之间被取消了。",
+      "tts": {
+        "text": "私掠许可证一夜之间被取消了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "成千上万训练有素的水手和战士突然失去了合法的工作。",
+      "text_markdown": "成千上万训练有素的水手和战士突然失去了合法的工作。",
+      "tts": {
+        "text": "成千上万训练有素的水手和战士突然失去了合法的工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们中许多人一无所有，只剩身上的衣服和对大海的了解。",
+      "text_markdown": "他们中许多人一无所有，只剩身上的衣服和对大海的了解。",
+      "tts": {
+        "text": "他们中许多人一无所有，只剩身上的衣服和对大海的了解。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这个时代，普通水手的生活是残酷的。",
+      "text_markdown": "在这个时代，普通水手的生活是残酷的。",
+      "tts": {
+        "text": "在这个时代，普通水手的生活是残酷的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船船长像暴君一样统治着他们的船。",
+      "text_markdown": "商船船长像暴君一样统治着他们的船。",
+      "tts": {
+        "text": "商船船长像暴君一样统治着他们的船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "水手们因小过被殴打，有时根本拿不到薪水。",
+      "text_markdown": "水手们因小过被殴打，有时根本拿不到薪水。",
+      "tts": {
+        "text": "水手们因小过被殴打，有时根本拿不到薪水。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "普通水手每月大约赚1英镑，勉强够在陆地上生存。",
+      "text_markdown": "普通水手每月大约赚1英镑，勉强够在陆地上生存。",
+      "tts": {
+        "text": "普通水手每月大约赚一英镑，勉强够在陆地上生存。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海军服役在许多方面更加糟糕。",
+      "text_markdown": "海军服役在许多方面更加糟糕。",
+      "tts": {
+        "text": "海军服役在许多方面更加糟糕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "皇家海军使用强制征兵队从街上绑架男人，强迫他们上战舰。",
+      "text_markdown": "皇家海军使用强制征兵队从街上绑架男人，强迫他们上战舰。",
+      "tts": {
+        "text": "皇家海军使用强制征兵队从街上绑架男人，强迫他们上战舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "疾病杀死的水手比战斗还多。",
+      "text_markdown": "疾病杀死的水手比战斗还多。",
+      "tts": {
+        "text": "疾病杀死的水手比战斗还多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "坏血病、痢疾和热带病以可怕的速度在拥挤的底层甲板上蔓延。",
+      "text_markdown": "坏血病、痢疾和热带病以可怕的速度在拥挤的底层甲板上蔓延。",
+      "tts": {
+        "text": "坏血病、痢疾和热带病以可怕的速度在拥挤的底层甲板上蔓延。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗行为提供了一种许多水手觉得无法抗拒的选择。",
+      "text_markdown": "海盗行为提供了一种许多水手觉得无法抗拒的选择。",
+      "tts": {
+        "text": "海盗行为提供了一种许多水手觉得无法抗拒的选择。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们选举自己的船长，对重大决策投票表决。",
+      "text_markdown": "海盗们选举自己的船长，对重大决策投票表决。",
+      "tts": {
+        "text": "海盗们选举自己的船长，对重大决策投票表决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战利品的分配比商船或军舰上公平得多。",
+      "text_markdown": "战利品的分配比商船或军舰上公平得多。",
+      "tts": {
+        "text": "战利品的分配比商船或军舰上公平得多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一个普通海盗在一次劫掠中赚到的钱，商船水手要干好几年。",
+      "text_markdown": "一个普通海盗在一次劫掠中赚到的钱，商船水手要干好几年。",
+      "tts": {
+        "text": "一个普通海盗在一次劫掠中赚到的钱，商船水手要干好几年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴哈马群岛的新普罗维登斯岛成为海盗活动的非官方首都。",
+      "text_markdown": "巴哈马群岛的新普罗维登斯岛成为海盗活动的非官方首都。",
+      "tts": {
+        "text": "巴哈马群岛的新普罗维登斯岛成为海盗活动的非官方首都。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拿骚的主要港口可以停泊数百艘船。",
+      "text_markdown": "拿骚的主要港口可以停泊数百艘船。",
+      "tts": {
+        "text": "拿骚的主要港口可以停泊数百艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个岛既没有强大的殖民政府，也没有能够防御它的堡垒。",
+      "text_markdown": "这个岛既没有强大的殖民政府，也没有能够防御它的堡垒。",
+      "tts": {
+        "text": "这个岛既没有强大的殖民政府，也没有能够防御它的堡垒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到了十八世纪初，拿骚的海盗数量已经超过了守法公民。",
+      "text_markdown": "到了十八世纪初，拿骚的海盗数量已经超过了守法公民。",
+      "tts": {
+        "text": "到了十八世纪初，拿骚的海盗数量已经超过了守法公民。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "拿骚变成了历史学家所说的海盗共和国。",
+      "text_markdown": "拿骚变成了历史学家所说的海盗共和国。",
+      "tts": {
+        "text": "拿骚变成了历史学家所说的海盗共和国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "本杰明·霍尼戈尔德、查尔斯·维恩和花布杰克·拉克姆等海盗船长都以此为家。",
+      "text_markdown": "本杰明·霍尼戈尔德、查尔斯·维恩和花布杰克·拉克姆等海盗船长都以此为家。",
+      "tts": {
+        "text": "本杰明·霍尼戈尔德、查尔斯·维恩和花布杰克·拉克姆等海盗船长都以此为家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船只不断到来，带来偷来的货物进行交易。",
+      "text_markdown": "船只不断到来，带来偷来的货物进行交易。",
+      "tts": {
+        "text": "船只不断到来，带来偷来的货物进行交易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "酒馆和市场纷纷涌现，为海盗经济服务。",
+      "text_markdown": "酒馆和市场纷纷涌现，为海盗经济服务。",
+      "tts": {
+        "text": "酒馆和市场纷纷涌现，为海盗经济服务。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "美洲沿海的殖民政府防御薄弱。",
+      "text_markdown": "美洲沿海的殖民政府防御薄弱。",
+      "tts": {
+        "text": "美洲沿海的殖民政府防御薄弱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "弗吉尼亚、卡罗来纳和新英格兰殖民地依赖贸易为生。",
+      "text_markdown": "弗吉尼亚、卡罗来纳和新英格兰殖民地依赖贸易为生。",
+      "tts": {
+        "text": "弗吉尼亚、卡罗来纳和新英格兰殖民地依赖贸易为生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的港口繁忙，但海军力量薄弱。",
+      "text_markdown": "他们的港口繁忙，但海军力量薄弱。",
+      "tts": {
+        "text": "他们的港口繁忙，但海军力量薄弱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一艘装备精良的海盗船就能瘫痪整个殖民地的商业。",
+      "text_markdown": "一艘装备精良的海盗船就能瘫痪整个殖民地的商业。",
+      "tts": {
+        "text": "一艘装备精良的海盗船就能瘫痪整个殖民地的商业。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是孕育了爱德华·蒂奇的世界。",
+      "text_markdown": "这就是孕育了爱德华·蒂奇的世界。",
+      "tts": {
+        "text": "这就是孕育了爱德华·蒂奇的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个充满暴力机遇的世界，大胆的水手要么发财，要么死于尝试。",
+      "text_markdown": "这是一个充满暴力机遇的世界，大胆的水手要么发财，要么死于尝试。",
+      "tts": {
+        "text": "这是一个充满暴力机遇的世界，大胆的水手要么发财，要么死于尝试。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "合法私掠和非法海盗之间的界限很模糊，而且不断变化。",
+      "text_markdown": "合法私掠和非法海盗之间的界限很模糊，而且不断变化。",
+      "tts": {
+        "text": "合法私掠和非法海盗之间的界限很模糊，而且不断变化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造海盗的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "黑胡子利用这个灰色地带比几乎任何人都出色。",
+      "text_markdown": "黑胡子利用这个灰色地带比几乎任何人都出色。",
+      "tts": {
+        "text": "黑胡子利用这个灰色地带比几乎任何人都出色。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "爱德华·蒂奇的成长",
+      "text_markdown": "爱德华·蒂奇的成长"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "关于黑胡子的早年生活，几乎没有确切的记载。",
+      "text_markdown": "关于黑胡子的早年生活，几乎没有确切的记载。",
+      "tts": {
+        "text": "关于黑胡子的早年生活，几乎没有确切的记载。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这在海盗中很常见，他们成为海盗之前的生活很少被记入官方档案。",
+      "text_markdown": "这在海盗中很常见，他们成为海盗之前的生活很少被记入官方档案。",
+      "tts": {
+        "text": "这在海盗中很常见，他们成为海盗之前的生活很少被记入官方档案。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家必须从零散的线索和后来的记述中拼凑他的出身。",
+      "text_markdown": "历史学家必须从零散的线索和后来的记述中拼凑他的出身。",
+      "tts": {
+        "text": "历史学家必须从零散的线索和后来的记述中拼凑他的出身。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最广泛接受的理论是爱德华·蒂奇出生在英格兰的布里斯托尔。",
+      "text_markdown": "最广泛接受的理论是爱德华·蒂奇出生在英格兰的布里斯托尔。",
+      "tts": {
+        "text": "最广泛接受的理论是爱德华·蒂奇出生在英格兰的布里斯托尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "布里斯托尔是十七世纪末大英帝国最伟大的港口城市之一。",
+      "text_markdown": "布里斯托尔是十七世纪末大英帝国最伟大的港口城市之一。",
+      "tts": {
+        "text": "布里斯托尔是十七世纪末大英帝国最伟大的港口城市之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船只从布里斯托尔驶向非洲、加勒比和美洲殖民地。",
+      "text_markdown": "船只从布里斯托尔驶向非洲、加勒比和美洲殖民地。",
+      "tts": {
+        "text": "船只从布里斯托尔驶向非洲、加勒比和美洲殖民地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这座城市的经济建立在海上贸易之上，包括跨大西洋奴隶贸易。",
+      "text_markdown": "这座城市的经济建立在海上贸易之上，包括跨大西洋奴隶贸易。",
+      "tts": {
+        "text": "这座城市的经济建立在海上贸易之上，包括跨大西洋奴隶贸易。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家估计蒂奇大约出生于1680年，但没有找到出生记录。",
+      "text_markdown": "历史学家估计蒂奇大约出生于1680年，但没有找到出生记录。",
+      "tts": {
+        "text": "历史学家估计蒂奇大约出生于一千六百八十年，但没有找到出生记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的姓氏在不同的记录中出现为蒂奇、萨奇、撒赫和塔奇。",
+      "text_markdown": "他的姓氏在不同的记录中出现为蒂奇、萨奇、撒赫和塔奇。",
+      "tts": {
+        "text": "他的姓氏在不同的记录中出现为蒂奇、萨奇、撒赫和塔奇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那个时代拼写没有标准化，名字常常按发音书写。",
+      "text_markdown": "那个时代拼写没有标准化，名字常常按发音书写。",
+      "tts": {
+        "text": "那个时代拼写没有标准化，名字常常按发音书写。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些证据表明蒂奇来自一个体面的家庭。",
+      "text_markdown": "一些证据表明蒂奇来自一个体面的家庭。",
+      "tts": {
+        "text": "一些证据表明蒂奇来自一个体面的家庭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他能读会写，这在那个时期的普通水手中很不寻常。",
+      "text_markdown": "他能读会写，这在那个时期的普通水手中很不寻常。",
+      "tts": {
+        "text": "他能读会写，这在那个时期的普通水手中很不寻常。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他写的一封信保存在历史档案中，字迹清晰而自信。",
+      "text_markdown": "他写的一封信保存在历史档案中，字迹清晰而自信。",
+      "tts": {
+        "text": "他写的一封信保存在历史档案中，字迹清晰而自信。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "识字能力表明他至少接受过一些正规教育，可能是在布里斯托尔的慈善学校之一。",
+      "text_markdown": "识字能力表明他至少接受过一些正规教育，可能是在布里斯托尔的慈善学校之一。",
+      "tts": {
+        "text": "识字能力表明他至少接受过一些正规教育，可能是在布里斯托尔的慈善学校之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蒂奇几乎可以肯定在年轻时就出海了。",
+      "text_markdown": "蒂奇几乎可以肯定在年轻时就出海了。",
+      "tts": {
+        "text": "蒂奇几乎可以肯定在年轻时就出海了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在布里斯托尔，大海是最明显的就业途径。",
+      "text_markdown": "在布里斯托尔，大海是最明显的就业途径。",
+      "tts": {
+        "text": "在布里斯托尔，大海是最明显的就业途径。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "年仅十二岁的男孩就在商船上担任侍童或学徒水手。",
+      "text_markdown": "年仅十二岁的男孩就在商船上担任侍童或学徒水手。",
+      "tts": {
+        "text": "年仅十二岁的男孩就在商船上担任侍童或学徒水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这份工作虽然危险，但提供了冒险和看世界的机会。",
+      "text_markdown": "这份工作虽然危险，但提供了冒险和看世界的机会。",
+      "tts": {
+        "text": "这份工作虽然危险，但提供了冒险和看世界的机会。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮女王战争开始后，蒂奇很可能作为私掠船员入伍。",
+      "text_markdown": "安妮女王战争开始后，蒂奇很可能作为私掠船员入伍。",
+      "tts": {
+        "text": "安妮女王战争开始后，蒂奇很可能作为私掠船员入伍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "布里斯托尔是针对法国和西班牙航运进行私掠作战的主要基地。",
+      "text_markdown": "布里斯托尔是针对法国和西班牙航运进行私掠作战的主要基地。",
+      "tts": {
+        "text": "布里斯托尔是针对法国和西班牙航运进行私掠作战的主要基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个有航海经验的年轻人会被热切地招募。",
+      "text_markdown": "一个有航海经验的年轻人会被热切地招募。",
+      "tts": {
+        "text": "一个有航海经验的年轻人会被热切地招募。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "私掠生涯教会了蒂奇后来使他成名的海战技能。",
+      "text_markdown": "私掠生涯教会了蒂奇后来使他成名的海战技能。",
+      "tts": {
+        "text": "私掠生涯教会了蒂奇后来使他成名的海战技能。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战争给了蒂奇多年的舰对舰作战经验。",
+      "text_markdown": "战争给了蒂奇多年的舰对舰作战经验。",
+      "tts": {
+        "text": "战争给了蒂奇多年的舰对舰作战经验。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他学会了操作大炮、登上敌舰以及在炮火中指挥船员。",
+      "text_markdown": "他学会了操作大炮、登上敌舰以及在炮火中指挥船员。",
+      "tts": {
+        "text": "他学会了操作大炮、登上敌舰以及在炮火中指挥船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他还学习了加勒比地区的地理和商船航行的规律。",
+      "text_markdown": "他还学习了加勒比地区的地理和商船航行的规律。",
+      "tts": {
+        "text": "他还学习了加勒比地区的地理和商船航行的规律。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些知识对一个未来的海盗来说是无价的。",
+      "text_markdown": "这些知识对一个未来的海盗来说是无价的。",
+      "tts": {
+        "text": "这些知识对一个未来的海盗来说是无价的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战争于1713年结束时，蒂奇发现自己和成千上万其他水手处于同样的境地。",
+      "text_markdown": "战争于1713年结束时，蒂奇发现自己和成千上万其他水手处于同样的境地。",
+      "tts": {
+        "text": "战争于一千七百一十三年结束时，蒂奇发现自己和成千上万其他水手处于同样的境地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他有技能和经验，却没有合法的途径来运用它们。",
+      "text_markdown": "他有技能和经验，却没有合法的途径来运用它们。",
+      "tts": {
+        "text": "他有技能和经验，却没有合法的途径来运用它们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "和平时期的皇家海军在缩编，商船也不招人。",
+      "text_markdown": "和平时期的皇家海军在缩编，商船也不招人。",
+      "tts": {
+        "text": "和平时期的皇家海军在缩编，商船也不招人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对于像他这样的人来说，走上海盗之路几乎是不可避免的。",
+      "text_markdown": "对于像他这样的人来说，走上海盗之路几乎是不可避免的。",
+      "tts": {
+        "text": "对于像他这样的人来说，走上海盗之路几乎是不可避免的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蒂奇来到了巴哈马群岛的新普罗维登斯岛。",
+      "text_markdown": "蒂奇来到了巴哈马群岛的新普罗维登斯岛。",
+      "tts": {
+        "text": "蒂奇来到了巴哈马群岛的新普罗维登斯岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那里，他加入了本杰明·霍尼戈尔德船长的船队，后者是那个时代最成功的海盗之一。",
+      "text_markdown": "在那里，他加入了本杰明·霍尼戈尔德船长的船队，后者是那个时代最成功的海盗之一。",
+      "tts": {
+        "text": "在那里，他加入了本杰明·霍尼戈尔德船长的船队，后者是那个时代最成功的海盗之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "霍尼戈尔德是一名前私掠船长，在战后转向了海盗活动。",
+      "text_markdown": "霍尼戈尔德是一名前私掠船长，在战后转向了海盗活动。",
+      "tts": {
+        "text": "霍尼戈尔德是一名前私掠船长，在战后转向了海盗活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他指挥着一支从拿骚港出发的小型舰队。",
+      "text_markdown": "他指挥着一支从拿骚港出发的小型舰队。",
+      "tts": {
+        "text": "他指挥着一支从拿骚港出发的小型舰队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "霍尼戈尔德很快认识到了蒂奇的能力。",
+      "text_markdown": "霍尼戈尔德很快认识到了蒂奇的能力。",
+      "tts": {
+        "text": "霍尼戈尔德很快认识到了蒂奇的能力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "蒂奇身材魁梧，身高远超六英尺，在大多数人都矮得多的时代显得格外高大。",
+      "text_markdown": "蒂奇身材魁梧，身高远超六英尺，在大多数人都矮得多的时代显得格外高大。",
+      "tts": {
+        "text": "蒂奇身材魁梧，身高远超六英尺，在大多数人都矮得多的时代显得格外高大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在战斗中勇敢无畏，天生善于指挥他人。",
+      "text_markdown": "他在战斗中勇敢无畏，天生善于指挥他人。",
+      "tts": {
+        "text": "他在战斗中勇敢无畏，天生善于指挥他人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "霍尼戈尔德给了蒂奇一艘缴获的单桅帆船的指挥权。",
+      "text_markdown": "霍尼戈尔德给了蒂奇一艘缴获的单桅帆船的指挥权。",
+      "tts": {
+        "text": "霍尼戈尔德给了蒂奇一艘缴获的单桅帆船的指挥权。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1717年末，蒂奇和霍尼戈尔德捕获了一艘名为拉康科德号的法国大型商船。",
+      "text_markdown": "1717年末，蒂奇和霍尼戈尔德捕获了一艘名为拉康科德号的法国大型商船。",
+      "tts": {
+        "text": "一千七百一十七年末，蒂奇和霍尼戈尔德捕获了一艘名为拉康科德号的法国大型商船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拉康科德号是一艘奴隶船，武装精良，载有贵重货物。",
+      "text_markdown": "拉康科德号是一艘奴隶船，武装精良，载有贵重货物。",
+      "tts": {
+        "text": "拉康科德号是一艘奴隶船，武装精良，载有贵重货物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "蒂奇将这艘船据为己有，并开始改造它。",
+      "text_markdown": "蒂奇将这艘船据为己有，并开始改造它。",
+      "tts": {
+        "text": "蒂奇将这艘船据为己有，并开始改造它。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他加装了更多大炮，直到这艘船火力十足。",
+      "text_markdown": "他加装了更多大炮，直到这艘船火力十足。",
+      "tts": {
+        "text": "他加装了更多大炮，直到这艘船火力十足。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蒂奇将他的新旗舰更名为安妮女王复仇号。",
+      "text_markdown": "蒂奇将他的新旗舰更名为安妮女王复仇号。",
+      "tts": {
+        "text": "蒂奇将他的新旗舰更名为安妮女王复仇号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个名字是一个刻意的政治声明。",
+      "text_markdown": "这个名字是一个刻意的政治声明。",
+      "tts": {
+        "text": "这个名字是一个刻意的政治声明。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它指的是安妮女王，在她统治期间私掠船员曾合法服役。",
+      "text_markdown": "它指的是安妮女王，在她统治期间私掠船员曾合法服役。",
+      "tts": {
+        "text": "它指的是安妮女王，在她统治期间私掠船员曾合法服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "蒂奇宣称他的海盗行为是对王室违背承诺的报复。",
+      "text_markdown": "蒂奇宣称他的海盗行为是对王室违背承诺的报复。",
+      "tts": {
+        "text": "蒂奇宣称他的海盗行为是对王室违背承诺的报复。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安妮女王复仇号拥有40门大炮和300多名船员，是海上最强大的海盗船之一。",
+      "text_markdown": "安妮女王复仇号拥有40门大炮和300多名船员，是海上最强大的海盗船之一。",
+      "tts": {
+        "text": "安妮女王复仇号拥有四十门大炮和三百多名船员，是海上最强大的海盗船之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黑胡子不再是在别人权威下行事的初级海盗了。",
+      "text_markdown": "黑胡子不再是在别人权威下行事的初级海盗了。",
+      "tts": {
+        "text": "黑胡子不再是在别人权威下行事的初级海盗了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他现在是一股不可忽视的力量。",
+      "text_markdown": "他现在是一股不可忽视的力量。",
+      "tts": {
+        "text": "他现在是一股不可忽视的力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "爱德华·蒂奇的成长",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "黑胡子的传奇即将拉开序幕。",
+      "text_markdown": "黑胡子的传奇即将拉开序幕。",
+      "tts": {
+        "text": "黑胡子的传奇即将拉开序幕。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "大西洋的恐怖",
+      "text_markdown": "大西洋的恐怖"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年初，黑胡子驾驶安妮女王复仇号从加勒比向北航行。",
+      "text_markdown": "1718年初，黑胡子驾驶安妮女王复仇号从加勒比向北航行。",
+      "tts": {
+        "text": "一千七百一十八年初，黑胡子驾驶安妮女王复仇号从加勒比向北航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的目标是美洲殖民地海岸的航运要道。",
+      "text_markdown": "他的目标是美洲殖民地海岸的航运要道。",
+      "tts": {
+        "text": "他的目标是美洲殖民地海岸的航运要道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些水域商船来往频繁，防御却很薄弱。",
+      "text_markdown": "这些水域商船来往频繁，防御却很薄弱。",
+      "tts": {
+        "text": "这些水域商船来往频繁，防御却很薄弱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "黑胡子打算最大限度地利用这一弱点。",
+      "text_markdown": "黑胡子打算最大限度地利用这一弱点。",
+      "tts": {
+        "text": "黑胡子打算最大限度地利用这一弱点。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子的战略既靠恐惧，也靠火力。",
+      "text_markdown": "黑胡子的战略既靠恐惧，也靠火力。",
+      "tts": {
+        "text": "黑胡子的战略既靠恐惧，也靠火力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他明白，一个被吓坏的敌人会不战而降。",
+      "text_markdown": "他明白，一个被吓坏的敌人会不战而降。",
+      "tts": {
+        "text": "他明白，一个被吓坏的敌人会不战而降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "避免了一场战斗就等于赢得了一场战斗，因为它保全了他的船员和船只。",
+      "text_markdown": "避免了一场战斗就等于赢得了一场战斗，因为它保全了他的船员和船只。",
+      "tts": {
+        "text": "避免了一场战斗就等于赢得了一场战斗，因为它保全了他的船员和船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他外表的每一个元素都是为了最大限度地制造恐惧。",
+      "text_markdown": "他外表的每一个元素都是为了最大限度地制造恐惧。",
+      "tts": {
+        "text": "他外表的每一个元素都是为了最大限度地制造恐惧。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他把浓密的黑胡须留到了很长，覆盖了大部分面部和胸部。",
+      "text_markdown": "他把浓密的黑胡须留到了很长，覆盖了大部分面部和胸部。",
+      "tts": {
+        "text": "他把浓密的黑胡须留到了很长，覆盖了大部分面部和胸部。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "战斗前，他会在胡须中编入一种叫慢燃火绳的大麻缓燃引线。",
+      "text_markdown": "战斗前，他会在胡须中编入一种叫慢燃火绳的大麻缓燃引线。",
+      "tts": {
+        "text": "战斗前，他会在胡须中编入一种叫慢燃火绳的大麻缓燃引线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "点燃后，这些引线会在他头部周围产生一团团烟雾。",
+      "text_markdown": "点燃后，这些引线会在他头部周围产生一团团烟雾。",
+      "tts": {
+        "text": "点燃后，这些引线会在他头部周围产生一团团烟雾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "效果如同超自然现象，像一个从硫磺火焰中冒出的怪物。",
+      "text_markdown": "效果如同超自然现象，像一个从硫磺火焰中冒出的怪物。",
+      "tts": {
+        "text": "效果如同超自然现象，像一个从硫磺火焰中冒出的怪物。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在胸前的皮革子弹带上绑着多把手枪。",
+      "text_markdown": "他在胸前的皮革子弹带上绑着多把手枪。",
+      "tts": {
+        "text": "他在胸前的皮革子弹带上绑着多把手枪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "腰带上还别着几把短刀和匕首。",
+      "text_markdown": "腰带上还别着几把短刀和匕首。",
+      "tts": {
+        "text": "腰带上还别着几把短刀和匕首。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的穿着刻意戏剧化，旨在尽可能地令人生畏。",
+      "text_markdown": "他的穿着刻意戏剧化，旨在尽可能地令人生畏。",
+      "tts": {
+        "text": "他的穿着刻意戏剧化，旨在尽可能地令人生畏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "目击者将他描述为恶魔的化身。",
+      "text_markdown": "目击者将他描述为恶魔的化身。",
+      "tts": {
+        "text": "目击者将他描述为恶魔的化身。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子在身边聚集了一支小型海盗舰队。",
+      "text_markdown": "黑胡子在身边聚集了一支小型海盗舰队。",
+      "tts": {
+        "text": "黑胡子在身边聚集了一支小型海盗舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在鼎盛时期，他指挥着4艘船和数百名海盗。",
+      "text_markdown": "在鼎盛时期，他指挥着4艘船和数百名海盗。",
+      "tts": {
+        "text": "在鼎盛时期，他指挥着四艘船和数百名海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是一种不寻常的海盗力量集中。",
+      "text_markdown": "这是一种不寻常的海盗力量集中。",
+      "tts": {
+        "text": "这是一种不寻常的海盗力量集中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大多数海盗独自或成对行动，但黑胡子的格局更大。",
+      "text_markdown": "大多数海盗独自或成对行动，但黑胡子的格局更大。",
+      "tts": {
+        "text": "大多数海盗独自或成对行动，但黑胡子的格局更大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的舰队沿海岸一艘接一艘地俘获船只。",
+      "text_markdown": "他的舰队沿海岸一艘接一艘地俘获船只。",
+      "tts": {
+        "text": "他的舰队沿海岸一艘接一艘地俘获船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "看到他黑旗的商船船长往往立刻投降。",
+      "text_markdown": "看到他黑旗的商船船长往往立刻投降。",
+      "tts": {
+        "text": "看到他黑旗的商船船长往往立刻投降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "抵抗的人会被压倒性的兵力和火力击垮。",
+      "text_markdown": "抵抗的人会被压倒性的兵力和火力击垮。",
+      "tts": {
+        "text": "抵抗的人会被压倒性的兵力和火力击垮。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "黑胡子的名声传遍了从加勒比到新英格兰的每一个港口。",
+      "text_markdown": "黑胡子的名声传遍了从加勒比到新英格兰的每一个港口。",
+      "tts": {
+        "text": "黑胡子的名声传遍了从加勒比到新英格兰的每一个港口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在典型的攻击中，黑胡子会升起假旗来接近目标。",
+      "text_markdown": "在典型的攻击中，黑胡子会升起假旗来接近目标。",
+      "tts": {
+        "text": "在典型的攻击中，黑胡子会升起假旗来接近目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们经常挂起友好国家的旗帜来靠近猎物，然后才暴露身份。",
+      "text_markdown": "海盗们经常挂起友好国家的旗帜来靠近猎物，然后才暴露身份。",
+      "tts": {
+        "text": "海盗们经常挂起友好国家的旗帜来靠近猎物，然后才暴露身份。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在最后一刻，他们才升起真正的海盗旗。",
+      "text_markdown": "在最后一刻，他们才升起真正的海盗旗。",
+      "tts": {
+        "text": "在最后一刻，他们才升起真正的海盗旗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到那时，受害者通常已经来不及逃跑了。",
+      "text_markdown": "到那时，受害者通常已经来不及逃跑了。",
+      "tts": {
+        "text": "到那时，受害者通常已经来不及逃跑了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子的旗帜独特而恐怖。",
+      "text_markdown": "黑胡子的旗帜独特而恐怖。",
+      "tts": {
+        "text": "黑胡子的旗帜独特而恐怖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旗上是一具骷髅，一只手拿着沙漏，另一只手拿着长矛。",
+      "text_markdown": "旗上是一具骷髅，一只手拿着沙漏，另一只手拿着长矛。",
+      "tts": {
+        "text": "旗上是一具骷髅，一只手拿着沙漏，另一只手拿着长矛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "长矛指向一颗正在滴血的心脏。",
+      "text_markdown": "长矛指向一颗正在滴血的心脏。",
+      "tts": {
+        "text": "长矛指向一颗正在滴血的心脏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "信息很明确：你们的时间不多了，死亡正在逼近。",
+      "text_markdown": "信息很明确：你们的时间不多了，死亡正在逼近。",
+      "tts": {
+        "text": "信息很明确：你们的时间不多了，死亡正在逼近。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年5月，黑胡子实施了他最大胆的计划。",
+      "text_markdown": "1718年5月，黑胡子实施了他最大胆的计划。",
+      "tts": {
+        "text": "一千七百一十八年五月，黑胡子实施了他最大胆的计划。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他率领舰队直接驶入南卡罗来纳州查尔斯顿的港口。",
+      "text_markdown": "他率领舰队直接驶入南卡罗来纳州查尔斯顿的港口。",
+      "tts": {
+        "text": "他率领舰队直接驶入南卡罗来纳州查尔斯顿的港口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "查尔斯顿是美洲殖民地最富有、最重要的港口之一。",
+      "text_markdown": "查尔斯顿是美洲殖民地最富有、最重要的港口之一。",
+      "tts": {
+        "text": "查尔斯顿是美洲殖民地最富有、最重要的港口之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "接下来发生的是历史上最无耻的海盗行为之一。",
+      "text_markdown": "接下来发生的是历史上最无耻的海盗行为之一。",
+      "tts": {
+        "text": "接下来发生的是历史上最无耻的海盗行为之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子封锁了整个查尔斯顿港。",
+      "text_markdown": "黑胡子封锁了整个查尔斯顿港。",
+      "tts": {
+        "text": "黑胡子封锁了整个查尔斯顿港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有他的允许，任何船只都无法进出。",
+      "text_markdown": "没有他的允许，任何船只都无法进出。",
+      "tts": {
+        "text": "没有他的允许，任何船只都无法进出。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "将近一个星期，他把整座城市扣为人质。",
+      "text_markdown": "将近一个星期，他把整座城市扣为人质。",
+      "tts": {
+        "text": "将近一个星期，他把整座城市扣为人质。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他抓住了每一艘试图通过港口入口的船只。",
+      "text_markdown": "他抓住了每一艘试图通过港口入口的船只。",
+      "tts": {
+        "text": "他抓住了每一艘试图通过港口入口的船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在封锁期间至少夺取了8艘船。",
+      "text_markdown": "他在封锁期间至少夺取了8艘船。",
+      "tts": {
+        "text": "他在封锁期间至少夺取了八艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的俘虏中有查尔斯顿最显赫的一些市民。",
+      "text_markdown": "他的俘虏中有查尔斯顿最显赫的一些市民。",
+      "tts": {
+        "text": "他的俘虏中有查尔斯顿最显赫的一些市民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他扣押人质，并威胁要杀掉所有人。",
+      "text_markdown": "他扣押人质，并威胁要杀掉所有人。",
+      "tts": {
+        "text": "他扣押人质，并威胁要杀掉所有人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子的要求令人意外。",
+      "text_markdown": "黑胡子的要求令人意外。",
+      "tts": {
+        "text": "黑胡子的要求令人意外。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他没有要求黄金或珠宝。",
+      "text_markdown": "他没有要求黄金或珠宝。",
+      "tts": {
+        "text": "他没有要求黄金或珠宝。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "相反，他要求一箱药品。",
+      "text_markdown": "相反，他要求一箱药品。",
+      "tts": {
+        "text": "相反，他要求一箱药品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "历史学家认为他的船员患上了梅毒和其他水手常见的疾病。",
+      "text_markdown": "历史学家认为他的船员患上了梅毒和其他水手常见的疾病。",
+      "tts": {
+        "text": "历史学家认为他的船员患上了梅毒和其他水手常见的疾病。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南卡罗来纳总督没有能力挑战黑胡子舰队的海军力量。",
+      "text_markdown": "南卡罗来纳总督没有能力挑战黑胡子舰队的海军力量。",
+      "tts": {
+        "text": "南卡罗来纳总督没有能力挑战黑胡子舰队的海军力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "经过紧张的谈判，城市将药品送给了海盗。",
+      "text_markdown": "经过紧张的谈判，城市将药品送给了海盗。",
+      "tts": {
+        "text": "经过紧张的谈判，城市将药品送给了海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黑胡子释放了人质，不过先剥夺了他们的贵重物品。",
+      "text_markdown": "黑胡子释放了人质，不过先剥夺了他们的贵重物品。",
+      "tts": {
+        "text": "黑胡子释放了人质，不过先剥夺了他们的贵重物品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他离开查尔斯顿时，声名达到了绝对的顶峰。",
+      "text_markdown": "他离开查尔斯顿时，声名达到了绝对的顶峰。",
+      "tts": {
+        "text": "他离开查尔斯顿时，声名达到了绝对的顶峰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "查尔斯顿之后，黑胡子向北航行至北卡罗来纳州的博福特入口。",
+      "text_markdown": "查尔斯顿之后，黑胡子向北航行至北卡罗来纳州的博福特入口。",
+      "tts": {
+        "text": "查尔斯顿之后，黑胡子向北航行至北卡罗来纳州的博福特入口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在这里，安妮女王复仇号搁浅在沙洲上，就此损失了。",
+      "text_markdown": "在这里，安妮女王复仇号搁浅在沙洲上，就此损失了。",
+      "tts": {
+        "text": "在这里，安妮女王复仇号搁浅在沙洲上，就此损失了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些历史学家认为这是黑胡子故意所为，目的是缩减他的舰队和船员。",
+      "text_markdown": "一些历史学家认为这是黑胡子故意所为，目的是缩减他的舰队和船员。",
+      "tts": {
+        "text": "一些历史学家认为这是黑胡子故意所为，目的是缩减他的舰队和船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "大西洋的恐怖",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "数百名海盗被遗弃在岸上，而黑胡子带走了最好的宝藏。",
+      "text_markdown": "数百名海盗被遗弃在岸上，而黑胡子带走了最好的宝藏。",
+      "tts": {
+        "text": "数百名海盗被遗弃在岸上，而黑胡子带走了最好的宝藏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "权力的巅峰",
+      "text_markdown": "权力的巅峰"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "失去安妮女王复仇号后，黑胡子航行到北卡罗来纳州的巴斯镇。",
+      "text_markdown": "失去安妮女王复仇号后，黑胡子航行到北卡罗来纳州的巴斯镇。",
+      "tts": {
+        "text": "失去安妮女王复仇号后，黑胡子航行到北卡罗来纳州的巴斯镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那里，他会见了总督查尔斯·伊登，并接受了皇家赦免。",
+      "text_markdown": "在那里，他会见了总督查尔斯·伊登，并接受了皇家赦免。",
+      "tts": {
+        "text": "在那里，他会见了总督查尔斯·伊登，并接受了皇家赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赦免本应结束他的海盗生涯。",
+      "text_markdown": "赦免本应结束他的海盗生涯。",
+      "tts": {
+        "text": "赦免本应结束他的海盗生涯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但黑胡子根本无意退休。",
+      "text_markdown": "但黑胡子根本无意退休。",
+      "tts": {
+        "text": "但黑胡子根本无意退休。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴斯是帕姆利科河畔一个只有几十间房子的小社区。",
+      "text_markdown": "巴斯是帕姆利科河畔一个只有几十间房子的小社区。",
+      "tts": {
+        "text": "巴斯是帕姆利科河畔一个只有几十间房子的小社区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是大西洋上最令人恐惧的海盗不太可能的家。",
+      "text_markdown": "它是大西洋上最令人恐惧的海盗不太可能的家。",
+      "tts": {
+        "text": "它是大西洋上最令人恐惧的海盗不太可能的家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但它的偏僻和腐败的总督使它完美地符合黑胡子的需要。",
+      "text_markdown": "但它的偏僻和腐败的总督使它完美地符合黑胡子的需要。",
+      "tts": {
+        "text": "但它的偏僻和腐败的总督使它完美地符合黑胡子的需要。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "总督查尔斯·伊登似乎是黑胡子心甘情愿的合作伙伴。",
+      "text_markdown": "总督查尔斯·伊登似乎是黑胡子心甘情愿的合作伙伴。",
+      "tts": {
+        "text": "总督查尔斯·伊登似乎是黑胡子心甘情愿的合作伙伴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他为海盗的持续活动提供了法律保护。",
+      "text_markdown": "他为海盗的持续活动提供了法律保护。",
+      "tts": {
+        "text": "他为海盗的持续活动提供了法律保护。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黑胡子在海上劫获船只，然后将货物带回巴斯。",
+      "text_markdown": "黑胡子在海上劫获船只，然后将货物带回巴斯。",
+      "tts": {
+        "text": "黑胡子在海上劫获船只，然后将货物带回巴斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "伊登会宣布这些货物为合法打捞物，并从中分一杯羹。",
+      "text_markdown": "伊登会宣布这些货物为合法打捞物，并从中分一杯羹。",
+      "tts": {
+        "text": "伊登会宣布这些货物为合法打捞物，并从中分一杯羹。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子在巴斯期间娶了一名当地女子。",
+      "text_markdown": "黑胡子在巴斯期间娶了一名当地女子。",
+      "tts": {
+        "text": "黑胡子在巴斯期间娶了一名当地女子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据信她大约16岁。",
+      "text_markdown": "据信她大约16岁。",
+      "tts": {
+        "text": "据信她大约十六岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史记录表明，她可能是他的第十四任妻子。",
+      "text_markdown": "历史记录表明，她可能是他的第十四任妻子。",
+      "tts": {
+        "text": "历史记录表明，她可能是他的第十四任妻子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些婚姻大多是海员之间常见的非正式安排。",
+      "text_markdown": "这些婚姻大多是海员之间常见的非正式安排。",
+      "tts": {
+        "text": "这些婚姻大多是海员之间常见的非正式安排。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管获得了赦免，黑胡子仍继续劫掠航运。",
+      "text_markdown": "尽管获得了赦免，黑胡子仍继续劫掠航运。",
+      "tts": {
+        "text": "尽管获得了赦免，黑胡子仍继续劫掠航运。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他声称被劫获的船只是西班牙或法国船只，因此属于合法战利品。",
+      "text_markdown": "他声称被劫获的船只是西班牙或法国船只，因此属于合法战利品。",
+      "tts": {
+        "text": "他声称被劫获的船只是西班牙或法国船只，因此属于合法战利品。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "伊登总督不加调查就便利地认证了这些说法。",
+      "text_markdown": "伊登总督不加调查就便利地认证了这些说法。",
+      "tts": {
+        "text": "伊登总督不加调查就便利地认证了这些说法。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子与当地社区的关系很复杂。",
+      "text_markdown": "黑胡子与当地社区的关系很复杂。",
+      "tts": {
+        "text": "黑胡子与当地社区的关系很复杂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些居民欢迎他给这个挣扎中的小镇带来的财富。",
+      "text_markdown": "一些居民欢迎他给这个挣扎中的小镇带来的财富。",
+      "tts": {
+        "text": "一些居民欢迎他给这个挣扎中的小镇带来的财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其他人则生活在对这个暴力海盗及其武装船员的恐惧之中。",
+      "text_markdown": "其他人则生活在对这个暴力海盗及其武装船员的恐惧之中。",
+      "tts": {
+        "text": "其他人则生活在对这个暴力海盗及其武装船员的恐惧之中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有人敢公开挑战他。",
+      "text_markdown": "没有人敢公开挑战他。",
+      "tts": {
+        "text": "没有人敢公开挑战他。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在巴斯的家中举办奢华的聚会。",
+      "text_markdown": "他在巴斯的家中举办奢华的聚会。",
+      "tts": {
+        "text": "他在巴斯的家中举办奢华的聚会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当地的显要人物，包括总督本人，都参加了这些活动。",
+      "text_markdown": "当地的显要人物，包括总督本人，都参加了这些活动。",
+      "tts": {
+        "text": "当地的显要人物，包括总督本人，都参加了这些活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "偷来的美酒和烈酒随意畅饮。",
+      "text_markdown": "偷来的美酒和烈酒随意畅饮。",
+      "tts": {
+        "text": "偷来的美酒和烈酒随意畅饮。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些聚会帮助黑胡子维持他的盟友和线人网络。",
+      "text_markdown": "这些聚会帮助黑胡子维持他的盟友和线人网络。",
+      "tts": {
+        "text": "这些聚会帮助黑胡子维持他的盟友和线人网络。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子还在奥克拉科克岛上维持着一个藏身之所。",
+      "text_markdown": "黑胡子还在奥克拉科克岛上维持着一个藏身之所。",
+      "tts": {
+        "text": "黑胡子还在奥克拉科克岛上维持着一个藏身之所。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥克拉科克是北卡罗来纳州外滩群岛上一个偏远的屏障岛。",
+      "text_markdown": "奥克拉科克是北卡罗来纳州外滩群岛上一个偏远的屏障岛。",
+      "tts": {
+        "text": "奥克拉科克是北卡罗来纳州外滩群岛上一个偏远的屏障岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其浅水和危险的浅滩使大型战舰几乎不可能靠近。",
+      "text_markdown": "其浅水和危险的浅滩使大型战舰几乎不可能靠近。",
+      "tts": {
+        "text": "其浅水和危险的浅滩使大型战舰几乎不可能靠近。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对于一个了解水道的海盗来说，它是一座坚不可摧的堡垒。",
+      "text_markdown": "对于一个了解水道的海盗来说，它是一座坚不可摧的堡垒。",
+      "tts": {
+        "text": "对于一个了解水道的海盗来说，它是一座坚不可摧的堡垒。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "其他海盗来到奥克拉科克进行交易、补给和社交。",
+      "text_markdown": "其他海盗来到奥克拉科克进行交易、补给和社交。",
+      "tts": {
+        "text": "其他海盗来到奥克拉科克进行交易、补给和社交。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "另一位臭名昭著的海盗船长查尔斯·维恩在那里拜访了黑胡子。",
+      "text_markdown": "另一位臭名昭著的海盗船长查尔斯·维恩在那里拜访了黑胡子。",
+      "tts": {
+        "text": "另一位臭名昭著的海盗船长查尔斯·维恩在那里拜访了黑胡子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "两支船队在海滩上举行了长达数天的庆祝活动。",
+      "text_markdown": "两支船队在海滩上举行了长达数天的庆祝活动。",
+      "tts": {
+        "text": "两支船队在海滩上举行了长达数天的庆祝活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "关于这次海盗聚会的报告使沿海的殖民地官员感到震惊。",
+      "text_markdown": "关于这次海盗聚会的报告使沿海的殖民地官员感到震惊。",
+      "tts": {
+        "text": "关于这次海盗聚会的报告使沿海的殖民地官员感到震惊。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗们遵循黑胡子严格执行的行为准则。",
+      "text_markdown": "海盗们遵循黑胡子严格执行的行为准则。",
+      "tts": {
+        "text": "海盗们遵循黑胡子严格执行的行为准则。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每个人都有权对重大决策投票。",
+      "text_markdown": "每个人都有权对重大决策投票。",
+      "tts": {
+        "text": "每个人都有权对重大决策投票。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战利品按照事先商定的份额分配。",
+      "text_markdown": "战利品按照事先商定的份额分配。",
+      "tts": {
+        "text": "战利品按照事先商定的份额分配。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "任何被发现偷窃公共财宝的人都会受到严厉惩罚。",
+      "text_markdown": "任何被发现偷窃公共财宝的人都会受到严厉惩罚。",
+      "tts": {
+        "text": "任何被发现偷窃公共财宝的人都会受到严厉惩罚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿海的商人和种植园主们绝望了。",
+      "text_markdown": "沿海的商人和种植园主们绝望了。",
+      "tts": {
+        "text": "沿海的商人和种植园主们绝望了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的贸易被黑胡子不断的劫掠所扼杀。",
+      "text_markdown": "他们的贸易被黑胡子不断的劫掠所扼杀。",
+      "tts": {
+        "text": "他们的贸易被黑胡子不断的劫掠所扼杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "通过卡罗来纳水域的船只保险费率飙升。",
+      "text_markdown": "通过卡罗来纳水域的船只保险费率飙升。",
+      "tts": {
+        "text": "通过卡罗来纳水域的船只保险费率飙升。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一些商人完全停止了派船，宁愿失去生意也不愿失去一切。",
+      "text_markdown": "一些商人完全停止了派船，宁愿失去生意也不愿失去一切。",
+      "tts": {
+        "text": "一些商人完全停止了派船，宁愿失去生意也不愿失去一切。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弗吉尼亚总督亚历山大·斯波茨伍德尤为愤怒。",
+      "text_markdown": "弗吉尼亚总督亚历山大·斯波茨伍德尤为愤怒。",
+      "tts": {
+        "text": "弗吉尼亚总督亚历山大·斯波茨伍德尤为愤怒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "弗吉尼亚的经济依赖于通过切萨皮克湾运出的烟草出口。",
+      "text_markdown": "弗吉尼亚的经济依赖于通过切萨皮克湾运出的烟草出口。",
+      "tts": {
+        "text": "弗吉尼亚的经济依赖于通过切萨皮克湾运出的烟草出口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黑胡子在附近的存在威胁着弗吉尼亚最重要的产业。",
+      "text_markdown": "黑胡子在附近的存在威胁着弗吉尼亚最重要的产业。",
+      "tts": {
+        "text": "黑胡子在附近的存在威胁着弗吉尼亚最重要的产业。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "斯波茨伍德决定，如果北卡罗来纳不处理这个海盗，弗吉尼亚就自己来。",
+      "text_markdown": "斯波茨伍德决定，如果北卡罗来纳不处理这个海盗，弗吉尼亚就自己来。",
+      "tts": {
+        "text": "斯波茨伍德决定，如果北卡罗来纳不处理这个海盗，弗吉尼亚就自己来。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯波茨伍德开始秘密策划一次捕获或击杀黑胡子的军事行动。",
+      "text_markdown": "斯波茨伍德开始秘密策划一次捕获或击杀黑胡子的军事行动。",
+      "tts": {
+        "text": "斯波茨伍德开始秘密策划一次捕获或击杀黑胡子的军事行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "未经许可将弗吉尼亚军队派往北卡罗来纳在法律上是有争议的。",
+      "text_markdown": "未经许可将弗吉尼亚军队派往北卡罗来纳在法律上是有争议的。",
+      "tts": {
+        "text": "未经许可将弗吉尼亚军队派往北卡罗来纳在法律上是有争议的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "权力的巅峰",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但斯波茨伍德决定无论如何都要行动，他认为威胁足以证明采取非常措施的合理性。",
+      "text_markdown": "但斯波茨伍德决定无论如何都要行动，他认为威胁足以证明采取非常措施的合理性。",
+      "tts": {
+        "text": "但斯波茨伍德决定无论如何都要行动，他认为威胁足以证明采取非常措施的合理性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "奥克拉科克之战",
+      "text_markdown": "奥克拉科克之战"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年11月，斯波茨伍德总督付诸行动。",
+      "text_markdown": "1718年11月，斯波茨伍德总督付诸行动。",
+      "tts": {
+        "text": "一千七百一十八年十一月，斯波茨伍德总督付诸行动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从民间船主那里租用了两艘小型单桅帆船，并将它们置于海军指挥之下。",
+      "text_markdown": "他从民间船主那里租用了两艘小型单桅帆船，并将它们置于海军指挥之下。",
+      "tts": {
+        "text": "他从民间船主那里租用了两艘小型单桅帆船，并将它们置于海军指挥之下。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "远征队由皇家海军的罗伯特·梅纳德中尉率领。",
+      "text_markdown": "远征队由皇家海军的罗伯特·梅纳德中尉率领。",
+      "tts": {
+        "text": "远征队由皇家海军的罗伯特·梅纳德中尉率领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "梅纳德是一位经验丰富的军官，以勇敢和坚定著称。",
+      "text_markdown": "梅纳德是一位经验丰富的军官，以勇敢和坚定著称。",
+      "tts": {
+        "text": "梅纳德是一位经验丰富的军官，以勇敢和坚定著称。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斯波茨伍德选择单桅帆船是因为它们吃水浅。",
+      "text_markdown": "斯波茨伍德选择单桅帆船是因为它们吃水浅。",
+      "tts": {
+        "text": "斯波茨伍德选择单桅帆船是因为它们吃水浅。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "只有浅底船只才能在奥克拉科克岛周围的水道中航行。",
+      "text_markdown": "只有浅底船只才能在奥克拉科克岛周围的水道中航行。",
+      "tts": {
+        "text": "只有浅底船只才能在奥克拉科克岛周围的水道中航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "较大的战舰远在到达黑胡子的锚地之前就会搁浅。",
+      "text_markdown": "较大的战舰远在到达黑胡子的锚地之前就会搁浅。",
+      "tts": {
+        "text": "较大的战舰远在到达黑胡子的锚地之前就会搁浅。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "梅纳德的两艘单桅帆船共载有约60人。",
+      "text_markdown": "梅纳德的两艘单桅帆船共载有约60人。",
+      "tts": {
+        "text": "梅纳德的两艘单桅帆船共载有约六十人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们是驻扎在弗吉尼亚的皇家海军战舰上的水手。",
+      "text_markdown": "他们是驻扎在弗吉尼亚的皇家海军战舰上的水手。",
+      "tts": {
+        "text": "他们是驻扎在弗吉尼亚的皇家海军战舰上的水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些人被许诺可以分享缴获的任何海盗战利品。",
+      "text_markdown": "这些人被许诺可以分享缴获的任何海盗战利品。",
+      "tts": {
+        "text": "这些人被许诺可以分享缴获的任何海盗战利品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "远征队秘密地从弗吉尼亚向南航行。",
+      "text_markdown": "远征队秘密地从弗吉尼亚向南航行。",
+      "tts": {
+        "text": "远征队秘密地从弗吉尼亚向南航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "斯波茨伍德几乎没有告诉任何人这次任务，以防止黑胡子得到警告。",
+      "text_markdown": "斯波茨伍德几乎没有告诉任何人这次任务，以防止黑胡子得到警告。",
+      "tts": {
+        "text": "斯波茨伍德几乎没有告诉任何人这次任务，以防止黑胡子得到警告。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "速度和出其不意对计划的成功至关重要。",
+      "text_markdown": "速度和出其不意对计划的成功至关重要。",
+      "tts": {
+        "text": "速度和出其不意对计划的成功至关重要。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年11月21日傍晚，梅纳德的帆船抵达奥克拉科克岛附近。",
+      "text_markdown": "1718年11月21日傍晚，梅纳德的帆船抵达奥克拉科克岛附近。",
+      "tts": {
+        "text": "一千七百一十八年十一月二十一日傍晚，梅纳德的帆船抵达奥克拉科克岛附近。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在水道边缘下锚，等待黎明。",
+      "text_markdown": "他们在水道边缘下锚，等待黎明。",
+      "tts": {
+        "text": "他们在水道边缘下锚，等待黎明。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "梅纳德可以看到黑胡子的单桅帆船冒险号在港口中的灯光。",
+      "text_markdown": "梅纳德可以看到黑胡子的单桅帆船冒险号在港口中的灯光。",
+      "tts": {
+        "text": "梅纳德可以看到黑胡子的单桅帆船冒险号在港口中的灯光。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗们正在庆祝，完全不知道厄运正在逼近。",
+      "text_markdown": "海盗们正在庆祝，完全不知道厄运正在逼近。",
+      "tts": {
+        "text": "海盗们正在庆祝，完全不知道厄运正在逼近。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "天一亮，梅纳德的帆船就驶入了水道。",
+      "text_markdown": "天一亮，梅纳德的帆船就驶入了水道。",
+      "tts": {
+        "text": "天一亮，梅纳德的帆船就驶入了水道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黑胡子立刻发现了他们，并认出他们是威胁。",
+      "text_markdown": "黑胡子立刻发现了他们，并认出他们是威胁。",
+      "tts": {
+        "text": "黑胡子立刻发现了他们，并认出他们是威胁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他砍断锚索，试图调转船头迎战。",
+      "text_markdown": "他砍断锚索，试图调转船头迎战。",
+      "tts": {
+        "text": "他砍断锚索，试图调转船头迎战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奥克拉科克入口狭窄的浅水将这场战斗变成了近身肉搏。",
+      "text_markdown": "奥克拉科克入口狭窄的浅水将这场战斗变成了近身肉搏。",
+      "tts": {
+        "text": "奥克拉科克入口狭窄的浅水将这场战斗变成了近身肉搏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子的第一招就是毁灭性的。",
+      "text_markdown": "黑胡子的第一招就是毁灭性的。",
+      "tts": {
+        "text": "黑胡子的第一招就是毁灭性的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他发射了一轮装满葡萄弹和金属碎片的炮火。",
+      "text_markdown": "他发射了一轮装满葡萄弹和金属碎片的炮火。",
+      "tts": {
+        "text": "他发射了一轮装满葡萄弹和金属碎片的炮火。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "爆炸横扫了梅纳德一艘帆船的甲板。",
+      "text_markdown": "爆炸横扫了梅纳德一艘帆船的甲板。",
+      "tts": {
+        "text": "爆炸横扫了梅纳德一艘帆船的甲板。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "那艘帆船的指挥官当场阵亡，还有他的几名手下。",
+      "text_markdown": "那艘帆船的指挥官当场阵亡，还有他的几名手下。",
+      "tts": {
+        "text": "那艘帆船的指挥官当场阵亡，还有他的几名手下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "梅纳德自己的帆船也在炮火中遭受了严重损坏。",
+      "text_markdown": "梅纳德自己的帆船也在炮火中遭受了严重损坏。",
+      "tts": {
+        "text": "梅纳德自己的帆船也在炮火中遭受了严重损坏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在最初的交火中，约有三分之一的船员伤亡。",
+      "text_markdown": "在最初的交火中，约有三分之一的船员伤亡。",
+      "tts": {
+        "text": "在最初的交火中，约有三分之一的船员伤亡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但梅纳德有一个巧妙的计划。",
+      "text_markdown": "但梅纳德有一个巧妙的计划。",
+      "tts": {
+        "text": "但梅纳德有一个巧妙的计划。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他命令大部分幸存的手下躲到甲板下面。",
+      "text_markdown": "他命令大部分幸存的手下躲到甲板下面。",
+      "tts": {
+        "text": "他命令大部分幸存的手下躲到甲板下面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "只有几名水手留在上层甲板上可见。",
+      "text_markdown": "只有几名水手留在上层甲板上可见。",
+      "tts": {
+        "text": "只有几名水手留在上层甲板上可见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当黑胡子看到这艘看似空荡荡的船时，他以为大部分船员已经死了。",
+      "text_markdown": "当黑胡子看到这艘看似空荡荡的船时，他以为大部分船员已经死了。",
+      "tts": {
+        "text": "当黑胡子看到这艘看似空荡荡的船时，他以为大部分船员已经死了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他命令海盗们登上梅纳德的帆船，准备最后一击。",
+      "text_markdown": "他命令海盗们登上梅纳德的帆船，准备最后一击。",
+      "tts": {
+        "text": "他命令海盗们登上梅纳德的帆船，准备最后一击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子和他的手下荡到了梅纳德帆船的甲板上。",
+      "text_markdown": "黑胡子和他的手下荡到了梅纳德帆船的甲板上。",
+      "tts": {
+        "text": "黑胡子和他的手下荡到了梅纳德帆船的甲板上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "就在那一刻，梅纳德发出了信号。",
+      "text_markdown": "就在那一刻，梅纳德发出了信号。",
+      "tts": {
+        "text": "就在那一刻，梅纳德发出了信号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他藏起来的水手们从下面冲了出来，手持武器。",
+      "text_markdown": "他藏起来的水手们从下面冲了出来，手持武器。",
+      "tts": {
+        "text": "他藏起来的水手们从下面冲了出来，手持武器。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗们发现自己陷入了一场激烈的肉搏战。",
+      "text_markdown": "海盗们发现自己陷入了一场激烈的肉搏战。",
+      "tts": {
+        "text": "海盗们发现自己陷入了一场激烈的肉搏战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子和梅纳德展开了面对面的搏斗。",
+      "text_markdown": "黑胡子和梅纳德展开了面对面的搏斗。",
+      "tts": {
+        "text": "黑胡子和梅纳德展开了面对面的搏斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黑胡子挥舞弯刀，力道之大竟折断了梅纳德的剑刃。",
+      "text_markdown": "黑胡子挥舞弯刀，力道之大竟折断了梅纳德的剑刃。",
+      "tts": {
+        "text": "黑胡子挥舞弯刀，力道之大竟折断了梅纳德的剑刃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "就在黑胡子举起弯刀准备致命一击时，梅纳德的一名手下砍中了他的脖子。",
+      "text_markdown": "就在黑胡子举起弯刀准备致命一击时，梅纳德的一名手下砍中了他的脖子。",
+      "tts": {
+        "text": "就在黑胡子举起弯刀准备致命一击时，梅纳德的一名手下砍中了他的脖子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "黑胡子踉跄了一下，但继续战斗。",
+      "text_markdown": "黑胡子踉跄了一下，但继续战斗。",
+      "tts": {
+        "text": "黑胡子踉跄了一下，但继续战斗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最终，黑胡子倒下了，死在了梅纳德帆船的甲板上。",
+      "text_markdown": "最终，黑胡子倒下了，死在了梅纳德帆船的甲板上。",
+      "tts": {
+        "text": "最终，黑胡子倒下了，死在了梅纳德帆船的甲板上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "检查他的尸体时，人们数出了5处枪伤和20多处刀伤。",
+      "text_markdown": "检查他的尸体时，人们数出了5处枪伤和20多处刀伤。",
+      "tts": {
+        "text": "检查他的尸体时，人们数出了五处枪伤和二十多处刀伤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "看到船长倒下后，剩余的海盗投降了。",
+      "text_markdown": "看到船长倒下后，剩余的海盗投降了。",
+      "tts": {
+        "text": "看到船长倒下后，剩余的海盗投降了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "梅纳德下令砍下黑胡子的头颅。",
+      "text_markdown": "梅纳德下令砍下黑胡子的头颅。",
+      "tts": {
+        "text": "梅纳德下令砍下黑胡子的头颅。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "头颅被悬挂在帆船的船首斜桅上作为击杀的证据。",
+      "text_markdown": "头颅被悬挂在帆船的船首斜桅上作为击杀的证据。",
+      "tts": {
+        "text": "头颅被悬挂在帆船的船首斜桅上作为击杀的证据。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黑胡子无头的躯体被抛入奥克拉科克入口的水中。",
+      "text_markdown": "黑胡子无头的躯体被抛入奥克拉科克入口的水中。",
+      "tts": {
+        "text": "黑胡子无头的躯体被抛入奥克拉科克入口的水中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "奥克拉科克之战",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "传说那具躯体在帆船周围游了几圈才沉入水底，不过这当然是虚构的。",
+      "text_markdown": "传说那具躯体在帆船周围游了几圈才沉入水底，不过这当然是虚构的。",
+      "tts": {
+        "text": "传说那具躯体在帆船周围游了几圈才沉入水底，不过这当然是虚构的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "永不消逝的传说",
+      "text_markdown": "永不消逝的传说"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子的死亡在海盗群体中引发了巨大震动。",
+      "text_markdown": "黑胡子的死亡在海盗群体中引发了巨大震动。",
+      "tts": {
+        "text": "黑胡子的死亡在海盗群体中引发了巨大震动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "如果大西洋上最令人恐惧的海盗都能被追杀，那就没有人是安全的。",
+      "text_markdown": "如果大西洋上最令人恐惧的海盗都能被追杀，那就没有人是安全的。",
+      "tts": {
+        "text": "如果大西洋上最令人恐惧的海盗都能被追杀，那就没有人是安全的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在随后的几个月里，许多海盗接受了皇家赦免。",
+      "text_markdown": "在随后的几个月里，许多海盗接受了皇家赦免。",
+      "tts": {
+        "text": "在随后的几个月里，许多海盗接受了皇家赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗黄金时代正进入它的最后几年。",
+      "text_markdown": "海盗黄金时代正进入它的最后几年。",
+      "tts": {
+        "text": "海盗黄金时代正进入它的最后几年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子船员中的幸存者在弗吉尼亚受审。",
+      "text_markdown": "黑胡子船员中的幸存者在弗吉尼亚受审。",
+      "tts": {
+        "text": "黑胡子船员中的幸存者在弗吉尼亚受审。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大多数人被判有罪并被绞死。",
+      "text_markdown": "大多数人被判有罪并被绞死。",
+      "tts": {
+        "text": "大多数人被判有罪并被绞死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的尸体被挂在码头沿线的铁笼中，作为阴森的警告。",
+      "text_markdown": "他们的尸体被挂在码头沿线的铁笼中，作为阴森的警告。",
+      "tts": {
+        "text": "他们的尸体被挂在码头沿线的铁笼中，作为阴森的警告。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "殖民当局想要明确无误地表明，容忍海盗的时代已经结束了。",
+      "text_markdown": "殖民当局想要明确无误地表明，容忍海盗的时代已经结束了。",
+      "tts": {
+        "text": "殖民当局想要明确无误地表明，容忍海盗的时代已经结束了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724年，一本名为《海盗通史》的书在伦敦出版。",
+      "text_markdown": "1724年，一本名为《海盗通史》的书在伦敦出版。",
+      "tts": {
+        "text": "一千七百二十四年，一本名为《海盗通史》的书在伦敦出版。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "作者署名为查尔斯·约翰逊船长，但他的真实身份至今不明。",
+      "text_markdown": "作者署名为查尔斯·约翰逊船长，但他的真实身份至今不明。",
+      "tts": {
+        "text": "作者署名为查尔斯·约翰逊船长，但他的真实身份至今不明。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这本书用整整一个章节讲述了黑胡子的事迹。",
+      "text_markdown": "这本书用整整一个章节讲述了黑胡子的事迹。",
+      "tts": {
+        "text": "这本书用整整一个章节讲述了黑胡子的事迹。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它是黑胡子传说赖以建立的基础。",
+      "text_markdown": "它是黑胡子传说赖以建立的基础。",
+      "tts": {
+        "text": "它是黑胡子传说赖以建立的基础。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几个世纪以来，黑胡子成为了海盗本身的象征。",
+      "text_markdown": "几个世纪以来，黑胡子成为了海盗本身的象征。",
+      "tts": {
+        "text": "几个世纪以来，黑胡子成为了海盗本身的象征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当人们想象一个海盗时，他们通常会想到一个像黑胡子一样的人。",
+      "text_markdown": "当人们想象一个海盗时，他们通常会想到一个像黑胡子一样的人。",
+      "tts": {
+        "text": "当人们想象一个海盗时，他们通常会想到一个像黑胡子一样的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巨大的胡须、冒烟的引线、挂满手枪的子弹带已经成为标准的海盗形象。",
+      "text_markdown": "巨大的胡须、冒烟的引线、挂满手枪的子弹带已经成为标准的海盗形象。",
+      "tts": {
+        "text": "巨大的胡须、冒烟的引线、挂满手枪的子弹带已经成为标准的海盗形象。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有其他海盗对流行文化产生过如此持久的影响。",
+      "text_markdown": "没有其他海盗对流行文化产生过如此持久的影响。",
+      "tts": {
+        "text": "没有其他海盗对流行文化产生过如此持久的影响。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1996年，海洋考古学家在北卡罗来纳州博福特附近发现了一艘沉船的残骸。",
+      "text_markdown": "1996年，海洋考古学家在北卡罗来纳州博福特附近发现了一艘沉船的残骸。",
+      "tts": {
+        "text": "一千九百九十六年，海洋考古学家在北卡罗来纳州博福特附近发现了一艘沉船的残骸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们相信那是安妮女王复仇号的遗骸。",
+      "text_markdown": "他们相信那是安妮女王复仇号的遗骸。",
+      "tts": {
+        "text": "他们相信那是安妮女王复仇号的遗骸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "此后已从该遗址回收了超过280,000件文物。",
+      "text_markdown": "此后已从该遗址回收了超过280,000件文物。",
+      "tts": {
+        "text": "此后已从该遗址回收了超过二十八万件文物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "包括大炮、锚、医疗器械和金粉。",
+      "text_markdown": "包括大炮、锚、医疗器械和金粉。",
+      "tts": {
+        "text": "包括大炮、锚、医疗器械和金粉。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些文物告诉我们许多关于海盗船上日常生活的信息。",
+      "text_markdown": "这些文物告诉我们许多关于海盗船上日常生活的信息。",
+      "tts": {
+        "text": "这些文物告诉我们许多关于海盗船上日常生活的信息。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们表明船员吃得不错，有猪肉、牛肉和鱼的饮食证据。",
+      "text_markdown": "它们表明船员吃得不错，有猪肉、牛肉和鱼的饮食证据。",
+      "tts": {
+        "text": "它们表明船员吃得不错，有猪肉、牛肉和鱼的饮食证据。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "医疗器械表明船上配备了外科医生，这在大多数大型船只上很常见。",
+      "text_markdown": "医疗器械表明船上配备了外科医生，这在大多数大型船只上很常见。",
+      "tts": {
+        "text": "医疗器械表明船上配备了外科医生，这在大多数大型船只上很常见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "金粉证实了海盗活动能产生的巨额财富。",
+      "text_markdown": "金粉证实了海盗活动能产生的巨额财富。",
+      "tts": {
+        "text": "金粉证实了海盗活动能产生的巨额财富。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑胡子的海盗生涯只持续了大约两年。",
+      "text_markdown": "黑胡子的海盗生涯只持续了大约两年。",
+      "tts": {
+        "text": "黑胡子的海盗生涯只持续了大约两年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那短暂的时间里，他俘获了数十艘船只，使整条海岸线陷入恐慌。",
+      "text_markdown": "在那短暂的时间里，他俘获了数十艘船只，使整条海岸线陷入恐慌。",
+      "tts": {
+        "text": "在那短暂的时间里，他俘获了数十艘船只，使整条海岸线陷入恐慌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他封锁了一个主要殖民地港口，并向世界上最强大的海军发起挑战。",
+      "text_markdown": "他封锁了一个主要殖民地港口，并向世界上最强大的海军发起挑战。",
+      "tts": {
+        "text": "他封锁了一个主要殖民地港口，并向世界上最强大的海军发起挑战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的故事仍然是海洋史上最引人入胜的篇章之一。",
+      "text_markdown": "他的故事仍然是海洋史上最引人入胜的篇章之一。",
+      "tts": {
+        "text": "他的故事仍然是海洋史上最引人入胜的篇章之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天，黑胡子的名字在无数书籍、电影和电视节目中延续着。",
+      "text_markdown": "今天，黑胡子的名字在无数书籍、电影和电视节目中延续着。",
+      "tts": {
+        "text": "今天，黑胡子的名字在无数书籍、电影和电视节目中延续着。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥克拉科克岛现在是一个受欢迎的旅游目的地，部分原因是它的海盗历史。",
+      "text_markdown": "奥克拉科克岛现在是一个受欢迎的旅游目的地，部分原因是它的海盗历史。",
+      "tts": {
+        "text": "奥克拉科克岛现在是一个受欢迎的旅游目的地，部分原因是它的海盗历史。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每年，小镇都会举办一个节日来纪念那场著名战役的周年。",
+      "text_markdown": "每年，小镇都会举办一个节日来纪念那场著名战役的周年。",
+      "tts": {
+        "text": "每年，小镇都会举办一个节日来纪念那场著名战役的周年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "永不消逝的传说",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "那个点燃胡须的海盗已经成为大众想象中的不朽人物。",
+      "text_markdown": "那个点燃胡须的海盗已经成为大众想象中的不朽人物。",
+      "tts": {
+        "text": "那个点燃胡须的海盗已经成为大众想象中的不朽人物。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

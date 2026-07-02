@@ -1,0 +1,4412 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_miguel_de_cervantes",
+  "language": "ko",
+  "total_segments": 295,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말씀",
+      "text_markdown": "독자에게 드리는 말씀"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 해적에 관한 이야기가 아니다.",
+      "text_markdown": "이것은 해적에 관한 이야기가 아니다.",
+      "tts": {
+        "text": "이것은 해적에 관한 이야기가 아니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 해적에게 붙잡혀 오 년간 포로로 잡혀 있었던 한 남자의 이야기다.",
+      "text_markdown": "이것은 해적에게 붙잡혀 오 년간 포로로 잡혀 있었던 한 남자의 이야기다.",
+      "tts": {
+        "text": "이것은 해적에게 붙잡혀 오 년간 포로로 잡혀 있었던 한 남자의 이야기다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미겔 데 세르반테스는 스페인어권 최고의 작가로 기억된다.",
+      "text_markdown": "미겔 데 세르반테스는 스페인어권 최고의 작가로 기억된다.",
+      "tts": {
+        "text": "미겔 데 세르반테스는 스페인어권 최고의 작가로 기억된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 역사상 가장 중요한 소설 중 하나인 돈키호테를 썼다.",
+      "text_markdown": "그는 역사상 가장 중요한 소설 중 하나인 돈키호테를 썼다.",
+      "tts": {
+        "text": "그는 역사상 가장 중요한 소설 중 하나인 돈키호테를 썼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 작가가 되기 전에 세르반테스는 군인이었다.",
+      "text_markdown": "하지만 작가가 되기 전에 세르반테스는 군인이었다.",
+      "tts": {
+        "text": "하지만 작가가 되기 전에 세르반테스는 군인이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그리고 자유롭게 글을 쓸 수 있게 되기 전, 그는 북아프리카에서 오 년간 노예로 살았다.",
+      "text_markdown": "그리고 자유롭게 글을 쓸 수 있게 되기 전, 그는 북아프리카에서 오 년간 노예로 살았다.",
+      "tts": {
+        "text": "그리고 자유롭게 글을 쓸 수 있게 되기 전, 그는 북아프리카에서 오 년간 노예로 살았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 포로 경험은 학자들이 아직도 밝혀내고 있는 방식으로 그의 글에 영향을 미쳤다.",
+      "text_markdown": "그의 포로 경험은 학자들이 아직도 밝혀내고 있는 방식으로 그의 글에 영향을 미쳤다.",
+      "tts": {
+        "text": "그의 포로 경험은 학자들이 아직도 밝혀내고 있는 방식으로 그의 글에 영향을 미쳤다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "투옥, 탈출, 그리고 인간의 인내를 다룬 장면들이 그의 작품 전반에 나타난다.",
+      "text_markdown": "투옥, 탈출, 그리고 인간의 인내를 다룬 장면들이 그의 작품 전반에 나타난다.",
+      "tts": {
+        "text": "투옥, 탈출, 그리고 인간의 인내를 다룬 장면들이 그의 작품 전반에 나타난다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 이야기는 세르반테스가 크게 고통받았다는 이해를 바탕으로 서술된다.",
+      "text_markdown": "이 이야기는 세르반테스가 크게 고통받았다는 이해를 바탕으로 서술된다.",
+      "tts": {
+        "text": "이 이야기는 세르반테스가 크게 고통받았다는 이해를 바탕으로 서술된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 경험이 마땅히 받아야 할 진지함과 존경을 가지고 다루어진다.",
+      "text_markdown": "그의 경험이 마땅히 받아야 할 진지함과 존경을 가지고 다루어진다.",
+      "tts": {
+        "text": "그의 경험이 마땅히 받아야 할 진지함과 존경을 가지고 다루어진다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여기에 서술된 사건들은 세르반테스 자신의 증언과 동시대 기록을 포함한 역사적 자료에 근거한다.",
+      "text_markdown": "여기에 서술된 사건들은 세르반테스 자신의 증언과 동시대 기록을 포함한 역사적 자료에 근거한다.",
+      "tts": {
+        "text": "여기에 서술된 사건들은 세르반테스 자신의 증언과 동시대 기록을 포함한 역사적 자료에 근거한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세부 사항이 불확실한 경우, 본문에 그렇게 명시되어 있다.",
+      "text_markdown": "세부 사항이 불확실한 경우, 본문에 그렇게 명시되어 있다.",
+      "tts": {
+        "text": "세부 사항이 불확실한 경우, 본문에 그렇게 명시되어 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "지중해 세계",
+      "text_markdown": "지중해 세계"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1500년대의 지중해는 세계의 중심이었다.",
+      "text_markdown": "1500년대의 지중해는 세계의 중심이었다.",
+      "tts": {
+        "text": "천오백 년대의 지중해는 세계의 중심이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세 개의 대륙과 수십 개의 왕국, 제국, 도시국가들이 그 해안을 따라 늘어서 있었다.",
+      "text_markdown": "세 개의 대륙과 수십 개의 왕국, 제국, 도시국가들이 그 해안을 따라 늘어서 있었다.",
+      "tts": {
+        "text": "세 개의 대륙과 수십 개의 왕국, 제국, 도시국가들이 그 해안을 따라 늘어서 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무역, 전쟁, 문화 교류가 끊임없이 그 바다를 오갔다.",
+      "text_markdown": "무역, 전쟁, 문화 교류가 끊임없이 그 바다를 오갔다.",
+      "tts": {
+        "text": "무역, 전쟁, 문화 교류가 끊임없이 그 바다를 오갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시대에 두 강대국이 지중해를 지배했다.",
+      "text_markdown": "이 시대에 두 강대국이 지중해를 지배했다.",
+      "tts": {
+        "text": "이 시대에 두 강대국이 지중해를 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "서쪽에서는 스페인 제국이 유럽에서 가장 부유하고 강력한 국가였다.",
+      "text_markdown": "서쪽에서는 스페인 제국이 유럽에서 가장 부유하고 강력한 국가였다.",
+      "tts": {
+        "text": "서쪽에서는 스페인 제국이 유럽에서 가장 부유하고 강력한 국가였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동쪽에서는 오스만 제국이 헝가리에서 북아프리카에 이르는 광대한 영토를 지배했다.",
+      "text_markdown": "동쪽에서는 오스만 제국이 헝가리에서 북아프리카에 이르는 광대한 영토를 지배했다.",
+      "tts": {
+        "text": "동쪽에서는 오스만 제국이 헝가리에서 북아프리카에 이르는 광대한 영토를 지배했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 두 제국 간의 갈등은 단순히 정치적인 것만이 아니었다.",
+      "text_markdown": "이 두 제국 간의 갈등은 단순히 정치적인 것만이 아니었다.",
+      "tts": {
+        "text": "이 두 제국 간의 갈등은 단순히 정치적인 것만이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 종교적인 것이기도 했다.",
+      "text_markdown": "그것은 종교적인 것이기도 했다.",
+      "tts": {
+        "text": "그것은 종교적인 것이기도 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인은 가톨릭 기독교 세계의 수호자였고, 오스만 제국은 이슬람 세계를 이끌었다.",
+      "text_markdown": "스페인은 가톨릭 기독교 세계의 수호자였고, 오스만 제국은 이슬람 세계를 이끌었다.",
+      "tts": {
+        "text": "스페인은 가톨릭 기독교 세계의 수호자였고, 오스만 제국은 이슬람 세계를 이끌었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 종교적 측면은 갈등을 특히 격렬하게 만들었다.",
+      "text_markdown": "이 종교적 측면은 갈등을 특히 격렬하게 만들었다.",
+      "tts": {
+        "text": "이 종교적 측면은 갈등을 특히 격렬하게 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "양측 모두 자신들이 신을 위해 싸우고 있다고 믿었다.",
+      "text_markdown": "양측 모두 자신들이 신을 위해 싸우고 있다고 믿었다.",
+      "tts": {
+        "text": "양측 모두 자신들이 신을 위해 싸우고 있다고 믿었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전쟁 포로들은 교환되거나 석방되기보다는 노예가 되는 경우가 많았다.",
+      "text_markdown": "전쟁 포로들은 교환되거나 석방되기보다는 노예가 되는 경우가 많았다.",
+      "tts": {
+        "text": "전쟁 포로들은 교환되거나 석방되기보다는 노예가 되는 경우가 많았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아프리카의 바르바리 해안은 해적 활동의 주요 거점이었다.",
+      "text_markdown": "북아프리카의 바르바리 해안은 해적 활동의 주요 거점이었다.",
+      "tts": {
+        "text": "북아프리카의 바르바리 해안은 해적 활동의 주요 거점이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제, 튀니스, 트리폴리에는 유럽의 선박과 해안 마을을 약탈하는 수천 명의 해적이 살고 있었다.",
+      "text_markdown": "알제, 튀니스, 트리폴리에는 유럽의 선박과 해안 마을을 약탈하는 수천 명의 해적이 살고 있었다.",
+      "tts": {
+        "text": "알제, 튀니스, 트리폴리에는 유럽의 선박과 해안 마을을 약탈하는 수천 명의 해적이 살고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 바르바리 해적들은 단순한 해적이 아니었다.",
+      "text_markdown": "이 바르바리 해적들은 단순한 해적이 아니었다.",
+      "tts": {
+        "text": "이 바르바리 해적들은 단순한 해적이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 이들이 오스만 제국이나 지역 통치자들의 공식적인 후원을 받아 활동했다.",
+      "text_markdown": "많은 이들이 오스만 제국이나 지역 통치자들의 공식적인 후원을 받아 활동했다.",
+      "tts": {
+        "text": "많은 이들이 오스만 제국이나 지역 통치자들의 공식적인 후원을 받아 활동했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 해전, 상업, 노예 무역을 포함하는 더 큰 체계의 일부였다.",
+      "text_markdown": "그들은 해전, 상업, 노예 무역을 포함하는 더 큰 체계의 일부였다.",
+      "tts": {
+        "text": "그들은 해전, 상업, 노예 무역을 포함하는 더 큰 체계의 일부였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노예 무역은 바르바리 국가들의 경제의 핵심이었다.",
+      "text_markdown": "노예 무역은 바르바리 국가들의 경제의 핵심이었다.",
+      "tts": {
+        "text": "노예 무역은 바르바리 국가들의 경제의 핵심이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로로 잡힌 유럽인들은 알제, 튀니스 등의 노예 시장에서 팔렸다.",
+      "text_markdown": "포로로 잡힌 유럽인들은 알제, 튀니스 등의 노예 시장에서 팔렸다.",
+      "tts": {
+        "text": "포로로 잡힌 유럽인들은 알제, 튀니스 등의 노예 시장에서 팔렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "부유하거나 중요한 포로는 몸값을 받고 풀려날 수 있었지만, 그 과정은 수년이 걸리고 엄청난 비용이 들었다.",
+      "text_markdown": "부유하거나 중요한 포로는 몸값을 받고 풀려날 수 있었지만, 그 과정은 수년이 걸리고 엄청난 비용이 들었다.",
+      "tts": {
+        "text": "부유하거나 중요한 포로는 몸값을 받고 풀려날 수 있었지만, 그 과정은 수년이 걸리고 엄청난 비용이 들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사가들은 1500년에서 1800년 사이에 백만 명 이상의 유럽인이 바르바리 해적에 의해 노예가 되었다고 추산한다.",
+      "text_markdown": "역사가들은 1500년에서 1800년 사이에 백만 명 이상의 유럽인이 바르바리 해적에 의해 노예가 되었다고 추산한다.",
+      "tts": {
+        "text": "역사가들은 천오백 년에서 천팔백 년 사이에 백만 명 이상의 유럽인이 바르바리 해적에 의해 노예가 되었다고 추산한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 포로들은 지중해 연안의 모든 나라에서 왔다.",
+      "text_markdown": "이 포로들은 지중해 연안의 모든 나라에서 왔다.",
+      "tts": {
+        "text": "이 포로들은 지중해 연안의 모든 나라에서 왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 자체도 해적 습격의 빈번한 대상이었다.",
+      "text_markdown": "스페인 자체도 해적 습격의 빈번한 대상이었다.",
+      "tts": {
+        "text": "스페인 자체도 해적 습격의 빈번한 대상이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "안달루시아, 발렌시아, 발레아레스 제도의 해안 마을들이 정기적으로 공격을 받았다.",
+      "text_markdown": "안달루시아, 발렌시아, 발레아레스 제도의 해안 마을들이 정기적으로 공격을 받았다.",
+      "tts": {
+        "text": "안달루시아, 발렌시아, 발레아레스 제도의 해안 마을들이 정기적으로 공격을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 해안을 따라 습격자의 접근을 알리는 감시탑들이 줄지어 서 있었다.",
+      "text_markdown": "스페인 해안을 따라 습격자의 접근을 알리는 감시탑들이 줄지어 서 있었다.",
+      "tts": {
+        "text": "스페인 해안을 따라 습격자의 접근을 알리는 감시탑들이 줄지어 서 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이슬람 땅에서 기독교인 포로를 몸값으로 구출하기 위한 수도회가 설립되었다.",
+      "text_markdown": "이슬람 땅에서 기독교인 포로를 몸값으로 구출하기 위한 수도회가 설립되었다.",
+      "tts": {
+        "text": "이슬람 땅에서 기독교인 포로를 몸값으로 구출하기 위한 수도회가 설립되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 중 가장 중요한 것이 삼위일체회로 알려진 지극히 거룩한 삼위일체 수도회였다.",
+      "text_markdown": "이 중 가장 중요한 것이 삼위일체회로 알려진 지극히 거룩한 삼위일체 수도회였다.",
+      "tts": {
+        "text": "이 중 가장 중요한 것이 삼위일체회로 알려진 지극히 거룩한 삼위일체 수도회였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "삼위일체회 수도사들은 노예가 된 기독교인들의 석방을 협상하기 위해 북아프리카로 건너갔다.",
+      "text_markdown": "삼위일체회 수도사들은 노예가 된 기독교인들의 석방을 협상하기 위해 북아프리카로 건너갔다.",
+      "tts": {
+        "text": "삼위일체회 수도사들은 노예가 된 기독교인들의 석방을 협상하기 위해 북아프리카로 건너갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "몸값 지불 과정은 느리고, 비용이 많이 들며, 불확실했다.",
+      "text_markdown": "몸값 지불 과정은 느리고, 비용이 많이 들며, 불확실했다.",
+      "tts": {
+        "text": "몸값 지불 과정은 느리고, 비용이 많이 들며, 불확실했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가족들은 몸값을 마련하기 위해 구걸하고, 빚을 지고, 가진 것을 모두 팔아야 하는 경우가 많았다.",
+      "text_markdown": "가족들은 몸값을 마련하기 위해 구걸하고, 빚을 지고, 가진 것을 모두 팔아야 하는 경우가 많았다.",
+      "tts": {
+        "text": "가족들은 몸값을 마련하기 위해 구걸하고, 빚을 지고, 가진 것을 모두 팔아야 하는 경우가 많았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 포로들이 누군가 찾아올 때까지 수년을 기다렸다.",
+      "text_markdown": "많은 포로들이 누군가 찾아올 때까지 수년을 기다렸다.",
+      "tts": {
+        "text": "많은 포로들이 누군가 찾아올 때까지 수년을 기다렸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부는 끝내 몸값이 치러지지 않았다.",
+      "text_markdown": "일부는 끝내 몸값이 치러지지 않았다.",
+      "tts": {
+        "text": "일부는 끝내 몸값이 치러지지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 남은 생을 포로로 보내며, 채석장이나 농장에서 일하거나 갤리선의 노예로 노에 묶여 살았다.",
+      "text_markdown": "그들은 남은 생을 포로로 보내며, 채석장이나 농장에서 일하거나 갤리선의 노예로 노에 묶여 살았다.",
+      "tts": {
+        "text": "그들은 남은 생을 포로로 보내며, 채석장이나 농장에서 일하거나 갤리선의 노예로 노에 묶여 살았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 바로 미겔 데 세르반테스를 형성한 세계였다.",
+      "text_markdown": "이것이 바로 미겔 데 세르반테스를 형성한 세계였다.",
+      "tts": {
+        "text": "이것이 바로 미겔 데 세르반테스를 형성한 세계였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 오스만 제국 및 바르바리 해적과의 투쟁으로 규정된 스페인에서 자랐다.",
+      "text_markdown": "그는 오스만 제국 및 바르바리 해적과의 투쟁으로 규정된 스페인에서 자랐다.",
+      "tts": {
+        "text": "그는 오스만 제국 및 바르바리 해적과의 투쟁으로 규정된 스페인에서 자랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 그 투쟁을 군인으로서, 그리고 포로로서 직접 경험하게 된다.",
+      "text_markdown": "그는 그 투쟁을 군인으로서, 그리고 포로로서 직접 경험하게 된다.",
+      "tts": {
+        "text": "그는 그 투쟁을 군인으로서, 그리고 포로로서 직접 경험하게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전성기의 오스만 제국은 세계가 일찍이 본 적 없는 가장 거대한 제국 중 하나였다.",
+      "text_markdown": "전성기의 오스만 제국은 세계가 일찍이 본 적 없는 가장 거대한 제국 중 하나였다.",
+      "tts": {
+        "text": "전성기의 오스만 제국은 세계가 일찍이 본 적 없는 가장 거대한 제국 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄은 보스포루스 해협의 대도시 콘스탄티노플에서 통치했다.",
+      "text_markdown": "술탄은 보스포루스 해협의 대도시 콘스탄티노플에서 통치했다.",
+      "tts": {
+        "text": "술탄은 보스포루스 해협의 대도시 콘스탄티노플에서 통치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "제국은 인도양에서 빈의 관문에 이르는 교역로를 지배했다.",
+      "text_markdown": "제국은 인도양에서 빈의 관문에 이르는 교역로를 지배했다.",
+      "tts": {
+        "text": "제국은 인도양에서 빈의 관문에 이르는 교역로를 지배했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인의 힘은 아메리카 대륙에서 온 은과 반종교개혁의 종교적 열정에 의해 뒷받침되었다.",
+      "text_markdown": "스페인의 힘은 아메리카 대륙에서 온 은과 반종교개혁의 종교적 열정에 의해 뒷받침되었다.",
+      "tts": {
+        "text": "스페인의 힘은 아메리카 대륙에서 온 은과 반종교개혁의 종교적 열정에 의해 뒷받침되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "펠리페 이세는 해가 지지 않는 제국을 통치했다.",
+      "text_markdown": "펠리페 이세는 해가 지지 않는 제국을 통치했다.",
+      "tts": {
+        "text": "펠리페 이세는 해가 지지 않는 제국을 통치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 스페인의 유럽과 지중해에서의 전쟁은 은이 채울 수 있는 것보다 빠르게 국고를 소진시켰다.",
+      "text_markdown": "하지만 스페인의 유럽과 지중해에서의 전쟁은 은이 채울 수 있는 것보다 빠르게 국고를 소진시켰다.",
+      "tts": {
+        "text": "하지만 스페인의 유럽과 지중해에서의 전쟁은 은이 채울 수 있는 것보다 빠르게 국고를 소진시켰다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제는 세계 해적의 수도였다.",
+      "text_markdown": "알제는 세계 해적의 수도였다.",
+      "tts": {
+        "text": "알제는 세계 해적의 수도였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "명목상으로는 오스만 제국의 속주였지만, 실제로는 해적 선장들이 도시를 운영했다.",
+      "text_markdown": "명목상으로는 오스만 제국의 속주였지만, 실제로는 해적 선장들이 도시를 운영했다.",
+      "tts": {
+        "text": "명목상으로는 오스만 제국의 속주였지만, 실제로는 해적 선장들이 도시를 운영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "지중해 세계",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "약탈과 노예 무역으로 얻은 부가 알제를 지중해에서 가장 부유한 도시 중 하나로 만들었다.",
+      "text_markdown": "약탈과 노예 무역으로 얻은 부가 알제를 지중해에서 가장 부유한 도시 중 하나로 만들었다.",
+      "tts": {
+        "text": "약탈과 노예 무역으로 얻은 부가 알제를 지중해에서 가장 부유한 도시 중 하나로 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "스페인의 병사",
+      "text_markdown": "스페인의 병사"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미겔 데 세르반테스는 1547년 9월 29일, 마드리드 근교의 대학 도시 알칼라 데 에나레스에서 태어났다.",
+      "text_markdown": "미겔 데 세르반테스는 1547년 9월 29일, 마드리드 근교의 대학 도시 알칼라 데 에나레스에서 태어났다.",
+      "tts": {
+        "text": "미겔 데 세르반테스는 천오백사십칠 년 구월 이십구일, 마드리드 근교의 대학 도시 알칼라 데 에나레스에서 태어났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아버지 로드리고 데 세르반테스는 생계를 꾸리기 힘들어하던 이발사 겸 외과의였다.",
+      "text_markdown": "아버지 로드리고 데 세르반테스는 생계를 꾸리기 힘들어하던 이발사 겸 외과의였다.",
+      "tts": {
+        "text": "아버지 로드리고 데 세르반테스는 생계를 꾸리기 힘들어하던 이발사 겸 외과의였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가족은 미겔의 어린 시절 내내 일자리를 찾아 이 도시 저 도시로 자주 이사했다.",
+      "text_markdown": "가족은 미겔의 어린 시절 내내 일자리를 찾아 이 도시 저 도시로 자주 이사했다.",
+      "tts": {
+        "text": "가족은 미겔의 어린 시절 내내 일자리를 찾아 이 도시 저 도시로 자주 이사했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 바야돌리드, 코르도바, 세비야, 마드리드 등 여러 곳에서 살았다.",
+      "text_markdown": "그들은 바야돌리드, 코르도바, 세비야, 마드리드 등 여러 곳에서 살았다.",
+      "tts": {
+        "text": "그들은 바야돌리드, 코르도바, 세비야, 마드리드 등 여러 곳에서 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가난은 늘 함께하는 동반자였다.",
+      "text_markdown": "가난은 늘 함께하는 동반자였다.",
+      "tts": {
+        "text": "가난은 늘 함께하는 동반자였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가정 형편이 어려웠음에도 세르반테스는 나름의 교육을 받았다.",
+      "text_markdown": "가정 형편이 어려웠음에도 세르반테스는 나름의 교육을 받았다.",
+      "tts": {
+        "text": "가정 형편이 어려웠음에도 세르반테스는 나름의 교육을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 마드리드의 스승 밑에서 공부하며 문학과 시에 대한 열정을 키웠다.",
+      "text_markdown": "그는 마드리드의 스승 밑에서 공부하며 문학과 시에 대한 열정을 키웠다.",
+      "tts": {
+        "text": "그는 마드리드의 스승 밑에서 공부하며 문학과 시에 대한 열정을 키웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1500년대 중반의 스페인은 황금시대를 맞이하고 있었다.",
+      "text_markdown": "1500년대 중반의 스페인은 황금시대를 맞이하고 있었다.",
+      "tts": {
+        "text": "천오백 년대 중반의 스페인은 황금시대를 맞이하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "예술, 문학, 종교적 열정이 군사적 확장과 함께 꽃피었다.",
+      "text_markdown": "예술, 문학, 종교적 열정이 군사적 확장과 함께 꽃피었다.",
+      "tts": {
+        "text": "예술, 문학, 종교적 열정이 군사적 확장과 함께 꽃피었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "위대한 야망과 더 큰 불평등의 시대였다.",
+      "text_markdown": "위대한 야망과 더 큰 불평등의 시대였다.",
+      "tts": {
+        "text": "위대한 야망과 더 큰 불평등의 시대였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1569년, 세르반테스는 스페인을 떠나 이탈리아로 갔다.",
+      "text_markdown": "1569년, 세르반테스는 스페인을 떠나 이탈리아로 갔다.",
+      "tts": {
+        "text": "천오백육십구 년, 세르반테스는 스페인을 떠나 이탈리아로 갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 출국 이유는 논란의 대상이다.",
+      "text_markdown": "그의 출국 이유는 논란의 대상이다.",
+      "tts": {
+        "text": "그의 출국 이유는 논란의 대상이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "법적 분쟁을 피해 도망쳤을 수도 있고, 단순히 모험을 찾아 나섰을 수도 있다.",
+      "text_markdown": "법적 분쟁을 피해 도망쳤을 수도 있고, 단순히 모험을 찾아 나섰을 수도 있다.",
+      "tts": {
+        "text": "법적 분쟁을 피해 도망쳤을 수도 있고, 단순히 모험을 찾아 나섰을 수도 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이탈리아에서 세르반테스는 이탈리아의 예술과 문학에 매료되었다.",
+      "text_markdown": "이탈리아에서 세르반테스는 이탈리아의 예술과 문학에 매료되었다.",
+      "tts": {
+        "text": "이탈리아에서 세르반테스는 이탈리아의 예술과 문학에 매료되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 위대한 이탈리아 시인들을 읽고 르네상스 문화를 흡수했다.",
+      "text_markdown": "그는 위대한 이탈리아 시인들을 읽고 르네상스 문화를 흡수했다.",
+      "tts": {
+        "text": "그는 위대한 이탈리아 시인들을 읽고 르네상스 문화를 흡수했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 영향은 남은 생애 동안 그의 글에 영향을 미치게 된다.",
+      "text_markdown": "이러한 영향은 남은 생애 동안 그의 글에 영향을 미치게 된다.",
+      "tts": {
+        "text": "이러한 영향은 남은 생애 동안 그의 글에 영향을 미치게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 또한 스페인 군대에 입대했다.",
+      "text_markdown": "그는 또한 스페인 군대에 입대했다.",
+      "tts": {
+        "text": "그는 또한 스페인 군대에 입대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "당시 스페인 제국의 일부였던 나폴리에 주둔한 연대에 합류했다.",
+      "text_markdown": "당시 스페인 제국의 일부였던 나폴리에 주둔한 연대에 합류했다.",
+      "tts": {
+        "text": "당시 스페인 제국의 일부였던 나폴리에 주둔한 연대에 합류했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1571년, 오스만 제국은 대규모 함대를 동지중해로 보냈다.",
+      "text_markdown": "1571년, 오스만 제국은 대규모 함대를 동지중해로 보냈다.",
+      "tts": {
+        "text": "천오백칠십일 년, 오스만 제국은 대규모 함대를 동지중해로 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오스만 제국은 최근 베네치아로부터 키프로스 섬을 정복했다.",
+      "text_markdown": "오스만 제국은 최근 베네치아로부터 키프로스 섬을 정복했다.",
+      "tts": {
+        "text": "오스만 제국은 최근 베네치아로부터 키프로스 섬을 정복했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기독교 유럽은 경각심을 느꼈다.",
+      "text_markdown": "기독교 유럽은 경각심을 느꼈다.",
+      "tts": {
+        "text": "기독교 유럽은 경각심을 느꼈다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "교황 비오 오세는 오스만의 위협에 맞서기 위해 기독교 국가들의 신성동맹을 조직했다.",
+      "text_markdown": "교황 비오 오세는 오스만의 위협에 맞서기 위해 기독교 국가들의 신성동맹을 조직했다.",
+      "tts": {
+        "text": "교황 비오 오세는 오스만의 위협에 맞서기 위해 기독교 국가들의 신성동맹을 조직했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인, 베네치아, 교황령이 선박과 병사를 제공했다.",
+      "text_markdown": "스페인, 베네치아, 교황령이 선박과 병사를 제공했다.",
+      "tts": {
+        "text": "스페인, 베네치아, 교황령이 선박과 병사를 제공했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "연합 함대는 시칠리아의 메시나 항에 집결했다.",
+      "text_markdown": "연합 함대는 시칠리아의 메시나 항에 집결했다.",
+      "tts": {
+        "text": "연합 함대는 시칠리아의 메시나 항에 집결했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미겔 데 세르반테스는 스페인 갤리선 중 한 척에 타고 있었다.",
+      "text_markdown": "미겔 데 세르반테스는 스페인 갤리선 중 한 척에 타고 있었다.",
+      "tts": {
+        "text": "미겔 데 세르반테스는 스페인 갤리선 중 한 척에 타고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 24세로, 계급도 명성도 없는 평범한 병사였다.",
+      "text_markdown": "그는 24세로, 계급도 명성도 없는 평범한 병사였다.",
+      "tts": {
+        "text": "그는 스물넷으로, 계급도 명성도 없는 평범한 병사였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1571년 10월 7일, 양 함대가 그리스 해안 앞 파트라스 만에서 레판토 해전에 맞붙었다.",
+      "text_markdown": "1571년 10월 7일, 양 함대가 그리스 해안 앞 파트라스 만에서 레판토 해전에 맞붙었다.",
+      "tts": {
+        "text": "천오백칠십일 년 시월 칠일, 양 함대가 그리스 해안 앞 파트라스 만에서 레판토 해전에 맞붙었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 역사상 가장 큰 해전 중 하나였다.",
+      "text_markdown": "그것은 역사상 가장 큰 해전 중 하나였다.",
+      "tts": {
+        "text": "그것은 역사상 가장 큰 해전 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "400척이 넘는 군함이 만의 좁은 수역에서 충돌했다.",
+      "text_markdown": "400척이 넘는 군함이 만의 좁은 수역에서 충돌했다.",
+      "tts": {
+        "text": "사백 척이 넘는 군함이 만의 좁은 수역에서 충돌했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전투는 처참했으며, 배와 배가 맞붙어 백병전이 벌어졌다.",
+      "text_markdown": "전투는 처참했으며, 배와 배가 맞붙어 백병전이 벌어졌다.",
+      "tts": {
+        "text": "전투는 처참했으며, 배와 배가 맞붙어 백병전이 벌어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하루의 전투에서 수만 명이 목숨을 잃었다.",
+      "text_markdown": "하루의 전투에서 수만 명이 목숨을 잃었다.",
+      "tts": {
+        "text": "하루의 전투에서 수만 명이 목숨을 잃었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 전투 당일 열병을 앓고 있었다.",
+      "text_markdown": "세르반테스는 전투 당일 열병을 앓고 있었다.",
+      "tts": {
+        "text": "세르반테스는 전투 당일 열병을 앓고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상관들은 그에게 갑판 아래에 머물러도 된다고 했다.",
+      "text_markdown": "상관들은 그에게 갑판 아래에 머물러도 된다고 했다.",
+      "tts": {
+        "text": "상관들은 그에게 갑판 아래에 머물러도 된다고 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 거부하며, 전우들이 피를 흘리는 동안 숨어 있느니 차라리 싸우다 죽겠다고 말했다.",
+      "text_markdown": "그는 거부하며, 전우들이 피를 흘리는 동안 숨어 있느니 차라리 싸우다 죽겠다고 말했다.",
+      "tts": {
+        "text": "그는 거부하며, 전우들이 피를 흘리는 동안 숨어 있느니 차라리 싸우다 죽겠다고 말했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투 중 세르반테스는 세 번 부상을 입었다.",
+      "text_markdown": "전투 중 세르반테스는 세 번 부상을 입었다.",
+      "tts": {
+        "text": "전투 중 세르반테스는 세 번 부상을 입었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그중 두 곳은 가슴 부상이었다.",
+      "text_markdown": "그중 두 곳은 가슴 부상이었다.",
+      "tts": {
+        "text": "그중 두 곳은 가슴 부상이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세 번째 부상은 왼손을 산산조각 내어 영구적으로 쓸 수 없게 만들었다.",
+      "text_markdown": "세 번째 부상은 왼손을 산산조각 내어 영구적으로 쓸 수 없게 만들었다.",
+      "tts": {
+        "text": "세 번째 부상은 왼손을 산산조각 내어 영구적으로 쓸 수 없게 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기독교 함대는 레판토에서 결정적인 승리를 거두었다.",
+      "text_markdown": "기독교 함대는 레판토에서 결정적인 승리를 거두었다.",
+      "tts": {
+        "text": "기독교 함대는 레판토에서 결정적인 승리를 거두었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오스만 해군은 사실상 궤멸되었다.",
+      "text_markdown": "오스만 해군은 사실상 궤멸되었다.",
+      "tts": {
+        "text": "오스만 해군은 사실상 궤멸되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기독교 유럽 전역에서 이 승리는 기적으로 축하되었다.",
+      "text_markdown": "기독교 유럽 전역에서 이 승리는 기적으로 축하되었다.",
+      "tts": {
+        "text": "기독교 유럽 전역에서 이 승리는 기적으로 축하되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 메시나의 병원에서 수개월간 부상 회복에 매진했다.",
+      "text_markdown": "세르반테스는 메시나의 병원에서 수개월간 부상 회복에 매진했다.",
+      "tts": {
+        "text": "세르반테스는 메시나의 병원에서 수개월간 부상 회복에 매진했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 그 상처를 평생 지니게 된다.",
+      "text_markdown": "그는 그 상처를 평생 지니게 된다.",
+      "tts": {
+        "text": "그는 그 상처를 평생 지니게 된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 나중에 자신의 불구가 된 손을 명예의 표시이자, 자신의 시대 최대의 전투에서 싸운 증거라고 불렀다.",
+      "text_markdown": "그는 나중에 자신의 불구가 된 손을 명예의 표시이자, 자신의 시대 최대의 전투에서 싸운 증거라고 불렀다.",
+      "tts": {
+        "text": "그는 나중에 자신의 불구가 된 손을 명예의 표시이자, 자신의 시대 최대의 전투에서 싸운 증거라고 불렀다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "회복 후 세르반테스는 지중해에서 병사로 계속 복무했다.",
+      "text_markdown": "회복 후 세르반테스는 지중해에서 병사로 계속 복무했다.",
+      "tts": {
+        "text": "회복 후 세르반테스는 지중해에서 병사로 계속 복무했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 이탈리아 각지의 주둔지에 배치되어 여러 군사 작전에 참여했다.",
+      "text_markdown": "그는 이탈리아 각지의 주둔지에 배치되어 여러 군사 작전에 참여했다.",
+      "tts": {
+        "text": "그는 이탈리아 각지의 주둔지에 배치되어 여러 군사 작전에 참여했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575년에 이르러 세르반테스는 귀국할 준비가 되어 있었다.",
+      "text_markdown": "1575년에 이르러 세르반테스는 귀국할 준비가 되어 있었다.",
+      "tts": {
+        "text": "천오백칠십오 년에 이르러 세르반테스는 귀국할 준비가 되어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 육 년간 스페인을 위해 복무했으며 상관들의 추천서를 갖고 있었다.",
+      "text_markdown": "그는 육 년간 스페인을 위해 복무했으며 상관들의 추천서를 갖고 있었다.",
+      "tts": {
+        "text": "그는 육 년간 스페인을 위해 복무했으며 상관들의 추천서를 갖고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 추천서들이 스페인으로 돌아가 임관이나 관직을 얻는 데 도움이 되기를 바랐다.",
+      "text_markdown": "이 추천서들이 스페인으로 돌아가 임관이나 관직을 얻는 데 도움이 되기를 바랐다.",
+      "tts": {
+        "text": "이 추천서들이 스페인으로 돌아가 임관이나 관직을 얻는 데 도움이 되기를 바랐다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575년 9월, 세르반테스와 동생 로드리고는 나폴리에서 갤리선 솔호에 승선했다.",
+      "text_markdown": "1575년 9월, 세르반테스와 동생 로드리고는 나폴리에서 갤리선 솔호에 승선했다.",
+      "tts": {
+        "text": "천오백칠십오 년 구월, 세르반테스와 동생 로드리고는 나폴리에서 갤리선 솔호에 승선했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 스페인으로 돌아가는 항해 중이었다.",
+      "text_markdown": "그들은 스페인으로 돌아가는 항해 중이었다.",
+      "tts": {
+        "text": "그들은 스페인으로 돌아가는 항해 중이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "스페인의 병사",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 끝내 도착하지 못했다.",
+      "text_markdown": "그들은 끝내 도착하지 못했다.",
+      "tts": {
+        "text": "그들은 끝내 도착하지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적에게 잡히다",
+      "text_markdown": "해적에게 잡히다"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575년 9월 26일, 갤리선 솔호가 카탈루냐 해안을 항해하던 중 공격을 받았다.",
+      "text_markdown": "1575년 9월 26일, 갤리선 솔호가 카탈루냐 해안을 항해하던 중 공격을 받았다.",
+      "tts": {
+        "text": "천오백칠십오 년 구월 이십육일, 갤리선 솔호가 카탈루냐 해안을 항해하던 중 공격을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제에서 출격한 바르바리 해적 함대가 배를 나포했다.",
+      "text_markdown": "알제에서 출격한 바르바리 해적 함대가 배를 나포했다.",
+      "tts": {
+        "text": "알제에서 출격한 바르바리 해적 함대가 배를 나포했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적 함대를 이끈 것은 이슬람으로 개종한 알바니아 출신의 배교자 아르나우트 마미라는 선장이었다.",
+      "text_markdown": "해적 함대를 이끈 것은 이슬람으로 개종한 알바니아 출신의 배교자 아르나우트 마미라는 선장이었다.",
+      "tts": {
+        "text": "해적 함대를 이끈 것은 이슬람으로 개종한 알바니아 출신의 배교자 아르나우트 마미라는 선장이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "배교자들은 해적 사이에서 흔했다.",
+      "text_markdown": "배교자들은 해적 사이에서 흔했다.",
+      "tts": {
+        "text": "배교자들은 해적 사이에서 흔했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 이들이 유럽에서 태어나 이슬람으로 개종하고 바르바리 국가에 봉사하게 된 사람들이었다.",
+      "text_markdown": "많은 이들이 유럽에서 태어나 이슬람으로 개종하고 바르바리 국가에 봉사하게 된 사람들이었다.",
+      "tts": {
+        "text": "많은 이들이 유럽에서 태어나 이슬람으로 개종하고 바르바리 국가에 봉사하게 된 사람들이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "솔호는 작은 갤리선으로, 무장도 빈약했고 병사가 아닌 승객을 태우고 있었다.",
+      "text_markdown": "솔호는 작은 갤리선으로, 무장도 빈약했고 병사가 아닌 승객을 태우고 있었다.",
+      "tts": {
+        "text": "솔호는 작은 갤리선으로, 무장도 빈약했고 병사가 아닌 승객을 태우고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적의 군함에는 상대가 되지 못했다.",
+      "text_markdown": "해적의 군함에는 상대가 되지 못했다.",
+      "tts": {
+        "text": "해적의 군함에는 상대가 되지 못했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "짧은 저항 끝에 솔호는 나포되었다.",
+      "text_markdown": "짧은 저항 끝에 솔호는 나포되었다.",
+      "tts": {
+        "text": "짧은 저항 끝에 솔호는 나포되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스와 동생 로드리고는 포로 중에 있었다.",
+      "text_markdown": "세르반테스와 동생 로드리고는 포로 중에 있었다.",
+      "tts": {
+        "text": "세르반테스와 동생 로드리고는 포로 중에 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 포로들을 수색하여 귀중품과 문서를 찾았다.",
+      "text_markdown": "해적들은 포로들을 수색하여 귀중품과 문서를 찾았다.",
+      "tts": {
+        "text": "해적들은 포로들을 수색하여 귀중품과 문서를 찾았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 장군들의 추천서를 발견한 해적들은 세르반테스를 매우 중요한 인물로 여겼다.",
+      "text_markdown": "스페인 장군들의 추천서를 발견한 해적들은 세르반테스를 매우 중요한 인물로 여겼다.",
+      "tts": {
+        "text": "스페인 장군들의 추천서를 발견한 해적들은 세르반테스를 매우 중요한 인물로 여겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 몸값을 500 금 에스쿠도라는 엄청난 금액으로 정했다.",
+      "text_markdown": "그들은 몸값을 500 금 에스쿠도라는 엄청난 금액으로 정했다.",
+      "tts": {
+        "text": "그들은 몸값을 오백 금 에스쿠도라는 엄청난 금액으로 정했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "실제로 세르반테스는 그런 몸값을 도저히 감당할 수 없는 소박한 가정 출신이었다.",
+      "text_markdown": "실제로 세르반테스는 그런 몸값을 도저히 감당할 수 없는 소박한 가정 출신이었다.",
+      "tts": {
+        "text": "실제로 세르반테스는 그런 몸값을 도저히 감당할 수 없는 소박한 가정 출신이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "출세를 돕기 위한 추천서가 오히려 그의 포로 생활을 끝내는 것을 훨씬 더 어렵게 만들었다.",
+      "text_markdown": "출세를 돕기 위한 추천서가 오히려 그의 포로 생활을 끝내는 것을 훨씬 더 어렵게 만들었다.",
+      "tts": {
+        "text": "출세를 돕기 위한 추천서가 오히려 그의 포로 생활을 끝내는 것을 훨씬 더 어렵게 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로들은 북아프리카에서 가장 크고 강력한 해적 도시 알제로 끌려갔다.",
+      "text_markdown": "포로들은 북아프리카에서 가장 크고 강력한 해적 도시 알제로 끌려갔다.",
+      "tts": {
+        "text": "포로들은 북아프리카에서 가장 크고 강력한 해적 도시 알제로 끌려갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제는 인구 10만 명이 넘는 도시로, 모스크와 시장과 노예 수용소가 가득한 활기찬 항구였다.",
+      "text_markdown": "알제는 인구 10만 명이 넘는 도시로, 모스크와 시장과 노예 수용소가 가득한 활기찬 항구였다.",
+      "tts": {
+        "text": "알제는 인구 십만 명이 넘는 도시로, 모스크와 시장과 노예 수용소가 가득한 활기찬 항구였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시기에 항상 약 25,000명의 기독교인 노예가 알제에 살고 있었던 것으로 추정된다.",
+      "text_markdown": "이 시기에 항상 약 25,000명의 기독교인 노예가 알제에 살고 있었던 것으로 추정된다.",
+      "tts": {
+        "text": "이 시기에 항상 약 이만 오천 명의 기독교인 노예가 알제에 살고 있었던 것으로 추정된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 스페인, 이탈리아, 프랑스, 포르투갈, 그리고 멀리는 아이슬란드와 아일랜드에서도 왔다.",
+      "text_markdown": "그들은 스페인, 이탈리아, 프랑스, 포르투갈, 그리고 멀리는 아이슬란드와 아일랜드에서도 왔다.",
+      "tts": {
+        "text": "그들은 스페인, 이탈리아, 프랑스, 포르투갈, 그리고 멀리는 아이슬란드와 아일랜드에서도 왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 해적선의 선장인 그리스 출신 배교자 달리 마미라는 주인에게 배정되었다.",
+      "text_markdown": "세르반테스는 해적선의 선장인 그리스 출신 배교자 달리 마미라는 주인에게 배정되었다.",
+      "tts": {
+        "text": "세르반테스는 해적선의 선장인 그리스 출신 배교자 달리 마미라는 주인에게 배정되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "달리 마미는 포로에 대한 잔인함으로 알려져 있었다.",
+      "text_markdown": "달리 마미는 포로에 대한 잔인함으로 알려져 있었다.",
+      "tts": {
+        "text": "달리 마미는 포로에 대한 잔인함으로 알려져 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제에서의 포로 대우는 천차만별이었다.",
+      "text_markdown": "알제에서의 포로 대우는 천차만별이었다.",
+      "tts": {
+        "text": "알제에서의 포로 대우는 천차만별이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몸값을 기다리는 부유한 포로는 비교적 편안하게 지낼 수 있었다.",
+      "text_markdown": "몸값을 기다리는 부유한 포로는 비교적 편안하게 지낼 수 있었다.",
+      "tts": {
+        "text": "몸값을 기다리는 부유한 포로는 비교적 편안하게 지낼 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "몸값의 희망이 없는 가난한 포로는 중노동에 투입되었다.",
+      "text_markdown": "몸값의 희망이 없는 가난한 포로는 중노동에 투입되었다.",
+      "tts": {
+        "text": "몸값의 희망이 없는 가난한 포로는 중노동에 투입되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "채석장이나 건설 현장에서 일하는 노예도 있었다.",
+      "text_markdown": "채석장이나 건설 현장에서 일하는 노예도 있었다.",
+      "tts": {
+        "text": "채석장이나 건설 현장에서 일하는 노예도 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "갤리선의 노에 묶여 쓰러질 때까지 노를 젓는 이들도 있었다.",
+      "text_markdown": "갤리선의 노에 묶여 쓰러질 때까지 노를 젓는 이들도 있었다.",
+      "tts": {
+        "text": "갤리선의 노에 묶여 쓰러질 때까지 노를 젓는 이들도 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가장 비참한 운명은 바뇨라 불리는 감옥으로, 노예들이 과밀하고 불결한 감방에 갇혔다.",
+      "text_markdown": "가장 비참한 운명은 바뇨라 불리는 감옥으로, 노예들이 과밀하고 불결한 감방에 갇혔다.",
+      "tts": {
+        "text": "가장 비참한 운명은 바뇨라 불리는 감옥으로, 노예들이 과밀하고 불결한 감방에 갇혔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 알제의 바뇨에서 시간을 보냈다.",
+      "text_markdown": "세르반테스는 알제의 바뇨에서 시간을 보냈다.",
+      "tts": {
+        "text": "세르반테스는 알제의 바뇨에서 시간을 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 그 시대의 유럽인이 거의 볼 수 없었던 규모의 고통을 목격했다.",
+      "text_markdown": "그는 그 시대의 유럽인이 거의 볼 수 없었던 규모의 고통을 목격했다.",
+      "tts": {
+        "text": "그는 그 시대의 유럽인이 거의 볼 수 없었던 규모의 고통을 목격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 경험은 그에게 깊은 흔적을 남겼다.",
+      "text_markdown": "그 경험은 그에게 깊은 흔적을 남겼다.",
+      "tts": {
+        "text": "그 경험은 그에게 깊은 흔적을 남겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로가 되자마자, 세르반테스는 탈출 계획을 세우기 시작했다.",
+      "text_markdown": "포로가 되자마자, 세르반테스는 탈출 계획을 세우기 시작했다.",
+      "tts": {
+        "text": "포로가 되자마자, 세르반테스는 탈출 계획을 세우기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 포로 생활을 수동적으로 받아들일 수 있는 사람이 아니었다.",
+      "text_markdown": "그는 포로 생활을 수동적으로 받아들일 수 있는 사람이 아니었다.",
+      "tts": {
+        "text": "그는 포로 생활을 수동적으로 받아들일 수 있는 사람이 아니었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이후 오 년 동안 그는 네 번의 탈출을 시도하게 된다.",
+      "text_markdown": "이후 오 년 동안 그는 네 번의 탈출을 시도하게 된다.",
+      "tts": {
+        "text": "이후 오 년 동안 그는 네 번의 탈출을 시도하게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 번째 탈출 시도는 1576년 초에 이루어졌다.",
+      "text_markdown": "첫 번째 탈출 시도는 1576년 초에 이루어졌다.",
+      "tts": {
+        "text": "첫 번째 탈출 시도는 천오백칠십육 년 초에 이루어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세르반테스는 무어인 안내인을 고용하여 자신과 몇몇 포로를 오란의 스페인 요새까지 육로로 안내하도록 했다.",
+      "text_markdown": "세르반테스는 무어인 안내인을 고용하여 자신과 몇몇 포로를 오란의 스페인 요새까지 육로로 안내하도록 했다.",
+      "tts": {
+        "text": "세르반테스는 무어인 안내인을 고용하여 자신과 몇몇 포로를 오란의 스페인 요새까지 육로로 안내하도록 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오란은 북아프리카 해안에 있는 스페인 전초기지로, 알제에서 며칠 거리에 있었다.",
+      "text_markdown": "오란은 북아프리카 해안에 있는 스페인 전초기지로, 알제에서 며칠 거리에 있었다.",
+      "tts": {
+        "text": "오란은 북아프리카 해안에 있는 스페인 전초기지로, 알제에서 며칠 거리에 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "안내인은 첫날 그들을 버리고 떠났다.",
+      "text_markdown": "안내인은 첫날 그들을 버리고 떠났다.",
+      "tts": {
+        "text": "안내인은 첫날 그들을 버리고 떠났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "안내인 없이 도망자들은 낯설고 적대적인 땅에서 길을 잃었다.",
+      "text_markdown": "안내인 없이 도망자들은 낯설고 적대적인 땅에서 길을 잃었다.",
+      "tts": {
+        "text": "안내인 없이 도망자들은 낯설고 적대적인 땅에서 길을 잃었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 알제로 돌아갈 수밖에 없었고, 세르반테스는 더 무거운 사슬로 벌을 받았다.",
+      "text_markdown": "그들은 알제로 돌아갈 수밖에 없었고, 세르반테스는 더 무거운 사슬로 벌을 받았다.",
+      "tts": {
+        "text": "그들은 알제로 돌아갈 수밖에 없었고, 세르반테스는 더 무거운 사슬로 벌을 받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "실패에도 불구하고 세르반테스는 꺾이지 않았다.",
+      "text_markdown": "실패에도 불구하고 세르반테스는 꺾이지 않았다.",
+      "tts": {
+        "text": "실패에도 불구하고 세르반테스는 꺾이지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 즉시 다음 탈출 계획에 착수했다.",
+      "text_markdown": "그는 즉시 다음 탈출 계획에 착수했다.",
+      "tts": {
+        "text": "그는 즉시 다음 탈출 계획에 착수했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한편, 스페인에 있는 가족은 필사적으로 몸값을 마련하려 하고 있었다.",
+      "text_markdown": "한편, 스페인에 있는 가족은 필사적으로 몸값을 마련하려 하고 있었다.",
+      "tts": {
+        "text": "한편, 스페인에 있는 가족은 필사적으로 몸값을 마련하려 하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어머니와 자매들은 가진 것을 팔고 빌려줄 사람이면 누구에게나 돈을 빌렸다.",
+      "text_markdown": "어머니와 자매들은 가진 것을 팔고 빌려줄 사람이면 누구에게나 돈을 빌렸다.",
+      "tts": {
+        "text": "어머니와 자매들은 가진 것을 팔고 빌려줄 사람이면 누구에게나 돈을 빌렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 500 에스쿠도는 그들의 능력 밖의 금액이었다.",
+      "text_markdown": "하지만 500 에스쿠도는 그들의 능력 밖의 금액이었다.",
+      "tts": {
+        "text": "하지만 오백 에스쿠도는 그들의 능력 밖의 금액이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577년, 가족은 세르반테스의 동생 로드리고의 몸값을 겨우 모았다.",
+      "text_markdown": "1577년, 가족은 세르반테스의 동생 로드리고의 몸값을 겨우 모았다.",
+      "tts": {
+        "text": "천오백칠십칠 년, 가족은 세르반테스의 동생 로드리고의 몸값을 겨우 모았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "로드리고는 풀려나 스페인으로 돌아갔다.",
+      "text_markdown": "로드리고는 풀려나 스페인으로 돌아갔다.",
+      "tts": {
+        "text": "로드리고는 풀려나 스페인으로 돌아갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미겔은 알제에 남아 여전히 기다렸다.",
+      "text_markdown": "미겔은 알제에 남아 여전히 기다렸다.",
+      "tts": {
+        "text": "미겔은 알제에 남아 여전히 기다렸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스를 포로로 잡은 해적들은 숙련되고 조직적인 선원들이었다.",
+      "text_markdown": "세르반테스를 포로로 잡은 해적들은 숙련되고 조직적인 선원들이었다.",
+      "tts": {
+        "text": "세르반테스를 포로로 잡은 해적들은 숙련되고 조직적인 선원들이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 돛과 노를 모두 갖춘 고속 갤리선을 운용했다.",
+      "text_markdown": "그들은 돛과 노를 모두 갖춘 고속 갤리선을 운용했다.",
+      "tts": {
+        "text": "그들은 돛과 노를 모두 갖춘 고속 갤리선을 운용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 배들은 대부분의 상선보다 빨랐고, 도망치려는 배도 추적할 수 있었다.",
+      "text_markdown": "이 배들은 대부분의 상선보다 빨랐고, 도망치려는 배도 추적할 수 있었다.",
+      "tts": {
+        "text": "이 배들은 대부분의 상선보다 빨랐고, 도망치려는 배도 추적할 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제의 노예 시장은 지중해 세계에서 가장 큰 시장 중 하나였다.",
+      "text_markdown": "알제의 노예 시장은 지중해 세계에서 가장 큰 시장 중 하나였다.",
+      "tts": {
+        "text": "알제의 노예 시장은 지중해 세계에서 가장 큰 시장 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로들은 검사되고, 값이 매겨지고, 최고가를 부른 사람에게 팔렸다.",
+      "text_markdown": "포로들은 검사되고, 값이 매겨지고, 최고가를 부른 사람에게 팔렸다.",
+      "tts": {
+        "text": "포로들은 검사되고, 값이 매겨지고, 최고가를 부른 사람에게 팔렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적에게 잡히다",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "젊은 사람, 기술을 가진 사람, 부유하다고 여겨지는 사람이 가장 높은 값에 팔렸다.",
+      "text_markdown": "젊은 사람, 기술을 가진 사람, 부유하다고 여겨지는 사람이 가장 높은 값에 팔렸다.",
+      "tts": {
+        "text": "젊은 사람, 기술을 가진 사람, 부유하다고 여겨지는 사람이 가장 높은 값에 팔렸다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "알제에서의 오 년",
+      "text_markdown": "알제에서의 오 년"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스의 두 번째 탈출 시도는 첫 번째보다 더 대담했다.",
+      "text_markdown": "세르반테스의 두 번째 탈출 시도는 첫 번째보다 더 대담했다.",
+      "tts": {
+        "text": "세르반테스의 두 번째 탈출 시도는 첫 번째보다 더 대담했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1577년, 그는 약 열다섯 명의 포로를 조직하여 알제 외곽의 동굴에 숨겼다.",
+      "text_markdown": "1577년, 그는 약 열다섯 명의 포로를 조직하여 알제 외곽의 동굴에 숨겼다.",
+      "tts": {
+        "text": "천오백칠십칠 년, 그는 약 열다섯 명의 포로를 조직하여 알제 외곽의 동굴에 숨겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "계획은 스페인 배가 해안에 와서 그들을 태워가기를 기다리는 것이었다.",
+      "text_markdown": "계획은 스페인 배가 해안에 와서 그들을 태워가기를 기다리는 것이었다.",
+      "tts": {
+        "text": "계획은 스페인 배가 해안에 와서 그들을 태워가기를 기다리는 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "도망자들은 수개월간 동굴에 숨어, 연락책 역할을 하는 동료 포로로부터 식량을 공급받았다.",
+      "text_markdown": "도망자들은 수개월간 동굴에 숨어, 연락책 역할을 하는 동료 포로로부터 식량을 공급받았다.",
+      "tts": {
+        "text": "도망자들은 수개월간 동굴에 숨어, 연락책 역할을 하는 동료 포로로부터 식량을 공급받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "환경은 비좁고 공포에 가득 찼다.",
+      "text_markdown": "환경은 비좁고 공포에 가득 찼다.",
+      "tts": {
+        "text": "환경은 비좁고 공포에 가득 찼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "발각되면 죽음이거나 그보다 더한 것이 기다리고 있었다.",
+      "text_markdown": "발각되면 죽음이거나 그보다 더한 것이 기다리고 있었다.",
+      "tts": {
+        "text": "발각되면 죽음이거나 그보다 더한 것이 기다리고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 구출선이 파견되었지만, 동굴에 도착하기 전에 해적에게 발견되었다.",
+      "text_markdown": "스페인 구출선이 파견되었지만, 동굴에 도착하기 전에 해적에게 발견되었다.",
+      "tts": {
+        "text": "스페인 구출선이 파견되었지만, 동굴에 도착하기 전에 해적에게 발견되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "배는 도주했고, 도망자들은 버림받았다.",
+      "text_markdown": "배는 도주했고, 도망자들은 버림받았다.",
+      "tts": {
+        "text": "배는 도주했고, 도망자들은 버림받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그런 다음 연락책이 그들을 배신했다.",
+      "text_markdown": "그런 다음 연락책이 그들을 배신했다.",
+      "tts": {
+        "text": "그런 다음 연락책이 그들을 배신했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 알제의 통치자 하산 파샤에게 동굴의 위치를 밝혔다.",
+      "text_markdown": "그는 알제의 통치자 하산 파샤에게 동굴의 위치를 밝혔다.",
+      "tts": {
+        "text": "그는 알제의 통치자 하산 파샤에게 동굴의 위치를 밝혔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "병사들이 동굴을 포위하고 안에 있던 모든 사람을 체포했다.",
+      "text_markdown": "병사들이 동굴을 포위하고 안에 있던 모든 사람을 체포했다.",
+      "tts": {
+        "text": "병사들이 동굴을 포위하고 안에 있던 모든 사람을 체포했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 앞으로 나서서 탈출 계획의 모든 책임을 졌다.",
+      "text_markdown": "세르반테스는 앞으로 나서서 탈출 계획의 모든 책임을 졌다.",
+      "tts": {
+        "text": "세르반테스는 앞으로 나서서 탈출 계획의 모든 책임을 졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 하산 파샤에게 모든 것을 혼자 계획하고 조직했다고 말했다.",
+      "text_markdown": "그는 하산 파샤에게 모든 것을 혼자 계획하고 조직했다고 말했다.",
+      "tts": {
+        "text": "그는 하산 파샤에게 모든 것을 혼자 계획하고 조직했다고 말했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동료 포로들을 처벌로부터 보호하기 위해서였다.",
+      "text_markdown": "동료 포로들을 처벌로부터 보호하기 위해서였다.",
+      "tts": {
+        "text": "동료 포로들을 처벌로부터 보호하기 위해서였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하산 파샤는 세르반테스의 용기에 감명을 받았다고 전해진다.",
+      "text_markdown": "하산 파샤는 세르반테스의 용기에 감명을 받았다고 전해진다.",
+      "tts": {
+        "text": "하산 파샤는 세르반테스의 용기에 감명을 받았다고 전해진다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "처형하는 대신, 파샤는 달리 마미로부터 세르반테스를 사들여 자신의 개인 노예로 삼았다.",
+      "text_markdown": "처형하는 대신, 파샤는 달리 마미로부터 세르반테스를 사들여 자신의 개인 노예로 삼았다.",
+      "tts": {
+        "text": "처형하는 대신, 파샤는 달리 마미로부터 세르반테스를 사들여 자신의 개인 노예로 삼았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "높은 몸값의 가치 또한 파샤의 손을 멈추게 했을 수 있다.",
+      "text_markdown": "높은 몸값의 가치 또한 파샤의 손을 멈추게 했을 수 있다.",
+      "tts": {
+        "text": "높은 몸값의 가치 또한 파샤의 손을 멈추게 했을 수 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파샤의 노예로서의 삶은 여전히 포로 생활이었지만, 다소 나은 대우를 받았다.",
+      "text_markdown": "파샤의 노예로서의 삶은 여전히 포로 생활이었지만, 다소 나은 대우를 받았다.",
+      "tts": {
+        "text": "파샤의 노예로서의 삶은 여전히 포로 생활이었지만, 다소 나은 대우를 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세르반테스는 바뇨가 아닌 파샤의 저택에 머물렀다.",
+      "text_markdown": "세르반테스는 바뇨가 아닌 파샤의 저택에 머물렀다.",
+      "tts": {
+        "text": "세르반테스는 바뇨가 아닌 파샤의 저택에 머물렀다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 세르반테스는 자유에 대한 희망을 버리지 않았다.",
+      "text_markdown": "하지만 세르반테스는 자유에 대한 희망을 버리지 않았다.",
+      "tts": {
+        "text": "하지만 세르반테스는 자유에 대한 희망을 버리지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1578년, 그는 세 번째 탈출을 계획했다.",
+      "text_markdown": "1578년, 그는 세 번째 탈출을 계획했다.",
+      "tts": {
+        "text": "천오백칠십팔 년, 그는 세 번째 탈출을 계획했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 오란의 스페인 수비대에 전령을 보내 도움을 요청했다.",
+      "text_markdown": "그는 오란의 스페인 수비대에 전령을 보내 도움을 요청했다.",
+      "tts": {
+        "text": "그는 오란의 스페인 수비대에 전령을 보내 도움을 요청했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전령은 오란에 도착하기 전에 무어인 순찰대에 붙잡혔다.",
+      "text_markdown": "전령은 오란에 도착하기 전에 무어인 순찰대에 붙잡혔다.",
+      "tts": {
+        "text": "전령은 오란에 도착하기 전에 무어인 순찰대에 붙잡혔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심문을 받은 전령은 계획에서 세르반테스의 역할을 밝혔다.",
+      "text_markdown": "심문을 받은 전령은 계획에서 세르반테스의 역할을 밝혔다.",
+      "tts": {
+        "text": "심문을 받은 전령은 계획에서 세르반테스의 역할을 밝혔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세르반테스는 다시 벌을 받았지만, 다시 목숨은 잃지 않았다.",
+      "text_markdown": "세르반테스는 다시 벌을 받았지만, 다시 목숨은 잃지 않았다.",
+      "tts": {
+        "text": "세르반테스는 다시 벌을 받았지만, 다시 목숨은 잃지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "네 번째이자 마지막 탈출 시도는 1579년에 이루어졌다.",
+      "text_markdown": "네 번째이자 마지막 탈출 시도는 1579년에 이루어졌다.",
+      "tts": {
+        "text": "네 번째이자 마지막 탈출 시도는 천오백칠십구 년에 이루어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세르반테스는 비밀리에 알제 해안으로 배를 보내 육십 명의 포로를 태우는 계획을 세웠다.",
+      "text_markdown": "세르반테스는 비밀리에 알제 해안으로 배를 보내 육십 명의 포로를 태우는 계획을 세웠다.",
+      "tts": {
+        "text": "세르반테스는 비밀리에 알제 해안으로 배를 보내 육십 명의 포로를 태우는 계획을 세웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 그가 고안한 것 중 가장 정교한 탈출 계획이었다.",
+      "text_markdown": "그것은 그가 고안한 것 중 가장 정교한 탈출 계획이었다.",
+      "tts": {
+        "text": "그것은 그가 고안한 것 중 가장 정교한 탈출 계획이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또다시 배신자가 계획을 폭로했다.",
+      "text_markdown": "또다시 배신자가 계획을 폭로했다.",
+      "tts": {
+        "text": "또다시 배신자가 계획을 폭로했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "후안 블랑코 데 파스라는 전직 도미니크회 수도사가 세르반테스를 당국에 밀고했다.",
+      "text_markdown": "후안 블랑코 데 파스라는 전직 도미니크회 수도사가 세르반테스를 당국에 밀고했다.",
+      "tts": {
+        "text": "후안 블랑코 데 파스라는 전직 도미니크회 수도사가 세르반테스를 당국에 밀고했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부 역사가들은 블랑코 데 파스가 질투심에서 그렇게 했다고 본다.",
+      "text_markdown": "일부 역사가들은 블랑코 데 파스가 질투심에서 그렇게 했다고 본다.",
+      "tts": {
+        "text": "일부 역사가들은 블랑코 데 파스가 질투심에서 그렇게 했다고 본다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 사슬에 묶여 하산 파샤 앞에 끌려갔다.",
+      "text_markdown": "세르반테스는 사슬에 묶여 하산 파샤 앞에 끌려갔다.",
+      "tts": {
+        "text": "세르반테스는 사슬에 묶여 하산 파샤 앞에 끌려갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다시 한번, 그는 공모자들의 이름을 밝히기를 거부했다.",
+      "text_markdown": "다시 한번, 그는 공모자들의 이름을 밝히기를 거부했다.",
+      "tts": {
+        "text": "다시 한번, 그는 공모자들의 이름을 밝히기를 거부했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다시 한번, 그는 단독 책임을 주장했다.",
+      "text_markdown": "다시 한번, 그는 단독 책임을 주장했다.",
+      "tts": {
+        "text": "다시 한번, 그는 단독 책임을 주장했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파샤는 세르반테스를 처형하겠다고 위협했다.",
+      "text_markdown": "파샤는 세르반테스를 처형하겠다고 위협했다.",
+      "tts": {
+        "text": "파샤는 세르반테스를 처형하겠다고 위협했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 바스티나도를 명령했다. 발바닥을 막대기로 때리는 형벌이다.",
+      "text_markdown": "그는 바스티나도를 명령했다. 발바닥을 막대기로 때리는 형벌이다.",
+      "tts": {
+        "text": "그는 바스티나도를 명령했다. 발바닥을 막대기로 때리는 형벌이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 사형은 집행되지 않았다.",
+      "text_markdown": "하지만 사형은 집행되지 않았다.",
+      "tts": {
+        "text": "하지만 사형은 집행되지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "왜 하산 파샤가 세르반테스의 목숨을 살려주었는지 학자들은 오랫동안 논쟁해 왔다.",
+      "text_markdown": "왜 하산 파샤가 세르반테스의 목숨을 살려주었는지 학자들은 오랫동안 논쟁해 왔다.",
+      "tts": {
+        "text": "왜 하산 파샤가 세르반테스의 목숨을 살려주었는지 학자들은 오랫동안 논쟁해 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가장 유력한 설명은 금전적인 것이다.",
+      "text_markdown": "가장 유력한 설명은 금전적인 것이다.",
+      "tts": {
+        "text": "가장 유력한 설명은 금전적인 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세르반테스의 몸값은 500 에스쿠도로 정해져 있었고, 그를 죽이면 그 돈을 잃게 된다.",
+      "text_markdown": "세르반테스의 몸값은 500 에스쿠도로 정해져 있었고, 그를 죽이면 그 돈을 잃게 된다.",
+      "tts": {
+        "text": "세르반테스의 몸값은 오백 에스쿠도로 정해져 있었고, 그를 죽이면 그 돈을 잃게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "파샤가 진심으로 세르반테스의 용기에 감탄했을 가능성도 있다.",
+      "text_markdown": "파샤가 진심으로 세르반테스의 용기에 감탄했을 가능성도 있다.",
+      "tts": {
+        "text": "파샤가 진심으로 세르반테스의 용기에 감탄했을 가능성도 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "네 번의 탈출 시도, 그때마다 굴복 대신 반항으로 맞선 것은 비범한 일이었다.",
+      "text_markdown": "네 번의 탈출 시도, 그때마다 굴복 대신 반항으로 맞선 것은 비범한 일이었다.",
+      "tts": {
+        "text": "네 번의 탈출 시도, 그때마다 굴복 대신 반항으로 맞선 것은 비범한 일이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제에서의 세월 동안 세르반테스는 주변의 모든 것을 관찰했다.",
+      "text_markdown": "알제에서의 세월 동안 세르반테스는 주변의 모든 것을 관찰했다.",
+      "tts": {
+        "text": "알제에서의 세월 동안 세르반테스는 주변의 모든 것을 관찰했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 서로 다른 종교와 문화의 사람들이 이 도시에서 어떻게 함께 사는지 지켜보았다.",
+      "text_markdown": "그는 서로 다른 종교와 문화의 사람들이 이 도시에서 어떻게 함께 사는지 지켜보았다.",
+      "tts": {
+        "text": "그는 서로 다른 종교와 문화의 사람들이 이 도시에서 어떻게 함께 사는지 지켜보았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 잔인함을 보았지만, 뜻밖의 친절함도 보았다.",
+      "text_markdown": "그는 잔인함을 보았지만, 뜻밖의 친절함도 보았다.",
+      "tts": {
+        "text": "그는 잔인함을 보았지만, 뜻밖의 친절함도 보았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 유럽 각지에서 온 포로들을 만났고, 저마다 상실과 인내의 이야기를 가지고 있었다.",
+      "text_markdown": "그는 유럽 각지에서 온 포로들을 만났고, 저마다 상실과 인내의 이야기를 가지고 있었다.",
+      "tts": {
+        "text": "그는 유럽 각지에서 온 포로들을 만났고, 저마다 상실과 인내의 이야기를 가지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "탈출, 배신, 개종, 그리고 생존의 이야기를 들었다.",
+      "text_markdown": "탈출, 배신, 개종, 그리고 생존의 이야기를 들었다.",
+      "tts": {
+        "text": "탈출, 배신, 개종, 그리고 생존의 이야기를 들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 이야기들은 그의 남은 생애 동안 그의 작품을 채우게 된다.",
+      "text_markdown": "이 이야기들은 그의 남은 생애 동안 그의 작품을 채우게 된다.",
+      "tts": {
+        "text": "이 이야기들은 그의 남은 생애 동안 그의 작품을 채우게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세월이 흐르면서 세르반테스의 몸값에 대한 희망은 희미해져 갔다.",
+      "text_markdown": "세월이 흐르면서 세르반테스의 몸값에 대한 희망은 희미해져 갔다.",
+      "tts": {
+        "text": "세월이 흐르면서 세르반테스의 몸값에 대한 희망은 희미해져 갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가족은 로드리고를 풀어주는 데 자원을 모두 소진했다.",
+      "text_markdown": "가족은 로드리고를 풀어주는 데 자원을 모두 소진했다.",
+      "tts": {
+        "text": "가족은 로드리고를 풀어주는 데 자원을 모두 소진했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미겔에게 필요한 500 에스쿠도는 까마득히 먼 금액으로 보였다.",
+      "text_markdown": "미겔에게 필요한 500 에스쿠도는 까마득히 먼 금액으로 보였다.",
+      "tts": {
+        "text": "미겔에게 필요한 오백 에스쿠도는 까마득히 먼 금액으로 보였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 알제의 기독교인 포로들 사이에서 지도자가 되었다.",
+      "text_markdown": "세르반테스는 알제의 기독교인 포로들 사이에서 지도자가 되었다.",
+      "tts": {
+        "text": "세르반테스는 알제의 기독교인 포로들 사이에서 지도자가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동료 포로들은 그의 용기와 자신의 위험을 무릅쓰고 다른 이들을 지키려는 자세를 존경했다.",
+      "text_markdown": "동료 포로들은 그의 용기와 자신의 위험을 무릅쓰고 다른 이들을 지키려는 자세를 존경했다.",
+      "tts": {
+        "text": "동료 포로들은 그의 용기와 자신의 위험을 무릅쓰고 다른 이들을 지키려는 자세를 존경했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 저항을 조직하고, 탈출을 계획하고, 절망할 수밖에 없었던 사람들의 사기를 유지했다.",
+      "text_markdown": "그는 저항을 조직하고, 탈출을 계획하고, 절망할 수밖에 없었던 사람들의 사기를 유지했다.",
+      "tts": {
+        "text": "그는 저항을 조직하고, 탈출을 계획하고, 절망할 수밖에 없었던 사람들의 사기를 유지했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로 중 일부는 대우를 개선하기 위해 이슬람으로 개종했다.",
+      "text_markdown": "포로 중 일부는 대우를 개선하기 위해 이슬람으로 개종했다.",
+      "tts": {
+        "text": "포로 중 일부는 대우를 개선하기 위해 이슬람으로 개종했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 배교자들은 같은 기독교인들에게는 멸시받았지만, 포획자들에게는 더 나은 대우를 받았다.",
+      "text_markdown": "이 배교자들은 같은 기독교인들에게는 멸시받았지만, 포획자들에게는 더 나은 대우를 받았다.",
+      "tts": {
+        "text": "이 배교자들은 같은 기독교인들에게는 멸시받았지만, 포획자들에게는 더 나은 대우를 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "알제에서의 오 년",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세르반테스는 그 유혹을 이해했지만, 스스로는 결코 개종하지 않았다.",
+      "text_markdown": "세르반테스는 그 유혹을 이해했지만, 스스로는 결코 개종하지 않았다.",
+      "tts": {
+        "text": "세르반테스는 그 유혹을 이해했지만, 스스로는 결코 개종하지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "몸값을 치르다",
+      "text_markdown": "몸값을 치르다"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1580년, 삼위일체회 수도사들이 몸값 교섭을 위해 알제에 왔다.",
+      "text_markdown": "1580년, 삼위일체회 수도사들이 몸값 교섭을 위해 알제에 왔다.",
+      "tts": {
+        "text": "천오백팔십 년, 삼위일체회 수도사들이 몸값 교섭을 위해 알제에 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지극히 거룩한 삼위일체 수도회는 수세기 동안 이러한 임무를 수행해 왔다.",
+      "text_markdown": "지극히 거룩한 삼위일체 수도회는 수세기 동안 이러한 임무를 수행해 왔다.",
+      "tts": {
+        "text": "지극히 거룩한 삼위일체 수도회는 수세기 동안 이러한 임무를 수행해 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 스페인 전역에서 기부금을 모아 기독교인 포로를 석방하는 데 사용했다.",
+      "text_markdown": "그들은 스페인 전역에서 기부금을 모아 기독교인 포로를 석방하는 데 사용했다.",
+      "tts": {
+        "text": "그들은 스페인 전역에서 기부금을 모아 기독교인 포로를 석방하는 데 사용했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "몸값 교섭의 책임자는 삼위일체회 수도사 프라이 후안 힐이었다.",
+      "text_markdown": "몸값 교섭의 책임자는 삼위일체회 수도사 프라이 후안 힐이었다.",
+      "tts": {
+        "text": "몸값 교섭의 책임자는 삼위일체회 수도사 프라이 후안 힐이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 여러 포로의 몸값을 치를 만큼의 돈을 가져왔지만, 모두에게 충분하지는 않았다.",
+      "text_markdown": "그는 여러 포로의 몸값을 치를 만큼의 돈을 가져왔지만, 모두에게 충분하지는 않았다.",
+      "tts": {
+        "text": "그는 여러 포로의 몸값을 치를 만큼의 돈을 가져왔지만, 모두에게 충분하지는 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스의 어머니 레오노르 데 코르티나스는 수년간 삼위일체회에 탄원해 왔다.",
+      "text_markdown": "세르반테스의 어머니 레오노르 데 코르티나스는 수년간 삼위일체회에 탄원해 왔다.",
+      "tts": {
+        "text": "세르반테스의 어머니 레오노르 데 코르티나스는 수년간 삼위일체회에 탄원해 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모을 수 있는 동전은 모두 보냈다.",
+      "text_markdown": "모을 수 있는 동전은 모두 보냈다.",
+      "tts": {
+        "text": "모을 수 있는 동전은 모두 보냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 총액은 여전히 500 에스쿠도에 미치지 못했다.",
+      "text_markdown": "하지만 총액은 여전히 500 에스쿠도에 미치지 못했다.",
+      "tts": {
+        "text": "하지만 총액은 여전히 오백 에스쿠도에 미치지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프라이 후안 힐은 하산 파샤와 직접 교섭했다.",
+      "text_markdown": "프라이 후안 힐은 하산 파샤와 직접 교섭했다.",
+      "tts": {
+        "text": "프라이 후안 힐은 하산 파샤와 직접 교섭했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "파샤는 알제를 영구히 떠나면서 노예들을 데려가려는 참이었다.",
+      "text_markdown": "파샤는 알제를 영구히 떠나면서 노예들을 데려가려는 참이었다.",
+      "tts": {
+        "text": "파샤는 알제를 영구히 떠나면서 노예들을 데려가려는 참이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "지금 세르반테스의 몸값이 치러지지 않으면, 그는 영영 풀려나지 못할 수도 있었다.",
+      "text_markdown": "지금 세르반테스의 몸값이 치러지지 않으면, 그는 영영 풀려나지 못할 수도 있었다.",
+      "tts": {
+        "text": "지금 세르반테스의 몸값이 치러지지 않으면, 그는 영영 풀려나지 못할 수도 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "필사적인 협상과 현지 기독교 상인들의 자금 추가를 통해 프라이 후안 힐은 몸값 전액을 마련했다.",
+      "text_markdown": "필사적인 협상과 현지 기독교 상인들의 자금 추가를 통해 프라이 후안 힐은 몸값 전액을 마련했다.",
+      "tts": {
+        "text": "필사적인 협상과 현지 기독교 상인들의 자금 추가를 통해 프라이 후안 힐은 몸값 전액을 마련했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 하산 파샤에게 500 에스쿠도를 지불했다.",
+      "text_markdown": "그는 하산 파샤에게 500 에스쿠도를 지불했다.",
+      "tts": {
+        "text": "그는 하산 파샤에게 오백 에스쿠도를 지불했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1580년 9월 19일, 미겔 데 세르반테스는 자유의 몸이 되었다.",
+      "text_markdown": "1580년 9월 19일, 미겔 데 세르반테스는 자유의 몸이 되었다.",
+      "tts": {
+        "text": "천오백팔십 년 구월 십구일, 미겔 데 세르반테스는 자유의 몸이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 정확히 오 년간 알제에서 포로로 있었다.",
+      "text_markdown": "그는 정확히 오 년간 알제에서 포로로 있었다.",
+      "tts": {
+        "text": "그는 정확히 오 년간 알제에서 포로로 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 33세였다.",
+      "text_markdown": "그는 33세였다.",
+      "tts": {
+        "text": "그는 서른셋이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "왼손은 레판토에서의 부상으로 영구적으로 불구가 되었다.",
+      "text_markdown": "왼손은 레판토에서의 부상으로 영구적으로 불구가 되었다.",
+      "tts": {
+        "text": "왼손은 레판토에서의 부상으로 영구적으로 불구가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 몸에는 오 년간의 포로 생활과 처벌의 흔적이 새겨져 있었다.",
+      "text_markdown": "그의 몸에는 오 년간의 포로 생활과 처벌의 흔적이 새겨져 있었다.",
+      "tts": {
+        "text": "그의 몸에는 오 년간의 포로 생활과 처벌의 흔적이 새겨져 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제를 떠나기 전, 세르반테스는 포로 기간 동안의 자신의 행실에 대해 동료 포로들로부터 선서 증언을 모았다.",
+      "text_markdown": "알제를 떠나기 전, 세르반테스는 포로 기간 동안의 자신의 행실에 대해 동료 포로들로부터 선서 증언을 모았다.",
+      "tts": {
+        "text": "알제를 떠나기 전, 세르반테스는 포로 기간 동안의 자신의 행실에 대해 동료 포로들로부터 선서 증언을 모았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 증인들은 그의 네 번의 탈출 시도와 동료를 배신하지 않은 사실을 확인했다.",
+      "text_markdown": "이 증인들은 그의 네 번의 탈출 시도와 동료를 배신하지 않은 사실을 확인했다.",
+      "tts": {
+        "text": "이 증인들은 그의 네 번의 탈출 시도와 동료를 배신하지 않은 사실을 확인했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 문서는 '알제의 정보서'라 불리며 오늘날까지 남아 있다.",
+      "text_markdown": "이 문서는 '알제의 정보서'라 불리며 오늘날까지 남아 있다.",
+      "tts": {
+        "text": "이 문서는 알제의 정보서라 불리며 오늘날까지 남아 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 1580년 말 스페인에 귀국했다.",
+      "text_markdown": "세르반테스는 1580년 말 스페인에 귀국했다.",
+      "tts": {
+        "text": "세르반테스는 천오백팔십 년 말 스페인에 귀국했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 빈털터리에, 장애를 가진 채, 정신적 충격을 안고 있었다.",
+      "text_markdown": "그는 빈털터리에, 장애를 가진 채, 정신적 충격을 안고 있었다.",
+      "tts": {
+        "text": "그는 빈털터리에, 장애를 가진 채, 정신적 충격을 안고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "군 복무와 고통이 관직을 얻는 데 도움이 되리라 기대했다.",
+      "text_markdown": "군 복무와 고통이 관직을 얻는 데 도움이 되리라 기대했다.",
+      "tts": {
+        "text": "군 복무와 고통이 관직을 얻는 데 도움이 되리라 기대했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러 직위에 지원했으나 번번이 거절당했다.",
+      "text_markdown": "여러 직위에 지원했으나 번번이 거절당했다.",
+      "tts": {
+        "text": "여러 직위에 지원했으나 번번이 거절당했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 관료제에는 연줄 없는 부상 군인의 자리가 없었다.",
+      "text_markdown": "스페인 관료제에는 연줄 없는 부상 군인의 자리가 없었다.",
+      "tts": {
+        "text": "스페인 관료제에는 연줄 없는 부상 군인의 자리가 없었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 글쓰기로 방향을 돌렸다.",
+      "text_markdown": "세르반테스는 글쓰기로 방향을 돌렸다.",
+      "tts": {
+        "text": "세르반테스는 글쓰기로 방향을 돌렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1585년, 그는 첫 소설인 목가적 로맨스 라 갈라테아를 출판했다.",
+      "text_markdown": "1585년, 그는 첫 소설인 목가적 로맨스 라 갈라테아를 출판했다.",
+      "tts": {
+        "text": "천오백팔십오 년, 그는 첫 소설인 목가적 로맨스 라 갈라테아를 출판했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 약간의 주목을 받았으나 거의 돈이 되지 않았다.",
+      "text_markdown": "그것은 약간의 주목을 받았으나 거의 돈이 되지 않았다.",
+      "tts": {
+        "text": "그것은 약간의 주목을 받았으나 거의 돈이 되지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 후 이십 년간 그는 경제적으로 고군분투했다.",
+      "text_markdown": "그 후 이십 년간 그는 경제적으로 고군분투했다.",
+      "tts": {
+        "text": "그 후 이십 년간 그는 경제적으로 고군분투했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 징세관과 스페인 함대의 조달관으로 일했다.",
+      "text_markdown": "그는 징세관과 스페인 함대의 조달관으로 일했다.",
+      "tts": {
+        "text": "그는 징세관과 스페인 함대의 조달관으로 일했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "회계상의 부정으로 최소 두 번 투옥되었다.",
+      "text_markdown": "회계상의 부정으로 최소 두 번 투옥되었다.",
+      "tts": {
+        "text": "회계상의 부정으로 최소 두 번 투옥되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1605년, 57세의 나이에 세르반테스는 돈키호테 제일부를 출판했다.",
+      "text_markdown": "1605년, 57세의 나이에 세르반테스는 돈키호테 제일부를 출판했다.",
+      "tts": {
+        "text": "천육백오 년, 쉰일곱의 나이에 세르반테스는 돈키호테 제일부를 출판했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 책은 즉각적인 센세이션을 일으켰다.",
+      "text_markdown": "이 책은 즉각적인 센세이션을 일으켰다.",
+      "tts": {
+        "text": "이 책은 즉각적인 센세이션을 일으켰다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "돈키호테는 기사도 이야기를 너무 많이 읽어 정신을 잃고 편력 기사가 되려고 길을 떠나는 노인의 이야기였다.",
+      "text_markdown": "돈키호테는 기사도 이야기를 너무 많이 읽어 정신을 잃고 편력 기사가 되려고 길을 떠나는 노인의 이야기였다.",
+      "tts": {
+        "text": "돈키호테는 기사도 이야기를 너무 많이 읽어 정신을 잃고 편력 기사가 되려고 길을 떠나는 노인의 이야기였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우습고, 슬프고, 깊이 인간적인 작품이었다.",
+      "text_markdown": "우습고, 슬프고, 깊이 인간적인 작품이었다.",
+      "tts": {
+        "text": "우습고, 슬프고, 깊이 인간적인 작품이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 흔히 최초의 근대 소설이라 불린다.",
+      "text_markdown": "그것은 흔히 최초의 근대 소설이라 불린다.",
+      "tts": {
+        "text": "그것은 흔히 최초의 근대 소설이라 불린다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 1615년에 돈키호테 제이부를 출판했다.",
+      "text_markdown": "세르반테스는 1615년에 돈키호테 제이부를 출판했다.",
+      "tts": {
+        "text": "세르반테스는 천육백십오 년에 돈키호테 제이부를 출판했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 생의 마지막까지 글을 쓰기를 멈추지 않았다.",
+      "text_markdown": "그는 생의 마지막까지 글을 쓰기를 멈추지 않았다.",
+      "tts": {
+        "text": "그는 생의 마지막까지 글을 쓰기를 멈추지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미겔 데 세르반테스는 1616년 4월 22일 마드리드에서 세상을 떠났다.",
+      "text_markdown": "미겔 데 세르반테스는 1616년 4월 22일 마드리드에서 세상을 떠났다.",
+      "tts": {
+        "text": "미겔 데 세르반테스는 천육백십육 년 사월 이십이일 마드리드에서 세상을 떠났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "향년 68세였다.",
+      "text_markdown": "향년 68세였다.",
+      "tts": {
+        "text": "향년 예순여덟이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 빈곤 속에서 죽었으며, 자신의 공로에 마땅하다고 느꼈던 인정이나 보상을 받지 못했다.",
+      "text_markdown": "그는 빈곤 속에서 죽었으며, 자신의 공로에 마땅하다고 느꼈던 인정이나 보상을 받지 못했다.",
+      "tts": {
+        "text": "그는 빈곤 속에서 죽었으며, 자신의 공로에 마땅하다고 느꼈던 인정이나 보상을 받지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "삼위일체 수도회는 수세기에 걸쳐 수천 명의 포로의 몸값을 치렀다.",
+      "text_markdown": "삼위일체 수도회는 수세기에 걸쳐 수천 명의 포로의 몸값을 치렀다.",
+      "tts": {
+        "text": "삼위일체 수도회는 수세기에 걸쳐 수천 명의 포로의 몸값을 치렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "북아프리카로의 사절은 위험하고 비용이 많이 드는 일이었다.",
+      "text_markdown": "북아프리카로의 사절은 위험하고 비용이 많이 드는 일이었다.",
+      "tts": {
+        "text": "북아프리카로의 사절은 위험하고 비용이 많이 드는 일이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "몸값을 치르다",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수도사들은 거액을 들고 적지로 들어가며, 신앙과 몸값의 관례를 믿었다.",
+      "text_markdown": "수도사들은 거액을 들고 적지로 들어가며, 신앙과 몸값의 관례를 믿었다.",
+      "tts": {
+        "text": "수도사들은 거액을 들고 적지로 들어가며, 신앙과 몸값의 관례를 믿었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "포로의 유산",
+      "text_markdown": "포로의 유산"
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제에서의 세르반테스의 포로 경험은 그의 글에 지워지지 않는 흔적을 남겼다.",
+      "text_markdown": "알제에서의 세르반테스의 포로 경험은 그의 글에 지워지지 않는 흔적을 남겼다.",
+      "tts": {
+        "text": "알제에서의 세르반테스의 포로 경험은 그의 글에 지워지지 않는 흔적을 남겼다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "투옥, 포로, 탈출의 장면이 그의 작품 전반에 나타난다.",
+      "text_markdown": "투옥, 포로, 탈출의 장면이 그의 작품 전반에 나타난다.",
+      "tts": {
+        "text": "투옥, 포로, 탈출의 장면이 그의 작품 전반에 나타난다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "돈키호테 자체에 '포로의 이야기'로 알려진 긴 삽화가 있다.",
+      "text_markdown": "돈키호테 자체에 '포로의 이야기'로 알려진 긴 삽화가 있다.",
+      "tts": {
+        "text": "돈키호테 자체에 포로의 이야기로 알려진 긴 삽화가 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바르바리 해적에게 잡혀 알제에서 노예가 된 스페인 병사의 이야기이다.",
+      "text_markdown": "바르바리 해적에게 잡혀 알제에서 노예가 된 스페인 병사의 이야기이다.",
+      "tts": {
+        "text": "바르바리 해적에게 잡혀 알제에서 노예가 된 스페인 병사의 이야기이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세르반테스 자신의 삶과의 유사성은 부인할 수 없다.",
+      "text_markdown": "세르반테스 자신의 삶과의 유사성은 부인할 수 없다.",
+      "tts": {
+        "text": "세르반테스 자신의 삶과의 유사성은 부인할 수 없다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알제에서의 삶을 다룬 그의 희곡 '알제의 감옥'은 자신의 경험에 직접 바탕을 두고 있다.",
+      "text_markdown": "알제에서의 삶을 다룬 그의 희곡 '알제의 감옥'은 자신의 경험에 직접 바탕을 두고 있다.",
+      "tts": {
+        "text": "알제에서의 삶을 다룬 그의 희곡 알제의 감옥은 자신의 경험에 직접 바탕을 두고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로 생활의 잔인함, 고향에 대한 그리움, 포획자와 피포획자 사이의 복잡한 관계가 묘사되었다.",
+      "text_markdown": "포로 생활의 잔인함, 고향에 대한 그리움, 포획자와 피포획자 사이의 복잡한 관계가 묘사되었다.",
+      "tts": {
+        "text": "포로 생활의 잔인함, 고향에 대한 그리움, 포획자와 피포획자 사이의 복잡한 관계가 묘사되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "학자들은 세르반테스의 이슬람 인물 묘사가 동시대 대부분의 유럽 작가들보다 섬세했다고 지적한다.",
+      "text_markdown": "학자들은 세르반테스의 이슬람 인물 묘사가 동시대 대부분의 유럽 작가들보다 섬세했다고 지적한다.",
+      "tts": {
+        "text": "학자들은 세르반테스의 이슬람 인물 묘사가 동시대 대부분의 유럽 작가들보다 섬세했다고 지적한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 오 년간 이슬람교도들 사이에서 살았다.",
+      "text_markdown": "그는 오 년간 이슬람교도들 사이에서 살았다.",
+      "tts": {
+        "text": "그는 오 년간 이슬람교도들 사이에서 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p109",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 그들을 단순한 적이 아닌 개인으로 보았다.",
+      "text_markdown": "그는 그들을 단순한 적이 아닌 개인으로 보았다.",
+      "tts": {
+        "text": "그는 그들을 단순한 적이 아닌 개인으로 보았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "돈키호테는 역사상 가장 영향력 있는 책 중 하나가 되었다.",
+      "text_markdown": "돈키호테는 역사상 가장 영향력 있는 책 중 하나가 되었다.",
+      "tts": {
+        "text": "돈키호테는 역사상 가장 영향력 있는 책 중 하나가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "성경을 제외하면 다른 어떤 책보다 많은 언어로 번역되었다.",
+      "text_markdown": "성경을 제외하면 다른 어떤 책보다 많은 언어로 번역되었다.",
+      "tts": {
+        "text": "성경을 제외하면 다른 어떤 책보다 많은 언어로 번역되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이상주의, 환멸, 그리고 우리가 세상을 상상하는 것과 실제 세상 사이의 간극이라는 소설의 주제는 문화와 세기를 넘어 공감을 얻었다.",
+      "text_markdown": "이상주의, 환멸, 그리고 우리가 세상을 상상하는 것과 실제 세상 사이의 간극이라는 소설의 주제는 문화와 세기를 넘어 공감을 얻었다.",
+      "tts": {
+        "text": "이상주의, 환멸, 그리고 우리가 세상을 상상하는 것과 실제 세상 사이의 간극이라는 소설의 주제는 문화와 세기를 넘어 공감을 얻었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이러한 주제의 대부분은 세르반테스 자신의 쓰라린 경험에 의해 형성되었다.",
+      "text_markdown": "이러한 주제의 대부분은 세르반테스 자신의 쓰라린 경험에 의해 형성되었다.",
+      "tts": {
+        "text": "이러한 주제의 대부분은 세르반테스 자신의 쓰라린 경험에 의해 형성되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세르반테스는 용감히 싸우고도 잊히는 것이 무엇인지 알았다.",
+      "text_markdown": "세르반테스는 용감히 싸우고도 잊히는 것이 무엇인지 알았다.",
+      "tts": {
+        "text": "세르반테스는 용감히 싸우고도 잊히는 것이 무엇인지 알았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "고통받으면서 아무런 보상도 받지 못하는 것이 무엇인지 알았다.",
+      "text_markdown": "고통받으면서 아무런 보상도 받지 못하는 것이 무엇인지 알았다.",
+      "tts": {
+        "text": "고통받으면서 아무런 보상도 받지 못하는 것이 무엇인지 알았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 그 앎을 작품에 쏟아부었다.",
+      "text_markdown": "그는 그 앎을 작품에 쏟아부었다.",
+      "tts": {
+        "text": "그는 그 앎을 작품에 쏟아부었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 세르반테스는 근대 소설의 아버지로 추앙받는다.",
+      "text_markdown": "오늘날 세르반테스는 근대 소설의 아버지로 추앙받는다.",
+      "tts": {
+        "text": "오늘날 세르반테스는 근대 소설의 아버지로 추앙받는다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 동상이 마드리드의 에스파냐 광장에 서 있다.",
+      "text_markdown": "그의 동상이 마드리드의 에스파냐 광장에 서 있다.",
+      "tts": {
+        "text": "그의 동상이 마드리드의 에스파냐 광장에 서 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전 세계의 대학, 도서관, 문화 센터에 그의 이름이 붙어 있다.",
+      "text_markdown": "전 세계의 대학, 도서관, 문화 센터에 그의 이름이 붙어 있다.",
+      "tts": {
+        "text": "전 세계의 대학, 도서관, 문화 센터에 그의 이름이 붙어 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 기일인 4월 23일은 유네스코에 의해 세계 책의 날로 기념된다.",
+      "text_markdown": "그의 기일인 4월 23일은 유네스코에 의해 세계 책의 날로 기념된다.",
+      "tts": {
+        "text": "그의 기일인 사월 이십삼일은 유네스코에 의해 세계 책의 날로 기념된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전 세계적으로 기념되는 몇 안 되는 문학 기념일 중 하나이다.",
+      "text_markdown": "전 세계적으로 기념되는 몇 안 되는 문학 기념일 중 하나이다.",
+      "tts": {
+        "text": "전 세계적으로 기념되는 몇 안 되는 문학 기념일 중 하나이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미겔 데 세르반테스는 해적에게 잡혀 오 년간 노예가 되었고, 조국에 거의 잊혀졌다.",
+      "text_markdown": "미겔 데 세르반테스는 해적에게 잡혀 오 년간 노예가 되었고, 조국에 거의 잊혀졌다.",
+      "tts": {
+        "text": "미겔 데 세르반테스는 해적에게 잡혀 오 년간 노예가 되었고, 조국에 거의 잊혀졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 이에 응답하여 온 세계가 기억할 책을 썼다.",
+      "text_markdown": "그는 이에 응답하여 온 세계가 기억할 책을 썼다.",
+      "tts": {
+        "text": "그는 이에 응답하여 온 세계가 기억할 책을 썼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로 생활은 그를 파괴하지 않았다.",
+      "text_markdown": "포로 생활은 그를 파괴하지 않았다.",
+      "tts": {
+        "text": "포로 생활은 그를 파괴하지 않았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "포로의 유산",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 그의 천재성이 단련된 용광로가 되었다.",
+      "text_markdown": "그것은 그의 천재성이 단련된 용광로가 되었다.",
+      "tts": {
+        "text": "그것은 그의 천재성이 단련된 용광로가 되었다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

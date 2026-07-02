@@ -1,0 +1,4427 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jeanne_de_clisson",
+  "language": "fr",
+  "total_segments": 296,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Note au lecteur",
+      "text_markdown": "Note au lecteur"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ceci est l'histoire de Jeanne de Clisson, une noble bretonne devenue l'une des pirates les plus redoutées de l'Europe médiévale.",
+      "text_markdown": "Ceci est l'histoire de Jeanne de Clisson, une noble bretonne devenue l'une des pirates les plus redoutées de l'Europe médiévale.",
+      "tts": {
+        "text": "Ceci est l'histoire de Jeanne de Clisson, une noble bretonne devenue l'une des pirates les plus redoutées de l'Europe médiévale.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle est connue dans l'histoire sous le nom de la Lionne de Bretagne.",
+      "text_markdown": "Elle est connue dans l'histoire sous le nom de la Lionne de Bretagne.",
+      "tts": {
+        "text": "Elle est connue dans l'histoire sous le nom de la Lionne de Bretagne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'histoire de Jeanne ne commence pas par l'aventure, mais par la trahison.",
+      "text_markdown": "L'histoire de Jeanne ne commence pas par l'aventure, mais par la trahison.",
+      "tts": {
+        "text": "L'histoire de Jeanne ne commence pas par l'aventure, mais par la trahison.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lorsque le roi de France fit exécuter son mari sous de fausses accusations de trahison, Jeanne jura de se venger.",
+      "text_markdown": "Lorsque le roi de France fit exécuter son mari sous de fausses accusations de trahison, Jeanne jura de se venger.",
+      "tts": {
+        "text": "Lorsque le roi de France fit exécuter son mari sous de fausses accusations de trahison, Jeanne jura de se venger.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle vendit tout ce qu'elle possédait, acheta des navires de guerre et passa treize ans à pourchasser les vaisseaux français dans la Manche.",
+      "text_markdown": "Elle vendit tout ce qu'elle possédait, acheta des navires de guerre et passa treize ans à pourchasser les vaisseaux français dans la Manche.",
+      "tts": {
+        "text": "Elle vendit tout ce qu'elle possédait, acheta des navires de guerre et passa treize ans à pourchasser les vaisseaux français dans la Manche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ses navires avaient des coques noires et des voiles rouges, et son équipage ne laissait presque aucun survivant.",
+      "text_markdown": "Ses navires avaient des coques noires et des voiles rouges, et son équipage ne laissait presque aucun survivant.",
+      "tts": {
+        "text": "Ses navires avaient des coques noires et des voiles rouges, et son équipage ne laissait presque aucun survivant.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son histoire se déroule pendant la guerre de Cent Ans, l'un des conflits les plus longs et les plus sanglants de l'histoire européenne.",
+      "text_markdown": "Son histoire se déroule pendant la guerre de Cent Ans, l'un des conflits les plus longs et les plus sanglants de l'histoire européenne.",
+      "tts": {
+        "text": "Son histoire se déroule pendant la guerre de Cent Ans, l'un des conflits les plus longs et les plus sanglants de l'histoire européenne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'est une histoire de loyauté, de deuil et des extrémités auxquelles une personne peut aller par vengeance.",
+      "text_markdown": "C'est une histoire de loyauté, de deuil et des extrémités auxquelles une personne peut aller par vengeance.",
+      "tts": {
+        "text": "C'est une histoire de loyauté, de deuil et des extrémités auxquelles une personne peut aller par vengeance.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les événements décrits ici reposent sur des chroniques médiévales et des documents historiques.",
+      "text_markdown": "Les événements décrits ici reposent sur des chroniques médiévales et des documents historiques.",
+      "tts": {
+        "text": "Les événements décrits ici reposent sur des chroniques médiévales et des documents historiques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Certains détails se sont perdus avec le temps, et le texte signale les zones d'incertitude.",
+      "text_markdown": "Certains détails se sont perdus avec le temps, et le texte signale les zones d'incertitude.",
+      "tts": {
+        "text": "Certains détails se sont perdus avec le temps, et le texte signale les zones d'incertitude.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le monde de la Bretagne médiévale",
+      "text_markdown": "Le monde de la Bretagne médiévale"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au début des années 1300, l'Europe était un patchwork de royaumes, de duchés et de territoires féodaux.",
+      "text_markdown": "Au début des années 1300, l'Europe était un patchwork de royaumes, de duchés et de territoires féodaux.",
+      "tts": {
+        "text": "Au début des années treize cents, l'Europe était un patchwork de royaumes, de duchés et de territoires féodaux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le pouvoir était détenu par les rois, les ducs et l'Église catholique.",
+      "text_markdown": "Le pouvoir était détenu par les rois, les ducs et l'Église catholique.",
+      "tts": {
+        "text": "Le pouvoir était détenu par les rois, les ducs et l'Église catholique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les gens ordinaires n'avaient presque aucun droit et vivaient à la merci de leurs seigneurs.",
+      "text_markdown": "Les gens ordinaires n'avaient presque aucun droit et vivaient à la merci de leurs seigneurs.",
+      "tts": {
+        "text": "Les gens ordinaires n'avaient presque aucun droit et vivaient à la merci de leurs seigneurs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Bretagne était un duché situé sur la côte nord-ouest de la France.",
+      "text_markdown": "La Bretagne était un duché situé sur la côte nord-ouest de la France.",
+      "tts": {
+        "text": "La Bretagne était un duché situé sur la côte nord-ouest de la France.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle occupait une grande péninsule s'avançant dans l'océan Atlantique et la Manche.",
+      "text_markdown": "Elle occupait une grande péninsule s'avançant dans l'océan Atlantique et la Manche.",
+      "tts": {
+        "text": "Elle occupait une grande péninsule s'avançant dans l'océan Atlantique et la Manche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les Bretons avaient leur propre langue, leurs coutumes et un farouche esprit d'indépendance.",
+      "text_markdown": "Les Bretons avaient leur propre langue, leurs coutumes et un farouche esprit d'indépendance.",
+      "tts": {
+        "text": "Les Bretons avaient leur propre langue, leurs coutumes et un farouche esprit d'indépendance.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Bretagne faisait techniquement partie de la France, mais ses ducs agissaient souvent de manière indépendante.",
+      "text_markdown": "La Bretagne faisait techniquement partie de la France, mais ses ducs agissaient souvent de manière indépendante.",
+      "tts": {
+        "text": "La Bretagne faisait techniquement partie de la France, mais ses ducs agissaient souvent de manière indépendante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils entretenaient leurs propres cours, leurs propres armées et leurs propres alliances étrangères.",
+      "text_markdown": "Ils entretenaient leurs propres cours, leurs propres armées et leurs propres alliances étrangères.",
+      "tts": {
+        "text": "Ils entretenaient leurs propres cours, leurs propres armées et leurs propres alliances étrangères.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les relations entre la Bretagne et la couronne de France étaient toujours tendues.",
+      "text_markdown": "Les relations entre la Bretagne et la couronne de France étaient toujours tendues.",
+      "tts": {
+        "text": "Les relations entre la Bretagne et la couronne de France étaient toujours tendues.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Manche était l'une des voies navigables les plus fréquentées et les plus dangereuses de l'Europe médiévale.",
+      "text_markdown": "La Manche était l'une des voies navigables les plus fréquentées et les plus dangereuses de l'Europe médiévale.",
+      "tts": {
+        "text": "La Manche était l'une des voies navigables les plus fréquentées et les plus dangereuses de l'Europe médiévale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des navires marchands, des bateaux de pêche et des navires de guerre la traversaient constamment.",
+      "text_markdown": "Des navires marchands, des bateaux de pêche et des navires de guerre la traversaient constamment.",
+      "tts": {
+        "text": "Des navires marchands, des bateaux de pêche et des navires de guerre la traversaient constamment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La piraterie était courante, et la frontière entre pirate et guerrier naval était souvent floue.",
+      "text_markdown": "La piraterie était courante, et la frontière entre pirate et guerrier naval était souvent floue.",
+      "tts": {
+        "text": "La piraterie était courante, et la frontière entre pirate et guerrier naval était souvent floue.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La France du début des années 1300 était gouvernée par une série de rois de plus en plus puissants.",
+      "text_markdown": "La France du début des années 1300 était gouvernée par une série de rois de plus en plus puissants.",
+      "tts": {
+        "text": "La France du début des années treize cents était gouvernée par une série de rois de plus en plus puissants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Philippe VI monta sur le trône en 1328 après la mort du dernier héritier mâle direct de la dynastie capétienne.",
+      "text_markdown": "Philippe VI monta sur le trône en 1328 après la mort du dernier héritier mâle direct de la dynastie capétienne.",
+      "tts": {
+        "text": "Philippe Six monta sur le trône en treize cent vingt-huit après la mort du dernier héritier mâle direct de la dynastie capétienne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa prétention à la couronne fut immédiatement contestée par Édouard III d'Angleterre.",
+      "text_markdown": "Sa prétention à la couronne fut immédiatement contestée par Édouard III d'Angleterre.",
+      "tts": {
+        "text": "Sa prétention à la couronne fut immédiatement contestée par Édouard Trois d'Angleterre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Édouard III soutenait qu'il avait un droit plus légitime au trône de France par sa mère.",
+      "text_markdown": "Édouard III soutenait qu'il avait un droit plus légitime au trône de France par sa mère.",
+      "tts": {
+        "text": "Édouard Trois soutenait qu'il avait un droit plus légitime au trône de France par sa mère.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Philippe VI rejeta cette prétention, et le conflit finit par mener à la guerre ouverte.",
+      "text_markdown": "Philippe VI rejeta cette prétention, et le conflit finit par mener à la guerre ouverte.",
+      "tts": {
+        "text": "Philippe Six rejeta cette prétention, et le conflit finit par mener à la guerre ouverte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ce conflit devint connu sous le nom de guerre de Cent Ans.",
+      "text_markdown": "Ce conflit devint connu sous le nom de guerre de Cent Ans.",
+      "tts": {
+        "text": "Ce conflit devint connu sous le nom de guerre de Cent Ans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre de Cent Ans dura de 1337 à 1453.",
+      "text_markdown": "La guerre de Cent Ans dura de 1337 à 1453.",
+      "tts": {
+        "text": "La guerre de Cent Ans dura de treize cent trente-sept à quatorze cent cinquante-trois.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle opposa principalement l'Angleterre et la France, mais elle entraîna des alliés et des vassaux de toute l'Europe.",
+      "text_markdown": "Elle opposa principalement l'Angleterre et la France, mais elle entraîna des alliés et des vassaux de toute l'Europe.",
+      "tts": {
+        "text": "Elle opposa principalement l'Angleterre et la France, mais elle entraîna des alliés et des vassaux de toute l'Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La Bretagne devint l'un des principaux champs de bataille.",
+      "text_markdown": "La Bretagne devint l'un des principaux champs de bataille.",
+      "tts": {
+        "text": "La Bretagne devint l'un des principaux champs de bataille.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au sein de la Bretagne, un conflit séparé éclata pour déterminer qui gouvernerait le duché.",
+      "text_markdown": "Au sein de la Bretagne, un conflit séparé éclata pour déterminer qui gouvernerait le duché.",
+      "tts": {
+        "text": "Au sein de la Bretagne, un conflit séparé éclata pour déterminer qui gouvernerait le duché.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On l'appela la guerre de Succession de Bretagne.",
+      "text_markdown": "On l'appela la guerre de Succession de Bretagne.",
+      "tts": {
+        "text": "On l'appela la guerre de Succession de Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle dura de 1341 à 1365 et fut menée avec une brutalité terrible.",
+      "text_markdown": "Elle dura de 1341 à 1365 et fut menée avec une brutalité terrible.",
+      "tts": {
+        "text": "Elle dura de treize cent quarante et un à treize cent soixante-cinq et fut menée avec une brutalité terrible.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deux prétendants rivaux se disputèrent le contrôle de la Bretagne.",
+      "text_markdown": "Deux prétendants rivaux se disputèrent le contrôle de la Bretagne.",
+      "tts": {
+        "text": "Deux prétendants rivaux se disputèrent le contrôle de la Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charles de Blois était soutenu par la France.",
+      "text_markdown": "Charles de Blois était soutenu par la France.",
+      "tts": {
+        "text": "Charles de Blois était soutenu par la France.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jean de Montfort était soutenu par l'Angleterre.",
+      "text_markdown": "Jean de Montfort était soutenu par l'Angleterre.",
+      "tts": {
+        "text": "Jean de Montfort était soutenu par l'Angleterre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La noblesse bretonne fut contrainte de choisir un camp.",
+      "text_markdown": "La noblesse bretonne fut contrainte de choisir un camp.",
+      "tts": {
+        "text": "La noblesse bretonne fut contrainte de choisir un camp.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Choisir le mauvais camp pouvait signifier la perte de terres, de titres et même de la vie.",
+      "text_markdown": "Choisir le mauvais camp pouvait signifier la perte de terres, de titres et même de la vie.",
+      "tts": {
+        "text": "Choisir le mauvais camp pouvait signifier la perte de terres, de titres et même de la vie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dans ce monde de loyautés changeantes et de conséquences mortelles, Jeanne de Clisson allait se retrouver piégée.",
+      "text_markdown": "Dans ce monde de loyautés changeantes et de conséquences mortelles, Jeanne de Clisson allait se retrouver piégée.",
+      "tts": {
+        "text": "Dans ce monde de loyautés changeantes et de conséquences mortelles, Jeanne de Clisson allait se retrouver piégée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre médiévale était brutale et visait souvent les civils.",
+      "text_markdown": "La guerre médiévale était brutale et visait souvent les civils.",
+      "tts": {
+        "text": "La guerre médiévale était brutale et visait souvent les civils.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les armées brûlaient les récoltes, abattaient le bétail et détruisaient les villages pour affaiblir leurs ennemis.",
+      "text_markdown": "Les armées brûlaient les récoltes, abattaient le bétail et détruisaient les villages pour affaiblir leurs ennemis.",
+      "tts": {
+        "text": "Les armées brûlaient les récoltes, abattaient le bétail et détruisaient les villages pour affaiblir leurs ennemis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les sièges pouvaient durer des mois, et les défenseurs mouraient souvent de faim.",
+      "text_markdown": "Les sièges pouvaient durer des mois, et les défenseurs mouraient souvent de faim.",
+      "tts": {
+        "text": "Les sièges pouvaient durer des mois, et les défenseurs mouraient souvent de faim.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre navale était tout aussi sauvage.",
+      "text_markdown": "La guerre navale était tout aussi sauvage.",
+      "tts": {
+        "text": "La guerre navale était tout aussi sauvage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les navires s'éperonnaient mutuellement, et les équipages combattaient au corps à corps avec des épées et des haches.",
+      "text_markdown": "Les navires s'éperonnaient mutuellement, et les équipages combattaient au corps à corps avec des épées et des haches.",
+      "tts": {
+        "text": "Les navires s'éperonnaient mutuellement, et les équipages combattaient au corps à corps avec des épées et des haches.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les prisonniers étaient rarement faits en mer car il n'y avait pas de place pour les garder.",
+      "text_markdown": "Les prisonniers étaient rarement faits en mer car il n'y avait pas de place pour les garder.",
+      "tts": {
+        "text": "Les prisonniers étaient rarement faits en mer car il n'y avait pas de place pour les garder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les femmes dans l'Europe médiévale devaient gérer les foyers, porter des enfants et obéir à leurs maris.",
+      "text_markdown": "Les femmes dans l'Europe médiévale devaient gérer les foyers, porter des enfants et obéir à leurs maris.",
+      "tts": {
+        "text": "Les femmes dans l'Europe médiévale devaient gérer les foyers, porter des enfants et obéir à leurs maris.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les nobles femmes avaient plus de pouvoir que les roturières, mais elles restaient légalement subordonnées aux hommes.",
+      "text_markdown": "Les nobles femmes avaient plus de pouvoir que les roturières, mais elles restaient légalement subordonnées aux hommes.",
+      "tts": {
+        "text": "Les nobles femmes avaient plus de pouvoir que les roturières, mais elles restaient légalement subordonnées aux hommes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pourtant, l'histoire médiévale contient de nombreux exemples de femmes qui défièrent ces attentes.",
+      "text_markdown": "Pourtant, l'histoire médiévale contient de nombreux exemples de femmes qui défièrent ces attentes.",
+      "tts": {
+        "text": "Pourtant, l'histoire médiévale contient de nombreux exemples de femmes qui défièrent ces attentes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Certaines dirigèrent des armées, d'autres gouvernèrent des territoires, et d'autres prirent la mer.",
+      "text_markdown": "Certaines dirigèrent des armées, d'autres gouvernèrent des territoires, et d'autres prirent la mer.",
+      "tts": {
+        "text": "Certaines dirigèrent des armées, d'autres gouvernèrent des territoires, et d'autres prirent la mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne de Clisson devint l'un des exemples les plus marquants d'une femme qui refusa d'accepter le rôle qui lui était assigné.",
+      "text_markdown": "Jeanne de Clisson devint l'un des exemples les plus marquants d'une femme qui refusa d'accepter le rôle qui lui était assigné.",
+      "tts": {
+        "text": "Jeanne de Clisson devint l'un des exemples les plus marquants d'une femme qui refusa d'accepter le rôle qui lui était assigné.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le système féodal reposait sur la loyauté entre les seigneurs et leurs vassaux.",
+      "text_markdown": "Le système féodal reposait sur la loyauté entre les seigneurs et leurs vassaux.",
+      "tts": {
+        "text": "Le système féodal reposait sur la loyauté entre les seigneurs et leurs vassaux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un noble prêtait serment d'allégeance au roi ou au duc en échange de terres et de protection.",
+      "text_markdown": "Un noble prêtait serment d'allégeance au roi ou au duc en échange de terres et de protection.",
+      "tts": {
+        "text": "Un noble prêtait serment d'allégeance au roi ou au duc en échange de terres et de protection.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rompre ce serment constituait le crime de trahison, passible de mort.",
+      "text_markdown": "Rompre ce serment constituait le crime de trahison, passible de mort.",
+      "tts": {
+        "text": "Rompre ce serment constituait le crime de trahison, passible de mort.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais les accusations de trahison étaient souvent des armes politiques.",
+      "text_markdown": "Mais les accusations de trahison étaient souvent des armes politiques.",
+      "tts": {
+        "text": "Mais les accusations de trahison étaient souvent des armes politiques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les rois les utilisaient pour détruire leurs rivaux, saisir des terres et intimider d'éventuels opposants.",
+      "text_markdown": "Les rois les utilisaient pour détruire leurs rivaux, saisir des terres et intimider d'éventuels opposants.",
+      "tts": {
+        "text": "Les rois les utilisaient pour détruire leurs rivaux, saisir des terres et intimider d'éventuels opposants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Une accusation de trahison ne nécessitait pas de preuve, seulement le soupçon du roi.",
+      "text_markdown": "Une accusation de trahison ne nécessitait pas de preuve, seulement le soupçon du roi.",
+      "tts": {
+        "text": "Une accusation de trahison ne nécessitait pas de preuve, seulement le soupçon du roi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Manche ne fait que 34 kilomètres de large à son point le plus étroit entre Douvres et Calais.",
+      "text_markdown": "La Manche ne fait que 34 kilomètres de large à son point le plus étroit entre Douvres et Calais.",
+      "tts": {
+        "text": "La Manche ne fait que trente-quatre kilomètres de large à son point le plus étroit entre Douvres et Calais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les navires pouvaient la traverser en quelques heures par beau temps.",
+      "text_markdown": "Les navires pouvaient la traverser en quelques heures par beau temps.",
+      "tts": {
+        "text": "Les navires pouvaient la traverser en quelques heures par beau temps.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Bretagne médiévale",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais les tempêtes, le brouillard et les forts courants rendaient chaque traversée dangereuse.",
+      "text_markdown": "Mais les tempêtes, le brouillard et les forts courants rendaient chaque traversée dangereuse.",
+      "tts": {
+        "text": "Mais les tempêtes, le brouillard et les forts courants rendaient chaque traversée dangereuse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La noble dame de Clisson",
+      "text_markdown": "La noble dame de Clisson"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson naquit vers l'an 1300 dans l'une des familles les plus puissantes de Bretagne.",
+      "text_markdown": "Jeanne de Clisson naquit vers l'an 1300 dans l'une des familles les plus puissantes de Bretagne.",
+      "tts": {
+        "text": "Jeanne de Clisson naquit vers l'an treize cents dans l'une des familles les plus puissantes de Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son nom de naissance était Jeanne de Belleville.",
+      "text_markdown": "Son nom de naissance était Jeanne de Belleville.",
+      "tts": {
+        "text": "Son nom de naissance était Jeanne de Belleville.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La famille de Belleville possédait de vastes terres dans la région frontalière entre la Bretagne et le Poitou.",
+      "text_markdown": "La famille de Belleville possédait de vastes terres dans la région frontalière entre la Bretagne et le Poitou.",
+      "tts": {
+        "text": "La famille de Belleville possédait de vastes terres dans la région frontalière entre la Bretagne et le Poitou.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne fut mariée pour la première fois à l'âge de douze ans, comme c'était courant pour les nobles femmes de l'époque.",
+      "text_markdown": "Jeanne fut mariée pour la première fois à l'âge de douze ans, comme c'était courant pour les nobles femmes de l'époque.",
+      "tts": {
+        "text": "Jeanne fut mariée pour la première fois à l'âge de douze ans, comme c'était courant pour les nobles femmes de l'époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son premier mari était Geoffroy de Châteaubriant, un riche seigneur breton.",
+      "text_markdown": "Son premier mari était Geoffroy de Châteaubriant, un riche seigneur breton.",
+      "tts": {
+        "text": "Son premier mari était Geoffroy de Châteaubriant, un riche seigneur breton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le mariage fut arrangé par leurs familles pour renforcer les alliances politiques.",
+      "text_markdown": "Le mariage fut arrangé par leurs familles pour renforcer les alliances politiques.",
+      "tts": {
+        "text": "Le mariage fut arrangé par leurs familles pour renforcer les alliances politiques.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geoffroy mourut en 1326, laissant Jeanne jeune veuve avec deux enfants.",
+      "text_markdown": "Geoffroy mourut en 1326, laissant Jeanne jeune veuve avec deux enfants.",
+      "tts": {
+        "text": "Geoffroy mourut en treize cent vingt-six, laissant Jeanne jeune veuve avec deux enfants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle n'avait qu'environ 26 ans.",
+      "text_markdown": "Elle n'avait qu'environ 26 ans.",
+      "tts": {
+        "text": "Elle n'avait qu'environ vingt-six ans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1330, Jeanne se remaria.",
+      "text_markdown": "En 1330, Jeanne se remaria.",
+      "tts": {
+        "text": "En treize cent trente, Jeanne se remaria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son second mari était Olivier de Clisson, l'un des seigneurs les plus éminents de Bretagne.",
+      "text_markdown": "Son second mari était Olivier de Clisson, l'un des seigneurs les plus éminents de Bretagne.",
+      "tts": {
+        "text": "Son second mari était Olivier de Clisson, l'un des seigneurs les plus éminents de Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il était riche, bien introduit et un chef militaire habile.",
+      "text_markdown": "Il était riche, bien introduit et un chef militaire habile.",
+      "tts": {
+        "text": "Il était riche, bien introduit et un chef militaire habile.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le couple vivait sur les domaines de Clisson dans le sud-est de la Bretagne.",
+      "text_markdown": "Le couple vivait sur les domaines de Clisson dans le sud-est de la Bretagne.",
+      "tts": {
+        "text": "Le couple vivait sur les domaines de Clisson dans le sud-est de la Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils eurent cinq enfants ensemble.",
+      "text_markdown": "Ils eurent cinq enfants ensemble.",
+      "tts": {
+        "text": "Ils eurent cinq enfants ensemble.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Selon tous les témoignages, ce fut un mariage solide et affectueux.",
+      "text_markdown": "Selon tous les témoignages, ce fut un mariage solide et affectueux.",
+      "tts": {
+        "text": "Selon tous les témoignages, ce fut un mariage solide et affectueux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olivier de Clisson était un serviteur loyal du duc de Bretagne.",
+      "text_markdown": "Olivier de Clisson était un serviteur loyal du duc de Bretagne.",
+      "tts": {
+        "text": "Olivier de Clisson était un serviteur loyal du duc de Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il combattit dans plusieurs campagnes militaires et était très respecté de ses pairs.",
+      "text_markdown": "Il combattit dans plusieurs campagnes militaires et était très respecté de ses pairs.",
+      "tts": {
+        "text": "Il combattit dans plusieurs campagnes militaires et était très respecté de ses pairs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il était considéré comme un homme d'honneur et de bon jugement.",
+      "text_markdown": "Il était considéré comme un homme d'honneur et de bon jugement.",
+      "tts": {
+        "text": "Il était considéré comme un homme d'honneur et de bon jugement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lorsque la guerre de Succession de Bretagne éclata en 1341, Olivier soutint d'abord le prétendant soutenu par la France, Charles de Blois.",
+      "text_markdown": "Lorsque la guerre de Succession de Bretagne éclata en 1341, Olivier soutint d'abord le prétendant soutenu par la France, Charles de Blois.",
+      "tts": {
+        "text": "Lorsque la guerre de Succession de Bretagne éclata en treize cent quarante et un, Olivier soutint d'abord le prétendant soutenu par la France, Charles de Blois.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La plupart de la noblesse bretonne fit le même choix.",
+      "text_markdown": "La plupart de la noblesse bretonne fit le même choix.",
+      "tts": {
+        "text": "La plupart de la noblesse bretonne fit le même choix.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olivier combattit au siège de Vannes en 1342.",
+      "text_markdown": "Olivier combattit au siège de Vannes en 1342.",
+      "tts": {
+        "text": "Olivier combattit au siège de Vannes en treize cent quarante-deux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pendant la bataille, il fut capturé par les Anglais et retenu contre rançon.",
+      "text_markdown": "Pendant la bataille, il fut capturé par les Anglais et retenu contre rançon.",
+      "tts": {
+        "text": "Pendant la bataille, il fut capturé par les Anglais et retenu contre rançon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa rançon fut fixée, et il fut finalement libéré.",
+      "text_markdown": "Sa rançon fut fixée, et il fut finalement libéré.",
+      "tts": {
+        "text": "Sa rançon fut fixée, et il fut finalement libéré.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais sa libération éveilla les soupçons.",
+      "text_markdown": "Mais sa libération éveilla les soupçons.",
+      "tts": {
+        "text": "Mais sa libération éveilla les soupçons.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Certains nobles français chuchotèrent que sa rançon avait été trop basse.",
+      "text_markdown": "Certains nobles français chuchotèrent que sa rançon avait été trop basse.",
+      "tts": {
+        "text": "Certains nobles français chuchotèrent que sa rançon avait été trop basse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils suggérèrent que les Anglais l'avaient laissé partir à bon prix parce qu'il avait accepté d'espionner pour eux.",
+      "text_markdown": "Ils suggérèrent que les Anglais l'avaient laissé partir à bon prix parce qu'il avait accepté d'espionner pour eux.",
+      "tts": {
+        "text": "Ils suggérèrent que les Anglais l'avaient laissé partir à bon prix parce qu'il avait accepté d'espionner pour eux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rien ne prouve qu'Olivier ait trahi la France.",
+      "text_markdown": "Rien ne prouve qu'Olivier ait trahi la France.",
+      "tts": {
+        "text": "Rien ne prouve qu'Olivier ait trahi la France.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les historiens estiment que l'accusation était politique, alimentée par des rivaux qui convoitaient ses terres et ses titres.",
+      "text_markdown": "Les historiens estiment que l'accusation était politique, alimentée par des rivaux qui convoitaient ses terres et ses titres.",
+      "tts": {
+        "text": "Les historiens estiment que l'accusation était politique, alimentée par des rivaux qui convoitaient ses terres et ses titres.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1343, Olivier fut convoqué à un tournoi à Paris.",
+      "text_markdown": "En 1343, Olivier fut convoqué à un tournoi à Paris.",
+      "tts": {
+        "text": "En treize cent quarante-trois, Olivier fut convoqué à un tournoi à Paris.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il s'y rendit de bonne grâce, sans se douter de rien.",
+      "text_markdown": "Il s'y rendit de bonne grâce, sans se douter de rien.",
+      "tts": {
+        "text": "Il s'y rendit de bonne grâce, sans se douter de rien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À son arrivée, il fut arrêté et accusé de trahison envers le roi Philippe VI.",
+      "text_markdown": "À son arrivée, il fut arrêté et accusé de trahison envers le roi Philippe VI.",
+      "tts": {
+        "text": "À son arrivée, il fut arrêté et accusé de trahison envers le roi Philippe Six.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il n'y eut pas de véritable procès.",
+      "text_markdown": "Il n'y eut pas de véritable procès.",
+      "tts": {
+        "text": "Il n'y eut pas de véritable procès.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les accusations reposaient sur des soupçons et la parole des ennemis politiques d'Olivier.",
+      "text_markdown": "Les accusations reposaient sur des soupçons et la parole des ennemis politiques d'Olivier.",
+      "tts": {
+        "text": "Les accusations reposaient sur des soupçons et la parole des ennemis politiques d'Olivier.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le 2 août 1343, Olivier de Clisson fut décapité aux Halles de Paris.",
+      "text_markdown": "Le 2 août 1343, Olivier de Clisson fut décapité aux Halles de Paris.",
+      "tts": {
+        "text": "Le deux août treize cent quarante-trois, Olivier de Clisson fut décapité aux Halles de Paris.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa tête fut envoyée à Nantes et exposée sur une pique au-dessus de la porte de la ville en guise d'avertissement.",
+      "text_markdown": "Sa tête fut envoyée à Nantes et exposée sur une pique au-dessus de la porte de la ville en guise d'avertissement.",
+      "tts": {
+        "text": "Sa tête fut envoyée à Nantes et exposée sur une pique au-dessus de la porte de la ville en guise d'avertissement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lorsque Jeanne apprit l'exécution de son mari, elle fut anéantie.",
+      "text_markdown": "Lorsque Jeanne apprit l'exécution de son mari, elle fut anéantie.",
+      "tts": {
+        "text": "Lorsque Jeanne apprit l'exécution de son mari, elle fut anéantie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selon les chroniques, elle se rendit à Nantes avec ses deux plus jeunes fils.",
+      "text_markdown": "Selon les chroniques, elle se rendit à Nantes avec ses deux plus jeunes fils.",
+      "tts": {
+        "text": "Selon les chroniques, elle se rendit à Nantes avec ses deux plus jeunes fils.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle leur montra la tête de leur père sur la porte et leur dit de se souvenir de ce que le roi de France avait fait.",
+      "text_markdown": "Elle leur montra la tête de leur père sur la porte et leur dit de se souvenir de ce que le roi de France avait fait.",
+      "tts": {
+        "text": "Elle leur montra la tête de leur père sur la porte et leur dit de se souvenir de ce que le roi de France avait fait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dès cet instant, Jeanne de Clisson consacra sa vie à un seul objectif.",
+      "text_markdown": "Dès cet instant, Jeanne de Clisson consacra sa vie à un seul objectif.",
+      "tts": {
+        "text": "Dès cet instant, Jeanne de Clisson consacra sa vie à un seul objectif.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle ferait payer au roi de France et à ses partisans ce qu'ils avaient fait à son mari.",
+      "text_markdown": "Elle ferait payer au roi de France et à ses partisans ce qu'ils avaient fait à son mari.",
+      "tts": {
+        "text": "Elle ferait payer au roi de France et à ses partisans ce qu'ils avaient fait à son mari.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle commença par vendre les domaines de Clisson.",
+      "text_markdown": "Elle commença par vendre les domaines de Clisson.",
+      "tts": {
+        "text": "Elle commença par vendre les domaines de Clisson.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle convertit ses terres, ses bijoux et ses biens en or.",
+      "text_markdown": "Elle convertit ses terres, ses bijoux et ses biens en or.",
+      "tts": {
+        "text": "Elle convertit ses terres, ses bijoux et ses biens en or.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avec cet argent, elle leva une petite armée d'hommes loyaux.",
+      "text_markdown": "Avec cet argent, elle leva une petite armée d'hommes loyaux.",
+      "tts": {
+        "text": "Avec cet argent, elle leva une petite armée d'hommes loyaux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle attaqua les châteaux et les garnisons pro-français en Bretagne.",
+      "text_markdown": "Elle attaqua les châteaux et les garnisons pro-français en Bretagne.",
+      "tts": {
+        "text": "Elle attaqua les châteaux et les garnisons pro-français en Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ses raids étaient rapides, violents et sans pitié.",
+      "text_markdown": "Ses raids étaient rapides, violents et sans pitié.",
+      "tts": {
+        "text": "Ses raids étaient rapides, violents et sans pitié.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle tua chaque soldat qui soutenait la couronne de France et laissa les fortifications en flammes.",
+      "text_markdown": "Elle tua chaque soldat qui soutenait la couronne de France et laissa les fortifications en flammes.",
+      "tts": {
+        "text": "Elle tua chaque soldat qui soutenait la couronne de France et laissa les fortifications en flammes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais la guerre terrestre ne suffisait pas à Jeanne.",
+      "text_markdown": "Mais la guerre terrestre ne suffisait pas à Jeanne.",
+      "tts": {
+        "text": "Mais la guerre terrestre ne suffisait pas à Jeanne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle voulait frapper la France là où cela ferait le plus mal.",
+      "text_markdown": "Elle voulait frapper la France là où cela ferait le plus mal.",
+      "tts": {
+        "text": "Elle voulait frapper la France là où cela ferait le plus mal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "La noble dame de Clisson",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle décida de porter sa guerre sur la mer.",
+      "text_markdown": "Elle décida de porter sa guerre sur la mer.",
+      "tts": {
+        "text": "Elle décida de porter sa guerre sur la mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La flotte noire",
+      "text_markdown": "La flotte noire"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson acheta trois navires de guerre.",
+      "text_markdown": "Jeanne de Clisson acheta trois navires de guerre.",
+      "tts": {
+        "text": "Jeanne de Clisson acheta trois navires de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle fit peindre leurs coques en noir.",
+      "text_markdown": "Elle fit peindre leurs coques en noir.",
+      "tts": {
+        "text": "Elle fit peindre leurs coques en noir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle ordonna que leurs voiles soient teintes en rouge.",
+      "text_markdown": "Elle ordonna que leurs voiles soient teintes en rouge.",
+      "tts": {
+        "text": "Elle ordonna que leurs voiles soient teintes en rouge.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les coques noires et les voiles rouges étaient conçues pour être reconnues de loin.",
+      "text_markdown": "Les coques noires et les voiles rouges étaient conçues pour être reconnues de loin.",
+      "tts": {
+        "text": "Les coques noires et les voiles rouges étaient conçues pour être reconnues de loin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeanne voulait que les Français sachent qui venait pour eux.",
+      "text_markdown": "Jeanne voulait que les Français sachent qui venait pour eux.",
+      "tts": {
+        "text": "Jeanne voulait que les Français sachent qui venait pour eux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle voulait qu'ils ressentent la même terreur que son mari avait éprouvée.",
+      "text_markdown": "Elle voulait qu'ils ressentent la même terreur que son mari avait éprouvée.",
+      "tts": {
+        "text": "Elle voulait qu'ils ressentent la même terreur que son mari avait éprouvée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle prit la mer dans la Manche et commença à attaquer les navires marchands et les vaisseaux de guerre français.",
+      "text_markdown": "Elle prit la mer dans la Manche et commença à attaquer les navires marchands et les vaisseaux de guerre français.",
+      "tts": {
+        "text": "Elle prit la mer dans la Manche et commença à attaquer les navires marchands et les vaisseaux de guerre français.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa flotte ciblait tout navire battant pavillon français.",
+      "text_markdown": "Sa flotte ciblait tout navire battant pavillon français.",
+      "tts": {
+        "text": "Sa flotte ciblait tout navire battant pavillon français.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne menait personnellement ses hommes au combat.",
+      "text_markdown": "Jeanne menait personnellement ses hommes au combat.",
+      "tts": {
+        "text": "Jeanne menait personnellement ses hommes au combat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selon les chroniques, elle maniait une hache au combat et combattait aux côtés de son équipage.",
+      "text_markdown": "Selon les chroniques, elle maniait une hache au combat et combattait aux côtés de son équipage.",
+      "tts": {
+        "text": "Selon les chroniques, elle maniait une hache au combat et combattait aux côtés de son équipage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On disait qu'elle était intrépide et absolument implacable.",
+      "text_markdown": "On disait qu'elle était intrépide et absolument implacable.",
+      "tts": {
+        "text": "On disait qu'elle était intrépide et absolument implacable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lorsque ses navires capturaient un vaisseau français, l'équipage était tué.",
+      "text_markdown": "Lorsque ses navires capturaient un vaisseau français, l'équipage était tué.",
+      "tts": {
+        "text": "Lorsque ses navires capturaient un vaisseau français, l'équipage était tué.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mais Jeanne laissait toujours deux ou trois survivants.",
+      "text_markdown": "Mais Jeanne laissait toujours deux ou trois survivants.",
+      "tts": {
+        "text": "Mais Jeanne laissait toujours deux ou trois survivants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle les renvoyait en France pour raconter au roi ce qui s'était passé.",
+      "text_markdown": "Elle les renvoyait en France pour raconter au roi ce qui s'était passé.",
+      "tts": {
+        "text": "Elle les renvoyait en France pour raconter au roi ce qui s'était passé.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'était une stratégie délibérée de guerre psychologique.",
+      "text_markdown": "C'était une stratégie délibérée de guerre psychologique.",
+      "tts": {
+        "text": "C'était une stratégie délibérée de guerre psychologique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les survivants répandaient des histoires sur les navires noirs aux voiles rouges.",
+      "text_markdown": "Les survivants répandaient des histoires sur les navires noirs aux voiles rouges.",
+      "tts": {
+        "text": "Les survivants répandaient des histoires sur les navires noirs aux voiles rouges.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La peur de la Lionne de Bretagne grandissait le long de toute la côte française.",
+      "text_markdown": "La peur de la Lionne de Bretagne grandissait le long de toute la côte française.",
+      "tts": {
+        "text": "La peur de la Lionne de Bretagne grandissait le long de toute la côte française.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne était particulièrement impitoyable envers les nobles français.",
+      "text_markdown": "Jeanne était particulièrement impitoyable envers les nobles français.",
+      "tts": {
+        "text": "Jeanne était particulièrement impitoyable envers les nobles français.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si elle capturait un seigneur ou un chevalier qui soutenait Philippe VI, elle supervisait personnellement son exécution.",
+      "text_markdown": "Si elle capturait un seigneur ou un chevalier qui soutenait Philippe VI, elle supervisait personnellement son exécution.",
+      "tts": {
+        "text": "Si elle capturait un seigneur ou un chevalier qui soutenait Philippe Six, elle supervisait personnellement son exécution.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle voulait que l'aristocratie française ressente la même injustice qui avait été faite à son mari.",
+      "text_markdown": "Elle voulait que l'aristocratie française ressente la même injustice qui avait été faite à son mari.",
+      "tts": {
+        "text": "Elle voulait que l'aristocratie française ressente la même injustice qui avait été faite à son mari.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle s'allia à l'Angleterre.",
+      "text_markdown": "Elle s'allia à l'Angleterre.",
+      "tts": {
+        "text": "Elle s'allia à l'Angleterre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le roi Édouard III était heureux de soutenir quiconque attaquait la marine marchande française.",
+      "text_markdown": "Le roi Édouard III était heureux de soutenir quiconque attaquait la marine marchande française.",
+      "tts": {
+        "text": "Le roi Édouard Trois était heureux de soutenir quiconque attaquait la marine marchande française.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les raids de Jeanne perturbaient le commerce français et affaiblissaient l'effort de guerre français.",
+      "text_markdown": "Les raids de Jeanne perturbaient le commerce français et affaiblissaient l'effort de guerre français.",
+      "tts": {
+        "text": "Les raids de Jeanne perturbaient le commerce français et affaiblissaient l'effort de guerre français.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les Anglais fournissaient à Jeanne des provisions, des ports sûrs et des renseignements sur les mouvements des navires français.",
+      "text_markdown": "Les Anglais fournissaient à Jeanne des provisions, des ports sûrs et des renseignements sur les mouvements des navires français.",
+      "tts": {
+        "text": "Les Anglais fournissaient à Jeanne des provisions, des ports sûrs et des renseignements sur les mouvements des navires français.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En retour, Jeanne partageait les profits de ses raids et veillait à ce que les navires anglais ne soient jamais inquiétés.",
+      "text_markdown": "En retour, Jeanne partageait les profits de ses raids et veillait à ce que les navires anglais ne soient jamais inquiétés.",
+      "tts": {
+        "text": "En retour, Jeanne partageait les profits de ses raids et veillait à ce que les navires anglais ne soient jamais inquiétés.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La couronne de France était enragée par les attaques de Jeanne mais peinait à l'arrêter.",
+      "text_markdown": "La couronne de France était enragée par les attaques de Jeanne mais peinait à l'arrêter.",
+      "tts": {
+        "text": "La couronne de France était enragée par les attaques de Jeanne mais peinait à l'arrêter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Manche était vaste, et les navires de Jeanne étaient rapides.",
+      "text_markdown": "La Manche était vaste, et les navires de Jeanne étaient rapides.",
+      "tts": {
+        "text": "La Manche était vaste, et les navires de Jeanne étaient rapides.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle frappait sans prévenir et disparaissait avant que les navires de guerre français puissent réagir.",
+      "text_markdown": "Elle frappait sans prévenir et disparaissait avant que les navires de guerre français puissent réagir.",
+      "tts": {
+        "text": "Elle frappait sans prévenir et disparaissait avant que les navires de guerre français puissent réagir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Philippe VI confisqua les terres restantes des Clisson et déclara Jeanne hors-la-loi.",
+      "text_markdown": "Philippe VI confisqua les terres restantes des Clisson et déclara Jeanne hors-la-loi.",
+      "tts": {
+        "text": "Philippe Six confisqua les terres restantes des Clisson et déclara Jeanne hors-la-loi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il mit sa tête à prix.",
+      "text_markdown": "Il mit sa tête à prix.",
+      "tts": {
+        "text": "Il mit sa tête à prix.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais Jeanne était hors de sa portée, protégée par la mer et par ses alliés anglais.",
+      "text_markdown": "Mais Jeanne était hors de sa portée, protégée par la mer et par ses alliés anglais.",
+      "tts": {
+        "text": "Mais Jeanne était hors de sa portée, protégée par la mer et par ses alliés anglais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La campagne de Jeanne n'était pas l'œuvre d'une femme en colère agissant seule.",
+      "text_markdown": "La campagne de Jeanne n'était pas l'œuvre d'une femme en colère agissant seule.",
+      "tts": {
+        "text": "La campagne de Jeanne n'était pas l'œuvre d'une femme en colère agissant seule.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle commandait une flotte et un équipage de marins et de soldats aguerris.",
+      "text_markdown": "Elle commandait une flotte et un équipage de marins et de soldats aguerris.",
+      "tts": {
+        "text": "Elle commandait une flotte et un équipage de marins et de soldats aguerris.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle planifiait ses attaques avec soin et choisissait ses cibles avec une précision stratégique.",
+      "text_markdown": "Elle planifiait ses attaques avec soin et choisissait ses cibles avec une précision stratégique.",
+      "tts": {
+        "text": "Elle planifiait ses attaques avec soin et choisissait ses cibles avec une précision stratégique.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ses marins lui étaient loyaux.",
+      "text_markdown": "Ses marins lui étaient loyaux.",
+      "tts": {
+        "text": "Ses marins lui étaient loyaux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "À une époque où l'on n'attendait pas des femmes qu'elles mènent des hommes au combat, l'équipage de Jeanne la suivait sans hésitation.",
+      "text_markdown": "À une époque où l'on n'attendait pas des femmes qu'elles mènent des hommes au combat, l'équipage de Jeanne la suivait sans hésitation.",
+      "tts": {
+        "text": "À une époque où l'on n'attendait pas des femmes qu'elles mènent des hommes au combat, l'équipage de Jeanne la suivait sans hésitation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son courage personnel et la justice de sa cause leur inspiraient le respect.",
+      "text_markdown": "Son courage personnel et la justice de sa cause leur inspiraient le respect.",
+      "tts": {
+        "text": "Son courage personnel et la justice de sa cause leur inspiraient le respect.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle opérait également le long de la côte normande, pillant les villages de pêcheurs et les villes côtières qui soutenaient la couronne de France.",
+      "text_markdown": "Elle opérait également le long de la côte normande, pillant les villages de pêcheurs et les villes côtières qui soutenaient la couronne de France.",
+      "tts": {
+        "text": "Elle opérait également le long de la côte normande, pillant les villages de pêcheurs et les villes côtières qui soutenaient la couronne de France.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle brûlait les provisions destinées à l'armée française.",
+      "text_markdown": "Elle brûlait les provisions destinées à l'armée française.",
+      "tts": {
+        "text": "Elle brûlait les provisions destinées à l'armée française.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle perturbait les chaînes d'approvisionnement qui maintenaient la machine de guerre française en marche.",
+      "text_markdown": "Elle perturbait les chaînes d'approvisionnement qui maintenaient la machine de guerre française en marche.",
+      "tts": {
+        "text": "Elle perturbait les chaînes d'approvisionnement qui maintenaient la machine de guerre française en marche.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Année après année, Jeanne poursuivait sa guerre contre la France.",
+      "text_markdown": "Année après année, Jeanne poursuivait sa guerre contre la France.",
+      "tts": {
+        "text": "Année après année, Jeanne poursuivait sa guerre contre la France.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "D'autres pirates se seraient lassés ou auraient accepté un pardon.",
+      "text_markdown": "D'autres pirates se seraient lassés ou auraient accepté un pardon.",
+      "tts": {
+        "text": "D'autres pirates se seraient lassés ou auraient accepté un pardon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne ne céda jamais.",
+      "text_markdown": "Jeanne ne céda jamais.",
+      "tts": {
+        "text": "Jeanne ne céda jamais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sa haine envers Philippe VI était absolue.",
+      "text_markdown": "Sa haine envers Philippe VI était absolue.",
+      "tts": {
+        "text": "Sa haine envers Philippe Six était absolue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Quand Philippe mourut en 1350, son fils Jean II hérita du trône et de la guerre.",
+      "text_markdown": "Quand Philippe mourut en 1350, son fils Jean II hérita du trône et de la guerre.",
+      "tts": {
+        "text": "Quand Philippe mourut en treize cent cinquante, son fils Jean Deux hérita du trône et de la guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les attaques de Jeanne continuèrent contre les forces du nouveau roi sans relâche.",
+      "text_markdown": "Les attaques de Jeanne continuèrent contre les forces du nouveau roi sans relâche.",
+      "tts": {
+        "text": "Les attaques de Jeanne continuèrent contre les forces du nouveau roi sans relâche.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'équipage de Jeanne comprenait des marins bretons qui avaient servi son mari et étaient restés fidèles au nom des Clisson.",
+      "text_markdown": "L'équipage de Jeanne comprenait des marins bretons qui avaient servi son mari et étaient restés fidèles au nom des Clisson.",
+      "tts": {
+        "text": "L'équipage de Jeanne comprenait des marins bretons qui avaient servi son mari et étaient restés fidèles au nom des Clisson.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ces hommes connaissaient les eaux de la Manche et la côte bretonne dans les moindres détails.",
+      "text_markdown": "Ces hommes connaissaient les eaux de la Manche et la côte bretonne dans les moindres détails.",
+      "tts": {
+        "text": "Ces hommes connaissaient les eaux de la Manche et la côte bretonne dans les moindres détails.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Leur connaissance locale donnait à Jeanne un avantage tactique considérable.",
+      "text_markdown": "Leur connaissance locale donnait à Jeanne un avantage tactique considérable.",
+      "tts": {
+        "text": "Leur connaissance locale donnait à Jeanne un avantage tactique considérable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les navires de guerre médiévaux des années 1340 n'étaient pas les grands galions des siècles suivants.",
+      "text_markdown": "Les navires de guerre médiévaux des années 1340 n'étaient pas les grands galions des siècles suivants.",
+      "tts": {
+        "text": "Les navires de guerre médiévaux des années treize cent quarante n'étaient pas les grands galions des siècles suivants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'étaient des navires plus petits, souvent adaptés de bateaux marchands.",
+      "text_markdown": "C'étaient des navires plus petits, souvent adaptés de bateaux marchands.",
+      "tts": {
+        "text": "C'étaient des navires plus petits, souvent adaptés de bateaux marchands.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils utilisaient des rames aussi bien que des voiles et pouvaient manœuvrer dans les eaux côtières peu profondes.",
+      "text_markdown": "Ils utilisaient des rames aussi bien que des voiles et pouvaient manœuvrer dans les eaux côtières peu profondes.",
+      "tts": {
+        "text": "Ils utilisaient des rames aussi bien que des voiles et pouvaient manœuvrer dans les eaux côtières peu profondes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'abordage des navires ennemis était la principale méthode de combat naval à cette époque.",
+      "text_markdown": "L'abordage des navires ennemis était la principale méthode de combat naval à cette époque.",
+      "tts": {
+        "text": "L'abordage des navires ennemis était la principale méthode de combat naval à cette époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les équipages grapillaient un navire ennemi, le rapprochaient, puis l'envahissaient avec des épées et des haches.",
+      "text_markdown": "Les équipages grapillaient un navire ennemi, le rapprochaient, puis l'envahissaient avec des épées et des haches.",
+      "tts": {
+        "text": "Les équipages grapillaient un navire ennemi, le rapprochaient, puis l'envahissaient avec des épées et des haches.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "La flotte noire",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "C'était un combat rapproché et brutal.",
+      "text_markdown": "C'était un combat rapproché et brutal.",
+      "tts": {
+        "text": "C'était un combat rapproché et brutal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Treize ans sur la Manche",
+      "text_markdown": "Treize ans sur la Manche"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La campagne de vengeance de Jeanne de Clisson dura environ treize ans.",
+      "text_markdown": "La campagne de vengeance de Jeanne de Clisson dura environ treize ans.",
+      "tts": {
+        "text": "La campagne de vengeance de Jeanne de Clisson dura environ treize ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De 1343 à environ 1356, elle terrorisa la navigation française dans la Manche.",
+      "text_markdown": "De 1343 à environ 1356, elle terrorisa la navigation française dans la Manche.",
+      "tts": {
+        "text": "De treize cent quarante-trois à environ treize cent cinquante-six, elle terrorisa la navigation française dans la Manche.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant cette période, elle devint l'une des figures les plus célèbres et les plus redoutées des mers.",
+      "text_markdown": "Pendant cette période, elle devint l'une des figures les plus célèbres et les plus redoutées des mers.",
+      "tts": {
+        "text": "Pendant cette période, elle devint l'une des figures les plus célèbres et les plus redoutées des mers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les marins français redoutaient la vue de coques noires à l'horizon.",
+      "text_markdown": "Les marins français redoutaient la vue de coques noires à l'horizon.",
+      "tts": {
+        "text": "Les marins français redoutaient la vue de coques noires à l'horizon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les voiles rouges de la flotte de Jeanne signifiaient que la mort approchait.",
+      "text_markdown": "Les voiles rouges de la flotte de Jeanne signifiaient que la mort approchait.",
+      "tts": {
+        "text": "Les voiles rouges de la flotte de Jeanne signifiaient que la mort approchait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle entretenait sa flotte en capturant des navires français et en vendant leur cargaison.",
+      "text_markdown": "Elle entretenait sa flotte en capturant des navires français et en vendant leur cargaison.",
+      "tts": {
+        "text": "Elle entretenait sa flotte en capturant des navires français et en vendant leur cargaison.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le butin de ses raids finançait de nouveaux navires, des armes et l'équipage.",
+      "text_markdown": "Le butin de ses raids finançait de nouveaux navires, des armes et l'équipage.",
+      "tts": {
+        "text": "Le butin de ses raids finançait de nouveaux navires, des armes et l'équipage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle était autonome, sans devoir quoi que ce soit à personne.",
+      "text_markdown": "Elle était autonome, sans devoir quoi que ce soit à personne.",
+      "tts": {
+        "text": "Elle était autonome, sans devoir quoi que ce soit à personne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Manche dans les années 1340 et 1350 était une zone de guerre.",
+      "text_markdown": "La Manche dans les années 1340 et 1350 était une zone de guerre.",
+      "tts": {
+        "text": "La Manche dans les années treize cent quarante et treize cent cinquante était une zone de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les flottes anglaises et françaises s'affrontaient régulièrement.",
+      "text_markdown": "Les flottes anglaises et françaises s'affrontaient régulièrement.",
+      "tts": {
+        "text": "Les flottes anglaises et françaises s'affrontaient régulièrement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les navires marchands voyageaient en convois pour se protéger, mais même les convois n'étaient pas à l'abri de Jeanne.",
+      "text_markdown": "Les navires marchands voyageaient en convois pour se protéger, mais même les convois n'étaient pas à l'abri de Jeanne.",
+      "tts": {
+        "text": "Les navires marchands voyageaient en convois pour se protéger, mais même les convois n'étaient pas à l'abri de Jeanne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La réputation de Jeanne dépassa largement la Bretagne.",
+      "text_markdown": "La réputation de Jeanne dépassa largement la Bretagne.",
+      "tts": {
+        "text": "La réputation de Jeanne dépassa largement la Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des récits sur la Lionne de Bretagne se répandirent à travers la France, l'Angleterre et les Pays-Bas.",
+      "text_markdown": "Des récits sur la Lionne de Bretagne se répandirent à travers la France, l'Angleterre et les Pays-Bas.",
+      "tts": {
+        "text": "Des récits sur la Lionne de Bretagne se répandirent à travers la France, l'Angleterre et les Pays-Bas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle devint un symbole de défi contre l'injustice royale.",
+      "text_markdown": "Elle devint un symbole de défi contre l'injustice royale.",
+      "tts": {
+        "text": "Elle devint un symbole de défi contre l'injustice royale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ses enfants restèrent au centre de sa vie tout au long de ces années.",
+      "text_markdown": "Ses enfants restèrent au centre de sa vie tout au long de ces années.",
+      "tts": {
+        "text": "Ses enfants restèrent au centre de sa vie tout au long de ces années.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle s'assura qu'ils soient élevés en sécurité, loin des dangers de ses campagnes maritimes.",
+      "text_markdown": "Elle s'assura qu'ils soient élevés en sécurité, loin des dangers de ses campagnes maritimes.",
+      "tts": {
+        "text": "Elle s'assura qu'ils soient élevés en sécurité, loin des dangers de ses campagnes maritimes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son fils aîné de son premier mariage fut confié à des alliés anglais.",
+      "text_markdown": "Son fils aîné de son premier mariage fut confié à des alliés anglais.",
+      "tts": {
+        "text": "Son fils aîné de son premier mariage fut confié à des alliés anglais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son fils Olivier de Clisson le Jeune allait devenir l'un des hommes les plus puissants de France.",
+      "text_markdown": "Son fils Olivier de Clisson le Jeune allait devenir l'un des hommes les plus puissants de France.",
+      "tts": {
+        "text": "Son fils Olivier de Clisson le Jeune allait devenir l'un des hommes les plus puissants de France.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il deviendrait finalement connétable de France, la plus haute charge militaire du royaume.",
+      "text_markdown": "Il deviendrait finalement connétable de France, la plus haute charge militaire du royaume.",
+      "tts": {
+        "text": "Il deviendrait finalement connétable de France, la plus haute charge militaire du royaume.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "C'était un renversement stupéfiant pour une famille qui avait été marquée comme traîtresse.",
+      "text_markdown": "C'était un renversement stupéfiant pour une famille qui avait été marquée comme traîtresse.",
+      "tts": {
+        "text": "C'était un renversement stupéfiant pour une famille qui avait été marquée comme traîtresse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les tactiques de Jeanne évoluèrent au fil des ans.",
+      "text_markdown": "Les tactiques de Jeanne évoluèrent au fil des ans.",
+      "tts": {
+        "text": "Les tactiques de Jeanne évoluèrent au fil des ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle apprit à lire le temps et les marées de la Manche.",
+      "text_markdown": "Elle apprit à lire le temps et les marées de la Manche.",
+      "tts": {
+        "text": "Elle apprit à lire le temps et les marées de la Manche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle savait quels ports étaient sûrs et lesquels étaient patrouillés par les navires de guerre français.",
+      "text_markdown": "Elle savait quels ports étaient sûrs et lesquels étaient patrouillés par les navires de guerre français.",
+      "tts": {
+        "text": "Elle savait quels ports étaient sûrs et lesquels étaient patrouillés par les navires de guerre français.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle frappait la nuit quand la visibilité était mauvaise et la fuite plus facile.",
+      "text_markdown": "Elle frappait la nuit quand la visibilité était mauvaise et la fuite plus facile.",
+      "tts": {
+        "text": "Elle frappait la nuit quand la visibilité était mauvaise et la fuite plus facile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle ciblait des navires isolés plutôt que des convois bien défendus.",
+      "text_markdown": "Elle ciblait des navires isolés plutôt que des convois bien défendus.",
+      "tts": {
+        "text": "Elle ciblait des navires isolés plutôt que des convois bien défendus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle avait toujours un plan de repli.",
+      "text_markdown": "Elle avait toujours un plan de repli.",
+      "tts": {
+        "text": "Elle avait toujours un plan de repli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les Français envoyèrent des flottes pour la traquer, mais ils ne l'attrapèrent jamais.",
+      "text_markdown": "Les Français envoyèrent des flottes pour la traquer, mais ils ne l'attrapèrent jamais.",
+      "tts": {
+        "text": "Les Français envoyèrent des flottes pour la traquer, mais ils ne l'attrapèrent jamais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeanne connaissait les eaux de la Manche mieux que la plupart des commandants navals.",
+      "text_markdown": "Jeanne connaissait les eaux de la Manche mieux que la plupart des commandants navals.",
+      "tts": {
+        "text": "Jeanne connaissait les eaux de la Manche mieux que la plupart des commandants navals.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle pouvait disparaître dans le brouillard, se cacher dans les criques côtières ou distancer ses poursuivants en haute mer.",
+      "text_markdown": "Elle pouvait disparaître dans le brouillard, se cacher dans les criques côtières ou distancer ses poursuivants en haute mer.",
+      "tts": {
+        "text": "Elle pouvait disparaître dans le brouillard, se cacher dans les criques côtières ou distancer ses poursuivants en haute mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y eut des moments critiques.",
+      "text_markdown": "Il y eut des moments critiques.",
+      "tts": {
+        "text": "Il y eut des moments critiques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selon un récit, la flotte de Jeanne fut un jour dispersée par une tempête dans la Manche.",
+      "text_markdown": "Selon un récit, la flotte de Jeanne fut un jour dispersée par une tempête dans la Manche.",
+      "tts": {
+        "text": "Selon un récit, la flotte de Jeanne fut un jour dispersée par une tempête dans la Manche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle dériva pendant plusieurs jours avec ses fils avant d'atteindre la côte anglaise.",
+      "text_markdown": "Elle dériva pendant plusieurs jours avec ses fils avant d'atteindre la côte anglaise.",
+      "tts": {
+        "text": "Elle dériva pendant plusieurs jours avec ses fils avant d'atteindre la côte anglaise.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au cours de cette épreuve, l'un de ses plus jeunes fils serait mort d'exposition et d'épuisement.",
+      "text_markdown": "Au cours de cette épreuve, l'un de ses plus jeunes fils serait mort d'exposition et d'épuisement.",
+      "tts": {
+        "text": "Au cours de cette épreuve, l'un de ses plus jeunes fils serait mort d'exposition et d'épuisement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cette perte approfondit son chagrin mais n'affaiblit pas sa détermination.",
+      "text_markdown": "Cette perte approfondit son chagrin mais n'affaiblit pas sa détermination.",
+      "tts": {
+        "text": "Cette perte approfondit son chagrin mais n'affaiblit pas sa détermination.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre de Jeanne était personnelle, mais elle servait une cause plus grande.",
+      "text_markdown": "La guerre de Jeanne était personnelle, mais elle servait une cause plus grande.",
+      "tts": {
+        "text": "La guerre de Jeanne était personnelle, mais elle servait une cause plus grande.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En attaquant la navigation française, elle affaiblissait la capacité de la France à faire la guerre contre l'Angleterre et ses alliés.",
+      "text_markdown": "En attaquant la navigation française, elle affaiblissait la capacité de la France à faire la guerre contre l'Angleterre et ses alliés.",
+      "tts": {
+        "text": "En attaquant la navigation française, elle affaiblissait la capacité de la France à faire la guerre contre l'Angleterre et ses alliés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle était un atout précieux pour l'effort de guerre anglais.",
+      "text_markdown": "Elle était un atout précieux pour l'effort de guerre anglais.",
+      "tts": {
+        "text": "Elle était un atout précieux pour l'effort de guerre anglais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les Anglais la traitaient comme une alliée honorée.",
+      "text_markdown": "Les Anglais la traitaient comme une alliée honorée.",
+      "tts": {
+        "text": "Les Anglais la traitaient comme une alliée honorée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle fut reçue à la cour d'Angleterre et bénéficia de protection et de soutien.",
+      "text_markdown": "Elle fut reçue à la cour d'Angleterre et bénéficia de protection et de soutien.",
+      "tts": {
+        "text": "Elle fut reçue à la cour d'Angleterre et bénéficia de protection et de soutien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa cause était considérée comme juste par les Anglais, qui avaient leurs propres raisons de détester le roi de France.",
+      "text_markdown": "Sa cause était considérée comme juste par les Anglais, qui avaient leurs propres raisons de détester le roi de France.",
+      "tts": {
+        "text": "Sa cause était considérée comme juste par les Anglais, qui avaient leurs propres raisons de détester le roi de France.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au fil des ans, la guerre de Cent Ans se poursuivit sans fin en vue.",
+      "text_markdown": "Au fil des ans, la guerre de Cent Ans se poursuivit sans fin en vue.",
+      "tts": {
+        "text": "Au fil des ans, la guerre de Cent Ans se poursuivit sans fin en vue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La peste noire balaya l'Europe en 1348 et 1349, tuant peut-être un tiers de la population.",
+      "text_markdown": "La peste noire balaya l'Europe en 1348 et 1349, tuant peut-être un tiers de la population.",
+      "tts": {
+        "text": "La peste noire balaya l'Europe en treize cent quarante-huit et treize cent quarante-neuf, tuant peut-être un tiers de la population.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La peste perturba les armées, le commerce et l'ordre social lui-même.",
+      "text_markdown": "La peste perturba les armées, le commerce et l'ordre social lui-même.",
+      "tts": {
+        "text": "La peste perturba les armées, le commerce et l'ordre social lui-même.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Même en ces temps terribles, Jeanne poursuivit ses raids.",
+      "text_markdown": "Même en ces temps terribles, Jeanne poursuivit ses raids.",
+      "tts": {
+        "text": "Même en ces temps terribles, Jeanne poursuivit ses raids.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La guerre en mer ne s'arrêtait pas pour la peste, pas plus que pour les tempêtes hivernales.",
+      "text_markdown": "La guerre en mer ne s'arrêtait pas pour la peste, pas plus que pour les tempêtes hivernales.",
+      "tts": {
+        "text": "La guerre en mer ne s'arrêtait pas pour la peste, pas plus que pour les tempêtes hivernales.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson n'était pas simplement une pirate en quête de profit.",
+      "text_markdown": "Jeanne de Clisson n'était pas simplement une pirate en quête de profit.",
+      "tts": {
+        "text": "Jeanne de Clisson n'était pas simplement une pirate en quête de profit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle était une femme menant une guerre privée contre un roi qu'elle croyait avoir assassiné son mari.",
+      "text_markdown": "Elle était une femme menant une guerre privée contre un roi qu'elle croyait avoir assassiné son mari.",
+      "tts": {
+        "text": "Elle était une femme menant une guerre privée contre un roi qu'elle croyait avoir assassiné son mari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chaque navire français qu'elle coulait était un acte de justice à ses yeux.",
+      "text_markdown": "Chaque navire français qu'elle coulait était un acte de justice à ses yeux.",
+      "tts": {
+        "text": "Chaque navire français qu'elle coulait était un acte de justice à ses yeux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les navires de ravitaillement qui nourrissaient les armées françaises en Bretagne étaient des cibles particulièrement précieuses.",
+      "text_markdown": "Les navires de ravitaillement qui nourrissaient les armées françaises en Bretagne étaient des cibles particulièrement précieuses.",
+      "tts": {
+        "text": "Les navires de ravitaillement qui nourrissaient les armées françaises en Bretagne étaient des cibles particulièrement précieuses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En capturant ou en coulant ces navires, Jeanne privait les garnisons ennemies de nourriture, d'armes et de renforts.",
+      "text_markdown": "En capturant ou en coulant ces navires, Jeanne privait les garnisons ennemies de nourriture, d'armes et de renforts.",
+      "tts": {
+        "text": "En capturant ou en coulant ces navires, Jeanne privait les garnisons ennemies de nourriture, d'armes et de renforts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ses raids eurent un impact direct sur le cours de la guerre en Bretagne.",
+      "text_markdown": "Ses raids eurent un impact direct sur le cours de la guerre en Bretagne.",
+      "tts": {
+        "text": "Ses raids eurent un impact direct sur le cours de la guerre en Bretagne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vie en mer était éprouvante pour tous les membres de l'équipage.",
+      "text_markdown": "La vie en mer était éprouvante pour tous les membres de l'équipage.",
+      "tts": {
+        "text": "La vie en mer était éprouvante pour tous les membres de l'équipage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les navires étaient froids, humides et exigus.",
+      "text_markdown": "Les navires étaient froids, humides et exigus.",
+      "tts": {
+        "text": "Les navires étaient froids, humides et exigus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La nourriture se gâtait rapidement, et l'eau douce était toujours en quantité insuffisante.",
+      "text_markdown": "La nourriture se gâtait rapidement, et l'eau douce était toujours en quantité insuffisante.",
+      "tts": {
+        "text": "La nourriture se gâtait rapidement, et l'eau douce était toujours en quantité insuffisante.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne endurait ces épreuves aux côtés de son équipage.",
+      "text_markdown": "Jeanne endurait ces épreuves aux côtés de son équipage.",
+      "tts": {
+        "text": "Jeanne endurait ces épreuves aux côtés de son équipage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle ne commandait pas depuis la sécurité du rivage.",
+      "text_markdown": "Elle ne commandait pas depuis la sécurité du rivage.",
+      "tts": {
+        "text": "Elle ne commandait pas depuis la sécurité du rivage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Treize ans sur la Manche",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle naviguait avec ses navires, combattait dans les batailles et partageait les dangers de la mer.",
+      "text_markdown": "Elle naviguait avec ses navires, combattait dans les batailles et partageait les dangers de la mer.",
+      "tts": {
+        "text": "Elle naviguait avec ses navires, combattait dans les batailles et partageait les dangers de la mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le rivage paisible",
+      "text_markdown": "Le rivage paisible"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vers 1356, Jeanne de Clisson se retira de la mer.",
+      "text_markdown": "Vers 1356, Jeanne de Clisson se retira de la mer.",
+      "tts": {
+        "text": "Vers treize cent cinquante-six, Jeanne de Clisson se retira de la mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle avait été en guerre pendant environ treize ans.",
+      "text_markdown": "Elle avait été en guerre pendant environ treize ans.",
+      "tts": {
+        "text": "Elle avait été en guerre pendant environ treize ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les raisons exactes de sa retraite ne sont pas entièrement connues.",
+      "text_markdown": "Les raisons exactes de sa retraite ne sont pas entièrement connues.",
+      "tts": {
+        "text": "Les raisons exactes de sa retraite ne sont pas entièrement connues.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les historiens estiment que l'âge, l'épuisement et l'évolution des circonstances politiques ont tous joué un rôle.",
+      "text_markdown": "Les historiens estiment que l'âge, l'épuisement et l'évolution des circonstances politiques ont tous joué un rôle.",
+      "tts": {
+        "text": "Les historiens estiment que l'âge, l'épuisement et l'évolution des circonstances politiques ont tous joué un rôle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeanne avait la cinquantaine à cette époque, un âge avancé pour l'ère médiévale.",
+      "text_markdown": "Jeanne avait la cinquantaine à cette époque, un âge avancé pour l'ère médiévale.",
+      "tts": {
+        "text": "Jeanne avait la cinquantaine à cette époque, un âge avancé pour l'ère médiévale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle se maria pour la troisième fois.",
+      "text_markdown": "Elle se maria pour la troisième fois.",
+      "tts": {
+        "text": "Elle se maria pour la troisième fois.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son nouveau mari était Walter Bentley, un chevalier et commandant militaire anglais.",
+      "text_markdown": "Son nouveau mari était Walter Bentley, un chevalier et commandant militaire anglais.",
+      "tts": {
+        "text": "Son nouveau mari était Walter Bentley, un chevalier et commandant militaire anglais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bentley avait servi comme lieutenant anglais en Bretagne.",
+      "text_markdown": "Bentley avait servi comme lieutenant anglais en Bretagne.",
+      "tts": {
+        "text": "Bentley avait servi comme lieutenant anglais en Bretagne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le mariage avec Bentley représentait un nouveau chapitre dans la vie de Jeanne.",
+      "text_markdown": "Le mariage avec Bentley représentait un nouveau chapitre dans la vie de Jeanne.",
+      "tts": {
+        "text": "Le mariage avec Bentley représentait un nouveau chapitre dans la vie de Jeanne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Après des années de violence et de deuil, elle choisit de se ranger.",
+      "text_markdown": "Après des années de violence et de deuil, elle choisit de se ranger.",
+      "tts": {
+        "text": "Après des années de violence et de deuil, elle choisit de se ranger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle avait fait payer un prix terrible pour le meurtre de son mari.",
+      "text_markdown": "Elle avait fait payer un prix terrible pour le meurtre de son mari.",
+      "tts": {
+        "text": "Elle avait fait payer un prix terrible pour le meurtre de son mari.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne et Walter Bentley vécurent sur des domaines en Bretagne.",
+      "text_markdown": "Jeanne et Walter Bentley vécurent sur des domaines en Bretagne.",
+      "tts": {
+        "text": "Jeanne et Walter Bentley vécurent sur des domaines en Bretagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La guerre entre la France et l'Angleterre continuait, mais Jeanne n'en faisait plus partie.",
+      "text_markdown": "La guerre entre la France et l'Angleterre continuait, mais Jeanne n'en faisait plus partie.",
+      "tts": {
+        "text": "La guerre entre la France et l'Angleterre continuait, mais Jeanne n'en faisait plus partie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle passa ses dernières années en noble dame, gérant son foyer et ses terres restantes.",
+      "text_markdown": "Elle passa ses dernières années en noble dame, gérant son foyer et ses terres restantes.",
+      "tts": {
+        "text": "Elle passa ses dernières années en noble dame, gérant son foyer et ses terres restantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La féroce pirate de la Manche redevint une dame de l'aristocratie bretonne.",
+      "text_markdown": "La féroce pirate de la Manche redevint une dame de l'aristocratie bretonne.",
+      "tts": {
+        "text": "La féroce pirate de la Manche redevint une dame de l'aristocratie bretonne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeanne de Clisson mourut en 1359.",
+      "text_markdown": "Jeanne de Clisson mourut en 1359.",
+      "tts": {
+        "text": "Jeanne de Clisson mourut en treize cent cinquante-neuf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle avait environ 59 ans.",
+      "text_markdown": "Elle avait environ 59 ans.",
+      "tts": {
+        "text": "Elle avait environ cinquante-neuf ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La cause de sa mort n'est pas connue.",
+      "text_markdown": "La cause de sa mort n'est pas connue.",
+      "tts": {
+        "text": "La cause de sa mort n'est pas connue.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle fut enterrée à l'église des Jacobins dans la campagne bretonne.",
+      "text_markdown": "Elle fut enterrée à l'église des Jacobins dans la campagne bretonne.",
+      "tts": {
+        "text": "Elle fut enterrée à l'église des Jacobins dans la campagne bretonne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'emplacement exact de sa tombe s'est perdu au fil des siècles.",
+      "text_markdown": "L'emplacement exact de sa tombe s'est perdu au fil des siècles.",
+      "tts": {
+        "text": "L'emplacement exact de sa tombe s'est perdu au fil des siècles.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son fils Olivier de Clisson le Jeune survécut et prospéra.",
+      "text_markdown": "Son fils Olivier de Clisson le Jeune survécut et prospéra.",
+      "tts": {
+        "text": "Son fils Olivier de Clisson le Jeune survécut et prospéra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Malgré l'exécution de son père comme traître, le jeune Olivier s'éleva aux plus hauts rangs du commandement militaire français.",
+      "text_markdown": "Malgré l'exécution de son père comme traître, le jeune Olivier s'éleva aux plus hauts rangs du commandement militaire français.",
+      "tts": {
+        "text": "Malgré l'exécution de son père comme traître, le jeune Olivier s'éleva aux plus hauts rangs du commandement militaire français.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il fut nommé connétable de France en 1380, un poste qu'il occupa pendant plus d'une décennie.",
+      "text_markdown": "Il fut nommé connétable de France en 1380, un poste qu'il occupa pendant plus d'une décennie.",
+      "tts": {
+        "text": "Il fut nommé connétable de France en treize cent quatre-vingts, un poste qu'il occupa pendant plus d'une décennie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le connétable était le commandant suprême de l'armée française.",
+      "text_markdown": "Le connétable était le commandant suprême de l'armée française.",
+      "tts": {
+        "text": "Le connétable était le commandant suprême de l'armée française.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "C'était l'un des postes les plus puissants du royaume.",
+      "text_markdown": "C'était l'un des postes les plus puissants du royaume.",
+      "tts": {
+        "text": "C'était l'un des postes les plus puissants du royaume.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La famille de Clisson avait été condamnée comme traîtresse et dépouillée de tout.",
+      "text_markdown": "La famille de Clisson avait été condamnée comme traîtresse et dépouillée de tout.",
+      "tts": {
+        "text": "La famille de Clisson avait été condamnée comme traîtresse et dépouillée de tout.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En l'espace d'une seule génération, elle était revenue au sommet du pouvoir français.",
+      "text_markdown": "En l'espace d'une seule génération, elle était revenue au sommet du pouvoir français.",
+      "tts": {
+        "text": "En l'espace d'une seule génération, elle était revenue au sommet du pouvoir français.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le combat de Jeanne n'avait pas été vain.",
+      "text_markdown": "Le combat de Jeanne n'avait pas été vain.",
+      "tts": {
+        "text": "Le combat de Jeanne n'avait pas été vain.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walter Bentley survécut à Jeanne de plusieurs années.",
+      "text_markdown": "Walter Bentley survécut à Jeanne de plusieurs années.",
+      "tts": {
+        "text": "Walter Bentley survécut à Jeanne de plusieurs années.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il continua à servir les intérêts anglais en Bretagne jusqu'à sa propre mort.",
+      "text_markdown": "Il continua à servir les intérêts anglais en Bretagne jusqu'à sa propre mort.",
+      "tts": {
+        "text": "Il continua à servir les intérêts anglais en Bretagne jusqu'à sa propre mort.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre de Cent Ans allait se poursuivre pendant près d'un siècle après la mort de Jeanne.",
+      "text_markdown": "La guerre de Cent Ans allait se poursuivre pendant près d'un siècle après la mort de Jeanne.",
+      "tts": {
+        "text": "La guerre de Cent Ans allait se poursuivre pendant près d'un siècle après la mort de Jeanne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Bretagne resterait un champ de bataille entre la France et l'Angleterre pendant des décennies encore.",
+      "text_markdown": "La Bretagne resterait un champ de bataille entre la France et l'Angleterre pendant des décennies encore.",
+      "tts": {
+        "text": "La Bretagne resterait un champ de bataille entre la France et l'Angleterre pendant des décennies encore.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La transition de guerrière à épouse ne fut pas aussi brusque qu'il n'y paraît.",
+      "text_markdown": "La transition de guerrière à épouse ne fut pas aussi brusque qu'il n'y paraît.",
+      "tts": {
+        "text": "La transition de guerrière à épouse ne fut pas aussi brusque qu'il n'y paraît.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les nobles femmes de l'ère médiévale géraient souvent des domaines, réglaient des litiges et rendaient la justice en l'absence de leur mari.",
+      "text_markdown": "Les nobles femmes de l'ère médiévale géraient souvent des domaines, réglaient des litiges et rendaient la justice en l'absence de leur mari.",
+      "tts": {
+        "text": "Les nobles femmes de l'ère médiévale géraient souvent des domaines, réglaient des litiges et rendaient la justice en l'absence de leur mari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne avait toujours été bien plus qu'une pirate.",
+      "text_markdown": "Jeanne avait toujours été bien plus qu'une pirate.",
+      "tts": {
+        "text": "Jeanne avait toujours été bien plus qu'une pirate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La campagne bretonne où Jeanne passa ses dernières années était marquée par des décennies de guerre.",
+      "text_markdown": "La campagne bretonne où Jeanne passa ses dernières années était marquée par des décennies de guerre.",
+      "tts": {
+        "text": "La campagne bretonne où Jeanne passa ses dernières années était marquée par des décennies de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des villages brûlés, des fermes abandonnées et des châteaux en ruine parsemaient le paysage.",
+      "text_markdown": "Des villages brûlés, des fermes abandonnées et des châteaux en ruine parsemaient le paysage.",
+      "tts": {
+        "text": "Des villages brûlés, des fermes abandonnées et des châteaux en ruine parsemaient le paysage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Le rivage paisible",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La guerre qu'elle avait contribué à mener avait prélevé un tribut terrible sur la terre qu'elle aimait.",
+      "text_markdown": "La guerre qu'elle avait contribué à mener avait prélevé un tribut terrible sur la terre qu'elle aimait.",
+      "tts": {
+        "text": "La guerre qu'elle avait contribué à mener avait prélevé un tribut terrible sur la terre qu'elle aimait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La Lionne dans les mémoires",
+      "text_markdown": "La Lionne dans les mémoires"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'histoire de Jeanne de Clisson est racontée depuis près de sept cents ans.",
+      "text_markdown": "L'histoire de Jeanne de Clisson est racontée depuis près de sept cents ans.",
+      "tts": {
+        "text": "L'histoire de Jeanne de Clisson est racontée depuis près de sept cents ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle apparaît dans les chroniques médiévales, les histoires de France et les ouvrages modernes sur les femmes guerrières.",
+      "text_markdown": "Elle apparaît dans les chroniques médiévales, les histoires de France et les ouvrages modernes sur les femmes guerrières.",
+      "tts": {
+        "text": "Elle apparaît dans les chroniques médiévales, les histoires de France et les ouvrages modernes sur les femmes guerrières.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle est l'une des très rares femmes de l'histoire médiévale européenne connues pour avoir commandé des navires de guerre.",
+      "text_markdown": "Elle est l'une des très rares femmes de l'histoire médiévale européenne connues pour avoir commandé des navires de guerre.",
+      "tts": {
+        "text": "Elle est l'une des très rares femmes de l'histoire médiévale européenne connues pour avoir commandé des navires de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa campagne de treize ans est extraordinaire, quel que soit le critère retenu.",
+      "text_markdown": "Sa campagne de treize ans est extraordinaire, quel que soit le critère retenu.",
+      "tts": {
+        "text": "Sa campagne de treize ans est extraordinaire, quel que soit le critère retenu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certains historiens se sont demandé si tous les détails de son histoire sont exacts.",
+      "text_markdown": "Certains historiens se sont demandé si tous les détails de son histoire sont exacts.",
+      "tts": {
+        "text": "Certains historiens se sont demandé si tous les détails de son histoire sont exacts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les chroniques médiévales n'étaient pas toujours fiables, et les récits avaient tendance à devenir plus dramatiques avec le temps.",
+      "text_markdown": "Les chroniques médiévales n'étaient pas toujours fiables, et les récits avaient tendance à devenir plus dramatiques avec le temps.",
+      "tts": {
+        "text": "Les chroniques médiévales n'étaient pas toujours fiables, et les récits avaient tendance à devenir plus dramatiques avec le temps.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais les faits essentiels sont corroborés par plusieurs sources.",
+      "text_markdown": "Mais les faits essentiels sont corroborés par plusieurs sources.",
+      "tts": {
+        "text": "Mais les faits essentiels sont corroborés par plusieurs sources.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Olivier de Clisson fut exécuté pour trahison.",
+      "text_markdown": "Olivier de Clisson fut exécuté pour trahison.",
+      "tts": {
+        "text": "Olivier de Clisson fut exécuté pour trahison.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p105",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeanne de Clisson prit effectivement la mer et attaqua la navigation française.",
+      "text_markdown": "Jeanne de Clisson prit effectivement la mer et attaqua la navigation française.",
+      "tts": {
+        "text": "Jeanne de Clisson prit effectivement la mer et attaqua la navigation française.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p105",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle s'allia effectivement à l'Angleterre pendant la guerre de Cent Ans.",
+      "text_markdown": "Elle s'allia effectivement à l'Angleterre pendant la guerre de Cent Ans.",
+      "tts": {
+        "text": "Elle s'allia effectivement à l'Angleterre pendant la guerre de Cent Ans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son histoire soulève des questions sur la justice et la vengeance.",
+      "text_markdown": "Son histoire soulève des questions sur la justice et la vengeance.",
+      "tts": {
+        "text": "Son histoire soulève des questions sur la justice et la vengeance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'exécution d'Olivier de Clisson était presque certainement injuste.",
+      "text_markdown": "L'exécution d'Olivier de Clisson était presque certainement injuste.",
+      "tts": {
+        "text": "L'exécution d'Olivier de Clisson était presque certainement injuste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La réponse de Jeanne fut extrême, mais la provocation l'était aussi.",
+      "text_markdown": "La réponse de Jeanne fut extrême, mais la provocation l'était aussi.",
+      "tts": {
+        "text": "La réponse de Jeanne fut extrême, mais la provocation l'était aussi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle tua des marins et des pêcheurs innocents qui n'avaient rien à voir avec la mort de son mari.",
+      "text_markdown": "Elle tua des marins et des pêcheurs innocents qui n'avaient rien à voir avec la mort de son mari.",
+      "tts": {
+        "text": "Elle tua des marins et des pêcheurs innocents qui n'avaient rien à voir avec la mort de son mari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa guerre était personnelle, mais ses victimes étaient souvent des innocents.",
+      "text_markdown": "Sa guerre était personnelle, mais ses victimes étaient souvent des innocents.",
+      "tts": {
+        "text": "Sa guerre était personnelle, mais ses victimes étaient souvent des innocents.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pourtant, elle a été célébrée plutôt que condamnée par beaucoup de ceux qui racontent son histoire.",
+      "text_markdown": "Pourtant, elle a été célébrée plutôt que condamnée par beaucoup de ceux qui racontent son histoire.",
+      "tts": {
+        "text": "Pourtant, elle a été célébrée plutôt que condamnée par beaucoup de ceux qui racontent son histoire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On se souvient d'elle comme d'une femme qui refusa d'accepter l'injustice et qui se battit avec tout ce qu'elle avait.",
+      "text_markdown": "On se souvient d'elle comme d'une femme qui refusa d'accepter l'injustice et qui se battit avec tout ce qu'elle avait.",
+      "tts": {
+        "text": "On se souvient d'elle comme d'une femme qui refusa d'accepter l'injustice et qui se battit avec tout ce qu'elle avait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Bretagne, elle reste une héroïne populaire.",
+      "text_markdown": "En Bretagne, elle reste une héroïne populaire.",
+      "tts": {
+        "text": "En Bretagne, elle reste une héroïne populaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son nom est associé au courage, à la défiance et à la farouche indépendance du peuple breton.",
+      "text_markdown": "Son nom est associé au courage, à la défiance et à la farouche indépendance du peuple breton.",
+      "tts": {
+        "text": "Son nom est associé au courage, à la défiance et à la farouche indépendance du peuple breton.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les navires noirs aux voiles rouges ont disparu.",
+      "text_markdown": "Les navires noirs aux voiles rouges ont disparu.",
+      "tts": {
+        "text": "Les navires noirs aux voiles rouges ont disparu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Manche a depuis longtemps cessé d'être un champ de bataille.",
+      "text_markdown": "La Manche a depuis longtemps cessé d'être un champ de bataille.",
+      "tts": {
+        "text": "La Manche a depuis longtemps cessé d'être un champ de bataille.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p110",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais l'histoire de la Lionne de Bretagne perdure, portée par ceux qui croient que certains torts exigent une réponse.",
+      "text_markdown": "Mais l'histoire de la Lionne de Bretagne perdure, portée par ceux qui croient que certains torts exigent une réponse.",
+      "tts": {
+        "text": "Mais l'histoire de la Lionne de Bretagne perdure, portée par ceux qui croient que certains torts exigent une réponse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les historiens modernes ont replacé Jeanne de Clisson dans le contexte plus large des femmes qui exercèrent le pouvoir militaire à l'époque médiévale.",
+      "text_markdown": "Les historiens modernes ont replacé Jeanne de Clisson dans le contexte plus large des femmes qui exercèrent le pouvoir militaire à l'époque médiévale.",
+      "tts": {
+        "text": "Les historiens modernes ont replacé Jeanne de Clisson dans le contexte plus large des femmes qui exercèrent le pouvoir militaire à l'époque médiévale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle n'était pas unique, mais elle était exceptionnelle.",
+      "text_markdown": "Elle n'était pas unique, mais elle était exceptionnelle.",
+      "tts": {
+        "text": "Elle n'était pas unique, mais elle était exceptionnelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Peu de femmes ont mené une campagne militaire aussi longue ou avec un effet aussi dévastateur.",
+      "text_markdown": "Peu de femmes ont mené une campagne militaire aussi longue ou avec un effet aussi dévastateur.",
+      "tts": {
+        "text": "Peu de femmes ont mené une campagne militaire aussi longue ou avec un effet aussi dévastateur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le château de Clisson se dresse toujours dans la ville de Clisson, dans la vallée de la Loire.",
+      "text_markdown": "Le château de Clisson se dresse toujours dans la ville de Clisson, dans la vallée de la Loire.",
+      "tts": {
+        "text": "Le château de Clisson se dresse toujours dans la ville de Clisson, dans la vallée de la Loire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ses ruines médiévales rappellent la famille qui régnait autrefois en ces lieux.",
+      "text_markdown": "Ses ruines médiévales rappellent la famille qui régnait autrefois en ces lieux.",
+      "tts": {
+        "text": "Ses ruines médiévales rappellent la famille qui régnait autrefois en ces lieux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les visiteurs peuvent parcourir les mêmes salles de pierre où Jeanne et Olivier vécurent jadis.",
+      "text_markdown": "Les visiteurs peuvent parcourir les mêmes salles de pierre où Jeanne et Olivier vécurent jadis.",
+      "tts": {
+        "text": "Les visiteurs peuvent parcourir les mêmes salles de pierre où Jeanne et Olivier vécurent jadis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerre de Cent Ans prit fin en 1453, près d'un siècle après la mort de Jeanne.",
+      "text_markdown": "La guerre de Cent Ans prit fin en 1453, près d'un siècle après la mort de Jeanne.",
+      "tts": {
+        "text": "La guerre de Cent Ans prit fin en quatorze cent cinquante-trois, près d'un siècle après la mort de Jeanne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La France gagna la guerre, et l'Angleterre perdit presque tous ses territoires sur le continent.",
+      "text_markdown": "La France gagna la guerre, et l'Angleterre perdit presque tous ses territoires sur le continent.",
+      "tts": {
+        "text": "La France gagna la guerre, et l'Angleterre perdit presque tous ses territoires sur le continent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "La Lionne dans les mémoires",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La Bretagne finit par devenir partie de la France par le mariage plutôt que par la conquête.",
+      "text_markdown": "La Bretagne finit par devenir partie de la France par le mariage plutôt que par la conquête.",
+      "tts": {
+        "text": "La Bretagne finit par devenir partie de la France par le mariage plutôt que par la conquête.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

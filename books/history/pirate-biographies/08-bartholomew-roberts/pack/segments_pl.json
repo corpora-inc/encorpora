@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_bartholomew_roberts",
+  "language": "pl",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Słowo do czytelnika",
+      "text_markdown": "Słowo do czytelnika"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To prawdziwa historia najbardziej utytułowanego pirata Złotego Wieku.",
+      "text_markdown": "To prawdziwa historia najbardziej utytułowanego pirata Złotego Wieku.",
+      "tts": {
+        "text": "To prawdziwa historia najbardziej utytułowanego pirata Złotego Wieku.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nazywał się Bartholomew Roberts, a świat znał go jako Czarnego Barta.",
+      "text_markdown": "Nazywał się Bartholomew Roberts, a świat znał go jako Czarnego Barta.",
+      "tts": {
+        "text": "Nazywał się Bartholomew Roberts, a świat znał go jako Czarnego Barta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "W zaledwie 3 lata schwytał ponad 400 statków, więcej niż jakikolwiek inny pirat jego epoki.",
+      "text_markdown": "W zaledwie 3 lata schwytał ponad 400 statków, więcej niż jakikolwiek inny pirat jego epoki.",
+      "tts": {
+        "text": "W zaledwie trzy lata schwytał ponad czterysta statków, więcej niż jakikolwiek inny pirat jego epoki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts nie był człowiekiem, który wybrał piractwo dobrowolnie.",
+      "text_markdown": "Roberts nie był człowiekiem, który wybrał piractwo dobrowolnie.",
+      "tts": {
+        "text": "Roberts nie był człowiekiem, który wybrał piractwo dobrowolnie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był walijskim marynarzem schwytanym przez piratów i zmuszonym do dołączenia do ich załogi.",
+      "text_markdown": "Był walijskim marynarzem schwytanym przez piratów i zmuszonym do dołączenia do ich załogi.",
+      "tts": {
+        "text": "Był walijskim marynarzem schwytanym przez piratów i zmuszonym do dołączenia do ich załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "W ciągu kilku tygodni stał się ich kapitanem.",
+      "text_markdown": "W ciągu kilku tygodni stał się ich kapitanem.",
+      "tts": {
+        "text": "W ciągu kilku tygodni stał się ich kapitanem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "W ciągu kilku miesięcy stał się postrachem Atlantyku.",
+      "text_markdown": "W ciągu kilku miesięcy stał się postrachem Atlantyku.",
+      "tts": {
+        "text": "W ciągu kilku miesięcy stał się postrachem Atlantyku.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ta książka zabierze cię od wybrzeża Afryki Zachodniej po wyspy Karaibów.",
+      "text_markdown": "Ta książka zabierze cię od wybrzeża Afryki Zachodniej po wyspy Karaibów.",
+      "tts": {
+        "text": "Ta książka zabierze cię od wybrzeża Afryki Zachodniej po wyspy Karaibów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zobaczysz, jak jeden niechętny pirat zbudował pływające imperium i napisał reguły, które nim rządziły.",
+      "text_markdown": "Zobaczysz, jak jeden niechętny pirat zbudował pływające imperium i napisał reguły, które nim rządziły.",
+      "tts": {
+        "text": "Zobaczysz, jak jeden niechętny pirat zbudował pływające imperium i napisał reguły, które nim rządziły.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wszystko w tej książce oparte jest na dokumentach historycznych, protokołach procesów i relacjach naocznych świadków.",
+      "text_markdown": "Wszystko w tej książce oparte jest na dokumentach historycznych, protokołach procesów i relacjach naocznych świadków.",
+      "tts": {
+        "text": "Wszystko w tej książce oparte jest na dokumentach historycznych, protokołach procesów i relacjach naocznych świadków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gdy fakty są niepewne, powiemy o tym jasno.",
+      "text_markdown": "Gdy fakty są niepewne, powiemy o tym jasno.",
+      "tts": {
+        "text": "Gdy fakty są niepewne, powiemy o tym jasno.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Świat Wybrzeża Niewolników",
+      "text_markdown": "Świat Wybrzeża Niewolników"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Początek osiemnastego wieku był szczytem transatlantyckiego handlu niewolnikami.",
+      "text_markdown": "Początek osiemnastego wieku był szczytem transatlantyckiego handlu niewolnikami.",
+      "tts": {
+        "text": "Początek osiemnastego wieku był szczytem transatlantyckiego handlu niewolnikami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Europejskie statki wypływały z portów Anglii, Francji, Portugalii i Holandii ku wybrzeżu Afryki Zachodniej.",
+      "text_markdown": "Europejskie statki wypływały z portów Anglii, Francji, Portugalii i Holandii ku wybrzeżu Afryki Zachodniej.",
+      "tts": {
+        "text": "Europejskie statki wypływały z portów Anglii, Francji, Portugalii i Holandii ku wybrzeżu Afryki Zachodniej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tam wymieniano towary przemysłowe na zniewolonych ludzi.",
+      "text_markdown": "Tam wymieniano towary przemysłowe na zniewolonych ludzi.",
+      "tts": {
+        "text": "Tam wymieniano towary przemysłowe na zniewolonych ludzi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zniewoleni ludzie byli następnie transportowani przez Atlantyk na plantacje w obu Amerykach.",
+      "text_markdown": "Zniewoleni ludzie byli następnie transportowani przez Atlantyk na plantacje w obu Amerykach.",
+      "tts": {
+        "text": "Zniewoleni ludzie byli następnie transportowani przez Atlantyk na plantacje w obu Amerykach.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ten trójkąt handlowy generował ogromne bogactwo dla europejskich kupców i kolonialnych plantatorów.",
+      "text_markdown": "Ten trójkąt handlowy generował ogromne bogactwo dla europejskich kupców i kolonialnych plantatorów.",
+      "tts": {
+        "text": "Ten trójkąt handlowy generował ogromne bogactwo dla europejskich kupców i kolonialnych plantatorów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cukier, tytoń, bawełna i ryż uprawiane niewolniczą pracą wysyłane były z powrotem do Europy.",
+      "text_markdown": "Cukier, tytoń, bawełna i ryż uprawiane niewolniczą pracą wysyłane były z powrotem do Europy.",
+      "tts": {
+        "text": "Cukier, tytoń, bawełna i ryż uprawiane niewolniczą pracą wysyłane były z powrotem do Europy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zyski finansowały okazałe rezydencje, władzę polityczną i dalszą ekspansję kolonialną.",
+      "text_markdown": "Zyski finansowały okazałe rezydencje, władzę polityczną i dalszą ekspansję kolonialną.",
+      "tts": {
+        "text": "Zyski finansowały okazałe rezydencje, władzę polityczną i dalszą ekspansję kolonialną.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był to silnik napędzający gospodarki świata atlantyckiego.",
+      "text_markdown": "Był to silnik napędzający gospodarki świata atlantyckiego.",
+      "tts": {
+        "text": "Był to silnik napędzający gospodarki świata atlantyckiego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wybrzeże Afryki Zachodniej, od Senegalu po Angolę, było centrum tego handlu ludźmi.",
+      "text_markdown": "Wybrzeże Afryki Zachodniej, od Senegalu po Angolę, było centrum tego handlu ludźmi.",
+      "tts": {
+        "text": "Wybrzeże Afryki Zachodniej, od Senegalu po Angolę, było centrum tego handlu ludźmi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Narody europejskie zakładały forty handlowe i faktorie wzdłuż wybrzeża.",
+      "text_markdown": "Narody europejskie zakładały forty handlowe i faktorie wzdłuż wybrzeża.",
+      "tts": {
+        "text": "Narody europejskie zakładały forty handlowe i faktorie wzdłuż wybrzeża.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Royal African Company posiadała angielski monopol na handel afrykański.",
+      "text_markdown": "Royal African Company posiadała angielski monopol na handel afrykański.",
+      "tts": {
+        "text": "Royal African Company posiadała angielski monopol na handel afrykański.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jej forty w Cape Coast Castle i innych lokalizacjach były silnie ufortyfikowane i obsadzone garnizonem.",
+      "text_markdown": "Jej forty w Cape Coast Castle i innych lokalizacjach były silnie ufortyfikowane i obsadzone garnizonem.",
+      "tts": {
+        "text": "Jej forty w Cape Coast Castle i innych lokalizacjach były silnie ufortyfikowane i obsadzone garnizonem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Statki niewolnicze przepływające przez Atlantyk należały do najcenniejszych celów na oceanie.",
+      "text_markdown": "Statki niewolnicze przepływające przez Atlantyk należały do najcenniejszych celów na oceanie.",
+      "tts": {
+        "text": "Statki niewolnicze przepływające przez Atlantyk należały do najcenniejszych celów na oceanie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przewoziły towary handlowe w drodze tam, a zniewolonych ludzi w drodze powrotnej.",
+      "text_markdown": "Przewoziły towary handlowe w drodze tam, a zniewolonych ludzi w drodze powrotnej.",
+      "tts": {
+        "text": "Przewoziły towary handlowe w drodze tam, a zniewolonych ludzi w drodze powrotnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Na każdym etapie podróży były narażone na atak.",
+      "text_markdown": "Na każdym etapie podróży były narażone na atak.",
+      "tts": {
+        "text": "Na każdym etapie podróży były narażone na atak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Piraci napadający na statki niewolnicze mogli przejąć zarówno cenny ładunek, jak i sam statek.",
+      "text_markdown": "Piraci napadający na statki niewolnicze mogli przejąć zarówno cenny ładunek, jak i sam statek.",
+      "tts": {
+        "text": "Piraci napadający na statki niewolnicze mogli przejąć zarówno cenny ładunek, jak i sam statek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karaiby były miejscem docelowym większości tych statków niewolniczych.",
+      "text_markdown": "Karaiby były miejscem docelowym większości tych statków niewolniczych.",
+      "tts": {
+        "text": "Karaiby były miejscem docelowym większości tych statków niewolniczych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wyspy takie jak Jamajka, Barbados i Hispaniola były rozległymi plantacjami cukru obsługiwanymi niewolniczą pracą.",
+      "text_markdown": "Wyspy takie jak Jamajka, Barbados i Hispaniola były rozległymi plantacjami cukru obsługiwanymi niewolniczą pracą.",
+      "tts": {
+        "text": "Wyspy takie jak Jamajka, Barbados i Hispaniola były rozległymi plantacjami cukru obsługiwanymi niewolniczą pracą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bogactwo generowane przez te plantacje było oszałamiające.",
+      "text_markdown": "Bogactwo generowane przez te plantacje było oszałamiające.",
+      "tts": {
+        "text": "Bogactwo generowane przez te plantacje było oszałamiające.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sama Jamajka produkowała więcej bogactwa dla Anglii niż wszystkie jej kolonie północnoamerykańskie razem wzięte.",
+      "text_markdown": "Sama Jamajka produkowała więcej bogactwa dla Anglii niż wszystkie jej kolonie północnoamerykańskie razem wzięte.",
+      "tts": {
+        "text": "Sama Jamajka produkowała więcej bogactwa dla Anglii niż wszystkie jej kolonie północnoamerykańskie razem wzięte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Złoty Wiek Piractwa zbliżał się do końca, gdy Bartholomew Roberts pojawił się na scenie.",
+      "text_markdown": "Złoty Wiek Piractwa zbliżał się do końca, gdy Bartholomew Roberts pojawił się na scenie.",
+      "tts": {
+        "text": "Złoty Wiek Piractwa zbliżał się do końca, gdy Bartholomew Roberts pojawił się na scenie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Czarnobrody został zabity w 1718 roku.",
+      "text_markdown": "Czarnobrody został zabity w 1718 roku.",
+      "tts": {
+        "text": "Czarnobrody został zabity w roku tysiąc siedemset osiemnastym.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Republika Piratów w Nassau została rozbita przez gubernatora Woodesa Rogersa.",
+      "text_markdown": "Republika Piratów w Nassau została rozbita przez gubernatora Woodesa Rogersa.",
+      "tts": {
+        "text": "Republika Piratów w Nassau została rozbita przez gubernatora Woodesa Rogersa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rządy kolonialne wreszcie inwestowały w antypirackie patrole morskie.",
+      "text_markdown": "Rządy kolonialne wreszcie inwestowały w antypirackie patrole morskie.",
+      "tts": {
+        "text": "Rządy kolonialne wreszcie inwestowały w antypirackie patrole morskie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lecz ocean był rozległy, a floty wojenne małe.",
+      "text_markdown": "Lecz ocean był rozległy, a floty wojenne małe.",
+      "tts": {
+        "text": "Lecz ocean był rozległy, a floty wojenne małe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Royal Navy nie mogła patrolować każdego szlaku morskiego jednocześnie.",
+      "text_markdown": "Royal Navy nie mogła patrolować każdego szlaku morskiego jednocześnie.",
+      "tts": {
+        "text": "Royal Navy nie mogła patrolować każdego szlaku morskiego jednocześnie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sprytni i agresywni piraci wciąż mogli bezkarnie operować na właściwych wodach.",
+      "text_markdown": "Sprytni i agresywni piraci wciąż mogli bezkarnie operować na właściwych wodach.",
+      "tts": {
+        "text": "Sprytni i agresywni piraci wciąż mogli bezkarnie operować na właściwych wodach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wybrzeże Afryki Zachodniej było jednym z takich miejsc, daleko od centrów potęgi morskiej.",
+      "text_markdown": "Wybrzeże Afryki Zachodniej było jednym z takich miejsc, daleko od centrów potęgi morskiej.",
+      "tts": {
+        "text": "Wybrzeże Afryki Zachodniej było jednym z takich miejsc, daleko od centrów potęgi morskiej.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Statki handlowe podróżujące do i z Afryki były często lekko uzbrojone.",
+      "text_markdown": "Statki handlowe podróżujące do i z Afryki były często lekko uzbrojone.",
+      "tts": {
+        "text": "Statki handlowe podróżujące do i z Afryki były często lekko uzbrojone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ich właściciele woleli wydawać pieniądze na przestrzeń ładunkową niż na armaty.",
+      "text_markdown": "Ich właściciele woleli wydawać pieniądze na przestrzeń ładunkową niż na armaty.",
+      "tts": {
+        "text": "Ich właściciele woleli wydawać pieniądze na przestrzeń ładunkową niż na armaty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Załogi były niewielkie, nisko opłacane i często maltretowane.",
+      "text_markdown": "Załogi były niewielkie, nisko opłacane i często maltretowane.",
+      "tts": {
+        "text": "Załogi były niewielkie, nisko opłacane i często maltretowane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Te statki były łatwymi celami dla każdego pirata dość odważnego, by je zaatakować.",
+      "text_markdown": "Te statki były łatwymi celami dla każdego pirata dość odważnego, by je zaatakować.",
+      "tts": {
+        "text": "Te statki były łatwymi celami dla każdego pirata dość odważnego, by je zaatakować.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Royal Navy utrzymywała niewielką eskadrę na wybrzeżu Afryki Zachodniej.",
+      "text_markdown": "Royal Navy utrzymywała niewielką eskadrę na wybrzeżu Afryki Zachodniej.",
+      "tts": {
+        "text": "Royal Navy utrzymywała niewielką eskadrę na wybrzeżu Afryki Zachodniej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jej główną misją była ochrona handlu niewolnikami, a nie zwalczanie piractwa.",
+      "text_markdown": "Jej główną misją była ochrona handlu niewolnikami, a nie zwalczanie piractwa.",
+      "tts": {
+        "text": "Jej główną misją była ochrona handlu niewolnikami, a nie zwalczanie piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Okręty wojenne były często niedostatecznie obsadzone załogą i w złym stanie.",
+      "text_markdown": "Okręty wojenne były często niedostatecznie obsadzone załogą i w złym stanie.",
+      "tts": {
+        "text": "Okręty wojenne były często niedostatecznie obsadzone załogą i w złym stanie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Choroby, zwłaszcza malaria i żółta febra, zabijały europejskich marynarzy w przerażających liczbach.",
+      "text_markdown": "Choroby, zwłaszcza malaria i żółta febra, zabijały europejskich marynarzy w przerażających liczbach.",
+      "tts": {
+        "text": "Choroby, zwłaszcza malaria i żółta febra, zabijały europejskich marynarzy w przerażających liczbach.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Warunki dla zwykłych marynarzy były straszne w całym handlu atlantyckim.",
+      "text_markdown": "Warunki dla zwykłych marynarzy były straszne w całym handlu atlantyckim.",
+      "tts": {
+        "text": "Warunki dla zwykłych marynarzy były straszne w całym handlu atlantyckim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dyscyplina była surowa, jedzenie kiepskie, a płaca niepewna.",
+      "text_markdown": "Dyscyplina była surowa, jedzenie kiepskie, a płaca niepewna.",
+      "tts": {
+        "text": "Dyscyplina była surowa, jedzenie kiepskie, a płaca niepewna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wielu marynarzy umierało na choroby, zanim ich podróże dobiegły końca.",
+      "text_markdown": "Wielu marynarzy umierało na choroby, zanim ich podróże dobiegły końca.",
+      "tts": {
+        "text": "Wielu marynarzy umierało na choroby, zanim ich podróże dobiegły końca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Te warunki pchnęły niektórych ludzi ku piractwu z czystej desperacji.",
+      "text_markdown": "Te warunki pchnęły niektórych ludzi ku piractwu z czystej desperacji.",
+      "tts": {
+        "text": "Te warunki pchnęły niektórych ludzi ku piractwu z czystej desperacji.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Atlantyk wczesnych lat dwudziestych osiemnastego wieku był zatem światem ogromnego bogactwa i straszliwego cierpienia.",
+      "text_markdown": "Atlantyk wczesnych lat dwudziestych osiemnastego wieku był zatem światem ogromnego bogactwa i straszliwego cierpienia.",
+      "tts": {
+        "text": "Atlantyk wczesnych lat dwudziestych osiemnastego wieku był zatem światem ogromnego bogactwa i straszliwego cierpienia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Handel niewolnikami czynił niektórych ludzi niezmiernie bogatymi, skazując miliony na niewolę.",
+      "text_markdown": "Handel niewolnikami czynił niektórych ludzi niezmiernie bogatymi, skazując miliony na niewolę.",
+      "tts": {
+        "text": "Handel niewolnikami czynił niektórych ludzi niezmiernie bogatymi, skazując miliony na niewolę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Piractwo kwitło w tym środowisku nierówności i okrucieństwa.",
+      "text_markdown": "Piractwo kwitło w tym środowisku nierówności i okrucieństwa.",
+      "tts": {
+        "text": "Piractwo kwitło w tym środowisku nierówności i okrucieństwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bartholomew Roberts miał w nim rozkwitnąć jak nikt przed nim.",
+      "text_markdown": "Bartholomew Roberts miał w nim rozkwitnąć jak nikt przed nim.",
+      "tts": {
+        "text": "Bartholomew Roberts miał w nim rozkwitnąć jak nikt przed nim.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walia, gdzie urodził się Roberts, była w tym okresie krajem skromnych środków.",
+      "text_markdown": "Walia, gdzie urodził się Roberts, była w tym okresie krajem skromnych środków.",
+      "tts": {
+        "text": "Walia, gdzie urodził się Roberts, była w tym okresie krajem skromnych środków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Większość Walijczyków pracowała jako rolnicy, górnicy lub rybacy.",
+      "text_markdown": "Większość Walijczyków pracowała jako rolnicy, górnicy lub rybacy.",
+      "tts": {
+        "text": "Większość Walijczyków pracowała jako rolnicy, górnicy lub rybacy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dla tych, którzy mieszkali blisko wybrzeża, morze oferowało ucieczkę od wiejskiej biedy.",
+      "text_markdown": "Dla tych, którzy mieszkali blisko wybrzeża, morze oferowało ucieczkę od wiejskiej biedy.",
+      "tts": {
+        "text": "Dla tych, którzy mieszkali blisko wybrzeża, morze oferowało ucieczkę od wiejskiej biedy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Niewolników",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wielu walijskich mężczyzn służyło w marynarce handlowej, Royal Navy lub w obu.",
+      "text_markdown": "Wielu walijskich mężczyzn służyło w marynarce handlowej, Royal Navy lub w obu.",
+      "tts": {
+        "text": "Wielu walijskich mężczyzn służyło w marynarce handlowej, Royal Navy lub w obu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Niechętny pirat",
+      "text_markdown": "Niechętny pirat"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bartholomew Roberts urodził się w 1682 roku we wsi Casnewydd Bach w Pembrokeshire w Walii.",
+      "text_markdown": "Bartholomew Roberts urodził się w 1682 roku we wsi Casnewydd Bach w Pembrokeshire w Walii.",
+      "tts": {
+        "text": "Bartholomew Roberts urodził się w roku tysiąc sześćset osiemdziesiątym drugim we wsi Casnewydd Bach w Pembrokeshire w Walii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pembrokeshire leży na najdalszym południowo-zachodnim krańcu Walii, zwrócone ku Morzu Irlandzkiemu.",
+      "text_markdown": "Pembrokeshire leży na najdalszym południowo-zachodnim krańcu Walii, zwrócone ku Morzu Irlandzkiemu.",
+      "tts": {
+        "text": "Pembrokeshire leży na najdalszym południowo-zachodnim krańcu Walii, zwrócone ku Morzu Irlandzkiemu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Była to społeczność morska, gdzie rybołówstwo i handel przybrzeżny stanowiły centrum codziennego życia.",
+      "text_markdown": "Była to społeczność morska, gdzie rybołówstwo i handel przybrzeżny stanowiły centrum codziennego życia.",
+      "tts": {
+        "text": "Była to społeczność morska, gdzie rybołówstwo i handel przybrzeżny stanowiły centrum codziennego życia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts dorastał na widok i słuch morza.",
+      "text_markdown": "Roberts dorastał na widok i słuch morza.",
+      "tts": {
+        "text": "Roberts dorastał na widok i słuch morza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O dzieciństwie i rodzinie Robertsa wiadomo bardzo niewiele.",
+      "text_markdown": "O dzieciństwie i rodzinie Robertsa wiadomo bardzo niewiele.",
+      "tts": {
+        "text": "O dzieciństwie i rodzinie Robertsa wiadomo bardzo niewiele.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wyruszył na morze w młodym wieku, co było typowe dla chłopców z nadmorskich wiosek.",
+      "text_markdown": "Wyruszył na morze w młodym wieku, co było typowe dla chłopców z nadmorskich wiosek.",
+      "tts": {
+        "text": "Wyruszył na morze w młodym wieku, co było typowe dla chłopców z nadmorskich wiosek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gdy miał około 35 lat, był doświadczonym i biegłym marynarzem.",
+      "text_markdown": "Gdy miał około 35 lat, był doświadczonym i biegłym marynarzem.",
+      "tts": {
+        "text": "Gdy miał około trzydziestu pięciu lat, był doświadczonym i biegłym marynarzem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Potrafił nawigować po gwiazdach, zarządzać załogą i prowadzić statek w każdych warunkach pogodowych.",
+      "text_markdown": "Potrafił nawigować po gwiazdach, zarządzać załogą i prowadzić statek w każdych warunkach pogodowych.",
+      "tts": {
+        "text": "Potrafił nawigować po gwiazdach, zarządzać załogą i prowadzić statek w każdych warunkach pogodowych.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na początku 1719 roku Roberts służył jako trzeci oficer na statku niewolniczym o nazwie Princess.",
+      "text_markdown": "Na początku 1719 roku Roberts służył jako trzeci oficer na statku niewolniczym o nazwie Princess.",
+      "tts": {
+        "text": "Na początku roku tysiąc siedemset dziewiętnastego Roberts służył jako trzeci oficer na statku niewolniczym o nazwie Princess.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Princess stał na kotwicy u wybrzeża dzisiejszej Ghany, handlując zniewolonymi ludźmi.",
+      "text_markdown": "Princess stał na kotwicy u wybrzeża dzisiejszej Ghany, handlując zniewolonymi ludźmi.",
+      "tts": {
+        "text": "Princess stał na kotwicy u wybrzeża dzisiejszej Ghany, handlując zniewolonymi ludźmi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roberts był szanowanym oficerem na pokładzie, kompetentnym i godnym zaufania.",
+      "text_markdown": "Roberts był szanowanym oficerem na pokładzie, kompetentnym i godnym zaufania.",
+      "tts": {
+        "text": "Roberts był szanowanym oficerem na pokładzie, kompetentnym i godnym zaufania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nic w jego dotychczasowej karierze nie wskazywało na to, że zostanie piratem.",
+      "text_markdown": "Nic w jego dotychczasowej karierze nie wskazywało na to, że zostanie piratem.",
+      "tts": {
+        "text": "Nic w jego dotychczasowej karierze nie wskazywało na to, że zostanie piratem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piracki kapitan Howell Davis napadał na Wybrzeże Afryki Zachodniej z wielkim powodzeniem.",
+      "text_markdown": "Piracki kapitan Howell Davis napadał na Wybrzeże Afryki Zachodniej z wielkim powodzeniem.",
+      "tts": {
+        "text": "Piracki kapitan Howell Davis napadał na Wybrzeże Afryki Zachodniej z wielkim powodzeniem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Davis również był Walijczykiem, a jego załoga składała się z ochotników i ludzi zmuszonych do piractwa.",
+      "text_markdown": "Davis również był Walijczykiem, a jego załoga składała się z ochotników i ludzi zmuszonych do piractwa.",
+      "tts": {
+        "text": "Davis również był Walijczykiem, a jego załoga składała się z ochotników i ludzi zmuszonych do piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gdy Davis zauważył Princess na kotwicy, zaatakował i schwytał go.",
+      "text_markdown": "Gdy Davis zauważył Princess na kotwicy, zaatakował i schwytał go.",
+      "tts": {
+        "text": "Gdy Davis zauważył Princess na kotwicy, zaatakował i schwytał go.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts i reszta załogi zostali wzięci do niewoli.",
+      "text_markdown": "Roberts i reszta załogi zostali wzięci do niewoli.",
+      "tts": {
+        "text": "Roberts i reszta załogi zostali wzięci do niewoli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Davis zmusił Robertsa do dołączenia do pirackiej załogi.",
+      "text_markdown": "Davis zmusił Robertsa do dołączenia do pirackiej załogi.",
+      "tts": {
+        "text": "Davis zmusił Robertsa do dołączenia do pirackiej załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Była to powszechna praktyka wśród piratów potrzebujących wykwalifikowanych marynarzy.",
+      "text_markdown": "Była to powszechna praktyka wśród piratów potrzebujących wykwalifikowanych marynarzy.",
+      "tts": {
+        "text": "Była to powszechna praktyka wśród piratów potrzebujących wykwalifikowanych marynarzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Według relacji Roberts żywił urazę za zmuszenie go do piractwa.",
+      "text_markdown": "Według relacji Roberts żywił urazę za zmuszenie go do piractwa.",
+      "tts": {
+        "text": "Według relacji Roberts żywił urazę za zmuszenie go do piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uznał jednak, że opór jest bezcelowy i potencjalnie śmiertelny.",
+      "text_markdown": "Uznał jednak, że opór jest bezcelowy i potencjalnie śmiertelny.",
+      "tts": {
+        "text": "Uznał jednak, że opór jest bezcelowy i potencjalnie śmiertelny.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimo niechęci Roberts szybko wyróżnił się w pirackiej załodze.",
+      "text_markdown": "Mimo niechęci Roberts szybko wyróżnił się w pirackiej załodze.",
+      "tts": {
+        "text": "Mimo niechęci Roberts szybko wyróżnił się w pirackiej załodze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był lepiej wykształcony niż większość współtowarzyszy.",
+      "text_markdown": "Był lepiej wykształcony niż większość współtowarzyszy.",
+      "tts": {
+        "text": "Był lepiej wykształcony niż większość współtowarzyszy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był doskonałym nawigatorem i rozumiał złożoność zarządzania statkiem.",
+      "text_markdown": "Był doskonałym nawigatorem i rozumiał złożoność zarządzania statkiem.",
+      "tts": {
+        "text": "Był doskonałym nawigatorem i rozumiał złożoność zarządzania statkiem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego piraccy towarzysze zauważyli jego zdolności i spokojny osąd pod presją.",
+      "text_markdown": "Jego piraccy towarzysze zauważyli jego zdolności i spokojny osąd pod presją.",
+      "tts": {
+        "text": "Jego piraccy towarzysze zauważyli jego zdolności i spokojny osąd pod presją.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zaledwie kilka tygodni po tym, jak Roberts dołączył do załogi, kapitan Howell Davis został zabity.",
+      "text_markdown": "Zaledwie kilka tygodni po tym, jak Roberts dołączył do załogi, kapitan Howell Davis został zabity.",
+      "tts": {
+        "text": "Zaledwie kilka tygodni po tym, jak Roberts dołączył do załogi, kapitan Howell Davis został zabity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Davis popłynął na wyspę Principe u wybrzeża Afryki Zachodniej.",
+      "text_markdown": "Davis popłynął na wyspę Principe u wybrzeża Afryki Zachodniej.",
+      "tts": {
+        "text": "Davis popłynął na wyspę Principe u wybrzeża Afryki Zachodniej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Próbował podstępu, by porwać gubernatora wyspy, lecz wpadł w zasadzkę.",
+      "text_markdown": "Próbował podstępu, by porwać gubernatora wyspy, lecz wpadł w zasadzkę.",
+      "tts": {
+        "text": "Próbował podstępu, by porwać gubernatora wyspy, lecz wpadł w zasadzkę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Portugalscy żołnierze zastrzelili Davisa podczas nieudanego planu.",
+      "text_markdown": "Portugalscy żołnierze zastrzelili Davisa podczas nieudanego planu.",
+      "tts": {
+        "text": "Portugalscy żołnierze zastrzelili Davisa podczas nieudanego planu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piracka załoga potrzebowała teraz nowego kapitana.",
+      "text_markdown": "Piracka załoga potrzebowała teraz nowego kapitana.",
+      "tts": {
+        "text": "Piracka załoga potrzebowała teraz nowego kapitana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zgodnie z piracką tradycją przeprowadzili wybory.",
+      "text_markdown": "Zgodnie z piracką tradycją przeprowadzili wybory.",
+      "tts": {
+        "text": "Zgodnie z piracką tradycją przeprowadzili wybory.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rozważano kilku kandydatów, lecz załoga wybrała Bartholomew Robertsa.",
+      "text_markdown": "Rozważano kilku kandydatów, lecz załoga wybrała Bartholomew Robertsa.",
+      "tts": {
+        "text": "Rozważano kilku kandydatów, lecz załoga wybrała Bartholomew Robertsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był piratem od zaledwie około sześciu tygodni.",
+      "text_markdown": "Był piratem od zaledwie około sześciu tygodni.",
+      "tts": {
+        "text": "Był piratem od zaledwie około sześciu tygodni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts przyjął stanowisko kapitana, choć podobno stwierdził, że skoro już zanurzył ręce w mętnej wodzie, równie dobrze może być kapitanem piratów.",
+      "text_markdown": "Roberts przyjął stanowisko kapitana, choć podobno stwierdził, że skoro już zanurzył ręce w mętnej wodzie, równie dobrze może być kapitanem piratów.",
+      "tts": {
+        "text": "Roberts przyjął stanowisko kapitana, choć podobno stwierdził, że skoro już zanurzył ręce w mętnej wodzie, równie dobrze może być kapitanem piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zauważył również, że wesołe i krótkie życie będzie jego dewizą.",
+      "text_markdown": "Zauważył również, że wesołe i krótkie życie będzie jego dewizą.",
+      "tts": {
+        "text": "Zauważył również, że wesołe i krótkie życie będzie jego dewizą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te słowa stały się jednym z najsłynniejszych cytatów w historii piractwa.",
+      "text_markdown": "Te słowa stały się jednym z najsłynniejszych cytatów w historii piractwa.",
+      "tts": {
+        "text": "Te słowa stały się jednym z najsłynniejszych cytatów w historii piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts przekształcił się z niechętnego więźnia w wybranego przywódcę w niecałe dwa miesiące.",
+      "text_markdown": "Roberts przekształcił się z niechętnego więźnia w wybranego przywódcę w niecałe dwa miesiące.",
+      "tts": {
+        "text": "Roberts przekształcił się z niechętnego więźnia w wybranego przywódcę w niecałe dwa miesiące.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego pierwszym aktem jako kapitana było pomszczenie śmierci Howella Davisa.",
+      "text_markdown": "Jego pierwszym aktem jako kapitana było pomszczenie śmierci Howella Davisa.",
+      "tts": {
+        "text": "Jego pierwszym aktem jako kapitana było pomszczenie śmierci Howella Davisa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts wrócił ze swoją załogą na wyspę Principe.",
+      "text_markdown": "Roberts wrócił ze swoją załogą na wyspę Principe.",
+      "tts": {
+        "text": "Roberts wrócił ze swoją załogą na wyspę Principe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zaatakowali portugalską osadę nocą, paląc budynki i zabijając żołnierzy.",
+      "text_markdown": "Zaatakowali portugalską osadę nocą, paląc budynki i zabijając żołnierzy.",
+      "tts": {
+        "text": "Zaatakowali portugalską osadę nocą, paląc budynki i zabijając żołnierzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Szybka i bezwzględna zemsta ugruntowała pozycję Robertsa jako kapitana, który dba o swoich.",
+      "text_markdown": "Szybka i bezwzględna zemsta ugruntowała pozycję Robertsa jako kapitana, który dba o swoich.",
+      "tts": {
+        "text": "Szybka i bezwzględna zemsta ugruntowała pozycję Robertsa jako kapitana, który dba o swoich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts zabrał się następnie za przekształcenie pirackiej załogi w profesjonalną siłę bojową.",
+      "text_markdown": "Roberts zabrał się następnie za przekształcenie pirackiej załogi w profesjonalną siłę bojową.",
+      "tts": {
+        "text": "Roberts zabrał się następnie za przekształcenie pirackiej załogi w profesjonalną siłę bojową.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sporządził szczegółowy zestaw artykułów umowy, które musiał podpisać każdy członek załogi.",
+      "text_markdown": "Sporządził szczegółowy zestaw artykułów umowy, które musiał podpisać każdy członek załogi.",
+      "tts": {
+        "text": "Sporządził szczegółowy zestaw artykułów umowy, które musiał podpisać każdy członek załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Artykuły te obejmowały wszystko, od podziału łupów po zasady zachowania na statku.",
+      "text_markdown": "Artykuły te obejmowały wszystko, od podziału łupów po zasady zachowania na statku.",
+      "tts": {
+        "text": "Artykuły te obejmowały wszystko, od podziału łupów po zasady zachowania na statku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Były to jedne z najbardziej kompleksowych kodeksów pirackich, jakie kiedykolwiek napisano.",
+      "text_markdown": "Były to jedne z najbardziej kompleksowych kodeksów pirackich, jakie kiedykolwiek napisano.",
+      "tts": {
+        "text": "Były to jedne z najbardziej kompleksowych kodeksów pirackich, jakie kiedykolwiek napisano.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Artykuły Robertsa dawały każdemu mężczyźnie prawo głosu we wszystkich ważnych decyzjach.",
+      "text_markdown": "Artykuły Robertsa dawały każdemu mężczyźnie prawo głosu we wszystkich ważnych decyzjach.",
+      "tts": {
+        "text": "Artykuły Robertsa dawały każdemu mężczyźnie prawo głosu we wszystkich ważnych decyzjach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitan i kwatermistrz otrzymywali większe udziały w łupach, ale różnice były skromne.",
+      "text_markdown": "Kapitan i kwatermistrz otrzymywali większe udziały w łupach, ale różnice były skromne.",
+      "tts": {
+        "text": "Kapitan i kwatermistrz otrzymywali większe udziały w łupach, ale różnice były skromne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muzycy mieli wolne niedziele — niezwykle cywilizowany przepis jak na tamte czasy.",
+      "text_markdown": "Muzycy mieli wolne niedziele — niezwykle cywilizowany przepis jak na tamte czasy.",
+      "tts": {
+        "text": "Muzycy mieli wolne niedziele — niezwykle cywilizowany przepis jak na tamte czasy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Niechętny pirat",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Każdy, kto zdezerterował podczas bitwy, miał być ukarany śmiercią lub porzuceniem na bezludnej wyspie.",
+      "text_markdown": "Każdy, kto zdezerterował podczas bitwy, miał być ukarany śmiercią lub porzuceniem na bezludnej wyspie.",
+      "tts": {
+        "text": "Każdy, kto zdezerterował podczas bitwy, miał być ukarany śmiercią lub porzuceniem na bezludnej wyspie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kampania Czarnego Pirata",
+      "text_markdown": "Kampania Czarnego Pirata"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pod dowództwem Robertsa piracka załoga rozpoczęła jedną z najbardziej niszczycielskich kampanii w historii morskiej.",
+      "text_markdown": "Pod dowództwem Robertsa piracka załoga rozpoczęła jedną z najbardziej niszczycielskich kampanii w historii morskiej.",
+      "tts": {
+        "text": "Pod dowództwem Robertsa piracka załoga rozpoczęła jedną z najbardziej niszczycielskich kampanii w historii morskiej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Popłynęli od wybrzeża Afryki do Brazylii, potem na północ przez Karaiby i z powrotem do Afryki.",
+      "text_markdown": "Popłynęli od wybrzeża Afryki do Brazylii, potem na północ przez Karaiby i z powrotem do Afryki.",
+      "tts": {
+        "text": "Popłynęli od wybrzeża Afryki do Brazylii, potem na północ przez Karaiby i z powrotem do Afryki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wszędzie, dokąd dotarli, przechwytywali statki z zadziwiającą szybkością i skutecznością.",
+      "text_markdown": "Wszędzie, dokąd dotarli, przechwytywali statki z zadziwiającą szybkością i skutecznością.",
+      "tts": {
+        "text": "Wszędzie, dokąd dotarli, przechwytywali statki z zadziwiającą szybkością i skutecznością.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts wydawał się mieć instynkt do znajdowania ofiar i unikania niebezpieczeństwa.",
+      "text_markdown": "Roberts wydawał się mieć instynkt do znajdowania ofiar i unikania niebezpieczeństwa.",
+      "tts": {
+        "text": "Roberts wydawał się mieć instynkt do znajdowania ofiar i unikania niebezpieczeństwa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts najpierw przepłynął Atlantyk ku wybrzeżu Brazylii.",
+      "text_markdown": "Roberts najpierw przepłynął Atlantyk ku wybrzeżu Brazylii.",
+      "tts": {
+        "text": "Roberts najpierw przepłynął Atlantyk ku wybrzeżu Brazylii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Odkrył tam portugalską flotę skarbów przygotowującą się do odpłynięcia do Lizbony.",
+      "text_markdown": "Odkrył tam portugalską flotę skarbów przygotowującą się do odpłynięcia do Lizbony.",
+      "tts": {
+        "text": "Odkrył tam portugalską flotę skarbów przygotowującą się do odpłynięcia do Lizbony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Flota składała się z 42 statków handlowych strzeżonych przez 2 okręty wojenne.",
+      "text_markdown": "Flota składała się z 42 statków handlowych strzeżonych przez 2 okręty wojenne.",
+      "tts": {
+        "text": "Flota składała się z czterdziestu dwóch statków handlowych strzeżonych przez dwa okręty wojenne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był to niesamowicie bogaty, lecz silnie broniony cel.",
+      "text_markdown": "Był to niesamowicie bogaty, lecz silnie broniony cel.",
+      "tts": {
+        "text": "Był to niesamowicie bogaty, lecz silnie broniony cel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts zuchwale wpłynął w flotę pod osłoną ciemności.",
+      "text_markdown": "Roberts zuchwale wpłynął w flotę pod osłoną ciemności.",
+      "tts": {
+        "text": "Roberts zuchwale wpłynął w flotę pod osłoną ciemności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zidentyfikował najbogatszy statek i schwytał go, zanim okręty eskorty zdążyły zareagować.",
+      "text_markdown": "Zidentyfikował najbogatszy statek i schwytał go, zanim okręty eskorty zdążyły zareagować.",
+      "tts": {
+        "text": "Zidentyfikował najbogatszy statek i schwytał go, zanim okręty eskorty zdążyły zareagować.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Schwytany statek przewoził złoto, cukier, tytoń i krzyż wysadzany diamentami przeznaczony dla króla Portugalii.",
+      "text_markdown": "Schwytany statek przewoził złoto, cukier, tytoń i krzyż wysadzany diamentami przeznaczony dla króla Portugalii.",
+      "tts": {
+        "text": "Schwytany statek przewoził złoto, cukier, tytoń i krzyż wysadzany diamentami przeznaczony dla króla Portugalii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był to spektakularny łup z zuchwałego rajdu.",
+      "text_markdown": "Był to spektakularny łup z zuchwałego rajdu.",
+      "tts": {
+        "text": "Był to spektakularny łup z zuchwałego rajdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Z Brazylii Roberts popłynął na północ ku Karaibom.",
+      "text_markdown": "Z Brazylii Roberts popłynął na północ ku Karaibom.",
+      "tts": {
+        "text": "Z Brazylii Roberts popłynął na północ ku Karaibom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Napadał na szlaki morskie na wszystkich wyspach, przechwytując statek za statkiem.",
+      "text_markdown": "Napadał na szlaki morskie na wszystkich wyspach, przechwytując statek za statkiem.",
+      "tts": {
+        "text": "Napadał na szlaki morskie na wszystkich wyspach, przechwytując statek za statkiem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego reputacja rosła z każdym schwytanym łupem.",
+      "text_markdown": "Jego reputacja rosła z każdym schwytanym łupem.",
+      "tts": {
+        "text": "Jego reputacja rosła z każdym schwytanym łupem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kapitanowie handlowi na trasach karaibskich zaczęli przerażać się na widok flagi Robertsa.",
+      "text_markdown": "Kapitanowie handlowi na trasach karaibskich zaczęli przerażać się na widok flagi Robertsa.",
+      "tts": {
+        "text": "Kapitanowie handlowi na trasach karaibskich zaczęli przerażać się na widok flagi Robertsa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts zaprojektował własne pirackie flagi i pływał pod kilkoma różnymi.",
+      "text_markdown": "Roberts zaprojektował własne pirackie flagi i pływał pod kilkoma różnymi.",
+      "tts": {
+        "text": "Roberts zaprojektował własne pirackie flagi i pływał pod kilkoma różnymi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jedna przedstawiała go stojącego na dwóch czaszkach, symbolizujących gubernatorów Barbadosu i Martyniki.",
+      "text_markdown": "Jedna przedstawiała go stojącego na dwóch czaszkach, symbolizujących gubernatorów Barbadosu i Martyniki.",
+      "tts": {
+        "text": "Jedna przedstawiała go stojącego na dwóch czaszkach, symbolizujących gubernatorów Barbadosu i Martyniki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Żywił osobistą urazę do tych dwóch kolonii za próby polowania na niego.",
+      "text_markdown": "Żywił osobistą urazę do tych dwóch kolonii za próby polowania na niego.",
+      "tts": {
+        "text": "Żywił osobistą urazę do tych dwóch kolonii za próby polowania na niego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego flagi były przesłaniami buntu, skierowanymi do konkretnych wrogów.",
+      "text_markdown": "Jego flagi były przesłaniami buntu, skierowanymi do konkretnych wrogów.",
+      "tts": {
+        "text": "Jego flagi były przesłaniami buntu, skierowanymi do konkretnych wrogów.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rajdy Robertsa na Karaibach były druzgocące dla handlu kolonialnego.",
+      "text_markdown": "Rajdy Robertsa na Karaibach były druzgocące dla handlu kolonialnego.",
+      "tts": {
+        "text": "Rajdy Robertsa na Karaibach były druzgocące dla handlu kolonialnego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W ciągu jednych trzech dni schwytał 15 statków w porcie Trepassey na Nowej Fundlandii.",
+      "text_markdown": "W ciągu jednych trzech dni schwytał 15 statków w porcie Trepassey na Nowej Fundlandii.",
+      "tts": {
+        "text": "W ciągu jednych trzech dni schwytał piętnaście statków w porcie Trepassey na Nowej Fundlandii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zniszczył również liczne kutry rybackie i obiekty portowe.",
+      "text_markdown": "Zniszczył również liczne kutry rybackie i obiekty portowe.",
+      "tts": {
+        "text": "Zniszczył również liczne kutry rybackie i obiekty portowe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Atak na Trepassey udowodnił, że żaden port na Atlantyku nie jest przed nim bezpieczny.",
+      "text_markdown": "Atak na Trepassey udowodnił, że żaden port na Atlantyku nie jest przed nim bezpieczny.",
+      "tts": {
+        "text": "Atak na Trepassey udowodnił, że żaden port na Atlantyku nie jest przed nim bezpieczny.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts różnił się od większości piratów w swoich osobistych nawykach.",
+      "text_markdown": "Roberts różnił się od większości piratów w swoich osobistych nawykach.",
+      "tts": {
+        "text": "Roberts różnił się od większości piratów w swoich osobistych nawykach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ubierał się elegancko, nosząc bogaty szkarłatny kaftan i bryczesy.",
+      "text_markdown": "Ubierał się elegancko, nosząc bogaty szkarłatny kaftan i bryczesy.",
+      "tts": {
+        "text": "Ubierał się elegancko, nosząc bogaty szkarłatny kaftan i bryczesy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nosił wielki kapelusz z czerwonym piórem i diamentowy krzyż na szyi.",
+      "text_markdown": "Nosił wielki kapelusz z czerwonym piórem i diamentowy krzyż na szyi.",
+      "tts": {
+        "text": "Nosił wielki kapelusz z czerwonym piórem i diamentowy krzyż na szyi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego wygląd był wyglądem dżentelmena, nie prostego wilka morskiego.",
+      "text_markdown": "Jego wygląd był wyglądem dżentelmena, nie prostego wilka morskiego.",
+      "tts": {
+        "text": "Jego wygląd był wyglądem dżentelmena, nie prostego wilka morskiego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Co niezwykłe, Roberts wolał herbatę od rumu.",
+      "text_markdown": "Co niezwykłe, Roberts wolał herbatę od rumu.",
+      "tts": {
+        "text": "Co niezwykłe, Roberts wolał herbatę od rumu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W czasach, gdy większość marynarzy piła nałogowo, Roberts pił umiarkowanie.",
+      "text_markdown": "W czasach, gdy większość marynarzy piła nałogowo, Roberts pił umiarkowanie.",
+      "tts": {
+        "text": "W czasach, gdy większość marynarzy piła nałogowo, Roberts pił umiarkowanie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wierzył, że pijaństwo upośledza osąd i zagraża statkowi.",
+      "text_markdown": "Wierzył, że pijaństwo upośledza osąd i zagraża statkowi.",
+      "tts": {
+        "text": "Wierzył, że pijaństwo upośledza osąd i zagraża statkowi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego pirackie artykuły zawierały surowe zasady dotyczące picia w godzinach służby.",
+      "text_markdown": "Jego pirackie artykuły zawierały surowe zasady dotyczące picia w godzinach służby.",
+      "tts": {
+        "text": "Jego pirackie artykuły zawierały surowe zasady dotyczące picia w godzinach służby.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts był też głęboko religijny na swój sposób.",
+      "text_markdown": "Roberts był też głęboko religijny na swój sposób.",
+      "tts": {
+        "text": "Roberts był też głęboko religijny na swój sposób.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Odprawiał regularne nabożeństwa na pokładzie i zatrudniał muzyka do grania hymnów.",
+      "text_markdown": "Odprawiał regularne nabożeństwa na pokładzie i zatrudniał muzyka do grania hymnów.",
+      "tts": {
+        "text": "Odprawiał regularne nabożeństwa na pokładzie i zatrudniał muzyka do grania hymnów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Przestrzegał szabatu i starał się utrzymać pozory porządku moralnego wśród załogi.",
+      "text_markdown": "Przestrzegał szabatu i starał się utrzymać pozory porządku moralnego wśród załogi.",
+      "tts": {
+        "text": "Przestrzegał szabatu i starał się utrzymać pozory porządku moralnego wśród załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ta kombinacja pobożności i piractwa wydawała się współczesnym głęboko paradoksalna.",
+      "text_markdown": "Ta kombinacja pobożności i piractwa wydawała się współczesnym głęboko paradoksalna.",
+      "tts": {
+        "text": "Ta kombinacja pobożności i piractwa wydawała się współczesnym głęboko paradoksalna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego umiejętności nawigacyjne były nadzwyczajne.",
+      "text_markdown": "Jego umiejętności nawigacyjne były nadzwyczajne.",
+      "tts": {
+        "text": "Jego umiejętności nawigacyjne były nadzwyczajne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wielokrotnie przepływał Atlantyk, zawsze docierając tam, dokąd zamierzał.",
+      "text_markdown": "Wielokrotnie przepływał Atlantyk, zawsze docierając tam, dokąd zamierzał.",
+      "tts": {
+        "text": "Wielokrotnie przepływał Atlantyk, zawsze docierając tam, dokąd zamierzał.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Potrafił obliczyć swoją pozycję z niezwykłą dokładnością, używając jedynie podstawowych instrumentów.",
+      "text_markdown": "Potrafił obliczyć swoją pozycję z niezwykłą dokładnością, używając jedynie podstawowych instrumentów.",
+      "tts": {
+        "text": "Potrafił obliczyć swoją pozycję z niezwykłą dokładnością, używając jedynie podstawowych instrumentów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "W czasach, gdy wielu kapitanów gubiło się na morzu, Roberts zawsze wiedział dokładnie, gdzie jest.",
+      "text_markdown": "W czasach, gdy wielu kapitanów gubiło się na morzu, Roberts zawsze wiedział dokładnie, gdzie jest.",
+      "tts": {
+        "text": "W czasach, gdy wielu kapitanów gubiło się na morzu, Roberts zawsze wiedział dokładnie, gdzie jest.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts utrzymywał surową dyscyplinę na swoich statkach.",
+      "text_markdown": "Roberts utrzymywał surową dyscyplinę na swoich statkach.",
+      "tts": {
+        "text": "Roberts utrzymywał surową dyscyplinę na swoich statkach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bójki między członkami załogi były zabronione poniżej pokładu.",
+      "text_markdown": "Bójki między członkami załogi były zabronione poniżej pokładu.",
+      "tts": {
+        "text": "Bójki między członkami załogi były zabronione poniżej pokładu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spory rozstrzygano na lądzie, w razie potrzeby w formalnym pojedynku.",
+      "text_markdown": "Spory rozstrzygano na lądzie, w razie potrzeby w formalnym pojedynku.",
+      "tts": {
+        "text": "Spory rozstrzygano na lądzie, w razie potrzeby w formalnym pojedynku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Każdy mężczyzna miał obowiązek utrzymywać broń czystą i gotową do użycia w każdej chwili.",
+      "text_markdown": "Każdy mężczyzna miał obowiązek utrzymywać broń czystą i gotową do użycia w każdej chwili.",
+      "tts": {
+        "text": "Każdy mężczyzna miał obowiązek utrzymywać broń czystą i gotową do użycia w każdej chwili.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego flota rosła w miarę przechwytywania kolejnych statków.",
+      "text_markdown": "Jego flota rosła w miarę przechwytywania kolejnych statków.",
+      "tts": {
+        "text": "Jego flota rosła w miarę przechwytywania kolejnych statków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W różnych okresach dowodził jednocześnie 3 lub 4 statkami.",
+      "text_markdown": "W różnych okresach dowodził jednocześnie 3 lub 4 statkami.",
+      "tts": {
+        "text": "W różnych okresach dowodził jednocześnie trzema lub czterema statkami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego okrętem flagowym był duży okręt wojenny, któremu nadał nazwę Royal Fortune.",
+      "text_markdown": "Jego okrętem flagowym był duży okręt wojenny, któremu nadał nazwę Royal Fortune.",
+      "tts": {
+        "text": "Jego okrętem flagowym był duży okręt wojenny, któremu nadał nazwę Royal Fortune.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tej nazwy używał dla wielu statków w ciągu kariery, zawsze przenosząc ją na najpotężniejszy posiadany statek.",
+      "text_markdown": "Tej nazwy używał dla wielu statków w ciągu kariery, zawsze przenosząc ją na najpotężniejszy posiadany statek.",
+      "tts": {
+        "text": "Tej nazwy używał dla wielu statków w ciągu kariery, zawsze przenosząc ją na najpotężniejszy posiadany statek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts był bezwzględny wobec tych, którzy mu się sprzeciwiali.",
+      "text_markdown": "Roberts był bezwzględny wobec tych, którzy mu się sprzeciwiali.",
+      "tts": {
+        "text": "Roberts był bezwzględny wobec tych, którzy mu się sprzeciwiali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Statki, które poddały się pokojowo, były zwykle traktowane w miarę przyzwoicie i zwalniane po rabunku.",
+      "text_markdown": "Statki, które poddały się pokojowo, były zwykle traktowane w miarę przyzwoicie i zwalniane po rabunku.",
+      "tts": {
+        "text": "Statki, które poddały się pokojowo, były zwykle traktowane w miarę przyzwoicie i zwalniane po rabunku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te, które walczyły, nie mogły liczyć na litość.",
+      "text_markdown": "Te, które walczyły, nie mogły liczyć na litość.",
+      "tts": {
+        "text": "Te, które walczyły, nie mogły liczyć na litość.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts palił statki i czasem karał załogi jednostek, które stawiały opór.",
+      "text_markdown": "Roberts palił statki i czasem karał załogi jednostek, które stawiały opór.",
+      "tts": {
+        "text": "Roberts palił statki i czasem karał załogi jednostek, które stawiały opór.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pod koniec 1720 roku Roberts schwytał znacznie ponad 200 statków.",
+      "text_markdown": "Pod koniec 1720 roku Roberts schwytał znacznie ponad 200 statków.",
+      "tts": {
+        "text": "Pod koniec roku tysiąc siedemset dwudziestego Roberts schwytał znacznie ponad dwieście statków.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego imię budziło strach od Nowej Fundlandii po Brazylię, od Afryki Zachodniej po Karaiby.",
+      "text_markdown": "Jego imię budziło strach od Nowej Fundlandii po Brazylię, od Afryki Zachodniej po Karaiby.",
+      "tts": {
+        "text": "Jego imię budziło strach od Nowej Fundlandii po Brazylię, od Afryki Zachodniej po Karaiby.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Żaden inny pirat Złotego Wieku nawet nie zbliżył się do jego rekordu.",
+      "text_markdown": "Żaden inny pirat Złotego Wieku nawet nie zbliżył się do jego rekordu.",
+      "tts": {
+        "text": "Żaden inny pirat Złotego Wieku nawet nie zbliżył się do jego rekordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kampania Czarnego Pirata",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był, pod każdym względem, najskuteczniejszym piratem, jaki kiedykolwiek żeglował.",
+      "text_markdown": "Był, pod każdym względem, najskuteczniejszym piratem, jaki kiedykolwiek żeglował.",
+      "tts": {
+        "text": "Był, pod każdym względem, najskuteczniejszym piratem, jaki kiedykolwiek żeglował.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kodeks piratów",
+      "text_markdown": "Kodeks piratów"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "U szczytu potęgi Bartholomew Roberts dowodził flotą ciężko uzbrojonych statków i setkami lojalnych piratów.",
+      "text_markdown": "U szczytu potęgi Bartholomew Roberts dowodził flotą ciężko uzbrojonych statków i setkami lojalnych piratów.",
+      "tts": {
+        "text": "U szczytu potęgi Bartholomew Roberts dowodził flotą ciężko uzbrojonych statków i setkami lojalnych piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego operacja była prowadzona z niezwykłym jak na tamte czasy stopniem organizacji, pirackim czy nie.",
+      "text_markdown": "Jego operacja była prowadzona z niezwykłym jak na tamte czasy stopniem organizacji, pirackim czy nie.",
+      "tts": {
+        "text": "Jego operacja była prowadzona z niezwykłym jak na tamte czasy stopniem organizacji, pirackim czy nie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kluczem do tej organizacji był jego słynny kodeks piracki — artykuły umowy.",
+      "text_markdown": "Kluczem do tej organizacji był jego słynny kodeks piracki — artykuły umowy.",
+      "tts": {
+        "text": "Kluczem do tej organizacji był jego słynny kodeks piracki — artykuły umowy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Artykuły te były prawdziwą umową społeczną, uzgodnioną przez każdego członka załogi.",
+      "text_markdown": "Artykuły te były prawdziwą umową społeczną, uzgodnioną przez każdego członka załogi.",
+      "tts": {
+        "text": "Artykuły te były prawdziwą umową społeczną, uzgodnioną przez każdego członka załogi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Artykuły stanowiły, że każdy mężczyzna miał prawo głosu w ważnych sprawach.",
+      "text_markdown": "Artykuły stanowiły, że każdy mężczyzna miał prawo głosu w ważnych sprawach.",
+      "tts": {
+        "text": "Artykuły stanowiły, że każdy mężczyzna miał prawo głosu w ważnych sprawach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitan był wybierany przez załogę i mógł być przez nią odwołany.",
+      "text_markdown": "Kapitan był wybierany przez załogę i mógł być przez nią odwołany.",
+      "tts": {
+        "text": "Kapitan był wybierany przez załogę i mógł być przez nią odwołany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ta demokratyczna zasada była centralna w kulturze pirackiej i ostro kontrastowała z tyrańską dyscypliną Royal Navy.",
+      "text_markdown": "Ta demokratyczna zasada była centralna w kulturze pirackiej i ostro kontrastowała z tyrańską dyscypliną Royal Navy.",
+      "tts": {
+        "text": "Ta demokratyczna zasada była centralna w kulturze pirackiej i ostro kontrastowała z tyrańską dyscypliną Royal Navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts rządził za zgodą, nie siłą.",
+      "text_markdown": "Roberts rządził za zgodą, nie siłą.",
+      "tts": {
+        "text": "Roberts rządził za zgodą, nie siłą.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Podział łupów był starannie uregulowany.",
+      "text_markdown": "Podział łupów był starannie uregulowany.",
+      "tts": {
+        "text": "Podział łupów był starannie uregulowany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitan otrzymywał 2 udziały z każdego łupu, a kwatermistrz 1 i pół.",
+      "text_markdown": "Kapitan otrzymywał 2 udziały z każdego łupu, a kwatermistrz 1 i pół.",
+      "tts": {
+        "text": "Kapitan otrzymywał dwa udziały z każdego łupu, a kwatermistrz jeden i pół.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zwykli członkowie załogi otrzymywali po jednym udziale.",
+      "text_markdown": "Zwykli członkowie załogi otrzymywali po jednym udziale.",
+      "tts": {
+        "text": "Zwykli członkowie załogi otrzymywali po jednym udziale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Było to znacznie bardziej sprawiedliwe niż podział na statkach handlowych czy wojennych, gdzie kapitanowie zabierali lwią część.",
+      "text_markdown": "Było to znacznie bardziej sprawiedliwe niż podział na statkach handlowych czy wojennych, gdzie kapitanowie zabierali lwią część.",
+      "tts": {
+        "text": "Było to znacznie bardziej sprawiedliwe niż podział na statkach handlowych czy wojennych, gdzie kapitanowie zabierali lwią część.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Artykuły zawierały przepisy dotyczące odszkodowań za kalectwo.",
+      "text_markdown": "Artykuły zawierały przepisy dotyczące odszkodowań za kalectwo.",
+      "tts": {
+        "text": "Artykuły zawierały przepisy dotyczące odszkodowań za kalectwo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pirat, który stracił prawą rękę w walce, miał prawo do 600 sztuk ósemek.",
+      "text_markdown": "Pirat, który stracił prawą rękę w walce, miał prawo do 600 sztuk ósemek.",
+      "tts": {
+        "text": "Pirat, który stracił prawą rękę w walce, miał prawo do sześciuset sztuk ósemek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mniejsze obrażenia otrzymywały proporcjonalnie mniejsze wypłaty.",
+      "text_markdown": "Mniejsze obrażenia otrzymywały proporcjonalnie mniejsze wypłaty.",
+      "tts": {
+        "text": "Mniejsze obrażenia otrzymywały proporcjonalnie mniejsze wypłaty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Była to wczesna forma odszkodowania pracowniczego, wieki przed tym, nim rządy przyjęły podobne zasady.",
+      "text_markdown": "Była to wczesna forma odszkodowania pracowniczego, wieki przed tym, nim rządy przyjęły podobne zasady.",
+      "tts": {
+        "text": "Była to wczesna forma odszkodowania pracowniczego, wieki przed tym, nim rządy przyjęły podobne zasady.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hazard karciarki i kościane o pieniądze był zabroniony na pokładzie.",
+      "text_markdown": "Hazard karciarki i kościane o pieniądze był zabroniony na pokładzie.",
+      "tts": {
+        "text": "Hazard karciarki i kościane o pieniądze był zabroniony na pokładzie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts wierzył, że hazard powoduje bójki i podważa jedność załogi.",
+      "text_markdown": "Roberts wierzył, że hazard powoduje bójki i podważa jedność załogi.",
+      "tts": {
+        "text": "Roberts wierzył, że hazard powoduje bójki i podważa jedność załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Światła i świece musiały być gaszone do ósmej wieczorem.",
+      "text_markdown": "Światła i świece musiały być gaszone do ósmej wieczorem.",
+      "tts": {
+        "text": "Światła i świece musiały być gaszone do ósmej wieczorem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jeśli ktoś chciał pić po tej godzinie, musiał to robić na otwartym pokładzie.",
+      "text_markdown": "Jeśli ktoś chciał pić po tej godzinie, musiał to robić na otwartym pokładzie.",
+      "tts": {
+        "text": "Jeśli ktoś chciał pić po tej godzinie, musiał to robić na otwartym pokładzie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kobiety nie były dopuszczane na pokład.",
+      "text_markdown": "Kobiety nie były dopuszczane na pokład.",
+      "tts": {
+        "text": "Kobiety nie były dopuszczane na pokład.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts obawiał się, że obecność kobiet wywoła zazdrość i bójki wśród załogi.",
+      "text_markdown": "Roberts obawiał się, że obecność kobiet wywoła zazdrość i bójki wśród załogi.",
+      "tts": {
+        "text": "Roberts obawiał się, że obecność kobiet wywoła zazdrość i bójki wśród załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Każdy mężczyzna przyłapany na przemyceniu kobiety na pokład w przebraniu miał być ukarany śmiercią.",
+      "text_markdown": "Każdy mężczyzna przyłapany na przemyceniu kobiety na pokład w przebraniu miał być ukarany śmiercią.",
+      "tts": {
+        "text": "Każdy mężczyzna przyłapany na przemyceniu kobiety na pokład w przebraniu miał być ukarany śmiercią.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ta reguła była surowo egzekwowana przez cały okres dowodzenia Robertsa.",
+      "text_markdown": "Ta reguła była surowo egzekwowana przez cały okres dowodzenia Robertsa.",
+      "tts": {
+        "text": "Ta reguła była surowo egzekwowana przez cały okres dowodzenia Robertsa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kodeks Robertsa obejmował również kwestie higieny i utrzymania statku.",
+      "text_markdown": "Kodeks Robertsa obejmował również kwestie higieny i utrzymania statku.",
+      "tts": {
+        "text": "Kodeks Robertsa obejmował również kwestie higieny i utrzymania statku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Każdy mężczyzna był odpowiedzialny za utrzymanie swojej broni w stanie używalności.",
+      "text_markdown": "Każdy mężczyzna był odpowiedzialny za utrzymanie swojej broni w stanie używalności.",
+      "tts": {
+        "text": "Każdy mężczyzna był odpowiedzialny za utrzymanie swojej broni w stanie używalności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zaniedbanie pistoletów i szpady było karalne.",
+      "text_markdown": "Zaniedbanie pistoletów i szpady było karalne.",
+      "tts": {
+        "text": "Zaniedbanie pistoletów i szpady było karalne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "W czasach, gdy brudna broń mogła oznaczać różnicę między życiem a śmiercią, była to praktyczna zasada.",
+      "text_markdown": "W czasach, gdy brudna broń mogła oznaczać różnicę między życiem a śmiercią, była to praktyczna zasada.",
+      "tts": {
+        "text": "W czasach, gdy brudna broń mogła oznaczać różnicę między życiem a śmiercią, była to praktyczna zasada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwatermistrz pełnił rolę przeciwwagi dla władzy kapitana.",
+      "text_markdown": "Kwatermistrz pełnił rolę przeciwwagi dla władzy kapitana.",
+      "tts": {
+        "text": "Kwatermistrz pełnił rolę przeciwwagi dla władzy kapitana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Reprezentował interesy zwykłych członków załogi.",
+      "text_markdown": "Reprezentował interesy zwykłych członków załogi.",
+      "tts": {
+        "text": "Reprezentował interesy zwykłych członków załogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spory między kapitanem a załogą były rozstrzygane przez kwatermistrza.",
+      "text_markdown": "Spory między kapitanem a załogą były rozstrzygane przez kwatermistrza.",
+      "tts": {
+        "text": "Spory między kapitanem a załogą były rozstrzygane przez kwatermistrza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ten system współdzielonej władzy zapobiegał tyranii, która nękała statki handlowe i wojenne.",
+      "text_markdown": "Ten system współdzielonej władzy zapobiegał tyranii, która nękała statki handlowe i wojenne.",
+      "tts": {
+        "text": "Ten system współdzielonej władzy zapobiegał tyranii, która nękała statki handlowe i wojenne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Okręt flagowy Robertsa, Royal Fortune, był jednym z najpotężniejszych pirackich statków na wodzie.",
+      "text_markdown": "Okręt flagowy Robertsa, Royal Fortune, był jednym z najpotężniejszych pirackich statków na wodzie.",
+      "tts": {
+        "text": "Okręt flagowy Robertsa, Royal Fortune, był jednym z najpotężniejszych pirackich statków na wodzie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nosił 40 armat i załogę liczącą około 150 ludzi.",
+      "text_markdown": "Nosił 40 armat i załogę liczącą około 150 ludzi.",
+      "tts": {
+        "text": "Nosił czterdzieści armat i załogę liczącą około stu pięćdziesięciu ludzi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Statek był szybki, dobrze utrzymany i ciężko uzbrojony.",
+      "text_markdown": "Statek był szybki, dobrze utrzymany i ciężko uzbrojony.",
+      "tts": {
+        "text": "Statek był szybki, dobrze utrzymany i ciężko uzbrojony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mógł przewyższyć siłą ognia większość statków handlowych i szybkością większość okrętów wojennych.",
+      "text_markdown": "Mógł przewyższyć siłą ognia większość statków handlowych i szybkością większość okrętów wojennych.",
+      "tts": {
+        "text": "Mógł przewyższyć siłą ognia większość statków handlowych i szybkością większość okrętów wojennych.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sam Roberts prezentował imponującą postać na pokładzie rufowym.",
+      "text_markdown": "Sam Roberts prezentował imponującą postać na pokładzie rufowym.",
+      "tts": {
+        "text": "Sam Roberts prezentował imponującą postać na pokładzie rufowym.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nosił szkarłatny kaftan, diamentowy krzyż i kapelusz z piórem zarówno w walce, jak i w porcie.",
+      "text_markdown": "Nosił szkarłatny kaftan, diamentowy krzyż i kapelusz z piórem zarówno w walce, jak i w porcie.",
+      "tts": {
+        "text": "Nosił szkarłatny kaftan, diamentowy krzyż i kapelusz z piórem zarówno w walce, jak i w porcie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nosił dwie pary pistoletów zawieszonych na jedwabnej bandolierze przez ramiona.",
+      "text_markdown": "Nosił dwie pary pistoletów zawieszonych na jedwabnej bandolierze przez ramiona.",
+      "tts": {
+        "text": "Nosił dwie pary pistoletów zawieszonych na jedwabnej bandolierze przez ramiona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego osobisty styl był częścią jego legendy i pomagał utrzymać władzę nad załogą.",
+      "text_markdown": "Jego osobisty styl był częścią jego legendy i pomagał utrzymać władzę nad załogą.",
+      "tts": {
+        "text": "Jego osobisty styl był częścią jego legendy i pomagał utrzymać władzę nad załogą.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimo sukcesu Roberts był świadom, że jego kariera nie może trwać wiecznie.",
+      "text_markdown": "Mimo sukcesu Roberts był świadom, że jego kariera nie może trwać wiecznie.",
+      "tts": {
+        "text": "Mimo sukcesu Roberts był świadom, że jego kariera nie może trwać wiecznie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wiedział, że Royal Navy wzmacnia patrole wzdłuż wybrzeża afrykańskiego.",
+      "text_markdown": "Wiedział, że Royal Navy wzmacnia patrole wzdłuż wybrzeża afrykańskiego.",
+      "tts": {
+        "text": "Wiedział, że Royal Navy wzmacnia patrole wzdłuż wybrzeża afrykańskiego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wiedział też, że każde schwytanie zwiększa presję na rządy, by go powstrzymać.",
+      "text_markdown": "Wiedział też, że każde schwytanie zwiększa presję na rządy, by go powstrzymać.",
+      "tts": {
+        "text": "Wiedział też, że każde schwytanie zwiększa presję na rządy, by go powstrzymać.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ale nie okazywał żadnych oznak chęci przejścia na emeryturę.",
+      "text_markdown": "Ale nie okazywał żadnych oznak chęci przejścia na emeryturę.",
+      "tts": {
+        "text": "Ale nie okazywał żadnych oznak chęci przejścia na emeryturę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts wrócił na Wybrzeże Afryki Zachodniej na początku lat dwudziestych osiemnastego wieku.",
+      "text_markdown": "Roberts wrócił na Wybrzeże Afryki Zachodniej na początku lat dwudziestych osiemnastego wieku.",
+      "tts": {
+        "text": "Roberts wrócił na Wybrzeże Afryki Zachodniej na początku lat dwudziestych osiemnastego wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To było jego najwydajniejsze łowisko, daleko od rosnącej obecności marynarki na Karaibach.",
+      "text_markdown": "To było jego najwydajniejsze łowisko, daleko od rosnącej obecności marynarki na Karaibach.",
+      "tts": {
+        "text": "To było jego najwydajniejsze łowisko, daleko od rosnącej obecności marynarki na Karaibach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Schwytał statek za statkiem wzdłuż wybrzeża, od Senegalu po Zatokę Gwinejską.",
+      "text_markdown": "Schwytał statek za statkiem wzdłuż wybrzeża, od Senegalu po Zatokę Gwinejską.",
+      "tts": {
+        "text": "Schwytał statek za statkiem wzdłuż wybrzeża, od Senegalu po Zatokę Gwinejską.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Handel niewolnikami i handel złotem czyniły te wody nieodparcie bogatymi.",
+      "text_markdown": "Handel niewolnikami i handel złotem czyniły te wody nieodparcie bogatymi.",
+      "tts": {
+        "text": "Handel niewolnikami i handel złotem czyniły te wody nieodparcie bogatymi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego obecność na afrykańskim wybrzeżu była katastrofalna dla europejskiego handlu.",
+      "text_markdown": "Jego obecność na afrykańskim wybrzeżu była katastrofalna dla europejskiego handlu.",
+      "tts": {
+        "text": "Jego obecność na afrykańskim wybrzeżu była katastrofalna dla europejskiego handlu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Stawki ubezpieczeniowe dla statków handlujących w Afryce Zachodniej dramatycznie wzrosły.",
+      "text_markdown": "Stawki ubezpieczeniowe dla statków handlujących w Afryce Zachodniej dramatycznie wzrosły.",
+      "tts": {
+        "text": "Stawki ubezpieczeniowe dla statków handlujących w Afryce Zachodniej dramatycznie wzrosły.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niektórzy kapitanowie handlowi odmawiali żeglugi bez eskorty morskiej.",
+      "text_markdown": "Niektórzy kapitanowie handlowi odmawiali żeglugi bez eskorty morskiej.",
+      "tts": {
+        "text": "Niektórzy kapitanowie handlowi odmawiali żeglugi bez eskorty morskiej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kodeks piratów",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts w pojedynkę zakłócił jedną z najbardziej dochodowych tras handlowych na świecie.",
+      "text_markdown": "Roberts w pojedynkę zakłócił jedną z najbardziej dochodowych tras handlowych na świecie.",
+      "tts": {
+        "text": "Roberts w pojedynkę zakłócił jedną z najbardziej dochodowych tras handlowych na świecie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Śmierć u przylądka Lopez",
+      "text_markdown": "Śmierć u przylądka Lopez"
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Royal Navy wysłała kapitana Chalonera Ogle'a na HMS Swallow, aby wytropił Bartholomew Robertsa.",
+      "text_markdown": "Royal Navy wysłała kapitana Chalonera Ogle'a na HMS Swallow, aby wytropił Bartholomew Robertsa.",
+      "tts": {
+        "text": "Royal Navy wysłała kapitana Chalonera Ogle'a na HMS Swallow, aby wytropił Bartholomew Robertsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogle był kompetentnym i zdeterminowanym oficerem.",
+      "text_markdown": "Ogle był kompetentnym i zdeterminowanym oficerem.",
+      "tts": {
+        "text": "Ogle był kompetentnym i zdeterminowanym oficerem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego statek był okrętem wojennym piątej klasy z profesjonalną załogą.",
+      "text_markdown": "Jego statek był okrętem wojennym piątej klasy z profesjonalną załogą.",
+      "tts": {
+        "text": "Jego statek był okrętem wojennym piątej klasy z profesjonalną załogą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Otrzymał konkretne rozkazy, by położyć kres terrorowi Robertsa.",
+      "text_markdown": "Otrzymał konkretne rozkazy, by położyć kres terrorowi Robertsa.",
+      "tts": {
+        "text": "Otrzymał konkretne rozkazy, by położyć kres terrorowi Robertsa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W styczniu 1722 roku Ogle otrzymał informację, że Roberts stoi na kotwicy u przylądka Lopez, w dzisiejszym Gabonie.",
+      "text_markdown": "W styczniu 1722 roku Ogle otrzymał informację, że Roberts stoi na kotwicy u przylądka Lopez, w dzisiejszym Gabonie.",
+      "tts": {
+        "text": "W styczniu roku tysiąc siedemset dwudziestego drugiego Ogle otrzymał informację, że Roberts stoi na kotwicy u przylądka Lopez, w dzisiejszym Gabonie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przylądek Lopez był niewielkim cyplem na wybrzeżu równikowej Afryki.",
+      "text_markdown": "Przylądek Lopez był niewielkim cyplem na wybrzeżu równikowej Afryki.",
+      "tts": {
+        "text": "Przylądek Lopez był niewielkim cyplem na wybrzeżu równikowej Afryki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roberts wybrał go jako tymczasową bazę, gdy czyścił i naprawiał swoje statki.",
+      "text_markdown": "Roberts wybrał go jako tymczasową bazę, gdy czyścił i naprawiał swoje statki.",
+      "tts": {
+        "text": "Roberts wybrał go jako tymczasową bazę, gdy czyścił i naprawiał swoje statki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nie miał pojęcia, że Swallow się zbliża.",
+      "text_markdown": "Nie miał pojęcia, że Swallow się zbliża.",
+      "tts": {
+        "text": "Nie miał pojęcia, że Swallow się zbliża.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogle podszedł do przylądka Lopez ostrożnie.",
+      "text_markdown": "Ogle podszedł do przylądka Lopez ostrożnie.",
+      "tts": {
+        "text": "Ogle podszedł do przylądka Lopez ostrożnie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wiedział, że Roberts ma wiele statków i dużą, dobrze uzbrojoną załogę.",
+      "text_markdown": "Wiedział, że Roberts ma wiele statków i dużą, dobrze uzbrojoną załogę.",
+      "tts": {
+        "text": "Wiedział, że Roberts ma wiele statków i dużą, dobrze uzbrojoną załogę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Frontalny szturm na całą flotę Robertsa byłby ryzykowny.",
+      "text_markdown": "Frontalny szturm na całą flotę Robertsa byłby ryzykowny.",
+      "tts": {
+        "text": "Frontalny szturm na całą flotę Robertsa byłby ryzykowny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ogle postanowił zamiast tego użyć podstępu.",
+      "text_markdown": "Ogle postanowił zamiast tego użyć podstępu.",
+      "tts": {
+        "text": "Ogle postanowił zamiast tego użyć podstępu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdy Swallow po raz pierwszy pojawił się w pobliżu przylądka Lopez, jeden ze statków eskortowych Robertsa wypłynął na zwiady.",
+      "text_markdown": "Gdy Swallow po raz pierwszy pojawił się w pobliżu przylądka Lopez, jeden ze statków eskortowych Robertsa wypłynął na zwiady.",
+      "tts": {
+        "text": "Gdy Swallow po raz pierwszy pojawił się w pobliżu przylądka Lopez, jeden ze statków eskortowych Robertsa wypłynął na zwiady.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogle udał ucieczkę, wywabiając piracki statek z dala od floty.",
+      "text_markdown": "Ogle udał ucieczkę, wywabiając piracki statek z dala od floty.",
+      "tts": {
+        "text": "Ogle udał ucieczkę, wywabiając piracki statek z dala od floty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gdy zniknął z pola widzenia pozostałych piratów, Swallow zawrócił i zaatakował.",
+      "text_markdown": "Gdy zniknął z pola widzenia pozostałych piratów, Swallow zawrócił i zaatakował.",
+      "tts": {
+        "text": "Gdy zniknął z pola widzenia pozostałych piratów, Swallow zawrócił i zaatakował.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Piracki statek został schwytany po krótkim, lecz gwałtownym starciu.",
+      "text_markdown": "Piracki statek został schwytany po krótkim, lecz gwałtownym starciu.",
+      "tts": {
+        "text": "Piracki statek został schwytany po krótkim, lecz gwałtownym starciu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rankiem 10 lutego 1722 roku Swallow wrócił pod przylądek Lopez, aby zmierzyć się z samym Robertsem.",
+      "text_markdown": "Rankiem 10 lutego 1722 roku Swallow wrócił pod przylądek Lopez, aby zmierzyć się z samym Robertsem.",
+      "tts": {
+        "text": "Rankiem dziesiątego lutego roku tysiąc siedemset dwudziestego drugiego Swallow wrócił pod przylądek Lopez, aby zmierzyć się z samym Robertsem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts był na pokładzie swojego okrętu flagowego, Royal Fortune.",
+      "text_markdown": "Roberts był na pokładzie swojego okrętu flagowego, Royal Fortune.",
+      "tts": {
+        "text": "Roberts był na pokładzie swojego okrętu flagowego, Royal Fortune.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jadł śniadanie, gdy obserwatorzy dostrzegli zbliżający się okręt wojenny.",
+      "text_markdown": "Jadł śniadanie, gdy obserwatorzy dostrzegli zbliżający się okręt wojenny.",
+      "tts": {
+        "text": "Jadł śniadanie, gdy obserwatorzy dostrzegli zbliżający się okręt wojenny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts spokojnie ubrał się do bitwy w najlepsze szaty.",
+      "text_markdown": "Roberts spokojnie ubrał się do bitwy w najlepsze szaty.",
+      "tts": {
+        "text": "Roberts spokojnie ubrał się do bitwy w najlepsze szaty.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Założył szkarłatny kaftan, diamentowy krzyż i kapelusz z piórem.",
+      "text_markdown": "Założył szkarłatny kaftan, diamentowy krzyż i kapelusz z piórem.",
+      "tts": {
+        "text": "Założył szkarłatny kaftan, diamentowy krzyż i kapelusz z piórem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zawiesił dwie pary pistoletów na jedwabnym rzemyku przez ramiona.",
+      "text_markdown": "Zawiesił dwie pary pistoletów na jedwabnym rzemyku przez ramiona.",
+      "tts": {
+        "text": "Zawiesił dwie pary pistoletów na jedwabnym rzemyku przez ramiona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zamierzał walczyć, jak zawsze, ze stylem i zuchwalstwem.",
+      "text_markdown": "Zamierzał walczyć, jak zawsze, ze stylem i zuchwalstwem.",
+      "tts": {
+        "text": "Zamierzał walczyć, jak zawsze, ze stylem i zuchwalstwem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "To miał być ostatni raz, gdy ubierał się do bitwy.",
+      "text_markdown": "To miał być ostatni raz, gdy ubierał się do bitwy.",
+      "tts": {
+        "text": "To miał być ostatni raz, gdy ubierał się do bitwy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts wybrał walkę zamiast ucieczki.",
+      "text_markdown": "Roberts wybrał walkę zamiast ucieczki.",
+      "tts": {
+        "text": "Roberts wybrał walkę zamiast ucieczki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rozkazał Royal Fortune płynąć prosto na Swallow.",
+      "text_markdown": "Rozkazał Royal Fortune płynąć prosto na Swallow.",
+      "tts": {
+        "text": "Rozkazał Royal Fortune płynąć prosto na Swallow.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego plan polegał na przepłynięciu blisko okrętu wojennego, a potem ucieczce na otwarte morze.",
+      "text_markdown": "Jego plan polegał na przepłynięciu blisko okrętu wojennego, a potem ucieczce na otwarte morze.",
+      "tts": {
+        "text": "Jego plan polegał na przepłynięciu blisko okrętu wojennego, a potem ucieczce na otwarte morze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "To był zuchwały hazard, ale Roberts zawsze cenił śmiałość.",
+      "text_markdown": "To był zuchwały hazard, ale Roberts zawsze cenił śmiałość.",
+      "tts": {
+        "text": "To był zuchwały hazard, ale Roberts zawsze cenił śmiałość.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdy oba statki się zbliżyły, Swallow oddał salwę burtową.",
+      "text_markdown": "Gdy oba statki się zbliżyły, Swallow oddał salwę burtową.",
+      "tts": {
+        "text": "Gdy oba statki się zbliżyły, Swallow oddał salwę burtową.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Grad kartaczy zmiotł pokład Royal Fortune.",
+      "text_markdown": "Grad kartaczy zmiotł pokład Royal Fortune.",
+      "tts": {
+        "text": "Grad kartaczy zmiotł pokład Royal Fortune.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bartholomew Roberts został trafiony w gardło kartaczem.",
+      "text_markdown": "Bartholomew Roberts został trafiony w gardło kartaczem.",
+      "tts": {
+        "text": "Bartholomew Roberts został trafiony w gardło kartaczem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zginął niemal natychmiast, osuwając się na armatę.",
+      "text_markdown": "Zginął niemal natychmiast, osuwając się na armatę.",
+      "tts": {
+        "text": "Zginął niemal natychmiast, osuwając się na armatę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Załoga była zdruzgotana stratą kapitana.",
+      "text_markdown": "Załoga była zdruzgotana stratą kapitana.",
+      "tts": {
+        "text": "Załoga była zdruzgotana stratą kapitana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts był sercem i duszą ich operacji.",
+      "text_markdown": "Roberts był sercem i duszą ich operacji.",
+      "tts": {
+        "text": "Roberts był sercem i duszą ich operacji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bez niego ich wola walki wyparowała niemal natychmiast.",
+      "text_markdown": "Bez niego ich wola walki wyparowała niemal natychmiast.",
+      "tts": {
+        "text": "Bez niego ich wola walki wyparowała niemal natychmiast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kilku piratów wyrzuciło ciało Robertsa za burtę, zgodnie z jego życzeniem, aby nie zostało schwytane przez wroga.",
+      "text_markdown": "Kilku piratów wyrzuciło ciało Robertsa za burtę, zgodnie z jego życzeniem, aby nie zostało schwytane przez wroga.",
+      "tts": {
+        "text": "Kilku piratów wyrzuciło ciało Robertsa za burtę, zgodnie z jego życzeniem, aby nie zostało schwytane przez wroga.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pozostali piraci próbowali walczyć dalej, ale ich opór był zdezorganizowany.",
+      "text_markdown": "Pozostali piraci próbowali walczyć dalej, ale ich opór był zdezorganizowany.",
+      "tts": {
+        "text": "Pozostali piraci próbowali walczyć dalej, ale ich opór był zdezorganizowany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W ciągu kilku godzin Swallow schwytał Royal Fortune i około 152 piratów.",
+      "text_markdown": "W ciągu kilku godzin Swallow schwytał Royal Fortune i około 152 piratów.",
+      "tts": {
+        "text": "W ciągu kilku godzin Swallow schwytał Royal Fortune i około stu pięćdziesięciu dwóch piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Największa piracka kariera Złotego Wieku dobiegła końca.",
+      "text_markdown": "Największa piracka kariera Złotego Wieku dobiegła końca.",
+      "tts": {
+        "text": "Największa piracka kariera Złotego Wieku dobiegła końca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Trwała zaledwie trzy lata.",
+      "text_markdown": "Trwała zaledwie trzy lata.",
+      "tts": {
+        "text": "Trwała zaledwie trzy lata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kapitan Ogle zawiózł więźniów do angielskiego fortu w Cape Coast Castle, w dzisiejszej Ghanie.",
+      "text_markdown": "Kapitan Ogle zawiózł więźniów do angielskiego fortu w Cape Coast Castle, w dzisiejszej Ghanie.",
+      "tts": {
+        "text": "Kapitan Ogle zawiózł więźniów do angielskiego fortu w Cape Coast Castle, w dzisiejszej Ghanie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tam odbył się największy w historii proces piratów.",
+      "text_markdown": "Tam odbył się największy w historii proces piratów.",
+      "tts": {
+        "text": "Tam odbył się największy w historii proces piratów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Łącznie 272 piratów stanęło przed sądem.",
+      "text_markdown": "Łącznie 272 piratów stanęło przed sądem.",
+      "tts": {
+        "text": "Łącznie dwustu siedemdziesięciu dwóch piratów stanęło przed sądem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Postępowanie trwało tygodniami.",
+      "text_markdown": "Postępowanie trwało tygodniami.",
+      "tts": {
+        "text": "Postępowanie trwało tygodniami.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spośród osądzonych 52 skazano na śmierć przez powieszenie.",
+      "text_markdown": "Spośród osądzonych 52 skazano na śmierć przez powieszenie.",
+      "tts": {
+        "text": "Spośród osądzonych pięćdziesięciu dwóch skazano na śmierć przez powieszenie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wielu innych skazano na ciężkie roboty w kopalniach Cape Coast.",
+      "text_markdown": "Wielu innych skazano na ciężkie roboty w kopalniach Cape Coast.",
+      "tts": {
+        "text": "Wielu innych skazano na ciężkie roboty w kopalniach Cape Coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niektórych uniewinniono, zwłaszcza tych, którzy mogli udowodnić, że zostali zmuszeni do piractwa.",
+      "text_markdown": "Niektórych uniewinniono, zwłaszcza tych, którzy mogli udowodnić, że zostali zmuszeni do piractwa.",
+      "tts": {
+        "text": "Niektórych uniewinniono, zwłaszcza tych, którzy mogli udowodnić, że zostali zmuszeni do piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Śmierć u przylądka Lopez",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Egzekucje przeprowadzono na plaży, w zasięgu wzroku fortów niewolniczych.",
+      "text_markdown": "Egzekucje przeprowadzono na plaży, w zasięgu wzroku fortów niewolniczych.",
+      "tts": {
+        "text": "Egzekucje przeprowadzono na plaży, w zasięgu wzroku fortów niewolniczych.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Koniec pewnej epoki",
+      "text_markdown": "Koniec pewnej epoki"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Śmierć Bartholomew Robertsa jest powszechnie uważana za wydarzenie, które zakończyło Złoty Wiek Piractwa.",
+      "text_markdown": "Śmierć Bartholomew Robertsa jest powszechnie uważana za wydarzenie, które zakończyło Złoty Wiek Piractwa.",
+      "tts": {
+        "text": "Śmierć Bartholomew Robertsa jest powszechnie uważana za wydarzenie, które zakończyło Złoty Wiek Piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był ostatnim z wielkich pirackich kapitanów, a jego śmierć usunęła najpotężniejszą piracką flotę z oceanu.",
+      "text_markdown": "Był ostatnim z wielkich pirackich kapitanów, a jego śmierć usunęła najpotężniejszą piracką flotę z oceanu.",
+      "tts": {
+        "text": "Był ostatnim z wielkich pirackich kapitanów, a jego śmierć usunęła najpotężniejszą piracką flotę z oceanu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Po Robertsie żaden pirat nie zagroził już handlowi atlantyckiemu na taką skalę.",
+      "text_markdown": "Po Robertsie żaden pirat nie zagroził już handlowi atlantyckiemu na taką skalę.",
+      "tts": {
+        "text": "Po Robertsie żaden pirat nie zagroził już handlowi atlantyckiemu na taką skalę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Epoka piratów dobiegła końca.",
+      "text_markdown": "Epoka piratów dobiegła końca.",
+      "tts": {
+        "text": "Epoka piratów dobiegła końca.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kariera Robertsa pokazała zarówno potencjał, jak i granice piractwa.",
+      "text_markdown": "Kariera Robertsa pokazała zarówno potencjał, jak i granice piractwa.",
+      "tts": {
+        "text": "Kariera Robertsa pokazała zarówno potencjał, jak i granice piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Schwytał ponad 400 statków w 3 lata — niezrównany rekord.",
+      "text_markdown": "Schwytał ponad 400 statków w 3 lata — niezrównany rekord.",
+      "tts": {
+        "text": "Schwytał ponad czterysta statków w trzy lata — niezrównany rekord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zakłócił szlaki handlowe, przeraził rządy kolonialne i rzucił wyzwanie Royal Navy.",
+      "text_markdown": "Zakłócił szlaki handlowe, przeraził rządy kolonialne i rzucił wyzwanie Royal Navy.",
+      "tts": {
+        "text": "Zakłócił szlaki handlowe, przeraził rządy kolonialne i rzucił wyzwanie Royal Navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lecz ostatecznie nawet największy pirat mógł zostać powalony jednym szczęśliwym strzałem.",
+      "text_markdown": "Lecz ostatecznie nawet największy pirat mógł zostać powalony jednym szczęśliwym strzałem.",
+      "tts": {
+        "text": "Lecz ostatecznie nawet największy pirat mógł zostać powalony jednym szczęśliwym strzałem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kapitan Ogle został pasowany na rycerza za zwycięstwo nad Robertsem.",
+      "text_markdown": "Kapitan Ogle został pasowany na rycerza za zwycięstwo nad Robertsem.",
+      "tts": {
+        "text": "Kapitan Ogle został pasowany na rycerza za zwycięstwo nad Robertsem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był jedynym oficerem Royal Navy, którego kiedykolwiek pasowano na rycerza konkretnie za pokonanie pirata.",
+      "text_markdown": "Był jedynym oficerem Royal Navy, którego kiedykolwiek pasowano na rycerza konkretnie za pokonanie pirata.",
+      "tts": {
+        "text": "Był jedynym oficerem Royal Navy, którego kiedykolwiek pasowano na rycerza konkretnie za pokonanie pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ten zaszczyt odzwierciedlał ogromne znaczenie, jakie rząd przywiązywał do zakończenia kampanii Robertsa.",
+      "text_markdown": "Ten zaszczyt odzwierciedlał ogromne znaczenie, jakie rząd przywiązywał do zakończenia kampanii Robertsa.",
+      "tts": {
+        "text": "Ten zaszczyt odzwierciedlał ogromne znaczenie, jakie rząd przywiązywał do zakończenia kampanii Robertsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ogle kontynuował wybitną karierę morską.",
+      "text_markdown": "Ogle kontynuował wybitną karierę morską.",
+      "tts": {
+        "text": "Ogle kontynuował wybitną karierę morską.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piracki kodeks Robertsa wpłynął na to, jak późniejsze pokolenia myślały o piractwie.",
+      "text_markdown": "Piracki kodeks Robertsa wpłynął na to, jak późniejsze pokolenia myślały o piractwie.",
+      "tts": {
+        "text": "Piracki kodeks Robertsa wpłynął na to, jak późniejsze pokolenia myślały o piractwie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Idea demokratycznych pirackich załóg z pisanymi konstytucjami pobudziła wyobraźnię ludową.",
+      "text_markdown": "Idea demokratycznych pirackich załóg z pisanymi konstytucjami pobudziła wyobraźnię ludową.",
+      "tts": {
+        "text": "Idea demokratycznych pirackich załóg z pisanymi konstytucjami pobudziła wyobraźnię ludową.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historycy wykorzystali artykuły Robertsa, by dowodzić, że statki pirackie należały do najbardziej demokratycznych instytucji wczesnego osiemnastego wieku.",
+      "text_markdown": "Historycy wykorzystali artykuły Robertsa, by dowodzić, że statki pirackie należały do najbardziej demokratycznych instytucji wczesnego osiemnastego wieku.",
+      "tts": {
+        "text": "Historycy wykorzystali artykuły Robertsa, by dowodzić, że statki pirackie należały do najbardziej demokratycznych instytucji wczesnego osiemnastego wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ta interpretacja pozostaje dyskusyjna, ale okazała się wpływowa.",
+      "text_markdown": "Ta interpretacja pozostaje dyskusyjna, ale okazała się wpływowa.",
+      "tts": {
+        "text": "Ta interpretacja pozostaje dyskusyjna, ale okazała się wpływowa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Książka Ogólna historia piratów, wydana w 1724 roku, poświęciła Robertsowi obszerny rozdział.",
+      "text_markdown": "Książka Ogólna historia piratów, wydana w 1724 roku, poświęciła Robertsowi obszerny rozdział.",
+      "tts": {
+        "text": "Książka Ogólna historia piratów, wydana w roku tysiąc siedemset dwudziestym czwartym, poświęciła Robertsowi obszerny rozdział.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Autor przedstawił Robertsa jako największego pirata swojej epoki.",
+      "text_markdown": "Autor przedstawił Robertsa jako największego pirata swojej epoki.",
+      "tts": {
+        "text": "Autor przedstawił Robertsa jako największego pirata swojej epoki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Szczegółowy opis jego podróży, kodeksu i śmierci stał się definitywnym źródłem informacji o jego karierze.",
+      "text_markdown": "Szczegółowy opis jego podróży, kodeksu i śmierci stał się definitywnym źródłem informacji o jego karierze.",
+      "tts": {
+        "text": "Szczegółowy opis jego podróży, kodeksu i śmierci stał się definitywnym źródłem informacji o jego karierze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Większość tego, co wiemy o Robertsie, pochodzi z tej jednej książki.",
+      "text_markdown": "Większość tego, co wiemy o Robertsie, pochodzi z tej jednej książki.",
+      "tts": {
+        "text": "Większość tego, co wiemy o Robertsie, pochodzi z tej jednej książki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dziedzictwo Robertsa wykracza poza historię piractwa.",
+      "text_markdown": "Dziedzictwo Robertsa wykracza poza historię piractwa.",
+      "tts": {
+        "text": "Dziedzictwo Robertsa wykracza poza historię piractwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego artykuły umowy są badane przez historyków zainteresowanych korzeniami demokratycznego rządzenia.",
+      "text_markdown": "Jego artykuły umowy są badane przez historyków zainteresowanych korzeniami demokratycznego rządzenia.",
+      "tts": {
+        "text": "Jego artykuły umowy są badane przez historyków zainteresowanych korzeniami demokratycznego rządzenia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego system odszkodowań za kalectwo wyprzedził nowoczesne ubezpieczenia społeczne o wieki.",
+      "text_markdown": "Jego system odszkodowań za kalectwo wyprzedził nowoczesne ubezpieczenia społeczne o wieki.",
+      "tts": {
+        "text": "Jego system odszkodowań za kalectwo wyprzedził nowoczesne ubezpieczenia społeczne o wieki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego upór w stosowaniu pisanych reguł i dzieleniu władzy był niezwykły jak na jakąkolwiek organizację jego epoki.",
+      "text_markdown": "Jego upór w stosowaniu pisanych reguł i dzieleniu władzy był niezwykły jak na jakąkolwiek organizację jego epoki.",
+      "tts": {
+        "text": "Jego upór w stosowaniu pisanych reguł i dzieleniu władzy był niezwykły jak na jakąkolwiek organizację jego epoki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Walii Roberts jest wspominany jako jedna z najsłynniejszych postaci historycznych kraju.",
+      "text_markdown": "W Walii Roberts jest wspominany jako jedna z najsłynniejszych postaci historycznych kraju.",
+      "tts": {
+        "text": "W Walii Roberts jest wspominany jako jedna z najsłynniejszych postaci historycznych kraju.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W wiosce, w której się urodził, znajduje się tablica upamiętniająca jej osławionego syna.",
+      "text_markdown": "W wiosce, w której się urodził, znajduje się tablica upamiętniająca jej osławionego syna.",
+      "tts": {
+        "text": "W wiosce, w której się urodził, znajduje się tablica upamiętniająca jej osławionego syna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Walijskie muzea morskie prezentują wystawy poświęcone jego życiu i karierze.",
+      "text_markdown": "Walijskie muzea morskie prezentują wystawy poświęcone jego życiu i karierze.",
+      "tts": {
+        "text": "Walijskie muzea morskie prezentują wystawy poświęcone jego życiu i karierze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jest źródłem lokalnej dumy, mimo brutalnej natury jego profesji.",
+      "text_markdown": "Jest źródłem lokalnej dumy, mimo brutalnej natury jego profesji.",
+      "tts": {
+        "text": "Jest źródłem lokalnej dumy, mimo brutalnej natury jego profesji.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Złoty Wiek Piractwa, który Roberts doprowadził do końca, trwał w przybliżeniu od lat dziewięćdziesiątych siedemnastego do lat dwudziestych osiemnastego wieku.",
+      "text_markdown": "Złoty Wiek Piractwa, który Roberts doprowadził do końca, trwał w przybliżeniu od lat dziewięćdziesiątych siedemnastego do lat dwudziestych osiemnastego wieku.",
+      "tts": {
+        "text": "Złoty Wiek Piractwa, który Roberts doprowadził do końca, trwał w przybliżeniu od lat dziewięćdziesiątych siedemnastego do lat dwudziestych osiemnastego wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W tym krótkim okresie piraci ukształtowali historię świata atlantyckiego w sposób odczuwalny do dziś.",
+      "text_markdown": "W tym krótkim okresie piraci ukształtowali historię świata atlantyckiego w sposób odczuwalny do dziś.",
+      "tts": {
+        "text": "W tym krótkim okresie piraci ukształtowali historię świata atlantyckiego w sposób odczuwalny do dziś.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wpłynęli na prawo międzynarodowe, strategię morską i kulturę popularną.",
+      "text_markdown": "Wpłynęli na prawo międzynarodowe, strategię morską i kulturę popularną.",
+      "tts": {
+        "text": "Wpłynęli na prawo międzynarodowe, strategię morską i kulturę popularną.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Koniec pewnej epoki",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bartholomew Roberts, niechętny pirat, który stał się największym z nich wszystkich, stoi u szczytu tej niezwykłej epoki.",
+      "text_markdown": "Bartholomew Roberts, niechętny pirat, który stał się największym z nich wszystkich, stoi u szczytu tej niezwykłej epoki.",
+      "tts": {
+        "text": "Bartholomew Roberts, niechętny pirat, który stał się największym z nich wszystkich, stoi u szczytu tej niezwykłej epoki.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

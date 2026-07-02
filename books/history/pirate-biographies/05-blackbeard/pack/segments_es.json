@@ -1,0 +1,4472 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "language": "es",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Una nota al lector",
+      "text_markdown": "Una nota al lector"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta es la historia real del pirata más terrorífico que jamás existió.",
+      "text_markdown": "Esta es la historia real del pirata más terrorífico que jamás existió.",
+      "tts": {
+        "text": "Esta es la historia real del pirata más terrorífico que jamás existió.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su nombre era Edward Teach, pero el mundo lo recuerda como Barbanegra.",
+      "text_markdown": "Su nombre era Edward Teach, pero el mundo lo recuerda como Barbanegra.",
+      "tts": {
+        "text": "Su nombre era Edward Teach, pero el mundo lo recuerda como Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aterrorizó los mares durante solo unos 2 años, pero su leyenda ha perdurado más de 300.",
+      "text_markdown": "Aterrorizó los mares durante solo unos 2 años, pero su leyenda ha perdurado más de 300.",
+      "tts": {
+        "text": "Aterrorizó los mares durante solo unos dos años, pero su leyenda ha perdurado más de trescientos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbanegra no se parecía a los piratas que ves en las películas.",
+      "text_markdown": "Barbanegra no se parecía a los piratas que ves en las películas.",
+      "tts": {
+        "text": "Barbanegra no se parecía a los piratas que ves en las películas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era peor.",
+      "text_markdown": "Era peor.",
+      "tts": {
+        "text": "Era peor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Entretejía mechas de combustión lenta en su enorme barba negra y las encendía antes de la batalla.",
+      "text_markdown": "Entretejía mechas de combustión lenta en su enorme barba negra y las encendía antes de la batalla.",
+      "tts": {
+        "text": "Entretejía mechas de combustión lenta en su enorme barba negra y las encendía antes de la batalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El humo se enroscaba alrededor de su rostro, haciéndolo parecer un demonio surgiendo del mar.",
+      "text_markdown": "El humo se enroscaba alrededor de su rostro, haciéndolo parecer un demonio surgiendo del mar.",
+      "tts": {
+        "text": "El humo se enroscaba alrededor de su rostro, haciéndolo parecer un demonio surgiendo del mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este libro te llevará a los puertos y rutas marítimas de principios del siglo dieciocho.",
+      "text_markdown": "Este libro te llevará a los puertos y rutas marítimas de principios del siglo dieciocho.",
+      "tts": {
+        "text": "Este libro te llevará a los puertos y rutas marítimas de principios del siglo dieciocho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Verás cómo marineros comunes se convirtieron en forajidos, y cómo los imperios lucharon por detenerlos.",
+      "text_markdown": "Verás cómo marineros comunes se convirtieron en forajidos, y cómo los imperios lucharon por detenerlos.",
+      "tts": {
+        "text": "Verás cómo marineros comunes se convirtieron en forajidos, y cómo los imperios lucharon por detenerlos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Todo en este libro se basa en registros históricos, documentos judiciales y testimonios de primera mano.",
+      "text_markdown": "Todo en este libro se basa en registros históricos, documentos judiciales y testimonios de primera mano.",
+      "tts": {
+        "text": "Todo en este libro se basa en registros históricos, documentos judiciales y testimonios de primera mano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota al lector",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cuando los hechos sean inciertos, lo diremos claramente.",
+      "text_markdown": "Cuando los hechos sean inciertos, lo diremos claramente.",
+      "tts": {
+        "text": "Cuando los hechos sean inciertos, lo diremos claramente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El mundo que creó a un pirata",
+      "text_markdown": "El mundo que creó a un pirata"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Finales del siglo diecisiete fue una era de imperios y comercio oceánico.",
+      "text_markdown": "Finales del siglo diecisiete fue una era de imperios y comercio oceánico.",
+      "tts": {
+        "text": "Finales del siglo diecisiete fue una era de imperios y comercio oceánico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inglaterra, España, Francia y los Países Bajos competían por colonias en las Américas.",
+      "text_markdown": "Inglaterra, España, Francia y los Países Bajos competían por colonias en las Américas.",
+      "tts": {
+        "text": "Inglaterra, España, Francia y los Países Bajos competían por colonias en las Américas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus barcos mercantes transportaban azúcar, tabaco, algodón y personas esclavizadas a través del Atlántico.",
+      "text_markdown": "Sus barcos mercantes transportaban azúcar, tabaco, algodón y personas esclavizadas a través del Atlántico.",
+      "tts": {
+        "text": "Sus barcos mercantes transportaban azúcar, tabaco, algodón y personas esclavizadas a través del Atlántico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dondequiera que se moviera carga valiosa por el mar, los piratas la seguían.",
+      "text_markdown": "Dondequiera que se moviera carga valiosa por el mar, los piratas la seguían.",
+      "tts": {
+        "text": "Dondequiera que se moviera carga valiosa por el mar, los piratas la seguían.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El mar Caribe era la encrucijada de este comercio global.",
+      "text_markdown": "El mar Caribe era la encrucijada de este comercio global.",
+      "tts": {
+        "text": "El mar Caribe era la encrucijada de este comercio global.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cientos de islas salpicaban las cálidas aguas turquesas entre Florida y Sudamérica.",
+      "text_markdown": "Cientos de islas salpicaban las cálidas aguas turquesas entre Florida y Sudamérica.",
+      "tts": {
+        "text": "Cientos de islas salpicaban las cálidas aguas turquesas entre Florida y Sudamérica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muchas de estas islas pertenecían a potencias europeas que las usaban como plantaciones de azúcar.",
+      "text_markdown": "Muchas de estas islas pertenecían a potencias europeas que las usaban como plantaciones de azúcar.",
+      "tts": {
+        "text": "Muchas de estas islas pertenecían a potencias europeas que las usaban como plantaciones de azúcar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barcos cargados de azúcar y ron zarpaban de puertos caribeños hacia Europa cada semana.",
+      "text_markdown": "Barcos cargados de azúcar y ron zarpaban de puertos caribeños hacia Europa cada semana.",
+      "tts": {
+        "text": "Barcos cargados de azúcar y ron zarpaban de puertos caribeños hacia Europa cada semana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inglaterra y España habían sido rivales durante más de un siglo.",
+      "text_markdown": "Inglaterra y España habían sido rivales durante más de un siglo.",
+      "tts": {
+        "text": "Inglaterra y España habían sido rivales durante más de un siglo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Corsarios ingleses como Sir Francis Drake habían asaltado flotas de tesoros españolas a finales del siglo quince.",
+      "text_markdown": "Corsarios ingleses como Sir Francis Drake habían asaltado flotas de tesoros españolas a finales del siglo quince.",
+      "tts": {
+        "text": "Corsarios ingleses como Sir Francis Drake habían asaltado flotas de tesoros españolas a finales del siglo quince.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un corsario era un capitán privado autorizado por un gobierno para atacar barcos enemigos.",
+      "text_markdown": "Un corsario era un capitán privado autorizado por un gobierno para atacar barcos enemigos.",
+      "tts": {
+        "text": "Un corsario era un capitán privado autorizado por un gobierno para atacar barcos enemigos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los corsarios portaban un documento llamado patente de corso que legalizaba sus ataques.",
+      "text_markdown": "Los corsarios portaban un documento llamado patente de corso que legalizaba sus ataques.",
+      "tts": {
+        "text": "Los corsarios portaban un documento llamado patente de corso que legalizaba sus ataques.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Guerra de la Reina Ana estalló en 1702 y duró hasta 1713.",
+      "text_markdown": "La Guerra de la Reina Ana estalló en 1702 y duró hasta 1713.",
+      "tts": {
+        "text": "La Guerra de la Reina Ana estalló en mil setecientos dos y duró hasta mil setecientos trece.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esta fue parte de un conflicto europeo mayor llamado la Guerra de Sucesión Española.",
+      "text_markdown": "Esta fue parte de un conflicto europeo mayor llamado la Guerra de Sucesión Española.",
+      "tts": {
+        "text": "Esta fue parte de un conflicto europeo mayor llamado la Guerra de Sucesión Española.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Inglaterra y sus aliados lucharon contra Francia y España por el control de rutas comerciales y territorios.",
+      "text_markdown": "Inglaterra y sus aliados lucharon contra Francia y España por el control de rutas comerciales y territorios.",
+      "tts": {
+        "text": "Inglaterra y sus aliados lucharon contra Francia y España por el control de rutas comerciales y territorios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Durante la guerra, miles de marineros sirvieron en barcos corsarios, asaltando mercantes enemigos por lucro.",
+      "text_markdown": "Durante la guerra, miles de marineros sirvieron en barcos corsarios, asaltando mercantes enemigos por lucro.",
+      "tts": {
+        "text": "Durante la guerra, miles de marineros sirvieron en barcos corsarios, asaltando mercantes enemigos por lucro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando la guerra terminó con el Tratado de Utrecht en 1713, todo cambió.",
+      "text_markdown": "Cuando la guerra terminó con el Tratado de Utrecht en 1713, todo cambió.",
+      "tts": {
+        "text": "Cuando la guerra terminó con el Tratado de Utrecht en mil setecientos trece, todo cambió.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las comisiones de corsarios fueron canceladas de la noche a la mañana.",
+      "text_markdown": "Las comisiones de corsarios fueron canceladas de la noche a la mañana.",
+      "tts": {
+        "text": "Las comisiones de corsarios fueron canceladas de la noche a la mañana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miles de marineros y combatientes entrenados se quedaron repentinamente sin empleo legal.",
+      "text_markdown": "Miles de marineros y combatientes entrenados se quedaron repentinamente sin empleo legal.",
+      "tts": {
+        "text": "Miles de marineros y combatientes entrenados se quedaron repentinamente sin empleo legal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muchos de ellos no poseían más que la ropa que llevaban puesta y su conocimiento del mar.",
+      "text_markdown": "Muchos de ellos no poseían más que la ropa que llevaban puesta y su conocimiento del mar.",
+      "tts": {
+        "text": "Muchos de ellos no poseían más que la ropa que llevaban puesta y su conocimiento del mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vida como marinero común en esta era era brutal.",
+      "text_markdown": "La vida como marinero común en esta era era brutal.",
+      "tts": {
+        "text": "La vida como marinero común en esta era era brutal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los capitanes mercantes gobernaban sus barcos como tiranos.",
+      "text_markdown": "Los capitanes mercantes gobernaban sus barcos como tiranos.",
+      "tts": {
+        "text": "Los capitanes mercantes gobernaban sus barcos como tiranos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los marineros eran golpeados por faltas menores y a veces no recibían paga alguna.",
+      "text_markdown": "Los marineros eran golpeados por faltas menores y a veces no recibían paga alguna.",
+      "tts": {
+        "text": "Los marineros eran golpeados por faltas menores y a veces no recibían paga alguna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El marinero promedio ganaba alrededor de 1 libra al mes, apenas suficiente para sobrevivir en tierra.",
+      "text_markdown": "El marinero promedio ganaba alrededor de 1 libra al mes, apenas suficiente para sobrevivir en tierra.",
+      "tts": {
+        "text": "El marinero promedio ganaba alrededor de una libra al mes, apenas suficiente para sobrevivir en tierra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El servicio naval era incluso peor en muchos aspectos.",
+      "text_markdown": "El servicio naval era incluso peor en muchos aspectos.",
+      "tts": {
+        "text": "El servicio naval era incluso peor en muchos aspectos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Marina Real usaba cuadrillas de reclutamiento forzoso para secuestrar hombres de las calles y obligarlos a servir en buques de guerra.",
+      "text_markdown": "La Marina Real usaba cuadrillas de reclutamiento forzoso para secuestrar hombres de las calles y obligarlos a servir en buques de guerra.",
+      "tts": {
+        "text": "La Marina Real usaba cuadrillas de reclutamiento forzoso para secuestrar hombres de las calles y obligarlos a servir en buques de guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las enfermedades mataban más marineros que el combate.",
+      "text_markdown": "Las enfermedades mataban más marineros que el combate.",
+      "tts": {
+        "text": "Las enfermedades mataban más marineros que el combate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El escorbuto, la disentería y las fiebres tropicales arrasaban las cubiertas inferiores hacinadas con velocidad aterradora.",
+      "text_markdown": "El escorbuto, la disentería y las fiebres tropicales arrasaban las cubiertas inferiores hacinadas con velocidad aterradora.",
+      "tts": {
+        "text": "El escorbuto, la disentería y las fiebres tropicales arrasaban las cubiertas inferiores hacinadas con velocidad aterradora.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La piratería ofrecía una alternativa que muchos marineros encontraban irresistible.",
+      "text_markdown": "La piratería ofrecía una alternativa que muchos marineros encontraban irresistible.",
+      "tts": {
+        "text": "La piratería ofrecía una alternativa que muchos marineros encontraban irresistible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los piratas elegían a sus propios capitanes y votaban sobre las decisiones importantes.",
+      "text_markdown": "Los piratas elegían a sus propios capitanes y votaban sobre las decisiones importantes.",
+      "tts": {
+        "text": "Los piratas elegían a sus propios capitanes y votaban sobre las decisiones importantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El botín se repartía de forma mucho más equitativa que en los barcos mercantes o navales.",
+      "text_markdown": "El botín se repartía de forma mucho más equitativa que en los barcos mercantes o navales.",
+      "tts": {
+        "text": "El botín se repartía de forma mucho más equitativa que en los barcos mercantes o navales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un pirata común podía ganar en una sola incursión lo que un marinero mercante ganaba en varios años.",
+      "text_markdown": "Un pirata común podía ganar en una sola incursión lo que un marinero mercante ganaba en varios años.",
+      "tts": {
+        "text": "Un pirata común podía ganar en una sola incursión lo que un marinero mercante ganaba en varios años.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La isla de Nueva Providencia en las Bahamas se convirtió en la capital no oficial de la piratería.",
+      "text_markdown": "La isla de Nueva Providencia en las Bahamas se convirtió en la capital no oficial de la piratería.",
+      "tts": {
+        "text": "La isla de Nueva Providencia en las Bahamas se convirtió en la capital no oficial de la piratería.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su puerto principal en Nassau podía albergar cientos de barcos.",
+      "text_markdown": "Su puerto principal en Nassau podía albergar cientos de barcos.",
+      "tts": {
+        "text": "Su puerto principal en Nassau podía albergar cientos de barcos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La isla no tenía un gobierno colonial fuerte ni un fuerte capaz de defenderla.",
+      "text_markdown": "La isla no tenía un gobierno colonial fuerte ni un fuerte capaz de defenderla.",
+      "tts": {
+        "text": "La isla no tenía un gobierno colonial fuerte ni un fuerte capaz de defenderla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A principios del siglo dieciocho, los piratas superaban en número a los ciudadanos honrados en Nassau.",
+      "text_markdown": "A principios del siglo dieciocho, los piratas superaban en número a los ciudadanos honrados en Nassau.",
+      "tts": {
+        "text": "A principios del siglo dieciocho, los piratas superaban en número a los ciudadanos honrados en Nassau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau se convirtió en lo que los historiadores llaman la República de los Piratas.",
+      "text_markdown": "Nassau se convirtió en lo que los historiadores llaman la República de los Piratas.",
+      "tts": {
+        "text": "Nassau se convirtió en lo que los historiadores llaman la República de los Piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capitanes piratas como Benjamin Hornigold, Charles Vane y Calico Jack Rackham la llamaban hogar.",
+      "text_markdown": "Capitanes piratas como Benjamin Hornigold, Charles Vane y Calico Jack Rackham la llamaban hogar.",
+      "tts": {
+        "text": "Capitanes piratas como Benjamin Hornigold, Charles Vane y Calico Jack Rackham la llamaban hogar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los barcos llegaban constantemente trayendo bienes robados para comerciar.",
+      "text_markdown": "Los barcos llegaban constantemente trayendo bienes robados para comerciar.",
+      "tts": {
+        "text": "Los barcos llegaban constantemente trayendo bienes robados para comerciar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tabernas y mercados surgieron para servir la economía pirata.",
+      "text_markdown": "Tabernas y mercados surgieron para servir la economía pirata.",
+      "tts": {
+        "text": "Tabernas y mercados surgieron para servir la economía pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los gobiernos coloniales a lo largo de la costa americana estaban mal defendidos.",
+      "text_markdown": "Los gobiernos coloniales a lo largo de la costa americana estaban mal defendidos.",
+      "tts": {
+        "text": "Los gobiernos coloniales a lo largo de la costa americana estaban mal defendidos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia, las Carolinas y las colonias de Nueva Inglaterra dependían del comercio para sobrevivir.",
+      "text_markdown": "Virginia, las Carolinas y las colonias de Nueva Inglaterra dependían del comercio para sobrevivir.",
+      "tts": {
+        "text": "Virginia, las Carolinas y las colonias de Nueva Inglaterra dependían del comercio para sobrevivir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus puertos estaban ocupados pero sus armadas eran pequeñas.",
+      "text_markdown": "Sus puertos estaban ocupados pero sus armadas eran pequeñas.",
+      "tts": {
+        "text": "Sus puertos estaban ocupados pero sus armadas eran pequeñas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un solo barco pirata bien armado podía paralizar el comercio de toda una colonia.",
+      "text_markdown": "Un solo barco pirata bien armado podía paralizar el comercio de toda una colonia.",
+      "tts": {
+        "text": "Un solo barco pirata bien armado podía paralizar el comercio de toda una colonia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este fue el mundo que produjo a Edward Teach.",
+      "text_markdown": "Este fue el mundo que produjo a Edward Teach.",
+      "tts": {
+        "text": "Este fue el mundo que produjo a Edward Teach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era un mundo de oportunidades violentas, donde un marinero audaz podía hacerse rico o morir en el intento.",
+      "text_markdown": "Era un mundo de oportunidades violentas, donde un marinero audaz podía hacerse rico o morir en el intento.",
+      "tts": {
+        "text": "Era un mundo de oportunidades violentas, donde un marinero audaz podía hacerse rico o morir en el intento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La línea entre el corsarismo legal y la piratería ilegal era delgada y cambiaba constantemente.",
+      "text_markdown": "La línea entre el corsarismo legal y la piratería ilegal era delgada y cambiaba constantemente.",
+      "tts": {
+        "text": "La línea entre el corsarismo legal y la piratería ilegal era delgada y cambiaba constantemente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "El mundo que creó a un pirata",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barbanegra explotaría esa zona gris mejor que casi cualquier otro.",
+      "text_markdown": "Barbanegra explotaría esa zona gris mejor que casi cualquier otro.",
+      "tts": {
+        "text": "Barbanegra explotaría esa zona gris mejor que casi cualquier otro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La formación de Edward Teach",
+      "text_markdown": "La formación de Edward Teach"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Casi nada se sabe con certeza sobre la vida temprana de Barbanegra.",
+      "text_markdown": "Casi nada se sabe con certeza sobre la vida temprana de Barbanegra.",
+      "tts": {
+        "text": "Casi nada se sabe con certeza sobre la vida temprana de Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esto es común entre los piratas, cuyas vidas antes de la piratería rara vez aparecían en los registros oficiales.",
+      "text_markdown": "Esto es común entre los piratas, cuyas vidas antes de la piratería rara vez aparecían en los registros oficiales.",
+      "tts": {
+        "text": "Esto es común entre los piratas, cuyas vidas antes de la piratería rara vez aparecían en los registros oficiales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los historiadores deben reconstruir sus orígenes a partir de pistas dispersas y relatos posteriores.",
+      "text_markdown": "Los historiadores deben reconstruir sus orígenes a partir de pistas dispersas y relatos posteriores.",
+      "tts": {
+        "text": "Los historiadores deben reconstruir sus orígenes a partir de pistas dispersas y relatos posteriores.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La teoría más aceptada es que Edward Teach nació en Bristol, Inglaterra.",
+      "text_markdown": "La teoría más aceptada es que Edward Teach nació en Bristol, Inglaterra.",
+      "tts": {
+        "text": "La teoría más aceptada es que Edward Teach nació en Bristol, Inglaterra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol era una de las mayores ciudades portuarias del Imperio Británico a finales del siglo diecisiete.",
+      "text_markdown": "Bristol era una de las mayores ciudades portuarias del Imperio Británico a finales del siglo diecisiete.",
+      "tts": {
+        "text": "Bristol era una de las mayores ciudades portuarias del Imperio Británico a finales del siglo diecisiete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los barcos zarpaban de Bristol hacia África, el Caribe y las colonias americanas.",
+      "text_markdown": "Los barcos zarpaban de Bristol hacia África, el Caribe y las colonias americanas.",
+      "tts": {
+        "text": "Los barcos zarpaban de Bristol hacia África, el Caribe y las colonias americanas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La economía de la ciudad se basaba en el comercio marítimo, incluida la trata transatlántica de esclavos.",
+      "text_markdown": "La economía de la ciudad se basaba en el comercio marítimo, incluida la trata transatlántica de esclavos.",
+      "tts": {
+        "text": "La economía de la ciudad se basaba en el comercio marítimo, incluida la trata transatlántica de esclavos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los historiadores estiman que Teach nació alrededor de 1680, aunque no se ha encontrado registro de nacimiento.",
+      "text_markdown": "Los historiadores estiman que Teach nació alrededor de 1680, aunque no se ha encontrado registro de nacimiento.",
+      "tts": {
+        "text": "Los historiadores estiman que Teach nació alrededor de mil seiscientos ochenta, aunque no se ha encontrado registro de nacimiento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su apellido aparece en diversos registros como Teach, Thatch, Thach y Tatch.",
+      "text_markdown": "Su apellido aparece en diversos registros como Teach, Thatch, Thach y Tatch.",
+      "tts": {
+        "text": "Su apellido aparece en diversos registros como Teach, Thatch, Thach y Tatch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La ortografía no estaba estandarizada en esta era, y los nombres a menudo se escribían fonéticamente.",
+      "text_markdown": "La ortografía no estaba estandarizada en esta era, y los nombres a menudo se escribían fonéticamente.",
+      "tts": {
+        "text": "La ortografía no estaba estandarizada en esta era, y los nombres a menudo se escribían fonéticamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algunas pruebas sugieren que Teach provenía de una familia respetable.",
+      "text_markdown": "Algunas pruebas sugieren que Teach provenía de una familia respetable.",
+      "tts": {
+        "text": "Algunas pruebas sugieren que Teach provenía de una familia respetable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sabía leer y escribir, algo inusual para los marineros comunes de la época.",
+      "text_markdown": "Sabía leer y escribir, algo inusual para los marineros comunes de la época.",
+      "tts": {
+        "text": "Sabía leer y escribir, algo inusual para los marineros comunes de la época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una carta que escribió sobrevive en archivos históricos, mostrando una caligrafía clara y segura.",
+      "text_markdown": "Una carta que escribió sobrevive en archivos históricos, mostrando una caligrafía clara y segura.",
+      "tts": {
+        "text": "Una carta que escribió sobrevive en archivos históricos, mostrando una caligrafía clara y segura.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La alfabetización sugiere al menos algo de educación formal, probablemente en una de las escuelas de caridad de Bristol.",
+      "text_markdown": "La alfabetización sugiere al menos algo de educación formal, probablemente en una de las escuelas de caridad de Bristol.",
+      "tts": {
+        "text": "La alfabetización sugiere al menos algo de educación formal, probablemente en una de las escuelas de caridad de Bristol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach casi con certeza se hizo a la mar siendo joven.",
+      "text_markdown": "Teach casi con certeza se hizo a la mar siendo joven.",
+      "tts": {
+        "text": "Teach casi con certeza se hizo a la mar siendo joven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En Bristol, el mar era el camino más obvio hacia el empleo.",
+      "text_markdown": "En Bristol, el mar era el camino más obvio hacia el empleo.",
+      "tts": {
+        "text": "En Bristol, el mar era el camino más obvio hacia el empleo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muchachos de tan solo doce años servían como grumetes o marineros aprendices en barcos mercantes.",
+      "text_markdown": "Muchachos de tan solo doce años servían como grumetes o marineros aprendices en barcos mercantes.",
+      "tts": {
+        "text": "Muchachos de tan solo doce años servían como grumetes o marineros aprendices en barcos mercantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El trabajo era peligroso, pero ofrecía aventura y la oportunidad de ver el mundo.",
+      "text_markdown": "El trabajo era peligroso, pero ofrecía aventura y la oportunidad de ver el mundo.",
+      "tts": {
+        "text": "El trabajo era peligroso, pero ofrecía aventura y la oportunidad de ver el mundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando comenzó la Guerra de la Reina Ana, Teach probablemente entró al servicio como corsario.",
+      "text_markdown": "Cuando comenzó la Guerra de la Reina Ana, Teach probablemente entró al servicio como corsario.",
+      "tts": {
+        "text": "Cuando comenzó la Guerra de la Reina Ana, Teach probablemente entró al servicio como corsario.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol era una base principal para operaciones corsarias contra el comercio francés y español.",
+      "text_markdown": "Bristol era una base principal para operaciones corsarias contra el comercio francés y español.",
+      "tts": {
+        "text": "Bristol era una base principal para operaciones corsarias contra el comercio francés y español.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un joven con experiencia náutica habría sido reclutado con entusiasmo.",
+      "text_markdown": "Un joven con experiencia náutica habría sido reclutado con entusiasmo.",
+      "tts": {
+        "text": "Un joven con experiencia náutica habría sido reclutado con entusiasmo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El corsarismo le enseñó a Teach las habilidades del combate naval que más tarde lo harían famoso.",
+      "text_markdown": "El corsarismo le enseñó a Teach las habilidades del combate naval que más tarde lo harían famoso.",
+      "tts": {
+        "text": "El corsarismo le enseñó a Teach las habilidades del combate naval que más tarde lo harían famoso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La guerra le dio a Teach años de experiencia en combate barco contra barco.",
+      "text_markdown": "La guerra le dio a Teach años de experiencia en combate barco contra barco.",
+      "tts": {
+        "text": "La guerra le dio a Teach años de experiencia en combate barco contra barco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aprendió a manejar cañones, abordar navíos enemigos y dirigir una tripulación bajo fuego.",
+      "text_markdown": "Aprendió a manejar cañones, abordar navíos enemigos y dirigir una tripulación bajo fuego.",
+      "tts": {
+        "text": "Aprendió a manejar cañones, abordar navíos enemigos y dirigir una tripulación bajo fuego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "También aprendió la geografía del Caribe y los patrones del comercio marítimo.",
+      "text_markdown": "También aprendió la geografía del Caribe y los patrones del comercio marítimo.",
+      "tts": {
+        "text": "También aprendió la geografía del Caribe y los patrones del comercio marítimo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Este conocimiento era invaluable para un futuro pirata.",
+      "text_markdown": "Este conocimiento era invaluable para un futuro pirata.",
+      "tts": {
+        "text": "Este conocimiento era invaluable para un futuro pirata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando la guerra terminó en 1713, Teach se encontró en la misma situación que miles de otros marineros.",
+      "text_markdown": "Cuando la guerra terminó en 1713, Teach se encontró en la misma situación que miles de otros marineros.",
+      "tts": {
+        "text": "Cuando la guerra terminó en mil setecientos trece, Teach se encontró en la misma situación que miles de otros marineros.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tenía habilidades y experiencia pero ninguna forma legal de usarlas.",
+      "text_markdown": "Tenía habilidades y experiencia pero ninguna forma legal de usarlas.",
+      "tts": {
+        "text": "Tenía habilidades y experiencia pero ninguna forma legal de usarlas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La Marina Real en tiempos de paz se estaba reduciendo, y los barcos mercantes no contrataban.",
+      "text_markdown": "La Marina Real en tiempos de paz se estaba reduciendo, y los barcos mercantes no contrataban.",
+      "tts": {
+        "text": "La Marina Real en tiempos de paz se estaba reduciendo, y los barcos mercantes no contrataban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El camino hacia la piratería era casi inevitable para hombres como él.",
+      "text_markdown": "El camino hacia la piratería era casi inevitable para hombres como él.",
+      "tts": {
+        "text": "El camino hacia la piratería era casi inevitable para hombres como él.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach se dirigió a la isla de Nueva Providencia en las Bahamas.",
+      "text_markdown": "Teach se dirigió a la isla de Nueva Providencia en las Bahamas.",
+      "tts": {
+        "text": "Teach se dirigió a la isla de Nueva Providencia en las Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Allí se unió a la tripulación del capitán Benjamin Hornigold, uno de los piratas más exitosos de la época.",
+      "text_markdown": "Allí se unió a la tripulación del capitán Benjamin Hornigold, uno de los piratas más exitosos de la época.",
+      "tts": {
+        "text": "Allí se unió a la tripulación del capitán Benjamin Hornigold, uno de los piratas más exitosos de la época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold era un antiguo corsario que se había pasado a la piratería tras la guerra.",
+      "text_markdown": "Hornigold era un antiguo corsario que se había pasado a la piratería tras la guerra.",
+      "tts": {
+        "text": "Hornigold era un antiguo corsario que se había pasado a la piratería tras la guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Comandaba una pequeña flota de navíos que operaba desde el puerto de Nassau.",
+      "text_markdown": "Comandaba una pequeña flota de navíos que operaba desde el puerto de Nassau.",
+      "tts": {
+        "text": "Comandaba una pequeña flota de navíos que operaba desde el puerto de Nassau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold reconoció rápidamente las habilidades de Teach.",
+      "text_markdown": "Hornigold reconoció rápidamente las habilidades de Teach.",
+      "tts": {
+        "text": "Hornigold reconoció rápidamente las habilidades de Teach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teach era imponente físicamente, midiendo bastante más de un metro ochenta en una época en que la mayoría de los hombres eran mucho más bajos.",
+      "text_markdown": "Teach era imponente físicamente, midiendo bastante más de un metro ochenta en una época en que la mayoría de los hombres eran mucho más bajos.",
+      "tts": {
+        "text": "Teach era imponente físicamente, midiendo bastante más de un metro ochenta en una época en que la mayoría de los hombres eran mucho más bajos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era valiente en batalla y tenía un don natural para comandar hombres.",
+      "text_markdown": "Era valiente en batalla y tenía un don natural para comandar hombres.",
+      "tts": {
+        "text": "Era valiente en batalla y tenía un don natural para comandar hombres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hornigold le dio a Teach el mando de un balandro capturado.",
+      "text_markdown": "Hornigold le dio a Teach el mando de un balandro capturado.",
+      "tts": {
+        "text": "Hornigold le dio a Teach el mando de un balandro capturado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A finales de 1717, Teach y Hornigold capturaron un gran barco mercante francés llamado La Concorde.",
+      "text_markdown": "A finales de 1717, Teach y Hornigold capturaron un gran barco mercante francés llamado La Concorde.",
+      "tts": {
+        "text": "A finales de mil setecientos diecisiete, Teach y Hornigold capturaron un gran barco mercante francés llamado La Concorde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Concorde era un barco negrero, fuertemente armado y con una carga valiosa.",
+      "text_markdown": "La Concorde era un barco negrero, fuertemente armado y con una carga valiosa.",
+      "tts": {
+        "text": "La Concorde era un barco negrero, fuertemente armado y con una carga valiosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teach reclamó el barco para sí y comenzó a transformarlo.",
+      "text_markdown": "Teach reclamó el barco para sí y comenzó a transformarlo.",
+      "tts": {
+        "text": "Teach reclamó el barco para sí y comenzó a transformarlo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Montó cañones adicionales hasta que el barco erizaba poder de fuego.",
+      "text_markdown": "Montó cañones adicionales hasta que el barco erizaba poder de fuego.",
+      "tts": {
+        "text": "Montó cañones adicionales hasta que el barco erizaba poder de fuego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach rebautizó su nuevo buque insignia como La Venganza de la Reina Ana.",
+      "text_markdown": "Teach rebautizó su nuevo buque insignia como La Venganza de la Reina Ana.",
+      "tts": {
+        "text": "Teach rebautizó su nuevo buque insignia como La Venganza de la Reina Ana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El nombre era una declaración política deliberada.",
+      "text_markdown": "El nombre era una declaración política deliberada.",
+      "tts": {
+        "text": "El nombre era una declaración política deliberada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hacía referencia a la Reina Ana, durante cuyo reinado los corsarios habían servido legalmente.",
+      "text_markdown": "Hacía referencia a la Reina Ana, durante cuyo reinado los corsarios habían servido legalmente.",
+      "tts": {
+        "text": "Hacía referencia a la Reina Ana, durante cuyo reinado los corsarios habían servido legalmente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teach declaraba que su piratería era venganza por las promesas rotas de la Corona.",
+      "text_markdown": "Teach declaraba que su piratería era venganza por las promesas rotas de la Corona.",
+      "tts": {
+        "text": "Teach declaraba que su piratería era venganza por las promesas rotas de la Corona.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Con 40 cañones y una tripulación de más de 300 hombres, La Venganza de la Reina Ana era uno de los barcos piratas más poderosos a flote.",
+      "text_markdown": "Con 40 cañones y una tripulación de más de 300 hombres, La Venganza de la Reina Ana era uno de los barcos piratas más poderosos a flote.",
+      "tts": {
+        "text": "Con cuarenta cañones y una tripulación de más de trescientos hombres, La Venganza de la Reina Ana era uno de los barcos piratas más poderosos a flote.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbanegra ya no era un pirata menor operando bajo la autoridad de otro.",
+      "text_markdown": "Barbanegra ya no era un pirata menor operando bajo la autoridad de otro.",
+      "tts": {
+        "text": "Barbanegra ya no era un pirata menor operando bajo la autoridad de otro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ahora era una fuerza a tener en cuenta por derecho propio.",
+      "text_markdown": "Ahora era una fuerza a tener en cuenta por derecho propio.",
+      "tts": {
+        "text": "Ahora era una fuerza a tener en cuenta por derecho propio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "La formación de Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La leyenda de Barbanegra estaba a punto de comenzar.",
+      "text_markdown": "La leyenda de Barbanegra estaba a punto de comenzar.",
+      "tts": {
+        "text": "La leyenda de Barbanegra estaba a punto de comenzar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El terror del Atlántico",
+      "text_markdown": "El terror del Atlántico"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A principios de 1718, Barbanegra navegó con La Venganza de la Reina Ana hacia el norte desde el Caribe.",
+      "text_markdown": "A principios de 1718, Barbanegra navegó con La Venganza de la Reina Ana hacia el norte desde el Caribe.",
+      "tts": {
+        "text": "A principios de mil setecientos dieciocho, Barbanegra navegó con La Venganza de la Reina Ana hacia el norte desde el Caribe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se dirigía a las rutas marítimas a lo largo de la costa colonial americana.",
+      "text_markdown": "Se dirigía a las rutas marítimas a lo largo de la costa colonial americana.",
+      "tts": {
+        "text": "Se dirigía a las rutas marítimas a lo largo de la costa colonial americana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estas aguas eran ricas en tráfico mercante y estaban mal defendidas.",
+      "text_markdown": "Estas aguas eran ricas en tráfico mercante y estaban mal defendidas.",
+      "tts": {
+        "text": "Estas aguas eran ricas en tráfico mercante y estaban mal defendidas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barbanegra pretendía explotar esta vulnerabilidad al máximo.",
+      "text_markdown": "Barbanegra pretendía explotar esta vulnerabilidad al máximo.",
+      "tts": {
+        "text": "Barbanegra pretendía explotar esta vulnerabilidad al máximo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La estrategia de Barbanegra se basaba tanto en el terror como en la potencia de fuego.",
+      "text_markdown": "La estrategia de Barbanegra se basaba tanto en el terror como en la potencia de fuego.",
+      "tts": {
+        "text": "La estrategia de Barbanegra se basaba tanto en el terror como en la potencia de fuego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Entendía que un enemigo aterrorizado se rendiría sin luchar.",
+      "text_markdown": "Entendía que un enemigo aterrorizado se rendiría sin luchar.",
+      "tts": {
+        "text": "Entendía que un enemigo aterrorizado se rendiría sin luchar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una batalla evitada era una batalla ganada, porque preservaba su tripulación y sus barcos.",
+      "text_markdown": "Una batalla evitada era una batalla ganada, porque preservaba su tripulación y sus barcos.",
+      "tts": {
+        "text": "Una batalla evitada era una batalla ganada, porque preservaba su tripulación y sus barcos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cada elemento de su apariencia estaba diseñado para maximizar el miedo.",
+      "text_markdown": "Cada elemento de su apariencia estaba diseñado para maximizar el miedo.",
+      "tts": {
+        "text": "Cada elemento de su apariencia estaba diseñado para maximizar el miedo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dejó crecer su espesa barba negra hasta una longitud enorme, cubriendo la mayor parte de su rostro y pecho.",
+      "text_markdown": "Dejó crecer su espesa barba negra hasta una longitud enorme, cubriendo la mayor parte de su rostro y pecho.",
+      "tts": {
+        "text": "Dejó crecer su espesa barba negra hasta una longitud enorme, cubriendo la mayor parte de su rostro y pecho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Antes de la batalla, entretejía mechas de cáñamo de combustión lenta llamadas mechas lentas en su barba.",
+      "text_markdown": "Antes de la batalla, entretejía mechas de cáñamo de combustión lenta llamadas mechas lentas en su barba.",
+      "tts": {
+        "text": "Antes de la batalla, entretejía mechas de cáñamo de combustión lenta llamadas mechas lentas en su barba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al encenderlas, estas mechas producían nubes de humo alrededor de su cabeza.",
+      "text_markdown": "Al encenderlas, estas mechas producían nubes de humo alrededor de su cabeza.",
+      "tts": {
+        "text": "Al encenderlas, estas mechas producían nubes de humo alrededor de su cabeza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El efecto era sobrenatural, como un monstruo emergiendo de un fuego sulfuroso.",
+      "text_markdown": "El efecto era sobrenatural, como un monstruo emergiendo de un fuego sulfuroso.",
+      "tts": {
+        "text": "El efecto era sobrenatural, como un monstruo emergiendo de un fuego sulfuroso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Llevaba múltiples pistolas sujetas sobre su pecho en una bandolera de cuero.",
+      "text_markdown": "Llevaba múltiples pistolas sujetas sobre su pecho en una bandolera de cuero.",
+      "tts": {
+        "text": "Llevaba múltiples pistolas sujetas sobre su pecho en una bandolera de cuero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "También portaba varios sables y dagas en su cinturón.",
+      "text_markdown": "También portaba varios sables y dagas en su cinturón.",
+      "tts": {
+        "text": "También portaba varios sables y dagas en su cinturón.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Su vestimenta era deliberadamente teatral, diseñada para parecer lo más temible posible.",
+      "text_markdown": "Su vestimenta era deliberadamente teatral, diseñada para parecer lo más temible posible.",
+      "tts": {
+        "text": "Su vestimenta era deliberadamente teatral, diseñada para parecer lo más temible posible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los testigos lo describían como la mismísima imagen del diablo.",
+      "text_markdown": "Los testigos lo describían como la mismísima imagen del diablo.",
+      "tts": {
+        "text": "Los testigos lo describían como la mismísima imagen del diablo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbanegra reunió una pequeña flota de navíos piratas a su alrededor.",
+      "text_markdown": "Barbanegra reunió una pequeña flota de navíos piratas a su alrededor.",
+      "tts": {
+        "text": "Barbanegra reunió una pequeña flota de navíos piratas a su alrededor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En su apogeo, comandó 4 barcos y varios cientos de piratas.",
+      "text_markdown": "En su apogeo, comandó 4 barcos y varios cientos de piratas.",
+      "tts": {
+        "text": "En su apogeo, comandó cuatro barcos y varios cientos de piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esta era una concentración inusual de poder pirata.",
+      "text_markdown": "Esta era una concentración inusual de poder pirata.",
+      "tts": {
+        "text": "Esta era una concentración inusual de poder pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La mayoría de los piratas operaban solos o en parejas, pero Barbanegra pensaba a mayor escala.",
+      "text_markdown": "La mayoría de los piratas operaban solos o en parejas, pero Barbanegra pensaba a mayor escala.",
+      "tts": {
+        "text": "La mayoría de los piratas operaban solos o en parejas, pero Barbanegra pensaba a mayor escala.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su flota capturaba barco tras barco a lo largo de la costa.",
+      "text_markdown": "Su flota capturaba barco tras barco a lo largo de la costa.",
+      "tts": {
+        "text": "Su flota capturaba barco tras barco a lo largo de la costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los capitanes mercantes que veían su bandera negra a menudo se rendían inmediatamente.",
+      "text_markdown": "Los capitanes mercantes que veían su bandera negra a menudo se rendían inmediatamente.",
+      "tts": {
+        "text": "Los capitanes mercantes que veían su bandera negra a menudo se rendían inmediatamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los que resistían eran abrumados por una superioridad numérica y de fuego.",
+      "text_markdown": "Los que resistían eran abrumados por una superioridad numérica y de fuego.",
+      "tts": {
+        "text": "Los que resistían eran abrumados por una superioridad numérica y de fuego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La reputación de Barbanegra se extendió por cada puerto desde el Caribe hasta Nueva Inglaterra.",
+      "text_markdown": "La reputación de Barbanegra se extendió por cada puerto desde el Caribe hasta Nueva Inglaterra.",
+      "tts": {
+        "text": "La reputación de Barbanegra se extendió por cada puerto desde el Caribe hasta Nueva Inglaterra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En un ataque típico, Barbanegra izaba colores falsos para acercarse a su objetivo.",
+      "text_markdown": "En un ataque típico, Barbanegra izaba colores falsos para acercarse a su objetivo.",
+      "tts": {
+        "text": "En un ataque típico, Barbanegra izaba colores falsos para acercarse a su objetivo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los piratas a menudo enarbolaban la bandera de una nación amiga para acercarse antes de revelar su identidad.",
+      "text_markdown": "Los piratas a menudo enarbolaban la bandera de una nación amiga para acercarse antes de revelar su identidad.",
+      "tts": {
+        "text": "Los piratas a menudo enarbolaban la bandera de una nación amiga para acercarse antes de revelar su identidad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En el último momento, izaban su verdadera bandera pirata.",
+      "text_markdown": "En el último momento, izaban su verdadera bandera pirata.",
+      "tts": {
+        "text": "En el último momento, izaban su verdadera bandera pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Para entonces, generalmente ya era demasiado tarde para que la víctima escapara.",
+      "text_markdown": "Para entonces, generalmente ya era demasiado tarde para que la víctima escapara.",
+      "tts": {
+        "text": "Para entonces, generalmente ya era demasiado tarde para que la víctima escapara.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La bandera de Barbanegra era distintiva y aterradora.",
+      "text_markdown": "La bandera de Barbanegra era distintiva y aterradora.",
+      "tts": {
+        "text": "La bandera de Barbanegra era distintiva y aterradora.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mostraba un esqueleto sosteniendo un reloj de arena en una mano y una lanza en la otra.",
+      "text_markdown": "Mostraba un esqueleto sosteniendo un reloj de arena en una mano y una lanza en la otra.",
+      "tts": {
+        "text": "Mostraba un esqueleto sosteniendo un reloj de arena en una mano y una lanza en la otra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La lanza apuntaba a un corazón sangrante.",
+      "text_markdown": "La lanza apuntaba a un corazón sangrante.",
+      "tts": {
+        "text": "La lanza apuntaba a un corazón sangrante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El mensaje era claro: vuestro tiempo se agota, y la muerte viene.",
+      "text_markdown": "El mensaje era claro: vuestro tiempo se agota, y la muerte viene.",
+      "tts": {
+        "text": "El mensaje era claro: vuestro tiempo se agota, y la muerte viene.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mayo de 1718, Barbanegra ejecutó su plan más audaz.",
+      "text_markdown": "En mayo de 1718, Barbanegra ejecutó su plan más audaz.",
+      "tts": {
+        "text": "En mayo de mil setecientos dieciocho, Barbanegra ejecutó su plan más audaz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navegó con su flota directamente al puerto de Charleston, Carolina del Sur.",
+      "text_markdown": "Navegó con su flota directamente al puerto de Charleston, Carolina del Sur.",
+      "tts": {
+        "text": "Navegó con su flota directamente al puerto de Charleston, Carolina del Sur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Charleston era uno de los puertos más ricos e importantes de las colonias americanas.",
+      "text_markdown": "Charleston era uno de los puertos más ricos e importantes de las colonias americanas.",
+      "tts": {
+        "text": "Charleston era uno de los puertos más ricos e importantes de las colonias americanas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lo que siguió fue uno de los actos de piratería más descarados de la historia.",
+      "text_markdown": "Lo que siguió fue uno de los actos de piratería más descarados de la historia.",
+      "tts": {
+        "text": "Lo que siguió fue uno de los actos de piratería más descarados de la historia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbanegra bloqueó todo el puerto de Charleston.",
+      "text_markdown": "Barbanegra bloqueó todo el puerto de Charleston.",
+      "tts": {
+        "text": "Barbanegra bloqueó todo el puerto de Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ningún barco podía entrar ni salir sin su permiso.",
+      "text_markdown": "Ningún barco podía entrar ni salir sin su permiso.",
+      "tts": {
+        "text": "Ningún barco podía entrar ni salir sin su permiso.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Durante casi una semana, mantuvo la ciudad como rehén.",
+      "text_markdown": "Durante casi una semana, mantuvo la ciudad como rehén.",
+      "tts": {
+        "text": "Durante casi una semana, mantuvo la ciudad como rehén.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Capturó cada navío que intentó pasar por la boca del puerto.",
+      "text_markdown": "Capturó cada navío que intentó pasar por la boca del puerto.",
+      "tts": {
+        "text": "Capturó cada navío que intentó pasar por la boca del puerto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se apoderó de al menos 8 barcos durante el bloqueo.",
+      "text_markdown": "Se apoderó de al menos 8 barcos durante el bloqueo.",
+      "tts": {
+        "text": "Se apoderó de al menos ocho barcos durante el bloqueo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Entre sus prisioneros se encontraban algunos de los ciudadanos más prominentes de Charleston.",
+      "text_markdown": "Entre sus prisioneros se encontraban algunos de los ciudadanos más prominentes de Charleston.",
+      "tts": {
+        "text": "Entre sus prisioneros se encontraban algunos de los ciudadanos más prominentes de Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tomó rehenes y amenazó con matarlos a todos.",
+      "text_markdown": "Tomó rehenes y amenazó con matarlos a todos.",
+      "tts": {
+        "text": "Tomó rehenes y amenazó con matarlos a todos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La demanda de Barbanegra fue sorprendente.",
+      "text_markdown": "La demanda de Barbanegra fue sorprendente.",
+      "tts": {
+        "text": "La demanda de Barbanegra fue sorprendente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No pidió oro ni joyas.",
+      "text_markdown": "No pidió oro ni joyas.",
+      "tts": {
+        "text": "No pidió oro ni joyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En cambio, exigió un cofre de medicinas.",
+      "text_markdown": "En cambio, exigió un cofre de medicinas.",
+      "tts": {
+        "text": "En cambio, exigió un cofre de medicinas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los historiadores creen que su tripulación sufría de sífilis y otras enfermedades comunes entre marineros.",
+      "text_markdown": "Los historiadores creen que su tripulación sufría de sífilis y otras enfermedades comunes entre marineros.",
+      "tts": {
+        "text": "Los historiadores creen que su tripulación sufría de sífilis y otras enfermedades comunes entre marineros.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El gobernador de Carolina del Sur no tenía una marina capaz de desafiar la flota de Barbanegra.",
+      "text_markdown": "El gobernador de Carolina del Sur no tenía una marina capaz de desafiar la flota de Barbanegra.",
+      "tts": {
+        "text": "El gobernador de Carolina del Sur no tenía una marina capaz de desafiar la flota de Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tras tensas negociaciones, la ciudad envió las medicinas a los piratas.",
+      "text_markdown": "Tras tensas negociaciones, la ciudad envió las medicinas a los piratas.",
+      "tts": {
+        "text": "Tras tensas negociaciones, la ciudad envió las medicinas a los piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barbanegra liberó a sus rehenes, aunque primero los despojó de sus objetos de valor.",
+      "text_markdown": "Barbanegra liberó a sus rehenes, aunque primero los despojó de sus objetos de valor.",
+      "tts": {
+        "text": "Barbanegra liberó a sus rehenes, aunque primero los despojó de sus objetos de valor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zarpó de Charleston con su reputación en su punto más alto.",
+      "text_markdown": "Zarpó de Charleston con su reputación en su punto más alto.",
+      "tts": {
+        "text": "Zarpó de Charleston con su reputación en su punto más alto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Después de Charleston, Barbanegra navegó al norte hacia la ensenada de Beaufort en Carolina del Norte.",
+      "text_markdown": "Después de Charleston, Barbanegra navegó al norte hacia la ensenada de Beaufort en Carolina del Norte.",
+      "tts": {
+        "text": "Después de Charleston, Barbanegra navegó al norte hacia la ensenada de Beaufort en Carolina del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Allí, La Venganza de la Reina Ana encalló en un banco de arena y se perdió.",
+      "text_markdown": "Allí, La Venganza de la Reina Ana encalló en un banco de arena y se perdió.",
+      "tts": {
+        "text": "Allí, La Venganza de la Reina Ana encalló en un banco de arena y se perdió.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Algunos historiadores creen que esto fue un acto deliberado de Barbanegra para reducir su flota y tripulación.",
+      "text_markdown": "Algunos historiadores creen que esto fue un acto deliberado de Barbanegra para reducir su flota y tripulación.",
+      "tts": {
+        "text": "Algunos historiadores creen que esto fue un acto deliberado de Barbanegra para reducir su flota y tripulación.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "El terror del Atlántico",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cientos de piratas quedaron varados, mientras Barbanegra se quedó con el mejor tesoro para sí.",
+      "text_markdown": "Cientos de piratas quedaron varados, mientras Barbanegra se quedó con el mejor tesoro para sí.",
+      "tts": {
+        "text": "Cientos de piratas quedaron varados, mientras Barbanegra se quedó con el mejor tesoro para sí.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En la cúspide de su poder",
+      "text_markdown": "En la cúspide de su poder"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tras perder La Venganza de la Reina Ana, Barbanegra navegó al pueblo de Bath, Carolina del Norte.",
+      "text_markdown": "Tras perder La Venganza de la Reina Ana, Barbanegra navegó al pueblo de Bath, Carolina del Norte.",
+      "tts": {
+        "text": "Tras perder La Venganza de la Reina Ana, Barbanegra navegó al pueblo de Bath, Carolina del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Allí se reunió con el gobernador Charles Eden y aceptó un perdón real.",
+      "text_markdown": "Allí se reunió con el gobernador Charles Eden y aceptó un perdón real.",
+      "tts": {
+        "text": "Allí se reunió con el gobernador Charles Eden y aceptó un perdón real.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se suponía que el perdón pondría fin a su carrera como pirata.",
+      "text_markdown": "Se suponía que el perdón pondría fin a su carrera como pirata.",
+      "tts": {
+        "text": "Se suponía que el perdón pondría fin a su carrera como pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pero Barbanegra no tenía intención de retirarse.",
+      "text_markdown": "Pero Barbanegra no tenía intención de retirarse.",
+      "tts": {
+        "text": "Pero Barbanegra no tenía intención de retirarse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bath era una pequeña comunidad de unas pocas docenas de casas a orillas del río Pamlico.",
+      "text_markdown": "Bath era una pequeña comunidad de unas pocas docenas de casas a orillas del río Pamlico.",
+      "tts": {
+        "text": "Bath era una pequeña comunidad de unas pocas docenas de casas a orillas del río Pamlico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era un hogar improbable para el pirata más temido del Atlántico.",
+      "text_markdown": "Era un hogar improbable para el pirata más temido del Atlántico.",
+      "tts": {
+        "text": "Era un hogar improbable para el pirata más temido del Atlántico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pero su aislamiento y su gobernador corrupto la hacían perfecta para los propósitos de Barbanegra.",
+      "text_markdown": "Pero su aislamiento y su gobernador corrupto la hacían perfecta para los propósitos de Barbanegra.",
+      "tts": {
+        "text": "Pero su aislamiento y su gobernador corrupto la hacían perfecta para los propósitos de Barbanegra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El gobernador Charles Eden parece haber sido un socio voluntario de Barbanegra.",
+      "text_markdown": "El gobernador Charles Eden parece haber sido un socio voluntario de Barbanegra.",
+      "tts": {
+        "text": "El gobernador Charles Eden parece haber sido un socio voluntario de Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Proporcionó cobertura legal para las actividades continuas del pirata.",
+      "text_markdown": "Proporcionó cobertura legal para las actividades continuas del pirata.",
+      "tts": {
+        "text": "Proporcionó cobertura legal para las actividades continuas del pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barbanegra capturaba barcos en el mar y luego llevaba la carga a Bath.",
+      "text_markdown": "Barbanegra capturaba barcos en el mar y luego llevaba la carga a Bath.",
+      "tts": {
+        "text": "Barbanegra capturaba barcos en el mar y luego llevaba la carga a Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eden declaraba los bienes como salvamento legítimo y se quedaba con una parte de las ganancias.",
+      "text_markdown": "Eden declaraba los bienes como salvamento legítimo y se quedaba con una parte de las ganancias.",
+      "tts": {
+        "text": "Eden declaraba los bienes como salvamento legítimo y se quedaba con una parte de las ganancias.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbanegra se casó con una mujer local durante su estancia en Bath.",
+      "text_markdown": "Barbanegra se casó con una mujer local durante su estancia en Bath.",
+      "tts": {
+        "text": "Barbanegra se casó con una mujer local durante su estancia en Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se cree que tenía alrededor de 16 años.",
+      "text_markdown": "Se cree que tenía alrededor de 16 años.",
+      "tts": {
+        "text": "Se cree que tenía alrededor de dieciséis años.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los registros históricos sugieren que puede haber sido su decimocuarta esposa.",
+      "text_markdown": "Los registros históricos sugieren que puede haber sido su decimocuarta esposa.",
+      "tts": {
+        "text": "Los registros históricos sugieren que puede haber sido su decimocuarta esposa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La mayoría de estos matrimonios eran arreglos informales comunes entre hombres de mar.",
+      "text_markdown": "La mayoría de estos matrimonios eran arreglos informales comunes entre hombres de mar.",
+      "tts": {
+        "text": "La mayoría de estos matrimonios eran arreglos informales comunes entre hombres de mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A pesar de su perdón, Barbanegra continuó atacando la navegación.",
+      "text_markdown": "A pesar de su perdón, Barbanegra continuó atacando la navegación.",
+      "tts": {
+        "text": "A pesar de su perdón, Barbanegra continuó atacando la navegación.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afirmaba que los barcos capturados eran navíos españoles o franceses, lo que los convertía en presas legítimas.",
+      "text_markdown": "Afirmaba que los barcos capturados eran navíos españoles o franceses, lo que los convertía en presas legítimas.",
+      "tts": {
+        "text": "Afirmaba que los barcos capturados eran navíos españoles o franceses, lo que los convertía en presas legítimas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El gobernador Eden certificaba convenientemente estas afirmaciones sin investigar.",
+      "text_markdown": "El gobernador Eden certificaba convenientemente estas afirmaciones sin investigar.",
+      "tts": {
+        "text": "El gobernador Eden certificaba convenientemente estas afirmaciones sin investigar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La relación de Barbanegra con la comunidad local era compleja.",
+      "text_markdown": "La relación de Barbanegra con la comunidad local era compleja.",
+      "tts": {
+        "text": "La relación de Barbanegra con la comunidad local era compleja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algunos residentes agradecían la riqueza que traía a su pueblo en dificultades.",
+      "text_markdown": "Algunos residentes agradecían la riqueza que traía a su pueblo en dificultades.",
+      "tts": {
+        "text": "Algunos residentes agradecían la riqueza que traía a su pueblo en dificultades.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otros vivían aterrados del violento pirata y su tripulación armada.",
+      "text_markdown": "Otros vivían aterrados del violento pirata y su tripulación armada.",
+      "tts": {
+        "text": "Otros vivían aterrados del violento pirata y su tripulación armada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nadie se atrevía a desafiarlo abiertamente.",
+      "text_markdown": "Nadie se atrevía a desafiarlo abiertamente.",
+      "tts": {
+        "text": "Nadie se atrevía a desafiarlo abiertamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Organizaba suntuosas reuniones en su casa de Bath.",
+      "text_markdown": "Organizaba suntuosas reuniones en su casa de Bath.",
+      "tts": {
+        "text": "Organizaba suntuosas reuniones en su casa de Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Personalidades locales prominentes, incluido el propio gobernador, asistían a estos eventos.",
+      "text_markdown": "Personalidades locales prominentes, incluido el propio gobernador, asistían a estos eventos.",
+      "tts": {
+        "text": "Personalidades locales prominentes, incluido el propio gobernador, asistían a estos eventos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El vino y los licores robados fluían libremente.",
+      "text_markdown": "El vino y los licores robados fluían libremente.",
+      "tts": {
+        "text": "El vino y los licores robados fluían libremente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Estas fiestas ayudaban a Barbanegra a mantener su red de aliados e informantes.",
+      "text_markdown": "Estas fiestas ayudaban a Barbanegra a mantener su red de aliados e informantes.",
+      "tts": {
+        "text": "Estas fiestas ayudaban a Barbanegra a mantener su red de aliados e informantes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbanegra también mantenía un escondite en la isla de Ocracoke.",
+      "text_markdown": "Barbanegra también mantenía un escondite en la isla de Ocracoke.",
+      "tts": {
+        "text": "Barbanegra también mantenía un escondite en la isla de Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke era una remota isla barrera en los Outer Banks de Carolina del Norte.",
+      "text_markdown": "Ocracoke era una remota isla barrera en los Outer Banks de Carolina del Norte.",
+      "tts": {
+        "text": "Ocracoke era una remota isla barrera en los Outer Banks de Carolina del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus aguas poco profundas y traicioneros bajíos hacían casi imposible que grandes buques de guerra se acercaran.",
+      "text_markdown": "Sus aguas poco profundas y traicioneros bajíos hacían casi imposible que grandes buques de guerra se acercaran.",
+      "tts": {
+        "text": "Sus aguas poco profundas y traicioneros bajíos hacían casi imposible que grandes buques de guerra se acercaran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Para un pirata que conocía los canales, era una fortaleza inexpugnable.",
+      "text_markdown": "Para un pirata que conocía los canales, era una fortaleza inexpugnable.",
+      "tts": {
+        "text": "Para un pirata que conocía los canales, era una fortaleza inexpugnable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Otros piratas venían a Ocracoke para comerciar, reabastecerse y socializar.",
+      "text_markdown": "Otros piratas venían a Ocracoke para comerciar, reabastecerse y socializar.",
+      "tts": {
+        "text": "Otros piratas venían a Ocracoke para comerciar, reabastecerse y socializar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charles Vane, otro notorio capitán pirata, visitó a Barbanegra allí.",
+      "text_markdown": "Charles Vane, otro notorio capitán pirata, visitó a Barbanegra allí.",
+      "tts": {
+        "text": "Charles Vane, otro notorio capitán pirata, visitó a Barbanegra allí.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las dos tripulaciones celebraron una fiesta de varios días en la playa.",
+      "text_markdown": "Las dos tripulaciones celebraron una fiesta de varios días en la playa.",
+      "tts": {
+        "text": "Las dos tripulaciones celebraron una fiesta de varios días en la playa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los informes de esta reunión pirata alarmaron a los funcionarios coloniales a lo largo de la costa.",
+      "text_markdown": "Los informes de esta reunión pirata alarmaron a los funcionarios coloniales a lo largo de la costa.",
+      "tts": {
+        "text": "Los informes de esta reunión pirata alarmaron a los funcionarios coloniales a lo largo de la costa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los piratas vivían según un código de conducta que Barbanegra hacía cumplir estrictamente.",
+      "text_markdown": "Los piratas vivían según un código de conducta que Barbanegra hacía cumplir estrictamente.",
+      "tts": {
+        "text": "Los piratas vivían según un código de conducta que Barbanegra hacía cumplir estrictamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cada hombre tenía voto en las decisiones importantes.",
+      "text_markdown": "Cada hombre tenía voto en las decisiones importantes.",
+      "tts": {
+        "text": "Cada hombre tenía voto en las decisiones importantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El botín se dividía según participaciones acordadas.",
+      "text_markdown": "El botín se dividía según participaciones acordadas.",
+      "tts": {
+        "text": "El botín se dividía según participaciones acordadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cualquiera sorprendido robando del tesoro común era castigado severamente.",
+      "text_markdown": "Cualquiera sorprendido robando del tesoro común era castigado severamente.",
+      "tts": {
+        "text": "Cualquiera sorprendido robando del tesoro común era castigado severamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los comerciantes y propietarios de plantaciones a lo largo de la costa estaban desesperados.",
+      "text_markdown": "Los comerciantes y propietarios de plantaciones a lo largo de la costa estaban desesperados.",
+      "tts": {
+        "text": "Los comerciantes y propietarios de plantaciones a lo largo de la costa estaban desesperados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Su comercio estaba siendo estrangulado por las constantes incursiones de Barbanegra.",
+      "text_markdown": "Su comercio estaba siendo estrangulado por las constantes incursiones de Barbanegra.",
+      "tts": {
+        "text": "Su comercio estaba siendo estrangulado por las constantes incursiones de Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Las tarifas de seguro para barcos que viajaban por aguas de Carolina se dispararon.",
+      "text_markdown": "Las tarifas de seguro para barcos que viajaban por aguas de Carolina se dispararon.",
+      "tts": {
+        "text": "Las tarifas de seguro para barcos que viajaban por aguas de Carolina se dispararon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algunos comerciantes dejaron de enviar barcos por completo, prefiriendo perder negocios a perderlo todo.",
+      "text_markdown": "Algunos comerciantes dejaron de enviar barcos por completo, prefiriendo perder negocios a perderlo todo.",
+      "tts": {
+        "text": "Algunos comerciantes dejaron de enviar barcos por completo, prefiriendo perder negocios a perderlo todo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El gobernador de Virginia, Alexander Spotswood, estaba particularmente indignado.",
+      "text_markdown": "El gobernador de Virginia, Alexander Spotswood, estaba particularmente indignado.",
+      "tts": {
+        "text": "El gobernador de Virginia, Alexander Spotswood, estaba particularmente indignado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La economía de Virginia dependía de las exportaciones de tabaco enviadas a través de la bahía de Chesapeake.",
+      "text_markdown": "La economía de Virginia dependía de las exportaciones de tabaco enviadas a través de la bahía de Chesapeake.",
+      "tts": {
+        "text": "La economía de Virginia dependía de las exportaciones de tabaco enviadas a través de la bahía de Chesapeake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La presencia cercana de Barbanegra amenazaba la industria más vital de Virginia.",
+      "text_markdown": "La presencia cercana de Barbanegra amenazaba la industria más vital de Virginia.",
+      "tts": {
+        "text": "La presencia cercana de Barbanegra amenazaba la industria más vital de Virginia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spotswood decidió que si Carolina del Norte no se ocupaba del pirata, Virginia lo haría.",
+      "text_markdown": "Spotswood decidió que si Carolina del Norte no se ocupaba del pirata, Virginia lo haría.",
+      "tts": {
+        "text": "Spotswood decidió que si Carolina del Norte no se ocupaba del pirata, Virginia lo haría.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood comenzó a planear en secreto una operación militar para capturar o matar a Barbanegra.",
+      "text_markdown": "Spotswood comenzó a planear en secreto una operación militar para capturar o matar a Barbanegra.",
+      "tts": {
+        "text": "Spotswood comenzó a planear en secreto una operación militar para capturar o matar a Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enviar fuerzas de Virginia a Carolina del Norte sin permiso era legalmente cuestionable.",
+      "text_markdown": "Enviar fuerzas de Virginia a Carolina del Norte sin permiso era legalmente cuestionable.",
+      "tts": {
+        "text": "Enviar fuerzas de Virginia a Carolina del Norte sin permiso era legalmente cuestionable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "En la cúspide de su poder",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pero Spotswood decidió actuar de todos modos, creyendo que la amenaza justificaba medidas extraordinarias.",
+      "text_markdown": "Pero Spotswood decidió actuar de todos modos, creyendo que la amenaza justificaba medidas extraordinarias.",
+      "tts": {
+        "text": "Pero Spotswood decidió actuar de todos modos, creyendo que la amenaza justificaba medidas extraordinarias.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La batalla de Ocracoke",
+      "text_markdown": "La batalla de Ocracoke"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En noviembre de 1718, el gobernador Spotswood puso su plan en acción.",
+      "text_markdown": "En noviembre de 1718, el gobernador Spotswood puso su plan en acción.",
+      "tts": {
+        "text": "En noviembre de mil setecientos dieciocho, el gobernador Spotswood puso su plan en acción.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alquiló dos pequeños balandros a propietarios civiles y los puso bajo mando naval.",
+      "text_markdown": "Alquiló dos pequeños balandros a propietarios civiles y los puso bajo mando naval.",
+      "tts": {
+        "text": "Alquiló dos pequeños balandros a propietarios civiles y los puso bajo mando naval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La expedición fue liderada por el teniente Robert Maynard de la Marina Real.",
+      "text_markdown": "La expedición fue liderada por el teniente Robert Maynard de la Marina Real.",
+      "tts": {
+        "text": "La expedición fue liderada por el teniente Robert Maynard de la Marina Real.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maynard era un oficial experimentado con reputación de valor y determinación.",
+      "text_markdown": "Maynard era un oficial experimentado con reputación de valor y determinación.",
+      "tts": {
+        "text": "Maynard era un oficial experimentado con reputación de valor y determinación.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood eligió balandros porque tenían un calado poco profundo.",
+      "text_markdown": "Spotswood eligió balandros porque tenían un calado poco profundo.",
+      "tts": {
+        "text": "Spotswood eligió balandros porque tenían un calado poco profundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Solo embarcaciones de fondo plano podían navegar por los canales alrededor de la isla de Ocracoke.",
+      "text_markdown": "Solo embarcaciones de fondo plano podían navegar por los canales alrededor de la isla de Ocracoke.",
+      "tts": {
+        "text": "Solo embarcaciones de fondo plano podían navegar por los canales alrededor de la isla de Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los buques de guerra más grandes encallarían mucho antes de llegar al fondeadero de Barbanegra.",
+      "text_markdown": "Los buques de guerra más grandes encallarían mucho antes de llegar al fondeadero de Barbanegra.",
+      "tts": {
+        "text": "Los buques de guerra más grandes encallarían mucho antes de llegar al fondeadero de Barbanegra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los dos balandros de Maynard llevaban unos 60 hombres en total.",
+      "text_markdown": "Los dos balandros de Maynard llevaban unos 60 hombres en total.",
+      "tts": {
+        "text": "Los dos balandros de Maynard llevaban unos sesenta hombres en total.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eran marineros de buques de guerra de la Marina Real estacionados en Virginia.",
+      "text_markdown": "Eran marineros de buques de guerra de la Marina Real estacionados en Virginia.",
+      "tts": {
+        "text": "Eran marineros de buques de guerra de la Marina Real estacionados en Virginia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A los hombres se les prometió una parte de cualquier botín pirata que capturaran.",
+      "text_markdown": "A los hombres se les prometió una parte de cualquier botín pirata que capturaran.",
+      "tts": {
+        "text": "A los hombres se les prometió una parte de cualquier botín pirata que capturaran.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La expedición navegó al sur desde Virginia en secreto.",
+      "text_markdown": "La expedición navegó al sur desde Virginia en secreto.",
+      "tts": {
+        "text": "La expedición navegó al sur desde Virginia en secreto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spotswood no dijo casi a nadie sobre la misión para evitar que Barbanegra fuera advertido.",
+      "text_markdown": "Spotswood no dijo casi a nadie sobre la misión para evitar que Barbanegra fuera advertido.",
+      "tts": {
+        "text": "Spotswood no dijo casi a nadie sobre la misión para evitar que Barbanegra fuera advertido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La velocidad y la sorpresa eran esenciales para el éxito del plan.",
+      "text_markdown": "La velocidad y la sorpresa eran esenciales para el éxito del plan.",
+      "tts": {
+        "text": "La velocidad y la sorpresa eran esenciales para el éxito del plan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La noche del 21 de noviembre de 1718, los balandros de Maynard llegaron cerca de la isla de Ocracoke.",
+      "text_markdown": "La noche del 21 de noviembre de 1718, los balandros de Maynard llegaron cerca de la isla de Ocracoke.",
+      "tts": {
+        "text": "La noche del veintiuno de noviembre de mil setecientos dieciocho, los balandros de Maynard llegaron cerca de la isla de Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anclaron al borde del canal y esperaron el amanecer.",
+      "text_markdown": "Anclaron al borde del canal y esperaron el amanecer.",
+      "tts": {
+        "text": "Anclaron al borde del canal y esperaron el amanecer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maynard podía ver las luces del balandro Adventure de Barbanegra en el puerto.",
+      "text_markdown": "Maynard podía ver las luces del balandro Adventure de Barbanegra en el puerto.",
+      "tts": {
+        "text": "Maynard podía ver las luces del balandro Adventure de Barbanegra en el puerto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los piratas estaban celebrando, sin saber que su perdición se acercaba.",
+      "text_markdown": "Los piratas estaban celebrando, sin saber que su perdición se acercaba.",
+      "tts": {
+        "text": "Los piratas estaban celebrando, sin saber que su perdición se acercaba.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al primer rayo de luz, los balandros de Maynard entraron al canal.",
+      "text_markdown": "Al primer rayo de luz, los balandros de Maynard entraron al canal.",
+      "tts": {
+        "text": "Al primer rayo de luz, los balandros de Maynard entraron al canal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbanegra los avistó inmediatamente y los reconoció como una amenaza.",
+      "text_markdown": "Barbanegra los avistó inmediatamente y los reconoció como una amenaza.",
+      "tts": {
+        "text": "Barbanegra los avistó inmediatamente y los reconoció como una amenaza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cortó el cable de su ancla e intentó maniobrar para combatir.",
+      "text_markdown": "Cortó el cable de su ancla e intentó maniobrar para combatir.",
+      "tts": {
+        "text": "Cortó el cable de su ancla e intentó maniobrar para combatir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las estrechas y poco profundas aguas de la ensenada de Ocracoke convirtieron la batalla en una pelea cuerpo a cuerpo.",
+      "text_markdown": "Las estrechas y poco profundas aguas de la ensenada de Ocracoke convirtieron la batalla en una pelea cuerpo a cuerpo.",
+      "tts": {
+        "text": "Las estrechas y poco profundas aguas de la ensenada de Ocracoke convirtieron la batalla en una pelea cuerpo a cuerpo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El primer movimiento de Barbanegra fue devastador.",
+      "text_markdown": "El primer movimiento de Barbanegra fue devastador.",
+      "tts": {
+        "text": "El primer movimiento de Barbanegra fue devastador.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Disparó una andanada de cañones cargados con metralla y chatarra metálica.",
+      "text_markdown": "Disparó una andanada de cañones cargados con metralla y chatarra metálica.",
+      "tts": {
+        "text": "Disparó una andanada de cañones cargados con metralla y chatarra metálica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La explosión barrió la cubierta de uno de los balandros de Maynard.",
+      "text_markdown": "La explosión barrió la cubierta de uno de los balandros de Maynard.",
+      "tts": {
+        "text": "La explosión barrió la cubierta de uno de los balandros de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El comandante del balandro murió al instante, junto con varios de sus hombres.",
+      "text_markdown": "El comandante del balandro murió al instante, junto con varios de sus hombres.",
+      "tts": {
+        "text": "El comandante del balandro murió al instante, junto con varios de sus hombres.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El propio balandro de Maynard sufrió graves daños por el fuego de cañón.",
+      "text_markdown": "El propio balandro de Maynard sufrió graves daños por el fuego de cañón.",
+      "tts": {
+        "text": "El propio balandro de Maynard sufrió graves daños por el fuego de cañón.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aproximadamente un tercio de su tripulación murió o resultó herida en el intercambio inicial.",
+      "text_markdown": "Aproximadamente un tercio de su tripulación murió o resultó herida en el intercambio inicial.",
+      "tts": {
+        "text": "Aproximadamente un tercio de su tripulación murió o resultó herida en el intercambio inicial.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pero Maynard tenía un plan ingenioso.",
+      "text_markdown": "Pero Maynard tenía un plan ingenioso.",
+      "tts": {
+        "text": "Pero Maynard tenía un plan ingenioso.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ordenó a la mayoría de sus hombres supervivientes esconderse bajo cubierta.",
+      "text_markdown": "Ordenó a la mayoría de sus hombres supervivientes esconderse bajo cubierta.",
+      "tts": {
+        "text": "Ordenó a la mayoría de sus hombres supervivientes esconderse bajo cubierta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Solo unos pocos marineros permanecieron visibles en la cubierta superior.",
+      "text_markdown": "Solo unos pocos marineros permanecieron visibles en la cubierta superior.",
+      "tts": {
+        "text": "Solo unos pocos marineros permanecieron visibles en la cubierta superior.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuando Barbanegra miró hacia el barco aparentemente vacío, asumió que la mayoría de la tripulación estaba muerta.",
+      "text_markdown": "Cuando Barbanegra miró hacia el barco aparentemente vacío, asumió que la mayoría de la tripulación estaba muerta.",
+      "tts": {
+        "text": "Cuando Barbanegra miró hacia el barco aparentemente vacío, asumió que la mayoría de la tripulación estaba muerta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ordenó a sus piratas abordar el balandro de Maynard para rematarlo.",
+      "text_markdown": "Ordenó a sus piratas abordar el balandro de Maynard para rematarlo.",
+      "tts": {
+        "text": "Ordenó a sus piratas abordar el balandro de Maynard para rematarlo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbanegra y sus hombres se columpiaron sobre la cubierta del balandro de Maynard.",
+      "text_markdown": "Barbanegra y sus hombres se columpiaron sobre la cubierta del balandro de Maynard.",
+      "tts": {
+        "text": "Barbanegra y sus hombres se columpiaron sobre la cubierta del balandro de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En ese momento, Maynard dio la señal.",
+      "text_markdown": "En ese momento, Maynard dio la señal.",
+      "tts": {
+        "text": "En ese momento, Maynard dio la señal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus marineros ocultos irrumpieron desde abajo, armas en mano.",
+      "text_markdown": "Sus marineros ocultos irrumpieron desde abajo, armas en mano.",
+      "tts": {
+        "text": "Sus marineros ocultos irrumpieron desde abajo, armas en mano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los piratas se encontraron atrapados en una furiosa batalla cuerpo a cuerpo.",
+      "text_markdown": "Los piratas se encontraron atrapados en una furiosa batalla cuerpo a cuerpo.",
+      "tts": {
+        "text": "Los piratas se encontraron atrapados en una furiosa batalla cuerpo a cuerpo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbanegra y Maynard lucharon directamente el uno contra el otro.",
+      "text_markdown": "Barbanegra y Maynard lucharon directamente el uno contra el otro.",
+      "tts": {
+        "text": "Barbanegra y Maynard lucharon directamente el uno contra el otro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbanegra blandió su sable con tal fuerza que partió la hoja de la espada de Maynard.",
+      "text_markdown": "Barbanegra blandió su sable con tal fuerza que partió la hoja de la espada de Maynard.",
+      "tts": {
+        "text": "Barbanegra blandió su sable con tal fuerza que partió la hoja de la espada de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuando Barbanegra alzó su sable para dar el golpe mortal, uno de los hombres de Maynard le asestó un tajo en el cuello.",
+      "text_markdown": "Cuando Barbanegra alzó su sable para dar el golpe mortal, uno de los hombres de Maynard le asestó un tajo en el cuello.",
+      "tts": {
+        "text": "Cuando Barbanegra alzó su sable para dar el golpe mortal, uno de los hombres de Maynard le asestó un tajo en el cuello.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Barbanegra se tambaleó pero siguió luchando.",
+      "text_markdown": "Barbanegra se tambaleó pero siguió luchando.",
+      "tts": {
+        "text": "Barbanegra se tambaleó pero siguió luchando.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Finalmente, Barbanegra se desplomó y murió en la cubierta del balandro de Maynard.",
+      "text_markdown": "Finalmente, Barbanegra se desplomó y murió en la cubierta del balandro de Maynard.",
+      "tts": {
+        "text": "Finalmente, Barbanegra se desplomó y murió en la cubierta del balandro de Maynard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cuando examinaron su cuerpo, contaron 5 heridas de bala y más de 20 cortes de espada.",
+      "text_markdown": "Cuando examinaron su cuerpo, contaron 5 heridas de bala y más de 20 cortes de espada.",
+      "tts": {
+        "text": "Cuando examinaron su cuerpo, contaron cinco heridas de bala y más de veinte cortes de espada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los piratas restantes se rindieron al ver caer a su capitán.",
+      "text_markdown": "Los piratas restantes se rindieron al ver caer a su capitán.",
+      "tts": {
+        "text": "Los piratas restantes se rindieron al ver caer a su capitán.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard ordenó cortar la cabeza de Barbanegra.",
+      "text_markdown": "Maynard ordenó cortar la cabeza de Barbanegra.",
+      "tts": {
+        "text": "Maynard ordenó cortar la cabeza de Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La cabeza fue colgada del bauprés de su balandro como prueba de la muerte.",
+      "text_markdown": "La cabeza fue colgada del bauprés de su balandro como prueba de la muerte.",
+      "tts": {
+        "text": "La cabeza fue colgada del bauprés de su balandro como prueba de la muerte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El cuerpo decapitado de Barbanegra fue arrojado a las aguas de la ensenada de Ocracoke.",
+      "text_markdown": "El cuerpo decapitado de Barbanegra fue arrojado a las aguas de la ensenada de Ocracoke.",
+      "tts": {
+        "text": "El cuerpo decapitado de Barbanegra fue arrojado a las aguas de la ensenada de Ocracoke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "La batalla de Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La leyenda dice que el cuerpo nadó alrededor del balandro antes de hundirse, aunque esto es sin duda ficción.",
+      "text_markdown": "La leyenda dice que el cuerpo nadó alrededor del balandro antes de hundirse, aunque esto es sin duda ficción.",
+      "tts": {
+        "text": "La leyenda dice que el cuerpo nadó alrededor del balandro antes de hundirse, aunque esto es sin duda ficción.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La leyenda que nunca muere",
+      "text_markdown": "La leyenda que nunca muere"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La muerte de Barbanegra envió ondas de choque por la comunidad pirata.",
+      "text_markdown": "La muerte de Barbanegra envió ondas de choque por la comunidad pirata.",
+      "tts": {
+        "text": "La muerte de Barbanegra envió ondas de choque por la comunidad pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si el pirata más temido del Atlántico podía ser cazado y asesinado, nadie estaba a salvo.",
+      "text_markdown": "Si el pirata más temido del Atlántico podía ser cazado y asesinado, nadie estaba a salvo.",
+      "tts": {
+        "text": "Si el pirata más temido del Atlántico podía ser cazado y asesinado, nadie estaba a salvo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muchos piratas aceptaron perdones reales en los meses siguientes.",
+      "text_markdown": "Muchos piratas aceptaron perdones reales en los meses siguientes.",
+      "tts": {
+        "text": "Muchos piratas aceptaron perdones reales en los meses siguientes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La Edad de Oro de la Piratería estaba entrando en sus últimos años.",
+      "text_markdown": "La Edad de Oro de la Piratería estaba entrando en sus últimos años.",
+      "tts": {
+        "text": "La Edad de Oro de la Piratería estaba entrando en sus últimos años.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los miembros supervivientes de la tripulación de Barbanegra fueron juzgados en Virginia.",
+      "text_markdown": "Los miembros supervivientes de la tripulación de Barbanegra fueron juzgados en Virginia.",
+      "tts": {
+        "text": "Los miembros supervivientes de la tripulación de Barbanegra fueron juzgados en Virginia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La mayoría fueron declarados culpables y ahorcados.",
+      "text_markdown": "La mayoría fueron declarados culpables y ahorcados.",
+      "tts": {
+        "text": "La mayoría fueron declarados culpables y ahorcados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sus cuerpos fueron exhibidos en jaulas de hierro a lo largo del malecón como una sombría advertencia.",
+      "text_markdown": "Sus cuerpos fueron exhibidos en jaulas de hierro a lo largo del malecón como una sombría advertencia.",
+      "tts": {
+        "text": "Sus cuerpos fueron exhibidos en jaulas de hierro a lo largo del malecón como una sombría advertencia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las autoridades coloniales querían dejar absolutamente claro que la era de tolerancia con los piratas había terminado.",
+      "text_markdown": "Las autoridades coloniales querían dejar absolutamente claro que la era de tolerancia con los piratas había terminado.",
+      "tts": {
+        "text": "Las autoridades coloniales querían dejar absolutamente claro que la era de tolerancia con los piratas había terminado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1724, se publicó en Londres un libro llamado Historia general de los piratas.",
+      "text_markdown": "En 1724, se publicó en Londres un libro llamado Historia general de los piratas.",
+      "tts": {
+        "text": "En mil setecientos veinticuatro, se publicó en Londres un libro llamado Historia general de los piratas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El autor figuraba como el capitán Charles Johnson, aunque su verdadera identidad sigue siendo desconocida.",
+      "text_markdown": "El autor figuraba como el capitán Charles Johnson, aunque su verdadera identidad sigue siendo desconocida.",
+      "tts": {
+        "text": "El autor figuraba como el capitán Charles Johnson, aunque su verdadera identidad sigue siendo desconocida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Este libro dedicó un capítulo entero a las hazañas de Barbanegra.",
+      "text_markdown": "Este libro dedicó un capítulo entero a las hazañas de Barbanegra.",
+      "tts": {
+        "text": "Este libro dedicó un capítulo entero a las hazañas de Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fue la base sobre la que se construyó la leyenda de Barbanegra.",
+      "text_markdown": "Fue la base sobre la que se construyó la leyenda de Barbanegra.",
+      "tts": {
+        "text": "Fue la base sobre la que se construyó la leyenda de Barbanegra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A lo largo de los siglos, Barbanegra se convirtió en el símbolo mismo de la piratería.",
+      "text_markdown": "A lo largo de los siglos, Barbanegra se convirtió en el símbolo mismo de la piratería.",
+      "tts": {
+        "text": "A lo largo de los siglos, Barbanegra se convirtió en el símbolo mismo de la piratería.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cuando la gente imagina a un pirata, típicamente visualiza a alguien que se parece a Barbanegra.",
+      "text_markdown": "Cuando la gente imagina a un pirata, típicamente visualiza a alguien que se parece a Barbanegra.",
+      "tts": {
+        "text": "Cuando la gente imagina a un pirata, típicamente visualiza a alguien que se parece a Barbanegra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La enorme barba, las mechas humeantes y la bandolera de pistolas se han convertido en la imagen pirata estándar.",
+      "text_markdown": "La enorme barba, las mechas humeantes y la bandolera de pistolas se han convertido en la imagen pirata estándar.",
+      "tts": {
+        "text": "La enorme barba, las mechas humeantes y la bandolera de pistolas se han convertido en la imagen pirata estándar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ningún otro pirata ha tenido un impacto tan duradero en la cultura popular.",
+      "text_markdown": "Ningún otro pirata ha tenido un impacto tan duradero en la cultura popular.",
+      "tts": {
+        "text": "Ningún otro pirata ha tenido un impacto tan duradero en la cultura popular.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1996, arqueólogos marinos descubrieron los restos de un barco cerca de Beaufort, Carolina del Norte.",
+      "text_markdown": "En 1996, arqueólogos marinos descubrieron los restos de un barco cerca de Beaufort, Carolina del Norte.",
+      "tts": {
+        "text": "En mil novecientos noventa y seis, arqueólogos marinos descubrieron los restos de un barco cerca de Beaufort, Carolina del Norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Creen que son los restos de La Venganza de la Reina Ana.",
+      "text_markdown": "Creen que son los restos de La Venganza de la Reina Ana.",
+      "tts": {
+        "text": "Creen que son los restos de La Venganza de la Reina Ana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se han recuperado más de 280.000 artefactos del sitio desde entonces.",
+      "text_markdown": "Se han recuperado más de 280.000 artefactos del sitio desde entonces.",
+      "tts": {
+        "text": "Se han recuperado más de doscientos ochenta mil artefactos del sitio desde entonces.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Incluyen cañones, anclas, instrumentos médicos y polvo de oro.",
+      "text_markdown": "Incluyen cañones, anclas, instrumentos médicos y polvo de oro.",
+      "tts": {
+        "text": "Incluyen cañones, anclas, instrumentos médicos y polvo de oro.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los artefactos nos cuentan mucho sobre la vida diaria a bordo de un barco pirata.",
+      "text_markdown": "Los artefactos nos cuentan mucho sobre la vida diaria a bordo de un barco pirata.",
+      "tts": {
+        "text": "Los artefactos nos cuentan mucho sobre la vida diaria a bordo de un barco pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Revelan que la tripulación comía bien, con evidencia de cerdo, res y pescado en su dieta.",
+      "text_markdown": "Revelan que la tripulación comía bien, con evidencia de cerdo, res y pescado en su dieta.",
+      "tts": {
+        "text": "Revelan que la tripulación comía bien, con evidencia de cerdo, res y pescado en su dieta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los instrumentos médicos sugieren que el barco llevaba un cirujano, como la mayoría de los grandes navíos.",
+      "text_markdown": "Los instrumentos médicos sugieren que el barco llevaba un cirujano, como la mayoría de los grandes navíos.",
+      "tts": {
+        "text": "Los instrumentos médicos sugieren que el barco llevaba un cirujano, como la mayoría de los grandes navíos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El polvo de oro confirma la enorme riqueza que la piratería podía generar.",
+      "text_markdown": "El polvo de oro confirma la enorme riqueza que la piratería podía generar.",
+      "tts": {
+        "text": "El polvo de oro confirma la enorme riqueza que la piratería podía generar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La carrera de Barbanegra como pirata duró solo unos dos años.",
+      "text_markdown": "La carrera de Barbanegra como pirata duró solo unos dos años.",
+      "tts": {
+        "text": "La carrera de Barbanegra como pirata duró solo unos dos años.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En ese breve tiempo, capturó docenas de barcos y aterrorizó toda una costa.",
+      "text_markdown": "En ese breve tiempo, capturó docenas de barcos y aterrorizó toda una costa.",
+      "tts": {
+        "text": "En ese breve tiempo, capturó docenas de barcos y aterrorizó toda una costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bloqueó un importante puerto colonial y desafió a la marina más poderosa del mundo.",
+      "text_markdown": "Bloqueó un importante puerto colonial y desafió a la marina más poderosa del mundo.",
+      "tts": {
+        "text": "Bloqueó un importante puerto colonial y desafió a la marina más poderosa del mundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su historia sigue siendo uno de los capítulos más dramáticos de la historia marítima.",
+      "text_markdown": "Su historia sigue siendo uno de los capítulos más dramáticos de la historia marítima.",
+      "tts": {
+        "text": "Su historia sigue siendo uno de los capítulos más dramáticos de la historia marítima.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoy, el nombre de Barbanegra pervive en innumerables libros, películas y programas de televisión.",
+      "text_markdown": "Hoy, el nombre de Barbanegra pervive en innumerables libros, películas y programas de televisión.",
+      "tts": {
+        "text": "Hoy, el nombre de Barbanegra pervive en innumerables libros, películas y programas de televisión.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La isla de Ocracoke es ahora un destino turístico popular, en parte por su historia pirata.",
+      "text_markdown": "La isla de Ocracoke es ahora un destino turístico popular, en parte por su historia pirata.",
+      "tts": {
+        "text": "La isla de Ocracoke es ahora un destino turístico popular, en parte por su historia pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cada año, el pueblo celebra un festival conmemorando el aniversario de la famosa batalla.",
+      "text_markdown": "Cada año, el pueblo celebra un festival conmemorando el aniversario de la famosa batalla.",
+      "tts": {
+        "text": "Cada año, el pueblo celebra un festival conmemorando el aniversario de la famosa batalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "La leyenda que nunca muere",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El pirata que encendía su barba se ha convertido en una figura inmortal de la imaginación popular.",
+      "text_markdown": "El pirata que encendía su barba se ha convertido en una figura inmortal de la imaginación popular.",
+      "tts": {
+        "text": "El pirata que encendía su barba se ha convertido en una figura inmortal de la imaginación popular.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

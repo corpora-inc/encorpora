@@ -1,0 +1,4259 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_olafur_egilsson",
+  "language": "tr",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu gerçek bir hikâye, ancak korsanın bakış açısından anlatılmıyor.",
+      "text_markdown": "Bu gerçek bir hikâye, ancak korsanın bakış açısından anlatılmıyor.",
+      "tts": {
+        "text": "Bu gerçek bir hikâye, ancak korsanın bakış açısından anlatılmıyor.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Götürülenlerin tarafından anlatılıyor.",
+      "text_markdown": "Götürülenlerin tarafından anlatılıyor.",
+      "tts": {
+        "text": "Götürülenlerin tarafından anlatılıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan hikâyelerinin çoğu cesur baskınları ve hazineleri yüceltir.",
+      "text_markdown": "Korsan hikâyelerinin çoğu cesur baskınları ve hazineleri yüceltir.",
+      "tts": {
+        "text": "Korsan hikâyelerinin çoğu cesur baskınları ve hazineleri yüceltir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu hikâye, dumanın içinde bırakılan insanlara ne olduğunu anlatıyor.",
+      "text_markdown": "Bu hikâye, dumanın içinde bırakılan insanlara ne olduğunu anlatıyor.",
+      "tts": {
+        "text": "Bu hikâye, dumanın içinde bırakılan insanlara ne olduğunu anlatıyor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627 yazında Kuzey Afrikalı korsanlar İzlanda'ya kadar yelken açtı.",
+      "text_markdown": "1627 yazında Kuzey Afrikalı korsanlar İzlanda'ya kadar yelken açtı.",
+      "tts": {
+        "text": "Bin altı yüz yirmi yedi yazında Kuzey Afrikalı korsanlar İzlanda'ya kadar yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık dört yüz kişiyi esir alıp köle olarak satmak için deniz aşırı taşıdılar.",
+      "text_markdown": "Yaklaşık dört yüz kişiyi esir alıp köle olarak satmak için deniz aşırı taşıdılar.",
+      "tts": {
+        "text": "Yaklaşık dört yüz kişiyi esir alıp köle olarak satmak için deniz aşırı taşıdılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu esirlerin arasında Ólafur Egilsson adında bir papaz da vardı.",
+      "text_markdown": "Bu esirlerin arasında Ólafur Egilsson adında bir papaz da vardı.",
+      "tts": {
+        "text": "Bu esirlerin arasında Ólafur Egilsson adında bir papaz da vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gördüklerini, çektiklerini ve kaybettiklerini anlatan bir kitap yazdı.",
+      "text_markdown": "Gördüklerini, çektiklerini ve kaybettiklerini anlatan bir kitap yazdı.",
+      "tts": {
+        "text": "Gördüklerini, çektiklerini ve kaybettiklerini anlatan bir kitap yazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu onun hikâyesidir.",
+      "text_markdown": "Bu onun hikâyesidir.",
+      "tts": {
+        "text": "Bu onun hikâyesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir korsan kitabında yer alıyor çünkü korsanlık hiçbir zaman yalnızca korsanlarla ilgili olmadı.",
+      "text_markdown": "Bir korsan kitabında yer alıyor çünkü korsanlık hiçbir zaman yalnızca korsanlarla ilgili olmadı.",
+      "tts": {
+        "text": "Bir korsan kitabında yer alıyor çünkü korsanlık hiçbir zaman yalnızca korsanlarla ilgili olmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her zaman, aynı zamanda, zarar verdikleri insanlarla da ilgiliydi.",
+      "text_markdown": "Her zaman, aynı zamanda, zarar verdikleri insanlarla da ilgiliydi.",
+      "tts": {
+        "text": "Her zaman, aynı zamanda, zarar verdikleri insanlarla da ilgiliydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Westman Adaları",
+      "text_markdown": "Westman Adaları"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İzlanda'nın güney kıyısından uzakta, Kuzey Atlantik'ten bir grup küçük volkanik ada yükselir.",
+      "text_markdown": "İzlanda'nın güney kıyısından uzakta, Kuzey Atlantik'ten bir grup küçük volkanik ada yükselir.",
+      "tts": {
+        "text": "İzlanda'nın güney kıyısından uzakta, Kuzey Atlantik'ten bir grup küçük volkanik ada yükselir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İzlandalılar onlara Vestmannaeyjar, yani Westman Adaları der.",
+      "text_markdown": "İzlandalılar onlara Vestmannaeyjar, yani Westman Adaları der.",
+      "tts": {
+        "text": "İzlandalılar onlara Vestmannaeyjar, yani Westman Adaları der.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tüm Avrupa'nın en izole toplulukları arasındadırlar.",
+      "text_markdown": "Tüm Avrupa'nın en izole toplulukları arasındadırlar.",
+      "tts": {
+        "text": "Tüm Avrupa'nın en izole toplulukları arasındadırlar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En büyük adanın adı Heimaey'dir ve kalıcı olarak yerleşim kurulan tek adadır.",
+      "text_markdown": "En büyük adanın adı Heimaey'dir ve kalıcı olarak yerleşim kurulan tek adadır.",
+      "tts": {
+        "text": "En büyük adanın adı Heimaey'dir ve kalıcı olarak yerleşim kurulan tek adadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heimaey bile küçüktür; yalnızca beş kilometre genişliğinde, neredeyse her tarafı dik falezlerle çevrilidir.",
+      "text_markdown": "Heimaey bile küçüktür; yalnızca beş kilometre genişliğinde, neredeyse her tarafı dik falezlerle çevrilidir.",
+      "tts": {
+        "text": "Heimaey bile küçüktür; yalnızca beş kilometre genişliğinde, neredeyse her tarafı dik falezlerle çevrilidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adalar okyanus tabanındaki volkanik patlamalarla oluşmuştur.",
+      "text_markdown": "Adalar okyanus tabanındaki volkanik patlamalarla oluşmuştur.",
+      "tts": {
+        "text": "Adalar okyanus tabanındaki volkanik patlamalarla oluşmuştur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaya koyu bazalttır ve falezler dalgalı denize dik bir şekilde iner.",
+      "text_markdown": "Kaya koyu bazalttır ve falezler dalgalı denize dik bir şekilde iner.",
+      "tts": {
+        "text": "Kaya koyu bazalttır ve falezler dalgalı denize dik bir şekilde iner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yazın milyonlarca deniz kuşu çıkıntılarda yuva yapar.",
+      "text_markdown": "Yazın milyonlarca deniz kuşu çıkıntılarda yuva yapar.",
+      "tts": {
+        "text": "Yazın milyonlarca deniz kuşu çıkıntılarda yuva yapar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kışın fırtınalar haftalarca adalara vurur.",
+      "text_markdown": "Kışın fırtınalar haftalarca adalara vurur.",
+      "tts": {
+        "text": "Kışın fırtınalar haftalarca adalara vurur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Dünyanın Ucunda Yaşam",
+      "text_markdown": "Dünyanın Ucunda Yaşam"
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On yedinci yüzyılın başlarında Heimaey'de yaklaşık beş yüz kişi yaşıyordu.",
+      "text_markdown": "On yedinci yüzyılın başlarında Heimaey'de yaklaşık beş yüz kişi yaşıyordu.",
+      "tts": {
+        "text": "On yedinci yüzyılın başlarında Heimaey'de yaklaşık beş yüz kişi yaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Balıkçılık yaparak, koyun yetiştirerek ve falezlerden deniz kuşu yumurtası toplayarak hayatta kalıyorlardı.",
+      "text_markdown": "Balıkçılık yaparak, koyun yetiştirerek ve falezlerden deniz kuşu yumurtası toplayarak hayatta kalıyorlardı.",
+      "tts": {
+        "text": "Balıkçılık yaparak, koyun yetiştirerek ve falezlerden deniz kuşu yumurtası toplayarak hayatta kalıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adalılar, Viking döneminden bu yana çok az değişen bir dil olan İzlandaca konuşuyordu.",
+      "text_markdown": "Adalılar, Viking döneminden bu yana çok az değişen bir dil olan İzlandaca konuşuyordu.",
+      "tts": {
+        "text": "Adalılar, Viking döneminden bu yana çok az değişen bir dil olan İzlandaca konuşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Luthercilardı ve kiliseleri toplum yaşamının merkeziydi.",
+      "text_markdown": "Luthercilardı ve kiliseleri toplum yaşamının merkeziydi.",
+      "tts": {
+        "text": "Luthercilardı ve kiliseleri toplum yaşamının merkeziydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İzlanda, tüm ticareti sıkı bir tekel aracılığıyla kontrol eden Danimarka Krallığı tarafından yönetiliyordu.",
+      "text_markdown": "İzlanda, tüm ticareti sıkı bir tekel aracılığıyla kontrol eden Danimarka Krallığı tarafından yönetiliyordu.",
+      "tts": {
+        "text": "İzlanda, tüm ticareti sıkı bir tekel aracılığıyla kontrol eden Danimarka Krallığı tarafından yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yalnızca Danimarkalı tüccarlar mal alıp satabilirdi ve İzlandalıların dış dünyayla çok az teması vardı.",
+      "text_markdown": "Yalnızca Danimarkalı tüccarlar mal alıp satabilirdi ve İzlandalıların dış dünyayla çok az teması vardı.",
+      "tts": {
+        "text": "Yalnızca Danimarkalı tüccarlar mal alıp satabilirdi ve İzlandalıların dış dünyayla çok az teması vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Küçük Buzul Çağı",
+      "text_markdown": "Küçük Buzul Çağı"
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On yedinci yüzyıl, tarihçilerin Küçük Buzul Çağı dediği uzun bir soğuk dönemin parçasıydı.",
+      "text_markdown": "On yedinci yüzyıl, tarihçilerin Küçük Buzul Çağı dediği uzun bir soğuk dönemin parçasıydı.",
+      "tts": {
+        "text": "On yedinci yüzyıl, tarihçilerin Küçük Buzul Çağı dediği uzun bir soğuk dönemin parçasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İzlanda'da deniz buzu bazen adayı aylarca sararak gemileri engelliyor ve hayvanları öldürüyordu.",
+      "text_markdown": "İzlanda'da deniz buzu bazen adayı aylarca sararak gemileri engelliyor ve hayvanları öldürüyordu.",
+      "tts": {
+        "text": "İzlanda'da deniz buzu bazen adayı aylarca sararak gemileri engelliyor ve hayvanları öldürüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Westman Adaları'nda yetiştirme sezonu tahıl için çok kısaydı.",
+      "text_markdown": "Westman Adaları'nda yetiştirme sezonu tahıl için çok kısaydı.",
+      "tts": {
+        "text": "Westman Adaları'nda yetiştirme sezonu tahıl için çok kısaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsanlar denize bağlıydı ve fırtınalar balıkçılığı engellediğinde aç kalıyorlardı.",
+      "text_markdown": "İnsanlar denize bağlıydı ve fırtınalar balıkçılığı engellediğinde aç kalıyorlardı.",
+      "tts": {
+        "text": "İnsanlar denize bağlıydı ve fırtınalar balıkçılığı engellediğinde aç kalıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Huzurlu ve Savunmasız Bir Yer",
+      "text_markdown": "Huzurlu ve Savunmasız Bir Yer"
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tüm bu zorluklara rağmen Westman Adaları huzurlu bir yerdi.",
+      "text_markdown": "Tüm bu zorluklara rağmen Westman Adaları huzurlu bir yerdi.",
+      "tts": {
+        "text": "Tüm bu zorluklara rağmen Westman Adaları huzurlu bir yerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne asker, ne kale, ne sur, ne de liman savunması vardı.",
+      "text_markdown": "Ne asker, ne kale, ne sur, ne de liman savunması vardı.",
+      "tts": {
+        "text": "Ne asker, ne kale, ne sur, ne de liman savunması vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adalıların bıçak ve zanaat aletlerinin ötesinde silahları yoktu.",
+      "text_markdown": "Adalıların bıçak ve zanaat aletlerinin ötesinde silahları yoktu.",
+      "tts": {
+        "text": "Adalıların bıçak ve zanaat aletlerinin ötesinde silahları yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kimse bir saldırı beklemiyordu.",
+      "text_markdown": "Kimse bir saldırı beklemiyordu.",
+      "tts": {
+        "text": "Kimse bir saldırı beklemiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar uzak denizlerle ilgili hikâyelere aitti.",
+      "text_markdown": "Korsanlar uzak denizlerle ilgili hikâyelere aitti.",
+      "tts": {
+        "text": "Korsanlar uzak denizlerle ilgili hikâyelere aitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuzey Atlantik çok soğuk, çok sert ve değerli herhangi bir yerden çok uzak görünüyordu.",
+      "text_markdown": "Kuzey Atlantik çok soğuk, çok sert ve değerli herhangi bir yerden çok uzak görünüyordu.",
+      "tts": {
+        "text": "Kuzey Atlantik çok soğuk, çok sert ve değerli herhangi bir yerden çok uzak görünüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adaların tek savunması uzaklıklarıydı.",
+      "text_markdown": "Adaların tek savunması uzaklıklarıydı.",
+      "tts": {
+        "text": "Adaların tek savunması uzaklıklarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama dünyada bir şeyler değişiyordu ve bu, denizin bu unutulmuş köşesine bile tehlike getirecekti.",
+      "text_markdown": "Ama dünyada bir şeyler değişiyordu ve bu, denizin bu unutulmuş köşesine bile tehlike getirecekti.",
+      "tts": {
+        "text": "Ama dünyada bir şeyler değişiyordu ve bu, denizin bu unutulmuş köşesine bile tehlike getirecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Berberi Korsanları Kuzeye Ulaşıyor",
+      "text_markdown": "Berberi Korsanları Kuzeye Ulaşıyor"
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Afrika kıyısı boyunca güçlü liman şehirleri deniz baskınlarıyla zenginleşiyordu.",
+      "text_markdown": "Kuzey Afrika kıyısı boyunca güçlü liman şehirleri deniz baskınlarıyla zenginleşiyordu.",
+      "tts": {
+        "text": "Kuzey Afrika kıyısı boyunca güçlü liman şehirleri deniz baskınlarıyla zenginleşiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir, Tunus ve Sale, Osmanlı İmparatorluğu'nun desteğiyle hareket eden Berberi korsanlarının yuvasıydı.",
+      "text_markdown": "Cezayir, Tunus ve Sale, Osmanlı İmparatorluğu'nun desteğiyle hareket eden Berberi korsanlarının yuvasıydı.",
+      "tts": {
+        "text": "Cezayir, Tunus ve Sale, Osmanlı İmparatorluğu'nun desteğiyle hareket eden Berberi korsanlarının yuvasıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca korsanlar İspanya, İtalya ve Fransa'ya baskın düzenleyerek insanları esir alıp köle olarak satmıştı.",
+      "text_markdown": "Yüzyıllar boyunca korsanlar İspanya, İtalya ve Fransa'ya baskın düzenleyerek insanları esir alıp köle olarak satmıştı.",
+      "tts": {
+        "text": "Yüzyıllar boyunca korsanlar İspanya, İtalya ve Fransa'ya baskın düzenleyerek insanları esir alıp köle olarak satmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir'in köle pazarları Akdeniz boyunca ünlüydü.",
+      "text_markdown": "Cezayir'in köle pazarları Akdeniz boyunca ünlüydü.",
+      "tts": {
+        "text": "Cezayir'in köle pazarları Akdeniz boyunca ünlüydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On yedinci yüzyılın başlarında korsanlara katılan Avrupalı dönekler yeni gemiler, seyrüsefer becerileri ve kuzey denizleri hakkında bilgi getirdi.",
+      "text_markdown": "On yedinci yüzyılın başlarında korsanlara katılan Avrupalı dönekler yeni gemiler, seyrüsefer becerileri ve kuzey denizleri hakkında bilgi getirdi.",
+      "tts": {
+        "text": "On yedinci yüzyılın başlarında korsanlara katılan Avrupalı dönekler yeni gemiler, seyrüsefer becerileri ve kuzey denizleri hakkında bilgi getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar Atlantik'e açılarak İngiltere, İrlanda ve hatta İzlanda'ya baskın düzenlemeye başladı.",
+      "text_markdown": "Korsanlar Atlantik'e açılarak İngiltere, İrlanda ve hatta İzlanda'ya baskın düzenlemeye başladı.",
+      "tts": {
+        "text": "Korsanlar Atlantik'e açılarak İngiltere, İrlanda ve hatta İzlanda'ya baskın düzenlemeye başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En önemli döneklerden biri, kendini Berberi kaptanı olarak yeniden yaratan bir Hollandalıydı.",
+      "text_markdown": "En önemli döneklerden biri, kendini Berberi kaptanı olarak yeniden yaratan bir Hollandalıydı.",
+      "tts": {
+        "text": "En önemli döneklerden biri, kendini Berberi kaptanı olarak yeniden yaratan bir Hollandalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Westman Adaları",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Westman Adaları'nı yüzyıllarca koruyan izolasyon sona ermek üzereydi.",
+      "text_markdown": "Westman Adaları'nı yüzyıllarca koruyan izolasyon sona ermek üzereydi.",
+      "tts": {
+        "text": "Westman Adaları'nı yüzyıllarca koruyan izolasyon sona ermek üzereydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsanların Geldiği Gün",
+      "text_markdown": "Korsanların Geldiği Gün"
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627 yılı Temmuz ayında bir yaz günü, İzlanda'nın güneyindeki ufukta bir gemi filosu belirdi.",
+      "text_markdown": "1627 yılı Temmuz ayında bir yaz günü, İzlanda'nın güneyindeki ufukta bir gemi filosu belirdi.",
+      "tts": {
+        "text": "Bin altı yüz yirmi yedi yılı Temmuz ayında bir yaz günü, İzlanda'nın güneyindeki ufukta bir gemi filosu belirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar Danimarkalı ticaret gemileri değildi.",
+      "text_markdown": "Bunlar Danimarkalı ticaret gemileri değildi.",
+      "tts": {
+        "text": "Bunlar Danimarkalı ticaret gemileri değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunlar Berberi Kıyısı'ndan gelen savaş gemileriydi.",
+      "text_markdown": "Bunlar Berberi Kıyısı'ndan gelen savaş gemileriydi.",
+      "tts": {
+        "text": "Bunlar Berberi Kıyısı'ndan gelen savaş gemileriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filonun başında Avrupalıların Genç Murat Reis dediği bir adam vardı.",
+      "text_markdown": "Filonun başında Avrupalıların Genç Murat Reis dediği bir adam vardı.",
+      "tts": {
+        "text": "Filonun başında Avrupalıların Genç Murat Reis dediği bir adam vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gerçek adı Jan Janszoon van Haarlem'di ve Hollanda Cumhuriyeti'nde doğmuştu.",
+      "text_markdown": "Gerçek adı Jan Janszoon van Haarlem'di ve Hollanda Cumhuriyeti'nde doğmuştu.",
+      "tts": {
+        "text": "Gerçek adı Jan Janszoon van Haarlem'di ve Hollanda Cumhuriyeti'nde doğmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsan olan, İslam'a geçen ve Atlantik'in en güçlü korsanı kaptanlarından biri haline gelen bir denizciydi.",
+      "text_markdown": "Korsan olan, İslam'a geçen ve Atlantik'in en güçlü korsanı kaptanlarından biri haline gelen bir denizciydi.",
+      "tts": {
+        "text": "Korsan olan, İslam'a geçen ve Atlantik'in en güçlü korsanı kaptanlarından biri haline gelen bir denizciydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hollandalı Dönek",
+      "text_markdown": "Hollandalı Dönek"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jan Janszoon yaklaşık 1570 yılında Haarlem şehrinde doğdu.",
+      "text_markdown": "Jan Janszoon yaklaşık 1570 yılında Haarlem şehrinde doğdu.",
+      "tts": {
+        "text": "Jan Janszoon yaklaşık bin beş yüz yetmiş yılında Haarlem şehrinde doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hollanda ile İspanya arasındaki uzun savaş sırasında İspanyol gemilerine saldırma yetkisi alan bir Hollandalı korsan olarak başladı.",
+      "text_markdown": "Hollanda ile İspanya arasındaki uzun savaş sırasında İspanyol gemilerine saldırma yetkisi alan bir Hollandalı korsan olarak başladı.",
+      "tts": {
+        "text": "Hollanda ile İspanya arasındaki uzun savaş sırasında İspanyol gemilerine saldırma yetkisi alan bir Hollandalı korsan olarak başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir noktada Janszoon korsanlar tarafından ele geçirilerek Fas'taki Sale limanına götürüldü.",
+      "text_markdown": "Bir noktada Janszoon korsanlar tarafından ele geçirilerek Fas'taki Sale limanına götürüldü.",
+      "tts": {
+        "text": "Bir noktada Janszoon korsanlar tarafından ele geçirilerek Fas'taki Sale limanına götürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esir kalmak yerine İslam'a geçti, Murat Reis adını aldı ve acımasız bir komutan olduğunu kanıtladı.",
+      "text_markdown": "Esir kalmak yerine İslam'a geçti, Murat Reis adını aldı ve acımasız bir komutan olduğunu kanıtladı.",
+      "tts": {
+        "text": "Esir kalmak yerine İslam'a geçti, Murat Reis adını aldı ve acımasız bir komutan olduğunu kanıtladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fas kıyısındaki bir korsan devleti olan Sale Cumhuriyeti'nin başkanı oldu.",
+      "text_markdown": "Fas kıyısındaki bir korsan devleti olan Sale Cumhuriyeti'nin başkanı oldu.",
+      "tts": {
+        "text": "Fas kıyısındaki bir korsan devleti olan Sale Cumhuriyeti'nin başkanı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sale'den ve daha sonra Cezayir'den Atlantik genelinde baskınlar yönetti.",
+      "text_markdown": "Sale'den ve daha sonra Cezayir'den Atlantik genelinde baskınlar yönetti.",
+      "tts": {
+        "text": "Sale'den ve daha sonra Cezayir'den Atlantik genelinde baskınlar yönetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1631 yılında İrlanda'daki Baltimore kasabasına bile baskın düzenleyerek yüzden fazla esir aldı.",
+      "text_markdown": "1631 yılında İrlanda'daki Baltimore kasabasına bile baskın düzenleyerek yüzden fazla esir aldı.",
+      "tts": {
+        "text": "Bin altı yüz otuz bir yılında İrlanda'daki Baltimore kasabasına bile baskın düzenleyerek yüzden fazla esir aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kuzeye Giden Yol",
+      "text_markdown": "Kuzeye Giden Yol"
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlara katılan İngiliz ve Hollandalı dönekler, Atlantik rüzgârları ve akıntıları hakkında bilgi getirdi.",
+      "text_markdown": "Korsanlara katılan İngiliz ve Hollandalı dönekler, Atlantik rüzgârları ve akıntıları hakkında bilgi getirdi.",
+      "tts": {
+        "text": "Korsanlara katılan İngiliz ve Hollandalı dönekler, Atlantik rüzgârları ve akıntıları hakkında bilgi getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İzlanda'nın neredeyse tamamen savunmasız olduğunu biliyorlardı.",
+      "text_markdown": "İzlanda'nın neredeyse tamamen savunmasız olduğunu biliyorlardı.",
+      "tts": {
+        "text": "İzlanda'nın neredeyse tamamen savunmasız olduğunu biliyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir'in köle pazarları sürekli esir akışı talep ediyordu.",
+      "text_markdown": "Cezayir'in köle pazarları sürekli esir akışı talep ediyordu.",
+      "tts": {
+        "text": "Cezayir'in köle pazarları sürekli esir akışı talep ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akdeniz baskın alanları giderek daha fazla devriye geziliyordu ve korsanların yeni av sahalarına ihtiyacı vardı.",
+      "text_markdown": "Akdeniz baskın alanları giderek daha fazla devriye geziliyordu ve korsanların yeni av sahalarına ihtiyacı vardı.",
+      "tts": {
+        "text": "Akdeniz baskın alanları giderek daha fazla devriye geziliyordu ve korsanların yeni av sahalarına ihtiyacı vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İzlanda mükemmeldi: izole, savunmasız ve Danimarka yetkilileri tarafından göz ardı edilmiş.",
+      "text_markdown": "İzlanda mükemmeldi: izole, savunmasız ve Danimarka yetkilileri tarafından göz ardı edilmiş.",
+      "tts": {
+        "text": "İzlanda mükemmeldi: izole, savunmasız ve Danimarka yetkilileri tarafından göz ardı edilmiş.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Baskınlar Başlıyor",
+      "text_markdown": "Baskınlar Başlıyor"
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan filosu önce İzlanda'nın doğu kıyısına saldırarak küçük yerleşimleri yağmaladı.",
+      "text_markdown": "Korsan filosu önce İzlanda'nın doğu kıyısına saldırarak küçük yerleşimleri yağmaladı.",
+      "tts": {
+        "text": "Korsan filosu önce İzlanda'nın doğu kıyısına saldırarak küçük yerleşimleri yağmaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu ilk baskınlar dehşet vericiydi ama küçük çaplıydı.",
+      "text_markdown": "Bu ilk baskınlar dehşet vericiydi ama küçük çaplıydı.",
+      "tts": {
+        "text": "Bu ilk baskınlar dehşet vericiydi ama küçük çaplıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On altı Temmuz'da korsanlar Westman Adaları'na yöneldi.",
+      "text_markdown": "On altı Temmuz'da korsanlar Westman Adaları'na yöneldi.",
+      "tts": {
+        "text": "On altı Temmuz'da korsanlar Westman Adaları'na yöneldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sabahın erken saatlerinde sisin örtüsü altında Heimaey'e vardılar.",
+      "text_markdown": "Sabahın erken saatlerinde sisin örtüsü altında Heimaey'e vardılar.",
+      "tts": {
+        "text": "Sabahın erken saatlerinde sisin örtüsü altında Heimaey'e vardılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adalılar baskın söylentilerini duymuştu ama hazırlanmanın bir yolu yoktu.",
+      "text_markdown": "Adalılar baskın söylentilerini duymuştu ama hazırlanmanın bir yolu yoktu.",
+      "tts": {
+        "text": "Adalılar baskın söylentilerini duymuştu ama hazırlanmanın bir yolu yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Heimaey'e Saldırı",
+      "text_markdown": "Heimaey'e Saldırı"
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar falezlerin en alçak olduğu doğu kıyısına çıktı.",
+      "text_markdown": "Korsanlar falezlerin en alçak olduğu doğu kıyısına çıktı.",
+      "tts": {
+        "text": "Korsanlar falezlerin en alçak olduğu doğu kıyısına çıktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Küçük teknelerle kıyıya çıktılar; kılıçlar, tüfekler ve meşalelerle silahlıydılar.",
+      "text_markdown": "Küçük teknelerle kıyıya çıktılar; kılıçlar, tüfekler ve meşalelerle silahlıydılar.",
+      "tts": {
+        "text": "Küçük teknelerle kıyıya çıktılar; kılıçlar, tüfekler ve meşalelerle silahlıydılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur Egilsson eşi Ásta ve çocuklarıyla birlikte evindeydi.",
+      "text_markdown": "Ólafur Egilsson eşi Ásta ve çocuklarıyla birlikte evindeydi.",
+      "tts": {
+        "text": "Ólafur Egilsson eşi Ásta ve çocuklarıyla birlikte evindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adanın papazıydı; bilgili ve inançlı bir adam, altmış üç yaşındaydı.",
+      "text_markdown": "Adanın papazıydı; bilgili ve inançlı bir adam, altmış üç yaşındaydı.",
+      "tts": {
+        "text": "Adanın papazıydı; bilgili ve inançlı bir adam, altmış üç yaşındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar hızla hareket ederek kapıları kırıp insanları evlerinden sürükledi.",
+      "text_markdown": "Korsanlar hızla hareket ederek kapıları kırıp insanları evlerinden sürükledi.",
+      "tts": {
+        "text": "Korsanlar hızla hareket ederek kapıları kırıp insanları evlerinden sürükledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazı adalılar falezlerdeki mağaralara saklanmaya çalıştı.",
+      "text_markdown": "Bazı adalılar falezlerdeki mağaralara saklanmaya çalıştı.",
+      "tts": {
+        "text": "Bazı adalılar falezlerdeki mağaralara saklanmaya çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerleri karanlıkta lav tarlalarında sürünerek ilerledi.",
+      "text_markdown": "Diğerleri karanlıkta lav tarlalarında sürünerek ilerledi.",
+      "tts": {
+        "text": "Diğerleri karanlıkta lav tarlalarında sürünerek ilerledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baskıncılar kilise dahil binaları ateşe verdi.",
+      "text_markdown": "Baskıncılar kilise dahil binaları ateşe verdi.",
+      "tts": {
+        "text": "Baskıncılar kilise dahil binaları ateşe verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur daha sonra kilisesinin yanışını izlemenin tüm bu çilenin en acı verici anlarından biri olduğunu yazdı.",
+      "text_markdown": "Ólafur daha sonra kilisesinin yanışını izlemenin tüm bu çilenin en acı verici anlarından biri olduğunu yazdı.",
+      "tts": {
+        "text": "Ólafur daha sonra kilisesinin yanışını izlemenin tüm bu çilenin en acı verici anlarından biri olduğunu yazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kilise onun topluluğunun kalbiydi.",
+      "text_markdown": "Kilise onun topluluğunun kalbiydi.",
+      "tts": {
+        "text": "Kilise onun topluluğunun kalbiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Esir Alınma",
+      "text_markdown": "Esir Alınma"
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baskının sonunda korsanlar Heimaey'den yaklaşık iki yüz kırk kişiyi esir almıştı.",
+      "text_markdown": "Baskının sonunda korsanlar Heimaey'den yaklaşık iki yüz kırk kişiyi esir almıştı.",
+      "tts": {
+        "text": "Baskının sonunda korsanlar Heimaey'den yaklaşık iki yüz kırk kişiyi esir almıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erkekler, kadınlar ve çocuklar kıyıda bir araya toplandı.",
+      "text_markdown": "Erkekler, kadınlar ve çocuklar kıyıda bir araya toplandı.",
+      "tts": {
+        "text": "Erkekler, kadınlar ve çocuklar kıyıda bir araya toplandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur, Ásta ve çocukları esirler arasındaydı.",
+      "text_markdown": "Ólafur, Ásta ve çocukları esirler arasındaydı.",
+      "tts": {
+        "text": "Ólafur, Ásta ve çocukları esirler arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Komşuları ve arkadaşlarıyla birlikte korsan gemilerine binmeye zorlandılar.",
+      "text_markdown": "Komşuları ve arkadaşlarıyla birlikte korsan gemilerine binmeye zorlandılar.",
+      "tts": {
+        "text": "Komşuları ve arkadaşlarıyla birlikte korsan gemilerine binmeye zorlandılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O yazki tüm baskınlarda yaklaşık dört yüz İzlandalı götürüldü.",
+      "text_markdown": "O yazki tüm baskınlarda yaklaşık dört yüz İzlandalı götürüldü.",
+      "tts": {
+        "text": "O yazki tüm baskınlarda yaklaşık dört yüz İzlandalı götürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nüfusu yalnızca yaklaşık elli bin olan bir ülke için bu yıkıcıydı.",
+      "text_markdown": "Nüfusu yalnızca yaklaşık elli bin olan bir ülke için bu yıkıcıydı.",
+      "tts": {
+        "text": "Nüfusu yalnızca yaklaşık elli bin olan bir ülke için bu yıkıcıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar güneye doğru yelken açtı.",
+      "text_markdown": "Korsanlar güneye doğru yelken açtı.",
+      "tts": {
+        "text": "Korsanlar güneye doğru yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Westman Adalılar evlerinin arkalarında kaybolmasını izledi.",
+      "text_markdown": "Westman Adalılar evlerinin arkalarında kaybolmasını izledi.",
+      "tts": {
+        "text": "Westman Adalılar evlerinin arkalarında kaybolmasını izledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Korsanların Geldiği Gün",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çoğu bir daha İzlanda'yı görmeyecekti.",
+      "text_markdown": "Çoğu bir daha İzlanda'yı görmeyecekti.",
+      "tts": {
+        "text": "Çoğu bir daha İzlanda'yı görmeyecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cezayir'e Yolculuk",
+      "text_markdown": "Cezayir'e Yolculuk"
+    },
+    {
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemiler açık Atlantik'e doğru güneye döndü.",
+      "text_markdown": "Gemiler açık Atlantik'e doğru güneye döndü.",
+      "tts": {
+        "text": "Gemiler açık Atlantik'e doğru güneye döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güverte altındaki esirler için yeni bir çile başladı.",
+      "text_markdown": "Güverte altındaki esirler için yeni bir çile başladı.",
+      "tts": {
+        "text": "Güverte altındaki esirler için yeni bir çile başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur yolculuğu kitabında ayrıntılı olarak anlattı.",
+      "text_markdown": "Ólafur yolculuğu kitabında ayrıntılı olarak anlattı.",
+      "tts": {
+        "text": "Ólafur yolculuğu kitabında ayrıntılı olarak anlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esirler az yemek, az su ve hiç mahremiyet olmadan dar, karanlık alanlarda tutuluyordu.",
+      "text_markdown": "Esirler az yemek, az su ve hiç mahremiyet olmadan dar, karanlık alanlarda tutuluyordu.",
+      "tts": {
+        "text": "Esirler az yemek, az su ve hiç mahremiyet olmadan dar, karanlık alanlarda tutuluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemiler güneye ilerledikçe sıcaklık arttı.",
+      "text_markdown": "Gemiler güneye ilerledikçe sıcaklık arttı.",
+      "tts": {
+        "text": "Gemiler güneye ilerledikçe sıcaklık arttı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Gemideki Koşullar",
+      "text_markdown": "Gemideki Koşullar"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esirler ambarın içine tıkılmıştı.",
+      "text_markdown": "Esirler ambarın içine tıkılmıştı.",
+      "tts": {
+        "text": "Esirler ambarın içine tıkılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçoğu deniz tutmasından muzdaripti, hava kötü kokuyordu ve hastalıklar hızla yayılıyordu.",
+      "text_markdown": "Birçoğu deniz tutmasından muzdaripti, hava kötü kokuyordu ve hastalıklar hızla yayılıyordu.",
+      "tts": {
+        "text": "Birçoğu deniz tutmasından muzdaripti, hava kötü kokuyordu ve hastalıklar hızla yayılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlar esirlere yük gibi davranıyordu.",
+      "text_markdown": "Korsanlar esirlere yük gibi davranıyordu.",
+      "tts": {
+        "text": "Korsanlar esirlere yük gibi davranıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak hayatta kalacak kadar besleniyorlardı.",
+      "text_markdown": "Ancak hayatta kalacak kadar besleniyorlardı.",
+      "tts": {
+        "text": "Ancak hayatta kalacak kadar besleniyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlar için bu insanlar pazara teslim edilecek mallardı.",
+      "text_markdown": "Korsanlar için bu insanlar pazara teslim edilecek mallardı.",
+      "tts": {
+        "text": "Korsanlar için bu insanlar pazara teslim edilecek mallardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur bir papaz olarak dua ettirmeye ve ruhların tamamen çökmesini engellemeye çalıştı.",
+      "text_markdown": "Ólafur bir papaz olarak dua ettirmeye ve ruhların tamamen çökmesini engellemeye çalıştı.",
+      "tts": {
+        "text": "Ólafur bir papaz olarak dua ettirmeye ve ruhların tamamen çökmesini engellemeye çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak umutsuzluk dayanılmazdı.",
+      "text_markdown": "Ancak umutsuzluk dayanılmazdı.",
+      "tts": {
+        "text": "Ancak umutsuzluk dayanılmazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yolculuk birkaç hafta sürdü; Avrupa kıyıları boyunca ve Cebelitarık Boğazı'ndan geçerek Akdeniz'e ulaştılar.",
+      "text_markdown": "Yolculuk birkaç hafta sürdü; Avrupa kıyıları boyunca ve Cebelitarık Boğazı'ndan geçerek Akdeniz'e ulaştılar.",
+      "tts": {
+        "text": "Yolculuk birkaç hafta sürdü; Avrupa kıyıları boyunca ve Cebelitarık Boğazı'ndan geçerek Akdeniz'e ulaştılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Cezayir'e Varış",
+      "text_markdown": "Cezayir'e Varış"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemiler Cezayir'e ulaştığında esirler güverteye çıkarıldı.",
+      "text_markdown": "Gemiler Cezayir'e ulaştığında esirler güverteye çıkarıldı.",
+      "tts": {
+        "text": "Gemiler Cezayir'e ulaştığında esirler güverteye çıkarıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gördükleri karşısında hayrete düştüler.",
+      "text_markdown": "Gördükleri karşısında hayrete düştüler.",
+      "tts": {
+        "text": "Gördükleri karşısında hayrete düştüler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir, Akdeniz kıyısının en büyük şehirlerinden biriydi; beyaz binalar ve minarelerden oluşan bir labirentin içinde dik bir yamaçta yükseliyordu.",
+      "text_markdown": "Cezayir, Akdeniz kıyısının en büyük şehirlerinden biriydi; beyaz binalar ve minarelerden oluşan bir labirentin içinde dik bir yamaçta yükseliyordu.",
+      "tts": {
+        "text": "Cezayir, Akdeniz kıyısının en büyük şehirlerinden biriydi; beyaz binalar ve minarelerden oluşan bir labirentin içinde dik bir yamaçta yükseliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Belki yüz bin kişiye ev sahipliği yapıyordu — İzlanda'nın tüm nüfusundan çok daha fazla.",
+      "text_markdown": "Belki yüz bin kişiye ev sahipliği yapıyordu — İzlanda'nın tüm nüfusundan çok daha fazla.",
+      "tts": {
+        "text": "Belki yüz bin kişiye ev sahipliği yapıyordu — İzlanda'nın tüm nüfusundan çok daha fazla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ömürlerini küçük bir volkanik adada geçirmiş insanlar için bu manzara kavranamaz bir şeydi.",
+      "text_markdown": "Ömürlerini küçük bir volkanik adada geçirmiş insanlar için bu manzara kavranamaz bir şeydi.",
+      "tts": {
+        "text": "Ömürlerini küçük bir volkanik adada geçirmiş insanlar için bu manzara kavranamaz bir şeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gürültü, sıcaklık, kalabalıklar, ezan sesi — hepsi bunaltıcıydı.",
+      "text_markdown": "Gürültü, sıcaklık, kalabalıklar, ezan sesi — hepsi bunaltıcıydı.",
+      "tts": {
+        "text": "Gürültü, sıcaklık, kalabalıklar, ezan sesi — hepsi bunaltıcıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Osmanlı Cezayiri",
+      "text_markdown": "Osmanlı Cezayiri"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir, resmi olarak Osmanlı İmparatorluğu'nun parçasıydı ancak uygulamada yerel askeri liderler tarafından yönetiliyordu.",
+      "text_markdown": "Cezayir, resmi olarak Osmanlı İmparatorluğu'nun parçasıydı ancak uygulamada yerel askeri liderler tarafından yönetiliyordu.",
+      "tts": {
+        "text": "Cezayir, resmi olarak Osmanlı İmparatorluğu'nun parçasıydı ancak uygulamada yerel askeri liderler tarafından yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ekonomisi korsan baskınlarına ve köle ticaretine dayanıyordu.",
+      "text_markdown": "Ekonomisi korsan baskınlarına ve köle ticaretine dayanıyordu.",
+      "tts": {
+        "text": "Ekonomisi korsan baskınlarına ve köle ticaretine dayanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler, Berberi devletlerinde herhangi bir zamanda on binlerce köleleştirilmiş Avrupalının yaşadığını tahmin etmektedir.",
+      "text_markdown": "Tarihçiler, Berberi devletlerinde herhangi bir zamanda on binlerce köleleştirilmiş Avrupalının yaşadığını tahmin etmektedir.",
+      "tts": {
+        "text": "Tarihçiler, Berberi devletlerinde herhangi bir zamanda on binlerce köleleştirilmiş Avrupalının yaşadığını tahmin etmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esirler İspanya, İtalya, Fransa, Portekiz, İngiltere ve artık İzlanda'dan geliyordu.",
+      "text_markdown": "Esirler İspanya, İtalya, Fransa, Portekiz, İngiltere ve artık İzlanda'dan geliyordu.",
+      "tts": {
+        "text": "Esirler İspanya, İtalya, Fransa, Portekiz, İngiltere ve artık İzlanda'dan geliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şehir, çok az Avrupa şehrinin eşleşebileceği ölçüde kozmopolitti.",
+      "text_markdown": "Şehir, çok az Avrupa şehrinin eşleşebileceği ölçüde kozmopolitti.",
+      "tts": {
+        "text": "Şehir, çok az Avrupa şehrinin eşleşebileceği ölçüde kozmopolitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Müslümanlar, Yahudiler, Hristiyanlar ve düzinelerce ülkeden gelen dönekler yan yana yaşıyordu.",
+      "text_markdown": "Müslümanlar, Yahudiler, Hristiyanlar ve düzinelerce ülkeden gelen dönekler yan yana yaşıyordu.",
+      "tts": {
+        "text": "Müslümanlar, Yahudiler, Hristiyanlar ve düzinelerce ülkeden gelen dönekler yan yana yaşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Köle Pazarı",
+      "text_markdown": "Köle Pazarı"
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur'un köle pazarını anlattığı bölüm, kitabının en çarpıcı pasajlarından biridir.",
+      "text_markdown": "Ólafur'un köle pazarını anlattığı bölüm, kitabının en çarpıcı pasajlarından biridir.",
+      "tts": {
+        "text": "Ólafur'un köle pazarını anlattığı bölüm, kitabının en çarpıcı pasajlarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esirler limanın yakınındaki açık bir alana götürülüyor ve alıcılar dişlerini, ellerini ve sağlık durumlarını kontrol ediyordu.",
+      "text_markdown": "Esirler limanın yakınındaki açık bir alana götürülüyor ve alıcılar dişlerini, ellerini ve sağlık durumlarını kontrol ediyordu.",
+      "tts": {
+        "text": "Esirler limanın yakınındaki açık bir alana götürülüyor ve alıcılar dişlerini, ellerini ve sağlık durumlarını kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Genç ve güçlü olanlar en yüksek fiyatları alıyordu.",
+      "text_markdown": "Genç ve güçlü olanlar en yüksek fiyatları alıyordu.",
+      "tts": {
+        "text": "Genç ve güçlü olanlar en yüksek fiyatları alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kadınlar ve çocuklar ayrı satılıyor, çoğu zaman farklı alıcılara veriliyordu.",
+      "text_markdown": "Kadınlar ve çocuklar ayrı satılıyor, çoğu zaman farklı alıcılara veriliyordu.",
+      "tts": {
+        "text": "Kadınlar ve çocuklar ayrı satılıyor, çoğu zaman farklı alıcılara veriliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yolculuktan sağ kurtulan aileler parçalanıyordu.",
+      "text_markdown": "Yolculuktan sağ kurtulan aileler parçalanıyordu.",
+      "tts": {
+        "text": "Yolculuktan sağ kurtulan aileler parçalanıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur, kocaların karılarından koparılırken ve anne babaların çocuklarının götürülmesini izlerken çığlıkları ve ağlamaları anlattı.",
+      "text_markdown": "Ólafur, kocaların karılarından koparılırken ve anne babaların çocuklarının götürülmesini izlerken çığlıkları ve ağlamaları anlattı.",
+      "tts": {
+        "text": "Ólafur, kocaların karılarından koparılırken ve anne babaların çocuklarının götürülmesini izlerken çığlıkları ve ağlamaları anlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiçbir kelimenin o günün dehşetini anlatamayacağını yazdı.",
+      "text_markdown": "Hiçbir kelimenin o günün dehşetini anlatamayacağını yazdı.",
+      "tts": {
+        "text": "Hiçbir kelimenin o günün dehşetini anlatamayacağını yazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Ayrılık",
+      "text_markdown": "Ayrılık"
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur ve eşi Ásta pazarda birbirinden ayrıldı.",
+      "text_markdown": "Ólafur ve eşi Ásta pazarda birbirinden ayrıldı.",
+      "tts": {
+        "text": "Ólafur ve eşi Ásta pazarda birbirinden ayrıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çocukları da alınmıştı.",
+      "text_markdown": "Çocukları da alınmıştı.",
+      "tts": {
+        "text": "Çocukları da alınmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur için ayrılık esaretin en kötü kısmıydı.",
+      "text_markdown": "Ólafur için ayrılık esaretin en kötü kısmıydı.",
+      "tts": {
+        "text": "Ólafur için ayrılık esaretin en kötü kısmıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ásta'nın nereye götürüldüğünü bilmiyordu.",
+      "text_markdown": "Ásta'nın nereye götürüldüğünü bilmiyordu.",
+      "tts": {
+        "text": "Ásta'nın nereye götürüldüğünü bilmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Belirsizlik hiç bitmeyen bir tür işkenceydi.",
+      "text_markdown": "Belirsizlik hiç bitmeyen bir tür işkenceydi.",
+      "tts": {
+        "text": "Belirsizlik hiç bitmeyen bir tür işkenceydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "İnsan Ticareti",
+      "text_markdown": "İnsan Ticareti"
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Berberi köle ticareti devasa boyutlardaydı.",
+      "text_markdown": "Berberi köle ticareti devasa boyutlardaydı.",
+      "tts": {
+        "text": "Berberi köle ticareti devasa boyutlardaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler, 1530 ile 1780 yılları arasında korsanların bir milyondan fazla Avrupalıyı köleleştirdiğini tahmin etmektedir.",
+      "text_markdown": "Tarihçiler, 1530 ile 1780 yılları arasında korsanların bir milyondan fazla Avrupalıyı köleleştirdiğini tahmin etmektedir.",
+      "tts": {
+        "text": "Tarihçiler, bin beş yüz otuz ile bin yedi yüz seksen yılları arasında korsanların bir milyondan fazla Avrupalıyı köleleştirdiğini tahmin etmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kölelik birçok biçim alıyordu: ev hizmetçiliği, inşaat, tarım ya da küreğe zincirlenmiş olarak kadırgalarda kürek çekmek.",
+      "text_markdown": "Kölelik birçok biçim alıyordu: ev hizmetçiliği, inşaat, tarım ya da küreğe zincirlenmiş olarak kadırgalarda kürek çekmek.",
+      "tts": {
+        "text": "Kölelik birçok biçim alıyordu: ev hizmetçiliği, inşaat, tarım ya da küreğe zincirlenmiş olarak kadırgalarda kürek çekmek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İslam'a geçenler genellikle daha fazla özgürlük elde ediyordu, ancak din değiştirmek serbest bırakılmayı garanti etmiyordu.",
+      "text_markdown": "İslam'a geçenler genellikle daha fazla özgürlük elde ediyordu, ancak din değiştirmek serbest bırakılmayı garanti etmiyordu.",
+      "tts": {
+        "text": "İslam'a geçenler genellikle daha fazla özgürlük elde ediyordu, ancak din değiştirmek serbest bırakılmayı garanti etmiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çoğu esir için tek gerçekçi umut fidyeydi.",
+      "text_markdown": "Çoğu esir için tek gerçekçi umut fidyeydi.",
+      "tts": {
+        "text": "Çoğu esir için tek gerçekçi umut fidyeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trinitaryen tarikatı gibi dini kuruluşlar serbest bırakma müzakerelerinde uzmanlaşmıştı, ancak süreç yavaş ve pahalıydı.",
+      "text_markdown": "Trinitaryen tarikatı gibi dini kuruluşlar serbest bırakma müzakerelerinde uzmanlaşmıştı, ancak süreç yavaş ve pahalıydı.",
+      "tts": {
+        "text": "Trinitaryen tarikatı gibi dini kuruluşlar serbest bırakma müzakerelerinde uzmanlaşmıştı, ancak süreç yavaş ve pahalıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İzlandalılar için şanslar çok düşüktü.",
+      "text_markdown": "İzlandalılar için şanslar çok düşüktü.",
+      "tts": {
+        "text": "İzlandalılar için şanslar çok düşüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cezayir'e Yolculuk",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İzlanda fakirdi, Danimarka acil davranmıyordu ve yalnızca haberleşme bile aylar alıyordu.",
+      "text_markdown": "İzlanda fakirdi, Danimarka acil davranmıyordu ve yalnızca haberleşme bile aylar alıyordu.",
+      "tts": {
+        "text": "İzlanda fakirdi, Danimarka acil davranmıyordu ve yalnızca haberleşme bile aylar alıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Esaret ve Görev",
+      "text_markdown": "Esaret ve Görev"
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur aylarca Cezayir'de esir olarak kaldı.",
+      "text_markdown": "Ólafur aylarca Cezayir'de esir olarak kaldı.",
+      "tts": {
+        "text": "Ólafur aylarca Cezayir'de esir olarak kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altmış üç yaşındaydı, ağır işe uygun değildi ve köle pazarındaki değeri düşüktü.",
+      "text_markdown": "Altmış üç yaşındaydı, ağır işe uygun değildi ve köle pazarındaki değeri düşüktü.",
+      "tts": {
+        "text": "Altmış üç yaşındaydı, ağır işe uygun değildi ve köle pazarındaki değeri düşüktü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak eğitimliydi, okuma yazma biliyordu ve bir kilise adamıydı.",
+      "text_markdown": "Ancak eğitimliydi, okuma yazma biliyordu ve bir kilise adamıydı.",
+      "tts": {
+        "text": "Ancak eğitimliydi, okuma yazma biliyordu ve bir kilise adamıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu ona esarette bile belirli bir statü kazandırıyordu.",
+      "text_markdown": "Bu ona esarette bile belirli bir statü kazandırıyordu.",
+      "tts": {
+        "text": "Bu ona esarette bile belirli bir statü kazandırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Müzakereci Olarak Seçilmesi",
+      "text_markdown": "Müzakereci Olarak Seçilmesi"
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birinin Avrupa'ya gidip esirlerin davasını Danimarka kralının huzurunda savunması gerekiyordu.",
+      "text_markdown": "Birinin Avrupa'ya gidip esirlerin davasını Danimarka kralının huzurunda savunması gerekiyordu.",
+      "tts": {
+        "text": "Birinin Avrupa'ya gidip esirlerin davasını Danimarka kralının huzurunda savunması gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu görev için Ólafur seçildi.",
+      "text_markdown": "Bu görev için Ólafur seçildi.",
+      "tts": {
+        "text": "Bu görev için Ólafur seçildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu acı verici bir görevdi.",
+      "text_markdown": "Bu acı verici bir görevdi.",
+      "tts": {
+        "text": "Bu acı verici bir görevdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir tür özgürlük anlamına geliyordu, ama aynı zamanda sevdiği herkesi tekrar görüp göremeyeceğini bilmeden geride bırakmak demekti.",
+      "text_markdown": "Bir tür özgürlük anlamına geliyordu, ama aynı zamanda sevdiği herkesi tekrar görüp göremeyeceğini bilmeden geride bırakmak demekti.",
+      "tts": {
+        "text": "Bir tür özgürlük anlamına geliyordu, ama aynı zamanda sevdiği herkesi tekrar görüp göremeyeceğini bilmeden geride bırakmak demekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Halkını kurtarmanın tek yolu olduğuna inandığı için kabul etti.",
+      "text_markdown": "Halkını kurtarmanın tek yolu olduğuna inandığı için kabul etti.",
+      "tts": {
+        "text": "Halkını kurtarmanın tek yolu olduğuna inandığı için kabul etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Başarırsa yüzlerce kişi özgür kalabilirdi.",
+      "text_markdown": "Başarırsa yüzlerce kişi özgür kalabilirdi.",
+      "tts": {
+        "text": "Başarırsa yüzlerce kişi özgür kalabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başarısız olursa, ömür boyu köle kalacaklardı.",
+      "text_markdown": "Başarısız olursa, ömür boyu köle kalacaklardı.",
+      "tts": {
+        "text": "Başarısız olursa, ömür boyu köle kalacaklardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Avrupa'dan Geçiş Yolculuğu",
+      "text_markdown": "Avrupa'dan Geçiş Yolculuğu"
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur'un Cezayir'den Kopenhag'a yolculuğu uzun ve zordu.",
+      "text_markdown": "Ólafur'un Cezayir'den Kopenhag'a yolculuğu uzun ve zordu.",
+      "tts": {
+        "text": "Ólafur'un Cezayir'den Kopenhag'a yolculuğu uzun ve zordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akdeniz ve Kuzey Avrupa'dan gemiyle ve karayoluyla seyahat etti.",
+      "text_markdown": "Akdeniz ve Kuzey Avrupa'dan gemiyle ve karayoluyla seyahat etti.",
+      "tts": {
+        "text": "Akdeniz ve Kuzey Avrupa'dan gemiyle ve karayoluyla seyahat etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Parası, tanıdığı ve nüfuzu olmayan yaşlı bir papazdu.",
+      "text_markdown": "Parası, tanıdığı ve nüfuzu olmayan yaşlı bir papazdu.",
+      "tts": {
+        "text": "Parası, tanıdığı ve nüfuzu olmayan yaşlı bir papazdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geçtiği ülkelerin dillerini bilmiyordu.",
+      "text_markdown": "Geçtiği ülkelerin dillerini bilmiyordu.",
+      "tts": {
+        "text": "Geçtiği ülkelerin dillerini bilmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yabancıların yardımseverliğine ve sempatik din adamlarının mektuplarına güveniyordu.",
+      "text_markdown": "Yabancıların yardımseverliğine ve sempatik din adamlarının mektuplarına güveniyordu.",
+      "tts": {
+        "text": "Yabancıların yardımseverliğine ve sempatik din adamlarının mektuplarına güveniyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yol boyunca İzlanda dışındaki dünyayı ilk kez gözlemledi.",
+      "text_markdown": "Yol boyunca İzlanda dışındaki dünyayı ilk kez gözlemledi.",
+      "tts": {
+        "text": "Yol boyunca İzlanda dışındaki dünyayı ilk kez gözlemledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anlatımları, on yedinci yüzyıl Avrupası'na dışarıdan bir bakış olarak tarihçiler için değerlidir.",
+      "text_markdown": "Anlatımları, on yedinci yüzyıl Avrupası'na dışarıdan bir bakış olarak tarihçiler için değerlidir.",
+      "tts": {
+        "text": "Anlatımları, on yedinci yüzyıl Avrupası'na dışarıdan bir bakış olarak tarihçiler için değerlidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kopenhag ve Danimarka Sarayı",
+      "text_markdown": "Kopenhag ve Danimarka Sarayı"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur Kopenhag'a ulaştığında baskını, esareti ve halkının çektiği acıları anlattı.",
+      "text_markdown": "Ólafur Kopenhag'a ulaştığında baskını, esareti ve halkının çektiği acıları anlattı.",
+      "tts": {
+        "text": "Ólafur Kopenhag'a ulaştığında baskını, esareti ve halkının çektiği acıları anlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fidye parası için yalvardı.",
+      "text_markdown": "Fidye parası için yalvardı.",
+      "tts": {
+        "text": "Fidye parası için yalvardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yanıt hayal kırıklığı yarattı.",
+      "text_markdown": "Yanıt hayal kırıklığı yarattı.",
+      "tts": {
+        "text": "Yanıt hayal kırıklığı yarattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Danimarka zengin değildi, Otuz Yıl Savaşları Avrupa'yı tüketiyordu ve İzlanda uzak bir koloniydi.",
+      "text_markdown": "Danimarka zengin değildi, Otuz Yıl Savaşları Avrupa'yı tüketiyordu ve İzlanda uzak bir koloniydi.",
+      "tts": {
+        "text": "Danimarka zengin değildi, Otuz Yıl Savaşları Avrupa'yı tüketiyordu ve İzlanda uzak bir koloniydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kralın kendi masrafları vardı.",
+      "text_markdown": "Kralın kendi masrafları vardı.",
+      "tts": {
+        "text": "Kralın kendi masrafları vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Komiteler kuruldu ve mektuplar yazıldı, ancak vaat edilen fonlar nadiren ulaştı.",
+      "text_markdown": "Komiteler kuruldu ve mektuplar yazıldı, ancak vaat edilen fonlar nadiren ulaştı.",
+      "tts": {
+        "text": "Komiteler kuruldu ve mektuplar yazıldı, ancak vaat edilen fonlar nadiren ulaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bürokrasi kendi hızında ilerliyordu; bu sırada yüzlerce kişi köle olarak kalıyordu.",
+      "text_markdown": "Bürokrasi kendi hızında ilerliyordu; bu sırada yüzlerce kişi köle olarak kalıyordu.",
+      "tts": {
+        "text": "Bürokrasi kendi hızında ilerliyordu; bu sırada yüzlerce kişi köle olarak kalıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kilisenin Yanıtı",
+      "text_markdown": "Kilisenin Yanıtı"
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur ayrıca Luther Kilisesi'ne başvurdu.",
+      "text_markdown": "Ólafur ayrıca Luther Kilisesi'ne başvurdu.",
+      "tts": {
+        "text": "Ólafur ayrıca Luther Kilisesi'ne başvurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bağış kampanyaları düzenlendi ve vaazlar verildi, ancak toplanan miktarlar hiçbir zaman yeterli olmadı.",
+      "text_markdown": "Bağış kampanyaları düzenlendi ve vaazlar verildi, ancak toplanan miktarlar hiçbir zaman yeterli olmadı.",
+      "tts": {
+        "text": "Bağış kampanyaları düzenlendi ve vaazlar verildi, ancak toplanan miktarlar hiçbir zaman yeterli olmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir'den gelen fidye talepleri yüksekti; kilisenin veya tahtın ödeyeceğinin çok üzerindeydi.",
+      "text_markdown": "Cezayir'den gelen fidye talepleri yüksekti; kilisenin veya tahtın ödeyeceğinin çok üzerindeydi.",
+      "tts": {
+        "text": "Cezayir'den gelen fidye talepleri yüksekti; kilisenin veya tahtın ödeyeceğinin çok üzerindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Müzakereler yıllarca sürdü.",
+      "text_markdown": "Müzakereler yıllarca sürdü.",
+      "tts": {
+        "text": "Müzakereler yıllarca sürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Fidye Ağları",
+      "text_markdown": "Fidye Ağları"
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katolik ülkelerde Trinitaryen tarikatı gibi dini kuruluşlar, yüzyıllarca esir fidyeleme deneyimine sahipti.",
+      "text_markdown": "Katolik ülkelerde Trinitaryen tarikatı gibi dini kuruluşlar, yüzyıllarca esir fidyeleme deneyimine sahipti.",
+      "tts": {
+        "text": "Katolik ülkelerde Trinitaryen tarikatı gibi dini kuruluşlar, yüzyıllarca esir fidyeleme deneyimine sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak Protestan kuzeyde eşdeğer bir kuruluş yoktu.",
+      "text_markdown": "Ancak Protestan kuzeyde eşdeğer bir kuruluş yoktu.",
+      "tts": {
+        "text": "Ancak Protestan kuzeyde eşdeğer bir kuruluş yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Danimarka fidye çabasını sıfırdan inşa etmek zorundaydı.",
+      "text_markdown": "Danimarka fidye çabasını sıfırdan inşa etmek zorundaydı.",
+      "tts": {
+        "text": "Danimarka fidye çabasını sıfırdan inşa etmek zorundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Paranın sınırları aşması, para birimi değiştirmesi ve Cezayir'deki doğru kişilere ulaşması gerekiyordu.",
+      "text_markdown": "Paranın sınırları aşması, para birimi değiştirmesi ve Cezayir'deki doğru kişilere ulaşması gerekiyordu.",
+      "tts": {
+        "text": "Paranın sınırları aşması, para birimi değiştirmesi ve Cezayir'deki doğru kişilere ulaşması gerekiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Süreç gecikmeler, yolsuzluk ve tutulmayan vaatlerle doluydu.",
+      "text_markdown": "Süreç gecikmeler, yolsuzluk ve tutulmayan vaatlerle doluydu.",
+      "tts": {
+        "text": "Süreç gecikmeler, yolsuzluk ve tutulmayan vaatlerle doluydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bekleme Yılları",
+      "text_markdown": "Bekleme Yılları"
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur yıllarca fidye için dilekçe vererek mektuplar yazdı ve yetkilileri ziyaret etti.",
+      "text_markdown": "Ólafur yıllarca fidye için dilekçe vererek mektuplar yazdı ve yetkilileri ziyaret etti.",
+      "tts": {
+        "text": "Ólafur yıllarca fidye için dilekçe vererek mektuplar yazdı ve yetkilileri ziyaret etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yıllar geçti ve esirler Cezayir'de kalmaya devam etti.",
+      "text_markdown": "Yıllar geçti ve esirler Cezayir'de kalmaya devam etti.",
+      "tts": {
+        "text": "Yıllar geçti ve esirler Cezayir'de kalmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu süre zarfında kitabını yazdı.",
+      "text_markdown": "Bu süre zarfında kitabını yazdı.",
+      "tts": {
+        "text": "Bu süre zarfında kitabını yazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baskından köle pazarlarına, Avrupa yolculuğuna kadar tanık olduğu her şeyi kayda geçirdi.",
+      "text_markdown": "Baskından köle pazarlarına, Avrupa yolculuğuna kadar tanık olduğu her şeyi kayda geçirdi.",
+      "tts": {
+        "text": "Baskından köle pazarlarına, Avrupa yolculuğuna kadar tanık olduğu her şeyi kayda geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kitap yaşamı boyunca yayımlanmadı ama el yazması olarak dolaştı.",
+      "text_markdown": "Kitap yaşamı boyunca yayımlanmadı ama el yazması olarak dolaştı.",
+      "tts": {
+        "text": "Kitap yaşamı boyunca yayımlanmadı ama el yazması olarak dolaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüm bu olayın en önemli belgelerinden biri haline geldi.",
+      "text_markdown": "Tüm bu olayın en önemli belgelerinden biri haline geldi.",
+      "tts": {
+        "text": "Tüm bu olayın en önemli belgelerinden biri haline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "İktidarın Kayıtsızlığı",
+      "text_markdown": "İktidarın Kayıtsızlığı"
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur'un anlatısındaki en acı verici temalardan biri, iktidardakilerin kayıtsızlığıdır.",
+      "text_markdown": "Ólafur'un anlatısındaki en acı verici temalardan biri, iktidardakilerin kayıtsızlığıdır.",
+      "tts": {
+        "text": "Ólafur'un anlatısındaki en acı verici temalardan biri, iktidardakilerin kayıtsızlığıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Danimarkalı yetkililer acımasız değildi; yalnızca başka öncelikleri vardı.",
+      "text_markdown": "Danimarkalı yetkililer acımasız değildi; yalnızca başka öncelikleri vardı.",
+      "tts": {
+        "text": "Danimarkalı yetkililer acımasız değildi; yalnızca başka öncelikleri vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Acı çeken insanlar yoksul, uzak ve siyasi açıdan önemsizdi.",
+      "text_markdown": "Acı çeken insanlar yoksul, uzak ve siyasi açıdan önemsizdi.",
+      "tts": {
+        "text": "Acı çeken insanlar yoksul, uzak ve siyasi açıdan önemsizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hükümetleri onları açıkça yas tutup özel hayatta ihmal etti.",
+      "text_markdown": "Hükümetleri onları açıkça yas tutup özel hayatta ihmal etti.",
+      "tts": {
+        "text": "Hükümetleri onları açıkça yas tutup özel hayatta ihmal etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur'un yazılarında giderek artan bir acılık sezilir.",
+      "text_markdown": "Ólafur'un yazılarında giderek artan bir acılık sezilir.",
+      "tts": {
+        "text": "Ólafur'un yazılarında giderek artan bir acılık sezilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halkının mesajını Kopenhag'a taşımak için her şeyi riske atmıştı.",
+      "text_markdown": "Halkının mesajını Kopenhag'a taşımak için her şeyi riske atmıştı.",
+      "tts": {
+        "text": "Halkının mesajını Kopenhag'a taşımak için her şeyi riske atmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Esaret ve Görev",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yanıt, hızlıca kurtarılacak kadar önemli olmadıklarıydı.",
+      "text_markdown": "Yanıt, hızlıca kurtarılacak kadar önemli olmadıklarıydı.",
+      "tts": {
+        "text": "Yanıt, hızlıca kurtarılacak kadar önemli olmadıklarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dönenler ve Dönemeyenler",
+      "text_markdown": "Dönenler ve Dönemeyenler"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627'de esir alınan yaklaşık dört yüz İzlandalıdan yalnızca küçük bir kısmı geri döndü.",
+      "text_markdown": "1627'de esir alınan yaklaşık dört yüz İzlandalıdan yalnızca küçük bir kısmı geri döndü.",
+      "tts": {
+        "text": "Bin altı yüz yirmi yedide esir alınan yaklaşık dört yüz İzlandalıdan yalnızca küçük bir kısmı geri döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fidye çabası yaklaşık on yıl sürdü ve para geldiğinde birçoğu çoktan ölmüştü.",
+      "text_markdown": "Fidye çabası yaklaşık on yıl sürdü ve para geldiğinde birçoğu çoktan ölmüştü.",
+      "tts": {
+        "text": "Fidye çabası yaklaşık on yıl sürdü ve para geldiğinde birçoğu çoktan ölmüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hastalık, aşırı çalışma ve umutsuzluk ilk yıllarda birçoğunu öldürdü.",
+      "text_markdown": "Hastalık, aşırı çalışma ve umutsuzluk ilk yıllarda birçoğunu öldürdü.",
+      "tts": {
+        "text": "Hastalık, aşırı çalışma ve umutsuzluk ilk yıllarda birçoğunu öldürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İzlanda'nın soğuk havasından Cezayir'in sıcağına geçiş yıkıcıydı.",
+      "text_markdown": "İzlanda'nın soğuk havasından Cezayir'in sıcağına geçiş yıkıcıydı.",
+      "tts": {
+        "text": "İzlanda'nın soğuk havasından Cezayir'in sıcağına geçiş yıkıcıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Din Değiştirenler",
+      "text_markdown": "Din Değiştirenler"
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı esirler İslam'a geçti.",
+      "text_markdown": "Bazı esirler İslam'a geçti.",
+      "tts": {
+        "text": "Bazı esirler İslam'a geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Din değiştirmenin gerçek avantajları vardı: din değiştiren biri artık yasal olarak köle tutulamaz ve iş ile evlilik kapıları açılırdı.",
+      "text_markdown": "Din değiştirmenin gerçek avantajları vardı: din değiştiren biri artık yasal olarak köle tutulamaz ve iş ile evlilik kapıları açılırdı.",
+      "tts": {
+        "text": "Din değiştirmenin gerçek avantajları vardı: din değiştiren biri artık yasal olarak köle tutulamaz ve iş ile evlilik kapıları açılırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazıları için din değiştirmek hayatta kalma meselesiydi, inanç değil.",
+      "text_markdown": "Bazıları için din değiştirmek hayatta kalma meselesiydi, inanç değil.",
+      "tts": {
+        "text": "Bazıları için din değiştirmek hayatta kalma meselesiydi, inanç değil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diğerleri yeni dinlerini gerçekten benimseyerek yeni hayatlar kurdu.",
+      "text_markdown": "Diğerleri yeni dinlerini gerçekten benimseyerek yeni hayatlar kurdu.",
+      "tts": {
+        "text": "Diğerleri yeni dinlerini gerçekten benimseyerek yeni hayatlar kurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İzlanda kilisesi bu din değiştirmelere dehşetle baktı.",
+      "text_markdown": "İzlanda kilisesi bu din değiştirmelere dehşetle baktı.",
+      "tts": {
+        "text": "İzlanda kilisesi bu din değiştirmelere dehşetle baktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak esirlerin tarafından bakıldığında, din değiştirmek bazen hayatta kalmanın tek yoluydu.",
+      "text_markdown": "Ancak esirlerin tarafından bakıldığında, din değiştirmek bazen hayatta kalmanın tek yoluydu.",
+      "tts": {
+        "text": "Ancak esirlerin tarafından bakıldığında, din değiştirmek bazen hayatta kalmanın tek yoluydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Fidyeyle Kurtulan Azınlık",
+      "text_markdown": "Fidyeyle Kurtulan Azınlık"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1636'da, baskından yaklaşık dokuz yıl sonra, nihayet bir fidye ödendi.",
+      "text_markdown": "1636'da, baskından yaklaşık dokuz yıl sonra, nihayet bir fidye ödendi.",
+      "tts": {
+        "text": "Bin altı yüz otuz altıda, baskından yaklaşık dokuz yıl sonra, nihayet bir fidye ödendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Otuz dört esir serbest bırakılarak evlerine gönderildi.",
+      "text_markdown": "Otuz dört esir serbest bırakılarak evlerine gönderildi.",
+      "tts": {
+        "text": "Otuz dört esir serbest bırakılarak evlerine gönderildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dört yüzden otuz dördü.",
+      "text_markdown": "Dört yüzden otuz dördü.",
+      "tts": {
+        "text": "Dört yüzden otuz dördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları ölmüş, bazıları din değiştirmiş ve birçoğu bulunamayarak sahipleri satmayı reddetmişti.",
+      "text_markdown": "Bazıları ölmüş, bazıları din değiştirmiş ve birçoğu bulunamayarak sahipleri satmayı reddetmişti.",
+      "tts": {
+        "text": "Bazıları ölmüş, bazıları din değiştirmiş ve birçoğu bulunamayarak sahipleri satmayı reddetmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Guðríður Símonardóttir",
+      "text_markdown": "Guðríður Símonardóttir"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonunda fidyeyle kurtulanlar arasında Guðríður Símonardóttir de vardı.",
+      "text_markdown": "Sonunda fidyeyle kurtulanlar arasında Guðríður Símonardóttir de vardı.",
+      "tts": {
+        "text": "Sonunda fidyeyle kurtulanlar arasında Guðríður Símonardóttir de vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Genç bir kadınken esir alınmış ve Cezayir'de yaklaşık on yıl köle olarak kalmıştı.",
+      "text_markdown": "Genç bir kadınken esir alınmış ve Cezayir'de yaklaşık on yıl köle olarak kalmıştı.",
+      "tts": {
+        "text": "Genç bir kadınken esir alınmış ve Cezayir'de yaklaşık on yıl köle olarak kalmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İzlanda'ya döndüğünde bambaşka bir insandı.",
+      "text_markdown": "İzlanda'ya döndüğünde bambaşka bir insandı.",
+      "tts": {
+        "text": "İzlanda'ya döndüğünde bambaşka bir insandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arapça konuşuyordu ve alındığı dünyadan tamamen farklı bir dünyada yaşamıştı.",
+      "text_markdown": "Arapça konuşuyordu ve alındığı dünyadan tamamen farklı bir dünyada yaşamıştı.",
+      "tts": {
+        "text": "Arapça konuşuyordu ve alındığı dünyadan tamamen farklı bir dünyada yaşamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dönüşünden sonra İzlanda tarihinin en büyük şairlerinden biri olacak Hallgrímur Pétursson ile evlendi.",
+      "text_markdown": "Dönüşünden sonra İzlanda tarihinin en büyük şairlerinden biri olacak Hallgrímur Pétursson ile evlendi.",
+      "tts": {
+        "text": "Dönüşünden sonra İzlanda tarihinin en büyük şairlerinden biri olacak Hallgrímur Pétursson ile evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onun Çile İlahileri hâlâ İzlanda edebiyatının bir başyapıtı olarak kabul edilir.",
+      "text_markdown": "Onun Çile İlahileri hâlâ İzlanda edebiyatının bir başyapıtı olarak kabul edilir.",
+      "tts": {
+        "text": "Onun Çile İlahileri hâlâ İzlanda edebiyatının bir başyapıtı olarak kabul edilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Afrika'da köleleştirilmiş bir kadın, İzlanda'nın en sevilen dini şairi olacak adamla evlendi.",
+      "text_markdown": "Kuzey Afrika'da köleleştirilmiş bir kadın, İzlanda'nın en sevilen dini şairi olacak adamla evlendi.",
+      "tts": {
+        "text": "Kuzey Afrika'da köleleştirilmiş bir kadın, İzlanda'nın en sevilen dini şairi olacak adamla evlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p122",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birlikte bir hayat kurdular, ancak esaretin gölgesi onu hiçbir zaman tam olarak terk etmedi.",
+      "text_markdown": "Birlikte bir hayat kurdular, ancak esaretin gölgesi onu hiçbir zaman tam olarak terk etmedi.",
+      "tts": {
+        "text": "Birlikte bir hayat kurdular, ancak esaretin gölgesi onu hiçbir zaman tam olarak terk etmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Ólafur'un Dönüşü",
+      "text_markdown": "Ólafur'un Dönüşü"
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur'un kendisi de sonunda İzlanda'ya döndü; kırılmış ve bitkin bir adamdı.",
+      "text_markdown": "Ólafur'un kendisi de sonunda İzlanda'ya döndü; kırılmış ve bitkin bir adamdı.",
+      "tts": {
+        "text": "Ólafur'un kendisi de sonunda İzlanda'ya döndü; kırılmış ve bitkin bir adamdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p124",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ailesinin çoğunu kaybetmişti ve üstlendiği görev büyük ölçüde başarısız olmuştu.",
+      "text_markdown": "Ailesinin çoğunu kaybetmişti ve üstlendiği görev büyük ölçüde başarısız olmuştu.",
+      "tts": {
+        "text": "Ailesinin çoğunu kaybetmişti ve üstlendiği görev büyük ölçüde başarısız olmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eşi Ásta'nın kaderi belirsiz kalmaktadır.",
+      "text_markdown": "Eşi Ásta'nın kaderi belirsiz kalmaktadır.",
+      "tts": {
+        "text": "Eşi Ásta'nın kaderi belirsiz kalmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p125",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçiler esarette öldüğüne inanıyor, ancak koşullar bilinmiyor.",
+      "text_markdown": "Tarihçiler esarette öldüğüne inanıyor, ancak koşullar bilinmiyor.",
+      "tts": {
+        "text": "Tarihçiler esarette öldüğüne inanıyor, ancak koşullar bilinmiyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p125",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anlatısındaki sessizlik kelimelerden daha yüksek sesle konuşur.",
+      "text_markdown": "Anlatısındaki sessizlik kelimelerden daha yüksek sesle konuşur.",
+      "tts": {
+        "text": "Anlatısındaki sessizlik kelimelerden daha yüksek sesle konuşur.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur 1651 yılına kadar yaşayarak seksen yedi yaşına ulaştı.",
+      "text_markdown": "Ólafur 1651 yılına kadar yaşayarak seksen yedi yaşına ulaştı.",
+      "tts": {
+        "text": "Ólafur bin altı yüz elli bir yılına kadar yaşayarak seksen yedi yaşına ulaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p126",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son yıllarını gördüğü ve kaybettiği her şeyin ağırlığını taşıyarak geçirdi.",
+      "text_markdown": "Son yıllarını gördüğü ve kaybettiği her şeyin ağırlığını taşıyarak geçirdi.",
+      "tts": {
+        "text": "Son yıllarını gördüğü ve kaybettiği her şeyin ağırlığını taşıyarak geçirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Dinmeyen Travma",
+      "text_markdown": "Dinmeyen Travma"
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geri dönen esirler İzlanda'nın yoluna devam ettiğini gördü.",
+      "text_markdown": "Geri dönen esirler İzlanda'nın yoluna devam ettiğini gördü.",
+      "tts": {
+        "text": "Geri dönen esirler İzlanda'nın yoluna devam ettiğini gördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p128",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Evleri başkalarına verilmiş ve mülkleri yok olmuştu.",
+      "text_markdown": "Evleri başkalarına verilmiş ve mülkleri yok olmuştu.",
+      "tts": {
+        "text": "Evleri başkalarına verilmiş ve mülkleri yok olmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kilise, dönenlerin din değiştirmediklerini kanıtlamak için halka açık bir iman sınavından geçmelerini istedi.",
+      "text_markdown": "Kilise, dönenlerin din değiştirmediklerini kanıtlamak için halka açık bir iman sınavından geçmelerini istedi.",
+      "tts": {
+        "text": "Kilise, dönenlerin din değiştirmediklerini kanıtlamak için halka açık bir iman sınavından geçmelerini istedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p129",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, zaten hayal edilemeyecek acılar çekmiş insanlar için aşağılayıcıydı.",
+      "text_markdown": "Bu, zaten hayal edilemeyecek acılar çekmiş insanlar için aşağılayıcıydı.",
+      "tts": {
+        "text": "Bu, zaten hayal edilemeyecek acılar çekmiş insanlar için aşağılayıcıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birçoğu uyum sağlamakta güçlük çekti.",
+      "text_markdown": "Birçoğu uyum sağlamakta güçlük çekti.",
+      "tts": {
+        "text": "Birçoğu uyum sağlamakta güçlük çekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p130",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Komşularının anlayamayacağı şekillerde değişmişlerdi.",
+      "text_markdown": "Komşularının anlayamayacağı şekillerde değişmişlerdi.",
+      "tts": {
+        "text": "Komşularının anlayamayacağı şekillerde değişmişlerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İzlandalıların Türk Baskınları dediği Tyrkjaránið, ulusal hafızada derin bir iz bıraktı.",
+      "text_markdown": "İzlandalıların Türk Baskınları dediği Tyrkjaránið, ulusal hafızada derin bir iz bıraktı.",
+      "tts": {
+        "text": "İzlandalıların Türk Baskınları dediği Tyrkjaránið, ulusal hafızada derin bir iz bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p131",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baskınla ilgili şarkılar ve hikâyeler nesilden nesile aktarıldı.",
+      "text_markdown": "Baskınla ilgili şarkılar ve hikâyeler nesilden nesile aktarıldı.",
+      "tts": {
+        "text": "Baskınla ilgili şarkılar ve hikâyeler nesilden nesile aktarıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Dönenler ve Dönemeyenler",
+      "paragraph_id": "p131",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Westman Adaları hiçbir zaman unutmadı.",
+      "text_markdown": "Westman Adaları hiçbir zaman unutmadı.",
+      "tts": {
+        "text": "Westman Adaları hiçbir zaman unutmadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hayatta Kalan Kitap",
+      "text_markdown": "Hayatta Kalan Kitap"
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur'un kitabı Reisubók, yaşamı boyunca hiçbir zaman yayımlanmadı.",
+      "text_markdown": "Ólafur'un kitabı Reisubók, yaşamı boyunca hiçbir zaman yayımlanmadı.",
+      "tts": {
+        "text": "Ólafur'un kitabı Reisubók, yaşamı boyunca hiçbir zaman yayımlanmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p133",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El yazması olarak dolaştı, kopyalandı ve okuyucudan okuyucuya geçti.",
+      "text_markdown": "El yazması olarak dolaştı, kopyalandı ve okuyucudan okuyucuya geçti.",
+      "tts": {
+        "text": "El yazması olarak dolaştı, kopyalandı ve okuyucudan okuyucuya geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p133",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca İzlanda edebiyatının en önemli tarihî belgelerinden biri haline geldi.",
+      "text_markdown": "Yüzyıllar boyunca İzlanda edebiyatının en önemli tarihî belgelerinden biri haline geldi.",
+      "tts": {
+        "text": "Yüzyıllar boyunca İzlanda edebiyatının en önemli tarihî belgelerinden biri haline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir Kuzey Avrupalı tarafından yazılmış, Berberi köle ticaretine dair çok az sayıdaki görgü tanığı anlatımlarından biridir.",
+      "text_markdown": "Bir Kuzey Avrupalı tarafından yazılmış, Berberi köle ticaretine dair çok az sayıdaki görgü tanığı anlatımlarından biridir.",
+      "tts": {
+        "text": "Bir Kuzey Avrupalı tarafından yazılmış, Berberi köle ticaretine dair çok az sayıdaki görgü tanığı anlatımlarından biridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p134",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Küçük bir volkanik adadan gelen İzlandalı bir papaz olan Ólafur'un bakış açısı tüm Avrupa edebiyatında benzersizdir.",
+      "text_markdown": "Küçük bir volkanik adadan gelen İzlandalı bir papaz olan Ólafur'un bakış açısı tüm Avrupa edebiyatında benzersizdir.",
+      "tts": {
+        "text": "Küçük bir volkanik adadan gelen İzlandalı bir papaz olan Ólafur'un bakış açısı tüm Avrupa edebiyatında benzersizdir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kitabın Öğrettikleri",
+      "text_markdown": "Kitabın Öğrettikleri"
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur bir bilginin dikkatli gözüyle yazdı.",
+      "text_markdown": "Ólafur bir bilginin dikkatli gözüyle yazdı.",
+      "tts": {
+        "text": "Ólafur bir bilginin dikkatli gözüyle yazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p136",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir'i, geleneklerini, köle pazarını ve günlük esareti abartmadan anlattı.",
+      "text_markdown": "Cezayir'i, geleneklerini, köle pazarını ve günlük esareti abartmadan anlattı.",
+      "tts": {
+        "text": "Cezayir'i, geleneklerini, köle pazarını ve günlük esareti abartmadan anlattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kitabı bize korsanlığın yalnızca korsanlarla ilgili olmadığını öğretir.",
+      "text_markdown": "Kitabı bize korsanlığın yalnızca korsanlarla ilgili olmadığını öğretir.",
+      "tts": {
+        "text": "Kitabı bize korsanlığın yalnızca korsanlarla ilgili olmadığını öğretir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p137",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her baskının ardında hayatları yıkılan gerçek insanlar vardı.",
+      "text_markdown": "Her baskının ardında hayatları yıkılan gerçek insanlar vardı.",
+      "tts": {
+        "text": "Her baskının ardında hayatları yıkılan gerçek insanlar vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p137",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ólafur kendi hikâyesini anlatan az sayıdaki kurbanlardan biridir.",
+      "text_markdown": "Ólafur kendi hikâyesini anlatan az sayıdaki kurbanlardan biridir.",
+      "tts": {
+        "text": "Ólafur kendi hikâyesini anlatan az sayıdaki kurbanlardan biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reisubók ayrıca Avrupa güçlerinin halklarını korumadaki başarısızlıklarını da gözler önüne serer.",
+      "text_markdown": "Reisubók ayrıca Avrupa güçlerinin halklarını korumadaki başarısızlıklarını da gözler önüne serer.",
+      "tts": {
+        "text": "Reisubók ayrıca Avrupa güçlerinin halklarını korumadaki başarısızlıklarını da gözler önüne serer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p138",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Danimarka İzlanda'yı yönetiyordu ama onu savunmak için neredeyse hiçbir şey yapmadı.",
+      "text_markdown": "Danimarka İzlanda'yı yönetiyordu ama onu savunmak için neredeyse hiçbir şey yapmadı.",
+      "tts": {
+        "text": "Danimarka İzlanda'yı yönetiyordu ama onu savunmak için neredeyse hiçbir şey yapmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p138",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esirler, kendilerini koruması gereken hükümetler tarafından terk edildi.",
+      "text_markdown": "Esirler, kendilerini koruması gereken hükümetler tarafından terk edildi.",
+      "tts": {
+        "text": "Esirler, kendilerini koruması gereken hükümetler tarafından terk edildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bu Hikâye Neden Bir Korsan Serisinde Yer Alıyor",
+      "text_markdown": "Bu Hikâye Neden Bir Korsan Serisinde Yer Alıyor"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap, ünlü korsanlar hakkında bir serinin parçasıdır.",
+      "text_markdown": "Bu kitap, ünlü korsanlar hakkında bir serinin parçasıdır.",
+      "tts": {
+        "text": "Bu kitap, ünlü korsanlar hakkında bir serinin parçasıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p140",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur bir korsan değildi.",
+      "text_markdown": "Ólafur bir korsan değildi.",
+      "tts": {
+        "text": "Ólafur bir korsan değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p140",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O bir korsanlık kurbanıydı.",
+      "text_markdown": "O bir korsanlık kurbanıydı.",
+      "tts": {
+        "text": "O bir korsanlık kurbanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p140",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak hikâyesi, korsanlığın gerçekte ne anlama geldiğini anlamak için vazgeçilmezdir.",
+      "text_markdown": "Ancak hikâyesi, korsanlığın gerçekte ne anlama geldiğini anlamak için vazgeçilmezdir.",
+      "tts": {
+        "text": "Ancak hikâyesi, korsanlığın gerçekte ne anlama geldiğini anlamak için vazgeçilmezdir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsanlık sıklıkla romantikleştirilir.",
+      "text_markdown": "Korsanlık sıklıkla romantikleştirilir.",
+      "tts": {
+        "text": "Korsanlık sıklıkla romantikleştirilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p141",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ancak özünde sıradan insanlara yönelik örgütlü şiddetti.",
+      "text_markdown": "Ancak özünde sıradan insanlara yönelik örgütlü şiddetti.",
+      "tts": {
+        "text": "Ancak özünde sıradan insanlara yönelik örgütlü şiddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p141",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Berberi korsanları yalnızca mal çalmıyordu.",
+      "text_markdown": "Berberi korsanları yalnızca mal çalmıyordu.",
+      "tts": {
+        "text": "Berberi korsanları yalnızca mal çalmıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p141",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnsan çalıyorlardı.",
+      "text_markdown": "İnsan çalıyorlardı.",
+      "tts": {
+        "text": "İnsan çalıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur'un hikâyesi bizi korsanlığa diğer taraftan bakmaya zorlar.",
+      "text_markdown": "Ólafur'un hikâyesi bizi korsanlığa diğer taraftan bakmaya zorlar.",
+      "tts": {
+        "text": "Ólafur'un hikâyesi bizi korsanlığa diğer taraftan bakmaya zorlar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p142",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Evinden koparılmayı, aileden ayrılmayı, bir pazarda satılmayı ve hükümetin tarafından unutulmayı hayal etmemizi ister.",
+      "text_markdown": "Evinden koparılmayı, aileden ayrılmayı, bir pazarda satılmayı ve hükümetin tarafından unutulmayı hayal etmemizi ister.",
+      "tts": {
+        "text": "Evinden koparılmayı, aileden ayrılmayı, bir pazarda satılmayı ve hükümetin tarafından unutulmayı hayal etmemizi ister.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Günümüzde Westman Adaları",
+      "text_markdown": "Günümüzde Westman Adaları"
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Westman Adaları hâlâ yerleşim yeridir; bugün Heimaey'de yaklaşık dört bin kişi yaşamaktadır.",
+      "text_markdown": "Westman Adaları hâlâ yerleşim yeridir; bugün Heimaey'de yaklaşık dört bin kişi yaşamaktadır.",
+      "tts": {
+        "text": "Westman Adaları hâlâ yerleşim yeridir; bugün Heimaey'de yaklaşık dört bin kişi yaşamaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p144",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adalar doğal güzellikleri, papağan kuşu kolonileri ve yıllık bir festivaliyle tanınır.",
+      "text_markdown": "Adalar doğal güzellikleri, papağan kuşu kolonileri ve yıllık bir festivaliyle tanınır.",
+      "tts": {
+        "text": "Adalar doğal güzellikleri, papağan kuşu kolonileri ve yıllık bir festivaliyle tanınır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1627 baskınının anısı hâlâ yaşıyor.",
+      "text_markdown": "1627 baskınının anısı hâlâ yaşıyor.",
+      "tts": {
+        "text": "Bin altı yüz yirmi yedi baskınının anısı hâlâ yaşıyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p145",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heimaey'deki bir anıt kurbanları onurlandırır ve yerel tarihçiler esirlerin isimlerini belirlemeye çalışmıştır.",
+      "text_markdown": "Heimaey'deki bir anıt kurbanları onurlandırır ve yerel tarihçiler esirlerin isimlerini belirlemeye çalışmıştır.",
+      "tts": {
+        "text": "Heimaey'deki bir anıt kurbanları onurlandırır ve yerel tarihçiler esirlerin isimlerini belirlemeye çalışmıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2009 yılında götürülenlerin anısına bir anıt dikildi.",
+      "text_markdown": "2009 yılında götürülenlerin anısına bir anıt dikildi.",
+      "tts": {
+        "text": "İki bin dokuz yılında götürülenlerin anısına bir anıt dikildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p146",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üzerindeki yazıt ziyaretçilere, burada bir zamanlar sıradan insanların yaşadığını ve zorla dünyanın öbür ucuna götürüldüğünü hatırlatır.",
+      "text_markdown": "Üzerindeki yazıt ziyaretçilere, burada bir zamanlar sıradan insanların yaşadığını ve zorla dünyanın öbür ucuna götürüldüğünü hatırlatır.",
+      "tts": {
+        "text": "Üzerindeki yazıt ziyaretçilere, burada bir zamanlar sıradan insanların yaşadığını ve zorla dünyanın öbür ucuna götürüldüğünü hatırlatır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hafıza ve Miras",
+      "text_markdown": "Hafıza ve Miras"
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur yaklaşık dört yüz yıldır hayatta değil, ama sözleri hâlâ konuşuyor.",
+      "text_markdown": "Ólafur yaklaşık dört yüz yıldır hayatta değil, ama sözleri hâlâ konuşuyor.",
+      "tts": {
+        "text": "Ólafur yaklaşık dört yüz yıldır hayatta değil, ama sözleri hâlâ konuşuyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p148",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kitabı bize tarihin yalnızca krallar ve fatihler tarafından yapılmadığını hatırlatır.",
+      "text_markdown": "Kitabı bize tarihin yalnızca krallar ve fatihler tarafından yapılmadığını hatırlatır.",
+      "tts": {
+        "text": "Kitabı bize tarihin yalnızca krallar ve fatihler tarafından yapılmadığını hatırlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p148",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarih aynı zamanda olağanüstü acılar çeken ve tanıklık etmenin bir yolunu bulan sıradan insanlar tarafından da yapılır.",
+      "text_markdown": "Tarih aynı zamanda olağanüstü acılar çeken ve tanıklık etmenin bir yolunu bulan sıradan insanlar tarafından da yapılır.",
+      "tts": {
+        "text": "Tarih aynı zamanda olağanüstü acılar çeken ve tanıklık etmenin bir yolunu bulan sıradan insanlar tarafından da yapılır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reisubók onun tanıklığıdır.",
+      "text_markdown": "Reisubók onun tanıklığıdır.",
+      "tts": {
+        "text": "Reisubók onun tanıklığıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p149",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Neredeyse her şeyi kaybetmiş ama hikâyesinin ölmesine izin vermemiş bir adamın sesidir.",
+      "text_markdown": "Neredeyse her şeyi kaybetmiş ama hikâyesinin ölmesine izin vermemiş bir adamın sesidir.",
+      "tts": {
+        "text": "Neredeyse her şeyi kaybetmiş ama hikâyesinin ölmesine izin vermemiş bir adamın sesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hayatta Kalan Kitap",
+      "paragraph_id": "p149",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kitabı hayatta kaldığı sürece, 1627'de Westman Adaları'ndan götürülen insanlar unutulmayacaktır.",
+      "text_markdown": "Kitabı hayatta kaldığı sürece, 1627'de Westman Adaları'ndan götürülen insanlar unutulmayacaktır.",
+      "tts": {
+        "text": "Kitabı hayatta kaldığı sürece, bin altı yüz yirmi yedide Westman Adaları'ndan götürülen insanlar unutulmayacaktır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

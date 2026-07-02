@@ -1,0 +1,4622 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_rahmah_ibn_jabir",
+  "language": "ja",
+  "total_segments": 309,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への注記",
+      "text_markdown": "読者への注記"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、生涯を戦いに費やした男の物語である。",
+      "text_markdown": "これは、生涯を戦いに費やした男の物語である。",
+      "tts": {
+        "text": "これは、生涯を戦いに費やした男の物語である。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービル・アル＝ジャラーヒマは海賊であり、戦士であり、四十年以上続いた一つの確執に身を焦がした男であった。",
+      "text_markdown": "ラフマ・イブン・ジャービル・アル＝ジャラーヒマは海賊であり、戦士であり、四十年以上続いた一つの確執に身を焦がした男であった。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービル・アル＝ジャラーヒマは海賊であり、戦士であり、四十年以上続いた一つの確執に身を焦がした男であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はペルシア湾の海で戦った。その水域が地球上で最も争いの絶えない場所の一つであった時代に。",
+      "text_markdown": "彼はペルシア湾の海で戦った。その水域が地球上で最も争いの絶えない場所の一つであった時代に。",
+      "tts": {
+        "text": "彼はペルシア湾の海で戦った。その水域が地球上で最も争いの絶えない場所の一つであった時代に。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "真珠、交易、そして部族の誇りが、この浅いトルコ色の海で人々を殺し合いに駆り立てた。",
+      "text_markdown": "真珠、交易、そして部族の誇りが、この浅いトルコ色の海で人々を殺し合いに駆り立てた。",
+      "tts": {
+        "text": "真珠、交易、そして部族の誇りが、この浅いトルコ色の海で人々を殺し合いに駆り立てた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス人はこの地域を海賊海岸と呼んだ。",
+      "text_markdown": "イギリス人はこの地域を海賊海岸と呼んだ。",
+      "tts": {
+        "text": "イギリス人はこの地域を海賊海岸と呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは非難の意味を込めてのことだった。",
+      "text_markdown": "それは非難の意味を込めてのことだった。",
+      "tts": {
+        "text": "それは非難の意味を込めてのことだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこに住む人々は異なる見方をしていた。",
+      "text_markdown": "そこに住む人々は異なる見方をしていた。",
+      "tts": {
+        "text": "そこに住む人々は異なる見方をしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らにとって海は戦場であり、水域の支配は生存を意味した。",
+      "text_markdown": "彼らにとって海は戦場であり、水域の支配は生存を意味した。",
+      "tts": {
+        "text": "彼らにとって海は戦場であり、水域の支配は生存を意味した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービルは誰よりもこのことを理解していた。",
+      "text_markdown": "ラフマ・イブン・ジャービルは誰よりもこのことを理解していた。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービルは誰よりもこのことを理解していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は戦うものが何も残らなくなるまで戦った。",
+      "text_markdown": "彼は戦うものが何も残らなくなるまで戦った。",
+      "tts": {
+        "text": "彼は戦うものが何も残らなくなるまで戦った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の死は、訪れた時、湾岸海賊史上最も劇的な退場となった。",
+      "text_markdown": "彼の死は、訪れた時、湾岸海賊史上最も劇的な退場となった。",
+      "tts": {
+        "text": "彼の死は、訪れた時、湾岸海賊史上最も劇的な退場となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は自らの条件で、炎と雷鳴の中で、敵を道連れにして死ぬことを選んだ。",
+      "text_markdown": "彼は自らの条件で、炎と雷鳴の中で、敵を道連れにして死ぬことを選んだ。",
+      "tts": {
+        "text": "彼は自らの条件で、炎と雷鳴の中で、敵を道連れにして死ぬことを選んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ペルシア湾の世界",
+      "text_markdown": "ペルシア湾の世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシア湾はアラビア半島とイラン海岸の間に約600マイルにわたって広がる浅い水域である。",
+      "text_markdown": "ペルシア湾はアラビア半島とイラン海岸の間に約600マイルにわたって広がる浅い水域である。",
+      "tts": {
+        "text": "ペルシア湾はアラビア半島とイラン海岸の間に約六百マイルにわたって広がる浅い水域である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その深さが200フィートを超えることはめったにない。",
+      "text_markdown": "その深さが200フィートを超えることはめったにない。",
+      "tts": {
+        "text": "その深さが二百フィートを超えることはめったにない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの場所で船は透明な水を通して砂の底を見ることができる。",
+      "text_markdown": "多くの場所で船は透明な水を通して砂の底を見ることができる。",
+      "tts": {
+        "text": "多くの場所で船は透明な水を通して砂の底を見ることができる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その控えめな大きさにもかかわらず、湾は数千年にわたり交易の十字路であった。",
+      "text_markdown": "その控えめな大きさにもかかわらず、湾は数千年にわたり交易の十字路であった。",
+      "tts": {
+        "text": "その控えめな大きさにもかかわらず、湾は数千年にわたり交易の十字路であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "古代から船がメソポタミア、インド、アフリカの間でこの水域を通じて商品を運んできた。",
+      "text_markdown": "古代から船がメソポタミア、インド、アフリカの間でこの水域を通じて商品を運んできた。",
+      "tts": {
+        "text": "古代から船がメソポタミア、インド、アフリカの間でこの水域を通じて商品を運んできた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "湾はインド洋を地球上で最も古い文明のいくつかと結んでいる。",
+      "text_markdown": "湾はインド洋を地球上で最も古い文明のいくつかと結んでいる。",
+      "tts": {
+        "text": "湾はインド洋を地球上で最も古い文明のいくつかと結んでいる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世紀、湾で最も貴重な資源は石油ではなかった。",
+      "text_markdown": "十八世紀、湾で最も貴重な資源は石油ではなかった。",
+      "tts": {
+        "text": "十八世紀、湾で最も貴重な資源は石油ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "石油はさらに一世紀後まで発見されないことになる。",
+      "text_markdown": "石油はさらに一世紀後まで発見されないことになる。",
+      "tts": {
+        "text": "石油はさらに一世紀後まで発見されないことになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "湾の宝は真珠であった。",
+      "text_markdown": "湾の宝は真珠であった。",
+      "tts": {
+        "text": "湾の宝は真珠であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "湾の真珠貝の産地は世界で最も豊かなものの一つであった。",
+      "text_markdown": "湾の真珠貝の産地は世界で最も豊かなものの一つであった。",
+      "tts": {
+        "text": "湾の真珠貝の産地は世界で最も豊かなものの一つであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "潜水夫たちは鼻栓と石の重りだけで海底に潜り、何分間も息を止めていた。",
+      "text_markdown": "潜水夫たちは鼻栓と石の重りだけで海底に潜り、何分間も息を止めていた。",
+      "tts": {
+        "text": "潜水夫たちは鼻栓と石の重りだけで海底に潜り、何分間も息を止めていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らが引き上げた真珠はアジアとヨーロッパ中で珍重された。",
+      "text_markdown": "彼らが引き上げた真珠はアジアとヨーロッパ中で珍重された。",
+      "tts": {
+        "text": "彼らが引き上げた真珠はアジアとヨーロッパ中で珍重された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真珠の産地を支配することは富と権力を意味した。",
+      "text_markdown": "真珠の産地を支配することは富と権力を意味した。",
+      "tts": {
+        "text": "真珠の産地を支配することは富と権力を意味した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アラビア海岸の部族は最良の潜水場への権利をめぐって絶えず争っていた。",
+      "text_markdown": "アラビア海岸の部族は最良の潜水場への権利をめぐって絶えず争っていた。",
+      "tts": {
+        "text": "アラビア海岸の部族は最良の潜水場への権利をめぐって絶えず争っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "豊かな真珠の産地を支配する部族は近隣を支配できた。",
+      "text_markdown": "豊かな真珠の産地を支配する部族は近隣を支配できた。",
+      "tts": {
+        "text": "豊かな真珠の産地を支配する部族は近隣を支配できた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "湾のアラビア側には数十のアラブ部族が暮らしていた。",
+      "text_markdown": "湾のアラビア側には数十のアラブ部族が暮らしていた。",
+      "tts": {
+        "text": "湾のアラビア側には数十のアラブ部族が暮らしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの部族は時とともに変化する緩やかな連合体に組織されていた。",
+      "text_markdown": "これらの部族は時とともに変化する緩やかな連合体に組織されていた。",
+      "tts": {
+        "text": "これらの部族は時とともに変化する緩やかな連合体に組織されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "同盟は状況の変化とともに形成され、解消された。",
+      "text_markdown": "同盟は状況の変化とともに形成され、解消された。",
+      "tts": {
+        "text": "同盟は状況の変化とともに形成され、解消された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も重要な連合体の一つがウトゥーブ連合であった。",
+      "text_markdown": "最も重要な連合体の一つがウトゥーブ連合であった。",
+      "tts": {
+        "text": "最も重要な連合体の一つがウトゥーブ連合であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウトゥーブ連合はもともとアラビア半島中央の砂漠、ナジュドの出身であった。",
+      "text_markdown": "ウトゥーブ連合はもともとアラビア半島中央の砂漠、ナジュドの出身であった。",
+      "tts": {
+        "text": "ウトゥーブ連合はもともとアラビア半島中央の砂漠、ナジュドの出身であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはより良い機会を求めて海岸に移住していた。",
+      "text_markdown": "彼らはより良い機会を求めて海岸に移住していた。",
+      "tts": {
+        "text": "彼らはより良い機会を求めて海岸に移住していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウトゥーブ連合はやがていくつかの有力な家族に分裂した。",
+      "text_markdown": "ウトゥーブ連合はやがていくつかの有力な家族に分裂した。",
+      "tts": {
+        "text": "ウトゥーブ連合はやがていくつかの有力な家族に分裂した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハリーファ家がバーレーンの支配権を握った。",
+      "text_markdown": "ハリーファ家がバーレーンの支配権を握った。",
+      "tts": {
+        "text": "ハリーファ家がバーレーンの支配権を握った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サバーハ家がクウェートに定着した。",
+      "text_markdown": "サバーハ家がクウェートに定着した。",
+      "tts": {
+        "text": "サバーハ家がクウェートに定着した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ジャラーヒマ族、すなわちラフマの民は、現在のカタールの海岸沿いに定住した。",
+      "text_markdown": "ジャラーヒマ族、すなわちラフマの民は、現在のカタールの海岸沿いに定住した。",
+      "tts": {
+        "text": "ジャラーヒマ族、すなわちラフマの民は、現在のカタールの海岸沿いに定住した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーレーンは湾最大の宝であった。",
+      "text_markdown": "バーレーンは湾最大の宝であった。",
+      "tts": {
+        "text": "バーレーンは湾最大の宝であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その真珠の産地はすべての中で最も豊かであった。",
+      "text_markdown": "その真珠の産地はすべての中で最も豊かであった。",
+      "tts": {
+        "text": "その真珠の産地はすべての中で最も豊かであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バーレーンを支配する者が地域で最も貴重な資源を支配した。",
+      "text_markdown": "バーレーンを支配する者が地域で最も貴重な資源を支配した。",
+      "tts": {
+        "text": "バーレーンを支配する者が地域で最も貴重な資源を支配した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハリーファ家は1783年にバーレーンをペルシア人から奪取した。",
+      "text_markdown": "ハリーファ家は1783年にバーレーンをペルシア人から奪取した。",
+      "tts": {
+        "text": "ハリーファ家は千七百八十三年にバーレーンをペルシア人から奪取した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この征服は甚大な結果をもたらすことになる。",
+      "text_markdown": "この征服は甚大な結果をもたらすことになる。",
+      "tts": {
+        "text": "この征服は甚大な結果をもたらすことになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは数十年にわたる紛争を煽る力の不均衡を生み出した。",
+      "text_markdown": "それは数十年にわたる紛争を煽る力の不均衡を生み出した。",
+      "tts": {
+        "text": "それは数十年にわたる紛争を煽る力の不均衡を生み出した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャラーヒマはバーレーンの富の分け前を得る権利があると信じていた。",
+      "text_markdown": "ジャラーヒマはバーレーンの富の分け前を得る権利があると信じていた。",
+      "tts": {
+        "text": "ジャラーヒマはバーレーンの富の分け前を得る権利があると信じていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはウトゥーブ連合の一員であった。",
+      "text_markdown": "彼らはウトゥーブ連合の一員であった。",
+      "tts": {
+        "text": "彼らはウトゥーブ連合の一員であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハリーファ家と共に戦っていた。",
+      "text_markdown": "ハリーファ家と共に戦っていた。",
+      "tts": {
+        "text": "ハリーファ家と共に戦っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしハリーファ家はバーレーンを独占した。",
+      "text_markdown": "しかしハリーファ家はバーレーンを独占した。",
+      "tts": {
+        "text": "しかしハリーファ家はバーレーンを独占した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この裏切りと感じられた出来事が、ラフマ・イブン・ジャービルの生涯にわたる戦争の火を点けた火花であった。",
+      "text_markdown": "この裏切りと感じられた出来事が、ラフマ・イブン・ジャービルの生涯にわたる戦争の火を点けた火花であった。",
+      "tts": {
+        "text": "この裏切りと感じられた出来事が、ラフマ・イブン・ジャービルの生涯にわたる戦争の火を点けた火花であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は残りの生涯を、自分のものだと信じるものをハリーファ家から奪い返そうとして過ごすことになる。",
+      "text_markdown": "彼は残りの生涯を、自分のものだと信じるものをハリーファ家から奪い返そうとして過ごすことになる。",
+      "tts": {
+        "text": "彼は残りの生涯を、自分のものだと信じるものをハリーファ家から奪い返そうとして過ごすことになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "部族間の争いの向こうには、より大きな強国が湾を取り囲んでいた。",
+      "text_markdown": "部族間の争いの向こうには、より大きな強国が湾を取り囲んでいた。",
+      "tts": {
+        "text": "部族間の争いの向こうには、より大きな強国が湾を取り囲んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マスカットを拠点とするオマーン帝国はインド洋の主要な海軍力であった。",
+      "text_markdown": "マスカットを拠点とするオマーン帝国はインド洋の主要な海軍力であった。",
+      "tts": {
+        "text": "マスカットを拠点とするオマーン帝国はインド洋の主要な海軍力であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オマーン人は湾の交易と政治に独自の利害を持っていた。",
+      "text_markdown": "オマーン人は湾の交易と政治に独自の利害を持っていた。",
+      "tts": {
+        "text": "オマーン人は湾の交易と政治に独自の利害を持っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ワッハーブ派の運動が内陸からアラビア全土に広がっていた。",
+      "text_markdown": "ワッハーブ派の運動が内陸からアラビア全土に広がっていた。",
+      "tts": {
+        "text": "ワッハーブ派の運動が内陸からアラビア全土に広がっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サウジ・ワッハーブ同盟は沿岸部族を自らの宗教的・政治的権威の下に置こうとしていた。",
+      "text_markdown": "サウジ・ワッハーブ同盟は沿岸部族を自らの宗教的・政治的権威の下に置こうとしていた。",
+      "tts": {
+        "text": "サウジ・ワッハーブ同盟は沿岸部族を自らの宗教的・政治的権威の下に置こうとしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの拡大は、すでに不安定な地域にさらなる紛争の層を加えた。",
+      "text_markdown": "彼らの拡大は、すでに不安定な地域にさらなる紛争の層を加えた。",
+      "tts": {
+        "text": "彼らの拡大は、すでに不安定な地域にさらなる紛争の層を加えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そしてイギリス人がいた。",
+      "text_markdown": "そしてイギリス人がいた。",
+      "tts": {
+        "text": "そしてイギリス人がいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス東インド会社がインドと湾の間の交易を支配していた。",
+      "text_markdown": "イギリス東インド会社がインドと湾の間の交易を支配していた。",
+      "tts": {
+        "text": "イギリス東インド会社がインドと湾の間の交易を支配していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリスの軍艦が水域を巡回し、イギリスの政治工作員が部族の問題に干渉した。",
+      "text_markdown": "イギリスの軍艦が水域を巡回し、イギリスの政治工作員が部族の問題に干渉した。",
+      "tts": {
+        "text": "イギリスの軍艦が水域を巡回し、イギリスの政治工作員が部族の問題に干渉した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス人は何よりも安定を望んでいた。",
+      "text_markdown": "イギリス人は何よりも安定を望んでいた。",
+      "tts": {
+        "text": "イギリス人は何よりも安定を望んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊行為は交易を妨げ、妨げられた交易は失われた利益を意味した。",
+      "text_markdown": "海賊行為は交易を妨げ、妨げられた交易は失われた利益を意味した。",
+      "tts": {
+        "text": "海賊行為は交易を妨げ、妨げられた交易は失われた利益を意味した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはやがて武力で湾に自らの意志を押し付け、アラブ人が休戦と呼びイギリス人が降伏と呼ぶ条約を結ぶことになる。",
+      "text_markdown": "彼らはやがて武力で湾に自らの意志を押し付け、アラブ人が休戦と呼びイギリス人が降伏と呼ぶ条約を結ぶことになる。",
+      "tts": {
+        "text": "彼らはやがて武力で湾に自らの意志を押し付け、アラブ人が休戦と呼びイギリス人が降伏と呼ぶ条約を結ぶことになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがラフマ・イブン・ジャービルの世界であった。",
+      "text_markdown": "これがラフマ・イブン・ジャービルの世界であった。",
+      "tts": {
+        "text": "これがラフマ・イブン・ジャービルの世界であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "真珠と血の世界、部族の名誉と容赦なき復讐の世界。",
+      "text_markdown": "真珠と血の世界、部族の名誉と容赦なき復讐の世界。",
+      "tts": {
+        "text": "真珠と血の世界、部族の名誉と容赦なき復讐の世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-066",
+      "part": 0,
+      "chapter": 1,
+      "title": "ペルシア湾の世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "隻眼の海賊が湾全体を恐怖に陥れることができる世界。",
+      "text_markdown": "隻眼の海賊が湾全体を恐怖に陥れることができる世界。",
+      "tts": {
+        "text": "隻眼の海賊が湾全体を恐怖に陥れることができる世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービル・アル＝ジャラーヒマは1760年頃、アラビア半島の海岸で生まれた。",
+      "text_markdown": "ラフマ・イブン・ジャービル・アル＝ジャラーヒマは1760年頃、アラビア半島の海岸で生まれた。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービル・アル＝ジャラーヒマは千七百六十年頃、アラビア半島の海岸で生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の出生の正確な日付は記録されていない。",
+      "text_markdown": "彼の出生の正確な日付は記録されていない。",
+      "tts": {
+        "text": "彼の出生の正確な日付は記録されていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の部族ジャラーヒマは、現在のカタールの地域に住んでいた。",
+      "text_markdown": "彼の部族ジャラーヒマは、現在のカタールの地域に住んでいた。",
+      "tts": {
+        "text": "彼の部族ジャラーヒマは、現在のカタールの地域に住んでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャラーヒマは航海民族であった。",
+      "text_markdown": "ジャラーヒマは航海民族であった。",
+      "tts": {
+        "text": "ジャラーヒマは航海民族であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは漁をし、真珠を求めて潜り、海岸沿いで交易を行った。",
+      "text_markdown": "彼らは漁をし、真珠を求めて潜り、海岸沿いで交易を行った。",
+      "tts": {
+        "text": "彼らは漁をし、真珠を求めて潜り、海岸沿いで交易を行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海は彼らの生計であり、彼らのアイデンティティであった。",
+      "text_markdown": "海は彼らの生計であり、彼らのアイデンティティであった。",
+      "tts": {
+        "text": "海は彼らの生計であり、彼らのアイデンティティであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマは部族への忠誠によって定義される世界で育った。",
+      "text_markdown": "ラフマは部族への忠誠によって定義される世界で育った。",
+      "tts": {
+        "text": "ラフマは部族への忠誠によって定義される世界で育った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "男の部族は彼の家族であり、軍隊であり、国家であった。",
+      "text_markdown": "男の部族は彼の家族であり、軍隊であり、国家であった。",
+      "tts": {
+        "text": "男の部族は彼の家族であり、軍隊であり、国家であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "部族を裏切ることはすべての罪の中で最悪であった。",
+      "text_markdown": "部族を裏切ることはすべての罪の中で最悪であった。",
+      "tts": {
+        "text": "部族を裏切ることはすべての罪の中で最悪であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "部族に対してなされた不正を復讐することは最高の義務であった。",
+      "text_markdown": "部族に対してなされた不正を復讐することは最高の義務であった。",
+      "tts": {
+        "text": "部族に対してなされた不正を復讐することは最高の義務であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は少年の頃から帆走を学び、湾の働き者であるダウ船を操った。",
+      "text_markdown": "彼は少年の頃から帆走を学び、湾の働き者であるダウ船を操った。",
+      "tts": {
+        "text": "彼は少年の頃から帆走を学び、湾の働き者であるダウ船を操った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ダウ船は三角のラテン帆を備えた木造帆船であった。",
+      "text_markdown": "ダウ船は三角のラテン帆を備えた木造帆船であった。",
+      "tts": {
+        "text": "ダウ船は三角のラテン帆を備えた木造帆船であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの水域で何世紀にもわたって使われてきた。",
+      "text_markdown": "これらの水域で何世紀にもわたって使われてきた。",
+      "tts": {
+        "text": "これらの水域で何世紀にもわたって使われてきた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマは戦うことも学んだ。",
+      "text_markdown": "ラフマは戦うことも学んだ。",
+      "tts": {
+        "text": "ラフマは戦うことも学んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "湾岸のすべての男は戦士であると同時に船乗りであることが期待された。",
+      "text_markdown": "湾岸のすべての男は戦士であると同時に船乗りであることが期待された。",
+      "tts": {
+        "text": "湾岸のすべての男は戦士であると同時に船乗りであることが期待された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "敵対する部族間の襲撃は日常的であった。",
+      "text_markdown": "敵対する部族間の襲撃は日常的であった。",
+      "tts": {
+        "text": "敵対する部族間の襲撃は日常的であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "刀と銃を扱えない少年は足手まといであった。",
+      "text_markdown": "刀と銃を扱えない少年は足手まといであった。",
+      "tts": {
+        "text": "刀と銃を扱えない少年は足手まといであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマの若年期の決定的な出来事は、ハリーファ家によるバーレーン征服であった。",
+      "text_markdown": "ラフマの若年期の決定的な出来事は、ハリーファ家によるバーレーン征服であった。",
+      "tts": {
+        "text": "ラフマの若年期の決定的な出来事は、ハリーファ家によるバーレーン征服であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャラーヒマはこの勝利の戦利品を分け合うことを期待していた。",
+      "text_markdown": "ジャラーヒマはこの勝利の戦利品を分け合うことを期待していた。",
+      "tts": {
+        "text": "ジャラーヒマはこの勝利の戦利品を分け合うことを期待していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "代わりに、ハリーファ家はバーレーンを完全に自分たちのものにした。",
+      "text_markdown": "代わりに、ハリーファ家はバーレーンを完全に自分たちのものにした。",
+      "tts": {
+        "text": "代わりに、ハリーファ家はバーレーンを完全に自分たちのものにした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャラーヒマは脇に追いやられた。",
+      "text_markdown": "ジャラーヒマは脇に追いやられた。",
+      "tts": {
+        "text": "ジャラーヒマは脇に追いやられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは真珠の富を一切受け取らなかった。",
+      "text_markdown": "彼らは真珠の富を一切受け取らなかった。",
+      "tts": {
+        "text": "彼らは真珠の富を一切受け取らなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最も豊かな潜水場へのアクセスを拒否された。",
+      "text_markdown": "最も豊かな潜水場へのアクセスを拒否された。",
+      "tts": {
+        "text": "最も豊かな潜水場へのアクセスを拒否された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラフマにとって、これは決して受け入れることのない不正であった。",
+      "text_markdown": "ラフマにとって、これは決して受け入れることのない不正であった。",
+      "tts": {
+        "text": "ラフマにとって、これは決して受け入れることのない不正であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はまだ若い頃からハリーファ家の船を襲い始めた。",
+      "text_markdown": "彼はまだ若い頃からハリーファ家の船を襲い始めた。",
+      "tts": {
+        "text": "彼はまだ若い頃からハリーファ家の船を襲い始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最初は小規模な攻撃であった。",
+      "text_markdown": "最初は小規模な攻撃であった。",
+      "tts": {
+        "text": "最初は小規模な攻撃であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "真珠採取のダウ船を待ち伏せしたり、交易船を拿捕したりした。",
+      "text_markdown": "真珠採取のダウ船を待ち伏せしたり、交易船を拿捕したりした。",
+      "tts": {
+        "text": "真珠採取のダウ船を待ち伏せしたり、交易船を拿捕したりした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "攻撃は復讐行為であると同時に海賊行為でもあった。",
+      "text_markdown": "攻撃は復讐行為であると同時に海賊行為でもあった。",
+      "tts": {
+        "text": "攻撃は復讐行為であると同時に海賊行為でもあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマは天性の指導者であることを証明した。",
+      "text_markdown": "ラフマは天性の指導者であることを証明した。",
+      "tts": {
+        "text": "ラフマは天性の指導者であることを証明した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は戦いにおいて恐れ知らずで、部下に対して寛大であった。",
+      "text_markdown": "彼は戦いにおいて恐れ知らずで、部下に対して寛大であった。",
+      "tts": {
+        "text": "彼は戦いにおいて恐れ知らずで、部下に対して寛大であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "男たちは彼の名声と略奪の約束に引かれて彼の旗の下に集まった。",
+      "text_markdown": "男たちは彼の名声と略奪の約束に引かれて彼の旗の下に集まった。",
+      "tts": {
+        "text": "男たちは彼の名声と略奪の約束に引かれて彼の旗の下に集まった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はカタール海岸の隠れた入り江、ホル・ハッサンに拠点を構えた。",
+      "text_markdown": "彼はカタール海岸の隠れた入り江、ホル・ハッサンに拠点を構えた。",
+      "tts": {
+        "text": "彼はカタール海岸の隠れた入り江、ホル・ハッサンに拠点を構えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この港から湾を通過する船を攻撃することができた。",
+      "text_markdown": "この港から湾を通過する船を攻撃することができた。",
+      "tts": {
+        "text": "この港から湾を通過する船を攻撃することができた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その位置は戦略的に優れており、主要な航路に近かった。",
+      "text_markdown": "その位置は戦略的に優れており、主要な航路に近かった。",
+      "tts": {
+        "text": "その位置は戦略的に優れており、主要な航路に近かった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の艦隊は着実に成長した。",
+      "text_markdown": "彼の艦隊は着実に成長した。",
+      "tts": {
+        "text": "彼の艦隊は着実に成長した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "より大きく、より武装の優れた船を手に入れた。",
+      "text_markdown": "より大きく、より武装の優れた船を手に入れた。",
+      "tts": {
+        "text": "より大きく、より武装の優れた船を手に入れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "湾各地から、ハリーファ家に対して独自の不満を持つ部族の者を含む追随者を募った。",
+      "text_markdown": "湾各地から、ハリーファ家に対して独自の不満を持つ部族の者を含む追随者を募った。",
+      "tts": {
+        "text": "湾各地から、ハリーファ家に対して独自の不満を持つ部族の者を含む追随者を募った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百九十年代までに、ラフマ・イブン・ジャービルはペルシア湾で最も恐れられた海賊となっていた。",
+      "text_markdown": "千七百九十年代までに、ラフマ・イブン・ジャービルはペルシア湾で最も恐れられた海賊となっていた。",
+      "tts": {
+        "text": "千七百九十年代までに、ラフマ・イブン・ジャービルはペルシア湾で最も恐れられた海賊となっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名はバーレーンからマスカットまでの商人たちに恐怖とともに語られた。",
+      "text_markdown": "彼の名はバーレーンからマスカットまでの商人たちに恐怖とともに語られた。",
+      "tts": {
+        "text": "彼の名はバーレーンからマスカットまでの商人たちに恐怖とともに語られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハリーファ家は彼を最も危険な敵と見なした。",
+      "text_markdown": "ハリーファ家は彼を最も危険な敵と見なした。",
+      "tts": {
+        "text": "ハリーファ家は彼を最も危険な敵と見なした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの戦いの一つで、ラフマは片目を失った。",
+      "text_markdown": "多くの戦いの一つで、ラフマは片目を失った。",
+      "tts": {
+        "text": "多くの戦いの一つで、ラフマは片目を失った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その傷は凡庸な男の経歴を終わらせただろう。",
+      "text_markdown": "その傷は凡庸な男の経歴を終わらせただろう。",
+      "tts": {
+        "text": "その傷は凡庸な男の経歴を終わらせただろう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフマにとって、それは単なる名誉の印であった。",
+      "text_markdown": "ラフマにとって、それは単なる名誉の印であった。",
+      "tts": {
+        "text": "ラフマにとって、それは単なる名誉の印であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は以前と同じ獰猛さで戦い続けた。",
+      "text_markdown": "彼は以前と同じ獰猛さで戦い続けた。",
+      "tts": {
+        "text": "彼は以前と同じ獰猛さで戦い続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼に会ったヨーロッパの観察者たちは恐ろしい人物を描写した。",
+      "text_markdown": "彼に会ったヨーロッパの観察者たちは恐ろしい人物を描写した。",
+      "tts": {
+        "text": "彼に会ったヨーロッパの観察者たちは恐ろしい人物を描写した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は背が高く痩せており、燃えるような片目と長年の戦闘で傷だらけの顔を持っていた。",
+      "text_markdown": "彼は背が高く痩せており、燃えるような片目と長年の戦闘で傷だらけの顔を持っていた。",
+      "tts": {
+        "text": "彼は背が高く痩せており、燃えるような片目と長年の戦闘で傷だらけの顔を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の声は水の向こうまで届き、戦いの混乱の中でさえ部下を結集させたと言われていた。",
+      "text_markdown": "彼の声は水の向こうまで届き、戦いの混乱の中でさえ部下を結集させたと言われていた。",
+      "tts": {
+        "text": "彼の声は水の向こうまで届き、戦いの混乱の中でさえ部下を結集させたと言われていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終わりなき戦い",
+      "text_markdown": "終わりなき戦い"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマのハリーファ家に対する戦争は、個別の襲撃の連続ではなかった。",
+      "text_markdown": "ラフマのハリーファ家に対する戦争は、個別の襲撃の連続ではなかった。",
+      "tts": {
+        "text": "ラフマのハリーファ家に対する戦争は、個別の襲撃の連続ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは数十年にわたる容赦のない攻撃の持続的な作戦であった。",
+      "text_markdown": "それは数十年にわたる容赦のない攻撃の持続的な作戦であった。",
+      "tts": {
+        "text": "それは数十年にわたる容赦のない攻撃の持続的な作戦であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は等しい決意で彼らの船、港、同盟者を攻撃した。",
+      "text_markdown": "彼は等しい決意で彼らの船、港、同盟者を攻撃した。",
+      "tts": {
+        "text": "彼は等しい決意で彼らの船、港、同盟者を攻撃した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の戦術は単純だが効果的であった。",
+      "text_markdown": "彼の戦術は単純だが効果的であった。",
+      "tts": {
+        "text": "彼の戦術は単純だが効果的であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は速く機敏なダウ船を使って、より遅い商船を捕捉した。",
+      "text_markdown": "彼は速く機敏なダウ船を使って、より遅い商船を捕捉した。",
+      "tts": {
+        "text": "彼は速く機敏なダウ船を使って、より遅い商船を捕捉した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の部下は刀、短剣、銃で敵船に乗り込んだ。",
+      "text_markdown": "彼の部下は刀、短剣、銃で敵船に乗り込んだ。",
+      "tts": {
+        "text": "彼の部下は刀、短剣、銃で敵船に乗り込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "戦闘は残忍な接近戦であった。",
+      "text_markdown": "戦闘は残忍な接近戦であった。",
+      "tts": {
+        "text": "戦闘は残忍な接近戦であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマは抵抗する者にほとんど慈悲を示さなかった。",
+      "text_markdown": "ラフマは抵抗する者にほとんど慈悲を示さなかった。",
+      "tts": {
+        "text": "ラフマは抵抗する者にほとんど慈悲を示さなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕らえたハリーファ家の船乗りはしばしば殺されるか奴隷にされた。",
+      "text_markdown": "捕らえたハリーファ家の船乗りはしばしば殺されるか奴隷にされた。",
+      "tts": {
+        "text": "捕らえたハリーファ家の船乗りはしばしば殺されるか奴隷にされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はハリーファ家に海そのものを恐れさせたかった。",
+      "text_markdown": "彼はハリーファ家に海そのものを恐れさせたかった。",
+      "tts": {
+        "text": "彼はハリーファ家に海そのものを恐れさせたかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハリーファ家は自らの艦隊で反撃した。",
+      "text_markdown": "ハリーファ家は自らの艦隊で反撃した。",
+      "tts": {
+        "text": "ハリーファ家は自らの艦隊で反撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはラフマの拠点に繰り返し攻撃を仕掛けた。",
+      "text_markdown": "彼らはラフマの拠点に繰り返し攻撃を仕掛けた。",
+      "tts": {
+        "text": "彼らはラフマの拠点に繰り返し攻撃を仕掛けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何度か彼を陣地放棄と新たな港への撤退に追い込んだ。",
+      "text_markdown": "何度か彼を陣地放棄と新たな港への撤退に追い込んだ。",
+      "tts": {
+        "text": "何度か彼を陣地放棄と新たな港への撤退に追い込んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしラフマは常に戻ってきた。",
+      "text_markdown": "しかしラフマは常に戻ってきた。",
+      "tts": {
+        "text": "しかしラフマは常に戻ってきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は態勢を立て直し、新たな追随者を集め、戦いに戻った。",
+      "text_markdown": "彼は態勢を立て直し、新たな追随者を集め、戦いに戻った。",
+      "tts": {
+        "text": "彼は態勢を立て直し、新たな追随者を集め、戦いに戻った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の回復力は並外れていた。",
+      "text_markdown": "彼の回復力は並外れていた。",
+      "tts": {
+        "text": "彼の回復力は並外れていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼にとって決定的な敗北はなかった。",
+      "text_markdown": "彼にとって決定的な敗北はなかった。",
+      "tts": {
+        "text": "彼にとって決定的な敗北はなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はハリーファ家に対立する者すべてと同盟を結んだ。",
+      "text_markdown": "彼はハリーファ家に対立する者すべてと同盟を結んだ。",
+      "tts": {
+        "text": "彼はハリーファ家に対立する者すべてと同盟を結んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "都合がよい時にはワッハーブ派と同盟した。",
+      "text_markdown": "都合がよい時にはワッハーブ派と同盟した。",
+      "tts": {
+        "text": "都合がよい時にはワッハーブ派と同盟した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "役に立つ時にはオマーン人と同盟した。",
+      "text_markdown": "役に立つ時にはオマーン人と同盟した。",
+      "tts": {
+        "text": "役に立つ時にはオマーン人と同盟した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "時にはイギリス人とさえ協力した。",
+      "text_markdown": "時にはイギリス人とさえ協力した。",
+      "tts": {
+        "text": "時にはイギリス人とさえ協力した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの同盟は常に一時的であり、常に戦略的であった。",
+      "text_markdown": "これらの同盟は常に一時的であり、常に戦略的であった。",
+      "tts": {
+        "text": "これらの同盟は常に一時的であり、常に戦略的であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマの唯一の真の忠誠は部族と復讐に対するものであった。",
+      "text_markdown": "ラフマの唯一の真の忠誠は部族と復讐に対するものであった。",
+      "tts": {
+        "text": "ラフマの唯一の真の忠誠は部族と復讐に対するものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハリーファ家を傷つけるのを助けてくれる者なら誰とでも協力した。",
+      "text_markdown": "ハリーファ家を傷つけるのを助けてくれる者なら誰とでも協力した。",
+      "tts": {
+        "text": "ハリーファ家を傷つけるのを助けてくれる者なら誰とでも協力した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ワッハーブ派はしばらくの間、特に重要な同盟者であった。",
+      "text_markdown": "ワッハーブ派はしばらくの間、特に重要な同盟者であった。",
+      "tts": {
+        "text": "ワッハーブ派はしばらくの間、特に重要な同盟者であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サウジ・ワッハーブ国家は十八世紀末から十九世紀初頭にかけてアラビア全土に拡大していた。",
+      "text_markdown": "サウジ・ワッハーブ国家は十八世紀末から十九世紀初頭にかけてアラビア全土に拡大していた。",
+      "tts": {
+        "text": "サウジ・ワッハーブ国家は十八世紀末から十九世紀初頭にかけてアラビア全土に拡大していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはハリーファ家をライバルと見なし、ラフマの攻撃を喜んで支援した。",
+      "text_markdown": "彼らはハリーファ家をライバルと見なし、ラフマの攻撃を喜んで支援した。",
+      "tts": {
+        "text": "彼らはハリーファ家をライバルと見なし、ラフマの攻撃を喜んで支援した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ワッハーブ派の支援を得て、ラフマは最も野心的な作戦のいくつかを遂行した。",
+      "text_markdown": "ワッハーブ派の支援を得て、ラフマは最も野心的な作戦のいくつかを遂行した。",
+      "tts": {
+        "text": "ワッハーブ派の支援を得て、ラフマは最も野心的な作戦のいくつかを遂行した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はバーレーンの港を封鎖し、島の交易を断った。",
+      "text_markdown": "彼はバーレーンの港を封鎖し、島の交易を断った。",
+      "tts": {
+        "text": "彼はバーレーンの港を封鎖し、島の交易を断った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "真珠の産地から帰る潜水夫の船団を攻撃した。",
+      "text_markdown": "真珠の産地から帰る潜水夫の船団を攻撃した。",
+      "tts": {
+        "text": "真珠の産地から帰る潜水夫の船団を攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "バーレーン周辺の水域をハリーファ家に忠実な者にとって危険なものにした。",
+      "text_markdown": "バーレーン周辺の水域をハリーファ家に忠実な者にとって危険なものにした。",
+      "tts": {
+        "text": "バーレーン周辺の水域をハリーファ家に忠実な者にとって危険なものにした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真珠交易はバーレーンの生命線であった。",
+      "text_markdown": "真珠交易はバーレーンの生命線であった。",
+      "tts": {
+        "text": "真珠交易はバーレーンの生命線であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それを妨害することで、ラフマはハリーファ家の権力の基盤そのものを打った。",
+      "text_markdown": "それを妨害することで、ラフマはハリーファ家の権力の基盤そのものを打った。",
+      "tts": {
+        "text": "それを妨害することで、ラフマはハリーファ家の権力の基盤そのものを打った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "真珠収入が失われた一季節は、軍事的敗北よりも支配家族を弱めることができた。",
+      "text_markdown": "真珠収入が失われた一季節は、軍事的敗北よりも支配家族を弱めることができた。",
+      "tts": {
+        "text": "真珠収入が失われた一季節は、軍事的敗北よりも支配家族を弱めることができた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス人はこれらの紛争を増大する懸念とともに見守っていた。",
+      "text_markdown": "イギリス人はこれらの紛争を増大する懸念とともに見守っていた。",
+      "tts": {
+        "text": "イギリス人はこれらの紛争を増大する懸念とともに見守っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "すべての部族戦争が湾を通じて流れる交易を妨害した。",
+      "text_markdown": "すべての部族戦争が湾を通じて流れる交易を妨害した。",
+      "tts": {
+        "text": "すべての部族戦争が湾を通じて流れる交易を妨害した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリスの商人は金を失い、イギリスの役人は忍耐を失った。",
+      "text_markdown": "イギリスの商人は金を失い、イギリスの役人は忍耐を失った。",
+      "tts": {
+        "text": "イギリスの商人は金を失い、イギリスの役人は忍耐を失った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリスの代理人はラフマとハリーファ家の間を繰り返し仲介しようとした。",
+      "text_markdown": "イギリスの代理人はラフマとハリーファ家の間を繰り返し仲介しようとした。",
+      "tts": {
+        "text": "イギリスの代理人はラフマとハリーファ家の間を繰り返し仲介しようとした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは休戦交渉と紛争解決を提案した。",
+      "text_markdown": "彼らは休戦交渉と紛争解決を提案した。",
+      "tts": {
+        "text": "彼らは休戦交渉と紛争解決を提案した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフマはすべての申し出を拒否した。",
+      "text_markdown": "ラフマはすべての申し出を拒否した。",
+      "tts": {
+        "text": "ラフマはすべての申し出を拒否した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は和平に関心がなかった。",
+      "text_markdown": "彼は和平に関心がなかった。",
+      "tts": {
+        "text": "彼は和平に関心がなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランシス・ウォーデンという名のイギリスの政治工作員がラフマと会い、詳細な記述を残した。",
+      "text_markdown": "フランシス・ウォーデンという名のイギリスの政治工作員がラフマと会い、詳細な記述を残した。",
+      "tts": {
+        "text": "フランシス・ウォーデンという名のイギリスの政治工作員がラフマと会い、詳細な記述を残した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はその海賊を礼儀正しいが断固としていると描写した。",
+      "text_markdown": "彼はその海賊を礼儀正しいが断固としていると描写した。",
+      "tts": {
+        "text": "彼はその海賊を礼儀正しいが断固としていると描写した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフマは自らの立場を明確に説明した。ハリーファ家は自分の民に属するものを盗んだのであり、返還されるまで戦い続けると。",
+      "text_markdown": "ラフマは自らの立場を明確に説明した。ハリーファ家は自分の民に属するものを盗んだのであり、返還されるまで戦い続けると。",
+      "tts": {
+        "text": "ラフマは自らの立場を明確に説明した。ハリーファ家は自分の民に属するものを盗んだのであり、返還されるまで戦い続けると。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス人は彼の頑固さに苛立った。",
+      "text_markdown": "イギリス人は彼の頑固さに苛立った。",
+      "tts": {
+        "text": "イギリス人は彼の頑固さに苛立った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは彼を買収することも、脅すことも、説得することもできなかった。",
+      "text_markdown": "彼らは彼を買収することも、脅すことも、説得することもできなかった。",
+      "tts": {
+        "text": "彼らは彼を買収することも、脅すことも、説得することもできなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハリーファ家への彼の憎悪は絶対的であり、交渉の余地はなかった。",
+      "text_markdown": "ハリーファ家への彼の憎悪は絶対的であり、交渉の余地はなかった。",
+      "tts": {
+        "text": "ハリーファ家への彼の憎悪は絶対的であり、交渉の余地はなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマは長い経歴の中で拠点を何度か移した。",
+      "text_markdown": "ラフマは長い経歴の中で拠点を何度か移した。",
+      "tts": {
+        "text": "ラフマは長い経歴の中で拠点を何度か移した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ホル・ハッサンが危険になりすぎると、アラビア海岸のダンマームに移った。",
+      "text_markdown": "ホル・ハッサンが危険になりすぎると、アラビア海岸のダンマームに移った。",
+      "tts": {
+        "text": "ホル・ハッサンが危険になりすぎると、アラビア海岸のダンマームに移った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ダンマームは彼にサウジ・ワッハーブの支援と新たな港へのアクセスを与えた。",
+      "text_markdown": "ダンマームは彼にサウジ・ワッハーブの支援と新たな港へのアクセスを与えた。",
+      "tts": {
+        "text": "ダンマームは彼にサウジ・ワッハーブの支援と新たな港へのアクセスを与えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ダンマームから、彼は中断なく襲撃を続けた。",
+      "text_markdown": "ダンマームから、彼は中断なく襲撃を続けた。",
+      "tts": {
+        "text": "ダンマームから、彼は中断なく襲撃を続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の艦隊は今や相当な規模となり、数十隻の武装ダウ船を擁していた。",
+      "text_markdown": "彼の艦隊は今や相当な規模となり、数十隻の武装ダウ船を擁していた。",
+      "tts": {
+        "text": "彼の艦隊は今や相当な規模となり、数十隻の武装ダウ船を擁していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "終わりなき戦い",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は単なる海賊ではなく、独立した地域勢力となっていた。",
+      "text_markdown": "彼は単なる海賊ではなく、独立した地域勢力となっていた。",
+      "tts": {
+        "text": "彼は単なる海賊ではなく、独立した地域勢力となっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "絶頂期",
+      "text_markdown": "絶頂期"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十九世紀初頭までに、ラフマ・イブン・ジャービルは権力の頂点にあった。",
+      "text_markdown": "十九世紀初頭までに、ラフマ・イブン・ジャービルは権力の頂点にあった。",
+      "tts": {
+        "text": "十九世紀初頭までに、ラフマ・イブン・ジャービルは権力の頂点にあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は重要な艦隊を支配し、湾全体に同盟を持っていた。",
+      "text_markdown": "彼は重要な艦隊を支配し、湾全体に同盟を持っていた。",
+      "tts": {
+        "text": "彼は重要な艦隊を支配し、湾全体に同盟を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その評判はホルムズ海峡からクウェートの海岸まで恐れられていた。",
+      "text_markdown": "その評判はホルムズ海峡からクウェートの海岸まで恐れられていた。",
+      "tts": {
+        "text": "その評判はホルムズ海峡からクウェートの海岸まで恐れられていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の時代と場所の基準では、すでに老人であった。",
+      "text_markdown": "彼の時代と場所の基準では、すでに老人であった。",
+      "tts": {
+        "text": "彼の時代と場所の基準では、すでに老人であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "長年の戦闘は彼の体に傷跡を残し、疲弊させていた。",
+      "text_markdown": "長年の戦闘は彼の体に傷跡を残し、疲弊させていた。",
+      "tts": {
+        "text": "長年の戦闘は彼の体に傷跡を残し、疲弊させていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "片目を失い、数多くの傷を負っていた。",
+      "text_markdown": "片目を失い、数多くの傷を負っていた。",
+      "tts": {
+        "text": "片目を失い、数多くの傷を負っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし彼の精神は折れていなかった。",
+      "text_markdown": "しかし彼の精神は折れていなかった。",
+      "tts": {
+        "text": "しかし彼の精神は折れていなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "旗艦の船首に立ち、自ら襲撃を率い続けた。",
+      "text_markdown": "旗艦の船首に立ち、自ら襲撃を率い続けた。",
+      "tts": {
+        "text": "旗艦の船首に立ち、自ら襲撃を率い続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "残った片目は戦いの中で激しい光を放ったと言われていた。",
+      "text_markdown": "残った片目は戦いの中で激しい光を放ったと言われていた。",
+      "tts": {
+        "text": "残った片目は戦いの中で激しい光を放ったと言われていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "部下たちは彼が神に祝福され、殺すことはできないと信じていた。",
+      "text_markdown": "部下たちは彼が神に祝福され、殺すことはできないと信じていた。",
+      "tts": {
+        "text": "部下たちは彼が神に祝福され、殺すことはできないと信じていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時期に彼と会ったヨーロッパの訪問者たちは魅了された。",
+      "text_markdown": "この時期に彼と会ったヨーロッパの訪問者たちは魅了された。",
+      "tts": {
+        "text": "この時期に彼と会ったヨーロッパの訪問者たちは魅了された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はこれまで出会ったどの海賊とも違っていた。",
+      "text_markdown": "彼はこれまで出会ったどの海賊とも違っていた。",
+      "tts": {
+        "text": "彼はこれまで出会ったどの海賊とも違っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はありふれた山賊ではなく、知性と目的を持った人物であった。",
+      "text_markdown": "彼はありふれた山賊ではなく、知性と目的を持った人物であった。",
+      "tts": {
+        "text": "彼はありふれた山賊ではなく、知性と目的を持った人物であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あるイギリスの将校がラフマの船での面会を描写した。",
+      "text_markdown": "あるイギリスの将校がラフマの船での面会を描写した。",
+      "tts": {
+        "text": "あるイギリスの将校がラフマの船での面会を描写した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊は彼を丁重に迎え、コーヒーとナツメヤシの実を差し出した。",
+      "text_markdown": "海賊は彼を丁重に迎え、コーヒーとナツメヤシの実を差し出した。",
+      "tts": {
+        "text": "海賊は彼を丁重に迎え、コーヒーとナツメヤシの実を差し出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは対等な立場で政治と交易について語り合った。",
+      "text_markdown": "彼らは対等な立場で政治と交易について語り合った。",
+      "tts": {
+        "text": "彼らは対等な立場で政治と交易について語り合った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "将校はラフマが犯罪者ではなく統治者の権威をもって話したことに注目した。",
+      "text_markdown": "将校はラフマが犯罪者ではなく統治者の権威をもって話したことに注目した。",
+      "tts": {
+        "text": "将校はラフマが犯罪者ではなく統治者の権威をもって話したことに注目した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマの家族には妻たち、子供たち、そして拡大家族が含まれていた。",
+      "text_markdown": "ラフマの家族には妻たち、子供たち、そして拡大家族が含まれていた。",
+      "tts": {
+        "text": "ラフマの家族には妻たち、子供たち、そして拡大家族が含まれていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは彼の船上か、陸の要塞化された居住地で暮らしていた。",
+      "text_markdown": "彼らは彼の船上か、陸の要塞化された居住地で暮らしていた。",
+      "tts": {
+        "text": "彼らは彼の船上か、陸の要塞化された居住地で暮らしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の家族は常に移動し、拠点から拠点へと彼に従った。",
+      "text_markdown": "彼の家族は常に移動し、拠点から拠点へと彼に従った。",
+      "tts": {
+        "text": "彼の家族は常に移動し、拠点から拠点へと彼に従った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "息子のビシュルは戦いを継続するために育てられていた。",
+      "text_markdown": "息子のビシュルは戦いを継続するために育てられていた。",
+      "tts": {
+        "text": "息子のビシュルは戦いを継続するために育てられていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマは幼い頃からビシュルを襲撃に連れて行った。",
+      "text_markdown": "ラフマは幼い頃からビシュルを襲撃に連れて行った。",
+      "tts": {
+        "text": "ラフマは幼い頃からビシュルを襲撃に連れて行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "少年に海と戦闘、そしてハリーファ家への憎悪を学ばせたかった。",
+      "text_markdown": "少年に海と戦闘、そしてハリーファ家への憎悪を学ばせたかった。",
+      "tts": {
+        "text": "少年に海と戦闘、そしてハリーファ家への憎悪を学ばせたかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマとハリーファ家の対立はエスカレートし続けた。",
+      "text_markdown": "ラフマとハリーファ家の対立はエスカレートし続けた。",
+      "tts": {
+        "text": "ラフマとハリーファ家の対立はエスカレートし続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "両陣営はより大きな艦隊を建造し、より強力な同盟者を求めた。",
+      "text_markdown": "両陣営はより大きな艦隊を建造し、より強力な同盟者を求めた。",
+      "tts": {
+        "text": "両陣営はより大きな艦隊を建造し、より強力な同盟者を求めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "湾はますます軍事化していった。",
+      "text_markdown": "湾はますます軍事化していった。",
+      "tts": {
+        "text": "湾はますます軍事化していった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1809年、イギリスは湾の海賊に対して大規模な海軍遠征を行った。",
+      "text_markdown": "1809年、イギリスは湾の海賊に対して大規模な海軍遠征を行った。",
+      "tts": {
+        "text": "千八百九年、イギリスは湾の海賊に対して大規模な海軍遠征を行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの主な標的はラアス・アル＝ハイマを拠点とするカーシミー艦隊であった。",
+      "text_markdown": "彼らの主な標的はラアス・アル＝ハイマを拠点とするカーシミー艦隊であった。",
+      "tts": {
+        "text": "彼らの主な標的はラアス・アル＝ハイマを拠点とするカーシミー艦隊であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カーシミーはラフマとは別の強力な海賊連合であった。",
+      "text_markdown": "カーシミーはラフマとは別の強力な海賊連合であった。",
+      "tts": {
+        "text": "カーシミーはラフマとは別の強力な海賊連合であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリスによるラアス・アル＝ハイマ砲撃はカーシミー艦隊の大部分を破壊した。",
+      "text_markdown": "イギリスによるラアス・アル＝ハイマ砲撃はカーシミー艦隊の大部分を破壊した。",
+      "tts": {
+        "text": "イギリスによるラアス・アル＝ハイマ砲撃はカーシミー艦隊の大部分を破壊した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし湾の海賊行為を終わらせるには至らなかった。",
+      "text_markdown": "しかし湾の海賊行為を終わらせるには至らなかった。",
+      "tts": {
+        "text": "しかし湾の海賊行為を終わらせるには至らなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービルはほとんど間を置かずに作戦を続行した。",
+      "text_markdown": "ラフマ・イブン・ジャービルはほとんど間を置かずに作戦を続行した。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービルはほとんど間を置かずに作戦を続行した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス人はラフマの分類に苦慮した。",
+      "text_markdown": "イギリス人はラフマの分類に苦慮した。",
+      "tts": {
+        "text": "イギリス人はラフマの分類に苦慮した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は明らかに海賊であったが、イギリスの船を直接攻撃することはなかった。",
+      "text_markdown": "彼は明らかに海賊であったが、イギリスの船を直接攻撃することはなかった。",
+      "tts": {
+        "text": "彼は明らかに海賊であったが、イギリスの船を直接攻撃することはなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の戦争はもっぱらハリーファ家とその同盟者に向けられていた。",
+      "text_markdown": "彼の戦争はもっぱらハリーファ家とその同盟者に向けられていた。",
+      "tts": {
+        "text": "彼の戦争はもっぱらハリーファ家とその同盟者に向けられていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリス人の目には、これは彼を直接的な脅威というより厄介者にした。",
+      "text_markdown": "イギリス人の目には、これは彼を直接的な脅威というより厄介者にした。",
+      "tts": {
+        "text": "イギリス人の目には、これは彼を直接的な脅威というより厄介者にした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマはこの曖昧さを自分に有利に利用した。",
+      "text_markdown": "ラフマはこの曖昧さを自分に有利に利用した。",
+      "tts": {
+        "text": "ラフマはこの曖昧さを自分に有利に利用した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はイギリス人との慎重な関係を維持した。",
+      "text_markdown": "彼はイギリス人との慎重な関係を維持した。",
+      "tts": {
+        "text": "彼はイギリス人との慎重な関係を維持した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らを自分に対する行動に駆り立てるような挑発は決してしなかった。",
+      "text_markdown": "彼らを自分に対する行動に駆り立てるような挑発は決してしなかった。",
+      "tts": {
+        "text": "彼らを自分に対する行動に駆り立てるような挑発は決してしなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他の海賊集団に関する情報さえ提供した。",
+      "text_markdown": "他の海賊集団に関する情報さえ提供した。",
+      "tts": {
+        "text": "他の海賊集団に関する情報さえ提供した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1820年、イギリスは湾の部族に総合平和条約を課した。",
+      "text_markdown": "1820年、イギリスは湾の部族に総合平和条約を課した。",
+      "tts": {
+        "text": "千八百二十年、イギリスは湾の部族に総合平和条約を課した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "条約は海賊行為を終わらせ、交易の安定を作り出すために設計された。",
+      "text_markdown": "条約は海賊行為を終わらせ、交易の安定を作り出すために設計された。",
+      "tts": {
+        "text": "条約は海賊行為を終わらせ、交易の安定を作り出すために設計された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ほとんどの沿岸の支配者が圧力のもとで署名した。",
+      "text_markdown": "ほとんどの沿岸の支配者が圧力のもとで署名した。",
+      "tts": {
+        "text": "ほとんどの沿岸の支配者が圧力のもとで署名した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマは署名を拒否した。",
+      "text_markdown": "ラフマは署名を拒否した。",
+      "tts": {
+        "text": "ラフマは署名を拒否した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハリーファ家のバーレーン支配を認めるいかなる合意も受け入れるつもりはなかった。",
+      "text_markdown": "ハリーファ家のバーレーン支配を認めるいかなる合意も受け入れるつもりはなかった。",
+      "tts": {
+        "text": "ハリーファ家のバーレーン支配を認めるいかなる合意も受け入れるつもりはなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリス人は彼の拒否を記録したが、直ちに行動は起こさなかった。",
+      "text_markdown": "イギリス人は彼の拒否を記録したが、直ちに行動は起こさなかった。",
+      "tts": {
+        "text": "イギリス人は彼の拒否を記録したが、直ちに行動は起こさなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は今や六十歳を超えていた。",
+      "text_markdown": "彼は今や六十歳を超えていた。",
+      "tts": {
+        "text": "彼は今や六十歳を超えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の体は衰えていたが、意志は衰えなかった。",
+      "text_markdown": "彼の体は衰えていたが、意志は衰えなかった。",
+      "tts": {
+        "text": "彼の体は衰えていたが、意志は衰えなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "時が消し去ることのできない憎悪に駆られ、航海と戦いを続けた。",
+      "text_markdown": "時が消し去ることのできない憎悪に駆られ、航海と戦いを続けた。",
+      "tts": {
+        "text": "時が消し去ることのできない憎悪に駆られ、航海と戦いを続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "最期",
+      "text_markdown": "最期"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1826年までに、ラフマ・イブン・ジャービルは自分の時間が尽きつつあることを知っていた。",
+      "text_markdown": "1826年までに、ラフマ・イブン・ジャービルは自分の時間が尽きつつあることを知っていた。",
+      "tts": {
+        "text": "千八百二十六年までに、ラフマ・イブン・ジャービルは自分の時間が尽きつつあることを知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は老い、片目は見えず、ますます孤立していた。",
+      "text_markdown": "彼は老い、片目は見えず、ますます孤立していた。",
+      "tts": {
+        "text": "彼は老い、片目は見えず、ますます孤立していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ワッハーブ派の同盟者は数年前にエジプト軍に敗れていた。",
+      "text_markdown": "ワッハーブ派の同盟者は数年前にエジプト軍に敗れていた。",
+      "tts": {
+        "text": "ワッハーブ派の同盟者は数年前にエジプト軍に敗れていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の艦隊は全盛期より小さくなっていた。",
+      "text_markdown": "彼の艦隊は全盛期より小さくなっていた。",
+      "tts": {
+        "text": "彼の艦隊は全盛期より小さくなっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし彼は戦いをやめることを拒んだ。",
+      "text_markdown": "しかし彼は戦いをやめることを拒んだ。",
+      "tts": {
+        "text": "しかし彼は戦いをやめることを拒んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "降伏は考えられないことであった。",
+      "text_markdown": "降伏は考えられないことであった。",
+      "tts": {
+        "text": "降伏は考えられないことであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハリーファ家は依然としてバーレーンを支配していた。",
+      "text_markdown": "ハリーファ家は依然としてバーレーンを支配していた。",
+      "tts": {
+        "text": "ハリーファ家は依然としてバーレーンを支配していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "不正は正されていなかった。",
+      "text_markdown": "不正は正されていなかった。",
+      "tts": {
+        "text": "不正は正されていなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ラフマにとって、それが唯一重要な事実であった。",
+      "text_markdown": "ラフマにとって、それが唯一重要な事実であった。",
+      "tts": {
+        "text": "ラフマにとって、それが唯一重要な事実であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハリーファ家とその同盟者はラフマを最終的に滅ぼすための大艦隊を結集した。",
+      "text_markdown": "ハリーファ家とその同盟者はラフマを最終的に滅ぼすための大艦隊を結集した。",
+      "tts": {
+        "text": "ハリーファ家とその同盟者はラフマを最終的に滅ぼすための大艦隊を結集した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バーレーンからの船とオマーン支援の軍勢に支えられていた。",
+      "text_markdown": "バーレーンからの船とオマーン支援の軍勢に支えられていた。",
+      "tts": {
+        "text": "バーレーンからの船とオマーン支援の軍勢に支えられていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "連合艦隊はラフマが集められるどんなものよりもはるかに大きかった。",
+      "text_markdown": "連合艦隊はラフマが集められるどんなものよりもはるかに大きかった。",
+      "tts": {
+        "text": "連合艦隊はラフマが集められるどんなものよりもはるかに大きかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最後の戦いはカタールとバーレーンの間の海域で行われた。",
+      "text_markdown": "最後の戦いはカタールとバーレーンの間の海域で行われた。",
+      "tts": {
+        "text": "最後の戦いはカタールとバーレーンの間の海域で行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマは小さなダウ船の戦隊で敵に立ち向かうべく出航した。",
+      "text_markdown": "ラフマは小さなダウ船の戦隊で敵に立ち向かうべく出航した。",
+      "tts": {
+        "text": "ラフマは小さなダウ船の戦隊で敵に立ち向かうべく出航した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は数的に劣勢であることを知っていた。",
+      "text_markdown": "彼は数的に劣勢であることを知っていた。",
+      "tts": {
+        "text": "彼は数的に劣勢であることを知っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "気にしなかった。",
+      "text_markdown": "気にしなかった。",
+      "tts": {
+        "text": "気にしなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "幼い息子ビシュルが旗艦で彼と共にいた。",
+      "text_markdown": "幼い息子ビシュルが旗艦で彼と共にいた。",
+      "tts": {
+        "text": "幼い息子ビシュルが旗艦で彼と共にいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマはすべての大きな戦いにこの少年を連れて行っていた。",
+      "text_markdown": "ラフマはすべての大きな戦いにこの少年を連れて行っていた。",
+      "tts": {
+        "text": "ラフマはすべての大きな戦いにこの少年を連れて行っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今回も変わりはなかった。",
+      "text_markdown": "今回も変わりはなかった。",
+      "tts": {
+        "text": "今回も変わりはなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦いは早朝に始まった。",
+      "text_markdown": "戦いは早朝に始まった。",
+      "tts": {
+        "text": "戦いは早朝に始まった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二つの艦隊が湾の平らで明るい水面を隔てて互いに接近した。",
+      "text_markdown": "二つの艦隊が湾の平らで明るい水面を隔てて互いに接近した。",
+      "tts": {
+        "text": "二つの艦隊が湾の平らで明るい水面を隔てて互いに接近した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "銃声の響きと船体の衝突音が空気を満たした。",
+      "text_markdown": "銃声の響きと船体の衝突音が空気を満たした。",
+      "tts": {
+        "text": "銃声の響きと船体の衝突音が空気を満たした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマの船は必死の勇気で戦った。",
+      "text_markdown": "ラフマの船は必死の勇気で戦った。",
+      "tts": {
+        "text": "ラフマの船は必死の勇気で戦った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "火力でも数でも劣っていたが、逃げなかった。",
+      "text_markdown": "火力でも数でも劣っていたが、逃げなかった。",
+      "tts": {
+        "text": "火力でも数でも劣っていたが、逃げなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船長がそれを許さないであろうし、部下も求めて恥をかかせはしなかった。",
+      "text_markdown": "船長がそれを許さないであろうし、部下も求めて恥をかかせはしなかった。",
+      "tts": {
+        "text": "船長がそれを許さないであろうし、部下も求めて恥をかかせはしなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマの船は一隻また一隻と撃沈あるいは拿捕された。",
+      "text_markdown": "ラフマの船は一隻また一隻と撃沈あるいは拿捕された。",
+      "tts": {
+        "text": "ラフマの船は一隻また一隻と撃沈あるいは拿捕された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "敵艦隊が旗艦を取り囲んだ。",
+      "text_markdown": "敵艦隊が旗艦を取り囲んだ。",
+      "tts": {
+        "text": "敵艦隊が旗艦を取り囲んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗り込み隊が彼の船を襲撃する準備を整えた。",
+      "text_markdown": "乗り込み隊が彼の船を襲撃する準備を整えた。",
+      "tts": {
+        "text": "乗り込み隊が彼の船を襲撃する準備を整えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "最期が近づいていた。",
+      "text_markdown": "最期が近づいていた。",
+      "tts": {
+        "text": "最期が近づいていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次に起こったことは、ペルシア湾の歴史で最も有名な物語の一つとなった。",
+      "text_markdown": "次に起こったことは、ペルシア湾の歴史で最も有名な物語の一つとなった。",
+      "tts": {
+        "text": "次に起こったことは、ペルシア湾の歴史で最も有名な物語の一つとなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービルは敗北が確実であると悟り、最後の決断を下した。",
+      "text_markdown": "ラフマ・イブン・ジャービルは敗北が確実であると悟り、最後の決断を下した。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービルは敗北が確実であると悟り、最後の決断を下した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は息子を腕に抱いた。",
+      "text_markdown": "彼は息子を腕に抱いた。",
+      "tts": {
+        "text": "彼は息子を腕に抱いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "甲板の下、船の火薬が貯蔵されている火薬庫へ降りた。",
+      "text_markdown": "甲板の下、船の火薬が貯蔵されている火薬庫へ降りた。",
+      "tts": {
+        "text": "甲板の下、船の火薬が貯蔵されている火薬庫へ降りた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は燃える松明を持っていた。",
+      "text_markdown": "彼は燃える松明を持っていた。",
+      "tts": {
+        "text": "彼は燃える松明を持っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "祈りのために立ち止まったという説もある。",
+      "text_markdown": "祈りのために立ち止まったという説もある。",
+      "tts": {
+        "text": "祈りのために立ち止まったという説もある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一言も発せずにそのまま入ったという説もある。",
+      "text_markdown": "一言も発せずにそのまま入ったという説もある。",
+      "tts": {
+        "text": "一言も発せずにそのまま入ったという説もある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "詳細は異なるが、結果は変わらない。",
+      "text_markdown": "詳細は異なるが、結果は変わらない。",
+      "tts": {
+        "text": "詳細は異なるが、結果は変わらない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービルは松明を火薬に触れさせた。",
+      "text_markdown": "ラフマ・イブン・ジャービルは松明を火薬に触れさせた。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービルは松明を火薬に触れさせた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爆発が彼の船を瞬時に破壊した。",
+      "text_markdown": "爆発が彼の船を瞬時に破壊した。",
+      "tts": {
+        "text": "爆発が彼の船を瞬時に破壊した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "爆発はラフマ、息子ビシュル、そして乗り込んでいた敵の船乗りを殺した。",
+      "text_markdown": "爆発はラフマ、息子ビシュル、そして乗り込んでいた敵の船乗りを殺した。",
+      "tts": {
+        "text": "爆発はラフマ、息子ビシュル、そして乗り込んでいた敵の船乗りを殺した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "衝撃波が周囲のすべての船を揺らした。",
+      "text_markdown": "衝撃波が周囲のすべての船を揺らした。",
+      "tts": {
+        "text": "衝撃波が周囲のすべての船を揺らした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "水面から煙と炎の柱が立ち上った。",
+      "text_markdown": "水面から煙と炎の柱が立ち上った。",
+      "tts": {
+        "text": "水面から煙と炎の柱が立ち上った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "旗艦があった場所には、燃える残骸しかなかった。",
+      "text_markdown": "旗艦があった場所には、燃える残骸しかなかった。",
+      "tts": {
+        "text": "旗艦があった場所には、燃える残骸しかなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービルは降伏よりも死を選んだ。",
+      "text_markdown": "ラフマ・イブン・ジャービルは降伏よりも死を選んだ。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービルは降伏よりも死を選んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "敵に捕らえられる満足を与えるよりも、道連れにすることを選んだ。",
+      "text_markdown": "敵に捕らえられる満足を与えるよりも、道連れにすることを選んだ。",
+      "tts": {
+        "text": "敵に捕らえられる満足を与えるよりも、道連れにすることを選んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自らの条件で戦争を終わらせることを選んだ。",
+      "text_markdown": "自らの条件で戦争を終わらせることを選んだ。",
+      "tts": {
+        "text": "自らの条件で戦争を終わらせることを選んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "息子ビシュルの死は、この物語の最も暗い部分である。",
+      "text_markdown": "息子ビシュルの死は、この物語の最も暗い部分である。",
+      "tts": {
+        "text": "息子ビシュルの死は、この物語の最も暗い部分である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマは子供を火薬庫に連れて行った。",
+      "text_markdown": "ラフマは子供を火薬庫に連れて行った。",
+      "tts": {
+        "text": "ラフマは子供を火薬庫に連れて行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "息子がハリーファ家の捕虜として生きることはないと決めた。",
+      "text_markdown": "息子がハリーファ家の捕虜として生きることはないと決めた。",
+      "tts": {
+        "text": "息子がハリーファ家の捕虜として生きることはないと決めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは現代の感覚を戦慄させる行為である。",
+      "text_markdown": "それは現代の感覚を戦慄させる行為である。",
+      "tts": {
+        "text": "それは現代の感覚を戦慄させる行為である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマの世界では、捕虜になることはいずれにせよ奴隷か死を意味した。",
+      "text_markdown": "ラフマの世界では、捕虜になることはいずれにせよ奴隷か死を意味した。",
+      "tts": {
+        "text": "ラフマの世界では、捕虜になることはいずれにせよ奴隷か死を意味した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は火薬庫を慈悲と見なしたのかもしれない。",
+      "text_markdown": "彼は火薬庫を慈悲と見なしたのかもしれない。",
+      "tts": {
+        "text": "彼は火薬庫を慈悲と見なしたのかもしれない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービルの壮絶な死は、彼が決して忘れられないことを確実にした。",
+      "text_markdown": "ラフマ・イブン・ジャービルの壮絶な死は、彼が決して忘れられないことを確実にした。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービルの壮絶な死は、彼が決して忘れられないことを確実にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爆発は両陣営の数百人の船乗りに目撃された。",
+      "text_markdown": "爆発は両陣営の数百人の船乗りに目撃された。",
+      "tts": {
+        "text": "爆発は両陣営の数百人の船乗りに目撃された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その物語は数日のうちに湾全体に広まった。",
+      "text_markdown": "その物語は数日のうちに湾全体に広まった。",
+      "tts": {
+        "text": "その物語は数日のうちに湾全体に広まった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アラブの部族の間で、彼は伝説となった。",
+      "text_markdown": "アラブの部族の間で、彼は伝説となった。",
+      "tts": {
+        "text": "アラブの部族の間で、彼は伝説となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は反抗の究極の模範と見なされた。",
+      "text_markdown": "彼は反抗の究極の模範と見なされた。",
+      "tts": {
+        "text": "彼は反抗の究極の模範と見なされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最後の瞬間まで自らの権利のために戦い、服従するよりも死を選んだ。",
+      "text_markdown": "最後の瞬間まで自らの権利のために戦い、服従するよりも死を選んだ。",
+      "tts": {
+        "text": "最後の瞬間まで自らの権利のために戦い、服従するよりも死を選んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス人は公式の報告書に彼の死を記録した。",
+      "text_markdown": "イギリス人は公式の報告書に彼の死を記録した。",
+      "tts": {
+        "text": "イギリス人は公式の報告書に彼の死を記録した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは安堵と敬意の入り混じった思いで、湾で最も執拗な海賊の死去を記した。",
+      "text_markdown": "彼らは安堵と敬意の入り混じった思いで、湾で最も執拗な海賊の死去を記した。",
+      "tts": {
+        "text": "彼らは安堵と敬意の入り混じった思いで、湾で最も執拗な海賊の死去を記した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は湾を支配する彼らの計画にとって絶えず問題であった。",
+      "text_markdown": "彼は湾を支配する彼らの計画にとって絶えず問題であった。",
+      "tts": {
+        "text": "彼は湾を支配する彼らの計画にとって絶えず問題であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハリーファ家は彼の死を勝利として祝った。",
+      "text_markdown": "ハリーファ家は彼の死を勝利として祝った。",
+      "tts": {
+        "text": "ハリーファ家は彼の死を勝利として祝った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も危険な敵がいなくなった。",
+      "text_markdown": "最も危険な敵がいなくなった。",
+      "tts": {
+        "text": "最も危険な敵がいなくなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バーレーンは数十年ぶりに安全になった。",
+      "text_markdown": "バーレーンは数十年ぶりに安全になった。",
+      "tts": {
+        "text": "バーレーンは数十年ぶりに安全になった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ジャラーヒマの脅威は彼らの最大の英雄とともに消滅した。",
+      "text_markdown": "ジャラーヒマの脅威は彼らの最大の英雄とともに消滅した。",
+      "tts": {
+        "text": "ジャラーヒマの脅威は彼らの最大の英雄とともに消滅した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャラーヒマ族はかつての力を取り戻すことはなかった。",
+      "text_markdown": "ジャラーヒマ族はかつての力を取り戻すことはなかった。",
+      "tts": {
+        "text": "ジャラーヒマ族はかつての力を取り戻すことはなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマの激しい指導力なくして、彼らは政治勢力として徐々に衰退した。",
+      "text_markdown": "ラフマの激しい指導力なくして、彼らは政治勢力として徐々に衰退した。",
+      "tts": {
+        "text": "ラフマの激しい指導力なくして、彼らは政治勢力として徐々に衰退した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部は他の部族に同化した。",
+      "text_markdown": "一部は他の部族に同化した。",
+      "tts": {
+        "text": "一部は他の部族に同化した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p95",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他の者たちは海岸沿いで平穏な暮らしに落ち着いた。",
+      "text_markdown": "他の者たちは海岸沿いで平穏な暮らしに落ち着いた。",
+      "tts": {
+        "text": "他の者たちは海岸沿いで平穏な暮らしに落ち着いた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシア湾はラフマの死後も数十年にわたり争われる航路であり続けた。",
+      "text_markdown": "ペルシア湾はラフマの死後も数十年にわたり争われる航路であり続けた。",
+      "tts": {
+        "text": "ペルシア湾はラフマの死後も数十年にわたり争われる航路であり続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスは1853年に恒久的な休戦を課し、この地域に植民地名を与えた。休戦諸国である。",
+      "text_markdown": "イギリスは1853年に恒久的な休戦を課し、この地域に植民地名を与えた。休戦諸国である。",
+      "tts": {
+        "text": "イギリスは千八百五十三年に恒久的な休戦を課し、この地域に植民地名を与えた。休戦諸国である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それらの国家は今日のアラブ首長国連邦である。",
+      "text_markdown": "それらの国家は今日のアラブ首長国連邦である。",
+      "tts": {
+        "text": "それらの国家は今日のアラブ首長国連邦である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーレーンはハリーファ家の支配下に留まった。",
+      "text_markdown": "バーレーンはハリーファ家の支配下に留まった。",
+      "tts": {
+        "text": "バーレーンはハリーファ家の支配下に留まった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマが生涯をかけて戦った家族は、今日もなおこの島国を統治している。",
+      "text_markdown": "ラフマが生涯をかけて戦った家族は、今日もなおこの島国を統治している。",
+      "tts": {
+        "text": "ラフマが生涯をかけて戦った家族は、今日もなおこの島国を統治している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の戦争は結局、政治地図に何の変化ももたらさなかった。",
+      "text_markdown": "彼の戦争は結局、政治地図に何の変化ももたらさなかった。",
+      "tts": {
+        "text": "彼の戦争は結局、政治地図に何の変化ももたらさなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしラフマ・イブン・ジャービルの物語は、部族の名誉がいかに人をあらゆる理性を超えて駆り立てうるかの力強い例として語り継がれている。",
+      "text_markdown": "しかしラフマ・イブン・ジャービルの物語は、部族の名誉がいかに人をあらゆる理性を超えて駆り立てうるかの力強い例として語り継がれている。",
+      "tts": {
+        "text": "しかしラフマ・イブン・ジャービルの物語は、部族の名誉がいかに人をあらゆる理性を超えて駆り立てうるかの力強い例として語り継がれている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は聡明で勇敢であったが、憎悪にも身を焦がしていた。",
+      "text_markdown": "彼は聡明で勇敢であったが、憎悪にも身を焦がしていた。",
+      "tts": {
+        "text": "彼は聡明で勇敢であったが、憎悪にも身を焦がしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の戦争は部族を滅ぼし、息子を殺し、永続的なものを何一つ成し遂げなかった。",
+      "text_markdown": "彼の戦争は部族を滅ぼし、息子を殺し、永続的なものを何一つ成し遂げなかった。",
+      "tts": {
+        "text": "彼の戦争は部族を滅ぼし、息子を殺し、永続的なものを何一つ成し遂げなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の最後の行為は、彼の遺産の中で最も議論される部分であり続けている。",
+      "text_markdown": "彼の最後の行為は、彼の遺産の中で最も議論される部分であり続けている。",
+      "tts": {
+        "text": "彼の最後の行為は、彼の遺産の中で最も議論される部分であり続けている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは勇気であったのか、狂気であったのか。",
+      "text_markdown": "それは勇気であったのか、狂気であったのか。",
+      "tts": {
+        "text": "それは勇気であったのか、狂気であったのか。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "反抗の究極の表現であったのか、それとも自らの子を殺した利己的な行為であったのか。",
+      "text_markdown": "反抗の究極の表現であったのか、それとも自らの子を殺した利己的な行為であったのか。",
+      "tts": {
+        "text": "反抗の究極の表現であったのか、それとも自らの子を殺した利己的な行為であったのか。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの問いに容易な答えはない。",
+      "text_markdown": "これらの問いに容易な答えはない。",
+      "tts": {
+        "text": "これらの問いに容易な答えはない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ラフマ・イブン・ジャービルは私たちとは異なる価値観の世界に生きた。",
+      "text_markdown": "ラフマ・イブン・ジャービルは私たちとは異なる価値観の世界に生きた。",
+      "tts": {
+        "text": "ラフマ・イブン・ジャービルは私たちとは異なる価値観の世界に生きた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕虜になることは屈辱、奴隷化、あるいはそれ以上を意味した。",
+      "text_markdown": "捕虜になることは屈辱、奴隷化、あるいはそれ以上を意味した。",
+      "tts": {
+        "text": "捕虜になることは屈辱、奴隷化、あるいはそれ以上を意味した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p100",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の世界では、爆発だけが唯一の名誉ある選択に見えたのかもしれない。",
+      "text_markdown": "彼の世界では、爆発だけが唯一の名誉ある選択に見えたのかもしれない。",
+      "tts": {
+        "text": "彼の世界では、爆発だけが唯一の名誉ある選択に見えたのかもしれない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はペルシア湾の歴史で最も注目すべき人物の一人であり続けている。",
+      "text_markdown": "彼はペルシア湾の歴史で最も注目すべき人物の一人であり続けている。",
+      "tts": {
+        "text": "彼はペルシア湾の歴史で最も注目すべき人物の一人であり続けている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "四十年以上にわたって一地域全体を恐怖に陥れた隻眼の海賊。",
+      "text_markdown": "四十年以上にわたって一地域全体を恐怖に陥れた隻眼の海賊。",
+      "tts": {
+        "text": "四十年以上にわたって一地域全体を恐怖に陥れた隻眼の海賊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "降伏よりも炎を選んだ男。",
+      "text_markdown": "降伏よりも炎を選んだ男。",
+      "tts": {
+        "text": "降伏よりも炎を選んだ男。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p101",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "湾はそれ以来、彼のような者を見ていない。",
+      "text_markdown": "湾はそれ以来、彼のような者を見ていない。",
+      "tts": {
+        "text": "湾はそれ以来、彼のような者を見ていない。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

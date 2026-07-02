@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_bartholomew_roberts",
+  "language": "zh",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是黄金时代最成功的海盗的真实故事。",
+      "text_markdown": "这是黄金时代最成功的海盗的真实故事。",
+      "tts": {
+        "text": "这是黄金时代最成功的海盗的真实故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字叫巴塞洛缪·罗伯茨，世人称他为黑色巴特。",
+      "text_markdown": "他的名字叫巴塞洛缪·罗伯茨，世人称他为黑色巴特。",
+      "tts": {
+        "text": "他的名字叫巴塞洛缪·罗伯茨，世人称他为黑色巴特。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在短短3年内，他俘获了400多艘船，比同时代任何海盗都多。",
+      "text_markdown": "在短短3年内，他俘获了400多艘船，比同时代任何海盗都多。",
+      "tts": {
+        "text": "在短短三年内，他俘获了四百多艘船，比同时代任何海盗都多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨并非自愿选择海盗生涯的人。",
+      "text_markdown": "罗伯茨并非自愿选择海盗生涯的人。",
+      "tts": {
+        "text": "罗伯茨并非自愿选择海盗生涯的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一名威尔士水手，被海盗俘获后被迫加入他们的船队。",
+      "text_markdown": "他是一名威尔士水手，被海盗俘获后被迫加入他们的船队。",
+      "tts": {
+        "text": "他是一名威尔士水手，被海盗俘获后被迫加入他们的船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几周之内，他就成了他们的船长。",
+      "text_markdown": "几周之内，他就成了他们的船长。",
+      "tts": {
+        "text": "几周之内，他就成了他们的船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "几个月之内，他就成了大西洋的恐怖之源。",
+      "text_markdown": "几个月之内，他就成了大西洋的恐怖之源。",
+      "tts": {
+        "text": "几个月之内，他就成了大西洋的恐怖之源。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本书将带你从西非海岸走到加勒比群岛。",
+      "text_markdown": "本书将带你从西非海岸走到加勒比群岛。",
+      "tts": {
+        "text": "本书将带你从西非海岸走到加勒比群岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你将看到一个不情愿的海盗如何建立了一个海上帝国，并制定了治理它的规则。",
+      "text_markdown": "你将看到一个不情愿的海盗如何建立了一个海上帝国，并制定了治理它的规则。",
+      "tts": {
+        "text": "你将看到一个不情愿的海盗如何建立了一个海上帝国，并制定了治理它的规则。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本书中的一切都基于历史记录、审判笔录和目击者证词。",
+      "text_markdown": "本书中的一切都基于历史记录、审判笔录和目击者证词。",
+      "tts": {
+        "text": "本书中的一切都基于历史记录、审判笔录和目击者证词。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "当事实不确定时，我们会明确说明。",
+      "text_markdown": "当事实不确定时，我们会明确说明。",
+      "tts": {
+        "text": "当事实不确定时，我们会明确说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "奴隶海岸的世界",
+      "text_markdown": "奴隶海岸的世界"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪初是跨大西洋奴隶贸易的巅峰时期。",
+      "text_markdown": "十八世纪初是跨大西洋奴隶贸易的巅峰时期。",
+      "tts": {
+        "text": "十八世纪初是跨大西洋奴隶贸易的巅峰时期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "欧洲船只从英格兰、法国、葡萄牙和荷兰的港口出发，驶向西非海岸。",
+      "text_markdown": "欧洲船只从英格兰、法国、葡萄牙和荷兰的港口出发，驶向西非海岸。",
+      "tts": {
+        "text": "欧洲船只从英格兰、法国、葡萄牙和荷兰的港口出发，驶向西非海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在那里，他们用制成品交换被奴役的人。",
+      "text_markdown": "在那里，他们用制成品交换被奴役的人。",
+      "tts": {
+        "text": "在那里，他们用制成品交换被奴役的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "被奴役的人随后被运过大西洋，送往美洲的种植园。",
+      "text_markdown": "被奴役的人随后被运过大西洋，送往美洲的种植园。",
+      "tts": {
+        "text": "被奴役的人随后被运过大西洋，送往美洲的种植园。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个三角贸易为欧洲商人和殖民地种植园主创造了巨额财富。",
+      "text_markdown": "这个三角贸易为欧洲商人和殖民地种植园主创造了巨额财富。",
+      "tts": {
+        "text": "这个三角贸易为欧洲商人和殖民地种植园主创造了巨额财富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "由奴隶劳动种植的糖、烟草、棉花和大米被运回欧洲。",
+      "text_markdown": "由奴隶劳动种植的糖、烟草、棉花和大米被运回欧洲。",
+      "tts": {
+        "text": "由奴隶劳动种植的糖、烟草、棉花和大米被运回欧洲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "利润资助了豪宅、政治权力和进一步的殖民扩张。",
+      "text_markdown": "利润资助了豪宅、政治权力和进一步的殖民扩张。",
+      "tts": {
+        "text": "利润资助了豪宅、政治权力和进一步的殖民扩张。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它是驱动大西洋世界经济的引擎。",
+      "text_markdown": "它是驱动大西洋世界经济的引擎。",
+      "tts": {
+        "text": "它是驱动大西洋世界经济的引擎。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从塞内加尔到安哥拉的西非海岸是这种人口贸易的中心。",
+      "text_markdown": "从塞内加尔到安哥拉的西非海岸是这种人口贸易的中心。",
+      "tts": {
+        "text": "从塞内加尔到安哥拉的西非海岸是这种人口贸易的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "欧洲各国沿海岸线建立了贸易堡垒和商行。",
+      "text_markdown": "欧洲各国沿海岸线建立了贸易堡垒和商行。",
+      "tts": {
+        "text": "欧洲各国沿海岸线建立了贸易堡垒和商行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "皇家非洲公司掌握着英国在非洲贸易中的垄断权。",
+      "text_markdown": "皇家非洲公司掌握着英国在非洲贸易中的垄断权。",
+      "tts": {
+        "text": "皇家非洲公司掌握着英国在非洲贸易中的垄断权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它在海岸角城堡和其他地点的堡垒设防严密，驻有守军。",
+      "text_markdown": "它在海岸角城堡和其他地点的堡垒设防严密，驻有守军。",
+      "tts": {
+        "text": "它在海岸角城堡和其他地点的堡垒设防严密，驻有守军。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "横渡大西洋的奴隶船是海洋上最有价值的目标之一。",
+      "text_markdown": "横渡大西洋的奴隶船是海洋上最有价值的目标之一。",
+      "tts": {
+        "text": "横渡大西洋的奴隶船是海洋上最有价值的目标之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们在去程运送贸易商品，回程运送被奴役的人。",
+      "text_markdown": "它们在去程运送贸易商品，回程运送被奴役的人。",
+      "tts": {
+        "text": "它们在去程运送贸易商品，回程运送被奴役的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在航程的每个阶段，它们都容易遭到攻击。",
+      "text_markdown": "在航程的每个阶段，它们都容易遭到攻击。",
+      "tts": {
+        "text": "在航程的每个阶段，它们都容易遭到攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "掠夺奴隶船的海盗既能获得宝贵的货物，又能得到船只本身。",
+      "text_markdown": "掠夺奴隶船的海盗既能获得宝贵的货物，又能得到船只本身。",
+      "tts": {
+        "text": "掠夺奴隶船的海盗既能获得宝贵的货物，又能得到船只本身。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "加勒比地区是大多数奴隶船的目的地。",
+      "text_markdown": "加勒比地区是大多数奴隶船的目的地。",
+      "tts": {
+        "text": "加勒比地区是大多数奴隶船的目的地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "牙买加、巴巴多斯和伊斯帕尼奥拉岛等岛屿是由奴隶劳动经营的大型甘蔗种植园。",
+      "text_markdown": "牙买加、巴巴多斯和伊斯帕尼奥拉岛等岛屿是由奴隶劳动经营的大型甘蔗种植园。",
+      "tts": {
+        "text": "牙买加、巴巴多斯和伊斯帕尼奥拉岛等岛屿是由奴隶劳动经营的大型甘蔗种植园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些种植园创造的财富令人惊叹。",
+      "text_markdown": "这些种植园创造的财富令人惊叹。",
+      "tts": {
+        "text": "这些种植园创造的财富令人惊叹。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "仅牙买加一岛为英格兰创造的财富就超过了其所有北美殖民地的总和。",
+      "text_markdown": "仅牙买加一岛为英格兰创造的财富就超过了其所有北美殖民地的总和。",
+      "tts": {
+        "text": "仅牙买加一岛为英格兰创造的财富就超过了其所有北美殖民地的总和。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当巴塞洛缪·罗伯茨登上历史舞台时，海盗的黄金时代正接近尾声。",
+      "text_markdown": "当巴塞洛缪·罗伯茨登上历史舞台时，海盗的黄金时代正接近尾声。",
+      "tts": {
+        "text": "当巴塞洛缪·罗伯茨登上历史舞台时，海盗的黄金时代正接近尾声。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黑胡子于1718年被杀。",
+      "text_markdown": "黑胡子于1718年被杀。",
+      "tts": {
+        "text": "黑胡子于一七一八年被杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拿骚的海盗共和国已被总督伍兹·罗杰斯瓦解。",
+      "text_markdown": "拿骚的海盗共和国已被总督伍兹·罗杰斯瓦解。",
+      "tts": {
+        "text": "拿骚的海盗共和国已被总督伍兹·罗杰斯瓦解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "殖民政府终于开始投资反海盗海上巡逻。",
+      "text_markdown": "殖民政府终于开始投资反海盗海上巡逻。",
+      "tts": {
+        "text": "殖民政府终于开始投资反海盗海上巡逻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但海洋辽阔，海军力量有限。",
+      "text_markdown": "但海洋辽阔，海军力量有限。",
+      "tts": {
+        "text": "但海洋辽阔，海军力量有限。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "皇家海军无法同时巡逻每条航线。",
+      "text_markdown": "皇家海军无法同时巡逻每条航线。",
+      "tts": {
+        "text": "皇家海军无法同时巡逻每条航线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在合适的水域，狡猾而好斗的海盗仍然可以逍遥法外。",
+      "text_markdown": "在合适的水域，狡猾而好斗的海盗仍然可以逍遥法外。",
+      "tts": {
+        "text": "在合适的水域，狡猾而好斗的海盗仍然可以逍遥法外。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "西非海岸就是这样一个地方，远离海上强权的中心。",
+      "text_markdown": "西非海岸就是这样一个地方，远离海上强权的中心。",
+      "tts": {
+        "text": "西非海岸就是这样一个地方，远离海上强权的中心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "往返非洲的商船通常武装薄弱。",
+      "text_markdown": "往返非洲的商船通常武装薄弱。",
+      "tts": {
+        "text": "往返非洲的商船通常武装薄弱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船主宁愿把钱花在货舱空间上，而不是大炮上。",
+      "text_markdown": "船主宁愿把钱花在货舱空间上，而不是大炮上。",
+      "tts": {
+        "text": "船主宁愿把钱花在货舱空间上，而不是大炮上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船员人数少、工资低，且经常受到虐待。",
+      "text_markdown": "船员人数少、工资低，且经常受到虐待。",
+      "tts": {
+        "text": "船员人数少、工资低，且经常受到虐待。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些船是任何胆大妄为的海盗的轻易目标。",
+      "text_markdown": "这些船是任何胆大妄为的海盗的轻易目标。",
+      "tts": {
+        "text": "这些船是任何胆大妄为的海盗的轻易目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皇家海军在西非海岸维持着一支小型中队。",
+      "text_markdown": "皇家海军在西非海岸维持着一支小型中队。",
+      "tts": {
+        "text": "皇家海军在西非海岸维持着一支小型中队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的首要任务是保护奴隶贸易，而非打击海盗。",
+      "text_markdown": "它的首要任务是保护奴隶贸易，而非打击海盗。",
+      "tts": {
+        "text": "它的首要任务是保护奴隶贸易，而非打击海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "军舰往往人员不足且年久失修。",
+      "text_markdown": "军舰往往人员不足且年久失修。",
+      "tts": {
+        "text": "军舰往往人员不足且年久失修。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "疾病，尤其是疟疾和黄热病，以惊人的数字夺走了欧洲水手的生命。",
+      "text_markdown": "疾病，尤其是疟疾和黄热病，以惊人的数字夺走了欧洲水手的生命。",
+      "tts": {
+        "text": "疾病，尤其是疟疾和黄热病，以惊人的数字夺走了欧洲水手的生命。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在整个大西洋贸易中，普通水手的处境十分恶劣。",
+      "text_markdown": "在整个大西洋贸易中，普通水手的处境十分恶劣。",
+      "tts": {
+        "text": "在整个大西洋贸易中，普通水手的处境十分恶劣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "纪律严苛，食物低劣，薪酬无保障。",
+      "text_markdown": "纪律严苛，食物低劣，薪酬无保障。",
+      "tts": {
+        "text": "纪律严苛，食物低劣，薪酬无保障。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多水手在航程结束前就死于疾病。",
+      "text_markdown": "许多水手在航程结束前就死于疾病。",
+      "tts": {
+        "text": "许多水手在航程结束前就死于疾病。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些条件迫使一些人出于绝望而走上海盗之路。",
+      "text_markdown": "这些条件迫使一些人出于绝望而走上海盗之路。",
+      "tts": {
+        "text": "这些条件迫使一些人出于绝望而走上海盗之路。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世纪二十年代初的大西洋因此是一个巨大财富与可怕苦难并存的世界。",
+      "text_markdown": "十八世纪二十年代初的大西洋因此是一个巨大财富与可怕苦难并存的世界。",
+      "tts": {
+        "text": "十八世纪二十年代初的大西洋因此是一个巨大财富与可怕苦难并存的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奴隶贸易使一些人富可敌国，却将数百万人推入奴役的深渊。",
+      "text_markdown": "奴隶贸易使一些人富可敌国，却将数百万人推入奴役的深渊。",
+      "tts": {
+        "text": "奴隶贸易使一些人富可敌国，却将数百万人推入奴役的深渊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗活动在这种不平等和残酷的环境中蓬勃发展。",
+      "text_markdown": "海盗活动在这种不平等和残酷的环境中蓬勃发展。",
+      "tts": {
+        "text": "海盗活动在这种不平等和残酷的环境中蓬勃发展。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "巴塞洛缪·罗伯茨将在这片天地中大展宏图，超越前人。",
+      "text_markdown": "巴塞洛缪·罗伯茨将在这片天地中大展宏图，超越前人。",
+      "tts": {
+        "text": "巴塞洛缪·罗伯茨将在这片天地中大展宏图，超越前人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨出生的威尔士在这个时期是一片资源匮乏的土地。",
+      "text_markdown": "罗伯茨出生的威尔士在这个时期是一片资源匮乏的土地。",
+      "tts": {
+        "text": "罗伯茨出生的威尔士在这个时期是一片资源匮乏的土地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大多数威尔士人以务农、采矿或捕鱼为生。",
+      "text_markdown": "大多数威尔士人以务农、采矿或捕鱼为生。",
+      "tts": {
+        "text": "大多数威尔士人以务农、采矿或捕鱼为生。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对于住在海岸附近的人来说，大海提供了逃离农村贫困的出路。",
+      "text_markdown": "对于住在海岸附近的人来说，大海提供了逃离农村贫困的出路。",
+      "tts": {
+        "text": "对于住在海岸附近的人来说，大海提供了逃离农村贫困的出路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隶海岸的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "许多威尔士男子在商船队、皇家海军或两者兼有中服役。",
+      "text_markdown": "许多威尔士男子在商船队、皇家海军或两者兼有中服役。",
+      "tts": {
+        "text": "许多威尔士男子在商船队、皇家海军或两者兼有中服役。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "不情愿的海盗",
+      "text_markdown": "不情愿的海盗"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴塞洛缪·罗伯茨于1682年出生在威尔士彭布罗克郡的卡斯纽德巴赫村。",
+      "text_markdown": "巴塞洛缪·罗伯茨于1682年出生在威尔士彭布罗克郡的卡斯纽德巴赫村。",
+      "tts": {
+        "text": "巴塞洛缪·罗伯茨于一六八二年出生在威尔士彭布罗克郡的卡斯纽德巴赫村。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彭布罗克郡位于威尔士西南端，面朝爱尔兰海。",
+      "text_markdown": "彭布罗克郡位于威尔士西南端，面朝爱尔兰海。",
+      "tts": {
+        "text": "彭布罗克郡位于威尔士西南端，面朝爱尔兰海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是一个以渔业和沿海贸易为日常生活核心的海滨社区。",
+      "text_markdown": "这是一个以渔业和沿海贸易为日常生活核心的海滨社区。",
+      "tts": {
+        "text": "这是一个以渔业和沿海贸易为日常生活核心的海滨社区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨在大海的视野和声音中长大。",
+      "text_markdown": "罗伯茨在大海的视野和声音中长大。",
+      "tts": {
+        "text": "罗伯茨在大海的视野和声音中长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "关于罗伯茨的童年和家庭，人们知之甚少。",
+      "text_markdown": "关于罗伯茨的童年和家庭，人们知之甚少。",
+      "tts": {
+        "text": "关于罗伯茨的童年和家庭，人们知之甚少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他很小就出海了，这在沿海村庄的男孩中很常见。",
+      "text_markdown": "他很小就出海了，这在沿海村庄的男孩中很常见。",
+      "tts": {
+        "text": "他很小就出海了，这在沿海村庄的男孩中很常见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到35岁左右时，他已是一名经验丰富、技术精湛的水手。",
+      "text_markdown": "到35岁左右时，他已是一名经验丰富、技术精湛的水手。",
+      "tts": {
+        "text": "到三十五岁左右时，他已是一名经验丰富、技术精湛的水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他能凭星辰导航、管理船员，在任何天气下操控船只。",
+      "text_markdown": "他能凭星辰导航、管理船员，在任何天气下操控船只。",
+      "tts": {
+        "text": "他能凭星辰导航、管理船员，在任何天气下操控船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1719年初，罗伯茨在一艘名为公主号的奴隶船上担任三副。",
+      "text_markdown": "1719年初，罗伯茨在一艘名为公主号的奴隶船上担任三副。",
+      "tts": {
+        "text": "一七一九年初，罗伯茨在一艘名为公主号的奴隶船上担任三副。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "公主号停泊在今天的加纳海岸，从事奴隶贸易。",
+      "text_markdown": "公主号停泊在今天的加纳海岸，从事奴隶贸易。",
+      "tts": {
+        "text": "公主号停泊在今天的加纳海岸，从事奴隶贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "罗伯茨是船上一位受尊敬的军官，能干且可靠。",
+      "text_markdown": "罗伯茨是船上一位受尊敬的军官，能干且可靠。",
+      "tts": {
+        "text": "罗伯茨是船上一位受尊敬的军官，能干且可靠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在此之前，他职业生涯中没有任何迹象表明他会成为海盗。",
+      "text_markdown": "在此之前，他职业生涯中没有任何迹象表明他会成为海盗。",
+      "tts": {
+        "text": "在此之前，他职业生涯中没有任何迹象表明他会成为海盗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗船长豪厄尔·戴维斯一直在西非海岸大肆劫掠，取得了巨大成功。",
+      "text_markdown": "海盗船长豪厄尔·戴维斯一直在西非海岸大肆劫掠，取得了巨大成功。",
+      "tts": {
+        "text": "海盗船长豪厄尔·戴维斯一直在西非海岸大肆劫掠，取得了巨大成功。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戴维斯也是威尔士人，他的船员是志愿者和被强征入伙者的混合体。",
+      "text_markdown": "戴维斯也是威尔士人，他的船员是志愿者和被强征入伙者的混合体。",
+      "tts": {
+        "text": "戴维斯也是威尔士人，他的船员是志愿者和被强征入伙者的混合体。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当戴维斯发现停泊的公主号时，他发动了攻击并将其俘获。",
+      "text_markdown": "当戴维斯发现停泊的公主号时，他发动了攻击并将其俘获。",
+      "tts": {
+        "text": "当戴维斯发现停泊的公主号时，他发动了攻击并将其俘获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨和其余船员被俘虏。",
+      "text_markdown": "罗伯茨和其余船员被俘虏。",
+      "tts": {
+        "text": "罗伯茨和其余船员被俘虏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戴维斯强迫罗伯茨加入他的海盗船队。",
+      "text_markdown": "戴维斯强迫罗伯茨加入他的海盗船队。",
+      "tts": {
+        "text": "戴维斯强迫罗伯茨加入他的海盗船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这在需要熟练水手的海盗中是一种常见做法。",
+      "text_markdown": "这在需要熟练水手的海盗中是一种常见做法。",
+      "tts": {
+        "text": "这在需要熟练水手的海盗中是一种常见做法。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据报道，罗伯茨对被迫当海盗一事心存不满。",
+      "text_markdown": "据报道，罗伯茨对被迫当海盗一事心存不满。",
+      "tts": {
+        "text": "据报道，罗伯茨对被迫当海盗一事心存不满。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但他认识到反抗毫无意义，而且可能致命。",
+      "text_markdown": "但他认识到反抗毫无意义，而且可能致命。",
+      "tts": {
+        "text": "但他认识到反抗毫无意义，而且可能致命。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管心有不愿，罗伯茨很快在海盗船员中脱颖而出。",
+      "text_markdown": "尽管心有不愿，罗伯茨很快在海盗船员中脱颖而出。",
+      "tts": {
+        "text": "尽管心有不愿，罗伯茨很快在海盗船员中脱颖而出。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他比大多数船友受过更好的教育。",
+      "text_markdown": "他比大多数船友受过更好的教育。",
+      "tts": {
+        "text": "他比大多数船友受过更好的教育。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他是一名出色的领航员，精通船舶管理的各种复杂事务。",
+      "text_markdown": "他是一名出色的领航员，精通船舶管理的各种复杂事务。",
+      "tts": {
+        "text": "他是一名出色的领航员，精通船舶管理的各种复杂事务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的海盗同伴注意到了他的能力和在压力下冷静的判断力。",
+      "text_markdown": "他的海盗同伴注意到了他的能力和在压力下冷静的判断力。",
+      "tts": {
+        "text": "他的海盗同伴注意到了他的能力和在压力下冷静的判断力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨加入船队仅几周后，船长豪厄尔·戴维斯就被杀了。",
+      "text_markdown": "罗伯茨加入船队仅几周后，船长豪厄尔·戴维斯就被杀了。",
+      "tts": {
+        "text": "罗伯茨加入船队仅几周后，船长豪厄尔·戴维斯就被杀了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戴维斯航行到了西非海岸外的普林西比岛。",
+      "text_markdown": "戴维斯航行到了西非海岸外的普林西比岛。",
+      "tts": {
+        "text": "戴维斯航行到了西非海岸外的普林西比岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他试图用诡计绑架岛上的总督，但遭到了伏击。",
+      "text_markdown": "他试图用诡计绑架岛上的总督，但遭到了伏击。",
+      "tts": {
+        "text": "他试图用诡计绑架岛上的总督，但遭到了伏击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "葡萄牙士兵在这次失败的计划中击毙了戴维斯。",
+      "text_markdown": "葡萄牙士兵在这次失败的计划中击毙了戴维斯。",
+      "tts": {
+        "text": "葡萄牙士兵在这次失败的计划中击毙了戴维斯。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗船队现在需要一位新船长。",
+      "text_markdown": "海盗船队现在需要一位新船长。",
+      "tts": {
+        "text": "海盗船队现在需要一位新船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "按照海盗传统，他们进行了选举。",
+      "text_markdown": "按照海盗传统，他们进行了选举。",
+      "tts": {
+        "text": "按照海盗传统，他们进行了选举。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几位候选人接受了考虑，但船员们选择了巴塞洛缪·罗伯茨。",
+      "text_markdown": "几位候选人接受了考虑，但船员们选择了巴塞洛缪·罗伯茨。",
+      "tts": {
+        "text": "几位候选人接受了考虑，但船员们选择了巴塞洛缪·罗伯茨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他当海盗才大约六个星期。",
+      "text_markdown": "他当海盗才大约六个星期。",
+      "tts": {
+        "text": "他当海盗才大约六个星期。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨接受了船长之位，据说他表示既然已经把手伸进了浑水里，不如当个海盗船长。",
+      "text_markdown": "罗伯茨接受了船长之位，据说他表示既然已经把手伸进了浑水里，不如当个海盗船长。",
+      "tts": {
+        "text": "罗伯茨接受了船长之位，据说他表示既然已经把手伸进了浑水里，不如当个海盗船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他还说快活而短暂的一生将是他的座右铭。",
+      "text_markdown": "他还说快活而短暂的一生将是他的座右铭。",
+      "tts": {
+        "text": "他还说快活而短暂的一生将是他的座右铭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这番话成为海盗史上最著名的名言之一。",
+      "text_markdown": "这番话成为海盗史上最著名的名言之一。",
+      "tts": {
+        "text": "这番话成为海盗史上最著名的名言之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨在不到两个月的时间里从不情愿的俘虏变成了民选领袖。",
+      "text_markdown": "罗伯茨在不到两个月的时间里从不情愿的俘虏变成了民选领袖。",
+      "tts": {
+        "text": "罗伯茨在不到两个月的时间里从不情愿的俘虏变成了民选领袖。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他担任船长后的第一个举动是为豪厄尔·戴维斯报仇。",
+      "text_markdown": "他担任船长后的第一个举动是为豪厄尔·戴维斯报仇。",
+      "tts": {
+        "text": "他担任船长后的第一个举动是为豪厄尔·戴维斯报仇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗伯茨带领船员返回普林西比岛。",
+      "text_markdown": "罗伯茨带领船员返回普林西比岛。",
+      "tts": {
+        "text": "罗伯茨带领船员返回普林西比岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在夜间袭击了葡萄牙人的定居点，烧毁建筑并杀死士兵。",
+      "text_markdown": "他们在夜间袭击了葡萄牙人的定居点，烧毁建筑并杀死士兵。",
+      "tts": {
+        "text": "他们在夜间袭击了葡萄牙人的定居点，烧毁建筑并杀死士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这次迅速而无情的报复确立了罗伯茨作为保护手下的船长的地位。",
+      "text_markdown": "这次迅速而无情的报复确立了罗伯茨作为保护手下的船长的地位。",
+      "tts": {
+        "text": "这次迅速而无情的报复确立了罗伯茨作为保护手下的船长的地位。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随后罗伯茨着手将他的海盗船员改造成一支专业的战斗力量。",
+      "text_markdown": "随后罗伯茨着手将他的海盗船员改造成一支专业的战斗力量。",
+      "tts": {
+        "text": "随后罗伯茨着手将他的海盗船员改造成一支专业的战斗力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他起草了一套详细的协议条款，每位船员都必须签署。",
+      "text_markdown": "他起草了一套详细的协议条款，每位船员都必须签署。",
+      "tts": {
+        "text": "他起草了一套详细的协议条款，每位船员都必须签署。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些条款涵盖了从战利品分配到船上行为规范的方方面面。",
+      "text_markdown": "这些条款涵盖了从战利品分配到船上行为规范的方方面面。",
+      "tts": {
+        "text": "这些条款涵盖了从战利品分配到船上行为规范的方方面面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它们是有史以来最全面的海盗法典之一。",
+      "text_markdown": "它们是有史以来最全面的海盗法典之一。",
+      "tts": {
+        "text": "它们是有史以来最全面的海盗法典之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨的条款赋予每个人在所有重大决定中的投票权。",
+      "text_markdown": "罗伯茨的条款赋予每个人在所有重大决定中的投票权。",
+      "tts": {
+        "text": "罗伯茨的条款赋予每个人在所有重大决定中的投票权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船长和军需官获得更大份额的战利品，但差异不大。",
+      "text_markdown": "船长和军需官获得更大份额的战利品，但差异不大。",
+      "tts": {
+        "text": "船长和军需官获得更大份额的战利品，但差异不大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乐师在周日享有休息——这在那个时代是一项极为文明的规定。",
+      "text_markdown": "乐师在周日享有休息——这在那个时代是一项极为文明的规定。",
+      "tts": {
+        "text": "乐师在周日享有休息——这在那个时代是一项极为文明的规定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "不情愿的海盗",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "任何在战斗中逃跑的人将被处以死刑或流放荒岛。",
+      "text_markdown": "任何在战斗中逃跑的人将被处以死刑或流放荒岛。",
+      "tts": {
+        "text": "任何在战斗中逃跑的人将被处以死刑或流放荒岛。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "黑海盗的征程",
+      "text_markdown": "黑海盗的征程"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在罗伯茨的指挥下，海盗船队发动了海洋史上最具破坏性的战役之一。",
+      "text_markdown": "在罗伯茨的指挥下，海盗船队发动了海洋史上最具破坏性的战役之一。",
+      "tts": {
+        "text": "在罗伯茨的指挥下，海盗船队发动了海洋史上最具破坏性的战役之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们从非洲海岸出发驶向巴西，再北上穿过加勒比海，然后返回非洲。",
+      "text_markdown": "他们从非洲海岸出发驶向巴西，再北上穿过加勒比海，然后返回非洲。",
+      "tts": {
+        "text": "他们从非洲海岸出发驶向巴西，再北上穿过加勒比海，然后返回非洲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们所到之处，都以惊人的速度和效率俘获船只。",
+      "text_markdown": "他们所到之处，都以惊人的速度和效率俘获船只。",
+      "tts": {
+        "text": "他们所到之处，都以惊人的速度和效率俘获船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨似乎天生就有发现猎物和规避危险的直觉。",
+      "text_markdown": "罗伯茨似乎天生就有发现猎物和规避危险的直觉。",
+      "tts": {
+        "text": "罗伯茨似乎天生就有发现猎物和规避危险的直觉。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨首先横渡大西洋，前往巴西海岸。",
+      "text_markdown": "罗伯茨首先横渡大西洋，前往巴西海岸。",
+      "tts": {
+        "text": "罗伯茨首先横渡大西洋，前往巴西海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那里他发现了一支正准备驶往里斯本的葡萄牙宝船队。",
+      "text_markdown": "在那里他发现了一支正准备驶往里斯本的葡萄牙宝船队。",
+      "tts": {
+        "text": "在那里他发现了一支正准备驶往里斯本的葡萄牙宝船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船队由42艘商船组成，有2艘军舰护航。",
+      "text_markdown": "船队由42艘商船组成，有2艘军舰护航。",
+      "tts": {
+        "text": "船队由四十二艘商船组成，有两艘军舰护航。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是一个极其富有但防守严密的目标。",
+      "text_markdown": "这是一个极其富有但防守严密的目标。",
+      "tts": {
+        "text": "这是一个极其富有但防守严密的目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨大胆地在夜幕掩护下驶入了船队。",
+      "text_markdown": "罗伯茨大胆地在夜幕掩护下驶入了船队。",
+      "tts": {
+        "text": "罗伯茨大胆地在夜幕掩护下驶入了船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他找出了最富有的船只，在护航舰反应过来之前将其俘获。",
+      "text_markdown": "他找出了最富有的船只，在护航舰反应过来之前将其俘获。",
+      "tts": {
+        "text": "他找出了最富有的船只，在护航舰反应过来之前将其俘获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "被俘的船只载有黄金、糖、烟草和一枚镶嵌钻石的十字架——原本是献给葡萄牙国王的。",
+      "text_markdown": "被俘的船只载有黄金、糖、烟草和一枚镶嵌钻石的十字架——原本是献给葡萄牙国王的。",
+      "tts": {
+        "text": "被俘的船只载有黄金、糖、烟草和一枚镶嵌钻石的十字架——原本是献给葡萄牙国王的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是一次大胆突袭所获得的惊人战利品。",
+      "text_markdown": "这是一次大胆突袭所获得的惊人战利品。",
+      "tts": {
+        "text": "这是一次大胆突袭所获得的惊人战利品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从巴西出发，罗伯茨向北驶向加勒比海。",
+      "text_markdown": "从巴西出发，罗伯茨向北驶向加勒比海。",
+      "tts": {
+        "text": "从巴西出发，罗伯茨向北驶向加勒比海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在各岛屿之间的航线上四处劫掠，接连俘获船只。",
+      "text_markdown": "他在各岛屿之间的航线上四处劫掠，接连俘获船只。",
+      "tts": {
+        "text": "他在各岛屿之间的航线上四处劫掠，接连俘获船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的名声随着每次俘获而增长。",
+      "text_markdown": "他的名声随着每次俘获而增长。",
+      "tts": {
+        "text": "他的名声随着每次俘获而增长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "加勒比航线上的商船船长开始害怕看到罗伯茨的旗帜。",
+      "text_markdown": "加勒比航线上的商船船长开始害怕看到罗伯茨的旗帜。",
+      "tts": {
+        "text": "加勒比航线上的商船船长开始害怕看到罗伯茨的旗帜。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨设计了自己的海盗旗，并悬挂了好几面不同的旗帜。",
+      "text_markdown": "罗伯茨设计了自己的海盗旗，并悬挂了好几面不同的旗帜。",
+      "tts": {
+        "text": "罗伯茨设计了自己的海盗旗，并悬挂了好几面不同的旗帜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其中一面旗帜上画着他站在两个骷髅头上，代表巴巴多斯和马提尼克的总督。",
+      "text_markdown": "其中一面旗帜上画着他站在两个骷髅头上，代表巴巴多斯和马提尼克的总督。",
+      "tts": {
+        "text": "其中一面旗帜上画着他站在两个骷髅头上，代表巴巴多斯和马提尼克的总督。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他对这两个殖民地怀有私人恩怨，因为它们曾试图追捕他。",
+      "text_markdown": "他对这两个殖民地怀有私人恩怨，因为它们曾试图追捕他。",
+      "tts": {
+        "text": "他对这两个殖民地怀有私人恩怨，因为它们曾试图追捕他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的旗帜是针对特定敌人的挑衅信号。",
+      "text_markdown": "他的旗帜是针对特定敌人的挑衅信号。",
+      "tts": {
+        "text": "他的旗帜是针对特定敌人的挑衅信号。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨在加勒比海的劫掠对殖民贸易造成了毁灭性打击。",
+      "text_markdown": "罗伯茨在加勒比海的劫掠对殖民贸易造成了毁灭性打击。",
+      "tts": {
+        "text": "罗伯茨在加勒比海的劫掠对殖民贸易造成了毁灭性打击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在短短三天内，他在纽芬兰特雷帕西港俘获了15艘船。",
+      "text_markdown": "在短短三天内，他在纽芬兰特雷帕西港俘获了15艘船。",
+      "tts": {
+        "text": "在短短三天内，他在纽芬兰特雷帕西港俘获了十五艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他还摧毁了大量渔船和港口设施。",
+      "text_markdown": "他还摧毁了大量渔船和港口设施。",
+      "tts": {
+        "text": "他还摧毁了大量渔船和港口设施。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对特雷帕西的袭击表明，大西洋上没有任何港口能逃脱他的魔掌。",
+      "text_markdown": "对特雷帕西的袭击表明，大西洋上没有任何港口能逃脱他的魔掌。",
+      "tts": {
+        "text": "对特雷帕西的袭击表明，大西洋上没有任何港口能逃脱他的魔掌。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨在个人习惯方面与大多数海盗不同。",
+      "text_markdown": "罗伯茨在个人习惯方面与大多数海盗不同。",
+      "tts": {
+        "text": "罗伯茨在个人习惯方面与大多数海盗不同。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他衣着讲究，穿着华丽的深红色马甲和马裤。",
+      "text_markdown": "他衣着讲究，穿着华丽的深红色马甲和马裤。",
+      "tts": {
+        "text": "他衣着讲究，穿着华丽的深红色马甲和马裤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他戴着一顶插红色羽毛的大帽子，脖子上挂着一枚钻石十字架。",
+      "text_markdown": "他戴着一顶插红色羽毛的大帽子，脖子上挂着一枚钻石十字架。",
+      "tts": {
+        "text": "他戴着一顶插红色羽毛的大帽子，脖子上挂着一枚钻石十字架。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的外表像一位绅士，而非粗犷的老水手。",
+      "text_markdown": "他的外表像一位绅士，而非粗犷的老水手。",
+      "tts": {
+        "text": "他的外表像一位绅士，而非粗犷的老水手。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最值得注意的是，罗伯茨喜欢喝茶而非朗姆酒。",
+      "text_markdown": "最值得注意的是，罗伯茨喜欢喝茶而非朗姆酒。",
+      "tts": {
+        "text": "最值得注意的是，罗伯茨喜欢喝茶而非朗姆酒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在大多数水手酗酒的年代，罗伯茨饮酒节制。",
+      "text_markdown": "在大多数水手酗酒的年代，罗伯茨饮酒节制。",
+      "tts": {
+        "text": "在大多数水手酗酒的年代，罗伯茨饮酒节制。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他认为醉酒会损害判断力，危及船只安全。",
+      "text_markdown": "他认为醉酒会损害判断力，危及船只安全。",
+      "tts": {
+        "text": "他认为醉酒会损害判断力，危及船只安全。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的海盗条款中包含了关于值班时饮酒的严格规定。",
+      "text_markdown": "他的海盗条款中包含了关于值班时饮酒的严格规定。",
+      "tts": {
+        "text": "他的海盗条款中包含了关于值班时饮酒的严格规定。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨还以自己的方式虔诚信教。",
+      "text_markdown": "罗伯茨还以自己的方式虔诚信教。",
+      "tts": {
+        "text": "罗伯茨还以自己的方式虔诚信教。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在船上定期举行礼拜仪式，并雇用乐师演奏赞美诗。",
+      "text_markdown": "他在船上定期举行礼拜仪式，并雇用乐师演奏赞美诗。",
+      "tts": {
+        "text": "他在船上定期举行礼拜仪式，并雇用乐师演奏赞美诗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他遵守安息日，并试图在船员中维持某种道德秩序的表象。",
+      "text_markdown": "他遵守安息日，并试图在船员中维持某种道德秩序的表象。",
+      "tts": {
+        "text": "他遵守安息日，并试图在船员中维持某种道德秩序的表象。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种虔诚与海盗行为的结合在当时的人看来极为矛盾。",
+      "text_markdown": "这种虔诚与海盗行为的结合在当时的人看来极为矛盾。",
+      "tts": {
+        "text": "这种虔诚与海盗行为的结合在当时的人看来极为矛盾。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的航海技术超群。",
+      "text_markdown": "他的航海技术超群。",
+      "tts": {
+        "text": "他的航海技术超群。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他多次横渡大西洋，每次都准确抵达目的地。",
+      "text_markdown": "他多次横渡大西洋，每次都准确抵达目的地。",
+      "tts": {
+        "text": "他多次横渡大西洋，每次都准确抵达目的地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他仅凭基本仪器就能以惊人的精度计算自己的位置。",
+      "text_markdown": "他仅凭基本仪器就能以惊人的精度计算自己的位置。",
+      "tts": {
+        "text": "他仅凭基本仪器就能以惊人的精度计算自己的位置。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在许多船长在海上迷路的年代，罗伯茨总是准确地知道自己身在何处。",
+      "text_markdown": "在许多船长在海上迷路的年代，罗伯茨总是准确地知道自己身在何处。",
+      "tts": {
+        "text": "在许多船长在海上迷路的年代，罗伯茨总是准确地知道自己身在何处。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨在船上实行严格的纪律。",
+      "text_markdown": "罗伯茨在船上实行严格的纪律。",
+      "tts": {
+        "text": "罗伯茨在船上实行严格的纪律。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船员之间的打斗在甲板下是被禁止的。",
+      "text_markdown": "船员之间的打斗在甲板下是被禁止的。",
+      "tts": {
+        "text": "船员之间的打斗在甲板下是被禁止的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "纠纷在岸上解决，必要时进行正式决斗。",
+      "text_markdown": "纠纷在岸上解决，必要时进行正式决斗。",
+      "tts": {
+        "text": "纠纷在岸上解决，必要时进行正式决斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "每个人都必须随时保持武器清洁、准备就绪。",
+      "text_markdown": "每个人都必须随时保持武器清洁、准备就绪。",
+      "tts": {
+        "text": "每个人都必须随时保持武器清洁、准备就绪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随着他俘获更多船只，他的舰队不断壮大。",
+      "text_markdown": "随着他俘获更多船只，他的舰队不断壮大。",
+      "tts": {
+        "text": "随着他俘获更多船只，他的舰队不断壮大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在不同时期他同时指挥着3到4艘船。",
+      "text_markdown": "在不同时期他同时指挥着3到4艘船。",
+      "tts": {
+        "text": "在不同时期他同时指挥着三到四艘船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的旗舰是一艘大型军舰，他将其命名为皇家幸运号。",
+      "text_markdown": "他的旗舰是一艘大型军舰，他将其命名为皇家幸运号。",
+      "tts": {
+        "text": "他的旗舰是一艘大型军舰，他将其命名为皇家幸运号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他在整个职业生涯中多次使用这个名字，总是将其转移到他拥有的最强大的船上。",
+      "text_markdown": "他在整个职业生涯中多次使用这个名字，总是将其转移到他拥有的最强大的船上。",
+      "tts": {
+        "text": "他在整个职业生涯中多次使用这个名字，总是将其转移到他拥有的最强大的船上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨对抵抗他的人毫不留情。",
+      "text_markdown": "罗伯茨对抵抗他的人毫不留情。",
+      "tts": {
+        "text": "罗伯茨对抵抗他的人毫不留情。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "和平投降的船只通常会受到合理对待，在被洗劫后释放。",
+      "text_markdown": "和平投降的船只通常会受到合理对待，在被洗劫后释放。",
+      "tts": {
+        "text": "和平投降的船只通常会受到合理对待，在被洗劫后释放。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那些反抗的人不会得到任何怜悯。",
+      "text_markdown": "那些反抗的人不会得到任何怜悯。",
+      "tts": {
+        "text": "那些反抗的人不会得到任何怜悯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨烧毁船只，有时还惩罚反抗船只的船员。",
+      "text_markdown": "罗伯茨烧毁船只，有时还惩罚反抗船只的船员。",
+      "tts": {
+        "text": "罗伯茨烧毁船只，有时还惩罚反抗船只的船员。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到1720年底，罗伯茨已经俘获了远超200艘船只。",
+      "text_markdown": "到1720年底，罗伯茨已经俘获了远超200艘船只。",
+      "tts": {
+        "text": "到一七二零年底，罗伯茨已经俘获了远超两百艘船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字从纽芬兰到巴西、从西非到加勒比海都令人闻风丧胆。",
+      "text_markdown": "他的名字从纽芬兰到巴西、从西非到加勒比海都令人闻风丧胆。",
+      "tts": {
+        "text": "他的名字从纽芬兰到巴西、从西非到加勒比海都令人闻风丧胆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黄金时代没有任何其他海盗能接近他的记录。",
+      "text_markdown": "黄金时代没有任何其他海盗能接近他的记录。",
+      "tts": {
+        "text": "黄金时代没有任何其他海盗能接近他的记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑海盗的征程",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "无论从哪个方面衡量，他都是有史以来最成功的海盗。",
+      "text_markdown": "无论从哪个方面衡量，他都是有史以来最成功的海盗。",
+      "tts": {
+        "text": "无论从哪个方面衡量，他都是有史以来最成功的海盗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海盗法典",
+      "text_markdown": "海盗法典"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在权力巅峰时期，巴塞洛缪·罗伯茨指挥着一支由重型武装船只组成的舰队和数百名忠诚的海盗。",
+      "text_markdown": "在权力巅峰时期，巴塞洛缪·罗伯茨指挥着一支由重型武装船只组成的舰队和数百名忠诚的海盗。",
+      "tts": {
+        "text": "在权力巅峰时期，巴塞洛缪·罗伯茨指挥着一支由重型武装船只组成的舰队和数百名忠诚的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的组织运作水平之高，无论在海盗船还是其他类型的船上，在当时都极为罕见。",
+      "text_markdown": "他的组织运作水平之高，无论在海盗船还是其他类型的船上，在当时都极为罕见。",
+      "tts": {
+        "text": "他的组织运作水平之高，无论在海盗船还是其他类型的船上，在当时都极为罕见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种组织的关键是他著名的海盗法典——协议条款。",
+      "text_markdown": "这种组织的关键是他著名的海盗法典——协议条款。",
+      "tts": {
+        "text": "这种组织的关键是他著名的海盗法典——协议条款。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些条款是一份真正的社会契约，由每位船员同意签署。",
+      "text_markdown": "这些条款是一份真正的社会契约，由每位船员同意签署。",
+      "tts": {
+        "text": "这些条款是一份真正的社会契约，由每位船员同意签署。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "条款规定每个人在重要事务上都有投票权。",
+      "text_markdown": "条款规定每个人在重要事务上都有投票权。",
+      "tts": {
+        "text": "条款规定每个人在重要事务上都有投票权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船长由船员选举产生，也可以被船员罢免。",
+      "text_markdown": "船长由船员选举产生，也可以被船员罢免。",
+      "tts": {
+        "text": "船长由船员选举产生，也可以被船员罢免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这一民主原则是海盗文化的核心，与皇家海军的暴政式纪律形成了鲜明对比。",
+      "text_markdown": "这一民主原则是海盗文化的核心，与皇家海军的暴政式纪律形成了鲜明对比。",
+      "tts": {
+        "text": "这一民主原则是海盗文化的核心，与皇家海军的暴政式纪律形成了鲜明对比。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨靠的是民意，而非武力来治理。",
+      "text_markdown": "罗伯茨靠的是民意，而非武力来治理。",
+      "tts": {
+        "text": "罗伯茨靠的是民意，而非武力来治理。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战利品的分配受到严格管理。",
+      "text_markdown": "战利品的分配受到严格管理。",
+      "tts": {
+        "text": "战利品的分配受到严格管理。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船长获得每份战利品的2份，军需官获得1份半。",
+      "text_markdown": "船长获得每份战利品的2份，军需官获得1份半。",
+      "tts": {
+        "text": "船长获得每份战利品的两份，军需官获得一份半。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "普通船员每人获得一份。",
+      "text_markdown": "普通船员每人获得一份。",
+      "tts": {
+        "text": "普通船员每人获得一份。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这比商船或军舰上船长拿走大头的分配方式公平得多。",
+      "text_markdown": "这比商船或军舰上船长拿走大头的分配方式公平得多。",
+      "tts": {
+        "text": "这比商船或军舰上船长拿走大头的分配方式公平得多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "条款中包含了伤残补偿的规定。",
+      "text_markdown": "条款中包含了伤残补偿的规定。",
+      "tts": {
+        "text": "条款中包含了伤残补偿的规定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在战斗中失去右臂的海盗有权获得600枚银币。",
+      "text_markdown": "在战斗中失去右臂的海盗有权获得600枚银币。",
+      "tts": {
+        "text": "在战斗中失去右臂的海盗有权获得六百枚银币。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "较轻的伤害按比例获得较少的赔偿。",
+      "text_markdown": "较轻的伤害按比例获得较少的赔偿。",
+      "tts": {
+        "text": "较轻的伤害按比例获得较少的赔偿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是一种早期的工伤赔偿形式，比各国政府采纳类似政策早了几个世纪。",
+      "text_markdown": "这是一种早期的工伤赔偿形式，比各国政府采纳类似政策早了几个世纪。",
+      "tts": {
+        "text": "这是一种早期的工伤赔偿形式，比各国政府采纳类似政策早了几个世纪。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船上禁止以纸牌或骰子赌钱。",
+      "text_markdown": "船上禁止以纸牌或骰子赌钱。",
+      "tts": {
+        "text": "船上禁止以纸牌或骰子赌钱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗伯茨认为赌博会引发争斗，破坏船员团结。",
+      "text_markdown": "罗伯茨认为赌博会引发争斗，破坏船员团结。",
+      "tts": {
+        "text": "罗伯茨认为赌博会引发争斗，破坏船员团结。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "灯火和蜡烛必须在晚上八点前熄灭。",
+      "text_markdown": "灯火和蜡烛必须在晚上八点前熄灭。",
+      "tts": {
+        "text": "灯火和蜡烛必须在晚上八点前熄灭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "如果有人想在那之后喝酒，必须到露天甲板上去。",
+      "text_markdown": "如果有人想在那之后喝酒，必须到露天甲板上去。",
+      "tts": {
+        "text": "如果有人想在那之后喝酒，必须到露天甲板上去。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船上不允许有女性。",
+      "text_markdown": "船上不允许有女性。",
+      "tts": {
+        "text": "船上不允许有女性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗伯茨担心女性的存在会在船员中引起嫉妒和打斗。",
+      "text_markdown": "罗伯茨担心女性的存在会在船员中引起嫉妒和打斗。",
+      "tts": {
+        "text": "罗伯茨担心女性的存在会在船员中引起嫉妒和打斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "任何被发现将女扮男装的女性带上船的人将被处死。",
+      "text_markdown": "任何被发现将女扮男装的女性带上船的人将被处死。",
+      "tts": {
+        "text": "任何被发现将女扮男装的女性带上船的人将被处死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这条规定在罗伯茨的整个指挥期间都被严格执行。",
+      "text_markdown": "这条规定在罗伯茨的整个指挥期间都被严格执行。",
+      "tts": {
+        "text": "这条规定在罗伯茨的整个指挥期间都被严格执行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨的法典还涉及卫生和船舶维护问题。",
+      "text_markdown": "罗伯茨的法典还涉及卫生和船舶维护问题。",
+      "tts": {
+        "text": "罗伯茨的法典还涉及卫生和船舶维护问题。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每个人都有责任保持自己的武器处于良好状态。",
+      "text_markdown": "每个人都有责任保持自己的武器处于良好状态。",
+      "tts": {
+        "text": "每个人都有责任保持自己的武器处于良好状态。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "不维护好自己的手枪和弯刀是一种应受处罚的过错。",
+      "text_markdown": "不维护好自己的手枪和弯刀是一种应受处罚的过错。",
+      "tts": {
+        "text": "不维护好自己的手枪和弯刀是一种应受处罚的过错。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在武器肮脏可能意味着生死之别的年代，这是一条务实的规定。",
+      "text_markdown": "在武器肮脏可能意味着生死之别的年代，这是一条务实的规定。",
+      "tts": {
+        "text": "在武器肮脏可能意味着生死之别的年代，这是一条务实的规定。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "军需官充当对船长权力的制衡。",
+      "text_markdown": "军需官充当对船长权力的制衡。",
+      "tts": {
+        "text": "军需官充当对船长权力的制衡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他代表普通船员的利益。",
+      "text_markdown": "他代表普通船员的利益。",
+      "tts": {
+        "text": "他代表普通船员的利益。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船长和船员之间的争端由军需官调解。",
+      "text_markdown": "船长和船员之间的争端由军需官调解。",
+      "tts": {
+        "text": "船长和船员之间的争端由军需官调解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种权力共享制度防止了困扰商船和军舰的那种暴政。",
+      "text_markdown": "这种权力共享制度防止了困扰商船和军舰的那种暴政。",
+      "tts": {
+        "text": "这种权力共享制度防止了困扰商船和军舰的那种暴政。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨的旗舰皇家幸运号是海上最强大的海盗船之一。",
+      "text_markdown": "罗伯茨的旗舰皇家幸运号是海上最强大的海盗船之一。",
+      "tts": {
+        "text": "罗伯茨的旗舰皇家幸运号是海上最强大的海盗船之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它装备了40门大炮，船员约150人。",
+      "text_markdown": "它装备了40门大炮，船员约150人。",
+      "tts": {
+        "text": "它装备了四十门大炮，船员约一百五十人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这艘船速度快、维护良好、武装精良。",
+      "text_markdown": "这艘船速度快、维护良好、武装精良。",
+      "tts": {
+        "text": "这艘船速度快、维护良好、武装精良。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它的火力能压倒大多数商船，速度能超过大多数军舰。",
+      "text_markdown": "它的火力能压倒大多数商船，速度能超过大多数军舰。",
+      "tts": {
+        "text": "它的火力能压倒大多数商船，速度能超过大多数军舰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨本人在船尾楼上英姿勃发。",
+      "text_markdown": "罗伯茨本人在船尾楼上英姿勃发。",
+      "tts": {
+        "text": "罗伯茨本人在船尾楼上英姿勃发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "无论在战斗中还是在港口，他都穿着深红色马甲，戴着钻石十字架和羽毛帽。",
+      "text_markdown": "无论在战斗中还是在港口，他都穿着深红色马甲，戴着钻石十字架和羽毛帽。",
+      "tts": {
+        "text": "无论在战斗中还是在港口，他都穿着深红色马甲，戴着钻石十字架和羽毛帽。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他用丝绸肩带挂着两对手枪。",
+      "text_markdown": "他用丝绸肩带挂着两对手枪。",
+      "tts": {
+        "text": "他用丝绸肩带挂着两对手枪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他的个人风格是他传奇的一部分，有助于维持他对船员的权威。",
+      "text_markdown": "他的个人风格是他传奇的一部分，有助于维持他对船员的权威。",
+      "tts": {
+        "text": "他的个人风格是他传奇的一部分，有助于维持他对船员的权威。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管取得了成功，罗伯茨意识到他的事业不可能永远持续下去。",
+      "text_markdown": "尽管取得了成功，罗伯茨意识到他的事业不可能永远持续下去。",
+      "tts": {
+        "text": "尽管取得了成功，罗伯茨意识到他的事业不可能永远持续下去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他知道皇家海军正在加强沿非洲海岸的巡逻。",
+      "text_markdown": "他知道皇家海军正在加强沿非洲海岸的巡逻。",
+      "tts": {
+        "text": "他知道皇家海军正在加强沿非洲海岸的巡逻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他也知道每一次俘获都会增加各国政府阻止他的压力。",
+      "text_markdown": "他也知道每一次俘获都会增加各国政府阻止他的压力。",
+      "tts": {
+        "text": "他也知道每一次俘获都会增加各国政府阻止他的压力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但他没有任何想要退休的迹象。",
+      "text_markdown": "但他没有任何想要退休的迹象。",
+      "tts": {
+        "text": "但他没有任何想要退休的迹象。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨在十八世纪二十年代初重返西非海岸。",
+      "text_markdown": "罗伯茨在十八世纪二十年代初重返西非海岸。",
+      "tts": {
+        "text": "罗伯茨在十八世纪二十年代初重返西非海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是他最富成效的狩猎场，远离加勒比海日益增强的海军力量。",
+      "text_markdown": "这是他最富成效的狩猎场，远离加勒比海日益增强的海军力量。",
+      "tts": {
+        "text": "这是他最富成效的狩猎场，远离加勒比海日益增强的海军力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他沿着海岸从塞内加尔到几内亚湾接连俘获船只。",
+      "text_markdown": "他沿着海岸从塞内加尔到几内亚湾接连俘获船只。",
+      "tts": {
+        "text": "他沿着海岸从塞内加尔到几内亚湾接连俘获船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奴隶贸易和黄金贸易使这些水域拥有不可抗拒的财富。",
+      "text_markdown": "奴隶贸易和黄金贸易使这些水域拥有不可抗拒的财富。",
+      "tts": {
+        "text": "奴隶贸易和黄金贸易使这些水域拥有不可抗拒的财富。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在非洲海岸的存在对欧洲贸易来说是灾难性的。",
+      "text_markdown": "他在非洲海岸的存在对欧洲贸易来说是灾难性的。",
+      "tts": {
+        "text": "他在非洲海岸的存在对欧洲贸易来说是灾难性的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在西非经商的船只保险费率急剧上升。",
+      "text_markdown": "在西非经商的船只保险费率急剧上升。",
+      "tts": {
+        "text": "在西非经商的船只保险费率急剧上升。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些商船船长拒绝在没有海军护卫的情况下出航。",
+      "text_markdown": "一些商船船长拒绝在没有海军护卫的情况下出航。",
+      "tts": {
+        "text": "一些商船船长拒绝在没有海军护卫的情况下出航。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "海盗法典",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨凭一己之力扰乱了世界上最赚钱的贸易航线之一。",
+      "text_markdown": "罗伯茨凭一己之力扰乱了世界上最赚钱的贸易航线之一。",
+      "tts": {
+        "text": "罗伯茨凭一己之力扰乱了世界上最赚钱的贸易航线之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "洛佩斯角之死",
+      "text_markdown": "洛佩斯角之死"
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皇家海军派遣查洛纳·奥格尔船长乘HMS燕子号前去追捕巴塞洛缪·罗伯茨。",
+      "text_markdown": "皇家海军派遣查洛纳·奥格尔船长乘HMS燕子号前去追捕巴塞洛缪·罗伯茨。",
+      "tts": {
+        "text": "皇家海军派遣查洛纳·奥格尔船长乘HMS燕子号前去追捕巴塞洛缪·罗伯茨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥格尔是一位能干而坚定的军官。",
+      "text_markdown": "奥格尔是一位能干而坚定的军官。",
+      "tts": {
+        "text": "奥格尔是一位能干而坚定的军官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的船是一艘拥有专业船员的五级军舰。",
+      "text_markdown": "他的船是一艘拥有专业船员的五级军舰。",
+      "tts": {
+        "text": "他的船是一艘拥有专业船员的五级军舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他接到了明确命令，要结束罗伯茨的恐怖统治。",
+      "text_markdown": "他接到了明确命令，要结束罗伯茨的恐怖统治。",
+      "tts": {
+        "text": "他接到了明确命令，要结束罗伯茨的恐怖统治。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1722年1月，奥格尔获得情报称罗伯茨正停泊在今天加蓬的洛佩斯角。",
+      "text_markdown": "1722年1月，奥格尔获得情报称罗伯茨正停泊在今天加蓬的洛佩斯角。",
+      "tts": {
+        "text": "一七二二年一月，奥格尔获得情报称罗伯茨正停泊在今天加蓬的洛佩斯角。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "洛佩斯角是赤道非洲海岸上的一个小海岬。",
+      "text_markdown": "洛佩斯角是赤道非洲海岸上的一个小海岬。",
+      "tts": {
+        "text": "洛佩斯角是赤道非洲海岸上的一个小海岬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "罗伯茨选择它作为临时基地，同时清洗和修理他的船只。",
+      "text_markdown": "罗伯茨选择它作为临时基地，同时清洗和修理他的船只。",
+      "tts": {
+        "text": "罗伯茨选择它作为临时基地，同时清洗和修理他的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他完全不知道燕子号正在逼近。",
+      "text_markdown": "他完全不知道燕子号正在逼近。",
+      "tts": {
+        "text": "他完全不知道燕子号正在逼近。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥格尔小心翼翼地接近洛佩斯角。",
+      "text_markdown": "奥格尔小心翼翼地接近洛佩斯角。",
+      "tts": {
+        "text": "奥格尔小心翼翼地接近洛佩斯角。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他知道罗伯茨拥有多艘船和一支庞大、武装精良的船队。",
+      "text_markdown": "他知道罗伯茨拥有多艘船和一支庞大、武装精良的船队。",
+      "tts": {
+        "text": "他知道罗伯茨拥有多艘船和一支庞大、武装精良的船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对罗伯茨的整个舰队发动正面攻击风险太大。",
+      "text_markdown": "对罗伯茨的整个舰队发动正面攻击风险太大。",
+      "tts": {
+        "text": "对罗伯茨的整个舰队发动正面攻击风险太大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奥格尔决定改用计策。",
+      "text_markdown": "奥格尔决定改用计策。",
+      "tts": {
+        "text": "奥格尔决定改用计策。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当燕子号首次出现在洛佩斯角附近时，罗伯茨的一艘护卫船驶出侦察。",
+      "text_markdown": "当燕子号首次出现在洛佩斯角附近时，罗伯茨的一艘护卫船驶出侦察。",
+      "tts": {
+        "text": "当燕子号首次出现在洛佩斯角附近时，罗伯茨的一艘护卫船驶出侦察。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥格尔假装逃跑，将海盗船引离舰队。",
+      "text_markdown": "奥格尔假装逃跑，将海盗船引离舰队。",
+      "tts": {
+        "text": "奥格尔假装逃跑，将海盗船引离舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一旦脱离其他海盗的视线，燕子号便掉头发起攻击。",
+      "text_markdown": "一旦脱离其他海盗的视线，燕子号便掉头发起攻击。",
+      "tts": {
+        "text": "一旦脱离其他海盗的视线，燕子号便掉头发起攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗船在一场短暂但激烈的交战后被俘获。",
+      "text_markdown": "海盗船在一场短暂但激烈的交战后被俘获。",
+      "tts": {
+        "text": "海盗船在一场短暂但激烈的交战后被俘获。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1722年2月10日上午，燕子号返回洛佩斯角，与罗伯茨本人正面交锋。",
+      "text_markdown": "1722年2月10日上午，燕子号返回洛佩斯角，与罗伯茨本人正面交锋。",
+      "tts": {
+        "text": "一七二二年二月十日上午，燕子号返回洛佩斯角，与罗伯茨本人正面交锋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗伯茨当时在他的旗舰皇家幸运号上。",
+      "text_markdown": "罗伯茨当时在他的旗舰皇家幸运号上。",
+      "tts": {
+        "text": "罗伯茨当时在他的旗舰皇家幸运号上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当瞭望手发现来犯军舰时，他正在吃早餐。",
+      "text_markdown": "当瞭望手发现来犯军舰时，他正在吃早餐。",
+      "tts": {
+        "text": "当瞭望手发现来犯军舰时，他正在吃早餐。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "罗伯茨从容地穿上最好的衣服准备战斗。",
+      "text_markdown": "罗伯茨从容地穿上最好的衣服准备战斗。",
+      "tts": {
+        "text": "罗伯茨从容地穿上最好的衣服准备战斗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他穿上了深红色马甲，戴上了钻石十字架和羽毛帽。",
+      "text_markdown": "他穿上了深红色马甲，戴上了钻石十字架和羽毛帽。",
+      "tts": {
+        "text": "他穿上了深红色马甲，戴上了钻石十字架和羽毛帽。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他用丝绸肩带将两对手枪挂在肩上。",
+      "text_markdown": "他用丝绸肩带将两对手枪挂在肩上。",
+      "tts": {
+        "text": "他用丝绸肩带将两对手枪挂在肩上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他打算一如既往地以风度和不屈战斗。",
+      "text_markdown": "他打算一如既往地以风度和不屈战斗。",
+      "tts": {
+        "text": "他打算一如既往地以风度和不屈战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这将是他最后一次为战斗而着装。",
+      "text_markdown": "这将是他最后一次为战斗而着装。",
+      "tts": {
+        "text": "这将是他最后一次为战斗而着装。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨选择战斗而非逃跑。",
+      "text_markdown": "罗伯茨选择战斗而非逃跑。",
+      "tts": {
+        "text": "罗伯茨选择战斗而非逃跑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他命令皇家幸运号直冲燕子号。",
+      "text_markdown": "他命令皇家幸运号直冲燕子号。",
+      "tts": {
+        "text": "他命令皇家幸运号直冲燕子号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的计划是从军舰旁边擦过，然后逃入公海。",
+      "text_markdown": "他的计划是从军舰旁边擦过，然后逃入公海。",
+      "tts": {
+        "text": "他的计划是从军舰旁边擦过，然后逃入公海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是一场大胆的豪赌，但罗伯茨一向青睐冒险。",
+      "text_markdown": "这是一场大胆的豪赌，但罗伯茨一向青睐冒险。",
+      "tts": {
+        "text": "这是一场大胆的豪赌，但罗伯茨一向青睐冒险。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当两艘船靠近时，燕子号发射了一轮舷炮齐射。",
+      "text_markdown": "当两艘船靠近时，燕子号发射了一轮舷炮齐射。",
+      "tts": {
+        "text": "当两艘船靠近时，燕子号发射了一轮舷炮齐射。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一阵霰弹横扫皇家幸运号的甲板。",
+      "text_markdown": "一阵霰弹横扫皇家幸运号的甲板。",
+      "tts": {
+        "text": "一阵霰弹横扫皇家幸运号的甲板。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴塞洛缪·罗伯茨被霰弹击中喉部。",
+      "text_markdown": "巴塞洛缪·罗伯茨被霰弹击中喉部。",
+      "tts": {
+        "text": "巴塞洛缪·罗伯茨被霰弹击中喉部。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他几乎当场身亡，倒在一门大炮上。",
+      "text_markdown": "他几乎当场身亡，倒在一门大炮上。",
+      "tts": {
+        "text": "他几乎当场身亡，倒在一门大炮上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船员们因失去船长而万分悲痛。",
+      "text_markdown": "船员们因失去船长而万分悲痛。",
+      "tts": {
+        "text": "船员们因失去船长而万分悲痛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗伯茨是他们行动的灵魂和核心。",
+      "text_markdown": "罗伯茨是他们行动的灵魂和核心。",
+      "tts": {
+        "text": "罗伯茨是他们行动的灵魂和核心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有他，他们的战斗意志几乎立刻崩溃了。",
+      "text_markdown": "没有他，他们的战斗意志几乎立刻崩溃了。",
+      "tts": {
+        "text": "没有他，他们的战斗意志几乎立刻崩溃了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一些海盗按照罗伯茨的遗愿将他的遗体抛入大海，以免被敌人缴获。",
+      "text_markdown": "一些海盗按照罗伯茨的遗愿将他的遗体抛入大海，以免被敌人缴获。",
+      "tts": {
+        "text": "一些海盗按照罗伯茨的遗愿将他的遗体抛入大海，以免被敌人缴获。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "剩余的海盗试图继续战斗，但他们的抵抗毫无组织。",
+      "text_markdown": "剩余的海盗试图继续战斗，但他们的抵抗毫无组织。",
+      "tts": {
+        "text": "剩余的海盗试图继续战斗，但他们的抵抗毫无组织。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几个小时内，燕子号俘获了皇家幸运号和大约152名海盗。",
+      "text_markdown": "几个小时内，燕子号俘获了皇家幸运号和大约152名海盗。",
+      "tts": {
+        "text": "几个小时内，燕子号俘获了皇家幸运号和大约一百五十二名海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黄金时代最伟大的海盗生涯就此结束。",
+      "text_markdown": "黄金时代最伟大的海盗生涯就此结束。",
+      "tts": {
+        "text": "黄金时代最伟大的海盗生涯就此结束。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它仅持续了三年。",
+      "text_markdown": "它仅持续了三年。",
+      "tts": {
+        "text": "它仅持续了三年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥格尔船长将俘虏押送到今天加纳的英国堡垒海岸角城堡。",
+      "text_markdown": "奥格尔船长将俘虏押送到今天加纳的英国堡垒海岸角城堡。",
+      "tts": {
+        "text": "奥格尔船长将俘虏押送到今天加纳的英国堡垒海岸角城堡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那里，举行了历史上最大规模的海盗审判。",
+      "text_markdown": "在那里，举行了历史上最大规模的海盗审判。",
+      "tts": {
+        "text": "在那里，举行了历史上最大规模的海盗审判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "共有272名海盗受到审判。",
+      "text_markdown": "共有272名海盗受到审判。",
+      "tts": {
+        "text": "共有二百七十二名海盗受到审判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "审判持续了数周。",
+      "text_markdown": "审判持续了数周。",
+      "tts": {
+        "text": "审判持续了数周。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在受审者中，52人被判处绞刑。",
+      "text_markdown": "在受审者中，52人被判处绞刑。",
+      "tts": {
+        "text": "在受审者中，五十二人被判处绞刑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多人被判处在海岸角的矿山中服苦役。",
+      "text_markdown": "许多人被判处在海岸角的矿山中服苦役。",
+      "tts": {
+        "text": "许多人被判处在海岸角的矿山中服苦役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些人被宣判无罪，尤其是那些能够证明自己是被迫当海盗的人。",
+      "text_markdown": "一些人被宣判无罪，尤其是那些能够证明自己是被迫当海盗的人。",
+      "tts": {
+        "text": "一些人被宣判无罪，尤其是那些能够证明自己是被迫当海盗的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "洛佩斯角之死",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "处决在海滩上执行，在奴隶堡垒的视线范围内。",
+      "text_markdown": "处决在海滩上执行，在奴隶堡垒的视线范围内。",
+      "tts": {
+        "text": "处决在海滩上执行，在奴隶堡垒的视线范围内。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "一个时代的终结",
+      "text_markdown": "一个时代的终结"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴塞洛缪·罗伯茨的死亡被普遍认为是终结海盗黄金时代的标志性事件。",
+      "text_markdown": "巴塞洛缪·罗伯茨的死亡被普遍认为是终结海盗黄金时代的标志性事件。",
+      "tts": {
+        "text": "巴塞洛缪·罗伯茨的死亡被普遍认为是终结海盗黄金时代的标志性事件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是最后一位伟大的海盗船长，他的死从海洋上移走了最强大的海盗舰队。",
+      "text_markdown": "他是最后一位伟大的海盗船长，他的死从海洋上移走了最强大的海盗舰队。",
+      "tts": {
+        "text": "他是最后一位伟大的海盗船长，他的死从海洋上移走了最强大的海盗舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "罗伯茨之后，再也没有海盗能在这种规模上威胁大西洋贸易。",
+      "text_markdown": "罗伯茨之后，再也没有海盗能在这种规模上威胁大西洋贸易。",
+      "tts": {
+        "text": "罗伯茨之后，再也没有海盗能在这种规模上威胁大西洋贸易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海盗时代结束了。",
+      "text_markdown": "海盗时代结束了。",
+      "tts": {
+        "text": "海盗时代结束了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨的生涯展示了海盗活动的潜力与极限。",
+      "text_markdown": "罗伯茨的生涯展示了海盗活动的潜力与极限。",
+      "tts": {
+        "text": "罗伯茨的生涯展示了海盗活动的潜力与极限。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在3年内俘获了400多艘船，这是一项无人能及的记录。",
+      "text_markdown": "他在3年内俘获了400多艘船，这是一项无人能及的记录。",
+      "tts": {
+        "text": "他在三年内俘获了四百多艘船，这是一项无人能及的记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他扰乱了贸易航线，令殖民政府心惊胆战，并公然挑战皇家海军。",
+      "text_markdown": "他扰乱了贸易航线，令殖民政府心惊胆战，并公然挑战皇家海军。",
+      "tts": {
+        "text": "他扰乱了贸易航线，令殖民政府心惊胆战，并公然挑战皇家海军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但最终，即使是最伟大的海盗也可能被一颗幸运的子弹击倒。",
+      "text_markdown": "但最终，即使是最伟大的海盗也可能被一颗幸运的子弹击倒。",
+      "tts": {
+        "text": "但最终，即使是最伟大的海盗也可能被一颗幸运的子弹击倒。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥格尔船长因战胜罗伯茨而被封为爵士。",
+      "text_markdown": "奥格尔船长因战胜罗伯茨而被封为爵士。",
+      "tts": {
+        "text": "奥格尔船长因战胜罗伯茨而被封为爵士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是唯一一位专门因击败海盗而被封爵的皇家海军军官。",
+      "text_markdown": "他是唯一一位专门因击败海盗而被封爵的皇家海军军官。",
+      "tts": {
+        "text": "他是唯一一位专门因击败海盗而被封爵的皇家海军军官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这一荣誉反映了政府对结束罗伯茨战役的极度重视。",
+      "text_markdown": "这一荣誉反映了政府对结束罗伯茨战役的极度重视。",
+      "tts": {
+        "text": "这一荣誉反映了政府对结束罗伯茨战役的极度重视。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奥格尔此后继续了杰出的海军生涯。",
+      "text_markdown": "奥格尔此后继续了杰出的海军生涯。",
+      "tts": {
+        "text": "奥格尔此后继续了杰出的海军生涯。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨的海盗法典影响了后世对海盗的看法。",
+      "text_markdown": "罗伯茨的海盗法典影响了后世对海盗的看法。",
+      "tts": {
+        "text": "罗伯茨的海盗法典影响了后世对海盗的看法。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "拥有成文宪法的民主海盗船队这一理念激发了大众的想象力。",
+      "text_markdown": "拥有成文宪法的民主海盗船队这一理念激发了大众的想象力。",
+      "tts": {
+        "text": "拥有成文宪法的民主海盗船队这一理念激发了大众的想象力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家利用罗伯茨的条款论证海盗船是十八世纪初最民主的组织之一。",
+      "text_markdown": "历史学家利用罗伯茨的条款论证海盗船是十八世纪初最民主的组织之一。",
+      "tts": {
+        "text": "历史学家利用罗伯茨的条款论证海盗船是十八世纪初最民主的组织之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一解读仍有争议，但已被证明具有影响力。",
+      "text_markdown": "这一解读仍有争议，但已被证明具有影响力。",
+      "tts": {
+        "text": "这一解读仍有争议，但已被证明具有影响力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724年出版的《海盗通史》一书用大量篇幅介绍了罗伯茨。",
+      "text_markdown": "1724年出版的《海盗通史》一书用大量篇幅介绍了罗伯茨。",
+      "tts": {
+        "text": "一七二四年出版的海盗通史一书用大量篇幅介绍了罗伯茨。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "作者将罗伯茨描绘为他那个时代最伟大的海盗。",
+      "text_markdown": "作者将罗伯茨描绘为他那个时代最伟大的海盗。",
+      "tts": {
+        "text": "作者将罗伯茨描绘为他那个时代最伟大的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "关于他的航行、法典和死亡的详细记述成为了解其生涯的权威来源。",
+      "text_markdown": "关于他的航行、法典和死亡的详细记述成为了解其生涯的权威来源。",
+      "tts": {
+        "text": "关于他的航行、法典和死亡的详细记述成为了解其生涯的权威来源。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "我们对罗伯茨的了解大多来自这一本书。",
+      "text_markdown": "我们对罗伯茨的了解大多来自这一本书。",
+      "tts": {
+        "text": "我们对罗伯茨的了解大多来自这一本书。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨的遗产超越了海盗史的范畴。",
+      "text_markdown": "罗伯茨的遗产超越了海盗史的范畴。",
+      "tts": {
+        "text": "罗伯茨的遗产超越了海盗史的范畴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的协议条款被研究民主治理起源的历史学家所研究。",
+      "text_markdown": "他的协议条款被研究民主治理起源的历史学家所研究。",
+      "tts": {
+        "text": "他的协议条款被研究民主治理起源的历史学家所研究。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的伤残补偿制度比现代社会保险早了几个世纪。",
+      "text_markdown": "他的伤残补偿制度比现代社会保险早了几个世纪。",
+      "tts": {
+        "text": "他的伤残补偿制度比现代社会保险早了几个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他对成文规则和权力共享的坚持对于他那个时代的任何组织来说都是了不起的。",
+      "text_markdown": "他对成文规则和权力共享的坚持对于他那个时代的任何组织来说都是了不起的。",
+      "tts": {
+        "text": "他对成文规则和权力共享的坚持对于他那个时代的任何组织来说都是了不起的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在威尔士，罗伯茨被铭记为该国最著名的历史人物之一。",
+      "text_markdown": "在威尔士，罗伯茨被铭记为该国最著名的历史人物之一。",
+      "tts": {
+        "text": "在威尔士，罗伯茨被铭记为该国最著名的历史人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他出生的村庄立有一块铭牌，纪念这位声名显赫的儿子。",
+      "text_markdown": "他出生的村庄立有一块铭牌，纪念这位声名显赫的儿子。",
+      "tts": {
+        "text": "他出生的村庄立有一块铭牌，纪念这位声名显赫的儿子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "威尔士海事博物馆设有关于他生平和事业的展览。",
+      "text_markdown": "威尔士海事博物馆设有关于他生平和事业的展览。",
+      "tts": {
+        "text": "威尔士海事博物馆设有关于他生平和事业的展览。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "尽管他的职业充满暴力，他仍是当地人的骄傲。",
+      "text_markdown": "尽管他的职业充满暴力，他仍是当地人的骄傲。",
+      "tts": {
+        "text": "尽管他的职业充满暴力，他仍是当地人的骄傲。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "罗伯茨所终结的海盗黄金时代大约从十七世纪九十年代持续到十八世纪二十年代。",
+      "text_markdown": "罗伯茨所终结的海盗黄金时代大约从十七世纪九十年代持续到十八世纪二十年代。",
+      "tts": {
+        "text": "罗伯茨所终结的海盗黄金时代大约从十七世纪九十年代持续到十八世纪二十年代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那短暂的时期里，海盗以至今仍能感受到的方式塑造了大西洋世界的历史。",
+      "text_markdown": "在那短暂的时期里，海盗以至今仍能感受到的方式塑造了大西洋世界的历史。",
+      "tts": {
+        "text": "在那短暂的时期里，海盗以至今仍能感受到的方式塑造了大西洋世界的历史。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们影响了国际法、海军战略和大众文化。",
+      "text_markdown": "他们影响了国际法、海军战略和大众文化。",
+      "tts": {
+        "text": "他们影响了国际法、海军战略和大众文化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "一个时代的终结",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "巴塞洛缪·罗伯茨，这位不情愿的海盗最终成为了所有海盗中最伟大的一位，矗立在那个非凡时代的巅峰。",
+      "text_markdown": "巴塞洛缪·罗伯茨，这位不情愿的海盗最终成为了所有海盗中最伟大的一位，矗立在那个非凡时代的巅峰。",
+      "tts": {
+        "text": "巴塞洛缪·罗伯茨，这位不情愿的海盗最终成为了所有海盗中最伟大的一位，矗立在那个非凡时代的巅峰。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

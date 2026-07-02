@@ -1,0 +1,4397 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_kanhoji_angre",
+  "language": "ja",
+  "total_segments": 294,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への覚書",
+      "text_markdown": "読者への覚書"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはインドのコンカン海岸の不敗の提督、カンホジ・アングレの実話である。",
+      "text_markdown": "これはインドのコンカン海岸の不敗の提督、カンホジ・アングレの実話である。",
+      "tts": {
+        "text": "これはインドのコンカン海岸の不敗の提督、カンホジ・アングレの実話である。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はマラーター帝国に仕え、約三十年にわたりインド西海岸を支配した。",
+      "text_markdown": "彼はマラーター帝国に仕え、約三十年にわたりインド西海岸を支配した。",
+      "tts": {
+        "text": "彼はマラーター帝国に仕え、約三十年にわたりインド西海岸を支配した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリス東インド会社、ポルトガル帝国、オランダ共和国のいずれも彼を打ち負かすことができなかった。",
+      "text_markdown": "イギリス東インド会社、ポルトガル帝国、オランダ共和国のいずれも彼を打ち負かすことができなかった。",
+      "tts": {
+        "text": "イギリス東インド会社、ポルトガル帝国、オランダ共和国のいずれも彼を打ち負かすことができなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジ・アングレはインド国外ではほとんど知られていない。",
+      "text_markdown": "カンホジ・アングレはインド国外ではほとんど知られていない。",
+      "tts": {
+        "text": "カンホジ・アングレはインド国外ではほとんど知られていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパの歴史書では、しばしば海賊として片付けられている。",
+      "text_markdown": "ヨーロッパの歴史書では、しばしば海賊として片付けられている。",
+      "tts": {
+        "text": "ヨーロッパの歴史書では、しばしば海賊として片付けられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "インドの歴史書では、外国の植民地支配者から祖国を守った愛国者として称えられている。",
+      "text_markdown": "インドの歴史書では、外国の植民地支配者から祖国を守った愛国者として称えられている。",
+      "tts": {
+        "text": "インドの歴史書では、外国の植民地支配者から祖国を守った愛国者として称えられている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真実は、常にそうであるように、どちらの見方が示すよりも複雑である。",
+      "text_markdown": "真実は、常にそうであるように、どちらの見方が示すよりも複雑である。",
+      "tts": {
+        "text": "真実は、常にそうであるように、どちらの見方が示すよりも複雑である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カンホジ・アングレは、海賊行為、海戦、正統な統治の境界線が見分けがつかないほど曖昧な世界で活動した。",
+      "text_markdown": "カンホジ・アングレは、海賊行為、海戦、正統な統治の境界線が見分けがつかないほど曖昧な世界で活動した。",
+      "tts": {
+        "text": "カンホジ・アングレは、海賊行為、海戦、正統な統治の境界線が見分けがつかないほど曖昧な世界で活動した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本書は、歴史的記録が許す限りの正確さと繊細さをもって彼の物語を語る。",
+      "text_markdown": "本書は、歴史的記録が許す限りの正確さと繊細さをもって彼の物語を語る。",
+      "tts": {
+        "text": "本書は、歴史的記録が許す限りの正確さと繊細さをもって彼の物語を語る。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本書のすべての主張は、マラーター、イギリス、ポルトガル、オランダの史料からの証拠に基づいている。",
+      "text_markdown": "本書のすべての主張は、マラーター、イギリス、ポルトガル、オランダの史料からの証拠に基づいている。",
+      "tts": {
+        "text": "本書のすべての主張は、マラーター、イギリス、ポルトガル、オランダの史料からの証拠に基づいている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの史料が互いに矛盾する場合、その不一致を記す。",
+      "text_markdown": "これらの史料が互いに矛盾する場合、その不一致を記す。",
+      "tts": {
+        "text": "これらの史料が互いに矛盾する場合、その不一致を記す。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への覚書",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "記録が沈黙している場合、我々は推測しない。",
+      "text_markdown": "記録が沈黙している場合、我々は推測しない。",
+      "tts": {
+        "text": "記録が沈黙している場合、我々は推測しない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "コンカン海岸の世界",
+      "text_markdown": "コンカン海岸の世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コンカン海岸はインドの西端に沿った狭い土地の帯である。",
+      "text_markdown": "コンカン海岸はインドの西端に沿った狭い土地の帯である。",
+      "tts": {
+        "text": "コンカン海岸はインドの西端に沿った狭い土地の帯である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北は現代のムンバイから南はゴアまで延びている。",
+      "text_markdown": "北は現代のムンバイから南はゴアまで延びている。",
+      "tts": {
+        "text": "北は現代のムンバイから南はゴアまで延びている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西にはアラビア海があり、東には西ガーツ山脈がそびえ、海岸をデカン高原から隔てている。",
+      "text_markdown": "西にはアラビア海があり、東には西ガーツ山脈がそびえ、海岸をデカン高原から隔てている。",
+      "tts": {
+        "text": "西にはアラビア海があり、東には西ガーツ山脈がそびえ、海岸をデカン高原から隔てている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海岸線は険しく、深く入り組んでいる。",
+      "text_markdown": "海岸線は険しく、深く入り組んでいる。",
+      "tts": {
+        "text": "海岸線は険しく、深く入り組んでいる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "岩の岬、入り江、潮汐の入り江が、海戦に完璧に適した地形を作り出している。",
+      "text_markdown": "岩の岬、入り江、潮汐の入り江が、海戦に完璧に適した地形を作り出している。",
+      "tts": {
+        "text": "岩の岬、入り江、潮汐の入り江が、海戦に完璧に適した地形を作り出している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アラビア海を渡るモンスーンの風が、この海岸での生活のリズムを決定する。",
+      "text_markdown": "アラビア海を渡るモンスーンの風が、この海岸での生活のリズムを決定する。",
+      "tts": {
+        "text": "アラビア海を渡るモンスーンの風が、この海岸での生活のリズムを決定する。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船は特定の月にしか航行できず、モンスーンの時期が貿易と戦争が可能な時期を決定する。",
+      "text_markdown": "船は特定の月にしか航行できず、モンスーンの時期が貿易と戦争が可能な時期を決定する。",
+      "tts": {
+        "text": "船は特定の月にしか航行できず、モンスーンの時期が貿易と戦争が可能な時期を決定する。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何世紀もの間、コンカン海岸は世界で最も混雑する海上回廊の一つであった。",
+      "text_markdown": "何世紀もの間、コンカン海岸は世界で最も混雑する海上回廊の一つであった。",
+      "tts": {
+        "text": "何世紀もの間、コンカン海岸は世界で最も混雑する海上回廊の一つであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アラブのダウ船がインドとペルシャ湾や東アフリカの港の間で香辛料、織物、宝石を運んだ。",
+      "text_markdown": "アラブのダウ船がインドとペルシャ湾や東アフリカの港の間で香辛料、織物、宝石を運んだ。",
+      "tts": {
+        "text": "アラブのダウ船がインドとペルシャ湾や東アフリカの港の間で香辛料、織物、宝石を運んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "インドの商人たちはアジア各地の買い手と胡椒、カルダモン、シナモン、綿花を取引した。",
+      "text_markdown": "インドの商人たちはアジア各地の買い手と胡椒、カルダモン、シナモン、綿花を取引した。",
+      "tts": {
+        "text": "インドの商人たちはアジア各地の買い手と胡椒、カルダモン、シナモン、綿花を取引した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この貿易が生み出す富は、遠方の帝国の注目を集めた。",
+      "text_markdown": "この貿易が生み出す富は、遠方の帝国の注目を集めた。",
+      "tts": {
+        "text": "この貿易が生み出す富は、遠方の帝国の注目を集めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポルトガル人は1498年にインド海岸に到達した。ヴァスコ・ダ・ガマがカリカット港に入港した時のことである。",
+      "text_markdown": "ポルトガル人は1498年にインド海岸に到達した。ヴァスコ・ダ・ガマがカリカット港に入港した時のことである。",
+      "tts": {
+        "text": "ポルトガル人は千四百九十八年にインド海岸に到達した。ヴァスコ・ダ・ガマがカリカット港に入港した時のことである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数年以内に、ポルトガル人はインド西海岸全域に要塞化された交易拠点を築いた。",
+      "text_markdown": "数年以内に、ポルトガル人はインド西海岸全域に要塞化された交易拠点を築いた。",
+      "tts": {
+        "text": "数年以内に、ポルトガル人はインド西海岸全域に要塞化された交易拠点を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ゴアはポルトガル領インド帝国の首都となった。モザンビークからマカオまで広がる植民地帝国である。",
+      "text_markdown": "ゴアはポルトガル領インド帝国の首都となった。モザンビークからマカオまで広がる植民地帝国である。",
+      "tts": {
+        "text": "ゴアはポルトガル領インド帝国の首都となった。モザンビークからマカオまで広がる植民地帝国である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ポルトガル人は優れた海軍火力を用いてインド洋貿易を支配した。",
+      "text_markdown": "ポルトガル人は優れた海軍火力を用いてインド洋貿易を支配した。",
+      "tts": {
+        "text": "ポルトガル人は優れた海軍火力を用いてインド洋貿易を支配した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポルトガル人はカルタスと呼ばれる通行証制度を導入した。",
+      "text_markdown": "ポルトガル人はカルタスと呼ばれる通行証制度を導入した。",
+      "tts": {
+        "text": "ポルトガル人はカルタスと呼ばれる通行証制度を導入した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アラビア海で交易を望むインドの船は、ポルトガル人からカルタスを購入することを義務付けられた。",
+      "text_markdown": "アラビア海で交易を望むインドの船は、ポルトガル人からカルタスを購入することを義務付けられた。",
+      "tts": {
+        "text": "アラビア海で交易を望むインドの船は、ポルトガル人からカルタスを購入することを義務付けられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カルタスを持たない船は拿捕され、乗組員は投獄または殺害される恐れがあった。",
+      "text_markdown": "カルタスを持たない船は拿捕され、乗組員は投獄または殺害される恐れがあった。",
+      "tts": {
+        "text": "カルタスを持たない船は拿捕され、乗組員は投獄または殺害される恐れがあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この制度はポルトガル人にインド洋貿易の実効支配を与えた。",
+      "text_markdown": "この制度はポルトガル人にインド洋貿易の実効支配を与えた。",
+      "tts": {
+        "text": "この制度はポルトガル人にインド洋貿易の実効支配を与えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オランダ人は十七世紀初頭に到来した。",
+      "text_markdown": "オランダ人は十七世紀初頭に到来した。",
+      "tts": {
+        "text": "オランダ人は十七世紀初頭に到来した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オランダ東インド会社はインド海岸に交易拠点を設け、ポルトガル人と激しく競争した。",
+      "text_markdown": "オランダ東インド会社はインド海岸に交易拠点を設け、ポルトガル人と激しく競争した。",
+      "tts": {
+        "text": "オランダ東インド会社はインド海岸に交易拠点を設け、ポルトガル人と激しく競争した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イギリス東インド会社がその直後に続いた。",
+      "text_markdown": "イギリス東インド会社がその直後に続いた。",
+      "tts": {
+        "text": "イギリス東インド会社がその直後に続いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "十七世紀末までに、三つのヨーロッパ列強がインドの海上貿易の支配をめぐって競い合っていた。",
+      "text_markdown": "十七世紀末までに、三つのヨーロッパ列強がインドの海上貿易の支配をめぐって競い合っていた。",
+      "tts": {
+        "text": "十七世紀末までに、三つのヨーロッパ列強がインドの海上貿易の支配をめぐって競い合っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一方、コンカン海岸の上方にあるデカン高原では、新しいインドの勢力が台頭していた。",
+      "text_markdown": "一方、コンカン海岸の上方にあるデカン高原では、新しいインドの勢力が台頭していた。",
+      "tts": {
+        "text": "一方、コンカン海岸の上方にあるデカン高原では、新しいインドの勢力が台頭していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マラーター帝国は千六百六十年代にシヴァージー・ボンスレーによって建国された。",
+      "text_markdown": "マラーター帝国は千六百六十年代にシヴァージー・ボンスレーによって建国された。",
+      "tts": {
+        "text": "マラーター帝国は千六百六十年代にシヴァージー・ボンスレーによって建国された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "シヴァージーは崩壊しつつあるムガル帝国から独立した王国を切り開いた軍事の天才であった。",
+      "text_markdown": "シヴァージーは崩壊しつつあるムガル帝国から独立した王国を切り開いた軍事の天才であった。",
+      "tts": {
+        "text": "シヴァージーは崩壊しつつあるムガル帝国から独立した王国を切り開いた軍事の天才であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は海岸の支配が帝国の存続に不可欠であることを認識していた。",
+      "text_markdown": "彼は海岸の支配が帝国の存続に不可欠であることを認識していた。",
+      "tts": {
+        "text": "彼は海岸の支配が帝国の存続に不可欠であることを認識していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シヴァージーはゼロから海軍を築き上げた。",
+      "text_markdown": "シヴァージーはゼロから海軍を築き上げた。",
+      "tts": {
+        "text": "シヴァージーはゼロから海軍を築き上げた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コンカン海岸沿いに砦を建設し、海域を巡視する軍艦を建造させた。",
+      "text_markdown": "コンカン海岸沿いに砦を建設し、海域を巡視する軍艦を建造させた。",
+      "tts": {
+        "text": "コンカン海岸沿いに砦を建設し、海域を巡視する軍艦を建造させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海軍指揮官を任命し、サルケール（大提督）の地位を設けた。",
+      "text_markdown": "海軍指揮官を任命し、サルケール（大提督）の地位を設けた。",
+      "tts": {
+        "text": "海軍指揮官を任命し、サルケール（大提督）の地位を設けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "マラーター海軍はマラーターの交易を守り、ヨーロッパの侵入に抵抗するために設けられた。",
+      "text_markdown": "マラーター海軍はマラーターの交易を守り、ヨーロッパの侵入に抵抗するために設けられた。",
+      "tts": {
+        "text": "マラーター海軍はマラーターの交易を守り、ヨーロッパの侵入に抵抗するために設けられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1680年のシヴァージーの死後、マラーター帝国は混乱の時期を迎えた。",
+      "text_markdown": "1680年のシヴァージーの死後、マラーター帝国は混乱の時期を迎えた。",
+      "tts": {
+        "text": "千六百八十年のシヴァージーの死後、マラーター帝国は混乱の時期を迎えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "後継者たちは内部の対立と外部の脅威に苦しんだ。",
+      "text_markdown": "後継者たちは内部の対立と外部の脅威に苦しんだ。",
+      "tts": {
+        "text": "後継者たちは内部の対立と外部の脅威に苦しんだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムガル皇帝アウラングゼーブがデカンへの大規模な侵攻を開始し、それは数十年にわたって続いた。",
+      "text_markdown": "ムガル皇帝アウラングゼーブがデカンへの大規模な侵攻を開始し、それは数十年にわたって続いた。",
+      "tts": {
+        "text": "ムガル皇帝アウラングゼーブがデカンへの大規模な侵攻を開始し、それは数十年にわたって続いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この混乱の時期を通じて、マラーター海軍は一連の任命された提督の下で海岸沿いの活動を続けた。",
+      "text_markdown": "この混乱の時期を通じて、マラーター海軍は一連の任命された提督の下で海岸沿いの活動を続けた。",
+      "tts": {
+        "text": "この混乱の時期を通じて、マラーター海軍は一連の任命された提督の下で海岸沿いの活動を続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの貿易会社はこの不安定さを利用して影響力を拡大した。",
+      "text_markdown": "ヨーロッパの貿易会社はこの不安定さを利用して影響力を拡大した。",
+      "tts": {
+        "text": "ヨーロッパの貿易会社はこの不安定さを利用して影響力を拡大した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス東インド会社はコンカン海岸北部の島々の集まりであるボンベイに本部を設けた。",
+      "text_markdown": "イギリス東インド会社はコンカン海岸北部の島々の集まりであるボンベイに本部を設けた。",
+      "tts": {
+        "text": "イギリス東インド会社はコンカン海岸北部の島々の集まりであるボンベイに本部を設けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ポルトガル人はゴアといくつかの小さな飛び地を保持していた。",
+      "text_markdown": "ポルトガル人はゴアといくつかの小さな飛び地を保持していた。",
+      "tts": {
+        "text": "ポルトガル人はゴアといくつかの小さな飛び地を保持していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "オランダ人は海岸沿いの様々な地点で交易拠点を維持していた。",
+      "text_markdown": "オランダ人は海岸沿いの様々な地点で交易拠点を維持していた。",
+      "tts": {
+        "text": "オランダ人は海岸沿いの様々な地点で交易拠点を維持していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ムガル帝国は一世紀以上にわたりインドの支配的勢力であった。",
+      "text_markdown": "ムガル帝国は一世紀以上にわたりインドの支配的勢力であった。",
+      "tts": {
+        "text": "ムガル帝国は一世紀以上にわたりインドの支配的勢力であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アクバル帝の下での最盛期には、ムガル帝国はインド亜大陸の大部分を支配していた。",
+      "text_markdown": "アクバル帝の下での最盛期には、ムガル帝国はインド亜大陸の大部分を支配していた。",
+      "tts": {
+        "text": "アクバル帝の下での最盛期には、ムガル帝国はインド亜大陸の大部分を支配していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし十七世紀末までに、帝国はデカンにおけるアウラングゼーブの終わりなき戦争の重圧の下で崩壊しつつあった。",
+      "text_markdown": "しかし十七世紀末までに、帝国はデカンにおけるアウラングゼーブの終わりなき戦争の重圧の下で崩壊しつつあった。",
+      "tts": {
+        "text": "しかし十七世紀末までに、帝国はデカンにおけるアウラングゼーブの終わりなき戦争の重圧の下で崩壊しつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この衰退はマラーターのような地方勢力が独立を主張する機会を生み出した。",
+      "text_markdown": "この衰退はマラーターのような地方勢力が独立を主張する機会を生み出した。",
+      "tts": {
+        "text": "この衰退はマラーターのような地方勢力が独立を主張する機会を生み出した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "香辛料貿易はインド海岸をヨーロッパの商人にとって非常に価値あるものにした。",
+      "text_markdown": "香辛料貿易はインド海岸をヨーロッパの商人にとって非常に価値あるものにした。",
+      "tts": {
+        "text": "香辛料貿易はインド海岸をヨーロッパの商人にとって非常に価値あるものにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マラバル海岸の胡椒、カルダモン、シナモンは、ヨーロッパの市場で銀と同じ重さの価値があった。",
+      "text_markdown": "マラバル海岸の胡椒、カルダモン、シナモンは、ヨーロッパの市場で銀と同じ重さの価値があった。",
+      "tts": {
+        "text": "マラバル海岸の胡椒、カルダモン、シナモンは、ヨーロッパの市場で銀と同じ重さの価値があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの香辛料の支配がインド洋へのヨーロッパ全体の拡大を推進した。",
+      "text_markdown": "これらの香辛料の支配がインド洋へのヨーロッパ全体の拡大を推進した。",
+      "tts": {
+        "text": "これらの香辛料の支配がインド洋へのヨーロッパ全体の拡大を推進した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "コンカン海岸のすべての砦、すべての交易拠点、すべての海戦は、結局のところこの貿易から誰が利益を得るかをめぐるものであった。",
+      "text_markdown": "コンカン海岸のすべての砦、すべての交易拠点、すべての海戦は、結局のところこの貿易から誰が利益を得るかをめぐるものであった。",
+      "tts": {
+        "text": "コンカン海岸のすべての砦、すべての交易拠点、すべての海戦は、結局のところこの貿易から誰が利益を得るかをめぐるものであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この競合する帝国、植民地の野心、海戦の世界に、カンホジ・アングレは生まれた。",
+      "text_markdown": "この競合する帝国、植民地の野心、海戦の世界に、カンホジ・アングレは生まれた。",
+      "tts": {
+        "text": "この競合する帝国、植民地の野心、海戦の世界に、カンホジ・アングレは生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はコンカン海岸の支配を目指す列強に対してその防衛に全経歴を捧げることになる。",
+      "text_markdown": "彼はコンカン海岸の支配を目指す列強に対してその防衛に全経歴を捧げることになる。",
+      "tts": {
+        "text": "彼はコンカン海岸の支配を目指す列強に対してその防衛に全経歴を捧げることになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "コンカン海岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はインドが生み出した最も効果的な海軍指揮官となるのである。",
+      "text_markdown": "彼はインドが生み出した最も効果的な海軍指揮官となるのである。",
+      "tts": {
+        "text": "彼はインドが生み出した最も効果的な海軍指揮官となるのである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジ・アングレは1669年にボンベイ南方のコンカン海岸にあるアリバーグの町で生まれた。",
+      "text_markdown": "カンホジ・アングレは1669年にボンベイ南方のコンカン海岸にあるアリバーグの町で生まれた。",
+      "tts": {
+        "text": "カンホジ・アングレは千六百六十九年にボンベイ南方のコンカン海岸にあるアリバーグの町で生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の家族はマラーターの武士階級に属していた。",
+      "text_markdown": "彼の家族はマラーターの武士階級に属していた。",
+      "tts": {
+        "text": "彼の家族はマラーターの武士階級に属していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らにはマラーター支配者への軍務と忠誠の長い伝統があった。",
+      "text_markdown": "彼らにはマラーター支配者への軍務と忠誠の長い伝統があった。",
+      "tts": {
+        "text": "彼らにはマラーター支配者への軍務と忠誠の長い伝統があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジは戦争、海上貿易、外国勢力への抵抗によって形作られた世界で育った。",
+      "text_markdown": "カンホジは戦争、海上貿易、外国勢力への抵抗によって形作られた世界で育った。",
+      "tts": {
+        "text": "カンホジは戦争、海上貿易、外国勢力への抵抗によって形作られた世界で育った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "父のトゥコジ・アングレはマラーター軍に仕えていた。",
+      "text_markdown": "父のトゥコジ・アングレはマラーター軍に仕えていた。",
+      "tts": {
+        "text": "父のトゥコジ・アングレはマラーター軍に仕えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アングレ家はマラーター宮廷とシヴァージーが築いた海岸砦のネットワークに繋がりを持っていた。",
+      "text_markdown": "アングレ家はマラーター宮廷とシヴァージーが築いた海岸砦のネットワークに繋がりを持っていた。",
+      "tts": {
+        "text": "アングレ家はマラーター宮廷とシヴァージーが築いた海岸砦のネットワークに繋がりを持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "若きカンホジも同様にマラーターの大義に仕えることが期待されて育てられた。",
+      "text_markdown": "若きカンホジも同様にマラーターの大義に仕えることが期待されて育てられた。",
+      "tts": {
+        "text": "若きカンホジも同様にマラーターの大義に仕えることが期待されて育てられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "幼い頃から陸戦と海戦の両方の訓練を受けた。",
+      "text_markdown": "幼い頃から陸戦と海戦の両方の訓練を受けた。",
+      "tts": {
+        "text": "幼い頃から陸戦と海戦の両方の訓練を受けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コンカン海岸は過酷な訓練場であった。",
+      "text_markdown": "コンカン海岸は過酷な訓練場であった。",
+      "tts": {
+        "text": "コンカン海岸は過酷な訓練場であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海域は危険で、強い潮流、隠れた暗礁、予測不能なモンスーンの嵐があった。",
+      "text_markdown": "海域は危険で、強い潮流、隠れた暗礁、予測不能なモンスーンの嵐があった。",
+      "tts": {
+        "text": "海域は危険で、強い潮流、隠れた暗礁、予測不能なモンスーンの嵐があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの海域を航行するには、すべての入り江、岬、潮汐パターンの詳細な知識が必要であった。",
+      "text_markdown": "これらの海域を航行するには、すべての入り江、岬、潮汐パターンの詳細な知識が必要であった。",
+      "tts": {
+        "text": "これらの海域を航行するには、すべての入り江、岬、潮汐パターンの詳細な知識が必要であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジは若い頃に小さな船で海岸を航行しながらこの知識を身につけた。",
+      "text_markdown": "カンホジは若い頃に小さな船で海岸を航行しながらこの知識を身につけた。",
+      "tts": {
+        "text": "カンホジは若い頃に小さな船で海岸を航行しながらこの知識を身につけた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は若い士官としてマラーター海軍に入った。",
+      "text_markdown": "彼は若い士官としてマラーター海軍に入った。",
+      "tts": {
+        "text": "彼は若い士官としてマラーター海軍に入った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当時のマラーター海軍はヴィジャイドゥルグ、シンドゥドゥルグ、コラバを含む一連の海岸砦を拠点としていた。",
+      "text_markdown": "当時のマラーター海軍はヴィジャイドゥルグ、シンドゥドゥルグ、コラバを含む一連の海岸砦を拠点としていた。",
+      "tts": {
+        "text": "当時のマラーター海軍はヴィジャイドゥルグ、シンドゥドゥルグ、コラバを含む一連の海岸砦を拠点としていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの砦は岩の島や岬の上に築かれ、海からの攻撃はほぼ不可能であった。",
+      "text_markdown": "これらの砦は岩の島や岬の上に築かれ、海からの攻撃はほぼ不可能であった。",
+      "tts": {
+        "text": "これらの砦は岩の島や岬の上に築かれ、海からの攻撃はほぼ不可能であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "シヴァージーは海軍の砲撃に耐えるよう特に設計していた。",
+      "text_markdown": "シヴァージーは海軍の砲撃に耐えるよう特に設計していた。",
+      "tts": {
+        "text": "シヴァージーは海軍の砲撃に耐えるよう特に設計していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジはマラーター海軍の中で急速に昇進した。",
+      "text_markdown": "カンホジはマラーター海軍の中で急速に昇進した。",
+      "tts": {
+        "text": "カンホジはマラーター海軍の中で急速に昇進した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ムガルとシッディ双方の海軍との小競り合いで頭角を現した。",
+      "text_markdown": "ムガルとシッディ双方の海軍との小競り合いで頭角を現した。",
+      "tts": {
+        "text": "ムガルとシッディ双方の海軍との小競り合いで頭角を現した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "シッディはボンベイ南方のジャンジーラ要塞を拠点とするアビシニア人の共同体であった。",
+      "text_markdown": "シッディはボンベイ南方のジャンジーラ要塞を拠点とするアビシニア人の共同体であった。",
+      "tts": {
+        "text": "シッディはボンベイ南方のジャンジーラ要塞を拠点とするアビシニア人の共同体であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らは数十年にわたり海岸の支配をめぐるマラーターの競争相手であった。",
+      "text_markdown": "彼らは数十年にわたり海岸の支配をめぐるマラーターの競争相手であった。",
+      "tts": {
+        "text": "彼らは数十年にわたり海岸の支配をめぐるマラーターの競争相手であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1698年、カンホジはマラーター海軍の大提督であるサルケールに任命された。",
+      "text_markdown": "1698年、カンホジはマラーター海軍の大提督であるサルケールに任命された。",
+      "tts": {
+        "text": "千六百九十八年、カンホジはマラーター海軍の大提督であるサルケールに任命された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はおよそ二十九歳であった。",
+      "text_markdown": "彼はおよそ二十九歳であった。",
+      "tts": {
+        "text": "彼はおよそ二十九歳であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この任命はカンホジの卓越した海軍能力を認めたマラーター王ラージャーラームからのものであった。",
+      "text_markdown": "この任命はカンホジの卓越した海軍能力を認めたマラーター王ラージャーラームからのものであった。",
+      "tts": {
+        "text": "この任命はカンホジの卓越した海軍能力を認めたマラーター王ラージャーラームからのものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これはカンホジが生涯にわたって務める地位となった。",
+      "text_markdown": "これはカンホジが生涯にわたって務める地位となった。",
+      "tts": {
+        "text": "これはカンホジが生涯にわたって務める地位となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サルケールとして、カンホジはコンカン海岸沿いのすべてのマラーター海軍を指揮した。",
+      "text_markdown": "サルケールとして、カンホジはコンカン海岸沿いのすべてのマラーター海軍を指揮した。",
+      "tts": {
+        "text": "サルケールとして、カンホジはコンカン海岸沿いのすべてのマラーター海軍を指揮した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "軍艦の艦隊と要塞化された拠点のネットワークを掌握した。",
+      "text_markdown": "軍艦の艦隊と要塞化された拠点のネットワークを掌握した。",
+      "tts": {
+        "text": "軍艦の艦隊と要塞化された拠点のネットワークを掌握した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海岸の防衛、マラーター貿易の保護、ヨーロッパの侵入への抵抗を担った。",
+      "text_markdown": "海岸の防衛、マラーター貿易の保護、ヨーロッパの侵入への抵抗を担った。",
+      "tts": {
+        "text": "海岸の防衛、マラーター貿易の保護、ヨーロッパの侵入への抵抗を担った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは莫大な責任であり、彼は全身全霊でそれを受け入れた。",
+      "text_markdown": "それは莫大な責任であり、彼は全身全霊でそれを受け入れた。",
+      "tts": {
+        "text": "それは莫大な責任であり、彼は全身全霊でそれを受け入れた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この任命は重大な時期に行われた。",
+      "text_markdown": "この任命は重大な時期に行われた。",
+      "tts": {
+        "text": "この任命は重大な時期に行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デカンへのムガルの侵攻は最盛期にあった。",
+      "text_markdown": "デカンへのムガルの侵攻は最盛期にあった。",
+      "tts": {
+        "text": "デカンへのムガルの侵攻は最盛期にあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マラーター王国は陸上で存亡をかけて戦っていた。",
+      "text_markdown": "マラーター王国は陸上で存亡をかけて戦っていた。",
+      "tts": {
+        "text": "マラーター王国は陸上で存亡をかけて戦っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海はマラーターがまだ力を投射できる唯一の領域であり、カンホジはそれを最大限に活用する決意であった。",
+      "text_markdown": "海はマラーターがまだ力を投射できる唯一の領域であり、カンホジはそれを最大限に活用する決意であった。",
+      "tts": {
+        "text": "海はマラーターがまだ力を投射できる唯一の領域であり、カンホジはそれを最大限に活用する決意であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジはアリバーグ近くのコラバ島要塞に主要拠点を設けた。",
+      "text_markdown": "カンホジはアリバーグ近くのコラバ島要塞に主要拠点を設けた。",
+      "tts": {
+        "text": "カンホジはアリバーグ近くのコラバ島要塞に主要拠点を設けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コラバからは、ボンベイへの海上接近路と海岸沿いの主要交易路を制御できた。",
+      "text_markdown": "コラバからは、ボンベイへの海上接近路と海岸沿いの主要交易路を制御できた。",
+      "tts": {
+        "text": "コラバからは、ボンベイへの海上接近路と海岸沿いの主要交易路を制御できた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "島に追加の砲台を設け、成長する艦隊を収容するために港を拡張した。",
+      "text_markdown": "島に追加の砲台を設け、成長する艦隊を収容するために港を拡張した。",
+      "tts": {
+        "text": "島に追加の砲台を設け、成長する艦隊を収容するために港を拡張した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "コラバはその後三十年間にわたり彼の本拠地であり続ける。",
+      "text_markdown": "コラバはその後三十年間にわたり彼の本拠地であり続ける。",
+      "tts": {
+        "text": "コラバはその後三十年間にわたり彼の本拠地であり続ける。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "また、海岸で最も強力なマラーター海軍基地であるヴィジャイドゥルグ要塞も強化した。",
+      "text_markdown": "また、海岸で最も強力なマラーター海軍基地であるヴィジャイドゥルグ要塞も強化した。",
+      "tts": {
+        "text": "また、海岸で最も強力なマラーター海軍基地であるヴィジャイドゥルグ要塞も強化した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヴィジャイドゥルグはアラビア海に突き出た岩の岬の上に築かれていた。",
+      "text_markdown": "ヴィジャイドゥルグはアラビア海に突き出た岩の岬の上に築かれていた。",
+      "tts": {
+        "text": "ヴィジャイドゥルグはアラビア海に突き出た岩の岬の上に築かれていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三重の壁、地下通路、艦隊全体を収容できる防護港を備えていた。",
+      "text_markdown": "三重の壁、地下通路、艦隊全体を収容できる防護港を備えていた。",
+      "tts": {
+        "text": "三重の壁、地下通路、艦隊全体を収容できる防護港を備えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジの指揮下で、ヴィジャイドゥルグはほぼ難攻不落となった。",
+      "text_markdown": "カンホジの指揮下で、ヴィジャイドゥルグはほぼ難攻不落となった。",
+      "tts": {
+        "text": "カンホジの指揮下で、ヴィジャイドゥルグはほぼ難攻不落となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コンカンの沿岸共同体は漁師、商人、戦士の混合であった。",
+      "text_markdown": "コンカンの沿岸共同体は漁師、商人、戦士の混合であった。",
+      "tts": {
+        "text": "コンカンの沿岸共同体は漁師、商人、戦士の混合であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの家族が複数の役割を果たし、平時には漁をし、召集されると戦った。",
+      "text_markdown": "多くの家族が複数の役割を果たし、平時には漁をし、召集されると戦った。",
+      "tts": {
+        "text": "多くの家族が複数の役割を果たし、平時には漁をし、召集されると戦った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この海事技能と軍事的即応性の融合は、彼らを海軍力の理想的な新兵とした。",
+      "text_markdown": "この海事技能と軍事的即応性の融合は、彼らを海軍力の理想的な新兵とした。",
+      "tts": {
+        "text": "この海事技能と軍事的即応性の融合は、彼らを海軍力の理想的な新兵とした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジは最も忠実で有能な水兵をこれらの共同体から集めた。",
+      "text_markdown": "カンホジは最も忠実で有能な水兵をこれらの共同体から集めた。",
+      "tts": {
+        "text": "カンホジは最も忠実で有能な水兵をこれらの共同体から集めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの拠点から、カンホジはインド洋で最も効果的な海軍力の構築を始めた。",
+      "text_markdown": "これらの拠点から、カンホジはインド洋で最も効果的な海軍力の構築を始めた。",
+      "tts": {
+        "text": "これらの拠点から、カンホジはインド洋で最も効果的な海軍力の構築を始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コンカンの沿岸共同体から熟練した水兵を募った。",
+      "text_markdown": "コンカンの沿岸共同体から熟練した水兵を募った。",
+      "tts": {
+        "text": "コンカンの沿岸共同体から熟練した水兵を募った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "インド海岸の特有の条件に合わせた新しい軍艦を建造させた。",
+      "text_markdown": "インド海岸の特有の条件に合わせた新しい軍艦を建造させた。",
+      "tts": {
+        "text": "インド海岸の特有の条件に合わせた新しい軍艦を建造させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして、今後何年にもわたってヨーロッパの海軍指揮官を苦しめる戦術を開発した。",
+      "text_markdown": "そして、今後何年にもわたってヨーロッパの海軍指揮官を苦しめる戦術を開発した。",
+      "tts": {
+        "text": "そして、今後何年にもわたってヨーロッパの海軍指揮官を苦しめる戦術を開発した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力の台頭",
+      "text_markdown": "権力の台頭"
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コンカン海岸におけるカンホジ・アングレの支配への台頭は組織的かつ容赦ないものであった。",
+      "text_markdown": "コンカン海岸におけるカンホジ・アングレの支配への台頭は組織的かつ容赦ないものであった。",
+      "tts": {
+        "text": "コンカン海岸におけるカンホジ・アングレの支配への台頭は組織的かつ容赦ないものであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は一つの劇的な勝利を求めたわけではなかった。",
+      "text_markdown": "彼は一つの劇的な勝利を求めたわけではなかった。",
+      "tts": {
+        "text": "彼は一つの劇的な勝利を求めたわけではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "代わりに、海軍技術、戦略的築城、巧みな外交の組み合わせによって徐々に権力を築いた。",
+      "text_markdown": "代わりに、海軍技術、戦略的築城、巧みな外交の組み合わせによって徐々に権力を築いた。",
+      "tts": {
+        "text": "代わりに、海軍技術、戦略的築城、巧みな外交の組み合わせによって徐々に権力を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サルケール就任から十年以内に、彼はインド西海岸の揺るぎない支配者となっていた。",
+      "text_markdown": "サルケール就任から十年以内に、彼はインド西海岸の揺るぎない支配者となっていた。",
+      "tts": {
+        "text": "サルケール就任から十年以内に、彼はインド西海岸の揺るぎない支配者となっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "初期の主な敵はジャンジーラを拠点とするシッディ艦隊であった。",
+      "text_markdown": "初期の主な敵はジャンジーラを拠点とするシッディ艦隊であった。",
+      "tts": {
+        "text": "初期の主な敵はジャンジーラを拠点とするシッディ艦隊であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "シッディはムガル帝国と同盟し、マラーターの沿岸集落に対する絶え間ない脅威となっていた。",
+      "text_markdown": "シッディはムガル帝国と同盟し、マラーターの沿岸集落に対する絶え間ない脅威となっていた。",
+      "tts": {
+        "text": "シッディはムガル帝国と同盟し、マラーターの沿岸集落に対する絶え間ない脅威となっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カンホジはシッディに対して長期的な作戦を展開し、徐々にその勢力を削ぎ、島の要塞へと追い込んだ。",
+      "text_markdown": "カンホジはシッディに対して長期的な作戦を展開し、徐々にその勢力を削ぎ、島の要塞へと追い込んだ。",
+      "tts": {
+        "text": "カンホジはシッディに対して長期的な作戦を展開し、徐々にその勢力を削ぎ、島の要塞へと追い込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ジャンジーラそのものを攻略することはできなかったが、シッディ艦隊を重大な脅威から排除した。",
+      "text_markdown": "ジャンジーラそのものを攻略することはできなかったが、シッディ艦隊を重大な脅威から排除した。",
+      "tts": {
+        "text": "ジャンジーラそのものを攻略することはできなかったが、シッディ艦隊を重大な脅威から排除した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの貿易会社との関係はより複雑であった。",
+      "text_markdown": "ヨーロッパの貿易会社との関係はより複雑であった。",
+      "tts": {
+        "text": "ヨーロッパの貿易会社との関係はより複雑であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス東インド会社はカンホジのコラバ本部のすぐ北のボンベイに拠点を置いていた。",
+      "text_markdown": "イギリス東インド会社はカンホジのコラバ本部のすぐ北のボンベイに拠点を置いていた。",
+      "tts": {
+        "text": "イギリス東インド会社はカンホジのコラバ本部のすぐ北のボンベイに拠点を置いていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "会社はインド沿岸貿易への無制限のアクセスを望んでいた。",
+      "text_markdown": "会社はインド沿岸貿易への無制限のアクセスを望んでいた。",
+      "tts": {
+        "text": "会社はインド沿岸貿易への無制限のアクセスを望んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジはマラーター海域のすべての船がマラーターの通行証を携行するか、さもなくば拿捕されると主張した。",
+      "text_markdown": "カンホジはマラーター海域のすべての船がマラーターの通行証を携行するか、さもなくば拿捕されると主張した。",
+      "tts": {
+        "text": "カンホジはマラーター海域のすべての船がマラーターの通行証を携行するか、さもなくば拿捕されると主張した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この要求はポルトガルのカルタス制度の鏡像であった。",
+      "text_markdown": "この要求はポルトガルのカルタス制度の鏡像であった。",
+      "tts": {
+        "text": "この要求はポルトガルのカルタス制度の鏡像であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパ人は二百年間にわたりインドの船舶に通行証を課してきた。",
+      "text_markdown": "ヨーロッパ人は二百年間にわたりインドの船舶に通行証を課してきた。",
+      "tts": {
+        "text": "ヨーロッパ人は二百年間にわたりインドの船舶に通行証を課してきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今やインドの指揮官がヨーロッパの船に同じ要件を課していたのである。",
+      "text_markdown": "今やインドの指揮官がヨーロッパの船に同じ要件を課していたのである。",
+      "tts": {
+        "text": "今やインドの指揮官がヨーロッパの船に同じ要件を課していたのである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリス人はこれを容認できないと考えたが、阻止することはできなかった。",
+      "text_markdown": "イギリス人はこれを容認できないと考えたが、阻止することはできなかった。",
+      "tts": {
+        "text": "イギリス人はこれを容認できないと考えたが、阻止することはできなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリスとの最初の大きな対立は1702年に起きた。",
+      "text_markdown": "イギリスとの最初の大きな対立は1702年に起きた。",
+      "tts": {
+        "text": "イギリスとの最初の大きな対立は千七百二年に起きた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カンホジの艦隊はマラーターの通行証なしに航行していたイギリスの商船を拿捕した。",
+      "text_markdown": "カンホジの艦隊はマラーターの通行証なしに航行していたイギリスの商船を拿捕した。",
+      "tts": {
+        "text": "カンホジの艦隊はマラーターの通行証なしに航行していたイギリスの商船を拿捕した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ボンベイのイギリス総督は船の返還を要求した。",
+      "text_markdown": "ボンベイのイギリス総督は船の返還を要求した。",
+      "tts": {
+        "text": "ボンベイのイギリス総督は船の返還を要求した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジは、マラーター海域のすべての船はマラーターの権限に服すると主張して拒否した。",
+      "text_markdown": "カンホジは、マラーター海域のすべての船はマラーターの権限に服すると主張して拒否した。",
+      "tts": {
+        "text": "カンホジは、マラーター海域のすべての船はマラーターの権限に服すると主張して拒否した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリスはカンホジを懲罰するため海軍遠征隊を派遣した。",
+      "text_markdown": "イギリスはカンホジを懲罰するため海軍遠征隊を派遣した。",
+      "tts": {
+        "text": "イギリスはカンホジを懲罰するため海軍遠征隊を派遣した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コラバの拠点への攻撃は完全な失敗であった。",
+      "text_markdown": "コラバの拠点への攻撃は完全な失敗であった。",
+      "tts": {
+        "text": "コラバの拠点への攻撃は完全な失敗であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カンホジの沿岸砲台がイギリス艦船を大きな損害を与えて撃退した。",
+      "text_markdown": "カンホジの沿岸砲台がイギリス艦船を大きな損害を与えて撃退した。",
+      "tts": {
+        "text": "カンホジの沿岸砲台がイギリス艦船を大きな損害を与えて撃退した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリスはこの交戦で兵士、艦船、そして面目を失った。",
+      "text_markdown": "イギリスはこの交戦で兵士、艦船、そして面目を失った。",
+      "tts": {
+        "text": "イギリスはこの交戦で兵士、艦船、そして面目を失った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このパターンはその後数十年にわたり何度も繰り返された。",
+      "text_markdown": "このパターンはその後数十年にわたり何度も繰り返された。",
+      "tts": {
+        "text": "このパターンはその後数十年にわたり何度も繰り返された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスはカンホジの拠点の一つを攻撃するために艦隊を送った。",
+      "text_markdown": "イギリスはカンホジの拠点の一つを攻撃するために艦隊を送った。",
+      "tts": {
+        "text": "イギリスはカンホジの拠点の一つを攻撃するために艦隊を送った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カンホジは海岸の知識、要塞、より速い船を使ってイギリスを出し抜いた。",
+      "text_markdown": "カンホジは海岸の知識、要塞、より速い船を使ってイギリスを出し抜いた。",
+      "tts": {
+        "text": "カンホジは海岸の知識、要塞、より速い船を使ってイギリスを出し抜いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリスは何も達成できずに撤退した。",
+      "text_markdown": "イギリスは何も達成できずに撤退した。",
+      "tts": {
+        "text": "イギリスは何も達成できずに撤退した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポルトガル人の結果も同様であった。",
+      "text_markdown": "ポルトガル人の結果も同様であった。",
+      "tts": {
+        "text": "ポルトガル人の結果も同様であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二百年間、インド海岸で支配的なヨーロッパ勢力であった。",
+      "text_markdown": "二百年間、インド海岸で支配的なヨーロッパ勢力であった。",
+      "tts": {
+        "text": "二百年間、インド海岸で支配的なヨーロッパ勢力であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし海軍力は衰退し、駐屯地は人員不足であった。",
+      "text_markdown": "しかし海軍力は衰退し、駐屯地は人員不足であった。",
+      "tts": {
+        "text": "しかし海軍力は衰退し、駐屯地は人員不足であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジはポルトガルの船舶を襲撃し、海岸沿いのいくつかの小さな前哨基地を奪取した。",
+      "text_markdown": "カンホジはポルトガルの船舶を襲撃し、海岸沿いのいくつかの小さな前哨基地を奪取した。",
+      "tts": {
+        "text": "カンホジはポルトガルの船舶を襲撃し、海岸沿いのいくつかの小さな前哨基地を奪取した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オランダ東インド会社もカンホジと衝突した。",
+      "text_markdown": "オランダ東インド会社もカンホジと衝突した。",
+      "tts": {
+        "text": "オランダ東インド会社もカンホジと衝突した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "通行証なしにマラーター海域に入ったオランダ船が拿捕された。",
+      "text_markdown": "通行証なしにマラーター海域に入ったオランダ船が拿捕された。",
+      "tts": {
+        "text": "通行証なしにマラーター海域に入ったオランダ船が拿捕された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オランダ人は交渉を試み、次に脅迫し、そして攻撃した。",
+      "text_markdown": "オランダ人は交渉を試み、次に脅迫し、そして攻撃した。",
+      "tts": {
+        "text": "オランダ人は交渉を試み、次に脅迫し、そして攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリスやポルトガルと同様、カンホジを沿岸の拠点から追い出すことはできなかった。",
+      "text_markdown": "イギリスやポルトガルと同様、カンホジを沿岸の拠点から追い出すことはできなかった。",
+      "tts": {
+        "text": "イギリスやポルトガルと同様、カンホジを沿岸の拠点から追い出すことはできなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1712年、イギリスとポルトガルはコラバのカンホジの拠点を攻撃するため連合艦隊を編成した。",
+      "text_markdown": "1712年、イギリスとポルトガルはコラバのカンホジの拠点を攻撃するため連合艦隊を編成した。",
+      "tts": {
+        "text": "千七百十二年、イギリスとポルトガルはコラバのカンホジの拠点を攻撃するため連合艦隊を編成した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパ列強が共通の敵に対して協力した稀な機会の一つであった。",
+      "text_markdown": "ヨーロッパ列強が共通の敵に対して協力した稀な機会の一つであった。",
+      "tts": {
+        "text": "ヨーロッパ列強が共通の敵に対して協力した稀な機会の一つであった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "連合艦隊は数日間コラバを砲撃した。",
+      "text_markdown": "連合艦隊は数日間コラバを砲撃した。",
+      "tts": {
+        "text": "連合艦隊は数日間コラバを砲撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジの防御は持ちこたえ、同盟軍は大きな損害を受けて撤退した。",
+      "text_markdown": "カンホジの防御は持ちこたえ、同盟軍は大きな損害を受けて撤退した。",
+      "tts": {
+        "text": "カンホジの防御は持ちこたえ、同盟軍は大きな損害を受けて撤退した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718年の二度目の合同攻撃も同じ結末を迎えた。",
+      "text_markdown": "1718年の二度目の合同攻撃も同じ結末を迎えた。",
+      "tts": {
+        "text": "千七百十八年の二度目の合同攻撃も同じ結末を迎えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスとポルトガルは再びコラバに対して戦力を結集した。",
+      "text_markdown": "イギリスとポルトガルは再びコラバに対して戦力を結集した。",
+      "tts": {
+        "text": "イギリスとポルトガルは再びコラバに対して戦力を結集した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "再び、カンホジの沿岸砲台と海軍戦術が彼らを打ち破った。",
+      "text_markdown": "再び、カンホジの沿岸砲台と海軍戦術が彼らを打ち破った。",
+      "tts": {
+        "text": "再び、カンホジの沿岸砲台と海軍戦術が彼らを打ち破った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ヨーロッパ列強はカンホジを武力で排除できないことを受け入れざるを得なかった。",
+      "text_markdown": "ヨーロッパ列強はカンホジを武力で排除できないことを受け入れざるを得なかった。",
+      "tts": {
+        "text": "ヨーロッパ列強はカンホジを武力で排除できないことを受け入れざるを得なかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジの成功は防衛戦のみに基づくものではなかった。",
+      "text_markdown": "カンホジの成功は防衛戦のみに基づくものではなかった。",
+      "tts": {
+        "text": "カンホジの成功は防衛戦のみに基づくものではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "生涯を通じてヨーロッパの船舶を積極的に襲撃した。",
+      "text_markdown": "生涯を通じてヨーロッパの船舶を積極的に襲撃した。",
+      "tts": {
+        "text": "生涯を通じてヨーロッパの船舶を積極的に襲撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の速くて機敏な船は商船を捕捉し、積荷を奪い、海岸沿いの水路と入り江の迷路に消えた。",
+      "text_markdown": "彼の速くて機敏な船は商船を捕捉し、積荷を奪い、海岸沿いの水路と入り江の迷路に消えた。",
+      "tts": {
+        "text": "彼の速くて機敏な船は商船を捕捉し、積荷を奪い、海岸沿いの水路と入り江の迷路に消えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ヨーロッパの会社は毎年彼の襲撃で莫大な損失を被った。",
+      "text_markdown": "ヨーロッパの会社は毎年彼の襲撃で莫大な損失を被った。",
+      "tts": {
+        "text": "ヨーロッパの会社は毎年彼の襲撃で莫大な損失を被った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時期のイギリス東インド会社の記録はカンホジ・アングレへの苦情で溢れている。",
+      "text_markdown": "この時期のイギリス東インド会社の記録はカンホジ・アングレへの苦情で溢れている。",
+      "tts": {
+        "text": "この時期のイギリス東インド会社の記録はカンホジ・アングレへの苦情で溢れている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは彼を海賊、脅威、合法的貿易への危険と呼んだ。",
+      "text_markdown": "彼らは彼を海賊、脅威、合法的貿易への危険と呼んだ。",
+      "tts": {
+        "text": "彼らは彼を海賊、脅威、合法的貿易への危険と呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしマラーターの視点からすれば、カンホジはヨーロッパ人が何世紀にもわたって行ってきたことと全く同じことをしていた。",
+      "text_markdown": "しかしマラーターの視点からすれば、カンホジはヨーロッパ人が何世紀にもわたって行ってきたことと全く同じことをしていた。",
+      "tts": {
+        "text": "しかしマラーターの視点からすれば、カンホジはヨーロッパ人が何世紀にもわたって行ってきたことと全く同じことをしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海を支配し、貿易に課税し、主君の利益を守るために海軍力を行使していたのである。",
+      "text_markdown": "海を支配し、貿易に課税し、主君の利益を守るために海軍力を行使していたのである。",
+      "tts": {
+        "text": "海を支配し、貿易に課税し、主君の利益を守るために海軍力を行使していたのである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百二十年代までに、カンホジはボンベイからラトナギリ南方までのコンカン海岸全域を支配していた。",
+      "text_markdown": "千七百二十年代までに、カンホジはボンベイからラトナギリ南方までのコンカン海岸全域を支配していた。",
+      "tts": {
+        "text": "千七百二十年代までに、カンホジはボンベイからラトナギリ南方までのコンカン海岸全域を支配していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の艦隊は数十隻の軍艦と数百隻の小型船で構成されていた。",
+      "text_markdown": "彼の艦隊は数十隻の軍艦と数百隻の小型船で構成されていた。",
+      "tts": {
+        "text": "彼の艦隊は数十隻の軍艦と数百隻の小型船で構成されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "要塞化された拠点の連鎖は海岸を彼の許可なしにはいかなる船も通過できない回廊にした。",
+      "text_markdown": "要塞化された拠点の連鎖は海岸を彼の許可なしにはいかなる船も通過できない回廊にした。",
+      "tts": {
+        "text": "要塞化された拠点の連鎖は海岸を彼の許可なしにはいかなる船も通過できない回廊にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は事実上、インド西海の君主であった。",
+      "text_markdown": "彼は事実上、インド西海の君主であった。",
+      "tts": {
+        "text": "彼は事実上、インド西海の君主であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "絶頂期",
+      "text_markdown": "絶頂期"
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "権力の絶頂期において、カンホジ・アングレはインド洋で最も重要な海軍指揮官であった。",
+      "text_markdown": "権力の絶頂期において、カンホジ・アングレはインド洋で最も重要な海軍指揮官であった。",
+      "tts": {
+        "text": "権力の絶頂期において、カンホジ・アングレはインド洋で最も重要な海軍指揮官であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の艦隊はボンベイとゴアの間の海路を支配していた。アジアで最も混雑する貿易ルートの一つである。",
+      "text_markdown": "彼の艦隊はボンベイとゴアの間の海路を支配していた。アジアで最も混雑する貿易ルートの一つである。",
+      "tts": {
+        "text": "彼の艦隊はボンベイとゴアの間の海路を支配していた。アジアで最も混雑する貿易ルートの一つである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "インド西海岸で活動するすべてのヨーロッパ貿易会社が彼の力を考慮しなければならなかった。",
+      "text_markdown": "インド西海岸で活動するすべてのヨーロッパ貿易会社が彼の力を考慮しなければならなかった。",
+      "tts": {
+        "text": "インド西海岸で活動するすべてのヨーロッパ貿易会社が彼の力を考慮しなければならなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の同意なしには、いかなる積荷も安全ではなかった。",
+      "text_markdown": "彼の同意なしには、いかなる積荷も安全ではなかった。",
+      "tts": {
+        "text": "彼の同意なしには、いかなる積荷も安全ではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジの艦隊はコンカン海岸の特有の条件に合わせて設計されていた。",
+      "text_markdown": "カンホジの艦隊はコンカン海岸の特有の条件に合わせて設計されていた。",
+      "tts": {
+        "text": "カンホジの艦隊はコンカン海岸の特有の条件に合わせて設計されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最大の船はグラブと呼ばれる二本マストの軍艦で、浅い喫水により海岸近くを航行できた。",
+      "text_markdown": "最大の船はグラブと呼ばれる二本マストの軍艦で、浅い喫水により海岸近くを航行できた。",
+      "tts": {
+        "text": "最大の船はグラブと呼ばれる二本マストの軍艦で、浅い喫水により海岸近くを航行できた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ガリヴァットと呼ばれる小型の櫓漕ぎ船も運用した。高速で機動性が極めて高かった。",
+      "text_markdown": "ガリヴァットと呼ばれる小型の櫓漕ぎ船も運用した。高速で機動性が極めて高かった。",
+      "tts": {
+        "text": "ガリヴァットと呼ばれる小型の櫓漕ぎ船も運用した。高速で機動性が極めて高かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらのガリヴァットはヨーロッパ船が追跡できない潮汐水路や浅瀬で活動できた。",
+      "text_markdown": "これらのガリヴァットはヨーロッパ船が追跡できない潮汐水路や浅瀬で活動できた。",
+      "tts": {
+        "text": "これらのガリヴァットはヨーロッパ船が追跡できない潮汐水路や浅瀬で活動できた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "グラブとガリヴァットの組み合わせは壊滅的に効果的であった。",
+      "text_markdown": "グラブとガリヴァットの組み合わせは壊滅的に効果的であった。",
+      "tts": {
+        "text": "グラブとガリヴァットの組み合わせは壊滅的に効果的であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "グラブが敵艦と砲撃距離で交戦し、持続的な砲火で弱体化させた。",
+      "text_markdown": "グラブが敵艦と砲撃距離で交戦し、持続的な砲火で弱体化させた。",
+      "tts": {
+        "text": "グラブが敵艦と砲撃距離で交戦し、持続的な砲火で弱体化させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その後ガリヴァットが群がり、乗組員が複数の方向から同時に敵艦に乗り込んだ。",
+      "text_markdown": "その後ガリヴァットが群がり、乗組員が複数の方向から同時に敵艦に乗り込んだ。",
+      "tts": {
+        "text": "その後ガリヴァットが群がり、乗組員が複数の方向から同時に敵艦に乗り込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大型艦同士の舷側砲撃の訓練を受けたヨーロッパの艦長には、この群狼戦術に対する答えがなかった。",
+      "text_markdown": "大型艦同士の舷側砲撃の訓練を受けたヨーロッパの艦長には、この群狼戦術に対する答えがなかった。",
+      "tts": {
+        "text": "大型艦同士の舷側砲撃の訓練を受けたヨーロッパの艦長には、この群狼戦術に対する答えがなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジの沿岸要塞も同様に手強かった。",
+      "text_markdown": "カンホジの沿岸要塞も同様に手強かった。",
+      "tts": {
+        "text": "カンホジの沿岸要塞も同様に手強かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "砦は岩の島や岬に築かれ、海からの強襲はほぼ不可能であった。",
+      "text_markdown": "砦は岩の島や岬に築かれ、海からの強襲はほぼ不可能であった。",
+      "tts": {
+        "text": "砦は岩の島や岬に築かれ、海からの強襲はほぼ不可能であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "壁はヨーロッパ軍艦の砲撃に耐えるのに十分な厚さがあった。",
+      "text_markdown": "壁はヨーロッパ軍艦の砲撃に耐えるのに十分な厚さがあった。",
+      "tts": {
+        "text": "壁はヨーロッパ軍艦の砲撃に耐えるのに十分な厚さがあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地下通路が要塞の各部を結び、防御者が見えないまま移動できるようにしていた。",
+      "text_markdown": "地下通路が要塞の各部を結び、防御者が見えないまま移動できるようにしていた。",
+      "tts": {
+        "text": "地下通路が要塞の各部を結び、防御者が見えないまま移動できるようにしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヴィジャイドゥルグは彼の防衛網の至宝であった。",
+      "text_markdown": "ヴィジャイドゥルグは彼の防衛網の至宝であった。",
+      "tts": {
+        "text": "ヴィジャイドゥルグは彼の防衛網の至宝であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "要塞は三方を海に囲まれた岩の岬の上にそびえていた。",
+      "text_markdown": "要塞は三方を海に囲まれた岩の岬の上にそびえていた。",
+      "tts": {
+        "text": "要塞は三方を海に囲まれた岩の岬の上にそびえていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三重の壁はモンスーンの季節に艦隊全体を収容できるほどの面積を囲んでいた。",
+      "text_markdown": "三重の壁はモンスーンの季節に艦隊全体を収容できるほどの面積を囲んでいた。",
+      "tts": {
+        "text": "三重の壁はモンスーンの季節に艦隊全体を収容できるほどの面積を囲んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それを見たヨーロッパの海軍士官たちは、今まで遭遇した中で最も堅固な要塞の一つだと述べた。",
+      "text_markdown": "それを見たヨーロッパの海軍士官たちは、今まで遭遇した中で最も堅固な要塞の一つだと述べた。",
+      "tts": {
+        "text": "それを見たヨーロッパの海軍士官たちは、今まで遭遇した中で最も堅固な要塞の一つだと述べた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジは課税、貿易、戦利品の組み合わせで艦隊を維持した。",
+      "text_markdown": "カンホジは課税、貿易、戦利品の組み合わせで艦隊を維持した。",
+      "tts": {
+        "text": "カンホジは課税、貿易、戦利品の組み合わせで艦隊を維持した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マラーターの通行証を持つ船は海軍の資金に充てられる料金を支払った。",
+      "text_markdown": "マラーターの通行証を持つ船は海軍の資金に充てられる料金を支払った。",
+      "tts": {
+        "text": "マラーターの通行証を持つ船は海軍の資金に充てられる料金を支払った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "通行証を持たない船は拿捕され、積荷は売却された。",
+      "text_markdown": "通行証を持たない船は拿捕され、積荷は売却された。",
+      "tts": {
+        "text": "通行証を持たない船は拿捕され、積荷は売却された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この収入制度は効率的かつ自立的であった。",
+      "text_markdown": "この収入制度は効率的かつ自立的であった。",
+      "tts": {
+        "text": "この収入制度は効率的かつ自立的であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サーターラーのマラーター政府はカンホジの価値を認めていた。",
+      "text_markdown": "サーターラーのマラーター政府はカンホジの価値を認めていた。",
+      "tts": {
+        "text": "サーターラーのマラーター政府はカンホジの価値を認めていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はヨーロッパの海軍力に対する帝国の盾であった。",
+      "text_markdown": "彼はヨーロッパの海軍力に対する帝国の盾であった。",
+      "tts": {
+        "text": "彼はヨーロッパの海軍力に対する帝国の盾であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の艦隊がなければ、マラーターの海岸は封鎖と侵略に対して脆弱であった。",
+      "text_markdown": "彼の艦隊がなければ、マラーターの海岸は封鎖と侵略に対して脆弱であった。",
+      "tts": {
+        "text": "彼の艦隊がなければ、マラーターの海岸は封鎖と侵略に対して脆弱であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "マラーター帝国の首相であるペーシュワーはカンホジの生涯を通じて緊密な関係を保った。",
+      "text_markdown": "マラーター帝国の首相であるペーシュワーはカンホジの生涯を通じて緊密な関係を保った。",
+      "tts": {
+        "text": "マラーター帝国の首相であるペーシュワーはカンホジの生涯を通じて緊密な関係を保った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジは洗練された情報網も維持していた。",
+      "text_markdown": "カンホジは洗練された情報網も維持していた。",
+      "tts": {
+        "text": "カンホジは洗練された情報網も維持していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ボンベイ、ゴア、海岸の主要貿易港にエージェントがいた。",
+      "text_markdown": "ボンベイ、ゴア、海岸の主要貿易港にエージェントがいた。",
+      "tts": {
+        "text": "ボンベイ、ゴア、海岸の主要貿易港にエージェントがいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "高価な積荷の船がいつ出航し、どのルートを取る予定かを把握していた。",
+      "text_markdown": "高価な積荷の船がいつ出航し、どのルートを取る予定かを把握していた。",
+      "tts": {
+        "text": "高価な積荷の船がいつ出航し、どのルートを取る予定かを把握していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この情報はヨーロッパの敵に対する決定的な優位性を与えた。",
+      "text_markdown": "この情報はヨーロッパの敵に対する決定的な優位性を与えた。",
+      "tts": {
+        "text": "この情報はヨーロッパの敵に対する決定的な優位性を与えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリス東インド会社はカンホジとの交渉を何度も試みた。",
+      "text_markdown": "イギリス東インド会社はカンホジとの交渉を何度も試みた。",
+      "tts": {
+        "text": "イギリス東インド会社はカンホジとの交渉を何度も試みた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "貿易上の譲歩、金銭的支払い、外交的承認を提案した。",
+      "text_markdown": "貿易上の譲歩、金銭的支払い、外交的承認を提案した。",
+      "tts": {
+        "text": "貿易上の譲歩、金銭的支払い、外交的承認を提案した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カンホジはすべての提案に耳を傾けたが、基本的な立場を譲ることはなかった。",
+      "text_markdown": "カンホジはすべての提案に耳を傾けたが、基本的な立場を譲ることはなかった。",
+      "tts": {
+        "text": "カンホジはすべての提案に耳を傾けたが、基本的な立場を譲ることはなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "コンカン海岸はマラーターの領土であり、マラーター海域のすべての船はマラーターの法律に服する。",
+      "text_markdown": "コンカン海岸はマラーターの領土であり、マラーター海域のすべての船はマラーターの法律に服する。",
+      "tts": {
+        "text": "コンカン海岸はマラーターの領土であり、マラーター海域のすべての船はマラーターの法律に服する。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の私生活は家族と信仰を中心としていた。",
+      "text_markdown": "彼の私生活は家族と信仰を中心としていた。",
+      "tts": {
+        "text": "彼の私生活は家族と信仰を中心としていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "敬虔なヒンドゥー教徒であり、海岸沿いの寺院や宗教施設を後援した。",
+      "text_markdown": "敬虔なヒンドゥー教徒であり、海岸沿いの寺院や宗教施設を後援した。",
+      "tts": {
+        "text": "敬虔なヒンドゥー教徒であり、海岸沿いの寺院や宗教施設を後援した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海戦と行政を訓練した数人の息子がいた。",
+      "text_markdown": "海戦と行政を訓練した数人の息子がいた。",
+      "tts": {
+        "text": "海戦と行政を訓練した数人の息子がいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "死後も家族が彼の事業を継続することを意図していた。",
+      "text_markdown": "死後も家族が彼の事業を継続することを意図していた。",
+      "tts": {
+        "text": "死後も家族が彼の事業を継続することを意図していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジは支配下の沿岸共同体を厳格さと公正さの組み合わせで統治した。",
+      "text_markdown": "カンホジは支配下の沿岸共同体を厳格さと公正さの組み合わせで統治した。",
+      "tts": {
+        "text": "カンホジは支配下の沿岸共同体を厳格さと公正さの組み合わせで統治した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "漁業共同体をヨーロッパの侵入から守った。",
+      "text_markdown": "漁業共同体をヨーロッパの侵入から守った。",
+      "tts": {
+        "text": "漁業共同体をヨーロッパの侵入から守った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海岸沿いの港と市場の秩序を維持した。",
+      "text_markdown": "海岸沿いの港と市場の秩序を維持した。",
+      "tts": {
+        "text": "海岸沿いの港と市場の秩序を維持した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くの沿岸共同体は彼を支配者ではなく守護者とみなした。",
+      "text_markdown": "多くの沿岸共同体は彼を支配者ではなく守護者とみなした。",
+      "tts": {
+        "text": "多くの沿岸共同体は彼を支配者ではなく守護者とみなした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "生涯の最盛期に、カンホジ・アングレは注目すべき偉業を成し遂げていた。",
+      "text_markdown": "生涯の最盛期に、カンホジ・アングレは注目すべき偉業を成し遂げていた。",
+      "tts": {
+        "text": "生涯の最盛期に、カンホジ・アングレは注目すべき偉業を成し遂げていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アジアで最も強力な三つのヨーロッパ海軍に抵抗できる海軍力を構築したのである。",
+      "text_markdown": "アジアで最も強力な三つのヨーロッパ海軍に抵抗できる海軍力を構築したのである。",
+      "tts": {
+        "text": "アジアで最も強力な三つのヨーロッパ海軍に抵抗できる海軍力を構築したのである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はそれを地元の資源、地元の知識、地元の戦術で成し遂げた。",
+      "text_markdown": "彼はそれを地元の資源、地元の知識、地元の戦術で成し遂げた。",
+      "tts": {
+        "text": "彼はそれを地元の資源、地元の知識、地元の戦術で成し遂げた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "インドの海軍力がヨーロッパの覇権に独自の条件で挑戦できることを証明した。",
+      "text_markdown": "インドの海軍力がヨーロッパの覇権に独自の条件で挑戦できることを証明した。",
+      "tts": {
+        "text": "インドの海軍力がヨーロッパの覇権に独自の条件で挑戦できることを証明した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終焉",
+      "text_markdown": "終焉"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "晩年もカンホジ・アングレは現役で指揮を執り続けた。",
+      "text_markdown": "晩年もカンホジ・アングレは現役で指揮を執り続けた。",
+      "tts": {
+        "text": "晩年もカンホジ・アングレは現役で指揮を執り続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "死前に権力が衰えた多くの歴史的人物とは異なり、カンホジは最後まで地位を保った。",
+      "text_markdown": "死前に権力が衰えた多くの歴史的人物とは異なり、カンホジは最後まで地位を保った。",
+      "tts": {
+        "text": "死前に権力が衰えた多くの歴史的人物とは異なり、カンホジは最後まで地位を保った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "艦隊は海岸の巡視を続け、砦は完全に守備され、彼の権威は揺るがなかった。",
+      "text_markdown": "艦隊は海岸の巡視を続け、砦は完全に守備され、彼の権威は揺るがなかった。",
+      "tts": {
+        "text": "艦隊は海岸の巡視を続け、砦は完全に守備され、彼の権威は揺るがなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "全経歴を通じて一度も戦闘で敗れることはなかった。",
+      "text_markdown": "全経歴を通じて一度も戦闘で敗れることはなかった。",
+      "tts": {
+        "text": "全経歴を通じて一度も戦闘で敗れることはなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百二十年代にマラーター帝国内の政治情勢はより複雑になった。",
+      "text_markdown": "千七百二十年代にマラーター帝国内の政治情勢はより複雑になった。",
+      "tts": {
+        "text": "千七百二十年代にマラーター帝国内の政治情勢はより複雑になった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペーシュワーのバーラージー・ヴィシュワナートが権力を中央集権化し、マラーター王の権威を低下させた。",
+      "text_markdown": "ペーシュワーのバーラージー・ヴィシュワナートが権力を中央集権化し、マラーター王の権威を低下させた。",
+      "tts": {
+        "text": "ペーシュワーのバーラージー・ヴィシュワナートが権力を中央集権化し、マラーター王の権威を低下させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バーラージーの死後、息子のバージー・ラーオがペーシュワーとなった。",
+      "text_markdown": "バーラージーの死後、息子のバージー・ラーオがペーシュワーとなった。",
+      "tts": {
+        "text": "バーラージーの死後、息子のバージー・ラーオがペーシュワーとなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "バージー・ラーオは陸上では優れた軍事指揮官だったが、海軍防衛ではカンホジに大きく依存していた。",
+      "text_markdown": "バージー・ラーオは陸上では優れた軍事指揮官だったが、海軍防衛ではカンホジに大きく依存していた。",
+      "tts": {
+        "text": "バージー・ラーオは陸上では優れた軍事指揮官だったが、海軍防衛ではカンホジに大きく依存していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジはマラーター国家への忠誠と作戦上の独立性の間で慎重な均衡を保った。",
+      "text_markdown": "カンホジはマラーター国家への忠誠と作戦上の独立性の間で慎重な均衡を保った。",
+      "tts": {
+        "text": "カンホジはマラーター国家への忠誠と作戦上の独立性の間で慎重な均衡を保った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "原則として王とペーシュワーの権威を認めた。",
+      "text_markdown": "原則として王とペーシュワーの権威を認めた。",
+      "tts": {
+        "text": "原則として王とペーシュワーの権威を認めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし実際には、海軍を自律的な組織として運営した。",
+      "text_markdown": "しかし実際には、海軍を自律的な組織として運営した。",
+      "tts": {
+        "text": "しかし実際には、海軍を自律的な組織として運営した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "マラーター政府はカンホジが不可欠であったため、この取り決めを容認した。",
+      "text_markdown": "マラーター政府はカンホジが不可欠であったため、この取り決めを容認した。",
+      "tts": {
+        "text": "マラーター政府はカンホジが不可欠であったため、この取り決めを容認した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパ列強は彼に対してさまざまな戦略を試み続けた。",
+      "text_markdown": "ヨーロッパ列強は彼に対してさまざまな戦略を試み続けた。",
+      "tts": {
+        "text": "ヨーロッパ列強は彼に対してさまざまな戦略を試み続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスはカンホジと取引するインド商人を制限する経済的圧力を試みた。",
+      "text_markdown": "イギリスはカンホジと取引するインド商人を制限する経済的圧力を試みた。",
+      "tts": {
+        "text": "イギリスはカンホジと取引するインド商人を制限する経済的圧力を試みた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ポルトガルはシッディやその他の現地勢力との同盟構築を試みた。",
+      "text_markdown": "ポルトガルはシッディやその他の現地勢力との同盟構築を試みた。",
+      "tts": {
+        "text": "ポルトガルはシッディやその他の現地勢力との同盟構築を試みた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの戦略のいずれもカンホジの海岸支配を弱めることに成功しなかった。",
+      "text_markdown": "これらの戦略のいずれもカンホジの海岸支配を弱めることに成功しなかった。",
+      "tts": {
+        "text": "これらの戦略のいずれもカンホジの海岸支配を弱めることに成功しなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年、イギリスはカンホジの拠点に対してさらなる海軍遠征を開始した。",
+      "text_markdown": "1720年、イギリスはカンホジの拠点に対してさらなる海軍遠征を開始した。",
+      "tts": {
+        "text": "千七百二十年、イギリスはカンホジの拠点に対してさらなる海軍遠征を開始した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "遠征隊は数隻の軍艦と大規模な兵力を含んでいた。",
+      "text_markdown": "遠征隊は数隻の軍艦と大規模な兵力を含んでいた。",
+      "tts": {
+        "text": "遠征隊は数隻の軍艦と大規模な兵力を含んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "再びカンホジの防御は持ちこたえ、イギリスは撤退を余儀なくされた。",
+      "text_markdown": "再びカンホジの防御は持ちこたえ、イギリスは撤退を余儀なくされた。",
+      "tts": {
+        "text": "再びカンホジの防御は持ちこたえ、イギリスは撤退を余儀なくされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の存命中にイギリスが試みた最後の大規模な攻撃の一つであった。",
+      "text_markdown": "彼の存命中にイギリスが試みた最後の大規模な攻撃の一つであった。",
+      "tts": {
+        "text": "彼の存命中にイギリスが試みた最後の大規模な攻撃の一つであった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジ・アングレは1729年7月4日にアリバーグの拠点で亡くなった。",
+      "text_markdown": "カンホジ・アングレは1729年7月4日にアリバーグの拠点で亡くなった。",
+      "tts": {
+        "text": "カンホジ・アングレは千七百二十九年七月四日にアリバーグの拠点で亡くなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "享年およそ六十歳であった。",
+      "text_markdown": "享年およそ六十歳であった。",
+      "tts": {
+        "text": "享年およそ六十歳であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦場ではなく自然死であった。",
+      "text_markdown": "戦場ではなく自然死であった。",
+      "tts": {
+        "text": "戦場ではなく自然死であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "マラーター海軍のサルケールとして三十一年間務めた。",
+      "text_markdown": "マラーター海軍のサルケールとして三十一年間務めた。",
+      "tts": {
+        "text": "マラーター海軍のサルケールとして三十一年間務めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の死は即座に権力の空白を生んだ。",
+      "text_markdown": "彼の死は即座に権力の空白を生んだ。",
+      "tts": {
+        "text": "彼の死は即座に権力の空白を生んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "息子たちが領土と艦隊を分け合った。",
+      "text_markdown": "息子たちが領土と艦隊を分け合った。",
+      "tts": {
+        "text": "息子たちが領土と艦隊を分け合った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カンホジが個人的権威で維持していた統一は崩壊し始めた。",
+      "text_markdown": "カンホジが個人的権威で維持していた統一は崩壊し始めた。",
+      "tts": {
+        "text": "カンホジが個人的権威で維持していた統一は崩壊し始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼のリーダーシップなしに、マラーター海軍司令部は内部対立によって弱体化した。",
+      "text_markdown": "彼のリーダーシップなしに、マラーター海軍司令部は内部対立によって弱体化した。",
+      "tts": {
+        "text": "彼のリーダーシップなしに、マラーター海軍司令部は内部対立によって弱体化した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "息子のサンバージー・アングレが当初艦隊の指揮を引き継いだ。",
+      "text_markdown": "息子のサンバージー・アングレが当初艦隊の指揮を引き継いだ。",
+      "tts": {
+        "text": "息子のサンバージー・アングレが当初艦隊の指揮を引き継いだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし兄弟間の競争が対立を招いた。",
+      "text_markdown": "しかし兄弟間の競争が対立を招いた。",
+      "tts": {
+        "text": "しかし兄弟間の競争が対立を招いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マラーター政府が介入し、アングレ家の権力は徐々に縮小した。",
+      "text_markdown": "マラーター政府が介入し、アングレ家の権力は徐々に縮小した。",
+      "tts": {
+        "text": "マラーター政府が介入し、アングレ家の権力は徐々に縮小した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ヨーロッパの会社はこれらの動向を強い関心を持って見守った。",
+      "text_markdown": "ヨーロッパの会社はこれらの動向を強い関心を持って見守った。",
+      "tts": {
+        "text": "ヨーロッパの会社はこれらの動向を強い関心を持って見守った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1756年、カンホジの死からおよそ三十年後、イギリスとマラーターが共同でヴィジャイドゥルグのアングレ拠点を攻撃した。",
+      "text_markdown": "1756年、カンホジの死からおよそ三十年後、イギリスとマラーターが共同でヴィジャイドゥルグのアングレ拠点を攻撃した。",
+      "tts": {
+        "text": "千七百五十六年、カンホジの死からおよそ三十年後、イギリスとマラーターが共同でヴィジャイドゥルグのアングレ拠点を攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カンホジの下では難攻不落であった要塞がついに陥落した。",
+      "text_markdown": "カンホジの下では難攻不落であった要塞がついに陥落した。",
+      "tts": {
+        "text": "カンホジの下では難攻不落であった要塞がついに陥落した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その陥落により、インド海岸におけるイギリス海軍覇権への最後の大きな障害が取り除かれた。",
+      "text_markdown": "その陥落により、インド海岸におけるイギリス海軍覇権への最後の大きな障害が取り除かれた。",
+      "tts": {
+        "text": "その陥落により、インド海岸におけるイギリス海軍覇権への最後の大きな障害が取り除かれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジが築いた時代は終わった。",
+      "text_markdown": "カンホジが築いた時代は終わった。",
+      "tts": {
+        "text": "カンホジが築いた時代は終わった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マラーター帝国は海軍指導部が変遷する中でも陸上では成長を続けた。",
+      "text_markdown": "マラーター帝国は海軍指導部が変遷する中でも陸上では成長を続けた。",
+      "tts": {
+        "text": "マラーター帝国は海軍指導部が変遷する中でも陸上では成長を続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペーシュワーのバージー・ラーオはマラーター領土を中部・北部インドに拡大した。",
+      "text_markdown": "ペーシュワーのバージー・ラーオはマラーター領土を中部・北部インドに拡大した。",
+      "tts": {
+        "text": "ペーシュワーのバージー・ラーオはマラーター領土を中部・北部インドに拡大した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしカンホジの統一された海軍指揮がなくなり、海岸はますます脆弱になった。",
+      "text_markdown": "しかしカンホジの統一された海軍指揮がなくなり、海岸はますます脆弱になった。",
+      "tts": {
+        "text": "しかしカンホジの統一された海軍指揮がなくなり、海岸はますます脆弱になった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イギリス東インド会社はこの脆弱性を認識し、それに応じた計画を立て始めた。",
+      "text_markdown": "イギリス東インド会社はこの脆弱性を認識し、それに応じた計画を立て始めた。",
+      "tts": {
+        "text": "イギリス東インド会社はこの脆弱性を認識し、それに応じた計画を立て始めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジ・アングレの不敗の記録はインドの軍事史における最も顕著な業績の一つである。",
+      "text_markdown": "カンホジ・アングレの不敗の記録はインドの軍事史における最も顕著な業績の一つである。",
+      "tts": {
+        "text": "カンホジ・アングレの不敗の記録はインドの軍事史における最も顕著な業績の一つである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三十年間、世界で最も強力な海軍に対して海岸を守り抜いた。",
+      "text_markdown": "三十年間、世界で最も強力な海軍に対して海岸を守り抜いた。",
+      "tts": {
+        "text": "三十年間、世界で最も強力な海軍に対して海岸を守り抜いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "地元の船、地元の乗組員、地元の戦術でそれを成し遂げた。",
+      "text_markdown": "地元の船、地元の乗組員、地元の戦術でそれを成し遂げた。",
+      "tts": {
+        "text": "地元の船、地元の乗組員、地元の戦術でそれを成し遂げた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "いかなるヨーロッパの指揮官も彼を打ち破る方法を見つけることはできなかった。",
+      "text_markdown": "いかなるヨーロッパの指揮官も彼を打ち破る方法を見つけることはできなかった。",
+      "tts": {
+        "text": "いかなるヨーロッパの指揮官も彼を打ち破る方法を見つけることはできなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジ・アングレの遺産は、海賊行為を定義する権利が誰にあるかという問いと深く結びついている。",
+      "text_markdown": "カンホジ・アングレの遺産は、海賊行為を定義する権利が誰にあるかという問いと深く結びついている。",
+      "tts": {
+        "text": "カンホジ・アングレの遺産は、海賊行為を定義する権利が誰にあるかという問いと深く結びついている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリス東インド会社は彼を海賊と呼んだ。貿易を妨害したからである。",
+      "text_markdown": "イギリス東インド会社は彼を海賊と呼んだ。貿易を妨害したからである。",
+      "tts": {
+        "text": "イギリス東インド会社は彼を海賊と呼んだ。貿易を妨害したからである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マラーター帝国は彼を提督と呼んだ。海岸を防衛したからである。",
+      "text_markdown": "マラーター帝国は彼を提督と呼んだ。海岸を防衛したからである。",
+      "tts": {
+        "text": "マラーター帝国は彼を提督と呼んだ。海岸を防衛したからである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "どちらの描写にも真実の一部が含まれている。",
+      "text_markdown": "どちらの描写にも真実の一部が含まれている。",
+      "tts": {
+        "text": "どちらの描写にも真実の一部が含まれている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊というレッテルは政治的な武器であり、中立的な記述ではなかった。",
+      "text_markdown": "海賊というレッテルは政治的な武器であり、中立的な記述ではなかった。",
+      "tts": {
+        "text": "海賊というレッテルは政治的な武器であり、中立的な記述ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパの貿易会社はインド洋に自らの規則を押し付け、それに抵抗する者を犯罪者と呼んだ。",
+      "text_markdown": "ヨーロッパの貿易会社はインド洋に自らの規則を押し付け、それに抵抗する者を犯罪者と呼んだ。",
+      "tts": {
+        "text": "ヨーロッパの貿易会社はインド洋に自らの規則を押し付け、それに抵抗する者を犯罪者と呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この定義によれば、インドの海域に対する主権を主張するインドの支配者は全員海賊であった。",
+      "text_markdown": "この定義によれば、インドの海域に対する主権を主張するインドの支配者は全員海賊であった。",
+      "tts": {
+        "text": "この定義によれば、インドの海域に対する主権を主張するインドの支配者は全員海賊であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カンホジはこの論理を完全に拒否し、歴史は彼の正しさを大きく裏付けている。",
+      "text_markdown": "カンホジはこの論理を完全に拒否し、歴史は彼の正しさを大きく裏付けている。",
+      "tts": {
+        "text": "カンホジはこの論理を完全に拒否し、歴史は彼の正しさを大きく裏付けている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代のインドでは、カンホジ・アングレは国民的英雄として認められている。",
+      "text_markdown": "現代のインドでは、カンホジ・アングレは国民的英雄として認められている。",
+      "tts": {
+        "text": "現代のインドでは、カンホジ・アングレは国民的英雄として認められている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "インド海軍はムンバイの海岸施設に彼の名を冠した。",
+      "text_markdown": "インド海軍はムンバイの海岸施設に彼の名を冠した。",
+      "tts": {
+        "text": "インド海軍はムンバイの海岸施設に彼の名を冠した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "コンカン海岸沿いの目立つ場所に彼の像が立っている。",
+      "text_markdown": "コンカン海岸沿いの目立つ場所に彼の像が立っている。",
+      "tts": {
+        "text": "コンカン海岸沿いの目立つ場所に彼の像が立っている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "インド海軍力の先駆者であり、インドの主権の守護者として記憶されている。",
+      "text_markdown": "インド海軍力の先駆者であり、インドの主権の守護者として記憶されている。",
+      "tts": {
+        "text": "インド海軍力の先駆者であり、インドの主権の守護者として記憶されている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の軍事革新は何世代にもわたりインドの海軍思想に影響を与えた。",
+      "text_markdown": "彼の軍事革新は何世代にもわたりインドの海軍思想に影響を与えた。",
+      "tts": {
+        "text": "彼の軍事革新は何世代にもわたりインドの海軍思想に影響を与えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "高速小型船と要塞化された沿岸拠点の組み合わせは、後のインド海軍指揮官が研究し適応させた教義であった。",
+      "text_markdown": "高速小型船と要塞化された沿岸拠点の組み合わせは、後のインド海軍指揮官が研究し適応させた教義であった。",
+      "tts": {
+        "text": "高速小型船と要塞化された沿岸拠点の組み合わせは、後のインド海軍指揮官が研究し適応させた教義であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "火力の優位よりも潮汐、海流、海岸地理の地元知識を重視する彼の姿勢は、今日の海軍戦略にも通じるものがある。",
+      "text_markdown": "火力の優位よりも潮汐、海流、海岸地理の地元知識を重視する彼の姿勢は、今日の海軍戦略にも通じるものがある。",
+      "tts": {
+        "text": "火力の優位よりも潮汐、海流、海岸地理の地元知識を重視する彼の姿勢は、今日の海軍戦略にも通じるものがある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地元の優位性を持つ小規模な部隊が技術的に優れた敵に抵抗できることを実証した。",
+      "text_markdown": "地元の優位性を持つ小規模な部隊が技術的に優れた敵に抵抗できることを実証した。",
+      "tts": {
+        "text": "地元の優位性を持つ小規模な部隊が技術的に優れた敵に抵抗できることを実証した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヴィジャイドゥルグの要塞は今もコンカン海岸に佇んでいる。",
+      "text_markdown": "ヴィジャイドゥルグの要塞は今もコンカン海岸に佇んでいる。",
+      "tts": {
+        "text": "ヴィジャイドゥルグの要塞は今もコンカン海岸に佇んでいる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その巨大な壁と防護港は、カンホジが築いた海軍力の記念碑である。",
+      "text_markdown": "その巨大な壁と防護港は、カンホジが築いた海軍力の記念碑である。",
+      "tts": {
+        "text": "その巨大な壁と防護港は、カンホジが築いた海軍力の記念碑である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "訪問者は今でも砲台、地下通路、かつて艦隊が避難した港を見ることができる。",
+      "text_markdown": "訪問者は今でも砲台、地下通路、かつて艦隊が避難した港を見ることができる。",
+      "tts": {
+        "text": "訪問者は今でも砲台、地下通路、かつて艦隊が避難した港を見ることができる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "マラーター軍事建築の最も優れた現存例の一つである。",
+      "text_markdown": "マラーター軍事建築の最も優れた現存例の一つである。",
+      "tts": {
+        "text": "マラーター軍事建築の最も優れた現存例の一つである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジ・アングレの生涯はアジアにおける植民地主義の歴史について重要な問いを投げかける。",
+      "text_markdown": "カンホジ・アングレの生涯はアジアにおける植民地主義の歴史について重要な問いを投げかける。",
+      "tts": {
+        "text": "カンホジ・アングレの生涯はアジアにおける植民地主義の歴史について重要な問いを投げかける。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパの貿易会社は自らの拡張を文明と合法的貿易の進歩として提示した。",
+      "text_markdown": "ヨーロッパの貿易会社は自らの拡張を文明と合法的貿易の進歩として提示した。",
+      "tts": {
+        "text": "ヨーロッパの貿易会社は自らの拡張を文明と合法的貿易の進歩として提示した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしカンホジのようなインドの支配者の視点からすれば、ヨーロッパ人こそ侵入者であった。",
+      "text_markdown": "しかしカンホジのようなインドの支配者の視点からすれば、ヨーロッパ人こそ侵入者であった。",
+      "tts": {
+        "text": "しかしカンホジのようなインドの支配者の視点からすれば、ヨーロッパ人こそ侵入者であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らは力で規則を押し付け、それへの抵抗を犯罪と呼んだ。",
+      "text_markdown": "彼らは力で規則を押し付け、それへの抵抗を犯罪と呼んだ。",
+      "tts": {
+        "text": "彼らは力で規則を押し付け、それへの抵抗を犯罪と呼んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンホジが成し遂げたのは海賊行為ではなく主権であった。",
+      "text_markdown": "カンホジが成し遂げたのは海賊行為ではなく主権であった。",
+      "tts": {
+        "text": "カンホジが成し遂げたのは海賊行為ではなく主権であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は自らの海域を支配し、そこを通る貿易に課税し、外国の侵略から民を守った。",
+      "text_markdown": "彼は自らの海域を支配し、そこを通る貿易に課税し、外国の侵略から民を守った。",
+      "tts": {
+        "text": "彼は自らの海域を支配し、そこを通る貿易に課税し、外国の侵略から民を守った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三十一年間一度も戦いに敗れることなくそれを行った。",
+      "text_markdown": "三十一年間一度も戦いに敗れることなくそれを行った。",
+      "tts": {
+        "text": "三十一年間一度も戦いに敗れることなくそれを行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "インド洋の長い歴史の中で、この記録に匹敵する者は他にいない。",
+      "text_markdown": "インド洋の長い歴史の中で、この記録に匹敵する者は他にいない。",
+      "tts": {
+        "text": "インド洋の長い歴史の中で、この記録に匹敵する者は他にいない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "彼の人生は、海の歴史がそこを航海したすべての国のものであることの証である。",
+      "text_markdown": "彼の人生は、海の歴史がそこを航海したすべての国のものであることの証である。",
+      "tts": {
+        "text": "彼の人生は、海の歴史がそこを航海したすべての国のものであることの証である。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

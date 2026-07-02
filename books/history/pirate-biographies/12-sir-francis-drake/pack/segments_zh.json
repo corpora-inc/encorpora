@@ -1,0 +1,4502 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sir_francis_drake",
+  "language": "zh",
+  "total_segments": 301,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一个真实的故事，讲述的是一个环球航行的人。",
+      "text_markdown": "这是一个真实的故事，讲述的是一个环球航行的人。",
+      "tts": {
+        "text": "这是一个真实的故事，讲述的是一个环球航行的人。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的名字叫弗朗西斯·德雷克，他成为了历史上最著名的航海家之一。",
+      "text_markdown": "他的名字叫弗朗西斯·德雷克，他成为了历史上最著名的航海家之一。",
+      "tts": {
+        "text": "他的名字叫弗朗西斯·德雷克，他成为了历史上最著名的航海家之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对英格兰来说，他是拯救国家免受入侵的英雄。",
+      "text_markdown": "对英格兰来说，他是拯救国家免受入侵的英雄。",
+      "tts": {
+        "text": "对英格兰来说，他是拯救国家免受入侵的英雄。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对西班牙来说，他是埃尔·德拉克，巨龙，海上最令人恐惧的海盗。",
+      "text_markdown": "对西班牙来说，他是埃尔·德拉克，巨龙，海上最令人恐惧的海盗。",
+      "tts": {
+        "text": "对西班牙来说，他是埃尔·德拉克，巨龙，海上最令人恐惧的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他同时兼具这两种身份。",
+      "text_markdown": "他同时兼具这两种身份。",
+      "tts": {
+        "text": "他同时兼具这两种身份。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他究竟是英雄还是恶人，完全取决于你站在海洋的哪一边。",
+      "text_markdown": "他究竟是英雄还是恶人，完全取决于你站在海洋的哪一边。",
+      "tts": {
+        "text": "他究竟是英雄还是恶人，完全取决于你站在海洋的哪一边。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克生活在欧洲历史上最戏剧性的世纪之一。",
+      "text_markdown": "德雷克生活在欧洲历史上最戏剧性的世纪之一。",
+      "tts": {
+        "text": "德雷克生活在欧洲历史上最戏剧性的世纪之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帝国相互碰撞，宗教分裂了国家，世界第一次被绘制在地图上。",
+      "text_markdown": "帝国相互碰撞，宗教分裂了国家，世界第一次被绘制在地图上。",
+      "tts": {
+        "text": "帝国相互碰撞，宗教分裂了国家，世界第一次被绘制在地图上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的一生被所有这些力量所塑造。",
+      "text_markdown": "他的一生被所有这些力量所塑造。",
+      "tts": {
+        "text": "他的一生被所有这些力量所塑造。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这就是他的故事。",
+      "text_markdown": "这就是他的故事。",
+      "tts": {
+        "text": "这就是他的故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "德雷克所知的世界",
+      "text_markdown": "德雷克所知的世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弗朗西斯·德雷克出生于英格兰国王亨利八世统治时期。",
+      "text_markdown": "弗朗西斯·德雷克出生于英格兰国王亨利八世统治时期。",
+      "tts": {
+        "text": "弗朗西斯·德雷克出生于英格兰国王亨利八世统治时期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "亨利与罗马天主教会决裂，建立了英格兰教会。",
+      "text_markdown": "亨利与罗马天主教会决裂，建立了英格兰教会。",
+      "tts": {
+        "text": "亨利与罗马天主教会决裂，建立了英格兰教会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这一决定使英格兰在宗教路线上分裂了好几代人。",
+      "text_markdown": "这一决定使英格兰在宗教路线上分裂了好几代人。",
+      "tts": {
+        "text": "这一决定使英格兰在宗教路线上分裂了好几代人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利去世后，英格兰经历了多年的宗教动荡。",
+      "text_markdown": "亨利去世后，英格兰经历了多年的宗教动荡。",
+      "tts": {
+        "text": "亨利去世后，英格兰经历了多年的宗教动荡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的儿子爱德华六世是新教徒。",
+      "text_markdown": "他的儿子爱德华六世是新教徒。",
+      "tts": {
+        "text": "他的儿子爱德华六世是新教徒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的女儿玛丽一世是天主教徒，试图逆转宗教改革。",
+      "text_markdown": "他的女儿玛丽一世是天主教徒，试图逆转宗教改革。",
+      "tts": {
+        "text": "他的女儿玛丽一世是天主教徒，试图逆转宗教改革。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她处决了如此多的新教徒，以至于获得了血腥玛丽的称号。",
+      "text_markdown": "她处决了如此多的新教徒，以至于获得了血腥玛丽的称号。",
+      "tts": {
+        "text": "她处决了如此多的新教徒，以至于获得了血腥玛丽的称号。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1558年，伊丽莎白一世成为女王。",
+      "text_markdown": "1558年，伊丽莎白一世成为女王。",
+      "tts": {
+        "text": "一千五百五十八年，伊丽莎白一世成为女王。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她是新教徒，聪明绝顶，在政治上极为高超。",
+      "text_markdown": "她是新教徒，聪明绝顶，在政治上极为高超。",
+      "tts": {
+        "text": "她是新教徒，聪明绝顶，在政治上极为高超。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的统治将持续四十五年，并被称为伊丽莎白时代。",
+      "text_markdown": "她的统治将持续四十五年，并被称为伊丽莎白时代。",
+      "tts": {
+        "text": "她的统治将持续四十五年，并被称为伊丽莎白时代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "正是在她统治期间，英格兰开始向西班牙争夺全球霸权。",
+      "text_markdown": "正是在她统治期间，英格兰开始向西班牙争夺全球霸权。",
+      "tts": {
+        "text": "正是在她统治期间，英格兰开始向西班牙争夺全球霸权。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "腓力二世治下的西班牙是地球上最强大的帝国。",
+      "text_markdown": "腓力二世治下的西班牙是地球上最强大的帝国。",
+      "tts": {
+        "text": "腓力二世治下的西班牙是地球上最强大的帝国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙领土横跨美洲，从墨西哥到智利。",
+      "text_markdown": "西班牙领土横跨美洲，从墨西哥到智利。",
+      "tts": {
+        "text": "西班牙领土横跨美洲，从墨西哥到智利。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙还控制着菲律宾、意大利部分地区和荷兰。",
+      "text_markdown": "西班牙还控制着菲律宾、意大利部分地区和荷兰。",
+      "tts": {
+        "text": "西班牙还控制着菲律宾、意大利部分地区和荷兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从美洲流入的财富使西班牙变得极其富有。",
+      "text_markdown": "从美洲流入的财富使西班牙变得极其富有。",
+      "tts": {
+        "text": "从美洲流入的财富使西班牙变得极其富有。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秘鲁和墨西哥矿山的白银是西班牙权力的基础。",
+      "text_markdown": "秘鲁和墨西哥矿山的白银是西班牙权力的基础。",
+      "tts": {
+        "text": "秘鲁和墨西哥矿山的白银是西班牙权力的基础。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "宝藏船队用庞大的船队将这些白银运过大西洋。",
+      "text_markdown": "宝藏船队用庞大的船队将这些白银运过大西洋。",
+      "tts": {
+        "text": "宝藏船队用庞大的船队将这些白银运过大西洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些船队对任何足够大胆的人来说都是诱人的目标。",
+      "text_markdown": "这些船队对任何足够大胆的人来说都是诱人的目标。",
+      "tts": {
+        "text": "这些船队对任何足够大胆的人来说都是诱人的目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "世界上最强大的西班牙海军保护着这些运输。",
+      "text_markdown": "世界上最强大的西班牙海军保护着这些运输。",
+      "tts": {
+        "text": "世界上最强大的西班牙海军保护着这些运输。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1494年的托尔德西利亚斯条约将世界在西班牙和葡萄牙之间进行了分割。",
+      "text_markdown": "1494年的托尔德西利亚斯条约将世界在西班牙和葡萄牙之间进行了分割。",
+      "tts": {
+        "text": "一千四百九十四年的托尔德西利亚斯条约将世界在西班牙和葡萄牙之间进行了分割。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰、法国和荷兰被完全排除在外。",
+      "text_markdown": "英格兰、法国和荷兰被完全排除在外。",
+      "tts": {
+        "text": "英格兰、法国和荷兰被完全排除在外。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些国家拒绝了该条约，并声称有权在任何地方进行贸易和探险。",
+      "text_markdown": "这些国家拒绝了该条约，并声称有权在任何地方进行贸易和探险。",
+      "tts": {
+        "text": "这些国家拒绝了该条约，并声称有权在任何地方进行贸易和探险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一分歧是几个世纪冲突的根本原因之一。",
+      "text_markdown": "这一分歧是几个世纪冲突的根本原因之一。",
+      "tts": {
+        "text": "这一分歧是几个世纪冲突的根本原因之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰西南部的德文郡是航海文化的中心。",
+      "text_markdown": "英格兰西南部的德文郡是航海文化的中心。",
+      "tts": {
+        "text": "英格兰西南部的德文郡是航海文化的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "德文郡的男人们是渔民、商人，而且越来越多地成为掠夺者。",
+      "text_markdown": "德文郡的男人们是渔民、商人，而且越来越多地成为掠夺者。",
+      "tts": {
+        "text": "德文郡的男人们是渔民、商人，而且越来越多地成为掠夺者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个郡培养了英格兰一些最伟大的海上船长。",
+      "text_markdown": "这个郡培养了英格兰一些最伟大的海上船长。",
+      "tts": {
+        "text": "这个郡培养了英格兰一些最伟大的海上船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "弗朗西斯·德雷克、沃尔特·罗利和约翰·霍金斯都来自德文郡。",
+      "text_markdown": "弗朗西斯·德雷克、沃尔特·罗利和约翰·霍金斯都来自德文郡。",
+      "tts": {
+        "text": "弗朗西斯·德雷克、沃尔特·罗利和约翰·霍金斯都来自德文郡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十六世纪中叶的英格兰海军与西班牙相比规模很小。",
+      "text_markdown": "十六世纪中叶的英格兰海军与西班牙相比规模很小。",
+      "tts": {
+        "text": "十六世纪中叶的英格兰海军与西班牙相比规模很小。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在直接对抗中，英格兰无法与西班牙逐舰匹敌。",
+      "text_markdown": "在直接对抗中，英格兰无法与西班牙逐舰匹敌。",
+      "tts": {
+        "text": "在直接对抗中，英格兰无法与西班牙逐舰匹敌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "取而代之的是，英格兰人发展了一套袭击和骚扰的策略。",
+      "text_markdown": "取而代之的是，英格兰人发展了一套袭击和骚扰的策略。",
+      "tts": {
+        "text": "取而代之的是，英格兰人发展了一套袭击和骚扰的策略。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "快速、装备精良的船只可以打击西班牙宝藏船队，并在舰队做出反应之前逃脱。",
+      "text_markdown": "快速、装备精良的船只可以打击西班牙宝藏船队，并在舰队做出反应之前逃脱。",
+      "tts": {
+        "text": "快速、装备精良的船只可以打击西班牙宝藏船队，并在舰队做出反应之前逃脱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私掠成为英格兰对抗西班牙的非官方武器。",
+      "text_markdown": "私掠成为英格兰对抗西班牙的非官方武器。",
+      "tts": {
+        "text": "私掠成为英格兰对抗西班牙的非官方武器。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "伊丽莎白不能在不危及王国的情况下公开宣战。",
+      "text_markdown": "伊丽莎白不能在不危及王国的情况下公开宣战。",
+      "tts": {
+        "text": "伊丽莎白不能在不危及王国的情况下公开宣战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但她可以悄悄授权海上船长袭击西班牙的航运。",
+      "text_markdown": "但她可以悄悄授权海上船长袭击西班牙的航运。",
+      "tts": {
+        "text": "但她可以悄悄授权海上船长袭击西班牙的航运。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "如果他们被抓住，她可以否认任何参与。",
+      "text_markdown": "如果他们被抓住，她可以否认任何参与。",
+      "tts": {
+        "text": "如果他们被抓住，她可以否认任何参与。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这一时期，奴隶贸易已经是英格兰航海的一部分。",
+      "text_markdown": "在这一时期，奴隶贸易已经是英格兰航海的一部分。",
+      "tts": {
+        "text": "在这一时期，奴隶贸易已经是英格兰航海的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰船长在西非绑架或购买人口。",
+      "text_markdown": "英格兰船长在西非绑架或购买人口。",
+      "tts": {
+        "text": "英格兰船长在西非绑架或购买人口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们将这些人运往美洲，卖给西班牙殖民者。",
+      "text_markdown": "他们将这些人运往美洲，卖给西班牙殖民者。",
+      "tts": {
+        "text": "他们将这些人运往美洲，卖给西班牙殖民者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这种残酷的贸易被当时大多数欧洲人视为合法生意。",
+      "text_markdown": "这种残酷的贸易被当时大多数欧洲人视为合法生意。",
+      "tts": {
+        "text": "这种残酷的贸易被当时大多数欧洲人视为合法生意。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在德雷克的一生中，世界仍在被探索和绘制地图。",
+      "text_markdown": "在德雷克的一生中，世界仍在被探索和绘制地图。",
+      "tts": {
+        "text": "在德雷克的一生中，世界仍在被探索和绘制地图。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "欧洲人知道大陆的基本轮廓，但不了解细节。",
+      "text_markdown": "欧洲人知道大陆的基本轮廓，但不了解细节。",
+      "tts": {
+        "text": "欧洲人知道大陆的基本轮廓，但不了解细节。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "太平洋对欧洲水手来说基本上是未知的。",
+      "text_markdown": "太平洋对欧洲水手来说基本上是未知的。",
+      "tts": {
+        "text": "太平洋对欧洲水手来说基本上是未知的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大多数大陆的内陆仍然是一个谜。",
+      "text_markdown": "大多数大陆的内陆仍然是一个谜。",
+      "tts": {
+        "text": "大多数大陆的内陆仍然是一个谜。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "航海依赖于罗盘、星盘和航位推算。",
+      "text_markdown": "航海依赖于罗盘、星盘和航位推算。",
+      "tts": {
+        "text": "航海依赖于罗盘、星盘和航位推算。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海图经常不准确，尤其是对于陌生的水域。",
+      "text_markdown": "海图经常不准确，尤其是对于陌生的水域。",
+      "tts": {
+        "text": "海图经常不准确，尤其是对于陌生的水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船长的技术和经验比任何仪器都重要。",
+      "text_markdown": "船长的技术和经验比任何仪器都重要。",
+      "tts": {
+        "text": "船长的技术和经验比任何仪器都重要。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大海不会原谅错误。",
+      "text_markdown": "大海不会原谅错误。",
+      "tts": {
+        "text": "大海不会原谅错误。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是塑造弗朗西斯·德雷克的世界。",
+      "text_markdown": "这就是塑造弗朗西斯·德雷克的世界。",
+      "tts": {
+        "text": "这就是塑造弗朗西斯·德雷克的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个充满宗教冲突、帝国对抗和广袤未知海洋的世界。",
+      "text_markdown": "一个充满宗教冲突、帝国对抗和广袤未知海洋的世界。",
+      "tts": {
+        "text": "一个充满宗教冲突、帝国对抗和广袤未知海洋的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "德雷克所知的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在这个世界里，一个来自普通家庭的勇敢水手可以改变历史的进程。",
+      "text_markdown": "在这个世界里，一个来自普通家庭的勇敢水手可以改变历史的进程。",
+      "tts": {
+        "text": "在这个世界里，一个来自普通家庭的勇敢水手可以改变历史的进程。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弗朗西斯·德雷克大约1540年出生于英格兰德文郡的塔维斯托克。",
+      "text_markdown": "弗朗西斯·德雷克大约1540年出生于英格兰德文郡的塔维斯托克。",
+      "tts": {
+        "text": "弗朗西斯·德雷克大约一千五百四十年出生于英格兰德文郡的塔维斯托克。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是埃德蒙德·德雷克和妻子的十二个儿子中的长子。",
+      "text_markdown": "他是埃德蒙德·德雷克和妻子的十二个儿子中的长子。",
+      "tts": {
+        "text": "他是埃德蒙德·德雷克和妻子的十二个儿子中的长子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这个家庭条件普通。",
+      "text_markdown": "这个家庭条件普通。",
+      "tts": {
+        "text": "这个家庭条件普通。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃德蒙德·德雷克是一位农民，后来成为新教平信徒传教士。",
+      "text_markdown": "埃德蒙德·德雷克是一位农民，后来成为新教平信徒传教士。",
+      "tts": {
+        "text": "埃德蒙德·德雷克是一位农民，后来成为新教平信徒传教士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在肯特的海军造船厂为水手和工人朗读圣经。",
+      "text_markdown": "他在肯特的海军造船厂为水手和工人朗读圣经。",
+      "tts": {
+        "text": "他在肯特的海军造船厂为水手和工人朗读圣经。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他坚定的新教信仰塑造了年轻弗朗西斯的世界观。",
+      "text_markdown": "他坚定的新教信仰塑造了年轻弗朗西斯的世界观。",
+      "tts": {
+        "text": "他坚定的新教信仰塑造了年轻弗朗西斯的世界观。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克在天主教西班牙是一切善的敌人这种信念中长大。",
+      "text_markdown": "德雷克在天主教西班牙是一切善的敌人这种信念中长大。",
+      "tts": {
+        "text": "德雷克在天主教西班牙是一切善的敌人这种信念中长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弗朗西斯年幼时，家庭搬到了肯特。",
+      "text_markdown": "弗朗西斯年幼时，家庭搬到了肯特。",
+      "tts": {
+        "text": "弗朗西斯年幼时，家庭搬到了肯特。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在一次天主教起义期间被迫离开了德文郡。",
+      "text_markdown": "他们在一次天主教起义期间被迫离开了德文郡。",
+      "tts": {
+        "text": "他们在一次天主教起义期间被迫离开了德文郡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在肯特，他们住在梅德韦河和皇家造船厂附近。",
+      "text_markdown": "在肯特，他们住在梅德韦河和皇家造船厂附近。",
+      "tts": {
+        "text": "在肯特，他们住在梅德韦河和皇家造船厂附近。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个小男孩在船只、水手和海的气味环绕中长大。",
+      "text_markdown": "这个小男孩在船只、水手和海的气味环绕中长大。",
+      "tts": {
+        "text": "这个小男孩在船只、水手和海的气味环绕中长大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "少年时代，弗朗西斯被送去一艘小型沿海商船的船长那里当学徒。",
+      "text_markdown": "少年时代，弗朗西斯被送去一艘小型沿海商船的船长那里当学徒。",
+      "tts": {
+        "text": "少年时代，弗朗西斯被送去一艘小型沿海商船的船长那里当学徒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在泰晤士河口和英吉利海峡狭窄而危险的水域学会了航行。",
+      "text_markdown": "他在泰晤士河口和英吉利海峡狭窄而危险的水域学会了航行。",
+      "tts": {
+        "text": "他在泰晤士河口和英吉利海峡狭窄而危险的水域学会了航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些是欧洲最困难的水域之一。",
+      "text_markdown": "这些是欧洲最困难的水域之一。",
+      "tts": {
+        "text": "这些是欧洲最困难的水域之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他在那里学到的技能将伴随他一生。",
+      "text_markdown": "他在那里学到的技能将伴随他一生。",
+      "tts": {
+        "text": "他在那里学到的技能将伴随他一生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "老船长去世时，在遗嘱中将船留给了德雷克。",
+      "text_markdown": "老船长去世时，在遗嘱中将船留给了德雷克。",
+      "tts": {
+        "text": "老船长去世时，在遗嘱中将船留给了德雷克。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对一个没有财产的年轻人来说，这是一份非凡的礼物。",
+      "text_markdown": "对一个没有财产的年轻人来说，这是一份非凡的礼物。",
+      "tts": {
+        "text": "对一个没有财产的年轻人来说，这是一份非凡的礼物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "德雷克现在拥有了自己的船，尽管很小。",
+      "text_markdown": "德雷克现在拥有了自己的船，尽管很小。",
+      "tts": {
+        "text": "德雷克现在拥有了自己的船，尽管很小。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他准备在更广阔的海洋上寻找自己的命运。",
+      "text_markdown": "他准备在更广阔的海洋上寻找自己的命运。",
+      "tts": {
+        "text": "他准备在更广阔的海洋上寻找自己的命运。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克的表兄是约翰·霍金斯，英格兰最著名的海上船长之一。",
+      "text_markdown": "德雷克的表兄是约翰·霍金斯，英格兰最著名的海上船长之一。",
+      "tts": {
+        "text": "德雷克的表兄是约翰·霍金斯，英格兰最著名的海上船长之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "霍金斯组织了前往西非和加勒比的贸易航行。",
+      "text_markdown": "霍金斯组织了前往西非和加勒比的贸易航行。",
+      "tts": {
+        "text": "霍金斯组织了前往西非和加勒比的贸易航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些航行包括捕获和贩卖被奴役的非洲人。",
+      "text_markdown": "这些航行包括捕获和贩卖被奴役的非洲人。",
+      "tts": {
+        "text": "这些航行包括捕获和贩卖被奴役的非洲人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克参加了霍金斯的多次远征。",
+      "text_markdown": "德雷克参加了霍金斯的多次远征。",
+      "tts": {
+        "text": "德雷克参加了霍金斯的多次远征。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1567年，德雷克随霍金斯进行了一次前往加勒比的大型远征。",
+      "text_markdown": "1567年，德雷克随霍金斯进行了一次前往加勒比的大型远征。",
+      "tts": {
+        "text": "一千五百六十七年，德雷克随霍金斯进行了一次前往加勒比的大型远征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们从非洲运送被奴役的人到西班牙殖民地出售。",
+      "text_markdown": "他们从非洲运送被奴役的人到西班牙殖民地出售。",
+      "tts": {
+        "text": "他们从非洲运送被奴役的人到西班牙殖民地出售。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "美洲的西班牙当局本应拒绝英格兰商人。",
+      "text_markdown": "美洲的西班牙当局本应拒绝英格兰商人。",
+      "tts": {
+        "text": "美洲的西班牙当局本应拒绝英格兰商人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但地方官员经常无视规则，照样购买奴隶。",
+      "text_markdown": "但地方官员经常无视规则，照样购买奴隶。",
+      "tts": {
+        "text": "但地方官员经常无视规则，照样购买奴隶。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "远征队在墨西哥港口圣胡安德乌鲁阿遇到了麻烦。",
+      "text_markdown": "远征队在墨西哥港口圣胡安德乌鲁阿遇到了麻烦。",
+      "tts": {
+        "text": "远征队在墨西哥港口圣胡安德乌鲁阿遇到了麻烦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "霍金斯的舰队在那里停靠进行维修。",
+      "text_markdown": "霍金斯的舰队在那里停靠进行维修。",
+      "tts": {
+        "text": "霍金斯的舰队在那里停靠进行维修。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一支西班牙宝藏舰队到达，假装友好后攻击了英格兰船只。",
+      "text_markdown": "一支西班牙宝藏舰队到达，假装友好后攻击了英格兰船只。",
+      "tts": {
+        "text": "一支西班牙宝藏舰队到达，假装友好后攻击了英格兰船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1568年的圣胡安德乌鲁阿之战对英格兰人来说是一场灾难。",
+      "text_markdown": "1568年的圣胡安德乌鲁阿之战对英格兰人来说是一场灾难。",
+      "tts": {
+        "text": "一千五百六十八年的圣胡安德乌鲁阿之战对英格兰人来说是一场灾难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "霍金斯的大部分船只被击沉或俘获。",
+      "text_markdown": "霍金斯的大部分船只被击沉或俘获。",
+      "tts": {
+        "text": "霍金斯的大部分船只被击沉或俘获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数百名英格兰水手被杀或被困在墨西哥。",
+      "text_markdown": "数百名英格兰水手被杀或被困在墨西哥。",
+      "tts": {
+        "text": "数百名英格兰水手被杀或被困在墨西哥。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克乘一艘小船逃脱，但这段经历给他留下了深深的伤痕。",
+      "text_markdown": "德雷克乘一艘小船逃脱，但这段经历给他留下了深深的伤痕。",
+      "tts": {
+        "text": "德雷克乘一艘小船逃脱，但这段经历给他留下了深深的伤痕。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克永远没有原谅西班牙在圣胡安德乌鲁阿的背叛。",
+      "text_markdown": "德雷克永远没有原谅西班牙在圣胡安德乌鲁阿的背叛。",
+      "tts": {
+        "text": "德雷克永远没有原谅西班牙在圣胡安德乌鲁阿的背叛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他认为西班牙的攻击是背信弃义和不光彩的。",
+      "text_markdown": "他认为西班牙的攻击是背信弃义和不光彩的。",
+      "tts": {
+        "text": "他认为西班牙的攻击是背信弃义和不光彩的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从那天起，他将毕生致力于向西班牙复仇。",
+      "text_markdown": "从那天起，他将毕生致力于向西班牙复仇。",
+      "tts": {
+        "text": "从那天起，他将毕生致力于向西班牙复仇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他个人的仇恨与英格兰的国家利益完美契合。",
+      "text_markdown": "他个人的仇恨与英格兰的国家利益完美契合。",
+      "tts": {
+        "text": "他个人的仇恨与英格兰的国家利益完美契合。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克带着反击的决心返回英格兰。",
+      "text_markdown": "德雷克带着反击的决心返回英格兰。",
+      "tts": {
+        "text": "德雷克带着反击的决心返回英格兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他开始策划对西班牙船只和定居点的独立袭击。",
+      "text_markdown": "他开始策划对西班牙船只和定居点的独立袭击。",
+      "tts": {
+        "text": "他开始策划对西班牙船只和定居点的独立袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他研究了关于加勒比地区的每一张可用海图和报告。",
+      "text_markdown": "他研究了关于加勒比地区的每一张可用海图和报告。",
+      "tts": {
+        "text": "他研究了关于加勒比地区的每一张可用海图和报告。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他与每一个到过西班牙大陆的水手交谈。",
+      "text_markdown": "他与每一个到过西班牙大陆的水手交谈。",
+      "tts": {
+        "text": "他与每一个到过西班牙大陆的水手交谈。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙大陆是西班牙在美洲大陆领地的名称。",
+      "text_markdown": "西班牙大陆是西班牙在美洲大陆领地的名称。",
+      "tts": {
+        "text": "西班牙大陆是西班牙在美洲大陆领地的名称。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它从佛罗里达延伸到南美洲北部海岸。",
+      "text_markdown": "它从佛罗里达延伸到南美洲北部海岸。",
+      "tts": {
+        "text": "它从佛罗里达延伸到南美洲北部海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙大陆的宝藏港口是将白银和黄金装船的地方。",
+      "text_markdown": "西班牙大陆的宝藏港口是将白银和黄金装船的地方。",
+      "tts": {
+        "text": "西班牙大陆的宝藏港口是将白银和黄金装船的地方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这些港口是德雷克的主要目标。",
+      "text_markdown": "这些港口是德雷克的主要目标。",
+      "tts": {
+        "text": "这些港口是德雷克的主要目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起之路",
+      "text_markdown": "崛起之路"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1572年，德雷克对西班牙大陆发动了第一次独立袭击。",
+      "text_markdown": "1572年，德雷克对西班牙大陆发动了第一次独立袭击。",
+      "tts": {
+        "text": "一千五百七十二年，德雷克对西班牙大陆发动了第一次独立袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他攻击了巴拿马地峡上的诺姆布雷德迪奥斯港。",
+      "text_markdown": "他攻击了巴拿马地峡上的诺姆布雷德迪奥斯港。",
+      "tts": {
+        "text": "他攻击了巴拿马地峡上的诺姆布雷德迪奥斯港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "诺姆布雷德迪奥斯是秘鲁白银的主要集散地之一。",
+      "text_markdown": "诺姆布雷德迪奥斯是秘鲁白银的主要集散地之一。",
+      "tts": {
+        "text": "诺姆布雷德迪奥斯是秘鲁白银的主要集散地之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这次袭击大胆但几乎致命。",
+      "text_markdown": "这次袭击大胆但几乎致命。",
+      "tts": {
+        "text": "这次袭击大胆但几乎致命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "德雷克在突击中被火枪弹击伤。",
+      "text_markdown": "德雷克在突击中被火枪弹击伤。",
+      "tts": {
+        "text": "德雷克在突击中被火枪弹击伤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他流血过多，以至于手下不得不把他抬回船上。",
+      "text_markdown": "他流血过多，以至于手下不得不把他抬回船上。",
+      "tts": {
+        "text": "他流血过多，以至于手下不得不把他抬回船上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们带着少量战利品但对西班牙防御的宝贵了解逃脱了。",
+      "text_markdown": "他们带着少量战利品但对西班牙防御的宝贵了解逃脱了。",
+      "tts": {
+        "text": "他们带着少量战利品但对西班牙防御的宝贵了解逃脱了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克没有放弃。",
+      "text_markdown": "德雷克没有放弃。",
+      "tts": {
+        "text": "德雷克没有放弃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他与一群西马龙人结盟——这些是逃跑的被奴役非洲人，在丛林中自由生活。",
+      "text_markdown": "他与一群西马龙人结盟——这些是逃跑的被奴役非洲人，在丛林中自由生活。",
+      "tts": {
+        "text": "他与一群西马龙人结盟——这些是逃跑的被奴役非洲人，在丛林中自由生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西马龙人痛恨西班牙人，渴望帮助任何与之对抗的人。",
+      "text_markdown": "西马龙人痛恨西班牙人，渴望帮助任何与之对抗的人。",
+      "tts": {
+        "text": "西马龙人痛恨西班牙人，渴望帮助任何与之对抗的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们了解丛林、小径和西班牙骡队的活动规律。",
+      "text_markdown": "他们了解丛林、小径和西班牙骡队的活动规律。",
+      "tts": {
+        "text": "他们了解丛林、小径和西班牙骡队的活动规律。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "以西马龙人为向导，德雷克徒步穿越了巴拿马地峡。",
+      "text_markdown": "以西马龙人为向导，德雷克徒步穿越了巴拿马地峡。",
+      "tts": {
+        "text": "以西马龙人为向导，德雷克徒步穿越了巴拿马地峡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在茂密的热带丛林中砍出道路，前行了好几天。",
+      "text_markdown": "他们在茂密的热带丛林中砍出道路，前行了好几天。",
+      "tts": {
+        "text": "他们在茂密的热带丛林中砍出道路，前行了好几天。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在一处山脊顶部，德雷克爬上了一棵高树。",
+      "text_markdown": "在一处山脊顶部，德雷克爬上了一棵高树。",
+      "tts": {
+        "text": "在一处山脊顶部，德雷克爬上了一棵高树。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从那里，他成为最早看到太平洋的英格兰人之一。",
+      "text_markdown": "从那里，他成为最早看到太平洋的英格兰人之一。",
+      "tts": {
+        "text": "从那里，他成为最早看到太平洋的英格兰人之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据说德雷克祈祷上帝能让他有朝一日在那片伟大的海洋上航行。",
+      "text_markdown": "据说德雷克祈祷上帝能让他有朝一日在那片伟大的海洋上航行。",
+      "tts": {
+        "text": "据说德雷克祈祷上帝能让他有朝一日在那片伟大的海洋上航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这一刻成为他一生中最著名的故事之一。",
+      "text_markdown": "这一刻成为他一生中最著名的故事之一。",
+      "tts": {
+        "text": "这一刻成为他一生中最著名的故事之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "太平洋的景象让他充满了雄心壮志。",
+      "text_markdown": "太平洋的景象让他充满了雄心壮志。",
+      "tts": {
+        "text": "太平洋的景象让他充满了雄心壮志。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他意识到西班牙的太平洋殖民地几乎没有防御。",
+      "text_markdown": "他意识到西班牙的太平洋殖民地几乎没有防御。",
+      "tts": {
+        "text": "他意识到西班牙的太平洋殖民地几乎没有防御。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克和西马龙人伏击了一支运送白银和黄金的西班牙骡队。",
+      "text_markdown": "德雷克和西马龙人伏击了一支运送白银和黄金的西班牙骡队。",
+      "tts": {
+        "text": "德雷克和西马龙人伏击了一支运送白银和黄金的西班牙骡队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "宝藏正从巴拿马的太平洋一侧运往大西洋一侧。",
+      "text_markdown": "宝藏正从巴拿马的太平洋一侧运往大西洋一侧。",
+      "tts": {
+        "text": "宝藏正从巴拿马的太平洋一侧运往大西洋一侧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "袭击者缴获了大量贵金属。",
+      "text_markdown": "袭击者缴获了大量贵金属。",
+      "tts": {
+        "text": "袭击者缴获了大量贵金属。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克富有而著名地返回了英格兰。",
+      "text_markdown": "德雷克富有而著名地返回了英格兰。",
+      "tts": {
+        "text": "德雷克富有而著名地返回了英格兰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伊丽莎白女王注意到了这位勇敢的年轻船长。",
+      "text_markdown": "伊丽莎白女王注意到了这位勇敢的年轻船长。",
+      "tts": {
+        "text": "伊丽莎白女王注意到了这位勇敢的年轻船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她不能公开赞扬和平时期对西班牙的攻击。",
+      "text_markdown": "她不能公开赞扬和平时期对西班牙的攻击。",
+      "tts": {
+        "text": "她不能公开赞扬和平时期对西班牙的攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但私下里，她对任何削弱对手的事情都感到高兴。",
+      "text_markdown": "但私下里，她对任何削弱对手的事情都感到高兴。",
+      "tts": {
+        "text": "但私下里，她对任何削弱对手的事情都感到高兴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克开始在女王身边的圈子里活动。",
+      "text_markdown": "德雷克开始在女王身边的圈子里活动。",
+      "tts": {
+        "text": "德雷克开始在女王身边的圈子里活动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577年，伊丽莎白秘密授权德雷克率领一支远征队进入太平洋。",
+      "text_markdown": "1577年，伊丽莎白秘密授权德雷克率领一支远征队进入太平洋。",
+      "tts": {
+        "text": "一千五百七十七年，伊丽莎白秘密授权德雷克率领一支远征队进入太平洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "航行的官方目的是探险。",
+      "text_markdown": "航行的官方目的是探险。",
+      "tts": {
+        "text": "航行的官方目的是探险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "真正的目的是袭击南美洲太平洋沿岸的西班牙领地。",
+      "text_markdown": "真正的目的是袭击南美洲太平洋沿岸的西班牙领地。",
+      "tts": {
+        "text": "真正的目的是袭击南美洲太平洋沿岸的西班牙领地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "女王将自己的资金投入了这一事业。",
+      "text_markdown": "女王将自己的资金投入了这一事业。",
+      "tts": {
+        "text": "女王将自己的资金投入了这一事业。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克率五艘船和约一百六十人从普利茅斯出发。",
+      "text_markdown": "德雷克率五艘船和约一百六十人从普利茅斯出发。",
+      "tts": {
+        "text": "德雷克率五艘船和约一百六十人从普利茅斯出发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的旗舰是鹈鹕号，后来改名为金鹿号。",
+      "text_markdown": "他的旗舰是鹈鹕号，后来改名为金鹿号。",
+      "tts": {
+        "text": "他的旗舰是鹈鹕号，后来改名为金鹿号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "舰队向南穿越大西洋，驶向南美洲海岸。",
+      "text_markdown": "舰队向南穿越大西洋，驶向南美洲海岸。",
+      "tts": {
+        "text": "舰队向南穿越大西洋，驶向南美洲海岸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿大西洋海岸的航行十分艰难。",
+      "text_markdown": "沿大西洋海岸的航行十分艰难。",
+      "tts": {
+        "text": "沿大西洋海岸的航行十分艰难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一艘船因不适合航行而被故意凿沉。",
+      "text_markdown": "一艘船因不适合航行而被故意凿沉。",
+      "tts": {
+        "text": "一艘船因不适合航行而被故意凿沉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "德雷克还不得不应对一位名叫托马斯·道蒂的绅士对他权威的严重挑战。",
+      "text_markdown": "德雷克还不得不应对一位名叫托马斯·道蒂的绅士对他权威的严重挑战。",
+      "tts": {
+        "text": "德雷克还不得不应对一位名叫托马斯·道蒂的绅士对他权威的严重挑战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克以叛乱罪审判道蒂并将其处决。",
+      "text_markdown": "德雷克以叛乱罪审判道蒂并将其处决。",
+      "tts": {
+        "text": "德雷克以叛乱罪审判道蒂并将其处决。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "舰队进入了南美洲最南端的麦哲伦海峡。",
+      "text_markdown": "舰队进入了南美洲最南端的麦哲伦海峡。",
+      "tts": {
+        "text": "舰队进入了南美洲最南端的麦哲伦海峡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海峡狭窄、危险，且经常遭受猛烈的风暴。",
+      "text_markdown": "海峡狭窄、危险，且经常遭受猛烈的风暴。",
+      "tts": {
+        "text": "海峡狭窄、危险，且经常遭受猛烈的风暴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "穿越海峡花了16天。",
+      "text_markdown": "穿越海峡花了16天。",
+      "tts": {
+        "text": "穿越海峡花了十六天。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "只有金鹿号和另外两艘船幸存下来。",
+      "text_markdown": "只有金鹿号和另外两艘船幸存下来。",
+      "tts": {
+        "text": "只有金鹿号和另外两艘船幸存下来。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "进入太平洋后，一场可怕的风暴袭击了剩余的船只。",
+      "text_markdown": "进入太平洋后，一场可怕的风暴袭击了剩余的船只。",
+      "tts": {
+        "text": "进入太平洋后，一场可怕的风暴袭击了剩余的船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一艘船被吹回海峡，返回了英格兰。",
+      "text_markdown": "一艘船被吹回海峡，返回了英格兰。",
+      "tts": {
+        "text": "一艘船被吹回海峡，返回了英格兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一艘船完全失踪。",
+      "text_markdown": "另一艘船完全失踪。",
+      "tts": {
+        "text": "另一艘船完全失踪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克独自驾驶金鹿号，身处广阔而未知的海洋之中。",
+      "text_markdown": "德雷克独自驾驶金鹿号，身处广阔而未知的海洋之中。",
+      "tts": {
+        "text": "德雷克独自驾驶金鹿号，身处广阔而未知的海洋之中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克沿南美洲太平洋海岸向北航行。",
+      "text_markdown": "德雷克沿南美洲太平洋海岸向北航行。",
+      "tts": {
+        "text": "德雷克沿南美洲太平洋海岸向北航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那里的西班牙殖民地从未遭受过来自海上的攻击。",
+      "text_markdown": "那里的西班牙殖民地从未遭受过来自海上的攻击。",
+      "tts": {
+        "text": "那里的西班牙殖民地从未遭受过来自海上的攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们没有防御，因为从来没有敌船进入过太平洋。",
+      "text_markdown": "他们没有防御，因为从来没有敌船进入过太平洋。",
+      "tts": {
+        "text": "他们没有防御，因为从来没有敌船进入过太平洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克逐港袭击，几乎没有遇到任何抵抗。",
+      "text_markdown": "德雷克逐港袭击，几乎没有遇到任何抵抗。",
+      "tts": {
+        "text": "德雷克逐港袭击，几乎没有遇到任何抵抗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他缴获了大量的白银、黄金和宝石。",
+      "text_markdown": "他缴获了大量的白银、黄金和宝石。",
+      "tts": {
+        "text": "他缴获了大量的白银、黄金和宝石。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他最大的战利品是西班牙宝藏船《圣母受胎号》。",
+      "text_markdown": "他最大的战利品是西班牙宝藏船《圣母受胎号》。",
+      "tts": {
+        "text": "他最大的战利品是西班牙宝藏船《圣母受胎号》。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这艘船装满了宝藏，转移货物花了好几天。",
+      "text_markdown": "这艘船装满了宝藏，转移货物花了好几天。",
+      "tts": {
+        "text": "这艘船装满了宝藏，转移货物花了好几天。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "崛起之路",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "缴获宝藏的价值令人震惊，以现代货币计算价值数百万。",
+      "text_markdown": "缴获宝藏的价值令人震惊，以现代货币计算价值数百万。",
+      "tts": {
+        "text": "缴获宝藏的价值令人震惊，以现代货币计算价值数百万。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "巅峰时刻",
+      "text_markdown": "巅峰时刻"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克无法原路返回。",
+      "text_markdown": "德雷克无法原路返回。",
+      "tts": {
+        "text": "德雷克无法原路返回。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙人正在整个南美海岸追捕他。",
+      "text_markdown": "西班牙人正在整个南美海岸追捕他。",
+      "tts": {
+        "text": "西班牙人正在整个南美海岸追捕他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "通过麦哲伦海峡返回无异于自杀。",
+      "text_markdown": "通过麦哲伦海峡返回无异于自杀。",
+      "tts": {
+        "text": "通过麦哲伦海峡返回无异于自杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他决定继续向西环绕世界。",
+      "text_markdown": "他决定继续向西环绕世界。",
+      "tts": {
+        "text": "他决定继续向西环绕世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "首先，德雷克沿中美洲和北美洲海岸向北航行。",
+      "text_markdown": "首先，德雷克沿中美洲和北美洲海岸向北航行。",
+      "tts": {
+        "text": "首先，德雷克沿中美洲和北美洲海岸向北航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史学家们争论他向北走了多远。",
+      "text_markdown": "历史学家们争论他向北走了多远。",
+      "tts": {
+        "text": "历史学家们争论他向北走了多远。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些人认为他到达了今天的俄勒冈地区甚至温哥华岛。",
+      "text_markdown": "一些人认为他到达了今天的俄勒冈地区甚至温哥华岛。",
+      "tts": {
+        "text": "一些人认为他到达了今天的俄勒冈地区甚至温哥华岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其他人将他的北界定在旧金山湾附近。",
+      "text_markdown": "其他人将他的北界定在旧金山湾附近。",
+      "tts": {
+        "text": "其他人将他的北界定在旧金山湾附近。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克在加利福尼亚海岸的某处登陆，为英格兰宣称了这片领土。",
+      "text_markdown": "德雷克在加利福尼亚海岸的某处登陆，为英格兰宣称了这片领土。",
+      "tts": {
+        "text": "德雷克在加利福尼亚海岸的某处登陆，为英格兰宣称了这片领土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他将其命名为新阿尔比恩，意为新不列颠。",
+      "text_markdown": "他将其命名为新阿尔比恩，意为新不列颠。",
+      "tts": {
+        "text": "他将其命名为新阿尔比恩，意为新不列颠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在岸上度过了数周时间，修理船只并让船员休息。",
+      "text_markdown": "他在岸上度过了数周时间，修理船只并让船员休息。",
+      "tts": {
+        "text": "他在岸上度过了数周时间，修理船只并让船员休息。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "据说他与当地原住民有友好的交往。",
+      "text_markdown": "据说他与当地原住民有友好的交往。",
+      "tts": {
+        "text": "据说他与当地原住民有友好的交往。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从新阿尔比恩出发，德雷克转向西方，横渡太平洋。",
+      "text_markdown": "从新阿尔比恩出发，德雷克转向西方，横渡太平洋。",
+      "tts": {
+        "text": "从新阿尔比恩出发，德雷克转向西方，横渡太平洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "横渡花了68天。",
+      "text_markdown": "横渡花了68天。",
+      "tts": {
+        "text": "横渡花了六十八天。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是一片广袤而孤寂的海域，几乎没有岛屿可以补给。",
+      "text_markdown": "这是一片广袤而孤寂的海域，几乎没有岛屿可以补给。",
+      "tts": {
+        "text": "这是一片广袤而孤寂的海域，几乎没有岛屿可以补给。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船员们靠日渐减少的补给和能捕到的鱼维生。",
+      "text_markdown": "船员们靠日渐减少的补给和能捕到的鱼维生。",
+      "tts": {
+        "text": "船员们靠日渐减少的补给和能捕到的鱼维生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克到达了香料群岛，即今天印度尼西亚的马鲁古群岛。",
+      "text_markdown": "德雷克到达了香料群岛，即今天印度尼西亚的马鲁古群岛。",
+      "tts": {
+        "text": "德雷克到达了香料群岛，即今天印度尼西亚的马鲁古群岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些岛屿是丁香、肉豆蔻和其他比黄金更有价值的香料的产地。",
+      "text_markdown": "这些岛屿是丁香、肉豆蔻和其他比黄金更有价值的香料的产地。",
+      "tts": {
+        "text": "这些岛屿是丁香、肉豆蔻和其他比黄金更有价值的香料的产地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "德雷克与特尔纳特苏丹谈判了一项贸易协议。",
+      "text_markdown": "德雷克与特尔纳特苏丹谈判了一项贸易协议。",
+      "tts": {
+        "text": "德雷克与特尔纳特苏丹谈判了一项贸易协议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他在金鹿号上装载了六吨丁香。",
+      "text_markdown": "他在金鹿号上装载了六吨丁香。",
+      "tts": {
+        "text": "他在金鹿号上装载了六吨丁香。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这艘船在东印度群岛的一块礁石上差点遇难。",
+      "text_markdown": "这艘船在东印度群岛的一块礁石上差点遇难。",
+      "tts": {
+        "text": "这艘船在东印度群岛的一块礁石上差点遇难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "金鹿号搁浅，被困了二十个小时。",
+      "text_markdown": "金鹿号搁浅，被困了二十个小时。",
+      "tts": {
+        "text": "金鹿号搁浅，被困了二十个小时。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "德雷克不得不将货物抛入海中，以减轻船的重量使其重新浮起。",
+      "text_markdown": "德雷克不得不将货物抛入海中，以减轻船的重量使其重新浮起。",
+      "tts": {
+        "text": "德雷克不得不将货物抛入海中，以减轻船的重量使其重新浮起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这是整个航行中最令人恐惧的时刻之一。",
+      "text_markdown": "这是整个航行中最令人恐惧的时刻之一。",
+      "tts": {
+        "text": "这是整个航行中最令人恐惧的时刻之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克横渡印度洋，绕过非洲最南端的好望角。",
+      "text_markdown": "德雷克横渡印度洋，绕过非洲最南端的好望角。",
+      "tts": {
+        "text": "德雷克横渡印度洋，绕过非洲最南端的好望角。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他向北穿越大西洋。",
+      "text_markdown": "他向北穿越大西洋。",
+      "tts": {
+        "text": "他向北穿越大西洋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1580年9月26日，金鹿号驶入普利茅斯港。",
+      "text_markdown": "1580年9月26日，金鹿号驶入普利茅斯港。",
+      "tts": {
+        "text": "一千五百八十年九月二十六日，金鹿号驶入普利茅斯港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克已经在海上度过了将近三年。",
+      "text_markdown": "德雷克已经在海上度过了将近三年。",
+      "tts": {
+        "text": "德雷克已经在海上度过了将近三年。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克是第一位完成完整环球航行并生还的船长。",
+      "text_markdown": "德雷克是第一位完成完整环球航行并生还的船长。",
+      "tts": {
+        "text": "德雷克是第一位完成完整环球航行并生还的船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "费尔南多·麦哲伦开始了第一次环球航行，但在菲律宾被杀。",
+      "text_markdown": "费尔南多·麦哲伦开始了第一次环球航行，但在菲律宾被杀。",
+      "tts": {
+        "text": "费尔南多·麦哲伦开始了第一次环球航行，但在菲律宾被杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "麦哲伦的船只中只有一艘在另一位船长的带领下完成了航行。",
+      "text_markdown": "麦哲伦的船只中只有一艘在另一位船长的带领下完成了航行。",
+      "tts": {
+        "text": "麦哲伦的船只中只有一艘在另一位船长的带领下完成了航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克是第一个率领远征队环游世界并活着返回的人。",
+      "text_markdown": "德雷克是第一个率领远征队环游世界并活着返回的人。",
+      "tts": {
+        "text": "德雷克是第一个率领远征队环游世界并活着返回的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克带回的宝藏非同寻常。",
+      "text_markdown": "德雷克带回的宝藏非同寻常。",
+      "tts": {
+        "text": "德雷克带回的宝藏非同寻常。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据估计，其价值超过英格兰王室全年的收入。",
+      "text_markdown": "据估计，其价值超过英格兰王室全年的收入。",
+      "tts": {
+        "text": "据估计，其价值超过英格兰王室全年的收入。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "仅伊丽莎白女王的份额就极为庞大。",
+      "text_markdown": "仅伊丽莎白女王的份额就极为庞大。",
+      "tts": {
+        "text": "仅伊丽莎白女王的份额就极为庞大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "航行的投资者获得了数千个百分点的回报。",
+      "text_markdown": "航行的投资者获得了数千个百分点的回报。",
+      "tts": {
+        "text": "航行的投资者获得了数千个百分点的回报。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1581年4月4日，伊丽莎白女王参观了停泊在德普特福德的金鹿号。",
+      "text_markdown": "1581年4月4日，伊丽莎白女王参观了停泊在德普特福德的金鹿号。",
+      "tts": {
+        "text": "一千五百八十一年四月四日，伊丽莎白女王参观了停泊在德普特福德的金鹿号。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她在甲板上为德雷克封爵。",
+      "text_markdown": "她在甲板上为德雷克封爵。",
+      "tts": {
+        "text": "她在甲板上为德雷克封爵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他成为了弗朗西斯·德雷克爵士。",
+      "text_markdown": "他成为了弗朗西斯·德雷克爵士。",
+      "tts": {
+        "text": "他成为了弗朗西斯·德雷克爵士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "西班牙大使勃然大怒，称这是对他国王的侮辱。",
+      "text_markdown": "西班牙大使勃然大怒，称这是对他国王的侮辱。",
+      "tts": {
+        "text": "西班牙大使勃然大怒，称这是对他国王的侮辱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克成为英格兰最富有、最著名的人之一。",
+      "text_markdown": "德雷克成为英格兰最富有、最著名的人之一。",
+      "tts": {
+        "text": "德雷克成为英格兰最富有、最著名的人之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他购买了德文郡的巴克兰修道院，一座宏伟的庄园。",
+      "text_markdown": "他购买了德文郡的巴克兰修道院，一座宏伟的庄园。",
+      "tts": {
+        "text": "他购买了德文郡的巴克兰修道院，一座宏伟的庄园。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他担任了普利茅斯市长。",
+      "text_markdown": "他担任了普利茅斯市长。",
+      "tts": {
+        "text": "他担任了普利茅斯市长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他被选入议会。",
+      "text_markdown": "他被选入议会。",
+      "tts": {
+        "text": "他被选入议会。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1585年，伊丽莎白再次派德雷克袭击西班牙加勒比地区。",
+      "text_markdown": "1585年，伊丽莎白再次派德雷克袭击西班牙加勒比地区。",
+      "tts": {
+        "text": "一千五百八十五年，伊丽莎白再次派德雷克袭击西班牙加勒比地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这次他率领二十多艘船和两千多名士兵的舰队出发。",
+      "text_markdown": "这次他率领二十多艘船和两千多名士兵的舰队出发。",
+      "tts": {
+        "text": "这次他率领二十多艘船和两千多名士兵的舰队出发。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他洗劫了伊斯帕尼奥拉岛上的圣多明各城。",
+      "text_markdown": "他洗劫了伊斯帕尼奥拉岛上的圣多明各城。",
+      "tts": {
+        "text": "他洗劫了伊斯帕尼奥拉岛上的圣多明各城。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "随后他攻占了今天哥伦比亚的卡塔赫纳城并索取赎金。",
+      "text_markdown": "随后他攻占了今天哥伦比亚的卡塔赫纳城并索取赎金。",
+      "tts": {
+        "text": "随后他攻占了今天哥伦比亚的卡塔赫纳城并索取赎金。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些袭击羞辱了西班牙，增强了英格兰的信心。",
+      "text_markdown": "这些袭击羞辱了西班牙，增强了英格兰的信心。",
+      "tts": {
+        "text": "这些袭击羞辱了西班牙，增强了英格兰的信心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们也促使腓力二世计划入侵英格兰。",
+      "text_markdown": "它们也促使腓力二世计划入侵英格兰。",
+      "tts": {
+        "text": "它们也促使腓力二世计划入侵英格兰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "巅峰时刻",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界上两个最强大的海上强国之间的冲突正在逼近。",
+      "text_markdown": "世界上两个最强大的海上强国之间的冲突正在逼近。",
+      "tts": {
+        "text": "世界上两个最强大的海上强国之间的冲突正在逼近。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "终章",
+      "text_markdown": "终章"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1587年，德雷克发动了海军史上最大胆的袭击之一。",
+      "text_markdown": "1587年，德雷克发动了海军史上最大胆的袭击之一。",
+      "tts": {
+        "text": "一千五百八十七年，德雷克发动了海军史上最大胆的袭击之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他驶入西班牙港口加的斯，攻击了在那里集结的舰队。",
+      "text_markdown": "他驶入西班牙港口加的斯，攻击了在那里集结的舰队。",
+      "tts": {
+        "text": "他驶入西班牙港口加的斯，攻击了在那里集结的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他摧毁或俘获了大约三十艘船。",
+      "text_markdown": "他摧毁或俘获了大约三十艘船。",
+      "tts": {
+        "text": "他摧毁或俘获了大约三十艘船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克称这次袭击为烧掉西班牙国王的胡子。",
+      "text_markdown": "德雷克称这次袭击为烧掉西班牙国王的胡子。",
+      "tts": {
+        "text": "德雷克称这次袭击为烧掉西班牙国王的胡子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这次攻击将西班牙无敌舰队推迟了至少一年。",
+      "text_markdown": "这次攻击将西班牙无敌舰队推迟了至少一年。",
+      "tts": {
+        "text": "这次攻击将西班牙无敌舰队推迟了至少一年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它还摧毁了西班牙入侵所需的补给和装备。",
+      "text_markdown": "它还摧毁了西班牙入侵所需的补给和装备。",
+      "tts": {
+        "text": "它还摧毁了西班牙入侵所需的补给和装备。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克再次以英雄的身份返回英格兰。",
+      "text_markdown": "德雷克再次以英雄的身份返回英格兰。",
+      "tts": {
+        "text": "德雷克再次以英雄的身份返回英格兰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1588年，腓力二世终于派出了他的庞大入侵舰队。",
+      "text_markdown": "1588年，腓力二世终于派出了他的庞大入侵舰队。",
+      "tts": {
+        "text": "一千五百八十八年，腓力二世终于派出了他的庞大入侵舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙无敌舰队由大约130艘船组成。",
+      "text_markdown": "西班牙无敌舰队由大约130艘船组成。",
+      "tts": {
+        "text": "西班牙无敌舰队由大约一百三十艘船组成。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是当时欧洲历史上集结的最大海军力量。",
+      "text_markdown": "这是当时欧洲历史上集结的最大海军力量。",
+      "tts": {
+        "text": "这是当时欧洲历史上集结的最大海军力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它的任务是护送一支军队从荷兰穿越英吉利海峡。",
+      "text_markdown": "它的任务是护送一支军队从荷兰穿越英吉利海峡。",
+      "tts": {
+        "text": "它的任务是护送一支军队从荷兰穿越英吉利海峡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克担任埃芬厄姆的霍华德勋爵麾下英格兰舰队的副司令。",
+      "text_markdown": "德雷克担任埃芬厄姆的霍华德勋爵麾下英格兰舰队的副司令。",
+      "tts": {
+        "text": "德雷克担任埃芬厄姆的霍华德勋爵麾下英格兰舰队的副司令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰船只通常比西班牙大帆船更小、更快。",
+      "text_markdown": "英格兰船只通常比西班牙大帆船更小、更快。",
+      "tts": {
+        "text": "英格兰船只通常比西班牙大帆船更小、更快。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英格兰的炮术更优秀，拥有射程更远的火炮和训练更好的船员。",
+      "text_markdown": "英格兰的炮术更优秀，拥有射程更远的火炮和训练更好的船员。",
+      "tts": {
+        "text": "英格兰的炮术更优秀，拥有射程更远的火炮和训练更好的船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但无敌舰队的庞大规模令人恐惧。",
+      "text_markdown": "但无敌舰队的庞大规模令人恐惧。",
+      "tts": {
+        "text": "但无敌舰队的庞大规模令人恐惧。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰舰队在无敌舰队驶过英吉利海峡时不断骚扰它。",
+      "text_markdown": "英格兰舰队在无敌舰队驶过英吉利海峡时不断骚扰它。",
+      "tts": {
+        "text": "英格兰舰队在无敌舰队驶过英吉利海峡时不断骚扰它。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们利用更快的船只和更远射程的火炮从远处攻击。",
+      "text_markdown": "他们利用更快的船只和更远射程的火炮从远处攻击。",
+      "tts": {
+        "text": "他们利用更快的船只和更远射程的火炮从远处攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙的队形保持住了，但英格兰人阻止了它实现目标。",
+      "text_markdown": "西班牙的队形保持住了，但英格兰人阻止了它实现目标。",
+      "tts": {
+        "text": "西班牙的队形保持住了，但英格兰人阻止了它实现目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "决定性时刻在佛兰德斯海岸的格拉沃利讷到来。",
+      "text_markdown": "决定性时刻在佛兰德斯海岸的格拉沃利讷到来。",
+      "tts": {
+        "text": "决定性时刻在佛兰德斯海岸的格拉沃利讷到来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰人在夜间向抛锚的无敌舰队放出火船。",
+      "text_markdown": "英格兰人在夜间向抛锚的无敌舰队放出火船。",
+      "tts": {
+        "text": "英格兰人在夜间向抛锚的无敌舰队放出火船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "燃烧的船只迫使西班牙船只惊慌四散。",
+      "text_markdown": "燃烧的船只迫使西班牙船只惊慌四散。",
+      "tts": {
+        "text": "燃烧的船只迫使西班牙船只惊慌四散。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "保护无敌舰队的紧密队形被打破了。",
+      "text_markdown": "保护无敌舰队的紧密队形被打破了。",
+      "tts": {
+        "text": "保护无敌舰队的紧密队形被打破了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰人对分散的西班牙舰队发动了毁灭性的攻击。",
+      "text_markdown": "英格兰人对分散的西班牙舰队发动了毁灭性的攻击。",
+      "tts": {
+        "text": "英格兰人对分散的西班牙舰队发动了毁灭性的攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "几艘西班牙船只被击沉或冲上海岸。",
+      "text_markdown": "几艘西班牙船只被击沉或冲上海岸。",
+      "tts": {
+        "text": "几艘西班牙船只被击沉或冲上海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "无敌舰队无法重新集结，被风推向北方。",
+      "text_markdown": "无敌舰队无法重新集结，被风推向北方。",
+      "tts": {
+        "text": "无敌舰队无法重新集结，被风推向北方。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它被迫绕过苏格兰和爱尔兰返回西班牙。",
+      "text_markdown": "它被迫绕过苏格兰和爱尔兰返回西班牙。",
+      "tts": {
+        "text": "它被迫绕过苏格兰和爱尔兰返回西班牙。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在漫长的归途中，风暴摧毁了许多西班牙船只。",
+      "text_markdown": "在漫长的归途中，风暴摧毁了许多西班牙船只。",
+      "tts": {
+        "text": "在漫长的归途中，风暴摧毁了许多西班牙船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船只在苏格兰和爱尔兰的岩石海岸上失事。",
+      "text_markdown": "船只在苏格兰和爱尔兰的岩石海岸上失事。",
+      "tts": {
+        "text": "船只在苏格兰和爱尔兰的岩石海岸上失事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "原来130艘船中只有大约65艘回到了西班牙。",
+      "text_markdown": "原来130艘船中只有大约65艘回到了西班牙。",
+      "tts": {
+        "text": "原来一百三十艘船中只有大约六十五艘回到了西班牙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "数以千计的西班牙水手和士兵死亡。",
+      "text_markdown": "数以千计的西班牙水手和士兵死亡。",
+      "tts": {
+        "text": "数以千计的西班牙水手和士兵死亡。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙无敌舰队的失败是欧洲历史的转折点。",
+      "text_markdown": "西班牙无敌舰队的失败是欧洲历史的转折点。",
+      "tts": {
+        "text": "西班牙无敌舰队的失败是欧洲历史的转折点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它证明了西班牙在海上并非不可战胜。",
+      "text_markdown": "它证明了西班牙在海上并非不可战胜。",
+      "tts": {
+        "text": "它证明了西班牙在海上并非不可战胜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它给了英格兰扩展自身帝国的信心。",
+      "text_markdown": "它给了英格兰扩展自身帝国的信心。",
+      "tts": {
+        "text": "它给了英格兰扩展自身帝国的信心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克被奉为国家的救星之一。",
+      "text_markdown": "德雷克被奉为国家的救星之一。",
+      "tts": {
+        "text": "德雷克被奉为国家的救星之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但德雷克的晚年带来了失败和失望。",
+      "text_markdown": "但德雷克的晚年带来了失败和失望。",
+      "tts": {
+        "text": "但德雷克的晚年带来了失败和失望。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1589年，他率领了一次对西班牙的反攻，称为英格兰无敌舰队。",
+      "text_markdown": "1589年，他率领了一次对西班牙的反攻，称为英格兰无敌舰队。",
+      "tts": {
+        "text": "一千五百八十九年，他率领了一次对西班牙的反攻，称为英格兰无敌舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这次远征是一场代价高昂的灾难。",
+      "text_markdown": "这次远征是一场代价高昂的灾难。",
+      "tts": {
+        "text": "这次远征是一场代价高昂的灾难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "德雷克未能实现任何主要目标。",
+      "text_markdown": "德雷克未能实现任何主要目标。",
+      "tts": {
+        "text": "德雷克未能实现任何主要目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1595年，德雷克最后一次驶向加勒比。",
+      "text_markdown": "1595年，德雷克最后一次驶向加勒比。",
+      "tts": {
+        "text": "一千五百九十五年，德雷克最后一次驶向加勒比。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的老搭档约翰·霍金斯随行。",
+      "text_markdown": "他的老搭档约翰·霍金斯随行。",
+      "tts": {
+        "text": "他的老搭档约翰·霍金斯随行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "远征从一开始就厄运连连。",
+      "text_markdown": "远征从一开始就厄运连连。",
+      "tts": {
+        "text": "远征从一开始就厄运连连。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "霍金斯病倒并在波多黎各海岸附近去世。",
+      "text_markdown": "霍金斯病倒并在波多黎各海岸附近去世。",
+      "tts": {
+        "text": "霍金斯病倒并在波多黎各海岸附近去世。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克攻击了波多黎各的圣胡安，但被西班牙守军击退。",
+      "text_markdown": "德雷克攻击了波多黎各的圣胡安，但被西班牙守军击退。",
+      "tts": {
+        "text": "德雷克攻击了波多黎各的圣胡安，但被西班牙守军击退。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他袭击了几个较小的目标，但几乎没有找到宝藏。",
+      "text_markdown": "他袭击了几个较小的目标，但几乎没有找到宝藏。",
+      "tts": {
+        "text": "他袭击了几个较小的目标，但几乎没有找到宝藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自德雷克早期袭击以来，西班牙人已经加强了防御。",
+      "text_markdown": "自德雷克早期袭击以来，西班牙人已经加强了防御。",
+      "tts": {
+        "text": "自德雷克早期袭击以来，西班牙人已经加强了防御。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "轻松掠夺的时代已经结束。",
+      "text_markdown": "轻松掠夺的时代已经结束。",
+      "tts": {
+        "text": "轻松掠夺的时代已经结束。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克染上了痢疾，一种严重的肠道疾病。",
+      "text_markdown": "德雷克染上了痢疾，一种严重的肠道疾病。",
+      "tts": {
+        "text": "德雷克染上了痢疾，一种严重的肠道疾病。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "舰队沿巴拿马海岸航行时，他的病情迅速恶化。",
+      "text_markdown": "舰队沿巴拿马海岸航行时，他的病情迅速恶化。",
+      "tts": {
+        "text": "舰队沿巴拿马海岸航行时，他的病情迅速恶化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "弗朗西斯·德雷克爵士于1596年1月28日在波尔托贝洛镇附近的船上去世。",
+      "text_markdown": "弗朗西斯·德雷克爵士于1596年1月28日在波尔托贝洛镇附近的船上去世。",
+      "tts": {
+        "text": "弗朗西斯·德雷克爵士于一千五百九十六年一月二十八日在波尔托贝洛镇附近的船上去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他大约五十六岁。",
+      "text_markdown": "他大约五十六岁。",
+      "tts": {
+        "text": "他大约五十六岁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克被装在铅棺中海葬。",
+      "text_markdown": "德雷克被装在铅棺中海葬。",
+      "tts": {
+        "text": "德雷克被装在铅棺中海葬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的遗体被放入加勒比海水中——这片他曾多次劫掠的海域。",
+      "text_markdown": "他的遗体被放入加勒比海水中——这片他曾多次劫掠的海域。",
+      "tts": {
+        "text": "他的遗体被放入加勒比海水中——这片他曾多次劫掠的海域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "终章",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "尽管进行了多次现代搜索，他的棺材至今未被发现。",
+      "text_markdown": "尽管进行了多次现代搜索，他的棺材至今未被发现。",
+      "tts": {
+        "text": "尽管进行了多次现代搜索，他的棺材至今未被发现。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遗产",
+      "text_markdown": "遗产"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弗朗西斯·德雷克爵士留下了海军史上任何人物中最为复杂的遗产之一。",
+      "text_markdown": "弗朗西斯·德雷克爵士留下了海军史上任何人物中最为复杂的遗产之一。",
+      "tts": {
+        "text": "弗朗西斯·德雷克爵士留下了海军史上任何人物中最为复杂的遗产之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他同时是民族英雄和国际罪犯。",
+      "text_markdown": "他同时是民族英雄和国际罪犯。",
+      "tts": {
+        "text": "他同时是民族英雄和国际罪犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "评判完全取决于立场。",
+      "text_markdown": "评判完全取决于立场。",
+      "tts": {
+        "text": "评判完全取决于立场。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在英格兰，德雷克被铭记为环游地球并击败无敌舰队的人。",
+      "text_markdown": "在英格兰，德雷克被铭记为环游地球并击败无敌舰队的人。",
+      "tts": {
+        "text": "在英格兰，德雷克被铭记为环游地球并击败无敌舰队的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的雕像矗立在普利茅斯和其他英格兰城市。",
+      "text_markdown": "他的雕像矗立在普利茅斯和其他英格兰城市。",
+      "tts": {
+        "text": "他的雕像矗立在普利茅斯和其他英格兰城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "普利茅斯湾的德雷克岛以他的名字命名。",
+      "text_markdown": "普利茅斯湾的德雷克岛以他的名字命名。",
+      "tts": {
+        "text": "普利茅斯湾的德雷克岛以他的名字命名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他是英国海洋史上最受尊崇的人物之一。",
+      "text_markdown": "他是英国海洋史上最受尊崇的人物之一。",
+      "tts": {
+        "text": "他是英国海洋史上最受尊崇的人物之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在西班牙和拉丁美洲，对德雷克的记忆截然不同。",
+      "text_markdown": "在西班牙和拉丁美洲，对德雷克的记忆截然不同。",
+      "tts": {
+        "text": "在西班牙和拉丁美洲，对德雷克的记忆截然不同。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他被记忆为一个焚烧城市、掠夺宝藏的无情海盗。",
+      "text_markdown": "他被记忆为一个焚烧城市、掠夺宝藏的无情海盗。",
+      "tts": {
+        "text": "他被记忆为一个焚烧城市、掠夺宝藏的无情海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在巴拿马、哥伦比亚和其他国家，他是殖民暴力的象征。",
+      "text_markdown": "在巴拿马、哥伦比亚和其他国家，他是殖民暴力的象征。",
+      "tts": {
+        "text": "在巴拿马、哥伦比亚和其他国家，他是殖民暴力的象征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "埃尔·德拉克这个名字在西班牙语文化中仍然有分量。",
+      "text_markdown": "埃尔·德拉克这个名字在西班牙语文化中仍然有分量。",
+      "tts": {
+        "text": "埃尔·德拉克这个名字在西班牙语文化中仍然有分量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克参与奴隶贸易是他记录中不可回避的一部分。",
+      "text_markdown": "德雷克参与奴隶贸易是他记录中不可回避的一部分。",
+      "tts": {
+        "text": "德雷克参与奴隶贸易是他记录中不可回避的一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他参加了绑架非洲人并将其贩卖为奴的航行。",
+      "text_markdown": "他参加了绑架非洲人并将其贩卖为奴的航行。",
+      "tts": {
+        "text": "他参加了绑架非洲人并将其贩卖为奴的航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他职业生涯的这一方面在英格兰的英雄叙事中经常被淡化。",
+      "text_markdown": "他职业生涯的这一方面在英格兰的英雄叙事中经常被淡化。",
+      "tts": {
+        "text": "他职业生涯的这一方面在英格兰的英雄叙事中经常被淡化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "但它对于理解这个人和他的时代至关重要。",
+      "text_markdown": "但它对于理解这个人和他的时代至关重要。",
+      "tts": {
+        "text": "但它对于理解这个人和他的时代至关重要。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "德雷克海峡——南美洲和南极洲之间的危险海峡——以他的名字命名。",
+      "text_markdown": "德雷克海峡——南美洲和南极洲之间的危险海峡——以他的名字命名。",
+      "tts": {
+        "text": "德雷克海峡——南美洲和南极洲之间的危险海峡——以他的名字命名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "加利福尼亚的德雷克湾标志着他在新阿尔比恩登陆的可能地点。",
+      "text_markdown": "加利福尼亚的德雷克湾标志着他在新阿尔比恩登陆的可能地点。",
+      "tts": {
+        "text": "加利福尼亚的德雷克湾标志着他在新阿尔比恩登陆的可能地点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界各地的地理特征以他的名字命名。",
+      "text_markdown": "世界各地的地理特征以他的名字命名。",
+      "tts": {
+        "text": "世界各地的地理特征以他的名字命名。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最持久的传说之一是德雷克之鼓的故事。",
+      "text_markdown": "最持久的传说之一是德雷克之鼓的故事。",
+      "tts": {
+        "text": "最持久的传说之一是德雷克之鼓的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据传说，当英格兰面临危险时，德雷克的鼓会自己响起。",
+      "text_markdown": "据传说，当英格兰面临危险时，德雷克的鼓会自己响起。",
+      "tts": {
+        "text": "据传说，当英格兰面临危险时，德雷克的鼓会自己响起。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "保存在巴克兰修道院的这面鼓据说在重大军事事件前被听到过。",
+      "text_markdown": "保存在巴克兰修道院的这面鼓据说在重大军事事件前被听到过。",
+      "tts": {
+        "text": "保存在巴克兰修道院的这面鼓据说在重大军事事件前被听到过。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这个传说体现了德雷克在英格兰国家认同中根植之深。",
+      "text_markdown": "这个传说体现了德雷克在英格兰国家认同中根植之深。",
+      "tts": {
+        "text": "这个传说体现了德雷克在英格兰国家认同中根植之深。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私掠者和海盗之间的区别始终是政治性的。",
+      "text_markdown": "私掠者和海盗之间的区别始终是政治性的。",
+      "tts": {
+        "text": "私掠者和海盗之间的区别始终是政治性的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "德雷克获得了女王授权袭击西班牙船只。",
+      "text_markdown": "德雷克获得了女王授权袭击西班牙船只。",
+      "tts": {
+        "text": "德雷克获得了女王授权袭击西班牙船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从英格兰的角度来看，这使他成为合法的海军指挥官。",
+      "text_markdown": "从英格兰的角度来看，这使他成为合法的海军指挥官。",
+      "tts": {
+        "text": "从英格兰的角度来看，这使他成为合法的海军指挥官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从西班牙的角度来看，他是一个得到王冠庇护的普通盗贼。",
+      "text_markdown": "从西班牙的角度来看，他是一个得到王冠庇护的普通盗贼。",
+      "tts": {
+        "text": "从西班牙的角度来看，他是一个得到王冠庇护的普通盗贼。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "不可否认的是他成就的规模。",
+      "text_markdown": "不可否认的是他成就的规模。",
+      "tts": {
+        "text": "不可否认的是他成就的规模。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他驾驶一艘不比现代网球场更长的木船环游了整个地球。",
+      "text_markdown": "他驾驶一艘不比现代网球场更长的木船环游了整个地球。",
+      "tts": {
+        "text": "他驾驶一艘不比现代网球场更长的木船环游了整个地球。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他挑战了地球上最伟大的帝国，并活着讲述了这个故事。",
+      "text_markdown": "他挑战了地球上最伟大的帝国，并活着讲述了这个故事。",
+      "tts": {
+        "text": "他挑战了地球上最伟大的帝国，并活着讲述了这个故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "遗产",
+      "paragraph_id": "p84",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "弗朗西斯·德雷克爵士的故事证明了这个世界属于那些足够大胆去穿越它的人。",
+      "text_markdown": "弗朗西斯·德雷克爵士的故事证明了这个世界属于那些足够大胆去穿越它的人。",
+      "tts": {
+        "text": "弗朗西斯·德雷克爵士的故事证明了这个世界属于那些足够大胆去穿越它的人。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

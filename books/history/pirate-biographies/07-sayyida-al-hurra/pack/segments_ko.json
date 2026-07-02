@@ -1,0 +1,4457 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sayyida_al_hurra",
+  "language": "ko",
+  "total_segments": 298,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 글",
+      "text_markdown": "독자에게 드리는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 해적이 된 여왕의 실화입니다.",
+      "text_markdown": "이것은 해적이 된 여왕의 실화입니다.",
+      "tts": {
+        "text": "이것은 해적이 된 여왕의 실화입니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 이름은 사이다 알후라였으며, 서부 지중해 해역을 지배했습니다.",
+      "text_markdown": "그녀의 이름은 사이다 알후라였으며, 서부 지중해 해역을 지배했습니다.",
+      "tts": {
+        "text": "그녀의 이름은 사이다 알후라였으며, 서부 지중해 해역을 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 이슬람 세계에서 알후라, 즉 자유롭고 주권을 가진 자라는 칭호를 받은 마지막 여성이었습니다.",
+      "text_markdown": "그녀는 이슬람 세계에서 알후라, 즉 자유롭고 주권을 가진 자라는 칭호를 받은 마지막 여성이었습니다.",
+      "tts": {
+        "text": "그녀는 이슬람 세계에서 알후라, 즉 자유롭고 주권을 가진 자라는 칭호를 받은 마지막 여성이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다의 이야기는 대재앙으로부터 시작됩니다.",
+      "text_markdown": "사이다의 이야기는 대재앙으로부터 시작됩니다.",
+      "tts": {
+        "text": "사이다의 이야기는 대재앙으로부터 시작됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1492년, 스페인의 마지막 무슬림 왕국이 페르디난드와 이사벨라의 기독교 군대에 함락되었습니다.",
+      "text_markdown": "1492년, 스페인의 마지막 무슬림 왕국이 페르디난드와 이사벨라의 기독교 군대에 함락되었습니다.",
+      "tts": {
+        "text": "천사백구십이 년, 스페인의 마지막 무슬림 왕국이 페르디난드와 이사벨라의 기독교 군대에 함락되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수십만 명의 무슬림들이 그들의 가족이 수세기 동안 고향이라 불러온 땅에서 추방되었습니다.",
+      "text_markdown": "수십만 명의 무슬림들이 그들의 가족이 수세기 동안 고향이라 불러온 땅에서 추방되었습니다.",
+      "tts": {
+        "text": "수십만 명의 무슬림들이 그들의 가족이 수세기 동안 고향이라 불러온 땅에서 추방되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다의 가족도 그들 중 하나였습니다.",
+      "text_markdown": "사이다의 가족도 그들 중 하나였습니다.",
+      "tts": {
+        "text": "사이다의 가족도 그들 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 십육세기 서부 지중해의 항구와 요새로 여러분을 안내할 것입니다.",
+      "text_markdown": "이 책은 십육세기 서부 지중해의 항구와 요새로 여러분을 안내할 것입니다.",
+      "tts": {
+        "text": "이 책은 십육세기 서부 지중해의 항구와 요새로 여러분을 안내할 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 난민 소녀가 어떻게 여왕, 외교관, 해적 수령이 되었는지 보게 될 것입니다.",
+      "text_markdown": "한 난민 소녀가 어떻게 여왕, 외교관, 해적 수령이 되었는지 보게 될 것입니다.",
+      "tts": {
+        "text": "한 난민 소녀가 어떻게 여왕, 외교관, 해적 수령이 되었는지 보게 될 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 책의 모든 내용은 역사 기록에 기반하지만, 유럽 해적에 비해 사료가 적습니다.",
+      "text_markdown": "이 책의 모든 내용은 역사 기록에 기반하지만, 유럽 해적에 비해 사료가 적습니다.",
+      "tts": {
+        "text": "이 책의 모든 내용은 역사 기록에 기반하지만, 유럽 해적에 비해 사료가 적습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사실이 불확실할 때는 분명하게 그렇게 밝히겠습니다.",
+      "text_markdown": "사실이 불확실할 때는 분명하게 그렇게 밝히겠습니다.",
+      "tts": {
+        "text": "사실이 불확실할 때는 분명하게 그렇게 밝히겠습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "두 신앙 사이의 세계",
+      "text_markdown": "두 신앙 사이의 세계"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "서부 지중해는 기독교 유럽과 이슬람 세계 사이의 전장이었습니다.",
+      "text_markdown": "서부 지중해는 기독교 유럽과 이슬람 세계 사이의 전장이었습니다.",
+      "tts": {
+        "text": "서부 지중해는 기독교 유럽과 이슬람 세계 사이의 전장이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수세기 동안 두 문명은 이 좁은 바다의 지배권을 놓고 충돌했습니다.",
+      "text_markdown": "수세기 동안 두 문명은 이 좁은 바다의 지배권을 놓고 충돌했습니다.",
+      "tts": {
+        "text": "수세기 동안 두 문명은 이 좁은 바다의 지배권을 놓고 충돌했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가장 좁은 지점에서 겨우 구 마일 너비인 지브롤터 해협이 그들을 갈라놓았습니다.",
+      "text_markdown": "가장 좁은 지점에서 겨우 구 마일 너비인 지브롤터 해협이 그들을 갈라놓았습니다.",
+      "tts": {
+        "text": "가장 좁은 지점에서 겨우 구 마일 너비인 지브롤터 해협이 그들을 갈라놓았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해협을 지배하는 것은 대서양과 지중해 사이의 통로를 지배하는 것을 의미했습니다.",
+      "text_markdown": "해협을 지배하는 것은 대서양과 지중해 사이의 통로를 지배하는 것을 의미했습니다.",
+      "tts": {
+        "text": "해협을 지배하는 것은 대서양과 지중해 사이의 통로를 지배하는 것을 의미했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "거의 800년 동안 무슬림들은 이베리아 반도의 일부를 통치했습니다.",
+      "text_markdown": "거의 800년 동안 무슬림들은 이베리아 반도의 일부를 통치했습니다.",
+      "tts": {
+        "text": "거의 팔백 년 동안 무슬림들은 이베리아 반도의 일부를 통치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 자신들의 영토를 알안달루스라 불렀으며, 중세 유럽에서 가장 발전된 문명 중 하나였습니다.",
+      "text_markdown": "그들은 자신들의 영토를 알안달루스라 불렀으며, 중세 유럽에서 가장 발전된 문명 중 하나였습니다.",
+      "tts": {
+        "text": "그들은 자신들의 영토를 알안달루스라 불렀으며, 중세 유럽에서 가장 발전된 문명 중 하나였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽 대부분이 아직 어둠 속에 있을 때, 그 도시들에는 도서관, 대학, 병원이 있었습니다.",
+      "text_markdown": "유럽 대부분이 아직 어둠 속에 있을 때, 그 도시들에는 도서관, 대학, 병원이 있었습니다.",
+      "tts": {
+        "text": "유럽 대부분이 아직 어둠 속에 있을 때, 그 도시들에는 도서관, 대학, 병원이 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "코르도바, 그라나다, 세비야는 이슬람 건축과 학문의 보석이었습니다.",
+      "text_markdown": "코르도바, 그라나다, 세비야는 이슬람 건축과 학문의 보석이었습니다.",
+      "tts": {
+        "text": "코르도바, 그라나다, 세비야는 이슬람 건축과 학문의 보석이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알안달루스는 지적 성취의 중심지였습니다.",
+      "text_markdown": "알안달루스는 지적 성취의 중심지였습니다.",
+      "tts": {
+        "text": "알안달루스는 지적 성취의 중심지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무슬림, 유대교, 기독교 학자들이 수세기 동안 나란히 일했습니다.",
+      "text_markdown": "무슬림, 유대교, 기독교 학자들이 수세기 동안 나란히 일했습니다.",
+      "tts": {
+        "text": "무슬림, 유대교, 기독교 학자들이 수세기 동안 나란히 일했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 그리스 철학을 번역하고, 수학을 발전시키며, 의학과 천문학에서 혁신을 이루었습니다.",
+      "text_markdown": "그들은 그리스 철학을 번역하고, 수학을 발전시키며, 의학과 천문학에서 혁신을 이루었습니다.",
+      "tts": {
+        "text": "그들은 그리스 철학을 번역하고, 수학을 발전시키며, 의학과 천문학에서 혁신을 이루었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 학문 전통은 유럽 르네상스에 깊은 영향을 미칠 것이었습니다.",
+      "text_markdown": "이 학문 전통은 유럽 르네상스에 깊은 영향을 미칠 것이었습니다.",
+      "tts": {
+        "text": "이 학문 전통은 유럽 르네상스에 깊은 영향을 미칠 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 북부의 기독교 왕국들은 레콩키스타라 불리는 운동으로 수세기에 걸쳐 남하했습니다.",
+      "text_markdown": "스페인 북부의 기독교 왕국들은 레콩키스타라 불리는 운동으로 수세기에 걸쳐 남하했습니다.",
+      "tts": {
+        "text": "스페인 북부의 기독교 왕국들은 레콩키스타라 불리는 운동으로 수세기에 걸쳐 남하했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해마다, 십 년마다 무슬림 영토를 정복해 나갔습니다.",
+      "text_markdown": "해마다, 십 년마다 무슬림 영토를 정복해 나갔습니다.",
+      "tts": {
+        "text": "해마다, 십 년마다 무슬림 영토를 정복해 나갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "십오세기 말에는 작은 그라나다 왕국만이 무슬림 지배 하에 남아 있었습니다.",
+      "text_markdown": "십오세기 말에는 작은 그라나다 왕국만이 무슬림 지배 하에 남아 있었습니다.",
+      "tts": {
+        "text": "십오세기 말에는 작은 그라나다 왕국만이 무슬림 지배 하에 남아 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 함락은 시간문제에 불과했습니다.",
+      "text_markdown": "그 함락은 시간문제에 불과했습니다.",
+      "tts": {
+        "text": "그 함락은 시간문제에 불과했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그라나다는 1492년 1월에 함락되어 스페인에서의 거의 8세기에 걸친 무슬림 존재에 종지부를 찍었습니다.",
+      "text_markdown": "그라나다는 1492년 1월에 함락되어 스페인에서의 거의 8세기에 걸친 무슬림 존재에 종지부를 찍었습니다.",
+      "tts": {
+        "text": "그라나다는 천사백구십이 년 일월에 함락되어 스페인에서의 거의 팔 세기에 걸친 무슬림 존재에 종지부를 찍었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르디난드 왕과 이사벨라 여왕은 알함브라 궁전에 개선 입성했습니다.",
+      "text_markdown": "페르디난드 왕과 이사벨라 여왕은 알함브라 궁전에 개선 입성했습니다.",
+      "tts": {
+        "text": "페르디난드 왕과 이사벨라 여왕은 알함브라 궁전에 개선 입성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 마지막 무슬림 통치자 무함마드 십이세는 모로코로 망명했습니다.",
+      "text_markdown": "스페인 마지막 무슬림 통치자 무함마드 십이세는 모로코로 망명했습니다.",
+      "tts": {
+        "text": "스페인 마지막 무슬림 통치자 무함마드 십이세는 모로코로 망명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하나의 문명 전체가 뿌리째 뽑혔습니다.",
+      "text_markdown": "하나의 문명 전체가 뿌리째 뽑혔습니다.",
+      "tts": {
+        "text": "하나의 문명 전체가 뿌리째 뽑혔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그라나다의 함락은 스페인 무슬림 주민들에게 재앙이었습니다.",
+      "text_markdown": "그라나다의 함락은 스페인 무슬림 주민들에게 재앙이었습니다.",
+      "tts": {
+        "text": "그라나다의 함락은 스페인 무슬림 주민들에게 재앙이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "처음에 페르디난드와 이사벨라는 무슬림들이 종교와 관습을 유지할 수 있다고 약속했습니다.",
+      "text_markdown": "처음에 페르디난드와 이사벨라는 무슬림들이 종교와 관습을 유지할 수 있다고 약속했습니다.",
+      "tts": {
+        "text": "처음에 페르디난드와 이사벨라는 무슬림들이 종교와 관습을 유지할 수 있다고 약속했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 약속들은 곧 깨졌습니다.",
+      "text_markdown": "이 약속들은 곧 깨졌습니다.",
+      "tts": {
+        "text": "이 약속들은 곧 깨졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "무슬림들은 기독교로 개종하거나 스페인을 완전히 떠나도록 강요받았습니다.",
+      "text_markdown": "무슬림들은 기독교로 개종하거나 스페인을 완전히 떠나도록 강요받았습니다.",
+      "tts": {
+        "text": "무슬림들은 기독교로 개종하거나 스페인을 완전히 떠나도록 강요받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "개종을 거부한 사람들은 추방되었습니다.",
+      "text_markdown": "개종을 거부한 사람들은 추방되었습니다.",
+      "tts": {
+        "text": "개종을 거부한 사람들은 추방되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 지브롤터 해협을 건너 모로코, 알제리, 튀니지로 도망쳤습니다.",
+      "text_markdown": "그들은 지브롤터 해협을 건너 모로코, 알제리, 튀니지로 도망쳤습니다.",
+      "tts": {
+        "text": "그들은 지브롤터 해협을 건너 모로코, 알제리, 튀니지로 도망쳤습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "난민으로 도착하여 가져갈 수 있는 것만을 들고, 잃어버린 모든 것을 애도했습니다.",
+      "text_markdown": "난민으로 도착하여 가져갈 수 있는 것만을 들고, 잃어버린 모든 것을 애도했습니다.",
+      "tts": {
+        "text": "난민으로 도착하여 가져갈 수 있는 것만을 들고, 잃어버린 모든 것을 애도했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들 중 많은 이들이 스페인 왕실에 대한 복수의 열망으로 불타고 있었습니다.",
+      "text_markdown": "그들 중 많은 이들이 스페인 왕실에 대한 복수의 열망으로 불타고 있었습니다.",
+      "tts": {
+        "text": "그들 중 많은 이들이 스페인 왕실에 대한 복수의 열망으로 불타고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모로코는 이 난민들의 주요 목적지였습니다.",
+      "text_markdown": "모로코는 이 난민들의 주요 목적지였습니다.",
+      "tts": {
+        "text": "모로코는 이 난민들의 주요 목적지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모로코 해안은 스페인에서 해협 바로 건너편에 위치했습니다.",
+      "text_markdown": "모로코 해안은 스페인에서 해협 바로 건너편에 위치했습니다.",
+      "tts": {
+        "text": "모로코 해안은 스페인에서 해협 바로 건너편에 위치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "페스, 탕헤르, 테투안 같은 도시들이 다수의 안달루시아 난민을 흡수했습니다.",
+      "text_markdown": "페스, 탕헤르, 테투안 같은 도시들이 다수의 안달루시아 난민을 흡수했습니다.",
+      "tts": {
+        "text": "페스, 탕헤르, 테투안 같은 도시들이 다수의 안달루시아 난민을 흡수했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 실향 가족들은 자신들의 기술, 학식, 분노를 가져왔습니다.",
+      "text_markdown": "이 실향 가족들은 자신들의 기술, 학식, 분노를 가져왔습니다.",
+      "tts": {
+        "text": "이 실향 가족들은 자신들의 기술, 학식, 분노를 가져왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오스만 제국은 이 시대 최대의 이슬람 강국이었습니다.",
+      "text_markdown": "오스만 제국은 이 시대 최대의 이슬람 강국이었습니다.",
+      "tts": {
+        "text": "오스만 제국은 이 시대 최대의 이슬람 강국이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수도 이스탄불에서 세 대륙에 걸친 광대한 영토를 지배했습니다.",
+      "text_markdown": "수도 이스탄불에서 세 대륙에 걸친 광대한 영토를 지배했습니다.",
+      "tts": {
+        "text": "수도 이스탄불에서 세 대륙에 걸친 광대한 영토를 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오스만 해군은 동부 지중해를 장악했습니다.",
+      "text_markdown": "오스만 해군은 동부 지중해를 장악했습니다.",
+      "tts": {
+        "text": "오스만 해군은 동부 지중해를 장악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "북아프리카 항구를 거점으로 활동하는 오스만 해적들이 유럽 선박과 해안을 약탈했습니다.",
+      "text_markdown": "북아프리카 항구를 거점으로 활동하는 오스만 해적들이 유럽 선박과 해안을 약탈했습니다.",
+      "tts": {
+        "text": "북아프리카 항구를 거점으로 활동하는 오스만 해적들이 유럽 선박과 해안을 약탈했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 유명한 오스만 해적은 하이레딘 바르바로사였습니다.",
+      "text_markdown": "가장 유명한 오스만 해적은 하이레딘 바르바로사였습니다.",
+      "tts": {
+        "text": "가장 유명한 오스만 해적은 하이레딘 바르바로사였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제리 해안을 거점으로 강력한 함대를 지휘했습니다.",
+      "text_markdown": "알제리 해안을 거점으로 강력한 함대를 지휘했습니다.",
+      "tts": {
+        "text": "알제리 해안을 거점으로 강력한 함대를 지휘했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바르바로사는 해적이자 오스만 해군의 제독이기도 했습니다.",
+      "text_markdown": "바르바로사는 해적이자 오스만 해군의 제독이기도 했습니다.",
+      "tts": {
+        "text": "바르바로사는 해적이자 오스만 해군의 제독이기도 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 습격은 스페인, 이탈리아, 프랑스 해안을 공포에 빠뜨렸습니다.",
+      "text_markdown": "그의 습격은 스페인, 이탈리아, 프랑스 해안을 공포에 빠뜨렸습니다.",
+      "tts": {
+        "text": "그의 습격은 스페인, 이탈리아, 프랑스 해안을 공포에 빠뜨렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한편 스페인과 포르투갈은 광대한 해외 제국을 건설하고 있었습니다.",
+      "text_markdown": "한편 스페인과 포르투갈은 광대한 해외 제국을 건설하고 있었습니다.",
+      "tts": {
+        "text": "한편 스페인과 포르투갈은 광대한 해외 제국을 건설하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아메리카를 식민지화하고 아프리카와 아시아에 교역 거점을 세웠습니다.",
+      "text_markdown": "아메리카를 식민지화하고 아프리카와 아시아에 교역 거점을 세웠습니다.",
+      "tts": {
+        "text": "아메리카를 식민지화하고 아프리카와 아시아에 교역 거점을 세웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 부는 지브롤터 해협을 통한 선박의 안전한 통행에 달려 있었습니다.",
+      "text_markdown": "그들의 부는 지브롤터 해협을 통한 선박의 안전한 통행에 달려 있었습니다.",
+      "tts": {
+        "text": "그들의 부는 지브롤터 해협을 통한 선박의 안전한 통행에 달려 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 교통의 어떠한 방해도 제국의 경제적 토대를 위협했습니다.",
+      "text_markdown": "이 교통의 어떠한 방해도 제국의 경제적 토대를 위협했습니다.",
+      "tts": {
+        "text": "이 교통의 어떠한 방해도 제국의 경제적 토대를 위협했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지브롤터 해협은 따라서 엄청난 전략적 중요성을 지닌 곳이었습니다.",
+      "text_markdown": "지브롤터 해협은 따라서 엄청난 전략적 중요성을 지닌 곳이었습니다.",
+      "tts": {
+        "text": "지브롤터 해협은 따라서 엄청난 전략적 중요성을 지닌 곳이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해협을 지배하는 자가 대서양과 지중해 사이의 부의 흐름을 지배했습니다.",
+      "text_markdown": "해협을 지배하는 자가 대서양과 지중해 사이의 부의 흐름을 지배했습니다.",
+      "tts": {
+        "text": "해협을 지배하는 자가 대서양과 지중해 사이의 부의 흐름을 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "강대국에 도전할 만큼 대담한 사람에게는 완벽한 사냥터였습니다.",
+      "text_markdown": "강대국에 도전할 만큼 대담한 사람에게는 완벽한 사냥터였습니다.",
+      "tts": {
+        "text": "강대국에 도전할 만큼 대담한 사람에게는 완벽한 사냥터였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다 알후라는 가장 대담한 사람들 중 하나가 될 것이었습니다.",
+      "text_markdown": "사이다 알후라는 가장 대담한 사람들 중 하나가 될 것이었습니다.",
+      "tts": {
+        "text": "사이다 알후라는 가장 대담한 사람들 중 하나가 될 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지중해의 해적 활동은 카리브해의 해적 활동과 달랐습니다.",
+      "text_markdown": "지중해의 해적 활동은 카리브해의 해적 활동과 달랐습니다.",
+      "tts": {
+        "text": "지중해의 해적 활동은 카리브해의 해적 활동과 달랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기독교도와 무슬림 사이의 종교 갈등과 깊이 얽혀 있었습니다.",
+      "text_markdown": "기독교도와 무슬림 사이의 종교 갈등과 깊이 얽혀 있었습니다.",
+      "tts": {
+        "text": "기독교도와 무슬림 사이의 종교 갈등과 깊이 얽혀 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무슬림 해적이 기독교 선박을, 기독교 해적이 무슬림 선박을 약탈했습니다.",
+      "text_markdown": "무슬림 해적이 기독교 선박을, 기독교 해적이 무슬림 선박을 약탈했습니다.",
+      "tts": {
+        "text": "무슬림 해적이 기독교 선박을, 기독교 해적이 무슬림 선박을 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "두 신앙 사이의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "양측 모두 개인적 이익을 추구하면서도 자신들의 공격을 성전으로 정당화했습니다.",
+      "text_markdown": "양측 모두 개인적 이익을 추구하면서도 자신들의 공격을 성전으로 정당화했습니다.",
+      "tts": {
+        "text": "양측 모두 개인적 이익을 추구하면서도 자신들의 공격을 성전으로 정당화했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "그라나다에서 테투안으로",
+      "text_markdown": "그라나다에서 테투안으로"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다 알후라는 약 1485년에 그라나다 왕국에서 태어났습니다.",
+      "text_markdown": "사이다 알후라는 약 1485년에 그라나다 왕국에서 태어났습니다.",
+      "tts": {
+        "text": "사이다 알후라는 약 천사백팔십오 년에 그라나다 왕국에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 출생 이름은 랄라 아이샤였을 수 있으나 확실하지 않습니다.",
+      "text_markdown": "그녀의 출생 이름은 랄라 아이샤였을 수 있으나 확실하지 않습니다.",
+      "tts": {
+        "text": "그녀의 출생 이름은 랄라 아이샤였을 수 있으나 확실하지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사가 그녀를 기억하는 칭호 사이다 알후라는 고귀한 부인, 자유로운 자를 뜻하는 경칭이었습니다.",
+      "text_markdown": "역사가 그녀를 기억하는 칭호 사이다 알후라는 고귀한 부인, 자유로운 자를 뜻하는 경칭이었습니다.",
+      "tts": {
+        "text": "역사가 그녀를 기억하는 칭호 사이다 알후라는 고귀한 부인, 자유로운 자를 뜻하는 경칭이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 칭호는 그녀의 권력과 독립의 표시로 생애 후반에 부여되었습니다.",
+      "text_markdown": "이 칭호는 그녀의 권력과 독립의 표시로 생애 후반에 부여되었습니다.",
+      "tts": {
+        "text": "이 칭호는 그녀의 권력과 독립의 표시로 생애 후반에 부여되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 가문은 안달루시아 사회에 깊은 뿌리를 둔 귀족 가문인 라시드 왕조에 속했습니다.",
+      "text_markdown": "그녀의 가문은 안달루시아 사회에 깊은 뿌리를 둔 귀족 가문인 라시드 왕조에 속했습니다.",
+      "tts": {
+        "text": "그녀의 가문은 안달루시아 사회에 깊은 뿌리를 둔 귀족 가문인 라시드 왕조에 속했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 아버지 물라이 알리 이븐 라시드는 상당한 정치적 영향력을 가진 인물이었습니다.",
+      "text_markdown": "그녀의 아버지 물라이 알리 이븐 라시드는 상당한 정치적 영향력을 가진 인물이었습니다.",
+      "tts": {
+        "text": "그녀의 아버지 물라이 알리 이븐 라시드는 상당한 정치적 영향력을 가진 인물이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가족은 그라나다를 먼저 떠난 후 리프 지역의 산악 도시 셰프샤우엔에서 살았습니다.",
+      "text_markdown": "가족은 그라나다를 먼저 떠난 후 리프 지역의 산악 도시 셰프샤우엔에서 살았습니다.",
+      "tts": {
+        "text": "가족은 그라나다를 먼저 떠난 후 리프 지역의 산악 도시 셰프샤우엔에서 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "셰프샤우엔은 레콩키스타 난민들이 세운 도시로 포르투갈에 대한 저항 거점 역할을 했습니다.",
+      "text_markdown": "셰프샤우엔은 레콩키스타 난민들이 세운 도시로 포르투갈에 대한 저항 거점 역할을 했습니다.",
+      "tts": {
+        "text": "셰프샤우엔은 레콩키스타 난민들이 세운 도시로 포르투갈에 대한 저항 거점 역할을 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 학문과 정치적 각성의 분위기 속에서 자랐습니다.",
+      "text_markdown": "사이다는 학문과 정치적 각성의 분위기 속에서 자랐습니다.",
+      "tts": {
+        "text": "사이다는 학문과 정치적 각성의 분위기 속에서 자랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가족은 교육을 중시했으며, 그녀는 신학, 언어, 외교에서 철저한 훈련을 받았습니다.",
+      "text_markdown": "가족은 교육을 중시했으며, 그녀는 신학, 언어, 외교에서 철저한 훈련을 받았습니다.",
+      "tts": {
+        "text": "가족은 교육을 중시했으며, 그녀는 신학, 언어, 외교에서 철저한 훈련을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아랍어를 구사했으며 가문의 안달루시아 유산으로 스페인어도 이해했을 것입니다.",
+      "text_markdown": "아랍어를 구사했으며 가문의 안달루시아 유산으로 스페인어도 이해했을 것입니다.",
+      "tts": {
+        "text": "아랍어를 구사했으며 가문의 안달루시아 유산으로 스페인어도 이해했을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 교육은 당시 여성에게는 이례적이었으나 라시드 가문은 평범하지 않았습니다.",
+      "text_markdown": "이러한 교육은 당시 여성에게는 이례적이었으나 라시드 가문은 평범하지 않았습니다.",
+      "tts": {
+        "text": "이러한 교육은 당시 여성에게는 이례적이었으나 라시드 가문은 평범하지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "망명의 경험이 사이다의 전체 세계관을 형성했습니다.",
+      "text_markdown": "망명의 경험이 사이다의 전체 세계관을 형성했습니다.",
+      "tts": {
+        "text": "망명의 경험이 사이다의 전체 세계관을 형성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알안달루스의 잃어버린 낙원 이야기를 들으며 자랐습니다.",
+      "text_markdown": "알안달루스의 잃어버린 낙원 이야기를 들으며 자랐습니다.",
+      "tts": {
+        "text": "알안달루스의 잃어버린 낙원 이야기를 들으며 자랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "윗세대는 아름다운 집, 과수원, 도서관에 대해 깊은 슬픔으로 이야기했습니다.",
+      "text_markdown": "윗세대는 아름다운 집, 과수원, 도서관에 대해 깊은 슬픔으로 이야기했습니다.",
+      "tts": {
+        "text": "윗세대는 아름다운 집, 과수원, 도서관에 대해 깊은 슬픔으로 이야기했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 집단적 실향의 트라우마는 보복에 대한 강렬한 열망을 불러일으켰습니다.",
+      "text_markdown": "이러한 집단적 실향의 트라우마는 보복에 대한 강렬한 열망을 불러일으켰습니다.",
+      "tts": {
+        "text": "이러한 집단적 실향의 트라우마는 보복에 대한 강렬한 열망을 불러일으켰습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "셰프샤우엔 자체가 주목할 만한 장소였습니다.",
+      "text_markdown": "셰프샤우엔 자체가 주목할 만한 장소였습니다.",
+      "tts": {
+        "text": "셰프샤우엔 자체가 주목할 만한 장소였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "리프 산맥에 자리 잡은, 파란 벽과 좁은 골목의 도시였습니다.",
+      "text_markdown": "리프 산맥에 자리 잡은, 파란 벽과 좁은 골목의 도시였습니다.",
+      "tts": {
+        "text": "리프 산맥에 자리 잡은, 파란 벽과 좁은 골목의 도시였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "설립자들은 포르투갈 습격에 대한 방어력 때문에 이 위치를 선택했습니다.",
+      "text_markdown": "설립자들은 포르투갈 습격에 대한 방어력 때문에 이 위치를 선택했습니다.",
+      "tts": {
+        "text": "설립자들은 포르투갈 습격에 대한 방어력 때문에 이 위치를 선택했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 도시는 안달루시아 난민들의 안식처이자 저항의 중심이 되었습니다.",
+      "text_markdown": "이 도시는 안달루시아 난민들의 안식처이자 저항의 중심이 되었습니다.",
+      "tts": {
+        "text": "이 도시는 안달루시아 난민들의 안식처이자 저항의 중심이 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아직 어린 나이에 사이다는 테투안 총독 아부 알하산 알만드리와 결혼했습니다.",
+      "text_markdown": "아직 어린 나이에 사이다는 테투안 총독 아부 알하산 알만드리와 결혼했습니다.",
+      "tts": {
+        "text": "아직 어린 나이에 사이다는 테투안 총독 아부 알하산 알만드리와 결혼했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알만드리는 테투안을 폐허에서 재건한 존경받는 지도자였습니다.",
+      "text_markdown": "알만드리는 테투안을 폐허에서 재건한 존경받는 지도자였습니다.",
+      "tts": {
+        "text": "알만드리는 테투안을 폐허에서 재건한 존경받는 지도자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "도시는 수십 년 전 포르투갈인들에 의해 파괴되었고 서서히 회복 중이었습니다.",
+      "text_markdown": "도시는 수십 년 전 포르투갈인들에 의해 파괴되었고 서서히 회복 중이었습니다.",
+      "tts": {
+        "text": "도시는 수십 년 전 포르투갈인들에 의해 파괴되었고 서서히 회복 중이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 결혼은 두 강력한 난민 가문 사이의 정치적 동맹이었습니다.",
+      "text_markdown": "이 결혼은 두 강력한 난민 가문 사이의 정치적 동맹이었습니다.",
+      "tts": {
+        "text": "이 결혼은 두 강력한 난민 가문 사이의 정치적 동맹이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "테투안은 모로코 북부 해안, 지브롤터 해협 근처에 위치했습니다.",
+      "text_markdown": "테투안은 모로코 북부 해안, 지브롤터 해협 근처에 위치했습니다.",
+      "tts": {
+        "text": "테투안은 모로코 북부 해안, 지브롤터 해협 근처에 위치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무역과 유럽 선박 공격 모두에 이상적인 위치였습니다.",
+      "text_markdown": "무역과 유럽 선박 공격 모두에 이상적인 위치였습니다.",
+      "tts": {
+        "text": "무역과 유럽 선박 공격 모두에 이상적인 위치였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "도시는 주로 안달루시아 난민들이 거주하는 번성하는 항구가 되었습니다.",
+      "text_markdown": "도시는 주로 안달루시아 난민들이 거주하는 번성하는 항구가 되었습니다.",
+      "tts": {
+        "text": "도시는 주로 안달루시아 난민들이 거주하는 번성하는 항구가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 난민들은 스페인 항구, 정박지, 항로에 대한 지식을 가져왔습니다.",
+      "text_markdown": "이 난민들은 스페인 항구, 정박지, 항로에 대한 지식을 가져왔습니다.",
+      "tts": {
+        "text": "이 난민들은 스페인 항구, 정박지, 항로에 대한 지식을 가져왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 테투안 통치에서 남편의 유능한 동반자임을 입증했습니다.",
+      "text_markdown": "사이다는 테투안 통치에서 남편의 유능한 동반자임을 입증했습니다.",
+      "tts": {
+        "text": "사이다는 테투안 통치에서 남편의 유능한 동반자임을 입증했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정치적 결정에 관여했으며 지역의 복잡한 외교를 이해했습니다.",
+      "text_markdown": "정치적 결정에 관여했으며 지역의 복잡한 외교를 이해했습니다.",
+      "tts": {
+        "text": "정치적 결정에 관여했으며 지역의 복잡한 외교를 이해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "남편이 사망했을 때 사이다는 사적 생활로 물러나지 않았습니다.",
+      "text_markdown": "남편이 사망했을 때 사이다는 사적 생활로 물러나지 않았습니다.",
+      "tts": {
+        "text": "남편이 사망했을 때 사이다는 사적 생활로 물러나지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대신 직접 테투안의 통치를 맡았습니다.",
+      "text_markdown": "대신 직접 테투안의 통치를 맡았습니다.",
+      "tts": {
+        "text": "대신 직접 테투안의 통치를 맡았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "도시의 유일한 통치자가 되는 것은 이 시대 여성에게 비범한 성취였습니다.",
+      "text_markdown": "도시의 유일한 통치자가 되는 것은 이 시대 여성에게 비범한 성취였습니다.",
+      "tts": {
+        "text": "도시의 유일한 통치자가 되는 것은 이 시대 여성에게 비범한 성취였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사이다는 권력을 유지하기 위한 정치 기술, 가문 인맥, 개인적 권위를 갖추고 있었습니다.",
+      "text_markdown": "사이다는 권력을 유지하기 위한 정치 기술, 가문 인맥, 개인적 권위를 갖추고 있었습니다.",
+      "tts": {
+        "text": "사이다는 권력을 유지하기 위한 정치 기술, 가문 인맥, 개인적 권위를 갖추고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "테투안 사람들은 그녀가 유능했고 고인이 된 남편이 그녀를 신뢰했기에 통치를 받아들였습니다.",
+      "text_markdown": "테투안 사람들은 그녀가 유능했고 고인이 된 남편이 그녀를 신뢰했기에 통치를 받아들였습니다.",
+      "tts": {
+        "text": "테투안 사람들은 그녀가 유능했고 고인이 된 남편이 그녀를 신뢰했기에 통치를 받아들였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 이제 모로코 해안에서 가장 강력한 인물 중 하나였습니다.",
+      "text_markdown": "그녀는 이제 모로코 해안에서 가장 강력한 인물 중 하나였습니다.",
+      "tts": {
+        "text": "그녀는 이제 모로코 해안에서 가장 강력한 인물 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다에게는 강력한 동맹들도 있었습니다.",
+      "text_markdown": "사이다에게는 강력한 동맹들도 있었습니다.",
+      "tts": {
+        "text": "사이다에게는 강력한 동맹들도 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "셰프샤우엔에서의 가문 인맥이 리프 산맥에서 지원 네트워크를 제공했습니다.",
+      "text_markdown": "셰프샤우엔에서의 가문 인맥이 리프 산맥에서 지원 네트워크를 제공했습니다.",
+      "tts": {
+        "text": "셰프샤우엔에서의 가문 인맥이 리프 산맥에서 지원 네트워크를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "페스에서 모로코를 통치하던 와타스 왕조와 좋은 관계를 유지했습니다.",
+      "text_markdown": "페스에서 모로코를 통치하던 와타스 왕조와 좋은 관계를 유지했습니다.",
+      "tts": {
+        "text": "페스에서 모로코를 통치하던 와타스 왕조와 좋은 관계를 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 동맹이 여성 통치자에 도전할 수 있는 경쟁자로부터 그녀를 보호했습니다.",
+      "text_markdown": "이러한 동맹이 여성 통치자에 도전할 수 있는 경쟁자로부터 그녀를 보호했습니다.",
+      "tts": {
+        "text": "이러한 동맹이 여성 통치자에 도전할 수 있는 경쟁자로부터 그녀를 보호했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다의 통치 아래 테투안은 번영했습니다.",
+      "text_markdown": "사이다의 통치 아래 테투안은 번영했습니다.",
+      "tts": {
+        "text": "사이다의 통치 아래 테투안은 번영했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무역이 항구를 통해 흘러들었고 인구가 증가했습니다.",
+      "text_markdown": "무역이 항구를 통해 흘러들었고 인구가 증가했습니다.",
+      "tts": {
+        "text": "무역이 항구를 통해 흘러들었고 인구가 증가했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 사이다에게는 단순한 통치 이상의 야망이 있었습니다.",
+      "text_markdown": "그러나 사이다에게는 단순한 통치 이상의 야망이 있었습니다.",
+      "tts": {
+        "text": "그러나 사이다에게는 단순한 통치 이상의 야망이 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 바다와 매일 지브롤터 해협을 건너는 유럽 선박들에 눈을 돌렸습니다.",
+      "text_markdown": "그녀는 바다와 매일 지브롤터 해협을 건너는 유럽 선박들에 눈을 돌렸습니다.",
+      "tts": {
+        "text": "그녀는 바다와 매일 지브롤터 해협을 건너는 유럽 선박들에 눈을 돌렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인과 포르투갈은 모로코의 여러 해안 도시를 점령했습니다.",
+      "text_markdown": "스페인과 포르투갈은 모로코의 여러 해안 도시를 점령했습니다.",
+      "tts": {
+        "text": "스페인과 포르투갈은 모로코의 여러 해안 도시를 점령했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세우타, 탕헤르 등의 항구가 유럽의 지배 하에 있었습니다.",
+      "text_markdown": "세우타, 탕헤르 등의 항구가 유럽의 지배 하에 있었습니다.",
+      "tts": {
+        "text": "세우타, 탕헤르 등의 항구가 유럽의 지배 하에 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 점령은 모로코 국민에게 끊임없는 치욕이었습니다.",
+      "text_markdown": "이러한 점령은 모로코 국민에게 끊임없는 치욕이었습니다.",
+      "tts": {
+        "text": "이러한 점령은 모로코 국민에게 끊임없는 치욕이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "그라나다에서 테투안으로",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다는 해적 활동을 이 외국 점령자들에 대한 합법적 저항의 형태로 보았습니다.",
+      "text_markdown": "사이다는 해적 활동을 이 외국 점령자들에 대한 합법적 저항의 형태로 보았습니다.",
+      "tts": {
+        "text": "사이다는 해적 활동을 이 외국 점령자들에 대한 합법적 저항의 형태로 보았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "해적의 여왕",
+      "text_markdown": "해적의 여왕"
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다 알후라는 서부 지중해 전역에서 활동하는 해적 함대를 건설했습니다.",
+      "text_markdown": "사이다 알후라는 서부 지중해 전역에서 활동하는 해적 함대를 건설했습니다.",
+      "tts": {
+        "text": "사이다 알후라는 서부 지중해 전역에서 활동하는 해적 함대를 건설했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 선박들은 지브롤터 해협을 통과하는 스페인과 포르투갈 상선을 공격했습니다.",
+      "text_markdown": "그녀의 선박들은 지브롤터 해협을 통과하는 스페인과 포르투갈 상선을 공격했습니다.",
+      "tts": {
+        "text": "그녀의 선박들은 지브롤터 해협을 통과하는 스페인과 포르투갈 상선을 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "군사 지휘관의 정밀함으로 이러한 습격을 조직했습니다.",
+      "text_markdown": "군사 지휘관의 정밀함으로 이러한 습격을 조직했습니다.",
+      "tts": {
+        "text": "군사 지휘관의 정밀함으로 이러한 습격을 조직했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "각 공격은 선박과 선원의 위험을 최소화하면서 이익을 극대화하도록 계획되었습니다.",
+      "text_markdown": "각 공격은 선박과 선원의 위험을 최소화하면서 이익을 극대화하도록 계획되었습니다.",
+      "tts": {
+        "text": "각 공격은 선박과 선원의 위험을 최소화하면서 이익을 극대화하도록 계획되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다를 위해 항해한 해적들은 모로코 선원들과 안달루시아 난민의 혼합이었습니다.",
+      "text_markdown": "사이다를 위해 항해한 해적들은 모로코 선원들과 안달루시아 난민의 혼합이었습니다.",
+      "tts": {
+        "text": "사이다를 위해 항해한 해적들은 모로코 선원들과 안달루시아 난민의 혼합이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "난민 중 다수는 스페인 해안을 잘 아는 전직 선원이었습니다.",
+      "text_markdown": "난민 중 다수는 스페인 해안을 잘 아는 전직 선원이었습니다.",
+      "tts": {
+        "text": "난민 중 다수는 스페인 해안을 잘 아는 전직 선원이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "항구, 항로, 상선대의 일정을 알고 있었습니다.",
+      "text_markdown": "항구, 항로, 상선대의 일정을 알고 있었습니다.",
+      "tts": {
+        "text": "항구, 항로, 상선대의 일정을 알고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 정보가 사이다의 함대에 결정적인 우위를 제공했습니다.",
+      "text_markdown": "이 정보가 사이다의 함대에 결정적인 우위를 제공했습니다.",
+      "tts": {
+        "text": "이 정보가 사이다의 함대에 결정적인 우위를 제공했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 유명한 오스만 해적 하이레딘 바르바로사와 동맹을 맺었습니다.",
+      "text_markdown": "사이다는 유명한 오스만 해적 하이레딘 바르바로사와 동맹을 맺었습니다.",
+      "tts": {
+        "text": "사이다는 유명한 오스만 해적 하이레딘 바르바로사와 동맹을 맺었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바르바로사는 알제의 기지에서 동부 지중해를 지배했습니다.",
+      "text_markdown": "바르바로사는 알제의 기지에서 동부 지중해를 지배했습니다.",
+      "tts": {
+        "text": "바르바로사는 알제의 기지에서 동부 지중해를 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함께 서부 지중해를 나누었습니다.",
+      "text_markdown": "함께 서부 지중해를 나누었습니다.",
+      "tts": {
+        "text": "함께 서부 지중해를 나누었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다가 지브롤터 해협 인근을 지배하고 바르바로사가 더 동쪽을 지배했습니다.",
+      "text_markdown": "사이다가 지브롤터 해협 인근을 지배하고 바르바로사가 더 동쪽을 지배했습니다.",
+      "tts": {
+        "text": "사이다가 지브롤터 해협 인근을 지배하고 바르바로사가 더 동쪽을 지배했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 동맹은 사이다를 지중해 해적 역사에서 가장 중요한 인물 중 하나로 만들었습니다.",
+      "text_markdown": "이 동맹은 사이다를 지중해 해적 역사에서 가장 중요한 인물 중 하나로 만들었습니다.",
+      "tts": {
+        "text": "이 동맹은 사이다를 지중해 해적 역사에서 가장 중요한 인물 중 하나로 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바르바로사와 이런 협력 관계를 맺은 유일하게 알려진 여성이었습니다.",
+      "text_markdown": "바르바로사와 이런 협력 관계를 맺은 유일하게 알려진 여성이었습니다.",
+      "tts": {
+        "text": "바르바로사와 이런 협력 관계를 맺은 유일하게 알려진 여성이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "양자의 연합 세력은 서부 지중해를 유럽 해운에 극도로 위험하게 만들었습니다.",
+      "text_markdown": "양자의 연합 세력은 서부 지중해를 유럽 해운에 극도로 위험하게 만들었습니다.",
+      "tts": {
+        "text": "양자의 연합 세력은 서부 지중해를 유럽 해운에 극도로 위험하게 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인과 포르투갈은 이 조직적 위협으로부터 상선대를 보호하는 데 어려움을 겪었습니다.",
+      "text_markdown": "스페인과 포르투갈은 이 조직적 위협으로부터 상선대를 보호하는 데 어려움을 겪었습니다.",
+      "tts": {
+        "text": "스페인과 포르투갈은 이 조직적 위협으로부터 상선대를 보호하는 데 어려움을 겪었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다의 해적들은 단순히 선박을 약탈하고 풀어주지 않았습니다.",
+      "text_markdown": "사이다의 해적들은 단순히 선박을 약탈하고 풀어주지 않았습니다.",
+      "tts": {
+        "text": "사이다의 해적들은 단순히 선박을 약탈하고 풀어주지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "화물과 승객 모두를 포획했습니다.",
+      "text_markdown": "화물과 승객 모두를 포획했습니다.",
+      "tts": {
+        "text": "화물과 승객 모두를 포획했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽 포로들은 몸값을 위해 억류되었으며, 이는 주요 수입원이 되었습니다.",
+      "text_markdown": "유럽 포로들은 몸값을 위해 억류되었으며, 이는 주요 수입원이 되었습니다.",
+      "tts": {
+        "text": "유럽 포로들은 몸값을 위해 억류되었으며, 이는 주요 수입원이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "부유한 포로는 가족이나 정부가 지불하는 거액을 가져올 수 있었습니다.",
+      "text_markdown": "부유한 포로는 가족이나 정부가 지불하는 거액을 가져올 수 있었습니다.",
+      "tts": {
+        "text": "부유한 포로는 가족이나 정부가 지불하는 거액을 가져올 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "몸값 거래는 고유한 규칙과 중개인이 있는 복잡한 사업이었습니다.",
+      "text_markdown": "몸값 거래는 고유한 규칙과 중개인이 있는 복잡한 사업이었습니다.",
+      "tts": {
+        "text": "몸값 거래는 고유한 규칙과 중개인이 있는 복잡한 사업이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인과 포르투갈의 종교 단체들이 포로 석방 협상을 전문으로 했습니다.",
+      "text_markdown": "스페인과 포르투갈의 종교 단체들이 포로 석방 협상을 전문으로 했습니다.",
+      "tts": {
+        "text": "스페인과 포르투갈의 종교 단체들이 포로 석방 협상을 전문으로 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사이다는 단순한 해적이 아닌 국가 원수로서 이 중개인들과 거래했습니다.",
+      "text_markdown": "사이다는 단순한 해적이 아닌 국가 원수로서 이 중개인들과 거래했습니다.",
+      "tts": {
+        "text": "사이다는 단순한 해적이 아닌 국가 원수로서 이 중개인들과 거래했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "유럽 정부와의 외교 서한이 스페인과 포르투갈 기록 보관소에 남아 있습니다.",
+      "text_markdown": "유럽 정부와의 외교 서한이 스페인과 포르투갈 기록 보관소에 남아 있습니다.",
+      "tts": {
+        "text": "유럽 정부와의 외교 서한이 스페인과 포르투갈 기록 보관소에 남아 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 자료들은 두려움과 마지못한 존경이 뒤섞인 태도로 사이다를 묘사합니다.",
+      "text_markdown": "유럽 자료들은 두려움과 마지못한 존경이 뒤섞인 태도로 사이다를 묘사합니다.",
+      "tts": {
+        "text": "유럽 자료들은 두려움과 마지못한 존경이 뒤섞인 태도로 사이다를 묘사합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 그녀를 해적 여왕이라 불렀지만, 그녀는 자신을 전쟁을 수행하는 정당한 통치자로 보았습니다.",
+      "text_markdown": "그들은 그녀를 해적 여왕이라 불렀지만, 그녀는 자신을 전쟁을 수행하는 정당한 통치자로 보았습니다.",
+      "tts": {
+        "text": "그들은 그녀를 해적 여왕이라 불렀지만, 그녀는 자신을 전쟁을 수행하는 정당한 통치자로 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 눈에 스페인인과 포르투갈인은 무슬림 땅을 빼앗은 침략자였습니다.",
+      "text_markdown": "그녀의 눈에 스페인인과 포르투갈인은 무슬림 땅을 빼앗은 침략자였습니다.",
+      "tts": {
+        "text": "그녀의 눈에 스페인인과 포르투갈인은 무슬림 땅을 빼앗은 침략자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 습격은 정의의 행위였지 단순한 도적질이 아니었습니다.",
+      "text_markdown": "그녀의 습격은 정의의 행위였지 단순한 도적질이 아니었습니다.",
+      "tts": {
+        "text": "그녀의 습격은 정의의 행위였지 단순한 도적질이 아니었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적 활동과 몸값으로 번 사이다의 부는 테투안을 모로코에서 가장 부유한 도시 중 하나로 만들었습니다.",
+      "text_markdown": "해적 활동과 몸값으로 번 사이다의 부는 테투안을 모로코에서 가장 부유한 도시 중 하나로 만들었습니다.",
+      "tts": {
+        "text": "해적 활동과 몸값으로 번 사이다의 부는 테투안을 모로코에서 가장 부유한 도시 중 하나로 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도시 인프라에 투자하여 항구를 확장하고 방어를 강화했습니다.",
+      "text_markdown": "도시 인프라에 투자하여 항구를 확장하고 방어를 강화했습니다.",
+      "tts": {
+        "text": "도시 인프라에 투자하여 항구를 확장하고 방어를 강화했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적 함대의 수익으로 새 모스크, 시장, 주택이 건설되었습니다.",
+      "text_markdown": "해적 함대의 수익으로 새 모스크, 시장, 주택이 건설되었습니다.",
+      "tts": {
+        "text": "해적 함대의 수익으로 새 모스크, 시장, 주택이 건설되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "테투안은 번성하는 무역과 문화의 중심지가 되었습니다.",
+      "text_markdown": "테투안은 번성하는 무역과 문화의 중심지가 되었습니다.",
+      "tts": {
+        "text": "테투안은 번성하는 무역과 문화의 중심지가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선장들은 해협의 모든 만과 해류를 아는 숙련된 항해사였습니다.",
+      "text_markdown": "선장들은 해협의 모든 만과 해류를 아는 숙련된 항해사였습니다.",
+      "tts": {
+        "text": "선장들은 해협의 모든 만과 해류를 아는 숙련된 항해사였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무거운 유럽 군함을 따돌릴 수 있는 빠르고 기동력 있는 선박을 사용했습니다.",
+      "text_markdown": "무거운 유럽 군함을 따돌릴 수 있는 빠르고 기동력 있는 선박을 사용했습니다.",
+      "tts": {
+        "text": "무거운 유럽 군함을 따돌릴 수 있는 빠르고 기동력 있는 선박을 사용했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시야가 좋지 않은 새벽이나 황혼에 공격했습니다.",
+      "text_markdown": "시야가 좋지 않은 새벽이나 황혼에 공격했습니다.",
+      "tts": {
+        "text": "시야가 좋지 않은 새벽이나 황혼에 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "기습이 그들의 가장 강력한 무기였습니다.",
+      "text_markdown": "기습이 그들의 가장 강력한 무기였습니다.",
+      "tts": {
+        "text": "기습이 그들의 가장 강력한 무기였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 명성은 와타스 술탄 자신의 관심을 끌 정도로 성장했습니다.",
+      "text_markdown": "그녀의 명성은 와타스 술탄 자신의 관심을 끌 정도로 성장했습니다.",
+      "tts": {
+        "text": "그녀의 명성은 와타스 술탄 자신의 관심을 끌 정도로 성장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄 아흐메드 알와타시는 약 1515년에 사이다에게 청혼했습니다.",
+      "text_markdown": "술탄 아흐메드 알와타시는 약 1515년에 사이다에게 청혼했습니다.",
+      "tts": {
+        "text": "술탄 아흐메드 알와타시는 약 천오백십오 년에 사이다에게 청혼했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "당시 어떤 여성에게도 비범한 영예였습니다.",
+      "text_markdown": "당시 어떤 여성에게도 비범한 영예였습니다.",
+      "tts": {
+        "text": "당시 어떤 여성에게도 비범한 영예였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다가 축적한 정치적, 경제적 권력을 반영하기도 했습니다.",
+      "text_markdown": "사이다가 축적한 정치적, 경제적 권력을 반영하기도 했습니다.",
+      "tts": {
+        "text": "사이다가 축적한 정치적, 경제적 권력을 반영하기도 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 결혼에 동의했지만 자신의 조건으로.",
+      "text_markdown": "사이다는 결혼에 동의했지만 자신의 조건으로.",
+      "tts": {
+        "text": "사이다는 결혼에 동의했지만 자신의 조건으로.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄이 궁정을 둔 페스가 아닌 테투안에서 결혼식을 치를 것을 고집했습니다.",
+      "text_markdown": "술탄이 궁정을 둔 페스가 아닌 테투안에서 결혼식을 치를 것을 고집했습니다.",
+      "tts": {
+        "text": "술탄이 궁정을 둔 페스가 아닌 테투안에서 결혼식을 치를 것을 고집했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "관례상 신부가 신랑에게 가야 했으므로 이는 이례적인 조건이었습니다.",
+      "text_markdown": "관례상 신부가 신랑에게 가야 했으므로 이는 이례적인 조건이었습니다.",
+      "tts": {
+        "text": "관례상 신부가 신랑에게 가야 했으므로 이는 이례적인 조건이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "술탄은 동의하고 의식을 위해 테투안으로 여행했습니다.",
+      "text_markdown": "술탄은 동의하고 의식을 위해 테투안으로 여행했습니다.",
+      "tts": {
+        "text": "술탄은 동의하고 의식을 위해 테투안으로 여행했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모로코 역사에서 왕이 신부에게 결혼식 참석을 위해 간 유일한 기록 사례였습니다.",
+      "text_markdown": "모로코 역사에서 왕이 신부에게 결혼식 참석을 위해 간 유일한 기록 사례였습니다.",
+      "tts": {
+        "text": "모로코 역사에서 왕이 신부에게 결혼식 참석을 위해 간 유일한 기록 사례였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사이다가 이룬 거대한 권력과 위신을 보여주었습니다.",
+      "text_markdown": "사이다가 이룬 거대한 권력과 위신을 보여주었습니다.",
+      "tts": {
+        "text": "사이다가 이룬 거대한 권력과 위신을 보여주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "결혼 후에도 테투안을 독자적으로 계속 통치했습니다.",
+      "text_markdown": "결혼 후에도 테투안을 독자적으로 계속 통치했습니다.",
+      "tts": {
+        "text": "결혼 후에도 테투안을 독자적으로 계속 통치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 자신의 권리로 여왕이었지 단순히 술탄의 아내가 아니었습니다.",
+      "text_markdown": "그녀는 자신의 권리로 여왕이었지 단순히 술탄의 아내가 아니었습니다.",
+      "tts": {
+        "text": "그녀는 자신의 권리로 여왕이었지 단순히 술탄의 아내가 아니었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "결혼은 사이다에게 추가적인 정치적 보호를 제공했습니다.",
+      "text_markdown": "결혼은 사이다에게 추가적인 정치적 보호를 제공했습니다.",
+      "tts": {
+        "text": "결혼은 사이다에게 추가적인 정치적 보호를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "술탄의 아내로서 지역 경쟁자들이 건드릴 수 없었습니다.",
+      "text_markdown": "술탄의 아내로서 지역 경쟁자들이 건드릴 수 없었습니다.",
+      "tts": {
+        "text": "술탄의 아내로서 지역 경쟁자들이 건드릴 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적 작전은 더 큰 자신감으로 계속되었습니다.",
+      "text_markdown": "해적 작전은 더 큰 자신감으로 계속되었습니다.",
+      "tts": {
+        "text": "해적 작전은 더 큰 자신감으로 계속되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "서부 지중해는 여전히 그녀의 영역이었습니다.",
+      "text_markdown": "서부 지중해는 여전히 그녀의 영역이었습니다.",
+      "tts": {
+        "text": "서부 지중해는 여전히 그녀의 영역이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인은 사이다의 습격을 멈추게 하려고 반복적으로 협상을 시도했습니다.",
+      "text_markdown": "스페인은 사이다의 습격을 멈추게 하려고 반복적으로 협상을 시도했습니다.",
+      "tts": {
+        "text": "스페인은 사이다의 습격을 멈추게 하려고 반복적으로 협상을 시도했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 사절들이 포로 석방과 평화의 가능성을 논의하기 위해 테투안을 방문했습니다.",
+      "text_markdown": "스페인 사절들이 포로 석방과 평화의 가능성을 논의하기 위해 테투안을 방문했습니다.",
+      "tts": {
+        "text": "스페인 사절들이 포로 석방과 평화의 가능성을 논의하기 위해 테투안을 방문했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사이다는 강경하게 협상했으며 해적 활동의 완전한 중단에는 결코 동의하지 않았습니다.",
+      "text_markdown": "사이다는 강경하게 협상했으며 해적 활동의 완전한 중단에는 결코 동의하지 않았습니다.",
+      "tts": {
+        "text": "사이다는 강경하게 협상했으며 해적 활동의 완전한 중단에는 결코 동의하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해상 세력이 정치적 영향력의 원천임을 이해했습니다.",
+      "text_markdown": "해상 세력이 정치적 영향력의 원천임을 이해했습니다.",
+      "tts": {
+        "text": "해상 세력이 정치적 영향력의 원천임을 이해했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포르투갈도 그녀가 가하는 위협에 대처하는 데 어려움을 겪었습니다.",
+      "text_markdown": "포르투갈도 그녀가 가하는 위협에 대처하는 데 어려움을 겪었습니다.",
+      "tts": {
+        "text": "포르투갈도 그녀가 가하는 위협에 대처하는 데 어려움을 겪었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아프리카와 아시아 식민지로 향하는 포르투갈 선박은 지브롤터 해협을 통과해야 했습니다.",
+      "text_markdown": "아프리카와 아시아 식민지로 향하는 포르투갈 선박은 지브롤터 해협을 통과해야 했습니다.",
+      "tts": {
+        "text": "아프리카와 아시아 식민지로 향하는 포르투갈 선박은 지브롤터 해협을 통과해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사이다의 해적들은 이 항로를 위험하고 비용이 많이 드는 것으로 만들었습니다.",
+      "text_markdown": "사이다의 해적들은 이 항로를 위험하고 비용이 많이 드는 것으로 만들었습니다.",
+      "tts": {
+        "text": "사이다의 해적들은 이 항로를 위험하고 비용이 많이 드는 것으로 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "해적의 여왕",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "포르투갈 정부는 테투안에 대한 군사 행동을 고려했으나 실행하지 않았습니다.",
+      "text_markdown": "포르투갈 정부는 테투안에 대한 군사 행동을 고려했으나 실행하지 않았습니다.",
+      "tts": {
+        "text": "포르투갈 정부는 테투안에 대한 군사 행동을 고려했으나 실행하지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "주권을 가진 여인",
+      "text_markdown": "주권을 가진 여인"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "권력의 정점에서 사이다 알후라는 세계에서 가장 전략적인 수로 중 하나를 지배했습니다.",
+      "text_markdown": "권력의 정점에서 사이다 알후라는 세계에서 가장 전략적인 수로 중 하나를 지배했습니다.",
+      "tts": {
+        "text": "권력의 정점에서 사이다 알후라는 세계에서 가장 전략적인 수로 중 하나를 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 해적 함대는 지브롤터 해협의 서쪽 입구를 장악했습니다.",
+      "text_markdown": "그녀의 해적 함대는 지브롤터 해협의 서쪽 입구를 장악했습니다.",
+      "tts": {
+        "text": "그녀의 해적 함대는 지브롤터 해협의 서쪽 입구를 장악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어떤 유럽 선박도 공격 위험 없이 이 해역을 통과할 수 없었습니다.",
+      "text_markdown": "어떤 유럽 선박도 공격 위험 없이 이 해역을 통과할 수 없었습니다.",
+      "tts": {
+        "text": "어떤 유럽 선박도 공격 위험 없이 이 해역을 통과할 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인과 포르투갈 무역에 대한 피해는 심각했습니다.",
+      "text_markdown": "스페인과 포르투갈 무역에 대한 피해는 심각했습니다.",
+      "tts": {
+        "text": "스페인과 포르투갈 무역에 대한 피해는 심각했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 군사력과 정치적 기술의 조합으로 테투안을 통치했습니다.",
+      "text_markdown": "사이다는 군사력과 정치적 기술의 조합으로 테투안을 통치했습니다.",
+      "tts": {
+        "text": "사이다는 군사력과 정치적 기술의 조합으로 테투안을 통치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽 선박 동향을 추적하는 정보원 네트워크를 유지했습니다.",
+      "text_markdown": "유럽 선박 동향을 추적하는 정보원 네트워크를 유지했습니다.",
+      "tts": {
+        "text": "유럽 선박 동향을 추적하는 정보원 네트워크를 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽 정부와 대등하게 몸값 협상을 했습니다.",
+      "text_markdown": "유럽 정부와 대등하게 몸값 협상을 했습니다.",
+      "tts": {
+        "text": "유럽 정부와 대등하게 몸값 협상을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "테투안의 궁정은 정치 활동과 외교적 모략의 중심이었습니다.",
+      "text_markdown": "테투안의 궁정은 정치 활동과 외교적 모략의 중심이었습니다.",
+      "tts": {
+        "text": "테투안의 궁정은 정치 활동과 외교적 모략의 중심이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알후라 칭호는 이슬람 세계에서 깊은 의미를 지녔습니다.",
+      "text_markdown": "알후라 칭호는 이슬람 세계에서 깊은 의미를 지녔습니다.",
+      "tts": {
+        "text": "알후라 칭호는 이슬람 세계에서 깊은 의미를 지녔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사이다가 어떤 남성에게도 복종하지 않고 자신의 이름으로 통치한다는 것을 의미했습니다.",
+      "text_markdown": "사이다가 어떤 남성에게도 복종하지 않고 자신의 이름으로 통치한다는 것을 의미했습니다.",
+      "tts": {
+        "text": "사이다가 어떤 남성에게도 복종하지 않고 자신의 이름으로 통치한다는 것을 의미했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이슬람 역사에서 이 칭호를 가진 마지막 여성이었습니다.",
+      "text_markdown": "이슬람 역사에서 이 칭호를 가진 마지막 여성이었습니다.",
+      "tts": {
+        "text": "이슬람 역사에서 이 칭호를 가진 마지막 여성이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀 전후로 이 지역에서 같은 정치적, 군사적 권력 조합을 이룬 여성은 없었습니다.",
+      "text_markdown": "그녀 전후로 이 지역에서 같은 정치적, 군사적 권력 조합을 이룬 여성은 없었습니다.",
+      "tts": {
+        "text": "그녀 전후로 이 지역에서 같은 정치적, 군사적 권력 조합을 이룬 여성은 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 성공은 테투안에 거주하는 안달루시아 난민 공동체 위에 건설되었습니다.",
+      "text_markdown": "그녀의 성공은 테투안에 거주하는 안달루시아 난민 공동체 위에 건설되었습니다.",
+      "tts": {
+        "text": "그녀의 성공은 테투안에 거주하는 안달루시아 난민 공동체 위에 건설되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 난민들은 교육받은 행정관과 숙련된 선원의 꾸준한 공급원을 제공했습니다.",
+      "text_markdown": "이 난민들은 교육받은 행정관과 숙련된 선원의 꾸준한 공급원을 제공했습니다.",
+      "tts": {
+        "text": "이 난민들은 교육받은 행정관과 숙련된 선원의 꾸준한 공급원을 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 언어와 문화에 대한 그들의 지식은 정보 수집에 매우 귀중했습니다.",
+      "text_markdown": "스페인 언어와 문화에 대한 그들의 지식은 정보 수집에 매우 귀중했습니다.",
+      "tts": {
+        "text": "스페인 언어와 문화에 대한 그들의 지식은 정보 수집에 매우 귀중했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다 치하의 테투안은 알안달루스의 기억과 복수의 희망으로 정의되는 도시였습니다.",
+      "text_markdown": "사이다 치하의 테투안은 알안달루스의 기억과 복수의 희망으로 정의되는 도시였습니다.",
+      "tts": {
+        "text": "사이다 치하의 테투안은 알안달루스의 기억과 복수의 희망으로 정의되는 도시였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 다른 북아프리카 항구들과도 관계를 유지했습니다.",
+      "text_markdown": "사이다는 다른 북아프리카 항구들과도 관계를 유지했습니다.",
+      "tts": {
+        "text": "사이다는 다른 북아프리카 항구들과도 관계를 유지했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "알제, 튀니스, 살레 모두 해적 활동의 중심지였습니다.",
+      "text_markdown": "알제, 튀니스, 살레 모두 해적 활동의 중심지였습니다.",
+      "tts": {
+        "text": "알제, 튀니스, 살레 모두 해적 활동의 중심지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "갈등을 피하고 정보를 공유하기 위해 이 도시들의 지도자들과 협력했습니다.",
+      "text_markdown": "갈등을 피하고 정보를 공유하기 위해 이 도시들의 지도자들과 협력했습니다.",
+      "tts": {
+        "text": "갈등을 피하고 정보를 공유하기 위해 이 도시들의 지도자들과 협력했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 동맹 네트워크가 해적 작전을 더 효과적으로 만들었습니다.",
+      "text_markdown": "이 동맹 네트워크가 해적 작전을 더 효과적으로 만들었습니다.",
+      "tts": {
+        "text": "이 동맹 네트워크가 해적 작전을 더 효과적으로 만들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시기 유럽의 기록들은 사이다의 해적에 대한 불만으로 가득합니다.",
+      "text_markdown": "이 시기 유럽의 기록들은 사이다의 해적에 대한 불만으로 가득합니다.",
+      "tts": {
+        "text": "이 시기 유럽의 기록들은 사이다의 해적에 대한 불만으로 가득합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 대사들은 테투안 해적에 대한 조치를 요구하는 서한을 썼습니다.",
+      "text_markdown": "스페인 대사들은 테투안 해적에 대한 조치를 요구하는 서한을 썼습니다.",
+      "tts": {
+        "text": "스페인 대사들은 테투안 해적에 대한 조치를 요구하는 서한을 썼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포르투갈 상인들은 왕에게 군사적 보호를 청원했습니다.",
+      "text_markdown": "포르투갈 상인들은 왕에게 군사적 보호를 청원했습니다.",
+      "tts": {
+        "text": "포르투갈 상인들은 왕에게 군사적 보호를 청원했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 함대가 야기한 경제적 피해는 유럽 정책에 영향을 미칠 만큼 심각했습니다.",
+      "text_markdown": "그녀의 함대가 야기한 경제적 피해는 유럽 정책에 영향을 미칠 만큼 심각했습니다.",
+      "tts": {
+        "text": "그녀의 함대가 야기한 경제적 피해는 유럽 정책에 영향을 미칠 만큼 심각했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다 자신은 두려움과 감탄의 대상이었습니다.",
+      "text_markdown": "사이다 자신은 두려움과 감탄의 대상이었습니다.",
+      "tts": {
+        "text": "사이다 자신은 두려움과 감탄의 대상이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "유럽 강대국들이 깊이 불안해하는 무언가를 대표했습니다.",
+      "text_markdown": "유럽 강대국들이 깊이 불안해하는 무언가를 대표했습니다.",
+      "tts": {
+        "text": "유럽 강대국들이 깊이 불안해하는 무언가를 대표했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "진정한 정치적, 군사적 권력을 가진 무슬림 여성은 그들의 모든 전제를 뒤흔들었습니다.",
+      "text_markdown": "진정한 정치적, 군사적 권력을 가진 무슬림 여성은 그들의 모든 전제를 뒤흔들었습니다.",
+      "tts": {
+        "text": "진정한 정치적, 군사적 권력을 가진 무슬림 여성은 그들의 모든 전제를 뒤흔들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 존재 자체가 유럽 질서에 대한 도발이었습니다.",
+      "text_markdown": "그녀의 존재 자체가 유럽 질서에 대한 도발이었습니다.",
+      "tts": {
+        "text": "그녀의 존재 자체가 유럽 질서에 대한 도발이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다 통치 하의 테투안 생활은 알안달루스의 세계시민적 유산을 반영했습니다.",
+      "text_markdown": "사이다 통치 하의 테투안 생활은 알안달루스의 세계시민적 유산을 반영했습니다.",
+      "tts": {
+        "text": "사이다 통치 하의 테투안 생활은 알안달루스의 세계시민적 유산을 반영했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아름다운 정원, 흐르는 분수, 안달루시아풍의 하얀 집들이 있었습니다.",
+      "text_markdown": "아름다운 정원, 흐르는 분수, 안달루시아풍의 하얀 집들이 있었습니다.",
+      "tts": {
+        "text": "아름다운 정원, 흐르는 분수, 안달루시아풍의 하얀 집들이 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "장인들이 정교한 도자기, 직물, 금속 공예품을 생산했습니다.",
+      "text_markdown": "장인들이 정교한 도자기, 직물, 금속 공예품을 생산했습니다.",
+      "tts": {
+        "text": "장인들이 정교한 도자기, 직물, 금속 공예품을 생산했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "도시의 문화적 풍요로움은 그것을 자금 지원한 해적 무역의 폭력과 극명하게 대비되었습니다.",
+      "text_markdown": "도시의 문화적 풍요로움은 그것을 자금 지원한 해적 무역의 폭력과 극명하게 대비되었습니다.",
+      "tts": {
+        "text": "도시의 문화적 풍요로움은 그것을 자금 지원한 해적 무역의 폭력과 극명하게 대비되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다의 함대는 수십 척의 선박을 포함할 정도로 성장했습니다.",
+      "text_markdown": "사이다의 함대는 수십 척의 선박을 포함할 정도로 성장했습니다.",
+      "tts": {
+        "text": "사이다의 함대는 수십 척의 선박을 포함할 정도로 성장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부는 포획된 유럽 선박으로, 이전 주인에게 대항해 사용되었습니다.",
+      "text_markdown": "일부는 포획된 유럽 선박으로, 이전 주인에게 대항해 사용되었습니다.",
+      "tts": {
+        "text": "일부는 포획된 유럽 선박으로, 이전 주인에게 대항해 사용되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나머지는 테투안 자체 조선소에서 건조되었습니다.",
+      "text_markdown": "나머지는 테투안 자체 조선소에서 건조되었습니다.",
+      "tts": {
+        "text": "나머지는 테투안 자체 조선소에서 건조되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "함대는 잘 유지되었으며 해협의 모든 해류와 얕은 여울을 아는 숙련된 선원들이 운영했습니다.",
+      "text_markdown": "함대는 잘 유지되었으며 해협의 모든 해류와 얕은 여울을 아는 숙련된 선원들이 운영했습니다.",
+      "tts": {
+        "text": "함대는 잘 유지되었으며 해협의 모든 해류와 얕은 여울을 아는 숙련된 선원들이 운영했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 통치는 서부 지중해의 세력 균형이 다투어진 짧은 기간을 대표했습니다.",
+      "text_markdown": "그녀의 통치는 서부 지중해의 세력 균형이 다투어진 짧은 기간을 대표했습니다.",
+      "tts": {
+        "text": "그녀의 통치는 서부 지중해의 세력 균형이 다투어진 짧은 기간을 대표했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인과 포르투갈은 더 큰 해군을 보유했지만 동시에 모든 곳에 있을 수는 없었습니다.",
+      "text_markdown": "스페인과 포르투갈은 더 큰 해군을 보유했지만 동시에 모든 곳에 있을 수는 없었습니다.",
+      "tts": {
+        "text": "스페인과 포르투갈은 더 큰 해군을 보유했지만 동시에 모든 곳에 있을 수는 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사이다의 해적들은 유럽 해군의 빈틈을 정밀하게 이용했습니다.",
+      "text_markdown": "사이다의 해적들은 유럽 해군의 빈틈을 정밀하게 이용했습니다.",
+      "tts": {
+        "text": "사이다의 해적들은 유럽 해군의 빈틈을 정밀하게 이용했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "거의 삼십 년간 그녀는 자신의 바다에서 지배적인 세력이었습니다.",
+      "text_markdown": "거의 삼십 년간 그녀는 자신의 바다에서 지배적인 세력이었습니다.",
+      "tts": {
+        "text": "거의 삼십 년간 그녀는 자신의 바다에서 지배적인 세력이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀가 관리한 몸값 경제는 정교하고 잘 조직되어 있었습니다.",
+      "text_markdown": "그녀가 관리한 몸값 경제는 정교하고 잘 조직되어 있었습니다.",
+      "tts": {
+        "text": "그녀가 관리한 몸값 경제는 정교하고 잘 조직되어 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가격은 포로의 사회적 지위와 가족의 지불 능력에 따라 정해졌습니다.",
+      "text_markdown": "가격은 포로의 사회적 지위와 가족의 지불 능력에 따라 정해졌습니다.",
+      "tts": {
+        "text": "가격은 포로의 사회적 지위와 가족의 지불 능력에 따라 정해졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "협상은 수개월에서 수년이 걸릴 수 있었습니다.",
+      "text_markdown": "협상은 수개월에서 수년이 걸릴 수 있었습니다.",
+      "tts": {
+        "text": "협상은 수개월에서 수년이 걸릴 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "일부 포로는 포로 생활 중 좋은 대우를 받았고, 다른 이들은 가혹한 조건을 견뎠습니다.",
+      "text_markdown": "일부 포로는 포로 생활 중 좋은 대우를 받았고, 다른 이들은 가혹한 조건을 견뎠습니다.",
+      "tts": {
+        "text": "일부 포로는 포로 생활 중 좋은 대우를 받았고, 다른 이들은 가혹한 조건을 견뎠습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 자신의 해적 활동을 해적 행위가 아닌 레콩키스타에 대한 투쟁의 연속으로 보았습니다.",
+      "text_markdown": "사이다는 자신의 해적 활동을 해적 행위가 아닌 레콩키스타에 대한 투쟁의 연속으로 보았습니다.",
+      "tts": {
+        "text": "사이다는 자신의 해적 활동을 해적 행위가 아닌 레콩키스타에 대한 투쟁의 연속으로 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인인들은 무력으로 무슬림에게서 알안달루스를 빼앗았습니다.",
+      "text_markdown": "스페인인들은 무력으로 무슬림에게서 알안달루스를 빼앗았습니다.",
+      "tts": {
+        "text": "스페인인들은 무력으로 무슬림에게서 알안달루스를 빼앗았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사이다의 관점에서 그녀는 단지 다른 수단으로 맞서고 있을 뿐이었습니다.",
+      "text_markdown": "사이다의 관점에서 그녀는 단지 다른 수단으로 맞서고 있을 뿐이었습니다.",
+      "tts": {
+        "text": "사이다의 관점에서 그녀는 단지 다른 수단으로 맞서고 있을 뿐이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "주권을 가진 여인",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이러한 틀은 공동체의 눈에 그녀의 행동에 도덕적 정당성을 부여했습니다.",
+      "text_markdown": "이러한 틀은 공동체의 눈에 그녀의 행동에 도덕적 정당성을 부여했습니다.",
+      "tts": {
+        "text": "이러한 틀은 공동체의 눈에 그녀의 행동에 도덕적 정당성을 부여했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "여왕의 몰락",
+      "text_markdown": "여왕의 몰락"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다 알후라의 권력은 강력했지만 무적은 아니었습니다.",
+      "text_markdown": "사이다 알후라의 권력은 강력했지만 무적은 아니었습니다.",
+      "tts": {
+        "text": "사이다 알후라의 권력은 강력했지만 무적은 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "동맹, 군사력, 정치적 기술의 미묘한 균형에 의존했습니다.",
+      "text_markdown": "동맹, 군사력, 정치적 기술의 미묘한 균형에 의존했습니다.",
+      "tts": {
+        "text": "동맹, 군사력, 정치적 기술의 미묘한 균형에 의존했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 균형이 깨지자 그녀의 입지는 위태로워졌습니다.",
+      "text_markdown": "그 균형이 깨지자 그녀의 입지는 위태로워졌습니다.",
+      "tts": {
+        "text": "그 균형이 깨지자 그녀의 입지는 위태로워졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀를 끌어내릴 세력은 유럽이 아닌 자신의 가족 내부에서 왔습니다.",
+      "text_markdown": "그녀를 끌어내릴 세력은 유럽이 아닌 자신의 가족 내부에서 왔습니다.",
+      "tts": {
+        "text": "그녀를 끌어내릴 세력은 유럽이 아닌 자신의 가족 내부에서 왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "와타스 술탄과의 결혼은 정치적 보호를 제공했습니다.",
+      "text_markdown": "와타스 술탄과의 결혼은 정치적 보호를 제공했습니다.",
+      "tts": {
+        "text": "와타스 술탄과의 결혼은 정치적 보호를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 와타스 왕조 자체가 약해지고 있었습니다.",
+      "text_markdown": "그러나 와타스 왕조 자체가 약해지고 있었습니다.",
+      "tts": {
+        "text": "그러나 와타스 왕조 자체가 약해지고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "경쟁 세력들이 모로코 내부에서 권력을 다투었습니다.",
+      "text_markdown": "경쟁 세력들이 모로코 내부에서 권력을 다투었습니다.",
+      "tts": {
+        "text": "경쟁 세력들이 모로코 내부에서 권력을 다투었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "테투안 같은 먼 지방에 대한 술탄의 권위가 점점 약해지고 있었습니다.",
+      "text_markdown": "테투안 같은 먼 지방에 대한 술탄의 권위가 점점 약해지고 있었습니다.",
+      "tts": {
+        "text": "테투안 같은 먼 지방에 대한 술탄의 권위가 점점 약해지고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다의 의붓아들 물라이 아흐메드 알하산 알만드리에게는 자신만의 야망이 있었습니다.",
+      "text_markdown": "사이다의 의붓아들 물라이 아흐메드 알하산 알만드리에게는 자신만의 야망이 있었습니다.",
+      "tts": {
+        "text": "사이다의 의붓아들 물라이 아흐메드 알하산 알만드리에게는 자신만의 야망이 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "테투안은 남자가, 구체적으로 자신이 통치해야 한다고 믿었습니다.",
+      "text_markdown": "테투안은 남자가, 구체적으로 자신이 통치해야 한다고 믿었습니다.",
+      "tts": {
+        "text": "테투안은 남자가, 구체적으로 자신이 통치해야 한다고 믿었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "계모가 오랫동안 권력을 잡고 있는 것에 분개했습니다.",
+      "text_markdown": "계모가 오랫동안 권력을 잡고 있는 것에 분개했습니다.",
+      "tts": {
+        "text": "계모가 오랫동안 권력을 잡고 있는 것에 분개했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀를 전복시킬 음모를 꾸미기 시작했습니다.",
+      "text_markdown": "그녀를 전복시킬 음모를 꾸미기 시작했습니다.",
+      "tts": {
+        "text": "그녀를 전복시킬 음모를 꾸미기 시작했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "물라이 아흐메드는 사이다의 통치에 불만을 품은 자들 사이에서 지지자를 모았습니다.",
+      "text_markdown": "물라이 아흐메드는 사이다의 통치에 불만을 품은 자들 사이에서 지지자를 모았습니다.",
+      "tts": {
+        "text": "물라이 아흐메드는 사이다의 통치에 불만을 품은 자들 사이에서 지지자를 모았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "테투안의 일부 남성들은 능력에 관계없이 여성에게 통치받는 것을 불편해했습니다.",
+      "text_markdown": "테투안의 일부 남성들은 능력에 관계없이 여성에게 통치받는 것을 불편해했습니다.",
+      "tts": {
+        "text": "테투안의 일부 남성들은 능력에 관계없이 여성에게 통치받는 것을 불편해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 자신을 위해 권력과 부를 얻을 기회를 보았습니다.",
+      "text_markdown": "다른 이들은 자신을 위해 권력과 부를 얻을 기회를 보았습니다.",
+      "tts": {
+        "text": "다른 이들은 자신을 위해 권력과 부를 얻을 기회를 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "음모는 비밀리에 커져갔습니다.",
+      "text_markdown": "음모는 비밀리에 커져갔습니다.",
+      "tts": {
+        "text": "음모는 비밀리에 커져갔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "약 1542년, 물라이 아흐메드는 사이다에 대한 궁정 쿠데타를 일으켰습니다.",
+      "text_markdown": "약 1542년, 물라이 아흐메드는 사이다에 대한 궁정 쿠데타를 일으켰습니다.",
+      "tts": {
+        "text": "약 천오백사십이 년, 물라이 아흐메드는 사이다에 대한 궁정 쿠데타를 일으켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "쿠데타의 세부 사항은 현존하는 자료에 잘 기록되어 있지 않습니다.",
+      "text_markdown": "쿠데타의 세부 사항은 현존하는 자료에 잘 기록되어 있지 않습니다.",
+      "tts": {
+        "text": "쿠데타의 세부 사항은 현존하는 자료에 잘 기록되어 있지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "알려진 것은 그가 테투안의 지배권을 장악하고 사이다를 권좌에서 몰아냈다는 것입니다.",
+      "text_markdown": "알려진 것은 그가 테투안의 지배권을 장악하고 사이다를 권좌에서 몰아냈다는 것입니다.",
+      "tts": {
+        "text": "알려진 것은 그가 테투안의 지배권을 장악하고 사이다를 권좌에서 몰아냈다는 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "약 삼십 년간 지속된 그녀의 통치가 끝났습니다.",
+      "text_markdown": "약 삼십 년간 지속된 그녀의 통치가 끝났습니다.",
+      "tts": {
+        "text": "약 삼십 년간 지속된 그녀의 통치가 끝났습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다는 칭호, 권위, 재산을 박탈당했습니다.",
+      "text_markdown": "사이다는 칭호, 권위, 재산을 박탈당했습니다.",
+      "tts": {
+        "text": "사이다는 칭호, 권위, 재산을 박탈당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀가 건설한 해적 함대는 빼앗겼습니다.",
+      "text_markdown": "그녀가 건설한 해적 함대는 빼앗겼습니다.",
+      "tts": {
+        "text": "그녀가 건설한 해적 함대는 빼앗겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모로코에서 가장 강력한 인물 중 하나에서 영향력 없는 평범한 시민이 되었습니다.",
+      "text_markdown": "모로코에서 가장 강력한 인물 중 하나에서 영향력 없는 평범한 시민이 되었습니다.",
+      "tts": {
+        "text": "모로코에서 가장 강력한 인물 중 하나에서 영향력 없는 평범한 시민이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "몰락은 신속하고 완전했습니다.",
+      "text_markdown": "몰락은 신속하고 완전했습니다.",
+      "tts": {
+        "text": "몰락은 신속하고 완전했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "권력을 잃은 후 사이다는 역사 기록에서 거의 완전히 사라졌습니다.",
+      "text_markdown": "권력을 잃은 후 사이다는 역사 기록에서 거의 완전히 사라졌습니다.",
+      "tts": {
+        "text": "권력을 잃은 후 사이다는 역사 기록에서 거의 완전히 사라졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "쿠데타 이후의 삶을 기술하는 신뢰할 만한 자료가 없습니다.",
+      "text_markdown": "쿠데타 이후의 삶을 기술하는 신뢰할 만한 자료가 없습니다.",
+      "tts": {
+        "text": "쿠데타 이후의 삶을 기술하는 신뢰할 만한 자료가 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가문의 뿌리가 있는 산악 도시 셰프샤우엔으로 은퇴했을 수도 있습니다.",
+      "text_markdown": "가문의 뿌리가 있는 산악 도시 셰프샤우엔으로 은퇴했을 수도 있습니다.",
+      "tts": {
+        "text": "가문의 뿌리가 있는 산악 도시 셰프샤우엔으로 은퇴했을 수도 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "남은 세월을 무명 속에서 보냈을 수도 있습니다.",
+      "text_markdown": "남은 세월을 무명 속에서 보냈을 수도 있습니다.",
+      "tts": {
+        "text": "남은 세월을 무명 속에서 보냈을 수도 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사가들은 사이다가 약 1561년에 사망한 것으로 추정하지만 날짜는 확실하지 않습니다.",
+      "text_markdown": "역사가들은 사이다가 약 1561년에 사망한 것으로 추정하지만 날짜는 확실하지 않습니다.",
+      "tts": {
+        "text": "역사가들은 사이다가 약 천오백육십일 년에 사망한 것으로 추정하지만 날짜는 확실하지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 추정이 맞다면 약 칠십육 세까지 살았습니다.",
+      "text_markdown": "이 추정이 맞다면 약 칠십육 세까지 살았습니다.",
+      "tts": {
+        "text": "이 추정이 맞다면 약 칠십육 세까지 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "당시로서는 유난히 긴 수명이었습니다.",
+      "text_markdown": "당시로서는 유난히 긴 수명이었습니다.",
+      "tts": {
+        "text": "당시로서는 유난히 긴 수명이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 그녀의 말년에 대해 알려진 것은 없습니다.",
+      "text_markdown": "그러나 그녀의 말년에 대해 알려진 것은 없습니다.",
+      "tts": {
+        "text": "그러나 그녀의 말년에 대해 알려진 것은 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "테투안 도시는 사이다의 몰락 이후에도 해적 활동의 중심으로 남았습니다.",
+      "text_markdown": "테투안 도시는 사이다의 몰락 이후에도 해적 활동의 중심으로 남았습니다.",
+      "tts": {
+        "text": "테투안 도시는 사이다의 몰락 이후에도 해적 활동의 중심으로 남았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그러나 다시는 그녀 수준의 지도자를 갖지 못했습니다.",
+      "text_markdown": "그러나 다시는 그녀 수준의 지도자를 갖지 못했습니다.",
+      "tts": {
+        "text": "그러나 다시는 그녀 수준의 지도자를 갖지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "후계자들은 그녀의 정치적 기술과 국제 동맹 네트워크를 갖추지 못했습니다.",
+      "text_markdown": "후계자들은 그녀의 정치적 기술과 국제 동맹 네트워크를 갖추지 못했습니다.",
+      "tts": {
+        "text": "후계자들은 그녀의 정치적 기술과 국제 동맹 네트워크를 갖추지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적 세력으로서의 테투안의 황금기는 그녀와 함께 끝났습니다.",
+      "text_markdown": "해적 세력으로서의 테투안의 황금기는 그녀와 함께 끝났습니다.",
+      "tts": {
+        "text": "해적 세력으로서의 테투안의 황금기는 그녀와 함께 끝났습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "보다 넓은 정치적 맥락도 지중해 해적에 불리하게 변했습니다.",
+      "text_markdown": "보다 넓은 정치적 맥락도 지중해 해적에 불리하게 변했습니다.",
+      "tts": {
+        "text": "보다 넓은 정치적 맥락도 지중해 해적에 불리하게 변했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인은 대서양 무역 항로를 보호하기 위해 점점 더 큰 해군을 건설하고 있었습니다.",
+      "text_markdown": "스페인은 대서양 무역 항로를 보호하기 위해 점점 더 큰 해군을 건설하고 있었습니다.",
+      "tts": {
+        "text": "스페인은 대서양 무역 항로를 보호하기 위해 점점 더 큰 해군을 건설하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "북아프리카 해적을 지원했던 오스만 제국은 긴 쇠퇴를 시작하고 있었습니다.",
+      "text_markdown": "북아프리카 해적을 지원했던 오스만 제국은 긴 쇠퇴를 시작하고 있었습니다.",
+      "tts": {
+        "text": "북아프리카 해적을 지원했던 오스만 제국은 긴 쇠퇴를 시작하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다의 경력을 가능하게 했던 세계가 서서히 사라지고 있었습니다.",
+      "text_markdown": "사이다의 경력을 가능하게 했던 세계가 서서히 사라지고 있었습니다.",
+      "tts": {
+        "text": "사이다의 경력을 가능하게 했던 세계가 서서히 사라지고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 몰락은 전근대 세계에서 권력의 취약성을 상기시켜 주었습니다.",
+      "text_markdown": "그녀의 몰락은 전근대 세계에서 권력의 취약성을 상기시켜 주었습니다.",
+      "tts": {
+        "text": "그녀의 몰락은 전근대 세계에서 권력의 취약성을 상기시켜 주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사이다처럼 유능한 통치자도 적절한 인맥을 가진 단호한 경쟁자에 의해 전복될 수 있었습니다.",
+      "text_markdown": "사이다처럼 유능한 통치자도 적절한 인맥을 가진 단호한 경쟁자에 의해 전복될 수 있었습니다.",
+      "tts": {
+        "text": "사이다처럼 유능한 통치자도 적절한 인맥을 가진 단호한 경쟁자에 의해 전복될 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "헌법적 보호 장치가 없는 세계에서 권력은 전적으로 개인적 동맹과 군사력에 달려 있었습니다.",
+      "text_markdown": "헌법적 보호 장치가 없는 세계에서 권력은 전적으로 개인적 동맹과 군사력에 달려 있었습니다.",
+      "tts": {
+        "text": "헌법적 보호 장치가 없는 세계에서 권력은 전적으로 개인적 동맹과 군사력에 달려 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "여왕의 몰락",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그것들이 무너지면 여왕조차 몰락할 수 있었습니다.",
+      "text_markdown": "그것들이 무너지면 여왕조차 몰락할 수 있었습니다.",
+      "tts": {
+        "text": "그것들이 무너지면 여왕조차 몰락할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "자유로운 여인의 유산",
+      "text_markdown": "자유로운 여인의 유산"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다 알후라의 유산은 최근 수십 년간 크게 성장했습니다.",
+      "text_markdown": "사이다 알후라의 유산은 최근 수십 년간 크게 성장했습니다.",
+      "tts": {
+        "text": "사이다 알후라의 유산은 최근 수십 년간 크게 성장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수세기 동안 그녀는 모로코 밖에서 대부분 잊혀져 있었습니다.",
+      "text_markdown": "수세기 동안 그녀는 모로코 밖에서 대부분 잊혀져 있었습니다.",
+      "tts": {
+        "text": "수세기 동안 그녀는 모로코 밖에서 대부분 잊혀져 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유럽의 해적 역사는 거의 전적으로 카리브해의 남성 해적에 초점을 맞추었습니다.",
+      "text_markdown": "유럽의 해적 역사는 거의 전적으로 카리브해의 남성 해적에 초점을 맞추었습니다.",
+      "tts": {
+        "text": "유럽의 해적 역사는 거의 전적으로 카리브해의 남성 해적에 초점을 맞추었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다의 이야기는 주로 모로코 구전 전통과 아랍어 역사서에 보존되었습니다.",
+      "text_markdown": "사이다의 이야기는 주로 모로코 구전 전통과 아랍어 역사서에 보존되었습니다.",
+      "tts": {
+        "text": "사이다의 이야기는 주로 모로코 구전 전통과 아랍어 역사서에 보존되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현대 역사학자들이 그녀의 이야기를 재발견하고 기리기 시작했습니다.",
+      "text_markdown": "현대 역사학자들이 그녀의 이야기를 재발견하고 기리기 시작했습니다.",
+      "tts": {
+        "text": "현대 역사학자들이 그녀의 이야기를 재발견하고 기리기 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 이제 지중해 해적 시대의 가장 주목할 만한 인물 중 하나로 인정받고 있습니다.",
+      "text_markdown": "그녀는 이제 지중해 해적 시대의 가장 주목할 만한 인물 중 하나로 인정받고 있습니다.",
+      "tts": {
+        "text": "그녀는 이제 지중해 해적 시대의 가장 주목할 만한 인물 중 하나로 인정받고 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "삼십 년간 독립적 권력을 유지한 업적은 비범한 것으로 평가됩니다.",
+      "text_markdown": "삼십 년간 독립적 권력을 유지한 업적은 비범한 것으로 평가됩니다.",
+      "tts": {
+        "text": "삼십 년간 독립적 권력을 유지한 업적은 비범한 것으로 평가됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러한 리더십이 극히 드물었던 시기 여성 리더십의 사례로 연구되고 있습니다.",
+      "text_markdown": "그러한 리더십이 극히 드물었던 시기 여성 리더십의 사례로 연구되고 있습니다.",
+      "tts": {
+        "text": "그러한 리더십이 극히 드물었던 시기 여성 리더십의 사례로 연구되고 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모로코에서 사이다는 국민 영웅으로 기억됩니다.",
+      "text_markdown": "모로코에서 사이다는 국민 영웅으로 기억됩니다.",
+      "tts": {
+        "text": "모로코에서 사이다는 국민 영웅으로 기억됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자신들의 실향을 받아들이기를 거부한 안달루시아 난민들의 저항을 대표합니다.",
+      "text_markdown": "자신들의 실향을 받아들이기를 거부한 안달루시아 난민들의 저항을 대표합니다.",
+      "tts": {
+        "text": "자신들의 실향을 받아들이기를 거부한 안달루시아 난민들의 저항을 대표합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "테투안 도시는 오늘날까지 그녀의 기억을 기립니다.",
+      "text_markdown": "테투안 도시는 오늘날까지 그녀의 기억을 기립니다.",
+      "tts": {
+        "text": "테투안 도시는 오늘날까지 그녀의 기억을 기립니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 이야기는 모로코 학교에서 용기와 독립의 본보기로 가르쳐지고 있습니다.",
+      "text_markdown": "그녀의 이야기는 모로코 학교에서 용기와 독립의 본보기로 가르쳐지고 있습니다.",
+      "tts": {
+        "text": "그녀의 이야기는 모로코 학교에서 용기와 독립의 본보기로 가르쳐지고 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사이다와 바르바로사의 동맹은 역사적으로 중요합니다.",
+      "text_markdown": "사이다와 바르바로사의 동맹은 역사적으로 중요합니다.",
+      "tts": {
+        "text": "사이다와 바르바로사의 동맹은 역사적으로 중요합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지중해 해적 세계가 단순히 개별 약탈자들의 모임이 아니었음을 보여줍니다.",
+      "text_markdown": "지중해 해적 세계가 단순히 개별 약탈자들의 모임이 아니었음을 보여줍니다.",
+      "tts": {
+        "text": "지중해 해적 세계가 단순히 개별 약탈자들의 모임이 아니었음을 보여줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "광대한 거리에 걸쳐 조율된 전략적 네트워크였습니다.",
+      "text_markdown": "광대한 거리에 걸쳐 조율된 전략적 네트워크였습니다.",
+      "tts": {
+        "text": "광대한 거리에 걸쳐 조율된 전략적 네트워크였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "지중해가 세계에서 가장 치열하게 다투어지던 바다였던 시기에 사이다는 그 네트워크에서 중심적 역할을 했습니다.",
+      "text_markdown": "지중해가 세계에서 가장 치열하게 다투어지던 바다였던 시기에 사이다는 그 네트워크에서 중심적 역할을 했습니다.",
+      "tts": {
+        "text": "지중해가 세계에서 가장 치열하게 다투어지던 바다였던 시기에 사이다는 그 네트워크에서 중심적 역할을 했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 이야기는 해적 행위와 국정 운영 사이의 복잡한 관계도 조명합니다.",
+      "text_markdown": "그녀의 이야기는 해적 행위와 국정 운영 사이의 복잡한 관계도 조명합니다.",
+      "tts": {
+        "text": "그녀의 이야기는 해적 행위와 국정 운영 사이의 복잡한 관계도 조명합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사이다는 동시에 여왕이자 해적이자 외교관이었습니다.",
+      "text_markdown": "사이다는 동시에 여왕이자 해적이자 외교관이었습니다.",
+      "tts": {
+        "text": "사이다는 동시에 여왕이자 해적이자 외교관이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적 활동을 단순한 치부 수단이 아닌 외교 정책의 도구로 활용했습니다.",
+      "text_markdown": "해적 활동을 단순한 치부 수단이 아닌 외교 정책의 도구로 활용했습니다.",
+      "tts": {
+        "text": "해적 활동을 단순한 치부 수단이 아닌 외교 정책의 도구로 활용했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 경력은 해적 행위와 정당한 전쟁 사이의 경계가 지중해에서도 카리브해만큼 모호했음을 보여줍니다.",
+      "text_markdown": "그녀의 경력은 해적 행위와 정당한 전쟁 사이의 경계가 지중해에서도 카리브해만큼 모호했음을 보여줍니다.",
+      "tts": {
+        "text": "그녀의 경력은 해적 행위와 정당한 전쟁 사이의 경계가 지중해에서도 카리브해만큼 모호했음을 보여줍니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알후라 칭호는 그녀의 가장 영속적인 상징으로 남아 있습니다.",
+      "text_markdown": "알후라 칭호는 그녀의 가장 영속적인 상징으로 남아 있습니다.",
+      "tts": {
+        "text": "알후라 칭호는 그녀의 가장 영속적인 상징으로 남아 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자유로운 여인, 주권을 가진 여인, 누구에게도 답하지 않는 여인을 뜻했습니다.",
+      "text_markdown": "자유로운 여인, 주권을 가진 여인, 누구에게도 답하지 않는 여인을 뜻했습니다.",
+      "tts": {
+        "text": "자유로운 여인, 주권을 가진 여인, 누구에게도 답하지 않는 여인을 뜻했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 이후 이슬람 세계에서 이 칭호를 가진 여성은 없었습니다.",
+      "text_markdown": "그 이후 이슬람 세계에서 이 칭호를 가진 여성은 없었습니다.",
+      "tts": {
+        "text": "그 이후 이슬람 세계에서 이 칭호를 가진 여성은 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다 알후라는 역사 속에 홀로 서 있습니다, 그 부류의 마지막 인물.",
+      "text_markdown": "사이다 알후라는 역사 속에 홀로 서 있습니다, 그 부류의 마지막 인물.",
+      "tts": {
+        "text": "사이다 알후라는 역사 속에 홀로 서 있습니다, 그 부류의 마지막 인물.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 학자들은 그녀의 삶에 대해 더 많이 밝혀줄 수 있는 새로운 문서를 계속 찾고 있습니다.",
+      "text_markdown": "오늘날 학자들은 그녀의 삶에 대해 더 많이 밝혀줄 수 있는 새로운 문서를 계속 찾고 있습니다.",
+      "tts": {
+        "text": "오늘날 학자들은 그녀의 삶에 대해 더 많이 밝혀줄 수 있는 새로운 문서를 계속 찾고 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모로코, 스페인, 포르투갈의 기록 보관소에는 아직 발견되지 않은 서신, 조약, 기록이 있을 수 있습니다.",
+      "text_markdown": "모로코, 스페인, 포르투갈의 기록 보관소에는 아직 발견되지 않은 서신, 조약, 기록이 있을 수 있습니다.",
+      "tts": {
+        "text": "모로코, 스페인, 포르투갈의 기록 보관소에는 아직 발견되지 않은 서신, 조약, 기록이 있을 수 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "매 새로운 발견은 이 비범한 여성의 퍼즐에 한 조각을 더합니다.",
+      "text_markdown": "매 새로운 발견은 이 비범한 여성의 퍼즐에 한 조각을 더합니다.",
+      "tts": {
+        "text": "매 새로운 발견은 이 비범한 여성의 퍼즐에 한 조각을 더합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "자유로운 여인의 유산",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사이다 알후라의 완전한 이야기는 아직 쓰이지 않았습니다.",
+      "text_markdown": "사이다 알후라의 완전한 이야기는 아직 쓰이지 않았습니다.",
+      "tts": {
+        "text": "사이다 알후라의 완전한 이야기는 아직 쓰이지 않았습니다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

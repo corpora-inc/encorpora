@@ -1,0 +1,4427 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jeanne_de_clisson",
+  "language": "zh",
+  "total_segments": 296,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是让娜·德·克利松的故事，她是一位布列塔尼女贵族，成为了中世纪欧洲最令人恐惧的海盗之一。",
+      "text_markdown": "这是让娜·德·克利松的故事，她是一位布列塔尼女贵族，成为了中世纪欧洲最令人恐惧的海盗之一。",
+      "tts": {
+        "text": "这是让娜·德·克利松的故事，她是一位布列塔尼女贵族，成为了中世纪欧洲最令人恐惧的海盗之一。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她在历史上被称为布列塔尼的母狮。",
+      "text_markdown": "她在历史上被称为布列塔尼的母狮。",
+      "tts": {
+        "text": "她在历史上被称为布列塔尼的母狮。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜的故事并非始于冒险，而是始于背叛。",
+      "text_markdown": "让娜的故事并非始于冒险，而是始于背叛。",
+      "tts": {
+        "text": "让娜的故事并非始于冒险，而是始于背叛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当法国国王以莫须有的叛国罪处死了她的丈夫时，让娜发誓复仇。",
+      "text_markdown": "当法国国王以莫须有的叛国罪处死了她的丈夫时，让娜发誓复仇。",
+      "tts": {
+        "text": "当法国国王以莫须有的叛国罪处死了她的丈夫时，让娜发誓复仇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她变卖了所有财产，购买了战船，花了十三年的时间在英吉利海峡追猎法国船只。",
+      "text_markdown": "她变卖了所有财产，购买了战船，花了十三年的时间在英吉利海峡追猎法国船只。",
+      "tts": {
+        "text": "她变卖了所有财产，购买了战船，花了十三年的时间在英吉利海峡追猎法国船只。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的船有着黑色船体和红色船帆，她的船员几乎不留活口。",
+      "text_markdown": "她的船有着黑色船体和红色船帆，她的船员几乎不留活口。",
+      "tts": {
+        "text": "她的船有着黑色船体和红色船帆，她的船员几乎不留活口。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的故事发生在百年战争期间，这是欧洲历史上最漫长、最血腥的冲突之一。",
+      "text_markdown": "她的故事发生在百年战争期间，这是欧洲历史上最漫长、最血腥的冲突之一。",
+      "tts": {
+        "text": "她的故事发生在百年战争期间，这是欧洲历史上最漫长、最血腥的冲突之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个关于忠诚、悲伤以及一个人为了复仇可以走多远的故事。",
+      "text_markdown": "这是一个关于忠诚、悲伤以及一个人为了复仇可以走多远的故事。",
+      "tts": {
+        "text": "这是一个关于忠诚、悲伤以及一个人为了复仇可以走多远的故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里描述的事件基于中世纪编年史和历史记录。",
+      "text_markdown": "这里描述的事件基于中世纪编年史和历史记录。",
+      "tts": {
+        "text": "这里描述的事件基于中世纪编年史和历史记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些细节已经随时间流逝，文中标注了仍存在不确定性的地方。",
+      "text_markdown": "一些细节已经随时间流逝，文中标注了仍存在不确定性的地方。",
+      "tts": {
+        "text": "一些细节已经随时间流逝，文中标注了仍存在不确定性的地方。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "中世纪布列塔尼的世界",
+      "text_markdown": "中世纪布列塔尼的世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世纪初，欧洲是一个由王国、公国和封建领地拼凑而成的版图。",
+      "text_markdown": "十四世纪初，欧洲是一个由王国、公国和封建领地拼凑而成的版图。",
+      "tts": {
+        "text": "十四世纪初，欧洲是一个由王国、公国和封建领地拼凑而成的版图。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "权力掌握在国王、公爵和天主教会手中。",
+      "text_markdown": "权力掌握在国王、公爵和天主教会手中。",
+      "tts": {
+        "text": "权力掌握在国王、公爵和天主教会手中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "普通人几乎没有任何权利，生活在领主的支配之下。",
+      "text_markdown": "普通人几乎没有任何权利，生活在领主的支配之下。",
+      "tts": {
+        "text": "普通人几乎没有任何权利，生活在领主的支配之下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "布列塔尼是法国西北海岸的一个公国。",
+      "text_markdown": "布列塔尼是法国西北海岸的一个公国。",
+      "tts": {
+        "text": "布列塔尼是法国西北海岸的一个公国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它占据了一个伸入大西洋和英吉利海峡的大半岛。",
+      "text_markdown": "它占据了一个伸入大西洋和英吉利海峡的大半岛。",
+      "tts": {
+        "text": "它占据了一个伸入大西洋和英吉利海峡的大半岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "布列塔尼人有自己的语言、习俗和强烈的独立意识。",
+      "text_markdown": "布列塔尼人有自己的语言、习俗和强烈的独立意识。",
+      "tts": {
+        "text": "布列塔尼人有自己的语言、习俗和强烈的独立意识。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "布列塔尼名义上属于法国，但其公爵经常独立行事。",
+      "text_markdown": "布列塔尼名义上属于法国，但其公爵经常独立行事。",
+      "tts": {
+        "text": "布列塔尼名义上属于法国，但其公爵经常独立行事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们维持着自己的宫廷、军队和外交联盟。",
+      "text_markdown": "他们维持着自己的宫廷、军队和外交联盟。",
+      "tts": {
+        "text": "他们维持着自己的宫廷、军队和外交联盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "布列塔尼与法国王室的关系始终紧张。",
+      "text_markdown": "布列塔尼与法国王室的关系始终紧张。",
+      "tts": {
+        "text": "布列塔尼与法国王室的关系始终紧张。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英吉利海峡是中世纪欧洲最繁忙、最危险的水道之一。",
+      "text_markdown": "英吉利海峡是中世纪欧洲最繁忙、最危险的水道之一。",
+      "tts": {
+        "text": "英吉利海峡是中世纪欧洲最繁忙、最危险的水道之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船、渔船和战舰不断穿越其间。",
+      "text_markdown": "商船、渔船和战舰不断穿越其间。",
+      "tts": {
+        "text": "商船、渔船和战舰不断穿越其间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗活动十分猖獗，海盗与海军战士之间的界限往往模糊不清。",
+      "text_markdown": "海盗活动十分猖獗，海盗与海军战士之间的界限往往模糊不清。",
+      "tts": {
+        "text": "海盗活动十分猖獗，海盗与海军战士之间的界限往往模糊不清。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世纪初的法国由一系列日益强大的国王统治。",
+      "text_markdown": "十四世纪初的法国由一系列日益强大的国王统治。",
+      "tts": {
+        "text": "十四世纪初的法国由一系列日益强大的国王统治。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "腓力六世于1328年登上王位，此前卡佩王朝最后一位直系男性继承人已经去世。",
+      "text_markdown": "腓力六世于1328年登上王位，此前卡佩王朝最后一位直系男性继承人已经去世。",
+      "tts": {
+        "text": "腓力六世于一三二八年登上王位，此前卡佩王朝最后一位直系男性继承人已经去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他对王位的主张立即遭到英格兰爱德华三世的挑战。",
+      "text_markdown": "他对王位的主张立即遭到英格兰爱德华三世的挑战。",
+      "tts": {
+        "text": "他对王位的主张立即遭到英格兰爱德华三世的挑战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "爱德华三世声称他通过母亲对法国王位拥有更强的继承权。",
+      "text_markdown": "爱德华三世声称他通过母亲对法国王位拥有更强的继承权。",
+      "tts": {
+        "text": "爱德华三世声称他通过母亲对法国王位拥有更强的继承权。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "腓力六世拒绝了这一主张，争端最终导致了公开战争。",
+      "text_markdown": "腓力六世拒绝了这一主张，争端最终导致了公开战争。",
+      "tts": {
+        "text": "腓力六世拒绝了这一主张，争端最终导致了公开战争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这场冲突被称为百年战争。",
+      "text_markdown": "这场冲突被称为百年战争。",
+      "tts": {
+        "text": "这场冲突被称为百年战争。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "百年战争从1337年持续到1453年。",
+      "text_markdown": "百年战争从1337年持续到1453年。",
+      "tts": {
+        "text": "百年战争从一三三七年持续到一四五三年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这场战争主要在英格兰和法国之间进行，但吸引了来自整个欧洲的盟友和附庸。",
+      "text_markdown": "这场战争主要在英格兰和法国之间进行，但吸引了来自整个欧洲的盟友和附庸。",
+      "tts": {
+        "text": "这场战争主要在英格兰和法国之间进行，但吸引了来自整个欧洲的盟友和附庸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "布列塔尼成为了主要战场之一。",
+      "text_markdown": "布列塔尼成为了主要战场之一。",
+      "tts": {
+        "text": "布列塔尼成为了主要战场之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在布列塔尼内部，又爆发了一场关于谁来统治这个公国的独立冲突。",
+      "text_markdown": "在布列塔尼内部，又爆发了一场关于谁来统治这个公国的独立冲突。",
+      "tts": {
+        "text": "在布列塔尼内部，又爆发了一场关于谁来统治这个公国的独立冲突。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这就是所谓的布列塔尼继承战争。",
+      "text_markdown": "这就是所谓的布列塔尼继承战争。",
+      "tts": {
+        "text": "这就是所谓的布列塔尼继承战争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战争从1341年持续到1365年，以极其残酷的方式进行。",
+      "text_markdown": "战争从1341年持续到1365年，以极其残酷的方式进行。",
+      "tts": {
+        "text": "战争从一三四一年持续到一三六五年，以极其残酷的方式进行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "两个敌对的王位争夺者为控制布列塔尼而战。",
+      "text_markdown": "两个敌对的王位争夺者为控制布列塔尼而战。",
+      "tts": {
+        "text": "两个敌对的王位争夺者为控制布列塔尼而战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "夏尔·德·布卢瓦得到法国的支持。",
+      "text_markdown": "夏尔·德·布卢瓦得到法国的支持。",
+      "tts": {
+        "text": "夏尔·德·布卢瓦得到法国的支持。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让·德·蒙福尔得到英格兰的支持。",
+      "text_markdown": "让·德·蒙福尔得到英格兰的支持。",
+      "tts": {
+        "text": "让·德·蒙福尔得到英格兰的支持。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "布列塔尼贵族被迫选择阵营。",
+      "text_markdown": "布列塔尼贵族被迫选择阵营。",
+      "tts": {
+        "text": "布列塔尼贵族被迫选择阵营。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "选错阵营可能意味着失去土地、头衔，甚至生命。",
+      "text_markdown": "选错阵营可能意味着失去土地、头衔，甚至生命。",
+      "tts": {
+        "text": "选错阵营可能意味着失去土地、头衔，甚至生命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在这个忠诚不断变换、后果致命的世界里，让娜·德·克利松发现自己陷入了困境。",
+      "text_markdown": "在这个忠诚不断变换、后果致命的世界里，让娜·德·克利松发现自己陷入了困境。",
+      "tts": {
+        "text": "在这个忠诚不断变换、后果致命的世界里，让娜·德·克利松发现自己陷入了困境。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世纪的战争极为残酷，常常以平民为目标。",
+      "text_markdown": "中世纪的战争极为残酷，常常以平民为目标。",
+      "tts": {
+        "text": "中世纪的战争极为残酷，常常以平民为目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "军队烧毁庄稼、屠杀牲畜、摧毁村庄以削弱敌人。",
+      "text_markdown": "军队烧毁庄稼、屠杀牲畜、摧毁村庄以削弱敌人。",
+      "tts": {
+        "text": "军队烧毁庄稼、屠杀牲畜、摧毁村庄以削弱敌人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "围城战可以持续数月，守军往往饿死。",
+      "text_markdown": "围城战可以持续数月，守军往往饿死。",
+      "tts": {
+        "text": "围城战可以持续数月，守军往往饿死。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海战同样残暴。",
+      "text_markdown": "海战同样残暴。",
+      "tts": {
+        "text": "海战同样残暴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船只互相撞击，船员们用剑和斧头进行肉搏。",
+      "text_markdown": "船只互相撞击，船员们用剑和斧头进行肉搏。",
+      "tts": {
+        "text": "船只互相撞击，船员们用剑和斧头进行肉搏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海上很少俘虏敌人，因为没有地方关押他们。",
+      "text_markdown": "海上很少俘虏敌人，因为没有地方关押他们。",
+      "tts": {
+        "text": "海上很少俘虏敌人，因为没有地方关押他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世纪欧洲的女性被期望管理家务、生育子女并服从丈夫。",
+      "text_markdown": "中世纪欧洲的女性被期望管理家务、生育子女并服从丈夫。",
+      "tts": {
+        "text": "中世纪欧洲的女性被期望管理家务、生育子女并服从丈夫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "贵族女性比平民女性拥有更多权力，但在法律上仍然从属于男性。",
+      "text_markdown": "贵族女性比平民女性拥有更多权力，但在法律上仍然从属于男性。",
+      "tts": {
+        "text": "贵族女性比平民女性拥有更多权力，但在法律上仍然从属于男性。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然而，中世纪历史中包含许多女性挑战这些期望的例子。",
+      "text_markdown": "然而，中世纪历史中包含许多女性挑战这些期望的例子。",
+      "tts": {
+        "text": "然而，中世纪历史中包含许多女性挑战这些期望的例子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有些人领导军队，有些人治理领地，有些人出海航行。",
+      "text_markdown": "有些人领导军队，有些人治理领地，有些人出海航行。",
+      "tts": {
+        "text": "有些人领导军队，有些人治理领地，有些人出海航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜·德·克利松成为了拒绝接受被赋予角色的女性中最引人注目的例子之一。",
+      "text_markdown": "让娜·德·克利松成为了拒绝接受被赋予角色的女性中最引人注目的例子之一。",
+      "tts": {
+        "text": "让娜·德·克利松成为了拒绝接受被赋予角色的女性中最引人注目的例子之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "封建制度建立在领主与其封臣之间的忠诚之上。",
+      "text_markdown": "封建制度建立在领主与其封臣之间的忠诚之上。",
+      "tts": {
+        "text": "封建制度建立在领主与其封臣之间的忠诚之上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "贵族向国王或公爵宣誓效忠，以换取土地和保护。",
+      "text_markdown": "贵族向国王或公爵宣誓效忠，以换取土地和保护。",
+      "tts": {
+        "text": "贵族向国王或公爵宣誓效忠，以换取土地和保护。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "违背这一誓言就是叛国罪，可处以死刑。",
+      "text_markdown": "违背这一誓言就是叛国罪，可处以死刑。",
+      "tts": {
+        "text": "违背这一誓言就是叛国罪，可处以死刑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但叛国指控往往是政治武器。",
+      "text_markdown": "但叛国指控往往是政治武器。",
+      "tts": {
+        "text": "但叛国指控往往是政治武器。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "国王利用它们来消灭对手、没收土地和恐吓潜在的反对者。",
+      "text_markdown": "国王利用它们来消灭对手、没收土地和恐吓潜在的反对者。",
+      "tts": {
+        "text": "国王利用它们来消灭对手、没收土地和恐吓潜在的反对者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "叛国指控不需要证据，只需国王的怀疑。",
+      "text_markdown": "叛国指控不需要证据，只需国王的怀疑。",
+      "tts": {
+        "text": "叛国指控不需要证据，只需国王的怀疑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英吉利海峡在多佛和加来之间的最窄处仅有34公里宽。",
+      "text_markdown": "英吉利海峡在多佛和加来之间的最窄处仅有34公里宽。",
+      "tts": {
+        "text": "英吉利海峡在多佛和加来之间的最窄处仅有三十四公里宽。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在良好条件下，船只可以在几个小时内穿越。",
+      "text_markdown": "在良好条件下，船只可以在几个小时内穿越。",
+      "tts": {
+        "text": "在良好条件下，船只可以在几个小时内穿越。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "中世纪布列塔尼的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但风暴、大雾和强劲的水流使每次穿越都充满危险。",
+      "text_markdown": "但风暴、大雾和强劲的水流使每次穿越都充满危险。",
+      "tts": {
+        "text": "但风暴、大雾和强劲的水流使每次穿越都充满危险。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "克利松的贵妇",
+      "text_markdown": "克利松的贵妇"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜·德·克利松大约于1300年出生在布列塔尼最有权势的家族之一。",
+      "text_markdown": "让娜·德·克利松大约于1300年出生在布列塔尼最有权势的家族之一。",
+      "tts": {
+        "text": "让娜·德·克利松大约于一三〇〇年出生在布列塔尼最有权势的家族之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的本名是让娜·德·贝尔维尔。",
+      "text_markdown": "她的本名是让娜·德·贝尔维尔。",
+      "tts": {
+        "text": "她的本名是让娜·德·贝尔维尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "贝尔维尔家族在布列塔尼和普瓦图之间的边境地区拥有大片土地。",
+      "text_markdown": "贝尔维尔家族在布列塔尼和普瓦图之间的边境地区拥有大片土地。",
+      "tts": {
+        "text": "贝尔维尔家族在布列塔尼和普瓦图之间的边境地区拥有大片土地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜在十二岁时第一次出嫁，这在当时的贵族女性中很常见。",
+      "text_markdown": "让娜在十二岁时第一次出嫁，这在当时的贵族女性中很常见。",
+      "tts": {
+        "text": "让娜在十二岁时第一次出嫁，这在当时的贵族女性中很常见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的第一任丈夫是若弗鲁瓦·德·夏托布里昂，一位富有的布列塔尼领主。",
+      "text_markdown": "她的第一任丈夫是若弗鲁瓦·德·夏托布里昂，一位富有的布列塔尼领主。",
+      "tts": {
+        "text": "她的第一任丈夫是若弗鲁瓦·德·夏托布里昂，一位富有的布列塔尼领主。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这桩婚姻是两家为加强政治联盟而安排的。",
+      "text_markdown": "这桩婚姻是两家为加强政治联盟而安排的。",
+      "tts": {
+        "text": "这桩婚姻是两家为加强政治联盟而安排的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "若弗鲁瓦于1326年去世，留下年轻的让娜成为带着两个孩子的寡妇。",
+      "text_markdown": "若弗鲁瓦于1326年去世，留下年轻的让娜成为带着两个孩子的寡妇。",
+      "tts": {
+        "text": "若弗鲁瓦于一三二六年去世，留下年轻的让娜成为带着两个孩子的寡妇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她当时只有大约26岁。",
+      "text_markdown": "她当时只有大约26岁。",
+      "tts": {
+        "text": "她当时只有大约二十六岁。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1330年，让娜再婚。",
+      "text_markdown": "1330年，让娜再婚。",
+      "tts": {
+        "text": "一三三〇年，让娜再婚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的第二任丈夫是奥利维耶·德·克利松，布列塔尼最显赫的领主之一。",
+      "text_markdown": "她的第二任丈夫是奥利维耶·德·克利松，布列塔尼最显赫的领主之一。",
+      "tts": {
+        "text": "她的第二任丈夫是奥利维耶·德·克利松，布列塔尼最显赫的领主之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他富有、人脉广泛，是一位出色的军事指挥官。",
+      "text_markdown": "他富有、人脉广泛，是一位出色的军事指挥官。",
+      "tts": {
+        "text": "他富有、人脉广泛，是一位出色的军事指挥官。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这对夫妇住在布列塔尼东南部的克利松领地上。",
+      "text_markdown": "这对夫妇住在布列塔尼东南部的克利松领地上。",
+      "tts": {
+        "text": "这对夫妇住在布列塔尼东南部的克利松领地上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们共同育有五个孩子。",
+      "text_markdown": "他们共同育有五个孩子。",
+      "tts": {
+        "text": "他们共同育有五个孩子。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据所有记载，这是一段稳固而恩爱的婚姻。",
+      "text_markdown": "据所有记载，这是一段稳固而恩爱的婚姻。",
+      "tts": {
+        "text": "据所有记载，这是一段稳固而恩爱的婚姻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥利维耶·德·克利松是布列塔尼公爵的忠实臣仆。",
+      "text_markdown": "奥利维耶·德·克利松是布列塔尼公爵的忠实臣仆。",
+      "tts": {
+        "text": "奥利维耶·德·克利松是布列塔尼公爵的忠实臣仆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他参加了多次军事战役，深受同僚敬重。",
+      "text_markdown": "他参加了多次军事战役，深受同僚敬重。",
+      "tts": {
+        "text": "他参加了多次军事战役，深受同僚敬重。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他被视为一个有荣誉感和良好判断力的人。",
+      "text_markdown": "他被视为一个有荣誉感和良好判断力的人。",
+      "tts": {
+        "text": "他被视为一个有荣誉感和良好判断力的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1341年布列塔尼继承战争爆发时，奥利维耶最初支持法国支持的夏尔·德·布卢瓦。",
+      "text_markdown": "1341年布列塔尼继承战争爆发时，奥利维耶最初支持法国支持的夏尔·德·布卢瓦。",
+      "tts": {
+        "text": "一三四一年布列塔尼继承战争爆发时，奥利维耶最初支持法国支持的夏尔·德·布卢瓦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大多数布列塔尼贵族做出了同样的选择。",
+      "text_markdown": "大多数布列塔尼贵族做出了同样的选择。",
+      "tts": {
+        "text": "大多数布列塔尼贵族做出了同样的选择。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奥利维耶于1342年参加了瓦讷围城战。",
+      "text_markdown": "奥利维耶于1342年参加了瓦讷围城战。",
+      "tts": {
+        "text": "奥利维耶于一三四二年参加了瓦讷围城战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在战斗中，他被英军俘虏并被要求支付赎金。",
+      "text_markdown": "在战斗中，他被英军俘虏并被要求支付赎金。",
+      "tts": {
+        "text": "在战斗中，他被英军俘虏并被要求支付赎金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赎金数额被确定，他最终获释。",
+      "text_markdown": "赎金数额被确定，他最终获释。",
+      "tts": {
+        "text": "赎金数额被确定，他最终获释。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但他的获释引起了怀疑。",
+      "text_markdown": "但他的获释引起了怀疑。",
+      "tts": {
+        "text": "但他的获释引起了怀疑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些法国贵族私下议论说他的赎金太低了。",
+      "text_markdown": "一些法国贵族私下议论说他的赎金太低了。",
+      "tts": {
+        "text": "一些法国贵族私下议论说他的赎金太低了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们暗示英国人之所以低价放了他，是因为他同意为英国人做间谍。",
+      "text_markdown": "他们暗示英国人之所以低价放了他，是因为他同意为英国人做间谍。",
+      "tts": {
+        "text": "他们暗示英国人之所以低价放了他，是因为他同意为英国人做间谍。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "没有证据表明奥利维耶背叛了法国。",
+      "text_markdown": "没有证据表明奥利维耶背叛了法国。",
+      "tts": {
+        "text": "没有证据表明奥利维耶背叛了法国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史学家认为这一指控出于政治目的，是觊觎他土地和头衔的对手所推动的。",
+      "text_markdown": "历史学家认为这一指控出于政治目的，是觊觎他土地和头衔的对手所推动的。",
+      "tts": {
+        "text": "历史学家认为这一指控出于政治目的，是觊觎他土地和头衔的对手所推动的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1343年，奥利维耶被召往巴黎参加一场锦标赛。",
+      "text_markdown": "1343年，奥利维耶被召往巴黎参加一场锦标赛。",
+      "tts": {
+        "text": "一三四三年，奥利维耶被召往巴黎参加一场锦标赛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他毫无戒心地欣然前往。",
+      "text_markdown": "他毫无戒心地欣然前往。",
+      "tts": {
+        "text": "他毫无戒心地欣然前往。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "抵达后，他被逮捕并被指控叛国，罪名是背叛国王腓力六世。",
+      "text_markdown": "抵达后，他被逮捕并被指控叛国，罪名是背叛国王腓力六世。",
+      "tts": {
+        "text": "抵达后，他被逮捕并被指控叛国，罪名是背叛国王腓力六世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有进行正式审判。",
+      "text_markdown": "没有进行正式审判。",
+      "tts": {
+        "text": "没有进行正式审判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "指控基于怀疑和奥利维耶政敌的证词。",
+      "text_markdown": "指控基于怀疑和奥利维耶政敌的证词。",
+      "tts": {
+        "text": "指控基于怀疑和奥利维耶政敌的证词。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1343年8月2日，奥利维耶·德·克利松在巴黎大堂被斩首。",
+      "text_markdown": "1343年8月2日，奥利维耶·德·克利松在巴黎大堂被斩首。",
+      "tts": {
+        "text": "一三四三年八月二日，奥利维耶·德·克利松在巴黎大堂被斩首。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的头颅被送往南特，挂在城门上方的长矛上示众。",
+      "text_markdown": "他的头颅被送往南特，挂在城门上方的长矛上示众。",
+      "tts": {
+        "text": "他的头颅被送往南特，挂在城门上方的长矛上示众。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当让娜得知丈夫被处决的消息后，她悲痛欲绝。",
+      "text_markdown": "当让娜得知丈夫被处决的消息后，她悲痛欲绝。",
+      "tts": {
+        "text": "当让娜得知丈夫被处决的消息后，她悲痛欲绝。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据编年史记载，她带着两个最小的儿子前往南特。",
+      "text_markdown": "据编年史记载，她带着两个最小的儿子前往南特。",
+      "tts": {
+        "text": "据编年史记载，她带着两个最小的儿子前往南特。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她让他们看了父亲悬挂在城门上的头颅，并告诉他们要记住法国国王的所作所为。",
+      "text_markdown": "她让他们看了父亲悬挂在城门上的头颅，并告诉他们要记住法国国王的所作所为。",
+      "tts": {
+        "text": "她让他们看了父亲悬挂在城门上的头颅，并告诉他们要记住法国国王的所作所为。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从那一刻起，让娜·德·克利松将她的一生奉献给了一个目标。",
+      "text_markdown": "从那一刻起，让娜·德·克利松将她的一生奉献给了一个目标。",
+      "tts": {
+        "text": "从那一刻起，让娜·德·克利松将她的一生奉献给了一个目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她要让法国国王和他的支持者为他们对她丈夫所做的一切付出代价。",
+      "text_markdown": "她要让法国国王和他的支持者为他们对她丈夫所做的一切付出代价。",
+      "tts": {
+        "text": "她要让法国国王和他的支持者为他们对她丈夫所做的一切付出代价。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她首先变卖了克利松的领地。",
+      "text_markdown": "她首先变卖了克利松的领地。",
+      "tts": {
+        "text": "她首先变卖了克利松的领地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她将土地、珠宝和财产全部变现为黄金。",
+      "text_markdown": "她将土地、珠宝和财产全部变现为黄金。",
+      "tts": {
+        "text": "她将土地、珠宝和财产全部变现为黄金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "用这笔钱，她召集了一支忠诚的小军队。",
+      "text_markdown": "用这笔钱，她召集了一支忠诚的小军队。",
+      "tts": {
+        "text": "用这笔钱，她召集了一支忠诚的小军队。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她攻击了布列塔尼亲法的城堡和驻军。",
+      "text_markdown": "她攻击了布列塔尼亲法的城堡和驻军。",
+      "tts": {
+        "text": "她攻击了布列塔尼亲法的城堡和驻军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的袭击迅速、猛烈而无情。",
+      "text_markdown": "她的袭击迅速、猛烈而无情。",
+      "tts": {
+        "text": "她的袭击迅速、猛烈而无情。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她杀死了每一个支持法国王室的士兵，将防御工事付之一炬。",
+      "text_markdown": "她杀死了每一个支持法国王室的士兵，将防御工事付之一炬。",
+      "tts": {
+        "text": "她杀死了每一个支持法国王室的士兵，将防御工事付之一炬。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但陆地战争对让娜来说还不够。",
+      "text_markdown": "但陆地战争对让娜来说还不够。",
+      "tts": {
+        "text": "但陆地战争对让娜来说还不够。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她想在最痛处打击法国。",
+      "text_markdown": "她想在最痛处打击法国。",
+      "tts": {
+        "text": "她想在最痛处打击法国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "克利松的贵妇",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她决定将战争带到海上。",
+      "text_markdown": "她决定将战争带到海上。",
+      "tts": {
+        "text": "她决定将战争带到海上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "黑色舰队",
+      "text_markdown": "黑色舰队"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜·德·克利松购买了三艘战船。",
+      "text_markdown": "让娜·德·克利松购买了三艘战船。",
+      "tts": {
+        "text": "让娜·德·克利松购买了三艘战船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她让人把船体漆成黑色。",
+      "text_markdown": "她让人把船体漆成黑色。",
+      "tts": {
+        "text": "她让人把船体漆成黑色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她下令将船帆染成红色。",
+      "text_markdown": "她下令将船帆染成红色。",
+      "tts": {
+        "text": "她下令将船帆染成红色。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑色船体和红色船帆的设计目的是让人从远处就能认出。",
+      "text_markdown": "黑色船体和红色船帆的设计目的是让人从远处就能认出。",
+      "tts": {
+        "text": "黑色船体和红色船帆的设计目的是让人从远处就能认出。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "让娜希望法国人知道是谁来找他们了。",
+      "text_markdown": "让娜希望法国人知道是谁来找他们了。",
+      "tts": {
+        "text": "让娜希望法国人知道是谁来找他们了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她希望他们感受到她丈夫曾经感受到的恐惧。",
+      "text_markdown": "她希望他们感受到她丈夫曾经感受到的恐惧。",
+      "tts": {
+        "text": "她希望他们感受到她丈夫曾经感受到的恐惧。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她驶入英吉利海峡，开始攻击法国商船和军舰。",
+      "text_markdown": "她驶入英吉利海峡，开始攻击法国商船和军舰。",
+      "tts": {
+        "text": "她驶入英吉利海峡，开始攻击法国商船和军舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的舰队以悬挂法国旗帜的所有船只为目标。",
+      "text_markdown": "她的舰队以悬挂法国旗帜的所有船只为目标。",
+      "tts": {
+        "text": "她的舰队以悬挂法国旗帜的所有船只为目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜亲自率领部下投入战斗。",
+      "text_markdown": "让娜亲自率领部下投入战斗。",
+      "tts": {
+        "text": "让娜亲自率领部下投入战斗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据编年史记载，她在战斗中挥舞战斧，与船员并肩作战。",
+      "text_markdown": "据编年史记载，她在战斗中挥舞战斧，与船员并肩作战。",
+      "tts": {
+        "text": "据编年史记载，她在战斗中挥舞战斧，与船员并肩作战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "据说她无所畏惧，绝不手软。",
+      "text_markdown": "据说她无所畏惧，绝不手软。",
+      "tts": {
+        "text": "据说她无所畏惧，绝不手软。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当她的船只俘获法国船只时，船员会被处死。",
+      "text_markdown": "当她的船只俘获法国船只时，船员会被处死。",
+      "tts": {
+        "text": "当她的船只俘获法国船只时，船员会被处死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但让娜总会留下两三个幸存者。",
+      "text_markdown": "但让娜总会留下两三个幸存者。",
+      "tts": {
+        "text": "但让娜总会留下两三个幸存者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她把他们送回法国，让他们告诉国王发生了什么。",
+      "text_markdown": "她把他们送回法国，让他们告诉国王发生了什么。",
+      "tts": {
+        "text": "她把他们送回法国，让他们告诉国王发生了什么。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一种蓄意的心理战策略。",
+      "text_markdown": "这是一种蓄意的心理战策略。",
+      "tts": {
+        "text": "这是一种蓄意的心理战策略。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "幸存者传播了关于黑色红帆船的故事。",
+      "text_markdown": "幸存者传播了关于黑色红帆船的故事。",
+      "tts": {
+        "text": "幸存者传播了关于黑色红帆船的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对布列塔尼母狮的恐惧沿着整个法国海岸蔓延。",
+      "text_markdown": "对布列塔尼母狮的恐惧沿着整个法国海岸蔓延。",
+      "tts": {
+        "text": "对布列塔尼母狮的恐惧沿着整个法国海岸蔓延。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜对法国贵族尤其残忍。",
+      "text_markdown": "让娜对法国贵族尤其残忍。",
+      "tts": {
+        "text": "让娜对法国贵族尤其残忍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "如果她俘获了一位支持腓力六世的领主或骑士，她会亲自监督处决。",
+      "text_markdown": "如果她俘获了一位支持腓力六世的领主或骑士，她会亲自监督处决。",
+      "tts": {
+        "text": "如果她俘获了一位支持腓力六世的领主或骑士，她会亲自监督处决。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她希望法国贵族感受到对她丈夫所犯的同样不公。",
+      "text_markdown": "她希望法国贵族感受到对她丈夫所犯的同样不公。",
+      "tts": {
+        "text": "她希望法国贵族感受到对她丈夫所犯的同样不公。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她与英格兰结盟。",
+      "text_markdown": "她与英格兰结盟。",
+      "tts": {
+        "text": "她与英格兰结盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爱德华三世国王乐于支持任何攻击法国航运的人。",
+      "text_markdown": "爱德华三世国王乐于支持任何攻击法国航运的人。",
+      "tts": {
+        "text": "爱德华三世国王乐于支持任何攻击法国航运的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜的袭击扰乱了法国贸易，削弱了法国的战争力量。",
+      "text_markdown": "让娜的袭击扰乱了法国贸易，削弱了法国的战争力量。",
+      "tts": {
+        "text": "让娜的袭击扰乱了法国贸易，削弱了法国的战争力量。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人为让娜提供补给、安全港口以及关于法国船只动向的情报。",
+      "text_markdown": "英国人为让娜提供补给、安全港口以及关于法国船只动向的情报。",
+      "tts": {
+        "text": "英国人为让娜提供补给、安全港口以及关于法国船只动向的情报。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "作为回报，让娜分享了她袭击所得的利润，并确保英国船只从未受到伤害。",
+      "text_markdown": "作为回报，让娜分享了她袭击所得的利润，并确保英国船只从未受到伤害。",
+      "tts": {
+        "text": "作为回报，让娜分享了她袭击所得的利润，并确保英国船只从未受到伤害。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "法国王室对让娜的攻击极为愤怒，但难以阻止她。",
+      "text_markdown": "法国王室对让娜的攻击极为愤怒，但难以阻止她。",
+      "tts": {
+        "text": "法国王室对让娜的攻击极为愤怒，但难以阻止她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英吉利海峡辽阔，让娜的船只速度快。",
+      "text_markdown": "英吉利海峡辽阔，让娜的船只速度快。",
+      "tts": {
+        "text": "英吉利海峡辽阔，让娜的船只速度快。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她出其不意地发动袭击，在法国军舰作出反应之前就已消失。",
+      "text_markdown": "她出其不意地发动袭击，在法国军舰作出反应之前就已消失。",
+      "tts": {
+        "text": "她出其不意地发动袭击，在法国军舰作出反应之前就已消失。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "腓力六世没收了克利松家族剩余的土地，并宣布让娜为逃犯。",
+      "text_markdown": "腓力六世没收了克利松家族剩余的土地，并宣布让娜为逃犯。",
+      "tts": {
+        "text": "腓力六世没收了克利松家族剩余的土地，并宣布让娜为逃犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他悬赏捉拿她。",
+      "text_markdown": "他悬赏捉拿她。",
+      "tts": {
+        "text": "他悬赏捉拿她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但让娜已超出他的势力范围，受到大海和英国盟友的保护。",
+      "text_markdown": "但让娜已超出他的势力范围，受到大海和英国盟友的保护。",
+      "tts": {
+        "text": "但让娜已超出他的势力范围，受到大海和英国盟友的保护。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜的战役不是一个愤怒女人独自行动的产物。",
+      "text_markdown": "让娜的战役不是一个愤怒女人独自行动的产物。",
+      "tts": {
+        "text": "让娜的战役不是一个愤怒女人独自行动的产物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她指挥着一支舰队和一支由经验丰富的水手和士兵组成的船员。",
+      "text_markdown": "她指挥着一支舰队和一支由经验丰富的水手和士兵组成的船员。",
+      "tts": {
+        "text": "她指挥着一支舰队和一支由经验丰富的水手和士兵组成的船员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她精心策划攻击，以战略精确度选择目标。",
+      "text_markdown": "她精心策划攻击，以战略精确度选择目标。",
+      "tts": {
+        "text": "她精心策划攻击，以战略精确度选择目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的水手对她忠心耿耿。",
+      "text_markdown": "她的水手对她忠心耿耿。",
+      "tts": {
+        "text": "她的水手对她忠心耿耿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在那个不指望女性带领男人上战场的时代，让娜的船员毫不犹豫地追随她。",
+      "text_markdown": "在那个不指望女性带领男人上战场的时代，让娜的船员毫不犹豫地追随她。",
+      "tts": {
+        "text": "在那个不指望女性带领男人上战场的时代，让娜的船员毫不犹豫地追随她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的个人勇气和事业的正义性赢得了他们的尊重。",
+      "text_markdown": "她的个人勇气和事业的正义性赢得了他们的尊重。",
+      "tts": {
+        "text": "她的个人勇气和事业的正义性赢得了他们的尊重。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她还沿诺曼底海岸行动，袭击支持法国王室的渔村和沿海城镇。",
+      "text_markdown": "她还沿诺曼底海岸行动，袭击支持法国王室的渔村和沿海城镇。",
+      "tts": {
+        "text": "她还沿诺曼底海岸行动，袭击支持法国王室的渔村和沿海城镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她烧毁了运往法国军队的补给。",
+      "text_markdown": "她烧毁了运往法国军队的补给。",
+      "tts": {
+        "text": "她烧毁了运往法国军队的补给。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她破坏了维持法国战争机器运转的补给线。",
+      "text_markdown": "她破坏了维持法国战争机器运转的补给线。",
+      "tts": {
+        "text": "她破坏了维持法国战争机器运转的补给线。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年复一年，让娜继续着她对法国的战争。",
+      "text_markdown": "年复一年，让娜继续着她对法国的战争。",
+      "tts": {
+        "text": "年复一年，让娜继续着她对法国的战争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其他海盗可能早已厌倦或接受了赦免。",
+      "text_markdown": "其他海盗可能早已厌倦或接受了赦免。",
+      "tts": {
+        "text": "其他海盗可能早已厌倦或接受了赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜从未屈服。",
+      "text_markdown": "让娜从未屈服。",
+      "tts": {
+        "text": "让娜从未屈服。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她对腓力六世的仇恨是绝对的。",
+      "text_markdown": "她对腓力六世的仇恨是绝对的。",
+      "tts": {
+        "text": "她对腓力六世的仇恨是绝对的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "腓力于1350年去世时，他的儿子约翰二世继承了王位和战争。",
+      "text_markdown": "腓力于1350年去世时，他的儿子约翰二世继承了王位和战争。",
+      "tts": {
+        "text": "腓力于一三五〇年去世时，他的儿子约翰二世继承了王位和战争。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜对新国王军队的攻击毫不停歇。",
+      "text_markdown": "让娜对新国王军队的攻击毫不停歇。",
+      "tts": {
+        "text": "让娜对新国王军队的攻击毫不停歇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜的船员中包括曾为她丈夫效力并一直忠于克利松之名的布列塔尼水手。",
+      "text_markdown": "让娜的船员中包括曾为她丈夫效力并一直忠于克利松之名的布列塔尼水手。",
+      "tts": {
+        "text": "让娜的船员中包括曾为她丈夫效力并一直忠于克利松之名的布列塔尼水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些人对海峡水域和布列塔尼海岸了如指掌。",
+      "text_markdown": "这些人对海峡水域和布列塔尼海岸了如指掌。",
+      "tts": {
+        "text": "这些人对海峡水域和布列塔尼海岸了如指掌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们的本地知识给了让娜显著的战术优势。",
+      "text_markdown": "他们的本地知识给了让娜显著的战术优势。",
+      "tts": {
+        "text": "他们的本地知识给了让娜显著的战术优势。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世纪四十年代的中世纪战船并非后来世纪里的大型帆船。",
+      "text_markdown": "十四世纪四十年代的中世纪战船并非后来世纪里的大型帆船。",
+      "tts": {
+        "text": "十四世纪四十年代的中世纪战船并非后来世纪里的大型帆船。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们是较小的船只，通常由商船改装而来。",
+      "text_markdown": "它们是较小的船只，通常由商船改装而来。",
+      "tts": {
+        "text": "它们是较小的船只，通常由商船改装而来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们既靠桨也靠帆，能在浅水近海区域灵活机动。",
+      "text_markdown": "它们既靠桨也靠帆，能在浅水近海区域灵活机动。",
+      "tts": {
+        "text": "它们既靠桨也靠帆，能在浅水近海区域灵活机动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "登船作战是这个时代海战的主要方式。",
+      "text_markdown": "登船作战是这个时代海战的主要方式。",
+      "tts": {
+        "text": "登船作战是这个时代海战的主要方式。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船员们用钩索勾住敌船，拉近距离，然后挥舞刀剑和斧头冲上去。",
+      "text_markdown": "船员们用钩索勾住敌船，拉近距离，然后挥舞刀剑和斧头冲上去。",
+      "tts": {
+        "text": "船员们用钩索勾住敌船，拉近距离，然后挥舞刀剑和斧头冲上去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "黑色舰队",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是近身而残酷的战斗。",
+      "text_markdown": "这是近身而残酷的战斗。",
+      "tts": {
+        "text": "这是近身而残酷的战斗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海峡上的十三年",
+      "text_markdown": "海峡上的十三年"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜·德·克利松的复仇之战大约持续了十三年。",
+      "text_markdown": "让娜·德·克利松的复仇之战大约持续了十三年。",
+      "tts": {
+        "text": "让娜·德·克利松的复仇之战大约持续了十三年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "从1343年到大约1356年，她在英吉利海峡恐吓法国航运。",
+      "text_markdown": "从1343年到大约1356年，她在英吉利海峡恐吓法国航运。",
+      "tts": {
+        "text": "从一三四三年到大约一三五六年，她在英吉利海峡恐吓法国航运。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在此期间，她成为了海上最著名、最令人恐惧的人物之一。",
+      "text_markdown": "在此期间，她成为了海上最著名、最令人恐惧的人物之一。",
+      "tts": {
+        "text": "在此期间，她成为了海上最著名、最令人恐惧的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法国水手们害怕看到地平线上出现黑色船体。",
+      "text_markdown": "法国水手们害怕看到地平线上出现黑色船体。",
+      "tts": {
+        "text": "法国水手们害怕看到地平线上出现黑色船体。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜舰队的红色船帆意味着死亡即将来临。",
+      "text_markdown": "让娜舰队的红色船帆意味着死亡即将来临。",
+      "tts": {
+        "text": "让娜舰队的红色船帆意味着死亡即将来临。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她通过俘获法国船只并出售货物来维持舰队。",
+      "text_markdown": "她通过俘获法国船只并出售货物来维持舰队。",
+      "tts": {
+        "text": "她通过俘获法国船只并出售货物来维持舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "袭击所得为新船、武器和船员提供了资金。",
+      "text_markdown": "袭击所得为新船、武器和船员提供了资金。",
+      "tts": {
+        "text": "袭击所得为新船、武器和船员提供了资金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她自给自足，不欠任何人。",
+      "text_markdown": "她自给自足，不欠任何人。",
+      "tts": {
+        "text": "她自给自足，不欠任何人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十四世纪四十年代和五十年代的英吉利海峡是一个战区。",
+      "text_markdown": "十四世纪四十年代和五十年代的英吉利海峡是一个战区。",
+      "tts": {
+        "text": "十四世纪四十年代和五十年代的英吉利海峡是一个战区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英法舰队定期交战。",
+      "text_markdown": "英法舰队定期交战。",
+      "tts": {
+        "text": "英法舰队定期交战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商船编队航行以求自保，但即使是编队也无法逃脱让娜的袭击。",
+      "text_markdown": "商船编队航行以求自保，但即使是编队也无法逃脱让娜的袭击。",
+      "tts": {
+        "text": "商船编队航行以求自保，但即使是编队也无法逃脱让娜的袭击。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜的名声远远超出了布列塔尼。",
+      "text_markdown": "让娜的名声远远超出了布列塔尼。",
+      "tts": {
+        "text": "让娜的名声远远超出了布列塔尼。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "关于布列塔尼母狮的故事传遍了法国、英格兰和低地国家。",
+      "text_markdown": "关于布列塔尼母狮的故事传遍了法国、英格兰和低地国家。",
+      "tts": {
+        "text": "关于布列塔尼母狮的故事传遍了法国、英格兰和低地国家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她成为了反抗王权不公的象征。",
+      "text_markdown": "她成为了反抗王权不公的象征。",
+      "tts": {
+        "text": "她成为了反抗王权不公的象征。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这些年里，她的孩子始终是她生活的中心。",
+      "text_markdown": "在这些年里，她的孩子始终是她生活的中心。",
+      "tts": {
+        "text": "在这些年里，她的孩子始终是她生活的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她确保他们在安全的环境中成长，远离她海上战役的危险。",
+      "text_markdown": "她确保他们在安全的环境中成长，远离她海上战役的危险。",
+      "tts": {
+        "text": "她确保他们在安全的环境中成长，远离她海上战役的危险。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她与第一任丈夫所生的长子被托付给英国盟友照顾。",
+      "text_markdown": "她与第一任丈夫所生的长子被托付给英国盟友照顾。",
+      "tts": {
+        "text": "她与第一任丈夫所生的长子被托付给英国盟友照顾。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的儿子小奥利维耶·德·克利松后来成为法国最有权势的人物之一。",
+      "text_markdown": "她的儿子小奥利维耶·德·克利松后来成为法国最有权势的人物之一。",
+      "tts": {
+        "text": "她的儿子小奥利维耶·德·克利松后来成为法国最有权势的人物之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他最终成为法国元帅，这是王国中最高的军事职位。",
+      "text_markdown": "他最终成为法国元帅，这是王国中最高的军事职位。",
+      "tts": {
+        "text": "他最终成为法国元帅，这是王国中最高的军事职位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对于一个曾被打上叛国者烙印的家族来说，这是一个惊人的逆转。",
+      "text_markdown": "对于一个曾被打上叛国者烙印的家族来说，这是一个惊人的逆转。",
+      "tts": {
+        "text": "对于一个曾被打上叛国者烙印的家族来说，这是一个惊人的逆转。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜的战术在多年间不断演变。",
+      "text_markdown": "让娜的战术在多年间不断演变。",
+      "tts": {
+        "text": "让娜的战术在多年间不断演变。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她学会了阅读海峡的天气和潮汐。",
+      "text_markdown": "她学会了阅读海峡的天气和潮汐。",
+      "tts": {
+        "text": "她学会了阅读海峡的天气和潮汐。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她知道哪些港口是安全的，哪些有法国军舰巡逻。",
+      "text_markdown": "她知道哪些港口是安全的，哪些有法国军舰巡逻。",
+      "tts": {
+        "text": "她知道哪些港口是安全的，哪些有法国军舰巡逻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她在夜间视线不佳、更容易脱身时发动攻击。",
+      "text_markdown": "她在夜间视线不佳、更容易脱身时发动攻击。",
+      "tts": {
+        "text": "她在夜间视线不佳、更容易脱身时发动攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她以落单的船只为目标，而非防御严密的船队。",
+      "text_markdown": "她以落单的船只为目标，而非防御严密的船队。",
+      "tts": {
+        "text": "她以落单的船只为目标，而非防御严密的船队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她总有撤退计划。",
+      "text_markdown": "她总有撤退计划。",
+      "tts": {
+        "text": "她总有撤退计划。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "法国人派出舰队追捕她，但始终未能将她捉获。",
+      "text_markdown": "法国人派出舰队追捕她，但始终未能将她捉获。",
+      "tts": {
+        "text": "法国人派出舰队追捕她，但始终未能将她捉获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "让娜对海峡水域的了解超过了大多数海军指挥官。",
+      "text_markdown": "让娜对海峡水域的了解超过了大多数海军指挥官。",
+      "tts": {
+        "text": "让娜对海峡水域的了解超过了大多数海军指挥官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她可以消失在雾中，躲在沿海的小海湾里，或者在公海上甩掉追兵。",
+      "text_markdown": "她可以消失在雾中，躲在沿海的小海湾里，或者在公海上甩掉追兵。",
+      "tts": {
+        "text": "她可以消失在雾中，躲在沿海的小海湾里，或者在公海上甩掉追兵。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "也有过千钧一发的时刻。",
+      "text_markdown": "也有过千钧一发的时刻。",
+      "tts": {
+        "text": "也有过千钧一发的时刻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "据一则记载，让娜的舰队曾在海峡中被一场风暴打散。",
+      "text_markdown": "据一则记载，让娜的舰队曾在海峡中被一场风暴打散。",
+      "tts": {
+        "text": "据一则记载，让娜的舰队曾在海峡中被一场风暴打散。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她和儿子们在海上漂流了数日才到达英格兰海岸。",
+      "text_markdown": "她和儿子们在海上漂流了数日才到达英格兰海岸。",
+      "tts": {
+        "text": "她和儿子们在海上漂流了数日才到达英格兰海岸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这次磨难中，据说她的一个小儿子因受寒和体力不支而去世。",
+      "text_markdown": "在这次磨难中，据说她的一个小儿子因受寒和体力不支而去世。",
+      "tts": {
+        "text": "在这次磨难中，据说她的一个小儿子因受寒和体力不支而去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这一损失加深了她的悲痛，但没有动摇她的决心。",
+      "text_markdown": "这一损失加深了她的悲痛，但没有动摇她的决心。",
+      "tts": {
+        "text": "这一损失加深了她的悲痛，但没有动摇她的决心。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜的战争是私人的，但它服务于一个更大的事业。",
+      "text_markdown": "让娜的战争是私人的，但它服务于一个更大的事业。",
+      "tts": {
+        "text": "让娜的战争是私人的，但它服务于一个更大的事业。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "通过攻击法国航运，她削弱了法国对英格兰及其盟友发动战争的能力。",
+      "text_markdown": "通过攻击法国航运，她削弱了法国对英格兰及其盟友发动战争的能力。",
+      "tts": {
+        "text": "通过攻击法国航运，她削弱了法国对英格兰及其盟友发动战争的能力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她是英国战争努力中一笔宝贵的资产。",
+      "text_markdown": "她是英国战争努力中一笔宝贵的资产。",
+      "tts": {
+        "text": "她是英国战争努力中一笔宝贵的资产。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英国人将她视为尊贵的盟友。",
+      "text_markdown": "英国人将她视为尊贵的盟友。",
+      "tts": {
+        "text": "英国人将她视为尊贵的盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她受到英国宫廷的接待，获得了保护和支持。",
+      "text_markdown": "她受到英国宫廷的接待，获得了保护和支持。",
+      "tts": {
+        "text": "她受到英国宫廷的接待，获得了保护和支持。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "英国人认为她的事业是正义的，因为他们也有自己鄙视法国国王的理由。",
+      "text_markdown": "英国人认为她的事业是正义的，因为他们也有自己鄙视法国国王的理由。",
+      "tts": {
+        "text": "英国人认为她的事业是正义的，因为他们也有自己鄙视法国国王的理由。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随着时间推移，百年战争继续延绵，看不到尽头。",
+      "text_markdown": "随着时间推移，百年战争继续延绵，看不到尽头。",
+      "tts": {
+        "text": "随着时间推移，百年战争继续延绵，看不到尽头。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黑死病于1348年和1349年席卷欧洲，可能夺去了三分之一人口的生命。",
+      "text_markdown": "黑死病于1348年和1349年席卷欧洲，可能夺去了三分之一人口的生命。",
+      "tts": {
+        "text": "黑死病于一三四八年和一三四九年席卷欧洲，可能夺去了三分之一人口的生命。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "瘟疫扰乱了军队、贸易和社会秩序本身。",
+      "text_markdown": "瘟疫扰乱了军队、贸易和社会秩序本身。",
+      "tts": {
+        "text": "瘟疫扰乱了军队、贸易和社会秩序本身。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "即使在这些可怕的时期，让娜仍然继续她的袭击。",
+      "text_markdown": "即使在这些可怕的时期，让娜仍然继续她的袭击。",
+      "tts": {
+        "text": "即使在这些可怕的时期，让娜仍然继续她的袭击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海上战争不会因瘟疫而停止，正如它不会因冬季风暴而停止一样。",
+      "text_markdown": "海上战争不会因瘟疫而停止，正如它不会因冬季风暴而停止一样。",
+      "tts": {
+        "text": "海上战争不会因瘟疫而停止，正如它不会因冬季风暴而停止一样。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜·德·克利松不仅仅是一个追求利润的海盗。",
+      "text_markdown": "让娜·德·克利松不仅仅是一个追求利润的海盗。",
+      "tts": {
+        "text": "让娜·德·克利松不仅仅是一个追求利润的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她是一个对她认为谋杀了她丈夫的国王发动私人战争的女人。",
+      "text_markdown": "她是一个对她认为谋杀了她丈夫的国王发动私人战争的女人。",
+      "tts": {
+        "text": "她是一个对她认为谋杀了她丈夫的国王发动私人战争的女人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她击沉的每一艘法国船在她眼中都是正义的行为。",
+      "text_markdown": "她击沉的每一艘法国船在她眼中都是正义的行为。",
+      "tts": {
+        "text": "她击沉的每一艘法国船在她眼中都是正义的行为。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "为布列塔尼法军提供给养的补给船是特别有价值的目标。",
+      "text_markdown": "为布列塔尼法军提供给养的补给船是特别有价值的目标。",
+      "tts": {
+        "text": "为布列塔尼法军提供给养的补给船是特别有价值的目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "通过俘获或击沉这些船只，让娜使敌方驻军失去了粮食、武器和援军。",
+      "text_markdown": "通过俘获或击沉这些船只，让娜使敌方驻军失去了粮食、武器和援军。",
+      "tts": {
+        "text": "通过俘获或击沉这些船只，让娜使敌方驻军失去了粮食、武器和援军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的袭击对布列塔尼战争的进程产生了直接影响。",
+      "text_markdown": "她的袭击对布列塔尼战争的进程产生了直接影响。",
+      "tts": {
+        "text": "她的袭击对布列塔尼战争的进程产生了直接影响。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海上生活对船上的每个人都是一种惩罚。",
+      "text_markdown": "海上生活对船上的每个人都是一种惩罚。",
+      "tts": {
+        "text": "海上生活对船上的每个人都是一种惩罚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船只寒冷、潮湿而拥挤。",
+      "text_markdown": "船只寒冷、潮湿而拥挤。",
+      "tts": {
+        "text": "船只寒冷、潮湿而拥挤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "食物很快变质，淡水总是供不应求。",
+      "text_markdown": "食物很快变质，淡水总是供不应求。",
+      "tts": {
+        "text": "食物很快变质，淡水总是供不应求。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜与她的船员一起忍受这些艰辛。",
+      "text_markdown": "让娜与她的船员一起忍受这些艰辛。",
+      "tts": {
+        "text": "让娜与她的船员一起忍受这些艰辛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她不是从岸上的安全地带发号施令。",
+      "text_markdown": "她不是从岸上的安全地带发号施令。",
+      "tts": {
+        "text": "她不是从岸上的安全地带发号施令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "海峡上的十三年",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她与她的船只一起航行，在战斗中作战，分担大海的危险。",
+      "text_markdown": "她与她的船只一起航行，在战斗中作战，分担大海的危险。",
+      "tts": {
+        "text": "她与她的船只一起航行，在战斗中作战，分担大海的危险。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "宁静的海岸",
+      "text_markdown": "宁静的海岸"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大约在1356年，让娜·德·克利松从海上退役。",
+      "text_markdown": "大约在1356年，让娜·德·克利松从海上退役。",
+      "tts": {
+        "text": "大约在一三五六年，让娜·德·克利松从海上退役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她已经征战了大约十三年。",
+      "text_markdown": "她已经征战了大约十三年。",
+      "tts": {
+        "text": "她已经征战了大约十三年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她退役的确切原因尚不完全清楚。",
+      "text_markdown": "她退役的确切原因尚不完全清楚。",
+      "tts": {
+        "text": "她退役的确切原因尚不完全清楚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家认为年龄、疲惫和政治环境的变化都起到了作用。",
+      "text_markdown": "历史学家认为年龄、疲惫和政治环境的变化都起到了作用。",
+      "tts": {
+        "text": "历史学家认为年龄、疲惫和政治环境的变化都起到了作用。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "让娜当时已年过五旬，在中世纪算是高龄了。",
+      "text_markdown": "让娜当时已年过五旬，在中世纪算是高龄了。",
+      "tts": {
+        "text": "让娜当时已年过五旬，在中世纪算是高龄了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她第三次结婚。",
+      "text_markdown": "她第三次结婚。",
+      "tts": {
+        "text": "她第三次结婚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的新丈夫是沃尔特·本特利，一位英格兰骑士和军事指挥官。",
+      "text_markdown": "她的新丈夫是沃尔特·本特利，一位英格兰骑士和军事指挥官。",
+      "tts": {
+        "text": "她的新丈夫是沃尔特·本特利，一位英格兰骑士和军事指挥官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "本特利曾担任英国驻布列塔尼的副官。",
+      "text_markdown": "本特利曾担任英国驻布列塔尼的副官。",
+      "tts": {
+        "text": "本特利曾担任英国驻布列塔尼的副官。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与本特利的婚姻代表了让娜人生的新篇章。",
+      "text_markdown": "与本特利的婚姻代表了让娜人生的新篇章。",
+      "tts": {
+        "text": "与本特利的婚姻代表了让娜人生的新篇章。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "经历了多年的暴力和悲伤之后，她选择安定下来。",
+      "text_markdown": "经历了多年的暴力和悲伤之后，她选择安定下来。",
+      "tts": {
+        "text": "经历了多年的暴力和悲伤之后，她选择安定下来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她已经为丈夫之死索取了惨重的代价。",
+      "text_markdown": "她已经为丈夫之死索取了惨重的代价。",
+      "tts": {
+        "text": "她已经为丈夫之死索取了惨重的代价。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜和沃尔特·本特利住在布列塔尼的庄园里。",
+      "text_markdown": "让娜和沃尔特·本特利住在布列塔尼的庄园里。",
+      "tts": {
+        "text": "让娜和沃尔特·本特利住在布列塔尼的庄园里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法国和英格兰之间的战争仍在继续，但让娜已不再参与其中。",
+      "text_markdown": "法国和英格兰之间的战争仍在继续，但让娜已不再参与其中。",
+      "tts": {
+        "text": "法国和英格兰之间的战争仍在继续，但让娜已不再参与其中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她以贵妇身份度过了最后的岁月，管理着自己的家庭和剩余的土地。",
+      "text_markdown": "她以贵妇身份度过了最后的岁月，管理着自己的家庭和剩余的土地。",
+      "tts": {
+        "text": "她以贵妇身份度过了最后的岁月，管理着自己的家庭和剩余的土地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英吉利海峡上凶猛的女海盗再次成为了布列塔尼贵族的一位夫人。",
+      "text_markdown": "英吉利海峡上凶猛的女海盗再次成为了布列塔尼贵族的一位夫人。",
+      "tts": {
+        "text": "英吉利海峡上凶猛的女海盗再次成为了布列塔尼贵族的一位夫人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜·德·克利松于1359年去世。",
+      "text_markdown": "让娜·德·克利松于1359年去世。",
+      "tts": {
+        "text": "让娜·德·克利松于一三五九年去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她大约59岁。",
+      "text_markdown": "她大约59岁。",
+      "tts": {
+        "text": "她大约五十九岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她的死因没有记载。",
+      "text_markdown": "她的死因没有记载。",
+      "tts": {
+        "text": "她的死因没有记载。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她被安葬在布列塔尼乡间的雅各宾教堂。",
+      "text_markdown": "她被安葬在布列塔尼乡间的雅各宾教堂。",
+      "tts": {
+        "text": "她被安葬在布列塔尼乡间的雅各宾教堂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她墓地的确切位置已随岁月流逝而失落。",
+      "text_markdown": "她墓地的确切位置已随岁月流逝而失落。",
+      "tts": {
+        "text": "她墓地的确切位置已随岁月流逝而失落。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的儿子小奥利维耶·德·克利松幸存并飞黄腾达。",
+      "text_markdown": "她的儿子小奥利维耶·德·克利松幸存并飞黄腾达。",
+      "tts": {
+        "text": "她的儿子小奥利维耶·德·克利松幸存并飞黄腾达。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "尽管父亲以叛国罪被处死，年轻的奥利维耶升至法国军事指挥的最高层。",
+      "text_markdown": "尽管父亲以叛国罪被处死，年轻的奥利维耶升至法国军事指挥的最高层。",
+      "tts": {
+        "text": "尽管父亲以叛国罪被处死，年轻的奥利维耶升至法国军事指挥的最高层。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他于1380年被任命为法国元帅，这个职位他担任了十多年。",
+      "text_markdown": "他于1380年被任命为法国元帅，这个职位他担任了十多年。",
+      "tts": {
+        "text": "他于一三八〇年被任命为法国元帅，这个职位他担任了十多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "元帅是法国军队的最高统帅。",
+      "text_markdown": "元帅是法国军队的最高统帅。",
+      "tts": {
+        "text": "元帅是法国军队的最高统帅。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是王国中最有权力的职位之一。",
+      "text_markdown": "这是王国中最有权力的职位之一。",
+      "tts": {
+        "text": "这是王国中最有权力的职位之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "克利松家族曾被判定为叛国者并被剥夺一切。",
+      "text_markdown": "克利松家族曾被判定为叛国者并被剥夺一切。",
+      "tts": {
+        "text": "克利松家族曾被判定为叛国者并被剥夺一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "仅仅一代人的时间，他们便重返法国权力的巅峰。",
+      "text_markdown": "仅仅一代人的时间，他们便重返法国权力的巅峰。",
+      "tts": {
+        "text": "仅仅一代人的时间，他们便重返法国权力的巅峰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p96",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜的抗争没有白费。",
+      "text_markdown": "让娜的抗争没有白费。",
+      "tts": {
+        "text": "让娜的抗争没有白费。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沃尔特·本特利在让娜之后又活了数年。",
+      "text_markdown": "沃尔特·本特利在让娜之后又活了数年。",
+      "tts": {
+        "text": "沃尔特·本特利在让娜之后又活了数年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他继续为英国在布列塔尼的利益服务直至去世。",
+      "text_markdown": "他继续为英国在布列塔尼的利益服务直至去世。",
+      "tts": {
+        "text": "他继续为英国在布列塔尼的利益服务直至去世。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "百年战争在让娜去世后又持续了将近一个世纪。",
+      "text_markdown": "百年战争在让娜去世后又持续了将近一个世纪。",
+      "tts": {
+        "text": "百年战争在让娜去世后又持续了将近一个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在未来数十年里，布列塔尼仍将是法国和英格兰之间的战场。",
+      "text_markdown": "在未来数十年里，布列塔尼仍将是法国和英格兰之间的战场。",
+      "tts": {
+        "text": "在未来数十年里，布列塔尼仍将是法国和英格兰之间的战场。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从战士到妻子的转变并不像看上去那么突然。",
+      "text_markdown": "从战士到妻子的转变并不像看上去那么突然。",
+      "tts": {
+        "text": "从战士到妻子的转变并不像看上去那么突然。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世纪的贵族女性经常在丈夫不在时管理庄园、调解纠纷和主持公道。",
+      "text_markdown": "中世纪的贵族女性经常在丈夫不在时管理庄园、调解纠纷和主持公道。",
+      "tts": {
+        "text": "中世纪的贵族女性经常在丈夫不在时管理庄园、调解纠纷和主持公道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜一直不仅仅是一个海盗。",
+      "text_markdown": "让娜一直不仅仅是一个海盗。",
+      "tts": {
+        "text": "让娜一直不仅仅是一个海盗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜度过最后岁月的布列塔尼乡间已被数十年的战争伤痕累累。",
+      "text_markdown": "让娜度过最后岁月的布列塔尼乡间已被数十年的战争伤痕累累。",
+      "tts": {
+        "text": "让娜度过最后岁月的布列塔尼乡间已被数十年的战争伤痕累累。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "焚毁的村庄、废弃的农庄和残破的城堡点缀着这片土地。",
+      "text_markdown": "焚毁的村庄、废弃的农庄和残破的城堡点缀着这片土地。",
+      "tts": {
+        "text": "焚毁的村庄、废弃的农庄和残破的城堡点缀着这片土地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "宁静的海岸",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "她参与的那场战争给她所热爱的土地造成了沉重的代价。",
+      "text_markdown": "她参与的那场战争给她所热爱的土地造成了沉重的代价。",
+      "tts": {
+        "text": "她参与的那场战争给她所热爱的土地造成了沉重的代价。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "被铭记的母狮",
+      "text_markdown": "被铭记的母狮"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让娜·德·克利松的故事已经流传了近七百年。",
+      "text_markdown": "让娜·德·克利松的故事已经流传了近七百年。",
+      "tts": {
+        "text": "让娜·德·克利松的故事已经流传了近七百年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她出现在中世纪编年史、法国史书和现代关于女战士的著作中。",
+      "text_markdown": "她出现在中世纪编年史、法国史书和现代关于女战士的著作中。",
+      "tts": {
+        "text": "她出现在中世纪编年史、法国史书和现代关于女战士的著作中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她是中世纪欧洲历史上极少数已知的指挥过战船的女性之一。",
+      "text_markdown": "她是中世纪欧洲历史上极少数已知的指挥过战船的女性之一。",
+      "tts": {
+        "text": "她是中世纪欧洲历史上极少数已知的指挥过战船的女性之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她长达十三年的征战以任何标准衡量都是非凡的。",
+      "text_markdown": "她长达十三年的征战以任何标准衡量都是非凡的。",
+      "tts": {
+        "text": "她长达十三年的征战以任何标准衡量都是非凡的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些历史学家质疑她故事中的所有细节是否准确。",
+      "text_markdown": "一些历史学家质疑她故事中的所有细节是否准确。",
+      "tts": {
+        "text": "一些历史学家质疑她故事中的所有细节是否准确。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世纪编年史并不总是可靠的，故事往往随着时间的推移变得更加戏剧化。",
+      "text_markdown": "中世纪编年史并不总是可靠的，故事往往随着时间的推移变得更加戏剧化。",
+      "tts": {
+        "text": "中世纪编年史并不总是可靠的，故事往往随着时间的推移变得更加戏剧化。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但核心事实有多个来源的支持。",
+      "text_markdown": "但核心事实有多个来源的支持。",
+      "tts": {
+        "text": "但核心事实有多个来源的支持。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥利维耶·德·克利松因叛国罪被处死。",
+      "text_markdown": "奥利维耶·德·克利松因叛国罪被处死。",
+      "tts": {
+        "text": "奥利维耶·德·克利松因叛国罪被处死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p105",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜·德·克利松确实出海并攻击了法国航运。",
+      "text_markdown": "让娜·德·克利松确实出海并攻击了法国航运。",
+      "tts": {
+        "text": "让娜·德·克利松确实出海并攻击了法国航运。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p105",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "她确实在百年战争期间与英格兰结盟。",
+      "text_markdown": "她确实在百年战争期间与英格兰结盟。",
+      "tts": {
+        "text": "她确实在百年战争期间与英格兰结盟。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她的故事引发了关于正义和复仇的思考。",
+      "text_markdown": "她的故事引发了关于正义和复仇的思考。",
+      "tts": {
+        "text": "她的故事引发了关于正义和复仇的思考。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥利维耶·德·克利松的处决几乎可以肯定是不公正的。",
+      "text_markdown": "奥利维耶·德·克利松的处决几乎可以肯定是不公正的。",
+      "tts": {
+        "text": "奥利维耶·德·克利松的处决几乎可以肯定是不公正的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "让娜的回应是极端的，但挑衅同样极端。",
+      "text_markdown": "让娜的回应是极端的，但挑衅同样极端。",
+      "tts": {
+        "text": "让娜的回应是极端的，但挑衅同样极端。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "她杀死了与她丈夫之死毫无关系的无辜水手和渔民。",
+      "text_markdown": "她杀死了与她丈夫之死毫无关系的无辜水手和渔民。",
+      "tts": {
+        "text": "她杀死了与她丈夫之死毫无关系的无辜水手和渔民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的战争是私人的，但她的受害者往往是无辜的旁观者。",
+      "text_markdown": "她的战争是私人的，但她的受害者往往是无辜的旁观者。",
+      "tts": {
+        "text": "她的战争是私人的，但她的受害者往往是无辜的旁观者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然而，在许多讲述她故事的人当中，她受到的是赞颂而非谴责。",
+      "text_markdown": "然而，在许多讲述她故事的人当中，她受到的是赞颂而非谴责。",
+      "tts": {
+        "text": "然而，在许多讲述她故事的人当中，她受到的是赞颂而非谴责。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们记住她是一个拒绝接受不公、倾其所有奋力抗争的女人。",
+      "text_markdown": "人们记住她是一个拒绝接受不公、倾其所有奋力抗争的女人。",
+      "tts": {
+        "text": "人们记住她是一个拒绝接受不公、倾其所有奋力抗争的女人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在布列塔尼，她至今仍是民间英雄。",
+      "text_markdown": "在布列塔尼，她至今仍是民间英雄。",
+      "tts": {
+        "text": "在布列塔尼，她至今仍是民间英雄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她的名字与勇气、反抗和布列塔尼人民的刚烈独立精神联系在一起。",
+      "text_markdown": "她的名字与勇气、反抗和布列塔尼人民的刚烈独立精神联系在一起。",
+      "tts": {
+        "text": "她的名字与勇气、反抗和布列塔尼人民的刚烈独立精神联系在一起。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "那些黑船红帆早已消失。",
+      "text_markdown": "那些黑船红帆早已消失。",
+      "tts": {
+        "text": "那些黑船红帆早已消失。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英吉利海峡早已不再是战场。",
+      "text_markdown": "英吉利海峡早已不再是战场。",
+      "tts": {
+        "text": "英吉利海峡早已不再是战场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p110",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但布列塔尼母狮的故事经久不衰，由那些相信某些不公理应得到回应的人传承着。",
+      "text_markdown": "但布列塔尼母狮的故事经久不衰，由那些相信某些不公理应得到回应的人传承着。",
+      "tts": {
+        "text": "但布列塔尼母狮的故事经久不衰，由那些相信某些不公理应得到回应的人传承着。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现代历史学家已将让娜·德·克利松置于中世纪时期行使军事权力的女性的更广泛背景中。",
+      "text_markdown": "现代历史学家已将让娜·德·克利松置于中世纪时期行使军事权力的女性的更广泛背景中。",
+      "tts": {
+        "text": "现代历史学家已将让娜·德·克利松置于中世纪时期行使军事权力的女性的更广泛背景中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她并非独一无二，但她是卓越的。",
+      "text_markdown": "她并非独一无二，但她是卓越的。",
+      "tts": {
+        "text": "她并非独一无二，但她是卓越的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "很少有女性能坚持如此长期的军事行动或产生如此毁灭性的影响。",
+      "text_markdown": "很少有女性能坚持如此长期的军事行动或产生如此毁灭性的影响。",
+      "tts": {
+        "text": "很少有女性能坚持如此长期的军事行动或产生如此毁灭性的影响。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "克利松城堡至今仍矗立在法国卢瓦尔河谷的克利松镇。",
+      "text_markdown": "克利松城堡至今仍矗立在法国卢瓦尔河谷的克利松镇。",
+      "tts": {
+        "text": "克利松城堡至今仍矗立在法国卢瓦尔河谷的克利松镇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的中世纪废墟提醒着人们曾经统治此地的家族。",
+      "text_markdown": "它的中世纪废墟提醒着人们曾经统治此地的家族。",
+      "tts": {
+        "text": "它的中世纪废墟提醒着人们曾经统治此地的家族。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "游客可以走过让娜和奥利维耶曾经生活过的石砌大厅。",
+      "text_markdown": "游客可以走过让娜和奥利维耶曾经生活过的石砌大厅。",
+      "tts": {
+        "text": "游客可以走过让娜和奥利维耶曾经生活过的石砌大厅。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "百年战争最终于1453年结束，距让娜去世近一个世纪。",
+      "text_markdown": "百年战争最终于1453年结束，距让娜去世近一个世纪。",
+      "tts": {
+        "text": "百年战争最终于一四五三年结束，距让娜去世近一个世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法国赢得了战争，英格兰失去了几乎所有在大陆的领土。",
+      "text_markdown": "法国赢得了战争，英格兰失去了几乎所有在大陆的领土。",
+      "tts": {
+        "text": "法国赢得了战争，英格兰失去了几乎所有在大陆的领土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "被铭记的母狮",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "布列塔尼最终通过联姻而非征服成为法国的一部分。",
+      "text_markdown": "布列塔尼最终通过联姻而非征服成为法国的一部分。",
+      "tts": {
+        "text": "布列塔尼最终通过联姻而非征服成为法国的一部分。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

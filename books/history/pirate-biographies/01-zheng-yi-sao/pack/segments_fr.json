@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "fr",
+  "total_segments": 310,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Note au lecteur",
+      "text_markdown": "Note au lecteur"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ceci est l'histoire vraie du pirate le plus accompli de toute l'histoire connue.",
+      "text_markdown": "Ceci est l'histoire vraie du pirate le plus accompli de toute l'histoire connue.",
+      "tts": {
+        "text": "Ceci est l'histoire vraie du pirate le plus accompli de toute l'histoire connue.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle s'appelait Zheng Yi Sao, et elle commandait la plus grande flotte de pirates que le monde ait jamais connue.",
+      "text_markdown": "Elle s'appelait Zheng Yi Sao, et elle commandait la plus grande flotte de pirates que le monde ait jamais connue.",
+      "tts": {
+        "text": "Elle s'appelait Zheng Yi Sao, et elle commandait la plus grande flotte de pirates que le monde ait jamais connue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Au sommet de sa puissance, elle contrôlait plus de navires que la plupart des nations n'en possédaient.",
+      "text_markdown": "Au sommet de sa puissance, elle contrôlait plus de navires que la plupart des nations n'en possédaient.",
+      "tts": {
+        "text": "Au sommet de sa puissance, elle contrôlait plus de navires que la plupart des nations n'en possédaient.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle n'était pas née dans la richesse ni le privilège.",
+      "text_markdown": "Elle n'était pas née dans la richesse ni le privilège.",
+      "tts": {
+        "text": "Elle n'était pas née dans la richesse ni le privilège.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle est née dans la pauvreté, dans le sud de la Chine, à la fin du dix-huitième siècle.",
+      "text_markdown": "Elle est née dans la pauvreté, dans le sud de la Chine, à la fin du dix-huitième siècle.",
+      "tts": {
+        "text": "Elle est née dans la pauvreté, dans le sud de la Chine, à la fin du dix-huitième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tout ce qu'elle a accompli, elle l'a bâti grâce à son intelligence, sa cruauté et une extraordinaire capacité à organiser les gens.",
+      "text_markdown": "Tout ce qu'elle a accompli, elle l'a bâti grâce à son intelligence, sa cruauté et une extraordinaire capacité à organiser les gens.",
+      "tts": {
+        "text": "Tout ce qu'elle a accompli, elle l'a bâti grâce à son intelligence, sa cruauté et une extraordinaire capacité à organiser les gens.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce livre raconte comment une femme partie de rien est devenue la maîtresse incontestée de la mer de Chine méridionale.",
+      "text_markdown": "Ce livre raconte comment une femme partie de rien est devenue la maîtresse incontestée de la mer de Chine méridionale.",
+      "tts": {
+        "text": "Ce livre raconte comment une femme partie de rien est devenue la maîtresse incontestée de la mer de Chine méridionale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'est une histoire de guerre, de commerce, de loi et de survie.",
+      "text_markdown": "C'est une histoire de guerre, de commerce, de loi et de survie.",
+      "tts": {
+        "text": "C'est une histoire de guerre, de commerce, de loi et de survie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "C'est aussi l'histoire d'un monde en pleine mutation, alors que les puissances européennes s'enfonçaient toujours plus profondément en Asie.",
+      "text_markdown": "C'est aussi l'histoire d'un monde en pleine mutation, alors que les puissances européennes s'enfonçaient toujours plus profondément en Asie.",
+      "tts": {
+        "text": "C'est aussi l'histoire d'un monde en pleine mutation, alors que les puissances européennes s'enfonçaient toujours plus profondément en Asie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chaque fait de ce livre provient des sources historiques.",
+      "text_markdown": "Chaque fait de ce livre provient des sources historiques.",
+      "tts": {
+        "text": "Chaque fait de ce livre provient des sources historiques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lorsque les sources sont incertaines, nous le précisons.",
+      "text_markdown": "Lorsque les sources sont incertaines, nous le précisons.",
+      "tts": {
+        "text": "Lorsque les sources sont incertaines, nous le précisons.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lorsque les historiens sont en désaccord, nous présentons les preuves les plus solides disponibles.",
+      "text_markdown": "Lorsque les historiens sont en désaccord, nous présentons les preuves les plus solides disponibles.",
+      "tts": {
+        "text": "Lorsque les historiens sont en désaccord, nous présentons les preuves les plus solides disponibles.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le monde de la mer de Chine méridionale",
+      "text_markdown": "Le monde de la mer de Chine méridionale"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mer de Chine méridionale est l'une des voies navigables les plus fréquentées de la planète.",
+      "text_markdown": "La mer de Chine méridionale est l'une des voies navigables les plus fréquentées de la planète.",
+      "tts": {
+        "text": "La mer de Chine méridionale est l'une des voies navigables les plus fréquentées de la planète.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle s'étend de la côte du Vietnam à l'ouest jusqu'aux Philippines à l'est.",
+      "text_markdown": "Elle s'étend de la côte du Vietnam à l'ouest jusqu'aux Philippines à l'est.",
+      "tts": {
+        "text": "Elle s'étend de la côte du Vietnam à l'ouest jusqu'aux Philippines à l'est.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Au nord se trouve la côte chinoise, et au sud les îles de Bornéo et de Sumatra.",
+      "text_markdown": "Au nord se trouve la côte chinoise, et au sud les îles de Bornéo et de Sumatra.",
+      "tts": {
+        "text": "Au nord se trouve la côte chinoise, et au sud les îles de Bornéo et de Sumatra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depuis des millénaires, des marchands naviguent sur ces eaux.",
+      "text_markdown": "Depuis des millénaires, des marchands naviguent sur ces eaux.",
+      "tts": {
+        "text": "Depuis des millénaires, des marchands naviguent sur ces eaux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des jonques chinoises transportaient de la soie, de la porcelaine et du thé vers les ports d'Asie du Sud-Est.",
+      "text_markdown": "Des jonques chinoises transportaient de la soie, de la porcelaine et du thé vers les ports d'Asie du Sud-Est.",
+      "tts": {
+        "text": "Des jonques chinoises transportaient de la soie, de la porcelaine et du thé vers les ports d'Asie du Sud-Est.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En retour, des épices, du bois tropical et des marchandises exotiques affluaient vers la Chine.",
+      "text_markdown": "En retour, des épices, du bois tropical et des marchandises exotiques affluaient vers la Chine.",
+      "tts": {
+        "text": "En retour, des épices, du bois tropical et des marchandises exotiques affluaient vers la Chine.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La ville de Canton, aujourd'hui appelée Guangzhou, se trouvait au cœur de ce commerce.",
+      "text_markdown": "La ville de Canton, aujourd'hui appelée Guangzhou, se trouvait au cœur de ce commerce.",
+      "tts": {
+        "text": "La ville de Canton, aujourd'hui appelée Guangzhou, se trouvait au cœur de ce commerce.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Canton était l'une des villes les plus riches du monde au dix-huitième siècle.",
+      "text_markdown": "Canton était l'une des villes les plus riches du monde au dix-huitième siècle.",
+      "tts": {
+        "text": "Canton était l'une des villes les plus riches du monde au dix-huitième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Des marchands étrangers venus de Grande-Bretagne, de France, du Portugal et des Pays-Bas rivalisaient tous pour accéder à ses marchés.",
+      "text_markdown": "Des marchands étrangers venus de Grande-Bretagne, de France, du Portugal et des Pays-Bas rivalisaient tous pour accéder à ses marchés.",
+      "tts": {
+        "text": "Des marchands étrangers venus de Grande-Bretagne, de France, du Portugal et des Pays-Bas rivalisaient tous pour accéder à ses marchés.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La dynastie Qing gouvernait la Chine à cette époque.",
+      "text_markdown": "La dynastie Qing gouvernait la Chine à cette époque.",
+      "tts": {
+        "text": "La dynastie Qing gouvernait la Chine à cette époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les empereurs Qing étaient mandchous, et non chinois Han.",
+      "text_markdown": "Les empereurs Qing étaient mandchous, et non chinois Han.",
+      "tts": {
+        "text": "Les empereurs Qing étaient mandchous, et non chinois Han.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils avaient conquis la Chine en mille six cent quarante-quatre et bâti l'un des plus grands empires du monde.",
+      "text_markdown": "Ils avaient conquis la Chine en mille six cent quarante-quatre et bâti l'un des plus grands empires du monde.",
+      "tts": {
+        "text": "Ils avaient conquis la Chine en mille six cent quarante-quatre et bâti l'un des plus grands empires du monde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cependant, à la fin des années mille sept cents, la dynastie Qing commençait à s'affaiblir.",
+      "text_markdown": "Cependant, à la fin des années mille sept cents, la dynastie Qing commençait à s'affaiblir.",
+      "tts": {
+        "text": "Cependant, à la fin des années mille sept cents, la dynastie Qing commençait à s'affaiblir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La corruption se répandait dans la bureaucratie impériale.",
+      "text_markdown": "La corruption se répandait dans la bureaucratie impériale.",
+      "tts": {
+        "text": "La corruption se répandait dans la bureaucratie impériale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les percepteurs d'impôts pressuraient les paysans et les pêcheurs pour en extraire chaque pièce.",
+      "text_markdown": "Les percepteurs d'impôts pressuraient les paysans et les pêcheurs pour en extraire chaque pièce.",
+      "tts": {
+        "text": "Les percepteurs d'impôts pressuraient les paysans et les pêcheurs pour en extraire chaque pièce.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le fossé entre riches et pauvres se creusait d'année en année.",
+      "text_markdown": "Le fossé entre riches et pauvres se creusait d'année en année.",
+      "tts": {
+        "text": "Le fossé entre riches et pauvres se creusait d'année en année.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dans les provinces côtières, de nombreuses personnes vivaient dans une pauvreté désespérée.",
+      "text_markdown": "Dans les provinces côtières, de nombreuses personnes vivaient dans une pauvreté désespérée.",
+      "tts": {
+        "text": "Dans les provinces côtières, de nombreuses personnes vivaient dans une pauvreté désespérée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les communautés de pêcheurs le long de la côte du Guangdong comptaient parmi les plus pauvres de Chine.",
+      "text_markdown": "Les communautés de pêcheurs le long de la côte du Guangdong comptaient parmi les plus pauvres de Chine.",
+      "tts": {
+        "text": "Les communautés de pêcheurs le long de la côte du Guangdong comptaient parmi les plus pauvres de Chine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des familles entières vivaient sur de petites embarcations appelées sampans.",
+      "text_markdown": "Des familles entières vivaient sur de petites embarcations appelées sampans.",
+      "tts": {
+        "text": "Des familles entières vivaient sur de petites embarcations appelées sampans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils naissaient sur l'eau, travaillaient sur l'eau et mouraient sur l'eau.",
+      "text_markdown": "Ils naissaient sur l'eau, travaillaient sur l'eau et mouraient sur l'eau.",
+      "tts": {
+        "text": "Ils naissaient sur l'eau, travaillaient sur l'eau et mouraient sur l'eau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le gouvernement impérial les appelait les Tanka, et il les traitait comme des parias.",
+      "text_markdown": "Le gouvernement impérial les appelait les Tanka, et il les traitait comme des parias.",
+      "tts": {
+        "text": "Le gouvernement impérial les appelait les Tanka, et il les traitait comme des parias.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il était interdit aux familles Tanka de vivre sur la terre ferme dans de nombreuses régions.",
+      "text_markdown": "Il était interdit aux familles Tanka de vivre sur la terre ferme dans de nombreuses régions.",
+      "tts": {
+        "text": "Il était interdit aux familles Tanka de vivre sur la terre ferme dans de nombreuses régions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils ne pouvaient pas passer les examens impériaux qui menaient aux postes de fonctionnaires.",
+      "text_markdown": "Ils ne pouvaient pas passer les examens impériaux qui menaient aux postes de fonctionnaires.",
+      "tts": {
+        "text": "Ils ne pouvaient pas passer les examens impériaux qui menaient aux postes de fonctionnaires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils étaient exclus de la société chinoise ordinaire par la loi et par la coutume.",
+      "text_markdown": "Ils étaient exclus de la société chinoise ordinaire par la loi et par la coutume.",
+      "tts": {
+        "text": "Ils étaient exclus de la société chinoise ordinaire par la loi et par la coutume.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Depuis des générations, ils n'avaient aucun espoir d'une vie meilleure.",
+      "text_markdown": "Depuis des générations, ils n'avaient aucun espoir d'une vie meilleure.",
+      "tts": {
+        "text": "Depuis des générations, ils n'avaient aucun espoir d'une vie meilleure.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La piraterie offrait une alternative.",
+      "text_markdown": "La piraterie offrait une alternative.",
+      "tts": {
+        "text": "La piraterie offrait une alternative.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si l'on ne pouvait pas s'élever par des moyens légaux, la mer offrait sa propre économie.",
+      "text_markdown": "Si l'on ne pouvait pas s'élever par des moyens légaux, la mer offrait sa propre économie.",
+      "tts": {
+        "text": "Si l'on ne pouvait pas s'élever par des moyens légaux, la mer offrait sa propre économie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les flottes de pirates attaquaient les navires marchands, rançonnaient les villages de pêcheurs et faisaient passer des marchandises de contrebande devant les patrouilles impériales.",
+      "text_markdown": "Les flottes de pirates attaquaient les navires marchands, rançonnaient les villages de pêcheurs et faisaient passer des marchandises de contrebande devant les patrouilles impériales.",
+      "tts": {
+        "text": "Les flottes de pirates attaquaient les navires marchands, rançonnaient les villages de pêcheurs et faisaient passer des marchandises de contrebande devant les patrouilles impériales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pour beaucoup de pauvres du littoral, rejoindre un équipage pirate était une décision économique rationnelle.",
+      "text_markdown": "Pour beaucoup de pauvres du littoral, rejoindre un équipage pirate était une décision économique rationnelle.",
+      "tts": {
+        "text": "Pour beaucoup de pauvres du littoral, rejoindre un équipage pirate était une décision économique rationnelle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les eaux de la mer de Chine méridionale étaient idéales pour la piraterie.",
+      "text_markdown": "Les eaux de la mer de Chine méridionale étaient idéales pour la piraterie.",
+      "tts": {
+        "text": "Les eaux de la mer de Chine méridionale étaient idéales pour la piraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des milliers d'îles, de criques et d'embouchures de fleuves offraient des cachettes.",
+      "text_markdown": "Des milliers d'îles, de criques et d'embouchures de fleuves offraient des cachettes.",
+      "tts": {
+        "text": "Des milliers d'îles, de criques et d'embouchures de fleuves offraient des cachettes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un brouillard épais et des tempêtes soudaines rendaient la poursuite difficile.",
+      "text_markdown": "Un brouillard épais et des tempêtes soudaines rendaient la poursuite difficile.",
+      "tts": {
+        "text": "Un brouillard épais et des tempêtes soudaines rendaient la poursuite difficile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Une jonque rapide avec un équipage habile pouvait disparaître dans le littoral en quelques minutes.",
+      "text_markdown": "Une jonque rapide avec un équipage habile pouvait disparaître dans le littoral en quelques minutes.",
+      "tts": {
+        "text": "Une jonque rapide avec un équipage habile pouvait disparaître dans le littoral en quelques minutes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant ce temps, le commerce de l'opium commençait à transformer la région.",
+      "text_markdown": "Pendant ce temps, le commerce de l'opium commençait à transformer la région.",
+      "tts": {
+        "text": "Pendant ce temps, le commerce de l'opium commençait à transformer la région.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les marchands britanniques expédiaient de l'opium de l'Inde vers la Chine en quantités énormes.",
+      "text_markdown": "Les marchands britanniques expédiaient de l'opium de l'Inde vers la Chine en quantités énormes.",
+      "tts": {
+        "text": "Les marchands britanniques expédiaient de l'opium de l'Inde vers la Chine en quantités énormes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La drogue était illégale en Chine, mais les profits étaient si considérables que le commerce augmentait chaque année.",
+      "text_markdown": "La drogue était illégale en Chine, mais les profits étaient si considérables que le commerce augmentait chaque année.",
+      "tts": {
+        "text": "La drogue était illégale en Chine, mais les profits étaient si considérables que le commerce augmentait chaque année.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Des réseaux de contrebande s'étendaient le long de toute la côte méridionale.",
+      "text_markdown": "Des réseaux de contrebande s'étendaient le long de toute la côte méridionale.",
+      "tts": {
+        "text": "Des réseaux de contrebande s'étendaient le long de toute la côte méridionale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'est ce monde qui a produit Zheng Yi Sao.",
+      "text_markdown": "C'est ce monde qui a produit Zheng Yi Sao.",
+      "tts": {
+        "text": "C'est ce monde qui a produit Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un monde de richesse immense et de pauvreté accablante, séparés par une mince bande d'océan.",
+      "text_markdown": "Un monde de richesse immense et de pauvreté accablante, séparés par une mince bande d'océan.",
+      "tts": {
+        "text": "Un monde de richesse immense et de pauvreté accablante, séparés par une mince bande d'océan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un monde où les empires se disputaient, et où la loi de la mer appartenait à celui qui était assez fort pour l'imposer.",
+      "text_markdown": "Un monde où les empires se disputaient, et où la loi de la mer appartenait à celui qui était assez fort pour l'imposer.",
+      "tts": {
+        "text": "Un monde où les empires se disputaient, et où la loi de la mer appartenait à celui qui était assez fort pour l'imposer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les puissances européennes voyaient la Chine comme un marché à ouvrir de force.",
+      "text_markdown": "Les puissances européennes voyaient la Chine comme un marché à ouvrir de force.",
+      "tts": {
+        "text": "Les puissances européennes voyaient la Chine comme un marché à ouvrir de force.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le gouvernement Qing considérait les Européens comme des barbares à gérer.",
+      "text_markdown": "Le gouvernement Qing considérait les Européens comme des barbares à gérer.",
+      "tts": {
+        "text": "Le gouvernement Qing considérait les Européens comme des barbares à gérer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Et les pirates de la mer de Chine méridionale voyaient dans ce chaos une opportunité.",
+      "text_markdown": "Et les pirates de la mer de Chine méridionale voyaient dans ce chaos une opportunité.",
+      "tts": {
+        "text": "Et les pirates de la mer de Chine méridionale voyaient dans ce chaos une opportunité.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mille sept cent quatre-vingt-dix, les flottes de pirates de la mer de Chine méridionale comptaient des centaines de navires.",
+      "text_markdown": "En mille sept cent quatre-vingt-dix, les flottes de pirates de la mer de Chine méridionale comptaient des centaines de navires.",
+      "tts": {
+        "text": "En mille sept cent quatre-vingt-dix, les flottes de pirates de la mer de Chine méridionale comptaient des centaines de navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ce n'étaient pas des criminels désorganisés.",
+      "text_markdown": "Ce n'étaient pas des criminels désorganisés.",
+      "tts": {
+        "text": "Ce n'étaient pas des criminels désorganisés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Beaucoup opéraient comme des forces navales disciplinées, avec des hiérarchies et des codes de conduite.",
+      "text_markdown": "Beaucoup opéraient comme des forces navales disciplinées, avec des hiérarchies et des codes de conduite.",
+      "tts": {
+        "text": "Beaucoup opéraient comme des forces navales disciplinées, avec des hiérarchies et des codes de conduite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la mer de Chine méridionale",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La plus puissante de ces forces allait bientôt devenir la plus grande flotte de pirates de l'histoire.",
+      "text_markdown": "La plus puissante de ces forces allait bientôt devenir la plus grande flotte de pirates de l'histoire.",
+      "tts": {
+        "text": "La plus puissante de ces forces allait bientôt devenir la plus grande flotte de pirates de l'histoire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Origines",
+      "text_markdown": "Origines"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La femme qui allait devenir Zheng Yi Sao est née vers mille sept cent soixante-quinze.",
+      "text_markdown": "La femme qui allait devenir Zheng Yi Sao est née vers mille sept cent soixante-quinze.",
+      "tts": {
+        "text": "La femme qui allait devenir Zheng Yi Sao est née vers mille sept cent soixante-quinze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle est le plus souvent désignée sous le nom de Shi Xianggu dans les sources chinoises.",
+      "text_markdown": "Elle est le plus souvent désignée sous le nom de Shi Xianggu dans les sources chinoises.",
+      "tts": {
+        "text": "Elle est le plus souvent désignée sous le nom de Shi Xianggu dans les sources chinoises.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le nom Zheng Yi Sao signifie simplement épouse de Zheng Yi.",
+      "text_markdown": "Le nom Zheng Yi Sao signifie simplement épouse de Zheng Yi.",
+      "tts": {
+        "text": "Le nom Zheng Yi Sao signifie simplement épouse de Zheng Yi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle est née dans la communauté Tanka des gens de l'eau, dans la province du Guangdong.",
+      "text_markdown": "Elle est née dans la communauté Tanka des gens de l'eau, dans la province du Guangdong.",
+      "tts": {
+        "text": "Elle est née dans la communauté Tanka des gens de l'eau, dans la province du Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa famille était pauvre, comme presque toutes les familles Tanka.",
+      "text_markdown": "Sa famille était pauvre, comme presque toutes les familles Tanka.",
+      "tts": {
+        "text": "Sa famille était pauvre, comme presque toutes les familles Tanka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle a passé ses premières années sur l'eau, apprenant les rythmes de la côte.",
+      "text_markdown": "Elle a passé ses premières années sur l'eau, apprenant les rythmes de la côte.",
+      "tts": {
+        "text": "Elle a passé ses premières années sur l'eau, apprenant les rythmes de la côte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeune femme, elle travaillait sur un bordel flottant dans le port de Canton.",
+      "text_markdown": "Jeune femme, elle travaillait sur un bordel flottant dans le port de Canton.",
+      "tts": {
+        "text": "Jeune femme, elle travaillait sur un bordel flottant dans le port de Canton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils servaient les marins, les marchands et les pêcheurs de passage dans ce port animé.",
+      "text_markdown": "Ils servaient les marins, les marchands et les pêcheurs de passage dans ce port animé.",
+      "tts": {
+        "text": "Ils servaient les marins, les marchands et les pêcheurs de passage dans ce port animé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "C'était un travail difficile et dangereux, mais il lui a donné une connaissance du monde à laquelle peu de femmes de sa condition pouvaient accéder.",
+      "text_markdown": "C'était un travail difficile et dangereux, mais il lui a donné une connaissance du monde à laquelle peu de femmes de sa condition pouvaient accéder.",
+      "tts": {
+        "text": "C'était un travail difficile et dangereux, mais il lui a donné une connaissance du monde à laquelle peu de femmes de sa condition pouvaient accéder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle a appris à juger les gens rapidement et avec précision.",
+      "text_markdown": "Elle a appris à juger les gens rapidement et avec précision.",
+      "tts": {
+        "text": "Elle a appris à juger les gens rapidement et avec précision.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle a appris les langues du commerce et de la négociation.",
+      "text_markdown": "Elle a appris les langues du commerce et de la négociation.",
+      "tts": {
+        "text": "Elle a appris les langues du commerce et de la négociation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ces compétences allaient s'avérer bien plus précieuses que quiconque n'aurait pu le prédire.",
+      "text_markdown": "Ces compétences allaient s'avérer bien plus précieuses que quiconque n'aurait pu le prédire.",
+      "tts": {
+        "text": "Ces compétences allaient s'avérer bien plus précieuses que quiconque n'aurait pu le prédire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mille sept cent quatre-vingt-dix-huit, un capitaine pirate nommé Zheng Yi captura le navire sur lequel elle se trouvait.",
+      "text_markdown": "En mille sept cent quatre-vingt-dix-huit, un capitaine pirate nommé Zheng Yi captura le navire sur lequel elle se trouvait.",
+      "tts": {
+        "text": "En mille sept cent quatre-vingt-dix-huit, un capitaine pirate nommé Zheng Yi captura le navire sur lequel elle se trouvait.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il était issu d'une longue lignée de pirates, remontant à plusieurs générations.",
+      "text_markdown": "Il était issu d'une longue lignée de pirates, remontant à plusieurs générations.",
+      "tts": {
+        "text": "Il était issu d'une longue lignée de pirates, remontant à plusieurs générations.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa famille avait soutenu les derniers représentants de la dynastie Ming contre les conquérants Qing.",
+      "text_markdown": "Sa famille avait soutenu les derniers représentants de la dynastie Ming contre les conquérants Qing.",
+      "tts": {
+        "text": "Sa famille avait soutenu les derniers représentants de la dynastie Ming contre les conquérants Qing.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi proposa le mariage à la jeune femme.",
+      "text_markdown": "Zheng Yi proposa le mariage à la jeune femme.",
+      "tts": {
+        "text": "Zheng Yi proposa le mariage à la jeune femme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selon la plupart des récits, elle n'accepta pas simplement.",
+      "text_markdown": "Selon la plupart des récits, elle n'accepta pas simplement.",
+      "tts": {
+        "text": "Selon la plupart des récits, elle n'accepta pas simplement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle négocia les termes de leur partenariat avant d'accepter le mariage.",
+      "text_markdown": "Elle négocia les termes de leur partenariat avant d'accepter le mariage.",
+      "tts": {
+        "text": "Elle négocia les termes de leur partenariat avant d'accepter le mariage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle exigea une part égale de sa flotte et une voix égale dans les décisions de commandement.",
+      "text_markdown": "Elle exigea une part égale de sa flotte et une voix égale dans les décisions de commandement.",
+      "tts": {
+        "text": "Elle exigea une part égale de sa flotte et une voix égale dans les décisions de commandement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'était extraordinaire pour l'époque.",
+      "text_markdown": "C'était extraordinaire pour l'époque.",
+      "tts": {
+        "text": "C'était extraordinaire pour l'époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les femmes dans la Chine de la fin des Qing n'avaient que très peu de droits.",
+      "text_markdown": "Les femmes dans la Chine de la fin des Qing n'avaient que très peu de droits.",
+      "tts": {
+        "text": "Les femmes dans la Chine de la fin des Qing n'avaient que très peu de droits.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Une épouse devait obéir à son mari sans poser de questions.",
+      "text_markdown": "Une épouse devait obéir à son mari sans poser de questions.",
+      "tts": {
+        "text": "Une épouse devait obéir à son mari sans poser de questions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mais c'était le monde des pirates, et le monde des pirates dictait ses propres règles.",
+      "text_markdown": "Mais c'était le monde des pirates, et le monde des pirates dictait ses propres règles.",
+      "tts": {
+        "text": "Mais c'était le monde des pirates, et le monde des pirates dictait ses propres règles.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi accepta ses conditions.",
+      "text_markdown": "Zheng Yi accepta ses conditions.",
+      "tts": {
+        "text": "Zheng Yi accepta ses conditions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les historiens pensent qu'il avait reconnu son intelligence et son potentiel de meneuse.",
+      "text_markdown": "Les historiens pensent qu'il avait reconnu son intelligence et son potentiel de meneuse.",
+      "tts": {
+        "text": "Les historiens pensent qu'il avait reconnu son intelligence et son potentiel de meneuse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Leur mariage était une alliance stratégique autant qu'un lien personnel.",
+      "text_markdown": "Leur mariage était une alliance stratégique autant qu'un lien personnel.",
+      "tts": {
+        "text": "Leur mariage était une alliance stratégique autant qu'un lien personnel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ensemble, ils allaient bâtir quelque chose de sans précédent.",
+      "text_markdown": "Ensemble, ils allaient bâtir quelque chose de sans précédent.",
+      "tts": {
+        "text": "Ensemble, ils allaient bâtir quelque chose de sans précédent.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi avait une vision audacieuse.",
+      "text_markdown": "Zheng Yi avait une vision audacieuse.",
+      "tts": {
+        "text": "Zheng Yi avait une vision audacieuse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il voulait unir les flottes de pirates dispersées de la mer de Chine méridionale en une seule confédération.",
+      "text_markdown": "Il voulait unir les flottes de pirates dispersées de la mer de Chine méridionale en une seule confédération.",
+      "tts": {
+        "text": "Il voulait unir les flottes de pirates dispersées de la mer de Chine méridionale en une seule confédération.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les capitaines pirates avaient toujours été en concurrence les uns avec les autres.",
+      "text_markdown": "Les capitaines pirates avaient toujours été en concurrence les uns avec les autres.",
+      "tts": {
+        "text": "Les capitaines pirates avaient toujours été en concurrence les uns avec les autres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi était convaincu qu'ils seraient bien plus puissants s'ils coopéraient.",
+      "text_markdown": "Zheng Yi était convaincu qu'ils seraient bien plus puissants s'ils coopéraient.",
+      "tts": {
+        "text": "Zheng Yi était convaincu qu'ils seraient bien plus puissants s'ils coopéraient.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entre mille sept cent quatre-vingt-dix-huit et mille huit cent cinq, Zheng Yi travailla sans relâche pour forger des alliances.",
+      "text_markdown": "Entre mille sept cent quatre-vingt-dix-huit et mille huit cent cinq, Zheng Yi travailla sans relâche pour forger des alliances.",
+      "tts": {
+        "text": "Entre mille sept cent quatre-vingt-dix-huit et mille huit cent cinq, Zheng Yi travailla sans relâche pour forger des alliances.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il persuada les capitaines rivaux de rejoindre sa confédération par un mélange de diplomatie et d'intimidation.",
+      "text_markdown": "Il persuada les capitaines rivaux de rejoindre sa confédération par un mélange de diplomatie et d'intimidation.",
+      "tts": {
+        "text": "Il persuada les capitaines rivaux de rejoindre sa confédération par un mélange de diplomatie et d'intimidation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son épouse était profondément impliquée dans ces négociations.",
+      "text_markdown": "Son épouse était profondément impliquée dans ces négociations.",
+      "tts": {
+        "text": "Son épouse était profondément impliquée dans ces négociations.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle contribua à élaborer les accords qui cimentaient la flotte.",
+      "text_markdown": "Elle contribua à élaborer les accords qui cimentaient la flotte.",
+      "tts": {
+        "text": "Elle contribua à élaborer les accords qui cimentaient la flotte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mille huit cent cinq, la confédération était achevée.",
+      "text_markdown": "En mille huit cent cinq, la confédération était achevée.",
+      "tts": {
+        "text": "En mille huit cent cinq, la confédération était achevée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle se composait de six flottes, chacune identifiée par la couleur de son pavillon.",
+      "text_markdown": "Elle se composait de six flottes, chacune identifiée par la couleur de son pavillon.",
+      "tts": {
+        "text": "Elle se composait de six flottes, chacune identifiée par la couleur de son pavillon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La Flotte du Pavillon Rouge était la plus grande et la plus puissante.",
+      "text_markdown": "La Flotte du Pavillon Rouge était la plus grande et la plus puissante.",
+      "tts": {
+        "text": "La Flotte du Pavillon Rouge était la plus grande et la plus puissante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi commandait personnellement la Flotte du Pavillon Rouge.",
+      "text_markdown": "Zheng Yi commandait personnellement la Flotte du Pavillon Rouge.",
+      "tts": {
+        "text": "Zheng Yi commandait personnellement la Flotte du Pavillon Rouge.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La confédération contrôlait des centaines de navires et des dizaines de milliers de pirates.",
+      "text_markdown": "La confédération contrôlait des centaines de navires et des dizaines de milliers de pirates.",
+      "tts": {
+        "text": "La confédération contrôlait des centaines de navires et des dizaines de milliers de pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle dominait l'ensemble de la mer de Chine méridionale.",
+      "text_markdown": "Elle dominait l'ensemble de la mer de Chine méridionale.",
+      "tts": {
+        "text": "Elle dominait l'ensemble de la mer de Chine méridionale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aucun navire marchand ne pouvait traverser ces eaux sans payer tribut ou risquer la destruction.",
+      "text_markdown": "Aucun navire marchand ne pouvait traverser ces eaux sans payer tribut ou risquer la destruction.",
+      "tts": {
+        "text": "Aucun navire marchand ne pouvait traverser ces eaux sans payer tribut ou risquer la destruction.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puis, en novembre mille huit cent sept, Zheng Yi mourut.",
+      "text_markdown": "Puis, en novembre mille huit cent sept, Zheng Yi mourut.",
+      "tts": {
+        "text": "Puis, en novembre mille huit cent sept, Zheng Yi mourut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les circonstances de sa mort sont débattues par les historiens.",
+      "text_markdown": "Les circonstances de sa mort sont débattues par les historiens.",
+      "tts": {
+        "text": "Les circonstances de sa mort sont débattues par les historiens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Certains récits disent qu'il s'est noyé dans une tempête.",
+      "text_markdown": "Certains récits disent qu'il s'est noyé dans une tempête.",
+      "tts": {
+        "text": "Certains récits disent qu'il s'est noyé dans une tempête.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "D'autres suggèrent qu'il a été tué au combat au large des côtes du Vietnam.",
+      "text_markdown": "D'autres suggèrent qu'il a été tué au combat au large des côtes du Vietnam.",
+      "tts": {
+        "text": "D'autres suggèrent qu'il a été tué au combat au large des côtes du Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sa mort créa une crise pour l'ensemble de la confédération.",
+      "text_markdown": "Sa mort créa une crise pour l'ensemble de la confédération.",
+      "tts": {
+        "text": "Sa mort créa une crise pour l'ensemble de la confédération.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'alliance qu'il avait bâtie tenait grâce à son autorité personnelle.",
+      "text_markdown": "L'alliance qu'il avait bâtie tenait grâce à son autorité personnelle.",
+      "tts": {
+        "text": "L'alliance qu'il avait bâtie tenait grâce à son autorité personnelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sans un chef puissant, elle se fragmenterait en factions rivales.",
+      "text_markdown": "Sans un chef puissant, elle se fragmenterait en factions rivales.",
+      "tts": {
+        "text": "Sans un chef puissant, elle se fragmenterait en factions rivales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tout ce qu'ils avaient construit était menacé.",
+      "text_markdown": "Tout ce qu'ils avaient construit était menacé.",
+      "tts": {
+        "text": "Tout ce qu'ils avaient construit était menacé.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les capitaines des autres flottes s'attendaient à l'effondrement de la confédération.",
+      "text_markdown": "Les capitaines des autres flottes s'attendaient à l'effondrement de la confédération.",
+      "tts": {
+        "text": "Les capitaines des autres flottes s'attendaient à l'effondrement de la confédération.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils commencèrent à manœuvrer pour se positionner, se préparant à s'emparer de territoires.",
+      "text_markdown": "Ils commencèrent à manœuvrer pour se positionner, se préparant à s'emparer de territoires.",
+      "tts": {
+        "text": "Ils commencèrent à manœuvrer pour se positionner, se préparant à s'emparer de territoires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais ils n'avaient pas pris en compte l'ambition et les capacités de la veuve de Zheng Yi.",
+      "text_markdown": "Mais ils n'avaient pas pris en compte l'ambition et les capacités de la veuve de Zheng Yi.",
+      "tts": {
+        "text": "Mais ils n'avaient pas pris en compte l'ambition et les capacités de la veuve de Zheng Yi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origines",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle n'avait aucune intention de renoncer à ce qu'elle avait contribué à bâtir.",
+      "text_markdown": "Elle n'avait aucune intention de renoncer à ce qu'elle avait contribué à bâtir.",
+      "tts": {
+        "text": "Elle n'avait aucune intention de renoncer à ce qu'elle avait contribué à bâtir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "L'ascension au pouvoir",
+      "text_markdown": "L'ascension au pouvoir"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans les jours qui suivirent la mort de son mari, Zheng Yi Sao agit avec une rapidité calculée.",
+      "text_markdown": "Dans les jours qui suivirent la mort de son mari, Zheng Yi Sao agit avec une rapidité calculée.",
+      "tts": {
+        "text": "Dans les jours qui suivirent la mort de son mari, Zheng Yi Sao agit avec une rapidité calculée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa première action fut de s'assurer la loyauté de Zhang Bao, le lieutenant le plus fidèle de son mari.",
+      "text_markdown": "Sa première action fut de s'assurer la loyauté de Zhang Bao, le lieutenant le plus fidèle de son mari.",
+      "tts": {
+        "text": "Sa première action fut de s'assurer la loyauté de Zhang Bao, le lieutenant le plus fidèle de son mari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zhang Bao était le fils d'un pêcheur, capturé par des pirates quand il était enfant.",
+      "text_markdown": "Zhang Bao était le fils d'un pêcheur, capturé par des pirates quand il était enfant.",
+      "tts": {
+        "text": "Zhang Bao était le fils d'un pêcheur, capturé par des pirates quand il était enfant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zheng Yi l'avait adopté, formé et élevé pour en faire un commandant militaire.",
+      "text_markdown": "Zheng Yi l'avait adopté, formé et élevé pour en faire un commandant militaire.",
+      "tts": {
+        "text": "Zheng Yi l'avait adopté, formé et élevé pour en faire un commandant militaire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao forma une alliance avec Zhang Bao, à la fois personnelle et stratégique.",
+      "text_markdown": "Zheng Yi Sao forma une alliance avec Zhang Bao, à la fois personnelle et stratégique.",
+      "tts": {
+        "text": "Zheng Yi Sao forma une alliance avec Zhang Bao, à la fois personnelle et stratégique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les deux finirent par se marier.",
+      "text_markdown": "Les deux finirent par se marier.",
+      "tts": {
+        "text": "Les deux finirent par se marier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais dans ces premières semaines cruciales, le partenariat visait la survie.",
+      "text_markdown": "Mais dans ces premières semaines cruciales, le partenariat visait la survie.",
+      "tts": {
+        "text": "Mais dans ces premières semaines cruciales, le partenariat visait la survie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ensemble, ils présentèrent un front uni face aux autres commandants de flotte.",
+      "text_markdown": "Ensemble, ils présentèrent un front uni face aux autres commandants de flotte.",
+      "tts": {
+        "text": "Ensemble, ils présentèrent un front uni face aux autres commandants de flotte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle convoqua un conseil des six capitaines de flotte.",
+      "text_markdown": "Elle convoqua un conseil des six capitaines de flotte.",
+      "tts": {
+        "text": "Elle convoqua un conseil des six capitaines de flotte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lors de cette réunion, elle plaida sa cause pour prendre la tête de la confédération.",
+      "text_markdown": "Lors de cette réunion, elle plaida sa cause pour prendre la tête de la confédération.",
+      "tts": {
+        "text": "Lors de cette réunion, elle plaida sa cause pour prendre la tête de la confédération.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle fit valoir qu'elle avait été la partenaire à part entière de son mari dans la construction de cette alliance.",
+      "text_markdown": "Elle fit valoir qu'elle avait été la partenaire à part entière de son mari dans la construction de cette alliance.",
+      "tts": {
+        "text": "Elle fit valoir qu'elle avait été la partenaire à part entière de son mari dans la construction de cette alliance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un par un, les capitaines acceptèrent de suivre ses ordres.",
+      "text_markdown": "Un par un, les capitaines acceptèrent de suivre ses ordres.",
+      "tts": {
+        "text": "Un par un, les capitaines acceptèrent de suivre ses ordres.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son premier défi fut d'imposer la discipline à une force de soixante-dix mille pirates.",
+      "text_markdown": "Son premier défi fut d'imposer la discipline à une force de soixante-dix mille pirates.",
+      "tts": {
+        "text": "Son premier défi fut d'imposer la discipline à une force de soixante-dix mille pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les pirates étaient, par nature, indépendants et méfiants envers l'autorité.",
+      "text_markdown": "Les pirates étaient, par nature, indépendants et méfiants envers l'autorité.",
+      "tts": {
+        "text": "Les pirates étaient, par nature, indépendants et méfiants envers l'autorité.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zheng Yi Sao comprenait qu'une flotte sans lois se détruirait elle-même.",
+      "text_markdown": "Zheng Yi Sao comprenait qu'une flotte sans lois se détruirait elle-même.",
+      "tts": {
+        "text": "Zheng Yi Sao comprenait qu'une flotte sans lois se détruirait elle-même.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle créa l'un des codes juridiques les plus remarquables de l'histoire de la piraterie.",
+      "text_markdown": "Elle créa l'un des codes juridiques les plus remarquables de l'histoire de la piraterie.",
+      "tts": {
+        "text": "Elle créa l'un des codes juridiques les plus remarquables de l'histoire de la piraterie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le code était strict et précis.",
+      "text_markdown": "Le code était strict et précis.",
+      "tts": {
+        "text": "Le code était strict et précis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tout pirate qui désobéissait à un ordre direct d'un supérieur était décapité.",
+      "text_markdown": "Tout pirate qui désobéissait à un ordre direct d'un supérieur était décapité.",
+      "tts": {
+        "text": "Tout pirate qui désobéissait à un ordre direct d'un supérieur était décapité.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La désertion était punie de mort.",
+      "text_markdown": "La désertion était punie de mort.",
+      "tts": {
+        "text": "La désertion était punie de mort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le vol dans le trésor commun était puni de mort.",
+      "text_markdown": "Le vol dans le trésor commun était puni de mort.",
+      "tts": {
+        "text": "Le vol dans le trésor commun était puni de mort.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le code protégeait également les personnes capturées d'une manière inhabituelle pour l'époque.",
+      "text_markdown": "Le code protégeait également les personnes capturées d'une manière inhabituelle pour l'époque.",
+      "tts": {
+        "text": "Le code protégeait également les personnes capturées d'une manière inhabituelle pour l'époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les pirates qui agressaient des captifs encouraient de sévères châtiments.",
+      "text_markdown": "Les pirates qui agressaient des captifs encouraient de sévères châtiments.",
+      "tts": {
+        "text": "Les pirates qui agressaient des captifs encouraient de sévères châtiments.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si un pirate prenait une captive pour épouse, il devait lui être fidèle.",
+      "text_markdown": "Si un pirate prenait une captive pour épouse, il devait lui être fidèle.",
+      "tts": {
+        "text": "Si un pirate prenait une captive pour épouse, il devait lui être fidèle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ces règles n'étaient pas des suggestions ; elles étaient appliquées avec une rigueur inflexible.",
+      "text_markdown": "Ces règles n'étaient pas des suggestions ; elles étaient appliquées avec une rigueur inflexible.",
+      "tts": {
+        "text": "Ces règles n'étaient pas des suggestions ; elles étaient appliquées avec une rigueur inflexible.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tout le butin était enregistré et réparti selon un système fixe.",
+      "text_markdown": "Tout le butin était enregistré et réparti selon un système fixe.",
+      "tts": {
+        "text": "Tout le butin était enregistré et réparti selon un système fixe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le pirate qui avait capturé les marchandises en recevait vingt pour cent.",
+      "text_markdown": "Le pirate qui avait capturé les marchandises en recevait vingt pour cent.",
+      "tts": {
+        "text": "Le pirate qui avait capturé les marchandises en recevait vingt pour cent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les quatre-vingts pour cent restants allaient au fonds commun.",
+      "text_markdown": "Les quatre-vingts pour cent restants allaient au fonds commun.",
+      "tts": {
+        "text": "Les quatre-vingts pour cent restants allaient au fonds commun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ce système empêchait les querelles internes qui détruisaient la plupart des organisations pirates.",
+      "text_markdown": "Ce système empêchait les querelles internes qui détruisaient la plupart des organisations pirates.",
+      "tts": {
+        "text": "Ce système empêchait les querelles internes qui détruisaient la plupart des organisations pirates.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao mit également en place un système de taxation sophistiqué.",
+      "text_markdown": "Zheng Yi Sao mit également en place un système de taxation sophistiqué.",
+      "tts": {
+        "text": "Zheng Yi Sao mit également en place un système de taxation sophistiqué.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les navires marchands pouvaient acheter un passage sûr en payant une redevance régulière.",
+      "text_markdown": "Les navires marchands pouvaient acheter un passage sûr en payant une redevance régulière.",
+      "tts": {
+        "text": "Les navires marchands pouvaient acheter un passage sûr en payant une redevance régulière.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les villages de pêcheurs le long de la côte payaient un tribut en échange d'une protection.",
+      "text_markdown": "Les villages de pêcheurs le long de la côte payaient un tribut en échange d'une protection.",
+      "tts": {
+        "text": "Les villages de pêcheurs le long de la côte payaient un tribut en échange d'une protection.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le système fonctionnait comme un gouvernement parallèle, percevant des revenus en échange de la sécurité.",
+      "text_markdown": "Le système fonctionnait comme un gouvernement parallèle, percevant des revenus en échange de la sécurité.",
+      "tts": {
+        "text": "Le système fonctionnait comme un gouvernement parallèle, percevant des revenus en échange de la sécurité.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le gouvernement Qing reconnut la menace et envoya sa marine écraser les pirates.",
+      "text_markdown": "Le gouvernement Qing reconnut la menace et envoya sa marine écraser les pirates.",
+      "tts": {
+        "text": "Le gouvernement Qing reconnut la menace et envoya sa marine écraser les pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En mille huit cent huit, une immense flotte impériale fit voile vers la mer de Chine méridionale.",
+      "text_markdown": "En mille huit cent huit, une immense flotte impériale fit voile vers la mer de Chine méridionale.",
+      "tts": {
+        "text": "En mille huit cent huit, une immense flotte impériale fit voile vers la mer de Chine méridionale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La bataille fut un désastre pour le gouvernement.",
+      "text_markdown": "La bataille fut un désastre pour le gouvernement.",
+      "tts": {
+        "text": "La bataille fut un désastre pour le gouvernement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les forces de Zheng Yi Sao coulèrent ou capturèrent des dizaines de navires de guerre impériaux.",
+      "text_markdown": "Les forces de Zheng Yi Sao coulèrent ou capturèrent des dizaines de navires de guerre impériaux.",
+      "tts": {
+        "text": "Les forces de Zheng Yi Sao coulèrent ou capturèrent des dizaines de navires de guerre impériaux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'amiral vaincu fut si humilié qu'il mit fin à ses jours.",
+      "text_markdown": "L'amiral vaincu fut si humilié qu'il mit fin à ses jours.",
+      "tts": {
+        "text": "L'amiral vaincu fut si humilié qu'il mit fin à ses jours.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La cour impériale fut stupéfaite par l'ampleur de la défaite.",
+      "text_markdown": "La cour impériale fut stupéfaite par l'ampleur de la défaite.",
+      "tts": {
+        "text": "La cour impériale fut stupéfaite par l'ampleur de la défaite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils avaient envoyé leurs meilleurs navires et leur commandant le plus expérimenté, et ils avaient perdu.",
+      "text_markdown": "Ils avaient envoyé leurs meilleurs navires et leur commandant le plus expérimenté, et ils avaient perdu.",
+      "tts": {
+        "text": "Ils avaient envoyé leurs meilleurs navires et leur commandant le plus expérimenté, et ils avaient perdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les pirates étaient désormais plus puissants que la propre marine du gouvernement.",
+      "text_markdown": "Les pirates étaient désormais plus puissants que la propre marine du gouvernement.",
+      "tts": {
+        "text": "Les pirates étaient désormais plus puissants que la propre marine du gouvernement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao exploita son avantage sans relâche.",
+      "text_markdown": "Zheng Yi Sao exploita son avantage sans relâche.",
+      "tts": {
+        "text": "Zheng Yi Sao exploita son avantage sans relâche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa flotte étendit son territoire le long de toute la côte du Guangdong.",
+      "text_markdown": "Sa flotte étendit son territoire le long de toute la côte du Guangdong.",
+      "tts": {
+        "text": "Sa flotte étendit son territoire le long de toute la côte du Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle établit des bases sur des îles et dans des estuaires dissimulés.",
+      "text_markdown": "Elle établit des bases sur des îles et dans des estuaires dissimulés.",
+      "tts": {
+        "text": "Elle établit des bases sur des îles et dans des estuaires dissimulés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son réseau de renseignements s'étendait de Canton au Vietnam.",
+      "text_markdown": "Son réseau de renseignements s'étendait de Canton au Vietnam.",
+      "tts": {
+        "text": "Son réseau de renseignements s'étendait de Canton au Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le gouvernement Qing tenta une nouvelle stratégie.",
+      "text_markdown": "Le gouvernement Qing tenta une nouvelle stratégie.",
+      "tts": {
+        "text": "Le gouvernement Qing tenta une nouvelle stratégie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il engagea des navires de guerre portugais de la colonie de Macao pour combattre les pirates.",
+      "text_markdown": "Il engagea des navires de guerre portugais de la colonie de Macao pour combattre les pirates.",
+      "tts": {
+        "text": "Il engagea des navires de guerre portugais de la colonie de Macao pour combattre les pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les Portugais disposaient de canons européens modernes et d'officiers de marine formés.",
+      "text_markdown": "Les Portugais disposaient de canons européens modernes et d'officiers de marine formés.",
+      "tts": {
+        "text": "Les Portugais disposaient de canons européens modernes et d'officiers de marine formés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pendant un temps, cette alliance mit véritablement la flotte pirate sous pression.",
+      "text_markdown": "Pendant un temps, cette alliance mit véritablement la flotte pirate sous pression.",
+      "tts": {
+        "text": "Pendant un temps, cette alliance mit véritablement la flotte pirate sous pression.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais Zheng Yi Sao s'adapta rapidement.",
+      "text_markdown": "Mais Zheng Yi Sao s'adapta rapidement.",
+      "tts": {
+        "text": "Mais Zheng Yi Sao s'adapta rapidement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle évita l'affrontement direct avec les navires de guerre portugais.",
+      "text_markdown": "Elle évita l'affrontement direct avec les navires de guerre portugais.",
+      "tts": {
+        "text": "Elle évita l'affrontement direct avec les navires de guerre portugais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Au lieu de cela, elle visa leurs lignes d'approvisionnement et attaqua leurs alliés marchands.",
+      "text_markdown": "Au lieu de cela, elle visa leurs lignes d'approvisionnement et attaqua leurs alliés marchands.",
+      "tts": {
+        "text": "Au lieu de cela, elle visa leurs lignes d'approvisionnement et attaqua leurs alliés marchands.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle savait que les Portugais ne se battraient que tant qu'ils seraient payés.",
+      "text_markdown": "Elle savait que les Portugais ne se battraient que tant qu'ils seraient payés.",
+      "tts": {
+        "text": "Elle savait que les Portugais ne se battraient que tant qu'ils seraient payés.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mille huit cent neuf, l'alliance entre les Qing et les Portugais n'avait pas réussi à la vaincre.",
+      "text_markdown": "En mille huit cent neuf, l'alliance entre les Qing et les Portugais n'avait pas réussi à la vaincre.",
+      "tts": {
+        "text": "En mille huit cent neuf, l'alliance entre les Qing et les Portugais n'avait pas réussi à la vaincre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le gouvernement avait dépensé des sommes considérables et perdu des dizaines de navires.",
+      "text_markdown": "Le gouvernement avait dépensé des sommes considérables et perdu des dizaines de navires.",
+      "tts": {
+        "text": "Le gouvernement avait dépensé des sommes considérables et perdu des dizaines de navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les pirates contrôlaient la côte plus fermement que jamais.",
+      "text_markdown": "Les pirates contrôlaient la côte plus fermement que jamais.",
+      "tts": {
+        "text": "Les pirates contrôlaient la côte plus fermement que jamais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La confédération de Zheng Yi Sao était au faîte de sa puissance.",
+      "text_markdown": "La confédération de Zheng Yi Sao était au faîte de sa puissance.",
+      "tts": {
+        "text": "La confédération de Zheng Yi Sao était au faîte de sa puissance.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "À l'apogée",
+      "text_markdown": "À l'apogée"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À son apogée, la confédération pirate commandait environ mille huit cents navires.",
+      "text_markdown": "À son apogée, la confédération pirate commandait environ mille huit cents navires.",
+      "tts": {
+        "text": "À son apogée, la confédération pirate commandait environ mille huit cents navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ceux-ci allaient de petits bateaux de raid rapides à d'immenses jonques de guerre portant des dizaines de canons.",
+      "text_markdown": "Ceux-ci allaient de petits bateaux de raid rapides à d'immenses jonques de guerre portant des dizaines de canons.",
+      "tts": {
+        "text": "Ceux-ci allaient de petits bateaux de raid rapides à d'immenses jonques de guerre portant des dizaines de canons.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La force combattante totale comptait entre soixante-dix mille et quatre-vingt mille personnes.",
+      "text_markdown": "La force combattante totale comptait entre soixante-dix mille et quatre-vingt mille personnes.",
+      "tts": {
+        "text": "La force combattante totale comptait entre soixante-dix mille et quatre-vingt mille personnes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "C'était plus que les marines de la plupart des nations européennes de l'époque.",
+      "text_markdown": "C'était plus que les marines de la plupart des nations européennes de l'époque.",
+      "tts": {
+        "text": "C'était plus que les marines de la plupart des nations européennes de l'époque.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Flotte du Pavillon Rouge comptait à elle seule entre six cents et huit cents navires.",
+      "text_markdown": "La Flotte du Pavillon Rouge comptait à elle seule entre six cents et huit cents navires.",
+      "tts": {
+        "text": "La Flotte du Pavillon Rouge comptait à elle seule entre six cents et huit cents navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'était la plus grande flotte de la confédération.",
+      "text_markdown": "C'était la plus grande flotte de la confédération.",
+      "tts": {
+        "text": "C'était la plus grande flotte de la confédération.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zheng Yi Sao la commandait directement, avec Zhang Bao comme chef militaire.",
+      "text_markdown": "Zheng Yi Sao la commandait directement, avec Zhang Bao comme chef militaire.",
+      "tts": {
+        "text": "Zheng Yi Sao la commandait directement, avec Zhang Bao comme chef militaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les cinq autres flottes opéraient de manière semi-indépendante mais suivaient sa direction stratégique.",
+      "text_markdown": "Les cinq autres flottes opéraient de manière semi-indépendante mais suivaient sa direction stratégique.",
+      "tts": {
+        "text": "Les cinq autres flottes opéraient de manière semi-indépendante mais suivaient sa direction stratégique.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le territoire de la confédération s'étendait sur plus de mille miles de littoral.",
+      "text_markdown": "Le territoire de la confédération s'étendait sur plus de mille miles de littoral.",
+      "tts": {
+        "text": "Le territoire de la confédération s'étendait sur plus de mille miles de littoral.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De la frontière du Vietnam au sud à la côte du Fujian au nord, aucun navire n'était en sécurité sans l'autorisation des pirates.",
+      "text_markdown": "De la frontière du Vietnam au sud à la côte du Fujian au nord, aucun navire n'était en sécurité sans l'autorisation des pirates.",
+      "tts": {
+        "text": "De la frontière du Vietnam au sud à la côte du Fujian au nord, aucun navire n'était en sécurité sans l'autorisation des pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Même la puissante Compagnie britannique des Indes orientales payait un tribut pour ne pas perdre sa cargaison.",
+      "text_markdown": "Même la puissante Compagnie britannique des Indes orientales payait un tribut pour ne pas perdre sa cargaison.",
+      "tts": {
+        "text": "Même la puissante Compagnie britannique des Indes orientales payait un tribut pour ne pas perdre sa cargaison.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vie à bord d'une jonque pirate était rude mais organisée.",
+      "text_markdown": "La vie à bord d'une jonque pirate était rude mais organisée.",
+      "tts": {
+        "text": "La vie à bord d'une jonque pirate était rude mais organisée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chaque navire avait une hiérarchie claire, du capitaine jusqu'à la plus récente recrue.",
+      "text_markdown": "Chaque navire avait une hiérarchie claire, du capitaine jusqu'à la plus récente recrue.",
+      "tts": {
+        "text": "Chaque navire avait une hiérarchie claire, du capitaine jusqu'à la plus récente recrue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les repas étaient pris en commun, et les rations étaient distribuées équitablement.",
+      "text_markdown": "Les repas étaient pris en commun, et les rations étaient distribuées équitablement.",
+      "tts": {
+        "text": "Les repas étaient pris en commun, et les rations étaient distribuées équitablement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chaque membre d'équipage recevait une part du butin en fonction de son rang et de son rôle.",
+      "text_markdown": "Chaque membre d'équipage recevait une part du butin en fonction de son rang et de son rôle.",
+      "tts": {
+        "text": "Chaque membre d'équipage recevait une part du butin en fonction de son rang et de son rôle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des femmes servaient sur de nombreux navires pirates de la flotte.",
+      "text_markdown": "Des femmes servaient sur de nombreux navires pirates de la flotte.",
+      "tts": {
+        "text": "Des femmes servaient sur de nombreux navires pirates de la flotte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Certaines combattaient aux côtés des hommes lors des raids.",
+      "text_markdown": "Certaines combattaient aux côtés des hommes lors des raids.",
+      "tts": {
+        "text": "Certaines combattaient aux côtés des hommes lors des raids.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "D'autres géraient les approvisionnements, la navigation et les communications entre navires.",
+      "text_markdown": "D'autres géraient les approvisionnements, la navigation et les communications entre navires.",
+      "tts": {
+        "text": "D'autres géraient les approvisionnements, la navigation et les communications entre navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le monde des pirates offrait aux femmes plus de liberté que la société Qing ordinaire.",
+      "text_markdown": "Le monde des pirates offrait aux femmes plus de liberté que la société Qing ordinaire.",
+      "tts": {
+        "text": "Le monde des pirates offrait aux femmes plus de liberté que la société Qing ordinaire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les jonques de guerre de la flotte étaient de redoutables machines de combat.",
+      "text_markdown": "Les jonques de guerre de la flotte étaient de redoutables machines de combat.",
+      "tts": {
+        "text": "Les jonques de guerre de la flotte étaient de redoutables machines de combat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Une grande jonque pouvait transporter trente canons ou plus.",
+      "text_markdown": "Une grande jonque pouvait transporter trente canons ou plus.",
+      "tts": {
+        "text": "Une grande jonque pouvait transporter trente canons ou plus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les navires étaient construits avec des coques renforcées et des flancs hauts pour repousser les assaillants.",
+      "text_markdown": "Les navires étaient construits avec des coques renforcées et des flancs hauts pour repousser les assaillants.",
+      "tts": {
+        "text": "Les navires étaient construits avec des coques renforcées et des flancs hauts pour repousser les assaillants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Leurs fonds plats leur permettaient de naviguer dans les eaux côtières peu profondes où les navires européens, plus profonds, ne pouvaient pas les suivre.",
+      "text_markdown": "Leurs fonds plats leur permettaient de naviguer dans les eaux côtières peu profondes où les navires européens, plus profonds, ne pouvaient pas les suivre.",
+      "tts": {
+        "text": "Leurs fonds plats leur permettaient de naviguer dans les eaux côtières peu profondes où les navires européens, plus profonds, ne pouvaient pas les suivre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le réseau de renseignements de Zheng Yi Sao était l'une de ses armes les plus redoutables.",
+      "text_markdown": "Le réseau de renseignements de Zheng Yi Sao était l'une de ses armes les plus redoutables.",
+      "tts": {
+        "text": "Le réseau de renseignements de Zheng Yi Sao était l'une de ses armes les plus redoutables.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle avait des espions à Canton, à Macao et dans chaque port important le long de la côte.",
+      "text_markdown": "Elle avait des espions à Canton, à Macao et dans chaque port important le long de la côte.",
+      "tts": {
+        "text": "Elle avait des espions à Canton, à Macao et dans chaque port important le long de la côte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle savait quand les navires de marchandises précieuses partaient et quels itinéraires ils emprunteraient.",
+      "text_markdown": "Elle savait quand les navires de marchandises précieuses partaient et quels itinéraires ils emprunteraient.",
+      "tts": {
+        "text": "Elle savait quand les navires de marchandises précieuses partaient et quels itinéraires ils emprunteraient.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ces informations lui permettaient de frapper avec précision au lieu de s'en remettre au hasard.",
+      "text_markdown": "Ces informations lui permettaient de frapper avec précision au lieu de s'en remettre au hasard.",
+      "tts": {
+        "text": "Ces informations lui permettaient de frapper avec précision au lieu de s'en remettre au hasard.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le système de taxation qu'elle avait bâti était remarquablement sophistiqué.",
+      "text_markdown": "Le système de taxation qu'elle avait bâti était remarquablement sophistiqué.",
+      "tts": {
+        "text": "Le système de taxation qu'elle avait bâti était remarquablement sophistiqué.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des taux différents s'appliquaient à différents types de cargaison.",
+      "text_markdown": "Des taux différents s'appliquaient à différents types de cargaison.",
+      "tts": {
+        "text": "Des taux différents s'appliquaient à différents types de cargaison.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les marchands de soie payaient plus que les négociants en riz.",
+      "text_markdown": "Les marchands de soie payaient plus que les négociants en riz.",
+      "tts": {
+        "text": "Les marchands de soie payaient plus que les négociants en riz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les contrebandiers de sel payaient un supplément parce que leur cargaison était déjà illégale.",
+      "text_markdown": "Les contrebandiers de sel payaient un supplément parce que leur cargaison était déjà illégale.",
+      "tts": {
+        "text": "Les contrebandiers de sel payaient un supplément parce que leur cargaison était déjà illégale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "L'ensemble du système était documenté et appliqué avec une précision bureaucratique.",
+      "text_markdown": "L'ensemble du système était documenté et appliqué avec une précision bureaucratique.",
+      "tts": {
+        "text": "L'ensemble du système était documenté et appliqué avec une précision bureaucratique.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les villages côtiers entretenaient une relation complexe avec les pirates.",
+      "text_markdown": "Les villages côtiers entretenaient une relation complexe avec les pirates.",
+      "tts": {
+        "text": "Les villages côtiers entretenaient une relation complexe avec les pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Beaucoup en voulaient aux pirates pour le tribut qu'ils exigeaient.",
+      "text_markdown": "Beaucoup en voulaient aux pirates pour le tribut qu'ils exigeaient.",
+      "tts": {
+        "text": "Beaucoup en voulaient aux pirates pour le tribut qu'ils exigeaient.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais les pirates offraient aussi une protection contre d'autres pillards et bandits.",
+      "text_markdown": "Mais les pirates offraient aussi une protection contre d'autres pillards et bandits.",
+      "tts": {
+        "text": "Mais les pirates offraient aussi une protection contre d'autres pillards et bandits.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dans certaines zones, les pirates étaient plus fiables que le gouvernement impérial.",
+      "text_markdown": "Dans certaines zones, les pirates étaient plus fiables que le gouvernement impérial.",
+      "tts": {
+        "text": "Dans certaines zones, les pirates étaient plus fiables que le gouvernement impérial.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La cour des Qing était profondément embarrassée par son incapacité à contrôler la mer.",
+      "text_markdown": "La cour des Qing était profondément embarrassée par son incapacité à contrôler la mer.",
+      "tts": {
+        "text": "La cour des Qing était profondément embarrassée par son incapacité à contrôler la mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les fonctionnaires impériaux rédigeaient des rapports anxieux sur le pouvoir grandissant de la reine des pirates.",
+      "text_markdown": "Les fonctionnaires impériaux rédigeaient des rapports anxieux sur le pouvoir grandissant de la reine des pirates.",
+      "tts": {
+        "text": "Les fonctionnaires impériaux rédigeaient des rapports anxieux sur le pouvoir grandissant de la reine des pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils craignaient que les pirates ne s'allient avec des groupes rebelles sur la terre ferme.",
+      "text_markdown": "Ils craignaient que les pirates ne s'allient avec des groupes rebelles sur la terre ferme.",
+      "tts": {
+        "text": "Ils craignaient que les pirates ne s'allient avec des groupes rebelles sur la terre ferme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Une rébellion combinée sur terre et sur mer pourrait menacer la dynastie elle-même.",
+      "text_markdown": "Une rébellion combinée sur terre et sur mer pourrait menacer la dynastie elle-même.",
+      "tts": {
+        "text": "Une rébellion combinée sur terre et sur mer pourrait menacer la dynastie elle-même.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les Britanniques observaient la situation avec un vif intérêt.",
+      "text_markdown": "Les Britanniques observaient la situation avec un vif intérêt.",
+      "tts": {
+        "text": "Les Britanniques observaient la situation avec un vif intérêt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils développaient leur commerce d'opium le long de la côte chinoise.",
+      "text_markdown": "Ils développaient leur commerce d'opium le long de la côte chinoise.",
+      "tts": {
+        "text": "Ils développaient leur commerce d'opium le long de la côte chinoise.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les pirates perturbaient ce commerce, ce qui coûtait des sommes énormes aux marchands britanniques.",
+      "text_markdown": "Les pirates perturbaient ce commerce, ce qui coûtait des sommes énormes aux marchands britanniques.",
+      "tts": {
+        "text": "Les pirates perturbaient ce commerce, ce qui coûtait des sommes énormes aux marchands britanniques.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pour ceux qui naviguaient sous le pavillon de Zheng Yi Sao, la vie était meilleure que l'alternative.",
+      "text_markdown": "Pour ceux qui naviguaient sous le pavillon de Zheng Yi Sao, la vie était meilleure que l'alternative.",
+      "tts": {
+        "text": "Pour ceux qui naviguaient sous le pavillon de Zheng Yi Sao, la vie était meilleure que l'alternative.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un pirate recevait de la nourriture régulière, une part du butin et un sentiment d'appartenance.",
+      "text_markdown": "Un pirate recevait de la nourriture régulière, une part du butin et un sentiment d'appartenance.",
+      "tts": {
+        "text": "Un pirate recevait de la nourriture régulière, une part du butin et un sentiment d'appartenance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un pêcheur Tanka ne recevait que pauvreté, mépris et aucun espoir d'avancement.",
+      "text_markdown": "Un pêcheur Tanka ne recevait que pauvreté, mépris et aucun espoir d'avancement.",
+      "tts": {
+        "text": "Un pêcheur Tanka ne recevait que pauvreté, mépris et aucun espoir d'avancement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao gouvernait cette société avec une autorité absolue.",
+      "text_markdown": "Zheng Yi Sao gouvernait cette société avec une autorité absolue.",
+      "tts": {
+        "text": "Zheng Yi Sao gouvernait cette société avec une autorité absolue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle prenait les décisions stratégiques qui façonnaient l'avenir de la flotte.",
+      "text_markdown": "Elle prenait les décisions stratégiques qui façonnaient l'avenir de la flotte.",
+      "tts": {
+        "text": "Elle prenait les décisions stratégiques qui façonnaient l'avenir de la flotte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle réglait les différends entre capitaines et faisait respecter le code.",
+      "text_markdown": "Elle réglait les différends entre capitaines et faisait respecter le code.",
+      "tts": {
+        "text": "Elle réglait les différends entre capitaines et faisait respecter le code.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aucune action majeure n'était entreprise sans son approbation.",
+      "text_markdown": "Aucune action majeure n'était entreprise sans son approbation.",
+      "tts": {
+        "text": "Aucune action majeure n'était entreprise sans son approbation.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La fin",
+      "text_markdown": "La fin"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mille huit cent dix, des fissures commençaient à apparaître dans la confédération.",
+      "text_markdown": "En mille huit cent dix, des fissures commençaient à apparaître dans la confédération.",
+      "tts": {
+        "text": "En mille huit cent dix, des fissures commençaient à apparaître dans la confédération.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La guerre permanente avait épuisé les navires et les équipages.",
+      "text_markdown": "La guerre permanente avait épuisé les navires et les équipages.",
+      "tts": {
+        "text": "La guerre permanente avait épuisé les navires et les équipages.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les blocus du gouvernement Qing perturbaient les lignes d'approvisionnement le long de la côte.",
+      "text_markdown": "Les blocus du gouvernement Qing perturbaient les lignes d'approvisionnement le long de la côte.",
+      "tts": {
+        "text": "Les blocus du gouvernement Qing perturbaient les lignes d'approvisionnement le long de la côte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Et les rivalités internes entre capitaines de flotte s'étaient intensifiées.",
+      "text_markdown": "Et les rivalités internes entre capitaines de flotte s'étaient intensifiées.",
+      "tts": {
+        "text": "Et les rivalités internes entre capitaines de flotte s'étaient intensifiées.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La rivalité la plus dangereuse opposait Zhang Bao à un capitaine nommé Guo Podai.",
+      "text_markdown": "La rivalité la plus dangereuse opposait Zhang Bao à un capitaine nommé Guo Podai.",
+      "tts": {
+        "text": "La rivalité la plus dangereuse opposait Zhang Bao à un capitaine nommé Guo Podai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Guo Podai commandait la Flotte du Pavillon Noir, la deuxième plus grande de la confédération.",
+      "text_markdown": "Guo Podai commandait la Flotte du Pavillon Noir, la deuxième plus grande de la confédération.",
+      "tts": {
+        "text": "Guo Podai commandait la Flotte du Pavillon Noir, la deuxième plus grande de la confédération.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il supportait mal de recevoir des ordres de Zhang Bao et, par extension, de Zheng Yi Sao.",
+      "text_markdown": "Il supportait mal de recevoir des ordres de Zhang Bao et, par extension, de Zheng Yi Sao.",
+      "tts": {
+        "text": "Il supportait mal de recevoir des ordres de Zhang Bao et, par extension, de Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La tension entre eux menaçait de scinder la confédération en deux.",
+      "text_markdown": "La tension entre eux menaçait de scinder la confédération en deux.",
+      "tts": {
+        "text": "La tension entre eux menaçait de scinder la confédération en deux.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au début de l'année mille huit cent dix, Guo Podai prit une décision fatidique.",
+      "text_markdown": "Au début de l'année mille huit cent dix, Guo Podai prit une décision fatidique.",
+      "tts": {
+        "text": "Au début de l'année mille huit cent dix, Guo Podai prit une décision fatidique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il entama des négociations secrètes avec le gouvernement Qing.",
+      "text_markdown": "Il entama des négociations secrètes avec le gouvernement Qing.",
+      "tts": {
+        "text": "Il entama des négociations secrètes avec le gouvernement Qing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le gouvernement lui offrit une grâce totale, une commission militaire et une somme d'argent.",
+      "text_markdown": "Le gouvernement lui offrit une grâce totale, une commission militaire et une somme d'argent.",
+      "tts": {
+        "text": "Le gouvernement lui offrit une grâce totale, une commission militaire et une somme d'argent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En échange, il se retournerait contre ses anciens alliés.",
+      "text_markdown": "En échange, il se retournerait contre ses anciens alliés.",
+      "tts": {
+        "text": "En échange, il se retournerait contre ses anciens alliés.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Guo Podai accepta le marché et rendit sa flotte entière au gouvernement.",
+      "text_markdown": "Guo Podai accepta le marché et rendit sa flotte entière au gouvernement.",
+      "tts": {
+        "text": "Guo Podai accepta le marché et rendit sa flotte entière au gouvernement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du jour au lendemain, la confédération perdit des centaines de navires et des milliers de combattants.",
+      "text_markdown": "Du jour au lendemain, la confédération perdit des centaines de navires et des milliers de combattants.",
+      "tts": {
+        "text": "Du jour au lendemain, la confédération perdit des centaines de navires et des milliers de combattants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pire encore, Guo Podai servait désormais comme commandant au service du gouvernement, utilisant sa connaissance des tactiques pirates contre eux.",
+      "text_markdown": "Pire encore, Guo Podai servait désormais comme commandant au service du gouvernement, utilisant sa connaissance des tactiques pirates contre eux.",
+      "tts": {
+        "text": "Pire encore, Guo Podai servait désormais comme commandant au service du gouvernement, utilisant sa connaissance des tactiques pirates contre eux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le rapport de forces avait basculé de manière spectaculaire.",
+      "text_markdown": "Le rapport de forces avait basculé de manière spectaculaire.",
+      "tts": {
+        "text": "Le rapport de forces avait basculé de manière spectaculaire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao évalua la nouvelle situation avec sa clarté caractéristique.",
+      "text_markdown": "Zheng Yi Sao évalua la nouvelle situation avec sa clarté caractéristique.",
+      "tts": {
+        "text": "Zheng Yi Sao évalua la nouvelle situation avec sa clarté caractéristique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La confédération était affaiblie mais pas détruite.",
+      "text_markdown": "La confédération était affaiblie mais pas détruite.",
+      "tts": {
+        "text": "La confédération était affaiblie mais pas détruite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle commandait toujours la Flotte du Pavillon Rouge et plusieurs flottes alliées.",
+      "text_markdown": "Elle commandait toujours la Flotte du Pavillon Rouge et plusieurs flottes alliées.",
+      "tts": {
+        "text": "Elle commandait toujours la Flotte du Pavillon Rouge et plusieurs flottes alliées.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mais la dynamique avait changé, et elle le savait.",
+      "text_markdown": "Mais la dynamique avait changé, et elle le savait.",
+      "tts": {
+        "text": "Mais la dynamique avait changé, et elle le savait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle prit une décision qui révéla son génie stratégique.",
+      "text_markdown": "Elle prit une décision qui révéla son génie stratégique.",
+      "tts": {
+        "text": "Elle prit une décision qui révéla son génie stratégique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Plutôt que de se battre jusqu'à la mort, elle choisit de négocier depuis une position de force restante.",
+      "text_markdown": "Plutôt que de se battre jusqu'à la mort, elle choisit de négocier depuis une position de force restante.",
+      "tts": {
+        "text": "Plutôt que de se battre jusqu'à la mort, elle choisit de négocier depuis une position de force restante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle ouvrit des pourparlers avec le gouvernement Qing par l'intermédiaire de médiateurs.",
+      "text_markdown": "Elle ouvrit des pourparlers avec le gouvernement Qing par l'intermédiaire de médiateurs.",
+      "tts": {
+        "text": "Elle ouvrit des pourparlers avec le gouvernement Qing par l'intermédiaire de médiateurs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ses exigences étaient audacieuses et précises.",
+      "text_markdown": "Ses exigences étaient audacieuses et précises.",
+      "tts": {
+        "text": "Ses exigences étaient audacieuses et précises.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle exigea une grâce totale pour elle-même et pour Zhang Bao.",
+      "text_markdown": "Elle exigea une grâce totale pour elle-même et pour Zhang Bao.",
+      "tts": {
+        "text": "Elle exigea une grâce totale pour elle-même et pour Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle exigea que ses pirates soient autorisés à conserver leurs richesses personnelles.",
+      "text_markdown": "Elle exigea que ses pirates soient autorisés à conserver leurs richesses personnelles.",
+      "tts": {
+        "text": "Elle exigea que ses pirates soient autorisés à conserver leurs richesses personnelles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle exigea que Zhang Bao reçoive une commission dans la marine impériale.",
+      "text_markdown": "Elle exigea que Zhang Bao reçoive une commission dans la marine impériale.",
+      "tts": {
+        "text": "Elle exigea que Zhang Bao reçoive une commission dans la marine impériale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Et elle exigea que les pirates ordinaires qui se rendraient ne soient pas punis.",
+      "text_markdown": "Et elle exigea que les pirates ordinaires qui se rendraient ne soient pas punis.",
+      "tts": {
+        "text": "Et elle exigea que les pirates ordinaires qui se rendraient ne soient pas punis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le gouvernement Qing était réticent à accepter des conditions aussi généreuses.",
+      "text_markdown": "Le gouvernement Qing était réticent à accepter des conditions aussi généreuses.",
+      "tts": {
+        "text": "Le gouvernement Qing était réticent à accepter des conditions aussi généreuses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Accorder des grâces à des pirates semblait être une humiliation pour l'empire.",
+      "text_markdown": "Accorder des grâces à des pirates semblait être une humiliation pour l'empire.",
+      "tts": {
+        "text": "Accorder des grâces à des pirates semblait être une humiliation pour l'empire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais ils avaient essayé la force et avaient échoué.",
+      "text_markdown": "Mais ils avaient essayé la force et avaient échoué.",
+      "tts": {
+        "text": "Mais ils avaient essayé la force et avaient échoué.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La négociation était la seule option qui restait.",
+      "text_markdown": "La négociation était la seule option qui restait.",
+      "tts": {
+        "text": "La négociation était la seule option qui restait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En avril mille huit cent dix, l'accord fut conclu.",
+      "text_markdown": "En avril mille huit cent dix, l'accord fut conclu.",
+      "tts": {
+        "text": "En avril mille huit cent dix, l'accord fut conclu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zheng Yi Sao rendit sa flotte au gouvernement.",
+      "text_markdown": "Zheng Yi Sao rendit sa flotte au gouvernement.",
+      "tts": {
+        "text": "Zheng Yi Sao rendit sa flotte au gouvernement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En échange, elle obtint tout ce qu'elle avait demandé.",
+      "text_markdown": "En échange, elle obtint tout ce qu'elle avait demandé.",
+      "tts": {
+        "text": "En échange, elle obtint tout ce qu'elle avait demandé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zhang Bao fut nommé lieutenant dans la marine Qing avec le commandement de vingt navires.",
+      "text_markdown": "Zhang Bao fut nommé lieutenant dans la marine Qing avec le commandement de vingt navires.",
+      "tts": {
+        "text": "Zhang Bao fut nommé lieutenant dans la marine Qing avec le commandement de vingt navires.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les pirates furent autorisés à conserver une partie de leurs navires.",
+      "text_markdown": "Les pirates furent autorisés à conserver une partie de leurs navires.",
+      "tts": {
+        "text": "Les pirates furent autorisés à conserver une partie de leurs navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ceux qui souhaitaient reprendre une vie civile étaient libres de le faire.",
+      "text_markdown": "Ceux qui souhaitaient reprendre une vie civile étaient libres de le faire.",
+      "tts": {
+        "text": "Ceux qui souhaitaient reprendre une vie civile étaient libres de le faire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ceux qui souhaitaient rejoindre la marine impériale étaient les bienvenus.",
+      "text_markdown": "Ceux qui souhaitaient rejoindre la marine impériale étaient les bienvenus.",
+      "tts": {
+        "text": "Ceux qui souhaitaient rejoindre la marine impériale étaient les bienvenus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ce fut la reddition la plus favorable de l'histoire de la piraterie.",
+      "text_markdown": "Ce fut la reddition la plus favorable de l'histoire de la piraterie.",
+      "tts": {
+        "text": "Ce fut la reddition la plus favorable de l'histoire de la piraterie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao se retira de la mer en femme riche.",
+      "text_markdown": "Zheng Yi Sao se retira de la mer en femme riche.",
+      "tts": {
+        "text": "Zheng Yi Sao se retira de la mer en femme riche.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle s'installa à Canton avec Zhang Bao.",
+      "text_markdown": "Elle s'installa à Canton avec Zhang Bao.",
+      "tts": {
+        "text": "Elle s'installa à Canton avec Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ensemble, ils ouvrirent une maison de jeu qui devint l'une des plus rentables de la ville.",
+      "text_markdown": "Ensemble, ils ouvrirent une maison de jeu qui devint l'une des plus rentables de la ville.",
+      "tts": {
+        "text": "Ensemble, ils ouvrirent une maison de jeu qui devint l'une des plus rentables de la ville.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle investit également dans le commerce du sel, qui lui procura des revenus réguliers pendant des années.",
+      "text_markdown": "Elle investit également dans le commerce du sel, qui lui procura des revenus réguliers pendant des années.",
+      "tts": {
+        "text": "Elle investit également dans le commerce du sel, qui lui procura des revenus réguliers pendant des années.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zhang Bao servit dans la marine impériale avec distinction pendant plusieurs années.",
+      "text_markdown": "Zhang Bao servit dans la marine impériale avec distinction pendant plusieurs années.",
+      "tts": {
+        "text": "Zhang Bao servit dans la marine impériale avec distinction pendant plusieurs années.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il mourut en mille huit cent vingt-deux, alors qu'il était encore au service du gouvernement.",
+      "text_markdown": "Il mourut en mille huit cent vingt-deux, alors qu'il était encore au service du gouvernement.",
+      "tts": {
+        "text": "Il mourut en mille huit cent vingt-deux, alors qu'il était encore au service du gouvernement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa mort fut honorée avec les pleins honneurs militaires.",
+      "text_markdown": "Sa mort fut honorée avec les pleins honneurs militaires.",
+      "tts": {
+        "text": "Sa mort fut honorée avec les pleins honneurs militaires.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zheng Yi Sao vécut plus de deux décennies après avoir quitté la piraterie.",
+      "text_markdown": "Zheng Yi Sao vécut plus de deux décennies après avoir quitté la piraterie.",
+      "tts": {
+        "text": "Zheng Yi Sao vécut plus de deux décennies après avoir quitté la piraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle géra ses intérêts commerciaux et éleva une famille à Canton.",
+      "text_markdown": "Elle géra ses intérêts commerciaux et éleva une famille à Canton.",
+      "tts": {
+        "text": "Elle géra ses intérêts commerciaux et éleva une famille à Canton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle mourut en mille huit cent quarante-quatre, à environ soixante-neuf ans.",
+      "text_markdown": "Elle mourut en mille huit cent quarante-quatre, à environ soixante-neuf ans.",
+      "tts": {
+        "text": "Elle mourut en mille huit cent quarante-quatre, à environ soixante-neuf ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle mourut dans son propre lit, entourée de sa famille, en tant que membre respectée de la société cantonaise.",
+      "text_markdown": "Elle mourut dans son propre lit, entourée de sa famille, en tant que membre respectée de la société cantonaise.",
+      "tts": {
+        "text": "Elle mourut dans son propre lit, entourée de sa famille, en tant que membre respectée de la société cantonaise.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Héritage",
+      "text_markdown": "Héritage"
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La carrière de Zheng Yi Sao est unique dans l'histoire de la piraterie.",
+      "text_markdown": "La carrière de Zheng Yi Sao est unique dans l'histoire de la piraterie.",
+      "tts": {
+        "text": "La carrière de Zheng Yi Sao est unique dans l'histoire de la piraterie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aucun autre pirate, homme ou femme, n'a jamais commandé une force d'une taille comparable.",
+      "text_markdown": "Aucun autre pirate, homme ou femme, n'a jamais commandé une force d'une taille comparable.",
+      "tts": {
+        "text": "Aucun autre pirate, homme ou femme, n'a jamais commandé une force d'une taille comparable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aucun autre pirate n'a bâti un système de lois et de gouvernance aussi sophistiqué.",
+      "text_markdown": "Aucun autre pirate n'a bâti un système de lois et de gouvernance aussi sophistiqué.",
+      "tts": {
+        "text": "Aucun autre pirate n'a bâti un système de lois et de gouvernance aussi sophistiqué.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Et aucun autre pirate n'a négocié une retraite à des conditions aussi favorables.",
+      "text_markdown": "Et aucun autre pirate n'a négocié une retraite à des conditions aussi favorables.",
+      "tts": {
+        "text": "Et aucun autre pirate n'a négocié une retraite à des conditions aussi favorables.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son succès remet en question beaucoup d'idées reçues sur le rôle des femmes dans l'histoire.",
+      "text_markdown": "Son succès remet en question beaucoup d'idées reçues sur le rôle des femmes dans l'histoire.",
+      "tts": {
+        "text": "Son succès remet en question beaucoup d'idées reçues sur le rôle des femmes dans l'histoire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle a accédé au pouvoir dans une société qui n'accordait presque aucun droit aux femmes.",
+      "text_markdown": "Elle a accédé au pouvoir dans une société qui n'accordait presque aucun droit aux femmes.",
+      "tts": {
+        "text": "Elle a accédé au pouvoir dans une société qui n'accordait presque aucun droit aux femmes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle commandait des dizaines de milliers d'hommes dans un monde qui considérait les femmes comme inférieures.",
+      "text_markdown": "Elle commandait des dizaines de milliers d'hommes dans un monde qui considérait les femmes comme inférieures.",
+      "tts": {
+        "text": "Elle commandait des dizaines de milliers d'hommes dans un monde qui considérait les femmes comme inférieures.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son histoire est la preuve que le talent n'a pas de genre.",
+      "text_markdown": "Son histoire est la preuve que le talent n'a pas de genre.",
+      "tts": {
+        "text": "Son histoire est la preuve que le talent n'a pas de genre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les historiens ont débattu des raisons de son succès extraordinaire.",
+      "text_markdown": "Les historiens ont débattu des raisons de son succès extraordinaire.",
+      "tts": {
+        "text": "Les historiens ont débattu des raisons de son succès extraordinaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Certains mettent en avant ses qualités personnelles : son intelligence, sa détermination, sa capacité à inspirer la loyauté.",
+      "text_markdown": "Certains mettent en avant ses qualités personnelles : son intelligence, sa détermination, sa capacité à inspirer la loyauté.",
+      "tts": {
+        "text": "Certains mettent en avant ses qualités personnelles : son intelligence, sa détermination, sa capacité à inspirer la loyauté.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "D'autres soulignent les conditions structurelles qui ont rendu son ascension possible : la faiblesse de l'État Qing, la pauvreté de la population côtière et la géographie de la mer de Chine méridionale.",
+      "text_markdown": "D'autres soulignent les conditions structurelles qui ont rendu son ascension possible : la faiblesse de l'État Qing, la pauvreté de la population côtière et la géographie de la mer de Chine méridionale.",
+      "tts": {
+        "text": "D'autres soulignent les conditions structurelles qui ont rendu son ascension possible : la faiblesse de l'État Qing, la pauvreté de la population côtière et la géographie de la mer de Chine méridionale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vérité inclut presque certainement les deux facteurs.",
+      "text_markdown": "La vérité inclut presque certainement les deux facteurs.",
+      "tts": {
+        "text": "La vérité inclut presque certainement les deux facteurs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sans les conditions, son talent n'aurait pas eu de scène.",
+      "text_markdown": "Sans les conditions, son talent n'aurait pas eu de scène.",
+      "tts": {
+        "text": "Sans les conditions, son talent n'aurait pas eu de scène.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sans son talent, les conditions n'auraient engendré que le chaos.",
+      "text_markdown": "Sans son talent, les conditions n'auraient engendré que le chaos.",
+      "tts": {
+        "text": "Sans son talent, les conditions n'auraient engendré que le chaos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle était la bonne personne au bon moment de l'histoire.",
+      "text_markdown": "Elle était la bonne personne au bon moment de l'histoire.",
+      "tts": {
+        "text": "Elle était la bonne personne au bon moment de l'histoire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son code juridique a influencé la gouvernance pirate pendant des décennies après sa retraite.",
+      "text_markdown": "Son code juridique a influencé la gouvernance pirate pendant des décennies après sa retraite.",
+      "tts": {
+        "text": "Son code juridique a influencé la gouvernance pirate pendant des décennies après sa retraite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les chefs pirates ultérieurs de la mer de Chine méridionale ont adopté des systèmes similaires de taxation et de droit.",
+      "text_markdown": "Les chefs pirates ultérieurs de la mer de Chine méridionale ont adopté des systèmes similaires de taxation et de droit.",
+      "tts": {
+        "text": "Les chefs pirates ultérieurs de la mer de Chine méridionale ont adopté des systèmes similaires de taxation et de droit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son modèle a démontré que les flottes de pirates pouvaient être organisées aussi efficacement que des marines nationales.",
+      "text_markdown": "Son modèle a démontré que les flottes de pirates pouvaient être organisées aussi efficacement que des marines nationales.",
+      "tts": {
+        "text": "Son modèle a démontré que les flottes de pirates pouvaient être organisées aussi efficacement que des marines nationales.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À l'époque moderne, Zheng Yi Sao est devenue une icône culturelle.",
+      "text_markdown": "À l'époque moderne, Zheng Yi Sao est devenue une icône culturelle.",
+      "tts": {
+        "text": "À l'époque moderne, Zheng Yi Sao est devenue une icône culturelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle est apparue dans des romans, des films et des jeux vidéo à travers le monde.",
+      "text_markdown": "Elle est apparue dans des romans, des films et des jeux vidéo à travers le monde.",
+      "tts": {
+        "text": "Elle est apparue dans des romans, des films et des jeux vidéo à travers le monde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son histoire a été traduite dans des dizaines de langues.",
+      "text_markdown": "Son histoire a été traduite dans des dizaines de langues.",
+      "tts": {
+        "text": "Son histoire a été traduite dans des dizaines de langues.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pourtant, une grande partie de sa vie reste inconnue.",
+      "text_markdown": "Pourtant, une grande partie de sa vie reste inconnue.",
+      "tts": {
+        "text": "Pourtant, une grande partie de sa vie reste inconnue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nous ne connaissons pas son nom de naissance avec certitude.",
+      "text_markdown": "Nous ne connaissons pas son nom de naissance avec certitude.",
+      "tts": {
+        "text": "Nous ne connaissons pas son nom de naissance avec certitude.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nous ne possédons aucune image vérifiée de son visage.",
+      "text_markdown": "Nous ne possédons aucune image vérifiée de son visage.",
+      "tts": {
+        "text": "Nous ne possédons aucune image vérifiée de son visage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'essentiel de ce que nous savons provient de documents gouvernementaux rédigés par ses ennemis.",
+      "text_markdown": "L'essentiel de ce que nous savons provient de documents gouvernementaux rédigés par ses ennemis.",
+      "tts": {
+        "text": "L'essentiel de ce que nous savons provient de documents gouvernementaux rédigés par ses ennemis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La cour des Qing avait toutes les raisons de minimiser ses accomplissements.",
+      "text_markdown": "La cour des Qing avait toutes les raisons de minimiser ses accomplissements.",
+      "tts": {
+        "text": "La cour des Qing avait toutes les raisons de minimiser ses accomplissements.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De nombreux documents officiels minimisent son rôle ou attribuent son succès à Zhang Bao.",
+      "text_markdown": "De nombreux documents officiels minimisent son rôle ou attribuent son succès à Zhang Bao.",
+      "tts": {
+        "text": "De nombreux documents officiels minimisent son rôle ou attribuent son succès à Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les historiens doivent lire ces sources avec attention, sachant qu'elles ont été rédigées avec des motivations politiques.",
+      "text_markdown": "Les historiens doivent lire ces sources avec attention, sachant qu'elles ont été rédigées avec des motivations politiques.",
+      "tts": {
+        "text": "Les historiens doivent lire ces sources avec attention, sachant qu'elles ont été rédigées avec des motivations politiques.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce que les archives ne peuvent dissimuler, c'est l'ampleur de son accomplissement.",
+      "text_markdown": "Ce que les archives ne peuvent dissimuler, c'est l'ampleur de son accomplissement.",
+      "tts": {
+        "text": "Ce que les archives ne peuvent dissimuler, c'est l'ampleur de son accomplissement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle a bâti la plus grande flotte de pirates de l'histoire connue.",
+      "text_markdown": "Elle a bâti la plus grande flotte de pirates de l'histoire connue.",
+      "tts": {
+        "text": "Elle a bâti la plus grande flotte de pirates de l'histoire connue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elle a vaincu les forces combinées de l'Empire Qing et de la marine portugaise.",
+      "text_markdown": "Elle a vaincu les forces combinées de l'Empire Qing et de la marine portugaise.",
+      "tts": {
+        "text": "Elle a vaincu les forces combinées de l'Empire Qing et de la marine portugaise.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle s'est retirée riche, libre et invaincue.",
+      "text_markdown": "Elle s'est retirée riche, libre et invaincue.",
+      "tts": {
+        "text": "Elle s'est retirée riche, libre et invaincue.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-310",
+      "part": 0,
+      "chapter": 6,
+      "title": "Héritage",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dans la longue histoire de la mer, personne d'autre n'a accompli cela.",
+      "text_markdown": "Dans la longue histoire de la mer, personne d'autre n'a accompli cela.",
+      "tts": {
+        "text": "Dans la longue histoire de la mer, personne d'autre n'a accompli cela.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

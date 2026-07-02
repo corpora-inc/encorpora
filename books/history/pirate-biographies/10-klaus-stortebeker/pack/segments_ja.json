@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_klaus_stortebeker",
+  "language": "ja",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのことば",
+      "text_markdown": "読者へのことば"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、首を切り落とされた後も歩き続けた海賊の実話である。",
+      "text_markdown": "これは、首を切り落とされた後も歩き続けた海賊の実話である。",
+      "tts": {
+        "text": "これは、首を切り落とされた後も歩き続けた海賊の実話である。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名はクラウス・シュテルテベーカー。600年以上前に北ヨーロッパの海を恐怖に陥れた人物だ。",
+      "text_markdown": "彼の名はクラウス・シュテルテベーカー。600年以上前に北ヨーロッパの海を恐怖に陥れた人物だ。",
+      "tts": {
+        "text": "彼の名はクラウス・シュテルテベーカー。六百年以上前に北ヨーロッパの海を恐怖に陥れた人物だ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "少なくとも、伝説ではそう語られている。",
+      "text_markdown": "少なくとも、伝説ではそう語られている。",
+      "tts": {
+        "text": "少なくとも、伝説ではそう語られている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーはドイツの民間伝承で最も有名な人物の一人である。",
+      "text_markdown": "シュテルテベーカーはドイツの民間伝承で最も有名な人物の一人である。",
+      "tts": {
+        "text": "シュテルテベーカーはドイツの民間伝承で最も有名な人物の一人である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の物語には戦争、海賊行為、裏切り、そして伝説となった処刑が含まれている。",
+      "text_markdown": "彼の物語には戦争、海賊行為、裏切り、そして伝説となった処刑が含まれている。",
+      "tts": {
+        "text": "彼の物語には戦争、海賊行為、裏切り、そして伝説となった処刑が含まれている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は強大な商業都市が北方の交易路を支配していた時代に生きた。",
+      "text_markdown": "彼は強大な商業都市が北方の交易路を支配していた時代に生きた。",
+      "tts": {
+        "text": "彼は強大な商業都市が北方の交易路を支配していた時代に生きた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語において、事実と神話を区別することは必ずしも可能ではない。",
+      "text_markdown": "彼の物語において、事実と神話を区別することは必ずしも可能ではない。",
+      "tts": {
+        "text": "彼の物語において、事実と神話を区別することは必ずしも可能ではない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の存命中の文書はごくわずかしか残っていない。",
+      "text_markdown": "彼の存命中の文書はごくわずかしか残っていない。",
+      "tts": {
+        "text": "彼の存命中の文書はごくわずかしか残っていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我々が知ることの大半は、数十年あるいは数世紀後に書かれた年代記に由来する。",
+      "text_markdown": "我々が知ることの大半は、数十年あるいは数世紀後に書かれた年代記に由来する。",
+      "tts": {
+        "text": "我々が知ることの大半は、数十年あるいは数世紀後に書かれた年代記に由来する。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "本書は、史料が許す限り誠実に彼の物語を語る。",
+      "text_markdown": "本書は、史料が許す限り誠実に彼の物語を語る。",
+      "tts": {
+        "text": "本書は、史料が許す限り誠実に彼の物語を語る。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "北の海の世界",
+      "text_markdown": "北の海の世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クラウス・シュテルテベーカーは14世紀後半に生きた。",
+      "text_markdown": "クラウス・シュテルテベーカーは14世紀後半に生きた。",
+      "tts": {
+        "text": "クラウス・シュテルテベーカーは千三百年代の後半に生きた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これはヨーロッパ史における中世後期にあたる。",
+      "text_markdown": "これはヨーロッパ史における中世後期にあたる。",
+      "tts": {
+        "text": "これはヨーロッパ史における中世後期にあたる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "北ヨーロッパは地中海沿岸の南部とはまったく異なる世界だった。",
+      "text_markdown": "北ヨーロッパは地中海沿岸の南部とはまったく異なる世界だった。",
+      "tts": {
+        "text": "北ヨーロッパは地中海沿岸の南部とはまったく異なる世界だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルト海と北海は、北方貿易の大動脈であった。",
+      "text_markdown": "バルト海と北海は、北方貿易の大動脈であった。",
+      "tts": {
+        "text": "バルト海と北海は、北方貿易の大動脈であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船はスカンディナヴィア、ロシア、イングランド、ドイツ沿岸の間で商品を運んだ。",
+      "text_markdown": "船はスカンディナヴィア、ロシア、イングランド、ドイツ沿岸の間で商品を運んだ。",
+      "tts": {
+        "text": "船はスカンディナヴィア、ロシア、イングランド、ドイツ沿岸の間で商品を運んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海上交通路を支配した者が、莫大な富を支配した。",
+      "text_markdown": "海上交通路を支配した者が、莫大な富を支配した。",
+      "tts": {
+        "text": "海上交通路を支配した者が、莫大な富を支配した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方貿易で最も強力な勢力はハンザ同盟だった。",
+      "text_markdown": "北方貿易で最も強力な勢力はハンザ同盟だった。",
+      "tts": {
+        "text": "北方貿易で最も強力な勢力はハンザ同盟だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "同盟は北ヨーロッパ各地に散在する商業都市の連合体だった。",
+      "text_markdown": "同盟は北ヨーロッパ各地に散在する商業都市の連合体だった。",
+      "tts": {
+        "text": "同盟は北ヨーロッパ各地に散在する商業都市の連合体だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "国でも王国でもなく、貿易のために協力する都市のネットワークだった。",
+      "text_markdown": "国でも王国でもなく、貿易のために協力する都市のネットワークだった。",
+      "tts": {
+        "text": "国でも王国でもなく、貿易のために協力する都市のネットワークだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "最盛期には、同盟は約二百の都市を含んでいた。",
+      "text_markdown": "最盛期には、同盟は約二百の都市を含んでいた。",
+      "tts": {
+        "text": "最盛期には、同盟は約二百の都市を含んでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も重要なハンザ都市はリューベック、ハンブルク、ブレーメン、ロストック、ダンツィヒだった。",
+      "text_markdown": "最も重要なハンザ都市はリューベック、ハンブルク、ブレーメン、ロストック、ダンツィヒだった。",
+      "tts": {
+        "text": "最も重要なハンザ都市はリューベック、ハンブルク、ブレーメン、ロストック、ダンツィヒだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "リューベックは同盟の非公式な首都とみなされていた。",
+      "text_markdown": "リューベックは同盟の非公式な首都とみなされていた。",
+      "tts": {
+        "text": "リューベックは同盟の非公式な首都とみなされていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハンブルクはエルベ川を通じて北海へのアクセスを支配していた。",
+      "text_markdown": "ハンブルクはエルベ川を通じて北海へのアクセスを支配していた。",
+      "tts": {
+        "text": "ハンブルクはエルベ川を通じて北海へのアクセスを支配していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ブレーメンは北海沿岸のもう一つの主要な貿易港だった。",
+      "text_markdown": "ブレーメンは北海沿岸のもう一つの主要な貿易港だった。",
+      "tts": {
+        "text": "ブレーメンは北海沿岸のもう一つの主要な貿易港だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "同盟はロシアの毛皮、スカンディナヴィアの木材、プロイセンの穀物を取引した。",
+      "text_markdown": "同盟はロシアの毛皮、スカンディナヴィアの木材、プロイセンの穀物を取引した。",
+      "tts": {
+        "text": "同盟はロシアの毛皮、スカンディナヴィアの木材、プロイセンの穀物を取引した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルト海の塩漬けニシンは最も重要な交易品の一つだった。",
+      "text_markdown": "バルト海の塩漬けニシンは最も重要な交易品の一つだった。",
+      "tts": {
+        "text": "バルト海の塩漬けニシンは最も重要な交易品の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "琥珀、蜜蝋、蜂蜜が東バルト海から西方へ流れた。",
+      "text_markdown": "琥珀、蜜蝋、蜂蜜が東バルト海から西方へ流れた。",
+      "tts": {
+        "text": "琥珀、蜜蝋、蜂蜜が東バルト海から西方へ流れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "フランドルとイングランドの布地がその見返りとして東方へ運ばれた。",
+      "text_markdown": "フランドルとイングランドの布地がその見返りとして東方へ運ばれた。",
+      "tts": {
+        "text": "フランドルとイングランドの布地がその見返りとして東方へ運ばれた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンザ同盟は貿易独占を容赦なく貫いた。",
+      "text_markdown": "ハンザ同盟は貿易独占を容赦なく貫いた。",
+      "tts": {
+        "text": "ハンザ同盟は貿易独占を容赦なく貫いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "非加盟都市は最も利益の高い航路から締め出された。",
+      "text_markdown": "非加盟都市は最も利益の高い航路から締め出された。",
+      "tts": {
+        "text": "非加盟都市は最も利益の高い航路から締め出された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "同盟は地域全体をひざまずかせるほどの貿易禁止令を課すことができた。",
+      "text_markdown": "同盟は地域全体をひざまずかせるほどの貿易禁止令を課すことができた。",
+      "tts": {
+        "text": "同盟は地域全体をひざまずかせるほどの貿易禁止令を課すことができた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "商船団を守るため、独自の海軍力を維持していた。",
+      "text_markdown": "商船団を守るため、独自の海軍力を維持していた。",
+      "tts": {
+        "text": "商船団を守るため、独自の海軍力を維持していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こうした防衛にもかかわらず、海賊行為は北方の海で絶えない問題だった。",
+      "text_markdown": "こうした防衛にもかかわらず、海賊行為は北方の海で絶えない問題だった。",
+      "tts": {
+        "text": "こうした防衛にもかかわらず、海賊行為は北方の海で絶えない問題だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルト海と北海の海岸線は島々と入り江に満ちていた。",
+      "text_markdown": "バルト海と北海の海岸線は島々と入り江に満ちていた。",
+      "tts": {
+        "text": "バルト海と北海の海岸線は島々と入り江に満ちていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊は大型軍艦が追えない浅瀬に隠れることができた。",
+      "text_markdown": "海賊は大型軍艦が追えない浅瀬に隠れることができた。",
+      "tts": {
+        "text": "海賊は大型軍艦が追えない浅瀬に隠れることができた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "霧の天候と短い冬の日は、商船への待ち伏せを容易にした。",
+      "text_markdown": "霧の天候と短い冬の日は、商船への待ち伏せを容易にした。",
+      "tts": {
+        "text": "霧の天候と短い冬の日は、商船への待ち伏せを容易にした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スカンディナヴィアの政治情勢はきわめて複雑だった。",
+      "text_markdown": "スカンディナヴィアの政治情勢はきわめて複雑だった。",
+      "tts": {
+        "text": "スカンディナヴィアの政治情勢はきわめて複雑だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマーク、スウェーデン、ノルウェーは絶えず互いに戦争を繰り返していた。",
+      "text_markdown": "デンマーク、スウェーデン、ノルウェーは絶えず互いに戦争を繰り返していた。",
+      "tts": {
+        "text": "デンマーク、スウェーデン、ノルウェーは絶えず互いに戦争を繰り返していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マルグレーテ一世のもとで、デンマークが支配的な勢力だった。",
+      "text_markdown": "マルグレーテ一世のもとで、デンマークが支配的な勢力だった。",
+      "tts": {
+        "text": "マルグレーテ一世のもとで、デンマークが支配的な勢力だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女は千三百九十七年にカルマル同盟のもとでデンマーク、ノルウェー、スウェーデンを統合した。",
+      "text_markdown": "彼女は千三百九十七年にカルマル同盟のもとでデンマーク、ノルウェー、スウェーデンを統合した。",
+      "tts": {
+        "text": "彼女は千三百九十七年にカルマル同盟のもとでデンマーク、ノルウェー、スウェーデンを統合した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カルマル同盟以前、スウェーデンはデンマークの支配に抵抗していた。",
+      "text_markdown": "カルマル同盟以前、スウェーデンはデンマークの支配に抵抗していた。",
+      "tts": {
+        "text": "カルマル同盟以前、スウェーデンはデンマークの支配に抵抗していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "メクレンブルクのアルブレヒト王がスウェーデンを治めていたが、デンマークのマルグレーテに挑戦を受けた。",
+      "text_markdown": "メクレンブルクのアルブレヒト王がスウェーデンを治めていたが、デンマークのマルグレーテに挑戦を受けた。",
+      "tts": {
+        "text": "メクレンブルクのアルブレヒト王がスウェーデンを治めていたが、デンマークのマルグレーテに挑戦を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マルグレーテはアルブレヒトを破り、投獄した。",
+      "text_markdown": "マルグレーテはアルブレヒトを破り、投獄した。",
+      "tts": {
+        "text": "マルグレーテはアルブレヒトを破り、投獄した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドイツの都市ロストックなどにいたアルブレヒトの支持者たちは反撃した。",
+      "text_markdown": "ドイツの都市ロストックなどにいたアルブレヒトの支持者たちは反撃した。",
+      "tts": {
+        "text": "ドイツの都市ロストックなどにいたアルブレヒトの支持者たちは反撃した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "デンマークとアルブレヒトを支持する都市との間のこの戦争が、海賊にとっての好機を生んだ。",
+      "text_markdown": "デンマークとアルブレヒトを支持する都市との間のこの戦争が、海賊にとっての好機を生んだ。",
+      "tts": {
+        "text": "デンマークとアルブレヒトを支持する都市との間のこの戦争が、海賊にとっての好機を生んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "都市はデンマークの海運を妨害し、包囲されたストックホルムに物資を届けるために私掠船を雇った。",
+      "text_markdown": "都市はデンマークの海運を妨害し、包囲されたストックホルムに物資を届けるために私掠船を雇った。",
+      "tts": {
+        "text": "都市はデンマークの海運を妨害し、包囲されたストックホルムに物資を届けるために私掠船を雇った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの私掠船は食糧兄弟団と呼ばれた。",
+      "text_markdown": "これらの私掠船は食糧兄弟団と呼ばれた。",
+      "tts": {
+        "text": "これらの私掠船は食糧兄弟団と呼ばれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その名はラテン語の食糧を意味する言葉に由来し、彼らの使命が補給品の輸送だったからだ。",
+      "text_markdown": "その名はラテン語の食糧を意味する言葉に由来し、彼らの使命が補給品の輸送だったからだ。",
+      "tts": {
+        "text": "その名はラテン語の食糧を意味する言葉に由来し、彼らの使命が補給品の輸送だったからだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世のドイツの都市国家は、ヨーロッパの他のどことも異なっていた。",
+      "text_markdown": "中世のドイツの都市国家は、ヨーロッパの他のどことも異なっていた。",
+      "tts": {
+        "text": "中世のドイツの都市国家は、ヨーロッパの他のどことも異なっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裕福な商人の選出された評議会によって独立して統治されていた。",
+      "text_markdown": "裕福な商人の選出された評議会によって独立して統治されていた。",
+      "tts": {
+        "text": "裕福な商人の選出された評議会によって独立して統治されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "独自の法律、独自の民兵、独自の艦隊を持っていた。",
+      "text_markdown": "独自の法律、独自の民兵、独自の艦隊を持っていた。",
+      "tts": {
+        "text": "独自の法律、独自の民兵、独自の艦隊を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "いかなる王や君主にも忠誠を負わなかった。",
+      "text_markdown": "いかなる王や君主にも忠誠を負わなかった。",
+      "tts": {
+        "text": "いかなる王や君主にも忠誠を負わなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーが最期を迎えることになるハンブルクは、こうした誇り高き都市の一つだった。",
+      "text_markdown": "シュテルテベーカーが最期を迎えることになるハンブルクは、こうした誇り高き都市の一つだった。",
+      "tts": {
+        "text": "シュテルテベーカーが最期を迎えることになるハンブルクは、こうした誇り高き都市の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エルベ川沿いに位置し、北海から約百キロメートルの距離にあった。",
+      "text_markdown": "エルベ川沿いに位置し、北海から約百キロメートルの距離にあった。",
+      "tts": {
+        "text": "エルベ川沿いに位置し、北海から約百キロメートルの距離にあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハンブルクの商人たちは貿易で富を築き、その財産を猛烈に守った。",
+      "text_markdown": "ハンブルクの商人たちは貿易で富を築き、その財産を猛烈に守った。",
+      "tts": {
+        "text": "ハンブルクの商人たちは貿易で富を築き、その財産を猛烈に守った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "自らの海運を脅かす者に対しては一切容赦しなかった。",
+      "text_markdown": "自らの海運を脅かす者に対しては一切容赦しなかった。",
+      "tts": {
+        "text": "自らの海運を脅かす者に対しては一切容赦しなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがクラウス・シュテルテベーカーを生み出した世界だった。",
+      "text_markdown": "これがクラウス・シュテルテベーカーを生み出した世界だった。",
+      "tts": {
+        "text": "これがクラウス・シュテルテベーカーを生み出した世界だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商人の王子、交戦する王国、危険な海の世界だった。",
+      "text_markdown": "商人の王子、交戦する王国、危険な海の世界だった。",
+      "tts": {
+        "text": "商人の王子、交戦する王国、危険な海の世界だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "北の海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのような世界では、高速船を持つ大胆な男は英雄にも悪党にもなり得た。",
+      "text_markdown": "そのような世界では、高速船を持つ大胆な男は英雄にも悪党にもなり得た。",
+      "tts": {
+        "text": "そのような世界では、高速船を持つ大胆な男は英雄にも悪党にもなり得た。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クラウス・シュテルテベーカーは1360年頃に生まれた。",
+      "text_markdown": "クラウス・シュテルテベーカーは1360年頃に生まれた。",
+      "tts": {
+        "text": "クラウス・シュテルテベーカーは千三百六十年頃に生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "正確な出生地は不明である。",
+      "text_markdown": "正確な出生地は不明である。",
+      "tts": {
+        "text": "正確な出生地は不明である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部の歴史家は、バルト海沿岸のハンザ港町ヴィスマール出身だと考えている。",
+      "text_markdown": "一部の歴史家は、バルト海沿岸のハンザ港町ヴィスマール出身だと考えている。",
+      "tts": {
+        "text": "一部の歴史家は、バルト海沿岸のハンザ港町ヴィスマール出身だと考えている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "本名はニコラウス・シュトルツェンベッヒャーだったかもしれない。",
+      "text_markdown": "本名はニコラウス・シュトルツェンベッヒャーだったかもしれない。",
+      "tts": {
+        "text": "本名はニコラウス・シュトルツェンベッヒャーだったかもしれない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "シュテルテベーカーという名前は低地ドイツ語のあだ名である。",
+      "text_markdown": "シュテルテベーカーという名前は低地ドイツ語のあだ名である。",
+      "tts": {
+        "text": "シュテルテベーカーという名前は低地ドイツ語のあだ名である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "杯を干せ、あるいはジョッキを飲み干せといった意味がある。",
+      "text_markdown": "杯を干せ、あるいはジョッキを飲み干せといった意味がある。",
+      "tts": {
+        "text": "杯を干せ、あるいはジョッキを飲み干せといった意味がある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伝説によれば、シュテルテベーカーは4リットルのビールジョッキを一気飲みできたという。",
+      "text_markdown": "伝説によれば、シュテルテベーカーは4リットルのビールジョッキを一気飲みできたという。",
+      "tts": {
+        "text": "伝説によれば、シュテルテベーカーは四リットルのビールジョッキを一気飲みできたという。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "真実か誇張かはともかく、そのあだ名は定着した。",
+      "text_markdown": "真実か誇張かはともかく、そのあだ名は定着した。",
+      "tts": {
+        "text": "真実か誇張かはともかく、そのあだ名は定着した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "驚くべき体力と食欲を持つ男であったことを示唆している。",
+      "text_markdown": "驚くべき体力と食欲を持つ男であったことを示唆している。",
+      "tts": {
+        "text": "驚くべき体力と食欲を持つ男であったことを示唆している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーの幼少期や家族についてはほぼ何も知られていない。",
+      "text_markdown": "シュテルテベーカーの幼少期や家族についてはほぼ何も知られていない。",
+      "tts": {
+        "text": "シュテルテベーカーの幼少期や家族についてはほぼ何も知られていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世の一般庶民に関する記録はきわめて乏しい。",
+      "text_markdown": "中世の一般庶民に関する記録はきわめて乏しい。",
+      "tts": {
+        "text": "中世の一般庶民に関する記録はきわめて乏しい。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船乗りか漁師の家族の出身だったかもしれない。",
+      "text_markdown": "船乗りか漁師の家族の出身だったかもしれない。",
+      "tts": {
+        "text": "船乗りか漁師の家族の出身だったかもしれない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "より裕福な出自だった可能性もある。",
+      "text_markdown": "より裕福な出自だった可能性もある。",
+      "tts": {
+        "text": "より裕福な出自だった可能性もある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わかっているのは、彼が食糧兄弟団に加わったということだ。",
+      "text_markdown": "わかっているのは、彼が食糧兄弟団に加わったということだ。",
+      "tts": {
+        "text": "わかっているのは、彼が食糧兄弟団に加わったということだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "食糧兄弟団はもともと正当な軍事任務を持つ私掠船だった。",
+      "text_markdown": "食糧兄弟団はもともと正当な軍事任務を持つ私掠船だった。",
+      "tts": {
+        "text": "食糧兄弟団はもともと正当な軍事任務を持つ私掠船だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ストックホルムに対するデンマークの封鎖を破るために雇われた。",
+      "text_markdown": "ストックホルムに対するデンマークの封鎖を破るために雇われた。",
+      "tts": {
+        "text": "ストックホルムに対するデンマークの封鎖を破るために雇われた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スウェーデンの首都ストックホルムはデンマーク軍に包囲されていた。",
+      "text_markdown": "スウェーデンの首都ストックホルムはデンマーク軍に包囲されていた。",
+      "tts": {
+        "text": "スウェーデンの首都ストックホルムはデンマーク軍に包囲されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマーク女王マルグレーテはスウェーデンを支配下に置こうとしていた。",
+      "text_markdown": "デンマーク女王マルグレーテはスウェーデンを支配下に置こうとしていた。",
+      "tts": {
+        "text": "デンマーク女王マルグレーテはスウェーデンを支配下に置こうとしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "都市は飢えており、防衛者は必死に物資を必要としていた。",
+      "text_markdown": "都市は飢えており、防衛者は必死に物資を必要としていた。",
+      "tts": {
+        "text": "都市は飢えており、防衛者は必死に物資を必要としていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メクレンブルクのアルブレヒト王を支持する都市が救援遠征を組織した。",
+      "text_markdown": "メクレンブルクのアルブレヒト王を支持する都市が救援遠征を組織した。",
+      "tts": {
+        "text": "メクレンブルクのアルブレヒト王を支持する都市が救援遠征を組織した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマーク艦隊を迂回してストックホルムに食糧を届けるよう私掠船に委託した。",
+      "text_markdown": "デンマーク艦隊を迂回してストックホルムに食糧を届けるよう私掠船に委託した。",
+      "tts": {
+        "text": "デンマーク艦隊を迂回してストックホルムに食糧を届けるよう私掠船に委託した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの私掠船は私掠免許状を受け取り、デンマーク船への襲撃が合法化された。",
+      "text_markdown": "これらの私掠船は私掠免許状を受け取り、デンマーク船への襲撃が合法化された。",
+      "tts": {
+        "text": "これらの私掠船は私掠免許状を受け取り、デンマーク船への襲撃が合法化された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "こうして食糧兄弟団が誕生した。",
+      "text_markdown": "こうして食糧兄弟団が誕生した。",
+      "tts": {
+        "text": "こうして食糧兄弟団が誕生した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "食糧兄弟団はその任務に効果的だった。",
+      "text_markdown": "食糧兄弟団はその任務に効果的だった。",
+      "tts": {
+        "text": "食糧兄弟団はその任務に効果的だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デンマークの封鎖を突破し、飢えた都市に食糧を届けた。",
+      "text_markdown": "デンマークの封鎖を突破し、飢えた都市に食糧を届けた。",
+      "tts": {
+        "text": "デンマークの封鎖を突破し、飢えた都市に食糧を届けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "デンマークおよびノルウェーの商船も大きな成功を収めて襲撃した。",
+      "text_markdown": "デンマークおよびノルウェーの商船も大きな成功を収めて襲撃した。",
+      "tts": {
+        "text": "デンマークおよびノルウェーの商船も大きな成功を収めて襲撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "船員たちは奪った略奪品で裕福になった。",
+      "text_markdown": "船員たちは奪った略奪品で裕福になった。",
+      "tts": {
+        "text": "船員たちは奪った略奪品で裕福になった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この任務はあらゆる種類の男たちを引きつけた。",
+      "text_markdown": "この任務はあらゆる種類の男たちを引きつけた。",
+      "tts": {
+        "text": "この任務はあらゆる種類の男たちを引きつけた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "経験豊富な船乗りや兵士もいた。",
+      "text_markdown": "経験豊富な船乗りや兵士もいた。",
+      "tts": {
+        "text": "経験豊富な船乗りや兵士もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "冒険者、無法者、借金や司法から逃れてきた者もいた。",
+      "text_markdown": "冒険者、無法者、借金や司法から逃れてきた者もいた。",
+      "tts": {
+        "text": "冒険者、無法者、借金や司法から逃れてきた者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "食糧兄弟団は、海で富と自由を求めるすべての者にとっての磁石となった。",
+      "text_markdown": "食糧兄弟団は、海で富と自由を求めるすべての者にとっての磁石となった。",
+      "tts": {
+        "text": "食糧兄弟団は、海で富と自由を求めるすべての者にとっての磁石となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーはグループ内で急速に指導的地位に就いた。",
+      "text_markdown": "シュテルテベーカーはグループ内で急速に指導的地位に就いた。",
+      "tts": {
+        "text": "シュテルテベーカーはグループ内で急速に指導的地位に就いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の台頭の正確な経緯は歴史の中に失われている。",
+      "text_markdown": "彼の台頭の正確な経緯は歴史の中に失われている。",
+      "tts": {
+        "text": "彼の台頭の正確な経緯は歴史の中に失われている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "熟練した船乗り、猛烈な戦士、そして生まれながらの指導者だったに違いない。",
+      "text_markdown": "熟練した船乗り、猛烈な戦士、そして生まれながらの指導者だったに違いない。",
+      "tts": {
+        "text": "熟練した船乗り、猛烈な戦士、そして生まれながらの指導者だったに違いない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "戦争が終わる頃には、彼は最も著名な食糧兄弟の一人だった。",
+      "text_markdown": "戦争が終わる頃には、彼は最も著名な食糧兄弟の一人だった。",
+      "tts": {
+        "text": "戦争が終わる頃には、彼は最も著名な食糧兄弟の一人だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦争は1395年にアルブレヒト王が捕虜から解放されたことで事実上終結した。",
+      "text_markdown": "戦争は1395年にアルブレヒト王が捕虜から解放されたことで事実上終結した。",
+      "tts": {
+        "text": "戦争は千三百九十五年にアルブレヒト王が捕虜から解放されたことで事実上終結した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "交戦当事者間で和平合意が成立した。",
+      "text_markdown": "交戦当事者間で和平合意が成立した。",
+      "tts": {
+        "text": "交戦当事者間で和平合意が成立した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "食糧兄弟団を認可していた私掠免許状が撤回された。",
+      "text_markdown": "食糧兄弟団を認可していた私掠免許状が撤回された。",
+      "tts": {
+        "text": "食糧兄弟団を認可していた私掠免許状が撤回された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし食糧兄弟団にはやめるつもりはなかった。",
+      "text_markdown": "しかし食糧兄弟団にはやめるつもりはなかった。",
+      "tts": {
+        "text": "しかし食糧兄弟団にはやめるつもりはなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは大海原での富と自由の味を知ってしまっていた。",
+      "text_markdown": "彼らは大海原での富と自由の味を知ってしまっていた。",
+      "tts": {
+        "text": "彼らは大海原での富と自由の味を知ってしまっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "剣で生きてきた男たちにとって、普通の生活に戻ることに魅力はなかった。",
+      "text_markdown": "剣で生きてきた男たちにとって、普通の生活に戻ることに魅力はなかった。",
+      "tts": {
+        "text": "剣で生きてきた男たちにとって、普通の生活に戻ることに魅力はなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "略奪を続けたが、もはや私掠船ではなく海賊だった。",
+      "text_markdown": "略奪を続けたが、もはや私掠船ではなく海賊だった。",
+      "tts": {
+        "text": "略奪を続けたが、もはや私掠船ではなく海賊だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伝説によれば、彼らのモットーは大胆で反抗的なものだった。",
+      "text_markdown": "伝説によれば、彼らのモットーは大胆で反抗的なものだった。",
+      "tts": {
+        "text": "伝説によれば、彼らのモットーは大胆で反抗的なものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは自らを神の友にして全世界の敵と宣言した。",
+      "text_markdown": "彼らは自らを神の友にして全世界の敵と宣言した。",
+      "tts": {
+        "text": "彼らは自らを神の友にして全世界の敵と宣言した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この言葉は彼らの無法者としてのアイデンティティを完璧に表していた。",
+      "text_markdown": "この言葉は彼らの無法者としてのアイデンティティを完璧に表していた。",
+      "tts": {
+        "text": "この言葉は彼らの無法者としてのアイデンティティを完璧に表していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "いかなる王にも、いかなる都市にも、いかなる法にも従わなかった。",
+      "text_markdown": "いかなる王にも、いかなる都市にも、いかなる法にも従わなかった。",
+      "tts": {
+        "text": "いかなる王にも、いかなる都市にも、いかなる法にも従わなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世の船乗りたちは、嵐や敵船を超える危険に直面していた。",
+      "text_markdown": "中世の船乗りたちは、嵐や敵船を超える危険に直面していた。",
+      "tts": {
+        "text": "中世の船乗りたちは、嵐や敵船を超える危険に直面していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "病気と栄養不良は長い航海の常なる伴侶だった。",
+      "text_markdown": "病気と栄養不良は長い航海の常なる伴侶だった。",
+      "tts": {
+        "text": "病気と栄養不良は長い航海の常なる伴侶だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "食糧兄弟団に加わった者は、過酷でしばしば短い人生を選んだのだった。",
+      "text_markdown": "食糧兄弟団に加わった者は、過酷でしばしば短い人生を選んだのだった。",
+      "tts": {
+        "text": "食糧兄弟団に加わった者は、過酷でしばしば短い人生を選んだのだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力への台頭",
+      "text_markdown": "権力への台頭"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦争終結後、食糧兄弟団には活動拠点が必要だった。",
+      "text_markdown": "戦争終結後、食糧兄弟団には活動拠点が必要だった。",
+      "tts": {
+        "text": "戦争終結後、食糧兄弟団には活動拠点が必要だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはバルト海のゴットランド島を占領した。",
+      "text_markdown": "彼らはバルト海のゴットランド島を占領した。",
+      "tts": {
+        "text": "彼らはバルト海のゴットランド島を占領した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ゴットランドはスウェーデンとバルト海沿岸の間に位置する大きな戦略的島だった。",
+      "text_markdown": "ゴットランドはスウェーデンとバルト海沿岸の間に位置する大きな戦略的島だった。",
+      "tts": {
+        "text": "ゴットランドはスウェーデンとバルト海沿岸の間に位置する大きな戦略的島だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ゴットランドのヴィスビーはかつて裕福なハンザ交易都市だった。",
+      "text_markdown": "ゴットランドのヴィスビーはかつて裕福なハンザ交易都市だった。",
+      "tts": {
+        "text": "ゴットランドのヴィスビーはかつて裕福なハンザ交易都市だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊が到着した頃には、かつての栄光から衰退していた。",
+      "text_markdown": "海賊が到着した頃には、かつての栄光から衰退していた。",
+      "tts": {
+        "text": "海賊が到着した頃には、かつての栄光から衰退していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "食糧兄弟団は島を彼らの拠点に変えた。",
+      "text_markdown": "食糧兄弟団は島を彼らの拠点に変えた。",
+      "tts": {
+        "text": "食糧兄弟団は島を彼らの拠点に変えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ゴットランドから、バルト海のあらゆる方向の船を襲撃できた。",
+      "text_markdown": "ゴットランドから、バルト海のあらゆる方向の船を襲撃できた。",
+      "tts": {
+        "text": "ゴットランドから、バルト海のあらゆる方向の船を襲撃できた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーとその乗組員はリューベック、ハンブルク、その他のハンザ都市の商船を襲った。",
+      "text_markdown": "シュテルテベーカーとその乗組員はリューベック、ハンブルク、その他のハンザ都市の商船を襲った。",
+      "tts": {
+        "text": "シュテルテベーカーとその乗組員はリューベック、ハンブルク、その他のハンザ都市の商船を襲った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "穀物、布地、塩、贅沢品の積荷を奪った。",
+      "text_markdown": "穀物、布地、塩、贅沢品の積荷を奪った。",
+      "tts": {
+        "text": "穀物、布地、塩、贅沢品の積荷を奪った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "同盟が何世代にもわたって維持してきた交易路を妨害した。",
+      "text_markdown": "同盟が何世代にもわたって維持してきた交易路を妨害した。",
+      "tts": {
+        "text": "同盟が何世代にもわたって維持してきた交易路を妨害した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "経済的損害は甚大だった。",
+      "text_markdown": "経済的損害は甚大だった。",
+      "tts": {
+        "text": "経済的損害は甚大だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンザ同盟は激怒したが、効果的な対応に苦しんだ。",
+      "text_markdown": "ハンザ同盟は激怒したが、効果的な対応に苦しんだ。",
+      "tts": {
+        "text": "ハンザ同盟は激怒したが、効果的な対応に苦しんだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "同盟は貿易同盟であり、統一された軍事力ではなかった。",
+      "text_markdown": "同盟は貿易同盟であり、統一された軍事力ではなかった。",
+      "tts": {
+        "text": "同盟は貿易同盟であり、統一された軍事力ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "共同海軍遠征の組織には多くの独立した都市の合意が必要だった。",
+      "text_markdown": "共同海軍遠征の組織には多くの独立した都市の合意が必要だった。",
+      "tts": {
+        "text": "共同海軍遠征の組織には多くの独立した都市の合意が必要だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それには時間がかかり、その間に海賊は襲撃を続けた。",
+      "text_markdown": "それには時間がかかり、その間に海賊は襲撃を続けた。",
+      "tts": {
+        "text": "それには時間がかかり、その間に海賊は襲撃を続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ゴットランドの海賊は商船だけを攻撃したわけではなかった。",
+      "text_markdown": "ゴットランドの海賊は商船だけを攻撃したわけではなかった。",
+      "tts": {
+        "text": "ゴットランドの海賊は商船だけを攻撃したわけではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "沿岸の町や漁村も襲撃した。",
+      "text_markdown": "沿岸の町や漁村も襲撃した。",
+      "tts": {
+        "text": "沿岸の町や漁村も襲撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "身代金目的で人を誘拐し、抵抗する集落を焼き払った。",
+      "text_markdown": "身代金目的で人を誘拐し、抵抗する集落を焼き払った。",
+      "tts": {
+        "text": "身代金目的で人を誘拐し、抵抗する集落を焼き払った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "食糧兄弟団への恐怖がバルト海地域全体に広がった。",
+      "text_markdown": "食糧兄弟団への恐怖がバルト海地域全体に広がった。",
+      "tts": {
+        "text": "食糧兄弟団への恐怖がバルト海地域全体に広がった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーは食糧兄弟団の中で最も有名で恐れられた存在となった。",
+      "text_markdown": "シュテルテベーカーは食糧兄弟団の中で最も有名で恐れられた存在となった。",
+      "tts": {
+        "text": "シュテルテベーカーは食糧兄弟団の中で最も有名で恐れられた存在となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ノヴゴロドからベルゲンまでの港で、彼の名は恐怖とともに語られた。",
+      "text_markdown": "ノヴゴロドからベルゲンまでの港で、彼の名は恐怖とともに語られた。",
+      "tts": {
+        "text": "ノヴゴロドからベルゲンまでの港で、彼の名は恐怖とともに語られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が総指揮者だったのか、単に最も悪名高い船長だったのかは不明である。",
+      "text_markdown": "彼が総指揮者だったのか、単に最も悪名高い船長だったのかは不明である。",
+      "tts": {
+        "text": "彼が総指揮者だったのか、単に最も悪名高い船長だったのかは不明である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "中世の年代記には他の指導者たちも記されている。",
+      "text_markdown": "中世の年代記には他の指導者たちも記されている。",
+      "tts": {
+        "text": "中世の年代記には他の指導者たちも記されている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "重要な同盟者の一人はゲーデケ・ミヒェルスで、もう一人の著名な食糧兄弟だった。",
+      "text_markdown": "重要な同盟者の一人はゲーデケ・ミヒェルスで、もう一人の著名な食糧兄弟だった。",
+      "tts": {
+        "text": "重要な同盟者の一人はゲーデケ・ミヒェルスで、もう一人の著名な食糧兄弟だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ミヒェルスは独自に活動したが、大規模な襲撃ではシュテルテベーカーと協力した。",
+      "text_markdown": "ミヒェルスは独自に活動したが、大規模な襲撃ではシュテルテベーカーと協力した。",
+      "tts": {
+        "text": "ミヒェルスは独自に活動したが、大規模な襲撃ではシュテルテベーカーと協力した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二人は合わせてかなりの規模の海賊船団を指揮した。",
+      "text_markdown": "二人は合わせてかなりの規模の海賊船団を指揮した。",
+      "tts": {
+        "text": "二人は合わせてかなりの規模の海賊船団を指揮した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドイツ騎士団はついにゴットランドの海賊に対して行動を起こすことを決めた。",
+      "text_markdown": "ドイツ騎士団はついにゴットランドの海賊に対して行動を起こすことを決めた。",
+      "tts": {
+        "text": "ドイツ騎士団はついにゴットランドの海賊に対して行動を起こすことを決めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ドイツ騎士団はプロイセンに拠点を置く強力な軍事修道会だった。",
+      "text_markdown": "ドイツ騎士団はプロイセンに拠点を置く強力な軍事修道会だった。",
+      "tts": {
+        "text": "ドイツ騎士団はプロイセンに拠点を置く強力な軍事修道会だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "東バルト海沿岸に広大な領土を支配していた。",
+      "text_markdown": "東バルト海沿岸に広大な領土を支配していた。",
+      "tts": {
+        "text": "東バルト海沿岸に広大な領土を支配していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊の襲撃は彼らの利益をも脅かしていた。",
+      "text_markdown": "海賊の襲撃は彼らの利益をも脅かしていた。",
+      "tts": {
+        "text": "海賊の襲撃は彼らの利益をも脅かしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1398年、ドイツ騎士団はゴットランドへの侵攻を開始した。",
+      "text_markdown": "1398年、ドイツ騎士団はゴットランドへの侵攻を開始した。",
+      "tts": {
+        "text": "千三百九十八年、ドイツ騎士団はゴットランドへの侵攻を開始した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "圧倒的な兵力で攻撃し、島を占領した。",
+      "text_markdown": "圧倒的な兵力で攻撃し、島を占領した。",
+      "tts": {
+        "text": "圧倒的な兵力で攻撃し、島を占領した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの海賊が殺されるか捕らえられた。",
+      "text_markdown": "多くの海賊が殺されるか捕らえられた。",
+      "tts": {
+        "text": "多くの海賊が殺されるか捕らえられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしシュテルテベーカーはその中にいなかった。",
+      "text_markdown": "しかしシュテルテベーカーはその中にいなかった。",
+      "tts": {
+        "text": "しかしシュテルテベーカーはその中にいなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーと多くの仲間は島が陥落する前に脱出した。",
+      "text_markdown": "シュテルテベーカーと多くの仲間は島が陥落する前に脱出した。",
+      "tts": {
+        "text": "シュテルテベーカーと多くの仲間は島が陥落する前に脱出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西へ航海し、バルト海を後にした。",
+      "text_markdown": "西へ航海し、バルト海を後にした。",
+      "tts": {
+        "text": "西へ航海し、バルト海を後にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "活動拠点を北海に移した。",
+      "text_markdown": "活動拠点を北海に移した。",
+      "tts": {
+        "text": "活動拠点を北海に移した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らの海賊としての活動の新たな段階が始まっていた。",
+      "text_markdown": "彼らの海賊としての活動の新たな段階が始まっていた。",
+      "tts": {
+        "text": "彼らの海賊としての活動の新たな段階が始まっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーは東フリースラント沿岸に新たな拠点を築いた。",
+      "text_markdown": "シュテルテベーカーは東フリースラント沿岸に新たな拠点を築いた。",
+      "tts": {
+        "text": "シュテルテベーカーは東フリースラント沿岸に新たな拠点を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "東フリースラントは湿地、島々、小さな独立領から成る地域だった。",
+      "text_markdown": "東フリースラントは湿地、島々、小さな独立領から成る地域だった。",
+      "tts": {
+        "text": "東フリースラントは湿地、島々、小さな独立領から成る地域だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フリースラント沿岸を支配する単一の権力は存在しなかった。",
+      "text_markdown": "フリースラント沿岸を支配する単一の権力は存在しなかった。",
+      "tts": {
+        "text": "フリースラント沿岸を支配する単一の権力は存在しなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この政治的断片化は海賊にとって理想的な隠れ場所となった。",
+      "text_markdown": "この政治的断片化は海賊にとって理想的な隠れ場所となった。",
+      "tts": {
+        "text": "この政治的断片化は海賊にとって理想的な隠れ場所となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エムデンとマリエンハーフェがシュテルテベーカーの船団の重要な拠点となった。",
+      "text_markdown": "エムデンとマリエンハーフェがシュテルテベーカーの船団の重要な拠点となった。",
+      "tts": {
+        "text": "エムデンとマリエンハーフェがシュテルテベーカーの船団の重要な拠点となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地元のフリースラントの首長たちは海賊を容認するか、積極的に支援した。",
+      "text_markdown": "地元のフリースラントの首長たちは海賊を容認するか、積極的に支援した。",
+      "tts": {
+        "text": "地元のフリースラントの首長たちは海賊を容認するか、積極的に支援した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊は地元の市場で金を使い、フリースラント経済に貢献した。",
+      "text_markdown": "海賊は地元の市場で金を使い、フリースラント経済に貢献した。",
+      "tts": {
+        "text": "海賊は地元の市場で金を使い、フリースラント経済に貢献した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一部の首長は安全な港の見返りとして略奪品の分け前を受け取った。",
+      "text_markdown": "一部の首長は安全な港の見返りとして略奪品の分け前を受け取った。",
+      "tts": {
+        "text": "一部の首長は安全な港の見返りとして略奪品の分け前を受け取った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東フリースラントから、シュテルテベーカーの船は北海の航路を襲撃できた。",
+      "text_markdown": "東フリースラントから、シュテルテベーカーの船は北海の航路を襲撃できた。",
+      "tts": {
+        "text": "東フリースラントから、シュテルテベーカーの船は北海の航路を襲撃できた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランド、フランドル、ハンザ港湾間を航行する船を攻撃した。",
+      "text_markdown": "イングランド、フランドル、ハンザ港湾間を航行する船を攻撃した。",
+      "tts": {
+        "text": "イングランド、フランドル、ハンザ港湾間を航行する船を攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バルト海から北海への移行は、活動範囲を劇的に拡大した。",
+      "text_markdown": "バルト海から北海への移行は、活動範囲を劇的に拡大した。",
+      "tts": {
+        "text": "バルト海から北海への移行は、活動範囲を劇的に拡大した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "北方の海でどの商船も安全ではなかった。",
+      "text_markdown": "北方の海でどの商船も安全ではなかった。",
+      "tts": {
+        "text": "北方の海でどの商船も安全ではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンザ同盟は今や二つの海で同時に海賊の攻撃に直面していた。",
+      "text_markdown": "ハンザ同盟は今や二つの海で同時に海賊の攻撃に直面していた。",
+      "tts": {
+        "text": "ハンザ同盟は今や二つの海で同時に海賊の攻撃に直面していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルト海に残った食糧兄弟はそこでの襲撃を続けた。",
+      "text_markdown": "バルト海に残った食糧兄弟はそこでの襲撃を続けた。",
+      "tts": {
+        "text": "バルト海に残った食糧兄弟はそこでの襲撃を続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "シュテルテベーカーの派閥は北海を恐怖に陥れた。",
+      "text_markdown": "シュテルテベーカーの派閥は北海を恐怖に陥れた。",
+      "tts": {
+        "text": "シュテルテベーカーの派閥は北海を恐怖に陥れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "同盟の貿易は両方向から締め付けられていた。",
+      "text_markdown": "同盟の貿易は両方向から締め付けられていた。",
+      "tts": {
+        "text": "同盟の貿易は両方向から締め付けられていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "食糧兄弟団は単純だが効果的な襲撃戦略を用いた。",
+      "text_markdown": "食糧兄弟団は単純だが効果的な襲撃戦略を用いた。",
+      "tts": {
+        "text": "食糧兄弟団は単純だが効果的な襲撃戦略を用いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "既知の航路近くの隠れた湾で待ち伏せした。",
+      "text_markdown": "既知の航路近くの隠れた湾で待ち伏せした。",
+      "tts": {
+        "text": "既知の航路近くの隠れた湾で待ち伏せした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商船が通過すると、突出して数の力で圧倒した。",
+      "text_markdown": "商船が通過すると、突出して数の力で圧倒した。",
+      "tts": {
+        "text": "商船が通過すると、突出して数の力で圧倒した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕らえた乗組員には海賊に加わる選択肢が与えられることもあった。",
+      "text_markdown": "捕らえた乗組員には海賊に加わる選択肢が与えられることもあった。",
+      "tts": {
+        "text": "捕らえた乗組員には海賊に加わる選択肢が与えられることもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの一般の船乗りはハンザの雇い主への忠誠心が薄かった。",
+      "text_markdown": "多くの一般の船乗りはハンザの雇い主への忠誠心が薄かった。",
+      "tts": {
+        "text": "多くの一般の船乗りはハンザの雇い主への忠誠心が薄かった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "絶頂期",
+      "text_markdown": "絶頂期"
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "権力の絶頂期に、シュテルテベーカーは複数の船から成る船団を指揮していた。",
+      "text_markdown": "権力の絶頂期に、シュテルテベーカーは複数の船から成る船団を指揮していた。",
+      "tts": {
+        "text": "権力の絶頂期に、シュテルテベーカーは複数の船から成る船団を指揮していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "正確な数は不明だが、年代記はかなりの規模だったと示唆している。",
+      "text_markdown": "正確な数は不明だが、年代記はかなりの規模だったと示唆している。",
+      "tts": {
+        "text": "正確な数は不明だが、年代記はかなりの規模だったと示唆している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員は数百人に及んだかもしれない。",
+      "text_markdown": "乗組員は数百人に及んだかもしれない。",
+      "tts": {
+        "text": "乗組員は数百人に及んだかもしれない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルト海と北海の海賊が使用した船はコグ船とハルク船と呼ばれた。",
+      "text_markdown": "バルト海と北海の海賊が使用した船はコグ船とハルク船と呼ばれた。",
+      "tts": {
+        "text": "バルト海と北海の海賊が使用した船はコグ船とハルク船と呼ばれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コグ船は北方の海域向けに造られた頑丈な平底の商船だった。",
+      "text_markdown": "コグ船は北方の海域向けに造られた頑丈な平底の商船だった。",
+      "tts": {
+        "text": "コグ船は北方の海域向けに造られた頑丈な平底の商船だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "コグ船は遅かったが、大量の荷物と多数の乗組員を運べた。",
+      "text_markdown": "コグ船は遅かったが、大量の荷物と多数の乗組員を運べた。",
+      "tts": {
+        "text": "コグ船は遅かったが、大量の荷物と多数の乗組員を運べた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊はしばしば商用コグ船を拿捕し、自分たちの用途に改造した。",
+      "text_markdown": "海賊はしばしば商用コグ船を拿捕し、自分たちの用途に改造した。",
+      "tts": {
+        "text": "海賊はしばしば商用コグ船を拿捕し、自分たちの用途に改造した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北方の海での航海は危険で困難だった。",
+      "text_markdown": "北方の海での航海は危険で困難だった。",
+      "tts": {
+        "text": "北方の海での航海は危険で困難だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中世の船乗りは海岸の目印、太陽の位置、経験に頼って航海した。",
+      "text_markdown": "中世の船乗りは海岸の目印、太陽の位置、経験に頼って航海した。",
+      "tts": {
+        "text": "中世の船乗りは海岸の目印、太陽の位置、経験に頼って航海した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "羅針盤はあったが、まだ広く信頼されてはいなかった。",
+      "text_markdown": "羅針盤はあったが、まだ広く信頼されてはいなかった。",
+      "tts": {
+        "text": "羅針盤はあったが、まだ広く信頼されてはいなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海図は後世と比べて粗末なものだった。",
+      "text_markdown": "海図は後世と比べて粗末なものだった。",
+      "tts": {
+        "text": "海図は後世と比べて粗末なものだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北海の嵐はその激しさで名高かった。",
+      "text_markdown": "北海の嵐はその激しさで名高かった。",
+      "tts": {
+        "text": "北海の嵐はその激しさで名高かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北海南部の浅い海域は急で危険な波を生み出した。",
+      "text_markdown": "北海南部の浅い海域は急で危険な波を生み出した。",
+      "tts": {
+        "text": "北海南部の浅い海域は急で危険な波を生み出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船は予告なく砂州や岩場の海岸に打ち上げられることがあった。",
+      "text_markdown": "船は予告なく砂州や岩場の海岸に打ち上げられることがあった。",
+      "tts": {
+        "text": "船は予告なく砂州や岩場の海岸に打ち上げられることがあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "すべての航海は死との賭けだった。",
+      "text_markdown": "すべての航海は死との賭けだった。",
+      "tts": {
+        "text": "すべての航海は死との賭けだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーの海賊は穀物、布地、塩、ビールを運ぶ船を襲った。",
+      "text_markdown": "シュテルテベーカーの海賊は穀物、布地、塩、ビールを運ぶ船を襲った。",
+      "tts": {
+        "text": "シュテルテベーカーの海賊は穀物、布地、塩、ビールを運ぶ船を襲った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北ヨーロッパ全域の主食であるニシンの積荷も奪った。",
+      "text_markdown": "北ヨーロッパ全域の主食であるニシンの積荷も奪った。",
+      "tts": {
+        "text": "北ヨーロッパ全域の主食であるニシンの積荷も奪った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ワイン、香辛料、上質の織物などの贅沢品は特に珍重された。",
+      "text_markdown": "ワイン、香辛料、上質の織物などの贅沢品は特に珍重された。",
+      "tts": {
+        "text": "ワイン、香辛料、上質の織物などの贅沢品は特に珍重された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "売れるものなら何でも奪う価値があった。",
+      "text_markdown": "売れるものなら何でも奪う価値があった。",
+      "tts": {
+        "text": "売れるものなら何でも奪う価値があった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伝説では、シュテルテベーカーは略奪品を貧しい人々と分け合ったとされる。",
+      "text_markdown": "伝説では、シュテルテベーカーは略奪品を貧しい人々と分け合ったとされる。",
+      "tts": {
+        "text": "伝説では、シュテルテベーカーは略奪品を貧しい人々と分け合ったとされる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "このロビン・フッドのイメージは何世紀にもわたって彼につきまとっている。",
+      "text_markdown": "このロビン・フッドのイメージは何世紀にもわたって彼につきまとっている。",
+      "tts": {
+        "text": "このロビン・フッドのイメージは何世紀にもわたって彼につきまとっている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "実際に貧しい人々に分け与えたかどうかは確認不可能である。",
+      "text_markdown": "実際に貧しい人々に分け与えたかどうかは確認不可能である。",
+      "tts": {
+        "text": "実際に貧しい人々に分け与えたかどうかは確認不可能である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "伝説は彼の死後に、物語をより共感を呼ぶものにするために生まれたのかもしれない。",
+      "text_markdown": "伝説は彼の死後に、物語をより共感を呼ぶものにするために生まれたのかもしれない。",
+      "tts": {
+        "text": "伝説は彼の死後に、物語をより共感を呼ぶものにするために生まれたのかもしれない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "確かなのは、ハンザ諸都市が甚大な損害を被ったことだ。",
+      "text_markdown": "確かなのは、ハンザ諸都市が甚大な損害を被ったことだ。",
+      "tts": {
+        "text": "確かなのは、ハンザ諸都市が甚大な損害を被ったことだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商船航海の保険費用が急騰した。",
+      "text_markdown": "商船航海の保険費用が急騰した。",
+      "tts": {
+        "text": "商船航海の保険費用が急騰した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部の交易路は武装護衛なしでは危険すぎて使えなくなった。",
+      "text_markdown": "一部の交易路は武装護衛なしでは危険すぎて使えなくなった。",
+      "tts": {
+        "text": "一部の交易路は武装護衛なしでは危険すぎて使えなくなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "貿易の守護者としての同盟の評判が損なわれていた。",
+      "text_markdown": "貿易の守護者としての同盟の評判が損なわれていた。",
+      "tts": {
+        "text": "貿易の守護者としての同盟の評判が損なわれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊はバルト海経済に不可欠なニシン漁業も妨害した。",
+      "text_markdown": "海賊はバルト海経済に不可欠なニシン漁業も妨害した。",
+      "tts": {
+        "text": "海賊はバルト海経済に不可欠なニシン漁業も妨害した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "リューベックや他の都市の漁船団が海上で襲撃された。",
+      "text_markdown": "リューベックや他の都市の漁船団が海上で襲撃された。",
+      "tts": {
+        "text": "リューベックや他の都市の漁船団が海上で襲撃された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ニシンの価格が上昇し、一般の人々に困窮をもたらした。",
+      "text_markdown": "ニシンの価格が上昇し、一般の人々に困窮をもたらした。",
+      "tts": {
+        "text": "ニシンの価格が上昇し、一般の人々に困窮をもたらした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これにより海賊は裕福な商人だけでなく庶民からも憎まれるようになった。",
+      "text_markdown": "これにより海賊は裕福な商人だけでなく庶民からも憎まれるようになった。",
+      "tts": {
+        "text": "これにより海賊は裕福な商人だけでなく庶民からも憎まれるようになった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーの名は北方の海における危険の代名詞となった。",
+      "text_markdown": "シュテルテベーカーの名は北方の海における危険の代名詞となった。",
+      "tts": {
+        "text": "シュテルテベーカーの名は北方の海における危険の代名詞となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "母親たちがシュテルテベーカーが来ると子どもたちを脅したと伝えられている。",
+      "text_markdown": "母親たちがシュテルテベーカーが来ると子どもたちを脅したと伝えられている。",
+      "tts": {
+        "text": "母親たちがシュテルテベーカーが来ると子どもたちを脅したと伝えられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "成功する襲撃のたびに彼の名声は高まった。",
+      "text_markdown": "成功する襲撃のたびに彼の名声は高まった。",
+      "tts": {
+        "text": "成功する襲撃のたびに彼の名声は高まった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中世の海賊船上での生活は過酷で残忍だった。",
+      "text_markdown": "中世の海賊船上での生活は過酷で残忍だった。",
+      "tts": {
+        "text": "中世の海賊船上での生活は過酷で残忍だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "居住空間は狭く、食糧はしばしば腐り、真水は乏しかった。",
+      "text_markdown": "居住空間は狭く、食糧はしばしば腐り、真水は乏しかった。",
+      "tts": {
+        "text": "居住空間は狭く、食糧はしばしば腐り、真水は乏しかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "病気が数日で乗組員全体に広がることがあった。",
+      "text_markdown": "病気が数日で乗組員全体に広がることがあった。",
+      "tts": {
+        "text": "病気が数日で乗組員全体に広がることがあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "暴力は日常生活の常なる一部だった。",
+      "text_markdown": "暴力は日常生活の常なる一部だった。",
+      "tts": {
+        "text": "暴力は日常生活の常なる一部だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊同士の争いはしばしば拳や刃物で解決された。",
+      "text_markdown": "海賊同士の争いはしばしば拳や刃物で解決された。",
+      "tts": {
+        "text": "海賊同士の争いはしばしば拳や刃物で解決された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "指導力は船長が略奪品を確保し秩序を維持する能力にかかっていた。",
+      "text_markdown": "指導力は船長が略奪品を確保し秩序を維持する能力にかかっていた。",
+      "tts": {
+        "text": "指導力は船長が略奪品を確保し秩序を維持する能力にかかっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "失敗した船長は挑戦され、交代させられることがあった。",
+      "text_markdown": "失敗した船長は挑戦され、交代させられることがあった。",
+      "tts": {
+        "text": "失敗した船長は挑戦され、交代させられることがあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "シュテルテベーカーは技量、狡知、人間的な魅力で地位を維持した。",
+      "text_markdown": "シュテルテベーカーは技量、狡知、人間的な魅力で地位を維持した。",
+      "tts": {
+        "text": "シュテルテベーカーは技量、狡知、人間的な魅力で地位を維持した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーを匿ったフリースラントの首長たちは危険な賭けをしていた。",
+      "text_markdown": "シュテルテベーカーを匿ったフリースラントの首長たちは危険な賭けをしていた。",
+      "tts": {
+        "text": "シュテルテベーカーを匿ったフリースラントの首長たちは危険な賭けをしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハンザ同盟には壊滅的な貿易禁止令を課す力があった。",
+      "text_markdown": "ハンザ同盟には壊滅的な貿易禁止令を課す力があった。",
+      "tts": {
+        "text": "ハンザ同盟には壊滅的な貿易禁止令を課す力があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊を匿った都市は北方貿易すべてから遮断されるリスクがあった。",
+      "text_markdown": "海賊を匿った都市は北方貿易すべてから遮断されるリスクがあった。",
+      "tts": {
+        "text": "海賊を匿った都市は北方貿易すべてから遮断されるリスクがあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "シュテルテベーカーの同盟者への圧力が高まっていた。",
+      "text_markdown": "シュテルテベーカーの同盟者への圧力が高まっていた。",
+      "tts": {
+        "text": "シュテルテベーカーの同盟者への圧力が高まっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンブルクは特にシュテルテベーカーの壊滅を決意していた。",
+      "text_markdown": "ハンブルクは特にシュテルテベーカーの壊滅を決意していた。",
+      "tts": {
+        "text": "ハンブルクは特にシュテルテベーカーの壊滅を決意していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "市の商人たちはあまりに多くの船と金を失っていた。",
+      "text_markdown": "市の商人たちはあまりに多くの船と金を失っていた。",
+      "tts": {
+        "text": "市の商人たちはあまりに多くの船と金を失っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊を追い詰めるために特別に設計された艦隊の建造を始めた。",
+      "text_markdown": "海賊を追い詰めるために特別に設計された艦隊の建造を始めた。",
+      "tts": {
+        "text": "海賊を追い詰めるために特別に設計された艦隊の建造を始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "シュテルテベーカーの支配の終わりが近づいていた。",
+      "text_markdown": "シュテルテベーカーの支配の終わりが近づいていた。",
+      "tts": {
+        "text": "シュテルテベーカーの支配の終わりが近づいていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ビールはハンザ交易網で最も取引された商品の一つだった。",
+      "text_markdown": "ビールはハンザ交易網で最も取引された商品の一つだった。",
+      "tts": {
+        "text": "ビールはハンザ交易網で最も取引された商品の一つだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハンブルクとブレーメンはヨーロッパ中にビールを輸出する主要な醸造中心地だった。",
+      "text_markdown": "ハンブルクとブレーメンはヨーロッパ中にビールを輸出する主要な醸造中心地だった。",
+      "tts": {
+        "text": "ハンブルクとブレーメンはヨーロッパ中にビールを輸出する主要な醸造中心地だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "絶頂期",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ビール輸送に対する海賊の襲撃は穀物への攻撃とほぼ同等の深刻さで受け止められた。",
+      "text_markdown": "ビール輸送に対する海賊の襲撃は穀物への攻撃とほぼ同等の深刻さで受け止められた。",
+      "tts": {
+        "text": "ビール輸送に対する海賊の襲撃は穀物への攻撃とほぼ同等の深刻さで受け止められた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "最期",
+      "text_markdown": "最期"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンブルクは軍艦の艦隊を編成し、経験豊富な指揮官の下に置いた。",
+      "text_markdown": "ハンブルクは軍艦の艦隊を編成し、経験豊富な指揮官の下に置いた。",
+      "tts": {
+        "text": "ハンブルクは軍艦の艦隊を編成し、経験豊富な指揮官の下に置いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "艦隊はシモン・フォン・ユトレヒトという名の男が率いた。",
+      "text_markdown": "艦隊はシモン・フォン・ユトレヒトという名の男が率いた。",
+      "tts": {
+        "text": "艦隊はシモン・フォン・ユトレヒトという名の男が率いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "シモンは熟練した船乗りであり、断固たる海賊追討者だった。",
+      "text_markdown": "シモンは熟練した船乗りであり、断固たる海賊追討者だった。",
+      "tts": {
+        "text": "シモンは熟練した船乗りであり、断固たる海賊追討者だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1401年、シモンの艦隊はシュテルテベーカーを追ってハンブルクを出航した。",
+      "text_markdown": "1401年、シモンの艦隊はシュテルテベーカーを追ってハンブルクを出航した。",
+      "tts": {
+        "text": "千四百一年、シモンの艦隊はシュテルテベーカーを追ってハンブルクを出航した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北海とフリースラント諸島周辺の海域を捜索した。",
+      "text_markdown": "北海とフリースラント諸島周辺の海域を捜索した。",
+      "tts": {
+        "text": "北海とフリースラント諸島周辺の海域を捜索した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "広大な北海で海賊を見つけるのは容易なことではなかった。",
+      "text_markdown": "広大な北海で海賊を見つけるのは容易なことではなかった。",
+      "tts": {
+        "text": "広大な北海で海賊を見つけるのは容易なことではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンブルクの艦隊はついにヘルゴラント島の近くでシュテルテベーカーの船と遭遇した。",
+      "text_markdown": "ハンブルクの艦隊はついにヘルゴラント島の近くでシュテルテベーカーの船と遭遇した。",
+      "tts": {
+        "text": "ハンブルクの艦隊はついにヘルゴラント島の近くでシュテルテベーカーの船と遭遇した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヘルゴラントは北海の沖合に浮かぶ小さな岩の島である。",
+      "text_markdown": "ヘルゴラントは北海の沖合に浮かぶ小さな岩の島である。",
+      "tts": {
+        "text": "ヘルゴラントは北海の沖合に浮かぶ小さな岩の島である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ドイツ沿岸を航行する船乗りにとって周知の目印だった。",
+      "text_markdown": "ドイツ沿岸を航行する船乗りにとって周知の目印だった。",
+      "tts": {
+        "text": "ドイツ沿岸を航行する船乗りにとって周知の目印だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンブルクの軍艦と海賊艦隊の間で激しい戦闘が行われた。",
+      "text_markdown": "ハンブルクの軍艦と海賊艦隊の間で激しい戦闘が行われた。",
+      "tts": {
+        "text": "ハンブルクの軍艦と海賊艦隊の間で激しい戦闘が行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦闘は凄惨で何時間も続いた。",
+      "text_markdown": "戦闘は凄惨で何時間も続いた。",
+      "tts": {
+        "text": "戦闘は凄惨で何時間も続いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊たちは捕まれば確実に死が待つことを知り、必死に戦った。",
+      "text_markdown": "海賊たちは捕まれば確実に死が待つことを知り、必死に戦った。",
+      "tts": {
+        "text": "海賊たちは捕まれば確実に死が待つことを知り、必死に戦った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有名な伝説によれば、シュテルテベーカーの船に乗っていた裏切り者が戦いの行方を決めた。",
+      "text_markdown": "有名な伝説によれば、シュテルテベーカーの船に乗っていた裏切り者が戦いの行方を決めた。",
+      "tts": {
+        "text": "有名な伝説によれば、シュテルテベーカーの船に乗っていた裏切り者が戦いの行方を決めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この裏切り者は溶けた鉛を舵の鎖に注いだとされる。",
+      "text_markdown": "この裏切り者は溶けた鉛を舵の鎖に注いだとされる。",
+      "tts": {
+        "text": "この裏切り者は溶けた鉛を舵の鎖に注いだとされる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "舵が効かなくなった船は操縦も逃走もできなかった。",
+      "text_markdown": "舵が効かなくなった船は操縦も逃走もできなかった。",
+      "tts": {
+        "text": "舵が効かなくなった船は操縦も逃走もできなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ハンブルクの艦隊は動けなくなった船に乗り込み、制圧した。",
+      "text_markdown": "ハンブルクの艦隊は動けなくなった船に乗り込み、制圧した。",
+      "tts": {
+        "text": "ハンブルクの艦隊は動けなくなった船に乗り込み、制圧した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーは生きたまま捕らえられ、鎖につながれてハンブルクに連行された。",
+      "text_markdown": "シュテルテベーカーは生きたまま捕らえられ、鎖につながれてハンブルクに連行された。",
+      "tts": {
+        "text": "シュテルテベーカーは生きたまま捕らえられ、鎖につながれてハンブルクに連行された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "市参事会の前で裁判にかけられた。",
+      "text_markdown": "市参事会の前で裁判にかけられた。",
+      "tts": {
+        "text": "市参事会の前で裁判にかけられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "結果は初めから明らかだった。",
+      "text_markdown": "結果は初めから明らかだった。",
+      "tts": {
+        "text": "結果は初めから明らかだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊行為で有罪となり、斬首刑を宣告された。",
+      "text_markdown": "海賊行為で有罪となり、斬首刑を宣告された。",
+      "tts": {
+        "text": "海賊行為で有罪となり、斬首刑を宣告された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "処刑は1401年10月20日、ハンブルクのグラスブルックで行われた。",
+      "text_markdown": "処刑は1401年10月20日、ハンブルクのグラスブルックで行われた。",
+      "tts": {
+        "text": "処刑は千四百一年十月二十日、ハンブルクのグラスブルックで行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "グラスブルックは港の近くの湿地帯で、公開処刑に使われていた。",
+      "text_markdown": "グラスブルックは港の近くの湿地帯で、公開処刑に使われていた。",
+      "tts": {
+        "text": "グラスブルックは港の近くの湿地帯で、公開処刑に使われていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "悪名高い海賊の死を見届けようと大勢の群衆が集まった。",
+      "text_markdown": "悪名高い海賊の死を見届けようと大勢の群衆が集まった。",
+      "tts": {
+        "text": "悪名高い海賊の死を見届けようと大勢の群衆が集まった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここで、シュテルテベーカーに関する最も有名な伝説が展開する。",
+      "text_markdown": "ここで、シュテルテベーカーに関する最も有名な伝説が展開する。",
+      "tts": {
+        "text": "ここで、シュテルテベーカーに関する最も有名な伝説が展開する。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "処刑前、シュテルテベーカーはハンブルクの市長に嘆願したと伝えられている。",
+      "text_markdown": "処刑前、シュテルテベーカーはハンブルクの市長に嘆願したと伝えられている。",
+      "tts": {
+        "text": "処刑前、シュテルテベーカーはハンブルクの市長に嘆願したと伝えられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "斬首された後、自分の無頭の体が歩いて通り過ぎた仲間は解放するよう求めたのだ。",
+      "text_markdown": "斬首された後、自分の無頭の体が歩いて通り過ぎた仲間は解放するよう求めたのだ。",
+      "tts": {
+        "text": "斬首された後、自分の無頭の体が歩いて通り過ぎた仲間は解放するよう求めたのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "市長は、おそらく面白がって、その要求を受け入れた。",
+      "text_markdown": "市長は、おそらく面白がって、その要求を受け入れた。",
+      "tts": {
+        "text": "市長は、おそらく面白がって、その要求を受け入れた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーは処刑人の剣の一撃で斬首された。",
+      "text_markdown": "シュテルテベーカーは処刑人の剣の一撃で斬首された。",
+      "tts": {
+        "text": "シュテルテベーカーは処刑人の剣の一撃で斬首された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "すると伝説によれば、頭のない体が立ち上がった。",
+      "text_markdown": "すると伝説によれば、頭のない体が立ち上がった。",
+      "tts": {
+        "text": "すると伝説によれば、頭のない体が立ち上がった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "11人の仲間の前を歩いた後、処刑人がつまずかせた。",
+      "text_markdown": "11人の仲間の前を歩いた後、処刑人がつまずかせた。",
+      "tts": {
+        "text": "十一人の仲間の前を歩いた後、処刑人がつまずかせた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "処刑人が足を出したという版もあれば、丸太を投げたという版もある。",
+      "text_markdown": "処刑人が足を出したという版もあれば、丸太を投げたという版もある。",
+      "tts": {
+        "text": "処刑人が足を出したという版もあれば、丸太を投げたという版もある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンブルクの市長は約束を守ることを拒否した。",
+      "text_markdown": "ハンブルクの市長は約束を守ることを拒否した。",
+      "tts": {
+        "text": "ハンブルクの市長は約束を守ることを拒否した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕らえられた73人の海賊全員がその日に斬首された。",
+      "text_markdown": "捕らえられた73人の海賊全員がその日に斬首された。",
+      "tts": {
+        "text": "捕らえられた七十三人の海賊全員がその日に斬首された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らの首はエルベ川の岸辺に木の杭の上に晒された。",
+      "text_markdown": "彼らの首はエルベ川の岸辺に木の杭の上に晒された。",
+      "tts": {
+        "text": "彼らの首はエルベ川の岸辺に木の杭の上に晒された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは海賊行為を考える者への恐ろしい警告だった。",
+      "text_markdown": "それは海賊行為を考える者への恐ろしい警告だった。",
+      "tts": {
+        "text": "それは海賊行為を考える者への恐ろしい警告だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "別の伝説では、処刑後に処刑人に腕が疲れたか尋ねたという。",
+      "text_markdown": "別の伝説では、処刑後に処刑人に腕が疲れたか尋ねたという。",
+      "tts": {
+        "text": "別の伝説では、処刑後に処刑人に腕が疲れたか尋ねたという。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はハンブルク市参事会全員の首もはねられると答えたとされる。",
+      "text_markdown": "彼はハンブルク市参事会全員の首もはねられると答えたとされる。",
+      "tts": {
+        "text": "彼はハンブルク市参事会全員の首もはねられると答えたとされる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この不遜さにより、処刑人自身も処刑された。",
+      "text_markdown": "この不遜さにより、処刑人自身も処刑された。",
+      "tts": {
+        "text": "この不遜さにより、処刑人自身も処刑された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの処刑にまつわる伝説のいずれかが真実かどうか、検証は不可能である。",
+      "text_markdown": "これらの処刑にまつわる伝説のいずれかが真実かどうか、検証は不可能である。",
+      "tts": {
+        "text": "これらの処刑にまつわる伝説のいずれかが真実かどうか、検証は不可能である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ゲーデケ・ミヒェルスと残りの食糧兄弟団はシュテルテベーカーの死後も襲撃を続けた。",
+      "text_markdown": "ゲーデケ・ミヒェルスと残りの食糧兄弟団はシュテルテベーカーの死後も襲撃を続けた。",
+      "tts": {
+        "text": "ゲーデケ・ミヒェルスと残りの食糧兄弟団はシュテルテベーカーの死後も襲撃を続けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしハンブルクの艦隊は彼らも追い詰めた。",
+      "text_markdown": "しかしハンブルクの艦隊は彼らも追い詰めた。",
+      "tts": {
+        "text": "しかしハンブルクの艦隊は彼らも追い詰めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ミヒェルスはシュテルテベーカーの直後に捕らえられ処刑された。",
+      "text_markdown": "ミヒェルスはシュテルテベーカーの直後に捕らえられ処刑された。",
+      "tts": {
+        "text": "ミヒェルスはシュテルテベーカーの直後に捕らえられ処刑された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "食糧兄弟団の時代は終わった。",
+      "text_markdown": "食糧兄弟団の時代は終わった。",
+      "tts": {
+        "text": "食糧兄弟団の時代は終わった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "食糧兄弟団の処刑は、海賊行為を考えるすべての者への警告として意図されていた。",
+      "text_markdown": "食糧兄弟団の処刑は、海賊行為を考えるすべての者への警告として意図されていた。",
+      "tts": {
+        "text": "食糧兄弟団の処刑は、海賊行為を考えるすべての者への警告として意図されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "最期",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハンブルクは斬首した首を数か月にわたって恐ろしい見せしめとして晒した。",
+      "text_markdown": "ハンブルクは斬首した首を数か月にわたって恐ろしい見せしめとして晒した。",
+      "tts": {
+        "text": "ハンブルクは斬首した首を数か月にわたって恐ろしい見せしめとして晒した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クラウス・シュテルテベーカーは北ドイツの民間伝承で最も有名な人物の一人である。",
+      "text_markdown": "クラウス・シュテルテベーカーは北ドイツの民間伝承で最も有名な人物の一人である。",
+      "tts": {
+        "text": "クラウス・シュテルテベーカーは北ドイツの民間伝承で最も有名な人物の一人である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の伝説は六百年以上にわたって語り継がれてきた。",
+      "text_markdown": "彼の伝説は六百年以上にわたって語り継がれてきた。",
+      "tts": {
+        "text": "彼の伝説は六百年以上にわたって語り継がれてきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊、反逆者、そして民衆の英雄として記憶されている。",
+      "text_markdown": "海賊、反逆者、そして民衆の英雄として記憶されている。",
+      "tts": {
+        "text": "海賊、反逆者、そして民衆の英雄として記憶されている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハンブルク歴史博物館の頭蓋骨は長い間、彼のものと信じられていた。",
+      "text_markdown": "ハンブルク歴史博物館の頭蓋骨は長い間、彼のものと信じられていた。",
+      "tts": {
+        "text": "ハンブルク歴史博物館の頭蓋骨は長い間、彼のものと信じられていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "処刑後に打ち込まれたとされる大きな釘が刺さっていた。",
+      "text_markdown": "処刑後に打ち込まれたとされる大きな釘が刺さっていた。",
+      "tts": {
+        "text": "処刑後に打ち込まれたとされる大きな釘が刺さっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "DNA検査と法医学的分析により、その頭蓋骨が本当に彼のものかどうか疑問が投げかけられた。",
+      "text_markdown": "DNA検査と法医学的分析により、その頭蓋骨が本当に彼のものかどうか疑問が投げかけられた。",
+      "tts": {
+        "text": "DNA検査と法医学的分析により、その頭蓋骨が本当に彼のものかどうか疑問が投げかけられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "博物館は展示から撤去したが、伝説は続いている。",
+      "text_markdown": "博物館は展示から撤去したが、伝説は続いている。",
+      "tts": {
+        "text": "博物館は展示から撤去したが、伝説は続いている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーの像はハンブルクや北ドイツの他の都市で見ることができる。",
+      "text_markdown": "シュテルテベーカーの像はハンブルクや北ドイツの他の都市で見ることができる。",
+      "tts": {
+        "text": "シュテルテベーカーの像はハンブルクや北ドイツの他の都市で見ることができる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハンブルクの倉庫街にある通りに大きなブロンズ像が立っている。",
+      "text_markdown": "ハンブルクの倉庫街にある通りに大きなブロンズ像が立っている。",
+      "tts": {
+        "text": "ハンブルクの倉庫街にある通りに大きなブロンズ像が立っている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "自信に満ちた力強い男が港の方を見つめている姿を描いている。",
+      "text_markdown": "自信に満ちた力強い男が港の方を見つめている姿を描いている。",
+      "tts": {
+        "text": "自信に満ちた力強い男が港の方を見つめている姿を描いている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "毎年夏、リューゲン島の野外劇場フェスティバルで彼の生涯を描いた劇が上演される。",
+      "text_markdown": "毎年夏、リューゲン島の野外劇場フェスティバルで彼の生涯を描いた劇が上演される。",
+      "tts": {
+        "text": "毎年夏、リューゲン島の野外劇場フェスティバルで彼の生涯を描いた劇が上演される。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "シュテルテベーカー・フェスティバルは毎年何万人もの来場者を集める。",
+      "text_markdown": "シュテルテベーカー・フェスティバルは毎年何万人もの来場者を集める。",
+      "tts": {
+        "text": "シュテルテベーカー・フェスティバルは毎年何万人もの来場者を集める。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ドイツで最も人気のある野外劇場イベントの一つである。",
+      "text_markdown": "ドイツで最も人気のある野外劇場イベントの一つである。",
+      "tts": {
+        "text": "ドイツで最も人気のある野外劇場イベントの一つである。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シュテルテベーカーは英国の民間伝承のロビン・フッドと比較されてきた。",
+      "text_markdown": "シュテルテベーカーは英国の民間伝承のロビン・フッドと比較されてきた。",
+      "tts": {
+        "text": "シュテルテベーカーは英国の民間伝承のロビン・フッドと比較されてきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人とも金持ちから盗んで貧しい人に与えたとされる伝説上の無法者である。",
+      "text_markdown": "二人とも金持ちから盗んで貧しい人に与えたとされる伝説上の無法者である。",
+      "tts": {
+        "text": "二人とも金持ちから盗んで貧しい人に与えたとされる伝説上の無法者である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どちらの物語も歴史的事実と何世紀もの脚色が混在している。",
+      "text_markdown": "どちらの物語も歴史的事実と何世紀もの脚色が混在している。",
+      "tts": {
+        "text": "どちらの物語も歴史的事実と何世紀もの脚色が混在している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロビン・フッドとの比較により、シュテルテベーカーの伝説は国際的に理解されやすくなった。",
+      "text_markdown": "ロビン・フッドとの比較により、シュテルテベーカーの伝説は国際的に理解されやすくなった。",
+      "tts": {
+        "text": "ロビン・フッドとの比較により、シュテルテベーカーの伝説は国際的に理解されやすくなった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家たちは食糧兄弟団が自由の闘士だったのか単なる犯罪者だったのかを議論している。",
+      "text_markdown": "歴史家たちは食糧兄弟団が自由の闘士だったのか単なる犯罪者だったのかを議論している。",
+      "tts": {
+        "text": "歴史家たちは食糧兄弟団が自由の闘士だったのか単なる犯罪者だったのかを議論している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハンザ同盟の独占に抵抗した人々だと見る者もいる。",
+      "text_markdown": "ハンザ同盟の独占に抵抗した人々だと見る者もいる。",
+      "tts": {
+        "text": "ハンザ同盟の独占に抵抗した人々だと見る者もいる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一般の漁師や沿岸の村人を恐怖に陥れたと指摘する者もいる。",
+      "text_markdown": "一般の漁師や沿岸の村人を恐怖に陥れたと指摘する者もいる。",
+      "tts": {
+        "text": "一般の漁師や沿岸の村人を恐怖に陥れたと指摘する者もいる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "真実にはおそらく両方の視点の要素が含まれている。",
+      "text_markdown": "真実にはおそらく両方の視点の要素が含まれている。",
+      "tts": {
+        "text": "真実にはおそらく両方の視点の要素が含まれている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史の記録が示すことは限られているが明確である。",
+      "text_markdown": "歴史の記録が示すことは限られているが明確である。",
+      "tts": {
+        "text": "歴史の記録が示すことは限られているが明確である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "シュテルテベーカーという名の男がバルト海と北海で海賊団を率いた。",
+      "text_markdown": "シュテルテベーカーという名の男がバルト海と北海で海賊団を率いた。",
+      "tts": {
+        "text": "シュテルテベーカーという名の男がバルト海と北海で海賊団を率いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハンブルクに捕らえられ処刑された。",
+      "text_markdown": "ハンブルクに捕らえられ処刑された。",
+      "tts": {
+        "text": "ハンブルクに捕らえられ処刑された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それ以外はすべて、何世紀もの語り継ぎによって形作られた伝説である。",
+      "text_markdown": "それ以外はすべて、何世紀もの語り継ぎによって形作られた伝説である。",
+      "tts": {
+        "text": "それ以外はすべて、何世紀もの語り継ぎによって形作られた伝説である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伝説が生き続けるのは、人間の本性の奥深くにある何かに訴えかけるからだ。",
+      "text_markdown": "伝説が生き続けるのは、人間の本性の奥深くにある何かに訴えかけるからだ。",
+      "tts": {
+        "text": "伝説が生き続けるのは、人間の本性の奥深くにある何かに訴えかけるからだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "権力に立ち向かい最高の代償を払う一人の男という考えは、文化を超えて共感を呼ぶ。",
+      "text_markdown": "権力に立ち向かい最高の代償を払う一人の男という考えは、文化を超えて共感を呼ぶ。",
+      "tts": {
+        "text": "権力に立ち向かい最高の代償を払う一人の男という考えは、文化を超えて共感を呼ぶ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "クラウス・シュテルテベーカーの物語は、ある種の伝説が死を拒むことの証である。",
+      "text_markdown": "クラウス・シュテルテベーカーの物語は、ある種の伝説が死を拒むことの証である。",
+      "tts": {
+        "text": "クラウス・シュテルテベーカーの物語は、ある種の伝説が死を拒むことの証である。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

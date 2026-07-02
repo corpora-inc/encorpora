@@ -1,0 +1,23 @@
+{
+  "id": "book_ai_this_week_2026_06_21",
+  "name": "AI This Week — June 21, 2026 — Megawatts and Market Caps",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "format": "dialog",
+  "metadata": {
+    "series": "AI This Week",
+    "issue": 6,
+    "issue_date": "2026-06-21",
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Listeners who want the macro picture under the AI noise — power, policy, capital, silicon — with real figures and a skeptical voice.",
+    "estimatedListenTime": "12 minutes"
+  }
+}

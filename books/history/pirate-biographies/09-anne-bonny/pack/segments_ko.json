@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_anne_bonny",
+  "language": "ko",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말",
+      "text_markdown": "독자에게 드리는 말"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 카리브해를 공포에 떨게 한 한 여성에 대한 실화입니다.",
+      "text_markdown": "이것은 카리브해를 공포에 떨게 한 한 여성에 대한 실화입니다.",
+      "tts": {
+        "text": "이것은 카리브해를 공포에 떨게 한 한 여성에 대한 실화입니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 이름은 앤 보니였으며, 역사상 가장 유명한 해적 중 한 명이었습니다.",
+      "text_markdown": "그녀의 이름은 앤 보니였으며, 역사상 가장 유명한 해적 중 한 명이었습니다.",
+      "tts": {
+        "text": "그녀의 이름은 앤 보니였으며, 역사상 가장 유명한 해적 중 한 명이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 1697년경 아일랜드에서 태어나 식민지 사우스캐롤라이나에서 자랐습니다.",
+      "text_markdown": "그녀는 1697년경 아일랜드에서 태어나 식민지 사우스캐롤라이나에서 자랐습니다.",
+      "tts": {
+        "text": "그녀는 천육백구십칠 년경 아일랜드에서 태어나 식민지 사우스캐롤라이나에서 자랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니는 그녀의 세상이 여성에게 부과하려 했던 모든 규칙을 깨뜨렸습니다.",
+      "text_markdown": "앤 보니는 그녀의 세상이 여성에게 부과하려 했던 모든 규칙을 깨뜨렸습니다.",
+      "tts": {
+        "text": "앤 보니는 그녀의 세상이 여성에게 부과하려 했던 모든 규칙을 깨뜨렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 존경받는 삶을 버리고 해적과 함께 항해했습니다.",
+      "text_markdown": "그녀는 존경받는 삶을 버리고 해적과 함께 항해했습니다.",
+      "tts": {
+        "text": "그녀는 존경받는 삶을 버리고 해적과 함께 항해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 전투에 참여하여 노련한 선원들의 존경을 얻었습니다.",
+      "text_markdown": "그녀는 전투에 참여하여 노련한 선원들의 존경을 얻었습니다.",
+      "tts": {
+        "text": "그녀는 전투에 참여하여 노련한 선원들의 존경을 얻었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 이야기는 주로 1724년에 출판된 하나의 출처에서 전해집니다.",
+      "text_markdown": "그녀의 이야기는 주로 1724년에 출판된 하나의 출처에서 전해집니다.",
+      "tts": {
+        "text": "그녀의 이야기는 주로 천칠백이십사 년에 출판된 하나의 출처에서 전해집니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 출처는 가장 악명 높은 해적들에 대한 찰스 존슨 선장의 책입니다.",
+      "text_markdown": "그 출처는 가장 악명 높은 해적들에 대한 찰스 존슨 선장의 책입니다.",
+      "tts": {
+        "text": "그 출처는 가장 악명 높은 해적들에 대한 찰스 존슨 선장의 책입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "앤의 이야기에서 얼마나 많은 부분이 사실이고 얼마나 많은 부분이 전설인지 확신할 수 없습니다.",
+      "text_markdown": "앤의 이야기에서 얼마나 많은 부분이 사실이고 얼마나 많은 부분이 전설인지 확신할 수 없습니다.",
+      "tts": {
+        "text": "앤의 이야기에서 얼마나 많은 부분이 사실이고 얼마나 많은 부분이 전설인지 확신할 수 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우리가 알고 있는 것만으로도 충분히 놀랍습니다.",
+      "text_markdown": "우리가 알고 있는 것만으로도 충분히 놀랍습니다.",
+      "tts": {
+        "text": "우리가 알고 있는 것만으로도 충분히 놀랍습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 역사적 기록이 허락하는 한 솔직하게 전하는 그녀의 이야기입니다.",
+      "text_markdown": "이것은 역사적 기록이 허락하는 한 솔직하게 전하는 그녀의 이야기입니다.",
+      "tts": {
+        "text": "이것은 역사적 기록이 허락하는 한 솔직하게 전하는 그녀의 이야기입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "앤 보니가 알던 세상",
+      "text_markdown": "앤 보니가 알던 세상"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니는 역사가들이 해적의 황금시대라고 부르는 시기에 살았습니다.",
+      "text_markdown": "앤 보니는 역사가들이 해적의 황금시대라고 부르는 시기에 살았습니다.",
+      "tts": {
+        "text": "앤 보니는 역사가들이 해적의 황금시대라고 부르는 시기에 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 시대는 대략 1680년부터 1730년까지 지속되었습니다.",
+      "text_markdown": "이 시대는 대략 1680년부터 1730년까지 지속되었습니다.",
+      "tts": {
+        "text": "이 시대는 대략 천육백팔십 년부터 천칠백삼십 년까지 지속되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수천 명의 해적이 카리브해, 대서양, 인도양을 누볐습니다.",
+      "text_markdown": "수천 명의 해적이 카리브해, 대서양, 인도양을 누볐습니다.",
+      "tts": {
+        "text": "수천 명의 해적이 카리브해, 대서양, 인도양을 누볐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "카리브해는 북아메리카와 남아메리카 사이에 위치해 있습니다.",
+      "text_markdown": "카리브해는 북아메리카와 남아메리카 사이에 위치해 있습니다.",
+      "tts": {
+        "text": "카리브해는 북아메리카와 남아메리카 사이에 위치해 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "크고 작은 수백 개의 섬들이 점재해 있습니다.",
+      "text_markdown": "크고 작은 수백 개의 섬들이 점재해 있습니다.",
+      "tts": {
+        "text": "크고 작은 수백 개의 섬들이 점재해 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1700년대 초, 유럽 제국들은 이 섬들을 두고 끊임없이 싸웠습니다.",
+      "text_markdown": "1700년대 초, 유럽 제국들은 이 섬들을 두고 끊임없이 싸웠습니다.",
+      "tts": {
+        "text": "천칠백 년대 초, 유럽 제국들은 이 섬들을 두고 끊임없이 싸웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스페인, 잉글랜드, 프랑스, 네덜란드 모두 그곳에 영토를 주장했습니다.",
+      "text_markdown": "스페인, 잉글랜드, 프랑스, 네덜란드 모두 그곳에 영토를 주장했습니다.",
+      "tts": {
+        "text": "스페인, 잉글랜드, 프랑스, 네덜란드 모두 그곳에 영토를 주장했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "카리브해 경제는 설탕, 담배, 노예 노동에 의존했습니다.",
+      "text_markdown": "카리브해 경제는 설탕, 담배, 노예 노동에 의존했습니다.",
+      "tts": {
+        "text": "카리브해 경제는 설탕, 담배, 노예 노동에 의존했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자메이카와 바베이도스 같은 섬의 거대한 설탕 농장은 막대한 부를 창출했습니다.",
+      "text_markdown": "자메이카와 바베이도스 같은 섬의 거대한 설탕 농장은 막대한 부를 창출했습니다.",
+      "tts": {
+        "text": "자메이카와 바베이도스 같은 섬의 거대한 설탕 농장은 막대한 부를 창출했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 부는 배로 운송되었기에, 카리브해는 해적들에게 거부할 수 없는 곳이 되었습니다.",
+      "text_markdown": "그 부는 배로 운송되었기에, 카리브해는 해적들에게 거부할 수 없는 곳이 되었습니다.",
+      "tts": {
+        "text": "그 부는 배로 운송되었기에, 카리브해는 해적들에게 거부할 수 없는 곳이 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "설탕은 대서양 세계에서 가장 가치 있는 상품이었습니다.",
+      "text_markdown": "설탕은 대서양 세계에서 가장 가치 있는 상품이었습니다.",
+      "tts": {
+        "text": "설탕은 대서양 세계에서 가장 가치 있는 상품이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 생산에는 잔혹한 조건에서의 막대한 노동력이 필요했습니다.",
+      "text_markdown": "그 생산에는 잔혹한 조건에서의 막대한 노동력이 필요했습니다.",
+      "tts": {
+        "text": "그 생산에는 잔혹한 조건에서의 막대한 노동력이 필요했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수백만 명의 노예 아프리카인들이 농장에서 일하기 위해 카리브해로 끌려왔습니다.",
+      "text_markdown": "수백만 명의 노예 아프리카인들이 농장에서 일하기 위해 카리브해로 끌려왔습니다.",
+      "tts": {
+        "text": "수백만 명의 노예 아프리카인들이 농장에서 일하기 위해 카리브해로 끌려왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "설탕에서 나온 이익은 제국에 자금을 대고 유럽에 위대한 도시를 건설했습니다.",
+      "text_markdown": "설탕에서 나온 이익은 제국에 자금을 대고 유럽에 위대한 도시를 건설했습니다.",
+      "tts": {
+        "text": "설탕에서 나온 이익은 제국에 자금을 대고 유럽에 위대한 도시를 건설했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인 왕위 계승 전쟁은 1713년에 끝났습니다.",
+      "text_markdown": "스페인 왕위 계승 전쟁은 1713년에 끝났습니다.",
+      "tts": {
+        "text": "스페인 왕위 계승 전쟁은 천칠백십삼 년에 끝났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 전쟁 동안 정부는 사략선이라 불리는 민간 선장들을 고용했습니다.",
+      "text_markdown": "그 전쟁 동안 정부는 사략선이라 불리는 민간 선장들을 고용했습니다.",
+      "tts": {
+        "text": "그 전쟁 동안 정부는 사략선이라 불리는 민간 선장들을 고용했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사략선은 사략 허가장이라 불리는 공식 문서를 지니고 있었습니다.",
+      "text_markdown": "사략선은 사략 허가장이라 불리는 공식 문서를 지니고 있었습니다.",
+      "tts": {
+        "text": "사략선은 사략 허가장이라 불리는 공식 문서를 지니고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 허가장은 적선을 공격할 법적 허가를 부여했습니다.",
+      "text_markdown": "이 허가장은 적선을 공격할 법적 허가를 부여했습니다.",
+      "tts": {
+        "text": "이 허가장은 적선을 공격할 법적 허가를 부여했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전쟁이 끝나자 수천 명의 사략선원들은 갑자기 일자리를 잃었습니다.",
+      "text_markdown": "전쟁이 끝나자 수천 명의 사략선원들은 갑자기 일자리를 잃었습니다.",
+      "tts": {
+        "text": "전쟁이 끝나자 수천 명의 사략선원들은 갑자기 일자리를 잃었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들 대부분은 항해와 전투 외에는 다른 기술이 없었습니다.",
+      "text_markdown": "그들 대부분은 항해와 전투 외에는 다른 기술이 없었습니다.",
+      "tts": {
+        "text": "그들 대부분은 항해와 전투 외에는 다른 기술이 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부는 생존할 다른 방법이 없어 해적질에 나섰습니다.",
+      "text_markdown": "일부는 생존할 다른 방법이 없어 해적질에 나섰습니다.",
+      "tts": {
+        "text": "일부는 생존할 다른 방법이 없어 해적질에 나섰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다른 이들은 가난보다 자유를 택하여 해적이 되었습니다.",
+      "text_markdown": "다른 이들은 가난보다 자유를 택하여 해적이 되었습니다.",
+      "tts": {
+        "text": "다른 이들은 가난보다 자유를 택하여 해적이 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바하마의 뉴프로비던스 섬에 있는 나소는 해적의 안식처가 되었습니다.",
+      "text_markdown": "바하마의 뉴프로비던스 섬에 있는 나소는 해적의 안식처가 되었습니다.",
+      "tts": {
+        "text": "바하마의 뉴프로비던스 섬에 있는 나소는 해적의 안식처가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1716년까지 수백 명의 해적이 그곳에 모여들었습니다.",
+      "text_markdown": "1716년까지 수백 명의 해적이 그곳에 모여들었습니다.",
+      "tts": {
+        "text": "천칠백십육 년까지 수백 명의 해적이 그곳에 모여들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 일부 역사가들이 해적 공화국이라 부르는 것을 만들었습니다.",
+      "text_markdown": "그들은 일부 역사가들이 해적 공화국이라 부르는 것을 만들었습니다.",
+      "tts": {
+        "text": "그들은 일부 역사가들이 해적 공화국이라 부르는 것을 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "나소에는 좋은 항구와 담수가 있었고, 해군이 공격하기 어려웠습니다.",
+      "text_markdown": "나소에는 좋은 항구와 담수가 있었고, 해군이 공격하기 어려웠습니다.",
+      "tts": {
+        "text": "나소에는 좋은 항구와 담수가 있었고, 해군이 공격하기 어려웠습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나소의 해적 공화국에는 공식적인 정부가 없었습니다.",
+      "text_markdown": "나소의 해적 공화국에는 공식적인 정부가 없었습니다.",
+      "tts": {
+        "text": "나소의 해적 공화국에는 공식적인 정부가 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 자신들의 지도자를 선출하고 분쟁을 스스로 해결했습니다.",
+      "text_markdown": "해적들은 자신들의 지도자를 선출하고 분쟁을 스스로 해결했습니다.",
+      "tts": {
+        "text": "해적들은 자신들의 지도자를 선출하고 분쟁을 스스로 해결했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선술집, 유곽, 시장이 훔친 물건으로 번성했습니다.",
+      "text_markdown": "선술집, 유곽, 시장이 훔친 물건으로 번성했습니다.",
+      "tts": {
+        "text": "선술집, 유곽, 시장이 훔친 물건으로 번성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그곳은 서반구에서 가장 무법한 곳 중 하나였습니다.",
+      "text_markdown": "그곳은 서반구에서 가장 무법한 곳 중 하나였습니다.",
+      "tts": {
+        "text": "그곳은 서반구에서 가장 무법한 곳 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1718년, 영국 왕실은 우즈 로저스를 새 총독으로 나소에 파견했습니다.",
+      "text_markdown": "1718년, 영국 왕실은 우즈 로저스를 새 총독으로 나소에 파견했습니다.",
+      "tts": {
+        "text": "천칠백십팔 년, 영국 왕실은 우즈 로저스를 새 총독으로 나소에 파견했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "로저스는 본인도 전직 사략선원으로서 해적을 잘 이해했습니다.",
+      "text_markdown": "로저스는 본인도 전직 사략선원으로서 해적을 잘 이해했습니다.",
+      "tts": {
+        "text": "로저스는 본인도 전직 사략선원으로서 해적을 잘 이해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 항복하고 해적 행위를 포기하는 해적에게 왕의 사면을 제안했습니다.",
+      "text_markdown": "그는 항복하고 해적 행위를 포기하는 해적에게 왕의 사면을 제안했습니다.",
+      "tts": {
+        "text": "그는 항복하고 해적 행위를 포기하는 해적에게 왕의 사면을 제안했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "많은 해적이 제안을 받아들였지만, 모두가 진심은 아니었습니다.",
+      "text_markdown": "많은 해적이 제안을 받아들였지만, 모두가 진심은 아니었습니다.",
+      "tts": {
+        "text": "많은 해적이 제안을 받아들였지만, 모두가 진심은 아니었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "로저스는 사면을 거부하는 해적은 교수형에 처할 것이라고 분명히 했습니다.",
+      "text_markdown": "로저스는 사면을 거부하는 해적은 교수형에 처할 것이라고 분명히 했습니다.",
+      "tts": {
+        "text": "로저스는 사면을 거부하는 해적은 교수형에 처할 것이라고 분명히 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 진지하다는 것을 증명하기 위해 여러 해적을 공개 처형했습니다.",
+      "text_markdown": "그는 진지하다는 것을 증명하기 위해 여러 해적을 공개 처형했습니다.",
+      "tts": {
+        "text": "그는 진지하다는 것을 증명하기 위해 여러 해적을 공개 처형했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나소의 해적 공화국 시대는 끝을 향하고 있었습니다.",
+      "text_markdown": "나소의 해적 공화국 시대는 끝을 향하고 있었습니다.",
+      "tts": {
+        "text": "나소의 해적 공화국 시대는 끝을 향하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한편, 북아메리카의 영국 식민지는 빠르게 성장하고 있었습니다.",
+      "text_markdown": "한편, 북아메리카의 영국 식민지는 빠르게 성장하고 있었습니다.",
+      "tts": {
+        "text": "한편, 북아메리카의 영국 식민지는 빠르게 성장하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사우스캐롤라이나 식민지의 찰스턴은 가장 부유한 항구 중 하나였습니다.",
+      "text_markdown": "사우스캐롤라이나 식민지의 찰스턴은 가장 부유한 항구 중 하나였습니다.",
+      "tts": {
+        "text": "사우스캐롤라이나 식민지의 찰스턴은 가장 부유한 항구 중 하나였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그곳은 쌀, 인디고, 노예 거래의 중심지였습니다.",
+      "text_markdown": "그곳은 쌀, 인디고, 노예 거래의 중심지였습니다.",
+      "tts": {
+        "text": "그곳은 쌀, 인디고, 노예 거래의 중심지였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "찰스턴의 상인들은 야심적이었고 종종 무자비했습니다.",
+      "text_markdown": "찰스턴의 상인들은 야심적이었고 종종 무자비했습니다.",
+      "tts": {
+        "text": "찰스턴의 상인들은 야심적이었고 종종 무자비했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1700년대 초, 영국 사회에서 여성에게는 선택지가 거의 없었습니다.",
+      "text_markdown": "1700년대 초, 영국 사회에서 여성에게는 선택지가 거의 없었습니다.",
+      "tts": {
+        "text": "천칠백 년대 초, 영국 사회에서 여성에게는 선택지가 거의 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 재산을 소유하거나, 투표하거나, 공직을 맡을 수 없었습니다.",
+      "text_markdown": "그들은 재산을 소유하거나, 투표하거나, 공직을 맡을 수 없었습니다.",
+      "tts": {
+        "text": "그들은 재산을 소유하거나, 투표하거나, 공직을 맡을 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "결혼하면 여성의 법적 정체성은 남편의 것에 흡수되었습니다.",
+      "text_markdown": "결혼하면 여성의 법적 정체성은 남편의 것에 흡수되었습니다.",
+      "tts": {
+        "text": "결혼하면 여성의 법적 정체성은 남편의 것에 흡수되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적과 함께 싸우는 여성이라는 생각은 거의 상상할 수 없었습니다.",
+      "text_markdown": "해적과 함께 싸우는 여성이라는 생각은 거의 상상할 수 없었습니다.",
+      "tts": {
+        "text": "해적과 함께 싸우는 여성이라는 생각은 거의 상상할 수 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 바다는 항상 사회의 규칙을 따르기를 거부하는 사람들을 끌어들였습니다.",
+      "text_markdown": "그러나 바다는 항상 사회의 규칙을 따르기를 거부하는 사람들을 끌어들였습니다.",
+      "tts": {
+        "text": "그러나 바다는 항상 사회의 규칙을 따르기를 거부하는 사람들을 끌어들였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적선은 자체 규율로 운영되었고, 일부 선원단은 놀라울 정도로 민주적이었습니다.",
+      "text_markdown": "해적선은 자체 규율로 운영되었고, 일부 선원단은 놀라울 정도로 민주적이었습니다.",
+      "tts": {
+        "text": "해적선은 자체 규율로 운영되었고, 일부 선원단은 놀라울 정도로 민주적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선장은 선출되었고 투표로 해임될 수 있었습니다.",
+      "text_markdown": "선장은 선출되었고 투표로 해임될 수 있었습니다.",
+      "tts": {
+        "text": "선장은 선출되었고 투표로 해임될 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "약탈물은 합의된 몫에 따라 분배되었습니다.",
+      "text_markdown": "약탈물은 합의된 몫에 따라 분배되었습니다.",
+      "tts": {
+        "text": "약탈물은 합의된 몫에 따라 분배되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 앤 보니가 나소에 도착했을 때 발을 들인 세상이었습니다.",
+      "text_markdown": "이것이 앤 보니가 나소에 도착했을 때 발을 들인 세상이었습니다.",
+      "tts": {
+        "text": "이것이 앤 보니가 나소에 도착했을 때 발을 들인 세상이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 폭력, 기회, 그리고 급진적 자유의 세상이었습니다.",
+      "text_markdown": "그것은 폭력, 기회, 그리고 급진적 자유의 세상이었습니다.",
+      "tts": {
+        "text": "그것은 폭력, 기회, 그리고 급진적 자유의 세상이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "앤 보니가 알던 세상",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 또한 빠르게 사라지고 있는 세상이었습니다.",
+      "text_markdown": "그것은 또한 빠르게 사라지고 있는 세상이었습니다.",
+      "tts": {
+        "text": "그것은 또한 빠르게 사라지고 있는 세상이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니는 1697년경 아일랜드 코크주의 작은 항구 도시 킨세일에서 태어났습니다.",
+      "text_markdown": "앤 보니는 1697년경 아일랜드 코크주의 작은 항구 도시 킨세일에서 태어났습니다.",
+      "tts": {
+        "text": "앤 보니는 천육백구십칠 년경 아일랜드 코크주의 작은 항구 도시 킨세일에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 자료에서는 그녀의 출생을 1698년이나 1700년으로 보지만, 대부분의 역사가는 1697년을 지지합니다.",
+      "text_markdown": "일부 자료에서는 그녀의 출생을 1698년이나 1700년으로 보지만, 대부분의 역사가는 1697년을 지지합니다.",
+      "tts": {
+        "text": "일부 자료에서는 그녀의 출생을 천육백구십팔 년이나 천칠백 년으로 보지만, 대부분의 역사가는 천육백구십칠 년을 지지합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 아버지는 킨세일의 성공한 변호사 윌리엄 코맥이었습니다.",
+      "text_markdown": "그녀의 아버지는 킨세일의 성공한 변호사 윌리엄 코맥이었습니다.",
+      "tts": {
+        "text": "그녀의 아버지는 킨세일의 성공한 변호사 윌리엄 코맥이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 어머니는 코맥 가문의 하인 메리 브레넌이었습니다.",
+      "text_markdown": "그녀의 어머니는 코맥 가문의 하인 메리 브레넌이었습니다.",
+      "tts": {
+        "text": "그녀의 어머니는 코맥 가문의 하인 메리 브레넌이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "앤은 혼외에서 태어난 그들의 사생아였습니다.",
+      "text_markdown": "앤은 혼외에서 태어난 그들의 사생아였습니다.",
+      "tts": {
+        "text": "앤은 혼외에서 태어난 그들의 사생아였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "십팔세기 아일랜드에서 이것은 심각한 스캔들이었습니다.",
+      "text_markdown": "십팔세기 아일랜드에서 이것은 심각한 스캔들이었습니다.",
+      "tts": {
+        "text": "십팔세기 아일랜드에서 이것은 심각한 스캔들이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "윌리엄 코맥의 아내는 불륜을 알게 되었고 그를 떠났습니다.",
+      "text_markdown": "윌리엄 코맥의 아내는 불륜을 알게 되었고 그를 떠났습니다.",
+      "tts": {
+        "text": "윌리엄 코맥의 아내는 불륜을 알게 되었고 그를 떠났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 스캔들은 킨세일에서의 그의 법률 업무를 파괴했습니다.",
+      "text_markdown": "이 스캔들은 킨세일에서의 그의 법률 업무를 파괴했습니다.",
+      "tts": {
+        "text": "이 스캔들은 킨세일에서의 그의 법률 업무를 파괴했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "의뢰인들은 그를 버렸고, 그의 명성은 무너졌습니다.",
+      "text_markdown": "의뢰인들은 그를 버렸고, 그의 명성은 무너졌습니다.",
+      "tts": {
+        "text": "의뢰인들은 그를 버렸고, 그의 명성은 무너졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "코맥은 미국 식민지에서 새로 시작하기로 결심했습니다.",
+      "text_markdown": "코맥은 미국 식민지에서 새로 시작하기로 결심했습니다.",
+      "tts": {
+        "text": "코맥은 미국 식민지에서 새로 시작하기로 결심했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 메리 브레넌과 어린 앤을 데리고 사우스캐롤라이나의 찰스턴으로 갔습니다.",
+      "text_markdown": "그는 메리 브레넌과 어린 앤을 데리고 사우스캐롤라이나의 찰스턴으로 갔습니다.",
+      "tts": {
+        "text": "그는 메리 브레넌과 어린 앤을 데리고 사우스캐롤라이나의 찰스턴으로 갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "처음에 그는 앤에게 남자아이 옷을 입히고 앤디라고 불렀습니다.",
+      "text_markdown": "처음에 그는 앤에게 남자아이 옷을 입히고 앤디라고 불렀습니다.",
+      "tts": {
+        "text": "처음에 그는 앤에게 남자아이 옷을 입히고 앤디라고 불렀습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 사람들에게 이 아이가 법률 서기로 훈련시키고 있는 친척의 아들이라고 말했습니다.",
+      "text_markdown": "그는 사람들에게 이 아이가 법률 서기로 훈련시키고 있는 친척의 아들이라고 말했습니다.",
+      "tts": {
+        "text": "그는 사람들에게 이 아이가 법률 서기로 훈련시키고 있는 친척의 아들이라고 말했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "속임수는 오래가지 않았지만, 코맥은 어쨌든 찰스턴에서 번영했습니다.",
+      "text_markdown": "속임수는 오래가지 않았지만, 코맥은 어쨌든 찰스턴에서 번영했습니다.",
+      "tts": {
+        "text": "속임수는 오래가지 않았지만, 코맥은 어쨌든 찰스턴에서 번영했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 성공한 상인이 되었고 결국 농장을 얻었습니다.",
+      "text_markdown": "그는 성공한 상인이 되었고 결국 농장을 얻었습니다.",
+      "tts": {
+        "text": "그는 성공한 상인이 되었고 결국 농장을 얻었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 농장에서는 아마 그 지역의 주요 환금 작물인 쌀이나 인디고를 재배했을 것입니다.",
+      "text_markdown": "그 농장에서는 아마 그 지역의 주요 환금 작물인 쌀이나 인디고를 재배했을 것입니다.",
+      "tts": {
+        "text": "그 농장에서는 아마 그 지역의 주요 환금 작물인 쌀이나 인디고를 재배했을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "앤은 대부분의 식민지 아이들에 비해 비교적 편안하게 자랐습니다.",
+      "text_markdown": "앤은 대부분의 식민지 아이들에 비해 비교적 편안하게 자랐습니다.",
+      "tts": {
+        "text": "앤은 대부분의 식민지 아이들에 비해 비교적 편안하게 자랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤이 뒤에 남긴 도시 킨세일은 아일랜드 남해안의 번화한 항구였습니다.",
+      "text_markdown": "앤이 뒤에 남긴 도시 킨세일은 아일랜드 남해안의 번화한 항구였습니다.",
+      "tts": {
+        "text": "앤이 뒤에 남긴 도시 킨세일은 아일랜드 남해안의 번화한 항구였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그곳은 잉글랜드군과 스페인군 사이의 유명한 전투가 벌어진 곳이었습니다.",
+      "text_markdown": "그곳은 잉글랜드군과 스페인군 사이의 유명한 전투가 벌어진 곳이었습니다.",
+      "tts": {
+        "text": "그곳은 잉글랜드군과 스페인군 사이의 유명한 전투가 벌어진 곳이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 도시의 인구는 아일랜드인과 잉글랜드인 정착민의 혼합이었습니다.",
+      "text_markdown": "그 도시의 인구는 아일랜드인과 잉글랜드인 정착민의 혼합이었습니다.",
+      "tts": {
+        "text": "그 도시의 인구는 아일랜드인과 잉글랜드인 정착민의 혼합이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "앤은 다시는 자신이 태어난 땅으로 돌아가지 못했습니다.",
+      "text_markdown": "앤은 다시는 자신이 태어난 땅으로 돌아가지 못했습니다.",
+      "tts": {
+        "text": "앤은 다시는 자신이 태어난 땅으로 돌아가지 못했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "존슨 선장의 기록에 따르면, 앤은 어릴 때부터 불같은 성질을 지니고 있었습니다.",
+      "text_markdown": "존슨 선장의 기록에 따르면, 앤은 어릴 때부터 불같은 성질을 지니고 있었습니다.",
+      "tts": {
+        "text": "존슨 선장의 기록에 따르면, 앤은 어릴 때부터 불같은 성질을 지니고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 이야기에 따르면 그녀는 분노에 휩싸여 식탁용 칼로 하녀를 찔렀다고 합니다.",
+      "text_markdown": "한 이야기에 따르면 그녀는 분노에 휩싸여 식탁용 칼로 하녀를 찔렀다고 합니다.",
+      "tts": {
+        "text": "한 이야기에 따르면 그녀는 분노에 휩싸여 식탁용 칼로 하녀를 찔렀다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 이야기가 사실이든 과장이든, 폭력적이라는 그녀의 평판을 확립했습니다.",
+      "text_markdown": "이 이야기가 사실이든 과장이든, 폭력적이라는 그녀의 평판을 확립했습니다.",
+      "tts": {
+        "text": "이 이야기가 사실이든 과장이든, 폭력적이라는 그녀의 평판을 확립했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤의 어머니 메리 브레넌은 앤이 아직 어렸을 때 세상을 떠났습니다.",
+      "text_markdown": "앤의 어머니 메리 브레넌은 앤이 아직 어렸을 때 세상을 떠났습니다.",
+      "tts": {
+        "text": "앤의 어머니 메리 브레넌은 앤이 아직 어렸을 때 세상을 떠났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "메리의 사망 정확한 날짜와 원인은 알려져 있지 않습니다.",
+      "text_markdown": "메리의 사망 정확한 날짜와 원인은 알려져 있지 않습니다.",
+      "tts": {
+        "text": "메리의 사망 정확한 날짜와 원인은 알려져 있지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 후 앤은 주로 아버지에 의해 양육되었습니다.",
+      "text_markdown": "그 후 앤은 주로 아버지에 의해 양육되었습니다.",
+      "tts": {
+        "text": "그 후 앤은 주로 아버지에 의해 양육되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십대 시절, 앤은 빨간 머리카락을 가졌으며 매력적이라고 여겨졌다고 합니다.",
+      "text_markdown": "십대 시절, 앤은 빨간 머리카락을 가졌으며 매력적이라고 여겨졌다고 합니다.",
+      "tts": {
+        "text": "십대 시절, 앤은 빨간 머리카락을 가졌으며 매력적이라고 여겨졌다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 또한 의지가 강하고 통제하기 어려운 사람이라고도 했습니다.",
+      "text_markdown": "그녀는 또한 의지가 강하고 통제하기 어려운 사람이라고도 했습니다.",
+      "tts": {
+        "text": "그녀는 또한 의지가 강하고 통제하기 어려운 사람이라고도 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아버지는 그녀가 부유한 남자와 결혼하여 가문의 지위를 높이기를 바랐습니다.",
+      "text_markdown": "아버지는 그녀가 부유한 남자와 결혼하여 가문의 지위를 높이기를 바랐습니다.",
+      "tts": {
+        "text": "아버지는 그녀가 부유한 남자와 결혼하여 가문의 지위를 높이기를 바랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "십팔세기 초의 찰스턴은 거친 변경 도시였습니다.",
+      "text_markdown": "십팔세기 초의 찰스턴은 거친 변경 도시였습니다.",
+      "tts": {
+        "text": "십팔세기 초의 찰스턴은 거친 변경 도시였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "부유한 농장주들이 선원, 군인, 상인들과 함께 살았습니다.",
+      "text_markdown": "부유한 농장주들이 선원, 군인, 상인들과 함께 살았습니다.",
+      "tts": {
+        "text": "부유한 농장주들이 선원, 군인, 상인들과 함께 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "항구에는 대서양 세계 전역에서 배가 들어왔습니다.",
+      "text_markdown": "항구에는 대서양 세계 전역에서 배가 들어왔습니다.",
+      "tts": {
+        "text": "항구에는 대서양 세계 전역에서 배가 들어왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "앤은 바다의 이야기에 둘러싸여 자랐습니다.",
+      "text_markdown": "앤은 바다의 이야기에 둘러싸여 자랐습니다.",
+      "tts": {
+        "text": "앤은 바다의 이야기에 둘러싸여 자랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "대신, 1718년경에 앤은 제임스 보니와 결혼했습니다.",
+      "text_markdown": "대신, 1718년경에 앤은 제임스 보니와 결혼했습니다.",
+      "tts": {
+        "text": "대신, 천칠백십팔 년경에 앤은 제임스 보니와 결혼했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "제임스 보니는 돈도 전망도 없는 소규모 해적이었습니다.",
+      "text_markdown": "제임스 보니는 돈도 전망도 없는 소규모 해적이었습니다.",
+      "tts": {
+        "text": "제임스 보니는 돈도 전망도 없는 소규모 해적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부 역사가들은 그가 앤의 아버지 농장을 얻기 위해 앤과 결혼했다고 믿습니다.",
+      "text_markdown": "일부 역사가들은 그가 앤의 아버지 농장을 얻기 위해 앤과 결혼했다고 믿습니다.",
+      "tts": {
+        "text": "일부 역사가들은 그가 앤의 아버지 농장을 얻기 위해 앤과 결혼했다고 믿습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "윌리엄 코맥은 이 결혼에 격분했습니다.",
+      "text_markdown": "윌리엄 코맥은 이 결혼에 격분했습니다.",
+      "tts": {
+        "text": "윌리엄 코맥은 이 결혼에 격분했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 앤을 완전히 의절하고 어떤 유산도 주기를 거부했습니다.",
+      "text_markdown": "그는 앤을 완전히 의절하고 어떤 유산도 주기를 거부했습니다.",
+      "tts": {
+        "text": "그는 앤을 완전히 의절하고 어떤 유산도 주기를 거부했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "한 전설에 따르면 앤은 복수로 아버지의 농장에 불을 질렀다고 합니다.",
+      "text_markdown": "한 전설에 따르면 앤은 복수로 아버지의 농장에 불을 질렀다고 합니다.",
+      "tts": {
+        "text": "한 전설에 따르면 앤은 복수로 아버지의 농장에 불을 질렀다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "역사가들은 이것이 실제로 일어났는지 확인할 수 없습니다.",
+      "text_markdown": "역사가들은 이것이 실제로 일어났는지 확인할 수 없습니다.",
+      "tts": {
+        "text": "역사가들은 이것이 실제로 일어났는지 확인할 수 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤과 제임스 보니는 바하마의 나소로 여행했습니다.",
+      "text_markdown": "앤과 제임스 보니는 바하마의 나소로 여행했습니다.",
+      "tts": {
+        "text": "앤과 제임스 보니는 바하마의 나소로 여행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들이 도착했을 때 나소는 여전히 무법의 해적 안식처였습니다.",
+      "text_markdown": "그들이 도착했을 때 나소는 여전히 무법의 해적 안식처였습니다.",
+      "tts": {
+        "text": "그들이 도착했을 때 나소는 여전히 무법의 해적 안식처였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "제임스 보니는 우즈 로저스 총독의 밀고자로 일하기 시작했습니다.",
+      "text_markdown": "제임스 보니는 우즈 로저스 총독의 밀고자로 일하기 시작했습니다.",
+      "tts": {
+        "text": "제임스 보니는 우즈 로저스 총독의 밀고자로 일하기 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 돈과 교환하여 해적 활동을 보고했습니다.",
+      "text_markdown": "그는 돈과 교환하여 해적 활동을 보고했습니다.",
+      "tts": {
+        "text": "그는 돈과 교환하여 해적 활동을 보고했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤은 밀고자로서의 남편의 일을 경멸했습니다.",
+      "text_markdown": "앤은 밀고자로서의 남편의 일을 경멸했습니다.",
+      "tts": {
+        "text": "앤은 밀고자로서의 남편의 일을 경멸했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 당국보다 해적들이 훨씬 더 흥미롭다고 느꼈습니다.",
+      "text_markdown": "그녀는 당국보다 해적들이 훨씬 더 흥미롭다고 느꼈습니다.",
+      "tts": {
+        "text": "그녀는 당국보다 해적들이 훨씬 더 흥미롭다고 느꼈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 나소의 선술집과 부두에서 시간을 보내기 시작했습니다.",
+      "text_markdown": "그녀는 나소의 선술집과 부두에서 시간을 보내기 시작했습니다.",
+      "tts": {
+        "text": "그녀는 나소의 선술집과 부두에서 시간을 보내기 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바로 그곳에서 그녀의 삶은 영원히 바뀌었습니다.",
+      "text_markdown": "바로 그곳에서 그녀의 삶은 영원히 바뀌었습니다.",
+      "tts": {
+        "text": "바로 그곳에서 그녀의 삶은 영원히 바뀌었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력의 부상",
+      "text_markdown": "권력의 부상"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나소에서 앤 보니는 존 래컴이라는 해적 선장을 만났습니다.",
+      "text_markdown": "나소에서 앤 보니는 존 래컴이라는 해적 선장을 만났습니다.",
+      "tts": {
+        "text": "나소에서 앤 보니는 존 래컴이라는 해적 선장을 만났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "래컴은 화려한 캘리코 옷을 입어 캘리코 잭이라는 이름으로 알려져 있었습니다.",
+      "text_markdown": "래컴은 화려한 캘리코 옷을 입어 캘리코 잭이라는 이름으로 알려져 있었습니다.",
+      "tts": {
+        "text": "래컴은 화려한 캘리코 옷을 입어 캘리코 잭이라는 이름으로 알려져 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 매력적이고 대담하며 제임스 보니와는 완전히 달랐습니다.",
+      "text_markdown": "그는 매력적이고 대담하며 제임스 보니와는 완전히 달랐습니다.",
+      "tts": {
+        "text": "그는 매력적이고 대담하며 제임스 보니와는 완전히 달랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤과 캘리코 잭은 열정적인 관계를 시작했습니다.",
+      "text_markdown": "앤과 캘리코 잭은 열정적인 관계를 시작했습니다.",
+      "tts": {
+        "text": "앤과 캘리코 잭은 열정적인 관계를 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "래컴은 아내 매매라 불리는 거래로 앤을 남편에게서 사겠다고 제안했습니다.",
+      "text_markdown": "래컴은 아내 매매라 불리는 거래로 앤을 남편에게서 사겠다고 제안했습니다.",
+      "tts": {
+        "text": "래컴은 아내 매매라 불리는 거래로 앤을 남편에게서 사겠다고 제안했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아내 매매는 식민지 세계 일부에서 조잡하지만 인정된 관습이었습니다.",
+      "text_markdown": "아내 매매는 식민지 세계 일부에서 조잡하지만 인정된 관습이었습니다.",
+      "tts": {
+        "text": "아내 매매는 식민지 세계 일부에서 조잡하지만 인정된 관습이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "제임스 보니는 제안을 거부하고 로저스 총독에게 불만을 제기했습니다.",
+      "text_markdown": "제임스 보니는 제안을 거부하고 로저스 총독에게 불만을 제기했습니다.",
+      "tts": {
+        "text": "제임스 보니는 제안을 거부하고 로저스 총독에게 불만을 제기했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "로저스는 앤이 남편에게 돌아가지 않으면 공개적으로 채찍질하겠다고 위협했습니다.",
+      "text_markdown": "로저스는 앤이 남편에게 돌아가지 않으면 공개적으로 채찍질하겠다고 위협했습니다.",
+      "tts": {
+        "text": "로저스는 앤이 남편에게 돌아가지 않으면 공개적으로 채찍질하겠다고 위협했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "앤은 복종할 생각이 전혀 없었습니다.",
+      "text_markdown": "앤은 복종할 생각이 전혀 없었습니다.",
+      "tts": {
+        "text": "앤은 복종할 생각이 전혀 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신, 그녀와 캘리코 잭은 나소 항구에서 슬루프선을 훔쳐 떠났습니다.",
+      "text_markdown": "대신, 그녀와 캘리코 잭은 나소 항구에서 슬루프선을 훔쳐 떠났습니다.",
+      "tts": {
+        "text": "대신, 그녀와 캘리코 잭은 나소 항구에서 슬루프선을 훔쳐 떠났습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "래컴은 이전에 로저스로부터 왕의 사면을 받아들였었습니다.",
+      "text_markdown": "래컴은 이전에 로저스로부터 왕의 사면을 받아들였었습니다.",
+      "tts": {
+        "text": "래컴은 이전에 로저스로부터 왕의 사면을 받아들였었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적 행위로 복귀함으로써 그는 다시 한번 무법자가 되었습니다.",
+      "text_markdown": "해적 행위로 복귀함으로써 그는 다시 한번 무법자가 되었습니다.",
+      "tts": {
+        "text": "해적 행위로 복귀함으로써 그는 다시 한번 무법자가 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "앤 보니는 선원단의 정식 구성원으로서 그와 함께 항해했습니다.",
+      "text_markdown": "앤 보니는 선원단의 정식 구성원으로서 그와 함께 항해했습니다.",
+      "tts": {
+        "text": "앤 보니는 선원단의 정식 구성원으로서 그와 함께 항해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 순간부터 그녀는 해적이었습니다.",
+      "text_markdown": "이 순간부터 그녀는 해적이었습니다.",
+      "tts": {
+        "text": "이 순간부터 그녀는 해적이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤이 남장을 했는지는 역사가들 사이에서 논쟁이 됩니다.",
+      "text_markdown": "앤이 남장을 했는지는 역사가들 사이에서 논쟁이 됩니다.",
+      "tts": {
+        "text": "앤이 남장을 했는지는 역사가들 사이에서 논쟁이 됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 기록에서는 그녀가 문제를 피하기 위해 남장하고 싸웠다고 합니다.",
+      "text_markdown": "일부 기록에서는 그녀가 문제를 피하기 위해 남장하고 싸웠다고 합니다.",
+      "tts": {
+        "text": "일부 기록에서는 그녀가 문제를 피하기 위해 남장하고 싸웠다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 기록에서는 선원들이 처음부터 그녀가 여성임을 알고 있었다고 합니다.",
+      "text_markdown": "다른 기록에서는 선원들이 처음부터 그녀가 여성임을 알고 있었다고 합니다.",
+      "tts": {
+        "text": "다른 기록에서는 선원들이 처음부터 그녀가 여성임을 알고 있었다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어느 쪽이든, 그녀는 전사이자 선원으로 받아들여졌습니다.",
+      "text_markdown": "어느 쪽이든, 그녀는 전사이자 선원으로 받아들여졌습니다.",
+      "tts": {
+        "text": "어느 쪽이든, 그녀는 전사이자 선원으로 받아들여졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "래컴의 선원단은 빠르고 조종하기 쉬운 소형 슬루프선을 운영했습니다.",
+      "text_markdown": "래컴의 선원단은 빠르고 조종하기 쉬운 소형 슬루프선을 운영했습니다.",
+      "tts": {
+        "text": "래컴의 선원단은 빠르고 조종하기 쉬운 소형 슬루프선을 운영했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 어선, 상선, 소형 무역선을 노렸습니다.",
+      "text_markdown": "그들은 어선, 상선, 소형 무역선을 노렸습니다.",
+      "tts": {
+        "text": "그들은 어선, 상선, 소형 무역선을 노렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 자메이카, 히스파니올라, 쿠바 해안을 따라 약탈했습니다.",
+      "text_markdown": "그들은 자메이카, 히스파니올라, 쿠바 해안을 따라 약탈했습니다.",
+      "tts": {
+        "text": "그들은 자메이카, 히스파니올라, 쿠바 해안을 따라 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들의 사냥터는 서카리브해 전역에 걸쳐 있었습니다.",
+      "text_markdown": "그들의 사냥터는 서카리브해 전역에 걸쳐 있었습니다.",
+      "tts": {
+        "text": "그들의 사냥터는 서카리브해 전역에 걸쳐 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "래컴은 부나 권력 면에서 위대한 해적 선장 중 하나는 아니었습니다.",
+      "text_markdown": "래컴은 부나 권력 면에서 위대한 해적 선장 중 하나는 아니었습니다.",
+      "tts": {
+        "text": "래컴은 부나 권력 면에서 위대한 해적 선장 중 하나는 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 선원단은 적었으며, 아마 열두 명에서 스무 명 정도였습니다.",
+      "text_markdown": "그의 선원단은 적었으며, 아마 열두 명에서 스무 명 정도였습니다.",
+      "tts": {
+        "text": "그의 선원단은 적었으며, 아마 열두 명에서 스무 명 정도였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 전리품은 검은 수염 같은 해적이 취한 것에 비하면 소박했습니다.",
+      "text_markdown": "그들의 전리품은 검은 수염 같은 해적이 취한 것에 비하면 소박했습니다.",
+      "tts": {
+        "text": "그들의 전리품은 검은 수염 같은 해적이 취한 것에 비하면 소박했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 앤 보니의 존재가 이 선원단을 전설로 만들었습니다.",
+      "text_markdown": "하지만 앤 보니의 존재가 이 선원단을 전설로 만들었습니다.",
+      "tts": {
+        "text": "하지만 앤 보니의 존재가 이 선원단을 전설로 만들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 무렵에 앤은 메리 리드를 만났습니다.",
+      "text_markdown": "이 무렵에 앤은 메리 리드를 만났습니다.",
+      "tts": {
+        "text": "이 무렵에 앤은 메리 리드를 만났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "메리 리드는 래컴의 배에 탑승한 또 다른 여성이었습니다.",
+      "text_markdown": "메리 리드는 래컴의 배에 탑승한 또 다른 여성이었습니다.",
+      "tts": {
+        "text": "메리 리드는 래컴의 배에 탑승한 또 다른 여성이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "메리는 인생의 대부분을 남장으로 보냈습니다.",
+      "text_markdown": "메리는 인생의 대부분을 남장으로 보냈습니다.",
+      "tts": {
+        "text": "메리는 인생의 대부분을 남장으로 보냈습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메리 리드는 잉글랜드에서 태어나 어머니에 의해 남자아이로 길러졌습니다.",
+      "text_markdown": "메리 리드는 잉글랜드에서 태어나 어머니에 의해 남자아이로 길러졌습니다.",
+      "tts": {
+        "text": "메리 리드는 잉글랜드에서 태어나 어머니에 의해 남자아이로 길러졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어머니는 남자 아이에게 주어질 유산을 받기 위해 그녀를 변장시켰습니다.",
+      "text_markdown": "어머니는 남자 아이에게 주어질 유산을 받기 위해 그녀를 변장시켰습니다.",
+      "tts": {
+        "text": "어머니는 남자 아이에게 주어질 유산을 받기 위해 그녀를 변장시켰습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "메리는 바다로 나서기 전에 남장하고 영국군에서 복무했습니다.",
+      "text_markdown": "메리는 바다로 나서기 전에 남장하고 영국군에서 복무했습니다.",
+      "tts": {
+        "text": "메리는 바다로 나서기 전에 남장하고 영국군에서 복무했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 스페인 왕위 계승 전쟁 중 플랑드르에서 싸웠습니다.",
+      "text_markdown": "그녀는 스페인 왕위 계승 전쟁 중 플랑드르에서 싸웠습니다.",
+      "tts": {
+        "text": "그녀는 스페인 왕위 계승 전쟁 중 플랑드르에서 싸웠습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메리는 플랑드르에서 동료 군인과 결혼하기도 했습니다.",
+      "text_markdown": "메리는 플랑드르에서 동료 군인과 결혼하기도 했습니다.",
+      "tts": {
+        "text": "메리는 플랑드르에서 동료 군인과 결혼하기도 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남편이 죽자 그녀는 바다의 삶으로 돌아갔습니다.",
+      "text_markdown": "남편이 죽자 그녀는 바다의 삶으로 돌아갔습니다.",
+      "tts": {
+        "text": "남편이 죽자 그녀는 바다의 삶으로 돌아갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 카리브해로 향하는 배에 탔는데, 그 배가 해적에게 나포되었습니다.",
+      "text_markdown": "그녀는 카리브해로 향하는 배에 탔는데, 그 배가 해적에게 나포되었습니다.",
+      "tts": {
+        "text": "그녀는 카리브해로 향하는 배에 탔는데, 그 배가 해적에게 나포되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이렇게 해서 그녀는 래컴의 선원단에 합류하게 되었습니다.",
+      "text_markdown": "이렇게 해서 그녀는 래컴의 선원단에 합류하게 되었습니다.",
+      "tts": {
+        "text": "이렇게 해서 그녀는 래컴의 선원단에 합류하게 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "존슨의 기록에 따르면, 앤은 처음에 메리를 남자로 생각하고 끌렸습니다.",
+      "text_markdown": "존슨의 기록에 따르면, 앤은 처음에 메리를 남자로 생각하고 끌렸습니다.",
+      "tts": {
+        "text": "존슨의 기록에 따르면, 앤은 처음에 메리를 남자로 생각하고 끌렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "앤이 메리의 진정한 정체를 알게 되자, 둘은 친밀한 친구이자 동맹이 되었습니다.",
+      "text_markdown": "앤이 메리의 진정한 정체를 알게 되자, 둘은 친밀한 친구이자 동맹이 되었습니다.",
+      "tts": {
+        "text": "앤이 메리의 진정한 정체를 알게 되자, 둘은 친밀한 친구이자 동맹이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "캘리코 잭은 진실을 알기 전에 질투심을 느꼈다고 합니다.",
+      "text_markdown": "캘리코 잭은 진실을 알기 전에 질투심을 느꼈다고 합니다.",
+      "tts": {
+        "text": "캘리코 잭은 진실을 알기 전에 질투심을 느꼈다고 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤과 메리 모두 전투에서 반복적으로 자신을 증명했습니다.",
+      "text_markdown": "앤과 메리 모두 전투에서 반복적으로 자신을 증명했습니다.",
+      "tts": {
+        "text": "앤과 메리 모두 전투에서 반복적으로 자신을 증명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "증인들은 나중에 두 여성이 배에서 가장 용맹한 전사였다고 증언했습니다.",
+      "text_markdown": "증인들은 나중에 두 여성이 배에서 가장 용맹한 전사였다고 증언했습니다.",
+      "tts": {
+        "text": "증인들은 나중에 두 여성이 배에서 가장 용맹한 전사였다고 증언했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 숙련됨과 맹렬함으로 커틀러스와 권총을 휘둘렀습니다.",
+      "text_markdown": "그들은 숙련됨과 맹렬함으로 커틀러스와 권총을 휘둘렀습니다.",
+      "tts": {
+        "text": "그들은 숙련됨과 맹렬함으로 커틀러스와 권총을 휘둘렀습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선원단은 자메이카 근해 전역에서 소형 선박을 약탈했습니다.",
+      "text_markdown": "선원단은 자메이카 근해 전역에서 소형 선박을 약탈했습니다.",
+      "tts": {
+        "text": "선원단은 자메이카 근해 전역에서 소형 선박을 약탈했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 화물, 식량, 무기를 탈취했고, 때때로 새 선원을 받아들였습니다.",
+      "text_markdown": "그들은 화물, 식량, 무기를 탈취했고, 때때로 새 선원을 받아들였습니다.",
+      "tts": {
+        "text": "그들은 화물, 식량, 무기를 탈취했고, 때때로 새 선원을 받아들였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포로가 된 선원 중 일부는 표류하는 것보다 해적에 합류하는 것을 택했습니다.",
+      "text_markdown": "포로가 된 선원 중 일부는 표류하는 것보다 해적에 합류하는 것을 택했습니다.",
+      "tts": {
+        "text": "포로가 된 선원 중 일부는 표류하는 것보다 해적에 합류하는 것을 택했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720년까지 카리브해에서의 해적 행위는 점점 더 위험해지고 있었습니다.",
+      "text_markdown": "1720년까지 카리브해에서의 해적 행위는 점점 더 위험해지고 있었습니다.",
+      "tts": {
+        "text": "천칠백이십 년까지 카리브해에서의 해적 행위는 점점 더 위험해지고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 해군은 순찰과 해적 사냥을 강화했습니다.",
+      "text_markdown": "영국 해군은 순찰과 해적 사냥을 강화했습니다.",
+      "tts": {
+        "text": "영국 해군은 순찰과 해적 사냥을 강화했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "로저스 총독은 해적 사냥꾼들에게 해적을 발견 즉시 체포하거나 사살할 권한을 부여했습니다.",
+      "text_markdown": "로저스 총독은 해적 사냥꾼들에게 해적을 발견 즉시 체포하거나 사살할 권한을 부여했습니다.",
+      "tts": {
+        "text": "로저스 총독은 해적 사냥꾼들에게 해적을 발견 즉시 체포하거나 사살할 권한을 부여했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 지역의 모든 해적단 주위로 올가미가 조여지고 있었습니다.",
+      "text_markdown": "이 지역의 모든 해적단 주위로 올가미가 조여지고 있었습니다.",
+      "tts": {
+        "text": "이 지역의 모든 해적단 주위로 올가미가 조여지고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위험에도 불구하고, 래컴의 선원단은 1720년 여름과 가을 내내 약탈을 계속했습니다.",
+      "text_markdown": "위험에도 불구하고, 래컴의 선원단은 1720년 여름과 가을 내내 약탈을 계속했습니다.",
+      "tts": {
+        "text": "위험에도 불구하고, 래컴의 선원단은 천칠백이십 년 여름과 가을 내내 약탈을 계속했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 해적 생활을 포기할 의향이 없거나 포기할 수 없는 것처럼 보였습니다.",
+      "text_markdown": "그들은 해적 생활을 포기할 의향이 없거나 포기할 수 없는 것처럼 보였습니다.",
+      "tts": {
+        "text": "그들은 해적 생활을 포기할 의향이 없거나 포기할 수 없는 것처럼 보였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 행운은 다하려 하고 있었습니다.",
+      "text_markdown": "그들의 행운은 다하려 하고 있었습니다.",
+      "tts": {
+        "text": "그들의 행운은 다하려 하고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "절정에서",
+      "text_markdown": "절정에서"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적선에서의 생활은 낭만적인 이야기가 암시하는 것과는 전혀 달랐습니다.",
+      "text_markdown": "해적선에서의 생활은 낭만적인 이야기가 암시하는 것과는 전혀 달랐습니다.",
+      "tts": {
+        "text": "해적선에서의 생활은 낭만적인 이야기가 암시하는 것과는 전혀 달랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "비좁고 더럽고 종종 지루했습니다.",
+      "text_markdown": "비좁고 더럽고 종종 지루했습니다.",
+      "tts": {
+        "text": "비좁고 더럽고 종종 지루했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원들은 건빵, 소금에 절인 고기, 그리고 구할 수 있는 신선한 음식을 먹었습니다.",
+      "text_markdown": "선원들은 건빵, 소금에 절인 고기, 그리고 구할 수 있는 신선한 음식을 먹었습니다.",
+      "tts": {
+        "text": "선원들은 건빵, 소금에 절인 고기, 그리고 구할 수 있는 신선한 음식을 먹었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "긴 항해에서 담수는 항상 부족했습니다.",
+      "text_markdown": "긴 항해에서 담수는 항상 부족했습니다.",
+      "tts": {
+        "text": "긴 항해에서 담수는 항상 부족했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 수분을 유지하기 위해 럼주, 맥주, 또는 물과 술의 혼합물을 마셨습니다.",
+      "text_markdown": "해적들은 수분을 유지하기 위해 럼주, 맥주, 또는 물과 술의 혼합물을 마셨습니다.",
+      "tts": {
+        "text": "해적들은 수분을 유지하기 위해 럼주, 맥주, 또는 물과 술의 혼합물을 마셨습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "질병은 전투보다 훨씬 더 많은 선원을 죽였습니다.",
+      "text_markdown": "질병은 전투보다 훨씬 더 많은 선원을 죽였습니다.",
+      "tts": {
+        "text": "질병은 전투보다 훨씬 더 많은 선원을 죽였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "괴혈병, 이질, 열대성 열병은 끊임없는 위협이었습니다.",
+      "text_markdown": "괴혈병, 이질, 열대성 열병은 끊임없는 위협이었습니다.",
+      "tts": {
+        "text": "괴혈병, 이질, 열대성 열병은 끊임없는 위협이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "래컴의 슬루프선은 속도를 위해 설계된 소형 단일 돛대 선박이었습니다.",
+      "text_markdown": "래컴의 슬루프선은 속도를 위해 설계된 소형 단일 돛대 선박이었습니다.",
+      "tts": {
+        "text": "래컴의 슬루프선은 속도를 위해 설계된 소형 단일 돛대 선박이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 선원이나 무거운 화물을 실을 수 없었습니다.",
+      "text_markdown": "많은 선원이나 무거운 화물을 실을 수 없었습니다.",
+      "tts": {
+        "text": "많은 선원이나 무거운 화물을 실을 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 상선을 따라잡을 만큼 빠르고 군함을 피할 만큼 민첩했습니다.",
+      "text_markdown": "하지만 상선을 따라잡을 만큼 빠르고 군함을 피할 만큼 민첩했습니다.",
+      "tts": {
+        "text": "하지만 상선을 따라잡을 만큼 빠르고 군함을 피할 만큼 민첩했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "슬루프선은 소수의 선원으로 운항할 수 있어 래컴에게 완벽히 맞았습니다.",
+      "text_markdown": "슬루프선은 소수의 선원으로 운항할 수 있어 래컴에게 완벽히 맞았습니다.",
+      "tts": {
+        "text": "슬루프선은 소수의 선원으로 운항할 수 있어 래컴에게 완벽히 맞았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "선원이 적다는 것은 각자에게 돌아가는 약탈물의 몫이 커진다는 뜻이었습니다.",
+      "text_markdown": "선원이 적다는 것은 각자에게 돌아가는 약탈물의 몫이 커진다는 뜻이었습니다.",
+      "tts": {
+        "text": "선원이 적다는 것은 각자에게 돌아가는 약탈물의 몫이 커진다는 뜻이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "슬루프선의 얕은 흘수 덕분에 큰 배가 들어갈 수 없는 만과 후미에 숨을 수 있었습니다.",
+      "text_markdown": "슬루프선의 얕은 흘수 덕분에 큰 배가 들어갈 수 없는 만과 후미에 숨을 수 있었습니다.",
+      "tts": {
+        "text": "슬루프선의 얕은 흘수 덕분에 큰 배가 들어갈 수 없는 만과 후미에 숨을 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적 선원단은 조항이라 불리는 일련의 서면 규칙으로 자치했습니다.",
+      "text_markdown": "해적 선원단은 조항이라 불리는 일련의 서면 규칙으로 자치했습니다.",
+      "tts": {
+        "text": "해적 선원단은 조항이라 불리는 일련의 서면 규칙으로 자치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모든 선원은 합류하기 전에 조항에 서명하거나 표시를 했습니다.",
+      "text_markdown": "모든 선원은 합류하기 전에 조항에 서명하거나 표시를 했습니다.",
+      "tts": {
+        "text": "모든 선원은 합류하기 전에 조항에 서명하거나 표시를 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "조항은 약탈물이 어떻게 분배될지를 명시했습니다.",
+      "text_markdown": "조항은 약탈물이 어떻게 분배될지를 명시했습니다.",
+      "tts": {
+        "text": "조항은 약탈물이 어떻게 분배될지를 명시했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "또한 전투, 도박, 분쟁 해결에 대한 규칙도 정했습니다.",
+      "text_markdown": "또한 전투, 도박, 분쟁 해결에 대한 규칙도 정했습니다.",
+      "tts": {
+        "text": "또한 전투, 도박, 분쟁 해결에 대한 규칙도 정했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "선장은 선원단의 투표로 선출되었습니다.",
+      "text_markdown": "선장은 선원단의 투표로 선출되었습니다.",
+      "tts": {
+        "text": "선장은 선원단의 투표로 선출되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "선원단이 신뢰를 잃으면 언제든 해임될 수 있었습니다.",
+      "text_markdown": "선원단이 신뢰를 잃으면 언제든 해임될 수 있었습니다.",
+      "tts": {
+        "text": "선원단이 신뢰를 잃으면 언제든 해임될 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "쿼터마스터는 일종의 부선장이자 중재자 역할을 했습니다.",
+      "text_markdown": "쿼터마스터는 일종의 부선장이자 중재자 역할을 했습니다.",
+      "tts": {
+        "text": "쿼터마스터는 일종의 부선장이자 중재자 역할을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 민주적 제도는 당시로서는 놀라운 것이었습니다.",
+      "text_markdown": "이 민주적 제도는 당시로서는 놀라운 것이었습니다.",
+      "tts": {
+        "text": "이 민주적 제도는 당시로서는 놀라운 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니와 메리 리드는 이 제도 안에서 동등하게 활동했습니다.",
+      "text_markdown": "앤 보니와 메리 리드는 이 제도 안에서 동등하게 활동했습니다.",
+      "tts": {
+        "text": "앤 보니와 메리 리드는 이 제도 안에서 동등하게 활동했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 남성 선원과 마찬가지로 약탈물의 몫을 받았습니다.",
+      "text_markdown": "그들은 남성 선원과 마찬가지로 약탈물의 몫을 받았습니다.",
+      "tts": {
+        "text": "그들은 남성 선원과 마찬가지로 약탈물의 몫을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 전투 능력은 배에서 존경을 얻었습니다.",
+      "text_markdown": "그들의 전투 능력은 배에서 존경을 얻었습니다.",
+      "tts": {
+        "text": "그들의 전투 능력은 배에서 존경을 얻었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "카리브해 해적의 무기는 다양하고 치명적이었습니다.",
+      "text_markdown": "카리브해 해적의 무기는 다양하고 치명적이었습니다.",
+      "tts": {
+        "text": "카리브해 해적의 무기는 다양하고 치명적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "커틀러스는 해상 근접전에서 선호되는 무기였습니다.",
+      "text_markdown": "커틀러스는 해상 근접전에서 선호되는 무기였습니다.",
+      "tts": {
+        "text": "커틀러스는 해상 근접전에서 선호되는 무기였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "부싯돌 권총은 휴대했지만 재장전 전에 한 발만 발사할 수 있었습니다.",
+      "text_markdown": "부싯돌 권총은 휴대했지만 재장전 전에 한 발만 발사할 수 있었습니다.",
+      "tts": {
+        "text": "부싯돌 권총은 휴대했지만 재장전 전에 한 발만 발사할 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "등선용 도끼, 단검, 파이어 포트라 불리는 수류탄도 흔했습니다.",
+      "text_markdown": "등선용 도끼, 단검, 파이어 포트라 불리는 수류탄도 흔했습니다.",
+      "tts": {
+        "text": "등선용 도끼, 단검, 파이어 포트라 불리는 수류탄도 흔했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적이 배를 공격할 때 첫 번째 목표는 선원들을 위협하여 항복시키는 것이었습니다.",
+      "text_markdown": "해적이 배를 공격할 때 첫 번째 목표는 선원들을 위협하여 항복시키는 것이었습니다.",
+      "tts": {
+        "text": "해적이 배를 공격할 때 첫 번째 목표는 선원들을 위협하여 항복시키는 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "졸리 로저 깃발을 게양하는 것은 심리적 무기였습니다.",
+      "text_markdown": "졸리 로저 깃발을 게양하는 것은 심리적 무기였습니다.",
+      "tts": {
+        "text": "졸리 로저 깃발을 게양하는 것은 심리적 무기였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대부분의 상선 선원은 저항이 죽음을 의미했기에 싸우지 않고 항복했습니다.",
+      "text_markdown": "대부분의 상선 선원은 저항이 죽음을 의미했기에 싸우지 않고 항복했습니다.",
+      "tts": {
+        "text": "대부분의 상선 선원은 저항이 죽음을 의미했기에 싸우지 않고 항복했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "캘리코 잭의 깃발은 독특했습니다.",
+      "text_markdown": "캘리코 잭의 깃발은 독특했습니다.",
+      "tts": {
+        "text": "캘리코 잭의 깃발은 독특했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "검은 배경에 교차된 두 자루의 칼 위에 흰 해골이 그려져 있었습니다.",
+      "text_markdown": "검은 배경에 교차된 두 자루의 칼 위에 흰 해골이 그려져 있었습니다.",
+      "tts": {
+        "text": "검은 배경에 교차된 두 자루의 칼 위에 흰 해골이 그려져 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 디자인은 역사상 가장 잘 알려진 해적 깃발 중 하나입니다.",
+      "text_markdown": "이 디자인은 역사상 가장 잘 알려진 해적 깃발 중 하나입니다.",
+      "tts": {
+        "text": "이 디자인은 역사상 가장 잘 알려진 해적 깃발 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적 깃발의 많은 현대적 묘사는 래컴의 디자인에 기반하고 있습니다.",
+      "text_markdown": "해적 깃발의 많은 현대적 묘사는 래컴의 디자인에 기반하고 있습니다.",
+      "tts": {
+        "text": "해적 깃발의 많은 현대적 묘사는 래컴의 디자인에 기반하고 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "폭력적이라는 앤 보니의 평판은 해적 사회에서 잘 확립되어 있었습니다.",
+      "text_markdown": "폭력적이라는 앤 보니의 평판은 해적 사회에서 잘 확립되어 있었습니다.",
+      "tts": {
+        "text": "폭력적이라는 앤 보니의 평판은 해적 사회에서 잘 확립되어 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이후 재판에서 증인들은 그녀를 전투에 열의가 넘친다고 묘사했습니다.",
+      "text_markdown": "이후 재판에서 증인들은 그녀를 전투에 열의가 넘친다고 묘사했습니다.",
+      "tts": {
+        "text": "이후 재판에서 증인들은 그녀를 전투에 열의가 넘친다고 묘사했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 저항하는 포로 선원들에게 욕설을 퍼붓고 위협했다고 합니다.",
+      "text_markdown": "그녀는 저항하는 포로 선원들에게 욕설을 퍼붓고 위협했다고 합니다.",
+      "tts": {
+        "text": "그녀는 저항하는 포로 선원들에게 욕설을 퍼붓고 위협했다고 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메리 리드도 마찬가지로 무시무시한 존재였습니다.",
+      "text_markdown": "메리 리드도 마찬가지로 무시무시한 존재였습니다.",
+      "tts": {
+        "text": "메리 리드도 마찬가지로 무시무시한 존재였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 이야기에 따르면, 메리는 자신이 아끼는 남자를 보호하기 위해 동료 해적에게 결투를 신청했습니다.",
+      "text_markdown": "한 이야기에 따르면, 메리는 자신이 아끼는 남자를 보호하기 위해 동료 해적에게 결투를 신청했습니다.",
+      "tts": {
+        "text": "한 이야기에 따르면, 메리는 자신이 아끼는 남자를 보호하기 위해 동료 해적에게 결투를 신청했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 일대일 전투에서 상대 해적을 죽였습니다.",
+      "text_markdown": "그녀는 일대일 전투에서 상대 해적을 죽였습니다.",
+      "tts": {
+        "text": "그녀는 일대일 전투에서 상대 해적을 죽였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 이야기가 사실이든 아니든, 그녀가 얼마나 위험한 존재로 여겨졌는지를 보여줍니다.",
+      "text_markdown": "이 이야기가 사실이든 아니든, 그녀가 얼마나 위험한 존재로 여겨졌는지를 보여줍니다.",
+      "tts": {
+        "text": "이 이야기가 사실이든 아니든, 그녀가 얼마나 위험한 존재로 여겨졌는지를 보여줍니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720년 여름, 선원단은 자메이카 북해안을 따라 항해했습니다.",
+      "text_markdown": "1720년 여름, 선원단은 자메이카 북해안을 따라 항해했습니다.",
+      "tts": {
+        "text": "천칠백이십 년 여름, 선원단은 자메이카 북해안을 따라 항해했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 여러 어선과 상선 스쿠너를 나포했습니다.",
+      "text_markdown": "그들은 여러 어선과 상선 스쿠너를 나포했습니다.",
+      "tts": {
+        "text": "그들은 여러 어선과 상선 스쿠너를 나포했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전리품은 작았지만 선원단에게 식량과 보급품을 제공했습니다.",
+      "text_markdown": "전리품은 작았지만 선원단에게 식량과 보급품을 제공했습니다.",
+      "tts": {
+        "text": "전리품은 작았지만 선원단에게 식량과 보급품을 제공했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자메이카 총독 니콜라스 로즈 경은 래컴에 대한 포고령을 발표했습니다.",
+      "text_markdown": "자메이카 총독 니콜라스 로즈 경은 래컴에 대한 포고령을 발표했습니다.",
+      "tts": {
+        "text": "자메이카 총독 니콜라스 로즈 경은 래컴에 대한 포고령을 발표했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포고령에는 래컴과 그의 선원단에 속한 이름 모를 두 여성이 구체적으로 명시되었습니다.",
+      "text_markdown": "포고령에는 래컴과 그의 선원단에 속한 이름 모를 두 여성이 구체적으로 명시되었습니다.",
+      "tts": {
+        "text": "포고령에는 래컴과 그의 선원단에 속한 이름 모를 두 여성이 구체적으로 명시되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이것은 여성 해적을 인정한 몇 안 되는 공식 문서 중 하나였습니다.",
+      "text_markdown": "이것은 여성 해적을 인정한 몇 안 되는 공식 문서 중 하나였습니다.",
+      "tts": {
+        "text": "이것은 여성 해적을 인정한 몇 안 되는 공식 문서 중 하나였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "당국은 래컴의 선원단을 추적하기 위해 경험 많은 선원들을 고용했습니다.",
+      "text_markdown": "당국은 래컴의 선원단을 추적하기 위해 경험 많은 선원들을 고용했습니다.",
+      "tts": {
+        "text": "당국은 래컴의 선원단을 추적하기 위해 경험 많은 선원들을 고용했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "조너선 바넷 선장이 해적 사냥꾼으로 임명되었습니다.",
+      "text_markdown": "조너선 바넷 선장이 해적 사냥꾼으로 임명되었습니다.",
+      "tts": {
+        "text": "조너선 바넷 선장이 해적 사냥꾼으로 임명되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바넷은 자메이카 주변 해역을 잘 알고 있었고 그들을 찾겠다는 결의가 굳건했습니다.",
+      "text_markdown": "바넷은 자메이카 주변 해역을 잘 알고 있었고 그들을 찾겠다는 결의가 굳건했습니다.",
+      "tts": {
+        "text": "바넷은 자메이카 주변 해역을 잘 알고 있었고 그들을 찾겠다는 결의가 굳건했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "캘리코 잭과 그의 선원단에 대한 추적은 점점 좁혀지고 있었습니다.",
+      "text_markdown": "캘리코 잭과 그의 선원단에 대한 추적은 점점 좁혀지고 있었습니다.",
+      "tts": {
+        "text": "캘리코 잭과 그의 선원단에 대한 추적은 점점 좁혀지고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "최후",
+      "text_markdown": "최후"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720년 십월, 조너선 바넷 선장은 자메이카 서쪽 끝에 정박한 래컴의 슬루프선을 발견했습니다.",
+      "text_markdown": "1720년 십월, 조너선 바넷 선장은 자메이카 서쪽 끝에 정박한 래컴의 슬루프선을 발견했습니다.",
+      "tts": {
+        "text": "천칠백이십 년 시월, 조너선 바넷 선장은 자메이카 서쪽 끝에 정박한 래컴의 슬루프선을 발견했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들은 네그릴 포인트 근처의 작은 만에 정박해 있었습니다.",
+      "text_markdown": "해적들은 네그릴 포인트 근처의 작은 만에 정박해 있었습니다.",
+      "tts": {
+        "text": "해적들은 네그릴 포인트 근처의 작은 만에 정박해 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바넷의 배가 접근한 것은 밤이었습니다.",
+      "text_markdown": "바넷의 배가 접근한 것은 밤이었습니다.",
+      "tts": {
+        "text": "바넷의 배가 접근한 것은 밤이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "래컴의 선원 대부분은 갑판 아래에서 술에 취해 있거나 잠들어 있었습니다.",
+      "text_markdown": "래컴의 선원 대부분은 갑판 아래에서 술에 취해 있거나 잠들어 있었습니다.",
+      "tts": {
+        "text": "래컴의 선원 대부분은 갑판 아래에서 술에 취해 있거나 잠들어 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그날 일찍 소형 어선을 나포한 후 축하하고 있었습니다.",
+      "text_markdown": "그날 일찍 소형 어선을 나포한 후 축하하고 있었습니다.",
+      "tts": {
+        "text": "그날 일찍 소형 어선을 나포한 후 축하하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선원단은 공격에 완전히 대비하지 못한 상태였습니다.",
+      "text_markdown": "선원단은 공격에 완전히 대비하지 못한 상태였습니다.",
+      "tts": {
+        "text": "선원단은 공격에 완전히 대비하지 못한 상태였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바넷의 부하들이 발포하자 대부분의 해적은 갑판 아래로 숨었습니다.",
+      "text_markdown": "바넷의 부하들이 발포하자 대부분의 해적은 갑판 아래로 숨었습니다.",
+      "tts": {
+        "text": "바넷의 부하들이 발포하자 대부분의 해적은 갑판 아래로 숨었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "재판 증언에 따르면, 앤 보니와 메리 리드는 반격한 소수 중에 있었습니다.",
+      "text_markdown": "재판 증언에 따르면, 앤 보니와 메리 리드는 반격한 소수 중에 있었습니다.",
+      "tts": {
+        "text": "재판 증언에 따르면, 앤 보니와 메리 리드는 반격한 소수 중에 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 공격자들에게 권총을 쏘고 커틀러스를 휘둘렀습니다.",
+      "text_markdown": "그들은 공격자들에게 권총을 쏘고 커틀러스를 휘둘렀습니다.",
+      "tts": {
+        "text": "그들은 공격자들에게 권총을 쏘고 커틀러스를 휘둘렀습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤은 아래에 숨어있는 남자들에게 올라와서 싸우라고 소리쳤다고 합니다.",
+      "text_markdown": "앤은 아래에 숨어있는 남자들에게 올라와서 싸우라고 소리쳤다고 합니다.",
+      "tts": {
+        "text": "앤은 아래에 숨어있는 남자들에게 올라와서 싸우라고 소리쳤다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들이 거부하자 그녀는 분노하여 선창으로 권총을 쏘았습니다.",
+      "text_markdown": "그들이 거부하자 그녀는 분노하여 선창으로 권총을 쏘았습니다.",
+      "tts": {
+        "text": "그들이 거부하자 그녀는 분노하여 선창으로 권총을 쏘았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "앤과 메리의 용감함에도 불구하고, 해적들은 빠르게 제압되었습니다.",
+      "text_markdown": "앤과 메리의 용감함에도 불구하고, 해적들은 빠르게 제압되었습니다.",
+      "tts": {
+        "text": "앤과 메리의 용감함에도 불구하고, 해적들은 빠르게 제압되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바넷의 선원이 배 전체를 나포했습니다.",
+      "text_markdown": "바넷의 선원이 배 전체를 나포했습니다.",
+      "tts": {
+        "text": "바넷의 선원이 배 전체를 나포했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포로로 잡힌 해적들은 재판을 위해 자메이카의 스패니시 타운으로 이송되었습니다.",
+      "text_markdown": "포로로 잡힌 해적들은 재판을 위해 자메이카의 스패니시 타운으로 이송되었습니다.",
+      "tts": {
+        "text": "포로로 잡힌 해적들은 재판을 위해 자메이카의 스패니시 타운으로 이송되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스패니시 타운은 당시 자메이카의 수도였습니다.",
+      "text_markdown": "스패니시 타운은 당시 자메이카의 수도였습니다.",
+      "tts": {
+        "text": "스패니시 타운은 당시 자메이카의 수도였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "재판은 1720년 십일월에 부해군 법원 앞에서 열렸습니다.",
+      "text_markdown": "재판은 1720년 십일월에 부해군 법원 앞에서 열렸습니다.",
+      "tts": {
+        "text": "재판은 천칠백이십 년 십일월에 부해군 법원 앞에서 열렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "캘리코 잭 래컴은 1720년 십일월 십육일에 첫 번째로 재판을 받았습니다.",
+      "text_markdown": "캘리코 잭 래컴은 1720년 십일월 십육일에 첫 번째로 재판을 받았습니다.",
+      "tts": {
+        "text": "캘리코 잭 래컴은 천칠백이십 년 십일월 십육일에 첫 번째로 재판을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 해적 행위 유죄 판결을 받고 교수형을 선고받았습니다.",
+      "text_markdown": "그는 해적 행위 유죄 판결을 받고 교수형을 선고받았습니다.",
+      "tts": {
+        "text": "그는 해적 행위 유죄 판결을 받고 교수형을 선고받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 시신은 다른 이들에 대한 경고로 기벳이라 불리는 금속 우리에 전시되었습니다.",
+      "text_markdown": "그의 시신은 다른 이들에 대한 경고로 기벳이라 불리는 금속 우리에 전시되었습니다.",
+      "tts": {
+        "text": "그의 시신은 다른 이들에 대한 경고로 기벳이라 불리는 금속 우리에 전시되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "기벳은 지나가는 배에서 보이는 작은 섬에 놓였습니다.",
+      "text_markdown": "기벳은 지나가는 배에서 보이는 작은 섬에 놓였습니다.",
+      "tts": {
+        "text": "기벳은 지나가는 배에서 보이는 작은 섬에 놓였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처형 전에 앤 보니는 캘리코 잭의 감방을 방문하는 것이 허락되었습니다.",
+      "text_markdown": "처형 전에 앤 보니는 캘리코 잭의 감방을 방문하는 것이 허락되었습니다.",
+      "tts": {
+        "text": "처형 전에 앤 보니는 캘리코 잭의 감방을 방문하는 것이 허락되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "존슨의 기록에 따르면, 그녀는 그에게 동정을 보이지 않았습니다.",
+      "text_markdown": "존슨의 기록에 따르면, 그녀는 그에게 동정을 보이지 않았습니다.",
+      "tts": {
+        "text": "존슨의 기록에 따르면, 그녀는 그에게 동정을 보이지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀는 사나이답게 싸웠다면 개처럼 매달릴 필요가 없었을 것이라고 말했다고 합니다.",
+      "text_markdown": "그녀는 사나이답게 싸웠다면 개처럼 매달릴 필요가 없었을 것이라고 말했다고 합니다.",
+      "tts": {
+        "text": "그녀는 사나이답게 싸웠다면 개처럼 매달릴 필요가 없었을 것이라고 말했다고 합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이것은 해적 역사에서 가장 유명한 대사 중 하나가 되었습니다.",
+      "text_markdown": "이것은 해적 역사에서 가장 유명한 대사 중 하나가 되었습니다.",
+      "tts": {
+        "text": "이것은 해적 역사에서 가장 유명한 대사 중 하나가 되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니와 메리 리드는 1720년 십일월 이십팔일에 재판을 받았습니다.",
+      "text_markdown": "앤 보니와 메리 리드는 1720년 십일월 이십팔일에 재판을 받았습니다.",
+      "tts": {
+        "text": "앤 보니와 메리 리드는 천칠백이십 년 십일월 이십팔일에 재판을 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러 증인이 그들에게 불리한 증언을 했습니다.",
+      "text_markdown": "여러 증인이 그들에게 불리한 증언을 했습니다.",
+      "tts": {
+        "text": "여러 증인이 그들에게 불리한 증언을 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포로로 잡힌 어부와 선원들은 여성들이 무기로 자신들을 공격한 방법을 설명했습니다.",
+      "text_markdown": "포로로 잡힌 어부와 선원들은 여성들이 무기로 자신들을 공격한 방법을 설명했습니다.",
+      "tts": {
+        "text": "포로로 잡힌 어부와 선원들은 여성들이 무기로 자신들을 공격한 방법을 설명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "두 여성 모두 유죄 판결을 받고 교수형을 선고받았습니다.",
+      "text_markdown": "두 여성 모두 유죄 판결을 받고 교수형을 선고받았습니다.",
+      "tts": {
+        "text": "두 여성 모두 유죄 판결을 받고 교수형을 선고받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 앤과 메리 모두에게 법적 탈출구가 있었습니다.",
+      "text_markdown": "그러나 앤과 메리 모두에게 법적 탈출구가 있었습니다.",
+      "tts": {
+        "text": "그러나 앤과 메리 모두에게 법적 탈출구가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "각 여성은 임신 중이라고 선언했습니다.",
+      "text_markdown": "각 여성은 임신 중이라고 선언했습니다.",
+      "tts": {
+        "text": "각 여성은 임신 중이라고 선언했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국법에 따르면, 임신한 여성은 처형될 수 없었습니다.",
+      "text_markdown": "영국법에 따르면, 임신한 여성은 처형될 수 없었습니다.",
+      "tts": {
+        "text": "영국법에 따르면, 임신한 여성은 처형될 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 법적 보호는 플리딩 더 벨리라고 불렸습니다.",
+      "text_markdown": "이 법적 보호는 플리딩 더 벨리라고 불렸습니다.",
+      "tts": {
+        "text": "이 법적 보호는 플리딩 더 벨리라고 불렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "두 여성 모두 검사를 받았고 임신이 확인되었습니다.",
+      "text_markdown": "두 여성 모두 검사를 받았고 임신이 확인되었습니다.",
+      "tts": {
+        "text": "두 여성 모두 검사를 받았고 임신이 확인되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 처형은 무기한 연기되었습니다.",
+      "text_markdown": "그들의 처형은 무기한 연기되었습니다.",
+      "tts": {
+        "text": "그들의 처형은 무기한 연기되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 아이의 출산을 기다리기 위해 감옥으로 돌려보내졌습니다.",
+      "text_markdown": "그들은 아이의 출산을 기다리기 위해 감옥으로 돌려보내졌습니다.",
+      "tts": {
+        "text": "그들은 아이의 출산을 기다리기 위해 감옥으로 돌려보내졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메리 리드는 살아서 감옥을 나오지 못했습니다.",
+      "text_markdown": "메리 리드는 살아서 감옥을 나오지 못했습니다.",
+      "tts": {
+        "text": "메리 리드는 살아서 감옥을 나오지 못했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 병에 걸렸는데, 아마 자메이카 감옥에서 흔한 열병이었을 것입니다.",
+      "text_markdown": "그녀는 병에 걸렸는데, 아마 자메이카 감옥에서 흔한 열병이었을 것입니다.",
+      "tts": {
+        "text": "그녀는 병에 걸렸는데, 아마 자메이카 감옥에서 흔한 열병이었을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "메리 리드는 1721년 사월에 옥중에서 사망했습니다.",
+      "text_markdown": "메리 리드는 1721년 사월에 옥중에서 사망했습니다.",
+      "tts": {
+        "text": "메리 리드는 천칠백이십일 년 사월에 옥중에서 사망했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 자메이카의 세인트캐서린 교구에 묻혔습니다.",
+      "text_markdown": "그녀는 자메이카의 세인트캐서린 교구에 묻혔습니다.",
+      "tts": {
+        "text": "그녀는 자메이카의 세인트캐서린 교구에 묻혔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니의 운명은 해적 역사의 위대한 미스터리 중 하나입니다.",
+      "text_markdown": "앤 보니의 운명은 해적 역사의 위대한 미스터리 중 하나입니다.",
+      "tts": {
+        "text": "앤 보니의 운명은 해적 역사의 위대한 미스터리 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 처형 기록은 없습니다.",
+      "text_markdown": "그녀의 처형 기록은 없습니다.",
+      "tts": {
+        "text": "그녀의 처형 기록은 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 석방 기록도 없습니다.",
+      "text_markdown": "그녀의 석방 기록도 없습니다.",
+      "tts": {
+        "text": "그녀의 석방 기록도 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "재판 이후 그녀는 역사 기록에서 그냥 사라집니다.",
+      "text_markdown": "재판 이후 그녀는 역사 기록에서 그냥 사라집니다.",
+      "tts": {
+        "text": "재판 이후 그녀는 역사 기록에서 그냥 사라집니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 일반적인 이론은 아버지가 몸값을 치르고 감옥에서 그녀를 빼냈다는 것입니다.",
+      "text_markdown": "가장 일반적인 이론은 아버지가 몸값을 치르고 감옥에서 그녀를 빼냈다는 것입니다.",
+      "tts": {
+        "text": "가장 일반적인 이론은 아버지가 몸값을 치르고 감옥에서 그녀를 빼냈다는 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "윌리엄 코맥은 여전히 찰스턴의 부유한 인사였습니다.",
+      "text_markdown": "윌리엄 코맥은 여전히 찰스턴의 부유한 인사였습니다.",
+      "tts": {
+        "text": "윌리엄 코맥은 여전히 찰스턴의 부유한 인사였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그에게는 그녀의 조용한 석방을 주선할 수단과 인맥이 있었습니다.",
+      "text_markdown": "그에게는 그녀의 조용한 석방을 주선할 수단과 인맥이 있었습니다.",
+      "tts": {
+        "text": "그에게는 그녀의 조용한 석방을 주선할 수단과 인맥이 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 역사가들은 앤이 찰스턴으로 돌아가 다른 이름으로 살았다고 믿습니다.",
+      "text_markdown": "일부 역사가들은 앤이 찰스턴으로 돌아가 다른 이름으로 살았다고 믿습니다.",
+      "tts": {
+        "text": "일부 역사가들은 앤이 찰스턴으로 돌아가 다른 이름으로 살았다고 믿습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 이론은 그녀를 결혼하고 자녀를 둔 앤 벌리라는 여성으로 추정합니다.",
+      "text_markdown": "한 이론은 그녀를 결혼하고 자녀를 둔 앤 벌리라는 여성으로 추정합니다.",
+      "tts": {
+        "text": "한 이론은 그녀를 결혼하고 자녀를 둔 앤 벌리라는 여성으로 추정합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 이론이 맞다면, 앤 보니는 약 팔십이 세까지 살았습니다.",
+      "text_markdown": "이 이론이 맞다면, 앤 보니는 약 팔십이 세까지 살았습니다.",
+      "tts": {
+        "text": "이 이론이 맞다면, 앤 보니는 약 팔십이 세까지 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 해적의 황금시대가 끝난 한참 후인 1782년경에 사망했을 것입니다.",
+      "text_markdown": "그녀는 해적의 황금시대가 끝난 한참 후인 1782년경에 사망했을 것입니다.",
+      "tts": {
+        "text": "그녀는 해적의 황금시대가 끝난 한참 후인 천칠백팔십이 년경에 사망했을 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니는 역사상 가장 유명한 해적 중 한 명입니다.",
+      "text_markdown": "앤 보니는 역사상 가장 유명한 해적 중 한 명입니다.",
+      "tts": {
+        "text": "앤 보니는 역사상 가장 유명한 해적 중 한 명입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀가 유명한 것은 해적 행위의 규모가 아니라 그녀가 어떤 사람이었는가 때문입니다.",
+      "text_markdown": "그녀가 유명한 것은 해적 행위의 규모가 아니라 그녀가 어떤 사람이었는가 때문입니다.",
+      "tts": {
+        "text": "그녀가 유명한 것은 해적 행위의 규모가 아니라 그녀가 어떤 사람이었는가 때문입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적선에서 남성과 함께 싸우는 여성은 어떤 시대에서든 놀라운 일이었습니다.",
+      "text_markdown": "해적선에서 남성과 함께 싸우는 여성은 어떤 시대에서든 놀라운 일이었습니다.",
+      "tts": {
+        "text": "해적선에서 남성과 함께 싸우는 여성은 어떤 시대에서든 놀라운 일이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 이야기는 해적 행위가 오직 남성만의 활동이었다는 생각에 도전합니다.",
+      "text_markdown": "그녀의 이야기는 해적 행위가 오직 남성만의 활동이었다는 생각에 도전합니다.",
+      "tts": {
+        "text": "그녀의 이야기는 해적 행위가 오직 남성만의 활동이었다는 생각에 도전합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "앤과 메리 리드는 여성도 전투에서 못지않게 무시무시할 수 있음을 증명했습니다.",
+      "text_markdown": "앤과 메리 리드는 여성도 전투에서 못지않게 무시무시할 수 있음을 증명했습니다.",
+      "tts": {
+        "text": "앤과 메리 리드는 여성도 전투에서 못지않게 무시무시할 수 있음을 증명했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들의 사례는 여러 세대의 작가, 예술가, 역사가에게 영감을 주었습니다.",
+      "text_markdown": "그들의 사례는 여러 세대의 작가, 예술가, 역사가에게 영감을 주었습니다.",
+      "tts": {
+        "text": "그들의 사례는 여러 세대의 작가, 예술가, 역사가에게 영감을 주었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724년에 출판된 찰스 존슨 선장의 책은 앤의 이야기에 대한 주요 출처입니다.",
+      "text_markdown": "1724년에 출판된 찰스 존슨 선장의 책은 앤의 이야기에 대한 주요 출처입니다.",
+      "tts": {
+        "text": "천칠백이십사 년에 출판된 찰스 존슨 선장의 책은 앤의 이야기에 대한 주요 출처입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정식 제목은 가장 악명 높은 해적들의 강도와 살인에 관한 일반 역사입니다.",
+      "text_markdown": "정식 제목은 가장 악명 높은 해적들의 강도와 살인에 관한 일반 역사입니다.",
+      "tts": {
+        "text": "정식 제목은 가장 악명 높은 해적들의 강도와 살인에 관한 일반 역사입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 책은 베스트셀러가 되었고, 수 세기 동안 세상이 해적을 상상하는 방식을 형성했습니다.",
+      "text_markdown": "이 책은 베스트셀러가 되었고, 수 세기 동안 세상이 해적을 상상하는 방식을 형성했습니다.",
+      "tts": {
+        "text": "이 책은 베스트셀러가 되었고, 수 세기 동안 세상이 해적을 상상하는 방식을 형성했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사가들은 존슨의 기록이 실제로 얼마나 신뢰할 수 있는지 논쟁합니다.",
+      "text_markdown": "역사가들은 존슨의 기록이 실제로 얼마나 신뢰할 수 있는지 논쟁합니다.",
+      "tts": {
+        "text": "역사가들은 존슨의 기록이 실제로 얼마나 신뢰할 수 있는지 논쟁합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 세부 사항은 법원 기록 및 기타 문서와 일치합니다.",
+      "text_markdown": "일부 세부 사항은 법원 기록 및 기타 문서와 일치합니다.",
+      "tts": {
+        "text": "일부 세부 사항은 법원 기록 및 기타 문서와 일치합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 세부 사항은 극적 효과를 위해 윤색되거나 만들어진 것처럼 보입니다.",
+      "text_markdown": "다른 세부 사항은 극적 효과를 위해 윤색되거나 만들어진 것처럼 보입니다.",
+      "tts": {
+        "text": "다른 세부 사항은 극적 효과를 위해 윤색되거나 만들어진 것처럼 보입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사실과 전설을 분리하는 것은 해적 역사의 지속적인 과제 중 하나입니다.",
+      "text_markdown": "사실과 전설을 분리하는 것은 해적 역사의 지속적인 과제 중 하나입니다.",
+      "tts": {
+        "text": "사실과 전설을 분리하는 것은 해적 역사의 지속적인 과제 중 하나입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자메이카 스패니시 타운의 재판 기록은 가장 신뢰할 수 있는 증거를 제공합니다.",
+      "text_markdown": "자메이카 스패니시 타운의 재판 기록은 가장 신뢰할 수 있는 증거를 제공합니다.",
+      "tts": {
+        "text": "자메이카 스패니시 타운의 재판 기록은 가장 신뢰할 수 있는 증거를 제공합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것들은 두 여성이 래컴의 배에서 싸웠음을 확인해 줍니다.",
+      "text_markdown": "그것들은 두 여성이 래컴의 배에서 싸웠음을 확인해 줍니다.",
+      "tts": {
+        "text": "그것들은 두 여성이 래컴의 배에서 싸웠음을 확인해 줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것들은 앤과 메리가 전투하는 것을 본 증인들의 증언을 확인해 줍니다.",
+      "text_markdown": "그것들은 앤과 메리가 전투하는 것을 본 증인들의 증언을 확인해 줍니다.",
+      "tts": {
+        "text": "그것들은 앤과 메리가 전투하는 것을 본 증인들의 증언을 확인해 줍니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 기록들은 해적 연구에서 가장 중요한 문서에 속합니다.",
+      "text_markdown": "이 기록들은 해적 연구에서 가장 중요한 문서에 속합니다.",
+      "tts": {
+        "text": "이 기록들은 해적 연구에서 가장 중요한 문서에 속합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤 보니는 수백 편의 소설, 영화, 텔레비전 프로그램, 비디오 게임에 등장합니다.",
+      "text_markdown": "앤 보니는 수백 편의 소설, 영화, 텔레비전 프로그램, 비디오 게임에 등장합니다.",
+      "tts": {
+        "text": "앤 보니는 수백 편의 소설, 영화, 텔레비전 프로그램, 비디오 게임에 등장합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀는 부당한 권위에 대한 반항의 상징이 되었습니다.",
+      "text_markdown": "그녀는 부당한 권위에 대한 반항의 상징이 되었습니다.",
+      "tts": {
+        "text": "그녀는 부당한 권위에 대한 반항의 상징이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사회가 그녀에게 부여한 역할을 거부한 것은 수 세기에 걸쳐 공감을 불러일으킵니다.",
+      "text_markdown": "사회가 그녀에게 부여한 역할을 거부한 것은 수 세기에 걸쳐 공감을 불러일으킵니다.",
+      "tts": {
+        "text": "사회가 그녀에게 부여한 역할을 거부한 것은 수 세기에 걸쳐 공감을 불러일으킵니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 실종 미스터리는 그녀의 전설에 더할 뿐입니다.",
+      "text_markdown": "그녀의 실종 미스터리는 그녀의 전설에 더할 뿐입니다.",
+      "tts": {
+        "text": "그녀의 실종 미스터리는 그녀의 전설에 더할 뿐입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀가 옥중에서 죽었는지, 조용히 살았는지, 다른 이름으로 다시 항해했는지 알 수 없습니다.",
+      "text_markdown": "그녀가 옥중에서 죽었는지, 조용히 살았는지, 다른 이름으로 다시 항해했는지 알 수 없습니다.",
+      "tts": {
+        "text": "그녀가 옥중에서 죽었는지, 조용히 살았는지, 다른 이름으로 다시 항해했는지 알 수 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 불확실성 덕분에 모든 세대가 그녀의 이야기에 대한 자신만의 결말을 상상할 수 있습니다.",
+      "text_markdown": "이 불확실성 덕분에 모든 세대가 그녀의 이야기에 대한 자신만의 결말을 상상할 수 있습니다.",
+      "tts": {
+        "text": "이 불확실성 덕분에 모든 세대가 그녀의 이야기에 대한 자신만의 결말을 상상할 수 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "의심할 여지가 없는 것은 그녀의 용기입니다.",
+      "text_markdown": "의심할 여지가 없는 것은 그녀의 용기입니다.",
+      "tts": {
+        "text": "의심할 여지가 없는 것은 그녀의 용기입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "주변의 남자들이 두려움에 숨었을 때, 앤 보니는 일어서서 싸웠습니다.",
+      "text_markdown": "주변의 남자들이 두려움에 숨었을 때, 앤 보니는 일어서서 싸웠습니다.",
+      "tts": {
+        "text": "주변의 남자들이 두려움에 숨었을 때, 앤 보니는 일어서서 싸웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선서한 증인들에 의해 확인된 그 하나의 사실이야말로 그녀의 가장 진실한 유산입니다.",
+      "text_markdown": "선서한 증인들에 의해 확인된 그 하나의 사실이야말로 그녀의 가장 진실한 유산입니다.",
+      "tts": {
+        "text": "선서한 증인들에 의해 확인된 그 하나의 사실이야말로 그녀의 가장 진실한 유산입니다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

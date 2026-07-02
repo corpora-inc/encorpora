@@ -1,0 +1,4607 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_morgan",
+  "language": "de",
+  "total_segments": 308,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ein Wort an den Leser",
+      "text_markdown": "Ein Wort an den Leser"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies ist die Geschichte von Henry Morgan, dem erfolgreichsten Freibeuter in der Geschichte der Karibik.",
+      "text_markdown": "Dies ist die Geschichte von Henry Morgan, dem erfolgreichsten Freibeuter in der Geschichte der Karibik.",
+      "tts": {
+        "text": "Dies ist die Geschichte von Henry Morgan, dem erfolgreichsten Freibeuter in der Geschichte der Karibik.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er plünderte die reichsten Städte des spanischen Imperiums und wurde nie dafür bestraft.",
+      "text_markdown": "Er plünderte die reichsten Städte des spanischen Imperiums und wurde nie dafür bestraft.",
+      "tts": {
+        "text": "Er plünderte die reichsten Städte des spanischen Imperiums und wurde nie dafür bestraft.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan lebte in einer Zeit, in der die Grenze zwischen Piraterie und Patriotismus bewusst verwischt wurde.",
+      "text_markdown": "Morgan lebte in einer Zeit, in der die Grenze zwischen Piraterie und Patriotismus bewusst verwischt wurde.",
+      "tts": {
+        "text": "Morgan lebte in einer Zeit, in der die Grenze zwischen Piraterie und Patriotismus bewusst verwischt wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England setzte Männer wie ihn ein, um Spanien zu schwächen, ohne einen offenen Krieg zu erklären.",
+      "text_markdown": "England setzte Männer wie ihn ein, um Spanien zu schwächen, ohne einen offenen Krieg zu erklären.",
+      "tts": {
+        "text": "England setzte Männer wie ihn ein, um Spanien zu schwächen, ohne einen offenen Krieg zu erklären.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er überfiel Städte, brannte Orte nieder und folterte Gefangene, um Informationen über verstecktes Gold zu erhalten.",
+      "text_markdown": "Er überfiel Städte, brannte Orte nieder und folterte Gefangene, um Informationen über verstecktes Gold zu erhalten.",
+      "tts": {
+        "text": "Er überfiel Städte, brannte Orte nieder und folterte Gefangene, um Informationen über verstecktes Gold zu erhalten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dennoch starb er als Sir Henry Morgan, Ritter des Reiches und Vizegouverneur von Jamaika.",
+      "text_markdown": "Dennoch starb er als Sir Henry Morgan, Ritter des Reiches und Vizegouverneur von Jamaika.",
+      "tts": {
+        "text": "Dennoch starb er als Sir Henry Morgan, Ritter des Reiches und Vizegouverneur von Jamaika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seine Geschichte wirft schwierige Fragen über Gewalt, Imperium und die Belohnungen auf, die denjenigen gewährt werden, die mächtigen Nationen dienen.",
+      "text_markdown": "Seine Geschichte wirft schwierige Fragen über Gewalt, Imperium und die Belohnungen auf, die denjenigen gewährt werden, die mächtigen Nationen dienen.",
+      "tts": {
+        "text": "Seine Geschichte wirft schwierige Fragen über Gewalt, Imperium und die Belohnungen auf, die denjenigen gewährt werden, die mächtigen Nationen dienen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die hier beschriebenen Ereignisse beruhen auf historischen Aufzeichnungen, darunter Gerichtsprotokolle und Augenzeugenberichte.",
+      "text_markdown": "Die hier beschriebenen Ereignisse beruhen auf historischen Aufzeichnungen, darunter Gerichtsprotokolle und Augenzeugenberichte.",
+      "tts": {
+        "text": "Die hier beschriebenen Ereignisse beruhen auf historischen Aufzeichnungen, darunter Gerichtsprotokolle und Augenzeugenberichte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an den Leser",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wo Details ungewiss sind, weist der Text darauf hin.",
+      "text_markdown": "Wo Details ungewiss sind, weist der Text darauf hin.",
+      "tts": {
+        "text": "Wo Details ungewiss sind, weist der Text darauf hin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Welt, die ihn formte",
+      "text_markdown": "Die Welt, die ihn formte"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Karibische Meer im 17. Jahrhundert war das am heftigsten umkämpfte Gewässer der Erde.",
+      "text_markdown": "Das Karibische Meer im 17. Jahrhundert war das am heftigsten umkämpfte Gewässer der Erde.",
+      "tts": {
+        "text": "Das Karibische Meer im siebzehnten Jahrhundert war das am heftigsten umkämpfte Gewässer der Erde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanien, England, Frankreich und die Niederlande beanspruchten alle Inseln und Küstenstreifen in der Region.",
+      "text_markdown": "Spanien, England, Frankreich und die Niederlande beanspruchten alle Inseln und Küstenstreifen in der Region.",
+      "tts": {
+        "text": "Spanien, England, Frankreich und die Niederlande beanspruchten alle Inseln und Küstenstreifen in der Region.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jede Nation errichtete Festungen, gründete Kolonien und entsandte Kriegsschiffe zur Verteidigung ihres Territoriums.",
+      "text_markdown": "Jede Nation errichtete Festungen, gründete Kolonien und entsandte Kriegsschiffe zur Verteidigung ihres Territoriums.",
+      "tts": {
+        "text": "Jede Nation errichtete Festungen, gründete Kolonien und entsandte Kriegsschiffe zur Verteidigung ihres Territoriums.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spanien war als Erstes eingetroffen und hatte den größten Anteil beansprucht.",
+      "text_markdown": "Spanien war als Erstes eingetroffen und hatte den größten Anteil beansprucht.",
+      "tts": {
+        "text": "Spanien war als Erstes eingetroffen und hatte den größten Anteil beansprucht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Imperium erstreckte sich von Mexiko bis Peru, von Kuba bis zu den Philippinen.",
+      "text_markdown": "Sein Imperium erstreckte sich von Mexiko bis Peru, von Kuba bis zu den Philippinen.",
+      "tts": {
+        "text": "Sein Imperium erstreckte sich von Mexiko bis Peru, von Kuba bis zu den Philippinen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jedes Jahr transportierten Schatzflotten Silber und Gold aus Amerika zurück nach Sevilla.",
+      "text_markdown": "Jedes Jahr transportierten Schatzflotten Silber und Gold aus Amerika zurück nach Sevilla.",
+      "tts": {
+        "text": "Jedes Jahr transportierten Schatzflotten Silber und Gold aus Amerika zurück nach Sevilla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieser Reichtum machte Spanien über ein Jahrhundert lang zur reichsten Nation Europas.",
+      "text_markdown": "Dieser Reichtum machte Spanien über ein Jahrhundert lang zur reichsten Nation Europas.",
+      "tts": {
+        "text": "Dieser Reichtum machte Spanien über ein Jahrhundert lang zur reichsten Nation Europas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aber er machte Spanien auch zur Zielscheibe.",
+      "text_markdown": "Aber er machte Spanien auch zur Zielscheibe.",
+      "tts": {
+        "text": "Aber er machte Spanien auch zur Zielscheibe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Spanier beanspruchten die gesamte Karibik als ihre ausschließliche Domäne.",
+      "text_markdown": "Die Spanier beanspruchten die gesamte Karibik als ihre ausschließliche Domäne.",
+      "tts": {
+        "text": "Die Spanier beanspruchten die gesamte Karibik als ihre ausschließliche Domäne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie bestanden darauf, dass keine andere Nation das Recht hatte, in diesen Gewässern zu handeln, sich niederzulassen oder zu segeln.",
+      "text_markdown": "Sie bestanden darauf, dass keine andere Nation das Recht hatte, in diesen Gewässern zu handeln, sich niederzulassen oder zu segeln.",
+      "tts": {
+        "text": "Sie bestanden darauf, dass keine andere Nation das Recht hatte, in diesen Gewässern zu handeln, sich niederzulassen oder zu segeln.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dieser Anspruch beruhte auf einem päpstlichen Dekret von 1493, das die Neue Welt zwischen Spanien und Portugal aufteilte.",
+      "text_markdown": "Dieser Anspruch beruhte auf einem päpstlichen Dekret von 1493, das die Neue Welt zwischen Spanien und Portugal aufteilte.",
+      "tts": {
+        "text": "Dieser Anspruch beruhte auf einem päpstlichen Dekret von vierzehnhundertdreiundneunzig, das die Neue Welt zwischen Spanien und Portugal aufteilte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "England, Frankreich und die Niederlande erkannten dieses Dekret nicht an.",
+      "text_markdown": "England, Frankreich und die Niederlande erkannten dieses Dekret nicht an.",
+      "tts": {
+        "text": "England, Frankreich und die Niederlande erkannten dieses Dekret nicht an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie argumentierten, dass kein Papst die Befugnis habe, Kontinente zu verschenken.",
+      "text_markdown": "Sie argumentierten, dass kein Papst die Befugnis habe, Kontinente zu verschenken.",
+      "tts": {
+        "text": "Sie argumentierten, dass kein Papst die Befugnis habe, Kontinente zu verschenken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diese Meinungsverschiedenheit lag einem Jahrhundert der Kriegsführung in der Karibik zugrunde.",
+      "text_markdown": "Diese Meinungsverschiedenheit lag einem Jahrhundert der Kriegsführung in der Karibik zugrunde.",
+      "tts": {
+        "text": "Diese Meinungsverschiedenheit lag einem Jahrhundert der Kriegsführung in der Karibik zugrunde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Englands Wirtschaft war Anfang des 17. Jahrhunderts weitaus kleiner als die Spaniens.",
+      "text_markdown": "Englands Wirtschaft war Anfang des 17. Jahrhunderts weitaus kleiner als die Spaniens.",
+      "tts": {
+        "text": "Englands Wirtschaft war Anfang des siebzehnten Jahrhunderts weitaus kleiner als die Spaniens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die englischen Kolonien in der Karibik waren arm und verwundbar.",
+      "text_markdown": "Die englischen Kolonien in der Karibik waren arm und verwundbar.",
+      "tts": {
+        "text": "Die englischen Kolonien in der Karibik waren arm und verwundbar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie überlebten mit Zucker, Tabak und allem, was sie den Spaniern abnehmen konnten.",
+      "text_markdown": "Sie überlebten mit Zucker, Tabak und allem, was sie den Spaniern abnehmen konnten.",
+      "tts": {
+        "text": "Sie überlebten mit Zucker, Tabak und allem, was sie den Spaniern abnehmen konnten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die englische Regierung ermutigte insgeheim Angriffe auf den spanischen Handel und spanische Siedlungen.",
+      "text_markdown": "Die englische Regierung ermutigte insgeheim Angriffe auf den spanischen Handel und spanische Siedlungen.",
+      "tts": {
+        "text": "Die englische Regierung ermutigte insgeheim Angriffe auf den spanischen Handel und spanische Siedlungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Freibeuter war ein Privatmann, dem ein Rechtsschreiben namens Kaperbrief ausgestellt wurde.",
+      "text_markdown": "Ein Freibeuter war ein Privatmann, dem ein Rechtsschreiben namens Kaperbrief ausgestellt wurde.",
+      "tts": {
+        "text": "Ein Freibeuter war ein Privatmann, dem ein Rechtsschreiben namens Kaperbrief ausgestellt wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dieser Brief ermächtigte ihn, feindliche Schiffe im Namen seines Landes anzugreifen.",
+      "text_markdown": "Dieser Brief ermächtigte ihn, feindliche Schiffe im Namen seines Landes anzugreifen.",
+      "tts": {
+        "text": "Dieser Brief ermächtigte ihn, feindliche Schiffe im Namen seines Landes anzugreifen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Unterschied zwischen einem Freibeuter und einem Piraten war lediglich ein Stück Papier.",
+      "text_markdown": "Der Unterschied zwischen einem Freibeuter und einem Piraten war lediglich ein Stück Papier.",
+      "tts": {
+        "text": "Der Unterschied zwischen einem Freibeuter und einem Piraten war lediglich ein Stück Papier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ohne den Brief war man ein Verbrecher.",
+      "text_markdown": "Ohne den Brief war man ein Verbrecher.",
+      "tts": {
+        "text": "Ohne den Brief war man ein Verbrecher.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mit ihm war man ein Patriot.",
+      "text_markdown": "Mit ihm war man ein Patriot.",
+      "tts": {
+        "text": "Mit ihm war man ein Patriot.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jamaika war Englands wichtigster Besitz in der Karibik.",
+      "text_markdown": "Jamaika war Englands wichtigster Besitz in der Karibik.",
+      "tts": {
+        "text": "Jamaika war Englands wichtigster Besitz in der Karibik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England hatte es Spanien 1655 entrissen, nur zehn Jahre vor Morgans Ankunft.",
+      "text_markdown": "England hatte es Spanien 1655 entrissen, nur zehn Jahre vor Morgans Ankunft.",
+      "tts": {
+        "text": "England hatte es Spanien sechzehnhundertfünfundfünfzig entrissen, nur zehn Jahre vor Morgans Ankunft.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Insel war immer noch schlecht verteidigt und unterentwickelt.",
+      "text_markdown": "Die Insel war immer noch schlecht verteidigt und unterentwickelt.",
+      "tts": {
+        "text": "Die Insel war immer noch schlecht verteidigt und unterentwickelt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihre Hauptstadt Port Royal lag auf einer schmalen Sandnehrung am Eingang des Hafens von Kingston.",
+      "text_markdown": "Ihre Hauptstadt Port Royal lag auf einer schmalen Sandnehrung am Eingang des Hafens von Kingston.",
+      "tts": {
+        "text": "Ihre Hauptstadt Port Royal lag auf einer schmalen Sandnehrung am Eingang des Hafens von Kingston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Stadt war überfüllt, laut und voller Tavernen und Spielhäuser.",
+      "text_markdown": "Die Stadt war überfüllt, laut und voller Tavernen und Spielhäuser.",
+      "tts": {
+        "text": "Die Stadt war überfüllt, laut und voller Tavernen und Spielhäuser.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Port Royal wurde als die verruchteste Stadt der Erde bekannt.",
+      "text_markdown": "Port Royal wurde als die verruchteste Stadt der Erde bekannt.",
+      "tts": {
+        "text": "Port Royal wurde als die verruchteste Stadt der Erde bekannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Freibeuter gaben dort ihre Beute für Rum, Frauen und Würfelspiel aus.",
+      "text_markdown": "Freibeuter gaben dort ihre Beute für Rum, Frauen und Würfelspiel aus.",
+      "tts": {
+        "text": "Freibeuter gaben dort ihre Beute für Rum, Frauen und Würfelspiel aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Mann konnte ein Vermögen in einer einzigen Nacht durchbringen und innerhalb einer Woche wieder auf See sein.",
+      "text_markdown": "Ein Mann konnte ein Vermögen in einer einzigen Nacht durchbringen und innerhalb einer Woche wieder auf See sein.",
+      "tts": {
+        "text": "Ein Mann konnte ein Vermögen in einer einzigen Nacht durchbringen und innerhalb einer Woche wieder auf See sein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Gouverneure von Jamaika waren auf die Freibeuter zur Verteidigung angewiesen.",
+      "text_markdown": "Die Gouverneure von Jamaika waren auf die Freibeuter zur Verteidigung angewiesen.",
+      "tts": {
+        "text": "Die Gouverneure von Jamaika waren auf die Freibeuter zur Verteidigung angewiesen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Insel hatte keine Flotte, die stark genug war, einen spanischen Angriff abzuwehren.",
+      "text_markdown": "Die Insel hatte keine Flotte, die stark genug war, einen spanischen Angriff abzuwehren.",
+      "tts": {
+        "text": "Die Insel hatte keine Flotte, die stark genug war, einen spanischen Angriff abzuwehren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Also stellten die Gouverneure Kaperbriefe aus und ließen die Freibeuter kämpfen.",
+      "text_markdown": "Also stellten die Gouverneure Kaperbriefe aus und ließen die Freibeuter kämpfen.",
+      "tts": {
+        "text": "Also stellten die Gouverneure Kaperbriefe aus und ließen die Freibeuter kämpfen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Freibeuter waren eine gemischte Gruppe englischer, französischer, niederländischer und afrikanischer Seeleute.",
+      "text_markdown": "Die Freibeuter waren eine gemischte Gruppe englischer, französischer, niederländischer und afrikanischer Seeleute.",
+      "tts": {
+        "text": "Die Freibeuter waren eine gemischte Gruppe englischer, französischer, niederländischer und afrikanischer Seeleute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Viele waren ehemalige Schuldknechte oder entlaufene Leibeigene.",
+      "text_markdown": "Viele waren ehemalige Schuldknechte oder entlaufene Leibeigene.",
+      "tts": {
+        "text": "Viele waren ehemalige Schuldknechte oder entlaufene Leibeigene.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie führten ein raues Leben und hatten wenig zu verlieren.",
+      "text_markdown": "Sie führten ein raues Leben und hatten wenig zu verlieren.",
+      "tts": {
+        "text": "Sie führten ein raues Leben und hatten wenig zu verlieren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Wort Bukanier stammt vom französischen Wort boucanier, das jemanden bezeichnet, der Fleisch räuchert.",
+      "text_markdown": "Das Wort Bukanier stammt vom französischen Wort boucanier, das jemanden bezeichnet, der Fleisch räuchert.",
+      "tts": {
+        "text": "Das Wort Bukanier stammt vom französischen Wort boucanier, das jemanden bezeichnet, der Fleisch räuchert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die ersten Bukaniere waren Jäger auf der Insel Hispaniola, die wildes Rind und Schwein räucherten.",
+      "text_markdown": "Die ersten Bukaniere waren Jäger auf der Insel Hispaniola, die wildes Rind und Schwein räucherten.",
+      "tts": {
+        "text": "Die ersten Bukaniere waren Jäger auf der Insel Hispaniola, die wildes Rind und Schwein räucherten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Als die Spanier sie vertrieben, wandten sie sich dem Meer zu, um zu überleben.",
+      "text_markdown": "Als die Spanier sie vertrieben, wandten sie sich dem Meer zu, um zu überleben.",
+      "tts": {
+        "text": "Als die Spanier sie vertrieben, wandten sie sich dem Meer zu, um zu überleben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den 1660er Jahren waren die Freibeuter zu einer beachtlichen Kampftruppe geworden.",
+      "text_markdown": "In den 1660er Jahren waren die Freibeuter zu einer beachtlichen Kampftruppe geworden.",
+      "tts": {
+        "text": "In den sechzehnhundertsechziger Jahren waren die Freibeuter zu einer beachtlichen Kampftruppe geworden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie kämpften mit Musketen, Entermessern und rohem Mut.",
+      "text_markdown": "Sie kämpften mit Musketen, Entermessern und rohem Mut.",
+      "tts": {
+        "text": "Sie kämpften mit Musketen, Entermessern und rohem Mut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie waren geschickt im Entern von Schiffen und Stürmen befestigter Stellungen.",
+      "text_markdown": "Sie waren geschickt im Entern von Schiffen und Stürmen befestigter Stellungen.",
+      "tts": {
+        "text": "Sie waren geschickt im Entern von Schiffen und Stürmen befestigter Stellungen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spanien betrachtete jede ausländische Präsenz in der Karibik als illegal.",
+      "text_markdown": "Spanien betrachtete jede ausländische Präsenz in der Karibik als illegal.",
+      "tts": {
+        "text": "Spanien betrachtete jede ausländische Präsenz in der Karibik als illegal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In spanischen Augen war jeder englische Siedler ein Eindringling und jedes englische Schiff Freiwild.",
+      "text_markdown": "In spanischen Augen war jeder englische Siedler ein Eindringling und jedes englische Schiff Freiwild.",
+      "tts": {
+        "text": "In spanischen Augen war jeder englische Siedler ein Eindringling und jedes englische Schiff Freiwild.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese gegenseitige Feindseligkeit schuf einen endlosen Kreislauf aus Überfällen und Vergeltungsmaßnahmen.",
+      "text_markdown": "Diese gegenseitige Feindseligkeit schuf einen endlosen Kreislauf aus Überfällen und Vergeltungsmaßnahmen.",
+      "tts": {
+        "text": "Diese gegenseitige Feindseligkeit schuf einen endlosen Kreislauf aus Überfällen und Vergeltungsmaßnahmen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Spanier griffen englische Siedlungen an, und die Engländer griffen spanische an.",
+      "text_markdown": "Die Spanier griffen englische Siedlungen an, und die Engländer griffen spanische an.",
+      "tts": {
+        "text": "Die Spanier griffen englische Siedlungen an, und die Engländer griffen spanische an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Welt, die ihn formte",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In diese gewaltsame Welt kam Henry Morgan als junger Mann auf der Suche nach Gelegenheit.",
+      "text_markdown": "In diese gewaltsame Welt kam Henry Morgan als junger Mann auf der Suche nach Gelegenheit.",
+      "tts": {
+        "text": "In diese gewaltsame Welt kam Henry Morgan als junger Mann auf der Suche nach Gelegenheit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ein Waliser in der Karibik",
+      "text_markdown": "Ein Waliser in der Karibik"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan wurde um 1635 in Llanrumney geboren, einem Dorf im Südosten von Wales.",
+      "text_markdown": "Henry Morgan wurde um 1635 in Llanrumney geboren, einem Dorf im Südosten von Wales.",
+      "tts": {
+        "text": "Henry Morgan wurde um sechzehnhundertfünfunddreißig in Llanrumney geboren, einem Dorf im Südosten von Wales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seine Familie gehörte zum walisischen Landadel, was bedeutete, dass sie Land und lokalen Einfluss besaßen.",
+      "text_markdown": "Seine Familie gehörte zum walisischen Landadel, was bedeutete, dass sie Land und lokalen Einfluss besaßen.",
+      "tts": {
+        "text": "Seine Familie gehörte zum walisischen Landadel, was bedeutete, dass sie Land und lokalen Einfluss besaßen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zwei seiner Onkel dienten als Militäroffiziere während des Englischen Bürgerkriegs.",
+      "text_markdown": "Zwei seiner Onkel dienten als Militäroffiziere während des Englischen Bürgerkriegs.",
+      "tts": {
+        "text": "Zwei seiner Onkel dienten als Militäroffiziere während des Englischen Bürgerkriegs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wales in den 1630er Jahren war ein ländlicher und relativ armer Teil Großbritanniens.",
+      "text_markdown": "Wales in den 1630er Jahren war ein ländlicher und relativ armer Teil Großbritanniens.",
+      "tts": {
+        "text": "Wales in den sechzehnhundertdreißiger Jahren war ein ländlicher und relativ armer Teil Großbritanniens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der walisische Landadel besaß bescheidene Güter im Vergleich zu den großen englischen Grundbesitzern.",
+      "text_markdown": "Der walisische Landadel besaß bescheidene Güter im Vergleich zu den großen englischen Grundbesitzern.",
+      "tts": {
+        "text": "Der walisische Landadel besaß bescheidene Güter im Vergleich zu den großen englischen Grundbesitzern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aber sie schätzten Militärdienst und Familienehre über alles.",
+      "text_markdown": "Aber sie schätzten Militärdienst und Familienehre über alles.",
+      "tts": {
+        "text": "Aber sie schätzten Militärdienst und Familienehre über alles.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Über Morgans Kindheit ist sehr wenig bekannt.",
+      "text_markdown": "Über Morgans Kindheit ist sehr wenig bekannt.",
+      "tts": {
+        "text": "Über Morgans Kindheit ist sehr wenig bekannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er schrieb nie über seine frühen Jahre, und keine Schulunterlagen sind erhalten.",
+      "text_markdown": "Er schrieb nie über seine frühen Jahre, und keine Schulunterlagen sind erhalten.",
+      "tts": {
+        "text": "Er schrieb nie über seine frühen Jahre, und keine Schulunterlagen sind erhalten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historiker glauben, dass er eine grundlegende Ausbildung erhielt, aber keine Universität besuchte.",
+      "text_markdown": "Historiker glauben, dass er eine grundlegende Ausbildung erhielt, aber keine Universität besuchte.",
+      "tts": {
+        "text": "Historiker glauben, dass er eine grundlegende Ausbildung erhielt, aber keine Universität besuchte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Irgendwann Ende der 1650er Jahre segelte Morgan in die Karibik.",
+      "text_markdown": "Irgendwann Ende der 1650er Jahre segelte Morgan in die Karibik.",
+      "tts": {
+        "text": "Irgendwann Ende der sechzehnhundertfünfziger Jahre segelte Morgan in die Karibik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wie er dorthin gelangte, ist umstritten.",
+      "text_markdown": "Wie er dorthin gelangte, ist umstritten.",
+      "tts": {
+        "text": "Wie er dorthin gelangte, ist umstritten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine Geschichte behauptet, er sei als Junge in Bristol entführt und als Schuldknecht nach Barbados verkauft worden.",
+      "text_markdown": "Eine Geschichte behauptet, er sei als Junge in Bristol entführt und als Schuldknecht nach Barbados verkauft worden.",
+      "tts": {
+        "text": "Eine Geschichte behauptet, er sei als Junge in Bristol entführt und als Schuldknecht nach Barbados verkauft worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan selbst bestritt dies später und nannte es Verleumdung.",
+      "text_markdown": "Morgan selbst bestritt dies später und nannte es Verleumdung.",
+      "tts": {
+        "text": "Morgan selbst bestritt dies später und nannte es Verleumdung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er verklagte einen Verleger, der die Behauptung gedruckt hatte, und erhielt Schadensersatz.",
+      "text_markdown": "Er verklagte einen Verleger, der die Behauptung gedruckt hatte, und erhielt Schadensersatz.",
+      "tts": {
+        "text": "Er verklagte einen Verleger, der die Behauptung gedruckt hatte, und erhielt Schadensersatz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine wahrscheinlichere Erklärung ist, dass Morgan als Soldat in die Karibik kam.",
+      "text_markdown": "Eine wahrscheinlichere Erklärung ist, dass Morgan als Soldat in die Karibik kam.",
+      "tts": {
+        "text": "Eine wahrscheinlichere Erklärung ist, dass Morgan als Soldat in die Karibik kam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Im Jahr 1655 entsandte England eine große Militärexpedition, um spanisches Territorium zu erobern.",
+      "text_markdown": "Im Jahr 1655 entsandte England eine große Militärexpedition, um spanisches Territorium zu erobern.",
+      "tts": {
+        "text": "Im Jahr sechzehnhundertfünfundfünfzig entsandte England eine große Militärexpedition, um spanisches Territorium zu erobern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Flotte scheiterte bei der Einnahme Hispaniolas, nahm aber erfolgreich Jamaika ein.",
+      "text_markdown": "Die Flotte scheiterte bei der Einnahme Hispaniolas, nahm aber erfolgreich Jamaika ein.",
+      "tts": {
+        "text": "Die Flotte scheiterte bei der Einnahme Hispaniolas, nahm aber erfolgreich Jamaika ein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese Expedition war als Western Design bekannt.",
+      "text_markdown": "Diese Expedition war als Western Design bekannt.",
+      "tts": {
+        "text": "Diese Expedition war als Western Design bekannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie wurde von Oliver Cromwell, dem Lordprotektor von England, angeordnet.",
+      "text_markdown": "Sie wurde von Oliver Cromwell, dem Lordprotektor von England, angeordnet.",
+      "tts": {
+        "text": "Sie wurde von Oliver Cromwell, dem Lordprotektor von England, angeordnet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cromwell wollte Spaniens Griff auf die Karibik brechen und die englische Macht ausweiten.",
+      "text_markdown": "Cromwell wollte Spaniens Griff auf die Karibik brechen und die englische Macht ausweiten.",
+      "tts": {
+        "text": "Cromwell wollte Spaniens Griff auf die Karibik brechen und die englische Macht ausweiten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan war möglicherweise Teil dieser Expedition oder traf kurz danach ein.",
+      "text_markdown": "Morgan war möglicherweise Teil dieser Expedition oder traf kurz danach ein.",
+      "tts": {
+        "text": "Morgan war möglicherweise Teil dieser Expedition oder traf kurz danach ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wie auch immer, Anfang der 1660er Jahre war er auf Jamaika etabliert.",
+      "text_markdown": "Wie auch immer, Anfang der 1660er Jahre war er auf Jamaika etabliert.",
+      "tts": {
+        "text": "Wie auch immer, Anfang der sechzehnhundertsechziger Jahre war er auf Jamaika etabliert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er erwies sich schnell als fähiger und ehrgeiziger Kämpfer.",
+      "text_markdown": "Er erwies sich schnell als fähiger und ehrgeiziger Kämpfer.",
+      "tts": {
+        "text": "Er erwies sich schnell als fähiger und ehrgeiziger Kämpfer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Im Jahr 1663 schloss er sich einer Freibeuter-Expedition gegen spanische Siedlungen in Mittelamerika an.",
+      "text_markdown": "Im Jahr 1663 schloss er sich einer Freibeuter-Expedition gegen spanische Siedlungen in Mittelamerika an.",
+      "tts": {
+        "text": "Im Jahr sechzehnhundertdreiundsechzig schloss er sich einer Freibeuter-Expedition gegen spanische Siedlungen in Mittelamerika an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Angreifer überfielen Städte entlang der Küste des heutigen Nicaragua und Honduras.",
+      "text_markdown": "Die Angreifer überfielen Städte entlang der Küste des heutigen Nicaragua und Honduras.",
+      "tts": {
+        "text": "Die Angreifer überfielen Städte entlang der Küste des heutigen Nicaragua und Honduras.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese frühe Expedition wurde von einem erfahrenen Freibeuter namens Christopher Myngs angeführt.",
+      "text_markdown": "Diese frühe Expedition wurde von einem erfahrenen Freibeuter namens Christopher Myngs angeführt.",
+      "tts": {
+        "text": "Diese frühe Expedition wurde von einem erfahrenen Freibeuter namens Christopher Myngs angeführt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Myngs war ein kühner und erfahrener Plünderer, der den jüngeren Freibeutern ihr Handwerk beibrachte.",
+      "text_markdown": "Myngs war ein kühner und erfahrener Plünderer, der den jüngeren Freibeutern ihr Handwerk beibrachte.",
+      "tts": {
+        "text": "Myngs war ein kühner und erfahrener Plünderer, der den jüngeren Freibeutern ihr Handwerk beibrachte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan beobachtete ihn aufmerksam und lernte von ihm.",
+      "text_markdown": "Morgan beobachtete ihn aufmerksam und lernte von ihm.",
+      "tts": {
+        "text": "Morgan beobachtete ihn aufmerksam und lernte von ihm.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan lernte bei diesen frühen Überfällen die Taktiken, die seine Karriere bestimmen sollten.",
+      "text_markdown": "Morgan lernte bei diesen frühen Überfällen die Taktiken, die seine Karriere bestimmen sollten.",
+      "tts": {
+        "text": "Morgan lernte bei diesen frühen Überfällen die Taktiken, die seine Karriere bestimmen sollten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er studierte, wie man große Gruppen von Männern durch Dschungelgelände bewegt.",
+      "text_markdown": "Er studierte, wie man große Gruppen von Männern durch Dschungelgelände bewegt.",
+      "tts": {
+        "text": "Er studierte, wie man große Gruppen von Männern durch Dschungelgelände bewegt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er lernte, schnell zuzuschlagen und sich zurückzuziehen, bevor spanische Verstärkung eintreffen konnte.",
+      "text_markdown": "Er lernte, schnell zuzuschlagen und sich zurückzuziehen, bevor spanische Verstärkung eintreffen konnte.",
+      "tts": {
+        "text": "Er lernte, schnell zuzuschlagen und sich zurückzuziehen, bevor spanische Verstärkung eintreffen konnte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1665 segelte Morgan mit dem berühmten Freibeuter Edward Mansfield zu einem Überfall auf die Insel Providence.",
+      "text_markdown": "Im Jahr 1665 segelte Morgan mit dem berühmten Freibeuter Edward Mansfield zu einem Überfall auf die Insel Providence.",
+      "tts": {
+        "text": "Im Jahr sechzehnhundertfünfundsechzig segelte Morgan mit dem berühmten Freibeuter Edward Mansfield zu einem Überfall auf die Insel Providence.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Providence war eine kleine Insel vor der Küste Nicaraguas, die Spanien Jahre zuvor von England zurückerobert hatte.",
+      "text_markdown": "Providence war eine kleine Insel vor der Küste Nicaraguas, die Spanien Jahre zuvor von England zurückerobert hatte.",
+      "tts": {
+        "text": "Providence war eine kleine Insel vor der Küste Nicaraguas, die Spanien Jahre zuvor von England zurückerobert hatte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mansfields Flotte nahm die Insel leicht ein.",
+      "text_markdown": "Mansfields Flotte nahm die Insel leicht ein.",
+      "tts": {
+        "text": "Mansfields Flotte nahm die Insel leicht ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aber die Expedition offenbarte Probleme mit der Führung der Freibeuter.",
+      "text_markdown": "Aber die Expedition offenbarte Probleme mit der Führung der Freibeuter.",
+      "tts": {
+        "text": "Aber die Expedition offenbarte Probleme mit der Führung der Freibeuter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Männer stritten über die Beuteteilung, und viele desertierten.",
+      "text_markdown": "Die Männer stritten über die Beuteteilung, und viele desertierten.",
+      "tts": {
+        "text": "Die Männer stritten über die Beuteteilung, und viele desertierten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als Mansfield 1667 starb, brauchten die Freibeuter einen neuen Anführer.",
+      "text_markdown": "Als Mansfield 1667 starb, brauchten die Freibeuter einen neuen Anführer.",
+      "tts": {
+        "text": "Als Mansfield sechzehnhundertsiebenundsechzig starb, brauchten die Freibeuter einen neuen Anführer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan wurde auserwählt, ihn zu ersetzen.",
+      "text_markdown": "Morgan wurde auserwählt, ihn zu ersetzen.",
+      "tts": {
+        "text": "Morgan wurde auserwählt, ihn zu ersetzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er war kaum dreißig Jahre alt, hatte sich aber bereits einen Ruf für Kühnheit und taktisches Geschick erworben.",
+      "text_markdown": "Er war kaum dreißig Jahre alt, hatte sich aber bereits einen Ruf für Kühnheit und taktisches Geschick erworben.",
+      "tts": {
+        "text": "Er war kaum dreißig Jahre alt, hatte sich aber bereits einen Ruf für Kühnheit und taktisches Geschick erworben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etwa zur selben Zeit heiratete Morgan seine Frau Mary Elizabeth.",
+      "text_markdown": "Etwa zur selben Zeit heiratete Morgan seine Frau Mary Elizabeth.",
+      "tts": {
+        "text": "Etwa zur selben Zeit heiratete Morgan seine Frau Mary Elizabeth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie war die Tochter seines Onkels Edward Morgan, der als stellvertretender Gouverneur von Jamaika gedient hatte.",
+      "text_markdown": "Sie war die Tochter seines Onkels Edward Morgan, der als stellvertretender Gouverneur von Jamaika gedient hatte.",
+      "tts": {
+        "text": "Sie war die Tochter seines Onkels Edward Morgan, der als stellvertretender Gouverneur von Jamaika gedient hatte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Heirat verband ihn mit der kolonialen Elite der Insel.",
+      "text_markdown": "Die Heirat verband ihn mit der kolonialen Elite der Insel.",
+      "tts": {
+        "text": "Die Heirat verband ihn mit der kolonialen Elite der Insel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan war nun sowohl ein Freibeuter-Kapitän als auch ein Mitglied der Pflanzerklasse Jamaikas.",
+      "text_markdown": "Morgan war nun sowohl ein Freibeuter-Kapitän als auch ein Mitglied der Pflanzerklasse Jamaikas.",
+      "tts": {
+        "text": "Morgan war nun sowohl ein Freibeuter-Kapitän als auch ein Mitglied der Pflanzerklasse Jamaikas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er besaß Land und Sklaven und verstand Politik ebenso gut wie Kriegsführung.",
+      "text_markdown": "Er besaß Land und Sklaven und verstand Politik ebenso gut wie Kriegsführung.",
+      "tts": {
+        "text": "Er besaß Land und Sklaven und verstand Politik ebenso gut wie Kriegsführung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er pflegte eine enge Beziehung zu Sir Thomas Modyford, dem Gouverneur von Jamaika.",
+      "text_markdown": "Er pflegte eine enge Beziehung zu Sir Thomas Modyford, dem Gouverneur von Jamaika.",
+      "tts": {
+        "text": "Er pflegte eine enge Beziehung zu Sir Thomas Modyford, dem Gouverneur von Jamaika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Modyford verließ sich auf Morgan, um die Verteidigung der Insel gegen spanische Aggression zu leiten.",
+      "text_markdown": "Modyford verließ sich auf Morgan, um die Verteidigung der Insel gegen spanische Aggression zu leiten.",
+      "tts": {
+        "text": "Modyford verließ sich auf Morgan, um die Verteidigung der Insel gegen spanische Aggression zu leiten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Im Gegenzug gab Modyford Morgan die rechtliche Deckung, die er brauchte, um spanische Ziele anzugreifen.",
+      "text_markdown": "Im Gegenzug gab Modyford Morgan die rechtliche Deckung, die er brauchte, um spanische Ziele anzugreifen.",
+      "tts": {
+        "text": "Im Gegenzug gab Modyford Morgan die rechtliche Deckung, die er brauchte, um spanische Ziele anzugreifen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese Partnerschaft zwischen Gouverneur und Freibeuter sollte das Machtgleichgewicht in der Karibik neu ordnen.",
+      "text_markdown": "Diese Partnerschaft zwischen Gouverneur und Freibeuter sollte das Machtgleichgewicht in der Karibik neu ordnen.",
+      "tts": {
+        "text": "Diese Partnerschaft zwischen Gouverneur und Freibeuter sollte das Machtgleichgewicht in der Karibik neu ordnen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ein Waliser in der Karibik",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan stand kurz davor, eine Reihe von Überfällen zu unternehmen, die ihn zum gefürchtetsten Mann in der spanischen Hauptstraße machen würden.",
+      "text_markdown": "Morgan stand kurz davor, eine Reihe von Überfällen zu unternehmen, die ihn zum gefürchtetsten Mann in der spanischen Hauptstraße machen würden.",
+      "tts": {
+        "text": "Morgan stand kurz davor, eine Reihe von Überfällen zu unternehmen, die ihn zum gefürchtetsten Mann in der spanischen Hauptstraße machen würden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Überfälle, die ein Imperium erschütterten",
+      "text_markdown": "Die Überfälle, die ein Imperium erschütterten"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgans erstes großes unabhängiges Kommando kam im Jahr 1668.",
+      "text_markdown": "Morgans erstes großes unabhängiges Kommando kam im Jahr 1668.",
+      "tts": {
+        "text": "Morgans erstes großes unabhängiges Kommando kam im Jahr sechzehnhundertachtundsechzig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gouverneur Modyford erteilte ihm einen Auftrag, Informationen über spanische Pläne zum Angriff auf Jamaika zu sammeln.",
+      "text_markdown": "Gouverneur Modyford erteilte ihm einen Auftrag, Informationen über spanische Pläne zum Angriff auf Jamaika zu sammeln.",
+      "tts": {
+        "text": "Gouverneur Modyford erteilte ihm einen Auftrag, Informationen über spanische Pläne zum Angriff auf Jamaika zu sammeln.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan legte diesen Auftrag sehr großzügig aus.",
+      "text_markdown": "Morgan legte diesen Auftrag sehr großzügig aus.",
+      "tts": {
+        "text": "Morgan legte diesen Auftrag sehr großzügig aus.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er versammelte eine Flotte von zwölf Schiffen und über siebenhundert Mann.",
+      "text_markdown": "Er versammelte eine Flotte von zwölf Schiffen und über siebenhundert Mann.",
+      "tts": {
+        "text": "Er versammelte eine Flotte von zwölf Schiffen und über siebenhundert Mann.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Ziel war Portobelo, eine der am stärksten befestigten Städte Amerikas.",
+      "text_markdown": "Sein Ziel war Portobelo, eine der am stärksten befestigten Städte Amerikas.",
+      "tts": {
+        "text": "Sein Ziel war Portobelo, eine der am stärksten befestigten Städte Amerikas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portobelo lag an der Karibikküste des heutigen Panama.",
+      "text_markdown": "Portobelo lag an der Karibikküste des heutigen Panama.",
+      "tts": {
+        "text": "Portobelo lag an der Karibikküste des heutigen Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es war der Ort, an dem südamerikanisches Silber auf Schiffe Richtung Spanien verladen wurde.",
+      "text_markdown": "Es war der Ort, an dem südamerikanisches Silber auf Schiffe Richtung Spanien verladen wurde.",
+      "tts": {
+        "text": "Es war der Ort, an dem südamerikanisches Silber auf Schiffe Richtung Spanien verladen wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Stadt wurde von drei steinernen Festungen und einer Garnison professioneller Soldaten verteidigt.",
+      "text_markdown": "Die Stadt wurde von drei steinernen Festungen und einer Garnison professioneller Soldaten verteidigt.",
+      "tts": {
+        "text": "Die Stadt wurde von drei steinernen Festungen und einer Garnison professioneller Soldaten verteidigt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niemand rechnete mit einem Angriff auf Portobelo.",
+      "text_markdown": "Niemand rechnete mit einem Angriff auf Portobelo.",
+      "tts": {
+        "text": "Niemand rechnete mit einem Angriff auf Portobelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Spanier hielten es für uneinnehmbar.",
+      "text_markdown": "Die Spanier hielten es für uneinnehmbar.",
+      "tts": {
+        "text": "Die Spanier hielten es für uneinnehmbar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Genau deshalb wählte Morgan es aus.",
+      "text_markdown": "Genau deshalb wählte Morgan es aus.",
+      "tts": {
+        "text": "Genau deshalb wählte Morgan es aus.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgans Männer landeten nachts mehrere Meilen von der Stadt entfernt.",
+      "text_markdown": "Morgans Männer landeten nachts mehrere Meilen von der Stadt entfernt.",
+      "tts": {
+        "text": "Morgans Männer landeten nachts mehrere Meilen von der Stadt entfernt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie paddelten in Kanus an Land und schlichen sich im Dunkeln durch den Dschungel.",
+      "text_markdown": "Sie paddelten in Kanus an Land und schlichen sich im Dunkeln durch den Dschungel.",
+      "tts": {
+        "text": "Sie paddelten in Kanus an Land und schlichen sich im Dunkeln durch den Dschungel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie griffen die erste Festung im Morgengrauen an und überraschten die Verteidiger völlig.",
+      "text_markdown": "Sie griffen die erste Festung im Morgengrauen an und überraschten die Verteidiger völlig.",
+      "tts": {
+        "text": "Sie griffen die erste Festung im Morgengrauen an und überraschten die Verteidiger völlig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Spanier wehrten sich tapfer, wurden aber von der Geschwindigkeit des Angriffs überwältigt.",
+      "text_markdown": "Die Spanier wehrten sich tapfer, wurden aber von der Geschwindigkeit des Angriffs überwältigt.",
+      "tts": {
+        "text": "Die Spanier wehrten sich tapfer, wurden aber von der Geschwindigkeit des Angriffs überwältigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgans Freibeuter waren erfahrene Straßenkämpfer, die im Nahkampf hervorragten.",
+      "text_markdown": "Morgans Freibeuter waren erfahrene Straßenkämpfer, die im Nahkampf hervorragten.",
+      "tts": {
+        "text": "Morgans Freibeuter waren erfahrene Straßenkämpfer, die im Nahkampf hervorragten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan wandte eine Taktik an, die seine Feinde entsetzte.",
+      "text_markdown": "Morgan wandte eine Taktik an, die seine Feinde entsetzte.",
+      "tts": {
+        "text": "Morgan wandte eine Taktik an, die seine Feinde entsetzte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er zwang gefangene Mönche und Nonnen, Leitern an die Mauern der zweiten Festung zu tragen.",
+      "text_markdown": "Er zwang gefangene Mönche und Nonnen, Leitern an die Mauern der zweiten Festung zu tragen.",
+      "tts": {
+        "text": "Er zwang gefangene Mönche und Nonnen, Leitern an die Mauern der zweiten Festung zu tragen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die spanischen Verteidiger konnten nicht auf ihre eigenen Ordensbrüder und -schwestern schießen.",
+      "text_markdown": "Die spanischen Verteidiger konnten nicht auf ihre eigenen Ordensbrüder und -schwestern schießen.",
+      "tts": {
+        "text": "Die spanischen Verteidiger konnten nicht auf ihre eigenen Ordensbrüder und -schwestern schießen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Innerhalb von zwei Tagen waren alle drei Festungen gefallen.",
+      "text_markdown": "Innerhalb von zwei Tagen waren alle drei Festungen gefallen.",
+      "tts": {
+        "text": "Innerhalb von zwei Tagen waren alle drei Festungen gefallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgans Freibeuter plünderten die Stadt zwei Wochen lang.",
+      "text_markdown": "Morgans Freibeuter plünderten die Stadt zwei Wochen lang.",
+      "tts": {
+        "text": "Morgans Freibeuter plünderten die Stadt zwei Wochen lang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie folterten Gefangene, damit diese verrieten, wo Gold und Wertgegenstände versteckt waren.",
+      "text_markdown": "Sie folterten Gefangene, damit diese verrieten, wo Gold und Wertgegenstände versteckt waren.",
+      "tts": {
+        "text": "Sie folterten Gefangene, damit diese verrieten, wo Gold und Wertgegenstände versteckt waren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Gesamtbeute aus Portobelo war enorm.",
+      "text_markdown": "Die Gesamtbeute aus Portobelo war enorm.",
+      "tts": {
+        "text": "Die Gesamtbeute aus Portobelo war enorm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Historiker schätzen den Wert der Beute auf über 250.000 Stück von Achten.",
+      "text_markdown": "Historiker schätzen den Wert der Beute auf über 250.000 Stück von Achten.",
+      "tts": {
+        "text": "Historiker schätzen den Wert der Beute auf über zweihundertfünfzigtausend Stück von Achten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeder einfache Seemann erhielt einen Anteil im Wert mehrerer Jahre ehrlicher Arbeit.",
+      "text_markdown": "Jeder einfache Seemann erhielt einen Anteil im Wert mehrerer Jahre ehrlicher Arbeit.",
+      "tts": {
+        "text": "Jeder einfache Seemann erhielt einen Anteil im Wert mehrerer Jahre ehrlicher Arbeit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan kehrte als Held nach Port Royal zurück.",
+      "text_markdown": "Morgan kehrte als Held nach Port Royal zurück.",
+      "tts": {
+        "text": "Morgan kehrte als Held nach Port Royal zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Erfolg des Portobelo-Überfalls zog Hunderte weiterer Männer unter Morgans Flagge.",
+      "text_markdown": "Der Erfolg des Portobelo-Überfalls zog Hunderte weiterer Männer unter Morgans Flagge.",
+      "tts": {
+        "text": "Der Erfolg des Portobelo-Überfalls zog Hunderte weiterer Männer unter Morgans Flagge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Freibeuter aus der gesamten Karibik wollten mit dem Mann segeln, der eine uneinnehmbare Stadt erobert hatte.",
+      "text_markdown": "Freibeuter aus der gesamten Karibik wollten mit dem Mann segeln, der eine uneinnehmbare Stadt erobert hatte.",
+      "tts": {
+        "text": "Freibeuter aus der gesamten Karibik wollten mit dem Mann segeln, der eine uneinnehmbare Stadt erobert hatte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anfang 1669 brach Morgan erneut auf, diesmal mit Maracaibo als Ziel.",
+      "text_markdown": "Anfang 1669 brach Morgan erneut auf, diesmal mit Maracaibo als Ziel.",
+      "tts": {
+        "text": "Anfang sechzehnhundertneunundsechzig brach Morgan erneut auf, diesmal mit Maracaibo als Ziel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maracaibo war eine wohlhabende Handelsstadt am Ufer des Maracaibosees im heutigen Venezuela.",
+      "text_markdown": "Maracaibo war eine wohlhabende Handelsstadt am Ufer des Maracaibosees im heutigen Venezuela.",
+      "tts": {
+        "text": "Maracaibo war eine wohlhabende Handelsstadt am Ufer des Maracaibosees im heutigen Venezuela.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um die Stadt zu erreichen, musste Morgans Flotte einen schmalen, von einer Festung bewachten Kanal passieren.",
+      "text_markdown": "Um die Stadt zu erreichen, musste Morgans Flotte einen schmalen, von einer Festung bewachten Kanal passieren.",
+      "tts": {
+        "text": "Um die Stadt zu erreichen, musste Morgans Flotte einen schmalen, von einer Festung bewachten Kanal passieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Freibeuter stürmten die Festung und fanden sie verlassen vor.",
+      "text_markdown": "Die Freibeuter stürmten die Festung und fanden sie verlassen vor.",
+      "tts": {
+        "text": "Die Freibeuter stürmten die Festung und fanden sie verlassen vor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die spanische Garnison war geflohen und hatte geladene Kanonen zurückgelassen.",
+      "text_markdown": "Die spanische Garnison war geflohen und hatte geladene Kanonen zurückgelassen.",
+      "tts": {
+        "text": "Die spanische Garnison war geflohen und hatte geladene Kanonen zurückgelassen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgans Männer betraten Maracaibo und fanden es fast menschenleer.",
+      "text_markdown": "Morgans Männer betraten Maracaibo und fanden es fast menschenleer.",
+      "tts": {
+        "text": "Morgans Männer betraten Maracaibo und fanden es fast menschenleer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Einwohner waren mit ihren Wertgegenständen ins Umland geflohen.",
+      "text_markdown": "Die Einwohner waren mit ihren Wertgegenständen ins Umland geflohen.",
+      "tts": {
+        "text": "Die Einwohner waren mit ihren Wertgegenständen ins Umland geflohen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan entsandte Stoßtrupps, um sie aufzuspüren.",
+      "text_markdown": "Morgan entsandte Stoßtrupps, um sie aufzuspüren.",
+      "tts": {
+        "text": "Morgan entsandte Stoßtrupps, um sie aufzuspüren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Freibeuter verbrachten Wochen mit der Suche nach versteckten Schätzen.",
+      "text_markdown": "Die Freibeuter verbrachten Wochen mit der Suche nach versteckten Schätzen.",
+      "tts": {
+        "text": "Die Freibeuter verbrachten Wochen mit der Suche nach versteckten Schätzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie setzten Folter ein, um Informationen von gefangenen Zivilisten zu erpressen.",
+      "text_markdown": "Sie setzten Folter ein, um Informationen von gefangenen Zivilisten zu erpressen.",
+      "tts": {
+        "text": "Sie setzten Folter ein, um Informationen von gefangenen Zivilisten zu erpressen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diese Methoden waren brutal, selbst nach den harten Maßstäben der Epoche.",
+      "text_markdown": "Diese Methoden waren brutal, selbst nach den harten Maßstäben der Epoche.",
+      "tts": {
+        "text": "Diese Methoden waren brutal, selbst nach den harten Maßstäben der Epoche.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als Morgan versuchte, Maracaibo zu verlassen, fand er den Kanal blockiert.",
+      "text_markdown": "Als Morgan versuchte, Maracaibo zu verlassen, fand er den Kanal blockiert.",
+      "tts": {
+        "text": "Als Morgan versuchte, Maracaibo zu verlassen, fand er den Kanal blockiert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drei spanische Kriegsschiffe waren eingetroffen und hatten die Festung zurückerobert.",
+      "text_markdown": "Drei spanische Kriegsschiffe waren eingetroffen und hatten die Festung zurückerobert.",
+      "tts": {
+        "text": "Drei spanische Kriegsschiffe waren eingetroffen und hatten die Festung zurückerobert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan war mit seiner gesamten Flotte im See gefangen.",
+      "text_markdown": "Morgan war mit seiner gesamten Flotte im See gefangen.",
+      "tts": {
+        "text": "Morgan war mit seiner gesamten Flotte im See gefangen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der spanische Admiral sandte Morgan eine Nachricht mit der Forderung nach Kapitulation.",
+      "text_markdown": "Der spanische Admiral sandte Morgan eine Nachricht mit der Forderung nach Kapitulation.",
+      "tts": {
+        "text": "Der spanische Admiral sandte Morgan eine Nachricht mit der Forderung nach Kapitulation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er versprach freies Geleit, wenn die Freibeuter ihre gesamte Beute zurückgäben.",
+      "text_markdown": "Er versprach freies Geleit, wenn die Freibeuter ihre gesamte Beute zurückgäben.",
+      "tts": {
+        "text": "Er versprach freies Geleit, wenn die Freibeuter ihre gesamte Beute zurückgäben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan lehnte ab.",
+      "text_markdown": "Morgan lehnte ab.",
+      "tts": {
+        "text": "Morgan lehnte ab.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stattdessen ersann Morgan einen genialen Fluchtplan.",
+      "text_markdown": "Stattdessen ersann Morgan einen genialen Fluchtplan.",
+      "tts": {
+        "text": "Stattdessen ersann Morgan einen genialen Fluchtplan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er schickte ein mit Sprengstoff beladenes Brander-Schiff direkt auf das spanische Flaggschiff.",
+      "text_markdown": "Er schickte ein mit Sprengstoff beladenes Brander-Schiff direkt auf das spanische Flaggschiff.",
+      "tts": {
+        "text": "Er schickte ein mit Sprengstoff beladenes Brander-Schiff direkt auf das spanische Flaggschiff.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Flaggschiff explodierte und sank.",
+      "text_markdown": "Das Flaggschiff explodierte und sank.",
+      "tts": {
+        "text": "Das Flaggschiff explodierte und sank.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das zweite spanische Schiff lief auf Grund und wurde gekapert.",
+      "text_markdown": "Das zweite spanische Schiff lief auf Grund und wurde gekapert.",
+      "tts": {
+        "text": "Das zweite spanische Schiff lief auf Grund und wurde gekapert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das dritte zog sich unter den Schutz der Festungskanonen zurück.",
+      "text_markdown": "Das dritte zog sich unter den Schutz der Festungskanonen zurück.",
+      "tts": {
+        "text": "Das dritte zog sich unter den Schutz der Festungskanonen zurück.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan täuschte daraufhin den Festungskommandanten mit einer einfachen List.",
+      "text_markdown": "Morgan täuschte daraufhin den Festungskommandanten mit einer einfachen List.",
+      "tts": {
+        "text": "Morgan täuschte daraufhin den Festungskommandanten mit einer einfachen List.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er schickte Boote voller Männer an Land, als ob er einen Landangriff vorbereitete.",
+      "text_markdown": "Er schickte Boote voller Männer an Land, als ob er einen Landangriff vorbereitete.",
+      "tts": {
+        "text": "Er schickte Boote voller Männer an Land, als ob er einen Landangriff vorbereitete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Männer versteckten sich am Boden der Boote und wurden ungesehen zurückgerudert.",
+      "text_markdown": "Die Männer versteckten sich am Boden der Boote und wurden ungesehen zurückgerudert.",
+      "tts": {
+        "text": "Die Männer versteckten sich am Boden der Boote und wurden ungesehen zurückgerudert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der spanische Kommandant verlegte seine Kanonen auf die Landseite der Festung.",
+      "text_markdown": "Der spanische Kommandant verlegte seine Kanonen auf die Landseite der Festung.",
+      "tts": {
+        "text": "Der spanische Kommandant verlegte seine Kanonen auf die Landseite der Festung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In jener Nacht segelte Morgan mit seiner Flotte an den unverteidigten Seemauern vorbei.",
+      "text_markdown": "In jener Nacht segelte Morgan mit seiner Flotte an den unverteidigten Seemauern vorbei.",
+      "tts": {
+        "text": "In jener Nacht segelte Morgan mit seiner Flotte an den unverteidigten Seemauern vorbei.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Am Morgen waren die Freibeuter sicher auf offener See.",
+      "text_markdown": "Am Morgen waren die Freibeuter sicher auf offener See.",
+      "tts": {
+        "text": "Am Morgen waren die Freibeuter sicher auf offener See.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Maracaibo-Überfall bestätigte Morgans Ruf als größter lebender Freibeuter-Befehlshaber.",
+      "text_markdown": "Der Maracaibo-Überfall bestätigte Morgans Ruf als größter lebender Freibeuter-Befehlshaber.",
+      "tts": {
+        "text": "Der Maracaibo-Überfall bestätigte Morgans Ruf als größter lebender Freibeuter-Befehlshaber.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war listig, rücksichtslos und scheinbar nicht aufzuhalten.",
+      "text_markdown": "Er war listig, rücksichtslos und scheinbar nicht aufzuhalten.",
+      "tts": {
+        "text": "Er war listig, rücksichtslos und scheinbar nicht aufzuhalten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Die Überfälle, die ein Imperium erschütterten",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sein nächstes Ziel sollte das kühnste von allen werden.",
+      "text_markdown": "Sein nächstes Ziel sollte das kühnste von allen werden.",
+      "tts": {
+        "text": "Sein nächstes Ziel sollte das kühnste von allen werden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Plünderung von Panama",
+      "text_markdown": "Die Plünderung von Panama"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1670 begann Morgan, den ehrgeizigsten Überfall seiner Karriere zu planen.",
+      "text_markdown": "Im Jahr 1670 begann Morgan, den ehrgeizigsten Überfall seiner Karriere zu planen.",
+      "tts": {
+        "text": "Im Jahr sechzehnhundertsiebzig begann Morgan, den ehrgeizigsten Überfall seiner Karriere zu planen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Ziel war Panama-Stadt, die reichste Stadt in ganz Amerika.",
+      "text_markdown": "Sein Ziel war Panama-Stadt, die reichste Stadt in ganz Amerika.",
+      "tts": {
+        "text": "Sein Ziel war Panama-Stadt, die reichste Stadt in ganz Amerika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama-Stadt lag an der Pazifikküste der Landenge von Panama.",
+      "text_markdown": "Panama-Stadt lag an der Pazifikküste der Landenge von Panama.",
+      "tts": {
+        "text": "Panama-Stadt lag an der Pazifikküste der Landenge von Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alles Silber und Gold aus Peru passierte sie auf dem Weg nach Spanien.",
+      "text_markdown": "Alles Silber und Gold aus Peru passierte sie auf dem Weg nach Spanien.",
+      "tts": {
+        "text": "Alles Silber und Gold aus Peru passierte sie auf dem Weg nach Spanien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Stadt beherbergte Tausende von Menschen und einige der prächtigsten Gebäude der Neuen Welt.",
+      "text_markdown": "Die Stadt beherbergte Tausende von Menschen und einige der prächtigsten Gebäude der Neuen Welt.",
+      "tts": {
+        "text": "Die Stadt beherbergte Tausende von Menschen und einige der prächtigsten Gebäude der Neuen Welt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama-Stadt hatte große Kirchen, steinerne Lagerhäuser und eine Kathedrale mit einem hohen Glockenturm.",
+      "text_markdown": "Panama-Stadt hatte große Kirchen, steinerne Lagerhäuser und eine Kathedrale mit einem hohen Glockenturm.",
+      "tts": {
+        "text": "Panama-Stadt hatte große Kirchen, steinerne Lagerhäuser und eine Kathedrale mit einem hohen Glockenturm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wohlhabende Kaufleute lebten in Häusern mit Ziegeldächern und eisernen Balkonen.",
+      "text_markdown": "Wohlhabende Kaufleute lebten in Häusern mit Ziegeldächern und eisernen Balkonen.",
+      "tts": {
+        "text": "Wohlhabende Kaufleute lebten in Häusern mit Ziegeldächern und eisernen Balkonen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie war das Juwel von Spaniens Pazifik-Imperium.",
+      "text_markdown": "Sie war das Juwel von Spaniens Pazifik-Imperium.",
+      "tts": {
+        "text": "Sie war das Juwel von Spaniens Pazifik-Imperium.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um Panama-Stadt zu erreichen, müsste Morgan die gesamte Landenge zu Fuß überqueren.",
+      "text_markdown": "Um Panama-Stadt zu erreichen, müsste Morgan die gesamte Landenge zu Fuß überqueren.",
+      "tts": {
+        "text": "Um Panama-Stadt zu erreichen, müsste Morgan die gesamte Landenge zu Fuß überqueren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Reise bedeutete tagelange Durchquerung dichten tropischen Dschungels.",
+      "text_markdown": "Die Reise bedeutete tagelange Durchquerung dichten tropischen Dschungels.",
+      "tts": {
+        "text": "Die Reise bedeutete tagelange Durchquerung dichten tropischen Dschungels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Keine Freibeuter-Truppe hatte jemals etwas so Gefährliches versucht.",
+      "text_markdown": "Keine Freibeuter-Truppe hatte jemals etwas so Gefährliches versucht.",
+      "tts": {
+        "text": "Keine Freibeuter-Truppe hatte jemals etwas so Gefährliches versucht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan stellte die größte jemals versammelte Freibeuter-Armee zusammen.",
+      "text_markdown": "Morgan stellte die größte jemals versammelte Freibeuter-Armee zusammen.",
+      "tts": {
+        "text": "Morgan stellte die größte jemals versammelte Freibeuter-Armee zusammen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Über 1.800 Männer schlossen sich ihm an und segelten in einer Flotte von 36 Schiffen.",
+      "text_markdown": "Über 1.800 Männer schlossen sich ihm an und segelten in einer Flotte von 36 Schiffen.",
+      "tts": {
+        "text": "Über eintausendachthundert Männer schlossen sich ihm an und segelten in einer Flotte von sechsunddreißig Schiffen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie versammelten sich im Dezember 1670 auf der Insel Providence.",
+      "text_markdown": "Sie versammelten sich im Dezember 1670 auf der Insel Providence.",
+      "tts": {
+        "text": "Sie versammelten sich im Dezember sechzehnhundertsiebzig auf der Insel Providence.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der erste Schritt war die Einnahme der Festung San Lorenzo an der Mündung des Flusses Chagres.",
+      "text_markdown": "Der erste Schritt war die Einnahme der Festung San Lorenzo an der Mündung des Flusses Chagres.",
+      "tts": {
+        "text": "Der erste Schritt war die Einnahme der Festung San Lorenzo an der Mündung des Flusses Chagres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diese Festung bewachte den Flussweg ins Landesinnere von Panama.",
+      "text_markdown": "Diese Festung bewachte den Flussweg ins Landesinnere von Panama.",
+      "tts": {
+        "text": "Diese Festung bewachte den Flussweg ins Landesinnere von Panama.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan entsandte eine Vorhut von 400 Mann zur Einnahme der Festung.",
+      "text_markdown": "Morgan entsandte eine Vorhut von 400 Mann zur Einnahme der Festung.",
+      "tts": {
+        "text": "Morgan entsandte eine Vorhut von vierhundert Mann zur Einnahme der Festung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Angriff war erbittert.",
+      "text_markdown": "Der Angriff war erbittert.",
+      "tts": {
+        "text": "Der Angriff war erbittert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Freibeuter griffen die Mauern mit Granaten und Sturmleitern an.",
+      "text_markdown": "Die Freibeuter griffen die Mauern mit Granaten und Sturmleitern an.",
+      "tts": {
+        "text": "Die Freibeuter griffen die Mauern mit Granaten und Sturmleitern an.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Während der Schlacht wurde einer der Freibeuter von einem Pfeil getroffen.",
+      "text_markdown": "Während der Schlacht wurde einer der Freibeuter von einem Pfeil getroffen.",
+      "tts": {
+        "text": "Während der Schlacht wurde einer der Freibeuter von einem Pfeil getroffen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er zog ihn aus seinem Körper, wickelte ihn in Baumwolle und schoss ihn aus seiner Muskete zurück.",
+      "text_markdown": "Er zog ihn aus seinem Körper, wickelte ihn in Baumwolle und schoss ihn aus seiner Muskete zurück.",
+      "tts": {
+        "text": "Er zog ihn aus seinem Körper, wickelte ihn in Baumwolle und schoss ihn aus seiner Muskete zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der brennende Pfeil setzte das Strohdach der Festung in Brand.",
+      "text_markdown": "Der brennende Pfeil setzte das Strohdach der Festung in Brand.",
+      "tts": {
+        "text": "Der brennende Pfeil setzte das Strohdach der Festung in Brand.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Feuer breitete sich schnell in den Holzbauten im Inneren der Festung aus.",
+      "text_markdown": "Das Feuer breitete sich schnell in den Holzbauten im Inneren der Festung aus.",
+      "tts": {
+        "text": "Das Feuer breitete sich schnell in den Holzbauten im Inneren der Festung aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Pulvermagazin explodierte und tötete Dutzende spanischer Verteidiger.",
+      "text_markdown": "Das Pulvermagazin explodierte und tötete Dutzende spanischer Verteidiger.",
+      "tts": {
+        "text": "Das Pulvermagazin explodierte und tötete Dutzende spanischer Verteidiger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Am Morgen war die Festung in den Händen der Freibeuter.",
+      "text_markdown": "Am Morgen war die Festung in den Händen der Freibeuter.",
+      "tts": {
+        "text": "Am Morgen war die Festung in den Händen der Freibeuter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan führte dann seine Hauptstreitmacht in Kanus den Fluss Chagres hinauf.",
+      "text_markdown": "Morgan führte dann seine Hauptstreitmacht in Kanus den Fluss Chagres hinauf.",
+      "tts": {
+        "text": "Morgan führte dann seine Hauptstreitmacht in Kanus den Fluss Chagres hinauf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Reise dauerte neun Tage durch eines der schwierigsten Geländeformen der Erde.",
+      "text_markdown": "Die Reise dauerte neun Tage durch eines der schwierigsten Geländeformen der Erde.",
+      "tts": {
+        "text": "Die Reise dauerte neun Tage durch eines der schwierigsten Geländeformen der Erde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den Männern ging am dritten Tag die Nahrung aus.",
+      "text_markdown": "Den Männern ging am dritten Tag die Nahrung aus.",
+      "tts": {
+        "text": "Den Männern ging am dritten Tag die Nahrung aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie aßen Ledertaschen, kochten ihre Schuhe und kauten auf Blättern.",
+      "text_markdown": "Sie aßen Ledertaschen, kochten ihre Schuhe und kauten auf Blättern.",
+      "tts": {
+        "text": "Sie aßen Ledertaschen, kochten ihre Schuhe und kauten auf Blättern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Einige Männer brachen vor Hunger zusammen und mussten von ihren Kameraden getragen werden.",
+      "text_markdown": "Einige Männer brachen vor Hunger zusammen und mussten von ihren Kameraden getragen werden.",
+      "tts": {
+        "text": "Einige Männer brachen vor Hunger zusammen und mussten von ihren Kameraden getragen werden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als sie endlich die Pazifikseite der Landenge erreichten, jubelten die Männer.",
+      "text_markdown": "Als sie endlich die Pazifikseite der Landenge erreichten, jubelten die Männer.",
+      "tts": {
+        "text": "Als sie endlich die Pazifikseite der Landenge erreichten, jubelten die Männer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie konnten in der Ferne die Türme von Panama-Stadt sehen.",
+      "text_markdown": "Sie konnten in der Ferne die Türme von Panama-Stadt sehen.",
+      "tts": {
+        "text": "Sie konnten in der Ferne die Türme von Panama-Stadt sehen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der spanische Gouverneur hatte eine Streitmacht von etwa 2.600 Mann zur Verteidigung der Stadt aufgestellt.",
+      "text_markdown": "Der spanische Gouverneur hatte eine Streitmacht von etwa 2.600 Mann zur Verteidigung der Stadt aufgestellt.",
+      "tts": {
+        "text": "Der spanische Gouverneur hatte eine Streitmacht von etwa zweitausendsechshundert Mann zur Verteidigung der Stadt aufgestellt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er hatte auch zwei Herden wilder Stiere mitgebracht, die er in die Reihen der Freibeuter treiben wollte.",
+      "text_markdown": "Er hatte auch zwei Herden wilder Stiere mitgebracht, die er in die Reihen der Freibeuter treiben wollte.",
+      "tts": {
+        "text": "Er hatte auch zwei Herden wilder Stiere mitgebracht, die er in die Reihen der Freibeuter treiben wollte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Schlacht von Panama fand am 28. Januar 1671 statt.",
+      "text_markdown": "Die Schlacht von Panama fand am 28. Januar 1671 statt.",
+      "tts": {
+        "text": "Die Schlacht von Panama fand am achtundzwanzigsten Januar sechzehnhunderteinundsiebzig statt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan stellte seine Männer auf offenem Gelände vor den Stadtmauern auf.",
+      "text_markdown": "Morgan stellte seine Männer auf offenem Gelände vor den Stadtmauern auf.",
+      "tts": {
+        "text": "Morgan stellte seine Männer auf offenem Gelände vor den Stadtmauern auf.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die spanische Kavallerie griff zuerst an, aber die Freibeuter hielten stand.",
+      "text_markdown": "Die spanische Kavallerie griff zuerst an, aber die Freibeuter hielten stand.",
+      "tts": {
+        "text": "Die spanische Kavallerie griff zuerst an, aber die Freibeuter hielten stand.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihr Musketenfeuer war auf kurze Distanz verheerend.",
+      "text_markdown": "Ihr Musketenfeuer war auf kurze Distanz verheerend.",
+      "tts": {
+        "text": "Ihr Musketenfeuer war auf kurze Distanz verheerend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Kavallerie wurde innerhalb von Minuten aufgerieben.",
+      "text_markdown": "Die Kavallerie wurde innerhalb von Minuten aufgerieben.",
+      "tts": {
+        "text": "Die Kavallerie wurde innerhalb von Minuten aufgerieben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Stiere wurden freigelassen, aber sie rannten in die falsche Richtung.",
+      "text_markdown": "Die Stiere wurden freigelassen, aber sie rannten in die falsche Richtung.",
+      "tts": {
+        "text": "Die Stiere wurden freigelassen, aber sie rannten in die falsche Richtung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Einige liefen zurück durch die spanischen Linien und vermehrten die Verwirrung.",
+      "text_markdown": "Einige liefen zurück durch die spanischen Linien und vermehrten die Verwirrung.",
+      "tts": {
+        "text": "Einige liefen zurück durch die spanischen Linien und vermehrten die Verwirrung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die spanische Infanterie brach zusammen und floh in Richtung Stadt.",
+      "text_markdown": "Die spanische Infanterie brach zusammen und floh in Richtung Stadt.",
+      "tts": {
+        "text": "Die spanische Infanterie brach zusammen und floh in Richtung Stadt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgans Freibeuter verfolgten sie durch die Straßen.",
+      "text_markdown": "Morgans Freibeuter verfolgten sie durch die Straßen.",
+      "tts": {
+        "text": "Morgans Freibeuter verfolgten sie durch die Straßen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Kämpfe waren an vielen Stellen brutal und im Nahkampf.",
+      "text_markdown": "Die Kämpfe waren an vielen Stellen brutal und im Nahkampf.",
+      "tts": {
+        "text": "Die Kämpfe waren an vielen Stellen brutal und im Nahkampf.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Während der Schlacht oder kurz danach brach ein großes Feuer in Panama-Stadt aus.",
+      "text_markdown": "Während der Schlacht oder kurz danach brach ein großes Feuer in Panama-Stadt aus.",
+      "tts": {
+        "text": "Während der Schlacht oder kurz danach brach ein großes Feuer in Panama-Stadt aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ob Morgans Männer oder die spanischen Verteidiger es legten, bleibt umstritten.",
+      "text_markdown": "Ob Morgans Männer oder die spanischen Verteidiger es legten, bleibt umstritten.",
+      "tts": {
+        "text": "Ob Morgans Männer oder die spanischen Verteidiger es legten, bleibt umstritten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Feuer zerstörte den größten Teil der Stadt innerhalb weniger Stunden.",
+      "text_markdown": "Das Feuer zerstörte den größten Teil der Stadt innerhalb weniger Stunden.",
+      "tts": {
+        "text": "Das Feuer zerstörte den größten Teil der Stadt innerhalb weniger Stunden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Freibeuter verbrachten vier Wochen damit, die Ruinen nach Schätzen zu durchsuchen.",
+      "text_markdown": "Die Freibeuter verbrachten vier Wochen damit, die Ruinen nach Schätzen zu durchsuchen.",
+      "tts": {
+        "text": "Die Freibeuter verbrachten vier Wochen damit, die Ruinen nach Schätzen zu durchsuchen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie verhörten Gefangene und gruben im Schutt.",
+      "text_markdown": "Sie verhörten Gefangene und gruben im Schutt.",
+      "tts": {
+        "text": "Sie verhörten Gefangene und gruben im Schutt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Großteil des Reichtums der Stadt war vor der Schlacht auf Schiffe verladen und nach Süden geschickt worden.",
+      "text_markdown": "Ein Großteil des Reichtums der Stadt war vor der Schlacht auf Schiffe verladen und nach Süden geschickt worden.",
+      "tts": {
+        "text": "Ein Großteil des Reichtums der Stadt war vor der Schlacht auf Schiffe verladen und nach Süden geschickt worden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Beute war geringer als von den Männern erwartet.",
+      "text_markdown": "Die Beute war geringer als von den Männern erwartet.",
+      "tts": {
+        "text": "Die Beute war geringer als von den Männern erwartet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bei der Aufteilung erhielt jeder Mann weit weniger als bei Portobelo.",
+      "text_markdown": "Bei der Aufteilung erhielt jeder Mann weit weniger als bei Portobelo.",
+      "tts": {
+        "text": "Bei der Aufteilung erhielt jeder Mann weit weniger als bei Portobelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viele beschuldigten Morgan, Schätze für sich selbst versteckt zu haben.",
+      "text_markdown": "Viele beschuldigten Morgan, Schätze für sich selbst versteckt zu haben.",
+      "tts": {
+        "text": "Viele beschuldigten Morgan, Schätze für sich selbst versteckt zu haben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan bestritt diese Anschuldigungen, aber das Murren hörte nie auf.",
+      "text_markdown": "Morgan bestritt diese Anschuldigungen, aber das Murren hörte nie auf.",
+      "tts": {
+        "text": "Morgan bestritt diese Anschuldigungen, aber das Murren hörte nie auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er führte seine Armee zurück über die Landenge zur Karibikküste.",
+      "text_markdown": "Er führte seine Armee zurück über die Landenge zur Karibikküste.",
+      "tts": {
+        "text": "Er führte seine Armee zurück über die Landenge zur Karibikküste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ohne Morgans Wissen war bereits ein Friedensvertrag zwischen England und Spanien unterzeichnet worden.",
+      "text_markdown": "Ohne Morgans Wissen war bereits ein Friedensvertrag zwischen England und Spanien unterzeichnet worden.",
+      "tts": {
+        "text": "Ohne Morgans Wissen war bereits ein Friedensvertrag zwischen England und Spanien unterzeichnet worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Vertrag von Madrid wurde im Juli 1670 vereinbart, Monate vor dem Panama-Überfall.",
+      "text_markdown": "Der Vertrag von Madrid wurde im Juli 1670 vereinbart, Monate vor dem Panama-Überfall.",
+      "tts": {
+        "text": "Der Vertrag von Madrid wurde im Juli sechzehnhundertsiebzig vereinbart, Monate vor dem Panama-Überfall.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nach seinen Bestimmungen einigten sich beide Nationen darauf, die Kolonien der jeweils anderen nicht mehr anzugreifen.",
+      "text_markdown": "Nach seinen Bestimmungen einigten sich beide Nationen darauf, die Kolonien der jeweils anderen nicht mehr anzugreifen.",
+      "tts": {
+        "text": "Nach seinen Bestimmungen einigten sich beide Nationen darauf, die Kolonien der jeweils anderen nicht mehr anzugreifen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Zerstörung von Panama-Stadt löste eine diplomatische Krise aus.",
+      "text_markdown": "Die Zerstörung von Panama-Stadt löste eine diplomatische Krise aus.",
+      "tts": {
+        "text": "Die Zerstörung von Panama-Stadt löste eine diplomatische Krise aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanien war wütend und forderte, dass England die Verantwortlichen bestrafe.",
+      "text_markdown": "Spanien war wütend und forderte, dass England die Verantwortlichen bestrafe.",
+      "tts": {
+        "text": "Spanien war wütend und forderte, dass England die Verantwortlichen bestrafe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "Die Plünderung von Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Plünderung von Panama war der dramatischste denkbare Verstoß gegen den neuen Vertrag.",
+      "text_markdown": "Die Plünderung von Panama war der dramatischste denkbare Verstoß gegen den neuen Vertrag.",
+      "tts": {
+        "text": "Die Plünderung von Panama war der dramatischste denkbare Verstoß gegen den neuen Vertrag.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vom Piraten zum Gouverneur",
+      "text_markdown": "Vom Piraten zum Gouverneur"
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die englische Regierung musste Spaniens Zorn besänftigen.",
+      "text_markdown": "Die englische Regierung musste Spaniens Zorn besänftigen.",
+      "tts": {
+        "text": "Die englische Regierung musste Spaniens Zorn besänftigen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Im Jahr 1672 wurden sowohl Gouverneur Modyford als auch Henry Morgan nach London zurückberufen.",
+      "text_markdown": "Im Jahr 1672 wurden sowohl Gouverneur Modyford als auch Henry Morgan nach London zurückberufen.",
+      "tts": {
+        "text": "Im Jahr sechzehnhundertzweiundsiebzig wurden sowohl Gouverneur Modyford als auch Henry Morgan nach London zurückberufen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Modyford wurde als symbolische Strafe im Tower von London eingekerkert.",
+      "text_markdown": "Modyford wurde als symbolische Strafe im Tower von London eingekerkert.",
+      "tts": {
+        "text": "Modyford wurde als symbolische Strafe im Tower von London eingekerkert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan kam nach England in der Erwartung, vor Gericht gestellt zu werden.",
+      "text_markdown": "Morgan kam nach England in der Erwartung, vor Gericht gestellt zu werden.",
+      "tts": {
+        "text": "Morgan kam nach England in der Erwartung, vor Gericht gestellt zu werden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Stattdessen wurde er eher wie eine Berühmtheit als wie ein Verbrecher behandelt.",
+      "text_markdown": "Stattdessen wurde er eher wie eine Berühmtheit als wie ein Verbrecher behandelt.",
+      "tts": {
+        "text": "Stattdessen wurde er eher wie eine Berühmtheit als wie ein Verbrecher behandelt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "König Karl II. war insgeheim über Morgans Heldentaten erfreut.",
+      "text_markdown": "König Karl II. war insgeheim über Morgans Heldentaten erfreut.",
+      "tts": {
+        "text": "König Karl der Zweite war insgeheim über Morgans Heldentaten erfreut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Plünderung von Panama hatte Spanien gedemütigt und die englische Macht in der Karibik demonstriert.",
+      "text_markdown": "Die Plünderung von Panama hatte Spanien gedemütigt und die englische Macht in der Karibik demonstriert.",
+      "tts": {
+        "text": "Die Plünderung von Panama hatte Spanien gedemütigt und die englische Macht in der Karibik demonstriert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dies waren Ergebnisse, die der König begrüßte, auch wenn er es nicht öffentlich sagen konnte.",
+      "text_markdown": "Dies waren Ergebnisse, die der König begrüßte, auch wenn er es nicht öffentlich sagen konnte.",
+      "tts": {
+        "text": "Dies waren Ergebnisse, die der König begrüßte, auch wenn er es nicht öffentlich sagen konnte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan verbrachte fast drei Jahre in London.",
+      "text_markdown": "Morgan verbrachte fast drei Jahre in London.",
+      "tts": {
+        "text": "Morgan verbrachte fast drei Jahre in London.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er speiste mit Aristokraten, beriet die Regierung in Karibik-Angelegenheiten und lebte komfortabel.",
+      "text_markdown": "Er speiste mit Aristokraten, beriet die Regierung in Karibik-Angelegenheiten und lebte komfortabel.",
+      "tts": {
+        "text": "Er speiste mit Aristokraten, beriet die Regierung in Karibik-Angelegenheiten und lebte komfortabel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er wurde eine vertraute Figur in den Kaffeehäusern und Salons der Hauptstadt.",
+      "text_markdown": "Er wurde eine vertraute Figur in den Kaffeehäusern und Salons der Hauptstadt.",
+      "tts": {
+        "text": "Er wurde eine vertraute Figur in den Kaffeehäusern und Salons der Hauptstadt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1674 traf König Karl eine erstaunliche Entscheidung.",
+      "text_markdown": "Im Jahr 1674 traf König Karl eine erstaunliche Entscheidung.",
+      "tts": {
+        "text": "Im Jahr sechzehnhundertvierundsiebzig traf König Karl eine erstaunliche Entscheidung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er schlug Henry Morgan zum Ritter und machte ihn zu Sir Henry Morgan.",
+      "text_markdown": "Er schlug Henry Morgan zum Ritter und machte ihn zu Sir Henry Morgan.",
+      "tts": {
+        "text": "Er schlug Henry Morgan zum Ritter und machte ihn zu Sir Henry Morgan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dann ernannte er Morgan zum Vizegouverneur von Jamaika.",
+      "text_markdown": "Dann ernannte er Morgan zum Vizegouverneur von Jamaika.",
+      "tts": {
+        "text": "Dann ernannte er Morgan zum Vizegouverneur von Jamaika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Mann, der Panama-Stadt unter Verletzung eines Friedensvertrages geplündert hatte, wurde nun zurückgeschickt, um Jamaika zu regieren.",
+      "text_markdown": "Der Mann, der Panama-Stadt unter Verletzung eines Friedensvertrages geplündert hatte, wurde nun zurückgeschickt, um Jamaika zu regieren.",
+      "tts": {
+        "text": "Der Mann, der Panama-Stadt unter Verletzung eines Friedensvertrages geplündert hatte, wurde nun zurückgeschickt, um Jamaika zu regieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es war eine der bemerkenswertesten Schicksalswenden der Kolonialgeschichte.",
+      "text_markdown": "Es war eine der bemerkenswertesten Schicksalswenden der Kolonialgeschichte.",
+      "tts": {
+        "text": "Es war eine der bemerkenswertesten Schicksalswenden der Kolonialgeschichte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan kehrte 1676 nach Jamaika zurück und übernahm seine neuen Pflichten.",
+      "text_markdown": "Morgan kehrte 1676 nach Jamaika zurück und übernahm seine neuen Pflichten.",
+      "tts": {
+        "text": "Morgan kehrte sechzehnhundertsechsundsiebzig nach Jamaika zurück und übernahm seine neuen Pflichten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seine Aufgabe war es, unter dem neuen Gouverneur Lord Vaughan zu dienen.",
+      "text_markdown": "Seine Aufgabe war es, unter dem neuen Gouverneur Lord Vaughan zu dienen.",
+      "tts": {
+        "text": "Seine Aufgabe war es, unter dem neuen Gouverneur Lord Vaughan zu dienen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ironischerweise gehörte es zu Morgans Aufgaben, die Piraterie zu unterdrücken.",
+      "text_markdown": "Ironischerweise gehörte es zu Morgans Aufgaben, die Piraterie zu unterdrücken.",
+      "tts": {
+        "text": "Ironischerweise gehörte es zu Morgans Aufgaben, die Piraterie zu unterdrücken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England wollte nun Frieden mit Spanien, und Freibeuter waren nicht mehr nützlich.",
+      "text_markdown": "England wollte nun Frieden mit Spanien, und Freibeuter waren nicht mehr nützlich.",
+      "tts": {
+        "text": "England wollte nun Frieden mit Spanien, und Freibeuter waren nicht mehr nützlich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Man erwartete von Morgan, dass er seine ehemaligen Kameraden zur Ordnung rief.",
+      "text_markdown": "Man erwartete von Morgan, dass er seine ehemaligen Kameraden zur Ordnung rief.",
+      "tts": {
+        "text": "Man erwartete von Morgan, dass er seine ehemaligen Kameraden zur Ordnung rief.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er führte diese Aufgabe mit gemischter Begeisterung aus.",
+      "text_markdown": "Er führte diese Aufgabe mit gemischter Begeisterung aus.",
+      "tts": {
+        "text": "Er führte diese Aufgabe mit gemischter Begeisterung aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er verhaftete einige Piraten und ließ ein paar hinrichten, wurde aber auch beschuldigt, anderen heimlich zu helfen.",
+      "text_markdown": "Er verhaftete einige Piraten und ließ ein paar hinrichten, wurde aber auch beschuldigt, anderen heimlich zu helfen.",
+      "tts": {
+        "text": "Er verhaftete einige Piraten und ließ ein paar hinrichten, wurde aber auch beschuldigt, anderen heimlich zu helfen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Loyalitäten waren stets kompliziert.",
+      "text_markdown": "Seine Loyalitäten waren stets kompliziert.",
+      "tts": {
+        "text": "Seine Loyalitäten waren stets kompliziert.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lord Vaughan und Morgan gerieten häufig aneinander.",
+      "text_markdown": "Lord Vaughan und Morgan gerieten häufig aneinander.",
+      "tts": {
+        "text": "Lord Vaughan und Morgan gerieten häufig aneinander.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vaughan hielt Morgan für ungehobelt und unzuverlässig.",
+      "text_markdown": "Vaughan hielt Morgan für ungehobelt und unzuverlässig.",
+      "tts": {
+        "text": "Vaughan hielt Morgan für ungehobelt und unzuverlässig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan hielt Vaughan für einen schwachen Führer, der die Realitäten der Karibik nicht verstand.",
+      "text_markdown": "Morgan hielt Vaughan für einen schwachen Führer, der die Realitäten der Karibik nicht verstand.",
+      "tts": {
+        "text": "Morgan hielt Vaughan für einen schwachen Führer, der die Realitäten der Karibik nicht verstand.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Laufe der Jahre richtete sich Morgan im Leben eines wohlhabenden jamaikanischen Pflanzers ein.",
+      "text_markdown": "Im Laufe der Jahre richtete sich Morgan im Leben eines wohlhabenden jamaikanischen Pflanzers ein.",
+      "tts": {
+        "text": "Im Laufe der Jahre richtete sich Morgan im Leben eines wohlhabenden jamaikanischen Pflanzers ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er besaß mehrere große Güter und Hunderte versklavter Arbeiter.",
+      "text_markdown": "Er besaß mehrere große Güter und Hunderte versklavter Arbeiter.",
+      "tts": {
+        "text": "Er besaß mehrere große Güter und Hunderte versklavter Arbeiter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er trank auch viel.",
+      "text_markdown": "Er trank auch viel.",
+      "tts": {
+        "text": "Er trank auch viel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Besucher beschrieben ihn als rotgesichtig, übergewichtig und häufig krank.",
+      "text_markdown": "Besucher beschrieben ihn als rotgesichtig, übergewichtig und häufig krank.",
+      "tts": {
+        "text": "Besucher beschrieben ihn als rotgesichtig, übergewichtig und häufig krank.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Gesundheit verschlechterte sich in den 1680er Jahren stetig.",
+      "text_markdown": "Seine Gesundheit verschlechterte sich in den 1680er Jahren stetig.",
+      "tts": {
+        "text": "Seine Gesundheit verschlechterte sich in den sechzehnhundertachtziger Jahren stetig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1683 wurde er vom neuen Gouverneur aus dem Rat von Jamaika entfernt.",
+      "text_markdown": "Im Jahr 1683 wurde er vom neuen Gouverneur aus dem Rat von Jamaika entfernt.",
+      "tts": {
+        "text": "Im Jahr sechzehnhundertdreiundachtzig wurde er vom neuen Gouverneur aus dem Rat von Jamaika entfernt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan wurde beschuldigt, zu nachsichtig gegenüber Piraten und zu oft betrunken zum Regieren zu sein.",
+      "text_markdown": "Morgan wurde beschuldigt, zu nachsichtig gegenüber Piraten und zu oft betrunken zum Regieren zu sein.",
+      "tts": {
+        "text": "Morgan wurde beschuldigt, zu nachsichtig gegenüber Piraten und zu oft betrunken zum Regieren zu sein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er verbrachte seine letzten Jahre auf seiner Plantage, weitgehend abseits des öffentlichen Lebens.",
+      "text_markdown": "Er verbrachte seine letzten Jahre auf seiner Plantage, weitgehend abseits des öffentlichen Lebens.",
+      "tts": {
+        "text": "Er verbrachte seine letzten Jahre auf seiner Plantage, weitgehend abseits des öffentlichen Lebens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Arzt namens Hans Sloane besuchte Morgan in seinen letzten Monaten.",
+      "text_markdown": "Ein Arzt namens Hans Sloane besuchte Morgan in seinen letzten Monaten.",
+      "tts": {
+        "text": "Ein Arzt namens Hans Sloane besuchte Morgan in seinen letzten Monaten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sloane beschrieb Morgan als ausgezehrt und gelbhäutig, ein deutliches Zeichen von Leberversagen.",
+      "text_markdown": "Sloane beschrieb Morgan als ausgezehrt und gelbhäutig, ein deutliches Zeichen von Leberversagen.",
+      "tts": {
+        "text": "Sloane beschrieb Morgan als ausgezehrt und gelbhäutig, ein deutliches Zeichen von Leberversagen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan starb am 25. August 1688 im Alter von 53 Jahren.",
+      "text_markdown": "Henry Morgan starb am 25. August 1688 im Alter von 53 Jahren.",
+      "tts": {
+        "text": "Henry Morgan starb am fünfundzwanzigsten August sechzehnhundertachtundachtzig im Alter von dreiundfünfzig Jahren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Todesursache war mit ziemlicher Sicherheit eine Lebererkrankung, verursacht durch jahrelangen starken Alkoholkonsum.",
+      "text_markdown": "Die Todesursache war mit ziemlicher Sicherheit eine Lebererkrankung, verursacht durch jahrelangen starken Alkoholkonsum.",
+      "tts": {
+        "text": "Die Todesursache war mit ziemlicher Sicherheit eine Lebererkrankung, verursacht durch jahrelangen starken Alkoholkonsum.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihm wurde ein Staatsbegräbnis in Port Royal zuteil.",
+      "text_markdown": "Ihm wurde ein Staatsbegräbnis in Port Royal zuteil.",
+      "tts": {
+        "text": "Ihm wurde ein Staatsbegräbnis in Port Royal zuteil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Schiffe im Hafen feuerten ihre Kanonen zum Salut.",
+      "text_markdown": "Die Schiffe im Hafen feuerten ihre Kanonen zum Salut.",
+      "tts": {
+        "text": "Die Schiffe im Hafen feuerten ihre Kanonen zum Salut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er wurde auf dem Friedhof von Palisadoes mit Blick auf das Meer beigesetzt.",
+      "text_markdown": "Er wurde auf dem Friedhof von Palisadoes mit Blick auf das Meer beigesetzt.",
+      "tts": {
+        "text": "Er wurde auf dem Friedhof von Palisadoes mit Blick auf das Meer beigesetzt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vier Jahre später, 1692, zerstörte ein gewaltiges Erdbeben Port Royal.",
+      "text_markdown": "Vier Jahre später, 1692, zerstörte ein gewaltiges Erdbeben Port Royal.",
+      "tts": {
+        "text": "Vier Jahre später, sechzehnhundertzweiundneunzig, zerstörte ein gewaltiges Erdbeben Port Royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zwei Drittel der Stadt rutschten ins Meer.",
+      "text_markdown": "Zwei Drittel der Stadt rutschten ins Meer.",
+      "tts": {
+        "text": "Zwei Drittel der Stadt rutschten ins Meer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgans Grab gehörte zu den Teilen des Friedhofs, die vom Ozean verschlungen wurden.",
+      "text_markdown": "Morgans Grab gehörte zu den Teilen des Friedhofs, die vom Ozean verschlungen wurden.",
+      "tts": {
+        "text": "Morgans Grab gehörte zu den Teilen des Friedhofs, die vom Ozean verschlungen wurden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sein Leichnam wurde nie geborgen.",
+      "text_markdown": "Sein Leichnam wurde nie geborgen.",
+      "tts": {
+        "text": "Sein Leichnam wurde nie geborgen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Vom Piraten zum Gouverneur",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die verruchteste Stadt der Erde und der berühmteste Freibeuter, der sie sein Zuhause nannte, verschwanden beide unter den Wellen.",
+      "text_markdown": "Die verruchteste Stadt der Erde und der berühmteste Freibeuter, der sie sein Zuhause nannte, verschwanden beide unter den Wellen.",
+      "tts": {
+        "text": "Die verruchteste Stadt der Erde und der berühmteste Freibeuter, der sie sein Zuhause nannte, verschwanden beide unter den Wellen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Legende von Captain Morgan",
+      "text_markdown": "Die Legende von Captain Morgan"
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgans Geschichte wurde seit mehr als dreihundert Jahren erzählt und wiedererzählt.",
+      "text_markdown": "Henry Morgans Geschichte wurde seit mehr als dreihundert Jahren erzählt und wiedererzählt.",
+      "tts": {
+        "text": "Henry Morgans Geschichte wurde seit mehr als dreihundert Jahren erzählt und wiedererzählt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er ist einer der berühmtesten Piraten der Geschichte, obwohl er stets darauf bestand, überhaupt kein Pirat zu sein.",
+      "text_markdown": "Er ist einer der berühmtesten Piraten der Geschichte, obwohl er stets darauf bestand, überhaupt kein Pirat zu sein.",
+      "tts": {
+        "text": "Er ist einer der berühmtesten Piraten der Geschichte, obwohl er stets darauf bestand, überhaupt kein Pirat zu sein.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schon zu seinen Lebzeiten wurde Morgan zur Legende.",
+      "text_markdown": "Schon zu seinen Lebzeiten wurde Morgan zur Legende.",
+      "tts": {
+        "text": "Schon zu seinen Lebzeiten wurde Morgan zur Legende.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein niederländischer Autor namens Alexandre Exquemelin veröffentlichte 1678 einen Bericht über Morgans Überfälle.",
+      "text_markdown": "Ein niederländischer Autor namens Alexandre Exquemelin veröffentlichte 1678 einen Bericht über Morgans Überfälle.",
+      "tts": {
+        "text": "Ein niederländischer Autor namens Alexandre Exquemelin veröffentlichte sechzehnhundertachtundsiebzig einen Bericht über Morgans Überfälle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Buch hieß Die Bukaniere Amerikas.",
+      "text_markdown": "Das Buch hieß Die Bukaniere Amerikas.",
+      "tts": {
+        "text": "Das Buch hieß Die Bukaniere Amerikas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Exquemelin hatte unter Morgan gedient und war Zeuge vieler der von ihm beschriebenen Ereignisse.",
+      "text_markdown": "Exquemelin hatte unter Morgan gedient und war Zeuge vieler der von ihm beschriebenen Ereignisse.",
+      "tts": {
+        "text": "Exquemelin hatte unter Morgan gedient und war Zeuge vieler der von ihm beschriebenen Ereignisse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sein Buch wurde in ganz Europa zum Bestseller.",
+      "text_markdown": "Sein Buch wurde in ganz Europa zum Bestseller.",
+      "tts": {
+        "text": "Sein Buch wurde in ganz Europa zum Bestseller.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es prägte das populäre Bild der karibischen Freibeuter für Jahrhunderte.",
+      "text_markdown": "Es prägte das populäre Bild der karibischen Freibeuter für Jahrhunderte.",
+      "tts": {
+        "text": "Es prägte das populäre Bild der karibischen Freibeuter für Jahrhunderte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan verklagte den englischen Verleger, weil dieser behauptet hatte, er sei ein Schuldknecht gewesen.",
+      "text_markdown": "Morgan verklagte den englischen Verleger, weil dieser behauptet hatte, er sei ein Schuldknecht gewesen.",
+      "tts": {
+        "text": "Morgan verklagte den englischen Verleger, weil dieser behauptet hatte, er sei ein Schuldknecht gewesen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er gewann den Prozess und erhielt Schadensersatz, doch das Buch verkaufte sich weiter.",
+      "text_markdown": "Er gewann den Prozess und erhielt Schadensersatz, doch das Buch verkaufte sich weiter.",
+      "tts": {
+        "text": "Er gewann den Prozess und erhielt Schadensersatz, doch das Buch verkaufte sich weiter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgans Vermächtnis ist kompliziert.",
+      "text_markdown": "Morgans Vermächtnis ist kompliziert.",
+      "tts": {
+        "text": "Morgans Vermächtnis ist kompliziert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Für die Engländer war er ein Nationalheld, der Jamaika beschützte und Spanien demütigte.",
+      "text_markdown": "Für die Engländer war er ein Nationalheld, der Jamaika beschützte und Spanien demütigte.",
+      "tts": {
+        "text": "Für die Engländer war er ein Nationalheld, der Jamaika beschützte und Spanien demütigte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Für die Spanier war er ein Kriegsverbrecher, der Städte niederbrannte und Unschuldige folterte.",
+      "text_markdown": "Für die Spanier war er ein Kriegsverbrecher, der Städte niederbrannte und Unschuldige folterte.",
+      "tts": {
+        "text": "Für die Spanier war er ein Kriegsverbrecher, der Städte niederbrannte und Unschuldige folterte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moderne Historiker sehen ihn als ein Produkt seiner Zeit.",
+      "text_markdown": "Moderne Historiker sehen ihn als ein Produkt seiner Zeit.",
+      "tts": {
+        "text": "Moderne Historiker sehen ihn als ein Produkt seiner Zeit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Gewalt, die er verübte, war extrem, aber sie wurde mit voller Unterstützung seiner Regierung ausgeübt.",
+      "text_markdown": "Die Gewalt, die er verübte, war extrem, aber sie wurde mit voller Unterstützung seiner Regierung ausgeübt.",
+      "tts": {
+        "text": "Die Gewalt, die er verübte, war extrem, aber sie wurde mit voller Unterstützung seiner Regierung ausgeübt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan war in seiner Brutalität nicht einzigartig.",
+      "text_markdown": "Morgan war in seiner Brutalität nicht einzigartig.",
+      "tts": {
+        "text": "Morgan war in seiner Brutalität nicht einzigartig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanische Soldaten begingen ähnliche Gräueltaten an englischen Siedlern.",
+      "text_markdown": "Spanische Soldaten begingen ähnliche Gräueltaten an englischen Siedlern.",
+      "tts": {
+        "text": "Spanische Soldaten begingen ähnliche Gräueltaten an englischen Siedlern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Unterschied ist, dass Morgan in einem so spektakulären Ausmaß Erfolg hatte.",
+      "text_markdown": "Der Unterschied ist, dass Morgan in einem so spektakulären Ausmaß Erfolg hatte.",
+      "tts": {
+        "text": "Der Unterschied ist, dass Morgan in einem so spektakulären Ausmaß Erfolg hatte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heute ist Morgans Name vor allem durch eine Rum-Marke bekannt.",
+      "text_markdown": "Heute ist Morgans Name vor allem durch eine Rum-Marke bekannt.",
+      "tts": {
+        "text": "Heute ist Morgans Name vor allem durch eine Rum-Marke bekannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Ironie ist kaum zu übersehen, da Alkohol ihn wahrscheinlich das Leben kostete.",
+      "text_markdown": "Die Ironie ist kaum zu übersehen, da Alkohol ihn wahrscheinlich das Leben kostete.",
+      "tts": {
+        "text": "Die Ironie ist kaum zu übersehen, da Alkohol ihn wahrscheinlich das Leben kostete.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unterwasserarchäologen haben die versunkenen Ruinen von Port Royal erforscht.",
+      "text_markdown": "Unterwasserarchäologen haben die versunkenen Ruinen von Port Royal erforscht.",
+      "tts": {
+        "text": "Unterwasserarchäologen haben die versunkenen Ruinen von Port Royal erforscht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie haben Gebäude, Tavernen und Artefakte aus Morgans Zeit gefunden, die unter dem Meer erhalten geblieben sind.",
+      "text_markdown": "Sie haben Gebäude, Tavernen und Artefakte aus Morgans Zeit gefunden, die unter dem Meer erhalten geblieben sind.",
+      "tts": {
+        "text": "Sie haben Gebäude, Tavernen und Artefakte aus Morgans Zeit gefunden, die unter dem Meer erhalten geblieben sind.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aber Morgans eigenes Grab bleibt verschollen.",
+      "text_markdown": "Aber Morgans eigenes Grab bleibt verschollen.",
+      "tts": {
+        "text": "Aber Morgans eigenes Grab bleibt verschollen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan lebte in einer Welt, in der die Grenze zwischen Recht und Verbrechen von mächtigen Männern zu ihrem eigenen Vorteil gezogen wurde.",
+      "text_markdown": "Henry Morgan lebte in einer Welt, in der die Grenze zwischen Recht und Verbrechen von mächtigen Männern zu ihrem eigenen Vorteil gezogen wurde.",
+      "tts": {
+        "text": "Henry Morgan lebte in einer Welt, in der die Grenze zwischen Recht und Verbrechen von mächtigen Männern zu ihrem eigenen Vorteil gezogen wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er nutzte diese Grenze besser aus als jeder andere.",
+      "text_markdown": "Er nutzte diese Grenze besser aus als jeder andere.",
+      "tts": {
+        "text": "Er nutzte diese Grenze besser aus als jeder andere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er war ein Pirat, der zum Ritter wurde.",
+      "text_markdown": "Er war ein Pirat, der zum Ritter wurde.",
+      "tts": {
+        "text": "Er war ein Pirat, der zum Ritter wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war ein Verbrecher, der zum Gouverneur wurde.",
+      "text_markdown": "Er war ein Verbrecher, der zum Gouverneur wurde.",
+      "tts": {
+        "text": "Er war ein Verbrecher, der zum Gouverneur wurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Die Legende von Captain Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seine Geschichte erinnert daran, dass die Helden und Schurken der Geschichte oft dieselben Menschen sind, betrachtet von verschiedenen Ufern.",
+      "text_markdown": "Seine Geschichte erinnert daran, dass die Helden und Schurken der Geschichte oft dieselben Menschen sind, betrachtet von verschiedenen Ufern.",
+      "tts": {
+        "text": "Seine Geschichte erinnert daran, dass die Helden und Schurken der Geschichte oft dieselben Menschen sind, betrachtet von verschiedenen Ufern.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4412 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_miguel_de_cervantes",
+  "language": "tr",
+  "total_segments": 295,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu bir korsan hikayesi değildir.",
+      "text_markdown": "Bu bir korsan hikayesi değildir.",
+      "tts": {
+        "text": "Bu bir korsan hikayesi değildir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, korsanlar tarafından kaçırılıp beş yıl boyunca esir tutulan bir adamın hikayesidir.",
+      "text_markdown": "Bu, korsanlar tarafından kaçırılıp beş yıl boyunca esir tutulan bir adamın hikayesidir.",
+      "tts": {
+        "text": "Bu, korsanlar tarafından kaçırılıp beş yıl boyunca esir tutulan bir adamın hikayesidir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes, İspanyol dilinin en büyük yazarı olarak anılır.",
+      "text_markdown": "Miguel de Cervantes, İspanyol dilinin en büyük yazarı olarak anılır.",
+      "tts": {
+        "text": "Miguel de Cervantes, İspanyol dilinin en büyük yazarı olarak anılır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yayımlanmış en önemli romanlardan biri olan Don Kişot'u yazdı.",
+      "text_markdown": "Yayımlanmış en önemli romanlardan biri olan Don Kişot'u yazdı.",
+      "tts": {
+        "text": "Yayımlanmış en önemli romanlardan biri olan Don Kişot'u yazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak yazar olmadan önce Cervantes bir askerdi.",
+      "text_markdown": "Ancak yazar olmadan önce Cervantes bir askerdi.",
+      "tts": {
+        "text": "Ancak yazar olmadan önce Cervantes bir askerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ve yazmak için özgür olmadan önce, Kuzey Afrika'da beş yıl boyunca köle olarak yaşadı.",
+      "text_markdown": "Ve yazmak için özgür olmadan önce, Kuzey Afrika'da beş yıl boyunca köle olarak yaşadı.",
+      "tts": {
+        "text": "Ve yazmak için özgür olmadan önce, Kuzey Afrika'da beş yıl boyunca köle olarak yaşadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esareti, yazarlığını akademisyenlerin hâlâ keşfettiği biçimlerde şekillendirdi.",
+      "text_markdown": "Esareti, yazarlığını akademisyenlerin hâlâ keşfettiği biçimlerde şekillendirdi.",
+      "tts": {
+        "text": "Esareti, yazarlığını akademisyenlerin hâlâ keşfettiği biçimlerde şekillendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hapis, kaçış ve insani dayanıklılık sahneleri tüm eserlerinde görülür.",
+      "text_markdown": "Hapis, kaçış ve insani dayanıklılık sahneleri tüm eserlerinde görülür.",
+      "tts": {
+        "text": "Hapis, kaçış ve insani dayanıklılık sahneleri tüm eserlerinde görülür.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu hikaye, Cervantes'in büyük acılar çektiği bilinciyle anlatılmaktadır.",
+      "text_markdown": "Bu hikaye, Cervantes'in büyük acılar çektiği bilinciyle anlatılmaktadır.",
+      "tts": {
+        "text": "Bu hikaye, Cervantes'in büyük acılar çektiği bilinciyle anlatılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deneyimini hak ettiği ciddiyet ve saygıyla ele alır.",
+      "text_markdown": "Deneyimini hak ettiği ciddiyet ve saygıyla ele alır.",
+      "tts": {
+        "text": "Deneyimini hak ettiği ciddiyet ve saygıyla ele alır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada anlatılan olaylar, Cervantes'in kendi tanıklığı ve çağdaş anlatımlar dahil tarihsel kaynaklara dayanmaktadır.",
+      "text_markdown": "Burada anlatılan olaylar, Cervantes'in kendi tanıklığı ve çağdaş anlatımlar dahil tarihsel kaynaklara dayanmaktadır.",
+      "tts": {
+        "text": "Burada anlatılan olaylar, Cervantes'in kendi tanıklığı ve çağdaş anlatımlar dahil tarihsel kaynaklara dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayrıntıların belirsiz olduğu yerlerde metin bunu belirtir.",
+      "text_markdown": "Ayrıntıların belirsiz olduğu yerlerde metin bunu belirtir.",
+      "tts": {
+        "text": "Ayrıntıların belirsiz olduğu yerlerde metin bunu belirtir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Akdeniz Dünyası",
+      "text_markdown": "Akdeniz Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On altıncı yüzyılda Akdeniz dünyanın merkeziydi.",
+      "text_markdown": "On altıncı yüzyılda Akdeniz dünyanın merkeziydi.",
+      "tts": {
+        "text": "On altıncı yüzyılda Akdeniz dünyanın merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üç kıta ve düzinelerce krallık, imparatorluk ve şehir devleti tarafından çevriliydi.",
+      "text_markdown": "Üç kıta ve düzinelerce krallık, imparatorluk ve şehir devleti tarafından çevriliydi.",
+      "tts": {
+        "text": "Üç kıta ve düzinelerce krallık, imparatorluk ve şehir devleti tarafından çevriliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret, savaş ve kültürel alışveriş sularında sürekli akıyordu.",
+      "text_markdown": "Ticaret, savaş ve kültürel alışveriş sularında sürekli akıyordu.",
+      "tts": {
+        "text": "Ticaret, savaş ve kültürel alışveriş sularında sürekli akıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde iki büyük güç Akdeniz'e hükmediyordu.",
+      "text_markdown": "Bu dönemde iki büyük güç Akdeniz'e hükmediyordu.",
+      "tts": {
+        "text": "Bu dönemde iki büyük güç Akdeniz'e hükmediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Batıda İspanyol İmparatorluğu Avrupa'nın en zengin ve güçlü devletiydi.",
+      "text_markdown": "Batıda İspanyol İmparatorluğu Avrupa'nın en zengin ve güçlü devletiydi.",
+      "tts": {
+        "text": "Batıda İspanyol İmparatorluğu Avrupa'nın en zengin ve güçlü devletiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Doğuda Osmanlı İmparatorluğu Macaristan'dan Kuzey Afrika'ya uzanan geniş bir toprak parçasını kontrol ediyordu.",
+      "text_markdown": "Doğuda Osmanlı İmparatorluğu Macaristan'dan Kuzey Afrika'ya uzanan geniş bir toprak parçasını kontrol ediyordu.",
+      "tts": {
+        "text": "Doğuda Osmanlı İmparatorluğu Macaristan'dan Kuzey Afrika'ya uzanan geniş bir toprak parçasını kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu iki imparatorluk arasındaki çatışma yalnızca siyasi değildi.",
+      "text_markdown": "Bu iki imparatorluk arasındaki çatışma yalnızca siyasi değildi.",
+      "tts": {
+        "text": "Bu iki imparatorluk arasındaki çatışma yalnızca siyasi değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aynı zamanda diniydi.",
+      "text_markdown": "Aynı zamanda diniydi.",
+      "tts": {
+        "text": "Aynı zamanda diniydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanya Katolik Hristiyanlığın şampiyonuydu ve Osmanlılar İslam dünyasına liderlik ediyordu.",
+      "text_markdown": "İspanya Katolik Hristiyanlığın şampiyonuydu ve Osmanlılar İslam dünyasına liderlik ediyordu.",
+      "tts": {
+        "text": "İspanya Katolik Hristiyanlığın şampiyonuydu ve Osmanlılar İslam dünyasına liderlik ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dini boyut çatışmayı özellikle acı hale getirdi.",
+      "text_markdown": "Bu dini boyut çatışmayı özellikle acı hale getirdi.",
+      "tts": {
+        "text": "Bu dini boyut çatışmayı özellikle acı hale getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her iki taraf da Tanrı için savaştığını düşünüyordu.",
+      "text_markdown": "Her iki taraf da Tanrı için savaştığını düşünüyordu.",
+      "tts": {
+        "text": "Her iki taraf da Tanrı için savaştığını düşünüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş esirleri genellikle takas edilmek veya serbest bırakılmak yerine köleleştirilirdi.",
+      "text_markdown": "Savaş esirleri genellikle takas edilmek veya serbest bırakılmak yerine köleleştirilirdi.",
+      "tts": {
+        "text": "Savaş esirleri genellikle takas edilmek veya serbest bırakılmak yerine köleleştirilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Afrika'nın Berberi kıyıları korsan faaliyetlerinin önemli bir merkeziydi.",
+      "text_markdown": "Kuzey Afrika'nın Berberi kıyıları korsan faaliyetlerinin önemli bir merkeziydi.",
+      "tts": {
+        "text": "Kuzey Afrika'nın Berberi kıyıları korsan faaliyetlerinin önemli bir merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir, Tunus ve Trablusgarp şehirleri, Avrupa gemilerine ve kıyı kasabalarına baskın düzenleyen binlerce korsana ev sahipliği yapıyordu.",
+      "text_markdown": "Cezayir, Tunus ve Trablusgarp şehirleri, Avrupa gemilerine ve kıyı kasabalarına baskın düzenleyen binlerce korsana ev sahipliği yapıyordu.",
+      "tts": {
+        "text": "Cezayir, Tunus ve Trablusgarp şehirleri, Avrupa gemilerine ve kıyı kasabalarına baskın düzenleyen binlerce korsana ev sahipliği yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu Berberi korsanları basitçe korsan değildi.",
+      "text_markdown": "Bu Berberi korsanları basitçe korsan değildi.",
+      "tts": {
+        "text": "Bu Berberi korsanları basitçe korsan değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçoğu Osmanlı İmparatorluğu'nun veya yerel yöneticilerin resmi desteğiyle faaliyet gösteriyordu.",
+      "text_markdown": "Birçoğu Osmanlı İmparatorluğu'nun veya yerel yöneticilerin resmi desteğiyle faaliyet gösteriyordu.",
+      "tts": {
+        "text": "Birçoğu Osmanlı İmparatorluğu'nun veya yerel yöneticilerin resmi desteğiyle faaliyet gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha geniş bir deniz savaşı, ticaret ve köle ticareti sisteminin parçasıydılar.",
+      "text_markdown": "Daha geniş bir deniz savaşı, ticaret ve köle ticareti sisteminin parçasıydılar.",
+      "tts": {
+        "text": "Daha geniş bir deniz savaşı, ticaret ve köle ticareti sisteminin parçasıydılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Köle ticareti Berberi devletlerinin ekonomisinin merkezindeydi.",
+      "text_markdown": "Köle ticareti Berberi devletlerinin ekonomisinin merkezindeydi.",
+      "tts": {
+        "text": "Köle ticareti Berberi devletlerinin ekonomisinin merkezindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakalanan Avrupalılar Cezayir, Tunus ve diğer şehirlerin köle pazarlarında satılırdı.",
+      "text_markdown": "Yakalanan Avrupalılar Cezayir, Tunus ve diğer şehirlerin köle pazarlarında satılırdı.",
+      "tts": {
+        "text": "Yakalanan Avrupalılar Cezayir, Tunus ve diğer şehirlerin köle pazarlarında satılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zengin veya önemli esirler fidye karşılığı serbest bırakılabilirdi, ancak süreç yıllar alır ve muazzam meblağlara mal olurdu.",
+      "text_markdown": "Zengin veya önemli esirler fidye karşılığı serbest bırakılabilirdi, ancak süreç yıllar alır ve muazzam meblağlara mal olurdu.",
+      "tts": {
+        "text": "Zengin veya önemli esirler fidye karşılığı serbest bırakılabilirdi, ancak süreç yıllar alır ve muazzam meblağlara mal olurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler, 1500 ile 1800 yılları arasında bir milyondan fazla Avrupalının Berberi korsanları tarafından köleleştirildiğini tahmin ediyor.",
+      "text_markdown": "Tarihçiler, 1500 ile 1800 yılları arasında bir milyondan fazla Avrupalının Berberi korsanları tarafından köleleştirildiğini tahmin ediyor.",
+      "tts": {
+        "text": "Tarihçiler, bin beş yüz ile bin sekiz yüz yılları arasında bir milyondan fazla Avrupalının Berberi korsanları tarafından köleleştirildiğini tahmin ediyor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu esirler Akdeniz kıyısı olan her ülkeden geliyordu.",
+      "text_markdown": "Bu esirler Akdeniz kıyısı olan her ülkeden geliyordu.",
+      "tts": {
+        "text": "Bu esirler Akdeniz kıyısı olan her ülkeden geliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya'nın kendisi de korsan baskınlarının sık hedefiydi.",
+      "text_markdown": "İspanya'nın kendisi de korsan baskınlarının sık hedefiydi.",
+      "tts": {
+        "text": "İspanya'nın kendisi de korsan baskınlarının sık hedefiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Endülüs, Valensiya ve Balear Adaları'ndaki kıyı köyleri düzenli olarak saldırıya uğruyordu.",
+      "text_markdown": "Endülüs, Valensiya ve Balear Adaları'ndaki kıyı köyleri düzenli olarak saldırıya uğruyordu.",
+      "tts": {
+        "text": "Endülüs, Valensiya ve Balear Adaları'ndaki kıyı köyleri düzenli olarak saldırıya uğruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gözetleme kuleleri İspanyol kıyıları boyunca sıralanarak yaklaşan akıncıları uyarıyordu.",
+      "text_markdown": "Gözetleme kuleleri İspanyol kıyıları boyunca sıralanarak yaklaşan akıncıları uyarıyordu.",
+      "tts": {
+        "text": "Gözetleme kuleleri İspanyol kıyıları boyunca sıralanarak yaklaşan akıncıları uyarıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Özellikle Müslüman topraklardan Hristiyan esirleri kurtarmak için dini tarikatlar kuruldu.",
+      "text_markdown": "Özellikle Müslüman topraklardan Hristiyan esirleri kurtarmak için dini tarikatlar kuruldu.",
+      "tts": {
+        "text": "Özellikle Müslüman topraklardan Hristiyan esirleri kurtarmak için dini tarikatlar kuruldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunların en önemlisi Trinitaryanlar olarak bilinen Kutsal Teslis Tarikatı'ydı.",
+      "text_markdown": "Bunların en önemlisi Trinitaryanlar olarak bilinen Kutsal Teslis Tarikatı'ydı.",
+      "tts": {
+        "text": "Bunların en önemlisi Trinitaryanlar olarak bilinen Kutsal Teslis Tarikatı'ydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trinitaryan keşişler köleleştirilmiş Hristiyanların serbest bırakılmasını müzakere etmek için Kuzey Afrika'ya gidiyordu.",
+      "text_markdown": "Trinitaryan keşişler köleleştirilmiş Hristiyanların serbest bırakılmasını müzakere etmek için Kuzey Afrika'ya gidiyordu.",
+      "tts": {
+        "text": "Trinitaryan keşişler köleleştirilmiş Hristiyanların serbest bırakılmasını müzakere etmek için Kuzey Afrika'ya gidiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fidye süreci yavaş, pahalı ve belirsizdi.",
+      "text_markdown": "Fidye süreci yavaş, pahalı ve belirsizdi.",
+      "tts": {
+        "text": "Fidye süreci yavaş, pahalı ve belirsizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aileler genellikle fidye parasını toplamak için dilenmek, borç almak ve sahip oldukları her şeyi satmak zorunda kalıyordu.",
+      "text_markdown": "Aileler genellikle fidye parasını toplamak için dilenmek, borç almak ve sahip oldukları her şeyi satmak zorunda kalıyordu.",
+      "tts": {
+        "text": "Aileler genellikle fidye parasını toplamak için dilenmek, borç almak ve sahip oldukları her şeyi satmak zorunda kalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçok esir, kendileri için birisi gelene kadar yıllarca bekledi.",
+      "text_markdown": "Birçok esir, kendileri için birisi gelene kadar yıllarca bekledi.",
+      "tts": {
+        "text": "Birçok esir, kendileri için birisi gelene kadar yıllarca bekledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazıları hiçbir zaman fidye ile kurtarılamadı.",
+      "text_markdown": "Bazıları hiçbir zaman fidye ile kurtarılamadı.",
+      "tts": {
+        "text": "Bazıları hiçbir zaman fidye ile kurtarılamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayatlarının geri kalanını esarette, taş ocaklarında, çiftliklerde veya kürek kölesi olarak zincirlenmiş halde geçirdiler.",
+      "text_markdown": "Hayatlarının geri kalanını esarette, taş ocaklarında, çiftliklerde veya kürek kölesi olarak zincirlenmiş halde geçirdiler.",
+      "tts": {
+        "text": "Hayatlarının geri kalanını esarette, taş ocaklarında, çiftliklerde veya kürek kölesi olarak zincirlenmiş halde geçirdiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes'i şekillendiren dünya buydu.",
+      "text_markdown": "Miguel de Cervantes'i şekillendiren dünya buydu.",
+      "tts": {
+        "text": "Miguel de Cervantes'i şekillendiren dünya buydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Osmanlı İmparatorluğu ve Berberi korsanlarıyla mücadelesiyle tanımlanan bir İspanya'da büyüdü.",
+      "text_markdown": "Osmanlı İmparatorluğu ve Berberi korsanlarıyla mücadelesiyle tanımlanan bir İspanya'da büyüdü.",
+      "tts": {
+        "text": "Osmanlı İmparatorluğu ve Berberi korsanlarıyla mücadelesiyle tanımlanan bir İspanya'da büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu mücadeleyi hem bir asker hem de bir esir olarak bizzat yaşayacaktı.",
+      "text_markdown": "Bu mücadeleyi hem bir asker hem de bir esir olarak bizzat yaşayacaktı.",
+      "tts": {
+        "text": "Bu mücadeleyi hem bir asker hem de bir esir olarak bizzat yaşayacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zirvesindeki Osmanlı İmparatorluğu, dünyanın gördüğü en büyük imparatorluklardan biriydi.",
+      "text_markdown": "Zirvesindeki Osmanlı İmparatorluğu, dünyanın gördüğü en büyük imparatorluklardan biriydi.",
+      "tts": {
+        "text": "Zirvesindeki Osmanlı İmparatorluğu, dünyanın gördüğü en büyük imparatorluklardan biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultanı, Boğaziçi'ndeki büyük şehir Konstantinopolis'ten hüküm sürüyordu.",
+      "text_markdown": "Sultanı, Boğaziçi'ndeki büyük şehir Konstantinopolis'ten hüküm sürüyordu.",
+      "tts": {
+        "text": "Sultanı, Boğaziçi'ndeki büyük şehir Konstantinopolis'ten hüküm sürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İmparatorluk, Hint Okyanusu'ndan Viyana kapılarına kadar ticaret yollarını kontrol ediyordu.",
+      "text_markdown": "İmparatorluk, Hint Okyanusu'ndan Viyana kapılarına kadar ticaret yollarını kontrol ediyordu.",
+      "tts": {
+        "text": "İmparatorluk, Hint Okyanusu'ndan Viyana kapılarına kadar ticaret yollarını kontrol ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İspanya'nın gücü Amerika'dan gelen gümüş ve Karşı Reform'un dini coşkusuyla finanse ediliyordu.",
+      "text_markdown": "İspanya'nın gücü Amerika'dan gelen gümüş ve Karşı Reform'un dini coşkusuyla finanse ediliyordu.",
+      "tts": {
+        "text": "İspanya'nın gücü Amerika'dan gelen gümüş ve Karşı Reform'un dini coşkusuyla finanse ediliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kral İkinci Felipe güneşin batmadığı bir imparatorluğa hükmediyordu.",
+      "text_markdown": "Kral İkinci Felipe güneşin batmadığı bir imparatorluğa hükmediyordu.",
+      "tts": {
+        "text": "Kral İkinci Felipe güneşin batmadığı bir imparatorluğa hükmediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak İspanya'nın Avrupa ve Akdeniz'deki savaşları hazinesini gümüşün doldurabileceğinden daha hızlı tüketiyordu.",
+      "text_markdown": "Ancak İspanya'nın Avrupa ve Akdeniz'deki savaşları hazinesini gümüşün doldurabileceğinden daha hızlı tüketiyordu.",
+      "tts": {
+        "text": "Ancak İspanya'nın Avrupa ve Akdeniz'deki savaşları hazinesini gümüşün doldurabileceğinden daha hızlı tüketiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir şehri dünyanın korsan başkentiydi.",
+      "text_markdown": "Cezayir şehri dünyanın korsan başkentiydi.",
+      "tts": {
+        "text": "Cezayir şehri dünyanın korsan başkentiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teknik olarak bir Osmanlı eyaletiydi, ancak pratikte korsan kaptanlar şehri yönetiyordu.",
+      "text_markdown": "Teknik olarak bir Osmanlı eyaletiydi, ancak pratikte korsan kaptanlar şehri yönetiyordu.",
+      "tts": {
+        "text": "Teknik olarak bir Osmanlı eyaletiydi, ancak pratikte korsan kaptanlar şehri yönetiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baskınlardan ve köle ticaretinden elde edilen zenginlik Cezayir'i Akdeniz'in en zengin şehirlerinden biri haline getirdi.",
+      "text_markdown": "Baskınlardan ve köle ticaretinden elde edilen zenginlik Cezayir'i Akdeniz'in en zengin şehirlerinden biri haline getirdi.",
+      "tts": {
+        "text": "Baskınlardan ve köle ticaretinden elde edilen zenginlik Cezayir'i Akdeniz'in en zengin şehirlerinden biri haline getirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İspanya'nın Bir Askeri",
+      "text_markdown": "İspanya'nın Bir Askeri"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes, 29 Eylül 1547'de Madrid yakınlarındaki bir üniversite kenti olan Alcalá de Henares'te doğdu.",
+      "text_markdown": "Miguel de Cervantes, 29 Eylül 1547'de Madrid yakınlarındaki bir üniversite kenti olan Alcalá de Henares'te doğdu.",
+      "tts": {
+        "text": "Miguel de Cervantes, yirmi dokuz Eylül bin beş yüz kırk yedi'de Madrid yakınlarındaki bir üniversite kenti olan Alcalá de Henares'te doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babası Rodrigo de Cervantes, geçimini sağlamakta zorlanan bir berber-cerrahtı.",
+      "text_markdown": "Babası Rodrigo de Cervantes, geçimini sağlamakta zorlanan bir berber-cerrahtı.",
+      "tts": {
+        "text": "Babası Rodrigo de Cervantes, geçimini sağlamakta zorlanan bir berber-cerrahtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aile, Miguel'in çocukluğunda şehirden şehire iş peşinde koşarak sık sık taşındı.",
+      "text_markdown": "Aile, Miguel'in çocukluğunda şehirden şehire iş peşinde koşarak sık sık taşındı.",
+      "tts": {
+        "text": "Aile, Miguel'in çocukluğunda şehirden şehire iş peşinde koşarak sık sık taşındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çeşitli zamanlarda Valladolid, Córdoba, Sevilla ve Madrid'de yaşadılar.",
+      "text_markdown": "Çeşitli zamanlarda Valladolid, Córdoba, Sevilla ve Madrid'de yaşadılar.",
+      "tts": {
+        "text": "Çeşitli zamanlarda Valladolid, Córdoba, Sevilla ve Madrid'de yaşadılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoksulluk sürekli bir yol arkadaşıydı.",
+      "text_markdown": "Yoksulluk sürekli bir yol arkadaşıydı.",
+      "tts": {
+        "text": "Yoksulluk sürekli bir yol arkadaşıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ailenin sınırlı imkânlarına rağmen Cervantes iyi bir eğitim aldı.",
+      "text_markdown": "Ailenin sınırlı imkânlarına rağmen Cervantes iyi bir eğitim aldı.",
+      "tts": {
+        "text": "Ailenin sınırlı imkânlarına rağmen Cervantes iyi bir eğitim aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Madrid'de bir öğretmenin yanında okudu ve edebiyat ile şiire karşı bir tutku geliştirdi.",
+      "text_markdown": "Madrid'de bir öğretmenin yanında okudu ve edebiyat ile şiire karşı bir tutku geliştirdi.",
+      "tts": {
+        "text": "Madrid'de bir öğretmenin yanında okudu ve edebiyat ile şiire karşı bir tutku geliştirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On altıncı yüzyılın ortalarında İspanya Altın Çağı'nı yaşıyordu.",
+      "text_markdown": "On altıncı yüzyılın ortalarında İspanya Altın Çağı'nı yaşıyordu.",
+      "tts": {
+        "text": "On altıncı yüzyılın ortalarında İspanya Altın Çağı'nı yaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sanat, edebiyat ve dini coşku askeri genişlemeyle birlikte gelişiyordu.",
+      "text_markdown": "Sanat, edebiyat ve dini coşku askeri genişlemeyle birlikte gelişiyordu.",
+      "tts": {
+        "text": "Sanat, edebiyat ve dini coşku askeri genişlemeyle birlikte gelişiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Büyük hırsların ve daha da büyük eşitsizliğin hüküm sürdüğü bir dönemdi.",
+      "text_markdown": "Büyük hırsların ve daha da büyük eşitsizliğin hüküm sürdüğü bir dönemdi.",
+      "tts": {
+        "text": "Büyük hırsların ve daha da büyük eşitsizliğin hüküm sürdüğü bir dönemdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1569'da Cervantes İspanya'dan İtalya'ya gitti.",
+      "text_markdown": "1569'da Cervantes İspanya'dan İtalya'ya gitti.",
+      "tts": {
+        "text": "Bin beş yüz altmış dokuzda Cervantes İspanya'dan İtalya'ya gitti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gidişinin nedenleri tartışmalıdır.",
+      "text_markdown": "Gidişinin nedenleri tartışmalıdır.",
+      "tts": {
+        "text": "Gidişinin nedenleri tartışmalıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir hukuki anlaşmazlıktan kaçıyor olabilir ya da sadece macera arıyor olabilirdi.",
+      "text_markdown": "Bir hukuki anlaşmazlıktan kaçıyor olabilir ya da sadece macera arıyor olabilirdi.",
+      "tts": {
+        "text": "Bir hukuki anlaşmazlıktan kaçıyor olabilir ya da sadece macera arıyor olabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İtalya'da Cervantes İtalyan sanatına ve edebiyatına âşık oldu.",
+      "text_markdown": "İtalya'da Cervantes İtalyan sanatına ve edebiyatına âşık oldu.",
+      "tts": {
+        "text": "İtalya'da Cervantes İtalyan sanatına ve edebiyatına âşık oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Büyük İtalyan şairlerini okudu ve Rönesans kültürünü özümsedi.",
+      "text_markdown": "Büyük İtalyan şairlerini okudu ve Rönesans kültürünü özümsedi.",
+      "tts": {
+        "text": "Büyük İtalyan şairlerini okudu ve Rönesans kültürünü özümsedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu etkiler hayatının geri kalanında yazarlığını şekillendirecekti.",
+      "text_markdown": "Bu etkiler hayatının geri kalanında yazarlığını şekillendirecekti.",
+      "tts": {
+        "text": "Bu etkiler hayatının geri kalanında yazarlığını şekillendirecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayrıca İspanyol ordusuna asker olarak yazıldı.",
+      "text_markdown": "Ayrıca İspanyol ordusuna asker olarak yazıldı.",
+      "tts": {
+        "text": "Ayrıca İspanyol ordusuna asker olarak yazıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O dönemde İspanyol İmparatorluğu'nun bir parçası olan Napoli'de konuşlanmış bir alaya katıldı.",
+      "text_markdown": "O dönemde İspanyol İmparatorluğu'nun bir parçası olan Napoli'de konuşlanmış bir alaya katıldı.",
+      "tts": {
+        "text": "O dönemde İspanyol İmparatorluğu'nun bir parçası olan Napoli'de konuşlanmış bir alaya katıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1571'de Osmanlı İmparatorluğu doğu Akdeniz'e devasa bir donanma gönderdi.",
+      "text_markdown": "1571'de Osmanlı İmparatorluğu doğu Akdeniz'e devasa bir donanma gönderdi.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş birde Osmanlı İmparatorluğu doğu Akdeniz'e devasa bir donanma gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Osmanlılar yakın zamanda Kıbrıs adasını Venedik'ten almıştı.",
+      "text_markdown": "Osmanlılar yakın zamanda Kıbrıs adasını Venedik'ten almıştı.",
+      "tts": {
+        "text": "Osmanlılar yakın zamanda Kıbrıs adasını Venedik'ten almıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hristiyan Avrupa alarma geçti.",
+      "text_markdown": "Hristiyan Avrupa alarma geçti.",
+      "tts": {
+        "text": "Hristiyan Avrupa alarma geçti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papa Beşinci Pius, Osmanlı tehdidiyle yüzleşmek için Hristiyan devletlerden oluşan bir Kutsal İttifak organize etti.",
+      "text_markdown": "Papa Beşinci Pius, Osmanlı tehdidiyle yüzleşmek için Hristiyan devletlerden oluşan bir Kutsal İttifak organize etti.",
+      "tts": {
+        "text": "Papa Beşinci Pius, Osmanlı tehdidiyle yüzleşmek için Hristiyan devletlerden oluşan bir Kutsal İttifak organize etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya, Venedik ve Papalık Devletleri gemi ve asker katkısında bulundu.",
+      "text_markdown": "İspanya, Venedik ve Papalık Devletleri gemi ve asker katkısında bulundu.",
+      "tts": {
+        "text": "İspanya, Venedik ve Papalık Devletleri gemi ve asker katkısında bulundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birleşik donanma Sicilya'daki Messina limanında toplandı.",
+      "text_markdown": "Birleşik donanma Sicilya'daki Messina limanında toplandı.",
+      "tts": {
+        "text": "Birleşik donanma Sicilya'daki Messina limanında toplandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes İspanyol kadırgalarından birinin üzerindeydi.",
+      "text_markdown": "Miguel de Cervantes İspanyol kadırgalarından birinin üzerindeydi.",
+      "tts": {
+        "text": "Miguel de Cervantes İspanyol kadırgalarından birinin üzerindeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yirmi dört yaşındaydı; rütbesi veya ayrıcalığı olmayan sıradan bir askerdi.",
+      "text_markdown": "Yirmi dört yaşındaydı; rütbesi veya ayrıcalığı olmayan sıradan bir askerdi.",
+      "tts": {
+        "text": "Yirmi dört yaşındaydı; rütbesi veya ayrıcalığı olmayan sıradan bir askerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "7 Ekim 1571'de iki donanma Yunanistan kıyısı açıklarında Patras Körfezi'ndeki İnebahtı Deniz Muharebesi'nde karşılaştı.",
+      "text_markdown": "7 Ekim 1571'de iki donanma Yunanistan kıyısı açıklarında Patras Körfezi'ndeki İnebahtı Deniz Muharebesi'nde karşılaştı.",
+      "tts": {
+        "text": "Yedi Ekim bin beş yüz yetmiş birde iki donanma Yunanistan kıyısı açıklarında Patras Körfezi'ndeki İnebahtı Deniz Muharebesi'nde karşılaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihin en büyük deniz savaşlarından biriydi.",
+      "text_markdown": "Tarihin en büyük deniz savaşlarından biriydi.",
+      "tts": {
+        "text": "Tarihin en büyük deniz savaşlarından biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dört yüzden fazla savaş gemisi körfezin dar sularında çarpıştı.",
+      "text_markdown": "Dört yüzden fazla savaş gemisi körfezin dar sularında çarpıştı.",
+      "tts": {
+        "text": "Dört yüzden fazla savaş gemisi körfezin dar sularında çarpıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaş vahşiydi; gemi gemiye ve göğüs göğüse çarpışıldı.",
+      "text_markdown": "Savaş vahşiydi; gemi gemiye ve göğüs göğüse çarpışıldı.",
+      "tts": {
+        "text": "Savaş vahşiydi; gemi gemiye ve göğüs göğüse çarpışıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On binlerce insan tek bir günlük savaşta öldü.",
+      "text_markdown": "On binlerce insan tek bir günlük savaşta öldü.",
+      "tts": {
+        "text": "On binlerce insan tek bir günlük savaşta öldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes savaş günü ateşten hasta yatıyordu.",
+      "text_markdown": "Cervantes savaş günü ateşten hasta yatıyordu.",
+      "tts": {
+        "text": "Cervantes savaş günü ateşten hasta yatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Subayları güverte altında kalmasını teklif etti.",
+      "text_markdown": "Subayları güverte altında kalmasını teklif etti.",
+      "tts": {
+        "text": "Subayları güverte altında kalmasını teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Reddetti; silah arkadaşları kan dökerken saklanmaktansa savaşıp ölmeyi tercih edeceğini söyledi.",
+      "text_markdown": "Reddetti; silah arkadaşları kan dökerken saklanmaktansa savaşıp ölmeyi tercih edeceğini söyledi.",
+      "tts": {
+        "text": "Reddetti; silah arkadaşları kan dökerken saklanmaktansa savaşıp ölmeyi tercih edeceğini söyledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaş sırasında Cervantes üç kez yaralandı.",
+      "text_markdown": "Savaş sırasında Cervantes üç kez yaralandı.",
+      "tts": {
+        "text": "Savaş sırasında Cervantes üç kez yaralandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaralardan ikisi göğsündeydi.",
+      "text_markdown": "Yaralardan ikisi göğsündeydi.",
+      "tts": {
+        "text": "Yaralardan ikisi göğsündeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Üçüncüsü sol elini parçaladı ve kalıcı olarak kullanılamaz hale getirdi.",
+      "text_markdown": "Üçüncüsü sol elini parçaladı ve kalıcı olarak kullanılamaz hale getirdi.",
+      "tts": {
+        "text": "Üçüncüsü sol elini parçaladı ve kalıcı olarak kullanılamaz hale getirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hristiyan donanması İnebahtı'da kesin bir zafer kazandı.",
+      "text_markdown": "Hristiyan donanması İnebahtı'da kesin bir zafer kazandı.",
+      "tts": {
+        "text": "Hristiyan donanması İnebahtı'da kesin bir zafer kazandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Osmanlı donanması fiilen yok edildi.",
+      "text_markdown": "Osmanlı donanması fiilen yok edildi.",
+      "tts": {
+        "text": "Osmanlı donanması fiilen yok edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tüm Hristiyan Avrupa'da zafer bir mucize olarak kutlandı.",
+      "text_markdown": "Tüm Hristiyan Avrupa'da zafer bir mucize olarak kutlandı.",
+      "tts": {
+        "text": "Tüm Hristiyan Avrupa'da zafer bir mucize olarak kutlandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes Messina'daki bir hastanede yaralarından iyileşmek için aylar geçirdi.",
+      "text_markdown": "Cervantes Messina'daki bir hastanede yaralarından iyileşmek için aylar geçirdi.",
+      "tts": {
+        "text": "Cervantes Messina'daki bir hastanede yaralarından iyileşmek için aylar geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaraların izlerini hayatının geri kalanında taşıyacaktı.",
+      "text_markdown": "Yaraların izlerini hayatının geri kalanında taşıyacaktı.",
+      "tts": {
+        "text": "Yaraların izlerini hayatının geri kalanında taşıyacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha sonra sakat elini bir onur nişanı olarak nitelendirdi; çağının en büyük savaşında savaştığının kanıtı.",
+      "text_markdown": "Daha sonra sakat elini bir onur nişanı olarak nitelendirdi; çağının en büyük savaşında savaştığının kanıtı.",
+      "tts": {
+        "text": "Daha sonra sakat elini bir onur nişanı olarak nitelendirdi; çağının en büyük savaşında savaştığının kanıtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İyileşmesinin ardından Cervantes Akdeniz'de asker olarak görev yapmaya devam etti.",
+      "text_markdown": "İyileşmesinin ardından Cervantes Akdeniz'de asker olarak görev yapmaya devam etti.",
+      "tts": {
+        "text": "İyileşmesinin ardından Cervantes Akdeniz'de asker olarak görev yapmaya devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çeşitli İtalyan garnizonlarında konuşlandı ve birkaç askeri sefere daha katıldı.",
+      "text_markdown": "Çeşitli İtalyan garnizonlarında konuşlandı ve birkaç askeri sefere daha katıldı.",
+      "tts": {
+        "text": "Çeşitli İtalyan garnizonlarında konuşlandı ve birkaç askeri sefere daha katıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575'te Cervantes eve dönmeye hazırdı.",
+      "text_markdown": "1575'te Cervantes eve dönmeye hazırdı.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş beşte Cervantes eve dönmeye hazırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altı yıl boyunca İspanya'ya hizmet etmiş ve komutanlarından tavsiye mektupları taşıyordu.",
+      "text_markdown": "Altı yıl boyunca İspanya'ya hizmet etmiş ve komutanlarından tavsiye mektupları taşıyordu.",
+      "tts": {
+        "text": "Altı yıl boyunca İspanya'ya hizmet etmiş ve komutanlarından tavsiye mektupları taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu mektupların İspanya'da bir görev veya hükümet pozisyonu elde etmesine yardımcı olacağını umuyordu.",
+      "text_markdown": "Bu mektupların İspanya'da bir görev veya hükümet pozisyonu elde etmesine yardımcı olacağını umuyordu.",
+      "tts": {
+        "text": "Bu mektupların İspanya'da bir görev veya hükümet pozisyonu elde etmesine yardımcı olacağını umuyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eylül 1575'te Cervantes ve küçük kardeşi Rodrigo Napoli'de Sol kadırgasına bindiler.",
+      "text_markdown": "Eylül 1575'te Cervantes ve küçük kardeşi Rodrigo Napoli'de Sol kadırgasına bindiler.",
+      "tts": {
+        "text": "Eylül bin beş yüz yetmiş beşte Cervantes ve küçük kardeşi Rodrigo Napoli'de Sol kadırgasına bindiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya'ya doğru yola çıkıyorlardı.",
+      "text_markdown": "İspanya'ya doğru yola çıkıyorlardı.",
+      "tts": {
+        "text": "İspanya'ya doğru yola çıkıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "İspanya'nın Bir Askeri",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Asla varamadılar.",
+      "text_markdown": "Asla varamadılar.",
+      "tts": {
+        "text": "Asla varamadılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsanların Eline Düşmek",
+      "text_markdown": "Korsanların Eline Düşmek"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "26 Eylül 1575'te Sol kadırgası Katalonya kıyıları açıklarında seyrederken saldırıya uğradı.",
+      "text_markdown": "26 Eylül 1575'te Sol kadırgası Katalonya kıyıları açıklarında seyrederken saldırıya uğradı.",
+      "tts": {
+        "text": "Yirmi altı Eylül bin beş yüz yetmiş beşte Sol kadırgası Katalonya kıyıları açıklarında seyrederken saldırıya uğradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir'den bir Berberi korsan filosu gemiyi durdurdu.",
+      "text_markdown": "Cezayir'den bir Berberi korsan filosu gemiyi durdurdu.",
+      "tts": {
+        "text": "Cezayir'den bir Berberi korsan filosu gemiyi durdurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan filosuna İslam'a geçmiş Arnavut bir dönek olan Arnaut Mami adlı bir kaptan komuta ediyordu.",
+      "text_markdown": "Korsan filosuna İslam'a geçmiş Arnavut bir dönek olan Arnaut Mami adlı bir kaptan komuta ediyordu.",
+      "tts": {
+        "text": "Korsan filosuna İslam'a geçmiş Arnavut bir dönek olan Arnaut Mami adlı bir kaptan komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dönekler korsanlar arasında yaygındı.",
+      "text_markdown": "Dönekler korsanlar arasında yaygındı.",
+      "tts": {
+        "text": "Dönekler korsanlar arasında yaygındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçoğu Avrupa doğumlu olup İslam'a geçmiş ve şimdi Berberi devletlerine hizmet eden adamlardı.",
+      "text_markdown": "Birçoğu Avrupa doğumlu olup İslam'a geçmiş ve şimdi Berberi devletlerine hizmet eden adamlardı.",
+      "tts": {
+        "text": "Birçoğu Avrupa doğumlu olup İslam'a geçmiş ve şimdi Berberi devletlerine hizmet eden adamlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sol küçük bir kadırgaydı, zayıf silahlıydı ve askerlerden ziyade yolcu taşıyordu.",
+      "text_markdown": "Sol küçük bir kadırgaydı, zayıf silahlıydı ve askerlerden ziyade yolcu taşıyordu.",
+      "tts": {
+        "text": "Sol küçük bir kadırgaydı, zayıf silahlıydı ve askerlerden ziyade yolcu taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan savaş gemileriyle başa çıkabilecek durumda değildi.",
+      "text_markdown": "Korsan savaş gemileriyle başa çıkabilecek durumda değildi.",
+      "tts": {
+        "text": "Korsan savaş gemileriyle başa çıkabilecek durumda değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kısa bir direnmeden sonra Sol ele geçirildi.",
+      "text_markdown": "Kısa bir direnmeden sonra Sol ele geçirildi.",
+      "tts": {
+        "text": "Kısa bir direnmeden sonra Sol ele geçirildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes ve kardeşi Rodrigo esirler arasındaydı.",
+      "text_markdown": "Cervantes ve kardeşi Rodrigo esirler arasındaydı.",
+      "tts": {
+        "text": "Cervantes ve kardeşi Rodrigo esirler arasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar esirleri değerli eşya ve belgeler için aradı.",
+      "text_markdown": "Korsanlar esirleri değerli eşya ve belgeler için aradı.",
+      "tts": {
+        "text": "Korsanlar esirleri değerli eşya ve belgeler için aradı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes'in İspanyol generallerinden tavsiye mektuplarını bulduklarında onun çok önemli biri olduğunu varsaydılar.",
+      "text_markdown": "Cervantes'in İspanyol generallerinden tavsiye mektuplarını bulduklarında onun çok önemli biri olduğunu varsaydılar.",
+      "tts": {
+        "text": "Cervantes'in İspanyol generallerinden tavsiye mektuplarını bulduklarında onun çok önemli biri olduğunu varsaydılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fidyesini 500 altın eskudo olarak belirlediler; bu muazzam bir meblağdı.",
+      "text_markdown": "Fidyesini 500 altın eskudo olarak belirlediler; bu muazzam bir meblağdı.",
+      "tts": {
+        "text": "Fidyesini beş yüz altın eskudo olarak belirlediler; bu muazzam bir meblağdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gerçekte Cervantes, böyle bir fidyeyi asla karşılayamayacak mütevazı bir aileden geliyordu.",
+      "text_markdown": "Gerçekte Cervantes, böyle bir fidyeyi asla karşılayamayacak mütevazı bir aileden geliyordu.",
+      "tts": {
+        "text": "Gerçekte Cervantes, böyle bir fidyeyi asla karşılayamayacak mütevazı bir aileden geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kariyerini ilerletmesi gereken mektuplar, esaretinin sona ermesini çok daha zorlaştırmıştı.",
+      "text_markdown": "Kariyerini ilerletmesi gereken mektuplar, esaretinin sona ermesini çok daha zorlaştırmıştı.",
+      "tts": {
+        "text": "Kariyerini ilerletmesi gereken mektuplar, esaretinin sona ermesini çok daha zorlaştırmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esirler Kuzey Afrika'nın en büyük ve en güçlü korsan şehri Cezayir'e götürüldü.",
+      "text_markdown": "Esirler Kuzey Afrika'nın en büyük ve en güçlü korsan şehri Cezayir'e götürüldü.",
+      "tts": {
+        "text": "Esirler Kuzey Afrika'nın en büyük ve en güçlü korsan şehri Cezayir'e götürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir yüz binden fazla nüfuslu, cami, pazar ve köle ağıllarıyla dolu hareketli bir liman şehriydi.",
+      "text_markdown": "Cezayir yüz binden fazla nüfuslu, cami, pazar ve köle ağıllarıyla dolu hareketli bir liman şehriydi.",
+      "tts": {
+        "text": "Cezayir yüz binden fazla nüfuslu, cami, pazar ve köle ağıllarıyla dolu hareketli bir liman şehriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dönemde herhangi bir zamanda tahminen yirmi beş bin Hristiyan kölenin Cezayir'de yaşadığı tahmin edilmektedir.",
+      "text_markdown": "Bu dönemde herhangi bir zamanda tahminen yirmi beş bin Hristiyan kölenin Cezayir'de yaşadığı tahmin edilmektedir.",
+      "tts": {
+        "text": "Bu dönemde herhangi bir zamanda tahminen yirmi beş bin Hristiyan kölenin Cezayir'de yaşadığı tahmin edilmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya, İtalya, Fransa, Portekiz ve İzlanda ile İrlanda kadar uzak yerlerden geliyorlardı.",
+      "text_markdown": "İspanya, İtalya, Fransa, Portekiz ve İzlanda ile İrlanda kadar uzak yerlerden geliyorlardı.",
+      "tts": {
+        "text": "İspanya, İtalya, Fransa, Portekiz ve İzlanda ile İrlanda kadar uzak yerlerden geliyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes, korsan gemilerinden birinin kaptanı olan Rum dönek Dali Mami adlı bir efendiye atandı.",
+      "text_markdown": "Cervantes, korsan gemilerinden birinin kaptanı olan Rum dönek Dali Mami adlı bir efendiye atandı.",
+      "tts": {
+        "text": "Cervantes, korsan gemilerinden birinin kaptanı olan Rum dönek Dali Mami adlı bir efendiye atandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dali Mami esirlere karşı zalimliğiyle tanınırdı.",
+      "text_markdown": "Dali Mami esirlere karşı zalimliğiyle tanınırdı.",
+      "tts": {
+        "text": "Dali Mami esirlere karşı zalimliğiyle tanınırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir'de esaret koşulları büyük farklılıklar gösteriyordu.",
+      "text_markdown": "Cezayir'de esaret koşulları büyük farklılıklar gösteriyordu.",
+      "tts": {
+        "text": "Cezayir'de esaret koşulları büyük farklılıklar gösteriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fidye bekleyen zengin esirler görece rahat tutulabilirdi.",
+      "text_markdown": "Fidye bekleyen zengin esirler görece rahat tutulabilirdi.",
+      "tts": {
+        "text": "Fidye bekleyen zengin esirler görece rahat tutulabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fidye umudu olmayan yoksul esirler ağır işlere koşulurdu.",
+      "text_markdown": "Fidye umudu olmayan yoksul esirler ağır işlere koşulurdu.",
+      "tts": {
+        "text": "Fidye umudu olmayan yoksul esirler ağır işlere koşulurdu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı köleler taş ocaklarında veya inşaat projelerinde çalışırdı.",
+      "text_markdown": "Bazı köleler taş ocaklarında veya inşaat projelerinde çalışırdı.",
+      "tts": {
+        "text": "Bazı köleler taş ocaklarında veya inşaat projelerinde çalışırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diğerleri kadırgaların küreklerine zincirlenir ve düşene kadar kürek çekerdi.",
+      "text_markdown": "Diğerleri kadırgaların küreklerine zincirlenir ve düşene kadar kürek çekerdi.",
+      "tts": {
+        "text": "Diğerleri kadırgaların küreklerine zincirlenir ve düşene kadar kürek çekerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En kötü kader, kölelerin tıklım tıklım ve pis hücrelerde tutulduğu bir hapishane olan banyoydu.",
+      "text_markdown": "En kötü kader, kölelerin tıklım tıklım ve pis hücrelerde tutulduğu bir hapishane olan banyoydu.",
+      "tts": {
+        "text": "En kötü kader, kölelerin tıklım tıklım ve pis hücrelerde tutulduğu bir hapishane olan banyoydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes Cezayir'in banyolarında vakit geçirdi.",
+      "text_markdown": "Cervantes Cezayir'in banyolarında vakit geçirdi.",
+      "tts": {
+        "text": "Cervantes Cezayir'in banyolarında vakit geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çağının çok az Avrupalısının görebileceği ölçekte acıya tanıklık etti.",
+      "text_markdown": "Çağının çok az Avrupalısının görebileceği ölçekte acıya tanıklık etti.",
+      "tts": {
+        "text": "Çağının çok az Avrupalısının görebileceği ölçekte acıya tanıklık etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu deneyim onu derinden etkiledi.",
+      "text_markdown": "Bu deneyim onu derinden etkiledi.",
+      "tts": {
+        "text": "Bu deneyim onu derinden etkiledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Neredeyse hemen, Cervantes kaçmayı planlamaya başladı.",
+      "text_markdown": "Neredeyse hemen, Cervantes kaçmayı planlamaya başladı.",
+      "tts": {
+        "text": "Neredeyse hemen, Cervantes kaçmayı planlamaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esareti pasif olarak kabul edebilecek türden bir adam değildi.",
+      "text_markdown": "Esareti pasif olarak kabul edebilecek türden bir adam değildi.",
+      "tts": {
+        "text": "Esareti pasif olarak kabul edebilecek türden bir adam değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonraki beş yıl boyunca dört kez kaçmaya teşebbüs edecekti.",
+      "text_markdown": "Sonraki beş yıl boyunca dört kez kaçmaya teşebbüs edecekti.",
+      "tts": {
+        "text": "Sonraki beş yıl boyunca dört kez kaçmaya teşebbüs edecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk kaçış girişimi 1576'nın başlarında gerçekleşti.",
+      "text_markdown": "İlk kaçış girişimi 1576'nın başlarında gerçekleşti.",
+      "tts": {
+        "text": "İlk kaçış girişimi bin beş yüz yetmiş altının başlarında gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cervantes, kendisini ve birkaç esiri karadan Oran'daki İspanyol kalesine götürmesi için bir Mağribli rehber tuttu.",
+      "text_markdown": "Cervantes, kendisini ve birkaç esiri karadan Oran'daki İspanyol kalesine götürmesi için bir Mağribli rehber tuttu.",
+      "tts": {
+        "text": "Cervantes, kendisini ve birkaç esiri karadan Oran'daki İspanyol kalesine götürmesi için bir Mağribli rehber tuttu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oran, Kuzey Afrika kıyısında, Cezayir'den birkaç günlük mesafede bir İspanyol ileri karakoluydu.",
+      "text_markdown": "Oran, Kuzey Afrika kıyısında, Cezayir'den birkaç günlük mesafede bir İspanyol ileri karakoluydu.",
+      "tts": {
+        "text": "Oran, Kuzey Afrika kıyısında, Cezayir'den birkaç günlük mesafede bir İspanyol ileri karakoluydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rehber ilk günden sonra onları terk etti.",
+      "text_markdown": "Rehber ilk günden sonra onları terk etti.",
+      "tts": {
+        "text": "Rehber ilk günden sonra onları terk etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rehbersiz kalan kaçaklar, tanıdık olmayan ve düşmanca bir bölgede kayboldu.",
+      "text_markdown": "Rehbersiz kalan kaçaklar, tanıdık olmayan ve düşmanca bir bölgede kayboldu.",
+      "tts": {
+        "text": "Rehbersiz kalan kaçaklar, tanıdık olmayan ve düşmanca bir bölgede kayboldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cezayir'e dönmek zorunda kaldılar; Cervantes daha ağır zincirlerle cezalandırıldı.",
+      "text_markdown": "Cezayir'e dönmek zorunda kaldılar; Cervantes daha ağır zincirlerle cezalandırıldı.",
+      "tts": {
+        "text": "Cezayir'e dönmek zorunda kaldılar; Cervantes daha ağır zincirlerle cezalandırıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başarısızlığa rağmen Cervantes kırılmadı.",
+      "text_markdown": "Başarısızlığa rağmen Cervantes kırılmadı.",
+      "tts": {
+        "text": "Başarısızlığa rağmen Cervantes kırılmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hemen bir sonraki kaçışını planlamaya başladı.",
+      "text_markdown": "Hemen bir sonraki kaçışını planlamaya başladı.",
+      "tts": {
+        "text": "Hemen bir sonraki kaçışını planlamaya başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu arada İspanya'daki ailesi umutsuzca fidyesini toplamaya çalışıyordu.",
+      "text_markdown": "Bu arada İspanya'daki ailesi umutsuzca fidyesini toplamaya çalışıyordu.",
+      "tts": {
+        "text": "Bu arada İspanya'daki ailesi umutsuzca fidyesini toplamaya çalışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Annesi ve kız kardeşleri mallarını sattı ve borç verecek herkesten para aldı.",
+      "text_markdown": "Annesi ve kız kardeşleri mallarını sattı ve borç verecek herkesten para aldı.",
+      "tts": {
+        "text": "Annesi ve kız kardeşleri mallarını sattı ve borç verecek herkesten para aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama beş yüz eskudo imkânlarının çok ötesindeydi.",
+      "text_markdown": "Ama beş yüz eskudo imkânlarının çok ötesindeydi.",
+      "tts": {
+        "text": "Ama beş yüz eskudo imkânlarının çok ötesindeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577'de aile, Cervantes'in küçük kardeşi Rodrigo'nun fidyesi için yeterli parayı güçlükle bir araya getirdi.",
+      "text_markdown": "1577'de aile, Cervantes'in küçük kardeşi Rodrigo'nun fidyesi için yeterli parayı güçlükle bir araya getirdi.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş yedide aile, Cervantes'in küçük kardeşi Rodrigo'nun fidyesi için yeterli parayı güçlükle bir araya getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rodrigo serbest bırakıldı ve İspanya'ya döndü.",
+      "text_markdown": "Rodrigo serbest bırakıldı ve İspanya'ya döndü.",
+      "tts": {
+        "text": "Rodrigo serbest bırakıldı ve İspanya'ya döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miguel Cezayir'de kaldı, hâlâ bekleyerek.",
+      "text_markdown": "Miguel Cezayir'de kaldı, hâlâ bekleyerek.",
+      "tts": {
+        "text": "Miguel Cezayir'de kaldı, hâlâ bekleyerek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes'i yakalayan korsanlar yetenekli ve iyi örgütlenmiş denizcilerdi.",
+      "text_markdown": "Cervantes'i yakalayan korsanlar yetenekli ve iyi örgütlenmiş denizcilerdi.",
+      "tts": {
+        "text": "Cervantes'i yakalayan korsanlar yetenekli ve iyi örgütlenmiş denizcilerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hem yelken hem de küreklerle donatılmış hızlı kadırgalar kullanıyorlardı.",
+      "text_markdown": "Hem yelken hem de küreklerle donatılmış hızlı kadırgalar kullanıyorlardı.",
+      "tts": {
+        "text": "Hem yelken hem de küreklerle donatılmış hızlı kadırgalar kullanıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu gemiler çoğu ticaret gemisinden hızlı koşabilir ve kaçmaya çalışanları yakalayabilirdi.",
+      "text_markdown": "Bu gemiler çoğu ticaret gemisinden hızlı koşabilir ve kaçmaya çalışanları yakalayabilirdi.",
+      "tts": {
+        "text": "Bu gemiler çoğu ticaret gemisinden hızlı koşabilir ve kaçmaya çalışanları yakalayabilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir köle pazarı Akdeniz dünyasının en büyüklerinden biriydi.",
+      "text_markdown": "Cezayir köle pazarı Akdeniz dünyasının en büyüklerinden biriydi.",
+      "tts": {
+        "text": "Cezayir köle pazarı Akdeniz dünyasının en büyüklerinden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esirler incelenir, değer biçilir ve en yüksek teklifi verene satılırdı.",
+      "text_markdown": "Esirler incelenir, değer biçilir ve en yüksek teklifi verene satılırdı.",
+      "tts": {
+        "text": "Esirler incelenir, değer biçilir ve en yüksek teklifi verene satılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Korsanların Eline Düşmek",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gençler, yetenekliler ve zengin olduğuna inanılanlar en yüksek fiyatları elde ederdi.",
+      "text_markdown": "Gençler, yetenekliler ve zengin olduğuna inanılanlar en yüksek fiyatları elde ederdi.",
+      "tts": {
+        "text": "Gençler, yetenekliler ve zengin olduğuna inanılanlar en yüksek fiyatları elde ederdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cezayir'de Beş Yıl",
+      "text_markdown": "Cezayir'de Beş Yıl"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes'in ikinci kaçış girişimi ilkinden daha hırslıydı.",
+      "text_markdown": "Cervantes'in ikinci kaçış girişimi ilkinden daha hırslıydı.",
+      "tts": {
+        "text": "Cervantes'in ikinci kaçış girişimi ilkinden daha hırslıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1577'de yaklaşık on beş esirden oluşan bir grubu Cezayir dışındaki bir mağarada saklanmaları için organize etti.",
+      "text_markdown": "1577'de yaklaşık on beş esirden oluşan bir grubu Cezayir dışındaki bir mağarada saklanmaları için organize etti.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş yedide yaklaşık on beş esirden oluşan bir grubu Cezayir dışındaki bir mağarada saklanmaları için organize etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plan, bir İspanyol gemisinin onları kıyıdan almasını beklemekti.",
+      "text_markdown": "Plan, bir İspanyol gemisinin onları kıyıdan almasını beklemekti.",
+      "tts": {
+        "text": "Plan, bir İspanyol gemisinin onları kıyıdan almasını beklemekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaçaklar aylarca mağarada saklandı; aracılık yapan bir esir arkadaş onlara yiyecek sağlıyordu.",
+      "text_markdown": "Kaçaklar aylarca mağarada saklandı; aracılık yapan bir esir arkadaş onlara yiyecek sağlıyordu.",
+      "tts": {
+        "text": "Kaçaklar aylarca mağarada saklandı; aracılık yapan bir esir arkadaş onlara yiyecek sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Koşullar dar ve korkutucuydu.",
+      "text_markdown": "Koşullar dar ve korkutucuydu.",
+      "tts": {
+        "text": "Koşullar dar ve korkutucuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Keşfedilmek ölüm ya da daha kötüsü demekti.",
+      "text_markdown": "Keşfedilmek ölüm ya da daha kötüsü demekti.",
+      "tts": {
+        "text": "Keşfedilmek ölüm ya da daha kötüsü demekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir İspanyol kurtarma gemisi gönderildi, ancak mağaraya ulaşmadan önce korsanlar tarafından fark edildi.",
+      "text_markdown": "Bir İspanyol kurtarma gemisi gönderildi, ancak mağaraya ulaşmadan önce korsanlar tarafından fark edildi.",
+      "tts": {
+        "text": "Bir İspanyol kurtarma gemisi gönderildi, ancak mağaraya ulaşmadan önce korsanlar tarafından fark edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemi kaçtı ve kaçaklar mahsur kaldı.",
+      "text_markdown": "Gemi kaçtı ve kaçaklar mahsur kaldı.",
+      "tts": {
+        "text": "Gemi kaçtı ve kaçaklar mahsur kaldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra aracı onlara ihanet etti.",
+      "text_markdown": "Sonra aracı onlara ihanet etti.",
+      "tts": {
+        "text": "Sonra aracı onlara ihanet etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mağaranın yerini Cezayir'in yöneticisi Hasan Paşa'ya açıkladı.",
+      "text_markdown": "Mağaranın yerini Cezayir'in yöneticisi Hasan Paşa'ya açıkladı.",
+      "tts": {
+        "text": "Mağaranın yerini Cezayir'in yöneticisi Hasan Paşa'ya açıkladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Askerler mağarayı sardı ve içerideki herkesi yakaladı.",
+      "text_markdown": "Askerler mağarayı sardı ve içerideki herkesi yakaladı.",
+      "tts": {
+        "text": "Askerler mağarayı sardı ve içerideki herkesi yakaladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes öne çıktı ve kaçış planının tüm sorumluluğunu üstlendi.",
+      "text_markdown": "Cervantes öne çıktı ve kaçış planının tüm sorumluluğunu üstlendi.",
+      "tts": {
+        "text": "Cervantes öne çıktı ve kaçış planının tüm sorumluluğunu üstlendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hasan Paşa'ya her şeyi yalnızca kendisinin planladığını ve organize ettiğini söyledi.",
+      "text_markdown": "Hasan Paşa'ya her şeyi yalnızca kendisinin planladığını ve organize ettiğini söyledi.",
+      "tts": {
+        "text": "Hasan Paşa'ya her şeyi yalnızca kendisinin planladığını ve organize ettiğini söyledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunu esir arkadaşlarını cezadan korumak için yaptı.",
+      "text_markdown": "Bunu esir arkadaşlarını cezadan korumak için yaptı.",
+      "tts": {
+        "text": "Bunu esir arkadaşlarını cezadan korumak için yaptı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hasan Paşa'nın Cervantes'in cesaretinden etkilendiği söylenir.",
+      "text_markdown": "Hasan Paşa'nın Cervantes'in cesaretinden etkilendiği söylenir.",
+      "tts": {
+        "text": "Hasan Paşa'nın Cervantes'in cesaretinden etkilendiği söylenir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onu idam etmek yerine paşa, Cervantes'i Dali Mami'den satın aldı ve kişisel kölesi olarak tuttu.",
+      "text_markdown": "Onu idam etmek yerine paşa, Cervantes'i Dali Mami'den satın aldı ve kişisel kölesi olarak tuttu.",
+      "tts": {
+        "text": "Onu idam etmek yerine paşa, Cervantes'i Dali Mami'den satın aldı ve kişisel kölesi olarak tuttu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüksek fidye değeri de paşanın elini tutmuş olabilir.",
+      "text_markdown": "Yüksek fidye değeri de paşanın elini tutmuş olabilir.",
+      "tts": {
+        "text": "Yüksek fidye değeri de paşanın elini tutmuş olabilir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paşanın kölesi olarak yaşam hâlâ esaretti, ancak biraz daha iyi koşullarla.",
+      "text_markdown": "Paşanın kölesi olarak yaşam hâlâ esaretti, ancak biraz daha iyi koşullarla.",
+      "tts": {
+        "text": "Paşanın kölesi olarak yaşam hâlâ esaretti, ancak biraz daha iyi koşullarla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cervantes banyolar yerine paşanın evinde tutuluyordu.",
+      "text_markdown": "Cervantes banyolar yerine paşanın evinde tutuluyordu.",
+      "tts": {
+        "text": "Cervantes banyolar yerine paşanın evinde tutuluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ancak Cervantes özgürlük umudunu yitirmedi.",
+      "text_markdown": "Ancak Cervantes özgürlük umudunu yitirmedi.",
+      "tts": {
+        "text": "Ancak Cervantes özgürlük umudunu yitirmedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1578'de üçüncü kaçış girişimini düzenledi.",
+      "text_markdown": "1578'de üçüncü kaçış girişimini düzenledi.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş sekizde üçüncü kaçış girişimini düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oran'daki İspanyol garnizonuna yardım istemek için bir haberci gönderdi.",
+      "text_markdown": "Oran'daki İspanyol garnizonuna yardım istemek için bir haberci gönderdi.",
+      "tts": {
+        "text": "Oran'daki İspanyol garnizonuna yardım istemek için bir haberci gönderdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haberci Oran'a ulaşmadan Mağribli devriyeler tarafından yakalandı.",
+      "text_markdown": "Haberci Oran'a ulaşmadan Mağribli devriyeler tarafından yakalandı.",
+      "tts": {
+        "text": "Haberci Oran'a ulaşmadan Mağribli devriyeler tarafından yakalandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sorgulamada Cervantes'in plandaki rolünü açığa vurdu.",
+      "text_markdown": "Sorgulamada Cervantes'in plandaki rolünü açığa vurdu.",
+      "tts": {
+        "text": "Sorgulamada Cervantes'in plandaki rolünü açığa vurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes yine cezalandırıldı ama yine öldürülmedi.",
+      "text_markdown": "Cervantes yine cezalandırıldı ama yine öldürülmedi.",
+      "tts": {
+        "text": "Cervantes yine cezalandırıldı ama yine öldürülmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dördüncü ve son kaçış girişimi 1579'da gerçekleşti.",
+      "text_markdown": "Dördüncü ve son kaçış girişimi 1579'da gerçekleşti.",
+      "tts": {
+        "text": "Dördüncü ve son kaçış girişimi bin beş yüz yetmiş dokuzda gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cervantes gizlice bir geminin Cezayir kıyısına gelip altmış kişilik bir esir grubunu almasını ayarladı.",
+      "text_markdown": "Cervantes gizlice bir geminin Cezayir kıyısına gelip altmış kişilik bir esir grubunu almasını ayarladı.",
+      "tts": {
+        "text": "Cervantes gizlice bir geminin Cezayir kıyısına gelip altmış kişilik bir esir grubunu almasını ayarladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şimdiye kadar tasarladığı en ayrıntılı kaçış planıydı.",
+      "text_markdown": "Şimdiye kadar tasarladığı en ayrıntılı kaçış planıydı.",
+      "tts": {
+        "text": "Şimdiye kadar tasarladığı en ayrıntılı kaçış planıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir kez daha bir hain planı ifşa etti.",
+      "text_markdown": "Bir kez daha bir hain planı ifşa etti.",
+      "tts": {
+        "text": "Bir kez daha bir hain planı ifşa etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Juan Blanco de Paz adlı eski bir Dominiken keşiş Cervantes'i yetkililere ihbar etti.",
+      "text_markdown": "Juan Blanco de Paz adlı eski bir Dominiken keşiş Cervantes'i yetkililere ihbar etti.",
+      "tts": {
+        "text": "Juan Blanco de Paz adlı eski bir Dominiken keşiş Cervantes'i yetkililere ihbar etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı tarihçiler Blanco de Paz'ın kıskançlıktan hareket ettiğine inanır.",
+      "text_markdown": "Bazı tarihçiler Blanco de Paz'ın kıskançlıktan hareket ettiğine inanır.",
+      "tts": {
+        "text": "Bazı tarihçiler Blanco de Paz'ın kıskançlıktan hareket ettiğine inanır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes zincirlenmiş halde Hasan Paşa'nın huzuruna getirildi.",
+      "text_markdown": "Cervantes zincirlenmiş halde Hasan Paşa'nın huzuruna getirildi.",
+      "tts": {
+        "text": "Cervantes zincirlenmiş halde Hasan Paşa'nın huzuruna getirildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yine suç ortaklarının adlarını vermeyi reddetti.",
+      "text_markdown": "Yine suç ortaklarının adlarını vermeyi reddetti.",
+      "tts": {
+        "text": "Yine suç ortaklarının adlarını vermeyi reddetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yine tek başına sorumluluk üstlendi.",
+      "text_markdown": "Yine tek başına sorumluluk üstlendi.",
+      "tts": {
+        "text": "Yine tek başına sorumluluk üstlendi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paşa Cervantes'i idamla tehdit etti.",
+      "text_markdown": "Paşa Cervantes'i idamla tehdit etti.",
+      "tts": {
+        "text": "Paşa Cervantes'i idamla tehdit etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayak tabanlarının sopalarla dövüldüğü bir ceza olan falaka emretti.",
+      "text_markdown": "Ayak tabanlarının sopalarla dövüldüğü bir ceza olan falaka emretti.",
+      "tts": {
+        "text": "Ayak tabanlarının sopalarla dövüldüğü bir ceza olan falaka emretti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak ölüm cezasını uygulamadı.",
+      "text_markdown": "Ancak ölüm cezasını uygulamadı.",
+      "tts": {
+        "text": "Ancak ölüm cezasını uygulamadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Akademisyenler uzun süredir Hasan Paşa'nın neden Cervantes'i bağışladığını tartışmaktadır.",
+      "text_markdown": "Akademisyenler uzun süredir Hasan Paşa'nın neden Cervantes'i bağışladığını tartışmaktadır.",
+      "tts": {
+        "text": "Akademisyenler uzun süredir Hasan Paşa'nın neden Cervantes'i bağışladığını tartışmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En olası açıklama mali nedenlerdir.",
+      "text_markdown": "En olası açıklama mali nedenlerdir.",
+      "tts": {
+        "text": "En olası açıklama mali nedenlerdir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes'in fidyesi beş yüz eskudo olarak belirlenmişti ve onu öldürmek bu parayı kaybetmek anlamına gelirdi.",
+      "text_markdown": "Cervantes'in fidyesi beş yüz eskudo olarak belirlenmişti ve onu öldürmek bu parayı kaybetmek anlamına gelirdi.",
+      "tts": {
+        "text": "Cervantes'in fidyesi beş yüz eskudo olarak belirlenmişti ve onu öldürmek bu parayı kaybetmek anlamına gelirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paşanın Cervantes'in cesaretine gerçekten hayran olmuş olması da mümkündür.",
+      "text_markdown": "Paşanın Cervantes'in cesaretine gerçekten hayran olmuş olması da mümkündür.",
+      "tts": {
+        "text": "Paşanın Cervantes'in cesaretine gerçekten hayran olmuş olması da mümkündür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dört kaçış girişimi, her biri boyun eğme yerine meydan okumayla karşılanan, olağanüstüydü.",
+      "text_markdown": "Dört kaçış girişimi, her biri boyun eğme yerine meydan okumayla karşılanan, olağanüstüydü.",
+      "tts": {
+        "text": "Dört kaçış girişimi, her biri boyun eğme yerine meydan okumayla karşılanan, olağanüstüydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir'deki yıllarında Cervantes etrafındaki her şeyi gözlemledi.",
+      "text_markdown": "Cezayir'deki yıllarında Cervantes etrafındaki her şeyi gözlemledi.",
+      "tts": {
+        "text": "Cezayir'deki yıllarında Cervantes etrafındaki her şeyi gözlemledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farklı din ve kültürlerden insanların şehirde nasıl yan yana yaşadığını izledi.",
+      "text_markdown": "Farklı din ve kültürlerden insanların şehirde nasıl yan yana yaşadığını izledi.",
+      "tts": {
+        "text": "Farklı din ve kültürlerden insanların şehirde nasıl yan yana yaşadığını izledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zulüm gördü ama beklenmedik iyilik de gördü.",
+      "text_markdown": "Zulüm gördü ama beklenmedik iyilik de gördü.",
+      "tts": {
+        "text": "Zulüm gördü ama beklenmedik iyilik de gördü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa'nın her yerinden, her birinin kayıp ve dayanıklılık hikayesi olan esirlerle tanıştı.",
+      "text_markdown": "Avrupa'nın her yerinden, her birinin kayıp ve dayanıklılık hikayesi olan esirlerle tanıştı.",
+      "tts": {
+        "text": "Avrupa'nın her yerinden, her birinin kayıp ve dayanıklılık hikayesi olan esirlerle tanıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaçış, ihanet, din değiştirme ve hayatta kalma hikayeleri duydu.",
+      "text_markdown": "Kaçış, ihanet, din değiştirme ve hayatta kalma hikayeleri duydu.",
+      "tts": {
+        "text": "Kaçış, ihanet, din değiştirme ve hayatta kalma hikayeleri duydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu hikayeler hayatının geri kalanında yazarlığını dolduracaktı.",
+      "text_markdown": "Bu hikayeler hayatının geri kalanında yazarlığını dolduracaktı.",
+      "tts": {
+        "text": "Bu hikayeler hayatının geri kalanında yazarlığını dolduracaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yıllar geçtikçe Cervantes'in fidye umudu solmaya başladı.",
+      "text_markdown": "Yıllar geçtikçe Cervantes'in fidye umudu solmaya başladı.",
+      "tts": {
+        "text": "Yıllar geçtikçe Cervantes'in fidye umudu solmaya başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ailesi Rodrigo'yu kurtarmak için kaynaklarını tüketmişti.",
+      "text_markdown": "Ailesi Rodrigo'yu kurtarmak için kaynaklarını tüketmişti.",
+      "tts": {
+        "text": "Ailesi Rodrigo'yu kurtarmak için kaynaklarını tüketmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miguel için gereken beş yüz eskudo ulaşılmaz görünüyordu.",
+      "text_markdown": "Miguel için gereken beş yüz eskudo ulaşılmaz görünüyordu.",
+      "tts": {
+        "text": "Miguel için gereken beş yüz eskudo ulaşılmaz görünüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes, Cezayir'deki Hristiyan esirler arasında bir lider haline geldi.",
+      "text_markdown": "Cervantes, Cezayir'deki Hristiyan esirler arasında bir lider haline geldi.",
+      "tts": {
+        "text": "Cervantes, Cezayir'deki Hristiyan esirler arasında bir lider haline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esir arkadaşları cesaretine ve onlar uğruna ceza almayı göze almasına saygı duyuyordu.",
+      "text_markdown": "Esir arkadaşları cesaretine ve onlar uğruna ceza almayı göze almasına saygı duyuyordu.",
+      "tts": {
+        "text": "Esir arkadaşları cesaretine ve onlar uğruna ceza almayı göze almasına saygı duyuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Direnişi organize etti, kaçışlar planladı ve umutsuzluğa kapılmak için her nedeni olan insanlar arasında morali ayakta tuttu.",
+      "text_markdown": "Direnişi organize etti, kaçışlar planladı ve umutsuzluğa kapılmak için her nedeni olan insanlar arasında morali ayakta tuttu.",
+      "tts": {
+        "text": "Direnişi organize etti, kaçışlar planladı ve umutsuzluğa kapılmak için her nedeni olan insanlar arasında morali ayakta tuttu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı esirler koşullarını iyileştirmek için İslam'a geçti.",
+      "text_markdown": "Bazı esirler koşullarını iyileştirmek için İslam'a geçti.",
+      "tts": {
+        "text": "Bazı esirler koşullarını iyileştirmek için İslam'a geçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu dönekler Hristiyan arkadaşları tarafından hor görülürdü ama efendileri tarafından daha iyi muamele görürdü.",
+      "text_markdown": "Bu dönekler Hristiyan arkadaşları tarafından hor görülürdü ama efendileri tarafından daha iyi muamele görürdü.",
+      "tts": {
+        "text": "Bu dönekler Hristiyan arkadaşları tarafından hor görülürdü ama efendileri tarafından daha iyi muamele görürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Cezayir'de Beş Yıl",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes bu cazibeyi anlıyordu ama kendisi hiçbir zaman din değiştirmedi.",
+      "text_markdown": "Cervantes bu cazibeyi anlıyordu ama kendisi hiçbir zaman din değiştirmedi.",
+      "tts": {
+        "text": "Cervantes bu cazibeyi anlıyordu ama kendisi hiçbir zaman din değiştirmedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Fidye",
+      "text_markdown": "Fidye"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1580'de Trinitaryan keşişler fidye görevi için Cezayir'e geldiler.",
+      "text_markdown": "1580'de Trinitaryan keşişler fidye görevi için Cezayir'e geldiler.",
+      "tts": {
+        "text": "Bin beş yüz seksende Trinitaryan keşişler fidye görevi için Cezayir'e geldiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kutsal Teslis Tarikatı yüzyıllardır bu görevleri yürütüyordu.",
+      "text_markdown": "Kutsal Teslis Tarikatı yüzyıllardır bu görevleri yürütüyordu.",
+      "tts": {
+        "text": "Kutsal Teslis Tarikatı yüzyıllardır bu görevleri yürütüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanya genelinde bağış topluyor ve Hristiyan esirleri kurtarmak için kullanıyorlardı.",
+      "text_markdown": "İspanya genelinde bağış topluyor ve Hristiyan esirleri kurtarmak için kullanıyorlardı.",
+      "tts": {
+        "text": "İspanya genelinde bağış topluyor ve Hristiyan esirleri kurtarmak için kullanıyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fidye görevinin başı Trinitaryan keşiş Fray Juan Gil'di.",
+      "text_markdown": "Fidye görevinin başı Trinitaryan keşiş Fray Juan Gil'di.",
+      "tts": {
+        "text": "Fidye görevinin başı Trinitaryan keşiş Fray Juan Gil'di.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç esirin fidyesini ödemeye yetecek kadar para getirmişti, ama hepsi için yeterli değildi.",
+      "text_markdown": "Birkaç esirin fidyesini ödemeye yetecek kadar para getirmişti, ama hepsi için yeterli değildi.",
+      "tts": {
+        "text": "Birkaç esirin fidyesini ödemeye yetecek kadar para getirmişti, ama hepsi için yeterli değildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes'in annesi Leonor de Cortinas yıllardır Trinitaryanlara yalvarıyordu.",
+      "text_markdown": "Cervantes'in annesi Leonor de Cortinas yıllardır Trinitaryanlara yalvarıyordu.",
+      "tts": {
+        "text": "Cervantes'in annesi Leonor de Cortinas yıllardır Trinitaryanlara yalvarıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toplayabildiği her kuruşu göndermişti.",
+      "text_markdown": "Toplayabildiği her kuruşu göndermişti.",
+      "tts": {
+        "text": "Toplayabildiği her kuruşu göndermişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama toplam hâlâ beş yüz eskudonun altındaydı.",
+      "text_markdown": "Ama toplam hâlâ beş yüz eskudonun altındaydı.",
+      "tts": {
+        "text": "Ama toplam hâlâ beş yüz eskudonun altındaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fray Juan Gil, Hasan Paşa ile bizzat müzakere etti.",
+      "text_markdown": "Fray Juan Gil, Hasan Paşa ile bizzat müzakere etti.",
+      "tts": {
+        "text": "Fray Juan Gil, Hasan Paşa ile bizzat müzakere etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Paşa Cezayir'den kalıcı olarak ayrılmak ve kölelerini yanında götürmek üzereydi.",
+      "text_markdown": "Paşa Cezayir'den kalıcı olarak ayrılmak ve kölelerini yanında götürmek üzereydi.",
+      "tts": {
+        "text": "Paşa Cezayir'den kalıcı olarak ayrılmak ve kölelerini yanında götürmek üzereydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes'in fidyesi şimdi ödenmezse belki de hiçbir zaman kurtarılamayacaktı.",
+      "text_markdown": "Cervantes'in fidyesi şimdi ödenmezse belki de hiçbir zaman kurtarılamayacaktı.",
+      "tts": {
+        "text": "Cervantes'in fidyesi şimdi ödenmezse belki de hiçbir zaman kurtarılamayacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çaresiz müzakereler ve yerel Hristiyan tüccarların ek fonlarıyla Fray Juan Gil fidyenin tamamını bir araya getirdi.",
+      "text_markdown": "Çaresiz müzakereler ve yerel Hristiyan tüccarların ek fonlarıyla Fray Juan Gil fidyenin tamamını bir araya getirdi.",
+      "tts": {
+        "text": "Çaresiz müzakereler ve yerel Hristiyan tüccarların ek fonlarıyla Fray Juan Gil fidyenin tamamını bir araya getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hasan Paşa'ya beş yüz eskudo ödedi.",
+      "text_markdown": "Hasan Paşa'ya beş yüz eskudo ödedi.",
+      "tts": {
+        "text": "Hasan Paşa'ya beş yüz eskudo ödedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "19 Eylül 1580'de Miguel de Cervantes özgürlüğüne kavuştu.",
+      "text_markdown": "19 Eylül 1580'de Miguel de Cervantes özgürlüğüne kavuştu.",
+      "tts": {
+        "text": "On dokuz Eylül bin beş yüz seksende Miguel de Cervantes özgürlüğüne kavuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tam beş yıldır Cezayir'de esirdi.",
+      "text_markdown": "Tam beş yıldır Cezayir'de esirdi.",
+      "tts": {
+        "text": "Tam beş yıldır Cezayir'de esirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Otuz üç yaşındaydı.",
+      "text_markdown": "Otuz üç yaşındaydı.",
+      "tts": {
+        "text": "Otuz üç yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sol eli İnebahtı'dan beri kalıcı olarak sakattı.",
+      "text_markdown": "Sol eli İnebahtı'dan beri kalıcı olarak sakattı.",
+      "tts": {
+        "text": "Sol eli İnebahtı'dan beri kalıcı olarak sakattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bedeni beş yıllık esaret ve cezanın izlerini taşıyordu.",
+      "text_markdown": "Bedeni beş yıllık esaret ve cezanın izlerini taşıyordu.",
+      "tts": {
+        "text": "Bedeni beş yıllık esaret ve cezanın izlerini taşıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir'den ayrılmadan önce Cervantes, esaret süresince davranışı hakkında esir arkadaşlarından yeminli ifadeler topladı.",
+      "text_markdown": "Cezayir'den ayrılmadan önce Cervantes, esaret süresince davranışı hakkında esir arkadaşlarından yeminli ifadeler topladı.",
+      "tts": {
+        "text": "Cezayir'den ayrılmadan önce Cervantes, esaret süresince davranışı hakkında esir arkadaşlarından yeminli ifadeler topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu tanıklar dört kaçış girişimini ve arkadaşlarına ihanet etmeyi reddetmesini doğruladı.",
+      "text_markdown": "Bu tanıklar dört kaçış girişimini ve arkadaşlarına ihanet etmeyi reddetmesini doğruladı.",
+      "tts": {
+        "text": "Bu tanıklar dört kaçış girişimini ve arkadaşlarına ihanet etmeyi reddetmesini doğruladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cezayir Bilgisi adı verilen bu belge günümüze kadar ulaşmıştır.",
+      "text_markdown": "Cezayir Bilgisi adı verilen bu belge günümüze kadar ulaşmıştır.",
+      "tts": {
+        "text": "Cezayir Bilgisi adı verilen bu belge günümüze kadar ulaşmıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes 1580'in sonlarında İspanya'ya döndü.",
+      "text_markdown": "Cervantes 1580'in sonlarında İspanya'ya döndü.",
+      "tts": {
+        "text": "Cervantes bin beş yüz seksenin sonlarında İspanya'ya döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Beş parasız, engelli ve travma geçirmişti.",
+      "text_markdown": "Beş parasız, engelli ve travma geçirmişti.",
+      "tts": {
+        "text": "Beş parasız, engelli ve travma geçirmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Askerlik hizmeti ve çektiklerinin ona bir hükümet görevi kazandıracağını ummuştu.",
+      "text_markdown": "Askerlik hizmeti ve çektiklerinin ona bir hükümet görevi kazandıracağını ummuştu.",
+      "tts": {
+        "text": "Askerlik hizmeti ve çektiklerinin ona bir hükümet görevi kazandıracağını ummuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç pozisyona başvurdu ama her seferinde reddedildi.",
+      "text_markdown": "Birkaç pozisyona başvurdu ama her seferinde reddedildi.",
+      "tts": {
+        "text": "Birkaç pozisyona başvurdu ama her seferinde reddedildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyol bürokrasisi, bağlantısız sakat bir gazi için yer bulamıyordu.",
+      "text_markdown": "İspanyol bürokrasisi, bağlantısız sakat bir gazi için yer bulamıyordu.",
+      "tts": {
+        "text": "İspanyol bürokrasisi, bağlantısız sakat bir gazi için yer bulamıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes yazarlığa yöneldi.",
+      "text_markdown": "Cervantes yazarlığa yöneldi.",
+      "tts": {
+        "text": "Cervantes yazarlığa yöneldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1585'te ilk romanı La Galatea'yı yayımladı; kır yaşamını anlatan bir aşk romanıydı.",
+      "text_markdown": "1585'te ilk romanı La Galatea'yı yayımladı; kır yaşamını anlatan bir aşk romanıydı.",
+      "tts": {
+        "text": "Bin beş yüz seksen beşte ilk romanı La Galatea'yı yayımladı; kır yaşamını anlatan bir aşk romanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mütevazı bir ilgi gördü ancak çok az para kazandırdı.",
+      "text_markdown": "Mütevazı bir ilgi gördü ancak çok az para kazandırdı.",
+      "tts": {
+        "text": "Mütevazı bir ilgi gördü ancak çok az para kazandırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonraki yirmi yılını mali sıkıntılarla geçirdi.",
+      "text_markdown": "Sonraki yirmi yılını mali sıkıntılarla geçirdi.",
+      "tts": {
+        "text": "Sonraki yirmi yılını mali sıkıntılarla geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vergi tahsildarı ve İspanyol Arması için satın alma memuru olarak çalıştı.",
+      "text_markdown": "Vergi tahsildarı ve İspanyol Arması için satın alma memuru olarak çalıştı.",
+      "tts": {
+        "text": "Vergi tahsildarı ve İspanyol Arması için satın alma memuru olarak çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hesaplarındaki mali usulsüzlükler nedeniyle en az iki kez hapsedildi.",
+      "text_markdown": "Hesaplarındaki mali usulsüzlükler nedeniyle en az iki kez hapsedildi.",
+      "tts": {
+        "text": "Hesaplarındaki mali usulsüzlükler nedeniyle en az iki kez hapsedildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1605'te, elli yedi yaşında, Cervantes Don Kişot'un birinci cildini yayımladı.",
+      "text_markdown": "1605'te, elli yedi yaşında, Cervantes Don Kişot'un birinci cildini yayımladı.",
+      "tts": {
+        "text": "Bin altı yüz beşte, elli yedi yaşında, Cervantes Don Kişot'un birinci cildini yayımladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kitap anında büyük bir sansasyon yarattı.",
+      "text_markdown": "Kitap anında büyük bir sansasyon yarattı.",
+      "tts": {
+        "text": "Kitap anında büyük bir sansasyon yarattı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Don Kişot, şövalye hikâyeleri okuyarak aklını yitiren ve gezgin şövalye olmak için yola çıkan yaşlı bir adamın hikayesini anlatıyordu.",
+      "text_markdown": "Don Kişot, şövalye hikâyeleri okuyarak aklını yitiren ve gezgin şövalye olmak için yola çıkan yaşlı bir adamın hikayesini anlatıyordu.",
+      "tts": {
+        "text": "Don Kişot, şövalye hikâyeleri okuyarak aklını yitiren ve gezgin şövalye olmak için yola çıkan yaşlı bir adamın hikayesini anlatıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Komik, hüzünlü ve derinden insaniydi.",
+      "text_markdown": "Komik, hüzünlü ve derinden insaniydi.",
+      "tts": {
+        "text": "Komik, hüzünlü ve derinden insaniydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Genellikle ilk modern roman olarak adlandırılır.",
+      "text_markdown": "Genellikle ilk modern roman olarak adlandırılır.",
+      "tts": {
+        "text": "Genellikle ilk modern roman olarak adlandırılır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes Don Kişot'un ikinci cildini 1615'te yayımladı.",
+      "text_markdown": "Cervantes Don Kişot'un ikinci cildini 1615'te yayımladı.",
+      "tts": {
+        "text": "Cervantes Don Kişot'un ikinci cildini bin altı yüz on beşte yayımladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayatının son anına kadar yazmaya devam etti.",
+      "text_markdown": "Hayatının son anına kadar yazmaya devam etti.",
+      "tts": {
+        "text": "Hayatının son anına kadar yazmaya devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes 22 Nisan 1616'da Madrid'de öldü.",
+      "text_markdown": "Miguel de Cervantes 22 Nisan 1616'da Madrid'de öldü.",
+      "tts": {
+        "text": "Miguel de Cervantes yirmi iki Nisan bin altı yüz on altıda Madrid'de öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Altmış sekiz yaşındaydı.",
+      "text_markdown": "Altmış sekiz yaşındaydı.",
+      "tts": {
+        "text": "Altmış sekiz yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoksulluk içinde öldü; hizmetinin hak ettiğini düşündüğü takdir veya ödülü hiçbir zaman alamamıştı.",
+      "text_markdown": "Yoksulluk içinde öldü; hizmetinin hak ettiğini düşündüğü takdir veya ödülü hiçbir zaman alamamıştı.",
+      "tts": {
+        "text": "Yoksulluk içinde öldü; hizmetinin hak ettiğini düşündüğü takdir veya ödülü hiçbir zaman alamamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trinitaryan tarikatı yüzyıllar boyunca binlerce esiri fidyeyle kurtarmıştı.",
+      "text_markdown": "Trinitaryan tarikatı yüzyıllar boyunca binlerce esiri fidyeyle kurtarmıştı.",
+      "tts": {
+        "text": "Trinitaryan tarikatı yüzyıllar boyunca binlerce esiri fidyeyle kurtarmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzey Afrika'ya görevleri tehlikeli ve pahalıydı.",
+      "text_markdown": "Kuzey Afrika'ya görevleri tehlikeli ve pahalıydı.",
+      "tts": {
+        "text": "Kuzey Afrika'ya görevleri tehlikeli ve pahalıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Fidye",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Keşişler büyük meblağlarla düşman topraklarına gidiyor, inançlarına ve fidye geleneklerine güveniyorlardı.",
+      "text_markdown": "Keşişler büyük meblağlarla düşman topraklarına gidiyor, inançlarına ve fidye geleneklerine güveniyorlardı.",
+      "tts": {
+        "text": "Keşişler büyük meblağlarla düşman topraklarına gidiyor, inançlarına ve fidye geleneklerine güveniyorlardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Esirin Mirası",
+      "text_markdown": "Esirin Mirası"
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes'in Cezayir'deki esareti yazarlığında silinmez bir iz bıraktı.",
+      "text_markdown": "Cervantes'in Cezayir'deki esareti yazarlığında silinmez bir iz bıraktı.",
+      "tts": {
+        "text": "Cervantes'in Cezayir'deki esareti yazarlığında silinmez bir iz bıraktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hapis, esaret ve kaçış sahneleri tüm eserlerinde görülür.",
+      "text_markdown": "Hapis, esaret ve kaçış sahneleri tüm eserlerinde görülür.",
+      "tts": {
+        "text": "Hapis, esaret ve kaçış sahneleri tüm eserlerinde görülür.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Don Kişot'un kendisinde, Esirin Hikayesi olarak bilinen uzun bir bölüm vardır.",
+      "text_markdown": "Don Kişot'un kendisinde, Esirin Hikayesi olarak bilinen uzun bir bölüm vardır.",
+      "tts": {
+        "text": "Don Kişot'un kendisinde, Esirin Hikayesi olarak bilinen uzun bir bölüm vardır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Berberi korsanlar tarafından yakalanan ve Cezayir'de köle olarak tutulan bir İspanyol askerin hikayesini anlatır.",
+      "text_markdown": "Berberi korsanlar tarafından yakalanan ve Cezayir'de köle olarak tutulan bir İspanyol askerin hikayesini anlatır.",
+      "tts": {
+        "text": "Berberi korsanlar tarafından yakalanan ve Cezayir'de köle olarak tutulan bir İspanyol askerin hikayesini anlatır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes'in kendi hayatıyla benzerlikler tartışılmazdır.",
+      "text_markdown": "Cervantes'in kendi hayatıyla benzerlikler tartışılmazdır.",
+      "tts": {
+        "text": "Cervantes'in kendi hayatıyla benzerlikler tartışılmazdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cezayir'deki yaşamı konu alan oyunu Cezayir Hamamları doğrudan deneyimlerinden besleniyordu.",
+      "text_markdown": "Cezayir'deki yaşamı konu alan oyunu Cezayir Hamamları doğrudan deneyimlerinden besleniyordu.",
+      "tts": {
+        "text": "Cezayir'deki yaşamı konu alan oyunu Cezayir Hamamları doğrudan deneyimlerinden besleniyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esaretin acımasızlığını, yurt özlemini ve esir alan ile esir arasındaki karmaşık ilişkileri tasvir ediyordu.",
+      "text_markdown": "Esaretin acımasızlığını, yurt özlemini ve esir alan ile esir arasındaki karmaşık ilişkileri tasvir ediyordu.",
+      "tts": {
+        "text": "Esaretin acımasızlığını, yurt özlemini ve esir alan ile esir arasındaki karmaşık ilişkileri tasvir ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Akademisyenler, Cervantes'in Müslüman karakterleri tasvir etme biçiminin çağdaşı Avrupalı yazarların çoğundan daha incelikli olduğunu belirtmiştir.",
+      "text_markdown": "Akademisyenler, Cervantes'in Müslüman karakterleri tasvir etme biçiminin çağdaşı Avrupalı yazarların çoğundan daha incelikli olduğunu belirtmiştir.",
+      "tts": {
+        "text": "Akademisyenler, Cervantes'in Müslüman karakterleri tasvir etme biçiminin çağdaşı Avrupalı yazarların çoğundan daha incelikli olduğunu belirtmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Beş yıl boyunca Müslümanlar arasında yaşamıştı.",
+      "text_markdown": "Beş yıl boyunca Müslümanlar arasında yaşamıştı.",
+      "tts": {
+        "text": "Beş yıl boyunca Müslümanlar arasında yaşamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p109",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onları sadece düşman olarak değil, bireyler olarak görüyordu.",
+      "text_markdown": "Onları sadece düşman olarak değil, bireyler olarak görüyordu.",
+      "tts": {
+        "text": "Onları sadece düşman olarak değil, bireyler olarak görüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Don Kişot şimdiye kadar yazılmış en etkili kitaplardan biri haline geldi.",
+      "text_markdown": "Don Kişot şimdiye kadar yazılmış en etkili kitaplardan biri haline geldi.",
+      "tts": {
+        "text": "Don Kişot şimdiye kadar yazılmış en etkili kitaplardan biri haline geldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kutsal Kitap dışında herhangi bir kitaptan daha fazla dile çevrilmiştir.",
+      "text_markdown": "Kutsal Kitap dışında herhangi bir kitaptan daha fazla dile çevrilmiştir.",
+      "tts": {
+        "text": "Kutsal Kitap dışında herhangi bir kitaptan daha fazla dile çevrilmiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Romanın idealizm, hayal kırıklığı ve dünyayı hayal ettiğimiz gibi ile gerçekte olduğu arasındaki uçurum temalarını kültürler ve yüzyıllar boyunca yankı buldu.",
+      "text_markdown": "Romanın idealizm, hayal kırıklığı ve dünyayı hayal ettiğimiz gibi ile gerçekte olduğu arasındaki uçurum temalarını kültürler ve yüzyıllar boyunca yankı buldu.",
+      "tts": {
+        "text": "Romanın idealizm, hayal kırıklığı ve dünyayı hayal ettiğimiz gibi ile gerçekte olduğu arasındaki uçurum temalarını kültürler ve yüzyıllar boyunca yankı buldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu temaların birçoğu Cervantes'in kendi acı deneyimleri tarafından şekillendirilmişti.",
+      "text_markdown": "Bu temaların birçoğu Cervantes'in kendi acı deneyimleri tarafından şekillendirilmişti.",
+      "tts": {
+        "text": "Bu temaların birçoğu Cervantes'in kendi acı deneyimleri tarafından şekillendirilmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes cesurca savaşıp unutulmanın ne demek olduğunu biliyordu.",
+      "text_markdown": "Cervantes cesurca savaşıp unutulmanın ne demek olduğunu biliyordu.",
+      "tts": {
+        "text": "Cervantes cesurca savaşıp unutulmanın ne demek olduğunu biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Acı çekip hiçbir ödül almamanın ne demek olduğunu biliyordu.",
+      "text_markdown": "Acı çekip hiçbir ödül almamanın ne demek olduğunu biliyordu.",
+      "tts": {
+        "text": "Acı çekip hiçbir ödül almamanın ne demek olduğunu biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu bilgiyi yazarlığına döktü.",
+      "text_markdown": "Bu bilgiyi yazarlığına döktü.",
+      "tts": {
+        "text": "Bu bilgiyi yazarlığına döktü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün Cervantes modern romanın babası olarak onurlandırılmaktadır.",
+      "text_markdown": "Bugün Cervantes modern romanın babası olarak onurlandırılmaktadır.",
+      "tts": {
+        "text": "Bugün Cervantes modern romanın babası olarak onurlandırılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heykeli Madrid'deki Plaza de España'da durmaktadır.",
+      "text_markdown": "Heykeli Madrid'deki Plaza de España'da durmaktadır.",
+      "tts": {
+        "text": "Heykeli Madrid'deki Plaza de España'da durmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünya genelinde üniversiteler, kütüphaneler ve kültür merkezleri onun adını taşır.",
+      "text_markdown": "Dünya genelinde üniversiteler, kütüphaneler ve kültür merkezleri onun adını taşır.",
+      "tts": {
+        "text": "Dünya genelinde üniversiteler, kütüphaneler ve kültür merkezleri onun adını taşır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ölüm yıldönümü olan 23 Nisan, UNESCO tarafından Dünya Kitap Günü olarak kutlanmaktadır.",
+      "text_markdown": "Ölüm yıldönümü olan 23 Nisan, UNESCO tarafından Dünya Kitap Günü olarak kutlanmaktadır.",
+      "tts": {
+        "text": "Ölüm yıldönümü olan yirmi üç Nisan, UNESCO tarafından Dünya Kitap Günü olarak kutlanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünya çapında kutlanan birkaç edebi bayramdan biridir.",
+      "text_markdown": "Dünya çapında kutlanan birkaç edebi bayramdan biridir.",
+      "tts": {
+        "text": "Dünya çapında kutlanan birkaç edebi bayramdan biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes korsanlar tarafından yakalandı, beş yıl köleleştirildi ve ülkesi tarafından neredeyse unutuldu.",
+      "text_markdown": "Miguel de Cervantes korsanlar tarafından yakalandı, beş yıl köleleştirildi ve ülkesi tarafından neredeyse unutuldu.",
+      "tts": {
+        "text": "Miguel de Cervantes korsanlar tarafından yakalandı, beş yıl köleleştirildi ve ülkesi tarafından neredeyse unutuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tüm dünyanın hatırlayacağı bir kitap yazarak karşılık verdi.",
+      "text_markdown": "Tüm dünyanın hatırlayacağı bir kitap yazarak karşılık verdi.",
+      "tts": {
+        "text": "Tüm dünyanın hatırlayacağı bir kitap yazarak karşılık verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esareti onu yıkmadı.",
+      "text_markdown": "Esareti onu yıkmadı.",
+      "tts": {
+        "text": "Esareti onu yıkmadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Esirin Mirası",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dehasının biçimlendirildiği ocak oldu.",
+      "text_markdown": "Dehasının biçimlendirildiği ocak oldu.",
+      "tts": {
+        "text": "Dehasının biçimlendirildiği ocak oldu.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

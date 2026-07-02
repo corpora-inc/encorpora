@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_bartholomew_roberts",
+  "language": "ja",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への注記",
+      "text_markdown": "読者への注記"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは黄金時代で最も成功した海賊の真実の物語です。",
+      "text_markdown": "これは黄金時代で最も成功した海賊の真実の物語です。",
+      "tts": {
+        "text": "これは黄金時代で最も成功した海賊の真実の物語です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名はバーソロミュー・ロバーツ、世界は彼をブラック・バートと呼びました。",
+      "text_markdown": "彼の名はバーソロミュー・ロバーツ、世界は彼をブラック・バートと呼びました。",
+      "tts": {
+        "text": "彼の名はバーソロミュー・ロバーツ、世界は彼をブラック・バートと呼びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "わずか3年で400隻以上の船を捕獲し、同時代のどの海賊よりも多い数でした。",
+      "text_markdown": "わずか3年で400隻以上の船を捕獲し、同時代のどの海賊よりも多い数でした。",
+      "tts": {
+        "text": "わずか三年で四百隻以上の船を捕獲し、同時代のどの海賊よりも多い数でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは自ら進んで海賊になった人物ではありませんでした。",
+      "text_markdown": "ロバーツは自ら進んで海賊になった人物ではありませんでした。",
+      "tts": {
+        "text": "ロバーツは自ら進んで海賊になった人物ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は海賊に捕らえられ、仲間に加わることを強いられたウェールズ人の船乗りでした。",
+      "text_markdown": "彼は海賊に捕らえられ、仲間に加わることを強いられたウェールズ人の船乗りでした。",
+      "tts": {
+        "text": "彼は海賊に捕らえられ、仲間に加わることを強いられたウェールズ人の船乗りでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数週間のうちに、彼は彼らの船長になっていました。",
+      "text_markdown": "数週間のうちに、彼は彼らの船長になっていました。",
+      "tts": {
+        "text": "数週間のうちに、彼は彼らの船長になっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "数ヶ月のうちに、彼は大西洋の恐怖となっていました。",
+      "text_markdown": "数ヶ月のうちに、彼は大西洋の恐怖となっていました。",
+      "tts": {
+        "text": "数ヶ月のうちに、彼は大西洋の恐怖となっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本はあなたを西アフリカの海岸からカリブ海の島々へと連れて行きます。",
+      "text_markdown": "この本はあなたを西アフリカの海岸からカリブ海の島々へと連れて行きます。",
+      "tts": {
+        "text": "この本はあなたを西アフリカの海岸からカリブ海の島々へと連れて行きます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一人の不本意な海賊がいかにして浮かぶ帝国を築き、それを統治する規則を書いたかを目にすることでしょう。",
+      "text_markdown": "一人の不本意な海賊がいかにして浮かぶ帝国を築き、それを統治する規則を書いたかを目にすることでしょう。",
+      "tts": {
+        "text": "一人の不本意な海賊がいかにして浮かぶ帝国を築き、それを統治する規則を書いたかを目にすることでしょう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この本のすべては歴史的記録、裁判記録、目撃者の証言に基づいています。",
+      "text_markdown": "この本のすべては歴史的記録、裁判記録、目撃者の証言に基づいています。",
+      "tts": {
+        "text": "この本のすべては歴史的記録、裁判記録、目撃者の証言に基づいています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への注記",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "事実が不確かな場合は、はっきりとそう述べます。",
+      "text_markdown": "事実が不確かな場合は、はっきりとそう述べます。",
+      "tts": {
+        "text": "事実が不確かな場合は、はっきりとそう述べます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "奴隷海岸の世界",
+      "text_markdown": "奴隷海岸の世界"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世紀初頭は大西洋奴隷貿易の最盛期でした。",
+      "text_markdown": "十八世紀初頭は大西洋奴隷貿易の最盛期でした。",
+      "tts": {
+        "text": "十八世紀初頭は大西洋奴隷貿易の最盛期でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパの船がイギリス、フランス、ポルトガル、オランダの港から西アフリカの海岸へ向けて出航しました。",
+      "text_markdown": "ヨーロッパの船がイギリス、フランス、ポルトガル、オランダの港から西アフリカの海岸へ向けて出航しました。",
+      "tts": {
+        "text": "ヨーロッパの船がイギリス、フランス、ポルトガル、オランダの港から西アフリカの海岸へ向けて出航しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこで彼らは工業製品を奴隷化された人々と交換しました。",
+      "text_markdown": "そこで彼らは工業製品を奴隷化された人々と交換しました。",
+      "tts": {
+        "text": "そこで彼らは工業製品を奴隷化された人々と交換しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奴隷化された人々はその後大西洋を越えてアメリカ大陸の農園へ輸送されました。",
+      "text_markdown": "奴隷化された人々はその後大西洋を越えてアメリカ大陸の農園へ輸送されました。",
+      "tts": {
+        "text": "奴隷化された人々はその後大西洋を越えてアメリカ大陸の農園へ輸送されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この三角貿易はヨーロッパの商人と植民地の農園主に莫大な富をもたらしました。",
+      "text_markdown": "この三角貿易はヨーロッパの商人と植民地の農園主に莫大な富をもたらしました。",
+      "tts": {
+        "text": "この三角貿易はヨーロッパの商人と植民地の農園主に莫大な富をもたらしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奴隷労働で栽培された砂糖、タバコ、綿花、米がヨーロッパに送り返されました。",
+      "text_markdown": "奴隷労働で栽培された砂糖、タバコ、綿花、米がヨーロッパに送り返されました。",
+      "tts": {
+        "text": "奴隷労働で栽培された砂糖、タバコ、綿花、米がヨーロッパに送り返されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その利益は壮麗な邸宅、政治権力、そしてさらなる植民地拡大を資金的に支えました。",
+      "text_markdown": "その利益は壮麗な邸宅、政治権力、そしてさらなる植民地拡大を資金的に支えました。",
+      "tts": {
+        "text": "その利益は壮麗な邸宅、政治権力、そしてさらなる植民地拡大を資金的に支えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは大西洋世界の経済を動かすエンジンでした。",
+      "text_markdown": "それは大西洋世界の経済を動かすエンジンでした。",
+      "tts": {
+        "text": "それは大西洋世界の経済を動かすエンジンでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "セネガルからアンゴラまでの西アフリカ海岸がこの人身売買の中心でした。",
+      "text_markdown": "セネガルからアンゴラまでの西アフリカ海岸がこの人身売買の中心でした。",
+      "tts": {
+        "text": "セネガルからアンゴラまでの西アフリカ海岸がこの人身売買の中心でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパ諸国は海岸線に沿って交易砦や商館を設立しました。",
+      "text_markdown": "ヨーロッパ諸国は海岸線に沿って交易砦や商館を設立しました。",
+      "tts": {
+        "text": "ヨーロッパ諸国は海岸線に沿って交易砦や商館を設立しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王立アフリカ会社がアフリカ貿易におけるイギリスの独占権を握っていました。",
+      "text_markdown": "王立アフリカ会社がアフリカ貿易におけるイギリスの独占権を握っていました。",
+      "tts": {
+        "text": "王立アフリカ会社がアフリカ貿易におけるイギリスの独占権を握っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ケープコースト城やその他の場所にある砦は堅固に要塞化され、守備隊が置かれていました。",
+      "text_markdown": "ケープコースト城やその他の場所にある砦は堅固に要塞化され、守備隊が置かれていました。",
+      "tts": {
+        "text": "ケープコースト城やその他の場所にある砦は堅固に要塞化され、守備隊が置かれていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大西洋を渡る奴隷船は海上で最も価値の高い標的でした。",
+      "text_markdown": "大西洋を渡る奴隷船は海上で最も価値の高い標的でした。",
+      "tts": {
+        "text": "大西洋を渡る奴隷船は海上で最も価値の高い標的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "往路では貿易品を、帰路では奴隷化された人々を輸送しました。",
+      "text_markdown": "往路では貿易品を、帰路では奴隷化された人々を輸送しました。",
+      "tts": {
+        "text": "往路では貿易品を、帰路では奴隷化された人々を輸送しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "航海のどの段階でも攻撃に対して脆弱でした。",
+      "text_markdown": "航海のどの段階でも攻撃に対して脆弱でした。",
+      "tts": {
+        "text": "航海のどの段階でも攻撃に対して脆弱でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奴隷船を襲う海賊は貴重な積荷と船そのものの両方を手に入れることができました。",
+      "text_markdown": "奴隷船を襲う海賊は貴重な積荷と船そのものの両方を手に入れることができました。",
+      "tts": {
+        "text": "奴隷船を襲う海賊は貴重な積荷と船そのものの両方を手に入れることができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブ海がこれらの奴隷船の大半の目的地でした。",
+      "text_markdown": "カリブ海がこれらの奴隷船の大半の目的地でした。",
+      "tts": {
+        "text": "カリブ海がこれらの奴隷船の大半の目的地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャマイカ、バルバドス、イスパニョーラ島などの島々は奴隷労働で運営される広大な砂糖農園でした。",
+      "text_markdown": "ジャマイカ、バルバドス、イスパニョーラ島などの島々は奴隷労働で運営される広大な砂糖農園でした。",
+      "tts": {
+        "text": "ジャマイカ、バルバドス、イスパニョーラ島などの島々は奴隷労働で運営される広大な砂糖農園でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの農園が生み出す富は驚異的でした。",
+      "text_markdown": "これらの農園が生み出す富は驚異的でした。",
+      "tts": {
+        "text": "これらの農園が生み出す富は驚異的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ジャマイカだけでイギリスの北米植民地すべてを合わせたよりも多くの富を生み出していました。",
+      "text_markdown": "ジャマイカだけでイギリスの北米植民地すべてを合わせたよりも多くの富を生み出していました。",
+      "tts": {
+        "text": "ジャマイカだけでイギリスの北米植民地すべてを合わせたよりも多くの富を生み出していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーソロミュー・ロバーツが登場した時、海賊の黄金時代は終わりに近づいていました。",
+      "text_markdown": "バーソロミュー・ロバーツが登場した時、海賊の黄金時代は終わりに近づいていました。",
+      "tts": {
+        "text": "バーソロミュー・ロバーツが登場した時、海賊の黄金時代は終わりに近づいていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "黒ひげは1718年に殺されていました。",
+      "text_markdown": "黒ひげは1718年に殺されていました。",
+      "tts": {
+        "text": "黒ひげは千七百十八年に殺されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ナッソーの海賊共和国はウッズ・ロジャーズ総督によって壊滅させられていました。",
+      "text_markdown": "ナッソーの海賊共和国はウッズ・ロジャーズ総督によって壊滅させられていました。",
+      "tts": {
+        "text": "ナッソーの海賊共和国はウッズ・ロジャーズ総督によって壊滅させられていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "植民地政府はようやく海賊対策の海上パトロールに投資し始めていました。",
+      "text_markdown": "植民地政府はようやく海賊対策の海上パトロールに投資し始めていました。",
+      "tts": {
+        "text": "植民地政府はようやく海賊対策の海上パトロールに投資し始めていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし海は広大で、海軍は小規模でした。",
+      "text_markdown": "しかし海は広大で、海軍は小規模でした。",
+      "tts": {
+        "text": "しかし海は広大で、海軍は小規模でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王立海軍はすべての航路を同時に巡回することはできませんでした。",
+      "text_markdown": "王立海軍はすべての航路を同時に巡回することはできませんでした。",
+      "tts": {
+        "text": "王立海軍はすべての航路を同時に巡回することはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "狡猾で攻撃的な海賊は適切な海域でまだ処罰を受けずに活動できました。",
+      "text_markdown": "狡猾で攻撃的な海賊は適切な海域でまだ処罰を受けずに活動できました。",
+      "tts": {
+        "text": "狡猾で攻撃的な海賊は適切な海域でまだ処罰を受けずに活動できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "西アフリカの海岸は海上勢力の中心から遠く離れた、そのような場所の一つでした。",
+      "text_markdown": "西アフリカの海岸は海上勢力の中心から遠く離れた、そのような場所の一つでした。",
+      "tts": {
+        "text": "西アフリカの海岸は海上勢力の中心から遠く離れた、そのような場所の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカとの間を往来する商船はしばしば軽武装でした。",
+      "text_markdown": "アフリカとの間を往来する商船はしばしば軽武装でした。",
+      "tts": {
+        "text": "アフリカとの間を往来する商船はしばしば軽武装でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船主は大砲よりも貨物スペースに金を使うことを好みました。",
+      "text_markdown": "船主は大砲よりも貨物スペースに金を使うことを好みました。",
+      "tts": {
+        "text": "船主は大砲よりも貨物スペースに金を使うことを好みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "乗組員は少人数で給料も安く、しばしば虐待されていました。",
+      "text_markdown": "乗組員は少人数で給料も安く、しばしば虐待されていました。",
+      "tts": {
+        "text": "乗組員は少人数で給料も安く、しばしば虐待されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの船は攻撃する勇気のある海賊にとって容易な標的でした。",
+      "text_markdown": "これらの船は攻撃する勇気のある海賊にとって容易な標的でした。",
+      "tts": {
+        "text": "これらの船は攻撃する勇気のある海賊にとって容易な標的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王立海軍は西アフリカ沿岸に小さな戦隊を維持していました。",
+      "text_markdown": "王立海軍は西アフリカ沿岸に小さな戦隊を維持していました。",
+      "tts": {
+        "text": "王立海軍は西アフリカ沿岸に小さな戦隊を維持していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その主な任務は奴隷貿易の保護であり、海賊行為の鎮圧ではありませんでした。",
+      "text_markdown": "その主な任務は奴隷貿易の保護であり、海賊行為の鎮圧ではありませんでした。",
+      "tts": {
+        "text": "その主な任務は奴隷貿易の保護であり、海賊行為の鎮圧ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "軍艦はしばしば乗組員不足で整備状態も悪いものでした。",
+      "text_markdown": "軍艦はしばしば乗組員不足で整備状態も悪いものでした。",
+      "tts": {
+        "text": "軍艦はしばしば乗組員不足で整備状態も悪いものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "病気、特にマラリアと黄熱病がヨーロッパの船員を恐ろしい数で死に至らしめました。",
+      "text_markdown": "病気、特にマラリアと黄熱病がヨーロッパの船員を恐ろしい数で死に至らしめました。",
+      "tts": {
+        "text": "病気、特にマラリアと黄熱病がヨーロッパの船員を恐ろしい数で死に至らしめました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大西洋貿易全体において一般船員の待遇はひどいものでした。",
+      "text_markdown": "大西洋貿易全体において一般船員の待遇はひどいものでした。",
+      "tts": {
+        "text": "大西洋貿易全体において一般船員の待遇はひどいものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "規律は厳しく、食事は粗末で、給料は当てにならないものでした。",
+      "text_markdown": "規律は厳しく、食事は粗末で、給料は当てにならないものでした。",
+      "tts": {
+        "text": "規律は厳しく、食事は粗末で、給料は当てにならないものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの船員が航海を終える前に病気で亡くなりました。",
+      "text_markdown": "多くの船員が航海を終える前に病気で亡くなりました。",
+      "tts": {
+        "text": "多くの船員が航海を終える前に病気で亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの状況が一部の者を純粋な絶望から海賊行為へと駆り立てました。",
+      "text_markdown": "これらの状況が一部の者を純粋な絶望から海賊行為へと駆り立てました。",
+      "tts": {
+        "text": "これらの状況が一部の者を純粋な絶望から海賊行為へと駆り立てました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千七百二十年代初頭の大西洋は、このように莫大な富と恐ろしい苦しみの世界でした。",
+      "text_markdown": "千七百二十年代初頭の大西洋は、このように莫大な富と恐ろしい苦しみの世界でした。",
+      "tts": {
+        "text": "千七百二十年代初頭の大西洋は、このように莫大な富と恐ろしい苦しみの世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奴隷貿易は一部の者を途方もなく裕福にする一方で、何百万人もの人々を束縛に追いやりました。",
+      "text_markdown": "奴隷貿易は一部の者を途方もなく裕福にする一方で、何百万人もの人々を束縛に追いやりました。",
+      "tts": {
+        "text": "奴隷貿易は一部の者を途方もなく裕福にする一方で、何百万人もの人々を束縛に追いやりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海賊行為はこの不平等と残酷さの環境の中で繁栄しました。",
+      "text_markdown": "海賊行為はこの不平等と残酷さの環境の中で繁栄しました。",
+      "tts": {
+        "text": "海賊行為はこの不平等と残酷さの環境の中で繁栄しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "バーソロミュー・ロバーツはこの中で誰よりも成功を収めることになります。",
+      "text_markdown": "バーソロミュー・ロバーツはこの中で誰よりも成功を収めることになります。",
+      "tts": {
+        "text": "バーソロミュー・ロバーツはこの中で誰よりも成功を収めることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツが生まれたウェールズはこの時代、つつましい暮らしの土地でした。",
+      "text_markdown": "ロバーツが生まれたウェールズはこの時代、つつましい暮らしの土地でした。",
+      "tts": {
+        "text": "ロバーツが生まれたウェールズはこの時代、つつましい暮らしの土地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウェールズの人々の大半は農民、鉱夫、漁師として働いていました。",
+      "text_markdown": "ウェールズの人々の大半は農民、鉱夫、漁師として働いていました。",
+      "tts": {
+        "text": "ウェールズの人々の大半は農民、鉱夫、漁師として働いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海岸の近くに住む人々にとって、海は農村の貧困からの逃げ道を提供しました。",
+      "text_markdown": "海岸の近くに住む人々にとって、海は農村の貧困からの逃げ道を提供しました。",
+      "tts": {
+        "text": "海岸の近くに住む人々にとって、海は農村の貧困からの逃げ道を提供しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "奴隷海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くのウェールズ人男性が商船隊、王立海軍、またはその両方で勤務しました。",
+      "text_markdown": "多くのウェールズ人男性が商船隊、王立海軍、またはその両方で勤務しました。",
+      "tts": {
+        "text": "多くのウェールズ人男性が商船隊、王立海軍、またはその両方で勤務しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "不本意な海賊",
+      "text_markdown": "不本意な海賊"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーソロミュー・ロバーツは1682年にウェールズのペンブルックシャーにあるカスニュイズ・バッハ村で生まれました。",
+      "text_markdown": "バーソロミュー・ロバーツは1682年にウェールズのペンブルックシャーにあるカスニュイズ・バッハ村で生まれました。",
+      "tts": {
+        "text": "バーソロミュー・ロバーツは千六百八十二年にウェールズのペンブルックシャーにあるカスニュイズ・バッハ村で生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペンブルックシャーはウェールズの最南西端に位置し、アイルランド海に面しています。",
+      "text_markdown": "ペンブルックシャーはウェールズの最南西端に位置し、アイルランド海に面しています。",
+      "tts": {
+        "text": "ペンブルックシャーはウェールズの最南西端に位置し、アイルランド海に面しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "漁業と沿岸貿易が日常生活の中心であった海洋共同体でした。",
+      "text_markdown": "漁業と沿岸貿易が日常生活の中心であった海洋共同体でした。",
+      "tts": {
+        "text": "漁業と沿岸貿易が日常生活の中心であった海洋共同体でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツは海の見える場所で、海の音を聞きながら育ちました。",
+      "text_markdown": "ロバーツは海の見える場所で、海の音を聞きながら育ちました。",
+      "tts": {
+        "text": "ロバーツは海の見える場所で、海の音を聞きながら育ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの幼少期や家族についてはほとんど知られていません。",
+      "text_markdown": "ロバーツの幼少期や家族についてはほとんど知られていません。",
+      "tts": {
+        "text": "ロバーツの幼少期や家族についてはほとんど知られていません。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "沿岸の村の少年たちには一般的であったように、彼は幼い頃から海に出ました。",
+      "text_markdown": "沿岸の村の少年たちには一般的であったように、彼は幼い頃から海に出ました。",
+      "tts": {
+        "text": "沿岸の村の少年たちには一般的であったように、彼は幼い頃から海に出ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "35歳頃には、経験豊富で腕の立つ船乗りでした。",
+      "text_markdown": "35歳頃には、経験豊富で腕の立つ船乗りでした。",
+      "tts": {
+        "text": "三十五歳頃には、経験豊富で腕の立つ船乗りでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "星で航海し、乗組員を管理し、どんな天候でも船を操ることができました。",
+      "text_markdown": "星で航海し、乗組員を管理し、どんな天候でも船を操ることができました。",
+      "tts": {
+        "text": "星で航海し、乗組員を管理し、どんな天候でも船を操ることができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1719年初頭、ロバーツはプリンセス号という奴隷船で三等航海士を務めていました。",
+      "text_markdown": "1719年初頭、ロバーツはプリンセス号という奴隷船で三等航海士を務めていました。",
+      "tts": {
+        "text": "千七百十九年初頭、ロバーツはプリンセス号という奴隷船で三等航海士を務めていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "プリンセス号は現在のガーナの沖合に停泊し、奴隷の取引を行っていました。",
+      "text_markdown": "プリンセス号は現在のガーナの沖合に停泊し、奴隷の取引を行っていました。",
+      "tts": {
+        "text": "プリンセス号は現在のガーナの沖合に停泊し、奴隷の取引を行っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロバーツは船上で尊敬される有能で信頼できる士官でした。",
+      "text_markdown": "ロバーツは船上で尊敬される有能で信頼できる士官でした。",
+      "tts": {
+        "text": "ロバーツは船上で尊敬される有能で信頼できる士官でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この時点までの彼の経歴には、海賊になることを示唆するものは何もありませんでした。",
+      "text_markdown": "この時点までの彼の経歴には、海賊になることを示唆するものは何もありませんでした。",
+      "tts": {
+        "text": "この時点までの彼の経歴には、海賊になることを示唆するものは何もありませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊船長ハウエル・デイヴィスは西アフリカ沿岸を大きな成功を収めながら襲っていました。",
+      "text_markdown": "海賊船長ハウエル・デイヴィスは西アフリカ沿岸を大きな成功を収めながら襲っていました。",
+      "tts": {
+        "text": "海賊船長ハウエル・デイヴィスは西アフリカ沿岸を大きな成功を収めながら襲っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デイヴィスもウェールズ人で、その乗組員は志願者と強制的に海賊にさせられた者の混成でした。",
+      "text_markdown": "デイヴィスもウェールズ人で、その乗組員は志願者と強制的に海賊にさせられた者の混成でした。",
+      "tts": {
+        "text": "デイヴィスもウェールズ人で、その乗組員は志願者と強制的に海賊にさせられた者の混成でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "デイヴィスが停泊中のプリンセス号を発見すると、攻撃して捕獲しました。",
+      "text_markdown": "デイヴィスが停泊中のプリンセス号を発見すると、攻撃して捕獲しました。",
+      "tts": {
+        "text": "デイヴィスが停泊中のプリンセス号を発見すると、攻撃して捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツと残りの乗組員は捕虜になりました。",
+      "text_markdown": "ロバーツと残りの乗組員は捕虜になりました。",
+      "tts": {
+        "text": "ロバーツと残りの乗組員は捕虜になりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "デイヴィスはロバーツに海賊の仲間に加わるよう強制しました。",
+      "text_markdown": "デイヴィスはロバーツに海賊の仲間に加わるよう強制しました。",
+      "tts": {
+        "text": "デイヴィスはロバーツに海賊の仲間に加わるよう強制しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは熟練した船員を必要とする海賊の間では一般的な慣行でした。",
+      "text_markdown": "これは熟練した船員を必要とする海賊の間では一般的な慣行でした。",
+      "tts": {
+        "text": "これは熟練した船員を必要とする海賊の間では一般的な慣行でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロバーツは海賊行為を強いられたことに憤慨していたと伝えられています。",
+      "text_markdown": "ロバーツは海賊行為を強いられたことに憤慨していたと伝えられています。",
+      "tts": {
+        "text": "ロバーツは海賊行為を強いられたことに憤慨していたと伝えられています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし抵抗は無意味であり、命に関わる可能性があることを認識していました。",
+      "text_markdown": "しかし抵抗は無意味であり、命に関わる可能性があることを認識していました。",
+      "tts": {
+        "text": "しかし抵抗は無意味であり、命に関わる可能性があることを認識していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "不本意ながらも、ロバーツは海賊乗組員の中ですぐに頭角を現しました。",
+      "text_markdown": "不本意ながらも、ロバーツは海賊乗組員の中ですぐに頭角を現しました。",
+      "tts": {
+        "text": "不本意ながらも、ロバーツは海賊乗組員の中ですぐに頭角を現しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船仲間の大半よりも教育を受けていました。",
+      "text_markdown": "船仲間の大半よりも教育を受けていました。",
+      "tts": {
+        "text": "船仲間の大半よりも教育を受けていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "優れた航海士であり、船の管理の複雑さを理解していました。",
+      "text_markdown": "優れた航海士であり、船の管理の複雑さを理解していました。",
+      "tts": {
+        "text": "優れた航海士であり、船の管理の複雑さを理解していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊仲間は彼の能力とプレッシャーの下での冷静な判断力に気づきました。",
+      "text_markdown": "海賊仲間は彼の能力とプレッシャーの下での冷静な判断力に気づきました。",
+      "tts": {
+        "text": "海賊仲間は彼の能力とプレッシャーの下での冷静な判断力に気づきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツが乗組員に加わってわずか数週間後、ハウエル・デイヴィス船長が殺されました。",
+      "text_markdown": "ロバーツが乗組員に加わってわずか数週間後、ハウエル・デイヴィス船長が殺されました。",
+      "tts": {
+        "text": "ロバーツが乗組員に加わってわずか数週間後、ハウエル・デイヴィス船長が殺されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デイヴィスは西アフリカ沖のプリンシペ島に航海していました。",
+      "text_markdown": "デイヴィスは西アフリカ沖のプリンシペ島に航海していました。",
+      "tts": {
+        "text": "デイヴィスは西アフリカ沖のプリンシペ島に航海していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "島の総督を誘拐しようと策略を企てましたが、待ち伏せに遭いました。",
+      "text_markdown": "島の総督を誘拐しようと策略を企てましたが、待ち伏せに遭いました。",
+      "tts": {
+        "text": "島の総督を誘拐しようと策略を企てましたが、待ち伏せに遭いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "失敗した計画の最中にポルトガルの兵士がデイヴィスを射殺しました。",
+      "text_markdown": "失敗した計画の最中にポルトガルの兵士がデイヴィスを射殺しました。",
+      "tts": {
+        "text": "失敗した計画の最中にポルトガルの兵士がデイヴィスを射殺しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊の乗組員には今や新しい船長が必要でした。",
+      "text_markdown": "海賊の乗組員には今や新しい船長が必要でした。",
+      "tts": {
+        "text": "海賊の乗組員には今や新しい船長が必要でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊の伝統に従い、選挙が行われました。",
+      "text_markdown": "海賊の伝統に従い、選挙が行われました。",
+      "tts": {
+        "text": "海賊の伝統に従い、選挙が行われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数人の候補者が検討されましたが、乗組員はバーソロミュー・ロバーツを選びました。",
+      "text_markdown": "数人の候補者が検討されましたが、乗組員はバーソロミュー・ロバーツを選びました。",
+      "tts": {
+        "text": "数人の候補者が検討されましたが、乗組員はバーソロミュー・ロバーツを選びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊になってまだ約六週間しか経っていませんでした。",
+      "text_markdown": "海賊になってまだ約六週間しか経っていませんでした。",
+      "tts": {
+        "text": "海賊になってまだ約六週間しか経っていませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは船長の座を受け入れましたが、泥水に手を浸けてしまったからには海賊船長になるのもやむなしと語ったと伝えられています。",
+      "text_markdown": "ロバーツは船長の座を受け入れましたが、泥水に手を浸けてしまったからには海賊船長になるのもやむなしと語ったと伝えられています。",
+      "tts": {
+        "text": "ロバーツは船長の座を受け入れましたが、泥水に手を浸けてしまったからには海賊船長になるのもやむなしと語ったと伝えられています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "また、陽気で短い人生が自分のモットーになるだろうとも述べました。",
+      "text_markdown": "また、陽気で短い人生が自分のモットーになるだろうとも述べました。",
+      "tts": {
+        "text": "また、陽気で短い人生が自分のモットーになるだろうとも述べました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの言葉は海賊の歴史で最も有名な引用の一つとなりました。",
+      "text_markdown": "これらの言葉は海賊の歴史で最も有名な引用の一つとなりました。",
+      "tts": {
+        "text": "これらの言葉は海賊の歴史で最も有名な引用の一つとなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツは二ヶ月足らずで不本意な捕虜から選出された指導者へと変貌しました。",
+      "text_markdown": "ロバーツは二ヶ月足らずで不本意な捕虜から選出された指導者へと変貌しました。",
+      "tts": {
+        "text": "ロバーツは二ヶ月足らずで不本意な捕虜から選出された指導者へと変貌しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船長としての最初の行動はハウエル・デイヴィスの死への復讐でした。",
+      "text_markdown": "船長としての最初の行動はハウエル・デイヴィスの死への復讐でした。",
+      "tts": {
+        "text": "船長としての最初の行動はハウエル・デイヴィスの死への復讐でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロバーツは乗組員とともにプリンシペ島に戻りました。",
+      "text_markdown": "ロバーツは乗組員とともにプリンシペ島に戻りました。",
+      "tts": {
+        "text": "ロバーツは乗組員とともにプリンシペ島に戻りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "夜間にポルトガル人の居留地を攻撃し、建物を燃やし兵士を殺しました。",
+      "text_markdown": "夜間にポルトガル人の居留地を攻撃し、建物を燃やし兵士を殺しました。",
+      "tts": {
+        "text": "夜間にポルトガル人の居留地を攻撃し、建物を燃やし兵士を殺しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この迅速で容赦ない報復は、ロバーツを仲間を守る船長として確立しました。",
+      "text_markdown": "この迅速で容赦ない報復は、ロバーツを仲間を守る船長として確立しました。",
+      "tts": {
+        "text": "この迅速で容赦ない報復は、ロバーツを仲間を守る船長として確立しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その後ロバーツは海賊の乗組員を専門的な戦闘部隊に変えることに着手しました。",
+      "text_markdown": "その後ロバーツは海賊の乗組員を専門的な戦闘部隊に変えることに着手しました。",
+      "tts": {
+        "text": "その後ロバーツは海賊の乗組員を専門的な戦闘部隊に変えることに着手しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "すべての乗組員が署名しなければならない詳細な協定条項を起草しました。",
+      "text_markdown": "すべての乗組員が署名しなければならない詳細な協定条項を起草しました。",
+      "tts": {
+        "text": "すべての乗組員が署名しなければならない詳細な協定条項を起草しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの条項は略奪品の分配から船上での行動規範まですべてを網羅していました。",
+      "text_markdown": "これらの条項は略奪品の分配から船上での行動規範まですべてを網羅していました。",
+      "tts": {
+        "text": "これらの条項は略奪品の分配から船上での行動規範まですべてを網羅していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これまで書かれた中で最も包括的な海賊規約の一つでした。",
+      "text_markdown": "これまで書かれた中で最も包括的な海賊規約の一つでした。",
+      "tts": {
+        "text": "これまで書かれた中で最も包括的な海賊規約の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの条項はすべての重要な決定において各人に投票権を与えました。",
+      "text_markdown": "ロバーツの条項はすべての重要な決定において各人に投票権を与えました。",
+      "tts": {
+        "text": "ロバーツの条項はすべての重要な決定において各人に投票権を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船長と補給長は略奪品のより大きな取り分を受け取りましたが、差は控えめでした。",
+      "text_markdown": "船長と補給長は略奪品のより大きな取り分を受け取りましたが、差は控えめでした。",
+      "tts": {
+        "text": "船長と補給長は略奪品のより大きな取り分を受け取りましたが、差は控えめでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "音楽家には日曜日の休みが与えられました。当時としては驚くほど文明的な規定でした。",
+      "text_markdown": "音楽家には日曜日の休みが与えられました。当時としては驚くほど文明的な規定でした。",
+      "tts": {
+        "text": "音楽家には日曜日の休みが与えられました。当時としては驚くほど文明的な規定でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "不本意な海賊",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "戦闘中に脱走した者は死刑または無人島への置き去りで罰せられました。",
+      "text_markdown": "戦闘中に脱走した者は死刑または無人島への置き去りで罰せられました。",
+      "tts": {
+        "text": "戦闘中に脱走した者は死刑または無人島への置き去りで罰せられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "黒い海賊の遠征",
+      "text_markdown": "黒い海賊の遠征"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの指揮の下、海賊の乗組員は海洋史上最も壊滅的な作戦の一つを開始しました。",
+      "text_markdown": "ロバーツの指揮の下、海賊の乗組員は海洋史上最も壊滅的な作戦の一つを開始しました。",
+      "tts": {
+        "text": "ロバーツの指揮の下、海賊の乗組員は海洋史上最も壊滅的な作戦の一つを開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アフリカの海岸からブラジルへ、次にカリブ海を北上し、再びアフリカへと航海しました。",
+      "text_markdown": "アフリカの海岸からブラジルへ、次にカリブ海を北上し、再びアフリカへと航海しました。",
+      "tts": {
+        "text": "アフリカの海岸からブラジルへ、次にカリブ海を北上し、再びアフリカへと航海しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "行く先々で驚くべき速さと効率で船を捕獲しました。",
+      "text_markdown": "行く先々で驚くべき速さと効率で船を捕獲しました。",
+      "tts": {
+        "text": "行く先々で驚くべき速さと効率で船を捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツには獲物を見つけ危険を避ける本能があるかのようでした。",
+      "text_markdown": "ロバーツには獲物を見つけ危険を避ける本能があるかのようでした。",
+      "tts": {
+        "text": "ロバーツには獲物を見つけ危険を避ける本能があるかのようでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツはまず大西洋を横断してブラジルの海岸に向かいました。",
+      "text_markdown": "ロバーツはまず大西洋を横断してブラジルの海岸に向かいました。",
+      "tts": {
+        "text": "ロバーツはまず大西洋を横断してブラジルの海岸に向かいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこでリスボンへ出発準備中のポルトガルの宝船団を発見しました。",
+      "text_markdown": "そこでリスボンへ出発準備中のポルトガルの宝船団を発見しました。",
+      "tts": {
+        "text": "そこでリスボンへ出発準備中のポルトガルの宝船団を発見しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船団は2隻の軍艦に護衛された42隻の商船で構成されていました。",
+      "text_markdown": "船団は2隻の軍艦に護衛された42隻の商船で構成されていました。",
+      "tts": {
+        "text": "船団は二隻の軍艦に護衛された四十二隻の商船で構成されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "信じられないほど裕福ですが、厳重に防衛された標的でした。",
+      "text_markdown": "信じられないほど裕福ですが、厳重に防衛された標的でした。",
+      "tts": {
+        "text": "信じられないほど裕福ですが、厳重に防衛された標的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは闇に紛れて大胆に船団に乗り込みました。",
+      "text_markdown": "ロバーツは闇に紛れて大胆に船団に乗り込みました。",
+      "tts": {
+        "text": "ロバーツは闇に紛れて大胆に船団に乗り込みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も裕福な船を特定し、護衛艦が対応する前に捕獲しました。",
+      "text_markdown": "最も裕福な船を特定し、護衛艦が対応する前に捕獲しました。",
+      "tts": {
+        "text": "最も裕福な船を特定し、護衛艦が対応する前に捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕獲された船には金、砂糖、タバコ、そしてポルトガル国王に贈るダイヤモンド付きの十字架が積まれていました。",
+      "text_markdown": "捕獲された船には金、砂糖、タバコ、そしてポルトガル国王に贈るダイヤモンド付きの十字架が積まれていました。",
+      "tts": {
+        "text": "捕獲された船には金、砂糖、タバコ、そしてポルトガル国王に贈るダイヤモンド付きの十字架が積まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大胆な襲撃からの壮観な戦利品でした。",
+      "text_markdown": "大胆な襲撃からの壮観な戦利品でした。",
+      "tts": {
+        "text": "大胆な襲撃からの壮観な戦利品でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブラジルからロバーツは北のカリブ海へ航海しました。",
+      "text_markdown": "ブラジルからロバーツは北のカリブ海へ航海しました。",
+      "tts": {
+        "text": "ブラジルからロバーツは北のカリブ海へ航海しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "島々一帯の航路を襲撃し、次々と船を捕獲しました。",
+      "text_markdown": "島々一帯の航路を襲撃し、次々と船を捕獲しました。",
+      "tts": {
+        "text": "島々一帯の航路を襲撃し、次々と船を捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の評判は獲物を奪うたびに高まりました。",
+      "text_markdown": "彼の評判は獲物を奪うたびに高まりました。",
+      "tts": {
+        "text": "彼の評判は獲物を奪うたびに高まりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カリブ海航路の商船船長たちはロバーツの旗を見ることを恐れ始めました。",
+      "text_markdown": "カリブ海航路の商船船長たちはロバーツの旗を見ることを恐れ始めました。",
+      "tts": {
+        "text": "カリブ海航路の商船船長たちはロバーツの旗を見ることを恐れ始めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは独自の海賊旗をデザインし、いくつかの異なる旗を掲げました。",
+      "text_markdown": "ロバーツは独自の海賊旗をデザインし、いくつかの異なる旗を掲げました。",
+      "tts": {
+        "text": "ロバーツは独自の海賊旗をデザインし、いくつかの異なる旗を掲げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一つはバルバドスとマルティニクの総督を表す二つの頭蓋骨の上に立つ彼の姿を描いていました。",
+      "text_markdown": "一つはバルバドスとマルティニクの総督を表す二つの頭蓋骨の上に立つ彼の姿を描いていました。",
+      "tts": {
+        "text": "一つはバルバドスとマルティニクの総督を表す二つの頭蓋骨の上に立つ彼の姿を描いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼を追い詰めようとしたこの二つの植民地に対して個人的な恨みを抱いていました。",
+      "text_markdown": "彼を追い詰めようとしたこの二つの植民地に対して個人的な恨みを抱いていました。",
+      "tts": {
+        "text": "彼を追い詰めようとしたこの二つの植民地に対して個人的な恨みを抱いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の旗は特定の敵に向けた反抗のメッセージでした。",
+      "text_markdown": "彼の旗は特定の敵に向けた反抗のメッセージでした。",
+      "tts": {
+        "text": "彼の旗は特定の敵に向けた反抗のメッセージでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツのカリブ海での襲撃は植民地の商業に壊滅的な打撃を与えました。",
+      "text_markdown": "ロバーツのカリブ海での襲撃は植民地の商業に壊滅的な打撃を与えました。",
+      "tts": {
+        "text": "ロバーツのカリブ海での襲撃は植民地の商業に壊滅的な打撃を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "わずか三日間で、ニューファンドランドのトレパシー港で15隻の船を捕獲しました。",
+      "text_markdown": "わずか三日間で、ニューファンドランドのトレパシー港で15隻の船を捕獲しました。",
+      "tts": {
+        "text": "わずか三日間で、ニューファンドランドのトレパシー港で十五隻の船を捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "また多数の漁船や港湾施設も破壊しました。",
+      "text_markdown": "また多数の漁船や港湾施設も破壊しました。",
+      "tts": {
+        "text": "また多数の漁船や港湾施設も破壊しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "トレパシーへの攻撃は、大西洋のどの港も彼から安全ではないことを示しました。",
+      "text_markdown": "トレパシーへの攻撃は、大西洋のどの港も彼から安全ではないことを示しました。",
+      "tts": {
+        "text": "トレパシーへの攻撃は、大西洋のどの港も彼から安全ではないことを示しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは個人的な習慣において大半の海賊とは異なっていました。",
+      "text_markdown": "ロバーツは個人的な習慣において大半の海賊とは異なっていました。",
+      "tts": {
+        "text": "ロバーツは個人的な習慣において大半の海賊とは異なっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "豪華な深紅のウェストコートとズボンを身に着け、エレガントに装いました。",
+      "text_markdown": "豪華な深紅のウェストコートとズボンを身に着け、エレガントに装いました。",
+      "tts": {
+        "text": "豪華な深紅のウェストコートとズボンを身に着け、エレガントに装いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "赤い羽根の付いた大きな帽子をかぶり、首にはダイヤモンドの十字架を下げていました。",
+      "text_markdown": "赤い羽根の付いた大きな帽子をかぶり、首にはダイヤモンドの十字架を下げていました。",
+      "tts": {
+        "text": "赤い羽根の付いた大きな帽子をかぶり、首にはダイヤモンドの十字架を下げていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その風貌は荒くれ者の船乗りではなく、紳士のものでした。",
+      "text_markdown": "その風貌は荒くれ者の船乗りではなく、紳士のものでした。",
+      "tts": {
+        "text": "その風貌は荒くれ者の船乗りではなく、紳士のものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も注目すべきは、ロバーツがラム酒よりも紅茶を好んだことです。",
+      "text_markdown": "最も注目すべきは、ロバーツがラム酒よりも紅茶を好んだことです。",
+      "tts": {
+        "text": "最も注目すべきは、ロバーツがラム酒よりも紅茶を好んだことです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大半の船員が大酒を飲んだ時代に、ロバーツは節度ある飲酒家でした。",
+      "text_markdown": "大半の船員が大酒を飲んだ時代に、ロバーツは節度ある飲酒家でした。",
+      "tts": {
+        "text": "大半の船員が大酒を飲んだ時代に、ロバーツは節度ある飲酒家でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "酔いは判断力を損ない、船を危険にさらすと信じていました。",
+      "text_markdown": "酔いは判断力を損ない、船を危険にさらすと信じていました。",
+      "tts": {
+        "text": "酔いは判断力を損ない、船を危険にさらすと信じていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の海賊規約には勤務時間中の飲酒に関する厳格な規則が含まれていました。",
+      "text_markdown": "彼の海賊規約には勤務時間中の飲酒に関する厳格な規則が含まれていました。",
+      "tts": {
+        "text": "彼の海賊規約には勤務時間中の飲酒に関する厳格な規則が含まれていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツはまた独自の方法で深く信仰心がありました。",
+      "text_markdown": "ロバーツはまた独自の方法で深く信仰心がありました。",
+      "tts": {
+        "text": "ロバーツはまた独自の方法で深く信仰心がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船上で定期的な礼拝を行い、賛美歌を演奏する音楽家を雇っていました。",
+      "text_markdown": "船上で定期的な礼拝を行い、賛美歌を演奏する音楽家を雇っていました。",
+      "tts": {
+        "text": "船上で定期的な礼拝を行い、賛美歌を演奏する音楽家を雇っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "安息日を守り、乗組員の間に道徳的秩序の体裁を維持しようとしました。",
+      "text_markdown": "安息日を守り、乗組員の間に道徳的秩序の体裁を維持しようとしました。",
+      "tts": {
+        "text": "安息日を守り、乗組員の間に道徳的秩序の体裁を維持しようとしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この敬虔さと海賊行為の組み合わせは同時代の人々には深く矛盾に映りました。",
+      "text_markdown": "この敬虔さと海賊行為の組み合わせは同時代の人々には深く矛盾に映りました。",
+      "tts": {
+        "text": "この敬虔さと海賊行為の組み合わせは同時代の人々には深く矛盾に映りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の航海技術は並外れたものでした。",
+      "text_markdown": "彼の航海技術は並外れたものでした。",
+      "tts": {
+        "text": "彼の航海技術は並外れたものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大西洋を何度も横断し、常に目的地に正確に到着しました。",
+      "text_markdown": "大西洋を何度も横断し、常に目的地に正確に到着しました。",
+      "tts": {
+        "text": "大西洋を何度も横断し、常に目的地に正確に到着しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "基本的な計器だけで驚くべき正確さで位置を計算できました。",
+      "text_markdown": "基本的な計器だけで驚くべき正確さで位置を計算できました。",
+      "tts": {
+        "text": "基本的な計器だけで驚くべき正確さで位置を計算できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くの船長が海で迷う時代に、ロバーツは常に自分がどこにいるか正確に知っていました。",
+      "text_markdown": "多くの船長が海で迷う時代に、ロバーツは常に自分がどこにいるか正確に知っていました。",
+      "tts": {
+        "text": "多くの船長が海で迷う時代に、ロバーツは常に自分がどこにいるか正確に知っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは船上で厳格な規律を維持しました。",
+      "text_markdown": "ロバーツは船上で厳格な規律を維持しました。",
+      "tts": {
+        "text": "ロバーツは船上で厳格な規律を維持しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乗組員間の喧嘩は甲板下では禁止されていました。",
+      "text_markdown": "乗組員間の喧嘩は甲板下では禁止されていました。",
+      "tts": {
+        "text": "乗組員間の喧嘩は甲板下では禁止されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "紛争は陸上で、必要であれば正式な決闘で解決されました。",
+      "text_markdown": "紛争は陸上で、必要であれば正式な決闘で解決されました。",
+      "tts": {
+        "text": "紛争は陸上で、必要であれば正式な決闘で解決されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "各人は常に武器を清潔にし、すぐに使える状態に保つ義務がありました。",
+      "text_markdown": "各人は常に武器を清潔にし、すぐに使える状態に保つ義務がありました。",
+      "tts": {
+        "text": "各人は常に武器を清潔にし、すぐに使える状態に保つ義務がありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "より多くの船を捕獲するにつれて艦隊は成長しました。",
+      "text_markdown": "より多くの船を捕獲するにつれて艦隊は成長しました。",
+      "tts": {
+        "text": "より多くの船を捕獲するにつれて艦隊は成長しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "さまざまな時点で3隻か4隻の船を同時に指揮していました。",
+      "text_markdown": "さまざまな時点で3隻か4隻の船を同時に指揮していました。",
+      "tts": {
+        "text": "さまざまな時点で三隻か四隻の船を同時に指揮していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "旗艦はロイヤル・フォーチュンと命名した大型軍艦でした。",
+      "text_markdown": "旗艦はロイヤル・フォーチュンと命名した大型軍艦でした。",
+      "tts": {
+        "text": "旗艦はロイヤル・フォーチュンと命名した大型軍艦でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "経歴を通じてこの名前を複数の船に使い、常に最も強力な船に移しました。",
+      "text_markdown": "経歴を通じてこの名前を複数の船に使い、常に最も強力な船に移しました。",
+      "tts": {
+        "text": "経歴を通じてこの名前を複数の船に使い、常に最も強力な船に移しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは抵抗する者に対して容赦がありませんでした。",
+      "text_markdown": "ロバーツは抵抗する者に対して容赦がありませんでした。",
+      "tts": {
+        "text": "ロバーツは抵抗する者に対して容赦がありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "平和的に降伏した船は通常妥当に扱われ、略奪後に解放されました。",
+      "text_markdown": "平和的に降伏した船は通常妥当に扱われ、略奪後に解放されました。",
+      "tts": {
+        "text": "平和的に降伏した船は通常妥当に扱われ、略奪後に解放されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "反撃した船には慈悲が与えられませんでした。",
+      "text_markdown": "反撃した船には慈悲が与えられませんでした。",
+      "tts": {
+        "text": "反撃した船には慈悲が与えられませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツは船を燃やし、時には抵抗した船の乗組員を罰しました。",
+      "text_markdown": "ロバーツは船を燃やし、時には抵抗した船の乗組員を罰しました。",
+      "tts": {
+        "text": "ロバーツは船を燃やし、時には抵抗した船の乗組員を罰しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720年末までにロバーツは200隻をはるかに超える船を捕獲していました。",
+      "text_markdown": "1720年末までにロバーツは200隻をはるかに超える船を捕獲していました。",
+      "tts": {
+        "text": "千七百二十年末までにロバーツは二百隻をはるかに超える船を捕獲していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名はニューファンドランドからブラジルまで、西アフリカからカリブ海まで恐れられました。",
+      "text_markdown": "彼の名はニューファンドランドからブラジルまで、西アフリカからカリブ海まで恐れられました。",
+      "tts": {
+        "text": "彼の名はニューファンドランドからブラジルまで、西アフリカからカリブ海まで恐れられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黄金時代の他のどの海賊も彼の記録に近づくことはありませんでした。",
+      "text_markdown": "黄金時代の他のどの海賊も彼の記録に近づくことはありませんでした。",
+      "tts": {
+        "text": "黄金時代の他のどの海賊も彼の記録に近づくことはありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "黒い海賊の遠征",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あらゆる点で、これまでに航海した海賊の中で最も成功した人物でした。",
+      "text_markdown": "あらゆる点で、これまでに航海した海賊の中で最も成功した人物でした。",
+      "tts": {
+        "text": "あらゆる点で、これまでに航海した海賊の中で最も成功した人物でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊の掟",
+      "text_markdown": "海賊の掟"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "権力の絶頂期、バーソロミュー・ロバーツは重武装の船の艦隊と数百人の忠実な海賊を指揮していました。",
+      "text_markdown": "権力の絶頂期、バーソロミュー・ロバーツは重武装の船の艦隊と数百人の忠実な海賊を指揮していました。",
+      "tts": {
+        "text": "権力の絶頂期、バーソロミュー・ロバーツは重武装の船の艦隊と数百人の忠実な海賊を指揮していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その組織運営は当時のどの船にとっても、海賊であろうとなかろうと注目に値する水準でした。",
+      "text_markdown": "その組織運営は当時のどの船にとっても、海賊であろうとなかろうと注目に値する水準でした。",
+      "tts": {
+        "text": "その組織運営は当時のどの船にとっても、海賊であろうとなかろうと注目に値する水準でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この組織の鍵は彼の有名な海賊規約、すなわち協定条項でした。",
+      "text_markdown": "この組織の鍵は彼の有名な海賊規約、すなわち協定条項でした。",
+      "tts": {
+        "text": "この組織の鍵は彼の有名な海賊規約、すなわち協定条項でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの条項は乗組員全員が同意した真の社会契約でした。",
+      "text_markdown": "これらの条項は乗組員全員が同意した真の社会契約でした。",
+      "tts": {
+        "text": "これらの条項は乗組員全員が同意した真の社会契約でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "条項は各人が重要事項において投票権を持つと規定していました。",
+      "text_markdown": "条項は各人が重要事項において投票権を持つと規定していました。",
+      "tts": {
+        "text": "条項は各人が重要事項において投票権を持つと規定していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船長は乗組員によって選出され、乗組員によって解任されることもできました。",
+      "text_markdown": "船長は乗組員によって選出され、乗組員によって解任されることもできました。",
+      "tts": {
+        "text": "船長は乗組員によって選出され、乗組員によって解任されることもできました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この民主的原則は海賊文化の中心にあり、王立海軍の暴君的な規律とは鮮明な対照をなしていました。",
+      "text_markdown": "この民主的原則は海賊文化の中心にあり、王立海軍の暴君的な規律とは鮮明な対照をなしていました。",
+      "tts": {
+        "text": "この民主的原則は海賊文化の中心にあり、王立海軍の暴君的な規律とは鮮明な対照をなしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツは力ではなく同意によって統治しました。",
+      "text_markdown": "ロバーツは力ではなく同意によって統治しました。",
+      "tts": {
+        "text": "ロバーツは力ではなく同意によって統治しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "略奪品の分配は慎重に規制されていました。",
+      "text_markdown": "略奪品の分配は慎重に規制されていました。",
+      "tts": {
+        "text": "略奪品の分配は慎重に規制されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船長はどの獲物からも2株を受け取り、補給長は1株半を受け取りました。",
+      "text_markdown": "船長はどの獲物からも2株を受け取り、補給長は1株半を受け取りました。",
+      "tts": {
+        "text": "船長はどの獲物からも二株を受け取り、補給長は一株半を受け取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一般の乗組員はそれぞれ一株を受け取りました。",
+      "text_markdown": "一般の乗組員はそれぞれ一株を受け取りました。",
+      "tts": {
+        "text": "一般の乗組員はそれぞれ一株を受け取りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これは船長が大部分を取る商船や軍艦での分配よりもはるかに公平でした。",
+      "text_markdown": "これは船長が大部分を取る商船や軍艦での分配よりもはるかに公平でした。",
+      "tts": {
+        "text": "これは船長が大部分を取る商船や軍艦での分配よりもはるかに公平でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "条項には障害補償の規定が含まれていました。",
+      "text_markdown": "条項には障害補償の規定が含まれていました。",
+      "tts": {
+        "text": "条項には障害補償の規定が含まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦闘で右腕を失った海賊は600枚の銀貨を受け取る権利がありました。",
+      "text_markdown": "戦闘で右腕を失った海賊は600枚の銀貨を受け取る権利がありました。",
+      "tts": {
+        "text": "戦闘で右腕を失った海賊は六百枚の銀貨を受け取る権利がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "軽傷には比例して少ない支払いがなされました。",
+      "text_markdown": "軽傷には比例して少ない支払いがなされました。",
+      "tts": {
+        "text": "軽傷には比例して少ない支払いがなされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これは政府が類似の政策を採用する何世紀も前の、労働者補償の初期の形でした。",
+      "text_markdown": "これは政府が類似の政策を採用する何世紀も前の、労働者補償の初期の形でした。",
+      "tts": {
+        "text": "これは政府が類似の政策を採用する何世紀も前の、労働者補償の初期の形でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船上でカードやサイコロを使った金銭の賭博は禁止されていました。",
+      "text_markdown": "船上でカードやサイコロを使った金銭の賭博は禁止されていました。",
+      "tts": {
+        "text": "船上でカードやサイコロを使った金銭の賭博は禁止されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロバーツは賭博が喧嘩を引き起こし、乗組員の団結を蝕むと信じていました。",
+      "text_markdown": "ロバーツは賭博が喧嘩を引き起こし、乗組員の団結を蝕むと信じていました。",
+      "tts": {
+        "text": "ロバーツは賭博が喧嘩を引き起こし、乗組員の団結を蝕むと信じていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "明かりとロウソクは夜八時までに消さなければなりませんでした。",
+      "text_markdown": "明かりとロウソクは夜八時までに消さなければなりませんでした。",
+      "tts": {
+        "text": "明かりとロウソクは夜八時までに消さなければなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その時刻以降に飲みたい者は開放甲板で飲まなければなりませんでした。",
+      "text_markdown": "その時刻以降に飲みたい者は開放甲板で飲まなければなりませんでした。",
+      "tts": {
+        "text": "その時刻以降に飲みたい者は開放甲板で飲まなければなりませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "船上に女性は許されませんでした。",
+      "text_markdown": "船上に女性は許されませんでした。",
+      "tts": {
+        "text": "船上に女性は許されませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロバーツは女性の存在が乗組員間の嫉妬と喧嘩を引き起こすことを恐れました。",
+      "text_markdown": "ロバーツは女性の存在が乗組員間の嫉妬と喧嘩を引き起こすことを恐れました。",
+      "tts": {
+        "text": "ロバーツは女性の存在が乗組員間の嫉妬と喧嘩を引き起こすことを恐れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "変装して女性を船に連れ込んだことが発覚した者は死刑に処されました。",
+      "text_markdown": "変装して女性を船に連れ込んだことが発覚した者は死刑に処されました。",
+      "tts": {
+        "text": "変装して女性を船に連れ込んだことが発覚した者は死刑に処されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この規則はロバーツの指揮期間を通じて厳格に施行されました。",
+      "text_markdown": "この規則はロバーツの指揮期間を通じて厳格に施行されました。",
+      "tts": {
+        "text": "この規則はロバーツの指揮期間を通じて厳格に施行されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの規約は衛生と船の維持管理の問題も取り扱っていました。",
+      "text_markdown": "ロバーツの規約は衛生と船の維持管理の問題も取り扱っていました。",
+      "tts": {
+        "text": "ロバーツの規約は衛生と船の維持管理の問題も取り扱っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "各人は自分の武器を使用可能な状態に維持する責任がありました。",
+      "text_markdown": "各人は自分の武器を使用可能な状態に維持する責任がありました。",
+      "tts": {
+        "text": "各人は自分の武器を使用可能な状態に維持する責任がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拳銃とカトラスの手入れを怠ることは罰せられる違反でした。",
+      "text_markdown": "拳銃とカトラスの手入れを怠ることは罰せられる違反でした。",
+      "tts": {
+        "text": "拳銃とカトラスの手入れを怠ることは罰せられる違反でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "汚い武器が生死を分ける可能性があった時代に、これは実用的な規則でした。",
+      "text_markdown": "汚い武器が生死を分ける可能性があった時代に、これは実用的な規則でした。",
+      "tts": {
+        "text": "汚い武器が生死を分ける可能性があった時代に、これは実用的な規則でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "補給長は船長の権力に対する制約として機能しました。",
+      "text_markdown": "補給長は船長の権力に対する制約として機能しました。",
+      "tts": {
+        "text": "補給長は船長の権力に対する制約として機能しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一般乗組員の利益を代表しました。",
+      "text_markdown": "一般乗組員の利益を代表しました。",
+      "tts": {
+        "text": "一般乗組員の利益を代表しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船長と乗組員間の紛争は補給長が仲裁しました。",
+      "text_markdown": "船長と乗組員間の紛争は補給長が仲裁しました。",
+      "tts": {
+        "text": "船長と乗組員間の紛争は補給長が仲裁しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この権限共有の制度は商船や軍艦を苦しめていた種類の暴政を防ぎました。",
+      "text_markdown": "この権限共有の制度は商船や軍艦を苦しめていた種類の暴政を防ぎました。",
+      "tts": {
+        "text": "この権限共有の制度は商船や軍艦を苦しめていた種類の暴政を防ぎました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの旗艦ロイヤル・フォーチュンは海上で最も強力な海賊船の一つでした。",
+      "text_markdown": "ロバーツの旗艦ロイヤル・フォーチュンは海上で最も強力な海賊船の一つでした。",
+      "tts": {
+        "text": "ロバーツの旗艦ロイヤル・フォーチュンは海上で最も強力な海賊船の一つでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "40門の大砲と約150人の乗組員を擁していました。",
+      "text_markdown": "40門の大砲と約150人の乗組員を擁していました。",
+      "tts": {
+        "text": "四十門の大砲と約百五十人の乗組員を擁していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船は高速で、整備が行き届き、重武装でした。",
+      "text_markdown": "船は高速で、整備が行き届き、重武装でした。",
+      "tts": {
+        "text": "船は高速で、整備が行き届き、重武装でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大半の商船を火力で圧倒し、大半の軍艦を速度で凌駕できました。",
+      "text_markdown": "大半の商船を火力で圧倒し、大半の軍艦を速度で凌駕できました。",
+      "tts": {
+        "text": "大半の商船を火力で圧倒し、大半の軍艦を速度で凌駕できました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツ自身は船尾楼上で堂々とした風采を放っていました。",
+      "text_markdown": "ロバーツ自身は船尾楼上で堂々とした風采を放っていました。",
+      "tts": {
+        "text": "ロバーツ自身は船尾楼上で堂々とした風采を放っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "港でも戦闘でも深紅のウェストコート、ダイヤモンドの十字架、羽根飾りの帽子を身に着けていました。",
+      "text_markdown": "港でも戦闘でも深紅のウェストコート、ダイヤモンドの十字架、羽根飾りの帽子を身に着けていました。",
+      "tts": {
+        "text": "港でも戦闘でも深紅のウェストコート、ダイヤモンドの十字架、羽根飾りの帽子を身に着けていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "肩に絹の肩掛けで二対の拳銃をぶら下げていました。",
+      "text_markdown": "肩に絹の肩掛けで二対の拳銃をぶら下げていました。",
+      "tts": {
+        "text": "肩に絹の肩掛けで二対の拳銃をぶら下げていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の個人的なスタイルは伝説の一部であり、乗組員に対する権威を維持するのに役立ちました。",
+      "text_markdown": "彼の個人的なスタイルは伝説の一部であり、乗組員に対する権威を維持するのに役立ちました。",
+      "tts": {
+        "text": "彼の個人的なスタイルは伝説の一部であり、乗組員に対する権威を維持するのに役立ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "成功にもかかわらず、ロバーツは自分の経歴が永遠に続くことはないと認識していました。",
+      "text_markdown": "成功にもかかわらず、ロバーツは自分の経歴が永遠に続くことはないと認識していました。",
+      "tts": {
+        "text": "成功にもかかわらず、ロバーツは自分の経歴が永遠に続くことはないと認識していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王立海軍がアフリカ沿岸の巡回を増やしていることを知っていました。",
+      "text_markdown": "王立海軍がアフリカ沿岸の巡回を増やしていることを知っていました。",
+      "tts": {
+        "text": "王立海軍がアフリカ沿岸の巡回を増やしていることを知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "また、捕獲のたびに政府が自分を止めようとする圧力が高まることも知っていました。",
+      "text_markdown": "また、捕獲のたびに政府が自分を止めようとする圧力が高まることも知っていました。",
+      "tts": {
+        "text": "また、捕獲のたびに政府が自分を止めようとする圧力が高まることも知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし引退する意思は一切示しませんでした。",
+      "text_markdown": "しかし引退する意思は一切示しませんでした。",
+      "tts": {
+        "text": "しかし引退する意思は一切示しませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは千七百二十年代初頭に西アフリカ沿岸に戻りました。",
+      "text_markdown": "ロバーツは千七百二十年代初頭に西アフリカ沿岸に戻りました。",
+      "tts": {
+        "text": "ロバーツは千七百二十年代初頭に西アフリカ沿岸に戻りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ここはカリブ海の増大する海軍の存在から遠く離れた、最も生産性の高い狩り場でした。",
+      "text_markdown": "ここはカリブ海の増大する海軍の存在から遠く離れた、最も生産性の高い狩り場でした。",
+      "tts": {
+        "text": "ここはカリブ海の増大する海軍の存在から遠く離れた、最も生産性の高い狩り場でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "セネガルからギニア湾まで海岸に沿って次々と船を捕獲しました。",
+      "text_markdown": "セネガルからギニア湾まで海岸に沿って次々と船を捕獲しました。",
+      "tts": {
+        "text": "セネガルからギニア湾まで海岸に沿って次々と船を捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奴隷貿易と金の貿易がこれらの海域を抗いがたいほど豊かにしていました。",
+      "text_markdown": "奴隷貿易と金の貿易がこれらの海域を抗いがたいほど豊かにしていました。",
+      "tts": {
+        "text": "奴隷貿易と金の貿易がこれらの海域を抗いがたいほど豊かにしていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカ沿岸における彼の存在はヨーロッパの商業にとって壊滅的でした。",
+      "text_markdown": "アフリカ沿岸における彼の存在はヨーロッパの商業にとって壊滅的でした。",
+      "tts": {
+        "text": "アフリカ沿岸における彼の存在はヨーロッパの商業にとって壊滅的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西アフリカで貿易する船の保険料率は劇的に上昇しました。",
+      "text_markdown": "西アフリカで貿易する船の保険料率は劇的に上昇しました。",
+      "tts": {
+        "text": "西アフリカで貿易する船の保険料率は劇的に上昇しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部の商船船長は海軍の護衛なしでは出航を拒否しました。",
+      "text_markdown": "一部の商船船長は海軍の護衛なしでは出航を拒否しました。",
+      "tts": {
+        "text": "一部の商船船長は海軍の護衛なしでは出航を拒否しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "海賊の掟",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツは単独で世界で最も利益の上がる貿易路の一つを混乱させていました。",
+      "text_markdown": "ロバーツは単独で世界で最も利益の上がる貿易路の一つを混乱させていました。",
+      "tts": {
+        "text": "ロバーツは単独で世界で最も利益の上がる貿易路の一つを混乱させていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ロペス岬での死",
+      "text_markdown": "ロペス岬での死"
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "王立海軍はバーソロミュー・ロバーツを追跡するためにチャロナー・オグル艦長をHMSスワロー号で派遣しました。",
+      "text_markdown": "王立海軍はバーソロミュー・ロバーツを追跡するためにチャロナー・オグル艦長をHMSスワロー号で派遣しました。",
+      "tts": {
+        "text": "王立海軍はバーソロミュー・ロバーツを追跡するためにチャロナー・オグル艦長をHMSスワロー号で派遣しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オグルは有能で決意の固い士官でした。",
+      "text_markdown": "オグルは有能で決意の固い士官でした。",
+      "tts": {
+        "text": "オグルは有能で決意の固い士官でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の船は専門的な乗組員を持つ五等軍艦でした。",
+      "text_markdown": "彼の船は専門的な乗組員を持つ五等軍艦でした。",
+      "tts": {
+        "text": "彼の船は専門的な乗組員を持つ五等軍艦でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツの恐怖の支配を終わらせるという明確な命令を受けていました。",
+      "text_markdown": "ロバーツの恐怖の支配を終わらせるという明確な命令を受けていました。",
+      "tts": {
+        "text": "ロバーツの恐怖の支配を終わらせるという明確な命令を受けていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1722年1月、オグルはロバーツが現在のガボンにあるロペス岬に停泊しているという情報を得ました。",
+      "text_markdown": "1722年1月、オグルはロバーツが現在のガボンにあるロペス岬に停泊しているという情報を得ました。",
+      "tts": {
+        "text": "千七百二十二年一月、オグルはロバーツが現在のガボンにあるロペス岬に停泊しているという情報を得ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロペス岬は赤道アフリカ海岸の小さな岬でした。",
+      "text_markdown": "ロペス岬は赤道アフリカ海岸の小さな岬でした。",
+      "tts": {
+        "text": "ロペス岬は赤道アフリカ海岸の小さな岬でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロバーツは船の清掃と修理の間の一時的な拠点としてここを選んでいました。",
+      "text_markdown": "ロバーツは船の清掃と修理の間の一時的な拠点としてここを選んでいました。",
+      "tts": {
+        "text": "ロバーツは船の清掃と修理の間の一時的な拠点としてここを選んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スワロー号が近づいていることを全く知りませんでした。",
+      "text_markdown": "スワロー号が近づいていることを全く知りませんでした。",
+      "tts": {
+        "text": "スワロー号が近づいていることを全く知りませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オグルは慎重にロペス岬に接近しました。",
+      "text_markdown": "オグルは慎重にロペス岬に接近しました。",
+      "tts": {
+        "text": "オグルは慎重にロペス岬に接近しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロバーツが複数の船と大規模で武装の整った乗組員を擁していることを知っていました。",
+      "text_markdown": "ロバーツが複数の船と大規模で武装の整った乗組員を擁していることを知っていました。",
+      "tts": {
+        "text": "ロバーツが複数の船と大規模で武装の整った乗組員を擁していることを知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロバーツの全艦隊への正面攻撃は危険でした。",
+      "text_markdown": "ロバーツの全艦隊への正面攻撃は危険でした。",
+      "tts": {
+        "text": "ロバーツの全艦隊への正面攻撃は危険でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "オグルは代わりに策略を用いることにしました。",
+      "text_markdown": "オグルは代わりに策略を用いることにしました。",
+      "tts": {
+        "text": "オグルは代わりに策略を用いることにしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スワロー号がロペス岬の近くに初めて姿を現した時、ロバーツの随伴船の一隻が偵察に出ました。",
+      "text_markdown": "スワロー号がロペス岬の近くに初めて姿を現した時、ロバーツの随伴船の一隻が偵察に出ました。",
+      "tts": {
+        "text": "スワロー号がロペス岬の近くに初めて姿を現した時、ロバーツの随伴船の一隻が偵察に出ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オグルは逃げるふりをして海賊船を艦隊から引き離しました。",
+      "text_markdown": "オグルは逃げるふりをして海賊船を艦隊から引き離しました。",
+      "tts": {
+        "text": "オグルは逃げるふりをして海賊船を艦隊から引き離しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他の海賊の視界から外れると、スワロー号は反転して攻撃しました。",
+      "text_markdown": "他の海賊の視界から外れると、スワロー号は反転して攻撃しました。",
+      "tts": {
+        "text": "他の海賊の視界から外れると、スワロー号は反転して攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊船は短いが激しい交戦の後に捕獲されました。",
+      "text_markdown": "海賊船は短いが激しい交戦の後に捕獲されました。",
+      "tts": {
+        "text": "海賊船は短いが激しい交戦の後に捕獲されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1722年2月10日の朝、スワロー号はロバーツ本人と対決するためにロペス岬に戻りました。",
+      "text_markdown": "1722年2月10日の朝、スワロー号はロバーツ本人と対決するためにロペス岬に戻りました。",
+      "tts": {
+        "text": "千七百二十二年二月十日の朝、スワロー号はロバーツ本人と対決するためにロペス岬に戻りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロバーツは旗艦ロイヤル・フォーチュン号に乗っていました。",
+      "text_markdown": "ロバーツは旗艦ロイヤル・フォーチュン号に乗っていました。",
+      "tts": {
+        "text": "ロバーツは旗艦ロイヤル・フォーチュン号に乗っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "見張りが接近する軍艦を発見した時、彼は朝食をとっていました。",
+      "text_markdown": "見張りが接近する軍艦を発見した時、彼は朝食をとっていました。",
+      "tts": {
+        "text": "見張りが接近する軍艦を発見した時、彼は朝食をとっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツは落ち着いて最良の衣服を身に着けて戦闘の準備をしました。",
+      "text_markdown": "ロバーツは落ち着いて最良の衣服を身に着けて戦闘の準備をしました。",
+      "tts": {
+        "text": "ロバーツは落ち着いて最良の衣服を身に着けて戦闘の準備をしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "深紅のウェストコート、ダイヤモンドの十字架、羽根飾りの帽子を身に着けました。",
+      "text_markdown": "深紅のウェストコート、ダイヤモンドの十字架、羽根飾りの帽子を身に着けました。",
+      "tts": {
+        "text": "深紅のウェストコート、ダイヤモンドの十字架、羽根飾りの帽子を身に着けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "絹の肩掛けで二対の拳銃を肩に吊るしました。",
+      "text_markdown": "絹の肩掛けで二対の拳銃を肩に吊るしました。",
+      "tts": {
+        "text": "絹の肩掛けで二対の拳銃を肩に吊るしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いつものようにスタイルと反抗心を持って戦うつもりでした。",
+      "text_markdown": "いつものようにスタイルと反抗心を持って戦うつもりでした。",
+      "tts": {
+        "text": "いつものようにスタイルと反抗心を持って戦うつもりでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それが彼が戦闘のために装う最後の機会となりました。",
+      "text_markdown": "それが彼が戦闘のために装う最後の機会となりました。",
+      "tts": {
+        "text": "それが彼が戦闘のために装う最後の機会となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツは逃げるのではなく戦うことを選びました。",
+      "text_markdown": "ロバーツは逃げるのではなく戦うことを選びました。",
+      "tts": {
+        "text": "ロバーツは逃げるのではなく戦うことを選びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロイヤル・フォーチュン号にスワロー号に向かって直進するよう命じました。",
+      "text_markdown": "ロイヤル・フォーチュン号にスワロー号に向かって直進するよう命じました。",
+      "tts": {
+        "text": "ロイヤル・フォーチュン号にスワロー号に向かって直進するよう命じました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "計画は軍艦の近くを通過してから外洋へ逃げることでした。",
+      "text_markdown": "計画は軍艦の近くを通過してから外洋へ逃げることでした。",
+      "tts": {
+        "text": "計画は軍艦の近くを通過してから外洋へ逃げることでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "大胆な賭けでしたが、ロバーツは常に大胆さを好んでいました。",
+      "text_markdown": "大胆な賭けでしたが、ロバーツは常に大胆さを好んでいました。",
+      "tts": {
+        "text": "大胆な賭けでしたが、ロバーツは常に大胆さを好んでいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二隻の船が接近すると、スワロー号が舷側砲を発射しました。",
+      "text_markdown": "二隻の船が接近すると、スワロー号が舷側砲を発射しました。",
+      "tts": {
+        "text": "二隻の船が接近すると、スワロー号が舷側砲を発射しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "散弾がロイヤル・フォーチュン号の甲板を一掃しました。",
+      "text_markdown": "散弾がロイヤル・フォーチュン号の甲板を一掃しました。",
+      "tts": {
+        "text": "散弾がロイヤル・フォーチュン号の甲板を一掃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バーソロミュー・ロバーツは散弾で喉を撃たれました。",
+      "text_markdown": "バーソロミュー・ロバーツは散弾で喉を撃たれました。",
+      "tts": {
+        "text": "バーソロミュー・ロバーツは散弾で喉を撃たれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はほぼ即死し、大砲の上に崩れ落ちました。",
+      "text_markdown": "彼はほぼ即死し、大砲の上に崩れ落ちました。",
+      "tts": {
+        "text": "彼はほぼ即死し、大砲の上に崩れ落ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乗組員は船長の喪失に打ちのめされました。",
+      "text_markdown": "乗組員は船長の喪失に打ちのめされました。",
+      "tts": {
+        "text": "乗組員は船長の喪失に打ちのめされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロバーツは彼らの活動の心臓部であり魂でした。",
+      "text_markdown": "ロバーツは彼らの活動の心臓部であり魂でした。",
+      "tts": {
+        "text": "ロバーツは彼らの活動の心臓部であり魂でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼なしでは戦闘意欲はほぼ瞬時に消え去りました。",
+      "text_markdown": "彼なしでは戦闘意欲はほぼ瞬時に消え去りました。",
+      "tts": {
+        "text": "彼なしでは戦闘意欲はほぼ瞬時に消え去りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一部の海賊はロバーツの遺言通り、敵に捕獲されないよう遺体を海に投げ入れました。",
+      "text_markdown": "一部の海賊はロバーツの遺言通り、敵に捕獲されないよう遺体を海に投げ入れました。",
+      "tts": {
+        "text": "一部の海賊はロバーツの遺言通り、敵に捕獲されないよう遺体を海に投げ入れました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "残った海賊は戦い続けようとしましたが、その抵抗は統制を欠いていました。",
+      "text_markdown": "残った海賊は戦い続けようとしましたが、その抵抗は統制を欠いていました。",
+      "tts": {
+        "text": "残った海賊は戦い続けようとしましたが、その抵抗は統制を欠いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数時間のうちにスワロー号はロイヤル・フォーチュン号と約152名の海賊を捕獲しました。",
+      "text_markdown": "数時間のうちにスワロー号はロイヤル・フォーチュン号と約152名の海賊を捕獲しました。",
+      "tts": {
+        "text": "数時間のうちにスワロー号はロイヤル・フォーチュン号と約百五十二名の海賊を捕獲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "黄金時代で最も偉大な海賊の経歴は終わりを迎えました。",
+      "text_markdown": "黄金時代で最も偉大な海賊の経歴は終わりを迎えました。",
+      "tts": {
+        "text": "黄金時代で最も偉大な海賊の経歴は終わりを迎えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "わずか三年の出来事でした。",
+      "text_markdown": "わずか三年の出来事でした。",
+      "tts": {
+        "text": "わずか三年の出来事でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オグル艦長は捕虜を現在のガーナにあるイギリスのケープコースト城砦に連行しました。",
+      "text_markdown": "オグル艦長は捕虜を現在のガーナにあるイギリスのケープコースト城砦に連行しました。",
+      "tts": {
+        "text": "オグル艦長は捕虜を現在のガーナにあるイギリスのケープコースト城砦に連行しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこで史上最大の海賊裁判が行われました。",
+      "text_markdown": "そこで史上最大の海賊裁判が行われました。",
+      "tts": {
+        "text": "そこで史上最大の海賊裁判が行われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "合計272名の海賊が裁判にかけられました。",
+      "text_markdown": "合計272名の海賊が裁判にかけられました。",
+      "tts": {
+        "text": "合計二百七十二名の海賊が裁判にかけられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "審理は数週間にわたって続きました。",
+      "text_markdown": "審理は数週間にわたって続きました。",
+      "tts": {
+        "text": "審理は数週間にわたって続きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "裁かれた者のうち52名が絞首刑を宣告されました。",
+      "text_markdown": "裁かれた者のうち52名が絞首刑を宣告されました。",
+      "tts": {
+        "text": "裁かれた者のうち五十二名が絞首刑を宣告されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くはケープコーストの鉱山での強制労働を宣告されました。",
+      "text_markdown": "多くはケープコーストの鉱山での強制労働を宣告されました。",
+      "tts": {
+        "text": "多くはケープコーストの鉱山での強制労働を宣告されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一部は無罪となりました。特に海賊行為を強制されたことを証明できた者たちです。",
+      "text_markdown": "一部は無罪となりました。特に海賊行為を強制されたことを証明できた者たちです。",
+      "tts": {
+        "text": "一部は無罪となりました。特に海賊行為を強制されたことを証明できた者たちです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "ロペス岬での死",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "処刑は奴隷砦の見える海岸で執行されました。",
+      "text_markdown": "処刑は奴隷砦の見える海岸で執行されました。",
+      "tts": {
+        "text": "処刑は奴隷砦の見える海岸で執行されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ある時代の終わり",
+      "text_markdown": "ある時代の終わり"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーソロミュー・ロバーツの死は海賊の黄金時代を終わらせた出来事として広く認識されています。",
+      "text_markdown": "バーソロミュー・ロバーツの死は海賊の黄金時代を終わらせた出来事として広く認識されています。",
+      "tts": {
+        "text": "バーソロミュー・ロバーツの死は海賊の黄金時代を終わらせた出来事として広く認識されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は偉大な海賊船長の最後の一人であり、その死は最も強力な海賊艦隊を海から排除しました。",
+      "text_markdown": "彼は偉大な海賊船長の最後の一人であり、その死は最も強力な海賊艦隊を海から排除しました。",
+      "tts": {
+        "text": "彼は偉大な海賊船長の最後の一人であり、その死は最も強力な海賊艦隊を海から排除しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロバーツの後、大西洋の商業をこれほどの規模で脅かす海賊は二度と現れませんでした。",
+      "text_markdown": "ロバーツの後、大西洋の商業をこれほどの規模で脅かす海賊は二度と現れませんでした。",
+      "tts": {
+        "text": "ロバーツの後、大西洋の商業をこれほどの規模で脅かす海賊は二度と現れませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊の時代は終わりました。",
+      "text_markdown": "海賊の時代は終わりました。",
+      "tts": {
+        "text": "海賊の時代は終わりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの経歴は海賊行為の可能性と限界の両方を示していました。",
+      "text_markdown": "ロバーツの経歴は海賊行為の可能性と限界の両方を示していました。",
+      "tts": {
+        "text": "ロバーツの経歴は海賊行為の可能性と限界の両方を示していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "3年間で400隻以上の船を捕獲しました。比類のない記録です。",
+      "text_markdown": "3年間で400隻以上の船を捕獲しました。比類のない記録です。",
+      "tts": {
+        "text": "三年間で四百隻以上の船を捕獲しました。比類のない記録です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "貿易路を混乱させ、植民地政府を恐怖に陥れ、王立海軍に挑みました。",
+      "text_markdown": "貿易路を混乱させ、植民地政府を恐怖に陥れ、王立海軍に挑みました。",
+      "tts": {
+        "text": "貿易路を混乱させ、植民地政府を恐怖に陥れ、王立海軍に挑みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし結局、最も偉大な海賊でさえ一発の幸運な弾丸で倒される可能性がありました。",
+      "text_markdown": "しかし結局、最も偉大な海賊でさえ一発の幸運な弾丸で倒される可能性がありました。",
+      "tts": {
+        "text": "しかし結局、最も偉大な海賊でさえ一発の幸運な弾丸で倒される可能性がありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オグル艦長はロバーツに対する勝利により騎士に叙されました。",
+      "text_markdown": "オグル艦長はロバーツに対する勝利により騎士に叙されました。",
+      "tts": {
+        "text": "オグル艦長はロバーツに対する勝利により騎士に叙されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊を打ち負かしたことで騎士に叙された唯一の王立海軍士官でした。",
+      "text_markdown": "海賊を打ち負かしたことで騎士に叙された唯一の王立海軍士官でした。",
+      "tts": {
+        "text": "海賊を打ち負かしたことで騎士に叙された唯一の王立海軍士官でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この名誉はロバーツの作戦を終わらせることに政府が置いた重大さを反映していました。",
+      "text_markdown": "この名誉はロバーツの作戦を終わらせることに政府が置いた重大さを反映していました。",
+      "tts": {
+        "text": "この名誉はロバーツの作戦を終わらせることに政府が置いた重大さを反映していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "オグルはその後も輝かしい海軍の経歴を続けました。",
+      "text_markdown": "オグルはその後も輝かしい海軍の経歴を続けました。",
+      "tts": {
+        "text": "オグルはその後も輝かしい海軍の経歴を続けました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの海賊規約は後世の人々が海賊について考える方法に影響を与えました。",
+      "text_markdown": "ロバーツの海賊規約は後世の人々が海賊について考える方法に影響を与えました。",
+      "tts": {
+        "text": "ロバーツの海賊規約は後世の人々が海賊について考える方法に影響を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "成文憲法を持つ民主的な海賊乗組員という考えは大衆の想像力をかきたてました。",
+      "text_markdown": "成文憲法を持つ民主的な海賊乗組員という考えは大衆の想像力をかきたてました。",
+      "tts": {
+        "text": "成文憲法を持つ民主的な海賊乗組員という考えは大衆の想像力をかきたてました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家たちはロバーツの条項を用いて、海賊船が十八世紀初頭の最も民主的な組織の一つであったと論じてきました。",
+      "text_markdown": "歴史家たちはロバーツの条項を用いて、海賊船が十八世紀初頭の最も民主的な組織の一つであったと論じてきました。",
+      "tts": {
+        "text": "歴史家たちはロバーツの条項を用いて、海賊船が十八世紀初頭の最も民主的な組織の一つであったと論じてきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この解釈は議論の余地がありますが、影響力があることが証明されています。",
+      "text_markdown": "この解釈は議論の余地がありますが、影響力があることが証明されています。",
+      "tts": {
+        "text": "この解釈は議論の余地がありますが、影響力があることが証明されています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724年に出版された海賊の一般史という書籍はロバーツに広範な紙面を割きました。",
+      "text_markdown": "1724年に出版された海賊の一般史という書籍はロバーツに広範な紙面を割きました。",
+      "tts": {
+        "text": "千七百二十四年に出版された海賊の一般史という書籍はロバーツに広範な紙面を割きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "著者はロバーツをその時代の最も偉大な海賊として描きました。",
+      "text_markdown": "著者はロバーツをその時代の最も偉大な海賊として描きました。",
+      "tts": {
+        "text": "著者はロバーツをその時代の最も偉大な海賊として描きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の航海、規約、そして死についての詳細な記述は彼の経歴に関する決定的な資料となりました。",
+      "text_markdown": "彼の航海、規約、そして死についての詳細な記述は彼の経歴に関する決定的な資料となりました。",
+      "tts": {
+        "text": "彼の航海、規約、そして死についての詳細な記述は彼の経歴に関する決定的な資料となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ロバーツについて私たちが知ることの大部分はこの一冊の本に由来しています。",
+      "text_markdown": "ロバーツについて私たちが知ることの大部分はこの一冊の本に由来しています。",
+      "tts": {
+        "text": "ロバーツについて私たちが知ることの大部分はこの一冊の本に由来しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツの遺産は海賊の歴史を超えて広がっています。",
+      "text_markdown": "ロバーツの遺産は海賊の歴史を超えて広がっています。",
+      "tts": {
+        "text": "ロバーツの遺産は海賊の歴史を超えて広がっています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の協定条項は民主的統治の起源に関心を持つ歴史家によって研究されています。",
+      "text_markdown": "彼の協定条項は民主的統治の起源に関心を持つ歴史家によって研究されています。",
+      "tts": {
+        "text": "彼の協定条項は民主的統治の起源に関心を持つ歴史家によって研究されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の障害補償制度は現代の社会保険を何世紀も先取りしていました。",
+      "text_markdown": "彼の障害補償制度は現代の社会保険を何世紀も先取りしていました。",
+      "tts": {
+        "text": "彼の障害補償制度は現代の社会保険を何世紀も先取りしていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "成文化された規則と権力の共有に対する彼のこだわりは、同時代のいかなる組織にとっても注目に値するものでした。",
+      "text_markdown": "成文化された規則と権力の共有に対する彼のこだわりは、同時代のいかなる組織にとっても注目に値するものでした。",
+      "tts": {
+        "text": "成文化された規則と権力の共有に対する彼のこだわりは、同時代のいかなる組織にとっても注目に値するものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウェールズではロバーツは国の最も有名な歴史的人物の一人として記憶されています。",
+      "text_markdown": "ウェールズではロバーツは国の最も有名な歴史的人物の一人として記憶されています。",
+      "tts": {
+        "text": "ウェールズではロバーツは国の最も有名な歴史的人物の一人として記憶されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼が生まれた村にはその悪名高い息子を記念する銘板があります。",
+      "text_markdown": "彼が生まれた村にはその悪名高い息子を記念する銘板があります。",
+      "tts": {
+        "text": "彼が生まれた村にはその悪名高い息子を記念する銘板があります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ウェールズの海洋博物館は彼の生涯と経歴に関する展示を行っています。",
+      "text_markdown": "ウェールズの海洋博物館は彼の生涯と経歴に関する展示を行っています。",
+      "tts": {
+        "text": "ウェールズの海洋博物館は彼の生涯と経歴に関する展示を行っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その職業の暴力的な性質にもかかわらず、地元の誇りの源となっています。",
+      "text_markdown": "その職業の暴力的な性質にもかかわらず、地元の誇りの源となっています。",
+      "tts": {
+        "text": "その職業の暴力的な性質にもかかわらず、地元の誇りの源となっています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロバーツが終わらせた海賊の黄金時代は、おおよそ千六百九十年代から千七百二十年代まで続きました。",
+      "text_markdown": "ロバーツが終わらせた海賊の黄金時代は、おおよそ千六百九十年代から千七百二十年代まで続きました。",
+      "tts": {
+        "text": "ロバーツが終わらせた海賊の黄金時代は、おおよそ千六百九十年代から千七百二十年代まで続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その短い期間に海賊たちは今日まで感じられる形で大西洋世界の歴史を形作りました。",
+      "text_markdown": "その短い期間に海賊たちは今日まで感じられる形で大西洋世界の歴史を形作りました。",
+      "tts": {
+        "text": "その短い期間に海賊たちは今日まで感じられる形で大西洋世界の歴史を形作りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは国際法、海軍戦略、大衆文化に影響を与えました。",
+      "text_markdown": "彼らは国際法、海軍戦略、大衆文化に影響を与えました。",
+      "tts": {
+        "text": "彼らは国際法、海軍戦略、大衆文化に影響を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "ある時代の終わり",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "バーソロミュー・ロバーツ、不本意ながら海賊の中で最も偉大な存在となったこの人物は、あの驚くべき時代の頂点に立っています。",
+      "text_markdown": "バーソロミュー・ロバーツ、不本意ながら海賊の中で最も偉大な存在となったこの人物は、あの驚くべき時代の頂点に立っています。",
+      "tts": {
+        "text": "バーソロミュー・ロバーツ、不本意ながら海賊の中で最も偉大な存在となったこの人物は、あの驚くべき時代の頂点に立っています。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

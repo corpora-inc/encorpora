@@ -1,0 +1,4502 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sir_francis_drake",
+  "language": "ja",
+  "total_segments": 301,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者への一言",
+      "text_markdown": "読者への一言"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは世界一周を成し遂げた一人の男の実話です。",
+      "text_markdown": "これは世界一周を成し遂げた一人の男の実話です。",
+      "tts": {
+        "text": "これは世界一周を成し遂げた一人の男の実話です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の名はフランシス・ドレイク、歴史上最も有名な船乗りの一人となりました。",
+      "text_markdown": "彼の名はフランシス・ドレイク、歴史上最も有名な船乗りの一人となりました。",
+      "tts": {
+        "text": "彼の名はフランシス・ドレイク、歴史上最も有名な船乗りの一人となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランドにとって彼は国を侵略から救った英雄でした。",
+      "text_markdown": "イングランドにとって彼は国を侵略から救った英雄でした。",
+      "tts": {
+        "text": "イングランドにとって彼は国を侵略から救った英雄でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインにとって彼はエル・ドラケ、ドラゴン、海で最も恐れられた海賊でした。",
+      "text_markdown": "スペインにとって彼はエル・ドラケ、ドラゴン、海で最も恐れられた海賊でした。",
+      "tts": {
+        "text": "スペインにとって彼はエル・ドラケ、ドラゴン、海で最も恐れられた海賊でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は同時にその両方でした。",
+      "text_markdown": "彼は同時にその両方でした。",
+      "tts": {
+        "text": "彼は同時にその両方でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が英雄か悪人かは、海のどちら側に立つかによって完全に異なりました。",
+      "text_markdown": "彼が英雄か悪人かは、海のどちら側に立つかによって完全に異なりました。",
+      "tts": {
+        "text": "彼が英雄か悪人かは、海のどちら側に立つかによって完全に異なりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはヨーロッパ史上最も劇的な世紀の一つを生きました。",
+      "text_markdown": "ドレイクはヨーロッパ史上最も劇的な世紀の一つを生きました。",
+      "tts": {
+        "text": "ドレイクはヨーロッパ史上最も劇的な世紀の一つを生きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帝国が衝突し、宗教が国家を分断し、世界が初めて地図に描かれていました。",
+      "text_markdown": "帝国が衝突し、宗教が国家を分断し、世界が初めて地図に描かれていました。",
+      "tts": {
+        "text": "帝国が衝突し、宗教が国家を分断し、世界が初めて地図に描かれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の人生はこれらすべての力によって形作られました。",
+      "text_markdown": "彼の人生はこれらすべての力によって形作られました。",
+      "tts": {
+        "text": "彼の人生はこれらすべての力によって形作られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者への一言",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これは彼の物語です。",
+      "text_markdown": "これは彼の物語です。",
+      "tts": {
+        "text": "これは彼の物語です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ドレイクが知っていた世界",
+      "text_markdown": "ドレイクが知っていた世界"
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランシス・ドレイクはイングランド王ヘンリー八世の治世に生まれました。",
+      "text_markdown": "フランシス・ドレイクはイングランド王ヘンリー八世の治世に生まれました。",
+      "tts": {
+        "text": "フランシス・ドレイクはイングランド王ヘンリー八世の治世に生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヘンリーはローマのカトリック教会と決別し、イングランド国教会を設立しました。",
+      "text_markdown": "ヘンリーはローマのカトリック教会と決別し、イングランド国教会を設立しました。",
+      "tts": {
+        "text": "ヘンリーはローマのカトリック教会と決別し、イングランド国教会を設立しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この決定はイングランドを何世代にもわたって宗教的に分断しました。",
+      "text_markdown": "この決定はイングランドを何世代にもわたって宗教的に分断しました。",
+      "tts": {
+        "text": "この決定はイングランドを何世代にもわたって宗教的に分断しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリーの死後、イングランドは何年もの宗教的混乱を経験しました。",
+      "text_markdown": "ヘンリーの死後、イングランドは何年もの宗教的混乱を経験しました。",
+      "tts": {
+        "text": "ヘンリーの死後、イングランドは何年もの宗教的混乱を経験しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "息子のエドワード六世はプロテスタントでした。",
+      "text_markdown": "息子のエドワード六世はプロテスタントでした。",
+      "tts": {
+        "text": "息子のエドワード六世はプロテスタントでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "娘のメアリー一世はカトリックで、宗教改革を覆そうとしました。",
+      "text_markdown": "娘のメアリー一世はカトリックで、宗教改革を覆そうとしました。",
+      "tts": {
+        "text": "娘のメアリー一世はカトリックで、宗教改革を覆そうとしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女はあまりに多くのプロテスタントを処刑したため、ブラッディ・メアリーの名を得ました。",
+      "text_markdown": "彼女はあまりに多くのプロテスタントを処刑したため、ブラッディ・メアリーの名を得ました。",
+      "tts": {
+        "text": "彼女はあまりに多くのプロテスタントを処刑したため、ブラッディ・メアリーの名を得ました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1558年、エリザベス一世が女王になりました。",
+      "text_markdown": "1558年、エリザベス一世が女王になりました。",
+      "tts": {
+        "text": "千五百五十八年、エリザベス一世が女王になりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はプロテスタントで、聡明で、政治的に卓越していました。",
+      "text_markdown": "彼女はプロテスタントで、聡明で、政治的に卓越していました。",
+      "tts": {
+        "text": "彼女はプロテスタントで、聡明で、政治的に卓越していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼女の治世は四十五年間続き、エリザベス朝として知られるようになりました。",
+      "text_markdown": "彼女の治世は四十五年間続き、エリザベス朝として知られるようになりました。",
+      "tts": {
+        "text": "彼女の治世は四十五年間続き、エリザベス朝として知られるようになりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼女の治世中にイングランドは世界の覇権をめぐってスペインに挑戦し始めました。",
+      "text_markdown": "彼女の治世中にイングランドは世界の覇権をめぐってスペインに挑戦し始めました。",
+      "tts": {
+        "text": "彼女の治世中にイングランドは世界の覇権をめぐってスペインに挑戦し始めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フェリペ二世のもとのスペインは地球上で最も強大な帝国でした。",
+      "text_markdown": "フェリペ二世のもとのスペインは地球上で最も強大な帝国でした。",
+      "tts": {
+        "text": "フェリペ二世のもとのスペインは地球上で最も強大な帝国でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン領はメキシコからチリまでアメリカ大陸全体に広がっていました。",
+      "text_markdown": "スペイン領はメキシコからチリまでアメリカ大陸全体に広がっていました。",
+      "tts": {
+        "text": "スペイン領はメキシコからチリまでアメリカ大陸全体に広がっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインはフィリピン、イタリアの一部、オランダも支配していました。",
+      "text_markdown": "スペインはフィリピン、イタリアの一部、オランダも支配していました。",
+      "tts": {
+        "text": "スペインはフィリピン、イタリアの一部、オランダも支配していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アメリカ大陸から流入する富はスペインを途方もなく豊かにしました。",
+      "text_markdown": "アメリカ大陸から流入する富はスペインを途方もなく豊かにしました。",
+      "tts": {
+        "text": "アメリカ大陸から流入する富はスペインを途方もなく豊かにしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルーとメキシコの鉱山からの銀がスペインの権力の基盤でした。",
+      "text_markdown": "ペルーとメキシコの鉱山からの銀がスペインの権力の基盤でした。",
+      "tts": {
+        "text": "ペルーとメキシコの鉱山からの銀がスペインの権力の基盤でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "財宝船団がこの銀を巨大な船団で大西洋を横断して運びました。",
+      "text_markdown": "財宝船団がこの銀を巨大な船団で大西洋を横断して運びました。",
+      "tts": {
+        "text": "財宝船団がこの銀を巨大な船団で大西洋を横断して運びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの船団は攻撃するほど大胆な者にとって魅力的な標的でした。",
+      "text_markdown": "これらの船団は攻撃するほど大胆な者にとって魅力的な標的でした。",
+      "tts": {
+        "text": "これらの船団は攻撃するほど大胆な者にとって魅力的な標的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "世界最強のスペイン海軍がこれらの輸送を護衛しました。",
+      "text_markdown": "世界最強のスペイン海軍がこれらの輸送を護衛しました。",
+      "tts": {
+        "text": "世界最強のスペイン海軍がこれらの輸送を護衛しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1494年のトルデシリャス条約は世界をスペインとポルトガルの間で分割しました。",
+      "text_markdown": "1494年のトルデシリャス条約は世界をスペインとポルトガルの間で分割しました。",
+      "tts": {
+        "text": "千四百九十四年のトルデシリャス条約は世界をスペインとポルトガルの間で分割しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランド、フランス、オランダは完全に排除されていました。",
+      "text_markdown": "イングランド、フランス、オランダは完全に排除されていました。",
+      "tts": {
+        "text": "イングランド、フランス、オランダは完全に排除されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの国々は条約を拒否し、どこでも貿易と探検をする権利を主張しました。",
+      "text_markdown": "これらの国々は条約を拒否し、どこでも貿易と探検をする権利を主張しました。",
+      "tts": {
+        "text": "これらの国々は条約を拒否し、どこでも貿易と探検をする権利を主張しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この不一致は何世紀にもわたる紛争の根本原因の一つでした。",
+      "text_markdown": "この不一致は何世紀にもわたる紛争の根本原因の一つでした。",
+      "tts": {
+        "text": "この不一致は何世紀にもわたる紛争の根本原因の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランド南西部のデヴォンは船乗り文化の中心地でした。",
+      "text_markdown": "イングランド南西部のデヴォンは船乗り文化の中心地でした。",
+      "tts": {
+        "text": "イングランド南西部のデヴォンは船乗り文化の中心地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デヴォンの男たちは漁師、商人、そしてますます略奪者でした。",
+      "text_markdown": "デヴォンの男たちは漁師、商人、そしてますます略奪者でした。",
+      "tts": {
+        "text": "デヴォンの男たちは漁師、商人、そしてますます略奪者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この州はイングランド最大の海の船長を何人も輩出しました。",
+      "text_markdown": "この州はイングランド最大の海の船長を何人も輩出しました。",
+      "tts": {
+        "text": "この州はイングランド最大の海の船長を何人も輩出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "フランシス・ドレイク、ウォルター・ローリー、ジョン・ホーキンスは全員デヴォン出身でした。",
+      "text_markdown": "フランシス・ドレイク、ウォルター・ローリー、ジョン・ホーキンスは全員デヴォン出身でした。",
+      "tts": {
+        "text": "フランシス・ドレイク、ウォルター・ローリー、ジョン・ホーキンスは全員デヴォン出身でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十六世紀半ばのイングランド海軍はスペインに比べて小さかったのです。",
+      "text_markdown": "十六世紀半ばのイングランド海軍はスペインに比べて小さかったのです。",
+      "tts": {
+        "text": "十六世紀半ばのイングランド海軍はスペインに比べて小さかったのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドは直接対決で船対船でスペインに対抗することはできませんでした。",
+      "text_markdown": "イングランドは直接対決で船対船でスペインに対抗することはできませんでした。",
+      "tts": {
+        "text": "イングランドは直接対決で船対船でスペインに対抗することはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その代わりに、イングランド人は襲撃と嫌がらせの戦略を開発しました。",
+      "text_markdown": "その代わりに、イングランド人は襲撃と嫌がらせの戦略を開発しました。",
+      "tts": {
+        "text": "その代わりに、イングランド人は襲撃と嫌がらせの戦略を開発しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "高速で武装した船がスペインの財宝船団を攻撃し、艦隊が対応する前に逃げることができました。",
+      "text_markdown": "高速で武装した船がスペインの財宝船団を攻撃し、艦隊が対応する前に逃げることができました。",
+      "tts": {
+        "text": "高速で武装した船がスペインの財宝船団を攻撃し、艦隊が対応する前に逃げることができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私掠行為はイングランドのスペインに対する非公式の武器となりました。",
+      "text_markdown": "私掠行為はイングランドのスペインに対する非公式の武器となりました。",
+      "tts": {
+        "text": "私掠行為はイングランドのスペインに対する非公式の武器となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エリザベスは王国を危険にさらすことなく公然と宣戦布告することはできませんでした。",
+      "text_markdown": "エリザベスは王国を危険にさらすことなく公然と宣戦布告することはできませんでした。",
+      "tts": {
+        "text": "エリザベスは王国を危険にさらすことなく公然と宣戦布告することはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし密かに海の船長たちにスペインの船舶を襲撃する許可を与えることはできました。",
+      "text_markdown": "しかし密かに海の船長たちにスペインの船舶を襲撃する許可を与えることはできました。",
+      "tts": {
+        "text": "しかし密かに海の船長たちにスペインの船舶を襲撃する許可を与えることはできました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "もし捕まっても、彼女は関与を否定することができました。",
+      "text_markdown": "もし捕まっても、彼女は関与を否定することができました。",
+      "tts": {
+        "text": "もし捕まっても、彼女は関与を否定することができました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隷貿易はこの時期すでにイングランドの航海の一部でした。",
+      "text_markdown": "奴隷貿易はこの時期すでにイングランドの航海の一部でした。",
+      "tts": {
+        "text": "奴隷貿易はこの時期すでにイングランドの航海の一部でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドの船長たちは西アフリカで人々を誘拐したり購入したりしました。",
+      "text_markdown": "イングランドの船長たちは西アフリカで人々を誘拐したり購入したりしました。",
+      "tts": {
+        "text": "イングランドの船長たちは西アフリカで人々を誘拐したり購入したりしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはアメリカ大陸に輸送し、スペインの植民者に売りました。",
+      "text_markdown": "彼らはアメリカ大陸に輸送し、スペインの植民者に売りました。",
+      "tts": {
+        "text": "彼らはアメリカ大陸に輸送し、スペインの植民者に売りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この残酷な商行為は当時のほとんどのヨーロッパ人から正当な商売と見なされていました。",
+      "text_markdown": "この残酷な商行為は当時のほとんどのヨーロッパ人から正当な商売と見なされていました。",
+      "tts": {
+        "text": "この残酷な商行為は当時のほとんどのヨーロッパ人から正当な商売と見なされていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクの生涯中、世界はまだ探検され地図に描かれている最中でした。",
+      "text_markdown": "ドレイクの生涯中、世界はまだ探検され地図に描かれている最中でした。",
+      "tts": {
+        "text": "ドレイクの生涯中、世界はまだ探検され地図に描かれている最中でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパ人は大陸の基本的な形は知っていましたが詳細は知りませんでした。",
+      "text_markdown": "ヨーロッパ人は大陸の基本的な形は知っていましたが詳細は知りませんでした。",
+      "tts": {
+        "text": "ヨーロッパ人は大陸の基本的な形は知っていましたが詳細は知りませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "太平洋はヨーロッパの船乗りにとってほとんど未知でした。",
+      "text_markdown": "太平洋はヨーロッパの船乗りにとってほとんど未知でした。",
+      "tts": {
+        "text": "太平洋はヨーロッパの船乗りにとってほとんど未知でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ほとんどの大陸の内部は謎のままでした。",
+      "text_markdown": "ほとんどの大陸の内部は謎のままでした。",
+      "tts": {
+        "text": "ほとんどの大陸の内部は謎のままでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "航海は羅針盤、アストロラーベ、推測航法に頼っていました。",
+      "text_markdown": "航海は羅針盤、アストロラーベ、推測航法に頼っていました。",
+      "tts": {
+        "text": "航海は羅針盤、アストロラーベ、推測航法に頼っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海図はしばしば不正確で、特に馴染みのない海域ではそうでした。",
+      "text_markdown": "海図はしばしば不正確で、特に馴染みのない海域ではそうでした。",
+      "tts": {
+        "text": "海図はしばしば不正確で、特に馴染みのない海域ではそうでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船長の技術と経験はどんな道具よりも重要でした。",
+      "text_markdown": "船長の技術と経験はどんな道具よりも重要でした。",
+      "tts": {
+        "text": "船長の技術と経験はどんな道具よりも重要でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海は過ちを許しませんでした。",
+      "text_markdown": "海は過ちを許しませんでした。",
+      "tts": {
+        "text": "海は過ちを許しませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがフランシス・ドレイクを形作った世界でした。",
+      "text_markdown": "これがフランシス・ドレイクを形作った世界でした。",
+      "tts": {
+        "text": "これがフランシス・ドレイクを形作った世界でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "宗教的対立、帝国の対抗、そして広大な未知の海の世界。",
+      "text_markdown": "宗教的対立、帝国の対抗、そして広大な未知の海の世界。",
+      "tts": {
+        "text": "宗教的対立、帝国の対抗、そして広大な未知の海の世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "ドレイクが知っていた世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは、質素な家庭出身の大胆な船乗りが歴史の流れを変えることができる世界でした。",
+      "text_markdown": "それは、質素な家庭出身の大胆な船乗りが歴史の流れを変えることができる世界でした。",
+      "tts": {
+        "text": "それは、質素な家庭出身の大胆な船乗りが歴史の流れを変えることができる世界でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランシス・ドレイクは1540年頃、イングランドのデヴォン州タヴィストックで生まれました。",
+      "text_markdown": "フランシス・ドレイクは1540年頃、イングランドのデヴォン州タヴィストックで生まれました。",
+      "tts": {
+        "text": "フランシス・ドレイクは千五百四十年頃、イングランドのデヴォン州タヴィストックで生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はエドマンド・ドレイクとその妻の十二人の息子の長男でした。",
+      "text_markdown": "彼はエドマンド・ドレイクとその妻の十二人の息子の長男でした。",
+      "tts": {
+        "text": "彼はエドマンド・ドレイクとその妻の十二人の息子の長男でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "家族は質素な暮らしでした。",
+      "text_markdown": "家族は質素な暮らしでした。",
+      "tts": {
+        "text": "家族は質素な暮らしでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エドマンド・ドレイクは農夫で、後にプロテスタントの平信徒説教者になりました。",
+      "text_markdown": "エドマンド・ドレイクは農夫で、後にプロテスタントの平信徒説教者になりました。",
+      "tts": {
+        "text": "エドマンド・ドレイクは農夫で、後にプロテスタントの平信徒説教者になりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ケントの海軍造船所で船乗りや労働者に聖書を読んで聞かせました。",
+      "text_markdown": "ケントの海軍造船所で船乗りや労働者に聖書を読んで聞かせました。",
+      "tts": {
+        "text": "ケントの海軍造船所で船乗りや労働者に聖書を読んで聞かせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の強いプロテスタントの信仰が若きフランシスの世界観を形作りました。",
+      "text_markdown": "彼の強いプロテスタントの信仰が若きフランシスの世界観を形作りました。",
+      "tts": {
+        "text": "彼の強いプロテスタントの信仰が若きフランシスの世界観を形作りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクはカトリックのスペインがすべての善の敵だと信じて育ちました。",
+      "text_markdown": "ドレイクはカトリックのスペインがすべての善の敵だと信じて育ちました。",
+      "tts": {
+        "text": "ドレイクはカトリックのスペインがすべての善の敵だと信じて育ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランシスが幼い頃、家族はケントに移りました。",
+      "text_markdown": "フランシスが幼い頃、家族はケントに移りました。",
+      "tts": {
+        "text": "フランシスが幼い頃、家族はケントに移りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カトリックの反乱の際にデヴォンを離れることを余儀なくされたのです。",
+      "text_markdown": "カトリックの反乱の際にデヴォンを離れることを余儀なくされたのです。",
+      "tts": {
+        "text": "カトリックの反乱の際にデヴォンを離れることを余儀なくされたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ケントでは、メドウェイ川と王立造船所の近くに住んでいました。",
+      "text_markdown": "ケントでは、メドウェイ川と王立造船所の近くに住んでいました。",
+      "tts": {
+        "text": "ケントでは、メドウェイ川と王立造船所の近くに住んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "少年は船、船乗り、そして海の匂いに囲まれて育ちました。",
+      "text_markdown": "少年は船、船乗り、そして海の匂いに囲まれて育ちました。",
+      "tts": {
+        "text": "少年は船、船乗り、そして海の匂いに囲まれて育ちました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十代になると、フランシスは小さな沿岸貿易船の船長のもとで見習いになりました。",
+      "text_markdown": "十代になると、フランシスは小さな沿岸貿易船の船長のもとで見習いになりました。",
+      "tts": {
+        "text": "十代になると、フランシスは小さな沿岸貿易船の船長のもとで見習いになりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "テムズ川河口とイギリス海峡の狭く危険な水域で航海を学びました。",
+      "text_markdown": "テムズ川河口とイギリス海峡の狭く危険な水域で航海を学びました。",
+      "tts": {
+        "text": "テムズ川河口とイギリス海峡の狭く危険な水域で航海を学びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらはヨーロッパで最も困難な水域の一部でした。",
+      "text_markdown": "これらはヨーロッパで最も困難な水域の一部でした。",
+      "tts": {
+        "text": "これらはヨーロッパで最も困難な水域の一部でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そこで学んだ技術は生涯を通じて彼に役立つことになりました。",
+      "text_markdown": "そこで学んだ技術は生涯を通じて彼に役立つことになりました。",
+      "tts": {
+        "text": "そこで学んだ技術は生涯を通じて彼に役立つことになりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "老船長が亡くなった時、遺言で自分の船をドレイクに残しました。",
+      "text_markdown": "老船長が亡くなった時、遺言で自分の船をドレイクに残しました。",
+      "tts": {
+        "text": "老船長が亡くなった時、遺言で自分の船をドレイクに残しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "財産のない若者にとって、これは並外れた贈り物でした。",
+      "text_markdown": "財産のない若者にとって、これは並外れた贈り物でした。",
+      "tts": {
+        "text": "財産のない若者にとって、これは並外れた贈り物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ドレイクには今、自分の船がありました。小さくはありましたが。",
+      "text_markdown": "ドレイクには今、自分の船がありました。小さくはありましたが。",
+      "tts": {
+        "text": "ドレイクには今、自分の船がありました。小さくはありましたが。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はより広い海で運命を求める準備ができていました。",
+      "text_markdown": "彼はより広い海で運命を求める準備ができていました。",
+      "tts": {
+        "text": "彼はより広い海で運命を求める準備ができていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクのいとこはジョン・ホーキンスで、イングランドで最も著名な海の船長の一人でした。",
+      "text_markdown": "ドレイクのいとこはジョン・ホーキンスで、イングランドで最も著名な海の船長の一人でした。",
+      "tts": {
+        "text": "ドレイクのいとこはジョン・ホーキンスで、イングランドで最も著名な海の船長の一人でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ホーキンスは西アフリカとカリブ海への貿易航海を組織しました。",
+      "text_markdown": "ホーキンスは西アフリカとカリブ海への貿易航海を組織しました。",
+      "tts": {
+        "text": "ホーキンスは西アフリカとカリブ海への貿易航海を組織しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの航海には奴隷にされたアフリカ人の捕獲と売買が含まれていました。",
+      "text_markdown": "これらの航海には奴隷にされたアフリカ人の捕獲と売買が含まれていました。",
+      "tts": {
+        "text": "これらの航海には奴隷にされたアフリカ人の捕獲と売買が含まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクはこれらの遠征のいくつかにホーキンスとともに参加しました。",
+      "text_markdown": "ドレイクはこれらの遠征のいくつかにホーキンスとともに参加しました。",
+      "tts": {
+        "text": "ドレイクはこれらの遠征のいくつかにホーキンスとともに参加しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1567年、ドレイクはホーキンスとともにカリブ海への大規模な遠征に出航しました。",
+      "text_markdown": "1567年、ドレイクはホーキンスとともにカリブ海への大規模な遠征に出航しました。",
+      "tts": {
+        "text": "千五百六十七年、ドレイクはホーキンスとともにカリブ海への大規模な遠征に出航しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはアフリカから奴隷にされた人々をスペインの植民地で売るために輸送しました。",
+      "text_markdown": "彼らはアフリカから奴隷にされた人々をスペインの植民地で売るために輸送しました。",
+      "tts": {
+        "text": "彼らはアフリカから奴隷にされた人々をスペインの植民地で売るために輸送しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アメリカのスペイン当局はイングランドの商人を拒否するはずでした。",
+      "text_markdown": "アメリカのスペイン当局はイングランドの商人を拒否するはずでした。",
+      "tts": {
+        "text": "アメリカのスペイン当局はイングランドの商人を拒否するはずでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし地方の役人は規則を無視し、しばしば奴隷を購入しました。",
+      "text_markdown": "しかし地方の役人は規則を無視し、しばしば奴隷を購入しました。",
+      "tts": {
+        "text": "しかし地方の役人は規則を無視し、しばしば奴隷を購入しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "遠征隊はメキシコの港、サン・フアン・デ・ウルアで問題に遭遇しました。",
+      "text_markdown": "遠征隊はメキシコの港、サン・フアン・デ・ウルアで問題に遭遇しました。",
+      "tts": {
+        "text": "遠征隊はメキシコの港、サン・フアン・デ・ウルアで問題に遭遇しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ホーキンスの艦隊は修理のためにそこに停泊していました。",
+      "text_markdown": "ホーキンスの艦隊は修理のためにそこに停泊していました。",
+      "tts": {
+        "text": "ホーキンスの艦隊は修理のためにそこに停泊していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインの財宝艦隊が到着し、友好を装った後、イングランド船を攻撃しました。",
+      "text_markdown": "スペインの財宝艦隊が到着し、友好を装った後、イングランド船を攻撃しました。",
+      "tts": {
+        "text": "スペインの財宝艦隊が到着し、友好を装った後、イングランド船を攻撃しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1568年のサン・フアン・デ・ウルアの戦いはイングランドにとって惨事でした。",
+      "text_markdown": "1568年のサン・フアン・デ・ウルアの戦いはイングランドにとって惨事でした。",
+      "tts": {
+        "text": "千五百六十八年のサン・フアン・デ・ウルアの戦いはイングランドにとって惨事でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ホーキンスの船のほとんどが沈められたか捕獲されました。",
+      "text_markdown": "ホーキンスの船のほとんどが沈められたか捕獲されました。",
+      "tts": {
+        "text": "ホーキンスの船のほとんどが沈められたか捕獲されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何百人ものイングランド船員が殺されるかメキシコに取り残されました。",
+      "text_markdown": "何百人ものイングランド船員が殺されるかメキシコに取り残されました。",
+      "tts": {
+        "text": "何百人ものイングランド船員が殺されるかメキシコに取り残されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは小さな船で逃げましたが、この経験は彼に深い傷を残しました。",
+      "text_markdown": "ドレイクは小さな船で逃げましたが、この経験は彼に深い傷を残しました。",
+      "tts": {
+        "text": "ドレイクは小さな船で逃げましたが、この経験は彼に深い傷を残しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはサン・フアン・デ・ウルアでの裏切りについてスペインを決して許しませんでした。",
+      "text_markdown": "ドレイクはサン・フアン・デ・ウルアでの裏切りについてスペインを決して許しませんでした。",
+      "tts": {
+        "text": "ドレイクはサン・フアン・デ・ウルアでの裏切りについてスペインを決して許しませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの攻撃を裏切りで不名誉なものと考えました。",
+      "text_markdown": "スペインの攻撃を裏切りで不名誉なものと考えました。",
+      "tts": {
+        "text": "スペインの攻撃を裏切りで不名誉なものと考えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その日から、彼はスペインへの復讐に人生を捧げました。",
+      "text_markdown": "その日から、彼はスペインへの復讐に人生を捧げました。",
+      "tts": {
+        "text": "その日から、彼はスペインへの復讐に人生を捧げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の個人的な憎しみはイングランドの国益と完全に一致していました。",
+      "text_markdown": "彼の個人的な憎しみはイングランドの国益と完全に一致していました。",
+      "tts": {
+        "text": "彼の個人的な憎しみはイングランドの国益と完全に一致していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは反撃する決意を固めてイングランドに戻りました。",
+      "text_markdown": "ドレイクは反撃する決意を固めてイングランドに戻りました。",
+      "tts": {
+        "text": "ドレイクは反撃する決意を固めてイングランドに戻りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの船舶や入植地に対する独自の襲撃を計画し始めました。",
+      "text_markdown": "スペインの船舶や入植地に対する独自の襲撃を計画し始めました。",
+      "tts": {
+        "text": "スペインの船舶や入植地に対する独自の襲撃を計画し始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カリブ海に関するあらゆる海図と報告書を研究しました。",
+      "text_markdown": "カリブ海に関するあらゆる海図と報告書を研究しました。",
+      "tts": {
+        "text": "カリブ海に関するあらゆる海図と報告書を研究しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペイン領本土に行ったことのあるあらゆる船乗りと話しました。",
+      "text_markdown": "スペイン領本土に行ったことのあるあらゆる船乗りと話しました。",
+      "tts": {
+        "text": "スペイン領本土に行ったことのあるあらゆる船乗りと話しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン領本土はアメリカ大陸におけるスペインの大陸領土の名称でした。",
+      "text_markdown": "スペイン領本土はアメリカ大陸におけるスペインの大陸領土の名称でした。",
+      "tts": {
+        "text": "スペイン領本土はアメリカ大陸におけるスペインの大陸領土の名称でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フロリダから南アメリカの北海岸まで広がっていました。",
+      "text_markdown": "フロリダから南アメリカの北海岸まで広がっていました。",
+      "tts": {
+        "text": "フロリダから南アメリカの北海岸まで広がっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペイン領本土の財宝港は銀と金が船に積み込まれる場所でした。",
+      "text_markdown": "スペイン領本土の財宝港は銀と金が船に積み込まれる場所でした。",
+      "tts": {
+        "text": "スペイン領本土の財宝港は銀と金が船に積み込まれる場所でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの港がドレイクの主な標的でした。",
+      "text_markdown": "これらの港がドレイクの主な標的でした。",
+      "tts": {
+        "text": "これらの港がドレイクの主な標的でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力への台頭",
+      "text_markdown": "権力への台頭"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1572年、ドレイクはスペイン領本土への最初の独立した襲撃を開始しました。",
+      "text_markdown": "1572年、ドレイクはスペイン領本土への最初の独立した襲撃を開始しました。",
+      "tts": {
+        "text": "千五百七十二年、ドレイクはスペイン領本土への最初の独立した襲撃を開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "パナマ地峡のノンブレ・デ・ディオス港を攻撃しました。",
+      "text_markdown": "パナマ地峡のノンブレ・デ・ディオス港を攻撃しました。",
+      "tts": {
+        "text": "パナマ地峡のノンブレ・デ・ディオス港を攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ノンブレ・デ・ディオスはペルーの銀の主要な集積地の一つでした。",
+      "text_markdown": "ノンブレ・デ・ディオスはペルーの銀の主要な集積地の一つでした。",
+      "tts": {
+        "text": "ノンブレ・デ・ディオスはペルーの銀の主要な集積地の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "襲撃は大胆でしたが、ほぼ致命的でした。",
+      "text_markdown": "襲撃は大胆でしたが、ほぼ致命的でした。",
+      "tts": {
+        "text": "襲撃は大胆でしたが、ほぼ致命的でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ドレイクは攻撃中にマスケット銃弾で負傷しました。",
+      "text_markdown": "ドレイクは攻撃中にマスケット銃弾で負傷しました。",
+      "tts": {
+        "text": "ドレイクは攻撃中にマスケット銃弾で負傷しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はあまりにも大量に出血したため、部下たちがボートまで運ばなければなりませんでした。",
+      "text_markdown": "彼はあまりにも大量に出血したため、部下たちがボートまで運ばなければなりませんでした。",
+      "tts": {
+        "text": "彼はあまりにも大量に出血したため、部下たちがボートまで運ばなければなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "わずかな戦利品しか得られませんでしたが、スペインの防衛に関する貴重な知識を得て逃げました。",
+      "text_markdown": "わずかな戦利品しか得られませんでしたが、スペインの防衛に関する貴重な知識を得て逃げました。",
+      "tts": {
+        "text": "わずかな戦利品しか得られませんでしたが、スペインの防衛に関する貴重な知識を得て逃げました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは諦めませんでした。",
+      "text_markdown": "ドレイクは諦めませんでした。",
+      "tts": {
+        "text": "ドレイクは諦めませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジャングルで自由に暮らす逃亡した奴隷のアフリカ人集団、シマロンと同盟を結びました。",
+      "text_markdown": "ジャングルで自由に暮らす逃亡した奴隷のアフリカ人集団、シマロンと同盟を結びました。",
+      "tts": {
+        "text": "ジャングルで自由に暮らす逃亡した奴隷のアフリカ人集団、シマロンと同盟を結びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "シマロンはスペイン人を憎み、彼らと戦う者を喜んで助けました。",
+      "text_markdown": "シマロンはスペイン人を憎み、彼らと戦う者を喜んで助けました。",
+      "tts": {
+        "text": "シマロンはスペイン人を憎み、彼らと戦う者を喜んで助けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らはジャングル、道、スペインのラバ隊の行動パターンを知っていました。",
+      "text_markdown": "彼らはジャングル、道、スペインのラバ隊の行動パターンを知っていました。",
+      "tts": {
+        "text": "彼らはジャングル、道、スペインのラバ隊の行動パターンを知っていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シマロンを案内役として、ドレイクはパナマ地峡を徒歩で横断しました。",
+      "text_markdown": "シマロンを案内役として、ドレイクはパナマ地峡を徒歩で横断しました。",
+      "tts": {
+        "text": "シマロンを案内役として、ドレイクはパナマ地峡を徒歩で横断しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何日間も密生した熱帯のジャングルを切り開きながら進みました。",
+      "text_markdown": "何日間も密生した熱帯のジャングルを切り開きながら進みました。",
+      "tts": {
+        "text": "何日間も密生した熱帯のジャングルを切り開きながら進みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "尾根の頂上で、ドレイクは高い木に登りました。",
+      "text_markdown": "尾根の頂上で、ドレイクは高い木に登りました。",
+      "tts": {
+        "text": "尾根の頂上で、ドレイクは高い木に登りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そこから、太平洋を目にした最初のイングランド人の一人となりました。",
+      "text_markdown": "そこから、太平洋を目にした最初のイングランド人の一人となりました。",
+      "tts": {
+        "text": "そこから、太平洋を目にした最初のイングランド人の一人となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはいつかあの大洋を航海させてくださいと神に祈ったと伝えられています。",
+      "text_markdown": "ドレイクはいつかあの大洋を航海させてくださいと神に祈ったと伝えられています。",
+      "tts": {
+        "text": "ドレイクはいつかあの大洋を航海させてくださいと神に祈ったと伝えられています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この瞬間は彼の人生で最も有名な物語の一つとなりました。",
+      "text_markdown": "この瞬間は彼の人生で最も有名な物語の一つとなりました。",
+      "tts": {
+        "text": "この瞬間は彼の人生で最も有名な物語の一つとなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "太平洋の光景は彼を野心で満たしました。",
+      "text_markdown": "太平洋の光景は彼を野心で満たしました。",
+      "tts": {
+        "text": "太平洋の光景は彼を野心で満たしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペインの太平洋植民地が事実上無防備であることに気づきました。",
+      "text_markdown": "スペインの太平洋植民地が事実上無防備であることに気づきました。",
+      "tts": {
+        "text": "スペインの太平洋植民地が事実上無防備であることに気づきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクとシマロンは銀と金を運ぶスペインのラバ隊を待ち伏せしました。",
+      "text_markdown": "ドレイクとシマロンは銀と金を運ぶスペインのラバ隊を待ち伏せしました。",
+      "tts": {
+        "text": "ドレイクとシマロンは銀と金を運ぶスペインのラバ隊を待ち伏せしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "財宝はパナマの太平洋側から大西洋側へ運ばれていました。",
+      "text_markdown": "財宝はパナマの太平洋側から大西洋側へ運ばれていました。",
+      "tts": {
+        "text": "財宝はパナマの太平洋側から大西洋側へ運ばれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "襲撃者たちは膨大な量の貴金属を奪取しました。",
+      "text_markdown": "襲撃者たちは膨大な量の貴金属を奪取しました。",
+      "tts": {
+        "text": "襲撃者たちは膨大な量の貴金属を奪取しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは裕福で有名になってイングランドに戻りました。",
+      "text_markdown": "ドレイクは裕福で有名になってイングランドに戻りました。",
+      "tts": {
+        "text": "ドレイクは裕福で有名になってイングランドに戻りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エリザベス女王はこの大胆な若い船長に注目しました。",
+      "text_markdown": "エリザベス女王はこの大胆な若い船長に注目しました。",
+      "tts": {
+        "text": "エリザベス女王はこの大胆な若い船長に注目しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "平時にスペインへの攻撃を公に称賛することはできませんでした。",
+      "text_markdown": "平時にスペインへの攻撃を公に称賛することはできませんでした。",
+      "tts": {
+        "text": "平時にスペインへの攻撃を公に称賛することはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし私的には、ライバルを弱体化させるものなら何でも喜びました。",
+      "text_markdown": "しかし私的には、ライバルを弱体化させるものなら何でも喜びました。",
+      "tts": {
+        "text": "しかし私的には、ライバルを弱体化させるものなら何でも喜びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは女王自身に近い輪の中に入り始めました。",
+      "text_markdown": "ドレイクは女王自身に近い輪の中に入り始めました。",
+      "tts": {
+        "text": "ドレイクは女王自身に近い輪の中に入り始めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577年、エリザベスは密かにドレイクに太平洋への遠征を率いることを許可しました。",
+      "text_markdown": "1577年、エリザベスは密かにドレイクに太平洋への遠征を率いることを許可しました。",
+      "tts": {
+        "text": "千五百七十七年、エリザベスは密かにドレイクに太平洋への遠征を率いることを許可しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "航海の公式目的は探検でした。",
+      "text_markdown": "航海の公式目的は探検でした。",
+      "tts": {
+        "text": "航海の公式目的は探検でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "真の目的は南アメリカの太平洋沿岸のスペイン領を襲撃することでした。",
+      "text_markdown": "真の目的は南アメリカの太平洋沿岸のスペイン領を襲撃することでした。",
+      "tts": {
+        "text": "真の目的は南アメリカの太平洋沿岸のスペイン領を襲撃することでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "女王は自らの資金をこの事業に投資しました。",
+      "text_markdown": "女王は自らの資金をこの事業に投資しました。",
+      "tts": {
+        "text": "女王は自らの資金をこの事業に投資しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは五隻の船と約百六十人の乗組員とともにプリマスから出航しました。",
+      "text_markdown": "ドレイクは五隻の船と約百六十人の乗組員とともにプリマスから出航しました。",
+      "tts": {
+        "text": "ドレイクは五隻の船と約百六十人の乗組員とともにプリマスから出航しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旗艦はペリカン号で、後にゴールデン・ハインドと改名しました。",
+      "text_markdown": "旗艦はペリカン号で、後にゴールデン・ハインドと改名しました。",
+      "tts": {
+        "text": "旗艦はペリカン号で、後にゴールデン・ハインドと改名しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "艦隊は南アメリカの海岸に向けて大西洋を南下しました。",
+      "text_markdown": "艦隊は南アメリカの海岸に向けて大西洋を南下しました。",
+      "tts": {
+        "text": "艦隊は南アメリカの海岸に向けて大西洋を南下しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大西洋沿岸の航海は困難でした。",
+      "text_markdown": "大西洋沿岸の航海は困難でした。",
+      "tts": {
+        "text": "大西洋沿岸の航海は困難でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一隻は航行不能として意図的に沈められました。",
+      "text_markdown": "一隻は航行不能として意図的に沈められました。",
+      "tts": {
+        "text": "一隻は航行不能として意図的に沈められました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ドレイクはトーマス・ドウティという紳士からの権威への深刻な挑戦にも対処しなければなりませんでした。",
+      "text_markdown": "ドレイクはトーマス・ドウティという紳士からの権威への深刻な挑戦にも対処しなければなりませんでした。",
+      "tts": {
+        "text": "ドレイクはトーマス・ドウティという紳士からの権威への深刻な挑戦にも対処しなければなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクはドウティを反乱罪で裁き、処刑させました。",
+      "text_markdown": "ドレイクはドウティを反乱罪で裁き、処刑させました。",
+      "tts": {
+        "text": "ドレイクはドウティを反乱罪で裁き、処刑させました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "艦隊は南アメリカ最南端のマゼラン海峡に入りました。",
+      "text_markdown": "艦隊は南アメリカ最南端のマゼラン海峡に入りました。",
+      "tts": {
+        "text": "艦隊は南アメリカ最南端のマゼラン海峡に入りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海峡は狭く、危険で、激しい嵐に悩まされていました。",
+      "text_markdown": "海峡は狭く、危険で、激しい嵐に悩まされていました。",
+      "tts": {
+        "text": "海峡は狭く、危険で、激しい嵐に悩まされていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海峡を通過するのに16日かかりました。",
+      "text_markdown": "海峡を通過するのに16日かかりました。",
+      "tts": {
+        "text": "海峡を通過するのに十六日かかりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ゴールデン・ハインドと他の二隻だけが通過を生き延びました。",
+      "text_markdown": "ゴールデン・ハインドと他の二隻だけが通過を生き延びました。",
+      "tts": {
+        "text": "ゴールデン・ハインドと他の二隻だけが通過を生き延びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太平洋に出た後、恐ろしい嵐が残りの船を襲いました。",
+      "text_markdown": "太平洋に出た後、恐ろしい嵐が残りの船を襲いました。",
+      "tts": {
+        "text": "太平洋に出た後、恐ろしい嵐が残りの船を襲いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一隻は海峡を通って押し戻され、イングランドに帰還しました。",
+      "text_markdown": "一隻は海峡を通って押し戻され、イングランドに帰還しました。",
+      "tts": {
+        "text": "一隻は海峡を通って押し戻され、イングランドに帰還しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "もう一隻は完全に失われました。",
+      "text_markdown": "もう一隻は完全に失われました。",
+      "tts": {
+        "text": "もう一隻は完全に失われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは広大で未知の海洋でゴールデン・ハインドに一人きりでした。",
+      "text_markdown": "ドレイクは広大で未知の海洋でゴールデン・ハインドに一人きりでした。",
+      "tts": {
+        "text": "ドレイクは広大で未知の海洋でゴールデン・ハインドに一人きりでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは南アメリカの太平洋沿岸を北上しました。",
+      "text_markdown": "ドレイクは南アメリカの太平洋沿岸を北上しました。",
+      "tts": {
+        "text": "ドレイクは南アメリカの太平洋沿岸を北上しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこのスペイン植民地は海から攻撃されたことがありませんでした。",
+      "text_markdown": "そこのスペイン植民地は海から攻撃されたことがありませんでした。",
+      "tts": {
+        "text": "そこのスペイン植民地は海から攻撃されたことがありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "敵の船が太平洋に入ったことがなかったため、防衛がありませんでした。",
+      "text_markdown": "敵の船が太平洋に入ったことがなかったため、防衛がありませんでした。",
+      "tts": {
+        "text": "敵の船が太平洋に入ったことがなかったため、防衛がありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは港を次々と襲撃し、ほとんど抵抗に遭いませんでした。",
+      "text_markdown": "ドレイクは港を次々と襲撃し、ほとんど抵抗に遭いませんでした。",
+      "tts": {
+        "text": "ドレイクは港を次々と襲撃し、ほとんど抵抗に遭いませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "銀、金、宝石を大量に奪取しました。",
+      "text_markdown": "銀、金、宝石を大量に奪取しました。",
+      "tts": {
+        "text": "銀、金、宝石を大量に奪取しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最大の戦利品はスペインの財宝船ヌエストラ・セニョーラ・デ・ラ・コンセプシオンでした。",
+      "text_markdown": "最大の戦利品はスペインの財宝船ヌエストラ・セニョーラ・デ・ラ・コンセプシオンでした。",
+      "tts": {
+        "text": "最大の戦利品はスペインの財宝船ヌエストラ・セニョーラ・デ・ラ・コンセプシオンでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船には財宝が重く積まれており、荷の移し替えに何日もかかりました。",
+      "text_markdown": "船には財宝が重く積まれており、荷の移し替えに何日もかかりました。",
+      "tts": {
+        "text": "船には財宝が重く積まれており、荷の移し替えに何日もかかりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力への台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "奪取した財宝の価値は驚異的で、現代の通貨で数百万に相当しました。",
+      "text_markdown": "奪取した財宝の価値は驚異的で、現代の通貨で数百万に相当しました。",
+      "tts": {
+        "text": "奪取した財宝の価値は驚異的で、現代の通貨で数百万に相当しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "頂点にて",
+      "text_markdown": "頂点にて"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは来た道を戻ることができませんでした。",
+      "text_markdown": "ドレイクは来た道を戻ることができませんでした。",
+      "tts": {
+        "text": "ドレイクは来た道を戻ることができませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン人が今や南アメリカの海岸沿い全域で彼を追っていました。",
+      "text_markdown": "スペイン人が今や南アメリカの海岸沿い全域で彼を追っていました。",
+      "tts": {
+        "text": "スペイン人が今や南アメリカの海岸沿い全域で彼を追っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マゼラン海峡を通って戻ることは自殺行為でした。",
+      "text_markdown": "マゼラン海峡を通って戻ることは自殺行為でした。",
+      "tts": {
+        "text": "マゼラン海峡を通って戻ることは自殺行為でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は西回りで世界を一周することに決めました。",
+      "text_markdown": "彼は西回りで世界を一周することに決めました。",
+      "tts": {
+        "text": "彼は西回りで世界を一周することに決めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "まずドレイクは中央アメリカと北アメリカの海岸沿いに北上しました。",
+      "text_markdown": "まずドレイクは中央アメリカと北アメリカの海岸沿いに北上しました。",
+      "tts": {
+        "text": "まずドレイクは中央アメリカと北アメリカの海岸沿いに北上しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家たちは彼がどこまで北に進んだかを議論しています。",
+      "text_markdown": "歴史家たちは彼がどこまで北に進んだかを議論しています。",
+      "tts": {
+        "text": "歴史家たちは彼がどこまで北に進んだかを議論しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "現在のオレゴン州やバンクーバー島に達したと信じる者もいます。",
+      "text_markdown": "現在のオレゴン州やバンクーバー島に達したと信じる者もいます。",
+      "tts": {
+        "text": "現在のオレゴン州やバンクーバー島に達したと信じる者もいます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サンフランシスコ湾付近を北限とする者もいます。",
+      "text_markdown": "サンフランシスコ湾付近を北限とする者もいます。",
+      "tts": {
+        "text": "サンフランシスコ湾付近を北限とする者もいます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはカリフォルニアの海岸のどこかに上陸し、イングランドのために領土を主張しました。",
+      "text_markdown": "ドレイクはカリフォルニアの海岸のどこかに上陸し、イングランドのために領土を主張しました。",
+      "tts": {
+        "text": "ドレイクはカリフォルニアの海岸のどこかに上陸し、イングランドのために領土を主張しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はそこをノヴァ・アルビオン、つまり新ブリテンと名付けました。",
+      "text_markdown": "彼はそこをノヴァ・アルビオン、つまり新ブリテンと名付けました。",
+      "tts": {
+        "text": "彼はそこをノヴァ・アルビオン、つまり新ブリテンと名付けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "船の修理と乗組員の休養のために数週間を陸上で過ごしました。",
+      "text_markdown": "船の修理と乗組員の休養のために数週間を陸上で過ごしました。",
+      "tts": {
+        "text": "船の修理と乗組員の休養のために数週間を陸上で過ごしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地元の先住民との友好的な交流があったと伝えられています。",
+      "text_markdown": "地元の先住民との友好的な交流があったと伝えられています。",
+      "tts": {
+        "text": "地元の先住民との友好的な交流があったと伝えられています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ノヴァ・アルビオンからドレイクは西に向きを変え、太平洋を横断しました。",
+      "text_markdown": "ノヴァ・アルビオンからドレイクは西に向きを変え、太平洋を横断しました。",
+      "tts": {
+        "text": "ノヴァ・アルビオンからドレイクは西に向きを変え、太平洋を横断しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "横断には68日かかりました。",
+      "text_markdown": "横断には68日かかりました。",
+      "tts": {
+        "text": "横断には六十八日かかりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "補給のための島がほとんどない広大で孤独な海でした。",
+      "text_markdown": "補給のための島がほとんどない広大で孤独な海でした。",
+      "tts": {
+        "text": "補給のための島がほとんどない広大で孤独な海でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "乗組員は減りゆく物資と釣れる魚で生き延びました。",
+      "text_markdown": "乗組員は減りゆく物資と釣れる魚で生き延びました。",
+      "tts": {
+        "text": "乗組員は減りゆく物資と釣れる魚で生き延びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは今日インドネシアのモルッカ諸島として知られる香料諸島に到達しました。",
+      "text_markdown": "ドレイクは今日インドネシアのモルッカ諸島として知られる香料諸島に到達しました。",
+      "tts": {
+        "text": "ドレイクは今日インドネシアのモルッカ諸島として知られる香料諸島に到達しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これらの島々は金よりも価値のあるクローブ、ナツメグなどの香辛料の産地でした。",
+      "text_markdown": "これらの島々は金よりも価値のあるクローブ、ナツメグなどの香辛料の産地でした。",
+      "tts": {
+        "text": "これらの島々は金よりも価値のあるクローブ、ナツメグなどの香辛料の産地でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ドレイクはテルナテのスルタンと貿易協定を結びました。",
+      "text_markdown": "ドレイクはテルナテのスルタンと貿易協定を結びました。",
+      "tts": {
+        "text": "ドレイクはテルナテのスルタンと貿易協定を結びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ゴールデン・ハインドに六トンのクローブを積み込みました。",
+      "text_markdown": "ゴールデン・ハインドに六トンのクローブを積み込みました。",
+      "tts": {
+        "text": "ゴールデン・ハインドに六トンのクローブを積み込みました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東インド諸島の暗礁で船は大惨事に見舞われそうになりました。",
+      "text_markdown": "東インド諸島の暗礁で船は大惨事に見舞われそうになりました。",
+      "tts": {
+        "text": "東インド諸島の暗礁で船は大惨事に見舞われそうになりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ゴールデン・ハインドは座礁し、二十時間動けなくなりました。",
+      "text_markdown": "ゴールデン・ハインドは座礁し、二十時間動けなくなりました。",
+      "tts": {
+        "text": "ゴールデン・ハインドは座礁し、二十時間動けなくなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ドレイクは船を浮かせるのに十分なほど軽くするため、積み荷を海に投げ捨てなければなりませんでした。",
+      "text_markdown": "ドレイクは船を浮かせるのに十分なほど軽くするため、積み荷を海に投げ捨てなければなりませんでした。",
+      "tts": {
+        "text": "ドレイクは船を浮かせるのに十分なほど軽くするため、積み荷を海に投げ捨てなければなりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "全航海で最も恐ろしい瞬間の一つでした。",
+      "text_markdown": "全航海で最も恐ろしい瞬間の一つでした。",
+      "tts": {
+        "text": "全航海で最も恐ろしい瞬間の一つでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはインド洋を横断し、アフリカ最南端の喜望峰を回りました。",
+      "text_markdown": "ドレイクはインド洋を横断し、アフリカ最南端の喜望峰を回りました。",
+      "tts": {
+        "text": "ドレイクはインド洋を横断し、アフリカ最南端の喜望峰を回りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大西洋を北上しました。",
+      "text_markdown": "大西洋を北上しました。",
+      "tts": {
+        "text": "大西洋を北上しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1580年9月26日、ゴールデン・ハインドはプリマス港に入りました。",
+      "text_markdown": "1580年9月26日、ゴールデン・ハインドはプリマス港に入りました。",
+      "tts": {
+        "text": "千五百八十年九月二十六日、ゴールデン・ハインドはプリマス港に入りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは約三年間海上にいました。",
+      "text_markdown": "ドレイクは約三年間海上にいました。",
+      "tts": {
+        "text": "ドレイクは約三年間海上にいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは地球の完全な周航を生き延びた最初の船長でした。",
+      "text_markdown": "ドレイクは地球の完全な周航を生き延びた最初の船長でした。",
+      "tts": {
+        "text": "ドレイクは地球の完全な周航を生き延びた最初の船長でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フェルディナンド・マゼランは最初の周航を始めましたがフィリピンで殺されました。",
+      "text_markdown": "フェルディナンド・マゼランは最初の周航を始めましたがフィリピンで殺されました。",
+      "tts": {
+        "text": "フェルディナンド・マゼランは最初の周航を始めましたがフィリピンで殺されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マゼランの船のうち一隻だけが別の船長のもとで航海を完了しました。",
+      "text_markdown": "マゼランの船のうち一隻だけが別の船長のもとで航海を完了しました。",
+      "tts": {
+        "text": "マゼランの船のうち一隻だけが別の船長のもとで航海を完了しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは世界一周の遠征を率いて生きて帰った最初の人物でした。",
+      "text_markdown": "ドレイクは世界一周の遠征を率いて生きて帰った最初の人物でした。",
+      "tts": {
+        "text": "ドレイクは世界一周の遠征を率いて生きて帰った最初の人物でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクが持ち帰った財宝は並外れたものでした。",
+      "text_markdown": "ドレイクが持ち帰った財宝は並外れたものでした。",
+      "tts": {
+        "text": "ドレイクが持ち帰った財宝は並外れたものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "推定ではイングランド王室の年間収入全体を上回る価値がありました。",
+      "text_markdown": "推定ではイングランド王室の年間収入全体を上回る価値がありました。",
+      "tts": {
+        "text": "推定ではイングランド王室の年間収入全体を上回る価値がありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エリザベス女王の取り分だけでも莫大でした。",
+      "text_markdown": "エリザベス女王の取り分だけでも莫大でした。",
+      "tts": {
+        "text": "エリザベス女王の取り分だけでも莫大でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "航海の投資家たちは数千パーセントのリターンを得ました。",
+      "text_markdown": "航海の投資家たちは数千パーセントのリターンを得ました。",
+      "tts": {
+        "text": "航海の投資家たちは数千パーセントのリターンを得ました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1581年4月4日、エリザベス女王はデプトフォードのゴールデン・ハインドを訪問しました。",
+      "text_markdown": "1581年4月4日、エリザベス女王はデプトフォードのゴールデン・ハインドを訪問しました。",
+      "tts": {
+        "text": "千五百八十一年四月四日、エリザベス女王はデプトフォードのゴールデン・ハインドを訪問しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女は船の甲板上でドレイクにナイトの称号を授けました。",
+      "text_markdown": "彼女は船の甲板上でドレイクにナイトの称号を授けました。",
+      "tts": {
+        "text": "彼女は船の甲板上でドレイクにナイトの称号を授けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はサー・フランシス・ドレイクとなりました。",
+      "text_markdown": "彼はサー・フランシス・ドレイクとなりました。",
+      "tts": {
+        "text": "彼はサー・フランシス・ドレイクとなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペイン大使は激怒し、自国の王に対する侮辱だと呼びました。",
+      "text_markdown": "スペイン大使は激怒し、自国の王に対する侮辱だと呼びました。",
+      "tts": {
+        "text": "スペイン大使は激怒し、自国の王に対する侮辱だと呼びました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはイングランドで最も裕福で有名な人物の一人となりました。",
+      "text_markdown": "ドレイクはイングランドで最も裕福で有名な人物の一人となりました。",
+      "tts": {
+        "text": "ドレイクはイングランドで最も裕福で有名な人物の一人となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "デヴォンの大邸宅バックランド修道院を購入しました。",
+      "text_markdown": "デヴォンの大邸宅バックランド修道院を購入しました。",
+      "tts": {
+        "text": "デヴォンの大邸宅バックランド修道院を購入しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "プリマスの市長を務めました。",
+      "text_markdown": "プリマスの市長を務めました。",
+      "tts": {
+        "text": "プリマスの市長を務めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "議会に選出されました。",
+      "text_markdown": "議会に選出されました。",
+      "tts": {
+        "text": "議会に選出されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1585年、エリザベスはドレイクを再びスペイン領カリブ海に襲撃に送りました。",
+      "text_markdown": "1585年、エリザベスはドレイクを再びスペイン領カリブ海に襲撃に送りました。",
+      "tts": {
+        "text": "千五百八十五年、エリザベスはドレイクを再びスペイン領カリブ海に襲撃に送りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今回は二十隻以上の船と二千人以上の兵士からなる艦隊とともに出航しました。",
+      "text_markdown": "今回は二十隻以上の船と二千人以上の兵士からなる艦隊とともに出航しました。",
+      "tts": {
+        "text": "今回は二十隻以上の船と二千人以上の兵士からなる艦隊とともに出航しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヒスパニオラ島のサント・ドミンゴ市を略奪しました。",
+      "text_markdown": "ヒスパニオラ島のサント・ドミンゴ市を略奪しました。",
+      "tts": {
+        "text": "ヒスパニオラ島のサント・ドミンゴ市を略奪しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "次に現在のコロンビアのカルタヘナ市を占領し身代金を要求しました。",
+      "text_markdown": "次に現在のコロンビアのカルタヘナ市を占領し身代金を要求しました。",
+      "tts": {
+        "text": "次に現在のコロンビアのカルタヘナ市を占領し身代金を要求しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの襲撃はスペインを屈辱し、イングランドの自信を高めました。",
+      "text_markdown": "これらの襲撃はスペインを屈辱し、イングランドの自信を高めました。",
+      "tts": {
+        "text": "これらの襲撃はスペインを屈辱し、イングランドの自信を高めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フェリペ二世がイングランド侵攻を計画するよう挑発する助けにもなりました。",
+      "text_markdown": "フェリペ二世がイングランド侵攻を計画するよう挑発する助けにもなりました。",
+      "tts": {
+        "text": "フェリペ二世がイングランド侵攻を計画するよう挑発する助けにもなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界最大の二つの海洋大国の衝突が近づいていました。",
+      "text_markdown": "世界最大の二つの海洋大国の衝突が近づいていました。",
+      "tts": {
+        "text": "世界最大の二つの海洋大国の衝突が近づいていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終焉",
+      "text_markdown": "終焉"
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1587年、ドレイクは海軍史上最も大胆な襲撃の一つを行いました。",
+      "text_markdown": "1587年、ドレイクは海軍史上最も大胆な襲撃の一つを行いました。",
+      "tts": {
+        "text": "千五百八十七年、ドレイクは海軍史上最も大胆な襲撃の一つを行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの港カディスに入港し、そこに集結していた艦隊を攻撃しました。",
+      "text_markdown": "スペインの港カディスに入港し、そこに集結していた艦隊を攻撃しました。",
+      "tts": {
+        "text": "スペインの港カディスに入港し、そこに集結していた艦隊を攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "約三十隻の船を破壊または拿捕しました。",
+      "text_markdown": "約三十隻の船を破壊または拿捕しました。",
+      "tts": {
+        "text": "約三十隻の船を破壊または拿捕しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはこの襲撃をスペイン王の髭を焦がすと呼びました。",
+      "text_markdown": "ドレイクはこの襲撃をスペイン王の髭を焦がすと呼びました。",
+      "tts": {
+        "text": "ドレイクはこの襲撃をスペイン王の髭を焦がすと呼びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この攻撃はスペイン無敵艦隊を少なくとも一年遅らせました。",
+      "text_markdown": "この攻撃はスペイン無敵艦隊を少なくとも一年遅らせました。",
+      "tts": {
+        "text": "この攻撃はスペイン無敵艦隊を少なくとも一年遅らせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインが侵攻に必要とした物資と装備も破壊しました。",
+      "text_markdown": "スペインが侵攻に必要とした物資と装備も破壊しました。",
+      "tts": {
+        "text": "スペインが侵攻に必要とした物資と装備も破壊しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは再び英雄としてイングランドに帰りました。",
+      "text_markdown": "ドレイクは再び英雄としてイングランドに帰りました。",
+      "tts": {
+        "text": "ドレイクは再び英雄としてイングランドに帰りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1588年、フェリペ二世はついに大侵攻艦隊を出しました。",
+      "text_markdown": "1588年、フェリペ二世はついに大侵攻艦隊を出しました。",
+      "tts": {
+        "text": "千五百八十八年、フェリペ二世はついに大侵攻艦隊を出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン無敵艦隊は約130隻の船で構成されていました。",
+      "text_markdown": "スペイン無敵艦隊は約130隻の船で構成されていました。",
+      "tts": {
+        "text": "スペイン無敵艦隊は約百三十隻の船で構成されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当時のヨーロッパ史上最大の海軍力でした。",
+      "text_markdown": "当時のヨーロッパ史上最大の海軍力でした。",
+      "tts": {
+        "text": "当時のヨーロッパ史上最大の海軍力でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その使命はオランダから軍隊をイギリス海峡を越えて護送することでした。",
+      "text_markdown": "その使命はオランダから軍隊をイギリス海峡を越えて護送することでした。",
+      "tts": {
+        "text": "その使命はオランダから軍隊をイギリス海峡を越えて護送することでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはエフィンガム卿ハワードのもとでイングランド艦隊の副提督を務めました。",
+      "text_markdown": "ドレイクはエフィンガム卿ハワードのもとでイングランド艦隊の副提督を務めました。",
+      "tts": {
+        "text": "ドレイクはエフィンガム卿ハワードのもとでイングランド艦隊の副提督を務めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランド船は一般にスペインのガレオン船より小さく速かったのです。",
+      "text_markdown": "イングランド船は一般にスペインのガレオン船より小さく速かったのです。",
+      "tts": {
+        "text": "イングランド船は一般にスペインのガレオン船より小さく速かったのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランドの砲術は優れており、射程の長い大砲とよく訓練された乗組員がいました。",
+      "text_markdown": "イングランドの砲術は優れており、射程の長い大砲とよく訓練された乗組員がいました。",
+      "tts": {
+        "text": "イングランドの砲術は優れており、射程の長い大砲とよく訓練された乗組員がいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし無敵艦隊の巨大な規模は恐ろしいものでした。",
+      "text_markdown": "しかし無敵艦隊の巨大な規模は恐ろしいものでした。",
+      "tts": {
+        "text": "しかし無敵艦隊の巨大な規模は恐ろしいものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランド艦隊は無敵艦隊がイギリス海峡を北上する間、嫌がらせを行いました。",
+      "text_markdown": "イングランド艦隊は無敵艦隊がイギリス海峡を北上する間、嫌がらせを行いました。",
+      "tts": {
+        "text": "イングランド艦隊は無敵艦隊がイギリス海峡を北上する間、嫌がらせを行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "より速い船と長射程の大砲を使って距離を保ちながら攻撃しました。",
+      "text_markdown": "より速い船と長射程の大砲を使って距離を保ちながら攻撃しました。",
+      "tts": {
+        "text": "より速い船と長射程の大砲を使って距離を保ちながら攻撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインの陣形は持ちこたえましたが、イングランドはその目的達成を阻止しました。",
+      "text_markdown": "スペインの陣形は持ちこたえましたが、イングランドはその目的達成を阻止しました。",
+      "tts": {
+        "text": "スペインの陣形は持ちこたえましたが、イングランドはその目的達成を阻止しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "決定的な瞬間はフランドル沖のグラヴリンで訪れました。",
+      "text_markdown": "決定的な瞬間はフランドル沖のグラヴリンで訪れました。",
+      "tts": {
+        "text": "決定的な瞬間はフランドル沖のグラヴリンで訪れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドは夜間、停泊中の無敵艦隊に火船を送り込みました。",
+      "text_markdown": "イングランドは夜間、停泊中の無敵艦隊に火船を送り込みました。",
+      "tts": {
+        "text": "イングランドは夜間、停泊中の無敵艦隊に火船を送り込みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "炎上する船がスペイン船をパニックで散り散りにさせました。",
+      "text_markdown": "炎上する船がスペイン船をパニックで散り散りにさせました。",
+      "tts": {
+        "text": "炎上する船がスペイン船をパニックで散り散りにさせました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "無敵艦隊を守っていた密集陣形が崩壊しました。",
+      "text_markdown": "無敵艦隊を守っていた密集陣形が崩壊しました。",
+      "tts": {
+        "text": "無敵艦隊を守っていた密集陣形が崩壊しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランドは散り散りになったスペイン艦隊に壊滅的な攻撃を加えました。",
+      "text_markdown": "イングランドは散り散りになったスペイン艦隊に壊滅的な攻撃を加えました。",
+      "tts": {
+        "text": "イングランドは散り散りになったスペイン艦隊に壊滅的な攻撃を加えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン船数隻が沈没するか岸に打ち上げられました。",
+      "text_markdown": "スペイン船数隻が沈没するか岸に打ち上げられました。",
+      "tts": {
+        "text": "スペイン船数隻が沈没するか岸に打ち上げられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "無敵艦隊は再編成できず、風に押されて北へ追いやられました。",
+      "text_markdown": "無敵艦隊は再編成できず、風に押されて北へ追いやられました。",
+      "tts": {
+        "text": "無敵艦隊は再編成できず、風に押されて北へ追いやられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペインに戻るためにスコットランドとアイルランドを回る航路を取ることを余儀なくされました。",
+      "text_markdown": "スペインに戻るためにスコットランドとアイルランドを回る航路を取ることを余儀なくされました。",
+      "tts": {
+        "text": "スペインに戻るためにスコットランドとアイルランドを回る航路を取ることを余儀なくされました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い帰路で嵐が多くのスペイン船を破壊しました。",
+      "text_markdown": "長い帰路で嵐が多くのスペイン船を破壊しました。",
+      "tts": {
+        "text": "長い帰路で嵐が多くのスペイン船を破壊しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スコットランドとアイルランドの岩だらけの海岸で船が難破しました。",
+      "text_markdown": "スコットランドとアイルランドの岩だらけの海岸で船が難破しました。",
+      "tts": {
+        "text": "スコットランドとアイルランドの岩だらけの海岸で船が難破しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "元の130隻のうち約65隻だけがスペインに帰還できました。",
+      "text_markdown": "元の130隻のうち約65隻だけがスペインに帰還できました。",
+      "tts": {
+        "text": "元の百三十隻のうち約六十五隻だけがスペインに帰還できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "何千人ものスペインの船員と兵士が死亡しました。",
+      "text_markdown": "何千人ものスペインの船員と兵士が死亡しました。",
+      "tts": {
+        "text": "何千人ものスペインの船員と兵士が死亡しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン無敵艦隊の敗北はヨーロッパ史の転換点でした。",
+      "text_markdown": "スペイン無敵艦隊の敗北はヨーロッパ史の転換点でした。",
+      "tts": {
+        "text": "スペイン無敵艦隊の敗北はヨーロッパ史の転換点でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインが海上で無敵ではないことを証明しました。",
+      "text_markdown": "スペインが海上で無敵ではないことを証明しました。",
+      "tts": {
+        "text": "スペインが海上で無敵ではないことを証明しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランドに自国の帝国を拡大する自信を与えました。",
+      "text_markdown": "イングランドに自国の帝国を拡大する自信を与えました。",
+      "tts": {
+        "text": "イングランドに自国の帝国を拡大する自信を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは国家の救世主の一人として称えられました。",
+      "text_markdown": "ドレイクは国家の救世主の一人として称えられました。",
+      "tts": {
+        "text": "ドレイクは国家の救世主の一人として称えられました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしドレイクの晩年は失敗と失望をもたらしました。",
+      "text_markdown": "しかしドレイクの晩年は失敗と失望をもたらしました。",
+      "tts": {
+        "text": "しかしドレイクの晩年は失敗と失望をもたらしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1589年、イングランド無敵艦隊と呼ばれるスペインへの反撃を指揮しました。",
+      "text_markdown": "1589年、イングランド無敵艦隊と呼ばれるスペインへの反撃を指揮しました。",
+      "tts": {
+        "text": "千五百八十九年、イングランド無敵艦隊と呼ばれるスペインへの反撃を指揮しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "遠征は費用のかかる大失敗でした。",
+      "text_markdown": "遠征は費用のかかる大失敗でした。",
+      "tts": {
+        "text": "遠征は費用のかかる大失敗でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドレイクは主要な目的のいずれも達成できませんでした。",
+      "text_markdown": "ドレイクは主要な目的のいずれも達成できませんでした。",
+      "tts": {
+        "text": "ドレイクは主要な目的のいずれも達成できませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1595年、ドレイクは最後にカリブ海に出航しました。",
+      "text_markdown": "1595年、ドレイクは最後にカリブ海に出航しました。",
+      "tts": {
+        "text": "千五百九十五年、ドレイクは最後にカリブ海に出航しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "古い相棒のジョン・ホーキンスが同行しました。",
+      "text_markdown": "古い相棒のジョン・ホーキンスが同行しました。",
+      "tts": {
+        "text": "古い相棒のジョン・ホーキンスが同行しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "遠征は始めから不運に見舞われました。",
+      "text_markdown": "遠征は始めから不運に見舞われました。",
+      "tts": {
+        "text": "遠征は始めから不運に見舞われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ホーキンスは病気になり、プエルトリコ沖で死亡しました。",
+      "text_markdown": "ホーキンスは病気になり、プエルトリコ沖で死亡しました。",
+      "tts": {
+        "text": "ホーキンスは病気になり、プエルトリコ沖で死亡しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクはプエルトリコのサン・フアンを攻撃しましたが、スペインの防衛隊に撃退されました。",
+      "text_markdown": "ドレイクはプエルトリコのサン・フアンを攻撃しましたが、スペインの防衛隊に撃退されました。",
+      "tts": {
+        "text": "ドレイクはプエルトリコのサン・フアンを攻撃しましたが、スペインの防衛隊に撃退されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いくつかの小さな標的を襲撃しましたが、財宝はほとんど見つかりませんでした。",
+      "text_markdown": "いくつかの小さな標的を襲撃しましたが、財宝はほとんど見つかりませんでした。",
+      "tts": {
+        "text": "いくつかの小さな標的を襲撃しましたが、財宝はほとんど見つかりませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインはドレイクの以前の襲撃以来、防衛を強化していました。",
+      "text_markdown": "スペインはドレイクの以前の襲撃以来、防衛を強化していました。",
+      "tts": {
+        "text": "スペインはドレイクの以前の襲撃以来、防衛を強化していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "容易な略奪の時代は終わっていました。",
+      "text_markdown": "容易な略奪の時代は終わっていました。",
+      "tts": {
+        "text": "容易な略奪の時代は終わっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは赤痢という重い腸疾患にかかりました。",
+      "text_markdown": "ドレイクは赤痢という重い腸疾患にかかりました。",
+      "tts": {
+        "text": "ドレイクは赤痢という重い腸疾患にかかりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "艦隊がパナマの海岸を航行する間、彼の容態は急速に悪化しました。",
+      "text_markdown": "艦隊がパナマの海岸を航行する間、彼の容態は急速に悪化しました。",
+      "tts": {
+        "text": "艦隊がパナマの海岸を航行する間、彼の容態は急速に悪化しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サー・フランシス・ドレイクは1596年1月28日、ポルトベロの町の近くで船上で亡くなりました。",
+      "text_markdown": "サー・フランシス・ドレイクは1596年1月28日、ポルトベロの町の近くで船上で亡くなりました。",
+      "tts": {
+        "text": "サー・フランシス・ドレイクは千五百九十六年一月二十八日、ポルトベロの町の近くで船上で亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "享年およそ五十六歳でした。",
+      "text_markdown": "享年およそ五十六歳でした。",
+      "tts": {
+        "text": "享年およそ五十六歳でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドレイクは鉛の棺に入れられて海に葬られました。",
+      "text_markdown": "ドレイクは鉛の棺に入れられて海に葬られました。",
+      "tts": {
+        "text": "ドレイクは鉛の棺に入れられて海に葬られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "遺体は何度も襲撃したカリブ海の水中に降ろされました。",
+      "text_markdown": "遺体は何度も襲撃したカリブ海の水中に降ろされました。",
+      "tts": {
+        "text": "遺体は何度も襲撃したカリブ海の水中に降ろされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "棺は何度か現代の捜索が試みられたにもかかわらず、一度も見つかっていません。",
+      "text_markdown": "棺は何度か現代の捜索が試みられたにもかかわらず、一度も見つかっていません。",
+      "tts": {
+        "text": "棺は何度か現代の捜索が試みられたにもかかわらず、一度も見つかっていません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サー・フランシス・ドレイクは海軍史上のどの人物よりも複雑な遺産の一つを残しました。",
+      "text_markdown": "サー・フランシス・ドレイクは海軍史上のどの人物よりも複雑な遺産の一つを残しました。",
+      "tts": {
+        "text": "サー・フランシス・ドレイクは海軍史上のどの人物よりも複雑な遺産の一つを残しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は同時に国民的英雄であり国際的犯罪者でした。",
+      "text_markdown": "彼は同時に国民的英雄であり国際的犯罪者でした。",
+      "tts": {
+        "text": "彼は同時に国民的英雄であり国際的犯罪者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その評価は完全に視点によって異なります。",
+      "text_markdown": "その評価は完全に視点によって異なります。",
+      "tts": {
+        "text": "その評価は完全に視点によって異なります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランドでは、ドレイクは地球を一周し無敵艦隊を破った人物として記憶されています。",
+      "text_markdown": "イングランドでは、ドレイクは地球を一周し無敵艦隊を破った人物として記憶されています。",
+      "tts": {
+        "text": "イングランドでは、ドレイクは地球を一周し無敵艦隊を破った人物として記憶されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "プリマスや他のイングランドの都市に彼の像が立っています。",
+      "text_markdown": "プリマスや他のイングランドの都市に彼の像が立っています。",
+      "tts": {
+        "text": "プリマスや他のイングランドの都市に彼の像が立っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "プリマス湾のドレイク島は彼の名を冠しています。",
+      "text_markdown": "プリマス湾のドレイク島は彼の名を冠しています。",
+      "tts": {
+        "text": "プリマス湾のドレイク島は彼の名を冠しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はイギリス海事史で最も称えられる人物の一人です。",
+      "text_markdown": "彼はイギリス海事史で最も称えられる人物の一人です。",
+      "tts": {
+        "text": "彼はイギリス海事史で最も称えられる人物の一人です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインとラテンアメリカでは、ドレイクの記憶はまったく異なります。",
+      "text_markdown": "スペインとラテンアメリカでは、ドレイクの記憶はまったく異なります。",
+      "tts": {
+        "text": "スペインとラテンアメリカでは、ドレイクの記憶はまったく異なります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "都市を焼き、財宝を盗んだ冷酷な海賊として記憶されています。",
+      "text_markdown": "都市を焼き、財宝を盗んだ冷酷な海賊として記憶されています。",
+      "tts": {
+        "text": "都市を焼き、財宝を盗んだ冷酷な海賊として記憶されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "パナマ、コロンビア、その他の国では、植民地暴力の象徴です。",
+      "text_markdown": "パナマ、コロンビア、その他の国では、植民地暴力の象徴です。",
+      "tts": {
+        "text": "パナマ、コロンビア、その他の国では、植民地暴力の象徴です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "エル・ドラケの名はスペイン語圏の文化で今なお重みを持っています。",
+      "text_markdown": "エル・ドラケの名はスペイン語圏の文化で今なお重みを持っています。",
+      "tts": {
+        "text": "エル・ドラケの名はスペイン語圏の文化で今なお重みを持っています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隷貿易へのドレイクの関与は彼の記録から逃れられない部分です。",
+      "text_markdown": "奴隷貿易へのドレイクの関与は彼の記録から逃れられない部分です。",
+      "tts": {
+        "text": "奴隷貿易へのドレイクの関与は彼の記録から逃れられない部分です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アフリカ人を誘拐し奴隷として売る航海に参加しました。",
+      "text_markdown": "アフリカ人を誘拐し奴隷として売る航海に参加しました。",
+      "tts": {
+        "text": "アフリカ人を誘拐し奴隷として売る航海に参加しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼のキャリアのこの側面はイングランドの英雄物語ではしばしば軽視されます。",
+      "text_markdown": "彼のキャリアのこの側面はイングランドの英雄物語ではしばしば軽視されます。",
+      "tts": {
+        "text": "彼のキャリアのこの側面はイングランドの英雄物語ではしばしば軽視されます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかしこの人物とその時代を理解するために不可欠です。",
+      "text_markdown": "しかしこの人物とその時代を理解するために不可欠です。",
+      "tts": {
+        "text": "しかしこの人物とその時代を理解するために不可欠です。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカと南極大陸の間の危険な海峡、ドレイク海峡は彼の名を冠しています。",
+      "text_markdown": "南アメリカと南極大陸の間の危険な海峡、ドレイク海峡は彼の名を冠しています。",
+      "tts": {
+        "text": "南アメリカと南極大陸の間の危険な海峡、ドレイク海峡は彼の名を冠しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カリフォルニアのドレイクス湾はノヴァ・アルビオンへの上陸推定地を示しています。",
+      "text_markdown": "カリフォルニアのドレイクス湾はノヴァ・アルビオンへの上陸推定地を示しています。",
+      "tts": {
+        "text": "カリフォルニアのドレイクス湾はノヴァ・アルビオンへの上陸推定地を示しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界中の地理的特徴が彼にちなんで名付けられています。",
+      "text_markdown": "世界中の地理的特徴が彼にちなんで名付けられています。",
+      "tts": {
+        "text": "世界中の地理的特徴が彼にちなんで名付けられています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も長く語り継がれる伝説の一つはドレイクの太鼓の物語です。",
+      "text_markdown": "最も長く語り継がれる伝説の一つはドレイクの太鼓の物語です。",
+      "tts": {
+        "text": "最も長く語り継がれる伝説の一つはドレイクの太鼓の物語です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "伝承によれば、イングランドが危機に瀕した時、ドレイクの太鼓は自ら鳴るといいます。",
+      "text_markdown": "伝承によれば、イングランドが危機に瀕した時、ドレイクの太鼓は自ら鳴るといいます。",
+      "tts": {
+        "text": "伝承によれば、イングランドが危機に瀕した時、ドレイクの太鼓は自ら鳴るといいます。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バックランド修道院に保管されている太鼓は、大きな軍事的事件の前に聞こえたとされています。",
+      "text_markdown": "バックランド修道院に保管されている太鼓は、大きな軍事的事件の前に聞こえたとされています。",
+      "tts": {
+        "text": "バックランド修道院に保管されている太鼓は、大きな軍事的事件の前に聞こえたとされています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この伝説はドレイクがいかに深くイングランドの国民的アイデンティティに織り込まれているかを示しています。",
+      "text_markdown": "この伝説はドレイクがいかに深くイングランドの国民的アイデンティティに織り込まれているかを示しています。",
+      "tts": {
+        "text": "この伝説はドレイクがいかに深くイングランドの国民的アイデンティティに織り込まれているかを示しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私掠船員と海賊の区別は常に政治的なものでした。",
+      "text_markdown": "私掠船員と海賊の区別は常に政治的なものでした。",
+      "tts": {
+        "text": "私掠船員と海賊の区別は常に政治的なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ドレイクは女王からスペイン船を襲撃する許可を得ていました。",
+      "text_markdown": "ドレイクは女王からスペイン船を襲撃する許可を得ていました。",
+      "tts": {
+        "text": "ドレイクは女王からスペイン船を襲撃する許可を得ていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランドの視点では、これは彼を正当な海軍司令官にしました。",
+      "text_markdown": "イングランドの視点では、これは彼を正当な海軍司令官にしました。",
+      "tts": {
+        "text": "イングランドの視点では、これは彼を正当な海軍司令官にしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スペインの視点では、彼は王冠の庇護を受けたただの泥棒でした。",
+      "text_markdown": "スペインの視点では、彼は王冠の庇護を受けたただの泥棒でした。",
+      "tts": {
+        "text": "スペインの視点では、彼は王冠の庇護を受けたただの泥棒でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "否定できないのは彼の業績の規模です。",
+      "text_markdown": "否定できないのは彼の業績の規模です。",
+      "tts": {
+        "text": "否定できないのは彼の業績の規模です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "現代のテニスコートほどの長さしかない木造船で地球全体を周航しました。",
+      "text_markdown": "現代のテニスコートほどの長さしかない木造船で地球全体を周航しました。",
+      "tts": {
+        "text": "現代のテニスコートほどの長さしかない木造船で地球全体を周航しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "地球上で最も偉大な帝国に挑み、その物語を語るために生き延びました。",
+      "text_markdown": "地球上で最も偉大な帝国に挑み、その物語を語るために生き延びました。",
+      "tts": {
+        "text": "地球上で最も偉大な帝国に挑み、その物語を語るために生き延びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サー・フランシス・ドレイクの物語は、世界はそれを横断する勇気のある者のものだという証拠です。",
+      "text_markdown": "サー・フランシス・ドレイクの物語は、世界はそれを横断する勇気のある者のものだという証拠です。",
+      "tts": {
+        "text": "サー・フランシス・ドレイクの物語は、世界はそれを横断する勇気のある者のものだという証拠です。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

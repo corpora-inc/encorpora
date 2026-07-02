@@ -1,0 +1,4352 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_thomas_pellow",
+  "language": "ja",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのことば",
+      "text_markdown": "読者へのことば"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは海賊の側から語られる海賊物語ではない。",
+      "text_markdown": "これは海賊の側から語られる海賊物語ではない。",
+      "tts": {
+        "text": "これは海賊の側から語られる海賊物語ではない。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは連れ去られた者の物語である。",
+      "text_markdown": "これは連れ去られた者の物語である。",
+      "tts": {
+        "text": "これは連れ去られた者の物語である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローはコーンウォール出身のイギリス人少年だった。",
+      "text_markdown": "トーマス・ペローはコーンウォール出身のイギリス人少年だった。",
+      "tts": {
+        "text": "トーマス・ペローはコーンウォール出身のイギリス人少年だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "十一歳のとき、バーバリ海賊に捕らえられモロッコに連れて行かれた。",
+      "text_markdown": "十一歳のとき、バーバリ海賊に捕らえられモロッコに連れて行かれた。",
+      "tts": {
+        "text": "十一歳のとき、バーバリ海賊に捕らえられモロッコに連れて行かれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が故郷に戻るのは二十三年後のことだった。",
+      "text_markdown": "彼が故郷に戻るのは二十三年後のことだった。",
+      "tts": {
+        "text": "彼が故郷に戻るのは二十三年後のことだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その年月の間、彼はイスラム教への改宗を強いられ、兵士として訓練され、北アフリカ史上最も強力で残虐な支配者の一人に仕えることを余儀なくされた。",
+      "text_markdown": "その年月の間、彼はイスラム教への改宗を強いられ、兵士として訓練され、北アフリカ史上最も強力で残虐な支配者の一人に仕えることを余儀なくされた。",
+      "tts": {
+        "text": "その年月の間、彼はイスラム教への改宗を強いられ、兵士として訓練され、北アフリカ史上最も強力で残虐な支配者の一人に仕えることを余儀なくされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はいかなる子どもも決して見るべきでないことを目撃した。",
+      "text_markdown": "彼はいかなる子どもも決して見るべきでないことを目撃した。",
+      "tts": {
+        "text": "彼はいかなる子どもも決して見るべきでないことを目撃した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ようやく脱出してイングランドに帰還すると、彼は捕囚の回想録を書いた。",
+      "text_markdown": "ようやく脱出してイングランドに帰還すると、彼は捕囚の回想録を書いた。",
+      "tts": {
+        "text": "ようやく脱出してイングランドに帰還すると、彼は捕囚の回想録を書いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは十八世紀で最も注目すべき文書の一つである。",
+      "text_markdown": "それは十八世紀で最も注目すべき文書の一つである。",
+      "tts": {
+        "text": "それは十八世紀で最も注目すべき文書の一つである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最も痛ましいものの一つでもある。",
+      "text_markdown": "最も痛ましいものの一つでもある。",
+      "tts": {
+        "text": "最も痛ましいものの一つでもある。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語は、海賊行為がすべての人にとって冒険ではなかったことを思い起こさせる。",
+      "text_markdown": "彼の物語は、海賊行為がすべての人にとって冒険ではなかったことを思い起こさせる。",
+      "tts": {
+        "text": "彼の物語は、海賊行為がすべての人にとって冒険ではなかったことを思い起こさせる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海を選んだ海賊一人に対して、まったく選択肢のなかった何百人もの人々がいた。",
+      "text_markdown": "海を選んだ海賊一人に対して、まったく選択肢のなかった何百人もの人々がいた。",
+      "tts": {
+        "text": "海を選んだ海賊一人に対して、まったく選択肢のなかった何百人もの人々がいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "バーバリ海岸の世界",
+      "text_markdown": "バーバリ海岸の世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーバリ海岸とは、北アフリカ沿岸のヨーロッパでの呼び名だった。",
+      "text_markdown": "バーバリ海岸とは、北アフリカ沿岸のヨーロッパでの呼び名だった。",
+      "tts": {
+        "text": "バーバリ海岸とは、北アフリカ沿岸のヨーロッパでの呼び名だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西のモロッコから東のリビアまで広がっていた。",
+      "text_markdown": "西のモロッコから東のリビアまで広がっていた。",
+      "tts": {
+        "text": "西のモロッコから東のリビアまで広がっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何世紀にもわたり、世界で最も恐れられた海賊たちの拠点だった。",
+      "text_markdown": "何世紀にもわたり、世界で最も恐れられた海賊たちの拠点だった。",
+      "tts": {
+        "text": "何世紀にもわたり、世界で最も恐れられた海賊たちの拠点だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーバリ海賊は普通の海賊ではなかった。",
+      "text_markdown": "バーバリ海賊は普通の海賊ではなかった。",
+      "tts": {
+        "text": "バーバリ海賊は普通の海賊ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北アフリカ諸国の庇護のもと、しばしば直接的な支援を受けて活動していた。",
+      "text_markdown": "北アフリカ諸国の庇護のもと、しばしば直接的な支援を受けて活動していた。",
+      "tts": {
+        "text": "北アフリカ諸国の庇護のもと、しばしば直接的な支援を受けて活動していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モロッコ、アルジェ、チュニス、トリポリはいずれも海賊の襲撃から利益を得ていた。",
+      "text_markdown": "モロッコ、アルジェ、チュニス、トリポリはいずれも海賊の襲撃から利益を得ていた。",
+      "tts": {
+        "text": "モロッコ、アルジェ、チュニス、トリポリはいずれも海賊の襲撃から利益を得ていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちはヨーロッパの商船や沿岸の町を襲撃した。",
+      "text_markdown": "海賊たちはヨーロッパの商船や沿岸の町を襲撃した。",
+      "tts": {
+        "text": "海賊たちはヨーロッパの商船や沿岸の町を襲撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船を拿捕し、積み荷を奪い、捕虜を取った。",
+      "text_markdown": "船を拿捕し、積み荷を奪い、捕虜を取った。",
+      "tts": {
+        "text": "船を拿捕し、積み荷を奪い、捕虜を取った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕虜はあらゆる戦利品の中で最も貴重なものだった。",
+      "text_markdown": "捕虜はあらゆる戦利品の中で最も貴重なものだった。",
+      "tts": {
+        "text": "捕虜はあらゆる戦利品の中で最も貴重なものだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕虜は家族から多額の身代金と引き換えに返されることがあった。",
+      "text_markdown": "捕虜は家族から多額の身代金と引き換えに返されることがあった。",
+      "tts": {
+        "text": "捕虜は家族から多額の身代金と引き換えに返されることがあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "身代金が払えない者は奴隷として売られた。",
+      "text_markdown": "身代金が払えない者は奴隷として売られた。",
+      "tts": {
+        "text": "身代金が払えない者は奴隷として売られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家たちは、1530年から1780年の間に百万人以上のヨーロッパ人がバーバリ海賊に奴隷にされたと推定している。",
+      "text_markdown": "歴史家たちは、1530年から1780年の間に百万人以上のヨーロッパ人がバーバリ海賊に奴隷にされたと推定している。",
+      "tts": {
+        "text": "歴史家たちは、千五百三十年から千七百八十年の間に百万人以上のヨーロッパ人がバーバリ海賊に奴隷にされたと推定している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは奴隷貿易のもう一つの側面だった。",
+      "text_markdown": "これは奴隷貿易のもう一つの側面だった。",
+      "tts": {
+        "text": "これは奴隷貿易のもう一つの側面だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパの列強がアフリカ人を奴隷にし大西洋を越えて送り出す一方で、北アフリカの列強はヨーロッパ人を奴隷にし自国の土地で働かせていた。",
+      "text_markdown": "ヨーロッパの列強がアフリカ人を奴隷にし大西洋を越えて送り出す一方で、北アフリカの列強はヨーロッパ人を奴隷にし自国の土地で働かせていた。",
+      "tts": {
+        "text": "ヨーロッパの列強がアフリカ人を奴隷にし大西洋を越えて送り出す一方で、北アフリカの列強はヨーロッパ人を奴隷にし自国の土地で働かせていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "苦しみは地中海の両岸で現実のものだった。",
+      "text_markdown": "苦しみは地中海の両岸で現実のものだった。",
+      "tts": {
+        "text": "苦しみは地中海の両岸で現実のものだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モロッコの大西洋沿岸にある海賊港サレーは特に悪名高かった。",
+      "text_markdown": "モロッコの大西洋沿岸にある海賊港サレーは特に悪名高かった。",
+      "tts": {
+        "text": "モロッコの大西洋沿岸にある海賊港サレーは特に悪名高かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サレーの海賊はサレー海賊として知られていた。",
+      "text_markdown": "サレーの海賊はサレー海賊として知られていた。",
+      "tts": {
+        "text": "サレーの海賊はサレー海賊として知られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは地中海をはるかに越え、北はアイスランドやアイルランドまで襲撃した。",
+      "text_markdown": "彼らは地中海をはるかに越え、北はアイスランドやアイルランドまで襲撃した。",
+      "tts": {
+        "text": "彼らは地中海をはるかに越え、北はアイスランドやアイルランドまで襲撃した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1631年、サレー海賊はアイルランドのボルティモア村を襲い、100人以上を連れ去った。",
+      "text_markdown": "1631年、サレー海賊はアイルランドのボルティモア村を襲い、100人以上を連れ去った。",
+      "tts": {
+        "text": "千六百三十一年、サレー海賊はアイルランドのボルティモア村を襲い、百人以上を連れ去った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そのほとんどは二度と姿を見せなかった。",
+      "text_markdown": "そのほとんどは二度と姿を見せなかった。",
+      "tts": {
+        "text": "そのほとんどは二度と姿を見せなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これがトーマス・ペローが引きずり込まれる世界だった。",
+      "text_markdown": "これがトーマス・ペローが引きずり込まれる世界だった。",
+      "tts": {
+        "text": "これがトーマス・ペローが引きずり込まれる世界だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十八世紀初頭のモロッコはスルタン・ムーレイ・イスマーイールに統治されていた。",
+      "text_markdown": "十八世紀初頭のモロッコはスルタン・ムーレイ・イスマーイールに統治されていた。",
+      "tts": {
+        "text": "十八世紀初頭のモロッコはスルタン・ムーレイ・イスマーイールに統治されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はモロッコ史上最も長く君臨した君主の一人で、1672年から1727年まで統治した。",
+      "text_markdown": "彼はモロッコ史上最も長く君臨した君主の一人で、1672年から1727年まで統治した。",
+      "tts": {
+        "text": "彼はモロッコ史上最も長く君臨した君主の一人で、千六百七十二年から千七百二十七年まで統治した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最も残虐な統治者の一人でもあった。",
+      "text_markdown": "最も残虐な統治者の一人でもあった。",
+      "tts": {
+        "text": "最も残虐な統治者の一人でもあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ムーレイ・イスマーイールはモロッコを大帝国にすることを夢見ていた。",
+      "text_markdown": "ムーレイ・イスマーイールはモロッコを大帝国にすることを夢見ていた。",
+      "tts": {
+        "text": "ムーレイ・イスマーイールはモロッコを大帝国にすることを夢見ていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "首都メクネスに巨大な宮殿群を建設した。",
+      "text_markdown": "首都メクネスに巨大な宮殿群を建設した。",
+      "tts": {
+        "text": "首都メクネスに巨大な宮殿群を建設した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "建設はヨーロッパ人とアフリカ人の数万人の奴隷によって行われた。",
+      "text_markdown": "建設はヨーロッパ人とアフリカ人の数万人の奴隷によって行われた。",
+      "tts": {
+        "text": "建設はヨーロッパ人とアフリカ人の数万人の奴隷によって行われた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スルタンは極端な暴力行為で知られていた。",
+      "text_markdown": "スルタンは極端な暴力行為で知られていた。",
+      "tts": {
+        "text": "スルタンは極端な暴力行為で知られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "不興を買った召使いや廷臣を自ら手にかけた。",
+      "text_markdown": "不興を買った召使いや廷臣を自ら手にかけた。",
+      "tts": {
+        "text": "不興を買った召使いや廷臣を自ら手にかけた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "外国の大使たちは、気まぐれに行われる処刑を目撃したと報告した。",
+      "text_markdown": "外国の大使たちは、気まぐれに行われる処刑を目撃したと報告した。",
+      "tts": {
+        "text": "外国の大使たちは、気まぐれに行われる処刑を目撃したと報告した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "恐怖が彼の権力の礎だった。",
+      "text_markdown": "恐怖が彼の権力の礎だった。",
+      "tts": {
+        "text": "恐怖が彼の権力の礎だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黒人衛兵として知られる奴隷化された黒人兵士の親衛隊を含む巨大な軍隊を維持していた。",
+      "text_markdown": "黒人衛兵として知られる奴隷化された黒人兵士の親衛隊を含む巨大な軍隊を維持していた。",
+      "tts": {
+        "text": "黒人衛兵として知られる奴隷化された黒人兵士の親衛隊を含む巨大な軍隊を維持していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この軍隊はスルタンに忠誠を誓い、軍事力であると同時に恐怖の道具でもあった。",
+      "text_markdown": "この軍隊はスルタンに忠誠を誓い、軍事力であると同時に恐怖の道具でもあった。",
+      "tts": {
+        "text": "この軍隊はスルタンに忠誠を誓い、軍事力であると同時に恐怖の道具でもあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モロッコにおけるヨーロッパ人捕虜はさまざまな役割を果たした。",
+      "text_markdown": "モロッコにおけるヨーロッパ人捕虜はさまざまな役割を果たした。",
+      "tts": {
+        "text": "モロッコにおけるヨーロッパ人捕虜はさまざまな役割を果たした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタンの宮殿建設のために重労働に従事させられた者もいた。",
+      "text_markdown": "スルタンの宮殿建設のために重労働に従事させられた者もいた。",
+      "tts": {
+        "text": "スルタンの宮殿建設のために重労働に従事させられた者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "兵士や行政官として訓練された者もいた。",
+      "text_markdown": "兵士や行政官として訓練された者もいた。",
+      "tts": {
+        "text": "兵士や行政官として訓練された者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "少数は個人的な召使いとして留め置かれた。",
+      "text_markdown": "少数は個人的な召使いとして留め置かれた。",
+      "tts": {
+        "text": "少数は個人的な召使いとして留め置かれた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イスラム教に改宗した捕虜はやや良い待遇を受けた。",
+      "text_markdown": "イスラム教に改宗した捕虜はやや良い待遇を受けた。",
+      "tts": {
+        "text": "イスラム教に改宗した捕虜はやや良い待遇を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "改宗は自由を保証しなかったが、より高い地位への道を開いた。",
+      "text_markdown": "改宗は自由を保証しなかったが、より高い地位への道を開いた。",
+      "tts": {
+        "text": "改宗は自由を保証しなかったが、より高い地位への道を開いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くのヨーロッパ人が拷問や死の脅迫のもとで改宗した。",
+      "text_markdown": "多くのヨーロッパ人が拷問や死の脅迫のもとで改宗した。",
+      "tts": {
+        "text": "多くのヨーロッパ人が拷問や死の脅迫のもとで改宗した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの政府は時折、自国民の解放交渉を行った。",
+      "text_markdown": "ヨーロッパの政府は時折、自国民の解放交渉を行った。",
+      "tts": {
+        "text": "ヨーロッパの政府は時折、自国民の解放交渉を行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "身代金の支払いは一般的だった。",
+      "text_markdown": "身代金の支払いは一般的だった。",
+      "tts": {
+        "text": "身代金の支払いは一般的だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "修道会、特に三位一体修道会とメルセス修道会は捕虜の身請けに専心した。",
+      "text_markdown": "修道会、特に三位一体修道会とメルセス修道会は捕虜の身請けに専心した。",
+      "tts": {
+        "text": "修道会、特に三位一体修道会とメルセス修道会は捕虜の身請けに専心した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし身請けの過程は遅く、高額で、信頼できないものだった。",
+      "text_markdown": "しかし身請けの過程は遅く、高額で、信頼できないものだった。",
+      "tts": {
+        "text": "しかし身請けの過程は遅く、高額で、信頼できないものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くの捕虜は決して身請けされなかった。",
+      "text_markdown": "多くの捕虜は決して身請けされなかった。",
+      "tts": {
+        "text": "多くの捕虜は決して身請けされなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは故郷から遠く離れたモロッコで生き、そして死んだ。",
+      "text_markdown": "彼らは故郷から遠く離れたモロッコで生き、そして死んだ。",
+      "tts": {
+        "text": "彼らは故郷から遠く離れたモロッコで生き、そして死んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "バーバリ海岸の世界",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "トーマス・ペローはあやうく彼らの一人になるところだった。",
+      "text_markdown": "トーマス・ペローはあやうく彼らの一人になるところだった。",
+      "tts": {
+        "text": "トーマス・ペローはあやうく彼らの一人になるところだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローは1704年、イングランド南西端のコーンウォール、ペンリンの町で生まれた。",
+      "text_markdown": "トーマス・ペローは1704年、イングランド南西端のコーンウォール、ペンリンの町で生まれた。",
+      "tts": {
+        "text": "トーマス・ペローは千七百四年、イングランド南西端のコーンウォール、ペンリンの町で生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コーンウォールは海洋地域だった。",
+      "text_markdown": "コーンウォールは海洋地域だった。",
+      "tts": {
+        "text": "コーンウォールは海洋地域だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこの人々は何世代にもわたり海に生計を頼ってきた。",
+      "text_markdown": "そこの人々は何世代にもわたり海に生計を頼ってきた。",
+      "tts": {
+        "text": "そこの人々は何世代にもわたり海に生計を頼ってきた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスの叔父ジョン・ペロー船長は、ヨーロッパと地中海の港々と交易する商船の船乗りだった。",
+      "text_markdown": "トーマスの叔父ジョン・ペロー船長は、ヨーロッパと地中海の港々と交易する商船の船乗りだった。",
+      "tts": {
+        "text": "トーマスの叔父ジョン・ペロー船長は、ヨーロッパと地中海の港々と交易する商船の船乗りだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "貿易のリスクを熟知した経験豊富な船乗りだった。",
+      "text_markdown": "貿易のリスクを熟知した経験豊富な船乗りだった。",
+      "tts": {
+        "text": "貿易のリスクを熟知した経験豊富な船乗りだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それらのリスクの中で、バーバリ海賊が最も恐れられていた。",
+      "text_markdown": "それらのリスクの中で、バーバリ海賊が最も恐れられていた。",
+      "tts": {
+        "text": "それらのリスクの中で、バーバリ海賊が最も恐れられていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1715年、トーマスがまだ十一歳のとき、叔父は彼を自分の船フランシス号に乗せた。",
+      "text_markdown": "1715年、トーマスがまだ十一歳のとき、叔父は彼を自分の船フランシス号に乗せた。",
+      "tts": {
+        "text": "千七百十五年、トーマスがまだ十一歳のとき、叔父は彼を自分の船フランシス号に乗せた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "航海は地中海への貿易遠征のはずだった。",
+      "text_markdown": "航海は地中海への貿易遠征のはずだった。",
+      "tts": {
+        "text": "航海は地中海への貿易遠征のはずだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "少年の教育であり、家業を学ぶ機会のはずだった。",
+      "text_markdown": "少年の教育であり、家業を学ぶ機会のはずだった。",
+      "tts": {
+        "text": "少年の教育であり、家業を学ぶ機会のはずだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスは航海に出ることに胸を躍らせていた。",
+      "text_markdown": "トーマスは航海に出ることに胸を躍らせていた。",
+      "tts": {
+        "text": "トーマスは航海に出ることに胸を躍らせていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コーンウォールのほとんどの少年たちと同様、遠い港や大洋の旅の物語を聞いて育った。",
+      "text_markdown": "コーンウォールのほとんどの少年たちと同様、遠い港や大洋の旅の物語を聞いて育った。",
+      "tts": {
+        "text": "コーンウォールのほとんどの少年たちと同様、遠い港や大洋の旅の物語を聞いて育った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海での生活の現実は物語とは大きく異なることになる。",
+      "text_markdown": "海での生活の現実は物語とは大きく異なることになる。",
+      "tts": {
+        "text": "海での生活の現実は物語とは大きく異なることになる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランシス号は小さな乗組員とともにファルマスを出航した。",
+      "text_markdown": "フランシス号は小さな乗組員とともにファルマスを出航した。",
+      "tts": {
+        "text": "フランシス号は小さな乗組員とともにファルマスを出航した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペロー船長はイギリスの商品を地中海の産物と交換する計画だった。",
+      "text_markdown": "ペロー船長はイギリスの商品を地中海の産物と交換する計画だった。",
+      "tts": {
+        "text": "ペロー船長はイギリスの商品を地中海の産物と交換する計画だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "航路はスペインとポルトガルの海岸沿いを行く予定だった。",
+      "text_markdown": "航路はスペインとポルトガルの海岸沿いを行く予定だった。",
+      "tts": {
+        "text": "航路はスペインとポルトガルの海岸沿いを行く予定だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アフリカ沖のどこかで、災難が襲った。",
+      "text_markdown": "北アフリカ沖のどこかで、災難が襲った。",
+      "tts": {
+        "text": "北アフリカ沖のどこかで、災難が襲った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サレーからの海賊がフランシス号を発見し、追跡を始めた。",
+      "text_markdown": "サレーからの海賊がフランシス号を発見し、追跡を始めた。",
+      "tts": {
+        "text": "サレーからの海賊がフランシス号を発見し、追跡を始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "商船は高速で武装の整った海賊船には歯が立たなかった。",
+      "text_markdown": "商船は高速で武装の整った海賊船には歯が立たなかった。",
+      "tts": {
+        "text": "商船は高速で武装の整った海賊船には歯が立たなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペロー船長は逃げようとしたが、フランシス号は遅すぎた。",
+      "text_markdown": "ペロー船長は逃げようとしたが、フランシス号は遅すぎた。",
+      "tts": {
+        "text": "ペロー船長は逃げようとしたが、フランシス号は遅すぎた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊は距離を詰め、威嚇射撃を行った。",
+      "text_markdown": "海賊は距離を詰め、威嚇射撃を行った。",
+      "tts": {
+        "text": "海賊は距離を詰め、威嚇射撃を行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フランシス号の乗組員は降伏するほかなかった。",
+      "text_markdown": "フランシス号の乗組員は降伏するほかなかった。",
+      "tts": {
+        "text": "フランシス号の乗組員は降伏するほかなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊は船に乗り込み、乗組員を捕虜にした。",
+      "text_markdown": "海賊は船に乗り込み、乗組員を捕虜にした。",
+      "tts": {
+        "text": "海賊は船に乗り込み、乗組員を捕虜にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トーマスは武装した男たちが甲板に群がるのを見ていた。",
+      "text_markdown": "トーマスは武装した男たちが甲板に群がるのを見ていた。",
+      "tts": {
+        "text": "トーマスは武装した男たちが甲板に群がるのを見ていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は恐怖に震えていた。",
+      "text_markdown": "彼は恐怖に震えていた。",
+      "tts": {
+        "text": "彼は恐怖に震えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "暴力的な見知らぬ者たちの中にいる子どもだった。",
+      "text_markdown": "暴力的な見知らぬ者たちの中にいる子どもだった。",
+      "tts": {
+        "text": "暴力的な見知らぬ者たちの中にいる子どもだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕虜たちはサレーに連行され、その後スルタンの首都メクネスまで陸路を歩かされた。",
+      "text_markdown": "捕虜たちはサレーに連行され、その後スルタンの首都メクネスまで陸路を歩かされた。",
+      "tts": {
+        "text": "捕虜たちはサレーに連行され、その後スルタンの首都メクネスまで陸路を歩かされた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旅は数日を要した。",
+      "text_markdown": "旅は数日を要した。",
+      "tts": {
+        "text": "旅は数日を要した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "トーマスは北アフリカの太陽の下、鎖に繋がれて歩いた。言葉のわからない人々に囲まれて。",
+      "text_markdown": "トーマスは北アフリカの太陽の下、鎖に繋がれて歩いた。言葉のわからない人々に囲まれて。",
+      "tts": {
+        "text": "トーマスは北アフリカの太陽の下、鎖に繋がれて歩いた。言葉のわからない人々に囲まれて。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メクネスに着いたとき、トーマスは初めてスルタンの宮殿を目にした。",
+      "text_markdown": "メクネスに着いたとき、トーマスは初めてスルタンの宮殿を目にした。",
+      "tts": {
+        "text": "メクネスに着いたとき、トーマスは初めてスルタンの宮殿を目にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは巨大だった。中庭、庭園、巨大な壁からなる広大な複合施設。",
+      "text_markdown": "それは巨大だった。中庭、庭園、巨大な壁からなる広大な複合施設。",
+      "tts": {
+        "text": "それは巨大だった。中庭、庭園、巨大な壁からなる広大な複合施設。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはまた苦しみの場所でもあった。奴隷の労働によって建てられた。",
+      "text_markdown": "それはまた苦しみの場所でもあった。奴隷の労働によって建てられた。",
+      "tts": {
+        "text": "それはまた苦しみの場所でもあった。奴隷の労働によって建てられた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "捕虜たちはスルタン・ムーレイ・イスマーイールの前に引き出された。",
+      "text_markdown": "捕虜たちはスルタン・ムーレイ・イスマーイールの前に引き出された。",
+      "tts": {
+        "text": "捕虜たちはスルタン・ムーレイ・イスマーイールの前に引き出された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタンは農夫が家畜を点検するように彼らを検分した。",
+      "text_markdown": "スルタンは農夫が家畜を点検するように彼らを検分した。",
+      "tts": {
+        "text": "スルタンは農夫が家畜を点検するように彼らを検分した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "誰を働かせ、誰を身請けし、誰を宮廷で仕えさせるかを決めた。",
+      "text_markdown": "誰を働かせ、誰を身請けし、誰を宮廷で仕えさせるかを決めた。",
+      "tts": {
+        "text": "誰を働かせ、誰を身請けし、誰を宮廷で仕えさせるかを決めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジョン・ペロー船長はやがて身代金で解放された。",
+      "text_markdown": "ジョン・ペロー船長はやがて身代金で解放された。",
+      "tts": {
+        "text": "ジョン・ペロー船長はやがて身代金で解放された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドに帰国したが、甥の解放を確保することはできなかった。",
+      "text_markdown": "イングランドに帰国したが、甥の解放を確保することはできなかった。",
+      "tts": {
+        "text": "イングランドに帰国したが、甥の解放を確保することはできなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "トーマスはモロッコに一人残され、孤独で怯えていた。",
+      "text_markdown": "トーマスはモロッコに一人残され、孤独で怯えていた。",
+      "tts": {
+        "text": "トーマスはモロッコに一人残され、孤独で怯えていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "少年は十一歳だった。",
+      "text_markdown": "少年は十一歳だった。",
+      "tts": {
+        "text": "少年は十一歳だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家から何千マイルも離れていた。",
+      "text_markdown": "家から何千マイルも離れていた。",
+      "tts": {
+        "text": "家から何千マイルも離れていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イングランドを再び見られるかどうかわからなかった。",
+      "text_markdown": "イングランドを再び見られるかどうかわからなかった。",
+      "tts": {
+        "text": "イングランドを再び見られるかどうかわからなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の捕囚生活が始まった。",
+      "text_markdown": "彼の捕囚生活が始まった。",
+      "tts": {
+        "text": "彼の捕囚生活が始まった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "両親は息子に何が起きたのかと案じていたに違いない。",
+      "text_markdown": "両親は息子に何が起きたのかと案じていたに違いない。",
+      "tts": {
+        "text": "両親は息子に何が起きたのかと案じていたに違いない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海の向こうからは何の知らせも届くことができなかった。",
+      "text_markdown": "海の向こうからは何の知らせも届くことができなかった。",
+      "tts": {
+        "text": "海の向こうからは何の知らせも届くことができなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らが知る限り、トーマスは死んでいた。",
+      "text_markdown": "彼らが知る限り、トーマスは死んでいた。",
+      "tts": {
+        "text": "彼らが知る限り、トーマスは死んでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "囚われ人",
+      "text_markdown": "囚われ人"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローの捕囚生活の最初の数年間は、イスラム教への改宗圧力に特徴づけられた。",
+      "text_markdown": "トーマス・ペローの捕囚生活の最初の数年間は、イスラム教への改宗圧力に特徴づけられた。",
+      "tts": {
+        "text": "トーマス・ペローの捕囚生活の最初の数年間は、イスラム教への改宗圧力に特徴づけられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタンの宮廷は、ヨーロッパ人捕虜にキリスト教信仰の放棄を要求した。",
+      "text_markdown": "スルタンの宮廷は、ヨーロッパ人捕虜にキリスト教信仰の放棄を要求した。",
+      "tts": {
+        "text": "スルタンの宮廷は、ヨーロッパ人捕虜にキリスト教信仰の放棄を要求した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "改宗した者はより良い待遇を受けた。",
+      "text_markdown": "改宗した者はより良い待遇を受けた。",
+      "tts": {
+        "text": "改宗した者はより良い待遇を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拒否した者は罰を受けた。",
+      "text_markdown": "拒否した者は罰を受けた。",
+      "tts": {
+        "text": "拒否した者は罰を受けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスは最初抵抗した。",
+      "text_markdown": "トーマスは最初抵抗した。",
+      "tts": {
+        "text": "トーマスは最初抵抗した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はキリスト教国出身の少年であり、信仰は故郷から残された唯一のものだった。",
+      "text_markdown": "彼はキリスト教国出身の少年であり、信仰は故郷から残された唯一のものだった。",
+      "tts": {
+        "text": "彼はキリスト教国出身の少年であり、信仰は故郷から残された唯一のものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "異質な世界で最後に残った親しみあるものにすがる子どもの必死さで、それにしがみついた。",
+      "text_markdown": "異質な世界で最後に残った親しみあるものにすがる子どもの必死さで、それにしがみついた。",
+      "tts": {
+        "text": "異質な世界で最後に残った親しみあるものにすがる子どもの必死さで、それにしがみついた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし圧力は容赦なかった。",
+      "text_markdown": "しかし圧力は容赦なかった。",
+      "tts": {
+        "text": "しかし圧力は容赦なかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "殴られ、拷問を受けた。",
+      "text_markdown": "殴られ、拷問を受けた。",
+      "tts": {
+        "text": "殴られ、拷問を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼自身の記述によれば、意志を打ち砕くために設計された数ヶ月に及ぶ虐待を受けた。",
+      "text_markdown": "彼自身の記述によれば、意志を打ち砕くために設計された数ヶ月に及ぶ虐待を受けた。",
+      "tts": {
+        "text": "彼自身の記述によれば、意志を打ち砕くために設計された数ヶ月に及ぶ虐待を受けた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "手法は残酷かつ組織的だった。",
+      "text_markdown": "手法は残酷かつ組織的だった。",
+      "tts": {
+        "text": "手法は残酷かつ組織的だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ついにトーマスは屈した。",
+      "text_markdown": "ついにトーマスは屈した。",
+      "tts": {
+        "text": "ついにトーマスは屈した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イスラム教に改宗し、ムスリムの名を名乗った。",
+      "text_markdown": "イスラム教に改宗し、ムスリムの名を名乗った。",
+      "tts": {
+        "text": "イスラム教に改宗し、ムスリムの名を名乗った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "後にこれを捕囚生活で最も痛ましい瞬間と述べることになる。",
+      "text_markdown": "後にこれを捕囚生活で最も痛ましい瞬間と述べることになる。",
+      "tts": {
+        "text": "後にこれを捕囚生活で最も痛ましい瞬間と述べることになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "自分が信じるすべてを裏切ったと感じた。",
+      "text_markdown": "自分が信じるすべてを裏切ったと感じた。",
+      "tts": {
+        "text": "自分が信じるすべてを裏切ったと感じた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代の読者は彼を裁くことに慎重であるべきだ。",
+      "text_markdown": "現代の読者は彼を裁くことに慎重であるべきだ。",
+      "tts": {
+        "text": "現代の読者は彼を裁くことに慎重であるべきだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大人たちに拷問される孤独な子どもだったのだ。",
+      "text_markdown": "大人たちに拷問される孤独な子どもだったのだ。",
+      "tts": {
+        "text": "大人たちに拷問される孤独な子どもだったのだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の改宗は生存戦略であり、自由な選択ではなかった。",
+      "text_markdown": "彼の改宗は生存戦略であり、自由な選択ではなかった。",
+      "tts": {
+        "text": "彼の改宗は生存戦略であり、自由な選択ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "何千人もの他の捕虜が同じ耐え難い条件のもとで同じ決断を下した。",
+      "text_markdown": "何千人もの他の捕虜が同じ耐え難い条件のもとで同じ決断を下した。",
+      "tts": {
+        "text": "何千人もの他の捕虜が同じ耐え難い条件のもとで同じ決断を下した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "改宗後、トーマスはスルタンの軍隊で兵士として訓練された。",
+      "text_markdown": "改宗後、トーマスはスルタンの軍隊で兵士として訓練された。",
+      "tts": {
+        "text": "改宗後、トーマスはスルタンの軍隊で兵士として訓練された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "馬術、射撃、戦闘を学んだ。",
+      "text_markdown": "馬術、射撃、戦闘を学んだ。",
+      "tts": {
+        "text": "馬術、射撃、戦闘を学んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アラビア語に堪能になり、モロッコの習慣に通じた。",
+      "text_markdown": "アラビア語に堪能になり、モロッコの習慣に通じた。",
+      "tts": {
+        "text": "アラビア語に堪能になり、モロッコの習慣に通じた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モロッコ内陸部の軍事遠征に配属された。",
+      "text_markdown": "モロッコ内陸部の軍事遠征に配属された。",
+      "tts": {
+        "text": "モロッコ内陸部の軍事遠征に配属された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタンは反抗的な部族への支配を維持するために絶えず戦っていた。",
+      "text_markdown": "スルタンは反抗的な部族への支配を維持するために絶えず戦っていた。",
+      "tts": {
+        "text": "スルタンは反抗的な部族への支配を維持するために絶えず戦っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "トーマスはこれらの遠征に兵士として参加した。かつての捕虜が今や捕囚者に仕えていた。",
+      "text_markdown": "トーマスはこれらの遠征に兵士として参加した。かつての捕虜が今や捕囚者に仕えていた。",
+      "tts": {
+        "text": "トーマスはこれらの遠征に兵士として参加した。かつての捕虜が今や捕囚者に仕えていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "目撃した暴力は衝撃的だった。",
+      "text_markdown": "目撃した暴力は衝撃的だった。",
+      "tts": {
+        "text": "目撃した暴力は衝撃的だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "反乱に対するスルタンの処罰は残虐で公開だった。",
+      "text_markdown": "反乱に対するスルタンの処罰は残虐で公開だった。",
+      "tts": {
+        "text": "反乱に対するスルタンの処罰は残虐で公開だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "敗れた敵は大規模な見世物で処刑された。",
+      "text_markdown": "敗れた敵は大規模な見世物で処刑された。",
+      "tts": {
+        "text": "敗れた敵は大規模な見世物で処刑された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "トーマスは生涯つきまとうことになるものを目にした。",
+      "text_markdown": "トーマスは生涯つきまとうことになるものを目にした。",
+      "tts": {
+        "text": "トーマスは生涯つきまとうことになるものを目にした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "メクネスでの宮殿建設の続行にも立ち会った。",
+      "text_markdown": "メクネスでの宮殿建設の続行にも立ち会った。",
+      "tts": {
+        "text": "メクネスでの宮殿建設の続行にも立ち会った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何千人もの奴隷が昼夜を問わずスルタンの構想実現のために働いていた。",
+      "text_markdown": "何千人もの奴隷が昼夜を問わずスルタンの構想実現のために働いていた。",
+      "tts": {
+        "text": "何千人もの奴隷が昼夜を問わずスルタンの構想実現のために働いていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "倒れた労働者は建設中の壁に生き埋めにされることもあった。",
+      "text_markdown": "倒れた労働者は建設中の壁に生き埋めにされることもあった。",
+      "tts": {
+        "text": "倒れた労働者は建設中の壁に生き埋めにされることもあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ムーレイ・イスマーイールの宮殿はヴェルサイユに匹敵することを意図していた。",
+      "text_markdown": "ムーレイ・イスマーイールの宮殿はヴェルサイユに匹敵することを意図していた。",
+      "tts": {
+        "text": "ムーレイ・イスマーイールの宮殿はヴェルサイユに匹敵することを意図していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタンはフランス王の壮大な宮殿の噂を聞き、それを凌駕する決意だった。",
+      "text_markdown": "スルタンはフランス王の壮大な宮殿の噂を聞き、それを凌駕する決意だった。",
+      "tts": {
+        "text": "スルタンはフランス王の壮大な宮殿の噂を聞き、それを凌駕する決意だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その結果は風景を何マイルにもわたって横切る巨大な複合施設だった。",
+      "text_markdown": "その結果は風景を何マイルにもわたって横切る巨大な複合施設だった。",
+      "tts": {
+        "text": "その結果は風景を何マイルにもわたって横切る巨大な複合施設だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスは何年もスルタンの軍に仕えた。",
+      "text_markdown": "トーマスは何年もスルタンの軍に仕えた。",
+      "tts": {
+        "text": "トーマスは何年もスルタンの軍に仕えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "昇進し、ある程度の信頼と責任を得た。",
+      "text_markdown": "昇進し、ある程度の信頼と責任を得た。",
+      "tts": {
+        "text": "昇進し、ある程度の信頼と責任を得た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし自分が囚人であることを決して忘れなかった。",
+      "text_markdown": "しかし自分が囚人であることを決して忘れなかった。",
+      "tts": {
+        "text": "しかし自分が囚人であることを決して忘れなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "帰郷への思いを決して捨てなかった。",
+      "text_markdown": "帰郷への思いを決して捨てなかった。",
+      "tts": {
+        "text": "帰郷への思いを決して捨てなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モロッコにいる他のヨーロッパ人捕虜と接触した。",
+      "text_markdown": "モロッコにいる他のヨーロッパ人捕虜と接触した。",
+      "tts": {
+        "text": "モロッコにいる他のヨーロッパ人捕虜と接触した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "国中に散らばる数百人がいた。",
+      "text_markdown": "国中に散らばる数百人がいた。",
+      "tts": {
+        "text": "国中に散らばる数百人がいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは情報を共有し互いを支え合う地下組織を形成した。",
+      "text_markdown": "彼らは情報を共有し互いを支え合う地下組織を形成した。",
+      "tts": {
+        "text": "彼らは情報を共有し互いを支え合う地下組織を形成した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新しい生活に適応し真摯に改宗した捕虜もいた。",
+      "text_markdown": "新しい生活に適応し真摯に改宗した捕虜もいた。",
+      "tts": {
+        "text": "新しい生活に適応し真摯に改宗した捕虜もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "元の信仰を密かに守り、扉の向こうでキリスト教を実践し続けた者もいた。",
+      "text_markdown": "元の信仰を密かに守り、扉の向こうでキリスト教を実践し続けた者もいた。",
+      "tts": {
+        "text": "元の信仰を密かに守り、扉の向こうでキリスト教を実践し続けた者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "トーマスはこの二つの世界の間のどこかに存在していた。",
+      "text_markdown": "トーマスはこの二つの世界の間のどこかに存在していた。",
+      "tts": {
+        "text": "トーマスはこの二つの世界の間のどこかに存在していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "公の場では忠実なムスリム兵士の役を演じた。",
+      "text_markdown": "公の場では忠実なムスリム兵士の役を演じた。",
+      "tts": {
+        "text": "公の場では忠実なムスリム兵士の役を演じた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私的にはコーンウォールの記憶と脱出の希望を育んだ。",
+      "text_markdown": "私的にはコーンウォールの記憶と脱出の希望を育んだ。",
+      "tts": {
+        "text": "私的にはコーンウォールの記憶と脱出の希望を育んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "存在の二面性は消耗するものだった。",
+      "text_markdown": "存在の二面性は消耗するものだった。",
+      "tts": {
+        "text": "存在の二面性は消耗するものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "常に演技をし、常に本当の自分を隠していた。",
+      "text_markdown": "常に演技をし、常に本当の自分を隠していた。",
+      "tts": {
+        "text": "常に演技をし、常に本当の自分を隠していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年月が流れた。",
+      "text_markdown": "年月が流れた。",
+      "tts": {
+        "text": "年月が流れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トーマスはスルタンに仕える中で少年から大人へと成長した。",
+      "text_markdown": "トーマスはスルタンに仕える中で少年から大人へと成長した。",
+      "tts": {
+        "text": "トーマスはスルタンに仕える中で少年から大人へと成長した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モロッコで季節が巡り、イングランドは薄れゆく記憶となった。",
+      "text_markdown": "モロッコで季節が巡り、イングランドは薄れゆく記憶となった。",
+      "tts": {
+        "text": "モロッコで季節が巡り、イングランドは薄れゆく記憶となった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "囚われ人",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし脱出への欲求は決して死ななかった。",
+      "text_markdown": "しかし脱出への欲求は決して死ななかった。",
+      "tts": {
+        "text": "しかし脱出への欲求は決して死ななかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "捕囚",
+      "text_markdown": "捕囚"
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1727年、スルタン・ムーレイ・イスマーイールが55年の治世の後に死去した。",
+      "text_markdown": "1727年、スルタン・ムーレイ・イスマーイールが55年の治世の後に死去した。",
+      "tts": {
+        "text": "千七百二十七年、スルタン・ムーレイ・イスマーイールが五十五年の治世の後に死去した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の死はモロッコを混乱に陥れた。",
+      "text_markdown": "彼の死はモロッコを混乱に陥れた。",
+      "tts": {
+        "text": "彼の死はモロッコを混乱に陥れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの息子たちが王位を争い、激しい継承危機が勃発した。",
+      "text_markdown": "多くの息子たちが王位を争い、激しい継承危機が勃発した。",
+      "tts": {
+        "text": "多くの息子たちが王位を争い、激しい継承危機が勃発した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次の十年は内戦、飢饉、疫病に見舞われた。",
+      "text_markdown": "次の十年は内戦、飢饉、疫病に見舞われた。",
+      "tts": {
+        "text": "次の十年は内戦、飢饉、疫病に見舞われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "対立する王子たちが国中で争った。",
+      "text_markdown": "対立する王子たちが国中で争った。",
+      "tts": {
+        "text": "対立する王子たちが国中で争った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "軍は派閥に沿って分裂した。",
+      "text_markdown": "軍は派閥に沿って分裂した。",
+      "tts": {
+        "text": "軍は派閥に沿って分裂した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "誰も安全ではなかった。",
+      "text_markdown": "誰も安全ではなかった。",
+      "tts": {
+        "text": "誰も安全ではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローにとって、混乱は危険であると同時に好機でもあった。",
+      "text_markdown": "トーマス・ペローにとって、混乱は危険であると同時に好機でもあった。",
+      "tts": {
+        "text": "トーマス・ペローにとって、混乱は危険であると同時に好機でもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中央権力の崩壊により、捕虜を管理する規則の適用が緩くなった。",
+      "text_markdown": "中央権力の崩壊により、捕虜を管理する規則の適用が緩くなった。",
+      "tts": {
+        "text": "中央権力の崩壊により、捕虜を管理する規則の適用が緩くなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "衛兵たちは内戦に気を取られていた。",
+      "text_markdown": "衛兵たちは内戦に気を取られていた。",
+      "tts": {
+        "text": "衛兵たちは内戦に気を取られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "脱出がついに可能になるかもしれなかった。",
+      "text_markdown": "脱出がついに可能になるかもしれなかった。",
+      "tts": {
+        "text": "脱出がついに可能になるかもしれなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしモロッコからの脱出は極めて困難だった。",
+      "text_markdown": "しかしモロッコからの脱出は極めて困難だった。",
+      "tts": {
+        "text": "しかしモロッコからの脱出は極めて困難だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "国は広大で見慣れないものだった。",
+      "text_markdown": "国は広大で見慣れないものだった。",
+      "tts": {
+        "text": "国は広大で見慣れないものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパ人はすぐに見分けがつくだろう。",
+      "text_markdown": "ヨーロッパ人はすぐに見分けがつくだろう。",
+      "tts": {
+        "text": "ヨーロッパ人はすぐに見分けがつくだろう。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "再び捕まった奴隷への罰は厳しく、しばしば死だった。",
+      "text_markdown": "再び捕まった奴隷への罰は厳しく、しばしば死だった。",
+      "tts": {
+        "text": "再び捕まった奴隷への罰は厳しく、しばしば死だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスは慎重に計画しなければならなかった。",
+      "text_markdown": "トーマスは慎重に計画しなければならなかった。",
+      "tts": {
+        "text": "トーマスは慎重に計画しなければならなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "食料、ルート、味方が必要だった。",
+      "text_markdown": "食料、ルート、味方が必要だった。",
+      "tts": {
+        "text": "食料、ルート、味方が必要だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパへの便を見つけられる港に到達するため、敵対的な領土を何百マイルも旅しなければならなかった。",
+      "text_markdown": "ヨーロッパへの便を見つけられる港に到達するため、敵対的な領土を何百マイルも旅しなければならなかった。",
+      "tts": {
+        "text": "ヨーロッパへの便を見つけられる港に到達するため、敵対的な領土を何百マイルも旅しなければならなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数ヶ月かけて準備した。",
+      "text_markdown": "数ヶ月かけて準備した。",
+      "tts": {
+        "text": "数ヶ月かけて準備した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "食料、水、北への道に関する情報を集めた。",
+      "text_markdown": "食料、水、北への道に関する情報を集めた。",
+      "tts": {
+        "text": "食料、水、北への道に関する情報を集めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一緒に脱出する意思のある他の捕虜を見つけた。",
+      "text_markdown": "一緒に脱出する意思のある他の捕虜を見つけた。",
+      "tts": {
+        "text": "一緒に脱出する意思のある他の捕虜を見つけた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスはまた、何年もの条件づけを克服しなければならなかった。",
+      "text_markdown": "トーマスはまた、何年もの条件づけを克服しなければならなかった。",
+      "tts": {
+        "text": "トーマスはまた、何年もの条件づけを克服しなければならなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "子どもの頃から捕虜だった。",
+      "text_markdown": "子どもの頃から捕虜だった。",
+      "tts": {
+        "text": "子どもの頃から捕虜だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スルタンの宮廷が彼の知る唯一の大人の生活だった。",
+      "text_markdown": "スルタンの宮廷が彼の知る唯一の大人の生活だった。",
+      "tts": {
+        "text": "スルタンの宮廷が彼の知る唯一の大人の生活だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "去ることは親しんだすべてを捨てることを意味した。たとえそれが牢獄であったとしても。",
+      "text_markdown": "去ることは親しんだすべてを捨てることを意味した。たとえそれが牢獄であったとしても。",
+      "tts": {
+        "text": "去ることは親しんだすべてを捨てることを意味した。たとえそれが牢獄であったとしても。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い捕囚の心理的影響は計り知れない。",
+      "text_markdown": "長い捕囚の心理的影響は計り知れない。",
+      "tts": {
+        "text": "長い捕囚の心理的影響は計り知れない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何十年も奴隷状態にあった捕虜は自由を想像することすら困難だった。",
+      "text_markdown": "何十年も奴隷状態にあった捕虜は自由を想像することすら困難だった。",
+      "tts": {
+        "text": "何十年も奴隷状態にあった捕虜は自由を想像することすら困難だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "捕囚生活で生き延びるために適応し、その適応が解放をより困難にした。",
+      "text_markdown": "捕囚生活で生き延びるために適応し、その適応が解放をより困難にした。",
+      "tts": {
+        "text": "捕囚生活で生き延びるために適応し、その適応が解放をより困難にした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスはスルタンとその後継者に二十年以上仕えていた。",
+      "text_markdown": "トーマスはスルタンとその後継者に二十年以上仕えていた。",
+      "tts": {
+        "text": "トーマスはスルタンとその後継者に二十年以上仕えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アラビア語を流暢に話した。",
+      "text_markdown": "アラビア語を流暢に話した。",
+      "tts": {
+        "text": "アラビア語を流暢に話した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モロッコの習慣を熟知していた。",
+      "text_markdown": "モロッコの習慣を熟知していた。",
+      "tts": {
+        "text": "モロッコの習慣を熟知していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くの点で、逃げ出したい世界の一部になっていた。",
+      "text_markdown": "多くの点で、逃げ出したい世界の一部になっていた。",
+      "tts": {
+        "text": "多くの点で、逃げ出したい世界の一部になっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかしまだコーンウォールを覚えていた。",
+      "text_markdown": "しかしまだコーンウォールを覚えていた。",
+      "tts": {
+        "text": "しかしまだコーンウォールを覚えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "緑の丘と冷たい海を覚えていた。",
+      "text_markdown": "緑の丘と冷たい海を覚えていた。",
+      "tts": {
+        "text": "緑の丘と冷たい海を覚えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "家族を覚えていた。しかしその顔は長い年月を経て薄れていたに違いない。",
+      "text_markdown": "家族を覚えていた。しかしその顔は長い年月を経て薄れていたに違いない。",
+      "tts": {
+        "text": "家族を覚えていた。しかしその顔は長い年月を経て薄れていたに違いない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "故郷の記憶は、自分が本当は何者であるかをつなぎとめる糸だった。",
+      "text_markdown": "故郷の記憶は、自分が本当は何者であるかをつなぎとめる糸だった。",
+      "tts": {
+        "text": "故郷の記憶は、自分が本当は何者であるかをつなぎとめる糸だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "内戦の年月の間、トーマスは全陣営による残虐行為を目撃した。",
+      "text_markdown": "内戦の年月の間、トーマスは全陣営による残虐行為を目撃した。",
+      "tts": {
+        "text": "内戦の年月の間、トーマスは全陣営による残虐行為を目撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "都市が略奪された。",
+      "text_markdown": "都市が略奪された。",
+      "tts": {
+        "text": "都市が略奪された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "住民が虐殺された。",
+      "text_markdown": "住民が虐殺された。",
+      "tts": {
+        "text": "住民が虐殺された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "仕えることを強いられた国が自らを引き裂いていた。",
+      "text_markdown": "仕えることを強いられた国が自らを引き裂いていた。",
+      "tts": {
+        "text": "仕えることを強いられた国が自らを引き裂いていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "飢饉が田舎を席巻するのを見た。",
+      "text_markdown": "飢饉が田舎を席巻するのを見た。",
+      "tts": {
+        "text": "飢饉が田舎を席巻するのを見た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "メクネスの通りで人々が死んでいった。",
+      "text_markdown": "メクネスの通りで人々が死んでいった。",
+      "tts": {
+        "text": "メクネスの通りで人々が死んでいった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムーレイ・イスマーイールが建てた壮麗な宮殿は、維持する奴隷の軍団なしに崩壊し始めた。",
+      "text_markdown": "ムーレイ・イスマーイールが建てた壮麗な宮殿は、維持する奴隷の軍団なしに崩壊し始めた。",
+      "tts": {
+        "text": "ムーレイ・イスマーイールが建てた壮麗な宮殿は、維持する奴隷の軍団なしに崩壊し始めた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この崩壊と苦難の中で、トーマスは決断を下した。",
+      "text_markdown": "この崩壊と苦難の中で、トーマスは決断を下した。",
+      "tts": {
+        "text": "この崩壊と苦難の中で、トーマスは決断を下した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "脱出するか、試みて死ぬかだ。",
+      "text_markdown": "脱出するか、試みて死ぬかだ。",
+      "tts": {
+        "text": "脱出するか、試みて死ぬかだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "捕囚",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "崩壊しつつある国家で囚人として余生を過ごすことはできなかった。",
+      "text_markdown": "崩壊しつつある国家で囚人として余生を過ごすことはできなかった。",
+      "tts": {
+        "text": "崩壊しつつある国家で囚人として余生を過ごすことはできなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "脱出",
+      "text_markdown": "脱出"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1738年、トーマス・ペローは自由を求めて脱走した。",
+      "text_markdown": "1738年、トーマス・ペローは自由を求めて脱走した。",
+      "tts": {
+        "text": "千七百三十八年、トーマス・ペローは自由を求めて脱走した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "進行中の内戦による混乱の中、持ち場から抜け出した。",
+      "text_markdown": "進行中の内戦による混乱の中、持ち場から抜け出した。",
+      "tts": {
+        "text": "進行中の内戦による混乱の中、持ち場から抜け出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三十四歳だった。",
+      "text_markdown": "三十四歳だった。",
+      "tts": {
+        "text": "三十四歳だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "二十三年間捕虜だった。",
+      "text_markdown": "二十三年間捕虜だった。",
+      "tts": {
+        "text": "二十三年間捕虜だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北への旅は悲惨なものだった。",
+      "text_markdown": "北への旅は悲惨なものだった。",
+      "tts": {
+        "text": "北への旅は悲惨なものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "主に夜間に移動し、日中は身を隠した。",
+      "text_markdown": "主に夜間に移動し、日中は身を隠した。",
+      "tts": {
+        "text": "主に夜間に移動し、日中は身を隠した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "見つかるかもしれない道や町を避けた。",
+      "text_markdown": "見つかるかもしれない道や町を避けた。",
+      "tts": {
+        "text": "見つかるかもしれない道や町を避けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "馴染み深くもあり敵意に満ちてもいる風景の中に一人でいた。",
+      "text_markdown": "馴染み深くもあり敵意に満ちてもいる風景の中に一人でいた。",
+      "tts": {
+        "text": "馴染み深くもあり敵意に満ちてもいる風景の中に一人でいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "言語も習慣も知っていたが、逃亡者だった。",
+      "text_markdown": "言語も習慣も知っていたが、逃亡者だった。",
+      "tts": {
+        "text": "言語も習慣も知っていたが、逃亡者だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "身元が露見すれば、報奨金と引き換えに密告される恐れがあった。",
+      "text_markdown": "身元が露見すれば、報奨金と引き換えに密告される恐れがあった。",
+      "tts": {
+        "text": "身元が露見すれば、報奨金と引き換えに密告される恐れがあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "見つけたり盗んだりできる食物で何とか生き延びた。",
+      "text_markdown": "見つけたり盗んだりできる食物で何とか生き延びた。",
+      "tts": {
+        "text": "見つけたり盗んだりできる食物で何とか生き延びた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "近づく勇気のあるときは、小川や井戸から水を飲んだ。",
+      "text_markdown": "近づく勇気のあるときは、小川や井戸から水を飲んだ。",
+      "tts": {
+        "text": "近づく勇気のあるときは、小川や井戸から水を飲んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "肉体的困難は極限だったが、北へ進み続けた。",
+      "text_markdown": "肉体的困難は極限だったが、北へ進み続けた。",
+      "tts": {
+        "text": "肉体的困難は極限だったが、北へ進み続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "思いがけない助けを得ることもあった。",
+      "text_markdown": "思いがけない助けを得ることもあった。",
+      "tts": {
+        "text": "思いがけない助けを得ることもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トーマスを哀れに思い、食べ物や宿を与えてくれるモロッコ人もいた。",
+      "text_markdown": "トーマスを哀れに思い、食べ物や宿を与えてくれるモロッコ人もいた。",
+      "tts": {
+        "text": "トーマスを哀れに思い、食べ物や宿を与えてくれるモロッコ人もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "すべてが敵ではなかった。",
+      "text_markdown": "すべてが敵ではなかった。",
+      "tts": {
+        "text": "すべてが敵ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "逃走中にさえ、トーマスは人間の優しさに出会った。",
+      "text_markdown": "逃走中にさえ、トーマスは人間の優しさに出会った。",
+      "tts": {
+        "text": "逃走中にさえ、トーマスは人間の優しさに出会った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの船が見つかるかもしれない港を目指して海岸へ向かった。",
+      "text_markdown": "ヨーロッパの船が見つかるかもしれない港を目指して海岸へ向かった。",
+      "tts": {
+        "text": "ヨーロッパの船が見つかるかもしれない港を目指して海岸へ向かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旅は数週間の過酷な行程だった。",
+      "text_markdown": "旅は数週間の過酷な行程だった。",
+      "tts": {
+        "text": "旅は数週間の過酷な行程だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "毎日が再捕のリスクをはらんでいた。",
+      "text_markdown": "毎日が再捕のリスクをはらんでいた。",
+      "tts": {
+        "text": "毎日が再捕のリスクをはらんでいた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ついに海岸に到達し、ヨーロッパ行きの船に乗ることができた。",
+      "text_markdown": "ついに海岸に到達し、ヨーロッパ行きの船に乗ることができた。",
+      "tts": {
+        "text": "ついに海岸に到達し、ヨーロッパ行きの船に乗ることができた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船上での席をどう確保したかの詳細は彼の記述では不明確だ。",
+      "text_markdown": "船上での席をどう確保したかの詳細は彼の記述では不明確だ。",
+      "tts": {
+        "text": "船上での席をどう確保したかの詳細は彼の記述では不明確だ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "明らかなのは、モロッコを後にし地中海を渡ったということだ。",
+      "text_markdown": "明らかなのは、モロッコを後にし地中海を渡ったということだ。",
+      "tts": {
+        "text": "明らかなのは、モロッコを後にし地中海を渡ったということだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスがついにイングランドに到着したとき、自国で異邦人となっていた。",
+      "text_markdown": "トーマスがついにイングランドに到着したとき、自国で異邦人となっていた。",
+      "tts": {
+        "text": "トーマスがついにイングランドに到着したとき、自国で異邦人となっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "十一歳の少年として去った。",
+      "text_markdown": "十一歳の少年として去った。",
+      "tts": {
+        "text": "十一歳の少年として去った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三十四歳の男として戻った。",
+      "text_markdown": "三十四歳の男として戻った。",
+      "tts": {
+        "text": "三十四歳の男として戻った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "すべてが変わっていた。国も、その男も。",
+      "text_markdown": "すべてが変わっていた。国も、その男も。",
+      "tts": {
+        "text": "すべてが変わっていた。国も、その男も。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "家族は彼をほとんど認識できなかった。",
+      "text_markdown": "家族は彼をほとんど認識できなかった。",
+      "tts": {
+        "text": "家族は彼をほとんど認識できなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人生の半分以上を不在にしていた。",
+      "text_markdown": "人生の半分以上を不在にしていた。",
+      "tts": {
+        "text": "人生の半分以上を不在にしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "なまりのある話し方をし、動きが違い、決して理解できない経験の重みを背負っていた。",
+      "text_markdown": "なまりのある話し方をし、動きが違い、決して理解できない経験の重みを背負っていた。",
+      "tts": {
+        "text": "なまりのある話し方をし、動きが違い、決して理解できない経験の重みを背負っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "普通の生活に戻ることは極めて困難だった。",
+      "text_markdown": "普通の生活に戻ることは極めて困難だった。",
+      "tts": {
+        "text": "普通の生活に戻ることは極めて困難だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トーマスは成人生活のすべてを異文化の中で奴隷状態で過ごしていた。",
+      "text_markdown": "トーマスは成人生活のすべてを異文化の中で奴隷状態で過ごしていた。",
+      "tts": {
+        "text": "トーマスは成人生活のすべてを異文化の中で奴隷状態で過ごしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モロッコで身につけた技能はコーンウォールでは役に立たなかった。",
+      "text_markdown": "モロッコで身につけた技能はコーンウォールでは役に立たなかった。",
+      "tts": {
+        "text": "モロッコで身につけた技能はコーンウォールでは役に立たなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "帰ってきた男は去っていった少年ではなかった。",
+      "text_markdown": "帰ってきた男は去っていった少年ではなかった。",
+      "tts": {
+        "text": "帰ってきた男は去っていった少年ではなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて回想録を書き、『トーマス・ペローの長い捕囚と冒険の歴史』として出版された。",
+      "text_markdown": "やがて回想録を書き、『トーマス・ペローの長い捕囚と冒険の歴史』として出版された。",
+      "tts": {
+        "text": "やがて回想録を書き、『トーマス・ペローの長い捕囚と冒険の歴史』として出版された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "本は捕獲、強制改宗、仕えた年月、脱出を鮮明に描写した。",
+      "text_markdown": "本は捕獲、強制改宗、仕えた年月、脱出を鮮明に描写した。",
+      "tts": {
+        "text": "本は捕獲、強制改宗、仕えた年月、脱出を鮮明に描写した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "回想録はイングランドで人気を博した。",
+      "text_markdown": "回想録はイングランドで人気を博した。",
+      "tts": {
+        "text": "回想録はイングランドで人気を博した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "異国の東洋への大衆の関心とバーバリ奴隷貿易への恐怖を満たした。",
+      "text_markdown": "異国の東洋への大衆の関心とバーバリ奴隷貿易への恐怖を満たした。",
+      "tts": {
+        "text": "異国の東洋への大衆の関心とバーバリ奴隷貿易への恐怖を満たした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "激しい宗教対立の時代には反イスラムのプロパガンダとしても機能した。",
+      "text_markdown": "激しい宗教対立の時代には反イスラムのプロパガンダとしても機能した。",
+      "tts": {
+        "text": "激しい宗教対立の時代には反イスラムのプロパガンダとしても機能した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代の歴史家はトーマスの記述を敬意と慎重さをもって扱っている。",
+      "text_markdown": "現代の歴史家はトーマスの記述を敬意と慎重さをもって扱っている。",
+      "tts": {
+        "text": "現代の歴史家はトーマスの記述を敬意と慎重さをもって扱っている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部の詳細は読者向けに誇張や脚色がされた可能性がある。",
+      "text_markdown": "一部の詳細は読者向けに誇張や脚色がされた可能性がある。",
+      "tts": {
+        "text": "一部の詳細は読者向けに誇張や脚色がされた可能性がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし物語の核心は他の歴史的証拠によって裏付けられている。",
+      "text_markdown": "しかし物語の核心は他の歴史的証拠によって裏付けられている。",
+      "tts": {
+        "text": "しかし物語の核心は他の歴史的証拠によって裏付けられている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローの死亡日時と状況は不明である。",
+      "text_markdown": "トーマス・ペローの死亡日時と状況は不明である。",
+      "tts": {
+        "text": "トーマス・ペローの死亡日時と状況は不明である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "回想録の出版後、歴史の記録から姿を消す。",
+      "text_markdown": "回想録の出版後、歴史の記録から姿を消す。",
+      "tts": {
+        "text": "回想録の出版後、歴史の記録から姿を消す。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "脱出",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "二十三年間の捕囚を生き延びた男は静かに無名の中へ消えていった。",
+      "text_markdown": "二十三年間の捕囚を生き延びた男は静かに無名の中へ消えていった。",
+      "tts": {
+        "text": "二十三年間の捕囚を生き延びた男は静かに無名の中へ消えていった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローの回想録はバーバリ奴隷貿易に関する最も重要な文書の一つである。",
+      "text_markdown": "トーマス・ペローの回想録はバーバリ奴隷貿易に関する最も重要な文書の一つである。",
+      "tts": {
+        "text": "トーマス・ペローの回想録はバーバリ奴隷貿易に関する最も重要な文書の一つである。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モロッコにおけるヨーロッパ人捕虜の生活の直接的な記録を提供している。",
+      "text_markdown": "モロッコにおけるヨーロッパ人捕虜の生活の直接的な記録を提供している。",
+      "tts": {
+        "text": "モロッコにおけるヨーロッパ人捕虜の生活の直接的な記録を提供している。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これほど詳細で個人的な証言を提供する資料はほとんどない。",
+      "text_markdown": "これほど詳細で個人的な証言を提供する資料はほとんどない。",
+      "tts": {
+        "text": "これほど詳細で個人的な証言を提供する資料はほとんどない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語は、しばしば見過ごされる歴史の一章を照らし出す。",
+      "text_markdown": "彼の物語は、しばしば見過ごされる歴史の一章を照らし出す。",
+      "tts": {
+        "text": "彼の物語は、しばしば見過ごされる歴史の一章を照らし出す。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北アフリカ諸国によるヨーロッパ人の奴隷化は何世紀にもわたり続いた。",
+      "text_markdown": "北アフリカ諸国によるヨーロッパ人の奴隷化は何世紀にもわたり続いた。",
+      "tts": {
+        "text": "北アフリカ諸国によるヨーロッパ人の奴隷化は何世紀にもわたり続いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは何百万人もの人々に影響を与え、地中海世界の政治を形作った。",
+      "text_markdown": "それは何百万人もの人々に影響を与え、地中海世界の政治を形作った。",
+      "tts": {
+        "text": "それは何百万人もの人々に影響を与え、地中海世界の政治を形作った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスが維持を手伝ったメクネスの宮殿は今日も部分的に残っている。",
+      "text_markdown": "トーマスが維持を手伝ったメクネスの宮殿は今日も部分的に残っている。",
+      "tts": {
+        "text": "トーマスが維持を手伝ったメクネスの宮殿は今日も部分的に残っている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ユネスコ世界遺産である。",
+      "text_markdown": "ユネスコ世界遺産である。",
+      "tts": {
+        "text": "ユネスコ世界遺産である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "観光客がかつて奴隷たちが労働した同じ中庭を歩いている。",
+      "text_markdown": "観光客がかつて奴隷たちが労働した同じ中庭を歩いている。",
+      "tts": {
+        "text": "観光客がかつて奴隷たちが労働した同じ中庭を歩いている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "廃墟の美しさは、それを建てた苦しみを隠している。",
+      "text_markdown": "廃墟の美しさは、それを建てた苦しみを隠している。",
+      "tts": {
+        "text": "廃墟の美しさは、それを建てた苦しみを隠している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマスが仕えたスルタン、ムーレイ・イスマーイールはモロッコとヨーロッパで異なる記憶のされ方をしている。",
+      "text_markdown": "トーマスが仕えたスルタン、ムーレイ・イスマーイールはモロッコとヨーロッパで異なる記憶のされ方をしている。",
+      "tts": {
+        "text": "トーマスが仕えたスルタン、ムーレイ・イスマーイールはモロッコとヨーロッパで異なる記憶のされ方をしている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モロッコでは国を統一した強い統治者として称えられている。",
+      "text_markdown": "モロッコでは国を統一した強い統治者として称えられている。",
+      "tts": {
+        "text": "モロッコでは国を統一した強い統治者として称えられている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパでは何千人もを奴隷にした暴君として記憶されている。",
+      "text_markdown": "ヨーロッパでは何千人もを奴隷にした暴君として記憶されている。",
+      "tts": {
+        "text": "ヨーロッパでは何千人もを奴隷にした暴君として記憶されている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どちらの見方にも真実が含まれている。",
+      "text_markdown": "どちらの見方にも真実が含まれている。",
+      "tts": {
+        "text": "どちらの見方にも真実が含まれている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史は複雑であり、強力な支配者は複雑な遺産を残す。",
+      "text_markdown": "歴史は複雑であり、強力な支配者は複雑な遺産を残す。",
+      "tts": {
+        "text": "歴史は複雑であり、強力な支配者は複雑な遺産を残す。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "メクネスを建てた奴隷たちはムーレイ・イスマーイールを偉大な王とは呼ばなかっただろう。",
+      "text_markdown": "メクネスを建てた奴隷たちはムーレイ・イスマーイールを偉大な王とは呼ばなかっただろう。",
+      "tts": {
+        "text": "メクネスを建てた奴隷たちはムーレイ・イスマーイールを偉大な王とは呼ばなかっただろう。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローの物語はアイデンティティについての難しい問いも投げかける。",
+      "text_markdown": "トーマス・ペローの物語はアイデンティティについての難しい問いも投げかける。",
+      "tts": {
+        "text": "トーマス・ペローの物語はアイデンティティについての難しい問いも投げかける。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モロッコで二十三年を過ごした後、トーマスはまだイングランド人だったのか。",
+      "text_markdown": "モロッコで二十三年を過ごした後、トーマスはまだイングランド人だったのか。",
+      "tts": {
+        "text": "モロッコで二十三年を過ごした後、トーマスはまだイングランド人だったのか。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "まだキリスト教徒だったのか。",
+      "text_markdown": "まだキリスト教徒だったのか。",
+      "tts": {
+        "text": "まだキリスト教徒だったのか。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p89",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "答えは単純ではない。",
+      "text_markdown": "答えは単純ではない。",
+      "tts": {
+        "text": "答えは単純ではない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランドよりもモロッコで過ごした時間のほうが長かった。",
+      "text_markdown": "イングランドよりもモロッコで過ごした時間のほうが長かった。",
+      "tts": {
+        "text": "イングランドよりもモロッコで過ごした時間のほうが長かった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くのネイティブスピーカーよりも上手にアラビア語を話した。",
+      "text_markdown": "多くのネイティブスピーカーよりも上手にアラビア語を話した。",
+      "tts": {
+        "text": "多くのネイティブスピーカーよりも上手にアラビア語を話した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モロッコの戦争で戦い、モロッコの習慣で暮らしていた。",
+      "text_markdown": "モロッコの戦争で戦い、モロッコの習慣で暮らしていた。",
+      "tts": {
+        "text": "モロッコの戦争で戦い、モロッコの習慣で暮らしていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p90",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "捕虜と参加者の間の境界線は数十年の間に曖昧になっていた。",
+      "text_markdown": "捕虜と参加者の間の境界線は数十年の間に曖昧になっていた。",
+      "tts": {
+        "text": "捕虜と参加者の間の境界線は数十年の間に曖昧になっていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の強制改宗は珍しいことではなかった。",
+      "text_markdown": "彼の強制改宗は珍しいことではなかった。",
+      "tts": {
+        "text": "彼の強制改宗は珍しいことではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何千人ものヨーロッパ人捕虜がイスラム教への改宗を強いられた。",
+      "text_markdown": "何千人ものヨーロッパ人捕虜がイスラム教への改宗を強いられた。",
+      "tts": {
+        "text": "何千人ものヨーロッパ人捕虜がイスラム教への改宗を強いられた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最終的にキリスト教に戻った者もいた。",
+      "text_markdown": "最終的にキリスト教に戻った者もいた。",
+      "tts": {
+        "text": "最終的にキリスト教に戻った者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "生涯ムスリムのままだった者もいた。",
+      "text_markdown": "生涯ムスリムのままだった者もいた。",
+      "tts": {
+        "text": "生涯ムスリムのままだった者もいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p91",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "強制的な改宗と真の改宗の境界はしばしば不明確だった。",
+      "text_markdown": "強制的な改宗と真の改宗の境界はしばしば不明確だった。",
+      "tts": {
+        "text": "強制的な改宗と真の改宗の境界はしばしば不明確だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バーバリ奴隷貿易はトーマスの脱出後も数十年続いた。",
+      "text_markdown": "バーバリ奴隷貿易はトーマスの脱出後も数十年続いた。",
+      "tts": {
+        "text": "バーバリ奴隷貿易はトーマスの脱出後も数十年続いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヨーロッパとアメリカの海軍力が海賊を最終的に鎮圧したのは十九世紀初頭になってからだった。",
+      "text_markdown": "ヨーロッパとアメリカの海軍力が海賊を最終的に鎮圧したのは十九世紀初頭になってからだった。",
+      "tts": {
+        "text": "ヨーロッパとアメリカの海軍力が海賊を最終的に鎮圧したのは十九世紀初頭になってからだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アメリカ合衆国は1801年と1815年にバーバリ諸国に対して二度の戦争を行った。",
+      "text_markdown": "アメリカ合衆国は1801年と1815年にバーバリ諸国に対して二度の戦争を行った。",
+      "tts": {
+        "text": "アメリカ合衆国は千八百一年と千八百十五年にバーバリ諸国に対して二度の戦争を行った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トーマス・ペローの物語は究極的には生存の物語である。",
+      "text_markdown": "トーマス・ペローの物語は究極的には生存の物語である。",
+      "tts": {
+        "text": "トーマス・ペローの物語は究極的には生存の物語である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二十三年間の捕囚、強制改宗、暴力、孤立に耐えた。",
+      "text_markdown": "二十三年間の捕囚、強制改宗、暴力、孤立に耐えた。",
+      "tts": {
+        "text": "二十三年間の捕囚、強制改宗、暴力、孤立に耐えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのすべてを生き延び、帰郷の道を見つけた。",
+      "text_markdown": "そのすべてを生き延び、帰郷の道を見つけた。",
+      "tts": {
+        "text": "そのすべてを生き延び、帰郷の道を見つけた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の回想録は、一人の人間がどれほど耐え、なお自分自身であり続けられるかの証である。",
+      "text_markdown": "彼の回想録は、一人の人間がどれほど耐え、なお自分自身であり続けられるかの証である。",
+      "tts": {
+        "text": "彼の回想録は、一人の人間がどれほど耐え、なお自分自身であり続けられるかの証である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あの全ての年月を通じて、あの全ての距離を越えて、トーマス・ペローは故郷に帰りたいコーンウォールの少年であることを決してやめなかった。",
+      "text_markdown": "あの全ての年月を通じて、あの全ての距離を越えて、トーマス・ペローは故郷に帰りたいコーンウォールの少年であることを決してやめなかった。",
+      "tts": {
+        "text": "あの全ての年月を通じて、あの全ての距離を越えて、トーマス・ペローは故郷に帰りたいコーンウォールの少年であることを決してやめなかった。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

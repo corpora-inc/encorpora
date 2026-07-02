@@ -1,0 +1,4517 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_bartholomew_roberts",
+  "language": "tr",
+  "total_segments": 302,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya not",
+      "text_markdown": "Okuyucuya not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Altın Çağ'ın en başarılı korsanının gerçek hikâyesidir.",
+      "text_markdown": "Bu, Altın Çağ'ın en başarılı korsanının gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu, Altın Çağ'ın en başarılı korsanının gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Bartholomew Roberts'tı ve dünya ona Kara Bart diyordu.",
+      "text_markdown": "Adı Bartholomew Roberts'tı ve dünya ona Kara Bart diyordu.",
+      "tts": {
+        "text": "Adı Bartholomew Roberts'tı ve dünya ona Kara Bart diyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sadece 3 yılda 400'den fazla gemi ele geçirdi; çağının hiçbir korsanı bunu başaramamıştı.",
+      "text_markdown": "Sadece 3 yılda 400'den fazla gemi ele geçirdi; çağının hiçbir korsanı bunu başaramamıştı.",
+      "tts": {
+        "text": "Sadece üç yılda dört yüzden fazla gemi ele geçirdi; çağının hiçbir korsanı bunu başaramamıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts, korsanlığı gönüllü olarak seçen bir adam değildi.",
+      "text_markdown": "Roberts, korsanlığı gönüllü olarak seçen bir adam değildi.",
+      "tts": {
+        "text": "Roberts, korsanlığı gönüllü olarak seçen bir adam değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar tarafından esir alınıp mürettebatlarına katılmaya zorlanan Gallerli bir denizciydi.",
+      "text_markdown": "Korsanlar tarafından esir alınıp mürettebatlarına katılmaya zorlanan Gallerli bir denizciydi.",
+      "tts": {
+        "text": "Korsanlar tarafından esir alınıp mürettebatlarına katılmaya zorlanan Gallerli bir denizciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birkaç hafta içinde kaptanları olmuştu.",
+      "text_markdown": "Birkaç hafta içinde kaptanları olmuştu.",
+      "tts": {
+        "text": "Birkaç hafta içinde kaptanları olmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birkaç ay içinde Atlantik'in dehşeti hâline gelmişti.",
+      "text_markdown": "Birkaç ay içinde Atlantik'in dehşeti hâline gelmişti.",
+      "tts": {
+        "text": "Birkaç ay içinde Atlantik'in dehşeti hâline gelmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap sizi Batı Afrika kıyılarından Karayip adalarına götürecek.",
+      "text_markdown": "Bu kitap sizi Batı Afrika kıyılarından Karayip adalarına götürecek.",
+      "tts": {
+        "text": "Bu kitap sizi Batı Afrika kıyılarından Karayip adalarına götürecek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İsteksiz bir korsanın nasıl yüzen bir imparatorluk kurduğunu ve onu yöneten kuralları nasıl yazdığını göreceksiniz.",
+      "text_markdown": "İsteksiz bir korsanın nasıl yüzen bir imparatorluk kurduğunu ve onu yöneten kuralları nasıl yazdığını göreceksiniz.",
+      "tts": {
+        "text": "İsteksiz bir korsanın nasıl yüzen bir imparatorluk kurduğunu ve onu yöneten kuralları nasıl yazdığını göreceksiniz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kitaptaki her şey tarihî kayıtlara, dava tutanaklarına ve görgü tanığı anlatımlarına dayanmaktadır.",
+      "text_markdown": "Bu kitaptaki her şey tarihî kayıtlara, dava tutanaklarına ve görgü tanığı anlatımlarına dayanmaktadır.",
+      "tts": {
+        "text": "Bu kitaptaki her şey tarihî kayıtlara, dava tutanaklarına ve görgü tanığı anlatımlarına dayanmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Olgular belirsiz olduğunda bunu açıkça belirteceğiz.",
+      "text_markdown": "Olgular belirsiz olduğunda bunu açıkça belirteceğiz.",
+      "tts": {
+        "text": "Olgular belirsiz olduğunda bunu açıkça belirteceğiz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Köle Kıyısının dünyası",
+      "text_markdown": "Köle Kıyısının dünyası"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On sekizinci yüzyılın başları, transatlantik köle ticaretinin doruk noktasıydı.",
+      "text_markdown": "On sekizinci yüzyılın başları, transatlantik köle ticaretinin doruk noktasıydı.",
+      "tts": {
+        "text": "On sekizinci yüzyılın başları, transatlantik köle ticaretinin doruk noktasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupa gemileri İngiltere, Fransa, Portekiz ve Hollanda limanlarından Batı Afrika kıyılarına doğru yola çıkardı.",
+      "text_markdown": "Avrupa gemileri İngiltere, Fransa, Portekiz ve Hollanda limanlarından Batı Afrika kıyılarına doğru yola çıkardı.",
+      "tts": {
+        "text": "Avrupa gemileri İngiltere, Fransa, Portekiz ve Hollanda limanlarından Batı Afrika kıyılarına doğru yola çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orada mamul malları köleleştirilmiş insanlarla takas ediyorlardı.",
+      "text_markdown": "Orada mamul malları köleleştirilmiş insanlarla takas ediyorlardı.",
+      "tts": {
+        "text": "Orada mamul malları köleleştirilmiş insanlarla takas ediyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Köleleştirilen insanlar daha sonra Atlantik'in ötesindeki Amerika'daki tarlalara naklediliyordu.",
+      "text_markdown": "Köleleştirilen insanlar daha sonra Atlantik'in ötesindeki Amerika'daki tarlalara naklediliyordu.",
+      "tts": {
+        "text": "Köleleştirilen insanlar daha sonra Atlantik'in ötesindeki Amerika'daki tarlalara naklediliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu ticaret üçgeni, Avrupalı tüccarlar ve sömürge çiftçileri için muazzam bir servet üretiyordu.",
+      "text_markdown": "Bu ticaret üçgeni, Avrupalı tüccarlar ve sömürge çiftçileri için muazzam bir servet üretiyordu.",
+      "tts": {
+        "text": "Bu ticaret üçgeni, Avrupalı tüccarlar ve sömürge çiftçileri için muazzam bir servet üretiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Köle emeğiyle yetiştirilen şeker, tütün, pamuk ve pirinç Avrupa'ya geri gönderiliyordu.",
+      "text_markdown": "Köle emeğiyle yetiştirilen şeker, tütün, pamuk ve pirinç Avrupa'ya geri gönderiliyordu.",
+      "tts": {
+        "text": "Köle emeğiyle yetiştirilen şeker, tütün, pamuk ve pirinç Avrupa'ya geri gönderiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kârlar büyük konakları, siyasi gücü ve daha fazla sömürge genişlemesini finanse ediyordu.",
+      "text_markdown": "Kârlar büyük konakları, siyasi gücü ve daha fazla sömürge genişlemesini finanse ediyordu.",
+      "tts": {
+        "text": "Kârlar büyük konakları, siyasi gücü ve daha fazla sömürge genişlemesini finanse ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Atlantik dünyasının ekonomilerini çalıştıran motoru buydu.",
+      "text_markdown": "Atlantik dünyasının ekonomilerini çalıştıran motoru buydu.",
+      "tts": {
+        "text": "Atlantik dünyasının ekonomilerini çalıştıran motoru buydu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senegal'den Angola'ya uzanan Batı Afrika kıyıları bu insan ticaretinin merkeziydi.",
+      "text_markdown": "Senegal'den Angola'ya uzanan Batı Afrika kıyıları bu insan ticaretinin merkeziydi.",
+      "tts": {
+        "text": "Senegal'den Angola'ya uzanan Batı Afrika kıyıları bu insan ticaretinin merkeziydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avrupa devletleri sahil şeridi boyunca ticaret kaleleri ve ticaret merkezleri kurmuştu.",
+      "text_markdown": "Avrupa devletleri sahil şeridi boyunca ticaret kaleleri ve ticaret merkezleri kurmuştu.",
+      "tts": {
+        "text": "Avrupa devletleri sahil şeridi boyunca ticaret kaleleri ve ticaret merkezleri kurmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Royal African Company, Afrika ticareti üzerindeki İngiliz tekelini elinde tutuyordu.",
+      "text_markdown": "Royal African Company, Afrika ticareti üzerindeki İngiliz tekelini elinde tutuyordu.",
+      "tts": {
+        "text": "Royal African Company, Afrika ticareti üzerindeki İngiliz tekelini elinde tutuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cape Coast Castle ve diğer konumlardaki kaleleri ağır şekilde tahkim edilmiş ve garnizon konulmuştu.",
+      "text_markdown": "Cape Coast Castle ve diğer konumlardaki kaleleri ağır şekilde tahkim edilmiş ve garnizon konulmuştu.",
+      "tts": {
+        "text": "Cape Coast Castle ve diğer konumlardaki kaleleri ağır şekilde tahkim edilmiş ve garnizon konulmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Atlantik'i geçen köle gemileri okyanusun en değerli hedeflerindendi.",
+      "text_markdown": "Atlantik'i geçen köle gemileri okyanusun en değerli hedeflerindendi.",
+      "tts": {
+        "text": "Atlantik'i geçen köle gemileri okyanusun en değerli hedeflerindendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gidiş yolculuğunda ticaret malları, dönüşte ise köleleştirilmiş insanlar taşıyorlardı.",
+      "text_markdown": "Gidiş yolculuğunda ticaret malları, dönüşte ise köleleştirilmiş insanlar taşıyorlardı.",
+      "tts": {
+        "text": "Gidiş yolculuğunda ticaret malları, dönüşte ise köleleştirilmiş insanlar taşıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yolculuğun her aşamasında saldırıya karşı savunmasızdılar.",
+      "text_markdown": "Yolculuğun her aşamasında saldırıya karşı savunmasızdılar.",
+      "tts": {
+        "text": "Yolculuğun her aşamasında saldırıya karşı savunmasızdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Köle gemilerini yağmalayan korsanlar hem değerli yükü hem de geminin kendisini ele geçirebilirdi.",
+      "text_markdown": "Köle gemilerini yağmalayan korsanlar hem değerli yükü hem de geminin kendisini ele geçirebilirdi.",
+      "tts": {
+        "text": "Köle gemilerini yağmalayan korsanlar hem değerli yükü hem de geminin kendisini ele geçirebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karayipler bu köle gemilerinin çoğunun varış noktasıydı.",
+      "text_markdown": "Karayipler bu köle gemilerinin çoğunun varış noktasıydı.",
+      "tts": {
+        "text": "Karayipler bu köle gemilerinin çoğunun varış noktasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jamaika, Barbados ve Hispaniola gibi adalar köle emeğiyle işletilen geniş şeker plantasyonlarıydı.",
+      "text_markdown": "Jamaika, Barbados ve Hispaniola gibi adalar köle emeğiyle işletilen geniş şeker plantasyonlarıydı.",
+      "tts": {
+        "text": "Jamaika, Barbados ve Hispaniola gibi adalar köle emeğiyle işletilen geniş şeker plantasyonlarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu plantasyonların ürettiği servet inanılmazdı.",
+      "text_markdown": "Bu plantasyonların ürettiği servet inanılmazdı.",
+      "tts": {
+        "text": "Bu plantasyonların ürettiği servet inanılmazdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tek başına Jamaika, İngiltere için tüm Kuzey Amerika sömürgelerinin toplamından daha fazla zenginlik üretiyordu.",
+      "text_markdown": "Tek başına Jamaika, İngiltere için tüm Kuzey Amerika sömürgelerinin toplamından daha fazla zenginlik üretiyordu.",
+      "tts": {
+        "text": "Tek başına Jamaika, İngiltere için tüm Kuzey Amerika sömürgelerinin toplamından daha fazla zenginlik üretiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bartholomew Roberts sahneye çıktığında Korsanlığın Altın Çağı sona yaklaşıyordu.",
+      "text_markdown": "Bartholomew Roberts sahneye çıktığında Korsanlığın Altın Çağı sona yaklaşıyordu.",
+      "tts": {
+        "text": "Bartholomew Roberts sahneye çıktığında Korsanlığın Altın Çağı sona yaklaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karasakal 1718'de öldürülmüştü.",
+      "text_markdown": "Karasakal 1718'de öldürülmüştü.",
+      "tts": {
+        "text": "Karasakal bin yedi yüz on sekizde öldürülmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nassau'daki Korsanlar Cumhuriyeti, Vali Woodes Rogers tarafından dağıtılmıştı.",
+      "text_markdown": "Nassau'daki Korsanlar Cumhuriyeti, Vali Woodes Rogers tarafından dağıtılmıştı.",
+      "tts": {
+        "text": "Nassau'daki Korsanlar Cumhuriyeti, Vali Woodes Rogers tarafından dağıtılmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sömürge hükümetleri nihayet korsanlık karşıtı deniz devriyelerine yatırım yapıyordu.",
+      "text_markdown": "Sömürge hükümetleri nihayet korsanlık karşıtı deniz devriyelerine yatırım yapıyordu.",
+      "tts": {
+        "text": "Sömürge hükümetleri nihayet korsanlık karşıtı deniz devriyelerine yatırım yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama okyanus engin, donanmalar küçüktü.",
+      "text_markdown": "Ama okyanus engin, donanmalar küçüktü.",
+      "tts": {
+        "text": "Ama okyanus engin, donanmalar küçüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kraliyet Donanması her deniz yolunu aynı anda devriye gezemezdi.",
+      "text_markdown": "Kraliyet Donanması her deniz yolunu aynı anda devriye gezemezdi.",
+      "tts": {
+        "text": "Kraliyet Donanması her deniz yolunu aynı anda devriye gezemezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kurnaz ve saldırgan korsanlar doğru sularda hâlâ cezasızca faaliyet gösterebilirdi.",
+      "text_markdown": "Kurnaz ve saldırgan korsanlar doğru sularda hâlâ cezasızca faaliyet gösterebilirdi.",
+      "tts": {
+        "text": "Kurnaz ve saldırgan korsanlar doğru sularda hâlâ cezasızca faaliyet gösterebilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Batı Afrika kıyıları deniz gücünün merkezlerinden uzak, böyle bir yerdi.",
+      "text_markdown": "Batı Afrika kıyıları deniz gücünün merkezlerinden uzak, böyle bir yerdi.",
+      "tts": {
+        "text": "Batı Afrika kıyıları deniz gücünün merkezlerinden uzak, böyle bir yerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrika'ya gidip gelen ticaret gemileri genellikle hafif silahlıydı.",
+      "text_markdown": "Afrika'ya gidip gelen ticaret gemileri genellikle hafif silahlıydı.",
+      "tts": {
+        "text": "Afrika'ya gidip gelen ticaret gemileri genellikle hafif silahlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sahipleri parayı top yerine kargo alanına harcamayı tercih ediyordu.",
+      "text_markdown": "Sahipleri parayı top yerine kargo alanına harcamayı tercih ediyordu.",
+      "tts": {
+        "text": "Sahipleri parayı top yerine kargo alanına harcamayı tercih ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mürettebatları küçük, az maaşlı ve çoğu zaman kötü muamele görmüştü.",
+      "text_markdown": "Mürettebatları küçük, az maaşlı ve çoğu zaman kötü muamele görmüştü.",
+      "tts": {
+        "text": "Mürettebatları küçük, az maaşlı ve çoğu zaman kötü muamele görmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu gemiler, saldırmaya cesaret eden herhangi bir korsan için kolay hedeflerdi.",
+      "text_markdown": "Bu gemiler, saldırmaya cesaret eden herhangi bir korsan için kolay hedeflerdi.",
+      "tts": {
+        "text": "Bu gemiler, saldırmaya cesaret eden herhangi bir korsan için kolay hedeflerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliyet Donanması Batı Afrika kıyısında küçük bir filo bulunduruyordu.",
+      "text_markdown": "Kraliyet Donanması Batı Afrika kıyısında küçük bir filo bulunduruyordu.",
+      "tts": {
+        "text": "Kraliyet Donanması Batı Afrika kıyısında küçük bir filo bulunduruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birincil görevi köle ticaretini korumaktı, korsanlığı bastırmak değil.",
+      "text_markdown": "Birincil görevi köle ticaretini korumaktı, korsanlığı bastırmak değil.",
+      "tts": {
+        "text": "Birincil görevi köle ticaretini korumaktı, korsanlığı bastırmak değil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Savaş gemileri genellikle yetersiz mürettebatlı ve bakımsızdı.",
+      "text_markdown": "Savaş gemileri genellikle yetersiz mürettebatlı ve bakımsızdı.",
+      "tts": {
+        "text": "Savaş gemileri genellikle yetersiz mürettebatlı ve bakımsızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hastalıklar, özellikle sıtma ve sarı humma, Avrupalı denizcileri korkunç sayılarda öldürüyordu.",
+      "text_markdown": "Hastalıklar, özellikle sıtma ve sarı humma, Avrupalı denizcileri korkunç sayılarda öldürüyordu.",
+      "tts": {
+        "text": "Hastalıklar, özellikle sıtma ve sarı humma, Avrupalı denizcileri korkunç sayılarda öldürüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıradan denizciler için koşullar Atlantik ticaretinin her yerinde korkunçtu.",
+      "text_markdown": "Sıradan denizciler için koşullar Atlantik ticaretinin her yerinde korkunçtu.",
+      "tts": {
+        "text": "Sıradan denizciler için koşullar Atlantik ticaretinin her yerinde korkunçtu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Disiplin sertti, yemek kötüydü ve ücretler güvenilmezdi.",
+      "text_markdown": "Disiplin sertti, yemek kötüydü ve ücretler güvenilmezdi.",
+      "tts": {
+        "text": "Disiplin sertti, yemek kötüydü ve ücretler güvenilmezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçok denizci yolculukları tamamlanmadan hastalıktan ölüyordu.",
+      "text_markdown": "Birçok denizci yolculukları tamamlanmadan hastalıktan ölüyordu.",
+      "tts": {
+        "text": "Birçok denizci yolculukları tamamlanmadan hastalıktan ölüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu koşullar bazı adamları tamamen çaresizlikten korsanlığa itti.",
+      "text_markdown": "Bu koşullar bazı adamları tamamen çaresizlikten korsanlığa itti.",
+      "tts": {
+        "text": "Bu koşullar bazı adamları tamamen çaresizlikten korsanlığa itti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yedi yüz yirmilerin başındaki Atlantik, dolayısıyla muazzam zenginlik ve korkunç acı dünyasıydı.",
+      "text_markdown": "Bin yedi yüz yirmilerin başındaki Atlantik, dolayısıyla muazzam zenginlik ve korkunç acı dünyasıydı.",
+      "tts": {
+        "text": "Bin yedi yüz yirmilerin başındaki Atlantik, dolayısıyla muazzam zenginlik ve korkunç acı dünyasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Köle ticareti bazı adamları ölçülemez zenginliğe ulaştırırken milyonları esarete mahkûm ediyordu.",
+      "text_markdown": "Köle ticareti bazı adamları ölçülemez zenginliğe ulaştırırken milyonları esarete mahkûm ediyordu.",
+      "tts": {
+        "text": "Köle ticareti bazı adamları ölçülemez zenginliğe ulaştırırken milyonları esarete mahkûm ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlık bu eşitsizlik ve zulüm ortamında serpiliyordu.",
+      "text_markdown": "Korsanlık bu eşitsizlik ve zulüm ortamında serpiliyordu.",
+      "tts": {
+        "text": "Korsanlık bu eşitsizlik ve zulüm ortamında serpiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bartholomew Roberts bu ortamda kendinden önce hiç kimsenin yapamadığı gibi başarılı olacaktı.",
+      "text_markdown": "Bartholomew Roberts bu ortamda kendinden önce hiç kimsenin yapamadığı gibi başarılı olacaktı.",
+      "tts": {
+        "text": "Bartholomew Roberts bu ortamda kendinden önce hiç kimsenin yapamadığı gibi başarılı olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın doğduğu Galler, bu dönemde mütevazı geçim kaynaklarına sahip bir ülkeydi.",
+      "text_markdown": "Roberts'ın doğduğu Galler, bu dönemde mütevazı geçim kaynaklarına sahip bir ülkeydi.",
+      "tts": {
+        "text": "Roberts'ın doğduğu Galler, bu dönemde mütevazı geçim kaynaklarına sahip bir ülkeydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gallerlilerin çoğu çiftçi, madenci veya balıkçı olarak çalışıyordu.",
+      "text_markdown": "Gallerlilerin çoğu çiftçi, madenci veya balıkçı olarak çalışıyordu.",
+      "tts": {
+        "text": "Gallerlilerin çoğu çiftçi, madenci veya balıkçı olarak çalışıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kıyıya yakın yaşayanlar için deniz, kırsal yoksulluktan bir kaçış yolu sunuyordu.",
+      "text_markdown": "Kıyıya yakın yaşayanlar için deniz, kırsal yoksulluktan bir kaçış yolu sunuyordu.",
+      "tts": {
+        "text": "Kıyıya yakın yaşayanlar için deniz, kırsal yoksulluktan bir kaçış yolu sunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Köle Kıyısının dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçok Gallerli adam ticaret filosunda, Kraliyet Donanması'nda veya her ikisinde görev yapıyordu.",
+      "text_markdown": "Birçok Gallerli adam ticaret filosunda, Kraliyet Donanması'nda veya her ikisinde görev yapıyordu.",
+      "tts": {
+        "text": "Birçok Gallerli adam ticaret filosunda, Kraliyet Donanması'nda veya her ikisinde görev yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İsteksiz korsan",
+      "text_markdown": "İsteksiz korsan"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bartholomew Roberts, 1682 yılında Galler'in Pembrokeshire bölgesindeki Casnewydd Bach köyünde doğdu.",
+      "text_markdown": "Bartholomew Roberts, 1682 yılında Galler'in Pembrokeshire bölgesindeki Casnewydd Bach köyünde doğdu.",
+      "tts": {
+        "text": "Bartholomew Roberts, bin altı yüz seksen iki yılında Galler'in Pembrokeshire bölgesindeki Casnewydd Bach köyünde doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pembrokeshire, İrlanda Denizi'ne bakan Galler'in güneybatı ucunda yer alır.",
+      "text_markdown": "Pembrokeshire, İrlanda Denizi'ne bakan Galler'in güneybatı ucunda yer alır.",
+      "tts": {
+        "text": "Pembrokeshire, İrlanda Denizi'ne bakan Galler'in güneybatı ucunda yer alır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Balıkçılık ve kıyı ticaretinin günlük yaşamın merkezinde olduğu bir denizci topluluğuydu.",
+      "text_markdown": "Balıkçılık ve kıyı ticaretinin günlük yaşamın merkezinde olduğu bir denizci topluluğuydu.",
+      "tts": {
+        "text": "Balıkçılık ve kıyı ticaretinin günlük yaşamın merkezinde olduğu bir denizci topluluğuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts denizin görüş ve duyuş mesafesinde büyüdü.",
+      "text_markdown": "Roberts denizin görüş ve duyuş mesafesinde büyüdü.",
+      "tts": {
+        "text": "Roberts denizin görüş ve duyuş mesafesinde büyüdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın çocukluğu veya ailesi hakkında çok az şey bilinmektedir.",
+      "text_markdown": "Roberts'ın çocukluğu veya ailesi hakkında çok az şey bilinmektedir.",
+      "tts": {
+        "text": "Roberts'ın çocukluğu veya ailesi hakkında çok az şey bilinmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kıyı köylerindeki çocuklar için yaygın olduğu üzere genç yaşta denize açıldı.",
+      "text_markdown": "Kıyı köylerindeki çocuklar için yaygın olduğu üzere genç yaşta denize açıldı.",
+      "tts": {
+        "text": "Kıyı köylerindeki çocuklar için yaygın olduğu üzere genç yaşta denize açıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otuz beş yaşlarına geldiğinde deneyimli ve yetenekli bir denizciydi.",
+      "text_markdown": "Otuz beş yaşlarına geldiğinde deneyimli ve yetenekli bir denizciydi.",
+      "tts": {
+        "text": "Otuz beş yaşlarına geldiğinde deneyimli ve yetenekli bir denizciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yıldızlarla navigasyon yapabilir, bir mürettebatı yönetebilir ve her hava koşulunda gemiyi idare edebilirdi.",
+      "text_markdown": "Yıldızlarla navigasyon yapabilir, bir mürettebatı yönetebilir ve her hava koşulunda gemiyi idare edebilirdi.",
+      "tts": {
+        "text": "Yıldızlarla navigasyon yapabilir, bir mürettebatı yönetebilir ve her hava koşulunda gemiyi idare edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1719 başlarında Roberts, Princess adlı bir köle gemisinde üçüncü kaptan olarak görev yapıyordu.",
+      "text_markdown": "1719 başlarında Roberts, Princess adlı bir köle gemisinde üçüncü kaptan olarak görev yapıyordu.",
+      "tts": {
+        "text": "Bin yedi yüz on dokuz başlarında Roberts, Princess adlı bir köle gemisinde üçüncü kaptan olarak görev yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Princess, bugünkü Gana kıyılarında demirlemişti ve köle ticareti yapıyordu.",
+      "text_markdown": "Princess, bugünkü Gana kıyılarında demirlemişti ve köle ticareti yapıyordu.",
+      "tts": {
+        "text": "Princess, bugünkü Gana kıyılarında demirlemişti ve köle ticareti yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roberts gemide saygı duyulan, yetkin ve güvenilir bir subaydı.",
+      "text_markdown": "Roberts gemide saygı duyulan, yetkin ve güvenilir bir subaydı.",
+      "tts": {
+        "text": "Roberts gemide saygı duyulan, yetkin ve güvenilir bir subaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kariyerinde o zamana kadar hiçbir şey korsan olacağını düşündürmüyordu.",
+      "text_markdown": "Kariyerinde o zamana kadar hiçbir şey korsan olacağını düşündürmüyordu.",
+      "tts": {
+        "text": "Kariyerinde o zamana kadar hiçbir şey korsan olacağını düşündürmüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan kaptanı Howell Davis, Batı Afrika kıyılarını büyük başarıyla yağmalıyordu.",
+      "text_markdown": "Korsan kaptanı Howell Davis, Batı Afrika kıyılarını büyük başarıyla yağmalıyordu.",
+      "tts": {
+        "text": "Korsan kaptanı Howell Davis, Batı Afrika kıyılarını büyük başarıyla yağmalıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Davis de Gallerliydi ve mürettebatı gönüllüler ile korsanlığa zorlanmış adamların karışımıydı.",
+      "text_markdown": "Davis de Gallerliydi ve mürettebatı gönüllüler ile korsanlığa zorlanmış adamların karışımıydı.",
+      "tts": {
+        "text": "Davis de Gallerliydi ve mürettebatı gönüllüler ile korsanlığa zorlanmış adamların karışımıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Davis, demirdeki Princess'ı görünce saldırıp ele geçirdi.",
+      "text_markdown": "Davis, demirdeki Princess'ı görünce saldırıp ele geçirdi.",
+      "tts": {
+        "text": "Davis, demirdeki Princess'ı görünce saldırıp ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts ve mürettebatın geri kalanı esir alındı.",
+      "text_markdown": "Roberts ve mürettebatın geri kalanı esir alındı.",
+      "tts": {
+        "text": "Roberts ve mürettebatın geri kalanı esir alındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Davis, Roberts'ı korsan mürettebatına katılmaya zorladı.",
+      "text_markdown": "Davis, Roberts'ı korsan mürettebatına katılmaya zorladı.",
+      "tts": {
+        "text": "Davis, Roberts'ı korsan mürettebatına katılmaya zorladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, yetenekli denizcilere ihtiyaç duyan korsanlar arasında yaygın bir uygulamaydı.",
+      "text_markdown": "Bu, yetenekli denizcilere ihtiyaç duyan korsanlar arasında yaygın bir uygulamaydı.",
+      "tts": {
+        "text": "Bu, yetenekli denizcilere ihtiyaç duyan korsanlar arasında yaygın bir uygulamaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roberts'ın korsanlığa zorlanmış olmaktan duyduğu kızgınlık bildirilmektedir.",
+      "text_markdown": "Roberts'ın korsanlığa zorlanmış olmaktan duyduğu kızgınlık bildirilmektedir.",
+      "tts": {
+        "text": "Roberts'ın korsanlığa zorlanmış olmaktan duyduğu kızgınlık bildirilmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak direnmenin anlamsız ve potansiyel olarak ölümcül olduğunu fark etti.",
+      "text_markdown": "Ancak direnmenin anlamsız ve potansiyel olarak ölümcül olduğunu fark etti.",
+      "tts": {
+        "text": "Ancak direnmenin anlamsız ve potansiyel olarak ölümcül olduğunu fark etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İsteksizliğine rağmen Roberts korsan mürettebatı arasında hızla sivrildi.",
+      "text_markdown": "İsteksizliğine rağmen Roberts korsan mürettebatı arasında hızla sivrildi.",
+      "tts": {
+        "text": "İsteksizliğine rağmen Roberts korsan mürettebatı arasında hızla sivrildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemi arkadaşlarının çoğundan daha eğitimliydi.",
+      "text_markdown": "Gemi arkadaşlarının çoğundan daha eğitimliydi.",
+      "tts": {
+        "text": "Gemi arkadaşlarının çoğundan daha eğitimliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mükemmel bir navigatördü ve bir gemiyi yönetmenin karmaşıklıklarını anlıyordu.",
+      "text_markdown": "Mükemmel bir navigatördü ve bir gemiyi yönetmenin karmaşıklıklarını anlıyordu.",
+      "tts": {
+        "text": "Mükemmel bir navigatördü ve bir gemiyi yönetmenin karmaşıklıklarını anlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan yoldaşları onun yeteneklerini ve baskı altındaki sakin muhakemesini fark etti.",
+      "text_markdown": "Korsan yoldaşları onun yeteneklerini ve baskı altındaki sakin muhakemesini fark etti.",
+      "tts": {
+        "text": "Korsan yoldaşları onun yeteneklerini ve baskı altındaki sakin muhakemesini fark etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts mürettebata katıldıktan sadece birkaç hafta sonra Kaptan Howell Davis öldürüldü.",
+      "text_markdown": "Roberts mürettebata katıldıktan sadece birkaç hafta sonra Kaptan Howell Davis öldürüldü.",
+      "tts": {
+        "text": "Roberts mürettebata katıldıktan sadece birkaç hafta sonra Kaptan Howell Davis öldürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Davis, Batı Afrika kıyılarındaki Príncipe adasına yelken açmıştı.",
+      "text_markdown": "Davis, Batı Afrika kıyılarındaki Príncipe adasına yelken açmıştı.",
+      "tts": {
+        "text": "Davis, Batı Afrika kıyılarındaki Príncipe adasına yelken açmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adanın valisini kaçırmak için bir hile denedi ancak pusuya düşürüldü.",
+      "text_markdown": "Adanın valisini kaçırmak için bir hile denedi ancak pusuya düşürüldü.",
+      "tts": {
+        "text": "Adanın valisini kaçırmak için bir hile denedi ancak pusuya düşürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Portekiz askerleri başarısız plan sırasında Davis'i öldürdü.",
+      "text_markdown": "Portekiz askerleri başarısız plan sırasında Davis'i öldürdü.",
+      "tts": {
+        "text": "Portekiz askerleri başarısız plan sırasında Davis'i öldürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsan mürettebatının artık yeni bir kaptana ihtiyacı vardı.",
+      "text_markdown": "Korsan mürettebatının artık yeni bir kaptana ihtiyacı vardı.",
+      "tts": {
+        "text": "Korsan mürettebatının artık yeni bir kaptana ihtiyacı vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan geleneğine uygun olarak bir seçim yaptılar.",
+      "text_markdown": "Korsan geleneğine uygun olarak bir seçim yaptılar.",
+      "tts": {
+        "text": "Korsan geleneğine uygun olarak bir seçim yaptılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birkaç aday değerlendirildi ama mürettebat Bartholomew Roberts'ı seçti.",
+      "text_markdown": "Birkaç aday değerlendirildi ama mürettebat Bartholomew Roberts'ı seçti.",
+      "tts": {
+        "text": "Birkaç aday değerlendirildi ama mürettebat Bartholomew Roberts'ı seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sadece yaklaşık altı haftadır korsandı.",
+      "text_markdown": "Sadece yaklaşık altı haftadır korsandı.",
+      "tts": {
+        "text": "Sadece yaklaşık altı haftadır korsandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts kaptanlığı kabul etti; ancak rivayete göre ellerini çamurlu suya batırdığına göre korsan kaptanı da olabileceğini söylemiş.",
+      "text_markdown": "Roberts kaptanlığı kabul etti; ancak rivayete göre ellerini çamurlu suya batırdığına göre korsan kaptanı da olabileceğini söylemiş.",
+      "tts": {
+        "text": "Roberts kaptanlığı kabul etti; ancak rivayete göre ellerini çamurlu suya batırdığına göre korsan kaptanı da olabileceğini söylemiş.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayrıca neşeli ve kısa bir hayatın parolası olacağını ifade etmiş.",
+      "text_markdown": "Ayrıca neşeli ve kısa bir hayatın parolası olacağını ifade etmiş.",
+      "tts": {
+        "text": "Ayrıca neşeli ve kısa bir hayatın parolası olacağını ifade etmiş.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu sözler korsan tarihinin en ünlü alıntılarından biri oldu.",
+      "text_markdown": "Bu sözler korsan tarihinin en ünlü alıntılarından biri oldu.",
+      "tts": {
+        "text": "Bu sözler korsan tarihinin en ünlü alıntılarından biri oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts iki aydan kısa sürede isteksiz mahkûmdan seçilmiş lidere dönüşmüştü.",
+      "text_markdown": "Roberts iki aydan kısa sürede isteksiz mahkûmdan seçilmiş lidere dönüşmüştü.",
+      "tts": {
+        "text": "Roberts iki aydan kısa sürede isteksiz mahkûmdan seçilmiş lidere dönüşmüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan olarak ilk icraatı Howell Davis'in ölümünün intikamını almak oldu.",
+      "text_markdown": "Kaptan olarak ilk icraatı Howell Davis'in ölümünün intikamını almak oldu.",
+      "tts": {
+        "text": "Kaptan olarak ilk icraatı Howell Davis'in ölümünün intikamını almak oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts mürettebatıyla birlikte Príncipe adasına geri döndü.",
+      "text_markdown": "Roberts mürettebatıyla birlikte Príncipe adasına geri döndü.",
+      "tts": {
+        "text": "Roberts mürettebatıyla birlikte Príncipe adasına geri döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gece Portekiz yerleşimine saldırdılar, binaları yakıp askerleri öldürdüler.",
+      "text_markdown": "Gece Portekiz yerleşimine saldırdılar, binaları yakıp askerleri öldürdüler.",
+      "tts": {
+        "text": "Gece Portekiz yerleşimine saldırdılar, binaları yakıp askerleri öldürdüler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu hızlı ve acımasız misilleme, Roberts'ı adamlarını koruyan bir kaptan olarak tanıttı.",
+      "text_markdown": "Bu hızlı ve acımasız misilleme, Roberts'ı adamlarını koruyan bir kaptan olarak tanıttı.",
+      "tts": {
+        "text": "Bu hızlı ve acımasız misilleme, Roberts'ı adamlarını koruyan bir kaptan olarak tanıttı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts ardından korsan mürettebatını profesyonel bir savaş gücüne dönüştürmeye girişti.",
+      "text_markdown": "Roberts ardından korsan mürettebatını profesyonel bir savaş gücüne dönüştürmeye girişti.",
+      "tts": {
+        "text": "Roberts ardından korsan mürettebatını profesyonel bir savaş gücüne dönüştürmeye girişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her mürettebat üyesinin imzalaması gereken ayrıntılı bir anlaşma maddeleri seti hazırladı.",
+      "text_markdown": "Her mürettebat üyesinin imzalaması gereken ayrıntılı bir anlaşma maddeleri seti hazırladı.",
+      "tts": {
+        "text": "Her mürettebat üyesinin imzalaması gereken ayrıntılı bir anlaşma maddeleri seti hazırladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu maddeler ganimetin paylaşımından gemideki davranış kurallarına kadar her şeyi kapsıyordu.",
+      "text_markdown": "Bu maddeler ganimetin paylaşımından gemideki davranış kurallarına kadar her şeyi kapsıyordu.",
+      "tts": {
+        "text": "Bu maddeler ganimetin paylaşımından gemideki davranış kurallarına kadar her şeyi kapsıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şimdiye kadar yazılmış en kapsamlı korsan yasalarından biriydi.",
+      "text_markdown": "Şimdiye kadar yazılmış en kapsamlı korsan yasalarından biriydi.",
+      "tts": {
+        "text": "Şimdiye kadar yazılmış en kapsamlı korsan yasalarından biriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın maddeleri her adama tüm önemli kararlarda oy hakkı tanıyordu.",
+      "text_markdown": "Roberts'ın maddeleri her adama tüm önemli kararlarda oy hakkı tanıyordu.",
+      "tts": {
+        "text": "Roberts'ın maddeleri her adama tüm önemli kararlarda oy hakkı tanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaptan ve levazımcı ganimetten daha büyük paylar alıyordu ama farklar mütevazıydı.",
+      "text_markdown": "Kaptan ve levazımcı ganimetten daha büyük paylar alıyordu ama farklar mütevazıydı.",
+      "tts": {
+        "text": "Kaptan ve levazımcı ganimetten daha büyük paylar alıyordu ama farklar mütevazıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Müzisyenlere pazar günleri izin veriliyordu; dönemine göre dikkat çekici derecede medeni bir hükümdü.",
+      "text_markdown": "Müzisyenlere pazar günleri izin veriliyordu; dönemine göre dikkat çekici derecede medeni bir hükümdü.",
+      "tts": {
+        "text": "Müzisyenlere pazar günleri izin veriliyordu; dönemine göre dikkat çekici derecede medeni bir hükümdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "İsteksiz korsan",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savaş sırasında firar eden herhangi bir adam ölüm ya da ıssız adaya bırakılma ile cezalandırılırdı.",
+      "text_markdown": "Savaş sırasında firar eden herhangi bir adam ölüm ya da ıssız adaya bırakılma ile cezalandırılırdı.",
+      "tts": {
+        "text": "Savaş sırasında firar eden herhangi bir adam ölüm ya da ıssız adaya bırakılma ile cezalandırılırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kara Korsanın seferi",
+      "text_markdown": "Kara Korsanın seferi"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın komutası altında korsan mürettebatı denizcilik tarihinin en yıkıcı seferlerinden birini başlattı.",
+      "text_markdown": "Roberts'ın komutası altında korsan mürettebatı denizcilik tarihinin en yıkıcı seferlerinden birini başlattı.",
+      "tts": {
+        "text": "Roberts'ın komutası altında korsan mürettebatı denizcilik tarihinin en yıkıcı seferlerinden birini başlattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrika kıyılarından Brezilya'ya, oradan kuzeye Karayipler üzerinden tekrar Afrika'ya yelken açtılar.",
+      "text_markdown": "Afrika kıyılarından Brezilya'ya, oradan kuzeye Karayipler üzerinden tekrar Afrika'ya yelken açtılar.",
+      "tts": {
+        "text": "Afrika kıyılarından Brezilya'ya, oradan kuzeye Karayipler üzerinden tekrar Afrika'ya yelken açtılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gittikleri her yerde şaşırtıcı bir hız ve verimlilikle gemileri ele geçirdiler.",
+      "text_markdown": "Gittikleri her yerde şaşırtıcı bir hız ve verimlilikle gemileri ele geçirdiler.",
+      "tts": {
+        "text": "Gittikleri her yerde şaşırtıcı bir hız ve verimlilikle gemileri ele geçirdiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts'ın av bulmak ve tehlikeden kaçınmak için bir içgüdüsü varmış gibiydi.",
+      "text_markdown": "Roberts'ın av bulmak ve tehlikeden kaçınmak için bir içgüdüsü varmış gibiydi.",
+      "tts": {
+        "text": "Roberts'ın av bulmak ve tehlikeden kaçınmak için bir içgüdüsü varmış gibiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts önce Atlantik'i geçerek Brezilya kıyılarına yelken açtı.",
+      "text_markdown": "Roberts önce Atlantik'i geçerek Brezilya kıyılarına yelken açtı.",
+      "tts": {
+        "text": "Roberts önce Atlantik'i geçerek Brezilya kıyılarına yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orada Lizbon'a hareket etmek üzere hazırlanan bir Portekiz hazine filosu keşfetti.",
+      "text_markdown": "Orada Lizbon'a hareket etmek üzere hazırlanan bir Portekiz hazine filosu keşfetti.",
+      "tts": {
+        "text": "Orada Lizbon'a hareket etmek üzere hazırlanan bir Portekiz hazine filosu keşfetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Filo, 2 savaş gemisinin korumasındaki 42 ticaret gemisinden oluşuyordu.",
+      "text_markdown": "Filo, 2 savaş gemisinin korumasındaki 42 ticaret gemisinden oluşuyordu.",
+      "tts": {
+        "text": "Filo, iki savaş gemisinin korumasındaki kırk iki ticaret gemisinden oluşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnanılmaz zengin ama ağır savunmalı bir hedefti.",
+      "text_markdown": "İnanılmaz zengin ama ağır savunmalı bir hedefti.",
+      "tts": {
+        "text": "İnanılmaz zengin ama ağır savunmalı bir hedefti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts karanlığın örtüsü altında cesurca filonun içine girdi.",
+      "text_markdown": "Roberts karanlığın örtüsü altında cesurca filonun içine girdi.",
+      "tts": {
+        "text": "Roberts karanlığın örtüsü altında cesurca filonun içine girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En zengin gemiyi belirledi ve eskort gemileri tepki veremeden onu ele geçirdi.",
+      "text_markdown": "En zengin gemiyi belirledi ve eskort gemileri tepki veremeden onu ele geçirdi.",
+      "tts": {
+        "text": "En zengin gemiyi belirledi ve eskort gemileri tepki veremeden onu ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ele geçirilen gemi altın, şeker, tütün ve Portekiz Kralı'na gönderilen elmaslarla süslü bir haç taşıyordu.",
+      "text_markdown": "Ele geçirilen gemi altın, şeker, tütün ve Portekiz Kralı'na gönderilen elmaslarla süslü bir haç taşıyordu.",
+      "tts": {
+        "text": "Ele geçirilen gemi altın, şeker, tütün ve Portekiz Kralı'na gönderilen elmaslarla süslü bir haç taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cesur bir baskından elde edilen muhteşem bir ganimetdi.",
+      "text_markdown": "Cesur bir baskından elde edilen muhteşem bir ganimetdi.",
+      "tts": {
+        "text": "Cesur bir baskından elde edilen muhteşem bir ganimetdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Brezilya'dan Roberts kuzeye Karayipler'e doğru yelken açtı.",
+      "text_markdown": "Brezilya'dan Roberts kuzeye Karayipler'e doğru yelken açtı.",
+      "tts": {
+        "text": "Brezilya'dan Roberts kuzeye Karayipler'e doğru yelken açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adalar genelinde deniz yollarını yağmaladı, gemi üstüne gemi ele geçirdi.",
+      "text_markdown": "Adalar genelinde deniz yollarını yağmaladı, gemi üstüne gemi ele geçirdi.",
+      "tts": {
+        "text": "Adalar genelinde deniz yollarını yağmaladı, gemi üstüne gemi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her ele geçirdiği ganimetle ünü büyüdü.",
+      "text_markdown": "Her ele geçirdiği ganimetle ünü büyüdü.",
+      "tts": {
+        "text": "Her ele geçirdiği ganimetle ünü büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karayip yollarındaki ticaret kaptanları Roberts'ın bayrağını görünce dehşete kapılmaya başladı.",
+      "text_markdown": "Karayip yollarındaki ticaret kaptanları Roberts'ın bayrağını görünce dehşete kapılmaya başladı.",
+      "tts": {
+        "text": "Karayip yollarındaki ticaret kaptanları Roberts'ın bayrağını görünce dehşete kapılmaya başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts kendi korsan bayraklarını tasarladı ve birkaç farklı bayrak dalgalandırdı.",
+      "text_markdown": "Roberts kendi korsan bayraklarını tasarladı ve birkaç farklı bayrak dalgalandırdı.",
+      "tts": {
+        "text": "Roberts kendi korsan bayraklarını tasarladı ve birkaç farklı bayrak dalgalandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birinde Barbados ve Martinik valilerini temsil eden iki kafatası üzerinde duruyordu.",
+      "text_markdown": "Birinde Barbados ve Martinik valilerini temsil eden iki kafatası üzerinde duruyordu.",
+      "tts": {
+        "text": "Birinde Barbados ve Martinik valilerini temsil eden iki kafatası üzerinde duruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu iki sömürgeye, onu avlamaya çalıştıkları için kişisel bir kin besliyordu.",
+      "text_markdown": "Bu iki sömürgeye, onu avlamaya çalıştıkları için kişisel bir kin besliyordu.",
+      "tts": {
+        "text": "Bu iki sömürgeye, onu avlamaya çalıştıkları için kişisel bir kin besliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bayrakları belirli düşmanlara yönelik meydan okuma mesajlarıydı.",
+      "text_markdown": "Bayrakları belirli düşmanlara yönelik meydan okuma mesajlarıydı.",
+      "tts": {
+        "text": "Bayrakları belirli düşmanlara yönelik meydan okuma mesajlarıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın Karayipler'deki baskınları sömürge ticareti için yıkıcı oldu.",
+      "text_markdown": "Roberts'ın Karayipler'deki baskınları sömürge ticareti için yıkıcı oldu.",
+      "tts": {
+        "text": "Roberts'ın Karayipler'deki baskınları sömürge ticareti için yıkıcı oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tek bir üç günlük dönemde Newfoundland'daki Trepassey limanında 15 gemi ele geçirdi.",
+      "text_markdown": "Tek bir üç günlük dönemde Newfoundland'daki Trepassey limanında 15 gemi ele geçirdi.",
+      "tts": {
+        "text": "Tek bir üç günlük dönemde Newfoundland'daki Trepassey limanında on beş gemi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayrıca çok sayıda balıkçı teknesi ve liman tesisini tahrip etti.",
+      "text_markdown": "Ayrıca çok sayıda balıkçı teknesi ve liman tesisini tahrip etti.",
+      "tts": {
+        "text": "Ayrıca çok sayıda balıkçı teknesi ve liman tesisini tahrip etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Trepassey saldırısı, Atlantik'te hiçbir limanın ondan güvende olmadığını kanıtladı.",
+      "text_markdown": "Trepassey saldırısı, Atlantik'te hiçbir limanın ondan güvende olmadığını kanıtladı.",
+      "tts": {
+        "text": "Trepassey saldırısı, Atlantik'te hiçbir limanın ondan güvende olmadığını kanıtladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts kişisel alışkanlıkları bakımından çoğu korsandan farklıydı.",
+      "text_markdown": "Roberts kişisel alışkanlıkları bakımından çoğu korsandan farklıydı.",
+      "tts": {
+        "text": "Roberts kişisel alışkanlıkları bakımından çoğu korsandan farklıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zengin kırmızı bir yelek ve pantolon giyerek şık giyinirdi.",
+      "text_markdown": "Zengin kırmızı bir yelek ve pantolon giyerek şık giyinirdi.",
+      "tts": {
+        "text": "Zengin kırmızı bir yelek ve pantolon giyerek şık giyinirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kırmızı tüylü büyük bir şapka ve boynunda elmas bir haç takardı.",
+      "text_markdown": "Kırmızı tüylü büyük bir şapka ve boynunda elmas bir haç takardı.",
+      "tts": {
+        "text": "Kırmızı tüylü büyük bir şapka ve boynunda elmas bir haç takardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Görünüşü kaba bir deniz kurdu değil, bir beyefendininkiydi.",
+      "text_markdown": "Görünüşü kaba bir deniz kurdu değil, bir beyefendininkiydi.",
+      "tts": {
+        "text": "Görünüşü kaba bir deniz kurdu değil, bir beyefendininkiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En dikkat çekici şekilde Roberts rom yerine çayı tercih ediyordu.",
+      "text_markdown": "En dikkat çekici şekilde Roberts rom yerine çayı tercih ediyordu.",
+      "tts": {
+        "text": "En dikkat çekici şekilde Roberts rom yerine çayı tercih ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğu denizcinin ağır içki içtiği bir çağda Roberts ılımlı bir içiciydi.",
+      "text_markdown": "Çoğu denizcinin ağır içki içtiği bir çağda Roberts ılımlı bir içiciydi.",
+      "tts": {
+        "text": "Çoğu denizcinin ağır içki içtiği bir çağda Roberts ılımlı bir içiciydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sarhoşluğun muhakemeyi bozduğuna ve gemiyi tehlikeye attığına inanıyordu.",
+      "text_markdown": "Sarhoşluğun muhakemeyi bozduğuna ve gemiyi tehlikeye attığına inanıyordu.",
+      "tts": {
+        "text": "Sarhoşluğun muhakemeyi bozduğuna ve gemiyi tehlikeye attığına inanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan maddeleri görev saatlerinde içki içme konusunda katı kurallar içeriyordu.",
+      "text_markdown": "Korsan maddeleri görev saatlerinde içki içme konusunda katı kurallar içeriyordu.",
+      "tts": {
+        "text": "Korsan maddeleri görev saatlerinde içki içme konusunda katı kurallar içeriyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts ayrıca kendi tarzında derinden dindardı.",
+      "text_markdown": "Roberts ayrıca kendi tarzında derinden dindardı.",
+      "tts": {
+        "text": "Roberts ayrıca kendi tarzında derinden dindardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gemisinde düzenli ayinler düzenler ve ilahi çalması için bir müzisyen istihdam ederdi.",
+      "text_markdown": "Gemisinde düzenli ayinler düzenler ve ilahi çalması için bir müzisyen istihdam ederdi.",
+      "tts": {
+        "text": "Gemisinde düzenli ayinler düzenler ve ilahi çalması için bir müzisyen istihdam ederdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şabat gününe uyar ve mürettebatı arasında bir ahlaki düzen görüntüsü sürdürmeye çalışırdı.",
+      "text_markdown": "Şabat gününe uyar ve mürettebatı arasında bir ahlaki düzen görüntüsü sürdürmeye çalışırdı.",
+      "tts": {
+        "text": "Şabat gününe uyar ve mürettebatı arasında bir ahlaki düzen görüntüsü sürdürmeye çalışırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu dindarlık ve korsanlık bileşimi çağdaşlarına derinden paradoksal görünüyordu.",
+      "text_markdown": "Bu dindarlık ve korsanlık bileşimi çağdaşlarına derinden paradoksal görünüyordu.",
+      "tts": {
+        "text": "Bu dindarlık ve korsanlık bileşimi çağdaşlarına derinden paradoksal görünüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Navigasyon becerileri olağanüstüydü.",
+      "text_markdown": "Navigasyon becerileri olağanüstüydü.",
+      "tts": {
+        "text": "Navigasyon becerileri olağanüstüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atlantik'i defalarca geçti ve her seferinde gitmeyi planladığı yere vardı.",
+      "text_markdown": "Atlantik'i defalarca geçti ve her seferinde gitmeyi planladığı yere vardı.",
+      "tts": {
+        "text": "Atlantik'i defalarca geçti ve her seferinde gitmeyi planladığı yere vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yalnızca temel aletlerle konumunu dikkate değer bir doğrulukla hesaplayabilirdi.",
+      "text_markdown": "Yalnızca temel aletlerle konumunu dikkate değer bir doğrulukla hesaplayabilirdi.",
+      "tts": {
+        "text": "Yalnızca temel aletlerle konumunu dikkate değer bir doğrulukla hesaplayabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçok kaptanın denizde kaybolduğu bir çağda Roberts her zaman tam olarak nerede olduğunu biliyordu.",
+      "text_markdown": "Birçok kaptanın denizde kaybolduğu bir çağda Roberts her zaman tam olarak nerede olduğunu biliyordu.",
+      "tts": {
+        "text": "Birçok kaptanın denizde kaybolduğu bir çağda Roberts her zaman tam olarak nerede olduğunu biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts gemilerinde sıkı bir disiplin uyguluyordu.",
+      "text_markdown": "Roberts gemilerinde sıkı bir disiplin uyguluyordu.",
+      "tts": {
+        "text": "Roberts gemilerinde sıkı bir disiplin uyguluyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mürettebat arasındaki kavgalar güverte altında yasaktı.",
+      "text_markdown": "Mürettebat arasındaki kavgalar güverte altında yasaktı.",
+      "tts": {
+        "text": "Mürettebat arasındaki kavgalar güverte altında yasaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anlaşmazlıklar karada, gerekirse resmi düello ile çözülürdü.",
+      "text_markdown": "Anlaşmazlıklar karada, gerekirse resmi düello ile çözülürdü.",
+      "tts": {
+        "text": "Anlaşmazlıklar karada, gerekirse resmi düello ile çözülürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her adam silahlarını her an temiz ve harekâta hazır tutmakla yükümlüydü.",
+      "text_markdown": "Her adam silahlarını her an temiz ve harekâta hazır tutmakla yükümlüydü.",
+      "tts": {
+        "text": "Her adam silahlarını her an temiz ve harekâta hazır tutmakla yükümlüydü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha fazla gemi ele geçirdikçe filosu büyüdü.",
+      "text_markdown": "Daha fazla gemi ele geçirdikçe filosu büyüdü.",
+      "tts": {
+        "text": "Daha fazla gemi ele geçirdikçe filosu büyüdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çeşitli dönemlerde aynı anda 3 veya 4 gemiyi komuta ediyordu.",
+      "text_markdown": "Çeşitli dönemlerde aynı anda 3 veya 4 gemiyi komuta ediyordu.",
+      "tts": {
+        "text": "Çeşitli dönemlerde aynı anda üç veya dört gemiyi komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amiral gemisi, Royal Fortune adını verdiği büyük bir savaş gemisiydi.",
+      "text_markdown": "Amiral gemisi, Royal Fortune adını verdiği büyük bir savaş gemisiydi.",
+      "tts": {
+        "text": "Amiral gemisi, Royal Fortune adını verdiği büyük bir savaş gemisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kariyeri boyunca bu adı birden fazla gemi için kullandı ve her zaman en güçlü gemisine aktardı.",
+      "text_markdown": "Kariyeri boyunca bu adı birden fazla gemi için kullandı ve her zaman en güçlü gemisine aktardı.",
+      "tts": {
+        "text": "Kariyeri boyunca bu adı birden fazla gemi için kullandı ve her zaman en güçlü gemisine aktardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts kendisine direnenler konusunda acımasızdı.",
+      "text_markdown": "Roberts kendisine direnenler konusunda acımasızdı.",
+      "tts": {
+        "text": "Roberts kendisine direnenler konusunda acımasızdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barışçıl bir şekilde teslim olan gemiler genellikle makul davranılır ve yağmalandıktan sonra serbest bırakılırdı.",
+      "text_markdown": "Barışçıl bir şekilde teslim olan gemiler genellikle makul davranılır ve yağmalandıktan sonra serbest bırakılırdı.",
+      "tts": {
+        "text": "Barışçıl bir şekilde teslim olan gemiler genellikle makul davranılır ve yağmalandıktan sonra serbest bırakılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karşı koyanlar hiç merhamet görmezdi.",
+      "text_markdown": "Karşı koyanlar hiç merhamet görmezdi.",
+      "tts": {
+        "text": "Karşı koyanlar hiç merhamet görmezdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts gemileri yakıyor ve bazen direnen gemilerin mürettebatlarını cezalandırıyordu.",
+      "text_markdown": "Roberts gemileri yakıyor ve bazen direnen gemilerin mürettebatlarını cezalandırıyordu.",
+      "tts": {
+        "text": "Roberts gemileri yakıyor ve bazen direnen gemilerin mürettebatlarını cezalandırıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1720'nin sonunda Roberts 200'den çok fazla gemi ele geçirmişti.",
+      "text_markdown": "1720'nin sonunda Roberts 200'den çok fazla gemi ele geçirmişti.",
+      "tts": {
+        "text": "Bin yedi yüz yirminin sonunda Roberts iki yüzden çok fazla gemi ele geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Newfoundland'dan Brezilya'ya, Batı Afrika'dan Karayipler'e kadar korku salıyordu.",
+      "text_markdown": "Adı Newfoundland'dan Brezilya'ya, Batı Afrika'dan Karayipler'e kadar korku salıyordu.",
+      "tts": {
+        "text": "Adı Newfoundland'dan Brezilya'ya, Batı Afrika'dan Karayipler'e kadar korku salıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altın Çağ'da başka hiçbir korsan onun rekoruna yaklaşamadı.",
+      "text_markdown": "Altın Çağ'da başka hiçbir korsan onun rekoruna yaklaşamadı.",
+      "tts": {
+        "text": "Altın Çağ'da başka hiçbir korsan onun rekoruna yaklaşamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kara Korsanın seferi",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her bakımdan, denize açılan en başarılı korsandı.",
+      "text_markdown": "Her bakımdan, denize açılan en başarılı korsandı.",
+      "tts": {
+        "text": "Her bakımdan, denize açılan en başarılı korsandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Korsan yasası",
+      "text_markdown": "Korsan yasası"
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gücünün doruğunda Bartholomew Roberts, ağır silahlı gemilerden oluşan bir filo ve yüzlerce sadık korsanı komuta ediyordu.",
+      "text_markdown": "Gücünün doruğunda Bartholomew Roberts, ağır silahlı gemilerden oluşan bir filo ve yüzlerce sadık korsanı komuta ediyordu.",
+      "tts": {
+        "text": "Gücünün doruğunda Bartholomew Roberts, ağır silahlı gemilerden oluşan bir filo ve yüzlerce sadık korsanı komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Operasyonu, korsan olsun olmasın dönemin herhangi bir gemisi için dikkat çekici bir organizasyon düzeyiyle yürütülüyordu.",
+      "text_markdown": "Operasyonu, korsan olsun olmasın dönemin herhangi bir gemisi için dikkat çekici bir organizasyon düzeyiyle yürütülüyordu.",
+      "tts": {
+        "text": "Operasyonu, korsan olsun olmasın dönemin herhangi bir gemisi için dikkat çekici bir organizasyon düzeyiyle yürütülüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu organizasyonun anahtarı onun ünlü korsan yasası, anlaşma maddeleriydi.",
+      "text_markdown": "Bu organizasyonun anahtarı onun ünlü korsan yasası, anlaşma maddeleriydi.",
+      "tts": {
+        "text": "Bu organizasyonun anahtarı onun ünlü korsan yasası, anlaşma maddeleriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu maddeler mürettebatın her üyesi tarafından kabul edilen gerçek bir toplumsal sözleşmeydi.",
+      "text_markdown": "Bu maddeler mürettebatın her üyesi tarafından kabul edilen gerçek bir toplumsal sözleşmeydi.",
+      "tts": {
+        "text": "Bu maddeler mürettebatın her üyesi tarafından kabul edilen gerçek bir toplumsal sözleşmeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maddeler, her adamın önemli meselelerde oy hakkına sahip olduğunu belirtiyordu.",
+      "text_markdown": "Maddeler, her adamın önemli meselelerde oy hakkına sahip olduğunu belirtiyordu.",
+      "tts": {
+        "text": "Maddeler, her adamın önemli meselelerde oy hakkına sahip olduğunu belirtiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaptan mürettebat tarafından seçilir ve mürettebat tarafından görevden alınabilirdi.",
+      "text_markdown": "Kaptan mürettebat tarafından seçilir ve mürettebat tarafından görevden alınabilirdi.",
+      "tts": {
+        "text": "Kaptan mürettebat tarafından seçilir ve mürettebat tarafından görevden alınabilirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu demokratik ilke korsan kültürünün merkezindeydi ve Kraliyet Donanması'nın tiranlık disipliniyle keskin bir tezat oluşturuyordu.",
+      "text_markdown": "Bu demokratik ilke korsan kültürünün merkezindeydi ve Kraliyet Donanması'nın tiranlık disipliniyle keskin bir tezat oluşturuyordu.",
+      "tts": {
+        "text": "Bu demokratik ilke korsan kültürünün merkezindeydi ve Kraliyet Donanması'nın tiranlık disipliniyle keskin bir tezat oluşturuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts zorla değil, rızayla yönetiyordu.",
+      "text_markdown": "Roberts zorla değil, rızayla yönetiyordu.",
+      "tts": {
+        "text": "Roberts zorla değil, rızayla yönetiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ganimet dağılımı dikkatle düzenlenmişti.",
+      "text_markdown": "Ganimet dağılımı dikkatle düzenlenmişti.",
+      "tts": {
+        "text": "Ganimet dağılımı dikkatle düzenlenmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaptan her ganimetin 2 payını, levazımcı 1 buçuk payını alıyordu.",
+      "text_markdown": "Kaptan her ganimetin 2 payını, levazımcı 1 buçuk payını alıyordu.",
+      "tts": {
+        "text": "Kaptan her ganimetin iki payını, levazımcı bir buçuk payını alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sıradan mürettebat üyelerinin her biri bir pay alıyordu.",
+      "text_markdown": "Sıradan mürettebat üyelerinin her biri bir pay alıyordu.",
+      "tts": {
+        "text": "Sıradan mürettebat üyelerinin her biri bir pay alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, kaptanların aslan payını aldığı ticaret veya donanma gemilerindeki dağılımdan çok daha adildi.",
+      "text_markdown": "Bu, kaptanların aslan payını aldığı ticaret veya donanma gemilerindeki dağılımdan çok daha adildi.",
+      "tts": {
+        "text": "Bu, kaptanların aslan payını aldığı ticaret veya donanma gemilerindeki dağılımdan çok daha adildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maddeler sakatlık tazminatı hükümlerini içeriyordu.",
+      "text_markdown": "Maddeler sakatlık tazminatı hükümlerini içeriyordu.",
+      "tts": {
+        "text": "Maddeler sakatlık tazminatı hükümlerini içeriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaşta sağ kolunu kaybeden bir korsan 600 altın sikke almaya hak kazanıyordu.",
+      "text_markdown": "Savaşta sağ kolunu kaybeden bir korsan 600 altın sikke almaya hak kazanıyordu.",
+      "tts": {
+        "text": "Savaşta sağ kolunu kaybeden bir korsan altı yüz altın sikke almaya hak kazanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha hafif yaralanmalar orantılı olarak daha düşük ödemeler alıyordu.",
+      "text_markdown": "Daha hafif yaralanmalar orantılı olarak daha düşük ödemeler alıyordu.",
+      "tts": {
+        "text": "Daha hafif yaralanmalar orantılı olarak daha düşük ödemeler alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, hükümetlerin benzer politikalar benimsemesinden yüzyıllar önce erken bir işçi tazminatı biçimiydi.",
+      "text_markdown": "Bu, hükümetlerin benzer politikalar benimsemesinden yüzyıllar önce erken bir işçi tazminatı biçimiydi.",
+      "tts": {
+        "text": "Bu, hükümetlerin benzer politikalar benimsemesinden yüzyıllar önce erken bir işçi tazminatı biçimiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemide kâğıt veya zarla para karşılığı kumar oynamak yasaktı.",
+      "text_markdown": "Gemide kâğıt veya zarla para karşılığı kumar oynamak yasaktı.",
+      "tts": {
+        "text": "Gemide kâğıt veya zarla para karşılığı kumar oynamak yasaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts kumarın kavgalara yol açtığına ve mürettebat birliğini aşındırdığına inanıyordu.",
+      "text_markdown": "Roberts kumarın kavgalara yol açtığına ve mürettebat birliğini aşındırdığına inanıyordu.",
+      "tts": {
+        "text": "Roberts kumarın kavgalara yol açtığına ve mürettebat birliğini aşındırdığına inanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Işıklar ve mumlar akşam saat sekizde söndürülmek zorundaydı.",
+      "text_markdown": "Işıklar ve mumlar akşam saat sekizde söndürülmek zorundaydı.",
+      "tts": {
+        "text": "Işıklar ve mumlar akşam saat sekizde söndürülmek zorundaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O saatten sonra içmek isteyen açık güvertede içmek zorundaydı.",
+      "text_markdown": "O saatten sonra içmek isteyen açık güvertede içmek zorundaydı.",
+      "tts": {
+        "text": "O saatten sonra içmek isteyen açık güvertede içmek zorundaydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemide kadınlara izin verilmiyordu.",
+      "text_markdown": "Gemide kadınlara izin verilmiyordu.",
+      "tts": {
+        "text": "Gemide kadınlara izin verilmiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts kadınların varlığının mürettebat arasında kıskançlık ve kavgaya yol açacağından korkuyordu.",
+      "text_markdown": "Roberts kadınların varlığının mürettebat arasında kıskançlık ve kavgaya yol açacağından korkuyordu.",
+      "tts": {
+        "text": "Roberts kadınların varlığının mürettebat arasında kıskançlık ve kavgaya yol açacağından korkuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kılık değiştirerek gemiye kadın sokarken yakalanan herhangi bir adam ölümle cezalandırılırdı.",
+      "text_markdown": "Kılık değiştirerek gemiye kadın sokarken yakalanan herhangi bir adam ölümle cezalandırılırdı.",
+      "tts": {
+        "text": "Kılık değiştirerek gemiye kadın sokarken yakalanan herhangi bir adam ölümle cezalandırılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu kural Roberts'ın komutanlığı boyunca sıkı bir şekilde uygulandı.",
+      "text_markdown": "Bu kural Roberts'ın komutanlığı boyunca sıkı bir şekilde uygulandı.",
+      "tts": {
+        "text": "Bu kural Roberts'ın komutanlığı boyunca sıkı bir şekilde uygulandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın yasası hijyen ve gemi bakımı konularını da ele alıyordu.",
+      "text_markdown": "Roberts'ın yasası hijyen ve gemi bakımı konularını da ele alıyordu.",
+      "tts": {
+        "text": "Roberts'ın yasası hijyen ve gemi bakımı konularını da ele alıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her adam kendi silahlarını çalışır durumda tutmaktan sorumluydu.",
+      "text_markdown": "Her adam kendi silahlarını çalışır durumda tutmaktan sorumluydu.",
+      "tts": {
+        "text": "Her adam kendi silahlarını çalışır durumda tutmaktan sorumluydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tabancalarını ve palasını bakımlı tutmamak cezalandırılabilir bir suçtu.",
+      "text_markdown": "Tabancalarını ve palasını bakımlı tutmamak cezalandırılabilir bir suçtu.",
+      "tts": {
+        "text": "Tabancalarını ve palasını bakımlı tutmamak cezalandırılabilir bir suçtu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kirli silahların yaşam ve ölüm arasındaki fark anlamına gelebildiği bir çağda bu pratik bir kuraldı.",
+      "text_markdown": "Kirli silahların yaşam ve ölüm arasındaki fark anlamına gelebildiği bir çağda bu pratik bir kuraldı.",
+      "tts": {
+        "text": "Kirli silahların yaşam ve ölüm arasındaki fark anlamına gelebildiği bir çağda bu pratik bir kuraldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Levazımcı kaptanın gücünü dengeleyen bir role sahipti.",
+      "text_markdown": "Levazımcı kaptanın gücünü dengeleyen bir role sahipti.",
+      "tts": {
+        "text": "Levazımcı kaptanın gücünü dengeleyen bir role sahipti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sıradan mürettebat üyelerinin çıkarlarını temsil ediyordu.",
+      "text_markdown": "Sıradan mürettebat üyelerinin çıkarlarını temsil ediyordu.",
+      "tts": {
+        "text": "Sıradan mürettebat üyelerinin çıkarlarını temsil ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaptan ve mürettebat arasındaki anlaşmazlıklar levazımcı tarafından arabuluculuk yapılırdı.",
+      "text_markdown": "Kaptan ve mürettebat arasındaki anlaşmazlıklar levazımcı tarafından arabuluculuk yapılırdı.",
+      "tts": {
+        "text": "Kaptan ve mürettebat arasındaki anlaşmazlıklar levazımcı tarafından arabuluculuk yapılırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu paylaşılmış otorite sistemi, ticaret ve donanma gemilerini kasıp kavuran tiranlık türünü önlüyordu.",
+      "text_markdown": "Bu paylaşılmış otorite sistemi, ticaret ve donanma gemilerini kasıp kavuran tiranlık türünü önlüyordu.",
+      "tts": {
+        "text": "Bu paylaşılmış otorite sistemi, ticaret ve donanma gemilerini kasıp kavuran tiranlık türünü önlüyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın amiral gemisi Royal Fortune, denizlerdeki en güçlü korsan gemilerinden biriydi.",
+      "text_markdown": "Roberts'ın amiral gemisi Royal Fortune, denizlerdeki en güçlü korsan gemilerinden biriydi.",
+      "tts": {
+        "text": "Roberts'ın amiral gemisi Royal Fortune, denizlerdeki en güçlü korsan gemilerinden biriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "40 top ve yaklaşık 150 kişilik bir mürettebat taşıyordu.",
+      "text_markdown": "40 top ve yaklaşık 150 kişilik bir mürettebat taşıyordu.",
+      "tts": {
+        "text": "Kırk top ve yaklaşık yüz elli kişilik bir mürettebat taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemi hızlı, bakımlı ve ağır silahlıydı.",
+      "text_markdown": "Gemi hızlı, bakımlı ve ağır silahlıydı.",
+      "tts": {
+        "text": "Gemi hızlı, bakımlı ve ağır silahlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çoğu ticaret gemisini ateş gücüyle, çoğu savaş gemisini de hızıyla alt edebilirdi.",
+      "text_markdown": "Çoğu ticaret gemisini ateş gücüyle, çoğu savaş gemisini de hızıyla alt edebilirdi.",
+      "tts": {
+        "text": "Çoğu ticaret gemisini ateş gücüyle, çoğu savaş gemisini de hızıyla alt edebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts kıç güvertesinde etkileyici bir figür çiziyordu.",
+      "text_markdown": "Roberts kıç güvertesinde etkileyici bir figür çiziyordu.",
+      "tts": {
+        "text": "Roberts kıç güvertesinde etkileyici bir figür çiziyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kırmızı yeleğini, elmas haçını ve tüylü şapkasını limanda olduğu gibi savaşta da giyerdi.",
+      "text_markdown": "Kırmızı yeleğini, elmas haçını ve tüylü şapkasını limanda olduğu gibi savaşta da giyerdi.",
+      "tts": {
+        "text": "Kırmızı yeleğini, elmas haçını ve tüylü şapkasını limanda olduğu gibi savaşta da giyerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Omuzlarının üzerinden ipek bir kayışla asılı iki çift tabanca taşırdı.",
+      "text_markdown": "Omuzlarının üzerinden ipek bir kayışla asılı iki çift tabanca taşırdı.",
+      "tts": {
+        "text": "Omuzlarının üzerinden ipek bir kayışla asılı iki çift tabanca taşırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kişisel tarzı efsanesinin bir parçasıydı ve mürettebatı üzerindeki otoritesini sürdürmesine yardımcı oluyordu.",
+      "text_markdown": "Kişisel tarzı efsanesinin bir parçasıydı ve mürettebatı üzerindeki otoritesini sürdürmesine yardımcı oluyordu.",
+      "tts": {
+        "text": "Kişisel tarzı efsanesinin bir parçasıydı ve mürettebatı üzerindeki otoritesini sürdürmesine yardımcı oluyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başarısına rağmen Roberts kariyerinin sonsuza kadar süremeyeceğinin farkındaydı.",
+      "text_markdown": "Başarısına rağmen Roberts kariyerinin sonsuza kadar süremeyeceğinin farkındaydı.",
+      "tts": {
+        "text": "Başarısına rağmen Roberts kariyerinin sonsuza kadar süremeyeceğinin farkındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kraliyet Donanması'nın Afrika kıyıları boyunca devriyelerini artırdığını biliyordu.",
+      "text_markdown": "Kraliyet Donanması'nın Afrika kıyıları boyunca devriyelerini artırdığını biliyordu.",
+      "tts": {
+        "text": "Kraliyet Donanması'nın Afrika kıyıları boyunca devriyelerini artırdığını biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her ele geçirmenin hükümetler üzerindeki onu durdurma baskısını artırdığını da biliyordu.",
+      "text_markdown": "Her ele geçirmenin hükümetler üzerindeki onu durdurma baskısını artırdığını da biliyordu.",
+      "tts": {
+        "text": "Her ele geçirmenin hükümetler üzerindeki onu durdurma baskısını artırdığını da biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak emekli olmak istediğine dair hiçbir belirti göstermiyordu.",
+      "text_markdown": "Ancak emekli olmak istediğine dair hiçbir belirti göstermiyordu.",
+      "tts": {
+        "text": "Ancak emekli olmak istediğine dair hiçbir belirti göstermiyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts bin yedi yüz yirmilerin başında Batı Afrika kıyılarına döndü.",
+      "text_markdown": "Roberts bin yedi yüz yirmilerin başında Batı Afrika kıyılarına döndü.",
+      "tts": {
+        "text": "Roberts bin yedi yüz yirmilerin başında Batı Afrika kıyılarına döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Burası Karayipler'deki artan deniz varlığından uzak, en verimli avlanma alanıydı.",
+      "text_markdown": "Burası Karayipler'deki artan deniz varlığından uzak, en verimli avlanma alanıydı.",
+      "tts": {
+        "text": "Burası Karayipler'deki artan deniz varlığından uzak, en verimli avlanma alanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Senegal'den Gine Körfezi'ne kıyı boyunca gemi üstüne gemi ele geçirdi.",
+      "text_markdown": "Senegal'den Gine Körfezi'ne kıyı boyunca gemi üstüne gemi ele geçirdi.",
+      "tts": {
+        "text": "Senegal'den Gine Körfezi'ne kıyı boyunca gemi üstüne gemi ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Köle ticareti ve altın ticareti bu suları karşı konulmaz derecede zengin kılıyordu.",
+      "text_markdown": "Köle ticareti ve altın ticareti bu suları karşı konulmaz derecede zengin kılıyordu.",
+      "tts": {
+        "text": "Köle ticareti ve altın ticareti bu suları karşı konulmaz derecede zengin kılıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrika kıyılarındaki varlığı Avrupa ticareti için felaket oldu.",
+      "text_markdown": "Afrika kıyılarındaki varlığı Avrupa ticareti için felaket oldu.",
+      "tts": {
+        "text": "Afrika kıyılarındaki varlığı Avrupa ticareti için felaket oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Batı Afrika'da ticaret yapan gemiler için sigorta oranları dramatik biçimde yükseldi.",
+      "text_markdown": "Batı Afrika'da ticaret yapan gemiler için sigorta oranları dramatik biçimde yükseldi.",
+      "tts": {
+        "text": "Batı Afrika'da ticaret yapan gemiler için sigorta oranları dramatik biçimde yükseldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı ticaret kaptanları donanma eskortu olmadan yelken açmayı reddediyordu.",
+      "text_markdown": "Bazı ticaret kaptanları donanma eskortu olmadan yelken açmayı reddediyordu.",
+      "tts": {
+        "text": "Bazı ticaret kaptanları donanma eskortu olmadan yelken açmayı reddediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Korsan yasası",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts tek başına dünyanın en kârlı ticaret yollarından birini alt üst etmişti.",
+      "text_markdown": "Roberts tek başına dünyanın en kârlı ticaret yollarından birini alt üst etmişti.",
+      "tts": {
+        "text": "Roberts tek başına dünyanın en kârlı ticaret yollarından birini alt üst etmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lopez Burnu'nda ölüm",
+      "text_markdown": "Lopez Burnu'nda ölüm"
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kraliyet Donanması, Bartholomew Roberts'ı avlamak için Kaptan Chaloner Ogle'ı HMS Swallow ile gönderdi.",
+      "text_markdown": "Kraliyet Donanması, Bartholomew Roberts'ı avlamak için Kaptan Chaloner Ogle'ı HMS Swallow ile gönderdi.",
+      "tts": {
+        "text": "Kraliyet Donanması, Bartholomew Roberts'ı avlamak için Kaptan Chaloner Ogle'ı HMS Swallow ile gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogle yetkin ve kararlı bir subaydı.",
+      "text_markdown": "Ogle yetkin ve kararlı bir subaydı.",
+      "tts": {
+        "text": "Ogle yetkin ve kararlı bir subaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gemisi profesyonel mürettebatlı beşinci sınıf bir savaş gemisiydi.",
+      "text_markdown": "Gemisi profesyonel mürettebatlı beşinci sınıf bir savaş gemisiydi.",
+      "tts": {
+        "text": "Gemisi profesyonel mürettebatlı beşinci sınıf bir savaş gemisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts'ın terör saltanatına son vermek için özel emirler almıştı.",
+      "text_markdown": "Roberts'ın terör saltanatına son vermek için özel emirler almıştı.",
+      "tts": {
+        "text": "Roberts'ın terör saltanatına son vermek için özel emirler almıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ocak 1722'de Ogle, Roberts'ın bugünkü Gabon'daki Lopez Burnu'nda demirli olduğu istihbaratını aldı.",
+      "text_markdown": "Ocak 1722'de Ogle, Roberts'ın bugünkü Gabon'daki Lopez Burnu'nda demirli olduğu istihbaratını aldı.",
+      "tts": {
+        "text": "Bin yedi yüz yirmi ikinin ocak ayında Ogle, Roberts'ın bugünkü Gabon'daki Lopez Burnu'nda demirli olduğu istihbaratını aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lopez Burnu ekvator Afrikası kıyısında küçük bir burundu.",
+      "text_markdown": "Lopez Burnu ekvator Afrikası kıyısında küçük bir burundu.",
+      "tts": {
+        "text": "Lopez Burnu ekvator Afrikası kıyısında küçük bir burundu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roberts gemilerini temizleyip tamir ederken geçici üs olarak burayı seçmişti.",
+      "text_markdown": "Roberts gemilerini temizleyip tamir ederken geçici üs olarak burayı seçmişti.",
+      "tts": {
+        "text": "Roberts gemilerini temizleyip tamir ederken geçici üs olarak burayı seçmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Swallow'un yaklaştığından haberi yoktu.",
+      "text_markdown": "Swallow'un yaklaştığından haberi yoktu.",
+      "tts": {
+        "text": "Swallow'un yaklaştığından haberi yoktu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogle Lopez Burnu'na temkinli yaklaştı.",
+      "text_markdown": "Ogle Lopez Burnu'na temkinli yaklaştı.",
+      "tts": {
+        "text": "Ogle Lopez Burnu'na temkinli yaklaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts'ın birden fazla gemisi ve büyük, iyi silahlı bir mürettebatı olduğunu biliyordu.",
+      "text_markdown": "Roberts'ın birden fazla gemisi ve büyük, iyi silahlı bir mürettebatı olduğunu biliyordu.",
+      "tts": {
+        "text": "Roberts'ın birden fazla gemisi ve büyük, iyi silahlı bir mürettebatı olduğunu biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roberts'ın tüm filosuna cepheden saldırı riskli olurdu.",
+      "text_markdown": "Roberts'ın tüm filosuna cepheden saldırı riskli olurdu.",
+      "tts": {
+        "text": "Roberts'ın tüm filosuna cepheden saldırı riskli olurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ogle bunun yerine bir hile kullanmaya karar verdi.",
+      "text_markdown": "Ogle bunun yerine bir hile kullanmaya karar verdi.",
+      "tts": {
+        "text": "Ogle bunun yerine bir hile kullanmaya karar verdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Swallow Lopez Burnu yakınında ilk göründüğünde Roberts'ın refakat gemilerinden biri araştırmak için açıldı.",
+      "text_markdown": "Swallow Lopez Burnu yakınında ilk göründüğünde Roberts'ın refakat gemilerinden biri araştırmak için açıldı.",
+      "tts": {
+        "text": "Swallow Lopez Burnu yakınında ilk göründüğünde Roberts'ın refakat gemilerinden biri araştırmak için açıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ogle kaçıyor gibi yaparak korsan gemisini filodan uzağa çekti.",
+      "text_markdown": "Ogle kaçıyor gibi yaparak korsan gemisini filodan uzağa çekti.",
+      "tts": {
+        "text": "Ogle kaçıyor gibi yaparak korsan gemisini filodan uzağa çekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğer korsanların görüş alanından çıkınca Swallow döndü ve saldırdı.",
+      "text_markdown": "Diğer korsanların görüş alanından çıkınca Swallow döndü ve saldırdı.",
+      "tts": {
+        "text": "Diğer korsanların görüş alanından çıkınca Swallow döndü ve saldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan gemisi kısa ama şiddetli bir çatışmanın ardından ele geçirildi.",
+      "text_markdown": "Korsan gemisi kısa ama şiddetli bir çatışmanın ardından ele geçirildi.",
+      "tts": {
+        "text": "Korsan gemisi kısa ama şiddetli bir çatışmanın ardından ele geçirildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "10 Şubat 1722 sabahı Swallow, bizzat Roberts'la yüzleşmek için Lopez Burnu'na döndü.",
+      "text_markdown": "10 Şubat 1722 sabahı Swallow, bizzat Roberts'la yüzleşmek için Lopez Burnu'na döndü.",
+      "tts": {
+        "text": "On şubat bin yedi yüz yirmi iki sabahı Swallow, bizzat Roberts'la yüzleşmek için Lopez Burnu'na döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts amiral gemisi Royal Fortune'da bulunuyordu.",
+      "text_markdown": "Roberts amiral gemisi Royal Fortune'da bulunuyordu.",
+      "tts": {
+        "text": "Roberts amiral gemisi Royal Fortune'da bulunuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gözcüler yaklaşan savaş gemisini fark ettiğinde kahvaltı yapıyordu.",
+      "text_markdown": "Gözcüler yaklaşan savaş gemisini fark ettiğinde kahvaltı yapıyordu.",
+      "tts": {
+        "text": "Gözcüler yaklaşan savaş gemisini fark ettiğinde kahvaltı yapıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts sakin bir şekilde en iyi kıyafetlerini giyerek savaşa hazırlandı.",
+      "text_markdown": "Roberts sakin bir şekilde en iyi kıyafetlerini giyerek savaşa hazırlandı.",
+      "tts": {
+        "text": "Roberts sakin bir şekilde en iyi kıyafetlerini giyerek savaşa hazırlandı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kırmızı yeleğini, elmas haçını ve tüylü şapkasını taktı.",
+      "text_markdown": "Kırmızı yeleğini, elmas haçını ve tüylü şapkasını taktı.",
+      "tts": {
+        "text": "Kırmızı yeleğini, elmas haçını ve tüylü şapkasını taktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İki çift tabancasını ipek bir kayışla omuzlarına astı.",
+      "text_markdown": "İki çift tabancasını ipek bir kayışla omuzlarına astı.",
+      "tts": {
+        "text": "İki çift tabancasını ipek bir kayışla omuzlarına astı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her zamanki gibi tarz ve meydan okumayla savaşmaya niyetliydi.",
+      "text_markdown": "Her zamanki gibi tarz ve meydan okumayla savaşmaya niyetliydi.",
+      "tts": {
+        "text": "Her zamanki gibi tarz ve meydan okumayla savaşmaya niyetliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savaş için giyindiği son kez olacaktı.",
+      "text_markdown": "Savaş için giyindiği son kez olacaktı.",
+      "tts": {
+        "text": "Savaş için giyindiği son kez olacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts kaçmak yerine savaşmayı seçti.",
+      "text_markdown": "Roberts kaçmak yerine savaşmayı seçti.",
+      "tts": {
+        "text": "Roberts kaçmak yerine savaşmayı seçti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Royal Fortune'a doğrudan Swallow'a doğru yelken açması emrini verdi.",
+      "text_markdown": "Royal Fortune'a doğrudan Swallow'a doğru yelken açması emrini verdi.",
+      "tts": {
+        "text": "Royal Fortune'a doğrudan Swallow'a doğru yelken açması emrini verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Planı savaş gemisinin yakınından geçip sonra açık denize kaçmaktı.",
+      "text_markdown": "Planı savaş gemisinin yakınından geçip sonra açık denize kaçmaktı.",
+      "tts": {
+        "text": "Planı savaş gemisinin yakınından geçip sonra açık denize kaçmaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cesur bir kumardı ama Roberts her zaman cüreti tercih etmişti.",
+      "text_markdown": "Cesur bir kumardı ama Roberts her zaman cüreti tercih etmişti.",
+      "tts": {
+        "text": "Cesur bir kumardı ama Roberts her zaman cüreti tercih etmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İki gemi birbirine yaklaşırken Swallow bordadan ateş açtı.",
+      "text_markdown": "İki gemi birbirine yaklaşırken Swallow bordadan ateş açtı.",
+      "tts": {
+        "text": "İki gemi birbirine yaklaşırken Swallow bordadan ateş açtı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Misket mermisi atışı Royal Fortune'un güvertesini silip süpürdü.",
+      "text_markdown": "Misket mermisi atışı Royal Fortune'un güvertesini silip süpürdü.",
+      "tts": {
+        "text": "Misket mermisi atışı Royal Fortune'un güvertesini silip süpürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bartholomew Roberts boğazından misket mermisiyle vuruldu.",
+      "text_markdown": "Bartholomew Roberts boğazından misket mermisiyle vuruldu.",
+      "tts": {
+        "text": "Bartholomew Roberts boğazından misket mermisiyle vuruldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Neredeyse anında öldü, bir topun üzerine yığıldı.",
+      "text_markdown": "Neredeyse anında öldü, bir topun üzerine yığıldı.",
+      "tts": {
+        "text": "Neredeyse anında öldü, bir topun üzerine yığıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mürettebatı kaptanlarının kaybıyla yıkıma uğradı.",
+      "text_markdown": "Mürettebatı kaptanlarının kaybıyla yıkıma uğradı.",
+      "tts": {
+        "text": "Mürettebatı kaptanlarının kaybıyla yıkıma uğradı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roberts operasyonlarının kalbi ve ruhuydu.",
+      "text_markdown": "Roberts operasyonlarının kalbi ve ruhuydu.",
+      "tts": {
+        "text": "Roberts operasyonlarının kalbi ve ruhuydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onsuz savaşma iradeleri neredeyse anında buharlaştı.",
+      "text_markdown": "Onsuz savaşma iradeleri neredeyse anında buharlaştı.",
+      "tts": {
+        "text": "Onsuz savaşma iradeleri neredeyse anında buharlaştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazı korsanlar Roberts'ın cesedini onun isteği üzerine denize attı ki düşman tarafından ele geçirilmesin.",
+      "text_markdown": "Bazı korsanlar Roberts'ın cesedini onun isteği üzerine denize attı ki düşman tarafından ele geçirilmesin.",
+      "tts": {
+        "text": "Bazı korsanlar Roberts'ın cesedini onun isteği üzerine denize attı ki düşman tarafından ele geçirilmesin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kalan korsanlar savaşmaya devam etmeye çalıştı ama direnişleri düzensizdi.",
+      "text_markdown": "Kalan korsanlar savaşmaya devam etmeye çalıştı ama direnişleri düzensizdi.",
+      "tts": {
+        "text": "Kalan korsanlar savaşmaya devam etmeye çalıştı ama direnişleri düzensizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birkaç saat içinde Swallow, Royal Fortune'u ve yaklaşık 152 korsanı ele geçirmişti.",
+      "text_markdown": "Birkaç saat içinde Swallow, Royal Fortune'u ve yaklaşık 152 korsanı ele geçirmişti.",
+      "tts": {
+        "text": "Birkaç saat içinde Swallow, Royal Fortune'u ve yaklaşık yüz elli iki korsanı ele geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altın Çağ'ın en büyük korsan kariyeri sona ermişti.",
+      "text_markdown": "Altın Çağ'ın en büyük korsan kariyeri sona ermişti.",
+      "tts": {
+        "text": "Altın Çağ'ın en büyük korsan kariyeri sona ermişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sadece üç yıl sürmüştü.",
+      "text_markdown": "Sadece üç yıl sürmüştü.",
+      "tts": {
+        "text": "Sadece üç yıl sürmüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan Ogle mahkûmlarını bugünkü Gana'daki Cape Coast Castle'daki İngiliz kalesine götürdü.",
+      "text_markdown": "Kaptan Ogle mahkûmlarını bugünkü Gana'daki Cape Coast Castle'daki İngiliz kalesine götürdü.",
+      "tts": {
+        "text": "Kaptan Ogle mahkûmlarını bugünkü Gana'daki Cape Coast Castle'daki İngiliz kalesine götürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orada tarihin en büyük korsan davası görüldü.",
+      "text_markdown": "Orada tarihin en büyük korsan davası görüldü.",
+      "tts": {
+        "text": "Orada tarihin en büyük korsan davası görüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toplam 272 korsan yargılandı.",
+      "text_markdown": "Toplam 272 korsan yargılandı.",
+      "tts": {
+        "text": "Toplam iki yüz yetmiş iki korsan yargılandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Duruşmalar haftalarca sürdü.",
+      "text_markdown": "Duruşmalar haftalarca sürdü.",
+      "tts": {
+        "text": "Duruşmalar haftalarca sürdü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yargılananlardan 52'si asılarak idam cezasına çarptırıldı.",
+      "text_markdown": "Yargılananlardan 52'si asılarak idam cezasına çarptırıldı.",
+      "tts": {
+        "text": "Yargılananlardan elli ikisi asılarak idam cezasına çarptırıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diğerlerinin çoğu Cape Coast madenlerinde ağır çalışmaya mahkûm edildi.",
+      "text_markdown": "Diğerlerinin çoğu Cape Coast madenlerinde ağır çalışmaya mahkûm edildi.",
+      "tts": {
+        "text": "Diğerlerinin çoğu Cape Coast madenlerinde ağır çalışmaya mahkûm edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları beraat etti, özellikle korsanlığa zorlanmış olduklarını kanıtlayabilenler.",
+      "text_markdown": "Bazıları beraat etti, özellikle korsanlığa zorlanmış olduklarını kanıtlayabilenler.",
+      "tts": {
+        "text": "Bazıları beraat etti, özellikle korsanlığa zorlanmış olduklarını kanıtlayabilenler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Lopez Burnu'nda ölüm",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İdamlar köle kalelerinin görüş alanında sahilde gerçekleştirildi.",
+      "text_markdown": "İdamlar köle kalelerinin görüş alanında sahilde gerçekleştirildi.",
+      "tts": {
+        "text": "İdamlar köle kalelerinin görüş alanında sahilde gerçekleştirildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bir çağın sonu",
+      "text_markdown": "Bir çağın sonu"
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bartholomew Roberts'ın ölümü, Korsanlığın Altın Çağı'nı sona erdiren olay olarak yaygın biçimde kabul edilir.",
+      "text_markdown": "Bartholomew Roberts'ın ölümü, Korsanlığın Altın Çağı'nı sona erdiren olay olarak yaygın biçimde kabul edilir.",
+      "tts": {
+        "text": "Bartholomew Roberts'ın ölümü, Korsanlığın Altın Çağı'nı sona erdiren olay olarak yaygın biçimde kabul edilir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Büyük korsan kaptanlarının sonuncusuydu ve ölümü en güçlü korsan filosunu okyanustan kaldırdı.",
+      "text_markdown": "Büyük korsan kaptanlarının sonuncusuydu ve ölümü en güçlü korsan filosunu okyanustan kaldırdı.",
+      "tts": {
+        "text": "Büyük korsan kaptanlarının sonuncusuydu ve ölümü en güçlü korsan filosunu okyanustan kaldırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roberts'tan sonra hiçbir korsan bir daha Atlantik ticaretini bu ölçekte tehdit edemedi.",
+      "text_markdown": "Roberts'tan sonra hiçbir korsan bir daha Atlantik ticaretini bu ölçekte tehdit edemedi.",
+      "tts": {
+        "text": "Roberts'tan sonra hiçbir korsan bir daha Atlantik ticaretini bu ölçekte tehdit edemedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlar çağı sona ermişti.",
+      "text_markdown": "Korsanlar çağı sona ermişti.",
+      "tts": {
+        "text": "Korsanlar çağı sona ermişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın kariyeri korsanlığın hem potansiyelini hem de sınırlarını göstermişti.",
+      "text_markdown": "Roberts'ın kariyeri korsanlığın hem potansiyelini hem de sınırlarını göstermişti.",
+      "tts": {
+        "text": "Roberts'ın kariyeri korsanlığın hem potansiyelini hem de sınırlarını göstermişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "3 yılda 400'den fazla gemi ele geçirmişti; bu eşsiz bir rekordu.",
+      "text_markdown": "3 yılda 400'den fazla gemi ele geçirmişti; bu eşsiz bir rekordu.",
+      "tts": {
+        "text": "Üç yılda dört yüzden fazla gemi ele geçirmişti; bu eşsiz bir rekordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticaret yollarını alt üst etmiş, sömürge hükümetlerini dehşete düşürmüş ve Kraliyet Donanması'na meydan okumuştu.",
+      "text_markdown": "Ticaret yollarını alt üst etmiş, sömürge hükümetlerini dehşete düşürmüş ve Kraliyet Donanması'na meydan okumuştu.",
+      "tts": {
+        "text": "Ticaret yollarını alt üst etmiş, sömürge hükümetlerini dehşete düşürmüş ve Kraliyet Donanması'na meydan okumuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama sonunda en büyük korsan bile tek bir şanslı atışla düşürülebilirdi.",
+      "text_markdown": "Ama sonunda en büyük korsan bile tek bir şanslı atışla düşürülebilirdi.",
+      "tts": {
+        "text": "Ama sonunda en büyük korsan bile tek bir şanslı atışla düşürülebilirdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan Ogle, Roberts'a karşı zaferinden dolayı şövalye ilan edildi.",
+      "text_markdown": "Kaptan Ogle, Roberts'a karşı zaferinden dolayı şövalye ilan edildi.",
+      "tts": {
+        "text": "Kaptan Ogle, Roberts'a karşı zaferinden dolayı şövalye ilan edildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Özellikle bir korsanı yendiği için şövalye ilan edilen tek Kraliyet Donanması subayıydı.",
+      "text_markdown": "Özellikle bir korsanı yendiği için şövalye ilan edilen tek Kraliyet Donanması subayıydı.",
+      "tts": {
+        "text": "Özellikle bir korsanı yendiği için şövalye ilan edilen tek Kraliyet Donanması subayıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu onur, hükümetin Roberts'ın kampanyasını sona erdirmeye verdiği muazzam önemi yansıtıyordu.",
+      "text_markdown": "Bu onur, hükümetin Roberts'ın kampanyasını sona erdirmeye verdiği muazzam önemi yansıtıyordu.",
+      "tts": {
+        "text": "Bu onur, hükümetin Roberts'ın kampanyasını sona erdirmeye verdiği muazzam önemi yansıtıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ogle seçkin bir denizcilik kariyerine devam etti.",
+      "text_markdown": "Ogle seçkin bir denizcilik kariyerine devam etti.",
+      "tts": {
+        "text": "Ogle seçkin bir denizcilik kariyerine devam etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın korsan yasası, sonraki nesillerin korsanlığı nasıl düşündüğünü etkiledi.",
+      "text_markdown": "Roberts'ın korsan yasası, sonraki nesillerin korsanlığı nasıl düşündüğünü etkiledi.",
+      "tts": {
+        "text": "Roberts'ın korsan yasası, sonraki nesillerin korsanlığı nasıl düşündüğünü etkiledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yazılı anayasalara sahip demokratik korsan mürettebatları fikri halkın hayal gücünü yakaladı.",
+      "text_markdown": "Yazılı anayasalara sahip demokratik korsan mürettebatları fikri halkın hayal gücünü yakaladı.",
+      "tts": {
+        "text": "Yazılı anayasalara sahip demokratik korsan mürettebatları fikri halkın hayal gücünü yakaladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarihçiler, korsan gemilerinin on sekizinci yüzyıl başlarının en demokratik kurumları arasında olduğunu savunmak için Roberts'ın maddelerini kullanmıştır.",
+      "text_markdown": "Tarihçiler, korsan gemilerinin on sekizinci yüzyıl başlarının en demokratik kurumları arasında olduğunu savunmak için Roberts'ın maddelerini kullanmıştır.",
+      "tts": {
+        "text": "Tarihçiler, korsan gemilerinin on sekizinci yüzyıl başlarının en demokratik kurumları arasında olduğunu savunmak için Roberts'ın maddelerini kullanmıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu yorum tartışmalı olmaya devam ediyor ama etkili olduğu kanıtlanmıştır.",
+      "text_markdown": "Bu yorum tartışmalı olmaya devam ediyor ama etkili olduğu kanıtlanmıştır.",
+      "tts": {
+        "text": "Bu yorum tartışmalı olmaya devam ediyor ama etkili olduğu kanıtlanmıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1724'te yayımlanan Korsanların Genel Tarihi adlı kitap Roberts'a geniş yer ayırmıştı.",
+      "text_markdown": "1724'te yayımlanan Korsanların Genel Tarihi adlı kitap Roberts'a geniş yer ayırmıştı.",
+      "tts": {
+        "text": "Bin yedi yüz yirmi dörtte yayımlanan Korsanların Genel Tarihi adlı kitap Roberts'a geniş yer ayırmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yazar Roberts'ı çağının en büyük korsanı olarak tasvir etti.",
+      "text_markdown": "Yazar Roberts'ı çağının en büyük korsanı olarak tasvir etti.",
+      "tts": {
+        "text": "Yazar Roberts'ı çağının en büyük korsanı olarak tasvir etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yolculuklarının, yasasının ve ölümünün ayrıntılı anlatımı kariyeri hakkındaki kesin kaynak oldu.",
+      "text_markdown": "Yolculuklarının, yasasının ve ölümünün ayrıntılı anlatımı kariyeri hakkındaki kesin kaynak oldu.",
+      "tts": {
+        "text": "Yolculuklarının, yasasının ve ölümünün ayrıntılı anlatımı kariyeri hakkındaki kesin kaynak oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roberts hakkında bildiklerimizin büyük kısmı bu tek kitaptan gelmektedir.",
+      "text_markdown": "Roberts hakkında bildiklerimizin büyük kısmı bu tek kitaptan gelmektedir.",
+      "tts": {
+        "text": "Roberts hakkında bildiklerimizin büyük kısmı bu tek kitaptan gelmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın mirası korsan tarihinin ötesine geçmektedir.",
+      "text_markdown": "Roberts'ın mirası korsan tarihinin ötesine geçmektedir.",
+      "tts": {
+        "text": "Roberts'ın mirası korsan tarihinin ötesine geçmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anlaşma maddeleri demokratik yönetişimin kökenlerini araştıran tarihçiler tarafından incelenmektedir.",
+      "text_markdown": "Anlaşma maddeleri demokratik yönetişimin kökenlerini araştıran tarihçiler tarafından incelenmektedir.",
+      "tts": {
+        "text": "Anlaşma maddeleri demokratik yönetişimin kökenlerini araştıran tarihçiler tarafından incelenmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sakatlık tazminat sistemi modern sosyal sigortayı yüzyıllar öncesinden öngörmüştü.",
+      "text_markdown": "Sakatlık tazminat sistemi modern sosyal sigortayı yüzyıllar öncesinden öngörmüştü.",
+      "tts": {
+        "text": "Sakatlık tazminat sistemi modern sosyal sigortayı yüzyıllar öncesinden öngörmüştü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yazılı kurallar ve paylaşılmış güce olan ısrarı çağının herhangi bir örgütü için dikkat çekiciydi.",
+      "text_markdown": "Yazılı kurallar ve paylaşılmış güce olan ısrarı çağının herhangi bir örgütü için dikkat çekiciydi.",
+      "tts": {
+        "text": "Yazılı kurallar ve paylaşılmış güce olan ısrarı çağının herhangi bir örgütü için dikkat çekiciydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Galler'de Roberts, ülkenin en ünlü tarihî figürlerinden biri olarak anılmaktadır.",
+      "text_markdown": "Galler'de Roberts, ülkenin en ünlü tarihî figürlerinden biri olarak anılmaktadır.",
+      "tts": {
+        "text": "Galler'de Roberts, ülkenin en ünlü tarihî figürlerinden biri olarak anılmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğduğu köyde onun adını kötüye çıkarmış oğlunu anan bir plaket bulunmaktadır.",
+      "text_markdown": "Doğduğu köyde onun adını kötüye çıkarmış oğlunu anan bir plaket bulunmaktadır.",
+      "tts": {
+        "text": "Doğduğu köyde onun adını kötüye çıkarmış oğlunu anan bir plaket bulunmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Galler denizcilik müzeleri onun hayatı ve kariyeri hakkında sergiler sunmaktadır.",
+      "text_markdown": "Galler denizcilik müzeleri onun hayatı ve kariyeri hakkında sergiler sunmaktadır.",
+      "tts": {
+        "text": "Galler denizcilik müzeleri onun hayatı ve kariyeri hakkında sergiler sunmaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mesleğinin şiddet içeren doğasına rağmen yerel gurur kaynağıdır.",
+      "text_markdown": "Mesleğinin şiddet içeren doğasına rağmen yerel gurur kaynağıdır.",
+      "tts": {
+        "text": "Mesleğinin şiddet içeren doğasına rağmen yerel gurur kaynağıdır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roberts'ın sona erdirdiği Korsanlığın Altın Çağı kabaca bin altı yüz doksanlardan bin yedi yüz yirmilere kadar sürdü.",
+      "text_markdown": "Roberts'ın sona erdirdiği Korsanlığın Altın Çağı kabaca bin altı yüz doksanlardan bin yedi yüz yirmilere kadar sürdü.",
+      "tts": {
+        "text": "Roberts'ın sona erdirdiği Korsanlığın Altın Çağı kabaca bin altı yüz doksanlardan bin yedi yüz yirmilere kadar sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O kısa dönemde korsanlar Atlantik dünyasının tarihini bugün hâlâ hissedilen biçimlerde şekillendirdi.",
+      "text_markdown": "O kısa dönemde korsanlar Atlantik dünyasının tarihini bugün hâlâ hissedilen biçimlerde şekillendirdi.",
+      "tts": {
+        "text": "O kısa dönemde korsanlar Atlantik dünyasının tarihini bugün hâlâ hissedilen biçimlerde şekillendirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uluslararası hukuku, deniz stratejisini ve popüler kültürü etkilediler.",
+      "text_markdown": "Uluslararası hukuku, deniz stratejisini ve popüler kültürü etkilediler.",
+      "tts": {
+        "text": "Uluslararası hukuku, deniz stratejisini ve popüler kültürü etkilediler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bir çağın sonu",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hepsinin en büyüğü olan isteksiz korsan Bartholomew Roberts, o olağanüstü çağın doruk noktasında durmaktadır.",
+      "text_markdown": "Hepsinin en büyüğü olan isteksiz korsan Bartholomew Roberts, o olağanüstü çağın doruk noktasında durmaktadır.",
+      "tts": {
+        "text": "Hepsinin en büyüğü olan isteksiz korsan Bartholomew Roberts, o olağanüstü çağın doruk noktasında durmaktadır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4352 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_thomas_pellow",
+  "language": "pl",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uwaga dla czytelnika",
+      "text_markdown": "Uwaga dla czytelnika"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To nie jest historia piracka opowiedziana z perspektywy pirata.",
+      "text_markdown": "To nie jest historia piracka opowiedziana z perspektywy pirata.",
+      "tts": {
+        "text": "To nie jest historia piracka opowiedziana z perspektywy pirata.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To historia kogoś, kto został porwany.",
+      "text_markdown": "To historia kogoś, kto został porwany.",
+      "tts": {
+        "text": "To historia kogoś, kto został porwany.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow był angielskim chłopcem z Kornwalii.",
+      "text_markdown": "Thomas Pellow był angielskim chłopcem z Kornwalii.",
+      "tts": {
+        "text": "Thomas Pellow był angielskim chłopcem z Kornwalii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W wieku jedenastu lat został pojmany przez berberyjskich korsarzy i zabrany do Maroka.",
+      "text_markdown": "W wieku jedenastu lat został pojmany przez berberyjskich korsarzy i zabrany do Maroka.",
+      "tts": {
+        "text": "W wieku jedenastu lat został pojmany przez berberyjskich korsarzy i zabrany do Maroka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nie wróci do domu przez dwadzieścia trzy lata.",
+      "text_markdown": "Nie wróci do domu przez dwadzieścia trzy lata.",
+      "tts": {
+        "text": "Nie wróci do domu przez dwadzieścia trzy lata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez te lata był zmuszony do przyjęcia islamu, szkolony jako żołnierz i zmuszony do służby jednemu z najpotężniejszych i najbardziej brutalnych władców w historii Afryki Północnej.",
+      "text_markdown": "Przez te lata był zmuszony do przyjęcia islamu, szkolony jako żołnierz i zmuszony do służby jednemu z najpotężniejszych i najbardziej brutalnych władców w historii Afryki Północnej.",
+      "tts": {
+        "text": "Przez te lata był zmuszony do przyjęcia islamu, szkolony jako żołnierz i zmuszony do służby jednemu z najpotężniejszych i najbardziej brutalnych władców w historii Afryki Północnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był świadkiem rzeczy, których żadne dziecko nie powinno nigdy widzieć.",
+      "text_markdown": "Był świadkiem rzeczy, których żadne dziecko nie powinno nigdy widzieć.",
+      "tts": {
+        "text": "Był świadkiem rzeczy, których żadne dziecko nie powinno nigdy widzieć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy w końcu uciekł i wrócił do Anglii, napisał wspomnienia ze swojej niewoli.",
+      "text_markdown": "Kiedy w końcu uciekł i wrócił do Anglii, napisał wspomnienia ze swojej niewoli.",
+      "tts": {
+        "text": "Kiedy w końcu uciekł i wrócił do Anglii, napisał wspomnienia ze swojej niewoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jest to jeden z najbardziej niezwykłych dokumentów XVIII wieku.",
+      "text_markdown": "Jest to jeden z najbardziej niezwykłych dokumentów XVIII wieku.",
+      "tts": {
+        "text": "Jest to jeden z najbardziej niezwykłych dokumentów osiemnastego wieku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jest to również jeden z najbardziej bolesnych.",
+      "text_markdown": "Jest to również jeden z najbardziej bolesnych.",
+      "tts": {
+        "text": "Jest to również jeden z najbardziej bolesnych.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego historia przypomina nam, że piractwo nie było przygodą dla wszystkich.",
+      "text_markdown": "Jego historia przypomina nam, że piractwo nie było przygodą dla wszystkich.",
+      "tts": {
+        "text": "Jego historia przypomina nam, że piractwo nie było przygodą dla wszystkich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uwaga dla czytelnika",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Na każdego pirata, który wybrał morze, przypadały setki ludzi, którzy nie mieli żadnego wyboru.",
+      "text_markdown": "Na każdego pirata, który wybrał morze, przypadały setki ludzi, którzy nie mieli żadnego wyboru.",
+      "tts": {
+        "text": "Na każdego pirata, który wybrał morze, przypadały setki ludzi, którzy nie mieli żadnego wyboru.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Świat Wybrzeża Barbaryjskiego",
+      "text_markdown": "Świat Wybrzeża Barbaryjskiego"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wybrzeże Barbaryjskie było europejską nazwą dla wybrzeża Afryki Północnej.",
+      "text_markdown": "Wybrzeże Barbaryjskie było europejską nazwą dla wybrzeża Afryki Północnej.",
+      "tts": {
+        "text": "Wybrzeże Barbaryjskie było europejską nazwą dla wybrzeża Afryki Północnej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rozciągało się od Maroka na zachodzie po Libię na wschodzie.",
+      "text_markdown": "Rozciągało się od Maroka na zachodzie po Libię na wschodzie.",
+      "tts": {
+        "text": "Rozciągało się od Maroka na zachodzie po Libię na wschodzie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Przez wieki było siedzibą jednych z najbardziej budzących strach piratów na świecie.",
+      "text_markdown": "Przez wieki było siedzibą jednych z najbardziej budzących strach piratów na świecie.",
+      "tts": {
+        "text": "Przez wieki było siedzibą jednych z najbardziej budzących strach piratów na świecie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsarze berberyjscy nie byli zwykłymi piratami.",
+      "text_markdown": "Korsarze berberyjscy nie byli zwykłymi piratami.",
+      "tts": {
+        "text": "Korsarze berberyjscy nie byli zwykłymi piratami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Działali z błogosławieństwem i często bezpośrednim wsparciem państw północnoafrykańskich.",
+      "text_markdown": "Działali z błogosławieństwem i często bezpośrednim wsparciem państw północnoafrykańskich.",
+      "tts": {
+        "text": "Działali z błogosławieństwem i często bezpośrednim wsparciem państw północnoafrykańskich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maroko, Algier, Tunis i Trypolis czerpały zyski z najazdów korsarskich.",
+      "text_markdown": "Maroko, Algier, Tunis i Trypolis czerpały zyski z najazdów korsarskich.",
+      "tts": {
+        "text": "Maroko, Algier, Tunis i Trypolis czerpały zyski z najazdów korsarskich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsarze napadali na europejską żeglugę i nadmorskie miasta.",
+      "text_markdown": "Korsarze napadali na europejską żeglugę i nadmorskie miasta.",
+      "tts": {
+        "text": "Korsarze napadali na europejską żeglugę i nadmorskie miasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przejmowali statki, kradli ładunki i brali jeńców.",
+      "text_markdown": "Przejmowali statki, kradli ładunki i brali jeńców.",
+      "tts": {
+        "text": "Przejmowali statki, kradli ładunki i brali jeńców.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeńcy byli najcenniejszym łupem ze wszystkich.",
+      "text_markdown": "Jeńcy byli najcenniejszym łupem ze wszystkich.",
+      "tts": {
+        "text": "Jeńcy byli najcenniejszym łupem ze wszystkich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeńców można było wykupić od ich rodzin za wielkie sumy pieniędzy.",
+      "text_markdown": "Jeńców można było wykupić od ich rodzin za wielkie sumy pieniędzy.",
+      "tts": {
+        "text": "Jeńców można było wykupić od ich rodzin za wielkie sumy pieniędzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ci, których nie można było wykupić, byli sprzedawani jako niewolnicy.",
+      "text_markdown": "Ci, których nie można było wykupić, byli sprzedawani jako niewolnicy.",
+      "tts": {
+        "text": "Ci, których nie można było wykupić, byli sprzedawani jako niewolnicy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historycy szacują, że między 1530 a 1780 rokiem ponad milion Europejczyków zostało zniewolonych przez korsarzy berberyjskich.",
+      "text_markdown": "Historycy szacują, że między 1530 a 1780 rokiem ponad milion Europejczyków zostało zniewolonych przez korsarzy berberyjskich.",
+      "tts": {
+        "text": "Historycy szacują, że między tysiąc pięćset trzydziestym a tysiąc siedemset osiemdziesiątym rokiem ponad milion Europejczyków zostało zniewolonych przez korsarzy berberyjskich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To była druga strona handlu niewolnikami.",
+      "text_markdown": "To była druga strona handlu niewolnikami.",
+      "tts": {
+        "text": "To była druga strona handlu niewolnikami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podczas gdy europejskie mocarstwa zniewalały Afrykańczyków i wysyłały ich przez Atlantyk, mocarstwa północnoafrykańskie zniewalały Europejczyków i zmuszały ich do pracy na swoich ziemiach.",
+      "text_markdown": "Podczas gdy europejskie mocarstwa zniewalały Afrykańczyków i wysyłały ich przez Atlantyk, mocarstwa północnoafrykańskie zniewalały Europejczyków i zmuszały ich do pracy na swoich ziemiach.",
+      "tts": {
+        "text": "Podczas gdy europejskie mocarstwa zniewalały Afrykańczyków i wysyłały ich przez Atlantyk, mocarstwa północnoafrykańskie zniewalały Europejczyków i zmuszały ich do pracy na swoich ziemiach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cierpienie było realne po obu stronach Morza Śródziemnego.",
+      "text_markdown": "Cierpienie było realne po obu stronach Morza Śródziemnego.",
+      "tts": {
+        "text": "Cierpienie było realne po obu stronach Morza Śródziemnego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Port korsarski Salé, na atlantyckim wybrzeżu Maroka, był szczególnie osławiony.",
+      "text_markdown": "Port korsarski Salé, na atlantyckim wybrzeżu Maroka, był szczególnie osławiony.",
+      "tts": {
+        "text": "Port korsarski Salé, na atlantyckim wybrzeżu Maroka, był szczególnie osławiony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsarze z Salé byli znani jako Korsarze z Salé.",
+      "text_markdown": "Korsarze z Salé byli znani jako Korsarze z Salé.",
+      "tts": {
+        "text": "Korsarze z Salé byli znani jako Korsarze z Salé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zapuszczali się daleko poza Morze Śródziemne, najeżdżając tak daleko na północ jak Islandia i Irlandia.",
+      "text_markdown": "Zapuszczali się daleko poza Morze Śródziemne, najeżdżając tak daleko na północ jak Islandia i Irlandia.",
+      "tts": {
+        "text": "Zapuszczali się daleko poza Morze Śródziemne, najeżdżając tak daleko na północ jak Islandia i Irlandia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1631 roku Korsarze z Salé najechali wioskę Baltimore w Irlandii i uprowadzili ponad 100 osób.",
+      "text_markdown": "W 1631 roku Korsarze z Salé najechali wioskę Baltimore w Irlandii i uprowadzili ponad 100 osób.",
+      "tts": {
+        "text": "W tysiąc sześćset trzydziestym pierwszym roku Korsarze z Salé najechali wioskę Baltimore w Irlandii i uprowadzili ponad sto osób.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Większości nigdy więcej nie zobaczono.",
+      "text_markdown": "Większości nigdy więcej nie zobaczono.",
+      "tts": {
+        "text": "Większości nigdy więcej nie zobaczono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To był świat, do którego Thomas Pellow miał zostać wciągnięty.",
+      "text_markdown": "To był świat, do którego Thomas Pellow miał zostać wciągnięty.",
+      "tts": {
+        "text": "To był świat, do którego Thomas Pellow miał zostać wciągnięty.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Marokiem na początku XVIII wieku rządził sułtan Mulaj Izmail.",
+      "text_markdown": "Marokiem na początku XVIII wieku rządził sułtan Mulaj Izmail.",
+      "tts": {
+        "text": "Marokiem na początku osiemnastego wieku rządził sułtan Mulaj Izmail.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był jednym z najdłużej panujących monarchów w historii Maroka, rządzącym od 1672 do 1727 roku.",
+      "text_markdown": "Był jednym z najdłużej panujących monarchów w historii Maroka, rządzącym od 1672 do 1727 roku.",
+      "tts": {
+        "text": "Był jednym z najdłużej panujących monarchów w historii Maroka, rządzącym od tysiąc sześćset siedemdziesiątego drugiego do tysiąc siedemset dwudziestego siódmego roku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był także jednym z najbardziej brutalnych.",
+      "text_markdown": "Był także jednym z najbardziej brutalnych.",
+      "tts": {
+        "text": "Był także jednym z najbardziej brutalnych.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mulaj Izmail marzył o uczynieniu Maroka wielkim imperium.",
+      "text_markdown": "Mulaj Izmail marzył o uczynieniu Maroka wielkim imperium.",
+      "tts": {
+        "text": "Mulaj Izmail marzył o uczynieniu Maroka wielkim imperium.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zbudował ogromny kompleks pałacowy w Meknesie, swojej stolicy.",
+      "text_markdown": "Zbudował ogromny kompleks pałacowy w Meknesie, swojej stolicy.",
+      "tts": {
+        "text": "Zbudował ogromny kompleks pałacowy w Meknesie, swojej stolicy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Budowa została przeprowadzona przez dziesiątki tysięcy niewolników, zarówno europejskich, jak i afrykańskich.",
+      "text_markdown": "Budowa została przeprowadzona przez dziesiątki tysięcy niewolników, zarówno europejskich, jak i afrykańskich.",
+      "tts": {
+        "text": "Budowa została przeprowadzona przez dziesiątki tysięcy niewolników, zarówno europejskich, jak i afrykańskich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sułtan był znany z ekstremalnych aktów przemocy.",
+      "text_markdown": "Sułtan był znany z ekstremalnych aktów przemocy.",
+      "tts": {
+        "text": "Sułtan był znany z ekstremalnych aktów przemocy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Osobiście zabijał sługi i dworzan, którzy go rozgniewali.",
+      "text_markdown": "Osobiście zabijał sługi i dworzan, którzy go rozgniewali.",
+      "tts": {
+        "text": "Osobiście zabijał sługi i dworzan, którzy go rozgniewali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zagraniczni ambasadorowie donosili, że byli świadkami egzekucji wykonywanych z kaprysu.",
+      "text_markdown": "Zagraniczni ambasadorowie donosili, że byli świadkami egzekucji wykonywanych z kaprysu.",
+      "tts": {
+        "text": "Zagraniczni ambasadorowie donosili, że byli świadkami egzekucji wykonywanych z kaprysu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Strach był fundamentem jego władzy.",
+      "text_markdown": "Strach był fundamentem jego władzy.",
+      "tts": {
+        "text": "Strach był fundamentem jego władzy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Utrzymywał ogromną armię, w tym osobistą gwardię zniewolonych czarnych żołnierzy znaną jako Czarna Gwardia.",
+      "text_markdown": "Utrzymywał ogromną armię, w tym osobistą gwardię zniewolonych czarnych żołnierzy znaną jako Czarna Gwardia.",
+      "tts": {
+        "text": "Utrzymywał ogromną armię, w tym osobistą gwardię zniewolonych czarnych żołnierzy znaną jako Czarna Gwardia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ta armia była zaciekle lojalna wobec sułtana i służyła zarówno jako jego siła militarna, jak i instrument terroru.",
+      "text_markdown": "Ta armia była zaciekle lojalna wobec sułtana i służyła zarówno jako jego siła militarna, jak i instrument terroru.",
+      "tts": {
+        "text": "Ta armia była zaciekle lojalna wobec sułtana i służyła zarówno jako jego siła militarna, jak i instrument terroru.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Europejscy jeńcy w Maroku pełnili wiele ról.",
+      "text_markdown": "Europejscy jeńcy w Maroku pełnili wiele ról.",
+      "tts": {
+        "text": "Europejscy jeńcy w Maroku pełnili wiele ról.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Niektórzy byli zmuszani do ciężkiej pracy przy budowie pałaców sułtana.",
+      "text_markdown": "Niektórzy byli zmuszani do ciężkiej pracy przy budowie pałaców sułtana.",
+      "tts": {
+        "text": "Niektórzy byli zmuszani do ciężkiej pracy przy budowie pałaców sułtana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Inni byli szkoleni jako żołnierze lub administratorzy.",
+      "text_markdown": "Inni byli szkoleni jako żołnierze lub administratorzy.",
+      "tts": {
+        "text": "Inni byli szkoleni jako żołnierze lub administratorzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nieliczni byli trzymani jako osobiści słudzy.",
+      "text_markdown": "Nieliczni byli trzymani jako osobiści słudzy.",
+      "tts": {
+        "text": "Nieliczni byli trzymani jako osobiści słudzy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeńcy, którzy przeszli na islam, byli traktowani nieco lepiej.",
+      "text_markdown": "Jeńcy, którzy przeszli na islam, byli traktowani nieco lepiej.",
+      "tts": {
+        "text": "Jeńcy, którzy przeszli na islam, byli traktowani nieco lepiej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konwersja nie gwarantowała wolności, ale otwierała drzwi do wyższych stanowisk.",
+      "text_markdown": "Konwersja nie gwarantowała wolności, ale otwierała drzwi do wyższych stanowisk.",
+      "tts": {
+        "text": "Konwersja nie gwarantowała wolności, ale otwierała drzwi do wyższych stanowisk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wielu Europejczyków nawróciło się pod wpływem tortur lub groźby śmierci.",
+      "text_markdown": "Wielu Europejczyków nawróciło się pod wpływem tortur lub groźby śmierci.",
+      "tts": {
+        "text": "Wielu Europejczyków nawróciło się pod wpływem tortur lub groźby śmierci.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rządy europejskie okazjonalnie negocjowały uwolnienie swoich obywateli.",
+      "text_markdown": "Rządy europejskie okazjonalnie negocjowały uwolnienie swoich obywateli.",
+      "tts": {
+        "text": "Rządy europejskie okazjonalnie negocjowały uwolnienie swoich obywateli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wypłaty okupu były powszechne.",
+      "text_markdown": "Wypłaty okupu były powszechne.",
+      "tts": {
+        "text": "Wypłaty okupu były powszechne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zakony religijne, szczególnie trynitarze i mercedariusze, poświęcały się wykupywaniu jeńców.",
+      "text_markdown": "Zakony religijne, szczególnie trynitarze i mercedariusze, poświęcały się wykupywaniu jeńców.",
+      "tts": {
+        "text": "Zakony religijne, szczególnie trynitarze i mercedariusze, poświęcały się wykupywaniu jeńców.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale proces wykupu był powolny, kosztowny i zawodny.",
+      "text_markdown": "Ale proces wykupu był powolny, kosztowny i zawodny.",
+      "tts": {
+        "text": "Ale proces wykupu był powolny, kosztowny i zawodny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wielu jeńców nigdy nie zostało wykupionych.",
+      "text_markdown": "Wielu jeńców nigdy nie zostało wykupionych.",
+      "tts": {
+        "text": "Wielu jeńców nigdy nie zostało wykupionych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Żyli i umierali w Maroku, z dala od domu.",
+      "text_markdown": "Żyli i umierali w Maroku, z dala od domu.",
+      "tts": {
+        "text": "Żyli i umierali w Maroku, z dala od domu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Świat Wybrzeża Barbaryjskiego",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas Pellow o mało nie stał się jednym z nich.",
+      "text_markdown": "Thomas Pellow o mało nie stał się jednym z nich.",
+      "tts": {
+        "text": "Thomas Pellow o mało nie stał się jednym z nich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Początki",
+      "text_markdown": "Początki"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow urodził się w 1704 roku w miasteczku Penryn w Kornwalii, na południowo-zachodnim krańcu Anglii.",
+      "text_markdown": "Thomas Pellow urodził się w 1704 roku w miasteczku Penryn w Kornwalii, na południowo-zachodnim krańcu Anglii.",
+      "tts": {
+        "text": "Thomas Pellow urodził się w tysiąc siedemset czwartym roku w miasteczku Penryn w Kornwalii, na południowo-zachodnim krańcu Anglii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kornwalia była regionem morskim.",
+      "text_markdown": "Kornwalia była regionem morskim.",
+      "tts": {
+        "text": "Kornwalia była regionem morskim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jej mieszkańcy od pokoleń szukali utrzymania na oceanie.",
+      "text_markdown": "Jej mieszkańcy od pokoleń szukali utrzymania na oceanie.",
+      "tts": {
+        "text": "Jej mieszkańcy od pokoleń szukali utrzymania na oceanie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wuj Thomasa, kapitan John Pellow, był kupcem morskim handlującym z portami w całej Europie i basenie Morza Śródziemnego.",
+      "text_markdown": "Wuj Thomasa, kapitan John Pellow, był kupcem morskim handlującym z portami w całej Europie i basenie Morza Śródziemnego.",
+      "tts": {
+        "text": "Wuj Thomasa, kapitan John Pellow, był kupcem morskim handlującym z portami w całej Europie i basenie Morza Śródziemnego.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był doświadczonym marynarzem, który znał ryzyko tego zawodu.",
+      "text_markdown": "Był doświadczonym marynarzem, który znał ryzyko tego zawodu.",
+      "tts": {
+        "text": "Był doświadczonym marynarzem, który znał ryzyko tego zawodu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wśród tych zagrożeń korsarze berberyjscy byli najbardziej obawiani.",
+      "text_markdown": "Wśród tych zagrożeń korsarze berberyjscy byli najbardziej obawiani.",
+      "tts": {
+        "text": "Wśród tych zagrożeń korsarze berberyjscy byli najbardziej obawiani.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1715 roku, gdy Thomas miał zaledwie jedenaście lat, wuj zabrał go na pokład swojego statku Francis.",
+      "text_markdown": "W 1715 roku, gdy Thomas miał zaledwie jedenaście lat, wuj zabrał go na pokład swojego statku Francis.",
+      "tts": {
+        "text": "W tysiąc siedemset piętnastym roku, gdy Thomas miał zaledwie jedenaście lat, wuj zabrał go na pokład swojego statku Francis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podróż miała być wyprawą handlową na Morze Śródziemne.",
+      "text_markdown": "Podróż miała być wyprawą handlową na Morze Śródziemne.",
+      "tts": {
+        "text": "Podróż miała być wyprawą handlową na Morze Śródziemne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miała być edukacją dla chłopca, szansą na naukę rodzinnego rzemiosła.",
+      "text_markdown": "Miała być edukacją dla chłopca, szansą na naukę rodzinnego rzemiosła.",
+      "tts": {
+        "text": "Miała być edukacją dla chłopca, szansą na naukę rodzinnego rzemiosła.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas był podekscytowany wyjazdem na morze.",
+      "text_markdown": "Thomas był podekscytowany wyjazdem na morze.",
+      "tts": {
+        "text": "Thomas był podekscytowany wyjazdem na morze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jak większość chłopców w Kornwalii, dorastał słuchając opowieści o odległych portach i podróżach morskich.",
+      "text_markdown": "Jak większość chłopców w Kornwalii, dorastał słuchając opowieści o odległych portach i podróżach morskich.",
+      "tts": {
+        "text": "Jak większość chłopców w Kornwalii, dorastał słuchając opowieści o odległych portach i podróżach morskich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rzeczywistość życia na morzu okazała się zupełnie inna niż w opowieściach.",
+      "text_markdown": "Rzeczywistość życia na morzu okazała się zupełnie inna niż w opowieściach.",
+      "tts": {
+        "text": "Rzeczywistość życia na morzu okazała się zupełnie inna niż w opowieściach.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Francis wypłynął z Falmouth z małą załogą.",
+      "text_markdown": "Francis wypłynął z Falmouth z małą załogą.",
+      "tts": {
+        "text": "Francis wypłynął z Falmouth z małą załogą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapitan Pellow planował wymienić angielskie towary na produkty śródziemnomorskie.",
+      "text_markdown": "Kapitan Pellow planował wymienić angielskie towary na produkty śródziemnomorskie.",
+      "tts": {
+        "text": "Kapitan Pellow planował wymienić angielskie towary na produkty śródziemnomorskie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trasa miała prowadzić wzdłuż wybrzeży Hiszpanii i Portugalii.",
+      "text_markdown": "Trasa miała prowadzić wzdłuż wybrzeży Hiszpanii i Portugalii.",
+      "tts": {
+        "text": "Trasa miała prowadzić wzdłuż wybrzeży Hiszpanii i Portugalii.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdzieś u wybrzeży Afryki Północnej nadeszła katastrofa.",
+      "text_markdown": "Gdzieś u wybrzeży Afryki Północnej nadeszła katastrofa.",
+      "tts": {
+        "text": "Gdzieś u wybrzeży Afryki Północnej nadeszła katastrofa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsarze z Salé dostrzegli Francisa i ruszyli w pościg.",
+      "text_markdown": "Korsarze z Salé dostrzegli Francisa i ruszyli w pościg.",
+      "tts": {
+        "text": "Korsarze z Salé dostrzegli Francisa i ruszyli w pościg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Statek handlowy nie był w stanie dorównać szybkim, dobrze uzbrojonym statkom korsarskim.",
+      "text_markdown": "Statek handlowy nie był w stanie dorównać szybkim, dobrze uzbrojonym statkom korsarskim.",
+      "tts": {
+        "text": "Statek handlowy nie był w stanie dorównać szybkim, dobrze uzbrojonym statkom korsarskim.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kapitan Pellow próbował im umknąć, ale Francis był zbyt wolny.",
+      "text_markdown": "Kapitan Pellow próbował im umknąć, ale Francis był zbyt wolny.",
+      "tts": {
+        "text": "Kapitan Pellow próbował im umknąć, ale Francis był zbyt wolny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsarze zmniejszyli dystans i oddali strzały ostrzegawcze.",
+      "text_markdown": "Korsarze zmniejszyli dystans i oddali strzały ostrzegawcze.",
+      "tts": {
+        "text": "Korsarze zmniejszyli dystans i oddali strzały ostrzegawcze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Załoga Francisa nie miała innego wyjścia, jak się poddać.",
+      "text_markdown": "Załoga Francisa nie miała innego wyjścia, jak się poddać.",
+      "tts": {
+        "text": "Załoga Francisa nie miała innego wyjścia, jak się poddać.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsarze wdarli się na statek i wzięli załogę do niewoli.",
+      "text_markdown": "Korsarze wdarli się na statek i wzięli załogę do niewoli.",
+      "tts": {
+        "text": "Korsarze wdarli się na statek i wzięli załogę do niewoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas patrzył, jak uzbrojeni mężczyźni zalewają pokład.",
+      "text_markdown": "Thomas patrzył, jak uzbrojeni mężczyźni zalewają pokład.",
+      "tts": {
+        "text": "Thomas patrzył, jak uzbrojeni mężczyźni zalewają pokład.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był przerażony.",
+      "text_markdown": "Był przerażony.",
+      "tts": {
+        "text": "Był przerażony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był dzieckiem, samym wśród brutalnych obcych.",
+      "text_markdown": "Był dzieckiem, samym wśród brutalnych obcych.",
+      "tts": {
+        "text": "Był dzieckiem, samym wśród brutalnych obcych.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeńcy zostali zabrani do Salé, a następnie poprowadzeni w głąb lądu do Meknesu, stolicy sułtana.",
+      "text_markdown": "Jeńcy zostali zabrani do Salé, a następnie poprowadzeni w głąb lądu do Meknesu, stolicy sułtana.",
+      "tts": {
+        "text": "Jeńcy zostali zabrani do Salé, a następnie poprowadzeni w głąb lądu do Meknesu, stolicy sułtana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podróż trwała kilka dni.",
+      "text_markdown": "Podróż trwała kilka dni.",
+      "tts": {
+        "text": "Podróż trwała kilka dni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas szedł w kajdanach pod północnoafrykańskim słońcem, otoczony ludźmi, których języka nie mógł zrozumieć.",
+      "text_markdown": "Thomas szedł w kajdanach pod północnoafrykańskim słońcem, otoczony ludźmi, których języka nie mógł zrozumieć.",
+      "tts": {
+        "text": "Thomas szedł w kajdanach pod północnoafrykańskim słońcem, otoczony ludźmi, których języka nie mógł zrozumieć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy dotarli do Meknesu, Thomas po raz pierwszy zobaczył pałac sułtana.",
+      "text_markdown": "Kiedy dotarli do Meknesu, Thomas po raz pierwszy zobaczył pałac sułtana.",
+      "tts": {
+        "text": "Kiedy dotarli do Meknesu, Thomas po raz pierwszy zobaczył pałac sułtana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był ogromny, rozległy kompleks dziedzińców, ogrodów i masywnych murów.",
+      "text_markdown": "Był ogromny, rozległy kompleks dziedzińców, ogrodów i masywnych murów.",
+      "tts": {
+        "text": "Był ogromny, rozległy kompleks dziedzińców, ogrodów i masywnych murów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był też miejscem cierpienia, zbudowanym pracą niewolników.",
+      "text_markdown": "Był też miejscem cierpienia, zbudowanym pracą niewolników.",
+      "tts": {
+        "text": "Był też miejscem cierpienia, zbudowanym pracą niewolników.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeńcy zostali przedstawieni sułtanowi Mulajowi Izmailowi.",
+      "text_markdown": "Jeńcy zostali przedstawieni sułtanowi Mulajowi Izmailowi.",
+      "tts": {
+        "text": "Jeńcy zostali przedstawieni sułtanowi Mulajowi Izmailowi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sułtan obejrzał ich, jak rolnik obejrzałby bydło.",
+      "text_markdown": "Sułtan obejrzał ich, jak rolnik obejrzałby bydło.",
+      "tts": {
+        "text": "Sułtan obejrzał ich, jak rolnik obejrzałby bydło.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zdecydował, kto będzie pracował, kto może zostać wykupiony i kto będzie służył w jego dworze.",
+      "text_markdown": "Zdecydował, kto będzie pracował, kto może zostać wykupiony i kto będzie służył w jego dworze.",
+      "tts": {
+        "text": "Zdecydował, kto będzie pracował, kto może zostać wykupiony i kto będzie służył w jego dworze.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kapitan John Pellow został ostatecznie wykupiony.",
+      "text_markdown": "Kapitan John Pellow został ostatecznie wykupiony.",
+      "tts": {
+        "text": "Kapitan John Pellow został ostatecznie wykupiony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wrócił do Anglii, ale nie zdołał uzyskać uwolnienia swojego bratanka.",
+      "text_markdown": "Wrócił do Anglii, ale nie zdołał uzyskać uwolnienia swojego bratanka.",
+      "tts": {
+        "text": "Wrócił do Anglii, ale nie zdołał uzyskać uwolnienia swojego bratanka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas został porzucony w Maroku, sam i przerażony.",
+      "text_markdown": "Thomas został porzucony w Maroku, sam i przerażony.",
+      "tts": {
+        "text": "Thomas został porzucony w Maroku, sam i przerażony.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chłopiec miał jedenaście lat.",
+      "text_markdown": "Chłopiec miał jedenaście lat.",
+      "tts": {
+        "text": "Chłopiec miał jedenaście lat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był tysiące kilometrów od domu.",
+      "text_markdown": "Był tysiące kilometrów od domu.",
+      "tts": {
+        "text": "Był tysiące kilometrów od domu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nie wiedział, czy kiedykolwiek znowu zobaczy Anglię.",
+      "text_markdown": "Nie wiedział, czy kiedykolwiek znowu zobaczy Anglię.",
+      "tts": {
+        "text": "Nie wiedział, czy kiedykolwiek znowu zobaczy Anglię.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jego niewola się rozpoczęła.",
+      "text_markdown": "Jego niewola się rozpoczęła.",
+      "tts": {
+        "text": "Jego niewola się rozpoczęła.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego rodzice musieli się zastanawiać, co stało się z ich synem.",
+      "text_markdown": "Jego rodzice musieli się zastanawiać, co stało się z ich synem.",
+      "tts": {
+        "text": "Jego rodzice musieli się zastanawiać, co stało się z ich synem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Żadna wiadomość nie mogła do nich dotrzeć zza morza.",
+      "text_markdown": "Żadna wiadomość nie mogła do nich dotrzeć zza morza.",
+      "tts": {
+        "text": "Żadna wiadomość nie mogła do nich dotrzeć zza morza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Początki",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O ile wiedzieli, Thomas nie żył.",
+      "text_markdown": "O ile wiedzieli, Thomas nie żył.",
+      "tts": {
+        "text": "O ile wiedzieli, Thomas nie żył.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Jeniec",
+      "text_markdown": "Jeniec"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pierwsze lata niewoli Thomasa Pellowa były naznaczone presją do przejścia na islam.",
+      "text_markdown": "Pierwsze lata niewoli Thomasa Pellowa były naznaczone presją do przejścia na islam.",
+      "tts": {
+        "text": "Pierwsze lata niewoli Thomasa Pellowa były naznaczone presją do przejścia na islam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dwór sułtana wymagał, aby europejscy jeńcy wyrzekli się swojej wiary chrześcijańskiej.",
+      "text_markdown": "Dwór sułtana wymagał, aby europejscy jeńcy wyrzekli się swojej wiary chrześcijańskiej.",
+      "tts": {
+        "text": "Dwór sułtana wymagał, aby europejscy jeńcy wyrzekli się swojej wiary chrześcijańskiej.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ci, którzy się nawrócili, otrzymywali lepsze traktowanie.",
+      "text_markdown": "Ci, którzy się nawrócili, otrzymywali lepsze traktowanie.",
+      "tts": {
+        "text": "Ci, którzy się nawrócili, otrzymywali lepsze traktowanie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ci, którzy odmówili, spotykali się z karą.",
+      "text_markdown": "Ci, którzy odmówili, spotykali się z karą.",
+      "tts": {
+        "text": "Ci, którzy odmówili, spotykali się z karą.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas początkowo się opierał.",
+      "text_markdown": "Thomas początkowo się opierał.",
+      "tts": {
+        "text": "Thomas początkowo się opierał.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był chłopcem z chrześcijańskiego kraju, a jego wiara była wszystkim, co mu zostało z domu.",
+      "text_markdown": "Był chłopcem z chrześcijańskiego kraju, a jego wiara była wszystkim, co mu zostało z domu.",
+      "tts": {
+        "text": "Był chłopcem z chrześcijańskiego kraju, a jego wiara była wszystkim, co mu zostało z domu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trzymał się jej z desperacją dziecka czepiającego się ostatniej znajomej rzeczy w obcym świecie.",
+      "text_markdown": "Trzymał się jej z desperacją dziecka czepiającego się ostatniej znajomej rzeczy w obcym świecie.",
+      "tts": {
+        "text": "Trzymał się jej z desperacją dziecka czepiającego się ostatniej znajomej rzeczy w obcym świecie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale presja była nieustępliwa.",
+      "text_markdown": "Ale presja była nieustępliwa.",
+      "tts": {
+        "text": "Ale presja była nieustępliwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był bity i torturowany.",
+      "text_markdown": "Był bity i torturowany.",
+      "tts": {
+        "text": "Był bity i torturowany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Według jego własnej relacji, był poddawany miesiącom znęcania się, mającego złamać jego wolę.",
+      "text_markdown": "Według jego własnej relacji, był poddawany miesiącom znęcania się, mającego złamać jego wolę.",
+      "tts": {
+        "text": "Według jego własnej relacji, był poddawany miesiącom znęcania się, mającego złamać jego wolę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Metody były okrutne i systematyczne.",
+      "text_markdown": "Metody były okrutne i systematyczne.",
+      "tts": {
+        "text": "Metody były okrutne i systematyczne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W końcu Thomas uległ.",
+      "text_markdown": "W końcu Thomas uległ.",
+      "tts": {
+        "text": "W końcu Thomas uległ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przeszedł na islam, przyjmując muzułmańskie imię.",
+      "text_markdown": "Przeszedł na islam, przyjmując muzułmańskie imię.",
+      "tts": {
+        "text": "Przeszedł na islam, przyjmując muzułmańskie imię.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Później opisał to jako najbardziej bolesny moment swojej niewoli.",
+      "text_markdown": "Później opisał to jako najbardziej bolesny moment swojej niewoli.",
+      "tts": {
+        "text": "Później opisał to jako najbardziej bolesny moment swojej niewoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Czuł, że zdradził wszystko, w co wierzył.",
+      "text_markdown": "Czuł, że zdradził wszystko, w co wierzył.",
+      "tts": {
+        "text": "Czuł, że zdradził wszystko, w co wierzył.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Współcześni czytelnicy powinni być ostrożni w osądzaniu go.",
+      "text_markdown": "Współcześni czytelnicy powinni być ostrożni w osądzaniu go.",
+      "tts": {
+        "text": "Współcześni czytelnicy powinni być ostrożni w osądzaniu go.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był dzieckiem, samym, torturowanym przez dorosłych.",
+      "text_markdown": "Był dzieckiem, samym, torturowanym przez dorosłych.",
+      "tts": {
+        "text": "Był dzieckiem, samym, torturowanym przez dorosłych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jego nawrócenie było strategią przetrwania, nie wolnym wyborem.",
+      "text_markdown": "Jego nawrócenie było strategią przetrwania, nie wolnym wyborem.",
+      "tts": {
+        "text": "Jego nawrócenie było strategią przetrwania, nie wolnym wyborem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tysiące innych jeńców podjęło tę samą decyzję w tych samych nieznośnych warunkach.",
+      "text_markdown": "Tysiące innych jeńców podjęło tę samą decyzję w tych samych nieznośnych warunkach.",
+      "tts": {
+        "text": "Tysiące innych jeńców podjęło tę samą decyzję w tych samych nieznośnych warunkach.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po nawróceniu Thomas został wyszkolony jako żołnierz w armii sułtana.",
+      "text_markdown": "Po nawróceniu Thomas został wyszkolony jako żołnierz w armii sułtana.",
+      "tts": {
+        "text": "Po nawróceniu Thomas został wyszkolony jako żołnierz w armii sułtana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nauczył się jeździć konno, strzelać i walczyć.",
+      "text_markdown": "Nauczył się jeździć konno, strzelać i walczyć.",
+      "tts": {
+        "text": "Nauczył się jeździć konno, strzelać i walczyć.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Biegle opanował język arabski i zaznajomił się z marokańskimi zwyczajami.",
+      "text_markdown": "Biegle opanował język arabski i zaznajomił się z marokańskimi zwyczajami.",
+      "tts": {
+        "text": "Biegle opanował język arabski i zaznajomił się z marokańskimi zwyczajami.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Został przydzielony do kampanii wojskowych w głębi Maroka.",
+      "text_markdown": "Został przydzielony do kampanii wojskowych w głębi Maroka.",
+      "tts": {
+        "text": "Został przydzielony do kampanii wojskowych w głębi Maroka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sułtan nieustannie walczył o utrzymanie kontroli nad zbuntowanymi plemionami.",
+      "text_markdown": "Sułtan nieustannie walczył o utrzymanie kontroli nad zbuntowanymi plemionami.",
+      "tts": {
+        "text": "Sułtan nieustannie walczył o utrzymanie kontroli nad zbuntowanymi plemionami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas walczył w tych kampaniach jako żołnierz, dawny jeniec służący teraz swemu porywaczowi.",
+      "text_markdown": "Thomas walczył w tych kampaniach jako żołnierz, dawny jeniec służący teraz swemu porywaczowi.",
+      "tts": {
+        "text": "Thomas walczył w tych kampaniach jako żołnierz, dawny jeniec służący teraz swemu porywaczowi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przemoc, której był świadkiem, była przytłaczająca.",
+      "text_markdown": "Przemoc, której był świadkiem, była przytłaczająca.",
+      "tts": {
+        "text": "Przemoc, której był świadkiem, była przytłaczająca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kary sułtana za bunt były bestialskie i publiczne.",
+      "text_markdown": "Kary sułtana za bunt były bestialskie i publiczne.",
+      "tts": {
+        "text": "Kary sułtana za bunt były bestialskie i publiczne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pokonani wrogowie byli stracani podczas masowych widowisk.",
+      "text_markdown": "Pokonani wrogowie byli stracani podczas masowych widowisk.",
+      "tts": {
+        "text": "Pokonani wrogowie byli stracani podczas masowych widowisk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas widział rzeczy, które prześladowały go do końca życia.",
+      "text_markdown": "Thomas widział rzeczy, które prześladowały go do końca życia.",
+      "tts": {
+        "text": "Thomas widział rzeczy, które prześladowały go do końca życia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Był też świadkiem ciągłej budowy pałacu w Meknesie.",
+      "text_markdown": "Był też świadkiem ciągłej budowy pałacu w Meknesie.",
+      "tts": {
+        "text": "Był też świadkiem ciągłej budowy pałacu w Meknesie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tysiące niewolników pracowało dniem i nocą, aby zrealizować wizję sułtana.",
+      "text_markdown": "Tysiące niewolników pracowało dniem i nocą, aby zrealizować wizję sułtana.",
+      "tts": {
+        "text": "Tysiące niewolników pracowało dniem i nocą, aby zrealizować wizję sułtana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Robotnicy, którzy padali, byli czasem grzebani żywcem w murach, które budowali.",
+      "text_markdown": "Robotnicy, którzy padali, byli czasem grzebani żywcem w murach, które budowali.",
+      "tts": {
+        "text": "Robotnicy, którzy padali, byli czasem grzebani żywcem w murach, które budowali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pałac Mulaja Izmaila miał rywalizować z Wersalem.",
+      "text_markdown": "Pałac Mulaja Izmaila miał rywalizować z Wersalem.",
+      "tts": {
+        "text": "Pałac Mulaja Izmaila miał rywalizować z Wersalem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sułtan słyszał o wielkim pałacu króla Francji i był zdecydowany go przewyższyć.",
+      "text_markdown": "Sułtan słyszał o wielkim pałacu króla Francji i był zdecydowany go przewyższyć.",
+      "tts": {
+        "text": "Sułtan słyszał o wielkim pałacu króla Francji i był zdecydowany go przewyższyć.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rezultatem był ogromny kompleks rozciągający się na kilometry w krajobrazie.",
+      "text_markdown": "Rezultatem był ogromny kompleks rozciągający się na kilometry w krajobrazie.",
+      "tts": {
+        "text": "Rezultatem był ogromny kompleks rozciągający się na kilometry w krajobrazie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas służył w siłach sułtana przez lata.",
+      "text_markdown": "Thomas służył w siłach sułtana przez lata.",
+      "tts": {
+        "text": "Thomas służył w siłach sułtana przez lata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Awansował w hierarchii, zyskując pewien stopień zaufania i odpowiedzialności.",
+      "text_markdown": "Awansował w hierarchii, zyskując pewien stopień zaufania i odpowiedzialności.",
+      "tts": {
+        "text": "Awansował w hierarchii, zyskując pewien stopień zaufania i odpowiedzialności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale nigdy nie zapomniał, że jest więźniem.",
+      "text_markdown": "Ale nigdy nie zapomniał, że jest więźniem.",
+      "tts": {
+        "text": "Ale nigdy nie zapomniał, że jest więźniem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nigdy nie przestał chcieć wrócić do domu.",
+      "text_markdown": "Nigdy nie przestał chcieć wrócić do domu.",
+      "tts": {
+        "text": "Nigdy nie przestał chcieć wrócić do domu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nawiązał kontakt z innymi europejskimi jeńcami w Maroku.",
+      "text_markdown": "Nawiązał kontakt z innymi europejskimi jeńcami w Maroku.",
+      "tts": {
+        "text": "Nawiązał kontakt z innymi europejskimi jeńcami w Maroku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Były ich setki, rozproszonych po całym kraju.",
+      "text_markdown": "Były ich setki, rozproszonych po całym kraju.",
+      "tts": {
+        "text": "Były ich setki, rozproszonych po całym kraju.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stworzyli podziemną społeczność, dzieląc się informacjami i wspierając nawzajem.",
+      "text_markdown": "Stworzyli podziemną społeczność, dzieląc się informacjami i wspierając nawzajem.",
+      "tts": {
+        "text": "Stworzyli podziemną społeczność, dzieląc się informacjami i wspierając nawzajem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektórzy jeńcy przystosowali się do nowego życia i nawrócili się szczerze.",
+      "text_markdown": "Niektórzy jeńcy przystosowali się do nowego życia i nawrócili się szczerze.",
+      "tts": {
+        "text": "Niektórzy jeńcy przystosowali się do nowego życia i nawrócili się szczerze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inni zachowali swoją pierwotną wiarę w tajemnicy, praktykując chrześcijaństwo za zamkniętymi drzwiami.",
+      "text_markdown": "Inni zachowali swoją pierwotną wiarę w tajemnicy, praktykując chrześcijaństwo za zamkniętymi drzwiami.",
+      "tts": {
+        "text": "Inni zachowali swoją pierwotną wiarę w tajemnicy, praktykując chrześcijaństwo za zamkniętymi drzwiami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas egzystował gdzieś pomiędzy tymi dwoma światami.",
+      "text_markdown": "Thomas egzystował gdzieś pomiędzy tymi dwoma światami.",
+      "tts": {
+        "text": "Thomas egzystował gdzieś pomiędzy tymi dwoma światami.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Publicznie odgrywał rolę lojalnego muzułmańskiego żołnierza.",
+      "text_markdown": "Publicznie odgrywał rolę lojalnego muzułmańskiego żołnierza.",
+      "tts": {
+        "text": "Publicznie odgrywał rolę lojalnego muzułmańskiego żołnierza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Prywatnie pielęgnował wspomnienia o Kornwalii i nadzieję na ucieczkę.",
+      "text_markdown": "Prywatnie pielęgnował wspomnienia o Kornwalii i nadzieję na ucieczkę.",
+      "tts": {
+        "text": "Prywatnie pielęgnował wspomnienia o Kornwalii i nadzieję na ucieczkę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dwoistość jego egzystencji była wyczerpująca.",
+      "text_markdown": "Dwoistość jego egzystencji była wyczerpująca.",
+      "tts": {
+        "text": "Dwoistość jego egzystencji była wyczerpująca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zawsze grał, zawsze ukrywał swoje prawdziwe ja.",
+      "text_markdown": "Zawsze grał, zawsze ukrywał swoje prawdziwe ja.",
+      "tts": {
+        "text": "Zawsze grał, zawsze ukrywał swoje prawdziwe ja.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lata mijały.",
+      "text_markdown": "Lata mijały.",
+      "tts": {
+        "text": "Lata mijały.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas dorósł z chłopca w mężczyznę w służbie sułtana.",
+      "text_markdown": "Thomas dorósł z chłopca w mężczyznę w służbie sułtana.",
+      "tts": {
+        "text": "Thomas dorósł z chłopca w mężczyznę w służbie sułtana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pory roku zmieniały się w Maroku, a Anglia stawała się bladnącym wspomnieniem.",
+      "text_markdown": "Pory roku zmieniały się w Maroku, a Anglia stawała się bladnącym wspomnieniem.",
+      "tts": {
+        "text": "Pory roku zmieniały się w Maroku, a Anglia stawała się bladnącym wspomnieniem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Jeniec",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ale pragnienie ucieczki nigdy nie umarło.",
+      "text_markdown": "Ale pragnienie ucieczki nigdy nie umarło.",
+      "tts": {
+        "text": "Ale pragnienie ucieczki nigdy nie umarło.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Niewola",
+      "text_markdown": "Niewola"
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1727 roku sułtan Mulaj Izmail zmarł po 55 latach panowania.",
+      "text_markdown": "W 1727 roku sułtan Mulaj Izmail zmarł po 55 latach panowania.",
+      "tts": {
+        "text": "W tysiąc siedemset dwudziestym siódmym roku sułtan Mulaj Izmail zmarł po pięćdziesięciu pięciu latach panowania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jego śmierć pogrążyła Maroko w chaosie.",
+      "text_markdown": "Jego śmierć pogrążyła Maroko w chaosie.",
+      "tts": {
+        "text": "Jego śmierć pogrążyła Maroko w chaosie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wybuchł gwałtowny kryzys sukcesyjny, gdy jego liczni synowie walczyli o tron.",
+      "text_markdown": "Wybuchł gwałtowny kryzys sukcesyjny, gdy jego liczni synowie walczyli o tron.",
+      "tts": {
+        "text": "Wybuchł gwałtowny kryzys sukcesyjny, gdy jego liczni synowie walczyli o tron.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Następna dekada była naznaczona wojną domową, głodem i zarazą.",
+      "text_markdown": "Następna dekada była naznaczona wojną domową, głodem i zarazą.",
+      "tts": {
+        "text": "Następna dekada była naznaczona wojną domową, głodem i zarazą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rywalizujący książęta walczyli ze sobą w całym kraju.",
+      "text_markdown": "Rywalizujący książęta walczyli ze sobą w całym kraju.",
+      "tts": {
+        "text": "Rywalizujący książęta walczyli ze sobą w całym kraju.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Armia rozpadła się wzdłuż linii frakcyjnych.",
+      "text_markdown": "Armia rozpadła się wzdłuż linii frakcyjnych.",
+      "tts": {
+        "text": "Armia rozpadła się wzdłuż linii frakcyjnych.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nikt nie był bezpieczny.",
+      "text_markdown": "Nikt nie był bezpieczny.",
+      "tts": {
+        "text": "Nikt nie był bezpieczny.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dla Thomasa Pellowa chaos był zarówno zagrożeniem, jak i szansą.",
+      "text_markdown": "Dla Thomasa Pellowa chaos był zarówno zagrożeniem, jak i szansą.",
+      "tts": {
+        "text": "Dla Thomasa Pellowa chaos był zarówno zagrożeniem, jak i szansą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Upadek władzy centralnej oznaczał, że zasady rządzące jeńcami były mniej ściśle egzekwowane.",
+      "text_markdown": "Upadek władzy centralnej oznaczał, że zasady rządzące jeńcami były mniej ściśle egzekwowane.",
+      "tts": {
+        "text": "Upadek władzy centralnej oznaczał, że zasady rządzące jeńcami były mniej ściśle egzekwowane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Strażnicy byli pochłonięci wojną domową.",
+      "text_markdown": "Strażnicy byli pochłonięci wojną domową.",
+      "tts": {
+        "text": "Strażnicy byli pochłonięci wojną domową.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ucieczka mogła wreszcie być możliwa.",
+      "text_markdown": "Ucieczka mogła wreszcie być możliwa.",
+      "tts": {
+        "text": "Ucieczka mogła wreszcie być możliwa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale ucieczka z Maroka była nadzwyczaj trudna.",
+      "text_markdown": "Ale ucieczka z Maroka była nadzwyczaj trudna.",
+      "tts": {
+        "text": "Ale ucieczka z Maroka była nadzwyczaj trudna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kraj był rozległy i nieznany.",
+      "text_markdown": "Kraj był rozległy i nieznany.",
+      "tts": {
+        "text": "Kraj był rozległy i nieznany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Europejczyk byłby natychmiast rozpoznawalny.",
+      "text_markdown": "Europejczyk byłby natychmiast rozpoznawalny.",
+      "tts": {
+        "text": "Europejczyk byłby natychmiast rozpoznawalny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kara dla schwytanego ponownie niewolnika była surowa, często śmierć.",
+      "text_markdown": "Kara dla schwytanego ponownie niewolnika była surowa, często śmierć.",
+      "tts": {
+        "text": "Kara dla schwytanego ponownie niewolnika była surowa, często śmierć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas musiał starannie planować.",
+      "text_markdown": "Thomas musiał starannie planować.",
+      "tts": {
+        "text": "Thomas musiał starannie planować.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Potrzebował zapasów, trasy i sojuszników.",
+      "text_markdown": "Potrzebował zapasów, trasy i sojuszników.",
+      "tts": {
+        "text": "Potrzebował zapasów, trasy i sojuszników.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Musiał przebyć setki kilometrów przez wrogie terytorium, aby dotrzeć do portu, gdzie mógłby znaleźć transport do Europy.",
+      "text_markdown": "Musiał przebyć setki kilometrów przez wrogie terytorium, aby dotrzeć do portu, gdzie mógłby znaleźć transport do Europy.",
+      "tts": {
+        "text": "Musiał przebyć setki kilometrów przez wrogie terytorium, aby dotrzeć do portu, gdzie mógłby znaleźć transport do Europy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spędził miesiące na przygotowaniach.",
+      "text_markdown": "Spędził miesiące na przygotowaniach.",
+      "tts": {
+        "text": "Spędził miesiące na przygotowaniach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zgromadził jedzenie, wodę i informacje o trasie na północ.",
+      "text_markdown": "Zgromadził jedzenie, wodę i informacje o trasie na północ.",
+      "tts": {
+        "text": "Zgromadził jedzenie, wodę i informacje o trasie na północ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zidentyfikował innych jeńców, którzy mogliby chcieć uciec z nim.",
+      "text_markdown": "Zidentyfikował innych jeńców, którzy mogliby chcieć uciec z nim.",
+      "tts": {
+        "text": "Zidentyfikował innych jeńców, którzy mogliby chcieć uciec z nim.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas musiał także przezwyciężyć lata kondycjonowania.",
+      "text_markdown": "Thomas musiał także przezwyciężyć lata kondycjonowania.",
+      "tts": {
+        "text": "Thomas musiał także przezwyciężyć lata kondycjonowania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był jeńcem od dzieciństwa.",
+      "text_markdown": "Był jeńcem od dzieciństwa.",
+      "tts": {
+        "text": "Był jeńcem od dzieciństwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dwór sułtana był jedynym dorosłym życiem, jakie kiedykolwiek znał.",
+      "text_markdown": "Dwór sułtana był jedynym dorosłym życiem, jakie kiedykolwiek znał.",
+      "tts": {
+        "text": "Dwór sułtana był jedynym dorosłym życiem, jakie kiedykolwiek znał.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Odejście oznaczało porzucenie wszystkiego, co znane, nawet jeśli to, co znane, było więzieniem.",
+      "text_markdown": "Odejście oznaczało porzucenie wszystkiego, co znane, nawet jeśli to, co znane, było więzieniem.",
+      "tts": {
+        "text": "Odejście oznaczało porzucenie wszystkiego, co znane, nawet jeśli to, co znane, było więzieniem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Psychologiczne żniwo długiej niewoli nie może być przecenione.",
+      "text_markdown": "Psychologiczne żniwo długiej niewoli nie może być przecenione.",
+      "tts": {
+        "text": "Psychologiczne żniwo długiej niewoli nie może być przecenione.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeńcy, którzy spędzili dekady w niewoli, często nie potrafili wyobrazić sobie wolności.",
+      "text_markdown": "Jeńcy, którzy spędzili dekady w niewoli, często nie potrafili wyobrazić sobie wolności.",
+      "tts": {
+        "text": "Jeńcy, którzy spędzili dekady w niewoli, często nie potrafili wyobrazić sobie wolności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Przystosowali się do przetrwania w niewoli, a te przystosowania utrudniały wyzwolenie się.",
+      "text_markdown": "Przystosowali się do przetrwania w niewoli, a te przystosowania utrudniały wyzwolenie się.",
+      "tts": {
+        "text": "Przystosowali się do przetrwania w niewoli, a te przystosowania utrudniały wyzwolenie się.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas służył sułtanowi i jego następcom przez ponad dwie dekady.",
+      "text_markdown": "Thomas służył sułtanowi i jego następcom przez ponad dwie dekady.",
+      "tts": {
+        "text": "Thomas służył sułtanowi i jego następcom przez ponad dwie dekady.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Biegle mówił po arabsku.",
+      "text_markdown": "Biegle mówił po arabsku.",
+      "tts": {
+        "text": "Biegle mówił po arabsku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Znał marokańskie zwyczaje jak mało kto.",
+      "text_markdown": "Znał marokańskie zwyczaje jak mało kto.",
+      "tts": {
+        "text": "Znał marokańskie zwyczaje jak mało kto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pod wieloma względami stał się częścią świata, z którego chciał uciec.",
+      "text_markdown": "Pod wieloma względami stał się częścią świata, z którego chciał uciec.",
+      "tts": {
+        "text": "Pod wieloma względami stał się częścią świata, z którego chciał uciec.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale wciąż pamiętał Kornwalię.",
+      "text_markdown": "Ale wciąż pamiętał Kornwalię.",
+      "tts": {
+        "text": "Ale wciąż pamiętał Kornwalię.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pamiętał zielone wzgórza i zimne morze.",
+      "text_markdown": "Pamiętał zielone wzgórza i zimne morze.",
+      "tts": {
+        "text": "Pamiętał zielone wzgórza i zimne morze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pamiętał swoją rodzinę, choć ich twarze musiały się zatrzeć po tylu latach.",
+      "text_markdown": "Pamiętał swoją rodzinę, choć ich twarze musiały się zatrzeć po tylu latach.",
+      "tts": {
+        "text": "Pamiętał swoją rodzinę, choć ich twarze musiały się zatrzeć po tylu latach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wspomnienie domu było nicią łączącą go z tym, kim naprawdę był.",
+      "text_markdown": "Wspomnienie domu było nicią łączącą go z tym, kim naprawdę był.",
+      "tts": {
+        "text": "Wspomnienie domu było nicią łączącą go z tym, kim naprawdę był.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W latach wojny domowej Thomas był świadkiem okrucieństw popełnianych przez wszystkie strony.",
+      "text_markdown": "W latach wojny domowej Thomas był świadkiem okrucieństw popełnianych przez wszystkie strony.",
+      "tts": {
+        "text": "W latach wojny domowej Thomas był świadkiem okrucieństw popełnianych przez wszystkie strony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miasta były plądrowane.",
+      "text_markdown": "Miasta były plądrowane.",
+      "tts": {
+        "text": "Miasta były plądrowane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ludność była masakrowana.",
+      "text_markdown": "Ludność była masakrowana.",
+      "tts": {
+        "text": "Ludność była masakrowana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kraj, któremu był zmuszony służyć, rozpadał się.",
+      "text_markdown": "Kraj, któremu był zmuszony służyć, rozpadał się.",
+      "tts": {
+        "text": "Kraj, któremu był zmuszony służyć, rozpadał się.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Widział, jak głód przetaczał się przez wieś.",
+      "text_markdown": "Widział, jak głód przetaczał się przez wieś.",
+      "tts": {
+        "text": "Widział, jak głód przetaczał się przez wieś.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ludzie umierali na ulicach Meknesu.",
+      "text_markdown": "Ludzie umierali na ulicach Meknesu.",
+      "tts": {
+        "text": "Ludzie umierali na ulicach Meknesu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wspaniały pałac zbudowany przez Mulaja Izmaila zaczął się rozpadać bez armii niewolników do jego utrzymania.",
+      "text_markdown": "Wspaniały pałac zbudowany przez Mulaja Izmaila zaczął się rozpadać bez armii niewolników do jego utrzymania.",
+      "tts": {
+        "text": "Wspaniały pałac zbudowany przez Mulaja Izmaila zaczął się rozpadać bez armii niewolników do jego utrzymania.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W tej atmosferze upadku i cierpienia Thomas podjął swoją decyzję.",
+      "text_markdown": "W tej atmosferze upadku i cierpienia Thomas podjął swoją decyzję.",
+      "tts": {
+        "text": "W tej atmosferze upadku i cierpienia Thomas podjął swoją decyzję.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ucieknie lub zginie, próbując.",
+      "text_markdown": "Ucieknie lub zginie, próbując.",
+      "tts": {
+        "text": "Ucieknie lub zginie, próbując.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Niewola",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nie mógł spędzić reszty życia jako więzień w upadającym państwie.",
+      "text_markdown": "Nie mógł spędzić reszty życia jako więzień w upadającym państwie.",
+      "tts": {
+        "text": "Nie mógł spędzić reszty życia jako więzień w upadającym państwie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ucieczka",
+      "text_markdown": "Ucieczka"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1738 roku Thomas Pellow dokonał próby ucieczki ku wolności.",
+      "text_markdown": "W 1738 roku Thomas Pellow dokonał próby ucieczki ku wolności.",
+      "tts": {
+        "text": "W tysiąc siedemset trzydziestym ósmym roku Thomas Pellow dokonał próby ucieczki ku wolności.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wymknął się ze swojego posterunku podczas okresu zamieszania spowodowanego trwającą wojną domową.",
+      "text_markdown": "Wymknął się ze swojego posterunku podczas okresu zamieszania spowodowanego trwającą wojną domową.",
+      "tts": {
+        "text": "Wymknął się ze swojego posterunku podczas okresu zamieszania spowodowanego trwającą wojną domową.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miał trzydzieści cztery lata.",
+      "text_markdown": "Miał trzydzieści cztery lata.",
+      "tts": {
+        "text": "Miał trzydzieści cztery lata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był jeńcem przez dwadzieścia trzy lata.",
+      "text_markdown": "Był jeńcem przez dwadzieścia trzy lata.",
+      "tts": {
+        "text": "Był jeńcem przez dwadzieścia trzy lata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Podróż na północ była wstrząsająca.",
+      "text_markdown": "Podróż na północ była wstrząsająca.",
+      "tts": {
+        "text": "Podróż na północ była wstrząsająca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podróżował głównie nocą, ukrywając się w ciągu dnia.",
+      "text_markdown": "Podróżował głównie nocą, ukrywając się w ciągu dnia.",
+      "tts": {
+        "text": "Podróżował głównie nocą, ukrywając się w ciągu dnia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unikał dróg i miast, gdzie mógłby zostać rozpoznany.",
+      "text_markdown": "Unikał dróg i miast, gdzie mógłby zostać rozpoznany.",
+      "tts": {
+        "text": "Unikał dróg i miast, gdzie mógłby zostać rozpoznany.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Był sam w krajobrazie, który był jednocześnie znajomy i wrogi.",
+      "text_markdown": "Był sam w krajobrazie, który był jednocześnie znajomy i wrogi.",
+      "tts": {
+        "text": "Był sam w krajobrazie, który był jednocześnie znajomy i wrogi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Znał język i zwyczaje, ale był zbiegiem.",
+      "text_markdown": "Znał język i zwyczaje, ale był zbiegiem.",
+      "tts": {
+        "text": "Znał język i zwyczaje, ale był zbiegiem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Każdy, kto odkryłby jego tożsamość, mógł go wydać za nagrodę.",
+      "text_markdown": "Każdy, kto odkryłby jego tożsamość, mógł go wydać za nagrodę.",
+      "tts": {
+        "text": "Każdy, kto odkryłby jego tożsamość, mógł go wydać za nagrodę.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przetrwał dzięki jedzeniu, które udało mu się znaleźć lub ukraść.",
+      "text_markdown": "Przetrwał dzięki jedzeniu, które udało mu się znaleźć lub ukraść.",
+      "tts": {
+        "text": "Przetrwał dzięki jedzeniu, które udało mu się znaleźć lub ukraść.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pił ze strumieni i studni, gdy odważył się do nich zbliżyć.",
+      "text_markdown": "Pił ze strumieni i studni, gdy odważył się do nich zbliżyć.",
+      "tts": {
+        "text": "Pił ze strumieni i studni, gdy odważył się do nich zbliżyć.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trudności fizyczne były ekstremalne, ale posuwał się dalej na północ.",
+      "text_markdown": "Trudności fizyczne były ekstremalne, ale posuwał się dalej na północ.",
+      "tts": {
+        "text": "Trudności fizyczne były ekstremalne, ale posuwał się dalej na północ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czasami znajdował pomoc z nieoczekiwanych źródeł.",
+      "text_markdown": "Czasami znajdował pomoc z nieoczekiwanych źródeł.",
+      "tts": {
+        "text": "Czasami znajdował pomoc z nieoczekiwanych źródeł.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Niektórzy Marokańczycy zlitowali się nad nim i dali mu jedzenie lub schronienie.",
+      "text_markdown": "Niektórzy Marokańczycy zlitowali się nad nim i dali mu jedzenie lub schronienie.",
+      "tts": {
+        "text": "Niektórzy Marokańczycy zlitowali się nad nim i dali mu jedzenie lub schronienie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nie wszyscy byli wrogami.",
+      "text_markdown": "Nie wszyscy byli wrogami.",
+      "tts": {
+        "text": "Nie wszyscy byli wrogami.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nawet w swojej ucieczce Thomas napotkał ludzką dobroć.",
+      "text_markdown": "Nawet w swojej ucieczce Thomas napotkał ludzką dobroć.",
+      "tts": {
+        "text": "Nawet w swojej ucieczce Thomas napotkał ludzką dobroć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dotarł do wybrzeża, kierując się do portu, gdzie można by znaleźć europejskie statki.",
+      "text_markdown": "Dotarł do wybrzeża, kierując się do portu, gdzie można by znaleźć europejskie statki.",
+      "tts": {
+        "text": "Dotarł do wybrzeża, kierując się do portu, gdzie można by znaleźć europejskie statki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podróż trwała tygodnie wyczerpującej wędrówki.",
+      "text_markdown": "Podróż trwała tygodnie wyczerpującej wędrówki.",
+      "tts": {
+        "text": "Podróż trwała tygodnie wyczerpującej wędrówki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Każdy dzień niósł ryzyko ponownego schwytania.",
+      "text_markdown": "Każdy dzień niósł ryzyko ponownego schwytania.",
+      "tts": {
+        "text": "Każdy dzień niósł ryzyko ponownego schwytania.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ostatecznie dotarł do wybrzeża i znalazł miejsce na statku płynącym do Europy.",
+      "text_markdown": "Ostatecznie dotarł do wybrzeża i znalazł miejsce na statku płynącym do Europy.",
+      "tts": {
+        "text": "Ostatecznie dotarł do wybrzeża i znalazł miejsce na statku płynącym do Europy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Szczegóły tego, jak zapewnił sobie miejsce, są niejasne w jego relacji.",
+      "text_markdown": "Szczegóły tego, jak zapewnił sobie miejsce, są niejasne w jego relacji.",
+      "tts": {
+        "text": "Szczegóły tego, jak zapewnił sobie miejsce, są niejasne w jego relacji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Co jest jasne, to że zostawił Maroko za sobą i popłynął przez Morze Śródziemne.",
+      "text_markdown": "Co jest jasne, to że zostawił Maroko za sobą i popłynął przez Morze Śródziemne.",
+      "tts": {
+        "text": "Co jest jasne, to że zostawił Maroko za sobą i popłynął przez Morze Śródziemne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy Thomas wreszcie dotarł do Anglii, był obcym we własnym kraju.",
+      "text_markdown": "Kiedy Thomas wreszcie dotarł do Anglii, był obcym we własnym kraju.",
+      "tts": {
+        "text": "Kiedy Thomas wreszcie dotarł do Anglii, był obcym we własnym kraju.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wyjechał jako jedenastoletni chłopiec.",
+      "text_markdown": "Wyjechał jako jedenastoletni chłopiec.",
+      "tts": {
+        "text": "Wyjechał jako jedenastoletni chłopiec.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wrócił jako trzydziestoczteroletni mężczyzna.",
+      "text_markdown": "Wrócił jako trzydziestoczteroletni mężczyzna.",
+      "tts": {
+        "text": "Wrócił jako trzydziestoczteroletni mężczyzna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wszystko się zmieniło, zarówno kraj, jak i człowiek.",
+      "text_markdown": "Wszystko się zmieniło, zarówno kraj, jak i człowiek.",
+      "tts": {
+        "text": "Wszystko się zmieniło, zarówno kraj, jak i człowiek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego rodzina ledwo go rozpoznała.",
+      "text_markdown": "Jego rodzina ledwo go rozpoznała.",
+      "tts": {
+        "text": "Jego rodzina ledwo go rozpoznała.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Był nieobecny przez ponad połowę swojego życia.",
+      "text_markdown": "Był nieobecny przez ponad połowę swojego życia.",
+      "tts": {
+        "text": "Był nieobecny przez ponad połowę swojego życia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mówił z akcentem, poruszał się inaczej i niósł ciężar doświadczeń, których nigdy nie mogliby zrozumieć.",
+      "text_markdown": "Mówił z akcentem, poruszał się inaczej i niósł ciężar doświadczeń, których nigdy nie mogliby zrozumieć.",
+      "tts": {
+        "text": "Mówił z akcentem, poruszał się inaczej i niósł ciężar doświadczeń, których nigdy nie mogliby zrozumieć.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Powrót do normalnego życia był nadzwyczaj trudny.",
+      "text_markdown": "Powrót do normalnego życia był nadzwyczaj trudny.",
+      "tts": {
+        "text": "Powrót do normalnego życia był nadzwyczaj trudny.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas spędził całe swoje dorosłe życie w obcej kulturze w warunkach niewoli.",
+      "text_markdown": "Thomas spędził całe swoje dorosłe życie w obcej kulturze w warunkach niewoli.",
+      "tts": {
+        "text": "Thomas spędził całe swoje dorosłe życie w obcej kulturze w warunkach niewoli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Umiejętności, których nauczył się w Maroku, były bezużyteczne w Kornwalii.",
+      "text_markdown": "Umiejętności, których nauczył się w Maroku, były bezużyteczne w Kornwalii.",
+      "tts": {
+        "text": "Umiejętności, których nauczył się w Maroku, były bezużyteczne w Kornwalii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mężczyzna, który wrócił do domu, nie był chłopcem, który wyjechał.",
+      "text_markdown": "Mężczyzna, który wrócił do domu, nie był chłopcem, który wyjechał.",
+      "tts": {
+        "text": "Mężczyzna, który wrócił do domu, nie był chłopcem, który wyjechał.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W końcu napisał swoje wspomnienia, opublikowane pod tytułem Historia długiej niewoli i przygód Thomasa Pellowa.",
+      "text_markdown": "W końcu napisał swoje wspomnienia, opublikowane pod tytułem Historia długiej niewoli i przygód Thomasa Pellowa.",
+      "tts": {
+        "text": "W końcu napisał swoje wspomnienia, opublikowane pod tytułem Historia długiej niewoli i przygód Thomasa Pellowa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Książka opisywała jego pojmanie, wymuszoną konwersję, lata służby i ucieczkę w żywych szczegółach.",
+      "text_markdown": "Książka opisywała jego pojmanie, wymuszoną konwersję, lata służby i ucieczkę w żywych szczegółach.",
+      "tts": {
+        "text": "Książka opisywała jego pojmanie, wymuszoną konwersję, lata służby i ucieczkę w żywych szczegółach.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wspomnienia były popularne w Anglii.",
+      "text_markdown": "Wspomnienia były popularne w Anglii.",
+      "tts": {
+        "text": "Wspomnienia były popularne w Anglii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podsycały publiczną fascynację egzotycznym Wschodem i przerażenie handlem niewolnikami berberyjskimi.",
+      "text_markdown": "Podsycały publiczną fascynację egzotycznym Wschodem i przerażenie handlem niewolnikami berberyjskimi.",
+      "tts": {
+        "text": "Podsycały publiczną fascynację egzotycznym Wschodem i przerażenie handlem niewolnikami berberyjskimi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Służyły też jako antyislamska propaganda w okresie intensywnego konfliktu religijnego.",
+      "text_markdown": "Służyły też jako antyislamska propaganda w okresie intensywnego konfliktu religijnego.",
+      "tts": {
+        "text": "Służyły też jako antyislamska propaganda w okresie intensywnego konfliktu religijnego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Współcześni historycy traktują relację Thomasa z szacunkiem i ostrożnością.",
+      "text_markdown": "Współcześni historycy traktują relację Thomasa z szacunkiem i ostrożnością.",
+      "tts": {
+        "text": "Współcześni historycy traktują relację Thomasa z szacunkiem i ostrożnością.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Niektóre szczegóły mogły zostać wyolbrzymione lub upiększone dla czytelników.",
+      "text_markdown": "Niektóre szczegóły mogły zostać wyolbrzymione lub upiększone dla czytelników.",
+      "tts": {
+        "text": "Niektóre szczegóły mogły zostać wyolbrzymione lub upiększone dla czytelników.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ale rdzeń historii jest poparty innymi dowodami historycznymi.",
+      "text_markdown": "Ale rdzeń historii jest poparty innymi dowodami historycznymi.",
+      "tts": {
+        "text": "Ale rdzeń historii jest poparty innymi dowodami historycznymi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Data i okoliczności śmierci Thomasa Pellowa są nieznane.",
+      "text_markdown": "Data i okoliczności śmierci Thomasa Pellowa są nieznane.",
+      "tts": {
+        "text": "Data i okoliczności śmierci Thomasa Pellowa są nieznane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Znika z dokumentacji historycznej po publikacji swoich wspomnień.",
+      "text_markdown": "Znika z dokumentacji historycznej po publikacji swoich wspomnień.",
+      "tts": {
+        "text": "Znika z dokumentacji historycznej po publikacji swoich wspomnień.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Ucieczka",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Człowiek, który przeżył dwadzieścia trzy lata niewoli, cicho odszedł w zapomnienie.",
+      "text_markdown": "Człowiek, który przeżył dwadzieścia trzy lata niewoli, cicho odszedł w zapomnienie.",
+      "tts": {
+        "text": "Człowiek, który przeżył dwadzieścia trzy lata niewoli, cicho odszedł w zapomnienie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dziedzictwo",
+      "text_markdown": "Dziedzictwo"
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wspomnienia Thomasa Pellowa są jednym z najważniejszych dokumentów o handlu niewolnikami berberyjskimi.",
+      "text_markdown": "Wspomnienia Thomasa Pellowa są jednym z najważniejszych dokumentów o handlu niewolnikami berberyjskimi.",
+      "tts": {
+        "text": "Wspomnienia Thomasa Pellowa są jednym z najważniejszych dokumentów o handlu niewolnikami berberyjskimi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dostarczają relacji z pierwszej ręki o życiu jako europejski jeniec w Maroku.",
+      "text_markdown": "Dostarczają relacji z pierwszej ręki o życiu jako europejski jeniec w Maroku.",
+      "tts": {
+        "text": "Dostarczają relacji z pierwszej ręki o życiu jako europejski jeniec w Maroku.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niewiele innych źródeł oferuje tak szczegółowe i osobiste świadectwo.",
+      "text_markdown": "Niewiele innych źródeł oferuje tak szczegółowe i osobiste świadectwo.",
+      "tts": {
+        "text": "Niewiele innych źródeł oferuje tak szczegółowe i osobiste świadectwo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego historia rzuca światło na rozdział historii, który jest często pomijany.",
+      "text_markdown": "Jego historia rzuca światło na rozdział historii, który jest często pomijany.",
+      "tts": {
+        "text": "Jego historia rzuca światło na rozdział historii, który jest często pomijany.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zniewolenie Europejczyków przez państwa północnoafrykańskie trwało wieki.",
+      "text_markdown": "Zniewolenie Europejczyków przez państwa północnoafrykańskie trwało wieki.",
+      "tts": {
+        "text": "Zniewolenie Europejczyków przez państwa północnoafrykańskie trwało wieki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dotknęło miliony ludzi i ukształtowało politykę świata śródziemnomorskiego.",
+      "text_markdown": "Dotknęło miliony ludzi i ukształtowało politykę świata śródziemnomorskiego.",
+      "tts": {
+        "text": "Dotknęło miliony ludzi i ukształtowało politykę świata śródziemnomorskiego.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pałac w Meknesie, który Thomas pomagał utrzymywać, wciąż częściowo stoi do dzisiaj.",
+      "text_markdown": "Pałac w Meknesie, który Thomas pomagał utrzymywać, wciąż częściowo stoi do dzisiaj.",
+      "tts": {
+        "text": "Pałac w Meknesie, który Thomas pomagał utrzymywać, wciąż częściowo stoi do dzisiaj.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jest wpisany na Listę Światowego Dziedzictwa UNESCO.",
+      "text_markdown": "Jest wpisany na Listę Światowego Dziedzictwa UNESCO.",
+      "tts": {
+        "text": "Jest wpisany na Listę Światowego Dziedzictwa UNESCO.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Turyści przechadzają się po tych samych dziedzińcach, gdzie kiedyś trudzili się niewolnicy.",
+      "text_markdown": "Turyści przechadzają się po tych samych dziedzińcach, gdzie kiedyś trudzili się niewolnicy.",
+      "tts": {
+        "text": "Turyści przechadzają się po tych samych dziedzińcach, gdzie kiedyś trudzili się niewolnicy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Piękno ruin kryje cierpienie, które je zbudowało.",
+      "text_markdown": "Piękno ruin kryje cierpienie, które je zbudowało.",
+      "tts": {
+        "text": "Piękno ruin kryje cierpienie, które je zbudowało.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mulaj Izmail, sułtan, któremu Thomas służył, jest wspominany inaczej w Maroku i w Europie.",
+      "text_markdown": "Mulaj Izmail, sułtan, któremu Thomas służył, jest wspominany inaczej w Maroku i w Europie.",
+      "tts": {
+        "text": "Mulaj Izmail, sułtan, któremu Thomas służył, jest wspominany inaczej w Maroku i w Europie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W Maroku jest czczony jako silny władca, który zjednoczył kraj.",
+      "text_markdown": "W Maroku jest czczony jako silny władca, który zjednoczył kraj.",
+      "tts": {
+        "text": "W Maroku jest czczony jako silny władca, który zjednoczył kraj.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "W Europie jest wspominany jako tyran, który zniewolił tysiące.",
+      "text_markdown": "W Europie jest wspominany jako tyran, który zniewolił tysiące.",
+      "tts": {
+        "text": "W Europie jest wspominany jako tyran, który zniewolił tysiące.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Obie perspektywy zawierają prawdę.",
+      "text_markdown": "Obie perspektywy zawierają prawdę.",
+      "tts": {
+        "text": "Obie perspektywy zawierają prawdę.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Historia jest skomplikowana, a potężni władcy zostawiają skomplikowane dziedzictwa.",
+      "text_markdown": "Historia jest skomplikowana, a potężni władcy zostawiają skomplikowane dziedzictwa.",
+      "tts": {
+        "text": "Historia jest skomplikowana, a potężni władcy zostawiają skomplikowane dziedzictwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niewolnicy, którzy zbudowali Meknes, nie nazwaliby Mulaja Izmaila wielkim królem.",
+      "text_markdown": "Niewolnicy, którzy zbudowali Meknes, nie nazwaliby Mulaja Izmaila wielkim królem.",
+      "tts": {
+        "text": "Niewolnicy, którzy zbudowali Meknes, nie nazwaliby Mulaja Izmaila wielkim królem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historia Thomasa Pellowa stawia też trudne pytania o tożsamość.",
+      "text_markdown": "Historia Thomasa Pellowa stawia też trudne pytania o tożsamość.",
+      "tts": {
+        "text": "Historia Thomasa Pellowa stawia też trudne pytania o tożsamość.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Po dwudziestu trzech latach w Maroku, czy Thomas wciąż był Anglikiem?",
+      "text_markdown": "Po dwudziestu trzech latach w Maroku, czy Thomas wciąż był Anglikiem?",
+      "tts": {
+        "text": "Po dwudziestu trzech latach w Maroku, czy Thomas wciąż był Anglikiem?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Czy wciąż był chrześcijaninem?",
+      "text_markdown": "Czy wciąż był chrześcijaninem?",
+      "tts": {
+        "text": "Czy wciąż był chrześcijaninem?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p89",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Odpowiedzi nie są proste.",
+      "text_markdown": "Odpowiedzi nie są proste.",
+      "tts": {
+        "text": "Odpowiedzi nie są proste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spędził więcej swojego życia w Maroku niż w Anglii.",
+      "text_markdown": "Spędził więcej swojego życia w Maroku niż w Anglii.",
+      "tts": {
+        "text": "Spędził więcej swojego życia w Maroku niż w Anglii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mówił po arabsku lepiej niż wielu rodzimych użytkowników tego języka.",
+      "text_markdown": "Mówił po arabsku lepiej niż wielu rodzimych użytkowników tego języka.",
+      "tts": {
+        "text": "Mówił po arabsku lepiej niż wielu rodzimych użytkowników tego języka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Walczył w marokańskich wojnach i żył według marokańskich zwyczajów.",
+      "text_markdown": "Walczył w marokańskich wojnach i żył według marokańskich zwyczajów.",
+      "tts": {
+        "text": "Walczył w marokańskich wojnach i żył według marokańskich zwyczajów.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p90",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Granica między jeńcem a uczestnikiem zatarła się na przestrzeni dekad.",
+      "text_markdown": "Granica między jeńcem a uczestnikiem zatarła się na przestrzeni dekad.",
+      "tts": {
+        "text": "Granica między jeńcem a uczestnikiem zatarła się na przestrzeni dekad.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego wymuszona konwersja nie była wyjątkowa.",
+      "text_markdown": "Jego wymuszona konwersja nie była wyjątkowa.",
+      "tts": {
+        "text": "Jego wymuszona konwersja nie była wyjątkowa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tysiące europejskich jeńców zostało zmuszonych do przejścia na islam.",
+      "text_markdown": "Tysiące europejskich jeńców zostało zmuszonych do przejścia na islam.",
+      "tts": {
+        "text": "Tysiące europejskich jeńców zostało zmuszonych do przejścia na islam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niektórzy ostatecznie wrócili do chrześcijaństwa.",
+      "text_markdown": "Niektórzy ostatecznie wrócili do chrześcijaństwa.",
+      "tts": {
+        "text": "Niektórzy ostatecznie wrócili do chrześcijaństwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Inni pozostali muzułmanami do końca życia.",
+      "text_markdown": "Inni pozostali muzułmanami do końca życia.",
+      "tts": {
+        "text": "Inni pozostali muzułmanami do końca życia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p91",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Granica między wymuszoną a szczerą konwersją była często niejasna.",
+      "text_markdown": "Granica między wymuszoną a szczerą konwersją była często niejasna.",
+      "tts": {
+        "text": "Granica między wymuszoną a szczerą konwersją była często niejasna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Handel niewolnikami berberyjskimi trwał jeszcze przez dekady po ucieczce Thomasa.",
+      "text_markdown": "Handel niewolnikami berberyjskimi trwał jeszcze przez dekady po ucieczce Thomasa.",
+      "tts": {
+        "text": "Handel niewolnikami berberyjskimi trwał jeszcze przez dekady po ucieczce Thomasa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dopiero na początku XIX wieku europejska i amerykańska potęga morska ostatecznie stłumiła korsarzy.",
+      "text_markdown": "Dopiero na początku XIX wieku europejska i amerykańska potęga morska ostatecznie stłumiła korsarzy.",
+      "tts": {
+        "text": "Dopiero na początku dziewiętnastego wieku europejska i amerykańska potęga morska ostatecznie stłumiła korsarzy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stany Zjednoczone stoczyły dwie wojny z państwami berberyjskimi, w 1801 i 1815 roku.",
+      "text_markdown": "Stany Zjednoczone stoczyły dwie wojny z państwami berberyjskimi, w 1801 i 1815 roku.",
+      "tts": {
+        "text": "Stany Zjednoczone stoczyły dwie wojny z państwami berberyjskimi, w tysiąc osiemset pierwszym i tysiąc osiemset piętnastym roku.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historia Thomasa Pellowa jest ostatecznie historią przetrwania.",
+      "text_markdown": "Historia Thomasa Pellowa jest ostatecznie historią przetrwania.",
+      "tts": {
+        "text": "Historia Thomasa Pellowa jest ostatecznie historią przetrwania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zniósł dwadzieścia trzy lata niewoli, wymuszoną konwersję, przemoc i izolację.",
+      "text_markdown": "Zniósł dwadzieścia trzy lata niewoli, wymuszoną konwersję, przemoc i izolację.",
+      "tts": {
+        "text": "Zniósł dwadzieścia trzy lata niewoli, wymuszoną konwersję, przemoc i izolację.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Przeżył to wszystko i znalazł drogę do domu.",
+      "text_markdown": "Przeżył to wszystko i znalazł drogę do domu.",
+      "tts": {
+        "text": "Przeżył to wszystko i znalazł drogę do domu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego wspomnienia stanowią świadectwo tego, co człowiek może znieść i wciąż pozostać sobą.",
+      "text_markdown": "Jego wspomnienia stanowią świadectwo tego, co człowiek może znieść i wciąż pozostać sobą.",
+      "tts": {
+        "text": "Jego wspomnienia stanowią świadectwo tego, co człowiek może znieść i wciąż pozostać sobą.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Dziedzictwo",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przez wszystkie te lata, przez cały ten dystans, Thomas Pellow nigdy nie przestał być chłopcem z Kornwalii, który chciał wrócić do domu.",
+      "text_markdown": "Przez wszystkie te lata, przez cały ten dystans, Thomas Pellow nigdy nie przestał być chłopcem z Kornwalii, który chciał wrócić do domu.",
+      "tts": {
+        "text": "Przez wszystkie te lata, przez cały ten dystans, Thomas Pellow nigdy nie przestał być chłopcem z Kornwalii, który chciał wrócić do domu.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

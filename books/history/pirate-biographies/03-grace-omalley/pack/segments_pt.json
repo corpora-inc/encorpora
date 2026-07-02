@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_grace_omalley",
+  "language": "pt",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uma nota ao leitor",
+      "text_markdown": "Uma nota ao leitor"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esta é a verdadeira história de Grace O'Malley, a rainha pirata da costa oeste da Irlanda.",
+      "text_markdown": "Esta é a verdadeira história de Grace O'Malley, a rainha pirata da costa oeste da Irlanda.",
+      "tts": {
+        "text": "Esta é a verdadeira história de Grace O'Malley, a rainha pirata da costa oeste da Irlanda.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ela nasceu em um mundo de chefes gaélicos, guerras entre clãs e tempestades atlânticas.",
+      "text_markdown": "Ela nasceu em um mundo de chefes gaélicos, guerras entre clãs e tempestades atlânticas.",
+      "tts": {
+        "text": "Ela nasceu em um mundo de chefes gaélicos, guerras entre clãs e tempestades atlânticas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morreu em um mundo que a Coroa inglesa havia conquistado e remodelado além de qualquer reconhecimento.",
+      "text_markdown": "Morreu em um mundo que a Coroa inglesa havia conquistado e remodelado além de qualquer reconhecimento.",
+      "tts": {
+        "text": "Morreu em um mundo que a Coroa inglesa havia conquistado e remodelado além de qualquer reconhecimento.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley viveu um dos séculos mais turbulentos da história da Irlanda.",
+      "text_markdown": "Grace O'Malley viveu um dos séculos mais turbulentos da história da Irlanda.",
+      "tts": {
+        "text": "Grace O'Malley viveu um dos séculos mais turbulentos da história da Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Comandou uma frota de navios, lutou contra exércitos ingleses, sobreviveu ao aprisionamento e sobreviveu a três maridos.",
+      "text_markdown": "Comandou uma frota de navios, lutou contra exércitos ingleses, sobreviveu ao aprisionamento e sobreviveu a três maridos.",
+      "tts": {
+        "text": "Comandou uma frota de navios, lutou contra exércitos ingleses, sobreviveu ao aprisionamento e sobreviveu a três maridos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uma vez navegou até Londres e encontrou-se com a rainha Elisabete Primeira cara a cara.",
+      "text_markdown": "Uma vez navegou até Londres e encontrou-se com a rainha Elisabete Primeira cara a cara.",
+      "tts": {
+        "text": "Uma vez navegou até Londres e encontrou-se com a rainha Elisabete Primeira cara a cara.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seu nome irlandês era Grainne Mhaol, e é o nome pelo qual ela ainda é conhecida na Irlanda hoje.",
+      "text_markdown": "Seu nome irlandês era Grainne Mhaol, e é o nome pelo qual ela ainda é conhecida na Irlanda hoje.",
+      "tts": {
+        "text": "Seu nome irlandês era Grainne Mhaol, e é o nome pelo qual ela ainda é conhecida na Irlanda hoje.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Este livro conta a sua história conforme o registro histórico permite.",
+      "text_markdown": "Este livro conta a sua história conforme o registro histórico permite.",
+      "tts": {
+        "text": "Este livro conta a sua história conforme o registro histórico permite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onde o registro é silencioso, dizemos isso honestamente.",
+      "text_markdown": "Onde o registro é silencioso, dizemos isso honestamente.",
+      "tts": {
+        "text": "Onde o registro é silencioso, dizemos isso honestamente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sua vida foi moldada por forças muito maiores do que qualquer pessoa.",
+      "text_markdown": "Sua vida foi moldada por forças muito maiores do que qualquer pessoa.",
+      "tts": {
+        "text": "Sua vida foi moldada por forças muito maiores do que qualquer pessoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A conquista Tudor da Irlanda, a destruição do sistema de clãs gaélicos e a ascensão do poder colonial inglês formam o pano de fundo de sua história.",
+      "text_markdown": "A conquista Tudor da Irlanda, a destruição do sistema de clãs gaélicos e a ascensão do poder colonial inglês formam o pano de fundo de sua história.",
+      "tts": {
+        "text": "A conquista Tudor da Irlanda, a destruição do sistema de clãs gaélicos e a ascensão do poder colonial inglês formam o pano de fundo de sua história.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Uma nota ao leitor",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Para entender Grace O'Malley, é preciso primeiro entender o mundo em que ela nasceu.",
+      "text_markdown": "Para entender Grace O'Malley, é preciso primeiro entender o mundo em que ela nasceu.",
+      "tts": {
+        "text": "Para entender Grace O'Malley, é preciso primeiro entender o mundo em que ela nasceu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O mundo da Irlanda gaélica",
+      "text_markdown": "O mundo da Irlanda gaélica"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Irlanda no século dezesseis era uma ilha dividida.",
+      "text_markdown": "A Irlanda no século dezesseis era uma ilha dividida.",
+      "tts": {
+        "text": "A Irlanda no século dezesseis era uma ilha dividida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A costa leste, centrada em Dublin, era controlada por colonos ingleses e governada pela lei inglesa.",
+      "text_markdown": "A costa leste, centrada em Dublin, era controlada por colonos ingleses e governada pela lei inglesa.",
+      "tts": {
+        "text": "A costa leste, centrada em Dublin, era controlada por colonos ingleses e governada pela lei inglesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esta área era conhecida como o Pale, e além dela havia um mundo que os ingleses mal compreendiam.",
+      "text_markdown": "Esta área era conhecida como o Pale, e além dela havia um mundo que os ingleses mal compreendiam.",
+      "tts": {
+        "text": "Esta área era conhecida como o Pale, e além dela havia um mundo que os ingleses mal compreendiam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A oeste do Pale, a Irlanda era governada por chefes gaélicos.",
+      "text_markdown": "A oeste do Pale, a Irlanda era governada por chefes gaélicos.",
+      "tts": {
+        "text": "A oeste do Pale, a Irlanda era governada por chefes gaélicos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esses chefes governavam seus territórios de acordo com a antiga lei Brehon.",
+      "text_markdown": "Esses chefes governavam seus territórios de acordo com a antiga lei Brehon.",
+      "tts": {
+        "text": "Esses chefes governavam seus territórios de acordo com a antiga lei Brehon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A lei Brehon era um sistema jurídico complexo, mais antigo que o direito consuetudinário inglês, que regulava tudo, da propriedade da terra ao casamento.",
+      "text_markdown": "A lei Brehon era um sistema jurídico complexo, mais antigo que o direito consuetudinário inglês, que regulava tudo, da propriedade da terra ao casamento.",
+      "tts": {
+        "text": "A lei Brehon era um sistema jurídico complexo, mais antigo que o direito consuetudinário inglês, que regulava tudo, da propriedade da terra ao casamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Não tinha nenhuma semelhança com as leis da Inglaterra.",
+      "text_markdown": "Não tinha nenhuma semelhança com as leis da Inglaterra.",
+      "tts": {
+        "text": "Não tinha nenhuma semelhança com as leis da Inglaterra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pela lei Brehon, a terra pertencia ao clã, não a indivíduos.",
+      "text_markdown": "Pela lei Brehon, a terra pertencia ao clã, não a indivíduos.",
+      "tts": {
+        "text": "Pela lei Brehon, a terra pertencia ao clã, não a indivíduos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um chefe não herdava sua posição automaticamente.",
+      "text_markdown": "Um chefe não herdava sua posição automaticamente.",
+      "tts": {
+        "text": "Um chefe não herdava sua posição automaticamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Em vez disso, os homens principais do clã escolhiam o candidato mais capaz da família governante.",
+      "text_markdown": "Em vez disso, os homens principais do clã escolhiam o candidato mais capaz da família governante.",
+      "tts": {
+        "text": "Em vez disso, os homens principais do clã escolhiam o candidato mais capaz da família governante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Este sistema significava que a liderança era conquistada, não simplesmente passada de pai para filho.",
+      "text_markdown": "Este sistema significava que a liderança era conquistada, não simplesmente passada de pai para filho.",
+      "tts": {
+        "text": "Este sistema significava que a liderança era conquistada, não simplesmente passada de pai para filho.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A costa oeste da Irlanda era dominada pelo Oceano Atlântico.",
+      "text_markdown": "A costa oeste da Irlanda era dominada pelo Oceano Atlântico.",
+      "tts": {
+        "text": "A costa oeste da Irlanda era dominada pelo Oceano Atlântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O mar moldava cada aspecto da vida das comunidades ao longo de sua costa.",
+      "text_markdown": "O mar moldava cada aspecto da vida das comunidades ao longo de sua costa.",
+      "tts": {
+        "text": "O mar moldava cada aspecto da vida das comunidades ao longo de sua costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A pesca, o comércio e as incursões eram os alicerces da economia costeira.",
+      "text_markdown": "A pesca, o comércio e as incursões eram os alicerces da economia costeira.",
+      "tts": {
+        "text": "A pesca, o comércio e as incursões eram os alicerces da economia costeira.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os clãs que controlavam os melhores portos eram os mais ricos e poderosos.",
+      "text_markdown": "Os clãs que controlavam os melhores portos eram os mais ricos e poderosos.",
+      "tts": {
+        "text": "Os clãs que controlavam os melhores portos eram os mais ricos e poderosos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A província de Connacht, no oeste da Irlanda, abrigava alguns dos clãs gaélicos mais poderosos.",
+      "text_markdown": "A província de Connacht, no oeste da Irlanda, abrigava alguns dos clãs gaélicos mais poderosos.",
+      "tts": {
+        "text": "A província de Connacht, no oeste da Irlanda, abrigava alguns dos clãs gaélicos mais poderosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os O'Flaherty controlavam grande parte do sul de Connacht.",
+      "text_markdown": "Os O'Flaherty controlavam grande parte do sul de Connacht.",
+      "tts": {
+        "text": "Os O'Flaherty controlavam grande parte do sul de Connacht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os Burke, descendentes de colonos normandos que se tornaram totalmente gaélicos, controlavam vastos territórios no norte.",
+      "text_markdown": "Os Burke, descendentes de colonos normandos que se tornaram totalmente gaélicos, controlavam vastos territórios no norte.",
+      "tts": {
+        "text": "Os Burke, descendentes de colonos normandos que se tornaram totalmente gaélicos, controlavam vastos territórios no norte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "E os O'Malley controlavam a baía de Clew e a costa circundante.",
+      "text_markdown": "E os O'Malley controlavam a baía de Clew e a costa circundante.",
+      "tts": {
+        "text": "E os O'Malley controlavam a baía de Clew e a costa circundante.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A baía de Clew é um dos portos naturais mais notáveis da Europa.",
+      "text_markdown": "A baía de Clew é um dos portos naturais mais notáveis da Europa.",
+      "tts": {
+        "text": "A baía de Clew é um dos portos naturais mais notáveis da Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Contém centenas de pequenas ilhas, protegidas das tempestades atlânticas pela massa da ilha de Clare.",
+      "text_markdown": "Contém centenas de pequenas ilhas, protegidas das tempestades atlânticas pela massa da ilha de Clare.",
+      "tts": {
+        "text": "Contém centenas de pequenas ilhas, protegidas das tempestades atlânticas pela massa da ilha de Clare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A baía oferecia ancoradouro perfeito para uma frota de navios.",
+      "text_markdown": "A baía oferecia ancoradouro perfeito para uma frota de navios.",
+      "tts": {
+        "text": "A baía oferecia ancoradouro perfeito para uma frota de navios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Quem controlava a baía de Clew controlava o acesso aos pesqueiros mais ricos da costa oeste.",
+      "text_markdown": "Quem controlava a baía de Clew controlava o acesso aos pesqueiros mais ricos da costa oeste.",
+      "tts": {
+        "text": "Quem controlava a baía de Clew controlava o acesso aos pesqueiros mais ricos da costa oeste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O clã O'Malley era um clã de marinheiros havia séculos.",
+      "text_markdown": "O clã O'Malley era um clã de marinheiros havia séculos.",
+      "tts": {
+        "text": "O clã O'Malley era um clã de marinheiros havia séculos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu lema, traduzido do irlandês, era poderosos por terra e por mar.",
+      "text_markdown": "Seu lema, traduzido do irlandês, era poderosos por terra e por mar.",
+      "tts": {
+        "text": "Seu lema, traduzido do irlandês, era poderosos por terra e por mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cobravam pedágios dos barcos de pesca que usavam suas águas.",
+      "text_markdown": "Cobravam pedágios dos barcos de pesca que usavam suas águas.",
+      "tts": {
+        "text": "Cobravam pedágios dos barcos de pesca que usavam suas águas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Comerciavam com a Espanha, a Escócia e os portos do oeste da França.",
+      "text_markdown": "Comerciavam com a Espanha, a Escócia e os portos do oeste da França.",
+      "tts": {
+        "text": "Comerciavam com a Espanha, a Escócia e os portos do oeste da França.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Coroa inglesa reivindicava o senhorio sobre toda a Irlanda desde o século doze.",
+      "text_markdown": "A Coroa inglesa reivindicava o senhorio sobre toda a Irlanda desde o século doze.",
+      "tts": {
+        "text": "A Coroa inglesa reivindicava o senhorio sobre toda a Irlanda desde o século doze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mas durante a maior parte desse tempo, o controle inglês limitava-se ao Pale e a poucas cidades costeiras.",
+      "text_markdown": "Mas durante a maior parte desse tempo, o controle inglês limitava-se ao Pale e a poucas cidades costeiras.",
+      "tts": {
+        "text": "Mas durante a maior parte desse tempo, o controle inglês limitava-se ao Pale e a poucas cidades costeiras.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os chefes gaélicos do oeste haviam sido efetivamente independentes por gerações.",
+      "text_markdown": "Os chefes gaélicos do oeste haviam sido efetivamente independentes por gerações.",
+      "tts": {
+        "text": "Os chefes gaélicos do oeste haviam sido efetivamente independentes por gerações.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essa independência estava prestes a acabar.",
+      "text_markdown": "Essa independência estava prestes a acabar.",
+      "tts": {
+        "text": "Essa independência estava prestes a acabar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O rei Henrique Oitavo iniciou uma nova política de governo inglês direto sobre toda a Irlanda.",
+      "text_markdown": "O rei Henrique Oitavo iniciou uma nova política de governo inglês direto sobre toda a Irlanda.",
+      "tts": {
+        "text": "O rei Henrique Oitavo iniciou uma nova política de governo inglês direto sobre toda a Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Exigiu que os chefes gaélicos se submetessem à lei inglesa e entregassem suas terras à Coroa.",
+      "text_markdown": "Exigiu que os chefes gaélicos se submetessem à lei inglesa e entregassem suas terras à Coroa.",
+      "tts": {
+        "text": "Exigiu que os chefes gaélicos se submetessem à lei inglesa e entregassem suas terras à Coroa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Em troca, a Coroa reconcedera as terras sob títulos jurídicos ingleses.",
+      "text_markdown": "Em troca, a Coroa reconcedera as terras sob títulos jurídicos ingleses.",
+      "tts": {
+        "text": "Em troca, a Coroa reconcedera as terras sob títulos jurídicos ingleses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta política foi chamada de rendição e reconcessão, e atingiu o coração da sociedade gaélica.",
+      "text_markdown": "Esta política foi chamada de rendição e reconcessão, e atingiu o coração da sociedade gaélica.",
+      "tts": {
+        "text": "Esta política foi chamada de rendição e reconcessão, e atingiu o coração da sociedade gaélica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos chefes resistiram ferozmente a esta política.",
+      "text_markdown": "Muitos chefes resistiram ferozmente a esta política.",
+      "tts": {
+        "text": "Muitos chefes resistiram ferozmente a esta política.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Viam-na como um roubo de terras que suas famílias possuíam havia séculos.",
+      "text_markdown": "Viam-na como um roubo de terras que suas famílias possuíam havia séculos.",
+      "tts": {
+        "text": "Viam-na como um roubo de terras que suas famílias possuíam havia séculos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Outros aceitaram títulos ingleses, esperando preservar seu poder sob o novo sistema.",
+      "text_markdown": "Outros aceitaram títulos ingleses, esperando preservar seu poder sob o novo sistema.",
+      "tts": {
+        "text": "Outros aceitaram títulos ingleses, esperando preservar seu poder sob o novo sistema.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O resultado foram décadas de conflito, negociação e traição por toda a ilha.",
+      "text_markdown": "O resultado foram décadas de conflito, negociação e traição por toda a ilha.",
+      "tts": {
+        "text": "O resultado foram décadas de conflito, negociação e traição por toda a ilha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A rainha Elisabete Primeira continuou e intensificou as políticas de seu pai na Irlanda.",
+      "text_markdown": "A rainha Elisabete Primeira continuou e intensificou as políticas de seu pai na Irlanda.",
+      "tts": {
+        "text": "A rainha Elisabete Primeira continuou e intensificou as políticas de seu pai na Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enviou governadores e exércitos para impor a lei inglesa em toda a ilha.",
+      "text_markdown": "Enviou governadores e exércitos para impor a lei inglesa em toda a ilha.",
+      "tts": {
+        "text": "Enviou governadores e exércitos para impor a lei inglesa em toda a ilha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A conquista Tudor foi brutal, envolvendo massacres, realocações forçadas e a destruição deliberada da cultura gaélica.",
+      "text_markdown": "A conquista Tudor foi brutal, envolvendo massacres, realocações forçadas e a destruição deliberada da cultura gaélica.",
+      "tts": {
+        "text": "A conquista Tudor foi brutal, envolvendo massacres, realocações forçadas e a destruição deliberada da cultura gaélica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi neste mundo moribundo de independência gaélica que Grace O'Malley nasceu.",
+      "text_markdown": "Foi neste mundo moribundo de independência gaélica que Grace O'Malley nasceu.",
+      "tts": {
+        "text": "Foi neste mundo moribundo de independência gaélica que Grace O'Malley nasceu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os espanhóis também tinham interesses ao longo da costa irlandesa.",
+      "text_markdown": "Os espanhóis também tinham interesses ao longo da costa irlandesa.",
+      "tts": {
+        "text": "Os espanhóis também tinham interesses ao longo da costa irlandesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Espanha era a maior rival da Inglaterra, e a Irlanda oferecia bases potenciais para uma invasão espanhola.",
+      "text_markdown": "A Espanha era a maior rival da Inglaterra, e a Irlanda oferecia bases potenciais para uma invasão espanhola.",
+      "tts": {
+        "text": "A Espanha era a maior rival da Inglaterra, e a Irlanda oferecia bases potenciais para uma invasão espanhola.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os chefes irlandeses mantinham relações comerciais com mercadores espanhóis.",
+      "text_markdown": "Os chefes irlandeses mantinham relações comerciais com mercadores espanhóis.",
+      "tts": {
+        "text": "Os chefes irlandeses mantinham relações comerciais com mercadores espanhóis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "O mundo da Irlanda gaélica",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Essas conexões se tornariam politicamente perigosas à medida que o século avançava.",
+      "text_markdown": "Essas conexões se tornariam politicamente perigosas à medida que o século avançava.",
+      "tts": {
+        "text": "Essas conexões se tornariam politicamente perigosas à medida que o século avançava.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Origens",
+      "text_markdown": "Origens"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley nasceu por volta de 1530 na ilha de Clare, na foz da baía de Clew.",
+      "text_markdown": "Grace O'Malley nasceu por volta de 1530 na ilha de Clare, na foz da baía de Clew.",
+      "tts": {
+        "text": "Grace O'Malley nasceu por volta de mil quinhentos e trinta na ilha de Clare, na foz da baía de Clew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu pai era Dubhdara O'Malley, o chefe do clã O'Malley.",
+      "text_markdown": "Seu pai era Dubhdara O'Malley, o chefe do clã O'Malley.",
+      "tts": {
+        "text": "Seu pai era Dubhdara O'Malley, o chefe do clã O'Malley.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era conhecido como o Carvalho Negro por seus cabelos escuros e sua força.",
+      "text_markdown": "Era conhecido como o Carvalho Negro por seus cabelos escuros e sua força.",
+      "tts": {
+        "text": "Era conhecido como o Carvalho Negro por seus cabelos escuros e sua força.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O nome de sua mãe está registrado como Margaret, embora pouco mais se saiba sobre ela.",
+      "text_markdown": "O nome de sua mãe está registrado como Margaret, embora pouco mais se saiba sobre ela.",
+      "tts": {
+        "text": "O nome de sua mãe está registrado como Margaret, embora pouco mais se saiba sobre ela.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace cresceu cercada pelo mar.",
+      "text_markdown": "Grace cresceu cercada pelo mar.",
+      "tts": {
+        "text": "Grace cresceu cercada pelo mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A ilha de Clare fica na entrada da baía de Clew, exposta a toda a força do Atlântico.",
+      "text_markdown": "A ilha de Clare fica na entrada da baía de Clew, exposta a toda a força do Atlântico.",
+      "tts": {
+        "text": "A ilha de Clare fica na entrada da baía de Clew, exposta a toda a força do Atlântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A ilha é pequena, varrida pelo vento e bela.",
+      "text_markdown": "A ilha é pequena, varrida pelo vento e bela.",
+      "tts": {
+        "text": "A ilha é pequena, varrida pelo vento e bela.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era a fortaleza do clã O'Malley e a base de suas operações marítimas.",
+      "text_markdown": "Era a fortaleza do clã O'Malley e a base de suas operações marítimas.",
+      "tts": {
+        "text": "Era a fortaleza do clã O'Malley e a base de suas operações marítimas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Desde cedo, Grace mostrou aptidão para a navegação.",
+      "text_markdown": "Desde cedo, Grace mostrou aptidão para a navegação.",
+      "tts": {
+        "text": "Desde cedo, Grace mostrou aptidão para a navegação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dizem que ela exigiu acompanhar seu pai em viagens comerciais quando era criança.",
+      "text_markdown": "Dizem que ela exigiu acompanhar seu pai em viagens comerciais quando era criança.",
+      "tts": {
+        "text": "Dizem que ela exigiu acompanhar seu pai em viagens comerciais quando era criança.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quando lhe disseram que seus cabelos compridos se prenderiam nas cordas do navio, ela os cortou.",
+      "text_markdown": "Quando lhe disseram que seus cabelos compridos se prenderiam nas cordas do navio, ela os cortou.",
+      "tts": {
+        "text": "Quando lhe disseram que seus cabelos compridos se prenderiam nas cordas do navio, ela os cortou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esta história, seja inteiramente verdadeira ou não, rendeu-lhe o apelido de Grainne Mhaol, que significa Grace a careca.",
+      "text_markdown": "Esta história, seja inteiramente verdadeira ou não, rendeu-lhe o apelido de Grainne Mhaol, que significa Grace a careca.",
+      "tts": {
+        "text": "Esta história, seja inteiramente verdadeira ou não, rendeu-lhe o apelido de Grainne Mhaol, que significa Grace a careca.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aprendeu navegação observando as estrelas, as marés e o comportamento das aves marinhas.",
+      "text_markdown": "Aprendeu navegação observando as estrelas, as marés e o comportamento das aves marinhas.",
+      "tts": {
+        "text": "Aprendeu navegação observando as estrelas, as marés e o comportamento das aves marinhas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aprendeu as correntes perigosas ao redor da baía de Clew e o Atlântico aberto além.",
+      "text_markdown": "Aprendeu as correntes perigosas ao redor da baía de Clew e o Atlântico aberto além.",
+      "tts": {
+        "text": "Aprendeu as correntes perigosas ao redor da baía de Clew e o Atlântico aberto além.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aprendeu a conduzir um navio em tempestades capazes de destruir embarcações com o dobro do tamanho da sua.",
+      "text_markdown": "Aprendeu a conduzir um navio em tempestades capazes de destruir embarcações com o dobro do tamanho da sua.",
+      "tts": {
+        "text": "Aprendeu a conduzir um navio em tempestades capazes de destruir embarcações com o dobro do tamanho da sua.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eram habilidades que levavam anos para dominar, e ela as dominou jovem.",
+      "text_markdown": "Eram habilidades que levavam anos para dominar, e ela as dominou jovem.",
+      "tts": {
+        "text": "Eram habilidades que levavam anos para dominar, e ela as dominou jovem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A educação de Grace não se limitou à navegação.",
+      "text_markdown": "A educação de Grace não se limitou à navegação.",
+      "tts": {
+        "text": "A educação de Grace não se limitou à navegação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Como filha de um chefe, teria aprendido as artes políticas do mundo gaélico.",
+      "text_markdown": "Como filha de um chefe, teria aprendido as artes políticas do mundo gaélico.",
+      "tts": {
+        "text": "Como filha de um chefe, teria aprendido as artes políticas do mundo gaélico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Entendia alianças, reivindicações territoriais e a complexa teia de obrigações que unia os clãs.",
+      "text_markdown": "Entendia alianças, reivindicações territoriais e a complexa teia de obrigações que unia os clãs.",
+      "tts": {
+        "text": "Entendia alianças, reivindicações territoriais e a complexa teia de obrigações que unia os clãs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Falava irlandês e provavelmente aprendeu algum inglês e possivelmente latim também.",
+      "text_markdown": "Falava irlandês e provavelmente aprendeu algum inglês e possivelmente latim também.",
+      "tts": {
+        "text": "Falava irlandês e provavelmente aprendeu algum inglês e possivelmente latim também.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por volta de 1546, quando tinha aproximadamente dezesseis anos, Grace casou-se com Donal O'Flaherty.",
+      "text_markdown": "Por volta de 1546, quando tinha aproximadamente dezesseis anos, Grace casou-se com Donal O'Flaherty.",
+      "tts": {
+        "text": "Por volta de mil quinhentos e quarenta e seis, quando tinha aproximadamente dezesseis anos, Grace casou-se com Donal O'Flaherty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Donal era o herdeiro da chefia O'Flaherty em Connemara, ao sul da baía de Clew.",
+      "text_markdown": "Donal era o herdeiro da chefia O'Flaherty em Connemara, ao sul da baía de Clew.",
+      "tts": {
+        "text": "Donal era o herdeiro da chefia O'Flaherty em Connemara, ao sul da baía de Clew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O casamento foi uma aliança política entre dois poderosos clãs gaélicos.",
+      "text_markdown": "O casamento foi uma aliança política entre dois poderosos clãs gaélicos.",
+      "tts": {
+        "text": "O casamento foi uma aliança política entre dois poderosos clãs gaélicos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deu a Grace acesso aos portos e territórios das terras O'Flaherty.",
+      "text_markdown": "Deu a Grace acesso aos portos e territórios das terras O'Flaherty.",
+      "tts": {
+        "text": "Deu a Grace acesso aos portos e territórios das terras O'Flaherty.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donal O'Flaherty era conhecido como Donal das Batalhas.",
+      "text_markdown": "Donal O'Flaherty era conhecido como Donal das Batalhas.",
+      "tts": {
+        "text": "Donal O'Flaherty era conhecido como Donal das Batalhas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Era agressivo e frequentemente envolvido em disputas com clãs vizinhos.",
+      "text_markdown": "Era agressivo e frequentemente envolvido em disputas com clãs vizinhos.",
+      "tts": {
+        "text": "Era agressivo e frequentemente envolvido em disputas com clãs vizinhos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace lhe deu três filhos durante o casamento.",
+      "text_markdown": "Grace lhe deu três filhos durante o casamento.",
+      "tts": {
+        "text": "Grace lhe deu três filhos durante o casamento.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas segundo a tradição, ela rapidamente se tornou a líder mais capaz dos dois.",
+      "text_markdown": "Mas segundo a tradição, ela rapidamente se tornou a líder mais capaz dos dois.",
+      "tts": {
+        "text": "Mas segundo a tradição, ela rapidamente se tornou a líder mais capaz dos dois.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando Donal foi morto em uma escaramuça com um clã rival, Grace assumiu o controle de sua frota e seguidores.",
+      "text_markdown": "Quando Donal foi morto em uma escaramuça com um clã rival, Grace assumiu o controle de sua frota e seguidores.",
+      "tts": {
+        "text": "Quando Donal foi morto em uma escaramuça com um clã rival, Grace assumiu o controle de sua frota e seguidores.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pela lei Brehon, ela não tinha direito automático à sua propriedade.",
+      "text_markdown": "Pela lei Brehon, ela não tinha direito automático à sua propriedade.",
+      "tts": {
+        "text": "Pela lei Brehon, ela não tinha direito automático à sua propriedade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas havia conquistado a lealdade de suas tripulações através de anos de navegação compartilhada.",
+      "text_markdown": "Mas havia conquistado a lealdade de suas tripulações através de anos de navegação compartilhada.",
+      "tts": {
+        "text": "Mas havia conquistado a lealdade de suas tripulações através de anos de navegação compartilhada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os homens escolheram segui-la, e ela se tornou comandante por direito próprio.",
+      "text_markdown": "Os homens escolheram segui-la, e ela se tornou comandante por direito próprio.",
+      "tts": {
+        "text": "Os homens escolheram segui-la, e ela se tornou comandante por direito próprio.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace retornou à baía de Clew com seus seguidores e navios.",
+      "text_markdown": "Grace retornou à baía de Clew com seus seguidores e navios.",
+      "tts": {
+        "text": "Grace retornou à baía de Clew com seus seguidores e navios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estabeleceu sua base na ilha de Clare e começou a construir uma frota.",
+      "text_markdown": "Estabeleceu sua base na ilha de Clare e começou a construir uma frota.",
+      "tts": {
+        "text": "Estabeleceu sua base na ilha de Clare e começou a construir uma frota.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cobrava pedágios de barcos de pesca, comerciava com mercadores estrangeiros e saqueava navios de clãs rivais.",
+      "text_markdown": "Cobrava pedágios de barcos de pesca, comerciava com mercadores estrangeiros e saqueava navios de clãs rivais.",
+      "tts": {
+        "text": "Cobrava pedágios de barcos de pesca, comerciava com mercadores estrangeiros e saqueava navios de clãs rivais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Em poucos anos, era uma das figuras mais poderosas da costa oeste da Irlanda.",
+      "text_markdown": "Em poucos anos, era uma das figuras mais poderosas da costa oeste da Irlanda.",
+      "tts": {
+        "text": "Em poucos anos, era uma das figuras mais poderosas da costa oeste da Irlanda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Casou-se uma segunda vez, por volta de 1566, com Richard Burke, conhecido como Ricardo de Ferro.",
+      "text_markdown": "Casou-se uma segunda vez, por volta de 1566, com Richard Burke, conhecido como Ricardo de Ferro.",
+      "tts": {
+        "text": "Casou-se uma segunda vez, por volta de mil quinhentos e sessenta e seis, com Richard Burke, conhecido como Ricardo de Ferro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Richard era o chefe de um ramo poderoso do clã Burke no condado de Mayo.",
+      "text_markdown": "Richard era o chefe de um ramo poderoso do clã Burke no condado de Mayo.",
+      "tts": {
+        "text": "Richard era o chefe de um ramo poderoso do clã Burke no condado de Mayo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Segundo uma história famosa, Grace casou-se com ele pela lei Brehon por um ano e depois o trancou fora de seu próprio castelo.",
+      "text_markdown": "Segundo uma história famosa, Grace casou-se com ele pela lei Brehon por um ano e depois o trancou fora de seu próprio castelo.",
+      "tts": {
+        "text": "Segundo uma história famosa, Grace casou-se com ele pela lei Brehon por um ano e depois o trancou fora de seu próprio castelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seja esta história inteiramente precisa ou não, reflete sua reputação de ação ousada e não convencional.",
+      "text_markdown": "Seja esta história inteiramente precisa ou não, reflete sua reputação de ação ousada e não convencional.",
+      "tts": {
+        "text": "Seja esta história inteiramente precisa ou não, reflete sua reputação de ação ousada e não convencional.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace e Richard na verdade permaneceram juntos por muitos anos apesar das histórias coloridas.",
+      "text_markdown": "Grace e Richard na verdade permaneceram juntos por muitos anos apesar das histórias coloridas.",
+      "tts": {
+        "text": "Grace e Richard na verdade permaneceram juntos por muitos anos apesar das histórias coloridas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tiveram um filho chamado Tibbot, que mais tarde desempenharia um papel importante na história da Irlanda.",
+      "text_markdown": "Tiveram um filho chamado Tibbot, que mais tarde desempenharia um papel importante na história da Irlanda.",
+      "tts": {
+        "text": "Tiveram um filho chamado Tibbot, que mais tarde desempenharia um papel importante na história da Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O casamento deu a Grace territórios adicionais, navios e conexões políticas.",
+      "text_markdown": "O casamento deu a Grace territórios adicionais, navios e conexões políticas.",
+      "tts": {
+        "text": "O casamento deu a Grace territórios adicionais, navios e conexões políticas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ela era agora a mulher mais poderosa da costa oeste, e possivelmente de toda a Irlanda.",
+      "text_markdown": "Ela era agora a mulher mais poderosa da costa oeste, e possivelmente de toda a Irlanda.",
+      "tts": {
+        "text": "Ela era agora a mulher mais poderosa da costa oeste, e possivelmente de toda a Irlanda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sua frota chegou a ter até vinte navios em seu auge.",
+      "text_markdown": "Sua frota chegou a ter até vinte navios em seu auge.",
+      "tts": {
+        "text": "Sua frota chegou a ter até vinte navios em seu auge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não eram grandes navios de guerra, mas embarcações robustas do tipo galera, adequadas para as águas agitadas do Atlântico.",
+      "text_markdown": "Não eram grandes navios de guerra, mas embarcações robustas do tipo galera, adequadas para as águas agitadas do Atlântico.",
+      "tts": {
+        "text": "Não eram grandes navios de guerra, mas embarcações robustas do tipo galera, adequadas para as águas agitadas do Atlântico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Transportavam mercadorias, homens de armas e as esperanças de um mundo gaélico que desaparecia rapidamente.",
+      "text_markdown": "Transportavam mercadorias, homens de armas e as esperanças de um mundo gaélico que desaparecia rapidamente.",
+      "tts": {
+        "text": "Transportavam mercadorias, homens de armas e as esperanças de um mundo gaélico que desaparecia rapidamente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origens",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley estava construindo um império marítimo no exato momento em que o mundo que ela conhecia estava sendo destruído.",
+      "text_markdown": "Grace O'Malley estava construindo um império marítimo no exato momento em que o mundo que ela conhecia estava sendo destruído.",
+      "tts": {
+        "text": "Grace O'Malley estava construindo um império marítimo no exato momento em que o mundo que ela conhecia estava sendo destruído.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ascensão ao poder",
+      "text_markdown": "Ascensão ao poder"
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O poder de Grace O'Malley se sustentava em três pilares: navios, alianças e audácia.",
+      "text_markdown": "O poder de Grace O'Malley se sustentava em três pilares: navios, alianças e audácia.",
+      "tts": {
+        "text": "O poder de Grace O'Malley se sustentava em três pilares: navios, alianças e audácia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sua frota lhe dava controle sobre as rotas marítimas ao longo da costa oeste.",
+      "text_markdown": "Sua frota lhe dava controle sobre as rotas marítimas ao longo da costa oeste.",
+      "tts": {
+        "text": "Sua frota lhe dava controle sobre as rotas marítimas ao longo da costa oeste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seus casamentos e conexões familiares lhe proporcionavam alianças com os clãs gaélicos mais poderosos.",
+      "text_markdown": "Seus casamentos e conexões familiares lhe proporcionavam alianças com os clãs gaélicos mais poderosos.",
+      "tts": {
+        "text": "Seus casamentos e conexões familiares lhe proporcionavam alianças com os clãs gaélicos mais poderosos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "E sua coragem pessoal lhe rendeu a lealdade de homens que de outra forma jamais seguiriam uma mulher.",
+      "text_markdown": "E sua coragem pessoal lhe rendeu a lealdade de homens que de outra forma jamais seguiriam uma mulher.",
+      "tts": {
+        "text": "E sua coragem pessoal lhe rendeu a lealdade de homens que de outra forma jamais seguiriam uma mulher.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saqueava navios mercantes que passavam por suas águas sem pagar pedágio.",
+      "text_markdown": "Saqueava navios mercantes que passavam por suas águas sem pagar pedágio.",
+      "tts": {
+        "text": "Saqueava navios mercantes que passavam por suas águas sem pagar pedágio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atacava embarcações de clãs rivais que desafiavam seu território.",
+      "text_markdown": "Atacava embarcações de clãs rivais que desafiavam seu território.",
+      "tts": {
+        "text": "Atacava embarcações de clãs rivais que desafiavam seu território.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Comerciava com mercadores espanhóis e escoceses, trocando couros irlandeses, peixe e lã por vinho, sal e armas.",
+      "text_markdown": "Comerciava com mercadores espanhóis e escoceses, trocando couros irlandeses, peixe e lã por vinho, sal e armas.",
+      "tts": {
+        "text": "Comerciava com mercadores espanhóis e escoceses, trocando couros irlandeses, peixe e lã por vinho, sal e armas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Suas operações a tornaram rica e politicamente influente em toda a costa oeste.",
+      "text_markdown": "Suas operações a tornaram rica e politicamente influente em toda a costa oeste.",
+      "tts": {
+        "text": "Suas operações a tornaram rica e politicamente influente em toda a costa oeste.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As autoridades inglesas em Connacht a viam como uma rebelde perigosa.",
+      "text_markdown": "As autoridades inglesas em Connacht a viam como uma rebelde perigosa.",
+      "tts": {
+        "text": "As autoridades inglesas em Connacht a viam como uma rebelde perigosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sir Richard Bingham foi nomeado governador inglês de Connacht em 1584.",
+      "text_markdown": "Sir Richard Bingham foi nomeado governador inglês de Connacht em 1584.",
+      "tts": {
+        "text": "Sir Richard Bingham foi nomeado governador inglês de Connacht em mil quinhentos e oitenta e quatro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bingham era um administrador impiedoso determinado a esmagar a resistência gaélica.",
+      "text_markdown": "Bingham era um administrador impiedoso determinado a esmagar a resistência gaélica.",
+      "tts": {
+        "text": "Bingham era um administrador impiedoso determinado a esmagar a resistência gaélica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Via Grace O'Malley como um de seus alvos principais.",
+      "text_markdown": "Via Grace O'Malley como um de seus alvos principais.",
+      "tts": {
+        "text": "Via Grace O'Malley como um de seus alvos principais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bingham confiscou seu gado e tentou prendê-la em múltiplas ocasiões.",
+      "text_markdown": "Bingham confiscou seu gado e tentou prendê-la em múltiplas ocasiões.",
+      "tts": {
+        "text": "Bingham confiscou seu gado e tentou prendê-la em múltiplas ocasiões.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Capturou seu filho mais velho, Owen, e o mandou assassinar.",
+      "text_markdown": "Capturou seu filho mais velho, Owen, e o mandou assassinar.",
+      "tts": {
+        "text": "Capturou seu filho mais velho, Owen, e o mandou assassinar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Prendeu seu irmão e vários de seus seguidores.",
+      "text_markdown": "Prendeu seu irmão e vários de seus seguidores.",
+      "tts": {
+        "text": "Prendeu seu irmão e vários de seus seguidores.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua campanha contra ela era pessoal e vingativa.",
+      "text_markdown": "Sua campanha contra ela era pessoal e vingativa.",
+      "tts": {
+        "text": "Sua campanha contra ela era pessoal e vingativa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace resistiu a Bingham com todos os meios ao seu alcance.",
+      "text_markdown": "Grace resistiu a Bingham com todos os meios ao seu alcance.",
+      "tts": {
+        "text": "Grace resistiu a Bingham com todos os meios ao seu alcance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lançou ataques contra navios de suprimento ingleses.",
+      "text_markdown": "Lançou ataques contra navios de suprimento ingleses.",
+      "tts": {
+        "text": "Lançou ataques contra navios de suprimento ingleses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Abrigou rebeldes gaélicos que fugiam das forças de Bingham.",
+      "text_markdown": "Abrigou rebeldes gaélicos que fugiam das forças de Bingham.",
+      "tts": {
+        "text": "Abrigou rebeldes gaélicos que fugiam das forças de Bingham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Usou seu conhecimento da costa para escapar de patrulhas inglesas e atacar onde menos esperavam.",
+      "text_markdown": "Usou seu conhecimento da costa para escapar de patrulhas inglesas e atacar onde menos esperavam.",
+      "tts": {
+        "text": "Usou seu conhecimento da costa para escapar de patrulhas inglesas e atacar onde menos esperavam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas os recursos de Bingham eram muito superiores aos dela.",
+      "text_markdown": "Mas os recursos de Bingham eram muito superiores aos dela.",
+      "tts": {
+        "text": "Mas os recursos de Bingham eram muito superiores aos dela.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Comandava soldados ingleses, artilharia e o apoio da Coroa.",
+      "text_markdown": "Comandava soldados ingleses, artilharia e o apoio da Coroa.",
+      "tts": {
+        "text": "Comandava soldados ingleses, artilharia e o apoio da Coroa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace estava travando uma guerra perdida contra o reino mais poderoso da Europa.",
+      "text_markdown": "Grace estava travando uma guerra perdida contra o reino mais poderoso da Europa.",
+      "tts": {
+        "text": "Grace estava travando uma guerra perdida contra o reino mais poderoso da Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No início dos anos mil quinhentos e noventa, ela estava ficando sem opções.",
+      "text_markdown": "No início dos anos mil quinhentos e noventa, ela estava ficando sem opções.",
+      "tts": {
+        "text": "No início dos anos mil quinhentos e noventa, ela estava ficando sem opções.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em 1593, Grace tomou uma das decisões mais extraordinárias da história da era Tudor.",
+      "text_markdown": "Em 1593, Grace tomou uma das decisões mais extraordinárias da história da era Tudor.",
+      "tts": {
+        "text": "Em mil quinhentos e noventa e três, Grace tomou uma das decisões mais extraordinárias da história da era Tudor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Decidiu contornar Bingham completamente e apelar diretamente à rainha Elisabete Primeira.",
+      "text_markdown": "Decidiu contornar Bingham completamente e apelar diretamente à rainha Elisabete Primeira.",
+      "tts": {
+        "text": "Decidiu contornar Bingham completamente e apelar diretamente à rainha Elisabete Primeira.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Escreveu uma petição à rainha, expondo suas queixas contra Bingham.",
+      "text_markdown": "Escreveu uma petição à rainha, expondo suas queixas contra Bingham.",
+      "tts": {
+        "text": "Escreveu uma petição à rainha, expondo suas queixas contra Bingham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Depois navegou para a Inglaterra para apresentar seu caso pessoalmente.",
+      "text_markdown": "Depois navegou para a Inglaterra para apresentar seu caso pessoalmente.",
+      "tts": {
+        "text": "Depois navegou para a Inglaterra para apresentar seu caso pessoalmente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O encontro entre Grace O'Malley e a rainha Elisabete aconteceu no Palácio de Greenwich em Londres.",
+      "text_markdown": "O encontro entre Grace O'Malley e a rainha Elisabete aconteceu no Palácio de Greenwich em Londres.",
+      "tts": {
+        "text": "O encontro entre Grace O'Malley e a rainha Elisabete aconteceu no Palácio de Greenwich em Londres.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A data exata não está registrada, mas ocorreu em setembro de 1593.",
+      "text_markdown": "A data exata não está registrada, mas ocorreu em setembro de 1593.",
+      "tts": {
+        "text": "A data exata não está registrada, mas ocorreu em setembro de mil quinhentos e noventa e três.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Duas das mulheres mais notáveis do século dezesseis ficaram frente a frente.",
+      "text_markdown": "Duas das mulheres mais notáveis do século dezesseis ficaram frente a frente.",
+      "tts": {
+        "text": "Duas das mulheres mais notáveis do século dezesseis ficaram frente a frente.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uma governava o reino mais poderoso da Europa; a outra governava uma frota na borda do Atlântico.",
+      "text_markdown": "Uma governava o reino mais poderoso da Europa; a outra governava uma frota na borda do Atlântico.",
+      "tts": {
+        "text": "Uma governava o reino mais poderoso da Europa; a outra governava uma frota na borda do Atlântico.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace conduziu o encontro em latim, língua que ambas falavam.",
+      "text_markdown": "Grace conduziu o encontro em latim, língua que ambas falavam.",
+      "tts": {
+        "text": "Grace conduziu o encontro em latim, língua que ambas falavam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Recusou-se a se curvar diante de Elisabete, argumentando que era soberana por direito próprio.",
+      "text_markdown": "Recusou-se a se curvar diante de Elisabete, argumentando que era soberana por direito próprio.",
+      "tts": {
+        "text": "Recusou-se a se curvar diante de Elisabete, argumentando que era soberana por direito próprio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Apresentou sua petição com clareza e firmeza.",
+      "text_markdown": "Apresentou sua petição com clareza e firmeza.",
+      "tts": {
+        "text": "Apresentou sua petição com clareza e firmeza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dizem que Elisabete ficou impressionada com sua coragem e postura.",
+      "text_markdown": "Dizem que Elisabete ficou impressionada com sua coragem e postura.",
+      "tts": {
+        "text": "Dizem que Elisabete ficou impressionada com sua coragem e postura.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elisabete concordou com várias das exigências de Grace.",
+      "text_markdown": "Elisabete concordou com várias das exigências de Grace.",
+      "tts": {
+        "text": "Elisabete concordou com várias das exigências de Grace.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordenou que Bingham libertasse os familiares presos de Grace.",
+      "text_markdown": "Ordenou que Bingham libertasse os familiares presos de Grace.",
+      "tts": {
+        "text": "Ordenou que Bingham libertasse os familiares presos de Grace.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Concedeu a Grace o direito de continuar suas atividades marítimas.",
+      "text_markdown": "Concedeu a Grace o direito de continuar suas atividades marítimas.",
+      "tts": {
+        "text": "Concedeu a Grace o direito de continuar suas atividades marítimas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Escreveu cartas de proteção para Grace e seus seguidores.",
+      "text_markdown": "Escreveu cartas de proteção para Grace e seus seguidores.",
+      "tts": {
+        "text": "Escreveu cartas de proteção para Grace e seus seguidores.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O encontro em Greenwich foi um triunfo diplomático para Grace O'Malley.",
+      "text_markdown": "O encontro em Greenwich foi um triunfo diplomático para Grace O'Malley.",
+      "tts": {
+        "text": "O encontro em Greenwich foi um triunfo diplomático para Grace O'Malley.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ela havia passado por cima da administração colonial inglesa na Irlanda.",
+      "text_markdown": "Ela havia passado por cima da administração colonial inglesa na Irlanda.",
+      "tts": {
+        "text": "Ela havia passado por cima da administração colonial inglesa na Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Havia negociado diretamente com a monarca e obtido concessões reais.",
+      "text_markdown": "Havia negociado diretamente com a monarca e obtido concessões reais.",
+      "tts": {
+        "text": "Havia negociado diretamente com a monarca e obtido concessões reais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nenhum outro chefe gaélico havia conseguido algo comparável.",
+      "text_markdown": "Nenhum outro chefe gaélico havia conseguido algo comparável.",
+      "tts": {
+        "text": "Nenhum outro chefe gaélico havia conseguido algo comparável.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas a vitória foi frágil e temporária.",
+      "text_markdown": "Mas a vitória foi frágil e temporária.",
+      "tts": {
+        "text": "Mas a vitória foi frágil e temporária.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bingham ressentiu-se de ter sido desautorizado por sua própria rainha.",
+      "text_markdown": "Bingham ressentiu-se de ter sido desautorizado por sua própria rainha.",
+      "tts": {
+        "text": "Bingham ressentiu-se de ter sido desautorizado por sua própria rainha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arrastou os pés para implementar as ordens de Elisabete.",
+      "text_markdown": "Arrastou os pés para implementar as ordens de Elisabete.",
+      "tts": {
+        "text": "Arrastou os pés para implementar as ordens de Elisabete.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "As forças estruturais que destruíam a Irlanda gaélica continuaram independentemente de qualquer negociação individual.",
+      "text_markdown": "As forças estruturais que destruíam a Irlanda gaélica continuaram independentemente de qualquer negociação individual.",
+      "tts": {
+        "text": "As forças estruturais que destruíam a Irlanda gaélica continuaram independentemente de qualquer negociação individual.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Grace havia vencido uma batalha, mas a guerra já estava perdida.",
+      "text_markdown": "Grace havia vencido uma batalha, mas a guerra já estava perdida.",
+      "tts": {
+        "text": "Grace havia vencido uma batalha, mas a guerra já estava perdida.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Guerra dos Nove Anos eclodiu por toda a Irlanda nos anos mil quinhentos e noventa.",
+      "text_markdown": "A Guerra dos Nove Anos eclodiu por toda a Irlanda nos anos mil quinhentos e noventa.",
+      "tts": {
+        "text": "A Guerra dos Nove Anos eclodiu por toda a Irlanda nos anos mil quinhentos e noventa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os chefes gaélicos se levantaram em uma rebelião final e desesperada contra o domínio inglês.",
+      "text_markdown": "Os chefes gaélicos se levantaram em uma rebelião final e desesperada contra o domínio inglês.",
+      "tts": {
+        "text": "Os chefes gaélicos se levantaram em uma rebelião final e desesperada contra o domínio inglês.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A guerra terminou com a vitória inglesa e a destruição completa da velha ordem gaélica.",
+      "text_markdown": "A guerra terminou com a vitória inglesa e a destruição completa da velha ordem gaélica.",
+      "tts": {
+        "text": "A guerra terminou com a vitória inglesa e a destruição completa da velha ordem gaélica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Ascensão ao poder",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley viveu para ver o mundo pelo qual havia lutado desmoronar ao seu redor.",
+      "text_markdown": "Grace O'Malley viveu para ver o mundo pelo qual havia lutado desmoronar ao seu redor.",
+      "tts": {
+        "text": "Grace O'Malley viveu para ver o mundo pelo qual havia lutado desmoronar ao seu redor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "No auge",
+      "text_markdown": "No auge"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No auge de seu poder, nas décadas de mil quinhentos e setenta e mil quinhentos e oitenta, Grace O'Malley dominava o mar ocidental.",
+      "text_markdown": "No auge de seu poder, nas décadas de mil quinhentos e setenta e mil quinhentos e oitenta, Grace O'Malley dominava o mar ocidental.",
+      "tts": {
+        "text": "No auge de seu poder, nas décadas de mil quinhentos e setenta e mil quinhentos e oitenta, Grace O'Malley dominava o mar ocidental.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sua frota dominava as águas da baía de Galway até Donegal.",
+      "text_markdown": "Sua frota dominava as águas da baía de Galway até Donegal.",
+      "tts": {
+        "text": "Sua frota dominava as águas da baía de Galway até Donegal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nenhum navio passava por seu território sem seu conhecimento e, geralmente, sem lhe pagar uma taxa.",
+      "text_markdown": "Nenhum navio passava por seu território sem seu conhecimento e, geralmente, sem lhe pagar uma taxa.",
+      "tts": {
+        "text": "Nenhum navio passava por seu território sem seu conhecimento e, geralmente, sem lhe pagar uma taxa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era o poder marítimo indiscutível da costa atlântica irlandesa.",
+      "text_markdown": "Era o poder marítimo indiscutível da costa atlântica irlandesa.",
+      "tts": {
+        "text": "Era o poder marítimo indiscutível da costa atlântica irlandesa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas principais fortalezas eram a ilha de Clare, o castelo de Rockfleet e várias outras posições fortificadas ao longo da costa.",
+      "text_markdown": "Suas principais fortalezas eram a ilha de Clare, o castelo de Rockfleet e várias outras posições fortificadas ao longo da costa.",
+      "tts": {
+        "text": "Suas principais fortalezas eram a ilha de Clare, o castelo de Rockfleet e várias outras posições fortificadas ao longo da costa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O castelo de Rockfleet, também chamado Carrickahowley, ergue-se sobre uma enseada estreita na baía de Clew.",
+      "text_markdown": "O castelo de Rockfleet, também chamado Carrickahowley, ergue-se sobre uma enseada estreita na baía de Clew.",
+      "tts": {
+        "text": "O castelo de Rockfleet, também chamado Carrickahowley, ergue-se sobre uma enseada estreita na baía de Clew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É uma pequena mas formidável casa-torre, cercada por água em três lados.",
+      "text_markdown": "É uma pequena mas formidável casa-torre, cercada por água em três lados.",
+      "tts": {
+        "text": "É uma pequena mas formidável casa-torre, cercada por água em três lados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Segundo a tradição, Grace amarrava a corda de atracação de seu navio ao poste da cama para sentir qualquer perturbação na água durante a noite.",
+      "text_markdown": "Segundo a tradição, Grace amarrava a corda de atracação de seu navio ao poste da cama para sentir qualquer perturbação na água durante a noite.",
+      "tts": {
+        "text": "Segundo a tradição, Grace amarrava a corda de atracação de seu navio ao poste da cama para sentir qualquer perturbação na água durante a noite.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace mantinha uma força de combate de várias centenas de homens.",
+      "text_markdown": "Grace mantinha uma força de combate de várias centenas de homens.",
+      "tts": {
+        "text": "Grace mantinha uma força de combate de várias centenas de homens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não eram soldados profissionais, mas membros do clã que a serviam por lealdade, parentesco e interesse próprio.",
+      "text_markdown": "Não eram soldados profissionais, mas membros do clã que a serviam por lealdade, parentesco e interesse próprio.",
+      "tts": {
+        "text": "Não eram soldados profissionais, mas membros do clã que a serviam por lealdade, parentesco e interesse próprio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tripulavam seus navios, defendiam seus castelos e lutavam ao seu lado nas incursões.",
+      "text_markdown": "Tripulavam seus navios, defendiam seus castelos e lutavam ao seu lado nas incursões.",
+      "tts": {
+        "text": "Tripulavam seus navios, defendiam seus castelos e lutavam ao seu lado nas incursões.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ela os alimentava, pagava e liderava pessoalmente rumo ao perigo.",
+      "text_markdown": "Ela os alimentava, pagava e liderava pessoalmente rumo ao perigo.",
+      "tts": {
+        "text": "Ela os alimentava, pagava e liderava pessoalmente rumo ao perigo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seus navios eram galeras robustas de calado raso, adequadas à costa atlântica.",
+      "text_markdown": "Seus navios eram galeras robustas de calado raso, adequadas à costa atlântica.",
+      "tts": {
+        "text": "Seus navios eram galeras robustas de calado raso, adequadas à costa atlântica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Podiam navegar nas águas traiçoeiras ao redor da baía de Clew que embarcações mais profundas não podiam percorrer.",
+      "text_markdown": "Podiam navegar nas águas traiçoeiras ao redor da baía de Clew que embarcações mais profundas não podiam percorrer.",
+      "tts": {
+        "text": "Podiam navegar nas águas traiçoeiras ao redor da baía de Clew que embarcações mais profundas não podiam percorrer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eram rápidos o suficiente para alcançar navios mercantes e manobrables o suficiente para escapar de navios de guerra.",
+      "text_markdown": "Eram rápidos o suficiente para alcançar navios mercantes e manobrables o suficiente para escapar de navios de guerra.",
+      "tts": {
+        "text": "Eram rápidos o suficiente para alcançar navios mercantes e manobrables o suficiente para escapar de navios de guerra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O design foi aperfeiçoado ao longo de gerações pelo clã O'Malley.",
+      "text_markdown": "O design foi aperfeiçoado ao longo de gerações pelo clã O'Malley.",
+      "tts": {
+        "text": "O design foi aperfeiçoado ao longo de gerações pelo clã O'Malley.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace comerciava extensivamente com mercadores estrangeiros.",
+      "text_markdown": "Grace comerciava extensivamente com mercadores estrangeiros.",
+      "tts": {
+        "text": "Grace comerciava extensivamente com mercadores estrangeiros.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Navios espanhóis traziam vinho, ferro e sal para a costa irlandesa.",
+      "text_markdown": "Navios espanhóis traziam vinho, ferro e sal para a costa irlandesa.",
+      "tts": {
+        "text": "Navios espanhóis traziam vinho, ferro e sal para a costa irlandesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Em troca, Grace exportava peixe salgado, couros de gado e lã.",
+      "text_markdown": "Em troca, Grace exportava peixe salgado, couros de gado e lã.",
+      "tts": {
+        "text": "Em troca, Grace exportava peixe salgado, couros de gado e lã.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Este comércio era tecnicamente ilegal pela lei inglesa, mas a lei inglesa tinha pouco significado na selvagem costa atlântica.",
+      "text_markdown": "Este comércio era tecnicamente ilegal pela lei inglesa, mas a lei inglesa tinha pouco significado na selvagem costa atlântica.",
+      "tts": {
+        "text": "Este comércio era tecnicamente ilegal pela lei inglesa, mas a lei inglesa tinha pouco significado na selvagem costa atlântica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Também saqueava navios que se recusavam a pagar seus pedágios.",
+      "text_markdown": "Também saqueava navios que se recusavam a pagar seus pedágios.",
+      "tts": {
+        "text": "Também saqueava navios que se recusavam a pagar seus pedágios.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mercadores ingleses, clãs irlandeses rivais e comerciantes escoceses sofreram perdas em suas mãos.",
+      "text_markdown": "Mercadores ingleses, clãs irlandeses rivais e comerciantes escoceses sofreram perdas em suas mãos.",
+      "tts": {
+        "text": "Mercadores ingleses, clãs irlandeses rivais e comerciantes escoceses sofreram perdas em suas mãos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suas incursões eram calculadas, não aleatórias.",
+      "text_markdown": "Suas incursões eram calculadas, não aleatórias.",
+      "tts": {
+        "text": "Suas incursões eram calculadas, não aleatórias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Visava navios que sabia transportar carga valiosa e evitava os bem defendidos demais para atacar.",
+      "text_markdown": "Visava navios que sabia transportar carga valiosa e evitava os bem defendidos demais para atacar.",
+      "tts": {
+        "text": "Visava navios que sabia transportar carga valiosa e evitava os bem defendidos demais para atacar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace teve filhos de ambos os maridos e os criou para serem líderes.",
+      "text_markdown": "Grace teve filhos de ambos os maridos e os criou para serem líderes.",
+      "tts": {
+        "text": "Grace teve filhos de ambos os maridos e os criou para serem líderes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seus filhos serviam como capitães em sua frota e como figuras políticas por direito próprio.",
+      "text_markdown": "Seus filhos serviam como capitães em sua frota e como figuras políticas por direito próprio.",
+      "tts": {
+        "text": "Seus filhos serviam como capitães em sua frota e como figuras políticas por direito próprio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua nora Margaret administrava propriedades em seu nome.",
+      "text_markdown": "Sua nora Margaret administrava propriedades em seu nome.",
+      "tts": {
+        "text": "Sua nora Margaret administrava propriedades em seu nome.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A rede O'Malley era uma empresa familiar, mantida unida pelo sangue e pela força da personalidade de Grace.",
+      "text_markdown": "A rede O'Malley era uma empresa familiar, mantida unida pelo sangue e pela força da personalidade de Grace.",
+      "tts": {
+        "text": "A rede O'Malley era uma empresa familiar, mantida unida pelo sangue e pela força da personalidade de Grace.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A vida na costa atlântica era fisicamente exigente e frequentemente perigosa.",
+      "text_markdown": "A vida na costa atlântica era fisicamente exigente e frequentemente perigosa.",
+      "tts": {
+        "text": "A vida na costa atlântica era fisicamente exigente e frequentemente perigosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O clima era severo, com tempestades vindas do mar aberto durante grande parte do ano.",
+      "text_markdown": "O clima era severo, com tempestades vindas do mar aberto durante grande parte do ano.",
+      "tts": {
+        "text": "O clima era severo, com tempestades vindas do mar aberto durante grande parte do ano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os barcos eram abertos ou parcialmente cobertos, oferecendo pouca proteção contra os elementos.",
+      "text_markdown": "Os barcos eram abertos ou parcialmente cobertos, oferecendo pouca proteção contra os elementos.",
+      "tts": {
+        "text": "Os barcos eram abertos ou parcialmente cobertos, oferecendo pouca proteção contra os elementos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace suportou essas condições por décadas, navegando e lutando até bem depois dos sessenta anos.",
+      "text_markdown": "Grace suportou essas condições por décadas, navegando e lutando até bem depois dos sessenta anos.",
+      "tts": {
+        "text": "Grace suportou essas condições por décadas, navegando e lutando até bem depois dos sessenta anos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Era conhecida por sua coragem pessoal em batalha.",
+      "text_markdown": "Era conhecida por sua coragem pessoal em batalha.",
+      "tts": {
+        "text": "Era conhecida por sua coragem pessoal em batalha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uma história famosa descreve como ela repeliu um ataque a seu navio no dia seguinte ao nascimento de seu filho Tibbot.",
+      "text_markdown": "Uma história famosa descreve como ela repeliu um ataque a seu navio no dia seguinte ao nascimento de seu filho Tibbot.",
+      "tts": {
+        "text": "Uma história famosa descreve como ela repeliu um ataque a seu navio no dia seguinte ao nascimento de seu filho Tibbot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dizem que ela se levantou da cama, pegou uma arma e liderou a defesa do convés.",
+      "text_markdown": "Dizem que ela se levantou da cama, pegou uma arma e liderou a defesa do convés.",
+      "tts": {
+        "text": "Dizem que ela se levantou da cama, pegou uma arma e liderou a defesa do convés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seja cada detalhe desta história preciso ou não, captura o espírito que a tornou uma lenda.",
+      "text_markdown": "Seja cada detalhe desta história preciso ou não, captura o espírito que a tornou uma lenda.",
+      "tts": {
+        "text": "Seja cada detalhe desta história preciso ou não, captura o espírito que a tornou uma lenda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O mundo gaélico que sustentava seu poder era uma sociedade complexa e sofisticada.",
+      "text_markdown": "O mundo gaélico que sustentava seu poder era uma sociedade complexa e sofisticada.",
+      "tts": {
+        "text": "O mundo gaélico que sustentava seu poder era uma sociedade complexa e sofisticada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tinha seu próprio sistema jurídico, sua própria literatura, sua própria música e suas próprias formas de governo.",
+      "text_markdown": "Tinha seu próprio sistema jurídico, sua própria literatura, sua própria música e suas próprias formas de governo.",
+      "tts": {
+        "text": "Tinha seu próprio sistema jurídico, sua própria literatura, sua própria música e suas próprias formas de governo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os colonizadores ingleses o descartavam como bárbaro, mas não tinha nada de simples.",
+      "text_markdown": "Os colonizadores ingleses o descartavam como bárbaro, mas não tinha nada de simples.",
+      "tts": {
+        "text": "Os colonizadores ingleses o descartavam como bárbaro, mas não tinha nada de simples.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Grace O'Malley era um produto deste mundo e encarnava seus valores de independência e coragem.",
+      "text_markdown": "Grace O'Malley era um produto deste mundo e encarnava seus valores de independência e coragem.",
+      "tts": {
+        "text": "Grace O'Malley era um produto deste mundo e encarnava seus valores de independência e coragem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace também mantinha redes de inteligência ao longo da costa oeste.",
+      "text_markdown": "Grace também mantinha redes de inteligência ao longo da costa oeste.",
+      "tts": {
+        "text": "Grace também mantinha redes de inteligência ao longo da costa oeste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tinha informantes em Galway, nos portos de Connacht e entre as cidades de guarnição inglesas.",
+      "text_markdown": "Tinha informantes em Galway, nos portos de Connacht e entre as cidades de guarnição inglesas.",
+      "tts": {
+        "text": "Tinha informantes em Galway, nos portos de Connacht e entre as cidades de guarnição inglesas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sabia quando os navios de suprimento ingleses chegavam e que carga transportavam.",
+      "text_markdown": "Sabia quando os navios de suprimento ingleses chegavam e que carga transportavam.",
+      "tts": {
+        "text": "Sabia quando os navios de suprimento ingleses chegavam e que carga transportavam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esse conhecimento lhe dava uma vantagem decisiva tanto no comércio quanto nas incursões.",
+      "text_markdown": "Esse conhecimento lhe dava uma vantagem decisiva tanto no comércio quanto nas incursões.",
+      "tts": {
+        "text": "Esse conhecimento lhe dava uma vantagem decisiva tanto no comércio quanto nas incursões.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas conexões comerciais com a Espanha eram particularmente valiosas.",
+      "text_markdown": "Suas conexões comerciais com a Espanha eram particularmente valiosas.",
+      "tts": {
+        "text": "Suas conexões comerciais com a Espanha eram particularmente valiosas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os mercadores espanhóis pagavam preços elevados pelo peixe e couros irlandeses.",
+      "text_markdown": "Os mercadores espanhóis pagavam preços elevados pelo peixe e couros irlandeses.",
+      "tts": {
+        "text": "Os mercadores espanhóis pagavam preços elevados pelo peixe e couros irlandeses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Em troca, forneciam vinho, armas e ferro, escassos no oeste da Irlanda.",
+      "text_markdown": "Em troca, forneciam vinho, armas e ferro, escassos no oeste da Irlanda.",
+      "tts": {
+        "text": "Em troca, forneciam vinho, armas e ferro, escassos no oeste da Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Esses vínculos comerciais tornaram Grace uma das pessoas mais ricas de Connacht.",
+      "text_markdown": "Esses vínculos comerciais tornaram Grace uma das pessoas mais ricas de Connacht.",
+      "tts": {
+        "text": "Esses vínculos comerciais tornaram Grace uma das pessoas mais ricas de Connacht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No auge de seu poder, Grace O'Malley era a mulher mais poderosa da Irlanda.",
+      "text_markdown": "No auge de seu poder, Grace O'Malley era a mulher mais poderosa da Irlanda.",
+      "tts": {
+        "text": "No auge de seu poder, Grace O'Malley era a mulher mais poderosa da Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não respondia a nenhum governador inglês nem a nenhum senhor gaélico.",
+      "text_markdown": "Não respondia a nenhum governador inglês nem a nenhum senhor gaélico.",
+      "tts": {
+        "text": "Não respondia a nenhum governador inglês nem a nenhum senhor gaélico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fazia suas próprias alianças, travava suas próprias guerras e governava seu próprio povo.",
+      "text_markdown": "Fazia suas próprias alianças, travava suas próprias guerras e governava seu próprio povo.",
+      "tts": {
+        "text": "Fazia suas próprias alianças, travava suas próprias guerras e governava seu próprio povo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "No auge",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era, em todo sentido prático, uma soberana do mar.",
+      "text_markdown": "Era, em todo sentido prático, uma soberana do mar.",
+      "tts": {
+        "text": "Era, em todo sentido prático, uma soberana do mar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O fim",
+      "text_markdown": "O fim"
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A última década da vida de Grace O'Malley foi marcada pela perda e pelo declínio.",
+      "text_markdown": "A última década da vida de Grace O'Malley foi marcada pela perda e pelo declínio.",
+      "tts": {
+        "text": "A última década da vida de Grace O'Malley foi marcada pela perda e pelo declínio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A conquista inglesa da Irlanda acelerou-se nos anos mil quinhentos e noventa.",
+      "text_markdown": "A conquista inglesa da Irlanda acelerou-se nos anos mil quinhentos e noventa.",
+      "tts": {
+        "text": "A conquista inglesa da Irlanda acelerou-se nos anos mil quinhentos e noventa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chefes gaélicos que detiveram o poder por séculos foram despojados de suas terras e títulos.",
+      "text_markdown": "Chefes gaélicos que detiveram o poder por séculos foram despojados de suas terras e títulos.",
+      "tts": {
+        "text": "Chefes gaélicos que detiveram o poder por séculos foram despojados de suas terras e títulos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O mundo que Grace conhecera desde o nascimento estava sendo sistematicamente destruído.",
+      "text_markdown": "O mundo que Grace conhecera desde o nascimento estava sendo sistematicamente destruído.",
+      "tts": {
+        "text": "O mundo que Grace conhecera desde o nascimento estava sendo sistematicamente destruído.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Guerra dos Nove Anos, que durou de 1594 a 1603, foi o ato final da resistência gaélica.",
+      "text_markdown": "A Guerra dos Nove Anos, que durou de 1594 a 1603, foi o ato final da resistência gaélica.",
+      "tts": {
+        "text": "A Guerra dos Nove Anos, que durou de mil quinhentos e noventa e quatro a mil seiscentos e três, foi o ato final da resistência gaélica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os chefes irlandeses sob Hugh O'Neill de Tyrone lançaram uma grande rebelião contra o domínio inglês.",
+      "text_markdown": "Os chefes irlandeses sob Hugh O'Neill de Tyrone lançaram uma grande rebelião contra o domínio inglês.",
+      "tts": {
+        "text": "Os chefes irlandeses sob Hugh O'Neill de Tyrone lançaram uma grande rebelião contra o domínio inglês.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Por um tempo, a rebelião foi bem-sucedida, e a autoridade inglesa em grande parte da Irlanda desmoronou.",
+      "text_markdown": "Por um tempo, a rebelião foi bem-sucedida, e a autoridade inglesa em grande parte da Irlanda desmoronou.",
+      "tts": {
+        "text": "Por um tempo, a rebelião foi bem-sucedida, e a autoridade inglesa em grande parte da Irlanda desmoronou.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas a Inglaterra despejou tropas e recursos na Irlanda, e a rebelião foi finalmente esmagada.",
+      "text_markdown": "Mas a Inglaterra despejou tropas e recursos na Irlanda, e a rebelião foi finalmente esmagada.",
+      "tts": {
+        "text": "Mas a Inglaterra despejou tropas e recursos na Irlanda, e a rebelião foi finalmente esmagada.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O papel de Grace O'Malley na Guerra dos Nove Anos não é claro no registro histórico.",
+      "text_markdown": "O papel de Grace O'Malley na Guerra dos Nove Anos não é claro no registro histórico.",
+      "tts": {
+        "text": "O papel de Grace O'Malley na Guerra dos Nove Anos não é claro no registro histórico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ela estava na casa dos sessenta durante a guerra e pode não ter sido capaz de comandar sua frota como antes.",
+      "text_markdown": "Ela estava na casa dos sessenta durante a guerra e pode não ter sido capaz de comandar sua frota como antes.",
+      "tts": {
+        "text": "Ela estava na casa dos sessenta durante a guerra e pode não ter sido capaz de comandar sua frota como antes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alguns relatos sugerem que ela apoiou a rebelião; outros sugerem que manteve uma neutralidade cautelosa.",
+      "text_markdown": "Alguns relatos sugerem que ela apoiou a rebelião; outros sugerem que manteve uma neutralidade cautelosa.",
+      "tts": {
+        "text": "Alguns relatos sugerem que ela apoiou a rebelião; outros sugerem que manteve uma neutralidade cautelosa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O que é certo é que a vitória inglesa encerrou qualquer possibilidade de independência gaélica.",
+      "text_markdown": "O que é certo é que a vitória inglesa encerrou qualquer possibilidade de independência gaélica.",
+      "tts": {
+        "text": "O que é certo é que a vitória inglesa encerrou qualquer possibilidade de independência gaélica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Richard Bingham, seu velho inimigo, havia sido chamado de volta à Inglaterra em 1596.",
+      "text_markdown": "Richard Bingham, seu velho inimigo, havia sido chamado de volta à Inglaterra em 1596.",
+      "tts": {
+        "text": "Richard Bingham, seu velho inimigo, havia sido chamado de volta à Inglaterra em mil quinhentos e noventa e seis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu substituto foi um pouco menos hostil a Grace e sua família.",
+      "text_markdown": "Seu substituto foi um pouco menos hostil a Grace e sua família.",
+      "tts": {
+        "text": "Seu substituto foi um pouco menos hostil a Grace e sua família.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas a realidade estrutural não havia mudado.",
+      "text_markdown": "Mas a realidade estrutural não havia mudado.",
+      "tts": {
+        "text": "Mas a realidade estrutural não havia mudado.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A lei inglesa estava substituindo a lei Brehon, e proprietários ingleses estavam substituindo chefes gaélicos por toda a ilha.",
+      "text_markdown": "A lei inglesa estava substituindo a lei Brehon, e proprietários ingleses estavam substituindo chefes gaélicos por toda a ilha.",
+      "tts": {
+        "text": "A lei inglesa estava substituindo a lei Brehon, e proprietários ingleses estavam substituindo chefes gaélicos por toda a ilha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O filho de Grace, Tibbot, acabou fazendo as pazes com os ingleses.",
+      "text_markdown": "O filho de Grace, Tibbot, acabou fazendo as pazes com os ingleses.",
+      "tts": {
+        "text": "O filho de Grace, Tibbot, acabou fazendo as pazes com os ingleses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Submeteu-se à autoridade inglesa e recebeu um título inglês.",
+      "text_markdown": "Submeteu-se à autoridade inglesa e recebeu um título inglês.",
+      "tts": {
+        "text": "Submeteu-se à autoridade inglesa e recebeu um título inglês.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tornou-se Visconde de Mayo e serviu a Coroa inglesa fielmente pelo resto de sua vida.",
+      "text_markdown": "Tornou-se Visconde de Mayo e serviu a Coroa inglesa fielmente pelo resto de sua vida.",
+      "tts": {
+        "text": "Tornou-se Visconde de Mayo e serviu a Coroa inglesa fielmente pelo resto de sua vida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foi uma decisão pragmática, mas representava a morte de tudo pelo que sua mãe havia lutado.",
+      "text_markdown": "Foi uma decisão pragmática, mas representava a morte de tudo pelo que sua mãe havia lutado.",
+      "tts": {
+        "text": "Foi uma decisão pragmática, mas representava a morte de tudo pelo que sua mãe havia lutado.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley morreu por volta de 1603, no mesmo ano em que a rainha Elisabete Primeira também morreu.",
+      "text_markdown": "Grace O'Malley morreu por volta de 1603, no mesmo ano em que a rainha Elisabete Primeira também morreu.",
+      "tts": {
+        "text": "Grace O'Malley morreu por volta de mil seiscentos e três, no mesmo ano em que a rainha Elisabete Primeira também morreu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A data exata e as circunstâncias de sua morte não estão registradas.",
+      "text_markdown": "A data exata e as circunstâncias de sua morte não estão registradas.",
+      "tts": {
+        "text": "A data exata e as circunstâncias de sua morte não estão registradas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Acredita-se que ela tenha morrido no castelo de Rockfleet, a casa-torre na baía de Clew que fora sua fortaleza por décadas.",
+      "text_markdown": "Acredita-se que ela tenha morrido no castelo de Rockfleet, a casa-torre na baía de Clew que fora sua fortaleza por décadas.",
+      "tts": {
+        "text": "Acredita-se que ela tenha morrido no castelo de Rockfleet, a casa-torre na baía de Clew que fora sua fortaleza por décadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tinha aproximadamente setenta e três anos.",
+      "text_markdown": "Tinha aproximadamente setenta e três anos.",
+      "tts": {
+        "text": "Tinha aproximadamente setenta e três anos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nenhum retrato de Grace O'Malley sobreviveu de sua época.",
+      "text_markdown": "Nenhum retrato de Grace O'Malley sobreviveu de sua época.",
+      "tts": {
+        "text": "Nenhum retrato de Grace O'Malley sobreviveu de sua época.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não sabemos como ela era.",
+      "text_markdown": "Não sabemos como ela era.",
+      "tts": {
+        "text": "Não sabemos como ela era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Não temos cartas escritas por sua própria mão.",
+      "text_markdown": "Não temos cartas escritas por sua própria mão.",
+      "tts": {
+        "text": "Não temos cartas escritas por sua própria mão.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O que temos são documentos estatais ingleses, petições e as tradições orais do oeste da Irlanda.",
+      "text_markdown": "O que temos são documentos estatais ingleses, petições e as tradições orais do oeste da Irlanda.",
+      "tts": {
+        "text": "O que temos são documentos estatais ingleses, petições e as tradições orais do oeste da Irlanda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os registros ingleses a descrevem como uma notória traidora e a ama de todas as rebeliões da província.",
+      "text_markdown": "Os registros ingleses a descrevem como uma notória traidora e a ama de todas as rebeliões da província.",
+      "tts": {
+        "text": "Os registros ingleses a descrevem como uma notória traidora e a ama de todas as rebeliões da província.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Estas são as palavras de seus inimigos e devem ser lidas como tais.",
+      "text_markdown": "Estas são as palavras de seus inimigos e devem ser lidas como tais.",
+      "tts": {
+        "text": "Estas são as palavras de seus inimigos e devem ser lidas como tais.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas até seus inimigos reconheciam seu poder, sua inteligência e sua coragem.",
+      "text_markdown": "Mas até seus inimigos reconheciam seu poder, sua inteligência e sua coragem.",
+      "tts": {
+        "text": "Mas até seus inimigos reconheciam seu poder, sua inteligência e sua coragem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Impressionava até aqueles que desejavam destruí-la.",
+      "text_markdown": "Impressionava até aqueles que desejavam destruí-la.",
+      "tts": {
+        "text": "Impressionava até aqueles que desejavam destruí-la.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A ordem gaélica não lhe sobreviveu mais do que alguns anos.",
+      "text_markdown": "A ordem gaélica não lhe sobreviveu mais do que alguns anos.",
+      "tts": {
+        "text": "A ordem gaélica não lhe sobreviveu mais do que alguns anos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Fuga dos Condes em 1607 marcou o colapso final do poder aristocrático gaélico.",
+      "text_markdown": "A Fuga dos Condes em 1607 marcou o colapso final do poder aristocrático gaélico.",
+      "tts": {
+        "text": "A Fuga dos Condes em mil seiscentos e sete marcou o colapso final do poder aristocrático gaélico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A colonização do Ulster começou, e colonos ingleses e escoceses receberam terras irlandesas confiscadas.",
+      "text_markdown": "A colonização do Ulster começou, e colonos ingleses e escoceses receberam terras irlandesas confiscadas.",
+      "tts": {
+        "text": "A colonização do Ulster começou, e colonos ingleses e escoceses receberam terras irlandesas confiscadas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A Irlanda que emergiu era uma posse colonial, não uma terra de clãs independentes.",
+      "text_markdown": "A Irlanda que emergiu era uma posse colonial, não uma terra de clãs independentes.",
+      "tts": {
+        "text": "A Irlanda que emergiu era uma posse colonial, não uma terra de clãs independentes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A colonização inglesa da Irlanda procedeu através de um sistema chamado plantação.",
+      "text_markdown": "A colonização inglesa da Irlanda procedeu através de um sistema chamado plantação.",
+      "tts": {
+        "text": "A colonização inglesa da Irlanda procedeu através de um sistema chamado plantação.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sob este sistema, terras irlandesas eram confiscadas e entregues a colonos ingleses e escoceses.",
+      "text_markdown": "Sob este sistema, terras irlandesas eram confiscadas e entregues a colonos ingleses e escoceses.",
+      "tts": {
+        "text": "Sob este sistema, terras irlandesas eram confiscadas e entregues a colonos ingleses e escoceses.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A população nativa foi deslocada ou reduzida a inquilinos em terras que suas famílias possuíam por gerações.",
+      "text_markdown": "A população nativa foi deslocada ou reduzida a inquilinos em terras que suas famílias possuíam por gerações.",
+      "tts": {
+        "text": "A população nativa foi deslocada ou reduzida a inquilinos em terras que suas famílias possuíam por gerações.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Este processo continuaria por décadas após a morte de Grace, transformando toda a ilha.",
+      "text_markdown": "Este processo continuaria por décadas após a morte de Grace, transformando toda a ilha.",
+      "tts": {
+        "text": "Este processo continuaria por décadas após a morte de Grace, transformando toda a ilha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley viveu no fim de um mundo e no início de outro.",
+      "text_markdown": "Grace O'Malley viveu no fim de um mundo e no início de outro.",
+      "tts": {
+        "text": "Grace O'Malley viveu no fim de um mundo e no início de outro.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Não pôde deter as forças que estavam destruindo seu mundo.",
+      "text_markdown": "Não pôde deter as forças que estavam destruindo seu mundo.",
+      "tts": {
+        "text": "Não pôde deter as forças que estavam destruindo seu mundo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mas lutou contra elas por mais tempo, com mais habilidade e com mais espírito do que quase qualquer outra pessoa.",
+      "text_markdown": "Mas lutou contra elas por mais tempo, com mais habilidade e com mais espírito do que quase qualquer outra pessoa.",
+      "tts": {
+        "text": "Mas lutou contra elas por mais tempo, com mais habilidade e com mais espírito do que quase qualquer outra pessoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "O fim",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua vida é um testemunho do que um indivíduo determinado pode alcançar contra todas as adversidades.",
+      "text_markdown": "Sua vida é um testemunho do que um indivíduo determinado pode alcançar contra todas as adversidades.",
+      "tts": {
+        "text": "Sua vida é um testemunho do que um indivíduo determinado pode alcançar contra todas as adversidades.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Legado",
+      "text_markdown": "Legado"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grace O'Malley é uma das figuras mais celebradas da história da Irlanda.",
+      "text_markdown": "Grace O'Malley é uma das figuras mais celebradas da história da Irlanda.",
+      "tts": {
+        "text": "Grace O'Malley é uma das figuras mais celebradas da história da Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seu nome é conhecido por todas as crianças em idade escolar na Irlanda.",
+      "text_markdown": "Seu nome é conhecido por todas as crianças em idade escolar na Irlanda.",
+      "tts": {
+        "text": "Seu nome é conhecido por todas as crianças em idade escolar na Irlanda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É um símbolo da independência irlandesa, do empoderamento feminino e da resistência ao colonialismo.",
+      "text_markdown": "É um símbolo da independência irlandesa, do empoderamento feminino e da resistência ao colonialismo.",
+      "tts": {
+        "text": "É um símbolo da independência irlandesa, do empoderamento feminino e da resistência ao colonialismo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua história tem sido contada em canções, peças de teatro, romances e filmes por séculos.",
+      "text_markdown": "Sua história tem sido contada em canções, peças de teatro, romances e filmes por séculos.",
+      "tts": {
+        "text": "Sua história tem sido contada em canções, peças de teatro, romances e filmes por séculos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O castelo de Rockfleet ainda se ergue na margem da baía de Clew.",
+      "text_markdown": "O castelo de Rockfleet ainda se ergue na margem da baía de Clew.",
+      "tts": {
+        "text": "O castelo de Rockfleet ainda se ergue na margem da baía de Clew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A ilha de Clare, onde ela nasceu, ainda é habitada e pode ser visitada de balsa.",
+      "text_markdown": "A ilha de Clare, onde ela nasceu, ainda é habitada e pode ser visitada de balsa.",
+      "tts": {
+        "text": "A ilha de Clare, onde ela nasceu, ainda é habitada e pode ser visitada de balsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sua abadia na ilha de Clare contém o que se acredita ser seu túmulo.",
+      "text_markdown": "Sua abadia na ilha de Clare contém o que se acredita ser seu túmulo.",
+      "tts": {
+        "text": "Sua abadia na ilha de Clare contém o que se acredita ser seu túmulo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Visitantes vêm de todo o mundo para ver os lugares onde ela viveu e governou.",
+      "text_markdown": "Visitantes vêm de todo o mundo para ver os lugares onde ela viveu e governou.",
+      "tts": {
+        "text": "Visitantes vêm de todo o mundo para ver os lugares onde ela viveu e governou.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na tradição popular irlandesa, Grace O'Malley representa o espírito do oeste gaélico.",
+      "text_markdown": "Na tradição popular irlandesa, Grace O'Malley representa o espírito do oeste gaélico.",
+      "tts": {
+        "text": "Na tradição popular irlandesa, Grace O'Malley representa o espírito do oeste gaélico.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Histórias sobre ela foram transmitidas oralmente por mais de quatro séculos.",
+      "text_markdown": "Histórias sobre ela foram transmitidas oralmente por mais de quatro séculos.",
+      "tts": {
+        "text": "Histórias sobre ela foram transmitidas oralmente por mais de quatro séculos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muitas dessas histórias são embelezadas ou lendárias.",
+      "text_markdown": "Muitas dessas histórias são embelezadas ou lendárias.",
+      "tts": {
+        "text": "Muitas dessas histórias são embelezadas ou lendárias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mas refletem uma genuína figura histórica cujo impacto foi real e profundo.",
+      "text_markdown": "Mas refletem uma genuína figura histórica cujo impacto foi real e profundo.",
+      "tts": {
+        "text": "Mas refletem uma genuína figura histórica cujo impacto foi real e profundo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seu encontro com Elisabete Primeira permanece como um dos mais extraordinários encontros diplomáticos da era Tudor.",
+      "text_markdown": "Seu encontro com Elisabete Primeira permanece como um dos mais extraordinários encontros diplomáticos da era Tudor.",
+      "tts": {
+        "text": "Seu encontro com Elisabete Primeira permanece como um dos mais extraordinários encontros diplomáticos da era Tudor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um chefe gaélico, uma mulher, uma pirata, entrou na corte mais poderosa da Europa e negociou como igual.",
+      "text_markdown": "Um chefe gaélico, uma mulher, uma pirata, entrou na corte mais poderosa da Europa e negociou como igual.",
+      "tts": {
+        "text": "Um chefe gaélico, uma mulher, uma pirata, entrou na corte mais poderosa da Europa e negociou como igual.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A audácia daquele ato ainda ressoa séculos depois.",
+      "text_markdown": "A audácia daquele ato ainda ressoa séculos depois.",
+      "tts": {
+        "text": "A audácia daquele ato ainda ressoa séculos depois.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fala de um mundo onde o poder nem sempre era definido pelo nascimento ou pelo gênero.",
+      "text_markdown": "Fala de um mundo onde o poder nem sempre era definido pelo nascimento ou pelo gênero.",
+      "tts": {
+        "text": "Fala de um mundo onde o poder nem sempre era definido pelo nascimento ou pelo gênero.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os historiadores continuam a estudar Grace O'Malley como um estudo de caso de liderança feminina no início do período moderno.",
+      "text_markdown": "Os historiadores continuam a estudar Grace O'Malley como um estudo de caso de liderança feminina no início do período moderno.",
+      "tts": {
+        "text": "Os historiadores continuam a estudar Grace O'Malley como um estudo de caso de liderança feminina no início do período moderno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Operava em um mundo dominado por homens, e ainda assim comandava homens em batalha e no mar.",
+      "text_markdown": "Operava em um mundo dominado por homens, e ainda assim comandava homens em batalha e no mar.",
+      "tts": {
+        "text": "Operava em um mundo dominado por homens, e ainda assim comandava homens em batalha e no mar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Navegou sistemas políticos complexos, tanto gaélicos quanto ingleses, com habilidade e astúcia.",
+      "text_markdown": "Navegou sistemas políticos complexos, tanto gaélicos quanto ingleses, com habilidade e astúcia.",
+      "tts": {
+        "text": "Navegou sistemas políticos complexos, tanto gaélicos quanto ingleses, com habilidade e astúcia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua carreira demonstra que mulheres podiam exercer poder real mesmo em sociedades profundamente patriarcais.",
+      "text_markdown": "Sua carreira demonstra que mulheres podiam exercer poder real mesmo em sociedades profundamente patriarcais.",
+      "tts": {
+        "text": "Sua carreira demonstra que mulheres podiam exercer poder real mesmo em sociedades profundamente patriarcais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A destruição do mundo gaélico que Grace lutou para preservar é uma das grandes tragédias da história irlandesa.",
+      "text_markdown": "A destruição do mundo gaélico que Grace lutou para preservar é uma das grandes tragédias da história irlandesa.",
+      "tts": {
+        "text": "A destruição do mundo gaélico que Grace lutou para preservar é uma das grandes tragédias da história irlandesa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toda uma civilização, com suas próprias leis, literatura e costumes, foi deliberadamente desmantelada por uma potência colonial.",
+      "text_markdown": "Toda uma civilização, com suas próprias leis, literatura e costumes, foi deliberadamente desmantelada por uma potência colonial.",
+      "tts": {
+        "text": "Toda uma civilização, com suas próprias leis, literatura e costumes, foi deliberadamente desmantelada por uma potência colonial.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grace O'Malley foi uma das últimas defensoras dessa civilização.",
+      "text_markdown": "Grace O'Malley foi uma das últimas defensoras dessa civilização.",
+      "tts": {
+        "text": "Grace O'Malley foi uma das últimas defensoras dessa civilização.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sua história é inseparável da história mais ampla do colonialismo e seus custos.",
+      "text_markdown": "Sua história é inseparável da história mais ampla do colonialismo e seus custos.",
+      "tts": {
+        "text": "Sua história é inseparável da história mais ampla do colonialismo e seus custos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O que faz a história de Grace O'Malley perdurar não é apenas o que ela fez, mas quem ela era.",
+      "text_markdown": "O que faz a história de Grace O'Malley perdurar não é apenas o que ela fez, mas quem ela era.",
+      "tts": {
+        "text": "O que faz a história de Grace O'Malley perdurar não é apenas o que ela fez, mas quem ela era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foi mãe, esposa, guerreira, comerciante, diplomata e pirata.",
+      "text_markdown": "Foi mãe, esposa, guerreira, comerciante, diplomata e pirata.",
+      "tts": {
+        "text": "Foi mãe, esposa, guerreira, comerciante, diplomata e pirata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Desafiou cada categoria que seu mundo tentou lhe impor.",
+      "text_markdown": "Desafiou cada categoria que seu mundo tentou lhe impor.",
+      "tts": {
+        "text": "Desafiou cada categoria que seu mundo tentou lhe impor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Viveu em seus próprios termos, em uma costa selvagem, na borda do mundo conhecido.",
+      "text_markdown": "Viveu em seus próprios termos, em uma costa selvagem, na borda do mundo conhecido.",
+      "tts": {
+        "text": "Viveu em seus próprios termos, em uma costa selvagem, na borda do mundo conhecido.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legado",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is why her name is still spoken four centuries after her death.",
+      "text_markdown": "That is why her name is still spoken four centuries after her death.",
+      "tts": {
+        "text": "That is why her name is still spoken four centuries after her death.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

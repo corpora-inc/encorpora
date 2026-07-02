@@ -1,0 +1,4412 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_miguel_de_cervantes",
+  "language": "zh",
+  "total_segments": 295,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这不是一个关于海盗的故事。",
+      "text_markdown": "这不是一个关于海盗的故事。",
+      "tts": {
+        "text": "这不是一个关于海盗的故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个被海盗抓走并囚禁了五年的人的故事。",
+      "text_markdown": "这是一个被海盗抓走并囚禁了五年的人的故事。",
+      "tts": {
+        "text": "这是一个被海盗抓走并囚禁了五年的人的故事。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米格尔·德·塞万提斯被铭记为西班牙语中最伟大的作家。",
+      "text_markdown": "米格尔·德·塞万提斯被铭记为西班牙语中最伟大的作家。",
+      "tts": {
+        "text": "米格尔·德·塞万提斯被铭记为西班牙语中最伟大的作家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他写了《堂吉诃德》，这是有史以来最重要的小说之一。",
+      "text_markdown": "他写了《堂吉诃德》，这是有史以来最重要的小说之一。",
+      "tts": {
+        "text": "他写了《堂吉诃德》，这是有史以来最重要的小说之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但在成为作家之前，塞万提斯是一名士兵。",
+      "text_markdown": "但在成为作家之前，塞万提斯是一名士兵。",
+      "tts": {
+        "text": "但在成为作家之前，塞万提斯是一名士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在获得自由去写作之前，他在北非做了五年的奴隶。",
+      "text_markdown": "在获得自由去写作之前，他在北非做了五年的奴隶。",
+      "tts": {
+        "text": "在获得自由去写作之前，他在北非做了五年的奴隶。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的囚禁生涯以学者们至今仍在发现的方式塑造了他的写作。",
+      "text_markdown": "他的囚禁生涯以学者们至今仍在发现的方式塑造了他的写作。",
+      "tts": {
+        "text": "他的囚禁生涯以学者们至今仍在发现的方式塑造了他的写作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "监禁、逃跑和人类坚韧的场景贯穿他的所有作品。",
+      "text_markdown": "监禁、逃跑和人类坚韧的场景贯穿他的所有作品。",
+      "tts": {
+        "text": "监禁、逃跑和人类坚韧的场景贯穿他的所有作品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个故事的讲述基于对塞万提斯曾遭受巨大苦难的理解。",
+      "text_markdown": "这个故事的讲述基于对塞万提斯曾遭受巨大苦难的理解。",
+      "tts": {
+        "text": "这个故事的讲述基于对塞万提斯曾遭受巨大苦难的理解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它以应有的严肃和尊重来对待他的经历。",
+      "text_markdown": "它以应有的严肃和尊重来对待他的经历。",
+      "tts": {
+        "text": "它以应有的严肃和尊重来对待他的经历。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里描述的事件基于历史记录，包括塞万提斯本人的证词和同时代人的叙述。",
+      "text_markdown": "这里描述的事件基于历史记录，包括塞万提斯本人的证词和同时代人的叙述。",
+      "tts": {
+        "text": "这里描述的事件基于历史记录，包括塞万提斯本人的证词和同时代人的叙述。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "凡是细节不确定之处，文中会加以说明。",
+      "text_markdown": "凡是细节不确定之处，文中会加以说明。",
+      "tts": {
+        "text": "凡是细节不确定之处，文中会加以说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "地中海世界",
+      "text_markdown": "地中海世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十六世纪的地中海是世界的中心。",
+      "text_markdown": "十六世纪的地中海是世界的中心。",
+      "tts": {
+        "text": "十六世纪的地中海是世界的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它被三大洲和数十个王国、帝国及城邦所环绕。",
+      "text_markdown": "它被三大洲和数十个王国、帝国及城邦所环绕。",
+      "tts": {
+        "text": "它被三大洲和数十个王国、帝国及城邦所环绕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "贸易、战争和文化交流不断在其水域间流动。",
+      "text_markdown": "贸易、战争和文化交流不断在其水域间流动。",
+      "tts": {
+        "text": "贸易、战争和文化交流不断在其水域间流动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这个时代，两大强权主宰了地中海。",
+      "text_markdown": "在这个时代，两大强权主宰了地中海。",
+      "tts": {
+        "text": "在这个时代，两大强权主宰了地中海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在西方，西班牙帝国是欧洲最富有、最强大的国家。",
+      "text_markdown": "在西方，西班牙帝国是欧洲最富有、最强大的国家。",
+      "tts": {
+        "text": "在西方，西班牙帝国是欧洲最富有、最强大的国家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在东方，奥斯曼帝国控制着从匈牙利延伸到北非的广大领土。",
+      "text_markdown": "在东方，奥斯曼帝国控制着从匈牙利延伸到北非的广大领土。",
+      "tts": {
+        "text": "在东方，奥斯曼帝国控制着从匈牙利延伸到北非的广大领土。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这两大帝国之间的冲突不仅仅是政治性的。",
+      "text_markdown": "这两大帝国之间的冲突不仅仅是政治性的。",
+      "tts": {
+        "text": "这两大帝国之间的冲突不仅仅是政治性的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它还具有宗教性质。",
+      "text_markdown": "它还具有宗教性质。",
+      "tts": {
+        "text": "它还具有宗教性质。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙是天主教基督教世界的捍卫者，而奥斯曼人领导着伊斯兰世界。",
+      "text_markdown": "西班牙是天主教基督教世界的捍卫者，而奥斯曼人领导着伊斯兰世界。",
+      "tts": {
+        "text": "西班牙是天主教基督教世界的捍卫者，而奥斯曼人领导着伊斯兰世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种宗教维度使冲突格外激烈。",
+      "text_markdown": "这种宗教维度使冲突格外激烈。",
+      "tts": {
+        "text": "这种宗教维度使冲突格外激烈。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "双方都认为自己是在为上帝而战。",
+      "text_markdown": "双方都认为自己是在为上帝而战。",
+      "tts": {
+        "text": "双方都认为自己是在为上帝而战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "战俘通常被奴役，而非被交换或释放。",
+      "text_markdown": "战俘通常被奴役，而非被交换或释放。",
+      "tts": {
+        "text": "战俘通常被奴役，而非被交换或释放。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北非的巴巴里海岸是海盗活动的主要中心。",
+      "text_markdown": "北非的巴巴里海岸是海盗活动的主要中心。",
+      "tts": {
+        "text": "北非的巴巴里海岸是海盗活动的主要中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿尔及尔、突尼斯和的黎波里等城市是数千名海盗的家园，他们劫掠欧洲船只和沿海城镇。",
+      "text_markdown": "阿尔及尔、突尼斯和的黎波里等城市是数千名海盗的家园，他们劫掠欧洲船只和沿海城镇。",
+      "tts": {
+        "text": "阿尔及尔、突尼斯和的黎波里等城市是数千名海盗的家园，他们劫掠欧洲船只和沿海城镇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些巴巴里海盗不仅仅是普通的海盗。",
+      "text_markdown": "这些巴巴里海盗不仅仅是普通的海盗。",
+      "tts": {
+        "text": "这些巴巴里海盗不仅仅是普通的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多人在奥斯曼帝国或当地统治者的官方支持下活动。",
+      "text_markdown": "许多人在奥斯曼帝国或当地统治者的官方支持下活动。",
+      "tts": {
+        "text": "许多人在奥斯曼帝国或当地统治者的官方支持下活动。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们是更广泛的海战、商业和奴隶贸易体系的一部分。",
+      "text_markdown": "他们是更广泛的海战、商业和奴隶贸易体系的一部分。",
+      "tts": {
+        "text": "他们是更广泛的海战、商业和奴隶贸易体系的一部分。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "奴隶贸易是巴巴里诸国经济的核心。",
+      "text_markdown": "奴隶贸易是巴巴里诸国经济的核心。",
+      "tts": {
+        "text": "奴隶贸易是巴巴里诸国经济的核心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "被俘的欧洲人在阿尔及尔、突尼斯和其他城市的奴隶市场上被出售。",
+      "text_markdown": "被俘的欧洲人在阿尔及尔、突尼斯和其他城市的奴隶市场上被出售。",
+      "tts": {
+        "text": "被俘的欧洲人在阿尔及尔、突尼斯和其他城市的奴隶市场上被出售。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "富有或重要的俘虏可以被赎回，但这个过程耗时数年，花费巨大。",
+      "text_markdown": "富有或重要的俘虏可以被赎回，但这个过程耗时数年，花费巨大。",
+      "tts": {
+        "text": "富有或重要的俘虏可以被赎回，但这个过程耗时数年，花费巨大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "历史学家估计，在1500年至1800年间，超过一百万欧洲人被巴巴里海盗奴役。",
+      "text_markdown": "历史学家估计，在1500年至1800年间，超过一百万欧洲人被巴巴里海盗奴役。",
+      "tts": {
+        "text": "历史学家估计，在一千五百年至一千八百年间，超过一百万欧洲人被巴巴里海盗奴役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些俘虏来自每一个拥有地中海海岸线的国家。",
+      "text_markdown": "这些俘虏来自每一个拥有地中海海岸线的国家。",
+      "tts": {
+        "text": "这些俘虏来自每一个拥有地中海海岸线的国家。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙本身就是海盗袭击的频繁目标。",
+      "text_markdown": "西班牙本身就是海盗袭击的频繁目标。",
+      "tts": {
+        "text": "西班牙本身就是海盗袭击的频繁目标。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "安达卢西亚、瓦伦西亚和巴利阿里群岛的沿海村庄经常遭到攻击。",
+      "text_markdown": "安达卢西亚、瓦伦西亚和巴利阿里群岛的沿海村庄经常遭到攻击。",
+      "tts": {
+        "text": "安达卢西亚、瓦伦西亚和巴利阿里群岛的沿海村庄经常遭到攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "了望塔沿着西班牙海岸排列，警告接近的袭击者。",
+      "text_markdown": "了望塔沿着西班牙海岸排列，警告接近的袭击者。",
+      "tts": {
+        "text": "了望塔沿着西班牙海岸排列，警告接近的袭击者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "宗教修会被专门建立起来，以赎回穆斯林土地上的基督教俘虏。",
+      "text_markdown": "宗教修会被专门建立起来，以赎回穆斯林土地上的基督教俘虏。",
+      "tts": {
+        "text": "宗教修会被专门建立起来，以赎回穆斯林土地上的基督教俘虏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其中最重要的是至圣三位一体修会，即三位一体会。",
+      "text_markdown": "其中最重要的是至圣三位一体修会，即三位一体会。",
+      "tts": {
+        "text": "其中最重要的是至圣三位一体修会，即三位一体会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "三位一体会修士前往北非，谈判释放被奴役的基督徒。",
+      "text_markdown": "三位一体会修士前往北非，谈判释放被奴役的基督徒。",
+      "tts": {
+        "text": "三位一体会修士前往北非，谈判释放被奴役的基督徒。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赎回过程缓慢、昂贵且充满不确定性。",
+      "text_markdown": "赎回过程缓慢、昂贵且充满不确定性。",
+      "tts": {
+        "text": "赎回过程缓慢、昂贵且充满不确定性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家属们常常不得不乞讨、借贷并变卖所有家产来筹集赎金。",
+      "text_markdown": "家属们常常不得不乞讨、借贷并变卖所有家产来筹集赎金。",
+      "tts": {
+        "text": "家属们常常不得不乞讨、借贷并变卖所有家产来筹集赎金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多俘虏等待了数年才有人来救他们。",
+      "text_markdown": "许多俘虏等待了数年才有人来救他们。",
+      "tts": {
+        "text": "许多俘虏等待了数年才有人来救他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些人根本没有被赎回。",
+      "text_markdown": "有些人根本没有被赎回。",
+      "tts": {
+        "text": "有些人根本没有被赎回。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们在囚禁中度过余生，在采石场、农场劳作，或作为划桨奴隶被锁链拴在船桨上。",
+      "text_markdown": "他们在囚禁中度过余生，在采石场、农场劳作，或作为划桨奴隶被锁链拴在船桨上。",
+      "tts": {
+        "text": "他们在囚禁中度过余生，在采石场、农场劳作，或作为划桨奴隶被锁链拴在船桨上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是塑造了米格尔·德·塞万提斯的世界。",
+      "text_markdown": "这就是塑造了米格尔·德·塞万提斯的世界。",
+      "tts": {
+        "text": "这就是塑造了米格尔·德·塞万提斯的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在一个被与奥斯曼帝国和巴巴里海盗的斗争所定义的西班牙中长大。",
+      "text_markdown": "他在一个被与奥斯曼帝国和巴巴里海盗的斗争所定义的西班牙中长大。",
+      "tts": {
+        "text": "他在一个被与奥斯曼帝国和巴巴里海盗的斗争所定义的西班牙中长大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将作为士兵和俘虏亲身经历那场斗争。",
+      "text_markdown": "他将作为士兵和俘虏亲身经历那场斗争。",
+      "tts": {
+        "text": "他将作为士兵和俘虏亲身经历那场斗争。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鼎盛时期的奥斯曼帝国是世界上有史以来最大的帝国之一。",
+      "text_markdown": "鼎盛时期的奥斯曼帝国是世界上有史以来最大的帝国之一。",
+      "tts": {
+        "text": "鼎盛时期的奥斯曼帝国是世界上有史以来最大的帝国之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的苏丹从君士坦丁堡——博斯普鲁斯海峡上的伟大城市——发号施令。",
+      "text_markdown": "它的苏丹从君士坦丁堡——博斯普鲁斯海峡上的伟大城市——发号施令。",
+      "tts": {
+        "text": "它的苏丹从君士坦丁堡，博斯普鲁斯海峡上的伟大城市，发号施令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帝国控制着从印度洋到维也纳城门的贸易路线。",
+      "text_markdown": "帝国控制着从印度洋到维也纳城门的贸易路线。",
+      "tts": {
+        "text": "帝国控制着从印度洋到维也纳城门的贸易路线。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙的实力来源于美洲的白银和反宗教改革的宗教热情。",
+      "text_markdown": "西班牙的实力来源于美洲的白银和反宗教改革的宗教热情。",
+      "tts": {
+        "text": "西班牙的实力来源于美洲的白银和反宗教改革的宗教热情。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "腓力二世国王统治着一个日不落帝国。",
+      "text_markdown": "腓力二世国王统治着一个日不落帝国。",
+      "tts": {
+        "text": "腓力二世国王统治着一个日不落帝国。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但西班牙在欧洲和地中海的战争消耗国库的速度比白银填充的速度更快。",
+      "text_markdown": "但西班牙在欧洲和地中海的战争消耗国库的速度比白银填充的速度更快。",
+      "tts": {
+        "text": "但西班牙在欧洲和地中海的战争消耗国库的速度比白银填充的速度更快。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔及尔城是世界海盗之都。",
+      "text_markdown": "阿尔及尔城是世界海盗之都。",
+      "tts": {
+        "text": "阿尔及尔城是世界海盗之都。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它名义上是奥斯曼省份，但实际上由海盗船长们管理着这座城市。",
+      "text_markdown": "它名义上是奥斯曼省份，但实际上由海盗船长们管理着这座城市。",
+      "tts": {
+        "text": "它名义上是奥斯曼省份，但实际上由海盗船长们管理着这座城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "劫掠和奴隶贸易带来的财富使阿尔及尔成为地中海最富有的城市之一。",
+      "text_markdown": "劫掠和奴隶贸易带来的财富使阿尔及尔成为地中海最富有的城市之一。",
+      "tts": {
+        "text": "劫掠和奴隶贸易带来的财富使阿尔及尔成为地中海最富有的城市之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "西班牙的士兵",
+      "text_markdown": "西班牙的士兵"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米格尔·德·塞万提斯于1547年9月29日出生在阿尔卡拉·德·埃纳雷斯，一座靠近马德里的大学城。",
+      "text_markdown": "米格尔·德·塞万提斯于1547年9月29日出生在阿尔卡拉·德·埃纳雷斯，一座靠近马德里的大学城。",
+      "tts": {
+        "text": "米格尔·德·塞万提斯于一千五百四十七年九月二十九日出生在阿尔卡拉·德·埃纳雷斯，一座靠近马德里的大学城。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的父亲罗德里戈·德·塞万提斯是一名艰难谋生的理发师兼外科医生。",
+      "text_markdown": "他的父亲罗德里戈·德·塞万提斯是一名艰难谋生的理发师兼外科医生。",
+      "tts": {
+        "text": "他的父亲罗德里戈·德·塞万提斯是一名艰难谋生的理发师兼外科医生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米格尔童年时期，全家频繁搬迁，从一个城镇到另一个城镇寻找工作。",
+      "text_markdown": "米格尔童年时期，全家频繁搬迁，从一个城镇到另一个城镇寻找工作。",
+      "tts": {
+        "text": "米格尔童年时期，全家频繁搬迁，从一个城镇到另一个城镇寻找工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们先后住过巴利亚多利德、科尔多瓦、塞维利亚和马德里。",
+      "text_markdown": "他们先后住过巴利亚多利德、科尔多瓦、塞维利亚和马德里。",
+      "tts": {
+        "text": "他们先后住过巴利亚多利德、科尔多瓦、塞维利亚和马德里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "贫穷是始终相伴的伙伴。",
+      "text_markdown": "贫穷是始终相伴的伙伴。",
+      "tts": {
+        "text": "贫穷是始终相伴的伙伴。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管家境有限，塞万提斯还是接受了不错的教育。",
+      "text_markdown": "尽管家境有限，塞万提斯还是接受了不错的教育。",
+      "tts": {
+        "text": "尽管家境有限，塞万提斯还是接受了不错的教育。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在马德里的一位校长门下学习，培养了对文学和诗歌的热情。",
+      "text_markdown": "他在马德里的一位校长门下学习，培养了对文学和诗歌的热情。",
+      "tts": {
+        "text": "他在马德里的一位校长门下学习，培养了对文学和诗歌的热情。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十六世纪中叶的西班牙正经历着它的黄金时代。",
+      "text_markdown": "十六世纪中叶的西班牙正经历着它的黄金时代。",
+      "tts": {
+        "text": "十六世纪中叶的西班牙正经历着它的黄金时代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "艺术、文学和宗教热情与军事扩张一同蓬勃发展。",
+      "text_markdown": "艺术、文学和宗教热情与军事扩张一同蓬勃发展。",
+      "tts": {
+        "text": "艺术、文学和宗教热情与军事扩张一同蓬勃发展。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那是一个充满雄心壮志、却也充满更大不平等的时代。",
+      "text_markdown": "那是一个充满雄心壮志、却也充满更大不平等的时代。",
+      "tts": {
+        "text": "那是一个充满雄心壮志、却也充满更大不平等的时代。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1569年，塞万提斯离开西班牙前往意大利。",
+      "text_markdown": "1569年，塞万提斯离开西班牙前往意大利。",
+      "tts": {
+        "text": "一千五百六十九年，塞万提斯离开西班牙前往意大利。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他离开的原因众说纷纭。",
+      "text_markdown": "他离开的原因众说纷纭。",
+      "tts": {
+        "text": "他离开的原因众说纷纭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他可能是在逃避法律纠纷，也可能只是在追寻冒险。",
+      "text_markdown": "他可能是在逃避法律纠纷，也可能只是在追寻冒险。",
+      "tts": {
+        "text": "他可能是在逃避法律纠纷，也可能只是在追寻冒险。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在意大利，塞万提斯爱上了意大利的艺术和文学。",
+      "text_markdown": "在意大利，塞万提斯爱上了意大利的艺术和文学。",
+      "tts": {
+        "text": "在意大利，塞万提斯爱上了意大利的艺术和文学。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他阅读了伟大的意大利诗人的作品，吸收了文艺复兴的文化。",
+      "text_markdown": "他阅读了伟大的意大利诗人的作品，吸收了文艺复兴的文化。",
+      "tts": {
+        "text": "他阅读了伟大的意大利诗人的作品，吸收了文艺复兴的文化。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些影响将塑造他余生的写作。",
+      "text_markdown": "这些影响将塑造他余生的写作。",
+      "tts": {
+        "text": "这些影响将塑造他余生的写作。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他还作为士兵加入了西班牙军队。",
+      "text_markdown": "他还作为士兵加入了西班牙军队。",
+      "tts": {
+        "text": "他还作为士兵加入了西班牙军队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他加入了驻扎在那不勒斯的一个团，那不勒斯当时是西班牙帝国的一部分。",
+      "text_markdown": "他加入了驻扎在那不勒斯的一个团，那不勒斯当时是西班牙帝国的一部分。",
+      "tts": {
+        "text": "他加入了驻扎在那不勒斯的一个团，那不勒斯当时是西班牙帝国的一部分。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1571年，奥斯曼帝国向地中海东部派出了一支庞大的舰队。",
+      "text_markdown": "1571年，奥斯曼帝国向地中海东部派出了一支庞大的舰队。",
+      "tts": {
+        "text": "一千五百七十一年，奥斯曼帝国向地中海东部派出了一支庞大的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥斯曼人最近从威尼斯手中征服了塞浦路斯岛。",
+      "text_markdown": "奥斯曼人最近从威尼斯手中征服了塞浦路斯岛。",
+      "tts": {
+        "text": "奥斯曼人最近从威尼斯手中征服了塞浦路斯岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "基督教欧洲大为震惊。",
+      "text_markdown": "基督教欧洲大为震惊。",
+      "tts": {
+        "text": "基督教欧洲大为震惊。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "教皇庇护五世组建了一个基督教国家神圣联盟来对抗奥斯曼威胁。",
+      "text_markdown": "教皇庇护五世组建了一个基督教国家神圣联盟来对抗奥斯曼威胁。",
+      "tts": {
+        "text": "教皇庇护五世组建了一个基督教国家神圣联盟来对抗奥斯曼威胁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙、威尼斯和教皇国贡献了船只和士兵。",
+      "text_markdown": "西班牙、威尼斯和教皇国贡献了船只和士兵。",
+      "tts": {
+        "text": "西班牙、威尼斯和教皇国贡献了船只和士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "联合舰队在西西里岛的墨西拿港集结。",
+      "text_markdown": "联合舰队在西西里岛的墨西拿港集结。",
+      "tts": {
+        "text": "联合舰队在西西里岛的墨西拿港集结。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米格尔·德·塞万提斯在一艘西班牙军舰上。",
+      "text_markdown": "米格尔·德·塞万提斯在一艘西班牙军舰上。",
+      "tts": {
+        "text": "米格尔·德·塞万提斯在一艘西班牙军舰上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他当时24岁，是一名没有军衔或荣誉的普通士兵。",
+      "text_markdown": "他当时24岁，是一名没有军衔或荣誉的普通士兵。",
+      "tts": {
+        "text": "他当时二十四岁，是一名没有军衔或荣誉的普通士兵。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1571年10月7日，两支舰队在希腊海岸外帕特拉斯湾的勒班陀海战中交锋。",
+      "text_markdown": "1571年10月7日，两支舰队在希腊海岸外帕特拉斯湾的勒班陀海战中交锋。",
+      "tts": {
+        "text": "一千五百七十一年十月七日，两支舰队在希腊海岸外帕特拉斯湾的勒班陀海战中交锋。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是历史上最大的海战之一。",
+      "text_markdown": "这是历史上最大的海战之一。",
+      "tts": {
+        "text": "这是历史上最大的海战之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "超过400艘军舰在海湾的狭窄水域中激战。",
+      "text_markdown": "超过400艘军舰在海湾的狭窄水域中激战。",
+      "tts": {
+        "text": "超过四百艘军舰在海湾的狭窄水域中激战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "战斗极为残酷，是船对船、人对人的搏杀。",
+      "text_markdown": "战斗极为残酷，是船对船、人对人的搏杀。",
+      "tts": {
+        "text": "战斗极为残酷，是船对船、人对人的搏杀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数万人在一天的战斗中丧生。",
+      "text_markdown": "数万人在一天的战斗中丧生。",
+      "tts": {
+        "text": "数万人在一天的战斗中丧生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战斗当天，塞万提斯正发着高烧。",
+      "text_markdown": "战斗当天，塞万提斯正发着高烧。",
+      "tts": {
+        "text": "战斗当天，塞万提斯正发着高烧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的军官们提出让他留在甲板下面。",
+      "text_markdown": "他的军官们提出让他留在甲板下面。",
+      "tts": {
+        "text": "他的军官们提出让他留在甲板下面。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他拒绝了，说他宁愿战斗而死，也不愿在战友流血时躲藏。",
+      "text_markdown": "他拒绝了，说他宁愿战斗而死，也不愿在战友流血时躲藏。",
+      "tts": {
+        "text": "他拒绝了，说他宁愿战斗而死，也不愿在战友流血时躲藏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在战斗中，塞万提斯受了三处伤。",
+      "text_markdown": "在战斗中，塞万提斯受了三处伤。",
+      "tts": {
+        "text": "在战斗中，塞万提斯受了三处伤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其中两处在胸部。",
+      "text_markdown": "其中两处在胸部。",
+      "tts": {
+        "text": "其中两处在胸部。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "第三处打碎了他的左手，使其永久失去功能。",
+      "text_markdown": "第三处打碎了他的左手，使其永久失去功能。",
+      "tts": {
+        "text": "第三处打碎了他的左手，使其永久失去功能。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "基督教舰队在勒班陀取得了决定性胜利。",
+      "text_markdown": "基督教舰队在勒班陀取得了决定性胜利。",
+      "tts": {
+        "text": "基督教舰队在勒班陀取得了决定性胜利。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奥斯曼海军几乎被彻底摧毁。",
+      "text_markdown": "奥斯曼海军几乎被彻底摧毁。",
+      "tts": {
+        "text": "奥斯曼海军几乎被彻底摧毁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "整个基督教欧洲将这场胜利视为奇迹来庆祝。",
+      "text_markdown": "整个基督教欧洲将这场胜利视为奇迹来庆祝。",
+      "tts": {
+        "text": "整个基督教欧洲将这场胜利视为奇迹来庆祝。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯在墨西拿的一家医院里花了数月时间养伤。",
+      "text_markdown": "塞万提斯在墨西拿的一家医院里花了数月时间养伤。",
+      "tts": {
+        "text": "塞万提斯在墨西拿的一家医院里花了数月时间养伤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他将终生带着这些伤疤。",
+      "text_markdown": "他将终生带着这些伤疤。",
+      "tts": {
+        "text": "他将终生带着这些伤疤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "后来他把残废的手称为荣誉的徽章，证明他曾在那个时代最伟大的战役中战斗过。",
+      "text_markdown": "后来他把残废的手称为荣誉的徽章，证明他曾在那个时代最伟大的战役中战斗过。",
+      "tts": {
+        "text": "后来他把残废的手称为荣誉的徽章，证明他曾在那个时代最伟大的战役中战斗过。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "康复后，塞万提斯继续在地中海服役。",
+      "text_markdown": "康复后，塞万提斯继续在地中海服役。",
+      "tts": {
+        "text": "康复后，塞万提斯继续在地中海服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他驻扎在意大利各个驻军地，并参加了更多的军事行动。",
+      "text_markdown": "他驻扎在意大利各个驻军地，并参加了更多的军事行动。",
+      "tts": {
+        "text": "他驻扎在意大利各个驻军地，并参加了更多的军事行动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到1575年，塞万提斯准备回家了。",
+      "text_markdown": "到1575年，塞万提斯准备回家了。",
+      "tts": {
+        "text": "到一千五百七十五年，塞万提斯准备回家了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他为西班牙服务了六年，并携带着指挥官们的推荐信。",
+      "text_markdown": "他为西班牙服务了六年，并携带着指挥官们的推荐信。",
+      "tts": {
+        "text": "他为西班牙服务了六年，并携带着指挥官们的推荐信。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他希望这些信能帮助他在西班牙获得委任或政府职位。",
+      "text_markdown": "他希望这些信能帮助他在西班牙获得委任或政府职位。",
+      "tts": {
+        "text": "他希望这些信能帮助他在西班牙获得委任或政府职位。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575年9月，塞万提斯和弟弟罗德里戈在那不勒斯登上了太阳号军舰。",
+      "text_markdown": "1575年9月，塞万提斯和弟弟罗德里戈在那不勒斯登上了太阳号军舰。",
+      "tts": {
+        "text": "一千五百七十五年九月，塞万提斯和弟弟罗德里戈在那不勒斯登上了太阳号军舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们正航行回西班牙。",
+      "text_markdown": "他们正航行回西班牙。",
+      "tts": {
+        "text": "他们正航行回西班牙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "西班牙的士兵",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们从未抵达。",
+      "text_markdown": "他们从未抵达。",
+      "tts": {
+        "text": "他们从未抵达。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "被海盗俘获",
+      "text_markdown": "被海盗俘获"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1575年9月26日，太阳号在加泰罗尼亚海岸外航行时遭到攻击。",
+      "text_markdown": "1575年9月26日，太阳号在加泰罗尼亚海岸外航行时遭到攻击。",
+      "tts": {
+        "text": "一千五百七十五年九月二十六日，太阳号在加泰罗尼亚海岸外航行时遭到攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一队来自阿尔及尔的巴巴里海盗截获了这艘船。",
+      "text_markdown": "一队来自阿尔及尔的巴巴里海盗截获了这艘船。",
+      "tts": {
+        "text": "一队来自阿尔及尔的巴巴里海盗截获了这艘船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗舰队由一个名叫阿尔瑙特·马米的船长率领，他是一个改信伊斯兰教的阿尔巴尼亚叛教者。",
+      "text_markdown": "海盗舰队由一个名叫阿尔瑙特·马米的船长率领，他是一个改信伊斯兰教的阿尔巴尼亚叛教者。",
+      "tts": {
+        "text": "海盗舰队由一个名叫阿尔瑙特·马米的船长率领，他是一个改信伊斯兰教的阿尔巴尼亚叛教者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "叛教者在海盗中很常见。",
+      "text_markdown": "叛教者在海盗中很常见。",
+      "tts": {
+        "text": "叛教者在海盗中很常见。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多人是欧洲出生的男子，皈依了伊斯兰教，如今为巴巴里诸国效力。",
+      "text_markdown": "许多人是欧洲出生的男子，皈依了伊斯兰教，如今为巴巴里诸国效力。",
+      "tts": {
+        "text": "许多人是欧洲出生的男子，皈依了伊斯兰教，如今为巴巴里诸国效力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太阳号是一艘小型军舰，武装薄弱，载的是旅客而非士兵。",
+      "text_markdown": "太阳号是一艘小型军舰，武装薄弱，载的是旅客而非士兵。",
+      "tts": {
+        "text": "太阳号是一艘小型军舰，武装薄弱，载的是旅客而非士兵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她根本不是海盗战船的对手。",
+      "text_markdown": "她根本不是海盗战船的对手。",
+      "tts": {
+        "text": "她根本不是海盗战船的对手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "经过短暂的抵抗，太阳号被俘获。",
+      "text_markdown": "经过短暂的抵抗，太阳号被俘获。",
+      "tts": {
+        "text": "经过短暂的抵抗，太阳号被俘获。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯和弟弟罗德里戈都在俘虏之中。",
+      "text_markdown": "塞万提斯和弟弟罗德里戈都在俘虏之中。",
+      "tts": {
+        "text": "塞万提斯和弟弟罗德里戈都在俘虏之中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗搜查囚犯身上的贵重物品和文件。",
+      "text_markdown": "海盗搜查囚犯身上的贵重物品和文件。",
+      "tts": {
+        "text": "海盗搜查囚犯身上的贵重物品和文件。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当他们发现塞万提斯携带的西班牙将军推荐信时，便认定他是个重要人物。",
+      "text_markdown": "当他们发现塞万提斯携带的西班牙将军推荐信时，便认定他是个重要人物。",
+      "tts": {
+        "text": "当他们发现塞万提斯携带的西班牙将军推荐信时，便认定他是个重要人物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们将他的赎金定为500金埃斯库多，这是一笔巨额。",
+      "text_markdown": "他们将他的赎金定为500金埃斯库多，这是一笔巨额。",
+      "tts": {
+        "text": "他们将他的赎金定为五百金埃斯库多，这是一笔巨额。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "实际上，塞万提斯来自一个根本负担不起这笔赎金的普通家庭。",
+      "text_markdown": "实际上，塞万提斯来自一个根本负担不起这笔赎金的普通家庭。",
+      "tts": {
+        "text": "实际上，塞万提斯来自一个根本负担不起这笔赎金的普通家庭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那些本该推进他事业的信件，反而使他的囚禁更加难以结束。",
+      "text_markdown": "那些本该推进他事业的信件，反而使他的囚禁更加难以结束。",
+      "tts": {
+        "text": "那些本该推进他事业的信件，反而使他的囚禁更加难以结束。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俘虏们被带到阿尔及尔，北非最大、最强盛的海盗城市。",
+      "text_markdown": "俘虏们被带到阿尔及尔，北非最大、最强盛的海盗城市。",
+      "tts": {
+        "text": "俘虏们被带到阿尔及尔，北非最大、最强盛的海盗城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿尔及尔是一座拥有超过100,000人口的城市，一个繁忙的港口，遍布清真寺、市场和奴隶围栏。",
+      "text_markdown": "阿尔及尔是一座拥有超过100,000人口的城市，一个繁忙的港口，遍布清真寺、市场和奴隶围栏。",
+      "tts": {
+        "text": "阿尔及尔是一座拥有超过十万人口的城市，一个繁忙的港口，遍布清真寺、市场和奴隶围栏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据估计，在这一时期的任何时候，都有约25,000名基督教奴隶生活在阿尔及尔。",
+      "text_markdown": "据估计，在这一时期的任何时候，都有约25,000名基督教奴隶生活在阿尔及尔。",
+      "tts": {
+        "text": "据估计，在这一时期的任何时候，都有约两万五千名基督教奴隶生活在阿尔及尔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们来自西班牙、意大利、法国、葡萄牙，远至冰岛和爱尔兰。",
+      "text_markdown": "他们来自西班牙、意大利、法国、葡萄牙，远至冰岛和爱尔兰。",
+      "tts": {
+        "text": "他们来自西班牙、意大利、法国、葡萄牙，远至冰岛和爱尔兰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯被分配给一个名叫达利·马米的主人，一个希腊叛教者，是海盗船的船长。",
+      "text_markdown": "塞万提斯被分配给一个名叫达利·马米的主人，一个希腊叛教者，是海盗船的船长。",
+      "tts": {
+        "text": "塞万提斯被分配给一个名叫达利·马米的主人，一个希腊叛教者，是海盗船的船长。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "达利·马米以残酷对待俘虏而闻名。",
+      "text_markdown": "达利·马米以残酷对待俘虏而闻名。",
+      "tts": {
+        "text": "达利·马米以残酷对待俘虏而闻名。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔及尔的囚禁条件差异很大。",
+      "text_markdown": "阿尔及尔的囚禁条件差异很大。",
+      "tts": {
+        "text": "阿尔及尔的囚禁条件差异很大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "等待赎回的富有俘虏可能被关在相对舒适的环境中。",
+      "text_markdown": "等待赎回的富有俘虏可能被关在相对舒适的环境中。",
+      "tts": {
+        "text": "等待赎回的富有俘虏可能被关在相对舒适的环境中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有赎回希望的贫穷俘虏被迫从事繁重劳动。",
+      "text_markdown": "没有赎回希望的贫穷俘虏被迫从事繁重劳动。",
+      "tts": {
+        "text": "没有赎回希望的贫穷俘虏被迫从事繁重劳动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些奴隶在采石场或建筑工地劳作。",
+      "text_markdown": "一些奴隶在采石场或建筑工地劳作。",
+      "tts": {
+        "text": "一些奴隶在采石场或建筑工地劳作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "另一些人被锁链拴在军舰的桨上，划到倒下为止。",
+      "text_markdown": "另一些人被锁链拴在军舰的桨上，划到倒下为止。",
+      "tts": {
+        "text": "另一些人被锁链拴在军舰的桨上，划到倒下为止。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最悲惨的命运是巴尼奥——一座将奴隶关在拥挤肮脏牢房中的监狱。",
+      "text_markdown": "最悲惨的命运是巴尼奥——一座将奴隶关在拥挤肮脏牢房中的监狱。",
+      "tts": {
+        "text": "最悲惨的命运是巴尼奥，一座将奴隶关在拥挤肮脏牢房中的监狱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯在阿尔及尔的巴尼奥中度过了一段时间。",
+      "text_markdown": "塞万提斯在阿尔及尔的巴尼奥中度过了一段时间。",
+      "tts": {
+        "text": "塞万提斯在阿尔及尔的巴尼奥中度过了一段时间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他目睹了那个时代很少有欧洲人能见到的大规模苦难。",
+      "text_markdown": "他目睹了那个时代很少有欧洲人能见到的大规模苦难。",
+      "tts": {
+        "text": "他目睹了那个时代很少有欧洲人能见到的大规模苦难。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这段经历在他心中留下了深刻的烙印。",
+      "text_markdown": "这段经历在他心中留下了深刻的烙印。",
+      "tts": {
+        "text": "这段经历在他心中留下了深刻的烙印。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几乎立刻，塞万提斯就开始策划逃跑。",
+      "text_markdown": "几乎立刻，塞万提斯就开始策划逃跑。",
+      "tts": {
+        "text": "几乎立刻，塞万提斯就开始策划逃跑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他不是那种能被动接受囚禁的人。",
+      "text_markdown": "他不是那种能被动接受囚禁的人。",
+      "tts": {
+        "text": "他不是那种能被动接受囚禁的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在接下来的五年里，他将四次试图逃跑。",
+      "text_markdown": "在接下来的五年里，他将四次试图逃跑。",
+      "tts": {
+        "text": "在接下来的五年里，他将四次试图逃跑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的第一次逃跑尝试发生在1576年初。",
+      "text_markdown": "他的第一次逃跑尝试发生在1576年初。",
+      "tts": {
+        "text": "他的第一次逃跑尝试发生在一千五百七十六年初。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "塞万提斯雇了一个摩尔向导，带领他和其他几名俘虏走陆路前往西班牙在奥兰的要塞。",
+      "text_markdown": "塞万提斯雇了一个摩尔向导，带领他和其他几名俘虏走陆路前往西班牙在奥兰的要塞。",
+      "tts": {
+        "text": "塞万提斯雇了一个摩尔向导，带领他和其他几名俘虏走陆路前往西班牙在奥兰的要塞。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奥兰是北非海岸上的一个西班牙前哨站，距阿尔及尔有数天路程。",
+      "text_markdown": "奥兰是北非海岸上的一个西班牙前哨站，距阿尔及尔有数天路程。",
+      "tts": {
+        "text": "奥兰是北非海岸上的一个西班牙前哨站，距阿尔及尔有数天路程。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "向导在第一天之后就抛弃了他们。",
+      "text_markdown": "向导在第一天之后就抛弃了他们。",
+      "tts": {
+        "text": "向导在第一天之后就抛弃了他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有向导，逃亡者在陌生而充满敌意的领土上迷了路。",
+      "text_markdown": "没有向导，逃亡者在陌生而充满敌意的领土上迷了路。",
+      "tts": {
+        "text": "没有向导，逃亡者在陌生而充满敌意的领土上迷了路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们被迫返回阿尔及尔，塞万提斯被罚戴更重的锁链。",
+      "text_markdown": "他们被迫返回阿尔及尔，塞万提斯被罚戴更重的锁链。",
+      "tts": {
+        "text": "他们被迫返回阿尔及尔，塞万提斯被罚戴更重的锁链。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "尽管失败了，塞万提斯并没有被击垮。",
+      "text_markdown": "尽管失败了，塞万提斯并没有被击垮。",
+      "tts": {
+        "text": "尽管失败了，塞万提斯并没有被击垮。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他立刻开始策划下一次逃跑。",
+      "text_markdown": "他立刻开始策划下一次逃跑。",
+      "tts": {
+        "text": "他立刻开始策划下一次逃跑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "与此同时，他在西班牙的家人正拼命地筹集赎金。",
+      "text_markdown": "与此同时，他在西班牙的家人正拼命地筹集赎金。",
+      "tts": {
+        "text": "与此同时，他在西班牙的家人正拼命地筹集赎金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的母亲和姐妹们变卖了财产，向任何愿意借钱的人借款。",
+      "text_markdown": "他的母亲和姐妹们变卖了财产，向任何愿意借钱的人借款。",
+      "tts": {
+        "text": "他的母亲和姐妹们变卖了财产，向任何愿意借钱的人借款。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但500埃斯库多远远超出了他们的能力。",
+      "text_markdown": "但500埃斯库多远远超出了他们的能力。",
+      "tts": {
+        "text": "但五百埃斯库多远远超出了他们的能力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1577年，家人好不容易凑够了赎回塞万提斯弟弟罗德里戈的钱。",
+      "text_markdown": "1577年，家人好不容易凑够了赎回塞万提斯弟弟罗德里戈的钱。",
+      "tts": {
+        "text": "一千五百七十七年，家人好不容易凑够了赎回塞万提斯弟弟罗德里戈的钱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗德里戈获释，返回了西班牙。",
+      "text_markdown": "罗德里戈获释，返回了西班牙。",
+      "tts": {
+        "text": "罗德里戈获释，返回了西班牙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "米格尔留在了阿尔及尔，仍在等待。",
+      "text_markdown": "米格尔留在了阿尔及尔，仍在等待。",
+      "tts": {
+        "text": "米格尔留在了阿尔及尔，仍在等待。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俘获塞万提斯的海盗是技术娴熟、组织有序的水手。",
+      "text_markdown": "俘获塞万提斯的海盗是技术娴熟、组织有序的水手。",
+      "tts": {
+        "text": "俘获塞万提斯的海盗是技术娴熟、组织有序的水手。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们操纵着配备帆和桨的快速军舰。",
+      "text_markdown": "他们操纵着配备帆和桨的快速军舰。",
+      "tts": {
+        "text": "他们操纵着配备帆和桨的快速军舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些船只能跑过大多数商船，追上那些试图逃跑的船。",
+      "text_markdown": "这些船只能跑过大多数商船，追上那些试图逃跑的船。",
+      "tts": {
+        "text": "这些船只能跑过大多数商船，追上那些试图逃跑的船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔及尔的奴隶市场是地中海世界最大的市场之一。",
+      "text_markdown": "阿尔及尔的奴隶市场是地中海世界最大的市场之一。",
+      "tts": {
+        "text": "阿尔及尔的奴隶市场是地中海世界最大的市场之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "俘虏被检查、估价，然后卖给出价最高的人。",
+      "text_markdown": "俘虏被检查、估价，然后卖给出价最高的人。",
+      "tts": {
+        "text": "俘虏被检查、估价，然后卖给出价最高的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "被海盗俘获",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "年轻人、有技能的人和被认为富有的人价格最高。",
+      "text_markdown": "年轻人、有技能的人和被认为富有的人价格最高。",
+      "tts": {
+        "text": "年轻人、有技能的人和被认为富有的人价格最高。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "阿尔及尔的五年",
+      "text_markdown": "阿尔及尔的五年"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯的第二次逃跑尝试比第一次更有野心。",
+      "text_markdown": "塞万提斯的第二次逃跑尝试比第一次更有野心。",
+      "tts": {
+        "text": "塞万提斯的第二次逃跑尝试比第一次更有野心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1577年，他组织了大约十五名俘虏藏在阿尔及尔城外的一个洞穴里。",
+      "text_markdown": "1577年，他组织了大约十五名俘虏藏在阿尔及尔城外的一个洞穴里。",
+      "tts": {
+        "text": "一千五百七十七年，他组织了大约十五名俘虏藏在阿尔及尔城外的一个洞穴里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "计划是等一艘西班牙船从海岸接他们。",
+      "text_markdown": "计划是等一艘西班牙船从海岸接他们。",
+      "tts": {
+        "text": "计划是等一艘西班牙船从海岸接他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "逃亡者在洞穴中躲藏了数月，由一名充当中间人的同伴俘虏提供食物。",
+      "text_markdown": "逃亡者在洞穴中躲藏了数月，由一名充当中间人的同伴俘虏提供食物。",
+      "tts": {
+        "text": "逃亡者在洞穴中躲藏了数月，由一名充当中间人的同伴俘虏提供食物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "条件狭窄而恐怖。",
+      "text_markdown": "条件狭窄而恐怖。",
+      "tts": {
+        "text": "条件狭窄而恐怖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "被发现意味着死亡或更糟。",
+      "text_markdown": "被发现意味着死亡或更糟。",
+      "tts": {
+        "text": "被发现意味着死亡或更糟。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一艘西班牙救援船被派出，但在到达洞穴之前就被海盗发现了。",
+      "text_markdown": "一艘西班牙救援船被派出，但在到达洞穴之前就被海盗发现了。",
+      "tts": {
+        "text": "一艘西班牙救援船被派出，但在到达洞穴之前就被海盗发现了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "船逃走了，逃亡者被困住了。",
+      "text_markdown": "船逃走了，逃亡者被困住了。",
+      "tts": {
+        "text": "船逃走了，逃亡者被困住了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后那个中间人出卖了他们。",
+      "text_markdown": "然后那个中间人出卖了他们。",
+      "tts": {
+        "text": "然后那个中间人出卖了他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他向阿尔及尔的统治者哈桑帕夏透露了洞穴的位置。",
+      "text_markdown": "他向阿尔及尔的统治者哈桑帕夏透露了洞穴的位置。",
+      "tts": {
+        "text": "他向阿尔及尔的统治者哈桑帕夏透露了洞穴的位置。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "士兵包围了洞穴，抓获了里面所有人。",
+      "text_markdown": "士兵包围了洞穴，抓获了里面所有人。",
+      "tts": {
+        "text": "士兵包围了洞穴，抓获了里面所有人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯站出来，承担了逃跑阴谋的全部责任。",
+      "text_markdown": "塞万提斯站出来，承担了逃跑阴谋的全部责任。",
+      "tts": {
+        "text": "塞万提斯站出来，承担了逃跑阴谋的全部责任。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他告诉哈桑帕夏，一切都是他一个人策划和组织的。",
+      "text_markdown": "他告诉哈桑帕夏，一切都是他一个人策划和组织的。",
+      "tts": {
+        "text": "他告诉哈桑帕夏，一切都是他一个人策划和组织的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他这样做是为了保护同伴俘虏免受惩罚。",
+      "text_markdown": "他这样做是为了保护同伴俘虏免受惩罚。",
+      "tts": {
+        "text": "他这样做是为了保护同伴俘虏免受惩罚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "据说哈桑帕夏对塞万提斯的勇气印象深刻。",
+      "text_markdown": "据说哈桑帕夏对塞万提斯的勇气印象深刻。",
+      "tts": {
+        "text": "据说哈桑帕夏对塞万提斯的勇气印象深刻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帕夏没有处死他，而是从达利·马米手中买下了塞万提斯，将他作为私人奴隶。",
+      "text_markdown": "帕夏没有处死他，而是从达利·马米手中买下了塞万提斯，将他作为私人奴隶。",
+      "tts": {
+        "text": "帕夏没有处死他，而是从达利·马米手中买下了塞万提斯，将他作为私人奴隶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "高额的赎金价值可能也使帕夏手下留情。",
+      "text_markdown": "高额的赎金价值可能也使帕夏手下留情。",
+      "tts": {
+        "text": "高额的赎金价值可能也使帕夏手下留情。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "作为帕夏的奴隶仍然是囚禁，但条件稍好一些。",
+      "text_markdown": "作为帕夏的奴隶仍然是囚禁，但条件稍好一些。",
+      "tts": {
+        "text": "作为帕夏的奴隶仍然是囚禁，但条件稍好一些。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "塞万提斯被关在帕夏的府邸中，而不是巴尼奥监狱。",
+      "text_markdown": "塞万提斯被关在帕夏的府邸中，而不是巴尼奥监狱。",
+      "tts": {
+        "text": "塞万提斯被关在帕夏的府邸中，而不是巴尼奥监狱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但塞万提斯没有放弃对自由的希望。",
+      "text_markdown": "但塞万提斯没有放弃对自由的希望。",
+      "tts": {
+        "text": "但塞万提斯没有放弃对自由的希望。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1578年，他组织了第三次逃跑尝试。",
+      "text_markdown": "1578年，他组织了第三次逃跑尝试。",
+      "tts": {
+        "text": "一千五百七十八年，他组织了第三次逃跑尝试。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他派信使去奥兰的西班牙驻军求助。",
+      "text_markdown": "他派信使去奥兰的西班牙驻军求助。",
+      "tts": {
+        "text": "他派信使去奥兰的西班牙驻军求助。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "信使在到达奥兰之前被摩尔巡逻队抓获。",
+      "text_markdown": "信使在到达奥兰之前被摩尔巡逻队抓获。",
+      "tts": {
+        "text": "信使在到达奥兰之前被摩尔巡逻队抓获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在审讯中，他暴露了塞万提斯在阴谋中的角色。",
+      "text_markdown": "在审讯中，他暴露了塞万提斯在阴谋中的角色。",
+      "tts": {
+        "text": "在审讯中，他暴露了塞万提斯在阴谋中的角色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "塞万提斯再次受到惩罚，但再次没有被处死。",
+      "text_markdown": "塞万提斯再次受到惩罚，但再次没有被处死。",
+      "tts": {
+        "text": "塞万提斯再次受到惩罚，但再次没有被处死。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的第四次也是最后一次逃跑尝试发生在1579年。",
+      "text_markdown": "他的第四次也是最后一次逃跑尝试发生在1579年。",
+      "tts": {
+        "text": "他的第四次也是最后一次逃跑尝试发生在一千五百七十九年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "塞万提斯秘密安排一艘船来到阿尔及尔海岸，接走六十名俘虏。",
+      "text_markdown": "塞万提斯秘密安排一艘船来到阿尔及尔海岸，接走六十名俘虏。",
+      "tts": {
+        "text": "塞万提斯秘密安排一艘船来到阿尔及尔海岸，接走六十名俘虏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这是他所设计的最精密的逃跑计划。",
+      "text_markdown": "这是他所设计的最精密的逃跑计划。",
+      "tts": {
+        "text": "这是他所设计的最精密的逃跑计划。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "又一次，一个叛徒暴露了计划。",
+      "text_markdown": "又一次，一个叛徒暴露了计划。",
+      "tts": {
+        "text": "又一次，一个叛徒暴露了计划。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个名叫胡安·布兰科·德·帕斯的前多明我会修士向当局告发了塞万提斯。",
+      "text_markdown": "一个名叫胡安·布兰科·德·帕斯的前多明我会修士向当局告发了塞万提斯。",
+      "tts": {
+        "text": "一个名叫胡安·布兰科·德·帕斯的前多明我会修士向当局告发了塞万提斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些历史学家认为布兰科·德·帕斯出于嫉妒而这样做。",
+      "text_markdown": "一些历史学家认为布兰科·德·帕斯出于嫉妒而这样做。",
+      "tts": {
+        "text": "一些历史学家认为布兰科·德·帕斯出于嫉妒而这样做。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯被戴着锁链带到哈桑帕夏面前。",
+      "text_markdown": "塞万提斯被戴着锁链带到哈桑帕夏面前。",
+      "tts": {
+        "text": "塞万提斯被戴着锁链带到哈桑帕夏面前。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他再次拒绝说出同谋者的名字。",
+      "text_markdown": "他再次拒绝说出同谋者的名字。",
+      "tts": {
+        "text": "他再次拒绝说出同谋者的名字。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他再次声称自己独自承担全部责任。",
+      "text_markdown": "他再次声称自己独自承担全部责任。",
+      "tts": {
+        "text": "他再次声称自己独自承担全部责任。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "帕夏以处死威胁塞万提斯。",
+      "text_markdown": "帕夏以处死威胁塞万提斯。",
+      "tts": {
+        "text": "帕夏以处死威胁塞万提斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他下令施以笞杖刑——一种用棍棒击打脚底的酷刑。",
+      "text_markdown": "他下令施以笞杖刑——一种用棍棒击打脚底的酷刑。",
+      "tts": {
+        "text": "他下令施以笞杖刑，一种用棍棒击打脚底的酷刑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但他没有执行死刑判决。",
+      "text_markdown": "但他没有执行死刑判决。",
+      "tts": {
+        "text": "但他没有执行死刑判决。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "学者们长期以来一直在争论哈桑帕夏为何饶了塞万提斯。",
+      "text_markdown": "学者们长期以来一直在争论哈桑帕夏为何饶了塞万提斯。",
+      "tts": {
+        "text": "学者们长期以来一直在争论哈桑帕夏为何饶了塞万提斯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最可能的解释是经济原因。",
+      "text_markdown": "最可能的解释是经济原因。",
+      "tts": {
+        "text": "最可能的解释是经济原因。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "塞万提斯的赎金定为500埃斯库多，杀了他就意味着损失那笔钱。",
+      "text_markdown": "塞万提斯的赎金定为500埃斯库多，杀了他就意味着损失那笔钱。",
+      "tts": {
+        "text": "塞万提斯的赎金定为五百埃斯库多，杀了他就意味着损失那笔钱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "帕夏也有可能真心钦佩塞万提斯的勇气。",
+      "text_markdown": "帕夏也有可能真心钦佩塞万提斯的勇气。",
+      "tts": {
+        "text": "帕夏也有可能真心钦佩塞万提斯的勇气。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "四次逃跑尝试，每次面对的都是反抗而非屈服，这是非同寻常的。",
+      "text_markdown": "四次逃跑尝试，每次面对的都是反抗而非屈服，这是非同寻常的。",
+      "tts": {
+        "text": "四次逃跑尝试，每次面对的都是反抗而非屈服，这是非同寻常的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在阿尔及尔的那些年里，塞万提斯观察着周围的一切。",
+      "text_markdown": "在阿尔及尔的那些年里，塞万提斯观察着周围的一切。",
+      "tts": {
+        "text": "在阿尔及尔的那些年里，塞万提斯观察着周围的一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他看到不同宗教和文化的人们如何在这座城市中比邻而居。",
+      "text_markdown": "他看到不同宗教和文化的人们如何在这座城市中比邻而居。",
+      "tts": {
+        "text": "他看到不同宗教和文化的人们如何在这座城市中比邻而居。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他看到了残忍，但他也看到了意想不到的善良。",
+      "text_markdown": "他看到了残忍，但他也看到了意想不到的善良。",
+      "tts": {
+        "text": "他看到了残忍，但他也看到了意想不到的善良。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他遇到了来自欧洲各地的俘虏，每个人都有一段失去与忍耐的故事。",
+      "text_markdown": "他遇到了来自欧洲各地的俘虏，每个人都有一段失去与忍耐的故事。",
+      "tts": {
+        "text": "他遇到了来自欧洲各地的俘虏，每个人都有一段失去与忍耐的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他听到了逃跑、背叛、改宗和求生的故事。",
+      "text_markdown": "他听到了逃跑、背叛、改宗和求生的故事。",
+      "tts": {
+        "text": "他听到了逃跑、背叛、改宗和求生的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些故事将充实他余生的写作。",
+      "text_markdown": "这些故事将充实他余生的写作。",
+      "tts": {
+        "text": "这些故事将充实他余生的写作。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随着岁月流逝，塞万提斯被赎回的希望越来越渺茫。",
+      "text_markdown": "随着岁月流逝，塞万提斯被赎回的希望越来越渺茫。",
+      "tts": {
+        "text": "随着岁月流逝，塞万提斯被赎回的希望越来越渺茫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的家人已经在赎回罗德里戈时耗尽了资源。",
+      "text_markdown": "他的家人已经在赎回罗德里戈时耗尽了资源。",
+      "tts": {
+        "text": "他的家人已经在赎回罗德里戈时耗尽了资源。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "米格尔所需的500埃斯库多似乎遥不可及。",
+      "text_markdown": "米格尔所需的500埃斯库多似乎遥不可及。",
+      "tts": {
+        "text": "米格尔所需的五百埃斯库多似乎遥不可及。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯成为了阿尔及尔基督教俘虏中的领袖。",
+      "text_markdown": "塞万提斯成为了阿尔及尔基督教俘虏中的领袖。",
+      "tts": {
+        "text": "塞万提斯成为了阿尔及尔基督教俘虏中的领袖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的狱友们尊敬他的勇气和为他们冒险受罚的意愿。",
+      "text_markdown": "他的狱友们尊敬他的勇气和为他们冒险受罚的意愿。",
+      "tts": {
+        "text": "他的狱友们尊敬他的勇气和为他们冒险受罚的意愿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他组织抵抗、策划逃跑，在那些有充分理由绝望的人当中保持着士气。",
+      "text_markdown": "他组织抵抗、策划逃跑，在那些有充分理由绝望的人当中保持着士气。",
+      "tts": {
+        "text": "他组织抵抗、策划逃跑，在那些有充分理由绝望的人当中保持着士气。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些俘虏皈依了伊斯兰教以改善处境。",
+      "text_markdown": "一些俘虏皈依了伊斯兰教以改善处境。",
+      "tts": {
+        "text": "一些俘虏皈依了伊斯兰教以改善处境。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些叛教者被同为基督徒的人所鄙视，但得到了俘获者更好的对待。",
+      "text_markdown": "这些叛教者被同为基督徒的人所鄙视，但得到了俘获者更好的对待。",
+      "tts": {
+        "text": "这些叛教者被同为基督徒的人所鄙视，但得到了俘获者更好的对待。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "阿尔及尔的五年",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "塞万提斯理解那种诱惑，但他自己从未改宗。",
+      "text_markdown": "塞万提斯理解那种诱惑，但他自己从未改宗。",
+      "tts": {
+        "text": "塞万提斯理解那种诱惑，但他自己从未改宗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "赎金",
+      "text_markdown": "赎金"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1580年，三位一体会修士来到阿尔及尔执行赎回任务。",
+      "text_markdown": "1580年，三位一体会修士来到阿尔及尔执行赎回任务。",
+      "tts": {
+        "text": "一千五百八十年，三位一体会修士来到阿尔及尔执行赎回任务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "至圣三位一体修会几个世纪以来一直在执行这些任务。",
+      "text_markdown": "至圣三位一体修会几个世纪以来一直在执行这些任务。",
+      "tts": {
+        "text": "至圣三位一体修会几个世纪以来一直在执行这些任务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在西班牙各地募集捐款，用这些钱来释放基督教俘虏。",
+      "text_markdown": "他们在西班牙各地募集捐款，用这些钱来释放基督教俘虏。",
+      "tts": {
+        "text": "他们在西班牙各地募集捐款，用这些钱来释放基督教俘虏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赎回使团的负责人是胡安·希尔修士，一位三位一体会修士。",
+      "text_markdown": "赎回使团的负责人是胡安·希尔修士，一位三位一体会修士。",
+      "tts": {
+        "text": "赎回使团的负责人是胡安·希尔修士，一位三位一体会修士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他带了足够赎回几名俘虏的钱，但不够赎回所有人。",
+      "text_markdown": "他带了足够赎回几名俘虏的钱，但不够赎回所有人。",
+      "tts": {
+        "text": "他带了足够赎回几名俘虏的钱，但不够赎回所有人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯的母亲莱奥诺尔·德·科尔蒂纳斯多年来一直在恳求三位一体会。",
+      "text_markdown": "塞万提斯的母亲莱奥诺尔·德·科尔蒂纳斯多年来一直在恳求三位一体会。",
+      "tts": {
+        "text": "塞万提斯的母亲莱奥诺尔·德·科尔蒂纳斯多年来一直在恳求三位一体会。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她已经寄出了能筹到的每一枚硬币。",
+      "text_markdown": "她已经寄出了能筹到的每一枚硬币。",
+      "tts": {
+        "text": "她已经寄出了能筹到的每一枚硬币。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但总额仍然不够500埃斯库多。",
+      "text_markdown": "但总额仍然不够500埃斯库多。",
+      "tts": {
+        "text": "但总额仍然不够五百埃斯库多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "胡安·希尔修士亲自与哈桑帕夏谈判。",
+      "text_markdown": "胡安·希尔修士亲自与哈桑帕夏谈判。",
+      "tts": {
+        "text": "胡安·希尔修士亲自与哈桑帕夏谈判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "帕夏即将永久离开阿尔及尔并带走他的奴隶。",
+      "text_markdown": "帕夏即将永久离开阿尔及尔并带走他的奴隶。",
+      "tts": {
+        "text": "帕夏即将永久离开阿尔及尔并带走他的奴隶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "如果塞万提斯现在不被赎回，他可能永远无法获得自由。",
+      "text_markdown": "如果塞万提斯现在不被赎回，他可能永远无法获得自由。",
+      "tts": {
+        "text": "如果塞万提斯现在不被赎回，他可能永远无法获得自由。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "通过拼命谈判和当地基督教商人的额外资助，胡安·希尔修士凑齐了全部赎金。",
+      "text_markdown": "通过拼命谈判和当地基督教商人的额外资助，胡安·希尔修士凑齐了全部赎金。",
+      "tts": {
+        "text": "通过拼命谈判和当地基督教商人的额外资助，胡安·希尔修士凑齐了全部赎金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他向哈桑帕夏支付了500埃斯库多。",
+      "text_markdown": "他向哈桑帕夏支付了500埃斯库多。",
+      "tts": {
+        "text": "他向哈桑帕夏支付了五百埃斯库多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1580年9月19日，米格尔·德·塞万提斯获得了自由。",
+      "text_markdown": "1580年9月19日，米格尔·德·塞万提斯获得了自由。",
+      "tts": {
+        "text": "一千五百八十年九月十九日，米格尔·德·塞万提斯获得了自由。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在阿尔及尔整整做了五年俘虏。",
+      "text_markdown": "他在阿尔及尔整整做了五年俘虏。",
+      "tts": {
+        "text": "他在阿尔及尔整整做了五年俘虏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他当时33岁。",
+      "text_markdown": "他当时33岁。",
+      "tts": {
+        "text": "他当时三十三岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的左手因勒班陀之战永久残废。",
+      "text_markdown": "他的左手因勒班陀之战永久残废。",
+      "tts": {
+        "text": "他的左手因勒班陀之战永久残废。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的身体留下了五年囚禁和惩罚的伤疤。",
+      "text_markdown": "他的身体留下了五年囚禁和惩罚的伤疤。",
+      "tts": {
+        "text": "他的身体留下了五年囚禁和惩罚的伤疤。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "离开阿尔及尔之前，塞万提斯向同伴俘虏们收集了关于他在囚禁期间行为的宣誓证词。",
+      "text_markdown": "离开阿尔及尔之前，塞万提斯向同伴俘虏们收集了关于他在囚禁期间行为的宣誓证词。",
+      "tts": {
+        "text": "离开阿尔及尔之前，塞万提斯向同伴俘虏们收集了关于他在囚禁期间行为的宣誓证词。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些证人证实了他的四次逃跑尝试和他拒绝出卖同伴的事实。",
+      "text_markdown": "这些证人证实了他的四次逃跑尝试和他拒绝出卖同伴的事实。",
+      "tts": {
+        "text": "这些证人证实了他的四次逃跑尝试和他拒绝出卖同伴的事实。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这份被称为《阿尔及尔信息》的文件至今犹存。",
+      "text_markdown": "这份被称为《阿尔及尔信息》的文件至今犹存。",
+      "tts": {
+        "text": "这份被称为《阿尔及尔信息》的文件至今犹存。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯于1580年底回到西班牙。",
+      "text_markdown": "塞万提斯于1580年底回到西班牙。",
+      "tts": {
+        "text": "塞万提斯于一千五百八十年底回到西班牙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他身无分文、身有残疾、身心创伤。",
+      "text_markdown": "他身无分文、身有残疾、身心创伤。",
+      "tts": {
+        "text": "他身无分文、身有残疾、身心创伤。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他曾希望自己的军旅生涯和苦难能为他赢得一个政府职位。",
+      "text_markdown": "他曾希望自己的军旅生涯和苦难能为他赢得一个政府职位。",
+      "tts": {
+        "text": "他曾希望自己的军旅生涯和苦难能为他赢得一个政府职位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他申请了几个职位，但每次都被拒绝。",
+      "text_markdown": "他申请了几个职位，但每次都被拒绝。",
+      "tts": {
+        "text": "他申请了几个职位，但每次都被拒绝。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙的官僚体系没有为一个没有关系的残疾老兵留出位置。",
+      "text_markdown": "西班牙的官僚体系没有为一个没有关系的残疾老兵留出位置。",
+      "tts": {
+        "text": "西班牙的官僚体系没有为一个没有关系的残疾老兵留出位置。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯转向了写作。",
+      "text_markdown": "塞万提斯转向了写作。",
+      "tts": {
+        "text": "塞万提斯转向了写作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1585年，他出版了第一部小说《伽拉忒亚》，一部田园爱情小说。",
+      "text_markdown": "1585年，他出版了第一部小说《伽拉忒亚》，一部田园爱情小说。",
+      "tts": {
+        "text": "一千五百八十五年，他出版了第一部小说《伽拉忒亚》，一部田园爱情小说。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它获得了一定的关注，但几乎没有为他赚到钱。",
+      "text_markdown": "它获得了一定的关注，但几乎没有为他赚到钱。",
+      "tts": {
+        "text": "它获得了一定的关注，但几乎没有为他赚到钱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "接下来的二十年里，他一直在经济上挣扎。",
+      "text_markdown": "接下来的二十年里，他一直在经济上挣扎。",
+      "tts": {
+        "text": "接下来的二十年里，他一直在经济上挣扎。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他当过税吏和西班牙无敌舰队的采购代理。",
+      "text_markdown": "他当过税吏和西班牙无敌舰队的采购代理。",
+      "tts": {
+        "text": "他当过税吏和西班牙无敌舰队的采购代理。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他至少两次因账目上的财务违规而入狱。",
+      "text_markdown": "他至少两次因账目上的财务违规而入狱。",
+      "tts": {
+        "text": "他至少两次因账目上的财务违规而入狱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1605年，57岁的塞万提斯出版了《堂吉诃德》的第一部分。",
+      "text_markdown": "1605年，57岁的塞万提斯出版了《堂吉诃德》的第一部分。",
+      "tts": {
+        "text": "一千六百零五年，五十七岁的塞万提斯出版了《堂吉诃德》的第一部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这本书立刻引起了轰动。",
+      "text_markdown": "这本书立刻引起了轰动。",
+      "tts": {
+        "text": "这本书立刻引起了轰动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "《堂吉诃德》讲述了一个年迈的人因痴迷骑士小说而发疯，骑马出发去当游侠骑士的故事。",
+      "text_markdown": "《堂吉诃德》讲述了一个年迈的人因痴迷骑士小说而发疯，骑马出发去当游侠骑士的故事。",
+      "tts": {
+        "text": "《堂吉诃德》讲述了一个年迈的人因痴迷骑士小说而发疯，骑马出发去当游侠骑士的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它既有趣又悲伤，充满了深刻的人性。",
+      "text_markdown": "它既有趣又悲伤，充满了深刻的人性。",
+      "tts": {
+        "text": "它既有趣又悲伤，充满了深刻的人性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它常被称为第一部现代小说。",
+      "text_markdown": "它常被称为第一部现代小说。",
+      "tts": {
+        "text": "它常被称为第一部现代小说。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯于1615年出版了《堂吉诃德》的第二部分。",
+      "text_markdown": "塞万提斯于1615年出版了《堂吉诃德》的第二部分。",
+      "tts": {
+        "text": "塞万提斯于一千六百一十五年出版了《堂吉诃德》的第二部分。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他一直写作到生命的最后一刻。",
+      "text_markdown": "他一直写作到生命的最后一刻。",
+      "tts": {
+        "text": "他一直写作到生命的最后一刻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米格尔·德·塞万提斯于1616年4月22日在马德里去世。",
+      "text_markdown": "米格尔·德·塞万提斯于1616年4月22日在马德里去世。",
+      "tts": {
+        "text": "米格尔·德·塞万提斯于一千六百一十六年四月二十二日在马德里去世。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他当时68岁。",
+      "text_markdown": "他当时68岁。",
+      "tts": {
+        "text": "他当时六十八岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他在贫困中去世，从未获得他认为自己的服务应得的认可或回报。",
+      "text_markdown": "他在贫困中去世，从未获得他认为自己的服务应得的认可或回报。",
+      "tts": {
+        "text": "他在贫困中去世，从未获得他认为自己的服务应得的认可或回报。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "三位一体会在几个世纪里赎回了数千名俘虏。",
+      "text_markdown": "三位一体会在几个世纪里赎回了数千名俘虏。",
+      "tts": {
+        "text": "三位一体会在几个世纪里赎回了数千名俘虏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们前往北非的使命危险而昂贵。",
+      "text_markdown": "他们前往北非的使命危险而昂贵。",
+      "tts": {
+        "text": "他们前往北非的使命危险而昂贵。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "赎金",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "修士们携带大笔资金进入敌对领土，信赖着他们的信仰和赎回的惯例。",
+      "text_markdown": "修士们携带大笔资金进入敌对领土，信赖着他们的信仰和赎回的惯例。",
+      "tts": {
+        "text": "修士们携带大笔资金进入敌对领土，信赖着他们的信仰和赎回的惯例。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "俘虏的遗产",
+      "text_markdown": "俘虏的遗产"
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯在阿尔及尔的囚禁在他的写作中留下了不可磨灭的印记。",
+      "text_markdown": "塞万提斯在阿尔及尔的囚禁在他的写作中留下了不可磨灭的印记。",
+      "tts": {
+        "text": "塞万提斯在阿尔及尔的囚禁在他的写作中留下了不可磨灭的印记。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "监禁、囚禁和逃跑的场景贯穿他的所有作品。",
+      "text_markdown": "监禁、囚禁和逃跑的场景贯穿他的所有作品。",
+      "tts": {
+        "text": "监禁、囚禁和逃跑的场景贯穿他的所有作品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在《堂吉诃德》本身中，有一个被称为《俘虏的故事》的长篇插曲。",
+      "text_markdown": "在《堂吉诃德》本身中，有一个被称为《俘虏的故事》的长篇插曲。",
+      "tts": {
+        "text": "在《堂吉诃德》本身中，有一个被称为《俘虏的故事》的长篇插曲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它讲述了一个被巴巴里海盗俘获并在阿尔及尔为奴的西班牙士兵的故事。",
+      "text_markdown": "它讲述了一个被巴巴里海盗俘获并在阿尔及尔为奴的西班牙士兵的故事。",
+      "tts": {
+        "text": "它讲述了一个被巴巴里海盗俘获并在阿尔及尔为奴的西班牙士兵的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "与塞万提斯本人生活的相似之处不言而喻。",
+      "text_markdown": "与塞万提斯本人生活的相似之处不言而喻。",
+      "tts": {
+        "text": "与塞万提斯本人生活的相似之处不言而喻。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他关于阿尔及尔生活的戏剧《阿尔及尔的浴室》直接取材于他的经历。",
+      "text_markdown": "他关于阿尔及尔生活的戏剧《阿尔及尔的浴室》直接取材于他的经历。",
+      "tts": {
+        "text": "他关于阿尔及尔生活的戏剧《阿尔及尔的浴室》直接取材于他的经历。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它描绘了囚禁的残酷、对家乡的思念以及俘虏者与被俘者之间复杂的关系。",
+      "text_markdown": "它描绘了囚禁的残酷、对家乡的思念以及俘虏者与被俘者之间复杂的关系。",
+      "tts": {
+        "text": "它描绘了囚禁的残酷、对家乡的思念以及俘虏者与被俘者之间复杂的关系。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "学者们注意到，塞万提斯对穆斯林角色的描写比同时代大多数欧洲作家更为细致入微。",
+      "text_markdown": "学者们注意到，塞万提斯对穆斯林角色的描写比同时代大多数欧洲作家更为细致入微。",
+      "tts": {
+        "text": "学者们注意到，塞万提斯对穆斯林角色的描写比同时代大多数欧洲作家更为细致入微。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他在穆斯林中间生活了五年。",
+      "text_markdown": "他在穆斯林中间生活了五年。",
+      "tts": {
+        "text": "他在穆斯林中间生活了五年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p109",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将他们视为个体，而不仅仅是敌人。",
+      "text_markdown": "他将他们视为个体，而不仅仅是敌人。",
+      "tts": {
+        "text": "他将他们视为个体，而不仅仅是敌人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "《堂吉诃德》成为有史以来最有影响力的书籍之一。",
+      "text_markdown": "《堂吉诃德》成为有史以来最有影响力的书籍之一。",
+      "tts": {
+        "text": "《堂吉诃德》成为有史以来最有影响力的书籍之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它被翻译的语种比除《圣经》以外的任何书都多。",
+      "text_markdown": "它被翻译的语种比除《圣经》以外的任何书都多。",
+      "tts": {
+        "text": "它被翻译的语种比除《圣经》以外的任何书都多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这部小说关于理想主义、幻灭以及我们想象的世界与真实世界之间差距的主题，跨越了文化和世纪引起共鸣。",
+      "text_markdown": "这部小说关于理想主义、幻灭以及我们想象的世界与真实世界之间差距的主题，跨越了文化和世纪引起共鸣。",
+      "tts": {
+        "text": "这部小说关于理想主义、幻灭以及我们想象的世界与真实世界之间差距的主题，跨越了文化和世纪引起共鸣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些主题中的许多都是由塞万提斯自己的痛苦经历所塑造的。",
+      "text_markdown": "这些主题中的许多都是由塞万提斯自己的痛苦经历所塑造的。",
+      "tts": {
+        "text": "这些主题中的许多都是由塞万提斯自己的痛苦经历所塑造的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塞万提斯知道英勇战斗却被遗忘意味着什么。",
+      "text_markdown": "塞万提斯知道英勇战斗却被遗忘意味着什么。",
+      "tts": {
+        "text": "塞万提斯知道英勇战斗却被遗忘意味着什么。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他知道受苦却得不到回报意味着什么。",
+      "text_markdown": "他知道受苦却得不到回报意味着什么。",
+      "tts": {
+        "text": "他知道受苦却得不到回报意味着什么。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他将那些感悟倾注到了他的写作中。",
+      "text_markdown": "他将那些感悟倾注到了他的写作中。",
+      "tts": {
+        "text": "他将那些感悟倾注到了他的写作中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天，塞万提斯被尊为现代小说之父。",
+      "text_markdown": "今天，塞万提斯被尊为现代小说之父。",
+      "tts": {
+        "text": "今天，塞万提斯被尊为现代小说之父。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的雕像矗立在马德里的西班牙广场。",
+      "text_markdown": "他的雕像矗立在马德里的西班牙广场。",
+      "tts": {
+        "text": "他的雕像矗立在马德里的西班牙广场。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界各地的大学、图书馆和文化中心以他的名字命名。",
+      "text_markdown": "世界各地的大学、图书馆和文化中心以他的名字命名。",
+      "tts": {
+        "text": "世界各地的大学、图书馆和文化中心以他的名字命名。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的忌日4月23日被联合国教科文组织定为世界读书日。",
+      "text_markdown": "他的忌日4月23日被联合国教科文组织定为世界读书日。",
+      "tts": {
+        "text": "他的忌日四月二十三日被联合国教科文组织定为世界读书日。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是少数在全球范围内纪念的文学节日之一。",
+      "text_markdown": "这是少数在全球范围内纪念的文学节日之一。",
+      "tts": {
+        "text": "这是少数在全球范围内纪念的文学节日之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米格尔·德·塞万提斯被海盗俘获，做了五年奴隶，几乎被他的国家遗忘。",
+      "text_markdown": "米格尔·德·塞万提斯被海盗俘获，做了五年奴隶，几乎被他的国家遗忘。",
+      "tts": {
+        "text": "米格尔·德·塞万提斯被海盗俘获，做了五年奴隶，几乎被他的国家遗忘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的回应是写了一本全世界都会铭记的书。",
+      "text_markdown": "他的回应是写了一本全世界都会铭记的书。",
+      "tts": {
+        "text": "他的回应是写了一本全世界都会铭记的书。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的囚禁没有摧毁他。",
+      "text_markdown": "他的囚禁没有摧毁他。",
+      "tts": {
+        "text": "他的囚禁没有摧毁他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "俘虏的遗产",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它成为了锻造他天才的熔炉。",
+      "text_markdown": "它成为了锻造他天才的熔炉。",
+      "tts": {
+        "text": "它成为了锻造他天才的熔炉。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

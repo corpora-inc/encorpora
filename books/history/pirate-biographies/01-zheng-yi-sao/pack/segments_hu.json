@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "hu",
+  "total_segments": 310,
+  "segments": [
+    {
+      "sentence_index": 0,
+      "chapter": 0,
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch00-001",
+      "block_type": "heading",
+      "paragraph_id": "p1",
+      "text": "Megjegyzés az olvasónak",
+      "text_markdown": "Megjegyzés az olvasónak",
+      "title": "Megjegyzés az olvasónak"
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "text": "Ez egy igaz történet a feljegyzett történelem legsikeresebb kalózáról.",
+      "text_markdown": "Ez egy igaz történet a feljegyzett történelem legsikeresebb kalózáról.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Ez egy igaz történet a feljegyzett történelem legsikeresebb kalózáról.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-003",
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "text": "A neve Zheng Yi Sao volt, és ő parancsolta a világ valaha látott legnagyobb kalózflottájának.",
+      "text_markdown": "A neve Zheng Yi Sao volt, és ő parancsolta a világ valaha látott legnagyobb kalózflottájának.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "A neve Zheng Yi Sao volt, és ő parancsolta a világ valaha látott legnagyobb kalózflottájának.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "text": "Hatalmának csúcsán több hajót irányított, mint amennyivel a legtöbb nemzet rendelkezett.",
+      "text_markdown": "Hatalmának csúcsán több hajót irányított, mint amennyivel a legtöbb nemzet rendelkezett.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Hatalmának csúcsán több hajót irányított, mint amennyivel a legtöbb nemzet rendelkezett.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-005",
+      "block_type": "text",
+      "paragraph_id": "p3",
+      "text": "Nem született gazdagságba vagy kiváltságba.",
+      "text_markdown": "Nem született gazdagságba vagy kiváltságba.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Nem született gazdagságba vagy kiváltságba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-006",
+      "block_type": "text",
+      "paragraph_id": "p3",
+      "text": "Szegénységbe született Dél-Kínában, a tizennyolcadik század végén.",
+      "text_markdown": "Szegénységbe született Dél-Kínában, a tizennyolcadik század végén.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Szegénységbe született Dél-Kínában, a tizennyolcadik század végén.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "paragraph_id": "p3",
+      "text": "Mindent, amit elért, intelligenciával, könyörtelenséggel és rendkívüli szervezőkészséggel épített fel.",
+      "text_markdown": "Mindent, amit elért, intelligenciával, könyörtelenséggel és rendkívüli szervezőkészséggel épített fel.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Mindent, amit elért, intelligenciával, könyörtelenséggel és rendkívüli szervezőkészséggel épített fel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-008",
+      "block_type": "text",
+      "paragraph_id": "p4",
+      "text": "Ez a könyv elmeséli, hogyan vált egy nincstelen nő a Dél-kínai-tenger vitathatatlan uralkodójává.",
+      "text_markdown": "Ez a könyv elmeséli, hogyan vált egy nincstelen nő a Dél-kínai-tenger vitathatatlan uralkodójává.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Ez a könyv elmeséli, hogyan vált egy nincstelen nő a Dél-kínai-tenger vitathatatlan uralkodójává.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-009",
+      "block_type": "text",
+      "paragraph_id": "p4",
+      "text": "Ez egy történet háborúról, kereskedelemről, jogról és túlélésről.",
+      "text_markdown": "Ez egy történet háborúról, kereskedelemről, jogról és túlélésről.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Ez egy történet háborúról, kereskedelemről, jogról és túlélésről.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-010",
+      "block_type": "text",
+      "paragraph_id": "p4",
+      "text": "Ez egy történet egy gyorsan változó világról is, ahogy az európai hatalmak egyre mélyebbre hatoltak Ázsiába.",
+      "text_markdown": "Ez egy történet egy gyorsan változó világról is, ahogy az európai hatalmak egyre mélyebbre hatoltak Ázsiába.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Ez egy történet egy gyorsan változó világról is, ahogy az európai hatalmak egyre mélyebbre hatoltak Ázsiába.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-011",
+      "block_type": "text",
+      "paragraph_id": "p5",
+      "text": "A könyvben szereplő minden tény a történelmi feljegyzésekből származik.",
+      "text_markdown": "A könyvben szereplő minden tény a történelmi feljegyzésekből származik.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "A könyvben szereplő minden tény a történelmi feljegyzésekből származik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-012",
+      "block_type": "text",
+      "paragraph_id": "p5",
+      "text": "Ahol a feljegyzés bizonytalan, ott ezt jelezzük.",
+      "text_markdown": "Ahol a feljegyzés bizonytalan, ott ezt jelezzük.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Ahol a feljegyzés bizonytalan, ott ezt jelezzük.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 0,
+      "part": 0,
+      "id": "ch00-013",
+      "block_type": "text",
+      "paragraph_id": "p5",
+      "text": "Ahol a történészek nem értenek egyet, ott a rendelkezésre álló legerősebb bizonyítékokat mutatjuk be.",
+      "text_markdown": "Ahol a történészek nem értenek egyet, ott a rendelkezésre álló legerősebb bizonyítékokat mutatjuk be.",
+      "title": "Megjegyzés az olvasónak",
+      "tts": {
+        "text": "Ahol a történészek nem értenek egyet, ott a rendelkezésre álló legerősebb bizonyítékokat mutatjuk be.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch01-014",
+      "block_type": "heading",
+      "paragraph_id": "p6",
+      "text": "A Dél-kínai-tenger világa",
+      "text_markdown": "A Dél-kínai-tenger világa",
+      "title": "A Dél-kínai-tenger világa"
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-015",
+      "block_type": "text",
+      "paragraph_id": "p7",
+      "text": "A Dél-kínai-tenger a Föld egyik legforgalmasabb vízi útja.",
+      "text_markdown": "A Dél-kínai-tenger a Föld egyik legforgalmasabb vízi útja.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A Dél-kínai-tenger a Föld egyik legforgalmasabb vízi útja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-016",
+      "block_type": "text",
+      "paragraph_id": "p7",
+      "text": "Nyugaton Vietnam partjaitól keleten a Fülöp-szigetekig terjed.",
+      "text_markdown": "Nyugaton Vietnam partjaitól keleten a Fülöp-szigetekig terjed.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Nyugaton Vietnam partjaitól keleten a Fülöp-szigetekig terjed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-017",
+      "block_type": "text",
+      "paragraph_id": "p7",
+      "text": "Északon Kína partjai, délen pedig Borneó és Szumátra szigetei fekszenek.",
+      "text_markdown": "Északon Kína partjai, délen pedig Borneó és Szumátra szigetei fekszenek.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Északon Kína partjai, délen pedig Borneó és Szumátra szigetei fekszenek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-018",
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "text": "Évezredek óta hajóznak kereskedők ezeken a vizeken.",
+      "text_markdown": "Évezredek óta hajóznak kereskedők ezeken a vizeken.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Évezredek óta hajóznak kereskedők ezeken a vizeken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-019",
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "text": "Kínai dzsunkák szállítottak selymet, porcelánt és teát Délkelet-Ázsia kikötőibe.",
+      "text_markdown": "Kínai dzsunkák szállítottak selymet, porcelánt és teát Délkelet-Ázsia kikötőibe.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Kínai dzsunkák szállítottak selymet, porcelánt és teát Délkelet-Ázsia kikötőibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-020",
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "text": "Cserébe fűszerek, trópusi fa és egzotikus áruk áramlottak vissza Kínába.",
+      "text_markdown": "Cserébe fűszerek, trópusi fa és egzotikus áruk áramlottak vissza Kínába.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Cserébe fűszerek, trópusi fa és egzotikus áruk áramlottak vissza Kínába.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-021",
+      "block_type": "text",
+      "paragraph_id": "p9",
+      "text": "Kanton városa, amelyet ma Kuangcsounak hívnak, e kereskedelem központjában helyezkedett el.",
+      "text_markdown": "Kanton városa, amelyet ma Kuangcsounak hívnak, e kereskedelem központjában helyezkedett el.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Kanton városa, amelyet ma Kuangcsounak hívnak, e kereskedelem központjában helyezkedett el.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-022",
+      "block_type": "text",
+      "paragraph_id": "p9",
+      "text": "Kanton a világ egyik leggazdagabb városa volt a tizennyolcadik században.",
+      "text_markdown": "Kanton a világ egyik leggazdagabb városa volt a tizennyolcadik században.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Kanton a világ egyik leggazdagabb városa volt a tizennyolcadik században.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-023",
+      "block_type": "text",
+      "paragraph_id": "p9",
+      "text": "Brit, francia, portugál és holland külföldi kereskedők mind versengtek a piacaihoz való hozzáférésért.",
+      "text_markdown": "Brit, francia, portugál és holland külföldi kereskedők mind versengtek a piacaihoz való hozzáférésért.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Brit, francia, portugál és holland külföldi kereskedők mind versengtek a piacaihoz való hozzáférésért.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-024",
+      "block_type": "text",
+      "paragraph_id": "p10",
+      "text": "A Csing-dinasztia uralta Kínát ebben az időszakban.",
+      "text_markdown": "A Csing-dinasztia uralta Kínát ebben az időszakban.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A Csing-dinasztia uralta Kínát ebben az időszakban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-025",
+      "block_type": "text",
+      "paragraph_id": "p10",
+      "text": "A Csing császárok mandzsu származásúak voltak, nem han kínaiak.",
+      "text_markdown": "A Csing császárok mandzsu származásúak voltak, nem han kínaiak.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A Csing császárok mandzsu származásúak voltak, nem han kínaiak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-026",
+      "block_type": "text",
+      "paragraph_id": "p10",
+      "text": "1644-ben hódították meg Kínát, és a világ egyik legnagyobb birodalmát építették fel.",
+      "text_markdown": "1644-ben hódították meg Kínát, és a világ egyik legnagyobb birodalmát építették fel.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Ezerhatszáznegyvennégyben hódították meg Kínát, és a világ egyik legnagyobb birodalmát építették fel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-027",
+      "block_type": "text",
+      "paragraph_id": "p10",
+      "text": "Az 1700-as évek végére azonban a Csing-dinasztia gyengülni kezdett.",
+      "text_markdown": "Az 1700-as évek végére azonban a Csing-dinasztia gyengülni kezdett.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Az ezerhétszázas évek végére azonban a Csing-dinasztia gyengülni kezdett.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-028",
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "text": "A korrupció elterjedt a birodalmi bürokráciában.",
+      "text_markdown": "A korrupció elterjedt a birodalmi bürokráciában.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A korrupció elterjedt a birodalmi bürokráciában.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-029",
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "text": "Az adószedők minden fillért kisajtoltak a parasztokból és halászokból.",
+      "text_markdown": "Az adószedők minden fillért kisajtoltak a parasztokból és halászokból.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Az adószedők minden fillért kisajtoltak a parasztokból és halászokból.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-030",
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "text": "A gazdagok és szegények közötti szakadék évről évre nőtt.",
+      "text_markdown": "A gazdagok és szegények közötti szakadék évről évre nőtt.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A gazdagok és szegények közötti szakadék évről évre nőtt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-031",
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "text": "A tengerparti tartományokban sokan éltek kétségbeejtő szegénységben.",
+      "text_markdown": "A tengerparti tartományokban sokan éltek kétségbeejtő szegénységben.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A tengerparti tartományokban sokan éltek kétségbeejtő szegénységben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-032",
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "text": "A Guangdong partvidékén élő halászközösségek Kína legszegényebbjei közé tartoztak.",
+      "text_markdown": "A Guangdong partvidékén élő halászközösségek Kína legszegényebbjei közé tartoztak.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A Guangdong partvidékén élő halászközösségek Kína legszegényebbjei közé tartoztak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-033",
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "text": "Egész családok éltek kis csónakokon, úgynevezett szampanokon.",
+      "text_markdown": "Egész családok éltek kis csónakokon, úgynevezett szampanokon.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Egész családok éltek kis csónakokon, úgynevezett szampanokon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-034",
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "text": "A vízen születtek, a vízen dolgoztak és a vízen haltak meg.",
+      "text_markdown": "A vízen születtek, a vízen dolgoztak és a vízen haltak meg.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A vízen születtek, a vízen dolgoztak és a vízen haltak meg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-035",
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "text": "A császári kormány tanka népnek nevezte őket, és kitaszítottként bánt velük.",
+      "text_markdown": "A császári kormány tanka népnek nevezte őket, és kitaszítottként bánt velük.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A császári kormány tanka népnek nevezte őket, és kitaszítottként bánt velük.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-036",
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "text": "A tanka családoknak sok területen tilos volt szárazföldön élniük.",
+      "text_markdown": "A tanka családoknak sok területen tilos volt szárazföldön élniük.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A tanka családoknak sok területen tilos volt szárazföldön élniük.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-037",
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "text": "Nem vehettek részt a császári vizsgákon, amelyek kormányzati állásokhoz vezettek.",
+      "text_markdown": "Nem vehettek részt a császári vizsgákon, amelyek kormányzati állásokhoz vezettek.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Nem vehettek részt a császári vizsgákon, amelyek kormányzati állásokhoz vezettek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-038",
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "text": "A törvény és a szokások kizárták őket a kínai társadalom fősodrából.",
+      "text_markdown": "A törvény és a szokások kizárták őket a kínai társadalom fősodrából.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A törvény és a szokások kizárták őket a kínai társadalom fősodrából.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-039",
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "text": "Generációk óta nem volt esélyük jobb életre.",
+      "text_markdown": "Generációk óta nem volt esélyük jobb életre.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Generációk óta nem volt esélyük jobb életre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-040",
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "text": "A kalózkodás alternatívát kínált.",
+      "text_markdown": "A kalózkodás alternatívát kínált.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A kalózkodás alternatívát kínált.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-041",
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "text": "Ha nem lehetett törvényes úton felemelkedni, a tenger saját gazdaságot biztosított.",
+      "text_markdown": "Ha nem lehetett törvényes úton felemelkedni, a tenger saját gazdaságot biztosított.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Ha nem lehetett törvényes úton felemelkedni, a tenger saját gazdaságot biztosított.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-042",
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "text": "A kalózflották kereskedelmi hajókat fosztogattak, halászfalvakat zsaroltak meg, és csempészárukat juttattak át a császári járőrök mellett.",
+      "text_markdown": "A kalózflották kereskedelmi hajókat fosztogattak, halászfalvakat zsaroltak meg, és csempészárukat juttattak át a császári járőrök mellett.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A kalózflották kereskedelmi hajókat fosztogattak, halászfalvakat zsaroltak meg, és csempészárukat juttattak át a császári járőrök mellett.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-043",
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "text": "Sok tengerparti szegény számára a kalózlegénységhez való csatlakozás racionális gazdasági döntés volt.",
+      "text_markdown": "Sok tengerparti szegény számára a kalózlegénységhez való csatlakozás racionális gazdasági döntés volt.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Sok tengerparti szegény számára a kalózlegénységhez való csatlakozás racionális gazdasági döntés volt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-044",
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "text": "A Dél-kínai-tenger vizei ideálisak voltak a kalózkodáshoz.",
+      "text_markdown": "A Dél-kínai-tenger vizei ideálisak voltak a kalózkodáshoz.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A Dél-kínai-tenger vizei ideálisak voltak a kalózkodáshoz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-045",
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "text": "Több ezer sziget, öböl és folyótorkolat biztosított búvóhelyet.",
+      "text_markdown": "Több ezer sziget, öböl és folyótorkolat biztosított búvóhelyet.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Több ezer sziget, öböl és folyótorkolat biztosított búvóhelyet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-046",
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "text": "A sűrű köd és a hirtelen viharok megnehezítették az üldözést.",
+      "text_markdown": "A sűrű köd és a hirtelen viharok megnehezítették az üldözést.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A sűrű köd és a hirtelen viharok megnehezítették az üldözést.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-047",
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "text": "Egy gyors dzsunka ügyes legénységgel percek alatt eltűnhetett a partvonalon.",
+      "text_markdown": "Egy gyors dzsunka ügyes legénységgel percek alatt eltűnhetett a partvonalon.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Egy gyors dzsunka ügyes legénységgel percek alatt eltűnhetett a partvonalon.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-048",
+      "block_type": "text",
+      "paragraph_id": "p16",
+      "text": "Eközben az ópiumkereskedelem kezdte átformálni a régiót.",
+      "text_markdown": "Eközben az ópiumkereskedelem kezdte átformálni a régiót.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Eközben az ópiumkereskedelem kezdte átformálni a régiót.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-049",
+      "block_type": "text",
+      "paragraph_id": "p16",
+      "text": "A brit kereskedők hatalmas mennyiségű ópiumot szállítottak Indiából Kínába.",
+      "text_markdown": "A brit kereskedők hatalmas mennyiségű ópiumot szállítottak Indiából Kínába.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A brit kereskedők hatalmas mennyiségű ópiumot szállítottak Indiából Kínába.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-050",
+      "block_type": "text",
+      "paragraph_id": "p16",
+      "text": "A drog illegális volt Kínában, de a profit olyan hatalmas volt, hogy a kereskedelem évről évre nőtt.",
+      "text_markdown": "A drog illegális volt Kínában, de a profit olyan hatalmas volt, hogy a kereskedelem évről évre nőtt.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A drog illegális volt Kínában, de a profit olyan hatalmas volt, hogy a kereskedelem évről évre nőtt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-051",
+      "block_type": "text",
+      "paragraph_id": "p16",
+      "text": "Csempészhálózatok húzódtak végig az egész déli parton.",
+      "text_markdown": "Csempészhálózatok húzódtak végig az egész déli parton.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Csempészhálózatok húzódtak végig az egész déli parton.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-052",
+      "block_type": "text",
+      "paragraph_id": "p17",
+      "text": "Ez volt az a világ, amely Zheng Yi Saót kitermelte.",
+      "text_markdown": "Ez volt az a világ, amely Zheng Yi Saót kitermelte.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Ez volt az a világ, amely Zheng Yi Saót kitermelte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-053",
+      "block_type": "text",
+      "paragraph_id": "p17",
+      "text": "Egy világ, ahol hatalmas gazdagság és nyomorúságos szegénység élt egymás mellett, egy vékony óceáncsík választotta el őket.",
+      "text_markdown": "Egy világ, ahol hatalmas gazdagság és nyomorúságos szegénység élt egymás mellett, egy vékony óceáncsík választotta el őket.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Egy világ, ahol hatalmas gazdagság és nyomorúságos szegénység élt egymás mellett, egy vékony óceáncsík választotta el őket.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-054",
+      "block_type": "text",
+      "paragraph_id": "p17",
+      "text": "Egy világ, ahol birodalmak versengtek, és a tenger törvénye ahhoz tartozott, aki elég erős volt ahhoz, hogy érvényesítse.",
+      "text_markdown": "Egy világ, ahol birodalmak versengtek, és a tenger törvénye ahhoz tartozott, aki elég erős volt ahhoz, hogy érvényesítse.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Egy világ, ahol birodalmak versengtek, és a tenger törvénye ahhoz tartozott, aki elég erős volt ahhoz, hogy érvényesítse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-055",
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "text": "Az európai hatalmak Kínát olyan piacnak tekintették, amelyet fel kell törni.",
+      "text_markdown": "Az európai hatalmak Kínát olyan piacnak tekintették, amelyet fel kell törni.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Az európai hatalmak Kínát olyan piacnak tekintették, amelyet fel kell törni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-056",
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "text": "A Csing (Qing) kormány barbároknak tekintette az európaiakat, akiket kezelni kellett.",
+      "text_markdown": "A Csing (Qing) kormány barbároknak tekintette az európaiakat, akiket kezelni kellett.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "A Csing kormány barbároknak tekintette az európaiakat, akiket kezelni kellett.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-057",
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "text": "És a Dél-kínai-tenger kalózai lehetőséget láttak a köztük lévő káoszban.",
+      "text_markdown": "És a Dél-kínai-tenger kalózai lehetőséget láttak a köztük lévő káoszban.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "És a Dél-kínai-tenger kalózai lehetőséget láttak a köztük lévő káoszban.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-058",
+      "block_type": "text",
+      "paragraph_id": "p19",
+      "text": "1790-re a Dél-kínai-tenger kalózflottái több száz hajóból álltak.",
+      "text_markdown": "1790-re a Dél-kínai-tenger kalózflottái több száz hajóból álltak.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Ezerhétszázkilencvenre a Dél-kínai-tenger kalózflottái több száz hajóból álltak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-059",
+      "block_type": "text",
+      "paragraph_id": "p19",
+      "text": "Nem voltak szervezetlen bűnözők.",
+      "text_markdown": "Nem voltak szervezetlen bűnözők.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Nem voltak szervezetlen bűnözők.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-060",
+      "block_type": "text",
+      "paragraph_id": "p19",
+      "text": "Sokan fegyelmezett haditengerészeti erőként működtek, hierarchiákkal és magatartási kódexekkel.",
+      "text_markdown": "Sokan fegyelmezett haditengerészeti erőként működtek, hierarchiákkal és magatartási kódexekkel.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Sokan fegyelmezett haditengerészeti erőként működtek, hierarchiákkal és magatartási kódexekkel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 1,
+      "part": 0,
+      "id": "ch01-061",
+      "block_type": "text",
+      "paragraph_id": "p19",
+      "text": "Ezen erők közül a legnagyobb hamarosan a történelem leghatalmasabb kalózflottájává vált.",
+      "text_markdown": "Ezen erők közül a legnagyobb hamarosan a történelem leghatalmasabb kalózflottájává vált.",
+      "title": "A Dél-kínai-tenger világa",
+      "tts": {
+        "text": "Ezen erők közül a legnagyobb hamarosan a történelem leghatalmasabb kalózflottájává vált.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch02-062",
+      "block_type": "heading",
+      "paragraph_id": "p20",
+      "text": "Eredet",
+      "text_markdown": "Eredet",
+      "title": "Eredet"
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-063",
+      "block_type": "text",
+      "paragraph_id": "p21",
+      "text": "A nő, akiből Zheng Yi Sao lett, körülbelül 1775-ben született.",
+      "text_markdown": "A nő, akiből Zheng Yi Sao lett, körülbelül 1775-ben született.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A nő, akiből Zheng Yi Sao lett, körülbelül ezerhétszázhetvenötben született.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-064",
+      "block_type": "text",
+      "paragraph_id": "p21",
+      "text": "A kínai forrásokban leggyakrabban Shi Xianggu néven említik.",
+      "text_markdown": "A kínai forrásokban leggyakrabban Shi Xianggu néven említik.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A kínai forrásokban leggyakrabban Shi Xianggu néven említik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-065",
+      "block_type": "text",
+      "paragraph_id": "p21",
+      "text": "A Zheng Yi Sao név egyszerűen azt jelenti: Zheng Yi felesége.",
+      "text_markdown": "A Zheng Yi Sao név egyszerűen azt jelenti: Zheng Yi felesége.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A Zheng Yi Sao név egyszerűen azt jelenti: Zheng Yi felesége.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-066",
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "text": "A Tanka hajón élő közösségbe született Guangdong tartományban.",
+      "text_markdown": "A Tanka hajón élő közösségbe született Guangdong tartományban.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A Tanka hajón élő közösségbe született Guangdong tartományban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-067",
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "text": "Családja szegény volt, mint szinte az összes Tanka család.",
+      "text_markdown": "Családja szegény volt, mint szinte az összes Tanka család.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Családja szegény volt, mint szinte az összes Tanka család.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-068",
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "text": "Korai éveit a vízen töltötte, megismerve a partvidék ritmusát.",
+      "text_markdown": "Korai éveit a vízen töltötte, megismerve a partvidék ritmusát.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Korai éveit a vízen töltötte, megismerve a partvidék ritmusát.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-069",
+      "block_type": "text",
+      "paragraph_id": "p23",
+      "text": "Fiatal nőként egy úszó bordélyházban dolgozott a kantoni kikötőben.",
+      "text_markdown": "Fiatal nőként egy úszó bordélyházban dolgozott a kantoni kikötőben.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Fiatal nőként egy úszó bordélyházban dolgozott a kantoni kikötőben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-070",
+      "block_type": "text",
+      "paragraph_id": "p23",
+      "text": "Tengerészeket, kereskedőket és halászokat szolgáltak ki, akik áthaladtak a forgalmas kikötőn.",
+      "text_markdown": "Tengerészeket, kereskedőket és halászokat szolgáltak ki, akik áthaladtak a forgalmas kikötőn.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Tengerészeket, kereskedőket és halászokat szolgáltak ki, akik áthaladtak a forgalmas kikötőn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-071",
+      "block_type": "text",
+      "paragraph_id": "p23",
+      "text": "Nehéz és veszélyes munka volt, de olyan tudást adott neki a világról, amelyhez osztályának kevés nője férhetett hozzá.",
+      "text_markdown": "Nehéz és veszélyes munka volt, de olyan tudást adott neki a világról, amelyhez osztályának kevés nője férhetett hozzá.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Nehéz és veszélyes munka volt, de olyan tudást adott neki a világról, amelyhez osztályának kevés nője férhetett hozzá.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-072",
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "text": "Megtanulta gyorsan és pontosan felmérni az embereket.",
+      "text_markdown": "Megtanulta gyorsan és pontosan felmérni az embereket.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Megtanulta gyorsan és pontosan felmérni az embereket.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-073",
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "text": "Megtanulta a kereskedelem és a tárgyalás nyelveit.",
+      "text_markdown": "Megtanulta a kereskedelem és a tárgyalás nyelveit.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Megtanulta a kereskedelem és a tárgyalás nyelveit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-074",
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "text": "Ezek a képességek sokkal értékesebbnek bizonyultak, mint azt bárki is megjósolhatta volna.",
+      "text_markdown": "Ezek a képességek sokkal értékesebbnek bizonyultak, mint azt bárki is megjósolhatta volna.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Ezek a képességek sokkal értékesebbnek bizonyultak, mint azt bárki is megjósolhatta volna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-075",
+      "block_type": "text",
+      "paragraph_id": "p25",
+      "text": "1798-ban egy Zheng Yi nevű kalózkapitány elfoglalta azt a hajót, amelyen tartózkodott.",
+      "text_markdown": "1798-ban egy Zheng Yi nevű kalózkapitány elfoglalta azt a hajót, amelyen tartózkodott.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Ezerhétszázkilencvennyolcban egy Zheng Yi nevű kalózkapitány elfoglalta azt a hajót, amelyen tartózkodott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-076",
+      "block_type": "text",
+      "paragraph_id": "p25",
+      "text": "Kalózok hosszú sorából származott, generációkra visszamenőleg.",
+      "text_markdown": "Kalózok hosszú sorából származott, generációkra visszamenőleg.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Kalózok hosszú sorából származott, generációkra visszamenőleg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-077",
+      "block_type": "text",
+      "paragraph_id": "p25",
+      "text": "Családja a Ming-dinasztia maradványait támogatta a Qing hódítók ellen.",
+      "text_markdown": "Családja a Ming-dinasztia maradványait támogatta a Qing hódítók ellen.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Családja a Ming-dinasztia maradványait támogatta a Csing hódítók ellen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-078",
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "text": "Zheng Yi házasságot ajánlott a fiatal nőnek.",
+      "text_markdown": "Zheng Yi házasságot ajánlott a fiatal nőnek.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Zheng Yi házasságot ajánlott a fiatal nőnek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-079",
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "text": "A legtöbb beszámoló szerint nem egyszerűen elfogadta.",
+      "text_markdown": "A legtöbb beszámoló szerint nem egyszerűen elfogadta.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A legtöbb beszámoló szerint nem egyszerűen elfogadta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-080",
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "text": "Tárgyalt a partnerségük feltételeiről, mielőtt beleegyezett a házasságba.",
+      "text_markdown": "Tárgyalt a partnerségük feltételeiről, mielőtt beleegyezett a házasságba.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Tárgyalt a partnerségük feltételeiről, mielőtt beleegyezett a házasságba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-081",
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "text": "Egyenlő részesedést követelt flottájából és egyenlő beleszólást a parancsnoki döntésekbe.",
+      "text_markdown": "Egyenlő részesedést követelt flottájából és egyenlő beleszólást a parancsnoki döntésekbe.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Egyenlő részesedést követelt flottájából és egyenlő beleszólást a parancsnoki döntésekbe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-082",
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "text": "Ez rendkívüli volt abban az időben.",
+      "text_markdown": "Ez rendkívüli volt abban az időben.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Ez rendkívüli volt abban az időben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-083",
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "text": "A nőknek a késői Qing Kínában nagyon kevés joguk volt.",
+      "text_markdown": "A nőknek a késői Qing Kínában nagyon kevés joguk volt.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A nőknek a késői Csing Kínában nagyon kevés joguk volt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-084",
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "text": "Egy feleségtől elvárták, hogy kérdés nélkül engedelmeskedjen férjének.",
+      "text_markdown": "Egy feleségtől elvárták, hogy kérdés nélkül engedelmeskedjen férjének.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Egy feleségtől elvárták, hogy kérdés nélkül engedelmeskedjen férjének.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-085",
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "text": "De ez a kalózok világa volt, és a kalózok világa a saját szabályait alkotta.",
+      "text_markdown": "De ez a kalózok világa volt, és a kalózok világa a saját szabályait alkotta.",
+      "title": "Eredet",
+      "tts": {
+        "text": "De ez a kalózok világa volt, és a kalózok világa a saját szabályait alkotta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-086",
+      "block_type": "text",
+      "paragraph_id": "p28",
+      "text": "Zheng Yi beleegyezett a feltételeibe.",
+      "text_markdown": "Zheng Yi beleegyezett a feltételeibe.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Zheng Yi beleegyezett a feltételeibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-087",
+      "block_type": "text",
+      "paragraph_id": "p28",
+      "text": "A történészek úgy vélik, felismerte az intelligenciáját és vezetői potenciálját.",
+      "text_markdown": "A történészek úgy vélik, felismerte az intelligenciáját és vezetői potenciálját.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A történészek úgy vélik, felismerte az intelligenciáját és vezetői potenciálját.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-088",
+      "block_type": "text",
+      "paragraph_id": "p28",
+      "text": "Házasságuk stratégiai szövetség volt, éppúgy, mint személyes kötelék.",
+      "text_markdown": "Házasságuk stratégiai szövetség volt, éppúgy, mint személyes kötelék.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Házasságuk stratégiai szövetség volt, éppúgy, mint személyes kötelék.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-089",
+      "block_type": "text",
+      "paragraph_id": "p28",
+      "text": "Együtt valami példátlan dolgot építenek majd fel.",
+      "text_markdown": "Együtt valami példátlan dolgot építenek majd fel.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Együtt valami példátlan dolgot építenek majd fel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-090",
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "text": "Zheng Yi merész vízióval rendelkezett.",
+      "text_markdown": "Zheng Yi merész vízióval rendelkezett.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Zheng Yi merész vízióval rendelkezett.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-091",
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "text": "Egyetlen konföderációba akarta egyesíteni a Dél-kínai-tenger szétszórt kalózflottáit.",
+      "text_markdown": "Egyetlen konföderációba akarta egyesíteni a Dél-kínai-tenger szétszórt kalózflottáit.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Egyetlen konföderációba akarta egyesíteni a Dél-kínai-tenger szétszórt kalózflottáit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-092",
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "text": "Az egyes kalózkapitányok mindig is versengtek egymással.",
+      "text_markdown": "Az egyes kalózkapitányok mindig is versengtek egymással.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Az egyes kalózkapitányok mindig is versengtek egymással.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-093",
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "text": "Zheng Yi úgy vélte, sokkal erősebbek lennének, ha együttműködnének.",
+      "text_markdown": "Zheng Yi úgy vélte, sokkal erősebbek lennének, ha együttműködnének.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Zheng Yi úgy vélte, sokkal erősebbek lennének, ha együttműködnének.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-094",
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "text": "1798 és 1805 között Zheng Yi fáradhatatlanul dolgozott szövetségek kovácsolásán.",
+      "text_markdown": "1798 és 1805 között Zheng Yi fáradhatatlanul dolgozott szövetségek kovácsolásán.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Ezerhétszázkilencvennyolc és ezernyolcszázöt között Zheng Yi fáradhatatlanul dolgozott szövetségek kovácsolásán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-095",
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "text": "Diplomácia és megfélemlítés keverékével győzte meg a rivális kapitányokat, hogy csatlakozzanak konföderációjához.",
+      "text_markdown": "Diplomácia és megfélemlítés keverékével győzte meg a rivális kapitányokat, hogy csatlakozzanak konföderációjához.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Diplomácia és megfélemlítés keverékével győzte meg a rivális kapitányokat, hogy csatlakozzanak konföderációjához.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-096",
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "text": "Felesége mélyen részt vett ezekben a tárgyalásokban.",
+      "text_markdown": "Felesége mélyen részt vett ezekben a tárgyalásokban.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Felesége mélyen részt vett ezekben a tárgyalásokban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-097",
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "text": "Segített kidolgozni azokat a megállapodásokat, amelyek összetartották a flottát.",
+      "text_markdown": "Segített kidolgozni azokat a megállapodásokat, amelyek összetartották a flottát.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Segített kidolgozni azokat a megállapodásokat, amelyek összetartották a flottát.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-098",
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "text": "1805-re a konföderáció teljessé vált.",
+      "text_markdown": "1805-re a konföderáció teljessé vált.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Ezernyolcszázötre a konföderáció teljessé vált.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-099",
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "text": "Hat flottából állt, mindegyiket a zászlaja színe azonosította.",
+      "text_markdown": "Hat flottából állt, mindegyiket a zászlaja színe azonosította.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Hat flottából állt, mindegyiket a zászlaja színe azonosította.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-100",
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "text": "A Vörös Zászló Flotta volt a legnagyobb és legerősebb.",
+      "text_markdown": "A Vörös Zászló Flotta volt a legnagyobb és legerősebb.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A Vörös Zászló Flotta volt a legnagyobb és legerősebb.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-101",
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "text": "Zheng Yi személyesen irányította a Vörös Zászló Flottát.",
+      "text_markdown": "Zheng Yi személyesen irányította a Vörös Zászló Flottát.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Zheng Yi személyesen irányította a Vörös Zászló Flottát.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-102",
+      "block_type": "text",
+      "paragraph_id": "p32",
+      "text": "A konföderáció több száz hajót és több tízezer kalózt irányított.",
+      "text_markdown": "A konföderáció több száz hajót és több tízezer kalózt irányított.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A konföderáció több száz hajót és több tízezer kalózt irányított.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-103",
+      "block_type": "text",
+      "paragraph_id": "p32",
+      "text": "Az egész Dél-kínai-tengert uralta.",
+      "text_markdown": "Az egész Dél-kínai-tengert uralta.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Az egész Dél-kínai-tengert uralta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-104",
+      "block_type": "text",
+      "paragraph_id": "p32",
+      "text": "Egyetlen kereskedelmi hajó sem haladhatott át ezeken a vizeken anélkül, hogy adót fizetett volna, vagy a pusztulást kockáztatta volna.",
+      "text_markdown": "Egyetlen kereskedelmi hajó sem haladhatott át ezeken a vizeken anélkül, hogy adót fizetett volna, vagy a pusztulást kockáztatta volna.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Egyetlen kereskedelmi hajó sem haladhatott át ezeken a vizeken anélkül, hogy adót fizetett volna, vagy a pusztulást kockáztatta volna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-105",
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "text": "Aztán, 1807 novemberében, Zheng Yi meghalt.",
+      "text_markdown": "Aztán, 1807 novemberében, Zheng Yi meghalt.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Aztán, ezernyolcszázhét novemberében, Zheng Yi meghalt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-106",
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "text": "Halálának körülményeit történészek vitatják.",
+      "text_markdown": "Halálának körülményeit történészek vitatják.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Halálának körülményeit történészek vitatják.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-107",
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "text": "Egyes beszámolók szerint viharban fulladt meg.",
+      "text_markdown": "Egyes beszámolók szerint viharban fulladt meg.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Egyes beszámolók szerint viharban fulladt meg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-108",
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "text": "Mások azt sugallják, hogy csatában ölték meg Vietnam partjainál.",
+      "text_markdown": "Mások azt sugallják, hogy csatában ölték meg Vietnam partjainál.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Mások azt sugallják, hogy csatában ölték meg Vietnam partjainál.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-109",
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "text": "Halála válságot okozott az egész konföderáció számára.",
+      "text_markdown": "Halála válságot okozott az egész konföderáció számára.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Halála válságot okozott az egész konföderáció számára.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-110",
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "text": "Az általa felépített szövetséget személyes tekintélye tartotta össze.",
+      "text_markdown": "Az általa felépített szövetséget személyes tekintélye tartotta össze.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Az általa felépített szövetséget személyes tekintélye tartotta össze.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-111",
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "text": "Erős vezető nélkül visszatöredezne versengő frakciókra.",
+      "text_markdown": "Erős vezető nélkül visszatöredezne versengő frakciókra.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Erős vezető nélkül visszatöredezne versengő frakciókra.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-112",
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "text": "Minden, amit felépítettek, veszélyben volt.",
+      "text_markdown": "Minden, amit felépítettek, veszélyben volt.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Minden, amit felépítettek, veszélyben volt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-113",
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "text": "A többi flotta kapitányai a konföderáció összeomlására számítottak.",
+      "text_markdown": "A többi flotta kapitányai a konföderáció összeomlására számítottak.",
+      "title": "Eredet",
+      "tts": {
+        "text": "A többi flotta kapitányai a konföderáció összeomlására számítottak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-114",
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "text": "Elkezdtek pozíciókért manőverezni, felkészülve a területek elfoglalására.",
+      "text_markdown": "Elkezdtek pozíciókért manőverezni, felkészülve a területek elfoglalására.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Elkezdtek pozíciókért manőverezni, felkészülve a területek elfoglalására.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-115",
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "text": "De nem számoltak Zheng Yi özvegyének ambíciójával és képességeivel.",
+      "text_markdown": "De nem számoltak Zheng Yi özvegyének ambíciójával és képességeivel.",
+      "title": "Eredet",
+      "tts": {
+        "text": "De nem számoltak Zheng Yi özvegyének ambíciójával és képességeivel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 2,
+      "part": 0,
+      "id": "ch02-116",
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "text": "Nem állt szándékában feladni azt, amit segített felépíteni.",
+      "text_markdown": "Nem állt szándékában feladni azt, amit segített felépíteni.",
+      "title": "Eredet",
+      "tts": {
+        "text": "Nem állt szándékában feladni azt, amit segített felépíteni.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch03-117",
+      "block_type": "heading",
+      "paragraph_id": "p36",
+      "text": "Hatalomra jutás",
+      "text_markdown": "Hatalomra jutás",
+      "title": "Hatalomra jutás"
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-118",
+      "block_type": "text",
+      "paragraph_id": "p37",
+      "text": "Férje halálát követő napokban Zheng Yi Sao számított sebességgel cselekedett.",
+      "text_markdown": "Férje halálát követő napokban Zheng Yi Sao számított sebességgel cselekedett.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Férje halálát követő napokban Zheng Yi Sao számított sebességgel cselekedett.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-119",
+      "block_type": "text",
+      "paragraph_id": "p37",
+      "text": "Első lépése az volt, hogy biztosítsa Zhang Bao, férje legmegbízhatóbb hadnagyának hűségét.",
+      "text_markdown": "Első lépése az volt, hogy biztosítsa Zhang Bao, férje legmegbízhatóbb hadnagyának hűségét.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Első lépése az volt, hogy biztosítsa Zhang Bao, férje legmegbízhatóbb hadnagyának hűségét.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-120",
+      "block_type": "text",
+      "paragraph_id": "p37",
+      "text": "Zhang Bao egy halász fia volt, akit fiúként kalózok fogtak el.",
+      "text_markdown": "Zhang Bao egy halász fia volt, akit fiúként kalózok fogtak el.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zhang Bao egy halász fia volt, akit fiúként kalózok fogtak el.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-121",
+      "block_type": "text",
+      "paragraph_id": "p37",
+      "text": "Zheng Yi örökbe fogadta, kiképezte, és katonai parancsnokká nevelte.",
+      "text_markdown": "Zheng Yi örökbe fogadta, kiképezte, és katonai parancsnokká nevelte.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zheng Yi örökbe fogadta, kiképezte, és katonai parancsnokká nevelte.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-122",
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "text": "Zheng Yi Sao szövetséget kötött Zhang Baóval, amely személyes és stratégiai jellegű is volt.",
+      "text_markdown": "Zheng Yi Sao szövetséget kötött Zhang Baóval, amely személyes és stratégiai jellegű is volt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zheng Yi Sao szövetséget kötött Zhang Baóval, amely személyes és stratégiai jellegű is volt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-123",
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "text": "A kettő végül összeházasodott.",
+      "text_markdown": "A kettő végül összeházasodott.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kettő végül összeházasodott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-124",
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "text": "De azokban az első kritikus hetekben a partnerség a túlélésről szólt.",
+      "text_markdown": "De azokban az első kritikus hetekben a partnerség a túlélésről szólt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "De azokban az első kritikus hetekben a partnerség a túlélésről szólt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-125",
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "text": "Együtt egységes frontot alkottak a többi flottaparancsnok előtt.",
+      "text_markdown": "Együtt egységes frontot alkottak a többi flottaparancsnok előtt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Együtt egységes frontot alkottak a többi flottaparancsnok előtt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-126",
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "text": "Összehívta a hat flottakapitány tanácsát.",
+      "text_markdown": "Összehívta a hat flottakapitány tanácsát.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Összehívta a hat flottakapitány tanácsát.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-127",
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "text": "Ezen a találkozón előadta érveit a konföderáció vezetéséért.",
+      "text_markdown": "Ezen a találkozón előadta érveit a konföderáció vezetéséért.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Ezen a találkozón előadta érveit a konföderáció vezetéséért.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-128",
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "text": "Azzal érvelt, hogy egyenrangú partnere volt férjének e szövetség kiépítésében.",
+      "text_markdown": "Azzal érvelt, hogy egyenrangú partnere volt férjének e szövetség kiépítésében.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Azzal érvelt, hogy egyenrangú partnere volt férjének e szövetség kiépítésében.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-129",
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "text": "Egyenként a kapitányok beleegyeztek, hogy követik a parancsait.",
+      "text_markdown": "Egyenként a kapitányok beleegyeztek, hogy követik a parancsait.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Egyenként a kapitányok beleegyeztek, hogy követik a parancsait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-130",
+      "block_type": "text",
+      "paragraph_id": "p40",
+      "text": "Első kihívása az volt, hogy fegyelmet teremtsen egy 70 000 fős kalózcsapatban.",
+      "text_markdown": "Első kihívása az volt, hogy fegyelmet teremtsen egy 70 000 fős kalózcsapatban.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Első kihívása az volt, hogy fegyelmet teremtsen egy hetvenezer fős kalózcsapatban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-131",
+      "block_type": "text",
+      "paragraph_id": "p40",
+      "text": "A kalózok természetüknél fogva függetlenek voltak, és bizalmatlanok a hatalommal szemben.",
+      "text_markdown": "A kalózok természetüknél fogva függetlenek voltak, és bizalmatlanok a hatalommal szemben.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kalózok természetüknél fogva függetlenek voltak, és bizalmatlanok a hatalommal szemben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-132",
+      "block_type": "text",
+      "paragraph_id": "p40",
+      "text": "Zheng Yi Sao megértette, hogy egy törvények nélküli flotta szétesne.",
+      "text_markdown": "Zheng Yi Sao megértette, hogy egy törvények nélküli flotta szétesne.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zheng Yi Sao megértette, hogy egy törvények nélküli flotta szétesne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-133",
+      "block_type": "text",
+      "paragraph_id": "p40",
+      "text": "Létrehozta a kalóztörténelem egyik legfigyelemreméltóbb jogi kódexét.",
+      "text_markdown": "Létrehozta a kalóztörténelem egyik legfigyelemreméltóbb jogi kódexét.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Létrehozta a kalóztörténelem egyik legfigyelemreméltóbb jogi kódexét.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-134",
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "text": "A kódex szigorú és specifikus volt.",
+      "text_markdown": "A kódex szigorú és specifikus volt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kódex szigorú és specifikus volt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-135",
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "text": "Bármely kalózt, aki közvetlen parancsot szegett meg egy felettesétől, lefejeztek.",
+      "text_markdown": "Bármely kalózt, aki közvetlen parancsot szegett meg egy felettesétől, lefejeztek.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Bármely kalózt, aki közvetlen parancsot szegett meg egy felettesétől, lefejeztek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-136",
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "text": "A dezertálás halállal büntetendő volt.",
+      "text_markdown": "A dezertálás halállal büntetendő volt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A dezertálás halállal büntetendő volt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-137",
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "text": "A közös kincstárból való lopás halállal büntetendő volt.",
+      "text_markdown": "A közös kincstárból való lopás halállal büntetendő volt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A közös kincstárból való lopás halállal büntetendő volt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-138",
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "text": "A kódex a foglyokat is védte olyan módon, ami szokatlan volt az adott korban.",
+      "text_markdown": "A kódex a foglyokat is védte olyan módon, ami szokatlan volt az adott korban.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kódex a foglyokat is védte olyan módon, ami szokatlan volt az adott korban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-139",
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "text": "Azok a kalózok, akik megtámadták a foglyokat, súlyos büntetéssel néztek szembe.",
+      "text_markdown": "Azok a kalózok, akik megtámadták a foglyokat, súlyos büntetéssel néztek szembe.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Azok a kalózok, akik megtámadták a foglyokat, súlyos büntetéssel néztek szembe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-140",
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "text": "Ha egy kalóz feleségül vett egy foglyot, hűségesnek kellett lennie hozzá.",
+      "text_markdown": "Ha egy kalóz feleségül vett egy foglyot, hűségesnek kellett lennie hozzá.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Ha egy kalóz feleségül vett egy foglyot, hűségesnek kellett lennie hozzá.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-141",
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "text": "Ezek a szabályok nem javaslatok voltak; vasfegyelemmel tartatták be őket.",
+      "text_markdown": "Ezek a szabályok nem javaslatok voltak; vasfegyelemmel tartatták be őket.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Ezek a szabályok nem javaslatok voltak; vasfegyelemmel tartatták be őket.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-142",
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "text": "Minden zsákmányt regisztráltak és egy rögzített rendszer szerint osztottak fel.",
+      "text_markdown": "Minden zsákmányt regisztráltak és egy rögzített rendszer szerint osztottak fel.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Minden zsákmányt regisztráltak és egy rögzített rendszer szerint osztottak fel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-143",
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "text": "Az árut megszerző kalóz 20 százalékot kapott.",
+      "text_markdown": "Az árut megszerző kalóz 20 százalékot kapott.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Az árut megszerző kalóz húsz százalékot kapott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-144",
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "text": "A fennmaradó 80 százalék a közös alapba került.",
+      "text_markdown": "A fennmaradó 80 százalék a közös alapba került.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A fennmaradó nyolcvan százalék a közös alapba került.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-145",
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "text": "Ez a rendszer megakadályozta azokat a belső viszályokat, amelyek a legtöbb kalózszervezetet tönkretették.",
+      "text_markdown": "Ez a rendszer megakadályozta azokat a belső viszályokat, amelyek a legtöbb kalózszervezetet tönkretették.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Ez a rendszer megakadályozta azokat a belső viszályokat, amelyek a legtöbb kalózszervezetet tönkretették.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-146",
+      "block_type": "text",
+      "paragraph_id": "p44",
+      "text": "Zheng Yi Sao egy kifinomult adórendszert is kiépített.",
+      "text_markdown": "Zheng Yi Sao egy kifinomult adórendszert is kiépített.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zheng Yi Sao egy kifinomult adórendszert is kiépített.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-147",
+      "block_type": "text",
+      "paragraph_id": "p44",
+      "text": "A kereskedelmi hajók rendszeres díj ellenében biztonságos átjárást vásárolhattak.",
+      "text_markdown": "A kereskedelmi hajók rendszeres díj ellenében biztonságos átjárást vásárolhattak.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kereskedelmi hajók rendszeres díj ellenében biztonságos átjárást vásárolhattak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-148",
+      "block_type": "text",
+      "paragraph_id": "p44",
+      "text": "A part menti halászfalvak védelmért cserébe adót fizettek.",
+      "text_markdown": "A part menti halászfalvak védelmért cserébe adót fizettek.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A part menti halászfalvak védelmért cserébe adót fizettek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-149",
+      "block_type": "text",
+      "paragraph_id": "p44",
+      "text": "A rendszer egy párhuzamos kormányként működött, bevételeket szedve a biztonságért cserébe.",
+      "text_markdown": "A rendszer egy párhuzamos kormányként működött, bevételeket szedve a biztonságért cserébe.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A rendszer egy párhuzamos kormányként működött, bevételeket szedve a biztonságért cserébe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-150",
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "text": "A Qing kormány felismerte a fenyegetést, és elküldte haditengerészetét a kalózok leverésére.",
+      "text_markdown": "A Qing kormány felismerte a fenyegetést, és elküldte haditengerészetét a kalózok leverésére.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A Csing kormány felismerte a fenyegetést, és elküldte haditengerészetét a kalózok leverésére.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-151",
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "text": "1808-ban hatalmas császári flotta hajózott a Dél-kínai-tengerre.",
+      "text_markdown": "1808-ban hatalmas császári flotta hajózott a Dél-kínai-tengerre.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Ezernyolcszáznyolcban hatalmas császári flotta hajózott a Dél-kínai-tengerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-152",
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "text": "A csata katasztrófa volt a kormány számára.",
+      "text_markdown": "A csata katasztrófa volt a kormány számára.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A csata katasztrófa volt a kormány számára.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-153",
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "text": "Zheng Yi Sao erői több tucat császári hadihajót süllyesztettek el vagy foglaltak el.",
+      "text_markdown": "Zheng Yi Sao erői több tucat császári hadihajót süllyesztettek el vagy foglaltak el.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zheng Yi Sao erői több tucat császári hadihajót süllyesztettek el vagy foglaltak el.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-154",
+      "block_type": "text",
+      "paragraph_id": "p46",
+      "text": "A legyőzött admirális annyira megalázottnak érezte magát, hogy öngyilkos lett.",
+      "text_markdown": "A legyőzött admirális annyira megalázottnak érezte magát, hogy öngyilkos lett.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A legyőzött admirális annyira megalázottnak érezte magát, hogy öngyilkos lett.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-155",
+      "block_type": "text",
+      "paragraph_id": "p46",
+      "text": "A császári udvart megdöbbentette a veszteség mértéke.",
+      "text_markdown": "A császári udvart megdöbbentette a veszteség mértéke.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A császári udvart megdöbbentette a veszteség mértéke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-156",
+      "block_type": "text",
+      "paragraph_id": "p46",
+      "text": "Elküldték a legjobb hajóikat és a legtapasztaltabb parancsnokukat, mégis vesztettek.",
+      "text_markdown": "Elküldték a legjobb hajóikat és a legtapasztaltabb parancsnokukat, mégis vesztettek.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Elküldték a legjobb hajóikat és a legtapasztaltabb parancsnokukat, mégis vesztettek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-157",
+      "block_type": "text",
+      "paragraph_id": "p46",
+      "text": "A kalózok most erősebbek voltak, mint a kormány saját flottája.",
+      "text_markdown": "A kalózok most erősebbek voltak, mint a kormány saját flottája.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kalózok most erősebbek voltak, mint a kormány saját flottája.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-158",
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "text": "Zheng Yi Sao könyörtelenül kihasználta előnyét.",
+      "text_markdown": "Zheng Yi Sao könyörtelenül kihasználta előnyét.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zheng Yi Sao könyörtelenül kihasználta előnyét.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-159",
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "text": "Flottája kiterjesztette területét a teljes Kuangtung (Guangdong) partvidékén.",
+      "text_markdown": "Flottája kiterjesztette területét a teljes Kuangtung (Guangdong) partvidékén.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Flottája kiterjesztette területét a teljes Kuangtung (Guangdong) partvidékén.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-160",
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "text": "Bázisokat hozott létre szigeteken és rejtett folyótorkolatokban.",
+      "text_markdown": "Bázisokat hozott létre szigeteken és rejtett folyótorkolatokban.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Bázisokat hozott létre szigeteken és rejtett folyótorkolatokban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-161",
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "text": "Hírszerző hálózata Kantontól Vietnámig terjedt.",
+      "text_markdown": "Hírszerző hálózata Kantontól Vietnámig terjedt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Hírszerző hálózata Kantontól Vietnámig terjedt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-162",
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "text": "A Csing (Qing) kormány új stratégiát próbált ki.",
+      "text_markdown": "A Csing (Qing) kormány új stratégiát próbált ki.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A Csing kormány új stratégiát próbált ki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-163",
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "text": "Portugál hadihajókat béreltek Makaó gyarmatáról, hogy harcoljanak a kalózok ellen.",
+      "text_markdown": "Portugál hadihajókat béreltek Makaó gyarmatáról, hogy harcoljanak a kalózok ellen.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Portugál hadihajókat béreltek Makaó gyarmatáról, hogy harcoljanak a kalózok ellen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-164",
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "text": "A portugálok modern európai ágyúkkal és képzett tengerésztisztekkel rendelkeztek.",
+      "text_markdown": "A portugálok modern európai ágyúkkal és képzett tengerésztisztekkel rendelkeztek.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A portugálok modern európai ágyúkkal és képzett tengerésztisztekkel rendelkeztek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-165",
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "text": "Egy ideig ez a szövetség valódi nyomást gyakorolt a kalózflottára.",
+      "text_markdown": "Egy ideig ez a szövetség valódi nyomást gyakorolt a kalózflottára.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Egy ideig ez a szövetség valódi nyomást gyakorolt a kalózflottára.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-166",
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "text": "De Zheng Yi Sao gyorsan alkalmazkodott.",
+      "text_markdown": "De Zheng Yi Sao gyorsan alkalmazkodott.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "De Zheng Yi Sao gyorsan alkalmazkodott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-167",
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "text": "Elkerülte a közvetlen összecsapást a portugál hadihajókkal.",
+      "text_markdown": "Elkerülte a közvetlen összecsapást a portugál hadihajókkal.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Elkerülte a közvetlen összecsapást a portugál hadihajókkal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-168",
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "text": "Ehelyett az ellátási vonalaikat célozta meg, és megtámadta kereskedő szövetségeseiket.",
+      "text_markdown": "Ehelyett az ellátási vonalaikat célozta meg, és megtámadta kereskedő szövetségeseiket.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Ehelyett az ellátási vonalaikat célozta meg, és megtámadta kereskedő szövetségeseiket.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-169",
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "text": "Megértette, hogy a portugálok csak addig harcolnak, amíg fizetik őket.",
+      "text_markdown": "Megértette, hogy a portugálok csak addig harcolnak, amíg fizetik őket.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Megértette, hogy a portugálok csak addig harcolnak, amíg fizetik őket.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-170",
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "text": "1809-re a Csing (Qing) és portugál szövetségnek nem sikerült legyőznie őt.",
+      "text_markdown": "1809-re a Csing (Qing) és portugál szövetségnek nem sikerült legyőznie őt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Ezernyolcszázkilenc-re a Csing és portugál szövetségnek nem sikerült legyőznie őt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-171",
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "text": "A kormány hatalmas összegeket költött és több tucat hajót vesztett.",
+      "text_markdown": "A kormány hatalmas összegeket költött és több tucat hajót vesztett.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kormány hatalmas összegeket költött és több tucat hajót vesztett.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-172",
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "text": "A kalózok minden eddiginél szilárdabban ellenőrizték a partvidéket.",
+      "text_markdown": "A kalózok minden eddiginél szilárdabban ellenőrizték a partvidéket.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "A kalózok minden eddiginél szilárdabban ellenőrizték a partvidéket.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 3,
+      "part": 0,
+      "id": "ch03-173",
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "text": "Zheng Yi Sao konföderációja hatalma csúcsán volt.",
+      "text_markdown": "Zheng Yi Sao konföderációja hatalma csúcsán volt.",
+      "title": "Hatalomra jutás",
+      "tts": {
+        "text": "Zheng Yi Sao konföderációja hatalma csúcsán volt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch04-174",
+      "block_type": "heading",
+      "paragraph_id": "p51",
+      "text": "A csúcson",
+      "text_markdown": "A csúcson",
+      "title": "A csúcson"
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-175",
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "text": "Csúcspontján a kalóz konföderáció körülbelül 1800 hajót irányított.",
+      "text_markdown": "Csúcspontján a kalóz konföderáció körülbelül 1800 hajót irányított.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Csúcspontján a kalóz konföderáció körülbelül ezernyolcszáz hajót irányított.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-176",
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "text": "Ezek a kicsi, gyors rajtaütő hajóktól a több tucat ágyút hordozó hatalmas haddzsunkokig terjedtek.",
+      "text_markdown": "Ezek a kicsi, gyors rajtaütő hajóktól a több tucat ágyút hordozó hatalmas haddzsunkokig terjedtek.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Ezek a kicsi, gyors rajtaütő hajóktól a több tucat ágyút hordozó hatalmas haddzsunkokig terjedtek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-177",
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "text": "A teljes harcoló erő 70 000 és 80 000 fő között mozgott.",
+      "text_markdown": "A teljes harcoló erő 70 000 és 80 000 fő között mozgott.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "A teljes harcoló erő hetvenezer és nyolcvanezer fő között mozgott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-178",
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "text": "Ez nagyobb volt, mint a legtöbb európai nemzet flottája abban az időben.",
+      "text_markdown": "Ez nagyobb volt, mint a legtöbb európai nemzet flottája abban az időben.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Ez nagyobb volt, mint a legtöbb európai nemzet flottája abban az időben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-179",
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "text": "Csak a Vörös Zászló Flotta 600 és 800 hajóval rendelkezett.",
+      "text_markdown": "Csak a Vörös Zászló Flotta 600 és 800 hajóval rendelkezett.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Csak a Vörös Zászló Flotta hatszáz és nyolcszáz hajóval rendelkezett.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-180",
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "text": "Ez volt a konföderáció legnagyobb önálló flottája.",
+      "text_markdown": "Ez volt a konföderáció legnagyobb önálló flottája.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Ez volt a konföderáció legnagyobb önálló flottája.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-181",
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "text": "Zheng Yi Sao commanded it directly, with Zhang Bao as her chief military officer.",
+      "text_markdown": "Zheng Yi Sao commanded it directly, with Zhang Bao as her chief military officer.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Zheng Yi Sao commanded it directly, with Zhang Bao as her chief military officer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-182",
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "text": "The other five fleets operated semi-independently but followed her strategic direction.",
+      "text_markdown": "The other five fleets operated semi-independently but followed her strategic direction.",
+      "title": "At the Height",
+      "tts": {
+        "text": "The other five fleets operated semi-independently but followed her strategic direction.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-183",
+      "block_type": "text",
+      "paragraph_id": "p54",
+      "text": "The confederation's territory stretched along more than 1,000 miles of coastline.",
+      "text_markdown": "The confederation's territory stretched along more than 1,000 miles of coastline.",
+      "title": "At the Height",
+      "tts": {
+        "text": "A konföderáció területe több mint ezer mérföldnyi tengerpart mentén húzódott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-184",
+      "block_type": "text",
+      "paragraph_id": "p54",
+      "text": "From the border of Vietnam in the south to the Fujian coast in the north, no ship was safe without pirate permission.",
+      "text_markdown": "From the border of Vietnam in the south to the Fujian coast in the north, no ship was safe without pirate permission.",
+      "title": "At the Height",
+      "tts": {
+        "text": "From the border of Vietnam in the south to the Fujian coast in the north, no ship was safe without pirate permission.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-185",
+      "block_type": "text",
+      "paragraph_id": "p54",
+      "text": "Even the mighty British East India Company paid tribute to avoid losing its cargo.",
+      "text_markdown": "Even the mighty British East India Company paid tribute to avoid losing its cargo.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Even the mighty British East India Company paid tribute to avoid losing its cargo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-186",
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "text": "Life aboard a pirate junk was harsh but organized.",
+      "text_markdown": "Life aboard a pirate junk was harsh but organized.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Life aboard a pirate junk was harsh but organized.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-187",
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "text": "Each ship had a clear hierarchy, from captain down to the newest recruit.",
+      "text_markdown": "Each ship had a clear hierarchy, from captain down to the newest recruit.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Each ship had a clear hierarchy, from captain down to the newest recruit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-188",
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "text": "Meals were communal, and rations were distributed equally.",
+      "text_markdown": "Meals were communal, and rations were distributed equally.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Meals were communal, and rations were distributed equally.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-189",
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "text": "Every crew member received a share of the plunder based on their rank and role.",
+      "text_markdown": "Every crew member received a share of the plunder based on their rank and role.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Every crew member received a share of the plunder based on their rank and role.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-190",
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "text": "Women served on many pirate vessels in the fleet.",
+      "text_markdown": "Women served on many pirate vessels in the fleet.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Women served on many pirate vessels in the fleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-191",
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "text": "Some fought alongside the men during raids.",
+      "text_markdown": "Some fought alongside the men during raids.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Some fought alongside the men during raids.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-192",
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "text": "Others managed supplies, navigation, and communication between ships.",
+      "text_markdown": "Others managed supplies, navigation, and communication between ships.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Others managed supplies, navigation, and communication between ships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-193",
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "text": "The pirate world offered women more freedom than mainstream Qing society did.",
+      "text_markdown": "The pirate world offered women more freedom than mainstream Qing society did.",
+      "title": "At the Height",
+      "tts": {
+        "text": "A kalózvilág nagyobb szabadságot kínált a nőknek, mint a mainstream Csing társadalom.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-194",
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "text": "The fleet's war junks were formidable fighting machines.",
+      "text_markdown": "The fleet's war junks were formidable fighting machines.",
+      "title": "At the Height",
+      "tts": {
+        "text": "The fleet's war junks were formidable fighting machines.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-195",
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "text": "A large junk could carry 30 or more cannons.",
+      "text_markdown": "A large junk could carry 30 or more cannons.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Egy nagy dzsunka harminc vagy több ágyút is szállíthatott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-196",
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "text": "The ships were built with reinforced hulls and high sides to repel boarders.",
+      "text_markdown": "The ships were built with reinforced hulls and high sides to repel boarders.",
+      "title": "At the Height",
+      "tts": {
+        "text": "The ships were built with reinforced hulls and high sides to repel boarders.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-197",
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "text": "Their flat bottoms allowed them to navigate shallow coastal waters where deeper European vessels could not follow.",
+      "text_markdown": "Their flat bottoms allowed them to navigate shallow coastal waters where deeper European vessels could not follow.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Their flat bottoms allowed them to navigate shallow coastal waters where deeper European vessels could not follow.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-198",
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "text": "Zheng Yi Sao's intelligence network was one of her greatest weapons.",
+      "text_markdown": "Zheng Yi Sao's intelligence network was one of her greatest weapons.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Zheng Yi Sao's intelligence network was one of her greatest weapons.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-199",
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "text": "She had spies in Canton, in Macao, and in every major port along the coast.",
+      "text_markdown": "She had spies in Canton, in Macao, and in every major port along the coast.",
+      "title": "At the Height",
+      "tts": {
+        "text": "She had spies in Canton, in Macao, and in every major port along the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-200",
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "text": "She knew when valuable cargo ships were departing and what routes they would take.",
+      "text_markdown": "She knew when valuable cargo ships were departing and what routes they would take.",
+      "title": "At the Height",
+      "tts": {
+        "text": "She knew when valuable cargo ships were departing and what routes they would take.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-201",
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "text": "This information allowed her to strike with precision instead of relying on chance.",
+      "text_markdown": "This information allowed her to strike with precision instead of relying on chance.",
+      "title": "At the Height",
+      "tts": {
+        "text": "This information allowed her to strike with precision instead of relying on chance.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-202",
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "text": "The taxation system she built was remarkably sophisticated.",
+      "text_markdown": "The taxation system she built was remarkably sophisticated.",
+      "title": "At the Height",
+      "tts": {
+        "text": "The taxation system she built was remarkably sophisticated.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-203",
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "text": "Different rates applied to different types of cargo.",
+      "text_markdown": "Different rates applied to different types of cargo.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Different rates applied to different types of cargo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-204",
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "text": "Silk merchants paid more than rice traders.",
+      "text_markdown": "Silk merchants paid more than rice traders.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Silk merchants paid more than rice traders.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-205",
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "text": "Salt smugglers paid a premium because their cargo was already illegal.",
+      "text_markdown": "Salt smugglers paid a premium because their cargo was already illegal.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Salt smugglers paid a premium because their cargo was already illegal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 4,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-206",
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "text": "The entire system was documented and enforced with bureaucratic precision.",
+      "text_markdown": "The entire system was documented and enforced with bureaucratic precision.",
+      "title": "At the Height",
+      "tts": {
+        "text": "The entire system was documented and enforced with bureaucratic precision.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-207",
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "text": "Coastal villages had a complex relationship with the pirates.",
+      "text_markdown": "Coastal villages had a complex relationship with the pirates.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Coastal villages had a complex relationship with the pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-208",
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "text": "Many resented the tribute payments that the pirates demanded.",
+      "text_markdown": "Many resented the tribute payments that the pirates demanded.",
+      "title": "At the Height",
+      "tts": {
+        "text": "Many resented the tribute payments that the pirates demanded.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-209",
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "text": "But the pirates also provided protection against other raiders and bandits.",
+      "text_markdown": "But the pirates also provided protection against other raiders and bandits.",
+      "title": "At the Height",
+      "tts": {
+        "text": "But the pirates also provided protection against other raiders and bandits.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-210",
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "text": "In some areas, the pirates were more reliable than the imperial government.",
+      "text_markdown": "In some areas, the pirates were more reliable than the imperial government.",
+      "title": "At the Height",
+      "tts": {
+        "text": "In some areas, the pirates were more reliable than the imperial government.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-211",
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "text": "A Csing udvart mélységesen zavarta, hogy képtelen uralni a tengert.",
+      "text_markdown": "A Csing udvart mélységesen zavarta, hogy képtelen uralni a tengert.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "A Csing udvart mélységesen zavarta, hogy képtelen uralni a tengert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-212",
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "text": "A birodalmi tisztviselők aggódó jelentéseket írtak a kalózkirálynő növekvő hatalmáról.",
+      "text_markdown": "A birodalmi tisztviselők aggódó jelentéseket írtak a kalózkirálynő növekvő hatalmáról.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "A birodalmi tisztviselők aggódó jelentéseket írtak a kalózkirálynő növekvő hatalmáról.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-213",
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "text": "Attól tartottak, hogy a kalózok szövetségre léphetnek a szárazföldi lázadó csoportokkal.",
+      "text_markdown": "Attól tartottak, hogy a kalózok szövetségre léphetnek a szárazföldi lázadó csoportokkal.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Attól tartottak, hogy a kalózok szövetségre léphetnek a szárazföldi lázadó csoportokkal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-214",
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "text": "Egy egyesült szárazföldi és tengeri lázadás magát a dinasztiát is fenyegethette.",
+      "text_markdown": "Egy egyesült szárazföldi és tengeri lázadás magát a dinasztiát is fenyegethette.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Egy egyesült szárazföldi és tengeri lázadás magát a dinasztiát is fenyegethette.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-215",
+      "block_type": "text",
+      "paragraph_id": "p62",
+      "text": "A britek éles érdeklődéssel figyelték a helyzetet.",
+      "text_markdown": "A britek éles érdeklődéssel figyelték a helyzetet.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "A britek éles érdeklődéssel figyelték a helyzetet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-216",
+      "block_type": "text",
+      "paragraph_id": "p62",
+      "text": "Bővítették ópiumkereskedelmüket a kínai partok mentén.",
+      "text_markdown": "Bővítették ópiumkereskedelmüket a kínai partok mentén.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Bővítették ópiumkereskedelmüket a kínai partok mentén.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-217",
+      "block_type": "text",
+      "paragraph_id": "p62",
+      "text": "A kalózok megzavarták ezt a kereskedelmet, ami hatalmas összegekbe került a brit kereskedőknek.",
+      "text_markdown": "A kalózok megzavarták ezt a kereskedelmet, ami hatalmas összegekbe került a brit kereskedőknek.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "A kalózok megzavarták ezt a kereskedelmet, ami hatalmas összegekbe került a brit kereskedőknek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-218",
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "text": "Azok számára, akik Zheng Yi Sao zászlaja alatt hajóztak, az élet jobb volt, mint az alternatíva.",
+      "text_markdown": "Azok számára, akik Zheng Yi Sao zászlaja alatt hajóztak, az élet jobb volt, mint az alternatíva.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Azok számára, akik Zheng Yi Sao zászlaja alatt hajóztak, az élet jobb volt, mint az alternatíva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-219",
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "text": "Egy kalóz rendszeres élelmet, zsákmányrészt és a valahová tartozás érzését kapta.",
+      "text_markdown": "Egy kalóz rendszeres élelmet, zsákmányrészt és a valahová tartozás érzését kapta.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Egy kalóz rendszeres élelmet, zsákmányrészt és a valahová tartozás érzését kapta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-220",
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "text": "Egy Tanka halász szegénységet, megvetést és előrelépési reménytelenséget kapott.",
+      "text_markdown": "Egy Tanka halász szegénységet, megvetést és előrelépési reménytelenséget kapott.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Egy Tanka halász szegénységet, megvetést és előrelépési reménytelenséget kapott.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-221",
+      "block_type": "text",
+      "paragraph_id": "p64",
+      "text": "Zheng Yi Sao abszolút hatalommal uralta ezt a társadalmat.",
+      "text_markdown": "Zheng Yi Sao abszolút hatalommal uralta ezt a társadalmat.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Zheng Yi Sao abszolút hatalommal uralta ezt a társadalmat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-222",
+      "block_type": "text",
+      "paragraph_id": "p64",
+      "text": "Ő hozta meg azokat a stratégiai döntéseket, amelyek alakították a flotta jövőjét.",
+      "text_markdown": "Ő hozta meg azokat a stratégiai döntéseket, amelyek alakították a flotta jövőjét.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Ő hozta meg azokat a stratégiai döntéseket, amelyek alakították a flotta jövőjét.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-223",
+      "block_type": "text",
+      "paragraph_id": "p64",
+      "text": "Ő rendezte a kapitányok közötti vitákat és érvényesítette a törvénykönyvet.",
+      "text_markdown": "Ő rendezte a kapitányok közötti vitákat és érvényesítette a törvénykönyvet.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Ő rendezte a kapitányok közötti vitákat és érvényesítette a törvénykönyvet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 4,
+      "part": 0,
+      "id": "ch04-224",
+      "block_type": "text",
+      "paragraph_id": "p64",
+      "text": "Egyetlen jelentős lépés sem történt az ő jóváhagyása nélkül.",
+      "text_markdown": "Egyetlen jelentős lépés sem történt az ő jóváhagyása nélkül.",
+      "title": "A csúcson",
+      "tts": {
+        "text": "Egyetlen jelentős lépés sem történt az ő jóváhagyása nélkül.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch05-225",
+      "block_type": "heading",
+      "paragraph_id": "p65",
+      "text": "A vég",
+      "text_markdown": "A vég",
+      "title": "A vég"
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-226",
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "text": "1810-re repedések kezdtek megjelenni a konföderációban.",
+      "text_markdown": "1810-re repedések kezdtek megjelenni a konföderációban.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ezer nyolcszáz tízre repedések kezdtek megjelenni a konföderációban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-227",
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "text": "Az állandó hadviselés megviselte a hajókat és a legénységet.",
+      "text_markdown": "Az állandó hadviselés megviselte a hajókat és a legénységet.",
+      "title": "A vég",
+      "tts": {
+        "text": "Az állandó hadviselés megviselte a hajókat és a legénységet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-228",
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "text": "A Csing kormány blokádjai megzavarták az ellátási vonalakat a part mentén.",
+      "text_markdown": "A Csing kormány blokádjai megzavarták az ellátási vonalakat a part mentén.",
+      "title": "A vég",
+      "tts": {
+        "text": "A Csing kormány blokádjai megzavarták az ellátási vonalakat a part mentén.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-229",
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "text": "És a flottakapitányok közötti belső rivalizálás egyre intenzívebbé vált.",
+      "text_markdown": "És a flottakapitányok közötti belső rivalizálás egyre intenzívebbé vált.",
+      "title": "A vég",
+      "tts": {
+        "text": "És a flottakapitányok közötti belső rivalizálás egyre intenzívebbé vált.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-230",
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "text": "A legveszélyesebb rivalizálás Zhang Bao és egy Guo Podai nevű kapitány között zajlott.",
+      "text_markdown": "A legveszélyesebb rivalizálás Zhang Bao és egy Guo Podai nevű kapitány között zajlott.",
+      "title": "A vég",
+      "tts": {
+        "text": "A legveszélyesebb rivalizálás Zhang Bao és egy Guo Podai nevű kapitány között zajlott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-231",
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "text": "Guo Podai a Fekete Zászló Flottát irányította, amely a konföderáció második legnagyobbja volt.",
+      "text_markdown": "Guo Podai a Fekete Zászló Flottát irányította, amely a konföderáció második legnagyobbja volt.",
+      "title": "A vég",
+      "tts": {
+        "text": "Guo Podai a Fekete Zászló Flottát irányította, amely a konföderáció második legnagyobbja volt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-232",
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "text": "Nehezményezte, hogy Zhang Baótól, és ezáltal Zheng Yi Saótól kapott parancsokat.",
+      "text_markdown": "Nehezményezte, hogy Zhang Baótól, és ezáltal Zheng Yi Saótól kapott parancsokat.",
+      "title": "A vég",
+      "tts": {
+        "text": "Nehezményezte, hogy Zhang Baótól, és ezáltal Zheng Yi Saótól kapott parancsokat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-233",
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "text": "A köztük lévő feszültség azzal fenyegetett, hogy kettészakítja a konföderációt.",
+      "text_markdown": "A köztük lévő feszültség azzal fenyegetett, hogy kettészakítja a konföderációt.",
+      "title": "A vég",
+      "tts": {
+        "text": "A köztük lévő feszültség azzal fenyegetett, hogy kettészakítja a konföderációt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-234",
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "text": "1810 elején Guo Podai végzetes döntést hozott.",
+      "text_markdown": "1810 elején Guo Podai végzetes döntést hozott.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ezer nyolcszáz tíz elején Guo Podai végzetes döntést hozott.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-235",
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "text": "Titkos tárgyalásokat kezdett a Csing kormánnyal.",
+      "text_markdown": "Titkos tárgyalásokat kezdett a Csing kormánnyal.",
+      "title": "A vég",
+      "tts": {
+        "text": "Titkos tárgyalásokat kezdett a Csing kormánnyal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-236",
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "text": "A kormány teljes kegyelmet, katonai megbízatást és készpénzes fizetést ajánlott neki.",
+      "text_markdown": "A kormány teljes kegyelmet, katonai megbízatást és készpénzes fizetést ajánlott neki.",
+      "title": "A vég",
+      "tts": {
+        "text": "A kormány teljes kegyelmet, katonai megbízatást és készpénzes fizetést ajánlott neki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-237",
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "text": "Cserébe szembefordul korábbi szövetségeseivel.",
+      "text_markdown": "Cserébe szembefordul korábbi szövetségeseivel.",
+      "title": "A vég",
+      "tts": {
+        "text": "Cserébe szembefordul korábbi szövetségeseivel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-238",
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "text": "Guo Podai elfogadta az alkut, és teljes flottáját átadta a kormánynak.",
+      "text_markdown": "Guo Podai elfogadta az alkut, és teljes flottáját átadta a kormánynak.",
+      "title": "A vég",
+      "tts": {
+        "text": "Guo Podai elfogadta az alkut, és teljes flottáját átadta a kormánynak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-239",
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "text": "Egy éjszaka alatt a konföderáció több száz hajót és több ezer harcost veszített.",
+      "text_markdown": "Egy éjszaka alatt a konföderáció több száz hajót és több ezer harcost veszített.",
+      "title": "A vég",
+      "tts": {
+        "text": "Egy éjszaka alatt a konföderáció több száz hajót és több ezer harcost veszített.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-240",
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "text": "Ami még rosszabb, Guo Podai most kormányzati parancsnokként szolgált, a kalóz taktikákról szerzett tudását ellenük fordítva.",
+      "text_markdown": "Ami még rosszabb, Guo Podai most kormányzati parancsnokként szolgált, a kalóz taktikákról szerzett tudását ellenük fordítva.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ami még rosszabb, Guo Podai most kormányzati parancsnokként szolgált, a kalóz taktikákról szerzett tudását ellenük fordítva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-241",
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "text": "Az erőviszonyok drámaian megváltoztak.",
+      "text_markdown": "Az erőviszonyok drámaian megváltoztak.",
+      "title": "A vég",
+      "tts": {
+        "text": "Az erőviszonyok drámaian megváltoztak.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-242",
+      "block_type": "text",
+      "paragraph_id": "p70",
+      "text": "Zheng Yi Sao a rá jellemző tisztánlátással mérte fel az új helyzetet.",
+      "text_markdown": "Zheng Yi Sao a rá jellemző tisztánlátással mérte fel az új helyzetet.",
+      "title": "A vég",
+      "tts": {
+        "text": "Zheng Yi Sao a rá jellemző tisztánlátással mérte fel az új helyzetet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-243",
+      "block_type": "text",
+      "paragraph_id": "p70",
+      "text": "A konföderáció meggyengült, de nem semmisült meg.",
+      "text_markdown": "A konföderáció meggyengült, de nem semmisült meg.",
+      "title": "A vég",
+      "tts": {
+        "text": "A konföderáció meggyengült, de nem semmisült meg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-244",
+      "block_type": "text",
+      "paragraph_id": "p70",
+      "text": "Még mindig ő irányította a Vörös Zászló Flottát és több szövetséges flottát.",
+      "text_markdown": "Még mindig ő irányította a Vörös Zászló Flottát és több szövetséges flottát.",
+      "title": "A vég",
+      "tts": {
+        "text": "Még mindig ő irányította a Vörös Zászló Flottát és több szövetséges flottát.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-245",
+      "block_type": "text",
+      "paragraph_id": "p70",
+      "text": "De a lendület megváltozott, és ő tudta ezt.",
+      "text_markdown": "De a lendület megváltozott, és ő tudta ezt.",
+      "title": "A vég",
+      "tts": {
+        "text": "De a lendület megváltozott, és ő tudta ezt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-246",
+      "block_type": "text",
+      "paragraph_id": "p71",
+      "text": "Olyan döntést hozott, amely stratégiai zsenialitását mutatta.",
+      "text_markdown": "Olyan döntést hozott, amely stratégiai zsenialitását mutatta.",
+      "title": "A vég",
+      "tts": {
+        "text": "Olyan döntést hozott, amely stratégiai zsenialitását mutatta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-247",
+      "block_type": "text",
+      "paragraph_id": "p71",
+      "text": "Ahelyett, hogy halálig harcolt volna, úgy döntött, hogy megmaradt erejének pozíciójából tárgyal.",
+      "text_markdown": "Ahelyett, hogy halálig harcolt volna, úgy döntött, hogy megmaradt erejének pozíciójából tárgyal.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ahelyett, hogy halálig harcolt volna, úgy döntött, hogy megmaradt erejének pozíciójából tárgyal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-248",
+      "block_type": "text",
+      "paragraph_id": "p71",
+      "text": "Közvetítőkön keresztül tárgyalásokat kezdett a Qing kormánnyal.",
+      "text_markdown": "Közvetítőkön keresztül tárgyalásokat kezdett a Qing kormánnyal.",
+      "title": "A vég",
+      "tts": {
+        "text": "Közvetítőkön keresztül tárgyalásokat kezdett a Csing kormánnyal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-249",
+      "block_type": "text",
+      "paragraph_id": "p71",
+      "text": "Követelései merészek és konkrétak voltak.",
+      "text_markdown": "Követelései merészek és konkrétak voltak.",
+      "title": "A vég",
+      "tts": {
+        "text": "Követelései merészek és konkrétak voltak.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-250",
+      "block_type": "text",
+      "paragraph_id": "p72",
+      "text": "Teljes kegyelmet követelt magának és Zhang Baónak.",
+      "text_markdown": "Teljes kegyelmet követelt magának és Zhang Baónak.",
+      "title": "A vég",
+      "tts": {
+        "text": "Teljes kegyelmet követelt magának és Zhang Baónak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-251",
+      "block_type": "text",
+      "paragraph_id": "p72",
+      "text": "Követelte, hogy kalózai megtarthassák személyes vagyonukat.",
+      "text_markdown": "Követelte, hogy kalózai megtarthassák személyes vagyonukat.",
+      "title": "A vég",
+      "tts": {
+        "text": "Követelte, hogy kalózai megtarthassák személyes vagyonukat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-252",
+      "block_type": "text",
+      "paragraph_id": "p72",
+      "text": "Követelte, hogy Zhang Bao kapjon tiszti rangot a birodalmi flottában.",
+      "text_markdown": "Követelte, hogy Zhang Bao kapjon tiszti rangot a birodalmi flottában.",
+      "title": "A vég",
+      "tts": {
+        "text": "Követelte, hogy Zhang Bao kapjon tiszti rangot a birodalmi flottában.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-253",
+      "block_type": "text",
+      "paragraph_id": "p72",
+      "text": "És követelte, hogy a megadott egyszerű kalózok ne kapjanak büntetést.",
+      "text_markdown": "És követelte, hogy a megadott egyszerű kalózok ne kapjanak büntetést.",
+      "title": "A vég",
+      "tts": {
+        "text": "És követelte, hogy a megadott egyszerű kalózok ne kapjanak büntetést.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-254",
+      "block_type": "text",
+      "paragraph_id": "p73",
+      "text": "A Qing kormány vonakodott elfogadni az ilyen nagylelkű feltételeket.",
+      "text_markdown": "A Qing kormány vonakodott elfogadni az ilyen nagylelkű feltételeket.",
+      "title": "A vég",
+      "tts": {
+        "text": "A Csing kormány vonakodott elfogadni az ilyen nagylelkű feltételeket.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-255",
+      "block_type": "text",
+      "paragraph_id": "p73",
+      "text": "A kalózoknak adott kegyelem megaláztatásnak tűnt a birodalom számára.",
+      "text_markdown": "A kalózoknak adott kegyelem megaláztatásnak tűnt a birodalom számára.",
+      "title": "A vég",
+      "tts": {
+        "text": "A kalózoknak adott kegyelem megaláztatásnak tűnt a birodalom számára.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-256",
+      "block_type": "text",
+      "paragraph_id": "p73",
+      "text": "De megpróbálták erővel, és kudarcot vallottak.",
+      "text_markdown": "De megpróbálták erővel, és kudarcot vallottak.",
+      "title": "A vég",
+      "tts": {
+        "text": "De megpróbálták erővel, és kudarcot vallottak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-257",
+      "block_type": "text",
+      "paragraph_id": "p73",
+      "text": "A tárgyalás volt az egyetlen megmaradt lehetőség.",
+      "text_markdown": "A tárgyalás volt az egyetlen megmaradt lehetőség.",
+      "title": "A vég",
+      "tts": {
+        "text": "A tárgyalás volt az egyetlen megmaradt lehetőség.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-258",
+      "block_type": "text",
+      "paragraph_id": "p74",
+      "text": "1810 áprilisában az üzlet véglegesült.",
+      "text_markdown": "1810 áprilisában az üzlet véglegesült.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ezernyolcszáztíz áprilisában az üzlet véglegesült.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-259",
+      "block_type": "text",
+      "paragraph_id": "p74",
+      "text": "Zheng Yi Sao átadta flottáját a kormánynak.",
+      "text_markdown": "Zheng Yi Sao átadta flottáját a kormánynak.",
+      "title": "A vég",
+      "tts": {
+        "text": "Zheng Yi Sao átadta flottáját a kormánynak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-260",
+      "block_type": "text",
+      "paragraph_id": "p74",
+      "text": "Cserébe mindent megkapott, amit kért.",
+      "text_markdown": "Cserébe mindent megkapott, amit kért.",
+      "title": "A vég",
+      "tts": {
+        "text": "Cserébe mindent megkapott, amit kért.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-261",
+      "block_type": "text",
+      "paragraph_id": "p74",
+      "text": "Zhang Baót hadnaggyá nevezték ki a Qing flottában, 20 hajó parancsnokságával.",
+      "text_markdown": "Zhang Baót hadnaggyá nevezték ki a Qing flottában, 20 hajó parancsnokságával.",
+      "title": "A vég",
+      "tts": {
+        "text": "Zhang Baót hadnaggyá nevezték ki a Csing flottában, húsz hajó parancsnokságával.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-262",
+      "block_type": "text",
+      "paragraph_id": "p75",
+      "text": "A kalózok megtarthatták hajóik egy részét.",
+      "text_markdown": "A kalózok megtarthatták hajóik egy részét.",
+      "title": "A vég",
+      "tts": {
+        "text": "A kalózok megtarthatták hajóik egy részét.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-263",
+      "block_type": "text",
+      "paragraph_id": "p75",
+      "text": "Akik vissza akartak térni a civil életbe, szabadon megtehették.",
+      "text_markdown": "Akik vissza akartak térni a civil életbe, szabadon megtehették.",
+      "title": "A vég",
+      "tts": {
+        "text": "Akik vissza akartak térni a civil életbe, szabadon megtehették.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-264",
+      "block_type": "text",
+      "paragraph_id": "p75",
+      "text": "Akik csatlakozni akartak a birodalmi flottához, azokat szívesen fogadták.",
+      "text_markdown": "Akik csatlakozni akartak a birodalmi flottához, azokat szívesen fogadták.",
+      "title": "A vég",
+      "tts": {
+        "text": "Akik csatlakozni akartak a birodalmi flottához, azokat szívesen fogadták.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-265",
+      "block_type": "text",
+      "paragraph_id": "p75",
+      "text": "Ez volt a kalózkodás történetének legkedvezőbb megadása.",
+      "text_markdown": "Ez volt a kalózkodás történetének legkedvezőbb megadása.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ez volt a kalózkodás történetének legkedvezőbb megadása.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-266",
+      "block_type": "text",
+      "paragraph_id": "p76",
+      "text": "Zheng Yi Sao gazdag nőként vonult vissza a tengerről.",
+      "text_markdown": "Zheng Yi Sao gazdag nőként vonult vissza a tengerről.",
+      "title": "A vég",
+      "tts": {
+        "text": "Zheng Yi Sao gazdag nőként vonult vissza a tengerről.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-267",
+      "block_type": "text",
+      "paragraph_id": "p76",
+      "text": "Kantonban telepedett le Zhang Baóval.",
+      "text_markdown": "Kantonban telepedett le Zhang Baóval.",
+      "title": "A vég",
+      "tts": {
+        "text": "Kantonban telepedett le Zhang Baóval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-268",
+      "block_type": "text",
+      "paragraph_id": "p76",
+      "text": "Együtt nyitottak egy szerencsebarlangot, amely a város egyik legjövedelmezőbbjévé vált.",
+      "text_markdown": "Együtt nyitottak egy szerencsebarlangot, amely a város egyik legjövedelmezőbbjévé vált.",
+      "title": "A vég",
+      "tts": {
+        "text": "Együtt nyitottak egy szerencsebarlangot, amely a város egyik legjövedelmezőbbjévé vált.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-269",
+      "block_type": "text",
+      "paragraph_id": "p76",
+      "text": "Befektetett a sókereskedelembe is, ami évekig stabil jövedelmet biztosított.",
+      "text_markdown": "Befektetett a sókereskedelembe is, ami évekig stabil jövedelmet biztosított.",
+      "title": "A vég",
+      "tts": {
+        "text": "Befektetett a sókereskedelembe is, ami évekig stabil jövedelmet biztosított.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-270",
+      "block_type": "text",
+      "paragraph_id": "p77",
+      "text": "Zhang Bao több éven át kitüntetéssel szolgált a birodalmi flottában.",
+      "text_markdown": "Zhang Bao több éven át kitüntetéssel szolgált a birodalmi flottában.",
+      "title": "A vég",
+      "tts": {
+        "text": "Zhang Bao több éven át kitüntetéssel szolgált a birodalmi flottában.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-271",
+      "block_type": "text",
+      "paragraph_id": "p77",
+      "text": "1822-ben halt meg, miközben még kormányzati szolgálatban állt.",
+      "text_markdown": "1822-ben halt meg, miközben még kormányzati szolgálatban állt.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ezernyolcszázhuszonkettőben halt meg, miközben még kormányzati szolgálatban állt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-272",
+      "block_type": "text",
+      "paragraph_id": "p77",
+      "text": "Halálát teljes katonai tiszteletadással gyászolták.",
+      "text_markdown": "Halálát teljes katonai tiszteletadással gyászolták.",
+      "title": "A vég",
+      "tts": {
+        "text": "Halálát teljes katonai tiszteletadással gyászolták.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-273",
+      "block_type": "text",
+      "paragraph_id": "p78",
+      "text": "Zheng Yi Sao több mint két évtizedig élt a kalózkodás felhagyása után.",
+      "text_markdown": "Zheng Yi Sao több mint két évtizedig élt a kalózkodás felhagyása után.",
+      "title": "A vég",
+      "tts": {
+        "text": "Zheng Yi Sao több mint két évtizedig élt a kalózkodás felhagyása után.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-274",
+      "block_type": "text",
+      "paragraph_id": "p78",
+      "text": "Üzleti érdekeit intézte, és családot alapított Cantonban.",
+      "text_markdown": "Üzleti érdekeit intézte, és családot alapított Cantonban.",
+      "title": "A vég",
+      "tts": {
+        "text": "Üzleti érdekeit intézte, és családot alapított Cantonban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-275",
+      "block_type": "text",
+      "paragraph_id": "p78",
+      "text": "1844-ben halt meg, körülbelül 69 éves korában.",
+      "text_markdown": "1844-ben halt meg, körülbelül 69 éves korában.",
+      "title": "A vég",
+      "tts": {
+        "text": "Ezernyolcszáznegyvennégyben halt meg, körülbelül hatvankilenc éves korában.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 5,
+      "part": 0,
+      "id": "ch05-276",
+      "block_type": "text",
+      "paragraph_id": "p78",
+      "text": "Saját ágyában halt meg, családja körében, mint a cantoni társadalom megbecsült tagja.",
+      "text_markdown": "Saját ágyában halt meg, családja körében, mint a cantoni társadalom megbecsült tagja.",
+      "title": "A vég",
+      "tts": {
+        "text": "Saját ágyában halt meg, családja körében, mint a cantoni társadalom megbecsült tagja.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch06-277",
+      "block_type": "heading",
+      "paragraph_id": "p79",
+      "text": "Örökség",
+      "text_markdown": "Örökség",
+      "title": "Örökség"
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-278",
+      "block_type": "text",
+      "paragraph_id": "p80",
+      "text": "Zheng Yi Sao pályafutása egyedülálló a kalózkodás történetében.",
+      "text_markdown": "Zheng Yi Sao pályafutása egyedülálló a kalózkodás történetében.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Zheng Yi Sao pályafutása egyedülálló a kalózkodás történetében.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-279",
+      "block_type": "text",
+      "paragraph_id": "p80",
+      "text": "Egyetlen más kalóz sem, sem férfi, sem nő, nem parancsolt soha hasonló méretű erőnek.",
+      "text_markdown": "Egyetlen más kalóz sem, sem férfi, sem nő, nem parancsolt soha hasonló méretű erőnek.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Egyetlen más kalóz sem, sem férfi, sem nő, nem parancsolt soha hasonló méretű erőnek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-280",
+      "block_type": "text",
+      "paragraph_id": "p80",
+      "text": "Egyetlen más kalóz sem épített ki ilyen kifinomult jogi és kormányzási rendszert.",
+      "text_markdown": "Egyetlen más kalóz sem épített ki ilyen kifinomult jogi és kormányzási rendszert.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Egyetlen más kalóz sem épített ki ilyen kifinomult jogi és kormányzási rendszert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-281",
+      "block_type": "text",
+      "paragraph_id": "p80",
+      "text": "És egyetlen más kalóz sem tárgyalt ki ilyen kedvező feltételekkel járó visszavonulást.",
+      "text_markdown": "És egyetlen más kalóz sem tárgyalt ki ilyen kedvező feltételekkel járó visszavonulást.",
+      "title": "Örökség",
+      "tts": {
+        "text": "És egyetlen más kalóz sem tárgyalt ki ilyen kedvező feltételekkel járó visszavonulást.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-282",
+      "block_type": "text",
+      "paragraph_id": "p81",
+      "text": "Sikere sok feltételezést megkérdőjelez a nők történelmi szerepével kapcsolatban.",
+      "text_markdown": "Sikere sok feltételezést megkérdőjelez a nők történelmi szerepével kapcsolatban.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Sikere sok feltételezést megkérdőjelez a nők történelmi szerepével kapcsolatban.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-283",
+      "block_type": "text",
+      "paragraph_id": "p81",
+      "text": "Olyan társadalomban jutott hatalomra, amely szinte semmilyen jogi jogot nem biztosított a nőknek.",
+      "text_markdown": "Olyan társadalomban jutott hatalomra, amely szinte semmilyen jogi jogot nem biztosított a nőknek.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Olyan társadalomban jutott hatalomra, amely szinte semmilyen jogi jogot nem biztosított a nőknek.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-284",
+      "block_type": "text",
+      "paragraph_id": "p81",
+      "text": "Férfiak tízezreinek parancsolt egy olyan világban, amely a nőket alsóbbrendűnek tartotta.",
+      "text_markdown": "Férfiak tízezreinek parancsolt egy olyan világban, amely a nőket alsóbbrendűnek tartotta.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Férfiak tízezreinek parancsolt egy olyan világban, amely a nőket alsóbbrendűnek tartotta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-285",
+      "block_type": "text",
+      "paragraph_id": "p81",
+      "text": "Története bizonyíték arra, hogy a képességnek nincs neme.",
+      "text_markdown": "Története bizonyíték arra, hogy a képességnek nincs neme.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Története bizonyíték arra, hogy a képességnek nincs neme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-286",
+      "block_type": "text",
+      "paragraph_id": "p82",
+      "text": "A történészek vitatták rendkívüli sikerének okait.",
+      "text_markdown": "A történészek vitatták rendkívüli sikerének okait.",
+      "title": "Örökség",
+      "tts": {
+        "text": "A történészek vitatták rendkívüli sikerének okait.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-287",
+      "block_type": "text",
+      "paragraph_id": "p82",
+      "text": "Néhányan személyes tulajdonságait hangsúlyozzák: intelligenciáját, határozottságát, hűségre ösztönző képességét.",
+      "text_markdown": "Néhányan személyes tulajdonságait hangsúlyozzák: intelligenciáját, határozottságát, hűségre ösztönző képességét.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Néhányan személyes tulajdonságait hangsúlyozzák: intelligenciáját, határozottságát, hűségre ösztönző képességét.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-288",
+      "block_type": "text",
+      "paragraph_id": "p82",
+      "text": "Mások azokat a strukturális feltételeket emelik ki, amelyek lehetővé tették felemelkedését: a Qing állam gyengeségét, a parti lakosság szegénységét és a Dél-kínai-tenger földrajzát.",
+      "text_markdown": "Mások azokat a strukturális feltételeket emelik ki, amelyek lehetővé tették felemelkedését: a Qing állam gyengeségét, a parti lakosság szegénységét és a Dél-kínai-tenger földrajzát.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Mások azokat a strukturális feltételeket emelik ki, amelyek lehetővé tették felemelkedését: a Csing állam gyengeségét, a parti lakosság szegénységét és a Dél-kínai-tenger földrajzát.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-289",
+      "block_type": "text",
+      "paragraph_id": "p83",
+      "text": "Az igazság szinte bizonyosan mindkét tényezőt magában foglalja.",
+      "text_markdown": "Az igazság szinte bizonyosan mindkét tényezőt magában foglalja.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Az igazság szinte bizonyosan mindkét tényezőt magában foglalja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-290",
+      "block_type": "text",
+      "paragraph_id": "p83",
+      "text": "A feltételek nélkül tehetsége nem kapott volna teret.",
+      "text_markdown": "A feltételek nélkül tehetsége nem kapott volna teret.",
+      "title": "Örökség",
+      "tts": {
+        "text": "A feltételek nélkül tehetsége nem kapott volna teret.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-291",
+      "block_type": "text",
+      "paragraph_id": "p83",
+      "text": "Tehetsége nélkül a körülmények csak káoszt eredményeztek volna.",
+      "text_markdown": "Tehetsége nélkül a körülmények csak káoszt eredményeztek volna.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Tehetsége nélkül a körülmények csak káoszt eredményeztek volna.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-292",
+      "block_type": "text",
+      "paragraph_id": "p83",
+      "text": "Ő volt a megfelelő személy a történelem megfelelő pillanatában.",
+      "text_markdown": "Ő volt a megfelelő személy a történelem megfelelő pillanatában.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Ő volt a megfelelő személy a történelem megfelelő pillanatában.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-293",
+      "block_type": "text",
+      "paragraph_id": "p84",
+      "text": "Jogi kódexe évtizedekig befolyásolta a kalózok kormányzását visszavonulása után.",
+      "text_markdown": "Jogi kódexe évtizedekig befolyásolta a kalózok kormányzását visszavonulása után.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Jogi kódexe évtizedekig befolyásolta a kalózok kormányzását visszavonulása után.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-294",
+      "block_type": "text",
+      "paragraph_id": "p84",
+      "text": "Későbbi kalózvezetők a Dél-kínai-tengeren hasonló adózási és jogi rendszereket vezettek be.",
+      "text_markdown": "Későbbi kalózvezetők a Dél-kínai-tengeren hasonló adózási és jogi rendszereket vezettek be.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Későbbi kalózvezetők a Dél-kínai-tengeren hasonló adózási és jogi rendszereket vezettek be.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-295",
+      "block_type": "text",
+      "paragraph_id": "p84",
+      "text": "Modellje megmutatta, hogy a kalózflották ugyanolyan hatékonyan szervezhetők, mint a nemzeti haditengerészetek.",
+      "text_markdown": "Modellje megmutatta, hogy a kalózflották ugyanolyan hatékonyan szervezhetők, mint a nemzeti haditengerészetek.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Modellje megmutatta, hogy a kalózflották ugyanolyan hatékonyan szervezhetők, mint a nemzeti haditengerészetek.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-296",
+      "block_type": "text",
+      "paragraph_id": "p85",
+      "text": "Modern időkben Zheng Yi Sao kulturális ikonná vált.",
+      "text_markdown": "Modern időkben Zheng Yi Sao kulturális ikonná vált.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Modern időkben Zheng Yi Sao kulturális ikonná vált.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-297",
+      "block_type": "text",
+      "paragraph_id": "p85",
+      "text": "Regényekben, filmekben és videojátékokban szerepelt szerte a világon.",
+      "text_markdown": "Regényekben, filmekben és videojátékokban szerepelt szerte a világon.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Regényekben, filmekben és videojátékokban szerepelt szerte a világon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-298",
+      "block_type": "text",
+      "paragraph_id": "p85",
+      "text": "Történetét több tucat nyelvre lefordították.",
+      "text_markdown": "Történetét több tucat nyelvre lefordították.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Történetét több tucat nyelvre lefordították.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-299",
+      "block_type": "text",
+      "paragraph_id": "p86",
+      "text": "Életéről azonban sok minden ismeretlen maradt.",
+      "text_markdown": "Életéről azonban sok minden ismeretlen maradt.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Életéről azonban sok minden ismeretlen maradt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-300",
+      "block_type": "text",
+      "paragraph_id": "p86",
+      "text": "Születési nevét nem ismerjük bizonyossággal.",
+      "text_markdown": "Születési nevét nem ismerjük bizonyossággal.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Születési nevét nem ismerjük bizonyossággal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-301",
+      "block_type": "text",
+      "paragraph_id": "p86",
+      "text": "Nincs egyetlen hitelesített kép sem az arcáról.",
+      "text_markdown": "Nincs egyetlen hitelesített kép sem az arcáról.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Nincs egyetlen hitelesített kép sem az arcáról.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-302",
+      "block_type": "text",
+      "paragraph_id": "p86",
+      "text": "Amit tudunk róla, az nagyrészt az ellenségei által írt kormányzati feljegyzésekből származik.",
+      "text_markdown": "Amit tudunk róla, az nagyrészt az ellenségei által írt kormányzati feljegyzésekből származik.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Amit tudunk róla, az nagyrészt az ellenségei által írt kormányzati feljegyzésekből származik.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-303",
+      "block_type": "text",
+      "paragraph_id": "p87",
+      "text": "A Qing udvarnak minden oka megvolt arra, hogy lekicsinyelje az eredményeit.",
+      "text_markdown": "A Qing udvarnak minden oka megvolt arra, hogy lekicsinyelje az eredményeit.",
+      "title": "Örökség",
+      "tts": {
+        "text": "A Csing udvarnak minden oka megvolt arra, hogy lekicsinyelje az eredményeit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-304",
+      "block_type": "text",
+      "paragraph_id": "p87",
+      "text": "Sok hivatalos feljegyzés lekicsinyeli a szerepét, vagy Zhang Bao-nak tulajdonítja a sikerét.",
+      "text_markdown": "Sok hivatalos feljegyzés lekicsinyeli a szerepét, vagy Zhang Bao-nak tulajdonítja a sikerét.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Sok hivatalos feljegyzés lekicsinyeli a szerepét, vagy Zhang Bao-nak tulajdonítja a sikerét.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-305",
+      "block_type": "text",
+      "paragraph_id": "p87",
+      "text": "A történészeknek gondosan kell olvasniuk ezeket a forrásokat, tudva, hogy politikai indíttatásból íródtak.",
+      "text_markdown": "A történészeknek gondosan kell olvasniuk ezeket a forrásokat, tudva, hogy politikai indíttatásból íródtak.",
+      "title": "Örökség",
+      "tts": {
+        "text": "A történészeknek gondosan kell olvasniuk ezeket a forrásokat, tudva, hogy politikai indíttatásból íródtak.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-306",
+      "block_type": "text",
+      "paragraph_id": "p88",
+      "text": "Amit a feljegyzések nem tudnak elrejteni, az az eredményeinek nagysága.",
+      "text_markdown": "Amit a feljegyzések nem tudnak elrejteni, az az eredményeinek nagysága.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Amit a feljegyzések nem tudnak elrejteni, az az eredményeinek nagysága.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-307",
+      "block_type": "text",
+      "paragraph_id": "p88",
+      "text": "Ő építette a feljegyzett történelem legnagyobb kalózflottáját.",
+      "text_markdown": "Ő építette a feljegyzett történelem legnagyobb kalózflottáját.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Ő építette a feljegyzett történelem legnagyobb kalózflottáját.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-308",
+      "block_type": "text",
+      "paragraph_id": "p88",
+      "text": "Legyőzte a Qing Birodalom és a portugál haditengerészet egyesített erőit.",
+      "text_markdown": "Legyőzte a Qing Birodalom és a portugál haditengerészet egyesített erőit.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Legyőzte a Csing Birodalom és a portugál haditengerészet egyesített erőit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-309",
+      "block_type": "text",
+      "paragraph_id": "p88",
+      "text": "Gazdagon, szabadon és legyőzhetetlenül vonult vissza.",
+      "text_markdown": "Gazdagon, szabadon és legyőzhetetlenül vonult vissza.",
+      "title": "Örökség",
+      "tts": {
+        "text": "Gazdagon, szabadon és legyőzhetetlenül vonult vissza.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 4,
+      "chapter": 6,
+      "part": 0,
+      "id": "ch06-310",
+      "block_type": "text",
+      "paragraph_id": "p88",
+      "text": "A tenger hosszú történetében senki más nem tette ezt meg.",
+      "text_markdown": "A tenger hosszú történetében senki más nem tette ezt meg.",
+      "title": "Örökség",
+      "tts": {
+        "text": "A tenger hosszú történetében senki más nem tette ezt meg.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

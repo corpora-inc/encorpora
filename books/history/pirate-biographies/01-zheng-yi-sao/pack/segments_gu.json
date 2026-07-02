@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "gu",
+  "total_segments": 310,
+  "segments": [
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "block_type": "heading",
+      "id": "ch00-001",
+      "sentence_index": 0,
+      "chapter": 0,
+      "heading_level": 1,
+      "text": "વાચકને એક નોંધ",
+      "text_markdown": "વાચકને એક નોંધ",
+      "title": "વાચકને એક નોંધ"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "id": "ch00-002",
+      "sentence_index": 0,
+      "chapter": 0,
+      "text": "આ ઇતિહાસમાં નોંધાયેલી સૌથી સફળ ચાંચિયા વિશેની એક સાચી વાર્તા છે.",
+      "text_markdown": "આ ઇતિહાસમાં નોંધાયેલી સૌથી સફળ ચાંચિયા વિશેની એક સાચી વાર્તા છે.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "આ ઇતિહાસમાં નોંધાયેલી સૌથી સફળ ચાંચિયા વિશેની એક સાચી વાર્તા છે.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "id": "ch00-003",
+      "sentence_index": 1,
+      "chapter": 0,
+      "text": "તેનું નામ ઝેંગ યી સાઓ હતું, અને તેણે દુનિયાના સૌથી મોટા ચાંચિયા કાફલાનું નેતૃત્વ કર્યું હતું.",
+      "text_markdown": "તેનું નામ ઝેંગ યી સાઓ હતું, અને તેણે દુનિયાના સૌથી મોટા ચાંચિયા કાફલાનું નેતૃત્વ કર્યું હતું.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "તેનું નામ ઝેંગ યી સાઓ હતું, અને તેણે દુનિયાના સૌથી મોટા ચાંચિયા કાફલાનું નેતૃત્વ કર્યું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "id": "ch00-004",
+      "sentence_index": 2,
+      "chapter": 0,
+      "text": "તેની શક્તિના શિખર પર, તેણે મોટાભાગના રાષ્ટ્રો પાસે હોય તેના કરતાં વધુ જહાજો પર નિયંત્રણ રાખ્યું હતું.",
+      "text_markdown": "તેની શક્તિના શિખર પર, તેણે મોટાભાગના રાષ્ટ્રો પાસે હોય તેના કરતાં વધુ જહાજો પર નિયંત્રણ રાખ્યું હતું.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "તેની શક્તિના શિખર પર, તેણે મોટાભાગના રાષ્ટ્રો પાસે હોય તેના કરતાં વધુ જહાજો પર નિયંત્રણ રાખ્યું હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "id": "ch00-005",
+      "sentence_index": 0,
+      "chapter": 0,
+      "text": "તેનો જન્મ ધન અથવા વિશેષાધિકારમાં થયો ન હતો.",
+      "text_markdown": "તેનો જન્મ ધન અથવા વિશેષાધિકારમાં થયો ન હતો.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "તેનો જન્મ ધન અથવા વિશેષાધિકારમાં થયો ન હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "id": "ch00-006",
+      "sentence_index": 1,
+      "chapter": 0,
+      "text": "તેનો જન્મ અઢારમી સદીના અંતમાં દક્ષિણ ચીનમાં ગરીબીમાં થયો હતો.",
+      "text_markdown": "તેનો જન્મ અઢારમી સદીના અંતમાં દક્ષિણ ચીનમાં ગરીબીમાં થયો હતો.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "તેનો જન્મ અઢારમી સદીના અંતમાં દક્ષિણ ચીનમાં ગરીબીમાં થયો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "id": "ch00-007",
+      "sentence_index": 2,
+      "chapter": 0,
+      "text": "તેણે જે કંઈ પણ હાંસલ કર્યું, તે બધું તેણે બુદ્ધિ, નિર્દયતા અને લોકોને સંગઠિત કરવાની અસાધારણ ક્ષમતા દ્વારા બનાવ્યું.",
+      "text_markdown": "તેણે જે કંઈ પણ હાંસલ કર્યું, તે બધું તેણે બુદ્ધિ, નિર્દયતા અને લોકોને સંગઠિત કરવાની અસાધારણ ક્ષમતા દ્વારા બનાવ્યું.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "તેણે જે કંઈ પણ હાંસલ કર્યું, તે બધું તેણે બુદ્ધિ, નિર્દયતા અને લોકોને સંગઠિત કરવાની અસાધારણ ક્ષમતા દ્વારા બનાવ્યું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "id": "ch00-008",
+      "sentence_index": 0,
+      "chapter": 0,
+      "text": "આ પુસ્તક એક એવી સ્ત્રીની વાર્તા કહે છે જેની પાસે કશું જ ન હતું તે દક્ષિણ ચીન સાગરની નિર્વિવાદ શાસક કેવી રીતે બની.",
+      "text_markdown": "આ પુસ્તક એક એવી સ્ત્રીની વાર્તા કહે છે જેની પાસે કશું જ ન હતું તે દક્ષિણ ચીન સાગરની નિર્વિવાદ શાસક કેવી રીતે બની.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "આ પુસ્તક એક એવી સ્ત્રીની વાર્તા કહે છે જેની પાસે કશું જ ન હતું તે દક્ષિણ ચીન સાગરની નિર્વિવાદ શાસક કેવી રીતે બની.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "id": "ch00-009",
+      "sentence_index": 1,
+      "chapter": 0,
+      "text": "આ યુદ્ધ, વેપાર, કાયદો અને અસ્તિત્વ ટકાવી રાખવા વિશેની વાર્તા છે.",
+      "text_markdown": "આ યુદ્ધ, વેપાર, કાયદો અને અસ્તિત્વ ટકાવી રાખવા વિશેની વાર્તા છે.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "આ યુદ્ધ, વેપાર, કાયદો અને અસ્તિત્વ ટકાવી રાખવા વિશેની વાર્તા છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "id": "ch00-010",
+      "sentence_index": 2,
+      "chapter": 0,
+      "text": "આ એક એવી દુનિયા વિશેની પણ વાર્તા છે જે ઝડપથી બદલાઈ રહી હતી, કારણ કે યુરોપિયન શક્તિઓ એશિયામાં ઊંડે સુધી પ્રવેશી રહી હતી.",
+      "text_markdown": "આ એક એવી દુનિયા વિશેની પણ વાર્તા છે જે ઝડપથી બદલાઈ રહી હતી, કારણ કે યુરોપિયન શક્તિઓ એશિયામાં ઊંડે સુધી પ્રવેશી રહી હતી.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "આ એક એવી દુનિયા વિશેની પણ વાર્તા છે જે ઝડપથી બદલાઈ રહી હતી, કારણ કે યુરોપિયન શક્તિઓ એશિયામાં ઊંડે સુધી પ્રવેશી રહી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "id": "ch00-011",
+      "sentence_index": 0,
+      "chapter": 0,
+      "text": "આ પુસ્તકમાં દરેક હકીકત ઐતિહાસિક રેકોર્ડમાંથી આવે છે.",
+      "text_markdown": "આ પુસ્તકમાં દરેક હકીકત ઐતિહાસિક રેકોર્ડમાંથી આવે છે.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "આ પુસ્તકમાં દરેક હકીકત ઐતિહાસિક રેકોર્ડમાંથી આવે છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "id": "ch00-012",
+      "sentence_index": 1,
+      "chapter": 0,
+      "text": "જ્યાં રેકોર્ડ અનિશ્ચિત છે, ત્યાં અમે તેમ કહીએ છીએ.",
+      "text_markdown": "જ્યાં રેકોર્ડ અનિશ્ચિત છે, ત્યાં અમે તેમ કહીએ છીએ.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "જ્યાં રેકોર્ડ અનિશ્ચિત છે, ત્યાં અમે તેમ કહીએ છીએ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "id": "ch00-013",
+      "sentence_index": 2,
+      "chapter": 0,
+      "text": "જ્યાં ઇતિહાસકારો અસંમત છે, ત્યાં અમે ઉપલબ્ધ સૌથી મજબૂત પુરાવા રજૂ કરીએ છીએ.",
+      "text_markdown": "જ્યાં ઇતિહાસકારો અસંમત છે, ત્યાં અમે ઉપલબ્ધ સૌથી મજબૂત પુરાવા રજૂ કરીએ છીએ.",
+      "title": "વાચકને એક નોંધ",
+      "tts": {
+        "text": "જ્યાં ઇતિહાસકારો અસંમત છે, ત્યાં અમે ઉપલબ્ધ સૌથી મજબૂત પુરાવા રજૂ કરીએ છીએ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "block_type": "heading",
+      "id": "ch01-014",
+      "sentence_index": 0,
+      "chapter": 1,
+      "heading_level": 1,
+      "text": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "text_markdown": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "id": "ch01-015",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "દક્ષિણ ચીન સાગર પૃથ્વી પરના સૌથી વ્યસ્ત જળમાર્ગોમાંથી એક છે.",
+      "text_markdown": "દક્ષિણ ચીન સાગર પૃથ્વી પરના સૌથી વ્યસ્ત જળમાર્ગોમાંથી એક છે.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "દક્ષિણ ચીન સાગર પૃથ્વી પરના સૌથી વ્યસ્ત જળમાર્ગોમાંથી એક છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "id": "ch01-016",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "તે પશ્ચિમમાં વિયેતનામના દરિયાકિનારાથી પૂર્વમાં ફિલિપાઇન્સ સુધી ફેલાયેલો છે.",
+      "text_markdown": "તે પશ્ચિમમાં વિયેતનામના દરિયાકિનારાથી પૂર્વમાં ફિલિપાઇન્સ સુધી ફેલાયેલો છે.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "તે પશ્ચિમમાં વિયેતનામના દરિયાકિનારાથી પૂર્વમાં ફિલિપાઇન્સ સુધી ફેલાયેલો છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "id": "ch01-017",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "ઉત્તરમાં ચીનનો દરિયાકિનારો આવેલો છે, અને દક્ષિણમાં બોર્નિયો અને સુમાત્રાના ટાપુઓ આવેલા છે.",
+      "text_markdown": "ઉત્તરમાં ચીનનો દરિયાકિનારો આવેલો છે, અને દક્ષિણમાં બોર્નિયો અને સુમાત્રાના ટાપુઓ આવેલા છે.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "ઉત્તરમાં ચીનનો દરિયાકિનારો આવેલો છે, અને દક્ષિણમાં બોર્નિયો અને સુમાત્રાના ટાપુઓ આવેલા છે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "id": "ch01-018",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "હજારો વર્ષોથી, વેપારીઓ આ પાણીમાં સફર કરતા રહ્યા છે.",
+      "text_markdown": "હજારો વર્ષોથી, વેપારીઓ આ પાણીમાં સફર કરતા રહ્યા છે.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "હજારો વર્ષોથી, વેપારીઓ આ પાણીમાં સફર કરતા રહ્યા છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "id": "ch01-019",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "ચીની જંક જહાજો રેશમ, પોર્સેલિન અને ચાને દક્ષિણપૂર્વ એશિયાના બંદરો સુધી લઈ જતા હતા.",
+      "text_markdown": "ચીની જંક જહાજો રેશમ, પોર્સેલિન અને ચાને દક્ષિણપૂર્વ એશિયાના બંદરો સુધી લઈ જતા હતા.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "ચીની જંક જહાજો રેશમ, પોર્સેલિન અને ચાને દક્ષિણપૂર્વ એશિયાના બંદરો સુધી લઈ જતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "id": "ch01-020",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "બદલામાં, મસાલા, ઉષ્ણકટિબંધીય લાકડું અને વિદેશી ચીજવસ્તુઓ ચીન પાછી આવતી હતી.",
+      "text_markdown": "બદલામાં, મસાલા, ઉષ્ણકટિબંધીય લાકડું અને વિદેશી ચીજવસ્તુઓ ચીન પાછી આવતી હતી.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "બદલામાં, મસાલા, ઉષ્ણકટિબંધીય લાકડું અને વિદેશી ચીજવસ્તુઓ ચીન પાછી આવતી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "id": "ch01-021",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "કેન્ટન શહેર, જેને હવે ગુઆંગઝોઉ કહેવાય છે, તે આ વેપારના કેન્દ્રમાં હતું.",
+      "text_markdown": "કેન્ટન શહેર, જેને હવે ગુઆંગઝોઉ કહેવાય છે, તે આ વેપારના કેન્દ્રમાં હતું.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "કેન્ટન શહેર, જેને હવે ગુઆંગઝોઉ કહેવાય છે, તે આ વેપારના કેન્દ્રમાં હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "id": "ch01-022",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "અઢારમી સદીમાં કેન્ટન વિશ્વના સૌથી ધનિક શહેરોમાંનું એક હતું.",
+      "text_markdown": "અઢારમી સદીમાં કેન્ટન વિશ્વના સૌથી ધનિક શહેરોમાંનું એક હતું.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "અઢારમી સદીમાં કેન્ટન વિશ્વના સૌથી ધનિક શહેરોમાંનું એક હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "id": "ch01-023",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "બ્રિટન, ફ્રાન્સ, પોર્ટુગલ અને નેધરલેન્ડના વિદેશી વેપારીઓ બધા તેના બજારોમાં પ્રવેશ મેળવવા માટે સ્પર્ધા કરતા હતા.",
+      "text_markdown": "બ્રિટન, ફ્રાન્સ, પોર્ટુગલ અને નેધરલેન્ડના વિદેશી વેપારીઓ બધા તેના બજારોમાં પ્રવેશ મેળવવા માટે સ્પર્ધા કરતા હતા.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "બ્રિટન, ફ્રાન્સ, પોર્ટુગલ અને નેધરલેન્ડના વિદેશી વેપારીઓ બધા તેના બજારોમાં પ્રવેશ મેળવવા માટે સ્પર્ધા કરતા હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "id": "ch01-024",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "આ સમયગાળા દરમિયાન કિંગ રાજવંશે ચીન પર શાસન કર્યું હતું.",
+      "text_markdown": "આ સમયગાળા દરમિયાન કિંગ રાજવંશે ચીન પર શાસન કર્યું હતું.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "આ સમયગાળા દરમિયાન કિંગ રાજવંશે ચીન પર શાસન કર્યું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "id": "ch01-025",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "કિંગ સમ્રાટો માંચુ હતા, હાન ચીની નહોતા.",
+      "text_markdown": "કિંગ સમ્રાટો માંચુ હતા, હાન ચીની નહોતા.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "કિંગ સમ્રાટો માંચુ હતા, હાન ચીની નહોતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "id": "ch01-026",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "તેઓએ 1644 માં ચીન પર વિજય મેળવ્યો હતો અને વિશ્વના સૌથી મોટા સામ્રાજ્યોમાંનું એક બનાવ્યું હતું.",
+      "text_markdown": "તેઓએ 1644 માં ચીન પર વિજય મેળવ્યો હતો અને વિશ્વના સૌથી મોટા સામ્રાજ્યોમાંનું એક બનાવ્યું હતું.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "તેઓએ સોળસો ચોર્યાસીમાં ચીન પર વિજય મેળવ્યો હતો અને વિશ્વના સૌથી મોટા સામ્રાજ્યોમાંનું એક બનાવ્યું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "id": "ch01-027",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "જોકે, 1700 ના દાયકાના અંત સુધીમાં, કિંગ રાજવંશ નબળો પડવા લાગ્યો હતો.",
+      "text_markdown": "જોકે, 1700 ના દાયકાના અંત સુધીમાં, કિંગ રાજવંશ નબળો પડવા લાગ્યો હતો.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "જોકે, સત્તરસોના દાયકાના અંત સુધીમાં, કિંગ રાજવંશ નબળો પડવા લાગ્યો હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "id": "ch01-028",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "શાહી અમલદારશાહીમાં ભ્રષ્ટાચાર ફેલાઈ ગયો હતો.",
+      "text_markdown": "શાહી અમલદારશાહીમાં ભ્રષ્ટાચાર ફેલાઈ ગયો હતો.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "શાહી અમલદારશાહીમાં ભ્રષ્ટાચાર ફેલાઈ ગયો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "id": "ch01-029",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "કર વસૂલનારાઓ ખેડૂતો અને માછીમારો પાસેથી દરેક સિક્કો કાઢવા માટે દબાણ કરતા હતા.",
+      "text_markdown": "કર વસૂલનારાઓ ખેડૂતો અને માછીમારો પાસેથી દરેક સિક્કો કાઢવા માટે દબાણ કરતા હતા.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "કર વસૂલનારાઓ ખેડૂતો અને માછીમારો પાસેથી દરેક સિક્કો કાઢવા માટે દબાણ કરતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "id": "ch01-030",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "ધનિક અને ગરીબ વચ્ચેનો તફાવત વર્ષેને વર્ષે વધતો ગયો.",
+      "text_markdown": "ધનિક અને ગરીબ વચ્ચેનો તફાવત વર્ષેને વર્ષે વધતો ગયો.",
+      "title": "દક્ષિણ ચીન સાગરની દુનિયા",
+      "tts": {
+        "text": "ધનિક અને ગરીબ વચ્ચેનો તફાવત વર્ષેને વર્ષે વધતો ગયો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "id": "ch01-031",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "In the coastal provinces, many people lived in desperate poverty.",
+      "text_markdown": "In the coastal provinces, many people lived in desperate poverty.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "In the coastal provinces, many people lived in desperate poverty.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "id": "ch01-032",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "The fishing communities along the Guangdong coast were among the poorest in China.",
+      "text_markdown": "The fishing communities along the Guangdong coast were among the poorest in China.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "The fishing communities along the Guangdong coast were among the poorest in China.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "id": "ch01-033",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "Entire families lived on small boats called sampans.",
+      "text_markdown": "Entire families lived on small boats called sampans.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Entire families lived on small boats called sampans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "id": "ch01-034",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "They were born on the water, worked on the water, and died on the water.",
+      "text_markdown": "They were born on the water, worked on the water, and died on the water.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "They were born on the water, worked on the water, and died on the water.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "id": "ch01-035",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "The imperial government called them the Tanka people, and it treated them as outcasts.",
+      "text_markdown": "The imperial government called them the Tanka people, and it treated them as outcasts.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "The imperial government called them the Tanka people, and it treated them as outcasts.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "id": "ch01-036",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "Tanka families were forbidden from living on land in many areas.",
+      "text_markdown": "Tanka families were forbidden from living on land in many areas.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Tanka families were forbidden from living on land in many areas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "id": "ch01-037",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "They could not take the imperial examinations that led to government jobs.",
+      "text_markdown": "They could not take the imperial examinations that led to government jobs.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "They could not take the imperial examinations that led to government jobs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "id": "ch01-038",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "They were locked out of mainstream Chinese society by law and by custom.",
+      "text_markdown": "They were locked out of mainstream Chinese society by law and by custom.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "They were locked out of mainstream Chinese society by law and by custom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "id": "ch01-039",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "For generations, they had no path to a better life.",
+      "text_markdown": "For generations, they had no path to a better life.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "For generations, they had no path to a better life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "id": "ch01-040",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "Piracy offered an alternative.",
+      "text_markdown": "Piracy offered an alternative.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Piracy offered an alternative.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "id": "ch01-041",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "If you could not rise through legal means, the sea provided its own economy.",
+      "text_markdown": "If you could not rise through legal means, the sea provided its own economy.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "If you could not rise through legal means, the sea provided its own economy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "id": "ch01-042",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "Pirate fleets raided merchant ships, extorted fishing villages, and smuggled goods past imperial patrols.",
+      "text_markdown": "Pirate fleets raided merchant ships, extorted fishing villages, and smuggled goods past imperial patrols.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Pirate fleets raided merchant ships, extorted fishing villages, and smuggled goods past imperial patrols.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "id": "ch01-043",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "For many coastal poor, joining a pirate crew was a rational economic decision.",
+      "text_markdown": "For many coastal poor, joining a pirate crew was a rational economic decision.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "For many coastal poor, joining a pirate crew was a rational economic decision.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "id": "ch01-044",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "The waters of the South China Sea were ideal for piracy.",
+      "text_markdown": "The waters of the South China Sea were ideal for piracy.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "The waters of the South China Sea were ideal for piracy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "id": "ch01-045",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "Thousands of islands, inlets, and river mouths provided hiding places.",
+      "text_markdown": "Thousands of islands, inlets, and river mouths provided hiding places.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Thousands of islands, inlets, and river mouths provided hiding places.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "id": "ch01-046",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "Dense fog and sudden storms made pursuit difficult.",
+      "text_markdown": "Dense fog and sudden storms made pursuit difficult.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Dense fog and sudden storms made pursuit difficult.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "id": "ch01-047",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "A fast junk with a skilled crew could vanish into the coastline in minutes.",
+      "text_markdown": "A fast junk with a skilled crew could vanish into the coastline in minutes.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "A fast junk with a skilled crew could vanish into the coastline in minutes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "id": "ch01-048",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "Meanwhile, the opium trade was beginning to reshape the region.",
+      "text_markdown": "Meanwhile, the opium trade was beginning to reshape the region.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Meanwhile, the opium trade was beginning to reshape the region.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "id": "ch01-049",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "British merchants shipped opium from India to China in enormous quantities.",
+      "text_markdown": "British merchants shipped opium from India to China in enormous quantities.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "British merchants shipped opium from India to China in enormous quantities.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "id": "ch01-050",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "The drug was illegal in China, but the profits were so vast that the trade grew every year.",
+      "text_markdown": "The drug was illegal in China, but the profits were so vast that the trade grew every year.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "The drug was illegal in China, but the profits were so vast that the trade grew every year.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "id": "ch01-051",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "Smuggling networks stretched along the entire southern coast.",
+      "text_markdown": "Smuggling networks stretched along the entire southern coast.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Smuggling networks stretched along the entire southern coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "id": "ch01-052",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "This was the world that produced Zheng Yi Sao.",
+      "text_markdown": "This was the world that produced Zheng Yi Sao.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "This was the world that produced Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "id": "ch01-053",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "A world of vast wealth and grinding poverty, separated by a thin strip of ocean.",
+      "text_markdown": "A world of vast wealth and grinding poverty, separated by a thin strip of ocean.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "A world of vast wealth and grinding poverty, separated by a thin strip of ocean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "id": "ch01-054",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "A world where empires competed, and the law of the sea belonged to whoever was strong enough to enforce it.",
+      "text_markdown": "A world where empires competed, and the law of the sea belonged to whoever was strong enough to enforce it.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "A world where empires competed, and the law of the sea belonged to whoever was strong enough to enforce it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "id": "ch01-055",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "The European powers saw China as a market to be cracked open.",
+      "text_markdown": "The European powers saw China as a market to be cracked open.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "The European powers saw China as a market to be cracked open.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "id": "ch01-056",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "The Qing government saw the Europeans as barbarians to be managed.",
+      "text_markdown": "The Qing government saw the Europeans as barbarians to be managed.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "ચિંગ સરકારે યુરોપિયનોને સંચાલિત કરવા માટેના બર્બર તરીકે જોયા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "id": "ch01-057",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "And the pirates of the South China Sea saw opportunity in the chaos between them.",
+      "text_markdown": "And the pirates of the South China Sea saw opportunity in the chaos between them.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "And the pirates of the South China Sea saw opportunity in the chaos between them.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "id": "ch01-058",
+      "sentence_index": 0,
+      "chapter": 1,
+      "text": "By 1790, pirate fleets in the South China Sea numbered in the hundreds of ships.",
+      "text_markdown": "By 1790, pirate fleets in the South China Sea numbered in the hundreds of ships.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "સત્તરસો નેવું સુધીમાં, દક્ષિણ ચીન સાગરમાં ચાંચિયાઓના કાફલાઓમાં સેંકડો જહાજો હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "id": "ch01-059",
+      "sentence_index": 1,
+      "chapter": 1,
+      "text": "They were not disorganized criminals.",
+      "text_markdown": "They were not disorganized criminals.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "They were not disorganized criminals.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "id": "ch01-060",
+      "sentence_index": 2,
+      "chapter": 1,
+      "text": "Many operated as disciplined naval forces with hierarchies and codes of conduct.",
+      "text_markdown": "Many operated as disciplined naval forces with hierarchies and codes of conduct.",
+      "title": "The World of the South China Sea",
+      "tts": {
+        "text": "Many operated as disciplined naval forces with hierarchies and codes of conduct.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "id": "ch01-061",
+      "sentence_index": 3,
+      "chapter": 1,
+      "text": "આ દળોમાં સૌથી મોટું દળ ઇતિહાસમાં સૌથી શક્તિશાળી ચાંચિયા કાફલો બનવા જઈ રહ્યું હતું.",
+      "text_markdown": "આ દળોમાં સૌથી મોટું દળ ઇતિહાસમાં સૌથી શક્તિશાળી ચાંચિયા કાફલો બનવા જઈ રહ્યું હતું.",
+      "title": "દક્ષિણ ચીન સાગરનું વિશ્વ",
+      "tts": {
+        "text": "આ દળોમાં સૌથી મોટું દળ ઇતિહાસમાં સૌથી શક્તિશાળી ચાંચિયા કાફલો બનવા જઈ રહ્યું હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "block_type": "heading",
+      "id": "ch02-062",
+      "sentence_index": 0,
+      "chapter": 2,
+      "heading_level": 1,
+      "text": "ઉત્પત્તિ",
+      "text_markdown": "ઉત્પત્તિ",
+      "title": "ઉત્પત્તિ"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "id": "ch02-063",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "જે મહિલા ઝેંગ યી સાઓ બનવાની હતી તેનો જન્મ આશરે 1775 માં થયો હતો.",
+      "text_markdown": "જે મહિલા ઝેંગ યી સાઓ બનવાની હતી તેનો જન્મ આશરે 1775 માં થયો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "જે મહિલા ઝેંગ યી સાઓ બનવાની હતી તેનો જન્મ આશરે સત્તર સો પંચોતેર માં થયો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "id": "ch02-064",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "ચીની સ્ત્રોતોમાં તેણીને સામાન્ય રીતે શી શિયાંગગુ તરીકે ઓળખવામાં આવે છે.",
+      "text_markdown": "ચીની સ્ત્રોતોમાં તેણીને સામાન્ય રીતે શી શિયાંગગુ તરીકે ઓળખવામાં આવે છે.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ચીની સ્ત્રોતોમાં તેણીને સામાન્ય રીતે શી શિયાંગગુ તરીકે ઓળખવામાં આવે છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "id": "ch02-065",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "ઝેંગ યી સાઓ નામનો અર્થ ફક્ત ઝેંગ યીની પત્ની થાય છે.",
+      "text_markdown": "ઝેંગ યી સાઓ નામનો અર્થ ફક્ત ઝેંગ યીની પત્ની થાય છે.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ઝેંગ યી સાઓ નામનો અર્થ ફક્ત ઝેંગ યીની પત્ની થાય છે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "id": "ch02-066",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "તેણીનો જન્મ ગુઆંગડોંગ પ્રાંતમાં ટાંકા બોટ-નિવાસી સમુદાયમાં થયો હતો.",
+      "text_markdown": "તેણીનો જન્મ ગુઆંગડોંગ પ્રાંતમાં ટાંકા બોટ-નિવાસી સમુદાયમાં થયો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણીનો જન્મ ગુઆંગડોંગ પ્રાંતમાં ટાંકા બોટ-નિવાસી સમુદાયમાં થયો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "id": "ch02-067",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેણીનો પરિવાર ગરીબ હતો, જેમ કે લગભગ તમામ ટાંકા પરિવારો.",
+      "text_markdown": "તેણીનો પરિવાર ગરીબ હતો, જેમ કે લગભગ તમામ ટાંકા પરિવારો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણીનો પરિવાર ગરીબ હતો, જેમ કે લગભગ તમામ ટાંકા પરિવારો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "id": "ch02-068",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "તેણીએ તેના પ્રારંભિક વર્ષો પાણી પર વિતાવ્યા, દરિયાકિનારાની લય શીખી.",
+      "text_markdown": "તેણીએ તેના પ્રારંભિક વર્ષો પાણી પર વિતાવ્યા, દરિયાકિનારાની લય શીખી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણીએ તેના પ્રારંભિક વર્ષો પાણી પર વિતાવ્યા, દરિયાકિનારાની લય શીખી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "id": "ch02-069",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "એક યુવાન મહિલા તરીકે, તેણીએ કેન્ટન બંદરમાં એક તરતા વેશ્યાલયમાં કામ કર્યું.",
+      "text_markdown": "એક યુવાન મહિલા તરીકે, તેણીએ કેન્ટન બંદરમાં એક તરતા વેશ્યાલયમાં કામ કર્યું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "એક યુવાન મહિલા તરીકે, તેણીએ કેન્ટન બંદરમાં એક તરતા વેશ્યાલયમાં કામ કર્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "id": "ch02-070",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેઓ વ્યસ્ત બંદર પરથી પસાર થતા ખલાસીઓ, વેપારીઓ અને માછીમારોને સેવા આપતા હતા.",
+      "text_markdown": "તેઓ વ્યસ્ત બંદર પરથી પસાર થતા ખલાસીઓ, વેપારીઓ અને માછીમારોને સેવા આપતા હતા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેઓ વ્યસ્ત બંદર પરથી પસાર થતા ખલાસીઓ, વેપારીઓ અને માછીમારોને સેવા આપતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "id": "ch02-071",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "તે મુશ્કેલ અને જોખમી કામ હતું, પરંતુ તેણે તેણીને વિશ્વનું એવું જ્ઞાન આપ્યું જે તેના વર્ગની બહુ ઓછી મહિલાઓ મેળવી શકતી હતી.",
+      "text_markdown": "તે મુશ્કેલ અને જોખમી કામ હતું, પરંતુ તેણે તેણીને વિશ્વનું એવું જ્ઞાન આપ્યું જે તેના વર્ગની બહુ ઓછી મહિલાઓ મેળવી શકતી હતી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તે મુશ્કેલ અને જોખમી કામ હતું, પરંતુ તેણે તેણીને વિશ્વનું એવું જ્ઞાન આપ્યું જે તેના વર્ગની બહુ ઓછી મહિલાઓ મેળવી શકતી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "id": "ch02-072",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "તેણીએ લોકોને ઝડપથી અને સચોટ રીતે વાંચતા શીખ્યા.",
+      "text_markdown": "તેણીએ લોકોને ઝડપથી અને સચોટ રીતે વાંચતા શીખ્યા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણીએ લોકોને ઝડપથી અને સચોટ રીતે વાંચતા શીખ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "id": "ch02-073",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેણીએ વેપાર અને વાટાઘાટોની ભાષાઓ શીખી.",
+      "text_markdown": "તેણીએ વેપાર અને વાટાઘાટોની ભાષાઓ શીખી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણીએ વેપાર અને વાટાઘાટોની ભાષાઓ શીખી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "id": "ch02-074",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "આ કુશળતા કોઈએ કલ્પના કરી હોય તેના કરતાં ઘણી વધુ મૂલ્યવાન સાબિત થશે.",
+      "text_markdown": "આ કુશળતા કોઈએ કલ્પના કરી હોય તેના કરતાં ઘણી વધુ મૂલ્યવાન સાબિત થશે.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "આ કુશળતા કોઈએ કલ્પના કરી હોય તેના કરતાં ઘણી વધુ મૂલ્યવાન સાબિત થશે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "id": "ch02-075",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "1798 માં, ઝેંગ યી નામના એક ચાંચિયા કપ્તાને તેણી જે જહાજ પર હતી તેને કબજે કર્યું.",
+      "text_markdown": "1798 માં, ઝેંગ યી નામના એક ચાંચિયા કપ્તાને તેણી જે જહાજ પર હતી તેને કબજે કર્યું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "સત્તર સો અઠ્ઠાણું માં, ઝેંગ યી નામના એક ચાંચિયા કપ્તાને તેણી જે જહાજ પર હતી તેને કબજે કર્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "id": "ch02-076",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તે ચાંચિયાઓના લાંબા વંશમાંથી આવતો હતો, જે પેઢીઓથી ચાલ્યો આવતો હતો.",
+      "text_markdown": "તે ચાંચિયાઓના લાંબા વંશમાંથી આવતો હતો, જે પેઢીઓથી ચાલ્યો આવતો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તે ચાંચિયાઓના લાંબા વંશમાંથી આવતો હતો, જે પેઢીઓથી ચાલ્યો આવતો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "id": "ch02-077",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "તેના પરિવારે ક્વિંગ વિજેતાઓ સામે મિંગ રાજવંશના અવશેષોને ટેકો આપ્યો હતો.",
+      "text_markdown": "તેના પરિવારે ક્વિંગ વિજેતાઓ સામે મિંગ રાજવંશના અવશેષોને ટેકો આપ્યો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેના પરિવારે કિંગ વિજેતાઓ સામે મિંગ રાજવંશના અવશેષોને ટેકો આપ્યો હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "id": "ch02-078",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "ઝેંગ યીએ યુવાન મહિલાને લગ્નનો પ્રસ્તાવ મૂક્યો.",
+      "text_markdown": "ઝેંગ યીએ યુવાન મહિલાને લગ્નનો પ્રસ્તાવ મૂક્યો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ઝેંગ યીએ યુવાન મહિલાને લગ્નનો પ્રસ્તાવ મૂક્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "id": "ch02-079",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "મોટાભાગના અહેવાલો અનુસાર, તેણીએ ફક્ત સ્વીકાર્યું નહીં.",
+      "text_markdown": "મોટાભાગના અહેવાલો અનુસાર, તેણીએ ફક્ત સ્વીકાર્યું નહીં.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "મોટાભાગના અહેવાલો અનુસાર, તેણીએ ફક્ત સ્વીકાર્યું નહીં.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "id": "ch02-080",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "તેણીએ લગ્ન માટે સંમત થતા પહેલા તેમની ભાગીદારીની શરતો પર વાટાઘાટો કરી.",
+      "text_markdown": "તેણીએ લગ્ન માટે સંમત થતા પહેલા તેમની ભાગીદારીની શરતો પર વાટાઘાટો કરી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણીએ લગ્ન માટે સંમત થતા પહેલા તેમની ભાગીદારીની શરતો પર વાટાઘાટો કરી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "id": "ch02-081",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "તેણીએ તેના કાફલામાં સમાન હિસ્સો અને કમાન્ડના નિર્ણયોમાં સમાન અવાજની માંગ કરી.",
+      "text_markdown": "તેણીએ તેના કાફલામાં સમાન હિસ્સો અને કમાન્ડના નિર્ણયોમાં સમાન અવાજની માંગ કરી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણીએ તેના કાફલામાં સમાન હિસ્સો અને કમાન્ડના નિર્ણયોમાં સમાન અવાજની માંગ કરી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "id": "ch02-082",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "તે સમય માટે આ અસાધારણ હતું.",
+      "text_markdown": "તે સમય માટે આ અસાધારણ હતું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તે સમય માટે આ અસાધારણ હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "id": "ch02-083",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "અંતિમ ક્વિંગ ચીનમાં મહિલાઓને બહુ ઓછા કાનૂની અધિકારો હતા.",
+      "text_markdown": "અંતિમ ક્વિંગ ચીનમાં મહિલાઓને બહુ ઓછા કાનૂની અધિકારો હતા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "અંતિમ કિંગ ચીનમાં મહિલાઓને બહુ ઓછા કાનૂની અધિકારો હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "id": "ch02-084",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "પત્ની પાસેથી તેના પતિનું પ્રશ્ન વિના પાલન કરવાની અપેક્ષા રાખવામાં આવતી હતી.",
+      "text_markdown": "પત્ની પાસેથી તેના પતિનું પ્રશ્ન વિના પાલન કરવાની અપેક્ષા રાખવામાં આવતી હતી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "પત્ની પાસેથી તેના પતિનું પ્રશ્ન વિના પાલન કરવાની અપેક્ષા રાખવામાં આવતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "id": "ch02-085",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "પરંતુ આ ચાંચિયાઓની દુનિયા હતી, અને ચાંચિયાઓની દુનિયાએ તેના પોતાના નિયમો બનાવ્યા હતા.",
+      "text_markdown": "પરંતુ આ ચાંચિયાઓની દુનિયા હતી, અને ચાંચિયાઓની દુનિયાએ તેના પોતાના નિયમો બનાવ્યા હતા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "પરંતુ આ ચાંચિયાઓની દુનિયા હતી, અને ચાંચિયાઓની દુનિયાએ તેના પોતાના નિયમો બનાવ્યા હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "id": "ch02-086",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "ઝેંગ યી તેની શરતો પર સંમત થયો.",
+      "text_markdown": "ઝેંગ યી તેની શરતો પર સંમત થયો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ઝેંગ યી તેની શરતો પર સંમત થયો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "id": "ch02-087",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "ઇતિહાસકારો માને છે કે તેણે તેની બુદ્ધિ અને નેતા તરીકેની તેની ક્ષમતાને ઓળખી હતી.",
+      "text_markdown": "ઇતિહાસકારો માને છે કે તેણે તેની બુદ્ધિ અને નેતા તરીકેની તેની ક્ષમતાને ઓળખી હતી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ઇતિહાસકારો માને છે કે તેણે તેની બુદ્ધિ અને નેતા તરીકેની તેની ક્ષમતાને ઓળખી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "id": "ch02-088",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "તેમના લગ્ન વ્યક્તિગત બંધન જેટલા જ એક વ્યૂહાત્મક જોડાણ હતા.",
+      "text_markdown": "તેમના લગ્ન વ્યક્તિગત બંધન જેટલા જ એક વ્યૂહાત્મક જોડાણ હતા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેમના લગ્ન વ્યક્તિગત બંધન જેટલા જ એક વ્યૂહાત્મક જોડાણ હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "id": "ch02-089",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "સાથે મળીને, તેઓ કંઈક અભૂતપૂર્વ બનાવશે.",
+      "text_markdown": "સાથે મળીને, તેઓ કંઈક અભૂતપૂર્વ બનાવશે.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "સાથે મળીને, તેઓ કંઈક અભૂતપૂર્વ બનાવશે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "id": "ch02-090",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "ઝેંગ યી પાસે એક સાહસિક દ્રષ્ટિ હતી.",
+      "text_markdown": "ઝેંગ યી પાસે એક સાહસિક દ્રષ્ટિ હતી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ઝેંગ યી પાસે એક સાહસિક દ્રષ્ટિ હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "id": "ch02-091",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તે દક્ષિણ ચીન સમુદ્રના વિખરાયેલા ચાંચિયાઓના કાફલાઓને એક જ સંઘમાં એક કરવા માંગતો હતો.",
+      "text_markdown": "તે દક્ષિણ ચીન સમુદ્રના વિખરાયેલા ચાંચિયાઓના કાફલાઓને એક જ સંઘમાં એક કરવા માંગતો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તે દક્ષિણ ચીન સમુદ્રના વિખરાયેલા ચાંચિયાઓના કાફલાઓને એક જ સંઘમાં એક કરવા માંગતો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "id": "ch02-092",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "વ્યક્તિગત ચાંચિયા કેપ્ટન હંમેશા એકબીજા સાથે સ્પર્ધા કરતા હતા.",
+      "text_markdown": "વ્યક્તિગત ચાંચિયા કેપ્ટન હંમેશા એકબીજા સાથે સ્પર્ધા કરતા હતા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "વ્યક્તિગત ચાંચિયા કેપ્ટન હંમેશા એકબીજા સાથે સ્પર્ધા કરતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "id": "ch02-093",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "ઝેંગ યી માનતો હતો કે જો તેઓ સહકાર આપશે તો તેઓ ઘણા વધુ શક્તિશાળી બનશે.",
+      "text_markdown": "ઝેંગ યી માનતો હતો કે જો તેઓ સહકાર આપશે તો તેઓ ઘણા વધુ શક્તિશાળી બનશે.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ઝેંગ યી માનતો હતો કે જો તેઓ સહકાર આપશે તો તેઓ ઘણા વધુ શક્તિશાળી બનશે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "id": "ch02-094",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "૧૭૯૮ અને ૧૮૦૫ ની વચ્ચે, ઝેંગ યીએ જોડાણો બનાવવા માટે અથાક પ્રયાસ કર્યો.",
+      "text_markdown": "૧૭૯૮ અને ૧૮૦૫ ની વચ્ચે, ઝેંગ યીએ જોડાણો બનાવવા માટે અથાક પ્રયાસ કર્યો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "સત્તર સો અઠ્ઠાણું અને અઢાર સો પાંચ ની વચ્ચે, ઝેંગ યીએ જોડાણો બનાવવા માટે અથાક પ્રયાસ કર્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "id": "ch02-095",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેણે રાજદ્વારી અને ધમકીના મિશ્રણ દ્વારા હરીફ કેપ્ટનોને તેના સંઘમાં જોડાવા માટે સમજાવ્યા.",
+      "text_markdown": "તેણે રાજદ્વારી અને ધમકીના મિશ્રણ દ્વારા હરીફ કેપ્ટનોને તેના સંઘમાં જોડાવા માટે સમજાવ્યા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણે રાજદ્વારી અને ધમકીના મિશ્રણ દ્વારા હરીફ કેપ્ટનોને તેના સંઘમાં જોડાવા માટે સમજાવ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "id": "ch02-096",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "તેની પત્ની આ વાટાઘાટોમાં ઊંડાણપૂર્વક સામેલ હતી.",
+      "text_markdown": "તેની પત્ની આ વાટાઘાટોમાં ઊંડાણપૂર્વક સામેલ હતી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેની પત્ની આ વાટાઘાટોમાં ઊંડાણપૂર્વક સામેલ હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "id": "ch02-097",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "તેણે એવા કરારો બનાવવામાં મદદ કરી જેણે કાફલાને એકસાથે બાંધ્યો.",
+      "text_markdown": "તેણે એવા કરારો બનાવવામાં મદદ કરી જેણે કાફલાને એકસાથે બાંધ્યો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણે એવા કરારો બનાવવામાં મદદ કરી જેણે કાફલાને એકસાથે બાંધ્યો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "id": "ch02-098",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "૧૮૦૫ સુધીમાં, સંઘ પૂર્ણ થયું.",
+      "text_markdown": "૧૮૦૫ સુધીમાં, સંઘ પૂર્ણ થયું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "અઢાર સો પાંચ સુધીમાં, સંઘ પૂર્ણ થયું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "id": "ch02-099",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેમાં છ કાફલાઓનો સમાવેશ થતો હતો, દરેક તેના ધ્વજના રંગ દ્વારા ઓળખાતો હતો.",
+      "text_markdown": "તેમાં છ કાફલાઓનો સમાવેશ થતો હતો, દરેક તેના ધ્વજના રંગ દ્વારા ઓળખાતો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેમાં છ કાફલાઓનો સમાવેશ થતો હતો, દરેક તેના ધ્વજના રંગ દ્વારા ઓળખાતો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "id": "ch02-100",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "લાલ ધ્વજ કાફલો સૌથી મોટો અને સૌથી શક્તિશાળી હતો.",
+      "text_markdown": "લાલ ધ્વજ કાફલો સૌથી મોટો અને સૌથી શક્તિશાળી હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "લાલ ધ્વજ કાફલો સૌથી મોટો અને સૌથી શક્તિશાળી હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "id": "ch02-101",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "ઝેંગ યીએ વ્યક્તિગત રીતે લાલ ધ્વજ કાફલાનું નેતૃત્વ કર્યું.",
+      "text_markdown": "ઝેંગ યીએ વ્યક્તિગત રીતે લાલ ધ્વજ કાફલાનું નેતૃત્વ કર્યું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "ઝેંગ યીએ વ્યક્તિગત રીતે લાલ ધ્વજ કાફલાનું નેતૃત્વ કર્યું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "id": "ch02-102",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "આ સંઘે સેંકડો જહાજો અને હજારો ચાંચિયાઓને નિયંત્રિત કર્યા.",
+      "text_markdown": "આ સંઘે સેંકડો જહાજો અને હજારો ચાંચિયાઓને નિયંત્રિત કર્યા.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "આ સંઘે સેંકડો જહાજો અને હજારો ચાંચિયાઓને નિયંત્રિત કર્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "id": "ch02-103",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેણે સમગ્ર દક્ષિણ ચીન સમુદ્ર પર પ્રભુત્વ જમાવ્યું.",
+      "text_markdown": "તેણે સમગ્ર દક્ષિણ ચીન સમુદ્ર પર પ્રભુત્વ જમાવ્યું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણે સમગ્ર દક્ષિણ ચીન સમુદ્ર પર પ્રભુત્વ જમાવ્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "id": "ch02-104",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "કોઈપણ વેપારી જહાજ શ્રદ્ધાંજલિ આપ્યા વિના અથવા વિનાશનું જોખમ લીધા વિના આ પાણીમાંથી પસાર થઈ શકતું ન હતું.",
+      "text_markdown": "કોઈપણ વેપારી જહાજ શ્રદ્ધાંજલિ આપ્યા વિના અથવા વિનાશનું જોખમ લીધા વિના આ પાણીમાંથી પસાર થઈ શકતું ન હતું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "કોઈપણ વેપારી જહાજ શ્રદ્ધાંજલિ આપ્યા વિના અથવા વિનાશનું જોખમ લીધા વિના આ પાણીમાંથી પસાર થઈ શકતું ન હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "id": "ch02-105",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "પછી, નવેમ્બર ૧૮૦૭ માં, ઝેંગ યીનું અવસાન થયું.",
+      "text_markdown": "પછી, નવેમ્બર ૧૮૦૭ માં, ઝેંગ યીનું અવસાન થયું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "પછી, નવેમ્બર અઢાર સો સાત માં, ઝેંગ યીનું અવસાન થયું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "id": "ch02-106",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેના મૃત્યુના સંજોગો ઇતિહાસકારો દ્વારા ચર્ચાસ્પદ છે.",
+      "text_markdown": "તેના મૃત્યુના સંજોગો ઇતિહાસકારો દ્વારા ચર્ચાસ્પદ છે.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેના મૃત્યુના સંજોગો ઇતિહાસકારો દ્વારા ચર્ચાસ્પદ છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "id": "ch02-107",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "કેટલાક અહેવાલો કહે છે કે તે તોફાનમાં ડૂબી ગયો હતો.",
+      "text_markdown": "કેટલાક અહેવાલો કહે છે કે તે તોફાનમાં ડૂબી ગયો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "કેટલાક અહેવાલો કહે છે કે તે તોફાનમાં ડૂબી ગયો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "id": "ch02-108",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "અન્ય સૂચવે છે કે તે વિયેતનામના દરિયાકાંઠે યુદ્ધમાં માર્યો ગયો હતો.",
+      "text_markdown": "અન્ય સૂચવે છે કે તે વિયેતનામના દરિયાકાંઠે યુદ્ધમાં માર્યો ગયો હતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "અન્ય સૂચવે છે કે તે વિયેતનામના દરિયાકાંઠે યુદ્ધમાં માર્યો ગયો હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "id": "ch02-109",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "તેના મૃત્યુએ સમગ્ર સંઘ માટે સંકટ ઊભું કર્યું.",
+      "text_markdown": "તેના મૃત્યુએ સમગ્ર સંઘ માટે સંકટ ઊભું કર્યું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેના મૃત્યુએ સમગ્ર સંઘ માટે સંકટ ઊભું કર્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "id": "ch02-110",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેણે બનાવેલું જોડાણ તેની વ્યક્તિગત સત્તા દ્વારા જાળવી રાખવામાં આવ્યું હતું.",
+      "text_markdown": "તેણે બનાવેલું જોડાણ તેની વ્યક્તિગત સત્તા દ્વારા જાળવી રાખવામાં આવ્યું હતું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણે બનાવેલું જોડાણ તેની વ્યક્તિગત સત્તા દ્વારા જાળવી રાખવામાં આવ્યું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "id": "ch02-111",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "એક મજબૂત નેતા વિના, તે ફરીથી સ્પર્ધાત્મક જૂથોમાં વિભાજિત થઈ જશે.",
+      "text_markdown": "એક મજબૂત નેતા વિના, તે ફરીથી સ્પર્ધાત્મક જૂથોમાં વિભાજિત થઈ જશે.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "એક મજબૂત નેતા વિના, તે ફરીથી સ્પર્ધાત્મક જૂથોમાં વિભાજિત થઈ જશે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "id": "ch02-112",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "તેમણે જે કંઈ પણ બનાવ્યું હતું તે જોખમમાં હતું.",
+      "text_markdown": "તેમણે જે કંઈ પણ બનાવ્યું હતું તે જોખમમાં હતું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેમણે જે કંઈ પણ બનાવ્યું હતું તે જોખમમાં હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "id": "ch02-113",
+      "sentence_index": 0,
+      "chapter": 2,
+      "text": "અન્ય કાફલાઓના કેપ્ટનોને સંઘના પતન થવાની અપેક્ષા હતી.",
+      "text_markdown": "અન્ય કાફલાઓના કેપ્ટનોને સંઘના પતન થવાની અપેક્ષા હતી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "અન્ય કાફલાઓના કેપ્ટનોને સંઘના પતન થવાની અપેક્ષા હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "id": "ch02-114",
+      "sentence_index": 1,
+      "chapter": 2,
+      "text": "તેઓએ પ્રદેશ કબજે કરવાની તૈયારીમાં, સ્થાન માટે દાવપેચ કરવાનું શરૂ કર્યું.",
+      "text_markdown": "તેઓએ પ્રદેશ કબજે કરવાની તૈયારીમાં, સ્થાન માટે દાવપેચ કરવાનું શરૂ કર્યું.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેઓએ પ્રદેશ કબજે કરવાની તૈયારીમાં, સ્થાન માટે દાવપેચ કરવાનું શરૂ કર્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "id": "ch02-115",
+      "sentence_index": 2,
+      "chapter": 2,
+      "text": "પરંતુ તેઓએ ઝેંગ યીની વિધવાના મહત્વાકાંક્ષા અને ક્ષમતાને ધ્યાનમાં લીધી ન હતી.",
+      "text_markdown": "પરંતુ તેઓએ ઝેંગ યીની વિધવાના મહત્વાકાંક્ષા અને ક્ષમતાને ધ્યાનમાં લીધી ન હતી.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "પરંતુ તેઓએ ઝેંગ યીની વિધવાના મહત્વાકાંક્ષા અને ક્ષમતાને ધ્યાનમાં લીધી ન હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "id": "ch02-116",
+      "sentence_index": 3,
+      "chapter": 2,
+      "text": "તેણે જે બનાવવામાં મદદ કરી હતી તેને છોડી દેવાનો તેનો કોઈ ઇરાદો નહોતો.",
+      "text_markdown": "તેણે જે બનાવવામાં મદદ કરી હતી તેને છોડી દેવાનો તેનો કોઈ ઇરાદો નહોતો.",
+      "title": "ઉત્પત્તિ",
+      "tts": {
+        "text": "તેણે જે બનાવવામાં મદદ કરી હતી તેને છોડી દેવાનો તેનો કોઈ ઇરાદો નહોતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "block_type": "heading",
+      "id": "ch03-117",
+      "sentence_index": 0,
+      "chapter": 3,
+      "heading_level": 1,
+      "text": "સત્તા પર આવવું",
+      "text_markdown": "સત્તા પર આવવું",
+      "title": "સત્તા પર આવવું"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "id": "ch03-118",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "તેના પતિના મૃત્યુ પછીના દિવસોમાં, ઝેંગ યી સાઓએ ગણતરીપૂર્વકની ગતિથી કામ કર્યું.",
+      "text_markdown": "તેના પતિના મૃત્યુ પછીના દિવસોમાં, ઝેંગ યી સાઓએ ગણતરીપૂર્વકની ગતિથી કામ કર્યું.",
+      "title": "સત્તા પર આવવું",
+      "tts": {
+        "text": "તેના પતિના મૃત્યુ પછીના દિવસોમાં, ઝેંગ યી સાઓએ ગણતરીપૂર્વકની ગતિથી કામ કર્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "id": "ch03-119",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "તેની પ્રથમ કાર્યવાહી તેના પતિના સૌથી વિશ્વાસુ લેફ્ટનન્ટ ઝાંગ બાઓની વફાદારી સુરક્ષિત કરવાની હતી.",
+      "text_markdown": "તેની પ્રથમ કાર્યવાહી તેના પતિના સૌથી વિશ્વાસુ લેફ્ટનન્ટ ઝાંગ બાઓની વફાદારી સુરક્ષિત કરવાની હતી.",
+      "title": "સત્તા પર આવવું",
+      "tts": {
+        "text": "તેની પ્રથમ કાર્યવાહી તેના પતિના સૌથી વિશ્વાસુ લેફ્ટનન્ટ ઝાંગ બાઓની વફાદારી સુરક્ષિત કરવાની હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "id": "ch03-120",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "ઝાંગ બાઓ એક માછીમારનો પુત્ર હતો જેને બાળપણમાં ચાંચિયાઓએ પકડી લીધો હતો.",
+      "text_markdown": "ઝાંગ બાઓ એક માછીમારનો પુત્ર હતો જેને બાળપણમાં ચાંચિયાઓએ પકડી લીધો હતો.",
+      "title": "સત્તા પર આવવું",
+      "tts": {
+        "text": "ઝાંગ બાઓ એક માછીમારનો પુત્ર હતો જેને બાળપણમાં ચાંચિયાઓએ પકડી લીધો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "id": "ch03-121",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "ઝેંગ યીએ તેને દત્તક લીધો હતો, તેને તાલીમ આપી હતી અને તેને સૈન્ય કમાન્ડર બનવા માટે ઉછેર્યો હતો.",
+      "text_markdown": "ઝેંગ યીએ તેને દત્તક લીધો હતો, તેને તાલીમ આપી હતી અને તેને સૈન્ય કમાન્ડર બનવા માટે ઉછેર્યો હતો.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "ઝેંગ યીએ તેને દત્તક લીધો હતો, તેને તાલીમ આપી હતી અને તેને સૈન્ય કમાન્ડર બનવા માટે ઉછેર્યો હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "id": "ch03-122",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "ઝેંગ યી સાઓએ ઝાંગ બાઓ સાથે એક ગઠબંધન બનાવ્યું હતું જે વ્યક્તિગત અને વ્યૂહાત્મક બંને હતું.",
+      "text_markdown": "ઝેંગ યી સાઓએ ઝાંગ બાઓ સાથે એક ગઠબંધન બનાવ્યું હતું જે વ્યક્તિગત અને વ્યૂહાત્મક બંને હતું.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "ઝેંગ યી સાઓએ ઝાંગ બાઓ સાથે એક ગઠબંધન બનાવ્યું હતું જે વ્યક્તિગત અને વ્યૂહાત્મક બંને હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "id": "ch03-123",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "આ બંને આખરે લગ્ન કરશે.",
+      "text_markdown": "આ બંને આખરે લગ્ન કરશે.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "આ બંને આખરે લગ્ન કરશે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "id": "ch03-124",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "પરંતુ તે પ્રથમ નિર્ણાયક અઠવાડિયામાં, ભાગીદારી અસ્તિત્વ ટકાવી રાખવા વિશે હતી.",
+      "text_markdown": "પરંતુ તે પ્રથમ નિર્ણાયક અઠવાડિયામાં, ભાગીદારી અસ્તિત્વ ટકાવી રાખવા વિશે હતી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "પરંતુ તે પ્રથમ નિર્ણાયક અઠવાડિયામાં, ભાગીદારી અસ્તિત્વ ટકાવી રાખવા વિશે હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "id": "ch03-125",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "સાથે મળીને, તેઓએ અન્ય કાફલાના કમાન્ડરો સમક્ષ એક સંયુક્ત મોરચો રજૂ કર્યો.",
+      "text_markdown": "સાથે મળીને, તેઓએ અન્ય કાફલાના કમાન્ડરો સમક્ષ એક સંયુક્ત મોરચો રજૂ કર્યો.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "સાથે મળીને, તેઓએ અન્ય કાફલાના કમાન્ડરો સમક્ષ એક સંયુક્ત મોરચો રજૂ કર્યો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "id": "ch03-126",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "તેણીએ છ કાફલાના કેપ્ટનોની એક પરિષદ બોલાવી.",
+      "text_markdown": "તેણીએ છ કાફલાના કેપ્ટનોની એક પરિષદ બોલાવી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "તેણીએ છ કાફલાના કેપ્ટનોની એક પરિષદ બોલાવી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "id": "ch03-127",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "તે બેઠકમાં, તેણીએ સંઘના નેતૃત્વ માટે પોતાનો દાવો રજૂ કર્યો.",
+      "text_markdown": "તે બેઠકમાં, તેણીએ સંઘના નેતૃત્વ માટે પોતાનો દાવો રજૂ કર્યો.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "તે બેઠકમાં, તેણીએ સંઘના નેતૃત્વ માટે પોતાનો દાવો રજૂ કર્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "id": "ch03-128",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "તેણીએ દલીલ કરી કે આ ગઠબંધન બનાવવામાં તે તેના પતિની સમાન ભાગીદાર હતી.",
+      "text_markdown": "તેણીએ દલીલ કરી કે આ ગઠબંધન બનાવવામાં તે તેના પતિની સમાન ભાગીદાર હતી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "તેણીએ દલીલ કરી કે આ ગઠબંધન બનાવવામાં તે તેના પતિની સમાન ભાગીદાર હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "id": "ch03-129",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "એક પછી એક, કેપ્ટનોએ તેના આદેશનું પાલન કરવા સંમતિ આપી.",
+      "text_markdown": "એક પછી એક, કેપ્ટનોએ તેના આદેશનું પાલન કરવા સંમતિ આપી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "એક પછી એક, કેપ્ટનોએ તેના આદેશનું પાલન કરવા સંમતિ આપી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "id": "ch03-130",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "તેનો પ્રથમ પડકાર 70,000 ચાંચિયાઓના દળ પર શિસ્ત લાદવાનો હતો.",
+      "text_markdown": "તેનો પ્રથમ પડકાર 70,000 ચાંચિયાઓના દળ પર શિસ્ત લાદવાનો હતો.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "તેનો પ્રથમ પડકાર સિત્તેર હજાર ચાંચિયાઓના દળ પર શિસ્ત લાદવાનો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "id": "ch03-131",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "ચાંચિયાઓ, સ્વભાવે, સ્વતંત્ર અને સત્તા પ્રત્યે અવિશ્વાસુ હતા.",
+      "text_markdown": "ચાંચિયાઓ, સ્વભાવે, સ્વતંત્ર અને સત્તા પ્રત્યે અવિશ્વાસુ હતા.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "ચાંચિયાઓ, સ્વભાવે, સ્વતંત્ર અને સત્તા પ્રત્યે અવિશ્વાસુ હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "id": "ch03-132",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "ઝેંગ યી સાઓ સમજી ગયા કે કાયદા વિનાનો કાફલો પોતાને જ વિખેરી નાખશે.",
+      "text_markdown": "ઝેંગ યી સાઓ સમજી ગયા કે કાયદા વિનાનો કાફલો પોતાને જ વિખેરી નાખશે.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "ઝેંગ યી સાઓ સમજી ગયા કે કાયદા વિનાનો કાફલો પોતાને જ વિખેરી નાખશે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "id": "ch03-133",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "તેણીએ ચાંચિયાઓના ઇતિહાસમાં સૌથી નોંધપાત્ર કાયદાકીય સંહિતાઓમાંની એક બનાવી.",
+      "text_markdown": "તેણીએ ચાંચિયાઓના ઇતિહાસમાં સૌથી નોંધપાત્ર કાયદાકીય સંહિતાઓમાંની એક બનાવી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "તેણીએ ચાંચિયાઓના ઇતિહાસમાં સૌથી નોંધપાત્ર કાયદાકીય સંહિતાઓમાંની એક બનાવી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "id": "ch03-134",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "આ સંહિતા કડક અને વિશિષ્ટ હતી.",
+      "text_markdown": "આ સંહિતા કડક અને વિશિષ્ટ હતી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "આ સંહિતા કડક અને વિશિષ્ટ હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "id": "ch03-135",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "કોઈપણ ચાંચિયો જે ઉપરી અધિકારીના સીધા આદેશનું ઉલ્લંઘન કરશે, તેનું શિરચ્છેદ કરવામાં આવશે.",
+      "text_markdown": "કોઈપણ ચાંચિયો જે ઉપરી અધિકારીના સીધા આદેશનું ઉલ્લંઘન કરશે, તેનું શિરચ્છેદ કરવામાં આવશે.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "કોઈપણ ચાંચિયો જે ઉપરી અધિકારીના સીધા આદેશનું ઉલ્લંઘન કરશે, તેનું શિરચ્છેદ કરવામાં આવશે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "id": "ch03-136",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "ત્યાગ મૃત્યુદંડને પાત્ર હતો.",
+      "text_markdown": "ત્યાગ મૃત્યુદંડને પાત્ર હતો.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "ત્યાગ મૃત્યુદંડને પાત્ર હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "id": "ch03-137",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "સામાન્ય ભંડોળમાંથી ચોરી કરવી મૃત્યુદંડને પાત્ર હતી.",
+      "text_markdown": "સામાન્ય ભંડોળમાંથી ચોરી કરવી મૃત્યુદંડને પાત્ર હતી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "સામાન્ય ભંડોળમાંથી ચોરી કરવી મૃત્યુદંડને પાત્ર હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "id": "ch03-138",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "આ સંહિતાએ પકડાયેલા લોકોને એવી રીતે પણ સુરક્ષિત કર્યા જે તે યુગ માટે અસામાન્ય હતું.",
+      "text_markdown": "આ સંહિતાએ પકડાયેલા લોકોને એવી રીતે પણ સુરક્ષિત કર્યા જે તે યુગ માટે અસામાન્ય હતું.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "આ સંહિતાએ પકડાયેલા લોકોને એવી રીતે પણ સુરક્ષિત કર્યા જે તે યુગ માટે અસામાન્ય હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "id": "ch03-139",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "જે ચાંચિયાઓએ બંદીવાનો પર હુમલો કર્યો હતો તેમને કડક સજાનો સામનો કરવો પડ્યો હતો.",
+      "text_markdown": "જે ચાંચિયાઓએ બંદીવાનો પર હુમલો કર્યો હતો તેમને કડક સજાનો સામનો કરવો પડ્યો હતો.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "જે ચાંચિયાઓએ બંદીવાનો પર હુમલો કર્યો હતો તેમને કડક સજાનો સામનો કરવો પડ્યો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "id": "ch03-140",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "જો કોઈ ચાંચિયો બંદીવાનને પત્ની તરીકે રાખતો, તો તેણે તેની પ્રત્યે વફાદાર રહેવું પડતું.",
+      "text_markdown": "જો કોઈ ચાંચિયો બંદીવાનને પત્ની તરીકે રાખતો, તો તેણે તેની પ્રત્યે વફાદાર રહેવું પડતું.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "જો કોઈ ચાંચિયો બંદીવાનને પત્ની તરીકે રાખતો, તો તેણે તેની પ્રત્યે વફાદાર રહેવું પડતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "id": "ch03-141",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "આ નિયમો સૂચનો નહોતા; તેમને લોખંડી સુસંગતતા સાથે લાગુ કરવામાં આવ્યા હતા.",
+      "text_markdown": "આ નિયમો સૂચનો નહોતા; તેમને લોખંડી સુસંગતતા સાથે લાગુ કરવામાં આવ્યા હતા.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "આ નિયમો સૂચનો નહોતા; તેમને લોખંડી સુસંગતતા સાથે લાગુ કરવામાં આવ્યા હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "id": "ch03-142",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "તમામ લૂંટ નોંધવામાં આવી હતી અને એક નિશ્ચિત પ્રણાલી અનુસાર વહેંચવામાં આવી હતી.",
+      "text_markdown": "તમામ લૂંટ નોંધવામાં આવી હતી અને એક નિશ્ચિત પ્રણાલી અનુસાર વહેંચવામાં આવી હતી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "તમામ લૂંટ નોંધવામાં આવી હતી અને એક નિશ્ચિત પ્રણાલી અનુસાર વહેંચવામાં આવી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "id": "ch03-143",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "જે ચાંચિયાએ માલ કબજે કર્યો તેને 20 ટકા મળ્યા.",
+      "text_markdown": "જે ચાંચિયાએ માલ કબજે કર્યો તેને 20 ટકા મળ્યા.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "જે ચાંચિયાએ માલ કબજે કર્યો તેને વીસ ટકા મળ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "id": "ch03-144",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "બાકીના 80 ટકા સામાન્ય ભંડોળમાં ગયા.",
+      "text_markdown": "બાકીના 80 ટકા સામાન્ય ભંડોળમાં ગયા.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "બાકીના એંસી ટકા સામાન્ય ભંડોળમાં ગયા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "id": "ch03-145",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "આ પ્રણાલીએ આંતરિક ઝઘડાઓને અટકાવ્યા જે મોટાભાગના ચાંચિયા સંગઠનોનો નાશ કરતા હતા.",
+      "text_markdown": "આ પ્રણાલીએ આંતરિક ઝઘડાઓને અટકાવ્યા જે મોટાભાગના ચાંચિયા સંગઠનોનો નાશ કરતા હતા.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "આ પ્રણાલીએ આંતરિક ઝઘડાઓને અટકાવ્યા જે મોટાભાગના ચાંચિયા સંગઠનોનો નાશ કરતા હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "id": "ch03-146",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "ઝેંગ યી સાઓએ એક અત્યાધુનિક કર પ્રણાલી પણ બનાવી.",
+      "text_markdown": "ઝેંગ યી સાઓએ એક અત્યાધુનિક કર પ્રણાલી પણ બનાવી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "ઝેંગ યી સાઓએ એક અત્યાધુનિક કર પ્રણાલી પણ બનાવી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "id": "ch03-147",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "વેપારી જહાજો નિયમિત ફી ચૂકવીને સુરક્ષિત માર્ગ ખરીદી શકતા હતા.",
+      "text_markdown": "વેપારી જહાજો નિયમિત ફી ચૂકવીને સુરક્ષિત માર્ગ ખરીદી શકતા હતા.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "વેપારી જહાજો નિયમિત ફી ચૂકવીને સુરક્ષિત માર્ગ ખરીદી શકતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "id": "ch03-148",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "દરિયાકાંઠાના માછીમારીના ગામોએ સુરક્ષાના બદલામાં ખંડણી ચૂકવી.",
+      "text_markdown": "દરિયાકાંઠાના માછીમારીના ગામોએ સુરક્ષાના બદલામાં ખંડણી ચૂકવી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "દરિયાકાંઠાના માછીમારીના ગામોએ સુરક્ષાના બદલામાં ખંડણી ચૂકવી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "id": "ch03-149",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "આ પ્રણાલી એક સમાંતર સરકારની જેમ કાર્ય કરતી હતી, જે સુરક્ષાના બદલામાં મહેસૂલ એકત્ર કરતી હતી.",
+      "text_markdown": "આ પ્રણાલી એક સમાંતર સરકારની જેમ કાર્ય કરતી હતી, જે સુરક્ષાના બદલામાં મહેસૂલ એકત્ર કરતી હતી.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "આ પ્રણાલી એક સમાંતર સરકારની જેમ કાર્ય કરતી હતી, જે સુરક્ષાના બદલામાં મહેસૂલ એકત્ર કરતી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "id": "ch03-150",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "ક્વિંગ સરકારે ખતરાને ઓળખી કાઢ્યો અને ચાંચિયાઓને કચડી નાખવા માટે તેનું નૌકાદળ મોકલ્યું.",
+      "text_markdown": "ક્વિંગ સરકારે ખતરાને ઓળખી કાઢ્યો અને ચાંચિયાઓને કચડી નાખવા માટે તેનું નૌકાદળ મોકલ્યું.",
+      "title": "સત્તાનો ઉદય",
+      "tts": {
+        "text": "ચિંગ સરકારે ખતરાને ઓળખી કાઢ્યો અને ચાંચિયાઓને કચડી નાખવા માટે તેનું નૌકાદળ મોકલ્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "id": "ch03-151",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "૧૮૦૮ માં, એક વિશાળ શાહી કાફલો દક્ષિણ ચીન સાગરમાં સફર કરી ગયો.",
+      "text_markdown": "૧૮૦૮ માં, એક વિશાળ શાહી કાફલો દક્ષિણ ચીન સાગરમાં સફર કરી ગયો.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "અઢારસો આઠમાં, એક વિશાળ શાહી કાફલો દક્ષિણ ચીન સાગરમાં સફર કરી ગયો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "id": "ch03-152",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "આ યુદ્ધ સરકાર માટે એક આપત્તિ હતું.",
+      "text_markdown": "આ યુદ્ધ સરકાર માટે એક આપત્તિ હતું.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "આ યુદ્ધ સરકાર માટે એક આપત્તિ હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "id": "ch03-153",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "ઝેંગ યી સાઓના દળોએ ડઝનબંધ શાહી યુદ્ધ જહાજોને ડૂબાડી દીધા અથવા કબજે કરી લીધા.",
+      "text_markdown": "ઝેંગ યી સાઓના દળોએ ડઝનબંધ શાહી યુદ્ધ જહાજોને ડૂબાડી દીધા અથવા કબજે કરી લીધા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "ઝેંગ યી સાઓના દળોએ ડઝનબંધ શાહી યુદ્ધ જહાજોને ડૂબાડી દીધા અથવા કબજે કરી લીધા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "id": "ch03-154",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "પરાજિત એડમિરલ એટલા અપમાનિત થયા કે તેમણે પોતાનો જીવ લઈ લીધો.",
+      "text_markdown": "પરાજિત એડમિરલ એટલા અપમાનિત થયા કે તેમણે પોતાનો જીવ લઈ લીધો.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "પરાજિત એડમિરલ એટલા અપમાનિત થયા કે તેમણે પોતાનો જીવ લઈ લીધો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "id": "ch03-155",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "શાહી દરબાર નુકસાનના પ્રમાણથી સ્તબ્ધ થઈ ગયો હતો.",
+      "text_markdown": "શાહી દરબાર નુકસાનના પ્રમાણથી સ્તબ્ધ થઈ ગયો હતો.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "શાહી દરબાર નુકસાનના પ્રમાણથી સ્તબ્ધ થઈ ગયો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "id": "ch03-156",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "તેમણે તેમના શ્રેષ્ઠ જહાજો અને તેમના સૌથી અનુભવી કમાન્ડરને મોકલ્યા હતા, અને તેઓ હારી ગયા હતા.",
+      "text_markdown": "તેમણે તેમના શ્રેષ્ઠ જહાજો અને તેમના સૌથી અનુભવી કમાન્ડરને મોકલ્યા હતા, અને તેઓ હારી ગયા હતા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેમણે તેમના શ્રેષ્ઠ જહાજો અને તેમના સૌથી અનુભવી કમાન્ડરને મોકલ્યા હતા, અને તેઓ હારી ગયા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "id": "ch03-157",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "ચાંચિયાઓ હવે સરકારના પોતાના નૌકાદળ કરતાં વધુ શક્તિશાળી હતા.",
+      "text_markdown": "ચાંચિયાઓ હવે સરકારના પોતાના નૌકાદળ કરતાં વધુ શક્તિશાળી હતા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "ચાંચિયાઓ હવે સરકારના પોતાના નૌકાદળ કરતાં વધુ શક્તિશાળી હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "id": "ch03-158",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "ઝેંગ યી સાઓએ તેમના ફાયદાનો નિર્દયતાથી લાભ લીધો.",
+      "text_markdown": "ઝેંગ યી સાઓએ તેમના ફાયદાનો નિર્દયતાથી લાભ લીધો.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "ઝેંગ યી સાઓએ તેમના ફાયદાનો નિર્દયતાથી લાભ લીધો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "id": "ch03-159",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "તેમના કાફલાએ સમગ્ર ગુઆંગડોંગ કિનારે પોતાનો પ્રદેશ વિસ્તાર્યો.",
+      "text_markdown": "તેમના કાફલાએ સમગ્ર ગુઆંગડોંગ કિનારે પોતાનો પ્રદેશ વિસ્તાર્યો.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેમના કાફલાએ સમગ્ર ગુઆંગડોંગ કિનારે પોતાનો પ્રદેશ વિસ્તાર્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "id": "ch03-160",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "તેમણે ટાપુઓ પર અને છુપાયેલા નદીના મુખપ્રદેશોમાં થાણા સ્થાપ્યા.",
+      "text_markdown": "તેમણે ટાપુઓ પર અને છુપાયેલા નદીના મુખપ્રદેશોમાં થાણા સ્થાપ્યા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેમણે ટાપુઓ પર અને છુપાયેલા નદીના મુખપ્રદેશોમાં થાણા સ્થાપ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "id": "ch03-161",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "તેમનું ગુપ્તચર નેટવર્ક કેન્ટનથી વિયેતનામ સુધી ફેલાયેલું હતું.",
+      "text_markdown": "તેમનું ગુપ્તચર નેટવર્ક કેન્ટનથી વિયેતનામ સુધી ફેલાયેલું હતું.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેમનું ગુપ્તચર નેટવર્ક કેન્ટનથી વિયેતનામ સુધી ફેલાયેલું હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "id": "ch03-162",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "કિંગ સરકારે નવી વ્યૂહરચના અજમાવી.",
+      "text_markdown": "કિંગ સરકારે નવી વ્યૂહરચના અજમાવી.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "ચિંગ સરકારે નવી વ્યૂહરચના અજમાવી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "id": "ch03-163",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "તેમણે ચાંચિયાઓ સામે લડવા માટે મકાઉની વસાહતમાંથી પોર્ટુગીઝ યુદ્ધ જહાજો ભાડે રાખ્યા.",
+      "text_markdown": "તેમણે ચાંચિયાઓ સામે લડવા માટે મકાઉની વસાહતમાંથી પોર્ટુગીઝ યુદ્ધ જહાજો ભાડે રાખ્યા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેમણે ચાંચિયાઓ સામે લડવા માટે મકાઉની વસાહતમાંથી પોર્ટુગીઝ યુદ્ધ જહાજો ભાડે રાખ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "id": "ch03-164",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "પોર્ટુગીઝો પાસે આધુનિક યુરોપિયન તોપો અને પ્રશિક્ષિત નૌકા અધિકારીઓ હતા.",
+      "text_markdown": "પોર્ટુગીઝો પાસે આધુનિક યુરોપિયન તોપો અને પ્રશિક્ષિત નૌકા અધિકારીઓ હતા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "પોર્ટુગીઝો પાસે આધુનિક યુરોપિયન તોપો અને પ્રશિક્ષિત નૌકા અધિકારીઓ હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "id": "ch03-165",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "થોડા સમય માટે, આ જોડાણે ચાંચિયાઓના કાફલા પર વાસ્તવિક દબાણ બનાવ્યું.",
+      "text_markdown": "થોડા સમય માટે, આ જોડાણે ચાંચિયાઓના કાફલા પર વાસ્તવિક દબાણ બનાવ્યું.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "થોડા સમય માટે, આ જોડાણે ચાંચિયાઓના કાફલા પર વાસ્તવિક દબાણ બનાવ્યું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "id": "ch03-166",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "પરંતુ ઝેંગ યી સાઓ ઝડપથી અનુકૂળ થઈ ગયા.",
+      "text_markdown": "પરંતુ ઝેંગ યી સાઓ ઝડપથી અનુકૂળ થઈ ગયા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "પરંતુ ઝેંગ યી સાઓ ઝડપથી અનુકૂળ થઈ ગયા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "id": "ch03-167",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "તેમણે પોર્ટુગીઝ યુદ્ધ જહાજો સાથે સીધા મુકાબલા ટાળ્યા.",
+      "text_markdown": "તેમણે પોર્ટુગીઝ યુદ્ધ જહાજો સાથે સીધા મુકાબલા ટાળ્યા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેમણે પોર્ટુગીઝ યુદ્ધ જહાજો સાથે સીધા મુકાબલા ટાળ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "id": "ch03-168",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "તેના બદલે, તેમણે તેમની સપ્લાય લાઇનને નિશાન બનાવી અને તેમના વેપારી સાથીઓ પર હુમલો કર્યો.",
+      "text_markdown": "તેના બદલે, તેમણે તેમની સપ્લાય લાઇનને નિશાન બનાવી અને તેમના વેપારી સાથીઓ પર હુમલો કર્યો.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેના બદલે, તેમણે તેમની સપ્લાય લાઇનને નિશાન બનાવી અને તેમના વેપારી સાથીઓ પર હુમલો કર્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "id": "ch03-169",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "તેમણે સમજ્યું કે પોર્ટુગીઝોને જ્યાં સુધી ચૂકવણી કરવામાં આવશે ત્યાં સુધી જ તેઓ લડશે.",
+      "text_markdown": "તેમણે સમજ્યું કે પોર્ટુગીઝોને જ્યાં સુધી ચૂકવણી કરવામાં આવશે ત્યાં સુધી જ તેઓ લડશે.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "તેમણે સમજ્યું કે પોર્ટુગીઝોને જ્યાં સુધી ચૂકવણી કરવામાં આવશે ત્યાં સુધી જ તેઓ લડશે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "id": "ch03-170",
+      "sentence_index": 0,
+      "chapter": 3,
+      "text": "૧૮૦૯ સુધીમાં, કિંગ અને પોર્ટુગીઝ જોડાણ તેમને હરાવવામાં નિષ્ફળ રહ્યું હતું.",
+      "text_markdown": "૧૮૦૯ સુધીમાં, કિંગ અને પોર્ટુગીઝ જોડાણ તેમને હરાવવામાં નિષ્ફળ રહ્યું હતું.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "અઢારસો નવ સુધીમાં, ચિંગ અને પોર્ટુગીઝ જોડાણ તેમને હરાવવામાં નિષ્ફળ રહ્યું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "id": "ch03-171",
+      "sentence_index": 1,
+      "chapter": 3,
+      "text": "સરકારે જંગી રકમ ખર્ચી હતી અને ડઝનબંધ જહાજો ગુમાવ્યા હતા.",
+      "text_markdown": "સરકારે જંગી રકમ ખર્ચી હતી અને ડઝનબંધ જહાજો ગુમાવ્યા હતા.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "સરકારે જંગી રકમ ખર્ચી હતી અને ડઝનબંધ જહાજો ગુમાવ્યા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "id": "ch03-172",
+      "sentence_index": 2,
+      "chapter": 3,
+      "text": "ચાંચિયાઓએ પહેલા કરતાં વધુ મજબૂતીથી દરિયાકિનારાને નિયંત્રિત કર્યો.",
+      "text_markdown": "ચાંચિયાઓએ પહેલા કરતાં વધુ મજબૂતીથી દરિયાકિનારાને નિયંત્રિત કર્યો.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "ચાંચિયાઓએ પહેલા કરતાં વધુ મજબૂતીથી દરિયાકિનારાને નિયંત્રિત કર્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "id": "ch03-173",
+      "sentence_index": 3,
+      "chapter": 3,
+      "text": "ઝેંગ યી સાઓનું સંઘ તેની શક્તિના શિખર પર હતું.",
+      "text_markdown": "ઝેંગ યી સાઓનું સંઘ તેની શક્તિના શિખર પર હતું.",
+      "title": "સત્તામાં ઉદય",
+      "tts": {
+        "text": "ઝેંગ યી સાઓનું સંઘ તેની શક્તિના શિખર પર હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "block_type": "heading",
+      "id": "ch04-174",
+      "sentence_index": 0,
+      "chapter": 4,
+      "heading_level": 1,
+      "text": "શિખર પર",
+      "text_markdown": "શિખર પર",
+      "title": "શિખર પર"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "id": "ch04-175",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "તેના શિખર પર, ચાંચિયાઓના સંઘે આશરે ૧,૮૦૦ જહાજોનું નેતૃત્વ કર્યું હતું.",
+      "text_markdown": "તેના શિખર પર, ચાંચિયાઓના સંઘે આશરે ૧,૮૦૦ જહાજોનું નેતૃત્વ કર્યું હતું.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "તેના શિખર પર, ચાંચિયાઓના સંઘે આશરે અઢારસો જહાજોનું નેતૃત્વ કર્યું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "id": "ch04-176",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "આમાં નાની, ઝડપી હુમલાખોર બોટથી માંડીને ડઝનબંધ તોપો વહન કરતા વિશાળ યુદ્ધ જંકનો સમાવેશ થતો હતો.",
+      "text_markdown": "આમાં નાની, ઝડપી હુમલાખોર બોટથી માંડીને ડઝનબંધ તોપો વહન કરતા વિશાળ યુદ્ધ જંકનો સમાવેશ થતો હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "આમાં નાની, ઝડપી હુમલાખોર બોટથી માંડીને ડઝનબંધ તોપો વહન કરતા વિશાળ યુદ્ધ જંકનો સમાવેશ થતો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "id": "ch04-177",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "કુલ લડાયક દળ ૭૦,૦૦૦ થી ૮૦,૦૦૦ લોકોની વચ્ચે હતું.",
+      "text_markdown": "કુલ લડાયક દળ ૭૦,૦૦૦ થી ૮૦,૦૦૦ લોકોની વચ્ચે હતું.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "કુલ લડાયક દળ સિત્તેર હજાર થી એંસી હજાર લોકોની વચ્ચે હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "id": "ch04-178",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "આ તે સમયે મોટાભાગના યુરોપિયન રાષ્ટ્રોના નૌકાદળ કરતાં મોટું હતું.",
+      "text_markdown": "આ તે સમયે મોટાભાગના યુરોપિયન રાષ્ટ્રોના નૌકાદળ કરતાં મોટું હતું.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "આ તે સમયે મોટાભાગના યુરોપિયન રાષ્ટ્રોના નૌકાદળ કરતાં મોટું હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "id": "ch04-179",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "રેડ ફ્લેગ ફ્લીટ પાસે એકલા ૬૦૦ થી ૮૦૦ જહાજો હતા.",
+      "text_markdown": "રેડ ફ્લેગ ફ્લીટ પાસે એકલા ૬૦૦ થી ૮૦૦ જહાજો હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "રેડ ફ્લેગ ફ્લીટ પાસે એકલા છસો થી આઠસો જહાજો હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "id": "ch04-180",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "તે સંઘમાં સૌથી મોટો એકલ કાફલો હતો.",
+      "text_markdown": "તે સંઘમાં સૌથી મોટો એકલ કાફલો હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "તે સંઘમાં સૌથી મોટો એકલ કાફલો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "id": "ch04-181",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "ઝેંગ યી સાઓએ તેનું સીધું નેતૃત્વ કર્યું હતું, જેમાં ઝાંગ બાઓ તેના મુખ્ય સૈન્ય અધિકારી હતા.",
+      "text_markdown": "ઝેંગ યી સાઓએ તેનું સીધું નેતૃત્વ કર્યું હતું, જેમાં ઝાંગ બાઓ તેના મુખ્ય સૈન્ય અધિકારી હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "ઝેંગ યી સાઓએ તેનું સીધું નેતૃત્વ કર્યું હતું, જેમાં ઝાંગ બાઓ તેના મુખ્ય સૈન્ય અધિકારી હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "id": "ch04-182",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "અન્ય પાંચ કાફલા અર્ધ-સ્વતંત્ર રીતે કાર્યરત હતા પરંતુ તેના વ્યૂહાત્મક નિર્દેશોનું પાલન કરતા હતા.",
+      "text_markdown": "અન્ય પાંચ કાફલા અર્ધ-સ્વતંત્ર રીતે કાર્યરત હતા પરંતુ તેના વ્યૂહાત્મક નિર્દેશોનું પાલન કરતા હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "અન્ય પાંચ કાફલા અર્ધ-સ્વતંત્ર રીતે કાર્યરત હતા પરંતુ તેના વ્યૂહાત્મક નિર્દેશોનું પાલન કરતા હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "id": "ch04-183",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "સંઘનો પ્રદેશ 1,000 માઇલથી વધુ દરિયાકિનારે ફેલાયેલો હતો.",
+      "text_markdown": "સંઘનો પ્રદેશ 1,000 માઇલથી વધુ દરિયાકિનારે ફેલાયેલો હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "સંઘનો પ્રદેશ એક હજાર માઇલથી વધુ દરિયાકિનારે ફેલાયેલો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "id": "ch04-184",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "દક્ષિણમાં વિયેતનામની સરહદથી ઉત્તરમાં ફુજિયનના દરિયાકિનારા સુધી, ચાંચિયાઓની પરવાનગી વિના કોઈ જહાજ સુરક્ષિત નહોતું.",
+      "text_markdown": "દક્ષિણમાં વિયેતનામની સરહદથી ઉત્તરમાં ફુજિયનના દરિયાકિનારા સુધી, ચાંચિયાઓની પરવાનગી વિના કોઈ જહાજ સુરક્ષિત નહોતું.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "દક્ષિણમાં વિયેતનામની સરહદથી ઉત્તરમાં ફુજિયનના દરિયાકિનારા સુધી, ચાંચિયાઓની પરવાનગી વિના કોઈ જહાજ સુરક્ષિત નહોતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "id": "ch04-185",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "શક્તિશાળી બ્રિટિશ ઇસ્ટ ઇન્ડિયા કંપનીએ પણ પોતાનો માલ ગુમાવવાથી બચવા માટે ખંડણી ચૂકવી હતી.",
+      "text_markdown": "શક્તિશાળી બ્રિટિશ ઇસ્ટ ઇન્ડિયા કંપનીએ પણ પોતાનો માલ ગુમાવવાથી બચવા માટે ખંડણી ચૂકવી હતી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "શક્તિશાળી બ્રિટિશ ઇસ્ટ ઇન્ડિયા કંપનીએ પણ પોતાનો માલ ગુમાવવાથી બચવા માટે ખંડણી ચૂકવી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "id": "ch04-186",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "ચાંચિયાઓના જંક પરનું જીવન કઠોર હતું પણ સુવ્યવસ્થિત હતું.",
+      "text_markdown": "ચાંચિયાઓના જંક પરનું જીવન કઠોર હતું પણ સુવ્યવસ્થિત હતું.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "ચાંચિયાઓના જંક પરનું જીવન કઠોર હતું પણ સુવ્યવસ્થિત હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "id": "ch04-187",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "દરેક જહાજમાં કેપ્ટનથી લઈને નવા ભરતી થયેલા સભ્ય સુધી સ્પષ્ટ વંશવેલો હતો.",
+      "text_markdown": "દરેક જહાજમાં કેપ્ટનથી લઈને નવા ભરતી થયેલા સભ્ય સુધી સ્પષ્ટ વંશવેલો હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "દરેક જહાજમાં કેપ્ટનથી લઈને નવા ભરતી થયેલા સભ્ય સુધી સ્પષ્ટ વંશવેલો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "id": "ch04-188",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "ભોજન સામૂહિક હતું, અને રાશન સમાન રીતે વહેંચવામાં આવતું હતું.",
+      "text_markdown": "ભોજન સામૂહિક હતું, અને રાશન સમાન રીતે વહેંચવામાં આવતું હતું.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "ભોજન સામૂહિક હતું, અને રાશન સમાન રીતે વહેંચવામાં આવતું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "id": "ch04-189",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "દરેક ક્રૂ સભ્યને તેમની પદવી અને ભૂમિકાના આધારે લૂંટનો હિસ્સો મળતો હતો.",
+      "text_markdown": "દરેક ક્રૂ સભ્યને તેમની પદવી અને ભૂમિકાના આધારે લૂંટનો હિસ્સો મળતો હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "દરેક ક્રૂ સભ્યને તેમની પદવી અને ભૂમિકાના આધારે લૂંટનો હિસ્સો મળતો હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "id": "ch04-190",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "કાફલાના ઘણા ચાંચિયા જહાજો પર મહિલાઓ સેવા આપતી હતી.",
+      "text_markdown": "કાફલાના ઘણા ચાંચિયા જહાજો પર મહિલાઓ સેવા આપતી હતી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "કાફલાના ઘણા ચાંચિયા જહાજો પર મહિલાઓ સેવા આપતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "id": "ch04-191",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "કેટલીક મહિલાઓ દરોડા દરમિયાન પુરુષો સાથે લડતી હતી.",
+      "text_markdown": "કેટલીક મહિલાઓ દરોડા દરમિયાન પુરુષો સાથે લડતી હતી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "કેટલીક મહિલાઓ દરોડા દરમિયાન પુરુષો સાથે લડતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "id": "ch04-192",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "અન્ય મહિલાઓ પુરવઠા, નેવિગેશન અને જહાજો વચ્ચેના સંચારનું સંચાલન કરતી હતી.",
+      "text_markdown": "અન્ય મહિલાઓ પુરવઠા, નેવિગેશન અને જહાજો વચ્ચેના સંચારનું સંચાલન કરતી હતી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "અન્ય મહિલાઓ પુરવઠા, નેવિગેશન અને જહાજો વચ્ચેના સંચારનું સંચાલન કરતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "id": "ch04-193",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "ચાંચિયાઓની દુનિયાએ મહિલાઓને મુખ્ય પ્રવાહના કિંગ સમાજ કરતાં વધુ સ્વતંત્રતા આપી હતી.",
+      "text_markdown": "ચાંચિયાઓની દુનિયાએ મહિલાઓને મુખ્ય પ્રવાહના કિંગ સમાજ કરતાં વધુ સ્વતંત્રતા આપી હતી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "ચાંચિયાઓની દુનિયાએ મહિલાઓને મુખ્ય પ્રવાહના ચિંગ સમાજ કરતાં વધુ સ્વતંત્રતા આપી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "id": "ch04-194",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "કાફલાના યુદ્ધ જંક પ્રચંડ લડાયક મશીનો હતા.",
+      "text_markdown": "કાફલાના યુદ્ધ જંક પ્રચંડ લડાયક મશીનો હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "કાફલાના યુદ્ધ જંક પ્રચંડ લડાયક મશીનો હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "id": "ch04-195",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "એક મોટો જંક 30 કે તેથી વધુ તોપો લઈ જઈ શકતો હતો.",
+      "text_markdown": "એક મોટો જંક 30 કે તેથી વધુ તોપો લઈ જઈ શકતો હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "એક મોટો જંક ત્રીસ કે તેથી વધુ તોપો લઈ જઈ શકતો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "id": "ch04-196",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "જહાજોને મજબૂત હલ અને ઊંચી બાજુઓ સાથે બનાવવામાં આવ્યા હતા જેથી હુમલાખોરોને ભગાડી શકાય.",
+      "text_markdown": "જહાજોને મજબૂત હલ અને ઊંચી બાજુઓ સાથે બનાવવામાં આવ્યા હતા જેથી હુમલાખોરોને ભગાડી શકાય.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "જહાજોને મજબૂત હલ અને ઊંચી બાજુઓ સાથે બનાવવામાં આવ્યા હતા જેથી હુમલાખોરોને ભગાડી શકાય.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "id": "ch04-197",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "તેમના સપાટ તળિયા તેમને છીછરા દરિયાકાંઠાના પાણીમાં નેવિગેટ કરવાની મંજૂરી આપતા હતા જ્યાં ઊંડા યુરોપિયન જહાજો અનુસરી શકતા નહોતા.",
+      "text_markdown": "તેમના સપાટ તળિયા તેમને છીછરા દરિયાકાંઠાના પાણીમાં નેવિગેટ કરવાની મંજૂરી આપતા હતા જ્યાં ઊંડા યુરોપિયન જહાજો અનુસરી શકતા નહોતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "તેમના સપાટ તળિયા તેમને છીછરા દરિયાકાંઠાના પાણીમાં નેવિગેટ કરવાની મંજૂરી આપતા હતા જ્યાં ઊંડા યુરોપિયન જહાજો અનુસરી શકતા નહોતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "id": "ch04-198",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "ઝેંગ યી સાઓનું ગુપ્તચર નેટવર્ક તેના સૌથી મોટા શસ્ત્રોમાંનું એક હતું.",
+      "text_markdown": "ઝેંગ યી સાઓનું ગુપ્તચર નેટવર્ક તેના સૌથી મોટા શસ્ત્રોમાંનું એક હતું.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "ઝેંગ યી સાઓનું ગુપ્તચર નેટવર્ક તેના સૌથી મોટા શસ્ત્રોમાંનું એક હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "id": "ch04-199",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "તેના કેન્ટન, મકાઉ અને દરિયાકિનારાના દરેક મુખ્ય બંદરમાં જાસૂસો હતા.",
+      "text_markdown": "તેના કેન્ટન, મકાઉ અને દરિયાકિનારાના દરેક મુખ્ય બંદરમાં જાસૂસો હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "તેના કેન્ટન, મકાઉ અને દરિયાકિનારાના દરેક મુખ્ય બંદરમાં જાસૂસો હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "id": "ch04-200",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "તે જાણતી હતી કે કિંમતી માલવાહક જહાજો ક્યારે ઉપડશે અને તેઓ કયા માર્ગો લેશે.",
+      "text_markdown": "તે જાણતી હતી કે કિંમતી માલવાહક જહાજો ક્યારે ઉપડશે અને તેઓ કયા માર્ગો લેશે.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "તે જાણતી હતી કે કિંમતી માલવાહક જહાજો ક્યારે ઉપડશે અને તેઓ કયા માર્ગો લેશે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "id": "ch04-201",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "આ માહિતીએ તેને તક પર આધાર રાખવાને બદલે ચોકસાઈ સાથે હુમલો કરવાની મંજૂરી આપી.",
+      "text_markdown": "આ માહિતીએ તેને તક પર આધાર રાખવાને બદલે ચોકસાઈ સાથે હુમલો કરવાની મંજૂરી આપી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "આ માહિતીએ તેને તક પર આધાર રાખવાને બદલે ચોકસાઈ સાથે હુમલો કરવાની મંજૂરી આપી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "id": "ch04-202",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "તેણે બનાવેલી કર પ્રણાલી નોંધપાત્ર રીતે અત્યાધુનિક હતી.",
+      "text_markdown": "તેણે બનાવેલી કર પ્રણાલી નોંધપાત્ર રીતે અત્યાધુનિક હતી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "તેણે બનાવેલી કર પ્રણાલી નોંધપાત્ર રીતે અત્યાધુનિક હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "id": "ch04-203",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "વિવિધ પ્રકારના માલસામાન પર અલગ-અલગ દરો લાગુ પડતા હતા.",
+      "text_markdown": "વિવિધ પ્રકારના માલસામાન પર અલગ-અલગ દરો લાગુ પડતા હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "વિવિધ પ્રકારના માલસામાન પર અલગ-અલગ દરો લાગુ પડતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "id": "ch04-204",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "રેશમના વેપારીઓ ચોખાના વેપારીઓ કરતાં વધુ ચૂકવતા હતા.",
+      "text_markdown": "રેશમના વેપારીઓ ચોખાના વેપારીઓ કરતાં વધુ ચૂકવતા હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "રેશમના વેપારીઓ ચોખાના વેપારીઓ કરતાં વધુ ચૂકવતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "id": "ch04-205",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "મીઠાના દાણચોરોએ વધુ કિંમત ચૂકવી હતી કારણ કે તેમનો માલ પહેલેથી જ ગેરકાયદેસર હતો.",
+      "text_markdown": "મીઠાના દાણચોરોએ વધુ કિંમત ચૂકવી હતી કારણ કે તેમનો માલ પહેલેથી જ ગેરકાયદેસર હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "મીઠાના દાણચોરોએ વધુ કિંમત ચૂકવી હતી કારણ કે તેમનો માલ પહેલેથી જ ગેરકાયદેસર હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "id": "ch04-206",
+      "sentence_index": 4,
+      "chapter": 4,
+      "text": "સમગ્ર પ્રણાલીને દસ્તાવેજીકૃત કરવામાં આવી હતી અને અમલદારશાહી ચોકસાઈ સાથે લાગુ કરવામાં આવી હતી.",
+      "text_markdown": "સમગ્ર પ્રણાલીને દસ્તાવેજીકૃત કરવામાં આવી હતી અને અમલદારશાહી ચોકસાઈ સાથે લાગુ કરવામાં આવી હતી.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "સમગ્ર પ્રણાલીને દસ્તાવેજીકૃત કરવામાં આવી હતી અને અમલદારશાહી ચોકસાઈ સાથે લાગુ કરવામાં આવી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "id": "ch04-207",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "દરિયાકાંઠાના ગામડાઓનો ચાંચિયાઓ સાથે જટિલ સંબંધ હતો.",
+      "text_markdown": "દરિયાકાંઠાના ગામડાઓનો ચાંચિયાઓ સાથે જટિલ સંબંધ હતો.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "દરિયાકાંઠાના ગામડાઓનો ચાંચિયાઓ સાથે જટિલ સંબંધ હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "id": "ch04-208",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "ઘણા લોકો ચાંચિયાઓ દ્વારા માંગવામાં આવતી ખંડણીથી નારાજ હતા.",
+      "text_markdown": "ઘણા લોકો ચાંચિયાઓ દ્વારા માંગવામાં આવતી ખંડણીથી નારાજ હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "ઘણા લોકો ચાંચિયાઓ દ્વારા માંગવામાં આવતી ખંડણીથી નારાજ હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "id": "ch04-209",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "પરંતુ ચાંચિયાઓ અન્ય હુમલાખોરો અને ડાકુઓ સામે રક્ષણ પણ પૂરું પાડતા હતા.",
+      "text_markdown": "પરંતુ ચાંચિયાઓ અન્ય હુમલાખોરો અને ડાકુઓ સામે રક્ષણ પણ પૂરું પાડતા હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "પરંતુ ચાંચિયાઓ અન્ય હુમલાખોરો અને ડાકુઓ સામે રક્ષણ પણ પૂરું પાડતા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "id": "ch04-210",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "કેટલાક વિસ્તારોમાં, ચાંચિયાઓ શાહી સરકાર કરતાં વધુ ભરોસાપાત્ર હતા.",
+      "text_markdown": "કેટલાક વિસ્તારોમાં, ચાંચિયાઓ શાહી સરકાર કરતાં વધુ ભરોસાપાત્ર હતા.",
+      "title": "શિખર પર",
+      "tts": {
+        "text": "કેટલાક વિસ્તારોમાં, ચાંચિયાઓ શાહી સરકાર કરતાં વધુ ભરોસાપાત્ર હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "id": "ch04-211",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "કિંગ દરબાર સમુદ્રને નિયંત્રિત કરવામાં તેની અસમર્થતાથી ખૂબ જ શરમ અનુભવી રહ્યો હતો.",
+      "text_markdown": "કિંગ દરબાર સમુદ્રને નિયંત્રિત કરવામાં તેની અસમર્થતાથી ખૂબ જ શરમ અનુભવી રહ્યો હતો.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "ચિંગ દરબાર સમુદ્રને નિયંત્રિત કરવામાં તેની અસમર્થતાથી ખૂબ જ શરમ અનુભવી રહ્યો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "id": "ch04-212",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "શાહી અધિકારીઓએ ચાંચિયા રાણીની વધતી શક્તિ વિશે ચિંતાજનક અહેવાલો લખ્યા.",
+      "text_markdown": "શાહી અધિકારીઓએ ચાંચિયા રાણીની વધતી શક્તિ વિશે ચિંતાજનક અહેવાલો લખ્યા.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "શાહી અધિકારીઓએ ચાંચિયા રાણીની વધતી શક્તિ વિશે ચિંતાજનક અહેવાલો લખ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "id": "ch04-213",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "તેઓને ચિંતા હતી કે ચાંચિયાઓ જમીન પરના બળવાખોર જૂથો સાથે જોડાણ કરી શકે છે.",
+      "text_markdown": "તેઓને ચિંતા હતી કે ચાંચિયાઓ જમીન પરના બળવાખોર જૂથો સાથે જોડાણ કરી શકે છે.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "તેઓને ચિંતા હતી કે ચાંચિયાઓ જમીન પરના બળવાખોર જૂથો સાથે જોડાણ કરી શકે છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "id": "ch04-214",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "જમીન અને સમુદ્રના સંયુક્ત બળવાથી રાજવંશને જ ખતરો થઈ શકે છે.",
+      "text_markdown": "જમીન અને સમુદ્રના સંયુક્ત બળવાથી રાજવંશને જ ખતરો થઈ શકે છે.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "જમીન અને સમુદ્રના સંયુક્ત બળવાથી રાજવંશને જ ખતરો થઈ શકે છે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "id": "ch04-215",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "બ્રિટિશરોએ આ પરિસ્થિતિને ઊંડા રસપૂર્વક નિહાળી.",
+      "text_markdown": "બ્રિટિશરોએ આ પરિસ્થિતિને ઊંડા રસપૂર્વક નિહાળી.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "બ્રિટિશરોએ આ પરિસ્થિતિને ઊંડા રસપૂર્વક નિહાળી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "id": "ch04-216",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "તેઓ ચીની કિનારે તેમના અફીણના વેપારનો વિસ્તાર કરી રહ્યા હતા.",
+      "text_markdown": "તેઓ ચીની કિનારે તેમના અફીણના વેપારનો વિસ્તાર કરી રહ્યા હતા.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "તેઓ ચીની કિનારે તેમના અફીણના વેપારનો વિસ્તાર કરી રહ્યા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p62",
+      "block_type": "text",
+      "id": "ch04-217",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "ચાંચિયાઓએ આ વેપારમાં ખલેલ પહોંચાડી, જેના કારણે બ્રિટિશ વેપારીઓને જંગી રકમનું નુકસાન થયું.",
+      "text_markdown": "ચાંચિયાઓએ આ વેપારમાં ખલેલ પહોંચાડી, જેના કારણે બ્રિટિશ વેપારીઓને જંગી રકમનું નુકસાન થયું.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "ચાંચિયાઓએ આ વેપારમાં ખલેલ પહોંચાડી, જેના કારણે બ્રિટિશ વેપારીઓને જંગી રકમનું નુકસાન થયું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "id": "ch04-218",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "ઝેંગ યી સાઓ (Zheng Yi Sao) ના ધ્વજ હેઠળ સફર કરનારા લોકો માટે, જીવન બીજા વિકલ્પ કરતાં વધુ સારું હતું.",
+      "text_markdown": "ઝેંગ યી સાઓ (Zheng Yi Sao) ના ધ્વજ હેઠળ સફર કરનારા લોકો માટે, જીવન બીજા વિકલ્પ કરતાં વધુ સારું હતું.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "ઝેંગ યી સાઓ (Zheng Yi Sao) ના ધ્વજ હેઠળ સફર કરનારા લોકો માટે, જીવન બીજા વિકલ્પ કરતાં વધુ સારું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "id": "ch04-219",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "એક ચાંચિયાને નિયમિત ભોજન, લૂંટનો હિસ્સો અને જોડાણની ભાવના મળતી હતી.",
+      "text_markdown": "એક ચાંચિયાને નિયમિત ભોજન, લૂંટનો હિસ્સો અને જોડાણની ભાવના મળતી હતી.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "એક ચાંચિયાને નિયમિત ભોજન, લૂંટનો હિસ્સો અને જોડાણની ભાવના મળતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "id": "ch04-220",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "એક ટાંકા (Tanka) માછીમારને ગરીબી, તિરસ્કાર અને પ્રગતિની કોઈ આશા મળતી ન હતી.",
+      "text_markdown": "એક ટાંકા (Tanka) માછીમારને ગરીબી, તિરસ્કાર અને પ્રગતિની કોઈ આશા મળતી ન હતી.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "એક ટાંકા (Tanka) માછીમારને ગરીબી, તિરસ્કાર અને પ્રગતિની કોઈ આશા મળતી ન હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "id": "ch04-221",
+      "sentence_index": 0,
+      "chapter": 4,
+      "text": "ઝેંગ યી સાઓ (Zheng Yi Sao) આ સમાજ પર સંપૂર્ણ સત્તા સાથે શાસન કરતી હતી.",
+      "text_markdown": "ઝેંગ યી સાઓ (Zheng Yi Sao) આ સમાજ પર સંપૂર્ણ સત્તા સાથે શાસન કરતી હતી.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "ઝેંગ યી સાઓ (Zheng Yi Sao) આ સમાજ પર સંપૂર્ણ સત્તા સાથે શાસન કરતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "id": "ch04-222",
+      "sentence_index": 1,
+      "chapter": 4,
+      "text": "તેણીએ વ્યૂહાત્મક નિર્ણયો લીધા જેણે કાફલાના ભવિષ્યને આકાર આપ્યો.",
+      "text_markdown": "તેણીએ વ્યૂહાત્મક નિર્ણયો લીધા જેણે કાફલાના ભવિષ્યને આકાર આપ્યો.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "તેણીએ વ્યૂહાત્મક નિર્ણયો લીધા જેણે કાફલાના ભવિષ્યને આકાર આપ્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "id": "ch04-223",
+      "sentence_index": 2,
+      "chapter": 4,
+      "text": "તેણીએ કપ્તાનો વચ્ચેના વિવાદોનું નિરાકરણ કર્યું અને કાયદા સંહિતાનો અમલ કર્યો.",
+      "text_markdown": "તેણીએ કપ્તાનો વચ્ચેના વિવાદોનું નિરાકરણ કર્યું અને કાયદા સંહિતાનો અમલ કર્યો.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "તેણીએ કપ્તાનો વચ્ચેના વિવાદોનું નિરાકરણ કર્યું અને કાયદા સંહિતાનો અમલ કર્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "id": "ch04-224",
+      "sentence_index": 3,
+      "chapter": 4,
+      "text": "તેણીની મંજૂરી વિના કોઈ મોટી કાર્યવાહી કરવામાં આવતી ન હતી.",
+      "text_markdown": "તેણીની મંજૂરી વિના કોઈ મોટી કાર્યવાહી કરવામાં આવતી ન હતી.",
+      "title": "ચરમસીમા પર",
+      "tts": {
+        "text": "તેણીની મંજૂરી વિના કોઈ મોટી કાર્યવાહી કરવામાં આવતી ન હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "block_type": "heading",
+      "id": "ch05-225",
+      "sentence_index": 0,
+      "chapter": 5,
+      "heading_level": 1,
+      "text": "અંત",
+      "text_markdown": "અંત",
+      "title": "અંત"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "id": "ch05-226",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "૧૮૧૦ સુધીમાં, સંઘમાં તિરાડો દેખાવા લાગી હતી.",
+      "text_markdown": "૧૮૧૦ સુધીમાં, સંઘમાં તિરાડો દેખાવા લાગી હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "અઢાર દસ સુધીમાં, સંઘમાં તિરાડો દેખાવા લાગી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "id": "ch05-227",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "સતત યુદ્ધે જહાજો અને ખલાસીઓ પર તેની અસર કરી હતી.",
+      "text_markdown": "સતત યુદ્ધે જહાજો અને ખલાસીઓ પર તેની અસર કરી હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "સતત યુદ્ધે જહાજો અને ખલાસીઓ પર તેની અસર કરી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "id": "ch05-228",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "કિંગ સરકારની નાકાબંધીએ કિનારે પુરવઠાની લાઇનોને ખોરવી નાખી હતી.",
+      "text_markdown": "કિંગ સરકારની નાકાબંધીએ કિનારે પુરવઠાની લાઇનોને ખોરવી નાખી હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "ચિંગ સરકારની નાકાબંધીએ કિનારે પુરવઠાની લાઇનોને ખોરવી નાખી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "id": "ch05-229",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "અને કાફલાના કપ્તાનો વચ્ચેની આંતરિક હરીફાઈ વધુ તીવ્ર બની હતી.",
+      "text_markdown": "અને કાફલાના કપ્તાનો વચ્ચેની આંતરિક હરીફાઈ વધુ તીવ્ર બની હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "અને કાફલાના કપ્તાનો વચ્ચેની આંતરિક હરીફાઈ વધુ તીવ્ર બની હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "id": "ch05-230",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "સૌથી ખતરનાક હરીફાઈ ઝાંગ બાઓ (Zhang Bao) અને ગુઓ પોડાઈ (Guo Podai) નામના કપ્તાન વચ્ચે હતી.",
+      "text_markdown": "સૌથી ખતરનાક હરીફાઈ ઝાંગ બાઓ (Zhang Bao) અને ગુઓ પોડાઈ (Guo Podai) નામના કપ્તાન વચ્ચે હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "સૌથી ખતરનાક હરીફાઈ ઝાંગ બાઓ (Zhang Bao) અને ગુઓ પોડાઈ (Guo Podai) નામના કપ્તાન વચ્ચે હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "id": "ch05-231",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "ગુઓ પોડાઈ (Guo Podai) બ્લેક ફ્લેગ ફ્લીટ (Black Flag Fleet) નો કમાન્ડર હતો, જે સંઘમાં બીજા નંબરનો સૌથી મોટો કાફલો હતો.",
+      "text_markdown": "ગુઓ પોડાઈ (Guo Podai) બ્લેક ફ્લેગ ફ્લીટ (Black Flag Fleet) નો કમાન્ડર હતો, જે સંઘમાં બીજા નંબરનો સૌથી મોટો કાફલો હતો.",
+      "title": "અંત",
+      "tts": {
+        "text": "ગુઓ પોડાઈ (Guo Podai) બ્લેક ફ્લેગ ફ્લીટ (Black Flag Fleet) નો કમાન્ડર હતો, જે સંઘમાં બીજા નંબરનો સૌથી મોટો કાફલો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "id": "ch05-232",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "તે ઝાંગ બાઓ (Zhang Bao) અને, તેના વિસ્તરણ તરીકે, ઝેંગ યી સાઓ (Zheng Yi Sao) પાસેથી આદેશો લેવા બદલ નારાજ હતો.",
+      "text_markdown": "તે ઝાંગ બાઓ (Zhang Bao) અને, તેના વિસ્તરણ તરીકે, ઝેંગ યી સાઓ (Zheng Yi Sao) પાસેથી આદેશો લેવા બદલ નારાજ હતો.",
+      "title": "અંત",
+      "tts": {
+        "text": "તે ઝાંગ બાઓ (Zhang Bao) અને, તેના વિસ્તરણ તરીકે, ઝેંગ યી સાઓ (Zheng Yi Sao) પાસેથી આદેશો લેવા બદલ નારાજ હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "id": "ch05-233",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "તેમની વચ્ચેનો તણાવ સંઘને બે ભાગમાં વિભાજીત કરવાની ધમકી આપતો હતો.",
+      "text_markdown": "તેમની વચ્ચેનો તણાવ સંઘને બે ભાગમાં વિભાજીત કરવાની ધમકી આપતો હતો.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેમની વચ્ચેનો તણાવ સંઘને બે ભાગમાં વિભાજીત કરવાની ધમકી આપતો હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "id": "ch05-234",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "૧૮૧૦ ની શરૂઆતમાં, ગુઓ પોડાઈ (Guo Podai) એ એક ભાગ્યશાળી નિર્ણય લીધો.",
+      "text_markdown": "૧૮૧૦ ની શરૂઆતમાં, ગુઓ પોડાઈ (Guo Podai) એ એક ભાગ્યશાળી નિર્ણય લીધો.",
+      "title": "અંત",
+      "tts": {
+        "text": "અઢાર દસ ની શરૂઆતમાં, ગુઓ પોડાઈ (Guo Podai) એ એક ભાગ્યશાળી નિર્ણય લીધો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "id": "ch05-235",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "તેણે કિંગ સરકાર સાથે ગુપ્ત વાટાઘાટો શરૂ કરી.",
+      "text_markdown": "તેણે કિંગ સરકાર સાથે ગુપ્ત વાટાઘાટો શરૂ કરી.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણે ચિંગ સરકાર સાથે ગુપ્ત વાટાઘાટો શરૂ કરી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "id": "ch05-236",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "સરકારે તેને સંપૂર્ણ માફી, લશ્કરી કમિશન અને રોકડ ચુકવણીની ઓફર કરી.",
+      "text_markdown": "સરકારે તેને સંપૂર્ણ માફી, લશ્કરી કમિશન અને રોકડ ચુકવણીની ઓફર કરી.",
+      "title": "અંત",
+      "tts": {
+        "text": "સરકારે તેને સંપૂર્ણ માફી, લશ્કરી કમિશન અને રોકડ ચુકવણીની ઓફર કરી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "id": "ch05-237",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "બદલામાં, તે તેના ભૂતપૂર્વ સાથીઓ વિરુદ્ધ થઈ જશે.",
+      "text_markdown": "બદલામાં, તે તેના ભૂતપૂર્વ સાથીઓ વિરુદ્ધ થઈ જશે.",
+      "title": "અંત",
+      "tts": {
+        "text": "બદલામાં, તે તેના ભૂતપૂર્વ સાથીઓ વિરુદ્ધ થઈ જશે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "id": "ch05-238",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "ગુઓ પોડાઈ (Guo Podai) એ સોદો સ્વીકાર્યો અને તેનો આખો કાફલો સરકારને સોંપી દીધો.",
+      "text_markdown": "ગુઓ પોડાઈ (Guo Podai) એ સોદો સ્વીકાર્યો અને તેનો આખો કાફલો સરકારને સોંપી દીધો.",
+      "title": "અંત",
+      "tts": {
+        "text": "ગુઓ પોડાઈ (Guo Podai) એ સોદો સ્વીકાર્યો અને તેનો આખો કાફલો સરકારને સોંપી દીધો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "id": "ch05-239",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "રાતોરાત, સંઘે સેંકડો જહાજો અને હજારો લડવૈયાઓ ગુમાવ્યા.",
+      "text_markdown": "રાતોરાત, સંઘે સેંકડો જહાજો અને હજારો લડવૈયાઓ ગુમાવ્યા.",
+      "title": "અંત",
+      "tts": {
+        "text": "રાતોરાત, સંઘે સેંકડો જહાજો અને હજારો લડવૈયાઓ ગુમાવ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "id": "ch05-240",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "સૌથી ખરાબ વાત એ હતી કે, ગુઓ પોડાઈ (Guo Podai) હવે સરકારી કમાન્ડર તરીકે સેવા આપતો હતો, અને ચાંચિયાઓની યુક્તિઓના તેના જ્ઞાનનો ઉપયોગ તેમની વિરુદ્ધ કરતો હતો.",
+      "text_markdown": "સૌથી ખરાબ વાત એ હતી કે, ગુઓ પોડાઈ (Guo Podai) હવે સરકારી કમાન્ડર તરીકે સેવા આપતો હતો, અને ચાંચિયાઓની યુક્તિઓના તેના જ્ઞાનનો ઉપયોગ તેમની વિરુદ્ધ કરતો હતો.",
+      "title": "અંત",
+      "tts": {
+        "text": "સૌથી ખરાબ વાત એ હતી કે, ગુઓ પોડાઈ (Guo Podai) હવે સરકારી કમાન્ડર તરીકે સેવા આપતો હતો, અને ચાંચિયાઓની યુક્તિઓના તેના જ્ઞાનનો ઉપયોગ તેમની વિરુદ્ધ કરતો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "id": "ch05-241",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "સત્તાનું સંતુલન નાટકીય રીતે બદલાઈ ગયું હતું.",
+      "text_markdown": "સત્તાનું સંતુલન નાટકીય રીતે બદલાઈ ગયું હતું.",
+      "title": "અંત",
+      "tts": {
+        "text": "સત્તાનું સંતુલન નાટકીય રીતે બદલાઈ ગયું હતું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "id": "ch05-242",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "ઝેંગ યી સાઓએ તેની લાક્ષણિક સ્પષ્ટતા સાથે નવી પરિસ્થિતિનું મૂલ્યાંકન કર્યું.",
+      "text_markdown": "ઝેંગ યી સાઓએ તેની લાક્ષણિક સ્પષ્ટતા સાથે નવી પરિસ્થિતિનું મૂલ્યાંકન કર્યું.",
+      "title": "અંત",
+      "tts": {
+        "text": "ઝેંગ યી સાઓએ તેની લાક્ષણિક સ્પષ્ટતા સાથે નવી પરિસ્થિતિનું મૂલ્યાંકન કર્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "id": "ch05-243",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "મહાસંઘ નબળો પડ્યો હતો પણ નાશ પામ્યો ન હતો.",
+      "text_markdown": "મહાસંઘ નબળો પડ્યો હતો પણ નાશ પામ્યો ન હતો.",
+      "title": "અંત",
+      "tts": {
+        "text": "મહાસંઘ નબળો પડ્યો હતો પણ નાશ પામ્યો ન હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "id": "ch05-244",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "તેણી હજુ પણ રેડ ફ્લેગ ફ્લીટ અને અનેક સાથી કાફલાઓની કમાન્ડ કરતી હતી.",
+      "text_markdown": "તેણી હજુ પણ રેડ ફ્લેગ ફ્લીટ અને અનેક સાથી કાફલાઓની કમાન્ડ કરતી હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણી હજુ પણ રેડ ફ્લેગ ફ્લીટ અને અનેક સાથી કાફલાઓની કમાન્ડ કરતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "id": "ch05-245",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "પરંતુ ગતિ બદલાઈ ગઈ હતી, અને તે જાણતી હતી.",
+      "text_markdown": "પરંતુ ગતિ બદલાઈ ગઈ હતી, અને તે જાણતી હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "પરંતુ ગતિ બદલાઈ ગઈ હતી, અને તે જાણતી હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "id": "ch05-246",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "તેણીએ એક એવો નિર્ણય લીધો જેણે તેની વ્યૂહાત્મક પ્રતિભા દર્શાવી.",
+      "text_markdown": "તેણીએ એક એવો નિર્ણય લીધો જેણે તેની વ્યૂહાત્મક પ્રતિભા દર્શાવી.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણીએ એક એવો નિર્ણય લીધો જેણે તેની વ્યૂહાત્મક પ્રતિભા દર્શાવી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "id": "ch05-247",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "મૃત્યુ સુધી લડવાને બદલે, તેણીએ બાકી રહેલી તાકાતની સ્થિતિમાંથી વાટાઘાટો કરવાનું પસંદ કર્યું.",
+      "text_markdown": "મૃત્યુ સુધી લડવાને બદલે, તેણીએ બાકી રહેલી તાકાતની સ્થિતિમાંથી વાટાઘાટો કરવાનું પસંદ કર્યું.",
+      "title": "અંત",
+      "tts": {
+        "text": "મૃત્યુ સુધી લડવાને બદલે, તેણીએ બાકી રહેલી તાકાતની સ્થિતિમાંથી વાટાઘાટો કરવાનું પસંદ કર્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "id": "ch05-248",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "તેણીએ મધ્યસ્થીઓ દ્વારા ક્વિંગ સરકાર સાથે વાટાઘાટો શરૂ કરી.",
+      "text_markdown": "તેણીએ મધ્યસ્થીઓ દ્વારા ક્વિંગ સરકાર સાથે વાટાઘાટો શરૂ કરી.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણીએ મધ્યસ્થીઓ દ્વારા ચિંગ સરકાર સાથે વાટાઘાટો શરૂ કરી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "id": "ch05-249",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "તેણીની માંગણીઓ બોલ્ડ અને ચોક્કસ હતી.",
+      "text_markdown": "તેણીની માંગણીઓ બોલ્ડ અને ચોક્કસ હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણીની માંગણીઓ બોલ્ડ અને ચોક્કસ હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "id": "ch05-250",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "તેણીએ પોતાના અને ઝાંગ બાઓ માટે સંપૂર્ણ માફીની માંગણી કરી.",
+      "text_markdown": "તેણીએ પોતાના અને ઝાંગ બાઓ માટે સંપૂર્ણ માફીની માંગણી કરી.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણીએ પોતાના અને ઝાંગ બાઓ માટે સંપૂર્ણ માફીની માંગણી કરી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "id": "ch05-251",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "તેણીએ માંગણી કરી કે તેના ચાંચિયાઓને તેમની અંગત સંપત્તિ રાખવાની મંજૂરી આપવામાં આવે.",
+      "text_markdown": "તેણીએ માંગણી કરી કે તેના ચાંચિયાઓને તેમની અંગત સંપત્તિ રાખવાની મંજૂરી આપવામાં આવે.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણીએ માંગણી કરી કે તેના ચાંચિયાઓને તેમની અંગત સંપત્તિ રાખવાની મંજૂરી આપવામાં આવે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "id": "ch05-252",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "તેણીએ માંગણી કરી કે ઝાંગ બાઓને શાહી નૌકાદળમાં કમિશન આપવામાં આવે.",
+      "text_markdown": "તેણીએ માંગણી કરી કે ઝાંગ બાઓને શાહી નૌકાદળમાં કમિશન આપવામાં આવે.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણીએ માંગણી કરી કે ઝાંગ બાઓને શાહી નૌકાદળમાં કમિશન આપવામાં આવે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "id": "ch05-253",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "અને તેણીએ માંગણી કરી કે શરણાગતિ સ્વીકારનારા સામાન્ય ચાંચિયાઓને કોઈ સજા ન થાય.",
+      "text_markdown": "અને તેણીએ માંગણી કરી કે શરણાગતિ સ્વીકારનારા સામાન્ય ચાંચિયાઓને કોઈ સજા ન થાય.",
+      "title": "અંત",
+      "tts": {
+        "text": "અને તેણીએ માંગણી કરી કે શરણાગતિ સ્વીકારનારા સામાન્ય ચાંચિયાઓને કોઈ સજા ન થાય.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "id": "ch05-254",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "ક્વિંગ સરકાર આવી ઉદાર શરતો સ્વીકારવા તૈયાર ન હતી.",
+      "text_markdown": "ક્વિંગ સરકાર આવી ઉદાર શરતો સ્વીકારવા તૈયાર ન હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "ચિંગ સરકાર આવી ઉદાર શરતો સ્વીકારવા તૈયાર ન હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "id": "ch05-255",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "ચાંચિયાઓને માફી આપવી એ સામ્રાજ્ય માટે અપમાનજનક લાગતું હતું.",
+      "text_markdown": "ચાંચિયાઓને માફી આપવી એ સામ્રાજ્ય માટે અપમાનજનક લાગતું હતું.",
+      "title": "અંત",
+      "tts": {
+        "text": "ચાંચિયાઓને માફી આપવી એ સામ્રાજ્ય માટે અપમાનજનક લાગતું હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "id": "ch05-256",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "પરંતુ તેઓએ બળનો પ્રયાસ કર્યો હતો અને નિષ્ફળ રહ્યા હતા.",
+      "text_markdown": "પરંતુ તેઓએ બળનો પ્રયાસ કર્યો હતો અને નિષ્ફળ રહ્યા હતા.",
+      "title": "અંત",
+      "tts": {
+        "text": "પરંતુ તેઓએ બળનો પ્રયાસ કર્યો હતો અને નિષ્ફળ રહ્યા હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "id": "ch05-257",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "વાટાઘાટો જ એકમાત્ર વિકલ્પ બાકી હતો.",
+      "text_markdown": "વાટાઘાટો જ એકમાત્ર વિકલ્પ બાકી હતો.",
+      "title": "અંત",
+      "tts": {
+        "text": "વાટાઘાટો જ એકમાત્ર વિકલ્પ બાકી હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "id": "ch05-258",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "૧૮૧૦ના એપ્રિલમાં, સોદો અંતિમ સ્વરૂપ પામ્યો.",
+      "text_markdown": "૧૮૧૦ના એપ્રિલમાં, સોદો અંતિમ સ્વરૂપ પામ્યો.",
+      "title": "અંત",
+      "tts": {
+        "text": "અઢાર દસના એપ્રિલમાં, સોદો અંતિમ સ્વરૂપ પામ્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "id": "ch05-259",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "ઝેંગ યી સાઓએ પોતાનો કાફલો સરકારને સોંપી દીધો.",
+      "text_markdown": "ઝેંગ યી સાઓએ પોતાનો કાફલો સરકારને સોંપી દીધો.",
+      "title": "અંત",
+      "tts": {
+        "text": "ઝેંગ યી સાઓએ પોતાનો કાફલો સરકારને સોંપી દીધો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "id": "ch05-260",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "બદલામાં, તેણીએ જે કંઈ માંગ્યું હતું તે બધું જ તેને મળ્યું.",
+      "text_markdown": "બદલામાં, તેણીએ જે કંઈ માંગ્યું હતું તે બધું જ તેને મળ્યું.",
+      "title": "અંત",
+      "tts": {
+        "text": "બદલામાં, તેણીએ જે કંઈ માંગ્યું હતું તે બધું જ તેને મળ્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "id": "ch05-261",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "ઝાંગ બાઓને ક્વિંગ નૌકાદળમાં ૨૦ જહાજોની કમાન્ડ સાથે લેફ્ટનન્ટ તરીકે નિયુક્ત કરવામાં આવ્યો.",
+      "text_markdown": "ઝાંગ બાઓને ક્વિંગ નૌકાદળમાં ૨૦ જહાજોની કમાન્ડ સાથે લેફ્ટનન્ટ તરીકે નિયુક્ત કરવામાં આવ્યો.",
+      "title": "અંત",
+      "tts": {
+        "text": "ઝાંગ બાઓને ચિંગ નૌકાદળમાં વીસ જહાજોની કમાન્ડ સાથે લેફ્ટનન્ટ તરીકે નિયુક્ત કરવામાં આવ્યો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "id": "ch05-262",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "ચાંચિયાઓને તેમના જહાજોનો એક ભાગ રાખવાની મંજૂરી આપવામાં આવી હતી.",
+      "text_markdown": "ચાંચિયાઓને તેમના જહાજોનો એક ભાગ રાખવાની મંજૂરી આપવામાં આવી હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "ચાંચિયાઓને તેમના જહાજોનો એક ભાગ રાખવાની મંજૂરી આપવામાં આવી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "id": "ch05-263",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "જેઓ નાગરિક જીવનમાં પાછા ફરવા માંગતા હતા તેઓ તેમ કરવા માટે સ્વતંત્ર હતા.",
+      "text_markdown": "જેઓ નાગરિક જીવનમાં પાછા ફરવા માંગતા હતા તેઓ તેમ કરવા માટે સ્વતંત્ર હતા.",
+      "title": "અંત",
+      "tts": {
+        "text": "જેઓ નાગરિક જીવનમાં પાછા ફરવા માંગતા હતા તેઓ તેમ કરવા માટે સ્વતંત્ર હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "id": "ch05-264",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "જેઓ શાહી નૌકાદળમાં જોડાવા માંગતા હતા તેમનું સ્વાગત કરવામાં આવ્યું.",
+      "text_markdown": "જેઓ શાહી નૌકાદળમાં જોડાવા માંગતા હતા તેમનું સ્વાગત કરવામાં આવ્યું.",
+      "title": "અંત",
+      "tts": {
+        "text": "જેઓ શાહી નૌકાદળમાં જોડાવા માંગતા હતા તેમનું સ્વાગત કરવામાં આવ્યું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "id": "ch05-265",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "ચાંચિયાગીરીના ઇતિહાસમાં આ સૌથી અનુકૂળ શરણાગતિ હતી.",
+      "text_markdown": "ચાંચિયાગીરીના ઇતિહાસમાં આ સૌથી અનુકૂળ શરણાગતિ હતી.",
+      "title": "અંત",
+      "tts": {
+        "text": "ચાંચિયાગીરીના ઇતિહાસમાં આ સૌથી અનુકૂળ શરણાગતિ હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "id": "ch05-266",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "ઝેંગ યી સાઓ એક શ્રીમંત મહિલા તરીકે સમુદ્રમાંથી નિવૃત્ત થઈ.",
+      "text_markdown": "ઝેંગ યી સાઓ એક શ્રીમંત મહિલા તરીકે સમુદ્રમાંથી નિવૃત્ત થઈ.",
+      "title": "અંત",
+      "tts": {
+        "text": "ઝેંગ યી સાઓ એક શ્રીમંત મહિલા તરીકે સમુદ્રમાંથી નિવૃત્ત થઈ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "id": "ch05-267",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "તેણી ઝાંગ બાઓ સાથે કેન્ટોનમાં સ્થાયી થઈ.",
+      "text_markdown": "તેણી ઝાંગ બાઓ સાથે કેન્ટોનમાં સ્થાયી થઈ.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણી ઝાંગ બાઓ સાથે કેન્ટોનમાં સ્થાયી થઈ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "id": "ch05-268",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "સાથે મળીને, તેઓએ એક જુગારનો અડ્ડો ખોલ્યો જે શહેરના સૌથી નફાકારક સ્થળોમાંથી એક બન્યો.",
+      "text_markdown": "સાથે મળીને, તેઓએ એક જુગારનો અડ્ડો ખોલ્યો જે શહેરના સૌથી નફાકારક સ્થળોમાંથી એક બન્યો.",
+      "title": "અંત",
+      "tts": {
+        "text": "સાથે મળીને, તેઓએ એક જુગારનો અડ્ડો ખોલ્યો જે શહેરના સૌથી નફાકારક સ્થળોમાંથી એક બન્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "id": "ch05-269",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "તેણીએ મીઠાના વેપારમાં પણ રોકાણ કર્યું, જેણે વર્ષો સુધી સ્થિર આવક ઊભી કરી.",
+      "text_markdown": "તેણીએ મીઠાના વેપારમાં પણ રોકાણ કર્યું, જેણે વર્ષો સુધી સ્થિર આવક ઊભી કરી.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેણીએ મીઠાના વેપારમાં પણ રોકાણ કર્યું, જેણે વર્ષો સુધી સ્થિર આવક ઊભી કરી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "id": "ch05-270",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "ઝાંગ બાઓએ ઘણા વર્ષો સુધી શાહી નૌકાદળમાં વિશિષ્ટ સેવા આપી.",
+      "text_markdown": "ઝાંગ બાઓએ ઘણા વર્ષો સુધી શાહી નૌકાદળમાં વિશિષ્ટ સેવા આપી.",
+      "title": "અંત",
+      "tts": {
+        "text": "ઝાંગ બાઓએ ઘણા વર્ષો સુધી શાહી નૌકાદળમાં વિશિષ્ટ સેવા આપી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "id": "ch05-271",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "તેમનું અવસાન ૧૮૨૨ માં થયું, જ્યારે તેઓ હજુ સરકારી સેવામાં હતા.",
+      "text_markdown": "તેમનું અવસાન ૧૮૨૨ માં થયું, જ્યારે તેઓ હજુ સરકારી સેવામાં હતા.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેમનું અવસાન અઢારસો બાવીસમાં થયું, જ્યારે તેઓ હજુ સરકારી સેવામાં હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "id": "ch05-272",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "તેમના અવસાન પર સંપૂર્ણ સૈન્ય સન્માન સાથે શોક વ્યક્ત કરવામાં આવ્યો હતો.",
+      "text_markdown": "તેમના અવસાન પર સંપૂર્ણ સૈન્ય સન્માન સાથે શોક વ્યક્ત કરવામાં આવ્યો હતો.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેમના અવસાન પર સંપૂર્ણ સૈન્ય સન્માન સાથે શોક વ્યક્ત કરવામાં આવ્યો હતો.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "id": "ch05-273",
+      "sentence_index": 0,
+      "chapter": 5,
+      "text": "ઝેંગ યી સાઓ ચાંચિયાગીરી છોડ્યા પછી બે દાયકાથી વધુ સમય જીવ્યા.",
+      "text_markdown": "ઝેંગ યી સાઓ ચાંચિયાગીરી છોડ્યા પછી બે દાયકાથી વધુ સમય જીવ્યા.",
+      "title": "અંત",
+      "tts": {
+        "text": "ઝેંગ યી સાઓ ચાંચિયાગીરી છોડ્યા પછી બે દાયકાથી વધુ સમય જીવ્યા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "id": "ch05-274",
+      "sentence_index": 1,
+      "chapter": 5,
+      "text": "તેમણે કેન્ટોનમાં પોતાના વ્યવસાયિક હિતોનું સંચાલન કર્યું અને પરિવારનો ઉછેર કર્યો.",
+      "text_markdown": "તેમણે કેન્ટોનમાં પોતાના વ્યવસાયિક હિતોનું સંચાલન કર્યું અને પરિવારનો ઉછેર કર્યો.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેમણે કેન્ટોનમાં પોતાના વ્યવસાયિક હિતોનું સંચાલન કર્યું અને પરિવારનો ઉછેર કર્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "id": "ch05-275",
+      "sentence_index": 2,
+      "chapter": 5,
+      "text": "તેમનું અવસાન ૧૮૪૪ માં થયું, લગભગ ૬૯ વર્ષની ઉંમરે.",
+      "text_markdown": "તેમનું અવસાન ૧૮૪૪ માં થયું, લગભગ ૬૯ વર્ષની ઉંમરે.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેમનું અવસાન અઢારસો ચોર્યાસીમાં થયું, લગભગ ઓગણસિત્તેર વર્ષની ઉંમરે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "id": "ch05-276",
+      "sentence_index": 3,
+      "chapter": 5,
+      "text": "તેમનું અવસાન તેમના પોતાના પલંગ પર, તેમના પરિવારથી ઘેરાયેલા, કેન્ટોન સમાજના એક આદરણીય સભ્ય તરીકે થયું.",
+      "text_markdown": "તેમનું અવસાન તેમના પોતાના પલંગ પર, તેમના પરિવારથી ઘેરાયેલા, કેન્ટોન સમાજના એક આદરણીય સભ્ય તરીકે થયું.",
+      "title": "અંત",
+      "tts": {
+        "text": "તેમનું અવસાન તેમના પોતાના પલંગ પર, તેમના પરિવારથી ઘેરાયેલા, કેન્ટોન સમાજના એક આદરણીય સભ્ય તરીકે થયું.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p79",
+      "block_type": "heading",
+      "id": "ch06-277",
+      "sentence_index": 0,
+      "chapter": 6,
+      "heading_level": 1,
+      "text": "વારસો",
+      "text_markdown": "વારસો",
+      "title": "વારસો"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "id": "ch06-278",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "ઝેંગ યી સાઓનો કાર્યકાળ ચાંચિયાગીરીના ઇતિહાસમાં અનોખો છે.",
+      "text_markdown": "ઝેંગ યી સાઓનો કાર્યકાળ ચાંચિયાગીરીના ઇતિહાસમાં અનોખો છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "ઝેંગ યી સાઓનો કાર્યકાળ ચાંચિયાગીરીના ઇતિહાસમાં અનોખો છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "id": "ch06-279",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "અન્ય કોઈ ચાંચિયા, પુરુષ કે સ્ત્રી, એ ક્યારેય આટલા મોટા કદના દળનું નેતૃત્વ કર્યું ન હતું.",
+      "text_markdown": "અન્ય કોઈ ચાંચિયા, પુરુષ કે સ્ત્રી, એ ક્યારેય આટલા મોટા કદના દળનું નેતૃત્વ કર્યું ન હતું.",
+      "title": "વારસો",
+      "tts": {
+        "text": "અન્ય કોઈ ચાંચિયા, પુરુષ કે સ્ત્રી, એ ક્યારેય આટલા મોટા કદના દળનું નેતૃત્વ કર્યું ન હતું.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "id": "ch06-280",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "અન્ય કોઈ ચાંચિયાએ કાયદા અને શાસનની આટલી સુસંસ્કૃત પ્રણાલી બનાવી ન હતી.",
+      "text_markdown": "અન્ય કોઈ ચાંચિયાએ કાયદા અને શાસનની આટલી સુસંસ્કૃત પ્રણાલી બનાવી ન હતી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "અન્ય કોઈ ચાંચિયાએ કાયદા અને શાસનની આટલી સુસંસ્કૃત પ્રણાલી બનાવી ન હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "id": "ch06-281",
+      "sentence_index": 3,
+      "chapter": 6,
+      "text": "અને અન્ય કોઈ ચાંચિયાએ આટલી અનુકૂળ શરતો પર નિવૃત્તિ માટે વાટાઘાટો કરી ન હતી.",
+      "text_markdown": "અને અન્ય કોઈ ચાંચિયાએ આટલી અનુકૂળ શરતો પર નિવૃત્તિ માટે વાટાઘાટો કરી ન હતી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "અને અન્ય કોઈ ચાંચિયાએ આટલી અનુકૂળ શરતો પર નિવૃત્તિ માટે વાટાઘાટો કરી ન હતી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "id": "ch06-282",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "તેમની સફળતા ઇતિહાસમાં મહિલાઓની ભૂમિકા વિશેની ઘણી ધારણાઓને પડકારે છે.",
+      "text_markdown": "તેમની સફળતા ઇતિહાસમાં મહિલાઓની ભૂમિકા વિશેની ઘણી ધારણાઓને પડકારે છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેમની સફળતા ઇતિહાસમાં મહિલાઓની ભૂમિકા વિશેની ઘણી ધારણાઓને પડકારે છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "id": "ch06-283",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "તેઓ એક એવા સમાજમાં સત્તા પર આવ્યા જ્યાં મહિલાઓને લગભગ કોઈ કાનૂની અધિકાર નહોતા.",
+      "text_markdown": "તેઓ એક એવા સમાજમાં સત્તા પર આવ્યા જ્યાં મહિલાઓને લગભગ કોઈ કાનૂની અધિકાર નહોતા.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેઓ એક એવા સમાજમાં સત્તા પર આવ્યા જ્યાં મહિલાઓને લગભગ કોઈ કાનૂની અધિકાર નહોતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "id": "ch06-284",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "તેમણે એક એવા વિશ્વમાં હજારો પુરુષોનું નેતૃત્વ કર્યું જ્યાં મહિલાઓને હલકી ગણવામાં આવતી હતી.",
+      "text_markdown": "તેમણે એક એવા વિશ્વમાં હજારો પુરુષોનું નેતૃત્વ કર્યું જ્યાં મહિલાઓને હલકી ગણવામાં આવતી હતી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેમણે એક એવા વિશ્વમાં હજારો પુરુષોનું નેતૃત્વ કર્યું જ્યાં મહિલાઓને હલકી ગણવામાં આવતી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "id": "ch06-285",
+      "sentence_index": 3,
+      "chapter": 6,
+      "text": "તેમની વાર્તા એ વાતનો પુરાવો છે કે ક્ષમતાને કોઈ લિંગ હોતું નથી.",
+      "text_markdown": "તેમની વાર્તા એ વાતનો પુરાવો છે કે ક્ષમતાને કોઈ લિંગ હોતું નથી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેમની વાર્તા એ વાતનો પુરાવો છે કે ક્ષમતાને કોઈ લિંગ હોતું નથી.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "id": "ch06-286",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "ઇતિહાસકારોએ તેમની અસાધારણ સફળતાના કારણો પર ચર્ચા કરી છે.",
+      "text_markdown": "ઇતિહાસકારોએ તેમની અસાધારણ સફળતાના કારણો પર ચર્ચા કરી છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "ઇતિહાસકારોએ તેમની અસાધારણ સફળતાના કારણો પર ચર્ચા કરી છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "id": "ch06-287",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "કેટલાક તેમના વ્યક્તિગત ગુણો પર ભાર મૂકે છે: તેમની બુદ્ધિ, તેમનો નિર્ણાયક સ્વભાવ, વફાદારી પ્રેરિત કરવાની તેમની ક્ષમતા.",
+      "text_markdown": "કેટલાક તેમના વ્યક્તિગત ગુણો પર ભાર મૂકે છે: તેમની બુદ્ધિ, તેમનો નિર્ણાયક સ્વભાવ, વફાદારી પ્રેરિત કરવાની તેમની ક્ષમતા.",
+      "title": "વારસો",
+      "tts": {
+        "text": "કેટલાક તેમના વ્યક્તિગત ગુણો પર ભાર મૂકે છે: તેમની બુદ્ધિ, તેમનો નિર્ણાયક સ્વભાવ, વફાદારી પ્રેરિત કરવાની તેમની ક્ષમતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "id": "ch06-288",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "અન્ય લોકો એ માળખાકીય પરિસ્થિતિઓ તરફ નિર્દેશ કરે છે જેણે તેમનો ઉદય શક્ય બનાવ્યો: કિંગ રાજ્યની નબળાઈ, દરિયાકાંઠાની વસ્તીની ગરીબી અને દક્ષિણ ચીન સાગરનો ભૂગોળ.",
+      "text_markdown": "અન્ય લોકો એ માળખાકીય પરિસ્થિતિઓ તરફ નિર્દેશ કરે છે જેણે તેમનો ઉદય શક્ય બનાવ્યો: કિંગ રાજ્યની નબળાઈ, દરિયાકાંઠાની વસ્તીની ગરીબી અને દક્ષિણ ચીન સાગરનો ભૂગોળ.",
+      "title": "વારસો",
+      "tts": {
+        "text": "અન્ય લોકો એ માળખાકીય પરિસ્થિતિઓ તરફ નિર્દેશ કરે છે જેણે તેમનો ઉદય શક્ય બનાવ્યો: કિંગ રાજ્યની નબળાઈ, દરિયાકાંઠાની વસ્તીની ગરીબી અને દક્ષિણ ચીન સાગરનો ભૂગોળ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "id": "ch06-289",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "સત્ય લગભગ ચોક્કસપણે બંને પરિબળોનો સમાવેશ કરે છે.",
+      "text_markdown": "સત્ય લગભગ ચોક્કસપણે બંને પરિબળોનો સમાવેશ કરે છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "સત્ય લગભગ ચોક્કસપણે બંને પરિબળોનો સમાવેશ કરે છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "id": "ch06-290",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "પરિસ્થિતિઓ વિના, તેમની પ્રતિભાને કોઈ મંચ મળ્યો ન હોત.",
+      "text_markdown": "પરિસ્થિતિઓ વિના, તેમની પ્રતિભાને કોઈ મંચ મળ્યો ન હોત.",
+      "title": "વારસો",
+      "tts": {
+        "text": "પરિસ્થિતિઓ વિના, તેમની પ્રતિભાને કોઈ મંચ મળ્યો ન હોત.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "id": "ch06-291",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "તેમની પ્રતિભા વિના, પરિસ્થિતિઓએ ફક્ત અરાજકતા જ ઉત્પન્ન કરી હોત.",
+      "text_markdown": "તેમની પ્રતિભા વિના, પરિસ્થિતિઓએ ફક્ત અરાજકતા જ ઉત્પન્ન કરી હોત.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેમની પ્રતિભા વિના, પરિસ્થિતિઓએ ફક્ત અરાજકતા જ ઉત્પન્ન કરી હોત.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "id": "ch06-292",
+      "sentence_index": 3,
+      "chapter": 6,
+      "text": "તેઓ ઇતિહાસના યોગ્ય સમયે યોગ્ય વ્યક્તિ હતા.",
+      "text_markdown": "તેઓ ઇતિહાસના યોગ્ય સમયે યોગ્ય વ્યક્તિ હતા.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેઓ ઇતિહાસના યોગ્ય સમયે યોગ્ય વ્યક્તિ હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "id": "ch06-293",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "તેમનો કાનૂની સંહિતા તેમની નિવૃત્તિ પછી દાયકાઓ સુધી ચાંચિયા શાસનને પ્રભાવિત કરતો રહ્યો.",
+      "text_markdown": "તેમનો કાનૂની સંહિતા તેમની નિવૃત્તિ પછી દાયકાઓ સુધી ચાંચિયા શાસનને પ્રભાવિત કરતો રહ્યો.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેમનો કાનૂની સંહિતા તેમની નિવૃત્તિ પછી દાયકાઓ સુધી ચાંચિયા શાસનને પ્રભાવિત કરતો રહ્યો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "id": "ch06-294",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "દક્ષિણ ચીન સાગરમાં પાછળથી આવેલા ચાંચિયા નેતાઓએ કરવેરા અને કાયદાની સમાન પ્રણાલીઓ અપનાવી.",
+      "text_markdown": "દક્ષિણ ચીન સાગરમાં પાછળથી આવેલા ચાંચિયા નેતાઓએ કરવેરા અને કાયદાની સમાન પ્રણાલીઓ અપનાવી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "દક્ષિણ ચીન સાગરમાં પાછળથી આવેલા ચાંચિયા નેતાઓએ કરવેરા અને કાયદાની સમાન પ્રણાલીઓ અપનાવી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "id": "ch06-295",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "તેમના મોડેલે દર્શાવ્યું કે ચાંચિયા કાફલાઓને રાષ્ટ્રીય નૌકાદળ જેટલી અસરકારક રીતે ગોઠવી શકાય છે.",
+      "text_markdown": "તેમના મોડેલે દર્શાવ્યું કે ચાંચિયા કાફલાઓને રાષ્ટ્રીય નૌકાદળ જેટલી અસરકારક રીતે ગોઠવી શકાય છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેમના મોડેલે દર્શાવ્યું કે ચાંચિયા કાફલાઓને રાષ્ટ્રીય નૌકાદળ જેટલી અસરકારક રીતે ગોઠવી શકાય છે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "id": "ch06-296",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "આધુનિક સમયમાં, ઝેંગ યી સાઓ એક સાંસ્કૃતિક પ્રતીક બની ગયા છે.",
+      "text_markdown": "આધુનિક સમયમાં, ઝેંગ યી સાઓ એક સાંસ્કૃતિક પ્રતીક બની ગયા છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "આધુનિક સમયમાં, ઝેંગ યી સાઓ એક સાંસ્કૃતિક પ્રતીક બની ગયા છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "id": "ch06-297",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "તેઓ વિશ્વભરની નવલકથાઓ, ફિલ્મો અને વિડિયો ગેમ્સમાં દેખાયા છે.",
+      "text_markdown": "તેઓ વિશ્વભરની નવલકથાઓ, ફિલ્મો અને વિડિયો ગેમ્સમાં દેખાયા છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેઓ વિશ્વભરની નવલકથાઓ, ફિલ્મો અને વિડિયો ગેમ્સમાં દેખાયા છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "id": "ch06-298",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "તેમની વાર્તા ડઝનેક ભાષાઓમાં અનુવાદિત થઈ છે.",
+      "text_markdown": "તેમની વાર્તા ડઝનેક ભાષાઓમાં અનુવાદિત થઈ છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેમની વાર્તા ડઝનેક ભાષાઓમાં અનુવાદિત થઈ છે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "id": "ch06-299",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "છતાં, તેમના જીવન વિશે ઘણું બધું અજાણ્યું છે.",
+      "text_markdown": "છતાં, તેમના જીવન વિશે ઘણું બધું અજાણ્યું છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "છતાં, તેમના જીવન વિશે ઘણું બધું અજાણ્યું છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "id": "ch06-300",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "આપણે તેમનું જન્મ નામ નિશ્ચિતતાપૂર્વક જાણતા નથી.",
+      "text_markdown": "આપણે તેમનું જન્મ નામ નિશ્ચિતતાપૂર્વક જાણતા નથી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "આપણે તેમનું જન્મ નામ નિશ્ચિતતાપૂર્વક જાણતા નથી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "id": "ch06-301",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "તેના ચહેરાની એક પણ ચકાસાયેલ છબી આપણી પાસે નથી.",
+      "text_markdown": "તેના ચહેરાની એક પણ ચકાસાયેલ છબી આપણી પાસે નથી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેના ચહેરાની એક પણ ચકાસાયેલ છબી આપણી પાસે નથી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p86",
+      "block_type": "text",
+      "id": "ch06-302",
+      "sentence_index": 3,
+      "chapter": 6,
+      "text": "આપણે જે કંઈ જાણીએ છીએ તેમાંથી મોટાભાગની માહિતી તેના દુશ્મનો દ્વારા લખાયેલા સરકારી દસ્તાવેજોમાંથી આવે છે.",
+      "text_markdown": "આપણે જે કંઈ જાણીએ છીએ તેમાંથી મોટાભાગની માહિતી તેના દુશ્મનો દ્વારા લખાયેલા સરકારી દસ્તાવેજોમાંથી આવે છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "આપણે જે કંઈ જાણીએ છીએ તેમાંથી મોટાભાગની માહિતી તેના દુશ્મનો દ્વારા લખાયેલા સરકારી દસ્તાવેજોમાંથી આવે છે.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "id": "ch06-303",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "ચિંગ દરબાર પાસે તેની સિદ્ધિઓને ઓછી આંકવાના તમામ કારણો હતા.",
+      "text_markdown": "ચિંગ દરબાર પાસે તેની સિદ્ધિઓને ઓછી આંકવાના તમામ કારણો હતા.",
+      "title": "વારસો",
+      "tts": {
+        "text": "ચિંગ દરબાર પાસે તેની સિદ્ધિઓને ઓછી આંકવાના તમામ કારણો હતા.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "id": "ch06-304",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "ઘણા સત્તાવાર દસ્તાવેજો તેની ભૂમિકાને ઓછી આંકી છે અથવા તેની સફળતાનો શ્રેય ઝાંગ બાઓને આપે છે.",
+      "text_markdown": "ઘણા સત્તાવાર દસ્તાવેજો તેની ભૂમિકાને ઓછી આંકી છે અથવા તેની સફળતાનો શ્રેય ઝાંગ બાઓને આપે છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "ઘણા સત્તાવાર દસ્તાવેજો તેની ભૂમિકાને ઓછી આંકી છે અથવા તેની સફળતાનો શ્રેય ઝાંગ બાઓને આપે છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "id": "ch06-305",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "ઇતિહાસકારોએ આ સ્ત્રોતોને કાળજીપૂર્વક વાંચવા જોઈએ, એ જાણીને કે તે રાજકીય હેતુઓથી લખાયા હતા.",
+      "text_markdown": "ઇતિહાસકારોએ આ સ્ત્રોતોને કાળજીપૂર્વક વાંચવા જોઈએ, એ જાણીને કે તે રાજકીય હેતુઓથી લખાયા હતા.",
+      "title": "વારસો",
+      "tts": {
+        "text": "ઇતિહાસકારોએ આ સ્ત્રોતોને કાળજીપૂર્વક વાંચવા જોઈએ, એ જાણીને કે તે રાજકીય હેતુઓથી લખાયા હતા.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "id": "ch06-306",
+      "sentence_index": 0,
+      "chapter": 6,
+      "text": "દસ્તાવેજો જે છુપાવી શકતા નથી તે તેની સિદ્ધિનો વ્યાપ છે.",
+      "text_markdown": "દસ્તાવેજો જે છુપાવી શકતા નથી તે તેની સિદ્ધિનો વ્યાપ છે.",
+      "title": "વારસો",
+      "tts": {
+        "text": "દસ્તાવેજો જે છુપાવી શકતા નથી તે તેની સિદ્ધિનો વ્યાપ છે.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "id": "ch06-307",
+      "sentence_index": 1,
+      "chapter": 6,
+      "text": "તેણે નોંધાયેલા ઇતિહાસમાં સૌથી મોટો ચાંચિયા જહાજોનો કાફલો બનાવ્યો હતો.",
+      "text_markdown": "તેણે નોંધાયેલા ઇતિહાસમાં સૌથી મોટો ચાંચિયા જહાજોનો કાફલો બનાવ્યો હતો.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેણે નોંધાયેલા ઇતિહાસમાં સૌથી મોટો ચાંચિયા જહાજોનો કાફલો બનાવ્યો હતો.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "id": "ch06-308",
+      "sentence_index": 2,
+      "chapter": 6,
+      "text": "તેણે ચિંગ સામ્રાજ્ય અને પોર્ટુગીઝ નૌકાદળની સંયુક્ત સેનાને હરાવી હતી.",
+      "text_markdown": "તેણે ચિંગ સામ્રાજ્ય અને પોર્ટુગીઝ નૌકાદળની સંયુક્ત સેનાને હરાવી હતી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તેણે ચિંગ સામ્રાજ્ય અને પોર્ટુગીઝ નૌકાદળની સંયુક્ત સેનાને હરાવી હતી.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "id": "ch06-309",
+      "sentence_index": 3,
+      "chapter": 6,
+      "text": "તે ધનવાન, સ્વતંત્ર અને અપરાજિત રહીને નિવૃત્ત થઈ.",
+      "text_markdown": "તે ધનવાન, સ્વતંત્ર અને અપરાજિત રહીને નિવૃત્ત થઈ.",
+      "title": "વારસો",
+      "tts": {
+        "text": "તે ધનવાન, સ્વતંત્ર અને અપરાજિત રહીને નિવૃત્ત થઈ.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "id": "ch06-310",
+      "sentence_index": 4,
+      "chapter": 6,
+      "text": "સમુદ્રના લાંબા ઇતિહાસમાં, બીજા કોઈએ આવું કર્યું નથી.",
+      "text_markdown": "સમુદ્રના લાંબા ઇતિહાસમાં, બીજા કોઈએ આવું કર્યું નથી.",
+      "title": "વારસો",
+      "tts": {
+        "text": "સમુદ્રના લાંબા ઇતિહાસમાં, બીજા કોઈએ આવું કર્યું નથી.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

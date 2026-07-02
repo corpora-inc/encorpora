@@ -1,0 +1,4487 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_jean_lafitte",
+  "language": "ko",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 글",
+      "text_markdown": "독자에게 드리는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 전쟁 승리를 도운 밀수업자의 실화이다.",
+      "text_markdown": "이것은 전쟁 승리를 도운 밀수업자의 실화이다.",
+      "tts": {
+        "text": "이것은 전쟁 승리를 도운 밀수업자의 실화이다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 장 라피트였으며, 미국 역사상 가장 매혹적인 무법자 중 한 명이었다.",
+      "text_markdown": "그의 이름은 장 라피트였으며, 미국 역사상 가장 매혹적인 무법자 중 한 명이었다.",
+      "tts": {
+        "text": "그의 이름은 장 라피트였으며, 미국 역사상 가장 매혹적인 무법자 중 한 명이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 스스로를 사략선장이라 불렀지만, 미국 정부는 그를 해적이라 불렀다.",
+      "text_markdown": "그는 스스로를 사략선장이라 불렀지만, 미국 정부는 그를 해적이라 불렀다.",
+      "tts": {
+        "text": "그는 스스로를 사략선장이라 불렀지만, 미국 정부는 그를 해적이라 불렀다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 루이지애나의 늪지대에서 밀수 제국을 운영했다.",
+      "text_markdown": "라피트는 루이지애나의 늪지대에서 밀수 제국을 운영했다.",
+      "tts": {
+        "text": "라피트는 루이지애나의 늪지대에서 밀수 제국을 운영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국군이 뉴올리언스를 정복하려 했을 때, 그는 미국 편에서 싸우기로 결심했다.",
+      "text_markdown": "영국군이 뉴올리언스를 정복하려 했을 때, 그는 미국 편에서 싸우기로 결심했다.",
+      "tts": {
+        "text": "영국군이 뉴올리언스를 정복하려 했을 때, 그는 미국 편에서 싸우기로 결심했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 결정은 천팔백십이년 전쟁의 흐름을 바꾸는 데 기여했다.",
+      "text_markdown": "그의 결정은 천팔백십이년 전쟁의 흐름을 바꾸는 데 기여했다.",
+      "tts": {
+        "text": "그의 결정은 천팔백십이년 전쟁의 흐름을 바꾸는 데 기여했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트에 관한 거의 모든 것이 수수께끼에 싸여 있다.",
+      "text_markdown": "라피트에 관한 거의 모든 것이 수수께끼에 싸여 있다.",
+      "tts": {
+        "text": "라피트에 관한 거의 모든 것이 수수께끼에 싸여 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우리는 그가 정확히 어디서 태어났는지 모른다.",
+      "text_markdown": "우리는 그가 정확히 어디서 태어났는지 모른다.",
+      "tts": {
+        "text": "우리는 그가 정확히 어디서 태어났는지 모른다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "우리는 그가 정확히 언제 어떻게 죽었는지 모른다.",
+      "text_markdown": "우리는 그가 정확히 언제 어떻게 죽었는지 모른다.",
+      "tts": {
+        "text": "우리는 그가 정확히 언제 어떻게 죽었는지 모른다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심지어 그의 이름도 출처마다 다르게 표기된다.",
+      "text_markdown": "심지어 그의 이름도 출처마다 다르게 표기된다.",
+      "tts": {
+        "text": "심지어 그의 이름도 출처마다 다르게 표기된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 가능한 최선의 증거를 활용하여 그의 이야기를 전한다.",
+      "text_markdown": "이 책은 가능한 최선의 증거를 활용하여 그의 이야기를 전한다.",
+      "tts": {
+        "text": "이 책은 가능한 최선의 증거를 활용하여 그의 이야기를 전한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기록이 불확실한 곳에서는 그렇게 밝힌다.",
+      "text_markdown": "기록이 불확실한 곳에서는 그렇게 밝힌다.",
+      "tts": {
+        "text": "기록이 불확실한 곳에서는 그렇게 밝힌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "걸프 해안의 세계",
+      "text_markdown": "걸프 해안의 세계"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "장 라피트는 북아메리카 역사상 가장 격동적인 시기 중 하나에 살았다.",
+      "text_markdown": "장 라피트는 북아메리카 역사상 가장 격동적인 시기 중 하나에 살았다.",
+      "tts": {
+        "text": "장 라피트는 북아메리카 역사상 가장 격동적인 시기 중 하나에 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "제국들이 무너지고, 새로운 국가들이 탄생하며, 멕시코만이 그 모든 것의 중심에 있었다.",
+      "text_markdown": "제국들이 무너지고, 새로운 국가들이 탄생하며, 멕시코만이 그 모든 것의 중심에 있었다.",
+      "tts": {
+        "text": "제국들이 무너지고, 새로운 국가들이 탄생하며, 멕시코만이 그 모든 것의 중심에 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "멕시코만은 미국, 멕시코, 쿠바로 둘러싸인 광활하고 따뜻한 수역이다.",
+      "text_markdown": "멕시코만은 미국, 멕시코, 쿠바로 둘러싸인 광활하고 따뜻한 수역이다.",
+      "tts": {
+        "text": "멕시코만은 미국, 멕시코, 쿠바로 둘러싸인 광활하고 따뜻한 수역이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 해안선은 플로리다 끝에서 유카탄 반도까지 뻗어 있다.",
+      "text_markdown": "그 해안선은 플로리다 끝에서 유카탄 반도까지 뻗어 있다.",
+      "tts": {
+        "text": "그 해안선은 플로리다 끝에서 유카탄 반도까지 뻗어 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수세기 동안 걸프만은 무역, 밀수, 분쟁의 교차로였다.",
+      "text_markdown": "수세기 동안 걸프만은 무역, 밀수, 분쟁의 교차로였다.",
+      "tts": {
+        "text": "수세기 동안 걸프만은 무역, 밀수, 분쟁의 교차로였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뉴올리언스는 북아메리카 최대의 수로인 미시시피강 하구에 위치했다.",
+      "text_markdown": "뉴올리언스는 북아메리카 최대의 수로인 미시시피강 하구에 위치했다.",
+      "tts": {
+        "text": "뉴올리언스는 북아메리카 최대의 수로인 미시시피강 하구에 위치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "뉴올리언스를 지배하는 자가 광대한 영토의 무역을 지배했다.",
+      "text_markdown": "뉴올리언스를 지배하는 자가 광대한 영토의 무역을 지배했다.",
+      "tts": {
+        "text": "뉴올리언스를 지배하는 자가 광대한 영토의 무역을 지배했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 도시는 천칠백십팔년에 프랑스인에 의해 건설되었다.",
+      "text_markdown": "이 도시는 천칠백십팔년에 프랑스인에 의해 건설되었다.",
+      "tts": {
+        "text": "이 도시는 천칠백십팔년에 프랑스인에 의해 건설되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이후 스페인에 양도되었다가 프랑스에 반환되고, 최종적으로 미국에 매각되었다.",
+      "text_markdown": "이후 스페인에 양도되었다가 프랑스에 반환되고, 최종적으로 미국에 매각되었다.",
+      "tts": {
+        "text": "이후 스페인에 양도되었다가 프랑스에 반환되고, 최종적으로 미국에 매각되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1803년의 루이지애나 매입은 미국 역사상 가장 중요한 사건 중 하나였다.",
+      "text_markdown": "1803년의 루이지애나 매입은 미국 역사상 가장 중요한 사건 중 하나였다.",
+      "tts": {
+        "text": "천팔백삼년의 루이지애나 매입은 미국 역사상 가장 중요한 사건 중 하나였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "미국은 프랑스로부터 루이지애나 영토를 약 천오백만 달러에 구입했다.",
+      "text_markdown": "미국은 프랑스로부터 루이지애나 영토를 약 천오백만 달러에 구입했다.",
+      "tts": {
+        "text": "미국은 프랑스로부터 루이지애나 영토를 약 천오백만 달러에 구입했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 단 한 번의 거래로 젊은 국가의 크기가 두 배로 늘었다.",
+      "text_markdown": "이 단 한 번의 거래로 젊은 국가의 크기가 두 배로 늘었다.",
+      "tts": {
+        "text": "이 단 한 번의 거래로 젊은 국가의 크기가 두 배로 늘었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영토의 보석인 뉴올리언스는 하룻밤 사이에 미국 도시가 되었다.",
+      "text_markdown": "영토의 보석인 뉴올리언스는 하룻밤 사이에 미국 도시가 되었다.",
+      "tts": {
+        "text": "영토의 보석인 뉴올리언스는 하룻밤 사이에 미국 도시가 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 뉴올리언스는 다른 어떤 미국 도시와도 달랐다.",
+      "text_markdown": "그러나 뉴올리언스는 다른 어떤 미국 도시와도 달랐다.",
+      "tts": {
+        "text": "그러나 뉴올리언스는 다른 어떤 미국 도시와도 달랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 문화는 프랑스, 스페인, 아프리카, 카리브해, 아메리카 원주민의 영향이 뒤섞인 것이었다.",
+      "text_markdown": "그 문화는 프랑스, 스페인, 아프리카, 카리브해, 아메리카 원주민의 영향이 뒤섞인 것이었다.",
+      "tts": {
+        "text": "그 문화는 프랑스, 스페인, 아프리카, 카리브해, 아메리카 원주민의 영향이 뒤섞인 것이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "프랑스어와 스페인어가 영어만큼 흔하게 사용되었다.",
+      "text_markdown": "프랑스어와 스페인어가 영어만큼 흔하게 사용되었다.",
+      "tts": {
+        "text": "프랑스어와 스페인어가 영어만큼 흔하게 사용되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 도시의 음식, 음악, 건축, 관습은 이 비범한 혼합을 반영했다.",
+      "text_markdown": "이 도시의 음식, 음악, 건축, 관습은 이 비범한 혼합을 반영했다.",
+      "tts": {
+        "text": "이 도시의 음식, 음악, 건축, 관습은 이 비범한 혼합을 반영했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천칠백구십일년에 시작된 아이티 혁명은 걸프 해안에 깊은 영향을 미쳤다.",
+      "text_markdown": "천칠백구십일년에 시작된 아이티 혁명은 걸프 해안에 깊은 영향을 미쳤다.",
+      "tts": {
+        "text": "천칠백구십일년에 시작된 아이티 혁명은 걸프 해안에 깊은 영향을 미쳤다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "프랑스 식민지 생도맹그의 노예들이 주인에 맞서 봉기했다.",
+      "text_markdown": "프랑스 식민지 생도맹그의 노예들이 주인에 맞서 봉기했다.",
+      "tts": {
+        "text": "프랑스 식민지 생도맹그의 노예들이 주인에 맞서 봉기했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수년간의 잔인한 전투 끝에 독립 국가 아이티를 세웠다.",
+      "text_markdown": "수년간의 잔인한 전투 끝에 독립 국가 아이티를 세웠다.",
+      "tts": {
+        "text": "수년간의 잔인한 전투 끝에 독립 국가 아이티를 세웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "수천 명의 아이티 난민들이 뉴올리언스로 도망쳐 문화를 가져왔다.",
+      "text_markdown": "수천 명의 아이티 난민들이 뉴올리언스로 도망쳐 문화를 가져왔다.",
+      "tts": {
+        "text": "수천 명의 아이티 난민들이 뉴올리언스로 도망쳐 문화를 가져왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노예 무역은 걸프 해안 경제의 핵심이었다.",
+      "text_markdown": "노예 무역은 걸프 해안 경제의 핵심이었다.",
+      "tts": {
+        "text": "노예 무역은 걸프 해안 경제의 핵심이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "루이지애나의 사탕수수 농장은 노예 노동에 의존했다.",
+      "text_markdown": "루이지애나의 사탕수수 농장은 노예 노동에 의존했다.",
+      "tts": {
+        "text": "루이지애나의 사탕수수 농장은 노예 노동에 의존했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "면화가 미국 남부의 왕이 되고 있었다.",
+      "text_markdown": "면화가 미국 남부의 왕이 되고 있었다.",
+      "tts": {
+        "text": "면화가 미국 남부의 왕이 되고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "노예에 대한 수요가 광대하고 끔찍한 시장을 만들었다.",
+      "text_markdown": "노예에 대한 수요가 광대하고 끔찍한 시장을 만들었다.",
+      "tts": {
+        "text": "노예에 대한 수요가 광대하고 끔찍한 시장을 만들었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "밀수는 루이지애나 남부 늪지대의 삶의 방식이었다.",
+      "text_markdown": "밀수는 루이지애나 남부 늪지대의 삶의 방식이었다.",
+      "tts": {
+        "text": "밀수는 루이지애나 남부 늪지대의 삶의 방식이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바이유는 느리게 흐르는 수로, 늪, 습지의 네트워크이다.",
+      "text_markdown": "바이유는 느리게 흐르는 수로, 늪, 습지의 네트워크이다.",
+      "tts": {
+        "text": "바이유는 느리게 흐르는 수로, 늪, 습지의 네트워크이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "뉴올리언스 남쪽으로 수백 킬로미터에 걸쳐 뻗어 있다.",
+      "text_markdown": "뉴올리언스 남쪽으로 수백 킬로미터에 걸쳐 뻗어 있다.",
+      "tts": {
+        "text": "뉴올리언스 남쪽으로 수백 킬로미터에 걸쳐 뻗어 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "지형이 너무 복잡해서 외부인은 며칠 동안 길을 잃을 수 있었다.",
+      "text_markdown": "지형이 너무 복잡해서 외부인은 며칠 동안 길을 잃을 수 있었다.",
+      "tts": {
+        "text": "지형이 너무 복잡해서 외부인은 며칠 동안 길을 잃을 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미국 정부는 국내로 들어오는 상품에 수입세를 부과했다.",
+      "text_markdown": "미국 정부는 국내로 들어오는 상품에 수입세를 부과했다.",
+      "tts": {
+        "text": "미국 정부는 국내로 들어오는 상품에 수입세를 부과했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "밀수업자들은 숨겨진 수로를 통해 상품을 들여와 이러한 세금을 피했다.",
+      "text_markdown": "밀수업자들은 숨겨진 수로를 통해 상품을 들여와 이러한 세금을 피했다.",
+      "tts": {
+        "text": "밀수업자들은 숨겨진 수로를 통해 상품을 들여와 이러한 세금을 피했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "뉴올리언스의 상인들은 더 낮은 가격에 밀수품을 열심히 구입했다.",
+      "text_markdown": "뉴올리언스의 상인들은 더 낮은 가격에 밀수품을 열심히 구입했다.",
+      "tts": {
+        "text": "뉴올리언스의 상인들은 더 낮은 가격에 밀수품을 열심히 구입했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "당국은 광활하고 길 없는 바이유 지역을 순찰하는 데 어려움을 겪었다.",
+      "text_markdown": "당국은 광활하고 길 없는 바이유 지역을 순찰하는 데 어려움을 겪었다.",
+      "tts": {
+        "text": "당국은 광활하고 길 없는 바이유 지역을 순찰하는 데 어려움을 겪었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사략 행위는 십구세기 초에도 여전히 흔했다.",
+      "text_markdown": "사략 행위는 십구세기 초에도 여전히 흔했다.",
+      "tts": {
+        "text": "사략 행위는 십구세기 초에도 여전히 흔했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사략선장이란 정부로부터 적선을 공격할 권한을 부여받은 민간 선장이었다.",
+      "text_markdown": "사략선장이란 정부로부터 적선을 공격할 권한을 부여받은 민간 선장이었다.",
+      "tts": {
+        "text": "사략선장이란 정부로부터 적선을 공격할 권한을 부여받은 민간 선장이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사략선장과 해적의 구분은 전적으로 서류에 달려 있었다.",
+      "text_markdown": "사략선장과 해적의 구분은 전적으로 서류에 달려 있었다.",
+      "tts": {
+        "text": "사략선장과 해적의 구분은 전적으로 서류에 달려 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "유효한 서류를 가진 사략선장은 합법이었고, 없으면 해적이었다.",
+      "text_markdown": "유효한 서류를 가진 사략선장은 합법이었고, 없으면 해적이었다.",
+      "tts": {
+        "text": "유효한 서류를 가진 사략선장은 합법이었고, 없으면 해적이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "카리브해와 남미의 많은 소국들이 사략 면허장을 발행했다.",
+      "text_markdown": "카리브해와 남미의 많은 소국들이 사략 면허장을 발행했다.",
+      "tts": {
+        "text": "카리브해와 남미의 많은 소국들이 사략 면허장을 발행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 나라들 중 일부는 서류상으로만 겨우 존재했다.",
+      "text_markdown": "이 나라들 중 일부는 서류상으로만 겨우 존재했다.",
+      "tts": {
+        "text": "이 나라들 중 일부는 서류상으로만 겨우 존재했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영리한 사략선장은 항상 자신의 습격을 인가할 정부를 찾을 수 있었다.",
+      "text_markdown": "영리한 사략선장은 항상 자신의 습격을 인가할 정부를 찾을 수 있었다.",
+      "tts": {
+        "text": "영리한 사략선장은 항상 자신의 습격을 인가할 정부를 찾을 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 법적 회색지대가 바로 장 라피트가 활동한 곳이었다.",
+      "text_markdown": "이 법적 회색지대가 바로 장 라피트가 활동한 곳이었다.",
+      "tts": {
+        "text": "이 법적 회색지대가 바로 장 라피트가 활동한 곳이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시기 스페인의 아메리카 제국은 무너지고 있었다.",
+      "text_markdown": "이 시기 스페인의 아메리카 제국은 무너지고 있었다.",
+      "tts": {
+        "text": "이 시기 스페인의 아메리카 제국은 무너지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라틴 아메리카 전역에서 혁명이 일어나고 있었다.",
+      "text_markdown": "라틴 아메리카 전역에서 혁명이 일어나고 있었다.",
+      "tts": {
+        "text": "라틴 아메리카 전역에서 혁명이 일어나고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 상선은 사략선장들에게 취약한 표적이었다.",
+      "text_markdown": "스페인 상선은 사략선장들에게 취약한 표적이었다.",
+      "tts": {
+        "text": "스페인 상선은 사략선장들에게 취약한 표적이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "멕시코만은 대담하고 파렴치한 자들에게 기회로 가득 차 있었다.",
+      "text_markdown": "멕시코만은 대담하고 파렴치한 자들에게 기회로 가득 차 있었다.",
+      "tts": {
+        "text": "멕시코만은 대담하고 파렴치한 자들에게 기회로 가득 차 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미국과 영국 사이의 1812년 전쟁이 그해 유월에 발발했다.",
+      "text_markdown": "미국과 영국 사이의 1812년 전쟁이 그해 유월에 발발했다.",
+      "tts": {
+        "text": "미국과 영국 사이의 천팔백십이년 전쟁이 그해 유월에 발발했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 미국 해운에 간섭하고 미국 선원들을 강제로 영국 해군에 징집해 왔다.",
+      "text_markdown": "영국은 미국 해운에 간섭하고 미국 선원들을 강제로 영국 해군에 징집해 왔다.",
+      "tts": {
+        "text": "영국은 미국 해운에 간섭하고 미국 선원들을 강제로 영국 해군에 징집해 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전쟁은 이년 이상 지속되었다.",
+      "text_markdown": "전쟁은 이년 이상 지속되었다.",
+      "tts": {
+        "text": "전쟁은 이년 이상 지속되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "가장 극적인 순간은 뉴올리언스에서 벌어지게 된다.",
+      "text_markdown": "가장 극적인 순간은 뉴올리언스에서 벌어지게 된다.",
+      "tts": {
+        "text": "가장 극적인 순간은 뉴올리언스에서 벌어지게 된다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바이유 지역에는 놀라운 야생동물의 다양성이 서식하고 있었다.",
+      "text_markdown": "바이유 지역에는 놀라운 야생동물의 다양성이 서식하고 있었다.",
+      "tts": {
+        "text": "바이유 지역에는 놀라운 야생동물의 다양성이 서식하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-065",
+      "part": 0,
+      "chapter": 1,
+      "title": "걸프 해안의 세계",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "악어, 뱀, 그리고 셀 수 없이 많은 새 종류가 늪에 살고 있었다.",
+      "text_markdown": "악어, 뱀, 그리고 셀 수 없이 많은 새 종류가 늪에 살고 있었다.",
+      "tts": {
+        "text": "악어, 뱀, 그리고 셀 수 없이 많은 새 종류가 늪에 살고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "장 라피트는 1780년경에 태어났지만, 정확한 출생지는 논란이 있다.",
+      "text_markdown": "장 라피트는 1780년경에 태어났지만, 정확한 출생지는 논란이 있다.",
+      "tts": {
+        "text": "장 라피트는 천칠백팔십년경에 태어났지만, 정확한 출생지는 논란이 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 자료는 그가 프랑스 남서부의 항구 도시 바욘에서 태어났다고 한다.",
+      "text_markdown": "일부 자료는 그가 프랑스 남서부의 항구 도시 바욘에서 태어났다고 한다.",
+      "tts": {
+        "text": "일부 자료는 그가 프랑스 남서부의 항구 도시 바욘에서 태어났다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 사람들은 프랑스 식민지 생도맹그, 즉 오늘날의 아이티에서 태어났다고 믿는다.",
+      "text_markdown": "다른 사람들은 프랑스 식민지 생도맹그, 즉 오늘날의 아이티에서 태어났다고 믿는다.",
+      "tts": {
+        "text": "다른 사람들은 프랑스 식민지 생도맹그, 즉 오늘날의 아이티에서 태어났다고 믿는다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트 자신이 이 미스터리를 의도적으로 키웠다.",
+      "text_markdown": "라피트 자신이 이 미스터리를 의도적으로 키웠다.",
+      "tts": {
+        "text": "라피트 자신이 이 미스터리를 의도적으로 키웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 자신의 출신에 대해 거의 말하지 않았고, 사람마다 다른 이야기를 했다.",
+      "text_markdown": "그는 자신의 출신에 대해 거의 말하지 않았고, 사람마다 다른 이야기를 했다.",
+      "tts": {
+        "text": "그는 자신의 출신에 대해 거의 말하지 않았고, 사람마다 다른 이야기를 했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "명확한 과거가 없는 사람은 당국이 추적하기가 더 어려웠다.",
+      "text_markdown": "명확한 과거가 없는 사람은 당국이 추적하기가 더 어려웠다.",
+      "tts": {
+        "text": "명확한 과거가 없는 사람은 당국이 추적하기가 더 어려웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 형 피에르 라피트는 평생 동안 그의 가장 가까운 동반자였다.",
+      "text_markdown": "그의 형 피에르 라피트는 평생 동안 그의 가장 가까운 동반자였다.",
+      "tts": {
+        "text": "그의 형 피에르 라피트는 평생 동안 그의 가장 가까운 동반자였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "피에르는 장보다 나이가 많았고, 초기 사업을 이끌었을 수 있다.",
+      "text_markdown": "피에르는 장보다 나이가 많았고, 초기 사업을 이끌었을 수 있다.",
+      "tts": {
+        "text": "피에르는 장보다 나이가 많았고, 초기 사업을 이끌었을 수 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "두 형제는 사업에서도 곤경에서도 떼려야 뗄 수 없는 사이였다.",
+      "text_markdown": "두 형제는 사업에서도 곤경에서도 떼려야 뗄 수 없는 사이였다.",
+      "tts": {
+        "text": "두 형제는 사업에서도 곤경에서도 떼려야 뗄 수 없는 사이였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트 형제는 1803년에서 1805년 사이에 뉴올리언스에 도착했다.",
+      "text_markdown": "라피트 형제는 1803년에서 1805년 사이에 뉴올리언스에 도착했다.",
+      "tts": {
+        "text": "라피트 형제는 천팔백삼년에서 천팔백오년 사이에 뉴올리언스에 도착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 도시는 프랑스의 지배에서 미국의 지배로 막 전환되고 있었다.",
+      "text_markdown": "이 도시는 프랑스의 지배에서 미국의 지배로 막 전환되고 있었다.",
+      "tts": {
+        "text": "이 도시는 프랑스의 지배에서 미국의 지배로 막 전환되고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "분위기는 혼란스럽고 기회로 가득했다.",
+      "text_markdown": "분위기는 혼란스럽고 기회로 가득했다.",
+      "tts": {
+        "text": "분위기는 혼란스럽고 기회로 가득했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "법은 모호했고, 집행은 약했으며, 재산이 만들어지고 있었다.",
+      "text_markdown": "법은 모호했고, 집행은 약했으며, 재산이 만들어지고 있었다.",
+      "tts": {
+        "text": "법은 모호했고, 집행은 약했으며, 재산이 만들어지고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "형제는 처음에 상인으로 자리를 잡았다.",
+      "text_markdown": "형제는 처음에 상인으로 자리를 잡았다.",
+      "tts": {
+        "text": "형제는 처음에 상인으로 자리를 잡았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "프렌치 쿼터에서 창고와 대장간을 운영했다.",
+      "text_markdown": "프렌치 쿼터에서 창고와 대장간을 운영했다.",
+      "tts": {
+        "text": "프렌치 쿼터에서 창고와 대장간을 운영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대장간은 밀수품을 파는 위장이었을 수 있다.",
+      "text_markdown": "대장간은 밀수품을 파는 위장이었을 수 있다.",
+      "tts": {
+        "text": "대장간은 밀수품을 파는 위장이었을 수 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "뉴올리언스의 한 건물이 아직도 라피트의 원래 대장간이었다고 주장한다.",
+      "text_markdown": "뉴올리언스의 한 건물이 아직도 라피트의 원래 대장간이었다고 주장한다.",
+      "tts": {
+        "text": "뉴올리언스의 한 건물이 아직도 라피트의 원래 대장간이었다고 주장한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "장 라피트는 키가 크고, 잘생기고, 매력적인 사람으로 묘사되었다.",
+      "text_markdown": "장 라피트는 키가 크고, 잘생기고, 매력적인 사람으로 묘사되었다.",
+      "tts": {
+        "text": "장 라피트는 키가 크고, 잘생기고, 매력적인 사람으로 묘사되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "프랑스어, 영어, 스페인어를 유창하게 했고, 이탈리아어도 할 수 있었을 것이다.",
+      "text_markdown": "프랑스어, 영어, 스페인어를 유창하게 했고, 이탈리아어도 할 수 있었을 것이다.",
+      "tts": {
+        "text": "프랑스어, 영어, 스페인어를 유창하게 했고, 이탈리아어도 할 수 있었을 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "옷을 잘 입었고 신사의 매너로 행동했다.",
+      "text_markdown": "옷을 잘 입었고 신사의 매너로 행동했다.",
+      "tts": {
+        "text": "옷을 잘 입었고 신사의 매너로 행동했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "상인, 정치인, 무법자 사이를 편안하게 오갈 수 있었다.",
+      "text_markdown": "상인, 정치인, 무법자 사이를 편안하게 오갈 수 있었다.",
+      "tts": {
+        "text": "상인, 정치인, 무법자 사이를 편안하게 오갈 수 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 걸프 해안을 따라 인맥 네트워크를 구축했다.",
+      "text_markdown": "라피트는 걸프 해안을 따라 인맥 네트워크를 구축했다.",
+      "tts": {
+        "text": "라피트는 걸프 해안을 따라 인맥 네트워크를 구축했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "선장, 창고주, 농장주, 정부 관리를 알고 있었다.",
+      "text_markdown": "선장, 창고주, 농장주, 정부 관리를 알고 있었다.",
+      "tts": {
+        "text": "선장, 창고주, 농장주, 정부 관리를 알고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 인맥 중 일부는 합법적인 사업가였다.",
+      "text_markdown": "이러한 인맥 중 일부는 합법적인 사업가였다.",
+      "tts": {
+        "text": "이러한 인맥 중 일부는 합법적인 사업가였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "나머지는 밀수업자, 해적, 도둑이었다.",
+      "text_markdown": "나머지는 밀수업자, 해적, 도둑이었다.",
+      "tts": {
+        "text": "나머지는 밀수업자, 해적, 도둑이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "형제는 곧 단순한 무역에서 대규모 밀수로 확장했다.",
+      "text_markdown": "형제는 곧 단순한 무역에서 대규모 밀수로 확장했다.",
+      "tts": {
+        "text": "형제는 곧 단순한 무역에서 대규모 밀수로 확장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스페인 상선과 그 화물의 나포 및 판매를 조직했다.",
+      "text_markdown": "스페인 상선과 그 화물의 나포 및 판매를 조직했다.",
+      "tts": {
+        "text": "스페인 상선과 그 화물의 나포 및 판매를 조직했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "노예 거래도 했는데, 이는 엄청나게 수익이 좋았다.",
+      "text_markdown": "노예 거래도 했는데, 이는 엄청나게 수익이 좋았다.",
+      "tts": {
+        "text": "노예 거래도 했는데, 이는 엄청나게 수익이 좋았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "천팔백팔년에 통과된 미국의 노예 수입 금지법은 가격만 올렸을 뿐이다.",
+      "text_markdown": "천팔백팔년에 통과된 미국의 노예 수입 금지법은 가격만 올렸을 뿐이다.",
+      "tts": {
+        "text": "천팔백팔년에 통과된 미국의 노예 수입 금지법은 가격만 올렸을 뿐이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 카르타헤나 공화국의 사략 면허장으로 자신의 활동을 정당화했다.",
+      "text_markdown": "라피트는 카르타헤나 공화국의 사략 면허장으로 자신의 활동을 정당화했다.",
+      "tts": {
+        "text": "라피트는 카르타헤나 공화국의 사략 면허장으로 자신의 활동을 정당화했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "카르타헤나는 현재의 콜롬비아에 있는 도시로, 스페인으로부터의 독립을 선언했다.",
+      "text_markdown": "카르타헤나는 현재의 콜롬비아에 있는 도시로, 스페인으로부터의 독립을 선언했다.",
+      "tts": {
+        "text": "카르타헤나는 현재의 콜롬비아에 있는 도시로, 스페인으로부터의 독립을 선언했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 사략 면허장은 스페인 선박에 대한 공격을 허가했다.",
+      "text_markdown": "그 사략 면허장은 스페인 선박에 대한 공격을 허가했다.",
+      "tts": {
+        "text": "그 사략 면허장은 스페인 선박에 대한 공격을 허가했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이것은 라피트에게 합법성의 얇은 겉옷을 주었다.",
+      "text_markdown": "이것은 라피트에게 합법성의 얇은 겉옷을 주었다.",
+      "tts": {
+        "text": "이것은 라피트에게 합법성의 얇은 겉옷을 주었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트가 사략선장인지 해적인지는 누구에게 물어보느냐에 따라 달랐다.",
+      "text_markdown": "라피트가 사략선장인지 해적인지는 누구에게 물어보느냐에 따라 달랐다.",
+      "tts": {
+        "text": "라피트가 사략선장인지 해적인지는 누구에게 물어보느냐에 따라 달랐다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 싼 물건을 산 뉴올리언스의 상인들은 그를 사략선장이라 불렀다.",
+      "text_markdown": "그의 싼 물건을 산 뉴올리언스의 상인들은 그를 사략선장이라 불렀다.",
+      "tts": {
+        "text": "그의 싼 물건을 산 뉴올리언스의 상인들은 그를 사략선장이라 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스페인 정부와 미국 당국은 그를 해적이라 불렀다.",
+      "text_markdown": "스페인 정부와 미국 당국은 그를 해적이라 불렀다.",
+      "tts": {
+        "text": "스페인 정부와 미국 당국은 그를 해적이라 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "라피트는 항상 자신이 합법적인 사업가라고 주장했다.",
+      "text_markdown": "라피트는 항상 자신이 합법적인 사업가라고 주장했다.",
+      "tts": {
+        "text": "라피트는 항상 자신이 합법적인 사업가라고 주장했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바라타리아만은 라피트 밀수 제국의 중심지가 되었다.",
+      "text_markdown": "바라타리아만은 라피트 밀수 제국의 중심지가 되었다.",
+      "tts": {
+        "text": "바라타리아만은 라피트 밀수 제국의 중심지가 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 만은 뉴올리언스 남쪽 약 팔십 킬로미터에 위치했다.",
+      "text_markdown": "이 만은 뉴올리언스 남쪽 약 팔십 킬로미터에 위치했다.",
+      "tts": {
+        "text": "이 만은 뉴올리언스 남쪽 약 팔십 킬로미터에 위치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "섬, 바이유, 숨겨진 수로의 미로였다.",
+      "text_markdown": "섬, 바이유, 숨겨진 수로의 미로였다.",
+      "tts": {
+        "text": "섬, 바이유, 숨겨진 수로의 미로였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "만 안의 큰 섬 그랑테르가 라피트의 본거지가 되었다.",
+      "text_markdown": "만 안의 큰 섬 그랑테르가 라피트의 본거지가 되었다.",
+      "tts": {
+        "text": "만 안의 큰 섬 그랑테르가 라피트의 본거지가 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그랑테르에서 라피트는 놀라운 효율성으로 사업을 운영했다.",
+      "text_markdown": "그랑테르에서 라피트는 놀라운 효율성으로 사업을 운영했다.",
+      "tts": {
+        "text": "그랑테르에서 라피트는 놀라운 효율성으로 사업을 운영했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "탈취한 물품은 섬의 창고에 보관되었다.",
+      "text_markdown": "탈취한 물품은 섬의 창고에 보관되었다.",
+      "tts": {
+        "text": "탈취한 물품은 섬의 창고에 보관되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "정기적인 경매가 뉴올리언스와 그 너머에서 구매자를 끌어모았다.",
+      "text_markdown": "정기적인 경매가 뉴올리언스와 그 너머에서 구매자를 끌어모았다.",
+      "tts": {
+        "text": "정기적인 경매가 뉴올리언스와 그 너머에서 구매자를 끌어모았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "전성기에 라피트의 사업은 수백 명을 고용했다.",
+      "text_markdown": "전성기에 라피트의 사업은 수백 명을 고용했다.",
+      "tts": {
+        "text": "전성기에 라피트의 사업은 수백 명을 고용했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뉴올리언스의 프렌치 쿼터는 도시 사교 생활의 중심이었다.",
+      "text_markdown": "뉴올리언스의 프렌치 쿼터는 도시 사교 생활의 중심이었다.",
+      "tts": {
+        "text": "뉴올리언스의 프렌치 쿼터는 도시 사교 생활의 중심이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "좁은 거리에는 상점, 선술집, 철제 발코니가 있는 집들이 늘어서 있었다.",
+      "text_markdown": "좁은 거리에는 상점, 선술집, 철제 발코니가 있는 집들이 늘어서 있었다.",
+      "tts": {
+        "text": "좁은 거리에는 상점, 선술집, 철제 발코니가 있는 집들이 늘어서 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라피트는 이 세계를 자유롭게 오가며 곳곳에서 동맹을 만들었다.",
+      "text_markdown": "라피트는 이 세계를 자유롭게 오가며 곳곳에서 동맹을 만들었다.",
+      "tts": {
+        "text": "라피트는 이 세계를 자유롭게 오가며 곳곳에서 동맹을 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 사회 계층의 사람들을 매혹시키는 그의 능력은 최강의 무기였다.",
+      "text_markdown": "모든 사회 계층의 사람들을 매혹시키는 그의 능력은 최강의 무기였다.",
+      "tts": {
+        "text": "모든 사회 계층의 사람들을 매혹시키는 그의 능력은 최강의 무기였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력의 부상",
+      "text_markdown": "권력의 부상"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백십년경 장 라피트는 바라타리아만의 절대적인 지배자였다.",
+      "text_markdown": "천팔백십년경 장 라피트는 바라타리아만의 절대적인 지배자였다.",
+      "tts": {
+        "text": "천팔백십년경 장 라피트는 바라타리아만의 절대적인 지배자였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 함대는 수십 척에 달했다.",
+      "text_markdown": "그의 함대는 수십 척에 달했다.",
+      "tts": {
+        "text": "그의 함대는 수십 척에 달했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "멕시코만 전역에서 스페인 상선을 나포했다.",
+      "text_markdown": "멕시코만 전역에서 스페인 상선을 나포했다.",
+      "tts": {
+        "text": "멕시코만 전역에서 스페인 상선을 나포했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "약탈물은 판매를 위해 그랑테르로 가져갔다.",
+      "text_markdown": "약탈물은 판매를 위해 그랑테르로 가져갔다.",
+      "tts": {
+        "text": "약탈물은 판매를 위해 그랑테르로 가져갔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 정교한 유통망을 통해 상품 판매를 조직했다.",
+      "text_markdown": "라피트는 정교한 유통망을 통해 상품 판매를 조직했다.",
+      "tts": {
+        "text": "라피트는 정교한 유통망을 통해 상품 판매를 조직했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "작은 배들이 바이유를 통해 밀수품을 뉴올리언스 근처 시장으로 운반했다.",
+      "text_markdown": "작은 배들이 바이유를 통해 밀수품을 뉴올리언스 근처 시장으로 운반했다.",
+      "tts": {
+        "text": "작은 배들이 바이유를 통해 밀수품을 뉴올리언스 근처 시장으로 운반했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "상품은 합법 시장 가격보다 훨씬 낮은 가격에 도착했다.",
+      "text_markdown": "상품은 합법 시장 가격보다 훨씬 낮은 가격에 도착했다.",
+      "tts": {
+        "text": "상품은 합법 시장 가격보다 훨씬 낮은 가격에 도착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이로 인해 라피트는 상인과 일반 소비자 모두에게 인기가 있었다.",
+      "text_markdown": "이로 인해 라피트는 상인과 일반 소비자 모두에게 인기가 있었다.",
+      "tts": {
+        "text": "이로 인해 라피트는 상인과 일반 소비자 모두에게 인기가 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트가 판매한 노예는 특히 수익성이 높은 상품이었다.",
+      "text_markdown": "라피트가 판매한 노예는 특히 수익성이 높은 상품이었다.",
+      "tts": {
+        "text": "라피트가 판매한 노예는 특히 수익성이 높은 상품이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "연방법은 천팔백팔년 이후 미국으로의 노예 수입을 금지했다.",
+      "text_markdown": "연방법은 천팔백팔년 이후 미국으로의 노예 수입을 금지했다.",
+      "tts": {
+        "text": "연방법은 천팔백팔년 이후 미국으로의 노예 수입을 금지했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 수요, 특히 면화 재배 지역에서의 수요는 여전히 엄청났다.",
+      "text_markdown": "그러나 수요, 특히 면화 재배 지역에서의 수요는 여전히 엄청났다.",
+      "tts": {
+        "text": "그러나 수요, 특히 면화 재배 지역에서의 수요는 여전히 엄청났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "라피트와 같은 밀수업자들이 수요와 공급의 격차를 메웠다.",
+      "text_markdown": "라피트와 같은 밀수업자들이 수요와 공급의 격차를 메웠다.",
+      "tts": {
+        "text": "라피트와 같은 밀수업자들이 수요와 공급의 격차를 메웠다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "루이지애나 주지사 윌리엄 클레이본은 라피트를 저지하기로 결심했다.",
+      "text_markdown": "루이지애나 주지사 윌리엄 클레이본은 라피트를 저지하기로 결심했다.",
+      "tts": {
+        "text": "루이지애나 주지사 윌리엄 클레이본은 라피트를 저지하기로 결심했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "클레이본은 라피트의 머리에 500달러의 현상금을 걸었다.",
+      "text_markdown": "클레이본은 라피트의 머리에 500달러의 현상금을 걸었다.",
+      "tts": {
+        "text": "클레이본은 라피트의 머리에 오백 달러의 현상금을 걸었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "연방 정부에 바라타리아 작전을 파괴할 해군력 파견을 촉구했다.",
+      "text_markdown": "연방 정부에 바라타리아 작전을 파괴할 해군력 파견을 촉구했다.",
+      "tts": {
+        "text": "연방 정부에 바라타리아 작전을 파괴할 해군력 파견을 촉구했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유명한 전설에 따르면, 라피트는 현상금에 자신의 현상금으로 응수했다.",
+      "text_markdown": "유명한 전설에 따르면, 라피트는 현상금에 자신의 현상금으로 응수했다.",
+      "tts": {
+        "text": "유명한 전설에 따르면, 라피트는 현상금에 자신의 현상금으로 응수했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 클레이본 주지사 체포에 5,000달러의 보상금을 제시했다고 한다.",
+      "text_markdown": "그는 클레이본 주지사 체포에 5,000달러의 보상금을 제시했다고 한다.",
+      "tts": {
+        "text": "그는 클레이본 주지사 체포에 오천 달러의 보상금을 제시했다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 이야기는 꾸며낸 것일 수 있지만, 라피트의 대담함을 완벽하게 포착한다.",
+      "text_markdown": "이 이야기는 꾸며낸 것일 수 있지만, 라피트의 대담함을 완벽하게 포착한다.",
+      "tts": {
+        "text": "이 이야기는 꾸며낸 것일 수 있지만, 라피트의 대담함을 완벽하게 포착한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 자신을 체포하려는 남자를 공개적으로 조롱하고 있었다.",
+      "text_markdown": "그는 자신을 체포하려는 남자를 공개적으로 조롱하고 있었다.",
+      "tts": {
+        "text": "그는 자신을 체포하려는 남자를 공개적으로 조롱하고 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뉴올리언스 사람들과 라피트의 관계는 복잡했다.",
+      "text_markdown": "뉴올리언스 사람들과 라피트의 관계는 복잡했다.",
+      "tts": {
+        "text": "뉴올리언스 사람들과 라피트의 관계는 복잡했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 부유한 시민이 그의 물건을 사고 밀수의 혜택을 누렸다.",
+      "text_markdown": "많은 부유한 시민이 그의 물건을 사고 밀수의 혜택을 누렸다.",
+      "tts": {
+        "text": "많은 부유한 시민이 그의 물건을 사고 밀수의 혜택을 누렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일부 변호사와 정치인이 비밀리에 그의 급여 명단에 올라 있었다.",
+      "text_markdown": "일부 변호사와 정치인이 비밀리에 그의 급여 명단에 올라 있었다.",
+      "tts": {
+        "text": "일부 변호사와 정치인이 비밀리에 그의 급여 명단에 올라 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 공개적으로는 알려진 무법자를 지원하는 모습이 보여서는 안 되었다.",
+      "text_markdown": "그러나 공개적으로는 알려진 무법자를 지원하는 모습이 보여서는 안 되었다.",
+      "tts": {
+        "text": "그러나 공개적으로는 알려진 무법자를 지원하는 모습이 보여서는 안 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "피에르 라피트는 천팔백십삼년에 해적 혐의로 체포되었다.",
+      "text_markdown": "피에르 라피트는 천팔백십삼년에 해적 혐의로 체포되었다.",
+      "tts": {
+        "text": "피에르 라피트는 천팔백십삼년에 해적 혐의로 체포되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "뉴올리언스의 주요 관청 건물인 카빌도에 구금되었다.",
+      "text_markdown": "뉴올리언스의 주요 관청 건물인 카빌도에 구금되었다.",
+      "tts": {
+        "text": "뉴올리언스의 주요 관청 건물인 카빌도에 구금되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "장 라피트는 형의 석방을 확보하기 위해 끊임없이 노력했다.",
+      "text_markdown": "장 라피트는 형의 석방을 확보하기 위해 끊임없이 노력했다.",
+      "tts": {
+        "text": "장 라피트는 형의 석방을 확보하기 위해 끊임없이 노력했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "피에르는 결국 미스터리한 상황에서 탈옥했다.",
+      "text_markdown": "피에르는 결국 미스터리한 상황에서 탈옥했다.",
+      "tts": {
+        "text": "피에르는 결국 미스터리한 상황에서 탈옥했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백십사년에 이르러 천팔백십이년 전쟁은 위기 국면에 도달했다.",
+      "text_markdown": "천팔백십사년에 이르러 천팔백십이년 전쟁은 위기 국면에 도달했다.",
+      "tts": {
+        "text": "천팔백십사년에 이르러 천팔백십이년 전쟁은 위기 국면에 도달했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 유럽에서 나폴레옹을 격파하고 이제 전 군사력을 미국에 집중할 수 있었다.",
+      "text_markdown": "영국은 유럽에서 나폴레옹을 격파하고 이제 전 군사력을 미국에 집중할 수 있었다.",
+      "tts": {
+        "text": "영국은 유럽에서 나폴레옹을 격파하고 이제 전 군사력을 미국에 집중할 수 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미시시피강의 지배권을 장악하기 위해 뉴올리언스에 대규모 공격을 계획했다.",
+      "text_markdown": "미시시피강의 지배권을 장악하기 위해 뉴올리언스에 대규모 공격을 계획했다.",
+      "tts": {
+        "text": "미시시피강의 지배권을 장악하기 위해 뉴올리언스에 대규모 공격을 계획했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "뉴올리언스가 함락되면 미국 서부 전체가 차단될 것이었다.",
+      "text_markdown": "뉴올리언스가 함락되면 미국 서부 전체가 차단될 것이었다.",
+      "tts": {
+        "text": "뉴올리언스가 함락되면 미국 서부 전체가 차단될 것이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국 장교들이 놀라운 제안을 가지고 장 라피트에게 접근했다.",
+      "text_markdown": "영국 장교들이 놀라운 제안을 가지고 장 라피트에게 접근했다.",
+      "tts": {
+        "text": "영국 장교들이 놀라운 제안을 가지고 장 라피트에게 접근했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "삼만 달러, 영국 해군의 계급, 영국 영토의 땅을 약속했다.",
+      "text_markdown": "삼만 달러, 영국 해군의 계급, 영국 영토의 땅을 약속했다.",
+      "tts": {
+        "text": "삼만 달러, 영국 해군의 계급, 영국 영토의 땅을 약속했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대가로 그들은 바이유 수로에 대한 그의 지식과 선단을 원했다.",
+      "text_markdown": "대가로 그들은 바이유 수로에 대한 그의 지식과 선단을 원했다.",
+      "tts": {
+        "text": "대가로 그들은 바이유 수로에 대한 그의 지식과 선단을 원했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국군은 뉴올리언스까지 침공군을 안내할 라피트가 필요했다.",
+      "text_markdown": "영국군은 뉴올리언스까지 침공군을 안내할 라피트가 필요했다.",
+      "tts": {
+        "text": "영국군은 뉴올리언스까지 침공군을 안내할 라피트가 필요했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 영국의 제안을 신중하게 검토하는 것처럼 보였다.",
+      "text_markdown": "라피트는 영국의 제안을 신중하게 검토하는 것처럼 보였다.",
+      "tts": {
+        "text": "라피트는 영국의 제안을 신중하게 검토하는 것처럼 보였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "생각할 시간을 요청하며 이주일의 여유를 얻었다.",
+      "text_markdown": "생각할 시간을 요청하며 이주일의 여유를 얻었다.",
+      "tts": {
+        "text": "생각할 시간을 요청하며 이주일의 여유를 얻었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 비밀리에 이미 결정을 내렸다.",
+      "text_markdown": "그러나 비밀리에 이미 결정을 내렸다.",
+      "tts": {
+        "text": "그러나 비밀리에 이미 결정을 내렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "영국의 계획과 문서를 클레이본 주지사에게 보냈다.",
+      "text_markdown": "영국의 계획과 문서를 클레이본 주지사에게 보냈다.",
+      "tts": {
+        "text": "영국의 계획과 문서를 클레이본 주지사에게 보냈다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트가 클레이본에게 보낸 편지는 설득의 걸작이었다.",
+      "text_markdown": "라피트가 클레이본에게 보낸 편지는 설득의 걸작이었다.",
+      "tts": {
+        "text": "라피트가 클레이본에게 보낸 편지는 설득의 걸작이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자신의 부하, 무기, 바이유에 대한 지식을 미국의 대의에 제공했다.",
+      "text_markdown": "자신의 부하, 무기, 바이유에 대한 지식을 미국의 대의에 제공했다.",
+      "tts": {
+        "text": "자신의 부하, 무기, 바이유에 대한 지식을 미국의 대의에 제공했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대가로 자신과 부하들에 대한 완전한 사면을 요청했다.",
+      "text_markdown": "대가로 자신과 부하들에 대한 완전한 사면을 요청했다.",
+      "tts": {
+        "text": "대가로 자신과 부하들에 대한 완전한 사면을 요청했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "거래를 구하는 범죄자가 아니라 봉사를 제공하는 애국자로 자신을 위치시켰다.",
+      "text_markdown": "거래를 구하는 범죄자가 아니라 봉사를 제공하는 애국자로 자신을 위치시켰다.",
+      "tts": {
+        "text": "거래를 구하는 범죄자가 아니라 봉사를 제공하는 애국자로 자신을 위치시켰다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "클레이본은 의심했지만 라피트의 정보를 군사 당국에 전달했다.",
+      "text_markdown": "클레이본은 의심했지만 라피트의 정보를 군사 당국에 전달했다.",
+      "tts": {
+        "text": "클레이본은 의심했지만 라피트의 정보를 군사 당국에 전달했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 관리들은 함정이라고 믿었다.",
+      "text_markdown": "일부 관리들은 함정이라고 믿었다.",
+      "tts": {
+        "text": "일부 관리들은 함정이라고 믿었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라피트의 경고에도 불구하고 미국 해군은 천팔백십사년 구월에 바라타리아만을 공격했다.",
+      "text_markdown": "라피트의 경고에도 불구하고 미국 해군은 천팔백십사년 구월에 바라타리아만을 공격했다.",
+      "tts": {
+        "text": "라피트의 경고에도 불구하고 미국 해군은 천팔백십사년 구월에 바라타리아만을 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "라피트의 기지를 파괴하고 많은 부하를 포로로 잡았다.",
+      "text_markdown": "라피트의 기지를 파괴하고 많은 부하를 포로로 잡았다.",
+      "tts": {
+        "text": "라피트의 기지를 파괴하고 많은 부하를 포로로 잡았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트 자신은 바라타리아 습격 중 체포를 피했다.",
+      "text_markdown": "라피트 자신은 바라타리아 습격 중 체포를 피했다.",
+      "tts": {
+        "text": "라피트 자신은 바라타리아 습격 중 체포를 피했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 창고는 불탔고 배는 압수되었다.",
+      "text_markdown": "그의 창고는 불탔고 배는 압수되었다.",
+      "tts": {
+        "text": "그의 창고는 불탔고 배는 압수되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수년에 걸쳐 구축한 사업이 단 하루 만에 파괴되었다.",
+      "text_markdown": "수년에 걸쳐 구축한 사업이 단 하루 만에 파괴되었다.",
+      "tts": {
+        "text": "수년에 걸쳐 구축한 사업이 단 하루 만에 파괴되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 영국의 침공은 여전히 다가오고 있었고, 뉴올리언스는 준비가 안 되어 있었다.",
+      "text_markdown": "그러나 영국의 침공은 여전히 다가오고 있었고, 뉴올리언스는 준비가 안 되어 있었다.",
+      "tts": {
+        "text": "그러나 영국의 침공은 여전히 다가오고 있었고, 뉴올리언스는 준비가 안 되어 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앤드루 잭슨 장군이 천팔백십사년 십이월에 뉴올리언스에 도착했다.",
+      "text_markdown": "앤드루 잭슨 장군이 천팔백십사년 십이월에 뉴올리언스에 도착했다.",
+      "tts": {
+        "text": "앤드루 잭슨 장군이 천팔백십사년 십이월에 뉴올리언스에 도착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 과단성 있는 행동으로 유명한 강인한 변경 군인이었다.",
+      "text_markdown": "그는 과단성 있는 행동으로 유명한 강인한 변경 군인이었다.",
+      "tts": {
+        "text": "그는 과단성 있는 행동으로 유명한 강인한 변경 군인이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "도시의 방어가 한심할 정도로 부족한 것을 발견했다.",
+      "text_markdown": "도시의 방어가 한심할 정도로 부족한 것을 발견했다.",
+      "tts": {
+        "text": "도시의 방어가 한심할 정도로 부족한 것을 발견했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 사람, 모든 총, 모든 화약통이 필요했다.",
+      "text_markdown": "모든 사람, 모든 총, 모든 화약통이 필요했다.",
+      "tts": {
+        "text": "모든 사람, 모든 총, 모든 화약통이 필요했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트가 잭슨에게 다가가 바라타리아 부하들의 봉사를 제안했다.",
+      "text_markdown": "라피트가 잭슨에게 다가가 바라타리아 부하들의 봉사를 제안했다.",
+      "tts": {
+        "text": "라피트가 잭슨에게 다가가 바라타리아 부하들의 봉사를 제안했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잭슨은 처음에 바라타리아인들을 지옥의 도적 떼라 불렀다.",
+      "text_markdown": "잭슨은 처음에 바라타리아인들을 지옥의 도적 떼라 불렀다.",
+      "tts": {
+        "text": "잭슨은 처음에 바라타리아인들을 지옥의 도적 떼라 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 영국 위협의 현실에 직면하여 라피트의 제안을 수락했다.",
+      "text_markdown": "그러나 영국 위협의 현실에 직면하여 라피트의 제안을 수락했다.",
+      "tts": {
+        "text": "그러나 영국 위협의 현실에 직면하여 라피트의 제안을 수락했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "라피트의 부하들은 부싯돌, 화약, 포병 전문 지식이라는 중요한 보급품을 가져왔다.",
+      "text_markdown": "라피트의 부하들은 부싯돌, 화약, 포병 전문 지식이라는 중요한 보급품을 가져왔다.",
+      "tts": {
+        "text": "라피트의 부하들은 부싯돌, 화약, 포병 전문 지식이라는 중요한 보급품을 가져왔다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "절정에서",
+      "text_markdown": "절정에서"
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뉴올리언스 전투는 1815년 1월 8일에 벌어졌다.",
+      "text_markdown": "뉴올리언스 전투는 1815년 1월 8일에 벌어졌다.",
+      "tts": {
+        "text": "뉴올리언스 전투는 천팔백십오년 일월 팔일에 벌어졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "천팔백십이년 전쟁의 마지막 대규모 교전이었다.",
+      "text_markdown": "천팔백십이년 전쟁의 마지막 대규모 교전이었다.",
+      "tts": {
+        "text": "천팔백십이년 전쟁의 마지막 대규모 교전이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아이러니하게도 평화 조약이 이미 유럽에서 서명되었지만, 소식이 아직 미국에 도달하지 않았다.",
+      "text_markdown": "아이러니하게도 평화 조약이 이미 유럽에서 서명되었지만, 소식이 아직 미국에 도달하지 않았다.",
+      "tts": {
+        "text": "아이러니하게도 평화 조약이 이미 유럽에서 서명되었지만, 소식이 아직 미국에 도달하지 않았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국군은 약 팔천 명의 베테랑 병사로 공격했다.",
+      "text_markdown": "영국군은 약 팔천 명의 베테랑 병사로 공격했다.",
+      "tts": {
+        "text": "영국군은 약 팔천 명의 베테랑 병사로 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 병사들 중 다수가 유럽에서 나폴레옹의 군대와 싸운 경험이 있었다.",
+      "text_markdown": "이 병사들 중 다수가 유럽에서 나폴레옹의 군대와 싸운 경험이 있었다.",
+      "tts": {
+        "text": "이 병사들 중 다수가 유럽에서 나폴레옹의 군대와 싸운 경험이 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세계 최고의 병사로 여겨졌다.",
+      "text_markdown": "세계 최고의 병사로 여겨졌다.",
+      "tts": {
+        "text": "세계 최고의 병사로 여겨졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들의 지휘관은 에드워드 패컨햄 소장이었다.",
+      "text_markdown": "그들의 지휘관은 에드워드 패컨햄 소장이었다.",
+      "tts": {
+        "text": "그들의 지휘관은 에드워드 패컨햄 소장이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잭슨의 방어선은 뉴올리언스 남쪽의 샬메트 농장을 가로질러 뻗어 있었다.",
+      "text_markdown": "잭슨의 방어선은 뉴올리언스 남쪽의 샬메트 농장을 가로질러 뻗어 있었다.",
+      "tts": {
+        "text": "잭슨의 방어선은 뉴올리언스 남쪽의 샬메트 농장을 가로질러 뻗어 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 군대는 운하와 흙벽을 방어 진지로 사용했다.",
+      "text_markdown": "그의 군대는 운하와 흙벽을 방어 진지로 사용했다.",
+      "tts": {
+        "text": "그의 군대는 운하와 흙벽을 방어 진지로 사용했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미군 방어선에는 정규군, 민병대, 자유 흑인 병사, 촉토 전사, 바라타리아 해적이 포함되었다.",
+      "text_markdown": "미군 방어선에는 정규군, 민병대, 자유 흑인 병사, 촉토 전사, 바라타리아 해적이 포함되었다.",
+      "tts": {
+        "text": "미군 방어선에는 정규군, 민병대, 자유 흑인 병사, 촉토 전사, 바라타리아 해적이 포함되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트의 바라타리아인들이 방어선의 핵심 포병 진지를 담당했다.",
+      "text_markdown": "라피트의 바라타리아인들이 방어선의 핵심 포병 진지를 담당했다.",
+      "tts": {
+        "text": "라피트의 바라타리아인들이 방어선의 핵심 포병 진지를 담당했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정밀하게 대포를 다룰 줄 아는 숙련된 포병이었다.",
+      "text_markdown": "정밀하게 대포를 다룰 줄 아는 숙련된 포병이었다.",
+      "tts": {
+        "text": "정밀하게 대포를 다룰 줄 아는 숙련된 포병이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라피트 자신은 고문으로서 무기와 보급품의 배치를 지휘했다.",
+      "text_markdown": "라피트 자신은 고문으로서 무기와 보급품의 배치를 지휘했다.",
+      "tts": {
+        "text": "라피트 자신은 고문으로서 무기와 보급품의 배치를 지휘했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그의 지형 지식은 방어에 매우 귀중했다.",
+      "text_markdown": "그의 지형 지식은 방어에 매우 귀중했다.",
+      "tts": {
+        "text": "그의 지형 지식은 방어에 매우 귀중했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국군은 개활지를 가로질러 미군 진지에 정면 돌격을 감행했다.",
+      "text_markdown": "영국군은 개활지를 가로질러 미군 진지에 정면 돌격을 감행했다.",
+      "tts": {
+        "text": "영국군은 개활지를 가로질러 미군 진지에 정면 돌격을 감행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "미군의 대포와 소총 사격이 전진하는 종대를 초토화시켰다.",
+      "text_markdown": "미군의 대포와 소총 사격이 전진하는 종대를 초토화시켰다.",
+      "tts": {
+        "text": "미군의 대포와 소총 사격이 전진하는 종대를 초토화시켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국 병사들은 비범한 용기로 전진했지만 파도처럼 쓰러졌다.",
+      "text_markdown": "영국 병사들은 비범한 용기로 전진했지만 파도처럼 쓰러졌다.",
+      "tts": {
+        "text": "영국 병사들은 비범한 용기로 전진했지만 파도처럼 쓰러졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "패컨햄 장군은 돌격을 이끌다 전사했다.",
+      "text_markdown": "패컨햄 장군은 돌격을 이끌다 전사했다.",
+      "tts": {
+        "text": "패컨햄 장군은 돌격을 이끌다 전사했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전투는 두 시간도 안 되어 끝났다.",
+      "text_markdown": "전투는 두 시간도 안 되어 끝났다.",
+      "tts": {
+        "text": "전투는 두 시간도 안 되어 끝났다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국군은 전사, 부상, 포로를 포함하여 약 2,000명의 사상자를 냈다.",
+      "text_markdown": "영국군은 전사, 부상, 포로를 포함하여 약 2,000명의 사상자를 냈다.",
+      "tts": {
+        "text": "영국군은 전사, 부상, 포로를 포함하여 약 이천 명의 사상자를 냈다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미군 사상자는 100명 미만이었다.",
+      "text_markdown": "미군 사상자는 100명 미만이었다.",
+      "tts": {
+        "text": "미군 사상자는 백 명 미만이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "군사 역사상 가장 일방적인 승리 중 하나였다.",
+      "text_markdown": "군사 역사상 가장 일방적인 승리 중 하나였다.",
+      "tts": {
+        "text": "군사 역사상 가장 일방적인 승리 중 하나였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바라타리아인들은 전투에서의 활약으로 칭송받았다.",
+      "text_markdown": "바라타리아인들은 전투에서의 활약으로 칭송받았다.",
+      "tts": {
+        "text": "바라타리아인들은 전투에서의 활약으로 칭송받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들의 포격은 파괴적이고 정확했다.",
+      "text_markdown": "그들의 포격은 파괴적이고 정확했다.",
+      "tts": {
+        "text": "그들의 포격은 파괴적이고 정확했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "잭슨 자신이 공개적으로 그들의 용기와 기량을 칭찬했다.",
+      "text_markdown": "잭슨 자신이 공개적으로 그들의 용기와 기량을 칭찬했다.",
+      "tts": {
+        "text": "잭슨 자신이 공개적으로 그들의 용기와 기량을 칭찬했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "몇 달 전에 해적이라 불렸던 사람들이 이제 영웅으로 추앙받았다.",
+      "text_markdown": "몇 달 전에 해적이라 불렸던 사람들이 이제 영웅으로 추앙받았다.",
+      "tts": {
+        "text": "몇 달 전에 해적이라 불렸던 사람들이 이제 영웅으로 추앙받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뉴올리언스의 승리는 앤드루 잭슨을 국민 영웅으로 만들었다.",
+      "text_markdown": "뉴올리언스의 승리는 앤드루 잭슨을 국민 영웅으로 만들었다.",
+      "tts": {
+        "text": "뉴올리언스의 승리는 앤드루 잭슨을 국민 영웅으로 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "또한 장 라피트를 수배 범죄자에서 애국자로 변모시켰다.",
+      "text_markdown": "또한 장 라피트를 수배 범죄자에서 애국자로 변모시켰다.",
+      "tts": {
+        "text": "또한 장 라피트를 수배 범죄자에서 애국자로 변모시켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 전투는 라피트가 미국 편에 선 결정이 옳았음을 입증했다.",
+      "text_markdown": "이 전투는 라피트가 미국 편에 선 결정이 옳았음을 입증했다.",
+      "tts": {
+        "text": "이 전투는 라피트가 미국 편에 선 결정이 옳았음을 입증했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 이 동맹에 모든 것을 걸었고, 이겼다.",
+      "text_markdown": "그는 이 동맹에 모든 것을 걸었고, 이겼다.",
+      "tts": {
+        "text": "그는 이 동맹에 모든 것을 걸었고, 이겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "제임스 매디슨 대통령이 라피트와 모든 바라타리아인에게 완전한 사면을 내렸다.",
+      "text_markdown": "제임스 매디슨 대통령이 라피트와 모든 바라타리아인에게 완전한 사면을 내렸다.",
+      "tts": {
+        "text": "제임스 매디슨 대통령이 라피트와 모든 바라타리아인에게 완전한 사면을 내렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사면은 해적 행위와 밀수에 대한 이전의 모든 혐의를 말소했다.",
+      "text_markdown": "사면은 해적 행위와 밀수에 대한 이전의 모든 혐의를 말소했다.",
+      "tts": {
+        "text": "사면은 해적 행위와 밀수에 대한 이전의 모든 혐의를 말소했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "라피트는 법적으로나 정치적으로 자유인이 되었다.",
+      "text_markdown": "라피트는 법적으로나 정치적으로 자유인이 되었다.",
+      "tts": {
+        "text": "라피트는 법적으로나 정치적으로 자유인이 되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "잠시 동안 그는 뉴올리언스에서 가장 인기 있는 사람 중 한 명이었다.",
+      "text_markdown": "잠시 동안 그는 뉴올리언스에서 가장 인기 있는 사람 중 한 명이었다.",
+      "tts": {
+        "text": "잠시 동안 그는 뉴올리언스에서 가장 인기 있는 사람 중 한 명이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사면은 라피트에게 합법적인 새 삶을 시작할 기회를 주었다.",
+      "text_markdown": "사면은 라피트에게 합법적인 새 삶을 시작할 기회를 주었다.",
+      "tts": {
+        "text": "사면은 라피트에게 합법적인 새 삶을 시작할 기회를 주었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어떤 분야에서든 성공할 수 있는 인맥, 지성, 카리스마를 가지고 있었다.",
+      "text_markdown": "어떤 분야에서든 성공할 수 있는 인맥, 지성, 카리스마를 가지고 있었다.",
+      "tts": {
+        "text": "어떤 분야에서든 성공할 수 있는 인맥, 지성, 카리스마를 가지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 위치에 있는 많은 사람들이 이 기회를 잡았을 것이다.",
+      "text_markdown": "그의 위치에 있는 많은 사람들이 이 기회를 잡았을 것이다.",
+      "tts": {
+        "text": "그의 위치에 있는 많은 사람들이 이 기회를 잡았을 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 장 라피트는 대부분의 사람과 달랐다.",
+      "text_markdown": "그러나 장 라피트는 대부분의 사람과 달랐다.",
+      "tts": {
+        "text": "그러나 장 라피트는 대부분의 사람과 달랐다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바다와 무법자 생활의 유혹이 너무 강했다.",
+      "text_markdown": "바다와 무법자 생활의 유혹이 너무 강했다.",
+      "tts": {
+        "text": "바다와 무법자 생활의 유혹이 너무 강했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전투 후 이년 만에 라피트는 밀수와 사략 행위로 돌아갔다.",
+      "text_markdown": "전투 후 이년 만에 라피트는 밀수와 사략 행위로 돌아갔다.",
+      "tts": {
+        "text": "전투 후 이년 만에 라피트는 밀수와 사략 행위로 돌아갔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "예전 직업의 자유와 이익에 저항할 수 없었다.",
+      "text_markdown": "예전 직업의 자유와 이익에 저항할 수 없었다.",
+      "tts": {
+        "text": "예전 직업의 자유와 이익에 저항할 수 없었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사면은 그의 목숨을 구했지만 본성은 바꾸지 못했다.",
+      "text_markdown": "사면은 그의 목숨을 구했지만 본성은 바꾸지 못했다.",
+      "tts": {
+        "text": "사면은 그의 목숨을 구했지만 본성은 바꾸지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잭슨의 뉴올리언스 방어 전략은 훌륭하게 구상되었다.",
+      "text_markdown": "잭슨의 뉴올리언스 방어 전략은 훌륭하게 구상되었다.",
+      "tts": {
+        "text": "잭슨의 뉴올리언스 방어 전략은 훌륭하게 구상되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바이유의 자연 지형을 이용하여 영국군을 좁은 사지로 유인했다.",
+      "text_markdown": "바이유의 자연 지형을 이용하여 영국군을 좁은 사지로 유인했다.",
+      "tts": {
+        "text": "바이유의 자연 지형을 이용하여 영국군을 좁은 사지로 유인했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미군 방어선 앞의 진흙 들판은 진격하는 영국군에게 죽음의 함정이 되었다.",
+      "text_markdown": "미군 방어선 앞의 진흙 들판은 진격하는 영국군에게 죽음의 함정이 되었다.",
+      "tts": {
+        "text": "미군 방어선 앞의 진흙 들판은 진격하는 영국군에게 죽음의 함정이 되었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "승리의 소식이 큰 열광과 함께 미국 전역에 퍼졌다.",
+      "text_markdown": "승리의 소식이 큰 열광과 함께 미국 전역에 퍼졌다.",
+      "tts": {
+        "text": "승리의 소식이 큰 열광과 함께 미국 전역에 퍼졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정에서",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "미국인들은 이 전투를 젊은 나라가 어떤 강대국에도 맞설 수 있다는 증거로 축하했다.",
+      "text_markdown": "미국인들은 이 전투를 젊은 나라가 어떤 강대국에도 맞설 수 있다는 증거로 축하했다.",
+      "tts": {
+        "text": "미국인들은 이 전투를 젊은 나라가 어떤 강대국에도 맞설 수 있다는 증거로 축하했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "최후",
+      "text_markdown": "최후"
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1817년까지 라피트는 갤버스턴 섬에 새 기지를 세웠다.",
+      "text_markdown": "1817년까지 라피트는 갤버스턴 섬에 새 기지를 세웠다.",
+      "tts": {
+        "text": "천팔백십칠년까지 라피트는 갤버스턴 섬에 새 기지를 세웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "갤버스턴은 당시 스페인령 텍사스의 해안에 위치했다.",
+      "text_markdown": "갤버스턴은 당시 스페인령 텍사스의 해안에 위치했다.",
+      "tts": {
+        "text": "갤버스턴은 당시 스페인령 텍사스의 해안에 위치했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미국의 관할권에서 멀리 떨어져 있고 걸프만 작전에 완벽한 위치였다.",
+      "text_markdown": "미국의 관할권에서 멀리 떨어져 있고 걸프만 작전에 완벽한 위치였다.",
+      "tts": {
+        "text": "미국의 관할권에서 멀리 떨어져 있고 걸프만 작전에 완벽한 위치였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 새 정착지를 캄페체라 불렀다.",
+      "text_markdown": "라피트는 새 정착지를 캄페체라 불렀다.",
+      "tts": {
+        "text": "라피트는 새 정착지를 캄페체라 불렀다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "빠르게 번성하는 해적 공동체로 성장했다.",
+      "text_markdown": "빠르게 번성하는 해적 공동체로 성장했다.",
+      "tts": {
+        "text": "빠르게 번성하는 해적 공동체로 성장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전성기에 캄페체에는 1,000명 이상이 살았다.",
+      "text_markdown": "전성기에 캄페체에는 1,000명 이상이 살았다.",
+      "tts": {
+        "text": "전성기에 캄페체에는 천 명 이상이 살았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "자체 정부, 법원, 사회 계층이 있었다.",
+      "text_markdown": "자체 정부, 법원, 사회 계층이 있었다.",
+      "tts": {
+        "text": "자체 정부, 법원, 사회 계층이 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 스스로를 갤버스턴의 민간 및 군사 총독으로 선언했다.",
+      "text_markdown": "라피트는 스스로를 갤버스턴의 민간 및 군사 총독으로 선언했다.",
+      "tts": {
+        "text": "라피트는 스스로를 갤버스턴의 민간 및 군사 총독으로 선언했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정착지 내에서 엄격한 규칙을 시행했다.",
+      "text_markdown": "정착지 내에서 엄격한 규칙을 시행했다.",
+      "tts": {
+        "text": "정착지 내에서 엄격한 규칙을 시행했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "부하들에게 유효한 사략 면허장이 있는 스페인 선박만 공격하도록 지시했다.",
+      "text_markdown": "부하들에게 유효한 사략 면허장이 있는 스페인 선박만 공격하도록 지시했다.",
+      "tts": {
+        "text": "부하들에게 유효한 사략 면허장이 있는 스페인 선박만 공격하도록 지시했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "미국 선박은 건드리지 않기로 되어 있었다.",
+      "text_markdown": "미국 선박은 건드리지 않기로 되어 있었다.",
+      "tts": {
+        "text": "미국 선박은 건드리지 않기로 되어 있었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "실제로 이 규칙은 시행하기 어려웠다.",
+      "text_markdown": "실제로 이 규칙은 시행하기 어려웠다.",
+      "tts": {
+        "text": "실제로 이 규칙은 시행하기 어려웠다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라피트의 일부 선장들이 그의 명령에도 불구하고 미국 선박을 공격했다.",
+      "text_markdown": "라피트의 일부 선장들이 그의 명령에도 불구하고 미국 선박을 공격했다.",
+      "tts": {
+        "text": "라피트의 일부 선장들이 그의 명령에도 불구하고 미국 선박을 공격했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이러한 무단 습격은 미국 정부로부터 원치 않는 관심을 불러일으켰다.",
+      "text_markdown": "이러한 무단 습격은 미국 정부로부터 원치 않는 관심을 불러일으켰다.",
+      "tts": {
+        "text": "이러한 무단 습격은 미국 정부로부터 원치 않는 관심을 불러일으켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "라피트는 규칙을 위반한 선장들을 처벌했지만 피해는 이미 발생한 뒤였다.",
+      "text_markdown": "라피트는 규칙을 위반한 선장들을 처벌했지만 피해는 이미 발생한 뒤였다.",
+      "tts": {
+        "text": "라피트는 규칙을 위반한 선장들을 처벌했지만 피해는 이미 발생한 뒤였다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "걸프만의 정치 상황이 빠르게 변하고 있었다.",
+      "text_markdown": "걸프만의 정치 상황이 빠르게 변하고 있었다.",
+      "tts": {
+        "text": "걸프만의 정치 상황이 빠르게 변하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라틴 아메리카의 혁명들이 이 지역을 재편하고 있었다.",
+      "text_markdown": "라틴 아메리카의 혁명들이 이 지역을 재편하고 있었다.",
+      "tts": {
+        "text": "라틴 아메리카의 혁명들이 이 지역을 재편하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "새로운 나라들이 탄생하고, 오래된 제국들이 사라지고 있었다.",
+      "text_markdown": "새로운 나라들이 탄생하고, 오래된 제국들이 사라지고 있었다.",
+      "tts": {
+        "text": "새로운 나라들이 탄생하고, 오래된 제국들이 사라지고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "라피트를 보호하던 사략 면허장을 얻기가 점점 어려워졌다.",
+      "text_markdown": "라피트를 보호하던 사략 면허장을 얻기가 점점 어려워졌다.",
+      "tts": {
+        "text": "라피트를 보호하던 사략 면허장을 얻기가 점점 어려워졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미국도 걸프만에서 해군 존재를 확대하고 있었다.",
+      "text_markdown": "미국도 걸프만에서 해군 존재를 확대하고 있었다.",
+      "tts": {
+        "text": "미국도 걸프만에서 해군 존재를 확대하고 있었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해군은 해적 행위를 진압하고 미국 해운을 보호하라는 명령을 받았다.",
+      "text_markdown": "해군은 해적 행위를 진압하고 미국 해운을 보호하라는 명령을 받았다.",
+      "tts": {
+        "text": "해군은 해적 행위를 진압하고 미국 해운을 보호하라는 명령을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "갤버스턴의 라피트 정착지가 정부에 당혹감을 주기 시작했다.",
+      "text_markdown": "갤버스턴의 라피트 정착지가 정부에 당혹감을 주기 시작했다.",
+      "tts": {
+        "text": "갤버스턴의 라피트 정착지가 정부에 당혹감을 주기 시작했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그가 방어를 도운 바로 그 나라가 이제 그를 문제로 보았다.",
+      "text_markdown": "그가 방어를 도운 바로 그 나라가 이제 그를 문제로 보았다.",
+      "tts": {
+        "text": "그가 방어를 도운 바로 그 나라가 이제 그를 문제로 보았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백십팔년에 파괴적인 허리케인이 갤버스턴을 강타했다.",
+      "text_markdown": "천팔백십팔년에 파괴적인 허리케인이 갤버스턴을 강타했다.",
+      "tts": {
+        "text": "천팔백십팔년에 파괴적인 허리케인이 갤버스턴을 강타했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "폭풍은 정착지의 대부분을 파괴하고 라피트의 선박 여러 척을 침몰시켰다.",
+      "text_markdown": "폭풍은 정착지의 대부분을 파괴하고 라피트의 선박 여러 척을 침몰시켰다.",
+      "tts": {
+        "text": "폭풍은 정착지의 대부분을 파괴하고 라피트의 선박 여러 척을 침몰시켰다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "재건은 느리고 비용이 많이 들었다.",
+      "text_markdown": "재건은 느리고 비용이 많이 들었다.",
+      "tts": {
+        "text": "재건은 느리고 비용이 많이 들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "허리케인은 캄페체가 완전히 회복하지 못한 타격이었다.",
+      "text_markdown": "허리케인은 캄페체가 완전히 회복하지 못한 타격이었다.",
+      "tts": {
+        "text": "허리케인은 캄페체가 완전히 회복하지 못한 타격이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1821년, 미국 군함이 최후통첩을 가지고 갤버스턴에 도착했다.",
+      "text_markdown": "1821년, 미국 군함이 최후통첩을 가지고 갤버스턴에 도착했다.",
+      "tts": {
+        "text": "천팔백이십일년, 미국 군함이 최후통첩을 가지고 갤버스턴에 도착했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라피트는 즉시 섬을 떠나라는 명령을 받았다.",
+      "text_markdown": "라피트는 즉시 섬을 떠나라는 명령을 받았다.",
+      "tts": {
+        "text": "라피트는 즉시 섬을 떠나라는 명령을 받았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "거부하면 해군이 무력으로 그를 제거할 것이라는 통보를 받았다.",
+      "text_markdown": "거부하면 해군이 무력으로 그를 제거할 것이라는 통보를 받았다.",
+      "tts": {
+        "text": "거부하면 해군이 무력으로 그를 제거할 것이라는 통보를 받았다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 미국과 두 번째 싸움을 하지 않기로 선택했다.",
+      "text_markdown": "라피트는 미국과 두 번째 싸움을 하지 않기로 선택했다.",
+      "tts": {
+        "text": "라피트는 미국과 두 번째 싸움을 하지 않기로 선택했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "캄페체 정착지를 넘기기보다 불태워 버렸다.",
+      "text_markdown": "캄페체 정착지를 넘기기보다 불태워 버렸다.",
+      "tts": {
+        "text": "캄페체 정착지를 넘기기보다 불태워 버렸다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "불꽃은 수 킬로미터 떨어진 수면 위에서도 보였다.",
+      "text_markdown": "불꽃은 수 킬로미터 떨어진 수면 위에서도 보였다.",
+      "tts": {
+        "text": "불꽃은 수 킬로미터 떨어진 수면 위에서도 보였다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 멕시코만으로 항해하여 사라졌다.",
+      "text_markdown": "그리고 멕시코만으로 항해하여 사라졌다.",
+      "tts": {
+        "text": "그리고 멕시코만으로 항해하여 사라졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "갤버스턴을 떠난 후 장 라피트에게 무슨 일이 일어났는지는 역사의 가장 큰 미스터리 중 하나이다.",
+      "text_markdown": "갤버스턴을 떠난 후 장 라피트에게 무슨 일이 일어났는지는 역사의 가장 큰 미스터리 중 하나이다.",
+      "tts": {
+        "text": "갤버스턴을 떠난 후 장 라피트에게 무슨 일이 일어났는지는 역사의 가장 큰 미스터리 중 하나이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 기록은 쿠바와 유카탄 주변 해역에서 사략 행위를 계속했다고 한다.",
+      "text_markdown": "일부 기록은 쿠바와 유카탄 주변 해역에서 사략 행위를 계속했다고 한다.",
+      "tts": {
+        "text": "일부 기록은 쿠바와 유카탄 주변 해역에서 사략 행위를 계속했다고 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 기록은 가명으로 작은 마을에 조용히 정착했다고 한다.",
+      "text_markdown": "다른 기록은 가명으로 작은 마을에 조용히 정착했다고 한다.",
+      "tts": {
+        "text": "다른 기록은 가명으로 작은 마을에 조용히 정착했다고 한다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 1823년경에 사망한 것으로 추정되지만, 이조차 불확실하다.",
+      "text_markdown": "라피트는 1823년경에 사망한 것으로 추정되지만, 이조차 불확실하다.",
+      "tts": {
+        "text": "라피트는 천팔백이십삼년경에 사망한 것으로 추정되지만, 이조차 불확실하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부 역사학자들은 유카탄 반도에서 열병으로 사망했다고 본다.",
+      "text_markdown": "일부 역사학자들은 유카탄 반도에서 열병으로 사망했다고 본다.",
+      "tts": {
+        "text": "일부 역사학자들은 유카탄 반도에서 열병으로 사망했다고 본다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 그의 사망 시기를 천팔백오십년대까지로 늦추기도 한다.",
+      "text_markdown": "다른 이들은 그의 사망 시기를 천팔백오십년대까지로 늦추기도 한다.",
+      "tts": {
+        "text": "다른 이들은 그의 사망 시기를 천팔백오십년대까지로 늦추기도 한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 묘지도 그의 것으로 확실하게 확인된 적이 없다.",
+      "text_markdown": "어떤 묘지도 그의 것으로 확실하게 확인된 적이 없다.",
+      "tts": {
+        "text": "어떤 묘지도 그의 것으로 확실하게 확인된 적이 없다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 형 피에르 라피트도 비슷한 시기에 사망한 것으로 보인다.",
+      "text_markdown": "그의 형 피에르 라피트도 비슷한 시기에 사망한 것으로 보인다.",
+      "tts": {
+        "text": "그의 형 피에르 라피트도 비슷한 시기에 사망한 것으로 보인다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "피에르의 운명도 마찬가지로 불분명하다.",
+      "text_markdown": "피에르의 운명도 마찬가지로 불분명하다.",
+      "tts": {
+        "text": "피에르의 운명도 마찬가지로 불분명하다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "함께 제국을 건설한 형제는 함께 사라졌다.",
+      "text_markdown": "함께 제국을 건설한 형제는 함께 사라졌다.",
+      "tts": {
+        "text": "함께 제국을 건설한 형제는 함께 사라졌다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들의 이야기는 시작했을 때와 마찬가지로 수수께끼에 싸여 끝났다.",
+      "text_markdown": "그들의 이야기는 시작했을 때와 마찬가지로 수수께끼에 싸여 끝났다.",
+      "tts": {
+        "text": "그들의 이야기는 시작했을 때와 마찬가지로 수수께끼에 싸여 끝났다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 전설은 라피트가 걸프 해안을 따라 보물을 묻었다고 주장한다.",
+      "text_markdown": "일부 전설은 라피트가 걸프 해안을 따라 보물을 묻었다고 주장한다.",
+      "tts": {
+        "text": "일부 전설은 라피트가 걸프 해안을 따라 보물을 묻었다고 주장한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "최후",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "보물 사냥꾼들은 거의 이백 년 동안 그의 금을 찾아왔지만 성공하지 못했다.",
+      "text_markdown": "보물 사냥꾼들은 거의 이백 년 동안 그의 금을 찾아왔지만 성공하지 못했다.",
+      "tts": {
+        "text": "보물 사냥꾼들은 거의 이백 년 동안 그의 금을 찾아왔지만 성공하지 못했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "장 라피트는 미국 역사상 가장 낭만화된 인물 중 한 명이다.",
+      "text_markdown": "장 라피트는 미국 역사상 가장 낭만화된 인물 중 한 명이다.",
+      "tts": {
+        "text": "장 라피트는 미국 역사상 가장 낭만화된 인물 중 한 명이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "뉴올리언스의 신사 해적으로 기억된다.",
+      "text_markdown": "뉴올리언스의 신사 해적으로 기억된다.",
+      "tts": {
+        "text": "뉴올리언스의 신사 해적으로 기억된다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "루이지애나의 국립 역사 공원이 그의 이름을 따서 지어졌다.",
+      "text_markdown": "루이지애나의 국립 역사 공원이 그의 이름을 따서 지어졌다.",
+      "tts": {
+        "text": "루이지애나의 국립 역사 공원이 그의 이름을 따서 지어졌다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뉴올리언스 전투에서의 그의 역할이 미국 역사에서 그의 자리를 확보했다.",
+      "text_markdown": "뉴올리언스 전투에서의 그의 역할이 미국 역사에서 그의 자리를 확보했다.",
+      "tts": {
+        "text": "뉴올리언스 전투에서의 그의 역할이 미국 역사에서 그의 자리를 확보했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무법자도 애국자가 될 수 있음을 증명했다.",
+      "text_markdown": "무법자도 애국자가 될 수 있음을 증명했다.",
+      "tts": {
+        "text": "무법자도 애국자가 될 수 있음을 증명했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 포병들은 도시를 구하고 세계 최강의 해군에 굴욕을 안겼다.",
+      "text_markdown": "그의 포병들은 도시를 구하고 세계 최강의 해군에 굴욕을 안겼다.",
+      "tts": {
+        "text": "그의 포병들은 도시를 구하고 세계 최강의 해군에 굴욕을 안겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "라피트는 수많은 소설, 영화, 텔레비전 프로그램에 등장해 왔다.",
+      "text_markdown": "라피트는 수많은 소설, 영화, 텔레비전 프로그램에 등장해 왔다.",
+      "tts": {
+        "text": "라피트는 수많은 소설, 영화, 텔레비전 프로그램에 등장해 왔다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바이런 경의 시 해적은 부분적으로 라피트에게서 영감을 받았을 수 있다.",
+      "text_markdown": "바이런 경의 시 해적은 부분적으로 라피트에게서 영감을 받았을 수 있다.",
+      "tts": {
+        "text": "바이런 경의 시 해적은 부분적으로 라피트에게서 영감을 받았을 수 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "멋진 영웅부터 냉혈한 범죄자까지 모든 모습으로 묘사되었다.",
+      "text_markdown": "멋진 영웅부터 냉혈한 범죄자까지 모든 모습으로 묘사되었다.",
+      "tts": {
+        "text": "멋진 영웅부터 냉혈한 범죄자까지 모든 모습으로 묘사되었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "진실은 항상 그렇듯 어딘가 그 사이에 있다.",
+      "text_markdown": "진실은 항상 그렇듯 어딘가 그 사이에 있다.",
+      "tts": {
+        "text": "진실은 항상 그렇듯 어딘가 그 사이에 있다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사학자들은 라피트의 성격과 동기에 대해 계속 논쟁하고 있다.",
+      "text_markdown": "역사학자들은 라피트의 성격과 동기에 대해 계속 논쟁하고 있다.",
+      "tts": {
+        "text": "역사학자들은 라피트의 성격과 동기에 대해 계속 논쟁하고 있다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "입양한 조국을 사랑한 애국자였을까, 아니면 스스로를 구하기 위해 거래한 범죄자였을까?",
+      "text_markdown": "입양한 조국을 사랑한 애국자였을까, 아니면 스스로를 구하기 위해 거래한 범죄자였을까?",
+      "tts": {
+        "text": "입양한 조국을 사랑한 애국자였을까, 아니면 스스로를 구하기 위해 거래한 범죄자였을까?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "증거는 두 해석 모두를 뒷받침한다.",
+      "text_markdown": "증거는 두 해석 모두를 뒷받침한다.",
+      "tts": {
+        "text": "증거는 두 해석 모두를 뒷받침한다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 단순한 꼬리표를 거부하는 모순의 사람이었다.",
+      "text_markdown": "그는 단순한 꼬리표를 거부하는 모순의 사람이었다.",
+      "tts": {
+        "text": "그는 단순한 꼬리표를 거부하는 모순의 사람이었다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노예 무역에의 관여는 그의 유산에서 가장 어두운 부분이다.",
+      "text_markdown": "노예 무역에의 관여는 그의 유산에서 가장 어두운 부분이다.",
+      "tts": {
+        "text": "노예 무역에의 관여는 그의 유산에서 가장 어두운 부분이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "라피트는 이윤을 위해 인간을 사고팔았다.",
+      "text_markdown": "라피트는 이윤을 위해 인간을 사고팔았다.",
+      "tts": {
+        "text": "라피트는 이윤을 위해 인간을 사고팔았다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 사실은 나머지가 아무리 낭만적이어도 그의 이야기에서 분리할 수 없다.",
+      "text_markdown": "이 사실은 나머지가 아무리 낭만적이어도 그의 이야기에서 분리할 수 없다.",
+      "tts": {
+        "text": "이 사실은 나머지가 아무리 낭만적이어도 그의 이야기에서 분리할 수 없다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 출생과 죽음의 미스터리는 그의 지속적인 매력을 더할 뿐이다.",
+      "text_markdown": "그의 출생과 죽음의 미스터리는 그의 지속적인 매력을 더할 뿐이다.",
+      "tts": {
+        "text": "그의 출생과 죽음의 미스터리는 그의 지속적인 매력을 더할 뿐이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어디에선가 나타나 어디론가 사라지는 남자는 이야기꾼에게 거부할 수 없다.",
+      "text_markdown": "어디에선가 나타나 어디론가 사라지는 남자는 이야기꾼에게 거부할 수 없다.",
+      "tts": {
+        "text": "어디에선가 나타나 어디론가 사라지는 남자는 이야기꾼에게 거부할 수 없다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "장 라피트는 누구보다 그것을 잘 이해했다.",
+      "text_markdown": "장 라피트는 누구보다 그것을 잘 이해했다.",
+      "tts": {
+        "text": "장 라피트는 누구보다 그것을 잘 이해했다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "습격을 계획하는 것만큼 신중하게 자신의 전설을 만들었다.",
+      "text_markdown": "습격을 계획하는 것만큼 신중하게 자신의 전설을 만들었다.",
+      "tts": {
+        "text": "습격을 계획하는 것만큼 신중하게 자신의 전설을 만들었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무도회장에서도 해적선에서도 편안한 가면의 달인이었다.",
+      "text_markdown": "무도회장에서도 해적선에서도 편안한 가면의 달인이었다.",
+      "tts": {
+        "text": "무도회장에서도 해적선에서도 편안한 가면의 달인이었다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "진짜 라피트와 그가 만든 신화 사이의 경계는 아마도 완전히 풀리지 않을 것이다.",
+      "text_markdown": "진짜 라피트와 그가 만든 신화 사이의 경계는 아마도 완전히 풀리지 않을 것이다.",
+      "tts": {
+        "text": "진짜 라피트와 그가 만든 신화 사이의 경계는 아마도 완전히 풀리지 않을 것이다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "분명한 것은 그가 걸프 해안의 역사를 형성했다는 것이다.",
+      "text_markdown": "분명한 것은 그가 걸프 해안의 역사를 형성했다는 것이다.",
+      "tts": {
+        "text": "분명한 것은 그가 걸프 해안의 역사를 형성했다는 것이다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 중대한 순간에 그곳에 있었고, 행동하기를 선택했다.",
+      "text_markdown": "그는 중대한 순간에 그곳에 있었고, 행동하기를 선택했다.",
+      "tts": {
+        "text": "그는 중대한 순간에 그곳에 있었고, 행동하기를 선택했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "좋든 나쁘든, 장 라피트는 미국 역사에 그의 흔적을 남겼다.",
+      "text_markdown": "좋든 나쁘든, 장 라피트는 미국 역사에 그의 흔적을 남겼다.",
+      "tts": {
+        "text": "좋든 나쁘든, 장 라피트는 미국 역사에 그의 흔적을 남겼다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "장 라피트의 일지라고 알려진 문서가 이십 세기에 등장했다.",
+      "text_markdown": "장 라피트의 일지라고 알려진 문서가 이십 세기에 등장했다.",
+      "tts": {
+        "text": "장 라피트의 일지라고 알려진 문서가 이십 세기에 등장했다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대부분의 역사학자들은 그 일지를 위조로 보지만, 논쟁은 계속되고 있다.",
+      "text_markdown": "대부분의 역사학자들은 그 일지를 위조로 보지만, 논쟁은 계속되고 있다.",
+      "tts": {
+        "text": "대부분의 역사학자들은 그 일지를 위조로 보지만, 논쟁은 계속되고 있다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

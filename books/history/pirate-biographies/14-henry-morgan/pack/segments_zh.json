@@ -1,0 +1,4607 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_morgan",
+  "language": "zh",
+  "total_segments": 308,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致读者",
+      "text_markdown": "致读者"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是亨利·摩根的故事，他是加勒比海历史上最成功的海盗。",
+      "text_markdown": "这是亨利·摩根的故事，他是加勒比海历史上最成功的海盗。",
+      "tts": {
+        "text": "这是亨利·摩根的故事，他是加勒比海历史上最成功的海盗。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他洗劫了西班牙帝国最富裕的城市，却从未因此受到惩罚。",
+      "text_markdown": "他洗劫了西班牙帝国最富裕的城市，却从未因此受到惩罚。",
+      "tts": {
+        "text": "他洗劫了西班牙帝国最富裕的城市，却从未因此受到惩罚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根生活在一个海盗行为与爱国主义之间的界限被刻意模糊的时代。",
+      "text_markdown": "摩根生活在一个海盗行为与爱国主义之间的界限被刻意模糊的时代。",
+      "tts": {
+        "text": "摩根生活在一个海盗行为与爱国主义之间的界限被刻意模糊的时代。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰利用像他这样的人来削弱西班牙，而无需宣战。",
+      "text_markdown": "英格兰利用像他这样的人来削弱西班牙，而无需宣战。",
+      "tts": {
+        "text": "英格兰利用像他这样的人来削弱西班牙，而无需宣战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他突袭城镇、焚烧城市，拷打囚犯以获取隐藏黄金的信息。",
+      "text_markdown": "他突袭城镇、焚烧城市，拷打囚犯以获取隐藏黄金的信息。",
+      "tts": {
+        "text": "他突袭城镇、焚烧城市，拷打囚犯以获取隐藏黄金的信息。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "然而他以亨利·摩根爵士、王国骑士和牙买加副总督的身份去世。",
+      "text_markdown": "然而他以亨利·摩根爵士、王国骑士和牙买加副总督的身份去世。",
+      "tts": {
+        "text": "然而他以亨利·摩根爵士、王国骑士和牙买加副总督的身份去世。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的故事提出了关于暴力、帝国以及为强国效力者所获奖赏的棘手问题。",
+      "text_markdown": "他的故事提出了关于暴力、帝国以及为强国效力者所获奖赏的棘手问题。",
+      "tts": {
+        "text": "他的故事提出了关于暴力、帝国以及为强国效力者所获奖赏的棘手问题。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里描述的事件基于历史记录，包括审判记录和第一手证词。",
+      "text_markdown": "这里描述的事件基于历史记录，包括审判记录和第一手证词。",
+      "tts": {
+        "text": "这里描述的事件基于历史记录，包括审判记录和第一手证词。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "致读者",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在细节不确定的地方，文中会加以说明。",
+      "text_markdown": "在细节不确定的地方，文中会加以说明。",
+      "tts": {
+        "text": "在细节不确定的地方，文中会加以说明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "塑造他的世界",
+      "text_markdown": "塑造他的世界"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪的加勒比海是地球上争夺最激烈的水域。",
+      "text_markdown": "十七世纪的加勒比海是地球上争夺最激烈的水域。",
+      "tts": {
+        "text": "十六世纪六十年代的加勒比海是地球上争夺最激烈的水域。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙、英格兰、法国和荷兰都在那里宣称拥有岛屿和海岸线。",
+      "text_markdown": "西班牙、英格兰、法国和荷兰都在那里宣称拥有岛屿和海岸线。",
+      "tts": {
+        "text": "西班牙、英格兰、法国和荷兰都在那里宣称拥有岛屿和海岸线。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每个国家都建造了要塞、建立了殖民地，并派遣军舰保卫其领土。",
+      "text_markdown": "每个国家都建造了要塞、建立了殖民地，并派遣军舰保卫其领土。",
+      "tts": {
+        "text": "每个国家都建造了要塞、建立了殖民地，并派遣军舰保卫其领土。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙最先抵达，占据了最大的份额。",
+      "text_markdown": "西班牙最先抵达，占据了最大的份额。",
+      "tts": {
+        "text": "西班牙最先抵达，占据了最大的份额。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其帝国从墨西哥延伸到秘鲁，从古巴延伸到菲律宾。",
+      "text_markdown": "其帝国从墨西哥延伸到秘鲁，从古巴延伸到菲律宾。",
+      "tts": {
+        "text": "其帝国从墨西哥延伸到秘鲁，从古巴延伸到菲律宾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每年，宝船队将白银和黄金从美洲运回塞维利亚。",
+      "text_markdown": "每年，宝船队将白银和黄金从美洲运回塞维利亚。",
+      "tts": {
+        "text": "每年，宝船队将白银和黄金从美洲运回塞维利亚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些财富使西班牙成为欧洲最富有的国家，长达一个多世纪。",
+      "text_markdown": "这些财富使西班牙成为欧洲最富有的国家，长达一个多世纪。",
+      "tts": {
+        "text": "这些财富使西班牙成为欧洲最富有的国家，长达一个多世纪。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但这也使西班牙成为了目标。",
+      "text_markdown": "但这也使西班牙成为了目标。",
+      "tts": {
+        "text": "但这也使西班牙成为了目标。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙人声称整个加勒比海是他们的专属领地。",
+      "text_markdown": "西班牙人声称整个加勒比海是他们的专属领地。",
+      "tts": {
+        "text": "西班牙人声称整个加勒比海是他们的专属领地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们坚持认为任何其他国家都无权在那些水域贸易、定居或航行。",
+      "text_markdown": "他们坚持认为任何其他国家都无权在那些水域贸易、定居或航行。",
+      "tts": {
+        "text": "他们坚持认为任何其他国家都无权在那些水域贸易、定居或航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这一主张基于1493年的一项教皇法令，该法令将新世界划分给西班牙和葡萄牙。",
+      "text_markdown": "这一主张基于1493年的一项教皇法令，该法令将新世界划分给西班牙和葡萄牙。",
+      "tts": {
+        "text": "这一主张基于一四九三年的一项教皇法令，该法令将新世界划分给西班牙和葡萄牙。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰、法国和荷兰不承认这项法令。",
+      "text_markdown": "英格兰、法国和荷兰不承认这项法令。",
+      "tts": {
+        "text": "英格兰、法国和荷兰不承认这项法令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们争辩说，没有教皇有权赠送整个大陆。",
+      "text_markdown": "他们争辩说，没有教皇有权赠送整个大陆。",
+      "tts": {
+        "text": "他们争辩说，没有教皇有权赠送整个大陆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这一分歧是加勒比海一个世纪战争的根源。",
+      "text_markdown": "这一分歧是加勒比海一个世纪战争的根源。",
+      "tts": {
+        "text": "这一分歧是加勒比海一个世纪战争的根源。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪初，英格兰的经济远小于西班牙。",
+      "text_markdown": "十七世纪初，英格兰的经济远小于西班牙。",
+      "tts": {
+        "text": "十六世纪六十年代初，英格兰的经济远小于西班牙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰在加勒比海的殖民地贫穷而脆弱。",
+      "text_markdown": "英格兰在加勒比海的殖民地贫穷而脆弱。",
+      "tts": {
+        "text": "英格兰在加勒比海的殖民地贫穷而脆弱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们靠糖、烟草以及能从西班牙人手中夺取的一切为生。",
+      "text_markdown": "它们靠糖、烟草以及能从西班牙人手中夺取的一切为生。",
+      "tts": {
+        "text": "它们靠糖、烟草以及能从西班牙人手中夺取的一切为生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰政府暗中鼓励对西班牙船只和定居点的攻击。",
+      "text_markdown": "英格兰政府暗中鼓励对西班牙船只和定居点的攻击。",
+      "tts": {
+        "text": "英格兰政府暗中鼓励对西班牙船只和定居点的攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私掠者是获得一份称为私掠许可证的法律文件的普通公民。",
+      "text_markdown": "私掠者是获得一份称为私掠许可证的法律文件的普通公民。",
+      "tts": {
+        "text": "私掠者是获得一份称为私掠许可证的法律文件的普通公民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这份许可证授权他代表国家攻击敌方船只。",
+      "text_markdown": "这份许可证授权他代表国家攻击敌方船只。",
+      "tts": {
+        "text": "这份许可证授权他代表国家攻击敌方船只。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私掠者和海盗之间的区别仅仅是一张纸。",
+      "text_markdown": "私掠者和海盗之间的区别仅仅是一张纸。",
+      "tts": {
+        "text": "私掠者和海盗之间的区别仅仅是一张纸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有这封信，你就是罪犯。",
+      "text_markdown": "没有这封信，你就是罪犯。",
+      "tts": {
+        "text": "没有这封信，你就是罪犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有了它，你就是爱国者。",
+      "text_markdown": "有了它，你就是爱国者。",
+      "tts": {
+        "text": "有了它，你就是爱国者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "牙买加是英格兰在加勒比海最重要的属地。",
+      "text_markdown": "牙买加是英格兰在加勒比海最重要的属地。",
+      "tts": {
+        "text": "牙买加是英格兰在加勒比海最重要的属地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰于1655年从西班牙手中夺取了它，就在摩根到达的十年前。",
+      "text_markdown": "英格兰于1655年从西班牙手中夺取了它，就在摩根到达的十年前。",
+      "tts": {
+        "text": "英格兰于一六五五年从西班牙手中夺取了它，就在摩根到达的十年前。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这座岛屿防御薄弱，发展滞后。",
+      "text_markdown": "这座岛屿防御薄弱，发展滞后。",
+      "tts": {
+        "text": "这座岛屿防御薄弱，发展滞后。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其首府皇家港坐落在金斯敦港入口处的一条狭窄沙嘴上。",
+      "text_markdown": "其首府皇家港坐落在金斯敦港入口处的一条狭窄沙嘴上。",
+      "tts": {
+        "text": "其首府皇家港坐落在金斯敦港入口处的一条狭窄沙嘴上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座城镇拥挤、喧闹，到处是酒馆和赌场。",
+      "text_markdown": "这座城镇拥挤、喧闹，到处是酒馆和赌场。",
+      "tts": {
+        "text": "这座城镇拥挤、喧闹，到处是酒馆和赌场。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皇家港被称为地球上最邪恶的城市。",
+      "text_markdown": "皇家港被称为地球上最邪恶的城市。",
+      "tts": {
+        "text": "皇家港被称为地球上最邪恶的城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们在那里把掠夺来的财富花在朗姆酒、女人和骰子上。",
+      "text_markdown": "海盗们在那里把掠夺来的财富花在朗姆酒、女人和骰子上。",
+      "tts": {
+        "text": "海盗们在那里把掠夺来的财富花在朗姆酒、女人和骰子上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个人可以在一夜之间挥霍掉一笔财富，一周之内重返大海。",
+      "text_markdown": "一个人可以在一夜之间挥霍掉一笔财富，一周之内重返大海。",
+      "tts": {
+        "text": "一个人可以在一夜之间挥霍掉一笔财富，一周之内重返大海。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "牙买加的总督们依赖海盗来防御。",
+      "text_markdown": "牙买加的总督们依赖海盗来防御。",
+      "tts": {
+        "text": "牙买加的总督们依赖海盗来防御。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "岛上没有足够强大的常备海军来击退西班牙人的进攻。",
+      "text_markdown": "岛上没有足够强大的常备海军来击退西班牙人的进攻。",
+      "tts": {
+        "text": "岛上没有足够强大的常备海军来击退西班牙人的进攻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "因此总督们颁发私掠许可证，让海盗们去战斗。",
+      "text_markdown": "因此总督们颁发私掠许可证，让海盗们去战斗。",
+      "tts": {
+        "text": "因此总督们颁发私掠许可证，让海盗们去战斗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗是一群由英格兰人、法国人、荷兰人和非洲水手组成的混杂群体。",
+      "text_markdown": "海盗是一群由英格兰人、法国人、荷兰人和非洲水手组成的混杂群体。",
+      "tts": {
+        "text": "海盗是一群由英格兰人、法国人、荷兰人和非洲水手组成的混杂群体。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多人曾是契约仆人或逃亡的奴隶。",
+      "text_markdown": "许多人曾是契约仆人或逃亡的奴隶。",
+      "tts": {
+        "text": "许多人曾是契约仆人或逃亡的奴隶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们过着艰苦的生活，几乎没有什么可失去的。",
+      "text_markdown": "他们过着艰苦的生活，几乎没有什么可失去的。",
+      "tts": {
+        "text": "他们过着艰苦的生活，几乎没有什么可失去的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗一词来源于法语词boucanier，意为熏肉者。",
+      "text_markdown": "海盗一词来源于法语词boucanier，意为熏肉者。",
+      "tts": {
+        "text": "海盗一词来源于法语词boucanier，意为熏肉者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最早的海盗是伊斯帕尼奥拉岛上熏制野牛和野猪肉的猎人。",
+      "text_markdown": "最早的海盗是伊斯帕尼奥拉岛上熏制野牛和野猪肉的猎人。",
+      "tts": {
+        "text": "最早的海盗是伊斯帕尼奥拉岛上熏制野牛和野猪肉的猎人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当西班牙人把他们赶走后，他们转向大海求生。",
+      "text_markdown": "当西班牙人把他们赶走后，他们转向大海求生。",
+      "tts": {
+        "text": "当西班牙人把他们赶走后，他们转向大海求生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到了十七世纪六十年代，海盗已经成为一支强大的战斗力量。",
+      "text_markdown": "到了十七世纪六十年代，海盗已经成为一支强大的战斗力量。",
+      "tts": {
+        "text": "到了十七世纪六十年代，海盗已经成为一支强大的战斗力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们用火枪、弯刀和赤裸的勇气作战。",
+      "text_markdown": "他们用火枪、弯刀和赤裸的勇气作战。",
+      "tts": {
+        "text": "他们用火枪、弯刀和赤裸的勇气作战。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们擅长登船和攻打要塞。",
+      "text_markdown": "他们擅长登船和攻打要塞。",
+      "tts": {
+        "text": "他们擅长登船和攻打要塞。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙认为外国人在加勒比海的一切存在都是非法的。",
+      "text_markdown": "西班牙认为外国人在加勒比海的一切存在都是非法的。",
+      "tts": {
+        "text": "西班牙认为外国人在加勒比海的一切存在都是非法的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在西班牙人看来，每个英格兰定居者都是入侵者，每艘英格兰船都是合法猎物。",
+      "text_markdown": "在西班牙人看来，每个英格兰定居者都是入侵者，每艘英格兰船都是合法猎物。",
+      "tts": {
+        "text": "在西班牙人看来，每个英格兰定居者都是入侵者，每艘英格兰船都是合法猎物。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种相互敌意造成了无休止的突袭和报复循环。",
+      "text_markdown": "这种相互敌意造成了无休止的突袭和报复循环。",
+      "tts": {
+        "text": "这种相互敌意造成了无休止的突袭和报复循环。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙人攻击英格兰人的定居点，英格兰人攻击西班牙人的定居点。",
+      "text_markdown": "西班牙人攻击英格兰人的定居点，英格兰人攻击西班牙人的定居点。",
+      "tts": {
+        "text": "西班牙人攻击英格兰人的定居点，英格兰人攻击西班牙人的定居点。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "塑造他的世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在这个暴力的世界中，年轻的亨利·摩根来到这里寻找机会。",
+      "text_markdown": "在这个暴力的世界中，年轻的亨利·摩根来到这里寻找机会。",
+      "tts": {
+        "text": "在这个暴力的世界中，年轻的亨利·摩根来到这里寻找机会。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "加勒比海的威尔士人",
+      "text_markdown": "加勒比海的威尔士人"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·摩根大约于1635年出生在威尔士东南部的兰拉姆尼村。",
+      "text_markdown": "亨利·摩根大约于1635年出生在威尔士东南部的兰拉姆尼村。",
+      "tts": {
+        "text": "亨利·摩根大约于一六三五年出生在威尔士东南部的兰拉姆尼村。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的家族属于威尔士士绅阶层，这意味着他们拥有土地和地方影响力。",
+      "text_markdown": "他的家族属于威尔士士绅阶层，这意味着他们拥有土地和地方影响力。",
+      "tts": {
+        "text": "他的家族属于威尔士士绅阶层，这意味着他们拥有土地和地方影响力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的两个叔叔在英国内战期间担任军官。",
+      "text_markdown": "他的两个叔叔在英国内战期间担任军官。",
+      "tts": {
+        "text": "他的两个叔叔在英国内战期间担任军官。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪三十年代的威尔士是英国一个乡村化且相对贫穷的地区。",
+      "text_markdown": "十七世纪三十年代的威尔士是英国一个乡村化且相对贫穷的地区。",
+      "tts": {
+        "text": "十七世纪三十年代的威尔士是英国一个乡村化且相对贫穷的地区。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "威尔士士绅拥有的庄园与英格兰大地主相比十分有限。",
+      "text_markdown": "威尔士士绅拥有的庄园与英格兰大地主相比十分有限。",
+      "tts": {
+        "text": "威尔士士绅拥有的庄园与英格兰大地主相比十分有限。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但他们将军事服务和家族荣誉视为高于一切。",
+      "text_markdown": "但他们将军事服务和家族荣誉视为高于一切。",
+      "tts": {
+        "text": "但他们将军事服务和家族荣誉视为高于一切。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "关于摩根的童年知之甚少。",
+      "text_markdown": "关于摩根的童年知之甚少。",
+      "tts": {
+        "text": "关于摩根的童年知之甚少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他从未写过关于早年的事，也没有留下任何学校记录。",
+      "text_markdown": "他从未写过关于早年的事，也没有留下任何学校记录。",
+      "tts": {
+        "text": "他从未写过关于早年的事，也没有留下任何学校记录。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "历史学家认为他接受过一些基础教育，但没有接受过大学训练。",
+      "text_markdown": "历史学家认为他接受过一些基础教育，但没有接受过大学训练。",
+      "tts": {
+        "text": "历史学家认为他接受过一些基础教育，但没有接受过大学训练。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十七世纪五十年代末的某个时候，摩根航行到了加勒比海。",
+      "text_markdown": "十七世纪五十年代末的某个时候，摩根航行到了加勒比海。",
+      "tts": {
+        "text": "十七世纪五十年代末的某个时候，摩根航行到了加勒比海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是如何到达那里的，众说纷纭。",
+      "text_markdown": "他是如何到达那里的，众说纷纭。",
+      "tts": {
+        "text": "他是如何到达那里的，众说纷纭。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一种说法声称他小时候在布里斯托尔被绑架，被卖到巴巴多斯当契约仆人。",
+      "text_markdown": "一种说法声称他小时候在布里斯托尔被绑架，被卖到巴巴多斯当契约仆人。",
+      "tts": {
+        "text": "一种说法声称他小时候在布里斯托尔被绑架，被卖到巴巴多斯当契约仆人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根本人后来否认了这一点，称其为诽谤。",
+      "text_markdown": "摩根本人后来否认了这一点，称其为诽谤。",
+      "tts": {
+        "text": "摩根本人后来否认了这一点，称其为诽谤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他起诉了刊登此说法的出版商并获得了赔偿。",
+      "text_markdown": "他起诉了刊登此说法的出版商并获得了赔偿。",
+      "tts": {
+        "text": "他起诉了刊登此说法的出版商并获得了赔偿。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "更合理的解释是摩根作为士兵来到了加勒比海。",
+      "text_markdown": "更合理的解释是摩根作为士兵来到了加勒比海。",
+      "tts": {
+        "text": "更合理的解释是摩根作为士兵来到了加勒比海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1655年，英格兰派出了一支大型军事远征队去夺取西班牙领土。",
+      "text_markdown": "1655年，英格兰派出了一支大型军事远征队去夺取西班牙领土。",
+      "tts": {
+        "text": "一六五五年，英格兰派出了一支大型军事远征队去夺取西班牙领土。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "舰队未能攻占伊斯帕尼奥拉岛，但成功夺取了牙买加。",
+      "text_markdown": "舰队未能攻占伊斯帕尼奥拉岛，但成功夺取了牙买加。",
+      "tts": {
+        "text": "舰队未能攻占伊斯帕尼奥拉岛，但成功夺取了牙买加。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这次远征被称为西方计划。",
+      "text_markdown": "这次远征被称为西方计划。",
+      "tts": {
+        "text": "这次远征被称为西方计划。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是由英格兰护国公奥利弗·克伦威尔下令的。",
+      "text_markdown": "它是由英格兰护国公奥利弗·克伦威尔下令的。",
+      "tts": {
+        "text": "它是由英格兰护国公奥利弗·克伦威尔下令的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "克伦威尔想要打破西班牙对加勒比海的控制，扩大英格兰的势力。",
+      "text_markdown": "克伦威尔想要打破西班牙对加勒比海的控制，扩大英格兰的势力。",
+      "tts": {
+        "text": "克伦威尔想要打破西班牙对加勒比海的控制，扩大英格兰的势力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根可能是这次远征的一员，或者在不久后抵达。",
+      "text_markdown": "摩根可能是这次远征的一员，或者在不久后抵达。",
+      "tts": {
+        "text": "摩根可能是这次远征的一员，或者在不久后抵达。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "无论如何，到十七世纪六十年代初，他已在牙买加扎根。",
+      "text_markdown": "无论如何，到十七世纪六十年代初，他已在牙买加扎根。",
+      "tts": {
+        "text": "无论如何，到十七世纪六十年代初，他已在牙买加扎根。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他很快证明自己是一个有能力且有野心的战士。",
+      "text_markdown": "他很快证明自己是一个有能力且有野心的战士。",
+      "tts": {
+        "text": "他很快证明自己是一个有能力且有野心的战士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1663年，他加入了一次针对中美洲西班牙定居点的海盗远征。",
+      "text_markdown": "1663年，他加入了一次针对中美洲西班牙定居点的海盗远征。",
+      "tts": {
+        "text": "一六六三年，他加入了一次针对中美洲西班牙定居点的海盗远征。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "突击者攻击了今天尼加拉瓜和洪都拉斯海岸沿线的城镇。",
+      "text_markdown": "突击者攻击了今天尼加拉瓜和洪都拉斯海岸沿线的城镇。",
+      "tts": {
+        "text": "突击者攻击了今天尼加拉瓜和洪都拉斯海岸沿线的城镇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这次早期远征由经验丰富的海盗克里斯托弗·明斯率领。",
+      "text_markdown": "这次早期远征由经验丰富的海盗克里斯托弗·明斯率领。",
+      "tts": {
+        "text": "这次早期远征由经验丰富的海盗克里斯托弗·明斯率领。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "明斯是一位大胆而有经验的突击者，教会了年轻海盗们他们的行当。",
+      "text_markdown": "明斯是一位大胆而有经验的突击者，教会了年轻海盗们他们的行当。",
+      "tts": {
+        "text": "明斯是一位大胆而有经验的突击者，教会了年轻海盗们他们的行当。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根仔细地观察并向他学习。",
+      "text_markdown": "摩根仔细地观察并向他学习。",
+      "tts": {
+        "text": "摩根仔细地观察并向他学习。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根在这些早期突袭中学到了将定义他职业生涯的战术。",
+      "text_markdown": "摩根在这些早期突袭中学到了将定义他职业生涯的战术。",
+      "tts": {
+        "text": "摩根在这些早期突袭中学到了将定义他职业生涯的战术。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他研究了如何在丛林地带调动大批人员。",
+      "text_markdown": "他研究了如何在丛林地带调动大批人员。",
+      "tts": {
+        "text": "他研究了如何在丛林地带调动大批人员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他学会了快速打击并在西班牙援军到达之前撤退。",
+      "text_markdown": "他学会了快速打击并在西班牙援军到达之前撤退。",
+      "tts": {
+        "text": "他学会了快速打击并在西班牙援军到达之前撤退。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1665年，摩根随著名海盗爱德华·曼斯菲尔德对普罗维登斯岛发起了突袭。",
+      "text_markdown": "1665年，摩根随著名海盗爱德华·曼斯菲尔德对普罗维登斯岛发起了突袭。",
+      "tts": {
+        "text": "一六六五年，摩根随著名海盗爱德华·曼斯菲尔德对普罗维登斯岛发起了突袭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "普罗维登斯是尼加拉瓜海岸外的一个小岛，几年前被西班牙从英格兰手中夺回。",
+      "text_markdown": "普罗维登斯是尼加拉瓜海岸外的一个小岛，几年前被西班牙从英格兰手中夺回。",
+      "tts": {
+        "text": "普罗维登斯是尼加拉瓜海岸外的一个小岛，几年前被西班牙从英格兰手中夺回。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "曼斯菲尔德的舰队轻松占领了该岛。",
+      "text_markdown": "曼斯菲尔德的舰队轻松占领了该岛。",
+      "tts": {
+        "text": "曼斯菲尔德的舰队轻松占领了该岛。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但这次远征暴露了海盗领导层的问题。",
+      "text_markdown": "但这次远征暴露了海盗领导层的问题。",
+      "tts": {
+        "text": "但这次远征暴露了海盗领导层的问题。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人们为如何分配战利品争吵不休，许多人开了小差。",
+      "text_markdown": "人们为如何分配战利品争吵不休，许多人开了小差。",
+      "tts": {
+        "text": "人们为如何分配战利品争吵不休，许多人开了小差。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1667年曼斯菲尔德去世后，海盗们需要一位新领袖。",
+      "text_markdown": "1667年曼斯菲尔德去世后，海盗们需要一位新领袖。",
+      "tts": {
+        "text": "一六六七年曼斯菲尔德去世后，海盗们需要一位新领袖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根被选为继任者。",
+      "text_markdown": "摩根被选为继任者。",
+      "tts": {
+        "text": "摩根被选为继任者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他年仅三十岁左右，但已赢得了以胆略和战术技能著称的声誉。",
+      "text_markdown": "他年仅三十岁左右，但已赢得了以胆略和战术技能著称的声誉。",
+      "tts": {
+        "text": "他年仅三十岁左右，但已赢得了以胆略和战术技能著称的声誉。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大约在同一时期，摩根与妻子玛丽·伊丽莎白结婚。",
+      "text_markdown": "大约在同一时期，摩根与妻子玛丽·伊丽莎白结婚。",
+      "tts": {
+        "text": "大约在同一时期，摩根与妻子玛丽·伊丽莎白结婚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "她是他叔叔爱德华·摩根的女儿，爱德华曾担任牙买加副总督。",
+      "text_markdown": "她是他叔叔爱德华·摩根的女儿，爱德华曾担任牙买加副总督。",
+      "tts": {
+        "text": "她是他叔叔爱德华·摩根的女儿，爱德华曾担任牙买加副总督。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这桩婚姻使他与岛上的殖民精英阶层建立了联系。",
+      "text_markdown": "这桩婚姻使他与岛上的殖民精英阶层建立了联系。",
+      "tts": {
+        "text": "这桩婚姻使他与岛上的殖民精英阶层建立了联系。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根现在既是海盗船长，又是牙买加种植园主阶层的成员。",
+      "text_markdown": "摩根现在既是海盗船长，又是牙买加种植园主阶层的成员。",
+      "tts": {
+        "text": "摩根现在既是海盗船长，又是牙买加种植园主阶层的成员。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他拥有土地和奴隶，对政治的理解不亚于对战争的理解。",
+      "text_markdown": "他拥有土地和奴隶，对政治的理解不亚于对战争的理解。",
+      "tts": {
+        "text": "他拥有土地和奴隶，对政治的理解不亚于对战争的理解。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他与牙买加总督托马斯·莫迪福德爵士建立了密切关系。",
+      "text_markdown": "他与牙买加总督托马斯·莫迪福德爵士建立了密切关系。",
+      "tts": {
+        "text": "他与牙买加总督托马斯·莫迪福德爵士建立了密切关系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莫迪福德依靠摩根领导岛屿对西班牙侵略的防御。",
+      "text_markdown": "莫迪福德依靠摩根领导岛屿对西班牙侵略的防御。",
+      "tts": {
+        "text": "莫迪福德依靠摩根领导岛屿对西班牙侵略的防御。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "作为回报，莫迪福德为摩根提供了攻击西班牙目标所需的法律掩护。",
+      "text_markdown": "作为回报，莫迪福德为摩根提供了攻击西班牙目标所需的法律掩护。",
+      "tts": {
+        "text": "作为回报，莫迪福德为摩根提供了攻击西班牙目标所需的法律掩护。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种总督与海盗之间的伙伴关系将重塑加勒比海的力量平衡。",
+      "text_markdown": "这种总督与海盗之间的伙伴关系将重塑加勒比海的力量平衡。",
+      "tts": {
+        "text": "这种总督与海盗之间的伙伴关系将重塑加勒比海的力量平衡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "加勒比海的威尔士人",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根即将展开一系列突袭，使他成为西班牙主要领地中最令人恐惧的人。",
+      "text_markdown": "摩根即将展开一系列突袭，使他成为西班牙主要领地中最令人恐惧的人。",
+      "tts": {
+        "text": "摩根即将展开一系列突袭，使他成为西班牙主要领地中最令人恐惧的人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "撼动帝国的突袭",
+      "text_markdown": "撼动帝国的突袭"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根第一次重大独立指挥是在1668年。",
+      "text_markdown": "摩根第一次重大独立指挥是在1668年。",
+      "tts": {
+        "text": "摩根第一次重大独立指挥是在一六六八年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "莫迪福德总督授权他收集有关西班牙计划进攻牙买加的情报。",
+      "text_markdown": "莫迪福德总督授权他收集有关西班牙计划进攻牙买加的情报。",
+      "tts": {
+        "text": "莫迪福德总督授权他收集有关西班牙计划进攻牙买加的情报。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根对这项委托做了非常宽泛的解读。",
+      "text_markdown": "摩根对这项委托做了非常宽泛的解读。",
+      "tts": {
+        "text": "摩根对这项委托做了非常宽泛的解读。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他集结了一支由十二艘船和七百多人组成的舰队。",
+      "text_markdown": "他集结了一支由十二艘船和七百多人组成的舰队。",
+      "tts": {
+        "text": "他集结了一支由十二艘船和七百多人组成的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的目标是波多韦洛，美洲防御最坚固的城市之一。",
+      "text_markdown": "他的目标是波多韦洛，美洲防御最坚固的城市之一。",
+      "tts": {
+        "text": "他的目标是波多韦洛，美洲防御最坚固的城市之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波多韦洛位于今天巴拿马的加勒比海岸。",
+      "text_markdown": "波多韦洛位于今天巴拿马的加勒比海岸。",
+      "tts": {
+        "text": "波多韦洛位于今天巴拿马的加勒比海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是南美白银装船运往西班牙的中转站。",
+      "text_markdown": "这是南美白银装船运往西班牙的中转站。",
+      "tts": {
+        "text": "这是南美白银装船运往西班牙的中转站。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座城市由三座石头要塞和一支职业军人驻军守卫。",
+      "text_markdown": "这座城市由三座石头要塞和一支职业军人驻军守卫。",
+      "tts": {
+        "text": "这座城市由三座石头要塞和一支职业军人驻军守卫。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "没有人预料到波多韦洛会遭到攻击。",
+      "text_markdown": "没有人预料到波多韦洛会遭到攻击。",
+      "tts": {
+        "text": "没有人预料到波多韦洛会遭到攻击。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙人认为它坚不可摧。",
+      "text_markdown": "西班牙人认为它坚不可摧。",
+      "tts": {
+        "text": "西班牙人认为它坚不可摧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这正是摩根选择它的原因。",
+      "text_markdown": "这正是摩根选择它的原因。",
+      "tts": {
+        "text": "这正是摩根选择它的原因。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根的人在夜间于距城市数英里处登陆。",
+      "text_markdown": "摩根的人在夜间于距城市数英里处登陆。",
+      "tts": {
+        "text": "摩根的人在夜间于距城市数英里处登陆。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们划独木舟上岸，在黑暗中穿过丛林。",
+      "text_markdown": "他们划独木舟上岸，在黑暗中穿过丛林。",
+      "tts": {
+        "text": "他们划独木舟上岸，在黑暗中穿过丛林。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在黎明时攻击了第一座要塞，令守军措手不及。",
+      "text_markdown": "他们在黎明时攻击了第一座要塞，令守军措手不及。",
+      "tts": {
+        "text": "他们在黎明时攻击了第一座要塞，令守军措手不及。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙人英勇抵抗，但被攻击的速度所压倒。",
+      "text_markdown": "西班牙人英勇抵抗，但被攻击的速度所压倒。",
+      "tts": {
+        "text": "西班牙人英勇抵抗，但被攻击的速度所压倒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根的海盗是经验丰富的巷战高手，擅长近距离作战。",
+      "text_markdown": "摩根的海盗是经验丰富的巷战高手，擅长近距离作战。",
+      "tts": {
+        "text": "摩根的海盗是经验丰富的巷战高手，擅长近距离作战。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根使用了一种令敌人惊骇的战术。",
+      "text_markdown": "摩根使用了一种令敌人惊骇的战术。",
+      "tts": {
+        "text": "摩根使用了一种令敌人惊骇的战术。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他迫使被俘的修士和修女扛着梯子走向第二座要塞的城墙。",
+      "text_markdown": "他迫使被俘的修士和修女扛着梯子走向第二座要塞的城墙。",
+      "tts": {
+        "text": "他迫使被俘的修士和修女扛着梯子走向第二座要塞的城墙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙守军无法向自己的教友开火。",
+      "text_markdown": "西班牙守军无法向自己的教友开火。",
+      "tts": {
+        "text": "西班牙守军无法向自己的教友开火。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "两天之内，三座要塞全部陷落。",
+      "text_markdown": "两天之内，三座要塞全部陷落。",
+      "tts": {
+        "text": "两天之内，三座要塞全部陷落。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根的海盗洗劫了这座城市两个星期。",
+      "text_markdown": "摩根的海盗洗劫了这座城市两个星期。",
+      "tts": {
+        "text": "摩根的海盗洗劫了这座城市两个星期。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们拷打囚犯以获取黄金和贵重物品的藏匿地点。",
+      "text_markdown": "他们拷打囚犯以获取黄金和贵重物品的藏匿地点。",
+      "tts": {
+        "text": "他们拷打囚犯以获取黄金和贵重物品的藏匿地点。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波多韦洛的总战利品数量惊人。",
+      "text_markdown": "波多韦洛的总战利品数量惊人。",
+      "tts": {
+        "text": "波多韦洛的总战利品数量惊人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "历史学家估计收获超过250,000比索。",
+      "text_markdown": "历史学家估计收获超过250,000比索。",
+      "tts": {
+        "text": "历史学家估计收获超过二十五万比索。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每个普通水手获得的份额相当于数年的正当工资。",
+      "text_markdown": "每个普通水手获得的份额相当于数年的正当工资。",
+      "tts": {
+        "text": "每个普通水手获得的份额相当于数年的正当工资。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根以英雄的身份回到皇家港。",
+      "text_markdown": "摩根以英雄的身份回到皇家港。",
+      "tts": {
+        "text": "摩根以英雄的身份回到皇家港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波多韦洛突袭的成功吸引了数百人投奔摩根的旗帜。",
+      "text_markdown": "波多韦洛突袭的成功吸引了数百人投奔摩根的旗帜。",
+      "tts": {
+        "text": "波多韦洛突袭的成功吸引了数百人投奔摩根的旗帜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "来自加勒比海各地的海盗都想跟随这位攻克了不可攻克之城的人出海。",
+      "text_markdown": "来自加勒比海各地的海盗都想跟随这位攻克了不可攻克之城的人出海。",
+      "tts": {
+        "text": "来自加勒比海各地的海盗都想跟随这位攻克了不可攻克之城的人出海。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1669年初，摩根再次出征，这次的目标是马拉开波。",
+      "text_markdown": "1669年初，摩根再次出征，这次的目标是马拉开波。",
+      "tts": {
+        "text": "一六六九年初，摩根再次出征，这次的目标是马拉开波。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "马拉开波是今天委内瑞拉马拉开波湖畔的一座富裕贸易城镇。",
+      "text_markdown": "马拉开波是今天委内瑞拉马拉开波湖畔的一座富裕贸易城镇。",
+      "tts": {
+        "text": "马拉开波是今天委内瑞拉马拉开波湖畔的一座富裕贸易城镇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "要到达该城，摩根的舰队必须通过一条由要塞守卫的狭窄水道。",
+      "text_markdown": "要到达该城，摩根的舰队必须通过一条由要塞守卫的狭窄水道。",
+      "tts": {
+        "text": "要到达该城，摩根的舰队必须通过一条由要塞守卫的狭窄水道。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海盗们冲进要塞，发现它已被遗弃。",
+      "text_markdown": "海盗们冲进要塞，发现它已被遗弃。",
+      "tts": {
+        "text": "海盗们冲进要塞，发现它已被遗弃。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西班牙驻军已经逃走，留下了装填好的大炮。",
+      "text_markdown": "西班牙驻军已经逃走，留下了装填好的大炮。",
+      "tts": {
+        "text": "西班牙驻军已经逃走，留下了装填好的大炮。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根的人进入马拉开波，发现它几乎空无一人。",
+      "text_markdown": "摩根的人进入马拉开波，发现它几乎空无一人。",
+      "tts": {
+        "text": "摩根的人进入马拉开波，发现它几乎空无一人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "居民们带着贵重物品逃入了周围的乡村。",
+      "text_markdown": "居民们带着贵重物品逃入了周围的乡村。",
+      "tts": {
+        "text": "居民们带着贵重物品逃入了周围的乡村。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根派出突击队追踪他们。",
+      "text_markdown": "摩根派出突击队追踪他们。",
+      "tts": {
+        "text": "摩根派出突击队追踪他们。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗们花了数周时间搜寻隐藏的宝藏。",
+      "text_markdown": "海盗们花了数周时间搜寻隐藏的宝藏。",
+      "tts": {
+        "text": "海盗们花了数周时间搜寻隐藏的宝藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们用酷刑从被俘平民口中套取信息。",
+      "text_markdown": "他们用酷刑从被俘平民口中套取信息。",
+      "tts": {
+        "text": "他们用酷刑从被俘平民口中套取信息。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些手段即使以那个时代的残酷标准来看也是野蛮的。",
+      "text_markdown": "这些手段即使以那个时代的残酷标准来看也是野蛮的。",
+      "tts": {
+        "text": "这些手段即使以那个时代的残酷标准来看也是野蛮的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当摩根试图离开马拉开波时，发现水道被封锁了。",
+      "text_markdown": "当摩根试图离开马拉开波时，发现水道被封锁了。",
+      "tts": {
+        "text": "当摩根试图离开马拉开波时，发现水道被封锁了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三艘西班牙军舰已经抵达并重新占领了要塞。",
+      "text_markdown": "三艘西班牙军舰已经抵达并重新占领了要塞。",
+      "tts": {
+        "text": "三艘西班牙军舰已经抵达并重新占领了要塞。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根和他的整支舰队被困在湖内。",
+      "text_markdown": "摩根和他的整支舰队被困在湖内。",
+      "tts": {
+        "text": "摩根和他的整支舰队被困在湖内。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙海军上将给摩根送去一封信，要求投降。",
+      "text_markdown": "西班牙海军上将给摩根送去一封信，要求投降。",
+      "tts": {
+        "text": "西班牙海军上将给摩根送去一封信，要求投降。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他承诺如果海盗们归还全部战利品，就保证安全通行。",
+      "text_markdown": "他承诺如果海盗们归还全部战利品，就保证安全通行。",
+      "tts": {
+        "text": "他承诺如果海盗们归还全部战利品，就保证安全通行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根拒绝了。",
+      "text_markdown": "摩根拒绝了。",
+      "tts": {
+        "text": "摩根拒绝了。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "相反，摩根想出了一个绝妙的逃脱计划。",
+      "text_markdown": "相反，摩根想出了一个绝妙的逃脱计划。",
+      "tts": {
+        "text": "相反，摩根想出了一个绝妙的逃脱计划。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他派出一艘装满炸药的火船直冲西班牙旗舰。",
+      "text_markdown": "他派出一艘装满炸药的火船直冲西班牙旗舰。",
+      "tts": {
+        "text": "他派出一艘装满炸药的火船直冲西班牙旗舰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "旗舰爆炸沉没。",
+      "text_markdown": "旗舰爆炸沉没。",
+      "tts": {
+        "text": "旗舰爆炸沉没。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第二艘西班牙船搁浅并被俘获。",
+      "text_markdown": "第二艘西班牙船搁浅并被俘获。",
+      "tts": {
+        "text": "第二艘西班牙船搁浅并被俘获。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "第三艘撤退到要塞炮火的掩护下。",
+      "text_markdown": "第三艘撤退到要塞炮火的掩护下。",
+      "tts": {
+        "text": "第三艘撤退到要塞炮火的掩护下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后摩根用一个简单的骗局愚弄了要塞指挥官。",
+      "text_markdown": "然后摩根用一个简单的骗局愚弄了要塞指挥官。",
+      "tts": {
+        "text": "然后摩根用一个简单的骗局愚弄了要塞指挥官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他派满载人员的小船向岸边驶去，仿佛在准备陆上进攻。",
+      "text_markdown": "他派满载人员的小船向岸边驶去，仿佛在准备陆上进攻。",
+      "tts": {
+        "text": "他派满载人员的小船向岸边驶去，仿佛在准备陆上进攻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那些人藏在船底，被悄悄划了回来。",
+      "text_markdown": "那些人藏在船底，被悄悄划了回来。",
+      "tts": {
+        "text": "那些人藏在船底，被悄悄划了回来。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙指挥官将大炮移向要塞的陆地一侧。",
+      "text_markdown": "西班牙指挥官将大炮移向要塞的陆地一侧。",
+      "tts": {
+        "text": "西班牙指挥官将大炮移向要塞的陆地一侧。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "当晚，摩根率舰队从无防备的海面城墙旁驶过。",
+      "text_markdown": "当晚，摩根率舰队从无防备的海面城墙旁驶过。",
+      "tts": {
+        "text": "当晚，摩根率舰队从无防备的海面城墙旁驶过。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到了早晨，海盗们已安全驶入大海。",
+      "text_markdown": "到了早晨，海盗们已安全驶入大海。",
+      "tts": {
+        "text": "到了早晨，海盗们已安全驶入大海。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "马拉开波突袭确认了摩根作为在世最伟大海盗指挥官的声誉。",
+      "text_markdown": "马拉开波突袭确认了摩根作为在世最伟大海盗指挥官的声誉。",
+      "tts": {
+        "text": "马拉开波突袭确认了摩根作为在世最伟大海盗指挥官的声誉。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他狡猾、无情，看似不可阻挡。",
+      "text_markdown": "他狡猾、无情，看似不可阻挡。",
+      "tts": {
+        "text": "他狡猾、无情，看似不可阻挡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "撼动帝国的突袭",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的下一个目标将是有史以来最大胆的。",
+      "text_markdown": "他的下一个目标将是有史以来最大胆的。",
+      "tts": {
+        "text": "他的下一个目标将是有史以来最大胆的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "洗劫巴拿马",
+      "text_markdown": "洗劫巴拿马"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1670年，摩根开始策划他职业生涯中最雄心勃勃的突袭。",
+      "text_markdown": "1670年，摩根开始策划他职业生涯中最雄心勃勃的突袭。",
+      "tts": {
+        "text": "一六七零年，摩根开始策划他职业生涯中最雄心勃勃的突袭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的目标是巴拿马城，整个美洲最富有的城市。",
+      "text_markdown": "他的目标是巴拿马城，整个美洲最富有的城市。",
+      "tts": {
+        "text": "他的目标是巴拿马城，整个美洲最富有的城市。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴拿马城坐落在巴拿马地峡的太平洋海岸。",
+      "text_markdown": "巴拿马城坐落在巴拿马地峡的太平洋海岸。",
+      "tts": {
+        "text": "巴拿马城坐落在巴拿马地峡的太平洋海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "来自秘鲁的所有白银和黄金都经此运往西班牙。",
+      "text_markdown": "来自秘鲁的所有白银和黄金都经此运往西班牙。",
+      "tts": {
+        "text": "来自秘鲁的所有白银和黄金都经此运往西班牙。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这座城市居住着数千人，拥有新世界最精美的建筑。",
+      "text_markdown": "这座城市居住着数千人，拥有新世界最精美的建筑。",
+      "tts": {
+        "text": "这座城市居住着数千人，拥有新世界最精美的建筑。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴拿马城有宏伟的教堂、石头仓库和一座带高钟楼的大教堂。",
+      "text_markdown": "巴拿马城有宏伟的教堂、石头仓库和一座带高钟楼的大教堂。",
+      "tts": {
+        "text": "巴拿马城有宏伟的教堂、石头仓库和一座带高钟楼的大教堂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "富商们住在铺瓦屋顶和铁栏杆阳台的房子里。",
+      "text_markdown": "富商们住在铺瓦屋顶和铁栏杆阳台的房子里。",
+      "tts": {
+        "text": "富商们住在铺瓦屋顶和铁栏杆阳台的房子里。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是西班牙太平洋帝国的明珠。",
+      "text_markdown": "它是西班牙太平洋帝国的明珠。",
+      "tts": {
+        "text": "它是西班牙太平洋帝国的明珠。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "要到达巴拿马城，摩根必须步行穿越整个地峡。",
+      "text_markdown": "要到达巴拿马城，摩根必须步行穿越整个地峡。",
+      "tts": {
+        "text": "要到达巴拿马城，摩根必须步行穿越整个地峡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这段旅程意味着要在茂密的热带丛林中开路数天。",
+      "text_markdown": "这段旅程意味着要在茂密的热带丛林中开路数天。",
+      "tts": {
+        "text": "这段旅程意味着要在茂密的热带丛林中开路数天。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从来没有任何海盗部队尝试过如此危险的行动。",
+      "text_markdown": "从来没有任何海盗部队尝试过如此危险的行动。",
+      "tts": {
+        "text": "从来没有任何海盗部队尝试过如此危险的行动。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根集结了有史以来最大的海盗军队。",
+      "text_markdown": "摩根集结了有史以来最大的海盗军队。",
+      "tts": {
+        "text": "摩根集结了有史以来最大的海盗军队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "超过1,800人加入了他，乘坐36艘船组成的舰队。",
+      "text_markdown": "超过1,800人加入了他，乘坐36艘船组成的舰队。",
+      "tts": {
+        "text": "超过一千八百人加入了他，乘坐三十六艘船组成的舰队。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们于1670年12月在普罗维登斯岛集结。",
+      "text_markdown": "他们于1670年12月在普罗维登斯岛集结。",
+      "tts": {
+        "text": "他们于一六七零年十二月在普罗维登斯岛集结。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第一步是夺取查格雷斯河口的圣洛伦佐要塞。",
+      "text_markdown": "第一步是夺取查格雷斯河口的圣洛伦佐要塞。",
+      "tts": {
+        "text": "第一步是夺取查格雷斯河口的圣洛伦佐要塞。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这座要塞守卫着通往巴拿马内陆的河流路线。",
+      "text_markdown": "这座要塞守卫着通往巴拿马内陆的河流路线。",
+      "tts": {
+        "text": "这座要塞守卫着通往巴拿马内陆的河流路线。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根派出400人的先锋队去夺取要塞。",
+      "text_markdown": "摩根派出400人的先锋队去夺取要塞。",
+      "tts": {
+        "text": "摩根派出四百人的先锋队去夺取要塞。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "进攻非常猛烈。",
+      "text_markdown": "进攻非常猛烈。",
+      "tts": {
+        "text": "进攻非常猛烈。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海盗们用手榴弹和云梯攻击城墙。",
+      "text_markdown": "海盗们用手榴弹和云梯攻击城墙。",
+      "tts": {
+        "text": "海盗们用手榴弹和云梯攻击城墙。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战斗中，一名海盗被箭射中。",
+      "text_markdown": "战斗中，一名海盗被箭射中。",
+      "tts": {
+        "text": "战斗中，一名海盗被箭射中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他把箭从身上拔出来，裹上棉花，从火枪中射了回去。",
+      "text_markdown": "他把箭从身上拔出来，裹上棉花，从火枪中射了回去。",
+      "tts": {
+        "text": "他把箭从身上拔出来，裹上棉花，从火枪中射了回去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "燃烧的箭点燃了要塞的茅草屋顶。",
+      "text_markdown": "燃烧的箭点燃了要塞的茅草屋顶。",
+      "tts": {
+        "text": "燃烧的箭点燃了要塞的茅草屋顶。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火势迅速蔓延到要塞内的木质建筑。",
+      "text_markdown": "火势迅速蔓延到要塞内的木质建筑。",
+      "tts": {
+        "text": "火势迅速蔓延到要塞内的木质建筑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "火药库爆炸，炸死了数十名西班牙守军。",
+      "text_markdown": "火药库爆炸，炸死了数十名西班牙守军。",
+      "tts": {
+        "text": "火药库爆炸，炸死了数十名西班牙守军。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到了早晨，要塞落入海盗手中。",
+      "text_markdown": "到了早晨，要塞落入海盗手中。",
+      "tts": {
+        "text": "到了早晨，要塞落入海盗手中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后摩根率领主力部队乘独木舟沿查格雷斯河而上。",
+      "text_markdown": "然后摩根率领主力部队乘独木舟沿查格雷斯河而上。",
+      "tts": {
+        "text": "然后摩根率领主力部队乘独木舟沿查格雷斯河而上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这段旅程耗时九天，穿越了地球上最艰难的地形。",
+      "text_markdown": "这段旅程耗时九天，穿越了地球上最艰难的地形。",
+      "tts": {
+        "text": "这段旅程耗时九天，穿越了地球上最艰难的地形。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第三天，人们的食物就耗尽了。",
+      "text_markdown": "第三天，人们的食物就耗尽了。",
+      "tts": {
+        "text": "第三天，人们的食物就耗尽了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们吃皮革背包，煮靴子，嚼树叶。",
+      "text_markdown": "他们吃皮革背包，煮靴子，嚼树叶。",
+      "tts": {
+        "text": "他们吃皮革背包，煮靴子，嚼树叶。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一些人因饥饿而倒下，不得不由同伴们抬着走。",
+      "text_markdown": "一些人因饥饿而倒下，不得不由同伴们抬着走。",
+      "tts": {
+        "text": "一些人因饥饿而倒下，不得不由同伴们抬着走。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当他们终于到达地峡的太平洋一侧时，人们欢呼起来。",
+      "text_markdown": "当他们终于到达地峡的太平洋一侧时，人们欢呼起来。",
+      "tts": {
+        "text": "当他们终于到达地峡的太平洋一侧时，人们欢呼起来。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们能看到远处巴拿马城的塔楼。",
+      "text_markdown": "他们能看到远处巴拿马城的塔楼。",
+      "tts": {
+        "text": "他们能看到远处巴拿马城的塔楼。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙总督集结了约2,600人的部队来保卫城市。",
+      "text_markdown": "西班牙总督集结了约2,600人的部队来保卫城市。",
+      "tts": {
+        "text": "西班牙总督集结了约两千六百人的部队来保卫城市。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他还带来了两群野牛，计划用它们冲击海盗的队伍。",
+      "text_markdown": "他还带来了两群野牛，计划用它们冲击海盗的队伍。",
+      "tts": {
+        "text": "他还带来了两群野牛，计划用它们冲击海盗的队伍。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴拿马战役发生在1671年1月28日。",
+      "text_markdown": "巴拿马战役发生在1671年1月28日。",
+      "tts": {
+        "text": "巴拿马战役发生在一六七一年一月二十八日。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根将部下部署在城墙外的开阔地上。",
+      "text_markdown": "摩根将部下部署在城墙外的开阔地上。",
+      "tts": {
+        "text": "摩根将部下部署在城墙外的开阔地上。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙骑兵率先冲锋，但海盗们稳住了阵脚。",
+      "text_markdown": "西班牙骑兵率先冲锋，但海盗们稳住了阵脚。",
+      "tts": {
+        "text": "西班牙骑兵率先冲锋，但海盗们稳住了阵脚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们的火枪在近距离内威力惊人。",
+      "text_markdown": "他们的火枪在近距离内威力惊人。",
+      "tts": {
+        "text": "他们的火枪在近距离内威力惊人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "骑兵在几分钟内被消灭殆尽。",
+      "text_markdown": "骑兵在几分钟内被消灭殆尽。",
+      "tts": {
+        "text": "骑兵在几分钟内被消灭殆尽。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "野牛被放出来了，但它们朝错误的方向狂奔。",
+      "text_markdown": "野牛被放出来了，但它们朝错误的方向狂奔。",
+      "tts": {
+        "text": "野牛被放出来了，但它们朝错误的方向狂奔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一些牛冲回了西班牙人的阵线，加剧了混乱。",
+      "text_markdown": "一些牛冲回了西班牙人的阵线，加剧了混乱。",
+      "tts": {
+        "text": "一些牛冲回了西班牙人的阵线，加剧了混乱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "西班牙步兵崩溃，向城内逃去。",
+      "text_markdown": "西班牙步兵崩溃，向城内逃去。",
+      "tts": {
+        "text": "西班牙步兵崩溃，向城内逃去。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根的海盗穿过街道追击他们。",
+      "text_markdown": "摩根的海盗穿过街道追击他们。",
+      "tts": {
+        "text": "摩根的海盗穿过街道追击他们。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多地方的战斗野蛮而短兵相接。",
+      "text_markdown": "许多地方的战斗野蛮而短兵相接。",
+      "tts": {
+        "text": "许多地方的战斗野蛮而短兵相接。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在战斗期间或战后不久，巴拿马城燃起了大火。",
+      "text_markdown": "在战斗期间或战后不久，巴拿马城燃起了大火。",
+      "tts": {
+        "text": "在战斗期间或战后不久，巴拿马城燃起了大火。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "是摩根的人还是西班牙守军点燃的仍有争议。",
+      "text_markdown": "是摩根的人还是西班牙守军点燃的仍有争议。",
+      "tts": {
+        "text": "是摩根的人还是西班牙守军点燃的仍有争议。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大火在数小时内摧毁了城市的大部分。",
+      "text_markdown": "大火在数小时内摧毁了城市的大部分。",
+      "tts": {
+        "text": "大火在数小时内摧毁了城市的大部分。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海盗们花了四个星期在废墟中搜寻宝藏。",
+      "text_markdown": "海盗们花了四个星期在废墟中搜寻宝藏。",
+      "tts": {
+        "text": "海盗们花了四个星期在废墟中搜寻宝藏。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们审讯囚犯，翻挖瓦砾。",
+      "text_markdown": "他们审讯囚犯，翻挖瓦砾。",
+      "tts": {
+        "text": "他们审讯囚犯，翻挖瓦砾。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "城市的大部分财富在战斗前已被装上船运往南方。",
+      "text_markdown": "城市的大部分财富在战斗前已被装上船运往南方。",
+      "tts": {
+        "text": "城市的大部分财富在战斗前已被装上船运往南方。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "战利品比人们预期的要少。",
+      "text_markdown": "战利品比人们预期的要少。",
+      "tts": {
+        "text": "战利品比人们预期的要少。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "分配时，每人得到的远不如在波多韦洛挣得的多。",
+      "text_markdown": "分配时，每人得到的远不如在波多韦洛挣得的多。",
+      "tts": {
+        "text": "分配时，每人得到的远不如在波多韦洛挣得的多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "许多人指责摩根私藏了宝藏。",
+      "text_markdown": "许多人指责摩根私藏了宝藏。",
+      "tts": {
+        "text": "许多人指责摩根私藏了宝藏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根否认了这些指控，但抱怨从未停止。",
+      "text_markdown": "摩根否认了这些指控，但抱怨从未停止。",
+      "tts": {
+        "text": "摩根否认了这些指控，但抱怨从未停止。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他率军穿越地峡返回加勒比海岸。",
+      "text_markdown": "他率军穿越地峡返回加勒比海岸。",
+      "tts": {
+        "text": "他率军穿越地峡返回加勒比海岸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根不知道的是，英格兰和西班牙之间已经签署了和平条约。",
+      "text_markdown": "摩根不知道的是，英格兰和西班牙之间已经签署了和平条约。",
+      "tts": {
+        "text": "摩根不知道的是，英格兰和西班牙之间已经签署了和平条约。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "《马德里条约》于1670年7月达成，比巴拿马突袭早了数月。",
+      "text_markdown": "《马德里条约》于1670年7月达成，比巴拿马突袭早了数月。",
+      "tts": {
+        "text": "《马德里条约》于一六七零年七月达成，比巴拿马突袭早了数月。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "根据条约条款，两国同意停止攻击对方的殖民地。",
+      "text_markdown": "根据条约条款，两国同意停止攻击对方的殖民地。",
+      "tts": {
+        "text": "根据条约条款，两国同意停止攻击对方的殖民地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴拿马城的毁灭引发了一场外交危机。",
+      "text_markdown": "巴拿马城的毁灭引发了一场外交危机。",
+      "tts": {
+        "text": "巴拿马城的毁灭引发了一场外交危机。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙怒不可遏，要求英格兰惩罚责任人。",
+      "text_markdown": "西班牙怒不可遏，要求英格兰惩罚责任人。",
+      "tts": {
+        "text": "西班牙怒不可遏，要求英格兰惩罚责任人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "洗劫巴拿马",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "洗劫巴拿马是对新条约可以想象的最严重的违反。",
+      "text_markdown": "洗劫巴拿马是对新条约可以想象的最严重的违反。",
+      "tts": {
+        "text": "洗劫巴拿马是对新条约可以想象的最严重的违反。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "从海盗到总督",
+      "text_markdown": "从海盗到总督"
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "英格兰政府需要平息西班牙的愤怒。",
+      "text_markdown": "英格兰政府需要平息西班牙的愤怒。",
+      "tts": {
+        "text": "英格兰政府需要平息西班牙的愤怒。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1672年，莫迪福德总督和亨利·摩根都被召回伦敦。",
+      "text_markdown": "1672年，莫迪福德总督和亨利·摩根都被召回伦敦。",
+      "tts": {
+        "text": "一六七二年，莫迪福德总督和亨利·摩根都被召回伦敦。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "莫迪福德被关进伦敦塔作为象征性惩罚。",
+      "text_markdown": "莫迪福德被关进伦敦塔作为象征性惩罚。",
+      "tts": {
+        "text": "莫迪福德被关进伦敦塔作为象征性惩罚。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根到达英格兰时以为自己会被审判。",
+      "text_markdown": "摩根到达英格兰时以为自己会被审判。",
+      "tts": {
+        "text": "摩根到达英格兰时以为自己会被审判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "相反，他发现自己更像是被当作名人而非罪犯对待。",
+      "text_markdown": "相反，他发现自己更像是被当作名人而非罪犯对待。",
+      "tts": {
+        "text": "相反，他发现自己更像是被当作名人而非罪犯对待。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "查理二世国王私下对摩根的功绩感到欣喜。",
+      "text_markdown": "查理二世国王私下对摩根的功绩感到欣喜。",
+      "tts": {
+        "text": "查理二世国王私下对摩根的功绩感到欣喜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "洗劫巴拿马令西班牙蒙羞，展示了英格兰在加勒比海的实力。",
+      "text_markdown": "洗劫巴拿马令西班牙蒙羞，展示了英格兰在加勒比海的实力。",
+      "tts": {
+        "text": "洗劫巴拿马令西班牙蒙羞，展示了英格兰在加勒比海的实力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些是国王所欢迎的结果，即使他不能公开表态。",
+      "text_markdown": "这些是国王所欢迎的结果，即使他不能公开表态。",
+      "tts": {
+        "text": "这些是国王所欢迎的结果，即使他不能公开表态。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根在伦敦度过了近三年时间。",
+      "text_markdown": "摩根在伦敦度过了近三年时间。",
+      "tts": {
+        "text": "摩根在伦敦度过了近三年时间。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他与贵族共进晚餐，为政府提供加勒比事务的建议，生活舒适。",
+      "text_markdown": "他与贵族共进晚餐，为政府提供加勒比事务的建议，生活舒适。",
+      "tts": {
+        "text": "他与贵族共进晚餐，为政府提供加勒比事务的建议，生活舒适。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他成为首都咖啡馆和沙龙中的常客。",
+      "text_markdown": "他成为首都咖啡馆和沙龙中的常客。",
+      "tts": {
+        "text": "他成为首都咖啡馆和沙龙中的常客。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1674年，查理国王做出了一个令人震惊的决定。",
+      "text_markdown": "1674年，查理国王做出了一个令人震惊的决定。",
+      "tts": {
+        "text": "一六七四年，查理国王做出了一个令人震惊的决定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他册封亨利·摩根为骑士，使其成为亨利·摩根爵士。",
+      "text_markdown": "他册封亨利·摩根为骑士，使其成为亨利·摩根爵士。",
+      "tts": {
+        "text": "他册封亨利·摩根为骑士，使其成为亨利·摩根爵士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "然后任命摩根为牙买加副总督。",
+      "text_markdown": "然后任命摩根为牙买加副总督。",
+      "tts": {
+        "text": "然后任命摩根为牙买加副总督。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个违反和平条约洗劫巴拿马城的人现在被派回去治理牙买加了。",
+      "text_markdown": "这个违反和平条约洗劫巴拿马城的人现在被派回去治理牙买加了。",
+      "tts": {
+        "text": "这个违反和平条约洗劫巴拿马城的人现在被派回去治理牙买加了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是殖民史上最非凡的命运逆转之一。",
+      "text_markdown": "这是殖民史上最非凡的命运逆转之一。",
+      "tts": {
+        "text": "这是殖民史上最非凡的命运逆转之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根于1676年返回牙买加，开始履行新职责。",
+      "text_markdown": "摩根于1676年返回牙买加，开始履行新职责。",
+      "tts": {
+        "text": "摩根于一六七六年返回牙买加，开始履行新职责。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的职责是在新总督沃恩勋爵麾下任职。",
+      "text_markdown": "他的职责是在新总督沃恩勋爵麾下任职。",
+      "tts": {
+        "text": "他的职责是在新总督沃恩勋爵麾下任职。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "具有讽刺意味的是，摩根的任务之一是打击海盗。",
+      "text_markdown": "具有讽刺意味的是，摩根的任务之一是打击海盗。",
+      "tts": {
+        "text": "具有讽刺意味的是，摩根的任务之一是打击海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英格兰现在想要与西班牙和平相处，海盗已不再有用。",
+      "text_markdown": "英格兰现在想要与西班牙和平相处，海盗已不再有用。",
+      "tts": {
+        "text": "英格兰现在想要与西班牙和平相处，海盗已不再有用。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根被期望管束他的昔日战友。",
+      "text_markdown": "摩根被期望管束他的昔日战友。",
+      "tts": {
+        "text": "摩根被期望管束他的昔日战友。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他以参差不齐的热情执行了这项任务。",
+      "text_markdown": "他以参差不齐的热情执行了这项任务。",
+      "tts": {
+        "text": "他以参差不齐的热情执行了这项任务。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他逮捕了一些海盗，绞死了几个，但也被指控暗中帮助其他人。",
+      "text_markdown": "他逮捕了一些海盗，绞死了几个，但也被指控暗中帮助其他人。",
+      "tts": {
+        "text": "他逮捕了一些海盗，绞死了几个，但也被指控暗中帮助其他人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的忠诚始终很复杂。",
+      "text_markdown": "他的忠诚始终很复杂。",
+      "tts": {
+        "text": "他的忠诚始终很复杂。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沃恩勋爵和摩根经常发生冲突。",
+      "text_markdown": "沃恩勋爵和摩根经常发生冲突。",
+      "tts": {
+        "text": "沃恩勋爵和摩根经常发生冲突。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "沃恩认为摩根粗鲁且不可信赖。",
+      "text_markdown": "沃恩认为摩根粗鲁且不可信赖。",
+      "tts": {
+        "text": "沃恩认为摩根粗鲁且不可信赖。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根认为沃恩是一个不了解加勒比现实的软弱领导者。",
+      "text_markdown": "摩根认为沃恩是一个不了解加勒比现实的软弱领导者。",
+      "tts": {
+        "text": "摩根认为沃恩是一个不了解加勒比现实的软弱领导者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随着岁月流逝，摩根过上了富有的牙买加种植园主的生活。",
+      "text_markdown": "随着岁月流逝，摩根过上了富有的牙买加种植园主的生活。",
+      "tts": {
+        "text": "随着岁月流逝，摩根过上了富有的牙买加种植园主的生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他拥有几处大庄园和数百名被奴役的劳工。",
+      "text_markdown": "他拥有几处大庄园和数百名被奴役的劳工。",
+      "tts": {
+        "text": "他拥有几处大庄园和数百名被奴役的劳工。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他也酗酒严重。",
+      "text_markdown": "他也酗酒严重。",
+      "tts": {
+        "text": "他也酗酒严重。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "访客描述他面色发红、身体臃肿，且经常生病。",
+      "text_markdown": "访客描述他面色发红、身体臃肿，且经常生病。",
+      "tts": {
+        "text": "访客描述他面色发红、身体臃肿，且经常生病。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的健康在整个十七世纪八十年代持续恶化。",
+      "text_markdown": "他的健康在整个十七世纪八十年代持续恶化。",
+      "tts": {
+        "text": "他的健康在整个十七世纪八十年代持续恶化。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1683年，他被新总督从牙买加议会中撤职。",
+      "text_markdown": "1683年，他被新总督从牙买加议会中撤职。",
+      "tts": {
+        "text": "一六八三年，他被新总督从牙买加议会中撤职。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "摩根被指控对海盗过于同情，且常常醉得无法治理。",
+      "text_markdown": "摩根被指控对海盗过于同情，且常常醉得无法治理。",
+      "tts": {
+        "text": "摩根被指控对海盗过于同情，且常常醉得无法治理。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在庄园中度过了最后的岁月，基本远离公共生活。",
+      "text_markdown": "他在庄园中度过了最后的岁月，基本远离公共生活。",
+      "tts": {
+        "text": "他在庄园中度过了最后的岁月，基本远离公共生活。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一位名叫汉斯·斯隆的医生在他最后几个月探望了他。",
+      "text_markdown": "一位名叫汉斯·斯隆的医生在他最后几个月探望了他。",
+      "tts": {
+        "text": "一位名叫汉斯·斯隆的医生在他最后几个月探望了他。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "斯隆描述摩根身体消瘦、皮肤发黄，这是肝功能衰竭的明显征兆。",
+      "text_markdown": "斯隆描述摩根身体消瘦、皮肤发黄，这是肝功能衰竭的明显征兆。",
+      "tts": {
+        "text": "斯隆描述摩根身体消瘦、皮肤发黄，这是肝功能衰竭的明显征兆。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·摩根于1688年8月25日去世，享年53岁。",
+      "text_markdown": "亨利·摩根于1688年8月25日去世，享年53岁。",
+      "tts": {
+        "text": "亨利·摩根于一六八八年八月二十五日去世，享年五十三岁。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "死因几乎可以肯定是多年酗酒引起的肝病。",
+      "text_markdown": "死因几乎可以肯定是多年酗酒引起的肝病。",
+      "tts": {
+        "text": "死因几乎可以肯定是多年酗酒引起的肝病。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他在皇家港举行了国葬。",
+      "text_markdown": "他在皇家港举行了国葬。",
+      "tts": {
+        "text": "他在皇家港举行了国葬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "港口的船只鸣炮致敬。",
+      "text_markdown": "港口的船只鸣炮致敬。",
+      "tts": {
+        "text": "港口的船只鸣炮致敬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他被安葬在帕利萨多斯面朝大海的墓地。",
+      "text_markdown": "他被安葬在帕利萨多斯面朝大海的墓地。",
+      "tts": {
+        "text": "他被安葬在帕利萨多斯面朝大海的墓地。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四年后的1692年，一场大地震摧毁了皇家港。",
+      "text_markdown": "四年后的1692年，一场大地震摧毁了皇家港。",
+      "tts": {
+        "text": "四年后的一六九二年，一场大地震摧毁了皇家港。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三分之二的城市滑入了大海。",
+      "text_markdown": "三分之二的城市滑入了大海。",
+      "tts": {
+        "text": "三分之二的城市滑入了大海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "摩根的坟墓在被海洋吞没的墓地部分之中。",
+      "text_markdown": "摩根的坟墓在被海洋吞没的墓地部分之中。",
+      "tts": {
+        "text": "摩根的坟墓在被海洋吞没的墓地部分之中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他的遗体从未被找到。",
+      "text_markdown": "他的遗体从未被找到。",
+      "tts": {
+        "text": "他的遗体从未被找到。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "从海盗到总督",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地球上最邪恶的城市，以及以此为家的最著名海盗，都消失在了波涛之下。",
+      "text_markdown": "地球上最邪恶的城市，以及以此为家的最著名海盗，都消失在了波涛之下。",
+      "tts": {
+        "text": "地球上最邪恶的城市，以及以此为家的最著名海盗，都消失在了波涛之下。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "摩根船长的传奇",
+      "text_markdown": "摩根船长的传奇"
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·摩根的故事被讲述和重述了三百多年。",
+      "text_markdown": "亨利·摩根的故事被讲述和重述了三百多年。",
+      "tts": {
+        "text": "亨利·摩根的故事被讲述和重述了三百多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是历史上最著名的海盗之一，尽管他始终坚称自己根本不是海盗。",
+      "text_markdown": "他是历史上最著名的海盗之一，尽管他始终坚称自己根本不是海盗。",
+      "tts": {
+        "text": "他是历史上最著名的海盗之一，尽管他始终坚称自己根本不是海盗。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在他有生之年，摩根就已成为传奇。",
+      "text_markdown": "在他有生之年，摩根就已成为传奇。",
+      "tts": {
+        "text": "在他有生之年，摩根就已成为传奇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一位名叫亚历山大·埃克斯克梅林的荷兰作家于1678年出版了关于摩根突袭的记述。",
+      "text_markdown": "一位名叫亚历山大·埃克斯克梅林的荷兰作家于1678年出版了关于摩根突袭的记述。",
+      "tts": {
+        "text": "一位名叫亚历山大·埃克斯克梅林的荷兰作家于一六七八年出版了关于摩根突袭的记述。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这本书名为《美洲海盗》。",
+      "text_markdown": "这本书名为《美洲海盗》。",
+      "tts": {
+        "text": "这本书名为《美洲海盗》。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "埃克斯克梅林曾在摩根手下服役，亲眼目睹了他所描述的许多事件。",
+      "text_markdown": "埃克斯克梅林曾在摩根手下服役，亲眼目睹了他所描述的许多事件。",
+      "tts": {
+        "text": "埃克斯克梅林曾在摩根手下服役，亲眼目睹了他所描述的许多事件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他的书在欧洲各地成为畅销书。",
+      "text_markdown": "他的书在欧洲各地成为畅销书。",
+      "tts": {
+        "text": "他的书在欧洲各地成为畅销书。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它塑造了几个世纪以来人们对加勒比海盗的大众形象。",
+      "text_markdown": "它塑造了几个世纪以来人们对加勒比海盗的大众形象。",
+      "tts": {
+        "text": "它塑造了几个世纪以来人们对加勒比海盗的大众形象。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根起诉了英格兰出版商，因其声称他曾是契约仆人。",
+      "text_markdown": "摩根起诉了英格兰出版商，因其声称他曾是契约仆人。",
+      "tts": {
+        "text": "摩根起诉了英格兰出版商，因其声称他曾是契约仆人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他赢了官司并获得赔偿，但这本书继续畅销。",
+      "text_markdown": "他赢了官司并获得赔偿，但这本书继续畅销。",
+      "tts": {
+        "text": "他赢了官司并获得赔偿，但这本书继续畅销。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根的遗产很复杂。",
+      "text_markdown": "摩根的遗产很复杂。",
+      "tts": {
+        "text": "摩根的遗产很复杂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对英格兰人来说，他是保护牙买加、羞辱西班牙的民族英雄。",
+      "text_markdown": "对英格兰人来说，他是保护牙买加、羞辱西班牙的民族英雄。",
+      "tts": {
+        "text": "对英格兰人来说，他是保护牙买加、羞辱西班牙的民族英雄。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p114",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对西班牙人来说，他是焚烧城市、拷打无辜者的战争罪犯。",
+      "text_markdown": "对西班牙人来说，他是焚烧城市、拷打无辜者的战争罪犯。",
+      "tts": {
+        "text": "对西班牙人来说，他是焚烧城市、拷打无辜者的战争罪犯。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现代历史学家视他为时代的产物。",
+      "text_markdown": "现代历史学家视他为时代的产物。",
+      "tts": {
+        "text": "现代历史学家视他为时代的产物。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他所施加的暴力是极端的，但得到了政府的全力支持。",
+      "text_markdown": "他所施加的暴力是极端的，但得到了政府的全力支持。",
+      "tts": {
+        "text": "他所施加的暴力是极端的，但得到了政府的全力支持。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "摩根在残暴方面并非独一无二。",
+      "text_markdown": "摩根在残暴方面并非独一无二。",
+      "tts": {
+        "text": "摩根在残暴方面并非独一无二。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西班牙士兵对英格兰定居者也犯下了类似的暴行。",
+      "text_markdown": "西班牙士兵对英格兰定居者也犯下了类似的暴行。",
+      "tts": {
+        "text": "西班牙士兵对英格兰定居者也犯下了类似的暴行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p116",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "区别在于摩根的成功规模如此惊人。",
+      "text_markdown": "区别在于摩根的成功规模如此惊人。",
+      "tts": {
+        "text": "区别在于摩根的成功规模如此惊人。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如今，摩根的名字最广为人知是通过一个朗姆酒品牌。",
+      "text_markdown": "如今，摩根的名字最广为人知是通过一个朗姆酒品牌。",
+      "tts": {
+        "text": "如今，摩根的名字最广为人知是通过一个朗姆酒品牌。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这其中的讽刺意味不言而喻，因为酒精很可能就是杀死他的凶手。",
+      "text_markdown": "这其中的讽刺意味不言而喻，因为酒精很可能就是杀死他的凶手。",
+      "tts": {
+        "text": "这其中的讽刺意味不言而喻，因为酒精很可能就是杀死他的凶手。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "水下考古学家探索了皇家港的沉没遗迹。",
+      "text_markdown": "水下考古学家探索了皇家港的沉没遗迹。",
+      "tts": {
+        "text": "水下考古学家探索了皇家港的沉没遗迹。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p118",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们发现了摩根时代的建筑、酒馆和文物，保存在海底。",
+      "text_markdown": "他们发现了摩根时代的建筑、酒馆和文物，保存在海底。",
+      "tts": {
+        "text": "他们发现了摩根时代的建筑、酒馆和文物，保存在海底。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p118",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但摩根本人的墓地至今仍未找到。",
+      "text_markdown": "但摩根本人的墓地至今仍未找到。",
+      "tts": {
+        "text": "但摩根本人的墓地至今仍未找到。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亨利·摩根生活在一个法律与犯罪之间的界限由权贵为自身利益划定的世界。",
+      "text_markdown": "亨利·摩根生活在一个法律与犯罪之间的界限由权贵为自身利益划定的世界。",
+      "tts": {
+        "text": "亨利·摩根生活在一个法律与犯罪之间的界限由权贵为自身利益划定的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他比任何人都更善于利用那条界限。",
+      "text_markdown": "他比任何人都更善于利用那条界限。",
+      "tts": {
+        "text": "他比任何人都更善于利用那条界限。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他是一个变成骑士的海盗。",
+      "text_markdown": "他是一个变成骑士的海盗。",
+      "tts": {
+        "text": "他是一个变成骑士的海盗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他是一个变成总督的罪犯。",
+      "text_markdown": "他是一个变成总督的罪犯。",
+      "tts": {
+        "text": "他是一个变成总督的罪犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "摩根船长的传奇",
+      "paragraph_id": "p120",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他的故事提醒我们，历史的英雄与恶棍往往是同一批人，只是从不同的海岸望去罢了。",
+      "text_markdown": "他的故事提醒我们，历史的英雄与恶棍往往是同一批人，只是从不同的海岸望去罢了。",
+      "tts": {
+        "text": "他的故事提醒我们，历史的英雄与恶棍往往是同一批人，只是从不同的海岸望去罢了。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

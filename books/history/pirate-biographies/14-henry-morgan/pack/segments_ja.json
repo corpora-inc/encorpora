@@ -1,0 +1,4607 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_morgan",
+  "language": "ja",
+  "total_segments": 308,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのメモ",
+      "text_markdown": "読者へのメモ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはヘンリー・モーガンの物語である。カリブ海の歴史上最も成功した海賊の話だ。",
+      "text_markdown": "これはヘンリー・モーガンの物語である。カリブ海の歴史上最も成功した海賊の話だ。",
+      "tts": {
+        "text": "これはヘンリー・モーガンの物語である。カリブ海の歴史上最も成功した海賊の話だ。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はスペイン帝国の最も裕福な都市を略奪し、それについて罰せられることは一度もなかった。",
+      "text_markdown": "彼はスペイン帝国の最も裕福な都市を略奪し、それについて罰せられることは一度もなかった。",
+      "tts": {
+        "text": "彼はスペイン帝国の最も裕福な都市を略奪し、それについて罰せられることは一度もなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンは海賊行為と愛国心の境界線が意図的に曖昧にされた時代に生きた。",
+      "text_markdown": "モーガンは海賊行為と愛国心の境界線が意図的に曖昧にされた時代に生きた。",
+      "tts": {
+        "text": "モーガンは海賊行為と愛国心の境界線が意図的に曖昧にされた時代に生きた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドは公然と戦争を宣言することなくスペインを弱体化させるために彼のような男たちを利用した。",
+      "text_markdown": "イングランドは公然と戦争を宣言することなくスペインを弱体化させるために彼のような男たちを利用した。",
+      "tts": {
+        "text": "イングランドは公然と戦争を宣言することなくスペインを弱体化させるために彼のような男たちを利用した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は町を襲撃し、都市を焼き払い、隠された金についての情報を得るために囚人を拷問した。",
+      "text_markdown": "彼は町を襲撃し、都市を焼き払い、隠された金についての情報を得るために囚人を拷問した。",
+      "tts": {
+        "text": "彼は町を襲撃し、都市を焼き払い、隠された金についての情報を得るために囚人を拷問した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし彼はヘンリー・モーガン卿、王国の騎士、ジャマイカ副総督として死んだ。",
+      "text_markdown": "しかし彼はヘンリー・モーガン卿、王国の騎士、ジャマイカ副総督として死んだ。",
+      "tts": {
+        "text": "しかし彼はヘンリー・モーガン卿、王国の騎士、ジャマイカ副総督として死んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語は暴力、帝国、そして強大な国家に仕える者に与えられる報酬について難しい問いを投げかける。",
+      "text_markdown": "彼の物語は暴力、帝国、そして強大な国家に仕える者に与えられる報酬について難しい問いを投げかける。",
+      "tts": {
+        "text": "彼の物語は暴力、帝国、そして強大な国家に仕える者に与えられる報酬について難しい問いを投げかける。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここに記された出来事は裁判記録や目撃者の証言を含む歴史的記録に基づいている。",
+      "text_markdown": "ここに記された出来事は裁判記録や目撃者の証言を含む歴史的記録に基づいている。",
+      "tts": {
+        "text": "ここに記された出来事は裁判記録や目撃者の証言を含む歴史的記録に基づいている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "詳細が不確かな場合、本文はそのことを示している。",
+      "text_markdown": "詳細が不確かな場合、本文はそのことを示している。",
+      "tts": {
+        "text": "詳細が不確かな場合、本文はそのことを示している。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "彼を作った世界",
+      "text_markdown": "彼を作った世界"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百年代のカリブ海は地球上で最も争われた水域であった。",
+      "text_markdown": "千六百年代のカリブ海は地球上で最も争われた水域であった。",
+      "tts": {
+        "text": "千六百年代のカリブ海は地球上で最も争われた水域であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン、イングランド、フランス、そしてオランダはすべてそこの島々と海岸線の領有を主張した。",
+      "text_markdown": "スペイン、イングランド、フランス、そしてオランダはすべてそこの島々と海岸線の領有を主張した。",
+      "tts": {
+        "text": "スペイン、イングランド、フランス、そしてオランダはすべてそこの島々と海岸線の領有を主張した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "各国は要塞を築き、植民地を建設し、領土を守るために軍艦を派遣した。",
+      "text_markdown": "各国は要塞を築き、植民地を建設し、領土を守るために軍艦を派遣した。",
+      "tts": {
+        "text": "各国は要塞を築き、植民地を建設し、領土を守るために軍艦を派遣した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインは最初に到着し、最大の取り分を得た。",
+      "text_markdown": "スペインは最初に到着し、最大の取り分を得た。",
+      "tts": {
+        "text": "スペインは最初に到着し、最大の取り分を得た。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その帝国はメキシコからペルーまで、キューバからフィリピンまで広がっていた。",
+      "text_markdown": "その帝国はメキシコからペルーまで、キューバからフィリピンまで広がっていた。",
+      "tts": {
+        "text": "その帝国はメキシコからペルーまで、キューバからフィリピンまで広がっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "毎年、宝物船団がアメリカ大陸から銀と金をセビリアに運んだ。",
+      "text_markdown": "毎年、宝物船団がアメリカ大陸から銀と金をセビリアに運んだ。",
+      "tts": {
+        "text": "毎年、宝物船団がアメリカ大陸から銀と金をセビリアに運んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この富はスペインを一世紀以上にわたりヨーロッパで最も裕福な国にした。",
+      "text_markdown": "この富はスペインを一世紀以上にわたりヨーロッパで最も裕福な国にした。",
+      "tts": {
+        "text": "この富はスペインを一世紀以上にわたりヨーロッパで最も裕福な国にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしそれはまたスペインを標的にもした。",
+      "text_markdown": "しかしそれはまたスペインを標的にもした。",
+      "tts": {
+        "text": "しかしそれはまたスペインを標的にもした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン人はカリブ海全域を自国の排他的領域と宣言した。",
+      "text_markdown": "スペイン人はカリブ海全域を自国の排他的領域と宣言した。",
+      "tts": {
+        "text": "スペイン人はカリブ海全域を自国の排他的領域と宣言した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは他のいかなる国もそれらの水域で貿易、入植、航行する権利を持たないと主張した。",
+      "text_markdown": "彼らは他のいかなる国もそれらの水域で貿易、入植、航行する権利を持たないと主張した。",
+      "tts": {
+        "text": "彼らは他のいかなる国もそれらの水域で貿易、入植、航行する権利を持たないと主張した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この主張は千四百九十三年の教皇勅令に基づいており、新世界をスペインとポルトガルの間で分割するものだった。",
+      "text_markdown": "この主張は千四百九十三年の教皇勅令に基づいており、新世界をスペインとポルトガルの間で分割するものだった。",
+      "tts": {
+        "text": "この主張は千四百九十三年の教皇勅令に基づいており、新世界をスペインとポルトガルの間で分割するものだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランド、フランス、オランダはこの勅令を認めなかった。",
+      "text_markdown": "イングランド、フランス、オランダはこの勅令を認めなかった。",
+      "tts": {
+        "text": "イングランド、フランス、オランダはこの勅令を認めなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはいかなる教皇にも大陸を分け与える権限はないと主張した。",
+      "text_markdown": "彼らはいかなる教皇にも大陸を分け与える権限はないと主張した。",
+      "tts": {
+        "text": "彼らはいかなる教皇にも大陸を分け与える権限はないと主張した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この意見の相違がカリブ海における一世紀にわたる戦争の根底にあった。",
+      "text_markdown": "この意見の相違がカリブ海における一世紀にわたる戦争の根底にあった。",
+      "tts": {
+        "text": "この意見の相違がカリブ海における一世紀にわたる戦争の根底にあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百年代初頭、イングランドの経済はスペインよりもはるかに小さかった。",
+      "text_markdown": "千六百年代初頭、イングランドの経済はスペインよりもはるかに小さかった。",
+      "tts": {
+        "text": "千六百年代初頭、イングランドの経済はスペインよりもはるかに小さかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "カリブ海のイングランド植民地は貧しく脆弱だった。",
+      "text_markdown": "カリブ海のイングランド植民地は貧しく脆弱だった。",
+      "tts": {
+        "text": "カリブ海のイングランド植民地は貧しく脆弱だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは砂糖、タバコ、そしてスペイン人から奪えるものすべてで生き延びた。",
+      "text_markdown": "彼らは砂糖、タバコ、そしてスペイン人から奪えるものすべてで生き延びた。",
+      "tts": {
+        "text": "彼らは砂糖、タバコ、そしてスペイン人から奪えるものすべてで生き延びた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランド政府はスペインの船舶と入植地への攻撃をひそかに奨励した。",
+      "text_markdown": "イングランド政府はスペインの船舶と入植地への攻撃をひそかに奨励した。",
+      "tts": {
+        "text": "イングランド政府はスペインの船舶と入植地への攻撃をひそかに奨励した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私掠船は「私掠免許状」と呼ばれる法的文書を与えられた一般市民であった。",
+      "text_markdown": "私掠船は「私掠免許状」と呼ばれる法的文書を与えられた一般市民であった。",
+      "tts": {
+        "text": "私掠船は「私掠免許状」と呼ばれる法的文書を与えられた一般市民であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この免許状は自国のために敵の船を攻撃することを許可するものだった。",
+      "text_markdown": "この免許状は自国のために敵の船を攻撃することを許可するものだった。",
+      "tts": {
+        "text": "この免許状は自国のために敵の船を攻撃することを許可するものだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私掠船と海賊の違いは単に一枚の紙切れだった。",
+      "text_markdown": "私掠船と海賊の違いは単に一枚の紙切れだった。",
+      "tts": {
+        "text": "私掠船と海賊の違いは単に一枚の紙切れだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その手紙がなければ、あなたは犯罪者だった。",
+      "text_markdown": "その手紙がなければ、あなたは犯罪者だった。",
+      "tts": {
+        "text": "その手紙がなければ、あなたは犯罪者だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それがあれば、あなたは愛国者だった。",
+      "text_markdown": "それがあれば、あなたは愛国者だった。",
+      "tts": {
+        "text": "それがあれば、あなたは愛国者だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャマイカはカリブ海におけるイングランドの最も重要な領地であった。",
+      "text_markdown": "ジャマイカはカリブ海におけるイングランドの最も重要な領地であった。",
+      "tts": {
+        "text": "ジャマイカはカリブ海におけるイングランドの最も重要な領地であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドは千六百五十五年にスペインからそれを奪取した。モーガンが到着するわずか十年前のことだった。",
+      "text_markdown": "イングランドは千六百五十五年にスペインからそれを奪取した。モーガンが到着するわずか十年前のことだった。",
+      "tts": {
+        "text": "イングランドは千六百五十五年にスペインからそれを奪取した。モーガンが到着するわずか十年前のことだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "島はまだ防備が弱く、未開発であった。",
+      "text_markdown": "島はまだ防備が弱く、未開発であった。",
+      "tts": {
+        "text": "島はまだ防備が弱く、未開発であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その首都ポート・ロイヤルはキングストン港の入り口にある細い砂州の上に位置していた。",
+      "text_markdown": "その首都ポート・ロイヤルはキングストン港の入り口にある細い砂州の上に位置していた。",
+      "tts": {
+        "text": "その首都ポート・ロイヤルはキングストン港の入り口にある細い砂州の上に位置していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "町は混雑し、騒がしく、居酒屋と賭博場であふれていた。",
+      "text_markdown": "町は混雑し、騒がしく、居酒屋と賭博場であふれていた。",
+      "tts": {
+        "text": "町は混雑し、騒がしく、居酒屋と賭博場であふれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポート・ロイヤルは地球上で最も邪悪な都市として知られるようになった。",
+      "text_markdown": "ポート・ロイヤルは地球上で最も邪悪な都市として知られるようになった。",
+      "tts": {
+        "text": "ポート・ロイヤルは地球上で最も邪悪な都市として知られるようになった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "海賊たちはそこでラム酒、女性、サイコロに略奪品を使い果たした。",
+      "text_markdown": "海賊たちはそこでラム酒、女性、サイコロに略奪品を使い果たした。",
+      "tts": {
+        "text": "海賊たちはそこでラム酒、女性、サイコロに略奪品を使い果たした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "男は一晩で財産を使い果たし、一週間以内に海に戻ることができた。",
+      "text_markdown": "男は一晩で財産を使い果たし、一週間以内に海に戻ることができた。",
+      "tts": {
+        "text": "男は一晩で財産を使い果たし、一週間以内に海に戻ることができた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャマイカの総督たちは防衛を海賊に頼っていた。",
+      "text_markdown": "ジャマイカの総督たちは防衛を海賊に頼っていた。",
+      "tts": {
+        "text": "ジャマイカの総督たちは防衛を海賊に頼っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "島にはスペインの攻撃を撃退するのに十分な常備海軍がなかった。",
+      "text_markdown": "島にはスペインの攻撃を撃退するのに十分な常備海軍がなかった。",
+      "tts": {
+        "text": "島にはスペインの攻撃を撃退するのに十分な常備海軍がなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこで総督たちは私掠免許状を発行し、海賊たちに戦いを任せた。",
+      "text_markdown": "そこで総督たちは私掠免許状を発行し、海賊たちに戦いを任せた。",
+      "tts": {
+        "text": "そこで総督たちは私掠免許状を発行し、海賊たちに戦いを任せた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊たちはイングランド人、フランス人、オランダ人、アフリカ人の船乗りの混成集団だった。",
+      "text_markdown": "海賊たちはイングランド人、フランス人、オランダ人、アフリカ人の船乗りの混成集団だった。",
+      "tts": {
+        "text": "海賊たちはイングランド人、フランス人、オランダ人、アフリカ人の船乗りの混成集団だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くは元年季奉公人や逃亡した囚人だった。",
+      "text_markdown": "多くは元年季奉公人や逃亡した囚人だった。",
+      "tts": {
+        "text": "多くは元年季奉公人や逃亡した囚人だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは過酷な生活を送り、失うものがほとんどなかった。",
+      "text_markdown": "彼らは過酷な生活を送り、失うものがほとんどなかった。",
+      "tts": {
+        "text": "彼らは過酷な生活を送り、失うものがほとんどなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バッカニアという言葉はフランス語のブカニエから来ており、肉を燻製にする者を意味する。",
+      "text_markdown": "バッカニアという言葉はフランス語のブカニエから来ており、肉を燻製にする者を意味する。",
+      "tts": {
+        "text": "バッカニアという言葉はフランス語のブカニエから来ており、肉を燻製にする者を意味する。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最初のバッカニアたちはイスパニョーラ島で野生の牛や豚の肉を燻製にしていた猟師だった。",
+      "text_markdown": "最初のバッカニアたちはイスパニョーラ島で野生の牛や豚の肉を燻製にしていた猟師だった。",
+      "tts": {
+        "text": "最初のバッカニアたちはイスパニョーラ島で野生の牛や豚の肉を燻製にしていた猟師だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペイン人に追い払われると、彼らは生き残るために海に転じた。",
+      "text_markdown": "スペイン人に追い払われると、彼らは生き残るために海に転じた。",
+      "tts": {
+        "text": "スペイン人に追い払われると、彼らは生き残るために海に転じた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百六十年代までに、バッカニアたちは恐るべき戦闘力を持つようになっていた。",
+      "text_markdown": "千六百六十年代までに、バッカニアたちは恐るべき戦闘力を持つようになっていた。",
+      "tts": {
+        "text": "千六百六十年代までに、バッカニアたちは恐るべき戦闘力を持つようになっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはマスケット銃、カトラス、そして生の勇気で戦った。",
+      "text_markdown": "彼らはマスケット銃、カトラス、そして生の勇気で戦った。",
+      "tts": {
+        "text": "彼らはマスケット銃、カトラス、そして生の勇気で戦った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは船への乗り込みと要塞の突撃に長けていた。",
+      "text_markdown": "彼らは船への乗り込みと要塞の突撃に長けていた。",
+      "tts": {
+        "text": "彼らは船への乗り込みと要塞の突撃に長けていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインはカリブ海における外国のあらゆる存在を違法と見なした。",
+      "text_markdown": "スペインはカリブ海における外国のあらゆる存在を違法と見なした。",
+      "tts": {
+        "text": "スペインはカリブ海における外国のあらゆる存在を違法と見なした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン人の目には、すべてのイングランド人入植者は不法侵入者であり、すべてのイングランド船は正当な獲物だった。",
+      "text_markdown": "スペイン人の目には、すべてのイングランド人入植者は不法侵入者であり、すべてのイングランド船は正当な獲物だった。",
+      "tts": {
+        "text": "スペイン人の目には、すべてのイングランド人入植者は不法侵入者であり、すべてのイングランド船は正当な獲物だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この相互の敵意が襲撃と報復の終わりなき循環を生み出した。",
+      "text_markdown": "この相互の敵意が襲撃と報復の終わりなき循環を生み出した。",
+      "tts": {
+        "text": "この相互の敵意が襲撃と報復の終わりなき循環を生み出した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン人はイングランドの入植地を攻撃し、イングランド人はスペインの入植地を攻撃した。",
+      "text_markdown": "スペイン人はイングランドの入植地を攻撃し、イングランド人はスペインの入植地を攻撃した。",
+      "tts": {
+        "text": "スペイン人はイングランドの入植地を攻撃し、イングランド人はスペインの入植地を攻撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "彼を作った世界",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この暴力的な世界に、ヘンリー・モーガンは機会を求める若者として到着した。",
+      "text_markdown": "この暴力的な世界に、ヘンリー・モーガンは機会を求める若者として到着した。",
+      "tts": {
+        "text": "この暴力的な世界に、ヘンリー・モーガンは機会を求める若者として到着した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "カリブ海のウェールズ人",
+      "text_markdown": "カリブ海のウェールズ人"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・モーガンは千六百三十五年頃、ウェールズ南東部のランラムニーという村で生まれた。",
+      "text_markdown": "ヘンリー・モーガンは千六百三十五年頃、ウェールズ南東部のランラムニーという村で生まれた。",
+      "tts": {
+        "text": "ヘンリー・モーガンは千六百三十五年頃、ウェールズ南東部のランラムニーという村で生まれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の家族はウェールズの郷紳階級に属しており、土地と地元での影響力を持っていた。",
+      "text_markdown": "彼の家族はウェールズの郷紳階級に属しており、土地と地元での影響力を持っていた。",
+      "tts": {
+        "text": "彼の家族はウェールズの郷紳階級に属しており、土地と地元での影響力を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の叔父のうち二人はイングランド内戦中に軍の将校として従軍した。",
+      "text_markdown": "彼の叔父のうち二人はイングランド内戦中に軍の将校として従軍した。",
+      "tts": {
+        "text": "彼の叔父のうち二人はイングランド内戦中に軍の将校として従軍した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百三十年代のウェールズはイギリスの田舎で比較的貧しい地域だった。",
+      "text_markdown": "千六百三十年代のウェールズはイギリスの田舎で比較的貧しい地域だった。",
+      "tts": {
+        "text": "千六百三十年代のウェールズはイギリスの田舎で比較的貧しい地域だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウェールズの郷紳はイングランドの大地主と比べると控えめな所領を持っていた。",
+      "text_markdown": "ウェールズの郷紳はイングランドの大地主と比べると控えめな所領を持っていた。",
+      "tts": {
+        "text": "ウェールズの郷紳はイングランドの大地主と比べると控えめな所領を持っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし彼らは軍務と家族の名誉を何よりも重んじた。",
+      "text_markdown": "しかし彼らは軍務と家族の名誉を何よりも重んじた。",
+      "tts": {
+        "text": "しかし彼らは軍務と家族の名誉を何よりも重んじた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンの幼少期についてはほとんど知られていない。",
+      "text_markdown": "モーガンの幼少期についてはほとんど知られていない。",
+      "tts": {
+        "text": "モーガンの幼少期についてはほとんど知られていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は初期の年月について書くことはなく、学校の記録も残っていない。",
+      "text_markdown": "彼は初期の年月について書くことはなく、学校の記録も残っていない。",
+      "tts": {
+        "text": "彼は初期の年月について書くことはなく、学校の記録も残っていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史家たちは彼が基本的な教育を受けたが大学教育は受けていなかったと考えている。",
+      "text_markdown": "歴史家たちは彼が基本的な教育を受けたが大学教育は受けていなかったと考えている。",
+      "tts": {
+        "text": "歴史家たちは彼が基本的な教育を受けたが大学教育は受けていなかったと考えている。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百五十年代後半のある時期、モーガンはカリブ海に向けて航海した。",
+      "text_markdown": "千六百五十年代後半のある時期、モーガンはカリブ海に向けて航海した。",
+      "tts": {
+        "text": "千六百五十年代後半のある時期、モーガンはカリブ海に向けて航海した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼がどのようにしてそこに行ったかは議論の的である。",
+      "text_markdown": "彼がどのようにしてそこに行ったかは議論の的である。",
+      "tts": {
+        "text": "彼がどのようにしてそこに行ったかは議論の的である。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一つの説は、彼が少年の時にブリストルで誘拐され、バルバドスで年季奉公人として売られたというものだ。",
+      "text_markdown": "一つの説は、彼が少年の時にブリストルで誘拐され、バルバドスで年季奉公人として売られたというものだ。",
+      "tts": {
+        "text": "一つの説は、彼が少年の時にブリストルで誘拐され、バルバドスで年季奉公人として売られたというものだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガン自身は後にこれを否定し、中傷だと呼んだ。",
+      "text_markdown": "モーガン自身は後にこれを否定し、中傷だと呼んだ。",
+      "tts": {
+        "text": "モーガン自身は後にこれを否定し、中傷だと呼んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はこの主張を掲載した出版社を訴え、損害賠償を勝ち取った。",
+      "text_markdown": "彼はこの主張を掲載した出版社を訴え、損害賠償を勝ち取った。",
+      "tts": {
+        "text": "彼はこの主張を掲載した出版社を訴え、損害賠償を勝ち取った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "より可能性の高い説明は、モーガンが兵士としてカリブ海に来たというものだ。",
+      "text_markdown": "より可能性の高い説明は、モーガンが兵士としてカリブ海に来たというものだ。",
+      "tts": {
+        "text": "より可能性の高い説明は、モーガンが兵士としてカリブ海に来たというものだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千六百五十五年、イングランドはスペインの領土を奪取するために大規模な軍事遠征を送った。",
+      "text_markdown": "千六百五十五年、イングランドはスペインの領土を奪取するために大規模な軍事遠征を送った。",
+      "tts": {
+        "text": "千六百五十五年、イングランドはスペインの領土を奪取するために大規模な軍事遠征を送った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "艦隊はイスパニョーラ島の占領に失敗したが、ジャマイカの奪取に成功した。",
+      "text_markdown": "艦隊はイスパニョーラ島の占領に失敗したが、ジャマイカの奪取に成功した。",
+      "tts": {
+        "text": "艦隊はイスパニョーラ島の占領に失敗したが、ジャマイカの奪取に成功した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この遠征は「西方計画」として知られていた。",
+      "text_markdown": "この遠征は「西方計画」として知られていた。",
+      "tts": {
+        "text": "この遠征は「西方計画」として知られていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドの護国卿オリバー・クロムウェルが命じたものだった。",
+      "text_markdown": "イングランドの護国卿オリバー・クロムウェルが命じたものだった。",
+      "tts": {
+        "text": "イングランドの護国卿オリバー・クロムウェルが命じたものだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "クロムウェルはカリブ海におけるスペインの支配を打破し、イングランドの勢力を拡大しようとしていた。",
+      "text_markdown": "クロムウェルはカリブ海におけるスペインの支配を打破し、イングランドの勢力を拡大しようとしていた。",
+      "tts": {
+        "text": "クロムウェルはカリブ海におけるスペインの支配を打破し、イングランドの勢力を拡大しようとしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンはこの遠征の一員だったか、またはその直後に到着した可能性がある。",
+      "text_markdown": "モーガンはこの遠征の一員だったか、またはその直後に到着した可能性がある。",
+      "tts": {
+        "text": "モーガンはこの遠征の一員だったか、またはその直後に到着した可能性がある。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いずれにせよ、千六百六十年代の初めまでに彼はジャマイカに定住していた。",
+      "text_markdown": "いずれにせよ、千六百六十年代の初めまでに彼はジャマイカに定住していた。",
+      "tts": {
+        "text": "いずれにせよ、千六百六十年代の初めまでに彼はジャマイカに定住していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はすぐに有能で野心的な戦士であることを証明した。",
+      "text_markdown": "彼はすぐに有能で野心的な戦士であることを証明した。",
+      "tts": {
+        "text": "彼はすぐに有能で野心的な戦士であることを証明した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千六百六十三年、彼は中央アメリカのスペイン入植地に対するバッカニア遠征に参加した。",
+      "text_markdown": "千六百六十三年、彼は中央アメリカのスペイン入植地に対するバッカニア遠征に参加した。",
+      "tts": {
+        "text": "千六百六十三年、彼は中央アメリカのスペイン入植地に対するバッカニア遠征に参加した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "襲撃者たちは現在のニカラグアとホンジュラスの沿岸の町を攻撃した。",
+      "text_markdown": "襲撃者たちは現在のニカラグアとホンジュラスの沿岸の町を攻撃した。",
+      "tts": {
+        "text": "襲撃者たちは現在のニカラグアとホンジュラスの沿岸の町を攻撃した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この初期の遠征を率いたのはクリストファー・ミングスという熟練のバッカニアだった。",
+      "text_markdown": "この初期の遠征を率いたのはクリストファー・ミングスという熟練のバッカニアだった。",
+      "tts": {
+        "text": "この初期の遠征を率いたのはクリストファー・ミングスという熟練のバッカニアだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ミングスは大胆で経験豊富な襲撃者で、若いバッカニアたちに技を教えた。",
+      "text_markdown": "ミングスは大胆で経験豊富な襲撃者で、若いバッカニアたちに技を教えた。",
+      "tts": {
+        "text": "ミングスは大胆で経験豊富な襲撃者で、若いバッカニアたちに技を教えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンは彼を注意深く観察し学んだ。",
+      "text_markdown": "モーガンは彼を注意深く観察し学んだ。",
+      "tts": {
+        "text": "モーガンは彼を注意深く観察し学んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンはこれらの初期の襲撃の中で、後に彼のキャリアを決定づける戦術を学んだ。",
+      "text_markdown": "モーガンはこれらの初期の襲撃の中で、後に彼のキャリアを決定づける戦術を学んだ。",
+      "tts": {
+        "text": "モーガンはこれらの初期の襲撃の中で、後に彼のキャリアを決定づける戦術を学んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はジャングルの地形を通じて大集団を移動させる方法を研究した。",
+      "text_markdown": "彼はジャングルの地形を通じて大集団を移動させる方法を研究した。",
+      "tts": {
+        "text": "彼はジャングルの地形を通じて大集団を移動させる方法を研究した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は素早く攻撃し、スペインの援軍が到着する前に撤退することを学んだ。",
+      "text_markdown": "彼は素早く攻撃し、スペインの援軍が到着する前に撤退することを学んだ。",
+      "tts": {
+        "text": "彼は素早く攻撃し、スペインの援軍が到着する前に撤退することを学んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百六十五年、モーガンは有名なバッカニアのエドワード・マンスフィールドとともにプロビデンス島への襲撃に参加した。",
+      "text_markdown": "千六百六十五年、モーガンは有名なバッカニアのエドワード・マンスフィールドとともにプロビデンス島への襲撃に参加した。",
+      "tts": {
+        "text": "千六百六十五年、モーガンは有名なバッカニアのエドワード・マンスフィールドとともにプロビデンス島への襲撃に参加した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "プロビデンスはニカラグア沖の小さな島で、数年前にスペインがイングランドから奪い返したものだった。",
+      "text_markdown": "プロビデンスはニカラグア沖の小さな島で、数年前にスペインがイングランドから奪い返したものだった。",
+      "tts": {
+        "text": "プロビデンスはニカラグア沖の小さな島で、数年前にスペインがイングランドから奪い返したものだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マンスフィールドの艦隊は島を容易に奪取した。",
+      "text_markdown": "マンスフィールドの艦隊は島を容易に奪取した。",
+      "tts": {
+        "text": "マンスフィールドの艦隊は島を容易に奪取した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかしこの遠征はバッカニアの指導体制における問題を露呈した。",
+      "text_markdown": "しかしこの遠征はバッカニアの指導体制における問題を露呈した。",
+      "tts": {
+        "text": "しかしこの遠征はバッカニアの指導体制における問題を露呈した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "男たちは略奪品の分配方法をめぐって争い、多くが脱走した。",
+      "text_markdown": "男たちは略奪品の分配方法をめぐって争い、多くが脱走した。",
+      "tts": {
+        "text": "男たちは略奪品の分配方法をめぐって争い、多くが脱走した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百六十七年にマンスフィールドが死ぬと、バッカニアたちは新しい指導者を必要とした。",
+      "text_markdown": "千六百六十七年にマンスフィールドが死ぬと、バッカニアたちは新しい指導者を必要とした。",
+      "tts": {
+        "text": "千六百六十七年にマンスフィールドが死ぬと、バッカニアたちは新しい指導者を必要とした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンが後任に選ばれた。",
+      "text_markdown": "モーガンが後任に選ばれた。",
+      "tts": {
+        "text": "モーガンが後任に選ばれた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はまだ三十歳そこそこだったが、すでに大胆さと戦術的手腕で名声を得ていた。",
+      "text_markdown": "彼はまだ三十歳そこそこだったが、すでに大胆さと戦術的手腕で名声を得ていた。",
+      "tts": {
+        "text": "彼はまだ三十歳そこそこだったが、すでに大胆さと戦術的手腕で名声を得ていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほぼ同じ頃、モーガンは妻のメアリー・エリザベスと結婚した。",
+      "text_markdown": "ほぼ同じ頃、モーガンは妻のメアリー・エリザベスと結婚した。",
+      "tts": {
+        "text": "ほぼ同じ頃、モーガンは妻のメアリー・エリザベスと結婚した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼女はジャマイカの副総督を務めた叔父エドワード・モーガンの娘だった。",
+      "text_markdown": "彼女はジャマイカの副総督を務めた叔父エドワード・モーガンの娘だった。",
+      "tts": {
+        "text": "彼女はジャマイカの副総督を務めた叔父エドワード・モーガンの娘だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この結婚は彼を島の植民地エリートと結びつけた。",
+      "text_markdown": "この結婚は彼を島の植民地エリートと結びつけた。",
+      "tts": {
+        "text": "この結婚は彼を島の植民地エリートと結びつけた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンはバッカニアの船長であると同時にジャマイカの農園主階級の一員でもあった。",
+      "text_markdown": "モーガンはバッカニアの船長であると同時にジャマイカの農園主階級の一員でもあった。",
+      "tts": {
+        "text": "モーガンはバッカニアの船長であると同時にジャマイカの農園主階級の一員でもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は土地と奴隷を所有し、政治を戦争と同じくらいよく理解していた。",
+      "text_markdown": "彼は土地と奴隷を所有し、政治を戦争と同じくらいよく理解していた。",
+      "tts": {
+        "text": "彼は土地と奴隷を所有し、政治を戦争と同じくらいよく理解していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼はジャマイカ総督のトーマス・モディフォード卿と緊密な関係を築いた。",
+      "text_markdown": "彼はジャマイカ総督のトーマス・モディフォード卿と緊密な関係を築いた。",
+      "tts": {
+        "text": "彼はジャマイカ総督のトーマス・モディフォード卿と緊密な関係を築いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モディフォードはスペインの侵略に対する島の防衛をモーガンに頼っていた。",
+      "text_markdown": "モディフォードはスペインの侵略に対する島の防衛をモーガンに頼っていた。",
+      "tts": {
+        "text": "モディフォードはスペインの侵略に対する島の防衛をモーガンに頼っていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その見返りに、モディフォードはモーガンにスペインの標的を攻撃するために必要な法的根拠を与えた。",
+      "text_markdown": "その見返りに、モディフォードはモーガンにスペインの標的を攻撃するために必要な法的根拠を与えた。",
+      "tts": {
+        "text": "その見返りに、モディフォードはモーガンにスペインの標的を攻撃するために必要な法的根拠を与えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "総督と海賊のこのパートナーシップはカリブ海の勢力均衡を再構築することになる。",
+      "text_markdown": "総督と海賊のこのパートナーシップはカリブ海の勢力均衡を再構築することになる。",
+      "tts": {
+        "text": "総督と海賊のこのパートナーシップはカリブ海の勢力均衡を再構築することになる。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "カリブ海のウェールズ人",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンはスペイン本土で最も恐れられる男にする一連の襲撃に乗り出そうとしていた。",
+      "text_markdown": "モーガンはスペイン本土で最も恐れられる男にする一連の襲撃に乗り出そうとしていた。",
+      "tts": {
+        "text": "モーガンはスペイン本土で最も恐れられる男にする一連の襲撃に乗り出そうとしていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "帝国を揺るがした襲撃",
+      "text_markdown": "帝国を揺るがした襲撃"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンの最初の大きな独立指揮は千六百六十八年に訪れた。",
+      "text_markdown": "モーガンの最初の大きな独立指揮は千六百六十八年に訪れた。",
+      "tts": {
+        "text": "モーガンの最初の大きな独立指揮は千六百六十八年に訪れた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モディフォード総督はジャマイカへの攻撃に関するスペインの計画についての情報収集を彼に委任した。",
+      "text_markdown": "モディフォード総督はジャマイカへの攻撃に関するスペインの計画についての情報収集を彼に委任した。",
+      "tts": {
+        "text": "モディフォード総督はジャマイカへの攻撃に関するスペインの計画についての情報収集を彼に委任した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンはこの委任を非常に広く解釈した。",
+      "text_markdown": "モーガンはこの委任を非常に広く解釈した。",
+      "tts": {
+        "text": "モーガンはこの委任を非常に広く解釈した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は十二隻の船と七百人以上の兵からなる艦隊を編成した。",
+      "text_markdown": "彼は十二隻の船と七百人以上の兵からなる艦隊を編成した。",
+      "tts": {
+        "text": "彼は十二隻の船と七百人以上の兵からなる艦隊を編成した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の標的はポルトベロ、アメリカ大陸で最も堅固に要塞化された都市の一つだった。",
+      "text_markdown": "彼の標的はポルトベロ、アメリカ大陸で最も堅固に要塞化された都市の一つだった。",
+      "tts": {
+        "text": "彼の標的はポルトベロ、アメリカ大陸で最も堅固に要塞化された都市の一つだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポルトベロは現在のパナマのカリブ海沿岸に位置していた。",
+      "text_markdown": "ポルトベロは現在のパナマのカリブ海沿岸に位置していた。",
+      "tts": {
+        "text": "ポルトベロは現在のパナマのカリブ海沿岸に位置していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこは南米の銀がスペイン行きの船に積み込まれる場所だった。",
+      "text_markdown": "そこは南米の銀がスペイン行きの船に積み込まれる場所だった。",
+      "tts": {
+        "text": "そこは南米の銀がスペイン行きの船に積み込まれる場所だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この都市は三つの石造りの砦と職業軍人の守備隊によって守られていた。",
+      "text_markdown": "この都市は三つの石造りの砦と職業軍人の守備隊によって守られていた。",
+      "tts": {
+        "text": "この都市は三つの石造りの砦と職業軍人の守備隊によって守られていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "誰もポルトベロへの攻撃を予想していなかった。",
+      "text_markdown": "誰もポルトベロへの攻撃を予想していなかった。",
+      "tts": {
+        "text": "誰もポルトベロへの攻撃を予想していなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン人はそれを難攻不落と考えていた。",
+      "text_markdown": "スペイン人はそれを難攻不落と考えていた。",
+      "tts": {
+        "text": "スペイン人はそれを難攻不落と考えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それこそがモーガンがそこを選んだ理由だった。",
+      "text_markdown": "それこそがモーガンがそこを選んだ理由だった。",
+      "tts": {
+        "text": "それこそがモーガンがそこを選んだ理由だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンの部下たちは夜、都市から数マイル離れた場所に上陸した。",
+      "text_markdown": "モーガンの部下たちは夜、都市から数マイル離れた場所に上陸した。",
+      "tts": {
+        "text": "モーガンの部下たちは夜、都市から数マイル離れた場所に上陸した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはカヌーで岸に漕ぎ着け、暗闇の中をジャングルを通って忍び寄った。",
+      "text_markdown": "彼らはカヌーで岸に漕ぎ着け、暗闇の中をジャングルを通って忍び寄った。",
+      "tts": {
+        "text": "彼らはカヌーで岸に漕ぎ着け、暗闇の中をジャングルを通って忍び寄った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "夜明けに最初の砦を攻撃し、守備隊を完全に不意打ちにした。",
+      "text_markdown": "夜明けに最初の砦を攻撃し、守備隊を完全に不意打ちにした。",
+      "tts": {
+        "text": "夜明けに最初の砦を攻撃し、守備隊を完全に不意打ちにした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン人は勇敢に反撃したが、攻撃の速さに圧倒された。",
+      "text_markdown": "スペイン人は勇敢に反撃したが、攻撃の速さに圧倒された。",
+      "tts": {
+        "text": "スペイン人は勇敢に反撃したが、攻撃の速さに圧倒された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンのバッカニアたちは近接戦闘に優れた経験豊富な市街戦の戦士だった。",
+      "text_markdown": "モーガンのバッカニアたちは近接戦闘に優れた経験豊富な市街戦の戦士だった。",
+      "tts": {
+        "text": "モーガンのバッカニアたちは近接戦闘に優れた経験豊富な市街戦の戦士だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンは敵を恐怖に陥れる戦術を使った。",
+      "text_markdown": "モーガンは敵を恐怖に陥れる戦術を使った。",
+      "tts": {
+        "text": "モーガンは敵を恐怖に陥れる戦術を使った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕らえた修道士と修道女に第二の砦の壁まではしごを運ばせた。",
+      "text_markdown": "捕らえた修道士と修道女に第二の砦の壁まではしごを運ばせた。",
+      "tts": {
+        "text": "捕らえた修道士と修道女に第二の砦の壁まではしごを運ばせた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインの守備兵は自分たちの同胞である聖職者を撃つことができなかった。",
+      "text_markdown": "スペインの守備兵は自分たちの同胞である聖職者を撃つことができなかった。",
+      "tts": {
+        "text": "スペインの守備兵は自分たちの同胞である聖職者を撃つことができなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二日以内に三つの砦すべてが陥落した。",
+      "text_markdown": "二日以内に三つの砦すべてが陥落した。",
+      "tts": {
+        "text": "二日以内に三つの砦すべてが陥落した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンのバッカニアたちは二週間にわたって都市を略奪した。",
+      "text_markdown": "モーガンのバッカニアたちは二週間にわたって都市を略奪した。",
+      "tts": {
+        "text": "モーガンのバッカニアたちは二週間にわたって都市を略奪した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは金や貴重品がどこに隠されているかを明かすよう捕虜を拷問した。",
+      "text_markdown": "彼らは金や貴重品がどこに隠されているかを明かすよう捕虜を拷問した。",
+      "tts": {
+        "text": "彼らは金や貴重品がどこに隠されているかを明かすよう捕虜を拷問した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポルトベロからの略奪品の総額は莫大であった。",
+      "text_markdown": "ポルトベロからの略奪品の総額は莫大であった。",
+      "tts": {
+        "text": "ポルトベロからの略奪品の総額は莫大であった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家たちは戦利品が二十五万ペソ以上と見積もっている。",
+      "text_markdown": "歴史家たちは戦利品が二十五万ペソ以上と見積もっている。",
+      "tts": {
+        "text": "歴史家たちは戦利品が二十五万ペソ以上と見積もっている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一般の水兵はそれぞれ、正当な賃金の数年分に相当する分け前を受け取った。",
+      "text_markdown": "一般の水兵はそれぞれ、正当な賃金の数年分に相当する分け前を受け取った。",
+      "tts": {
+        "text": "一般の水兵はそれぞれ、正当な賃金の数年分に相当する分け前を受け取った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンは英雄としてポート・ロイヤルに帰還した。",
+      "text_markdown": "モーガンは英雄としてポート・ロイヤルに帰還した。",
+      "tts": {
+        "text": "モーガンは英雄としてポート・ロイヤルに帰還した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ポルトベロ襲撃の成功は何百人もの男たちをモーガンの旗の下に引き寄せた。",
+      "text_markdown": "ポルトベロ襲撃の成功は何百人もの男たちをモーガンの旗の下に引き寄せた。",
+      "tts": {
+        "text": "ポルトベロ襲撃の成功は何百人もの男たちをモーガンの旗の下に引き寄せた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "カリブ海中のバッカニアたちが難攻不落の都市を攻め落とした男と航海したがった。",
+      "text_markdown": "カリブ海中のバッカニアたちが難攻不落の都市を攻め落とした男と航海したがった。",
+      "tts": {
+        "text": "カリブ海中のバッカニアたちが難攻不落の都市を攻め落とした男と航海したがった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百六十九年の初め、モーガンは再び出航し、今度はマラカイボを標的にした。",
+      "text_markdown": "千六百六十九年の初め、モーガンは再び出航し、今度はマラカイボを標的にした。",
+      "tts": {
+        "text": "千六百六十九年の初め、モーガンは再び出航し、今度はマラカイボを標的にした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マラカイボは現在のベネズエラのマラカイボ湖畔にある裕福な交易都市だった。",
+      "text_markdown": "マラカイボは現在のベネズエラのマラカイボ湖畔にある裕福な交易都市だった。",
+      "tts": {
+        "text": "マラカイボは現在のベネズエラのマラカイボ湖畔にある裕福な交易都市だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "町に到達するにはモーガンの艦隊は砦に守られた狭い水路を通過しなければならなかった。",
+      "text_markdown": "町に到達するにはモーガンの艦隊は砦に守られた狭い水路を通過しなければならなかった。",
+      "tts": {
+        "text": "町に到達するにはモーガンの艦隊は砦に守られた狭い水路を通過しなければならなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バッカニアたちは砦に突入し、すでに放棄されているのを発見した。",
+      "text_markdown": "バッカニアたちは砦に突入し、すでに放棄されているのを発見した。",
+      "tts": {
+        "text": "バッカニアたちは砦に突入し、すでに放棄されているのを発見した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペインの守備隊は装填済みの大砲を残して逃走していた。",
+      "text_markdown": "スペインの守備隊は装填済みの大砲を残して逃走していた。",
+      "tts": {
+        "text": "スペインの守備隊は装填済みの大砲を残して逃走していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンの部下たちはマラカイボに入城し、ほぼ無人であることを発見した。",
+      "text_markdown": "モーガンの部下たちはマラカイボに入城し、ほぼ無人であることを発見した。",
+      "tts": {
+        "text": "モーガンの部下たちはマラカイボに入城し、ほぼ無人であることを発見した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "住民たちは貴重品とともに周囲の田舎に逃げていた。",
+      "text_markdown": "住民たちは貴重品とともに周囲の田舎に逃げていた。",
+      "tts": {
+        "text": "住民たちは貴重品とともに周囲の田舎に逃げていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンは彼らを追跡するための襲撃隊を派遣した。",
+      "text_markdown": "モーガンは彼らを追跡するための襲撃隊を派遣した。",
+      "tts": {
+        "text": "モーガンは彼らを追跡するための襲撃隊を派遣した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バッカニアたちは何週間も隠された宝を探し回った。",
+      "text_markdown": "バッカニアたちは何週間も隠された宝を探し回った。",
+      "tts": {
+        "text": "バッカニアたちは何週間も隠された宝を探し回った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは捕らえた民間人から情報を引き出すために拷問を使った。",
+      "text_markdown": "彼らは捕らえた民間人から情報を引き出すために拷問を使った。",
+      "tts": {
+        "text": "彼らは捕らえた民間人から情報を引き出すために拷問を使った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの方法はその時代の厳しい基準から見ても残忍だった。",
+      "text_markdown": "これらの方法はその時代の厳しい基準から見ても残忍だった。",
+      "tts": {
+        "text": "これらの方法はその時代の厳しい基準から見ても残忍だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンがマラカイボを離れようとしたとき、水路が封鎖されていることがわかった。",
+      "text_markdown": "モーガンがマラカイボを離れようとしたとき、水路が封鎖されていることがわかった。",
+      "tts": {
+        "text": "モーガンがマラカイボを離れようとしたとき、水路が封鎖されていることがわかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの軍艦三隻が到着し、砦を奪還していた。",
+      "text_markdown": "スペインの軍艦三隻が到着し、砦を奪還していた。",
+      "tts": {
+        "text": "スペインの軍艦三隻が到着し、砦を奪還していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンは艦隊ごと湖の中に閉じ込められた。",
+      "text_markdown": "モーガンは艦隊ごと湖の中に閉じ込められた。",
+      "tts": {
+        "text": "モーガンは艦隊ごと湖の中に閉じ込められた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインの提督はモーガンに降伏を要求する書簡を送った。",
+      "text_markdown": "スペインの提督はモーガンに降伏を要求する書簡を送った。",
+      "tts": {
+        "text": "スペインの提督はモーガンに降伏を要求する書簡を送った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バッカニアたちが略奪品をすべて返還すれば安全な通行を保証すると約束した。",
+      "text_markdown": "バッカニアたちが略奪品をすべて返還すれば安全な通行を保証すると約束した。",
+      "tts": {
+        "text": "バッカニアたちが略奪品をすべて返還すれば安全な通行を保証すると約束した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンは拒否した。",
+      "text_markdown": "モーガンは拒否した。",
+      "tts": {
+        "text": "モーガンは拒否した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "代わりにモーガンは見事な脱出計画を考案した。",
+      "text_markdown": "代わりにモーガンは見事な脱出計画を考案した。",
+      "tts": {
+        "text": "代わりにモーガンは見事な脱出計画を考案した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "爆薬を積んだ火船をスペインの旗艦に直接送り込んだ。",
+      "text_markdown": "爆薬を積んだ火船をスペインの旗艦に直接送り込んだ。",
+      "tts": {
+        "text": "爆薬を積んだ火船をスペインの旗艦に直接送り込んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "旗艦は爆発して沈没した。",
+      "text_markdown": "旗艦は爆発して沈没した。",
+      "tts": {
+        "text": "旗艦は爆発して沈没した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二番目のスペイン船は座礁して拿捕された。",
+      "text_markdown": "二番目のスペイン船は座礁して拿捕された。",
+      "tts": {
+        "text": "二番目のスペイン船は座礁して拿捕された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三番目は砦の砲の安全な場所に退却した。",
+      "text_markdown": "三番目は砦の砲の安全な場所に退却した。",
+      "tts": {
+        "text": "三番目は砦の砲の安全な場所に退却した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次にモーガンは単純な偽計で砦の指揮官を欺いた。",
+      "text_markdown": "次にモーガンは単純な偽計で砦の指揮官を欺いた。",
+      "tts": {
+        "text": "次にモーガンは単純な偽計で砦の指揮官を欺いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "陸上攻撃の準備をするかのように、兵を乗せたボートを岸に向けて送った。",
+      "text_markdown": "陸上攻撃の準備をするかのように、兵を乗せたボートを岸に向けて送った。",
+      "tts": {
+        "text": "陸上攻撃の準備をするかのように、兵を乗せたボートを岸に向けて送った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "兵たちはボートの底に隠れ、見つからずに漕ぎ戻された。",
+      "text_markdown": "兵たちはボートの底に隠れ、見つからずに漕ぎ戻された。",
+      "tts": {
+        "text": "兵たちはボートの底に隠れ、見つからずに漕ぎ戻された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインの指揮官は大砲を砦の陸側に移動させた。",
+      "text_markdown": "スペインの指揮官は大砲を砦の陸側に移動させた。",
+      "tts": {
+        "text": "スペインの指揮官は大砲を砦の陸側に移動させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その夜、モーガンは無防備な海側の壁を通り過ぎて艦隊を航行させた。",
+      "text_markdown": "その夜、モーガンは無防備な海側の壁を通り過ぎて艦隊を航行させた。",
+      "tts": {
+        "text": "その夜、モーガンは無防備な海側の壁を通り過ぎて艦隊を航行させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "朝までにバッカニアたちは安全に外海に出ていた。",
+      "text_markdown": "朝までにバッカニアたちは安全に外海に出ていた。",
+      "tts": {
+        "text": "朝までにバッカニアたちは安全に外海に出ていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マラカイボ襲撃はモーガンの存命最大のバッカニア指揮官としての評判を確固たるものにした。",
+      "text_markdown": "マラカイボ襲撃はモーガンの存命最大のバッカニア指揮官としての評判を確固たるものにした。",
+      "tts": {
+        "text": "マラカイボ襲撃はモーガンの存命最大のバッカニア指揮官としての評判を確固たるものにした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は狡猾で冷酷で、止められないように見えた。",
+      "text_markdown": "彼は狡猾で冷酷で、止められないように見えた。",
+      "tts": {
+        "text": "彼は狡猾で冷酷で、止められないように見えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "帝国を揺るがした襲撃",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の次の標的は最も大胆なものとなる。",
+      "text_markdown": "彼の次の標的は最も大胆なものとなる。",
+      "tts": {
+        "text": "彼の次の標的は最も大胆なものとなる。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "パナマの略奪",
+      "text_markdown": "パナマの略奪"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百七十年、モーガンは自身のキャリアで最も野心的な襲撃の計画を始めた。",
+      "text_markdown": "千六百七十年、モーガンは自身のキャリアで最も野心的な襲撃の計画を始めた。",
+      "tts": {
+        "text": "千六百七十年、モーガンは自身のキャリアで最も野心的な襲撃の計画を始めた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の標的はパナマ・シティ、南北アメリカ大陸で最も裕福な都市だった。",
+      "text_markdown": "彼の標的はパナマ・シティ、南北アメリカ大陸で最も裕福な都市だった。",
+      "tts": {
+        "text": "彼の標的はパナマ・シティ、南北アメリカ大陸で最も裕福な都市だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パナマ・シティはパナマ地峡の太平洋側に位置していた。",
+      "text_markdown": "パナマ・シティはパナマ地峡の太平洋側に位置していた。",
+      "tts": {
+        "text": "パナマ・シティはパナマ地峡の太平洋側に位置していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペルーからの銀と金はすべてスペインに向かう途中でここを通過した。",
+      "text_markdown": "ペルーからの銀と金はすべてスペインに向かう途中でここを通過した。",
+      "tts": {
+        "text": "ペルーからの銀と金はすべてスペインに向かう途中でここを通過した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この都市は数千人が暮らし、新世界で最も美しい建物のいくつかがあった。",
+      "text_markdown": "この都市は数千人が暮らし、新世界で最も美しい建物のいくつかがあった。",
+      "tts": {
+        "text": "この都市は数千人が暮らし、新世界で最も美しい建物のいくつかがあった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パナマ・シティには壮大な教会、石造りの倉庫、高い鐘楼を持つ大聖堂があった。",
+      "text_markdown": "パナマ・シティには壮大な教会、石造りの倉庫、高い鐘楼を持つ大聖堂があった。",
+      "tts": {
+        "text": "パナマ・シティには壮大な教会、石造りの倉庫、高い鐘楼を持つ大聖堂があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裕福な商人たちは瓦屋根と鉄のバルコニーのある家に住んでいた。",
+      "text_markdown": "裕福な商人たちは瓦屋根と鉄のバルコニーのある家に住んでいた。",
+      "tts": {
+        "text": "裕福な商人たちは瓦屋根と鉄のバルコニーのある家に住んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはスペインの太平洋帝国の宝石だった。",
+      "text_markdown": "それはスペインの太平洋帝国の宝石だった。",
+      "tts": {
+        "text": "それはスペインの太平洋帝国の宝石だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パナマ・シティに到達するために、モーガンは地峡全体を徒歩で横断しなければならなかった。",
+      "text_markdown": "パナマ・シティに到達するために、モーガンは地峡全体を徒歩で横断しなければならなかった。",
+      "tts": {
+        "text": "パナマ・シティに到達するために、モーガンは地峡全体を徒歩で横断しなければならなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旅は何日間も密集した熱帯ジャングルを切り開いて進むことを意味した。",
+      "text_markdown": "旅は何日間も密集した熱帯ジャングルを切り開いて進むことを意味した。",
+      "tts": {
+        "text": "旅は何日間も密集した熱帯ジャングルを切り開いて進むことを意味した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これほど危険なことを試みたバッカニア勢力はかつてなかった。",
+      "text_markdown": "これほど危険なことを試みたバッカニア勢力はかつてなかった。",
+      "tts": {
+        "text": "これほど危険なことを試みたバッカニア勢力はかつてなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンはかつてないほど最大のバッカニア軍を編成した。",
+      "text_markdown": "モーガンはかつてないほど最大のバッカニア軍を編成した。",
+      "tts": {
+        "text": "モーガンはかつてないほど最大のバッカニア軍を編成した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千八百人以上が参加し、三十六隻の船団で航海した。",
+      "text_markdown": "千八百人以上が参加し、三十六隻の船団で航海した。",
+      "tts": {
+        "text": "千八百人以上が参加し、三十六隻の船団で航海した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは千六百七十年十二月にプロビデンス島に集結した。",
+      "text_markdown": "彼らは千六百七十年十二月にプロビデンス島に集結した。",
+      "tts": {
+        "text": "彼らは千六百七十年十二月にプロビデンス島に集結した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初のステップはチャグレス川の河口にあるサン・ロレンソ要塞の攻略だった。",
+      "text_markdown": "最初のステップはチャグレス川の河口にあるサン・ロレンソ要塞の攻略だった。",
+      "tts": {
+        "text": "最初のステップはチャグレス川の河口にあるサン・ロレンソ要塞の攻略だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この要塞はパナマ内陸への川のルートを守っていた。",
+      "text_markdown": "この要塞はパナマ内陸への川のルートを守っていた。",
+      "tts": {
+        "text": "この要塞はパナマ内陸への川のルートを守っていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンは要塞を攻略するために四百人の先遣隊を派遣した。",
+      "text_markdown": "モーガンは要塞を攻略するために四百人の先遣隊を派遣した。",
+      "tts": {
+        "text": "モーガンは要塞を攻略するために四百人の先遣隊を派遣した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "突撃は激烈だった。",
+      "text_markdown": "突撃は激烈だった。",
+      "tts": {
+        "text": "突撃は激烈だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バッカニアたちは手榴弾と攻城はしごで城壁を攻撃した。",
+      "text_markdown": "バッカニアたちは手榴弾と攻城はしごで城壁を攻撃した。",
+      "tts": {
+        "text": "バッカニアたちは手榴弾と攻城はしごで城壁を攻撃した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦いの最中、バッカニアの一人が矢に射られた。",
+      "text_markdown": "戦いの最中、バッカニアの一人が矢に射られた。",
+      "tts": {
+        "text": "戦いの最中、バッカニアの一人が矢に射られた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はそれを体から引き抜き、綿で包んでマスケット銃から撃ち返した。",
+      "text_markdown": "彼はそれを体から引き抜き、綿で包んでマスケット銃から撃ち返した。",
+      "tts": {
+        "text": "彼はそれを体から引き抜き、綿で包んでマスケット銃から撃ち返した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "燃える矢が要塞の茅葺き屋根に火をつけた。",
+      "text_markdown": "燃える矢が要塞の茅葺き屋根に火をつけた。",
+      "tts": {
+        "text": "燃える矢が要塞の茅葺き屋根に火をつけた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火は要塞内の木造建築に急速に広がった。",
+      "text_markdown": "火は要塞内の木造建築に急速に広がった。",
+      "tts": {
+        "text": "火は要塞内の木造建築に急速に広がった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "火薬庫が爆発し、数十人のスペイン守備兵が死亡した。",
+      "text_markdown": "火薬庫が爆発し、数十人のスペイン守備兵が死亡した。",
+      "tts": {
+        "text": "火薬庫が爆発し、数十人のスペイン守備兵が死亡した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "朝までに要塞はバッカニアの手に落ちた。",
+      "text_markdown": "朝までに要塞はバッカニアの手に落ちた。",
+      "tts": {
+        "text": "朝までに要塞はバッカニアの手に落ちた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その後モーガンは主力をカヌーでチャグレス川を遡上させた。",
+      "text_markdown": "その後モーガンは主力をカヌーでチャグレス川を遡上させた。",
+      "tts": {
+        "text": "その後モーガンは主力をカヌーでチャグレス川を遡上させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旅は地球上で最も困難な地形を九日間かけて進んだ。",
+      "text_markdown": "旅は地球上で最も困難な地形を九日間かけて進んだ。",
+      "tts": {
+        "text": "旅は地球上で最も困難な地形を九日間かけて進んだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "三日目に食料が尽きた。",
+      "text_markdown": "三日目に食料が尽きた。",
+      "tts": {
+        "text": "三日目に食料が尽きた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは革の鞄を食べ、靴を煮て、葉を噛んだ。",
+      "text_markdown": "彼らは革の鞄を食べ、靴を煮て、葉を噛んだ。",
+      "tts": {
+        "text": "彼らは革の鞄を食べ、靴を煮て、葉を噛んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "飢えで倒れる者もおり、仲間が担いで運ばなければならなかった。",
+      "text_markdown": "飢えで倒れる者もおり、仲間が担いで運ばなければならなかった。",
+      "tts": {
+        "text": "飢えで倒れる者もおり、仲間が担いで運ばなければならなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ついに地峡の太平洋側に到達したとき、男たちは歓声を上げた。",
+      "text_markdown": "ついに地峡の太平洋側に到達したとき、男たちは歓声を上げた。",
+      "tts": {
+        "text": "ついに地峡の太平洋側に到達したとき、男たちは歓声を上げた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "遠くにパナマ・シティの塔が見えた。",
+      "text_markdown": "遠くにパナマ・シティの塔が見えた。",
+      "tts": {
+        "text": "遠くにパナマ・シティの塔が見えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペイン総督は都市を守るために約二千六百人の軍勢を集めていた。",
+      "text_markdown": "スペイン総督は都市を守るために約二千六百人の軍勢を集めていた。",
+      "tts": {
+        "text": "スペイン総督は都市を守るために約二千六百人の軍勢を集めていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はまた野生の雄牛の群れを二つ連れてきており、バッカニアの隊列に突進させる計画だった。",
+      "text_markdown": "彼はまた野生の雄牛の群れを二つ連れてきており、バッカニアの隊列に突進させる計画だった。",
+      "tts": {
+        "text": "彼はまた野生の雄牛の群れを二つ連れてきており、バッカニアの隊列に突進させる計画だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パナマの戦いは千六百七十一年一月二十八日に行われた。",
+      "text_markdown": "パナマの戦いは千六百七十一年一月二十八日に行われた。",
+      "tts": {
+        "text": "パナマの戦いは千六百七十一年一月二十八日に行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンは城壁の外の開けた地面に部下を配置した。",
+      "text_markdown": "モーガンは城壁の外の開けた地面に部下を配置した。",
+      "tts": {
+        "text": "モーガンは城壁の外の開けた地面に部下を配置した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインの騎兵が最初に突撃したが、バッカニアたちは持ちこたえた。",
+      "text_markdown": "スペインの騎兵が最初に突撃したが、バッカニアたちは持ちこたえた。",
+      "tts": {
+        "text": "スペインの騎兵が最初に突撃したが、バッカニアたちは持ちこたえた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らのマスケット銃の火は近距離で壊滅的だった。",
+      "text_markdown": "彼らのマスケット銃の火は近距離で壊滅的だった。",
+      "tts": {
+        "text": "彼らのマスケット銃の火は近距離で壊滅的だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "騎兵は数分以内に壊滅した。",
+      "text_markdown": "騎兵は数分以内に壊滅した。",
+      "tts": {
+        "text": "騎兵は数分以内に壊滅した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雄牛たちが放たれたが、間違った方向に暴走した。",
+      "text_markdown": "雄牛たちが放たれたが、間違った方向に暴走した。",
+      "tts": {
+        "text": "雄牛たちが放たれたが、間違った方向に暴走した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一部はスペイン軍の隊列を逆走し、混乱を増大させた。",
+      "text_markdown": "一部はスペイン軍の隊列を逆走し、混乱を増大させた。",
+      "tts": {
+        "text": "一部はスペイン軍の隊列を逆走し、混乱を増大させた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインの歩兵は崩壊し、都市に向かって逃走した。",
+      "text_markdown": "スペインの歩兵は崩壊し、都市に向かって逃走した。",
+      "tts": {
+        "text": "スペインの歩兵は崩壊し、都市に向かって逃走した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンのバッカニアたちは通りを追撃した。",
+      "text_markdown": "モーガンのバッカニアたちは通りを追撃した。",
+      "tts": {
+        "text": "モーガンのバッカニアたちは通りを追撃した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの場所で戦闘は残忍で白兵戦となった。",
+      "text_markdown": "多くの場所で戦闘は残忍で白兵戦となった。",
+      "tts": {
+        "text": "多くの場所で戦闘は残忍で白兵戦となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦闘中またはその直後、パナマ・シティで大火災が発生した。",
+      "text_markdown": "戦闘中またはその直後、パナマ・シティで大火災が発生した。",
+      "tts": {
+        "text": "戦闘中またはその直後、パナマ・シティで大火災が発生した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンの部下かスペインの守備兵のどちらが火をつけたかは議論の的のままだ。",
+      "text_markdown": "モーガンの部下かスペインの守備兵のどちらが火をつけたかは議論の的のままだ。",
+      "tts": {
+        "text": "モーガンの部下かスペインの守備兵のどちらが火をつけたかは議論の的のままだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "火災は数時間以内に都市の大部分を破壊した。",
+      "text_markdown": "火災は数時間以内に都市の大部分を破壊した。",
+      "tts": {
+        "text": "火災は数時間以内に都市の大部分を破壊した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バッカニアたちは四週間にわたって廃墟の中で宝を探した。",
+      "text_markdown": "バッカニアたちは四週間にわたって廃墟の中で宝を探した。",
+      "tts": {
+        "text": "バッカニアたちは四週間にわたって廃墟の中で宝を探した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "捕虜を尋問し、がれきを掘った。",
+      "text_markdown": "捕虜を尋問し、がれきを掘った。",
+      "tts": {
+        "text": "捕虜を尋問し、がれきを掘った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "都市の富の多くは戦闘前に船に積まれて南に送られていた。",
+      "text_markdown": "都市の富の多くは戦闘前に船に積まれて南に送られていた。",
+      "tts": {
+        "text": "都市の富の多くは戦闘前に船に積まれて南に送られていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "略奪品は兵たちが期待していたよりも少なかった。",
+      "text_markdown": "略奪品は兵たちが期待していたよりも少なかった。",
+      "tts": {
+        "text": "略奪品は兵たちが期待していたよりも少なかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "分配されたとき、各人がポルトベロで得たものよりはるかに少なかった。",
+      "text_markdown": "分配されたとき、各人がポルトベロで得たものよりはるかに少なかった。",
+      "tts": {
+        "text": "分配されたとき、各人がポルトベロで得たものよりはるかに少なかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの者がモーガンが自分のために宝を隠していると非難した。",
+      "text_markdown": "多くの者がモーガンが自分のために宝を隠していると非難した。",
+      "tts": {
+        "text": "多くの者がモーガンが自分のために宝を隠していると非難した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンはこれらの非難を否定したが、不満はやむことがなかった。",
+      "text_markdown": "モーガンはこれらの非難を否定したが、不満はやむことがなかった。",
+      "tts": {
+        "text": "モーガンはこれらの非難を否定したが、不満はやむことがなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は軍をカリブ海沿岸まで地峡を越えて率いて帰った。",
+      "text_markdown": "彼は軍をカリブ海沿岸まで地峡を越えて率いて帰った。",
+      "tts": {
+        "text": "彼は軍をカリブ海沿岸まで地峡を越えて率いて帰った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンが知らないうちに、イングランドとスペインの間ですでに平和条約が締結されていた。",
+      "text_markdown": "モーガンが知らないうちに、イングランドとスペインの間ですでに平和条約が締結されていた。",
+      "tts": {
+        "text": "モーガンが知らないうちに、イングランドとスペインの間ですでに平和条約が締結されていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マドリード条約は千六百七十年七月に合意されており、パナマ襲撃の数か月前のことだった。",
+      "text_markdown": "マドリード条約は千六百七十年七月に合意されており、パナマ襲撃の数か月前のことだった。",
+      "tts": {
+        "text": "マドリード条約は千六百七十年七月に合意されており、パナマ襲撃の数か月前のことだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その条件の下で、両国は互いの植民地への攻撃をやめることに同意した。",
+      "text_markdown": "その条件の下で、両国は互いの植民地への攻撃をやめることに同意した。",
+      "tts": {
+        "text": "その条件の下で、両国は互いの植民地への攻撃をやめることに同意した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パナマ・シティの破壊は外交危機を引き起こした。",
+      "text_markdown": "パナマ・シティの破壊は外交危機を引き起こした。",
+      "tts": {
+        "text": "パナマ・シティの破壊は外交危機を引き起こした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインは激怒し、イングランドに責任者の処罰を要求した。",
+      "text_markdown": "スペインは激怒し、イングランドに責任者の処罰を要求した。",
+      "tts": {
+        "text": "スペインは激怒し、イングランドに責任者の処罰を要求した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "パナマの略奪",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "パナマの略奪は新条約に対する想像し得る最も劇的な違反であった。",
+      "text_markdown": "パナマの略奪は新条約に対する想像し得る最も劇的な違反であった。",
+      "tts": {
+        "text": "パナマの略奪は新条約に対する想像し得る最も劇的な違反であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "海賊から総督へ",
+      "text_markdown": "海賊から総督へ"
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イングランド政府はスペインの怒りを鎮める必要があった。",
+      "text_markdown": "イングランド政府はスペインの怒りを鎮める必要があった。",
+      "tts": {
+        "text": "イングランド政府はスペインの怒りを鎮める必要があった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千六百七十二年、モディフォード総督とヘンリー・モーガンの両者がロンドンに召還された。",
+      "text_markdown": "千六百七十二年、モディフォード総督とヘンリー・モーガンの両者がロンドンに召還された。",
+      "tts": {
+        "text": "千六百七十二年、モディフォード総督とヘンリー・モーガンの両者がロンドンに召還された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モディフォードは象徴的な処罰としてロンドン塔に投獄された。",
+      "text_markdown": "モディフォードは象徴的な処罰としてロンドン塔に投獄された。",
+      "tts": {
+        "text": "モディフォードは象徴的な処罰としてロンドン塔に投獄された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンは裁判にかけられることを覚悟してイングランドに到着した。",
+      "text_markdown": "モーガンは裁判にかけられることを覚悟してイングランドに到着した。",
+      "tts": {
+        "text": "モーガンは裁判にかけられることを覚悟してイングランドに到着した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかし彼は犯罪者というよりも名士として扱われていることに気がついた。",
+      "text_markdown": "しかし彼は犯罪者というよりも名士として扱われていることに気がついた。",
+      "tts": {
+        "text": "しかし彼は犯罪者というよりも名士として扱われていることに気がついた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "国王チャールズ二世はモーガンの功績を密かに喜んでいた。",
+      "text_markdown": "国王チャールズ二世はモーガンの功績を密かに喜んでいた。",
+      "tts": {
+        "text": "国王チャールズ二世はモーガンの功績を密かに喜んでいた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "パナマの略奪はスペインに恥をかかせ、カリブ海におけるイングランドの力を示した。",
+      "text_markdown": "パナマの略奪はスペインに恥をかかせ、カリブ海におけるイングランドの力を示した。",
+      "tts": {
+        "text": "パナマの略奪はスペインに恥をかかせ、カリブ海におけるイングランドの力を示した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらは国王が歓迎する結果であったが、公にはそう言えなかった。",
+      "text_markdown": "これらは国王が歓迎する結果であったが、公にはそう言えなかった。",
+      "tts": {
+        "text": "これらは国王が歓迎する結果であったが、公にはそう言えなかった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンはロンドンで約三年を過ごした。",
+      "text_markdown": "モーガンはロンドンで約三年を過ごした。",
+      "tts": {
+        "text": "モーガンはロンドンで約三年を過ごした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "貴族たちと夕食を共にし、カリブ海問題について政府に助言し、快適に暮らした。",
+      "text_markdown": "貴族たちと夕食を共にし、カリブ海問題について政府に助言し、快適に暮らした。",
+      "tts": {
+        "text": "貴族たちと夕食を共にし、カリブ海問題について政府に助言し、快適に暮らした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は首都のコーヒーハウスや応接間でおなじみの人物となった。",
+      "text_markdown": "彼は首都のコーヒーハウスや応接間でおなじみの人物となった。",
+      "tts": {
+        "text": "彼は首都のコーヒーハウスや応接間でおなじみの人物となった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百七十四年、チャールズ国王は驚くべき決定を下した。",
+      "text_markdown": "千六百七十四年、チャールズ国王は驚くべき決定を下した。",
+      "tts": {
+        "text": "千六百七十四年、チャールズ国王は驚くべき決定を下した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヘンリー・モーガンをナイトに叙し、ヘンリー・モーガン卿とした。",
+      "text_markdown": "ヘンリー・モーガンをナイトに叙し、ヘンリー・モーガン卿とした。",
+      "tts": {
+        "text": "ヘンリー・モーガンをナイトに叙し、ヘンリー・モーガン卿とした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そしてモーガンをジャマイカの副総督に任命した。",
+      "text_markdown": "そしてモーガンをジャマイカの副総督に任命した。",
+      "tts": {
+        "text": "そしてモーガンをジャマイカの副総督に任命した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "平和条約に違反してパナマ・シティを略奪した男が、今やジャマイカを統治するために送り返されることになった。",
+      "text_markdown": "平和条約に違反してパナマ・シティを略奪した男が、今やジャマイカを統治するために送り返されることになった。",
+      "tts": {
+        "text": "平和条約に違反してパナマ・シティを略奪した男が、今やジャマイカを統治するために送り返されることになった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは植民地史上最も驚くべき運命の逆転の一つだった。",
+      "text_markdown": "それは植民地史上最も驚くべき運命の逆転の一つだった。",
+      "tts": {
+        "text": "それは植民地史上最も驚くべき運命の逆転の一つだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンは千六百七十六年にジャマイカに戻り、新しい職務に就いた。",
+      "text_markdown": "モーガンは千六百七十六年にジャマイカに戻り、新しい職務に就いた。",
+      "tts": {
+        "text": "モーガンは千六百七十六年にジャマイカに戻り、新しい職務に就いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の役割は新総督ヴォーン卿の下で仕えることだった。",
+      "text_markdown": "彼の役割は新総督ヴォーン卿の下で仕えることだった。",
+      "tts": {
+        "text": "彼の役割は新総督ヴォーン卿の下で仕えることだった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "皮肉なことに、モーガンの任務の一つは海賊行為の取り締まりだった。",
+      "text_markdown": "皮肉なことに、モーガンの任務の一つは海賊行為の取り締まりだった。",
+      "tts": {
+        "text": "皮肉なことに、モーガンの任務の一つは海賊行為の取り締まりだった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランドは今やスペインとの平和を望んでおり、バッカニアはもはや有用ではなくなっていた。",
+      "text_markdown": "イングランドは今やスペインとの平和を望んでおり、バッカニアはもはや有用ではなくなっていた。",
+      "tts": {
+        "text": "イングランドは今やスペインとの平和を望んでおり、バッカニアはもはや有用ではなくなっていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンにはかつての仲間を従わせることが期待されていた。",
+      "text_markdown": "モーガンにはかつての仲間を従わせることが期待されていた。",
+      "tts": {
+        "text": "モーガンにはかつての仲間を従わせることが期待されていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は意欲にむらがありながらもこの任務を遂行した。",
+      "text_markdown": "彼は意欲にむらがありながらもこの任務を遂行した。",
+      "tts": {
+        "text": "彼は意欲にむらがありながらもこの任務を遂行した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何人かの海賊を逮捕し数人を絞首刑にしたが、密かに他の者たちを助けているとも非難された。",
+      "text_markdown": "何人かの海賊を逮捕し数人を絞首刑にしたが、密かに他の者たちを助けているとも非難された。",
+      "tts": {
+        "text": "何人かの海賊を逮捕し数人を絞首刑にしたが、密かに他の者たちを助けているとも非難された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の忠誠心は常に複雑だった。",
+      "text_markdown": "彼の忠誠心は常に複雑だった。",
+      "tts": {
+        "text": "彼の忠誠心は常に複雑だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヴォーン卿とモーガンはしばしば衝突した。",
+      "text_markdown": "ヴォーン卿とモーガンはしばしば衝突した。",
+      "tts": {
+        "text": "ヴォーン卿とモーガンはしばしば衝突した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヴォーンはモーガンを粗野で信用できないと考えていた。",
+      "text_markdown": "ヴォーンはモーガンを粗野で信用できないと考えていた。",
+      "tts": {
+        "text": "ヴォーンはモーガンを粗野で信用できないと考えていた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンはヴォーンをカリブ海の現実を理解しない弱いリーダーだと考えていた。",
+      "text_markdown": "モーガンはヴォーンをカリブ海の現実を理解しない弱いリーダーだと考えていた。",
+      "tts": {
+        "text": "モーガンはヴォーンをカリブ海の現実を理解しない弱いリーダーだと考えていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年月が経つにつれ、モーガンは裕福なジャマイカの農園主の生活に落ち着いた。",
+      "text_markdown": "年月が経つにつれ、モーガンは裕福なジャマイカの農園主の生活に落ち着いた。",
+      "tts": {
+        "text": "年月が経つにつれ、モーガンは裕福なジャマイカの農園主の生活に落ち着いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はいくつかの大きな地所と数百人の奴隷労働者を所有していた。",
+      "text_markdown": "彼はいくつかの大きな地所と数百人の奴隷労働者を所有していた。",
+      "tts": {
+        "text": "彼はいくつかの大きな地所と数百人の奴隷労働者を所有していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "また大酒飲みでもあった。",
+      "text_markdown": "また大酒飲みでもあった。",
+      "tts": {
+        "text": "また大酒飲みでもあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "訪問者たちは彼を赤ら顔で太り気味で、しばしば病気だと述べた。",
+      "text_markdown": "訪問者たちは彼を赤ら顔で太り気味で、しばしば病気だと述べた。",
+      "tts": {
+        "text": "訪問者たちは彼を赤ら顔で太り気味で、しばしば病気だと述べた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の健康は千六百八十年代を通じて着実に衰えた。",
+      "text_markdown": "彼の健康は千六百八十年代を通じて着実に衰えた。",
+      "tts": {
+        "text": "彼の健康は千六百八十年代を通じて着実に衰えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千六百八十三年、新総督によりジャマイカ評議会から解任された。",
+      "text_markdown": "千六百八十三年、新総督によりジャマイカ評議会から解任された。",
+      "tts": {
+        "text": "千六百八十三年、新総督によりジャマイカ評議会から解任された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンは海賊に同情的すぎ、しばしば酔いすぎて統治できないと非難された。",
+      "text_markdown": "モーガンは海賊に同情的すぎ、しばしば酔いすぎて統治できないと非難された。",
+      "tts": {
+        "text": "モーガンは海賊に同情的すぎ、しばしば酔いすぎて統治できないと非難された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最後の年月を農園で過ごし、公の生活からほぼ退いた。",
+      "text_markdown": "最後の年月を農園で過ごし、公の生活からほぼ退いた。",
+      "tts": {
+        "text": "最後の年月を農園で過ごし、公の生活からほぼ退いた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハンス・スローンという医師が最後の数か月にモーガンを訪問した。",
+      "text_markdown": "ハンス・スローンという医師が最後の数か月にモーガンを訪問した。",
+      "tts": {
+        "text": "ハンス・スローンという医師が最後の数か月にモーガンを訪問した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スローンはモーガンを衰弱し黄疸を呈していると述べた。肝不全の明らかな兆候だった。",
+      "text_markdown": "スローンはモーガンを衰弱し黄疸を呈していると述べた。肝不全の明らかな兆候だった。",
+      "tts": {
+        "text": "スローンはモーガンを衰弱し黄疸を呈していると述べた。肝不全の明らかな兆候だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・モーガンは千六百八十八年八月二十五日に五十三歳で死去した。",
+      "text_markdown": "ヘンリー・モーガンは千六百八十八年八月二十五日に五十三歳で死去した。",
+      "tts": {
+        "text": "ヘンリー・モーガンは千六百八十八年八月二十五日に五十三歳で死去した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "死因はほぼ確実に長年の大量飲酒による肝臓疾患だった。",
+      "text_markdown": "死因はほぼ確実に長年の大量飲酒による肝臓疾患だった。",
+      "tts": {
+        "text": "死因はほぼ確実に長年の大量飲酒による肝臓疾患だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ポート・ロイヤルで国葬が執り行われた。",
+      "text_markdown": "ポート・ロイヤルで国葬が執り行われた。",
+      "tts": {
+        "text": "ポート・ロイヤルで国葬が執り行われた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "港の船が弔砲を発射した。",
+      "text_markdown": "港の船が弔砲を発射した。",
+      "tts": {
+        "text": "港の船が弔砲を発射した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は海を見渡すパリセードズ墓地に埋葬された。",
+      "text_markdown": "彼は海を見渡すパリセードズ墓地に埋葬された。",
+      "tts": {
+        "text": "彼は海を見渡すパリセードズ墓地に埋葬された。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四年後の千六百九十二年、大地震がポート・ロイヤルを壊滅させた。",
+      "text_markdown": "四年後の千六百九十二年、大地震がポート・ロイヤルを壊滅させた。",
+      "tts": {
+        "text": "四年後の千六百九十二年、大地震がポート・ロイヤルを壊滅させた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "都市の三分の二が海に沈んだ。",
+      "text_markdown": "都市の三分の二が海に沈んだ。",
+      "tts": {
+        "text": "都市の三分の二が海に沈んだ。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "モーガンの墓は海に飲み込まれた墓地の一部に含まれていた。",
+      "text_markdown": "モーガンの墓は海に飲み込まれた墓地の一部に含まれていた。",
+      "tts": {
+        "text": "モーガンの墓は海に飲み込まれた墓地の一部に含まれていた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の遺体は回収されていない。",
+      "text_markdown": "彼の遺体は回収されていない。",
+      "tts": {
+        "text": "彼の遺体は回収されていない。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "海賊から総督へ",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地球上で最も邪悪な都市と、そこを住処とした最も有名なバッカニアは、ともに波間に消えた。",
+      "text_markdown": "地球上で最も邪悪な都市と、そこを住処とした最も有名なバッカニアは、ともに波間に消えた。",
+      "tts": {
+        "text": "地球上で最も邪悪な都市と、そこを住処とした最も有名なバッカニアは、ともに波間に消えた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "キャプテン・モーガンの伝説",
+      "text_markdown": "キャプテン・モーガンの伝説"
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・モーガンの物語は三百年以上にわたって語り継がれてきた。",
+      "text_markdown": "ヘンリー・モーガンの物語は三百年以上にわたって語り継がれてきた。",
+      "tts": {
+        "text": "ヘンリー・モーガンの物語は三百年以上にわたって語り継がれてきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は歴史上最も有名な海賊の一人であるが、本人は海賊ではないと常に主張していた。",
+      "text_markdown": "彼は歴史上最も有名な海賊の一人であるが、本人は海賊ではないと常に主張していた。",
+      "tts": {
+        "text": "彼は歴史上最も有名な海賊の一人であるが、本人は海賊ではないと常に主張していた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "生前からモーガンはすでに伝説になりつつあった。",
+      "text_markdown": "生前からモーガンはすでに伝説になりつつあった。",
+      "tts": {
+        "text": "生前からモーガンはすでに伝説になりつつあった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アレクサンドル・エクスケメリンというオランダ人作家が千六百七十八年にモーガンの襲撃の記録を出版した。",
+      "text_markdown": "アレクサンドル・エクスケメリンというオランダ人作家が千六百七十八年にモーガンの襲撃の記録を出版した。",
+      "tts": {
+        "text": "アレクサンドル・エクスケメリンというオランダ人作家が千六百七十八年にモーガンの襲撃の記録を出版した。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その本の題名は『アメリカの海賊たち』であった。",
+      "text_markdown": "その本の題名は『アメリカの海賊たち』であった。",
+      "tts": {
+        "text": "その本の題名は『アメリカの海賊たち』であった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "エクスケメリンはモーガンの下で従軍し、記述した多くの出来事を目撃していた。",
+      "text_markdown": "エクスケメリンはモーガンの下で従軍し、記述した多くの出来事を目撃していた。",
+      "tts": {
+        "text": "エクスケメリンはモーガンの下で従軍し、記述した多くの出来事を目撃していた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の本はヨーロッパ中でベストセラーとなった。",
+      "text_markdown": "彼の本はヨーロッパ中でベストセラーとなった。",
+      "tts": {
+        "text": "彼の本はヨーロッパ中でベストセラーとなった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは何世紀にもわたってカリブ海のバッカニアの大衆的イメージを形作った。",
+      "text_markdown": "それは何世紀にもわたってカリブ海のバッカニアの大衆的イメージを形作った。",
+      "tts": {
+        "text": "それは何世紀にもわたってカリブ海のバッカニアの大衆的イメージを形作った。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンは自分が年季奉公人だったと主張したイングランドの出版社を訴えた。",
+      "text_markdown": "モーガンは自分が年季奉公人だったと主張したイングランドの出版社を訴えた。",
+      "tts": {
+        "text": "モーガンは自分が年季奉公人だったと主張したイングランドの出版社を訴えた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "裁判に勝ち損害賠償を得たが、本は売れ続けた。",
+      "text_markdown": "裁判に勝ち損害賠償を得たが、本は売れ続けた。",
+      "tts": {
+        "text": "裁判に勝ち損害賠償を得たが、本は売れ続けた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンの遺産は複雑である。",
+      "text_markdown": "モーガンの遺産は複雑である。",
+      "tts": {
+        "text": "モーガンの遺産は複雑である。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イングランド人にとって彼はジャマイカを守りスペインを辱めた国民的英雄だった。",
+      "text_markdown": "イングランド人にとって彼はジャマイカを守りスペインを辱めた国民的英雄だった。",
+      "tts": {
+        "text": "イングランド人にとって彼はジャマイカを守りスペインを辱めた国民的英雄だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p114",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペイン人にとって彼は都市を焼き無辜の人々を拷問した戦争犯罪者だった。",
+      "text_markdown": "スペイン人にとって彼は都市を焼き無辜の人々を拷問した戦争犯罪者だった。",
+      "tts": {
+        "text": "スペイン人にとって彼は都市を焼き無辜の人々を拷問した戦争犯罪者だった。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現代の歴史家たちは彼を時代の産物と見ている。",
+      "text_markdown": "現代の歴史家たちは彼を時代の産物と見ている。",
+      "tts": {
+        "text": "現代の歴史家たちは彼を時代の産物と見ている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼が行った暴力は極端だったが、政府の全面的支援のもとで行われた。",
+      "text_markdown": "彼が行った暴力は極端だったが、政府の全面的支援のもとで行われた。",
+      "tts": {
+        "text": "彼が行った暴力は極端だったが、政府の全面的支援のもとで行われた。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "モーガンはその残忍さにおいて特異ではなかった。",
+      "text_markdown": "モーガンはその残忍さにおいて特異ではなかった。",
+      "tts": {
+        "text": "モーガンはその残忍さにおいて特異ではなかった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペインの兵士たちもイングランドの入植者に対して同様の残虐行為を行った。",
+      "text_markdown": "スペインの兵士たちもイングランドの入植者に対して同様の残虐行為を行った。",
+      "tts": {
+        "text": "スペインの兵士たちもイングランドの入植者に対して同様の残虐行為を行った。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p116",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "違いはモーガンがこれほど壮大な規模で成功したということだ。",
+      "text_markdown": "違いはモーガンがこれほど壮大な規模で成功したということだ。",
+      "tts": {
+        "text": "違いはモーガンがこれほど壮大な規模で成功したということだ。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日、モーガンの名前はラム酒のブランドを通じて最も広く知られている。",
+      "text_markdown": "今日、モーガンの名前はラム酒のブランドを通じて最も広く知られている。",
+      "tts": {
+        "text": "今日、モーガンの名前はラム酒のブランドを通じて最も広く知られている。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルコールが彼を殺した可能性が高いことを考えると、その皮肉を見逃すのは難しい。",
+      "text_markdown": "アルコールが彼を殺した可能性が高いことを考えると、その皮肉を見逃すのは難しい。",
+      "tts": {
+        "text": "アルコールが彼を殺した可能性が高いことを考えると、その皮肉を見逃すのは難しい。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "水中考古学者たちはポート・ロイヤルの沈んだ遺跡を調査してきた。",
+      "text_markdown": "水中考古学者たちはポート・ロイヤルの沈んだ遺跡を調査してきた。",
+      "tts": {
+        "text": "水中考古学者たちはポート・ロイヤルの沈んだ遺跡を調査してきた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p118",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "モーガンの時代の建物、居酒屋、遺物が海底に保存されているのが発見された。",
+      "text_markdown": "モーガンの時代の建物、居酒屋、遺物が海底に保存されているのが発見された。",
+      "tts": {
+        "text": "モーガンの時代の建物、居酒屋、遺物が海底に保存されているのが発見された。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p118",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしモーガン自身の墓は依然として見つかっていない。",
+      "text_markdown": "しかしモーガン自身の墓は依然として見つかっていない。",
+      "tts": {
+        "text": "しかしモーガン自身の墓は依然として見つかっていない。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘンリー・モーガンは法と犯罪の境界線が権力者によって自らの利益のために引かれる世界に生きた。",
+      "text_markdown": "ヘンリー・モーガンは法と犯罪の境界線が権力者によって自らの利益のために引かれる世界に生きた。",
+      "tts": {
+        "text": "ヘンリー・モーガンは法と犯罪の境界線が権力者によって自らの利益のために引かれる世界に生きた。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はその境界線を誰よりもうまく利用した。",
+      "text_markdown": "彼はその境界線を誰よりもうまく利用した。",
+      "tts": {
+        "text": "彼はその境界線を誰よりもうまく利用した。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は騎士になった海賊だった。",
+      "text_markdown": "彼は騎士になった海賊だった。",
+      "tts": {
+        "text": "彼は騎士になった海賊だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は総督になった犯罪者だった。",
+      "text_markdown": "彼は総督になった犯罪者だった。",
+      "tts": {
+        "text": "彼は総督になった犯罪者だった。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "キャプテン・モーガンの伝説",
+      "paragraph_id": "p120",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の物語は、歴史の英雄と悪役はしばしば同じ人間であり、異なる岸辺から見ているだけだということを思い出させてくれる。",
+      "text_markdown": "彼の物語は、歴史の英雄と悪役はしばしば同じ人間であり、異なる岸辺から見ているだけだということを思い出させてくれる。",
+      "tts": {
+        "text": "彼の物語は、歴史の英雄と悪役はしばしば同じ人間であり、異なる岸辺から見ているだけだということを思い出させてくれる。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}
