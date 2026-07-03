@@ -5,6 +5,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Scratch page first-load stalled the main thread → brief audio glitch** (#396),
+  even on high-end devices. Loading a snippet ran one uninterrupted synchronous
+  block — two full-waveform word-span passes + buffer-padding + deck build — right
+  as `decodeAudioData` resolved, contending with the running audio callback. Load
+  now **builds and holds the deck first** (so the platter is playable immediately)
+  and **defers the word-span analysis behind yields**, so no single step shares
+  the audio render quantum. The master FX bus is also built in a mount effect
+  instead of the render body, so restoring a saved chain no longer constructs Tone
+  nodes synchronously during render.
+
 ## [0.7.0] - 2026-06-25
 
 ### Added
