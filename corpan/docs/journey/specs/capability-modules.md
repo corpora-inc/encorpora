@@ -62,83 +62,54 @@ tooling; the consumption mechanism is the `@shared` source alias (§3), not npm.
 
 ## 1. The Activity ABI (shared with D2 — canonical types)
 
-`docs/journey/specs/activity-contract.md` does not exist yet; until it lands, **this
-section is the canonical elaboration of D2's shapes**. If a dedicated activity-contract
-spec is written later, it owns these types and this spec defers to it; the shapes below
-restate D2 verbatim and only pin field types.
+`docs/journey/specs/activity-contract.md` **owns these types** (R2/R3); this section
+only states how capabilities consume them.
 
-**Single source of truth in code**: `packs/shared/capabilities/core/src/activity.ts`.
-`corpan-app/src/contentPacks/types.ts` **re-exports** from `@shared/capabilities/core`
-(corpan-app already imports `@shared/*` — `vite.config.ts:91`, `tsconfig.json:28-30`;
-`contentPacks/types.ts` already does this for other shared types). The SDK mirror
-(`packs/sdk/index.d.ts`) gets a documented copy for packs that don't import `@shared` —
-but every capability *consumer* imports `@shared/capabilities/core` directly and never
-touches the SDK copy, which is what kills the SDK-drift failure mode for this contract
-(§3.2). This satisfies course-pack.md §1's "add to types.ts" as a re-export, not a
-second definition.
+**Single source of truth in code**: `corpan-app/src/contentPacks/activityContract.ts`
+(per activity-contract.md §1/§5). `packs/shared/capabilities/core/src/activity.ts` is a
+**synced re-export** of that contract, refreshed by the same `sync-contract.mjs`
+mechanism as the SDK copies, so capability consumers import
+`@shared/capabilities/core` (corpan-app already imports `@shared/*` —
+`vite.config.ts:91`, `tsconfig.json:28-30`) and never hand-copy types — which is what
+kills the SDK-drift failure mode for this contract (§3.2).
 
 ```ts
 // packs/shared/capabilities/core/src/activity.ts
+//
+// The wire types are NOT re-declared here. This file re-exports the one
+// authoritative contract (R2/R3): corpan-app/src/contentPacks/activityContract.ts,
+// vendored into shared/capabilities/core via the same sync-contract.mjs mechanism
+// as the SDK copies (activity-contract.md §5).
 
-/** D3/course-pack.md §1. Serialization: `${kind}:${source}:${id}`. */
-export type ItemKind =
-  | "phrase" | "word" | "char" | "segment"
-  | "grammarNode" | "phoneme" | "concept"
-
-export interface ItemRef { kind: ItemKind; source: string; id: string }
-export function serializeItemRef(r: ItemRef): string
-export function parseItemRef(s: string): ItemRef | null
-// (implementations exactly as specified in course-pack.md §1)
-
-export type ModelNeed = "stt" | "llm" | "tts"
-
-/** D2: one contract for every activity, native or pack or capability. */
-export interface ActivitySpec {
-  /** Unique per issued activity instance (engine-minted or `popin-*`, §5). */
-  specId: string
-  /** What to run. For capabilities this is the capability id, e.g. "cap-pronounce". */
-  activityType: string
-  /** The learnable things this activity exercises (FSRS-keyable, D3). */
-  itemRefs: ItemRef[]
-  /** Capability-specific parameters. Each capability publishes a typed interface (§4). */
-  params?: Record<string, unknown>
-  /** CEFR level hint (course-static, informational to the module). */
-  level?: string
-  /** Soft time budget. Modules SHOULD auto-settle a result when it elapses. */
-  timeboxSec?: number
-  /** Models that must be resident for this activity. The SCHEDULER serializes
-   *  residency (D8); the module may assume its declared needs were arbitrated. */
-  modelNeeds?: ModelNeed[]
-}
-
-export type ItemOutcome = "pass" | "partial" | "fail"
-
-export interface ActivityPerItem {
-  itemRef: ItemRef
-  outcome: ItemOutcome
-  latencyMs?: number
-  hintsUsed?: number
-}
-
-export interface ActivityResult {
-  specId: string
-  /** Normalized 0..1 (corpan-city ChallengeResult precedent, challenge.ts:30). */
-  score: number
-  perItem: ActivityPerItem[]
-  /** Capability-specific evidence (e.g. the whisper word timings). JSON-serializable. */
-  detail?: Record<string, unknown>
-  /** Active wall-clock ms, EXCLUDING paused time (§2.3). */
-  durationMs: number
-  /** True when the run ended without a completed attempt (dispose-before-settle,
-   *  timebox expiry with zero interaction, cancel). Engine grades abandoned ≠ fail. */
-  abandoned?: boolean
-}
+export type {
+  ItemRef, ItemKind, ModelNeed,
+  ActivitySpec, ActivityResult, ActivityItemResult,
+  ActivityOutcome, ActivityDetail,
+} from "./activityContract" // synced copy
+export { itemRefKey, parseItemRef, ACTIVITY_TYPES } from "./activityContract"
 ```
+
+Contract facts capabilities rely on (normative source: activity-contract.md §1):
+
+- `ActivitySpec.activityType` for a capability is the capability id (`cap-pronounce`);
+  `specId` is engine-minted or `popin-*` (§5); `timeboxSec` is a soft budget the
+  module SHOULD auto-settle on; `modelNeeds` residency is arbitrated by the
+  SCHEDULER (D8) before mount.
+- `ActivityResult.score` is normalized 0..1 (corpan-city ChallengeResult precedent);
+  `durationMs` is active wall-clock EXCLUDING paused time (§2.3); `abandoned: true`
+  when the run ended without a completed attempt (dispose-before-settle, timebox
+  expiry with zero interaction, cancel) — the engine grades abandoned ≠ fail.
+- Per-item and result `detail` is the R3 typed envelope
+  (`{ numbers?, flags?, selfReport?, stt? }`) — capability evidence goes there:
+  cap-pronounce puts whisper scores in `stt` and MUST set
+  `flags.sttUnavailable: true` on each per-item result when the STT engine cannot
+  run (feed-ux §6.3 depends on it); synthesized per-item outcomes carry
+  `flags.aggregateBinned: true` (R9).
 
 Notes:
 
 - `perItem.itemRef` is the **object** form (matches D2). The engine serializes with
-  `serializeItemRef` for FSRS keying; capabilities never serialize.
+  `itemRefKey` for FSRS keying; capabilities never serialize.
 - `score` and `outcome` are both required: `score` feeds θ/analytics, `outcome` feeds
   FSRS grade derivation (D4).
 - Everything in `ActivitySpec`/`ActivityResult` must survive `structuredClone` — the
@@ -560,7 +531,7 @@ nothing usable; else `ready`. Never downloads (prepare is local-only).
    slide to next card*. The pack's deck/swipe chrome wraps the capability container.
    Delete the now-dead round code from `game.ts`. Ship (pack version bump; behavior
    identical to the user).
-4. Wire the two new consumers: Journey `speak-after-me` card (§6) and the pop-in
+4. Wire the two new consumers: Journey `speak_echo` card (§6) and the pop-in
    sheet (§5). Neither touches the pack again.
 
 ### 4.2 `cap-squeeze` — from juice-squeeze
@@ -705,8 +676,9 @@ earthgate imports it from `@shared/capabilities/segment-player` — ship. (2) Ex
 tap-to-replay becomes `session.playRange(idx, idx)` — ship (this *deletes* the
 `oneShotTargetSegment` locals from `game.ts`). (3) Add `dataSource.ts` +
 `capability.mount` composing dataSource → `buildTimeline` → `createAudioEngine` →
-paragraphView → session, with the §2.3 settle rules. (4) Journey `read-segment` card +
-future reader consumers. earthgate's main playback path is untouched (it keeps driving
+paragraphView → session, with the §2.3 settle rules. (4) the Journey segment provider card (R4: `read-segment` is not a native
+activityType; segments render as provider cards over cap-segment-player) + future
+reader consumers. earthgate's main playback path is untouched (it keeps driving
 `createAudioEngine` directly with its background machinery).
 
 ---
@@ -756,7 +728,7 @@ consume them as bonus review evidence once calibrated; log-only first.
    unchanged; the phrase-level target binds outside word hit-targets — the existing
    `WordExplanationText` gesture code is reused via `usePhrasePopIn`, not duplicated.
 2. **Journey feed cards** — every native card that displays a target-language phrase
-   (cloze, match, read-segment text, etc.) binds `usePhrasePopIn` on its phrase
+   (cloze, match_pairs, segment text, etc.) binds `usePhrasePopIn` on its phrase
    element. The pop-in pauses the underlying card (`handle.pause()` on the card's
    capability if any) while open.
 3. **Readers / other packs** — deferred past v1 (requires pack rebuilds; the seam is a
@@ -925,10 +897,10 @@ jsdom or desktop browsers.
 1. `core` (types + mock + contract suite) — unblocks everything; corpan-app
    `types.ts` re-export lands here (with the D2 seam work).
 2. `cap-pronounce` extraction steps 1-3 (pack keeps shipping) → Journey
-   `speak-after-me` card consumes it (D11 lists STT cards) → pop-in sheet on
+   `speak_echo` card consumes it (D11 lists STT cards) → pop-in sheet on
    Phrase Flip + Journey cards.
 3. `cap-segment-player` (small; earthgate is v0.7.x stable — steps are low-risk
-   moves) → Journey `read-segment` card (replaces the D11 plan of remounting
+   moves) → Journey segment provider card (replaces the D11 plan of remounting
    earthgate for everyday segment cards; the full reader remains an anchor card).
 4. `cap-squeeze` (React boundary; juice-squeeze is stable-channel — highest care,
    ship behind its normal release process).

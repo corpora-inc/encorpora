@@ -1,7 +1,7 @@
 # Journey Engine — Implementation Spec
 
 **Status: v1.0 implementable spec. Elaborates ARCHITECTURE `D4` (engine) and `D5` (storage).**
-**Design source: `research/adaptivity.md` (adopted wholesale per D4). Strand math: `research/pedagogy.md` §12. Storage: `codebase/app-shell.md` §2/§7 + `corpan-app/src/store/catalog.ts:185-194` + `corpan-app/src/util/storage/index.ts`.**
+**Design source: `research/adaptivity.md` (adopted wholesale per D4). Strand math: `research/pedagogy.md` §12. Storage: `specs/storage-analytics.md` §3.7 (normative for `EnginePersistence` — R15).**
 **Verified against the code and the published `ts-fsrs@5.4.1` package on 2026-07-03.**
 
 Decisions in ARCHITECTURE.md are settled; this document only pins down what they left
@@ -18,8 +18,11 @@ Hard rules (enforced by tests, §8.1):
 
 1. **Pure TS.** No module under `corpan-app/src/journey/engine/` may reference `window`,
    `document`, `localStorage`, `indexedDB`, `navigator`, Tauri APIs, or React —
-   **except** the single persistence adapter `persistence/idb.ts` (the injected edge).
-   Type-only imports (`import type`) from `contentPacks/types.ts` are permitted
+   **no exceptions**. The impure persistence edge lives OUTSIDE the engine, in
+   `src/journey/persistence.ts`, which wires the `EnginePersistence` adapter defined
+   normatively in `specs/storage-analytics.md` §3.7 (R15). Type-only imports
+   (`import type`) from `contentPacks/types.ts` (incl. `activityContract.ts`) and from
+   `@/lib/storage` (the `DocStore`/`AppendLog`/`KVStore` interfaces) are permitted
    (erased at compile time).
 2. **No wall clock in core.** `Date.now()` / `new Date()` are banned everywhere in the
    engine except `clock.ts` (which provides the production `Clock`). All core logic
@@ -47,7 +50,7 @@ defines the engine's *interfaces to* each of those.
 ```
 corpan-app/src/journey/engine/
 ├── index.ts               # public barrel: createJourneyEngine, types, JOURNEY_FSRS_PARAMS,
-│                          #   createIdbPersistence, createMemoryPersistence
+│                          #   createMemoryPersistence, itemCardCodec
 ├── types.ts               # every serialized + API type in §2 (single source of truth)
 ├── constants.ts           # all tunable numbers (quotas, thresholds, windows) — one file,
 │                          #   so simulation sweeps patch exactly one module
@@ -66,20 +69,22 @@ corpan-app/src/journey/engine/
 ├── strands.ts             # strand accounting: 2-week tally + last-40 window + stage
 │                          #   ratio targets (pedagogy §12.1) + deficit computation
 ├── pools.ts               # DUE/REPLAY/NEW/REPAIR/TRICKLE/FUN pool construction (§5.2)
+├── lessons.ts             # lesson/checkpoint layer: recipe-slot filling, checkpoint
+│                          #   batches, pass_score gating, welcomeBack + rare rolls (§5.10)
 ├── mixer.ts               # nextFeedItems: slot sampler + constraints + model batching (§5)
 ├── placement.ts           # 3-phase adaptive probe controller + finalize (§4.3)
 ├── leech.ts               # leech detect / presentation-swap / suspend+substitute (§5.7)
 ├── daily.ts               # tickDay: rollover, newPerDay throttle, debt-brake accounting,
-│                          #   level-transition announcements, log pruning (§4.6)
+│                          #   level-transition announcements (§4.6)
 ├── apply.ts               # applyResult update pipeline (§4.4) — composes scheduler,
 │                          #   grading, mastery, theta, flow, leech
 ├── engine.ts              # JourneyEngine facade: owns EngineState, orchestrates
 │                          #   persistence staging/flush, lazy tickDay
 ├── persistence/
-│   ├── types.ts           # EnginePersistence interface + record schemas (§3)
-│   ├── idb.ts             # IndexedDB LARGE-tier adapter (IMPURE — the one exception)
-│   ├── memory.ts          # in-memory adapter (tests + simulation)
-│   └── recover.ts         # pure validation + corruption-recovery ladder (§3.5)
+│   ├── types.ts           # re-exports EnginePersistence (normative home:
+│                          #   specs/storage-analytics.md §3.7) + ItemCardRecord codec (§3)
+│   ├── memory.ts          # in-memory DocStore/AppendLog/KVStore fakes (tests + simulation)
+│   └── recover.ts         # pure engine-level recovery ladder (§3.5)
 └── sim/                   # simulation harness (§7) — dev-only, never bundled by the app
     ├── learner.ts         # synthetic learner memory/latency models + personas
     ├── runner.ts          # day-loop simulator (drives the real engine + memory adapter)
@@ -93,20 +98,22 @@ corpan-app/src/journey/engine/
 ```
 engine.ts ──► apply.ts ──► grading.ts, scheduler.ts, mastery.ts, theta.ts, flow.ts,
    │                        leech.ts, latency.ts
-   ├────────► mixer.ts ──► pools.ts, forms.ts, strands.ts, flow.ts, rng.ts
+   ├────────► mixer.ts ──► pools.ts, lessons.ts, forms.ts, strands.ts, flow.ts, rng.ts
    ├────────► placement.ts ──► theta.ts, graph.ts, rng.ts
    ├────────► daily.ts ──► mastery.ts, strands.ts
    ├────────► persistence/types.ts   (interface only)
    └────────► graph.ts, clock.ts, types.ts, constants.ts
 
 scheduler.ts ──► ts-fsrs            (sole external dependency)
-persistence/idb.ts ──► ../../util/storage (createLocalStorageShim pattern's substrate)
 persistence/recover.ts ──► types.ts, scheduler.ts (log-replay rebuild)
 sim/* ──► engine.ts + persistence/memory.ts  (uses the real public API only)
+
+(the IMPURE adapter wiring — real DocStore/AppendLog/KVStore instances — lives in
+src/journey/persistence.ts, OUTSIDE engine/**; see §3.1 / storage-analytics.md §3.7)
 ```
 
-`index.ts` exports: `createJourneyEngine`, `createIdbPersistence`,
-`createMemoryPersistence`, `JOURNEY_FSRS_PARAMS`, `systemClock`, and all public types.
+`index.ts` exports: `createJourneyEngine`, `createMemoryPersistence`, `itemCardCodec`,
+`JOURNEY_FSRS_PARAMS`, `systemClock`, and all public types.
 Nothing else in the app may deep-import engine internals (boundary test, §8.1).
 
 ### 1.3 ts-fsrs — pin and config (verbatim)
@@ -194,9 +201,11 @@ backwards) is treated as same-day.
 ```ts
 /** Per-item FSRS + engine state. Lazy-created at first SCORED exposure
  *  (intro cards are unscored presentations — adaptivity §5.3). ~64B logical;
- *  25k items ≈ 1.6MB serialized. Persisted in IndexedDB shards (§3.2). */
+ *  25k items ≈ 1.6MB serialized. Persisted as one DocStore doc per item (§3.1). */
 export interface ItemCard {
-  itemId: string               // course-pack item id (stringified ItemRef key, D3)
+  itemId: string               // course-pack item id = itemRefKey(ref) — the ONE
+                               //   colon-form contract helper (R2; table in
+                               //   activity-contract.md §1)
   fsrs: {
     s: number                  // stability (days)
     d: number                  // difficulty 1..10
@@ -218,24 +227,34 @@ export const CardFlags = {
 } as const
 ```
 
-### 2.2 ReviewLogEntry — ring buffer for future on-device optimization
+### 2.2 Review history — the shared local-analytics AppendLog (one source, R15)
+
+The engine keeps **no private review-log table**. The review history IS the local
+analytics `AppendLog` (`specs/storage-analytics.md` §3.5/§4): one `activity_result`
+event per graded `applyResult`, in the shared app-wide log. One writer (the runtime's
+`recordLocal()` path, fed by `ApplyOutcome` — §4.4), two readers: this engine
+(corruption-recovery replay §3.5, future fsrs-browser weight optimization) and the
+storage-analytics aggregation queries. **No second copy.** Ring capacity, pruning, and
+durability policy are owned by storage-analytics.md (namespace registry §3.8), not here.
+
+For recovery/optimizer reads the engine projects `ActivityResultEvent.items` rows into
+a compact in-memory shape (never persisted by the engine):
 
 ```ts
-/** One scored review. Kept as a FIFO ring of the last 20_000 entries (~1.5MB).
- *  Consumed later by fsrs-browser optimization (batch job) and by corruption
- *  recovery replay (§3.5). */
+/** Pure read projection of one graded item inside an activity_result event. */
 export interface ReviewLogEntry {
-  itemId: string
-  ts: number                   // ms epoch (from Clock; audit only, never scheduling input)
-  day: number                  // epoch day (scheduling truth)
+  itemId: string               // event item `ref` (serialized ItemRef)
+  ts: number                   // event envelope ts (audit only, never scheduling input)
+  day: number                  // epoch day derived from envelope `day` (scheduling truth)
   grade: 1 | 2 | 3 | 4
-  fsrs: { s: number; d: number; elapsedDays: number; state: 0|1|2|3 }  // post-review
-  activityType: string
-  form: 0 | 1 | 2
-  latencyMs: number
+  activityType: string         // form is recovered via the ACTIVITY_TYPES registry (R4)
+  latencyMs?: number
   specId: string               // joins back to the issued ActivitySpec
 }
 ```
+
+`scheduler.replay()` rebuilds S/D/state from the grade+day sequence alone (sequential
+`next()` calls), so post-review FSRS state does not need to ride the event.
 
 ### 2.3 SkillState — derived, with explicit memoization
 
@@ -297,7 +316,7 @@ path viz) happens at most once per local day via `announcedLevel` in `tickDay` (
 
 ```ts
 export interface CourseState {
-  courseId: string             // "journey-en"
+  courseId: string             // "journey_en" (underscore-canonical pack id, R1)
   schemaVersion: number        // = ENGINE_SCHEMA (constants.ts); bump ⇒ migrate (§3.4)
 
   // ---- ability scalar (adaptivity §2.3) ----
@@ -330,18 +349,25 @@ export interface CourseState {
   firstWeek?: { results: number; correct: number; cruiseSessions: number } // first-150 check
   jump: { lastOfferedDay: number; consecutiveCruiseSessions: number }
 
+  // ---- lesson/checkpoint layer (R5) ----
+  lesson: {                    // cursor into the active unit's lesson plan
+    unitId: string
+    lessonIndex: number        // index into graph.unitLessons[unitId]
+    slotIndex: number          // next recipe slot to fill (§5.10)
+  } | null                     // null ⇒ free-mix (no unit lesson active)
+  checkpointsPassed: Record<string /*checkpointId*/, number /*epoch day*/>
+
   // ---- housekeeping ----
   sessionCounter: number       // increments per startSession; PRNG seed component
   lastTickDay: number          // lazy tickDay idempotence guard
+  lastActiveDay: number        // last local day with ≥1 scored result (welcomeBack, §4.1)
   latencyBaselines: Record<string /*activityType*/, { logMean: number; n: number }>
-  logSeq: number               // review-log segment head (§3.2)
-  logCount: number             // total rows currently retained
 }
 
 export interface PlacementRecord {
   theta: number; se: number; day: number
   asked: { itemId: string; b: number; correct: boolean }[]
-  outcome: "placed" | "skipped-zero-beginner"
+  outcome: "placed" | "skipped-zero-beginner" | "above-content"   // R10
 }
 ```
 
@@ -383,15 +409,23 @@ export interface IssuedCard {
   issuedAtMs: number
 }
 
-export type PoolTag = "due"|"replay"|"new"|"repair"|"trickle"|"fun"|"probe"|"jump"|"scaffold"
+export type PoolTag = "due"|"replay"|"new"|"repair"|"trickle"|"fun"|"probe"|"jump"|"scaffold"|"checkpoint"
 export type Strand = "input" | "output" | "language" | "fluency"
 ```
 
 ### 2.6 CourseGraph read model (input contract to the D6 pack loader)
 
 The engine consumes a **plain, JSON-serializable** object (so the sim harness can load
-fixture graphs with zero IO). The `journey/store` layer builds it from the course-pack
-SQLite (`content_packs_query_db`); that mapping belongs to the D6 spec.
+fixture graphs with zero IO). The `journey/store` layer builds it via the **normative
+PackReader → CourseGraph loader section in `course-pack.md`** (added per R7): exact SQL
+per CourseGraph field; **keyset pagination** over `intro_order` (the Rust
+`content_packs_query_db` hard-caps at 2,000 rows and truncates SILENTLY); a row-count
+assertion against `pack_meta.item_count` (mismatch = hard boot error, never silent);
+build-time `textLen` column; `substituteIds` = same-skill items with `substitutable=1`
+ordered by `intro_order`; one importance scale with its engine-weight mapping; and the
+cold-start budget (full graph load < 500 ms on reference low-end Android at v0.1
+scale). None of that is re-specified here — this section only fixes the shape the
+engine receives.
 
 ```ts
 export interface CourseGraph {
@@ -417,8 +451,12 @@ export interface CourseGraph {
     textLen: number            // for latency normalization
     kind: ItemRef["kind"]
   }>
-  /** (item kind × form) → renderable activities. Built from pack recipes +
-   *  the native renderer registry. Availability filtering happens per call (§5.1). */
+  /** (item kind × form) → renderable activities. Per-type metadata
+   *  ({ form, strand, guessable, estSec, modelNeeds }) comes from the contract's
+   *  `ACTIVITY_TYPES` registry in `activityContract.ts` — the ONE metadata source
+   *  (R4); the loader copies registry rows for native types and
+   *  `PackActivityDeclaration` rows for `<packId>:<name>` types. Never re-declared
+   *  or hand-edited here. Availability filtering happens per call (§5.1). */
   activityTemplates: {
     activityType: string
     itemKind: ItemRef["kind"]
@@ -429,6 +467,41 @@ export interface CourseGraph {
     modelNeeds: ("stt"|"llm"|"tts")[]
     provider: "native" | string   // pack id for anchor/rare providers
     funWeight?: number            // >0 ⇒ eligible for the FUN pool (game rounds, gems…)
+  }[]
+
+  // ---- lesson/checkpoint layer (R5) — loaded from lesson_recipes/recipe_slots,
+  // ---- unit_lessons, checkpoints, rare_cards (course-pack.md §2) ----
+  lessonRecipes: Record<string, {
+    recipeId: string
+    estMinutes: number
+    slots: {
+      slotType: string           // course-pack slot taxonomy ('review.retrieve', …)
+      activityTypes: string[]    // choices for the mixer, ⊆ ACTIVITY_TYPES ∪ pack types
+      itemSelector: "due"|"new"|"unit"|"known"|"grammar-node"|"l1-phoneme"|"rare"|"none"
+      params?: Record<string, unknown>
+      optional: boolean          // droppable under modelNeeds pressure
+    }[]
+  }>
+  unitLessons: Record<string /*unitId*/, {
+    lessonIndex: number; recipeId: string; params?: Record<string, unknown>
+  }[]>
+  checkpoints: {
+    checkpointId: string
+    scope: "unit" | "arc"
+    unitId?: string; arcId?: string
+    recipeId: string
+    passScore: number            // checkpoints.pass_score — gates position advance (§5.10)
+    params?: Record<string, unknown>
+  }[]
+  rareCards: {
+    rareCardId: string
+    cardType: "delight" | "minigame" | "etymology" | "story"
+    rarityWeight: number
+    minUnitOrdinal?: number      // resolved from min_unit_id at load
+    provider?: string
+    itemId?: string
+    coverageGate?: number
+    params?: Record<string, unknown>
   }[]
 }
 ```
@@ -442,149 +515,115 @@ console warning at load — never a throw).
 
 ## 3. Persistence
 
-### 3.1 Adapter interface (`persistence/types.ts`)
+### 3.1 Adapter interface — consumed from storage-analytics.md (R15, normative there)
+
+`EnginePersistence` is **defined in `specs/storage-analytics.md` §3.7** — that spec is
+normative for the interface, the physical IndexedDB layout, tiers, namespaces, and
+batching. The engine consumes it at construction; `persistence/types.ts` only
+re-exports the type. Quoted for reference:
+
+```ts
+// normative home: specs/storage-analytics.md §3.7
+import type { DocStore, AppendLog, KVStore } from "@/lib/storage"
+
+export interface EnginePersistence {
+  /** FSRS item cards. Doc id = serialized ItemRef (course-pack.md §1).
+   *  ns = `journey-cards:${stackId}:${courseId}`. */
+  itemCards: DocStore<ItemCardRecord>
+  /** THE review history — the shared local analytics log (§2.2 / R15).
+   *  One log, engine + analytics queries as readers; no second copy. */
+  events: AppendLog<LocalAnalyticsEvent>
+  /** Small engine meta: CourseState + SkillScalars[] + placement snapshot.
+   *  ns = `journey-meta:${stackId}:${courseId}`. Keys: "course", "skills". */
+  meta: KVStore
+}
+```
+
+What **this** spec owns (per storage-analytics §3.7): `ItemCardRecord` and its codec.
+`ItemCardRecord = ItemCard` (§2.1), doc id = `itemId`; `itemCardCodec: DocCodec<ItemCard>`
+with `schemaVersion = ENGINE_SCHEMA`, a `parse` that structurally validates every field
+(hand-rolled predicates, no zod — finiteness + range: `s > 0`, `d ∈ [1,10]`, `due`
+within ±10y of now, enums in range; invalid ⇒ `null`, dropped and counted by the
+storage doctor), and a **mandatory `migrate`** for any card schema bump (FSRS card loss
+= re-placement — recoverable but expensive).
+
+`load()` reads `itemCards.getAll()`, `meta.get("course")`, `meta.get("skills")`, runs
+the engine-level recovery ladder (§3.5), and returns
+`{ course?, skills?, cards, recovered: RecoveryReport }`:
 
 ```ts
 export interface EngineKey { stackId: string; courseId: string }
 
-export interface EnginePersistence {
-  /** Read everything for one (stack, course). Missing = fresh learner.
-   *  NEVER throws: corruption is downgraded per the recovery ladder (§3.5)
-   *  and reported in `recovered`. */
-  load(key: EngineKey): Promise<{
-    course?: CourseState
-    skills?: SkillScalars[]
-    cards: ItemCard[]                       // union of all readable shards
-    recovered: RecoveryReport               // what was dropped/rebuilt, for logging
-  }>
-
-  /** Stage mutations (synchronous, in-memory). Cheap; called per applyResult. */
-  stageCard(key: EngineKey, card: ItemCard): void
-  stageCourse(key: EngineKey, course: CourseState): void
-  stageSkills(key: EngineKey, skills: SkillScalars[]): void
-  appendLog(key: EngineKey, entries: ReviewLogEntry[]): void
-
-  /** Write all dirty state. Engine debounces (§3.3); host also calls it on
-   *  pagehide/visibilitychange and session end. Resolves always (quota-safe
-   *  contract is inherited from util/storage — writes degrade, never throw). */
-  flush(): Promise<void>
-
-  /** Read a review-log slice, newest-first (optimizer + recovery). */
-  readLog(key: EngineKey, limit: number): Promise<ReviewLogEntry[]>
-
-  /** Drop everything for a key (profile deletion / dev reset). */
-  wipe(key: EngineKey): Promise<void>
-}
-
 export interface RecoveryReport {
-  droppedShards: number[]      // shard indexes that failed validation
-  rebuiltFromLog: number       // cards reconstructed via scheduler.replay
+  corruptCards: number         // dropped by the codec (storage-doctor counted)
+  rebuiltFromLog: number       // cards reconstructed via scheduler.replay over `events`
   reseeded: number             // cards recreated as priorKnown/new (log gap)
   courseStateLost: boolean
   skillsLost: boolean
 }
 ```
 
-`memory.ts` implements the same interface over Maps (deep-clones on load to catch
-accidental shared-reference bugs in tests).
+`persistence/memory.ts` provides in-memory `DocStore`/`AppendLog`/`KVStore` fakes
+(deep-clone on read to catch shared-reference bugs); `src/journey/persistence.ts`
+(app side, impure) wires the real ones — see storage-analytics §3.7/§3.8.
 
-### 3.2 IndexedDB layout (`persistence/idb.ts`) — the LARGE-tier pattern
+### 3.2 Physical layout, tiers, durability
 
-House precedent: `store/catalog.ts:185-194` persists via
-`createLocalStorageShim("game-catalog", { tier: "large", volatile: true })` over
-`util/storage/index.ts` (namespaced IndexedDB with quota-safe writes, volatile-first +
-LRU eviction). We use the **namespace API directly** (`storage.namespace(...)`,
-`util/storage/index.ts:420-429`) rather than the zustand shim, because engine state is
-not a zustand store and we need multi-record sharding:
-
-```ts
-import { storage } from "../../../util/storage"
-
-const ns = storage.namespace("journey-engine", { tier: "large", volatile: false })
-```
-
-**`volatile: false` is load-bearing.** The catalog is a re-fetchable cache and opts into
-volatile-first eviction; learner state is irreplaceable. With `volatile:false`, records
-are only evicted under extreme LRU pressure after all volatile entries are gone
-(`util/storage/index.ts:135-153`). The review log alone is marked
-`{ volatile: true }` per-set — losing it costs only future optimizer fuel, never
-scheduling correctness.
-
-Keys within the namespace (the storage layer prefixes `journey-engine::` itself;
-`k = "${stackId}::${courseId}"` mirrors the per-stack keying precedent of
-`store/history.ts` per app-shell.md §2):
-
-| Key | Value | volatile | Notes |
-|---|---|---|---|
-| `${k}::meta` | `{ schemaVersion, shardCount: 64, logSeq, logSegments: number[] }` | no | written on every flush that changes topology |
-| `${k}::course` | `CourseState` | no | |
-| `${k}::skills` | `SkillScalars[]` | no | few hundred rows — one record |
-| `${k}::cards/${i}` (i = 0..63) | `ItemCard[]` | no | shard `i = fnv1a32(itemId) & 63`; ~400 cards ≈ 25KB per shard at full course |
-| `${k}::log/${seq}` | `ReviewLogEntry[]` (≤512) | **yes** | append-only segments; head = `logSeq` |
-
-All `setJSON` calls pass `{ schema: ENGINE_SCHEMA }` — util/storage treats a schema
-mismatch as a miss (`util/storage/index.ts:50-52`), which is our forward-compat firewall.
-
-Sharding rationale: one monolithic 1.6MB blob would be rewritten on every review.
-64 shards cap a flush at (dirty shards × ~25KB); a typical 10-card batch dirties ≤10
-shards ≈ 250KB per debounced flush.
+Owned by storage-analytics.md: item cards and meta live on IDB-DOC (durable, never
+volatile-evicted by policy — learner state is irreplaceable); the review history rides
+the IDB-LOG local-analytics ring with its registered cap. Nothing engine-side chooses
+shard counts, namespaces, or eviction flags anymore — the old private
+`journey-engine::` shard scheme is superseded (see §9 decision 3).
 
 ### 3.3 Write batching
 
-The **facade** (engine.ts) owns flush policy; the adapter just tracks dirty keys.
+The `WriteBatcher` (storage-analytics §3.9) owns coalescing, the 250 ms debounce,
+`maxPending`, and the `pagehide`/`visibilitychange:hidden` lifecycle flush. Engine-side
+responsibilities shrink to:
 
-- `applyResult` → `stageCard` (per touched item) + `stageCourse` + `stageSkills` (only
-  when a scalar actually changed) + `appendLog`.
-- Flush triggers, in `engine.ts`:
-  1. **Debounce**: 500ms after the last stage (timer via injected `Clock.setTimeout` —
-     see clock.ts; the memory clock makes this synchronous in tests).
-  2. **Max dirty age**: unconditional flush if oldest staged write is >5s old
-     (a fast scroller must never accumulate minutes of unflushed reviews).
-  3. **Explicit** `engine.flush()`: the journey surface calls it on `pagehide` /
-     `visibilitychange:hidden` / feed unmount / session end (that wiring lives in the
-     React layer, not here).
-- The adapter coalesces: a shard staged 5× writes once. Log entries buffer in the
-  current segment; a segment record is (re)written when entries were appended, and a
-  new segment starts when the current one reaches 512.
-- After appending, if `logCount > 20_000`: delete oldest whole segments until
-  ≤ 20_000 (FIFO prune, done inside flush).
-- Crash window: worst case loses ≤5s of reviews. Acceptable — FSRS state regresses by
-  at most a few reviews and the feed re-serves them; nothing corrupts (shard writes are
-  whole-record `idbPut`s, atomic per record).
+- `applyResult` (synchronous, in-memory truth) then fire-and-forget:
+  `itemCards.put(itemId, card)` per touched item, `meta.put("course"|"skills", …)`
+  only when a scalar actually changed. The per-review `activity_result` event is
+  recorded by the **runtime** from `ApplyOutcome` (§4.4) via `recordLocal()` — the
+  single log writer (R15).
+- **Explicit** `engine.flush()` delegates to the stores' `flush()`; the journey
+  surface calls it on feed unmount / session end (React wiring, not here).
+- Crash window: worst case loses one batcher window (≤ ~250 ms + pending cap) of
+  reviews. FSRS state regresses by at most a few reviews and the feed re-serves them;
+  nothing corrupts (doc puts are atomic per record; reads are read-your-writes).
 
 ### 3.4 Schema versioning
 
-`ENGINE_SCHEMA = 1` in constants.ts. Migrations run inside `load()`: read `meta`; if
-`meta.schemaVersion < ENGINE_SCHEMA`, apply pure migration functions record-by-record
-(same spirit as zustand `version`/`migrate` house convention), then rewrite. If
-`meta.schemaVersion > ENGINE_SCHEMA` (downgrade — user rolled the app back): treat as
-corrupt and run the recovery ladder rather than guessing.
+`ENGINE_SCHEMA = 1` in constants.ts = `itemCardCodec.schemaVersion` (and the schema
+stamp on the `meta` values). Migrations are **codec-level and lazy**
+(storage-analytics §3.4): a record written at an older version passes through
+`migrate(raw, fromVersion)` on read and is re-`put`. A record from a NEWER version
+(downgrade — user rolled the app back) fails `parse`, is dropped by the storage layer,
+and the engine-level ladder (§3.5) rebuilds it — never guess.
 
-### 3.5 Corruption recovery ladder (`persistence/recover.ts`)
+### 3.5 Engine-level recovery ladder (`persistence/recover.ts`)
 
-Every record read passes a structural validator (hand-rolled predicates, no zod — the
-engine stays dependency-free beyond ts-fsrs). Numbers are checked for finiteness and
-range (`s > 0`, `d ∈ [1,10]`, `due` within ±10y of now, enums in range). On failure,
-recover per-record, never wholesale:
+Record-level corruption is already absorbed below us: the DocStore codec drops invalid
+records and never throws (storage-analytics §3.10). This ladder handles the *semantic*
+gaps that leaves, per-record, never wholesale:
 
-1. **Card shard invalid** → drop the shard; for each item that later surfaces with no
-   card:
-   a. If the review log contains entries for it → `scheduler.replay(entries)` rebuilds
-      S/D/state (ts-fsrs `reschedule` under the hood), `form` = max form in log.
+1. **ItemCard missing/dropped** → for each item that surfaces with no card:
+   a. If the `events` log contains `activity_result` rows for it →
+      `scheduler.replay(entries)` rebuilds S/D/state (ts-fsrs `reschedule` under the
+      hood); `form` = max form over the log's activityTypes via the ACTIVITY_TYPES
+      registry (R4).
    b. Else if any of its skills has `level ≥ 3` (Practiced) → recreate as priorKnown
       seed (§4.3 step 3) — the learner demonstrably knew the area.
    c. Else → fresh card on next scored exposure (normal lazy path).
-   (a) runs eagerly at load for logged items of dropped shards; (b)/(c) stay lazy.
-2. **`skills` record lost** → recreate scalars with `accEwma = derived strength of the
+   (a) runs eagerly at load for logged items with no card; (b)/(c) stay lazy.
+2. **`skills` meta lost** → recreate scalars with `accEwma = derived strength of the
    skill` (best available proxy), `announcedLevel = derived level` (suppresses a
    celebration storm), `placedAt` from `placement?.day` if present.
-3. **`course` record lost** → θ re-estimated as the 75th percentile `b` over skills
+3. **`course` meta lost** → θ re-estimated as the 75th percentile `b` over skills
    whose derived level ≥ 3 (or −4 if none); `newPerDay` reset to default 12;
    `position` recomputed from derived levels; `placement` lost (week-one check simply
    won't run). Surface a soft "we tuned things up" toast via the RecoveryReport — never
    an error state.
-4. **`meta` unreadable** → probe all 64 shard keys + course + skills anyway (keys are
-   enumerable via `ns.keys()`), then rewrite meta from what validated.
 
 Everything recovered is logged loudly (`console.error("[journey-engine] recovered…")`)
 and counted in `RecoveryReport` for an analytics event (fired by the caller — the
@@ -618,8 +657,15 @@ export interface JourneyEngine {
   load(): Promise<{ fresh: boolean; recovered: RecoveryReport }>
 
   /** Begin a feed session: bumps sessionCounter, seeds the session PRNG, resets
-   *  SessionState. The UI calls this when the feed surface mounts. */
-  startSession(): { sessionId: string; needsPlacement: boolean }
+   *  SessionState. The UI calls this when the feed surface mounts.
+   *  `welcomeBack` (R5) is emitted when the gap since `lastActiveDay` is ≥ 7 days:
+   *  `retainedPct` = mean FSRS retrievability at now over all seen cards (reps > 0).
+   *  The runtime maps the signal 1:1 to the `welcomeBack` FeedCard. */
+  startSession(): {
+    sessionId: string
+    needsPlacement: boolean
+    welcomeBack?: { gapDays: number; retainedPct: number }
+  }
 
   // ---- placement (§4.3) ----
   startPlacement(mode: "probe" | "zero-beginner"): PlacementController
@@ -628,7 +674,7 @@ export interface JourneyEngine {
   placeUser(probeResults: ProbeResult[]): PlacementOutcome
 
   // ---- the feed (§5) ----
-  nextFeedItems(n: number, constraints?: FeedConstraints): FeedCard[]
+  nextFeedItems(n: number, constraints?: FeedConstraints): EngineCard[]
 
   // ---- results (§4.4) ----
   applyResult(result: ActivityResult): ApplyOutcome
@@ -640,7 +686,7 @@ export interface JourneyEngine {
   getSkillState(skillId: string): SkillState
   getCourseSnapshot(): CourseSnapshot     // θ, position, dueCount, newRemainingToday,
                                           // flow mode, strand shares, jumpAvailable
-  requestJump(targetSkillId?: string): FeedCard[] | undefined   // user-invoked test-out (§5.9)
+  requestJump(targetSkillId?: string): EngineCard[] | undefined   // user-invoked test-out (§5.9)
 
   flush(): Promise<void>
 }
@@ -657,52 +703,80 @@ the rollover needs per-day fidelity past the 7/14-day windows).
 
 ### 4.2 The wire types (D2, settled — consumed, not defined, here)
 
+The engine **re-declares nothing** (R3): it takes `ActivitySpec`, `ActivityResult`,
+`ActivityItemResult`, `ItemRef`, and the `itemRefKey()` helper by **type-only import
+from `activityContract.ts`** (the vendored contract file — `activity-contract.md` is
+normative for the shapes). The shapes the engine relies on, quoted from the contract:
+
 ```ts
-// from contentPacks/types.ts (type-only import):
-export interface ActivitySpec {
-  specId: string
-  activityType: string
-  itemRefs: ItemRef[]
-  params: Record<string, unknown>       // renderer payload (choices, audio ids, …)
-  level: number                          // display CEFR band hint
-  timeboxSec?: number
-  modelNeeds?: ("stt" | "llm" | "tts")[]
-}
-export interface ActivityResult {
-  specId: string
-  score: number                          // 0..1
-  perItem: { itemRef: ItemRef; outcome: "pass"|"partial"|"fail";
-             latencyMs?: number; hintsUsed?: number }[]
-  detail?: Record<string, unknown>       // e.g. { stt: SttTranscriptionResult,
-                                         //        selfReport: "already-knew"|"never-learned",
-                                         //        perItemHits: … }
-  durationMs: number
-  abandoned?: boolean
-}
+// import type { ActivitySpec, ActivityResult, ActivityItemResult, ItemRef }
+//   from "../../contentPacks/activityContract"
+//
+// ActivitySpec (contract §2): specId, activityType, itemRefs: ItemRef[],
+//   params?: Record<string, unknown>, level?: string ("A0".."C2" band hint),
+//   targetLang: string (PRESENT, BCP-47 corpus code), nativeLang?,
+//   timeboxSec?, modelNeeds?
+//
+// ActivityResult (contract §2): specId, score (0..1),
+//   perItem: ActivityItemResult[], detail?, durationMs, abandoned?
+//
+// detail — the typed envelope (R3), on BOTH ActivityResult and ActivityItemResult:
+//   detail?: {
+//     numbers?: Record<string, number>
+//     flags?:   Record<string, boolean>     // e.g. sttUnavailable, aggregateBinned (R9)
+//     selfReport?: "already-knew" | "never-learned"
+//     stt?: { overallScore: number
+//             perWord?: Array<{ word: string; probability: number
+//                               startMs: number; endMs: number }> }
+//   }
 ```
 
-`FeedCard` is the engine's envelope around the spec:
+`EngineCard` (R5 — renamed from the engine's old `FeedCard`; the surface's
+discriminated union keeps the `FeedCard` name, feed-ux §2.4) is the engine's envelope
+around the spec:
 
 ```ts
-export interface FeedCard {
+export interface EngineCard {
   spec: ActivitySpec
-  meta: {                       // for the feed surface, not the provider
+  meta: {                       // for the runtime/feed surface, not the provider
     pool: PoolTag; strand: Strand; form: 0|1|2; estSec: number
     provider: "native" | string
     celebration: "normal" | "rare"       // rare-card roll happened in the mixer
+    rareVariant?: "delight" | "etymology" | "timeCapsule" | "miniGame" | "storyChapter"
+                                         // R5: seeded-PRNG draw over graph.rareCards (§5.10)
+    checkpoint?: {                       // present on checkpoint-batch cards (§5.10)
+      checkpointId: string; scope: "unit" | "arc"; passScore: number
+      index: number; count: number      // position within the checkpoint batch
+      summary: CheckpointSummary        // skills covered + session stats for the card face
+    }
     coolDownCandidate: boolean           // last-slot fluency-win hint (§5.4)
   }
 }
+
+export interface CheckpointSummary {
+  unitId?: string; arcId?: string
+  skillIds: string[]            // skills the batch covers
+  itemCount: number
+  passScore: number             // echoed for the card face copy
+}
 ```
+
+**Division of labor with `journey/runtime.ts` (R5, exact):** the runtime maps
+`EngineCard → FeedCard` **1:1** — `meta.checkpoint` ⇒ `kind:"checkpoint"`,
+`provider ≠ "native"` ⇒ `kind:"packActivity"`, `meta.rareVariant` ⇒ the `rare` wrapper,
+everything else ⇒ `kind:"exercise"`; the `startSession().welcomeBack` signal ⇒ the
+`welcomeBack` card. The runtime **synthesizes ONLY `blockIntro`** (at `modelNeeds` run
+boundaries, from the mixer's model-block partition §5.4 step 6). No other card kind,
+ordering, or behavior is invented in the runtime.
 
 ### 4.3 Placement
 
 Interactive controller (the UI drives it card-by-card; each probe is a normal
-`FeedCard` rendered by the normal feed surface):
+`EngineCard` rendered by the normal feed surface):
 
 ```ts
 export interface PlacementController {
-  next(): FeedCard | undefined          // undefined ⇒ done, call finalize()
+  next(): EngineCard | undefined        // undefined ⇒ done, call finalize()
   submit(result: ActivityResult): void  // updates θ, se, per-skill tallies
   finalize(): PlacementOutcome
   abort(): void                         // no state written; restartable
@@ -715,15 +789,25 @@ export interface PlacementOutcome {
 }
 ```
 
-Algorithm — adaptivity §4.3 verbatim, made concrete:
+Algorithm — adaptivity §4.3 verbatim, made concrete (+ the R10 content ceiling):
 
-- **Phase 1 — band ladder** (≤5 items): one probe at each `b ∈ [−3, −1.5, 0, +1.5, +3]`,
-  ascending; stop at first miss. θ starts −1.0, `se` 2.0, `K` 0.9.
+- **Content ceiling (R10)**: `max_b` = max item `b` in the installed pack's graph.
+  Placement never probes above the content it has.
+- **Phase 1 — band ladder** (≤5 items): one probe at each
+  `b ∈ [−3, −1.5, 0, +1.5, +3]` **with rungs above `max_b` dropped** (the ladder caps
+  at the max installed `b` — R10), ascending; stop at first miss. θ starts −1.0,
+  `se` 2.0, `K` 0.9.
 - **Phase 2 — Elo refinement** (until `se ≤ 0.45` or 20 items or 4 min by
   `clock.nowMs`): target `b_next = θ + N(0, 0.3)` (session PRNG), pick nearest unasked
   probe with skill spreading (never two consecutive probes from the same skill);
   `θ += K·(y − σ(θ − b))`, `K = max(0.15, K·0.82)`,
   `se = 1/√(Σ Pᵢ(1−Pᵢ))` over asked.
+  **Early termination (R10)**: when `θ̂ − max_b > PLACEMENT_ABOVE_CONTENT_MARGIN`
+  (constants.ts, default 0.5), Phase 2 stops immediately with outcome
+  `"above-content"` — no Phase 3. `finalize()` unlocks every content skill
+  provisionally (frontier = end of shipped content) and the PlacementResult carries
+  honest copy for the UI ("this course currently covers A1; you're past it" — house
+  no-absolutes rules apply; never promise future content).
 - **Phase 3 — frontier confirmation** (2–4 items): 2 probes at the proposed frontier;
   any miss → step frontier back one DAG layer, re-verify once.
 - Probe forms: fast, guessable-OK, **no speaking, no hints** (adaptivity §4.2);
@@ -755,21 +839,34 @@ applyResult(r):
   maybeTickDay()
   issued = session.issued.get(r.specId)          # unknown specId → log + return noop
   if issued.pool == "probe": placement.submit path only
+  if issued.pool == "checkpoint": also feed the checkpoint tally (§5.10 pass_score gate)
   if r.abandoned: no grades; strand tally still credits durationMs; return
 
-  for each (itemRef, per) in zip(issued.itemIds, r.perItem):
+  # R6 — grades join by KEY, never by position:
+  issuedKeys = set(issued.itemIds)               # itemIds ARE itemRefKeys (§2.1; R2 helper)
+  for per in r.perItem:
+    key = itemRefKey(per.itemRef)                # the ONE contract helper (R2)
+    if key ∉ issuedKeys:
+        console.warn("[journey-engine] dropping un-issued itemRef", key); continue
+                                                 # warn-and-drop: never grade what we
+                                                 # didn't issue
+    itemId = key
     card  = getOrCreateCard(itemId)              # priorKnown path if placement-seeded skill
     grade = toGrade(r, per, issued, card)        # §4.5 table
     if grade == "forget": card.fsrs = scheduler.forget(card, now); continue
     { card.fsrs, log } = scheduler.next(card, now, grade)   # same-day path if due today
     if grade passed at issued.form and issued.form > card.form and !issued.guessable:
         card.form = issued.form                  # form ratchet (§5.5)
-    appendLog(entry)
+    collect per-item evidence into ApplyOutcome.items   # runtime records ONE
+                                                 # activity_result event (§2.2, R15)
     if grade == Again:
         rq = session.replayQueue.entry(itemId)
         if rq.failures == 0: push {notBefore: emitIndex+3, form: max(0, issued.form−1)}
         else: mark due tomorrow, drop from replay      # frustration guard: one replay max
     leech.check(card)                            # lapses ≥ 6 ∧ reps/lapses < 2 → LEECH
+
+  # issued-but-absent items (issuedKeys − keys seen in r.perItem): NO evidence —
+  # cards untouched, no grade, no log row (contract: absence ≠ fail). (R6)
 
   for skill in itemToSkills(touched):
     if issued.form >= 1: skill.accEwma = 0.7*skill.accEwma + 0.3*r.score
@@ -782,16 +879,25 @@ applyResult(r):
   strands.credit(issued.strand, r.durationMs)
   if issued.pool == "new" and debuts.completed(itemId): newIntroducedToday++
   firstWeek tally; jump.consecutiveCruiseSessions bookkeeping
-  stage everything; scheduleDebouncedFlush()
+  course.lastActiveDay = today
+  stage everything (itemCards.put / meta.put — the WriteBatcher owns debounce, §3.3)
   return ApplyOutcome
 ```
 
 ```ts
 export interface ApplyOutcome {
   grades: { itemId: string; grade: 1|2|3|4 | "forget" }[]
+  /** Per-item evidence for the ONE activity_result event the runtime records via
+   *  recordLocal() (§2.2, R15 — single log writer). Shape mirrors
+   *  ActivityResultEvent.items (storage-analytics §4.3). */
+  items: { ref: string; outcome: "pass"|"partial"|"fail"; grade: 1|2|3|4
+           latencyMs?: number; hintsUsed?: number
+           predictedRecall?: number; b?: number; theta?: number }[]
   replaysQueued: string[]
   skillTransitions: { skillId: string; from: number; to: number }[]  // derived now,
                                      // announced later by tickDay hysteresis
+  checkpoint?: { checkpointId: string; passed: boolean; score: number }  // §5.10, on the
+                                     // batch's final card
   flowMode: "cruise" | "normal" | "struggle"
   celebrationHint: "fail" | "pass" | "streak" | "levelup"   // CelebrationLayer tier input
 }
@@ -799,11 +905,17 @@ export interface ApplyOutcome {
 
 ### 4.5 Grade derivation table (adaptivity.md §1.4 + §3.3 — verbatim, operationalized)
 
-Evaluated top-down, first match wins. `z = latencyMs / expectedLatency(activityType,
-textLen)` where `expectedLatency = exp(latencyBaselines[type].logMean) ×
-lengthScale(textLen)`; baselines are an EWMA (α=0.2) of log-latency over **correct**
-responses only, updated after grading. `firstTry = card.fsrs.reps === 0 && !issued.isReplay`.
-`retried = issued.isReplay`.
+Evaluated top-down, first match wins. All `detail.*` paths below resolve against the
+**typed envelope** of R3 (`detail.selfReport`, `detail.stt.overallScore`,
+`detail.flags.*`, `detail.numbers.*` — contract §2); the envelope exists on both the
+result and each item, and item-level `per.detail` takes precedence over result-level
+`r.detail` where both carry the same field. `z = latencyMs /
+expectedLatency(activityType, textLen)` where `expectedLatency =
+exp(latencyBaselines[type].logMean) × lengthScale(textLen)`; baselines are an EWMA
+(α=0.2) of log-latency over **correct** responses only, updated after grading.
+`firstTry = card.fsrs.reps === 0 && !issued.isReplay`. `retried = issued.isReplay`.
+`detail.flags.sttUnavailable === true` ⇒ rows 4–5 are skipped (the item grades through
+the non-STT rows; STT absence is never a fail).
 
 | # | Condition | Grade |
 |---|---|---|
@@ -820,9 +932,13 @@ responses only, updated after grading. `firstTry = card.fsrs.reps === 0 && !issu
 
 Caps applied after the table:
 - `issued.guessable === true` (MC/recognition) ⇒ grade = min(grade, **Good**).
-- Multi-item game rounds without per-item hit data ⇒ grade = min(grade, **Good**),
-  applied uniformly to every item of the round (adaptivity §3.3). With per-item hits in
-  `detail.perItemHits`, each item grades individually through rows 3–10.
+- Multi-item game rounds without genuine per-item evidence report **score-only**
+  (contract rule, R9) ⇒ grade = min(grade, **Good**), applied uniformly to every item
+  of the round (adaptivity §3.3). With genuine per-item entries in `perItem`, each item
+  grades individually through rows 3–10.
+- `per.detail.flags.aggregateBinned === true` (provider-synthesized per-item outcome,
+  R9) ⇒ grade clamped to **[Hard, Good]**: Again → Hard, Easy → Good — synthesized
+  evidence can never lapse a card or fast-track it.
 
 Seed latency constants (`constants.ts`; per adaptivity §1.4): tap/choice 3500ms,
 match 4000ms, tap-order 8000ms, type-short 9000ms, type-translate 12000ms, speak 8000ms,
@@ -845,9 +961,12 @@ Idempotent per local day; runs once for each day boundary crossed since `lastTic
 5. **Level-transition announcements** (hysteresis): for each skill whose derived level
    ≠ `announcedLevel`, emit one transition into the `DayRollover` return and set
    `announcedLevel`. UI never flaps intra-day.
-6. Advance `position` if the current unit's skills all derive ≥ 3.
-7. Prune review-log segments beyond 20k rows (piggybacks next flush).
-8. `lastTickDay = day`; stage + flush.
+6. Advance `position` only when the current unit's skills all derive ≥ 3 **AND** the
+   unit's checkpoint has been passed at its `pass_score` (§5.10 — R5; advancement can
+   also happen in-session at the moment the checkpoint batch passes). Arc boundaries
+   additionally require the arc gate.
+7. `lastTickDay = day`; stage + flush. (Review-history pruning is owned by the
+   AppendLog ring caps — storage-analytics §3.5/§3.8 — not by tickDay.)
 
 ```ts
 export interface DayRollover {
@@ -871,6 +990,10 @@ export interface FeedConstraints {
   modelsAvailable?: ("stt"|"llm"|"tts")[] // Budget-Arbiter/host residency hint (D8)
   excludeActivityTypes?: string[]        // e.g. quiet mode ⇒ no "speak"
   timeboxSec?: number                    // cap Σ estSec of the returned batch
+  checkpointCadence?: number             // R5: cards between checkpoint/summary offers.
+                                         // Derived from goalIntensity by the runtime
+                                         // (feed-ux §3.7: casual 8 / daily 10 /
+                                         // intensive 12); absent ⇒ 10.
 }
 ```
 
@@ -945,6 +1068,13 @@ nextFeedItems(n = 10, constraints):
   if flow.mode == "struggle" and scaffoldPending:
       slots.push(scaffoldCard); slots.push(nearCertainWin)
 
+  # -- 1.5 lesson layer (R5, §5.10) ----------------------------------------------
+  # if a unit lesson is active (course.lesson != null), the next recipe slots are
+  # filled FIRST: each recipe slot maps (itemSelector → pool, activityTypes → type
+  # choice); `optional` slots drop under modelNeeds pressure. When the unit's lesson
+  # plan is exhausted, lessons.ts emits the unit-boss CHECKPOINT BATCH (§5.10) and
+  # the mixer returns it as-is. Free-mix (below) fills whatever the recipe left open.
+
   # -- 2. fill remaining slots --------------------------------------------------
   pushBudget = 1                                 # ≤1 "edge" card per batch (pedagogy §12.2)
   while slots.length < n:
@@ -967,8 +1097,16 @@ nextFeedItems(n = 10, constraints):
 
   # -- 3. rare-card roll (variable ratio, D7 economy) ---------------------------
   # one roll per batch: delight 1:8, game round 1:25, etymology gem 1:50 —
-  # replaces a flex/fun slot only; never replaces replay/scaffold/opener.
+  # replaces a flex/fun slot only; never replaces replay/scaffold/opener/checkpoint.
+  # R5: the winning rareVariant is a SEEDED-PRNG draw over graph.rareCards
+  # (rarity_weight as draw weights; eligibility: min_unit reached, provider
+  # installed, coverage_gate met for story). Stamped on EngineCard.meta.rareVariant.
   rollRare(rng, slots)
+
+  # -- 3.5 cadence checkpoint (R5) ------------------------------------------------
+  # every constraints.checkpointCadence cards (session-cumulative), append ONE
+  # summary checkpoint card (meta.checkpoint, non-graded stop/continue face) —
+  # the feed's natural stopping point. Distinct from unit-boss batches (§5.10).
 
   # -- 4. Jump checkpoint (§5.9) -------------------------------------------------
   if jumpEligible and !session.jumpOfferedThisSession:
@@ -1002,7 +1140,7 @@ nextFeedItems(n = 10, constraints):
   fluency-strand card over known material (session "always ends green", pedagogy §12.2)
 
   session.emitIndex += slots.length; record lastEmit + last40
-  return slots.map(toFeedCard)
+  return slots.map(toEngineCard)
 ```
 
 `issue()` mints the `ActivitySpec` (specId = `${sessionId}:${emitIndex+i}`), builds
@@ -1068,7 +1206,7 @@ leeches must not eat the feed.
 
 `requestLegendary(skillId)` (UI-invoked from path viz; P1, ship behind devMode):
 12–16 items of the skill, production-form bias, no hints, ≤2 mistakes, one attempt per
-local day. Emitted as a dedicated batch of FeedCards tagged `pool: "jump"`. Pass ⇒
+local day. Emitted as a dedicated batch of EngineCards tagged `pool: "jump"`. Pass ⇒
 `legendaryAt = today`. Not counted in strand tallies (prestige, not pedagogy).
 
 ### 5.9 Jump checkpoint — trigger conditions and mechanics (adaptivity §6.3)
@@ -1099,14 +1237,63 @@ jumpCheckpoint(targetSkill = frontier + 1 unit by default):
 
 Jump probe results, like placement probes, update θ but never create cards.
 
+### 5.10 Lessons + checkpoints (lessons.ts — the R5 layer)
+
+The engine owns session structure end-to-end; the runtime never invents it (R5).
+
+**Unit lessons.** While `position` sits in a unit that has `graph.unitLessons[unitId]`
+rows, `course.lesson` tracks the cursor `(lessonIndex, slotIndex)`. The mixer fills
+recipe slots in order (§5.4 step 1.5): `itemSelector` maps to the §5.2 pools
+(`due`→DUE, `new`→NEW, `unit`→the unit's item set, `known`→FUN-style strong-known,
+`grammar-node`/`l1-phoneme`→their item kinds, `rare`→the rare roll, `none`→display-only
+slot), and `activityTypes` restricts `chooseActivityType` to the recipe's choices
+(availability-filtered per §5.1; `optional: 1` slots drop under modelNeeds pressure).
+Flow-mode, debt-brake, and replay rules still apply inside a lesson — a recipe shapes
+the batch, it never overrides safety adjustments. When the plan is exhausted the boss
+follows; units without lesson rows run free-mix as before.
+
+**Unit bosses / arc gates (checkpoint batches).** Loaded from `graph.checkpoints`
+(course-pack `checkpoints` table; the boss recipe + `params_json` gauntlet make-up).
+Emitted as ONE dedicated batch of EngineCards tagged `pool: "checkpoint"`, each
+carrying `meta.checkpoint` (§4.2) with a `summary` for the card face. lessons.ts
+tallies the batch's scores; on the final card:
+
+```
+score = Σ per-card score / batch size
+pass  = score ≥ checkpoint.passScore              # checkpoints.pass_score (course-pack §2)
+pass ⇒ checkpointsPassed[id] = today; position advances past the unit (arc gates
+       likewise gate arc advancement)             # the ONLY way position crosses a
+                                                  # unit with a checkpoint (§4.6.6)
+fail ⇒ position holds; the checkpoint's weak items (score < passScore per card) and
+       their skills route to REPAIR (remedial — §5.2); re-attempt allowed next
+       session; zero penalty framing ("tasks, not tests" — pedagogy §9)
+```
+
+Checkpoint cards are graded normally through §4.4/§4.5 (they are real evidence);
+only position advancement hangs on `passScore`.
+
+**Cadence checkpoints.** Non-graded summary/stop-point cards every
+`constraints.checkpointCadence` cards (§5.4 step 3.5) — same `meta.checkpoint`
+envelope with `passScore: 0`, mapped by the runtime to the feed's stop/continue face.
+
+**welcomeBack + rare variants.** Both engine-owned (R5): the welcomeBack signal is
+computed in `startSession()` (§4.1); `rareVariant` selection is the seeded-PRNG draw
+over `graph.rareCards` (§5.4 step 3). The runtime renders; it never rolls.
+
 ---
 
 ## 6. Engine ↔ app integration contract (informative)
 
 - The `journey/store` layer (outside this spec) owns constructing `CourseGraph` from
-  the installed `journey_<target>` pack and resolving `EngineKey`: `stackId` = the
+  the installed `journey_<target>` pack per the **normative PackReader → CourseGraph
+  loader section in `course-pack.md`** (R7 — exact SQL, keyset pagination, row-count
+  assertion, <500 ms cold-start budget) and resolving `EngineKey`: `stackId` = the
   active stack, `courseId` = the id of the installed course pack matched to the stack's
   target language (`stack.languages[1..]`, D6). The engine treats both as opaque.
+- `journey/runtime.ts` maps `EngineCard → FeedCard` **1:1** and synthesizes **only**
+  `blockIntro` cards at modelNeeds run boundaries (R5, §4.2). It also records the
+  per-result `activity_result` analytics event from `ApplyOutcome` (§4.4, R15). It
+  invents no other cards, ordering, or scheduling behavior.
 - `hostApi.journey.reportResult(result)` and the `corpan:activity-result` CustomEvent
   (D2) both funnel into `engine.applyResult` through one listener owned by the feed
   surface — the engine itself never touches the window.
@@ -1114,8 +1301,10 @@ Jump probe results, like placement probes, update θ but never create cards.
   settings, "has a journey started" flag) lives in the separate
   `store/journey.ts` zustand persist store (`corpan-journey-v1`, localStorage,
   partialize + version/migrate — D5). The engine does not read or write it.
-- Quota (D9): the feed surface debits the `journey` quota per completed card; the
-  engine is quota-oblivious (it just stops being asked for cards).
+- Quota (D9): the runtime debits the `journey` quota at its ONE debit site
+  (R12 — completed debut cards + pack-anchor launches only; due-review/replay/repair
+  are never metered); the engine is quota-oblivious (it just stops being asked for
+  cards).
 
 ---
 
@@ -1163,8 +1352,11 @@ per persona (deterministic: run seed → learner seeds → identical transcripts
 
 `sim/fixtures/journey-fixture.json`: a generated CourseGraph with 2 arcs, 24 units,
 ~120 skills, ~4,000 items, realistic `b` spread, 15 activity templates covering all
-forms/strands/modelNeeds, probe bank, substitutes. Also a `journey-en` snapshot import
-once the real pack exists (the gate then runs both).
+forms/strands/modelNeeds, probe bank, substitutes, lesson recipes + checkpoints +
+rare cards (§2.6). Also a `journey_en` snapshot import once the real pack exists (the
+gate then runs both). **P8 is NOT satisfiable on the fixture alone (R10): the
+placement-quality gate must run against the real `journey_en` pack graph, with
+personas scoped to the shipped arcs, before publish.**
 
 ### 7.4 Pass criteria (the ship gate — all must hold)
 
@@ -1177,7 +1369,7 @@ once the real pack exists (the gate then runs both).
 | P5 | **Starvation** | Over any 500-card window per learner: every nonempty pool served ≥1×; FUN share ≥5% when templates available; TRICKLE drains `placed-intermediate`'s backlog to <10% unvisited within 60 active days; no due item goes unserved >14 active days. |
 | P6 | **Livelock / determinism** | `nextFeedItems` always returns ≥1 card or a typed shortfall reason; no replay loops (an item is replayed ≤1× per session); identical seeds ⇒ byte-identical transcripts across 2 runs. |
 | P7 | **Strand convergence** | Per-persona 2-week strand shares within ±10 points of the stage targets (§5.3 table) from week 3 on; the last40 language-focused >65% rule fires <5% of batches at steady state. |
-| P8 | **Placement quality** | `placed-intermediate`: |θ̂ − a| ≤ 0.6 for ≥90% of learners; ≤25 items; wrong-placement self-heal: week-one rewind or demotion path corrects starting frontier within 14 days for the (injected) 10% mis-calibrated cohort. |
+| P8 | **Placement quality** | `placed-intermediate`: |θ̂ − a| ≤ 0.6 for ≥90% of learners; ≤25 items; wrong-placement self-heal: week-one rewind or demotion path corrects starting frontier within 14 days for the (injected) 10% mis-calibrated cohort. **Runs against the real `journey_en` pack graph, not only the fixture, with personas scoped to shipped arcs (R10).** Above-ceiling personas (a > max content b) terminate `"above-content"` in ≤ Phase-2 budget, never grind 25 items. |
 | P9 | **Grade sanity** | Easy share of all grades ≤ 10%; Again share ∈ [5%, 25%] at steady state for `daily-median` (matches the R≈0.9 target); MC-capped items never receive Easy. |
 | P10 | **Leech containment** | Leech servings ≤3% of feed for `slow-struggler`; suspended items never served. |
 | P11 | **Constraint integrity** | Zero violations of: replay minGap, debut order, model-block contiguity. Relaxation log rate (sameType adjacency) <2% of batches on the fixture course. |
@@ -1198,31 +1390,33 @@ Runner: the existing `npm test` (`node --experimental-strip-types --test`), colo
 ### 8.1 Boundary/purity tests (meta)
 
 - `boundary.test.ts`: statically scans `engine/**` sources (fs read + regex) asserting:
-  no `window|document|localStorage|indexedDB|navigator|@tauri|react` references outside
-  `persistence/idb.ts`; no `Date.now|new Date(` outside `clock.ts`; no `Math.random`;
-  no `enum ` declarations (strip-types compatibility); only `scheduler.ts` imports
-  `ts-fsrs`; only type-only imports from `contentPacks/`.
+  no `window|document|localStorage|indexedDB|navigator|@tauri|react` references
+  ANYWHERE in `engine/**` (the impure edge lives outside, in `src/journey/persistence.ts`
+  — R15); no `Date.now|new Date(` outside `clock.ts`; no `Math.random`; no `enum `
+  declarations (strip-types compatibility); only `scheduler.ts` imports `ts-fsrs`; only
+  type-only imports from `contentPacks/` and `@/lib/storage`.
 
 ### 8.2 Per-module cases (representative, not exhaustive)
 
 | Module | Key cases |
 |---|---|
 | `scheduler` | T-sched-1: `JOURNEY_FSRS_PARAMS.w` deep-equals the 21 weights in §1.3 (pins ts-fsrs upgrade drift). Same-day replay path: fail then same-day Good ⇒ S′ ≥ S. Lapse never increases S. Elapsed-day clamps: negative ⇒ 0; >365 ⇒ 365. Fuzz determinism: same card + grade + day ⇒ identical due across runs. `forget` resets to New. `replay()` reconstructs S/D within 1e-6 of sequential `next()`. |
-| `grading` | Exhaustive table walk: one test per row 1–10 + both caps + STT thresholds (0.44/0.45/0.699/0.7/0.9/0.91 boundaries) + game-round uniform/per-item-hits paths + z boundaries (0.599/0.6/2.0/2.01) with seeded latency baselines. Property: Hard is only ever emitted on a pass. |
+| `grading` | Exhaustive table walk: one test per row 1–10 + all three caps + STT thresholds (0.44/0.45/0.699/0.7/0.9/0.91 boundaries) + game-round uniform/per-item paths + z boundaries (0.599/0.6/2.0/2.01) with seeded latency baselines. `flags.aggregateBinned` clamp (R9): Again→Hard, Easy→Good, Hard/Good pass through; `flags.sttUnavailable` skips rows 4–5. Property: Hard is only ever emitted on a pass. |
 | `latency` | EWMA updates only on correct; seeds used at n=0; lengthScale clamps. |
 | `mastery` | Memoization: read → no recompute on second read; applyResult on one item recomputes only its skills; day change invalidates all. Level table edge values (coverage 0.799/0.8 etc). Demotion at strength 0.49. Multi-skill item counted in both skills. |
 | `theta` | K decay schedule 0.5→0.08; convergence on a scripted 1PL responder within 20 results; multi-item b̄ weighting. |
-| `placement` | Scripted responders: all-correct ladder ⇒ Phase 1 reaches b=+3 in 5 items; zero-beginner path writes θ=−4 + root frontier; Phase 3 miss steps frontier back exactly one layer once; SE math against hand-computed values; ≤25 items always; `placeUser(transcript)` ≡ interactive controller given same answers (bit-identical PlacementOutcome). priorKnown lazy seeding: no cards created at finalize; first encounter creates Easy+Good-advanced card with both flags. |
+| `placement` | Scripted responders: all-correct ladder ⇒ Phase 1 reaches the highest rung ≤ max_b in ≤5 items; ladder rungs above max_b are never probed (R10); zero-beginner path writes θ=−4 + root frontier; Phase 3 miss steps frontier back exactly one layer once; SE math against hand-computed values; ≤25 items always; above-content: θ̂ − max_b > margin ⇒ Phase 2 terminates early, outcome `"above-content"`, frontier = end of content (R10); `placeUser(transcript)` ≡ interactive controller given same answers (bit-identical PlacementOutcome). priorKnown lazy seeding: no cards created at finalize; first encounter creates Easy+Good-advanced card with both flags. |
 | `flow` | Mode transitions at exact thresholds; cold window (<4) stays normal; cruise-session counting across startSession. |
 | `forms` | Ratchet: pass at form 2 sets card.form=2; guessable pass never ratchets; struggle proposals never exceed card.form; productionReady gate (R 0.69/0.7). |
 | `pools` | DUE priority ordering formula; suspended exclusion; NEW respects introOrder + newPerDay remaining; FUN only R>0.9. |
 | `mixer` | Property tests (1,000 seeded batches on the fixture graph): all §5.4 step-5 invariants; replay preemption at exactly gap 3; opener served once with R∈[0.8,0.95]; debt brake zeroes NEW; model-block contiguity + no stt/llm interleave + slot-0 rule; timebox trim; unsatisfiable-constraint relaxation order; quota redistribution when a provider is missing (uninstall lingo-hero ⇒ feed still fills). |
 | `leech` | Flag at exactly lapses=6, reps/lapses<2; presentation-swap; suspend after 2 post-flag failures; substitute enters NEW; ≤1 leech per batch. |
-| `daily` | Multi-day catchup (7 missed days ⇒ 7 ticks, capped at 30); weekly throttle cadence; announcement hysteresis (level flaps intra-day ⇒ one announcement); backlogRing only counts active days; log prune at 20k. DST boundaries: epochDay stable across spring-forward/fall-back (fixed tz offsets injected). |
-| `apply` | Full pipeline integration on memory adapter: grades→card→log→skill→θ→flow→replay in one call; abandoned results credit strand only; probe results create no cards; unknown specId noop. |
-| `persistence/idb` (jsdom-free: run against a fake `storage` namespace stub) | Shard routing fnv1a&63; coalesced flush writes each dirty shard once; log segmentation at 512; FIFO prune; volatile flags per table §3.2. |
-| `persistence/recover` | Corrupted shard JSON ⇒ dropped + others load; log-replay rebuild; skills-lost accEwma proxy; course-lost θ re-estimate; meta-lost key probing; downgrade (schema 2 data, engine 1) ⇒ recovery not crash; every path returns a populated RecoveryReport and never throws. |
-| `engine` (facade) | load idempotence; lazy tickDay on first call of the day; debounce flush timing via manual clock (500ms / 5s max-age); startSession seed stability: same (key, sessionCounter) ⇒ same feed. |
+| `daily` | Multi-day catchup (7 missed days ⇒ 7 ticks, capped at 30); weekly throttle cadence; announcement hysteresis (level flaps intra-day ⇒ one announcement); backlogRing only counts active days; position never advances past an unpassed checkpoint (§4.6.6). DST boundaries: epochDay stable across spring-forward/fall-back (fixed tz offsets injected). |
+| `apply` | Full pipeline integration on memory fakes: grades→card→evidence→skill→θ→flow→replay in one call; abandoned results credit strand only; probe results create no cards; unknown specId noop. **R6 mandatory join-by-key test: `perItem` SHUFFLED and a strict SUBSET of the issued items ⇒ every present item grades against its own card (matched via `itemRefKey`), issued-but-absent items are untouched (no grade, no log row), and an un-issued itemRef is warn-and-dropped without grading.** |
+| `lessons` | Recipe slots fill in order; optional slots drop under modelNeeds pressure; boss batch emitted once per unit after plan exhaustion; pass at exactly passScore advances position, 0.01 below holds it; fail routes weak items to REPAIR; cadence checkpoint appears every `checkpointCadence` cards; welcomeBack fires at gap 7, not 6, with retainedPct = hand-computed mean R; rareVariant draw is seed-deterministic over graph.rareCards. |
+| `persistence` (against the in-memory DocStore/AppendLog/KVStore fakes) | `itemCardCodec.parse` rejects out-of-range fields (s ≤ 0, d ∉ [1,10], far-future due) and accepts round-trips; `migrate` path lazily upgrades an old-version record; puts coalesce through a fake batcher; events read-back yields replay-ordered entries. |
+| `persistence/recover` | Missing cards ⇒ log-replay rebuild from `events`; skills-lost accEwma proxy; course-lost θ re-estimate; downgrade (schema 2 data, engine 1) ⇒ record dropped then rebuilt, not crash; every path returns a populated RecoveryReport and never throws. |
+| `engine` (facade) | load idempotence; lazy tickDay on first call of the day; `engine.flush()` delegates to store flushes (batching policy itself is storage-analytics's to test, §3.3); startSession seed stability: same (key, sessionCounter) ⇒ same feed; welcomeBack emitted at gap ≥ 7 days only. |
 
 ### 8.3 Golden transcripts
 
@@ -1239,17 +1433,20 @@ in refactors; regenerating goldens requires a spec-cited justification in the PR
    (it's the settled ABI). The richer signals adaptivity's grade mapping needs
    (`firstTry`, `retried`, `form`, guessability) are reconstructed engine-side from the
    `IssuedCard` the engine retained when it minted the spec (§2.5, §4.5); STT evidence
-   and self-reports ride `detail`. No ABI change required.
+   and self-reports ride the **typed `detail` envelope** (R3 — `numbers`/`flags`/
+   `selfReport`/`stt`, defined in `activityContract.ts`, consumed type-only here).
 2. **`placeUser(probeResults)` naming**: placement is inherently adaptive (item k+1
    depends on answer k), so the primary surface is the interactive
    `PlacementController`; `placeUser` is kept as the batch/replay form with guaranteed
    equivalence (§4.3). If the orchestrator intended `placeUser` as the *only* API, the
    controller still satisfies it (UI loops `next()`/`submit()`).
-3. **Storage keying**: D5 says "(stackId, courseId)"; record keys are
-   `${stackId}::${courseId}::…` inside one `journey-engine` LARGE-tier namespace with
-   `volatile:false` (learner state must not be cache-evicted; only review-log segments
-   are volatile). catalog.ts's `volatile:true` was NOT copied — it's correct for caches
-   only.
+3. **Storage keying** *(superseded by R15)*: this spec originally defined a private
+   `journey-engine` LARGE-tier namespace with 64 card shards and volatile review-log
+   segments. That design is dead: persistence now consumes `EnginePersistence` from
+   storage-analytics.md §3.7 (`journey-cards:` DocStore + `journey-meta:` KVStore +
+   the shared local-analytics AppendLog). The keying intent survives — per
+   `(stackId, courseId)` namespaces, learner state never volatile-evicted, review
+   history the only ring-pruned data.
 4. **SkillState split**: persisted `SkillScalars` (accEwma + timestamps + announcedLevel)
    vs derived `SkillState` (coverage/strength/mastery/level), with dirty-seq + day-key
    memoization. `announcedLevel` (not in adaptivity.md) implements the "announce
@@ -1274,3 +1471,86 @@ in refactors; regenerating goldens requires a spec-cited justification in the PR
     doc but load-bearing for the test plan.
 11. **Legendary challenges ship devMode-only in v1** (D11 lists path viz P0 only);
     the engine implements the mechanics since the level table (D4) references them.
+
+---
+
+## Tracked risks (panel round 1)
+
+Per R16: the panel's engine-relevant risk items, preserved verbatim (architecture +
+pedagogy lenses). Non-blocking — they inform build-time tests, none gate the build
+start. Bracketed *[status]* notes are editorial, not part of the panel text.
+
+### Architecture lens
+
+- courseId format drift in persisted keys: engine.md CourseState example uses
+  "journey-en" (hyphen) while everything else is underscore-canonical journey_en;
+  EngineKey/CourseKey (`${stackId}::${courseId}`) is persisted learner-state keyspace,
+  so a mismatch between the store layer and feed-ux's courseKeyOf silently forks
+  state. Normalize the example and add an assertion.
+  *[example normalized to `journey_en` in §2.4; the load-time assertion remains a
+  build-time test to add.]*
+- Learner FSRS state in the LARGE tier is volatile:false but still evictable:
+  util/storage evict() (index.ts:135-153) falls through to LRU over non-volatile
+  records once volatiles are exhausted. With wordpan/catalog caches sharing the tier
+  this is unlikely but real on quota-constrained webviews; the recovery ladder softens
+  it, but consider exempting the journey-engine namespace from eviction (or
+  persistent-storage request) before shipping.
+  *[substrate changed to the storage-analytics DocStore (R15); the underlying
+  eviction-under-quota concern carries over to `journey-cards:*` and stays tracked.]*
+- sessionCounter exists twice: engine CourseState.sessionCounter (PRNG seed component)
+  and feed-ux journey store JourneyCourseMeta.sessionCounter ("seeds deterministic
+  rare-card PRNG"). Rare-card rolls are already engine-mixer-owned (rollRare); delete
+  the store copy or mark it display-only, else the two counters diverge and
+  determinism claims break.
+  *[R5 makes rare rolls unambiguously engine-owned (§5.10); the feed-ux store copy
+  must be deleted or marked display-only on that side.]*
+- ts-fsrs 5.4.1 pin, default_w 21-weight equality, and GenSeedStrategyWithCardId
+  behavior are asserted from a 2026-07-03 npm check; T-sched-1 covers regression but
+  the initial implementation should re-verify the strategy API exists with that exact
+  name/signature before building the scheduler wrapper around it.
+
+### Pedagogy lens
+
+- Course-exhaustion and over-placement are unhandled: v0.1 ships ~30 units (arcMax A1)
+  but placement Phase 1 probes up to b=+3 and the engine has no 'you are beyond this
+  course / course complete' state — a B1 learner or a cruising daily-fast persona runs
+  off the end of content in weeks with no specced feed behavior. Define an
+  end-of-content card + graceful frontier cap before preview users hit it.
+  *[placement side resolved by R10 (§4.3 ladder cap + "above-content"); the
+  end-of-content FEED state for learners who exhaust content organically remains
+  open and tracked.]*
+- Rare-card economy underdelivers in the launch window: storyChapter gates on measured
+  95% vocab coverage over real book segments (implausible for A1 learners against the
+  current non-graded book catalog, and the coverage computation itself — tokenize
+  segments vs FSRS-known items — is defined nowhere); timeCapsule needs weeks of
+  history; miniGame is 1:25. Week-one 'wow' rests entirely on delight variants (1:8)
+  and etymology gems (1:50). Tune early-session ratios (e.g. guaranteed gem in session
+  1–2) or the variable-reward economy reads as absent exactly when retention is
+  decided.
+  *[story content cut from v0.1 per R11; early-session ratio tuning stays open — the
+  1:8/1:25/1:50 constants live in constants.ts for sweep tuning.]*
+- First-session flow front-loads friction: enroll → placement offer → up-to-25-probe
+  test → streak pact → feed. The learner's first dopamine is an exam. Consider a
+  3-card guaranteed-win taste BEFORE the placement offer (warm-win opener exists but
+  only post-placement).
+- Engine review-log ring (engine.md §2.2, 20k entries) and D13's local analytics store
+  are two overlapping append-only event logs with no reconciliation — decide whether
+  ActivityResults/impressions write to one store or accept double-writing before both
+  ship (storage-analytics.md wasn't in this review set).
+  *[resolved by R15: one log (the local-analytics AppendLog), one writer, engine +
+  queries as readers — §2.2/§3. Kept for the record.]*
+- Simulation gate (7 personas × ≥500 learners × 180 days × 11 criteria + golden
+  transcripts + boundary tests) is the right investment but is a full workstream, and
+  P4 (time-to-arc) depends on the real journey_en pack that lands last — make the
+  fixture-only gate the merge bar and the real-pack rerun a ship bar, or the engine
+  team blocks on content.
+  *[R10 pins P8 to the real pack as a ship bar; adopting fixture-gate-as-merge-bar /
+  real-pack-as-ship-bar for the rest is the working plan.]*
+- ts-fsrs 5.4.1 pin, its 21-weight default_w, and GenSeedStrategyWithCardId behavior
+  are asserted as verified-on-npm; re-verify at implementation time and keep T-sched-1
+  (the weight-equality test) as the tripwire — an upstream default change silently
+  reshapes every interval.
+- Instrumented-provider Leitner retirement (lingo-hero) creates two scheduling brains
+  for the same user across standalone vs journey launches of the same pack — accepted
+  for v1, but expect confusing 'why is this word back' moments; the parked
+  Leitner→FSRS importer will become user-visible debt.

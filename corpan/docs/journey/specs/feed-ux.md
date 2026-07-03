@@ -54,7 +54,7 @@ corpan-app/src/journey/
 │   ├── WordOrder.tsx
 │   ├── MatchPairs.tsx
 │   ├── FlipRecall.tsx
-│   ├── SpeakEcho.tsx
+│   ├── SpeakEcho.tsx           # thin host mounting cap-pronounce (specs/capability-modules.md)
 │   ├── GrammarNote.tsx
 │   └── common/
 │       ├── AnswerTiles.tsx     # shared choice/tile grid (RTL-aware, dir per target lang)
@@ -204,7 +204,11 @@ Over-juicing measurably hurts (engagement §1.3) — no tier may exceed its budg
 
 ### 1.6 `CheckpointCard`
 
-Emitted by the engine every 8–12 cards (mixer-owned cadence). Never auto-advances. Contents:
+Emitted by the engine's lesson/checkpoint layer as an `EngineCard` — cadence comes from
+`FeedConstraints.checkpointCadence` (derived from `goalIntensity`, §3.7); unit-boss checkpoint
+batches additionally carry a `pass_score` that gates position advancement, with failures routed
+to REPAIR (engine spec owns all of that — the surface renders what arrives). Never
+auto-advances. Contents:
 
 1. Summary line: `journey.checkpoint.summary` — “{{new}} new · {{reviews}} reviews · best combo {{combo}}”.
 2. **Daily ring**: cards done today / daily goal (goal from `goalIntensity` mapping §3.7).
@@ -224,9 +228,9 @@ Emitted by the engine every 8–12 cards (mixer-owned cadence). Never auto-advan
 
 ### 1.7 `RareCard` variants
 
-Wrapper handles the tier-3 shimmer + flip; variants supply the face. Rarity ratios are
-engine-owned (seeded variable-ratio, deterministic offline — engine spec); the surface renders
-what it’s given:
+Wrapper handles the tier-3 shimmer + flip; variants supply the face. The `rareVariant` is
+selected by the engine’s seeded PRNG over the pack’s `rare_cards` (deterministic offline —
+engine spec); the surface renders what it’s given:
 
 | Variant | Face | Scoring |
 |---|---|---|
@@ -341,7 +345,7 @@ export type JourneyCourseMeta = {
   arcId: string | null
   unitId: string | null
   // Session bookkeeping
-  sessionCounter: number              // seeds deterministic rare-card PRNG
+  sessionCounter: number              // display/resume bookkeeping only — the engine owns the rare-card PRNG seed (§2.4)
   lastCardAt: string | null           // ISO
   cardsToday: { day: string; count: number }   // localDay-keyed; display + ring only (quota truth is the gate, §7)
   checkpointCountToday: number
@@ -427,11 +431,19 @@ export function useJourneyRuntime(courseKey: CourseKey): JourneyRuntime
 ```
 
 `submitResult` is the single write path: engine update → `useJourneyStore.noteCardCompleted` →
-`useProgressStore.recordLearningDay()` → quota `gate.note()` (§7) → pull `nextFeedItems` as needed.
+`useProgressStore.recordLearningDay()` → quota `gate.note()` when the completed card was a
+**debut** (§7.2 — the one debit site) → pull the next `EngineCard`s from the engine and map them
+(§2.4) as needed.
 
 ### 2.4 `FeedCard` (surface-side card descriptor)
 
-The engine emits `ActivitySpec`s (D2); the runtime wraps them with surface concerns:
+The **engine is the producer of session structure**. It emits `EngineCard`s (engine spec) —
+exercise cards, `checkpoint` cards (with their summary), a `welcomeBack` signal from
+`startSession()` (gap ≥ 7 days; `retainedPct` = mean retrievability over seen cards), and the
+`rareVariant` selected by its seeded PRNG over the pack’s `rare_cards`. `journey/runtime.ts`
+maps `EngineCard` → `FeedCard` **1:1** and synthesizes ONLY `blockIntro` (at `modelNeeds` run
+boundaries, §6.3) — no other behavior invention in the runtime. The `FeedCard` discriminated
+union is surface-owned and canonical **here**:
 
 ```ts
 export type FeedCard =
@@ -447,6 +459,9 @@ export type RareVariant = "delight" | "etymology" | "timeCapsule" | "miniGame" |
 
 `cardId` is unique per feed instance (`${sessionCounter}-${seq}`) — it is `ActivityResult.specId`’s
 sibling, used for the scroll-back ring and result de-dup (a card may resolve exactly once).
+
+Poster/cover art (`poster.imageUrl` — pack art, book covers) and any HomeHub journey imagery
+render via `<OfflineImage>` per `specs/offline-cache.md`, never a raw `<img>`.
 
 ---
 
@@ -547,7 +562,9 @@ An unanswered card can be skipped, but never by accident:
   the un-resolved card simply reappears next session (cardIds are session-scoped; no double-grade
   risk).
 - `packActivity`: swiping past the poster = abandoned (cheap). Abandoning *inside* the pack =
-  pack exits via `corpan:exit` without reporting → host synthesizes the abandoned result (§6.2).
+  pack exits via `corpan:exit` without reporting → overlay teardown calls `endActivitySession()`,
+  which synthesizes the abandoned result from the buffered `reportItem` evidence
+  (activity-contract §3.2 — partial work is never lost; §6.2).
 - Engine treatment (for reference; engine spec owns it): abandoned ⇒ no FSRS grade; item returns
   to its pool; ≥3 abandonments of one activityType in a session is a mixer signal to down-weight
   that type today.
@@ -558,20 +575,22 @@ Checkpoint cards cannot be abandoned (they are already a stopping point — swip
 ### 3.6 Card ordering constraints (surface-enforced sanity)
 
 The mixer owns composition; the surface re-verifies two invariants before mounting (defense in
-depth, cheap): no two consecutive cards with identical `activityType`; a `speak_echo` outside a
-speaking block is remapped to the block-pending queue (§6.3). Violations log a console warning —
-they indicate an engine bug, not a surface fix-up beyond these two.
+depth, cheap): no two consecutive cards with identical `activityType`; every `modelNeeds` run is
+preceded by the runtime-synthesized `blockIntro` (§2.4/§6.3 — a lone `speak_echo` still gets one;
+runs are engine-batched, never surface-remapped). Violations log a console warning — they
+indicate an engine bug; the surface performs no fix-up (R5: the runtime maps, never invents).
 
 ### 3.7 Session shapes (goalIntensity finally drives something)
 
 `goalIntensity` (`store/settings.ts:237`, captured at onboarding, unused at runtime today) maps to
-defaults; all adjustable in the overflow menu later (P1):
+defaults; the cadence value is passed to the engine as `FeedConstraints.checkpointCadence` — the
+engine’s checkpoint layer owns emission (§1.6, §2.4). All adjustable in the overflow menu later (P1):
 
-| goalIntensity | Daily ring goal | Checkpoint cadence hint to engine |
+| goalIntensity | Daily ring goal | `FeedConstraints.checkpointCadence` |
 |---|---|---|
-| `casual` | 10 cards | every 8 |
-| `daily` | 20 cards | every 10 |
-| `intensive` | 40 cards | every 12 |
+| `casual` | 10 cards | 8 |
+| `daily` | 20 cards | 10 |
+| `intensive` | 40 cards | 12 |
 
 Micro sessions fully count: any 1 card ticks the streak (streak = showed up; the ring measures
 learning volume separately — engagement §1.4 split).
@@ -580,19 +599,35 @@ learning volume separately — engagement §1.4 split).
 
 ## 4. The native exercise renderers (v1: 8 core + 2 composite)
 
+**The canonical activityType registry is `ACTIVITY_TYPES`, an exported const in
+`activityContract.ts`** (activity-contract §1). It carries per-type metadata
+`{ activityType, form, strand, guessable, estSec, modelNeeds }` for exactly these ten
+snake_case types: `choice_pick, listen_pick, listen_type, cloze, word_order, match_pairs,
+flip_recall, speak_echo, intro_echo, grammar_note`. Translation direction is a **param**
+(`direction`, below) of `choice_pick`/`listen_type`/`cloze` — never a type. Pack types are
+`<packId>:<name>`. The registry is the one metadata source — it also feeds the engine’s
+activityTemplates; the table below is this surface’s *rendering* spec for the same ten types,
+and its Form/modelNeeds columns restate registry metadata (CI drift check, sync-contract style).
+
 All renderers implement one contract:
 
 ```ts
 // exercises/types.ts
 export type ExerciseProps = {
   spec: ActivitySpec                  // from contentPacks/types.ts (D2)
-  items: ResolvedItem[]               // runtime resolves ItemRefs → display/tts text, translations, romanization
+  items: ResolvedItem[]               // resolved by journey/content/resolve.ts — see specs/content-resolver.md
   mode: "live" | "review" | "probe"
   scaffold: ScaffoldState             // §3.3 retry state, host-owned
   onOutcome: (o: RawOutcome) => void  // { correct: boolean|number, perItem?, latencyMs, detail? }
   speak: (lang: string, text: string, opts?: { rate?: number }) => Promise<void>
 }
 ```
+
+`ResolvedItem`, the exact per-ItemRef-kind resolution queries, and the **distractor sampler
+contract** (pool, exclusions, dedup, seeded determinism) are owned by `specs/content-resolver.md`
+(`journey/content/resolve.ts`); renderers develop against it in the fixture slice. What follows
+here are the renderer-side requirements only: each renderer receives fully resolved display/tts
+text, translations, and romanization — it never queries content itself.
 
 `ActivitySpec.params` is `Record<string, unknown>` at the contract level (D2); each renderer
 declares a typed params schema below (validated with a lightweight parse; unknown fields ignored —
@@ -603,14 +638,14 @@ Common param fields: `direction: 'toNative' | 'toTarget' | 'targetOnly'`,
 
 | # | activityType | Form | Accepts ItemRef kinds | Key params | modelNeeds | Notes |
 |---|---|---|---|---|---|---|
-| 1 | `choice_pick` | recognition | `phrase`, `word`, `concept`* | `direction`, `choices: 3\|4`, `media: 'text'\|'image'`, `distractors: 'sameSkill'\|'nearTheta'` | — | The MC workhorse; grades cap at Good (guessable). *`concept` + `media:'image'` = picture-choice — **params-gated on imagepan presence** (D10.6); until imagepan ships, runtime never emits `media:'image'`. |
+| 1 | `choice_pick` | recognition | `phrase`, `word`, `concept`* | `direction`, `choices: 3\|4`, `media: 'text'\|'image'`, `distractors: 'sameSkill'\|'nearTheta'` | — | The MC workhorse; grades cap at Good (guessable). Distractor semantics per `specs/content-resolver.md`. *`concept` + `media:'image'` = picture-choice — **params-gated on imagepan presence** (D10.6); until imagepan ships, runtime never emits `media:'image'`. |
 | 2 | `listen_pick` | recognition | `phrase`, `word` | `choices: 3\|4`, `hideTextUntilAnswer: boolean`, `slowReplay: boolean` | — | Audio auto-plays on arrival; replay + 0.7× replay free. |
 | 3 | `listen_type` | production | `phrase`, `word` | `tolerance: {diacritics: boolean, punctuation: boolean, caseFold: boolean}`, `maxLen` | — | Dictation. Compare via per-language normalizer (NFKD fold per tolerance). ASR dictation input optional later via `hostApi.asr` (keyboard is the floor). |
 | 4 | `cloze` | cued recall | `phrase`, `grammarNode`† | `mode: 'bank'\|'type'`, `blankIndex: number`, `bankSize: 4..6` | — | †`grammarNode` resolves to an exemplar phrase carrying the node; the node is the graded item. |
 | 5 | `word_order` | cued recall | `phrase`, `grammarNode`† | `distractorTiles: 0..2`, `sourceShown: boolean` | — | Tokenize space-delimited langs by whitespace; CJK/Thai via `Intl.Segmenter(lang, {granularity:'word'})` with a per-language fallback table. Tiles honor `dir` of the TARGET language, not the UI. |
 | 6 | `match_pairs` | recognition | `word`, `phrase` (2–5 refs) | `pairs: 4\|5`, `axis: 'text-text'\|'text-audio'` | — | Multi-item card: `perItem` outcome per pair. `text-audio` axis is a listening card for advance rules (§3.2). |
 | 7 | `flip_recall` | cued recall | `word`, `phrase` | `direction` | — | Show prompt → learner recalls → tap to flip → self-verdict `journey.exercise.knewIt` / `didntKnow`. Self-report caps at Good; `didntKnow` = fail (enters retry flow §3.3 step 2 directly — no scaffold retry for self-graded cards). |
-| 8 | `speak_echo` | production | `phrase`, `word` | `passThresholds: {again: 0.45, hard: 0.7, good: 0.9}`, `maxAttempts: 2`, `showText: boolean` | `['stt']` | Speak-after-me via `hostApi.stt` session with `expectedText`. Graded on comprehensibility, **never hard-fails a speech item below Hard when `overallScore ≥ 0.45`** (pedagogy §12.5). Mic-denied / STT unavailable ⇒ runtime swaps the card to `listen_type` and flags the speaking block skipped (§6.3). MUST call `stt.releaseAudio` at block end. |
+| 8 | `speak_echo` | production | `phrase`, `word` | `passThresholds: {again: 0.45, hard: 0.7, good: 0.9}`, `maxAttempts: 2`, `showText: boolean` | `['stt']` | Renders via the `cap-pronounce` capability module (`specs/capability-modules.md`); `SpeakEcho.tsx` is a thin mount host. Speak-after-me via `hostApi.stt` session with `expectedText`. Graded on comprehensibility, **never hard-fails a speech item below Hard when `overallScore ≥ 0.45`** (pedagogy §12.5). Mic-denied / STT unavailable ⇒ runtime swaps the card to `listen_type` and flags the speaking block skipped (§6.3). MUST call `stt.releaseAudio` at block end. |
 | 9 | `intro_echo` | — (unscored) | `phrase`, `word` | `showRomanization: boolean` | — | New-item debut: show + hear + echo prompt. No scoring; the FSRS card is created at first *scored* exposure (adaptivity §5.3). Composite half of every new-item intro pair. |
 | 10 | `grammar_note` | language-focused | `grammarNode` (+ exemplar `phrase` refs) | `noteKey: string` (L1-keyed scaffolding string from course pack overlay tables), `drill: { activityType: 'cloze'\|'word_order', params }` | — | Composite: note panel (L1 per taper, pedagogy §12.4) + one embedded micro-drill graded as the node’s item. |
 
@@ -707,7 +742,9 @@ graph was designed for this, `graph.ts:116-120`):
 2. `resolveLanding` maps `"journey"` → `{ intent: { kind: "journey", razzle: true },
    installPackId: journeyPackIdFor(targetLang) }` (quiet-preinstalls the `journey_en` course pack
    via the existing `corpan:preinstall-pack` seam; graceful fallback if the course pack for the
-   target doesn’t exist yet → phrase_main, exactly the existing fallback discipline).
+   target doesn’t exist yet → phrase_main, exactly the existing fallback discipline). The journey
+   pack index consulted by `journeyPackIdFor`/`journeyCoursePackInstalled` is a `cachedFetch`
+   resource (TTL 300 s policy) per `specs/offline-cache.md`.
 3. **Placement offer is NOT an onboarding node.** It lives inside `PlacementFlow` on first surface
    entry (§1.9) — onboarding stays short, and users entering Journey later (Home hero) get the
    identical flow. The existing `calibrateLearn` answer seeds the engine’s placement prior
@@ -728,19 +765,15 @@ graph was designed for this, `graph.ts:116-120`):
   StreakChipV2 inline, CTA `journey.heroCta.continue`. One tap → `openJourney()`. This is the
   CURR lever: the returning user’s next action is always one tap from Home.
 
-### 5.5 Ambient listeners
+### 5.5 Result transport (owned elsewhere)
 
-App.tsx gains one listener, following the `corpan:segment-progress` pattern (`App.tsx:404-433`):
-
-```ts
-window.addEventListener("corpan:activity-result", onActivityResult)
-// detail: ActivityResult. Routed to journeyRuntime IF a journey-launched pack is active
-// (host keeps the pending {cardId, packId} handshake in a ref, §6.2); otherwise ignored
-// (a standalone pack emitting results outside journey context is a no-op at v1).
-```
-
-`hostApi.journey.reportResult(result)` (typed seam, D2) dispatches this same event internally —
-one code path.
+Result transport is owned by `journey/activitySession.ts` (activity-contract §3.2–3.3): the
+typed rail (`hostApi.journey.reportResult`) and the event rail (`corpan:activity-result`) both
+delegate to the same ingest there — validation, specId matching, per-item dedup, and terminal
+de-dup included. The feed registers a callback via `beginActivitySession` (§6.1) and consumes
+exactly one validated `(ActivityResult, meta)` per pack session (§6.2). This surface adds no
+listener of its own and never re-implements routing. A standalone pack emitting results outside
+a journey session is dropped by the session guard (contract-owned, logged).
 
 ---
 
@@ -750,8 +783,11 @@ one code path.
 
 `PackActivityCard` poster tap:
 
-1. Runtime marks the card `pending` and stores the handshake
-   `{ cardId, packId, specId, launchedAt }` in a ref (survives re-render, not persisted).
+1. Runtime marks the card `pending` (a ref mapping `cardId` → the launched spec; survives
+   re-render, not persisted) and calls
+   `beginActivitySession(game.id, spec, { onResult })` (activity-contract §3.2) — the callback
+   is the ONLY path a result reaches the feed (§6.2). This pack-anchor launch is a quota debit
+   event (§7.2).
 2. Host calls the existing chokepoint: `handleLaunchGame(game, entry)` with the widened
    `PackLaunchEntry` (D2): `entry = { activity: spec }`. The spec flows through the proven seam
    `mount(container, hostApi, initialState)` (`ContentPackHost.tsx:549-558`) — the pack reads
@@ -767,16 +803,19 @@ one code path.
 
 1. Pack finishes its round → calls `hostApi.journey.reportResult(result)` (or dispatches
    `corpan:activity-result` directly — dual-rail for SDK-lagging packs), THEN dispatches
-   `corpan:exit`.
-2. App listener routes the result to the runtime; runtime matches `result.specId` to the pending
-   handshake, clears it, submits to the engine.
+   `corpan:exit` — reporting before exit is already normative (activity-contract §3.4).
+2. Both rails ingest through `activitySession.ts` (activity-contract §3.2–3.3); the runtime
+   receives exactly one validated `(ActivityResult, meta)` through the `onResult` callback it
+   registered in `beginActivitySession` (§6.1), clears the pending card, submits to the engine.
 3. `corpan:exit` clears `activeGame` → feed is revealed → the pending card is now `complete`:
    it plays its **celebration on return** — tier 1 for `score ≥ 0.8`, tier 0 otherwise; if the
    card was a rare roll the tier-3 shimmer already played pre-launch, so return celebration is
    capped at tier 1 (no double jackpot).
-4. **Exit without result** (user quit the pack mid-round): 300 ms grace timer after `corpan:exit`;
-   no result → host synthesizes `{ specId, score: 0, perItem: [], durationMs, abandoned: true }`
-   and the card settles as skipped, no celebration, no retry loop.
+4. **Exit without result** (user quit the pack mid-round): overlay teardown calls
+   `endActivitySession()`, which synthesizes the abandoned result from the buffered `reportItem`
+   evidence — partial work is never lost, and the feed receives it through the same callback
+   (`meta.synthesized: true`). The card settles as skipped, no celebration, no retry loop. There
+   is no feed-side timer and no feed-side synthesis of any kind.
 5. Reader chapters (`storyChapter`): earthgate is instrumented (D11) to accept a segment-range
    param inside `spec.params` and report a segment-coverage result; the legacy
    `corpan:segment-progress` event continues to fire independently (progress store double-entry
@@ -797,8 +836,9 @@ presents them as a unit:
 3. Block end: `stt.releaseAudio()` (iOS mic indicator, non-negotiable — pack-contract §1.7) and
    `stt.unload()` if the next 10 mixer slots contain no STT card.
 4. Failure paths: `prepare` fails / mic permission denied → `journey.block.sttUnavailable` line,
-   block cards transparently re-rendered as `listen_type` equivalents; the engine is told via a
-   `detail: { sttUnavailable: true }` on each result so it stops scheduling STT today.
+   block cards transparently re-rendered as `listen_type` equivalents; the engine is told via
+   `detail: { flags: { sttUnavailable: true } }` on each result (the typed detail envelope,
+   activity-contract §1) so it stops scheduling STT today.
 5. LLM-backed cards (out of v1 scope for native renderers; tutomaton grading is explicitly
    deferred, D11) will reuse the identical block pattern with `modelNeeds: ['llm']`.
 
@@ -828,15 +868,19 @@ Plus `"journey_daily"` added to the `PaywallSurface` union (`store/paywall.ts:23
 - Gate constructed once per surface mount in `runtime.ts` — inside an effect, StrictMode-safe,
   exactly like `MainExperience.tsx:289-308`:
   `createDailyQuota("journey_daily", { isSubscribed: () => useEntitlementStore.getState().subscription.active })`.
-- **What counts**: one `note()` per *completed, scored* card. Free actions: scroll-back review,
-  audio replays, checkpoint cards, `intro_echo`, abandoned cards, placement probes, rare-card
-  *reveals* (the scored exercise inside a rare card counts normally). This mirrors phrase-flip’s
-  “only NEW acquisitions are metered” dignity rule.
+- **What counts — NEW intake only**: one `note()` per completed **debut** card (the first-ever
+  presentation of an item) and one per **pack-anchor launch** (poster tap, §6.1; swiping past
+  the poster is free). **Due-review, replay, and repair cards are NEVER metered** — pay-to-not-
+  forget is dead, matching the parlometron dignity precedent exactly. Also free: scroll-back
+  review, audio replays, checkpoint cards, placement probes, abandoned cards, and rare-card
+  *reveals* (a rare card whose exercise is a review stays free; a rare debut debits as a debut).
+- **One debit site**: `runtime.ts` — `submitResult` debits completed debuts (§2.3); the §6.1
+  launch path debits pack-anchor launches. No other code path may `note()` this gate;
+  activity-contract §9 references this site rather than defining its own rule.
 - **Pack activities launched by Journey debit `journey_daily`, not the pack’s quota** (D9). Wiring:
   when `initialState.activity` is present, the pack MUST NOT construct/note its own daily gate
-  (rule added to PACK_DEV.md; enforced in the three v1 instrumented providers). The journey
-  runtime `note()`s once when the pack result lands. Standalone launches of the same packs keep
-  their existing caps untouched.
+  (rule added to PACK_DEV.md; enforced in the three v1 instrumented providers). Standalone
+  launches of the same packs keep their existing caps untouched.
 - **At the cap**: the gate dispatches `corpan:daily-locked` (host already renders the ONE universal
   `DailyLockOverlay`, `App.tsx:370-389`) — accomplishment framing (“You did your {{limit}} cards
   today ✓”), countdown to local midnight, clearly-labeled Plus CTA. Never shown to subscribers.
@@ -1043,5 +1087,43 @@ kills particles; `?journey=1` cold-start lands in the feed.
    decision, numbers are tunable constants in one place (`runtime.ts`).
 7. **Onboarding placement offer lives in-surface, not as a graph node** — keeps onboarding short
    and gives late enrollers the identical flow.
-8. **Abandoned cards carry no per-item grades** — engine treats abandonment as a mixer signal,
-   not memory evidence.
+8. **Abandoned native cards carry no per-item grades** — engine treats abandonment as a mixer
+   signal, not memory evidence. Abandoned *pack sessions* keep their buffered partial `perItem`
+   evidence (activity-contract §3.2 synthesis).
+
+---
+
+## Tracked risks (panel round 1)
+
+Product-scope lens risks relevant to this surface, preserved verbatim per CTO-RESOLUTIONS R16.
+Non-blocking: these inform build-time tests; none gate the build start.
+
+1. Course-exhaustion and over-placement are unhandled: v0.1 ships ~30 units (arcMax A1) but
+   placement Phase 1 probes up to b=+3 and the engine has no 'you are beyond this course /
+   course complete' state — a B1 learner or a cruising daily-fast persona runs off the end of
+   content in weeks with no specced feed behavior. Define an end-of-content card + graceful
+   frontier cap before preview users hit it. *(See also R10: placement now terminates with
+   outcome `above-content`; the end-of-content feed card remains open surface work.)*
+2. Rare-card economy underdelivers in the launch window: storyChapter gates on measured 95%
+   vocab coverage over real book segments (implausible for A1 learners against the current
+   non-graded book catalog, and the coverage computation itself — tokenize segments vs
+   FSRS-known items — is defined nowhere); timeCapsule needs weeks of history; miniGame is 1:25.
+   Week-one 'wow' rests entirely on delight variants (1:8) and etymology gems (1:50). Tune
+   early-session ratios (e.g. guaranteed gem in session 1–2) or the variable-reward economy
+   reads as absent exactly when retention is decided.
+3. A1 feed is text/audio-only at v1 (imagepan out per D11; picture-choice params-gated off) —
+   the direct-method flash the North Star promises for beginners is missing at the level where
+   it matters most. Consider a tiny bundled starter image set (~100 concrete A0 concepts) or an
+   explicitly audio-first card design pass for Launchpad.
+4. First-session flow front-loads friction: enroll → placement offer → up-to-25-probe test →
+   streak pact → feed. The learner's first dopamine is an exam. Consider a 3-card
+   guaranteed-win taste BEFORE the placement offer (warm-win opener exists but only
+   post-placement).
+5. Instrumented-provider Leitner retirement (lingo-hero) creates two scheduling brains for the
+   same user across standalone vs journey launches of the same pack — accepted for v1, but
+   expect confusing 'why is this word back' moments; the parked Leitner→FSRS importer will
+   become user-visible debt.
+6. check:i18n build gate: the ~110 journey UI keys ×54 locales are declared a build task —
+   fine — but any drift in the key inventory during build slices 2–7 re-triggers 54-file
+   fan-outs; freeze the key list at slice 1 or batch the fan-out to the end (slice 8 already
+   suggests this; enforce it).

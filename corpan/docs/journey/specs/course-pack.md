@@ -41,21 +41,20 @@ state (FSRS cards, θ, review log) lives app-side in IndexedDB per D5 and never 
 ## 1. ItemRef — canonical serialization
 
 D3 defines `ItemRef = { kind, source, id }`. The pack (and the engine's FSRS key space)
-uses one canonical string serialization, which is also `items.id`:
+uses ONE canonical string serialization, which is also `items.id`:
 
 ```
 <kind>:<source>:<id>
 ```
 
-| kind | source | id | example |
-|---|---|---|---|
-| `phrase` | `base` or a phrase-pack id | `cor_entry.id` / phrase-pack `entries.id` | `phrase:base:1042`, `phrase:phrase-travel-essentials:57` |
-| `word` | target lang code | surface word (wordpan key) | `word:en:running` |
-| `char` | `hanzipan` | the character | `char:hanzipan:好` |
-| `segment` | bookId | `chNN-SSS` segment id | `segment:book_monte_alban:ch00-004` |
-| `grammarNode` | course id | `grammar_nodes.id` | `grammarNode:journey_en:en.gn.present-simple-3sg` |
-| `phoneme` | course id | contrast key `A-B` (IPA, sorted) | `phoneme:journey_en:iː-ɪ` |
-| `concept` | `imagepan` | concept key | `concept:imagepan:apple` |
+The kind/source/id table lives in **activity-contract.md §1** — one table, one source
+of truth (R2); this spec and engine.md cite it rather than duplicating it. Pack-facing
+reminders (all normative in the contract table):
+
+- `char` items use source **`hanzipan`** — `char:hanzipan:好`.
+- `phoneme` ids use the sorted-IPA contrast form — `phoneme:journey_en:iː-ɪ`.
+- `phrase` source is `base` or a phrase-pack id; `word` source is the target lang code;
+  `segment` source is the bookId; `grammarNode`/`phoneme` source is the course id.
 
 Rules:
 
@@ -64,29 +63,11 @@ Rules:
   (D5). Removing or renaming one is a MAJOR version event (§8).
 - `grammarNode` and `phoneme` items are *minted by* the course pack (D3); everything else
   is a reference into existing content, never a fork.
-
-TypeScript (add to `corpan-app/src/contentPacks/types.ts`, alongside the D2 ActivitySpec):
-
-```ts
-export type ItemKind =
-    | "phrase" | "word" | "char" | "segment"
-    | "grammarNode" | "phoneme" | "concept";
-
-export type ItemRef = { kind: ItemKind; source: string; id: string };
-
-export function serializeItemRef(r: ItemRef): string {
-    return `${r.kind}:${r.source}:${r.id}`;
-}
-
-export function parseItemRef(s: string): ItemRef | null {
-    const i = s.indexOf(":");
-    if (i < 0) return null;
-    const j = s.indexOf(":", i + 1);
-    if (j < 0) return null;
-    const kind = s.slice(0, i) as ItemKind;
-    return { kind, source: s.slice(i + 1, j), id: s.slice(j + 1) };
-}
-```
+- **One helper (R2).** The single serializer `itemRefKey()` (and its inverse
+  `parseItemRef()`) lives in `contentPacks/activityContract.ts`; this spec defines NO
+  duplicate helper and app code imports the contract's. Required cross-spec test: every
+  pack `items.id` round-trips through that one helper
+  (`itemRefKey(parseItemRef(id)) === id`) — enforced by gate V-15 (§6.4).
 
 ---
 
@@ -222,6 +203,13 @@ CREATE TABLE items (
                                               -- (adaptivity §6.4)
     freq_rank     INTEGER,                    -- wordfreq rank in the TARGET language;
                                               -- NULL for non-lexical items
+    text_len      INTEGER NOT NULL DEFAULT 0, -- BUILD-TIME (R7): NFC code-point length of
+                                              -- the item's target-language display text
+                                              -- (phrase/segment text, word surface,
+                                              -- char = 1; minted grammarNode/phoneme items
+                                              -- use their en title). Feeds
+                                              -- CourseGraph.items[].textLen for the
+                                              -- engine's latency normalization.
     UNIQUE (kind, source, ref_id)
 );
 CREATE INDEX idx_items_unit  ON items(unit_id);
@@ -243,6 +231,9 @@ CREATE INDEX idx_item_skills_skill ON item_skills(skill_id);
 CREATE TABLE lesson_recipes (
     id          TEXT PRIMARY KEY,   -- 'core','story','dialog','grammar-focus',
                                     -- 'phonology','review','boss','gem'
+                                    -- ('story' is SCHEMA-ONLY in v0.1 — R11: no v0.1
+                                    -- unit schedules it; returns with the v0.2
+                                    -- coverage workstream)
     title_key   TEXT NOT NULL,      -- strings key
     est_minutes REAL NOT NULL       -- median engaged minutes (feed pacing hint)
 );
@@ -261,8 +252,11 @@ CREATE TABLE recipe_slots (
                                               -- 'fluency.game-round' | 'fluency.shadow' |
                                               -- 'fluency.timed-review' |
                                               -- 'grammar.note' | 'meta.recap'
-    activity_types_json TEXT NOT NULL,        -- JSON array of ActivityType values (D2)
-                                              -- the mixer may choose among for this slot
+    activity_types_json TEXT NOT NULL,        -- JSON array of activityType values the
+                                              -- mixer may choose among for this slot;
+                                              -- each ∈ the ACTIVITY_TYPES registry in
+                                              -- activityContract.ts (R4) or a pack type
+                                              -- `<packId>:<name>` — gate V-8
     item_selector  TEXT    NOT NULL
                    CHECK (item_selector IN ('due','new','unit','known','grammar-node',
                                             'l1-phoneme','rare','none')),
@@ -313,6 +307,10 @@ CREATE TABLE rare_cards (
     id            TEXT    PRIMARY KEY,        -- 'en.rare.gem.serendipity'
     card_type     TEXT    NOT NULL
                   CHECK (card_type IN ('delight','minigame','etymology','story')),
+                                              -- 'story' (storyChapter) is SCHEMA-ONLY in
+                                              -- v0.1 (R11): zero story rows ship until the
+                                              -- v0.2 graded-narration + known-token-
+                                              -- coverage workstream lands (gate V-19)
     rarity_weight INTEGER NOT NULL,           -- draw denominator basis: delight ~8,
                                               -- minigame ~25, etymology ~50 (D7)
     min_unit_id   TEXT REFERENCES units(id),  -- earliest unit at which it may roll
@@ -320,7 +318,11 @@ CREATE TABLE rare_cards (
                                               -- ('lingo_hero', 'book_monte_alban'…)
     item_id       TEXT REFERENCES items(id),  -- payload item (e.g. word:en:… for gems)
     coverage_gate REAL,                       -- story chapters: measured known-token
-                                              -- coverage floor, e.g. 0.95 (D7)
+                                              -- coverage floor, e.g. 0.95 (D7). v0.2
+                                              -- semantics (R11): the coverage computation
+                                              -- (Intl.Segmenter + irregular-form map onto
+                                              -- word items) is defined by the named v0.2
+                                              -- story workstream; unused in v0.1
     params_json   TEXT
 );
 CREATE INDEX idx_rare_cards_type ON rare_cards(card_type);
@@ -363,19 +365,96 @@ CREATE TABLE strings (
 ) WITHOUT ROWID;
 ```
 
-### 2.1 Read patterns (what the engine actually queries)
+### 2.1 PackReader → CourseGraph (NORMATIVE loader contract — R7)
 
-All via `content_packs_query_db(packId, "main", sql, params, maxRows)` — parameterized,
-read-only, connection-cached (`src-tauri/src/lib.rs:1102`). Representative queries:
+The engine consumes the plain, JSON-serializable `CourseGraph` object (engine.md §2.6);
+the `journey/store` PackReader builds it from this DB via
+`content_packs_query_db(packId, "main", sql, params, maxRows)` — parameterized,
+read-only, connection-cached (`src-tauri/src/lib.rs:1102`).
+
+**Pagination is mandatory.** `content_packs_query_db` hard-caps at **2,000 rows and
+truncates SILENTLY** (`lib.rs:30-31, 1147-1148`). At v0.1 scale `items` (~4,200 rows)
+and `item_skills` (~6,000 rows) both exceed the cap. Every read of those tables uses
+**keyset pagination**: page size 1,000, loop until a short page (< 1,000 rows) returns.
+Never `OFFSET`; never assume a full page is the last.
+
+Exact SQL per CourseGraph field:
 
 ```sql
--- boot: spine + DAG (small; loaded once into memory)
-SELECT * FROM arcs ORDER BY arc_index;
-SELECT * FROM units ORDER BY arc_id, unit_index;
-SELECT * FROM skills; SELECT * FROM skill_edges;
+-- graph.arcs (arcId, ordinal, cefr) — single shot, ≤ 7 rows
+SELECT id, arc_index, cefr FROM arcs ORDER BY arc_index;
 
--- unit entry: item pool for the mixer
-SELECT id, kind, source, ref_id, difficulty_b, importance, intro_order
+-- graph.units (unitId, arcId, ordinal; skillIds derived from the skills rows)
+SELECT id, arc_id, unit_index FROM units ORDER BY arc_id, unit_index;
+
+-- graph.skills (skillId, b, unitId; prereqs from skill_edges; itemIds from item_skills)
+SELECT id, unit_id, difficulty_b FROM skills;
+SELECT from_skill, to_skill FROM skill_edges;
+
+-- graph.skills[].itemIds + graph.items[].skillIds
+-- (~6,000 rows > the 2,000 cap → keyset over the composite PK)
+SELECT item_id, skill_id FROM item_skills
+WHERE (item_id, skill_id) > (?, ?)
+ORDER BY item_id, skill_id LIMIT 1000;
+
+-- graph.items (~4,200 rows > the 2,000 cap → keyset over intro_order)
+SELECT id, kind, source, ref_id, unit_id, intro_order, difficulty_b,
+       importance, is_probe, substitutable, text_len
+FROM items
+WHERE intro_order > ?
+ORDER BY intro_order LIMIT 1000;
+```
+
+Field mapping (normative):
+
+- `itemId` = `id`; `ref` = `parseItemRef(id)` via the ONE contract helper (§1);
+  `introOrder` = `intro_order`; `b` = `difficulty_b`; `probe` = `is_probe = 1`;
+  `textLen` = `text_len`; `kind` = `kind`.
+- **`substituteIds`** — derived in-memory, no extra SQL: for item *i*, the other items
+  sharing ≥ 1 skill with *i* that have `substitutable = 1`, **ordered by `intro_order`**.
+  Computed from the loaded items × item_skills join.
+- **`activityTemplates`** — native-template metadata (`form`, `strand`, `guessable`,
+  `estSec`, `modelNeeds`) comes from the vendored `ACTIVITY_TYPES` registry in
+  `activityContract.ts` (R4), NOT from this DB; pack recipes contribute only the
+  pack-provided `<packId>:<name>` templates and `funWeight`. One metadata source.
+- **`importance` — ONE scale.** The pack's 0–3 integer (§2 `items.importance`) is the
+  only authored scale. The loader derives the engine weight:
+
+  | pack `importance` | engine weight | meaning |
+  |---|---|---|
+  | 3 | 2.0 | core |
+  | 2 | 1.5 | standard |
+  | 1 | 1.2 | enrichment |
+  | 0 | 1.0 | rare-card-only — never enters scheduler pools |
+
+  engine.md's "importance 1.0..2.0" is this *derived* weight; there is no second
+  authored scale anywhere.
+
+**Row-count assertion (hard boot error).** After pagination completes, loaded counts
+MUST equal `pack_meta.item_count` / `skill_count` / `unit_count` / `arc_count`. A
+mismatch means silent truncation or a corrupt install: the loader throws, the Journey
+surface shows the pack-error state (reinstall path). The engine NEVER boots on a
+partial graph — silent truncation is the failure mode this assertion exists to catch.
+
+**Cold-start budget.** Full graph load (all queries above + derived indexes, ~12
+paginated calls at v0.1 scale) completes in **< 500 ms on the reference low-end Android
+device** at v0.1 scale (~4,200 items). Measured in the slice that lands the loader.
+
+**Per-arc lazy loading (specced now; built before Arc 2 ships).** At full-course scale
+(192 units, tens of thousands of items) the eager load blows the budget. Plan sketch:
+`intro_order` is arc-contiguous by construction (§6.2 step 4 sorts by arc first), so
+each arc is one keyset range. Boot loads the spine (arcs/units/skills/edges) plus the
+active arc's item range; adjacent arcs prefetch on idle; `CourseGraph` gains a
+`loadedArcs` marker and the loader an `ensureArc(arcId)` promise; the row-count
+assertion then applies per arc range (per-arc counts land in `pack_meta` as
+`arc_item_counts` JSON). Nothing in v0.1 builds this; the schema and the build sort
+order already support it.
+
+Other reads (small, single-shot, well under the cap):
+
+```sql
+-- unit entry: item pool for the mixer (≤ ~200 rows)
+SELECT id, kind, source, ref_id, difficulty_b, importance, intro_order, text_len
 FROM items WHERE unit_id = ? ORDER BY intro_order;
 
 -- placement: probes near a target difficulty
@@ -383,20 +462,14 @@ SELECT i.id, i.difficulty_b FROM items i
 WHERE i.is_probe = 1 AND i.difficulty_b BETWEEN ? AND ?
 ORDER BY ABS(i.difficulty_b - ?) LIMIT 8;
 
--- skill item set I(s) for derived mastery
-SELECT item_id FROM item_skills WHERE skill_id = ?;
-
 -- localized copy, native-first with en fallback (same contract as
 -- util/wordPack.ts::selectPreferred — reuse that selector)
 SELECT lang, text FROM strings WHERE key = ?;
 
--- overlays for the active stack's L1
+-- overlays for the active stack's L1 (≤ ~500 rows)
 SELECT overlay_type, ref_kind, ref_id, string_key, payload_json
 FROM l1_overlays WHERE l1 = ?;
 ```
-
-`maxRows` note: the largest single pull is a unit's item pool (≤ ~200 rows) and an L1's
-overlay set (≤ ~500 rows). Nothing needs pagination at v0.1 scale; keep `maxRows: 1000`.
 
 ---
 
@@ -405,7 +478,7 @@ overlay set (≤ ~500 rows). Nothing needs pagination at v0.1 scale; keep `maxRo
 ZIP contents (exactly the wordpan shape — `packs/wordpan/manifest.json` precedent):
 
 ```
-journey-en-0.1.0.zip
+journey_en-0.1.0.zip
 ├── manifest.json
 └── data/course.sqlite3
 ```
@@ -439,15 +512,15 @@ journey-en-0.1.0.zip
 
 Rules:
 
-- `id` is underscore-canonical and immutable; the ZIP filename is hyphenated +
-  version-suffixed (`journey-en-0.1.0.zip`). The app ALWAYS passes the explicit `packId`
-  to `content_packs_install_from_url` so the installer never derives
-  `journey_en_0_1_0` from the filename (the exact wordpan bug-avoidance,
-  `util/wordPack.ts:80-97`).
+- `id` is underscore-canonical and immutable; the ZIP filename is the **underscore pack
+  id + version suffix** (`journey_en-0.1.0.zip` — installer rule, R1). The app STILL
+  ALWAYS passes the explicit `packId` to `content_packs_install_from_url` so the
+  installer never derives `journey_en_0_1_0` from the filename (the exact wordpan
+  bug-avoidance, `util/wordPack.ts:80-97`).
 - `entryType: "data"`, no `entry` field → the pack is not launchable; it never appears in
   the pack browser as an experience.
 - `manifest.version` == `pack_meta.content_version` == index `version`. The builder
-  enforces this (§6.4 gate V-12).
+  enforces this (§6.4 gate V-18).
 - `nameLocalized`/`descriptionLocalized` cover all 54 locales at publish (agents translate
   directly, house i18n rule).
 
@@ -472,7 +545,7 @@ Rules:
       "descriptionLocalized": { "es": "El curso completo y guiado de inglés." },
       "version": "0.1.0",
       "schemaVersion": 1,
-      "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/journey-packs/journey-en-0.1.0.zip",
+      "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/journey-packs/journey_en-0.1.0.zip",
       "sha256": "…",
       "sizeMb": 2.8,
       "unitCount": 30,
@@ -497,8 +570,8 @@ changes needed (public, unsigned, same as word packs):
 ```
 s3://corpan-prod/artifacts/corpan/journey-packs/
 ├── index.json                      Cache-Control: public,max-age=300
-├── journey-en-0.1.0.zip            Cache-Control: public,max-age=31536000,immutable
-└── journey-en-0.2.0.zip            (older versions stay forever; zips are immutable)
+├── journey_en-0.1.0.zip            Cache-Control: public,max-age=31536000,immutable
+└── journey_en-0.2.0.zip            (older versions stay forever; zips are immutable)
 ```
 
 ### 4.3 Publish flow — `dja/journey_pack/publish_journey_pack.py` (IN-REPO)
@@ -513,12 +586,12 @@ e.g.:  python3 publish_journey_pack.py en
 
 Steps (each is a function; the script is idempotent):
 
-1. **Build or verify** `dist/journey-<target>-<ver>.zip` exists (calls
+1. **Build or verify** `dist/journey_<target>-<ver>.zip` exists (calls
    `build_journey_pack.py` if absent; refuses to publish a zip whose sha differs from a
    freshly rebuilt one unless `--allow-stale`).
 2. **Run the validator** (§6.4) — publish is gated on ALL validation gates passing.
    `--dry-run` stops here and prints the would-be index entry.
-3. **Immutability check**: `HEAD s3://…/journey-<target>-<ver>.zip`; if the key exists
+3. **Immutability check**: `HEAD s3://…/journey_<target>-<ver>.zip`; if the key exists
    with a different sha256 → hard abort ("bump the version"). Same sha → skip upload.
 4. **Upload zip** with `Cache-Control: public,max-age=31536000,immutable`.
 5. **Accumulate-merge index**: GET current `index.json` (create
@@ -600,12 +673,15 @@ items:
   - auto: { kind: phrase, source: base, domains: [everyday], level: A1,
             rank_band: [320, 400], count: 24, skills: [en.skill.present-simple] }
   - auto: { kind: word, rank_band: [320, 400], count: 45, importance: 2 }
-lessons: [core, core, grammar-focus, core, story, core, phonology,
+lessons: [core, core, grammar-focus, core, core, phonology,
           core, dialog, review, core]
+          # v0.1 has NO 'story' lessons (R11) — units that scheduled them re-pool
+          # to listen-heavy input; the recipe returns with the v0.2 story workstream
 boss:
   pass_score: 0.8
   params: { spacedSampleShare: 0.3, require: [produce.speak, input.listen] }
-anchor: { provider: hover_runner, config: { itemset: unit } }
+anchor: { provider: lingo_hero, config: { itemset: unit } }
+          # v0.1 anchors are restricted to the instrumented set (R13, gate V-9)
 ```
 
 Everything the builder mints (grammarNode/phoneme item rows, string keys, `intro_order`,
@@ -661,8 +737,9 @@ python3 build_journey_pack.py en \
    θ self-corrects (D10 #4).
 6. Compile strings: every `title/theme/note/cando/overlay` text becomes a namespaced key;
    merge `strings/<lang>.json` files.
-7. Emit SQLite (§2 DDL), `ANALYZE`, `VACUUM`.
-8. Emit `manifest.json`, zip → `dist/journey-<t>-<ver>.zip`, print sha256/size.
+7. Emit SQLite (§2 DDL, including the build-time `text_len` column per item — §2.1),
+   `ANALYZE`, `VACUUM`.
+8. Emit `manifest.json`, zip → `dist/journey_<t>-<ver>.zip`, print sha256/size.
 9. Run `validate_journey_pack.py` on the artifact (unless `--skip-validate`).
 
 ### 6.3 Dependencies
@@ -672,26 +749,40 @@ publisher). No GPU, no LLM calls at build time — all LLM-drafted content (gram
 contrastive notes, translations) is authored *into git* beforehand (codex-first, per
 memory rules), reviewed, then built.
 
-### 6.4 Validation gates (ALL are publish-blocking)
+### 6.4 Validation gates (ALL are publish-blocking) — THE one merged list (R1)
 
 Implemented in `validate_journey_pack.py`, runnable against either the authored tree
-(fast) or the built sqlite (authoritative); publisher runs the sqlite mode.
+(fast) or the built sqlite (authoritative); publisher runs the sqlite mode plus the
+tree-only gates. **This is the single validation-gate list for Journey packs**:
+authoring.md's lint gates (old `V-XXX-n` names) are absorbed and retired here;
+authoring.md references this list. Gates marked **(tree)** need the authored tree +
+corpora and run pre-build; **(W)** = warn-only.
 
 | # | Gate | Rule |
 |---|---|---|
 | V-1 | **Every ItemRef resolves** | `phrase:base:*` ∈ `cor_entry`; `phrase:<pack>:*` ∈ that pack's `phrases.json` index range; `word:*` ∈ word universe; `grammarNode:*`/`phoneme:*` ∈ this pack; `segment:*` resolvable against the named book's `segments.json` when the pack dir is on disk, else ERROR (no unverifiable refs ship); `char:*`/`concept:*` ∈ hanzipan seed / imagepan concept list (v0.1: schema-stub, zero rows) |
-| V-2 | **DAG acyclic** | Kahn topo-sort over `skill_edges`; cycle → error listing the cycle. Also: every edge endpoint exists; every non-Launchpad skill reachable from a Launchpad root |
-| V-3 | **Unit vocab bands monotone** | ordered by `(arc_index, unit_index)`: `vocab_rank_hi` non-decreasing AND `vocab_rank_lo ≤` previous `hi` + 1 (no gaps, no regressions); NULL-band units skipped |
-| V-4 | **Strings complete ×54** | every `*_key` referenced by any table resolves in `strings` for ALL 54 canonical codes (`settings.ts ALL_LANGUAGES` list, vendored as a constant) — EXCEPT `ovl.<l1>.*` keys, which need exactly `(l1, en)` (en = author fallback) |
-| V-5 | **Probe coverage** | every skill has 2–4 `is_probe=1` items in `item_skills` (adaptivity §4.2); probe items must have `importance ≥ 2` |
-| V-6 | **Checkpoint totality** | exactly one `scope='unit'` checkpoint per unit; exactly one `scope='arc'` gate per arc; every checkpoint's `recipe_id` exists |
-| V-7 | **Lesson integrity** | every `unit_lessons.recipe_id` exists; every recipe has ≥1 slot; every `slot_type` ∈ taxonomy; slot `activity_types_json` values ∈ the D2 ActivityType registry (vendored constant, kept in sync with `types.ts` by review) |
-| V-8 | **Difficulty sanity** | `b` within [−4, +5]; per-arc mean `b` strictly increasing across arcs (warn-only within arc); every probe's `b` within its skill's `b_s ± 1.0` |
-| V-9 | **Id hygiene** | all ids match `^[a-z0-9][a-z0-9._-]*$`; `items.id` == `serializeItemRef(kind, source, ref_id)`; course_id underscore-canonical |
-| V-10 | **Overlay referents** | every `l1_overlays.ref_id` exists in its `ref_kind` table; `cognate_credit.payload_json.items[]` all exist in `items` |
-| V-11 | **Immutability diff** (upgrade builds) | if a previous version's zip is present in `dist/` or S3: no `items.id` removed, no `(kind,source,ref_id)` re-pointed to a different id, no `intro_order` collisions — violations require a MAJOR bump (§8) which the publisher cross-checks |
-| V-12 | **Meta coherence** | `manifest.version` == `pack_meta.content_version`; `PRAGMA user_version` == `pack_meta.schema_version`; counts in `pack_meta` match actual row counts; `pack_meta.string_langs` == the 54-list |
-| V-13 | **Rare-card economy** | every `rare_cards.provider` (when set) is a known pack id; `etymology` cards' `item_id` kind = `word`; `story` cards have `coverage_gate ≥ 0.9` |
+| V-2 | **Skill DAG acyclic + reachable** | Kahn topo-sort over `skill_edges`; cycle → error listing the cycle. Also: every edge endpoint exists; every non-Launchpad skill reachable from a Launchpad root |
+| V-3 | **Grammar-node integrity** | every `grammar_nodes.skill_id` exists and is a skill of the node's home unit; every unit's `grammar_nodes:` id exists in `grammar.yaml`; every non-stub node is introduced by exactly one unit; every prerequisite (via its skill's prereq skills) is introduced in an earlier-or-same-order unit *(absorbs authoring V-NODE-1/2, V-DAG-2)* |
+| V-4 | **Unit vocab bands monotone** | ordered by `(arc_index, unit_index)`: `vocab_rank_hi` non-decreasing AND `vocab_rank_lo ≤` previous `hi` + 1 (no gaps, no regressions); NULL-band units skipped *(absorbs V-BAND-1)* |
+| V-5 | **Strings complete ×54** | every `*_key` referenced by any table resolves in `strings` for ALL 54 canonical codes (`settings.ts ALL_LANGUAGES` list, vendored as a constant) — EXCEPT `ovl.<l1>.*` keys, which need exactly `(l1, en)` (en = author fallback) |
+| V-6 | **Probe coverage + quality** | every skill has 2–4 `is_probe=1` items in `item_skills` (adaptivity §4.2); probe items must have `importance ≥ 2`; probes are fast forms only; every probe instance's content words have zipf ≥ 4.3 *(absorbs V-PROBE-1/2)* |
+| V-7 | **Checkpoint totality + boss shape** | exactly one `scope='unit'` checkpoint per unit; exactly one `scope='arc'` gate per arc; every checkpoint's `recipe_id` exists; boss `pass_score` ∈ [0.7, 0.9]; boss required slot minima ⊇ {`produce.speak`, `input.listen`} *(absorbs V-BOSS-1)* |
+| V-8 | **Lesson integrity** | every `unit_lessons.recipe_id` exists; every recipe has ≥1 slot; every `slot_type` ∈ taxonomy; every `activity_types_json` value ∈ the **vendored `ACTIVITY_TYPES` constant from `activityContract.ts`** (R4) or matches `<packId>:<name>`; a CI drift check (à la `sync-contract.mjs`) keeps the vendored copy byte-identical to the contract *(absorbs V-RECIPE-1)* |
+| V-9 | **Anchor providers** | every `units.anchor_provider` ∈ the known-provider registry with a native fallback; **v0.1 anchors restricted to `lingo_hero`, `earthgate` (or `cap-segment-player`), `corpan_city`, `cap-pronounce`, `cap-squeeze`** (R13); beatlounge/hover_runner/tutomaton/stargate are v0.2 anchor swaps — pack data upgrades independently of the app *(absorbs V-ANCHOR-1)* |
+| V-10 | **Item-pool adequacy** (tree) | every teach unit's resolved candidate pool ≥ max(40, 2×new_target) phrases; (W) < 3×new_target; pinned includes exist in their source and are not excluded elsewhere *(absorbs V-POOL-1/2)* |
+| V-11 | **Gap-pack band fit** (tree) | gap-pack A0/A1 phrases' content words fall within the consuming unit's rank band ×1.2 *(absorbs V-GAP-1)* |
+| V-12 | **Can-do paraphrase-only** | every teach unit has ≥1 can-do; no can-do text contains an 8+-word verbatim substring of the CEFR descriptor corpus (checked against a local, non-shipped reference file) *(absorbs V-CANDO-1)* |
+| V-13 | **Copy hygiene** | no banned absolutes ("forever", "never", "100%", "entirely", "always", "guaranteed") and no "flag/flagging" in any user-facing string, any language *(absorbs V-COPY-1; house rules)* |
+| V-14 | **Difficulty sanity** | `b` within [−4, +5]; per-arc mean `b` strictly increasing across arcs (warn-only within arc); every probe's `b` within its skill's `b_s ± 1.0` *(absorbs V-B-1)* |
+| V-15 | **Id hygiene + round-trip** | all spine ids (arcs/units/skills/grammar nodes/recipes/checkpoints/rare cards) match `^[a-z0-9][a-z0-9._-]*$`; **unit-id grammar**: `^<target>\.(a0\|a1\|a2\|b1\|b2\|c1\|c2)\.u\d{2}$` with `<target>` the underscore-canonical target subtag (`a0` = Launchpad; e.g. `en.a1.u07`), arc ids `<target>.arc<N>`; course_id underscore-canonical; **every `items.id` round-trips through the ONE contract helper: `itemRefKey(parseItemRef(id)) === id`** (R2 cross-spec test) *(absorbs V-ID-1, V-ORD-1)* |
+| V-16 | **Overlay referents** | every `l1_overlays.ref_id` exists in its `ref_kind` table; `cognate_credit.payload_json.items[]` all exist in `items`; every `auto` l1 slot resolvable for every SHIPPED overlay language (v0.1: es); pinned overlay keys exist *(absorbs V-L1-1)* |
+| V-17 | **Immutability diff** (upgrade builds) | if a previous version's zip is present in `dist/` or S3: no `items.id` removed, no `(kind,source,ref_id)` re-pointed to a different id, no `intro_order` collisions — violations require a MAJOR bump (§8) which the publisher cross-checks |
+| V-18 | **Meta coherence** | `manifest.version` == `pack_meta.content_version`; `PRAGMA user_version` == `pack_meta.schema_version`; counts in `pack_meta` match actual row counts; `pack_meta.string_langs` == the 54-list |
+| V-19 | **Rare-card economy** | every `rare_cards.provider` (when set) ∈ the V-9 provider registry; `etymology` cards' `item_id` kind = `word`; **v0.1: zero `card_type='story'` rows (R11 — storyChapter is schema-only until the v0.2 coverage workstream); from v0.2, story cards require `coverage_gate ≥ 0.9`** |
+| V-20 | **Band-fill spill** (W) | warn when band-fill spill > 25% of a unit's word budget *(absorbs V-WORD-1)* |
+
+Authoring's `V-I18N-1` (app-locale minting of course copy) is **deleted per R1** —
+course copy ships in the pack `strings` table and is covered by V-5.
 
 Exit non-zero on any error; `--json` emits a machine-readable report for the ci-gate.
 
@@ -794,7 +885,8 @@ export function packIdForTarget(targetLang: string): string {
 }
 
 export function devDownloadUrlForPack(packId: string): string;
-// vite dev: `/packs/journey/${packId.replace(/_/g, "-")}.zip`
+// vite dev: `/packs/journey/${packId}.zip` (underscore filenames, R1 — matches the
+// published zip base name)
 
 export async function isJourneyPackInstalled(packId: string): Promise<boolean>;
 // content_packs_get_manifest_url probe, same as wordPack.ts:60
@@ -865,7 +957,7 @@ export type InstalledJourneyPack = {
    place; the connection cache in `pack_db.rs` is keyed per (pack, db) — the Journey
    surface must be remounted after upgrade, which the chip flow guarantees).
 3. Learner state is untouched: FSRS cards key on `items.id`, which minor/patch upgrades
-   never remove (V-11). Cards for items absent from the new DB are retained but
+   never remove (V-17). Cards for items absent from the new DB are retained but
    unschedulable (harmless orphans; a future vacuum can prune them).
 
 **Channel gating**: v0.1 ships `channel: "preview"` — visible only with devMode ON, per
@@ -903,15 +995,15 @@ Two independent version axes, both visible in the index:
 | Bump | When | Learner-state impact |
 |---|---|---|
 | **patch** | copy fixes, `b`/`importance`/params tuning, string translations, overlay edits. No id added or removed. | none |
-| **minor** | additive content: new units/arcs, new items/skills/edges/overlays/rare cards, new overlay L1s. Existing ids untouched (V-11 enforced). | none — new items appear on the path ahead |
+| **minor** | additive content: new units/arcs, new items/skills/edges/overlays/rare cards, new overlay L1s. Existing ids untouched (V-17 enforced). | none — new items appear on the path ahead |
 | **major** | any `items.id` removal/renaming, unit renumbering that reorders `intro_order` semantics, or a `schemaVersion` bump. | possible orphaned FSRS cards / path position remap — app shows a confirm sheet and runs a migration hook in `journey/engine/migrations.ts` keyed by (fromMajor, toMajor) |
 
 Invariants:
-- **Zips are immutable**: `journey-<target>-<version>.zip`, never overwritten (publisher
+- **Zips are immutable**: `journey_<target>-<version>.zip`, never overwritten (publisher
   step 3 enforces). Any fix = version bump. Index is the only mutable object.
 - Narration-style version-collision discipline applies: same version + different content
   is a publish error, full stop.
-- `pack_meta.content_version`, `manifest.version`, index `version` must be equal (V-12).
+- `pack_meta.content_version`, `manifest.version`, index `version` must be equal (V-18).
 
 ---
 
@@ -948,14 +1040,21 @@ decision needed now.
 
 1. `dja/journey_pack/` skeleton: schemas (pydantic), `recipes.yaml`, DDL module,
    `build_journey_pack.py`, `validate_journey_pack.py`, `publish_journey_pack.py`.
-2. `courses/en/`: course.yaml, grammar.yaml (A1 slice, ~80 nodes, LLM-drafted →
-   spot-checked), 30 unit YAMLs (curriculum-spine Part 3 is the content), overlays/es.yaml,
+2. **Gap phrase packs (build-order PREREQUISITE, R13)**: build + publish
+   `phrase-people-nationalities` and `phrase-life-time-and-dates` via the existing
+   `tools/phrase-packs` pipeline BEFORE the pack build — units on the u02–u24 path
+   reference them and gates V-1/V-10 fail without them. Shopping/home units re-pool to
+   the base corpus where the census supports it, or defer to v0.2.
+3. `courses/en/`: course.yaml, grammar.yaml (A1 slice, ~80 nodes, LLM-drafted →
+   spot-checked), 30 unit YAMLs (curriculum-spine Part 3 is the content; v0.1 anchors
+   only from the R13 set — gate V-9), overlays/es.yaml,
    strings/en.json → agent fan-out to 54.
-3. Build + validate + publish `journey_en` 0.1.0, `channel: preview`.
-4. App: `contentPacks/journeyPackCatalog.ts`, `util/journeyPack.ts`,
-   `store/journeyPacks.ts`, ItemRef helpers in `types.ts`; wire the Journey surface's
-   PackReader to §2.1 queries.
-5. Changelog entries: `dja/journey_pack/courses/en/CHANGELOG.md` (new unit) +
+4. Build + validate + publish `journey_en` 0.1.0, `channel: preview`.
+5. App: `contentPacks/journeyPackCatalog.ts`, `util/journeyPack.ts`,
+   `store/journeyPacks.ts` (ItemRef helper is the contract's — activity-contract.md §1,
+   R2 — nothing new minted here); wire the Journey surface's PackReader to the §2.1
+   normative loader (keyset pagination + row-count assertion).
+6. Changelog entries: `dja/journey_pack/courses/en/CHANGELOG.md` (new unit) +
    `corpan-app/CHANGELOG.md` (catalog module).
 
 ---
@@ -981,11 +1080,36 @@ decision needed now.
    course-note copy uses the same agent-translation *workflow*, but ships in the pack.
 7. **`schemaVersion` surfaced in index.json** (not only inside the DB) so incompatible
    packs are filtered before download.
-8. **Index `kind` string is `"journey-course"`**; ZIP filenames hyphenated with version
-   suffix; explicit packId always passed to the installer (wordpan bug-avoidance).
+8. **Index `kind` string is `"journey-course"`**; ZIP filenames are the underscore
+   pack id + version suffix (`journey_en-0.1.0.zip`, R1 installer rule); explicit
+   packId always passed to the installer (wordpan bug-avoidance).
 9. **Phoneme items are course-minted with `unit_id` = the introducing phonology unit**;
    their L1-conditioned drill selection comes from `l1_overlays.phoneme_pair`, so the item
    exists once per contrast, not per L1.
 10. **`segment:` refs must be resolvable at build time or the build fails** (V-1) — no
     speculative book references ship; v0.1 uses none unless the book pack dir is present
     on the build machine.
+
+---
+
+## Tracked risks (panel round 1)
+
+Preserved verbatim from the mobile-offline lens of design review round 1 (R16).
+Non-blocking; they inform build-time tests, none gate the build start. Gate numbers in
+the risk text predate the R1 renumber ("V-4" there is now V-5 in §6.4).
+
+- "i18n gate blast radius: ~110 new app keys ×54 locales are required by the hard
+  check:i18n build gate, but feed-ux §10 claims every slice 1–7 'lands green through
+  check:i18n' while deferring fan-out to slice 8 — impossible as written; each slice
+  must carry its own keys' 54 translations. Separately, course-pack gate V-4 blocks
+  journey_en 0.1.0 publish on ~20,500 pack strings (incl. 80 grammar notes ×54, ~350
+  chars each) — a large agent-translation and QA effort with no named review step for
+  grammar-note correctness in 53 non-EN languages."
+- "Most authored unit anchors reference providers that are NOT instrumented in v1
+  (juice_squeeze ×3, beatlounge ×2, hover_runner, stargate, tutomaton ×3 in authoring
+  §6) — only lingo_hero/earthgate/corpan_city ship the seam (D11). Fallbacks are
+  mandatory so the feed degrades, but as authored the anchor economy will mostly never
+  fire in v0.1; either re-anchor the A1 units to the three instrumented providers or
+  accept that anchors are aspirational this release." *(Ruled forward by R13 + gate
+  V-9: v0.1 units re-anchor to the instrumented set; the others are v0.2 pack-data
+  swaps.)*

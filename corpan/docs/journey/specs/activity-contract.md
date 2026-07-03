@@ -35,36 +35,38 @@ Transport follows the codebase's proven dual-rail pattern
   catalog-first (same OTA pattern as recommendation metadata, `catalog.ts:163-178`);
   host advertises `__CORPAN_HOST_CAPS.journey = 1`.
 
-Validation is **Zod at the host boundary only**: packs ship plain TS types (the SDK
-stays a dependency-free two-file prototype); the host `safeParse`s everything that
-crosses in from a pack.
+Validation is **Zod at the host boundary only**: packs ship the vendored,
+zero-dependency contract file (the SDK stays a dependency-free prototype); the
+host `safeParse`s everything that crosses in from a pack.
 
 ---
 
 ## 1. Canonical types — `corpan-app/src/contentPacks/activityContract.ts` (NEW)
 
-A **new, import-free, types-only file**. This is the single authoritative source for
+A **new, import-free file**. This is the single authoritative source for
 the contract (§5 defines the sync mechanism). `types.ts` re-exports it so existing
-import sites (`import type { ... } from "./types"`) work unchanged. The file must
-contain **zero value-level imports and zero runtime code** — it is copied verbatim
-into the SDK and vendored SDKs.
+import sites (`import type { ... } from "./types"`) work unchanged. The file
+contains the contract types plus **exactly two frozen runtime exports** — the
+`itemRefKey`/`parseItemRef` helper pair (R2) and the `ACTIVITY_TYPES` registry
+(R4) — and **zero imports**; it is copied verbatim into the SDK and vendored SDKs.
 
 ```ts
 // corpan-app/src/contentPacks/activityContract.ts
 //
 // ============================================================
 // THE JOURNEY ACTIVITY CONTRACT (ABI) — ActivitySpec in, ActivityResult out.
-// AUTHORITATIVE SOURCE. packs/sdk/activityContract.d.ts and every vendored
+// AUTHORITATIVE SOURCE. packs/sdk/activityContract.ts and every vendored
 // packs/*/src/sdk/activityContract.ts are GENERATED copies — edit HERE, then
 // run `node packs/sdk/sync-contract.mjs`. CI fails on drift.
 //
-// This file is DECLARATION-PURE (types/interfaces only, no consts, no
-// functions, no imports) ON PURPOSE: the generated SDK copy is a `.d.ts`,
-// where initializers are illegal — purity makes the verbatim copy valid in
-// both worlds. Runtime helpers live host-side in ./activitySchemas.ts
-// (`itemRefKey`, `JOURNEY_CONTRACT_VERSION`); packs inline the one-liners.
-// Zod schemas (host-boundary validation) are also in ./activitySchemas.ts and
-// are NOT part of the pack-facing contract.
+// This file is IMPORT-FREE and dependency-free ON PURPOSE: it is copied
+// verbatim into packs/sdk/activityContract.ts and every vendored copy. It
+// carries the contract types plus EXACTLY TWO frozen runtime exports:
+// itemRefKey/parseItemRef (the one ItemRef serialization helper, R2) and
+// ACTIVITY_TYPES (the native activity-type registry, R4). Nothing else
+// executable. Zod schemas (host-boundary validation) and
+// JOURNEY_CONTRACT_VERSION live in ./activitySchemas.ts and are NOT part of
+// the pack-facing contract.
 // ============================================================
 
 // ---------------------------------------------------------------- ItemRef (D3)
@@ -73,10 +75,11 @@ into the SDK and vendored SDKs.
 export type ItemRefKind =
   | "phrase"       // corpus entry: source = "base" | phrase-pack id, id = String(entry_id)
   | "word"         // wordpan word: source = target lang code, id = the word
-  | "char"         // hanzi/kanji:  source = "hanzi", id = the character
+  | "char"         // hanzi/kanji:  source = "hanzipan", id = the character
   | "segment"      // book segment: source = bookId, id = "chNN-SSS"
   | "grammarNode"  // minted by the course pack: source = course pack id, id = node id
-  | "phoneme"      // minted by the course pack: source = course pack id, id = phoneme id
+  | "phoneme"      // minted by the course pack: source = course pack id,
+                   //   id = sorted-IPA contrast key "A-B" (course-pack form)
   | "concept"      // imagepan concept: source = "imagepan", id = concept key
 
 /**
@@ -93,13 +96,28 @@ export interface ItemRef {
 }
 
 /**
- * CANONICAL KEY FORMAT (normative): the string `${kind}|${source}|${id}` is
- * the FSRS/ItemCard key and the per-item dedup key. "|" never occurs in any
- * source/id namespace (pack ids are kebab/underscore, book ids are snake,
- * lang codes are BCP-47, words never contain "|"). The host helper
- * `itemRefKey(r)` lives in activitySchemas.ts; packs inline the template
- * literal — this file stays declaration-pure.
+ * CANONICAL SERIALIZATION (normative, R2): `<kind>:<source>:<id>` is THE
+ * ItemRef string form — the FSRS/ItemCard key, the per-item dedup key, and
+ * course-pack `items.id` (course-pack.md and engine.md cite this, they do not
+ * restate it). Rules: kind and source NEVER contain ":"; id MAY — parse on
+ * the FIRST TWO colons only. Serialized ItemRefs are immutable forever (they
+ * are FSRS card keys on learner devices); removing or renaming one is a MAJOR
+ * course-pack version event. This is the ONE helper — there is no second
+ * serializer anywhere (`serializeItemRef` is this function's former
+ * course-pack name; collapsed here per R2).
  */
+export function itemRefKey(r: ItemRef): string {
+  return `${r.kind}:${r.source}:${r.id}`
+}
+
+/** Inverse of itemRefKey. Null on malformed input (fewer than two colons). */
+export function parseItemRef(s: string): ItemRef | null {
+  const i = s.indexOf(":")
+  if (i < 0) return null
+  const j = s.indexOf(":", i + 1)
+  if (j < 0) return null
+  return { kind: s.slice(0, i) as ItemRefKind, source: s.slice(i + 1, j), id: s.slice(j + 1) }
+}
 
 // ------------------------------------------------------------ ActivitySpec (D2)
 
@@ -120,8 +138,9 @@ export interface ActivitySpec {
   specId: string
   /**
    * What to run. Open, namespaced string:
-   *   - bare names ("picture-choice", "cloze", "listen-type", …) are RESERVED
-   *     for Journey's native renderers;
+   *   - bare names are RESERVED for Journey's native renderers and MUST be
+   *     keys of ACTIVITY_TYPES (snake_case: "choice_pick", "cloze",
+   *     "listen_type", …);
    *   - pack-provided types are `<packId>:<name>` with the pack's REGISTERED
    *     id (underscore form), e.g. "corpan_city:build-sentence",
    *     "lingo_hero:round", "earthgate_reader:read-segments".
@@ -157,6 +176,28 @@ export interface ActivitySpec {
 /** Per-item verdict. The engine derives FSRS grades from this (D4). */
 export type ActivityOutcome = "pass" | "partial" | "fail"
 
+/**
+ * Typed evidence envelope (R3) — same shape on ActivityItemResult and
+ * ActivityResult. Providers put numeric evidence in `numbers`, boolean
+ * markers in `flags`. RESERVED flag keys: `sttUnavailable` (speech card
+ * degraded, feed-ux §6.3) and `aggregateBinned` (per-item outcome
+ * synthesized from an aggregate score — the engine clamps grades derived
+ * from such entries to [Hard, Good], §3.4 / R9).
+ */
+export interface ActivityDetail {
+  /** Numeric evidence (combo, moves-over-minimum, finalScore, …). */
+  numbers?: Record<string, number>
+  /** Boolean markers (reserved keys above). */
+  flags?: Record<string, boolean>
+  /** Learner self-verdict (flip_recall-style cards, debut skips). */
+  selfReport?: "already-knew" | "never-learned"
+  /** STT evidence (speak_echo & friends). */
+  stt?: {
+    overallScore: number
+    perWord?: Array<{ word: string; probability: number; startMs: number; endMs: number }>
+  }
+}
+
 export interface ActivityItemResult {
   itemRef: ItemRef
   outcome: ActivityOutcome
@@ -164,8 +205,8 @@ export interface ActivityItemResult {
   latencyMs?: number
   /** Hints/reveals consumed on this item (0 = clean). */
   hintsUsed?: number
-  /** Optional numeric evidence (e.g. STT overallScore, moves-over-minimum). */
-  detail?: Record<string, number>
+  /** Typed evidence envelope (R3). */
+  detail?: ActivityDetail
 }
 
 /**
@@ -183,8 +224,9 @@ export interface ActivityResult {
    * the engine treats absence as "no evidence", never as a fail.
    */
   perItem: ActivityItemResult[]
-  /** Provider-specific numeric metrics (mirrors ChallengeResult.detail). */
-  detail?: Record<string, number>
+  /** Typed evidence envelope (R3). corpan-city's ChallengeResult.detail
+   *  (Record<string, number>) maps into `detail.numbers`, §6.3. */
+  detail?: ActivityDetail
   /** Wall-clock ms from mount/spec-start to the terminal event. */
   durationMs: number
   /**
@@ -270,7 +312,66 @@ export interface PackActivityDeclaration {
   /** Minimum HOST_CAPS.journey this declaration needs. Absent = 1. */
   minJourneyCaps?: number
 }
+
+// ------------------------------------------ Native activity-type registry (R4)
+
+/** Form ladder (engine §5.5): 0 = recognition, 1 = cued recall, 2 = production. */
+export type ActivityForm = 0 | 1 | 2
+
+/** Four Strands (pedagogy §12.1). Manifest `strands` tags map onto this:
+ *  mfi→"input", mfo→"output", lfl→"language", fd→"fluency". */
+export type Strand = "input" | "output" | "language" | "fluency"
+
+export interface ActivityTypeMeta {
+  activityType: string
+  form: ActivityForm
+  strand: Strand
+  /** MC/recognition/self-report formats — engine caps derived grades at Good. */
+  guessable: boolean
+  /** Typical wall-clock seconds; feed-mixer slotting estimate. */
+  estSec: number
+  modelNeeds: ModelNeed[]
+}
+
+/**
+ * THE registry of Journey-native activity types — snake_case, one row per
+ * feed-ux §4 renderer (form/strand/guessable/estSec sourced there). This
+ * const is the ONE metadata source: it feeds the engine's native
+ * `CourseGraph.activityTemplates` rows (engine §2.6 / R7) and authoring gate
+ * V-7 validates recipes/bosses against the vendored copy (CI drift check via
+ * sync-contract.mjs, §5). Translation direction is a PARAM (`direction`) of
+ * choice_pick/listen_type/cloze, never a separate type. NOT here on purpose:
+ * `read-segment` (book segments are served through the earthgate/segment
+ * PROVIDER card, §6.2) and `etym-gem` (a rare-card face, not a schedulable
+ * type). Pack types stay `<packId>:<name>` and are declared via
+ * PackActivityDeclaration, never added to this const.
+ */
+export const ACTIVITY_TYPES = {
+  choice_pick:  { activityType: "choice_pick",  form: 0, strand: "language", guessable: true,  estSec: 12, modelNeeds: [] },
+  listen_pick:  { activityType: "listen_pick",  form: 0, strand: "input",    guessable: true,  estSec: 15, modelNeeds: [] },
+  listen_type:  { activityType: "listen_type",  form: 2, strand: "language", guessable: false, estSec: 30, modelNeeds: [] },
+  cloze:        { activityType: "cloze",        form: 1, strand: "language", guessable: false, estSec: 20, modelNeeds: [] },
+  word_order:   { activityType: "word_order",   form: 1, strand: "language", guessable: false, estSec: 25, modelNeeds: [] },
+  match_pairs:  { activityType: "match_pairs",  form: 0, strand: "language", guessable: true,  estSec: 35, modelNeeds: [] },
+  flip_recall:  { activityType: "flip_recall",  form: 1, strand: "language", guessable: true,  estSec: 10, modelNeeds: [] },
+  speak_echo:   { activityType: "speak_echo",   form: 2, strand: "output",   guessable: false, estSec: 25, modelNeeds: ["stt"] },
+  intro_echo:   { activityType: "intro_echo",   form: 0, strand: "input",    guessable: false, estSec: 12, modelNeeds: [] },
+  grammar_note: { activityType: "grammar_note", form: 1, strand: "language", guessable: false, estSec: 45, modelNeeds: [] },
+} satisfies Record<string, ActivityTypeMeta>
 ```
+
+Registry notes (normative):
+
+- Per-instance nuance stays per-instance: a `cloze` issued with `mode: 'bank'`
+  is guessable *at issue time* — the engine's `IssuedCard.guessable` may
+  tighten the registry default for a given card; it never loosens it.
+  `flip_recall` is marked guessable because its self-verdict caps at Good via
+  the same mechanism (feed-ux §4 row 7).
+- `intro_echo` is unscored (feed-ux §4 row 9); its row exists for slotting
+  (`estSec`) and strand accounting only.
+- `speak_echo` renders via the **`cap-pronounce` capability module**
+  (specs/capability-modules.md, v1 set per R15); the registry row is its
+  scheduling metadata either way.
 
 ### 1.1 `types.ts` change (re-export, no drift)
 
@@ -314,22 +415,33 @@ export type ContentPackManifest = {
   journey?: JourneyHostApi
 ```
 
-### 1.2 ItemRef encodings (normative table)
+### 1.2 ItemRef encodings (THE normative table)
 
-| kind | source | id | Example |
+This is the one kind/source/id table (R2). course-pack.md §1 and engine.md cite
+it; they do not restate it. Serialized examples use the canonical
+`<kind>:<source>:<id>` form (`itemRefKey`, §1) — which is also course-pack
+`items.id` and the engine's FSRS key.
+
+| kind | source | id | Serialized example |
 |---|---|---|---|
-| `phrase` | `"base"` or phrase-pack id | `String(entry_id)` (decimal) | `{kind:"phrase", source:"base", id:"18422"}` |
-| `word` | target lang code | the word (verbatim, NFC) | `{kind:"word", source:"es", id:"aunque"}` |
-| `char` | `"hanzi"` | the character | `{kind:"char", source:"hanzi", id:"愛"}` |
-| `segment` | bookId | segment id `chNN-SSS` | `{kind:"segment", source:"book_biomes_tropical_rainforest", id:"ch05-088"}` |
-| `grammarNode` | course pack id | node id | `{kind:"grammarNode", source:"journey_en", id:"gn-past-simple"}` |
-| `phoneme` | course pack id | phoneme id | `{kind:"phoneme", source:"journey_en", id:"ph-th-voiced"}` |
-| `concept` | `"imagepan"` | concept key | `{kind:"concept", source:"imagepan", id:"obj_bicycle"}` |
+| `phrase` | `"base"` or phrase-pack id | `String(entry_id)` (decimal) | `phrase:base:18422` |
+| `word` | target lang code | the word (verbatim, NFC; wordpan key) | `word:es:aunque` |
+| `char` | `"hanzipan"` | the character | `char:hanzipan:愛` |
+| `segment` | bookId | segment id `chNN-SSS` | `segment:book_biomes_tropical_rainforest:ch05-088` |
+| `grammarNode` | course pack id | `grammar_nodes.id` | `grammarNode:journey_en:en.gn.present-simple-3sg` |
+| `phoneme` | course pack id | contrast key `A-B` (IPA, sorted — course-pack form) | `phoneme:journey_en:iː-ɪ` |
+| `concept` | `"imagepan"` | concept key | `concept:imagepan:obj_bicycle` |
 
 Rules: ids are strings everywhere in the contract; providers converting to
 `entryIds: number[]` (corpan-city adapter, §6.3) parse with `Number(ref.id)` and
 must pass `ref.source` through to `getEntryById(entryId, source)` — `entry_id` is
 only unique per source (`types.ts:97-103`).
+
+**Cross-spec round-trip test (normative, R2):** for every row of a built course
+pack, `items.id === itemRefKey(parseItemRef(items.id)!)` and the parse matches
+the row's `(kind, source, ref_id)` columns — pack ids round-trip through the one
+helper, byte-identical. Runs in `validate_journey_pack.py` (course-pack gate
+V-9) and as a unit test over the fixture graph in the engine's loader tests.
 
 ---
 
@@ -406,15 +518,14 @@ the type file and the validator cannot drift silently.
 // corpan-app/src/contentPacks/activitySchemas.ts
 import { z } from "zod"
 import type {
-  ItemRef, ActivitySpec, ActivityItemResult, ActivityResult,
+  ItemRef, ActivitySpec, ActivityDetail, ActivityItemResult, ActivityResult,
   ActivityResultEventDetail, PackActivityDeclaration,
 } from "./activityContract"
+// itemRefKey/parseItemRef live in activityContract.ts (R2) — the ONE helper;
+// nothing here re-implements serialization.
 
 /** Journey contract version advertised in `__CORPAN_HOST_CAPS.journey`. */
 export const JOURNEY_CONTRACT_VERSION = 1
-
-/** Canonical ItemRef key (format is normative in activityContract.ts). */
-export const itemRefKey = (r: ItemRef): string => `${r.kind}|${r.source}|${r.id}`
 
 export const ItemRefKindSchema = z.enum([
   "phrase", "word", "char", "segment", "grammarNode", "phoneme", "concept",
@@ -440,19 +551,34 @@ export const ActivitySpecSchema = z.object({
   modelNeeds: z.array(ModelNeedSchema).optional(),
 }) satisfies z.ZodType<ActivitySpec>
 
+export const ActivityDetailSchema = z.object({
+  numbers: z.record(z.string(), z.number()).optional(),
+  flags: z.record(z.string(), z.boolean()).optional(),
+  selfReport: z.enum(["already-knew", "never-learned"]).optional(),
+  stt: z.object({
+    overallScore: z.number().min(0).max(1),
+    perWord: z.array(z.object({
+      word: z.string(),
+      probability: z.number(),
+      startMs: z.number(),
+      endMs: z.number(),
+    })).optional(),
+  }).optional(),
+}) satisfies z.ZodType<ActivityDetail>
+
 export const ActivityItemResultSchema = z.object({
   itemRef: ItemRefSchema,
   outcome: z.enum(["pass", "partial", "fail"]),
   latencyMs: z.number().nonnegative().optional(),
   hintsUsed: z.number().int().nonnegative().optional(),
-  detail: z.record(z.string(), z.number()).optional(),
+  detail: ActivityDetailSchema.optional(),
 }) satisfies z.ZodType<ActivityItemResult>
 
 export const ActivityResultSchema = z.object({
   specId: z.string().min(1),
   score: z.number().min(0).max(1),
   perItem: z.array(ActivityItemResultSchema),
-  detail: z.record(z.string(), z.number()).optional(),
+  detail: ActivityDetailSchema.optional(),
   durationMs: z.number().nonnegative(),
   abandoned: z.boolean().optional(),
 }) satisfies z.ZodType<ActivityResult>
@@ -479,13 +605,24 @@ A module-level singleton session (the architecture guarantees one pack overlay a
 time, `App.tsx:809`). The feed controller owns begin/end; `createHostApi` and the
 window-event listener both delegate to it. Pure TS, no React.
 
+**Single-owner rule (normative, R8):** this module is the ONE owner of result
+routing and the abandon path. The typed rail and the event rail both call the
+same `ingestItem`/`ingestResult`; the feed consumes results ONLY through the
+`beginActivitySession` callback and never re-implements routing or synthesizes
+results itself — feed-ux's former 300 ms grace timer and its
+`{score: 0, perItem: []}` synthesis are deleted (R8). Packs report before
+`corpan:exit` (already normative, §3.4); overlay teardown calls
+`endActivitySession()`, which synthesizes from the buffered `reportItem`
+evidence, so partial work is never lost.
+
 ```ts
 // corpan-app/src/journey/activitySession.ts
 import type {
   ActivitySpec, ActivityResult, ActivityItemResult, AbandonReason,
 } from "@/contentPacks/activityContract"
+import { itemRefKey } from "@/contentPacks/activityContract"
 import {
-  ActivityResultSchema, ActivityItemResultSchema, itemRefKey,
+  ActivityResultSchema, ActivityItemResultSchema,
 } from "@/contentPacks/activitySchemas"
 
 export type ActivityResultMeta = {
@@ -669,6 +806,16 @@ packs that never update their vendored SDK at all).
 | **Idempotent teardown** | `endActivitySession()` after a normal result is a no-op; after no result it synthesizes `abandoned`. Exactly one `onResult` fires per session, always. |
 | **No result required for standalone launches** | When `entry.activity` is absent there is no session; all journey calls are no-ops. Packs never need to branch defensively. |
 
+**Synthesized per-item evidence (normative provider rule, R9).** A provider may
+emit `perItem` entries ONLY for items with genuine per-item evidence. Providers
+whose tools score one aggregate over the whole spec MUST report **score-only**
+(`perItem: []`) — the engine's aggregate-score handling (grade caps, engine
+row 8) applies. If a provider ever synthesizes per-item outcomes from an
+aggregate score, every synthesized entry MUST carry
+`detail.flags.aggregateBinned: true`, and the engine clamps grades derived from
+such entries to **[Hard, Good] — never Again**. Measured and synthesized
+evidence are never indistinguishable on the wire.
+
 ---
 
 ## 4. Capability discovery
@@ -768,9 +915,12 @@ not.
 **Decision: one authoritative file, generated copies, CI-enforced.**
 
 1. **Authoritative source**: `corpan-app/src/contentPacks/activityContract.ts`
-   (§1). Types-only, import-free — copyable verbatim.
+   (§1). Import-free — copyable verbatim. It carries the types plus the two
+   frozen runtime exports (`itemRefKey`/`parseItemRef`, `ACTIVITY_TYPES`), so
+   the generated copies are `.ts` modules, not `.d.ts` (initializers are legal;
+   packs vendor sources anyway).
 2. **Generated copies**:
-   - `packs/sdk/activityContract.d.ts` — byte-identical copy with a generated
+   - `packs/sdk/activityContract.ts` — byte-identical copy with a generated
      header. `packs/sdk/index.d.ts` adds one line:
      `export * from "./activityContract"` and widens its `HostApi` with
      `journey?: JourneyHostApi` (this one-liner is hand-maintained; the shapes it
@@ -782,10 +932,13 @@ not.
 3. **Sync script**: `packs/sdk/sync-contract.mjs` (node, zero deps):
    - reads the authoritative file, prepends
      `// GENERATED from corpan-app/src/contentPacks/activityContract.ts — DO NOT EDIT. Run: node packs/sdk/sync-contract.mjs`,
-   - writes `packs/sdk/activityContract.d.ts` + every opted-in vendored copy,
+   - writes `packs/sdk/activityContract.ts` + every opted-in vendored copy,
    - `--check` mode exits 1 listing stale files without writing.
 4. **CI gate**: add `node packs/sdk/sync-contract.mjs --check` to the repo's
    ci-gate workflow (alongside existing pack-catalog checks). Drift fails the PR.
+   The vendored `ACTIVITY_TYPES` constant is what authoring gate V-7 and the
+   engine's native `activityTemplates` build against (R4/R7) — this one check
+   keeps every consumer honest.
 5. **Runtime mock**: `packs/sdk/index.js createMockHostApi` gains a minimal
    `journey` mock — `isActive: () => !!mockSpec`, `getSpec`, and `reportItem`/
    `reportResult`/`abandon` that `console.log` and stash on
@@ -811,9 +964,9 @@ Common pattern for all three: **journey mode is detected once at mount** —
 `hostApi.journey?.isActive()` (suspenders) — and threaded explicitly; no globals.
 In journey mode a provider: (a) sources content from `spec.itemRefs`, (b) reports
 via §3, (c) suppresses its own daily gate (`corpan:daily-locked` / paywallGate
-counters — the Journey quota was already debited by the host when the card was
-enqueued, D9), (d) ends with `reportResult(...)` then `window.dispatchEvent(new
-CustomEvent("corpan:exit"))`.
+counters — Journey quota accounting is the host's, at its single `runtime.ts`
+debit site, §9/D9 — never the pack's), (d) ends with `reportResult(...)` then
+`window.dispatchEvent(new CustomEvent("corpan:exit"))`.
 
 ### 6.1 lingo-hero (`lingo_hero`) — activityType `lingo_hero:round`
 
@@ -859,14 +1012,15 @@ edits for content/results, one small edit for the stop condition):**
    - Build an `entryId → ItemRef` map from `spec.itemRefs` at init.
    - On `wave-resolved {word: WordIdentity, outcome}`: if `word.entryId` maps to a
      spec ref, `hostApi.journey.reportItem({ itemRef, outcome: outcomeMap[outcome],
-     latencyMs, detail: { combo } })` with `outcomeMap = { correct: "pass",
+     latencyMs, detail: { numbers: { combo } } })` with `outcomeMap = { correct: "pass",
      wrong: "fail", passed: "fail" }`. Waves on non-spec (top-up) entries are NOT
      reported — they're scenery, not scheduled evidence. `latencyMs` = wall-clock
      from the wave's first note spawn to resolution (the bus timestamps suffice;
      if not measurable in v1, omit — it's optional).
    - Buffer everything locally too; on round-count completion build the terminal
      `ActivityResult`: `score` = clean-catch rate over spec items,
-     `detail: { finalScore, bestCombo, decoysDodged }`, `durationMs` from mount.
+     `detail: { numbers: { finalScore, bestCombo, decoysDodged } }`, `durationMs`
+     from mount.
 3. **Stop condition — the one Game.ts edit.** Add `maxRounds?: number` to the
    round lifecycle (the report's (d)/(e) analysis: runs are endless, `gameOver()`
    only via HUD). After the result-linger of chart N === `params.rounds ?? 3`,
@@ -941,7 +1095,7 @@ carries the ids).
      engine caps the derived FSRS grade accordingly (D4's "MC capped at Good"
      principle applies; that mapping is the engine's, not the reader's).
    - After segment `to` completes: `reportResult({ specId, score: 1, perItem,
-     durationMs, detail: { segments: to - from + 1 } })`, then a "Continue"
+     durationMs, detail: { numbers: { segments: to - from + 1 } } })`, then a "Continue"
      affordance that dispatches `corpan:exit`. Partial listening (user exits at
      segment k < to) is covered by the buffered items + host synthesis (§8) —
      `score = reached/total`, `abandoned: true`, and the engine still credits the
@@ -984,19 +1138,23 @@ city contract.)
 |---|---|
 | `challengeId` | `specId` (must round-trip) |
 | `score` (0..1) | `score` |
-| `detail` (Record<string, number>) | `detail` |
+| `detail` (Record<string, number>) | `detail: { numbers: <detail> }` (R3 envelope) |
 | `outcome: "aborted"` | `abandoned: true` |
 | `completedAt`, `xp`, `rewards`, `sig`, `playerId`, `offline` | dropped — Journey's CelebrationLayer + FSRS replace the city economy for journey launches (city standalone keeps all of it) |
 | — | `perItem`: see below |
 | — | `durationMs`: measured by the adapter around `runChallenge` |
 
-**perItem synthesis.** Most city tools score one aggregate over their spec entries.
-The adapter emits one `ActivityItemResult` per `itemRef` with outcome binned from
-the aggregate score: `pass` ≥ 0.8, `partial` ≥ 0.4, else `fail` (0.8 aligns with
-the city's own item-rarity tier). Tools that DO have per-entry verdicts internally
-(memory-pairs, tap-translation, …) may later populate
-`ChallengeResult.detail["item:<entryId>"] = 0|0.5|1`; when such keys are present
-the adapter uses them instead of binning. v1 ships with binning only.
+**perItem evidence (score-only for aggregate tools, R9).** Most city tools score
+one aggregate over their spec entries. For those the adapter reports
+**score-only** — `perItem: []` — and the engine's aggregate handling applies
+(grade caps per engine row 8). The adapter emits `perItem` ONLY for tools with
+genuine per-entry verdicts: when `ChallengeResult.detail["item:<entryId>"] =
+0|0.5|1` keys are present (memory-pairs, tap-translation, … — convention
+reserved, §11), it maps them to `pass`/`partial`/`fail` per entry. There is NO
+binning of an aggregate score into per-item outcomes in v1; if any provider ever
+synthesizes per-item outcomes, each synthesized entry MUST carry
+`detail.flags.aggregateBinned: true` and the engine clamps grades to
+[Hard, Good] — never Again (normative rule, §3.4).
 
 **Choke point — `src/journey/adapter.ts` (new, in-pack) wired in `mount`:**
 
@@ -1112,9 +1270,13 @@ scalar `score` on abandoned results is informational only.
 
 ## 9. Quota interaction (D9 wiring, contract-level)
 
-- The host debits the **`journey` quota** (new row in
-  `packs/shared/monetization/src/quotas.ts`) when it *enqueues/mounts* a card —
-  including pack-activity cards.
+- The **`journey` quota** (new row in `packs/shared/monetization/src/quotas.ts`)
+  meters **new intake only** (R12): debit = completed **debut** cards (the
+  first-ever presentation of an item) + pack-anchor launches. Due-review,
+  replay, and repair cards are NEVER metered — the parlometron dignity
+  precedent, exactly. There is ONE debit site, in `journey/runtime.ts`; feed-ux
+  §7.2 specs the surface behavior around it. This contract debits nowhere —
+  nothing in §3's session machinery touches quota.
 - Providers MUST NOT debit their own pack gate for journey launches: the shared
   gate helper grows one check — skip counting + never dispatch
   `corpan:daily-locked` when the mount carried `initialState.activity` (providers
@@ -1129,8 +1291,8 @@ scalar `score` on abandoned results is informational only.
 
 | Unit | Change | Changelog |
 |---|---|---|
-| `corpan-app` | NEW `src/contentPacks/activityContract.ts`, NEW `src/contentPacks/activitySchemas.ts`, NEW `src/journey/activitySession.ts`; edits: `types.ts` (re-export + PackLaunchEntry.activity + manifest.activities + HostApi.journey), `hostApi.ts` (journey seam), `ContentPackHost.tsx` (initialState spread, dep list, HOST_CAPS.journey), `contentPacks/catalog.ts` (CatalogV3Entry.activities + filter forward), `package.json` (+zod ^4.4.3) | `corpan-app/CHANGELOG.md` [Unreleased]: "Journey activity contract: ActivitySpec/ActivityResult host seam (`hostApi.journey`), `corpan:activity-result` fallback, HOST_CAPS.journey, manifest/catalog `activities`." |
-| `packs/sdk` | NEW `activityContract.d.ts` (generated), NEW `sync-contract.mjs`; edits: `index.d.ts` (re-export + `journey?`), `index.js` (mock journey, mountStandalone `activity`) | `packs/sdk` changelog entry. |
+| `corpan-app` | NEW `src/contentPacks/activityContract.ts` (types + `itemRefKey`/`parseItemRef` + `ACTIVITY_TYPES`), NEW `src/contentPacks/activitySchemas.ts`, NEW `src/journey/activitySession.ts`; edits: `types.ts` (re-export + PackLaunchEntry.activity + manifest.activities + HostApi.journey), `hostApi.ts` (journey seam), `ContentPackHost.tsx` (initialState spread, dep list, HOST_CAPS.journey), `contentPacks/catalog.ts` (CatalogV3Entry.activities + filter forward), `package.json` (+zod ^4.4.3) | `corpan-app/CHANGELOG.md` [Unreleased]: "Journey activity contract: ActivitySpec/ActivityResult host seam (`hostApi.journey`), `corpan:activity-result` fallback, HOST_CAPS.journey, manifest/catalog `activities`." |
+| `packs/sdk` | NEW `activityContract.ts` (generated), NEW `sync-contract.mjs`; edits: `index.d.ts` (re-export + `journey?`), `index.js` (mock journey, mountStandalone `activity`) | `packs/sdk` changelog entry. |
 | CI | ci-gate step: `node packs/sdk/sync-contract.mjs --check` | — |
 | `lingo-hero` | journey mode: pinned ContentManager pool + journey WordSelector, `wave-resolved` reporter, `maxRounds`, Leitner-off under journey | pack CHANGELOG. |
 | `earthgate-reader` (+ `packs/shared/catalog` appShell) | journey routing in appShell, `segmentRange` clamp, reportItem/reportResult | pack + shared-catalog CHANGELOGs. |
@@ -1154,5 +1316,31 @@ throughout, per trunk rules.
 - `discoverPacksByType` implementation (catalog `activities` covers discovery
   for v1).
 - Per-entry verdicts from corpan-city grid tools (`detail["item:<id>"]`
-  convention reserved, unimplemented).
+  convention reserved; unimplemented city-side — until then those tools report
+  score-only per §6.3/R9).
 - Keeping pack models warm across journey cards (Budget Arbiter Phase-2).
+
+---
+
+## Tracked risks (panel round 1)
+
+Architecture-lens risks relevant to this spec, preserved verbatim per R16.
+Non-blocking; they inform build-time tests. (The first is resolved by R12 —
+kept for the record.)
+
+- "Quota debit timing contradicts itself: activity-contract §9 / D9 debit
+  'when it enqueues/mounts a card' (including pack cards), feed-ux §7.2 debits
+  one note() per COMPLETED scored card with abandoned cards free. Different
+  billing semantics (an abandoned pack card is billed under one spec, free
+  under the other). Pick one — completed-only is the learner-friendly reading —
+  and update D9 + contract §9."
+- "Placement probes are minted from the probe bank but activity-contract has
+  no probe-mode field on ActivitySpec; feed-ux's mode=\"probe\" is a surface
+  prop. A pack card can never be a probe (fine), but the native param plumbing
+  for 'no hints, no retry' must come via spec.params — currently unspecified
+  in the renderer params tables."
+- "Event rail trusts detail.packId self-declaration; scoping to the single
+  active session + specId match makes cross-pack spoofing mostly moot (one
+  overlay at a time, App.tsx:809 verified), but note the specId format is
+  guessable (`${sessionId}:${emitIndex}`) — harmless today, worth a line in
+  the contract's threat notes."

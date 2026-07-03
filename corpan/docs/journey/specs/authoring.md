@@ -1,63 +1,56 @@
-# Journey — Curriculum Authoring Spec (`journey_en` v0.1)
+# Journey — Content Authoring Spec (`journey_en` v0.1)
 
-**Status: v0.1 spec, implements ARCHITECTURE D6/D10/D11. Owner: curriculum authoring workstream.**
+**Status: v0.1 spec, implements ARCHITECTURE D6/D10/D11 (as amended by CTO-RESOLUTIONS R1).
+Owner: curriculum authoring workstream.**
 **Inputs:** `research/curriculum-spine.md` (spine + first-20-units draft), `research/pedagogy.md`
 (§5 frequency, §6 grammar graph, §12 numeric rules), `research/adaptivity.md` (θ/`b`/probe
 contract), `codebase/content-data.md` (corpus census, wordpan precedent, §6 new-pack-kind path).
 **All corpus numbers in this document were re-verified against `dja/release.sqlite3` and the 34
 phrase-pack `phrases.json` sources on 2026-07-03.**
 
-This document specifies, for a senior engineer, everything needed to author, build, lint, and
-ship the `journey_en` v0.1 course pack: the authored file formats, the compiled SQLite schema,
-the EN grammar-node graph (Launchpad + A1 authored in full), the item-assignment pipeline, the
-30-unit outline, validation/calibration, and the es→en overlay v0.1.
+This document is the **content authoring layer** for the `journey_en` v0.1 course pack.
+**`specs/course-pack.md` is normative** (R1) for the SQLite DDL, manifest/index/S3 layout,
+versioning, the app catalog module, and the single merged validation-gate list — everything
+here *compiles to* that spec's schema and layout. What this spec owns: the authored unit YAML
+semantics, the EN grammar-node graph (Launchpad + A1 authored in full), the item-assignment
+pipeline (`assign_items.py`), the 30-unit outline, the corpus census, the content-side lint
+rationale, calibration, and the es→en overlay v0.1.
 
-Scope boundaries: the runtime engine (FSRS, θ, mixer) is D4 and specified in
-`research/adaptivity.md`; the feed UX is D7; the app-side pack loader clones the wordpan module
-(`content-data.md` §6). This spec covers only what is *authored and built* on the Spark in
-`dja/journey_pack/`.
+Scope boundaries: the runtime engine (FSRS, θ, mixer) is D4 and specified in `engine.md` /
+`research/adaptivity.md`; the feed UX is D7; pack format/distribution/app integration is
+`course-pack.md`. This spec covers only what is *authored* on the Spark in `dja/journey_pack/`
+and how it compiles down.
 
 ---
 
-## 0. Repository layout (new, in-repo from day one)
+## 0. Repository layout — normative in course-pack.md §5
+
+The `dja/journey_pack/` tree, tool inventory (`build_journey_pack.py`,
+`validate_journey_pack.py`, `publish_journey_pack.py`), `courses/en/` structure
+(course.yaml, grammar.yaml, `units/`, `overlays/`, `strings/`), pack id / zip naming
+(`journey_en`, zip `journey_en-0.1.0.zip` — underscore, installer rule), S3 layout, and
+channel gating are all specified in **course-pack.md §3–§5**. This spec adds only the
+authoring-side files that live inside that same tree:
 
 ```
-corpan/dja/journey_pack/                  # sibling of word_pack/, hanzi_pack/
-├── README.md
-├── build_journey_pack.py                 # authored YAML → journey_en SQLite → zip
-├── lint_journey_pack.py                  # §7 lint rules; exit non-zero on any ERROR
+dja/journey_pack/
 ├── assign_items.py                       # §5 item pipeline (wordfreq + census + assignment)
 ├── calibration_report.py                 # §7.3 predicted-vs-actual (reads local sim / opt-in logs)
-├── publish_journey_pack.py               # accumulate-merge index.json, per content-data.md §6
-├── requirements.txt                      # wordfreq (MIT), pyyaml, jsonschema
 └── courses/en/
-    ├── course.yaml                       # course-level metadata + arc table
-    ├── grammar/
-    │   ├── nodes.yaml                    # full node inventory (v0.1: Launchpad+A1 authored, rest stubs)
-    │   └── edges.yaml                    # prerequisite DAG (may also inline in nodes.yaml)
-    ├── units/
-    │   ├── 000-launchpad-sounds.yaml     # one file per unit, NNN = intro order
-    │   ├── 001-launchpad-survival.yaml
-    │   ├── 010-hello.yaml
-    │   └── ...
-    ├── recipes.yaml                      # named lesson recipes (slot lists)
-    ├── items/
-    │   ├── pins.yaml                     # hand-pinned ItemRefs per unit (overrides)
-    │   └── assignments.generated.json    # OUTPUT of assign_items.py (checked in, reviewed in PR)
-    └── overlays/
-        ├── es.yaml                       # es→en overlay v0.1 (§8)
-        └── _schema.yaml
+    └── items/
+        ├── pins.yaml                     # hand-pinned ItemRefs per unit (overrides)
+        └── assignments.generated.json    # OUTPUT of assign_items.py (checked in, reviewed in PR)
 ```
 
-Conventions carried over from the fleet:
+Content-side conventions carried over from the fleet:
 - Authored YAML is source code, checked into git (same policy as `segments_<lang>.json`).
 - Generated `assignments.generated.json` is ALSO checked in — assignment is reviewed, not
   opaque (translations-are-source-code discipline applied to curriculum).
-- Pack id is underscore-canonical: **`journey_en`** (installer id derivation rule,
-  `content-data.md` §6.2). Zip name `journey_en-<version>.zip`, immutable.
-- Ships to `s3://corpan-prod/artifacts/corpan/journey-packs/` + own `index.json`
-  (accumulate-merge, `max-age=300`), `channel: "preview"` first. Zero Rust changes.
-- YAML gotcha: quote `"no"` anywhere Norwegian appears as a key.
+- Course copy (unit themes, can-dos, grammar-node briefs, overlay bodies) ships in the pack
+  **`strings` table** (course-pack.md §2), NOT as app-locale keys — D6 independence. Pack
+  strings are authored/agent-translated JSON files under `courses/en/strings/` per
+  course-pack.md §5 (JSON deliberately: sidesteps the Norwegian `"no"` YAML-boolean trap).
+- YAML gotcha still applies to unit YAML: quote `"no"` anywhere Norwegian appears as a key.
 
 ---
 
@@ -68,12 +61,19 @@ order (gaps allowed; lint enforces monotonicity with `ord`).
 
 ### 1.1 Schema (documented as commented YAML; JSON-Schema mirror lives at `courses/_schema/unit.schema.json`)
 
+The authored unit file is a **superset of course-pack.md §5.1** — the extra fields here
+(`pools`, `pins`, `words`, `recipe_mix`, `l1_slots`, `rare_cards`, `boss.remedial`, `notes`)
+are authoring-side inputs that `assign_items.py` + `build_journey_pack.py` compile down to
+course-pack.md's §5.1 shape and §2 DDL (mapping table in §2 below).
+
 ```yaml
 unit:
-  id: en.a1.u01            # REQUIRED. "<course>.<arc-tag>.uNN". Immutable once shipped.
-  arc: 1                   # REQUIRED. 0=Launchpad, 1=A1, ... 6=Summit.
+  id: en.a1.u01            # REQUIRED. Course-pack unit-id grammar ('en.a1.u07' style;
+                           # Launchpad = 'en.a0.uNN'). Immutable once shipped.
+  arc: en.arc1             # REQUIRED. arcs.id per course-pack §2 ('en.arc0' = Launchpad).
   ord: 10                  # REQUIRED. Course-wide position (matches filename NNN).
-  title: "Hello!"          # REQUIRED. EN display title. i18n key minted as journey.unit.<id>.title
+  title: "Hello!"          # REQUIRED. EN display title → pack strings key (unit.<id>.theme
+                           # family, course-pack §2 strings table). NOT an app-locale key.
   theme: greetings         # REQUIRED. Free-form editorial theme tag (lint: kebab-case).
   kind: teach              # teach | consolidate | gate  (default teach)
 
@@ -85,8 +85,17 @@ unit:
     - id: jcd.a1.greet
       text: "Greet people and respond to greetings"
 
-  grammar:                 # node ids from grammar/nodes.yaml
-    introduce: [en.g.pron-subject, en.g.be-1sg-2sg, en.g.sv-order]
+  skills:                  # REQUIRED for teach units — course-pack §5.1 skills: block,
+                           # verbatim. These become `skills` + `skill_edges` rows; every
+                           # item this unit assigns joins ≥1 of them via `item_skills`.
+    - id: en.skill.greetings
+      kind: function
+      title: "Greetings & introductions"
+      b: -3.4
+      prereqs: []
+
+  grammar:                 # node ids from grammar.yaml (course-pack §5 layout)
+    introduce: [en.gn.pron-subject, en.gn.be-1sg-2sg, en.gn.sv-order]
     review: []             # nodes deliberately recycled here (lint: must be introduced earlier)
 
   vocab_band:              # frequency ranks against wordfreq 'en' large list (§5.1)
@@ -128,16 +137,20 @@ unit:
     - boss
 
   anchor:                  # the unit's fluency centerpiece (D8: pack activities are anchor cards)
-    provider: juice_squeeze          # pack id (underscore-canonical) or native renderer id
-    activityType: game-round
+    provider: cap-squeeze            # v0.1 allowed set (R13): lingo_hero, earthgate
+                                     # (or cap-segment-player), corpan_city, cap-pronounce,
+                                     # cap-squeeze. Pack activityTypes are '<packId>:<name>'
+                                     # (R4, activity-contract §1).
+    activityType: "cap-squeeze:round"
     params: {itemset: unit}          # engine materializes itemRefs = this unit's items
-    fallback: {provider: native, activityType: match}   # REQUIRED: feed must degrade if pack absent
+    fallback: {provider: native, activityType: match_pairs}  # REQUIRED: feed must degrade if pack absent
 
-  boss:                    # every teach unit ends in a task-boss (pedagogy charter #11)
+  boss:                    # every teach unit ends in a task-boss (pedagogy charter #11);
+                           # compiles to a course-pack §2 `checkpoints` row (scope='unit')
     recipe: boss
     scenario: "Meet three people: greet, exchange names, say goodbye."
     pass_score: 0.8
-    must_include: [speak-after-me, listen-pick]   # lint rule V-BOSS-1
+    must_include: [speak_echo, listen_pick]   # lint rule V-BOSS-1
     remedial:              # on fail: prescribed remediation before rematch
       max_lessons: 2
       target: weakest      # weakest = lowest-mastery grammar nodes / item clusters of this unit
@@ -150,8 +163,11 @@ unit:
     # any slot may instead pin an explicit overlay key: contrastive_note: es.note.pro-drop
 
   rare_cards:              # optional per-unit additions to the rare-card tables (D7 economy)
-    etym_gems: band        # band = wordpan paragraphs for this unit's words
-    story: null            # story chapters gate on measured coverage, not unit — usually null
+    etym_gems: band        # band = wordpan paragraphs for this unit's words, compiled to
+                           # `rare_cards` rows (card_type 'etymology'). Gems are rare-card
+                           # FACES rolled by the engine — never a lesson-recipe slot (R4).
+    # story: CUT from v0.1 (R11) — no storyChapter rows ship; DDL support remains.
+    # See §6.1 v0.2 workstream.
 
   notes: |
     Authoring rationale, gap references, anything the next author needs.
@@ -161,11 +177,16 @@ unit:
 
 - **`id` is immutable** once any version of the pack has shipped (FSRS/skill state keys by it).
   Retiring a unit = `kind: teach` → tombstone via `deprecated: true`, never deletion.
+- **`skills`** — course-pack §5.1 verbatim: the skill DAG rows this unit introduces
+  (kinds `grammar|vocab|phonology|script|function`). Grammar nodes attach to exactly one
+  skill (course-pack Appendix A #4); `assign_items.py` writes every assigned item into
+  `item_skills` for ≥1 of the unit's skills so derived mastery `I(s)` is total.
 - **`cando`** — paraphrase-only. A private crosswalk (`courses/en/cando-crosswalk.private.md`,
   git-ignored) may map `jcd.*` ids to CEFR Companion Volume scales for authoring reference; it
   never ships and its text never gets copied into `text`.
 - **`vocab_band.ranks`** are wordfreq ranks (§5.1). Bands across teach units in an arc must be
-  contiguous and non-overlapping (lint V-BAND-1); review/gate units carry `ranks: null`.
+  contiguous and non-overlapping (band-monotonicity gate, course-pack §6.4); review/gate
+  units carry `ranks: null`.
 - **`pools`** are declarative so re-running `assign_items.py` after corpus growth re-resolves
   them; results are frozen into `assignments.generated.json` at build time.
 - **`recipe_mix`** length 6–14 for teach units (spine §2.4 envelope scaled down for v0.1 —
@@ -183,7 +204,7 @@ draws from the base corpus instead. Correction noted for `research/curriculum-sp
 ```yaml
 unit:
   id: en.a1.u01
-  arc: 1
+  arc: en.arc1
   ord: 10
   title: "Hello!"
   theme: greetings
@@ -197,8 +218,20 @@ unit:
     - id: jcd.a1.leave-take
       text: "Say goodbye politely"
 
+  skills:
+    - id: en.skill.greetings
+      kind: function
+      title: "Greetings & introductions"
+      b: -3.4
+      prereqs: []
+    - id: en.skill.be-statements
+      kind: grammar
+      title: "be: I am / you are"
+      b: -3.5
+      prereqs: []
+
   grammar:
-    introduce: [en.g.sv-order, en.g.pron-subject, en.g.be-1sg-2sg]
+    introduce: [en.gn.sv-order, en.gn.pron-subject, en.gn.be-1sg-2sg]
     review: []
 
   vocab_band:
@@ -232,16 +265,16 @@ unit:
   recipe_mix: [core, core, phonology, core, dialog, review, boss]
 
   anchor:
-    provider: juice_squeeze
-    activityType: game-round
+    provider: cap-squeeze                 # juice-squeeze gameplay via the cap-squeeze
+    activityType: "cap-squeeze:round"     # capability module (R13/R15)
     params: {itemset: unit}
-    fallback: {provider: native, activityType: match}
+    fallback: {provider: native, activityType: match_pairs}
 
   boss:
     recipe: boss
     scenario: "Meet three people: greet each one, exchange names, ask how they are, say goodbye."
     pass_score: 0.8
-    must_include: [speak-after-me, listen-pick]
+    must_include: [speak_echo, listen_pick]
     remedial: {max_lessons: 2, target: weakest}
 
   l1_slots:
@@ -251,195 +284,115 @@ unit:
 
   rare_cards:
     etym_gems: band            # e.g. wordpan("hello"), wordpan("goodbye" < "God be with ye")
-    story: null
 
   notes: |
     First unit of the course; every learner sees it unless placement skips Arc 1.
-    Warm-win rule: first two cards must be listen-pick over pinned A0 items.
+    Warm-win rule: first two cards must be listen_pick over pinned A0 items.
     Do NOT use phrase-learning here (it is not a greetings pack — verified 2026-07-03).
 ```
 
-### 1.4 Recipes file (`courses/en/recipes.yaml`)
+### 1.4 Recipes file (`recipes.yaml`, course-agnostic — course-pack §5 layout)
 
-Recipes are named ordered slot lists. Slot `type` values are the canonical native
-`activityType` ids (D8) plus the four scheduler pseudo-slots. v0.1 canonical set:
+Recipes are named ordered slot lists that compile to course-pack §2 `lesson_recipes` +
+`recipe_slots`. Slot `type` values are drawn from the **canonical `ACTIVITY_TYPES` registry
+in `activityContract.ts` (normative table: activity-contract.md §1, per R4)** — the ten
+native snake_case types — plus the scheduler pseudo-slots:
 
 ```
-Native renderers (D8):   picture-choice, listen-pick, listen-type, cloze, word-order,
-                         match, cued-recall, speak-after-me, translate-pick, translate-type,
-                         read-segment, grammar-note, etym-gem
+Native types (R4):       choice_pick, listen_pick, listen_type, cloze, word_order,
+                         match_pairs, flip_recall, speak_echo, intro_echo, grammar_note
 Scheduler pseudo-slots:  review.due, fluency.anchor, meta.recap, probe
 ```
+
+Registry notes, applied throughout this spec (R4):
+- **Translation direction is a PARAM** of `choice_pick` / `listen_type` / `cloze`, not a
+  type. Notation here: `choice_pick[translate]` = L1↔L2 pick variant; `cloze[translate]` =
+  typed-translation variant; `choice_pick[image]` = image-option params (imagepan; degrades
+  to `match_pairs` until imagepan ships, §10).
+- **`read-segment` is gone as a native type** — segment reading is a provider card via
+  `earthgate` / `cap-segment-player` (anchor/provider slot, never a recipe `types:` entry).
+- **`etym-gem` is a rare-card FACE**, rolled by the engine from `rare_cards`
+  (card_type `etymology`) — not a schedulable type, not a recipe slot. The former `gem`
+  recipe is deleted.
+- `speak_echo` renders via the `cap-pronounce` capability module (R15).
+- Recipes/bosses validate against the vendored `ACTIVITY_TYPES` constant (course-pack's
+  merged gate list; CI drift check like `sync-contract.mjs`).
 
 ```yaml
 recipes:
   core:                       # scaled-down v0.1 core lesson (~10 steps ≈ 5 min)
     - {slot: review.due, count: 2}                     # warm-up retrieval, FSRS-due, warm-win
-    - {slot: input, types: [listen-pick, picture-choice, read-segment], count: 3, new: true}
-    - {slot: practice, types: [cloze, word-order, match, cued-recall], count: 3}
-    - {slot: produce, types: [speak-after-me, translate-type], count: 1}
+    - {slot: input, types: [intro_echo, listen_pick, choice_pick], count: 3, new: true}
+    - {slot: practice, types: [cloze, word_order, match_pairs, flip_recall], count: 3}
+    - {slot: produce, types: [speak_echo, cloze], count: 1}   # cloze in [translate] typed mode
     - {slot: fluency.anchor, count: 0..1}              # only if unit anchor scheduled this lesson
     - {slot: meta.recap, count: 1}
   grammar-focus:
     - {slot: review.due, count: 2}
-    - {slot: grammar-note, count: 1}                    # ≤60-second rule card, L1 early (charter #8)
-    - {slot: input, types: [listen-pick, read-segment], count: 2, feature: unit-grammar}
-    - {slot: practice, types: [cloze, word-order], count: 4, feature: unit-grammar}
-    - {slot: produce, types: [translate-type, speak-after-me], count: 1}
+    - {slot: grammar_note, count: 1}                    # ≤60-second rule card, L1 early (charter #8)
+    - {slot: input, types: [listen_pick], count: 2, feature: unit-grammar}
+    - {slot: practice, types: [cloze, word_order], count: 4, feature: unit-grammar}
+    - {slot: produce, types: [cloze, speak_echo], count: 1}   # cloze[translate]
     - {slot: meta.recap, count: 1}
   dialog:
     - {slot: review.due, count: 1}
-    - {slot: input, types: [listen-pick, listen-type], count: 3, material: dialog}
-    - {slot: produce, types: [speak-after-me], count: 2, material: dialog}
+    - {slot: input, types: [listen_pick, listen_type], count: 3, material: dialog}
+    - {slot: produce, types: [speak_echo], count: 2, material: dialog}
     - {slot: meta.recap, count: 1}
   phonology:
-    - {slot: input, types: [listen-pick], count: 4, material: minimal-pairs}   # HVPT perception
-    - {slot: produce, types: [speak-after-me], count: 2}
-    - {slot: meta.recap, count: 1}
-  story:
-    - {slot: input, types: [read-segment], count: 5, coverage_min: 0.95}
-    - {slot: practice, types: [cloze, listen-pick], count: 2, material: story}
+    - {slot: input, types: [listen_pick], count: 4, material: minimal-pairs}   # HVPT perception
+    - {slot: produce, types: [speak_echo], count: 2}
     - {slot: meta.recap, count: 1}
   review:
     - {slot: review.due, count: 8}
     - {slot: meta.recap, count: 1}
   boss:
     - {slot: probe, count: 6, mix: unit}                # mixed gauntlet over unit items
-    - {slot: produce, types: [speak-after-me], count: 1, required: true}
-    - {slot: input, types: [listen-pick], count: 1, required: true}
+    - {slot: produce, types: [speak_echo], count: 1, required: true}
+    - {slot: input, types: [listen_pick], count: 1, required: true}
     - {slot: review.due, count: 2, scope: older}        # spaced sample of pre-unit material
     - {slot: meta.recap, count: 1, celebrate: gate}
-  gem:
-    - {slot: etym-gem, count: 1}
 ```
 
-The renderer/mixer interprets recipes; the pack only *ships* them (as JSON in `unit.recipe_json`
-and a `recipe` table). Strand accounting (pedagogy §12.1) is the mixer's job, not the recipe's;
-recipes just guarantee raw material variety.
+**The `story` recipe is CUT from v0.1 (R11)** — no unit schedules it and no story rare
+cards ship; the `lesson_recipes`/`rare_cards` schema support remains in course-pack §2.
+Units that had scheduled story lessons re-pool to listen-heavy input (`dialog`, extra
+listen-weighted `core`) — see §6 and the §6.1 v0.2 workstream.
+
+The renderer/mixer interprets recipes; the pack only *ships* them (course-pack §2
+`recipe_slots` + `unit_lessons`). Strand accounting (pedagogy §12.1) is the mixer's job, not
+the recipe's; recipes just guarantee raw material variety.
 
 ---
 
-## 2. Compiled pack schema (SQLite DDL)
+## 2. Compilation target — course-pack.md §2 (normative DDL)
 
-`build_journey_pack.py` compiles `courses/en/**` into `data/course.sqlite3` inside the zip.
-Read at runtime via the generic `content_packs_query_db` (read-only, parameterized —
-`src-tauri/src/lib.rs:1102`). Conventions follow the phrase-pack builder
-(`tools/phrase-packs/build_phrase_pack.py::_write_schema`): `WITHOUT ROWID` for join tables,
-`application_id = 0x434F5250`, `user_version = 1`.
+The SQLite DDL formerly duplicated here is **deleted (R1)**: `build_journey_pack.py`
+compiles `courses/en/**` into course-pack.md §2's schema, verbatim — `pack_meta`, `arcs`,
+`units`, `skills`, `skill_edges`, `grammar_nodes`, `items`, `item_skills`, `lesson_recipes`,
+`recipe_slots`, `unit_lessons`, `checkpoints`, `rare_cards`, `l1_overlays`, `strings`. The
+`skills`/`item_skills`/`strings` tables are non-negotiable for the engine and D6.
 
-```sql
-CREATE TABLE pack_meta(key TEXT PRIMARY KEY, value TEXT) WITHOUT ROWID;
--- schema_version=1, course_id='journey_en', target_lang='en', built_at, builder_git_sha,
--- wordfreq_version, corpus_census_json (the §7.2 numbers frozen at build time)
+Authored-construct → DDL mapping (the builder's contract):
 
-CREATE TABLE arc(
-  id INTEGER PRIMARY KEY,            -- 0..6
-  tag TEXT NOT NULL,                 -- 'launchpad','a1',...
-  title TEXT NOT NULL,               -- EN; i18n via journey.arc.<tag>.title
-  cefr TEXT                          -- 'preA1','A1',... display-only, honest framing
-);
+| Authored (this spec) | Compiles to (course-pack §2) |
+|---|---|
+| `course.yaml` arcs | `arcs` (titles → `strings` keys) |
+| unit YAML header (`id`, `arc`, `theme`, `cando`) | `units` row; theme/can-do copy → `strings` keys ×54 |
+| unit `skills:` blocks (§1.1) | `skills` + `skill_edges` (from `prereqs`) |
+| `grammar.yaml` inventory (§3) | `grammar_nodes` (briefs → `strings` note keys) + minted `grammarNode:` items; authored per-node prereqs compile to skill-level `skill_edges` + the global `node_order` (nodes attach to exactly one skill, course-pack Appendix A #4) |
+| `pools`/`pins`/`words` + `assign_items.py` (§5) | `items` rows (`intro_order`, `difficulty_b`, `importance`, `is_probe`, `freq_rank`) + `item_skills` joins |
+| `recipe_mix` + `recipes.yaml` (§1.4) | `lesson_recipes`/`recipe_slots` + per-unit `unit_lessons` |
+| `boss` (§1.1) | `checkpoints` row, scope `unit`; arc gates → scope `arc` |
+| `rare_cards.etym_gems` | `rare_cards` rows, card_type `etymology` (no `story` rows in v0.1 — R11) |
+| overlays (§8) | `l1_overlays` rows + `ovl.<l1>.*` strings (`(l1, en)` only) |
+| probe templates (§4) | `items` with `is_probe=1` |
 
-CREATE TABLE unit(
-  id TEXT PRIMARY KEY,               -- 'en.a1.u01'
-  arc INTEGER NOT NULL REFERENCES arc(id),
-  ord INTEGER NOT NULL UNIQUE,       -- course-wide intro order
-  kind TEXT NOT NULL DEFAULT 'teach',-- teach|consolidate|gate
-  title TEXT NOT NULL,
-  theme TEXT NOT NULL,
-  cando_json TEXT NOT NULL,          -- [{id,text}] paraphrases
-  rank_min INTEGER, rank_max INTEGER,
-  new_target INTEGER,
-  recipe_json TEXT NOT NULL,         -- resolved recipe_mix (names + inline slot lists)
-  anchor_json TEXT NOT NULL,         -- {provider, activityType, params, fallback}
-  boss_json TEXT NOT NULL,           -- {scenario, pass_score, must_include, remedial}
-  deprecated INTEGER NOT NULL DEFAULT 0
-);
-
-CREATE TABLE grammar_node(
-  id TEXT PRIMARY KEY,               -- 'en.g.pres-simple-3sg'
-  name TEXT NOT NULL,
-  arc INTEGER NOT NULL,              -- home arc (first introduction)
-  brief TEXT NOT NULL,               -- ≤240 chars, the ≤60-second rule-card seed text (EN)
-  b REAL NOT NULL,                   -- static logit difficulty (§5.5)
-  late_acquired INTEGER NOT NULL DEFAULT 0,  -- charter #8: tracked, recycled, NEVER a gate
-  probe_json TEXT NOT NULL           -- [{type, template, answer}] probe item patterns (§4)
-);
-
-CREATE TABLE grammar_edge(
-  node_id TEXT NOT NULL REFERENCES grammar_node(id),
-  prereq_id TEXT NOT NULL REFERENCES grammar_node(id),
-  PRIMARY KEY(node_id, prereq_id)
-) WITHOUT ROWID;
-
-CREATE TABLE unit_grammar(
-  unit_id TEXT NOT NULL REFERENCES unit(id),
-  node_id TEXT NOT NULL REFERENCES grammar_node(id),
-  role TEXT NOT NULL,                -- 'introduce'|'review'
-  PRIMARY KEY(unit_id, node_id)
-) WITHOUT ROWID;
-
-CREATE TABLE item(
-  item_key TEXT PRIMARY KEY,         -- canonical ItemRef key: '<kind>:<source>:<id>'
-                                     --   'phrase:base:27293' | 'phrase:phrase-travel-essentials:41'
-                                     --   | 'word:en:hello' | 'grammarNode:journey_en:en.g.be-1sg-2sg'
-  kind TEXT NOT NULL,                -- ItemRef.kind (D3)
-  source TEXT NOT NULL,
-  ref_id TEXT NOT NULL,
-  unit_id TEXT REFERENCES unit(id),  -- teaching unit (NULL = review-reservoir only)
-  intro_ord INTEGER,                 -- order within unit
-  b REAL NOT NULL,                   -- static difficulty (§5.5)
-  importance REAL NOT NULL DEFAULT 1.0,  -- mixer weight (pins=1.5, band words=1.0, pool extras=0.7)
-  probe INTEGER NOT NULL DEFAULT 0,  -- placement/boss probe eligibility (adaptivity §4.2)
-  probe_node TEXT,                   -- grammar node this probe evidences, if any
-  freq_rank INTEGER,                 -- wordfreq rank of rarest content word (phrases) / the word
-  zipf REAL,                         -- zipf of rarest content word / the word
-  tags_json TEXT                     -- ['dialog','minimal-pair-seed',...]
-);
-CREATE INDEX item_unit ON item(unit_id, intro_ord);
-CREATE INDEX item_probe ON item(probe) WHERE probe=1;
-
-CREATE TABLE overlay_note(            -- L1 contrastive notes (D6: keyed (l1, key), one spine)
-  l1 TEXT NOT NULL,                   -- 'es'
-  key TEXT NOT NULL,                  -- 'es.note.pro-drop'
-  node_id TEXT REFERENCES grammar_node(id),   -- attach point (NULL = unit-thematic note)
-  unit_id TEXT REFERENCES unit(id),
-  ord INTEGER NOT NULL DEFAULT 0,
-  body TEXT NOT NULL,                 -- authored in EN; localized copies ride the translation
-  body_l1 TEXT,                       -- machinery — shipped pre-translated INTO the L1
-  PRIMARY KEY(l1, key)
-) WITHOUT ROWID;
-
-CREATE TABLE cognate_rule(
-  l1 TEXT NOT NULL,
-  rule_id TEXT NOT NULL,              -- 'es.cog.cion-tion'
-  pattern TEXT NOT NULL,              -- transform, e.g. 'es:-ción => en:-tion'
-  credit TEXT NOT NULL,               -- 'recognize' (seeds priorKnown at recognize maturity)
-  examples_json TEXT NOT NULL,        -- [["nación","nation"],...]
-  blacklist_json TEXT,                -- false friends excluded from this rule
-  PRIMARY KEY(l1, rule_id)
-) WITHOUT ROWID;
-
-CREATE TABLE phoneme_contrast(
-  l1 TEXT NOT NULL,
-  contrast_id TEXT NOT NULL,          -- 'es.ph.i-vs-ih'
-  label TEXT NOT NULL,                -- '/iː/ vs /ɪ/'
-  priority INTEGER NOT NULL,          -- 1 = drill first
-  pairs_json TEXT NOT NULL,           -- [["sheep","ship"],["beat","bit"],...] (minimal pairs)
-  note TEXT,
-  PRIMARY KEY(l1, contrast_id)
-) WITHOUT ROWID;
-
-CREATE TABLE rare_card(               -- D7 reward economy tables
-  id TEXT PRIMARY KEY,
-  card_type TEXT NOT NULL,            -- 'etym-gem'|'game-round'|'delight'|'story-chapter'
-  ratio INTEGER NOT NULL,             -- ~1:N roll
-  payload_json TEXT NOT NULL
-);
-```
-
-`ItemRef` (D3) round-trip: `item_key = kind + ':' + source + ':' + id`; the engine parses it
-back into `{kind, source, id}`. Grammar nodes are minted by this pack with
-`source = 'journey_en'`.
+`items.id` is the canonical ItemRef serialization `<kind>:<source>:<id>`
+(activity-contract.md §1 is the one kind/source/id table; `itemRefKey()` is the one
+helper — R2). Grammar nodes and phonemes are minted by this pack with
+`source = 'journey_en'`. The cross-spec round-trip test (pack `items.id` through the helper)
+lives with the contract.
 
 ---
 
@@ -455,9 +408,14 @@ back into `{kind, source, id}`. Grammar nodes are minted by this pack with
   **Paraphrase-only**: node names/briefs are our own words; no EGP/CoE text is embedded
   (same licensing posture as can-dos).
 - **Drafting pipeline**: LLM-drafted (codex, free/subscription backend — house default for bulk
-  text) into `nodes.yaml` stubs per arc → human spot-check pass ordering + prereq edges →
-  lint (DAG acyclicity, unit-order consistency). journey-en and journey-es prove the format
-  (D10.2); nothing beyond A1 blocks v0.1.
+  text) into `grammar.yaml` stubs per arc (course-pack §5 layout) → human spot-check pass
+  ordering + prereq edges → lint (DAG acyclicity, unit-order consistency). journey-en and
+  journey-es prove the format (D10.2); nothing beyond A1 blocks v0.1.
+- **Compile mapping** (course-pack §2): each node becomes a `grammar_nodes` row (brief →
+  `strings` note key, ×54) + one minted `grammarNode:journey_en:<id>` item. Nodes attach to
+  exactly one skill; the authored per-node `prereqs` column compiles to skill-level
+  `skill_edges` plus the global `node_order` (processability sequence) — finer-than-skill
+  prerequisite structure is carried by `node_order`, per course-pack Appendix A #4.
 - **Node granularity rule**: a node is the smallest grammar object the engine might want to
   *rewind to independently* (D4: "rewind past simple specifically"). If two phenomena are
   always taught, drilled, and remediated together, they are ONE node.
@@ -465,63 +423,66 @@ back into `{kind, source, id}`. Grammar nodes are minted by this pack with
   recycled but never gate progression (pedagogy charter #8).
 - **v0.1 ships**: the 43 authored nodes below with full briefs/probes, plus arc-stub rows for
   A2+ (id + name + arc only, `b` provisional, no unit references) so the DAG's forward edges
-  have anchors. Stubs are excluded from lint rule V-NODE-2 (must-be-referenced).
+  have anchors. Stubs are excluded from the node↔unit consistency lint (§7.1, must-be-referenced).
 
 ### 3.2 Authored inventory — Launchpad + Arc A1 (43 nodes)
 
-Notation: probe patterns use the template micro-DSL shipped in `probe_json`:
-`word-order: "tok / tok / ..."` (learner orders tokens), `cloze: "... ___ (hint) ..."`,
-`listen-pick: "audio=X; options=[...]"`, `translate-pick: "L1 prompt; options=[...]"`.
+Notation: probe patterns use the template micro-DSL shipped with the probe items; type
+names are the canonical R4 registry, with the translation/image variants as params:
+`word_order: "tok / tok / ..."` (learner orders tokens), `cloze: "... ___ (hint) ..."`,
+`listen_pick: "audio=X; options=[...]"`, `choice_pick[translate]: "L1 prompt;
+options=[...]"`, `choice_pick[image]` (image options), `match_pairs`.
 Every probe pattern must be renderable by a fast form (no speaking — adaptivity §4.2).
 `b` values are logit-scale per adaptivity §2.3 (A1 core ≈ −3 … C2 ≈ +4).
 
-| id (`en.g.`) | name | brief (rule-card seed) | prereqs | b | probe patterns |
+| id (`en.gn.`) | name | brief (rule-card seed) | prereqs | b | probe patterns |
 |---|---|---|---|---|---|
-| `sv-order` | Basic word order | English sentences go Subject–Verb–(Object): "I eat apples." The order carries the meaning. | — | −3.6 | word-order: "I / am / Anna" ; word-order: "you / coffee / like" |
-| `pron-subject` | Subject pronouns | I, you, he, she, it, we, they. English almost always needs the subject spoken — you can't drop it. | — | −3.6 | translate-pick: "ella → [she/her/he]" ; cloze: "___ am a teacher. (yo)" |
+| `sv-order` | Basic word order | English sentences go Subject–Verb–(Object): "I eat apples." The order carries the meaning. | — | −3.6 | word_order: "I / am / Anna" ; word_order: "you / coffee / like" |
+| `pron-subject` | Subject pronouns | I, you, he, she, it, we, they. English almost always needs the subject spoken — you can't drop it. | — | −3.6 | choice_pick[translate]: "ella → [she/her/he]" ; cloze: "___ am a teacher. (yo)" |
 | `be-1sg-2sg` | be: I am / you are | "am" goes with I; "are" goes with you. "I am Anna. You are my friend." | sv-order, pron-subject | −3.5 | cloze: "I ___ a student." ; cloze: "You ___ very kind." |
 | `be-all` | be: full present | am/is/are across all persons: he/she/it is; we/you/they are. | be-1sg-2sg | −3.3 | cloze: "She ___ a doctor." ; cloze: "They ___ from Peru." |
-| `be-neg` | be: negation | Add "not" after be: "I am not tired. She isn't here." | be-all | −3.2 | word-order: "not / is / she / here" ; cloze: "We ___ not ready." |
-| `be-yesno-q` | Yes/no questions with be | Flip be to the front: "You are tired." → "Are you tired?" | be-all | −3.2 | word-order: "you / are / hungry / ?" ; listen-pick: "audio='Is she your sister?'; options=[question/statement]" |
-| `wh-quest-be` | Wh-questions with be | What/where/who/how + be + subject: "Where are you? What is this?" | be-yesno-q | −3.1 | word-order: "where / you / are / from / ?" ; cloze: "___ is your name? (question word)" |
-| `articles-a-an` | a / an | "a" before consonant sounds, "an" before vowel sounds: a book, an apple. Use it for one, non-specific thing. | — | −3.3 | cloze: "She is ___ engineer." ; translate-pick |
-| `dem-sg` | this / that | "this" = near, "that" = far. "This is my phone. That is your bag." | be-all | −3.2 | picture-choice ; cloze: "___ is my house, over there." |
-| `poss-adj` | Possessive adjectives | my, your, his, her, its, our, their — before the noun: "her book". | pron-subject | −3.2 | cloze: "That is ___ car. (he)" ; translate-pick: "su (de ella) → [her/his/your]" |
-| `poss-s` | Possessive 's | Add 's to the owner: "Anna's dog", "my brother's car". English puts the owner FIRST. | poss-adj | −3.0 | word-order: "dog / Anna's / is / big" ; cloze: "This is my sister___ room." |
-| `plural-reg` | Regular plurals | Add -s (or -es after s/sh/ch/x): one cat → two cats; one box → two boxes. | — | −3.2 | cloze: "three ___ (cat)" ; listen-pick: minimal audio "book/books" |
-| `plural-irreg` | Irregular plurals | Some nouns change instead: man→men, woman→women, child→children, person→people, foot→feet. | plural-reg | −2.9 | cloze: "two ___ (child)" ; translate-pick |
-| `numbers-1-100` | Numbers 1–100 | Cardinal numbers; the -teen vs -ty trap (thirteen/thirty). | — | −3.3 | listen-pick: "audio='thirty'; options=[13/30/33]" ; match: digits↔words |
-| `time-telling` | Telling the time | "It's three o'clock. It's half past two. It's 7:15." Always start with "It's". | numbers-1-100, be-all | −3.0 | translate-pick ; cloze: "___ five o'clock. (time)" |
+| `be-neg` | be: negation | Add "not" after be: "I am not tired. She isn't here." | be-all | −3.2 | word_order: "not / is / she / here" ; cloze: "We ___ not ready." |
+| `be-yesno-q` | Yes/no questions with be | Flip be to the front: "You are tired." → "Are you tired?" | be-all | −3.2 | word_order: "you / are / hungry / ?" ; listen_pick: "audio='Is she your sister?'; options=[question/statement]" |
+| `wh-quest-be` | Wh-questions with be | What/where/who/how + be + subject: "Where are you? What is this?" | be-yesno-q | −3.1 | word_order: "where / you / are / from / ?" ; cloze: "___ is your name? (question word)" |
+| `articles-a-an` | a / an | "a" before consonant sounds, "an" before vowel sounds: a book, an apple. Use it for one, non-specific thing. | — | −3.3 | cloze: "She is ___ engineer." ; choice_pick[translate] |
+| `dem-sg` | this / that | "this" = near, "that" = far. "This is my phone. That is your bag." | be-all | −3.2 | choice_pick[image] ; cloze: "___ is my house, over there." |
+| `poss-adj` | Possessive adjectives | my, your, his, her, its, our, their — before the noun: "her book". | pron-subject | −3.2 | cloze: "That is ___ car. (he)" ; choice_pick[translate]: "su (de ella) → [her/his/your]" |
+| `poss-s` | Possessive 's | Add 's to the owner: "Anna's dog", "my brother's car". English puts the owner FIRST. | poss-adj | −3.0 | word_order: "dog / Anna's / is / big" ; cloze: "This is my sister___ room." |
+| `plural-reg` | Regular plurals | Add -s (or -es after s/sh/ch/x): one cat → two cats; one box → two boxes. | — | −3.2 | cloze: "three ___ (cat)" ; listen_pick: minimal audio "book/books" |
+| `plural-irreg` | Irregular plurals | Some nouns change instead: man→men, woman→women, child→children, person→people, foot→feet. | plural-reg | −2.9 | cloze: "two ___ (child)" ; choice_pick[translate] |
+| `numbers-1-100` | Numbers 1–100 | Cardinal numbers; the -teen vs -ty trap (thirteen/thirty). | — | −3.3 | listen_pick: "audio='thirty'; options=[13/30/33]" ; match_pairs: digits↔words |
+| `time-telling` | Telling the time | "It's three o'clock. It's half past two. It's 7:15." Always start with "It's". | numbers-1-100, be-all | −3.0 | choice_pick[translate] ; cloze: "___ five o'clock. (time)" |
 | `time-prep` | at / on / in (time) | at + clock time (at 5), on + days/dates (on Monday), in + months/years/parts of day (in May, in the morning). | time-telling | −2.9 | cloze: "See you ___ Monday." ; cloze: "The class starts ___ 9." |
-| `like-want-noun` | like / want + noun | "I like coffee. I want water." Verb + thing, no extra word. | sv-order | −3.2 | word-order: "I / tea / want" ; translate-pick |
-| `would-like` | I'd like (polite) | "I'd like a coffee, please" — the polite way to order or ask. | like-want-noun | −3.0 | cloze: "I'd ___ the soup, please." ; listen-pick |
+| `like-want-noun` | like / want + noun | "I like coffee. I want water." Verb + thing, no extra word. | sv-order | −3.2 | word_order: "I / tea / want" ; choice_pick[translate] |
+| `would-like` | I'd like (polite) | "I'd like a coffee, please" — the polite way to order or ask. | like-want-noun | −3.0 | cloze: "I'd ___ the soup, please." ; listen_pick |
 | `some-any` | some / any | "some" in positives ("I have some money"), "any" in negatives and questions ("Do you have any money?"). | plural-reg | −2.8 | cloze: "Do you have ___ questions?" ; cloze: "There is ___ milk in the fridge." |
-| `there-is-are` | there is / there are | To say something exists: "There is a bank. There are two cafes." Match is/are to the number. | be-all, plural-reg | −3.0 | cloze: "___ ___ a pharmacy near here?" ; picture-choice |
-| `prep-place` | Prepositions of place | in, on, under, next to, behind, in front of, between. | there-is-are | −3.0 | picture-choice ; cloze: "The keys are ___ the table." |
-| `art-the` | the (basic) | "the" = the one we both know: "the station", "the sun", second mention. No "the" for general plurals ("I like dogs"). | articles-a-an | −2.7 (late_acquired) | cloze: "Where is ___ bathroom?" ; translate-pick |
-| `pres-simple-base` | Present simple (I/you/we/they) | For habits and facts: "I work at home. They live in Lima." | sv-order, pron-subject | −3.1 | word-order: "we / in Madrid / live" ; cloze: "I ___ (work) every day." |
-| `adv-freq` | Adverbs of frequency | always, usually, often, sometimes, never — before the main verb, after be: "I always walk. She is never late." | pres-simple-base | −2.9 | word-order: "always / I / coffee / drink" ; cloze position pick |
-| `pres-simple-3sg` | 3rd person -s | With he/she/it, the verb takes -s: "She works. He watches." The most-forgotten letter in English. | pres-simple-base | −2.8 (late_acquired) | cloze: "He ___ (work) in a bank." ; listen-pick: "audio='she works'; options=[work/works]" |
-| `do-quest` | Questions with do/does | "Do you like tea? Does she work here?" — do/does starts the question; main verb stays bare. | pres-simple-base, pres-simple-3sg | −2.7 | word-order: "does / where / she / work / ?" ; cloze: "___ you speak English?" |
-| `do-neg` | Negatives with don't/doesn't | "I don't know. She doesn't eat meat." — don't/doesn't + bare verb. | do-quest | −2.7 | cloze: "He ___ like fish. (negative)" ; word-order |
-| `have-got` | have / has | Possession: "I have two brothers. She has a car." ("have got" recognized receptively.) | pres-simple-3sg | −2.8 | cloze: "She ___ a big family." ; translate-pick |
-| `obj-pron` | Object pronouns | me, you, him, her, it, us, them — after the verb: "Call me. I see her." | pron-subject | −2.8 | cloze: "I love ___. (she)" ; translate-pick |
-| `can-ability` | can / can't (ability) | "I can swim. He can't drive." — same form for everyone, verb stays bare. | pres-simple-base | −2.8 | cloze: "She ___ speak three languages." ; listen-pick: "audio='I can't come'; options=[can/can't]" |
-| `can-request` | can (requests & permission) | "Can I have the menu? Can you help me?" — the everyday polite ask. | can-ability | −2.7 | word-order: "can / the bill / I / have / ?" ; translate-pick |
-| `imperatives` | Imperatives | Tell someone what to do with the bare verb: "Turn left. Don't stop. Please wait." | sv-order | −2.9 | word-order: "left / turn / at the bank" ; picture-choice (direction arrows) |
+| `there-is-are` | there is / there are | To say something exists: "There is a bank. There are two cafes." Match is/are to the number. | be-all, plural-reg | −3.0 | cloze: "___ ___ a pharmacy near here?" ; choice_pick[image] |
+| `prep-place` | Prepositions of place | in, on, under, next to, behind, in front of, between. | there-is-are | −3.0 | choice_pick[image] ; cloze: "The keys are ___ the table." |
+| `art-the` | the (basic) | "the" = the one we both know: "the station", "the sun", second mention. No "the" for general plurals ("I like dogs"). | articles-a-an | −2.7 (late_acquired) | cloze: "Where is ___ bathroom?" ; choice_pick[translate] |
+| `pres-simple-base` | Present simple (I/you/we/they) | For habits and facts: "I work at home. They live in Lima." | sv-order, pron-subject | −3.1 | word_order: "we / in Madrid / live" ; cloze: "I ___ (work) every day." |
+| `adv-freq` | Adverbs of frequency | always, usually, often, sometimes, never — before the main verb, after be: "I always walk. She is never late." | pres-simple-base | −2.9 | word_order: "always / I / coffee / drink" ; cloze position pick |
+| `pres-simple-3sg` | 3rd person -s | With he/she/it, the verb takes -s: "She works. He watches." The most-forgotten letter in English. | pres-simple-base | −2.8 (late_acquired) | cloze: "He ___ (work) in a bank." ; listen_pick: "audio='she works'; options=[work/works]" |
+| `do-quest` | Questions with do/does | "Do you like tea? Does she work here?" — do/does starts the question; main verb stays bare. | pres-simple-base, pres-simple-3sg | −2.7 | word_order: "does / where / she / work / ?" ; cloze: "___ you speak English?" |
+| `do-neg` | Negatives with don't/doesn't | "I don't know. She doesn't eat meat." — don't/doesn't + bare verb. | do-quest | −2.7 | cloze: "He ___ like fish. (negative)" ; word_order |
+| `have-got` | have / has | Possession: "I have two brothers. She has a car." ("have got" recognized receptively.) | pres-simple-3sg | −2.8 | cloze: "She ___ a big family." ; choice_pick[translate] |
+| `obj-pron` | Object pronouns | me, you, him, her, it, us, them — after the verb: "Call me. I see her." | pron-subject | −2.8 | cloze: "I love ___. (she)" ; choice_pick[translate] |
+| `can-ability` | can / can't (ability) | "I can swim. He can't drive." — same form for everyone, verb stays bare. | pres-simple-base | −2.8 | cloze: "She ___ speak three languages." ; listen_pick: "audio='I can't come'; options=[can/can't]" |
+| `can-request` | can (requests & permission) | "Can I have the menu? Can you help me?" — the everyday polite ask. | can-ability | −2.7 | word_order: "can / the bill / I / have / ?" ; choice_pick[translate] |
+| `imperatives` | Imperatives | Tell someone what to do with the bare verb: "Turn left. Don't stop. Please wait." | sv-order | −2.9 | word_order: "left / turn / at the bank" ; choice_pick[image] (direction arrows) |
 | `how-much-many` | How much / How many | many + countables ("How many apples?"), much + uncountables ("How much water?"); prices: "How much is it?" | some-any, plural-reg | −2.6 | cloze: "How ___ does it cost?" ; cloze: "How ___ people are coming?" |
-| `pres-cont` | Present continuous | be + verb-ing for right now: "I am eating. They are working." | be-all, pres-simple-base | −2.6 | cloze: "Look! It ___ ___ (rain)." ; word-order |
-| `simple-vs-cont` | Simple vs continuous | Habit vs. right now: "I drink coffee every day" vs "I am drinking coffee (now)". | pres-cont, adv-freq | −2.4 | translate-pick pairs ; cloze with time marker: "She usually ___ tea, but today she ___ coffee." |
-| `dummy-it` | it for weather & time | English needs a subject even for weather/time: "It's raining. It's cold. It's late." | pres-cont, time-telling | −2.5 | word-order: "raining / it / is" ; translate-pick: "llueve → [It rains / It's raining / Is raining]" |
+| `pres-cont` | Present continuous | be + verb-ing for right now: "I am eating. They are working." | be-all, pres-simple-base | −2.6 | cloze: "Look! It ___ ___ (rain)." ; word_order |
+| `simple-vs-cont` | Simple vs continuous | Habit vs. right now: "I drink coffee every day" vs "I am drinking coffee (now)". | pres-cont, adv-freq | −2.4 | choice_pick[translate] pairs ; cloze with time marker: "She usually ___ tea, but today she ___ coffee." |
+| `dummy-it` | it for weather & time | English needs a subject even for weather/time: "It's raining. It's cold. It's late." | pres-cont, time-telling | −2.5 | word_order: "raining / it / is" ; choice_pick[translate]: "llueve → [It rains / It's raining / Is raining]" |
 | `past-be` | was / were | Past of be: I/he/she/it was; you/we/they were. "I was at home. They were happy." | be-all | −2.5 | cloze: "Where ___ you yesterday?" ; cloze: "The film ___ great." |
-| `past-reg` | Past simple: -ed | Add -ed for finished actions: "I worked. She visited her mother." Same form for all persons. | past-be, pres-simple-base | −2.4 | cloze: "We ___ (watch) a film last night." ; listen-pick: /t,d,ɪd/ ending audio |
-| `past-irreg-top25` | Irregular past (top 25) | The 25 most common verbs change form: go→went, have→had, see→saw, do→did, get→got, make→made… | past-reg | −2.2 | match: base↔past ; cloze: "She ___ (go) to Rome in May." |
-| `past-quest-neg` | did: questions & negatives | "Did you see it? I didn't go." — did carries the past; the main verb goes back to base form. | past-irreg-top25, do-quest | −2.1 | cloze: "___ you ___ (enjoy) the party?" ; word-order |
-| `going-to` | going to (plans) | be + going to + verb for plans: "I'm going to visit my aunt tomorrow." | pres-cont | −2.2 | cloze: "We ___ ___ ___ travel in June." ; translate-pick (es "ir a" maps directly) |
+| `past-reg` | Past simple: -ed | Add -ed for finished actions: "I worked. She visited her mother." Same form for all persons. | past-be, pres-simple-base | −2.4 | cloze: "We ___ (watch) a film last night." ; listen_pick: /t,d,ɪd/ ending audio |
+| `past-irreg-top25` | Irregular past (top 25) | The 25 most common verbs change form: go→went, have→had, see→saw, do→did, get→got, make→made… | past-reg | −2.2 | match_pairs: base↔past ; cloze: "She ___ (go) to Rome in May." |
+| `past-quest-neg` | did: questions & negatives | "Did you see it? I didn't go." — did carries the past; the main verb goes back to base form. | past-irreg-top25, do-quest | −2.1 | cloze: "___ you ___ (enjoy) the party?" ; word_order |
+| `going-to` | going to (plans) | be + going to + verb for plans: "I'm going to visit my aunt tomorrow." | pres-cont | −2.2 | cloze: "We ___ ___ ___ travel in June." ; choice_pick[translate] (es "ir a" maps directly) |
 | `comp-superl` | Comparatives & superlatives | Short adjectives: -er/-est (older, the oldest); long ones: more/most; irregulars: good→better→best, bad→worse→worst. Compare with "than". | plural-reg | −2.0 | cloze: "My city is ___ (big) than yours." ; cloze: "She is the ___ (good) player." |
-| `conn-basic` | and / but / because | Join ideas: "I like tea and coffee. It's small but nice. I'm tired because I worked." | pres-simple-base | −2.3 | cloze pick: "It was raining, ___ we stayed home." ; word-order |
+| `conn-basic` | and / but / because | Join ideas: "I like tea and coffee. It's small but nice. I'm tired because I worked." | pres-simple-base | −2.3 | cloze pick: "It was raining, ___ we stayed home." ; word_order |
 
-DAG sanity: every prereq is introduced in an earlier-or-same-`ord` unit (lint V-DAG-2). The
+DAG sanity: every prereq is introduced in an earlier-or-same-`ord` unit (node↔unit
+consistency lint, §7.1; DAG acyclicity is a course-pack §6.4 gate). The
 Launchpad units introduce no grammar nodes (phoneme contrasts are `phoneme` ItemRefs, not
 grammar nodes); `sv-order`/`pron-subject` fire in `en.a1.u01`.
 
@@ -531,14 +492,24 @@ grammar nodes); `sv-order`/`pron-subject` fire in `en.a1.u01`.
 
 Probes serve two consumers: **placement** (adaptivity §4 — fast forms only) and **unit bosses**.
 
-- Per grammar node, the builder materializes **2–4 probe items** from `probe_json` templates,
-  instantiated with vocabulary from the node's home-unit band (guarantees a placement probe
-  never fails on an unknown WORD when testing a STRUCTURE — lint V-PROBE-2: every content word
-  in a probe instance must have zipf ≥ 4.3, i.e. ~top-3k).
-- Probe items are rows in `item` with `probe=1`, `probe_node=<node_id>`, `b = node.b`.
-- Additionally each ARC gets 5 band-ladder probes at `b ∈ {−3, −1.5, 0, +1.5, +3}` for
-  placement Phase 1 (adaptivity §4.3) — chosen by the builder as the highest-frequency,
-  least ambiguous probe instances nearest each target `b`.
+- Per grammar node, the builder materializes **2–4 probe items** from the authored probe
+  templates (§3.2), instantiated with vocabulary from the node's home-unit band (guarantees
+  a placement probe never fails on an unknown WORD when testing a STRUCTURE — lint
+  V-PROBE-2: every content word in a probe instance must have zipf ≥ 4.3, i.e. ~top-3k).
+- Probe items are `items` rows with `is_probe=1`, `b = node.b`, joined to the node's skill
+  via `item_skills` (course-pack §2; probe coverage is a course-pack §6.4 gate).
+- **Band-ladder probes stay inside the shipped content (R10):** the placement Phase 1
+  ladder (adaptivity §4.3) spans only the `b` range actually present in the installed pack's
+  `items` — it **caps at the max item `b`**, never probing difficulty the course cannot
+  teach. For v0.1 (Launchpad + A1, item `b` ≈ −3.6 … −2.0) that means a short ladder
+  entirely within the A1 band; higher rungs are added only as later arcs ship. Rungs are
+  chosen by the builder as the highest-frequency, least ambiguous probe instances nearest
+  each target `b`.
+- **Above-content placement is an explicit outcome (R10):** placement Phase 2 terminates
+  early with outcome `above-content` when `θ̂ − max_b > margin`; the PlacementResult carries
+  honest copy ("this course currently covers A1; you're past it" — house no-absolutes rules
+  apply). The placement sim gate (P8) runs against the real `journey_en` pack graph, not
+  only the fixture, with personas scoped to shipped arcs.
 
 ---
 
@@ -591,9 +562,10 @@ Two design consequences, both load-bearing:
   44 complete languages.
 - **Grammar nodes**: minted here (§3).
 - **Phonemes**: minted per overlay (`phoneme:journey_en:<contrast_id>`).
-- Book segments (`segment:` kind) are NOT unit-assigned in v0.1 — readers arrive via
-  coverage-gated story/anchor cards, selected at runtime by measured coverage
-  (pedagogy §2), not authored into units.
+- Book segments (`segment:` kind) are NOT unit-assigned in v0.1 — with story content cut
+  (R11), no `segment:` items ship at all; earthgate/cap-segment-player anchor cards select
+  segments at runtime. Story returns as a §6.1 v0.2 workstream once the coverage
+  computation is real.
 
 ### 5.3 Phrase → unit assignment (`assign_items.py`)
 
@@ -613,12 +585,14 @@ for unit in units_by_ord (kind == 'teach'):
              − 0.5 * length_penalty(p)           # tokens > 12
     assign top-N by score, N = clamp(new_target * 3, 40, 120)  # teach pool ≈ 3× new_target
     pins.include are force-assigned; pins.exclude force-dropped (lint if conflict)
-unassigned phrases → review reservoir (unit_id NULL): usable by the mixer for
-encounter-injection and translate cards once their rarest word is FSRS-known.
+unassigned phrases → NOT compiled into the pack's `items` table (course-pack §2:
+`items.unit_id` is NOT NULL). They remain corpus phrases the content resolver can serve
+as distractor/encounter material at render time; promoting a reservoir into shipped
+`items` is a v0.2 minor bump.
 ```
 
 Notes:
-- `grammar_hit` regexes ship IN `nodes.yaml` per node (optional `match:` field) — cheap,
+- `grammar_hit` regexes ship IN `grammar.yaml` per node (optional `match:` field) — cheap,
   transparent, reviewable. No NLP dependency in v0.1.
 - Every phrase has exactly one teach home or none. Cross-unit reuse happens at runtime through
   FSRS review, not through duplicate assignment.
@@ -630,8 +604,8 @@ Notes:
   already pinned elsewhere, capped at `new_target`; overflow spills to the next unit in the
   same arc (lint warns when spill > 25%).
 - Words with zipf < 3.0 (1,917 words) and not-in-wordfreq (102) never band-assign in Arcs 0–2;
-  they remain reservoir items for B2+ authoring and etym-gem rolls.
-- Word items are introduced at **recognize** form first (picture-choice / listen-pick), per the
+  they remain reservoir items for B2+ authoring and etymology rare-card rolls.
+- Word items are introduced at **recognize** form first (choice_pick[image] / listen_pick), per the
   modality ladder; the form ratchet is the engine's job.
 
 ### 5.5 Static difficulty `b` seeding (adaptivity contract: logit scale, A1 ≈ −3 … C2 ≈ +4)
@@ -663,30 +637,49 @@ zipf ≥ 6.0 → −3.5 ;  5.0 → −3.0 ;  4.3 → −2.0 ;  3.7 → −0.5 ; 
 
 ### 5.6 Importance + intro order
 
-- `importance`: pins 1.5, band words and grammar nodes 1.0, pool-extra phrases 0.7 —
-  consumed by the mixer's new-item sampler.
-- `intro_ord` within a unit: grammar-node probe seeds first, then pinned phrases, then band
-  words interleaved with scored phrases (so lesson 1 of a unit always has teachable material).
+- `importance` uses course-pack §2's integer scale (0–3; one scale, engine-weight mapping
+  owned by course-pack/engine): pins → 3 (core), band words and grammar nodes → 2
+  (standard), pool-extra phrases → 1 (enrichment), rare-card-only payloads → 0.
+- Ordering within a unit: grammar-node probe seeds first, then pinned phrases, then band
+  words interleaved with scored phrases (so lesson 1 of a unit always has teachable
+  material). The builder folds this per-unit order into the global `intro_order` sequence
+  (course-pack §6.2 step 4).
 
 ### 5.7 Gap list → new dja phrase packs (D10.3)
 
 Census-verified gaps in the corpus for the A1 outline (queries in §7.2): nationality
 formulas (4 matches), telling-time (26), transactional shopping (25 "How much"-family),
 home/furniture (3 furniture matches). Greetings are NOT a gap (97 A0/A1 base entries).
-Four small packs, built with the existing `tools/phrase-packs` pipeline (facet model per
-`facets.py`, codex authoring, 54-language fan-out, `channel: "preview"`):
+
+**v0.1 build-order prerequisites (R13, named workstream):** exactly TWO gap packs are on
+the v0.1 critical path and are **sequenced BEFORE the journey pack build** — their
+consuming units cannot pass the pool-floor gate without them. Built with the existing
+`tools/phrase-packs` pipeline (facet model per `facets.py`, codex authoring, 54-language
+fan-out, `channel: "preview"`):
 
 | pack id | target size | level mix (A0/A1/A2/B1) | facets (WIDE-style, 3–4 each) | consuming units |
 |---|---|---|---|---|
 | `phrase-people-nationalities` | 120 | 20/60/30/10 | countries & "I'm from…"; nationality adjectives; languages spoken; "Where are you from?" dialog turns | u02 |
 | `phrase-life-time-and-dates` | 160 | 30/70/40/20 | clock time; days & parts of day; dates, months, birthdays; schedules & "What time…?" | u04, u05 |
-| `phrase-life-shopping-basics` | 200 | 30/80/60/30 | prices & paying; sizes, colors, trying on; at the market; returns & problems (A2 tail) | u12, u17 |
-| `phrase-life-home-and-furniture` | 160 | 30/70/40/20 | rooms; furniture & objects; describing your home; household routines | u24 |
 
-Authoring constraints for all four: every A0/A1 phrase's content words must sit within the
-consuming unit's rank band (+20% slack) — this is lint rule V-GAP-1 run against the pack's
-`phrases.json` before translation fan-out (cheaper to fix pre-translation). These packs are
-ordinary phrase packs (also usable standalone); Journey references them by pack id in `pools`.
+**Deferred to v0.2 (R13, with census evidence):** `phrase-life-shopping-basics` and
+`phrase-life-home-and-furniture` are cut from the v0.1 critical path; their consuming units
+re-pool to the base corpus where the census supports it:
+- **u17 (Shopping & money)** re-pools to base "How much"-family (25 entries) +
+  base:everyday A0/A1 money/price selectors — thin but combinable; the build report's
+  per-unit pool floor (§7.2.4) is the arbiter, and if it fails the unit's deep shopping
+  facets defer with the pack.
+- **u12 (Colors & clothes)** re-pools to base:everyday A0/A1 (2,114 entries) with
+  color/clothing `text_any` selectors — colors are core-band vocabulary, well covered.
+- **u24 (House & home)** re-pools to **base:housing (174 A0/A1 entries — comfortably above
+  the 40-candidate floor)**; only furniture-SPECIFIC terms (census: 3 matches) wait for the
+  v0.2 pack.
+
+Authoring constraints for all gap packs: every A0/A1 phrase's content words must sit within
+the consuming unit's rank band (+20% slack) — this is lint rule V-GAP-1 run against the
+pack's `phrases.json` before translation fan-out (cheaper to fix pre-translation). These
+packs are ordinary phrase packs (also usable standalone); Journey references them by pack id
+in `pools`.
 
 ---
 
@@ -700,45 +693,53 @@ ranks 1–1,000 at ~40 ranks/unit (new_target ≈ 24–40 items incl. words). Un
 v0.1 units are leaner than the spine's 12–18-lesson envelope (recipe_mix of 6–10) — first-pass
 scope control; envelope grows in v0.2 without schema change.
 
-Column key — **G**: grammar `introduce` (ids `en.g.*`); **Pools**: `base:<domains>` at A0/A1
-unless noted, `+pack` = phrase pack; **R**: recipe_mix summary; **A**: anchor provider.
+Column key — **G**: grammar `introduce` (ids `en.gn.*`); **Pools**: `base:<domains>` at A0/A1
+unless noted, `+pack` = phrase pack; **R**: recipe_mix summary; **A**: anchor provider —
+**v0.1 anchors are restricted (R13) to `lingo_hero`, `earthgate` (or `cap-segment-player`),
+`corpan_city`, `cap-pronounce`, `cap-squeeze`, or a native renderer**; `†v0.2 swap` marks a
+unit whose intended anchor (beatlounge / hover_runner / tutomaton / stargate) is not
+instrumented in v1 — pack data upgrades the anchor independently of the app.
 
 | # | id | Title / theme | G | Ranks | Pools | R | A |
 |---|---|---|---|---|---|---|---|
-| 0 | `en.pre.u01` | The sounds of English (phonology; Latin-script L1s compress to 1 lesson) | — (phoneme items via overlay) | — | minimal-pair seeds tagged in base A0 | phonology ×3, core | native listen-pick (HVPT) |
-| 1 | `en.pre.u02` | Survival kit (hello/thanks/yes/no, numbers 1–10, "I don't understand", "more slowly please"; embedded placement probes) | — | 1–30 | base:everyday A0 survival block (ids 27293+) | core ×2, review, boss | juice_squeeze |
-| 2 | `en.a1.u01` | **Hello!** (worked example §1.3) | sv-order, pron-subject, be-1sg-2sg | 1–60 | base:everyday,social greeting selector (97 entries) | core×3, phonology, dialog, review, boss | juice_squeeze |
+| 0 | `en.a0.u01` | The sounds of English (phonology; Latin-script L1s compress to 1 lesson) | — (phoneme items via overlay) | — | minimal-pair seeds tagged in base A0 | phonology ×3, core | cap-pronounce (HVPT perception + echo) |
+| 1 | `en.a0.u02` | Survival kit (hello/thanks/yes/no, numbers 1–10, "I don't understand", "more slowly please"; embedded placement probes) | — | 1–30 | base:everyday A0 survival block (ids 27293+) | core ×2, review, boss | cap-squeeze |
+| 2 | `en.a1.u01` | **Hello!** (worked example §1.3) | sv-order, pron-subject, be-1sg-2sg | 1–60 | base:everyday,social greeting selector (97 entries) | core×3, phonology, dialog, review, boss | cap-squeeze |
 | 3 | `en.a1.u02` | Who are you? (countries & nationalities) | be-all, be-neg, be-yesno-q, wh-quest-be, articles-a-an | 60–100 | +`phrase-people-nationalities`; base:social | core×3, grammar-focus, dialog, boss | lingo_hero |
-| 4 | `en.a1.u03` | My people (family) | poss-adj, poss-s, dem-sg | 100–140 | +`phrase-life-family-and-friends` (A0/A1: 128 entries); base:social | core×3, grammar-focus, story, boss | native picture-choice |
-| 5 | `en.a1.u04` | Numbers | numbers-1-100, plural-reg | 140–175 | base:numbers (A0+A1: 168) | core×2, grammar-focus, review, boss | beatlounge |
-| 6 | `en.a1.u05` | Time & dates | time-telling, time-prep | 175–210 | +`phrase-life-time-and-dates`; base:numbers,everyday | core×3, dialog, boss | beatlounge |
-| 7 | `en.a1.u06` | Food & drink | like-want-noun, some-any | 210–250 | +`phrase-life-cooking-basics` (A0/A1: 128); base:everyday | core×3, phonology, boss | juice_squeeze |
+| 4 | `en.a1.u03` | My people (family) | poss-adj, poss-s, dem-sg | 100–140 | +`phrase-life-family-and-friends` (A0/A1: 128 entries); base:social | core×3, grammar-focus, dialog, boss | native choice_pick[image] |
+| 5 | `en.a1.u04` | Numbers | numbers-1-100, plural-reg | 140–175 | base:numbers (A0+A1: 168) | core×2, grammar-focus, review, boss | lingo_hero †v0.2 swap: beatlounge |
+| 6 | `en.a1.u05` | Time & dates | time-telling, time-prep | 175–210 | +`phrase-life-time-and-dates`; base:numbers,everyday | core×3, dialog, boss | cap-squeeze †v0.2 swap: beatlounge |
+| 7 | `en.a1.u06` | Food & drink | like-want-noun, some-any | 210–250 | +`phrase-life-cooking-basics` (A0/A1: 128); base:everyday | core×3, phonology, boss | cap-squeeze |
 | 8 | `en.a1.u07` | Eating out | would-like | 250–285 | +`phrase-travel-essentials` (A0/A1: 80); base:travel | core×2, dialog×2, boss | corpan_city |
 | 9 | `en.a1.u08` | My town | there-is-are, prep-place, art-the | 285–330 | +`phrase-places-geography-world` (A0/A1: 128); base:housing,travel | core×3, grammar-focus, boss | corpan_city |
-| 10 | `en.a1.u09` | Every day (routines) | pres-simple-base, adv-freq | 330–380 | base:everyday A1 | core×3, grammar-focus, story, boss | hover_runner |
+| 10 | `en.a1.u09` | Every day (routines) | pres-simple-base, adv-freq | 330–380 | base:everyday A1 | core×3, grammar-focus, dialog, boss | lingo_hero †v0.2 swap: hover_runner |
 | 11 | `en.a1.u10` | She works (jobs) | pres-simple-3sg, do-quest, do-neg | 380–425 | +`phrase-work-office-basics` (A0/A1: 80); base:business | core×3, grammar-focus×2, boss | lingo_hero |
-| 12 | `en.a1.u11` | My stuff (possessions) | have-got, plural-irreg, dem-pl* | 425–465 | +`phrase-tech-computers-basics` objects subset; base:everyday | core×3, review, boss | native picture-choice |
-| 13 | `en.a1.u12` | Colors & clothes | (review: poss-adj, dem-sg) | 465–500 | +`phrase-life-shopping-basics` (clothes facet); base:everyday | core×3, phonology, boss | native match |
+| 12 | `en.a1.u11` | My stuff (possessions) | have-got, plural-irreg, dem-pl* | 425–465 | +`phrase-tech-computers-basics` objects subset; base:everyday | core×3, review, boss | native choice_pick[image] |
+| 13 | `en.a1.u12` | Colors & clothes | (review: poss-adj, dem-sg) | 465–500 | base:everyday color/clothing selectors (re-pooled per §5.7; v0.2: +`phrase-life-shopping-basics` clothes facet) | core×3, phonology, boss | native match_pairs |
 | 14 | `en.a1.u13` | Can you? — **Mini-gate** | can-ability, can-request | 500–535 | base:everyday,social | core×2, grammar-focus, **boss+ = cumulative gauntlet u01–u13** | boss-only |
-| 15 | `en.a1.u14` | Right now | pres-cont, simple-vs-cont | 535–575 | base:everyday; +`phrase-life-the-night` scene subset (A0/A1: 80) | core×3, grammar-focus, story, boss | stargate reader (scene descriptions) |
-| 16 | `en.a1.u15` | Weather & seasons | dummy-it | 575–610 | base:environment (A0/A1: 125); +`phrase-nature-birds-everyday` sky subset | core×2, dialog, review, boss | native picture-choice |
+| 15 | `en.a1.u14` | Right now | pres-cont, simple-vs-cont | 535–575 | base:everyday; +`phrase-life-the-night` scene subset (A0/A1: 80) | core×3, grammar-focus, dialog, boss | earthgate / cap-segment-player (scene descriptions) †v0.2 swap: stargate |
+| 16 | `en.a1.u15` | Weather & seasons | dummy-it | 575–610 | base:environment (A0/A1: 125); +`phrase-nature-birds-everyday` sky subset | core×2, dialog, review, boss | native choice_pick[image] |
 | 17 | `en.a1.u16` | Getting around | imperatives | 610–650 | +`phrase-travel-essentials`; +`phrase-vehicles-cars-and-driving` (A0/A1: 80); base:travel | core×3, dialog, boss | corpan_city |
-| 18 | `en.a1.u17` | Shopping & money | how-much-many | 650–690 | +`phrase-life-shopping-basics`; base:everyday | core×2, dialog×2 (shop role-play), boss | dialog boss w/ tutomaton-scripted fallback |
-| 19 | `en.a1.u18` | People & descriptions | obj-pron | 690–725 | base:social A1 | core×3, grammar-focus, boss | native cued-recall |
-| 20 | `en.a1.u19` | Free time & hobbies | (review: like-want-noun, adv-freq; like+-ing receptive) | 725–765 | +`phrase-sports-soccer-basics` (A0/A1: 79); +`phrase-arts-music-fundamentals` (A0/A1: 128) | core×3, story, boss | lingo_hero |
-| 21 | `en.a1.u20` | Yesterday | past-be, past-reg | 765–810 | +`phrase-life-festivals-world` events (A0/A1: 127); base:everyday | core×3, grammar-focus×2, boss | native listen-type |
-| 22 | `en.a1.u21` | Went, saw, did | past-irreg-top25, past-quest-neg | 810–855 | base:everyday,social; graded narration micro-stories (runtime, coverage-gated) | core×3, grammar-focus, story×2, boss | earthgate reader |
-| 23 | `en.a1.u22` | Plans & invitations | going-to | 855–895 | +`phrase-life-family-and-friends`; base:social | core×3, dialog×2, boss | tutomaton (scripted chat)* fallback native dialog |
-| 24 | `en.a1.u23` | Feeling good, feeling bad | (lexical: feel/hurt, should-advice receptive) | 895–930 | +`phrase-life-health-and-body` (A0/A1: 128); base:health (A0/A1: 243) | core×3, phonology, boss | native speak-after-me focus |
-| 25 | `en.a1.u24` | House & home | (review: there-is-are, prep-place; whose/mine receptive) | 930–965 | +`phrase-life-home-and-furniture`; base:housing (A0/A1: 174) | core×3, review, boss | native picture-choice |
+| 18 | `en.a1.u17` | Shopping & money | how-much-many | 650–690 | base "How much"-family (25) + everyday money/price selectors (re-pooled per §5.7; v0.2: +`phrase-life-shopping-basics`) | core×2, dialog×2 (shop role-play), boss | corpan_city (shop role-play) †v0.2 swap: tutomaton |
+| 19 | `en.a1.u18` | People & descriptions | obj-pron | 690–725 | base:social A1 | core×3, grammar-focus, boss | native flip_recall |
+| 20 | `en.a1.u19` | Free time & hobbies | (review: like-want-noun, adv-freq; like+-ing receptive) | 725–765 | +`phrase-sports-soccer-basics` (A0/A1: 79); +`phrase-arts-music-fundamentals` (A0/A1: 128) | core×3, dialog, boss | lingo_hero |
+| 21 | `en.a1.u20` | Yesterday | past-be, past-reg | 765–810 | +`phrase-life-festivals-world` events (A0/A1: 127); base:everyday | core×3, grammar-focus×2, boss | native listen_type |
+| 22 | `en.a1.u21` | Went, saw, did | past-irreg-top25, past-quest-neg | 810–855 | base:everyday,social | core×3, grammar-focus, dialog×2, boss | earthgate reader |
+| 23 | `en.a1.u22` | Plans & invitations | going-to | 855–895 | +`phrase-life-family-and-friends`; base:social | core×3, dialog×2, boss | corpan_city (invitation role-play) †v0.2 swap: tutomaton scripted chat |
+| 24 | `en.a1.u23` | Feeling good, feeling bad | (lexical: feel/hurt, should-advice receptive) | 895–930 | +`phrase-life-health-and-body` (A0/A1: 128); base:health (A0/A1: 243) | core×3, phonology, boss | cap-pronounce (speak_echo focus) |
+| 25 | `en.a1.u24` | House & home | (review: there-is-are, prep-place; whose/mine receptive) | 930–965 | base:housing (A0/A1: 174; re-pooled per §5.7; v0.2: +`phrase-life-home-and-furniture`) | core×3, review, boss | native choice_pick[image] |
 | 26 | `en.a1.u25` | Better, best | comp-superl | 965–1000 | +`phrase-sports-soccer-basics` comparison-rich; base:social | core×3, grammar-focus, boss | lingo_hero |
-| 27 | `en.a1.u26` | The story so far (consolidation, `kind: consolidate`) | conn-basic; review: all weak nodes | — | pure FSRS harvest + reservoir | review×4, story, gem | native |
-| 28 | `en.a1.u27` | My story (integrative production) | (review: conn-basic + past + present) | — | learner-relevant reservoir sample | core, dialog, produce-heavy core×2, boss (3-sentence spoken+written self-narrative) | tutomaton* fallback speak-after-me |
+| 27 | `en.a1.u26` | The story so far (consolidation, `kind: consolidate`) | conn-basic; review: all weak nodes | — | pure FSRS harvest + reservoir | review×4, dialog | native |
+| 28 | `en.a1.u27` | My story (integrative production) | (review: conn-basic + past + present) | — | learner-relevant reservoir sample | core, dialog, produce-heavy core×2, boss (3-sentence spoken+written self-narrative) | cap-pronounce (spoken self-narrative) †v0.2 swap: tutomaton |
 | 29 | `en.a1.u28` | **Arc gate: A1 exam** (`kind: gate`) | — | — | probe items across all 43 nodes + can-do checklist | gate recipe (adaptive, placement-grade) | native probes + speak rubric |
 
 *dem-pl (these/those) rides as a minor extension of `dem-sg` inside u11 — not a separate node.
-*tutomaton anchors are scripted-mode only in v0.1 (tutomaton grading is out of scope, D11);
-fallback is mandatory.
+†v0.2 swaps (R13): beatlounge (u04, u05), hover_runner (u09), stargate (u14), and tutomaton
+(u17, u22, u27) are the units' intended anchors once those providers are instrumented; v0.1
+ships them anchored to the allowed set above so every fluency centerpiece actually fires.
+Swapping an anchor is a pack-data minor bump — no app change. Story lessons that the draft
+outline scheduled in u03/u09/u14/u19/u21/u26 are re-pooled to listen-heavy input (`dialog` /
+listen-weighted `core`) per R11.
 
 Pool-size numbers cited (e.g. "A0/A1: 128" for family-and-friends) are the real per-pack
 A0+A1 counts from the 2026-07-03 census (§7.2 table): DEEP packs have 128 A0+A1 entries,
@@ -746,38 +747,71 @@ WIDE packs 80, professional packs 8–15. Every teach unit above clears the V-PO
 (≥ 40 teach candidates) except via combination with base-corpus pools — the per-unit
 resolved counts are emitted by the build report (§7.2.3).
 
+### 6.1 v0.2 workstreams (named, NOT v0.1 — do not start before v0.1 ships)
+
+- **Story content (R11 follow-up):** a graded A1 micro-story narration pack, plus
+  per-segment known-token lists computed at build/install time (Intl.Segmenter +
+  irregular-form map onto `word:` items) so the 95% coverage gate is *measurable* before it
+  gates anything. Only then do the `story` lesson recipe and `story` rare-card rows return
+  to units (u03/u09/u14/u19/u21/u26 are the natural first consumers). Schema support ships
+  now (course-pack §2 `lesson_recipes`/`rare_cards`); content does not.
+- **Anchor swaps (R13):** beatlounge (u04/u05), hover_runner (u09), stargate (u14),
+  tutomaton scripted-mode (u17/u22/u27) — swap in via pack-data minor bump once each
+  provider is instrumented (activity-contract seam).
+- **Deferred gap packs (R13):** `phrase-life-shopping-basics`, `phrase-life-home-and-furniture`
+  (§5.7 census evidence; u12/u17/u24 re-pool in v0.1).
+
 ---
 
 ## 7. Validation & calibration
 
-### 7.1 Authoring lint (`lint_journey_pack.py` — ERROR blocks build; WARN prints)
+### 7.1 Content-side lint (merged into course-pack.md §6.4)
 
-Structural:
-- **V-ID-1** (E): unit/node ids match `^en\.(pre|a[12]|b[12]|c[12])\.u\d{2}$` / `^en\.g\.[a-z0-9-]+$`; unique; never removed vs previous shipped version (tombstone only).
-- **V-ORD-1** (E): `ord` unique, monotone with filename `NNN`, arcs non-interleaved.
-- **V-DAG-1** (E): grammar DAG acyclic.
-- **V-DAG-2** (E): every prereq of a node introduced in a unit with `ord` ≤ the node's home unit `ord`.
-- **V-NODE-1** (E): every `grammar.introduce`/`review` id exists in `nodes.yaml`.
-- **V-NODE-2** (E): every non-stub node is introduced by exactly one unit. (W): stub nodes referenced by units.
-- **V-BAND-1** (E): teach-unit rank bands contiguous, non-overlapping, monotone in `ord` within an arc.
-- **V-RECIPE-1** (E): every recipe name resolves; teach unit recipe_mix length 6–14 and contains ≥1 `boss`.
-- **V-BOSS-1** (E): boss `must_include` ⊇ {speak-after-me, listen-pick}; `pass_score` ∈ [0.7, 0.9].
-- **V-ANCHOR-1** (E): anchor provider ∈ known-provider registry; `fallback.provider == native`.
-- **V-L1-1** (E): every `auto` l1 slot resolvable for every SHIPPED overlay language (v0.1: es); pinned overlay keys exist.
+**There is ONE validation-gate list, and it lives in course-pack.md §6.4 (R1)** —
+implemented in `validate_journey_pack.py`, runnable against the authored tree (fast, at
+lint time) or the built sqlite (authoritative, at publish). The rules below are the
+*content-side* members of that merged list, kept here with their authoring rationale; the
+normative numbering (V-1..V-n) and the structural gates that were once duplicated here —
+id hygiene, ItemRef resolution, DAG acyclicity, band monotonicity, strings completeness,
+probe coverage, checkpoint/lesson integrity, difficulty sanity, immutability diff, meta
+coherence — are course-pack.md's. Mnemonic names below are authoring-side handles only.
 
-Content:
-- **V-POOL-1** (E): every teach unit's resolved pool ≥ max(40, 2×new_target) phrase candidates; (W) < 3×new_target.
-- **V-POOL-2** (E): pinned includes exist in their source and are not excluded elsewhere.
-- **V-PROBE-1** (E): every authored node yields ≥2 valid probe instances; probe forms are fast forms only.
-- **V-PROBE-2** (E): probe-instance content words all zipf ≥ 4.3.
-- **V-GAP-1** (E): gap-pack A0/A1 phrases' content words within consuming unit band × 1.2.
-- **V-CANDO-1** (E): every teach unit has ≥1 can-do; (E) can-do `text` contains no 8+-word verbatim substring of the CEFR CV descriptor corpus (checked against a local, non-shipped reference file); paraphrase-only invariant.
-- **V-COPY-1** (E): banned-absolutes list ("forever", "never", "100%", "entirely", "always", "guaranteed") in any user-facing string; (E) "flag/flagging" in any user-facing string.
-- **V-WORD-1** (W): band-fill spill > 25% of a unit's word budget.
-- **V-B-1** (E): all `b` ∈ [−4, +4]; arc-mean `b` monotone increasing across arcs.
+- **pool floor / V-POOL-1** (E): every teach unit's resolved pool ≥ max(40, 2×new_target) phrase
+  candidates; (W) < 3×new_target. Rationale: a unit that cannot fill its recipes from real
+  corpus is authored on hope. (This is the gate that arbitrates the §5.7 re-pools.)
+- **pin integrity / V-POOL-2** (E): pinned includes exist in their source and are not excluded elsewhere.
+- **probe validity / V-PROBE-1** (E): every authored node yields ≥2 valid probe instances; probe forms
+  are fast forms only (no speaking — adaptivity §4.2).
+- **probe vocabulary / V-PROBE-2** (E): probe-instance content words all zipf ≥ 4.3 — never test a
+  structure through an unknown word.
+- **gap-pack band fit / V-GAP-1** (E): gap-pack A0/A1 phrases' content words within consuming unit
+  band × 1.2, run against `phrases.json` BEFORE translation fan-out (cheaper pre-translation).
+- **can-do paraphrase** (E): every teach unit has ≥1 can-do; can-do `text` contains no
+  8+-word verbatim substring of the CEFR CV descriptor corpus (checked against a local,
+  non-shipped reference file); paraphrase-only licensing invariant.
+- **copy bans** (E): banned-absolutes list ("forever", "never", "100%", "entirely",
+  "always", "guaranteed") in any learner-facing string; (E) "flag/flagging" in any
+  learner-facing string. Applies to pack `strings` content.
+- **band-fill spill** (W): spill > 25% of a unit's word budget.
+- **boss make-up / V-BOSS-1** (E): boss `must_include` ⊇ {speak_echo, listen_pick}; `pass_score`
+  ∈ [0.7, 0.9]. Types validate against the vendored `ACTIVITY_TYPES` constant (R4).
+- **anchor providers / V-ANCHOR-1** (E): anchor provider ∈ the R13 v0.1 allowed set (`lingo_hero`,
+  `earthgate`/`cap-segment-player`, `corpan_city`, `cap-pronounce`, `cap-squeeze`) or
+  `native`; `fallback.provider == native` always present.
+- **recipe/type registry** (E): every recipe `types:` entry ∈ `ACTIVITY_TYPES` (R4; CI
+  drift check like `sync-contract.mjs`); teach unit recipe_mix length 6–14, ≥1 `boss`;
+  no `story` recipe scheduled in v0.1 (R11).
+- **overlay resolution** (E): every `auto` l1 slot resolvable for every SHIPPED overlay
+  language (v0.1: es); pinned overlay keys exist.
+- **node↔unit consistency** (E): every `grammar.introduce`/`review` id exists in
+  `grammar.yaml`; every non-stub node introduced by exactly one unit; every prereq
+  introduced at `ord` ≤ the node's home unit `ord` (the unit-order face of the DAG gate).
 
-i18n:
-- **V-I18N-1** (E, at app integration): every minted `journey.*` key present in all 54 locales (`npm run check:i18n` is the existing build gate; unit titles/briefs/can-dos/overlay bodies all mint keys).
+i18n note (V-I18N-1 **deleted**, R1): authoring mints **no app-locale keys**. All course
+copy — unit themes/titles, can-dos, grammar-node briefs, overlay bodies — ships in the pack
+`strings` table (course-pack §2) and is gated by course-pack's strings-completeness gate
+(×54 for spine copy; `(l1, en)` only for overlay keys). `npm run check:i18n` governs only
+the app's own exercise-chrome strings, which are feed-ux's, not this spec's.
 
 ### 7.2 Corpus census & per-unit coverage checks
 
@@ -836,7 +870,7 @@ Per adaptivity §"static difficulty calibration": author-assigned `b` is noisy b
   synthetic learners (θ swept −4…0) over the built pack; `calibration_report.py` bins items by
   `b` (width 0.5) and reports simulated P(correct) vs `σ(θ−b)` — catches gross mis-seeding
   (e.g. a "−3" unit whose items behave like −1.5) before anything ships.
-- **On-device (post-ship)**: the engine already logs `(item_key, b, θ_at_review, outcome)` in
+- **On-device (post-ship)**: the engine already logs `(items.id, b, θ_at_review, outcome)` in
   the review-log ring buffer (D5). A local-only diagnostics screen (devMode) computes per-unit
   mean logit residual `logit(observed) − (θ−b)` and per-item residual for items with ≥30
   observations. **Nothing leaves the device** (philosophy: on-device analytics).
@@ -931,29 +965,49 @@ whose FSRS phoneme item is unmastered.
 
 ## 9. Build, publish, versioning
 
-1. `python lint_journey_pack.py courses/en` — must pass.
-2. `python assign_items.py courses/en` — regenerates `assignments.generated.json`; diff reviewed.
-3. `python build_journey_pack.py courses/en --version 0.1.0` — emits
-   `build/journey_en-0.1.0.zip` (`manifest.json` with `entryType: "data"`,
-   `databases: {"main": "data/course.sqlite3"}`, underscore id `journey_en`) +
-   `build/coverage_report.md`.
-4. `python publish_journey_pack.py build/journey_en-0.1.0.zip --channel preview` — uploads
-   immutable zip to `s3://corpan-prod/artifacts/corpan/journey-packs/`, accumulate-merges
-   `index.json` (never clobbers other courses), `max-age=300`.
-5. App-side `journeyPackCatalog.ts` (cloned from `wordPackCatalog.ts`) resolves by
-   `kind: "journey-course"` + `targetLang`; install via `content_packs_install_from_url`
-   with explicit `packId` (wordpan id-derivation lesson).
-6. Versioning: content fixes bump patch; item/unit ADDITIONS bump minor; any id removal or
-   `item_key` change is forbidden without a major bump + engine migration note. Changelog:
-   `dja/journey_pack/CHANGELOG.md` (Keep-a-Changelog; entry per shippable change).
+Pack format, manifest, publish flow, index/S3 layout, app-side catalog, and the versioning
+policy are **course-pack.md §3, §4, §7, §8 (normative)**. The authoring-side sequence:
+
+0. **Build-order prerequisite (R13):** the `phrase-people-nationalities` and
+   `phrase-life-time-and-dates` gap packs are built + fanned out FIRST (§5.7) — u02/u04/u05
+   cannot pass the pool floor without them.
+1. `python3 validate_journey_pack.py en --tree` — authored-tree mode of the single gate
+   binary (course-pack §6.4 merged list); must pass.
+2. `python3 assign_items.py courses/en` — regenerates `assignments.generated.json`; diff reviewed.
+3. `python3 build_journey_pack.py en --version 0.1.0` — compiles to course-pack §2 DDL and
+   emits `dist/journey_en-0.1.0.zip` (underscore zip name, installer rule — R1) +
+   `build/coverage_report.md`, then re-runs the validator against the built sqlite.
+4. `python3 publish_journey_pack.py en --channel preview` — course-pack §4.3 flow
+   (immutability check, accumulate-merge `index.json`, `max-age=300`).
+5. Versioning per course-pack §8: copy/`b` tuning bumps patch; item/unit ADDITIONS bump
+   minor; any `items.id` removal/rename is forbidden without a major bump + engine
+   migration note. Changelog: `dja/journey_pack/courses/en/CHANGELOG.md`
+   (Keep-a-Changelog; entry per shippable change).
 
 ---
 
 ## 10. Explicit non-goals of this spec (v0.1)
 
 - Grammar nodes beyond A1 (stubs only), journey-es/zh content, imagepan integration
-  (picture-choice consumes it when it exists; `picture-choice` items degrade to `match` until
-  then), story-chapter authoring (runtime coverage gating handles readers), tutomaton
+  (`choice_pick` with image params consumes it when it exists; image variants degrade to
+  `match_pairs` until then), story content of any kind (CUT per R11 — see the §6.1 v0.2
+  workstream for the graded micro-story pack + coverage computation), tutomaton
   free-grading, CEFR relabeling (D10.4 — `anchor(level)` absorbs it later), lemma linkage,
   official CEFR descriptor ids (licensing parked), and the D(L1,L2) multiplier matrix
   (es→en is Cat-I baseline ×1.0).
+
+---
+
+## Tracked risks (panel round 1)
+
+Pedagogy-fidelity lens risks relevant to this spec, preserved verbatim per R16. Non-blocking;
+they inform build-time tests. Where a CTO ruling already addresses one (noted in brackets),
+the risk stays pinned until the corresponding test exists.
+
+- Anchor-provider coverage: the 30-unit outline assigns anchors to juice_squeeze (u01/u02/u06), beatlounge (u04/u05), hover_runner (u09), stargate (u14), tutomaton (u22/u27) — none instrumented in v1 (D11 instruments only lingo_hero, earthgate, corpan_city). ~60% of units' fluency centerpieces silently degrade to native `match`, weakening the fluency strand and the rare-card economy the outline implies. V-ANCHOR-1's 'known-provider registry' is undefined. *(addressed by R13 — §6 re-anchoring; pinned until the anchor-registry gate runs against the built pack)*
+- Items outside the course graph: earthgate reports segment items as exposure-'pass'; engine getOrCreateCard for refs absent from graph.items (no b, no skills, no importance) is unspecced, and exposure-graded segments entering the DUE pool create re-read review demand the feed can't sensibly serve. Define: segment/anchor-only refs get logged but never carded, or carded with a no-review flag. *(engine-side contract; authoring keeps `segment:` refs out of unit item assignment — §5.2)*
+- lingo-hero evidence granularity: waves quiz individual words but grades land on the whole phrase item; a phrase passes/fails on one word's catch. Capped at Good so damage is bounded, but expect noisy phrase-item scheduling; consider grading only when the wave's word is the phrase's rarest content word. *(informs anchor item authoring for lingo_hero-anchored units)*
+- Corpus census minor drift: on-disk today = 33 phrase packs / 15,269 entries / 2,413 A0+A1 vs spec's '34 packs, 15,774, 2,493' — exactly one WIDE pack (~505 entries) missing. Also the four gap packs (nationalities, time-and-dates, shopping, home) are on the u02–u24 critical path but appear in no build-order/D11 workstream; each needs 54-language fan-out before its consuming unit can pass V-POOL-1. *(addressed by R13 — §5.7/§9 build-order prerequisites; census re-run at build embeds the truth in `pack_meta`)*
+- Post-placement dead end for intermediates: with only A1 shipped, a correctly-placed A2+ learner lands past all content with just a TRICKLE backlog of 'known' items; no spec defines that surface state (course-complete? review-only mode?). Pairs with the placement-ceiling blocker. *(pairs with R10 — §4 `above-content` outcome; the post-placement surface state is feed-ux's to spec)*
+- Translation volume on the critical path: course-pack V-4 requires ~380 pack string keys ×54 langs (incl. 80 grammar notes at ~350 chars) AND feed-ux adds ~110 app i18n keys ×54 under the hard check:i18n gate. House-proven workflow, but it is multiple agent-days of fan-out that no build-order slice owns. *(course-pack strings gate scope; a build-order slice must own the fan-out)*
+- Sim ship-gates (P4 time-to-arc, P8 placement) initially run only on the synthetic fixture; require a gate run against the built journey_en CourseGraph before publish, or the gates validate a course that isn't the one shipping. *(addressed by R10 — §4: P8 runs against the real `journey_en` graph)*
