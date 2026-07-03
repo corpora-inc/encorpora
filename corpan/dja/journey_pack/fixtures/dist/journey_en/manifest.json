@@ -1,0 +1,27 @@
+{
+  "id": "journey_en",
+  "name": "Journey: English (fixture)",
+  "version": "0.0.1",
+  "entryType": "data",
+  "packType": "data",
+  "sdkVersion": "0.1.0",
+  "databases": {
+    "main": "data/course.sqlite3"
+  },
+  "languages": [
+    "en"
+  ],
+  "journey": {
+    "targetLang": "en",
+    "schemaVersion": 1
+  },
+  "nameLocalized": {
+    "en": "Journey: English (fixture)",
+    "es": "Journey: inglés (fixture)"
+  },
+  "descriptionLocalized": {
+    "en": "Tiny fixture course used by the pack-pipeline tests.",
+    "es": "Curso de prueba mínimo para los tests del pipeline."
+  },
+  "description": "Tiny fixture course used by the pack-pipeline tests."
+}
