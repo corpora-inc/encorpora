@@ -1,11 +1,11 @@
 /// <reference types="node" />
-// src/util/storage/__harness__/run.ts
+// src/lib/storage/__harness__/run.ts
 //
 // Self-contained verification harness for the storage + analytics foundation.
 // NOT a unit-test framework run — it's a node-executable proof. Bundle with
 // esbuild + run with node (see ./README or the storage docs):
 //
-//   node_modules/.bin/esbuild src/util/storage/__harness__/run.ts \
+//   node_modules/.bin/esbuild src/lib/storage/__harness__/run.ts \
 //     --bundle --platform=node --format=cjs --outfile=/tmp/storage-harness.cjs
 //   node /tmp/storage-harness.cjs
 //

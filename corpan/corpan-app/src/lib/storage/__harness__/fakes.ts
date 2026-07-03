@@ -1,4 +1,4 @@
-// src/util/storage/__harness__/fakes.ts
+// src/lib/storage/__harness__/fakes.ts
 //
 // Minimal in-memory IndexedDB + localStorage for the node verification harness.
 // Just enough surface for ./idb.ts and the storage service: open/upgrade,
