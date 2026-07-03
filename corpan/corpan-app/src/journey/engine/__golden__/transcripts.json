@@ -167,12 +167,12 @@
         "phrase:base:1006=3",
         "phrase:base:1007=1"
       ],
-      "theta": -1.250222
+      "theta": -1.513449
     },
     {
       "cards": [
-        "stack-1:journey_en:3:8|intro_echo|new|f0",
-        "stack-1:journey_en:3:9|match_pairs|new|f0",
+        "stack-1:journey_en:3:8|match_pairs|new|f0",
+        "stack-1:journey_en:3:9|listen_pick|new|f0",
         "stack-1:journey_en:3:10|choice_pick|new|f0",
         "stack-1:journey_en:3:11|match_pairs|replay|f0",
         "stack-1:journey_en:3:12|intro_echo|new|f0",
@@ -183,7 +183,7 @@
       ],
       "grades": [
         "phrase:base:1001=3",
-        "phrase:base:1049=3",
+        "phrase:base:1033=3",
         "phrase:base:1002=3",
         "phrase:base:1007=1",
         "phrase:base:1003=3",
@@ -192,21 +192,21 @@
         "",
         ""
       ],
-      "theta": -1.076537
+      "theta": -1.28296
     },
     {
       "cards": [
         "stack-1:journey_en:4:0|choice_pick|due|f0",
         "stack-1:journey_en:4:1|intro_echo|new|f0",
-        "stack-1:journey_en:4:2|listen_pick|new|f0",
-        "stack-1:journey_en:4:3|intro_echo|due|f0",
-        "stack-1:journey_en:4:4|listen_pick|new|f0",
+        "stack-1:journey_en:4:2|match_pairs|new|f0",
+        "stack-1:journey_en:4:3|listen_pick|due|f0",
+        "stack-1:journey_en:4:4|intro_echo|new|f0",
         "stack-1:journey_en:4:5|match_pairs|fun|f0",
         "stack-1:journey_en:4:6|intro_echo|new|f0",
         "stack-1:journey_en:4:7|match_pairs|new|f0"
       ],
       "grades": [
-        "phrase:base:1049=3",
+        "phrase:base:1033=3",
         "",
         "",
         "phrase:base:1007=1",
@@ -215,7 +215,7 @@
         "",
         ""
       ],
-      "theta": -1.181854
+      "theta": -1.400494
     },
     {
       "cards": [
@@ -240,7 +240,7 @@
         "",
         ""
       ],
-      "theta": -1.152983
+      "theta": -1.29769
     }
   ],
   "struggle-session": [

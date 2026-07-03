@@ -24,6 +24,9 @@ export interface GraphIndex {
   probeBank: { itemId: string; b: number; skillIds: string[] }[]
   /** Max item b in the installed pack — the R10 content ceiling. */
   maxB: number
+  /** Min item b in the installed pack — with maxB, the actual content band
+   *  the placement ladder must subdivide (R10). */
+  minB: number
   /** activityTemplates bucketed by item kind. */
   templatesByKind: Map<string, ActivityTemplate[]>
   /** CEFR stage of a unit (via its arc). */
@@ -102,8 +105,13 @@ export function buildGraphIndex(graph: CourseGraph): GraphIndex {
   }
 
   let maxB = Number.NEGATIVE_INFINITY
-  for (const item of Object.values(graph.items)) if (item.b > maxB) maxB = item.b
+  let minB = Number.POSITIVE_INFINITY
+  for (const item of Object.values(graph.items)) {
+    if (item.b > maxB) maxB = item.b
+    if (item.b < minB) minB = item.b
+  }
   if (!Number.isFinite(maxB)) maxB = 0
+  if (!Number.isFinite(minB)) minB = 0
 
   const templatesByKind = new Map<string, ActivityTemplate[]>()
   for (const t of graph.activityTemplates) {
@@ -126,6 +134,7 @@ export function buildGraphIndex(graph: CourseGraph): GraphIndex {
     skillItems,
     probeBank,
     maxB,
+    minB,
     templatesByKind,
     stageOfUnit(unitOrdinal: number) {
       const unit = graph.units[Math.min(Math.max(unitOrdinal, 0), graph.units.length - 1)]

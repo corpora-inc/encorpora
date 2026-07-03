@@ -129,6 +129,13 @@ export const PLACEMENT_MAX_TOTAL = 25
 export const PLACEMENT_MAX_MS = 4 * 60_000
 export const PLACEMENT_TARGET_JITTER = 0.3
 export const PLACEMENT_ABOVE_CONTENT_MARGIN = 0.5 // R10
+/** "Above-content" needs a supported θ̂: on a narrow-band pack the post-ladder
+ *  θ̂ still rides the −1.0 prior with se ≈ 1.9, and exiting on it mis-routes
+ *  mid-band learners (W10 P8 FAIL on the real journey_en pack). Genuinely
+ *  above-ceiling learners keep passing ceiling probes, so se falls under this
+ *  bound within a few Phase-2 items — never a 25-item grind (≈11 of the
+ *  20-item Phase-2 budget at this bound). */
+export const PLACEMENT_ABOVE_CONTENT_MAX_SE = 0.7
 export const PLACEMENT_UNLOCK_MARGIN = 0.5 // unlock b_s ≤ θ − 0.5
 export const PLACEMENT_FRONTIER_PROBES = 2
 

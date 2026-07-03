@@ -31,14 +31,36 @@ async function runPlacement(
 
 test("all-correct ladder tops out ≤ max_b and above-content terminates Phase 2 early (R10)", async () => {
   // ceiling at b = −1: an all-correct learner blows past it fast
-  const { outcome, transcript } = await runPlacement(() => true, { bMax: -1 })
+  const { h, outcome, transcript } = await runPlacement(() => true, { bMax: -1 })
   assert.equal(outcome.record.outcome, "above-content")
   assert.ok(transcript.length <= 20, `Phase-2 budget respected (${transcript.length})`)
   // never probed above max_b
   for (const a of outcome.record.asked) assert.ok(a.b <= -1 + 1e-9)
-  // frontier = end of shipped content; every skill provisionally unlocked
-  assert.equal(outcome.frontier.length, 0)
+  // frontier = end of shipped content (R10): the LAST unit's skills — a
+  // usable in-pack frontier, not an empty list; every skill provisionally
+  // unlocked; θ̂ pinned to "just past the ceiling" (no items above max_b ⇒
+  // no discriminating support beyond it)
+  const lastUnit = h.graph.units[h.graph.units.length - 1]
+  assert.deepEqual([...outcome.frontier].sort(), [...lastUnit.skillIds].sort())
   assert.ok(outcome.unlockedSkills.length > 0)
+  assert.equal(outcome.record.theta, -1 + 0.5) // maxB + PLACEMENT_ABOVE_CONTENT_MARGIN
+})
+
+test("narrow-band pack (R10): mid-band learner places IN BAND — never 'above-content' off two ladder passes", async () => {
+  // the real journey_en shape: b ∈ [−3.5, −1.5]; a 1PL responder with true
+  // ability at the band midpoint (−2.5). Pre-fix, the global-ladder rungs
+  // collapsed to [−3, −1.5], both passed, and θ̂ exited "above-content"
+  // pinned above the ceiling with se ≈ 1.9 (W10 P8 FAIL on the real pack).
+  const { outcome, transcript } = await runPlacement((b) => b < -2.5, {
+    bMin: -3.5,
+    bMax: -1.5,
+  })
+  assert.ok(transcript.length <= 25, `asked ${transcript.length}`)
+  assert.equal(outcome.record.outcome, "placed")
+  assert.ok(
+    Math.abs(outcome.record.theta - -2.5) <= 0.6,
+    `θ̂ ${outcome.record.theta} within ±0.6 of the responder's −2.5 threshold`,
+  )
 })
 
 test("1PL responder with true ability −1.2 places mid-course within 25 items", async () => {

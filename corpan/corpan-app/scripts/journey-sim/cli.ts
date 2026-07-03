@@ -117,10 +117,18 @@ async function loadPackGraph(dbPath: string): Promise<CourseGraph> {
  * and above-ceiling learners (a > max content b; must terminate
  * "above-content" within the Phase-2 budget, never grind).
  *
- * NOT instrumented here (fixture full-sim territory): the wrong-placement
- * self-heal sub-criterion (week-one rewind within 14 days for an injected
- * 10% mis-calibrated cohort) — reported as such in the detail.
+ * Wrong-placement self-heal (the P8 third leg): every 10th learner is
+ * mis-calibrated — placement answered from an inflated prior-knowledge
+ * profile (a + 1.5) — then the TRUE learner plays ≤14 simulated days and
+ * must trigger the week-one rewind offer or a placement-seeded skill
+ * demotion (engine.md §4.3.4 "rewind or demotion path corrects the
+ * starting frontier within 14 days").
  */
+const P8_CONSTRAINTS = {
+  availableProviders: ["native", "lingo_hero"],
+  modelsAvailable: ["stt", "llm", "tts"],
+}
+
 async function p8Gate(seed: number, learners: number): Promise<boolean> {
   const dbPath = path.resolve(
     here,
@@ -155,6 +163,7 @@ async function p8Gate(seed: number, learners: number): Promise<boolean> {
     outcome: string
   }
   const rows: P8Row[] = []
+  const heals: { a: number; healedDay: number | null; how: string }[] = []
   for (let i = 0; i < learners; i++) {
     // Two-pass same-seed construction: read the drawn `a` first, then rebuild
     // the learner with a prior-knowledge prefix matching that ability (the
@@ -162,8 +171,22 @@ async function p8Gate(seed: number, learners: number): Promise<boolean> {
     // shape, scoped to this pack).
     const probeSeed = seed * 1_000_003 + i
     const aOnly = new Learner(basePersona, graph, probeSeed)
+    const injected = i % 10 === 0 // the 10% mis-calibrated self-heal cohort
     const priorKnown = Object.values(graph.items).filter((it) => it.b <= aOnly.a).length
-    const learner = new Learner({ ...basePersona, priorKnownItems: priorKnown }, graph, probeSeed)
+    // mis-calibrated cohort: placement is answered by a learner whose
+    // ABILITY (and matching prior-knowledge profile) reads +1.5 above the
+    // truth — the classic over-placement. Same seed ⇒ same gauss draw, so
+    // the placement learner's a is exactly trueA + 1.5.
+    const placementPrior = injected
+      ? Object.values(graph.items).filter((it) => it.b <= aOnly.a + 1.5).length
+      : priorKnown
+    const placementLearner = new Learner(
+      injected
+        ? { ...basePersona, aMu: basePersona.aMu + 1.5, priorKnownItems: placementPrior }
+        : { ...basePersona, priorKnownItems: priorKnown },
+      graph,
+      probeSeed,
+    )
 
     const clock = createManualClock({ startMs: 20_000 * DAY_MS + 9 * 3_600_000 })
     const engine = createJourneyEngine({
@@ -178,21 +201,74 @@ async function p8Gate(seed: number, learners: number): Promise<boolean> {
     for (;;) {
       const card = controller.next()
       if (!card) break
-      engine.applyResult(learner.answer(card, 0))
+      engine.applyResult(placementLearner.answer(card, 0))
     }
     const outcome = controller.finalize()
-    rows.push({
-      a: learner.a,
-      theta: outcome.record.theta,
-      asked: outcome.record.asked.length,
-      outcome: outcome.record.outcome,
-    })
+    if (!injected) {
+      rows.push({
+        a: placementLearner.a,
+        theta: outcome.record.theta,
+        asked: outcome.record.asked.length,
+        outcome: outcome.record.outcome,
+      })
+    }
     if (process.env.P8_DEBUG) {
       const correct = outcome.record.asked.filter((x) => x.correct).length
       console.log(
-        `[P8:dbg] a=${learner.a.toFixed(2)} priorKnown=${priorKnown} theta=${outcome.record.theta.toFixed(2)} ` +
-          `se=${outcome.record.se.toFixed(2)} asked=${outcome.record.asked.length} correct=${correct} outcome=${outcome.record.outcome}`,
+        `[P8:dbg] a=${placementLearner.a.toFixed(2)} priorKnown=${placementPrior}${injected ? " (INJECTED)" : ""} ` +
+          `theta=${outcome.record.theta.toFixed(2)} se=${outcome.record.se.toFixed(2)} ` +
+          `asked=${outcome.record.asked.length} correct=${correct} outcome=${outcome.record.outcome}`,
       )
+    }
+
+    if (injected) {
+      // self-heal: the TRUE learner (honest priorKnown) plays ≤14 days;
+      // heal = week-one rewind offered (tickDay §4.3.4) OR a placement-
+      // seeded skill demoting out of its provisional level-3.
+      const trueLearner = new Learner({ ...basePersona, priorKnownItems: priorKnown }, graph, probeSeed)
+      const placedSkills = new Set(outcome.unlockedSkills)
+      let healedDay: number | null = null
+      let how = ""
+      for (let d = 1; d <= 14 && healedDay === null; d++) {
+        clock.setDay(20_000 + d, 9 * 3_600_000)
+        const roll = engine.tickDay()
+        if (roll.placementCheck === "offer-rewind") {
+          healedDay = d
+          how = "rewind"
+          break
+        }
+        const demoted = roll.announcements.find(
+          (an) => an.from >= 3 && an.to < 3 && placedSkills.has(an.skillId),
+        )
+        if (demoted) {
+          healedDay = d
+          how = "demotion"
+          break
+        }
+        engine.startSession()
+        let secondsUsed = 0
+        let emptyStreak = 0
+        while (secondsUsed < basePersona.sessionMinutes * 60 && emptyStreak < 2) {
+          const cards = engine.nextFeedItems(10, P8_CONSTRAINTS)
+          if (cards.length === 0) {
+            emptyStreak += 1
+            continue
+          }
+          emptyStreak = 0
+          for (const card of cards) {
+            const res = trueLearner.answer(card, d)
+            clock.advance(Math.min(res.durationMs, 120_000))
+            secondsUsed += res.durationMs / 1000 + 2
+            engine.applyResult(res)
+          }
+        }
+      }
+      heals.push({ a: trueLearner.a, healedDay, how })
+      if (process.env.P8_DEBUG) {
+        console.log(
+          `[P8:dbg] self-heal a=${trueLearner.a.toFixed(2)} healed=${healedDay === null ? "NO" : `day ${healedDay} (${how})`}`,
+        )
+      }
     }
   }
 
@@ -207,17 +283,31 @@ async function p8Gate(seed: number, learners: number): Promise<boolean> {
       ((r.outcome === "placed" && Math.abs(r.theta - r.a) <= 0.6) ||
         (r.outcome === "above-content" && maxB - r.a <= 0.6)),
   )
-  const aboveOk = aboveBand.filter((r) => r.outcome === "above-content" && r.asked <= 25)
+  // Above-band: terminate "above-content" within budget — OR, at the band
+  // edge (a within 0.6 of the ceiling, closer than the engine's 0.5
+  // above-content margin can distinguish), an accurate in-band placement.
+  // Symmetric to the in-band edge grace above.
+  const aboveOk = aboveBand.filter(
+    (r) =>
+      r.asked <= 25 &&
+      (r.outcome === "above-content" ||
+        (r.a - maxB <= 0.6 && r.outcome === "placed" && Math.abs(r.theta - r.a) <= 0.6)),
+  )
   const accuracy = inBand.length > 0 ? inBandOk.length / inBand.length : 1
   const maxAsked = rows.reduce((m, r) => Math.max(m, r.asked), 0)
-  const pass = accuracy >= 0.9 && aboveOk.length === aboveBand.length
+  const healed = heals.filter((h) => h.healedDay !== null)
+  const healDays = healed.map((h) => h.healedDay as number)
+  const pass =
+    accuracy >= 0.9 && aboveOk.length === aboveBand.length && healed.length === heals.length
 
   const detail =
     `P8 Placement quality (REAL journey_en pack, personas scoped to shipped arcs — R10): ` +
     `${pass ? "PASS" : "FAIL"} — in-band |θ̂−a|≤0.6 in ≤25 items: ${inBandOk.length}/${inBand.length} ` +
     `(${(100 * accuracy).toFixed(0)}%, need ≥90%); above-ceiling terminate "above-content" ≤ budget: ` +
     `${aboveOk.length}/${aboveBand.length}; max items asked ${maxAsked}; ` +
-    `wrong-placement self-heal (week-one rewind ≤14d, injected 10% cohort) not instrumented in this mode`
+    `wrong-placement self-heal (week-one rewind or demotion ≤14d, injected 10% cohort): ` +
+    `${healed.length}/${heals.length} healed` +
+    (healDays.length > 0 ? ` (days ${healDays.join(",")})` : "")
   console.log(`[P8] ${detail}`)
   return pass
 }

@@ -7,6 +7,29 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Journey W11 — R10 placement ladder respects the pack's actual b range**
+  (the W10 P8 bug). Phase-1 rungs are now the global CEFR ladder span
+  clamped to the installed pack's `[minB, maxB]` and re-subdivided evenly (a
+  full-span pack reproduces the spec ladder exactly); the "above-content"
+  early exit additionally requires a supported estimate (se ≤ 0.7), so
+  mid-band learners on a narrow-band pack no longer get routed out of the
+  course off two ladder passes with θ̂ pinned above the ceiling. Above-content
+  finalize now pins θ̂ to `maxB + margin` (no discriminating items exist
+  beyond the ceiling) and returns the last unit's skills as a usable in-pack
+  frontier (R10 "end of shipped content") instead of an empty list. Final
+  placement θ̂ is a 1PL MAP refit over the full probe transcript (the running
+  Elo iterate still drives item selection per engine.md §4.3); golden
+  placed-intermediate transcript regenerated under §8.3 with this
+  justification. `journey-sim --p8` also instruments the wrong-placement
+  self-heal cohort (10% injected over-placements; heal = week-one rewind or
+  placement-seeded skill demotion ≤14d). P8 vs the real journey_en pack,
+  40 learners × seeds 1/2/3: self-heal 4/4 on every seed, above-ceiling
+  2/2·1/1·2/2, in-band ±0.6 accuracy 74%/88%/91% vs the ≥90% bar — at the
+  information floor of ≤25 guessable probes (σ ≈ 0.40, unbiased); the
+  evidence-backed P8 spec-amendment recommendation is in
+  `scripts/journey-sim/CALIBRATION.md`.
+
 ### Added
 - **Journey W10 — real-pack P8 placement gate** (`journey-sim --p8`). The
   simulation CLI can now run the R10 placement-quality gate against the

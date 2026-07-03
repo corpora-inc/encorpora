@@ -11,6 +11,7 @@
 import {
   PLACED_ACC_EWMA,
   PLACEMENT_ABOVE_CONTENT_MARGIN,
+  PLACEMENT_ABOVE_CONTENT_MAX_SE,
   PLACEMENT_FRONTIER_PROBES,
   PLACEMENT_K_DECAY,
   PLACEMENT_K_FLOOR,
@@ -122,8 +123,24 @@ class PlacementMachine {
 
   constructor(gidx: GraphIndex) {
     this.gidx = gidx
-    // Phase 1 ladder with rungs above max_b dropped (R10), ascending.
-    this.rungs = PLACEMENT_LADDER_RUNGS.filter((b) => b <= gidx.maxB)
+    // Phase 1 ladder (R10): the rungs must subdivide the installed pack's
+    // ACTUAL b range, not the global CEFR ladder. Merely dropping global
+    // rungs above max_b collapses a narrow-band pack (journey_en:
+    // b ∈ [−3.5, −1.5]) onto [−3, −1.5] — the second rung IS the ceiling,
+    // mid-band learners pass both and exit "above-content" (W10 P8 FAIL).
+    // Clamp the global ladder's span to [minB, maxB] and re-subdivide it
+    // evenly; a pack spanning the full ladder reproduces the spec's
+    // [−3, −1.5, 0, 1.5, 3] exactly (engine.md §4.3 Phase 1).
+    const lo = Math.max(gidx.minB, PLACEMENT_LADDER_RUNGS[0])
+    const hi = Math.min(gidx.maxB, PLACEMENT_LADDER_RUNGS[PLACEMENT_LADDER_RUNGS.length - 1])
+    if (hi > lo) {
+      const n = PLACEMENT_LADDER_RUNGS.length
+      this.rungs = Array.from({ length: n }, (_, i) => lo + ((hi - lo) * i) / (n - 1))
+    } else {
+      // degenerate band (single-b pack, or a pack entirely outside the
+      // global ladder span): one probe at the band midpoint
+      this.rungs = [(gidx.minB + gidx.maxB) / 2]
+    }
   }
 
   /** One Elo/1PL update + phase bookkeeping. Purely answer-driven. */
@@ -151,6 +168,37 @@ class PlacementMachine {
     }
   }
 
+  /** Finalize-time θ̂: 1PL MAP refit over the FULL transcript (Newton on the
+   *  log-posterior with the Phase-2 prior N(θ_start, se_start²)). The
+   *  running Elo iterate (recordAnswer) still drives item selection exactly
+   *  per §4.3; the final estimate re-reads the same answers in one batch —
+   *  the stochastic iterate carries O(K_floor) excess variance that the P8
+   *  |θ̂ − a| ≤ 0.6 bound cannot afford on ≤25 items (W11 round 2, real
+   *  journey_en pack). A 3PL guess-floor term (c = 0.25 for the guessable
+   *  probe forms) was evaluated and REJECTED: learners also slip below the
+   *  upper asymptote, and the two 1PL mismatches roughly cancel — the 3PL
+   *  fit is strictly worse at every c ∈ {0.1..0.25} on the real pack
+   *  (scripts/journey-sim/CALIBRATION.md §5). Pure + deterministic;
+   *  placeUser shares this machine, so transcript equivalence holds. */
+  mapTheta(): number {
+    if (this.asked.length === 0) return this.theta
+    const priorVar = PLACEMENT_SE_START * PLACEMENT_SE_START
+    let t = this.theta
+    for (let iter = 0; iter < 20; iter++) {
+      let g = (PLACEMENT_THETA_START - t) / priorVar
+      let h = 1 / priorVar
+      for (const a of this.asked) {
+        const p = sigmoid(t - a.b)
+        g += (a.correct ? 1 : 0) - p
+        h += p * (1 - p)
+      }
+      const step = Math.max(-1.5, Math.min(1.5, g / h))
+      t += step
+      if (Math.abs(step) < 1e-10) break
+    }
+    return t
+  }
+
   /** Advance the phase machine. `elapsedMs` participates only interactively
    *  (placeUser replays with 0 — a transcript has no wall clock). */
   advance(elapsedMs: number): void {
@@ -160,8 +208,13 @@ class PlacementMachine {
       if (this.phase !== "elo") return
     }
     if (this.phase === "elo") {
-      // R10 early termination — above the installed content ceiling
-      if (this.theta - this.gidx.maxB > PLACEMENT_ABOVE_CONTENT_MARGIN) {
+      // R10 early termination — above the installed content ceiling. Gated
+      // on se: θ̂ must have measured support before we route someone out of
+      // the course (see PLACEMENT_ABOVE_CONTENT_MAX_SE in constants.ts).
+      if (
+        this.theta - this.gidx.maxB > PLACEMENT_ABOVE_CONTENT_MARGIN &&
+        this.se <= PLACEMENT_ABOVE_CONTENT_MAX_SE
+      ) {
         this.outcome = "above-content"
         this.phase = "done"
         return
@@ -198,18 +251,22 @@ export interface FinalizeBag {
 
 function finalizeOutcome(
   bag: FinalizeBag,
-  m: Pick<PlacementMachine, "theta" | "se" | "asked">,
+  m: Pick<PlacementMachine, "theta" | "se" | "asked" | "mapTheta">,
   outcome: PlacementRecord["outcome"],
 ): PlacementOutcome {
   const { gidx, course } = bag
   let unlocked: Set<string>
-  let theta = m.theta
+  let theta = m.mapTheta()
   if (outcome === "skipped-zero-beginner") {
     theta = THETA_DEFAULT
     unlocked = new Set()
   } else if (outcome === "above-content") {
     // R10: unlock every content skill provisionally; frontier = end of
     // shipped content. Honest copy is the UI's job (house no-absolutes rule).
+    // θ̂ is pinned to "just past the ceiling": the pack has no items above
+    // max_b, so the Elo estimate has no discriminating support beyond it —
+    // on a narrow-band pack the raw θ̂ is prior-dominated garbage (W10 P8).
+    theta = gidx.maxB + PLACEMENT_ABOVE_CONTENT_MARGIN
     unlocked = new Set(Object.keys(gidx.graph.skills))
   } else {
     unlocked = unlockedByTheta(gidx, theta)
@@ -223,7 +280,13 @@ function finalizeOutcome(
     bag.mastery.markDirty(skillId)
   }
 
-  const frontier = outcome === "above-content" ? [] : frontierOf(gidx, unlocked)
+  // Above-content still returns a USABLE in-pack frontier — the last unit's
+  // skills, i.e. the end of shipped content (R10) — so the learner lands on
+  // real practice, not an empty screen, on narrow-band packs.
+  const frontier =
+    outcome === "above-content"
+      ? [...(gidx.units[gidx.units.length - 1]?.skillIds ?? [])]
+      : frontierOf(gidx, unlocked)
   const record: PlacementRecord = { theta, se: m.se, day: bag.day, asked: m.asked, outcome }
   course.theta = theta
   course.placement = record
