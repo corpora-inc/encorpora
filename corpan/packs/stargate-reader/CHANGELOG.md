@@ -11,6 +11,12 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **Narrator detail resolves art through the host offline cache** (shared
+  `packs/shared/catalog` appShell — Journey W10 wiring of W2's seam). The
+  reader shell now passes the feature-detected `hostApi.offlineCache?.
+  imageSrc` resolver into `createNarratorDetail`, so narrator avatars/
+  banners resolve to on-device cached copies when offline. Older hosts
+  without the seam keep the preload-verify behavior.
 - **Narrator-profile artwork no longer paints empty boxes offline** (shared
   `packs/shared/catalog` narrator detail — Journey W2, offline-cache.md
   §1.1 row 9). Book covers, banners, and avatars rendered as CSS

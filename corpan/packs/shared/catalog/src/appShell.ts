@@ -2155,9 +2155,18 @@ export function createAppShell(
 
     if (narratorDetailInstance) narratorDetailInstance.dispose()
     detailScreen.innerHTML = ""
+    // Offline-cache image resolver (D12, wired by W10): feature-detected off
+    // the host — `hostApi.offlineCache?.imageSrc` resolves narrator art to a
+    // cached local copy when offline. Older hosts simply don't have it and
+    // narratorDetail preload-verifies against the network as before.
+    const cacheHost = opts.hostApi as {
+      offlineCache?: { imageSrc?: (url: string) => Promise<string | undefined> }
+    }
+    const imageSrc = cacheHost.offlineCache?.imageSrc?.bind(cacheHost.offlineCache)
     narratorDetailInstance = createNarratorDetail(detailScreen, {
       characterId,
       index: catalogIndex,
+      ...(imageSrc ? { resolveImageUrl: imageSrc } : {}),
       onSelectBook: (bookId, _preferredVoiceId) => {
         const bookNarrations = allNarrations.filter((n) => n.bookId === bookId)
         if (bookNarrations.length === 0) return

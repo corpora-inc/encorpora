@@ -168,6 +168,9 @@ before(async () => {
     define: {
       "import.meta.env.DEV": "false",
       "process.env.NODE_ENV": '"production"',
+      // Vite build-time constant reached via PackActivityCard → store/catalog
+      // → lib/appVersion (poster enrichment, W10 item 17).
+      __APP_VERSION__: '"0.0.0-smoke"',
     },
     tsconfig: path.join(here, "../../tsconfig.json"),
     alias: {

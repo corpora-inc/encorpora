@@ -40,6 +40,14 @@ Conventions: `corpan/CHANGELOGS.md`.
   and reports the live registry limit.
 
 ### Fixed
+- **Journey W10 — seam fixes.** The journey pack-poster card
+  (`PackActivityCard`) renders its art through `<OfflineImage>` (cached →
+  remote → glyph, R15) and enriches the poster name/artwork from the
+  installed-games registry + (localized) catalog entry instead of showing
+  the raw provider id. The shared reader shell (`packs/shared/catalog`
+  `appShell.ts`) now passes the feature-detected `hostApi.offlineCache?.
+  imageSrc` resolver into `createNarratorDetail`, so narrator art resolves
+  from the offline cache too.
 - **Journey W10 — authoritative targetLang** (item 15, flagged by W3 + W6).
   The CourseGraph loader (`util/journeyPack.ts`) now carries
   `pack_meta.target_lang` on the graph, and the engine's GraphIndex prefers
