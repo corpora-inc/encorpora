@@ -5,6 +5,11 @@
 
 import { createManualClock, DAY_MS } from "../../src/journey/engine/clock.ts"
 import {
+  LEECH_LAPSES,
+  LEECH_REPS_RATIO,
+  LEECH_SUSPEND_EXTRA_LAPSES,
+} from "../../src/journey/engine/constants.ts"
+import {
   createJourneyEngine,
   createMemoryPersistence,
 } from "../../src/journey/engine/engine.ts"
@@ -147,8 +152,8 @@ export async function runLearner(
   const itemStats = new Map<string, { reps: number; agains: number }>()
   const leechState = (itemId: string): "none" | "flagged" | "suspended" => {
     const st = itemStats.get(itemId)
-    if (!st || st.agains < 6 || st.reps / st.agains >= 2) return "none"
-    return st.agains >= 8 ? "suspended" : "flagged"
+    if (!st || st.agains < LEECH_LAPSES || st.reps / st.agains >= LEECH_REPS_RATIO) return "none"
+    return st.agains >= LEECH_LAPSES + LEECH_SUSPEND_EXTRA_LAPSES ? "suspended" : "flagged"
   }
   let lastNewPerDay: number | null = null
   let brakeActive = false

@@ -5,6 +5,7 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { DAY_MS } from "./clock.ts"
+import { LEECH_LAPSES, LEECH_REPS_RATIO, LEECH_SUSPEND_EXTRA_LAPSES } from "./constants.ts"
 import { classifyFlow } from "./flow.ts"
 import { chooseForm, productionReady, ratchetForm } from "./forms.ts"
 import { buildGraphIndex } from "./graph.ts"
@@ -82,25 +83,28 @@ test("forms: ratchet, guessable never ratchets, struggle never escalates, produc
 
 // ---- leech -------------------------------------------------------------------
 
-test("leech: flag at exactly lapses=6 & ratio<2; suspend after 2 more; substitute enters NEW", () => {
+test("leech: flag at exactly LEECH_LAPSES & ratio<LEECH_REPS_RATIO; suspend after 2 more; substitute enters NEW", () => {
   const graph = makeFixtureGraph()
   const gidx = buildGraphIndex(graph)
   const course = { leechSubstitutes: [], leechTypes: {}, newBoost: [] } as unknown as CourseState
   const cards = new Map<string, ItemCard>()
   const itemId = gidx.itemsByIntro[0]
-  const card: ItemCard = { itemId, fsrs: { s: 1, d: 8, due: DAY, last: DAY, reps: 10, lapses: 5, state: 2 }, flags: 0, form: 0 }
+  // reps chosen so reps/lapses < LEECH_REPS_RATIO once lapses hits the bar
+  const leechyReps = Math.ceil(LEECH_LAPSES * LEECH_REPS_RATIO) - 1
+  const card: ItemCard = { itemId, fsrs: { s: 1, d: 8, due: DAY, last: DAY, reps: leechyReps, lapses: LEECH_LAPSES - 1, state: 2 }, flags: 0, form: 0 }
   cards.set(itemId, card)
-  assert.equal(checkLeech(card, gidx, course, cards).flagged, false, "lapses 5: not yet")
-  card.fsrs.lapses = 6 // reps/lapses = 10/6 < 2
+  assert.equal(checkLeech(card, gidx, course, cards).flagged, false, "one lapse short: not yet")
+  card.fsrs.lapses = LEECH_LAPSES
   const flag = checkLeech(card, gidx, course, cards)
   assert.equal(flag.flagged, true)
   assert.equal((card.flags & CardFlags.Leech) !== 0, true)
   // high-ratio card never flags
-  const solid: ItemCard = { itemId: gidx.itemsByIntro[1], fsrs: { ...card.fsrs, reps: 20, lapses: 6 }, flags: 0, form: 0 }
+  const solidReps = Math.ceil(LEECH_LAPSES * LEECH_REPS_RATIO) + 2
+  const solid: ItemCard = { itemId: gidx.itemsByIntro[1], fsrs: { ...card.fsrs, reps: solidReps, lapses: LEECH_LAPSES }, flags: 0, form: 0 }
   assert.equal(checkLeech(solid, gidx, course, cards).flagged, false)
-  // 2 further failures ⇒ suspend + substitute
-  card.fsrs.lapses = 8
-  card.fsrs.reps = 12
+  // 2 further failures ⇒ suspend + substitute (ratio kept leechy)
+  card.fsrs.lapses = LEECH_LAPSES + LEECH_SUSPEND_EXTRA_LAPSES
+  card.fsrs.reps = Math.ceil((LEECH_LAPSES + LEECH_SUSPEND_EXTRA_LAPSES) * LEECH_REPS_RATIO) - 1
   const sus = checkLeech(card, gidx, course, cards)
   assert.equal(sus.suspended, true)
   assert.equal((card.flags & CardFlags.Suspended) !== 0, true)

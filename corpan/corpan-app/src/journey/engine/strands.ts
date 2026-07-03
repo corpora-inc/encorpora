@@ -1,7 +1,15 @@
 // journey/engine/strands.ts — Four Strands accounting (pedagogy §12.1):
 // rolling 2-week tally + last-40 window + stage ratio targets + deficit.
 
-import { LANGUAGE_SHARE_HARD_CAP, LAST40_WINDOW, STRAND_TARGETS, STRAND_WINDOW_DAYS } from "./constants.ts"
+import {
+  LANGUAGE_SHARE_HARD_CAP,
+  LAST40_WINDOW,
+  STRAND_CONTROL_EXPONENT,
+  STRAND_CONTROL_MAX,
+  STRAND_CONTROL_MIN,
+  STRAND_TARGETS,
+  STRAND_WINDOW_DAYS,
+} from "./constants.ts"
 import type { CourseState, SessionState, Strand } from "./types.ts"
 
 export const STRAND_INDEX: Record<Strand, 0 | 1 | 2 | 3> = {
@@ -75,7 +83,10 @@ export function strandControlWeights(
   const out: [number, number, number, number] = [1, 1, 1, 1]
   for (let i = 0; i < 4; i++) {
     const ratio = (targets[i] + 0.02) / (shares[i] + 0.02)
-    out[i] = Math.min(5, Math.max(0.15, Math.pow(ratio, 1.5)))
+    out[i] = Math.min(
+      STRAND_CONTROL_MAX,
+      Math.max(STRAND_CONTROL_MIN, Math.pow(ratio, STRAND_CONTROL_EXPONENT)),
+    )
   }
   return out
 }

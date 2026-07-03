@@ -1,4 +1,4 @@
-# W11 Engine Calibration Study — status: IN PROGRESS (evidence phase complete for the flat-retention axis)
+# W11 Engine Calibration Study — round 2 complete (§5–§10); round-1 evidence in §1–§4
 
 Scope: engine.md §7.4 gates P1/P3/P4/P7, which failed on W3's final 25×180 run.
 Method: reproduce → single-axis sweeps over `engine/constants.ts` → combined
@@ -86,7 +86,7 @@ absent — not a regression).
    at low DR because Jump offers ride cruise mode, which the noisier low-DR
    review stream suppresses.
 
-## 3. Provisional recommendation (to validate before adoption)
+## 3. Provisional recommendation (to validate before adoption) — *validated in §7 (round 2): REJECTED for adoption*
 
 Mechanism bundle for the next sweep round (all constants-surface except one
 extraction):
@@ -126,3 +126,257 @@ workstream; escalate with this table.
 Raw runs: baseline `out/`-equivalents and the sweep summary were produced under
 the session scratchpad; re-run with the commands above — everything is
 seed-deterministic (P6 held on every run).
+
+---
+
+# Round 2 (W11 round 2 — P8 placement fix + the §3 mechanism bundle)
+
+## 5. P8 — the R10 placement fix (bug, not tuning) and where the gate lands
+
+W10's FAIL reproduced verbatim pre-fix (`cli.ts --p8 --p8-only --learners 40
+--seed 1`): in-band 29/39 (74%), mid-band learners early-exiting
+"above-content" after 2 items with θ̂ −0.72 / se 1.88. Mechanism confirmed: the
+Phase-1 ladder kept the GLOBAL CEFR rungs and only dropped those above
+`max_b`; on journey_en (693 items, b ∈ [−3.50, −1.50]) that collapses to
+[−3, −1.5] — the second rung IS the content ceiling.
+
+**Shipped fixes** (`engine/placement.ts`, `engine/graph.ts`, constants):
+
+1. **Ladder subdivides the pack's actual b range** (R10): rungs = the global
+   ladder span clamped to `[gidx.minB, gidx.maxB]`, re-subdivided evenly
+   (5 rungs; a full-span pack reproduces the spec's [−3, −1.5, 0, 1.5, 3]
+   bit-for-bit, so wide-pack behavior is unchanged).
+2. **"Above-content" requires a supported θ̂**: exit also needs
+   `se ≤ PLACEMENT_ABOVE_CONTENT_MAX_SE (0.7)`. Genuinely-above learners
+   still exit in ~11 items (never a 25-item grind); the prior-dominated
+   post-ladder θ̂ can no longer misroute mid-band learners.
+3. **Above-content finalize is honest on narrow packs**: θ̂ pinned to
+   `maxB + margin` (no discriminating items exist beyond the ceiling — the
+   raw iterate was garbage there), frontier = the LAST unit's skills (R10
+   "end of shipped content", a usable in-pack frontier) instead of `[]`.
+4. **Final θ̂ = 1PL MAP refit** over the full probe transcript (Newton,
+   Phase-2 prior); the running Elo iterate still drives item selection
+   verbatim per engine.md §4.3, and `placeUser` equivalence holds (shared
+   machine). Removes the O(K_floor) stochastic-iterate variance. A 3PL
+   guess-floor refit (c = probe MC floor 0.25) was evaluated and REJECTED:
+   3-seed in-band accuracy 55/103 at c=0.25, 66 at 0.2, 76 at 0.15, 85 at
+   0.1 vs **87/103 at c=0** — the §7.1 learner also slips below the upper
+   asymptote (retention factor ≈ 0.92), and the two 1PL mismatches cancel.
+5. **Self-heal instrumented in `--p8`**: every 10th learner placed from a
+   +1.5-inflated ability/prior profile, then the TRUE learner plays ≤14
+   days; heal = week-one rewind offer OR a placement-seeded skill demotion.
+   (Injecting only an inflated `priorKnownItems` does NOT mis-place — recall
+   stays gated by true ability σ(a−b\*) — hence the ability shift.)
+6. Harness: above-band learners within 0.6 of the ceiling accept an accurate
+   in-band placement (the engine's 0.5 margin cannot declare "above" for
+   them — band-edge identifiability), symmetric to the in-band edge grace.
+
+**P8 verbatim after the fix** (REAL journey_en pack, 40 learners/seed):
+
+```
+seed 1: FAIL — in-band |θ̂−a|≤0.6 in ≤25 items: 26/35 (74%, need ≥90%);
+  above-ceiling terminate "above-content" ≤ budget: 1/1; max items asked 24;
+  wrong-placement self-heal (week-one rewind or demotion ≤14d, injected 10%
+  cohort): 4/4 healed (days 2,2,2,2)
+seed 2: FAIL — in-band 30/34 (88%); above-ceiling 2/2; max asked 24;
+  self-heal 4/4 healed (days 2,2,2,2)
+seed 3: PASS — in-band 31/34 (91%); above-ceiling 2/2; max asked 24;
+  self-heal 4/4 healed (days 2,3,2,2)
+```
+
+Above-ceiling and self-heal legs are green on every seed. The in-band
+accuracy leg sits AT the estimator's information floor: pooled placed-row
+error is unbiased (mean +0.07, σ = 0.40, n = 99) and se ≈ 0.40 is the
+binomial-information bound for ≤25 guessable (4-choice, c = 0.25) probes —
+±0.6 at ≥90% needs σ ≤ 0.36, i.e. ≥ 40 probes. No estimator can pass this
+bar under the §7.1 learner within the spec's own ≤25-item budget;
+sweeping `PLACEMENT_ABOVE_CONTENT_MAX_SE` ∈ {0.55, 0.7} ×
+`PLACEMENT_TARGET_JITTER` ∈ {0.15, 0.3} moves nothing (87/103 on all four).
+
+**P8 spec-amendment recommendation (CTO decision — evidence above):** keep
+≥90% and ≤25 items, widen the tolerance to **|θ̂ − a| ≤ 0.8** (measured:
+94%/94%/100% per seed, z = 2σ so seed-robust; ±0.75 measures 89%/94%/94% —
+knife-edge on seed 1). Alternative if ±0.6 is pedagogically non-negotiable:
+raise the probe budget to ~40 items (σ → 0.36) or drop the rate to ≥80%
+(measured 74–91%: still seed-fragile at ±0.6). Adaptivity §4 already
+concedes the point: *"our b values are author-assigned, not calibrated, so
+precision beyond ±half a CEFR band is fake anyway"* — half a band on the
+ladder scale IS 0.75; P8's ±0.6 asks for precision the research doc calls
+fake. Do not tune further constants against this leg — the residual is
+binomial noise, not mechanism.
+
+## 6. Round-2 baseline ("before", at the P8-fix commit) — 25×180×7, seeds 1/2/3
+
+Full-config runs recorded under `out/before-s{1,2,3}/`. Two notes vs the
+round-1 §1 reproduction: this baseline includes W10's integration and the
+Task-1 placement fix (round 1 ran pre-W10), and **P11 now FAILS on every
+seed** — a finding round 1 did not have:
+
+| seed | P1 | P2 | P3 | P4 | P5 | P6 | P7 | P9 | P10 | P11 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | FAIL | PASS | FAIL | FAIL | PASS | PASS | FAIL | PASS | PASS | FAIL |
+| 2 | FAIL | PASS | FAIL | FAIL | PASS | PASS | PASS | PASS | PASS | FAIL |
+| 3 | FAIL | PASS | FAIL | FAIL | PASS | PASS | PASS | PASS | PASS | FAIL |
+
+Key details (P8 DEFERs to the real-pack `--p8` mode, §5):
+
+- P1: median due ratio 2.09–2.10, p95 2.40–2.41, 0/25 learners in-bound on
+  every seed; lapser drain 2–6/25. The §1 saturation picture verbatim:
+  capacity ≈ 83–100/day, due-at-start parked at ~170–190, `newPerDay`
+  floor-pinned at 4 for ~2/3 of daily-median learners.
+- P3: median review:new 34.55 / 36.03 / 39.20 (bounds [3,6]).
+- P4: struggle share 52.8% / 56.6% / 56.2% (≤40%); arc-1 medians 52.5–59.5
+  (in range); daily-fast leg passes s2/s3, knife-edge s1 (40 vs ≤39).
+- P7: 17–23/25 within ±10 (needs ≥20) — seed-marginal, FAIL on s1 only;
+  mean signed dev ≤1.6 points on every strand (no systematic bias left).
+- **P11 (NEW)**: relaxation rate 0.319 / 0.302 / 0.308 per batch (bound
+  <0.2), zero hard violations (itemGap/debut/model-block all 0). Per-persona
+  (s1): weekend-binger 0.468, daily-fast 0.311, daily-median 0.268,
+  placed-intermediate 0.226 — broad-based, NOT placement-driven (daily
+  personas never run placement, and their transcripts are deterministic vs
+  the tip). Hypothesis: type-restricted lesson-recipe/boss slots (e.g. boss
+  = 4 slots drawn from {cloze, word_order, listen_type}) make sameType
+  adjacency structurally unsatisfiable, and W10's lesson integration raised
+  the share of recipe-driven batches. NOT in this round's mandate — needs
+  its own workstream (either widen recipe activityTypes in fixtures/packs,
+  or exempt recipe-restricted slots from the relaxation count the way
+  model-block pairs already are — the latter needs a CTO ruling since it
+  weakens P11's meaning).
+
+## 7. Round-2 mechanism bundle — VALIDATED AND REJECTED (evidence)
+
+The §3 bundle was implemented and swept (`sweeps/round2.json`, 12 learners ×
+180 d, seed 1, personas daily-median/daily-fast/slow-struggler/lapser; P5
+FAILs in these rows are the persona-subset artifact — trickle needs
+placed-intermediate; the stale leg is in-bounds at 67–71 vs the 2% cap):
+
+| config | P1 med (≤1.2) | P1 p95 (≤2.0) | lapser drain | P3 (∈[3,6]) | P4 struggle (≤40%) | P7 (≥10/12) | P10 (≤3%) |
+|---|---|---|---|---|---|---|---|
+| before (25L, s1) | 2.10 | 2.40 | 6/25 | 34.6 | 52.8% | 17/25 ✗ | 1.6% ✓ |
+| iso-dr85 | 1.93 | 2.35 | 8/12 | 17.2 | 51.6% | 2/12 ✗ | ✓ |
+| iso-throttle (1.0) | 2.08 | 2.30 | 0/12 | 35.6 | 50.3% | 11/12 ✓ | ✓ |
+| iso-leech (4/2.5) | 2.04 | 2.28 | 3/12 | 27.3 | 44.5% | 7/12 ✗ | 6.6% ✗ |
+| **bundle (all 3)** | **1.66** | **2.18** | **11/12** | **13.7** | **48.6%** | **3/12 ✗** | **7.3% ✗** |
+| bundle-dr87 | 1.88 | 2.25 | 9/12 | 16.7 | 45.2% | 5/12 ✗ | 6.7% ✗ |
+| bundle-throttle12 | 1.67 | 2.22 | 11/12 | 13.8 | 48.6% | ✗ | 7.3% ✗ |
+| bundle-leech5 | 1.70 | 2.25 | 10/12 | 14.0 | — | ✗ | 6.3% ✗ |
+| bundle-strand-exp2 | 1.62 | 2.18 | 10/12 | 13.8 | — | 4/12 ✗ | 6.9% ✗ |
+| bundle-strand-bias4 | 1.74 | 2.19 | 9/12 | 13.2 | — | 1/12 ✗ | 6.6% ✗ |
+
+**Verdict: every needle moves in the predicted direction and no red gate
+reaches its bound, while two green gates break.** Specifics:
+
+1. **P1** — the bundle's median due ratio bottoms at 1.66 vs the 1.2 bound.
+   The binding constraint is `NEW_PER_DAY_MIN = 4`: the throttle threshold
+   is irrelevant once intake is floor-pinned (iso-throttle median 2.08 ≈
+   baseline 2.10), and demand from already-introduced §7.1 churners keeps
+   the queue parked. The 1.0 down-target also floor-pins lapser recovery
+   (drain leg 0/12) — worse than keying to 1.5.
+2. **P3** — 34.6 → 13.7:1 at best (bound 6). The steady-state ratio equals
+   reviews-per-item, and §7.1's fixed recall ceiling means the sub-0.63
+   pass-rate band never grows intervals: the ratio floor under this learner
+   model is ~14, not 6.
+3. **P4 struggle** — 52.8 → 44.5–48.6% (bound 40%): same churner mechanism;
+   a learner a full σ below frontier difficulty IS in struggle >40% of
+   scored cards under any serving policy that keeps serving frontier.
+4. **P7 collapses at DR 0.85** (17–23/25 → 2–5/12): mean signed deviation
+   stays ≤2 points (the controller is unbiased) but per-day share variance
+   explodes when fewer cards/day are served — P7's max-over-days metric is
+   noise-limited, and NO serving-pressure knob recovers it (exponent 2:
+   4/12; bias 4: 1/12 — stronger pressure adds oscillation).
+5. **P10 breaks at leech 4/2.5** (1.6% → 6.3–7.3% vs 3%): ~1,900 cards flag
+   for slow-struggler (the fixed-ability model makes their ENTIRE frontier
+   churner-band), and each flagged card costs a fixed ~2 post-flag lapses
+   of servings before suspension — serve-probability can only spread the
+   same servings over time; flag-at-5 changes nothing. P3 relief and P10
+   containment are structurally coupled under §7.1.
+
+**Adoption decision (kaizen, no-regression):** the shipped tree keeps
+`DESIRED_RETENTION = 0.90`, `LEECH_LAPSES/RATIO = 6/2`, and a
+behavior-preserving `THROTTLE_DOWN_RATIO = 1.5`. What ships from round 2 is
+the refactor surface (throttle ratios + strand control law as constants,
+`STRAND_OVER_WEIGHT` deleted, runner leech-mirror reading the real
+constants, tests parameterized) so the next round is constants-only — plus
+the Task-1 placement fixes (§5), which are independent of the bundle.
+Adopting the bundle would trade two green gates for zero red-to-green
+flips; that is threshold trading, not calibration.
+
+## 8. Spec-amendment recommendations (P1/P3/P4 unsatisfiable — CTO input)
+
+**Root cause, one sentence: engine.md §7.1's learner has a FIXED ability
+(recall ceiling σ(a − b\*) that practice never raises), so a growing share
+of introduced items can never stabilize — no scheduler drains a queue that
+content keeps refilling.** Real learners' ability grows with practice —
+that is the product's premise (curriculum-spine's whole hour-budget model
+assumes progress). The gates P1/P3/P4 encode healthy-SRS numbers that are
+only reachable when items eventually graduate.
+
+**Recommended (option A — fix the model, keep the gates):** amend §7.1 to
+give the synthetic learner slow skill acquisition, e.g. per-item effective
+`b*` decreasing with successful exposures (`b*_eff = b* − γ·successes`,
+γ ≈ 0.05–0.1, capped at ~1.5 logits) or global `a` growing with time-on-
+task at the FSI-anchored rate curriculum-spine already cites. Then re-run
+this study; predicted effect: churner band drains, P3 falls toward
+reviews-per-item ≈ 5–7, P1 median unparks, P4 struggle share decays after
+week 4. This keeps P1/P3/P4 meaning what they say.
+
+**Fallback (option B — keep §7.1, re-derive the bounds):** the measured
+floors under the static model with the best validated mechanism bundle are:
+P1 median ≈ 1.65 (recommend ≤1.8), p95 ≈ 2.2 (recommend ≤2.4); P3 ≈ 14:1
+(recommend [3, 18]); P4 struggle ≈ 45% (recommend ≤50%, or classify
+struggle on a 2-of-3-batches persistence rule per round 1). These bounds
+gate regressions but no longer assert pedagogy — option A is strictly
+better.
+
+**P7 metric note (either option):** gate on the steady-state mean share
+deviation (≤ ±10 from week 3) or on ≥90% of active days in-band, not on
+max-over-all-days — the current form is dominated by single-day sampling
+noise at low served volume (mean signed dev measured ≤2 points even in the
+worst FAIL row).
+
+**P8:** see §5 — widen to |θ̂ − a| ≤ 0.8 (or raise the probe budget); the
+±0.6 asks for precision below the information floor of ≤25 guessable
+probes, which adaptivity §4 itself calls fake for author-assigned b.
+
+**Stale spec literals to sync when rulings land** (spec editors, not this
+branch): engine.md §4.4 line "lapses ≥ 6 ∧ reps/lapses < 2", §5.7, §8.2
+leech row; engine.md §4.6 step 4 + adaptivity §5.5 throttle "1.5×" (now
+`THROTTLE_DOWN_RATIO`); engine.md §1.2 `request_retention: 0.90` comment
+("pace knob" — now `DESIRED_RETENTION`).
+
+## 9. New finding: P11 fails on the round-2 baseline (out of mandate)
+
+See §6 — relaxation rate 0.30–0.32/batch vs the <0.2 bound on every seed,
+zero hard violations, broad-based across personas including ones that never
+run placement (so NOT introduced by Task 1; round 1 measured P11 PASS
+pre-W10). Hypothesis: type-restricted lesson-recipe/boss slots make
+sameType adjacency structurally unsatisfiable and W10's lesson integration
+raised recipe-driven batch share. Needs its own workstream: widen recipe
+`activityTypes` in fixture + pack recipes, or a CTO ruling to exempt
+recipe-restricted slots from the relaxation count (as model-block pairs
+already are).
+
+## 10. Round-2 after matrix (shipped config, 25×180×7, seeds 1/2/3)
+
+The shipped config is behavior-identical to the §6 baseline for the full
+sim (all bundle values reverted after validation; 334/334 unit tests green
+against the Task-1 golden transcripts). Verified the strong way: the
+`out/after-s{1,2,3}` reports are **byte-identical** to `out/before-s{1,2,3}`
+(modulo the elapsed-time header line) — the refactor changed nothing. The
+matrix therefore stands as in §6:
+
+| seed | P1 | P2 | P3 | P4 | P5 | P6 | P7 | P9 | P10 | P11 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | FAIL | PASS | FAIL | FAIL | PASS | PASS | FAIL | PASS | PASS | FAIL |
+| 2 | FAIL | PASS | FAIL | FAIL | PASS | PASS | PASS | PASS | PASS | FAIL |
+| 3 | FAIL | PASS | FAIL | FAIL | PASS | PASS | PASS | PASS | PASS | FAIL |
+
+P8 (real pack, final tree — reproduces §5 exactly): seed 1 FAIL 26/35
+in-band, seed 2 FAIL 30/34, seed 3 PASS 31/34; above-ceiling 1/1·2/2·2/2;
+self-heal 4/4 on every seed.
+
+Red gates P1/P3/P4 (all seeds), P7 (seed 1), P11 (all seeds) and P8's
+in-band leg (seeds 1–2) are blocked pending the §8 rulings — further knob
+pressure against them is threshold trading under the current §7.1 learner
+model and gate definitions, and two of them (P7 serving pressure, P10 vs
+P3) actively fight each other.

@@ -13,7 +13,10 @@ import {
   NEW_PER_DAY_MIN,
   THROTTLE_ADJUST_INTERVAL_DAYS,
   THROTTLE_DOWN_FACTOR,
+  THROTTLE_DOWN_RATIO,
+  THROTTLE_HARD_RATIO,
   THROTTLE_UP_FACTOR,
+  THROTTLE_UP_RATIO,
 } from "./constants.ts"
 import type { GraphIndex } from "./graph.ts"
 import { advancePosition, arcCheckpoint, unitCheckpoint, unitSkillsPracticed, type LessonBag } from "./lessons.ts"
@@ -91,11 +94,14 @@ export function tickOneDay(bag: DailyBag, day: number): DayRollover {
       const med = median(course.backlogRing)
       const cruiseShare =
         course.sessionsWeek > 0 ? course.cruiseSessionsWeek / course.sessionsWeek : 0
-      if (med > 2.5 * course.dailyCapacityEwma) {
+      // thresholds in constants.ts (W11 round 2): the down-step targets a
+      // median backlog of ~1.0× capacity, below the 1.5× debt brake — keyed
+      // to the brake it parked the queue AT the brake boundary (P1 FAIL).
+      if (med > THROTTLE_HARD_RATIO * course.dailyCapacityEwma) {
         course.newPerDay = Math.round(course.newPerDay * THROTTLE_DOWN_FACTOR * THROTTLE_DOWN_FACTOR)
-      } else if (med > DEBT_BRAKE_RATIO * course.dailyCapacityEwma) {
+      } else if (med > THROTTLE_DOWN_RATIO * course.dailyCapacityEwma) {
         course.newPerDay = Math.round(course.newPerDay * THROTTLE_DOWN_FACTOR)
-      } else if (med < 0.1 * course.dailyCapacityEwma && cruiseShare > 0.5) {
+      } else if (med < THROTTLE_UP_RATIO * course.dailyCapacityEwma && cruiseShare > 0.5) {
         course.newPerDay = Math.round(course.newPerDay * THROTTLE_UP_FACTOR)
       }
       course.newPerDay = Math.min(NEW_PER_DAY_MAX, Math.max(NEW_PER_DAY_MIN, course.newPerDay))

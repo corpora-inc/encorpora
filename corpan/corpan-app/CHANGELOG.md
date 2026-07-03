@@ -7,6 +7,30 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Journey W11 round 2 — engine calibration: the §3 mechanism bundle was
+  validated and rejected; the tuning surface shipped instead.** The
+  CALIBRATION.md round-1 bundle (`DESIRED_RETENTION` 0.85, throttle
+  down-target 1.0×capacity, leech 4-lapse/2.5-ratio) was implemented and
+  swept against the P-gates: every red gate moves the right way (P1 median
+  due 2.10→1.66, P3 review:new 35→14:1, P4 struggle 52.8→48.6%, lapser
+  drain 11/12) but none reaches its bound, while P7 strand convergence
+  collapses (noise-limited at thinner daily volume) and P10 leech
+  containment blows to ~7% vs 3% — so per the no-regression rule the
+  behavioral values stay at 0.90 / 1.5 / 6-2. What ships: throttle ratios
+  and the strand control law extracted to `constants.ts`
+  (`THROTTLE_HARD/DOWN/UP_RATIO`, `STRAND_CONTROL_EXPONENT/MIN/MAX` —
+  engine.md §1.1, behavior-preserving), the never-wired
+  `STRAND_OVER_WEIGHT` deleted, the sim runner's leech mirror reading the
+  real constants, leech/scheduler tests parameterized, and
+  `scripts/journey-sim/CALIBRATION.md` §6–§10: full before/after 3-seed
+  gate matrix, the sweep table, evidence-backed spec-amendment
+  recommendations for P1/P3/P4 (root cause: the §7.1 fixed-ability learner
+  makes them unsatisfiable — recommend amending the learner model), P7's
+  max-over-days metric, P8's ±0.6 tolerance, and a NEW P11 baseline
+  failure (relaxation rate ~0.3 vs 0.2, pre-existing from the W10
+  integration era, needs its own workstream).
+
 ### Fixed
 - **Journey W11 — R10 placement ladder respects the pack's actual b range**
   (the W10 P8 bug). Phase-1 rungs are now the global CEFR ladder span

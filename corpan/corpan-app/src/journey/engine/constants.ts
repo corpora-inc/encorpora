@@ -7,8 +7,13 @@ export const ENGINE_SCHEMA = 1
 // ---- FSRS / scheduling ------------------------------------------------------
 /** FSRS desired retention — the internal pace knob (adaptivity §1.3: "0.85 =
  *  fewer reviews/more forgetting; 0.93 = review-heavy"; never user-visible).
- *  W11 calibration: 0.90 saturates a 15-min/day session once ~500+ items
- *  rotate (P1/P3/P4 sim failures); see scripts/journey-sim/CALIBRATION.md. */
+ *  W11 round 2 VALIDATED 0.85 AND REJECTED it: it cuts P3 demand 35→14:1 and
+ *  P1 median 2.1→1.7 but still passes neither bound, while collapsing P7
+ *  strand convergence (17–23/25 → ~3/12 equivalent — thinner days make the
+ *  2-week shares noise-limited; serving pressure cannot recover it). Under
+ *  the §7.1 fixed-ability learner P1/P3/P4 are unsatisfiable at ANY flat
+ *  retention — see scripts/journey-sim/CALIBRATION.md §7–§8 (spec-amendment
+ *  escalation). Do not lower this without re-running the gate matrix. */
 export const DESIRED_RETENTION = 0.9
 export const MAX_ELAPSED_DAYS = 365 // clock-jump clamp (engine.md §1.3)
 /** Codec sanity range for `due` (epoch days ≈ 1970..2079; static, no clock). */
@@ -37,6 +42,16 @@ export const BACKLOG_RING_SIZE = 7
 export const THROTTLE_ADJUST_INTERVAL_DAYS = 7
 export const THROTTLE_DOWN_FACTOR = 0.8
 export const THROTTLE_UP_FACTOR = 1.2
+/** Weekly-throttle thresholds vs dailyCapacityEwma (extracted from daily.ts
+ *  hard-codes — engine.md §1.1; values preserve shipped behavior: 2.5 and
+ *  the 0.1 up-gate were literals, the down-step was keyed to
+ *  DEBT_BRAKE_RATIO). W11 round 2 VALIDATED a 1.0 down-target AND REJECTED
+ *  it: the NEW_PER_DAY_MIN floor binds long before the threshold does, so
+ *  the P1 median doesn't move (2.08 vs 2.10) while lapser recovery
+ *  floor-pins (drain leg 0/12). See scripts/journey-sim/CALIBRATION.md §7. */
+export const THROTTLE_HARD_RATIO = 2.5 // median > this × cap ⇒ double down-step
+export const THROTTLE_DOWN_RATIO = 1.5 // median > this × cap ⇒ down-step
+export const THROTTLE_UP_RATIO = 0.1 // median < this × cap ∧ cruise > 50% ⇒ up-step
 export const DEBT_BRAKE_RATIO = 1.5 // |DUE| > 1.5× dailyCapacityEwma ⇒ new = 0
 export const SOFT_BACKLOG_RATIO = 2 // |DUE| > 2× sessionThroughput ⇒ review += .15
 export const SESSION_THROUGHPUT_MIN = 20
@@ -46,11 +61,16 @@ export const MAX_TICKDAY_ITERATIONS = 30
 export const BASE_QUOTA = { review: 0.35, new: 0.35, repair: 0.1, fun: 0.1, flex: 0.1 } as const
 export const STRUGGLE_NEW_FLOOR = 0.1
 export const STRUGGLE_NEW_CUT = 0.2
-// Deficient-strand template up-weight + over-represented down-weight. The
-// spec's tie-break floor is 1.5 (engine.md §5.3.3); the shipped values are
-// sweep-tuned so the P7 strand-convergence gate holds on the sim fixture.
+// Deficient-strand template up-weight (the spec's tie-break floor is ×1.5,
+// engine.md §5.3.3; the shipped value is sweep-tuned for P7) + the
+// proportional control law in strands.ts (weight ≈ (target/current)^exp,
+// clamped) — over-represented strands are down-weighted by the ratio < 1
+// side of the same law, so no separate down-weight constant exists (the
+// unused STRAND_OVER_WEIGHT was removed in W11 round 2).
 export const STRAND_BIAS_WEIGHT = 3
-export const STRAND_OVER_WEIGHT = 0.4
+export const STRAND_CONTROL_EXPONENT = 1.5
+export const STRAND_CONTROL_MIN = 0.15
+export const STRAND_CONTROL_MAX = 5
 export const LANGUAGE_SHARE_HARD_CAP = 0.65 // over last40 ⇒ force 2 input/fluency slots
 export const REPLAY_MIN_GAP = 3
 export const ITEM_MIN_GAP = 3
@@ -112,6 +132,14 @@ export const LENGTH_SCALE_MIN = 0.6
 export const LENGTH_SCALE_MAX = 2.5
 
 // ---- leeches (adaptivity §6.4) -------------------------------------------------
+/** W11 round 2 VALIDATED 4/2.5 (retire the §7.1 churner band) AND REJECTED
+ *  it: it does cut P3 demand (35→27:1 alone) and P4 struggle share
+ *  (52.8→44.5%), but a struggling learner's entire frontier IS churner-band
+ *  under the fixed-ability model — ~1,900 cards flag, and each flagged card
+ *  costs a fixed ~2 post-flag lapses of servings before suspension, so P10
+ *  containment blows to 6.3–7.3% (bound 3%) at ANY serve probability; flag
+ *  at 5 changes nothing. Coupled P3↔P10 conflict, escalated in
+ *  scripts/journey-sim/CALIBRATION.md §7–§8. */
 export const LEECH_LAPSES = 6
 export const LEECH_REPS_RATIO = 2
 export const LEECH_SUSPEND_EXTRA_LAPSES = 2

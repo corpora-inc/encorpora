@@ -4,6 +4,7 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { DAY_MS } from "./clock.ts"
+import { DESIRED_RETENTION } from "./constants.ts"
 import { createScheduler, JOURNEY_FSRS_PARAMS } from "./scheduler.ts"
 import type { ItemCard } from "./types.ts"
 
@@ -23,7 +24,8 @@ test("T-sched-1: JOURNEY_FSRS_PARAMS.w equals the 21 FSRS-6 weights verbatim", (
      1.8729, 0.5425, 0.0912, 0.0658, 0.1542],
   )
   assert.equal(JOURNEY_FSRS_PARAMS.maximum_interval, 365)
-  assert.equal(JOURNEY_FSRS_PARAMS.request_retention, 0.9)
+  // the pace knob lives in constants.ts (engine.md §1.1); this pins the wiring
+  assert.equal(JOURNEY_FSRS_PARAMS.request_retention, DESIRED_RETENTION)
   assert.equal(JOURNEY_FSRS_PARAMS.enable_short_term, true)
   assert.deepEqual(JOURNEY_FSRS_PARAMS.learning_steps, [])
 })
