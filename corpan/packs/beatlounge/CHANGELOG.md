@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Recorded held notes played back as zero-length dots** (#397). The ribbon
+  captured only the note-ON (a fixed one-step note) and never measured the hold,
+  so sustained playing collapsed to instant blips. Each finger now remembers the
+  note it laid and, on the next crossing or the release, **extends its duration**
+  to how long it was held (`heldNoteDuration` → an `editNote` patch). Free-timing
+  records the raw held length; quantized recording rounds it to whole steps; a
+  tap still stays one step (no undo churn). Sustains through glides (legato).
+
 ## [0.7.0] - 2026-06-25
 
 ### Added
