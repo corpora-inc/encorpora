@@ -170,6 +170,46 @@ Explicitly out of v1: constellation viz, imagepan content (schema stubs only), t
 world-radio (online-only → optional side-quests later), tutomaton grading, notifications,
 on-device FSRS optimization, journey-zh (spec'd to prove generality, built after).
 
+## D12 — Offline-first cache with online revalidation (operator directive, 2026-07-03)
+
+Everything works offline; being online only means things quietly get fresher. The house
+pattern is **cache-first, revalidate-when-appropriate**: every remote read (catalogs,
+indexes, cover images, pack metadata) hits a local persistent cache first and renders
+from it immediately — *including cold-start offline* — then, if online, revalidates in
+the background per an explicit per-resource policy (TTL / ETag) and updates in place.
+The current behavior where Home catalog images vanish offline is the named bug this
+kills. One shared cache layer (spec: `specs/offline-cache.md`), used by HomeHub,
+catalogs, Journey course-pack discovery, and packs via the host API — not N ad-hoc
+fetch wrappers. Journey ships on it; the rest of the app migrates to it.
+
+## D13 — Storage discipline + local analytics (operator directive, 2026-07-03)
+
+localStorage is reserved for **true global state** (small, hot, synchronous: settings,
+stack config, landing intent). Everything else — per-item learning state, review logs,
+caches, transcripts, media — lives in IndexedDB or the Tauri filesystem behind typed
+adapters with quotas, batching, and corruption recovery. New capability: a **local
+analytics store** — an append-only, on-device event log (activity results, card
+impressions, session shapes; ring-buffered, never uploaded) that powers engine
+calibration, the predicted-vs-actual difficulty report, "ghost of you" personal
+records, and future FSRS weight optimization. Spec: `specs/storage-analytics.md`.
+
+## D14 — Shared capability modules: pop into the tech, not the pack
+## (operator directive, 2026-07-03)
+
+The reusable **guts** of experiences are extracted into shared modules
+(`packs/shared/` workspace precedent) that both the owning pack and Journey — and any
+other pack — can mount: e.g. `@corpan/pronounce` (parlometron's whisper-score round:
+record → score → per-word feedback UI), `@corpan/squeeze` (juice-squeeze's
+reveal-a-phrase round), reader segment player, corpan-city challenge tools. A capability
+module is a mountable micro-component with the signature
+`mount(container, hostApi, spec: ActivitySpec) → Promise<ActivityResult>` — the same
+ABI as everything else (D2), just in-process. This enables **cross-pollination**:
+pronunciation-score the phrase you're looking at in Phrase Flip or a reader segment;
+Journey composes any capability inline without pack-mount cost. Full pack rounds (D8)
+remain for anchor/rare cards; capability modules are how everyday cards borrow another
+experience's technology. Extraction is incremental — start with pronounce + one game
+round; never fork logic, always move it. Spec: `specs/capability-modules.md`.
+
 ## Open decisions parked for the operator
 
 - Free-tier N for the journey quota (D9) and default streak stance (opt-in vs pact).
