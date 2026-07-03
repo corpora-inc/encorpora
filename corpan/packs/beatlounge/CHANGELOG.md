@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Scratch record: no-space-script phrases now split into real word tokens**
+  (#465). The scratch "record" segmented its groove-word labels with a naive
+  `split(/\s+/)`, so Chinese/Japanese/Thai (zh/ja/th) phrases became ONE blob
+  around the disc. It now uses the shared language-aware `tokenizePhrase`
+  (Intl.Segmenter) — the same fix class as Lingo Hero #463. (The n-gram-cap half
+  of #465 shipped with #420.)
+
 ## [0.7.0] - 2026-06-25
 
 ### Added
