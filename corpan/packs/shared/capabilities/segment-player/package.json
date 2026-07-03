@@ -1,0 +1,7 @@
+{
+  "name": "@corpan/cap-segment-player",
+  "version": "0.1.0",
+  "description": "Capability module: word-sync narration segment-range playback (extracted from earthgate-reader). Consumed via the @shared source alias, not npm.",
+  "private": true,
+  "type": "module"
+}

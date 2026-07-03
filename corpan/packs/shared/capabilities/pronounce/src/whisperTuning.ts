@@ -313,7 +313,22 @@ export const mergeForLang = (lang: string): WhisperParams => {
 // tuning so all per-language knobs surface from one place.
 // =====================================================================
 
-import type { SilencePolicy } from "./silenceWatcher"
+// The policy TYPE now lives here (this tuning table is its producer); the
+// pack's silenceWatcher.ts imports it back from this module.
+export type SilencePolicy = {
+  /** 0..1 RMS threshold below which we count a sample as silence.
+   *  Default tuned for `voice` AudioSource on Android + standard iOS
+   *  input gain. */
+  rmsThreshold?: number
+  /** RMS above threshold must persist this long before we consider
+   *  the user "speaking". Filters out room thumps and pop noises. */
+  speechStartMs?: number
+  /** After speech starts, this much continuous quiet fires the stop. */
+  silenceMs?: number
+  /** Drop the first N ms of events. Avoids triggering on the mic-tap
+   *  artifact that can precede the first real audio buffer. */
+  leadInMs?: number
+}
 
 /** Per-language overrides on top of `DEFAULT_SILENCE_POLICY`. Empty
  *  for v1 — defaults work across the board so far. Add entries as we

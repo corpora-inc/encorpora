@@ -1,0 +1,20 @@
+{
+  "language": "en",
+  "voice": "tone",
+  "sample_rate": 22050,
+  "segments": {
+    "ch01-001": { "file": "seg-001.wav", "duration_ms": 120, "pause_after_ms": 40, "words": [
+      { "word": "Hello", "start_ms": 0, "end_ms": 40 },
+      { "word": "little", "start_ms": 40, "end_ms": 80 },
+      { "word": "world", "start_ms": 80, "end_ms": 120 } ] },
+    "ch01-002": { "file": "seg-002.wav", "duration_ms": 120, "pause_after_ms": 40, "words": [
+      { "word": "Three", "start_ms": 0, "end_ms": 40 },
+      { "word": "short", "start_ms": 40, "end_ms": 80 },
+      { "word": "tones", "start_ms": 80, "end_ms": 120 } ] },
+    "ch01-003": { "file": "seg-003.wav", "duration_ms": 120, "pause_after_ms": 40, "words": [
+      { "word": "And", "start_ms": 0, "end_ms": 30 },
+      { "word": "we", "start_ms": 30, "end_ms": 60 },
+      { "word": "are", "start_ms": 60, "end_ms": 90 },
+      { "word": "done", "start_ms": 90, "end_ms": 120 } ] }
+  }
+}

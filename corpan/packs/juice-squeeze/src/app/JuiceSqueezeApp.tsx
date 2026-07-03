@@ -15,18 +15,29 @@ import { useGameLogic, FRUIT_EMOJIS } from "../hooks/useGameLogic"
 import { useTTS } from "../hooks/useTTS"
 import { useSfx } from "../hooks/useSfx"
 import { useHaptics } from "../hooks/useHaptics"
-import { useBlockSizing } from "../hooks/useBlockSizing"
+// The round UI + placement routing moved to the cap-squeeze capability
+// (capability-modules.md §4.2); this pack is their first consumer. The
+// gameStore satisfies RoundState structurally, so it plugs straight into
+// the capability's RoundStoreProvider.
+import {
+  RoundStoreProvider,
+  type RoundStoreApi,
+} from "@shared/capabilities/squeeze/src/roundStore"
+import { routeDragEnd, routeTap } from "@shared/capabilities/squeeze/src/dnd"
+import { useBlockSizing } from "@shared/capabilities/squeeze/src/hooks/useBlockSizing"
+import { TargetPhrase } from "@shared/capabilities/squeeze/src/components/TargetPhrase"
+import { SentenceArea } from "@shared/capabilities/squeeze/src/components/SentenceArea"
+import { WordBank } from "@shared/capabilities/squeeze/src/components/WordBank"
+import { BLOCK_PALETTE } from "@shared/capabilities/squeeze/src/components/WordBlock"
+import "@shared/capabilities/squeeze/styles.css"
+import { getAllFruits } from "../state/fruits"
 import { GameLayout } from "../components/GameLayout"
-import { TargetPhrase } from "../components/TargetPhrase"
-import { SentenceArea } from "../components/SentenceArea"
-import { WordBank } from "../components/WordBank"
 import { ScoreBar } from "../components/ScoreBar"
 import { CoinCounter } from "../components/CoinCounter"
 import { BottleCollection } from "../components/BottleCollection"
 import { BottleGauge } from "../components/BottleGauge"
 import { HeroVessel } from "../components/HeroVessel"
 import { Controls, ExitButton } from "../components/Controls"
-import { BLOCK_PALETTE } from "../components/WordBlock"
 import { HistoryControls } from "../components/HistoryControls"
 import { LevelCompleteModal } from "../components/modals/LevelCompleteModal"
 import { GiveUpOverlay } from "../components/modals/GiveUpOverlay"
@@ -58,23 +69,23 @@ type Props = {
   initialStackConfig?: StackConfig
 }
 
-// Locate which container + index a block currently sits in, for slot inserts.
-function locateBlock(blockId: string): { container: "bank" | number; index: number } | null {
-  const s = useGameStore.getState()
-  const bankIdx = s.bankOrder.indexOf(blockId)
-  if (bankIdx >= 0) return { container: "bank", index: bankIdx }
-  for (let r = 0; r < s.sentenceRows.length; r++) {
-    const idx = s.sentenceRows[r].indexOf(blockId)
-    if (idx >= 0) return { container: r, index: idx }
-  }
-  return null
-}
+// The gameStore doubles as the capability's round store (structural superset).
+const roundStore: RoundStoreApi = useGameStore
+
+const ALL_FRUITS = getAllFruits()
 
 export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
   const phrase = useGameStore((s) => s.phrase)
   const fruitsEnabled = useGameStore((s) => s.settings.fruitsEnabled)
   const blocks = useGameStore((s) => s.blocks)
   const correctWords = useGameStore((s) => s.correctWords)
+  // The prompt block tints with the CURRENT JUICE's color (same fruit gradient
+  // the hero liquid uses) — passed to the moved TargetPhrase as its accent
+  // (the fruit economy stays pack-side; the capability takes a plain prop).
+  const colorIndex = useGameStore((s) => s.bottleProgress.currentColorIndex)
+  const accentFruit =
+    ALL_FRUITS[((colorIndex % ALL_FRUITS.length) + ALL_FRUITS.length) % ALL_FRUITS.length] ||
+    ALL_FRUITS[0]
 
   // Responsive block sizing (FIX 1): measure .jsf-main and compute a shared
   // baseUnit from the phrase words, so bank + sentence blocks always match and
@@ -125,43 +136,11 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
 
   const onDragEnd = (e: DragEndEvent) => {
     setActiveId(null)
-    const blockId = String(e.active.id)
-    const over = e.over
-    if (!over) return
-    const overId = String(over.id)
-    const store = useGameStore.getState()
-    if (store.hasWon) return
-
-    if (overId === "bank") {
-      store.moveToBank(blockId)
-    } else if (overId.startsWith("row-")) {
-      const row = Number(overId.slice("row-".length))
-      store.moveToSentence(blockId, row)
-    } else if (overId.startsWith("slot-")) {
-      const targetBlockId = overId.slice("slot-".length)
-      if (targetBlockId === blockId) return
-      const loc = locateBlock(targetBlockId)
-      if (!loc) return
-      if (loc.container === "bank") {
-        // Insert before target in the bank. Account for removing self if it was
-        // earlier in the bank (store removes-then-inserts, so use the index of
-        // the target measured AFTER removal).
-        const self = locateBlock(blockId)
-        let idx = loc.index
-        if (self && self.container === "bank" && self.index < loc.index) idx -= 1
-        store.moveToBank(blockId, idx)
-      } else {
-        const row = loc.container
-        const self = locateBlock(blockId)
-        let idx = loc.index
-        if (self && self.container === row && self.index < loc.index) idx -= 1
-        store.moveToSentence(blockId, row, idx)
-      }
-    } else {
-      return
+    // Placement routing is the moved cap-squeeze logic (dnd.ts) — one
+    // implementation for the pack and the capability round.
+    if (routeDragEnd(roundStore, e)) {
+      logic.onSentenceChanged()
     }
-
-    logic.onSentenceChanged()
   }
 
   // ---- Swipe navigation (left = next, right = prev) -----------------------
@@ -225,21 +204,16 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
   )
 
   // Tap (no drag): a bank block goes to the END of the sentence; a sentence
-  // block returns to the bank. Then re-check win (shipped game.ts ~2498-2737).
+  // block returns to the bank. Then re-check win. Routing is the moved
+  // cap-squeeze logic (dnd.ts).
+  // NOTE: no snap here. The snap already fired on pointer-DOWN (onTapSpeak),
+  // so playing it again on the pointer-UP place made every tap a DOUBLE click
+  // ~150ms apart. One snap per tap, on touch-down.
   const onTap = useCallback(
     (blockId: string) => {
-      const store = useGameStore.getState()
-      if (store.hasWon) return
-      const inBank = store.bankOrder.includes(blockId)
-      if (inBank) {
-        store.moveToSentence(blockId)
-      } else {
-        store.moveToBank(blockId)
+      if (routeTap(roundStore, blockId)) {
+        logic.onSentenceChanged()
       }
-      // NOTE: no snap here. The snap already fired on pointer-DOWN (onTapSpeak),
-      // so playing it again on the pointer-UP place made every tap a DOUBLE click
-      // ~150ms apart. One snap per tap, on touch-down.
-      logic.onSentenceChanged()
     },
     [logic]
   )
@@ -252,6 +226,7 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
     : null
 
   return (
+    <RoundStoreProvider value={roundStore}>
     <DndContext
       sensors={sensors}
       onDragStart={onDragStart}
@@ -274,7 +249,12 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
               <BottleGauge />
             </>
           }
-          target={<TargetPhrase onSpeakTarget={(l, t) => speak(l, t)} />}
+          target={
+            <TargetPhrase
+              onSpeakTarget={(l, t) => speak(l, t)}
+              accent={accentFruit?.gradient}
+            />
+          }
           sentence={
             <SentenceArea
               blockLang={blockLang}
@@ -346,9 +326,9 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
       <DragOverlay dropAnimation={null}>
         {activeDisplay !== null && activeBlock ? (
           <div
-            className="jsf-block jsf-block--ghost"
+            className="capSqz-block capSqz-block--ghost"
             style={{
-              ["--blk" as string]:
+              ["--capSqz-blk" as string]:
                 BLOCK_PALETTE[activeBlock.originalIndex % BLOCK_PALETTE.length],
             }}
           >
@@ -357,5 +337,6 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
         ) : null}
       </DragOverlay>
     </DndContext>
+    </RoundStoreProvider>
   )
 }

@@ -97,105 +97,86 @@ body {
   z-index: 10;
 }
 
-/* --- Paragraph view --- */
+/* --- Paragraph view ---
+   The renderer + its base styles MOVED to cap-segment-player
+   (@shared/capabilities/segment-player, stylesheet imported in main.ts).
+   These are the earthgate SHELL overrides on the capability's capSeg-
+   classes: safe areas, fade-band clearances, and earth-tone theming stay
+   pack-side (the capability itself is container-relative and never reads
+   safe-area vars). */
 
-.earthgate-paragraph {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
+.earthgate-reader .capSeg-paragraph {
   /* No decorative top padding — top fade handles clearance visually. This
      centers short content between the physical screen top and the top of the
      control bar, not within an offset padded box. */
   padding: var(--safe-top) calc(24px + var(--safe-right)) var(--eg-transport-clearance) calc(24px + var(--safe-left));
   color: var(--eg-text);
-  overflow: hidden;
-  min-height: 0;
-  touch-action: pan-y;
 }
 
-.earthgate-paragraph-scroll {
-  flex: 0 1 auto;
-  max-height: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  min-height: 0;
+.earthgate-reader .capSeg-paragraph-scroll {
   /* scrollIntoView(block:"center") respects this: active word always lands
      clear of both fade bands (+20px breathing room so it isn't grazing the
      fade's edge). */
   scroll-padding-bottom: calc(var(--eg-transport-clearance) + 20px);
   scroll-padding-top: calc(var(--eg-top-clearance) + 20px);
-  /* Hide the scroll bar — the auto-follow scroll is the experience; a
-     visible track would just pull focus away from the words. */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.earthgate-paragraph-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.earthgate-paragraph-inner {
-  max-width: 640px;
-  width: 100%;
+.earthgate-reader .capSeg-paragraph-inner {
   font-size: 32px;
   line-height: 1.7;
-  text-align: center;
-  cursor: pointer;
-  /* No baseline padding — short segments center mathematically inside the
-     flex container (which is itself bounded by safe-top above and
-     transport-clearance below, so the reading area is already biased
-     toward the upper half of the viewport). For long segments,
-     paragraphView.ts adds --pad-bottom-extra for smooth-scroll room. */
 }
 
 /* Applied by paragraphView.ts when the first word would otherwise render
-   inside the top fade band. Pushes the inner down so the first word lands
-   in the clean reading area. Short segments don't get this class, so their
-   centering is preserved.
-   The +32px is the buffer below `--eg-top-clearance` (the fade-band
-   height); it pairs with the +20px breathing room inside getCleanTop()
-   so the first word lands comfortably inside the clean zone. */
-.earthgate-paragraph-inner--pad-top {
+   inside the top fade band. The +32px is the buffer below
+   `--eg-top-clearance` (the fade-band height); it pairs with the +20px
+   breathing room inside the injected getCleanTop() so the first word lands
+   comfortably inside the clean zone. */
+.earthgate-reader .capSeg-paragraph-inner--pad-top {
   padding-top: calc(var(--eg-top-clearance) + 32px);
 }
 
 /* Applied by paragraphView.ts when the content overflows the scroll
    container. Extends scrollable range so per-line smooth scrolling can
-   keep the active word at the reading target through the final lines —
-   avoids a drift toward the bottom at end of segment. */
-.earthgate-paragraph-inner--pad-bottom-extra {
+   keep the active word at the reading target through the final lines. */
+.earthgate-reader .capSeg-paragraph-inner--pad-bottom-extra {
   padding-bottom: 240px;
 }
 @media (max-height: 520px) {
-  .earthgate-paragraph-inner--pad-bottom-extra {
+  .earthgate-reader .capSeg-paragraph-inner--pad-bottom-extra {
     padding-bottom: 120px;
   }
 }
 @media (max-height: 380px) {
-  .earthgate-paragraph-inner--pad-bottom-extra {
+  .earthgate-reader .capSeg-paragraph-inner--pad-bottom-extra {
     padding-bottom: 80px;
   }
 }
 
-.earthgate-word {
-  display: inline;
-  padding: 2px 1px;
-  border-radius: 3px;
-  transition: background-color 0.05s ease;
-}
-
-.earthgate-word--active {
+.earthgate-reader .capSeg-word--active {
   background-color: var(--eg-gold);
   color: #2a1f0e;
-  border-radius: 4px;
+}
+
+/* Journey launch (activity-contract §6.2): completion affordance shown
+   after the requested segment range finishes. */
+.earthgate-journey-continue {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--eg-transport-clearance) + 18px);
+  transform: translateX(-50%);
+  z-index: 12;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  color: #2a1f0e;
+  background: var(--eg-gold);
+  box-shadow: 0 4px 14px rgba(42, 31, 14, 0.25);
+  cursor: pointer;
 }
 
 /* --- Transport bar --- */
@@ -493,12 +474,12 @@ body {
     padding: 8px 18px;
   }
 
-  .earthgate-paragraph {
+  .earthgate-reader .capSeg-paragraph {
     padding-left: calc(16px + var(--safe-left));
     padding-right: calc(16px + var(--safe-right));
   }
 
-  .earthgate-paragraph-inner {
+  .earthgate-reader .capSeg-paragraph-inner {
     font-size: 24px;
   }
 
@@ -514,7 +495,7 @@ body {
     --eg-top-clearance: 68px;
   }
 
-  .earthgate-paragraph-inner {
+  .earthgate-reader .capSeg-paragraph-inner {
     font-size: 24px;
     line-height: 1.55;
   }
@@ -574,7 +555,7 @@ body {
     --eg-top-clearance: 58px;
   }
 
-  .earthgate-paragraph-inner {
+  .earthgate-reader .capSeg-paragraph-inner {
     font-size: 20px;
     line-height: 1.4;
   }

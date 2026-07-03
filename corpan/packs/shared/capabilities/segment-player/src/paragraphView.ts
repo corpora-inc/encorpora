@@ -1,3 +1,9 @@
+// Word-sync highlight paragraph renderer — MOVED from
+// packs/earthgate-reader/src/rendering/paragraphView.ts (capability-modules.md
+// §4.3). Classes renamed earthgate-* → capSeg-* (§2.4); the clean-zone
+// geometry (where the reading band sits) is now INJECTED so the earthgate
+// shell keeps its viewport/fade-band math while capability mounts use
+// container-relative defaults.
 import type { BookSegment, ManifestSegment } from "@shared/core"
 
 export type ParagraphView = {
@@ -7,6 +13,15 @@ export type ParagraphView = {
   onPrev: (cb: () => void) => void
   onTap: (cb: () => void) => void
   dispose: () => void
+}
+
+export type ParagraphViewOptions = {
+  /** Top of the clean reading band, in VIEWPORT coordinates. Default:
+   *  container top + 12px (container-relative — capability rule §2.4). */
+  getCleanTop?: () => number
+  /** Bottom of the clean reading band, in viewport coordinates. Default:
+   *  container bottom − 12px. */
+  getCleanBottom?: () => number
 }
 
 const SWIPE_THRESHOLD = 50
@@ -24,7 +39,10 @@ const TAP_MOVEMENT_THRESHOLD = 8
  * synthesized `click` — that avoids the "need two taps after a modal
  * dismisses" bug where browsers sometimes swallow the first synthetic click.
  */
-export function createParagraphView(parent: HTMLElement): ParagraphView {
+export function createParagraphView(
+  parent: HTMLElement,
+  options?: ParagraphViewOptions,
+): ParagraphView {
   let nextCb: (() => void) | null = null
   let prevCb: (() => void) | null = null
   let tapCb: (() => void) | null = null
@@ -60,15 +78,15 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
   }
 
   const container = document.createElement("div")
-  container.className = "earthgate-paragraph"
+  container.className = "capSeg-paragraph"
   parent.appendChild(container)
 
   const scrollArea = document.createElement("div")
-  scrollArea.className = "earthgate-paragraph-scroll"
+  scrollArea.className = "capSeg-paragraph-scroll"
   container.appendChild(scrollArea)
 
   const inner = document.createElement("div")
-  inner.className = "earthgate-paragraph-inner"
+  inner.className = "capSeg-paragraph-inner"
   inner.dir = "auto"
   scrollArea.appendChild(inner)
 
@@ -117,24 +135,14 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
     startTarget = null
   })
 
-  // Viewport-absolute clean zone: the reading area between the top fade
-  // (y=0 → safe-top+top-clearance) and the transport fade at the bottom.
-  // +20px buffer so words land clearly outside each fade, not grazing them.
-  function getCleanTop(): number {
-    const safeTop = parseFloat(getComputedStyle(container).paddingTop) || 0
-    const topClearance =
-      parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue("--eg-top-clearance"),
-      ) || 80
-    return safeTop + topClearance + 20
-  }
-  function getCleanBottom(): number {
-    const transportClearance =
-      parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue("--eg-transport-clearance"),
-      ) || 130
-    return window.innerHeight - transportClearance - 20
-  }
+  // The clean reading band between the consumer's top chrome and bottom
+  // chrome, in viewport coordinates. The earthgate shell injects its
+  // fade-band/transport math here; the default is container-relative.
+  const getCleanTop =
+    options?.getCleanTop ?? (() => container.getBoundingClientRect().top + 12)
+  const getCleanBottom =
+    options?.getCleanBottom ??
+    (() => container.getBoundingClientRect().bottom - 12)
 
   return {
     setSegment(_seg: BookSegment, manifestSeg: ManifestSegment | undefined) {
@@ -154,15 +162,15 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
           inner.appendChild(document.createTextNode(" "))
         }
         const span = document.createElement("span")
-        span.className = "earthgate-word"
+        span.className = "capSeg-word"
         span.textContent = manifestSeg.words[i].word
         inner.appendChild(span)
         wordSpans.push(span)
       }
 
       // Reset conditional classes from previous segment, scroll to top.
-      inner.classList.remove("earthgate-paragraph-inner--pad-top")
-      inner.classList.remove("earthgate-paragraph-inner--pad-bottom-extra")
+      inner.classList.remove("capSeg-paragraph-inner--pad-top")
+      inner.classList.remove("capSeg-paragraph-inner--pad-bottom-extra")
       scrollArea.scrollTop = 0
 
       // After layout:
@@ -179,13 +187,13 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
         const fadeBottom = getCleanTop()
         const firstRect = wordSpans[0].getBoundingClientRect()
         if (firstRect.top < fadeBottom) {
-          inner.classList.add("earthgate-paragraph-inner--pad-top")
+          inner.classList.add("capSeg-paragraph-inner--pad-top")
           scrollArea.scrollTop = 0
         }
         const cleanBottom = getCleanBottom()
         const lastRect = wordSpans[wordSpans.length - 1].getBoundingClientRect()
         if (lastRect.bottom > cleanBottom - 20) {
-          inner.classList.add("earthgate-paragraph-inner--pad-bottom-extra")
+          inner.classList.add("capSeg-paragraph-inner--pad-bottom-extra")
         }
       })
     },
@@ -195,7 +203,7 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
 
       // Remove previous highlight
       if (activeIndex >= 0 && activeIndex < wordSpans.length) {
-        wordSpans[activeIndex].classList.remove("earthgate-word--active")
+        wordSpans[activeIndex].classList.remove("capSeg-word--active")
       }
 
       activeIndex = index
@@ -203,7 +211,7 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
       // Add new highlight
       if (index >= 0 && index < wordSpans.length) {
         const span = wordSpans[index]
-        span.classList.add("earthgate-word--active")
+        span.classList.add("capSeg-word--active")
 
         // Continuous easing scroll. On every new line we recompute the
         // target scrollTop that would place the active word at the reading

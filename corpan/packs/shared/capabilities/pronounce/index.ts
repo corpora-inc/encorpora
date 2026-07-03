@@ -1,0 +1,513 @@
+// cap-pronounce — the whisper-score round as a capability module
+// (capability-modules.md §4.1), extracted from pronunciation-coach
+// (Parlometron): show target text → hold-to-record → whisper score →
+// verdict headline + per-word pills. The pack keeps its deck/swipe chrome,
+// streak/quota, model-setup UI and multiplayer; it consumes the moved
+// tuning tables, text helpers, recorder and result view from here.
+import "./styles.css"
+import type {
+  ActivityItemResult,
+  ActivityResult,
+  ActivitySpec,
+  CapabilityAvailability,
+  CapabilityHandle,
+  CapabilityHostApi,
+  CapabilityModule,
+  SttTranscriptionResult,
+} from "@shared/capabilities/core"
+import {
+  clamp01,
+  createActiveClock,
+  createSettleOnce,
+  formatErr,
+  makeAbandonedResult,
+} from "@shared/capabilities/core"
+import { isWhisperSupported } from "./src/whisperLangs"
+import { visibleModels, visibleDefaultModel } from "./src/modelRegistry"
+import {
+  bindPushToTalk,
+  createPushToTalkRecorder,
+  tryPrepareOnce,
+  type PushToTalkRecorder,
+} from "./src/recorder"
+import {
+  clearResultSlots,
+  renderPronounceResult,
+  resultSlotsAboveHtml,
+  resultSlotsBelowHtml,
+  type PronounceVerdict,
+} from "./src/resultView"
+import { stimulusBodyHtml, langBadgeText } from "./src/roundView"
+import { escapeHtml } from "./src/text"
+import { capPronounceT, type CapPronounceStringKey } from "./strings"
+
+// Re-exports: the pronunciation-coach pack (and future consumers) import
+// the moved modules through here / via deep @shared/capabilities/pronounce/*
+// paths. One source file per concern — never copied.
+export * from "./src/whisperLangs"
+export * from "./src/whisperTuning"
+export * from "./src/scoringTuning"
+export * from "./src/modelRegistry"
+export * from "./src/text"
+export * from "./src/session"
+export * from "./src/recorder"
+export * from "./src/resultView"
+export * from "./src/roundView"
+export { capPronounceT, type CapPronounceStringKey } from "./strings"
+
+export interface CapPronounceParams {
+  /** REQUIRED. The exact text to pronounce (target language). */
+  text: string
+  /** BCP-ish corpan code of `text`. Must pass `isWhisperSupported` or
+   *  availability = unavailable. */
+  lang: string
+  romanization?: string
+  /** Native gloss shown under the stimulus (omit on single-language stacks). */
+  nativeText?: string
+  /** "installed-only" (default for the Journey feed) never triggers install
+   *  UI; checkAvailability reports needs-model instead. "offer-install"
+   *  renders the module's minimal inline install prompt (pop-in surface). */
+  modelPolicy?: "installed-only" | "offer-install"
+  /** Attempts allowed before auto-settle (default 3; best attempt wins). */
+  maxAttempts?: number
+  /** Speak the target once on first resume (default false). */
+  autoSpeakFirst?: boolean
+  startPaused?: boolean
+}
+
+const readParams = (spec: ActivitySpec): CapPronounceParams =>
+  (spec.params ?? {}) as unknown as CapPronounceParams
+
+type Attempt = {
+  verdict: PronounceVerdict
+  result: SttTranscriptionResult
+}
+
+const mount = (
+  container: HTMLElement,
+  hostApi: CapabilityHostApi,
+  spec: ActivitySpec,
+): CapabilityHandle => {
+  const params = readParams(spec)
+  const settle = createSettleOnce()
+  const clock = createActiveClock(undefined, params.startPaused === true)
+  const uiLang = hostApi.getStackConfig().languages[0] || "en"
+  const tt = (key: CapPronounceStringKey, p?: Record<string, string>) =>
+    capPronounceT(key, uiLang, p)
+
+  const maxAttempts = Math.max(1, params.maxAttempts ?? 3)
+  const showRoman = hostApi.getStackConfig().showRomanization !== false
+
+  const root = document.createElement("div")
+  root.className = "capPron-root"
+  const badge = langBadgeText(params.lang)
+  root.innerHTML = `
+    <div class="capPron-card" data-cappron-card>
+      <div class="capPron-card-above">${resultSlotsAboveHtml()}</div>
+      <div class="capPron-card-center">
+        ${stimulusBodyHtml({
+          targetText: params.text ?? "",
+          romanization: params.romanization,
+          nativeText: params.nativeText,
+          showRomanization: showRoman,
+        })}
+      </div>
+      <div class="capPron-card-below">${resultSlotsBelowHtml()}</div>
+    </div>
+    <div class="capPron-stage">
+      ${badge ? `<span class="capPron-lang-badge">${escapeHtml(badge)}</span>` : ""}
+      <button class="capPron-mic" type="button" disabled>
+        <span class="capPron-mic-icon">●</span>
+      </button>
+      <div class="capPron-mic-label">${escapeHtml(tt("bootLoading"))}</div>
+      <div class="capPron-error" hidden></div>
+    </div>
+  `
+  container.appendChild(root)
+  const card = root.querySelector<HTMLElement>("[data-cappron-card]")!
+  const micBtn = root.querySelector<HTMLButtonElement>(".capPron-mic")!
+  const micIcon = root.querySelector<HTMLSpanElement>(".capPron-mic-icon")!
+  const micLabel = root.querySelector<HTMLDivElement>(".capPron-mic-label")!
+  const errorEl = root.querySelector<HTMLDivElement>(".capPron-error")!
+
+  let disposed = false
+  let paused = params.startPaused === true
+  let modelReady = false
+  let interacted = false
+  let hintsUsed = 0 // replays of the target TTS
+  let firstRecordLatencyMs: number | null = null
+  const attempts: Attempt[] = []
+  let recorder: PushToTalkRecorder | null = null
+  let unbindMic: (() => void) | null = null
+  let uiState: "idle" | "recording" | "scoring" = "idle"
+  let timeboxTimer: ReturnType<typeof setTimeout> | null = null
+
+  const stt = hostApi.stt
+
+  const speak = (lang: string, text: string) => {
+    void hostApi.speak(lang, text).catch((err) => {
+      console.error("[cap-pronounce] speak failed:", err)
+    })
+  }
+
+  const showError = (message: string) => {
+    errorEl.textContent = message
+    errorEl.hidden = false
+  }
+  const clearError = () => {
+    errorEl.textContent = ""
+    errorEl.hidden = true
+  }
+
+  const setUiState = (next: "idle" | "recording" | "scoring") => {
+    uiState = next
+    micBtn.classList.remove("recording", "scoring")
+    micBtn.disabled = false
+    if (next === "idle") {
+      micIcon.textContent = "●"
+      micLabel.textContent = modelReady ? tt("holdToSpeak") : tt("loadingModel")
+      micBtn.disabled = !modelReady || paused || settle.settled()
+    } else if (next === "recording") {
+      micBtn.classList.add("recording")
+      micIcon.textContent = "■"
+      micLabel.textContent = tt("listeningReleaseToStop")
+    } else if (next === "scoring") {
+      micBtn.classList.add("scoring")
+      micIcon.innerHTML = `<span class="capPron-spinner"></span>`
+      micLabel.textContent = tt("scoring")
+      micBtn.disabled = true
+    }
+  }
+
+  const bestAttempt = (): Attempt | null => {
+    let best: Attempt | null = null
+    for (const a of attempts) {
+      if (a.verdict.silent) continue
+      if (!best || a.verdict.overall > best.verdict.overall) best = a
+    }
+    return best
+  }
+
+  const buildResult = (): ActivityResult => {
+    const best = bestAttempt()
+    const overall = best ? clamp01(best.verdict.overall) : 0
+    // Outcome tiers from the pack's proven verdict bands: pass ≥ 0.85,
+    // partial ≥ 0.6, else fail.
+    const outcome: ActivityItemResult["outcome"] =
+      overall >= 0.85 ? "pass" : overall >= 0.6 ? "partial" : "fail"
+    const sttEvidence = best
+      ? {
+          overallScore: overall,
+          perWord: (best.result.words ?? []).map((w) => ({
+            word: w.word,
+            probability: w.probability,
+            startMs: w.startMs,
+            endMs: w.endMs,
+          })),
+        }
+      : undefined
+    const detail = {
+      numbers: {
+        attempts: attempts.length,
+        ...(best
+          ? {
+              bestOverall: best.result.overallScore,
+              bestTranscript: best.result.transcriptScore,
+              bestAcoustic: best.result.acousticScore,
+              bestLikelihood: best.result.likelihoodScore,
+              bestNoSpeechProb: best.result.noSpeechProb,
+              bestFreeVsConstrained: best.result.freeVsConstrainedSimilarity,
+            }
+          : {}),
+      },
+      ...(sttEvidence ? { stt: sttEvidence } : {}),
+    }
+    const perItem: ActivityItemResult[] = spec.itemRefs.map((itemRef) => ({
+      itemRef,
+      outcome,
+      ...(firstRecordLatencyMs !== null
+        ? { latencyMs: Math.round(firstRecordLatencyMs) }
+        : {}),
+      hintsUsed,
+      detail,
+    }))
+    return {
+      specId: spec.specId,
+      score: overall,
+      perItem,
+      durationMs: Math.round(clock.activeMs()),
+      detail,
+    }
+  }
+
+  const settleMeasured = () => {
+    if (settle.settled()) return
+    if (attempts.length === 0) {
+      settle.settle(makeAbandonedResult(spec, clock.activeMs()))
+    } else {
+      settle.settle(buildResult())
+    }
+    clearTimebox()
+    setUiState("idle")
+    micBtn.disabled = true
+  }
+
+  const settleSttUnavailable = () => {
+    if (settle.settled()) return
+    // Scheduler bug / degraded host — surfaced, never hidden (§2.3.6).
+    // feed-ux §6.3 keys off flags.sttUnavailable.
+    settle.settle(
+      makeAbandonedResult(spec, clock.activeMs(), {
+        flags: { sttUnavailable: true },
+      }),
+    )
+    clearTimebox()
+  }
+
+  const clearTimebox = () => {
+    if (timeboxTimer !== null) {
+      clearTimeout(timeboxTimer)
+      timeboxTimer = null
+    }
+  }
+  const armTimebox = () => {
+    if (settle.settled() || typeof spec.timeboxSec !== "number" || spec.timeboxSec <= 0) return
+    clearTimebox()
+    const remaining = spec.timeboxSec * 1000 - clock.activeMs()
+    if (remaining <= 0) {
+      settleMeasured()
+      return
+    }
+    timeboxTimer = setTimeout(() => {
+      if (!paused) settleMeasured()
+    }, remaining)
+  }
+
+  const onScored = (result: SttTranscriptionResult) => {
+    if (disposed || settle.settled()) return
+    const verdict = renderPronounceResult(card, result, {
+      expectedText: params.text ?? "",
+      compareLang: params.lang ?? "",
+      uiLang,
+      speak,
+    })
+    attempts.push({ verdict, result })
+    // Silent attempts (mic heard nothing) don't burn the attempt budget —
+    // the user never actually tried the phrase (pack streak precedent).
+    const realAttempts = attempts.filter((a) => !a.verdict.silent).length
+    if (realAttempts >= maxAttempts || verdict.band === "top") {
+      settleMeasured()
+    }
+  }
+
+  // Tap the target phrase to hear it (hint — counted).
+  card.addEventListener("click", (e) => {
+    const t = e.target as HTMLElement | null
+    if (!t) return
+    if (t.closest("button, input, a")) return
+    if (!t.closest(".capPron-target, .capPron-romanization")) return
+    if (paused || settle.settled()) return
+    hintsUsed += 1
+    speak(params.lang ?? "en", params.text ?? "")
+  })
+
+  const boot = async () => {
+    if (!stt) {
+      root.querySelector(".capPron-stage")?.classList.add("capPron-stage--dead")
+      micLabel.textContent = tt("scoringUnavailableTitle")
+      micBtn.disabled = true
+      settleSttUnavailable()
+      return
+    }
+    if (!params.lang || !isWhisperSupported(params.lang)) {
+      micLabel.textContent = tt("scoringUnavailableTitle")
+      micBtn.disabled = true
+      settleSttUnavailable()
+      return
+    }
+
+    recorder = createPushToTalkRecorder(stt, {
+      model: () => {
+        // Best-effort: whatever the host has loaded; the visible default's
+        // folder is the scoring-params key fallback.
+        return visibleDefaultModel().folder
+      },
+      onState: (s) => {
+        if (disposed) return
+        setUiState(s)
+      },
+      onResult: onScored,
+      onError: (err, code, phase) => {
+        if (disposed || settle.settled()) return
+        if (code === "STT_UNAVAILABLE" || code === "MODEL_NOT_INSTALLED") {
+          settleSttUnavailable()
+          return
+        }
+        showError(
+          phase === "start"
+            ? tt("errStartRecording", { error: formatErr(err) })
+            : tt("errScoringFailed", { error: formatErr(err) }),
+        )
+      },
+    })
+
+    unbindMic = bindPushToTalk(micBtn, {
+      canStart: () =>
+        uiState === "idle" && modelReady && !paused && !settle.settled(),
+      onStart: () => {
+        interacted = true
+        clearError()
+        clearResultSlots(card)
+        if (firstRecordLatencyMs === null) firstRecordLatencyMs = clock.activeMs()
+        void recorder!.start({ text: params.text ?? "", lang: params.lang })
+      },
+      onStop: () => {
+        if (uiState === "recording") void recorder!.stop()
+      },
+    })
+
+    // prepare() is LOCAL-ONLY — never downloads (parlometron rule). A module
+    // finding its model unexpectedly absent settles sttUnavailable unless the
+    // consumer opted into the inline install prompt (pop-in surface).
+    const model = visibleDefaultModel()
+    try {
+      await tryPrepareOnce(stt, model.folder, {
+        timeoutMs: model.approxSizeMB >= 1000 ? 180_000 : 60_000,
+        label: `Loading ${model.label} model`,
+      })
+      if (disposed) return
+      modelReady = true
+      setUiState("idle")
+      if (!paused && params.autoSpeakFirst) {
+        speak(params.lang, params.text ?? "")
+      }
+    } catch (err) {
+      if (disposed) return
+      if (params.modelPolicy === "offer-install" && stt.installModel) {
+        renderInstallPrompt(model.folder)
+      } else {
+        console.error("[cap-pronounce] model prepare failed:", err)
+        settleSttUnavailable()
+      }
+    }
+  }
+
+  const renderInstallPrompt = (modelFolder: string) => {
+    const m = visibleModels().find((v) => v.folder === modelFolder)
+    const prompt = document.createElement("div")
+    prompt.className = "capPron-install"
+    prompt.innerHTML = `
+      <button class="capPron-install-btn" type="button">
+        ${escapeHtml(tt("loadingModel"))} · ~${m?.approxSizeMB ?? "?"} MB
+      </button>
+    `
+    root.querySelector(".capPron-stage")?.appendChild(prompt)
+    prompt
+      .querySelector<HTMLButtonElement>(".capPron-install-btn")!
+      .addEventListener("click", async () => {
+        try {
+          prompt.classList.add("capPron-install--busy")
+          await stt!.installModel!({ model: modelFolder })
+          await tryPrepareOnce(stt!, modelFolder, {
+            timeoutMs: 180_000,
+            label: "Loading model",
+          })
+          modelReady = true
+          prompt.remove()
+          setUiState("idle")
+        } catch (err) {
+          console.error("[cap-pronounce] inline install failed:", err)
+          prompt.classList.remove("capPron-install--busy")
+          showError(formatErr(err))
+        }
+      })
+  }
+
+  void boot()
+  armTimebox()
+
+  return {
+    result: settle.promise,
+    pause() {
+      if (paused) return
+      paused = true
+      clock.pause()
+      clearTimebox()
+      // Cancel any in-flight recording — mic released (§2 contract).
+      recorder?.cancel()
+      if (uiState === "recording") setUiState("idle")
+      micBtn.disabled = true
+    },
+    resume() {
+      if (!paused) return
+      paused = false
+      clock.resume()
+      armTimebox()
+      setUiState(uiState)
+      if (!interacted && params.autoSpeakFirst && modelReady) {
+        speak(params.lang, params.text ?? "")
+      }
+    },
+    dispose() {
+      if (disposed) return
+      disposed = true
+      clearTimebox()
+      if (!settle.settled()) {
+        if (attempts.length > 0) settle.settle(buildResult())
+        else settle.settle(makeAbandonedResult(spec, clock.activeMs()))
+      }
+      unbindMic?.()
+      recorder?.dispose()
+      root.remove()
+    },
+  }
+}
+
+const checkAvailability = async (
+  hostApi: CapabilityHostApi,
+  spec?: ActivitySpec,
+): Promise<CapabilityAvailability> => {
+  const stt = hostApi.stt
+  if (!stt) return { state: "unavailable", reason: "host has no stt seam" }
+  const params = spec ? readParams(spec) : undefined
+  if (params?.lang && !isWhisperSupported(params.lang)) {
+    return {
+      state: "unavailable",
+      reason: `whisper cannot score ${params.lang}`,
+    }
+  }
+  // Cheap local probe only — NEVER downloads or loads models here.
+  try {
+    if (stt.listInstalled) {
+      const folders = visibleModels().map((m) => m.folder)
+      const installed = await stt.listInstalled({ models: folders })
+      const usable = installed.models.some((m) => m.valid)
+      if (!usable) {
+        const smallest = visibleModels().reduce(
+          (min, m) => (m.approxSizeMB < min ? m.approxSizeMB : min),
+          Number.POSITIVE_INFINITY,
+        )
+        return {
+          state: "needs-model",
+          model: "stt",
+          ...(Number.isFinite(smallest) ? { sizeMB: smallest } : {}),
+        }
+      }
+    }
+  } catch (err) {
+    console.warn("[cap-pronounce] listInstalled probe failed:", err)
+  }
+  return { state: "ready" }
+}
+
+export const capability: CapabilityModule = {
+  meta: {
+    id: "cap-pronounce",
+    version: "0.1.0",
+    modelNeeds: ["stt"],
+    cssPrefix: "capPron",
+    usesHostApis: ["speak", "getStackConfig", "stt"],
+  },
+  mount,
+  checkAvailability,
+}

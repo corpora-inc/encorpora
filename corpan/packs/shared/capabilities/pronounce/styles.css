@@ -1,0 +1,502 @@
+/* cap-pronounce — every selector starts with .capPron- (§2.4). MOVED from
+   packs/pronunciation-coach/src/styles.css (the stimulus, mic, result-banner,
+   per-word pill, transcript and chip rule sets, renamed pc- → capPron- at
+   move time). Theme via --capPron-* custom properties (defaults = the pack's
+   light theme); consumers override on their own wrapper (the pack maps its
+   --pc-* theme onto these, keeping dark mode + purple accent).
+   Container-relative: no viewport units, no fixed positioning, no
+   safe-area env(). Defensive baseline on the root: identical under Tailwind
+   preflight and bare UA styles. */
+
+.capPron-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  isolation: isolate;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.4;
+  color: var(--capPron-fg, #1a1a23);
+  background: var(--capPron-bg, transparent);
+  padding: 14px;
+  gap: 10px;
+  overflow: hidden;
+}
+.capPron-root *,
+.capPron-root *::before,
+.capPron-root *::after {
+  box-sizing: border-box;
+}
+
+/* The round card: result slots above, stimulus center, detail below. */
+.capPron-card {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+  overflow-y: auto;
+  text-align: center;
+}
+.capPron-card-above,
+.capPron-card-below {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 0;
+}
+.capPron-card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 0;
+}
+
+/* ---- Stimulus (moved from .pc-target / .pc-romanization / .pc-native;
+        the vw-clamped hero sizing stays a pack override) ---- */
+.capPron-target {
+  font-size: var(--capPron-target-size, 30px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--capPron-fg, #1a1a23);
+  margin: 0;
+  word-break: break-word;
+  max-width: 880px;
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+.capPron-target:hover { color: var(--capPron-accent, #7c3aed); }
+.capPron-target:active { transform: scale(0.99); }
+
+.capPron-romanization {
+  font-size: var(--capPron-roman-size, 15px);
+  font-weight: 500;
+  color: var(--capPron-muted, #6b6b78);
+  margin: 0;
+  font-style: italic;
+  max-width: 720px;
+  cursor: pointer;
+}
+.capPron-romanization:hover { color: var(--capPron-fg, #1a1a23); }
+
+.capPron-native {
+  font-size: var(--capPron-native-size, 15px);
+  font-weight: 500;
+  color: var(--capPron-muted, #6b6b78);
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ---- Mic stage (moved from .pc-mic*; fluid vmin sizing stays a pack
+        override — the capability default is a fixed, card-friendly size) ---- */
+.capPron-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  margin-top: auto;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.capPron-lang-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--capPron-muted, #6b6b78);
+  border: 1px solid var(--capPron-border, rgba(0, 0, 0, 0.08));
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.capPron-mic {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  width: var(--capPron-mic-size, 64px);
+  height: var(--capPron-mic-size, 64px);
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--capPron-accent, #7c3aed) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  color: white;
+  font-size: var(--capPron-mic-glyph-size, 26px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--capPron-shadow, 0 6px 20px rgba(20, 20, 40, 0.08));
+  transition: background 120ms ease, transform 120ms ease;
+  font-family: inherit;
+  /* Hold-to-speak: stop the WebView turning a press-and-hold into a
+     scroll, text selection, or long-press callout — any of which would
+     steal the pointer mid-hold and abort recording. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.capPron-mic:hover { background: color-mix(in oklab, var(--capPron-accent-hover, #6d28d9) 92%, transparent); }
+.capPron-mic:active { transform: scale(0.96); }
+.capPron-mic[disabled] {
+  background: color-mix(in oklab, var(--capPron-muted, #6b6b78) 80%, transparent);
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.capPron-mic[disabled]:hover { background: color-mix(in oklab, var(--capPron-muted, #6b6b78) 80%, transparent); }
+
+.capPron-mic.recording {
+  background: var(--capPron-bad, #dc2626);
+  animation: capPron-pulse 1.1s ease-in-out infinite;
+}
+@keyframes capPron-pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(220, 38, 38, 0.45); }
+  50%      { transform: scale(1.05); box-shadow: 0 0 0 18px rgba(220, 38, 38, 0); }
+}
+
+.capPron-mic.scoring {
+  background: var(--capPron-muted, #6b6b78);
+  cursor: progress;
+}
+
+.capPron-spinner {
+  display: inline-block;
+  width: var(--capPron-spinner-size, 22px);
+  height: var(--capPron-spinner-size, 22px);
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: capPron-spin 0.9s linear infinite;
+}
+@keyframes capPron-spin {
+  to { transform: rotate(360deg); }
+}
+
+.capPron-mic-label {
+  font-size: 13px;
+  color: var(--capPron-muted, #6b6b78);
+  font-weight: 500;
+  /* Lock the label to a single line so changing the text can never wrap
+     and push the mic up the screen — the mic must not move regardless of
+     label content. */
+  min-height: 18px;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+}
+
+.capPron-error {
+  font-size: 12px;
+  color: var(--capPron-bad, #dc2626);
+  max-width: 100%;
+  text-align: center;
+}
+
+.capPron-install {
+  display: flex;
+  justify-content: center;
+}
+.capPron-install-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--capPron-border, rgba(0, 0, 0, 0.08));
+  background: var(--capPron-card, #ffffff);
+  color: var(--capPron-fg, #1a1a23);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+.capPron-install--busy .capPron-install-btn {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ---- Result composition (moved from .pc-result-*) ----
+   No card chrome on the decorations: no border, no shadow, no separate
+   background. Same surface as the phrase — the decorations are part of the
+   same composition, not a popover. ---- */
+
+.capPron-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--capPron-accent-soft, rgba(124, 58, 237, 0.12));
+  color: var(--capPron-fg, #1a1a23);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  /* Compact and subordinate to the phrase. The phrase is the verb of this
+     screen; the banner is the adverb. */
+  max-width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  animation: capPron-banner-in 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.capPron-banner[hidden] { display: none; }
+.capPron-banner.good {
+  background: rgba(22, 163, 74, 0.16);
+  color: var(--capPron-good, #16a34a);
+}
+.capPron-banner.okay {
+  background: rgba(217, 119, 6, 0.16);
+  color: var(--capPron-okay, #d97706);
+}
+.capPron-banner.bad {
+  background: rgba(220, 38, 38, 0.16);
+  color: var(--capPron-bad, #dc2626);
+}
+.capPron-banner-score {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+}
+.capPron-banner-sep {
+  opacity: 0.5;
+}
+.capPron-banner-text {
+  font-weight: 600;
+}
+@keyframes capPron-banner-in {
+  from { transform: translateY(-6px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.capPron-banner.leaving {
+  animation: capPron-banner-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes capPron-banner-out {
+  to { transform: translateY(-4px); opacity: 0; }
+}
+
+.capPron-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: var(--capPron-result-col, 600px);
+  margin: 0 auto;
+  animation: capPron-detail-in 280ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms backwards;
+}
+.capPron-detail[hidden] { display: none; }
+@keyframes capPron-detail-in {
+  from { transform: translateY(6px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+.capPron-detail.leaving {
+  animation: capPron-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes capPron-detail-out {
+  to { transform: translateY(4px); opacity: 0; }
+}
+
+/* "Heard you say" slot — sits between the score banner and the phrase. */
+.capPron-transcript-up {
+  width: 100%;
+  max-width: var(--capPron-result-col, 600px);
+  margin: 8px auto 0;
+  animation: capPron-detail-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 40ms backwards;
+}
+.capPron-transcript-up[hidden] { display: none; }
+.capPron-transcript-up.leaving {
+  animation: capPron-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* Bars-above slot — kept as an empty slot for layout stability; the
+   renderer leaves it hidden (the headline % + per-word pills carry the
+   score story). */
+.capPron-bars-up { display: none; }
+
+.capPron-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--capPron-result-col, 600px);
+  margin: 0 auto;
+}
+.capPron-chip {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--capPron-accent-soft, rgba(124, 58, 237, 0.12));
+  color: var(--capPron-fg, #1a1a23);
+  font-weight: 500;
+}
+.capPron-chip-warn {
+  background: rgba(217, 119, 6, 0.18);
+  color: var(--capPron-okay, #d97706);
+}
+.capPron-diagnostics {
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+/* "Heard you say" — stacked, centered block. Small muted label on its own
+   line, then ▶ + transcript inline below. The whole block is the tap
+   target; the ▶ is a visual affordance. Both the success and empty branches
+   share this shape so layout stays steady between attempts. */
+.capPron-transcripts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: var(--capPron-result-col, 600px);
+  margin: 4px auto 0;
+}
+.capPron-transcript-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  /* Tappable height comfortable for thumbs (≥44pt). The whole block is
+     tap-to-play, not just the ▶ button. */
+  min-height: 56px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: var(--capPron-card, #ffffff);
+  border: 1px solid var(--capPron-border, rgba(0, 0, 0, 0.08));
+  text-align: center;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.capPron-transcript-row:hover { background: var(--capPron-accent-soft, rgba(124, 58, 237, 0.12)); }
+.capPron-transcript-row:active { transform: scale(0.99); }
+.capPron-transcript-row.empty {
+  /* Failure branch keeps the same shape; just non-interactive. */
+  cursor: default;
+}
+.capPron-transcript-row.empty:hover { background: var(--capPron-card, #ffffff); }
+.capPron-transcript-row.empty:active { transform: none; }
+.capPron-transcript-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  font-weight: 600;
+}
+.capPron-transcript-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* Cap the inline row to the column so a long transcript ellipsizes
+     within the block instead of pushing it wider. */
+  max-width: 100%;
+  min-width: 0;
+}
+.capPron-transcript-play {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: var(--capPron-accent-soft, rgba(124, 58, 237, 0.12));
+  color: var(--capPron-fg, #1a1a23);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  font-family: inherit;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.capPron-transcript-row:hover .capPron-transcript-play {
+  background: var(--capPron-accent, #7c3aed);
+  color: var(--capPron-card, #ffffff);
+}
+.capPron-transcript-play:active { transform: scale(0.92); }
+.capPron-transcript-text {
+  /* min-width:0 lets ellipsis kick in inside the flex line. */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-style: italic;
+  font-size: 15px;
+}
+.capPron-transcript-text.empty {
+  opacity: 0.6;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.capPron-words {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  /* No inner cap; parent .capPron-detail already constrains
+     to var(--capPron-result-col). */
+}
+/* RTL target languages (Arabic, Hebrew, Persian, Urdu, pa-Arab):
+   reverse pill order so the first expected word is on the right.
+   `row-reverse` flips only the container's main-axis order — pill
+   internals are flipped separately below so the ▸ affordance moves
+   to the LEFT of the text and points leftward (◂) to match reading
+   direction. */
+.capPron-words-rtl { flex-direction: row-reverse; }
+.capPron-words-rtl .capPron-word::after {
+  content: "◂";
+  order: -1;
+  margin-left: 0;
+  margin-right: 6px;
+}
+/* RTL "Heard you say" row: play affordance moves to the right side
+   of the transcript and the ▶ flips to ◀. */
+.capPron-transcript-line-rtl { flex-direction: row-reverse; }
+/* Per-word pills double as TTS buttons — tap one to hear it spoken. */
+.capPron-word {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--capPron-card, #ffffff);
+  border: 1px solid var(--capPron-border, rgba(0, 0, 0, 0.08));
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+.capPron-word:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18); }
+.capPron-word:active { transform: scale(0.96); }
+.capPron-word::after {
+  content: "▸";
+  margin-left: 6px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+.capPron-word.good { background: rgba(22, 163, 74, 0.15); color: var(--capPron-good, #16a34a); border-color: rgba(22, 163, 74, 0.30); }
+.capPron-word.okay { background: rgba(217, 119, 6, 0.15); color: var(--capPron-okay, #d97706); border-color: rgba(217, 119, 6, 0.30); }
+.capPron-word.bad  { background: rgba(220, 38, 38, 0.15); color: var(--capPron-bad, #dc2626);  border-color: rgba(220, 38, 38, 0.30); }

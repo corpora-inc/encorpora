@@ -39,7 +39,7 @@ import {
   type RoundHistory,
   type WinTarget,
 } from "./multiplayer/state"
-import { defaultModel, modelById } from "./modelRegistry"
+import { defaultModel, modelById } from "@shared/capabilities/pronounce/src/modelRegistry"
 
 const PICKER_STORAGE_KEY = "pc:parlometron:last-mode"
 // Solo's persisted state (`{ mode, history, … }`). We only need the
