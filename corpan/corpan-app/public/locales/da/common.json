@@ -335,6 +335,10 @@
       "surprise": {
         "label": "Overrask mig!",
         "desc": "Tag mig et sjovt sted hen."
+      },
+      "journey": {
+        "label": "Følg Journey",
+        "desc": "Et guidet kursus — appen vælger hvert næste skridt"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample det sprog, du lærer. Scratch det, til det sidder fast."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Din guidede vej, kort for kort"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "Installerer…",
     "installed": "Installeret",
     "retry": "Prøv igen"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Din guidede vej, kort for kort",
+    "heroCard": {
+      "title": "Din Journey",
+      "progress": "{{unit}} · {{count}} kort til dagens mål"
+    },
+    "heroCta": {
+      "start": "Start din Journey",
+      "continue": "Fortsæt"
+    },
+    "chrome": {
+      "home": "Hjem",
+      "menu": "Journey-indstillinger",
+      "unit": "Enhed {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Tjek",
+      "continue": "Fortsæt",
+      "skipHint": "Swipe igen for at springe over",
+      "retry": "Prøv igen",
+      "showAnswer": "Vis svaret",
+      "answerWas": "Svaret var",
+      "comeBackNote": "Vi vender tilbage til det.",
+      "whyThisCard": "Hvorfor dette kort?",
+      "whyNew": "Noget nyt fra din nuværende enhed.",
+      "whyReview": "En repetition — afstanden holder den stærk.",
+      "whyRepair": "Et nyt kig på noget svært.",
+      "whyGuided": "En del af din guidede vej.",
+      "typeWhatYouHear": "Skriv det, du hører",
+      "typeHere": "Skriv her…",
+      "tapToOrder": "Tryk på ordene i rækkefølge",
+      "matchPairs": "Find parrene",
+      "flipToReveal": "Tryk for at afsløre",
+      "knewIt": "Det vidste jeg",
+      "didntKnow": "Ikke endnu",
+      "speakNow": "Tal nu",
+      "listen": "Lyt",
+      "listenSlow": "Langsommere",
+      "hint": "Hint",
+      "correct": "Rigtigt",
+      "incorrect": "Ikke helt",
+      "pickTranslation": "Vælg oversættelsen",
+      "pickWhatYouHear": "Vælg det, du hørte",
+      "fillTheBlank": "Udfyld hullet",
+      "newItem": "Ny",
+      "reviewedEarlier": "Set tidligere"
+    },
+    "intro": {
+      "listenAndEcho": "Lyt, og sig det højt",
+      "newWord": "Nyt ord",
+      "newPhrase": "Ny sætning"
+    },
+    "grammar": {
+      "noteLabel": "Grammatiknote",
+      "tryIt": "Prøv det"
+    },
+    "checkpoint": {
+      "title": "Checkpoint",
+      "summary": "{{new}} nye · {{reviews}} repetitioner · bedste stime {{combo}}",
+      "done": "Nok for i dag",
+      "keepGoing": "Fortsæt",
+      "dailyRing": "{{done}}/{{goal}} i dag",
+      "deepSession": "Sikke en dyb session — dine repetitioner er planlagt uanset hvad.",
+      "streakTicked": "Dag {{count}} ✓",
+      "boss": "Enhedsudfordring",
+      "arcGate": "Bueport"
+    },
+    "celebrate": {
+      "combo": "{{count}} i træk",
+      "perfect": "Perfekt",
+      "wordsLearned": "{{count}} ord lært",
+      "unitComplete": "Enhed fuldført: {{name}}",
+      "streakDay": "Dag {{count}}",
+      "placementDone": "Niveau fundet"
+    },
+    "rare": {
+      "reveal": "Noget særligt…",
+      "etymologyGem": "Ordets historie",
+      "timeCapsule": {
+        "title": "Tidskapsel",
+        "body": "Du knoklede med det her {{when}} — se dig nu."
+      },
+      "delight": {
+        "newVoice": "En anden stemme",
+        "didYouNotice": "Lagde du mærke til det?"
+      },
+      "miniGame": {
+        "title": "Bonusrunde",
+        "play": "Spil"
+      },
+      "story": {
+        "unlocked": "Du har gjort dig fortjent til næste kapitel",
+        "read": "Læs det"
+      }
+    },
+    "placement": {
+      "offerTitle": "Hvor skal vi begynde?",
+      "offerBody": "Et par hurtige spørgsmål finder dit startpunkt. Cirka fem minutter.",
+      "startNew": "Jeg er ny til {{lang}}",
+      "placeMe": "Jeg kan lidt {{lang}}",
+      "skipItem": "Spring over, hvis du er i tvivl",
+      "doneTitle": "Startpunkt fundet",
+      "doneBody": "Starter ved {{unit}}.",
+      "prelit": "Du starter med {{count}} ting, du allerede kan.",
+      "redo": "Tjek mit niveau igen",
+      "aboveTitle": "Du er forbi dette kursus",
+      "aboveBody": "Kurset dækker indtil videre begynderstof, og du ligger over det. Du kan stadig udforske det — nye niveauer er på vej."
+    },
+    "path": {
+      "title": "Din vej",
+      "arc": "Bue {{name}}",
+      "unit": "Enhed {{n}}",
+      "locked": "Længere fremme",
+      "current": "Du er her",
+      "review": "Tryk for at repetere",
+      "mastered": "Stærk"
+    },
+    "streak": {
+      "pactTitle": "Skal vi holde en stime?",
+      "pactBody": "Ét kort om dagen holder den i live. Misser du en dag, kan en hviledag dække dig — du optjener én hver uge.",
+      "pactAccept": "Jeg er med",
+      "pactDecline": "Nej tak",
+      "days": "{{count}} dage",
+      "restDayEarned": "Hviledag optjent",
+      "restDayUsed": "{{day}} var en hviledag",
+      "repairTitle": "Saml din stime op igen",
+      "repairBody": "Gennemfør to sessioner inden for de næste {{days}} dage for at genoprette din stime på {{count}} dage.",
+      "repairCta": "Start"
+    },
+    "block": {
+      "speakingIntro": "Taletræning — {{count}} kort",
+      "ready": "Klar",
+      "loadingModel": "Varmer mikrofonen op…",
+      "micPrompt": "Corpán bruger mikrofonen til at bedømme din udtale på denne enhed.",
+      "sttUnavailable": "Talebedømmelse er ikke tilgængelig lige nu — skifter til lytteøvelser."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} kort tilbage i dag",
+      "plusBody": "Corpán Plus fjerner den daglige kortgrænse."
+    },
+    "welcomeBack": {
+      "title": "Velkommen tilbage",
+      "body": "Dine repetitioner beholdt {{pct}} % af deres styrke. Lad os varme op."
+    },
+    "tease": {
+      "next": "Næste gang: {{title}}"
+    },
+    "jump": {
+      "title": "Føles det for nemt?",
+      "body": "Tag en kort udfordring for at springe frem. Fejler du, mister du intet — du bliver præcis, hvor du er.",
+      "accept": "Prøv udfordringen",
+      "decline": "Bliv her"
+    },
+    "feed": {
+      "caughtUp": "Du er ajour for nu",
+      "loading": "Gør dine kort klar…",
+      "loadError": "Journey kunne ikke indlæses. Prøv igen fra Hjem."
+    },
+    "popin": {
+      "pronounceTitle": "Udtal det",
+      "close": "Luk"
+    },
+    "settings": {
+      "title": "Journey-indstillinger",
+      "advanceMode": "Fremdrift",
+      "advanceSwipe": "Swipe for at fortsætte",
+      "advanceAuto": "Fortsæt automatisk",
+      "celebration": "Fejringer",
+      "celebrationFull": "Fuld",
+      "celebrationReduced": "Reduceret",
+      "celebrationMinimal": "Minimal",
+      "sounds": "Lyde",
+      "soundsOn": "Til",
+      "soundsOff": "Fra",
+      "listeningMode": "Håndfri lytning",
+      "viewPath": "Se vejen",
+      "redoPlacement": "Tjek mit niveau igen"
+    }
   }
 }

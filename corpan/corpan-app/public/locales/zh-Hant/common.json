@@ -335,6 +335,10 @@
       "surprise": {
         "label": "給我驚喜！",
         "desc": "帶我去個好玩的地方。"
+      },
+      "journey": {
+        "label": "跟隨 Journey",
+        "desc": "一門引導式課程——每一步都由應用為你挑選"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "把正在學的語言取樣。搓到它牢牢記住。"
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "你的引導之路，一卡一步"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "安裝中…",
     "installed": "已安裝",
     "retry": "重試"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "你的引導之路，一卡一步",
+    "heroCard": {
+      "title": "你的 Journey",
+      "progress": "{{unit}} · 距今日目標還有 {{count}} 張卡片"
+    },
+    "heroCta": {
+      "start": "開始你的 Journey",
+      "continue": "繼續"
+    },
+    "chrome": {
+      "home": "首頁",
+      "menu": "Journey 選項",
+      "unit": "第 {{n}} 單元：{{name}}"
+    },
+    "exercise": {
+      "check": "檢查",
+      "continue": "繼續",
+      "skipHint": "再滑一次即可跳過",
+      "retry": "再試一次",
+      "showAnswer": "顯示答案",
+      "answerWas": "答案是",
+      "comeBackNote": "我們稍後會回到這裡。",
+      "whyThisCard": "為什麼是這張卡？",
+      "whyNew": "來自目前單元的新內容。",
+      "whyReview": "一次複習——間隔讓記憶更牢固。",
+      "whyRepair": "再看一眼曾經的難點。",
+      "whyGuided": "你的引導之路的一部分。",
+      "typeWhatYouHear": "輸入你聽到的內容",
+      "typeHere": "在此輸入…",
+      "tapToOrder": "依序點選單字",
+      "matchPairs": "配對連線",
+      "flipToReveal": "點擊翻開",
+      "knewIt": "我知道",
+      "didntKnow": "還不會",
+      "speakNow": "現在開口說",
+      "listen": "聽",
+      "listenSlow": "慢速",
+      "hint": "提示",
+      "correct": "正確",
+      "incorrect": "還差一點",
+      "pickTranslation": "選出譯文",
+      "pickWhatYouHear": "選出你聽到的",
+      "fillTheBlank": "填空",
+      "newItem": "新",
+      "reviewedEarlier": "之前看過"
+    },
+    "intro": {
+      "listenAndEcho": "先聽，再大聲跟讀",
+      "newWord": "新單字",
+      "newPhrase": "新片語"
+    },
+    "grammar": {
+      "noteLabel": "文法筆記",
+      "tryIt": "試一試"
+    },
+    "checkpoint": {
+      "title": "檢查點",
+      "summary": "{{new}} 新學 · {{reviews}} 複習 · 最佳連擊 {{combo}}",
+      "done": "今天到此為止",
+      "keepGoing": "繼續學",
+      "dailyRing": "今日 {{done}}/{{goal}}",
+      "deepSession": "真是一次深度學習——你的複習無論如何都已排好。",
+      "streakTicked": "第 {{count}} 天 ✓",
+      "boss": "單元挑戰",
+      "arcGate": "篇章之門"
+    },
+    "celebrate": {
+      "combo": "連續 {{count}} 個",
+      "perfect": "完美",
+      "wordsLearned": "已學會 {{count}} 個單字",
+      "unitComplete": "單元完成：{{name}}",
+      "streakDay": "第 {{count}} 天",
+      "placementDone": "定級完成"
+    },
+    "rare": {
+      "reveal": "有點特別的東西…",
+      "etymologyGem": "詞語故事",
+      "timeCapsule": {
+        "title": "時間膠囊",
+        "body": "{{when}}你曾為它苦練——看看現在的你。"
+      },
+      "delight": {
+        "newVoice": "不一樣的聲音",
+        "didYouNotice": "你注意到了嗎？"
+      },
+      "miniGame": {
+        "title": "獎勵關卡",
+        "play": "開玩"
+      },
+      "story": {
+        "unlocked": "你贏得了下一章",
+        "read": "去閱讀"
+      }
+    },
+    "placement": {
+      "offerTitle": "從哪裡開始？",
+      "offerBody": "幾道快速小題就能找到你的起點。大約五分鐘。",
+      "startNew": "我是{{lang}}零基礎",
+      "placeMe": "我會一些{{lang}}",
+      "skipItem": "不確定就跳過",
+      "doneTitle": "找到你的起點了",
+      "doneBody": "從 {{unit}} 開始。",
+      "prelit": "你已帶著 {{count}} 個已掌握的內容起步。",
+      "redo": "重新測一次程度",
+      "aboveTitle": "你已經超出了這門課",
+      "aboveBody": "這門課目前涵蓋入門內容，而你的程度在它之上。你仍可以瀏覽它——新的級別正在路上。"
+    },
+    "path": {
+      "title": "你的路",
+      "arc": "篇章 {{name}}",
+      "unit": "第 {{n}} 單元",
+      "locked": "前方",
+      "current": "你在這裡",
+      "review": "點按可複習",
+      "mastered": "紮實"
+    },
+    "streak": {
+      "pactTitle": "要保持連續紀錄嗎？",
+      "pactBody": "每天一張卡片就能維持它。錯過一天時，休息日可以幫你補上——每週可賺得一個。",
+      "pactAccept": "算我一個",
+      "pactDecline": "不用了",
+      "days": "{{count}} 天",
+      "restDayEarned": "獲得休息日",
+      "restDayUsed": "{{day}} 是休息日",
+      "repairTitle": "找回你的連續紀錄",
+      "repairBody": "在接下來 {{days}} 天內完成兩次學習，即可恢復你 {{count}} 天的連續紀錄。",
+      "repairCta": "開始"
+    },
+    "block": {
+      "speakingIntro": "口說練習 — {{count}} 張卡片",
+      "ready": "準備好了",
+      "loadingModel": "正在預熱麥克風…",
+      "micPrompt": "Corpán 使用麥克風在本裝置上為你的發音評分。",
+      "sttUnavailable": "語音評分暫不可用——切換到聽力練習。"
+    },
+    "quota": {
+      "cardsLeft": "今天還剩 {{count}} 張卡片",
+      "plusBody": "Corpán Plus 可解除每日卡片上限。"
+    },
+    "welcomeBack": {
+      "title": "歡迎回來",
+      "body": "你的複習保住了 {{pct}}% 的記憶強度。先熱熱身。"
+    },
+    "tease": {
+      "next": "下次見：{{title}}"
+    },
+    "jump": {
+      "title": "覺得太簡單了？",
+      "body": "來一個小挑戰，跳到更前面。失敗也沒有損失——你會留在原地。",
+      "accept": "試試挑戰",
+      "decline": "留在這裡"
+    },
+    "feed": {
+      "caughtUp": "目前你都學完了",
+      "loading": "正在準備你的卡片…",
+      "loadError": "Journey 載入失敗。請從首頁重試。"
+    },
+    "popin": {
+      "pronounceTitle": "唸一唸",
+      "close": "關閉"
+    },
+    "settings": {
+      "title": "Journey 選項",
+      "advanceMode": "翻頁方式",
+      "advanceSwipe": "滑動繼續",
+      "advanceAuto": "自動繼續",
+      "celebration": "慶祝效果",
+      "celebrationFull": "完整",
+      "celebrationReduced": "簡化",
+      "celebrationMinimal": "極簡",
+      "sounds": "音效",
+      "soundsOn": "開",
+      "soundsOff": "關",
+      "listeningMode": "免提聽力模式",
+      "viewPath": "查看路徑",
+      "redoPlacement": "重新測一次程度"
+    }
   }
 }

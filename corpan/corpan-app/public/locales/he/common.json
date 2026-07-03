@@ -335,6 +335,10 @@
       "surprise": {
         "label": "הפתע אותי!",
         "desc": "קח אותי למקום כיפי."
+      },
+      "journey": {
+        "label": "עקוב אחרי ה-Journey",
+        "desc": "קורס מודרך — האפליקציה בוחרת כל צעד"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "סמפל את השפה שאתה לומד. סקרץ׳ אותה עד שהיא נדבקת."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "הדרך המודרכת שלך, קלף אחר קלף"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "מתקין…",
     "installed": "הותקן",
     "retry": "נסה שוב"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "הדרך המודרכת שלך, קלף אחר קלף",
+    "heroCard": {
+      "title": "ה-Journey שלך",
+      "progress": "{{unit}} · {{count}} קלפים עד יעד היום"
+    },
+    "heroCta": {
+      "start": "התחל את ה-Journey שלך",
+      "continue": "המשך"
+    },
+    "chrome": {
+      "home": "בית",
+      "menu": "אפשרויות Journey",
+      "unit": "יחידה {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "בדיקה",
+      "continue": "המשך",
+      "skipHint": "החלק שוב כדי לדלג",
+      "retry": "נסה שוב",
+      "showAnswer": "הצג תשובה",
+      "answerWas": "התשובה הייתה",
+      "comeBackNote": "נחזור לזה.",
+      "whyThisCard": "למה הקלף הזה?",
+      "whyNew": "פריט חדש מהיחידה הנוכחית שלך.",
+      "whyReview": "חזרה — המרווחים שומרים עליה חזקה.",
+      "whyRepair": "מבט שני על משהו מאתגר.",
+      "whyGuided": "חלק מהדרך המודרכת שלך.",
+      "typeWhatYouHear": "הקלד את מה שאתה שומע",
+      "typeHere": "הקלד כאן…",
+      "tapToOrder": "הקש על המילים לפי הסדר",
+      "matchPairs": "התאם את הזוגות",
+      "flipToReveal": "הקש כדי לחשוף",
+      "knewIt": "ידעתי",
+      "didntKnow": "עדיין לא",
+      "speakNow": "דבר עכשיו",
+      "listen": "האזן",
+      "listenSlow": "לאט יותר",
+      "hint": "רמז",
+      "correct": "נכון",
+      "incorrect": "לא בדיוק",
+      "pickTranslation": "בחר את התרגום",
+      "pickWhatYouHear": "בחר את מה ששמעת",
+      "fillTheBlank": "השלם את החסר",
+      "newItem": "חדש",
+      "reviewedEarlier": "נצפה קודם"
+    },
+    "intro": {
+      "listenAndEcho": "האזן ואז אמור בקול",
+      "newWord": "מילה חדשה",
+      "newPhrase": "משפט חדש"
+    },
+    "grammar": {
+      "noteLabel": "הערת דקדוק",
+      "tryIt": "נסה"
+    },
+    "checkpoint": {
+      "title": "נקודת ביקורת",
+      "summary": "{{new}} חדשים · {{reviews}} חזרות · הרצף הטוב ביותר {{combo}}",
+      "done": "מספיק להיום",
+      "keepGoing": "להמשיך",
+      "dailyRing": "{{done}}/{{goal}} היום",
+      "deepSession": "איזה תרגול מעמיק — החזרות שלך מתוזמנות בכל מקרה.",
+      "streakTicked": "יום {{count}} ✓",
+      "boss": "אתגר יחידה",
+      "arcGate": "שער הקשת"
+    },
+    "celebrate": {
+      "combo": "{{count}} ברצף",
+      "perfect": "מושלם",
+      "wordsLearned": "{{count}} מילים נלמדו",
+      "unitComplete": "יחידה הושלמה: {{name}}",
+      "streakDay": "יום {{count}}",
+      "placementDone": "הרמה נקבעה"
+    },
+    "rare": {
+      "reveal": "משהו מיוחד…",
+      "etymologyGem": "סיפור המילה",
+      "timeCapsule": {
+        "title": "קפסולת זמן",
+        "body": "עבדת על זה קשה {{when}} — תראה אותך עכשיו."
+      },
+      "delight": {
+        "newVoice": "קול אחר",
+        "didYouNotice": "שמת לב?"
+      },
+      "miniGame": {
+        "title": "סיבוב בונוס",
+        "play": "שחק"
+      },
+      "story": {
+        "unlocked": "הרווחת את הפרק הבא",
+        "read": "קרא אותו"
+      }
+    },
+    "placement": {
+      "offerTitle": "מאיפה נתחיל?",
+      "offerBody": "כמה שאלות מהירות ימצאו את נקודת ההתחלה שלך. בערך חמש דקות.",
+      "startNew": "אני חדש ב{{lang}}",
+      "placeMe": "אני יודע קצת {{lang}}",
+      "skipItem": "דלג אם אינך בטוח",
+      "doneTitle": "נקודת ההתחלה נמצאה",
+      "doneBody": "מתחילים ב-{{unit}}.",
+      "prelit": "אתה מתחיל עם {{count}} פריטים שכבר מוכרים לך.",
+      "redo": "בדוק שוב את הרמה שלי",
+      "aboveTitle": "אתה מעבר לקורס הזה",
+      "aboveBody": "הקורס הזה מכסה בינתיים חומר למתחילים, ואתה מעליו. עדיין אפשר לחקור אותו — רמות חדשות בדרך."
+    },
+    "path": {
+      "title": "הדרך שלך",
+      "arc": "קשת {{name}}",
+      "unit": "יחידה {{n}}",
+      "locked": "בהמשך",
+      "current": "אתה כאן",
+      "review": "הקש לחזרה",
+      "mastered": "חזק"
+    },
+    "streak": {
+      "pactTitle": "לשמור על רצף?",
+      "pactBody": "קלף אחד ביום שומר עליו חי. אם תפספס יום, יום מנוחה יכול לכסות עליך — אתה מרוויח אחד בכל שבוע.",
+      "pactAccept": "אני בפנים",
+      "pactDecline": "לא תודה",
+      "days": "{{count}} ימים",
+      "restDayEarned": "יום מנוחה הושג",
+      "restDayUsed": "{{day}} היה יום מנוחה",
+      "repairTitle": "החזר את הרצף שלך",
+      "repairBody": "השלם שני מפגשים ב-{{days}} הימים הקרובים כדי לשחזר את הרצף של {{count}} הימים שלך.",
+      "repairCta": "התחל"
+    },
+    "block": {
+      "speakingIntro": "תרגול דיבור — {{count}} קלפים",
+      "ready": "מוכן",
+      "loadingModel": "מחמם את המיקרופון…",
+      "micPrompt": "Corpán משתמש במיקרופון כדי לדרג את הדיבור שלך במכשיר הזה.",
+      "sttUnavailable": "דירוג דיבור אינו זמין כרגע — עוברים לתרגול האזנה."
+    },
+    "quota": {
+      "cardsLeft": "נותרו {{count}} קלפים היום",
+      "plusBody": "Corpán Plus מסיר את מגבלת הקלפים היומית."
+    },
+    "welcomeBack": {
+      "title": "ברוך שובך",
+      "body": "החזרות שלך שמרו על {{pct}}% מהכוח שלהן. בוא נתחמם."
+    },
+    "tease": {
+      "next": "בפעם הבאה: {{title}}"
+    },
+    "jump": {
+      "title": "קל לך מדי?",
+      "body": "קח אתגר קצר כדי לקפוץ קדימה. אם לא תצליח, לא תפסיד דבר — תישאר בדיוק היכן שאתה.",
+      "accept": "לנסות את האתגר",
+      "decline": "נשאר כאן"
+    },
+    "feed": {
+      "caughtUp": "אתה מעודכן בינתיים",
+      "loading": "מכינים את הקלפים שלך…",
+      "loadError": "ה-Journey לא נטען. נסה שוב מהבית."
+    },
+    "popin": {
+      "pronounceTitle": "בטא את זה",
+      "close": "סגור"
+    },
+    "settings": {
+      "title": "אפשרויות Journey",
+      "advanceMode": "התקדמות",
+      "advanceSwipe": "החלק כדי להמשיך",
+      "advanceAuto": "המשך אוטומטי",
+      "celebration": "חגיגות",
+      "celebrationFull": "מלאות",
+      "celebrationReduced": "מופחתות",
+      "celebrationMinimal": "מינימליות",
+      "sounds": "צלילים",
+      "soundsOn": "פועל",
+      "soundsOff": "כבוי",
+      "listeningMode": "האזנה ללא ידיים",
+      "viewPath": "הצג את הדרך",
+      "redoPlacement": "בדוק שוב את הרמה שלי"
+    }
   }
 }

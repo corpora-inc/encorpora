@@ -208,6 +208,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample the language you're learning. Scratch it till it sticks."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Your guided path, one card at a time"
     }
   },
   "onboarding": {
@@ -408,6 +412,10 @@
       "surprise": {
         "label": "Surprise me",
         "desc": "Drop me somewhere fun."
+      },
+      "journey": {
+        "label": "Follow the Journey",
+        "desc": "A guided course — the app picks each next step"
       }
     }
   },
@@ -852,5 +860,185 @@
     "installing": "Installing…",
     "installed": "Installed",
     "retry": "Try again"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Your guided path, one card at a time",
+    "heroCard": {
+      "title": "Your Journey",
+      "progress": "{{unit}} · {{count}} cards to today's goal"
+    },
+    "heroCta": {
+      "start": "Start your Journey",
+      "continue": "Continue"
+    },
+    "chrome": {
+      "home": "Home",
+      "menu": "Journey options",
+      "unit": "Unit {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Check",
+      "continue": "Continue",
+      "skipHint": "Swipe again to skip",
+      "retry": "Try again",
+      "showAnswer": "Show answer",
+      "answerWas": "The answer was",
+      "comeBackNote": "We'll come back to this.",
+      "whyThisCard": "Why this card?",
+      "whyNew": "A new item from your current unit.",
+      "whyReview": "A review — spacing keeps it strong.",
+      "whyRepair": "A second look at something that was tricky.",
+      "whyGuided": "Part of your guided path.",
+      "typeWhatYouHear": "Type what you hear",
+      "typeHere": "Type here…",
+      "tapToOrder": "Tap the words in order",
+      "matchPairs": "Match the pairs",
+      "flipToReveal": "Tap to reveal",
+      "knewIt": "I knew it",
+      "didntKnow": "Not yet",
+      "speakNow": "Speak now",
+      "listen": "Listen",
+      "listenSlow": "Slower",
+      "hint": "Hint",
+      "correct": "Correct",
+      "incorrect": "Not quite",
+      "pickTranslation": "Pick the translation",
+      "pickWhatYouHear": "Pick what you heard",
+      "fillTheBlank": "Fill the blank",
+      "newItem": "New",
+      "reviewedEarlier": "Viewed earlier"
+    },
+    "intro": {
+      "listenAndEcho": "Listen, then say it aloud",
+      "newWord": "New word",
+      "newPhrase": "New phrase"
+    },
+    "grammar": {
+      "noteLabel": "Grammar note",
+      "tryIt": "Try it"
+    },
+    "checkpoint": {
+      "title": "Checkpoint",
+      "summary": "{{new}} new · {{reviews}} reviews · best combo {{combo}}",
+      "done": "Done for now",
+      "keepGoing": "Keep going",
+      "dailyRing": "{{done}}/{{goal}} today",
+      "deepSession": "That's a deep session — your reviews are scheduled either way.",
+      "streakTicked": "Day {{count}} ✓",
+      "boss": "Unit challenge",
+      "arcGate": "Arc gate"
+    },
+    "celebrate": {
+      "combo": "{{count}} in a row",
+      "perfect": "Perfect",
+      "wordsLearned": "{{count}} words learned",
+      "unitComplete": "Unit complete: {{name}}",
+      "streakDay": "Day {{count}}",
+      "placementDone": "You're placed"
+    },
+    "rare": {
+      "reveal": "Something special…",
+      "etymologyGem": "Word story",
+      "timeCapsule": {
+        "title": "Time capsule",
+        "body": "You worked hard on this {{when}} — look at you now."
+      },
+      "delight": {
+        "newVoice": "A different voice",
+        "didYouNotice": "Did you notice?"
+      },
+      "miniGame": {
+        "title": "Bonus round",
+        "play": "Play"
+      },
+      "story": {
+        "unlocked": "You've earned the next chapter",
+        "read": "Read it"
+      }
+    },
+    "placement": {
+      "offerTitle": "Where should we start?",
+      "offerBody": "A few quick questions find your starting point. About five minutes.",
+      "startNew": "I'm new to {{lang}}",
+      "placeMe": "I know some {{lang}}",
+      "skipItem": "Skip if unsure",
+      "doneTitle": "Found your starting point",
+      "doneBody": "Starting at {{unit}}.",
+      "prelit": "You're starting with {{count}} items already known.",
+      "redo": "Re-check my level",
+      "aboveTitle": "You're past this course",
+      "aboveBody": "This course currently covers beginner material, and you placed beyond it. You can still explore it — new levels are on the way."
+    },
+    "path": {
+      "title": "Your path",
+      "arc": "Arc {{name}}",
+      "unit": "Unit {{n}}",
+      "locked": "Ahead",
+      "current": "You are here",
+      "review": "Tap to review",
+      "mastered": "Strong"
+    },
+    "streak": {
+      "pactTitle": "Keep a streak?",
+      "pactBody": "One card a day keeps it alive. Miss a day and a rest day may cover you — you earn one each week.",
+      "pactAccept": "Count me in",
+      "pactDecline": "No thanks",
+      "days": "{{count}} days",
+      "restDayEarned": "Rest day earned",
+      "restDayUsed": "{{day}} was a rest day",
+      "repairTitle": "Pick your streak back up",
+      "repairBody": "Finish two sessions in the next {{days}} days to restore your {{count}}-day streak.",
+      "repairCta": "Start"
+    },
+    "block": {
+      "speakingIntro": "Speaking practice — {{count}} cards",
+      "ready": "Ready",
+      "loadingModel": "Warming up the microphone…",
+      "micPrompt": "Corpán uses the microphone to score your speech on this device.",
+      "sttUnavailable": "Speech scoring isn't available right now — switching to listening practice."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} cards left today",
+      "plusBody": "Corpán Plus removes the daily card limit."
+    },
+    "welcomeBack": {
+      "title": "Welcome back",
+      "body": "Your reviews kept {{pct}}% of their strength. Let's warm up."
+    },
+    "tease": {
+      "next": "Next time: {{title}}"
+    },
+    "jump": {
+      "title": "Feeling ahead of this?",
+      "body": "Take a short challenge to skip ahead. Miss it and nothing is lost — you stay right where you are.",
+      "accept": "Try the challenge",
+      "decline": "Stay here"
+    },
+    "feed": {
+      "caughtUp": "You're caught up for now",
+      "loading": "Preparing your cards…",
+      "loadError": "The Journey couldn't load. Try again from Home."
+    },
+    "popin": {
+      "pronounceTitle": "Pronounce it",
+      "close": "Close"
+    },
+    "settings": {
+      "title": "Journey options",
+      "advanceMode": "Advancing",
+      "advanceSwipe": "Swipe to continue",
+      "advanceAuto": "Auto-continue",
+      "celebration": "Celebrations",
+      "celebrationFull": "Full",
+      "celebrationReduced": "Reduced",
+      "celebrationMinimal": "Minimal",
+      "sounds": "Sounds",
+      "soundsOn": "On",
+      "soundsOff": "Off",
+      "listeningMode": "Hands-free listening",
+      "viewPath": "View path",
+      "redoPlacement": "Re-check my level"
+    }
   }
 }

@@ -1,0 +1,116 @@
+// src/journey/exercises/Cloze.tsx — fill the blank (feed-ux §4 row 4).
+// mode 'bank' (token tiles from the W5 sampler) or 'type'. Tokenization via
+// util/wordTokens.tokenizePhrase — the ONE tokenizer (R14 rule).
+
+import { useMemo, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { isRTL } from "../../util/convert"
+import { normalizedEquals } from "../content/normalize.ts"
+import { cardRng } from "../content/rng.ts"
+import { tokenizePhrase } from "../../util/wordTokens"
+import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
+import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
+import { TypeInput } from "./common/TypeInput.tsx"
+import type { ExerciseProps } from "./types.ts"
+
+const ANSWER_ID = "answer"
+
+export function Cloze(props: ExerciseProps) {
+  const { t } = useTranslation()
+  const answer = props.items[0]
+  const startedAt = useRef(Date.now())
+  const [done, setDone] = useState(false)
+  const [picked, setPicked] = useState<string | null>(null)
+  const [hint, setHint] = useState<string | null>(null)
+  const bank = props.spec.params?.mode !== "type"
+
+  const words = useMemo(
+    () =>
+      tokenizePhrase(answer.target.text, props.spec.targetLang).filter((w) => w.isWord),
+    [answer.target.text, props.spec.targetLang],
+  )
+  const rawIndex = typeof props.spec.params?.blankIndex === "number" ? props.spec.params.blankIndex : 0
+  const blankIndex = Math.min(Math.max(rawIndex, 0), Math.max(words.length - 1, 0))
+  const blankWord = words[blankIndex]?.text ?? answer.target.text
+
+  const tiles = useMemo(() => {
+    if (!bank) return []
+    const out: Tile[] = (props.distractors?.distractors ?? []).map((d, i) => ({
+      id: `d${i}`,
+      text: d.text,
+    }))
+    const insertAt = Math.floor(cardRng(props.cardId)() * (out.length + 1))
+    out.splice(insertAt, 0, { id: ANSWER_ID, text: blankWord })
+    return out
+  }, [props.cardId, bank, blankWord]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const answered = done || picked !== null || props.mode === "review"
+
+  const sentence = useMemo(() => {
+    const parts: string[] = []
+    for (let i = 0; i < words.length; i++) {
+      parts.push(i === blankIndex && !answered ? "____" : words[i].text)
+    }
+    return parts.join(" ")
+  }, [words, blankIndex, answered])
+
+  const settle = (ok: boolean) => {
+    if (ok) setDone(true)
+    props.onOutcome({ correct: ok, latencyMs: Date.now() - startedAt.current })
+  }
+
+  return (
+    <div className="flex w-full flex-col items-center gap-6">
+      <div className="text-sm text-muted-foreground">{t("journey.exercise.fillTheBlank")}</div>
+      <div
+        lang={props.spec.targetLang}
+        dir={isRTL(props.spec.targetLang) ? "rtl" : "ltr"}
+        className="text-2xl font-semibold leading-relaxed text-foreground"
+        data-testid="journey-cloze-sentence"
+      >
+        {sentence}
+      </div>
+      {answer.native ? (
+        <div
+          lang={props.spec.nativeLang}
+          dir={props.spec.nativeLang && isRTL(props.spec.nativeLang) ? "rtl" : "ltr"}
+          className="text-sm text-muted-foreground"
+        >
+          {answer.native.text}
+        </div>
+      ) : null}
+      {bank ? (
+        <AnswerTiles
+          tiles={tiles.map((tile) => ({
+            ...tile,
+            state: answered ? (tile.id === ANSWER_ID ? "correct" : tile.id === picked ? "wrong" : null) : null,
+          }))}
+          lang={props.spec.targetLang}
+          columns={2}
+          disabled={answered && picked === ANSWER_ID}
+          onPick={(id) => {
+            if (props.mode === "review" || done) return
+            setPicked(id)
+            settle(id === ANSWER_ID)
+          }}
+        />
+      ) : (
+        <TypeInput
+          lang={props.spec.targetLang}
+          disabled={done || props.mode === "review"}
+          hint={hint}
+          onSubmit={(typed) => settle(normalizedEquals(typed, blankWord, props.spec.targetLang))}
+        />
+      )}
+      {props.mode === "live" && props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
+        <ScaffoldHint
+          used={false}
+          onUse={() => {
+            setHint(blankWord.slice(0, 1))
+            props.onHintUsed()
+          }}
+        />
+      ) : null}
+    </div>
+  )
+}

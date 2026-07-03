@@ -1,0 +1,472 @@
+// src/journey/feed/FeedScroller.tsx — the purpose-built 3-slot window
+// (feed-ux §1.3, §3): prev (read-only review) / current / next (pre-mounted,
+// peeking after completion). framer-motion drag (NOT CSS scroll-snap — we
+// intercept for skip semantics, read-only back pages, settle animation);
+// wheel + keyboard (↑/↓/Space) for desktop.
+
+import { useCallback, useEffect, useRef, useState } from "react"
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion"
+import { useTranslation } from "react-i18next"
+import type { ActivityResult, ActivitySpec } from "../../contentPacks/activityContract"
+import { celebrate, skipCelebration } from "../celebration/CelebrationLayer.tsx"
+import { useJourneyStore } from "../store.ts"
+import type { CompletedCard, FeedCard, SessionStats } from "../types.ts"
+import type { JourneyRuntime } from "../runtime.ts"
+import type { SpeakFn } from "../exercises/types.ts"
+import { advanceRule, isListeningCard, isListeningRunStart } from "./advanceRules.ts"
+import { ActivityCardHost } from "./ActivityCardHost.tsx"
+import { BlockIntroCard } from "./BlockIntroCard.tsx"
+import { BossBanner, CheckpointCard } from "./CheckpointCard.tsx"
+import { FeedCardFrame } from "./FeedCardFrame.tsx"
+import { JumpOfferCard } from "./JumpOfferCard.tsx"
+import { PackActivityCard } from "./PackActivityCard.tsx"
+import { RareCard } from "./RareCard.tsx"
+import { DelightVariantCard } from "./rare/DelightVariantCard.tsx"
+import { EtymologyGemCard } from "./rare/EtymologyGemCard.tsx"
+import { TimeCapsuleCard } from "./rare/TimeCapsuleCard.tsx"
+import { WelcomeBackCard } from "./WelcomeBackCard.tsx"
+import { CapabilityCard } from "../cards/CapabilityCard.tsx"
+
+const SWIPE_COMMIT_PX = 90
+const SKIP_CONFIRM_MS = 1500
+
+export interface FeedScrollerProps {
+  runtime: JourneyRuntime
+  courseKey: string
+  speak: SpeakFn
+  showRomanization: boolean
+  dailyGoal: number
+  unitName: string | null
+  streakDays: number
+  onExit: () => void
+  onLaunchPack?: (packId: string, spec: ActivitySpec) => void
+}
+
+export function FeedScroller(props: FeedScrollerProps) {
+  const { t } = useTranslation()
+  const { runtime } = props
+  const advanceMode = useJourneyStore((s) => s.advanceMode)
+  const [, force] = useState(0)
+  const [backIndex, setBackIndex] = useState(0) // 0 = live, N = N pages back
+  const [skipArmedAt, setSkipArmedAt] = useState(0)
+  const [revealed, setRevealed] = useState<Record<string, boolean>>({})
+  const [listeningRun, setListeningRun] = useState(false)
+  const [autoCountdown, setAutoCountdown] = useState(false)
+  const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const controls = useAnimationControls()
+
+  useEffect(() => runtime.subscribe(() => force((v) => v + 1)), [runtime])
+
+  const current = runtime.current()
+  const next = runtime.next()
+  const history = runtime.history()
+  const settledRec = runtime.currentSettled()
+  const settled = settledRec !== null
+
+  // impressions
+  useEffect(() => {
+    if (current && backIndex === 0) runtime.noteImpression(current.cardId)
+  }, [current, backIndex, runtime])
+
+  // listening-run pill arming (§3.2)
+  useEffect(() => {
+    if (current && next && isListeningRunStart(current, next)) return // pill offered
+    if (current && !isListeningCard(current)) setListeningRun(false)
+  }, [current, next])
+
+  const clearAuto = useCallback(() => {
+    if (autoTimer.current) clearTimeout(autoTimer.current)
+    autoTimer.current = null
+    setAutoCountdown(false)
+  }, [])
+
+  const doAdvance = useCallback(() => {
+    clearAuto()
+    skipCelebration()
+    runtime.advance()
+  }, [runtime, clearAuto])
+
+  // auto-advance arming per rules table
+  useEffect(() => {
+    clearAuto()
+    if (!current || !settled || backIndex !== 0) return
+    const failed = (settledRec?.result?.score ?? 1) < 0.6 && settledRec?.result?.abandoned !== true
+    const rule = advanceRule(current, advanceMode, { listeningRun, failed })
+    if (rule.kind === "auto" && !failed) {
+      setAutoCountdown(true)
+      autoTimer.current = setTimeout(doAdvance, rule.delayMs)
+    }
+    return clearAuto
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current?.cardId, settled, advanceMode, listeningRun, backIndex])
+
+  // pack return celebration (§6.2): tier 1 for score ≥ 0.8, tier 0 else;
+  // rare rolls already played tier 3 pre-launch — capped at 1 (no double jackpot).
+  useEffect(() => {
+    if (!settledRec || settledRec.card.kind !== "packActivity") return
+    const score = settledRec.result?.score ?? 0
+    if (settledRec.result?.abandoned) {
+      doAdvance()
+      return
+    }
+    void celebrate({ tier: score >= 0.8 ? 1 : 0 }).then(() => {
+      setTimeout(doAdvance, 400)
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settledRec?.card.cardId])
+
+  const submit = useCallback(
+    (cardId: string, r: ActivityResult) => {
+      runtime.submitResult(cardId, r)
+    },
+    [runtime],
+  )
+
+  const onForwardGesture = useCallback(() => {
+    if (backIndex > 0) {
+      setBackIndex((i) => i - 1)
+      return
+    }
+    if (!current) return
+    if (current.kind === "checkpoint") {
+      // swiping forward equals "Keep going" (§3.5)
+      runtime.checkpointChoice(current.cardId, "continue")
+      return
+    }
+    if (settled) {
+      doAdvance()
+      return
+    }
+    const rule = advanceRule(current, advanceMode)
+    if (rule.kind === "manual" && current.kind !== "packActivity") return
+    // incomplete card: double-swipe skip semantics (§3.5)
+    const now = Date.now()
+    if (skipArmedAt && now - skipArmedAt <= SKIP_CONFIRM_MS) {
+      setSkipArmedAt(0)
+      runtime.abandonCurrent()
+    } else {
+      setSkipArmedAt(now)
+      void controls.start({ y: [0, -24, 0], transition: { duration: 0.3 } })
+    }
+  }, [backIndex, current, settled, advanceMode, skipArmedAt, runtime, doAdvance, controls])
+
+  const onBackGesture = useCallback(() => {
+    const max = history.length
+    setBackIndex((i) => Math.min(i + 1, max))
+  }, [history.length])
+
+  // keyboard + wheel
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault()
+        onForwardGesture()
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault()
+        onBackGesture()
+      }
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [onForwardGesture, onBackGesture])
+
+  const wheelLock = useRef(0)
+  const onWheel = useCallback(
+    (e: React.WheelEvent) => {
+      const now = Date.now()
+      if (now - wheelLock.current < 350) return
+      if (Math.abs(e.deltaY) < 24) return
+      wheelLock.current = now
+      if (e.deltaY > 0) onForwardGesture()
+      else onBackGesture()
+    },
+    [onForwardGesture, onBackGesture],
+  )
+
+  const stats: SessionStats = runtime.sessionStats()
+  const quota = runtime.peekQuota()
+  const cardsToday = useJourneyStore((s) => s.byCourse[props.courseKey]?.cardsToday.count ?? 0)
+
+  const renderCard = (card: FeedCard, mode: "live" | "review") => {
+    switch (card.kind) {
+      case "exercise": {
+        const body = (
+          <ActivityCardHost
+            key={card.cardId}
+            card={card}
+            mode={mode}
+            combo={stats.combo}
+            speak={props.speak}
+            showRomanization={props.showRomanization}
+            active={mode === "live" && backIndex === 0}
+            onResult={(r) => submit(card.cardId, r)}
+            onRequestAdvance={() => {}}
+          />
+        )
+        const boss = card.prepared.engine.meta.checkpoint
+        const framed = boss ? (
+          <div className="flex w-full flex-col items-center">
+            <BossBanner scope={boss.scope} index={boss.index} count={boss.count} />
+            {body}
+          </div>
+        ) : (
+          body
+        )
+        if (!card.rare || mode === "review") {
+          if (card.rare === "timeCapsule" && mode === "review") return framed
+          return framed
+        }
+        if (card.rare === "etymology") {
+          return (
+            <RareCard
+              variant="etymology"
+              revealed={!!revealed[card.cardId]}
+              onReveal={() => setRevealed((r) => ({ ...r, [card.cardId]: true }))}
+            >
+              <EtymologyGemCard
+                item={card.prepared.items[0]}
+                targetLang={card.spec.targetLang}
+                nativeLang={card.spec.nativeLang}
+                onContinue={(latencyMs) =>
+                  submit(card.cardId, {
+                    specId: card.spec.specId,
+                    score: 1,
+                    perItem: [],
+                    durationMs: latencyMs,
+                  })
+                }
+              />
+            </RareCard>
+          )
+        }
+        const face =
+          card.rare === "timeCapsule" ? (
+            <TimeCapsuleCard>{framed}</TimeCapsuleCard>
+          ) : (
+            <DelightVariantCard>{framed}</DelightVariantCard>
+          )
+        return (
+          <RareCard
+            variant={card.rare}
+            revealed={!!revealed[card.cardId]}
+            onReveal={() => setRevealed((r) => ({ ...r, [card.cardId]: true }))}
+          >
+            {face}
+          </RareCard>
+        )
+      }
+      case "checkpoint":
+        return (
+          <CheckpointCard
+            summary={card.summary}
+            stats={stats}
+            cardsToday={cardsToday}
+            dailyGoal={props.dailyGoal}
+            unitName={props.unitName}
+            quotaRemaining={quota.remaining}
+            quotaLimit={quota.limit}
+            streakDays={props.streakDays}
+            nextTease={null}
+            onDone={() => {
+              runtime.checkpointChoice(card.cardId, "stop")
+              props.onExit()
+            }}
+            onKeepGoing={() => runtime.checkpointChoice(card.cardId, "continue")}
+          />
+        )
+      case "packActivity":
+        return (
+          <PackActivityCard
+            card={card}
+            pending={runtime.packReturnPending() === card.cardId}
+            onPlay={() => {
+              runtime.launchPackActivity(card, (packId, spec) => props.onLaunchPack?.(packId, spec))
+            }}
+          />
+        )
+      case "capability":
+        return (
+          <CapabilityCard
+            card={card}
+            active={mode === "live" && backIndex === 0}
+            onResult={(r) => submit(card.cardId, r)}
+          />
+        )
+      case "blockIntro":
+        return (
+          <BlockIntroCard
+            blockLen={card.blockLen}
+            onReady={() => runtime.completePresentation(card.cardId)}
+          />
+        )
+      case "welcomeBack":
+        return (
+          <WelcomeBackCard
+            retainedPct={card.retainedPct}
+            onContinue={() => runtime.completePresentation(card.cardId)}
+          />
+        )
+      case "jumpOffer":
+        return (
+          <JumpOfferCard
+            onAccept={() => runtime.acceptJumpOffer(card.cardId)}
+            onDecline={() => {
+              runtime.submitResult(card.cardId, {
+                specId: card.cardId,
+                score: 0,
+                perItem: [],
+                durationMs: 0,
+              })
+              runtime.advance()
+            }}
+          />
+        )
+    }
+  }
+
+  // read-only back page (§3.4)
+  const backRecord: CompletedCard | null =
+    backIndex > 0 ? (history[history.length - backIndex] ?? null) : null
+
+  const listeningPill =
+    backIndex === 0 &&
+    current &&
+    next &&
+    !listeningRun &&
+    isListeningRunStart(current, next) &&
+    advanceMode !== "auto"
+
+  const empty = !current && history.length > 0
+
+  return (
+    <div
+      className="relative flex h-full w-full flex-col overflow-hidden touch-none"
+      onWheel={onWheel}
+      data-testid="journey-feed"
+    >
+      <motion.div
+        className="flex h-full w-full flex-col"
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElastic={0.25}
+        animate={controls}
+        onDragEnd={(_, info) => {
+          if (info.offset.y < -SWIPE_COMMIT_PX) onForwardGesture()
+          else if (info.offset.y > SWIPE_COMMIT_PX) onBackGesture()
+        }}
+      >
+        <AnimatePresence mode="popLayout">
+          {backRecord ? (
+            <motion.div
+              key={`back-${backRecord.card.cardId}`}
+              className="h-full w-full"
+              initial={{ y: -40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 40, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+            >
+              <FeedCardFrame card={backRecord.card} settled review>
+                <div className="pointer-events-none w-full opacity-90">
+                  {renderCard(backRecord.card, "review")}
+                </div>
+              </FeedCardFrame>
+            </motion.div>
+          ) : current ? (
+            <motion.div
+              key={current.cardId}
+              className="h-full w-full"
+              data-journey-current={current.cardId}
+              initial={{ y: 80, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -80, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+            >
+              <FeedCardFrame card={current} settled={settled} review={false}>
+                {renderCard(current, "live")}
+              </FeedCardFrame>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="feed-end"
+              className="flex h-full w-full flex-col items-center justify-center gap-4 px-8 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-2xl font-bold text-foreground">
+                {empty ? t("journey.feed.caughtUp") : t("journey.feed.loading")}
+              </div>
+              {empty ? (
+                <button
+                  type="button"
+                  onClick={props.onExit}
+                  className="min-h-12 rounded-xl border border-border bg-card px-6 text-base font-semibold text-foreground"
+                >
+                  {t("journey.checkpoint.done")}
+                </button>
+              ) : null}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* next-card peek after completion (§3.1 step 4) */}
+      {settled && next && backIndex === 0 ? (
+        <motion.div
+          className="pointer-events-none absolute inset-x-6 bottom-0 h-[12%] rounded-t-2xl border border-b-0 border-border bg-card/80"
+          initial={{ y: 60 }}
+          animate={{ y: 24 }}
+          aria-hidden
+        />
+      ) : null}
+
+      {/* skip hint (§3.5 first forward-swipe on incomplete card) */}
+      <AnimatePresence>
+        {skipArmedAt > 0 && Date.now() - skipArmedAt <= SKIP_CONFIRM_MS ? (
+          <motion.div
+            key="skip-hint"
+            className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="rounded-full bg-muted px-3.5 py-1.5 text-xs font-medium text-muted-foreground">
+              {t("journey.exercise.skipHint")}
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      {/* hands-free listening pill (§3.2) */}
+      {listeningPill ? (
+        <div className="absolute inset-x-0 top-3 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setListeningRun(true)}
+            className="rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm"
+          >
+            {t("journey.settings.listeningMode")} ▸
+          </button>
+        </div>
+      ) : null}
+
+      {/* auto-advance countdown ring (tap to pause) */}
+      {autoCountdown && (listeningRun || advanceMode === "auto") ? (
+        <button
+          type="button"
+          onClick={clearAuto}
+          className="absolute bottom-6 end-6 h-8 w-8 animate-pulse rounded-full border-2 border-[hsl(var(--journey-accent,262_80%_58%))]"
+          aria-label={t("journey.settings.listeningMode")}
+        />
+      ) : null}
+
+      {/* viewed-earlier depth chip */}
+      {backIndex > 0 ? (
+        <div className="absolute inset-x-0 top-3 flex justify-center">
+          <div className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">
+            {t("journey.exercise.reviewedEarlier")} · {backIndex}/{history.length}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  )
+}
