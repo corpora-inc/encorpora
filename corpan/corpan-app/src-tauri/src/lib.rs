@@ -3,6 +3,7 @@
     windows_subsystem = "windows"
 )]
 
+mod blob_store;
 mod content_packs;
 mod db;
 mod pack_db;
@@ -1593,6 +1594,13 @@ pub fn run() {
             content_packs_list_installed,
             content_packs_get_manifest_url,
             phrase_packs_invalidate_cache,
+            blob_store::blob_store_read,
+            blob_store::blob_store_write,
+            blob_store::blob_store_delete,
+            blob_store::blob_store_has,
+            blob_store::blob_store_stats,
+            blob_store::blob_store_prune,
+            blob_store::blob_store_served_url,
             open_apple_feedback,
             take_last_crash_report
         ])

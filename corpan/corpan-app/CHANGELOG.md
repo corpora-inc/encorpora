@@ -7,6 +7,45 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey W1 — storage platform + local analytics substrate**
+  (`docs/journey/specs/storage-analytics.md`). The quota-safe storage service
+  re-homed to `src/lib/storage/` (old `src/util/storage/` paths keep working
+  via one-release re-export shims), upgraded to IndexedDB schema v2 (additive
+  `docs`/`log` stores) with typed adapters on top: `DocStore<T>` (versioned
+  codecs, lazy migrate, corrupt records dropped + counted — never thrown),
+  `AppendLog<T>` (O(1) appends, ring caps with hysteresis), `BlobStore`
+  (Tauri-fs tier under `corpan-packs/.offline-cache/blob/`, servable via the
+  `corpan-pack://` protocol; IndexedDB fallback in web dev), a shared
+  `WriteBatcher` (one transaction per flush window; evict-retry then
+  memory-mirror degrade), a central namespace registry with budgets, a
+  three-level corruption-recovery ladder (record → namespace → database), and
+  the Journey engine persistence adapter (`EnginePersistence`).
+- **On-device local analytics** (`src/lib/localAnalytics/`): an append-only,
+  never-uploaded event log (activity results, sessions, placement, streaks;
+  100k-record / 48MB ring) with daily rollups and the aggregation queries the
+  Journey engine and personal-records surfaces read (calibration report,
+  strand balance, engagement snapshot, personal bests). This is the learner's
+  own history — separate from (and invisible to) cloud telemetry. Includes
+  host-side builders for pack-scoped storage (2MB / 1,000 keys per pack) and
+  pack event recording (5,000/day rate limit), plus a dev-only storage
+  doctor (`storageDoctor.report()` + `__corpanDebug.storage` wiring hook).
+- New Rust `blob_store_*` commands (read/write/delete/has/stats/prune/
+  served_url) backing the FS-BLOB tier; `validate_pack_id` now rejects the
+  reserved `.offline-cache` directory so no pack id can ever claim the cache
+  subtree.
+
+### Changed
+- **Storage migrations M2–M4:** per-book reading progress
+  (`corpan-progress-v1`), the word-pack catalog index
+  (`corpan-word-pack-catalog-v1`), and per-stack phrase history
+  (`corpan-history-v2`, now capped at 500 entries per stack) persist to the
+  IndexedDB tier instead of the shared ~5MB localStorage budget. Existing
+  data is moved by the idempotent boot migration (sentinel bumped to
+  `corpan-storage-migration-v2`); legacy single-stack settings/history blobs
+  are deleted after their one-time import, and the analytics
+  last-language-by-book map is capped at 100 books.
+
 ### Changed
 - **Word-explanation packs ship from a dedicated S3 index, not the main
   catalog (#477, #478, #479; supersedes #498's catalog registration).** Word

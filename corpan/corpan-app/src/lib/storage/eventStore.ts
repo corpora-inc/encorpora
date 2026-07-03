@@ -1,5 +1,10 @@
 // src/lib/storage/eventStore.ts (re-homed from src/util/storage — Journey W1)
 //
+// TODO(journey/M7, optional — deferred by storage-analytics.md §2.2): replace
+// the O(n log n)-per-append enforceCap below with an AppendLog (./log.ts)
+// while keeping record/drainForUpload/acknowledge byte-compatible. Do it
+// after the adapter layer has soaked; telemetry is working today.
+//
 // Local-first, on-device analytics event log — IndexedDB-backed, append-only,
 // ring-buffer-capped. This is the durable substrate the app's analytics layer
 // writes to. It does NOT do networking itself; uploading is a separate "sync
