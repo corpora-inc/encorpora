@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { createHostApi } from "./hostApi"
+import { JOURNEY_CONTRACT_VERSION } from "./activitySchemas"
 import type {
   ContentPackManifest,
   ContentPackModule,
@@ -242,7 +243,7 @@ export default function ContentPackHost({
     const scope = globalThis as typeof globalThis & {
       __CORPAN_PLUS?: boolean
       __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
-      __CORPAN_HOST_CAPS?: { dailyLock?: boolean }
+      __CORPAN_HOST_CAPS?: { dailyLock?: boolean; journey?: number }
     }
     scope.__CORPAN_PLUS = entitlementSnapshot.plus
     scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
@@ -250,7 +251,15 @@ export default function ContentPackHost({
     // `dailyLock` = this host renders the gate-v2 DailyLockOverlay, so packs may
     // hard-block at the daily cap. Absent in pre-0.18.1 hosts → packs degrade to
     // the soft nag instead of freezing behind an overlay that won't appear.
-    scope.__CORPAN_HOST_CAPS = { ...scope.__CORPAN_HOST_CAPS, dailyLock: true }
+    // `journey` = the Journey activity contract version this host implements
+    // (`hostApi.journey` + the `corpan:activity-result` rail). Absent on
+    // pre-journey hosts → packs run standalone-only. Integer so a future
+    // revision can gate on `>= 2` instead of minting a new flag.
+    scope.__CORPAN_HOST_CAPS = {
+      ...scope.__CORPAN_HOST_CAPS,
+      dailyLock: true,
+      journey: JOURNEY_CONTRACT_VERSION,
+    }
     window.dispatchEvent(
       new CustomEvent("corpan:entitlement-changed", {
         detail: entitlementSnapshot,
@@ -555,6 +564,8 @@ export default function ContentPackHost({
           // First-run reader seed: auto-download a default book's preview
           // narrations for the user's stack (the instant "wow").
           ...(entry?.seedBookId ? { seedBookId: entry.seedBookId } : {}),
+          // Journey activity launch (D2). Packs read only what they understand.
+          ...(entry?.activity ? { activity: entry.activity } : {}),
         })
 
         if (!cancelled) {
@@ -599,7 +610,11 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId])
+    // `entry.activity` is an object; depending on it verbatim would remount on
+    // every parent render. Depend on the spec's IDENTITY (`specId`) instead: a
+    // new specId ⇒ full remount with the new spec — the correct semantic (one
+    // mount = one spec; there is deliberately no mid-session re-tasking in v1).
+  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId, entry?.activity?.specId])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

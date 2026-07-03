@@ -19,6 +19,15 @@ import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import { rankProviders } from "@shared/asr"
 import { getPackStreak } from "@shared/streak"
+import {
+  isActiveFor,
+  activeSpecFor,
+  ingestItem,
+  ingestResult,
+  finalizeAbandoned,
+  installActivityResultEventRail,
+  setActivityRejectionListener,
+} from "./activitySchemas"
 import type { StackConfigPatch } from "./types"
 import type {
   AsrApi,
@@ -42,6 +51,19 @@ import type {
   SttStatus,
   SttTranscriptionResult,
 } from "./types"
+
+// Journey event rail (`corpan:activity-result`) — the fallback twin of the
+// typed `hostApi.journey` seam. Registered once for the app's lifetime; Zod
+// validation + session scoping happen inside the single-owner session module
+// (activitySchemas.ts), so a stray event on a host with no active journey
+// session is dropped with a warn, never thrown. Rejections also feed
+// on-device analytics, fire-and-forget (activity-contract.md §3.4).
+if (typeof window !== "undefined") {
+  installActivityResultEventRail()
+  setActivityRejectionListener((packId, why) =>
+    trackEvent("journey_result_rejected", { pack_id: packId, why })
+  )
+}
 
 const STT_ERROR_CODES: ReadonlySet<SttErrorCode> = new Set<SttErrorCode>([
   "MODEL_NOT_INSTALLED",
@@ -1146,6 +1168,20 @@ export const createHostApi = (packId?: string): HostApi => {
             cb(buildEntitlementSnapshot())
           }
         })
+      },
+    },
+    // Journey activity seam (typed rail, activity-contract.md §3.3). Thin
+    // delegation into the single-owner session module — validation, dedup,
+    // and first-terminal-wins all live there (both rails share one ingest).
+    // A host created without a pack id (legacy callers) gets inert no-ops:
+    // the seam is always shaped, never throwing, matching the `asr` precedent.
+    journey: {
+      isActive: () => !!packId && isActiveFor(packId),
+      getSpec: () => (packId ? activeSpecFor(packId) : null),
+      reportItem: (item) => { if (packId) ingestItem(packId, item) },
+      reportResult: (result) => { if (packId) ingestResult(packId, result) },
+      abandon: (reason) => {
+        if (packId && isActiveFor(packId)) finalizeAbandoned(reason ?? "user_exit")
       },
     },
     requestPaywall: async (context) => {

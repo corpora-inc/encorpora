@@ -1,3 +1,10 @@
+// Journey activity contract (D2/D3): re-export the GENERATED copy so packs
+// import ActivitySpec/ActivityResult/ItemRef/JourneyHostApi/ACTIVITY_TYPES/etc.
+// from the SDK. The copy is synced from
+// corpan-app/src/contentPacks/activityContract.ts by `node packs/sdk/sync-contract.mjs`.
+export * from "./activityContract"
+import type { ActivitySpec, JourneyHostApi, PackActivityDeclaration } from "./activityContract"
+
 export type StackConfig = {
   activeStackId: string
   languages: string[]
@@ -317,6 +324,13 @@ export type HostApi = {
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
   setStackConfig?: (patch: StackConfigPatch) => void
+  /**
+   * Journey activity seam (typed rail). Present when
+   * `__CORPAN_HOST_CAPS.journey >= 1`. Packs feature-detect
+   * (`hostApi.journey?.isActive()`); the `corpan:activity-result` window
+   * event is the fallback rail on hosts where this is absent.
+   */
+  journey?: JourneyHostApi
   history?: HostHistoryApi
   notifyUtterance?: () => void
   phrasePacks?: HostPhrasePacksApi
@@ -371,6 +385,8 @@ export type ContentPackManifest = {
   sdkVersion?: string
   permissions?: string[]
   databases?: Record<string, string>
+  /** Journey activity types this pack provides (activity-contract.md §4.2). */
+  activities?: PackActivityDeclaration[]
 }
 
 export function registerGame(game: GameModule): GameModule
@@ -378,6 +394,10 @@ export function registerGame(game: GameModule): GameModule
 export function createMockHostApi(options?:
   Partial<HostApi> & {
     stackConfig?: Partial<StackConfig>
+    /** Simulate a Journey launch: `journey.isActive()` turns true, `getSpec()`
+     *  returns this, and reportItem/reportResult/abandon log + stash on
+     *  `window.__corpanMockJourney = { items: [], results: [] }`. */
+    activity?: ActivitySpec
   }
 ): HostApi
 
@@ -387,5 +407,8 @@ export function mountStandalone(
     container?: HTMLElement
     hostApi?: HostApi
     initialState?: Record<string, unknown>
+    /** Simulate a Journey launch: threaded into `initialState.activity` AND
+     *  the mock host's `journey` seam. */
+    activity?: ActivitySpec
   }
 ): { unmount?: () => void }

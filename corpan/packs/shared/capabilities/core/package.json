@@ -1,0 +1,7 @@
+{
+  "name": "@corpan/cap-core",
+  "version": "0.1.0",
+  "description": "Capability-module core: the synced Journey activity contract (types + itemRefKey/parseItemRef + ACTIVITY_TYPES). Consumed via the @shared source alias, not npm.",
+  "private": true,
+  "type": "module"
+}
