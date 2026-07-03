@@ -15,8 +15,15 @@ import { initRemoteQuotaConfig } from "@/util/remoteQuotaConfig";
 // gate this host (>=0.18.1) can render the DailyLockOverlay, so the daily HARD
 // cap may engage — including for the core phrase-flip experience. Older hosts
 // never set this, so OTA packs degrade to the soft nag there.
-;(globalThis as { __CORPAN_HOST_CAPS?: { dailyLock?: boolean } }).__CORPAN_HOST_CAPS = {
+;(globalThis as {
+  __CORPAN_HOST_CAPS?: { dailyLock?: boolean; offlineCache?: boolean }
+}).__CORPAN_HOST_CAPS = {
   dailyLock: true,
+  // This host wires the pack-facing offline-first cache seam
+  // (`hostApi.offlineCache` — imageSrc/fetchJson, offline-cache.md §6 / D12).
+  // Advertised app-wide (not just under ContentPackHost) so shared shells can
+  // feature-detect before any pack mounts.
+  offlineCache: true,
 }
 
 // Remote-config layer for the daily-quota caps. Runs EARLY (before packs mount)

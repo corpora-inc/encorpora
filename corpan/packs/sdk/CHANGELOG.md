@@ -8,6 +8,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey W10 — host seam typings.** `HostApi` gains three optional,
+  feature-detected members mirrored from the host: `storage?: PackStorageApi`
+  (pack-scoped durable KV; `__CORPAN_HOST_CAPS.storageKv >= 1`),
+  `localAnalytics?: PackLocalAnalyticsApi` (namespaced on-device events +
+  own-aggregate reads; `__CORPAN_HOST_CAPS.localAnalytics >= 1`), and
+  `offlineCache?: HostOfflineCacheApi` (cached image URLs + cache-first JSON;
+  `__CORPAN_HOST_CAPS.offlineCache === true`). SDK-lagging packs see nothing
+  new.
 - **Journey activity contract.** `activityContract.ts` — a GENERATED,
   dependency-free copy of the authoritative
   `corpan-app/src/contentPacks/activityContract.ts` (ItemRef +

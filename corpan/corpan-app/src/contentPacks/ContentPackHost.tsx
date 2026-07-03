@@ -243,7 +243,13 @@ export default function ContentPackHost({
     const scope = globalThis as typeof globalThis & {
       __CORPAN_PLUS?: boolean
       __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
-      __CORPAN_HOST_CAPS?: { dailyLock?: boolean; journey?: number }
+      __CORPAN_HOST_CAPS?: {
+        dailyLock?: boolean
+        journey?: number
+        storageKv?: number
+        localAnalytics?: number
+        offlineCache?: boolean
+      }
     }
     scope.__CORPAN_PLUS = entitlementSnapshot.plus
     scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
@@ -259,6 +265,13 @@ export default function ContentPackHost({
       ...scope.__CORPAN_HOST_CAPS,
       dailyLock: true,
       journey: JOURNEY_CONTRACT_VERSION,
+      // `storageKv` = hostApi.storage (pack-scoped durable KV, §5.1) and
+      // `localAnalytics` = hostApi.localAnalytics (§5.2) are wired on this
+      // host. Integers so a future revision can gate on `>= 2`.
+      storageKv: 1,
+      localAnalytics: 1,
+      // `offlineCache` = hostApi.offlineCache (imageSrc/fetchJson, D12).
+      offlineCache: true,
     }
     window.dispatchEvent(
       new CustomEvent("corpan:entitlement-changed", {

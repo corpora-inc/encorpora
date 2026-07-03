@@ -8,6 +8,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey W10 — pack-facing host seams wired** (integration). `hostApi`
+  now carries the three reserved shared seams: `storage`
+  (`buildPackStorageApi` — pack-scoped durable KV, storage-analytics.md
+  §5.1), `localAnalytics` (`buildPackLocalAnalyticsApi` — namespaced writes +
+  own-aggregate reads, §5.2), and `offlineCache`
+  (`createOfflineCacheHostApi` — cached image URLs + cache-first JSON, D12).
+  Advertised via `__CORPAN_HOST_CAPS.storageKv: 1`, `localAnalytics: 1`, and
+  `offlineCache: true` (app-wide in `main.tsx` + the ContentPackHost merge);
+  mirrored in the pack SDK typings. The on-device `activity_result` event
+  keeps ONE writer: the journey runtime's `submitResult`, the terminal
+  handler of `hostApi.journey.reportResult`'s ingest path (documented at the
+  seam).
 - **Journey W2 — offline-first cache layer + Home covers offline**
   (`docs/journey/specs/offline-cache.md`, D12). Catalog cover art now renders
   offline (cached on device after first sight) — airplane-mode cold start

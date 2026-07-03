@@ -19,6 +19,9 @@ import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import { rankProviders } from "@shared/asr"
 import { getPackStreak } from "@shared/streak"
+import { buildPackStorageApi } from "@/lib/storage"
+import { buildPackLocalAnalyticsApi } from "@/lib/localAnalytics"
+import { createOfflineCacheHostApi } from "@/lib/offlineCache"
 import {
   isActiveFor,
   activeSpecFor,
@@ -1175,6 +1178,15 @@ export const createHostApi = (packId?: string): HostApi => {
     // and first-terminal-wins all live there (both rails share one ingest).
     // A host created without a pack id (legacy callers) gets inert no-ops:
     // the seam is always shaped, never throwing, matching the `asr` precedent.
+    //
+    // ONE-WRITER RULE (storage-analytics.md §5.3, W1): the on-device
+    // `activity_result` event is written exactly once per result, by the
+    // journey runtime's submitResult — the terminal handler of THIS ingest
+    // path (reportResult → ingestResult → session onResult → runtime
+    // submitResult → recordLocal via localAnalyticsRecord). Only the runtime
+    // has the mixer's slot/strand stamps + engine-derived grades the event
+    // shape requires, so nothing here (and no pack, per §5.2) may write
+    // `activity_result` directly.
     journey: {
       isActive: () => !!packId && isActiveFor(packId),
       getSpec: () => (packId ? activeSpecFor(packId) : null),
@@ -1184,6 +1196,16 @@ export const createHostApi = (packId?: string): HostApi => {
         if (packId && isActiveFor(packId)) finalizeAbandoned(reason ?? "user_exit")
       },
     },
+    // Pack-scoped durable KV (storage-analytics.md §5.1). Host-stamped
+    // namespace; budget-enforced; never throws. Absent on hosts created
+    // without a pack id — packs feature-detect via HOST_CAPS.storageKv.
+    ...(packId ? { storage: buildPackStorageApi(packId) } : {}),
+    // Pack-scoped on-device analytics (storage-analytics.md §5.2): namespaced
+    // writes + own-aggregate reads only. Never uploaded.
+    ...(packId ? { localAnalytics: buildPackLocalAnalyticsApi(packId) } : {}),
+    // Offline-first cache seam (offline-cache.md §6 phase 4, D12). Images are
+    // shared across packs (immutable-by-URL); JSON keys are pack-namespaced.
+    offlineCache: createOfflineCacheHostApi(packId),
     requestPaywall: async (context) => {
       // Reuses the paywall store's own guards (subscribed / IAP unavailable /
       // frequency-cap) and returns whether the sheet ACTUALLY opened — the
