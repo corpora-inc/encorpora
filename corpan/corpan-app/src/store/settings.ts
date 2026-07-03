@@ -441,6 +441,13 @@ function importLegacySingleStack(): { stacks: Record<string, Stack>; activeStack
         };
 
         const s = makeStack(DEFAULT_STACK_NAME, legacy);
+        // M6 hygiene: the legacy blob is dead once imported — free the
+        // shared localStorage budget.
+        try {
+            localStorage.removeItem("corpan-settings");
+        } catch {
+            /* best-effort */
+        }
         return { stacks: { [s.id]: s }, activeStackId: s.id };
     } catch {
         return null;

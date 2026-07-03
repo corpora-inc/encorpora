@@ -7,11 +7,14 @@
 //
 // Persisted so the Settings discovery list renders instantly on launch from
 // the last-fetched copy even while a fresh fetch is in flight (or offline).
-// The index is tiny (a handful of entries) so plain localStorage is fine —
-// unlike the phrase-pack catalog which uses the IndexedDB LARGE tier.
+// M3 (storage-analytics.md §2.2): the index grows with the catalog
+// (54 langs × pairs), so it persists to the IndexedDB LARGE tier like its
+// two sibling catalogs — never the shared ~5MB localStorage budget.
 
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
+
+import { createLocalStorageShim } from "@/lib/storage";
 
 import {
     fetchWordPackCatalogFresh,
@@ -127,6 +130,13 @@ export const useWordPackCatalogStore = create<WordPackCatalogState>()(
         {
             name: "corpan-word-pack-catalog-v1",
             version: 1,
+            // M3: IDB-KV shim, volatile like the sibling catalogs.
+            storage: createJSONStorage(() =>
+                createLocalStorageShim("word-pack-catalog", {
+                    tier: "large",
+                    volatile: true,
+                }),
+            ),
             partialize: (state) => ({
                 catalog: state.catalog,
                 lastFetched: state.lastFetched,

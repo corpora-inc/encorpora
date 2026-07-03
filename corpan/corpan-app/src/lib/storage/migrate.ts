@@ -14,7 +14,9 @@
 
 import { storage } from "./index"
 
-const MIGRATION_SENTINEL_KEY = "corpan-storage-migration-v1"
+// Sentinel bumps whenever LEGACY_BLOBS grows (M2-M4): a user who migrated at
+// v1 re-runs the (idempotent) migration once to pick up the new entries.
+const MIGRATION_SENTINEL_KEY = "corpan-storage-migration-v2"
 
 /** Legacy localStorage keys that hold large, growable blobs, mapped to the
  *  LARGE-tier namespace their new shim reads from. The shim stores the
@@ -25,6 +27,9 @@ type LegacyBlob = {
   legacyKey: string
   /** The LARGE-tier namespace the new shim uses. */
   namespace: string
+  /** Volatility of the migrated record. Durable state (progress, history)
+   *  must NOT be evictable; catalogs are caches and stay volatile. */
+  volatile: boolean
 }
 
 const LEGACY_BLOBS: LegacyBlob[] = [
@@ -32,11 +37,31 @@ const LEGACY_BLOBS: LegacyBlob[] = [
   {
     legacyKey: "corpan-phrase-pack-catalog-v1",
     namespace: "phrase-pack-catalog",
+    volatile: true,
   },
   // Game / reader / narration catalog.
   {
     legacyKey: "corpan-catalog-v2",
     namespace: "game-catalog",
+    volatile: true,
+  },
+  // M2 — per-book reading progress (feeds streaks). DURABLE, not a cache.
+  {
+    legacyKey: "corpan-progress-v1",
+    namespace: "progress",
+    volatile: false,
+  },
+  // M3 — word-pack catalog (grows with the catalog: 54 langs × pairs).
+  {
+    legacyKey: "corpan-word-pack-catalog-v1",
+    namespace: "word-pack-catalog",
+    volatile: true,
+  },
+  // M4 — per-stack phrase navigation history. DURABLE, capped at the store.
+  {
+    legacyKey: "corpan-history-v2",
+    namespace: "history",
+    volatile: false,
   },
 ]
 
@@ -83,7 +108,7 @@ export async function migrateOversizedLocalStorage(): Promise<number> {
     // reads (zustand persist `name`). The shim stores raw strings, so this
     // round-trips without re-encoding.
     const ns = storage.namespace(blob.namespace, { tier: "large" })
-    await ns.set(blob.legacyKey, raw, { volatile: true })
+    await ns.set(blob.legacyKey, raw, { volatile: blob.volatile })
 
     // Drop the bulky localStorage entry now that it's safe in IndexedDB.
     try {

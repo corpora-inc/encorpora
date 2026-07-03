@@ -40,6 +40,7 @@ import {
   idbPut,
   type IdbRecord,
 } from "./idb"
+import { estimateSize } from "./bytes"
 
 export type StorageTier = "tiny" | "large"
 
@@ -69,17 +70,6 @@ export type NamespaceOptions = {
 
 const SEP = "::"
 const LS_PREFIX = "corpan-store:"
-
-/** Approximate byte size of a JSON-stringified value. Cheap + good enough
- *  for eviction accounting (we don't need exactness, just ordering). */
-function estimateSize(v: unknown): number {
-  try {
-    if (typeof v === "string") return v.length * 2
-    return JSON.stringify(v).length * 2
-  } catch {
-    return 0
-  }
-}
 
 function fqk(ns: string, key: string): string {
   return `${ns}${SEP}${key}`
@@ -472,3 +462,40 @@ export function createLocalStorageShim(
     },
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Doctor hook                                                               */
+/* -------------------------------------------------------------------------- */
+
+/** Number of kv/tiny records currently parked in the in-memory mirror
+ *  (degraded-write fallbacks). Doctor/dev only. */
+export function __memoryMirrorSize(): number {
+  return memoryMirror.size
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Public surface — the typed adapter layer (storage-analytics.md §3.11)     */
+/* -------------------------------------------------------------------------- */
+
+export { kvStore, docKvStore, type KVStore } from "./kv"
+export { docStore, type DocStore, type DocCodec } from "./doc"
+export { appendLog, type AppendLog, type LogRecord } from "./log"
+export { blobStore, blobServedUrl, type BlobStore, type BlobNsStats } from "./blob"
+export { WriteBatcher, appBatcher } from "./batch"
+export {
+  NAMESPACES,
+  resolveNsDecl,
+  registerPackNamespace,
+  type NsDecl,
+  type NsKind,
+} from "./namespaces"
+export { storageDoctor, installStorageDoctorDebug, type StorageDoctorReport } from "./doctor"
+export { healthCounters } from "./health"
+export { estimateSize } from "./bytes"
+export {
+  createEnginePersistence,
+  journeyCardsNs,
+  journeyMetaNs,
+  type EnginePersistence,
+} from "./enginePersistence"
+export { buildPackStorageApi, type PackStorageApi } from "./packStorageApi"
