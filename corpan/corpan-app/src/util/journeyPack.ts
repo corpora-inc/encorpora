@@ -214,6 +214,11 @@ export interface CourseGraphRecipeSlot {
 
 export interface CourseGraph {
   courseId: string
+  /** BCP-47 target language from `pack_meta.target_lang` — the AUTHORITATIVE
+   *  value (correct casing, e.g. "pt-BR"). The engine's courseId-derived
+   *  fallback ("journey_pt_br" → "pt-br") loses casing, so every spec-minting
+   *  path must prefer this (W3/W6 note; W10 item 15). */
+  targetLang: string
   arcs: CourseGraphArc[]
   units: CourseGraphUnit[]
   skills: Record<string, CourseGraphSkill>
@@ -340,6 +345,11 @@ export async function loadCourseGraph(
   if (!courseId) {
     throw new JourneyPackIntegrityError("pack_meta.course_id missing")
   }
+  // Authoritative target language (course-pack.md pack_meta). Falls back to
+  // the underscore-courseId derivation only for pre-target_lang fixture DBs —
+  // the fallback loses BCP-47 casing ("pt-br", not "pt-BR").
+  const targetLang =
+    meta.get("target_lang") ?? courseId.replace(/^journey_/, "").replace(/_/g, "-")
 
   // graph.arcs — single shot, ≤ 7 rows
   const arcRows = await query(
@@ -647,6 +657,7 @@ export async function loadCourseGraph(
 
   return {
     courseId,
+    targetLang,
     arcs,
     units,
     skills,

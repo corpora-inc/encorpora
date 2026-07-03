@@ -28,9 +28,11 @@ export interface GraphIndex {
   templatesByKind: Map<string, ActivityTemplate[]>
   /** CEFR stage of a unit (via its arc). */
   stageOfUnit(unitOrdinal: number): CourseGraph["arcs"][number]["cefr"]
-  /** Target language derived from the underscore-canonical courseId
-   *  ("journey_pt_br" → "pt-br"). The pack loader owns the authoritative
-   *  value in pack_meta; this is the engine's fallback for spec minting. */
+  /** Target language for spec minting. Prefers the loader-provided
+   *  `graph.targetLang` (pack_meta.target_lang — authoritative, correct
+   *  BCP-47 casing, e.g. "pt-BR"); falls back to the underscore-canonical
+   *  courseId derivation ("journey_pt_br" → "pt-br") only for fixtures that
+   *  omit it (W10 item 15 — the derivation is wrong for pt-BR casing). */
   targetLang: string
 }
 
@@ -110,7 +112,8 @@ export function buildGraphIndex(graph: CourseGraph): GraphIndex {
     templatesByKind.set(t.itemKind, arr)
   }
 
-  const targetLang = graph.courseId.replace(/^journey_/, "").replace(/_/g, "-")
+  const targetLang =
+    graph.targetLang ?? graph.courseId.replace(/^journey_/, "").replace(/_/g, "-")
 
   return {
     graph,

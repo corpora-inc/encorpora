@@ -235,6 +235,11 @@ export interface SessionState {
  *  (engine.md §2.6; structural twin of util/journeyPack.ts CourseGraph). */
 export interface CourseGraph {
   courseId: string
+  /** BCP-47 target language from `pack_meta.target_lang` (authoritative —
+   *  correct casing, e.g. "pt-BR"). Optional here so hand-built fixtures keep
+   *  compiling; when absent the GraphIndex falls back to the courseId
+   *  derivation, which loses casing (W10 item 15). */
+  targetLang?: string
   arcs: { arcId: string; ordinal: number; cefr: "A0" | "A1" | "A2" | "B1" | "B2" | "C1" | "C2" }[]
   units: { unitId: string; arcId: string; ordinal: number; skillIds: string[] }[]
   skills: Record<string, {

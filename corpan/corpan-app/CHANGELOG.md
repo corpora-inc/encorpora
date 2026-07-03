@@ -7,6 +7,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Journey W10 — authoritative targetLang** (item 15, flagged by W3 + W6).
+  The CourseGraph loader (`util/journeyPack.ts`) now carries
+  `pack_meta.target_lang` on the graph, and the engine's GraphIndex prefers
+  it over the courseId derivation — which lowercases BCP-47 region tags
+  (`journey_pt_br` → `"pt-br"`, wrong for `pt-BR`). Fixture graphs without
+  the field keep the derivation fallback.
+
 ### Changed
 - **Journey W10 — file re-homes** (1:1, no logic change): the journey meta
   store moved `src/journey/store.ts` → `src/store/journey.ts` (house
