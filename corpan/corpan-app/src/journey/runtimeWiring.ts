@@ -57,12 +57,17 @@ export function journeyCourseIdFor(targetLang: string): string {
  * "no enrichment", never an error).
  */
 export function buildResolverDeps(
-  hostApi: Pick<HostApi, "getEntryById" | "queryPackDb">,
+  hostApi: Pick<HostApi, "getEntryById" | "queryPackDb" | "getRandomEntries">,
   opts: {
     findInstalledWordPack?: (nativeLang: string, targetLang: string) => string | null
     findInstalledNarrationPack?: (bookId: string, lang: string) => string | null
     findInstalledPack?: (packId: string) => boolean
     fetchPackText?: (packId: string, relPath: string) => Promise<string>
+    /** Languages the rung-3 top-up needs translations in — [targetLang,
+     *  nativeLang] in practice. Forwarded as the host sampler's
+     *  `languageCodes` filter so drawn entries actually carry the faces
+     *  `phraseItemFromEntry` builds (a missing target face is discarded). */
+    randomEntryLanguages?: string[]
   } = {},
 ): ResolverDeps {
   // packFileUrl must be sync (ResolverDeps contract); manifest URLs resolve
@@ -87,7 +92,30 @@ export function buildResolverDeps(
       if (!hostApi.queryPackDb) return Promise.reject(new Error("queryPackDb unavailable"))
       return hostApi.queryPackDb(q)
     },
-    getRandomEntries: async () => [], // rung-3 top-ups only; W10 may wire hostApi.getRandomEntriesFiltered
+    // Rung-3 distractor top-up (content-resolver.md §4.2): phrase-kind
+    // pathological starvation ONLY. Rides the host's FILTERED random-entries
+    // surface (hostApi.getRandomEntries options form → Rust
+    // get_random_entries_with_translations, whose relaxation ladder degrades
+    // a starved filter instead of returning empty). Deterministic-compatible
+    // by contract: the top-up only FEEDS the sampler pool — selection,
+    // elimination order and tie-breaks stay on the card PRNG in
+    // distractors.ts, and rung-3 rows carry b=null so they rank worst-fit.
+    // Never throws: a missing seam or host error resolves [] (the sampler
+    // reports shortfall instead of crashing a card).
+    getRandomEntries: async (q) => {
+      if (!hostApi.getRandomEntries) return []
+      try {
+        const langs = opts.randomEntryLanguages?.filter((l) => !!l) ?? []
+        return await hostApi.getRandomEntries({
+          count: q.count,
+          ...(q.domains && q.domains.length > 0 ? { domains: q.domains } : {}),
+          ...(q.levels && q.levels.length > 0 ? { levels: q.levels } : {}),
+          ...(langs.length > 0 ? { languageCodes: langs } : {}),
+        })
+      } catch {
+        return []
+      }
+    },
     fetchPackText:
       opts.fetchPackText ??
       (async (packId, relPath) => {
@@ -258,6 +286,13 @@ export async function buildJourneyDeps(opts: {
   const resolverDeps = buildResolverDeps(hostApi, {
     findInstalledPack: (pid) =>
       pid === packId || !!useJourneyPacksStore.getState().get(pid),
+    // Rung-3 top-up draws must carry the faces the sampler builds: the
+    // answer face (targetLang, required) and the prompt face (nativeLang,
+    // when the stack has one).
+    randomEntryLanguages: [
+      targetLang,
+      ...(opts.nativeLang ? [opts.nativeLang] : []),
+    ],
   })
   const ctx = makeResolveContext(courseId, targetLang, opts.nativeLang)
   const resolver = createResolver(resolverDeps, ctx)

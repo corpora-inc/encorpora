@@ -25,7 +25,6 @@ import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { useWordPackCatalogStore } from "@/store/wordPackCatalog";
-import { jitter } from "@/contentPacks/catalogFetch";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
@@ -49,8 +48,6 @@ import { registerCoreResources } from "@/lib/offlineCache/resources";
 import { JourneyOverlay } from "@/journey/JourneyOverlay";
 import { JOURNEY_EXIT_EVENT } from "@/journey/JourneySurface";
 import type { ActivitySpec } from "@/contentPacks/activityContract";
-
-const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -202,13 +199,13 @@ export default function App() {
   );
   const fetchWordPackCatalog = useWordPackCatalogStore((s) => s.fetchCatalog);
 
-  // Offline-cache boot (offline-cache.md §3.2/§3.3, W2's seam): register the
+  // Offline-cache boot (offline-cache.md §3.2/§3.3): register the
   // per-resource policy table once and install the revalidation triggers
-  // (startup / foreground / online / jittered interval) + the cover pre-warm.
-  // These COEXIST with the legacy inline catalog-refresh effect below until
-  // the phase-2 store migration moves the zustand stores' fetch bodies onto
-  // cachedFetch — registered resources revalidate here; the legacy stores
-  // keep their own loop (per W2's wiring note in lib/offlineCache/triggers.ts).
+  // (startup / foreground / online / jittered interval) + the cover
+  // pre-warm. Since the phase-2 store migration (W12) this OWNS the whole
+  // refresh cadence — the catalog stores delegate to cachedFetch and pick
+  // up background revalidations via subscribeJson, so the old inline
+  // interval/focus/visibility refresh loop is retired.
   useEffect(() => {
     registerCoreResources();
     return installTriggers();
@@ -249,50 +246,6 @@ export default function App() {
         console.warn("[App] phrase-pack rehydrate failed:", err);
       }
     })();
-  }, [fetchCatalog, fetchPhrasePackCatalog, fetchWordPackCatalog]);
-
-  // Keep the Home/discovery catalogs fresh while the app stays open. The
-  // stores enforce their own TTL + online checks and now revalidate with a
-  // cheap conditional GET (a 0-byte 304 when nothing changed), so this is
-  // almost always free and a real download happens only when the catalog
-  // actually changed. We also poll on focus / foreground and skip while
-  // hidden or offline.
-  //
-  // The interval is JITTERED per device (recursive setTimeout, not a fixed
-  // setInterval) so a fleet of millions never hits the catalog hosts in a
-  // synchronized wave when an update lands.
-  useEffect(() => {
-    const refreshStaleCatalogs = () => {
-      if (document.visibilityState === "hidden") return;
-      if (!navigator.onLine) return;
-      void fetchCatalog();
-      void fetchPhrasePackCatalog();
-      void fetchWordPackCatalog();
-    };
-
-    let timer = 0;
-    const scheduleNext = () => {
-      timer = window.setTimeout(() => {
-        refreshStaleCatalogs();
-        scheduleNext();
-      }, jitter(CATALOG_REFRESH_CHECK_INTERVAL_MS));
-    };
-    scheduleNext();
-
-    const onVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        refreshStaleCatalogs();
-      }
-    };
-
-    window.addEventListener("focus", refreshStaleCatalogs);
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
-    return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener("focus", refreshStaleCatalogs);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
-    };
   }, [fetchCatalog, fetchPhrasePackCatalog, fetchWordPackCatalog]);
 
   // Re-check entitlements when the app returns to the foreground. Without

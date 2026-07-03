@@ -2,38 +2,35 @@
 //
 // Zustand store for the dedicated WORD-PACK index. Parallel to
 // `usePhrasePackCatalogStore`: word packs are written directly to S3 by the
-// publisher with no PR or build, so this store ticks on a short TTL (5 min)
-// and is independent of the v3 catalog (`useCatalogStore`).
+// publisher with no PR or build, independent of the v3 catalog.
 //
-// Persisted so the Settings discovery list renders instantly on launch from
-// the last-fetched copy even while a fresh fetch is in flight (or offline).
-// M3 (storage-analytics.md §2.2): the index grows with the catalog
-// (54 langs × pairs), so it persists to the IndexedDB LARGE tier like its
-// two sibling catalogs — never the shared ~5MB localStorage budget.
+// Phase 2 of the D12 offline-cache migration (offline-cache.md §6): the
+// fetch body delegates to `cachedFetch(wordPackIndexResource)` +
+// `subscribeJson`; TTL/validators/persistence/singleflight live in
+// src/lib/offlineCache (IndexedDB LARGE tier — M3, storage-analytics.md
+// §2.2). Store keeps UI state only; public API unchanged. zustand
+// `version: 2` + `migrate` seeds the cache record from the legacy
+// persisted index so upgraded devices never cold-refetch.
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 import { createLocalStorageShim } from "@/lib/storage";
 
-import {
-    fetchWordPackCatalogFresh,
-    type WordPackCatalog,
-} from "@/contentPacks/wordPackCatalog";
+import { type WordPackCatalog } from "@/contentPacks/wordPackCatalog";
 import { getNetworkStatus, listenToNetworkChanges } from "@/utils/network";
-
-/** 5 minutes — matches the CloudFront Cache-Control on the published index. */
-const CACHE_DURATION = 5 * 60 * 1000;
+import { cachedFetch, subscribeJson } from "@/lib/offlineCache/jsonCache";
+import { wordPackIndexResource } from "@/lib/offlineCache/resources";
+import { seedWordPackIndexFromLegacy } from "@/lib/offlineCache/legacySeed";
 
 type WordPackCatalogState = {
     catalog: WordPackCatalog | null;
+    /** Epoch ms of the last successful network confirmation (mirrors the
+     *  cache record's fetchedAt). */
     lastFetched: number | null;
     /** Last freshness check (304/error included); distinct from a successful
      *  refresh (`lastFetched`). */
     lastChecked: number | null;
-    /** HTTP validators for conditional revalidation (cheap 304 polls). */
-    etag: string | null;
-    lastModified: string | null;
     isOnline: boolean;
     isFetching: boolean;
 
@@ -42,59 +39,55 @@ type WordPackCatalogState = {
     clearCache: () => void;
 };
 
+/** Wait for persist (re)hydration — the migrate seeding runs inside it. */
+function whenHydrated(): Promise<void> {
+    return new Promise((resolve) => {
+        const api = useWordPackCatalogStore.persist;
+        if (!api || api.hasHydrated()) {
+            resolve();
+            return;
+        }
+        const unsub = api.onFinishHydration(() => {
+            unsub();
+            resolve();
+        });
+    });
+}
+
 export const useWordPackCatalogStore = create<WordPackCatalogState>()(
     persist(
         (set, get) => ({
             catalog: null,
             lastFetched: null,
             lastChecked: null,
-            etag: null,
-            lastModified: null,
             isOnline: getNetworkStatus(),
             isFetching: false,
 
             fetchCatalog: async (force = false) => {
-                const state = get();
-                if (state.isFetching) return;
-                const now = Date.now();
-                if (
-                    !force &&
-                    state.lastFetched &&
-                    state.catalog &&
-                    now - state.lastFetched < CACHE_DURATION
-                ) {
-                    return;
-                }
-                if (!state.isOnline) {
-                    console.log("[word-pack catalog] offline; skipping fetch");
-                    return;
-                }
+                // UI re-entrancy flag only — network dedup is the cache
+                // layer's singleflight.
+                if (get().isFetching) return;
                 set({ isFetching: true });
                 try {
-                    const haveCache = !!get().catalog;
-                    const validators =
-                        force || !haveCache
-                            ? undefined
-                            : {
-                                  etag: get().etag,
-                                  lastModified: get().lastModified,
-                              };
-                    const r = await fetchWordPackCatalogFresh(validators);
-                    if (r.status === "unchanged") {
-                        set({ lastFetched: now, lastChecked: now });
-                    } else {
+                    await whenHydrated();
+                    const r = await cachedFetch(wordPackIndexResource, {
+                        force,
+                    });
+                    const now = Date.now();
+                    if (r) {
                         set({
                             catalog: r.data,
-                            etag: r.validators.etag ?? null,
-                            lastModified: r.validators.lastModified ?? null,
-                            lastFetched: now,
+                            lastFetched: r.fetchedAt,
                             lastChecked: now,
                         });
+                    } else {
+                        // True miss (offline first run / failed with nothing
+                        // cached). Keep what we have; record the attempt.
+                        set({ lastChecked: now });
                     }
                 } catch (err) {
                     console.warn("[word-pack catalog] fetch failed:", err);
-                    // Keep the existing cached catalog; record the attempt.
-                    set({ lastChecked: now });
+                    set({ lastChecked: Date.now() });
                 } finally {
                     // ALWAYS clear the in-flight flag so a failed/timed-out
                     // fetch can never wedge `isFetching` true.
@@ -104,15 +97,10 @@ export const useWordPackCatalogStore = create<WordPackCatalogState>()(
 
             setOnlineStatus: (online: boolean) => {
                 set({ isOnline: online });
+                // Cache-first read on reconnect; coalesces with the
+                // offline-cache "online" trigger in the singleflight map.
                 if (online) {
-                    const state = get();
-                    const now = Date.now();
-                    if (
-                        !state.lastFetched ||
-                        now - state.lastFetched >= CACHE_DURATION
-                    ) {
-                        void get().fetchCatalog();
-                    }
+                    void get().fetchCatalog();
                 }
             },
 
@@ -121,16 +109,42 @@ export const useWordPackCatalogStore = create<WordPackCatalogState>()(
                     catalog: null,
                     lastFetched: null,
                     lastChecked: null,
-                    etag: null,
-                    lastModified: null,
                 });
                 void get().fetchCatalog(true);
             },
         }),
         {
             name: "corpan-word-pack-catalog-v1",
-            version: 1,
-            // M3: IDB-KV shim, volatile like the sibling catalogs.
+            // v2 = phase-2 offline-cache migration: the index body (+
+            // validators) moved to the offline-cache-json layer; `migrate`
+            // seeds that record from the legacy persisted body with its
+            // validators so the first revalidation after upgrade can 304.
+            version: 2,
+            migrate: async (persisted, version) => {
+                if (version < 2 && persisted && typeof persisted === "object") {
+                    const legacy = persisted as {
+                        catalog?: unknown;
+                        lastFetched?: unknown;
+                        lastChecked?: unknown;
+                        etag?: unknown;
+                        lastModified?: unknown;
+                    };
+                    await seedWordPackIndexFromLegacy(legacy);
+                    return {
+                        lastFetched:
+                            typeof legacy.lastFetched === "number"
+                                ? legacy.lastFetched
+                                : null,
+                        lastChecked:
+                            typeof legacy.lastChecked === "number"
+                                ? legacy.lastChecked
+                                : null,
+                    };
+                }
+                return persisted as Partial<WordPackCatalogState>;
+            },
+            // M3: IDB-KV shim, volatile like the sibling catalogs. Only the
+            // freshness stamps persist here now.
             storage: createJSONStorage(() =>
                 createLocalStorageShim("word-pack-catalog", {
                     tier: "large",
@@ -138,15 +152,22 @@ export const useWordPackCatalogStore = create<WordPackCatalogState>()(
                 }),
             ),
             partialize: (state) => ({
-                catalog: state.catalog,
                 lastFetched: state.lastFetched,
                 lastChecked: state.lastChecked,
-                etag: state.etag,
-                lastModified: state.lastModified,
             }),
         },
     ),
 );
+
+// Background revalidations (offline-cache triggers) + the migrate seeding
+// land here.
+subscribeJson<WordPackCatalog>(wordPackIndexResource.key, (value) => {
+    useWordPackCatalogStore.setState({
+        catalog: value.data,
+        lastFetched: value.fetchedAt,
+        lastChecked: Date.now(),
+    });
+});
 
 if (typeof window !== "undefined") {
     listenToNetworkChanges((online) => {

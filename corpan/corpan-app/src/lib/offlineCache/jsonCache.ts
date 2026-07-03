@@ -257,6 +257,49 @@ export async function cachedFetch<T>(
   return fresh ?? staleValue
 }
 
+/**
+ * Seed the persisted record for `resource.key` from a LEGACY per-store
+ * persistence (offline-cache.md §6 phase 2: the zustand `migrate` hooks call
+ * this on version bump so no device cold-refetches after upgrade).
+ *
+ *  - Parse-gated: an unparseable legacy body is refused (returns false) —
+ *    stale-shaped data never enters the cache.
+ *  - Never overwrites an existing record: once the cache layer owns a key,
+ *    it is the source of truth (also makes a re-run migrate idempotent).
+ *  - Notifies subscribers on success, so a store whose first cachedFetch
+ *    raced ahead of the (async) migrate still receives the seeded value.
+ *
+ * Returns true when the record was written.
+ */
+export async function seedJsonRecord<T>(
+  resource: JsonResource<T>,
+  seed: { data: unknown; validators?: Validators; fetchedAt?: number | null },
+): Promise<boolean> {
+  const data = resource.parse(seed.data)
+  if (data == null) return false
+  const ns = await deps.ns()
+  const existing = await ns.getJSON<StoredJsonRecord>(resource.key, {
+    schema: resource.policy.schema,
+  })
+  if (existing && typeof existing === "object" && typeof existing.fetchedAt === "number") {
+    return false
+  }
+  const record: StoredJsonRecord = {
+    data,
+    validators: seed.validators ?? {},
+    fetchedAt: seed.fetchedAt ?? 0,
+  }
+  await persistRecord(resource, record)
+  const value: CachedJson<T> = {
+    data,
+    fetchedAt: record.fetchedAt,
+    stale: !isFresh(record, resource.policy.ttlMs, deps.now()),
+    source: "cache",
+  }
+  notify(resource.key, value as CachedJson<unknown>)
+  return true
+}
+
 /** Revalidate every registered resource whose record is stale. Fire-and-
  *  forget; coalesced; staggered per resource so a fleet never stampedes
  *  (interval-level jitter lives in the trigger loop). */
