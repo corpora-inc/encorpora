@@ -7,6 +7,32 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey content resolver (`src/journey/content/`, Journey W5).** The seam
+  between the engine's scheduled `ItemRef`s and renderable content, per
+  `docs/journey/specs/content-resolver.md` (R14). `resolve.ts` resolves all
+  seven item kinds against installed sources through a dependency-injected
+  `ResolverDeps` port (phrase base+packs, wordpan pair DBs, hanzipan,
+  narration-pack segment/audio files, course-pack grammar nodes / phoneme
+  overlays / localized strings) into a typed `ResolvedItem` (display `text` vs
+  spoken `ttsText`, display-aligned audio word timestamps). Missing content is
+  never a blank card: unresolvable refs come back as typed `missing` reasons
+  (incl. `preview_truncated` — no paywall surprises inside feed cards) and
+  `contentMissingResult()` builds the §3.3 drop envelope
+  (`abandoned + flags.contentMissing`). Per-session LRU caches are entry- and
+  byte-bounded (shared ~4 MB pool; lazy hanzi stroke JSON kept out of it) with
+  `invalidate()` for mid-session pack installs. `distractors.ts` is the ONE
+  distractor source for every tappable wrong option: same-skill → near-b →
+  random-top-up ladder, validity exclusions (answer/near-answer collisions
+  after aggressive normalization, same-translation collisions,
+  answer-language-only surfaces, recent-window dedup), deterministic under a
+  per-card seeded PRNG, plus `seededShuffle` for match_pairs and the §4.7
+  per-renderer needs table as typed param builders. Every SQL string carries
+  an explicit LIMIT with a full-page truncation warning (R7 silent Rust cap).
+  Test-only golden fixtures (`__fixtures__/`, in-memory `node:sqlite`) cover
+  all kinds, all missing reasons, 1,000-case distractor validity properties,
+  and determinism. Not yet user-visible: the feed runtime (W4) wires it up.
+
 ### Changed
 - **Word-explanation packs ship from a dedicated S3 index, not the main
   catalog (#477, #478, #479; supersedes #498's catalog registration).** Word
