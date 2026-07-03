@@ -1,0 +1,7 @@
+{
+  "base": {},
+  "dr87": { "DESIRED_RETENTION": 0.87 },
+  "dr85": { "DESIRED_RETENTION": 0.85 },
+  "dr83": { "DESIRED_RETENTION": 0.83 },
+  "dr80": { "DESIRED_RETENTION": 0.8 }
+}

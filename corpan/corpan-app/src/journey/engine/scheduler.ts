@@ -15,7 +15,7 @@ import {
 } from "ts-fsrs"
 
 import { DAY_MS, msToDate } from "./clock.ts"
-import { MAX_ELAPSED_DAYS } from "./constants.ts"
+import { DESIRED_RETENTION, MAX_ELAPSED_DAYS } from "./constants.ts"
 import { fnv1a32 } from "./rng.ts"
 import type { ItemCard, ReviewLogEntry } from "./types.ts"
 
@@ -27,7 +27,7 @@ import type { ItemCard, ReviewLogEntry } from "./types.ts"
  *  T-sched-1 asserts this equality so a ts-fsrs upgrade that silently
  *  changes defaults fails loudly (engine.md §8.2). */
 export const JOURNEY_FSRS_PARAMS: FSRSParameters = generatorParameters({
-  request_retention: 0.9, // internal pace knob later; never user-visible
+  request_retention: DESIRED_RETENTION, // pace knob — tunable lives in constants.ts (engine.md §1.1)
   maximum_interval: 365, // course content churns; the 36500 default is wrong for us
   w: default_w,
   enable_fuzz: true, // ±small% interval noise; prevents due-date clumping

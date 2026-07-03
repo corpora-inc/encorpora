@@ -5,6 +5,11 @@
 export const ENGINE_SCHEMA = 1
 
 // ---- FSRS / scheduling ------------------------------------------------------
+/** FSRS desired retention — the internal pace knob (adaptivity §1.3: "0.85 =
+ *  fewer reviews/more forgetting; 0.93 = review-heavy"; never user-visible).
+ *  W11 calibration: 0.90 saturates a 15-min/day session once ~500+ items
+ *  rotate (P1/P3/P4 sim failures); see scripts/journey-sim/CALIBRATION.md. */
+export const DESIRED_RETENTION = 0.9
 export const MAX_ELAPSED_DAYS = 365 // clock-jump clamp (engine.md §1.3)
 /** Codec sanity range for `due` (epoch days ≈ 1970..2079; static, no clock). */
 export const MAX_EPOCH_DAY = 40_000
