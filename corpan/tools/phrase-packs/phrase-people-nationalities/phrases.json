@@ -1,0 +1,602 @@
+[
+  {
+    "english": "Where are you from?",
+    "text": "Where are you from?",
+    "level": "A0"
+  },
+  {
+    "english": "I am from Mexico.",
+    "text": "I am from Mexico.",
+    "level": "A0"
+  },
+  {
+    "english": "I'm from Spain.",
+    "text": "I'm from Spain.",
+    "level": "A0"
+  },
+  {
+    "english": "She is from Japan.",
+    "text": "She is from Japan.",
+    "level": "A0"
+  },
+  {
+    "english": "He is from France.",
+    "text": "He is from France.",
+    "level": "A0"
+  },
+  {
+    "english": "We are from China.",
+    "text": "We are from China.",
+    "level": "A0"
+  },
+  {
+    "english": "They are from Brazil.",
+    "text": "They are from Brazil.",
+    "level": "A0"
+  },
+  {
+    "english": "Are you from here?",
+    "text": "Are you from here?",
+    "level": "A0"
+  },
+  {
+    "english": "I am American.",
+    "text": "I am American.",
+    "level": "A0"
+  },
+  {
+    "english": "She is French.",
+    "text": "She is French.",
+    "level": "A0"
+  },
+  {
+    "english": "He is Chinese.",
+    "text": "He is Chinese.",
+    "level": "A0"
+  },
+  {
+    "english": "I am not from England.",
+    "text": "I am not from England.",
+    "level": "A0"
+  },
+  {
+    "english": "My country is small.",
+    "text": "My country is small.",
+    "level": "A0"
+  },
+  {
+    "english": "My country is big.",
+    "text": "My country is big.",
+    "level": "A0"
+  },
+  {
+    "english": "I speak English.",
+    "text": "I speak English.",
+    "level": "A0"
+  },
+  {
+    "english": "I speak a little English.",
+    "text": "I speak a little English.",
+    "level": "A0"
+  },
+  {
+    "english": "Do you speak English?",
+    "text": "Do you speak English?",
+    "level": "A0"
+  },
+  {
+    "english": "What country are you from?",
+    "text": "What country are you from?",
+    "level": "A0"
+  },
+  {
+    "english": "I live in Germany.",
+    "text": "I live in Germany.",
+    "level": "A0"
+  },
+  {
+    "english": "Nice to meet you. Where are you from?",
+    "text": "Nice to meet you. Where are you from?",
+    "level": "A0"
+  },
+  {
+    "english": "I'm from a small town in Italy.",
+    "text": "I'm from a small town in Italy.",
+    "level": "A1"
+  },
+  {
+    "english": "Where is your family from?",
+    "text": "Where is your family from?",
+    "level": "A1"
+  },
+  {
+    "english": "My mother is from India and my father is from Canada.",
+    "text": "My mother is from India and my father is from Canada.",
+    "level": "A1"
+  },
+  {
+    "english": "Is she from Russia? No, she is from Poland.",
+    "text": "Is she from Russia? No, she is from Poland.",
+    "level": "A1"
+  },
+  {
+    "english": "He is German, but he lives in Spain.",
+    "text": "He is German, but he lives in Spain.",
+    "level": "A1"
+  },
+  {
+    "english": "Are they Japanese or Chinese?",
+    "text": "Are they Japanese or Chinese?",
+    "level": "A1"
+  },
+  {
+    "english": "I am Mexican and my wife is American.",
+    "text": "I am Mexican and my wife is American.",
+    "level": "A1"
+  },
+  {
+    "english": "Our teacher is from Australia.",
+    "text": "Our teacher is from Australia.",
+    "level": "A1"
+  },
+  {
+    "english": "My best friend is Irish.",
+    "text": "My best friend is Irish.",
+    "level": "A1"
+  },
+  {
+    "english": "Her husband is Italian.",
+    "text": "Her husband is Italian.",
+    "level": "A1"
+  },
+  {
+    "english": "The new student is from Turkey.",
+    "text": "The new student is from Turkey.",
+    "level": "A1"
+  },
+  {
+    "english": "People from Brazil speak Portuguese.",
+    "text": "People from Brazil speak Portuguese.",
+    "level": "A1"
+  },
+  {
+    "english": "People from Egypt speak Arabic.",
+    "text": "People from Egypt speak Arabic.",
+    "level": "A1"
+  },
+  {
+    "english": "What languages do you speak?",
+    "text": "What languages do you speak?",
+    "level": "A1"
+  },
+  {
+    "english": "I speak Spanish and a little French.",
+    "text": "I speak Spanish and a little French.",
+    "level": "A1"
+  },
+  {
+    "english": "She speaks three languages.",
+    "text": "She speaks three languages.",
+    "level": "A1"
+  },
+  {
+    "english": "Do you speak Chinese at home?",
+    "text": "Do you speak Chinese at home?",
+    "level": "A1"
+  },
+  {
+    "english": "We speak English at work.",
+    "text": "We speak English at work.",
+    "level": "A1"
+  },
+  {
+    "english": "My parents speak Russian with me.",
+    "text": "My parents speak Russian with me.",
+    "level": "A1"
+  },
+  {
+    "english": "How do you say this in English?",
+    "text": "How do you say this in English?",
+    "level": "A1"
+  },
+  {
+    "english": "I am learning English.",
+    "text": "I am learning English.",
+    "level": "A1"
+  },
+  {
+    "english": "He is learning German for his job.",
+    "text": "He is learning German for his job.",
+    "level": "A1"
+  },
+  {
+    "english": "Is English your first language?",
+    "text": "Is English your first language?",
+    "level": "A1"
+  },
+  {
+    "english": "My first language is Spanish.",
+    "text": "My first language is Spanish.",
+    "level": "A1"
+  },
+  {
+    "english": "I was born in Korea.",
+    "text": "I was born in Korea.",
+    "level": "A1"
+  },
+  {
+    "english": "She was born in London.",
+    "text": "She was born in London.",
+    "level": "A1"
+  },
+  {
+    "english": "Where were you born?",
+    "text": "Where were you born?",
+    "level": "A1"
+  },
+  {
+    "english": "I live in France, but I am not French.",
+    "text": "I live in France, but I am not French.",
+    "level": "A1"
+  },
+  {
+    "english": "He is from the north of India.",
+    "text": "He is from the north of India.",
+    "level": "A1"
+  },
+  {
+    "english": "She is from the south of Spain.",
+    "text": "She is from the south of Spain.",
+    "level": "A1"
+  },
+  {
+    "english": "Which city are you from?",
+    "text": "Which city are you from?",
+    "level": "A1"
+  },
+  {
+    "english": "I'm from the capital.",
+    "text": "I'm from the capital.",
+    "level": "A1"
+  },
+  {
+    "english": "Is Tokyo the capital of Japan? Yes, it is.",
+    "text": "Is Tokyo the capital of Japan? Yes, it is.",
+    "level": "A1"
+  },
+  {
+    "english": "Madrid is the capital of Spain.",
+    "text": "Madrid is the capital of Spain.",
+    "level": "A1"
+  },
+  {
+    "english": "This is my friend Ana. She is from Chile.",
+    "text": "This is my friend Ana. She is from Chile.",
+    "level": "A1"
+  },
+  {
+    "english": "This is Marco. He is from Italy.",
+    "text": "This is Marco. He is from Italy.",
+    "level": "A1"
+  },
+  {
+    "english": "Everyone in my class is from a different country.",
+    "text": "Everyone in my class is from a different country.",
+    "level": "A1"
+  },
+  {
+    "english": "There are students from ten countries in my school.",
+    "text": "There are students from ten countries in my school.",
+    "level": "A1"
+  },
+  {
+    "english": "Are you from around here? You sound American.",
+    "text": "Are you from around here? You sound American.",
+    "level": "A1"
+  },
+  {
+    "english": "You speak English very well.",
+    "text": "You speak English very well.",
+    "level": "A1"
+  },
+  {
+    "english": "Thanks! I practice every day.",
+    "text": "Thanks! I practice every day.",
+    "level": "A1"
+  },
+  {
+    "english": "Sorry, I don't understand. Can you say it again?",
+    "text": "Sorry, I don't understand. Can you say it again?",
+    "level": "A1"
+  },
+  {
+    "english": "Can you speak more slowly, please?",
+    "text": "Can you speak more slowly, please?",
+    "level": "A1"
+  },
+  {
+    "english": "What does this word mean in English?",
+    "text": "What does this word mean in English?",
+    "level": "A1"
+  },
+  {
+    "english": "My neighbors are from Vietnam.",
+    "text": "My neighbors are from Vietnam.",
+    "level": "A1"
+  },
+  {
+    "english": "The cook at that restaurant is Greek.",
+    "text": "The cook at that restaurant is Greek.",
+    "level": "A1"
+  },
+  {
+    "english": "Our doctor is from South Africa.",
+    "text": "Our doctor is from South Africa.",
+    "level": "A1"
+  },
+  {
+    "english": "I have friends from many countries.",
+    "text": "I have friends from many countries.",
+    "level": "A1"
+  },
+  {
+    "english": "Do you have family in the United States?",
+    "text": "Do you have family in the United States?",
+    "level": "A1"
+  },
+  {
+    "english": "My sister lives abroad.",
+    "text": "My sister lives abroad.",
+    "level": "A1"
+  },
+  {
+    "english": "I want to visit your country one day.",
+    "text": "I want to visit your country one day.",
+    "level": "A1"
+  },
+  {
+    "english": "Is it cold in your country?",
+    "text": "Is it cold in your country?",
+    "level": "A1"
+  },
+  {
+    "english": "In my country, we eat dinner late.",
+    "text": "In my country, we eat dinner late.",
+    "level": "A1"
+  },
+  {
+    "english": "What is your country famous for?",
+    "text": "What is your country famous for?",
+    "level": "A1"
+  },
+  {
+    "english": "My city is famous for its food.",
+    "text": "My city is famous for its food.",
+    "level": "A1"
+  },
+  {
+    "english": "People in my country are very friendly.",
+    "text": "People in my country are very friendly.",
+    "level": "A1"
+  },
+  {
+    "english": "Welcome to Canada!",
+    "text": "Welcome to Canada!",
+    "level": "A1"
+  },
+  {
+    "english": "Are you here on holiday?",
+    "text": "Are you here on holiday?",
+    "level": "A1"
+  },
+  {
+    "english": "No, I work here. I moved here last year.",
+    "text": "No, I work here. I moved here last year.",
+    "level": "A1"
+  },
+  {
+    "english": "How long have you been in England?",
+    "text": "How long have you been in England?",
+    "level": "A1"
+  },
+  {
+    "english": "I grew up in a small village near the mountains.",
+    "text": "I grew up in a small village near the mountains.",
+    "level": "A2"
+  },
+  {
+    "english": "She moved from Argentina to Spain when she was ten.",
+    "text": "She moved from Argentina to Spain when she was ten.",
+    "level": "A2"
+  },
+  {
+    "english": "My grandparents came from Ireland many years ago.",
+    "text": "My grandparents came from Ireland many years ago.",
+    "level": "A2"
+  },
+  {
+    "english": "He has a strong Scottish accent.",
+    "text": "He has a strong Scottish accent.",
+    "level": "A2"
+  },
+  {
+    "english": "I can't tell if she is Dutch or German.",
+    "text": "I can't tell if she is Dutch or German.",
+    "level": "A2"
+  },
+  {
+    "english": "Half of my family is Turkish and half is Greek.",
+    "text": "Half of my family is Turkish and half is Greek.",
+    "level": "A2"
+  },
+  {
+    "english": "What nationality is your husband?",
+    "text": "What nationality is your husband?",
+    "level": "A2"
+  },
+  {
+    "english": "On the form, write your name and nationality.",
+    "text": "On the form, write your name and nationality.",
+    "level": "A2"
+  },
+  {
+    "english": "I have two passports: one from Brazil and one from Portugal.",
+    "text": "I have two passports: one from Brazil and one from Portugal.",
+    "level": "A2"
+  },
+  {
+    "english": "You need a visa to visit some countries.",
+    "text": "You need a visa to visit some countries.",
+    "level": "A2"
+  },
+  {
+    "english": "At the airport, they asked me where I was from.",
+    "text": "At the airport, they asked me where I was from.",
+    "level": "A2"
+  },
+  {
+    "english": "People often think I'm Spanish, but I'm actually Mexican.",
+    "text": "People often think I'm Spanish, but I'm actually Mexican.",
+    "level": "A2"
+  },
+  {
+    "english": "Her English is perfect because she studied in Australia.",
+    "text": "Her English is perfect because she studied in Australia.",
+    "level": "A2"
+  },
+  {
+    "english": "He speaks Arabic, French, and English fluently.",
+    "text": "He speaks Arabic, French, and English fluently.",
+    "level": "A2"
+  },
+  {
+    "english": "Which language is spoken in Switzerland?",
+    "text": "Which language is spoken in Switzerland?",
+    "level": "A2"
+  },
+  {
+    "english": "In India, people speak many different languages.",
+    "text": "In India, people speak many different languages.",
+    "level": "A2"
+  },
+  {
+    "english": "Portuguese is spoken in Brazil and Portugal.",
+    "text": "Portuguese is spoken in Brazil and Portugal.",
+    "level": "A2"
+  },
+  {
+    "english": "My accent is different from my brother's.",
+    "text": "My accent is different from my brother's.",
+    "level": "A2"
+  },
+  {
+    "english": "Foreigners often find our language difficult.",
+    "text": "Foreigners often find our language difficult.",
+    "level": "A2"
+  },
+  {
+    "english": "It's hard to learn a new language as an adult.",
+    "text": "It's hard to learn a new language as an adult.",
+    "level": "A2"
+  },
+  {
+    "english": "I met a group of tourists from Thailand.",
+    "text": "I met a group of tourists from Thailand.",
+    "level": "A2"
+  },
+  {
+    "english": "The exchange students are arriving from Korea next week.",
+    "text": "The exchange students are arriving from Korea next week.",
+    "level": "A2"
+  },
+  {
+    "english": "She teaches English to refugees.",
+    "text": "She teaches English to refugees.",
+    "level": "A2"
+  },
+  {
+    "english": "Living abroad changed the way I see my own country.",
+    "text": "Living abroad changed the way I see my own country.",
+    "level": "A2"
+  },
+  {
+    "english": "I miss the food from home.",
+    "text": "I miss the food from home.",
+    "level": "A2"
+  },
+  {
+    "english": "What do you miss most about your country?",
+    "text": "What do you miss most about your country?",
+    "level": "A2"
+  },
+  {
+    "english": "The culture here is very different from mine.",
+    "text": "The culture here is very different from mine.",
+    "level": "A2"
+  },
+  {
+    "english": "In my culture, we take off our shoes at the door.",
+    "text": "In my culture, we take off our shoes at the door.",
+    "level": "A2"
+  },
+  {
+    "english": "We celebrate different holidays in my country.",
+    "text": "We celebrate different holidays in my country.",
+    "level": "A2"
+  },
+  {
+    "english": "He knows a lot about Japanese culture.",
+    "text": "He knows a lot about Japanese culture.",
+    "level": "A2"
+  },
+  {
+    "english": "Although he was born in Vietnam, he considers himself Australian.",
+    "text": "Although he was born in Vietnam, he considers himself Australian.",
+    "level": "B1"
+  },
+  {
+    "english": "She has dual citizenship, so she can work in both countries.",
+    "text": "She has dual citizenship, so she can work in both countries.",
+    "level": "B1"
+  },
+  {
+    "english": "After a decade abroad, my hometown feels foreign to me.",
+    "text": "After a decade abroad, my hometown feels foreign to me.",
+    "level": "B1"
+  },
+  {
+    "english": "Immigrants bring new traditions that slowly become part of local life.",
+    "text": "Immigrants bring new traditions that slowly become part of local life.",
+    "level": "B1"
+  },
+  {
+    "english": "It's rude to guess someone's nationality from their appearance.",
+    "text": "It's rude to guess someone's nationality from their appearance.",
+    "level": "B1"
+  },
+  {
+    "english": "My identity is more complicated than a single country.",
+    "text": "My identity is more complicated than a single country.",
+    "level": "B1"
+  },
+  {
+    "english": "Being bilingual opens doors in international business.",
+    "text": "Being bilingual opens doors in international business.",
+    "level": "B1"
+  },
+  {
+    "english": "The border between the two countries has changed many times.",
+    "text": "The border between the two countries has changed many times.",
+    "level": "B1"
+  },
+  {
+    "english": "Her family history stretches across three continents.",
+    "text": "Her family history stretches across three continents.",
+    "level": "B1"
+  },
+  {
+    "english": "Wherever I travel, I look for what people have in common.",
+    "text": "Wherever I travel, I look for what people have in common.",
+    "level": "B1"
+  }
+]

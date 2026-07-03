@@ -1,0 +1,69 @@
+id: en.a1.u22
+arc: en.arc1
+theme: "Plans & invitations"
+cando:
+  - key: plans
+    text: "Can talk about plans and invite people to do things together."
+vocab_band: { lo: 1, hi: 3800 }
+phrase_domains: [social]
+skills:
+  - id: en.skill.plans
+    kind: grammar
+    title: "Plans & invitations"
+    b: -2.4
+    prereqs: [en.skill.past-irregular]
+grammar_nodes: [en.gn.going-to]
+items:
+  - ref: "phrase:base:17722"  # Do you have a plan?
+    skills: [en.skill.plans]
+    importance: 3
+    probe: true
+    b: -2.4
+  - ref: "phrase:base:13894"  # We are talking about our holiday plans.
+    skills: [en.skill.plans]
+    importance: 3
+    probe: true
+    b: -2.4
+  - ref: "phrase:base:13246"  # I can’t wait to see you tomorrow!
+    skills: [en.skill.plans]
+    importance: 3
+    probe: true
+    b: -2.4
+  - ref: "phrase:base:16308"  # I'm going to a jazz concert tonight.
+    skills: [en.skill.plans]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:7602"  # Let's switch places for a while.
+    skills: [en.skill.plans]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:plan"
+    skills: [en.skill.plans]
+    importance: 2
+  - ref: "word:en:party"
+    skills: [en.skill.plans]
+    importance: 2
+  - ref: "word:en:holiday"
+    skills: [en.skill.plans]
+    importance: 2
+  - ref: "word:en:concert"
+    skills: [en.skill.plans]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [social]
+      level: A1
+      count: 12
+      skills: [en.skill.plans]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

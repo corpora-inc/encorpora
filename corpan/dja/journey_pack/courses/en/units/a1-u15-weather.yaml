@@ -1,0 +1,87 @@
+id: en.a1.u15
+arc: en.arc1
+theme: "Weather & seasons"
+cando:
+  - key: weather
+    text: "Can talk about the weather and the seasons in simple terms."
+vocab_band: { lo: 1, hi: 3500 }
+phrase_domains: [environment]
+skills:
+  - id: en.skill.weather
+    kind: vocab
+    title: "Weather & seasons"
+    b: -2.7
+    prereqs: [en.skill.right-now]
+grammar_nodes: [en.gn.dummy-it]
+items:
+  - ref: "phrase:base:21778"  # It's cold outside.
+    skills: [en.skill.weather]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:15068"  # My hands are cold.
+    skills: [en.skill.weather]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:8572"  # There is snow on the ground today.
+    skills: [en.skill.weather]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:9727"  # The sun is very hot in the afternoon.
+    skills: [en.skill.weather]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:1328"  # This region is very cold in winter.
+    skills: [en.skill.weather]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:18179"  # The pool is very cold today.
+    skills: [en.skill.weather]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:24461"  # Wear a jacket because it's cold.
+    skills: [en.skill.weather]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:24378"  # It is cold.
+    skills: [en.skill.weather]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:weather"
+    skills: [en.skill.weather]
+    importance: 2
+  - ref: "word:en:rain"
+    skills: [en.skill.weather]
+    importance: 2
+  - ref: "word:en:snow"
+    skills: [en.skill.weather]
+    importance: 2
+  - ref: "word:en:hot"
+    skills: [en.skill.weather]
+    importance: 2
+  - ref: "word:en:cold"
+    skills: [en.skill.weather]
+    importance: 2
+  - ref: "word:en:winter"
+    skills: [en.skill.weather]
+    importance: 2
+  - ref: "word:en:summer"
+    skills: [en.skill.weather]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [environment]
+      level: A1
+      count: 10
+      skills: [en.skill.weather]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]

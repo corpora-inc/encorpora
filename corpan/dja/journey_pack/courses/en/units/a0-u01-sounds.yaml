@@ -1,0 +1,59 @@
+id: en.a0.u01
+arc: en.arc0
+theme: "The sounds of English"
+cando:
+  - key: sounds
+    text: "Can hear and copy the core vowel and consonant contrasts of English."
+skills:
+  - id: en.skill.core-sounds
+    kind: phonology
+    title: "Core sound contrasts"
+    b: -3.5
+items:
+  - ref: "phrase:base:460"  # Everything is all right now.
+    skills: [en.skill.core-sounds]
+    importance: 3
+    probe: true
+    b: -3.5
+  - ref: "phrase:base:5779"  # I’m ready now.
+    skills: [en.skill.core-sounds]
+    importance: 3
+    probe: true
+    b: -3.5
+  - ref: "phrase:base:27243"  # I see you
+    skills: [en.skill.core-sounds]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:ship"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+  - ref: "word:en:sheep"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+  - ref: "word:en:very"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+  - ref: "word:en:berry"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+  - ref: "word:en:yet"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+  - ref: "word:en:jam"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+lessons: [phonology, phonology, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-pronounce
+  config: { itemset: unit }

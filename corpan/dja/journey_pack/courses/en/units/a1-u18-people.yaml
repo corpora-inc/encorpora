@@ -1,0 +1,77 @@
+id: en.a1.u18
+arc: en.arc1
+theme: "People & descriptions"
+cando:
+  - key: describe-people
+    text: "Can describe what people look like and what they are like."
+vocab_band: { lo: 1, hi: 3600 }
+phrase_domains: [social]
+skills:
+  - id: en.skill.describing-people
+    kind: grammar
+    title: "Describing people"
+    b: -2.6
+    prereqs: [en.skill.shopping]
+grammar_nodes: [en.gn.obj-pron]
+items:
+  - ref: "phrase:base:14158"  # How tall are you?
+    skills: [en.skill.describing-people]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:23309"  # Call me.
+    skills: [en.skill.describing-people]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:23824"  # Please ask him.
+    skills: [en.skill.describing-people]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:11359"  # I have blue eyes.
+    skills: [en.skill.describing-people]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:24699"  # Call me later.
+    skills: [en.skill.describing-people]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:23590"  # Come with us.
+    skills: [en.skill.describing-people]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22408"  # That person is nice.
+    skills: [en.skill.describing-people]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:tall"
+    skills: [en.skill.describing-people]
+    importance: 2
+  - ref: "word:en:hair"
+    skills: [en.skill.describing-people]
+    importance: 2
+  - ref: "word:en:eyes"
+    skills: [en.skill.describing-people]
+    importance: 2
+  - ref: "word:en:kind"
+    skills: [en.skill.describing-people]
+    importance: 2
+  - ref: "word:en:funny"
+    skills: [en.skill.describing-people]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [social]
+      level: A1
+      count: 12
+      skills: [en.skill.describing-people]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]

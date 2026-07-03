@@ -1,0 +1,261 @@
+# es→en overlay v0.1 — contrastive notes, cognate credit, phoneme contrasts.
+# Note bodies are authored in EN; the Spanish copy for each ovl.es.<ref>.note
+# key ships in strings/es.json (translations are source code).
+# One note per referent (table PK is (l1, type, ref_kind, ref_id)).
+l1: es
+contrastive_notes:
+  - ref_kind: grammarNode
+    ref: en.gn.sv-order
+    note: >-
+      Spanish lets you move words around ("Llegó María ayer"); English holds
+      the Subject–Verb–Object line. Keep the doer first, even when it feels
+      repetitive.
+  - ref_kind: grammarNode
+    ref: en.gn.pron-subject
+    note: >-
+      Spanish drops subject pronouns ("Soy Ana"); English keeps them. Say
+      "I am Ana" — the bare "am Ana" sounds broken to English ears.
+  - ref_kind: grammarNode
+    ref: en.gn.be-1sg-2sg
+    note: >-
+      Ser and estar both land on the same English verb: "be". Soy alta and
+      estoy cansada are both "I am ..." — one verb does both jobs.
+  - ref_kind: grammarNode
+    ref: en.gn.be-all
+    note: >-
+      Whether you'd pick ser or estar in Spanish, English uses one verb:
+      "the shop is open" (estar sense) and "the shop is small" (ser sense)
+      share the same "is".
+  - ref_kind: grammarNode
+    ref: en.gn.be-yesno-q
+    note: >-
+      Spanish can ask with rising intonation alone ("¿Estás cansado?");
+      English moves be to the front: "Are you tired?" Intonation alone reads
+      as a statement.
+  - ref_kind: grammarNode
+    ref: en.gn.wh-quest-be
+    note: >-
+      "¿De dónde eres?" becomes "Where are you from?" — the little word
+      (from) moves to the end in everyday English questions.
+  - ref_kind: grammarNode
+    ref: en.gn.articles-a-an
+    note: >-
+      Un/una maps well onto a/an, but English adds one for professions:
+      "Soy ingeniera" needs the article — "I am an engineer."
+  - ref_kind: grammarNode
+    ref: en.gn.dem-sg
+    note: >-
+      Spanish has three distances (este, ese, aquel); English has two.
+      Both ese and aquel usually land on "that".
+  - ref_kind: grammarNode
+    ref: en.gn.poss-adj
+    note: >-
+      "Su" is ambiguous in Spanish; English splits it: his, her, its, and
+      their are different words. Match the owner, not the thing owned.
+  - ref_kind: grammarNode
+    ref: en.gn.poss-s
+    note: >-
+      Spanish has no 's: "el perro de Ana" turns around into "Ana's dog" —
+      owner first, thing second.
+  - ref_kind: grammarNode
+    ref: en.gn.plural-irreg
+    note: >-
+      "La gente es..." is singular in Spanish, but "people" is plural in
+      English: "people are friendly", not "people is".
+  - ref_kind: grammarNode
+    ref: en.gn.time-telling
+    note: >-
+      "Son las tres" becomes "It's three o'clock" — English uses singular
+      "it's" for every hour, plus o'clock on the hour.
+  - ref_kind: grammarNode
+    ref: en.gn.time-prep
+    note: >-
+      Spanish "en" and "a" split three ways in English time phrases: at
+      five, on Monday, in May. Learn the trio as one set.
+  - ref_kind: grammarNode
+    ref: en.gn.like-want-noun
+    note: >-
+      "Me gusta el té" flips: the liker becomes the subject in English —
+      "I like tea." No "me" at the front, no article on general things.
+  - ref_kind: grammarNode
+    ref: en.gn.some-any
+    note: >-
+      Spanish often uses no word at all ("¿Tienes dinero?"); English likes
+      "some" in positives and "any" in questions and negatives: "Do you
+      have any money?"
+  - ref_kind: grammarNode
+    ref: en.gn.would-like
+    note: >-
+      "Quisiera" and "me gustaría" both map onto "I'd like" — the same
+      polite move works in cafés, shops, and hotels.
+  - ref_kind: grammarNode
+    ref: en.gn.there-is-are
+    note: >-
+      "Hay" is one invariable word; English matches the number: there IS a
+      cafe, there ARE two cafes.
+  - ref_kind: grammarNode
+    ref: en.gn.prep-place
+    note: >-
+      Spanish "en" covers being inside, on top of, and at a place; English
+      splits it into in, on, and at. "En la mesa" is usually "on the table".
+  - ref_kind: grammarNode
+    ref: en.gn.art-the
+    note: >-
+      General statements drop "the" in English: "La vida es bella" is "Life
+      is beautiful", and "me gustan los perros" is "I like dogs".
+  - ref_kind: grammarNode
+    ref: en.gn.pres-simple-base
+    note: >-
+      Spanish packs the person into the ending (hablo, hablas); English
+      keeps the verb bare and leans on the pronoun: I speak, you speak.
+  - ref_kind: grammarNode
+    ref: en.gn.adv-freq
+    note: >-
+      In Spanish these words roam ("Voy siempre", "Siempre voy"); English
+      parks them before the main verb and after be: "I usually walk. She is
+      often late."
+  - ref_kind: grammarNode
+    ref: en.gn.pres-simple-3sg
+    note: >-
+      Spanish conjugates every person, so the lone English -s feels
+      invisible. It is the top A1 slip: "she work" needs its -s — "she
+      works".
+  - ref_kind: grammarNode
+    ref: en.gn.do-quest
+    note: >-
+      Spanish questions work by intonation; English inserts do/does:
+      "¿Te gusta el café?" becomes "Do you like coffee?"
+  - ref_kind: grammarNode
+    ref: en.gn.do-neg
+    note: >-
+      "No veo nada" uses one negative in English: "I don't see anything" —
+      don't plus a positive word, not a double negative.
+  - ref_kind: grammarNode
+    ref: en.gn.have-got
+    note: >-
+      Watch the tener idioms: tengo hambre, sed, and 20 años all switch
+      verbs in English — "I AM hungry", "I AM thirsty", "I AM 20".
+  - ref_kind: grammarNode
+    ref: en.gn.can-ability
+    note: >-
+      Saber (a learned skill) and poder (possibility or permission) both
+      become "can": sé nadar and puedo ir are "I can swim" and "I can go".
+  - ref_kind: grammarNode
+    ref: en.gn.pres-cont
+    note: >-
+      Estoy comiendo maps neatly onto "I am eating" — trust the pattern:
+      be + verb-ing, with the -ing doing the job of -ando/-iendo.
+  - ref_kind: grammarNode
+    ref: en.gn.simple-vs-cont
+    note: >-
+      Spanish "como" covers both; English splits them: "I eat" is the habit
+      and "I am eating" is right now. Pick by the time words.
+  - ref_kind: grammarNode
+    ref: en.gn.dummy-it
+    note: >-
+      "Llueve" has no subject; English demands one: "IT is raining. IT's
+      late. IT's cold." The it points at nothing — it just fills the seat.
+  - ref_kind: grammarNode
+    ref: en.gn.imperatives
+    note: >-
+      Spanish has separate tú/usted commands; English has one imperative
+      for everyone. "Please" carries the courtesy that usted used to carry.
+  - ref_kind: grammarNode
+    ref: en.gn.how-much-many
+    note: >-
+      Cuánto/cuánta becomes "how much" and cuántos/cuántas becomes "how
+      many" — English splits by countability instead of gender.
+  - ref_kind: grammarNode
+    ref: en.gn.obj-pron
+    note: >-
+      Spanish puts object pronouns before the verb ("te llamo"); English
+      puts them after: "I'll call you. I see her. Ask him."
+  - ref_kind: grammarNode
+    ref: en.gn.past-be
+    note: >-
+      Era, estaba, fue, and estuvo all collapse into was/were. English
+      past-be is the simple one — don't hunt for the aspect split yet.
+  - ref_kind: grammarNode
+    ref: en.gn.past-reg
+    note: >-
+      The -ed ending has three sounds: /t/ (worked), /d/ (played), /ɪd/
+      (visited). Say "visited" with three syllables, "worked" with one.
+  - ref_kind: grammarNode
+    ref: en.gn.going-to
+    note: >-
+      Positive transfer: "voy a viajar" maps word for word onto "I'm going
+      to travel". Trust it — this one works exactly like Spanish.
+  - ref_kind: grammarNode
+    ref: en.gn.comp-superl
+    note: >-
+      "Más grande que" becomes "-er than" for short adjectives (bigger
+      than) and "more ... than" for long ones — the two-track split is the
+      new part.
+  - ref_kind: unit
+    ref: en.a1.u10
+    note: >-
+      False-friend patrol for work talk: actualmente is not "actually",
+      asistir is not "assist", éxito is not "exit", and carpeta is not
+      "carpet".
+  - ref_kind: unit
+    ref: en.a1.u12
+    note: >-
+      Adjectives go BEFORE the noun and don't take plural -s: "los coches
+      rojos" becomes "the red cars", not "the cars reds".
+  - ref_kind: unit
+    ref: en.a1.u24
+    note: >-
+      "¿De quién es esto?" becomes one word: "Whose is this?" — whose does
+      the whole "de quién" job.
+cognate_credits:
+  - ref_kind: course
+    items:
+      - "word:en:family"
+      - "word:en:doctor"
+      - "word:en:music"
+      - "word:en:guitar"
+      - "word:en:restaurant"
+      - "word:en:park"
+      - "word:en:plan"
+      - "word:en:concert"
+      - "word:en:bus"
+      - "word:en:minute"
+    seed_form: 0
+    stability_boost: 0.3
+phoneme_pairs:
+  - contrast: "iː-ɪ"
+    minimal_pairs: [["sheep", "ship"], ["leave", "live"], ["beat", "bit"]]
+    unit: en.a0.u01
+  - contrast: "ʊ-uː"
+    minimal_pairs: [["full", "fool"], ["pull", "pool"]]
+    unit: en.a0.u01
+  - contrast: "æ-ʌ"
+    minimal_pairs: [["cat", "cut"], ["bat", "but"], ["ankle", "uncle"]]
+    unit: en.a0.u01
+  - contrast: "ɑː-ɜː"
+    minimal_pairs: [["heart", "hurt"], ["far", "fur"]]
+    unit: en.a0.u01
+  - contrast: "b-v"
+    minimal_pairs: [["berry", "very"], ["ban", "van"], ["boat", "vote"]]
+    unit: en.a0.u01
+  - contrast: "dʒ-j"
+    minimal_pairs: [["jam", "yam"], ["jet", "yet"]]
+    unit: en.a0.u01
+  - contrast: "ʃ-tʃ"
+    minimal_pairs: [["ship", "chip"], ["share", "chair"], ["wash", "watch"]]
+    unit: en.a0.u01
+  - contrast: "s-z"
+    minimal_pairs: [["ice", "eyes"], ["price", "prize"], ["Sue", "zoo"]]
+    unit: en.a0.u01
+  - contrast: "n-ŋ"
+    minimal_pairs: [["thin", "thing"], ["sin", "sing"], ["ban", "bang"]]
+    unit: en.a0.u01
+  - contrast: "t-d"
+    minimal_pairs: [["heart", "hard"], ["bet", "bed"], ["sent", "send"]]
+    unit: en.a0.u01
+  - contrast: "h-Ø"
+    minimal_pairs: [["hear", "ear"], ["hold", "old"], ["hat", "at"]]
+    unit: en.a0.u01
+  - contrast: "s-ɛs"
+    minimal_pairs: [["state", "estate"], ["steam", "esteem"], ["sport", "support"]]
+    unit: en.a0.u01
