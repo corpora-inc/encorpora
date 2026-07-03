@@ -127,7 +127,9 @@ export type I18nKey =
 type Dict = Record<I18nKey, string>
 
 // ---- English source of truth ----
-const en: Dict = {
+// Exported for tooling: packs/shared/capabilities/pronounce/scripts/gen-strings.mjs
+// regenerates the capability chrome-string subset from these tables.
+export const en: Dict = {
   holdToSpeak: "Hold to speak",
   loadingModel: "Loading model…",
   listeningReleaseToStop: "Listening… release to stop",
@@ -229,7 +231,7 @@ const en: Dict = {
 
 // ---- Locales. en is always present. ----
 // GENERATED_LOCALES_START
-const LOCALES: Record<string, Partial<Dict>> = {
+export const LOCALES: Record<string, Partial<Dict>> = {
   en,
   ar: {
     holdToSpeak: "اضغط مطولاً للتحدث",

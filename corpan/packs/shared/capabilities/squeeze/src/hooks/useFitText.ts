@@ -24,8 +24,11 @@ export function useFitText<T extends HTMLElement>(key: string | null | undefined
     const el = ref.current
     if (!el || typeof window === "undefined") return
 
-    const main = el.closest<HTMLElement>(".jsf-main")
-    const bank = main?.querySelector<HTMLElement>(".jsf-bank") ?? null
+    // The fit scope is marked by the consumer (data-capsqz-fit-scope on the
+    // element that contains both the phrase and the bank) — juice-squeeze tags
+    // its .jsf-main; the capability round tags its own root.
+    const main = el.closest<HTMLElement>("[data-capsqz-fit-scope]")
+    const bank = main?.querySelector<HTMLElement>(".capSqz-bank") ?? null
 
     const fit = () => {
       // Reset to the CSS-natural size so we measure (and so short phrases that

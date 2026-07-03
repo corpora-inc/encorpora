@@ -29,9 +29,11 @@ import { useGameStore, BASKET_SIZE, type CompletedPhrase } from "../state/gameSt
 import { getAllFruits, type CEFRLevel, type FruitDef } from "../state/fruits"
 import { loadUtterance, type Utterance } from "../util/phraseLoader"
 import { pickLanguagePair } from "../util/languagePair"
-import { flattenReadingOrder } from "../util/readingOrder"
-import { isRTL } from "../util/rtl"
-import { joinForTTS } from "../util/tokenizer"
+// Round mechanics moved to the cap-squeeze capability (§4.2) — the pack is
+// the first consumer of the moved code.
+import { flattenReadingOrder } from "@shared/capabilities/squeeze/src/readingOrder"
+import { isRTL } from "@shared/capabilities/squeeze/src/rtl"
+import { joinForTTS } from "@shared/capabilities/squeeze/src/tokenizer"
 import { useTTS } from "./useTTS"
 import { useHistory, type HistoryEntry } from "./useHistory"
 import { useSfx } from "./useSfx"
@@ -59,8 +61,9 @@ function advanceDelayFor(wordCount: number): number {
   return VOICE_DELAY + Math.min(wordCount * ADVANCE_VOICE_PER_WORD, ADVANCE_VOICE_CAP) + ADVANCE_BUFFER
 }
 
-// Emoji set for fruit-flip mode (shipped game.ts ~1760).
-export const FRUIT_EMOJIS = ["🍊", "🥭", "🍍", "🍋", "🍇", "🍎", "🍓", "🍑"]
+// Emoji set for fruit-flip mode — moved with the WordBlock tile it decorates;
+// re-exported so existing pack call sites keep this import path.
+export { FRUIT_EMOJIS } from "@shared/capabilities/squeeze/src/components/WordBlock"
 
 const LEVEL_ORDER: CEFRLevel[] = ["A0", "A1", "A2", "B1", "B2", "C1"]
 

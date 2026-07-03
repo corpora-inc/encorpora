@@ -10,6 +10,24 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- The word-sync paragraph renderer and the segment-range playback primitive
+  moved to the shared `cap-segment-player` capability module
+  (`packs/shared/capabilities/segment-player` — Journey workstream W8,
+  capability-modules.md §4.3). The reader is the first consumer: tap-to-
+  replay previews now ride the shared segment session; paragraph classes
+  are `capSeg-*` with the earthgate shell keeping its safe-area/fade-band
+  overrides. Main playback path (background audio, media session,
+  keep-alive) unchanged.
+
+### Added
+- Journey launch support (activity-contract §6.2): `segmentRange`/
+  `startAtSegmentIndex`/`autoPlay` initialState params; per-segment
+  `journey.reportItem` evidence + terminal `journey.reportResult` after the
+  range completes, with a Continue affordance. The existing
+  `corpan:segment-progress` dispatch is kept unchanged.
+
+
 ## [0.7.4] - 2026-06-24
 
 ### Fixed

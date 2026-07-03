@@ -1,33 +1,34 @@
 /**
  * WordBlock — a single draggable word tile.
  *
- * Tap vs drag (shipped parity, game.ts ~2498-2737):
+ * Tap vs drag (shipped parity):
  *  - On pointer-DOWN: immediately speak the word in blockLang (INSTANT audio on
  *    touch, not on release), UNLESS the word is only punctuation.
  *  - On a TAP (pointer up with no drag started, movement under the tap
- *    tolerance): fire onTap(blockId) — the app places a bank block at the end of
- *    the sentence, or returns a sentence block to the bank, then re-checks win.
+ *    tolerance): fire onTap(blockId) — the consumer places a bank block at the
+ *    end of the sentence, or returns a sentence block to the bank, then
+ *    re-checks win.
  *  - A drag (>= sensor activation distance) moves/reorders the block via the
- *    DndContext routing in JuiceSqueezeApp.
+ *    consumer's DndContext routing.
  * The DndContext sensors use distance activation, so a tap never starts a drag.
- * We confirm "no drag happened" via dnd-kit's `isDragging` plus a pointer
- * down/up position delta.
  *
  * Per-block color: each block gets a fruit color from the palette via the
- * `--blk` CSS custom property; game.css renders the glossy pill from it.
+ * `--capSqz-blk` CSS custom property; the capability stylesheet renders the glossy
+ * pill from it.
  *
- * Fruit-flip (settings.fruitsEnabled): show the level's fruit emoji instead of
- * the word text. Purely visual — the underlying word/order is unchanged.
+ * Fruit-flip (fruitsEnabled): show a fruit emoji instead of the word text.
+ * Purely visual — the underlying word/order is unchanged.
  *
  * Also acts as a drop target ("insert before this block") via useDroppable so
  * blocks can be reordered precisely within a row or the bank.
+ *
+ * MOVED from packs/juice-squeeze/src/components (capability-modules.md §4.2).
  */
 import { useEffect, useRef } from "react"
 import { useDraggable, useDroppable } from "@dnd-kit/core"
-import { isOnlyPunctuation } from "../util/tokenizer"
-import { FRUIT_EMOJIS } from "../hooks/useGameLogic"
+import { isOnlyPunctuation } from "../tokenizer"
 
-// Vibrant fruit palette (shipped game.ts ~1000), assigned per block by index.
+// Vibrant fruit palette (shipped juice-squeeze), assigned per block by index.
 export const BLOCK_PALETTE = [
   "#FF6B35",
   "#FF4D6D",
@@ -36,6 +37,10 @@ export const BLOCK_PALETTE = [
   "#9B5DE5",
   "#00BBF9",
 ]
+
+// Emoji set for fruit-flip mode (moved with the block tile it decorates;
+// juice-squeeze re-exports it from useGameLogic for its own call sites).
+export const FRUIT_EMOJIS = ["🍊", "🥭", "🍍", "🍋", "🍇", "🍎", "🍓", "🍑"]
 
 type Props = {
   blockId: string
@@ -99,7 +104,7 @@ export function WordBlock({
   const color = BLOCK_PALETTE[fruitIndex % BLOCK_PALETTE.length]
   const display = fruitsEnabled ? FRUIT_EMOJIS[fruitIndex % FRUIT_EMOJIS.length] : word
 
-  // Grow-on-touch (FIX 3): scale the pressed block ~1.5x. dnd-kit owns the drag
+  // Grow-on-touch: scale the pressed block ~1.5x. dnd-kit owns the drag
   // transform (translate3d) via the DragOverlay clone, so we only apply our
   // pressed scale when NOT dragging — the two never fight. transform-origin
   // centers the growth; z-index lifts it above neighbors.
@@ -112,7 +117,7 @@ export function WordBlock({
     transform: dragTransform ?? pressTransform,
     opacity: isDragging ? 0.4 : 1,
     touchAction: "none",
-    ["--blk" as string]: color,
+    ["--capSqz-blk" as string]: color,
     transformOrigin: "center",
     transition: dragTransform ? undefined : "transform 0.12s ease-out",
     zIndex: pressed && !isDragging ? 5 : undefined,
@@ -153,7 +158,7 @@ export function WordBlock({
     <button
       ref={setRefs}
       type="button"
-      className={`jsf-block${isOver ? " jsf-block--over" : ""}`}
+      className={`capSqz-block${isOver ? " capSqz-block--over" : ""}`}
       style={style}
       dir={rtl ? "rtl" : "ltr"}
       data-testid="word-block"

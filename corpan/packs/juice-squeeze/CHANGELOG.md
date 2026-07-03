@@ -9,6 +9,18 @@ preview-gated alongside the original `juice_squeeze` until promoted.
 
 ## [Unreleased]
 
+### Changed
+- The drag-to-rebuild round moved to the shared `cap-squeeze` capability
+  module (`packs/shared/capabilities/squeeze` — Journey workstream W8,
+  capability-modules.md §4.2): tokenizer, reading-order flatten, RTL set,
+  block sizing + fit hooks, the TargetPhrase/WordBank/WordBlock/SentenceArea
+  components, the phrase-scoped store transitions, and the drag/tap
+  placement routing. This pack is the first consumer of the moved code —
+  the juice economy (vessel, jars, coins, levels, persist key) stays here
+  and gameplay is unchanged. Round CSS classes are now `capSqz-*`; the
+  pack keeps its viewport-scaled sizing overrides.
+
+
 ### Fixed
 - Added the pack avatar (`juice-squeeze-avatar.png`); the catalog entry pointed
   at a non-existent image, so the pack shipped with no artwork.

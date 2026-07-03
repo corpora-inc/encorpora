@@ -19,8 +19,8 @@
 // from `whisperTuning.ts`. Round results come back via `onRoundDone`.
 
 import type { EntryOut, HostApi, TranslationOut } from "../sdk/types"
-import { mergeForLang } from "../whisperTuning"
-import { mergeScoringForLangModel } from "../scoringTuning"
+import { mergeForLang } from "@shared/capabilities/pronounce/src/whisperTuning"
+import { mergeScoringForLangModel } from "@shared/capabilities/pronounce/src/scoringTuning"
 import { pmConfirm } from "./confirm"
 import { paywallGate } from "../paywall"
 import { tt } from "../i18n"
@@ -72,8 +72,8 @@ type SttApi = {
     sessionId: string
     language: string
     expectedText: string
-    whisperParams?: import("../whisperTuning").WhisperParams
-    scoringParams?: import("../scoringTuning").ScoringParams
+    whisperParams?: import("@shared/capabilities/pronounce/src/whisperTuning").WhisperParams
+    scoringParams?: import("@shared/capabilities/pronounce/src/scoringTuning").ScoringParams
   }): Promise<SttStartResult>
   stopSession(opts: { sessionId: string }): Promise<SttTranscriptionResult>
   cancelSession(opts: { sessionId: string }): Promise<void>
@@ -238,10 +238,10 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
 
         <div class="pc-stage">
           <div class="pc-mic-wrap">
-            <button class="pc-mic" data-pm-mic disabled>
+            <button class="capPron-mic" data-pm-mic disabled>
               <span data-pm-mic-icon>●</span>
             </button>
-            <div class="pc-mic-label" data-pm-mic-label>${tt("bootLoading")}</div>
+            <div class="capPron-mic-label" data-pm-mic-label>${tt("bootLoading")}</div>
             <div class="pc-pm-tries-dots" data-pm-tries></div>
           </div>
           <button class="pc-pm-pass-chip is-invisible" data-pm-pass>${tt("roundPass")}</button>

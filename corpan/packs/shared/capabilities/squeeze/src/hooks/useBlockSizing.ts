@@ -7,7 +7,7 @@
  * so it still fits on one line (see fontForWord).
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { sharedFontSize, fontForWord } from "../util/blockSizing"
+import { sharedFontSize, fontForWord } from "../blockSizing"
 
 export type BlockSize = { fontSize: number }
 

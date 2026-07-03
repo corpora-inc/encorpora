@@ -4,12 +4,15 @@
  * Dropping a block onto empty bank space appends it to the bank. Dropping onto
  * a specific block (slot) inserts before it — that logic lives in the DnD
  * handler; the bank container is the fallback "append" droppable.
+ *
+ * MOVED from packs/juice-squeeze/src/components (capability-modules.md §4.2):
+ * round state comes from the RoundStoreProvider; classes are capSqz-.
  */
 import { useDroppable } from "@dnd-kit/core"
 import { WordBlock } from "./WordBlock"
-import { useGameStore } from "../state/gameStore"
-import { getNativeLanguageName } from "../util/languageNames"
-import { isRTL } from "../util/rtl"
+import { useRoundStore } from "../roundStore"
+import { getNativeLanguageName } from "../languageNames"
+import { isRTL } from "../rtl"
 import type { BlockSize } from "../hooks/useBlockSizing"
 
 type Props = {
@@ -33,12 +36,12 @@ export function WordBank({
   onTapSpeak,
   onTap,
 }: Props) {
-  const bankOrder = useGameStore((s) => s.bankOrder)
-  const blocks = useGameStore((s) => s.blocks)
+  const bankOrder = useRoundStore((s) => s.bankOrder)
+  const blocks = useRoundStore((s) => s.blocks)
   // Total phrase word count (the worst case: all chips in the bank at the start).
   // Dense phrases pull the gap between chips in so more rows fit before we ever
   // need to shrink the chips themselves.
-  const wordCount = useGameStore((s) => s.correctWords.length)
+  const wordCount = useRoundStore((s) => s.correctWords.length)
   const dense = wordCount >= 16
   // As words are moved out into the completion zone the bank empties. An empty
   // bank must NOT reserve vertical space — it collapses to a thin drop strip so
@@ -50,17 +53,17 @@ export function WordBank({
   return (
     <div
       ref={setNodeRef}
-      className={`jsf-bank${isOver ? " jsf-bank--over" : ""}${dense ? " jsf-bank--dense" : ""}${empty ? " jsf-bank--empty" : ""}`}
+      className={`capSqz-bank${isOver ? " capSqz-bank--over" : ""}${dense ? " capSqz-bank--dense" : ""}${empty ? " capSqz-bank--empty" : ""}`}
       data-testid="word-bank"
     >
       {/* Build-language tag: the language you ASSEMBLE the sentence in, shown in
           its own native name (e.g. "español") so it's clear + correct in every
           language with no hardcoded English. */}
-      <div className="jsf-bank__lang" dir={langRtl ? "rtl" : "ltr"}>
+      <div className="capSqz-bank__lang" dir={langRtl ? "rtl" : "ltr"}>
         {getNativeLanguageName(blockLang)}
       </div>
       {bankOrder.length === 0 ? (
-        <div className="jsf-bank__empty" aria-hidden />
+        <div className="capSqz-bank__empty" aria-hidden />
       ) : (
         bankOrder.map((id) => {
           const b = blocks[id]

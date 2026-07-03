@@ -2,17 +2,19 @@
  * SentenceArea — the build zone where placed blocks form the sentence.
  *
  * RTL: when the block language is RTL the row lays out right-to-left
- * (flex-direction: row-reverse + dir="rtl"), matching the shipped pack's RTL
- * sentence layout. The reading-order flatten in readingOrder.ts reverses each
- * row for RTL so the win check compares the correct sequence.
+ * (flex-direction: row-reverse + dir="rtl"). The reading-order flatten in
+ * readingOrder.ts reverses each row for RTL so the win check compares the
+ * correct sequence.
  *
  * Each sentence row is a droppable ("append to row"); individual blocks are
  * droppables for precise insertion (see WordBlock). Currently the store models
  * a single primary row ([[...]]); we render every row it provides.
+ *
+ * MOVED from packs/juice-squeeze/src/components (capability-modules.md §4.2).
  */
 import { useDroppable } from "@dnd-kit/core"
 import { WordBlock } from "./WordBlock"
-import { useGameStore } from "../state/gameStore"
+import { useRoundStore } from "../roundStore"
 import type { BlockSize } from "../hooks/useBlockSizing"
 
 type Props = {
@@ -41,7 +43,7 @@ function SentenceRow({
   rowIndex: number
   ids: string[]
 } & Props) {
-  const blocks = useGameStore((s) => s.blocks)
+  const blocks = useRoundStore((s) => s.blocks)
   const { setNodeRef, isOver } = useDroppable({
     id: `row-${rowIndex}`,
     data: { type: "row", row: rowIndex },
@@ -50,10 +52,10 @@ function SentenceRow({
   return (
     <div
       ref={setNodeRef}
-      className={`jsf-row${isOver ? " jsf-row--over" : ""}${rtl ? " jsf-row--rtl" : ""}`}
+      className={`capSqz-row${isOver ? " capSqz-row--over" : ""}${rtl ? " capSqz-row--rtl" : ""}`}
       dir={rtl ? "rtl" : "ltr"}
     >
-      {ids.length === 0 && <span className="jsf-row__placeholder" aria-hidden />}
+      {ids.length === 0 && <span className="capSqz-row__placeholder" aria-hidden />}
       {ids.map((id) => {
         const b = blocks[id]
         if (!b) return null
@@ -80,11 +82,11 @@ function SentenceRow({
 }
 
 export function SentenceArea(props: Props) {
-  const sentenceRows = useGameStore((s) => s.sentenceRows)
+  const sentenceRows = useRoundStore((s) => s.sentenceRows)
   const rows = sentenceRows.length > 0 ? sentenceRows : [[]]
 
   return (
-    <div className="jsf-sentence" data-testid="sentence-area">
+    <div className="capSqz-sentence" data-testid="sentence-area">
       {rows.map((ids, i) => (
         <SentenceRow key={i} rowIndex={i} ids={ids} {...props} />
       ))}
