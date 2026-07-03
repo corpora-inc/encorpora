@@ -27,3 +27,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# journey-sim run artifacts
+scripts/journey-sim/out/

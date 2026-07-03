@@ -8,6 +8,28 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey W3 — adaptive engine + simulation harness**
+  (`docs/journey/specs/engine.md`). Pure-TS adaptive core at
+  `src/journey/engine/`: ts-fsrs 5.4.1 (FSRS-6, config verbatim, deterministic
+  fuzz seeded from `fnv1a32(itemId)`), the §4.5 grade-derivation table with
+  the R3 typed-detail envelope and R9 aggregate clamps, `applyResult` joining
+  grades by `itemRefKey` (R6 — shuffled/subset-safe, un-issued refs dropped),
+  derived skill mastery with dirty-seq + day-key memoization, the θ Elo
+  scalar, 3-phase adaptive placement with the R10 content ceiling
+  (`above-content` early termination) and a transcript-equivalent
+  `placeUser()`, the feed mixer (DUE/REPLAY/NEW/REPAIR/TRICKLE/FUN pools,
+  flow-mode + debt-brake + strand-balance quota adjustments, R5 lesson-recipe
+  slots, unit-boss/arc-gate checkpoint batches with `pass_score` gating and
+  REPAIR routing, cadence checkpoints, welcomeBack, seeded rare-card rolls,
+  model-residency batching, constraint repair), leech
+  flag/suspend/substitute handling, `newPerDay` throttling with the two-stage
+  debt brake, jump/legendary gauntlets, an engine-level corruption-recovery
+  ladder over the shared local-analytics log, and the `EnginePersistence`
+  consumption seam (type-only import; in-memory fakes for tests/sim).
+  Simulation harness at `scripts/journey-sim/` runs the §7 P-gates over 7
+  synthetic personas against a generated 24-unit fixture course and
+  smoke-loads the W6 fixture pack through the in-tree `loadCourseGraph`
+  loader (P8 deferred to the real `journey_en` pack per R10).
 - **Journey W1 — storage platform + local analytics substrate**
   (`docs/journey/specs/storage-analytics.md`). The quota-safe storage service
   re-homed to `src/lib/storage/` (old `src/util/storage/` paths keep working
