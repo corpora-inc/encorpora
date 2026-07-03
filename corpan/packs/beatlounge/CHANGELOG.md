@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Phrase breakdown now offers ALL n-grams, not just up to 6** (#420). The
+  discovery / scratch phrase chooser capped the longest band at N=6 on long
+  phrases; it now shows every contiguous sub-phrase. Deeper bands stay collapsed
+  by default so a long phrase is browsable rather than overwhelming. (Also
+  resolves the n-gram-cap half of #465.)
+
 ## [0.7.0] - 2026-06-25
 
 ### Added
