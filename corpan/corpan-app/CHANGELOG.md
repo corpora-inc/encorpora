@@ -8,6 +8,19 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey W10 — real-pack P8 placement gate** (`journey-sim --p8`). The
+  simulation CLI can now run the R10 placement-quality gate against the
+  REAL built `journey_en` pack (w6Smoke loader precedent): a cohort scoped
+  to the shipped arcs (ability drawn around the pack's content band) is
+  placed via the live probe controller; graded on |θ̂ − a| ≤ 0.6 within
+  ≤25 items (≥90%) + above-ceiling learners terminating "above-content"
+  within the Phase-2 budget. First run (seed 1, 40 learners): **FAIL —
+  29/39 in-band (74%)**; dominant mechanism: on this single-band
+  (preA1/A0, b ∈ [−3.5, −1.5]) pack the ladder's second rung IS the
+  content ceiling, so mid-band learners who pass both low rungs exit
+  "above-content" after 2 items with θ̂ pinned at −0.72. Not tuned —
+  calibration is W11's lane. The wrong-placement self-heal sub-criterion is
+  not instrumented in this mode (reported in the gate detail).
 - **Journey W10 — the Journey is live in the app.** `App.tsx` mounts the
   guided feed as a full-screen sibling overlay of HomeHub (the activeGame
   state-machine pattern; the pack overlay stacks above the still-mounted

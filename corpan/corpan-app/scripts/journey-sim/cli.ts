@@ -2,7 +2,11 @@
 //
 //   node --experimental-strip-types scripts/journey-sim/cli.ts \
 //     [--learners 25] [--days 180] [--seed 1] [--personas a,b] [--out DIR]
-//     [--w6-smoke] [--quick]
+//     [--w6-smoke] [--quick] [--p8 [--p8-only]]
+//
+// --p8 runs the R10 placement gate against the REAL journey_en pack
+// (dja/journey_pack/dist) with personas scoped to the shipped arcs; set
+// P8_DEBUG=1 for per-learner rows.
 //
 // Impure edge: fs/process usage is allowed HERE (dev-only, never bundled).
 
@@ -11,9 +15,12 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 import { makeSimGraph } from "./fixture.ts"
-import { PERSONAS } from "./learner.ts"
+import { Learner, PERSONAS, type Persona } from "./learner.ts"
 import { evaluateGates, formatReport } from "./report.ts"
 import { runLearner, type LearnerRun } from "./runner.ts"
+import { createManualClock, DAY_MS } from "../../src/journey/engine/clock.ts"
+import { createJourneyEngine, createMemoryPersistence } from "../../src/journey/engine/index.ts"
+import type { CourseGraph } from "../../src/journey/engine/index.ts"
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 
@@ -79,6 +86,142 @@ async function w6Smoke(seed: number): Promise<boolean> {
   return run.totalCards > 0
 }
 
+/** Load a built course pack's graph via the in-tree loader (the w6Smoke
+ *  precedent: esbuild-bundle journeyPack.ts, node:sqlite for the DB). */
+async function loadPackGraph(dbPath: string): Promise<CourseGraph> {
+  const { build } = await import("esbuild")
+  const res = await build({
+    entryPoints: [path.resolve(here, "../../src/util/journeyPack.ts")],
+    bundle: true,
+    format: "esm",
+    write: false,
+    platform: "neutral",
+    define: { "import.meta.env.DEV": "false" },
+    tsconfig: path.resolve(here, "../../tsconfig.json"),
+  })
+  const mod = (await import(
+    "data:text/javascript;base64," + Buffer.from(res.outputFiles[0].text).toString("base64")
+  )) as typeof import("../../src/util/journeyPack.ts")
+  const { DatabaseSync } = await import("node:sqlite")
+  const db = new DatabaseSync(dbPath, { readOnly: true })
+  const queryFn = async (sql: string, params: unknown[], maxRows: number) =>
+    db.prepare(sql).all(...(params as never[])).slice(0, maxRows) as Record<string, unknown>[]
+  return (await mod.loadCourseGraph(queryFn)) as unknown as CourseGraph
+}
+
+/**
+ * P8 — placement quality against the REAL journey_en pack (engine.md §7.4
+ * row P8, R10). Personas are scoped to the shipped arcs: ability `a` is
+ * drawn around the pack's content band midpoint, so the cohort naturally
+ * splits into in-band learners (graded on |θ̂ − a| ≤ 0.6 within ≤25 items)
+ * and above-ceiling learners (a > max content b; must terminate
+ * "above-content" within the Phase-2 budget, never grind).
+ *
+ * NOT instrumented here (fixture full-sim territory): the wrong-placement
+ * self-heal sub-criterion (week-one rewind within 14 days for an injected
+ * 10% mis-calibrated cohort) — reported as such in the detail.
+ */
+async function p8Gate(seed: number, learners: number): Promise<boolean> {
+  const dbPath = path.resolve(
+    here,
+    "../../../dja/journey_pack/dist/journey_en/data/course.sqlite3",
+  )
+  if (!fs.existsSync(dbPath)) {
+    console.error(`[P8] real journey_en pack not built at ${dbPath} — run dja/journey_pack/build_journey_pack.py en`)
+    return false
+  }
+  const graph = await loadPackGraph(dbPath)
+  const bs = Object.values(graph.items).map((i) => i.b)
+  const minB = Math.min(...bs)
+  const maxB = Math.max(...bs)
+  console.log(
+    `[P8] real pack ${graph.courseId}: ${Object.keys(graph.items).length} items, ` +
+      `b ∈ [${minB.toFixed(2)}, ${maxB.toFixed(2)}]`,
+  )
+
+  const basePersona: Persona = {
+    id: "p8-scoped",
+    aMu: (minB + maxB) / 2,
+    attends: () => true,
+    sessionMinutes: 15,
+    sessionsPerDay: 1,
+    notes: "P8 placement cohort scoped to the shipped arcs (R10)",
+  }
+
+  type P8Row = {
+    a: number
+    theta: number
+    asked: number
+    outcome: string
+  }
+  const rows: P8Row[] = []
+  for (let i = 0; i < learners; i++) {
+    // Two-pass same-seed construction: read the drawn `a` first, then rebuild
+    // the learner with a prior-knowledge prefix matching that ability (the
+    // count of items at or below a — the "knows some" placed-intermediate
+    // shape, scoped to this pack).
+    const probeSeed = seed * 1_000_003 + i
+    const aOnly = new Learner(basePersona, graph, probeSeed)
+    const priorKnown = Object.values(graph.items).filter((it) => it.b <= aOnly.a).length
+    const learner = new Learner({ ...basePersona, priorKnownItems: priorKnown }, graph, probeSeed)
+
+    const clock = createManualClock({ startMs: 20_000 * DAY_MS + 9 * 3_600_000 })
+    const engine = createJourneyEngine({
+      key: { stackId: `p8-${i}`, courseId: graph.courseId },
+      graph,
+      persistence: createMemoryPersistence({ now: () => clock.nowMs() }),
+      clock,
+    })
+    await engine.load()
+    engine.startSession()
+    const controller = engine.startPlacement("probe")
+    for (;;) {
+      const card = controller.next()
+      if (!card) break
+      engine.applyResult(learner.answer(card, 0))
+    }
+    const outcome = controller.finalize()
+    rows.push({
+      a: learner.a,
+      theta: outcome.record.theta,
+      asked: outcome.record.asked.length,
+      outcome: outcome.record.outcome,
+    })
+    if (process.env.P8_DEBUG) {
+      const correct = outcome.record.asked.filter((x) => x.correct).length
+      console.log(
+        `[P8:dbg] a=${learner.a.toFixed(2)} priorKnown=${priorKnown} theta=${outcome.record.theta.toFixed(2)} ` +
+          `se=${outcome.record.se.toFixed(2)} asked=${outcome.record.asked.length} correct=${correct} outcome=${outcome.record.outcome}`,
+      )
+    }
+  }
+
+  const inBand = rows.filter((r) => r.a <= maxB)
+  const aboveBand = rows.filter((r) => r.a > maxB)
+  // In-band: placed within ±0.6 of true ability in ≤25 items — OR an honest
+  // "above-content" when the true ability sits within 0.6 of the ceiling
+  // (indistinguishable from the ceiling by construction).
+  const inBandOk = inBand.filter(
+    (r) =>
+      r.asked <= 25 &&
+      ((r.outcome === "placed" && Math.abs(r.theta - r.a) <= 0.6) ||
+        (r.outcome === "above-content" && maxB - r.a <= 0.6)),
+  )
+  const aboveOk = aboveBand.filter((r) => r.outcome === "above-content" && r.asked <= 25)
+  const accuracy = inBand.length > 0 ? inBandOk.length / inBand.length : 1
+  const maxAsked = rows.reduce((m, r) => Math.max(m, r.asked), 0)
+  const pass = accuracy >= 0.9 && aboveOk.length === aboveBand.length
+
+  const detail =
+    `P8 Placement quality (REAL journey_en pack, personas scoped to shipped arcs — R10): ` +
+    `${pass ? "PASS" : "FAIL"} — in-band |θ̂−a|≤0.6 in ≤25 items: ${inBandOk.length}/${inBand.length} ` +
+    `(${(100 * accuracy).toFixed(0)}%, need ≥90%); above-ceiling terminate "above-content" ≤ budget: ` +
+    `${aboveOk.length}/${aboveBand.length}; max items asked ${maxAsked}; ` +
+    `wrong-placement self-heal (week-one rewind ≤14d, injected 10% cohort) not instrumented in this mode`
+  console.log(`[P8] ${detail}`)
+  return pass
+}
+
 async function main(): Promise<void> {
   const learners = Number(arg("learners", flag("quick") ? "4" : "25"))
   const days = Number(arg("days", flag("quick") ? "45" : "180"))
@@ -93,6 +236,14 @@ async function main(): Promise<void> {
     const ok = await w6Smoke(seed)
     if (!ok) process.exit(1)
     if (process.argv.includes("--w6-smoke-only")) return
+  }
+
+  if (flag("p8")) {
+    const ok = await p8Gate(seed, learners)
+    if (process.argv.includes("--p8-only")) {
+      process.exit(ok ? 0 : 1)
+    }
+    if (!ok) process.exitCode = 1
   }
 
   console.log("[determinism] paired identical-seed runs (30 days × all personas)…")

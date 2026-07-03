@@ -214,13 +214,14 @@ export function evaluateGates(runs: LearnerRun[], determinismOk: boolean | null)
     })
   }
 
-  // ---- P8 placement quality (DEFERRED — R10) --------------------------------------------------
+  // ---- P8 placement quality (real-pack mode — R10) --------------------------------------------
   gates.push({
     id: "P8",
     name: "Placement quality",
     pass: null,
     detail:
-      "DEFERRED: must run against the real journey_en pack graph with personas scoped to shipped arcs (R10); " +
+      "Runs against the REAL journey_en pack graph with personas scoped to shipped arcs (R10): " +
+      "`node --experimental-strip-types scripts/journey-sim/cli.ts --p8 --p8-only` — " +
       "the fixture-only run is not a valid P8 pass.",
   })
 
