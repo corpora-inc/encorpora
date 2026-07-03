@@ -183,24 +183,34 @@ export function evaluateGates(runs: LearnerRun[], determinismOk: boolean | null)
     const dm = by("daily-median")
     let ok = 0
     let worst = 0
+    // diagnostics: signed deviation sums per strand (W11 calibration)
+    const devSums = [0, 0, 0, 0]
+    let devN = 0
     for (const r of dm) {
       const weekly = r.days.filter((d) => d.active && d.day >= 21)
       if (weekly.length === 0) continue
       let maxDev = 0
       for (const d of weekly) {
         const targets = STRAND_TARGETS[Math.min(d.arcOrdinal, 1)]
-        for (let i = 0; i < 4; i++) maxDev = Math.max(maxDev, Math.abs(d.strandShares[i] - targets[i]))
+        for (let i = 0; i < 4; i++) {
+          maxDev = Math.max(maxDev, Math.abs(d.strandShares[i] - targets[i]))
+          devSums[i] += d.strandShares[i] - targets[i]
+        }
+        devN += 1
       }
       worst = Math.max(worst, maxDev)
       if (maxDev <= 0.1) ok += 1
     }
+    const devMeans = devSums.map((s) => (devN > 0 ? s / devN : 0))
     gates.push({
       id: "P7",
       name: "Strand convergence",
       pass: dm.length > 0 && ok / dm.length >= 0.8,
       detail:
         `daily-median learners within ±10 points of stage targets from week 3: ${ok}/${dm.length} ` +
-        `(worst per-strand deviation ${pct(worst)}); last40 >65% fire-rate not separately instrumented (approximated by relaxation telemetry)`,
+        `(worst per-strand deviation ${pct(worst)}; mean signed dev in/out/lang/flu ` +
+        `${devMeans.map((d) => (100 * d).toFixed(1)).join("/")}); ` +
+        `last40 >65% fire-rate not separately instrumented (approximated by relaxation telemetry)`,
     })
   }
 

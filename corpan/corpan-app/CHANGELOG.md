@@ -58,6 +58,17 @@ Conventions: `corpan/CHANGELOGS.md`.
   advance-rule units + a headless jsdom smoke test driving a full
   JourneySurface session (>= 10 cards) over the W6 fixture pack through the
   real engine + resolver.
+- **Journey W11 — engine calibration study, round 1**
+  (`scripts/journey-sim/CALIBRATION.md`). Reproduced W3's P1/P3/P4/P7 gate
+  failures verbatim (seed 1); landed the constants-matrix sweep driver
+  (`scripts/journey-sim/sweep.ts` + `sweeps/`), saturation diagnostics in the
+  sim `cli.ts` metrics (`dueCurve`/`finalCapacity`/`modeTotals`) and a
+  per-strand signed-deviation readout in the P7 gate line.
+  `request_retention` extracted to `engine/constants.ts:DESIRED_RETENTION`
+  (engine.md §1.1; value unchanged at 0.90 — no behavior change, golden
+  transcripts untouched). A five-point desired-retention sweep shows the flat
+  pace knob alone cannot satisfy P1/P3/P4/P7; the mechanism bundle for round 2
+  and the spec-amendment fallback are documented in the study.
 - **Journey W3 — adaptive engine + simulation harness**
   (`docs/journey/specs/engine.md`). Pure-TS adaptive core at
   `src/journey/engine/`: ts-fsrs 5.4.1 (FSRS-6, config verbatim, deterministic

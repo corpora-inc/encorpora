@@ -144,6 +144,19 @@ async function main(): Promise<void> {
           batches: r.batches,
           finalTheta: r.finalCourse?.theta,
           finalNewPerDay: r.finalCourse?.newPerDay,
+          finalCapacity: r.finalCourse?.dailyCapacityEwma,
+          // due-at-session-start samples (calibration diagnostics, W11)
+          dueCurve: [30, 60, 90, 120, 150, 179].map(
+            (d) => r.days.find((x) => x.day === d)?.dueAtStart ?? null,
+          ),
+          modeTotals: r.days.reduce(
+            (a, d) => ({
+              cruise: a.cruise + d.modes.cruise,
+              normal: a.normal + d.modes.normal,
+              struggle: a.struggle + d.modes.struggle,
+            }),
+            { cruise: 0, normal: 0, struggle: 0 },
+          ),
         })),
       },
       null,
