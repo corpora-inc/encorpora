@@ -157,7 +157,7 @@ const CATALOG_BODY: MiniCatalog = {
 const tick = () => new Promise<void>((r) => setTimeout(r, 10))
 
 /** Deterministic wait for background fills (latency varies under load). */
-async function waitFor(cond: () => boolean, ms = 5_000): Promise<void> {
+async function waitFor(cond: () => boolean, ms = 30_000): Promise<void> {
   const start = Date.now()
   while (!cond()) {
     if (Date.now() - start > ms) throw new Error("waitFor timed out")

@@ -170,20 +170,26 @@ export function isImageIndexHydrated(): boolean {
 }
 
 async function writeRecord(record: ImageIndexRecord): Promise<void> {
+  const myEpoch = epoch
   mirror.set(record.url, record)
   try {
+    const key = await hashUrl(record.url)
     const index = await deps.index()
-    await index.setJSON(await hashUrl(record.url), record, { volatile: false })
+    if (epoch !== myEpoch) return // session reset mid-write: don't persist
+    await index.setJSON(key, record, { volatile: false })
   } catch (err) {
     console.error(`[offlineCache/img] index write failed for ${record.url}:`, err)
   }
 }
 
 async function dropRecord(url: string): Promise<void> {
+  const myEpoch = epoch
   mirror.delete(url)
   try {
+    const key = await hashUrl(url)
     const index = await deps.index()
-    await index.del(await hashUrl(url))
+    if (epoch !== myEpoch) return // session reset mid-delete
+    await index.del(key)
   } catch (err) {
     console.error(`[offlineCache/img] index delete failed for ${url}:`, err)
   }
@@ -328,7 +334,8 @@ export async function enforceImageBudget(): Promise<void> {
       }
     }
 
-    await maybeSweepOrphans()
+    if (epoch !== myEpoch) return
+    await maybeSweepOrphans(myEpoch)
   } catch (err) {
     console.error("[offlineCache/img] budget enforcement failed:", err)
   }
@@ -336,11 +343,12 @@ export async function enforceImageBudget(): Promise<void> {
 
 /** Files on disk with no index row (index evicted/corrupted) are reclaimed
  *  on a slow cadence. */
-async function maybeSweepOrphans(): Promise<void> {
+async function maybeSweepOrphans(myEpoch: number): Promise<void> {
   const index = await deps.index()
   const last = await index.getJSON<number>(SWEEP_META_KEY)
   const now = deps.now()
   if (typeof last === "number" && now - last < ORPHAN_SWEEP_INTERVAL_MS) return
+  if (epoch !== myEpoch) return // session reset mid-flight
   await index.setJSON(SWEEP_META_KEY, now, { volatile: false })
 
   const onDisk = await deps.nativeList()

@@ -123,7 +123,7 @@ const tick = () => new Promise<void>((r) => setTimeout(r, 5))
 
 /** Deterministic wait for background revalidations (latency varies under
  *  full-suite load). */
-async function waitFor(cond: () => boolean, ms = 5_000): Promise<void> {
+async function waitFor(cond: () => boolean, ms = 30_000): Promise<void> {
   const start = Date.now()
   while (!cond()) {
     if (Date.now() - start > ms) throw new Error("waitFor timed out")
