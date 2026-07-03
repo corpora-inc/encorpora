@@ -1,4 +1,4 @@
-// src/journey/popin/CapabilityPopIn.tsx — host-owned phrase-actions sheet
+// src/components/capability/CapabilityPopIn.tsx — host-owned phrase-actions sheet
 // (capability-modules.md §5). v1 ships exactly one action: Pronounce it →
 // mounts cap-pronounce in-process with a synthetic `popin-*` spec. Results
 // are LOG-ONLY (never fed to FSRS in v1); pronounce attempts are unmetered.
@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next"
 import { X } from "lucide-react"
 import type { ActivitySpec } from "../../contentPacks/activityContract"
 import type { CapabilityHandle } from "@shared/capabilities/core"
-import { loadCapability } from "../capabilities/registry.ts"
+import { loadCapability } from "../../journey/capabilities/registry.ts"
 import {
   popInCapabilityHost,
   setPopInListener,

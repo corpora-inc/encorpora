@@ -14,7 +14,7 @@ import type { PackDbResult, ResolveContext, ResolverDeps } from "../content/reso
 import { loadCourseGraph } from "../../util/journeyPack.ts"
 import type { JourneyRuntime, JourneyRuntimeDeps } from "../runtime.ts"
 import type { EntryOut } from "../../contentPacks/types.ts"
-import { useJourneyStore } from "../store.ts"
+import { useJourneyStore } from "../../store/journey.ts"
 
 export type SmokeQueryFn = (
   sql: string,

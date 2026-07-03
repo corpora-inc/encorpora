@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next"
 import type { ActivityResult as ContractResult } from "../../contentPacks/activityContract"
 import type { CapabilityHandle } from "@shared/capabilities/core"
 import { loadCapability } from "../capabilities/registry.ts"
-import { popInCapabilityHost } from "../popin/popinBus.ts"
+import { popInCapabilityHost } from "../../components/capability/popinBus.ts"
 import type { ExerciseProps } from "./types.ts"
 
 export function SpeakEcho(props: ExerciseProps) {

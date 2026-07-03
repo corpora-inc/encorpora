@@ -7,7 +7,7 @@
 //
 // Copy discipline (spec): the chip states "{{count}} days". No loss framing.
 
-import { localDayOf, useJourneyStore, type CourseKey, type JourneyCourseMeta } from "./store.ts"
+import { localDayOf, useJourneyStore, type CourseKey, type JourneyCourseMeta } from "../store/journey.ts"
 
 export const REST_TOKEN_EVERY_DAYS = 7
 export const REST_TOKEN_CAP = 2

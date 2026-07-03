@@ -6,7 +6,7 @@
 
 import { isRTL } from "../../../util/convert"
 import type { ResolvedItem } from "../../content/resolve.ts"
-import { usePhrasePopIn } from "../../popin/usePhrasePopIn.ts"
+import { usePhrasePopIn } from "../../../components/capability/usePhrasePopIn.ts"
 
 export function TargetText(props: {
   item: ResolvedItem

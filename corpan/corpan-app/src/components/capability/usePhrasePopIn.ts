@@ -1,4 +1,4 @@
-// src/journey/popin/usePhrasePopIn.ts — long-press binding for the phrase
+// src/components/capability/usePhrasePopIn.ts — long-press binding for the phrase
 // pop-in (capability-modules.md §5). WordExplanationText gesture contract:
 // LONG_PRESS_MS = 450, deliberate long-press/right-click only, movement
 // cancels, the post-press tap is swallowed.

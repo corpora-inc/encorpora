@@ -7,6 +7,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Journey W10 — file re-homes** (1:1, no logic change): the journey meta
+  store moved `src/journey/store.ts` → `src/store/journey.ts` (house
+  convention keeps stores in `src/store/`), and the capability pop-in trio
+  (`CapabilityPopIn.tsx`, `usePhrasePopIn.ts`, `popinBus.ts`) moved
+  `src/journey/popin/` → `src/components/capability/` (their spec home,
+  capability-modules.md §5). All imports updated.
+
 ### Added
 - **Journey W10 — boot wiring** (integration). `main.tsx` configures the
   on-device local-analytics recorder with the live active-stack id

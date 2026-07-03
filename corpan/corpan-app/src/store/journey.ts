@@ -1,11 +1,10 @@
-// src/journey/store.ts — the `corpan-journey-v1` zustand store (feed-ux §2.1).
+// src/store/journey.ts — the `corpan-journey-v1` zustand store (feed-ux §2.1).
 //
 // META ONLY. Engine per-item state (ItemCards, review log) is IndexedDB
 // LARGE tier (D5) — never here. ~300 B per enrolled course + settings.
 //
-// NOTE for W10: house convention keeps stores in src/store/; this file is
-// a 1:1 move candidate to src/store/journey.ts (W4's exclusive path set is
-// src/journey/**, so it lands here first — no logic change needed to move).
+// (House convention: stores live in src/store/. Built as src/journey/store.ts
+// for W4 path exclusivity; re-homed 1:1 by W10 — no logic change.)
 
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"

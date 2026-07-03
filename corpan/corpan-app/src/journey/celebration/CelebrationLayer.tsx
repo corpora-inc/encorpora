@@ -6,7 +6,7 @@
 import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
-import { useJourneyStore, type JuiceIntensity } from "../store.ts"
+import { useJourneyStore, type JuiceIntensity } from "../../store/journey.ts"
 import { burst, clearParticles } from "./particles.ts"
 import { playChime, playFlourish } from "./sounds.ts"
 

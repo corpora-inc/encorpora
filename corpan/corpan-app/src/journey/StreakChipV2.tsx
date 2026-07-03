@@ -6,7 +6,7 @@
 import { useTranslation } from "react-i18next"
 import { Flame } from "lucide-react"
 import { isStreakEnabled } from "../components/StreakChip"
-import { useJourneyStore, type CourseKey } from "./store.ts"
+import { useJourneyStore, type CourseKey } from "../store/journey.ts"
 import { displayStreak, type StreakPorts } from "./streakV2.ts"
 
 export function StreakChipV2(props: { courseKey: CourseKey; ports?: StreakPorts }) {

@@ -44,7 +44,7 @@ import {
 } from "./content/distractors.ts"
 import { cardRng } from "./content/rng.ts"
 import { tokenizePhrase } from "../util/wordTokens.ts"
-import { useJourneyStore, type CourseKey } from "./store.ts"
+import { useJourneyStore, type CourseKey } from "../store/journey.ts"
 import {
   noteRepairCheckpoint,
   tickStreak,

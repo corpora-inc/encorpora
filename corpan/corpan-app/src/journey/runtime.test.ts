@@ -27,7 +27,7 @@ const { makeRuntimeFixtureDeps, FIXTURE_RUNTIME_CTX } = await import(
   "./__fixtures__/runtimeFixture.ts"
 )
 const { createJourneyRuntime } = await import("./runtime.ts")
-const { useJourneyStore } = await import("./store.ts")
+const { useJourneyStore } = await import("../store/journey.ts")
 
 type QuotaLog = { notes: number }
 

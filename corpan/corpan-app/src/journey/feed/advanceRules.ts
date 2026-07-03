@@ -3,7 +3,7 @@
 // card completes; auto-advance NEVER fires on a failed card and never past a
 // manual-only card.
 
-import type { AdvanceMode } from "../store.ts"
+import type { AdvanceMode } from "../../store/journey.ts"
 import type { FeedCard } from "../types.ts"
 
 export type AdvanceRule =

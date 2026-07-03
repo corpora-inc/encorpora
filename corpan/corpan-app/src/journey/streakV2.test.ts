@@ -20,7 +20,7 @@ if (typeof globalThis.localStorage === "undefined") {
   }
 }
 
-const { useJourneyStore } = await import("./store.ts")
+const { useJourneyStore } = await import("../store/journey.ts")
 const {
   displayStreak,
   maybeOfferRepair,

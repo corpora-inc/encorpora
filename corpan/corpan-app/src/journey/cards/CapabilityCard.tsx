@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react"
 import type { ActivityResult } from "../../contentPacks/activityContract"
 import type { CapabilityHandle } from "@shared/capabilities/core"
 import { isCapabilityId, loadCapability } from "../capabilities/registry.ts"
-import { popInCapabilityHost } from "../popin/popinBus.ts"
+import { popInCapabilityHost } from "../../components/capability/popinBus.ts"
 import type { FeedCard } from "../types.ts"
 
 export function CapabilityCard(props: {

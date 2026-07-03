@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { Home, MoreHorizontal, X } from "lucide-react"
 import { StreakChipV2 } from "./StreakChipV2.tsx"
-import { useJourneyStore, type CourseKey } from "./store.ts"
+import { useJourneyStore, type CourseKey } from "../store/journey.ts"
 import type { StreakPorts } from "./streakV2.ts"
 
 export function JourneyChrome(props: {
