@@ -8,6 +8,29 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey W2 — offline-first cache layer + Home covers offline**
+  (`docs/journey/specs/offline-cache.md`, D12). Catalog cover art now renders
+  offline (cached on device after first sight) — airplane-mode cold start
+  shows Home with covers instead of broken/empty images. One shared cache
+  module at `src/lib/offlineCache/`: `cachedFetch(resource)` (cache-first
+  JSON with policy TTLs, stale-while-revalidate, subscriber notify,
+  single-flight coalescing; network failures never clobber the last-good
+  record) wrapping the proven `fetchJsonFresh`; an immutable-by-URL image
+  cache (fs blobs under `corpan-packs/.offline-cache/img/`, downloaded by
+  the new Rust `offline_cache_put` command — reqwest so no CORS, atomic
+  tmp+rename, 8 MiB ceiling — served by the existing `corpan-pack://`
+  protocol, LRU-evicted at 64 MiB / 512 entries, persisted index + in-memory
+  mirror for flash-free warm renders, throttled orphan sweep + `repairImage`
+  self-healing); `<OfflineImage>` (cached → remote → glyph fallback, never a
+  broken image) now backing HomeHub tiles, pack screenshots, the launch-
+  transition collage, and the onboarding tour; `prefetchImages` pre-warms
+  covers on every catalog update; `installTriggers()`
+  (startup/foreground/online/interval, jittered) ready for the W10 App.tsx
+  wiring; the §3.2 per-resource policy table (catalog-v3 RAW-body caching
+  with read-time `filterCatalogForApp`, phrase-pack, word-pack, journey
+  index — TTL 300 s); `createOfflineCacheHostApi` defines the additive
+  `hostApi.offlineCache` seam (W10 wires it into types.ts/hostApi.ts).
+  Rust: `offline_cache_{put,delete,list}` registered in `lib.rs`.
 - **Journey W3 — adaptive engine + simulation harness**
   (`docs/journey/specs/engine.md`). Pure-TS adaptive core at
   `src/journey/engine/`: ts-fsrs 5.4.1 (FSRS-6, config verbatim, deterministic

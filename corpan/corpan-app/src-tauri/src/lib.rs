@@ -6,6 +6,7 @@
 mod blob_store;
 mod content_packs;
 mod db;
+mod offline_cache;
 mod pack_db;
 mod phrase_packs;
 
@@ -1601,6 +1602,9 @@ pub fn run() {
             blob_store::blob_store_stats,
             blob_store::blob_store_prune,
             blob_store::blob_store_served_url,
+            offline_cache::offline_cache_put,
+            offline_cache::offline_cache_delete,
+            offline_cache::offline_cache_list,
             open_apple_feedback,
             take_last_crash_report
         ])

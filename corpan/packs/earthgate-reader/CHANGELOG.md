@@ -10,6 +10,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Narrator-profile artwork no longer paints empty boxes offline** (shared
+  `packs/shared/catalog` narrator detail — Journey W2, offline-cache.md
+  §1.1 row 9). Book covers, banners, and avatars rendered as CSS
+  `background-image` had no error path: offline, they silently painted
+  nothing. They now render their placeholder (initials/tint) first,
+  preload-verify the pixels before swapping the image in, and — when the
+  host exposes the D12 `offlineCache` seam via the new optional
+  `resolveImageUrl` hook — resolve to the on-device cached copy.
+
 ### Changed
 - The word-sync paragraph renderer and the segment-range playback primitive
   moved to the shared `cap-segment-player` capability module

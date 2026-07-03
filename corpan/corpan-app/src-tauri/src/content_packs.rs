@@ -30,7 +30,7 @@ const DOWNLOAD_STALL_TIMEOUT_SECS: u64 = 120;
 /// full-pack and module download paths get the same watchdog and we don't have
 /// a bare `reqwest::Client::new()` (no timeouts → hangs forever on a dead CDN
 /// socket) anywhere in the install path.
-fn download_client() -> Result<reqwest::Client, String> {
+pub(crate) fn download_client() -> Result<reqwest::Client, String> {
     reqwest::Client::builder()
         .connect_timeout(std::time::Duration::from_secs(
             DOWNLOAD_CONNECT_TIMEOUT_SECS,

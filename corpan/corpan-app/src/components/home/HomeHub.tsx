@@ -35,6 +35,7 @@ import { RecentsSection } from "@/components/packs/RecentsSection"
 import { PhrasePackDrawerTrigger } from "@/components/packs/PhrasePackDrawerTrigger"
 import { PacksSection } from "./PacksSection"
 import { Button } from "@/components/ui/button"
+import { OfflineImage } from "@/components/ui/OfflineImage"
 import { getTopBarPaddingTop, glass } from "@/util/browser"
 import corpanMark from "@/assets/corpan-mark-trim.png"
 import { rankHomeExperiences } from "./recommend"
@@ -52,7 +53,9 @@ const EXP_ICON: Record<string, LucideIcon> = {
   juice_squeeze: Citrus,
 }
 
-/** Catalog artwork (preferred) or a lucide glyph fallback. */
+/** Catalog artwork (preferred, offline-cached) or a lucide glyph fallback.
+ *  <OfflineImage> renders the cached copy when the remote pixels are
+ *  unreachable (D12) — the glyph shows only on a true never-seen miss. */
 function Glyph({
   imageUrl,
   Icon,
@@ -62,10 +65,15 @@ function Glyph({
   Icon: LucideIcon
   glyphClass: string
 }) {
-  if (imageUrl) {
-    return <img src={imageUrl} alt="" aria-hidden="true" draggable={false} className="h-full w-full rounded-[inherit] object-cover" />
-  }
-  return <Icon className={glyphClass} />
+  return (
+    <OfflineImage
+      src={imageUrl}
+      fallback={<Icon className={glyphClass} />}
+      aria-hidden="true"
+      draggable={false}
+      className="h-full w-full rounded-[inherit] object-cover"
+    />
+  )
 }
 
 type ExpCard = {
