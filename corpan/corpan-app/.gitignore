@@ -30,3 +30,7 @@ dist-ssr
 
 # journey-sim run artifacts
 scripts/journey-sim/out/
+
+# journey browser-demo content bundle (derived from the gitignored
+# dja/journey_pack/dist pack — regen: scripts/journey-demo/precompute.ts)
+public/journey-demo/

@@ -122,6 +122,13 @@ export default defineConfig(async () => ({
     strictPort: true,
     host: serverHost,
 
+    // Extra Host-header names the dev server should answer to (e.g. a
+    // tailscale MagicDNS name when testing from another device):
+    //   VITE_ALLOWED_HOSTS=spark-f62c,.tail3c0d12.ts.net npx vite --host 0.0.0.0
+    allowedHosts: process.env.VITE_ALLOWED_HOSTS
+      ? process.env.VITE_ALLOWED_HOSTS.split(",").map((h) => h.trim())
+      : undefined,
+
     // Let Vite decide HMR host unless TAURI_DEV_HOST is set.
     // This avoids weirdness like ws://0.0.0.0.
     hmr: rawHost

@@ -7,6 +7,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey browser demo harness (dev-only)** — `journey-demo.html` mounts the
+  REAL JourneySurface + engine + resolver over the real `journey_en` pack
+  content in a plain browser (no Tauri): `scripts/journey-demo/precompute.ts`
+  emits `public/journey-demo/course.json` (gitignored), `src/journey/demo/`
+  wires JSON-backed ResolverDeps ports, `scripts/journey-demo/verify.ts`
+  proves ≥10 cards headless over the JSON.
+
 ### Changed
 - **Journey W11 round 2 — engine calibration: the §3 mechanism bundle was
   validated and rejected; the tuning surface shipped instead.** The
