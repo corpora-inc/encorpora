@@ -194,6 +194,12 @@ export function JourneySurface(props: JourneySurfaceProps) {
                 currentUnitId={snapshot?.position.unitId ?? null}
                 skillState={(id) => runtime.skillState(id)}
                 unitName={props.unitName}
+                onReviewUnit={(unitId) => {
+                  // Tap-to-review (W10/W4 fix c): enqueue the unit's seen
+                  // items as replays and return to the feed. No-op taps
+                  // (nothing reviewable) keep the path open.
+                  if (runtime.requestUnitReview(unitId)) setPathOpen(false)
+                }}
               />
             </div>
           </motion.div>

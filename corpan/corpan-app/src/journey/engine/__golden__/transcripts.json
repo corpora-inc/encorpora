@@ -25,7 +25,7 @@
     },
     {
       "cards": [
-        "stack-1:journey_en:2:8|match_pairs|new|f0",
+        "stack-1:journey_en:2:8|intro_echo|new|f0",
         "stack-1:journey_en:2:9|choice_pick|new|f0",
         "stack-1:journey_en:2:10|intro_echo|new|f0",
         "stack-1:journey_en:2:11|match_pairs|new|f0",
@@ -53,7 +53,7 @@
         "stack-1:journey_en:3:0|intro_echo|due|f0",
         "stack-1:journey_en:3:1|choice_pick|new|f0",
         "stack-1:journey_en:3:2|match_pairs|new|f0",
-        "stack-1:journey_en:3:3|intro_echo|new|f0",
+        "stack-1:journey_en:3:3|listen_pick|new|f0",
         "stack-1:journey_en:3:4|choice_pick|due|f0",
         "stack-1:journey_en:3:5|match_pairs|due|f0",
         "stack-1:journey_en:3:6|choice_pick|new|f0",
@@ -78,7 +78,7 @@
         "stack-1:journey_en:3:10|match_pairs|new|f0",
         "stack-1:journey_en:3:11|intro_echo|new|f0",
         "stack-1:journey_en:3:12|match_pairs|new|f0",
-        "stack-1:journey_en:3:13|listen_pick|new|f0",
+        "stack-1:journey_en:3:13|choice_pick|new|f0",
         "stack-1:journey_en:3:14|match_pairs|fun|f0",
         "stack-1:journey_en:3:15|flip_recall|repair|f1",
         "stack-1:journey_en:3:16|checkpoint_summary|checkpoint|f0"
@@ -121,28 +121,28 @@
     },
     {
       "cards": [
-        "stack-1:journey_en:4:8|match_pairs|new|f0",
-        "stack-1:journey_en:4:9|cloze|due|f1",
+        "stack-1:journey_en:4:8|intro_echo|new|f0",
+        "stack-1:journey_en:4:9|match_pairs|fun|f0",
         "stack-1:journey_en:4:10|intro_echo|new|f0",
         "stack-1:journey_en:4:11|match_pairs|replay|f0",
-        "stack-1:journey_en:4:12|grammar_note|repair|f1",
-        "stack-1:journey_en:4:13|match_pairs|fun|f0",
-        "stack-1:journey_en:4:14|intro_echo|repair|f0",
-        "stack-1:journey_en:4:15|match_pairs|new|f0",
+        "stack-1:journey_en:4:12|cloze|due|f1",
+        "stack-1:journey_en:4:13|match_pairs|new|f0",
+        "stack-1:journey_en:4:14|grammar_note|repair|f1",
+        "stack-1:journey_en:4:15|intro_echo|repair|f0",
         "stack-1:journey_en:4:16|checkpoint_summary|checkpoint|f0"
       ],
       "grades": [
         "phrase:base:1014=3",
-        "phrase:base:1007=3",
+        "phrase:base:1001=3",
         "phrase:base:1015=3",
         "phrase:base:1012=1",
-        "phrase:base:1004=3",
-        "phrase:base:1001=3",
-        "phrase:base:1008=3",
+        "phrase:base:1007=3",
         "",
+        "phrase:base:1004=3",
+        "phrase:base:1008=1",
         ""
       ],
-      "theta": -1.468294
+      "theta": -1.835229
     }
   ],
   "placed-intermediate": [
@@ -219,7 +219,7 @@
     },
     {
       "cards": [
-        "stack-1:journey_en:4:8|match_pairs|new|f0",
+        "stack-1:journey_en:4:8|intro_echo|new|f0",
         "stack-1:journey_en:4:9|choice_pick|new|f0",
         "stack-1:journey_en:4:10|match_pairs|new|f0",
         "stack-1:journey_en:4:11|intro_echo|replay|f0",
@@ -269,7 +269,7 @@
     },
     {
       "cards": [
-        "stack-1:journey_en:2:8|match_pairs|new|f0",
+        "stack-1:journey_en:2:8|intro_echo|new|f0",
         "stack-1:journey_en:2:9|choice_pick|new|f0",
         "stack-1:journey_en:2:10|intro_echo|new|f0",
         "stack-1:journey_en:2:11|match_pairs|new|f0",
@@ -321,7 +321,7 @@
         "stack-1:journey_en:3:9|intro_echo|new|f0",
         "stack-1:journey_en:3:10|listen_pick|new|f0",
         "stack-1:journey_en:3:11|match_pairs|replay|f0",
-        "stack-1:journey_en:3:12|intro_echo|new|f0",
+        "stack-1:journey_en:3:12|match_pairs|new|f0",
         "stack-1:journey_en:3:13|intro_echo|scaffold|f0",
         "stack-1:journey_en:3:14|checkpoint_summary|checkpoint|f0"
       ],

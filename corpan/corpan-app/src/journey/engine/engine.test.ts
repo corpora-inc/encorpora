@@ -105,3 +105,32 @@ test("telemetry counts batches and exposes shortfall reasons", async () => {
   assert.ok(t.batches >= 1)
   assert.equal(typeof t.relaxations, "number")
 })
+
+test("requestUnitReview: seen items re-queue as replays; unseen unit refuses", async () => {
+  const h = await makeEngine()
+  h.engine.startSession()
+  const unitId = h.graph.units[0].unitId
+  // Nothing seen yet — nothing reviewable.
+  assert.equal(h.engine.requestUnitReview(unitId), false)
+  // Play until some unit-0 items have SCORED cards (the first batch can be
+  // all unscored debut intros — cards only exist after scored exposure).
+  let reviewable = false
+  for (let i = 0; i < 6 && !reviewable; i++) {
+    for (const card of h.engine.nextFeedItems(8)) {
+      h.engine.applyResult(answer(card, { pass: true }))
+    }
+    reviewable = h.engine.requestUnitReview(unitId)
+  }
+  assert.equal(reviewable, true)
+  // The queued replays surface in subsequent batches as replay-pool cards.
+  const replays: string[] = []
+  for (let i = 0; i < 4 && replays.length === 0; i++) {
+    for (const card of h.engine.nextFeedItems(8)) {
+      if (card.meta.pool === "replay") replays.push(card.spec.specId)
+      h.engine.applyResult(answer(card, { pass: true }))
+    }
+  }
+  assert.ok(replays.length > 0, "unit review should emit replay cards")
+  // Unknown unit id refuses.
+  assert.equal(h.engine.requestUnitReview("nope.unit"), false)
+})

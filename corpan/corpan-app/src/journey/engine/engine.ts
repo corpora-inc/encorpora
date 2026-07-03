@@ -39,6 +39,7 @@ import { itemCardCodec } from "./persistence/types.ts"
 import { createRng, deriveSessionSeed, weightedPick } from "./rng.ts"
 import { createScheduler, JOURNEY_FSRS_PARAMS, type Scheduler } from "./scheduler.ts"
 import { strandShares } from "./strands.ts"
+import { CardFlags } from "./types.ts"
 import type {
   ActivityResult,
   ApplyOutcome,
@@ -60,6 +61,9 @@ import type {
 
 export { JOURNEY_FSRS_PARAMS, createMemoryPersistence, itemCardCodec }
 
+/** Cap on items queued by one PathViz unit-review tap. */
+const UNIT_REVIEW_ITEMS_MAX = 8
+
 export interface JourneyEngine {
   load(): Promise<{ fresh: boolean; recovered: RecoveryReport }>
   startSession(): {
@@ -76,6 +80,10 @@ export interface JourneyEngine {
   getCourseSnapshot(): CourseSnapshot
   requestJump(targetSkillId?: string): EngineCard[] | undefined
   requestLegendary(skillId: string): EngineCard[] | undefined
+  /** PathViz tap-to-review: enqueue a practiced unit's seen items as session
+   *  replays (unmetered; once-per-session per item). False = nothing to
+   *  review yet (locked/unseen unit). */
+  requestUnitReview(unitId: string): boolean
   flush(): Promise<void>
   /** Mixer/starvation telemetry (simulation gate + debug panel). */
   getTelemetry(): MixerTelemetry
@@ -159,6 +167,7 @@ export function createJourneyEngine(deps: {
       issued: new Map(),
       debuts: new Map(),
       scaffoldItemId: null,
+      lastBatchTailType: null,
       cadenceEmitted: 0,
       bossAttempted: new Set(),
       checkpointRun: null,
@@ -617,6 +626,35 @@ export function createJourneyEngine(deps: {
         failedItemIds: [],
       }
       return cardsOut
+    },
+
+    requestUnitReview(unitId) {
+      // PathViz tap-to-review (W10/W4 fix c): enqueue a practiced unit's SEEN
+      // items as session replays. Rides the existing replay machinery — gap
+      // discipline, once-per-session guard, unmetered (replays never debit
+      // the daily gate, R12). Returns false when nothing is reviewable.
+      requireLoaded()
+      const s = requireSession()
+      const unit = gidx.units[gidx.unitPos.get(unitId) ?? -1]
+      if (!unit) return false
+      let queued = 0
+      for (const skillId of unit.skillIds) {
+        for (const itemId of gidx.skillItems.get(skillId) ?? []) {
+          if (queued >= UNIT_REVIEW_ITEMS_MAX) break
+          const card = cards.get(itemId)
+          if (!card || card.fsrs.reps === 0 || (card.flags & CardFlags.Suspended) !== 0) continue
+          if (s.replayedItems.has(itemId)) continue
+          if (s.replayQueue.some((e) => e.itemId === itemId)) continue
+          s.replayQueue.push({
+            itemId,
+            notBeforeEmitIndex: s.emitIndex,
+            form: card.form,
+            failures: 0,
+          })
+          queued += 1
+        }
+      }
+      return queued > 0
     },
 
     async flush() {

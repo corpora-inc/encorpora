@@ -397,7 +397,9 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       forceInputFluency: forceInputFluencyBudget > 0,
       leechItem,
       restrict,
-      avoidType: slots[slots.length - 1]?.activityType,
+      // Cross-batch §5.4 seed: the first slot of a batch avoids the previous
+      // batch's tail type (the seam was previously unchecked — W10/W4 fix b).
+      avoidType: slots[slots.length - 1]?.activityType ?? bag.session.lastBatchTailType ?? undefined,
     })
     if (!t) return null
     const slot = makeSlot(bag, itemId, t, pool, extra)
@@ -703,6 +705,14 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   // Pairs INSIDE an stt/llm/tts run are exempt: block contiguity is MANDATED
   // by step 6, and a model class with one renderable type is inherently
   // same-type-adjacent (models warm once, run their block, unload).
+  if (
+    slots.length > 0 &&
+    bag.session.lastBatchTailType !== null &&
+    slots[0].activityType === bag.session.lastBatchTailType &&
+    modelKey(slots[0].modelNeeds, slots[0].pinTail) === 0
+  ) {
+    bag.telemetry.relaxations += 1
+  }
   for (let i = 1; i < slots.length; i++) {
     if (slots[i].activityType !== slots[i - 1].activityType) continue
     if (modelKey(slots[i].modelNeeds, slots[i].pinTail) !== 0) continue
@@ -727,7 +737,7 @@ function emptyForForm(itemId: string): ItemCard {
 /** Greedy stable reorder of the movable slots to kill same-type adjacency.
  *  Slots with position obligations (replay/debut minPos, pins, checkpoints,
  *  debut intros) keep their indexes — debut-order is NEVER dropped. */
-function reorderForAdjacency(slots: Slot[]): void {
+function reorderForAdjacency(slots: Slot[], prevTailType: string | null): void {
   // debut intros ARE movable: recognitions are queued at finalize from the
   // FINAL intro position, so intra-batch order carries no obligation
   const movable = (s: Slot): boolean =>
@@ -736,7 +746,8 @@ function reorderForAdjacency(slots: Slot[]): void {
   for (let i = 0; i < slots.length; i++) if (movable(slots[i])) movableIdx.push(i)
   const pool = movableIdx.map((i) => slots[i])
   for (const idx of movableIdx) {
-    const prevType = idx > 0 ? slots[idx - 1].activityType : null
+    // idx 0 checks against the previous batch's tail (cross-batch §5.4 seam).
+    const prevType = idx > 0 ? slots[idx - 1].activityType : prevTailType
     const nextFixed = idx + 1 < slots.length && !movable(slots[idx + 1]) ? slots[idx + 1].activityType : null
     let pick = pool.findIndex(
       (s) => s.activityType !== prevType && (nextFixed === null || s.activityType !== nextFixed),
@@ -754,13 +765,16 @@ function repairConstraints(bag: MixerBag, slots: Slot[]): void {
 
   for (let pass = 0; pass < CONSTRAINT_REPAIR_PASSES; pass++) {
     let dirty = false
-    // no two consecutive slots share activityType — greedy stable reorder
+    // no two consecutive slots share activityType — greedy stable reorder.
+    // The batch head also checks the previous batch's tail (the seam).
+    const tailType = bag.session.lastBatchTailType
     let adjacency = 0
+    if (slots.length > 0 && tailType !== null && slots[0].activityType === tailType) adjacency += 1
     for (let i = 1; i < slots.length; i++) {
       if (slots[i].activityType === slots[i - 1].activityType) adjacency += 1
     }
     if (adjacency > 0) {
-      reorderForAdjacency(slots)
+      reorderForAdjacency(slots, tailType)
       dirty = true
     }
     // same itemId gap ≥ 3 (incl. lastEmit from previous batches)
@@ -1014,9 +1028,16 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
         rareVariant: s.rareVariant,
         checkpoint: s.checkpoint,
         coolDownCandidate: s.coolDown === true,
+        // Presentation-only exposure for the surface (W10/W4 fix a): the
+        // IssuedCard already carried this; the wire card now does too.
+        ...(s.unscored ? { unscored: true } : {}),
       },
     })
   }
   session.emitIndex += slots.length
+  // Cross-batch §5.4 adjacency seed (W10/W4 fix b): remember the batch tail
+  // type so the NEXT batch's head can avoid same-type adjacency at the seam.
+  const tail = slots[slots.length - 1]
+  if (tail) session.lastBatchTailType = tail.activityType
   return cards
 }

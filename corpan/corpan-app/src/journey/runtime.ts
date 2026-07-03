@@ -183,6 +183,9 @@ export interface JourneyRuntime {
   // jump / legendary passthrough
   acceptJumpOffer(cardId: string): boolean
   requestLegendary(skillId: string): boolean
+  /** PathViz tap-to-review: enqueue a practiced unit's seen items as
+   *  replays (unmetered, engine-owned). False = nothing reviewable. */
+  requestUnitReview(unitId: string): boolean
   // path viz inputs
   graph: CourseGraph
   skillState(skillId: string): SkillState
@@ -551,7 +554,11 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     }
 
     const abandoned = result.abandoned === true
-    const scored = card.kind === "exercise" && !abandoned
+    // meta.unscored (debut intros / presentation faces) never feeds combo or
+    // the new/review tallies — the engine flag is authoritative (W10/W4 fix
+    // a: no more inferring presentation-ness from activityType).
+    const scored =
+      card.kind === "exercise" && !abandoned && card.prepared.engine.meta.unscored !== true
     const hintsUsed = result.perItem.reduce((a, p) => a + (p.hintsUsed ?? 0), 0)
 
     if (scored) {
@@ -803,6 +810,14 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       rawQueue.unshift(...cards)
       void fillQueue()
       return true
+    },
+    requestUnitReview: (unitId) => {
+      const ok = deps.engine.requestUnitReview(unitId)
+      if (ok) {
+        record({ type: "pack:journey:unit_review", payload: { unitId } })
+        void fillQueue()
+      }
+      return ok
     },
     graph: deps.graph,
     skillState: (skillId) => deps.engine.getSkillState(skillId),

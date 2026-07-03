@@ -70,6 +70,7 @@ function makeBag(): { bag: ApplyBag; session: SessionState; course: CourseState;
     issued: new Map(),
     debuts: new Map(),
     scaffoldItemId: null,
+    lastBatchTailType: null,
     cadenceEmitted: 0,
     bossAttempted: new Set(),
     checkpointRun: null,

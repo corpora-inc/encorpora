@@ -76,7 +76,11 @@ export function ActivityCardHost(props: {
     setStamp(ok ? "correct" : "incorrect")
     props.onResult(result)
     if (props.mode === "live") {
-      if (ok) {
+      // Presentation-only cards (engine meta.unscored — debut intros etc.)
+      // never earn a "perfect" celebration: acknowledging exposure as a win
+      // would be dishonest juice (W10/W4 fix a — the engine flag replaces
+      // any activityType inference here).
+      if (ok && prepared.engine.meta.unscored !== true) {
         const fast = outcome.latencyMs <= FAST_MS
         const perfect = attempt === "first" && fast && hintsRef.current === 0 && fraction >= 0.95
         const comboNow = props.combo + 1

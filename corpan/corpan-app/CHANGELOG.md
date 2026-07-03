@@ -40,6 +40,20 @@ Conventions: `corpan/CHANGELOGS.md`.
   and reports the live registry limit.
 
 ### Fixed
+- **Journey W10 — engine fixes (W4's observations).** (a) `EngineCard.meta`
+  now carries `unscored` for presentation-only cards (debut intros, cadence
+  faces, offers) — the surface reads the engine flag instead of inferring by
+  activityType: unscored cards no longer bump combo/new-count or earn
+  "perfect" celebrations. (b) The §5.4 same-type-adjacency invariant now
+  covers the BATCH SEAM: the mixer remembers the previous batch's tail type
+  and both the type chooser and the adjacency repair avoid it for the next
+  batch's head — this was the mechanism behind two adjacent `intro_echo`
+  cards. Goldens regenerated (spec-cited: engine.md §5.4 adjacency
+  invariant; only card-type/order picks drift, grades/θ untouched). (c) New
+  `engine.requestUnitReview(unitId)` (≈25 lines): enqueues a practiced
+  unit's seen items as session replays (unmetered, once-per-session,
+  existing gap discipline); PathViz's tap-to-review affordance is wired to
+  it through the runtime.
 - **Journey W10 — seam fixes.** The journey pack-poster card
   (`PackActivityCard`) renders its art through `<OfflineImage>` (cached →
   remote → glyph, R15) and enriches the poster name/artwork from the

@@ -217,6 +217,9 @@ export interface SessionState {
   // -- session-internal extras (never persisted; additive to §2.5) --
   /** Struggle re-teach pending (engine.md §5.3.1). */
   scaffoldItemId: string | null
+  /** activityType of the previous batch's LAST emitted card — the §5.4
+   *  same-type-adjacency seed across the batch seam (W10/W4 fix b). */
+  lastBatchTailType: string | null
   /** Cadence checkpoints emitted so far this session (§5.4 step 3.5). */
   cadenceEmitted: number
   /** Checkpoint batches attempted this session (one boss attempt/session). */
@@ -331,6 +334,10 @@ export interface EngineCard {
     estSec: number
     provider: "native" | string
     celebration: "normal" | "rare"
+    /** Presentation-only card (debut intro / cadence face / offer): the
+     *  engine grades it to no evidence (apply.ts) — surfaces read THIS
+     *  instead of inferring presentation-ness from activityType (W10/W4). */
+    unscored?: boolean
     rareVariant?: "delight" | "etymology" | "timeCapsule" | "miniGame" | "storyChapter"
     checkpoint?: {
       checkpointId: string
