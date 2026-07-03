@@ -1,0 +1,83 @@
+id: en.a1.u08
+arc: en.arc1
+theme: "My town"
+cando:
+  - key: around-town
+    text: "Can say what there is in their town and where things are."
+vocab_band: { lo: 1, hi: 3000 }
+phrase_domains: [housing, travel]
+skills:
+  - id: en.skill.places
+    kind: grammar
+    title: "Places & where things are"
+    b: -3.0
+    prereqs: [en.skill.eating-out]
+grammar_nodes: [en.gn.there-is-are, en.gn.prep-place, en.gn.art-the]
+items:
+  - ref: "phrase:base:6180"  # Is there a hospital nearby?
+    skills: [en.skill.places]
+    importance: 3
+    probe: true
+    b: -3.0
+  - ref: "phrase:base:15249"  # We met at the station.
+    skills: [en.skill.places]
+    importance: 3
+    probe: true
+    b: -3.0
+  - ref: "phrase:base:22284"  # What is the street name?
+    skills: [en.skill.places]
+    importance: 3
+    probe: true
+    b: -3.0
+  - ref: "phrase:base:17408"  # There is a desk in the corner.
+    skills: [en.skill.places]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20662"  # There is a flower on the table.
+    skills: [en.skill.places]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:19105"  # I live in a small town near the mountains.
+    skills: [en.skill.places]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21868"  # Where is the dog?
+    skills: [en.skill.places]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:city"
+    skills: [en.skill.places]
+    importance: 2
+  - ref: "word:en:street"
+    skills: [en.skill.places]
+    importance: 2
+  - ref: "word:en:town"
+    skills: [en.skill.places]
+    importance: 2
+  - ref: "word:en:station"
+    skills: [en.skill.places]
+    importance: 2
+  - ref: "word:en:park"
+    skills: [en.skill.places]
+    importance: 2
+  - ref: "word:en:bank"
+    skills: [en.skill.places]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [housing, travel]
+      level: A1
+      count: 10
+      skills: [en.skill.places]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

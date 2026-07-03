@@ -1,0 +1,79 @@
+id: en.a1.u19
+arc: en.arc1
+theme: "Free time & hobbies"
+cando:
+  - key: hobbies
+    text: "Can talk about hobbies and free-time activities they enjoy."
+vocab_band: { lo: 1, hi: 3700 }
+phrase_domains: [culture]
+skills:
+  - id: en.skill.hobbies
+    kind: vocab
+    title: "Free time & hobbies"
+    b: -2.6
+    prereqs: [en.skill.describing-people]
+items:
+  - ref: "phrase:base:17258"  # I like to read before bed.
+    skills: [en.skill.hobbies]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:12070"  # Let's watch a movie tonight.
+    skills: [en.skill.hobbies]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:21266"  # I love this song!
+    skills: [en.skill.hobbies]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:17027"  # I enjoy listening to jazz music.
+    skills: [en.skill.hobbies]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22290"  # Play a song now.
+    skills: [en.skill.hobbies]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11177"  # I want to sell my old guitar.
+    skills: [en.skill.hobbies]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16256"  # Let's go for a walk.
+    skills: [en.skill.hobbies]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:music"
+    skills: [en.skill.hobbies]
+    importance: 2
+  - ref: "word:en:movie"
+    skills: [en.skill.hobbies]
+    importance: 2
+  - ref: "word:en:game"
+    skills: [en.skill.hobbies]
+    importance: 2
+  - ref: "word:en:sport"
+    skills: [en.skill.hobbies]
+    importance: 2
+  - ref: "word:en:guitar"
+    skills: [en.skill.hobbies]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [culture]
+      level: A1
+      count: 12
+      skills: [en.skill.hobbies]
+      importance: 2
+      substitutable: true
+lessons: [core, core, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

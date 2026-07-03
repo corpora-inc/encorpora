@@ -1,0 +1,67 @@
+id: en.a1.u20
+arc: en.arc1
+theme: "Yesterday"
+cando:
+  - key: past
+    text: "Can say where they were and what they did in simple past sentences."
+vocab_band: { lo: 1, hi: 3700 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.past-simple
+    kind: grammar
+    title: "Talking about the past"
+    b: -2.5
+    prereqs: [en.skill.hobbies]
+grammar_nodes: [en.gn.past-be, en.gn.past-reg]
+items:
+  - ref: "phrase:base:22032"  # That trip was fantastic.
+    skills: [en.skill.past-simple]
+    importance: 3
+    probe: true
+    b: -2.5
+  - ref: "phrase:base:16322"  # That concert was amazing!
+    skills: [en.skill.past-simple]
+    importance: 3
+    probe: true
+    b: -2.5
+  - ref: "phrase:base:15145"  # It was a big mistake.
+    skills: [en.skill.past-simple]
+    importance: 3
+    probe: true
+    b: -2.5
+  - ref: "phrase:base:18803"  # The result was clear.
+    skills: [en.skill.past-simple]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22277"  # That was quick!
+    skills: [en.skill.past-simple]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:6985"  # There was an error.
+    skills: [en.skill.past-simple]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:yesterday"
+    skills: [en.skill.past-simple]
+    importance: 2
+  - ref: "word:en:night"
+    skills: [en.skill.past-simple]
+    importance: 2
+  - ref: "word:en:weekend"
+    skills: [en.skill.past-simple]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: A1
+      count: 10
+      skills: [en.skill.past-simple]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]

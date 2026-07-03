@@ -1,0 +1,73 @@
+id: en.a1.u09
+arc: en.arc1
+theme: "Every day"
+cando:
+  - key: routine
+    text: "Can describe their daily routine and how often they do things."
+vocab_band: { lo: 1, hi: 3200 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.routines
+    kind: grammar
+    title: "Daily routines"
+    b: -3.0
+    prereqs: [en.skill.places]
+grammar_nodes: [en.gn.pres-simple-base, en.gn.adv-freq]
+items:
+  - ref: "phrase:base:21846"  # I have a morning routine.
+    skills: [en.skill.routines]
+    importance: 3
+    probe: true
+    b: -3.0
+  - ref: "phrase:base:21525"  # Do you eat breakfast?
+    skills: [en.skill.routines]
+    importance: 3
+    probe: true
+    b: -3.0
+  - ref: "phrase:base:21775"  # I play outside every day.
+    skills: [en.skill.routines]
+    importance: 3
+    probe: true
+    b: -3.0
+  - ref: "phrase:base:22141"  # I take a shower.
+    skills: [en.skill.routines]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21849"  # I follow a routine.
+    skills: [en.skill.routines]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12400"  # After running, I need a shower.
+    skills: [en.skill.routines]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:breakfast"
+    skills: [en.skill.routines]
+    importance: 2
+  - ref: "word:en:shower"
+    skills: [en.skill.routines]
+    importance: 2
+  - ref: "word:en:school"
+    skills: [en.skill.routines]
+    importance: 2
+  - ref: "word:en:day"
+    skills: [en.skill.routines]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: A1
+      count: 12
+      skills: [en.skill.routines]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, core, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

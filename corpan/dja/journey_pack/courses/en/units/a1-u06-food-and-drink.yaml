@@ -1,0 +1,79 @@
+id: en.a1.u06
+arc: en.arc1
+theme: "Food & drink"
+cando:
+  - key: likes
+    text: "Can say what food and drink they like and want."
+vocab_band: { lo: 1, hi: 2900 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.food
+    kind: vocab
+    title: "Food & drink"
+    b: -3.1
+    prereqs: [en.skill.time]
+grammar_nodes: [en.gn.like-want-noun, en.gn.some-any]
+items:
+  - ref: "phrase:base:8210"  # Can I have some water?
+    skills: [en.skill.food]
+    importance: 3
+    probe: true
+    b: -3.1
+  - ref: "phrase:base:20137"  # The cat likes milk.
+    skills: [en.skill.food]
+    importance: 3
+    probe: true
+    b: -3.1
+  - ref: "phrase:base:817"  # I want something to drink.
+    skills: [en.skill.food]
+    importance: 3
+    probe: true
+    b: -3.1
+  - ref: "phrase:base:11281"  # She likes her tea with honey.
+    skills: [en.skill.food]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:14284"  # That apple is green.
+    skills: [en.skill.food]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:17510"  # There is ice in my drink.
+    skills: [en.skill.food]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:water"
+    skills: [en.skill.food]
+    importance: 2
+  - ref: "word:en:coffee"
+    skills: [en.skill.food]
+    importance: 2
+  - ref: "word:en:tea"
+    skills: [en.skill.food]
+    importance: 2
+  - ref: "word:en:bread"
+    skills: [en.skill.food]
+    importance: 2
+  - ref: "word:en:milk"
+    skills: [en.skill.food]
+    importance: 2
+  - ref: "word:en:apple"
+    skills: [en.skill.food]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: A1
+      count: 12
+      skills: [en.skill.food]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, core, phonology, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-squeeze
+  config: { itemset: unit }
