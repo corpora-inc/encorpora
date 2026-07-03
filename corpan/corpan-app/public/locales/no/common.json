@@ -335,6 +335,10 @@
       "surprise": {
         "label": "Overrask meg!",
         "desc": "Ta meg et morsomt sted."
+      },
+      "journey": {
+        "label": "Følg Journey",
+        "desc": "Et guidet kurs — appen velger hvert neste steg"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample språket du lærer. Scratch det til det sitter."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Din guidede vei, kort for kort"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "Installerer…",
     "installed": "Installert",
     "retry": "Prøv igjen"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Din guidede vei, kort for kort",
+    "heroCard": {
+      "title": "Din Journey",
+      "progress": "{{unit}} · {{count}} kort til dagens mål"
+    },
+    "heroCta": {
+      "start": "Start din Journey",
+      "continue": "Fortsett"
+    },
+    "chrome": {
+      "home": "Hjem",
+      "menu": "Journey-valg",
+      "unit": "Enhet {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Sjekk",
+      "continue": "Fortsett",
+      "skipHint": "Sveip igjen for å hoppe over",
+      "retry": "Prøv igjen",
+      "showAnswer": "Vis svaret",
+      "answerWas": "Svaret var",
+      "comeBackNote": "Vi kommer tilbake til dette.",
+      "whyThisCard": "Hvorfor dette kortet?",
+      "whyNew": "Noe nytt fra din nåværende enhet.",
+      "whyReview": "En repetisjon — avstand holder den sterk.",
+      "whyRepair": "Et nytt blikk på noe vanskelig.",
+      "whyGuided": "En del av din guidede vei.",
+      "typeWhatYouHear": "Skriv det du hører",
+      "typeHere": "Skriv her…",
+      "tapToOrder": "Trykk på ordene i riktig rekkefølge",
+      "matchPairs": "Finn parene",
+      "flipToReveal": "Trykk for å avsløre",
+      "knewIt": "Det kunne jeg",
+      "didntKnow": "Ikke ennå",
+      "speakNow": "Snakk nå",
+      "listen": "Lytt",
+      "listenSlow": "Saktere",
+      "hint": "Hint",
+      "correct": "Riktig",
+      "incorrect": "Ikke helt",
+      "pickTranslation": "Velg oversettelsen",
+      "pickWhatYouHear": "Velg det du hørte",
+      "fillTheBlank": "Fyll ut det tomme feltet",
+      "newItem": "Ny",
+      "reviewedEarlier": "Sett tidligere"
+    },
+    "intro": {
+      "listenAndEcho": "Lytt, og si det høyt",
+      "newWord": "Nytt ord",
+      "newPhrase": "Ny frase"
+    },
+    "grammar": {
+      "noteLabel": "Grammatikknotat",
+      "tryIt": "Prøv"
+    },
+    "checkpoint": {
+      "title": "Sjekkpunkt",
+      "summary": "{{new}} nye · {{reviews}} repetisjoner · beste rekke {{combo}}",
+      "done": "Nok for i dag",
+      "keepGoing": "Fortsett",
+      "dailyRing": "{{done}}/{{goal}} i dag",
+      "deepSession": "For en grundig økt — repetisjonene dine er uansett planlagt.",
+      "streakTicked": "Dag {{count}} ✓",
+      "boss": "Enhetsutfordring",
+      "arcGate": "Bueport"
+    },
+    "celebrate": {
+      "combo": "{{count}} på rad",
+      "perfect": "Perfekt",
+      "wordsLearned": "{{count}} ord lært",
+      "unitComplete": "Enhet fullført: {{name}}",
+      "streakDay": "Dag {{count}}",
+      "placementDone": "Nivå funnet"
+    },
+    "rare": {
+      "reveal": "Noe spesielt…",
+      "etymologyGem": "Ordhistorie",
+      "timeCapsule": {
+        "title": "Tidskapsel",
+        "body": "Du jobbet hardt med dette {{when}} — se på deg nå."
+      },
+      "delight": {
+        "newVoice": "En annen stemme",
+        "didYouNotice": "La du merke til det?"
+      },
+      "miniGame": {
+        "title": "Bonusrunde",
+        "play": "Spill"
+      },
+      "story": {
+        "unlocked": "Du har gjort deg fortjent til neste kapittel",
+        "read": "Les det"
+      }
+    },
+    "placement": {
+      "offerTitle": "Hvor skal vi begynne?",
+      "offerBody": "Noen raske spørsmål finner startpunktet ditt. Cirka fem minutter.",
+      "startNew": "Jeg er ny i {{lang}}",
+      "placeMe": "Jeg kan litt {{lang}}",
+      "skipItem": "Hopp over hvis du er usikker",
+      "doneTitle": "Startpunkt funnet",
+      "doneBody": "Starter på {{unit}}.",
+      "prelit": "Du starter med {{count}} elementer du allerede kan.",
+      "redo": "Sjekk nivået mitt på nytt",
+      "aboveTitle": "Du er forbi dette kurset",
+      "aboveBody": "Dette kurset dekker foreløpig nybegynnerstoff, og du ligger over det. Du kan likevel utforske det — nye nivåer er på vei."
+    },
+    "path": {
+      "title": "Din vei",
+      "arc": "Bue {{name}}",
+      "unit": "Enhet {{n}}",
+      "locked": "Lenger fremme",
+      "current": "Du er her",
+      "review": "Trykk for å repetere",
+      "mastered": "Sterk"
+    },
+    "streak": {
+      "pactTitle": "Holde en rekke?",
+      "pactBody": "Ett kort om dagen holder den i live. Går du glipp av en dag, kan en hviledag dekke deg — du tjener én hver uke.",
+      "pactAccept": "Jeg er med",
+      "pactDecline": "Nei takk",
+      "days": "{{count}} dager",
+      "restDayEarned": "Hviledag opptjent",
+      "restDayUsed": "{{day}} var en hviledag",
+      "repairTitle": "Ta opp rekken din igjen",
+      "repairBody": "Fullfør to økter i løpet av de neste {{days}} dagene for å gjenopprette rekken din på {{count}} dager.",
+      "repairCta": "Start"
+    },
+    "block": {
+      "speakingIntro": "Taletrening — {{count}} kort",
+      "ready": "Klar",
+      "loadingModel": "Varmer opp mikrofonen…",
+      "micPrompt": "Corpán bruker mikrofonen til å vurdere uttalen din på denne enheten.",
+      "sttUnavailable": "Talevurdering er ikke tilgjengelig akkurat nå — bytter til lytteøvelser."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} kort igjen i dag",
+      "plusBody": "Corpán Plus fjerner den daglige kortgrensen."
+    },
+    "welcomeBack": {
+      "title": "Velkommen tilbake",
+      "body": "Repetisjonene dine beholdt {{pct}} % av styrken. La oss varme opp."
+    },
+    "tease": {
+      "next": "Neste gang: {{title}}"
+    },
+    "jump": {
+      "title": "Føles dette for lett?",
+      "body": "Ta en kort utfordring for å hoppe fremover. Mislykkes du, taper du ingenting — du blir akkurat der du er.",
+      "accept": "Prøv utfordringen",
+      "decline": "Bli her"
+    },
+    "feed": {
+      "caughtUp": "Du er à jour for nå",
+      "loading": "Gjør klar kortene dine…",
+      "loadError": "Journey kunne ikke lastes. Prøv igjen fra Hjem."
+    },
+    "popin": {
+      "pronounceTitle": "Uttal det",
+      "close": "Lukk"
+    },
+    "settings": {
+      "title": "Journey-valg",
+      "advanceMode": "Fremdrift",
+      "advanceSwipe": "Sveip for å fortsette",
+      "advanceAuto": "Fortsett automatisk",
+      "celebration": "Feiringer",
+      "celebrationFull": "Full",
+      "celebrationReduced": "Redusert",
+      "celebrationMinimal": "Minimal",
+      "sounds": "Lyder",
+      "soundsOn": "På",
+      "soundsOff": "Av",
+      "listeningMode": "Håndfri lytting",
+      "viewPath": "Se veien",
+      "redoPlacement": "Sjekk nivået mitt på nytt"
+    }
   }
 }

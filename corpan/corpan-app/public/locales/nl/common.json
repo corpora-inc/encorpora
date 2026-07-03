@@ -335,6 +335,10 @@
       "surprise": {
         "label": "Verras me!",
         "desc": "Breng me ergens leuks naartoe."
+      },
+      "journey": {
+        "label": "Volg de Journey",
+        "desc": "Een begeleide cursus — de app kiest elke volgende stap"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample de taal die je leert. Scratch tot het blijft hangen."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Jouw begeleide pad, kaart voor kaart"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "Installeren…",
     "installed": "Geïnstalleerd",
     "retry": "Opnieuw proberen"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Jouw begeleide pad, kaart voor kaart",
+    "heroCard": {
+      "title": "Jouw Journey",
+      "progress": "{{unit}} · {{count}} kaarten tot het doel van vandaag"
+    },
+    "heroCta": {
+      "start": "Begin je Journey",
+      "continue": "Doorgaan"
+    },
+    "chrome": {
+      "home": "Home",
+      "menu": "Journey-opties",
+      "unit": "Eenheid {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Controleer",
+      "continue": "Doorgaan",
+      "skipHint": "Veeg nogmaals om over te slaan",
+      "retry": "Probeer opnieuw",
+      "showAnswer": "Toon antwoord",
+      "answerWas": "Het antwoord was",
+      "comeBackNote": "We komen hierop terug.",
+      "whyThisCard": "Waarom deze kaart?",
+      "whyNew": "Iets nieuws uit je huidige eenheid.",
+      "whyReview": "Een herhaling — spreiding houdt het sterk.",
+      "whyRepair": "Nog een blik op iets lastigs.",
+      "whyGuided": "Onderdeel van je begeleide pad.",
+      "typeWhatYouHear": "Typ wat je hoort",
+      "typeHere": "Typ hier…",
+      "tapToOrder": "Tik de woorden in de juiste volgorde",
+      "matchPairs": "Zoek de paren",
+      "flipToReveal": "Tik om te onthullen",
+      "knewIt": "Wist ik",
+      "didntKnow": "Nog niet",
+      "speakNow": "Spreek nu",
+      "listen": "Luister",
+      "listenSlow": "Langzamer",
+      "hint": "Hint",
+      "correct": "Goed",
+      "incorrect": "Niet helemaal",
+      "pickTranslation": "Kies de vertaling",
+      "pickWhatYouHear": "Kies wat je hoorde",
+      "fillTheBlank": "Vul de lege plek in",
+      "newItem": "Nieuw",
+      "reviewedEarlier": "Eerder gezien"
+    },
+    "intro": {
+      "listenAndEcho": "Luister en zeg het hardop na",
+      "newWord": "Nieuw woord",
+      "newPhrase": "Nieuwe zin"
+    },
+    "grammar": {
+      "noteLabel": "Grammatica-notitie",
+      "tryIt": "Probeer het"
+    },
+    "checkpoint": {
+      "title": "Checkpoint",
+      "summary": "{{new}} nieuw · {{reviews}} herhalingen · beste reeks {{combo}}",
+      "done": "Genoeg voor vandaag",
+      "keepGoing": "Doorgaan",
+      "dailyRing": "{{done}}/{{goal}} vandaag",
+      "deepSession": "Wat een diepe sessie — je herhalingen staan hoe dan ook ingepland.",
+      "streakTicked": "Dag {{count}} ✓",
+      "boss": "Eenheidsuitdaging",
+      "arcGate": "Boogpoort"
+    },
+    "celebrate": {
+      "combo": "{{count}} op rij",
+      "perfect": "Perfect",
+      "wordsLearned": "{{count}} woorden geleerd",
+      "unitComplete": "Eenheid voltooid: {{name}}",
+      "streakDay": "Dag {{count}}",
+      "placementDone": "Niveau bepaald"
+    },
+    "rare": {
+      "reveal": "Iets bijzonders…",
+      "etymologyGem": "Woordverhaal",
+      "timeCapsule": {
+        "title": "Tijdcapsule",
+        "body": "Hier heb je {{when}} hard aan gewerkt — kijk nu naar jezelf."
+      },
+      "delight": {
+        "newVoice": "Een andere stem",
+        "didYouNotice": "Viel het je op?"
+      },
+      "miniGame": {
+        "title": "Bonusronde",
+        "play": "Spelen"
+      },
+      "story": {
+        "unlocked": "Je hebt het volgende hoofdstuk verdiend",
+        "read": "Lezen"
+      }
+    },
+    "placement": {
+      "offerTitle": "Waar beginnen we?",
+      "offerBody": "Een paar snelle vragen vinden je startpunt. Ongeveer vijf minuten.",
+      "startNew": "Ik ben nieuw met {{lang}}",
+      "placeMe": "Ik ken al wat {{lang}}",
+      "skipItem": "Sla over bij twijfel",
+      "doneTitle": "Startpunt gevonden",
+      "doneBody": "We beginnen bij {{unit}}.",
+      "prelit": "Je begint met {{count}} items die je al kent.",
+      "redo": "Mijn niveau opnieuw checken",
+      "aboveTitle": "Je bent verder dan deze cursus",
+      "aboveBody": "Deze cursus behandelt voorlopig beginnersstof en jij zit daarboven. Je kunt hem alsnog verkennen — nieuwe niveaus zijn onderweg."
+    },
+    "path": {
+      "title": "Jouw pad",
+      "arc": "Boog {{name}}",
+      "unit": "Eenheid {{n}}",
+      "locked": "Verderop",
+      "current": "Je bent hier",
+      "review": "Tik om te herhalen",
+      "mastered": "Sterk"
+    },
+    "streak": {
+      "pactTitle": "Een reeks bijhouden?",
+      "pactBody": "Eén kaart per dag houdt hem in leven. Mis je een dag, dan kan een rustdag je dekken — je verdient er elke week één.",
+      "pactAccept": "Ik doe mee",
+      "pactDecline": "Nee, bedankt",
+      "days": "{{count}} dagen",
+      "restDayEarned": "Rustdag verdiend",
+      "restDayUsed": "{{day}} was een rustdag",
+      "repairTitle": "Pak je reeks weer op",
+      "repairBody": "Rond twee sessies af in de komende {{days}} dagen om je reeks van {{count}} dagen te herstellen.",
+      "repairCta": "Start"
+    },
+    "block": {
+      "speakingIntro": "Spreekoefening — {{count}} kaarten",
+      "ready": "Klaar",
+      "loadingModel": "Microfoon opwarmen…",
+      "micPrompt": "Corpán gebruikt de microfoon om je uitspraak op dit apparaat te beoordelen.",
+      "sttUnavailable": "Spraakbeoordeling is nu niet beschikbaar — we schakelen over op luisteroefeningen."
+    },
+    "quota": {
+      "cardsLeft": "Nog {{count}} kaarten vandaag",
+      "plusBody": "Corpán Plus heft de dagelijkse kaartlimiet op."
+    },
+    "welcomeBack": {
+      "title": "Welkom terug",
+      "body": "Je herhalingen hebben {{pct}}% van hun kracht behouden. Even opwarmen."
+    },
+    "tease": {
+      "next": "Volgende keer: {{title}}"
+    },
+    "jump": {
+      "title": "Gaat dit te makkelijk?",
+      "body": "Doe een korte uitdaging om vooruit te springen. Mislukt het, dan verlies je niets — je blijft precies waar je bent.",
+      "accept": "Uitdaging proberen",
+      "decline": "Hier blijven"
+    },
+    "feed": {
+      "caughtUp": "Je bent voorlopig bij",
+      "loading": "Je kaarten worden voorbereid…",
+      "loadError": "De Journey kon niet laden. Probeer het opnieuw vanaf Home."
+    },
+    "popin": {
+      "pronounceTitle": "Spreek het uit",
+      "close": "Sluiten"
+    },
+    "settings": {
+      "title": "Journey-opties",
+      "advanceMode": "Doorgaan",
+      "advanceSwipe": "Vegen om door te gaan",
+      "advanceAuto": "Automatisch doorgaan",
+      "celebration": "Feestjes",
+      "celebrationFull": "Volledig",
+      "celebrationReduced": "Beperkt",
+      "celebrationMinimal": "Minimaal",
+      "sounds": "Geluiden",
+      "soundsOn": "Aan",
+      "soundsOff": "Uit",
+      "listeningMode": "Handsfree luisteren",
+      "viewPath": "Pad bekijken",
+      "redoPlacement": "Mijn niveau opnieuw checken"
+    }
   }
 }

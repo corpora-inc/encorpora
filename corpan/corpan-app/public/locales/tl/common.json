@@ -208,6 +208,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Subukan ang wika na iyong pinag-aaralan. Scratch ito hanggang sa ito ay manatili."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Ang gabay mong landas, kard-kard"
     }
   },
   "onboarding": {
@@ -408,6 +412,10 @@
       "surprise": {
         "label": "Gulatin mo ako!",
         "desc": "Dalhin mo ako sa kung saang masaya."
+      },
+      "journey": {
+        "label": "Sundan ang Journey",
+        "desc": "Isang kursong may gabay — pinipili ng app ang bawat susunod na hakbang"
       }
     }
   },
@@ -852,5 +860,185 @@
     "installing": "Ini-install…",
     "installed": "Naka-install na",
     "retry": "Subukan muli"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Ang gabay mong landas, kard-kard",
+    "heroCard": {
+      "title": "Ang iyong Journey",
+      "progress": "{{unit}} · {{count}} kard na lang sa target ngayon"
+    },
+    "heroCta": {
+      "start": "Simulan ang iyong Journey",
+      "continue": "Magpatuloy"
+    },
+    "chrome": {
+      "home": "Home",
+      "menu": "Mga opsyon ng Journey",
+      "unit": "Yunit {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Suriin",
+      "continue": "Magpatuloy",
+      "skipHint": "Mag-swipe ulit para laktawan",
+      "retry": "Subukan ulit",
+      "showAnswer": "Ipakita ang sagot",
+      "answerWas": "Ang sagot ay",
+      "comeBackNote": "Babalikan natin ito.",
+      "whyThisCard": "Bakit ang kard na ito?",
+      "whyNew": "Bagong aytem mula sa kasalukuyan mong yunit.",
+      "whyReview": "Isang pagbabalik-aral — pinapatibay ito ng pagitan.",
+      "whyRepair": "Pangalawang tingin sa mahirap na bagay.",
+      "whyGuided": "Bahagi ng gabay mong landas.",
+      "typeWhatYouHear": "I-type ang naririnig mo",
+      "typeHere": "Mag-type dito…",
+      "tapToOrder": "Pindutin ang mga salita nang sunud-sunod",
+      "matchPairs": "Itugma ang mga pares",
+      "flipToReveal": "Pindutin para makita",
+      "knewIt": "Alam ko",
+      "didntKnow": "Hindi pa",
+      "speakNow": "Magsalita na",
+      "listen": "Makinig",
+      "listenSlow": "Mas mabagal",
+      "hint": "Pahiwatig",
+      "correct": "Tama",
+      "incorrect": "Hindi pa tama",
+      "pickTranslation": "Piliin ang salin",
+      "pickWhatYouHear": "Piliin ang narinig mo",
+      "fillTheBlank": "Punan ang patlang",
+      "newItem": "Bago",
+      "reviewedEarlier": "Nakita na"
+    },
+    "intro": {
+      "listenAndEcho": "Makinig, saka sabihin nang malakas",
+      "newWord": "Bagong salita",
+      "newPhrase": "Bagong parirala"
+    },
+    "grammar": {
+      "noteLabel": "Tala sa balarila",
+      "tryIt": "Subukan"
+    },
+    "checkpoint": {
+      "title": "Checkpoint",
+      "summary": "{{new}} bago · {{reviews}} balik-aral · pinakamahabang sunod {{combo}}",
+      "done": "Tama na muna ngayon",
+      "keepGoing": "Ituloy pa",
+      "dailyRing": "{{done}}/{{goal}} ngayon",
+      "deepSession": "Ang lalim ng session na ito — nakatakda pa rin ang mga balik-aral mo.",
+      "streakTicked": "Araw {{count}} ✓",
+      "boss": "Hamon ng yunit",
+      "arcGate": "Tarangkahan ng arko"
+    },
+    "celebrate": {
+      "combo": "{{count}} nang sunud-sunod",
+      "perfect": "Perpekto",
+      "wordsLearned": "{{count}} salitang natutunan",
+      "unitComplete": "Tapos na ang yunit: {{name}}",
+      "streakDay": "Araw {{count}}",
+      "placementDone": "Natukoy na ang antas"
+    },
+    "rare": {
+      "reveal": "May espesyal…",
+      "etymologyGem": "Kuwento ng salita",
+      "timeCapsule": {
+        "title": "Time capsule",
+        "body": "Pinaghirapan mo ito {{when}} — tingnan mo ang sarili mo ngayon."
+      },
+      "delight": {
+        "newVoice": "Ibang boses",
+        "didYouNotice": "Napansin mo ba?"
+      },
+      "miniGame": {
+        "title": "Bonus round",
+        "play": "Maglaro"
+      },
+      "story": {
+        "unlocked": "Napagtrabahuhan mo ang susunod na kabanata",
+        "read": "Basahin"
+      }
+    },
+    "placement": {
+      "offerTitle": "Saan tayo magsisimula?",
+      "offerBody": "Ilang mabibilis na tanong ang hahanap ng panimulang punto mo. Mga limang minuto.",
+      "startNew": "Bago ako sa {{lang}}",
+      "placeMe": "May alam akong kaunting {{lang}}",
+      "skipItem": "Laktawan kung hindi sigurado",
+      "doneTitle": "Nahanap ang panimulang punto",
+      "doneBody": "Magsisimula sa {{unit}}.",
+      "prelit": "Magsisimula ka nang may {{count}} aytem na alam mo na.",
+      "redo": "Suriin ulit ang antas ko",
+      "aboveTitle": "Lampas ka na sa kursong ito",
+      "aboveBody": "Sa ngayon, panimulang nilalaman ang saklaw ng kursong ito, at lampas ka na roon. Puwede mo pa rin itong tuklasin — parating na ang mga bagong antas."
+    },
+    "path": {
+      "title": "Ang landas mo",
+      "arc": "Arko {{name}}",
+      "unit": "Yunit {{n}}",
+      "locked": "Sa unahan",
+      "current": "Nandito ka",
+      "review": "Pindutin para balik-aralan",
+      "mastered": "Matibay"
+    },
+    "streak": {
+      "pactTitle": "Magpanatili ng streak?",
+      "pactBody": "Isang kard kada araw ang nagpapanatili rito. Kapag nalaktawan mo ang isang araw, maaaring sumalo ang rest day — kumikita ka ng isa bawat linggo.",
+      "pactAccept": "Sali ako",
+      "pactDecline": "Hindi, salamat",
+      "days": "{{count}} araw",
+      "restDayEarned": "Nakakuha ng rest day",
+      "restDayUsed": "Rest day ang {{day}}",
+      "repairTitle": "Bawiin ang streak mo",
+      "repairBody": "Tapusin ang dalawang session sa loob ng susunod na {{days}} araw para maibalik ang {{count}}-araw mong streak.",
+      "repairCta": "Simulan"
+    },
+    "block": {
+      "speakingIntro": "Pagsasanay sa pagsasalita — {{count}} kard",
+      "ready": "Handa na",
+      "loadingModel": "Inihahanda ang mikropono…",
+      "micPrompt": "Ginagamit ng Corpán ang mikropono para markahan ang pagsasalita mo sa device na ito.",
+      "sttUnavailable": "Hindi available ngayon ang pagmamarka ng pagsasalita — lilipat sa pagsasanay sa pakikinig."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} kard na lang ngayon",
+      "plusBody": "Inaalis ng Corpán Plus ang pang-araw-araw na limitasyon sa kard."
+    },
+    "welcomeBack": {
+      "title": "Maligayang pagbabalik",
+      "body": "Napanatili ng mga balik-aral mo ang {{pct}}% ng lakas nito. Mag-warm up tayo."
+    },
+    "tease": {
+      "next": "Sa susunod: {{title}}"
+    },
+    "jump": {
+      "title": "Masyado bang madali?",
+      "body": "Kumuha ng maikling hamon para tumalon pasulong. Kung hindi pumasa, wala kang mawawala — mananatili ka kung nasaan ka.",
+      "accept": "Subukan ang hamon",
+      "decline": "Dito muna ako"
+    },
+    "feed": {
+      "caughtUp": "Tapos ka na sa ngayon",
+      "loading": "Inihahanda ang mga kard mo…",
+      "loadError": "Hindi ma-load ang Journey. Subukan ulit mula sa Home."
+    },
+    "popin": {
+      "pronounceTitle": "Bigkasin ito",
+      "close": "Isara"
+    },
+    "settings": {
+      "title": "Mga opsyon ng Journey",
+      "advanceMode": "Pagsulong",
+      "advanceSwipe": "Mag-swipe para magpatuloy",
+      "advanceAuto": "Awtomatikong magpatuloy",
+      "celebration": "Mga pagdiriwang",
+      "celebrationFull": "Buo",
+      "celebrationReduced": "Pinababa",
+      "celebrationMinimal": "Pinakakaunti",
+      "sounds": "Mga tunog",
+      "soundsOn": "Bukas",
+      "soundsOff": "Sarado",
+      "listeningMode": "Hands-free na pakikinig",
+      "viewPath": "Tingnan ang landas",
+      "redoPlacement": "Suriin ulit ang antas ko"
+    }
   }
 }

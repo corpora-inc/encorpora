@@ -335,6 +335,10 @@
       "surprise": {
         "label": "Şaşırt beni!",
         "desc": "Beni eğlenceli bir yere götür."
+      },
+      "journey": {
+        "label": "Journey'i takip et",
+        "desc": "Rehberli bir kurs — her adımı uygulama seçer"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Öğrendiğin dili sample’la. Aklına kazınana kadar scratch’le."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Rehberli yolun, kart kart"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "Yükleniyor…",
     "installed": "Yüklendi",
     "retry": "Tekrar dene"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Rehberli yolun, kart kart",
+    "heroCard": {
+      "title": "Senin Journey'in",
+      "progress": "{{unit}} · bugünkü hedefe {{count}} kart"
+    },
+    "heroCta": {
+      "start": "Journey'ine başla",
+      "continue": "Devam et"
+    },
+    "chrome": {
+      "home": "Ana sayfa",
+      "menu": "Journey seçenekleri",
+      "unit": "Ünite {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Kontrol et",
+      "continue": "Devam et",
+      "skipHint": "Atlamak için tekrar kaydır",
+      "retry": "Tekrar dene",
+      "showAnswer": "Cevabı göster",
+      "answerWas": "Cevap şuydu",
+      "comeBackNote": "Buna geri döneceğiz.",
+      "whyThisCard": "Neden bu kart?",
+      "whyNew": "Mevcut ünitenden yeni bir öğe.",
+      "whyReview": "Bir tekrar — aralıklar onu güçlü tutar.",
+      "whyRepair": "Zor bir şeye ikinci bir bakış.",
+      "whyGuided": "Rehberli yolunun bir parçası.",
+      "typeWhatYouHear": "Duyduğunu yaz",
+      "typeHere": "Buraya yaz…",
+      "tapToOrder": "Kelimelere sırayla dokun",
+      "matchPairs": "Çiftleri eşleştir",
+      "flipToReveal": "Görmek için dokun",
+      "knewIt": "Biliyordum",
+      "didntKnow": "Henüz değil",
+      "speakNow": "Şimdi konuş",
+      "listen": "Dinle",
+      "listenSlow": "Daha yavaş",
+      "hint": "İpucu",
+      "correct": "Doğru",
+      "incorrect": "Tam değil",
+      "pickTranslation": "Çeviriyi seç",
+      "pickWhatYouHear": "Duyduğunu seç",
+      "fillTheBlank": "Boşluğu doldur",
+      "newItem": "Yeni",
+      "reviewedEarlier": "Daha önce görüldü"
+    },
+    "intro": {
+      "listenAndEcho": "Dinle, sonra yüksek sesle söyle",
+      "newWord": "Yeni kelime",
+      "newPhrase": "Yeni cümle"
+    },
+    "grammar": {
+      "noteLabel": "Dil bilgisi notu",
+      "tryIt": "Dene"
+    },
+    "checkpoint": {
+      "title": "Kontrol noktası",
+      "summary": "{{new}} yeni · {{reviews}} tekrar · en iyi seri {{combo}}",
+      "done": "Bugünlük bu kadar",
+      "keepGoing": "Devam et",
+      "dailyRing": "Bugün {{done}}/{{goal}}",
+      "deepSession": "Ne derin bir oturum — tekrarların zaten planlandı.",
+      "streakTicked": "Gün {{count}} ✓",
+      "boss": "Ünite sınavı",
+      "arcGate": "Yay kapısı"
+    },
+    "celebrate": {
+      "combo": "Üst üste {{count}}",
+      "perfect": "Mükemmel",
+      "wordsLearned": "{{count}} kelime öğrenildi",
+      "unitComplete": "Ünite tamamlandı: {{name}}",
+      "streakDay": "Gün {{count}}",
+      "placementDone": "Seviyen belirlendi"
+    },
+    "rare": {
+      "reveal": "Özel bir şey…",
+      "etymologyGem": "Kelimenin hikâyesi",
+      "timeCapsule": {
+        "title": "Zaman kapsülü",
+        "body": "Bununla {{when}} çok uğraşmıştın — şimdi kendine bak."
+      },
+      "delight": {
+        "newVoice": "Farklı bir ses",
+        "didYouNotice": "Fark ettin mi?"
+      },
+      "miniGame": {
+        "title": "Bonus tur",
+        "play": "Oyna"
+      },
+      "story": {
+        "unlocked": "Bir sonraki bölümü hak ettin",
+        "read": "Oku"
+      }
+    },
+    "placement": {
+      "offerTitle": "Nereden başlayalım?",
+      "offerBody": "Birkaç hızlı soru başlangıç noktanı bulur. Yaklaşık beş dakika.",
+      "startNew": "{{lang}} dilinde yeniyim",
+      "placeMe": "Biraz {{lang}} biliyorum",
+      "skipItem": "Emin değilsen atla",
+      "doneTitle": "Başlangıç noktan bulundu",
+      "doneBody": "{{unit}} ile başlıyoruz.",
+      "prelit": "Zaten bildiğin {{count}} öğeyle başlıyorsun.",
+      "redo": "Seviyemi yeniden ölç",
+      "aboveTitle": "Bu kursun ötesindesin",
+      "aboveBody": "Bu kurs şimdilik başlangıç seviyesini kapsıyor ve sen onun üzerindesin. Yine de keşfedebilirsin — yeni seviyeler yolda."
+    },
+    "path": {
+      "title": "Yolun",
+      "arc": "Yay {{name}}",
+      "unit": "Ünite {{n}}",
+      "locked": "İleride",
+      "current": "Buradasın",
+      "review": "Tekrar için dokun",
+      "mastered": "Sağlam"
+    },
+    "streak": {
+      "pactTitle": "Seri tutalım mı?",
+      "pactBody": "Günde bir kart onu canlı tutar. Bir gün kaçırırsan bir dinlenme günü seni kurtarabilir — her hafta bir tane kazanırsın.",
+      "pactAccept": "Ben varım",
+      "pactDecline": "Hayır, teşekkürler",
+      "days": "{{count}} gün",
+      "restDayEarned": "Dinlenme günü kazanıldı",
+      "restDayUsed": "{{day}} dinlenme günüydü",
+      "repairTitle": "Serini geri kazan",
+      "repairBody": "Önümüzdeki {{days}} gün içinde iki oturum tamamla ve {{count}} günlük serini geri getir.",
+      "repairCta": "Başla"
+    },
+    "block": {
+      "speakingIntro": "Konuşma pratiği — {{count}} kart",
+      "ready": "Hazır",
+      "loadingModel": "Mikrofon ısınıyor…",
+      "micPrompt": "Corpán, konuşmanı bu cihazda puanlamak için mikrofonu kullanır.",
+      "sttUnavailable": "Konuşma puanlama şu anda kullanılamıyor — dinleme pratiğine geçiyoruz."
+    },
+    "quota": {
+      "cardsLeft": "Bugün {{count}} kart kaldı",
+      "plusBody": "Corpán Plus günlük kart sınırını kaldırır."
+    },
+    "welcomeBack": {
+      "title": "Tekrar hoş geldin",
+      "body": "Tekrarların gücünün %{{pct}} kadarını korudu. Isınalım."
+    },
+    "tease": {
+      "next": "Bir dahaki sefere: {{title}}"
+    },
+    "jump": {
+      "title": "Fazla mı kolay geliyor?",
+      "body": "İleri atlamak için kısa bir sınav dene. Başaramazsan hiçbir şey kaybetmezsin — tam olduğun yerde kalırsın.",
+      "accept": "Sınavı dene",
+      "decline": "Burada kalayım"
+    },
+    "feed": {
+      "caughtUp": "Şimdilik günceldesin",
+      "loading": "Kartların hazırlanıyor…",
+      "loadError": "Journey yüklenemedi. Ana sayfadan tekrar dene."
+    },
+    "popin": {
+      "pronounceTitle": "Telaffuz et",
+      "close": "Kapat"
+    },
+    "settings": {
+      "title": "Journey seçenekleri",
+      "advanceMode": "İlerleme",
+      "advanceSwipe": "Devam etmek için kaydır",
+      "advanceAuto": "Otomatik devam",
+      "celebration": "Kutlamalar",
+      "celebrationFull": "Tam",
+      "celebrationReduced": "Azaltılmış",
+      "celebrationMinimal": "En az",
+      "sounds": "Sesler",
+      "soundsOn": "Açık",
+      "soundsOff": "Kapalı",
+      "listeningMode": "Eller serbest dinleme",
+      "viewPath": "Yolu gör",
+      "redoPlacement": "Seviyemi yeniden ölç"
+    }
   }
 }

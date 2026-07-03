@@ -31,6 +31,33 @@ Conventions: `corpan/CHANGELOGS.md`.
   index — TTL 300 s); `createOfflineCacheHostApi` defines the additive
   `hostApi.offlineCache` seam (W10 wires it into types.ts/hostApi.ts).
   Rust: `offline_cache_{put,delete,list}` registered in `lib.rs`.
+- **Journey W4 — the feed surface** (`docs/journey/specs/feed-ux.md`,
+  R5/R8/R12/R14/R15 applied). `src/journey/`: `JourneySurface` (z-1050
+  overlay sibling, dark/light + RTL, placement-first mount, PathViz overlay,
+  `corpan:journey-exit`), `FeedScroller` (3-slot window, framer-motion drag,
+  read-only scroll-back over a 20-card ring, double-swipe skip semantics,
+  listening-run hands-free pill, per-card-type advance rules), the TEN native
+  renderers (registry-driven off `ACTIVITY_TYPES`; params/distractors from
+  the W5 resolver's typed builders; one-tokenizer rule; `speak_echo` mounts
+  `@shared/capabilities/pronounce` with `startPaused` + the R3 stt envelope
+  incl. `flags.sttUnavailable` listen_type degradation), host-owned
+  `CelebrationLayer` (4 juice tiers, intensity setting, reduced-motion-aware
+  canvas particles, pentatonic chimes that never talk over TTS),
+  `CheckpointCard` (equal-weight stop/continue, daily ring, deep-session
+  line, quota counter) + boss/arc-gate banners + `WelcomeBackCard` +
+  `BlockIntroCard` (the ONLY runtime-synthesized card, R5), `RareCard`
+  shimmer wrapper with delight/etymology-gem/time-capsule/pack-poster faces,
+  `PlacementFlow` (≤3 framing screens, probe mode, honest R10 above-content
+  copy, streak pact card), PathViz P0 arc→unit ribbon, streak v2 (rest-day
+  tokens, repair-by-learning, milestones; `corpan-journey-v1` store),
+  `runtime.ts` (engine+resolver+activitySession wiring, EngineCard→FeedCard
+  1:1 mapping, THE one R12 quota-debit site: completed debuts + pack-anchor
+  launches only), capability registry + `CapabilityPopIn`/`usePhrasePopIn`,
+  and local-analytics session/card-impression/activity-result events.
+  All ~124 journey UI keys shipped in all 54 locales. Tests: runtime/streak/
+  advance-rule units + a headless jsdom smoke test driving a full
+  JourneySurface session (>= 10 cards) over the W6 fixture pack through the
+  real engine + resolver.
 - **Journey W3 — adaptive engine + simulation harness**
   (`docs/journey/specs/engine.md`). Pure-TS adaptive core at
   `src/journey/engine/`: ts-fsrs 5.4.1 (FSRS-6, config verbatim, deterministic

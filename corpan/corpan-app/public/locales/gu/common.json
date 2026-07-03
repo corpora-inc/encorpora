@@ -335,6 +335,10 @@
       "surprise": {
         "label": "મને આશ્ચર્ય આપો!",
         "desc": "મને ક્યાંક મજાની જગ્યાએ લઈ જાઓ."
+      },
+      "journey": {
+        "label": "Journeyને અનુસરો",
+        "desc": "માર્ગદર્શિત કોર્સ — ઍપ દરેક આગલું પગલું પસંદ કરે છે"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "જે ભાષા શીખી રહ્યા છો, તેને સેમ્પલ કરો. ચોંટી જાય ત્યાં સુધી સ્ક્રેચ કરો."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "તમારો માર્ગદર્શિત રસ્તો, કાર્ડ પછી કાર્ડ"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "ઇન્સ્ટૉલ થઈ રહ્યું છે…",
     "installed": "ઇન્સ્ટૉલ થયું",
     "retry": "ફરી પ્રયાસ કરો"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "તમારો માર્ગદર્શિત રસ્તો, કાર્ડ પછી કાર્ડ",
+    "heroCard": {
+      "title": "તમારો Journey",
+      "progress": "{{unit}} · આજના લક્ષ્ય સુધી {{count}} કાર્ડ"
+    },
+    "heroCta": {
+      "start": "તમારો Journey શરૂ કરો",
+      "continue": "ચાલુ રાખો"
+    },
+    "chrome": {
+      "home": "હોમ",
+      "menu": "Journey વિકલ્પો",
+      "unit": "એકમ {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "તપાસો",
+      "continue": "ચાલુ રાખો",
+      "skipHint": "છોડવા માટે ફરી સ્વાઇપ કરો",
+      "retry": "ફરી પ્રયત્ન કરો",
+      "showAnswer": "જવાબ બતાવો",
+      "answerWas": "જવાબ હતો",
+      "comeBackNote": "આપણે આ પર પાછા આવીશું.",
+      "whyThisCard": "આ કાર્ડ કેમ?",
+      "whyNew": "તમારા વર્તમાન એકમમાંથી કંઈક નવું.",
+      "whyReview": "પુનરાવર્તન — અંતરાલ તેને મજબૂત રાખે છે.",
+      "whyRepair": "કઠિન બાબત પર બીજી નજર.",
+      "whyGuided": "તમારા માર્ગદર્શિત રસ્તાનો ભાગ.",
+      "typeWhatYouHear": "જે સાંભળો તે લખો",
+      "typeHere": "અહીં લખો…",
+      "tapToOrder": "શબ્દોને ક્રમમાં સ્પર્શ કરો",
+      "matchPairs": "જોડી મેળવો",
+      "flipToReveal": "જોવા માટે સ્પર્શ કરો",
+      "knewIt": "મને ખબર હતી",
+      "didntKnow": "હજી નહીં",
+      "speakNow": "હવે બોલો",
+      "listen": "સાંભળો",
+      "listenSlow": "ધીમે",
+      "hint": "સંકેત",
+      "correct": "સાચું",
+      "incorrect": "પૂરું નહીં",
+      "pickTranslation": "અનુવાદ પસંદ કરો",
+      "pickWhatYouHear": "જે સાંભળ્યું તે પસંદ કરો",
+      "fillTheBlank": "ખાલી જગ્યા ભરો",
+      "newItem": "નવું",
+      "reviewedEarlier": "પહેલાં જોયેલું"
+    },
+    "intro": {
+      "listenAndEcho": "સાંભળો, પછી મોટેથી બોલો",
+      "newWord": "નવો શબ્દ",
+      "newPhrase": "નવું વાક્ય"
+    },
+    "grammar": {
+      "noteLabel": "વ્યાકરણ નોંધ",
+      "tryIt": "અજમાવો"
+    },
+    "checkpoint": {
+      "title": "ચેકપોઇન્ટ",
+      "summary": "{{new}} નવા · {{reviews}} પુનરાવર્તનો · શ્રેષ્ઠ શ્રેણી {{combo}}",
+      "done": "આજ માટે બસ",
+      "keepGoing": "આગળ વધો",
+      "dailyRing": "આજે {{done}}/{{goal}}",
+      "deepSession": "કેટલું ઊંડું સત્ર — તમારાં પુનરાવર્તનો ગમે તેમ નિર્ધારિત છે.",
+      "streakTicked": "દિવસ {{count}} ✓",
+      "boss": "એકમ પડકાર",
+      "arcGate": "કમાન દ્વાર"
+    },
+    "celebrate": {
+      "combo": "સળંગ {{count}}",
+      "perfect": "શાનદાર",
+      "wordsLearned": "{{count}} શબ્દો શીખ્યા",
+      "unitComplete": "એકમ પૂર્ણ: {{name}}",
+      "streakDay": "દિવસ {{count}}",
+      "placementDone": "સ્તર નક્કી થયું"
+    },
+    "rare": {
+      "reveal": "કંઈક ખાસ…",
+      "etymologyGem": "શબ્દની વાર્તા",
+      "timeCapsule": {
+        "title": "ટાઇમ કૅપ્સ્યુલ",
+        "body": "તમે આના પર {{when}} ખૂબ મહેનત કરી — હવે તમારી જાતને જુઓ."
+      },
+      "delight": {
+        "newVoice": "એક અલગ અવાજ",
+        "didYouNotice": "શું તમે નોંધ્યું?"
+      },
+      "miniGame": {
+        "title": "બોનસ રાઉન્ડ",
+        "play": "રમો"
+      },
+      "story": {
+        "unlocked": "તમે આગલો અધ્યાય કમાયો",
+        "read": "વાંચો"
+      }
+    },
+    "placement": {
+      "offerTitle": "ક્યાંથી શરૂ કરીએ?",
+      "offerBody": "થોડા ઝડપી પ્રશ્નો તમારો પ્રારંભબિંદુ શોધી કાઢે છે. લગભગ પાંચ મિનિટ.",
+      "startNew": "હું {{lang}}માં નવો છું",
+      "placeMe": "મને થોડું {{lang}} આવડે છે",
+      "skipItem": "ખાતરી ન હોય તો છોડો",
+      "doneTitle": "પ્રારંભબિંદુ મળી ગયો",
+      "doneBody": "{{unit}}થી શરૂઆત.",
+      "prelit": "તમે {{count}} પહેલેથી જાણીતી બાબતો સાથે શરૂ કરો છો.",
+      "redo": "મારું સ્તર ફરી તપાસો",
+      "aboveTitle": "તમે આ કોર્સથી આગળ છો",
+      "aboveBody": "આ કોર્સ હાલમાં શરૂઆતી સામગ્રી આવરી લે છે અને તમે તેનાથી ઉપર છો. છતાં તમે તેને જોઈ શકો છો — નવાં સ્તરો આવી રહ્યાં છે."
+    },
+    "path": {
+      "title": "તમારો રસ્તો",
+      "arc": "કમાન {{name}}",
+      "unit": "એકમ {{n}}",
+      "locked": "આગળ",
+      "current": "તમે અહીં છો",
+      "review": "પુનરાવર્તન માટે સ્પર્શ કરો",
+      "mastered": "મજબૂત"
+    },
+    "streak": {
+      "pactTitle": "શ્રેણી રાખીએ?",
+      "pactBody": "રોજ એક કાર્ડ તેને જીવંત રાખે છે. એક દિવસ ચૂકી જાઓ તો આરામનો દિવસ બચાવી શકે — દર અઠવાડિયે એક મળે છે.",
+      "pactAccept": "હું તૈયાર છું",
+      "pactDecline": "ના, આભાર",
+      "days": "{{count}} દિવસ",
+      "restDayEarned": "આરામનો દિવસ કમાયો",
+      "restDayUsed": "{{day}} આરામનો દિવસ હતો",
+      "repairTitle": "તમારી શ્રેણી પાછી મેળવો",
+      "repairBody": "આગામી {{days}} દિવસમાં બે સત્રો પૂરાં કરો અને તમારી {{count}} દિવસની શ્રેણી પાછી મેળવો.",
+      "repairCta": "શરૂ કરો"
+    },
+    "block": {
+      "speakingIntro": "બોલવાની પ્રૅક્ટિસ — {{count}} કાર્ડ",
+      "ready": "તૈયાર",
+      "loadingModel": "માઇક્રોફોન તૈયાર થઈ રહ્યો છે…",
+      "micPrompt": "Corpán આ ડિવાઇસ પર તમારી બોલી ચકાસવા માઇક્રોફોન વાપરે છે.",
+      "sttUnavailable": "બોલી મૂલ્યાંકન અત્યારે ઉપલબ્ધ નથી — સાંભળવાની પ્રૅક્ટિસ પર જઈએ છીએ."
+    },
+    "quota": {
+      "cardsLeft": "આજે {{count}} કાર્ડ બાકી",
+      "plusBody": "Corpán Plus દૈનિક કાર્ડ મર્યાદા દૂર કરે છે."
+    },
+    "welcomeBack": {
+      "title": "પાછા સ્વાગત છે",
+      "body": "તમારાં પુનરાવર્તનોએ {{pct}}% તાકાત જાળવી. ચાલો વોર્મ-અપ કરીએ."
+    },
+    "tease": {
+      "next": "આગલી વખતે: {{title}}"
+    },
+    "jump": {
+      "title": "શું બહુ સહેલું લાગે છે?",
+      "body": "આગળ કૂદવા ટૂંકો પડકાર લો. નિષ્ફળ જાઓ તો કંઈ ગુમાવતા નથી — જ્યાં છો ત્યાં જ રહો છો.",
+      "accept": "પડકાર અજમાવો",
+      "decline": "અહીં જ રહીશ"
+    },
+    "feed": {
+      "caughtUp": "હાલ પૂરતું બધું થઈ ગયું",
+      "loading": "તમારાં કાર્ડ તૈયાર થઈ રહ્યાં છે…",
+      "loadError": "Journey લોડ થઈ શક્યો નહીં. હોમથી ફરી પ્રયત્ન કરો."
+    },
+    "popin": {
+      "pronounceTitle": "તેનો ઉચ્ચાર કરો",
+      "close": "બંધ કરો"
+    },
+    "settings": {
+      "title": "Journey વિકલ્પો",
+      "advanceMode": "આગળ વધવું",
+      "advanceSwipe": "ચાલુ રાખવા સ્વાઇપ",
+      "advanceAuto": "આપોઆપ ચાલુ રાખો",
+      "celebration": "ઉજવણીઓ",
+      "celebrationFull": "પૂર્ણ",
+      "celebrationReduced": "ઘટાડેલી",
+      "celebrationMinimal": "ન્યૂનતમ",
+      "sounds": "અવાજો",
+      "soundsOn": "ચાલુ",
+      "soundsOff": "બંધ",
+      "listeningMode": "હૅન્ડ્સ-ફ્રી સાંભળવું",
+      "viewPath": "રસ્તો જુઓ",
+      "redoPlacement": "મારું સ્તર ફરી તપાસો"
+    }
   }
 }

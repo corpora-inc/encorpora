@@ -335,6 +335,10 @@
       "surprise": {
         "label": "Gây bất ngờ cho tôi!",
         "desc": "Đưa tôi đến một nơi thật vui."
+      },
+      "journey": {
+        "label": "Theo Journey",
+        "desc": "Một khóa học có dẫn lối — ứng dụng chọn từng bước tiếp theo"
       }
     }
   },
@@ -748,6 +752,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample ngôn ngữ bạn đang học. Scratch đến khi nhớ nằm lòng."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Con đường có dẫn lối của bạn, từng thẻ một"
     }
   },
   "home": {
@@ -852,5 +860,185 @@
     "installing": "Đang cài đặt…",
     "installed": "Đã cài đặt",
     "retry": "Thử lại"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Con đường có dẫn lối của bạn, từng thẻ một",
+    "heroCard": {
+      "title": "Journey của bạn",
+      "progress": "{{unit}} · còn {{count}} thẻ đến mục tiêu hôm nay"
+    },
+    "heroCta": {
+      "start": "Bắt đầu Journey của bạn",
+      "continue": "Tiếp tục"
+    },
+    "chrome": {
+      "home": "Trang chủ",
+      "menu": "Tùy chọn Journey",
+      "unit": "Bài {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Kiểm tra",
+      "continue": "Tiếp tục",
+      "skipHint": "Vuốt lần nữa để bỏ qua",
+      "retry": "Thử lại",
+      "showAnswer": "Hiện đáp án",
+      "answerWas": "Đáp án là",
+      "comeBackNote": "Chúng ta sẽ quay lại phần này.",
+      "whyThisCard": "Vì sao có thẻ này?",
+      "whyNew": "Một mục mới từ bài hiện tại của bạn.",
+      "whyReview": "Một lần ôn — giãn cách giúp nó vững chắc.",
+      "whyRepair": "Nhìn lại một điều từng khó.",
+      "whyGuided": "Một phần con đường có dẫn lối của bạn.",
+      "typeWhatYouHear": "Gõ điều bạn nghe được",
+      "typeHere": "Gõ vào đây…",
+      "tapToOrder": "Chạm các từ theo thứ tự",
+      "matchPairs": "Ghép các cặp",
+      "flipToReveal": "Chạm để lật xem",
+      "knewIt": "Tôi biết rồi",
+      "didntKnow": "Chưa biết",
+      "speakNow": "Nói ngay",
+      "listen": "Nghe",
+      "listenSlow": "Chậm hơn",
+      "hint": "Gợi ý",
+      "correct": "Đúng",
+      "incorrect": "Chưa đúng lắm",
+      "pickTranslation": "Chọn bản dịch",
+      "pickWhatYouHear": "Chọn điều bạn đã nghe",
+      "fillTheBlank": "Điền vào chỗ trống",
+      "newItem": "Mới",
+      "reviewedEarlier": "Đã xem trước đó"
+    },
+    "intro": {
+      "listenAndEcho": "Nghe rồi nói to theo",
+      "newWord": "Từ mới",
+      "newPhrase": "Cụm từ mới"
+    },
+    "grammar": {
+      "noteLabel": "Ghi chú ngữ pháp",
+      "tryIt": "Thử xem"
+    },
+    "checkpoint": {
+      "title": "Điểm dừng",
+      "summary": "{{new}} mới · {{reviews}} lần ôn · chuỗi tốt nhất {{combo}}",
+      "done": "Hôm nay vậy là đủ",
+      "keepGoing": "Tiếp tục",
+      "dailyRing": "Hôm nay {{done}}/{{goal}}",
+      "deepSession": "Một buổi học thật sâu — các lần ôn của bạn dù sao cũng đã được lên lịch.",
+      "streakTicked": "Ngày {{count}} ✓",
+      "boss": "Thử thách bài học",
+      "arcGate": "Cổng cung"
+    },
+    "celebrate": {
+      "combo": "{{count}} liên tiếp",
+      "perfect": "Hoàn hảo",
+      "wordsLearned": "Đã học {{count}} từ",
+      "unitComplete": "Hoàn thành bài: {{name}}",
+      "streakDay": "Ngày {{count}}",
+      "placementDone": "Đã xác định trình độ"
+    },
+    "rare": {
+      "reveal": "Điều gì đó đặc biệt…",
+      "etymologyGem": "Câu chuyện của từ",
+      "timeCapsule": {
+        "title": "Hộp thời gian",
+        "body": "Bạn từng vất vả với điều này {{when}} — giờ hãy nhìn bạn xem."
+      },
+      "delight": {
+        "newVoice": "Một giọng nói khác",
+        "didYouNotice": "Bạn có nhận ra không?"
+      },
+      "miniGame": {
+        "title": "Vòng thưởng",
+        "play": "Chơi"
+      },
+      "story": {
+        "unlocked": "Bạn đã giành được chương tiếp theo",
+        "read": "Đọc ngay"
+      }
+    },
+    "placement": {
+      "offerTitle": "Bắt đầu từ đâu nhỉ?",
+      "offerBody": "Vài câu hỏi nhanh sẽ tìm điểm khởi đầu của bạn. Khoảng năm phút.",
+      "startNew": "Tôi mới học {{lang}}",
+      "placeMe": "Tôi biết chút ít {{lang}}",
+      "skipItem": "Không chắc thì bỏ qua",
+      "doneTitle": "Đã tìm thấy điểm khởi đầu",
+      "doneBody": "Bắt đầu từ {{unit}}.",
+      "prelit": "Bạn bắt đầu với {{count}} mục đã biết sẵn.",
+      "redo": "Kiểm tra lại trình độ của tôi",
+      "aboveTitle": "Bạn đã vượt quá khóa học này",
+      "aboveBody": "Khóa học này hiện bao quát nội dung cho người mới bắt đầu, và bạn đang ở trên mức đó. Bạn vẫn có thể khám phá — các cấp độ mới đang được xây dựng."
+    },
+    "path": {
+      "title": "Con đường của bạn",
+      "arc": "Cung {{name}}",
+      "unit": "Bài {{n}}",
+      "locked": "Phía trước",
+      "current": "Bạn đang ở đây",
+      "review": "Chạm để ôn lại",
+      "mastered": "Vững"
+    },
+    "streak": {
+      "pactTitle": "Giữ một chuỗi ngày nhé?",
+      "pactBody": "Mỗi ngày một thẻ giữ nó sống. Lỡ một ngày, một ngày nghỉ có thể che chở bạn — mỗi tuần bạn kiếm được một ngày.",
+      "pactAccept": "Tôi tham gia",
+      "pactDecline": "Không, cảm ơn",
+      "days": "{{count}} ngày",
+      "restDayEarned": "Đã nhận ngày nghỉ",
+      "restDayUsed": "{{day}} là ngày nghỉ",
+      "repairTitle": "Lấy lại chuỗi ngày của bạn",
+      "repairBody": "Hoàn thành hai buổi học trong {{days}} ngày tới để khôi phục chuỗi {{count}} ngày của bạn.",
+      "repairCta": "Bắt đầu"
+    },
+    "block": {
+      "speakingIntro": "Luyện nói — {{count}} thẻ",
+      "ready": "Sẵn sàng",
+      "loadingModel": "Đang khởi động micrô…",
+      "micPrompt": "Corpán dùng micrô để chấm điểm phần nói của bạn ngay trên thiết bị này.",
+      "sttUnavailable": "Chấm điểm giọng nói hiện không khả dụng — chuyển sang luyện nghe."
+    },
+    "quota": {
+      "cardsLeft": "Hôm nay còn {{count}} thẻ",
+      "plusBody": "Corpán Plus gỡ bỏ giới hạn thẻ hằng ngày."
+    },
+    "welcomeBack": {
+      "title": "Chào mừng trở lại",
+      "body": "Các lần ôn của bạn giữ được {{pct}}% sức mạnh. Khởi động nào."
+    },
+    "tease": {
+      "next": "Lần tới: {{title}}"
+    },
+    "jump": {
+      "title": "Thấy quá dễ à?",
+      "body": "Thử một thử thách ngắn để nhảy lên trước. Nếu trượt cũng chẳng mất gì — bạn vẫn ở nguyên chỗ cũ.",
+      "accept": "Thử thách nào",
+      "decline": "Ở lại đây"
+    },
+    "feed": {
+      "caughtUp": "Hiện tại bạn đã học hết",
+      "loading": "Đang chuẩn bị thẻ của bạn…",
+      "loadError": "Không tải được Journey. Thử lại từ Trang chủ."
+    },
+    "popin": {
+      "pronounceTitle": "Phát âm thử",
+      "close": "Đóng"
+    },
+    "settings": {
+      "title": "Tùy chọn Journey",
+      "advanceMode": "Chuyển tiếp",
+      "advanceSwipe": "Vuốt để tiếp tục",
+      "advanceAuto": "Tự động tiếp tục",
+      "celebration": "Ăn mừng",
+      "celebrationFull": "Đầy đủ",
+      "celebrationReduced": "Giảm bớt",
+      "celebrationMinimal": "Tối giản",
+      "sounds": "Âm thanh",
+      "soundsOn": "Bật",
+      "soundsOff": "Tắt",
+      "listeningMode": "Nghe rảnh tay",
+      "viewPath": "Xem con đường",
+      "redoPlacement": "Kiểm tra lại trình độ của tôi"
+    }
   }
 }
