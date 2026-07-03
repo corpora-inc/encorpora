@@ -34,10 +34,17 @@ export type Draft = {
   /** The single-choice final question ("Where should we begin?") — makes the
    *  DETERMINISTIC landing call (see resolveLanding). Interests still feed the
    *  broader Home "For you" recommendations. */
-  whatToStart?: "read" | "study" | "playMusic" | "playGames" | "surprise"
+  whatToStart?: "read" | "study" | "playMusic" | "playGames" | "surprise" | "journey"
   /** Set by the finish screen's "Explore on my own" escape — suppresses the
    *  best-fit auto-launch so the user lands on Home / the guided tour instead. */
   skipAutoLaunch?: boolean
+  /** Journey opt-in (W10): the learner path's guided-daily-path question.
+   *  True ⇒ commit lands the user in the Journey feed. */
+  journeyOptIn?: boolean
+  /** The onboarding placement-offer answer: "zero-beginner" pre-declines the
+   *  in-surface probe offer (start at unit 1); "probe" leaves it to the
+   *  surface's PlacementFlow (real probe cards need the live engine). */
+  journeyPlacement?: "zero-beginner" | "probe"
 }
 
 /** Context handed to every node callback. */

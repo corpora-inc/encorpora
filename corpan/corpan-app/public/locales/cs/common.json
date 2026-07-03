@@ -340,6 +340,18 @@
         "label": "Následuj Journey",
         "desc": "Vedený kurz — aplikace volí každý další krok"
       }
+    },
+    "journey": {
+      "title": "Chcete vedenou cestu?",
+      "subtitle": "Journey vám každý den nabídne mix nového materiálu a opakování v {{lang}} — kartu po kartě.",
+      "guided": {
+        "label": "Začít Journey",
+        "desc": "Vedená denní lekce, která se vám přizpůsobí"
+      },
+      "explore": {
+        "label": "Budu objevovat po svém",
+        "desc": "Journey můžete kdykoli začít z obrazovky Domů"
+      }
     }
   },
   "socials": {

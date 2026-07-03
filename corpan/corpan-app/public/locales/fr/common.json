@@ -340,6 +340,18 @@
         "label": "Suivre le Journey",
         "desc": "Un cours guidé — l'appli choisit chaque étape"
       }
+    },
+    "journey": {
+      "title": "Envie d'un parcours guidé ?",
+      "subtitle": "Le Journey propose chaque jour un mélange de nouveautés et de révisions en {{lang}} — carte après carte.",
+      "guided": {
+        "label": "Commencer le Journey",
+        "desc": "Une session quotidienne guidée qui s'adapte à vous"
+      },
+      "explore": {
+        "label": "Je préfère explorer par moi-même",
+        "desc": "Vous pouvez lancer le Journey à tout moment depuis l'Accueil"
+      }
     }
   },
   "socials": {

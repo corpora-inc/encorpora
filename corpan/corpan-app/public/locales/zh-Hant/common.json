@@ -340,6 +340,18 @@
         "label": "跟隨 Journey",
         "desc": "一門引導式課程——每一步都由應用為你挑選"
       }
+    },
+    "journey": {
+      "title": "想要一條引導之路嗎？",
+      "subtitle": "Journey 每天以 {{lang}} 提供新內容與複習的組合 — 一次一張卡。",
+      "guided": {
+        "label": "開始 Journey",
+        "desc": "一個適應您的引導式每日學習"
+      },
+      "explore": {
+        "label": "我要自己探索",
+        "desc": "您可以隨時從首頁開始 Journey"
+      }
     }
   },
   "socials": {

@@ -340,6 +340,18 @@
         "label": "Journey をたどる",
         "desc": "ガイド付きコース — 次の一歩はアプリが選びます"
       }
+    },
+    "journey": {
+      "title": "ガイド付きの道はいかがですか？",
+      "subtitle": "Journey は{{lang}}の新しい内容と復習を毎日ミックスして、1枚ずつお届けします。",
+      "guided": {
+        "label": "Journey を始める",
+        "desc": "あなたに合わせて調整される毎日のガイド付きセッション"
+      },
+      "explore": {
+        "label": "自分で探索する",
+        "desc": "Journey はホームからいつでも始められます"
+      }
     }
   },
   "socials": {

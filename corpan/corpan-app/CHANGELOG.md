@@ -8,6 +8,26 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey W10 — the Journey is live in the app.** `App.tsx` mounts the
+  guided feed as a full-screen sibling overlay of HomeHub (the activeGame
+  state-machine pattern; the pack overlay stacks above the still-mounted
+  feed, exit rides `corpan:journey-exit`). `buildJourneyDeps`
+  (runtimeWiring.ts) assembles the production runtime: JIT course-pack
+  install from the journey index, the normative CourseGraph loader
+  (targetLang from `pack_meta.target_lang`), the real engine over the shared
+  local-analytics persistence, resolver over a live HostApi, the
+  `journey_daily` gate, `localAnalyticsRecord` (the one `activity_result`
+  writer), the single-owner activity session, STT probes off the whisper
+  plugin (`stt.isAvailable`/`prepare`, fail-closed — speak_echo degrades to
+  listen_type as before), and streak-v2 book-day providers (progress.ts
+  `lastOpenedAt` → journey `YYYY-MM-DD` days; the two date formats are
+  reconciled in the provider). HomeHub gains the flagship Journey hero card
+  (existing `journey.*` locale keys; shown only when a course pack is
+  installed or published for the user's target). Onboarding gains the
+  journey opt-in + placement-offer nodes (data-driven; "I'm new" pre-declines
+  the in-surface probe offer) and a "Follow the Journey" option on the final
+  landing question; `LandingIntent` gains `{ kind: "journey" }`. New
+  `onboarding.journey.*` copy ships in all 54 locales.
 - **Journey W10 — `journey_daily` quota row** (feed-ux §7, R12). The shared
   monetization registry (`packs/shared/monetization/src/quotas.ts`) gains the
   journey gate: packId `corpan_app`, dailyLimit 60 (a provisional default

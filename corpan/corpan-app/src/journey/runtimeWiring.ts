@@ -11,11 +11,33 @@
 // so the headless smoke test never loads it.
 
 import type { HostApi } from "../contentPacks/types"
-import { recordLocal, type LocalEventPayload } from "../lib/localAnalytics"
+import { recordLocal, createJourneyPersistence, type LocalEventPayload } from "../lib/localAnalytics"
 import { getInstalledManifestUrl } from "../contentPacks/native"
 import { beginActivitySession, endActivitySession } from "../contentPacks/activitySchemas"
-import type { ResolveContext, ResolverDeps } from "./content/resolve.ts"
-import type { ActivitySessionPort, RecordFn } from "./runtime.ts"
+import { createHostApi } from "../contentPacks/hostApi"
+import {
+  fetchJourneyPackCatalog,
+  findJourneyPackForTarget,
+  visibleJourneyPacks,
+} from "../contentPacks/journeyPackCatalog"
+import { getAppVersion } from "../lib/appVersion"
+import { useCatalogStore } from "../store/catalog"
+import { useEntitlementStore } from "../store/entitlements"
+import { useJourneyPacksStore } from "../store/journeyPacks"
+import { useProgressStore } from "../store/progress"
+import {
+  installJourneyPack,
+  isJourneyPackInstalled,
+  loadCourseGraphFromPack,
+  readJourneyPackMeta,
+} from "../util/journeyPack"
+import type { CapabilityHostApi } from "@shared/capabilities/core"
+import { createJourneyEngine, itemCardCodec, systemClock } from "./engine/index.ts"
+import { createResolver, type ResolveContext, type ResolverDeps } from "./content/resolve.ts"
+import { createJourneyQuota } from "./quota.ts"
+import { courseKeyOf, localDayOf } from "../store/journey.ts"
+import type { StreakPorts } from "./streakV2.ts"
+import type { ActivitySessionPort, JourneyRuntimeDeps, RecordFn } from "./runtime.ts"
 
 /** The real single-owner activity session (activity-contract §3.2, R8). */
 export const activitySessionPort: ActivitySessionPort = {
@@ -107,4 +129,181 @@ export function makeResolveContext(
   nativeLang?: string,
 ): ResolveContext {
   return nativeLang ? { courseId, targetLang, nativeLang } : { courseId, targetLang }
+}
+
+// ---------------------------------------------------------- streak ports (§1.8)
+
+/** Streak v2 extra "showed up" day sources (feed-ux §1.8, W10 item 13): book
+ *  days from store/progress.ts. Formats are reconciled HERE — progress.ts's
+ *  own `localDate` is unpadded AND 0-based-month ("2026-6-3"), so we convert
+ *  each `lastOpenedAt` ISO stamp straight to the journey's `YYYY-MM-DD`
+ *  localDay convention instead of consuming progress's day strings. */
+export function journeyStreakPorts(): StreakPorts {
+  return {
+    extraDayProviders: [
+      () =>
+        Object.values(useProgressStore.getState().byKey).map((p) =>
+          localDayOf(new Date(p.lastOpenedAt)),
+        ),
+    ],
+  }
+}
+
+// ------------------------------------------------------ capability host slice
+
+/** Adapt the real HostApi to the capability-modules host slice. Structural
+ *  except queryPackDb, whose row shape differs (records vs positional). */
+export function capabilityHostFromHostApi(hostApi: HostApi): CapabilityHostApi {
+  return {
+    speak: (uiCode, text) => hostApi.speak(uiCode, text),
+    getStackConfig: () => hostApi.getStackConfig(),
+    ...(hostApi.stopSpeech ? { stopSpeech: hostApi.stopSpeech } : {}),
+    ...(hostApi.stt ? { stt: hostApi.stt as unknown as CapabilityHostApi["stt"] } : {}),
+    ...(hostApi.queryPackDb
+      ? {
+          queryPackDb: async (q: {
+            sql: string
+            params?: unknown[]
+            dbName?: string
+            packId?: string
+            maxRows?: number
+          }) => {
+            const out = await hostApi.queryPackDb!(q)
+            return {
+              columns: out.columns,
+              rows: out.rows.map((row) => out.columns.map((c) => row[c])),
+            }
+          },
+        }
+      : {}),
+    ...(hostApi.entitlement
+      ? { entitlement: { isSubscribed: hostApi.entitlement.isSubscribed } }
+      : {}),
+  }
+}
+
+// ------------------------------------------------- production deps (W10 item 8)
+
+export interface BuiltJourney {
+  deps: JourneyRuntimeDeps
+  hostApi: HostApi
+  capabilityHost: CapabilityHostApi
+  /** Authoritative target language (pack_meta.target_lang casing). */
+  targetLang: string
+  packId: string
+}
+
+/** Ensure the course pack for `targetLang` is installed; returns its pack id.
+ *  Resolution order: installed registry → disk probe → catalog install. */
+async function ensureJourneyPackInstalled(targetLang: string): Promise<string> {
+  const derived = journeyCourseIdFor(targetLang)
+  const registry = useJourneyPacksStore.getState()
+  const registered = registry
+    .list()
+    .find((p) => p.targetLang.toLowerCase() === targetLang.toLowerCase())
+  if (registered && (await isJourneyPackInstalled(registered.id))) return registered.id
+  if (await isJourneyPackInstalled(derived)) return derived
+
+  const catalog = await fetchJourneyPackCatalog()
+  if (!catalog) throw new Error(`[journey] no course pack installed for ${targetLang} and the index is unreachable`)
+  const appVersion = await getAppVersion()
+  const devMode = useCatalogStore.getState().devMode
+  const entry = findJourneyPackForTarget(
+    visibleJourneyPacks(catalog, appVersion, devMode),
+    targetLang,
+  )
+  if (!entry) throw new Error(`[journey] no course pack available for ${targetLang}`)
+  await installJourneyPack(entry.id, entry.zipUrl, entry.sha256 ?? null)
+  // Register the install (phrasePacks pattern) so cold-start renders offline.
+  const meta = await readJourneyPackMeta(entry.id)
+  useJourneyPacksStore.getState().register({
+    id: entry.id,
+    targetLang: meta?.targetLang ?? entry.targetLang,
+    version: meta?.contentVersion ?? entry.version,
+    schemaVersion: meta?.schemaVersion ?? entry.schemaVersion,
+    name: entry.name,
+    nameLocalized: entry.nameLocalized,
+    unitCount: meta?.unitCount ?? 0,
+    itemCount: meta?.itemCount ?? 0,
+    installedAt: new Date().toISOString(),
+    sizeBytes: Math.round((entry.sizeMb ?? 0) * 1024 * 1024),
+    source: "catalog",
+  })
+  return entry.id
+}
+
+/**
+ * PRODUCTION JourneyRuntimeDeps builder (the JourneySurface.tsx header
+ * recipe): loadCourseGraph over the installed pack (targetLang rides
+ * pack_meta.target_lang — item 15), the real engine over the shared
+ * local-analytics persistence (R15) + injected system clock,
+ * buildResolverDeps over a live HostApi, the journey_daily quota gate,
+ * localAnalyticsRecord (the ONE activity_result writer, §5.3), the
+ * single-owner activitySessionPort, STT probes off hostApi.stt (item 14 —
+ * absent/false ⇒ speak_echo degrades to listen_type, kept), and streak v2
+ * book-day providers (item 13).
+ */
+export async function buildJourneyDeps(opts: {
+  stackId: string
+  targetLang: string
+  nativeLang?: string
+  checkpointCadence?: number
+}): Promise<BuiltJourney> {
+  const packId = await ensureJourneyPackInstalled(opts.targetLang)
+  const graph = await loadCourseGraphFromPack(packId)
+  const targetLang = graph.targetLang || opts.targetLang
+  const courseId = graph.courseId
+
+  const hostApi = createHostApi()
+  const resolverDeps = buildResolverDeps(hostApi, {
+    findInstalledPack: (pid) =>
+      pid === packId || !!useJourneyPacksStore.getState().get(pid),
+  })
+  const ctx = makeResolveContext(courseId, targetLang, opts.nativeLang)
+  const resolver = createResolver(resolverDeps, ctx)
+
+  const engine = createJourneyEngine({
+    key: { stackId: opts.stackId, courseId },
+    graph,
+    persistence: createJourneyPersistence(opts.stackId, courseId, itemCardCodec),
+    clock: systemClock,
+  })
+
+  const quota = await createJourneyQuota({
+    isSubscribed: () => useEntitlementStore.getState().subscription.active,
+  })
+
+  const deps: JourneyRuntimeDeps = {
+    engine,
+    resolver,
+    resolverDeps,
+    ctx,
+    graph,
+    courseKey: courseKeyOf(opts.stackId, courseId),
+    quota,
+    ...(opts.checkpointCadence !== undefined
+      ? { constraints: { checkpointCadence: opts.checkpointCadence } }
+      : {}),
+    record: localAnalyticsRecord(courseId),
+    streakPorts: journeyStreakPorts(),
+    // Item 14: cheap availability probe + early model load off the STT plugin
+    // (pronunciation-coach precedent: prepare() is local-only, never a
+    // download). Fail closed — absent/false ⇒ the runtime's speak_echo →
+    // listen_type degrade stays in charge.
+    sttAvailable: () =>
+      hostApi.stt ? hostApi.stt.isAvailable().catch(() => false) : Promise.resolve(false),
+    sttPrepare: async () => {
+      await hostApi.stt?.prepare().catch(() => undefined)
+    },
+    log: (event, data) => resolverDeps.log?.(event, data),
+    activitySession: activitySessionPort,
+  }
+
+  return {
+    deps,
+    hostApi,
+    capabilityHost: capabilityHostFromHostApi(hostApi),
+    targetLang,
+    packId,
+  }
 }

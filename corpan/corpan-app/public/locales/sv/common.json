@@ -340,6 +340,18 @@
         "label": "Följ Journey",
         "desc": "En guidad kurs — appen väljer varje nästa steg"
       }
+    },
+    "journey": {
+      "title": "Vill du ha en guidad väg?",
+      "subtitle": "Journey serverar en daglig mix av nytt material och repetition på {{lang}} — ett kort i taget.",
+      "guided": {
+        "label": "Börja Journey",
+        "desc": "En guidad daglig session som anpassar sig efter dig"
+      },
+      "explore": {
+        "label": "Jag utforskar på egen hand",
+        "desc": "Du kan börja Journey när som helst från Hem"
+      }
     }
   },
   "socials": {

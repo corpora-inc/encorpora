@@ -340,6 +340,18 @@
         "label": "Podążaj za Journey",
         "desc": "Prowadzony kurs — aplikacja wybiera każdy kolejny krok"
       }
+    },
+    "journey": {
+      "title": "Chcesz prowadzoną ścieżkę?",
+      "subtitle": "Journey codziennie serwuje mieszankę nowego materiału i powtórek w języku {{lang}} — karta po karcie.",
+      "guided": {
+        "label": "Rozpocznij Journey",
+        "desc": "Prowadzona codzienna sesja, która dopasowuje się do Ciebie"
+      },
+      "explore": {
+        "label": "Wolę odkrywać na własną rękę",
+        "desc": "Journey możesz rozpocząć w każdej chwili z ekranu Start"
+      }
     }
   },
   "socials": {

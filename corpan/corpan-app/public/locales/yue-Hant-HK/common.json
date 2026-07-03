@@ -340,6 +340,18 @@
         "label": "跟住 Journey 行",
         "desc": "一個引導式課程——每一步都由 App 幫你揀"
       }
+    },
+    "journey": {
+      "title": "想唔想要一條引導之路？",
+      "subtitle": "Journey 每日以 {{lang}} 為你送上新內容同溫習嘅組合 — 每次一張卡。",
+      "guided": {
+        "label": "開始 Journey",
+        "desc": "一個會適應你嘅每日引導課節"
+      },
+      "explore": {
+        "label": "我想自己慢慢探索",
+        "desc": "你隨時可以喺主頁開始 Journey"
+      }
     }
   },
   "socials": {

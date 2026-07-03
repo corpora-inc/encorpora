@@ -340,6 +340,18 @@
         "label": "Ikuti Journey",
         "desc": "Kursus terpandu — aplikasi memilih tiap langkah berikutnya"
       }
+    },
+    "journey": {
+      "title": "Ingin jalur terpandu?",
+      "subtitle": "Journey menyajikan campuran harian materi baru dan pengulangan dalam {{lang}} — kartu demi kartu.",
+      "guided": {
+        "label": "Mulai Journey",
+        "desc": "Sesi harian terpandu yang menyesuaikan dengan Anda"
+      },
+      "explore": {
+        "label": "Saya akan menjelajah sendiri",
+        "desc": "Anda dapat memulai Journey kapan saja dari Beranda"
+      }
     }
   },
   "socials": {

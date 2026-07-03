@@ -340,6 +340,18 @@
         "label": "Volg de Journey",
         "desc": "Een begeleide cursus — de app kiest elke volgende stap"
       }
+    },
+    "journey": {
+      "title": "Wil je een begeleid pad?",
+      "subtitle": "De Journey serveert dagelijks een mix van nieuw materiaal en herhaling in {{lang}} — kaart voor kaart.",
+      "guided": {
+        "label": "Begin de Journey",
+        "desc": "Een begeleide dagelijkse sessie die zich aan jou aanpast"
+      },
+      "explore": {
+        "label": "Ik verken liever zelf",
+        "desc": "Je kunt de Journey op elk moment starten vanuit Home"
+      }
     }
   },
   "socials": {

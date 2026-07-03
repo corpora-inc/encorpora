@@ -340,6 +340,18 @@
         "label": "Segueix el Journey",
         "desc": "Un curs guiat: l'app tria cada pas"
       }
+    },
+    "journey": {
+      "title": "Vols un camí guiat?",
+      "subtitle": "El Journey et serveix cada dia una barreja de material nou i repàs en {{lang}} — targeta a targeta.",
+      "guided": {
+        "label": "Comença el Journey",
+        "desc": "Una sessió diària guiada que s'adapta a tu"
+      },
+      "explore": {
+        "label": "Exploraré pel meu compte",
+        "desc": "Pots començar el Journey quan vulguis des d'Inici"
+      }
     }
   },
   "socials": {

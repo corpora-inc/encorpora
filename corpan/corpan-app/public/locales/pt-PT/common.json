@@ -340,6 +340,18 @@
         "label": "Seguir o Journey",
         "desc": "Um curso guiado — a app escolhe cada próximo passo"
       }
+    },
+    "journey": {
+      "title": "Queres um caminho guiado?",
+      "subtitle": "O Journey serve todos os dias uma mistura de material novo e revisão em {{lang}} — um cartão de cada vez.",
+      "guided": {
+        "label": "Começar o Journey",
+        "desc": "Uma sessão diária guiada que se adapta a ti"
+      },
+      "explore": {
+        "label": "Vou explorar por minha conta",
+        "desc": "Podes começar o Journey a qualquer momento a partir do Início"
+      }
     }
   },
   "socials": {

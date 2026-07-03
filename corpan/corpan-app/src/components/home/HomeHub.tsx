@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import type { LucideIcon } from "lucide-react"
 import {
@@ -17,6 +17,7 @@ import {
   Download,
   RefreshCw,
   Heart,
+  Route,
   X,
 } from "lucide-react"
 import { useSettingsStore } from "@/store/settings"
@@ -40,6 +41,15 @@ import { getTopBarPaddingTop, glass } from "@/util/browser"
 import corpanMark from "@/assets/corpan-mark-trim.png"
 import { rankHomeExperiences } from "./recommend"
 import { PHRASE_PACK_ID, PHRASE_FLIP_IMAGE } from "@/experiences/phraseFlip"
+import { useJourneyPacksStore } from "@/store/journeyPacks"
+import { useJourneyStore, courseKeyOf } from "@/store/journey"
+import { packIdForTarget } from "@/util/journeyPack"
+import {
+  fetchJourneyPackCatalog,
+  findJourneyPackForTarget,
+  visibleJourneyPacks,
+} from "@/contentPacks/journeyPackCatalog"
+import { getAppVersion } from "@/lib/appVersion"
 
 /** Per-experience icon — fallback when the catalog has no artwork. */
 const EXP_ICON: Record<string, LucideIcon> = {
@@ -97,10 +107,13 @@ export function HomeHub({
   onSettings,
   onLaunchPhrase,
   onLaunchGame,
+  onLaunchJourney,
 }: {
   onSettings: () => void
   onLaunchPhrase: () => void
   onLaunchGame?: (game: InstalledGame) => void
+  /** Open the Journey feed overlay (App owns the state machine). */
+  onLaunchJourney?: () => void
 }) {
   const { t, i18n } = useTranslation()
   const dir = useSettingsStore((s) => s.dir)
@@ -122,6 +135,45 @@ export function HomeHub({
   const installedIds = useMemo(() => new Set(Object.keys(games)), [games])
   const installedGames = useMemo(() => Object.values(games), [games])
   const catalogById = useMemo(() => new Map(catalog.map((g) => [g.id, g])), [catalog])
+
+  // ── Journey hero (flagship placement, W10 item 10) ──
+  // Shown only when a course pack for the user's target language is
+  // installed OR published in the journey-pack index — never a dead-end CTA.
+  const activeStackId = useSettingsStore((s) => s.activeStackId)
+  const journeyTarget = languages[1] ?? languages[0] ?? "en"
+  const journeyPackId = packIdForTarget(journeyTarget)
+  const journeyInstalled = useJourneyPacksStore((s) =>
+    Object.values(s.installed).some(
+      (p) => p.targetLang.toLowerCase() === journeyTarget.toLowerCase(),
+    ),
+  )
+  const journeyEnrolled = useJourneyStore(
+    (s) => !!s.byCourse[courseKeyOf(activeStackId, journeyPackId)],
+  )
+  const [journeyInCatalog, setJourneyInCatalog] = useState(false)
+  useEffect(() => {
+    if (journeyInstalled) return
+    let cancelled = false
+    void (async () => {
+      try {
+        const cat = await fetchJourneyPackCatalog()
+        if (!cat || cancelled) return
+        const appVersion = await getAppVersion()
+        const devMode = useCatalogStore.getState().devMode
+        const entry = findJourneyPackForTarget(
+          visibleJourneyPacks(cat, appVersion, devMode),
+          journeyTarget,
+        )
+        if (!cancelled) setJourneyInCatalog(!!entry)
+      } catch {
+        /* offline / index unreachable — installed-only gating stands */
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [journeyInstalled, journeyTarget])
+  const showJourneyHero = !!onLaunchJourney && (journeyInstalled || journeyInCatalog)
 
   // Phrase Flip is a native experience (not a games-store entry), so synthesize
   // a Recent tile from its own last-launch timestamp and merge it in — it
@@ -286,6 +338,37 @@ export function HomeHub({
               {t("home.updateAll", { defaultValue: "Update all" })}
             </Button>
           </div>
+        ) : null}
+
+        {/* Journey — the flagship guided path (above "For you"). Copy rides
+            the existing journey.* i18n keys (all ~54 locales, W4). */}
+        {showJourneyHero ? (
+          <section className="mb-8">
+            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              {t("journey.heroCard.title")}
+            </h2>
+            <div className="w-full overflow-hidden rounded-2xl border border-purple-400/40 bg-gradient-to-br from-purple-500/[0.18] to-purple-500/[0.04] p-5 md:p-7">
+              <div className="flex items-start gap-4 md:gap-5">
+                <span className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-purple-500/15">
+                  <Route className="h-7 w-7 md:h-8 md:w-8 text-purple-400" aria-hidden="true" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xl md:text-2xl font-bold text-foreground">
+                    {t("journey.name")}
+                  </div>
+                  <div className="mt-0.5 text-sm md:text-base text-muted-foreground">
+                    {t("journey.tagline")}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4">
+                <Button className="!h-11 px-6" data-testid="journey-hero-cta" onClick={onLaunchJourney}>
+                  {journeyEnrolled ? t("journey.heroCta.continue") : t("journey.heroCta.start")}
+                  <ArrowRight className="ml-1.5 h-4 w-4 rtl:rotate-180" />
+                </Button>
+              </div>
+            </div>
+          </section>
         ) : null}
 
         {/* "For you" — the cycling recommendation star. */}

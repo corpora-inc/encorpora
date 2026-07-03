@@ -340,6 +340,18 @@
         "label": "Sledi Journeyju",
         "desc": "Voden tečaj — aplikacija izbere vsak naslednji korak"
       }
+    },
+    "journey": {
+      "title": "Želite vodeno pot?",
+      "subtitle": "Journey vam vsak dan postreže mešanico novega gradiva in ponavljanja v {{lang}} — kartico za kartico.",
+      "guided": {
+        "label": "Začnite Journey",
+        "desc": "Vodena dnevna seja, ki se vam prilagaja"
+      },
+      "explore": {
+        "label": "Raje raziskujem po svoje",
+        "desc": "Journey lahko kadar koli začnete na zaslonu Domov"
+      }
     }
   },
   "socials": {

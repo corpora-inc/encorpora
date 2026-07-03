@@ -340,6 +340,18 @@
         "label": "Kövesd a Journey-t",
         "desc": "Vezetett kurzus — az app választja minden következő lépést"
       }
+    },
+    "journey": {
+      "title": "Szeretnél egy vezetett utat?",
+      "subtitle": "A Journey minden nap új anyagok és ismétlés keverékét kínálja {{lang}} nyelven — kártyáról kártyára.",
+      "guided": {
+        "label": "Kezdd el a Journey-t",
+        "desc": "Vezetett napi foglalkozás, amely hozzád igazodik"
+      },
+      "explore": {
+        "label": "Inkább magamtól fedezem fel",
+        "desc": "A Journey-t bármikor elindíthatod a Kezdőlapról"
+      }
     }
   },
   "socials": {

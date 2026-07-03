@@ -340,6 +340,18 @@
         "label": "Seuraa Journeyta",
         "desc": "Ohjattu kurssi — sovellus valitsee jokaisen askeleen"
       }
+    },
+    "journey": {
+      "title": "Haluatko ohjatun polun?",
+      "subtitle": "Journey tarjoaa joka päivä sekoituksen uutta materiaalia ja kertausta kielellä {{lang}} — kortti kerrallaan.",
+      "guided": {
+        "label": "Aloita Journey",
+        "desc": "Ohjattu päivittäinen sessio, joka mukautuu sinuun"
+      },
+      "explore": {
+        "label": "Tutkin omin päin",
+        "desc": "Voit aloittaa Journeyn milloin tahansa Koti-näkymästä"
+      }
     }
   },
   "socials": {

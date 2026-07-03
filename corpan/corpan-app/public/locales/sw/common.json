@@ -340,6 +340,18 @@
         "label": "Fuata Journey",
         "desc": "Kozi ya kuongozwa — programu huchagua kila hatua inayofuata"
       }
+    },
+    "journey": {
+      "title": "Unataka njia ya kuongozwa?",
+      "subtitle": "Journey hukuletea kila siku mchanganyiko wa maudhui mapya na marudio katika {{lang}} — kadi moja baada ya nyingine.",
+      "guided": {
+        "label": "Anza Journey",
+        "desc": "Kipindi cha kila siku cha kuongozwa kinachoendana nawe"
+      },
+      "explore": {
+        "label": "Nitachunguza mwenyewe",
+        "desc": "Unaweza kuanza Journey wakati wowote kutoka Nyumbani"
+      }
     }
   },
   "socials": {

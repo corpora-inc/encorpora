@@ -340,6 +340,18 @@
         "label": "Ikut Journey",
         "desc": "Kursus berpandu — aplikasi memilih setiap langkah seterusnya"
       }
+    },
+    "journey": {
+      "title": "Mahu laluan berpandu?",
+      "subtitle": "Journey menghidangkan campuran bahan baharu dan ulang kaji dalam {{lang}} setiap hari — kad demi kad.",
+      "guided": {
+        "label": "Mulakan Journey",
+        "desc": "Sesi harian berpandu yang menyesuaikan diri dengan anda"
+      },
+      "explore": {
+        "label": "Saya akan meneroka sendiri",
+        "desc": "Anda boleh memulakan Journey pada bila-bila masa dari Laman utama"
+      }
     }
   },
   "socials": {

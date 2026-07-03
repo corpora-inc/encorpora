@@ -340,6 +340,18 @@
         "label": "Sek Journey",
         "desc": "Vedamas kursas — programėlė parenka kiekvieną kitą žingsnį"
       }
+    },
+    "journey": {
+      "title": "Norite vedamo kelio?",
+      "subtitle": "Journey kasdien pateikia naujos medžiagos ir kartojimo derinį {{lang}} kalba — kortelė po kortelės.",
+      "guided": {
+        "label": "Pradėti Journey",
+        "desc": "Vedama kasdienė sesija, kuri prisitaiko prie jūsų"
+      },
+      "explore": {
+        "label": "Tyrinėsiu savarankiškai",
+        "desc": "Journey galite pradėti bet kada iš ekrano „Pradžia“"
+      }
     }
   },
   "socials": {

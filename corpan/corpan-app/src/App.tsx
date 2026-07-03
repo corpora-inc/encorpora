@@ -46,6 +46,9 @@ import { isReaderPack, DEFAULT_READER_SEED_BOOK } from "@/onboarding/resolveLand
 import type { PackLaunchEntry } from "@/contentPacks/types";
 import { installTriggers } from "@/lib/offlineCache/triggers";
 import { registerCoreResources } from "@/lib/offlineCache/resources";
+import { JourneyOverlay } from "@/journey/JourneyOverlay";
+import { JOURNEY_EXIT_EVENT } from "@/journey/JourneySurface";
+import type { ActivitySpec } from "@/contentPacks/activityContract";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -164,6 +167,11 @@ export default function App() {
   // instance, host-rendered, driven by the `corpan:daily-locked` event the
   // shared monetization gate dispatches when a pack hits its hard daily cap.
   const [dailyLock, setDailyLock] = useState<DailyLockContext | null>(null);
+  // The Journey feed — a full-screen overlay SIBLING of HomeHub in the same
+  // state-machine pattern as activeGame (readers/phrase_main over Home). It
+  // stays mounted UNDER the pack overlay (z-1050 < z-1100) when a pack-anchor
+  // card launches, so returning from the pack lands back on the feed.
+  const [journeyOpen, setJourneyOpen] = useState(false);
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
@@ -585,6 +593,14 @@ export default function App() {
   }, [updateGameParam]);
 
   useEffect(() => {
+    // The Journey surface dispatches this on its Home/exit affordances
+    // (JourneySurface.tsx header contract) — the App owns the close.
+    const onJourneyExit = () => setJourneyOpen(false);
+    window.addEventListener(JOURNEY_EXIT_EVENT, onJourneyExit);
+    return () => window.removeEventListener(JOURNEY_EXIT_EVENT, onJourneyExit);
+  }, []);
+
+  useEffect(() => {
     // Quick Settings' "Full settings" opens the full modal OVER a running pack
     // (the pack stays mounted underneath — we never tear it down here).
     const onOpenSettings = () => setShowSettings(true);
@@ -745,6 +761,12 @@ export default function App() {
       return;
     }
 
+    if (intent.kind === "journey") {
+      // Onboarding journey opt-in → land straight in the Journey feed.
+      setJourneyOpen(true);
+      return;
+    }
+
     if (intent.kind === "experience") {
       if (intent.packId === "phrase_main") {
         openPhrase();
@@ -783,6 +805,7 @@ export default function App() {
         onSettings={() => setShowSettings(true)}
         onLaunchPhrase={openPhrase}
         onLaunchGame={handleLaunchGame}
+        onLaunchJourney={() => setJourneyOpen(true)}
       />
 
       <SettingsModal
@@ -803,6 +826,26 @@ export default function App() {
         <DailyLockOverlay context={dailyLock} onClose={() => setDailyLock(null)} />
       ) : null}
       <SystemPackInstaller />
+
+      {/* Journey feed overlay — full-screen SIBLING of the experience
+          overlay below (z-1050 vs the pack overlay's z-1100), so a
+          pack-anchor card's pack stacks over the still-mounted feed and
+          `corpan:exit` returns to it. Exit rides `corpan:journey-exit`. A
+          crash inside the feed drops back to Home, never a dead overlay. */}
+      {journeyOpen ? (
+        <ErrorBoundary onError={() => setJourneyOpen(false)}>
+          <JourneyOverlay
+            onLaunchPack={(packId: string, spec: ActivitySpec) => {
+              const g = useGamesStore.getState().getGame(packId);
+              if (g) {
+                handleLaunchGame(g, { activity: spec });
+              } else {
+                console.warn("[journey] pack-anchor launch: pack not installed:", packId);
+              }
+            }}
+          />
+        </ErrorBoundary>
+      ) : null}
 
       {/* Experience overlay. A pack (has manifestUrl) → ContentPackHost;
           the native phrase experience (no manifestUrl) → MainExperience.

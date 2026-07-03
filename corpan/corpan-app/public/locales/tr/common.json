@@ -340,6 +340,18 @@
         "label": "Journey'i takip et",
         "desc": "Rehberli bir kurs — her adımı uygulama seçer"
       }
+    },
+    "journey": {
+      "title": "Rehberli bir yol ister misiniz?",
+      "subtitle": "Journey, {{lang}} dilinde her gün yeni içerik ve tekrar karışımı sunar — her seferinde bir kart.",
+      "guided": {
+        "label": "Journey'i başlat",
+        "desc": "Size uyum sağlayan rehberli günlük bir oturum"
+      },
+      "explore": {
+        "label": "Kendi başıma keşfedeceğim",
+        "desc": "Journey'i istediğiniz zaman Ana sayfadan başlatabilirsiniz"
+      }
     }
   },
   "socials": {

@@ -417,6 +417,18 @@
         "label": "Melu Journey",
         "desc": "Kursus tuntunan — aplikasi milih saben langkah sabanjure"
       }
+    },
+    "journey": {
+      "title": "Pengin dalan sing dituntun?",
+      "subtitle": "Journey saben dina nyuguhake campuran materi anyar lan ulangan nganggo {{lang}} — kertu mbaka kertu.",
+      "guided": {
+        "label": "Miwiti Journey",
+        "desc": "Sesi tuntunan saben dina sing ngepasake karo sampeyan"
+      },
+      "explore": {
+        "label": "Aku njelajah dhewe wae",
+        "desc": "Journey bisa diwiwiti kapan wae saka Ngarep"
+      }
     }
   },
   "socials": {

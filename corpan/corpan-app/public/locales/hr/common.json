@@ -340,6 +340,18 @@
         "label": "Prati Journey",
         "desc": "Vođeni tečaj — aplikacija bira svaki sljedeći korak"
       }
+    },
+    "journey": {
+      "title": "Želite li vođeni put?",
+      "subtitle": "Journey svaki dan poslužuje mješavinu novog gradiva i ponavljanja na {{lang}} — karticu po karticu.",
+      "guided": {
+        "label": "Započnite Journey",
+        "desc": "Vođena dnevna sesija koja se prilagođava vama"
+      },
+      "explore": {
+        "label": "Istraživat ću samostalno",
+        "desc": "Journey možete pokrenuti bilo kada s Početne"
+      }
     }
   },
   "socials": {

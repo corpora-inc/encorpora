@@ -417,6 +417,18 @@
         "label": "Follow the Journey",
         "desc": "A guided course — the app picks each next step"
       }
+    },
+    "journey": {
+      "title": "Want a guided path?",
+      "subtitle": "The Journey serves a daily mix of new material and review in {{lang}} — one card at a time.",
+      "guided": {
+        "label": "Start the Journey",
+        "desc": "A guided daily session that adapts to you"
+      },
+      "explore": {
+        "label": "I'll explore on my own",
+        "desc": "You can start the Journey anytime from Home"
+      }
     }
   },
   "socials": {

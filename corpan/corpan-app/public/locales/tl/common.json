@@ -417,6 +417,18 @@
         "label": "Sundan ang Journey",
         "desc": "Isang kursong may gabay — pinipili ng app ang bawat susunod na hakbang"
       }
+    },
+    "journey": {
+      "title": "Gusto mo ba ng gabay na landas?",
+      "subtitle": "Araw-araw, naghahain ang Journey ng halo ng bagong materyal at review sa {{lang}} — isang kard sa bawat pagkakataon.",
+      "guided": {
+        "label": "Simulan ang Journey",
+        "desc": "Isang gabay na pang-araw-araw na session na umaangkop sa iyo"
+      },
+      "explore": {
+        "label": "Mag-e-explore ako nang mag-isa",
+        "desc": "Puwede mong simulan ang Journey anumang oras mula sa Home"
+      }
     }
   },
   "socials": {

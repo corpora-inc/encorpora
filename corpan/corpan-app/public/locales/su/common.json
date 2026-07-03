@@ -417,6 +417,18 @@
         "label": "Tuturkeun Journey",
         "desc": "Kursus dipandu — aplikasi milih unggal léngkah saterusna"
       }
+    },
+    "journey": {
+      "title": "Hoyong jalan anu dipandu?",
+      "subtitle": "Journey nyayogikeun campuran matéri anyar sareng pangulangan unggal dinten dina {{lang}} — kartu demi kartu.",
+      "guided": {
+        "label": "Mimitian Journey",
+        "desc": "Sesi harian dipandu anu nyaluyukeun diri ka anjeun"
+      },
+      "explore": {
+        "label": "Abdi badé ngajajah nyalira",
+        "desc": "Anjeun tiasa ngamimitian Journey iraha waé ti Imah"
+      }
     }
   },
   "socials": {

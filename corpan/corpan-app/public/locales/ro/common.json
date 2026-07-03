@@ -340,6 +340,18 @@
         "label": "Urmează Journey-ul",
         "desc": "Un curs ghidat — aplicația alege fiecare pas"
       }
+    },
+    "journey": {
+      "title": "Vrei un drum ghidat?",
+      "subtitle": "Journey-ul îți oferă zilnic un mix de material nou și recapitulare în {{lang}} — card cu card.",
+      "guided": {
+        "label": "Începe Journey-ul",
+        "desc": "O sesiune zilnică ghidată care se adaptează la tine"
+      },
+      "explore": {
+        "label": "Explorez pe cont propriu",
+        "desc": "Poți începe Journey-ul oricând de pe ecranul Acasă"
+      }
     }
   },
   "socials": {

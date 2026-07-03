@@ -340,6 +340,18 @@
         "label": "Theo Journey",
         "desc": "Một khóa học có dẫn lối — ứng dụng chọn từng bước tiếp theo"
       }
+    },
+    "journey": {
+      "title": "Bạn muốn một con đường có dẫn lối?",
+      "subtitle": "Mỗi ngày, Journey mang đến sự kết hợp giữa nội dung mới và ôn tập bằng {{lang}} — mỗi lần một thẻ.",
+      "guided": {
+        "label": "Bắt đầu Journey",
+        "desc": "Một phiên học hằng ngày có dẫn lối, thích ứng với bạn"
+      },
+      "explore": {
+        "label": "Tôi sẽ tự khám phá",
+        "desc": "Bạn có thể bắt đầu Journey bất cứ lúc nào từ Trang chủ"
+      }
     }
   },
   "socials": {
