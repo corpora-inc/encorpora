@@ -1,0 +1,14 @@
+# Real build output stays out of git (publisher rebuilds + gates).
+dist/
+
+# The FIXTURE artifact is checked in on purpose: the corpan-app loader test
+# (src/util/journeyPack.test.ts) opens fixtures/dist/journey_en/data/
+# course.sqlite3 via node:sqlite with no Python step. Parent .gitignore rules
+# (dja: `data/`, corpan: `*.zip`) would swallow it — un-ignore the sqlite +
+# manifest; the fixture ZIP stays ignored (derivable).
+!fixtures/dist/
+!fixtures/dist/journey_en/
+!fixtures/dist/journey_en/manifest.json
+!fixtures/dist/journey_en/data/
+!fixtures/dist/journey_en/data/course.sqlite3
+fixtures/dist/*.zip

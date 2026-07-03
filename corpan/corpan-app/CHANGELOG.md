@@ -58,6 +58,23 @@ Conventions: `corpan/CHANGELOGS.md`.
   Test-only golden fixtures (`__fixtures__/`, in-memory `node:sqlite`) cover
   all kinds, all missing reasons, 1,000-case distractor validity properties,
   and determinism. Not yet user-visible: the feed runtime (W4) wires it up.
+- **Journey course-pack catalog + install plumbing + CourseGraph loader
+  (Journey W6, `docs/journey/specs/course-pack.md`).** Journey course packs
+  are data-only SQLite packs (one per target language) on their own
+  CloudFront index (`corpan/journey-packs/index.json`) — never in the main
+  catalog, never on Home. New `contentPacks/journeyPackCatalog.ts` (typed
+  parse, channel/minAppVersion gating, and a `schemaVersion` compatibility
+  gate so an old app filters out unreadable course DBs BEFORE download),
+  `util/journeyPack.ts` (explicit-packId install, pack_meta post-install
+  verification, and the normative PackReader → CourseGraph loader: keyset
+  pagination under the Rust 2,000-row silent-truncation cap + a row-count
+  hard assertion against `pack_meta` counts — the engine never boots on a
+  partial graph), and `store/journeyPacks.ts` (installed-pack registry,
+  phrasePacks pattern). `CatalogV3Entry`/`CatalogGame` gain the optional
+  `activities` declarations field, forwarded verbatim by
+  `filterCatalogForApp` (activity-contract.md §4.3) so the Journey scheduler
+  can plan anchor cards for not-yet-installed packs OTA. No UI wiring yet —
+  the Journey surface consumes these modules in a later slice.
 
 ### Changed
 - **Storage migrations M2–M4:** per-book reading progress
