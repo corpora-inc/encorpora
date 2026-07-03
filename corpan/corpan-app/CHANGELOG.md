@@ -7,6 +7,30 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Journey W12 — catalogs are offline-cache native (D12 phase 2).** The
+  three catalog stores (game/reader v3 catalog, phrase-pack catalog,
+  word-pack index) now delegate their fetch bodies to the shared
+  offline-cache layer (`cachedFetch` + `subscribeJson`): one place owns
+  TTLs, ETag/Last-Modified 304 revalidation, IndexedDB persistence,
+  singleflight and the never-clobber-on-failure contract. The v3 catalog
+  caches the RAW body and filters at read time, so toggling dev-packs
+  mode or upgrading the app re-filters instantly with zero network (the
+  old force-refetch on devMode change is gone). Store public APIs are
+  unchanged. A zustand version-2 migration seeds the offline-cache
+  records from the legacy persisted catalogs, so upgraded devices render
+  offline cold-start without a refetch (phrase/word seeds keep their
+  validators for a 0-byte 304 first poll). The legacy inline
+  catalog-refresh loop in App.tsx is retired — the offline-cache triggers
+  (startup / foreground / online / jittered interval) own the refresh
+  cadence now.
+- **Journey W12 — rung-3 distractor top-up is wired.** The resolver's
+  random top-up (phrase-kind pathological starvation only) now draws from
+  the host's filtered random-entries surface (levels + languageCodes
+  scoped to the learner's stack) instead of an empty stub; a missing seam
+  or host error degrades to a shortfall report, never a crashed card.
+  Top-ups only feed the sampler pool — selection stays on the card PRNG.
+
 ### Added
 - **Journey W10 — real-pack P8 placement gate** (`journey-sim --p8`). The
   simulation CLI can now run the R10 placement-quality gate against the
