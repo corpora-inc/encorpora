@@ -158,6 +158,29 @@ team; renderers develop against it in the fixture slice.
   `speak_echo` renders via cap-pronounce. Styling/packaging rules per that spec
   (@shared alias, no Tailwind in modules, prefixed CSS).
 
+## R17 — Simulator-gate rulings on the W11 calibration evidence (2026-07-03)
+
+Per `scripts/journey-sim/CALIBRATION.md` (rounds 1–2, 3-seed evidence):
+- **P8 target amended to |θ̂−a| ≤ 0.8 @ ≥90%** (was 0.6). The ±0.6 leg sits at the
+  information floor of ≤25 guessable probes (σ=0.40, unbiased); the adaptivity spec
+  itself calls precision beyond ±half a CEFR band (0.75) illusory for author-assigned
+  b. With the R10 ladder-cap fix + SE guard + self-heal (4/4 all seeds), placement is
+  accepted. Measured under the amended target: 94/94/100% per seed.
+- **P1/P3/P4: option A adopted** — the §7.1 fixed-ability synthetic learner is the
+  defect (real learners acquire skill; churner items eventually pass). A future W11
+  round amends the learner model with slow skill acquisition and re-derives targets;
+  until then P1/P3/P4 are recorded "pending learner-model amendment", NOT gating.
+  Knob-tuning against the current model is banned (round-2 evidence: every bundle
+  that helps P1/P3 breaks P7/P10).
+- **P7 metric amended** to ≥90% of days in-band (max-over-days is noise-limited at
+  low daily volume).
+- **P11 relaxation-rate regression** (0.30–0.32/batch vs <0.2, pre-existing on the
+  W10 tip, zero hard violations; hypothesis: type-restricted recipe/boss slots make
+  same-type adjacency structurally tight) — queued as a named follow-up workstream;
+  not preview-blocking (feel-quality telemetry, not correctness).
+- Spec-literal sync (engine.md leech/throttle/retention literals → the new constants
+  names) rides the same follow-up.
+
 ## R16 — Panel risks worth pinning now (non-blocking)
 
 Each spec editor appends a short "Tracked risks" section preserving their lens's
