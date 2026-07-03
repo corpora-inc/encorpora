@@ -288,11 +288,20 @@
   max-width: 38%;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: color var(--bl-dur-fast) var(--bl-ease);
+  transition:
+    color var(--bl-dur-fast) var(--bl-ease),
+    opacity 280ms var(--bl-ease);
 }
 .bl-scr-word.is-cur {
   color: var(--bl-accent);
   text-shadow: var(--bl-glow) var(--bl-accent);
+}
+/* Silent round: the loop is rev-quantized to whole revolutions, so a longer
+   phrase has a trailing SILENT pass. Fade the word + START indicators during it
+   so they don't imply audio that isn't there; they return on the sounding round
+   (#421). */
+.bl-scr-word.is-silent {
+  opacity: 0.12;
 }
 
 /* The single START marker — a tasteful tick fixed on the disc at the phrase start
@@ -311,6 +320,10 @@
   box-shadow: var(--bl-glow) var(--bl-accent);
   opacity: 0.92;
   pointer-events: none;
+  transition: opacity 280ms var(--bl-ease);
+}
+.bl-scr-start.is-silent {
+  opacity: 0.1;
 }
 
 /* Fixed needle at 3 o'clock (the RIGHT): never rotates. The arm comes in from the

@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Scratch: the word + START indicators now fade on a silent round** (#421). The
+  loop is rev-quantized to whole revolutions, so a phrase shorter than the loop
+  has a trailing silent pass; the indicators used to keep showing through it,
+  implying audio that wasn't there. They now fade out while the playhead is in
+  the padded tail and return on the sounding round.
+
 ## [0.7.0] - 2026-06-25
 
 ### Added
