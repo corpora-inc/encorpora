@@ -8,6 +8,7 @@
     "dev:corpan": "node scripts/dev-corpan.mjs",
     "dev:integrated": "node scripts/watch.mjs",
     "typecheck": "tsc --noEmit",
+    "test:journey": "node test/journey/instrumentation.spec.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {

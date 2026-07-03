@@ -156,6 +156,11 @@ export function runChallenge(
           if (typeof p.level === "string") spec.level = p.level
           if (p.params && typeof p.params === "object")
             spec.params = { ...spec.params, ...(p.params as Record<string, unknown>) }
+          // Journey launches pin the correlation key: the ActivitySpec's specId
+          // becomes the internal challengeId so the result round-trips
+          // (activity-contract §6.3). NPC tool-calls never set this — additive.
+          if (typeof p.challengeId === "string" && p.challengeId.length > 0)
+            spec.challengeId = p.challengeId
         }
       } catch (err) {
         console.error(`[wp-challenge] buildSpec failed for ${toolId}:`, err)

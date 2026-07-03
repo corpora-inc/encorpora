@@ -39,6 +39,30 @@ export function setDefaultWordSelector(selector: WordSelector | null): void {
 }
 
 /**
+ * Module-level default PINNED-ENTRY pool (journey-launch injection point,
+ * activity-contract §6.1). When set, `getRound` seeds its candidate pool with
+ * these entries FIRST, then tops up with random batches as usual — the random
+ * top-up is REQUIRED (distractor words come from the other pool entries; the
+ * answer-dedup contract is untouched). Game.ts's existing
+ * `new ContentManager(hostApi)` resolves it transparently, exactly like the
+ * default-selector registry above. Cleared on journey unmount so standalone
+ * launches never see a stale pin.
+ */
+let defaultPinnedEntries: EntryOut[] | null = null;
+
+/** Register the process-wide default pinned-entry pool (journey launches). */
+export function setDefaultPinnedEntries(entries: EntryOut[] | null): void {
+  defaultPinnedEntries = entries && entries.length > 0 ? entries : null;
+}
+
+/** Options form of the ContentManager constructor (journey launches, tests). */
+export interface ContentManagerOptions {
+  selector?: WordSelector;
+  /** Entries served FIRST into every round's candidate pool (journey pin). */
+  pinnedEntries?: EntryOut[];
+}
+
+/**
  * A single "Catch the Translation" round.
  *
  * The PROMPT (`promptText`, in the PRIMARY language the player already knows) is
@@ -85,6 +109,16 @@ function tokenize(text: string, lang: string): string[] {
   return segmentPhrase(text, lang);
 }
 
+/** Distinguish the options form of the ctor's second arg from a WordSelector. */
+function isContentManagerOptions(
+  x: WordSelector | ContentManagerOptions | undefined
+): x is ContentManagerOptions {
+  if (!x || typeof x !== "object") return false;
+  return (
+    !("chooseTarget" in x) && !("weight" in x) && !("observePool" in x)
+  );
+}
+
 /** Strip surrounding punctuation for dedup/comparison (keeps inner apostrophes). */
 function normWord(w: string): string {
   return w
@@ -96,12 +130,20 @@ function normWord(w: string): string {
 
 export class ContentManager {
   private selector?: WordSelector;
+  private pinnedEntries?: EntryOut[];
 
   constructor(
     private hostApi: HostApi,
-    selector?: WordSelector
+    selectorOrOptions?: WordSelector | ContentManagerOptions
   ) {
-    this.selector = selector ?? defaultSelector ?? undefined;
+    const opts: ContentManagerOptions = isContentManagerOptions(
+      selectorOrOptions
+    )
+      ? selectorOrOptions
+      : { selector: selectorOrOptions };
+    this.selector = opts.selector ?? defaultSelector ?? undefined;
+    const pinned = opts.pinnedEntries ?? defaultPinnedEntries ?? undefined;
+    this.pinnedEntries = pinned && pinned.length > 0 ? pinned : undefined;
   }
 
   /** The translation of `e` in `lang`, trimmed (or "" if none). */
@@ -177,6 +219,12 @@ export class ContentManager {
    */
   async getRound(languages: string[]): Promise<Round> {
     const byId = new Map<number, EntryOut>();
+    // Journey pin (activity-contract §6.1): pinned entries enter the pool
+    // FIRST so the selector can serve them as targets; the random top-up below
+    // still runs so distractors stay well-populated.
+    for (const e of this.pinnedEntries ?? []) {
+      if (e && !byId.has(e.entry_id)) byId.set(e.entry_id, e);
+    }
     for (let attempt = 0; attempt < 4 && byId.size < 10; attempt++) {
       for (const e of await this.fetchBatch(8)) {
         if (e && !byId.has(e.entry_id)) byId.set(e.entry_id, e);

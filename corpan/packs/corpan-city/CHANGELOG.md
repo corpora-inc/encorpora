@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Journey activity adapter (`corpan_city:<toolId>`, activity-contract §6.3 /
+  R9).** A journey launch (`initialState.activity`) mounts ONE challenge from
+  the library and reports — the Babylon world never boots; no Colyseus, no
+  Track state, no economy on that path. `ActivitySpec` maps onto the frozen
+  `ChallengeSpec` (specId→challengeId round-trip, targetLang→language,
+  phrase refs→entryIds with non-base sources threaded through
+  `params.entrySources`), and `ChallengeResultPlus` maps back
+  (score, detail→`detail.numbers`, `outcome:"aborted"`→`abandoned: true`;
+  xp/rewards/sig dropped — Journey's celebration + FSRS replace the city
+  economy for journey launches). Terminal results ride `hostApi.journey` with
+  the `corpan:activity-result` event rail as fallback; unsupported tool ids
+  abandon("unsupported") + exit.
+- **R9 evidence rule enforced:** `perItem` is emitted ONLY for genuine
+  per-entry verdicts (the reserved `detail["item:<entryId>"]` convention —
+  unimplemented city-side today), so every current tool reports score-only.
+  Aggregate scores are never binned into fabricated per-item outcomes.
+- Manifest `activities`: all 20 implemented challenge tools declared for the
+  Journey scheduler (STT tools carry `modelNeeds: ["stt"]`).
+- Vendored contract copy `src/sdk/activityContract.ts` (generated — synced by
+  `node packs/sdk/sync-contract.mjs`).
+- `src/journey/adapter.test.ts`: fixture journey mounts (abort path, event
+  rail, unmount race) + field-mapping tests, validated against the app's
+  contract Zod schemas.
+
+### Changed
+- `runChallenge` partial-spec merge additionally honors `challengeId`
+  (additive; NPC tool-calls never set it) so journey results correlate to the
+  issuing spec. City standalone behavior is unchanged.
+
 ## [0.1.8] - 2026-06-16 — Catalog localization (jv/su/tl) unblocks Pages deploy
 
 - Catalog listing: add the Javanese (jv), Sundanese (su) and Tagalog (tl)

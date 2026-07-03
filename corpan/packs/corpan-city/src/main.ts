@@ -7,6 +7,8 @@
  */
 import "./styles.css"
 import { startGame, type GameHandle } from "./game"
+import { mountJourneyChallenge } from "./journey/adapter"
+import type { ActivitySpec } from "./sdk/activityContract"
 
 const GAME_ID = "corpan_city"
 
@@ -45,11 +47,18 @@ function disposePriorGame(): void {
 
 registry[GAME_ID] = {
   id: GAME_ID,
-  mount(container, hostApi) {
+  mount(container, hostApi, initialState) {
     // Real Corpán HostApi (TTS + on-device Qwen3 LLM) when running as a pack;
     // undefined in standalone dev → the game falls back to a mock host.
     disposePriorGame()
     container.replaceChildren() // clear any leftover DOM from a prior instance
+    // Journey activity launch (activity-contract §6.3): run ONE challenge from
+    // the library and report — the Babylon world NEVER boots on this path.
+    const activity = (initialState as { activity?: ActivitySpec } | undefined)
+      ?.activity
+    if (activity) {
+      return mountJourneyChallenge(container, hostApi, activity)
+    }
     const game: GameHandle = startGame(container, hostApi)
     slot.game = game
     return {

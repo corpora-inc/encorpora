@@ -26,6 +26,8 @@
 import type { GameEventBus } from "../events";
 import type { HostApi } from "../sdk/types";
 import { setDefaultWordSelector } from "../ContentManager";
+import { getJourneyRun } from "../journey/state";
+import { initJourneyReporting } from "../journey/reporter";
 import { WordStatsStore } from "./wordStats";
 import { AdaptiveDifficulty } from "./difficulty";
 import { createWordSelector } from "./selector";
@@ -161,6 +163,22 @@ function registerSelector(): void {
  * Game.ts edit is needed. Returns a LearningApi for introspection + dispose.
  */
 export function initLearning(bus: GameEventBus, hostApi: HostApi): LearningApi {
+  // JOURNEY LAUNCH (D11 / activity-contract §6.1): the Leitner store is
+  // RETIRED — FSRS (the host engine) is the one scheduler, so we neither
+  // register the SRS-biased selector (the journey selector is already the
+  // process-wide default, set at mount) nor write WordStatsStore. Outcomes
+  // flow to the host through the journey reporter's wave-resolved subscriber
+  // instead. Standalone launches fall through UNCHANGED.
+  const journeyRun = getJourneyRun();
+  if (journeyRun) {
+    const off = initJourneyReporting(bus, journeyRun);
+    return {
+      getMastery: () => null,
+      getDifficulty: () => 0,
+      dispose: off,
+    };
+  }
+
   lastHostApi = hostApi;
   const ctx = ensureContext();
   registerSelector(); // ensure the selector is live for this run
