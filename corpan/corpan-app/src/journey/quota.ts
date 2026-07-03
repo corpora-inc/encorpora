@@ -10,9 +10,10 @@
 // launchPackActivity paths). This module only builds the gate.
 //
 // The quotas.ts registry row (`journey_daily`, packId corpan_app, dailyLimit
-// 60 placeholder, softNagEvery 0, unitLabel "cards") is W10's seam — until
-// it lands, createJourneyQuota degrades to an unlimited port with a console
-// note so the surface stays playable in integration builds.
+// 60 — a provisional default pending the operator's free-tier N call,
+// remote-config overridable — softNagEvery 0, unitLabel "cards") landed with
+// W10. The gate owns the `corpan:daily-locked` dispatch (gate-v2); the
+// unlimited fallback below remains for hosts without the shared module.
 
 import { unlimitedQuota, type JourneyQuotaPort } from "./types.ts"
 
@@ -40,8 +41,12 @@ export function quotaPortFromGate(gate: GateLike, fallbackLimit = 60): JourneyQu
 }
 
 /**
- * Best-effort production gate. Tries the shared monetization registry; the
- * `journey_daily` row is W10's, so absence is expected pre-integration.
+ * The production gate: `createDailyQuota("journey_daily", { isSubscribed })`
+ * over the shared registry row (quotas.ts), wrapped into the surface port.
+ * The gate dispatches `corpan:daily-locked` at the hard cap; the registry's
+ * `getQuota` merges any remote-config override, so `limit()` reflects the
+ * live (possibly overridden) dailyLimit. Falls back to an unlimited port
+ * only when the shared module cannot load (never expected in-app).
  */
 export async function createJourneyQuota(opts: {
   isSubscribed: () => boolean
@@ -50,12 +55,14 @@ export async function createJourneyQuota(opts: {
   try {
     const mod = (await import("@shared/monetization")) as {
       createDailyQuota?: (surface: string, o: { isSubscribed: () => boolean }) => GateLike
+      getQuota?: (surface: string) => { dailyLimit: number }
     }
     if (mod.createDailyQuota) {
-      return quotaPortFromGate(mod.createDailyQuota(JOURNEY_QUOTA_SURFACE, opts))
+      const limit = mod.getQuota?.(JOURNEY_QUOTA_SURFACE)?.dailyLimit ?? 60
+      return quotaPortFromGate(mod.createDailyQuota(JOURNEY_QUOTA_SURFACE, opts), limit)
     }
   } catch (err) {
-    console.info("[journey] quota registry row not available yet (W10 seam)", err)
+    console.info("[journey] shared monetization gate unavailable — quota unlimited", err)
   }
   return unlimitedQuota()
 }

@@ -7,6 +7,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey W10 — `journey_daily` quota row** (feed-ux §7, R12). The shared
+  monetization registry (`packs/shared/monetization/src/quotas.ts`) gains the
+  journey gate: packId `corpan_app`, dailyLimit 60 (a provisional default
+  pending the operator's free-tier N decision — remote-config overridable
+  like every row), softNagEvery 0, unitLabel "cards". NEW-INTAKE-ONLY
+  debits: only completed debut cards + pack-anchor launches meter;
+  due-review / replay / repair are never metered. `journey_daily` joins the
+  `PaywallSurface` union; `createJourneyQuota` now resolves the real
+  `createDailyQuota` gate (which owns the `corpan:daily-locked` dispatch)
+  and reports the live registry limit.
+
 ### Fixed
 - **Journey W10 — authoritative targetLang** (item 15, flagged by W3 + W6).
   The CourseGraph loader (`util/journeyPack.ts`) now carries
