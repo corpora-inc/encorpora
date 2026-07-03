@@ -384,7 +384,13 @@ class Corpus:
             texts: List[str] = []
             for it in data:
                 if isinstance(it, dict):
-                    texts.append(str(it.get("text") or it.get("en") or ""))
+                    # Legacy phrase packs key their entries "english" (the
+                    # original schema); newer packs write "text" (+ sometimes
+                    # "en"). Read all three so pins into legacy packs never
+                    # resolve to empty text (W7 seam, fixed by W10).
+                    texts.append(
+                        str(it.get("text") or it.get("en") or it.get("english") or "")
+                    )
                 else:
                     texts.append(str(it))
             self._phrase_packs[pack_id] = texts
@@ -447,7 +453,11 @@ def _seed_b(
     if freq_rank and band and band[0] < band[1]:
         band_center = (band[0] + band[1]) / 2.0
         b = center + 0.4 * math.log10(max(freq_rank, 1) / band_center)
-    return max(center - 0.7, min(center + 0.7, b))
+    # Clamp to the V-14 difficulty-sanity floor: preA1/A0 center is -3.5, so
+    # the CEFR-center band (center - 0.7 = -4.2) could emit b < -4.0 and trip
+    # the gate for low-frequency preA1 word items (W7 seam, fixed by W10).
+    lo = max(center - 0.7, -4.0)
+    return max(lo, min(center + 0.7, b))
 
 
 def resolve_items(c: Course, corpus: Corpus) -> None:
