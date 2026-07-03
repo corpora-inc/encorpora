@@ -9,6 +9,8 @@ import { initAnalytics } from "@/util/analytics";
 import { installDevKeepAwake } from "@/util/devKeepAwake";
 import { installDevDebug } from "@/util/devDebug";
 import { initRemoteQuotaConfig } from "@/util/remoteQuotaConfig";
+import { configureLocalAnalytics } from "@/lib/localAnalytics";
+import { useSettingsStore } from "@/store/settings";
 
 // Advertise host capabilities to the paywall gate APP-WIDE (not just inside
 // ContentPackHost, which only mounts for content packs). `dailyLock` tells the
@@ -36,6 +38,15 @@ import { initRemoteQuotaConfig } from "@/util/remoteQuotaConfig";
 // time, so a mid-session config change takes effect next gate construction /
 // next launch (documented + intentional).
 initRemoteQuotaConfig();
+
+// On-device (never uploaded) local-analytics recorder: stamp every event's
+// envelope with the LIVE active stack id (storage-analytics.md §4.3). Wired
+// EARLY — before any surface can record — so the very first events of a
+// session carry the right stack. The provider reads the store lazily per
+// event, so stack switches take effect immediately.
+configureLocalAnalytics({
+  getStackId: () => useSettingsStore.getState().activeStackId || "default",
+});
 
 // DEV-only: hold a screen wake lock so the iPad debug loop survives the idle
 // timer. No-op in production builds.

@@ -44,6 +44,8 @@ import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster"
 import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
 import { isReaderPack, DEFAULT_READER_SEED_BOOK } from "@/onboarding/resolveLanding";
 import type { PackLaunchEntry } from "@/contentPacks/types";
+import { installTriggers } from "@/lib/offlineCache/triggers";
+import { registerCoreResources } from "@/lib/offlineCache/resources";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -191,6 +193,18 @@ export default function App() {
     (s) => s.fetchCatalog,
   );
   const fetchWordPackCatalog = useWordPackCatalogStore((s) => s.fetchCatalog);
+
+  // Offline-cache boot (offline-cache.md §3.2/§3.3, W2's seam): register the
+  // per-resource policy table once and install the revalidation triggers
+  // (startup / foreground / online / jittered interval) + the cover pre-warm.
+  // These COEXIST with the legacy inline catalog-refresh effect below until
+  // the phase-2 store migration moves the zustand stores' fetch bodies onto
+  // cachedFetch — registered resources revalidate here; the legacy stores
+  // keep their own loop (per W2's wiring note in lib/offlineCache/triggers.ts).
+  useEffect(() => {
+    registerCoreResources();
+    return installTriggers();
+  }, []);
 
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {

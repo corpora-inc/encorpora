@@ -8,6 +8,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey W10 — boot wiring** (integration). `main.tsx` configures the
+  on-device local-analytics recorder with the live active-stack id
+  (`configureLocalAnalytics({ getStackId })`, early, before any surface
+  records); `App.tsx` registers the offline-cache resource table + installs
+  the revalidation triggers once at mount (`registerCoreResources()` +
+  `installTriggers()` — coexisting with the legacy inline catalog-refresh
+  loop until the phase-2 store migration); dev builds gain the storage
+  doctor on `__corpanDebug.storage.*` (`installStorageDoctorDebug()` via
+  `util/devDebug.ts`, tree-shaken from production).
 - **Journey W10 — pack-facing host seams wired** (integration). `hostApi`
   now carries the three reserved shared seams: `storage`
   (`buildPackStorageApi` — pack-scoped durable KV, storage-analytics.md
