@@ -96,6 +96,17 @@ jobs:
       - name: Install
         working-directory: corpan/corpan-app
         run: npm ci
+      # The corpan-app test/build graph imports @shared/capabilities (the
+      # journey capability modules), which is its own npm workspace — without
+      # its node_modules the app's tests fail on unresolved imports (the
+      # integration two-failure lesson).
+      - name: Install capabilities workspace
+        working-directory: corpan/packs/shared/capabilities
+        run: npm ci
+      # Journey activity-contract drift gate: every generated copy of
+      # activityContract.ts must match the authoritative corpan-app source.
+      - name: Contract sync check
+        run: node corpan/packs/sdk/sync-contract.mjs --check
       - name: Test
         working-directory: corpan/corpan-app
         run: npm test
