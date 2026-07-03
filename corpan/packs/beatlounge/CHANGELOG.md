@@ -11,8 +11,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   block — two full-waveform word-span passes + buffer-padding + deck build — right
   as `decodeAudioData` resolved, contending with the running audio callback. Load
   now **builds and holds the deck first** (so the platter is playable immediately)
-  and **defers the word-span analysis behind yields**, so no single step shares
-  the audio render quantum. The master FX bus is also built in a mount effect
+  and **defers the word-span analysis to main-thread idle** (`requestIdleCallback`
+  with a timeout fallback), so the two-pass scan never shares the audio render
+  quantum with the running transport. The master FX bus is also built in a mount
+  effect
   instead of the render body, so restoring a saved chain no longer constructs Tone
   nodes synchronously during render.
 

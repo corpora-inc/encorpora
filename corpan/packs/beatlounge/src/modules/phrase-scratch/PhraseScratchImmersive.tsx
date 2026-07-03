@@ -80,6 +80,19 @@ const LOG = "[beatlounge/phrase-scratch]"
 const yieldToMain = (): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, 0))
 
+/** Wait until the main thread is IDLE before running a heavy, non-urgent pass, so
+ *  it can't contend with audio scheduling (the two-pass word-span scan). Falls
+ *  back to a macrotask where requestIdleCallback is unavailable; the timeout
+ *  guarantees the pass still runs promptly on a busy thread (#396). */
+const onIdle = (): Promise<void> =>
+  new Promise((resolve) => {
+    if (typeof requestIdleCallback === "function") {
+      requestIdleCallback(() => resolve(), { timeout: 400 })
+    } else {
+      setTimeout(resolve, 0)
+    }
+  })
+
 interface Props {
   host: BeatloungeHost
   store: BeatloungeStore
@@ -349,10 +362,11 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         setLoading(false)
 
         // Word spans (two full-waveform passes) live on the REAL phrase timeline
-        // (before padding). They're NOT needed to play, so compute them AFTER a
-        // yield — off the load's critical path — and swap them in when ready. A
+        // (before padding). They're NOT needed to play, so run them when the main
+        // thread is IDLE — off the load's critical path, never contending with the
+        // running transport's audio scheduling — and swap them in when ready. A
         // span failure must never tank the already-playable deck.
-        await yieldToMain()
+        await onIdle()
         if (stale()) return
         try {
           const channel = decoded.getChannelData(0)
