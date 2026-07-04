@@ -335,6 +335,22 @@
       "surprise": {
         "label": "Nustebink mane!",
         "desc": "Nuvesk mane kur nors smagaus."
+      },
+      "journey": {
+        "label": "Sek Journey",
+        "desc": "Vedamas kursas — programėlė parenka kiekvieną kitą žingsnį"
+      }
+    },
+    "journey": {
+      "title": "Norite vedamo kelio?",
+      "subtitle": "Journey kasdien pateikia naujos medžiagos ir kartojimo derinį {{lang}} kalba — kortelė po kortelės.",
+      "guided": {
+        "label": "Pradėti Journey",
+        "desc": "Vedama kasdienė sesija, kuri prisitaiko prie jūsų"
+      },
+      "explore": {
+        "label": "Tyrinėsiu savarankiškai",
+        "desc": "Journey galite pradėti bet kada iš ekrano „Pradžia“"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sampluok kalbą, kurios mokaisi. Scratch’ink, kol prilips."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Tavo vedamas kelias, kortelė po kortelės"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "Diegiama…",
     "installed": "Įdiegta",
     "retry": "Bandyti dar kartą"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Tavo vedamas kelias, kortelė po kortelės",
+    "heroCard": {
+      "title": "Tavo Journey",
+      "progress": "{{unit}} · {{count}} kortelės iki šios dienos tikslo"
+    },
+    "heroCta": {
+      "start": "Pradėk savo Journey",
+      "continue": "Tęsti"
+    },
+    "chrome": {
+      "home": "Pradžia",
+      "menu": "Journey parinktys",
+      "unit": "Skyrius {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Tikrinti",
+      "continue": "Tęsti",
+      "skipHint": "Braukite dar kartą, kad praleistumėte",
+      "retry": "Bandyk dar kartą",
+      "showAnswer": "Rodyti atsakymą",
+      "answerWas": "Atsakymas buvo",
+      "comeBackNote": "Prie to dar grįšime.",
+      "whyThisCard": "Kodėl ši kortelė?",
+      "whyNew": "Naujas dalykas iš tavo dabartinio skyriaus.",
+      "whyReview": "Kartojimas — tarpai jį išlaiko tvirtą.",
+      "whyRepair": "Antras žvilgsnis į tai, kas buvo sunku.",
+      "whyGuided": "Tavo vedamo kelio dalis.",
+      "typeWhatYouHear": "Rašyk, ką girdi",
+      "typeHere": "Rašyk čia…",
+      "tapToOrder": "Liesk žodžius eilės tvarka",
+      "matchPairs": "Sujunk poras",
+      "flipToReveal": "Paliesk, kad atskleistum",
+      "knewIt": "Žinojau",
+      "didntKnow": "Dar ne",
+      "speakNow": "Kalbėk dabar",
+      "listen": "Klausyk",
+      "listenSlow": "Lėčiau",
+      "hint": "Užuomina",
+      "correct": "Teisingai",
+      "incorrect": "Nevisai",
+      "pickTranslation": "Pasirink vertimą",
+      "pickWhatYouHear": "Pasirink, ką girdėjai",
+      "fillTheBlank": "Užpildyk tarpą",
+      "newItem": "Nauja",
+      "reviewedEarlier": "Matyta anksčiau"
+    },
+    "intro": {
+      "listenAndEcho": "Išklausyk ir pasakyk garsiai",
+      "newWord": "Naujas žodis",
+      "newPhrase": "Nauja frazė"
+    },
+    "grammar": {
+      "noteLabel": "Gramatikos pastaba",
+      "tryIt": "Išbandyk"
+    },
+    "checkpoint": {
+      "title": "Kontrolinis taškas",
+      "summary": "{{new}} naujų · {{reviews}} kartojimų · geriausia serija {{combo}}",
+      "done": "Šiandienai užteks",
+      "keepGoing": "Tęsti toliau",
+      "dailyRing": "{{done}}/{{goal}} šiandien",
+      "deepSession": "Koks gilus užsiėmimas — tavo kartojimai vis tiek suplanuoti.",
+      "streakTicked": "Diena {{count}} ✓",
+      "boss": "Skyriaus iššūkis",
+      "arcGate": "Lanko vartai"
+    },
+    "celebrate": {
+      "combo": "{{count}} iš eilės",
+      "perfect": "Puiku",
+      "wordsLearned": "Išmokta {{count}} žodžių",
+      "unitComplete": "Skyrius baigtas: {{name}}",
+      "streakDay": "Diena {{count}}",
+      "placementDone": "Lygis nustatytas"
+    },
+    "rare": {
+      "reveal": "Kažkas ypatingo…",
+      "etymologyGem": "Žodžio istorija",
+      "timeCapsule": {
+        "title": "Laiko kapsulė",
+        "body": "Prie šito sunkiai dirbai {{when}} — pažiūrėk į save dabar."
+      },
+      "delight": {
+        "newVoice": "Kitas balsas",
+        "didYouNotice": "Ar pastebėjai?"
+      },
+      "miniGame": {
+        "title": "Premijos raundas",
+        "play": "Žaisti"
+      },
+      "story": {
+        "unlocked": "Užsitarnavai kitą skyrių",
+        "read": "Skaityti"
+      }
+    },
+    "placement": {
+      "offerTitle": "Nuo ko pradedame?",
+      "offerBody": "Keli greiti klausimai suras tavo pradžios tašką. Apie penkias minutes.",
+      "startNew": "Esu naujokas: {{lang}}",
+      "placeMe": "Šiek tiek moku {{lang}}",
+      "skipItem": "Jei abejoji — praleisk",
+      "doneTitle": "Pradžios taškas rastas",
+      "doneBody": "Pradedame nuo {{unit}}.",
+      "prelit": "Pradedi su {{count}} jau žinomais dalykais.",
+      "redo": "Iš naujo patikrinti mano lygį",
+      "aboveTitle": "Tu jau peraugai šį kursą",
+      "aboveBody": "Šis kursas kol kas apima pradedančiųjų medžiagą, o tu esi aukščiau. Vis tiek gali jį tyrinėti — nauji lygiai jau pakeliui."
+    },
+    "path": {
+      "title": "Tavo kelias",
+      "arc": "Lankas {{name}}",
+      "unit": "Skyrius {{n}}",
+      "locked": "Toliau",
+      "current": "Tu esi čia",
+      "review": "Paliesk, kad pakartotum",
+      "mastered": "Tvirta"
+    },
+    "streak": {
+      "pactTitle": "Laikyti seriją?",
+      "pactBody": "Viena kortelė per dieną ją išlaiko gyvą. Jei praleisi dieną, poilsio diena gali tave pridengti — kas savaitę užsidirbi vieną.",
+      "pactAccept": "Aš už",
+      "pactDecline": "Ne, ačiū",
+      "days": "{{count}} d.",
+      "restDayEarned": "Poilsio diena užtarnauta",
+      "restDayUsed": "{{day}} buvo poilsio diena",
+      "repairTitle": "Atgauk savo seriją",
+      "repairBody": "Užbaik dvi sesijas per artimiausias {{days}} dienas ir atkursi savo {{count}} dienų seriją.",
+      "repairCta": "Pradėti"
+    },
+    "block": {
+      "speakingIntro": "Kalbėjimo praktika — {{count}} kortelės",
+      "ready": "Pasiruošęs",
+      "loadingModel": "Šildomas mikrofonas…",
+      "micPrompt": "Corpán naudoja mikrofoną tavo tarimui vertinti šiame įrenginyje.",
+      "sttUnavailable": "Kalbos vertinimas šiuo metu nepasiekiamas — pereiname prie klausymo pratimų."
+    },
+    "quota": {
+      "cardsLeft": "Šiandien liko {{count}} kortelių",
+      "plusBody": "Corpán Plus panaikina dienos kortelių limitą."
+    },
+    "welcomeBack": {
+      "title": "Sveikas sugrįžęs",
+      "body": "Tavo kartojimai išlaikė {{pct}} % stiprumo. Apšilkime."
+    },
+    "tease": {
+      "next": "Kitą kartą: {{title}}"
+    },
+    "jump": {
+      "title": "Atrodo per lengva?",
+      "body": "Priimk trumpą iššūkį ir šok pirmyn. Jei nepavyks, nieko neprarasi — liksi tiksliai ten, kur esi.",
+      "accept": "Bandyti iššūkį",
+      "decline": "Lieku čia"
+    },
+    "feed": {
+      "caughtUp": "Kol kas viską spėjai",
+      "loading": "Ruošiamos tavo kortelės…",
+      "loadError": "Journey nepavyko įkelti. Bandyk dar kartą iš Pradžios."
+    },
+    "popin": {
+      "pronounceTitle": "Ištark",
+      "close": "Uždaryti"
+    },
+    "settings": {
+      "title": "Journey parinktys",
+      "advanceMode": "Perėjimas",
+      "advanceSwipe": "Braukti norint tęsti",
+      "advanceAuto": "Tęsti automatiškai",
+      "celebration": "Šventimai",
+      "celebrationFull": "Pilni",
+      "celebrationReduced": "Sumažinti",
+      "celebrationMinimal": "Minimalūs",
+      "sounds": "Garsai",
+      "soundsOn": "Įjungta",
+      "soundsOff": "Išjungta",
+      "listeningMode": "Klausymas laisvomis rankomis",
+      "viewPath": "Rodyti kelią",
+      "redoPlacement": "Iš naujo patikrinti mano lygį"
+    }
   }
 }

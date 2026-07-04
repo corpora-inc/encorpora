@@ -335,6 +335,22 @@
       "surprise": {
         "label": "Nishangaze!",
         "desc": "Nipeleke mahali pa kufurahisha."
+      },
+      "journey": {
+        "label": "Fuata Journey",
+        "desc": "Kozi ya kuongozwa — programu huchagua kila hatua inayofuata"
+      }
+    },
+    "journey": {
+      "title": "Unataka njia ya kuongozwa?",
+      "subtitle": "Journey hukuletea kila siku mchanganyiko wa maudhui mapya na marudio katika {{lang}} — kadi moja baada ya nyingine.",
+      "guided": {
+        "label": "Anza Journey",
+        "desc": "Kipindi cha kila siku cha kuongozwa kinachoendana nawe"
+      },
+      "explore": {
+        "label": "Nitachunguza mwenyewe",
+        "desc": "Unaweza kuanza Journey wakati wowote kutoka Nyumbani"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sampuli lugha unayojifunza. Iscratch mpaka iingie kichwani."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Njia yako ya kuongozwa, kadi baada ya kadi"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "Inasakinisha…",
     "installed": "Imesakinishwa",
     "retry": "Jaribu tena"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Njia yako ya kuongozwa, kadi baada ya kadi",
+    "heroCard": {
+      "title": "Journey yako",
+      "progress": "{{unit}} · kadi {{count}} hadi lengo la leo"
+    },
+    "heroCta": {
+      "start": "Anza Journey yako",
+      "continue": "Endelea"
+    },
+    "chrome": {
+      "home": "Nyumbani",
+      "menu": "Chaguo za Journey",
+      "unit": "Kipengele {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Kagua",
+      "continue": "Endelea",
+      "skipHint": "Telezesha tena ili kuruka",
+      "retry": "Jaribu tena",
+      "showAnswer": "Onyesha jibu",
+      "answerWas": "Jibu lilikuwa",
+      "comeBackNote": "Tutarudi kwenye hili.",
+      "whyThisCard": "Kwa nini kadi hii?",
+      "whyNew": "Kitu kipya kutoka kipengele chako cha sasa.",
+      "whyReview": "Marudio — nafasi za muda huyaweka imara.",
+      "whyRepair": "Mtazamo wa pili kwa jambo gumu.",
+      "whyGuided": "Sehemu ya njia yako ya kuongozwa.",
+      "typeWhatYouHear": "Andika unachosikia",
+      "typeHere": "Andika hapa…",
+      "tapToOrder": "Gusa maneno kwa mpangilio",
+      "matchPairs": "Oanisha jozi",
+      "flipToReveal": "Gusa kufunua",
+      "knewIt": "Nilijua",
+      "didntKnow": "Bado",
+      "speakNow": "Sema sasa",
+      "listen": "Sikiliza",
+      "listenSlow": "Polepole zaidi",
+      "hint": "Dokezo",
+      "correct": "Sahihi",
+      "incorrect": "Si sahihi kabisa",
+      "pickTranslation": "Chagua tafsiri",
+      "pickWhatYouHear": "Chagua ulichosikia",
+      "fillTheBlank": "Jaza pengo",
+      "newItem": "Mpya",
+      "reviewedEarlier": "Imeonekana awali"
+    },
+    "intro": {
+      "listenAndEcho": "Sikiliza, kisha sema kwa sauti",
+      "newWord": "Neno jipya",
+      "newPhrase": "Kirai kipya"
+    },
+    "grammar": {
+      "noteLabel": "Dokezo la sarufi",
+      "tryIt": "Jaribu"
+    },
+    "checkpoint": {
+      "title": "Kituo cha ukaguzi",
+      "summary": "{{new}} mpya · {{reviews}} marudio · mfululizo bora {{combo}}",
+      "done": "Inatosha kwa leo",
+      "keepGoing": "Endelea",
+      "dailyRing": "{{done}}/{{goal}} leo",
+      "deepSession": "Kikao cha kina kweli — marudio yako yamepangwa vyovyote vile.",
+      "streakTicked": "Siku {{count}} ✓",
+      "boss": "Changamoto ya kipengele",
+      "arcGate": "Lango la tao"
+    },
+    "celebrate": {
+      "combo": "{{count}} mfululizo",
+      "perfect": "Kamili",
+      "wordsLearned": "Maneno {{count}} yamejifunzwa",
+      "unitComplete": "Kipengele kimekamilika: {{name}}",
+      "streakDay": "Siku {{count}}",
+      "placementDone": "Kiwango kimewekwa"
+    },
+    "rare": {
+      "reveal": "Kitu maalum…",
+      "etymologyGem": "Hadithi ya neno",
+      "timeCapsule": {
+        "title": "Kapsuli ya wakati",
+        "body": "Ulijitahidi sana na hili {{when}} — jitazame sasa."
+      },
+      "delight": {
+        "newVoice": "Sauti tofauti",
+        "didYouNotice": "Je, uligundua?"
+      },
+      "miniGame": {
+        "title": "Raundi ya bonasi",
+        "play": "Cheza"
+      },
+      "story": {
+        "unlocked": "Umestahili sura inayofuata",
+        "read": "Isome"
+      }
+    },
+    "placement": {
+      "offerTitle": "Tuanzie wapi?",
+      "offerBody": "Maswali machache ya haraka hupata mahali pako pa kuanzia. Takribani dakika tano.",
+      "startNew": "Mimi ni mgeni kwa {{lang}}",
+      "placeMe": "Ninajua {{lang}} kidogo",
+      "skipItem": "Ruka usipokuwa na uhakika",
+      "doneTitle": "Mahali pa kuanzia pamepatikana",
+      "doneBody": "Tunaanza kwenye {{unit}}.",
+      "prelit": "Unaanza na vitu {{count}} unavyovijua tayari.",
+      "redo": "Kagua kiwango changu tena",
+      "aboveTitle": "Umepita kozi hii",
+      "aboveBody": "Kozi hii kwa sasa inashughulikia maudhui ya waanzilishi, na wewe uko juu yake. Bado unaweza kuichunguza — viwango vipya vinakuja."
+    },
+    "path": {
+      "title": "Njia yako",
+      "arc": "Tao {{name}}",
+      "unit": "Kipengele {{n}}",
+      "locked": "Mbele",
+      "current": "Uko hapa",
+      "review": "Gusa kurudia",
+      "mastered": "Imara"
+    },
+    "streak": {
+      "pactTitle": "Tuweke mfululizo?",
+      "pactBody": "Kadi moja kwa siku huifanya iendelee kuishi. Ukikosa siku moja, siku ya mapumziko inaweza kukufunika — unapata moja kila wiki.",
+      "pactAccept": "Niko tayari",
+      "pactDecline": "Hapana, asante",
+      "days": "Siku {{count}}",
+      "restDayEarned": "Siku ya mapumziko imepatikana",
+      "restDayUsed": "{{day}} ilikuwa siku ya mapumziko",
+      "repairTitle": "Rudisha mfululizo wako",
+      "repairBody": "Kamilisha vikao viwili ndani ya siku {{days}} zijazo ili kurejesha mfululizo wako wa siku {{count}}.",
+      "repairCta": "Anza"
+    },
+    "block": {
+      "speakingIntro": "Mazoezi ya kuzungumza — kadi {{count}}",
+      "ready": "Tayari",
+      "loadingModel": "Kinaandaa kipaza sauti…",
+      "micPrompt": "Corpán hutumia kipaza sauti kupima matamshi yako kwenye kifaa hiki.",
+      "sttUnavailable": "Upimaji wa matamshi haupatikani sasa — tunahamia mazoezi ya kusikiliza."
+    },
+    "quota": {
+      "cardsLeft": "Kadi {{count}} zimebaki leo",
+      "plusBody": "Corpán Plus huondoa kikomo cha kadi cha kila siku."
+    },
+    "welcomeBack": {
+      "title": "Karibu tena",
+      "body": "Marudio yako yalihifadhi {{pct}}% ya nguvu zake. Tuanze taratibu."
+    },
+    "tease": {
+      "next": "Wakati ujao: {{title}}"
+    },
+    "jump": {
+      "title": "Inaonekana rahisi mno?",
+      "body": "Chukua changamoto fupi ili kuruka mbele. Ukishindwa hupotezi chochote — unabaki pale ulipo.",
+      "accept": "Jaribu changamoto",
+      "decline": "Nabaki hapa"
+    },
+    "feed": {
+      "caughtUp": "Kwa sasa umemaliza yote",
+      "loading": "Kadi zako zinaandaliwa…",
+      "loadError": "Journey haikuweza kupakiwa. Jaribu tena kutoka Nyumbani."
+    },
+    "popin": {
+      "pronounceTitle": "Litamke",
+      "close": "Funga"
+    },
+    "settings": {
+      "title": "Chaguo za Journey",
+      "advanceMode": "Kusonga mbele",
+      "advanceSwipe": "Telezesha kuendelea",
+      "advanceAuto": "Endelea kiotomatiki",
+      "celebration": "Sherehe",
+      "celebrationFull": "Kamili",
+      "celebrationReduced": "Zilizopunguzwa",
+      "celebrationMinimal": "Kidogo kabisa",
+      "sounds": "Sauti",
+      "soundsOn": "Washa",
+      "soundsOff": "Zima",
+      "listeningMode": "Kusikiliza bila mikono",
+      "viewPath": "Ona njia",
+      "redoPlacement": "Kagua kiwango changu tena"
+    }
   }
 }

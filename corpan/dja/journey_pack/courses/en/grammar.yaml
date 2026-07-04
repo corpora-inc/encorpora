@@ -1,0 +1,378 @@
+# journey_en grammar-node graph — Launchpad + A1 arc (43 authored nodes).
+# Paraphrase-only briefs (our own wording; no CEFR/EGP text). Node order is
+# the global processability sequence; each node attaches to the one skill of
+# its home unit (the unit that lists it in grammar_nodes).
+# House copy rules apply to every note: no absolutes, no "flag" words.
+nodes:
+  # --- en.a1.u01 Hello! ---
+  - id: en.gn.sv-order
+    skill: en.skill.greetings
+    order: 1
+    cefr: A1
+    title: "Basic word order"
+    note: >-
+      English sentences go Subject–Verb–Object: "I eat apples." The order
+      carries the meaning, so keep the doer first and the action second.
+  - id: en.gn.pron-subject
+    skill: en.skill.greetings
+    order: 2
+    cefr: A1
+    title: "Subject pronouns"
+    note: >-
+      I, you, he, she, it, we, they. English wants the subject said out loud
+      in nearly every sentence — "am tired" needs its "I".
+  - id: en.gn.be-1sg-2sg
+    skill: en.skill.greetings
+    order: 3
+    cefr: A1
+    title: "be: I am / you are"
+    note: >-
+      "Am" goes with I, and "are" goes with you: "I am Anna. You are my
+      friend." These two forms carry your first introductions.
+  # --- en.a1.u02 Who are you? ---
+  - id: en.gn.be-all
+    skill: en.skill.be-questions
+    order: 4
+    cefr: A1
+    title: "be: the full present"
+    note: >-
+      Am, is, and are across all persons: he, she, and it take "is"; we, you,
+      and they take "are". "She is a doctor. They are from Peru."
+  - id: en.gn.be-neg
+    skill: en.skill.be-questions
+    order: 5
+    cefr: A1
+    title: "be: negation"
+    note: >-
+      Add "not" after be: "I am not tired. She isn't here." The short forms
+      isn't and aren't sound most natural in speech.
+  - id: en.gn.be-yesno-q
+    skill: en.skill.be-questions
+    order: 6
+    cefr: A1
+    title: "Yes/no questions with be"
+    note: >-
+      Flip be to the front: "You are tired." becomes "Are you tired?" The
+      word order alone makes it a question — no extra word is needed.
+  - id: en.gn.wh-quest-be
+    skill: en.skill.be-questions
+    order: 7
+    cefr: A1
+    title: "Wh-questions with be"
+    note: >-
+      What, where, who, or how, then be, then the subject: "Where are you?
+      What is this? Who is that?"
+  - id: en.gn.articles-a-an
+    skill: en.skill.be-questions
+    order: 8
+    cefr: A1
+    title: "a / an"
+    note: >-
+      Use "a" before consonant sounds and "an" before vowel sounds: a book,
+      an apple, an hour. It marks one, non-specific thing.
+  # --- en.a1.u03 My people ---
+  - id: en.gn.poss-adj
+    skill: en.skill.family-possession
+    order: 9
+    cefr: A1
+    title: "Possessive adjectives"
+    note: >-
+      My, your, his, her, its, our, their — put them before the noun:
+      "her book", "our house", "their names".
+  - id: en.gn.poss-s
+    skill: en.skill.family-possession
+    order: 10
+    cefr: A1
+    title: "Possessive 's"
+    note: >-
+      Add 's to the owner: "Anna's dog", "my brother's car". English puts
+      the owner first and the thing owned second.
+  - id: en.gn.dem-sg
+    skill: en.skill.family-possession
+    order: 11
+    cefr: A1
+    title: "this / that"
+    note: >-
+      "This" points to something near you and "that" to something farther
+      away: "This is my phone. That is your bag."
+  # --- en.a1.u04 Numbers ---
+  - id: en.gn.numbers-1-100
+    skill: en.skill.numbers
+    order: 12
+    cefr: A1
+    title: "Numbers 1–100"
+    note: >-
+      Count to one hundred and watch the -teen versus -ty trap: thirteen and
+      thirty sound close, so the stress tells them apart.
+  - id: en.gn.plural-reg
+    skill: en.skill.numbers
+    order: 13
+    cefr: A1
+    title: "Regular plurals"
+    note: >-
+      Add -s for more than one, or -es after s, sh, ch, and x: one cat, two
+      cats; one box, two boxes.
+  # --- en.a1.u05 Time & dates ---
+  - id: en.gn.time-telling
+    skill: en.skill.time
+    order: 14
+    cefr: A1
+    title: "Telling the time"
+    note: >-
+      Start with "It's": "It's three o'clock. It's half past two. It's
+      seven fifteen." The "it" stays even though nothing is named.
+  - id: en.gn.time-prep
+    skill: en.skill.time
+    order: 15
+    cefr: A1
+    title: "at / on / in for time"
+    note: >-
+      "At" for clock times (at five), "on" for days and dates (on Monday),
+      "in" for months, years, and parts of the day (in May, in the morning).
+  # --- en.a1.u06 Food & drink ---
+  - id: en.gn.like-want-noun
+    skill: en.skill.food
+    order: 16
+    cefr: A1
+    title: "like / want + noun"
+    note: >-
+      Verb plus thing, nothing in between: "I like coffee. I want water."
+      The person doing the liking is the subject.
+  - id: en.gn.some-any
+    skill: en.skill.food
+    order: 17
+    cefr: A1
+    title: "some / any"
+    note: >-
+      "Some" in positive sentences ("I have some money") and "any" in
+      negatives and questions ("Do you have any money?").
+  # --- en.a1.u07 Eating out ---
+  - id: en.gn.would-like
+    skill: en.skill.eating-out
+    order: 18
+    cefr: A1
+    title: "I'd like (polite)"
+    note: >-
+      "I'd like a coffee, please" is the polite way to order or ask for
+      something — softer than "I want".
+  # --- en.a1.u08 My town ---
+  - id: en.gn.there-is-are
+    skill: en.skill.places
+    order: 19
+    cefr: A1
+    title: "there is / there are"
+    note: >-
+      To say something exists: "There is a bank. There are two cafes."
+      Match is or are to how many things you mean.
+  - id: en.gn.prep-place
+    skill: en.skill.places
+    order: 20
+    cefr: A1
+    title: "Prepositions of place"
+    note: >-
+      In, on, under, next to, behind, in front of, between — the little
+      words that say where: "The keys are on the table."
+  - id: en.gn.art-the
+    skill: en.skill.places
+    order: 21
+    cefr: A1
+    title: "the (basic)"
+    note: >-
+      "The" means the one we both know: "the station", "the sun", or the
+      second mention. General plurals drop it: "I like dogs."
+    late_acquired: true
+  # --- en.a1.u09 Every day ---
+  - id: en.gn.pres-simple-base
+    skill: en.skill.routines
+    order: 22
+    cefr: A1
+    title: "Present simple: I / you / we / they"
+    note: >-
+      For habits and facts, use the base verb: "I work at home. They live
+      in Lima." No ending changes for these subjects.
+  - id: en.gn.adv-freq
+    skill: en.skill.routines
+    order: 23
+    cefr: A1
+    title: "Adverbs of frequency"
+    note: >-
+      Words like usually, often, and sometimes say how frequent a habit is.
+      They go before the main verb and after be: "I usually walk. She is
+      often late."
+  # --- en.a1.u10 She works ---
+  - id: en.gn.pres-simple-3sg
+    skill: en.skill.jobs
+    order: 24
+    cefr: A1
+    title: "3rd person -s"
+    note: >-
+      With he, she, and it, the verb takes -s: "She works. He watches."
+      It is the most-forgotten letter in English, so give it extra care.
+    late_acquired: true
+  - id: en.gn.do-quest
+    skill: en.skill.jobs
+    order: 25
+    cefr: A1
+    title: "Questions with do/does"
+    note: >-
+      "Do you like tea? Does she work here?" Do or does starts the question
+      and the main verb stays in its base form.
+  - id: en.gn.do-neg
+    skill: en.skill.jobs
+    order: 26
+    cefr: A1
+    title: "Negatives with don't/doesn't"
+    note: >-
+      "I don't know. She doesn't eat meat." Don't or doesn't plus the bare
+      verb — the -s moves onto "does" and leaves the verb.
+  # --- en.a1.u11 My stuff ---
+  - id: en.gn.have-got
+    skill: en.skill.possessions
+    order: 27
+    cefr: A1
+    title: "have / has"
+    note: >-
+      Possession: "I have two brothers. She has a car." You may also hear
+      "have got" — treat it as the same meaning.
+  - id: en.gn.plural-irreg
+    skill: en.skill.possessions
+    order: 28
+    cefr: A1
+    title: "Irregular plurals"
+    note: >-
+      Some nouns change instead of adding -s: man and men, woman and women,
+      child and children, person and people, foot and feet.
+  # --- en.a1.u13 Can you? ---
+  - id: en.gn.can-ability
+    skill: en.skill.can
+    order: 29
+    cefr: A1
+    title: "can / can't (ability)"
+    note: >-
+      "I can swim. He can't drive." One form for every person, and the verb
+      after it stays bare.
+  - id: en.gn.can-request
+    skill: en.skill.can
+    order: 30
+    cefr: A1
+    title: "can (requests)"
+    note: >-
+      "Can I have the menu? Can you help me?" — the everyday polite ask,
+      for both permission and favors.
+  # --- en.a1.u14 Right now ---
+  - id: en.gn.pres-cont
+    skill: en.skill.right-now
+    order: 31
+    cefr: A1
+    title: "Present continuous"
+    note: >-
+      Be plus verb-ing for right now: "I am eating. They are working.
+      Look, it is raining."
+  - id: en.gn.simple-vs-cont
+    skill: en.skill.right-now
+    order: 32
+    cefr: A1
+    title: "Habit or right now?"
+    note: >-
+      "I drink coffee every day" is a habit; "I am drinking coffee" is this
+      moment. The time words are your clue.
+  # --- en.a1.u15 Weather & seasons ---
+  - id: en.gn.dummy-it
+    skill: en.skill.weather
+    order: 33
+    cefr: A1
+    title: "it for weather & time"
+    note: >-
+      English needs a subject even for weather and time: "It is raining.
+      It's cold. It's late." The "it" points at nothing — it just fills the
+      subject seat.
+  # --- en.a1.u16 Getting around ---
+  - id: en.gn.imperatives
+    skill: en.skill.directions
+    order: 34
+    cefr: A1
+    title: "Imperatives"
+    note: >-
+      Tell someone what to do with the bare verb: "Turn left. Wait here.
+      Please don't stop." Adding "please" keeps it friendly.
+  # --- en.a1.u17 Shopping & money ---
+  - id: en.gn.how-much-many
+    skill: en.skill.shopping
+    order: 35
+    cefr: A1
+    title: "How much / How many"
+    note: >-
+      "How many" with countable things ("How many apples?") and "how much"
+      with uncountable ones ("How much water?"). Prices use "How much is
+      it?"
+  # --- en.a1.u18 People & descriptions ---
+  - id: en.gn.obj-pron
+    skill: en.skill.describing-people
+    order: 36
+    cefr: A1
+    title: "Object pronouns"
+    note: >-
+      Me, you, him, her, it, us, them — they come after the verb: "Call me.
+      I see her. Ask him."
+  # --- en.a1.u20 Yesterday ---
+  - id: en.gn.past-be
+    skill: en.skill.past-simple
+    order: 37
+    cefr: A1
+    title: "was / were"
+    note: >-
+      The past of be: I, he, she, and it take "was"; you, we, and they take
+      "were". "I was at home. They were happy."
+  - id: en.gn.past-reg
+    skill: en.skill.past-simple
+    order: 38
+    cefr: A1
+    title: "Past simple: -ed"
+    note: >-
+      Add -ed for finished actions: "I worked. She visited her mother."
+      The same form works for every person.
+  # --- en.a1.u21 Went, saw, did ---
+  - id: en.gn.past-irreg-top25
+    skill: en.skill.past-irregular
+    order: 39
+    cefr: A1
+    title: "Irregular past (top verbs)"
+    note: >-
+      The most common verbs change form in the past: go and went, have and
+      had, see and saw, do and did, get and got, make and made.
+  - id: en.gn.past-quest-neg
+    skill: en.skill.past-irregular
+    order: 40
+    cefr: A1
+    title: "did: questions & negatives"
+    note: >-
+      "Did you see it? I didn't go." Did carries the past, so the main verb
+      returns to its base form.
+  # --- en.a1.u22 Plans & invitations ---
+  - id: en.gn.going-to
+    skill: en.skill.plans
+    order: 41
+    cefr: A1
+    title: "going to (plans)"
+    note: >-
+      Be plus going to plus a verb for plans: "I'm going to visit my aunt
+      tomorrow. We're going to travel in June."
+  # --- en.a1.u25 Better, best ---
+  - id: en.gn.comp-superl
+    skill: en.skill.comparison
+    order: 42
+    cefr: A1
+    title: "Comparatives & superlatives"
+    note: >-
+      Short adjectives take -er and -est (older, the oldest); long ones use
+      more and most. Good becomes better and best. Compare with "than": "My
+      city is bigger than yours."
+  # --- en.a1.u26 The story so far ---
+  - id: en.gn.conn-basic
+    skill: en.skill.connectors
+    order: 43
+    cefr: A1
+    title: "and / but / because"
+    note: >-
+      Join ideas: "I like tea and coffee. It's small but nice. I stayed
+      home because I was tired."

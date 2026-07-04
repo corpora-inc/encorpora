@@ -1,0 +1,7 @@
+# The Journey course-pack FIXTURE sqlite is a dependency of a corpan-app
+# JavaScript test (corpan-app/src/util/journeyPack.test.ts) and its smoke
+# test, which run in a plain Node CI job that does NOT install git-lfs or
+# pull LFS objects. Keep it as an ordinary (small, 280 KB) git blob so a
+# fresh checkout has the real bytes — the root `*.sqlite3 filter=lfs` rule
+# would otherwise leave CI with an LFS pointer ("file is not a database").
+fixtures/dist/journey_en/data/course.sqlite3 -filter -diff -merge -text

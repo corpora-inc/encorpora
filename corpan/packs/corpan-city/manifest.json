@@ -10,6 +10,278 @@
   "entryType": "script",
   "sdkVersion": "0.1.0",
   "minAppVersion": "0.17.0",
+  "activities": [
+    {
+      "activityType": "corpan_city:word-scramble",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:read-aloud",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "mfo"
+      ],
+      "typicalDurationSec": 75,
+      "requiredHostApis": [
+        "journey",
+        "stt"
+      ],
+      "modelNeeds": [
+        "stt"
+      ]
+    },
+    {
+      "activityType": "corpan_city:listen-choose-pic",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "mfi"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:picture-match",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:fast-translate",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl",
+        "fd"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:fill-the-blank",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:build-sentence",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:number-drill",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "mfi"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:odd-one-out",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:memory-pairs",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 90,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:say-it-back",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "mfo"
+      ],
+      "typicalDurationSec": 75,
+      "requiredHostApis": [
+        "journey",
+        "stt"
+      ],
+      "modelNeeds": [
+        "stt"
+      ]
+    },
+    {
+      "activityType": "corpan_city:dialogue-fill",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:category-sort",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:spot-typo",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:conjugation-tap",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:rhyme-match",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:countdown-recall",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl",
+        "fd"
+      ],
+      "typicalDurationSec": 75,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:true-false",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 45,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:word-search",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 90,
+      "requiredHostApis": [
+        "journey"
+      ]
+    },
+    {
+      "activityType": "corpan_city:tap-translation",
+      "itemKinds": [
+        "phrase"
+      ],
+      "strands": [
+        "lfl"
+      ],
+      "typicalDurationSec": 60,
+      "requiredHostApis": [
+        "journey"
+      ]
+    }
+  ],
   "nameLocalized": {
     "en": "Corpan City",
     "es": "Corpan City",
@@ -122,5 +394,5 @@
     "su": "Di Corpan City, papanggih jeung karakter AI sareng pamaén nyata, nuturkeun lalampahan pribadi, sarta ngarobah unggal papanggihan janten pelajaran basa.",
     "tl": "Sa Corpan City, makilala ang mga karakter na AI at totoong manlalaro, sundan ang isang personal na paglalakbay, at gawing aralin sa wika ang bawat pakikipagtagpo."
   },
-  "devRevision": "2026-06-09T06:40:00.765Z"
+  "devRevision": "2026-07-03T11:11:21.181Z"
 }

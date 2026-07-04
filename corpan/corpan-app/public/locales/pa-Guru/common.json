@@ -335,6 +335,22 @@
       "surprise": {
         "label": "ਮੈਨੂੰ ਹੈਰਾਨ ਕਰੋ!",
         "desc": "ਮੈਨੂੰ ਕਿਤੇ ਮਜ਼ੇਦਾਰ ਥਾਂ ਲੈ ਚੱਲੋ।"
+      },
+      "journey": {
+        "label": "Journey ਦੇ ਮਗਰ ਚੱਲੋ",
+        "desc": "ਇੱਕ ਰਾਹਨੁਮਾਈ ਵਾਲਾ ਕੋਰਸ — ਐਪ ਹਰ ਅਗਲਾ ਕਦਮ ਚੁਣਦੀ ਹੈ"
+      }
+    },
+    "journey": {
+      "title": "ਕੀ ਤੁਸੀਂ ਰਾਹਨੁਮਾਈ ਵਾਲਾ ਰਾਹ ਚਾਹੁੰਦੇ ਹੋ?",
+      "subtitle": "Journey ਹਰ ਰੋਜ਼ {{lang}} ਵਿੱਚ ਨਵੀਂ ਸਮੱਗਰੀ ਅਤੇ ਦੁਹਰਾਈ ਦਾ ਮਿਸ਼ਰਣ ਪੇਸ਼ ਕਰਦਾ ਹੈ — ਇੱਕ ਵਾਰ ਵਿੱਚ ਇੱਕ ਕਾਰਡ।",
+      "guided": {
+        "label": "Journey ਸ਼ੁਰੂ ਕਰੋ",
+        "desc": "ਇੱਕ ਰਾਹਨੁਮਾਈ ਵਾਲਾ ਰੋਜ਼ਾਨਾ ਸੈਸ਼ਨ ਜੋ ਤੁਹਾਡੇ ਅਨੁਸਾਰ ਢਲਦਾ ਹੈ"
+      },
+      "explore": {
+        "label": "ਮੈਂ ਆਪੇ ਹੀ ਖੋਜ ਕਰਾਂਗਾ",
+        "desc": "ਤੁਸੀਂ Journey ਨੂੰ ਕਦੇ ਵੀ ਘਰ ਤੋਂ ਸ਼ੁਰੂ ਕਰ ਸਕਦੇ ਹੋ"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "ਜੋ ਭਾਸ਼ਾ ਤੁਸੀਂ ਸਿੱਖ ਰਹੇ ਹੋ, ਉਸਦਾ ਸੈਂਪਲ ਲਓ। ਉਸਨੂੰ ਸਕ੍ਰੈਚ ਕਰੋ, ਜਦ ਤੱਕ ਉਹ ਯਾਦ ਵਿੱਚ ਵੱਸ ਨਾ ਜਾਵੇ।"
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "ਤੁਹਾਡਾ ਰਾਹਨੁਮਾਈ ਵਾਲਾ ਰਾਹ, ਕਾਰਡ ਤੋਂ ਕਾਰਡ"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ…",
     "installed": "ਇੰਸਟਾਲ ਹੋ ਗਿਆ",
     "retry": "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "ਤੁਹਾਡਾ ਰਾਹਨੁਮਾਈ ਵਾਲਾ ਰਾਹ, ਕਾਰਡ ਤੋਂ ਕਾਰਡ",
+    "heroCard": {
+      "title": "ਤੁਹਾਡਾ Journey",
+      "progress": "{{unit}} · ਅੱਜ ਦੇ ਟੀਚੇ ਤੱਕ {{count}} ਕਾਰਡ"
+    },
+    "heroCta": {
+      "start": "ਆਪਣਾ Journey ਸ਼ੁਰੂ ਕਰੋ",
+      "continue": "ਜਾਰੀ ਰੱਖੋ"
+    },
+    "chrome": {
+      "home": "ਘਰ",
+      "menu": "Journey ਵਿਕਲਪ",
+      "unit": "ਯੂਨਿਟ {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "ਜਾਂਚੋ",
+      "continue": "ਜਾਰੀ ਰੱਖੋ",
+      "skipHint": "ਛੱਡਣ ਲਈ ਫਿਰ ਸਵਾਈਪ ਕਰੋ",
+      "retry": "ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+      "showAnswer": "ਜਵਾਬ ਵਿਖਾਓ",
+      "answerWas": "ਜਵਾਬ ਸੀ",
+      "comeBackNote": "ਅਸੀਂ ਇਸ 'ਤੇ ਵਾਪਸ ਆਵਾਂਗੇ।",
+      "whyThisCard": "ਇਹ ਕਾਰਡ ਕਿਉਂ?",
+      "whyNew": "ਤੁਹਾਡੀ ਮੌਜੂਦਾ ਯੂਨਿਟ ਦੀ ਇੱਕ ਨਵੀਂ ਚੀਜ਼।",
+      "whyReview": "ਦੁਹਰਾਈ — ਵਕਫ਼ੇ ਇਸਨੂੰ ਮਜ਼ਬੂਤ ਰੱਖਦੇ ਹਨ।",
+      "whyRepair": "ਕਿਸੇ ਔਖੀ ਚੀਜ਼ 'ਤੇ ਦੂਜੀ ਨਜ਼ਰ।",
+      "whyGuided": "ਤੁਹਾਡੇ ਰਾਹਨੁਮਾਈ ਵਾਲੇ ਰਾਹ ਦਾ ਹਿੱਸਾ।",
+      "typeWhatYouHear": "ਜੋ ਸੁਣੋ ਉਹ ਲਿਖੋ",
+      "typeHere": "ਇੱਥੇ ਲਿਖੋ…",
+      "tapToOrder": "ਸ਼ਬਦਾਂ ਨੂੰ ਤਰਤੀਬ ਨਾਲ ਛੂਹੋ",
+      "matchPairs": "ਜੋੜੇ ਮਿਲਾਓ",
+      "flipToReveal": "ਵੇਖਣ ਲਈ ਛੂਹੋ",
+      "knewIt": "ਮੈਨੂੰ ਪਤਾ ਸੀ",
+      "didntKnow": "ਹਾਲੇ ਨਹੀਂ",
+      "speakNow": "ਹੁਣ ਬੋਲੋ",
+      "listen": "ਸੁਣੋ",
+      "listenSlow": "ਹੌਲੀ",
+      "hint": "ਇਸ਼ਾਰਾ",
+      "correct": "ਸਹੀ",
+      "incorrect": "ਪੂਰਾ ਨਹੀਂ",
+      "pickTranslation": "ਅਨੁਵਾਦ ਚੁਣੋ",
+      "pickWhatYouHear": "ਜੋ ਸੁਣਿਆ ਉਹ ਚੁਣੋ",
+      "fillTheBlank": "ਖਾਲੀ ਥਾਂ ਭਰੋ",
+      "newItem": "ਨਵਾਂ",
+      "reviewedEarlier": "ਪਹਿਲਾਂ ਵੇਖਿਆ"
+    },
+    "intro": {
+      "listenAndEcho": "ਸੁਣੋ, ਫਿਰ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਕਹੋ",
+      "newWord": "ਨਵਾਂ ਸ਼ਬਦ",
+      "newPhrase": "ਨਵਾਂ ਵਾਕ"
+    },
+    "grammar": {
+      "noteLabel": "ਵਿਆਕਰਨ ਨੋਟ",
+      "tryIt": "ਅਜ਼ਮਾਓ"
+    },
+    "checkpoint": {
+      "title": "ਚੈੱਕਪੁਆਇੰਟ",
+      "summary": "{{new}} ਨਵੇਂ · {{reviews}} ਦੁਹਰਾਈਆਂ · ਸਭ ਤੋਂ ਵਧੀਆ ਲੜੀ {{combo}}",
+      "done": "ਅੱਜ ਲਈ ਬੱਸ",
+      "keepGoing": "ਜਾਰੀ ਰੱਖੋ",
+      "dailyRing": "ਅੱਜ {{done}}/{{goal}}",
+      "deepSession": "ਕਿੰਨਾ ਡੂੰਘਾ ਸੈਸ਼ਨ — ਤੁਹਾਡੀਆਂ ਦੁਹਰਾਈਆਂ ਹਰ ਹਾਲ ਵਿੱਚ ਤੈਅ ਹਨ।",
+      "streakTicked": "ਦਿਨ {{count}} ✓",
+      "boss": "ਯੂਨਿਟ ਚੁਣੌਤੀ",
+      "arcGate": "ਕਮਾਨ ਦਾ ਦਰਵਾਜ਼ਾ"
+    },
+    "celebrate": {
+      "combo": "ਲਗਾਤਾਰ {{count}}",
+      "perfect": "ਕਮਾਲ",
+      "wordsLearned": "{{count}} ਸ਼ਬਦ ਸਿੱਖੇ",
+      "unitComplete": "ਯੂਨਿਟ ਪੂਰੀ: {{name}}",
+      "streakDay": "ਦਿਨ {{count}}",
+      "placementDone": "ਪੱਧਰ ਤੈਅ ਹੋਇਆ"
+    },
+    "rare": {
+      "reveal": "ਕੁਝ ਖ਼ਾਸ…",
+      "etymologyGem": "ਸ਼ਬਦ ਦੀ ਕਹਾਣੀ",
+      "timeCapsule": {
+        "title": "ਟਾਈਮ ਕੈਪਸੂਲ",
+        "body": "ਤੁਸੀਂ ਇਸ 'ਤੇ {{when}} ਬੜੀ ਮਿਹਨਤ ਕੀਤੀ — ਹੁਣ ਆਪਣੇ ਆਪ ਨੂੰ ਵੇਖੋ।"
+      },
+      "delight": {
+        "newVoice": "ਇੱਕ ਵੱਖਰੀ ਆਵਾਜ਼",
+        "didYouNotice": "ਕੀ ਤੁਸੀਂ ਗੌਰ ਕੀਤਾ?"
+      },
+      "miniGame": {
+        "title": "ਬੋਨਸ ਰਾਊਂਡ",
+        "play": "ਖੇਡੋ"
+      },
+      "story": {
+        "unlocked": "ਤੁਸੀਂ ਅਗਲਾ ਅਧਿਆਇ ਕਮਾ ਲਿਆ",
+        "read": "ਪੜ੍ਹੋ"
+      }
+    },
+    "placement": {
+      "offerTitle": "ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰੀਏ?",
+      "offerBody": "ਕੁਝ ਤੇਜ਼ ਸਵਾਲ ਤੁਹਾਡਾ ਸ਼ੁਰੂਆਤੀ ਬਿੰਦੂ ਲੱਭ ਲੈਂਦੇ ਹਨ। ਲਗਭਗ ਪੰਜ ਮਿੰਟ।",
+      "startNew": "ਮੈਂ {{lang}} ਵਿੱਚ ਨਵਾਂ ਹਾਂ",
+      "placeMe": "ਮੈਨੂੰ ਥੋੜ੍ਹੀ {{lang}} ਆਉਂਦੀ ਹੈ",
+      "skipItem": "ਯਕੀਨ ਨਾ ਹੋਵੇ ਤਾਂ ਛੱਡੋ",
+      "doneTitle": "ਸ਼ੁਰੂਆਤੀ ਬਿੰਦੂ ਮਿਲ ਗਿਆ",
+      "doneBody": "{{unit}} ਤੋਂ ਸ਼ੁਰੂਆਤ।",
+      "prelit": "ਤੁਸੀਂ {{count}} ਪਹਿਲਾਂ ਤੋਂ ਜਾਣੀਆਂ ਚੀਜ਼ਾਂ ਨਾਲ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ।",
+      "redo": "ਮੇਰਾ ਪੱਧਰ ਫਿਰ ਜਾਂਚੋ",
+      "aboveTitle": "ਤੁਸੀਂ ਇਸ ਕੋਰਸ ਤੋਂ ਅੱਗੇ ਹੋ",
+      "aboveBody": "ਇਹ ਕੋਰਸ ਹਾਲੇ ਸ਼ੁਰੂਆਤੀ ਸਮੱਗਰੀ ਤੱਕ ਹੈ ਅਤੇ ਤੁਸੀਂ ਉਸ ਤੋਂ ਉੱਪਰ ਹੋ। ਫਿਰ ਵੀ ਤੁਸੀਂ ਇਸਨੂੰ ਵੇਖ ਸਕਦੇ ਹੋ — ਨਵੇਂ ਪੱਧਰ ਆ ਰਹੇ ਹਨ।"
+    },
+    "path": {
+      "title": "ਤੁਹਾਡਾ ਰਾਹ",
+      "arc": "ਕਮਾਨ {{name}}",
+      "unit": "ਯੂਨਿਟ {{n}}",
+      "locked": "ਅੱਗੇ",
+      "current": "ਤੁਸੀਂ ਇੱਥੇ ਹੋ",
+      "review": "ਦੁਹਰਾਉਣ ਲਈ ਛੂਹੋ",
+      "mastered": "ਮਜ਼ਬੂਤ"
+    },
+    "streak": {
+      "pactTitle": "ਲੜੀ ਰੱਖੀਏ?",
+      "pactBody": "ਰੋਜ਼ ਇੱਕ ਕਾਰਡ ਇਸਨੂੰ ਜ਼ਿੰਦਾ ਰੱਖਦਾ ਹੈ। ਜੇ ਦਿਨ ਖੁੰਝ ਜਾਵੇ ਤਾਂ ਆਰਾਮ ਦਾ ਦਿਨ ਬਚਾ ਸਕਦਾ ਹੈ — ਹਰ ਹਫ਼ਤੇ ਇੱਕ ਮਿਲਦਾ ਹੈ।",
+      "pactAccept": "ਮੈਂ ਤਿਆਰ ਹਾਂ",
+      "pactDecline": "ਨਹੀਂ, ਧੰਨਵਾਦ",
+      "days": "{{count}} ਦਿਨ",
+      "restDayEarned": "ਆਰਾਮ ਦਾ ਦਿਨ ਕਮਾਇਆ",
+      "restDayUsed": "{{day}} ਆਰਾਮ ਦਾ ਦਿਨ ਸੀ",
+      "repairTitle": "ਆਪਣੀ ਲੜੀ ਵਾਪਸ ਲਓ",
+      "repairBody": "ਅਗਲੇ {{days}} ਦਿਨਾਂ ਵਿੱਚ ਦੋ ਸੈਸ਼ਨ ਪੂਰੇ ਕਰੋ ਤਾਂ ਜੋ ਤੁਹਾਡੀ {{count}} ਦਿਨਾਂ ਦੀ ਲੜੀ ਬਹਾਲ ਹੋਵੇ।",
+      "repairCta": "ਸ਼ੁਰੂ ਕਰੋ"
+    },
+    "block": {
+      "speakingIntro": "ਬੋਲਣ ਦਾ ਅਭਿਆਸ — {{count}} ਕਾਰਡ",
+      "ready": "ਤਿਆਰ",
+      "loadingModel": "ਮਾਈਕ ਤਿਆਰ ਹੋ ਰਿਹਾ ਹੈ…",
+      "micPrompt": "Corpán ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਤੁਹਾਡੀ ਬੋਲੀ ਪਰਖਣ ਲਈ ਮਾਈਕ ਵਰਤਦਾ ਹੈ।",
+      "sttUnavailable": "ਬੋਲਣ ਦੀ ਪਰਖ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ — ਸੁਣਨ ਦੇ ਅਭਿਆਸ ਵੱਲ ਜਾ ਰਹੇ ਹਾਂ।"
+    },
+    "quota": {
+      "cardsLeft": "ਅੱਜ {{count}} ਕਾਰਡ ਬਾਕੀ",
+      "plusBody": "Corpán Plus ਰੋਜ਼ਾਨਾ ਕਾਰਡ ਸੀਮਾ ਹਟਾ ਦਿੰਦਾ ਹੈ।"
+    },
+    "welcomeBack": {
+      "title": "ਜੀ ਆਇਆਂ ਨੂੰ",
+      "body": "ਤੁਹਾਡੀਆਂ ਦੁਹਰਾਈਆਂ ਨੇ ਆਪਣੀ {{pct}}% ਤਾਕਤ ਰੱਖੀ। ਆਓ ਵਾਰਮ-ਅੱਪ ਕਰੀਏ।"
+    },
+    "tease": {
+      "next": "ਅਗਲੀ ਵਾਰ: {{title}}"
+    },
+    "jump": {
+      "title": "ਕੀ ਇਹ ਬਹੁਤ ਸੌਖਾ ਲੱਗਦਾ ਹੈ?",
+      "body": "ਅੱਗੇ ਟੱਪਣ ਲਈ ਇੱਕ ਛੋਟੀ ਚੁਣੌਤੀ ਲਓ। ਅਸਫਲ ਹੋਵੋ ਤਾਂ ਕੁਝ ਨਹੀਂ ਗੁਆਉਂਦੇ — ਤੁਸੀਂ ਉੱਥੇ ਹੀ ਰਹਿੰਦੇ ਹੋ ਜਿੱਥੇ ਹੋ।",
+      "accept": "ਚੁਣੌਤੀ ਅਜ਼ਮਾਓ",
+      "decline": "ਇੱਥੇ ਹੀ ਰਹਾਂਗਾ"
+    },
+    "feed": {
+      "caughtUp": "ਫ਼ਿਲਹਾਲ ਸਭ ਹੋ ਗਿਆ",
+      "loading": "ਤੁਹਾਡੇ ਕਾਰਡ ਤਿਆਰ ਹੋ ਰਹੇ ਹਨ…",
+      "loadError": "Journey ਲੋਡ ਨਹੀਂ ਹੋ ਸਕਿਆ। ਘਰ ਤੋਂ ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+    },
+    "popin": {
+      "pronounceTitle": "ਇਸਦਾ ਉਚਾਰਨ ਕਰੋ",
+      "close": "ਬੰਦ ਕਰੋ"
+    },
+    "settings": {
+      "title": "Journey ਵਿਕਲਪ",
+      "advanceMode": "ਅੱਗੇ ਵਧਣਾ",
+      "advanceSwipe": "ਜਾਰੀ ਰੱਖਣ ਲਈ ਸਵਾਈਪ",
+      "advanceAuto": "ਆਪਣੇ ਆਪ ਜਾਰੀ ਰੱਖੋ",
+      "celebration": "ਜਸ਼ਨ",
+      "celebrationFull": "ਪੂਰੇ",
+      "celebrationReduced": "ਘਟਾਏ",
+      "celebrationMinimal": "ਘੱਟੋ-ਘੱਟ",
+      "sounds": "ਆਵਾਜ਼ਾਂ",
+      "soundsOn": "ਚਾਲੂ",
+      "soundsOff": "ਬੰਦ",
+      "listeningMode": "ਹੈਂਡਸ-ਫ੍ਰੀ ਸੁਣਨਾ",
+      "viewPath": "ਰਾਹ ਵੇਖੋ",
+      "redoPlacement": "ਮੇਰਾ ਪੱਧਰ ਫਿਰ ਜਾਂਚੋ"
+    }
   }
 }

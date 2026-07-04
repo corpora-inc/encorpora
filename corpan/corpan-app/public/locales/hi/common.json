@@ -335,6 +335,22 @@
       "surprise": {
         "label": "मुझे चौंका दें!",
         "desc": "मुझे कहीं मज़ेदार ले चलें।"
+      },
+      "journey": {
+        "label": "Journey का अनुसरण करें",
+        "desc": "एक मार्गदर्शित कोर्स — ऐप हर अगला कदम चुनता है"
+      }
+    },
+    "journey": {
+      "title": "मार्गदर्शित राह चाहिए?",
+      "subtitle": "Journey हर दिन {{lang}} में नई सामग्री और दोहराव का मिश्रण पेश करता है — कार्ड दर कार्ड।",
+      "guided": {
+        "label": "Journey शुरू करें",
+        "desc": "एक मार्गदर्शित दैनिक सत्र जो आपके अनुसार ढलता है"
+      },
+      "explore": {
+        "label": "मैं खुद एक्सप्लोर करूँगा",
+        "desc": "आप होम से कभी भी Journey शुरू कर सकते हैं"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "जो भाषा सीख रहे हैं, उसे सैंपल कीजिए। स्क्रैच कीजिए, जब तक वह याद में बस न जाए।"
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "आपकी मार्गदर्शित राह, कार्ड दर कार्ड"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "इंस्टॉल हो रहा है…",
     "installed": "इंस्टॉल हो गया",
     "retry": "फिर से प्रयास करें"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "आपकी मार्गदर्शित राह, कार्ड दर कार्ड",
+    "heroCard": {
+      "title": "आपका Journey",
+      "progress": "{{unit}} · आज के लक्ष्य तक {{count}} कार्ड"
+    },
+    "heroCta": {
+      "start": "अपना Journey शुरू करें",
+      "continue": "जारी रखें"
+    },
+    "chrome": {
+      "home": "होम",
+      "menu": "Journey विकल्प",
+      "unit": "इकाई {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "जाँचें",
+      "continue": "जारी रखें",
+      "skipHint": "छोड़ने के लिए फिर स्वाइप करें",
+      "retry": "फिर कोशिश करें",
+      "showAnswer": "उत्तर दिखाएँ",
+      "answerWas": "उत्तर था",
+      "comeBackNote": "हम इस पर लौटेंगे।",
+      "whyThisCard": "यह कार्ड क्यों?",
+      "whyNew": "आपकी मौजूदा इकाई से कुछ नया।",
+      "whyReview": "एक दोहराव — अंतराल इसे मज़बूत रखते हैं।",
+      "whyRepair": "किसी कठिन चीज़ पर दूसरी नज़र।",
+      "whyGuided": "आपकी मार्गदर्शित राह का हिस्सा।",
+      "typeWhatYouHear": "जो सुनें वह लिखें",
+      "typeHere": "यहाँ लिखें…",
+      "tapToOrder": "शब्दों को क्रम से छुएँ",
+      "matchPairs": "जोड़े मिलाएँ",
+      "flipToReveal": "देखने के लिए छुएँ",
+      "knewIt": "मुझे पता था",
+      "didntKnow": "अभी नहीं",
+      "speakNow": "अब बोलें",
+      "listen": "सुनें",
+      "listenSlow": "धीरे",
+      "hint": "संकेत",
+      "correct": "सही",
+      "incorrect": "पूरा नहीं",
+      "pickTranslation": "अनुवाद चुनें",
+      "pickWhatYouHear": "जो सुना वह चुनें",
+      "fillTheBlank": "रिक्त स्थान भरें",
+      "newItem": "नया",
+      "reviewedEarlier": "पहले देखा"
+    },
+    "intro": {
+      "listenAndEcho": "सुनें, फिर ज़ोर से बोलें",
+      "newWord": "नया शब्द",
+      "newPhrase": "नया वाक्य"
+    },
+    "grammar": {
+      "noteLabel": "व्याकरण नोट",
+      "tryIt": "आज़माएँ"
+    },
+    "checkpoint": {
+      "title": "चेकपॉइंट",
+      "summary": "{{new}} नए · {{reviews}} दोहराव · सर्वश्रेष्ठ शृंखला {{combo}}",
+      "done": "आज के लिए बस",
+      "keepGoing": "जारी रखें",
+      "dailyRing": "आज {{done}}/{{goal}}",
+      "deepSession": "कितना गहरा सत्र — आपके दोहराव वैसे भी निर्धारित हैं।",
+      "streakTicked": "दिन {{count}} ✓",
+      "boss": "इकाई चुनौती",
+      "arcGate": "चाप द्वार"
+    },
+    "celebrate": {
+      "combo": "लगातार {{count}}",
+      "perfect": "बहुत बढ़िया",
+      "wordsLearned": "{{count}} शब्द सीखे",
+      "unitComplete": "इकाई पूरी: {{name}}",
+      "streakDay": "दिन {{count}}",
+      "placementDone": "स्तर तय हुआ"
+    },
+    "rare": {
+      "reveal": "कुछ खास…",
+      "etymologyGem": "शब्द की कहानी",
+      "timeCapsule": {
+        "title": "टाइम कैप्सूल",
+        "body": "आपने इस पर {{when}} खूब मेहनत की — अब खुद को देखिए।"
+      },
+      "delight": {
+        "newVoice": "एक अलग आवाज़",
+        "didYouNotice": "क्या आपने गौर किया?"
+      },
+      "miniGame": {
+        "title": "बोनस राउंड",
+        "play": "खेलें"
+      },
+      "story": {
+        "unlocked": "आपने अगला अध्याय अर्जित किया",
+        "read": "पढ़ें"
+      }
+    },
+    "placement": {
+      "offerTitle": "कहाँ से शुरू करें?",
+      "offerBody": "कुछ तेज़ सवाल आपका शुरुआती बिंदु ढूँढ लेते हैं। लगभग पाँच मिनट।",
+      "startNew": "मैं {{lang}} में नया हूँ",
+      "placeMe": "मुझे थोड़ी {{lang}} आती है",
+      "skipItem": "पक्का न हो तो छोड़ दें",
+      "doneTitle": "शुरुआती बिंदु मिल गया",
+      "doneBody": "{{unit}} से शुरुआत।",
+      "prelit": "आप {{count}} पहले से ज्ञात चीज़ों के साथ शुरू कर रहे हैं।",
+      "redo": "मेरा स्तर फिर जाँचें",
+      "aboveTitle": "आप इस कोर्स से आगे हैं",
+      "aboveBody": "यह कोर्स अभी शुरुआती सामग्री तक सीमित है और आप उससे ऊपर हैं। फिर भी आप इसे देख सकते हैं — नए स्तर आ रहे हैं।"
+    },
+    "path": {
+      "title": "आपकी राह",
+      "arc": "चाप {{name}}",
+      "unit": "इकाई {{n}}",
+      "locked": "आगे",
+      "current": "आप यहाँ हैं",
+      "review": "दोहराने के लिए छुएँ",
+      "mastered": "मज़बूत"
+    },
+    "streak": {
+      "pactTitle": "शृंखला रखें?",
+      "pactBody": "रोज़ एक कार्ड इसे ज़िंदा रखता है। एक दिन छूट जाए तो विश्राम दिवस बचा सकता है — हर हफ़्ते एक मिलता है।",
+      "pactAccept": "मैं तैयार हूँ",
+      "pactDecline": "नहीं, धन्यवाद",
+      "days": "{{count}} दिन",
+      "restDayEarned": "विश्राम दिवस अर्जित",
+      "restDayUsed": "{{day}} विश्राम दिवस था",
+      "repairTitle": "अपनी शृंखला वापस पाएँ",
+      "repairBody": "अगले {{days}} दिनों में दो सत्र पूरे करें और अपनी {{count}} दिनों की शृंखला बहाल करें।",
+      "repairCta": "शुरू करें"
+    },
+    "block": {
+      "speakingIntro": "बोलने का अभ्यास — {{count}} कार्ड",
+      "ready": "तैयार",
+      "loadingModel": "माइक्रोफ़ोन तैयार हो रहा है…",
+      "micPrompt": "Corpán इस डिवाइस पर आपकी बोली आँकने के लिए माइक्रोफ़ोन का उपयोग करता है।",
+      "sttUnavailable": "बोलने का आकलन अभी उपलब्ध नहीं — सुनने के अभ्यास पर जा रहे हैं।"
+    },
+    "quota": {
+      "cardsLeft": "आज {{count}} कार्ड बाकी",
+      "plusBody": "Corpán Plus दैनिक कार्ड सीमा हटा देता है।"
+    },
+    "welcomeBack": {
+      "title": "वापसी पर स्वागत",
+      "body": "आपके दोहरावों ने अपनी {{pct}}% ताक़त बनाए रखी। चलिए वार्म-अप करें।"
+    },
+    "tease": {
+      "next": "अगली बार: {{title}}"
+    },
+    "jump": {
+      "title": "क्या यह बहुत आसान लग रहा है?",
+      "body": "आगे कूदने के लिए एक छोटी चुनौती लें। असफल हों तो कुछ नहीं खोते — आप वहीं रहते हैं जहाँ हैं।",
+      "accept": "चुनौती आज़माएँ",
+      "decline": "यहीं रहूँगा"
+    },
+    "feed": {
+      "caughtUp": "फ़िलहाल आप अप-टू-डेट हैं",
+      "loading": "आपके कार्ड तैयार हो रहे हैं…",
+      "loadError": "Journey लोड नहीं हो सका। होम से फिर कोशिश करें।"
+    },
+    "popin": {
+      "pronounceTitle": "इसका उच्चारण करें",
+      "close": "बंद करें"
+    },
+    "settings": {
+      "title": "Journey विकल्प",
+      "advanceMode": "आगे बढ़ना",
+      "advanceSwipe": "जारी रखने के लिए स्वाइप",
+      "advanceAuto": "स्वतः जारी रखें",
+      "celebration": "उत्सव",
+      "celebrationFull": "पूर्ण",
+      "celebrationReduced": "कम",
+      "celebrationMinimal": "न्यूनतम",
+      "sounds": "ध्वनियाँ",
+      "soundsOn": "चालू",
+      "soundsOff": "बंद",
+      "listeningMode": "हैंड्स-फ़्री सुनना",
+      "viewPath": "राह देखें",
+      "redoPlacement": "मेरा स्तर फिर जाँचें"
+    }
   }
 }

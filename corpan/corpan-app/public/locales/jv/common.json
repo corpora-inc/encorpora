@@ -208,6 +208,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Coba basa sing sampeyan sinau. Garuk nganti nempel."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Dalan tuntunanmu, kertu mbaka kertu"
     }
   },
   "onboarding": {
@@ -408,6 +412,22 @@
       "surprise": {
         "label": "Kejutna aku!",
         "desc": "Gawanen aku menyang panggonan sing nyenengake."
+      },
+      "journey": {
+        "label": "Melu Journey",
+        "desc": "Kursus tuntunan — aplikasi milih saben langkah sabanjure"
+      }
+    },
+    "journey": {
+      "title": "Pengin dalan sing dituntun?",
+      "subtitle": "Journey saben dina nyuguhake campuran materi anyar lan ulangan nganggo {{lang}} — kertu mbaka kertu.",
+      "guided": {
+        "label": "Miwiti Journey",
+        "desc": "Sesi tuntunan saben dina sing ngepasake karo sampeyan"
+      },
+      "explore": {
+        "label": "Aku njelajah dhewe wae",
+        "desc": "Journey bisa diwiwiti kapan wae saka Ngarep"
       }
     }
   },
@@ -852,5 +872,185 @@
     "installing": "Masang…",
     "installed": "Wis dipasang",
     "retry": "Coba maneh"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Dalan tuntunanmu, kertu mbaka kertu",
+    "heroCard": {
+      "title": "Journey-mu",
+      "progress": "{{unit}} · {{count}} kertu nganti target dina iki"
+    },
+    "heroCta": {
+      "start": "Miwiti Journey-mu",
+      "continue": "Terusake"
+    },
+    "chrome": {
+      "home": "Ngarep",
+      "menu": "Pilihan Journey",
+      "unit": "Unit {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Priksa",
+      "continue": "Terusake",
+      "skipHint": "Usap maneh kanggo nglewati",
+      "retry": "Coba maneh",
+      "showAnswer": "Tuduhake jawaban",
+      "answerWas": "Jawabane yaiku",
+      "comeBackNote": "Mengko bakal bali menyang iki.",
+      "whyThisCard": "Kok kertu iki?",
+      "whyNew": "Barang anyar saka unitmu saiki.",
+      "whyReview": "Pengulangan — jeda wektu njaga tetep kuwat.",
+      "whyRepair": "Ndeleng maneh perkara sing angel.",
+      "whyGuided": "Bagean saka dalan tuntunanmu.",
+      "typeWhatYouHear": "Ketik sing kokrungu",
+      "typeHere": "Ketik ing kene…",
+      "tapToOrder": "Tutul tembung urut",
+      "matchPairs": "Jodhokake pasangane",
+      "flipToReveal": "Tutul kanggo mbukak",
+      "knewIt": "Aku ngerti",
+      "didntKnow": "Durung",
+      "speakNow": "Saiki omonga",
+      "listen": "Rungokna",
+      "listenSlow": "Luwih alon",
+      "hint": "Pitunjuk",
+      "correct": "Bener",
+      "incorrect": "Durung pas",
+      "pickTranslation": "Pilih terjemahane",
+      "pickWhatYouHear": "Pilih sing kokrungu",
+      "fillTheBlank": "Isi sing kosong",
+      "newItem": "Anyar",
+      "reviewedEarlier": "Wis dideleng"
+    },
+    "intro": {
+      "listenAndEcho": "Rungokna, banjur ucapna sero",
+      "newWord": "Tembung anyar",
+      "newPhrase": "Frasa anyar"
+    },
+    "grammar": {
+      "noteLabel": "Cathetan paramasastra",
+      "tryIt": "Coba"
+    },
+    "checkpoint": {
+      "title": "Pos priksa",
+      "summary": "{{new}} anyar · {{reviews}} pengulangan · rentetan paling apik {{combo}}",
+      "done": "Cukup kanggo dina iki",
+      "keepGoing": "Terus wae",
+      "dailyRing": "{{done}}/{{goal}} dina iki",
+      "deepSession": "Sesi sing jero tenan — pengulanganmu tetep dijadwal.",
+      "streakTicked": "Dina {{count}} ✓",
+      "boss": "Tantangan unit",
+      "arcGate": "Gapura busur"
+    },
+    "celebrate": {
+      "combo": "{{count}} berturut-turut",
+      "perfect": "Sampurna",
+      "wordsLearned": "{{count}} tembung disinaoni",
+      "unitComplete": "Unit rampung: {{name}}",
+      "streakDay": "Dina {{count}}",
+      "placementDone": "Tingkat wis ditemtokake"
+    },
+    "rare": {
+      "reveal": "Ana sing istimewa…",
+      "etymologyGem": "Critane tembung",
+      "timeCapsule": {
+        "title": "Kapsul wektu",
+        "body": "Kowe nyambut gawe tenanan babagan iki {{when}} — delengen awakmu saiki."
+      },
+      "delight": {
+        "newVoice": "Swara sing beda",
+        "didYouNotice": "Apa kowe nggatekake?"
+      },
+      "miniGame": {
+        "title": "Babak bonus",
+        "play": "Dolanan"
+      },
+      "story": {
+        "unlocked": "Kowe pantes entuk bab sabanjure",
+        "read": "Wacanen"
+      }
+    },
+    "placement": {
+      "offerTitle": "Miwiti saka ngendi?",
+      "offerBody": "Sawetara pitakonan cepet nemokake titik wiwitanmu. Kira-kira limang menit.",
+      "startNew": "Aku isih anyar karo {{lang}}",
+      "placeMe": "Aku ngerti sithik {{lang}}",
+      "skipItem": "Lewati yen ora yakin",
+      "doneTitle": "Titik wiwitan ketemu",
+      "doneBody": "Miwiti ing {{unit}}.",
+      "prelit": "Kowe miwiti karo {{count}} perkara sing wis dingerteni.",
+      "redo": "Priksa maneh tingkatku",
+      "aboveTitle": "Kowe wis ngluwihi kursus iki",
+      "aboveBody": "Kursus iki saiki isih materi pemula, lan kowe wis ana ing sadhuwure. Isih bisa dijelajahi — tingkat anyar lagi teka."
+    },
+    "path": {
+      "title": "Dalanmu",
+      "arc": "Busur {{name}}",
+      "unit": "Unit {{n}}",
+      "locked": "Ing ngarep",
+      "current": "Kowe ing kene",
+      "review": "Tutul kanggo mbaleni",
+      "mastered": "Kuwat"
+    },
+    "streak": {
+      "pactTitle": "Njaga rentetan?",
+      "pactBody": "Sakertu sedina njaga tetep urip. Yen kliwatan sedina, dina ngaso bisa nulungi — saben minggu entuk siji.",
+      "pactAccept": "Aku melu",
+      "pactDecline": "Ora, matur nuwun",
+      "days": "{{count}} dina",
+      "restDayEarned": "Dina ngaso entuk",
+      "restDayUsed": "{{day}} iku dina ngaso",
+      "repairTitle": "Balekake rentetanmu",
+      "repairBody": "Rampungake rong sesi sajrone {{days}} dina ngarep kanggo mbalekake rentetan {{count}} dinamu.",
+      "repairCta": "Miwiti"
+    },
+    "block": {
+      "speakingIntro": "Latihan ngomong — {{count}} kertu",
+      "ready": "Siyap",
+      "loadingModel": "Nyiapake mikrofon…",
+      "micPrompt": "Corpán nganggo mikrofon kanggo mbiji omonganmu ing piranti iki.",
+      "sttUnavailable": "Pambiji omongan saiki ora kasedhiya — pindhah menyang latihan ngrungokake."
+    },
+    "quota": {
+      "cardsLeft": "Isih {{count}} kertu dina iki",
+      "plusBody": "Corpán Plus ngilangi watesan kertu saben dina."
+    },
+    "welcomeBack": {
+      "title": "Sugeng rawuh maneh",
+      "body": "Pengulanganmu njaga {{pct}}% kekuwatane. Ayo pemanasan."
+    },
+    "tease": {
+      "next": "Liya wektu: {{title}}"
+    },
+    "jump": {
+      "title": "Krasa gampang banget?",
+      "body": "Jupuk tantangan cendhak kanggo mlumpat maju. Yen gagal ora kelangan apa-apa — kowe tetep ing panggonanmu.",
+      "accept": "Coba tantangane",
+      "decline": "Tetep ing kene"
+    },
+    "feed": {
+      "caughtUp": "Saiki wis rampung kabeh",
+      "loading": "Nyiapake kertumu…",
+      "loadError": "Journey ora bisa dimuat. Coba maneh saka Ngarep."
+    },
+    "popin": {
+      "pronounceTitle": "Ucapna",
+      "close": "Tutup"
+    },
+    "settings": {
+      "title": "Pilihan Journey",
+      "advanceMode": "Pindhah",
+      "advanceSwipe": "Usap kanggo nerusake",
+      "advanceAuto": "Terus otomatis",
+      "celebration": "Perayaan",
+      "celebrationFull": "Kebak",
+      "celebrationReduced": "Dikurangi",
+      "celebrationMinimal": "Minimal",
+      "sounds": "Swara",
+      "soundsOn": "Urip",
+      "soundsOff": "Mati",
+      "listeningMode": "Ngrungokake tanpa tangan",
+      "viewPath": "Deleng dalan",
+      "redoPlacement": "Priksa maneh tingkatku"
+    }
   }
 }

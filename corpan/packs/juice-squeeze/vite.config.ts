@@ -32,6 +32,19 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  resolve: {
+    alias: {
+      // Capability source imports (cap-squeeze) — see packs/shared/capabilities.
+      "@shared/capabilities": path.resolve(__dirname, "../shared/capabilities"),
+      // Capability sources live outside this package root; force their bare
+      // framework imports to resolve from THIS pack's node_modules (§3.1:
+      // frameworks come from the consumer).
+      react: path.resolve(__dirname, "node_modules/react"),
+      "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
+      "@dnd-kit/core": path.resolve(__dirname, "node_modules/@dnd-kit/core"),
+      zustand: path.resolve(__dirname, "node_modules/zustand"),
+    },
+  },
   // Use esbuild's automatic JSX runtime so we don't depend on a Vite React
   // plugin (keeps us compatible with any Vite version).
   esbuild: {

@@ -1,0 +1,89 @@
+id: en.a1.u12
+arc: en.arc1
+theme: "Colors & clothes"
+cando:
+  - key: describe-things
+    text: "Can name colors and clothes and describe what things look like."
+vocab_band: { lo: 1, hi: 3300 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.colors-clothes
+    kind: vocab
+    title: "Colors & clothes"
+    b: -2.8
+    prereqs: [en.skill.possessions]
+items:
+  - ref: "phrase:base:21704"  # I like this dress.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    probe: true
+    b: -2.8
+  - ref: "phrase:base:15197"  # Her bag is yellow.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    probe: true
+    b: -2.8
+  - ref: "phrase:base:21548"  # Shoes are very comfortable.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    probe: true
+    b: -2.8
+  - ref: "phrase:base:5250"  # Yellow is my favourite colour.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11512"  # She put on her dress before leaving the house.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21707"  # The dress is pretty.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:14287"  # She bought a red apple at the market.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:6233"  # This coat is very expensive.
+    skills: [en.skill.colors-clothes]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:red"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - ref: "word:en:blue"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - ref: "word:en:green"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - ref: "word:en:black"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - ref: "word:en:white"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - ref: "word:en:shirt"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - ref: "word:en:shoes"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - ref: "word:en:yellow"
+    skills: [en.skill.colors-clothes]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: A0
+      count: 8
+      skills: [en.skill.colors-clothes]
+      importance: 2
+      substitutable: true
+lessons: [core, core, phonology, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]

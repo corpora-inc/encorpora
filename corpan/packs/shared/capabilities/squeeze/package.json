@@ -1,0 +1,7 @@
+{
+  "name": "@corpan/cap-squeeze",
+  "version": "0.1.0",
+  "description": "Capability module: drag-to-rebuild sentence round (extracted from juice-squeeze). React inside, DOM boundary; react/react-dom/@dnd-kit/* and zustand resolve from the consumer's node_modules. Consumed via the @shared source alias, not npm.",
+  "private": true,
+  "type": "module"
+}

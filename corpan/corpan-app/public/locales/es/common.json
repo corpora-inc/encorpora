@@ -335,6 +335,22 @@
       "surprise": {
         "label": "¡Sorpréndeme!",
         "desc": "Llévame a un lugar divertido."
+      },
+      "journey": {
+        "label": "Sigue el Journey",
+        "desc": "Un curso guiado: la app elige cada paso"
+      }
+    },
+    "journey": {
+      "title": "¿Quieres un camino guiado?",
+      "subtitle": "El Journey te sirve cada día una mezcla de material nuevo y repaso en {{lang}} — tarjeta a tarjeta.",
+      "guided": {
+        "label": "Empezar el Journey",
+        "desc": "Una sesión diaria guiada que se adapta a ti"
+      },
+      "explore": {
+        "label": "Exploraré por mi cuenta",
+        "desc": "Puedes empezar el Journey cuando quieras desde Inicio"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Samplea el idioma que estás aprendiendo. Hazle scratch hasta que se te quede."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Tu camino guiado, tarjeta a tarjeta"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "Instalando…",
     "installed": "Instalado",
     "retry": "Reintentar"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Tu camino guiado, tarjeta a tarjeta",
+    "heroCard": {
+      "title": "Tu Journey",
+      "progress": "{{unit}} · {{count}} tarjetas para la meta de hoy"
+    },
+    "heroCta": {
+      "start": "Empieza tu Journey",
+      "continue": "Continuar"
+    },
+    "chrome": {
+      "home": "Inicio",
+      "menu": "Opciones de Journey",
+      "unit": "Unidad {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Comprobar",
+      "continue": "Continuar",
+      "skipHint": "Desliza otra vez para saltar",
+      "retry": "Inténtalo de nuevo",
+      "showAnswer": "Mostrar respuesta",
+      "answerWas": "La respuesta era",
+      "comeBackNote": "Volveremos a esto.",
+      "whyThisCard": "¿Por qué esta tarjeta?",
+      "whyNew": "Un elemento nuevo de tu unidad actual.",
+      "whyReview": "Un repaso: el espaciado lo mantiene fuerte.",
+      "whyRepair": "Un segundo vistazo a algo que costó.",
+      "whyGuided": "Parte de tu camino guiado.",
+      "typeWhatYouHear": "Escribe lo que oyes",
+      "typeHere": "Escribe aquí…",
+      "tapToOrder": "Toca las palabras en orden",
+      "matchPairs": "Une las parejas",
+      "flipToReveal": "Toca para revelar",
+      "knewIt": "La sabía",
+      "didntKnow": "Todavía no",
+      "speakNow": "Habla ahora",
+      "listen": "Escuchar",
+      "listenSlow": "Más lento",
+      "hint": "Pista",
+      "correct": "Correcto",
+      "incorrect": "No exactamente",
+      "pickTranslation": "Elige la traducción",
+      "pickWhatYouHear": "Elige lo que oíste",
+      "fillTheBlank": "Completa el hueco",
+      "newItem": "Nuevo",
+      "reviewedEarlier": "Visto antes"
+    },
+    "intro": {
+      "listenAndEcho": "Escucha y dilo en voz alta",
+      "newWord": "Palabra nueva",
+      "newPhrase": "Frase nueva"
+    },
+    "grammar": {
+      "noteLabel": "Nota de gramática",
+      "tryIt": "Pruébalo"
+    },
+    "checkpoint": {
+      "title": "Punto de control",
+      "summary": "{{new}} nuevas · {{reviews}} repasos · mejor racha {{combo}}",
+      "done": "Por hoy está bien",
+      "keepGoing": "Seguir",
+      "dailyRing": "{{done}}/{{goal}} hoy",
+      "deepSession": "Qué sesión tan profunda: tus repasos quedan programados igualmente.",
+      "streakTicked": "Día {{count}} ✓",
+      "boss": "Reto de unidad",
+      "arcGate": "Puerta de arco"
+    },
+    "celebrate": {
+      "combo": "{{count}} seguidas",
+      "perfect": "Perfecto",
+      "wordsLearned": "{{count}} palabras aprendidas",
+      "unitComplete": "Unidad completada: {{name}}",
+      "streakDay": "Día {{count}}",
+      "placementDone": "Ya tienes tu nivel"
+    },
+    "rare": {
+      "reveal": "Algo especial…",
+      "etymologyGem": "Historia de la palabra",
+      "timeCapsule": {
+        "title": "Cápsula del tiempo",
+        "body": "Te costó mucho {{when}} — mírate ahora."
+      },
+      "delight": {
+        "newVoice": "Una voz diferente",
+        "didYouNotice": "¿Te diste cuenta?"
+      },
+      "miniGame": {
+        "title": "Ronda extra",
+        "play": "Jugar"
+      },
+      "story": {
+        "unlocked": "Te has ganado el próximo capítulo",
+        "read": "Leerlo"
+      }
+    },
+    "placement": {
+      "offerTitle": "¿Por dónde empezamos?",
+      "offerBody": "Unas preguntas rápidas encuentran tu punto de partida. Unos cinco minutos.",
+      "startNew": "Soy nuevo en {{lang}}",
+      "placeMe": "Sé algo de {{lang}}",
+      "skipItem": "Salta si dudas",
+      "doneTitle": "Punto de partida encontrado",
+      "doneBody": "Empezando en {{unit}}.",
+      "prelit": "Empiezas con {{count}} elementos ya conocidos.",
+      "redo": "Volver a medir mi nivel",
+      "aboveTitle": "Vas más allá de este curso",
+      "aboveBody": "Este curso cubre por ahora material de nivel inicial y tú estás por encima. Puedes explorarlo igualmente; hay nuevos niveles en camino."
+    },
+    "path": {
+      "title": "Tu camino",
+      "arc": "Arco {{name}}",
+      "unit": "Unidad {{n}}",
+      "locked": "Más adelante",
+      "current": "Estás aquí",
+      "review": "Toca para repasar",
+      "mastered": "Sólido"
+    },
+    "streak": {
+      "pactTitle": "¿Mantenemos una racha?",
+      "pactBody": "Una tarjeta al día la mantiene viva. Si fallas un día, un día de descanso puede cubrirte: ganas uno cada semana.",
+      "pactAccept": "Cuenta conmigo",
+      "pactDecline": "No, gracias",
+      "days": "{{count}} días",
+      "restDayEarned": "Día de descanso ganado",
+      "restDayUsed": "{{day}} fue un día de descanso",
+      "repairTitle": "Recupera tu racha",
+      "repairBody": "Termina dos sesiones en los próximos {{days}} días para recuperar tu racha de {{count}} días.",
+      "repairCta": "Empezar"
+    },
+    "block": {
+      "speakingIntro": "Práctica de habla — {{count}} tarjetas",
+      "ready": "Listo",
+      "loadingModel": "Preparando el micrófono…",
+      "micPrompt": "Corpán usa el micrófono para puntuar tu pronunciación en este dispositivo.",
+      "sttUnavailable": "La puntuación de voz no está disponible ahora — cambiamos a práctica de escucha."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} tarjetas restantes hoy",
+      "plusBody": "Corpán Plus elimina el límite diario de tarjetas."
+    },
+    "welcomeBack": {
+      "title": "Bienvenido de nuevo",
+      "body": "Tus repasos conservaron el {{pct}}% de su fuerza. Vamos a calentar."
+    },
+    "tease": {
+      "next": "La próxima vez: {{title}}"
+    },
+    "jump": {
+      "title": "¿Esto se te queda corto?",
+      "body": "Haz un reto corto para avanzar. Si fallas no pierdes nada: te quedas justo donde estás.",
+      "accept": "Probar el reto",
+      "decline": "Quedarme aquí"
+    },
+    "feed": {
+      "caughtUp": "Estás al día por ahora",
+      "loading": "Preparando tus tarjetas…",
+      "loadError": "El Journey no pudo cargarse. Inténtalo desde Inicio."
+    },
+    "popin": {
+      "pronounceTitle": "Pronúncialo",
+      "close": "Cerrar"
+    },
+    "settings": {
+      "title": "Opciones de Journey",
+      "advanceMode": "Avance",
+      "advanceSwipe": "Desliza para continuar",
+      "advanceAuto": "Continuar automáticamente",
+      "celebration": "Celebraciones",
+      "celebrationFull": "Completas",
+      "celebrationReduced": "Reducidas",
+      "celebrationMinimal": "Mínimas",
+      "sounds": "Sonidos",
+      "soundsOn": "Sí",
+      "soundsOff": "No",
+      "listeningMode": "Escucha manos libres",
+      "viewPath": "Ver camino",
+      "redoPlacement": "Volver a medir mi nivel"
+    }
   }
 }

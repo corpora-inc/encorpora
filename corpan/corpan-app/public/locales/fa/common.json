@@ -335,6 +335,22 @@
       "surprise": {
         "label": "غافلگیرم کن!",
         "desc": "مرا به جایی جذاب ببر."
+      },
+      "journey": {
+        "label": "دنبال Journey برو",
+        "desc": "دوره‌ای هدایت‌شده — برنامه هر گام بعدی را انتخاب می‌کند"
+      }
+    },
+    "journey": {
+      "title": "مسیری هدایت‌شده می‌خواهید؟",
+      "subtitle": "Journey هر روز ترکیبی از مطالب جدید و مرور را به زبان {{lang}} ارائه می‌دهد — کارت به کارت.",
+      "guided": {
+        "label": "Journey را شروع کنید",
+        "desc": "یک جلسهٔ روزانهٔ هدایت‌شده که خودش را با شما هماهنگ می‌کند"
+      },
+      "explore": {
+        "label": "خودم کاوش می‌کنم",
+        "desc": "هر زمان که بخواهید می‌توانید Journey را از خانه شروع کنید"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "زبانی را که یاد می‌گیری سمپل کن. آن‌قدر اسکرچش کن تا در ذهنت بچسبد."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "مسیر هدایت‌شدهٔ تو، کارت به کارت"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "در حال نصب…",
     "installed": "نصب شد",
     "retry": "تلاش دوباره"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "مسیر هدایت‌شدهٔ تو، کارت به کارت",
+    "heroCard": {
+      "title": "Journey تو",
+      "progress": "{{unit}} · {{count}} کارت تا هدف امروز"
+    },
+    "heroCta": {
+      "start": "Journey خود را شروع کن",
+      "continue": "ادامه"
+    },
+    "chrome": {
+      "home": "خانه",
+      "menu": "گزینه‌های Journey",
+      "unit": "واحد {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "بررسی",
+      "continue": "ادامه",
+      "skipHint": "برای رد شدن دوباره بکش",
+      "retry": "دوباره تلاش کن",
+      "showAnswer": "نمایش پاسخ",
+      "answerWas": "پاسخ این بود",
+      "comeBackNote": "به این برمی‌گردیم.",
+      "whyThisCard": "چرا این کارت؟",
+      "whyNew": "موردی تازه از واحد فعلی تو.",
+      "whyReview": "مرور — فاصله‌گذاری آن را قوی نگه می‌دارد.",
+      "whyRepair": "نگاهی دوباره به چیزی دشوار.",
+      "whyGuided": "بخشی از مسیر هدایت‌شدهٔ تو.",
+      "typeWhatYouHear": "آنچه می‌شنوی را بنویس",
+      "typeHere": "اینجا بنویس…",
+      "tapToOrder": "کلمات را به ترتیب لمس کن",
+      "matchPairs": "جفت‌ها را وصل کن",
+      "flipToReveal": "برای آشکار شدن لمس کن",
+      "knewIt": "می‌دانستم",
+      "didntKnow": "هنوز نه",
+      "speakNow": "حالا صحبت کن",
+      "listen": "گوش کن",
+      "listenSlow": "آهسته‌تر",
+      "hint": "راهنما",
+      "correct": "درست",
+      "incorrect": "نه کاملاً",
+      "pickTranslation": "ترجمه را انتخاب کن",
+      "pickWhatYouHear": "آنچه شنیدی را انتخاب کن",
+      "fillTheBlank": "جای خالی را پر کن",
+      "newItem": "جدید",
+      "reviewedEarlier": "قبلاً دیده شده"
+    },
+    "intro": {
+      "listenAndEcho": "گوش کن و بلند تکرار کن",
+      "newWord": "واژهٔ جدید",
+      "newPhrase": "عبارت جدید"
+    },
+    "grammar": {
+      "noteLabel": "نکتهٔ دستوری",
+      "tryIt": "امتحان کن"
+    },
+    "checkpoint": {
+      "title": "ایست بازرسی",
+      "summary": "{{new}} جدید · {{reviews}} مرور · بهترین زنجیره {{combo}}",
+      "done": "برای امروز کافی است",
+      "keepGoing": "ادامه بده",
+      "dailyRing": "{{done}}/{{goal}} امروز",
+      "deepSession": "چه جلسهٔ عمیقی — مرورهای تو در هر صورت برنامه‌ریزی شده‌اند.",
+      "streakTicked": "روز {{count}} ✓",
+      "boss": "چالش واحد",
+      "arcGate": "دروازهٔ کمان"
+    },
+    "celebrate": {
+      "combo": "{{count}} پشت سر هم",
+      "perfect": "عالی",
+      "wordsLearned": "{{count}} واژه آموختی",
+      "unitComplete": "واحد کامل شد: {{name}}",
+      "streakDay": "روز {{count}}",
+      "placementDone": "سطح تو مشخص شد"
+    },
+    "rare": {
+      "reveal": "چیزی خاص…",
+      "etymologyGem": "داستان واژه",
+      "timeCapsule": {
+        "title": "کپسول زمان",
+        "body": "روی این {{when}} سخت کار کردی — حالا خودت را ببین."
+      },
+      "delight": {
+        "newVoice": "صدایی متفاوت",
+        "didYouNotice": "متوجه شدی؟"
+      },
+      "miniGame": {
+        "title": "دور جایزه",
+        "play": "بازی"
+      },
+      "story": {
+        "unlocked": "فصل بعدی را به دست آوردی",
+        "read": "بخوانش"
+      }
+    },
+    "placement": {
+      "offerTitle": "از کجا شروع کنیم؟",
+      "offerBody": "چند پرسش سریع نقطهٔ شروعت را پیدا می‌کند. حدود پنج دقیقه.",
+      "startNew": "در {{lang}} تازه‌کارم",
+      "placeMe": "کمی {{lang}} بلدم",
+      "skipItem": "اگر مطمئن نیستی رد شو",
+      "doneTitle": "نقطهٔ شروع پیدا شد",
+      "doneBody": "از {{unit}} شروع می‌کنیم.",
+      "prelit": "با {{count}} موردی که از قبل می‌دانی شروع می‌کنی.",
+      "redo": "سطحم را دوباره بسنج",
+      "aboveTitle": "تو از این دوره فراتری",
+      "aboveBody": "این دوره فعلاً مطالب مبتدی را پوشش می‌دهد و تو بالاتر از آنی. باز هم می‌توانی آن را بگردی — سطح‌های تازه در راه‌اند."
+    },
+    "path": {
+      "title": "مسیر تو",
+      "arc": "کمان {{name}}",
+      "unit": "واحد {{n}}",
+      "locked": "جلوتر",
+      "current": "اینجا هستی",
+      "review": "برای مرور لمس کن",
+      "mastered": "محکم"
+    },
+    "streak": {
+      "pactTitle": "زنجیره نگه داریم؟",
+      "pactBody": "روزی یک کارت آن را زنده نگه می‌دارد. اگر روزی را از دست بدهی، یک روز استراحت می‌تواند پوششت دهد — هر هفته یکی به دست می‌آوری.",
+      "pactAccept": "پایه‌ام",
+      "pactDecline": "نه، ممنون",
+      "days": "{{count}} روز",
+      "restDayEarned": "روز استراحت به دست آمد",
+      "restDayUsed": "{{day}} روز استراحت بود",
+      "repairTitle": "زنجیره‌ات را پس بگیر",
+      "repairBody": "در {{days}} روز آینده دو جلسه را کامل کن تا زنجیرهٔ {{count}} روزه‌ات برگردد.",
+      "repairCta": "شروع"
+    },
+    "block": {
+      "speakingIntro": "تمرین گفتار — {{count}} کارت",
+      "ready": "آماده",
+      "loadingModel": "میکروفون در حال گرم شدن…",
+      "micPrompt": "Corpán از میکروفون برای نمره دادن به گفتار تو روی همین دستگاه استفاده می‌کند.",
+      "sttUnavailable": "نمره‌دهی گفتار الان در دسترس نیست — به تمرین شنیداری می‌رویم."
+    },
+    "quota": {
+      "cardsLeft": "امروز {{count}} کارت مانده",
+      "plusBody": "Corpán Plus سقف روزانهٔ کارت‌ها را برمی‌دارد."
+    },
+    "welcomeBack": {
+      "title": "خوش برگشتی",
+      "body": "مرورهای تو {{pct}}٪ از قدرتشان را حفظ کردند. گرم کنیم."
+    },
+    "tease": {
+      "next": "دفعهٔ بعد: {{title}}"
+    },
+    "jump": {
+      "title": "زیادی آسان است؟",
+      "body": "یک چالش کوتاه بردار تا جلو بپری. اگر نشد چیزی از دست نمی‌دهی — دقیقاً همان‌جا که هستی می‌مانی.",
+      "accept": "چالش را امتحان می‌کنم",
+      "decline": "همین‌جا می‌مانم"
+    },
+    "feed": {
+      "caughtUp": "فعلاً به‌روزی",
+      "loading": "کارت‌هایت آماده می‌شوند…",
+      "loadError": "Journey بارگیری نشد. از خانه دوباره امتحان کن."
+    },
+    "popin": {
+      "pronounceTitle": "تلفظش کن",
+      "close": "بستن"
+    },
+    "settings": {
+      "title": "گزینه‌های Journey",
+      "advanceMode": "پیشروی",
+      "advanceSwipe": "برای ادامه بکش",
+      "advanceAuto": "ادامهٔ خودکار",
+      "celebration": "جشن‌ها",
+      "celebrationFull": "کامل",
+      "celebrationReduced": "کاهش‌یافته",
+      "celebrationMinimal": "حداقلی",
+      "sounds": "صداها",
+      "soundsOn": "روشن",
+      "soundsOff": "خاموش",
+      "listeningMode": "شنیدن بدون دست",
+      "viewPath": "دیدن مسیر",
+      "redoPlacement": "سطحم را دوباره بسنج"
+    }
   }
 }

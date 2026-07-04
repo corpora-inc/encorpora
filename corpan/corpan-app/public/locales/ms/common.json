@@ -335,6 +335,22 @@
       "surprise": {
         "label": "Kejutkan saya!",
         "desc": "Bawa saya ke tempat yang seronok."
+      },
+      "journey": {
+        "label": "Ikut Journey",
+        "desc": "Kursus berpandu — aplikasi memilih setiap langkah seterusnya"
+      }
+    },
+    "journey": {
+      "title": "Mahu laluan berpandu?",
+      "subtitle": "Journey menghidangkan campuran bahan baharu dan ulang kaji dalam {{lang}} setiap hari — kad demi kad.",
+      "guided": {
+        "label": "Mulakan Journey",
+        "desc": "Sesi harian berpandu yang menyesuaikan diri dengan anda"
+      },
+      "explore": {
+        "label": "Saya akan meneroka sendiri",
+        "desc": "Anda boleh memulakan Journey pada bila-bila masa dari Laman utama"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample bahasa yang anda pelajari. Scratch sampai melekat."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Laluan berpandu anda, kad demi kad"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "Memasang…",
     "installed": "Dipasang",
     "retry": "Cuba lagi"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Laluan berpandu anda, kad demi kad",
+    "heroCard": {
+      "title": "Journey anda",
+      "progress": "{{unit}} · {{count}} kad ke sasaran hari ini"
+    },
+    "heroCta": {
+      "start": "Mulakan Journey anda",
+      "continue": "Teruskan"
+    },
+    "chrome": {
+      "home": "Laman utama",
+      "menu": "Pilihan Journey",
+      "unit": "Unit {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Semak",
+      "continue": "Teruskan",
+      "skipHint": "Leret sekali lagi untuk melangkau",
+      "retry": "Cuba lagi",
+      "showAnswer": "Tunjuk jawapan",
+      "answerWas": "Jawapannya ialah",
+      "comeBackNote": "Kita akan kembali kepada ini.",
+      "whyThisCard": "Mengapa kad ini?",
+      "whyNew": "Item baharu daripada unit semasa anda.",
+      "whyReview": "Ulang kaji — jarak masa mengekalkannya kukuh.",
+      "whyRepair": "Pandangan kedua pada sesuatu yang sukar.",
+      "whyGuided": "Sebahagian daripada laluan berpandu anda.",
+      "typeWhatYouHear": "Taip apa yang anda dengar",
+      "typeHere": "Taip di sini…",
+      "tapToOrder": "Ketik perkataan mengikut urutan",
+      "matchPairs": "Padankan pasangan",
+      "flipToReveal": "Ketik untuk dedah",
+      "knewIt": "Saya tahu",
+      "didntKnow": "Belum lagi",
+      "speakNow": "Bercakap sekarang",
+      "listen": "Dengar",
+      "listenSlow": "Lebih perlahan",
+      "hint": "Petunjuk",
+      "correct": "Betul",
+      "incorrect": "Kurang tepat",
+      "pickTranslation": "Pilih terjemahan",
+      "pickWhatYouHear": "Pilih apa yang anda dengar",
+      "fillTheBlank": "Isi tempat kosong",
+      "newItem": "Baharu",
+      "reviewedEarlier": "Dilihat sebelum ini"
+    },
+    "intro": {
+      "listenAndEcho": "Dengar, kemudian sebut dengan kuat",
+      "newWord": "Perkataan baharu",
+      "newPhrase": "Frasa baharu"
+    },
+    "grammar": {
+      "noteLabel": "Nota tatabahasa",
+      "tryIt": "Cuba"
+    },
+    "checkpoint": {
+      "title": "Pusat pemeriksaan",
+      "summary": "{{new}} baharu · {{reviews}} ulang kaji · rentetan terbaik {{combo}}",
+      "done": "Cukup untuk hari ini",
+      "keepGoing": "Teruskan",
+      "dailyRing": "{{done}}/{{goal}} hari ini",
+      "deepSession": "Sesi yang mendalam — ulang kaji anda tetap dijadualkan.",
+      "streakTicked": "Hari {{count}} ✓",
+      "boss": "Cabaran unit",
+      "arcGate": "Pintu gerbang arka"
+    },
+    "celebrate": {
+      "combo": "{{count}} berturut-turut",
+      "perfect": "Sempurna",
+      "wordsLearned": "{{count}} perkataan dipelajari",
+      "unitComplete": "Unit selesai: {{name}}",
+      "streakDay": "Hari {{count}}",
+      "placementDone": "Tahap ditentukan"
+    },
+    "rare": {
+      "reveal": "Sesuatu yang istimewa…",
+      "etymologyGem": "Kisah perkataan",
+      "timeCapsule": {
+        "title": "Kapsul masa",
+        "body": "Anda bertungkus lumus dengan ini {{when}} — lihat diri anda sekarang."
+      },
+      "delight": {
+        "newVoice": "Suara yang berbeza",
+        "didYouNotice": "Adakah anda perasan?"
+      },
+      "miniGame": {
+        "title": "Pusingan bonus",
+        "play": "Main"
+      },
+      "story": {
+        "unlocked": "Anda layak mendapat bab seterusnya",
+        "read": "Baca"
+      }
+    },
+    "placement": {
+      "offerTitle": "Dari mana kita mula?",
+      "offerBody": "Beberapa soalan pantas menemui titik permulaan anda. Kira-kira lima minit.",
+      "startNew": "Saya baru dengan {{lang}}",
+      "placeMe": "Saya tahu sedikit {{lang}}",
+      "skipItem": "Langkau jika tidak pasti",
+      "doneTitle": "Titik permulaan ditemui",
+      "doneBody": "Bermula di {{unit}}.",
+      "prelit": "Anda bermula dengan {{count}} item yang sudah diketahui.",
+      "redo": "Semak semula tahap saya",
+      "aboveTitle": "Anda melepasi kursus ini",
+      "aboveBody": "Kursus ini buat masa ini merangkumi bahan pemula, dan anda berada di atasnya. Anda masih boleh menerokainya — tahap baharu sedang dibina."
+    },
+    "path": {
+      "title": "Laluan anda",
+      "arc": "Arka {{name}}",
+      "unit": "Unit {{n}}",
+      "locked": "Di hadapan",
+      "current": "Anda di sini",
+      "review": "Ketik untuk ulang kaji",
+      "mastered": "Kukuh"
+    },
+    "streak": {
+      "pactTitle": "Kekalkan rentetan?",
+      "pactBody": "Satu kad sehari mengekalkannya hidup. Jika tertinggal sehari, hari rehat boleh melindungi anda — anda peroleh satu setiap minggu.",
+      "pactAccept": "Saya setuju",
+      "pactDecline": "Tidak, terima kasih",
+      "days": "{{count}} hari",
+      "restDayEarned": "Hari rehat diperoleh",
+      "restDayUsed": "{{day}} ialah hari rehat",
+      "repairTitle": "Dapatkan semula rentetan anda",
+      "repairBody": "Selesaikan dua sesi dalam {{days}} hari akan datang untuk memulihkan rentetan {{count}} hari anda.",
+      "repairCta": "Mula"
+    },
+    "block": {
+      "speakingIntro": "Latihan bertutur — {{count}} kad",
+      "ready": "Sedia",
+      "loadingModel": "Menyediakan mikrofon…",
+      "micPrompt": "Corpán menggunakan mikrofon untuk menilai pertuturan anda pada peranti ini.",
+      "sttUnavailable": "Penilaian pertuturan tidak tersedia sekarang — beralih ke latihan mendengar."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} kad berbaki hari ini",
+      "plusBody": "Corpán Plus membuang had kad harian."
+    },
+    "welcomeBack": {
+      "title": "Selamat kembali",
+      "body": "Ulang kaji anda mengekalkan {{pct}}% kekuatannya. Mari memanaskan badan."
+    },
+    "tease": {
+      "next": "Lain kali: {{title}}"
+    },
+    "jump": {
+      "title": "Terasa terlalu mudah?",
+      "body": "Ambil cabaran ringkas untuk melompat ke hadapan. Jika gagal, tiada apa yang hilang — anda kekal di tempat anda.",
+      "accept": "Cuba cabaran",
+      "decline": "Kekal di sini"
+    },
+    "feed": {
+      "caughtUp": "Buat masa ini anda terkini",
+      "loading": "Menyediakan kad anda…",
+      "loadError": "Journey tidak dapat dimuatkan. Cuba lagi dari Laman utama."
+    },
+    "popin": {
+      "pronounceTitle": "Sebutkannya",
+      "close": "Tutup"
+    },
+    "settings": {
+      "title": "Pilihan Journey",
+      "advanceMode": "Pergerakan",
+      "advanceSwipe": "Leret untuk teruskan",
+      "advanceAuto": "Teruskan automatik",
+      "celebration": "Perayaan",
+      "celebrationFull": "Penuh",
+      "celebrationReduced": "Dikurangkan",
+      "celebrationMinimal": "Minimum",
+      "sounds": "Bunyi",
+      "soundsOn": "Hidup",
+      "soundsOff": "Mati",
+      "listeningMode": "Mendengar bebas tangan",
+      "viewPath": "Lihat laluan",
+      "redoPlacement": "Semak semula tahap saya"
+    }
   }
 }

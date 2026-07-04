@@ -335,6 +335,22 @@
       "surprise": {
         "label": "فاجئني!",
         "desc": "خذني إلى مكان ممتع."
+      },
+      "journey": {
+        "label": "اتبع Journey",
+        "desc": "دورة موجَّهة — يختار التطبيق كل خطوة تالية"
+      }
+    },
+    "journey": {
+      "title": "هل تريد دربًا موجَّهًا؟",
+      "subtitle": "يقدّم لك Journey يوميًا مزيجًا من المواد الجديدة والمراجعة بـ {{lang}} — بطاقة تلو بطاقة.",
+      "guided": {
+        "label": "ابدأ Journey",
+        "desc": "جلسة يومية موجَّهة تتكيف معك"
+      },
+      "explore": {
+        "label": "سأستكشف بنفسي",
+        "desc": "يمكنك بدء Journey في أي وقت من الرئيسية"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "خذ عيّنة من اللغة التي تتعلمها. اخدشها حتى ترسخ."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "دربك الموجَّه، بطاقة تلو بطاقة"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "جارٍ التثبيت…",
     "installed": "تم التثبيت",
     "retry": "حاول مجددًا"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "دربك الموجَّه، بطاقة تلو بطاقة",
+    "heroCard": {
+      "title": "رحلتك Journey",
+      "progress": "{{unit}} · {{count}} بطاقة حتى هدف اليوم"
+    },
+    "heroCta": {
+      "start": "ابدأ Journey الخاص بك",
+      "continue": "متابعة"
+    },
+    "chrome": {
+      "home": "الرئيسية",
+      "menu": "خيارات Journey",
+      "unit": "الوحدة {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "تحقق",
+      "continue": "متابعة",
+      "skipHint": "اسحب مجددًا للتخطي",
+      "retry": "حاول مرة أخرى",
+      "showAnswer": "أظهر الإجابة",
+      "answerWas": "كانت الإجابة",
+      "comeBackNote": "سنعود إلى هذا.",
+      "whyThisCard": "لماذا هذه البطاقة؟",
+      "whyNew": "عنصر جديد من وحدتك الحالية.",
+      "whyReview": "مراجعة — التباعد يبقيها قوية.",
+      "whyRepair": "نظرة ثانية على شيء صعب.",
+      "whyGuided": "جزء من دربك الموجَّه.",
+      "typeWhatYouHear": "اكتب ما تسمعه",
+      "typeHere": "اكتب هنا…",
+      "tapToOrder": "المس الكلمات بالترتيب",
+      "matchPairs": "طابق الأزواج",
+      "flipToReveal": "المس للكشف",
+      "knewIt": "كنت أعرفها",
+      "didntKnow": "ليس بعد",
+      "speakNow": "تحدث الآن",
+      "listen": "استمع",
+      "listenSlow": "أبطأ",
+      "hint": "تلميح",
+      "correct": "صحيح",
+      "incorrect": "ليس تمامًا",
+      "pickTranslation": "اختر الترجمة",
+      "pickWhatYouHear": "اختر ما سمعته",
+      "fillTheBlank": "املأ الفراغ",
+      "newItem": "جديد",
+      "reviewedEarlier": "شوهد سابقًا"
+    },
+    "intro": {
+      "listenAndEcho": "استمع ثم قلها بصوت عالٍ",
+      "newWord": "كلمة جديدة",
+      "newPhrase": "عبارة جديدة"
+    },
+    "grammar": {
+      "noteLabel": "ملاحظة نحوية",
+      "tryIt": "جرّب"
+    },
+    "checkpoint": {
+      "title": "نقطة تفتيش",
+      "summary": "{{new}} جديدة · {{reviews}} مراجعات · أفضل سلسلة {{combo}}",
+      "done": "يكفي لليوم",
+      "keepGoing": "أكمل",
+      "dailyRing": "{{done}}/{{goal}} اليوم",
+      "deepSession": "يا لها من جلسة عميقة — مراجعاتك مجدولة على أي حال.",
+      "streakTicked": "اليوم {{count}} ✓",
+      "boss": "تحدي الوحدة",
+      "arcGate": "بوابة القوس"
+    },
+    "celebrate": {
+      "combo": "{{count}} على التوالي",
+      "perfect": "ممتاز",
+      "wordsLearned": "تعلمت {{count}} كلمة",
+      "unitComplete": "اكتملت الوحدة: {{name}}",
+      "streakDay": "اليوم {{count}}",
+      "placementDone": "تم تحديد مستواك"
+    },
+    "rare": {
+      "reveal": "شيء مميز…",
+      "etymologyGem": "قصة الكلمة",
+      "timeCapsule": {
+        "title": "كبسولة الزمن",
+        "body": "اجتهدت في هذا {{when}} — انظر إلى نفسك الآن."
+      },
+      "delight": {
+        "newVoice": "صوت مختلف",
+        "didYouNotice": "هل لاحظت؟"
+      },
+      "miniGame": {
+        "title": "جولة إضافية",
+        "play": "العب"
+      },
+      "story": {
+        "unlocked": "لقد استحققت الفصل التالي",
+        "read": "اقرأه"
+      }
+    },
+    "placement": {
+      "offerTitle": "من أين نبدأ؟",
+      "offerBody": "بضعة أسئلة سريعة تجد نقطة انطلاقك. حوالي خمس دقائق.",
+      "startNew": "أنا جديد على {{lang}}",
+      "placeMe": "أعرف بعض {{lang}}",
+      "skipItem": "تخطَّ إذا لم تكن متأكدًا",
+      "doneTitle": "وُجدت نقطة الانطلاق",
+      "doneBody": "نبدأ عند {{unit}}.",
+      "prelit": "تبدأ ومعك {{count}} عنصرًا تعرفه مسبقًا.",
+      "redo": "أعد فحص مستواي",
+      "aboveTitle": "أنت تجاوزت هذه الدورة",
+      "aboveBody": "تغطي هذه الدورة حاليًا مواد للمبتدئين، وأنت أعلى من ذلك. لا يزال بإمكانك استكشافها — مستويات جديدة في الطريق."
+    },
+    "path": {
+      "title": "دربك",
+      "arc": "القوس {{name}}",
+      "unit": "الوحدة {{n}}",
+      "locked": "لاحقًا",
+      "current": "أنت هنا",
+      "review": "المس للمراجعة",
+      "mastered": "متين"
+    },
+    "streak": {
+      "pactTitle": "نحافظ على سلسلة؟",
+      "pactBody": "بطاقة واحدة يوميًا تبقيها حية. إن فاتك يوم، قد يغطيك يوم راحة — تكسب واحدًا كل أسبوع.",
+      "pactAccept": "أنا معك",
+      "pactDecline": "لا، شكرًا",
+      "days": "{{count}} يومًا",
+      "restDayEarned": "كسبت يوم راحة",
+      "restDayUsed": "كان {{day}} يوم راحة",
+      "repairTitle": "استعد سلسلتك",
+      "repairBody": "أكمل جلستين خلال {{days}} الأيام القادمة لاستعادة سلسلتك البالغة {{count}} يومًا.",
+      "repairCta": "ابدأ"
+    },
+    "block": {
+      "speakingIntro": "تدريب على التحدث — {{count}} بطاقة",
+      "ready": "جاهز",
+      "loadingModel": "نهيّئ الميكروفون…",
+      "micPrompt": "يستخدم Corpán الميكروفون لتقييم نطقك على هذا الجهاز.",
+      "sttUnavailable": "تقييم النطق غير متاح الآن — ننتقل إلى تدريب الاستماع."
+    },
+    "quota": {
+      "cardsLeft": "تبقّى {{count}} بطاقة اليوم",
+      "plusBody": "يزيل Corpán Plus الحد اليومي للبطاقات."
+    },
+    "welcomeBack": {
+      "title": "أهلًا بعودتك",
+      "body": "حافظت مراجعاتك على {{pct}}% من قوتها. لنبدأ بالإحماء."
+    },
+    "tease": {
+      "next": "في المرة القادمة: {{title}}"
+    },
+    "jump": {
+      "title": "هل تشعر أنه سهل جدًا؟",
+      "body": "خض تحديًا قصيرًا للقفز إلى الأمام. إن لم تنجح فلن تخسر شيئًا — تبقى تمامًا حيث أنت.",
+      "accept": "أجرّب التحدي",
+      "decline": "أبقى هنا"
+    },
+    "feed": {
+      "caughtUp": "أنت مواكب حتى الآن",
+      "loading": "نجهّز بطاقاتك…",
+      "loadError": "تعذّر تحميل Journey. حاول مجددًا من الرئيسية."
+    },
+    "popin": {
+      "pronounceTitle": "انطقها",
+      "close": "إغلاق"
+    },
+    "settings": {
+      "title": "خيارات Journey",
+      "advanceMode": "الانتقال",
+      "advanceSwipe": "اسحب للمتابعة",
+      "advanceAuto": "متابعة تلقائية",
+      "celebration": "الاحتفالات",
+      "celebrationFull": "كاملة",
+      "celebrationReduced": "مخففة",
+      "celebrationMinimal": "الحد الأدنى",
+      "sounds": "الأصوات",
+      "soundsOn": "مفعّلة",
+      "soundsOff": "مطفأة",
+      "listeningMode": "استماع دون استخدام اليدين",
+      "viewPath": "عرض الدرب",
+      "redoPlacement": "أعد فحص مستواي"
+    }
   }
 }

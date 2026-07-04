@@ -335,6 +335,22 @@
       "surprise": {
         "label": "Iznenadi me!",
         "desc": "Odvedi me negdje zabavno."
+      },
+      "journey": {
+        "label": "Prati Journey",
+        "desc": "Vođeni tečaj — aplikacija bira svaki sljedeći korak"
+      }
+    },
+    "journey": {
+      "title": "Želite li vođeni put?",
+      "subtitle": "Journey svaki dan poslužuje mješavinu novog gradiva i ponavljanja na {{lang}} — karticu po karticu.",
+      "guided": {
+        "label": "Započnite Journey",
+        "desc": "Vođena dnevna sesija koja se prilagođava vama"
+      },
+      "explore": {
+        "label": "Istraživat ću samostalno",
+        "desc": "Journey možete pokrenuti bilo kada s Početne"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Samplaj jezik koji učiš. Scratchaj ga dok ne ostane u glavi."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Tvoj vođeni put, karticu po karticu"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "Instaliranje…",
     "installed": "Instalirano",
     "retry": "Pokušaj ponovno"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Tvoj vođeni put, karticu po karticu",
+    "heroCard": {
+      "title": "Tvoj Journey",
+      "progress": "{{unit}} · {{count}} kartica do današnjeg cilja"
+    },
+    "heroCta": {
+      "start": "Započni svoj Journey",
+      "continue": "Nastavi"
+    },
+    "chrome": {
+      "home": "Početna",
+      "menu": "Opcije Journeyja",
+      "unit": "Cjelina {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Provjeri",
+      "continue": "Nastavi",
+      "skipHint": "Povuci ponovno za preskakanje",
+      "retry": "Pokušaj ponovno",
+      "showAnswer": "Prikaži odgovor",
+      "answerWas": "Odgovor je bio",
+      "comeBackNote": "Vratit ćemo se na ovo.",
+      "whyThisCard": "Zašto ova kartica?",
+      "whyNew": "Nešto novo iz tvoje trenutačne cjeline.",
+      "whyReview": "Ponavljanje — razmaci ga drže snažnim.",
+      "whyRepair": "Drugi pogled na nešto teško.",
+      "whyGuided": "Dio tvog vođenog puta.",
+      "typeWhatYouHear": "Upiši što čuješ",
+      "typeHere": "Piši ovdje…",
+      "tapToOrder": "Dodiruj riječi redom",
+      "matchPairs": "Spoji parove",
+      "flipToReveal": "Dodirni za otkrivanje",
+      "knewIt": "Znao sam",
+      "didntKnow": "Još ne",
+      "speakNow": "Govori sada",
+      "listen": "Poslušaj",
+      "listenSlow": "Sporije",
+      "hint": "Savjet",
+      "correct": "Točno",
+      "incorrect": "Ne baš",
+      "pickTranslation": "Odaberi prijevod",
+      "pickWhatYouHear": "Odaberi što si čuo",
+      "fillTheBlank": "Popuni prazninu",
+      "newItem": "Novo",
+      "reviewedEarlier": "Viđeno ranije"
+    },
+    "intro": {
+      "listenAndEcho": "Poslušaj i izgovori naglas",
+      "newWord": "Nova riječ",
+      "newPhrase": "Nova fraza"
+    },
+    "grammar": {
+      "noteLabel": "Gramatička bilješka",
+      "tryIt": "Probaj"
+    },
+    "checkpoint": {
+      "title": "Kontrolna točka",
+      "summary": "{{new}} novih · {{reviews}} ponavljanja · najbolji niz {{combo}}",
+      "done": "Dosta za danas",
+      "keepGoing": "Nastavi",
+      "dailyRing": "{{done}}/{{goal}} danas",
+      "deepSession": "Kakva temeljita seansa — tvoja su ponavljanja ionako zakazana.",
+      "streakTicked": "Dan {{count}} ✓",
+      "boss": "Izazov cjeline",
+      "arcGate": "Vrata luka"
+    },
+    "celebrate": {
+      "combo": "{{count}} zaredom",
+      "perfect": "Savršeno",
+      "wordsLearned": "{{count}} naučenih riječi",
+      "unitComplete": "Cjelina dovršena: {{name}}",
+      "streakDay": "Dan {{count}}",
+      "placementDone": "Razina određena"
+    },
+    "rare": {
+      "reveal": "Nešto posebno…",
+      "etymologyGem": "Priča o riječi",
+      "timeCapsule": {
+        "title": "Vremenska kapsula",
+        "body": "Oko ovoga si se mučio {{when}} — pogledaj se sada."
+      },
+      "delight": {
+        "newVoice": "Drugačiji glas",
+        "didYouNotice": "Jesi li primijetio?"
+      },
+      "miniGame": {
+        "title": "Bonus runda",
+        "play": "Igraj"
+      },
+      "story": {
+        "unlocked": "Zaslužio si sljedeće poglavlje",
+        "read": "Pročitaj"
+      }
+    },
+    "placement": {
+      "offerTitle": "Odakle krećemo?",
+      "offerBody": "Nekoliko brzih pitanja pronalazi tvoju početnu točku. Otprilike pet minuta.",
+      "startNew": "Novi sam u jeziku {{lang}}",
+      "placeMe": "Znam ponešto {{lang}}",
+      "skipItem": "Preskoči ako nisi siguran",
+      "doneTitle": "Početna točka pronađena",
+      "doneBody": "Počinjemo od {{unit}}.",
+      "prelit": "Počinješ sa {{count}} već poznatih stavki.",
+      "redo": "Ponovno provjeri moju razinu",
+      "aboveTitle": "Iznad si ovog tečaja",
+      "aboveBody": "Ovaj tečaj zasad pokriva gradivo za početnike, a ti si iznad toga. Svejedno ga možeš istražiti — nove razine stižu."
+    },
+    "path": {
+      "title": "Tvoj put",
+      "arc": "Luk {{name}}",
+      "unit": "Cjelina {{n}}",
+      "locked": "Dalje",
+      "current": "Ovdje si",
+      "review": "Dodirni za ponavljanje",
+      "mastered": "Čvrsto"
+    },
+    "streak": {
+      "pactTitle": "Držimo niz?",
+      "pactBody": "Jedna kartica dnevno drži ga na životu. Propustiš li dan, dan odmora te može pokriti — svaki tjedan zaradiš jedan.",
+      "pactAccept": "Računajte na mene",
+      "pactDecline": "Ne, hvala",
+      "days": "{{count}} dana",
+      "restDayEarned": "Dan odmora zarađen",
+      "restDayUsed": "{{day}} je bio dan odmora",
+      "repairTitle": "Vrati svoj niz",
+      "repairBody": "Dovrši dvije sesije u sljedećih {{days}} dana da vratiš svoj niz od {{count}} dana.",
+      "repairCta": "Kreni"
+    },
+    "block": {
+      "speakingIntro": "Vježba govora — {{count}} kartica",
+      "ready": "Spreman",
+      "loadingModel": "Zagrijavam mikrofon…",
+      "micPrompt": "Corpán koristi mikrofon za ocjenjivanje tvog izgovora na ovom uređaju.",
+      "sttUnavailable": "Ocjenjivanje govora trenutačno nije dostupno — prelazimo na vježbe slušanja."
+    },
+    "quota": {
+      "cardsLeft": "Danas još {{count}} kartica",
+      "plusBody": "Corpán Plus uklanja dnevno ograničenje kartica."
+    },
+    "welcomeBack": {
+      "title": "Dobro došao natrag",
+      "body": "Tvoja su ponavljanja zadržala {{pct}} % snage. Zagrijmo se."
+    },
+    "tease": {
+      "next": "Sljedeći put: {{title}}"
+    },
+    "jump": {
+      "title": "Čini ti se prelagano?",
+      "body": "Prihvati kratki izazov i preskoči naprijed. Ne uspije li, ništa ne gubiš — ostaješ točno gdje jesi.",
+      "accept": "Probaj izazov",
+      "decline": "Ostajem ovdje"
+    },
+    "feed": {
+      "caughtUp": "Zasad si u tijeku",
+      "loading": "Pripremam tvoje kartice…",
+      "loadError": "Journey se nije mogao učitati. Pokušaj ponovno s Početne."
+    },
+    "popin": {
+      "pronounceTitle": "Izgovori",
+      "close": "Zatvori"
+    },
+    "settings": {
+      "title": "Opcije Journeyja",
+      "advanceMode": "Napredovanje",
+      "advanceSwipe": "Povuci za nastavak",
+      "advanceAuto": "Nastavi automatski",
+      "celebration": "Proslave",
+      "celebrationFull": "Pune",
+      "celebrationReduced": "Smanjene",
+      "celebrationMinimal": "Minimalne",
+      "sounds": "Zvukovi",
+      "soundsOn": "Uklj.",
+      "soundsOff": "Isklj.",
+      "listeningMode": "Slušanje bez ruku",
+      "viewPath": "Prikaži put",
+      "redoPlacement": "Ponovno provjeri moju razinu"
+    }
   }
 }

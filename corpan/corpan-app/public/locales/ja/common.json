@@ -335,6 +335,22 @@
       "surprise": {
         "label": "おまかせで！",
         "desc": "どこか楽しい場所へ連れて行って。"
+      },
+      "journey": {
+        "label": "Journey をたどる",
+        "desc": "ガイド付きコース — 次の一歩はアプリが選びます"
+      }
+    },
+    "journey": {
+      "title": "ガイド付きの道はいかがですか？",
+      "subtitle": "Journey は{{lang}}の新しい内容と復習を毎日ミックスして、1枚ずつお届けします。",
+      "guided": {
+        "label": "Journey を始める",
+        "desc": "あなたに合わせて調整される毎日のガイド付きセッション"
+      },
+      "explore": {
+        "label": "自分で探索する",
+        "desc": "Journey はホームからいつでも始められます"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "学んでいる言語をサンプリング。染みつくまでスクラッチ。"
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "導かれる学びの道、1枚ずつ"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "インストール中…",
     "installed": "インストール済み",
     "retry": "再試行"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "導かれる学びの道、1枚ずつ",
+    "heroCard": {
+      "title": "あなたの Journey",
+      "progress": "{{unit}} · 今日の目標まであと {{count}} 枚"
+    },
+    "heroCta": {
+      "start": "Journey を始める",
+      "continue": "続ける"
+    },
+    "chrome": {
+      "home": "ホーム",
+      "menu": "Journey の設定",
+      "unit": "ユニット {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "チェック",
+      "continue": "続ける",
+      "skipHint": "もう一度スワイプでスキップ",
+      "retry": "もう一度",
+      "showAnswer": "答えを見る",
+      "answerWas": "答えは",
+      "comeBackNote": "また後で出てきます。",
+      "whyThisCard": "なぜこのカード？",
+      "whyNew": "今のユニットの新しい項目です。",
+      "whyReview": "復習です — 間隔をあけることで記憶が定着します。",
+      "whyRepair": "難しかったところをもう一度。",
+      "whyGuided": "あなたの学びの道の一部です。",
+      "typeWhatYouHear": "聞こえたとおりに入力",
+      "typeHere": "ここに入力…",
+      "tapToOrder": "単語を順番にタップ",
+      "matchPairs": "ペアを合わせよう",
+      "flipToReveal": "タップしてめくる",
+      "knewIt": "知ってた",
+      "didntKnow": "まだ",
+      "speakNow": "さあ話そう",
+      "listen": "聞く",
+      "listenSlow": "ゆっくり",
+      "hint": "ヒント",
+      "correct": "正解",
+      "incorrect": "おしい",
+      "pickTranslation": "訳を選ぼう",
+      "pickWhatYouHear": "聞こえたものを選ぼう",
+      "fillTheBlank": "空欄をうめよう",
+      "newItem": "新しい",
+      "reviewedEarlier": "さっき見た"
+    },
+    "intro": {
+      "listenAndEcho": "聞いて、声に出して言ってみよう",
+      "newWord": "新しい単語",
+      "newPhrase": "新しいフレーズ"
+    },
+    "grammar": {
+      "noteLabel": "文法ノート",
+      "tryIt": "やってみよう"
+    },
+    "checkpoint": {
+      "title": "チェックポイント",
+      "summary": "新規 {{new}} · 復習 {{reviews}} · 最高コンボ {{combo}}",
+      "done": "今日はここまで",
+      "keepGoing": "続ける",
+      "dailyRing": "今日 {{done}}/{{goal}}",
+      "deepSession": "じっくり学べましたね — 復習はいずれにせよ予定されています。",
+      "streakTicked": "{{count}}日目 ✓",
+      "boss": "ユニットチャレンジ",
+      "arcGate": "アークの門"
+    },
+    "celebrate": {
+      "combo": "{{count}}連続",
+      "perfect": "パーフェクト",
+      "wordsLearned": "{{count}} 語を習得",
+      "unitComplete": "ユニット完了: {{name}}",
+      "streakDay": "{{count}}日目",
+      "placementDone": "レベル判定完了"
+    },
+    "rare": {
+      "reveal": "何か特別なもの…",
+      "etymologyGem": "ことばの物語",
+      "timeCapsule": {
+        "title": "タイムカプセル",
+        "body": "{{when}}、これに苦労していましたね — 今のあなたを見てください。"
+      },
+      "delight": {
+        "newVoice": "いつもと違う声",
+        "didYouNotice": "気づきましたか？"
+      },
+      "miniGame": {
+        "title": "ボーナスラウンド",
+        "play": "プレイ"
+      },
+      "story": {
+        "unlocked": "次の章を手に入れました",
+        "read": "読む"
+      }
+    },
+    "placement": {
+      "offerTitle": "どこから始めますか？",
+      "offerBody": "いくつかの簡単な問題で開始地点を見つけます。約5分です。",
+      "startNew": "{{lang}}は初めて",
+      "placeMe": "{{lang}}を少し知っている",
+      "skipItem": "わからなければスキップ",
+      "doneTitle": "開始地点が見つかりました",
+      "doneBody": "{{unit}} からスタート。",
+      "prelit": "すでに知っている {{count}} 項目を持ってスタートします。",
+      "redo": "レベルを測り直す",
+      "aboveTitle": "このコースを超えています",
+      "aboveBody": "このコースは今のところ初級の内容で、あなたはその上のレベルです。それでも見て回れます — 新しいレベルを準備中です。"
+    },
+    "path": {
+      "title": "あなたの道",
+      "arc": "アーク {{name}}",
+      "unit": "ユニット {{n}}",
+      "locked": "この先",
+      "current": "現在地",
+      "review": "タップで復習",
+      "mastered": "しっかり定着"
+    },
+    "streak": {
+      "pactTitle": "連続記録をつけますか？",
+      "pactBody": "1日1枚で続きます。1日逃しても、休息日がカバーしてくれることがあります — 毎週1つ獲得できます。",
+      "pactAccept": "やってみる",
+      "pactDecline": "遠慮しておく",
+      "days": "{{count}}日",
+      "restDayEarned": "休息日を獲得",
+      "restDayUsed": "{{day}} は休息日でした",
+      "repairTitle": "連続記録を取り戻そう",
+      "repairBody": "これから {{days}} 日以内に2回学習すれば、{{count}} 日の連続記録が復活します。",
+      "repairCta": "始める"
+    },
+    "block": {
+      "speakingIntro": "スピーキング練習 — {{count}} 枚",
+      "ready": "準備OK",
+      "loadingModel": "マイクを準備中…",
+      "micPrompt": "Corpán はこの端末上で発音を採点するためにマイクを使います。",
+      "sttUnavailable": "音声採点は今使えません — リスニング練習に切り替えます。"
+    },
+    "quota": {
+      "cardsLeft": "今日はあと {{count}} 枚",
+      "plusBody": "Corpán Plus なら1日のカード上限がなくなります。"
+    },
+    "welcomeBack": {
+      "title": "おかえりなさい",
+      "body": "復習項目は記憶の {{pct}}% を保っていました。ウォームアップしましょう。"
+    },
+    "tease": {
+      "next": "次回: {{title}}"
+    },
+    "jump": {
+      "title": "簡単すぎますか？",
+      "body": "短いチャレンジで先へジャンプ。失敗しても失うものはありません — 今の場所にとどまるだけです。",
+      "accept": "チャレンジする",
+      "decline": "ここにいる"
+    },
+    "feed": {
+      "caughtUp": "今のところ全部終わりました",
+      "loading": "カードを準備中…",
+      "loadError": "Journey を読み込めませんでした。ホームからやり直してください。"
+    },
+    "popin": {
+      "pronounceTitle": "発音してみよう",
+      "close": "閉じる"
+    },
+    "settings": {
+      "title": "Journey の設定",
+      "advanceMode": "進み方",
+      "advanceSwipe": "スワイプで進む",
+      "advanceAuto": "自動で進む",
+      "celebration": "お祝い演出",
+      "celebrationFull": "フル",
+      "celebrationReduced": "控えめ",
+      "celebrationMinimal": "最小",
+      "sounds": "サウンド",
+      "soundsOn": "オン",
+      "soundsOff": "オフ",
+      "listeningMode": "ハンズフリーリスニング",
+      "viewPath": "道のりを見る",
+      "redoPlacement": "レベルを測り直す"
+    }
   }
 }

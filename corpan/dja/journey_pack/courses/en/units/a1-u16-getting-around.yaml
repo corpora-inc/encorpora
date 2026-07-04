@@ -1,0 +1,83 @@
+id: en.a1.u16
+arc: en.arc1
+theme: "Getting around"
+cando:
+  - key: transport
+    text: "Can buy tickets, follow simple directions, and use public transport."
+vocab_band: { lo: 1, hi: 3500 }
+phrase_domains: [travel]
+skills:
+  - id: en.skill.directions
+    kind: function
+    title: "Directions & transport"
+    b: -2.7
+    prereqs: [en.skill.weather]
+grammar_nodes: [en.gn.imperatives]
+items:
+  - ref: "phrase:base:22153"  # I turn left.
+    skills: [en.skill.directions]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:11715"  # I need a ticket.
+    skills: [en.skill.directions]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:14383"  # The train is late.
+    skills: [en.skill.directions]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:12274"  # Let’s get off the bus at the next stop.
+    skills: [en.skill.directions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11030"  # Join the line over there to buy tickets.
+    skills: [en.skill.directions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:27135"  # Stop here please
+    skills: [en.skill.directions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22361"  # Close the door now.
+    skills: [en.skill.directions]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:bus"
+    skills: [en.skill.directions]
+    importance: 2
+  - ref: "word:en:train"
+    skills: [en.skill.directions]
+    importance: 2
+  - ref: "word:en:ticket"
+    skills: [en.skill.directions]
+    importance: 2
+  - ref: "word:en:airport"
+    skills: [en.skill.directions]
+    importance: 2
+  - ref: "word:en:left"
+    skills: [en.skill.directions]
+    importance: 2
+  - ref: "word:en:right"
+    skills: [en.skill.directions]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [travel]
+      level: A1
+      count: 12
+      skills: [en.skill.directions]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

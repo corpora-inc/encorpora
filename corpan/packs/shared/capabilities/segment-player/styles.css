@@ -1,0 +1,156 @@
+/* cap-segment-player — every selector starts with .capSeg- (§2.4).
+   Container-relative only: no fixed positioning, no viewport units, no
+   safe-area env(). Theme via --capSeg-* custom properties (earth-tone
+   defaults matching the earthgate origin); consumers override on their
+   own wrapper. Defensive baseline on the root: works identically under
+   Tailwind preflight and bare UA styles. */
+
+.capSeg-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  isolation: isolate;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--capSeg-text, #3c3226);
+  background: var(--capSeg-bg, transparent);
+}
+.capSeg-root *,
+.capSeg-root *::before,
+.capSeg-root *::after {
+  box-sizing: border-box;
+}
+
+.capSeg-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* --- Paragraph view (moved from earthgate-reader; shell-specific
+       safe-area / fade-band padding stays behind in the pack). --- */
+
+.capSeg-paragraph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 12px 20px;
+  color: var(--capSeg-text, #3c3226);
+  overflow: hidden;
+  min-height: 0;
+  touch-action: pan-y;
+}
+
+.capSeg-paragraph-scroll {
+  flex: 0 1 auto;
+  max-height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.capSeg-paragraph-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.capSeg-paragraph-inner {
+  max-width: 640px;
+  width: 100%;
+  font-size: var(--capSeg-font-size, 26px);
+  line-height: var(--capSeg-line-height, 1.7);
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Applied by paragraphView.ts when the first word would otherwise render
+   inside the consumer's top chrome band. */
+.capSeg-paragraph-inner--pad-top {
+  padding-top: var(--capSeg-pad-top, 44px);
+}
+
+/* Applied by paragraphView.ts when the content overflows the scroll
+   container — extends scrollable range so per-line smooth scrolling can
+   keep the active word at the reading target through the final lines. */
+.capSeg-paragraph-inner--pad-bottom-extra {
+  padding-bottom: var(--capSeg-pad-bottom-extra, 240px);
+}
+
+.capSeg-word {
+  display: inline;
+  padding: 2px 1px;
+  border-radius: 3px;
+  transition: background-color 0.05s ease;
+}
+
+.capSeg-word--active {
+  background-color: var(--capSeg-active-bg, #d9a441);
+  color: var(--capSeg-active-text, #2a1f0e);
+  border-radius: 4px;
+}
+
+/* --- Micro-player controls (capability chrome, not the pack transport) --- */
+
+.capSeg-controls {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px 10px;
+}
+
+.capSeg-playBtn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--capSeg-btn-border, rgba(60, 50, 38, 0.3));
+  background: var(--capSeg-btn-bg, rgba(60, 50, 38, 0.08));
+  color: var(--capSeg-text, #3c3226);
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.capSeg-playBtn:active {
+  transform: scale(0.96);
+}
+
+.capSeg-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.capSeg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--capSeg-dot, rgba(60, 50, 38, 0.2));
+  flex: 0 0 auto;
+}
+.capSeg-dot--active {
+  background: var(--capSeg-dot-active, #a4703a);
+}
+.capSeg-dot--done {
+  background: var(--capSeg-dot-done, #d9a441);
+}

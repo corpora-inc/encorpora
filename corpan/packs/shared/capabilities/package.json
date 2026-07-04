@@ -1,0 +1,30 @@
+{
+  "name": "@corpan/capabilities-dev",
+  "version": "0.1.0",
+  "description": "Dev/test workspace for the capability modules (contract suite, harness pages, CI lint scripts). Capabilities themselves are consumed via the @shared source alias — this package.json exists ONLY so the contract tests and harnesses have their own devDependencies; nothing here ships.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "vitest run smoke.test.ts",
+    "lint:css": "node scripts/check-css-prefixes.mjs",
+    "size": "node scripts/size-budget.mjs",
+    "harness:pronounce": "vite pronounce/harness --host 0.0.0.0",
+    "harness:squeeze": "vite squeeze/harness --host 0.0.0.0",
+    "harness:segment-player": "vite segment-player/harness --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@types/node": "^25.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^6.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0",
+    "zustand": "^5.0.4"
+  }
+}

@@ -335,6 +335,22 @@
       "surprise": {
         "label": "Yllätä minut!",
         "desc": "Vie minut jonnekin hauskaan."
+      },
+      "journey": {
+        "label": "Seuraa Journeyta",
+        "desc": "Ohjattu kurssi — sovellus valitsee jokaisen askeleen"
+      }
+    },
+    "journey": {
+      "title": "Haluatko ohjatun polun?",
+      "subtitle": "Journey tarjoaa joka päivä sekoituksen uutta materiaalia ja kertausta kielellä {{lang}} — kortti kerrallaan.",
+      "guided": {
+        "label": "Aloita Journey",
+        "desc": "Ohjattu päivittäinen sessio, joka mukautuu sinuun"
+      },
+      "explore": {
+        "label": "Tutkin omin päin",
+        "desc": "Voit aloittaa Journeyn milloin tahansa Koti-näkymästä"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Samplaa kieltä, jota opettelet. Scratchaa, kunnes se jää päähän."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Ohjattu polkusi, kortti kerrallaan"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "Asennetaan…",
     "installed": "Asennettu",
     "retry": "Yritä uudelleen"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Ohjattu polkusi, kortti kerrallaan",
+    "heroCard": {
+      "title": "Sinun Journeysi",
+      "progress": "{{unit}} · {{count}} korttia päivän tavoitteeseen"
+    },
+    "heroCta": {
+      "start": "Aloita Journeysi",
+      "continue": "Jatka"
+    },
+    "chrome": {
+      "home": "Koti",
+      "menu": "Journey-asetukset",
+      "unit": "Yksikkö {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Tarkista",
+      "continue": "Jatka",
+      "skipHint": "Pyyhkäise uudelleen ohittaaksesi",
+      "retry": "Yritä uudelleen",
+      "showAnswer": "Näytä vastaus",
+      "answerWas": "Vastaus oli",
+      "comeBackNote": "Palaamme tähän vielä.",
+      "whyThisCard": "Miksi tämä kortti?",
+      "whyNew": "Uusi asia nykyisestä yksiköstäsi.",
+      "whyReview": "Kertaus — välit pitävät sen vahvana.",
+      "whyRepair": "Toinen katsaus hankalaan kohtaan.",
+      "whyGuided": "Osa ohjattua polkuasi.",
+      "typeWhatYouHear": "Kirjoita mitä kuulet",
+      "typeHere": "Kirjoita tähän…",
+      "tapToOrder": "Napauta sanat oikeaan järjestykseen",
+      "matchPairs": "Yhdistä parit",
+      "flipToReveal": "Napauta paljastaaksesi",
+      "knewIt": "Tiesin sen",
+      "didntKnow": "En vielä",
+      "speakNow": "Puhu nyt",
+      "listen": "Kuuntele",
+      "listenSlow": "Hitaammin",
+      "hint": "Vihje",
+      "correct": "Oikein",
+      "incorrect": "Ei aivan",
+      "pickTranslation": "Valitse käännös",
+      "pickWhatYouHear": "Valitse mitä kuulit",
+      "fillTheBlank": "Täytä aukko",
+      "newItem": "Uusi",
+      "reviewedEarlier": "Nähty aiemmin"
+    },
+    "intro": {
+      "listenAndEcho": "Kuuntele ja sano se ääneen",
+      "newWord": "Uusi sana",
+      "newPhrase": "Uusi fraasi"
+    },
+    "grammar": {
+      "noteLabel": "Kielioppihuomio",
+      "tryIt": "Kokeile"
+    },
+    "checkpoint": {
+      "title": "Tarkistuspiste",
+      "summary": "{{new}} uutta · {{reviews}} kertausta · paras putki {{combo}}",
+      "done": "Riittää tältä päivältä",
+      "keepGoing": "Jatka",
+      "dailyRing": "{{done}}/{{goal}} tänään",
+      "deepSession": "Melkoinen syväsessio — kertauksesi on joka tapauksessa aikataulutettu.",
+      "streakTicked": "Päivä {{count}} ✓",
+      "boss": "Yksikköhaaste",
+      "arcGate": "Kaaren portti"
+    },
+    "celebrate": {
+      "combo": "{{count}} putkeen",
+      "perfect": "Täydellistä",
+      "wordsLearned": "{{count}} sanaa opittu",
+      "unitComplete": "Yksikkö valmis: {{name}}",
+      "streakDay": "Päivä {{count}}",
+      "placementDone": "Taso löytyi"
+    },
+    "rare": {
+      "reveal": "Jotain erityistä…",
+      "etymologyGem": "Sanan tarina",
+      "timeCapsule": {
+        "title": "Aikakapseli",
+        "body": "Teit tämän eteen kovasti töitä {{when}} — katso itseäsi nyt."
+      },
+      "delight": {
+        "newVoice": "Eri ääni",
+        "didYouNotice": "Huomasitko?"
+      },
+      "miniGame": {
+        "title": "Bonuskierros",
+        "play": "Pelaa"
+      },
+      "story": {
+        "unlocked": "Olet ansainnut seuraavan luvun",
+        "read": "Lue se"
+      }
+    },
+    "placement": {
+      "offerTitle": "Mistä aloitetaan?",
+      "offerBody": "Muutama nopea kysymys löytää lähtöpisteesi. Noin viisi minuuttia.",
+      "startNew": "Olen uusi kielessä {{lang}}",
+      "placeMe": "Osaan vähän kieltä {{lang}}",
+      "skipItem": "Ohita jos epäröit",
+      "doneTitle": "Lähtöpiste löytyi",
+      "doneBody": "Aloitetaan kohdasta {{unit}}.",
+      "prelit": "Aloitat {{count}} jo tutulla asialla.",
+      "redo": "Tarkista tasoni uudelleen",
+      "aboveTitle": "Olet tämän kurssin ohi",
+      "aboveBody": "Tämä kurssi kattaa toistaiseksi alkeistason, ja sinä olet sen yläpuolella. Voit silti tutkia sitä — uusia tasoja on tulossa."
+    },
+    "path": {
+      "title": "Polkusi",
+      "arc": "Kaari {{name}}",
+      "unit": "Yksikkö {{n}}",
+      "locked": "Edessäpäin",
+      "current": "Olet tässä",
+      "review": "Napauta kerrataksesi",
+      "mastered": "Vahva"
+    },
+    "streak": {
+      "pactTitle": "Pidetäänkö putkea?",
+      "pactBody": "Yksi kortti päivässä pitää sen elossa. Jos päivä jää väliin, lepopäivä voi paikata — ansaitset yhden joka viikko.",
+      "pactAccept": "Olen mukana",
+      "pactDecline": "Ei kiitos",
+      "days": "{{count}} päivää",
+      "restDayEarned": "Lepopäivä ansaittu",
+      "restDayUsed": "{{day}} oli lepopäivä",
+      "repairTitle": "Nosta putkesi takaisin",
+      "repairBody": "Suorita kaksi sessiota seuraavien {{days}} päivän aikana palauttaaksesi {{count}} päivän putkesi.",
+      "repairCta": "Aloita"
+    },
+    "block": {
+      "speakingIntro": "Puheharjoitus — {{count}} korttia",
+      "ready": "Valmis",
+      "loadingModel": "Lämmitetään mikrofonia…",
+      "micPrompt": "Corpán käyttää mikrofonia puheesi arviointiin tällä laitteella.",
+      "sttUnavailable": "Puhearviointi ei ole nyt käytettävissä — vaihdetaan kuunteluharjoituksiin."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} korttia jäljellä tänään",
+      "plusBody": "Corpán Plus poistaa päivittäisen korttirajan."
+    },
+    "welcomeBack": {
+      "title": "Tervetuloa takaisin",
+      "body": "Kertauksesi säilyttivät {{pct}} % voimastaan. Lämmitellään."
+    },
+    "tease": {
+      "next": "Ensi kerralla: {{title}}"
+    },
+    "jump": {
+      "title": "Tuntuuko liian helpolta?",
+      "body": "Ota lyhyt haaste hypätäksesi eteenpäin. Jos epäonnistut, et menetä mitään — jäät juuri siihen missä olet.",
+      "accept": "Kokeile haastetta",
+      "decline": "Jään tähän"
+    },
+    "feed": {
+      "caughtUp": "Olet ajan tasalla toistaiseksi",
+      "loading": "Valmistellaan korttejasi…",
+      "loadError": "Journey ei latautunut. Yritä uudelleen Kodista."
+    },
+    "popin": {
+      "pronounceTitle": "Äännä se",
+      "close": "Sulje"
+    },
+    "settings": {
+      "title": "Journey-asetukset",
+      "advanceMode": "Eteneminen",
+      "advanceSwipe": "Pyyhkäise jatkaaksesi",
+      "advanceAuto": "Jatka automaattisesti",
+      "celebration": "Juhlinnat",
+      "celebrationFull": "Täysi",
+      "celebrationReduced": "Kevennetty",
+      "celebrationMinimal": "Minimaalinen",
+      "sounds": "Äänet",
+      "soundsOn": "Päällä",
+      "soundsOff": "Pois",
+      "listeningMode": "Handsfree-kuuntelu",
+      "viewPath": "Näytä polku",
+      "redoPlacement": "Tarkista tasoni uudelleen"
+    }
   }
 }

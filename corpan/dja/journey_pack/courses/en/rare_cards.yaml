@@ -1,0 +1,51 @@
+# journey_en rare-card economy v0.1 (D7). No story rows — R11 schema-only.
+# Etymology gems roll over word items pinned by the units below.
+cards:
+  - id: en.rare.delight.high-five
+    card_type: delight
+    rarity_weight: 8
+    min_unit: en.a1.u01
+  - id: en.rare.delight.postcard
+    card_type: delight
+    rarity_weight: 8
+    min_unit: en.a1.u08
+  - id: en.rare.gem.hello
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u01
+    item: "word:en:hello"
+  - id: en.rare.gem.breakfast
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u09
+    item: "word:en:breakfast"
+  - id: en.rare.gem.holiday
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u22
+    item: "word:en:holiday"
+  - id: en.rare.gem.window
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u24
+    item: "word:en:window"
+  - id: en.rare.gem.restaurant
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u07
+    item: "word:en:restaurant"
+  - id: en.rare.gem.doctor
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u10
+    item: "word:en:doctor"
+  - id: en.rare.gem.guitar
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u19
+    item: "word:en:guitar"
+  - id: en.rare.gem.birthday
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u05
+    item: "word:en:birthday"

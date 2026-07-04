@@ -7,6 +7,356 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey browser demo harness (dev-only)** — `journey-demo.html` mounts the
+  REAL JourneySurface + engine + resolver over the real `journey_en` pack
+  content in a plain browser (no Tauri): `scripts/journey-demo/precompute.ts`
+  emits `public/journey-demo/course.json` (gitignored), `src/journey/demo/`
+  wires JSON-backed ResolverDeps ports, `scripts/journey-demo/verify.ts`
+  proves ≥10 cards headless over the JSON.
+
+### Changed
+- **Journey W11 round 2 — engine calibration: the §3 mechanism bundle was
+  validated and rejected; the tuning surface shipped instead.** The
+  CALIBRATION.md round-1 bundle (`DESIRED_RETENTION` 0.85, throttle
+  down-target 1.0×capacity, leech 4-lapse/2.5-ratio) was implemented and
+  swept against the P-gates: every red gate moves the right way (P1 median
+  due 2.10→1.66, P3 review:new 35→14:1, P4 struggle 52.8→48.6%, lapser
+  drain 11/12) but none reaches its bound, while P7 strand convergence
+  collapses (noise-limited at thinner daily volume) and P10 leech
+  containment blows to ~7% vs 3% — so per the no-regression rule the
+  behavioral values stay at 0.90 / 1.5 / 6-2. What ships: throttle ratios
+  and the strand control law extracted to `constants.ts`
+  (`THROTTLE_HARD/DOWN/UP_RATIO`, `STRAND_CONTROL_EXPONENT/MIN/MAX` —
+  engine.md §1.1, behavior-preserving), the never-wired
+  `STRAND_OVER_WEIGHT` deleted, the sim runner's leech mirror reading the
+  real constants, leech/scheduler tests parameterized, and
+  `scripts/journey-sim/CALIBRATION.md` §6–§10: full before/after 3-seed
+  gate matrix, the sweep table, evidence-backed spec-amendment
+  recommendations for P1/P3/P4 (root cause: the §7.1 fixed-ability learner
+  makes them unsatisfiable — recommend amending the learner model), P7's
+  max-over-days metric, P8's ±0.6 tolerance, and a NEW P11 baseline
+  failure (relaxation rate ~0.3 vs 0.2, pre-existing from the W10
+  integration era, needs its own workstream).
+
+### Fixed
+- **Offline image cache: deflaked the cross-test background-write leak.** A
+  prior test's fire-and-forget LRU touch / fill / budget sweep could land in
+  the next test's freshly-reset singletons under CPU load and flip a cache hit
+  into a miss (a ~1/300 CI flake in the corpan-app test suite). Background work
+  is now tracked and drained between cases via `__settleImageCacheForTests()`;
+  the production path is unchanged (the tracker is a transparent pass-through).
+- **Journey W11 — R10 placement ladder respects the pack's actual b range**
+  (the W10 P8 bug). Phase-1 rungs are now the global CEFR ladder span
+  clamped to the installed pack's `[minB, maxB]` and re-subdivided evenly (a
+  full-span pack reproduces the spec ladder exactly); the "above-content"
+  early exit additionally requires a supported estimate (se ≤ 0.7), so
+  mid-band learners on a narrow-band pack no longer get routed out of the
+  course off two ladder passes with θ̂ pinned above the ceiling. Above-content
+  finalize now pins θ̂ to `maxB + margin` (no discriminating items exist
+  beyond the ceiling) and returns the last unit's skills as a usable in-pack
+  frontier (R10 "end of shipped content") instead of an empty list. Final
+  placement θ̂ is a 1PL MAP refit over the full probe transcript (the running
+  Elo iterate still drives item selection per engine.md §4.3); golden
+  placed-intermediate transcript regenerated under §8.3 with this
+  justification. `journey-sim --p8` also instruments the wrong-placement
+  self-heal cohort (10% injected over-placements; heal = week-one rewind or
+  placement-seeded skill demotion ≤14d). P8 vs the real journey_en pack,
+  40 learners × seeds 1/2/3: self-heal 4/4 on every seed, above-ceiling
+  2/2·1/1·2/2, in-band ±0.6 accuracy 74%/88%/91% vs the ≥90% bar — at the
+  information floor of ≤25 guessable probes (σ ≈ 0.40, unbiased); the
+  evidence-backed P8 spec-amendment recommendation is in
+  `scripts/journey-sim/CALIBRATION.md`.
+- **Journey W12 — catalogs are offline-cache native (D12 phase 2).** The
+  three catalog stores (game/reader v3 catalog, phrase-pack catalog,
+  word-pack index) now delegate their fetch bodies to the shared
+  offline-cache layer (`cachedFetch` + `subscribeJson`): one place owns
+  TTLs, ETag/Last-Modified 304 revalidation, IndexedDB persistence,
+  singleflight and the never-clobber-on-failure contract. The v3 catalog
+  caches the RAW body and filters at read time, so toggling dev-packs
+  mode or upgrading the app re-filters instantly with zero network (the
+  old force-refetch on devMode change is gone). Store public APIs are
+  unchanged. A zustand version-2 migration seeds the offline-cache
+  records from the legacy persisted catalogs, so upgraded devices render
+  offline cold-start without a refetch (phrase/word seeds keep their
+  validators for a 0-byte 304 first poll). The legacy inline
+  catalog-refresh loop in App.tsx is retired — the offline-cache triggers
+  (startup / foreground / online / jittered interval) own the refresh
+  cadence now.
+- **Journey W12 — rung-3 distractor top-up is wired.** The resolver's
+  random top-up (phrase-kind pathological starvation only) now draws from
+  the host's filtered random-entries surface (levels + languageCodes
+  scoped to the learner's stack) instead of an empty stub; a missing seam
+  or host error degrades to a shortfall report, never a crashed card.
+  Top-ups only feed the sampler pool — selection stays on the card PRNG.
+
+### Added
+- **Journey W10 — real-pack P8 placement gate** (`journey-sim --p8`). The
+  simulation CLI can now run the R10 placement-quality gate against the
+  REAL built `journey_en` pack (w6Smoke loader precedent): a cohort scoped
+  to the shipped arcs (ability drawn around the pack's content band) is
+  placed via the live probe controller; graded on |θ̂ − a| ≤ 0.6 within
+  ≤25 items (≥90%) + above-ceiling learners terminating "above-content"
+  within the Phase-2 budget. First run (seed 1, 40 learners): **FAIL —
+  29/39 in-band (74%)**; dominant mechanism: on this single-band
+  (preA1/A0, b ∈ [−3.5, −1.5]) pack the ladder's second rung IS the
+  content ceiling, so mid-band learners who pass both low rungs exit
+  "above-content" after 2 items with θ̂ pinned at −0.72. Not tuned —
+  calibration is W11's lane. The wrong-placement self-heal sub-criterion is
+  not instrumented in this mode (reported in the gate detail).
+- **Journey W10 — the Journey is live in the app.** `App.tsx` mounts the
+  guided feed as a full-screen sibling overlay of HomeHub (the activeGame
+  state-machine pattern; the pack overlay stacks above the still-mounted
+  feed, exit rides `corpan:journey-exit`). `buildJourneyDeps`
+  (runtimeWiring.ts) assembles the production runtime: JIT course-pack
+  install from the journey index, the normative CourseGraph loader
+  (targetLang from `pack_meta.target_lang`), the real engine over the shared
+  local-analytics persistence, resolver over a live HostApi, the
+  `journey_daily` gate, `localAnalyticsRecord` (the one `activity_result`
+  writer), the single-owner activity session, STT probes off the whisper
+  plugin (`stt.isAvailable`/`prepare`, fail-closed — speak_echo degrades to
+  listen_type as before), and streak-v2 book-day providers (progress.ts
+  `lastOpenedAt` → journey `YYYY-MM-DD` days; the two date formats are
+  reconciled in the provider). HomeHub gains the flagship Journey hero card
+  (existing `journey.*` locale keys; shown only when a course pack is
+  installed or published for the user's target). Onboarding gains the
+  journey opt-in + placement-offer nodes (data-driven; "I'm new" pre-declines
+  the in-surface probe offer) and a "Follow the Journey" option on the final
+  landing question; `LandingIntent` gains `{ kind: "journey" }`. New
+  `onboarding.journey.*` copy ships in all 54 locales.
+- **Journey W10 — `journey_daily` quota row** (feed-ux §7, R12). The shared
+  monetization registry (`packs/shared/monetization/src/quotas.ts`) gains the
+  journey gate: packId `corpan_app`, dailyLimit 60 (a provisional default
+  pending the operator's free-tier N decision — remote-config overridable
+  like every row), softNagEvery 0, unitLabel "cards". NEW-INTAKE-ONLY
+  debits: only completed debut cards + pack-anchor launches meter;
+  due-review / replay / repair are never metered. `journey_daily` joins the
+  `PaywallSurface` union; `createJourneyQuota` now resolves the real
+  `createDailyQuota` gate (which owns the `corpan:daily-locked` dispatch)
+  and reports the live registry limit.
+
+### Fixed
+- **Journey W10 — engine fixes (W4's observations).** (a) `EngineCard.meta`
+  now carries `unscored` for presentation-only cards (debut intros, cadence
+  faces, offers) — the surface reads the engine flag instead of inferring by
+  activityType: unscored cards no longer bump combo/new-count or earn
+  "perfect" celebrations. (b) The §5.4 same-type-adjacency invariant now
+  covers the BATCH SEAM: the mixer remembers the previous batch's tail type
+  and both the type chooser and the adjacency repair avoid it for the next
+  batch's head — this was the mechanism behind two adjacent `intro_echo`
+  cards. Goldens regenerated (spec-cited: engine.md §5.4 adjacency
+  invariant; only card-type/order picks drift, grades/θ untouched). (c) New
+  `engine.requestUnitReview(unitId)` (≈25 lines): enqueues a practiced
+  unit's seen items as session replays (unmetered, once-per-session,
+  existing gap discipline); PathViz's tap-to-review affordance is wired to
+  it through the runtime.
+- **Journey W10 — seam fixes.** The journey pack-poster card
+  (`PackActivityCard`) renders its art through `<OfflineImage>` (cached →
+  remote → glyph, R15) and enriches the poster name/artwork from the
+  installed-games registry + (localized) catalog entry instead of showing
+  the raw provider id. The shared reader shell (`packs/shared/catalog`
+  `appShell.ts`) now passes the feature-detected `hostApi.offlineCache?.
+  imageSrc` resolver into `createNarratorDetail`, so narrator art resolves
+  from the offline cache too.
+- **Journey W10 — authoritative targetLang** (item 15, flagged by W3 + W6).
+  The CourseGraph loader (`util/journeyPack.ts`) now carries
+  `pack_meta.target_lang` on the graph, and the engine's GraphIndex prefers
+  it over the courseId derivation — which lowercases BCP-47 region tags
+  (`journey_pt_br` → `"pt-br"`, wrong for `pt-BR`). Fixture graphs without
+  the field keep the derivation fallback.
+
+### Changed
+- **Journey W10 — file re-homes** (1:1, no logic change): the journey meta
+  store moved `src/journey/store.ts` → `src/store/journey.ts` (house
+  convention keeps stores in `src/store/`), and the capability pop-in trio
+  (`CapabilityPopIn.tsx`, `usePhrasePopIn.ts`, `popinBus.ts`) moved
+  `src/journey/popin/` → `src/components/capability/` (their spec home,
+  capability-modules.md §5). All imports updated.
+
+### Added
+- **Journey W10 — boot wiring** (integration). `main.tsx` configures the
+  on-device local-analytics recorder with the live active-stack id
+  (`configureLocalAnalytics({ getStackId })`, early, before any surface
+  records); `App.tsx` registers the offline-cache resource table + installs
+  the revalidation triggers once at mount (`registerCoreResources()` +
+  `installTriggers()` — coexisting with the legacy inline catalog-refresh
+  loop until the phase-2 store migration); dev builds gain the storage
+  doctor on `__corpanDebug.storage.*` (`installStorageDoctorDebug()` via
+  `util/devDebug.ts`, tree-shaken from production).
+- **Journey W10 — pack-facing host seams wired** (integration). `hostApi`
+  now carries the three reserved shared seams: `storage`
+  (`buildPackStorageApi` — pack-scoped durable KV, storage-analytics.md
+  §5.1), `localAnalytics` (`buildPackLocalAnalyticsApi` — namespaced writes +
+  own-aggregate reads, §5.2), and `offlineCache`
+  (`createOfflineCacheHostApi` — cached image URLs + cache-first JSON, D12).
+  Advertised via `__CORPAN_HOST_CAPS.storageKv: 1`, `localAnalytics: 1`, and
+  `offlineCache: true` (app-wide in `main.tsx` + the ContentPackHost merge);
+  mirrored in the pack SDK typings. The on-device `activity_result` event
+  keeps ONE writer: the journey runtime's `submitResult`, the terminal
+  handler of `hostApi.journey.reportResult`'s ingest path (documented at the
+  seam).
+- **Journey W2 — offline-first cache layer + Home covers offline**
+  (`docs/journey/specs/offline-cache.md`, D12). Catalog cover art now renders
+  offline (cached on device after first sight) — airplane-mode cold start
+  shows Home with covers instead of broken/empty images. One shared cache
+  module at `src/lib/offlineCache/`: `cachedFetch(resource)` (cache-first
+  JSON with policy TTLs, stale-while-revalidate, subscriber notify,
+  single-flight coalescing; network failures never clobber the last-good
+  record) wrapping the proven `fetchJsonFresh`; an immutable-by-URL image
+  cache (fs blobs under `corpan-packs/.offline-cache/img/`, downloaded by
+  the new Rust `offline_cache_put` command — reqwest so no CORS, atomic
+  tmp+rename, 8 MiB ceiling — served by the existing `corpan-pack://`
+  protocol, LRU-evicted at 64 MiB / 512 entries, persisted index + in-memory
+  mirror for flash-free warm renders, throttled orphan sweep + `repairImage`
+  self-healing); `<OfflineImage>` (cached → remote → glyph fallback, never a
+  broken image) now backing HomeHub tiles, pack screenshots, the launch-
+  transition collage, and the onboarding tour; `prefetchImages` pre-warms
+  covers on every catalog update; `installTriggers()`
+  (startup/foreground/online/interval, jittered) ready for the W10 App.tsx
+  wiring; the §3.2 per-resource policy table (catalog-v3 RAW-body caching
+  with read-time `filterCatalogForApp`, phrase-pack, word-pack, journey
+  index — TTL 300 s); `createOfflineCacheHostApi` defines the additive
+  `hostApi.offlineCache` seam (W10 wires it into types.ts/hostApi.ts).
+  Rust: `offline_cache_{put,delete,list}` registered in `lib.rs`.
+- **Journey W4 — the feed surface** (`docs/journey/specs/feed-ux.md`,
+  R5/R8/R12/R14/R15 applied). `src/journey/`: `JourneySurface` (z-1050
+  overlay sibling, dark/light + RTL, placement-first mount, PathViz overlay,
+  `corpan:journey-exit`), `FeedScroller` (3-slot window, framer-motion drag,
+  read-only scroll-back over a 20-card ring, double-swipe skip semantics,
+  listening-run hands-free pill, per-card-type advance rules), the TEN native
+  renderers (registry-driven off `ACTIVITY_TYPES`; params/distractors from
+  the W5 resolver's typed builders; one-tokenizer rule; `speak_echo` mounts
+  `@shared/capabilities/pronounce` with `startPaused` + the R3 stt envelope
+  incl. `flags.sttUnavailable` listen_type degradation), host-owned
+  `CelebrationLayer` (4 juice tiers, intensity setting, reduced-motion-aware
+  canvas particles, pentatonic chimes that never talk over TTS),
+  `CheckpointCard` (equal-weight stop/continue, daily ring, deep-session
+  line, quota counter) + boss/arc-gate banners + `WelcomeBackCard` +
+  `BlockIntroCard` (the ONLY runtime-synthesized card, R5), `RareCard`
+  shimmer wrapper with delight/etymology-gem/time-capsule/pack-poster faces,
+  `PlacementFlow` (≤3 framing screens, probe mode, honest R10 above-content
+  copy, streak pact card), PathViz P0 arc→unit ribbon, streak v2 (rest-day
+  tokens, repair-by-learning, milestones; `corpan-journey-v1` store),
+  `runtime.ts` (engine+resolver+activitySession wiring, EngineCard→FeedCard
+  1:1 mapping, THE one R12 quota-debit site: completed debuts + pack-anchor
+  launches only), capability registry + `CapabilityPopIn`/`usePhrasePopIn`,
+  and local-analytics session/card-impression/activity-result events.
+  All ~124 journey UI keys shipped in all 54 locales. Tests: runtime/streak/
+  advance-rule units + a headless jsdom smoke test driving a full
+  JourneySurface session (>= 10 cards) over the W6 fixture pack through the
+  real engine + resolver.
+- **Journey W11 — engine calibration study, round 1**
+  (`scripts/journey-sim/CALIBRATION.md`). Reproduced W3's P1/P3/P4/P7 gate
+  failures verbatim (seed 1); landed the constants-matrix sweep driver
+  (`scripts/journey-sim/sweep.ts` + `sweeps/`), saturation diagnostics in the
+  sim `cli.ts` metrics (`dueCurve`/`finalCapacity`/`modeTotals`) and a
+  per-strand signed-deviation readout in the P7 gate line.
+  `request_retention` extracted to `engine/constants.ts:DESIRED_RETENTION`
+  (engine.md §1.1; value unchanged at 0.90 — no behavior change, golden
+  transcripts untouched). A five-point desired-retention sweep shows the flat
+  pace knob alone cannot satisfy P1/P3/P4/P7; the mechanism bundle for round 2
+  and the spec-amendment fallback are documented in the study.
+- **Journey W3 — adaptive engine + simulation harness**
+  (`docs/journey/specs/engine.md`). Pure-TS adaptive core at
+  `src/journey/engine/`: ts-fsrs 5.4.1 (FSRS-6, config verbatim, deterministic
+  fuzz seeded from `fnv1a32(itemId)`), the §4.5 grade-derivation table with
+  the R3 typed-detail envelope and R9 aggregate clamps, `applyResult` joining
+  grades by `itemRefKey` (R6 — shuffled/subset-safe, un-issued refs dropped),
+  derived skill mastery with dirty-seq + day-key memoization, the θ Elo
+  scalar, 3-phase adaptive placement with the R10 content ceiling
+  (`above-content` early termination) and a transcript-equivalent
+  `placeUser()`, the feed mixer (DUE/REPLAY/NEW/REPAIR/TRICKLE/FUN pools,
+  flow-mode + debt-brake + strand-balance quota adjustments, R5 lesson-recipe
+  slots, unit-boss/arc-gate checkpoint batches with `pass_score` gating and
+  REPAIR routing, cadence checkpoints, welcomeBack, seeded rare-card rolls,
+  model-residency batching, constraint repair), leech
+  flag/suspend/substitute handling, `newPerDay` throttling with the two-stage
+  debt brake, jump/legendary gauntlets, an engine-level corruption-recovery
+  ladder over the shared local-analytics log, and the `EnginePersistence`
+  consumption seam (type-only import; in-memory fakes for tests/sim).
+  Simulation harness at `scripts/journey-sim/` runs the §7 P-gates over 7
+  synthetic personas against a generated 24-unit fixture course and
+  smoke-loads the W6 fixture pack through the in-tree `loadCourseGraph`
+  loader (P8 deferred to the real `journey_en` pack per R10).
+- **Journey W1 — storage platform + local analytics substrate**
+  (`docs/journey/specs/storage-analytics.md`). The quota-safe storage service
+  re-homed to `src/lib/storage/` (old `src/util/storage/` paths keep working
+  via one-release re-export shims), upgraded to IndexedDB schema v2 (additive
+  `docs`/`log` stores) with typed adapters on top: `DocStore<T>` (versioned
+  codecs, lazy migrate, corrupt records dropped + counted — never thrown),
+  `AppendLog<T>` (O(1) appends, ring caps with hysteresis), `BlobStore`
+  (Tauri-fs tier under `corpan-packs/.offline-cache/blob/`, servable via the
+  `corpan-pack://` protocol; IndexedDB fallback in web dev), a shared
+  `WriteBatcher` (one transaction per flush window; evict-retry then
+  memory-mirror degrade), a central namespace registry with budgets, a
+  three-level corruption-recovery ladder (record → namespace → database), and
+  the Journey engine persistence adapter (`EnginePersistence`).
+- **On-device local analytics** (`src/lib/localAnalytics/`): an append-only,
+  never-uploaded event log (activity results, sessions, placement, streaks;
+  100k-record / 48MB ring) with daily rollups and the aggregation queries the
+  Journey engine and personal-records surfaces read (calibration report,
+  strand balance, engagement snapshot, personal bests). This is the learner's
+  own history — separate from (and invisible to) cloud telemetry. Includes
+  host-side builders for pack-scoped storage (2MB / 1,000 keys per pack) and
+  pack event recording (5,000/day rate limit), plus a dev-only storage
+  doctor (`storageDoctor.report()` + `__corpanDebug.storage` wiring hook).
+- New Rust `blob_store_*` commands (read/write/delete/has/stats/prune/
+  served_url) backing the FS-BLOB tier; `validate_pack_id` now rejects the
+  reserved `.offline-cache` directory so no pack id can ever claim the cache
+  subtree.
+- **Journey content resolver (`src/journey/content/`, Journey W5).** The seam
+  between the engine's scheduled `ItemRef`s and renderable content, per
+  `docs/journey/specs/content-resolver.md` (R14). `resolve.ts` resolves all
+  seven item kinds against installed sources through a dependency-injected
+  `ResolverDeps` port (phrase base+packs, wordpan pair DBs, hanzipan,
+  narration-pack segment/audio files, course-pack grammar nodes / phoneme
+  overlays / localized strings) into a typed `ResolvedItem` (display `text` vs
+  spoken `ttsText`, display-aligned audio word timestamps). Missing content is
+  never a blank card: unresolvable refs come back as typed `missing` reasons
+  (incl. `preview_truncated` — no paywall surprises inside feed cards) and
+  `contentMissingResult()` builds the §3.3 drop envelope
+  (`abandoned + flags.contentMissing`). Per-session LRU caches are entry- and
+  byte-bounded (shared ~4 MB pool; lazy hanzi stroke JSON kept out of it) with
+  `invalidate()` for mid-session pack installs. `distractors.ts` is the ONE
+  distractor source for every tappable wrong option: same-skill → near-b →
+  random-top-up ladder, validity exclusions (answer/near-answer collisions
+  after aggressive normalization, same-translation collisions,
+  answer-language-only surfaces, recent-window dedup), deterministic under a
+  per-card seeded PRNG, plus `seededShuffle` for match_pairs and the §4.7
+  per-renderer needs table as typed param builders. Every SQL string carries
+  an explicit LIMIT with a full-page truncation warning (R7 silent Rust cap).
+  Test-only golden fixtures (`__fixtures__/`, in-memory `node:sqlite`) cover
+  all kinds, all missing reasons, 1,000-case distractor validity properties,
+  and determinism. Not yet user-visible: the feed runtime (W4) wires it up.
+- **Journey course-pack catalog + install plumbing + CourseGraph loader
+  (Journey W6, `docs/journey/specs/course-pack.md`).** Journey course packs
+  are data-only SQLite packs (one per target language) on their own
+  CloudFront index (`corpan/journey-packs/index.json`) — never in the main
+  catalog, never on Home. New `contentPacks/journeyPackCatalog.ts` (typed
+  parse, channel/minAppVersion gating, and a `schemaVersion` compatibility
+  gate so an old app filters out unreadable course DBs BEFORE download),
+  `util/journeyPack.ts` (explicit-packId install, pack_meta post-install
+  verification, and the normative PackReader → CourseGraph loader: keyset
+  pagination under the Rust 2,000-row silent-truncation cap + a row-count
+  hard assertion against `pack_meta` counts — the engine never boots on a
+  partial graph), and `store/journeyPacks.ts` (installed-pack registry,
+  phrasePacks pattern). `CatalogV3Entry`/`CatalogGame` gain the optional
+  `activities` declarations field, forwarded verbatim by
+  `filterCatalogForApp` (activity-contract.md §4.3) so the Journey scheduler
+  can plan anchor cards for not-yet-installed packs OTA. No UI wiring yet —
+  the Journey surface consumes these modules in a later slice.
+
+### Changed
+- **Storage migrations M2–M4:** per-book reading progress
+  (`corpan-progress-v1`), the word-pack catalog index
+  (`corpan-word-pack-catalog-v1`), and per-stack phrase history
+  (`corpan-history-v2`, now capped at 500 entries per stack) persist to the
+  IndexedDB tier instead of the shared ~5MB localStorage budget. Existing
+  data is moved by the idempotent boot migration (sentinel bumped to
+  `corpan-storage-migration-v2`); legacy single-stack settings/history blobs
+  are deleted after their one-time import, and the analytics
+  last-language-by-book map is capped at 100 books.
+
 ### Changed
 - **Word-explanation packs ship from a dedicated S3 index, not the main
   catalog (#477, #478, #479; supersedes #498's catalog registration).** Word
@@ -39,6 +389,27 @@ Conventions: `corpan/CHANGELOGS.md`.
   reverted); the pack ships from S3.
 
 ### Added
+- **Journey activity contract (W0, contract layer).** The host↔pack seam every
+  Journey feed card rides on: new authoritative
+  `contentPacks/activityContract.ts` (ItemRef + the one `itemRefKey`/
+  `parseItemRef` serialization helper, ActivitySpec/ActivityResult with the
+  typed `detail` evidence envelope, the `ACTIVITY_TYPES` native-renderer
+  registry, `PackActivityDeclaration`, `JourneyHostApi`) and host-only
+  `contentPacks/activitySchemas.ts` (Zod validation at the pack boundary +
+  the single-owner activity session: both rails funnel into one ingest,
+  per-item dedup by itemRefKey, first-terminal-wins, teardown synthesis from
+  buffered per-item evidence — every begun session yields exactly one
+  result). `hostApi.journey` typed rail (isActive/getSpec/reportItem/
+  reportResult/abandon) plus the `corpan:activity-result` window-event
+  fallback rail, both Zod-validated. `PackLaunchEntry.activity` launches a
+  pack as an activity provider (spread into `mount(..., initialState)`;
+  remount keyed on `specId` identity, not object identity);
+  `__CORPAN_HOST_CAPS.journey = 1` advertises the contract version; manifest
+  `activities` declares pack-provided activity types. All additive-optional —
+  existing packs and standalone launches are unchanged. New dependency:
+  `zod` ^4.4.3 (host-boundary validation only; never in the pack-facing SDK
+  copy). Contract copies are generated by `node packs/sdk/sync-contract.mjs`
+  (`--check` for CI drift).
 - **Long-press word explanations in Phrase Flip (#477, #478, #479).** Long-press
   (touch) or right-click / long mouse-press (desktop) any English word in a
   phrase to open a popover explaining what it means, in your native language,

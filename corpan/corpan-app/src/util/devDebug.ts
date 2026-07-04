@@ -13,6 +13,7 @@ import { usePaywallStore, type PaywallSurface } from "@/store/paywall"
 import { useRatingStore } from "@/store/rating"
 import { getPackStreak } from "@shared/streak"
 import type { GateRegistry } from "@shared/monetization"
+import { installStorageDoctorDebug } from "@/lib/storage/doctor"
 
 /** Local-day stamp matching the gate's `localDay()` (YYYY-MM-DD, local tz). */
 function localDay(): string {
@@ -30,6 +31,9 @@ function gateRegistry(): GateRegistry {
 export function installDevDebug() {
   const w = globalThis as Record<string, unknown>
   const dbg = (w.__corpanDebug ||= {}) as Record<string, unknown>
+
+  // Storage doctor (dev-only, storage-analytics.md §6): __corpanDebug.storage.*
+  installStorageDoctorDebug()
 
   Object.assign(dbg, {
     // --- inspect ---

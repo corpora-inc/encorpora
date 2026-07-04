@@ -335,6 +335,22 @@
       "surprise": {
         "label": "مجھے حیران کریں!",
         "desc": "مجھے کسی مزے دار جگہ لے چلیں۔"
+      },
+      "journey": {
+        "label": "Journey کی پیروی کریں",
+        "desc": "ایک رہنمائی شدہ کورس — ایپ ہر اگلا قدم چنتی ہے"
+      }
+    },
+    "journey": {
+      "title": "کیا آپ رہنمائی شدہ راستہ چاہتے ہیں؟",
+      "subtitle": "Journey ہر روز {{lang}} میں نئے مواد اور دہرائی کا امتزاج پیش کرتا ہے — ایک وقت میں ایک کارڈ۔",
+      "guided": {
+        "label": "Journey شروع کریں",
+        "desc": "ایک رہنمائی شدہ روزانہ سیشن جو آپ کے مطابق ڈھلتا ہے"
+      },
+      "explore": {
+        "label": "میں خود دریافت کروں گا",
+        "desc": "آپ ہوم سے کسی بھی وقت Journey شروع کر سکتے ہیں"
       }
     }
   },
@@ -748,6 +764,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "جو زبان آپ سیکھ رہے ہیں، اسے سیمپل کریں۔ اسکریچ کریں، یہاں تک کہ ذہن میں جم جائے۔"
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "آپ کا رہنمائی شدہ راستہ، کارڈ بہ کارڈ"
     }
   },
   "home": {
@@ -852,5 +872,185 @@
     "installing": "انسٹال ہو رہا ہے…",
     "installed": "انسٹال ہو گیا",
     "retry": "دوبارہ کوشش کریں"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "آپ کا رہنمائی شدہ راستہ، کارڈ بہ کارڈ",
+    "heroCard": {
+      "title": "آپ کا Journey",
+      "progress": "{{unit}} · آج کے ہدف تک {{count}} کارڈ"
+    },
+    "heroCta": {
+      "start": "اپنا Journey شروع کریں",
+      "continue": "جاری رکھیں"
+    },
+    "chrome": {
+      "home": "ہوم",
+      "menu": "Journey کے اختیارات",
+      "unit": "یونٹ {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "جانچیں",
+      "continue": "جاری رکھیں",
+      "skipHint": "چھوڑنے کے لیے دوبارہ سوائپ کریں",
+      "retry": "دوبارہ کوشش کریں",
+      "showAnswer": "جواب دکھائیں",
+      "answerWas": "جواب یہ تھا",
+      "comeBackNote": "ہم اس پر واپس آئیں گے۔",
+      "whyThisCard": "یہ کارڈ کیوں؟",
+      "whyNew": "آپ کے موجودہ یونٹ کی ایک نئی چیز۔",
+      "whyReview": "دہرائی — وقفے اسے مضبوط رکھتے ہیں۔",
+      "whyRepair": "کسی مشکل چیز پر دوسری نظر۔",
+      "whyGuided": "آپ کے رہنمائی شدہ راستے کا حصہ۔",
+      "typeWhatYouHear": "جو سنیں وہ لکھیں",
+      "typeHere": "یہاں لکھیں…",
+      "tapToOrder": "الفاظ کو ترتیب سے چھوئیں",
+      "matchPairs": "جوڑے ملائیں",
+      "flipToReveal": "ظاہر کرنے کے لیے چھوئیں",
+      "knewIt": "مجھے معلوم تھا",
+      "didntKnow": "ابھی نہیں",
+      "speakNow": "اب بولیں",
+      "listen": "سنیں",
+      "listenSlow": "آہستہ",
+      "hint": "اشارہ",
+      "correct": "درست",
+      "incorrect": "بالکل نہیں",
+      "pickTranslation": "ترجمہ منتخب کریں",
+      "pickWhatYouHear": "جو سنا وہ منتخب کریں",
+      "fillTheBlank": "خالی جگہ بھریں",
+      "newItem": "نیا",
+      "reviewedEarlier": "پہلے دیکھا گیا"
+    },
+    "intro": {
+      "listenAndEcho": "سنیں، پھر بلند آواز میں کہیں",
+      "newWord": "نیا لفظ",
+      "newPhrase": "نیا جملہ"
+    },
+    "grammar": {
+      "noteLabel": "گرامر نوٹ",
+      "tryIt": "آزمائیں"
+    },
+    "checkpoint": {
+      "title": "چیک پوائنٹ",
+      "summary": "{{new}} نئے · {{reviews}} دہرائیاں · بہترین سلسلہ {{combo}}",
+      "done": "آج کے لیے کافی",
+      "keepGoing": "جاری رکھیں",
+      "dailyRing": "آج {{done}}/{{goal}}",
+      "deepSession": "کیا گہرا سیشن تھا — آپ کی دہرائیاں بہرحال طے شدہ ہیں۔",
+      "streakTicked": "دن {{count}} ✓",
+      "boss": "یونٹ چیلنج",
+      "arcGate": "قوس کا دروازہ"
+    },
+    "celebrate": {
+      "combo": "لگاتار {{count}}",
+      "perfect": "بہترین",
+      "wordsLearned": "{{count}} الفاظ سیکھے",
+      "unitComplete": "یونٹ مکمل: {{name}}",
+      "streakDay": "دن {{count}}",
+      "placementDone": "سطح طے ہو گئی"
+    },
+    "rare": {
+      "reveal": "کچھ خاص…",
+      "etymologyGem": "لفظ کی کہانی",
+      "timeCapsule": {
+        "title": "ٹائم کیپسول",
+        "body": "آپ نے اس پر {{when}} خوب محنت کی — اب خود کو دیکھیں۔"
+      },
+      "delight": {
+        "newVoice": "ایک مختلف آواز",
+        "didYouNotice": "کیا آپ نے محسوس کیا؟"
+      },
+      "miniGame": {
+        "title": "بونس راؤنڈ",
+        "play": "کھیلیں"
+      },
+      "story": {
+        "unlocked": "آپ نے اگلا باب حاصل کر لیا",
+        "read": "پڑھیں"
+      }
+    },
+    "placement": {
+      "offerTitle": "کہاں سے شروع کریں؟",
+      "offerBody": "چند تیز سوالات آپ کا نقطہ آغاز تلاش کر لیتے ہیں۔ تقریباً پانچ منٹ۔",
+      "startNew": "میں {{lang}} میں نیا ہوں",
+      "placeMe": "مجھے کچھ {{lang}} آتی ہے",
+      "skipItem": "یقین نہ ہو تو چھوڑ دیں",
+      "doneTitle": "نقطہ آغاز مل گیا",
+      "doneBody": "{{unit}} سے شروع کر رہے ہیں۔",
+      "prelit": "آپ {{count}} پہلے سے معلوم چیزوں کے ساتھ شروع کر رہے ہیں۔",
+      "redo": "میری سطح دوبارہ جانچیں",
+      "aboveTitle": "آپ اس کورس سے آگے ہیں",
+      "aboveBody": "یہ کورس فی الحال ابتدائی مواد پر مشتمل ہے اور آپ اس سے آگے ہیں۔ پھر بھی آپ اسے دیکھ سکتے ہیں — نئی سطحیں آ رہی ہیں۔"
+    },
+    "path": {
+      "title": "آپ کا راستہ",
+      "arc": "قوس {{name}}",
+      "unit": "یونٹ {{n}}",
+      "locked": "آگے",
+      "current": "آپ یہاں ہیں",
+      "review": "دہرائی کے لیے چھوئیں",
+      "mastered": "مضبوط"
+    },
+    "streak": {
+      "pactTitle": "سلسلہ رکھیں؟",
+      "pactBody": "روزانہ ایک کارڈ اسے زندہ رکھتا ہے۔ اگر ایک دن چھوٹ جائے تو آرام کا دن آپ کو بچا سکتا ہے — ہر ہفتے ایک ملتا ہے۔",
+      "pactAccept": "میں تیار ہوں",
+      "pactDecline": "نہیں، شکریہ",
+      "days": "{{count}} دن",
+      "restDayEarned": "آرام کا دن حاصل ہوا",
+      "restDayUsed": "{{day}} آرام کا دن تھا",
+      "repairTitle": "اپنا سلسلہ واپس پائیں",
+      "repairBody": "اگلے {{days}} دنوں میں دو سیشن مکمل کریں تاکہ آپ کا {{count}} دن کا سلسلہ بحال ہو جائے۔",
+      "repairCta": "شروع کریں"
+    },
+    "block": {
+      "speakingIntro": "بولنے کی مشق — {{count}} کارڈ",
+      "ready": "تیار",
+      "loadingModel": "مائیکروفون تیار ہو رہا ہے…",
+      "micPrompt": "Corpán اس آلے پر آپ کی گفتگو کو جانچنے کے لیے مائیکروفون استعمال کرتا ہے۔",
+      "sttUnavailable": "بولنے کی جانچ ابھی دستیاب نہیں — سننے کی مشق پر جا رہے ہیں۔"
+    },
+    "quota": {
+      "cardsLeft": "آج {{count}} کارڈ باقی",
+      "plusBody": "Corpán Plus روزانہ کارڈ کی حد ہٹا دیتا ہے۔"
+    },
+    "welcomeBack": {
+      "title": "خوش آمدید",
+      "body": "آپ کی دہرائیوں نے اپنی طاقت کا {{pct}}٪ برقرار رکھا۔ آئیے وارم اپ کریں۔"
+    },
+    "tease": {
+      "next": "اگلی بار: {{title}}"
+    },
+    "jump": {
+      "title": "کیا یہ بہت آسان لگ رہا ہے؟",
+      "body": "آگے بڑھنے کے لیے ایک مختصر چیلنج لیں۔ ناکام ہوں تو کچھ نہیں کھوتے — آپ وہیں رہتے ہیں جہاں ہیں۔",
+      "accept": "چیلنج آزمائیں",
+      "decline": "یہیں رہوں گا"
+    },
+    "feed": {
+      "caughtUp": "فی الحال آپ اپ ٹو ڈیٹ ہیں",
+      "loading": "آپ کے کارڈ تیار ہو رہے ہیں…",
+      "loadError": "Journey لوڈ نہیں ہو سکا۔ ہوم سے دوبارہ کوشش کریں۔"
+    },
+    "popin": {
+      "pronounceTitle": "اس کا تلفظ کریں",
+      "close": "بند کریں"
+    },
+    "settings": {
+      "title": "Journey کے اختیارات",
+      "advanceMode": "آگے بڑھنا",
+      "advanceSwipe": "جاری رکھنے کے لیے سوائپ",
+      "advanceAuto": "خودکار جاری رکھیں",
+      "celebration": "جشن",
+      "celebrationFull": "مکمل",
+      "celebrationReduced": "کم",
+      "celebrationMinimal": "کم سے کم",
+      "sounds": "آوازیں",
+      "soundsOn": "آن",
+      "soundsOff": "آف",
+      "listeningMode": "ہینڈز فری سماعت",
+      "viewPath": "راستہ دیکھیں",
+      "redoPlacement": "میری سطح دوبارہ جانچیں"
+    }
   }
 }

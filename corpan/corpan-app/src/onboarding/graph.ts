@@ -1,5 +1,7 @@
 import { useSettingsStore, ALL_LEVELS } from "@/store/settings"
 import { useLandingStore } from "@/store/landing"
+import { useJourneyStore, courseKeyOf } from "@/store/journey"
+import { packIdForTarget } from "@/util/journeyPack"
 import { useGamesStore } from "@/store/games"
 import { useCatalogStore } from "@/store/catalog"
 import { trackOnboardingCompleted, trackOnboardingLaunch } from "@/util/analytics"
@@ -72,6 +74,24 @@ function commitDraft(ctx: NodeCtx) {
   if (d.skipAutoLaunch) {
     useLandingStore.getState().setLanding({ kind: "tour" })
     trackOnboardingLaunch("home")
+  } else if (d.journeyOptIn) {
+    // Journey opt-in (W10): land straight in the guided feed. An onboarding
+    // "I'm new to {{lang}}" answer pre-declines the in-surface probe offer so
+    // the feed starts at unit 1 without re-asking; "I know some" leaves the
+    // real placement probe to the surface's PlacementFlow.
+    if (d.journeyPlacement === "zero-beginner") {
+      const st = useSettingsStore.getState()
+      const target = st.languages[1] ?? st.languages[0]
+      if (target) {
+        useJourneyStore
+          .getState()
+          .updateCourse(courseKeyOf(st.activeStackId, packIdForTarget(target)), {
+            placementDeclined: true,
+          })
+      }
+    }
+    useLandingStore.getState().setLanding({ kind: "journey" })
+    trackOnboardingLaunch("journey")
   } else if (d.whatToStart) {
     const res = resolveLanding({
       choice: d.whatToStart as WhatToStart,
@@ -229,18 +249,70 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
         id: "never",
         labelKey: "onboarding.calibrate.learnNever",
         apply: (c) => c.patch({ levels: ["A0"], rate: 0.6, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
-        next: "pickPhrasePacks",
+        next: "journeyOptIn",
       },
       {
         id: "a_little",
         labelKey: "onboarding.calibrate.learnLittle",
         apply: (c) => c.patch({ levels: ["A0", "A1", "A2"], rate: 0.7, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
-        next: "pickPhrasePacks",
+        next: "journeyOptIn",
       },
       {
         id: "advanced",
         labelKey: "onboarding.calibrate.learnAdvanced",
         apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
+        next: "journeyOptIn",
+      },
+    ],
+  },
+
+  // ── Journey opt-in (W10): the learner path's guided-daily-path fork. Pure
+  //    data nodes (no engine change); commit honors `journeyOptIn` with a
+  //    `{ kind: "journey" }` landing intent. ──
+  journeyOptIn: {
+    kind: "question",
+    id: "journeyOptIn",
+    titleKey: "onboarding.journey.title",
+    subtitleKey: "onboarding.journey.subtitle",
+    interpolate: (c) => ({ lang: targetLabel(c) }),
+    options: [
+      {
+        id: "guided",
+        labelKey: "onboarding.journey.guided.label",
+        descKey: "onboarding.journey.guided.desc",
+        apply: (c) => c.patch({ journeyOptIn: true }),
+        next: "journeyPlacementOffer",
+      },
+      {
+        id: "explore",
+        labelKey: "onboarding.journey.explore.label",
+        descKey: "onboarding.journey.explore.desc",
+        next: "pickPhrasePacks",
+      },
+    ],
+  },
+
+  // ── Placement offer — reuses the journey surface's own placement copy
+  //    (journey.placement.*, already shipped in all locales). "I'm new"
+  //    pre-declines the in-surface probe offer; "I know some" leaves the
+  //    real probe to PlacementFlow (probe cards need the live engine). ──
+  journeyPlacementOffer: {
+    kind: "question",
+    id: "journeyPlacementOffer",
+    titleKey: "journey.placement.offerTitle",
+    subtitleKey: "journey.placement.offerBody",
+    interpolate: (c) => ({ lang: targetLabel(c) }),
+    options: [
+      {
+        id: "startNew",
+        labelKey: "journey.placement.startNew",
+        apply: (c) => c.patch({ journeyPlacement: "zero-beginner" }),
+        next: "pickPhrasePacks",
+      },
+      {
+        id: "placeMe",
+        labelKey: "journey.placement.placeMe",
+        apply: (c) => c.patch({ journeyPlacement: "probe" }),
         next: "pickPhrasePacks",
       },
     ],
@@ -290,7 +362,9 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       { id: "wild", labelKey: "onboarding.interests.wild", descKey: "onboarding.interests.wildDesc", icon: "Sparkles" },
     ],
     apply: (c, ids) => c.patch({ interests: ids }),
-    next: "whatToStart",
+    // Journey opt-ins already made their landing call — skip the "where
+    // should we begin?" question and commit straight into the feed.
+    next: (c) => (c.draft.journeyOptIn ? "commit" : "whatToStart"),
   },
 
   // The DETERMINISTIC final question — one tap tells us exactly where to drop
@@ -302,6 +376,13 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
     titleKey: "onboarding.whatToStart.title",
     subtitleKey: "onboarding.whatToStart.subtitle",
     options: [
+      {
+        id: "journey",
+        labelKey: "onboarding.whatToStart.journey.label",
+        descKey: "onboarding.whatToStart.journey.desc",
+        apply: (c) => { c.patch({ whatToStart: "journey" }); preinstallForChoice("journey") },
+        next: "commit",
+      },
       {
         id: "read",
         labelKey: "onboarding.whatToStart.read.label",

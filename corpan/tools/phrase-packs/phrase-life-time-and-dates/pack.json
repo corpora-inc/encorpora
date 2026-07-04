@@ -1,0 +1,36 @@
+{
+  "id": "phrase-life-time-and-dates",
+  "version": "0.1.0",
+  "name": "Time & Dates",
+  "description": "Clock time, days of the week, months, birthdays, and making plans around a schedule.",
+  "category": "life",
+  "topic": "Time",
+  "icon": "clock",
+  "accent_color": "#ffcc80",
+  "channel": "preview",
+  "tags": ["journey", "new"],
+  "name_localized": {
+    "en": "Time & Dates",
+    "es": "La hora y las fechas",
+    "fr": "L'heure et les dates",
+    "de": "Uhrzeit und Datum",
+    "pt-BR": "Horas e datas",
+    "ja": "時間と日付",
+    "zh-Hans": "时间与日期"
+  },
+  "description_localized": {
+    "en": "Clock time, days of the week, months, birthdays, and making plans around a schedule.",
+    "es": "La hora del reloj, los días de la semana, los meses, los cumpleaños y cómo hacer planes con un horario.",
+    "fr": "L'heure, les jours de la semaine, les mois, les anniversaires et l'organisation d'un emploi du temps.",
+    "de": "Uhrzeit, Wochentage, Monate, Geburtstage und Planen mit einem Terminkalender.",
+    "pt-BR": "Horas do relógio, dias da semana, meses, aniversários e planos com uma agenda.",
+    "ja": "時計の時間、曜日、月、誕生日、そしてスケジュールに合わせた予定の立て方。",
+    "zh-Hans": "钟表时间、星期、月份、生日，以及按日程安排计划。"
+  },
+  "topic_localized": {
+    "en": "Time",
+    "es": "El tiempo y la hora",
+    "fr": "L'heure",
+    "de": "Uhrzeit"
+  }
+}

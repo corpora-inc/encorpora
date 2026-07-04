@@ -190,6 +190,12 @@ function writeLastLangByBook(bookId: string, language: string): void {
     const map = readLastLangByBook()
     if (map[bookId] === language) return
     map[bookId] = language
+    // Cap the map (storage-analytics.md M6): it grows per book and shares
+    // the ~5MB origin localStorage budget. Insertion order approximates
+    // recency well enough for a language-switch heuristic.
+    const keys = Object.keys(map)
+    const MAX_BOOKS = 100
+    for (let i = 0; i < keys.length - MAX_BOOKS; i += 1) delete map[keys[i]]
     localStorage.setItem(LAST_LANG_BY_BOOK_KEY, JSON.stringify(map))
   })
 }
