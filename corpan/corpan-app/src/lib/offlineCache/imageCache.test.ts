@@ -19,6 +19,7 @@ import {
   IMAGE_CACHE_MAX_ENTRIES,
   __resetImageCacheForTests,
   __setImageCacheDepsForTests,
+  __settleImageCacheForTests,
 } from "./imageCache.ts"
 import { __resetSingleflightForTests } from "./singleflight.ts"
 import type { ImageIndexRecord, OfflineCacheEntry } from "./types.ts"
@@ -128,7 +129,12 @@ async function waitFor(cond: () => boolean, ms = 30_000): Promise<void> {
   }
 }
 
-beforeEach(() => {
+beforeEach(async () => {
+  // Drain any fire-and-forget background work the previous case left in flight
+  // (against the previous deps) BEFORE resetting — otherwise a late LRU-touch
+  // or fill can land in this case's freshly-reset singletons under CPU load
+  // and flip a cache hit into a miss (the 1/300-ish CI flake).
+  await __settleImageCacheForTests()
   __resetImageCacheForTests()
   __resetSingleflightForTests()
 })

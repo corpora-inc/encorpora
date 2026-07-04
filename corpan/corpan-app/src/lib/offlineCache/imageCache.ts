@@ -103,6 +103,30 @@ export function __resetImageCacheForTests(): void {
  *  and quietly abandon their work when a reset happened mid-flight. */
 let epoch = 0
 
+/** Live fire-and-forget background work (LRU touches, fills, budget sweeps,
+ *  prefetch). Production ignores this set; it exists so tests can DRAIN
+ *  pending background work between cases — otherwise a prior case's in-flight
+ *  write can land in the next case's freshly-reset singletons under load.
+ *  `track()` is a transparent pass-through: it never changes the wrapped
+ *  promise's behaviour or timing. */
+const bgTasks = new Set<Promise<unknown>>()
+function track<T>(p: Promise<T>): Promise<T> {
+  const tracked: Promise<unknown> = p.catch(() => undefined).finally(() => {
+    bgTasks.delete(tracked)
+  })
+  bgTasks.add(tracked)
+  return p
+}
+
+/** Test-only: await all currently-pending background work (and any it spawns)
+ *  so no leaked closure survives into the next test. No-op in production. */
+export async function __settleImageCacheForTests(): Promise<void> {
+  let guard = 0
+  while (bgTasks.size && guard++ < 1000) {
+    await Promise.allSettled([...bgTasks])
+  }
+}
+
 /* ------------------------------ hashing helper ---------------------------- */
 
 /** sha256 hex of a URL — the index key (same helper style as install.ts). */
@@ -222,7 +246,7 @@ function ensureCached(url: string): Promise<ImageIndexRecord | undefined> {
         lastUsedAt: now,
       }
       await writeRecord(record)
-      void enforceImageBudget().catch(() => undefined)
+      void track(enforceImageBudget().catch(() => undefined))
       return record
     } catch (err) {
       console.warn(`[offlineCache/img] cache fill failed for ${url}:`, err)
@@ -250,7 +274,7 @@ export async function cachedImageSrc(url: string): Promise<string | undefined> {
     if (hit) {
       // Touch the LRU clock (fire-and-forget persistence).
       hit.lastUsedAt = deps.now()
-      void writeRecord(hit)
+      void track(writeRecord(hit))
       return hit.servedUrl
     }
 
@@ -258,7 +282,7 @@ export async function cachedImageSrc(url: string): Promise<string | undefined> {
 
     // Background fill; serve the remote URL for THIS render (the WebView can
     // load it — we're online). Next render hits the cache.
-    void ensureCached(url)
+    void track(ensureCached(url))
     return url
   } catch (err) {
     console.error(`[offlineCache/img] resolve failed for ${url}:`, err)
@@ -272,7 +296,7 @@ export async function cachedImageSrc(url: string): Promise<string | undefined> {
 export function prefetchImages(urls: string[]): void {
   if (!deps.isTauri() || !deps.isOnline()) return
   const myEpoch = epoch
-  void (async () => {
+  void track((async () => {
     await hydrateImageIndex()
     for (const url of urls) {
       if (epoch !== myEpoch) return // session reset mid-batch
@@ -280,7 +304,7 @@ export function prefetchImages(urls: string[]): void {
       if (!deps.isOnline()) return // connectivity lost mid-batch: stop quietly
       await ensureCached(url) // serialized on purpose — low priority
     }
-  })().catch((err) => console.warn("[offlineCache/img] prefetch failed:", err))
+  })().catch((err) => console.warn("[offlineCache/img] prefetch failed:", err)))
 }
 
 /** Remove a broken index row (file missing on disk) and, when online,
@@ -296,7 +320,7 @@ export async function repairImage(url: string): Promise<void> {
       // Missing files are expected here (that's why we're repairing).
     }
   }
-  if (deps.isTauri() && deps.isOnline()) void ensureCached(url)
+  if (deps.isTauri() && deps.isOnline()) void track(ensureCached(url))
 }
 
 /* ------------------------------ budget + sweep ----------------------------- */

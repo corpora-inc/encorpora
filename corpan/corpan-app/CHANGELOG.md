@@ -40,6 +40,12 @@ Conventions: `corpan/CHANGELOGS.md`.
   integration era, needs its own workstream).
 
 ### Fixed
+- **Offline image cache: deflaked the cross-test background-write leak.** A
+  prior test's fire-and-forget LRU touch / fill / budget sweep could land in
+  the next test's freshly-reset singletons under CPU load and flip a cache hit
+  into a miss (a ~1/300 CI flake in the corpan-app test suite). Background work
+  is now tracked and drained between cases via `__settleImageCacheForTests()`;
+  the production path is unchanged (the tracker is a transparent pass-through).
 - **Journey W11 — R10 placement ladder respects the pack's actual b range**
   (the W10 P8 bug). Phase-1 rungs are now the global CEFR ladder span
   clamped to the installed pack's `[minB, maxB]` and re-subdivided evenly (a
