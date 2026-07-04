@@ -113,9 +113,9 @@ async function loadPackGraph(dbPath: string): Promise<CourseGraph> {
  * P8 — placement quality against the REAL journey_en pack (engine.md §7.4
  * row P8, R10). Personas are scoped to the shipped arcs: ability `a` is
  * drawn around the pack's content band midpoint, so the cohort naturally
- * splits into in-band learners (graded on |θ̂ − a| ≤ 0.6 within ≤25 items)
- * and above-ceiling learners (a > max content b; must terminate
- * "above-content" within the Phase-2 budget, never grind).
+ * splits into in-band learners (graded on |θ̂ − a| ≤ PLACEMENT_INBAND_TOLERANCE
+ * within ≤25 items) and above-ceiling learners (a > max content b; must
+ * terminate "above-content" within the Phase-2 budget, never grind).
  *
  * Wrong-placement self-heal (the P8 third leg): every 10th learner is
  * mis-calibrated — placement answered from an inflated prior-knowledge
@@ -124,6 +124,23 @@ async function loadPackGraph(dbPath: string): Promise<CourseGraph> {
  * demotion (engine.md §4.3.4 "rewind or demotion path corrects the
  * starting frontier within 14 days").
  */
+
+/**
+ * P8 in-band accuracy tolerance |θ̂ − a| for the "placed" leg (CTO-RESOLUTIONS
+ * R17, 2026-07-03): amended from 0.6 → 0.8 @ ≥90%. The ±0.6 leg sat at the
+ * information floor of ≤25 guessable probes (pooled placed-row error unbiased,
+ * σ ≈ 0.40; ±0.6 @ ≥90% needs σ ≤ 0.36, i.e. ≥40 probes) — no estimator passes
+ * it under the §7.1 learner within the spec's own ≤25-item budget. adaptivity
+ * §4 calls precision beyond ±half a CEFR band (0.75) fake for author-assigned
+ * b. Measured under this target: 94/94/100% per seed (CALIBRATION.md §5).
+ *
+ * NOTE: the separate 0.6 "ceiling-proximity grace" below (|maxB − a| ≤ 0.6) is
+ * NOT this tolerance — it is band-edge identifiability tied to the engine's 0.5
+ * above-content margin (PLACEMENT_ABOVE_CONTENT_MARGIN + jitter), so it stays
+ * at 0.6 and is left literal.
+ */
+const PLACEMENT_INBAND_TOLERANCE = 0.8
+
 const P8_CONSTRAINTS = {
   availableProviders: ["native", "lingo_hero"],
   modelsAvailable: ["stt", "llm", "tts"],
@@ -274,13 +291,13 @@ async function p8Gate(seed: number, learners: number): Promise<boolean> {
 
   const inBand = rows.filter((r) => r.a <= maxB)
   const aboveBand = rows.filter((r) => r.a > maxB)
-  // In-band: placed within ±0.6 of true ability in ≤25 items — OR an honest
-  // "above-content" when the true ability sits within 0.6 of the ceiling
-  // (indistinguishable from the ceiling by construction).
+  // In-band: placed within ±PLACEMENT_INBAND_TOLERANCE of true ability in ≤25
+  // items — OR an honest "above-content" when the true ability sits within 0.6
+  // of the ceiling (indistinguishable from the ceiling by construction).
   const inBandOk = inBand.filter(
     (r) =>
       r.asked <= 25 &&
-      ((r.outcome === "placed" && Math.abs(r.theta - r.a) <= 0.6) ||
+      ((r.outcome === "placed" && Math.abs(r.theta - r.a) <= PLACEMENT_INBAND_TOLERANCE) ||
         (r.outcome === "above-content" && maxB - r.a <= 0.6)),
   )
   // Above-band: terminate "above-content" within budget — OR, at the band
@@ -291,7 +308,9 @@ async function p8Gate(seed: number, learners: number): Promise<boolean> {
     (r) =>
       r.asked <= 25 &&
       (r.outcome === "above-content" ||
-        (r.a - maxB <= 0.6 && r.outcome === "placed" && Math.abs(r.theta - r.a) <= 0.6)),
+        (r.a - maxB <= 0.6 &&
+          r.outcome === "placed" &&
+          Math.abs(r.theta - r.a) <= PLACEMENT_INBAND_TOLERANCE)),
   )
   const accuracy = inBand.length > 0 ? inBandOk.length / inBand.length : 1
   const maxAsked = rows.reduce((m, r) => Math.max(m, r.asked), 0)
@@ -302,7 +321,7 @@ async function p8Gate(seed: number, learners: number): Promise<boolean> {
 
   const detail =
     `P8 Placement quality (REAL journey_en pack, personas scoped to shipped arcs — R10): ` +
-    `${pass ? "PASS" : "FAIL"} — in-band |θ̂−a|≤0.6 in ≤25 items: ${inBandOk.length}/${inBand.length} ` +
+    `${pass ? "PASS" : "FAIL"} — in-band |θ̂−a|≤${PLACEMENT_INBAND_TOLERANCE} in ≤25 items: ${inBandOk.length}/${inBand.length} ` +
     `(${(100 * accuracy).toFixed(0)}%, need ≥90%); above-ceiling terminate "above-content" ≤ budget: ` +
     `${aboveOk.length}/${aboveBand.length}; max items asked ${maxAsked}; ` +
     `wrong-placement self-heal (week-one rewind or demotion ≤14d, injected 10% cohort): ` +

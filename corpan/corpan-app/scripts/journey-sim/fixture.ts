@@ -25,6 +25,23 @@ export const SIM_TEMPLATES: ActivityTemplate[] = [
   { activityType: "type_translate", itemKind: "phrase", form: 2, strand: "language", guessable: false, estSec: 24, modelNeeds: [], provider: "native" },
   { activityType: "dictation", itemKind: "phrase", form: 2, strand: "input", guessable: false, estSec: 22, modelNeeds: ["tts"], provider: "native" },
   { activityType: "shadow_read", itemKind: "phrase", form: 2, strand: "fluency", guessable: false, estSec: 18, modelNeeds: [], provider: "native" },
+  // W13 (P11 fix): a SECOND form-1 FUN activity. The fixture header promises a
+  // palette "covering all forms/strands/modelNeeds", but the form-1 fun cell
+  // (funWeight>0) held exactly ONE template (`lingo_hero:round`) — a degenerate
+  // cell. With a single type there, the mixer's anti-adjacency machinery has
+  // NOTHING to swap to, so every form-1 fun serve is forced same-type-adjacent
+  // and logged as a P11 relaxation. This ONE cell drove ~65% of the 0.31/batch
+  // rate — 17.5k seam-repeats of `lingo_hero:round`, overwhelmingly (14.7k)
+  // LONE trailing fun batches whose sole card matched the previous batch's
+  // cool-down tail (also `lingo_hero:round`). A real Journey course has more
+  // than one fun/fluency mini-game; representing that lets the EXISTING engine
+  // alternate them. Kept LANGUAGE strand (not fluency) so the extra fun serves
+  // land on the largest strand target and do NOT perturb the fluency share
+  // (P7). Measured: relaxation rate 0.31 → 0.11/batch across seeds 1/2/3, zero
+  // hard violations, no P5/P9/P10 regression. See CALIBRATION.md §11. NOT a
+  // shipped-engine change — the mixer/recipes are untouched (R17 hypothesis
+  // "type-restricted recipe/boss slots" measured 0 boss + 0.5% recipe-batch).
+  { activityType: "recall_race", itemKind: "phrase", form: 1, strand: "language", guessable: true, estSec: 12, modelNeeds: [], provider: "native", funWeight: 1 },
 ]
 
 export interface SimFixtureOpts {

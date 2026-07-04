@@ -35,7 +35,27 @@ interface ItemMemory {
   sStar: number // true strength, days
   lastDay: number
   bStar: number
+  successes: number // successful scored retrievals (drives skill acquisition)
 }
+
+// Option A (CTO R17; CALIBRATION.md §8): the §7.1 learner's ability was FIXED,
+// so its per-item recall ceiling σ(a − b*) never rose and a growing share of
+// items sat below the FSRS interval-growth threshold forever ("churners"),
+// making P1/P3/P4 unsatisfiable under ANY scheduler. Real learners acquire
+// skill: repeated success on an item raises its effective recall ceiling. We
+// model that as the item's effective difficulty decaying with successful
+// exposures, b*_eff = b* − γ·successes, capped so no item drops more than
+// ACQUISITION_MAX_DROP logits below its author-assigned b (a learner never
+// becomes superhuman; the cap keeps hard items hard). This is a TEST-REALISM
+// change to the synthetic learner ONLY — no shipped-engine behavior changes.
+const ACQUISITION_GAMMA = 0.08 // logits of b*-drop per success (§8 range 0.05–0.1)
+const ACQUISITION_MAX_DROP = 1.5 // total b*-drop ceiling (§8: "capped at ~1.5")
+// Acquisition is a SPACED-retrieval effect: durable skill grows from recalling
+// an item after a gap, not from answering it repeatedly in one sitting. Only
+// count a success toward acquisition when ≥1 day has elapsed since the last
+// exposure. This also keeps placement honest — the ~25 same-day probes of a
+// placement test grant NO acquisition, so θ̂ still tracks base ability (P8).
+const ACQUISITION_MIN_SPACING_DAYS = 1
 
 export class Learner {
   readonly a: number
@@ -59,6 +79,11 @@ export class Learner {
           sStar: 60 + this.rng.next() * 120,
           lastDay: -30,
           bStar: this.bStar(itemId),
+          // Prior knowledge is modeled by the high sStar above (strong memory),
+          // NOT by acquisition credit: seeding successes here would inflate the
+          // recall CEILING and mis-place a placed-intermediate at probe time
+          // (P8). Acquisition accrues later from spaced review, from 0.
+          successes: 0,
         })
       }
     }
@@ -79,12 +104,18 @@ export class Learner {
     return 1 / (1 + Math.exp(-x))
   }
 
+  /** Effective (acquired) difficulty: author b* minus skill gained through
+   *  successful retrievals, capped (option A, §8). */
+  private bStarEff(mem: ItemMemory): number {
+    return mem.bStar - Math.min(ACQUISITION_GAMMA * mem.successes, ACQUISITION_MAX_DROP)
+  }
+
   /** P(recall now) for one item. */
   recallP(itemId: string, day: number): number {
     const mem = this.memory.get(itemId)
     if (!mem) return this.sigmoid(this.a - this.bStar(itemId)) * 0.15 // unseen: mostly unknown
     const dt = Math.max(0, day - mem.lastDay)
-    return this.sigmoid(this.a - mem.bStar) * Math.pow(1 + dt / Math.max(0.25, mem.sStar), -0.35)
+    return this.sigmoid(this.a - this.bStarEff(mem)) * Math.pow(1 + dt / Math.max(0.25, mem.sStar), -0.35)
   }
 
   /** Register an unscored exposure (intro card / re-teach). */
@@ -93,7 +124,7 @@ export class Learner {
     if (!mem) {
       const bStar = this.bStar(itemId)
       const s0 = Math.min(10, Math.max(0.4, Math.pow(2, this.a - bStar))) // S0*(a−b*), §7.1
-      this.memory.set(itemId, { sStar: s0, lastDay: day, bStar })
+      this.memory.set(itemId, { sStar: s0, lastDay: day, bStar, successes: 0 })
     } else {
       mem.lastDay = day
     }
@@ -102,6 +133,8 @@ export class Learner {
   private applyOutcome(itemId: string, day: number, success: boolean): void {
     const mem = this.memory.get(itemId)
     if (!mem) {
+      // first-ever exposure (same-day intro): no spaced retrieval yet ⇒ no
+      // acquisition credit (§8 option A; ACQUISITION_MIN_SPACING_DAYS).
       this.expose(itemId, day)
       if (!success) {
         const m = this.memory.get(itemId)!
@@ -113,6 +146,9 @@ export class Learner {
     if (success) {
       const nearForgetting = Math.min(1, dt / Math.max(0.5, mem.sStar))
       mem.sStar *= 1.6 + nearForgetting // 1.6–2.6, larger near forgetting
+      // skill acquisition: a SPACED successful recall decays effective b* (§8
+      // option A). Same-day repeats (dt=0, e.g. placement probes) grant none.
+      if (dt >= ACQUISITION_MIN_SPACING_DAYS) mem.successes += 1
     } else {
       mem.sStar = Math.max(mem.sStar * 0.3, 0.5)
     }

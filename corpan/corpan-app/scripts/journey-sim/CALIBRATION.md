@@ -380,3 +380,168 @@ in-band leg (seeds 1–2) are blocked pending the §8 rulings — further knob
 pressure against them is threshold trading under the current §7.1 learner
 model and gate definitions, and two of them (P7 serving pressure, P10 vs
 P3) actively fight each other.
+
+---
+
+# W13 — engine-correctness closure (2026-07-04, encoding R17 §8 rulings)
+
+Scope: land the R17 simulator-gate rulings. All W13 changes are confined to
+`scripts/journey-sim/**` (P8 tolerance, sim fixture, sim learner) — **the
+shipped engine (`src/journey/engine/**`) is byte-for-byte untouched, golden
+transcripts unchanged, 343/343 unit tests green**. Gate deltas below are vs the
+§10 "after" matrix (the branch tip before W13).
+
+## 11. P8 — the R17 tolerance ruling, encoded (Task 1)
+
+R17 amended P8's in-band accuracy target to **|θ̂−a| ≤ 0.8 @ ≥90%** (from 0.6;
+rationale in §5/§8 — the ±0.6 leg sits below the ≤25-guessable-probe
+information floor, σ≈0.40). Encoded as the named constant
+`PLACEMENT_INBAND_TOLERANCE = 0.8` in `cli.ts`; the P8 gate's placed-leg and
+band-edge-placed checks and the report string all measure against it (the
+separate 0.6 ceiling-proximity grace is band-edge identifiability tied to the
+engine's 0.5 above-content margin — a different quantity — and is left at 0.6).
+
+**P8 verbatim, REAL journey_en pack (`build_journey_pack.py en`; 693 items,
+b ∈ [−3.50, −1.50]), 40 learners/seed, final W13 tree:**
+
+```
+seed 1: PASS — in-band |θ̂−a|≤0.8 in ≤25 items: 33/35 (94%, need ≥90%);
+  above-ceiling terminate "above-content" ≤ budget: 1/1; max items asked 24;
+  wrong-placement self-heal (week-one rewind or demotion ≤14d, injected 10%
+  cohort): 4/4 healed (days 2,2,2,2)
+seed 2: PASS — in-band 31/34 (91%); above-ceiling 2/2; max asked 24;
+  self-heal 4/4 healed (days 2,2,2,2)
+seed 3: PASS — in-band 34/34 (100%); above-ceiling 2/2; max asked 24;
+  self-heal 4/4 healed (days 2,3,2,2)
+```
+
+94/91/100% (W11 §5 measured 94/94/100% on its pack snapshot; the seed-2 −3pt is
+a one-learner difference from the current pack build, still comfortably ≥90%).
+All three legs green on every seed.
+
+## 12. P11 — the relaxation-rate regression, diagnosed and fixed (Task 2)
+
+**R17's stated hypothesis (type-restricted lesson-recipe/boss slots) is REFUTED
+by direct instrumentation.** Attributing every relaxation increment by source
+over the 7-persona × 180-day sim (seed 1):
+
+| source | count | share |
+|---|---:|---:|
+| boss-batch same-type adjacency | 0 | 0% |
+| item-gap relax (pass-3) | 0 | 0% |
+| cross-batch **seam** (`slots[0]` == prev tail) | 17 502 | 54% |
+| within-batch same-type adjacency | 15 144 | 46% |
+| …of seam+within occurring in a recipe-drawn (lesson) batch | 167 | **0.5%** |
+
+The boss recipe's per-slot `avoidType` already fully resolves its adjacency (0),
+and recipe/lesson batches account for 0.5% of relaxations — the recipe
+restriction is innocent. Splitting by activity type, **one fixture template drove
+~65% of the rate**: `lingo_hero:round` — the SOLE form-1 fun activity
+(`funWeight>0`) in `SIM_TEMPLATES`. The dominant slice (14 752, 45% of the total
+rate) was **lone single-slot trailing FUN batches**: late in a 15-min session,
+once due/new/repair drain or gap-block, `nextFeedItems` returns a single fun
+card — always `lingo_hero:round` (no other form-1 fun type exists) — matching the
+previous batch's cool-down tail (also `lingo_hero:round`). This is exactly the
+"residual sameType adjacency unsatisfiable on tiny type sets" the mixer already
+RELAXES-and-logs BY DESIGN (§5.4 step-5 comment): a (form,strand/fun) cell with
+one type cannot be de-adjacent-ified.
+
+A tried engine fix (a post-partition seam guard restoring the step-5 seam check
+that step-6 `reorderWithinBlocks` drops for the first block's head / ≤2-slot
+blocks) recovered only 502 genuinely-avoidable multi-slot seams (1.5%) — it does
+not approach 0.2 and would regenerate goldens, so it was reverted (recorded here
+as a real but minor engine gap for a future workstream; not worth golden churn
+for 1.5% on a non-blocking metric).
+
+**Fix (sim fixture, `fixture.ts`): give the form-1 fun cell a second type.** The
+fixture header promises "activity templates covering all forms/strands/
+modelNeeds", but the form-1 fun cell was degenerate (one type). A real
+multi-provider Journey course has more than one fun mini-game; adding one
+(`recall_race`, form-1, LANGUAGE strand — mirroring `flip_recall`, `funWeight`
+1) lets the EXISTING anti-adjacency machinery alternate them. LANGUAGE (not
+fluency) strand chosen so the extra fun serves land on the largest strand target
+and do **not** perturb the fluency share (a fluency-strand variant regressed P7
+to FAIL on all 3 seeds; the language variant leaves P7 at its baseline pattern).
+
+**P11 before → after (25×180×7, relaxation rate per batch, <0.2 bound):**
+
+| seed | before (§10) | after | hard violations (itemGap/debut/model/replay) |
+|---|---|---|---|
+| 1 | 0.319 FAIL | **0.113 PASS** | 0/0/0/0 |
+| 2 | 0.302 FAIL | **0.115 PASS** | 0/0/0/0 |
+| 3 | 0.308 FAIL | **0.114 PASS** | 0/0/0/0 |
+
+**Verdict: FAIL → PASS on all three seeds, zero hard violations, no P5/P9/P10
+regression (all remain PASS), no P7 regression (baseline pattern preserved).**
+The rate is now dominated by the form-2 no-model production cell
+(listen_type/type_translate/shadow_read due↔due), a 3-type cell that is
+adequately de-clustered (residual ~0.11, well under bound).
+
+## 13. P1/P3/P4 — option A: realistic learner acquisition (Task 3)
+
+Per R17/§8 option A, the §7.1 synthetic learner's FIXED ability (recall ceiling
+σ(a−b*) that practice never raised) is the defect. `learner.ts` now models slow
+skill acquisition: an item's effective difficulty decays with **spaced**
+successful retrievals, `b*_eff = b* − γ·successes`, γ = 0.08 (mid-range of §8's
+0.05–0.1), capped at 1.5 logits. Acquisition is gated on ≥1-day spacing
+(`ACQUISITION_MIN_SPACING_DAYS`) so same-day repeats grant none — this keeps the
+model pedagogically honest (durable skill comes from spaced retrieval) AND keeps
+placement honest: the ~25 same-day probes of a placement test grant no
+acquisition, so P8's θ̂ still tracks base ability (a naive version, and a
+prior-known-item `successes` seed, both mis-placed placed-intermediates at probe
+time and were corrected). Shipped-engine behavior is NOT touched.
+
+**Option-A matrix (25×180×7, seeds 1/2/3; language-strand `recall_race`; γ=0.08):**
+
+| seed | P1 | P2 | P3 | P4 | P5 | P6 | P7 | P9 | P10 | P11 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | FAIL | PASS | FAIL | FAIL | PASS | PASS | FAIL | PASS | PASS | PASS |
+| 2 | FAIL | PASS | FAIL | FAIL | PASS | PASS | PASS | PASS | PASS | PASS |
+| 3 | FAIL | PASS | FAIL | FAIL | PASS | PASS | PASS | PASS | PASS | PASS |
+
+(P8 runs separately vs the real pack: PASS 94/91/100 — §11.)
+
+**What option A fixed and what it did not:**
+
+- **P4 struggle share 52.8/56.6/56.2% → 39.2/41.4/41.1%** (bound ≤40%) — the
+  churner-band drain the model predicted; now AT the boundary (seed 1 passes the
+  struggle leg at 39.2%). P4 still FAILs each seed, but on a *different marginal
+  leg per seed*: seed 1 on daily-fast (39 vs ≤0.75×48=36 — the ≤0.75× ratio is
+  noise-tight when both medians are ~50 days), seeds 2/3 on struggle by ~1pt.
+- **P3 34.6/36.0/39.2 → 25.3/26.7/27.3** (bound [3,6]) — improved but still far
+  from 6. Root cause is NOT the learner now: P3 = reviews/debuts, and debuts
+  stay floor-pinned at `NEW_PER_DAY_MIN`(4)/day, so the ratio is inflated by the
+  intake throttle regardless of acquisition (§7 finding #1).
+- **P1 median 2.10/2.09/2.10 → 2.08/2.08/2.07** (bound ≤1.2) — essentially
+  unmoved. Same throttle-operating-point coupling: the backlog parks at ≈2×cap,
+  the weekly throttle floors intake at 4, acquisition doesn't drain enough to
+  unpin it. This is an ENGINE-config issue (extract the throttle target to
+  constants, aim ≈1.0×cap, lower the NEW floor — §7 #1), out of W13's sim-only
+  scope; option A cannot reach it.
+
+**Re-derived-bounds recommendation (concrete numbers, worst-of-3-seed floors
+under option A + shipped config — for the spec editors; option A is strictly
+more honest than re-deriving, but P1/P3 residuals need the engine throttle fix,
+not a bound change):**
+
+- **P4 struggle share:** measured max 41.4% → **≤42%**, OR adopt the round-1
+  2-of-3-batches struggle-persistence classification (removes single-window
+  noise). daily-fast ≤0.75×dmMed leg → **≤0.8×** (the 0.75× ratio tips on
+  ±3-day median sampling noise). With either, P4 passes under option A.
+- **P3:** measured max 27.3 → a bound of **[3, 30]** gates regressions but no
+  longer asserts pedagogy; the pedagogically-honest fix is the §7 #1 intake-
+  throttle extraction (raises debuts off the 4/day floor so the ratio isn't
+  intake-starved) — recommend that ENGINE follow-up over widening the bound.
+- **P1:** measured median max 2.08, p95 max 2.31 → regression bounds **median
+  ≤2.2, p95 ≤2.4**; but the real fix is again the throttle extraction (§7 #1),
+  which is the SAME lever as P3. Recommend pairing P1+P3 into one engine
+  follow-up (throttle target + NEW-floor to constants) rather than two bound
+  moves.
+- **P7:** unchanged from R17 — gate on ≥90%-of-active-days-in-band (mean signed
+  per-strand dev measured ≤1.2 pts, i.e. the controller is unbiased; the
+  max-over-days form is noise-limited). W13 introduces no P7 regression.
+
+**Net W13 gate movement:** P8 FAIL→PASS (tolerance ruling), P11 FAIL→PASS
+(fixture fun-cell fix), P4 struggle leg essentially reaches its bound (option A),
+P1/P3 improved but throttle-bound (engine follow-up identified). P2/P5/P6/P9/P10
+remain PASS; P7 unchanged. No shipped-engine change; goldens intact.
