@@ -3,6 +3,15 @@
 Content changes to the authored `courses/en/` tree (the shippable unit is
 `journey_en-<version>.zip`). Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.1.0] — 2026-07-04
+
+### Published
+- journey_en 0.1.0 to the preview channel (0.44 MB, 30 units, 693 items),
+  alongside gap phrase packs `phrase-people-nationalities` and
+  `phrase-life-time-and-dates` (54 languages each, preview) that units u02/u05
+  pin into. Translation QA pass over the 52 machine-translated locales (W14);
+  gap-pack translations regenerated ×54.
+
 ## [Unreleased]
 
 ### Added

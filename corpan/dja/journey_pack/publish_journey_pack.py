@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -67,16 +68,26 @@ def load_aws_env() -> Dict[str, str]:
     return creds
 
 
-def s3_client():
+def s3_client(profile: str | None = None):
     try:
         import boto3
     except ImportError as e:  # pragma: no cover
         raise PublishError("boto3 is required to publish (pip install boto3)") from e
+    # Prefer a named profile (or AWS_PROFILE) so this matches the phrase-pack
+    # publisher and the standard ~/.aws/credentials setup; fall back to the
+    # legacy ~/.env keys only when no profile is available.
+    profile = profile or os.environ.get("AWS_PROFILE")
+    if profile:
+        session = boto3.Session(profile_name=profile)
+        return session.client("s3", region_name=REGION)
     creds = load_aws_env()
     key = creds.get("AWS_ACCESS_KEY") or creds.get("AWS_ACCESS_KEY_ID")
     secret = creds.get("AWS_SECRET_ACCESS_KEY")
     if not key or not secret:
-        raise PublishError("AWS_ACCESS_KEY / AWS_SECRET_ACCESS_KEY not found in ~/.env")
+        raise PublishError(
+            "No AWS credentials: pass --profile, set AWS_PROFILE, or add "
+            "AWS_ACCESS_KEY / AWS_SECRET_ACCESS_KEY to ~/.env"
+        )
     return boto3.client(
         "s3", region_name=REGION,
         aws_access_key_id=key, aws_secret_access_key=secret,
@@ -269,6 +280,8 @@ def main() -> None:
     ap.add_argument("--min-app-version", default=DEFAULT_MIN_APP_VERSION)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--allow-stale", action="store_true")
+    ap.add_argument("--profile", default=None,
+                    help="AWS named profile (else AWS_PROFILE, else ~/.env keys).")
     args = ap.parse_args()
 
     course_dir = args.course_dir or (HERE / "courses" / args.target)
@@ -281,7 +294,7 @@ def main() -> None:
             print("\n--dry-run: would publish the following index entry:")
             print(json.dumps(entry, ensure_ascii=False, indent=2))
             return
-        s3 = s3_client()
+        s3 = s3_client(args.profile)
         if step_immutability_check(s3, info["zip_path"]) == "skip":
             print("zip already published with identical content — skipping upload")
         else:
