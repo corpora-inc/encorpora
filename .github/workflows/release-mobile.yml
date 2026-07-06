@@ -85,6 +85,18 @@ jobs:
           cache: "npm"
           cache-dependency-path: corpan/corpan-app/package-lock.json
 
+      - name: Select Xcode 16+
+        if: steps.secrets.outputs.have == 'true'
+        # xcodegen emits a project in the Xcode 16 file format (objectVersion 77);
+        # the macos-14 runner defaults to Xcode 15.4, which can't open it. Pick the
+        # newest installed Xcode.
+        run: |
+          XC=$(ls -d /Applications/Xcode_16*.app 2>/dev/null | sort -V | tail -1)
+          [ -n "$XC" ] || XC=$(ls -d /Applications/Xcode_1*.app | sort -V | tail -1)
+          echo "Using $XC"
+          sudo xcode-select -s "$XC/Contents/Developer"
+          xcodebuild -version
+
       - name: Rust + iOS targets
         if: steps.secrets.outputs.have == 'true'
         run: |
