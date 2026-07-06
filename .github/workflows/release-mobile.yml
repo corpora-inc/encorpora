@@ -63,7 +63,10 @@ jobs:
     name: iOS · build + TestFlight
     needs: gate
     if: needs.gate.outputs.do_ios == 'true'
-    runs-on: macos-14
+    # macos-26 ships Xcode 26 + the iOS 26 SDK, which App Store Connect now
+    # requires ("All iOS apps must be built with the iOS 26 SDK or later").
+    # macos-14 tops out at Xcode 16.2 (iOS 18.2 SDK) and uploads are rejected.
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
         with:
@@ -85,14 +88,14 @@ jobs:
           cache: "npm"
           cache-dependency-path: corpan/corpan-app/package-lock.json
 
-      - name: Select Xcode 16+
+      - name: Select newest Xcode
         if: steps.secrets.outputs.have == 'true'
-        # xcodegen emits a project in the Xcode 16 file format (objectVersion 77);
-        # the macos-14 runner defaults to Xcode 15.4, which can't open it. Pick the
-        # newest installed Xcode.
+        # Use the newest installed Xcode (26.x on macos-26) so the app is built
+        # with the iOS 26 SDK App Store Connect requires, and so xcodegen's
+        # project format is understood.
         run: |
-          XC=$(ls -d /Applications/Xcode_16*.app 2>/dev/null | sort -V | tail -1)
-          [ -n "$XC" ] || XC=$(ls -d /Applications/Xcode_1*.app | sort -V | tail -1)
+          XC=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)
+          [ -n "$XC" ] || XC=/Applications/Xcode.app
           echo "Using $XC"
           sudo xcode-select -s "$XC/Contents/Developer"
           xcodebuild -version
