@@ -135,6 +135,14 @@ jobs:
         # TestFlight accepts each upload even when the version string is unchanged.
         run: |
           BUILD_NUMBER=$(( $(date +%s) / 60 ))
+          # The project template uses automatic signing, which needs a logged-in
+          # Xcode account (fine locally, impossible headless: "No Accounts / No
+          # profiles found"). Force MANUAL signing in the CI working copy only —
+          # the committed template stays automatic for local dev. Uses the App
+          # Store profile minted via the ASC API + the imported distribution cert.
+          sed -i \
+            -e 's|^        CODE_SIGN_STYLE: Automatic|        CODE_SIGN_STYLE: Manual\n        PROVISIONING_PROFILE_SPECIFIER: "corpan appstore ci"\n        CODE_SIGN_IDENTITY: "Apple Distribution"|' \
+            src-tauri/ios/project.yml
           # Tauri's ios init does NOT copy the StoreKit test config from the
           # ios/ template into gen/apple, so xcodegen fails on a fresh checkout
           # ("missing source directory .../Corpan.storekit"). Locally it only
