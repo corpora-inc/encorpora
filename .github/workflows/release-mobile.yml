@@ -128,6 +128,14 @@ jobs:
           npm ci
           npm ci --prefix ../packs/shared/capabilities
 
+      - name: Install cargo-tauri CLI
+        if: steps.secrets.outputs.have == 'true'
+        # The Xcode "Build Rust Code" phase (project.yml preBuildScript) runs
+        # `cargo tauri ios xcode-script`, which needs the tauri CLI installed as a
+        # cargo subcommand — CI otherwise only has the npm `npx tauri`. Pinned to
+        # the tauri crate version in Cargo.lock.
+        run: cargo install tauri-cli --version 2.11.2 --locked
+
       - name: Tauri iOS build (app-store-connect)
         if: steps.secrets.outputs.have == 'true'
         working-directory: corpan/corpan-app
