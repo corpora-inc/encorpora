@@ -259,6 +259,11 @@ jobs:
         # release AAB comes out unsigned — we sign it with jarsigner below (the
         # correct signing scheme for AABs / Play upload keys).
         run: |
+          # gen/android/buildSrc (which defines the custom `rust` Gradle plugin
+          # applied by app/build.gradle.kts) is gitignored, so a fresh checkout
+          # is missing it -> "Plugin [id: 'rust'] was not found". init regenerates
+          # buildSrc without touching the committed, customized gradle files.
+          npx tauri android init --ci
           npx tauri android build --ci --aab \
             -c '{"bundle":{"android":{"versionCode":'"$VERSION_CODE"'}}}'
 
