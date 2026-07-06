@@ -200,6 +200,11 @@ jobs:
           npx tauri ios init --ci || true
           cp -f src-tauri/ios/Corpan.storekit src-tauri/gen/apple/Corpan.storekit
           npx tauri ios init --ci
+          # gen/apple/Assets.xcassets/AppIcon.appiconset is gitignored (generated),
+          # so a fresh checkout ships no app icon. Regenerate from the alpha-free
+          # white-background source (the RGBA icons/512x512.png can't be the iOS
+          # marketing icon — Apple rejects alpha).
+          npx tauri icon src-tauri/icons/512x512_white.png
           # Archive only. Tauri's own export writes a minimal ExportOptions (method
           # only) which fails app-store export under manual signing ("requires a
           # provisioning profile"). We export ourselves below with a manual
@@ -372,6 +377,9 @@ jobs:
           # is missing it -> "Plugin [id: 'rust'] was not found". init regenerates
           # buildSrc without touching the committed, customized gradle files.
           npx tauri android init --ci
+          # res/mipmap-* launcher icons are gitignored (generated) — regenerate
+          # them so the installed app isn't iconless.
+          npx tauri icon src-tauri/icons/512x512_white.png
           npx tauri android build --ci --aab \
             -c '{"bundle":{"android":{"versionCode":'"$VERSION_CODE"'}}}'
 
