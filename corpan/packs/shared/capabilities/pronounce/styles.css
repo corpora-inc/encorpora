@@ -207,23 +207,55 @@
 
 .capPron-install {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 320px;
+  text-align: center;
+}
+.capPron-install-title {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--capPron-muted, #6b6b78);
+  margin: 0;
 }
 .capPron-install-btn {
   appearance: none;
   -webkit-appearance: none;
-  border: 1px solid var(--capPron-border, rgba(0, 0, 0, 0.08));
-  background: var(--capPron-card, #ffffff);
-  color: var(--capPron-fg, #1a1a23);
-  border-radius: 999px;
-  padding: 8px 16px;
+  border: none;
+  background: var(--capPron-accent, #7c3aed);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  min-width: 200px;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.capPron-install-btn:hover { background: var(--capPron-accent-hover, #6d28d9); }
+.capPron-install-btn:active { transform: scale(0.98); }
+.capPron-install-decline {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  color: var(--capPron-muted, #6b6b78);
   font-size: 13px;
   font-family: inherit;
   cursor: pointer;
+  padding: 4px 8px;
 }
+.capPron-install-decline:hover { color: var(--capPron-fg, #1a1a23); }
 .capPron-install--busy .capPron-install-btn {
-  opacity: 0.6;
+  opacity: 0.7;
   cursor: progress;
+}
+.capPron-install-btn[disabled],
+.capPron-install-decline[disabled] {
+  opacity: 0.5;
+  cursor: default;
 }
 
 /* ---- Result composition (moved from .pc-result-*) ----

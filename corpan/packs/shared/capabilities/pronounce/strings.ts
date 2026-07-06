@@ -3,6 +3,10 @@
 // This is the ~29-key chrome subset the cap-pronounce round/result UI
 // renders (capability-modules.md §2.5). Regenerate after i18n.ts changes:
 //   node packs/shared/capabilities/pronounce/scripts/gen-strings.mjs
+// NOTE: the install-offer keys (installOffer*/installDownloading/
+// installVerifying/errInstallFailed) are hand-authored here for the
+// Journey offer-install surface; mirror them into the pack i18n source
+// before regenerating, or a regen will drop them.
 
 export type CapPronounceStringKey =
   | "holdToSpeak"
@@ -33,6 +37,12 @@ export type CapPronounceStringKey =
   | "ariaPlayHeard"
   | "errStartRecording"
   | "errScoringFailed"
+  | "installOfferTitle"
+  | "installOfferButton"
+  | "installOfferDecline"
+  | "installDownloading"
+  | "installVerifying"
+  | "errInstallFailed"
 
 type Dict = Record<CapPronounceStringKey, string>
 
@@ -64,7 +74,13 @@ const en: Dict = {
   "ariaSpeakWord": "Speak {word}",
   "ariaPlayHeard": "Play what Whisper heard",
   "errStartRecording": "Could not start recording: {error}",
-  "errScoringFailed": "Scoring failed: {error}"
+  "errScoringFailed": "Scoring failed: {error}",
+  "installOfferTitle": "Practice pronunciation, scored on your device.",
+  "installOfferButton": "Install · ~{size} MB",
+  "installOfferDecline": "Not now",
+  "installDownloading": "Downloading… {percent}%",
+  "installVerifying": "Verifying…",
+  "errInstallFailed": "Install failed: {error}"
 }
 
 const LOCALES: Record<string, Partial<Dict>> = {
@@ -96,7 +112,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Speak {word}",
     "ariaPlayHeard": "Play what Whisper heard",
     "errStartRecording": "Could not start recording: {error}",
-    "errScoringFailed": "Scoring failed: {error}"
+    "errScoringFailed": "Scoring failed: {error}",
+    "installOfferTitle": "Practice pronunciation, scored on your device.",
+    "installOfferButton": "Install · ~{size} MB",
+    "installOfferDecline": "Not now",
+    "installDownloading": "Downloading… {percent}%",
+    "installVerifying": "Verifying…",
+    "errInstallFailed": "Install failed: {error}"
   },
   "ar": {
     "holdToSpeak": "اضغط مطولاً للتحدث",
@@ -126,7 +148,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "انطق {word}",
     "ariaPlayHeard": "شغّل ما سمعه Whisper",
     "errStartRecording": "تعذّر بدء التسجيل: {error}",
-    "errScoringFailed": "فشل التقييم: {error}"
+    "errScoringFailed": "فشل التقييم: {error}",
+    "installOfferTitle": "تدرّب على النطق، مع تقييم على جهازك.",
+    "installOfferButton": "تثبيت · ~{size} ميغابايت",
+    "installOfferDecline": "ليس الآن",
+    "installDownloading": "جارٍ التنزيل… {percent}%",
+    "installVerifying": "جارٍ التحقق…",
+    "errInstallFailed": "فشل التثبيت: {error}"
   },
   "bg": {
     "holdToSpeak": "Задръжте, за да говорите",
@@ -156,7 +184,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Изговорете {word}",
     "ariaPlayHeard": "Възпроизведи каквото Whisper чу",
     "errStartRecording": "Записът не може да започне: {error}",
-    "errScoringFailed": "Оценяването е неуспешно: {error}"
+    "errScoringFailed": "Оценяването е неуспешно: {error}",
+    "installOfferTitle": "Упражнявайте произношението — оценка на устройството ви.",
+    "installOfferButton": "Инсталиране · ~{size} МБ",
+    "installOfferDecline": "Не сега",
+    "installDownloading": "Изтегляне… {percent}%",
+    "installVerifying": "Проверка…",
+    "errInstallFailed": "Инсталирането е неуспешно: {error}"
   },
   "bn": {
     "holdToSpeak": "বলতে চেপে ধরে রাখুন",
@@ -186,7 +220,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} বলুন",
     "ariaPlayHeard": "Whisper যা শুনেছে তা চালান",
     "errStartRecording": "রেকর্ডিং শুরু করা গেল না: {error}",
-    "errScoringFailed": "স্কোরিং ব্যর্থ হয়েছে: {error}"
+    "errScoringFailed": "স্কোরিং ব্যর্থ হয়েছে: {error}",
+    "installOfferTitle": "উচ্চারণ অনুশীলন করুন, আপনার ডিভাইসেই স্কোর।",
+    "installOfferButton": "ইনস্টল · ~{size} MB",
+    "installOfferDecline": "এখন নয়",
+    "installDownloading": "ডাউনলোড হচ্ছে… {percent}%",
+    "installVerifying": "যাচাই করা হচ্ছে…",
+    "errInstallFailed": "ইনস্টল ব্যর্থ হয়েছে: {error}"
   },
   "ca": {
     "holdToSpeak": "Mantén premut per parlar",
@@ -216,7 +256,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Digues {word}",
     "ariaPlayHeard": "Reprodueix el que ha sentit Whisper",
     "errStartRecording": "No s'ha pogut iniciar la gravació: {error}",
-    "errScoringFailed": "La puntuació ha fallat: {error}"
+    "errScoringFailed": "La puntuació ha fallat: {error}",
+    "installOfferTitle": "Practica la pronunciació, puntuada al teu dispositiu.",
+    "installOfferButton": "Instal·la · ~{size} MB",
+    "installOfferDecline": "Ara no",
+    "installDownloading": "S'està baixant… {percent}%",
+    "installVerifying": "S'està verificant…",
+    "errInstallFailed": "La instal·lació ha fallat: {error}"
   },
   "cs": {
     "holdToSpeak": "Podržením mluvte",
@@ -246,7 +292,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Řekněte {word}",
     "ariaPlayHeard": "Přehrát, co Whisper slyšel",
     "errStartRecording": "Nahrávání se nepodařilo spustit: {error}",
-    "errScoringFailed": "Hodnocení selhalo: {error}"
+    "errScoringFailed": "Hodnocení selhalo: {error}",
+    "installOfferTitle": "Procvičujte výslovnost, hodnocení přímo v zařízení.",
+    "installOfferButton": "Nainstalovat · ~{size} MB",
+    "installOfferDecline": "Teď ne",
+    "installDownloading": "Stahování… {percent}%",
+    "installVerifying": "Ověřování…",
+    "errInstallFailed": "Instalace se nezdařila: {error}"
   },
   "da": {
     "holdToSpeak": "Hold nede for at tale",
@@ -276,7 +328,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Sig {word}",
     "ariaPlayHeard": "Afspil det, Whisper hørte",
     "errStartRecording": "Kunne ikke starte optagelse: {error}",
-    "errScoringFailed": "Bedømmelse mislykkedes: {error}"
+    "errScoringFailed": "Bedømmelse mislykkedes: {error}",
+    "installOfferTitle": "Øv udtale, bedømt på din enhed.",
+    "installOfferButton": "Installer · ~{size} MB",
+    "installOfferDecline": "Ikke nu",
+    "installDownloading": "Downloader… {percent}%",
+    "installVerifying": "Verificerer…",
+    "errInstallFailed": "Installationen mislykkedes: {error}"
   },
   "de": {
     "holdToSpeak": "Zum Sprechen halten",
@@ -306,7 +364,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Sprich {word}",
     "ariaPlayHeard": "Abspielen, was Whisper gehört hat",
     "errStartRecording": "Aufnahme konnte nicht gestartet werden: {error}",
-    "errScoringFailed": "Bewertung fehlgeschlagen: {error}"
+    "errScoringFailed": "Bewertung fehlgeschlagen: {error}",
+    "installOfferTitle": "Aussprache üben, bewertet auf deinem Gerät.",
+    "installOfferButton": "Installieren · ~{size} MB",
+    "installOfferDecline": "Jetzt nicht",
+    "installDownloading": "Wird heruntergeladen… {percent}%",
+    "installVerifying": "Wird überprüft…",
+    "errInstallFailed": "Installation fehlgeschlagen: {error}"
   },
   "el": {
     "holdToSpeak": "Κρατήστε για ομιλία",
@@ -336,7 +400,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Πείτε {word}",
     "ariaPlayHeard": "Αναπαραγωγή αυτού που άκουσε το Whisper",
     "errStartRecording": "Δεν ήταν δυνατή η έναρξη εγγραφής: {error}",
-    "errScoringFailed": "Η βαθμολόγηση απέτυχε: {error}"
+    "errScoringFailed": "Η βαθμολόγηση απέτυχε: {error}",
+    "installOfferTitle": "Εξασκηθείτε στην προφορά, με βαθμολόγηση στη συσκευή σας.",
+    "installOfferButton": "Εγκατάσταση · ~{size} MB",
+    "installOfferDecline": "Όχι τώρα",
+    "installDownloading": "Λήψη… {percent}%",
+    "installVerifying": "Επαλήθευση…",
+    "errInstallFailed": "Η εγκατάσταση απέτυχε: {error}"
   },
   "es": {
     "holdToSpeak": "Mantén pulsado para hablar",
@@ -366,7 +436,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Di {word}",
     "ariaPlayHeard": "Reproducir lo que oyó Whisper",
     "errStartRecording": "No se pudo iniciar la grabación: {error}",
-    "errScoringFailed": "La puntuación falló: {error}"
+    "errScoringFailed": "La puntuación falló: {error}",
+    "installOfferTitle": "Practica la pronunciación, puntuada en tu dispositivo.",
+    "installOfferButton": "Instalar · ~{size} MB",
+    "installOfferDecline": "Ahora no",
+    "installDownloading": "Descargando… {percent}%",
+    "installVerifying": "Verificando…",
+    "errInstallFailed": "La instalación falló: {error}"
   },
   "fa": {
     "holdToSpeak": "برای صحبت نگه دارید",
@@ -396,7 +472,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} را بگویید",
     "ariaPlayHeard": "پخش آنچه Whisper شنید",
     "errStartRecording": "شروع ضبط ممکن نشد: {error}",
-    "errScoringFailed": "امتیازدهی ناموفق بود: {error}"
+    "errScoringFailed": "امتیازدهی ناموفق بود: {error}",
+    "installOfferTitle": "تلفظ را تمرین کنید، با امتیازدهی روی دستگاه شما.",
+    "installOfferButton": "نصب · ~{size} مگابایت",
+    "installOfferDecline": "الان نه",
+    "installDownloading": "در حال دانلود… {percent}%",
+    "installVerifying": "در حال بررسی…",
+    "errInstallFailed": "نصب ناموفق بود: {error}"
   },
   "fi": {
     "holdToSpeak": "Pidä pohjassa puhuaksesi",
@@ -426,7 +508,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Sano {word}",
     "ariaPlayHeard": "Toista mitä Whisper kuuli",
     "errStartRecording": "Tallennusta ei voitu aloittaa: {error}",
-    "errScoringFailed": "Pisteytys epäonnistui: {error}"
+    "errScoringFailed": "Pisteytys epäonnistui: {error}",
+    "installOfferTitle": "Harjoittele ääntämistä, arviointi laitteessasi.",
+    "installOfferButton": "Asenna · ~{size} MB",
+    "installOfferDecline": "Ei nyt",
+    "installDownloading": "Ladataan… {percent}%",
+    "installVerifying": "Vahvistetaan…",
+    "errInstallFailed": "Asennus epäonnistui: {error}"
   },
   "fr": {
     "holdToSpeak": "Maintenez pour parler",
@@ -456,7 +544,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Dites {word}",
     "ariaPlayHeard": "Lire ce que Whisper a entendu",
     "errStartRecording": "Impossible de démarrer l'enregistrement : {error}",
-    "errScoringFailed": "Échec de la notation : {error}"
+    "errScoringFailed": "Échec de la notation : {error}",
+    "installOfferTitle": "Entraînez-vous à la prononciation, notée sur votre appareil.",
+    "installOfferButton": "Installer · ~{size} Mo",
+    "installOfferDecline": "Pas maintenant",
+    "installDownloading": "Téléchargement… {percent}%",
+    "installVerifying": "Vérification…",
+    "errInstallFailed": "L'installation a échoué : {error}"
   },
   "gu": {
     "holdToSpeak": "બોલવા માટે દબાવી રાખો",
@@ -486,7 +580,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} બોલો",
     "ariaPlayHeard": "Whisper એ જે સાંભળ્યું તે વગાડો",
     "errStartRecording": "રેકોર્ડિંગ શરૂ કરી શકાયું નહીં: {error}",
-    "errScoringFailed": "સ્કોરિંગ નિષ્ફળ ગયું: {error}"
+    "errScoringFailed": "સ્કોરિંગ નિષ્ફળ ગયું: {error}",
+    "installOfferTitle": "ઉચ્ચારણનો અભ્યાસ કરો, તમારા ઉપકરણ પર જ સ્કોર.",
+    "installOfferButton": "ઇન્સ્ટોલ કરો · ~{size} MB",
+    "installOfferDecline": "હમણાં નહીં",
+    "installDownloading": "ડાઉનલોડ થઈ રહ્યું છે… {percent}%",
+    "installVerifying": "ચકાસી રહ્યું છે…",
+    "errInstallFailed": "ઇન્સ્ટોલ નિષ્ફળ ગયું: {error}"
   },
   "he": {
     "holdToSpeak": "החזיקו כדי לדבר",
@@ -516,7 +616,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "אמרו {word}",
     "ariaPlayHeard": "השמיעו את מה ש-Whisper שמע",
     "errStartRecording": "לא ניתן להתחיל הקלטה: {error}",
-    "errScoringFailed": "חישוב הניקוד נכשל: {error}"
+    "errScoringFailed": "חישוב הניקוד נכשל: {error}",
+    "installOfferTitle": "תרגלו הגייה, עם ניקוד במכשיר שלכם.",
+    "installOfferButton": "התקנה · ~{size} MB",
+    "installOfferDecline": "לא עכשיו",
+    "installDownloading": "מוריד… {percent}%",
+    "installVerifying": "מאמת…",
+    "errInstallFailed": "ההתקנה נכשלה: {error}"
   },
   "hi": {
     "holdToSpeak": "बोलने के लिए दबाए रखें",
@@ -546,7 +652,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} बोलें",
     "ariaPlayHeard": "Whisper ने जो सुना उसे चलाएं",
     "errStartRecording": "रिकॉर्डिंग शुरू नहीं हो सकी: {error}",
-    "errScoringFailed": "स्कोरिंग विफल रही: {error}"
+    "errScoringFailed": "स्कोरिंग विफल रही: {error}",
+    "installOfferTitle": "उच्चारण का अभ्यास करें, आपके डिवाइस पर ही स्कोर।",
+    "installOfferButton": "इंस्टॉल करें · ~{size} MB",
+    "installOfferDecline": "अभी नहीं",
+    "installDownloading": "डाउनलोड हो रहा है… {percent}%",
+    "installVerifying": "जाँच हो रही है…",
+    "errInstallFailed": "इंस्टॉल विफल रहा: {error}"
   },
   "hr": {
     "holdToSpeak": "Držite za govor",
@@ -576,7 +688,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Izgovorite {word}",
     "ariaPlayHeard": "Reproduciraj ono što je Whisper čuo",
     "errStartRecording": "Snimanje nije moguće pokrenuti: {error}",
-    "errScoringFailed": "Bodovanje nije uspjelo: {error}"
+    "errScoringFailed": "Bodovanje nije uspjelo: {error}",
+    "installOfferTitle": "Vježbajte izgovor, ocjenjivanje na vašem uređaju.",
+    "installOfferButton": "Instaliraj · ~{size} MB",
+    "installOfferDecline": "Ne sada",
+    "installDownloading": "Preuzimanje… {percent}%",
+    "installVerifying": "Provjera…",
+    "errInstallFailed": "Instalacija nije uspjela: {error}"
   },
   "hu": {
     "holdToSpeak": "Tartsa lenyomva a beszédhez",
@@ -606,7 +724,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Mondja ki: {word}",
     "ariaPlayHeard": "Játssza le, amit a Whisper hallott",
     "errStartRecording": "Nem sikerült elindítani a felvételt: {error}",
-    "errScoringFailed": "A pontozás sikertelen: {error}"
+    "errScoringFailed": "A pontozás sikertelen: {error}",
+    "installOfferTitle": "Gyakorold a kiejtést, az eszközödön értékelve.",
+    "installOfferButton": "Telepítés · ~{size} MB",
+    "installOfferDecline": "Most nem",
+    "installDownloading": "Letöltés… {percent}%",
+    "installVerifying": "Ellenőrzés…",
+    "errInstallFailed": "A telepítés sikertelen: {error}"
   },
   "id": {
     "holdToSpeak": "Tahan untuk berbicara",
@@ -636,7 +760,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Ucapkan {word}",
     "ariaPlayHeard": "Putar apa yang didengar Whisper",
     "errStartRecording": "Tidak dapat memulai perekaman: {error}",
-    "errScoringFailed": "Penilaian gagal: {error}"
+    "errScoringFailed": "Penilaian gagal: {error}",
+    "installOfferTitle": "Latih pengucapan, dinilai di perangkat Anda.",
+    "installOfferButton": "Pasang · ~{size} MB",
+    "installOfferDecline": "Nanti saja",
+    "installDownloading": "Mengunduh… {percent}%",
+    "installVerifying": "Memverifikasi…",
+    "errInstallFailed": "Pemasangan gagal: {error}"
   },
   "it": {
     "holdToSpeak": "Tieni premuto per parlare",
@@ -666,7 +796,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Pronuncia {word}",
     "ariaPlayHeard": "Riproduci ciò che Whisper ha sentito",
     "errStartRecording": "Impossibile avviare la registrazione: {error}",
-    "errScoringFailed": "Valutazione non riuscita: {error}"
+    "errScoringFailed": "Valutazione non riuscita: {error}",
+    "installOfferTitle": "Esercita la pronuncia, valutata sul tuo dispositivo.",
+    "installOfferButton": "Installa · ~{size} MB",
+    "installOfferDecline": "Non ora",
+    "installDownloading": "Download… {percent}%",
+    "installVerifying": "Verifica…",
+    "errInstallFailed": "Installazione non riuscita: {error}"
   },
   "ja": {
     "holdToSpeak": "長押しして話す",
@@ -696,7 +832,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} を話す",
     "ariaPlayHeard": "Whisper が聞き取った音声を再生",
     "errStartRecording": "録音を開始できませんでした: {error}",
-    "errScoringFailed": "採点に失敗しました: {error}"
+    "errScoringFailed": "採点に失敗しました: {error}",
+    "installOfferTitle": "発音を練習しよう。採点は端末内で。",
+    "installOfferButton": "インストール · 約{size} MB",
+    "installOfferDecline": "今はしない",
+    "installDownloading": "ダウンロード中… {percent}%",
+    "installVerifying": "確認中…",
+    "errInstallFailed": "インストールに失敗しました: {error}"
   },
   "kn": {
     "holdToSpeak": "ಮಾತನಾಡಲು ಒತ್ತಿ ಹಿಡಿಯಿರಿ",
@@ -726,7 +868,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} ಹೇಳಿ",
     "ariaPlayHeard": "Whisper ಕೇಳಿಸಿಕೊಂಡಿದ್ದನ್ನು ಪ್ಲೇ ಮಾಡಿ",
     "errStartRecording": "ರೆಕಾರ್ಡಿಂಗ್ ಪ್ರಾರಂಭಿಸಲಾಗಲಿಲ್ಲ: {error}",
-    "errScoringFailed": "ಅಂಕ ನೀಡುವಿಕೆ ವಿಫಲವಾಯಿತು: {error}"
+    "errScoringFailed": "ಅಂಕ ನೀಡುವಿಕೆ ವಿಫಲವಾಯಿತು: {error}",
+    "installOfferTitle": "ಉಚ್ಚಾರಣೆ ಅಭ್ಯಾಸ ಮಾಡಿ, ನಿಮ್ಮ ಸಾಧನದಲ್ಲೇ ಸ್ಕೋರ್.",
+    "installOfferButton": "ಇನ್‌ಸ್ಟಾಲ್ · ~{size} MB",
+    "installOfferDecline": "ಈಗ ಬೇಡ",
+    "installDownloading": "ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ… {percent}%",
+    "installVerifying": "ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ…",
+    "errInstallFailed": "ಇನ್‌ಸ್ಟಾಲ್ ವಿಫಲವಾಯಿತು: {error}"
   },
   "ko": {
     "holdToSpeak": "길게 눌러 말하기",
@@ -756,7 +904,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} 말하기",
     "ariaPlayHeard": "Whisper가 들은 내용 재생",
     "errStartRecording": "녹음을 시작할 수 없어요: {error}",
-    "errScoringFailed": "채점에 실패했어요: {error}"
+    "errScoringFailed": "채점에 실패했어요: {error}",
+    "installOfferTitle": "발음을 연습하세요. 채점은 기기에서.",
+    "installOfferButton": "설치 · 약 {size} MB",
+    "installOfferDecline": "나중에",
+    "installDownloading": "다운로드 중… {percent}%",
+    "installVerifying": "확인 중…",
+    "errInstallFailed": "설치에 실패했어요: {error}"
   },
   "lt": {
     "holdToSpeak": "Laikykite, kad kalbėtumėte",
@@ -786,7 +940,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Pasakykite {word}",
     "ariaPlayHeard": "Paleisti tai, ką išgirdo Whisper",
     "errStartRecording": "Nepavyko pradėti įrašymo: {error}",
-    "errScoringFailed": "Vertinimas nepavyko: {error}"
+    "errScoringFailed": "Vertinimas nepavyko: {error}",
+    "installOfferTitle": "Praktikuokite tarimą, vertinama jūsų įrenginyje.",
+    "installOfferButton": "Įdiegti · ~{size} MB",
+    "installOfferDecline": "Ne dabar",
+    "installDownloading": "Atsisiunčiama… {percent}%",
+    "installVerifying": "Tikrinama…",
+    "errInstallFailed": "Įdiegti nepavyko: {error}"
   },
   "mr": {
     "holdToSpeak": "बोलण्यासाठी दाबून ठेवा",
@@ -816,7 +976,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} बोला",
     "ariaPlayHeard": "Whisper ने जे ऐकले ते प्ले करा",
     "errStartRecording": "रेकॉर्डिंग सुरू करता आली नाही: {error}",
-    "errScoringFailed": "गुणांकन अयशस्वी: {error}"
+    "errScoringFailed": "गुणांकन अयशस्वी: {error}",
+    "installOfferTitle": "उच्चाराचा सराव करा, तुमच्या डिव्हाइसवरच गुण.",
+    "installOfferButton": "इंस्टॉल करा · ~{size} MB",
+    "installOfferDecline": "आत्ता नको",
+    "installDownloading": "डाउनलोड होत आहे… {percent}%",
+    "installVerifying": "पडताळणी होत आहे…",
+    "errInstallFailed": "इंस्टॉल अयशस्वी: {error}"
   },
   "ms": {
     "holdToSpeak": "Tahan untuk bercakap",
@@ -846,7 +1012,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Sebut {word}",
     "ariaPlayHeard": "Mainkan apa yang didengar Whisper",
     "errStartRecording": "Tidak dapat memulakan rakaman: {error}",
-    "errScoringFailed": "Pemberian markah gagal: {error}"
+    "errScoringFailed": "Pemberian markah gagal: {error}",
+    "installOfferTitle": "Berlatih sebutan, dinilai pada peranti anda.",
+    "installOfferButton": "Pasang · ~{size} MB",
+    "installOfferDecline": "Bukan sekarang",
+    "installDownloading": "Memuat turun… {percent}%",
+    "installVerifying": "Mengesahkan…",
+    "errInstallFailed": "Pemasangan gagal: {error}"
   },
   "ne": {
     "holdToSpeak": "बोल्न थिचेर राख्नुहोस्",
@@ -876,7 +1048,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} बोल्नुहोस्",
     "ariaPlayHeard": "Whisper ले सुनेको कुरा बजाउनुहोस्",
     "errStartRecording": "रेकर्डिङ सुरु गर्न सकिएन: {error}",
-    "errScoringFailed": "अंकन असफल भयो: {error}"
+    "errScoringFailed": "अंकन असफल भयो: {error}",
+    "installOfferTitle": "उच्चारणको अभ्यास गर्नुहोस्, तपाईंकै यन्त्रमा अंकन।",
+    "installOfferButton": "इन्स्टल गर्नुहोस् · ~{size} MB",
+    "installOfferDecline": "अहिले होइन",
+    "installDownloading": "डाउनलोड हुँदै… {percent}%",
+    "installVerifying": "प्रमाणित गर्दै…",
+    "errInstallFailed": "इन्स्टल असफल भयो: {error}"
   },
   "nl": {
     "holdToSpeak": "Houd ingedrukt om te spreken",
@@ -906,7 +1084,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Zeg {word}",
     "ariaPlayHeard": "Speel af wat Whisper hoorde",
     "errStartRecording": "Kon de opname niet starten: {error}",
-    "errScoringFailed": "Beoordelen mislukt: {error}"
+    "errScoringFailed": "Beoordelen mislukt: {error}",
+    "installOfferTitle": "Oefen je uitspraak, beoordeeld op je apparaat.",
+    "installOfferButton": "Installeren · ~{size} MB",
+    "installOfferDecline": "Niet nu",
+    "installDownloading": "Downloaden… {percent}%",
+    "installVerifying": "Verifiëren…",
+    "errInstallFailed": "Installatie mislukt: {error}"
   },
   "no": {
     "holdToSpeak": "Hold inne for å snakke",
@@ -936,7 +1120,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Si {word}",
     "ariaPlayHeard": "Spill av det Whisper hørte",
     "errStartRecording": "Kunne ikke starte opptak: {error}",
-    "errScoringFailed": "Vurdering mislyktes: {error}"
+    "errScoringFailed": "Vurdering mislyktes: {error}",
+    "installOfferTitle": "Øv på uttalen, vurdert på enheten din.",
+    "installOfferButton": "Installer · ~{size} MB",
+    "installOfferDecline": "Ikke nå",
+    "installDownloading": "Laster ned… {percent}%",
+    "installVerifying": "Verifiserer…",
+    "errInstallFailed": "Installasjonen mislyktes: {error}"
   },
   "pa": {
     "holdToSpeak": "ਬੋਲਣ ਲਈ ਦਬਾਈ ਰੱਖੋ",
@@ -966,7 +1156,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} ਬੋਲੋ",
     "ariaPlayHeard": "Whisper ਨੇ ਜੋ ਸੁਣਿਆ ਉਹ ਚਲਾਓ",
     "errStartRecording": "ਰਿਕਾਰਡਿੰਗ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕੀ: {error}",
-    "errScoringFailed": "ਸਕੋਰਿੰਗ ਅਸਫਲ ਰਹੀ: {error}"
+    "errScoringFailed": "ਸਕੋਰਿੰਗ ਅਸਫਲ ਰਹੀ: {error}",
+    "installOfferTitle": "ਉਚਾਰਣ ਦਾ ਅਭਿਆਸ ਕਰੋ, ਤੁਹਾਡੇ ਡਿਵਾਈਸ 'ਤੇ ਹੀ ਸਕੋਰ।",
+    "installOfferButton": "ਇੰਸਟਾਲ ਕਰੋ · ~{size} MB",
+    "installOfferDecline": "ਹੁਣ ਨਹੀਂ",
+    "installDownloading": "ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ… {percent}%",
+    "installVerifying": "ਪੁਸ਼ਟੀ ਹੋ ਰਹੀ ਹੈ…",
+    "errInstallFailed": "ਇੰਸਟਾਲ ਅਸਫਲ ਰਿਹਾ: {error}"
   },
   "pa-Arab": {
     "holdToSpeak": "گلّ کرن لئی دباﺋﯿﮟ تے رکھو",
@@ -996,7 +1192,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} بولو",
     "ariaPlayHeard": "Whisper نے جو سُݨیا اوہ چلاؤ",
     "errStartRecording": "ریکارڈنگ شروع نہ ہو سکی: {error}",
-    "errScoringFailed": "سکورنگ ناکام: {error}"
+    "errScoringFailed": "سکورنگ ناکام: {error}",
+    "installOfferTitle": "تلفظ دی مشق کرو، تُہاڈے ڈیوائس تے ای سکور۔",
+    "installOfferButton": "انسٹال کرو · ~{size} MB",
+    "installOfferDecline": "ہُݨے نہیں",
+    "installDownloading": "ڈاؤن لوڈ ہو ریا اے… {percent}%",
+    "installVerifying": "تصدیق ہو ری اے…",
+    "errInstallFailed": "انسٹال ناکام: {error}"
   },
   "pl": {
     "holdToSpeak": "Przytrzymaj, aby mówić",
@@ -1026,7 +1228,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Powiedz {word}",
     "ariaPlayHeard": "Odtwórz to, co usłyszał Whisper",
     "errStartRecording": "Nie udało się rozpocząć nagrywania: {error}",
-    "errScoringFailed": "Ocenianie nie powiodło się: {error}"
+    "errScoringFailed": "Ocenianie nie powiodło się: {error}",
+    "installOfferTitle": "Ćwicz wymowę, oceniane na Twoim urządzeniu.",
+    "installOfferButton": "Zainstaluj · ~{size} MB",
+    "installOfferDecline": "Nie teraz",
+    "installDownloading": "Pobieranie… {percent}%",
+    "installVerifying": "Weryfikacja…",
+    "errInstallFailed": "Instalacja nie powiodła się: {error}"
   },
   "pt": {
     "holdToSpeak": "Segure para falar",
@@ -1056,7 +1264,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Falar {word}",
     "ariaPlayHeard": "Reproduzir o que o Whisper ouviu",
     "errStartRecording": "Não foi possível iniciar a gravação: {error}",
-    "errScoringFailed": "Falha na avaliação: {error}"
+    "errScoringFailed": "Falha na avaliação: {error}",
+    "installOfferTitle": "Pratique a pronúncia, avaliada no seu dispositivo.",
+    "installOfferButton": "Instalar · ~{size} MB",
+    "installOfferDecline": "Agora não",
+    "installDownloading": "Baixando… {percent}%",
+    "installVerifying": "Verificando…",
+    "errInstallFailed": "Falha na instalação: {error}"
   },
   "pt-PT": {
     "holdToSpeak": "Mantenha premido para falar",
@@ -1086,7 +1300,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Diga {word}",
     "ariaPlayHeard": "Reproduzir o que o Whisper ouviu",
     "errStartRecording": "Não foi possível iniciar a gravação: {error}",
-    "errScoringFailed": "A pontuação falhou: {error}"
+    "errScoringFailed": "A pontuação falhou: {error}",
+    "installOfferTitle": "Pratique a pronúncia, avaliada no seu dispositivo.",
+    "installOfferButton": "Instalar · ~{size} MB",
+    "installOfferDecline": "Agora não",
+    "installDownloading": "A transferir… {percent}%",
+    "installVerifying": "A verificar…",
+    "errInstallFailed": "A instalação falhou: {error}"
   },
   "ro": {
     "holdToSpeak": "Ține apăsat ca să vorbești",
@@ -1116,7 +1336,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Spune {word}",
     "ariaPlayHeard": "Redă ce a auzit Whisper",
     "errStartRecording": "Nu s-a putut porni înregistrarea: {error}",
-    "errScoringFailed": "Evaluarea a eșuat: {error}"
+    "errScoringFailed": "Evaluarea a eșuat: {error}",
+    "installOfferTitle": "Exersează pronunția, evaluată pe dispozitivul tău.",
+    "installOfferButton": "Instalează · ~{size} MB",
+    "installOfferDecline": "Nu acum",
+    "installDownloading": "Se descarcă… {percent}%",
+    "installVerifying": "Se verifică…",
+    "errInstallFailed": "Instalarea a eșuat: {error}"
   },
   "ru": {
     "holdToSpeak": "Удерживайте, чтобы говорить",
@@ -1146,7 +1372,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Произнесите {word}",
     "ariaPlayHeard": "Воспроизвести то, что услышал Whisper",
     "errStartRecording": "Не удалось начать запись: {error}",
-    "errScoringFailed": "Ошибка оценки: {error}"
+    "errScoringFailed": "Ошибка оценки: {error}",
+    "installOfferTitle": "Тренируйте произношение — оценка на вашем устройстве.",
+    "installOfferButton": "Установить · ~{size} МБ",
+    "installOfferDecline": "Не сейчас",
+    "installDownloading": "Загрузка… {percent}%",
+    "installVerifying": "Проверка…",
+    "errInstallFailed": "Не удалось установить: {error}"
   },
   "sk": {
     "holdToSpeak": "Podržte a hovorte",
@@ -1176,7 +1408,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Povedzte {word}",
     "ariaPlayHeard": "Prehrať to, čo počul Whisper",
     "errStartRecording": "Nepodarilo sa spustiť nahrávanie: {error}",
-    "errScoringFailed": "Hodnotenie zlyhalo: {error}"
+    "errScoringFailed": "Hodnotenie zlyhalo: {error}",
+    "installOfferTitle": "Precvičujte výslovnosť, hodnotenie priamo v zariadení.",
+    "installOfferButton": "Nainštalovať · ~{size} MB",
+    "installOfferDecline": "Teraz nie",
+    "installDownloading": "Sťahovanie… {percent}%",
+    "installVerifying": "Overovanie…",
+    "errInstallFailed": "Inštalácia zlyhala: {error}"
   },
   "sl": {
     "holdToSpeak": "Pridržite za govor",
@@ -1206,7 +1444,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Izgovorite {word}",
     "ariaPlayHeard": "Predvajaj, kar je slišal Whisper",
     "errStartRecording": "Snemanja ni bilo mogoče začeti: {error}",
-    "errScoringFailed": "Ocenjevanje ni uspelo: {error}"
+    "errScoringFailed": "Ocenjevanje ni uspelo: {error}",
+    "installOfferTitle": "Vadite izgovorjavo, ocenjeno na vaši napravi.",
+    "installOfferButton": "Namesti · ~{size} MB",
+    "installOfferDecline": "Ne zdaj",
+    "installDownloading": "Prenašanje… {percent}%",
+    "installVerifying": "Preverjanje…",
+    "errInstallFailed": "Namestitev ni uspela: {error}"
   },
   "sr": {
     "holdToSpeak": "Држите да говорите",
@@ -1236,7 +1480,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Изговорите {word}",
     "ariaPlayHeard": "Пусти оно што је Whisper чуо",
     "errStartRecording": "Није могуће покренути снимање: {error}",
-    "errScoringFailed": "Бодовање није успело: {error}"
+    "errScoringFailed": "Бодовање није успело: {error}",
+    "installOfferTitle": "Вежбајте изговор, оцењивање на вашем уређају.",
+    "installOfferButton": "Инсталирај · ~{size} MB",
+    "installOfferDecline": "Не сада",
+    "installDownloading": "Преузимање… {percent}%",
+    "installVerifying": "Провера…",
+    "errInstallFailed": "Инсталација није успела: {error}"
   },
   "sv": {
     "holdToSpeak": "Håll in för att tala",
@@ -1266,7 +1516,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Säg {word}",
     "ariaPlayHeard": "Spela upp det Whisper hörde",
     "errStartRecording": "Kunde inte starta inspelning: {error}",
-    "errScoringFailed": "Poängsättningen misslyckades: {error}"
+    "errScoringFailed": "Poängsättningen misslyckades: {error}",
+    "installOfferTitle": "Öva på uttal, bedömt på din enhet.",
+    "installOfferButton": "Installera · ~{size} MB",
+    "installOfferDecline": "Inte nu",
+    "installDownloading": "Laddar ner… {percent}%",
+    "installVerifying": "Verifierar…",
+    "errInstallFailed": "Installationen misslyckades: {error}"
   },
   "sw": {
     "holdToSpeak": "Shikilia ili kuzungumza",
@@ -1296,7 +1552,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Sema {word}",
     "ariaPlayHeard": "Cheza kile Whisper alichosikia",
     "errStartRecording": "Haikuweza kuanza kurekodi: {error}",
-    "errScoringFailed": "Ukadiriaji umeshindwa: {error}"
+    "errScoringFailed": "Ukadiriaji umeshindwa: {error}",
+    "installOfferTitle": "Fanya mazoezi ya matamshi, yanakadiriwa kwenye kifaa chako.",
+    "installOfferButton": "Sakinisha · ~{size} MB",
+    "installOfferDecline": "Si sasa",
+    "installDownloading": "Inapakua… {percent}%",
+    "installVerifying": "Inathibitisha…",
+    "errInstallFailed": "Usakinishaji umeshindwa: {error}"
   },
   "ta": {
     "holdToSpeak": "பேச அழுத்திப் பிடிக்கவும்",
@@ -1326,7 +1588,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} சொல்லுங்கள்",
     "ariaPlayHeard": "Whisper கேட்டதை இயக்கு",
     "errStartRecording": "பதிவைத் தொடங்க முடியவில்லை: {error}",
-    "errScoringFailed": "மதிப்பீடு தோல்வியடைந்தது: {error}"
+    "errScoringFailed": "மதிப்பீடு தோல்வியடைந்தது: {error}",
+    "installOfferTitle": "உச்சரிப்பைப் பயிற்சி செய்யுங்கள், உங்கள் சாதனத்திலேயே மதிப்பீடு.",
+    "installOfferButton": "நிறுவு · ~{size} MB",
+    "installOfferDecline": "இப்போது வேண்டாம்",
+    "installDownloading": "பதிவிறக்குகிறது… {percent}%",
+    "installVerifying": "சரிபார்க்கிறது…",
+    "errInstallFailed": "நிறுவல் தோல்வியடைந்தது: {error}"
   },
   "te": {
     "holdToSpeak": "మాట్లాడటానికి నొక్కి పట్టుకోండి",
@@ -1356,7 +1624,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} చెప్పండి",
     "ariaPlayHeard": "Whisper విన్నదాన్ని ప్లే చేయి",
     "errStartRecording": "రికార్డింగ్ ప్రారంభించలేకపోయాం: {error}",
-    "errScoringFailed": "స్కోరింగ్ విఫలమైంది: {error}"
+    "errScoringFailed": "స్కోరింగ్ విఫలమైంది: {error}",
+    "installOfferTitle": "ఉచ్చారణను సాధన చేయండి, మీ పరికరంలోనే స్కోరింగ్.",
+    "installOfferButton": "ఇన్‌స్టాల్ · ~{size} MB",
+    "installOfferDecline": "ఇప్పుడు వద్దు",
+    "installDownloading": "డౌన్‌లోడ్ అవుతోంది… {percent}%",
+    "installVerifying": "ధృవీకరిస్తోంది…",
+    "errInstallFailed": "ఇన్‌స్టాల్ విఫలమైంది: {error}"
   },
   "th": {
     "holdToSpeak": "กดค้างเพื่อพูด",
@@ -1386,7 +1660,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "พูด {word}",
     "ariaPlayHeard": "เล่นสิ่งที่ Whisper ได้ยิน",
     "errStartRecording": "ไม่สามารถเริ่มบันทึกได้: {error}",
-    "errScoringFailed": "การให้คะแนนล้มเหลว: {error}"
+    "errScoringFailed": "การให้คะแนนล้มเหลว: {error}",
+    "installOfferTitle": "ฝึกการออกเสียง ให้คะแนนบนอุปกรณ์ของคุณ",
+    "installOfferButton": "ติดตั้ง · ~{size} MB",
+    "installOfferDecline": "ไว้ก่อน",
+    "installDownloading": "กำลังดาวน์โหลด… {percent}%",
+    "installVerifying": "กำลังตรวจสอบ…",
+    "errInstallFailed": "การติดตั้งล้มเหลว: {error}"
   },
   "tr": {
     "holdToSpeak": "Konuşmak için basılı tutun",
@@ -1416,7 +1696,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} söyleyin",
     "ariaPlayHeard": "Whisper'ın duyduğunu çal",
     "errStartRecording": "Kayıt başlatılamadı: {error}",
-    "errScoringFailed": "Puanlama başarısız oldu: {error}"
+    "errScoringFailed": "Puanlama başarısız oldu: {error}",
+    "installOfferTitle": "Telaffuz alıştırması yapın, cihazınızda puanlanır.",
+    "installOfferButton": "Yükle · ~{size} MB",
+    "installOfferDecline": "Şimdi değil",
+    "installDownloading": "İndiriliyor… {percent}%",
+    "installVerifying": "Doğrulanıyor…",
+    "errInstallFailed": "Yükleme başarısız oldu: {error}"
   },
   "uk": {
     "holdToSpeak": "Утримуйте, щоб говорити",
@@ -1446,7 +1732,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Скажіть {word}",
     "ariaPlayHeard": "Відтворити те, що почув Whisper",
     "errStartRecording": "Не вдалося розпочати запис: {error}",
-    "errScoringFailed": "Помилка оцінювання: {error}"
+    "errScoringFailed": "Помилка оцінювання: {error}",
+    "installOfferTitle": "Тренуйте вимову — оцінювання на вашому пристрої.",
+    "installOfferButton": "Встановити · ~{size} МБ",
+    "installOfferDecline": "Не зараз",
+    "installDownloading": "Завантаження… {percent}%",
+    "installVerifying": "Перевірка…",
+    "errInstallFailed": "Не вдалося встановити: {error}"
   },
   "ur": {
     "holdToSpeak": "بولنے کے لیے دبائے رکھیں",
@@ -1476,7 +1768,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "{word} بولیں",
     "ariaPlayHeard": "Whisper نے جو سنا وہ چلائیں",
     "errStartRecording": "ریکارڈنگ شروع نہیں ہو سکی: {error}",
-    "errScoringFailed": "اسکورنگ ناکام: {error}"
+    "errScoringFailed": "اسکورنگ ناکام: {error}",
+    "installOfferTitle": "تلفظ کی مشق کریں، اسکورنگ آپ کے آلے پر۔",
+    "installOfferButton": "انسٹال کریں · ~{size} MB",
+    "installOfferDecline": "ابھی نہیں",
+    "installDownloading": "ڈاؤن لوڈ ہو رہا ہے… {percent}%",
+    "installVerifying": "تصدیق ہو رہی ہے…",
+    "errInstallFailed": "انسٹال ناکام: {error}"
   },
   "vi": {
     "holdToSpeak": "Giữ để nói",
@@ -1506,7 +1804,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "Nói {word}",
     "ariaPlayHeard": "Phát lại điều Whisper nghe được",
     "errStartRecording": "Không thể bắt đầu ghi âm: {error}",
-    "errScoringFailed": "Chấm điểm thất bại: {error}"
+    "errScoringFailed": "Chấm điểm thất bại: {error}",
+    "installOfferTitle": "Luyện phát âm, chấm điểm ngay trên thiết bị của bạn.",
+    "installOfferButton": "Cài đặt · ~{size} MB",
+    "installOfferDecline": "Để sau",
+    "installDownloading": "Đang tải xuống… {percent}%",
+    "installVerifying": "Đang xác minh…",
+    "errInstallFailed": "Cài đặt thất bại: {error}"
   },
   "yue": {
     "holdToSpeak": "撳住嚟講",
@@ -1536,7 +1840,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "講 {word}",
     "ariaPlayHeard": "播 Whisper 聽到嘅嘢",
     "errStartRecording": "開始唔到錄音：{error}",
-    "errScoringFailed": "評分失敗：{error}"
+    "errScoringFailed": "評分失敗：{error}",
+    "installOfferTitle": "練習發音，喺你部機評分。",
+    "installOfferButton": "安裝 · ~{size} MB",
+    "installOfferDecline": "而家唔使",
+    "installDownloading": "下載緊… {percent}%",
+    "installVerifying": "驗證緊…",
+    "errInstallFailed": "安裝失敗：{error}"
   },
   "zh": {
     "holdToSpeak": "按住说话",
@@ -1566,7 +1876,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "说 {word}",
     "ariaPlayHeard": "播放 Whisper 听到的内容",
     "errStartRecording": "无法开始录音：{error}",
-    "errScoringFailed": "评分失败：{error}"
+    "errScoringFailed": "评分失败：{error}",
+    "installOfferTitle": "练习发音，在你的设备上评分。",
+    "installOfferButton": "安装 · 约 {size} MB",
+    "installOfferDecline": "暂不",
+    "installDownloading": "正在下载… {percent}%",
+    "installVerifying": "正在验证…",
+    "errInstallFailed": "安装失败：{error}"
   },
   "zh-Hant": {
     "holdToSpeak": "按住說話",
@@ -1596,7 +1912,13 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ariaSpeakWord": "說 {word}",
     "ariaPlayHeard": "播放 Whisper 聽到的內容",
     "errStartRecording": "無法開始錄音：{error}",
-    "errScoringFailed": "評分失敗：{error}"
+    "errScoringFailed": "評分失敗：{error}",
+    "installOfferTitle": "練習發音，在你的裝置上評分。",
+    "installOfferButton": "安裝 · 約 {size} MB",
+    "installOfferDecline": "暫不",
+    "installDownloading": "正在下載… {percent}%",
+    "installVerifying": "正在驗證…",
+    "errInstallFailed": "安裝失敗：{error}"
   }
 }
 

@@ -10,6 +10,16 @@ the Journey `speak_echo` card + pop-in sheet consume it, Wave 2).
 
 ## 0.1.0 — Unreleased
 
+- Journey offer-install surface (V0.2-PLAN contract #4): `modelPolicy:
+  "offer-install"` renders an inline offer (what it is + model size + one
+  Install button with live download/verify progress + a quiet decline). Decline
+  settles `flags.sttDeclined`; a successful install flows straight into the
+  scoring round on the SAME mount (no remount). `checkAvailability` now probes
+  `stt.isAvailable()` so an unsupported native lib (x86 Chromebook / degraded
+  build) reports `unavailable` rather than `needs-model`. New hand-authored
+  string keys — `installOfferTitle`, `installOfferButton`, `installOfferDecline`,
+  `installDownloading`, `installVerifying`, `errInstallFailed` — across all 51
+  table locales (mirror into the pack i18n source before regenerating strings).
 - Initial extraction (capability-modules.md §4.1): whisperLangs /
   whisperTuning / scoringTuning / modelRegistry moved whole; STT type slice
   moved to `@shared/capabilities/core`; text.ts / session.ts / recorder.ts /
