@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "Kielioppihuomio",
-      "tryIt": "Kokeile"
+      "tryIt": "Kokeile",
+      "contrastLabel": "Verrattuna omaan kieleesi"
+    },
+    "word": {
+      "inContext": "Asiayhteydessä",
+      "meaningShow": "Merkitys",
+      "meaningHide": "Piilota"
+    },
+    "wordPack": {
+      "title": "Sanojen merkitykset",
+      "body": "Näe sanojen merkitykset kielellä {{language}} sitä mukaa kun etenet.",
+      "add": "Lisää ({{size}})",
+      "dismiss": "Ei nyt",
+      "downloading": "Lisätään… {{percent}} %",
+      "failed": "Lisääminen epäonnistui",
+      "retry": "Yritä uudelleen"
     },
     "checkpoint": {
       "title": "Tarkistuspiste",
@@ -980,7 +995,8 @@
       "prelit": "Aloitat {{count}} jo tutulla asialla.",
       "redo": "Tarkista tasoni uudelleen",
       "aboveTitle": "Olet tämän kurssin ohi",
-      "aboveBody": "Tämä kurssi kattaa toistaiseksi alkeistason, ja sinä olet sen yläpuolella. Voit silti tutkia sitä — uusia tasoja on tulossa."
+      "aboveBody": "Tämä kurssi kattaa toistaiseksi alkeistason, ja sinä olet sen yläpuolella. Voit silti tutkia sitä — uusia tasoja on tulossa.",
+      "aboveFrontier": "Olet suurimman osan tästä kurssista edellä — aloitat kohdasta {{unit}}."
     },
     "path": {
       "title": "Polkusi",

@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Catetan tata basa",
-      "tryIt": "Cobian"
+      "tryIt": "Cobian",
+      "contrastLabel": "Dibandingkeun jeung basa anjeun"
+    },
+    "word": {
+      "inContext": "Dina konteks",
+      "meaningShow": "Harti",
+      "meaningHide": "Sumputkeun"
     },
     "checkpoint": {
       "title": "Pos pamariksaan",
@@ -980,7 +986,8 @@
       "prelit": "Anjeun ngamimitian ku {{count}} item nu geus dipikanyaho.",
       "redo": "Parios deui tingkat kuring",
       "aboveTitle": "Anjeun ngaliwatan kursus ieu",
-      "aboveBody": "Kursus ieu ayeuna ngawengku bahan pemula, sarta anjeun aya di luhurna. Tetep bisa dijelajah — tingkat anyar keur datang."
+      "aboveBody": "Kursus ieu ayeuna ngawengku bahan pemula, sarta anjeun aya di luhurna. Tetep bisa dijelajah — tingkat anyar keur datang.",
+      "aboveFrontier": "Anjeun geus ngaliwatan lolobana kursus ieu — mimitian ti {{unit}}."
     },
     "path": {
       "title": "Jalan anjeun",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Ngadangukeun bébas leungeun",
       "viewPath": "Tingali jalan",
       "redoPlacement": "Parios deui tingkat kuring"
+    },
+    "wordPack": {
+      "title": "Harti kecap",
+      "body": "Baca harti kecap dina basa {{language}} bari diajar.",
+      "add": "Tambahkeun ({{size}})",
+      "dismiss": "Ulah heula",
+      "downloading": "Nambahkeun… {{percent}}%",
+      "failed": "Teu bisa ditambahkeun",
+      "retry": "Cobian deui"
     }
   }
 }

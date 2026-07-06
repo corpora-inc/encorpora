@@ -928,7 +928,8 @@
     },
     "grammar": {
       "noteLabel": "Nota tatabahasa",
-      "tryIt": "Cuba"
+      "tryIt": "Cuba",
+      "contrastLabel": "Berbanding bahasa anda"
     },
     "checkpoint": {
       "title": "Pusat pemeriksaan",
@@ -980,7 +981,8 @@
       "prelit": "Anda bermula dengan {{count}} item yang sudah diketahui.",
       "redo": "Semak semula tahap saya",
       "aboveTitle": "Anda melepasi kursus ini",
-      "aboveBody": "Kursus ini buat masa ini merangkumi bahan pemula, dan anda berada di atasnya. Anda masih boleh menerokainya — tahap baharu sedang dibina."
+      "aboveBody": "Kursus ini buat masa ini merangkumi bahan pemula, dan anda berada di atasnya. Anda masih boleh menerokainya — tahap baharu sedang dibina.",
+      "aboveFrontier": "Anda mendahului kebanyakan kursus ini — bermula di {{unit}}."
     },
     "path": {
       "title": "Laluan anda",
@@ -1051,6 +1053,20 @@
       "listeningMode": "Mendengar bebas tangan",
       "viewPath": "Lihat laluan",
       "redoPlacement": "Semak semula tahap saya"
+    },
+    "word": {
+      "inContext": "Dalam konteks",
+      "meaningShow": "Makna",
+      "meaningHide": "Sembunyi"
+    },
+    "wordPack": {
+      "title": "Makna perkataan",
+      "body": "Baca makna perkataan dalam {{language}} semasa anda belajar.",
+      "add": "Tambah ({{size}})",
+      "dismiss": "Bukan sekarang",
+      "downloading": "Menambah… {{percent}}%",
+      "failed": "Tidak dapat ditambah",
+      "retry": "Cuba lagi"
     }
   }
 }

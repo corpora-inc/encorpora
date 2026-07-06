@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "Grammatiknotiz",
-      "tryIt": "Probier es"
+      "tryIt": "Probier es",
+      "contrastLabel": "Im Vergleich zu deiner Sprache"
+    },
+    "word": {
+      "inContext": "Im Kontext",
+      "meaningShow": "Bedeutung",
+      "meaningHide": "Verbergen"
+    },
+    "wordPack": {
+      "title": "Wortbedeutungen",
+      "body": "Lies unterwegs nach, was Wörter auf {{language}} bedeuten.",
+      "add": "Hinzufügen ({{size}})",
+      "dismiss": "Nicht jetzt",
+      "downloading": "Wird hinzugefügt… {{percent}}%",
+      "failed": "Hinzufügen fehlgeschlagen",
+      "retry": "Erneut versuchen"
     },
     "checkpoint": {
       "title": "Checkpoint",
@@ -980,7 +995,8 @@
       "prelit": "Du startest mit {{count}} bereits bekannten Einträgen.",
       "redo": "Niveau neu prüfen",
       "aboveTitle": "Du bist über diesem Kurs",
-      "aboveBody": "Dieser Kurs deckt derzeit Anfängermaterial ab, und du liegst darüber. Du kannst ihn trotzdem erkunden — neue Stufen sind unterwegs."
+      "aboveBody": "Dieser Kurs deckt derzeit Anfängermaterial ab, und du liegst darüber. Du kannst ihn trotzdem erkunden — neue Stufen sind unterwegs.",
+      "aboveFrontier": "Du bist den meisten Teilen dieses Kurses voraus — Start bei {{unit}}."
     },
     "path": {
       "title": "Dein Weg",

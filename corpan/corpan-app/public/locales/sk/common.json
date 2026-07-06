@@ -926,9 +926,24 @@
       "newWord": "Nové slovo",
       "newPhrase": "Nová veta"
     },
+    "word": {
+      "inContext": "V kontexte",
+      "meaningShow": "Význam",
+      "meaningHide": "Skryť"
+    },
+    "wordPack": {
+      "title": "Významy slov",
+      "body": "Priebežne si čítaj, čo slová znamenajú v jazyku {{language}}.",
+      "add": "Pridať ({{size}})",
+      "dismiss": "Teraz nie",
+      "downloading": "Pridávam… {{percent}} %",
+      "failed": "Nepodarilo sa pridať",
+      "retry": "Skúsiť znova"
+    },
     "grammar": {
       "noteLabel": "Gramatická poznámka",
-      "tryIt": "Vyskúšaj"
+      "tryIt": "Vyskúšaj",
+      "contrastLabel": "V porovnaní s tvojím jazykom"
     },
     "checkpoint": {
       "title": "Kontrolný bod",
@@ -980,7 +995,8 @@
       "prelit": "Začínaš s {{count}} položkami, ktoré už poznáš.",
       "redo": "Znova overiť moju úroveň",
       "aboveTitle": "Si nad týmto kurzom",
-      "aboveBody": "Tento kurz zatiaľ pokrýva látku pre začiatočníkov a ty si ďalej. Aj tak si ho môžeš prejsť — nové úrovne sú na ceste."
+      "aboveBody": "Tento kurz zatiaľ pokrýva látku pre začiatočníkov a ty si ďalej. Aj tak si ho môžeš prejsť — nové úrovne sú na ceste.",
+      "aboveFrontier": "Si ďalej než väčšina tohto kurzu — začíname pri {{unit}}."
     },
     "path": {
       "title": "Tvoja cesta",

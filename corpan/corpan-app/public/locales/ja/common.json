@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "文法ノート",
-      "tryIt": "やってみよう"
+      "tryIt": "やってみよう",
+      "contrastLabel": "あなたの言語との比較"
+    },
+    "word": {
+      "inContext": "文脈の中で",
+      "meaningShow": "意味",
+      "meaningHide": "隠す"
+    },
+    "wordPack": {
+      "title": "単語の意味",
+      "body": "学習を進めながら、{{language}}での単語の意味を読めます。",
+      "add": "追加（{{size}}）",
+      "dismiss": "今はしない",
+      "downloading": "追加中… {{percent}}%",
+      "failed": "追加できませんでした",
+      "retry": "もう一度試す"
     },
     "checkpoint": {
       "title": "チェックポイント",
@@ -980,7 +995,8 @@
       "prelit": "すでに知っている {{count}} 項目を持ってスタートします。",
       "redo": "レベルを測り直す",
       "aboveTitle": "このコースを超えています",
-      "aboveBody": "このコースは今のところ初級の内容で、あなたはその上のレベルです。それでも見て回れます — 新しいレベルを準備中です。"
+      "aboveBody": "このコースは今のところ初級の内容で、あなたはその上のレベルです。それでも見て回れます — 新しいレベルを準備中です。",
+      "aboveFrontier": "このコースのほとんどより先に進んでいます — {{unit}} からスタート。"
     },
     "path": {
       "title": "あなたの道",

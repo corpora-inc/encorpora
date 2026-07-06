@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Catatan tata bahasa",
-      "tryIt": "Coba"
+      "tryIt": "Coba",
+      "contrastLabel": "Dibandingkan dengan bahasamu"
+    },
+    "word": {
+      "inContext": "Dalam konteks",
+      "meaningShow": "Arti",
+      "meaningHide": "Sembunyikan"
     },
     "checkpoint": {
       "title": "Pos pemeriksaan",
@@ -980,7 +986,8 @@
       "prelit": "Kamu mulai dengan {{count}} item yang sudah dikenal.",
       "redo": "Periksa ulang levelku",
       "aboveTitle": "Kamu melampaui kursus ini",
-      "aboveBody": "Kursus ini untuk saat ini mencakup materi pemula, dan kamu berada di atasnya. Kamu tetap bisa menjelajahinya — level baru sedang disiapkan."
+      "aboveBody": "Kursus ini untuk saat ini mencakup materi pemula, dan kamu berada di atasnya. Kamu tetap bisa menjelajahinya — level baru sedang disiapkan.",
+      "aboveFrontier": "Kamu sudah melampaui sebagian besar kursus ini — mulai dari {{unit}}."
     },
     "path": {
       "title": "Jalurmu",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Mendengarkan bebas-genggam",
       "viewPath": "Lihat jalur",
       "redoPlacement": "Periksa ulang levelku"
+    },
+    "wordPack": {
+      "title": "Arti kata",
+      "body": "Baca arti kata dalam bahasa {{language}} sambil belajar.",
+      "add": "Tambahkan ({{size}})",
+      "dismiss": "Nanti saja",
+      "downloading": "Menambahkan… {{percent}}%",
+      "failed": "Gagal menambahkan",
+      "retry": "Coba lagi"
     }
   }
 }

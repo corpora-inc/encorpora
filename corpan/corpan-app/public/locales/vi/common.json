@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Ghi chú ngữ pháp",
-      "tryIt": "Thử xem"
+      "tryIt": "Thử xem",
+      "contrastLabel": "So với ngôn ngữ của bạn"
+    },
+    "word": {
+      "inContext": "Trong ngữ cảnh",
+      "meaningShow": "Nghĩa",
+      "meaningHide": "Ẩn"
     },
     "checkpoint": {
       "title": "Điểm dừng",
@@ -980,7 +986,8 @@
       "prelit": "Bạn bắt đầu với {{count}} mục đã biết sẵn.",
       "redo": "Kiểm tra lại trình độ của tôi",
       "aboveTitle": "Bạn đã vượt quá khóa học này",
-      "aboveBody": "Khóa học này hiện bao quát nội dung cho người mới bắt đầu, và bạn đang ở trên mức đó. Bạn vẫn có thể khám phá — các cấp độ mới đang được xây dựng."
+      "aboveBody": "Khóa học này hiện bao quát nội dung cho người mới bắt đầu, và bạn đang ở trên mức đó. Bạn vẫn có thể khám phá — các cấp độ mới đang được xây dựng.",
+      "aboveFrontier": "Bạn đã vượt xa phần lớn khóa học này — bắt đầu từ {{unit}}."
     },
     "path": {
       "title": "Con đường của bạn",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Nghe rảnh tay",
       "viewPath": "Xem con đường",
       "redoPlacement": "Kiểm tra lại trình độ của tôi"
+    },
+    "wordPack": {
+      "title": "Nghĩa của từ",
+      "body": "Đọc nghĩa của các từ bằng {{language}} trong quá trình học.",
+      "add": "Thêm ({{size}})",
+      "dismiss": "Để sau",
+      "downloading": "Đang thêm… {{percent}}%",
+      "failed": "Không thêm được",
+      "retry": "Thử lại"
     }
   }
 }

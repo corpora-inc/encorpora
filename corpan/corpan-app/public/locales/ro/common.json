@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Notă de gramatică",
-      "tryIt": "Încearcă"
+      "tryIt": "Încearcă",
+      "contrastLabel": "Comparativ cu limba ta"
+    },
+    "word": {
+      "inContext": "În context",
+      "meaningShow": "Sens",
+      "meaningHide": "Ascunde"
     },
     "checkpoint": {
       "title": "Punct de control",
@@ -980,7 +986,8 @@
       "prelit": "Începi cu {{count}} elemente deja cunoscute.",
       "redo": "Verifică-mi din nou nivelul",
       "aboveTitle": "Ești dincolo de acest curs",
-      "aboveBody": "Acest curs acoperă deocamdată material pentru începători, iar tu ești peste el. Îl poți explora oricum — vin niveluri noi."
+      "aboveBody": "Acest curs acoperă deocamdată material pentru începători, iar tu ești peste el. Îl poți explora oricum — vin niveluri noi.",
+      "aboveFrontier": "Ești înaintea majorității acestui curs — începi la {{unit}}."
     },
     "path": {
       "title": "Drumul tău",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Ascultare hands-free",
       "viewPath": "Vezi drumul",
       "redoPlacement": "Verifică-mi din nou nivelul"
+    },
+    "wordPack": {
+      "title": "Sensuri de cuvinte",
+      "body": "Citește ce înseamnă cuvintele în {{language}} pe măsură ce înaintezi.",
+      "add": "Adaugă ({{size}})",
+      "dismiss": "Nu acum",
+      "downloading": "Se adaugă… {{percent}}%",
+      "failed": "Nu s-a putut adăuga",
+      "retry": "Încearcă din nou"
     }
   }
 }

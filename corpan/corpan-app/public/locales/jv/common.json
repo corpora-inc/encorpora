@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Cathetan paramasastra",
-      "tryIt": "Coba"
+      "tryIt": "Coba",
+      "contrastLabel": "Dibandhingake karo basamu"
+    },
+    "word": {
+      "inContext": "Ing konteks",
+      "meaningShow": "Tegese",
+      "meaningHide": "Delikna"
     },
     "checkpoint": {
       "title": "Pos priksa",
@@ -980,7 +986,8 @@
       "prelit": "Kowe miwiti karo {{count}} perkara sing wis dingerteni.",
       "redo": "Priksa maneh tingkatku",
       "aboveTitle": "Kowe wis ngluwihi kursus iki",
-      "aboveBody": "Kursus iki saiki isih materi pemula, lan kowe wis ana ing sadhuwure. Isih bisa dijelajahi — tingkat anyar lagi teka."
+      "aboveBody": "Kursus iki saiki isih materi pemula, lan kowe wis ana ing sadhuwure. Isih bisa dijelajahi — tingkat anyar lagi teka.",
+      "aboveFrontier": "Kowe wis ngungkuli mayoritas kursus iki — miwiti ing {{unit}}."
     },
     "path": {
       "title": "Dalanmu",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Ngrungokake tanpa tangan",
       "viewPath": "Deleng dalan",
       "redoPlacement": "Priksa maneh tingkatku"
+    },
+    "wordPack": {
+      "title": "Tegese tembung",
+      "body": "Wacanen tegese tembung-tembung nganggo basa {{language}} sinambi sinau.",
+      "add": "Tambahake ({{size}})",
+      "dismiss": "Ora saiki",
+      "downloading": "Nambahake… {{percent}}%",
+      "failed": "Ora bisa ditambahake",
+      "retry": "Coba maneh"
     }
   }
 }

@@ -928,7 +928,8 @@
     },
     "grammar": {
       "noteLabel": "Gramatikos pastaba",
-      "tryIt": "Išbandyk"
+      "tryIt": "Išbandyk",
+      "contrastLabel": "Palyginimas su tavo kalba"
     },
     "checkpoint": {
       "title": "Kontrolinis taškas",
@@ -980,7 +981,8 @@
       "prelit": "Pradedi su {{count}} jau žinomais dalykais.",
       "redo": "Iš naujo patikrinti mano lygį",
       "aboveTitle": "Tu jau peraugai šį kursą",
-      "aboveBody": "Šis kursas kol kas apima pradedančiųjų medžiagą, o tu esi aukščiau. Vis tiek gali jį tyrinėti — nauji lygiai jau pakeliui."
+      "aboveBody": "Šis kursas kol kas apima pradedančiųjų medžiagą, o tu esi aukščiau. Vis tiek gali jį tyrinėti — nauji lygiai jau pakeliui.",
+      "aboveFrontier": "Aplenkei didžiąją šio kurso dalį — pradedi nuo {{unit}}."
     },
     "path": {
       "title": "Tavo kelias",
@@ -1051,6 +1053,20 @@
       "listeningMode": "Klausymas laisvomis rankomis",
       "viewPath": "Rodyti kelią",
       "redoPlacement": "Iš naujo patikrinti mano lygį"
+    },
+    "word": {
+      "inContext": "Kontekste",
+      "meaningShow": "Reikšmė",
+      "meaningHide": "Slėpti"
+    },
+    "wordPack": {
+      "title": "Žodžių reikšmės",
+      "body": "Kol mokaisi, sužinok, ką žodžiai reiškia {{language}} kalba.",
+      "add": "Pridėti ({{size}})",
+      "dismiss": "Ne dabar",
+      "downloading": "Pridedama… {{percent}}%",
+      "failed": "Nepavyko pridėti",
+      "retry": "Bandyti dar kartą"
     }
   }
 }

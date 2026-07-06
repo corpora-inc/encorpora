@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "문법 노트",
-      "tryIt": "해 보기"
+      "tryIt": "해 보기",
+      "contrastLabel": "회원님의 언어와 비교하면"
+    },
+    "word": {
+      "inContext": "예문 속에서",
+      "meaningShow": "의미",
+      "meaningHide": "숨기기"
     },
     "checkpoint": {
       "title": "체크포인트",
@@ -980,7 +986,17 @@
       "prelit": "이미 아는 항목 {{count}}개와 함께 시작해요.",
       "redo": "레벨 다시 확인하기",
       "aboveTitle": "이 코스보다 앞서 있어요",
-      "aboveBody": "이 코스는 현재 초급 내용을 다루는데, 회원님은 그 위 수준이에요. 그래도 둘러보실 수 있어요 — 새 레벨이 준비 중이에요."
+      "aboveBody": "이 코스는 현재 초급 내용을 다루는데, 회원님은 그 위 수준이에요. 그래도 둘러보실 수 있어요 — 새 레벨이 준비 중이에요.",
+      "aboveFrontier": "회원님은 이 코스의 대부분보다 앞서 있어요 — {{unit}}에서 시작해요."
+    },
+    "wordPack": {
+      "title": "단어 뜻",
+      "body": "학습하면서 단어의 뜻을 {{language}}(으)로 읽어 보세요.",
+      "add": "추가하기 ({{size}})",
+      "dismiss": "나중에 할게요",
+      "downloading": "추가하는 중… {{percent}}%",
+      "failed": "추가하지 못했어요",
+      "retry": "다시 시도하기"
     },
     "path": {
       "title": "나의 길",

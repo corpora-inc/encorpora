@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Dil bilgisi notu",
-      "tryIt": "Dene"
+      "tryIt": "Dene",
+      "contrastLabel": "Kendi dilinle karşılaştırma"
+    },
+    "word": {
+      "inContext": "Bağlam içinde",
+      "meaningShow": "Anlamı",
+      "meaningHide": "Gizle"
     },
     "checkpoint": {
       "title": "Kontrol noktası",
@@ -980,7 +986,17 @@
       "prelit": "Zaten bildiğin {{count}} öğeyle başlıyorsun.",
       "redo": "Seviyemi yeniden ölç",
       "aboveTitle": "Bu kursun ötesindesin",
-      "aboveBody": "Bu kurs şimdilik başlangıç seviyesini kapsıyor ve sen onun üzerindesin. Yine de keşfedebilirsin — yeni seviyeler yolda."
+      "aboveBody": "Bu kurs şimdilik başlangıç seviyesini kapsıyor ve sen onun üzerindesin. Yine de keşfedebilirsin — yeni seviyeler yolda.",
+      "aboveFrontier": "Bu kursun büyük kısmının ilerisindesin — {{unit}} biriminden başlıyorsun."
+    },
+    "wordPack": {
+      "title": "Kelime anlamları",
+      "body": "İlerledikçe kelimelerin {{language}} dilindeki anlamlarını oku.",
+      "add": "Ekle ({{size}})",
+      "dismiss": "Şimdi değil",
+      "downloading": "Ekleniyor… %{{percent}}",
+      "failed": "Eklenemedi",
+      "retry": "Tekrar dene"
     },
     "path": {
       "title": "Yolun",

@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Nota de gramàtica",
-      "tryIt": "Prova-ho"
+      "tryIt": "Prova-ho",
+      "contrastLabel": "Comparat amb la teva llengua"
+    },
+    "word": {
+      "inContext": "En context",
+      "meaningShow": "Significat",
+      "meaningHide": "Amaga"
     },
     "checkpoint": {
       "title": "Punt de control",
@@ -980,7 +986,8 @@
       "prelit": "Comences amb {{count}} elements ja coneguts.",
       "redo": "Torna a comprovar el meu nivell",
       "aboveTitle": "Vas més enllà d'aquest curs",
-      "aboveBody": "Aquest curs cobreix de moment material de nivell inicial i tu estàs per sobre. Pots explorar-lo igualment — hi ha nous nivells en camí."
+      "aboveBody": "Aquest curs cobreix de moment material de nivell inicial i tu estàs per sobre. Pots explorar-lo igualment — hi ha nous nivells en camí.",
+      "aboveFrontier": "Vas per davant de la major part d'aquest curs — comences a {{unit}}."
     },
     "path": {
       "title": "El teu camí",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Escolta mans lliures",
       "viewPath": "Mostra el camí",
       "redoPlacement": "Torna a comprovar el meu nivell"
+    },
+    "wordPack": {
+      "title": "Significats de les paraules",
+      "body": "Llegeix què signifiquen les paraules en {{language}} a mesura que avances.",
+      "add": "Afegeix ({{size}})",
+      "dismiss": "Ara no",
+      "downloading": "Afegint… {{percent}}%",
+      "failed": "No s'ha pogut afegir",
+      "retry": "Torna-ho a provar"
     }
   }
 }

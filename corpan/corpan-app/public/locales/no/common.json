@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "Grammatikknotat",
-      "tryIt": "Prøv"
+      "tryIt": "Prøv",
+      "contrastLabel": "Sammenlignet med ditt eget språk"
+    },
+    "word": {
+      "inContext": "I sammenheng",
+      "meaningShow": "Betydning",
+      "meaningHide": "Skjul"
+    },
+    "wordPack": {
+      "title": "Ordbetydninger",
+      "body": "Les hva ordene betyr på {{language}} mens du går videre.",
+      "add": "Legg til ({{size}})",
+      "dismiss": "Ikke nå",
+      "downloading": "Legger til … {{percent}}%",
+      "failed": "Kunne ikke legge til",
+      "retry": "Prøv igjen"
     },
     "checkpoint": {
       "title": "Sjekkpunkt",
@@ -980,7 +995,8 @@
       "prelit": "Du starter med {{count}} elementer du allerede kan.",
       "redo": "Sjekk nivået mitt på nytt",
       "aboveTitle": "Du er forbi dette kurset",
-      "aboveBody": "Dette kurset dekker foreløpig nybegynnerstoff, og du ligger over det. Du kan likevel utforske det — nye nivåer er på vei."
+      "aboveBody": "Dette kurset dekker foreløpig nybegynnerstoff, og du ligger over det. Du kan likevel utforske det — nye nivåer er på vei.",
+      "aboveFrontier": "Du ligger foran det meste av dette kurset — du starter på {{unit}}."
     },
     "path": {
       "title": "Din vei",

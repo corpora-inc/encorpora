@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Grammatica-notitie",
-      "tryIt": "Probeer het"
+      "tryIt": "Probeer het",
+      "contrastLabel": "Vergeleken met jouw taal"
+    },
+    "word": {
+      "inContext": "In context",
+      "meaningShow": "Betekenis",
+      "meaningHide": "Verbergen"
     },
     "checkpoint": {
       "title": "Checkpoint",
@@ -980,7 +986,8 @@
       "prelit": "Je begint met {{count}} items die je al kent.",
       "redo": "Mijn niveau opnieuw checken",
       "aboveTitle": "Je bent verder dan deze cursus",
-      "aboveBody": "Deze cursus behandelt voorlopig beginnersstof en jij zit daarboven. Je kunt hem alsnog verkennen — nieuwe niveaus zijn onderweg."
+      "aboveBody": "Deze cursus behandelt voorlopig beginnersstof en jij zit daarboven. Je kunt hem alsnog verkennen — nieuwe niveaus zijn onderweg.",
+      "aboveFrontier": "Je zit voorbij het grootste deel van deze cursus — je begint bij {{unit}}."
     },
     "path": {
       "title": "Jouw pad",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Handsfree luisteren",
       "viewPath": "Pad bekijken",
       "redoPlacement": "Mijn niveau opnieuw checken"
+    },
+    "wordPack": {
+      "title": "Woordbetekenissen",
+      "body": "Lees onderweg wat woorden betekenen in het {{language}}.",
+      "add": "Toevoegen ({{size}})",
+      "dismiss": "Niet nu",
+      "downloading": "Bezig met toevoegen… {{percent}}%",
+      "failed": "Kon niet worden toegevoegd",
+      "retry": "Opnieuw proberen"
     }
   }
 }
