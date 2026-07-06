@@ -190,15 +190,45 @@ jobs:
           npx tauri ios init --ci || true
           cp -f src-tauri/ios/Corpan.storekit src-tauri/gen/apple/Corpan.storekit
           npx tauri ios init --ci
-          npx tauri ios build --ci \
+          # Archive only. Tauri's own export writes a minimal ExportOptions (method
+          # only) which fails app-store export under manual signing ("requires a
+          # provisioning profile"). We export ourselves below with a manual
+          # ExportOptions that pins the profile + distribution cert.
+          npx tauri ios build --ci --archive-only \
             --export-method app-store-connect \
             --build-number "$BUILD_NUMBER"
+
+      - name: Export signed IPA (manual ExportOptions)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        run: |
+          ARCHIVE=$(ls -d src-tauri/gen/apple/build/*.xcarchive | head -1)
+          echo "Archive: $ARCHIVE"
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>teamID</key><string>F9AV5HKF6N</string>
+            <key>signingStyle</key><string>manual</string>
+            <key>signingCertificate</key><string>Apple Distribution</string>
+            <key>provisioningProfiles</key><dict>
+              <key>com.corpora.corpan</key><string>corpan appstore ci</string>
+            </dict>
+            <key>uploadSymbols</key><true/>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive \
+            -archivePath "$ARCHIVE" \
+            -exportPath src-tauri/gen/apple/build/export \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
+          ls -la src-tauri/gen/apple/build/export
 
       - name: Upload to TestFlight
         if: steps.secrets.outputs.have == 'true'
         uses: apple-actions/upload-testflight-build@v3
         with:
-          app-path: corpan/corpan-app/src-tauri/gen/apple/build/arm64/corpan.ipa
+          app-path: corpan/corpan-app/src-tauri/gen/apple/build/export/corpan.ipa
           issuer-id: ${{ secrets.ASC_ISSUER_ID }}
           api-key-id: ${{ secrets.ASC_KEY_ID }}
           api-private-key: ${{ secrets.ASC_API_KEY_P8 }}
