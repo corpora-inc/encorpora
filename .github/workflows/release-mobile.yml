@@ -1,0 +1,221 @@
+name: Release · mobile (TestFlight + Play internal)
+
+# Builds signed iOS + Android from `main` and ships them to the INTERNAL
+# testing tracks (TestFlight internal, Play internal) — never to public
+# release. Triggered when the app version changes (a real release intent),
+# or manually. See corpan/corpan-app/RELEASE_SETUP.md for the one-time
+# credential setup; until the secrets exist, the build jobs skip cleanly so
+# this workflow is safe to merge.
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "corpan/corpan-app/src-tauri/tauri.conf.json" # version bump lives here
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: "Which platforms to build"
+        type: choice
+        default: both
+        options: [both, ios, android]
+
+concurrency:
+  group: release-mobile-${{ github.ref }}
+  cancel-in-progress: false # never cancel an in-flight upload
+
+jobs:
+  # ---- decide whether this push is actually a release ---------------------
+  gate:
+    name: Gate · version-change detect
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.decide.outputs.release }}
+      version: ${{ steps.decide.outputs.version }}
+      do_ios: ${{ steps.decide.outputs.do_ios }}
+      do_android: ${{ steps.decide.outputs.do_android }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # need HEAD^ to diff the version
+      - id: decide
+        working-directory: corpan/corpan-app
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./src-tauri/tauri.conf.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          RELEASE=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            RELEASE=true
+          else
+            PREV=$(git show HEAD^:corpan/corpan-app/src-tauri/tauri.conf.json 2>/dev/null \
+                     | node -p "JSON.parse(require('fs').readFileSync(0)).version" 2>/dev/null || echo "")
+            if [ "$PREV" != "$VERSION" ]; then RELEASE=true; fi
+          fi
+          PLAT="${{ github.event.inputs.platforms || 'both' }}"
+          echo "release=$RELEASE" >> "$GITHUB_OUTPUT"
+          echo "do_ios=$([ "$RELEASE" = true ] && { [ "$PLAT" = both ] || [ "$PLAT" = ios ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "do_android=$([ "$RELEASE" = true ] && { [ "$PLAT" = both ] || [ "$PLAT" = android ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "Version $VERSION · release=$RELEASE · platforms=$PLAT"
+
+  # ---- iOS -> TestFlight internal -----------------------------------------
+  ios:
+    name: iOS · build + TestFlight
+    needs: gate
+    if: needs.gate.outputs.do_ios == 'true'
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      # Fail-soft: if the Apple secrets aren't configured yet, skip with a
+      # clear message instead of a red X (keeps the pipeline mergeable).
+      - id: secrets
+        env:
+          HAVE: ${{ secrets.APPLE_DIST_CERT_P12 != '' && secrets.ASC_API_KEY_P8 != '' }}
+        run: |
+          echo "have=$HAVE" >> "$GITHUB_OUTPUT"
+          [ "$HAVE" = "true" ] || echo "::warning::Apple release secrets not set — see RELEASE_SETUP.md. Skipping iOS."
+
+      - uses: actions/setup-node@v4
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: corpan/corpan-app/package-lock.json
+
+      - name: Rust + iOS targets
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup target add aarch64-apple-ios aarch64-apple-ios-sim
+      - uses: Swatinem/rust-cache@v2
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          workspaces: corpan/corpan-app/src-tauri
+
+      - name: Import signing certificate
+        if: steps.secrets.outputs.have == 'true'
+        uses: apple-actions/import-codesign-certs@v3
+        with:
+          p12-file-base64: ${{ secrets.APPLE_DIST_CERT_P12 }}
+          p12-password: ${{ secrets.APPLE_DIST_CERT_PASSWORD }}
+
+      - name: Install provisioning profile
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "${{ secrets.APPLE_PROVISIONING_PROFILE }}" | base64 --decode \
+            > ~/Library/MobileDevice/Provisioning\ Profiles/corpan.mobileprovision
+
+      - name: Install deps
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        run: |
+          npm ci
+          npm ci --prefix ../packs/shared/capabilities
+
+      - name: Build number (unique, monotonic)
+        if: steps.secrets.outputs.have == 'true'
+        run: echo "BUILD_NUMBER=${{ github.run_number }}" >> "$GITHUB_ENV"
+
+      - name: Tauri iOS build (app-store-connect)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        run: |
+          npx tauri ios init --ci || true   # regenerate gen/apple (not committed)
+          # Stamp the CI build number so TestFlight accepts each upload.
+          if [ -d src-tauri/gen/apple ]; then
+            ( cd src-tauri/gen/apple && xcrun agvtool new-version -all "$BUILD_NUMBER" ) || \
+              echo "::warning::agvtool build-number stamp failed — first-run tweak point (see RELEASE_SETUP.md)"
+          fi
+          npx tauri ios build --export-method app-store-connect
+
+      - name: Upload to TestFlight
+        if: steps.secrets.outputs.have == 'true'
+        uses: apple-actions/upload-testflight-build@v3
+        with:
+          app-path: corpan/corpan-app/src-tauri/gen/apple/build/arm64/corpan.ipa
+          issuer-id: ${{ secrets.ASC_ISSUER_ID }}
+          api-key-id: ${{ secrets.ASC_KEY_ID }}
+          api-private-key: ${{ secrets.ASC_API_KEY_P8 }}
+
+  # ---- Android -> Play internal -------------------------------------------
+  android:
+    name: Android · build + Play internal
+    needs: gate
+    if: needs.gate.outputs.do_android == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: secrets
+        env:
+          HAVE: ${{ secrets.ANDROID_KEYSTORE_B64 != '' && secrets.PLAY_SERVICE_ACCOUNT_JSON != '' }}
+        run: |
+          echo "have=$HAVE" >> "$GITHUB_OUTPUT"
+          [ "$HAVE" = "true" ] || echo "::warning::Android release secrets not set — see RELEASE_SETUP.md. Skipping Android."
+
+      - uses: actions/setup-node@v4
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: corpan/corpan-app/package-lock.json
+      - uses: actions/setup-java@v4
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+        if: steps.secrets.outputs.have == 'true'
+      - name: Rust + Android targets
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          workspaces: corpan/corpan-app/src-tauri
+
+      - name: Install NDK
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          sdkmanager "ndk;26.1.10909125"
+          echo "NDK_HOME=$ANDROID_SDK_ROOT/ndk/26.1.10909125" >> "$GITHUB_ENV"
+
+      - name: Decode keystore + signing props
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app/src-tauri
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_B64 }}" | base64 --decode > upload-keystore.jks
+          cat > gen/android/keystore.properties <<EOF
+          storeFile=$(pwd)/upload-keystore.jks
+          storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
+          keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
+          EOF
+
+      - name: Install deps
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        run: |
+          npm ci
+          npm ci --prefix ../packs/shared/capabilities
+
+      - name: Tauri Android build (signed AAB)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        env:
+          TAURI_ANDROID_VERSION_CODE: ${{ github.run_number }}
+        run: npx tauri android build --aab
+
+      - name: Upload to Play internal
+        if: steps.secrets.outputs.have == 'true'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.corpora.corpan
+          releaseFiles: corpan/corpan-app/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
+          track: internal
+          status: completed

@@ -8,6 +8,12 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Automated mobile release pipeline** — `.github/workflows/release-mobile.yml`
+  builds signed iOS + Android on a version bump to `main` and ships to
+  TestFlight internal + Play internal testing (no manual MacBook/Transporter
+  step). Version bumping via `scripts/bump-app-version.mjs`; one-time credential
+  setup in `RELEASE_SETUP.md`. The build jobs skip cleanly until the release
+  secrets are configured, so the workflow is safe to merge before setup.
 - **Journey browser demo harness (dev-only)** — `journey-demo.html` mounts the
   REAL JourneySurface + engine + resolver over the real `journey_en` pack
   content in a plain browser (no Tauri): `scripts/journey-demo/precompute.ts`
