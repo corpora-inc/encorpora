@@ -136,6 +136,27 @@ jobs:
         # the tauri crate version in Cargo.lock.
         run: cargo install tauri-cli --version 2.11.2 --locked
 
+      # tauri-plugin-stt links a prebuilt whisper.cpp static XCFramework that is
+      # gitignored (~150 MB) and built locally per its ios/.gitignore. Reproduce
+      # it in CI, cached on the pinned whisper version so it builds only once.
+      - name: Cache whisper.xcframework
+        if: steps.secrets.outputs.have == 'true'
+        id: whisper_cache
+        uses: actions/cache@v4
+        with:
+          path: corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework
+          key: whisper-xcframework-v1.8.4-${{ runner.os }}
+      - name: Build whisper.xcframework
+        if: steps.secrets.outputs.have == 'true' && steps.whisper_cache.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$RUNNER_TEMP/whisper.cpp"
+          cd "$RUNNER_TEMP/whisper.cpp"
+          BUILD_STATIC_XCFRAMEWORK=ON ./build-xcframework.sh
+          DEST="$GITHUB_WORKSPACE/corpan/plugins/tauri-plugin-stt/ios"
+          rm -rf "$DEST/whisper.xcframework"
+          mv build-apple/whisper.xcframework "$DEST/"
+          test -f "$DEST/whisper.xcframework/ios-arm64/whisper.framework/whisper"
+
       - name: Tauri iOS build (app-store-connect)
         if: steps.secrets.outputs.have == 'true'
         working-directory: corpan/corpan-app
