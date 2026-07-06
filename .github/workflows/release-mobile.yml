@@ -281,6 +281,17 @@ jobs:
         # go timestamp-based we stay timestamp-based (never revert to derived).
         run: echo "VERSION_CODE=$(( $(date +%s) / 60 ))" >> "$GITHUB_ENV"
 
+      - name: Vendor whisper.cpp source (tauri-plugin-stt JNI)
+        if: steps.secrets.outputs.have == 'true'
+        # The STT plugin's Android externalNativeBuild add_subdirectory(whisper.cpp)
+        # compiles a vendored, gitignored whisper.cpp checkout. Clone the pinned
+        # version per android/.gitignore so CMake can find it.
+        run: |
+          DST=corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp
+          if [ ! -f "$DST/CMakeLists.txt" ]; then
+            git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$DST"
+          fi
+
       - name: Tauri Android build (unsigned AAB)
         if: steps.secrets.outputs.have == 'true'
         working-directory: corpan/corpan-app
