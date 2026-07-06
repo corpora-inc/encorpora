@@ -31,6 +31,7 @@ import {
   loadCourseGraphFromPack,
   readJourneyPackMeta,
 } from "../util/journeyPack"
+import { isWordPackInstalled, wordPackIdCandidates } from "../util/wordPack"
 import type { CapabilityHostApi } from "@shared/capabilities/core"
 import { allFolders } from "@shared/capabilities/pronounce/src/modelRegistry"
 import { createJourneyEngine, itemCardCodec, systemClock } from "./engine/index.ts"
@@ -254,6 +255,10 @@ export interface BuiltJourney {
   /** Authoritative target language (pack_meta.target_lang casing). */
   targetLang: string
   packId: string
+  /** Consent seam for the inline wordpan offer: call with the installed pair
+   *  pack id after a user-approved install so the resolver picks up the new
+   *  word-explanation enrichment without a restart. */
+  onWordPackInstalled: (installedPackId: string) => void
 }
 
 /** Ensure the course pack for `targetLang` is installed; returns its pack id.
@@ -296,6 +301,27 @@ async function ensureJourneyPackInstalled(targetLang: string): Promise<string> {
 }
 
 /**
+ * Best-effort disk-truth probe for the (native→target) wordpan pair pack.
+ * Walks the most-specific-first candidate ids and returns the first one that
+ * is installed, or null. Catalog-free (works offline) so an already-installed
+ * pack enriches from the very first card without any network or consent.
+ */
+async function probeInstalledWordPack(
+  nativeLang: string | undefined,
+  targetLang: string,
+): Promise<string | null> {
+  if (!nativeLang) return null
+  for (const id of wordPackIdCandidates(nativeLang, targetLang)) {
+    try {
+      if (await isWordPackInstalled(id)) return id
+    } catch {
+      // A probe hiccup just means "not confirmed" — keep walking.
+    }
+  }
+  return null
+}
+
+/**
  * PRODUCTION JourneyRuntimeDeps builder (the JourneySurface.tsx header
  * recipe): loadCourseGraph over the installed pack (targetLang rides
  * pack_meta.target_lang — item 15), the real engine over the shared
@@ -318,9 +344,33 @@ export async function buildJourneyDeps(opts: {
   const courseId = graph.courseId
 
   const hostApi = createHostApi()
+
+  // wordpan (native→target word-explanation) enrichment. The resolver's
+  // word-enrichment (native meaning paragraph + etymology gems) only lights up
+  // when the (native→target) pair pack is installed. We NEVER auto-download it
+  // — low-bandwidth users are asked first by the inline offer in the feed
+  // (WordPackOfferBanner). Here we only track disk truth: `installedPairId`
+  // holds the confirmed-installed pack id for THIS session's pair, seeded from
+  // a cheap offline probe so an already-installed pack enriches from the first
+  // card, and flipped by `onWordPackInstalled` when the user consents to an
+  // install mid-session (which also invalidates the resolver — §3.2).
+  const installedPairId: { current: string | null } = {
+    current: await probeInstalledWordPack(opts.nativeLang, targetLang),
+  }
+  const baseOf = (c: string) => (c || "").split("-")[0]
+
   const resolverDeps = buildResolverDeps(hostApi, {
     findInstalledPack: (pid) =>
       pid === packId || !!useJourneyPacksStore.getState().get(pid),
+    // The confirmed-installed (native→target) pair pack for this session. The
+    // ResolveContext pair is fixed, so we answer for the matching pair only
+    // (base-subtag compare) and return null otherwise — never a guessed id.
+    findInstalledWordPack: (nativeLang, tgt) => {
+      if (!opts.nativeLang) return null
+      if (baseOf(nativeLang) !== baseOf(opts.nativeLang)) return null
+      if (baseOf(tgt) !== baseOf(targetLang)) return null
+      return installedPairId.current
+    },
     // Rung-3 top-up draws must carry the faces the sampler builds: the
     // answer face (targetLang, required) and the prompt face (nativeLang,
     // when the stack has one).
@@ -331,6 +381,15 @@ export async function buildJourneyDeps(opts: {
   })
   const ctx = makeResolveContext(courseId, targetLang, opts.nativeLang)
   const resolver = createResolver(resolverDeps, ctx)
+
+  // Consent seam for the inline offer: on a user-approved install, record the
+  // installed id + invalidate so the just-downloaded meanings surface without
+  // a restart. Idempotent.
+  const onWordPackInstalled = (installedId: string): void => {
+    if (!installedId || installedPairId.current === installedId) return
+    installedPairId.current = installedId
+    resolver.invalidate()
+  }
 
   const engine = createJourneyEngine({
     key: { stackId: opts.stackId, courseId },
@@ -381,5 +440,6 @@ export async function buildJourneyDeps(opts: {
     capabilityHost: capabilityHostFromHostApi(hostApi),
     targetLang,
     packId,
+    onWordPackInstalled,
   }
 }

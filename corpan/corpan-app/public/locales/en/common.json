@@ -1058,6 +1058,15 @@
       "listeningMode": "Hands-free listening",
       "viewPath": "View path",
       "redoPlacement": "Re-check my level"
+    },
+    "wordPack": {
+      "title": "Word meanings",
+      "body": "Read what words mean in {{language}} as you go.",
+      "add": "Add ({{size}})",
+      "dismiss": "Not now",
+      "downloading": "Adding… {{percent}}%",
+      "failed": "Couldn’t add",
+      "retry": "Try again"
     }
   }
 }

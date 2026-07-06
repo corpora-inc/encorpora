@@ -152,3 +152,19 @@ test("findWordPackForPair matches on base language subtags", () => {
   assert.equal(findWordPackForPair(c.packs, "fr", "en"), undefined)
   assert.equal(findWordPackForPair(c.packs, "es", "de"), undefined)
 })
+
+test("findWordPackForPair prefers an EXACT native code over a base collision", () => {
+  // pt-BR and pt-PT share base `pt` — an exact request must not cross over.
+  const base = liveShape.packs[0]
+  const c = parseWordPackCatalog({
+    ...liveShape,
+    packs: [
+      { ...base, id: "wordpan_pt_BR_en", nativeLang: "pt-BR", targetLang: "en" },
+      { ...base, id: "wordpan_pt_PT_en", nativeLang: "pt-PT", targetLang: "en" },
+    ],
+  })!
+  assert.equal(findWordPackForPair(c.packs, "pt-BR", "en")!.id, "wordpan_pt_BR_en")
+  assert.equal(findWordPackForPair(c.packs, "pt-PT", "en")!.id, "wordpan_pt_PT_en")
+  // A bare base still resolves *a* flavor (first published) rather than nothing.
+  assert.ok(findWordPackForPair(c.packs, "pt", "en"))
+})
