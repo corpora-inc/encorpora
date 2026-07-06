@@ -114,21 +114,16 @@ jobs:
           npm ci
           npm ci --prefix ../packs/shared/capabilities
 
-      - name: Build number (unique, monotonic)
-        if: steps.secrets.outputs.have == 'true'
-        run: echo "BUILD_NUMBER=${{ github.run_number }}" >> "$GITHUB_ENV"
-
       - name: Tauri iOS build (app-store-connect)
         if: steps.secrets.outputs.have == 'true'
         working-directory: corpan/corpan-app
         run: |
-          npx tauri ios init --ci || true   # regenerate gen/apple (not committed)
-          # Stamp the CI build number so TestFlight accepts each upload.
-          if [ -d src-tauri/gen/apple ]; then
-            ( cd src-tauri/gen/apple && xcrun agvtool new-version -all "$BUILD_NUMBER" ) || \
-              echo "::warning::agvtool build-number stamp failed — first-run tweak point (see RELEASE_SETUP.md)"
-          fi
-          npx tauri ios build --export-method app-store-connect
+          npx tauri ios init --ci   # (re)generate gen/apple from project.yml
+          # --build-number stamps CFBundleVersion so TestFlight accepts each
+          # upload (must be unique + increasing); github.run_number is both.
+          npx tauri ios build --ci \
+            --export-method app-store-connect \
+            --build-number "${{ github.run_number }}"
 
       - name: Upload to TestFlight
         if: steps.secrets.outputs.have == 'true'
