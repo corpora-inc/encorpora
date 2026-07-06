@@ -30,7 +30,12 @@ export function JourneyChrome(props: {
   const setSounds = useJourneyStore((s) => s.setSoundsEnabled)
 
   return (
-    <div className="relative z-10 flex h-11 shrink-0 items-center gap-2 px-3">
+    // Edge-to-edge app: pad the ribbon below the status bar. env(safe-area-
+    // inset-top) can report 0 on Android WebViews, so floor it (index.css §4).
+    <div
+      className="relative z-10 flex min-h-11 shrink-0 items-center gap-2 px-3"
+      style={{ paddingTop: "max(var(--safe-top), 0.5rem)" }}
+    >
       <button
         type="button"
         onClick={props.onHome}

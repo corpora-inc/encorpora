@@ -980,7 +980,8 @@
       "prelit": "You're starting with {{count}} items already known.",
       "redo": "Re-check my level",
       "aboveTitle": "You're past this course",
-      "aboveBody": "This course currently covers beginner material, and you placed beyond it. You can still explore it — new levels are on the way."
+      "aboveBody": "This course currently covers beginner material, and you placed beyond it. You can still explore it — new levels are on the way.",
+      "aboveFrontier": "You're ahead of most of this course — starting at {{unit}}."
     },
     "path": {
       "title": "Your path",

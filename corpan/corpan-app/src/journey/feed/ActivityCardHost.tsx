@@ -15,6 +15,7 @@ import { playSoftMiss } from "../celebration/sounds.ts"
 import { rendererFor } from "../exercises/index.ts"
 import type { ExerciseMode, SpeakFn } from "../exercises/types.ts"
 import { ResultStamp } from "../exercises/common/ResultStamp.tsx"
+import { celebrationFor, settleOk, settleStamp } from "./settle.ts"
 import type { FeedCard, RawOutcome, ScaffoldState } from "../types.ts"
 
 const FAST_MS = 6000
@@ -71,30 +72,28 @@ export function ActivityCardHost(props: {
       durationMs: Date.now() - startedAt.current,
     }
     if (outcome.detail) result.detail = outcome.detail
-    const ok = attempt !== "failed" && fraction >= 0.6
+    // Unscored cards (engine meta.unscored — debut intros) settle NEUTRALLY:
+    // no correct/incorrect stamp, no "correcto". Acknowledging mere exposure
+    // as a graded win is dishonest juice (W3). The Continue press just advances.
+    const unscored = prepared.engine.meta.unscored === true
+    const ok = settleOk(attempt, fraction)
     setSettledOk(ok)
-    setStamp(ok ? "correct" : "incorrect")
+    setStamp(settleStamp({ attempt, fraction, unscored }))
     props.onResult(result)
     if (props.mode === "live") {
-      // Presentation-only cards (engine meta.unscored — debut intros etc.)
-      // never earn a "perfect" celebration: acknowledging exposure as a win
-      // would be dishonest juice (W10/W4 fix a — the engine flag replaces
-      // any activityType inference here).
-      if (ok && prepared.engine.meta.unscored !== true) {
-        const fast = outcome.latencyMs <= FAST_MS
-        const perfect = attempt === "first" && fast && hintsRef.current === 0 && fraction >= 0.95
-        const comboNow = props.combo + 1
-        const comboMoment = perfect && comboNow >= 5 && comboNow % 5 === 0
-        void celebrate({
-          tier: perfect || comboMoment ? 1 : 0,
-          comboCount: comboMoment ? comboNow : undefined,
-        })
-      }
+      const deco = celebrationFor({
+        attempt,
+        fraction,
+        unscored,
+        fast: outcome.latencyMs <= FAST_MS,
+        hintsUsed: hintsRef.current,
+        combo: props.combo,
+      })
+      if (deco) void celebrate(deco)
       props.onRequestAdvance()
     }
   }
 
-  const isSelfGraded = prepared.spec.activityType === "flip_recall"
   const isMultiItem = prepared.items.length > 1 && prepared.spec.activityType === "match_pairs"
 
   const onOutcome = (outcome: RawOutcome) => {
@@ -111,9 +110,9 @@ export function ActivityCardHost(props: {
       return
     }
     // a miss
-    if (isSelfGraded || scaffold.misses >= 1) {
-      // second miss (or self-graded "not yet"): show the answer plainly,
-      // speak it once, complete as fail (§3.3 step 2).
+    if (scaffold.misses >= 1) {
+      // second miss: show the answer plainly, speak it once, complete as fail
+      // (§3.3 step 2).
       setScaffold((s) => ({ ...s, misses: 2 }))
       setShowAnswer(true)
       void props.speak(prepared.spec.targetLang, prepared.items[0].target.ttsText)

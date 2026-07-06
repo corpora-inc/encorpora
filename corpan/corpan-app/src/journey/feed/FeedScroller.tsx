@@ -86,6 +86,19 @@ export function FeedScroller(props: FeedScrollerProps) {
     runtime.advance()
   }, [runtime, clearAuto])
 
+  // Explicit-button cards (intro_echo / flip_recall Continue) advance the
+  // instant the learner presses — no lingering settled card to swipe past
+  // (contract #6 (a)). The host calls this from onRequestAdvance after settle;
+  // answer-tap cards return a non-"button" rule and are ignored here (their
+  // countdown-ring auto-advance is armed by the effect below).
+  const requestAdvance = useCallback(
+    (card: FeedCard) => {
+      if (backIndex !== 0) return
+      if (advanceRule(card, advanceMode).kind === "button") doAdvance()
+    },
+    [advanceMode, backIndex, doAdvance],
+  )
+
   // auto-advance arming per rules table
   useEffect(() => {
     clearAuto()
@@ -200,7 +213,7 @@ export function FeedScroller(props: FeedScrollerProps) {
             showRomanization={props.showRomanization}
             active={mode === "live" && backIndex === 0}
             onResult={(r) => submit(card.cardId, r)}
-            onRequestAdvance={() => {}}
+            onRequestAdvance={() => requestAdvance(card)}
           />
         )
         const boss = card.prepared.engine.meta.checkpoint
