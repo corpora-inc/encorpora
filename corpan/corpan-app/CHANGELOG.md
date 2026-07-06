@@ -7,13 +7,21 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.0] - 2026-07-06
+
 ### Added
-- **Automated mobile release pipeline** — `.github/workflows/release-mobile.yml`
-  builds signed iOS + Android on a version bump to `main` and ships to
-  TestFlight internal + Play internal testing (no manual MacBook/Transporter
-  step). Version bumping via `scripts/bump-app-version.mjs`; one-time credential
-  setup in `RELEASE_SETUP.md`. The build jobs skip cleanly until the release
-  secrets are configured, so the workflow is safe to merge before setup.
+- **Automated mobile release pipeline — proven end-to-end.**
+  `.github/workflows/release-mobile.yml` builds signed iOS + Android on a version
+  bump to `main` and ships to TestFlight internal + Play internal testing (no
+  manual MacBook/Transporter step). Version bumping via
+  `scripts/bump-app-version.mjs`; one-time credential setup in `RELEASE_SETUP.md`.
+  0.20.0 is the first release cut this way — both platforms uploaded green.
+  Hardened for a real repo checkout: Git-LFS fetch (icons + DB), whisper.cpp
+  vendored/built in CI for the STT plugin (iOS XCFramework + Android JNI), CI
+  rewrite of the machine-specific `.cargo/config.toml` NDK paths, `buildSrc`
+  regeneration, manual iOS signing with an ASC-API-minted profile, a
+  profile-pinned `xcodebuild -exportArchive`, jarsigner AAB signing, monotonic
+  version codes, `macos-26`/Xcode 26 (iOS 26 SDK), and build/toolchain caching.
 - **Journey browser demo harness (dev-only)** — `journey-demo.html` mounts the
   REAL JourneySurface + engine + resolver over the real `journey_en` pack
   content in a plain browser (no Tauri): `scripts/journey-demo/precompute.ts`

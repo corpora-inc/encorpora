@@ -131,12 +131,19 @@ jobs:
           npm ci
           npm ci --prefix ../packs/shared/capabilities
 
-      - name: Install cargo-tauri CLI
+      # The Xcode "Build Rust Code" phase (project.yml preBuildScript) runs
+      # `cargo tauri ios xcode-script`, which needs the tauri CLI installed as a
+      # cargo subcommand — CI otherwise only has the npm `npx tauri`. Cache the
+      # compiled binary so we don't rebuild it (~3-4 min) every run.
+      - name: Cache cargo-tauri
         if: steps.secrets.outputs.have == 'true'
-        # The Xcode "Build Rust Code" phase (project.yml preBuildScript) runs
-        # `cargo tauri ios xcode-script`, which needs the tauri CLI installed as a
-        # cargo subcommand — CI otherwise only has the npm `npx tauri`. Pinned to
-        # the tauri crate version in Cargo.lock.
+        id: cargo_tauri_cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/cargo-tauri
+          key: cargo-tauri-2.11.2-${{ runner.os }}-${{ runner.arch }}
+      - name: Install cargo-tauri CLI
+        if: steps.secrets.outputs.have == 'true' && steps.cargo_tauri_cache.outputs.cache-hit != 'true'
         run: cargo install tauri-cli --version 2.11.2 --locked
 
       # tauri-plugin-stt links a prebuilt whisper.cpp static XCFramework that is
@@ -276,6 +283,25 @@ jobs:
         if: steps.secrets.outputs.have == 'true'
         with:
           workspaces: corpan/corpan-app/src-tauri
+
+      - name: Cache Gradle
+        if: steps.secrets.outputs.have == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('corpan/corpan-app/src-tauri/gen/android/**/*.gradle*', 'corpan/corpan-app/src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: gradle-${{ runner.os }}-
+      - name: Cache whisper Android native build (.cxx)
+        if: steps.secrets.outputs.have == 'true'
+        # The STT plugin's externalNativeBuild compiles whisper.cpp via CMake/ninja
+        # (~15 min). ninja does incremental builds, so caching its object dir lets
+        # subsequent runs skip recompilation. Keyed on the pinned whisper version.
+        uses: actions/cache@v4
+        with:
+          path: corpan/plugins/tauri-plugin-stt/android/.cxx
+          key: whisper-android-cxx-v1.8.4-${{ runner.os }}
 
       - name: Install NDK + retarget cargo toolchain paths for CI
         if: steps.secrets.outputs.have == 'true'
