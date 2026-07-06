@@ -174,46 +174,32 @@ jobs:
         with:
           workspaces: corpan/corpan-app/src-tauri
 
-      - name: Install NDK + pin CI toolchain
+      - name: Install NDK + retarget cargo toolchain paths for CI
         if: steps.secrets.outputs.have == 'true'
         # gen/android/app/build.gradle.kts pins ndkVersion 28.2.13676358, so we
         # install exactly that. src-tauri/.cargo/config.toml hardcodes this dev's
-        # local *darwin* NDK paths for the Android linker/CC/AR + ANDROID_NDK_ROOT;
-        # those [env] entries are non-forced by design ("a real shell env var still
-        # wins (e.g. CI)"), so we override them here with the runner's linux-x86_64
-        # toolchain. Also overrides the per-target `linker` via CARGO_TARGET_*_LINKER
-        # (env beats config). API level 24 matches the config's *-android24-clang.
+        # LOCAL macOS NDK toolchain paths (linker/CC/CXX/AR + ANDROID_NDK_ROOT) —
+        # `/Users/skyl/Android/ndk/28.2.13676358/.../darwin-x86_64/...`. cargo's
+        # [env] uses dash-named vars (CC_aarch64-linux-android) which $GITHUB_ENV
+        # cannot set, so we can't override them from env. Instead we rewrite just
+        # the host-specific path prefix in the checked-out config (CI working copy
+        # only, never committed): base dir -> the runner's NDK, darwin -> linux.
+        # This preserves every intent of the file (same NDK 28.2, same API-24
+        # clang, 16 KB page linker flags) and touches nothing Apple.
         run: |
           NDK_VER=28.2.13676358
           yes | sdkmanager "ndk;$NDK_VER" "platforms;android-36" "build-tools;36.0.0" >/dev/null
           NDK="$ANDROID_SDK_ROOT/ndk/$NDK_VER"
-          BIN="$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin"
-          test -x "$BIN/aarch64-linux-android24-clang" || { echo "NDK clang missing at $BIN"; ls "$BIN" | head; exit 1; }
-          {
-            echo "NDK_HOME=$NDK"
-            echo "ANDROID_NDK_ROOT=$NDK"
-            echo "ANDROID_NDK_HOME=$NDK"
-            echo "ANDROID_NDK=$NDK"
-            echo "NDK_ROOT=$NDK"
-            # per-target linkers (override [target.<triple>].linker)
-            echo "CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=$BIN/aarch64-linux-android24-clang"
-            echo "CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER=$BIN/armv7a-linux-androideabi24-clang"
-            echo "CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=$BIN/x86_64-linux-android24-clang"
-            echo "CARGO_TARGET_I686_LINUX_ANDROID_LINKER=$BIN/i686-linux-android24-clang"
-            # cc-rs compilers/archiver per triple (override [env] CC_/CXX_/AR_)
-            echo "CC_aarch64-linux-android=$BIN/aarch64-linux-android24-clang"
-            echo "CXX_aarch64-linux-android=$BIN/aarch64-linux-android24-clang++"
-            echo "AR_aarch64-linux-android=$BIN/llvm-ar"
-            echo "CC_armv7-linux-androideabi=$BIN/armv7a-linux-androideabi24-clang"
-            echo "CXX_armv7-linux-androideabi=$BIN/armv7a-linux-androideabi24-clang++"
-            echo "AR_armv7-linux-androideabi=$BIN/llvm-ar"
-            echo "CC_x86_64-linux-android=$BIN/x86_64-linux-android24-clang"
-            echo "CXX_x86_64-linux-android=$BIN/x86_64-linux-android24-clang++"
-            echo "AR_x86_64-linux-android=$BIN/llvm-ar"
-            echo "CC_i686-linux-android=$BIN/i686-linux-android24-clang"
-            echo "CXX_i686-linux-android=$BIN/i686-linux-android24-clang++"
-            echo "AR_i686-linux-android=$BIN/llvm-ar"
-          } >> "$GITHUB_ENV"
+          echo "NDK_HOME=$NDK" >> "$GITHUB_ENV"
+          CFG=corpan/corpan-app/src-tauri/.cargo/config.toml
+          sed -i \
+            -e "s#/Users/skyl/Android/ndk/$NDK_VER#$NDK#g" \
+            -e "s#prebuilt/darwin-x86_64#prebuilt/linux-x86_64#g" \
+            "$CFG"
+          echo "--- rewritten Android toolchain paths ---"
+          grep -nE "linux-android|ANDROID_NDK" "$CFG" | grep -iE "ndk|linux-android24|androideabi24" | head
+          test -x "$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang" \
+            || { echo "CI NDK clang not found"; exit 1; }
 
       - name: Decode upload keystore
         if: steps.secrets.outputs.have == 'true'
