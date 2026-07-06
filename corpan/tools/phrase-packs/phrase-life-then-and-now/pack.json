@@ -1,0 +1,39 @@
+{
+  "id": "phrase-life-then-and-now",
+  "version": "0.1.0",
+  "name": "Then & Now",
+  "description": "Talking about the past and how life has changed — old habits, life before now, and how long things have been going on.",
+  "category": "life",
+  "topic": "Then & Now",
+  "icon": "history",
+  "accent_color": "#b39ddb",
+  "channel": "preview",
+  "tags": [
+    "journey",
+    "new"
+  ],
+  "name_localized": {
+    "en": "Then & Now",
+    "es": "Antes y ahora",
+    "fr": "Avant et maintenant",
+    "de": "Früher und heute",
+    "pt-BR": "Antes e agora",
+    "ja": "昔と今",
+    "zh-Hans": "从前与现在"
+  },
+  "description_localized": {
+    "en": "Talking about the past and how life has changed — old habits, life before now, and how long things have been going on.",
+    "es": "Hablar del pasado y de cómo ha cambiado la vida: viejas costumbres, cómo era antes y cuánto tiempo llevas haciendo algo.",
+    "fr": "Parler du passé et de la façon dont la vie a changé : anciennes habitudes, la vie d'avant et depuis combien de temps les choses durent.",
+    "de": "Über die Vergangenheit sprechen und wie sich das Leben verändert hat — alte Gewohnheiten, das Leben von früher und wie lange etwas schon andauert.",
+    "pt-BR": "Falar do passado e de como a vida mudou: velhos hábitos, como era antes e há quanto tempo você faz algo.",
+    "ja": "過去と、暮らしがどう変わったかを話す — 昔の習慣、以前の生活、そして物事がどれくらい続いているか。",
+    "zh-Hans": "谈论过去以及生活的变化——旧习惯、从前的生活，以及某件事持续了多久。"
+  },
+  "topic_localized": {
+    "en": "Then & Now",
+    "es": "Antes y ahora",
+    "fr": "Avant et maintenant",
+    "de": "Früher und heute"
+  }
+}

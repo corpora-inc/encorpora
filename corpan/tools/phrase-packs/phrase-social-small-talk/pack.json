@@ -1,0 +1,39 @@
+{
+  "id": "phrase-social-small-talk",
+  "version": "0.1.0",
+  "name": "Small Talk",
+  "description": "The glue of easy conversation — question tags, agreeing and echoing, guessing out loud, and asking things politely.",
+  "category": "life",
+  "topic": "Small Talk",
+  "icon": "messages-square",
+  "accent_color": "#ffab91",
+  "channel": "preview",
+  "tags": [
+    "journey",
+    "new"
+  ],
+  "name_localized": {
+    "en": "Small Talk",
+    "es": "Charla ligera",
+    "fr": "Petite conversation",
+    "de": "Small Talk",
+    "pt-BR": "Bate-papo",
+    "ja": "雑談",
+    "zh-Hans": "闲聊"
+  },
+  "description_localized": {
+    "en": "The glue of easy conversation — question tags, agreeing and echoing, guessing out loud, and asking things politely.",
+    "es": "El pegamento de una conversación fácil: coletillas, mostrar acuerdo y hacer eco, suponer en voz alta y preguntar con cortesía.",
+    "fr": "Le ciment d'une conversation facile : les question tags, l'accord et l'écho, deviner à voix haute et demander poliment.",
+    "de": "Der Kitt für lockere Gespräche — Frageanhängsel, Zustimmen und Echoen, laut vermuten und höflich nachfragen.",
+    "pt-BR": "A cola de uma conversa fácil: perguntas-tag, concordar e ecoar, adivinhar em voz alta e perguntar com educação.",
+    "ja": "気軽な会話をつなぐもの — 付加疑問、同意と相づち、声に出した推測、そして丁寧な尋ね方。",
+    "zh-Hans": "轻松对话的黏合剂——附加疑问句、附和与回应、出声的猜测，以及礼貌地询问。"
+  },
+  "topic_localized": {
+    "en": "Small Talk",
+    "es": "Charla ligera",
+    "fr": "Petite conversation",
+    "de": "Small Talk"
+  }
+}
