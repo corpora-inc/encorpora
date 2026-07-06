@@ -238,6 +238,7 @@ export function FeedScroller(props: FeedScrollerProps) {
             >
               <EtymologyGemCard
                 item={card.prepared.items[0]}
+                example={card.prepared.example}
                 targetLang={card.spec.targetLang}
                 nativeLang={card.spec.nativeLang}
                 onContinue={(latencyMs) =>

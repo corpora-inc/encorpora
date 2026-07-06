@@ -33,6 +33,7 @@ import type {
 import {
   contentMissingResult,
   type ResolveContext,
+  type ResolvedExample,
   type ResolvedItem,
   type Resolver,
   type ResolverDeps,
@@ -366,6 +367,38 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       }
     }
 
+    // -- Words in context (depth) -------------------------------------------
+    // A word the learner has already met (graded rep, not a debut exposure)
+    // gets a real corpus phrase that CONTAINS it. Surfaced two ways:
+    //   • always as the post-answer enrichment line (prepared.example);
+    //   • for a deterministic share of reps, as a fill-the-word-in-context
+    //     cloze — items[0] stays the WORD, so grading/mastery is unchanged,
+    //     only the presentation moves from the bare word to a live sentence.
+    let example: ResolvedExample | undefined
+    const graded = ec.meta.unscored !== true
+    // The etymology gem is unscored but earns its usage line too.
+    const wantExample =
+      answer.kind === "word" && (graded || ec.meta.rareVariant === "etymology")
+    if (wantExample) {
+      const found = await deps.resolver.exampleFor(answer.target.text)
+      if (found) {
+        example = found
+        const convertible =
+          graded &&
+          (activityType === "choice_pick" ||
+            activityType === "flip_recall" ||
+            activityType === "cloze")
+        if (convertible && cardRng(`${spec.specId}:ctxcloze`)() < 1 / 3) {
+          activityType = "cloze"
+          params.mode = "type"
+          params.contextPhrase = found.phrase.target.text
+          if (found.phrase.native?.text) params.contextNative = found.phrase.native.text
+          params.contextWord = answer.target.text
+          delete params.direction
+        }
+      }
+    }
+
     const direction = pickDirection(spec.specId, activityType, params, answer)
     params.direction = direction
     const targetB = typeof params.b_distractor === "number" ? params.b_distractor : 0
@@ -427,6 +460,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       blankIndex,
       direction,
     }
+    if (example) preparedEx.example = example
     return {
       kind: "exercise",
       cardId: spec.specId,

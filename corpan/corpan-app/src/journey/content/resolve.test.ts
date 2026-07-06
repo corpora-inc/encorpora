@@ -126,6 +126,52 @@ test("word: surface-form gap in wordpan ⇒ still resolves, extras absent", asyn
   assert.equal(resolved[0].extras, undefined)
 })
 
+// ----------------------------------------------------- words in context
+
+test("exampleFor: finds the corpus phrase containing the word, both faces", async () => {
+  const { resolver } = fresh()
+  const ex = await resolver.exampleFor("coffee")
+  assert.ok(ex, "coffee has a containing phrase (111 One coffee, please)")
+  assert.equal(ex!.word, "coffee")
+  assert.equal(ex!.phrase.ref.id, "111")
+  assert.equal(ex!.phrase.target.text, "One coffee, please")
+  assert.equal(ex!.phrase.native?.text, "un café, por favor")
+})
+
+test("exampleFor: deterministic — same word ⇒ same phrase, and it is cached", async () => {
+  const deps = new FixtureDeps()
+  const resolver = createResolver(deps, FIXTURE_CTX)
+  const a = await resolver.exampleFor("coffee")
+  const callsAfterFirst = deps.entryCalls
+  const b = await resolver.exampleFor("coffee")
+  assert.equal(a!.phrase.ref.id, b!.phrase.ref.id)
+  // Second call is a cache hit: no further getEntryById scans.
+  assert.equal(deps.entryCalls, callsAfterFirst)
+})
+
+test("exampleFor: word present only as an inflection ⇒ no false match", async () => {
+  const { resolver } = fresh()
+  // "work" appears only as "works" (116 She works every day) — token equality,
+  // not substring, so there is no example rather than a wrong one.
+  const ex = await resolver.exampleFor("work")
+  assert.equal(ex, null)
+})
+
+test("exampleFor: unknown word ⇒ null (negative is cached, not re-scanned)", async () => {
+  const deps = new FixtureDeps()
+  const resolver = createResolver(deps, FIXTURE_CTX)
+  const ex = await resolver.exampleFor("zzzznope")
+  assert.equal(ex, null)
+  const calls = deps.entryCalls
+  await resolver.exampleFor("zzzznope")
+  assert.equal(deps.entryCalls, calls)
+})
+
+test("exampleFor: empty word ⇒ null, no query", async () => {
+  const { resolver } = fresh()
+  assert.equal(await resolver.exampleFor(""), null)
+})
+
 test("char: hanzipan row + native-first etymology + pinyin romanization", async () => {
   const { resolver } = fresh()
   const { resolved } = await resolver.resolveItems([
@@ -213,6 +259,37 @@ test("grammarNode: batch phrase refs become the exemplars (mixer's choice)", asy
   // The node is shown THROUGH its exemplar.
   assert.equal(gn.target.text, "She works every day")
   assert.equal(gn.level, "A2")
+})
+
+test("grammarNode: es contrastive_note overlay rides in extras (native-only)", async () => {
+  const { resolver } = fresh()
+  const { resolved } = await resolver.resolveItems([
+    { kind: "grammarNode", source: "journey_en", id: "en.gn.present-simple-3sg" },
+    phraseRef(116),
+  ])
+  const extras = resolved[0].extras as { contrastiveNote?: string }
+  assert.match(extras.contrastiveNote ?? "", /En español el verbo/)
+})
+
+test("grammarNode: no L1 ⇒ no contrastive note (single-language stack)", async () => {
+  const deps = new FixtureDeps()
+  const resolver = createResolver(deps, { courseId: "journey_en", targetLang: "en" })
+  const { resolved } = await resolver.resolveItems([
+    { kind: "grammarNode", source: "journey_en", id: "en.gn.present-simple-3sg" },
+    phraseRef(116),
+  ])
+  const extras = resolved[0].extras as { contrastiveNote?: string }
+  assert.equal(extras.contrastiveNote, undefined)
+})
+
+test("grammarNode: node with no contrastive overlay ⇒ note absent, card intact", async () => {
+  const { resolver } = fresh()
+  const { resolved } = await resolver.resolveItems([
+    { kind: "grammarNode", source: "journey_en", id: "en.gn.greetings" },
+  ])
+  const extras = resolved[0].extras as { contrastiveNote?: string; note: string }
+  assert.equal(extras.contrastiveNote, undefined)
+  assert.ok(extras.note.length > 0)
 })
 
 test("grammarNode: standalone ⇒ seeded exemplar pick, stable across instances", async () => {

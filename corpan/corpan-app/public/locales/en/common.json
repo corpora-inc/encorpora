@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Grammar note",
-      "tryIt": "Try it"
+      "tryIt": "Try it",
+      "contrastLabel": "Compared with your language"
+    },
+    "word": {
+      "inContext": "In context",
+      "meaningShow": "Meaning",
+      "meaningHide": "Hide"
     },
     "checkpoint": {
       "title": "Checkpoint",

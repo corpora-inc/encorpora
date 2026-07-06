@@ -15,6 +15,7 @@ import { playSoftMiss } from "../celebration/sounds.ts"
 import { rendererFor } from "../exercises/index.ts"
 import type { ExerciseMode, SpeakFn } from "../exercises/types.ts"
 import { ResultStamp } from "../exercises/common/ResultStamp.tsx"
+import { WordEnrichment } from "../cards/WordEnrichment.tsx"
 import { celebrationFor, settleOk, settleStamp } from "./settle.ts"
 import type { FeedCard, RawOutcome, ScaffoldState } from "../types.ts"
 
@@ -158,6 +159,14 @@ export function ActivityCardHost(props: {
       <div className="min-h-8">
         <ResultStamp state={stamp} />
       </div>
+      {settledOk !== null && props.mode !== "probe" && prepared.items[0]?.kind === "word" ? (
+        <WordEnrichment
+          item={prepared.items[0]}
+          example={prepared.example}
+          targetLang={prepared.spec.targetLang}
+          nativeLang={prepared.spec.nativeLang}
+        />
+      ) : null}
       {showAnswer ? (
         <div className="flex w-full flex-col items-center gap-1 rounded-xl bg-muted px-4 py-3 text-center">
           <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">

@@ -216,6 +216,18 @@ function buildCoursePackDb(): DatabaseSync {
     null,
     JSON.stringify({ contrast: "iː-ɪ", minimalPairs: [["ship", "sheep"], ["sit", "seat"], ["chip", "cheap"]] }),
   )
+  // es contrastive_note on the present-simple node — the grammar-depth overlay
+  // rendered inside the grammar card for an ES learner.
+  db.prepare(
+    "INSERT INTO l1_overlays (l1, overlay_type, ref_kind, ref_id, string_key, payload_json) VALUES (?,?,?,?,?,?)",
+  ).run(
+    "es",
+    "contrastive_note",
+    "grammarNode",
+    "en.gn.present-simple-3sg",
+    "ovl.es.present-3sg.note",
+    null,
+  )
   const insStr = db.prepare("INSERT INTO strings (key, lang, text) VALUES (?,?,?)")
   insStr.run("gn.en.gn.present-simple-3sg.title", "en", "Third-person -s")
   insStr.run("gn.en.gn.present-simple-3sg.title", "es", "La -s de tercera persona")
@@ -228,6 +240,13 @@ function buildCoursePackDb(): DatabaseSync {
     "gn.en.gn.present-simple-3sg.note",
     "es",
     "Con he, she o it, el verbo en presente simple lleva -s: she works, he eats.",
+  )
+  // Contrastive-note copy is authored per L1 (es here). Native-only: no en row,
+  // proving getStringForLang selects the learner's language, not a fallback.
+  insStr.run(
+    "ovl.es.present-3sg.note",
+    "es",
+    "En español el verbo ya marca la persona, así que la -s inglesa se olvida fácil: recuerda \"she works\", no \"she work\".",
   )
   insStr.run("gn.en.gn.noteless.title", "en", "Noteless node")
   insStr.run("gn.en.gn.greetings.title", "en", "Greetings")

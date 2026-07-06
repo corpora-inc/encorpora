@@ -4,6 +4,7 @@
 // strings table (L1-selected by the resolver, §2.8).
 
 import { useTranslation } from "react-i18next"
+import { isRTL } from "../../util/convert"
 import { Cloze } from "./Cloze.tsx"
 import { WordOrder } from "./WordOrder.tsx"
 import type { ExerciseProps } from "./types.ts"
@@ -12,6 +13,7 @@ export function GrammarNote(props: ExerciseProps) {
   const { t } = useTranslation()
   const node = props.items[0]
   const extras = node.extras?.kind === "grammarNode" ? node.extras : null
+  const nativeLang = props.spec.nativeLang
   const drill = (props.spec.params?.drill ?? {}) as {
     activityType?: string
     params?: Record<string, unknown>
@@ -43,6 +45,23 @@ export function GrammarNote(props: ExerciseProps) {
         <div className="text-sm leading-relaxed text-foreground" data-testid="journey-grammar-note">
           {extras?.note ?? ""}
         </div>
+        {extras?.contrastiveNote ? (
+          <div
+            className="mt-3 border-t border-border/60 pt-3"
+            data-testid="journey-grammar-contrastive"
+          >
+            <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-[hsl(var(--journey-accent,262_80%_58%))]">
+              {t("journey.grammar.contrastLabel")}
+            </div>
+            <div
+              lang={nativeLang}
+              dir={nativeLang && isRTL(nativeLang) ? "rtl" : "ltr"}
+              className="text-sm leading-relaxed text-muted-foreground"
+            >
+              {extras.contrastiveNote}
+            </div>
+          </div>
+        ) : null}
       </div>
       <div className="w-full">
         <div className="mb-2 text-sm font-medium text-muted-foreground">{t("journey.grammar.tryIt")}</div>

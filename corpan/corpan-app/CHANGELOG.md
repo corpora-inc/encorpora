@@ -7,6 +7,24 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey words in context.** After a word exercise settles, a compact card
+  shows that word inside a real corpus phrase (with its translation) plus a
+  tap-to-expand meaning/etymology snippet — killing the "see the same word
+  translated over and over" feel. For a share of repeats, a met word is
+  practiced as fill-the-word-in-a-real-sentence rather than in isolation
+  (grading still tracks the word itself).
+- **Journey etymology gems gained a usage line.** The rare word-story card now
+  shows the word used in a real sentence beneath its origin paragraph.
+- **Journey grammar cards show a contrast with your language.** When the course
+  carries an L1 contrastive note (e.g. how English adverb placement differs from
+  Spanish), it renders beneath the rule for that learner's language.
+- **On-device tutor-moment design + prompt foundation.** A tested, framework-free
+  prompt builder for an end-of-lesson Qwen3 recap in the target language; the
+  live streaming card is specified and deferred (see
+  `docs/journey/specs/llm-cards.md`) pending an LLM runtime seam and on-device
+  verification.
+
 ### Changed
 - **Journey speak cards now reach real pronunciation scoring.** When on-device
   speech scoring is supported but the model isn't installed yet, the speak card
