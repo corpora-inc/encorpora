@@ -108,7 +108,10 @@ test("debut order: intro precedes recognition with gap ≥ 3, same session", asy
 })
 
 test("debt brake: a due avalanche zeroes NEW intake", async () => {
-  const h = await makeEngine({ unitsPerArc: 3, itemsPerSkill: 10 })
+  // itemsPerSkill sized so the 6-day learn → 25-day-gap avalanche clears the
+  // 1.5×capacity threshold even with multi-item match_pairs consolidating more
+  // items per card (defect #2) than the pre-feature single-pair form.
+  const h = await makeEngine({ unitsPerArc: 3, itemsPerSkill: 16 })
   // learn for 6 days, then vanish for 25 (lapser pattern)
   for (let day = 0; day < 6; day++) {
     h.engine.startSession()
@@ -203,6 +206,55 @@ test("nextFeedItems returns ≥1 card or a typed shortfall reason", async () => 
   if (cards.length === 0) {
     assert.ok(h.engine.getTelemetry().lastShortfallReason, "shortfall must carry a reason")
   }
+})
+
+test("match_pairs cards carry multiple items (defect #2)", async () => {
+  const h = await makeEngine({ unitsPerArc: 3, itemsPerSkill: 8 })
+  let matchPairs = 0
+  let multiItem = 0
+  for (let day = 0; day < 3; day++) {
+    h.engine.startSession()
+    for (let b = 0; b < 4; b++) {
+      const cards = h.engine.nextFeedItems(10, CONS)
+      if (cards.length === 0) break
+      for (const c of cards) {
+        if (c.spec.activityType !== "match_pairs") continue
+        matchPairs += 1
+        const n = c.spec.itemRefs.length
+        assert.ok(n >= 2, `match_pairs card has ${n} item(s) — the one-pair collapse is the bug`)
+        assert.ok(n <= 6, `match_pairs card has ${n} items (> 6)`)
+        // all items share one kind (the renderer pairs like with like)
+        assert.equal(new Set(c.spec.itemRefs.map((r) => r.kind)).size, 1)
+        // no duplicate items inside one card
+        const keys = c.spec.itemRefs.map((r) => `${r.kind}:${r.source}:${r.id}`)
+        assert.equal(new Set(keys).size, keys.length, "no repeated item within a match_pairs card")
+        if (n >= 4) multiItem += 1
+      }
+      playBatch(h.engine, cards)
+    }
+    h.clock.advance(DAY_MS)
+  }
+  assert.ok(matchPairs > 0, "session surfaced match_pairs cards")
+  assert.ok(multiItem > 0, "at least one match_pairs card reached the 4–6 item band")
+})
+
+test("recipe variety: an A1 session surfaces ≥4 distinct activity types (defect #10)", async () => {
+  const h = await makeEngine({ unitsPerArc: 3, itemsPerSkill: 8 })
+  const types = new Set<string>()
+  for (let day = 0; day < 2; day++) {
+    h.engine.startSession()
+    for (let b = 0; b < 5; b++) {
+      const cards = h.engine.nextFeedItems(10, { availableProviders: ["native"], modelsAvailable: ["stt", "tts"] })
+      if (cards.length === 0) break
+      for (const c of cards) {
+        if (c.meta.pool === "checkpoint" || c.meta.pool === "jump") continue
+        types.add(c.spec.activityType)
+      }
+      playBatch(h.engine, cards, (_c, i) => i % 4 !== 3)
+    }
+    h.clock.advance(DAY_MS)
+  }
+  assert.ok(types.size >= 4, `distinct activity types (${types.size}): ${[...types].join(", ")}`)
 })
 
 test("newPerDay caps completed debuts per local day", async () => {

@@ -37,6 +37,7 @@ import type {
   EngineCard,
   PlacementOutcome,
   PlacementRecord,
+  PlacementSummary,
   ProbeResult,
   SessionState,
 } from "./types.ts"
@@ -293,12 +294,23 @@ function finalizeOutcome(
   course.firstWeek = { results: 0, correct: 0, cruiseSessions: 0 }
   const startUnitId = startUnitFor(gidx, unlocked)
   const unitOrdinal = gidx.unitPos.get(startUnitId) ?? 0
-  course.position = {
-    arcId: gidx.units[unitOrdinal]?.arcId ?? gidx.graph.arcs[0]?.arcId ?? "",
+  const arcId = gidx.units[unitOrdinal]?.arcId ?? gidx.graph.arcs[0]?.arcId ?? ""
+  course.position = { arcId, unitId: startUnitId, unitOrdinal }
+  const arc = gidx.arcById.get(arcId)
+  // Concrete result payload (defect #9): where they landed + how much they
+  // skipped past. unitsSkipped = the units before the placed unit; skillsSkipped
+  // = the skills placement pre-lit. Both are 0 for a zero-beginner start.
+  const placement: PlacementSummary = {
+    aboveContent: outcome === "above-content",
+    arcId,
+    arcOrdinal: arc?.ordinal ?? 0,
+    cefr: arc?.cefr ?? "",
     unitId: startUnitId,
     unitOrdinal,
+    unitsSkipped: unitOrdinal,
+    skillsSkipped: unlocked.size,
   }
-  return { record, unlockedSkills: [...unlocked], frontier, startUnitId }
+  return { record, unlockedSkills: [...unlocked], frontier, startUnitId, placement }
 }
 
 /* ------------------------------------------------------------------------- */

@@ -417,4 +417,22 @@ export interface PlacementOutcome {
   unlockedSkills: string[]
   frontier: string[]
   startUnitId: string
+  /** Concrete summary for the placement result UI (feed-ux §1.9, defect #9):
+   *  where the learner landed and how much they skipped past. Pure,
+   *  graph-derived — the surface maps ids → localized titles. */
+  placement: PlacementSummary
+}
+
+export interface PlacementSummary {
+  /** R10: routed to the end of shipped content (above the ceiling). */
+  aboveContent: boolean
+  arcId: string
+  arcOrdinal: number
+  cefr: string
+  unitId: string
+  unitOrdinal: number
+  /** Units before the placed unit — skipped past by placement. */
+  unitsSkipped: number
+  /** Skills unlocked / pre-lit — skipped past by placement. */
+  skillsSkipped: number
 }

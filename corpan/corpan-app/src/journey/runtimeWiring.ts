@@ -32,12 +32,18 @@ import {
   readJourneyPackMeta,
 } from "../util/journeyPack"
 import type { CapabilityHostApi } from "@shared/capabilities/core"
+import { allFolders } from "@shared/capabilities/pronounce/src/modelRegistry"
 import { createJourneyEngine, itemCardCodec, systemClock } from "./engine/index.ts"
 import { createResolver, type ResolveContext, type ResolverDeps } from "./content/resolve.ts"
 import { createJourneyQuota } from "./quota.ts"
 import { courseKeyOf, localDayOf } from "../store/journey.ts"
 import type { StreakPorts } from "./streakV2.ts"
-import type { ActivitySessionPort, JourneyRuntimeDeps, RecordFn } from "./runtime.ts"
+import type {
+  ActivitySessionPort,
+  JourneyRuntimeDeps,
+  RecordFn,
+  SttReadiness,
+} from "./runtime.ts"
 
 /** The real single-owner activity session (activity-contract §3.2, R8). */
 export const activitySessionPort: ActivitySessionPort = {
@@ -48,6 +54,35 @@ export const activitySessionPort: ActivitySessionPort = {
 /** Course id convention (course-pack.md): journey_<targetLang>. */
 export function journeyCourseIdFor(targetLang: string): string {
   return `journey_${targetLang.split("-")[0]}`
+}
+
+/**
+ * Three-state STT probe (contract #4). Cheap + local — never downloads or
+ * loads a model. `isAvailable()` answers "can this device run whisper at all"
+ * (unsupported); `listInstalled()` answers "is a model on disk"
+ * (installed vs modelMissing). Mirrors cap-pronounce's own readiness probe so
+ * the two never disagree; a bridge throw degrades to a safe default rather
+ * than mislabeling a transient failure as permanently unsupported.
+ */
+export async function probeSttReadiness(
+  stt: HostApi["stt"] | undefined,
+): Promise<SttReadiness> {
+  if (!stt) return "unsupported"
+  let supported = true
+  try {
+    supported = await stt.isAvailable()
+  } catch {
+    // transient bridge hiccup — fall through to the model probe
+    supported = true
+  }
+  if (!supported) return "unsupported"
+  if (!stt.listInstalled) return "installed" // legacy host: keep old semantics
+  try {
+    const res = await stt.listInstalled({ models: allFolders() })
+    return res.models.some((m) => m.valid) ? "installed" : "modelMissing"
+  } catch {
+    return "modelMissing"
+  }
 }
 
 /**
@@ -327,6 +362,12 @@ export async function buildJourneyDeps(opts: {
     // listen_type degrade stays in charge.
     sttAvailable: () =>
       hostApi.stt ? hostApi.stt.isAvailable().catch(() => false) : Promise.resolve(false),
+    // Contract #4: the three-state probe drives the keep/swap policy; cached
+    // for the session so repeated reads never re-hit the plugin.
+    sttReadiness: (() => {
+      let cached: Promise<SttReadiness> | null = null
+      return () => (cached ??= probeSttReadiness(hostApi.stt))
+    })(),
     sttPrepare: async () => {
       await hostApi.stt?.prepare().catch(() => undefined)
     },

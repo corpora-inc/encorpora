@@ -59,7 +59,13 @@ export function toGrade(input: GradeInput): GradeOutput {
   const selfReport = pickDetail("selfReport", per, result)
   const stt = pickDetail("stt", per, result)
   const sttUnavailable = flag("sttUnavailable", per, result)
-  const aggregateBinned = flag("aggregateBinned", per, result)
+  // Verdict-less recall (contract #5, R9): FlipRecall drops the knew/didn't-know
+  // buttons — reveal→continue emits an outcome with no self-verdict. Grade it
+  // with aggregateBinned semantics (never Again, capped at Good) whether or not
+  // the renderer stamped the flag, so the engine owns the guarantee.
+  const aggregateBinned =
+    flag("aggregateBinned", per, result) ||
+    (issued.activityType === "flip_recall" && selfReport === undefined)
 
   const firstTry = input.cardReps === 0 && !issued.isReplay
   const retried = issued.isReplay

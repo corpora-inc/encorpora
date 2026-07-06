@@ -77,6 +77,12 @@ export const ITEM_MIN_GAP = 3
 export const ITEM_MIN_GAP_RELAXED = 2
 export const MAX_FUN_PER_10 = 1
 export const MAX_LEECH_PER_BATCH = 1
+/** A match_pairs card carries 4–6 items so the renderer shows multiple pairs
+ *  (never the one-pair collapse, defect #2). Companions are drawn from the
+ *  primary item's unit(s) and the immediately-prior unit; fewer is accepted
+ *  only when the content band is too thin to reach the floor. */
+export const MATCH_PAIRS_MIN_ITEMS = 4
+export const MATCH_PAIRS_MAX_ITEMS = 6
 /** Flagged leeches also skip ~half their batch opportunities — leeches must
  *  not eat the feed (P10 ≤3% bound; the 1/batch cap alone allows ~10%). */
 export const LEECH_SERVE_P = 0.5

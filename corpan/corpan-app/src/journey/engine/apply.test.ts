@@ -240,6 +240,33 @@ test("score-only rounds grade every issued item uniformly, capped at Good (R9)",
   assert.equal(cards.size, 4)
 })
 
+test("multi-item match_pairs grades each pair from its own perItem row (defect #2)", () => {
+  const { bag, session, cards } = makeBag()
+  // a 4-item match_pairs card (guessable recognition)
+  const spec = issue(session, ids, { activityType: "match_pairs", guessable: true, form: 0 })
+  const out = applyResult(bag, {
+    specId: spec.specId,
+    score: 0.5,
+    perItem: [
+      { itemRef: refOf(ids[0]), outcome: "pass", latencyMs: 4000 },
+      { itemRef: refOf(ids[1]), outcome: "fail" },
+      { itemRef: refOf(ids[2]), outcome: "partial" },
+      { itemRef: refOf(ids[3]), outcome: "pass", latencyMs: 4000 },
+    ],
+    durationMs: 30_000,
+  })
+  const g = new Map(out.grades.map((x) => [x.itemId, x.grade]))
+  assert.equal(out.grades.length, 4, "every matched pair graded from its own row")
+  assert.equal(g.get(ids[1]), 1, "missed pair → Again")
+  assert.equal(g.get(ids[2]), 2, "one-miss pair → Hard")
+  // passed pairs grade a pass, capped at Good by the guessable cap
+  for (const id of [ids[0], ids[3]]) {
+    const grade = g.get(id)
+    assert.ok(grade === 2 || grade === 3, `${id} graded ${grade} (expected Hard/Good)`)
+  }
+  assert.equal(cards.size, 4, "a card is created/updated per item")
+})
+
 test("selfReport never-learned forgets the card (reset to New)", () => {
   const { bag, session, cards } = makeBag()
   const a = issue(session, [ids[0]])
