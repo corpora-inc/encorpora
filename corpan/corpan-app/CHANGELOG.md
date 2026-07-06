@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.21.0] — 2026-07-06
+
 ### Added
 - **Journey words in context.** After a word exercise settles, a compact card
   shows that word inside a real corpus phrase (with its translation) plus a
