@@ -1,7 +1,7 @@
-# journey_en v0.1 — English course spine (Launchpad + A1 arc).
+# journey_en v0.2 — English course spine (Launchpad + A1 + A2 + B1 arcs).
 # Authored source of truth; compiled by build_journey_pack.py per course-pack.md.
 target_lang: en
-version: 0.1.0
+version: 0.2.0
 launchpad_units: 2
 script_track: false
 # L1s with FULL native-face coverage: every word item has a wg.<word> gloss and
@@ -9,7 +9,7 @@ script_track: false
 # V-21/V-22). Other L1s are sparse (deliberate V-5 exception — the ES learner is
 # the v0.1 preview audience; the ×54 fan-out lands in a later i18n wave).
 l1_full_support: [es]
-min_app_version: "0.16.0"
+min_app_version: "0.21.0"
 name: "Journey: English"
 description: "A guided path into English — first sounds, survival phrases, and the everyday foundations of the A1 arc."
 name_localized:
