@@ -331,6 +331,41 @@ function buildHanzipanDb(): DatabaseSync {
   return db
 }
 
+// ----------------------------------------------------------------- imagepan
+//
+// Language-neutral concept image pack (research/images.md). Loose WebP files
+// keyed by concept; the SQLite index maps concept key → picture file + the
+// curated visually-confusable distractor group (each sibling with its OWN
+// picture, denormalized into distractors_json — one point lookup per card).
+
+function buildImagepanDb(): DatabaseSync {
+  const db = new DatabaseSync(":memory:")
+  db.exec(`
+    CREATE TABLE concept (
+      key TEXT PRIMARY KEY,
+      word TEXT NOT NULL,
+      sense_gloss TEXT,
+      cefr TEXT,
+      domain TEXT,
+      file TEXT NOT NULL,
+      distractors_json TEXT NOT NULL
+    );
+    CREATE INDEX concept_word ON concept(word);
+  `)
+  const ins = db.prepare(
+    "INSERT INTO concept (key, word, sense_gloss, cefr, domain, file, distractors_json) VALUES (?,?,?,?,?,?,?)",
+  )
+  const sib = (key: string, word: string) => ({ key, word, file: `images/${key}.webp` })
+  // Drink cluster — the word→picture path (runtime upgrades a `coffee` word
+  // card to a picture choice). Each has ≥1 distractor picture.
+  ins.run("coffee", "coffee", "coffee", "A1", "drink", "images/coffee.webp", JSON.stringify([sib("tea", "tea"), sib("milk", "milk")]))
+  ins.run("tea", "tea", "tea", "A1", "drink", "images/tea.webp", JSON.stringify([sib("coffee", "coffee"), sib("milk", "milk")]))
+  ins.run("milk", "milk", "milk", "A1", "drink", "images/milk.webp", JSON.stringify([sib("coffee", "coffee"), sib("tea", "tea")]))
+  // A concept with NO distractor pictures — exercises the distractor-less path.
+  ins.run("obj_bicycle", "bicycle", "bicycle", "A1", "vehicle", "images/obj_bicycle.webp", "[]")
+  return db
+}
+
 // ------------------------------------------------------------ narration pack
 
 export function narrationSegmentsJson(opts?: { preview?: boolean }): string {
@@ -406,6 +441,7 @@ export class FixtureDeps implements ResolverDeps {
   readonly coursePack = buildCoursePackDb()
   readonly wordpan = buildWordpanDb()
   readonly hanzipan = buildHanzipanDb()
+  readonly imagepan = buildImagepanDb()
   private opts: FixtureOptions
   /** Test hook: force queryPackDb to throw for a packId (db_error path). */
   corruptPacks = new Set<string>([CORRUPT_PACK_ID])
@@ -456,6 +492,7 @@ export class FixtureDeps implements ResolverDeps {
     if (packId === FIXTURE_CTX.courseId) return this.coursePack
     if (packId === WORDPACK_ID) return this.wordpan
     if (packId === "hanzipan") return this.hanzipan
+    if (packId === "imagepan") return this.imagepan
     return null
   }
 

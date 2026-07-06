@@ -329,6 +329,46 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   const targetOnlyFallback = (specId: string): "cloze" | "word_order" =>
     cardRng(`${specId}:ttfallback`)() < 0.5 ? "cloze" : "word_order"
 
+  /** Deterministic share of eligible first-exposure word choice cards that
+   *  become PICTURE choices when imagepan is installed. Pictures are strongest
+   *  at first exposure (research/images.md §1); the rest stay text so the
+   *  learner still meets the written word. */
+  const IMAGE_CHOICE_SHARE = 0.6
+
+  /**
+   * Picture-choice upgrade (feed-ux §4 row 1, media:'image'). A first-exposure
+   * WORD choice card, when the imagepan pack is installed and the word maps to a
+   * concept with a picture + ≥1 distractor picture, becomes a picture choice a
+   * deterministic share of the time. items[0] stays the WORD (grading/mastery
+   * unchanged — the picture only replaces the presentation). Never for probes.
+   * Returns the image params to merge, or null (stays a normal card).
+   */
+  async function maybeImageChoice(
+    ec: EngineCard,
+    answer: ResolvedItem,
+    activityType: string,
+  ): Promise<{
+    answerImageSrc: string
+    imageDistractors: { key: string; word: string; imageSrc: string }[]
+    answerAlt: string
+  } | null> {
+    if (answer.kind !== "word") return null
+    if (activityType !== "choice_pick") return null
+    if (ec.meta.pool === "probe" || ec.spec.params?.probe === true) return null
+    if (ec.meta.pool !== "new") return null // first exposures only
+    if (!deps.resolverDeps.findInstalledPack("imagepan")) return null
+    if (cardRng(`${ec.spec.specId}:imgchoice`)() >= IMAGE_CHOICE_SHARE) return null
+    const out = await deps.resolver.resolveItems([
+      { kind: "concept", source: "imagepan", id: answer.ref.id.toLowerCase() },
+    ])
+    const cItem = out.resolved[0]
+    if (!cItem || cItem.extras?.kind !== "concept") return null
+    const imageSrc = cItem.extras.imageSrc
+    const ds = cItem.extras.distractors ?? []
+    if (!imageSrc || ds.length < 1) return null
+    return { answerImageSrc: imageSrc, imageDistractors: ds, answerAlt: cItem.extras.senseGloss ?? answer.target.text }
+  }
+
   async function prepareExercise(ec: EngineCard): Promise<FeedCard | null> {
     const spec = ec.spec
     const outcome = await deps.resolver.resolveItems(spec.itemRefs)
@@ -352,7 +392,19 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     let activityType = spec.activityType
     const params: Record<string, unknown> = { ...(spec.params ?? {}) }
     const nativeLang = deps.ctx.nativeLang
-    if (activityType === "choice_pick" || activityType === "flip_recall") {
+
+    // -- Picture choice (imagepan) — takes precedence over the translation
+    // guard + words-in-context: the picture IS the meaning (L1-free), so a
+    // missing native face is irrelevant. items[0] stays the WORD (grading
+    // unchanged); only the presentation becomes a 2×2 image grid.
+    const imageChoice = await maybeImageChoice(ec, answer, activityType)
+    if (imageChoice) {
+      activityType = "choice_pick"
+      params.media = "image"
+      params.answerImageSrc = imageChoice.answerImageSrc
+      params.imageDistractors = imageChoice.imageDistractors
+      params.answerAlt = imageChoice.answerAlt
+    } else if (activityType === "choice_pick" || activityType === "flip_recall") {
       if (!nativeLang || !answer.native) {
         activityType = targetOnlyFallback(spec.specId)
         delete params.direction
@@ -376,9 +428,11 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     //     only the presentation moves from the bare word to a live sentence.
     let example: ResolvedExample | undefined
     const graded = ec.meta.unscored !== true
-    // The etymology gem is unscored but earns its usage line too.
+    // The etymology gem is unscored but earns its usage line too. Skipped in
+    // picture mode — the card is a picture, and the cloze conversion below would
+    // otherwise clobber it.
     const wantExample =
-      answer.kind === "word" && (graded || ec.meta.rareVariant === "etymology")
+      !imageChoice && answer.kind === "word" && (graded || ec.meta.rareVariant === "etymology")
     if (wantExample) {
       const found = await deps.resolver.exampleFor(answer.target.text)
       if (found) {
@@ -399,7 +453,11 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       }
     }
 
-    const direction = pickDirection(spec.specId, activityType, params, answer)
+    // Picture options are language-neutral, so there is no answer/prompt
+    // direction to pick — the prompt is simply the target word.
+    const direction = imageChoice
+      ? "targetOnly"
+      : pickDirection(spec.specId, activityType, params, answer)
     params.direction = direction
     const targetB = typeof params.b_distractor === "number" ? params.b_distractor : 0
 
@@ -425,17 +483,22 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     }
 
     let distractors: DistractorSet | null = null
-    const req = buildDistractorRequest({
-      activityType,
-      cardId: spec.specId,
-      answer,
-      ctx: deps.ctx,
-      targetB,
-      recentKeys: recentKeys(),
-      params,
-      answerTokens,
-      blankIndex,
-    })
+    // Picture-choice carries its OWN distractor pictures in params (from the
+    // concept's curated visually-confusable siblings) — the text sampler is not
+    // consulted.
+    const req = imageChoice
+      ? null
+      : buildDistractorRequest({
+          activityType,
+          cardId: spec.specId,
+          answer,
+          ctx: deps.ctx,
+          targetB,
+          recentKeys: recentKeys(),
+          params,
+          answerTokens,
+          blankIndex,
+        })
     if (req) {
       distractors = await sampleDistractors(req, deps.resolver, deps.resolverDeps, deps.ctx)
       // §3.3 floor: a choice card with < 2 total options drops pre-mount.

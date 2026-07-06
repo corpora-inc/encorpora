@@ -3,9 +3,15 @@
 
 import { test } from "node:test"
 import assert from "node:assert/strict"
+import { DatabaseSync } from "node:sqlite"
 
 import type { ItemRef } from "../../contentPacks/activityContract.ts"
-import { contentMissingResult, createResolver, pickPreferred } from "./resolve.ts"
+import {
+  contentMissingResult,
+  createResolver,
+  pickPreferred,
+  type ResolverDeps,
+} from "./resolve.ts"
 import {
   BOOK_ID,
   FIXTURE_CTX,
@@ -114,6 +120,66 @@ test("word: never hard-misses — pack absent ⇒ resolves without extras", asyn
   ])
   assert.equal(missing.length, 0)
   assert.equal(resolved[0].extras, undefined)
+})
+
+test("word: wordpan pair is selected per the CURRENT native (fr learner ⇒ fr paragraph)", async () => {
+  // Proves the resolver is NOT hardcoded to es_en: with ctx.nativeLang="fr" it
+  // asks findInstalledWordPack("fr","en") → the fr pack, queries THAT pack, and
+  // picks the fr paragraph as the native explanation. A minimal inline deps +
+  // in-memory fr wordpan DB (independent of the shared es fixture).
+  const db = new DatabaseSync(":memory:")
+  db.exec(
+    "CREATE TABLE word_explanation (word TEXT, language_code TEXT, paragraph TEXT, PRIMARY KEY (word, language_code))",
+  )
+  const ins = db.prepare("INSERT INTO word_explanation VALUES (?,?,?)")
+  ins.run("coffee", "fr", "Le café est la boisson préparée à partir de grains torréfiés.")
+  ins.run("coffee", "en", "Coffee is the drink brewed from roasted beans.")
+
+  let queriedPackId: string | null = null
+  const deps: ResolverDeps = {
+    getEntryById: async () => null,
+    getRandomEntries: async () => [],
+    queryPackDb: async (q) => {
+      // Only the wordpan pack is backed here; the course-pack gloss lookup
+      // (wg.coffee against journey_en) has no table in this minimal DB, so we
+      // return empty for it (native gloss simply absent).
+      if (q.packId !== "wordpan_fr_en") return { columns: [], rows: [] }
+      queriedPackId = q.packId
+      const rows = db.prepare(q.sql).all(...((q.params ?? []) as never[])) as Record<
+        string,
+        unknown
+      >[]
+      return { columns: rows.length ? Object.keys(rows[0]) : [], rows }
+    },
+    fetchPackText: async () => {
+      throw new Error("n/a")
+    },
+    packFileUrl: () => "",
+    findInstalledWordPack: (n, t) => (n === "fr" && t === "en" ? "wordpan_fr_en" : null),
+    findInstalledNarrationPack: () => null,
+    findInstalledPack: () => true,
+  }
+  const resolver = createResolver(deps, {
+    courseId: "journey_en",
+    targetLang: "en",
+    nativeLang: "fr",
+  })
+  const { resolved } = await resolver.resolveItems([
+    { kind: "word", source: "en", id: "coffee" },
+  ])
+  // Dynamic id, NOT the es fixture's pack.
+  assert.equal(queriedPackId, "wordpan_fr_en")
+  const extras = resolved[0].extras as {
+    kind: "word"
+    explanationNative?: string
+    explanationTarget?: string
+  }
+  assert.equal(extras.kind, "word")
+  assert.equal(
+    extras.explanationNative,
+    "Le café est la boisson préparée à partir de grains torréfiés.",
+  )
+  assert.equal(extras.explanationTarget, "Coffee is the drink brewed from roasted beans.")
 })
 
 test("word: surface-form gap in wordpan ⇒ still resolves, extras absent", async () => {
@@ -362,6 +428,57 @@ test("byte-stable resolution: same refs ⇒ identical JSON across fresh resolver
     a.resolved.map((r) => r.key),
     refs.map((r) => `${r.kind}:${r.source}:${r.id}`),
   )
+})
+
+// ----------------------------------------------------- concept (imagepan §2.7)
+
+test("concept: installed imagepan ⇒ word face + imageSrc + distractor pictures", async () => {
+  const deps = new FixtureDeps({ imagepanInstalled: true })
+  const resolver = createResolver(deps, FIXTURE_CTX)
+  const { resolved, missing } = await resolver.resolveItems([
+    { kind: "concept", source: "imagepan", id: "coffee" },
+  ])
+  assert.equal(missing.length, 0)
+  const item = resolved[0]
+  assert.equal(item.kind, "concept")
+  // The target FACE is the concept word — the prompt of a picture-choice card
+  // (the OPTIONS are pictures, so there is no option-language / native face).
+  assert.deepEqual(item.target, { text: "coffee", ttsText: "coffee" })
+  assert.equal(item.level, "A1")
+  const ex = item.extras as {
+    kind: "concept"
+    imageSrc?: string
+    senseGloss?: string
+    distractors?: { key: string; word: string; imageSrc: string }[]
+  }
+  assert.equal(ex.kind, "concept")
+  assert.equal(ex.imageSrc, "corpan-pack://localhost/imagepan/images/coffee.webp")
+  assert.equal(ex.senseGloss, "coffee")
+  assert.deepEqual(ex.distractors, [
+    { key: "tea", word: "tea", imageSrc: "corpan-pack://localhost/imagepan/images/tea.webp" },
+    { key: "milk", word: "milk", imageSrc: "corpan-pack://localhost/imagepan/images/milk.webp" },
+  ])
+})
+
+test("concept: unknown key in an installed pack ⇒ row_absent", async () => {
+  const deps = new FixtureDeps({ imagepanInstalled: true })
+  const resolver = createResolver(deps, FIXTURE_CTX)
+  const { resolved, missing } = await resolver.resolveItems([
+    { kind: "concept", source: "imagepan", id: "nonesuch" },
+  ])
+  assert.equal(resolved.length, 0)
+  assert.equal(missing[0].reason, "row_absent")
+})
+
+test("concept: pack with no distractor pictures ⇒ picture resolves, distractors absent", async () => {
+  const deps = new FixtureDeps({ imagepanInstalled: true })
+  const resolver = createResolver(deps, FIXTURE_CTX)
+  const { resolved } = await resolver.resolveItems([
+    { kind: "concept", source: "imagepan", id: "obj_bicycle" },
+  ])
+  const ex = resolved[0].extras as { imageSrc?: string; distractors?: unknown }
+  assert.equal(ex.imageSrc, "corpan-pack://localhost/imagepan/images/obj_bicycle.webp")
+  assert.equal(ex.distractors, undefined)
 })
 
 // ------------------------------------------------- missing-content behavior

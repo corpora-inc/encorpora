@@ -1,0 +1,1714 @@
+[
+  {
+    "key": "cook",
+    "word": "cook",
+    "sense_subject": "person cooking at a stove",
+    "sense_gloss": "to cook",
+    "domain": "action",
+    "distractor_group": [
+      "dance",
+      "sing"
+    ],
+    "cefr": "A1",
+    "pos": "Verb",
+    "concreteness": 4.32,
+    "seed": 1022
+  },
+  {
+    "key": "dance",
+    "word": "dance",
+    "sense_subject": "person dancing",
+    "sense_gloss": "to dance",
+    "domain": "action",
+    "distractor_group": [
+      "cook",
+      "sing"
+    ],
+    "cefr": "A1",
+    "pos": "Verb",
+    "concreteness": 4.32,
+    "seed": 1024
+  },
+  {
+    "key": "sing",
+    "word": "sing",
+    "sense_subject": "person singing into a microphone",
+    "sense_gloss": "to sing",
+    "domain": "action",
+    "distractor_group": [
+      "cook",
+      "dance"
+    ],
+    "cefr": "A1",
+    "pos": "Verb",
+    "concreteness": 4.34,
+    "seed": 1074
+  },
+  {
+    "key": "bird",
+    "word": "bird",
+    "sense_subject": "small perched songbird",
+    "sense_gloss": "bird",
+    "domain": "animal",
+    "distractor_group": [
+      "cat",
+      "dog",
+      "sheep"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1008
+  },
+  {
+    "key": "cat",
+    "word": "cat",
+    "sense_subject": "sitting cat",
+    "sense_gloss": "cat",
+    "domain": "animal",
+    "distractor_group": [
+      "bird",
+      "dog",
+      "sheep"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.86,
+    "seed": 1014
+  },
+  {
+    "key": "dog",
+    "word": "dog",
+    "sense_subject": "happy sitting dog",
+    "sense_gloss": "dog",
+    "domain": "animal",
+    "distractor_group": [
+      "bird",
+      "cat",
+      "sheep"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.85,
+    "seed": 1027
+  },
+  {
+    "key": "sheep",
+    "word": "sheep",
+    "sense_subject": "fluffy white sheep standing",
+    "sense_gloss": "sheep",
+    "domain": "animal",
+    "distractor_group": [
+      "bird",
+      "cat",
+      "dog"
+    ],
+    "cefr": "A0",
+    "pos": "Noun",
+    "concreteness": 4.9,
+    "seed": 1068
+  },
+  {
+    "key": "eyes",
+    "word": "eyes",
+    "sense_subject": "pair of human eyes",
+    "sense_gloss": "eyes",
+    "domain": "body",
+    "distractor_group": [
+      "hair",
+      "hand",
+      "head"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.85,
+    "seed": 1031
+  },
+  {
+    "key": "hair",
+    "word": "hair",
+    "sense_subject": "head with long wavy hair",
+    "sense_gloss": "hair",
+    "domain": "body",
+    "distractor_group": [
+      "eyes",
+      "hand",
+      "head"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.97,
+    "seed": 1040
+  },
+  {
+    "key": "hand",
+    "word": "hand",
+    "sense_subject": "open human hand, palm forward",
+    "sense_gloss": "hand",
+    "domain": "body",
+    "distractor_group": [
+      "eyes",
+      "hair",
+      "head"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.72,
+    "seed": 1041
+  },
+  {
+    "key": "head",
+    "word": "head",
+    "sense_subject": "human head in profile",
+    "sense_gloss": "head",
+    "domain": "body",
+    "distractor_group": [
+      "eyes",
+      "hair",
+      "hand"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.75,
+    "seed": 1043
+  },
+  {
+    "key": "airport",
+    "word": "airport",
+    "sense_subject": "airport terminal with a control tower",
+    "sense_gloss": "airport",
+    "domain": "building",
+    "distractor_group": [
+      "bank",
+      "hospital",
+      "house",
+      "market",
+      "office"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.87,
+    "seed": 1001
+  },
+  {
+    "key": "bank",
+    "word": "bank",
+    "sense_subject": "bank building with tall columns",
+    "sense_gloss": "bank (money)",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "hospital",
+      "house",
+      "market",
+      "office"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.78,
+    "seed": 1004
+  },
+  {
+    "key": "hospital",
+    "word": "hospital",
+    "sense_subject": "hospital building with a red cross sign",
+    "sense_gloss": "hospital",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "house",
+      "market",
+      "office"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.64,
+    "seed": 1045
+  },
+  {
+    "key": "house",
+    "word": "house",
+    "sense_subject": "small friendly house with a pitched roof",
+    "sense_gloss": "house",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "market",
+      "office"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1046
+  },
+  {
+    "key": "market",
+    "word": "market",
+    "sense_subject": "open-air market stall with produce",
+    "sense_gloss": "market",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "house",
+      "office"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.7,
+    "seed": 1053
+  },
+  {
+    "key": "office",
+    "word": "office",
+    "sense_subject": "modern office building",
+    "sense_gloss": "office (building)",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "house",
+      "market"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.93,
+    "seed": 1058
+  },
+  {
+    "key": "restaurant",
+    "word": "restaurant",
+    "sense_subject": "restaurant storefront with an awning",
+    "sense_gloss": "restaurant",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "house",
+      "market"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.89,
+    "seed": 1066
+  },
+  {
+    "key": "school",
+    "word": "school",
+    "sense_subject": "school building with a flag",
+    "sense_gloss": "school",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "house",
+      "market"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.79,
+    "seed": 1067
+  },
+  {
+    "key": "shop",
+    "word": "shop",
+    "sense_subject": "small shop storefront",
+    "sense_gloss": "shop",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "house",
+      "market"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.31,
+    "seed": 1072
+  },
+  {
+    "key": "station",
+    "word": "station",
+    "sense_subject": "train station building",
+    "sense_gloss": "station",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "house",
+      "market"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.32,
+    "seed": 1077
+  },
+  {
+    "key": "store",
+    "word": "store",
+    "sense_subject": "store storefront with a sign",
+    "sense_gloss": "store",
+    "domain": "building",
+    "distractor_group": [
+      "airport",
+      "bank",
+      "hospital",
+      "house",
+      "market"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.5,
+    "seed": 1078
+  },
+  {
+    "key": "coat",
+    "word": "coat",
+    "sense_subject": "warm winter coat",
+    "sense_gloss": "coat",
+    "domain": "clothing",
+    "distractor_group": [
+      "dress",
+      "hat",
+      "jacket",
+      "shirt",
+      "shoe"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.97,
+    "seed": 1019
+  },
+  {
+    "key": "dress",
+    "word": "dress",
+    "sense_subject": "hanging summer dress",
+    "sense_gloss": "dress",
+    "domain": "clothing",
+    "distractor_group": [
+      "coat",
+      "hat",
+      "jacket",
+      "shirt",
+      "shoe"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.93,
+    "seed": 1030
+  },
+  {
+    "key": "hat",
+    "word": "hat",
+    "sense_subject": "wide-brim hat",
+    "sense_gloss": "hat",
+    "domain": "clothing",
+    "distractor_group": [
+      "coat",
+      "dress",
+      "jacket",
+      "shirt",
+      "shoe"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.88,
+    "seed": 1042
+  },
+  {
+    "key": "jacket",
+    "word": "jacket",
+    "sense_subject": "denim jacket",
+    "sense_gloss": "jacket",
+    "domain": "clothing",
+    "distractor_group": [
+      "coat",
+      "dress",
+      "hat",
+      "shirt",
+      "shoe"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.86,
+    "seed": 1048
+  },
+  {
+    "key": "shirt",
+    "word": "shirt",
+    "sense_subject": "folded button shirt",
+    "sense_gloss": "shirt",
+    "domain": "clothing",
+    "distractor_group": [
+      "coat",
+      "dress",
+      "hat",
+      "jacket",
+      "shoe"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.94,
+    "seed": 1070
+  },
+  {
+    "key": "shoe",
+    "word": "shoe",
+    "sense_subject": "single leather shoe",
+    "sense_gloss": "shoe",
+    "domain": "clothing",
+    "distractor_group": [
+      "coat",
+      "dress",
+      "hat",
+      "jacket",
+      "shirt"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.97,
+    "seed": 1071
+  },
+  {
+    "key": "black",
+    "word": "black",
+    "sense_subject": "solid black color swatch, flat square of color",
+    "sense_gloss": "black",
+    "domain": "color",
+    "distractor_group": [
+      "red",
+      "green",
+      "blue",
+      "yellow",
+      "white"
+    ],
+    "cefr": "A1",
+    "pos": "Adjective",
+    "concreteness": 3.76,
+    "seed": 1092
+  },
+  {
+    "key": "blue",
+    "word": "blue",
+    "sense_subject": "solid blue color swatch, flat square of color",
+    "sense_gloss": "blue",
+    "domain": "color",
+    "distractor_group": [
+      "red",
+      "green",
+      "yellow",
+      "black",
+      "white"
+    ],
+    "cefr": "A1",
+    "pos": "Adjective",
+    "concreteness": 3.76,
+    "seed": 1090
+  },
+  {
+    "key": "green",
+    "word": "green",
+    "sense_subject": "solid green color swatch, flat square of color",
+    "sense_gloss": "green",
+    "domain": "color",
+    "distractor_group": [
+      "red",
+      "blue",
+      "yellow",
+      "black",
+      "white"
+    ],
+    "cefr": "A1",
+    "pos": "Adjective",
+    "concreteness": 4.07,
+    "seed": 1089
+  },
+  {
+    "key": "red",
+    "word": "red",
+    "sense_subject": "solid red color swatch, flat square of color",
+    "sense_gloss": "red",
+    "domain": "color",
+    "distractor_group": [
+      "green",
+      "blue",
+      "yellow",
+      "black",
+      "white"
+    ],
+    "cefr": "A1",
+    "pos": "Adjective",
+    "concreteness": 4.24,
+    "seed": 1088
+  },
+  {
+    "key": "white",
+    "word": "white",
+    "sense_subject": "plain white color swatch with a thin outline",
+    "sense_gloss": "white",
+    "domain": "color",
+    "distractor_group": [
+      "red",
+      "green",
+      "blue",
+      "yellow",
+      "black"
+    ],
+    "cefr": "A1",
+    "pos": "Adjective",
+    "concreteness": 3.89,
+    "seed": 1093
+  },
+  {
+    "key": "yellow",
+    "word": "yellow",
+    "sense_subject": "solid yellow color swatch, flat square of color",
+    "sense_gloss": "yellow",
+    "domain": "color",
+    "distractor_group": [
+      "red",
+      "green",
+      "blue",
+      "black",
+      "white"
+    ],
+    "cefr": "A1",
+    "pos": "Adjective",
+    "concreteness": 4.3,
+    "seed": 1091
+  },
+  {
+    "key": "beer",
+    "word": "beer",
+    "sense_subject": "tall glass of beer with foam",
+    "sense_gloss": "beer",
+    "domain": "drink",
+    "distractor_group": [
+      "coffee",
+      "cup",
+      "glass",
+      "milk",
+      "tea"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.88,
+    "seed": 1006
+  },
+  {
+    "key": "coffee",
+    "word": "coffee",
+    "sense_subject": "cup of hot coffee on a saucer",
+    "sense_gloss": "coffee",
+    "domain": "drink",
+    "distractor_group": [
+      "beer",
+      "cup",
+      "glass",
+      "milk",
+      "tea"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.81,
+    "seed": 1020
+  },
+  {
+    "key": "cup",
+    "word": "cup",
+    "sense_subject": "single ceramic mug",
+    "sense_gloss": "cup",
+    "domain": "drink",
+    "distractor_group": [
+      "beer",
+      "coffee",
+      "glass",
+      "milk",
+      "tea"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1023
+  },
+  {
+    "key": "glass",
+    "word": "glass",
+    "sense_subject": "empty clear drinking glass",
+    "sense_gloss": "glass (drinking vessel)",
+    "domain": "drink",
+    "distractor_group": [
+      "beer",
+      "coffee",
+      "cup",
+      "milk",
+      "tea"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.82,
+    "seed": 1037
+  },
+  {
+    "key": "milk",
+    "word": "milk",
+    "sense_subject": "glass bottle of milk",
+    "sense_gloss": "milk",
+    "domain": "drink",
+    "distractor_group": [
+      "beer",
+      "coffee",
+      "cup",
+      "glass",
+      "tea"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.92,
+    "seed": 1054
+  },
+  {
+    "key": "tea",
+    "word": "tea",
+    "sense_subject": "cup of hot tea on a saucer",
+    "sense_gloss": "tea",
+    "domain": "drink",
+    "distractor_group": [
+      "beer",
+      "coffee",
+      "cup",
+      "glass",
+      "milk"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.69,
+    "seed": 1082
+  },
+  {
+    "key": "water",
+    "word": "water",
+    "sense_subject": "clear glass of drinking water",
+    "sense_gloss": "water (to drink)",
+    "domain": "drink",
+    "distractor_group": [
+      "beer",
+      "coffee",
+      "cup",
+      "glass",
+      "milk"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1086
+  },
+  {
+    "key": "concert",
+    "word": "concert",
+    "sense_subject": "concert stage with lights and a crowd",
+    "sense_gloss": "concert",
+    "domain": "event",
+    "distractor_group": [],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.35,
+    "seed": 1021
+  },
+  {
+    "key": "apple",
+    "word": "apple",
+    "sense_subject": "single red apple",
+    "sense_gloss": "apple (fruit)",
+    "domain": "food",
+    "distractor_group": [
+      "berry",
+      "bread",
+      "breakfast",
+      "cake",
+      "chocolate"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1002
+  },
+  {
+    "key": "berry",
+    "word": "berry",
+    "sense_subject": "cluster of ripe red berries",
+    "sense_gloss": "berry",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "bread",
+      "breakfast",
+      "cake",
+      "chocolate"
+    ],
+    "cefr": "A0",
+    "pos": "Name",
+    "concreteness": 4.93,
+    "seed": 1007
+  },
+  {
+    "key": "bread",
+    "word": "bread",
+    "sense_subject": "loaf of bread",
+    "sense_gloss": "bread",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "breakfast",
+      "cake",
+      "chocolate"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.92,
+    "seed": 1010
+  },
+  {
+    "key": "breakfast",
+    "word": "breakfast",
+    "sense_subject": "breakfast plate with eggs and toast",
+    "sense_gloss": "breakfast meal",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "cake",
+      "chocolate"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.43,
+    "seed": 1011
+  },
+  {
+    "key": "cake",
+    "word": "cake",
+    "sense_subject": "slice of frosted cake",
+    "sense_gloss": "cake",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "breakfast",
+      "chocolate"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.81,
+    "seed": 1013
+  },
+  {
+    "key": "chocolate",
+    "word": "chocolate",
+    "sense_subject": "bar of chocolate",
+    "sense_gloss": "chocolate",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "breakfast",
+      "cake"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.72,
+    "seed": 1017
+  },
+  {
+    "key": "fruit",
+    "word": "fruit",
+    "sense_subject": "bowl of mixed fresh fruit",
+    "sense_gloss": "fruit",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "breakfast",
+      "cake"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.81,
+    "seed": 1035
+  },
+  {
+    "key": "honey",
+    "word": "honey",
+    "sense_subject": "jar of honey with a wooden dipper",
+    "sense_gloss": "honey",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "breakfast",
+      "cake"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.88,
+    "seed": 1044
+  },
+  {
+    "key": "ice",
+    "word": "ice",
+    "sense_subject": "stack of clear ice cubes",
+    "sense_gloss": "ice",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "breakfast",
+      "cake"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.89,
+    "seed": 1047
+  },
+  {
+    "key": "jam",
+    "word": "jam",
+    "sense_subject": "jar of red fruit jam",
+    "sense_gloss": "jam (fruit preserve)",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "breakfast",
+      "cake"
+    ],
+    "cefr": "A0",
+    "pos": "Noun",
+    "concreteness": 4.71,
+    "seed": 1049
+  },
+  {
+    "key": "pizza",
+    "word": "pizza",
+    "sense_subject": "whole pizza seen from above",
+    "sense_gloss": "pizza",
+    "domain": "food",
+    "distractor_group": [
+      "apple",
+      "berry",
+      "bread",
+      "breakfast",
+      "cake"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1061
+  },
+  {
+    "key": "bed",
+    "word": "bed",
+    "sense_subject": "single neatly made bed with a pillow",
+    "sense_gloss": "bed",
+    "domain": "furniture",
+    "distractor_group": [
+      "chair",
+      "desk",
+      "door",
+      "shower",
+      "table"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1005
+  },
+  {
+    "key": "chair",
+    "word": "chair",
+    "sense_subject": "wooden chair",
+    "sense_gloss": "chair",
+    "domain": "furniture",
+    "distractor_group": [
+      "bed",
+      "desk",
+      "door",
+      "shower",
+      "table"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.58,
+    "seed": 1015
+  },
+  {
+    "key": "desk",
+    "word": "desk",
+    "sense_subject": "office desk",
+    "sense_gloss": "desk",
+    "domain": "furniture",
+    "distractor_group": [
+      "bed",
+      "chair",
+      "door",
+      "shower",
+      "table"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.87,
+    "seed": 1025
+  },
+  {
+    "key": "door",
+    "word": "door",
+    "sense_subject": "single closed wooden door with a handle",
+    "sense_gloss": "door",
+    "domain": "furniture",
+    "distractor_group": [
+      "bed",
+      "chair",
+      "desk",
+      "shower",
+      "table"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.81,
+    "seed": 1029
+  },
+  {
+    "key": "shower",
+    "word": "shower",
+    "sense_subject": "bathroom shower with running water",
+    "sense_gloss": "shower",
+    "domain": "furniture",
+    "distractor_group": [
+      "bed",
+      "chair",
+      "desk",
+      "door",
+      "table"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.89,
+    "seed": 1073
+  },
+  {
+    "key": "table",
+    "word": "table",
+    "sense_subject": "wooden table",
+    "sense_gloss": "table",
+    "domain": "furniture",
+    "distractor_group": [
+      "bed",
+      "chair",
+      "desk",
+      "door",
+      "shower"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.9,
+    "seed": 1081
+  },
+  {
+    "key": "window",
+    "word": "window",
+    "sense_subject": "single glass window with panes",
+    "sense_gloss": "window",
+    "domain": "furniture",
+    "distractor_group": [
+      "bed",
+      "chair",
+      "desk",
+      "door",
+      "shower"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.86,
+    "seed": 1087
+  },
+  {
+    "key": "dollar",
+    "word": "dollar",
+    "sense_subject": "single one-dollar banknote",
+    "sense_gloss": "dollar",
+    "domain": "money",
+    "distractor_group": [
+      "money"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.93,
+    "seed": 1028
+  },
+  {
+    "key": "money",
+    "word": "money",
+    "sense_subject": "stack of paper money and coins",
+    "sense_gloss": "money",
+    "domain": "money",
+    "distractor_group": [
+      "dollar"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.54,
+    "seed": 1055
+  },
+  {
+    "key": "flower",
+    "word": "flower",
+    "sense_subject": "single blooming flower",
+    "sense_gloss": "flower",
+    "domain": "nature",
+    "distractor_group": [
+      "mountain",
+      "plant",
+      "rain",
+      "sky",
+      "snow"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1034
+  },
+  {
+    "key": "mountain",
+    "word": "mountain",
+    "sense_subject": "snow-capped mountain",
+    "sense_gloss": "mountain",
+    "domain": "nature",
+    "distractor_group": [
+      "flower",
+      "plant",
+      "rain",
+      "sky",
+      "snow"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.96,
+    "seed": 1057
+  },
+  {
+    "key": "plant",
+    "word": "plant",
+    "sense_subject": "potted green leafy plant",
+    "sense_gloss": "plant",
+    "domain": "nature",
+    "distractor_group": [
+      "flower",
+      "mountain",
+      "rain",
+      "sky",
+      "snow"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.76,
+    "seed": 1063
+  },
+  {
+    "key": "rain",
+    "word": "rain",
+    "sense_subject": "gray cloud with falling raindrops",
+    "sense_gloss": "rain",
+    "domain": "nature",
+    "distractor_group": [
+      "flower",
+      "mountain",
+      "plant",
+      "sky",
+      "snow"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.97,
+    "seed": 1065
+  },
+  {
+    "key": "sky",
+    "word": "sky",
+    "sense_subject": "blue sky with white clouds",
+    "sense_gloss": "sky",
+    "domain": "nature",
+    "distractor_group": [
+      "flower",
+      "mountain",
+      "plant",
+      "rain",
+      "snow"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.45,
+    "seed": 1075
+  },
+  {
+    "key": "snow",
+    "word": "snow",
+    "sense_subject": "snow-covered ground with falling snowflakes",
+    "sense_gloss": "snow",
+    "domain": "nature",
+    "distractor_group": [
+      "flower",
+      "mountain",
+      "plant",
+      "rain",
+      "sky"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.85,
+    "seed": 1076
+  },
+  {
+    "key": "sun",
+    "word": "sun",
+    "sense_subject": "bright yellow sun",
+    "sense_gloss": "sun",
+    "domain": "nature",
+    "distractor_group": [
+      "flower",
+      "mountain",
+      "plant",
+      "rain",
+      "sky"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.83,
+    "seed": 1080
+  },
+  {
+    "key": "five",
+    "word": "five",
+    "sense_subject": "exactly five round dots",
+    "sense_gloss": "five (5)",
+    "domain": "number",
+    "distractor_group": [
+      "one",
+      "two",
+      "three",
+      "four"
+    ],
+    "cefr": "A1",
+    "pos": "Number",
+    "concreteness": 3.87,
+    "seed": 1098
+  },
+  {
+    "key": "four",
+    "word": "four",
+    "sense_subject": "exactly four round dots in a grid",
+    "sense_gloss": "four (4)",
+    "domain": "number",
+    "distractor_group": [
+      "one",
+      "two",
+      "three",
+      "five"
+    ],
+    "cefr": "A1",
+    "pos": "Number",
+    "concreteness": 3.37,
+    "seed": 1097
+  },
+  {
+    "key": "one",
+    "word": "one",
+    "sense_subject": "exactly one round dot, centered",
+    "sense_gloss": "one (1)",
+    "domain": "number",
+    "distractor_group": [
+      "two",
+      "three",
+      "four",
+      "five"
+    ],
+    "cefr": "A0",
+    "pos": "Number",
+    "concreteness": 3.97,
+    "seed": 1094
+  },
+  {
+    "key": "three",
+    "word": "three",
+    "sense_subject": "exactly three round dots in a row",
+    "sense_gloss": "three (3)",
+    "domain": "number",
+    "distractor_group": [
+      "one",
+      "two",
+      "four",
+      "five"
+    ],
+    "cefr": "A0",
+    "pos": "Number",
+    "concreteness": 3.62,
+    "seed": 1096
+  },
+  {
+    "key": "two",
+    "word": "two",
+    "sense_subject": "exactly two round dots in a row",
+    "sense_gloss": "two (2)",
+    "domain": "number",
+    "distractor_group": [
+      "one",
+      "three",
+      "four",
+      "five"
+    ],
+    "cefr": "A0",
+    "pos": "Number",
+    "concreteness": 4.18,
+    "seed": 1095
+  },
+  {
+    "key": "bag",
+    "word": "bag",
+    "sense_subject": "paper shopping bag",
+    "sense_gloss": "bag",
+    "domain": "object",
+    "distractor_group": [
+      "book",
+      "clock",
+      "guitar",
+      "key",
+      "magazine"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.9,
+    "seed": 1003
+  },
+  {
+    "key": "book",
+    "word": "book",
+    "sense_subject": "single closed hardcover book",
+    "sense_gloss": "book",
+    "domain": "object",
+    "distractor_group": [
+      "bag",
+      "clock",
+      "guitar",
+      "key",
+      "magazine"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.9,
+    "seed": 1009
+  },
+  {
+    "key": "clock",
+    "word": "clock",
+    "sense_subject": "round wall clock",
+    "sense_gloss": "clock",
+    "domain": "object",
+    "distractor_group": [
+      "bag",
+      "book",
+      "guitar",
+      "key",
+      "magazine"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1018
+  },
+  {
+    "key": "guitar",
+    "word": "guitar",
+    "sense_subject": "acoustic guitar",
+    "sense_gloss": "guitar",
+    "domain": "object",
+    "distractor_group": [
+      "bag",
+      "book",
+      "clock",
+      "key",
+      "magazine"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.9,
+    "seed": 1038
+  },
+  {
+    "key": "key",
+    "word": "key",
+    "sense_subject": "single metal key",
+    "sense_gloss": "key",
+    "domain": "object",
+    "distractor_group": [
+      "bag",
+      "book",
+      "clock",
+      "guitar",
+      "magazine"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.89,
+    "seed": 1050
+  },
+  {
+    "key": "magazine",
+    "word": "magazine",
+    "sense_subject": "open glossy magazine",
+    "sense_gloss": "magazine",
+    "domain": "object",
+    "distractor_group": [
+      "bag",
+      "book",
+      "clock",
+      "guitar",
+      "key"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 5.0,
+    "seed": 1052
+  },
+  {
+    "key": "phone",
+    "word": "phone",
+    "sense_subject": "modern smartphone",
+    "sense_gloss": "phone",
+    "domain": "object",
+    "distractor_group": [
+      "bag",
+      "book",
+      "clock",
+      "guitar",
+      "key"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.86,
+    "seed": 1060
+  },
+  {
+    "key": "ticket",
+    "word": "ticket",
+    "sense_subject": "single paper admission ticket",
+    "sense_gloss": "ticket",
+    "domain": "object",
+    "distractor_group": [
+      "bag",
+      "book",
+      "clock",
+      "guitar",
+      "key"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.7,
+    "seed": 1084
+  },
+  {
+    "key": "child",
+    "word": "child",
+    "sense_subject": "young child standing and smiling",
+    "sense_gloss": "child",
+    "domain": "people",
+    "distractor_group": [
+      "doctor",
+      "family",
+      "father",
+      "mother",
+      "teacher"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.78,
+    "seed": 1016
+  },
+  {
+    "key": "doctor",
+    "word": "doctor",
+    "sense_subject": "doctor in a white coat with a stethoscope",
+    "sense_gloss": "doctor",
+    "domain": "people",
+    "distractor_group": [
+      "child",
+      "family",
+      "father",
+      "mother",
+      "teacher"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.69,
+    "seed": 1026
+  },
+  {
+    "key": "family",
+    "word": "family",
+    "sense_subject": "family group of four standing together",
+    "sense_gloss": "family",
+    "domain": "people",
+    "distractor_group": [
+      "child",
+      "doctor",
+      "father",
+      "mother",
+      "teacher"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.23,
+    "seed": 1032
+  },
+  {
+    "key": "father",
+    "word": "father",
+    "sense_subject": "father holding a small child's hand",
+    "sense_gloss": "father",
+    "domain": "people",
+    "distractor_group": [
+      "child",
+      "doctor",
+      "family",
+      "mother",
+      "teacher"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.52,
+    "seed": 1033
+  },
+  {
+    "key": "mother",
+    "word": "mother",
+    "sense_subject": "mother holding a baby",
+    "sense_gloss": "mother",
+    "domain": "people",
+    "distractor_group": [
+      "child",
+      "doctor",
+      "family",
+      "father",
+      "teacher"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.6,
+    "seed": 1056
+  },
+  {
+    "key": "teacher",
+    "word": "teacher",
+    "sense_subject": "teacher standing at a chalkboard",
+    "sense_gloss": "teacher",
+    "domain": "people",
+    "distractor_group": [
+      "child",
+      "doctor",
+      "family",
+      "father",
+      "mother"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.52,
+    "seed": 1083
+  },
+  {
+    "key": "garden",
+    "word": "garden",
+    "sense_subject": "blooming flower garden",
+    "sense_gloss": "garden",
+    "domain": "place",
+    "distractor_group": [
+      "gym",
+      "kitchen",
+      "park",
+      "pool",
+      "street"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.73,
+    "seed": 1036
+  },
+  {
+    "key": "gym",
+    "word": "gym",
+    "sense_subject": "gym interior with exercise equipment",
+    "sense_gloss": "gym",
+    "domain": "place",
+    "distractor_group": [
+      "garden",
+      "kitchen",
+      "park",
+      "pool",
+      "street"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.83,
+    "seed": 1039
+  },
+  {
+    "key": "kitchen",
+    "word": "kitchen",
+    "sense_subject": "kitchen with a counter and a stove",
+    "sense_gloss": "kitchen",
+    "domain": "place",
+    "distractor_group": [
+      "garden",
+      "gym",
+      "park",
+      "pool",
+      "street"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.97,
+    "seed": 1051
+  },
+  {
+    "key": "park",
+    "word": "park",
+    "sense_subject": "green park with trees and a bench",
+    "sense_gloss": "park",
+    "domain": "place",
+    "distractor_group": [
+      "garden",
+      "gym",
+      "kitchen",
+      "pool",
+      "street"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.74,
+    "seed": 1059
+  },
+  {
+    "key": "pool",
+    "word": "pool",
+    "sense_subject": "blue swimming pool",
+    "sense_gloss": "swimming pool",
+    "domain": "place",
+    "distractor_group": [
+      "garden",
+      "gym",
+      "kitchen",
+      "park",
+      "street"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.77,
+    "seed": 1064
+  },
+  {
+    "key": "street",
+    "word": "street",
+    "sense_subject": "quiet town street with buildings",
+    "sense_gloss": "street",
+    "domain": "place",
+    "distractor_group": [
+      "garden",
+      "gym",
+      "kitchen",
+      "park",
+      "pool"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.75,
+    "seed": 1079
+  },
+  {
+    "key": "bus",
+    "word": "bus",
+    "sense_subject": "city bus seen from the side",
+    "sense_gloss": "bus",
+    "domain": "vehicle",
+    "distractor_group": [
+      "plane",
+      "ship",
+      "train"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.9,
+    "seed": 1012
+  },
+  {
+    "key": "plane",
+    "word": "plane",
+    "sense_subject": "airplane flying in the sky",
+    "sense_gloss": "airplane",
+    "domain": "vehicle",
+    "distractor_group": [
+      "bus",
+      "ship",
+      "train"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.92,
+    "seed": 1062
+  },
+  {
+    "key": "ship",
+    "word": "ship",
+    "sense_subject": "boat on the water",
+    "sense_gloss": "ship / boat",
+    "domain": "vehicle",
+    "distractor_group": [
+      "bus",
+      "plane",
+      "train"
+    ],
+    "cefr": "A0",
+    "pos": "Noun",
+    "concreteness": 4.87,
+    "seed": 1069
+  },
+  {
+    "key": "train",
+    "word": "train",
+    "sense_subject": "passenger train seen from the side",
+    "sense_gloss": "train",
+    "domain": "vehicle",
+    "distractor_group": [
+      "bus",
+      "plane",
+      "ship"
+    ],
+    "cefr": "A1",
+    "pos": "Noun",
+    "concreteness": 4.79,
+    "seed": 1085
+  }
+]

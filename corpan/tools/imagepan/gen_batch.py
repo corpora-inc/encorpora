@@ -40,6 +40,14 @@ def main() -> None:
     ap.add_argument("--height", type=int, default=1024)
     ap.add_argument("--steps", type=int, default=28)
     ap.add_argument("--guidance-scale", type=float, default=4.5)
+    ap.add_argument(
+        "--sleep",
+        type=float,
+        default=0.0,
+        help="Seconds to sleep BETWEEN images. Set >0 when the Spark is shared "
+        "(e.g. whisper alignment jobs running) to leave memory/GPU headroom — "
+        "patience over throughput (owner rule: never OOM the box).",
+    )
     args = ap.parse_args()
 
     concepts = json.loads(args.concepts.read_text(encoding="utf-8"))
@@ -51,9 +59,21 @@ def main() -> None:
     pipe.vae.enable_tiling()
     print("Model loaded.")
 
+    # Accept either the bootstrap schema ({id, subject, en_lemma}) or the
+    # imagepan concept schema from extract_concepts.py
+    # ({key, sense_subject, word}). This keeps ONE concepts file (no adapter).
+    def cid(c):
+        return c.get("id") or c["key"]
+
+    def csubject(c):
+        return c.get("subject") or c["sense_subject"]
+
+    def clemma(c):
+        return c.get("en_lemma") or c.get("word")
+
     t_all = time.time()
     for c in concepts:
-        prompt = build_prompt(c["subject"], c.get("extra", ""))
+        prompt = build_prompt(csubject(c), c.get("extra", ""))
         base_seed = int(c.get("seed", 0))
         for i in range(args.num):
             seed = base_seed + i
@@ -70,13 +90,13 @@ def main() -> None:
             ).images[0]
             elapsed = time.time() - t0
             suffix = f"_{i}" if args.num > 1 else ""
-            stem = f"{c['id']}{suffix}"
+            stem = f"{cid(c)}{suffix}"
             png = args.out / f"{stem}.png"
             img.save(png)
             png.with_suffix(".json").write_text(json.dumps({
-                "concept_id": c["id"],
-                "en_lemma": c.get("en_lemma"),
-                "subject": c["subject"],
+                "concept_id": cid(c),
+                "en_lemma": clemma(c),
+                "subject": csubject(c),
                 "prompt": prompt,
                 "negative_prompt": NEGATIVE_PROMPT,
                 "style_id": STYLE_ID,
@@ -89,7 +109,9 @@ def main() -> None:
                 "generation_time_s": round(elapsed, 2),
                 "timestamp": datetime.now(timezone.utc).isoformat(),
             }, indent=2))
-            print(f"  {stem}.png ({elapsed:.1f}s)")
+            print(f"  {stem}.png ({elapsed:.1f}s)", flush=True)
+            if args.sleep > 0:
+                time.sleep(args.sleep)
 
     print(f"Done. {len(concepts)} concepts in {time.time() - t_all:.0f}s -> {args.out}")
 

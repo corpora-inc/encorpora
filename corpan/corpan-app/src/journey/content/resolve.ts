@@ -93,7 +93,19 @@ export type ResolvedExtras =
       /** From l1_overlays phoneme_pair payload for the active L1. */
       minimalPairs: [string, string][]
     }
-  | { kind: "concept"; imageSrc?: string } // imagepan — absent in v0.1 (D10.6)
+  | {
+      kind: "concept"
+      /** corpan-pack:// URL of the concept's picture, when imagepan is
+       *  installed (D10.6). Absent otherwise. */
+      imageSrc?: string
+      /** The sense gloss (e.g. "bank (money)") — disambiguates the depicted
+       *  sense; build-time provenance, surfaced as an a11y label. */
+      senseGloss?: string
+      /** Curated visually-confusable siblings, each with its OWN picture — the
+       *  picture-choice distractor pool (§2.7). Only siblings that shipped an
+       *  image appear here. */
+      distractors?: { key: string; word: string; imageSrc: string }[]
+    }
 
 export interface ResolvedItem {
   ref: ItemRef
@@ -264,6 +276,11 @@ export const SQL = {
   phraseCandidates:
     "SELECT kind, source, ref_id FROM items WHERE kind = 'phrase' ORDER BY intro_order LIMIT 60",
   strings: "SELECT lang, text FROM strings WHERE key = ? LIMIT 60",
+  // imagepan concept lookup (§2.7). The distractor group + their image files
+  // are denormalized into distractors_json on this row, so ONE point lookup
+  // resolves the whole picture-choice card (no dynamic IN clause).
+  conceptImage:
+    "SELECT word, sense_gloss, cefr, file, distractors_json FROM concept WHERE key = ? LIMIT 1",
 } as const
 
 export function sqlLimit(sql: string): number {
@@ -738,16 +755,49 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
   }
 
   async function resolveConcept(ref: ItemRef): Promise<OneOutcome> {
-    // v0.1: imagepan does not ship (D10.6/D11); this path is exercised only
-    // by tests until it lands (§2.7). Image bytes then ride <OfflineImage>.
+    // §2.7: imagepan is language-neutral. Not installed ⇒ pack_not_installed
+    // (the runtime never emits media:'image' params without it, so this path is
+    // exercised only by tests until the pack lands). When installed: the target
+    // FACE is the concept word; the picture + distractor pictures ride extras.
     if (!deps.findInstalledPack("imagepan")) return miss("pack_not_installed")
+    const rows = await query("imagepan", SQL.conceptImage, [ref.id])
+    if (rows.length === 0) return miss("row_absent")
+    const row = rows[0]
+    const word = String(row.word ?? ref.id)
+    const extras: ResolvedExtras = { kind: "concept" }
+    const file = row.file != null ? String(row.file) : ""
+    if (file) extras.imageSrc = deps.packFileUrl("imagepan", file)
+    const gloss = row.sense_gloss != null ? String(row.sense_gloss) : ""
+    if (gloss) extras.senseGloss = gloss
+    try {
+      const raw = row.distractors_json != null ? String(row.distractors_json) : ""
+      const parsed = raw ? (JSON.parse(raw) as unknown) : []
+      if (Array.isArray(parsed)) {
+        const ds: { key: string; word: string; imageSrc: string }[] = []
+        for (const d of parsed) {
+          const dk = String((d as { key?: unknown })?.key ?? "")
+          const dfile = String((d as { file?: unknown })?.file ?? "")
+          if (dk && dfile) {
+            ds.push({
+              key: dk,
+              word: String((d as { word?: unknown })?.word ?? dk),
+              imageSrc: deps.packFileUrl("imagepan", dfile),
+            })
+          }
+        }
+        if (ds.length > 0) extras.distractors = ds
+      }
+    } catch (err) {
+      log("journey_content_concept_distractors_error", { key: ref.id, error: String(err) })
+    }
     const item: ResolvedItem = {
       ref,
       key: itemRefKey(ref),
       kind: "concept",
-      target: { text: ref.id, ttsText: ref.id },
-      extras: { kind: "concept" },
+      target: { text: word, ttsText: word },
+      extras,
     }
+    if (row.cefr != null && String(row.cefr)) item.level = String(row.cefr)
     return { ok: true, item }
   }
 
