@@ -323,6 +323,9 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
   const pool = new SharedBytePool(4 * 1024 * 1024)
   const items = new LruCache<ResolvedItem>({ maxEntries: 500, pool })
   const strings = new LruCache<string | null>({ maxEntries: 2000 })
+  // Native-ONLY string lookups (word glosses, §2.2). Keyed by (lang, key) so
+  // the same key resolves independently per language with NO en fallback.
+  const stringsByLang = new LruCache<string | null>({ maxEntries: 2000 })
   const segmentFiles = new LruCache<SegmentFileMaps>({ maxEntries: 4, pool })
   const charStrokes = new LruCache<unknown>({ maxEntries: 50 })
   const distractorPools = new LruCache<DistractorCandidateRow[]>({ maxEntries: 32 })
@@ -360,6 +363,29 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
     const picked = pickPreferred(byLang, preferred)
     const value = picked ? picked.text : null
     strings.set(cacheKey, value)
+    return value
+  }
+
+  /**
+   * Native-ONLY string lookup — returns the `lang` row of `key` verbatim, or
+   * null when that exact language row is absent. Deliberately does NOT walk the
+   * en fallback (unlike getString): word glosses (`wg.<word>`) are the native
+   * FACE of an exercise, and falling back to English would render an ES learner
+   * an English→English word card (contract #1). Absent ⇒ native stays undefined
+   * and the runtime guard reroutes the card.
+   */
+  async function getStringForLang(key: string, lang: string): Promise<string | null> {
+    const cacheKey = `${ctx.courseId} ${lang} ${key}`
+    if (stringsByLang.has(cacheKey)) return stringsByLang.get(cacheKey) ?? null
+    const rows = await query(ctx.courseId, SQL.strings, [key])
+    let value: string | null = null
+    for (const r of rows) {
+      if (String(r.lang ?? "") === lang) {
+        value = String(r.text ?? "") || null
+        break
+      }
+    }
+    stringsByLang.set(cacheKey, value)
     return value
   }
 
@@ -410,7 +436,16 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
       key: itemRefKey(ref),
       kind: "word",
       target: { text: ref.id, ttsText: ref.id },
-      // `native` is NEVER set for words — no word-translation table exists.
+    }
+    // Native FACE = the course-pack word gloss `wg.<word>` at nativeLang, via a
+    // native-ONLY lookup (no en fallback — contract #1). This is what lets an ES
+    // learner see ship→"el barco" instead of an English→English card. Absent ⇒
+    // native stays undefined and the runtime guard reroutes the card. (Distinct
+    // from the wordpan explanation paragraph below, which feeds long-press
+    // gems, not the exercise face.)
+    if (ctx.nativeLang) {
+      const gloss = await getStringForLang(`wg.${ref.id}`, ctx.nativeLang)
+      if (gloss) item.native = { text: gloss, ttsText: gloss }
     }
     const packId = ctx.nativeLang
       ? deps.findInstalledWordPack(ctx.nativeLang, ctx.targetLang)
@@ -777,6 +812,7 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
   function invalidate(): void {
     items.clear()
     strings.clear()
+    stringsByLang.clear()
     segmentFiles.clear()
     charStrokes.clear()
     distractorPools.clear()

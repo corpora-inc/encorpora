@@ -7,6 +7,19 @@ pack is the shippable unit; see `corpan/docs/journey/specs/course-pack.md`
 
 ## [Unreleased]
 
+### Added
+- **Word glosses + full-L1 coverage gates (Journey v0.2, contract #1).**
+  `course.yaml` gains `l1_full_support` (the L1s carrying a complete native
+  face); it rides into `pack_meta`. `wg.<word>` gloss keys flow through
+  `compile_strings` into the existing `strings` table (schema stays 1 —
+  OTA-safe; old apps ignore unknown keys). Two new publish-blocking gates:
+  **V-21** (every word item — pinned + auto-expanded — has `wg.<word>` in `en`
+  + every `l1_full_support` lang; sparse elsewhere, the deliberate V-5
+  exception) and **V-22** (every base-corpus phrase item has a `cor_translation`
+  row for every `l1_full_support` lang). `Corpus.has_translation()` added for
+  V-22. Fixture `gen_strings.py` enumerates word items (incl. auto blocks) and
+  emits sparse `wg.*` so both gates run in tests.
+
 ### Fixed
 - **Journey W10 — builder seams (W7's notes).** (a)
   `Corpus.phrase_pack_texts()` now also reads the legacy `english` key

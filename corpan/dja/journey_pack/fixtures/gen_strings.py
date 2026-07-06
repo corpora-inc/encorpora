@@ -20,9 +20,26 @@ sys.path.insert(0, str(HERE.parent))
 
 import yaml  # noqa: E402
 
-from journey_common import ALL_LANGUAGES  # noqa: E402
+import build_journey_pack as b  # noqa: E402
+from journey_common import ALL_LANGUAGES, CORPAN_DIR, DJA_DIR  # noqa: E402
 
 COURSE = HERE / "course"
+
+
+def word_glosses() -> dict:
+    """wg.<word> for EVERY word item (pinned + auto-expanded) — enumerated by
+    running the real resolve step, so the auto blocks' wordfreq picks are
+    covered. Fixture is passthrough: gloss text == the word (real courses author
+    natural translations). Emitted only for the l1_full_support langs + en
+    (sparse elsewhere, mirroring the real course + the V-5 exception)."""
+    c = b.load_course_tree("en", COURSE, HERE.parent / "recipes.yaml")
+    corpus = b.Corpus(
+        DJA_DIR / "release.sqlite3", CORPAN_DIR / "tools" / "phrase-packs", "en"
+    )
+    b.resolve_items(c, corpus)
+    words = sorted({it["ref_id"] for it in c.items if it["kind"] == "word"})
+    langs = ["en"] + list(c.course.l1_full_support)
+    return {lang: {f"wg.{w}": w for w in words} for lang in langs}
 
 
 def mint_en_strings() -> dict:
@@ -60,6 +77,7 @@ def mint_en_strings() -> dict:
 
 def main() -> None:
     minted = mint_en_strings()
+    glosses = word_glosses()
     strings_dir = COURSE / "strings"
     strings_dir.mkdir(exist_ok=True)
     for lang in ALL_LANGUAGES:
@@ -68,6 +86,10 @@ def main() -> None:
         for l1, keys in minted["overlays"].items():
             if lang in (l1, "en"):
                 table.update(keys)
+        # wg.<word> glosses are sparse: only en + l1_full_support (V-21 checks
+        # exactly those; V-5 exempts wg keys, cf. ovl.<l1>.*).
+        if lang in glosses:
+            table.update(glosses[lang])
         if lang == "en":
             # en is minted from the YAML by the builder; keep en.json as the
             # agreement copy (builder cross-checks it).

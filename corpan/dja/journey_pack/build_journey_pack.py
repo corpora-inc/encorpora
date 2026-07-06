@@ -75,6 +75,9 @@ class CourseYaml(StrictModel):
     version: str
     launchpad_units: int = 1
     script_track: bool = False
+    # L1 codes with full native-face coverage (word glosses + phrase
+    # translations). Gates V-21/V-22 enforce completeness for these only.
+    l1_full_support: List[str] = Field(default_factory=list)
     min_app_version: Optional[str] = None
     name: str
     description: str
@@ -358,6 +361,29 @@ class Corpus:
             "SELECT id FROM cor_language WHERE code = ?", (target,)
         ).fetchone()
         self.target_lang_id = row[0] if row else None
+        self._lang_id_cache: Dict[str, Optional[int]] = {target: self.target_lang_id}
+
+    def lang_id(self, code: str) -> Optional[int]:
+        if code not in self._lang_id_cache:
+            row = self.db.execute(
+                "SELECT id FROM cor_language WHERE code = ?", (code,)
+            ).fetchone()
+            self._lang_id_cache[code] = row[0] if row else None
+        return self._lang_id_cache[code]
+
+    def has_translation(self, entry_id: int, code: str) -> bool:
+        """True iff cor_translation has a non-empty row for (entry, language).
+
+        Used by gate V-22 (l1_full_support phrase coverage). Unknown language
+        code ⇒ False (a missing L1 is a coverage hole, not a crash)."""
+        lid = self.lang_id(code)
+        if lid is None:
+            return False
+        row = self.db.execute(
+            "SELECT text FROM cor_translation WHERE entry_id = ? AND language_id = ?",
+            (entry_id, lid),
+        ).fetchone()
+        return bool(row and row[0])
 
     def entry_level(self, entry_id: int) -> Optional[str]:
         row = self.db.execute(
@@ -761,6 +787,8 @@ def emit_sqlite(c: Course, out_db: Path, corpus: Corpus) -> None:
         "corpus_base_sha": sha256_file(corpus.core_db_path),
         "launchpad_units": str(c.course.launchpad_units),
         "script_track": "1" if c.course.script_track else "0",
+        # L1s with full native-face coverage (gates V-21/V-22 read this).
+        "l1_full_support": ",".join(c.course.l1_full_support),
     }
     db.executemany("INSERT INTO pack_meta VALUES (?,?)", meta.items())
 

@@ -531,6 +531,67 @@ test("buildDistractorRequest maps context languages and drops impossible asks", 
   assert.equal(none, null)
 })
 
+// ------------------------------------------------ word-gloss distractors
+
+test("toNative word card: distractors are other words' es glosses", async () => {
+  const { deps, resolver } = fresh()
+  // coffee (SKILL_NUM) toNative — answerLang es, prompt the target word.
+  const answer = await resolveOne(resolver, { kind: "word", source: "en", id: "coffee" })
+  assert.equal(answer.native?.text, "el café")
+  const req = buildDistractorRequest({
+    activityType: "choice_pick",
+    cardId: "wg-1",
+    answer,
+    ctx: CTX,
+    targetB: -0.55,
+    recentKeys: new Set(),
+    params: { choices: 3, direction: "toNative" },
+  })
+  assert.ok(req)
+  assert.equal(req.answerLang, "es")
+  const set = await sampleDistractors(req, resolver, deps, CTX)
+  // Same-skill pool has tea + milk (both glossed) — fills count 2.
+  assert.equal(set.shortfall, 0)
+  assert.equal(set.distractors.length, 2)
+  for (const d of set.distractors) {
+    assert.ok(d.mode === "item")
+    // Distractor SURFACES in the answer language (es) and IS the gloss face.
+    assert.equal(d.text, d.item.native?.text)
+    // Never the answer's own gloss (even under a different key like "cafe").
+    assert.notEqual(normalizeAnswer(d.text, "es"), normalizeAnswer("el café", "es"))
+    // A gloss-less word (friend, no es) can never be a same-language distractor.
+    assert.notEqual(d.item.key, "word:en:friend")
+    // The gloss TWIN "cafe" (also "el café") is rejected as a collision.
+    assert.notEqual(d.item.key, "word:en:cafe")
+  }
+  const texts = set.distractors.map((d) => d.text).sort()
+  assert.deepEqual(texts, ["el té", "la leche"])
+})
+
+test("toNative word card: deterministic across fresh resolvers", async () => {
+  const make = async () => {
+    const { deps, resolver } = fresh()
+    const answer = await resolveOne(resolver, { kind: "word", source: "en", id: "coffee" })
+    return sampleDistractors(
+      {
+        cardId: "wg-det",
+        answer,
+        answerLang: "es",
+        promptLang: "en",
+        count: 2,
+        targetB: -0.55,
+        pool: "sameSkill",
+        recentKeys: new Set(),
+        mode: "item",
+      },
+      resolver,
+      deps,
+      CTX,
+    )
+  }
+  assert.equal(JSON.stringify(await make()), JSON.stringify(await make()))
+})
+
 // ------------------------------------------------------------ resilience
 
 test("a broken course pack yields a shortfall, never a throw", async () => {

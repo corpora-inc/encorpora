@@ -54,7 +54,7 @@ test("phrase (phrase pack): source is passed through", async () => {
   )
 })
 
-test("word: surface form + wordpan explanations; native face NEVER set", async () => {
+test("word: surface target + wg gloss native face + wordpan explanations", async () => {
   const { resolver } = fresh()
   const { resolved } = await resolver.resolveItems([
     { kind: "word", source: "en", id: "coffee" },
@@ -64,6 +64,9 @@ test("word: surface form + wordpan explanations; native face NEVER set", async (
     key: "word:en:coffee",
     kind: "word",
     target: { text: "coffee", ttsText: "coffee" },
+    // Native face = the course-pack gloss wg.coffee at nativeLang (es) —
+    // contract #1: an ES learner sees coffee→"el café", not coffee→coffee.
+    native: { text: "el café", ttsText: "el café" },
     extras: {
       kind: "word",
       explanationNative:
@@ -72,6 +75,34 @@ test("word: surface form + wordpan explanations; native face NEVER set", async (
         "Coffee is the drink brewed from roasted beans; informally, a short social meeting over a cup.",
     },
   })
+})
+
+test("word: missing gloss ⇒ native undefined (no en fallback)", async () => {
+  const { resolver } = fresh()
+  // wg.friend has ONLY an en row — the native-only lookup must NOT fall back to
+  // it, leaving native undefined so the runtime guard reroutes the card.
+  const { resolved } = await resolver.resolveItems([
+    { kind: "word", source: "en", id: "friend" },
+  ])
+  assert.equal(resolved[0].target.text, "friend")
+  assert.equal(resolved[0].native, undefined)
+})
+
+test("word: no gloss key at all ⇒ native undefined, still resolves", async () => {
+  const { resolver } = fresh()
+  const { resolved, missing } = await resolver.resolveItems([
+    { kind: "word", source: "en", id: "xylophone" },
+  ])
+  assert.equal(missing.length, 0)
+  assert.equal(resolved[0].native, undefined)
+})
+
+test("word: single-language stack (no L1) ⇒ no gloss lookup, native undefined", async () => {
+  const deps = new FixtureDeps()
+  const resolver = createResolver(deps, { courseId: "journey_en", targetLang: "en" })
+  const { resolved } = await resolver.resolveItems([
+    { kind: "word", source: "en", id: "coffee" },
+  ])
   assert.equal(resolved[0].native, undefined)
 })
 

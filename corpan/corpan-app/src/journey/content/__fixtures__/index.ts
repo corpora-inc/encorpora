@@ -155,6 +155,15 @@ function courseItems(): CourseItem[] {
   }
   out.push(
     { id: "word:en:coffee", kind: "word", source: "en", refId: "coffee", b: -0.6, skills: [SKILL_NUM] },
+    // Same-skill (SKILL_NUM) word neighbours WITH es glosses — the gloss
+    // distractor pool for coffee's toNative card.
+    { id: "word:en:tea", kind: "word", source: "en", refId: "tea", b: -0.55, skills: [SKILL_NUM] },
+    { id: "word:en:milk", kind: "word", source: "en", refId: "milk", b: -0.5, skills: [SKILL_NUM] },
+    // A gloss TWIN: "cafe" also glosses to "el café" — must be rejected as a
+    // coffee distractor (answer-gloss collision under a different key).
+    { id: "word:en:cafe", kind: "word", source: "en", refId: "cafe", b: -0.58, skills: [SKILL_NUM] },
+    // A word with NO es gloss (wg.friend has only en) — native stays undefined
+    // (no en fallback) and it is never a same-language distractor.
     { id: "word:en:friend", kind: "word", source: "en", refId: "friend", b: -0.5, skills: [SKILL_GREET] },
     { id: "char:hanzipan:愛", kind: "char", source: "hanzipan", refId: "愛", b: 0.4, skills: [SKILL_GREET] },
     { id: `segment:${BOOK_ID}:ch01-002`, kind: "segment", source: BOOK_ID, refId: "ch01-002", b: 0.1, skills: [SKILL_PRESENT] },
@@ -225,6 +234,19 @@ function buildCoursePackDb(): DatabaseSync {
   insStr.run("gn.en.gn.greetings.title", "es", "Saludos")
   insStr.run("gn.en.gn.greetings.note", "en", "Greetings open a conversation: hello, good morning, welcome.")
   insStr.run("gn.en.gn.greetings.note", "es", "Los saludos abren una conversación: hello, good morning, welcome.")
+  // Word glosses (wg.<word>): the native FACE of word cards (contract #1). en
+  // is the disambiguating gloss (or the word itself); es is the learner face.
+  // `friend` carries ONLY en — exercising the native-only lookup's no-fallback
+  // rule (native must stay undefined, never "friend").
+  const insGloss = (word: string, en: string, es?: string) => {
+    insStr.run(`wg.${word}`, "en", en)
+    if (es) insStr.run(`wg.${word}`, "es", es)
+  }
+  insGloss("coffee", "coffee", "el café")
+  insGloss("tea", "tea", "el té")
+  insGloss("milk", "milk", "la leche")
+  insGloss("cafe", "cafe", "el café")
+  insGloss("friend", "friend") // en only — no es face
   return db
 }
 

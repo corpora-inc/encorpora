@@ -15,6 +15,12 @@ Content changes to the authored `courses/en/` tree (the shippable unit is
 ## [Unreleased]
 
 ### Added
+- **Spanish word glosses `wg.<word>` (v0.2, contract #1).** Natural, course-
+  sense-disambiguated es glosses for all 140 word items (e.g. `ship`→"el barco"
+  in the sounds unit, `saw`→"vio" in the irregular-past unit, `order`→"pedir"
+  in Eating out), plus `en` entries (the word, or a disambiguating gloss). These
+  are the native FACE of word exercises — an ES learner no longer sees an
+  English→English word card. `course.yaml` declares `l1_full_support: [es]`.
 - journey_en v0.1 course sources (Journey W7, authoring.md): 30 authored
   units — 2 Launchpad (`en.a0.u01` sounds, `en.a0.u02` survival kit) + 28
   A1 units through the arc exam (`en.a1.u28`) — with skills, can-dos,

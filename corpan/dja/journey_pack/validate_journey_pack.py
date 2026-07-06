@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Journey course-pack validator — THE merged gate list V-1..V-20.
+"""Journey course-pack validator — THE merged gate list V-1..V-22.
+
+V-21/V-22 (Journey v0.2) enforce full native-face coverage for the
+`course.yaml: l1_full_support` languages: V-21 = word glosses (`wg.<word>`),
+V-22 = base-corpus phrase translations. See §6.4 + cross-team contract #1.
 
 Spec: corpan/docs/journey/specs/course-pack.md §6.4 (normative; single source
 for Journey pack validation gates — authoring lint gates are absorbed here).
@@ -686,6 +690,51 @@ def validate(
         if len(spill) > 0.25 * len(words):
             g.warn(f"unit {u['id']}: band-fill spill {len(spill)}/{len(words)} "
                    "> 25% of the word budget")
+
+    # l1_full_support: the languages that carry a COMPLETE native face for
+    # every item. wg.<word> glosses (V-21) and phrase translations (V-22) are
+    # required for these codes; other L1s stay sparse (the deliberate V-5
+    # exception — cf. the selective-language ovl.<l1>.* keys).
+    l1_full = [
+        c for c in pack.meta.get("l1_full_support", "").split(",") if c
+    ]
+
+    # ---- V-21 Word glosses complete (en + every l1_full_support lang) ----
+    # Every word item (pinned + auto-expanded — both land in `items`) MUST have
+    # a wg.<word> gloss in en AND in every l1_full_support language, so no ES
+    # learner is ever shown an English→English word card (contract #1). The
+    # resolver reads wg.<word> with NO en fallback, so an absent es gloss is a
+    # real hole, not a soft degrade.
+    g = gate("V-21", "Word glosses complete (en + l1_full_support)")
+    need_langs = ["en"] + l1_full
+    for it in pack.items:
+        if it["kind"] != "word":
+            continue
+        key = f"wg.{it['ref_id']}"
+        have = pack.langs_by_key.get(key, set())
+        if key not in pack.string_keys:
+            g.err(f"{it['id']}: no gloss {key!r} in strings at all")
+            continue
+        missing = [l for l in need_langs if l not in have]
+        if missing:
+            g.err(f"{it['id']}: gloss {key!r} missing languages: {missing}")
+
+    # ---- V-22 Phrase L1 translation coverage (l1_full_support) ----
+    # Every base-corpus phrase item MUST have a cor_translation row for every
+    # l1_full_support language, or the resolver hands the renderer a phrase card
+    # with no native face. Phrase-pack items (source != base) resolve their
+    # native face from their own installed pack — not cor_translation — so they
+    # are out of scope for this bundled-corpus gate (Team A's runtime guard
+    # still reroutes any card whose native face is absent at play time).
+    g = gate("V-22", "Phrase L1 translation coverage (l1_full_support)")
+    if l1_full:
+        for it in pack.items:
+            if it["kind"] != "phrase" or it["source"] != "base":
+                continue
+            eid = int(it["ref_id"])
+            for l1 in l1_full:
+                if not corpus.has_translation(eid, l1):
+                    g.err(f"{it['id']}: no {l1} cor_translation row in the corpus")
 
     return report
 
