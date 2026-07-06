@@ -66,6 +66,8 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true # icons/*.png + bundled *.sqlite3 are Git LFS
 
       # Fail-soft: if the Apple secrets aren't configured yet, skip with a
       # clear message instead of a red X (keeps the pipeline mergeable).
@@ -121,7 +123,15 @@ jobs:
         # TestFlight accepts each upload even when the version string is unchanged.
         run: |
           BUILD_NUMBER=$(( $(date +%s) / 60 ))
-          npx tauri ios init --ci   # (re)generate gen/apple from project.yml
+          # Tauri's ios init does NOT copy the StoreKit test config from the
+          # ios/ template into gen/apple, so xcodegen fails on a fresh checkout
+          # ("missing source directory .../Corpan.storekit"). Locally it only
+          # works because the file already persists in gen/apple. First init
+          # writes project.yml (then fails at xcodegen); we supply the file and
+          # re-init (init does not wipe gen/apple), which then succeeds.
+          npx tauri ios init --ci || true
+          cp -f src-tauri/ios/Corpan.storekit src-tauri/gen/apple/Corpan.storekit
+          npx tauri ios init --ci
           npx tauri ios build --ci \
             --export-method app-store-connect \
             --build-number "$BUILD_NUMBER"
@@ -143,6 +153,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true # icons/*.png + bundled *.sqlite3 are Git LFS
 
       - id: secrets
         env:
