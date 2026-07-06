@@ -172,6 +172,15 @@ jobs:
           sed -i \
             -e 's|^        CODE_SIGN_STYLE: Automatic|        CODE_SIGN_STYLE: Manual\n        PROVISIONING_PROFILE_SPECIFIER: "corpan appstore ci"\n        CODE_SIGN_IDENTITY: "Apple Distribution"|' \
             src-tauri/ios/project.yml
+          # tauri-plugin-stt/build.rs emits `cargo:rustc-link-lib=framework=whisper`,
+          # but that cargo directive does not reach Xcode's final Ld in CI (locally
+          # the static whisper folds into libapp.a; here it doesn't), so the app
+          # link fails with undefined _whisper_* symbols. Force the device-slice
+          # framework onto the Xcode linker via OTHER_LDFLAGS.
+          WHISPER_SLICE="$GITHUB_WORKSPACE/corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework/ios-arm64"
+          sed -i \
+            -e 's#^        ENABLE_BITCODE: false#        ENABLE_BITCODE: false\n        OTHER_LDFLAGS: "$(inherited) -F'"$WHISPER_SLICE"' -framework whisper -framework Accelerate -framework CoreML"#' \
+            src-tauri/ios/project.yml
           # Tauri's ios init does NOT copy the StoreKit test config from the
           # ios/ template into gen/apple, so xcodegen fails on a fresh checkout
           # ("missing source directory .../Corpan.storekit"). Locally it only
