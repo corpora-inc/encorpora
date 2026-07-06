@@ -117,13 +117,14 @@ jobs:
       - name: Tauri iOS build (app-store-connect)
         if: steps.secrets.outputs.have == 'true'
         working-directory: corpan/corpan-app
+        # Minutes-since-epoch build number: unique + increasing across runs, so
+        # TestFlight accepts each upload even when the version string is unchanged.
         run: |
+          BUILD_NUMBER=$(( $(date +%s) / 60 ))
           npx tauri ios init --ci   # (re)generate gen/apple from project.yml
-          # --build-number stamps CFBundleVersion so TestFlight accepts each
-          # upload (must be unique + increasing); github.run_number is both.
           npx tauri ios build --ci \
             --export-method app-store-connect \
-            --build-number "${{ github.run_number }}"
+            --build-number "$BUILD_NUMBER"
 
       - name: Upload to TestFlight
         if: steps.secrets.outputs.have == 'true'
@@ -179,17 +180,10 @@ jobs:
           sdkmanager "ndk;26.1.10909125"
           echo "NDK_HOME=$ANDROID_SDK_ROOT/ndk/26.1.10909125" >> "$GITHUB_ENV"
 
-      - name: Decode keystore + signing props
+      - name: Decode upload keystore
         if: steps.secrets.outputs.have == 'true'
-        working-directory: corpan/corpan-app/src-tauri
         run: |
-          echo "${{ secrets.ANDROID_KEYSTORE_B64 }}" | base64 --decode > upload-keystore.jks
-          cat > gen/android/keystore.properties <<EOF
-          storeFile=$(pwd)/upload-keystore.jks
-          storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
-          keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
-          EOF
+          echo "${{ secrets.ANDROID_KEYSTORE_B64 }}" | base64 --decode > "$RUNNER_TEMP/upload-keystore.jks"
 
       - name: Install deps
         if: steps.secrets.outputs.have == 'true'
@@ -198,12 +192,33 @@ jobs:
           npm ci
           npm ci --prefix ../packs/shared/capabilities
 
-      - name: Tauri Android build (signed AAB)
+      - name: Version code (unique, monotonic)
+        if: steps.secrets.outputs.have == 'true'
+        # Minutes-since-epoch: always increasing across runs and safely above the
+        # semver-derived default (0.19.2 -> 19002, already live on Play). Once we
+        # go timestamp-based we stay timestamp-based (never revert to derived).
+        run: echo "VERSION_CODE=$(( $(date +%s) / 60 ))" >> "$GITHUB_ENV"
+
+      - name: Tauri Android build (unsigned AAB)
         if: steps.secrets.outputs.have == 'true'
         working-directory: corpan/corpan-app
-        env:
-          TAURI_ANDROID_VERSION_CODE: ${{ github.run_number }}
-        run: npx tauri android build --aab
+        # Tauri's generated Gradle project has no release signingConfig, so the
+        # release AAB comes out unsigned — we sign it with jarsigner below (the
+        # correct signing scheme for AABs / Play upload keys).
+        run: |
+          npx tauri android build --ci --aab \
+            -c '{"bundle":{"android":{"versionCode":'"$VERSION_CODE"'}}}'
+
+      - name: Sign AAB with upload key (jarsigner)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app/src-tauri
+        run: |
+          AAB=gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
+          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
+            -keystore "$RUNNER_TEMP/upload-keystore.jks" \
+            -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
+            "$AAB" "${{ secrets.ANDROID_KEY_ALIAS }}"
+          jarsigner -verify "$AAB" && echo "AAB signature verified"
 
       - name: Upload to Play internal
         if: steps.secrets.outputs.have == 'true'
