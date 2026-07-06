@@ -1,0 +1,87 @@
+id: en.a2.u03
+arc: en.arc2
+theme: "Have you ever?"
+cando:
+  - key: experiences
+    text: "Can ask and talk about life experiences without saying when, and tell been from gone."
+vocab_band: { lo: 1, hi: 4121 }
+phrase_domains: [travel, culture, social]
+skills:
+  - id: en.skill.experiences
+    kind: grammar
+    title: "Life experiences"
+    b: -1.7
+    prereqs: [en.skill.used-to]
+grammar_nodes: [en.gn.pres-perf-exp, en.gn.pres-perf-been-gone]
+items:
+  - ref: "phrase:base:12685"  # Have you ever visited Paris?
+    skills: [en.skill.experiences]
+    importance: 3
+    probe: true
+    b: -1.7
+  - ref: "phrase:base:12187"  # Have you ever been to Japan?
+    skills: [en.skill.experiences]
+    importance: 3
+    probe: true
+    b: -1.7
+  - ref: "phrase:base:9258"  # Have you ever called a friend just to chat?
+    skills: [en.skill.experiences]
+    importance: 3
+    probe: true
+    b: -1.7
+  - ref: "phrase:base:13986"  # Have you ever been to a foreign country?
+    skills: [en.skill.experiences]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16033"  # I have never seen snow before.
+    skills: [en.skill.experiences]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:19492"  # Have you ever listened to a live concert?
+    skills: [en.skill.experiences]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:10134"  # Have you ever ridden a camel in the desert?
+    skills: [en.skill.experiences]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:abroad"
+    skills: [en.skill.experiences]
+    importance: 2
+  - ref: "word:en:visited"
+    skills: [en.skill.experiences]
+    importance: 2
+  - ref: "word:en:experience"
+    skills: [en.skill.experiences]
+    importance: 2
+  - ref: "word:en:foreign"
+    skills: [en.skill.experiences]
+    importance: 2
+  - ref: "word:en:ever"
+    skills: [en.skill.experiences]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [travel, culture, social]
+      level: A2
+      count: 10
+      skills: [en.skill.experiences]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: A2
+      count: 8
+      skills: [en.skill.experiences]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

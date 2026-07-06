@@ -1,0 +1,91 @@
+id: en.b1.u07
+arc: en.arc3
+theme: "I wish"
+cando:
+  - key: wishes
+    text: "Can express a wish about how things are now, using wish with a past form to show it isn't true."
+  - key: if-only
+    text: "Can sharpen a wish into something more heartfelt using if only."
+vocab_band: { lo: 1, hi: 4660 }
+phrase_domains: [social, everyday]
+skills:
+  - id: en.skill.wishes
+    kind: grammar
+    title: "Wishes"
+    b: -0.5
+    prereqs: [en.skill.hypotheticals]
+grammar_nodes: [en.gn.wish-past, en.gn.if-only]
+items:
+  - ref: "phrase:base:16847"  # I wish I could help you more.
+    skills: [en.skill.wishes]
+    importance: 3
+    probe: true
+    b: -0.5
+  - ref: "phrase:base:20527"  # If only I could speak French!
+    skills: [en.skill.wishes]
+    importance: 3
+    probe: true
+    b: -0.5
+  - ref: "phrase:phrase-life-what-if:54"  # I wish I lived by the sea.
+    skills: [en.skill.wishes]
+    importance: 3
+    probe: true
+    b: -0.5
+  - ref: "phrase:base:21458"  # I wish I had a better job.
+    skills: [en.skill.wishes]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-what-if:35"  # I wish I had a garden.
+    skills: [en.skill.wishes]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-what-if:41"  # If only I had more time to read.
+    skills: [en.skill.wishes]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-what-if:60"  # I wish I could sing like you.
+    skills: [en.skill.wishes]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:wish"
+    skills: [en.skill.wishes]
+    importance: 2
+  - ref: "word:en:regret"
+    skills: [en.skill.wishes]
+    importance: 2
+  - ref: "word:en:different"
+    skills: [en.skill.wishes]
+    importance: 2
+  - ref: "word:en:dream"
+    skills: [en.skill.wishes]
+    importance: 2
+  - ref: "word:en:quiet"
+    skills: [en.skill.wishes]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [social]
+      level: B1
+      count: 10
+      skills: [en.skill.wishes]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: B1
+      count: 10
+      skills: [en.skill.wishes]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-pronounce
+  config: { itemset: unit }

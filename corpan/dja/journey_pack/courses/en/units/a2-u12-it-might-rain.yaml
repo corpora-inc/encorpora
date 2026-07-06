@@ -1,0 +1,87 @@
+id: en.a2.u12
+arc: en.arc2
+theme: "It might rain"
+cando:
+  - key: possibility
+    text: "Can say what might or may happen or be true, without claiming it is certain."
+vocab_band: { lo: 1, hi: 4184 }
+phrase_domains: [environment, everyday]
+skills:
+  - id: en.skill.possibility
+    kind: grammar
+    title: "Possibility: might & may"
+    b: -1.3
+    prereqs: [en.skill.predictions]
+grammar_nodes: [en.gn.might-may]
+items:
+  - ref: "phrase:base:9199"  # He might be late for the meeting.
+    skills: [en.skill.possibility]
+    importance: 3
+    probe: true
+    b: -1.3
+  - ref: "phrase:base:19026"  # She said it might rain later today.
+    skills: [en.skill.possibility]
+    importance: 3
+    probe: true
+    b: -1.3
+  - ref: "phrase:base:18317"  # The news said it might rain tomorrow.
+    skills: [en.skill.possibility]
+    importance: 3
+    probe: true
+    b: -1.3
+  - ref: "phrase:base:10836"  # It might rain later, so take an umbrella.
+    skills: [en.skill.possibility]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11596"  # Don't eat so quickly; you might get sick.
+    skills: [en.skill.possibility]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:14026"  # Bring your umbrella because it might rain.
+    skills: [en.skill.possibility]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20086"  # Maybe it will rain later today.
+    skills: [en.skill.possibility]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:maybe"
+    skills: [en.skill.possibility]
+    importance: 2
+  - ref: "word:en:perhaps"
+    skills: [en.skill.possibility]
+    importance: 2
+  - ref: "word:en:possible"
+    skills: [en.skill.possibility]
+    importance: 2
+  - ref: "word:en:chance"
+    skills: [en.skill.possibility]
+    importance: 2
+  - ref: "word:en:might"
+    skills: [en.skill.possibility]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [environment, everyday]
+      level: A2
+      count: 10
+      skills: [en.skill.possibility]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: A2
+      count: 8
+      skills: [en.skill.possibility]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: earthgate
+  config: { itemset: unit }

@@ -1,0 +1,76 @@
+id: en.a2.u04
+arc: en.arc2
+theme: "So far"
+cando:
+  - key: progress
+    text: "Can say what they have already done, still need to do, or have just finished."
+  - key: duration
+    text: "Can say how long something has been true, using for and since."
+vocab_band: { lo: 1, hi: 4128 }
+phrase_domains: [everyday, housing, business]
+skills:
+  - id: en.skill.completion
+    kind: grammar
+    title: "Completion & duration"
+    b: -1.6
+    prereqs: [en.skill.experiences]
+grammar_nodes: [en.gn.pres-perf-yet-already, en.gn.for-since]
+items:
+  - ref: "phrase:base:10061"  # Have you finished your project yet?
+    skills: [en.skill.completion]
+    importance: 3
+    probe: true
+    b: -1.6
+  - ref: "phrase:base:9591"  # You finished all the work already!
+    skills: [en.skill.completion]
+    importance: 3
+    probe: true
+    b: -1.6
+  - ref: "phrase:base:20453"  # I have worked here for five years.
+    skills: [en.skill.completion]
+    importance: 3
+    probe: true
+    b: -1.6
+  - ref: "phrase:base:9190"  # He has already finished his homework.
+    skills: [en.skill.completion]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12689"  # We have just arrived at the airport.
+    skills: [en.skill.completion]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12405"  # I haven't taken a shower since yesterday.
+    skills: [en.skill.completion]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12698"  # They have lived in this city for ten years.
+    skills: [en.skill.completion]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:already"
+    skills: [en.skill.completion]
+    importance: 2
+  - ref: "word:en:finished"
+    skills: [en.skill.completion]
+    importance: 2
+  - ref: "word:en:list"
+    skills: [en.skill.completion]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, housing, business]
+      level: A2
+      count: 10
+      skills: [en.skill.completion]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-squeeze
+  config: { itemset: unit }

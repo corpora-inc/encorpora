@@ -1,0 +1,98 @@
+id: en.a2.u11
+arc: en.arc2
+theme: "Could you help?"
+cando:
+  - key: requests
+    text: "Can make a polite request with could, and offer or ask for what they'd like with would."
+vocab_band: { lo: 1, hi: 4177 }
+phrase_domains: [travel, social, everyday]
+skills:
+  - id: en.skill.polite-requests
+    kind: function
+    title: "Polite requests: could & would like"
+    b: -1.5
+    prereqs: [en.skill.can, en.skill.eating-out]
+grammar_nodes: [en.gn.could-past-polite, en.gn.would-like-offers]
+items:
+  - ref: "phrase:base:13771"  # Could you pass me the salt, please?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    probe: true
+    b: -1.5
+  - ref: "phrase:base:16178"  # Could you try again?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    probe: true
+    b: -1.5
+  - ref: "phrase:base:24550"  # Would you like tea?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    probe: true
+    b: -1.5
+  - ref: "phrase:base:13166"  # I'd like dessert too.
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11445"  # Could you spell your name for me?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:15042"  # Could you pass the pepper?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21952"  # Would you like a beer?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-travel-essentials:10"  # Could I see the menu, please?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-travel-essentials:14"  # Could we have the bill, please?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-travel-essentials:46"  # Could you help me, please?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-travel-essentials:181"  # I would like the chicken, but without the cream sauce.
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-travel-essentials:351"  # Could I leave my bags here until check-in?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-travel-essentials:359"  # Could you book a wake-up call for six thirty?
+    skills: [en.skill.polite-requests]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:could"
+    skills: [en.skill.polite-requests]
+    importance: 2
+  - ref: "word:en:would"
+    skills: [en.skill.polite-requests]
+    importance: 2
+  - ref: "word:en:mind"
+    skills: [en.skill.polite-requests]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [travel, social, everyday]
+      level: A2
+      count: 10
+      skills: [en.skill.polite-requests]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

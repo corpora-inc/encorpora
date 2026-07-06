@@ -207,7 +207,373 @@ contrastive_notes:
     note: >-
       "¿De quién es esto?" becomes one word: "Whose is this?" — whose does
       the whole "de quién" job.
+  # ---------- Arc 2 (A2) contrastive notes ----------
+  - ref_kind: grammarNode
+    ref: en.gn.past-cont
+    note: >-
+      Estaba comiendo maps straight onto "I was eating" — the -ing quietly
+      does the work of -ando/-iendo. Trust the pattern: was or were, then the
+      -ing verb.
+  - ref_kind: grammarNode
+    ref: en.gn.past-simple-vs-cont
+    note: >-
+      Spanish splits this with the imperfect and preterite; English splits it
+      with was -ing against -ed. The action that gets interrupted takes was
+      -ing: "I was cooking when he arrived."
+  - ref_kind: grammarNode
+    ref: en.gn.used-to
+    note: >-
+      Solía and the imperfect of habit land on "used to" plus a bare verb:
+      "solía correr" becomes "I used to run" — used to run, not used to ran.
+  - ref_kind: grammarNode
+    ref: en.gn.pres-perf-exp
+    note: >-
+      It resembles "he visitado", but English will not accept the present
+      perfect with a finished time. "I have eaten at two" is wrong; once you
+      name the time, switch to the past simple.
+  - ref_kind: grammarNode
+    ref: en.gn.pres-perf-been-gone
+    note: >-
+      Ha ido and ha estado split cleanly in English: gone means still away,
+      been means went and came back. "Ha ido a Lima" is "has gone to Lima."
+  - ref_kind: grammarNode
+    ref: en.gn.pres-perf-yet-already
+    note: >-
+      Spanish "ya" turns into already or yet depending on polarity — already
+      in positives, yet in questions and negatives. "Acabo de comer" becomes
+      "I have just eaten."
+  - ref_kind: grammarNode
+    ref: en.gn.for-since
+    note: >-
+      "Desde hace" and "desde" both hide inside English: for measures the
+      length (for two years), since marks the start (since 2020).
+  - ref_kind: grammarNode
+    ref: en.gn.pres-perf-vs-past
+    note: >-
+      This is the top A2 slip: "hoy he comido" is natural in Spanish, but "I
+      have eaten at two" is not. Once the time is finished — even "today at
+      two" — English wants the past simple.
+  - ref_kind: grammarNode
+    ref: en.gn.will-predict
+    note: >-
+      Both "lloverá" and "va a llover" exist in Spanish; in English, will
+      does not change shape. One form — will rain — covers every person.
+  - ref_kind: grammarNode
+    ref: en.gn.will-decide-offer
+    note: >-
+      Spanish offers with the present ("te ayudo"); English reaches for will
+      at the moment of deciding: "I'll help you."
+  - ref_kind: grammarNode
+    ref: en.gn.will-vs-going-to
+    note: >-
+      "Voy a" is going to; a decision made on the spot switches to will.
+      English asks for a choice here that Spanish leaves open.
+  - ref_kind: grammarNode
+    ref: en.gn.pres-cont-future
+    note: >-
+      "Quedo con Ana a las seis" becomes "I'm meeting Ana at six" — the
+      present continuous, plus a time, carries the arrangement.
+  - ref_kind: grammarNode
+    ref: en.gn.time-clauses
+    note: >-
+      "Cuando llegue" uses the subjunctive; English simply uses the present:
+      "when I arrive." The future "when I will arrive" is not how English says
+      it.
+  - ref_kind: grammarNode
+    ref: en.gn.cond-zero
+    note: >-
+      This one transfers directly: "si calientas el hielo, se derrite" is "if
+      you heat ice, it melts." Both halves stay in the present, just as in
+      Spanish.
+  - ref_kind: grammarNode
+    ref: en.gn.cond-first
+    note: >-
+      "Si llueve, nos quedaremos" becomes "if it rains, we'll stay in." Keep
+      the will out of the if-half — English does not put it there.
+  - ref_kind: grammarNode
+    ref: en.gn.should-advice
+    note: >-
+      "Deberías descansar" becomes "you should rest" — should plus a bare
+      verb, with no "to" after it.
+  - ref_kind: grammarNode
+    ref: en.gn.have-to
+    note: >-
+      "No tienes que venir" means there is no obligation, not that it's
+      forbidden: "you don't have to come." Read it as freedom, not a
+      prohibition.
+  - ref_kind: grammarNode
+    ref: en.gn.must-mustnt
+    note: >-
+      "No debes" lines up with mustn't, a prohibition — which is not the same
+      as don't have to. The verb deber blurs the two, so keep them apart.
+  - ref_kind: grammarNode
+    ref: en.gn.could-past-polite
+    note: >-
+      Poder splits in English: past ability and a polite request both become
+      could. "Podía nadar" is "I could swim"; "podrías ayudar" is "could you
+      help?"
+  - ref_kind: grammarNode
+    ref: en.gn.would-like-offers
+    note: >-
+      "¿Quieres un café?" can sound blunt in English; "Would you like a
+      coffee?" is the polite move. "Quisiera" becomes "I'd like."
+  - ref_kind: grammarNode
+    ref: en.gn.might-may
+    note: >-
+      "Puede que llueva" and "a lo mejor" become might or may — pure
+      uncertainty, not the ability sense of poder.
+  - ref_kind: grammarNode
+    ref: en.gn.count-uncount
+    note: >-
+      Several nouns that count in Spanish do not in English: information,
+      furniture, money, bread, and advice take no plural and no "a." "Un
+      consejo" is "a piece of advice."
+  - ref_kind: grammarNode
+    ref: en.gn.much-many-alot
+    note: >-
+      Spanish "mucho/muchos" is one idea; English splits it into much and
+      many, and a lot of covers both in positive sentences.
+  - ref_kind: grammarNode
+    ref: en.gn.few-little
+    note: >-
+      "Poco/pocos" becomes little or few; mind the "a": a little and a few
+      mean some, while little and few hint at not enough.
+  - ref_kind: grammarNode
+    ref: en.gn.too-enough
+    note: >-
+      "Demasiado" is too and "suficiente" is enough — but enough comes after
+      an adjective and before a noun: "warm enough, enough time."
+  - ref_kind: grammarNode
+    ref: en.gn.as-as
+    note: >-
+      "Tan alto como" maps straight onto "as tall as" — the two "as" words
+      frame the adjective.
+  - ref_kind: grammarNode
+    ref: en.gn.gerund-after-verbs
+    note: >-
+      After enjoy and mind, English wants -ing where Spanish uses the
+      infinitive: "me gusta cocinar" becomes "I like cooking."
+  - ref_kind: grammarNode
+    ref: en.gn.infinitive-after-verbs
+    note: >-
+      "Quiero ir" becomes "I want to go" — the "to" is not optional in
+      English, even though Spanish joins the verbs directly.
+  - ref_kind: grammarNode
+    ref: en.gn.infinitive-purpose
+    note: >-
+      "Para + infinitivo" becomes "to + verb", not "for + -ing": "para
+      aprender" is "to learn", not "for learning."
+  - ref_kind: grammarNode
+    ref: en.gn.so-because-although
+    note: >-
+      Como, porque, and aunque map onto so, because, and although. Watch that
+      because is not "because of", and English does not double "aunque…pero" —
+      pick one.
+  - ref_kind: unit
+    ref: en.a2.u18
+    note: >-
+      False-friend watch as you talk about goals: pretender is not "pretend"
+      — it means to intend or aim — and intentar is simply "try."
+  - ref_kind: unit
+    ref: en.a2.u22
+    note: >-
+      In an opinion, mind discutir: it often means to argue, not only to
+      discuss. Use discuss for a calm exchange, argue for a heated one.
+  # ---------- Arc 3 (B1) contrastive notes ----------
+  - ref_kind: grammarNode
+    ref: en.gn.narrative-tenses
+    note: >-
+      This is the preterite/imperfect split you already own: events go into
+      the past simple, background into the past continuous. The instinct from
+      Spanish carries over.
+  - ref_kind: grammarNode
+    ref: en.gn.used-to-vs-would
+    note: >-
+      The imperfect covers both in Spanish; English divides the work. Use used
+      to for past states, and reserve would for repeated actions.
+  - ref_kind: grammarNode
+    ref: en.gn.past-perfect
+    note: >-
+      "Había comido" becomes "had eaten" — a clean, positive transfer. Had
+      plus the participle works just as the pluscuamperfecto does.
+  - ref_kind: grammarNode
+    ref: en.gn.pres-perf-cont
+    note: >-
+      "Llevo dos años viviendo aquí" becomes "I have been living here for two
+      years" — English has no llevar, so it leans on have been -ing.
+  - ref_kind: grammarNode
+    ref: en.gn.perf-cont-vs-simple
+    note: >-
+      Spanish doesn't ask you to choose between result and activity, but
+      English does: "I've painted it" against "I've been painting."
+  - ref_kind: grammarNode
+    ref: en.gn.superl-perf-ever
+    note: >-
+      English adds a word Spanish leaves out — "ever": "la mejor que he visto"
+      becomes "the best I have ever seen."
+  - ref_kind: grammarNode
+    ref: en.gn.articles-deep
+    note: >-
+      Spanish keeps the article with languages and general nouns; English
+      drops it: "el inglés es útil" becomes "English is useful."
+  - ref_kind: grammarNode
+    ref: en.gn.future-cont
+    note: >-
+      "I'll be flying" is ordinary speech in English, not something formal.
+      Reach for it freely to place an action inside a future moment.
+  - ref_kind: grammarNode
+    ref: en.gn.cond-second
+    note: >-
+      "Si tuviera tiempo, viajaría" becomes "if I had time, I would travel" —
+      if plus past, then would. The would does not enter the if-half.
+  - ref_kind: grammarNode
+    ref: en.gn.wish-past
+    note: >-
+      "Ojalá tuviera un jardín" becomes "I wish I had a garden." The past form
+      after wish is what marks it as unreal.
+  - ref_kind: grammarNode
+    ref: en.gn.unless
+    note: >-
+      "A menos que salgamos" uses the subjunctive; English uses a plain
+      present after unless: "unless we leave."
+  - ref_kind: grammarNode
+    ref: en.gn.in-case-as-long-as
+    note: >-
+      "Por si acaso" becomes in case plus a present verb, and "siempre que"
+      becomes as long as: "take it in case it rains; stay as long as you like."
+  - ref_kind: grammarNode
+    ref: en.gn.modal-deduction
+    note: >-
+      "Debe de estar cansado" becomes "he must be tired." For the negative
+      guess, English uses can't be, not mustn't be.
+  - ref_kind: grammarNode
+    ref: en.gn.had-to
+    note: >-
+      As with other past questions, did carries the tense: "did you have to
+      wait?", while the statement is "I had to wait."
+  - ref_kind: grammarNode
+    ref: en.gn.be-allowed-to
+    note: >-
+      "No me dejaban salir" becomes "I wasn't allowed to go out" — be allowed
+      to carries permission across the tenses.
+  - ref_kind: grammarNode
+    ref: en.gn.make-let
+    note: >-
+      Make and let take an object and then a bare verb — no "to": "me hicieron
+      esperar" is "they made me wait", not "made me to wait."
+  - ref_kind: grammarNode
+    ref: en.gn.verb-obj-inf
+    note: >-
+      "Quiero que vengas" becomes "I want you to come" — the Spanish
+      subjunctive turns into an object plus an infinitive in English.
+  - ref_kind: grammarNode
+    ref: en.gn.passive-present
+    note: >-
+      Spanish prefers the se-passive; English uses be plus a participle: "se
+      habla español" becomes "Spanish is spoken."
+  - ref_kind: grammarNode
+    ref: en.gn.passive-past
+    note: >-
+      "Fue construido en 1900" becomes "was built in 1900" — a straightforward,
+      positive transfer.
+  - ref_kind: grammarNode
+    ref: en.gn.reported-statements
+    note: >-
+      The backshift works much as it does in Spanish; the real trap is word
+      order, which stays flat and statement-like in English.
+  - ref_kind: grammarNode
+    ref: en.gn.say-vs-tell
+    note: >-
+      Decir covers both, but English splits them: tell needs a person (tell
+      me), say does not. And you "explain to me", not "explain me."
+  - ref_kind: grammarNode
+    ref: en.gn.reported-questions
+    note: >-
+      Keeping the question word order is the classic error: it's "she asked
+      where I lived", not "asked where did I live."
+  - ref_kind: grammarNode
+    ref: en.gn.reported-commands
+    note: >-
+      "Me dijo que esperara" becomes "she told me to wait" — the subjunctive
+      request turns into tell or ask plus a to-infinitive.
+  - ref_kind: grammarNode
+    ref: en.gn.rel-where-whose
+    note: >-
+      Cuyo is fading from spoken Spanish, but whose is still required in
+      English: "the writer whose book won."
+  - ref_kind: grammarNode
+    ref: en.gn.rel-object-omit
+    note: >-
+      Spanish keeps que, but English drops the object relative freely:
+      "the film we watched" needs no "that."
+  - ref_kind: grammarNode
+    ref: en.gn.verb-patterns-contrast
+    note: >-
+      "Dejar de fumar" becomes "stop smoking", while "acordarse de hacer"
+      becomes "remember to do" — the pattern carries the meaning.
+  - ref_kind: grammarNode
+    ref: en.gn.phrasal-separable
+    note: >-
+      Spanish has no real counterpart, so lean on the pattern: it's "turn it
+      on", not "turn on it", with the pronoun in the middle.
+  - ref_kind: grammarNode
+    ref: en.gn.conn-discourse
+    note: >-
+      Sin embargo and por lo tanto become however and therefore, each followed
+      by a comma: "It was late. However, we kept going."
+  - ref_kind: grammarNode
+    ref: en.gn.echo-so-neither
+    note: >-
+      "Yo también" and "yo tampoco" become echoes that match the helper verb:
+      "So am I", "Neither can I" — not a flat "me too."
+  - ref_kind: grammarNode
+    ref: en.gn.question-tags
+    note: >-
+      Spanish "¿no?" and "¿verdad?" stay fixed; English tags mirror the
+      helper and flip its sign. This is the hardest B1 habit to build, so it
+      rewards steady practice.
+  - ref_kind: grammarNode
+    ref: en.gn.indef-pronouns
+    note: >-
+      English keeps a single negative: "no vi a nadie" becomes "I didn't see
+      anybody", not "didn't see nobody."
+  - ref_kind: grammarNode
+    ref: en.gn.adj-ed-ing
+    note: >-
+      Spanish "aburrido" covers both sides; English splits them: the -ing form
+      names the cause, the -ed form names the feeling.
+  - ref_kind: grammarNode
+    ref: en.gn.too-to-so-that
+    note: >-
+      "Demasiado cansado para conducir" becomes "too tired to drive", and "tan
+      cansado que dormí" becomes "so tired that I slept."
+  - ref_kind: grammarNode
+    ref: en.gn.indirect-questions
+    note: >-
+      Inside a polite frame the question un-inverts — the classic
+      Spanish-to-English slip: "could you tell me where the station is?", not
+      "where is the station?"
+  - ref_kind: unit
+    ref: en.b1.u26
+    note: >-
+      Work-talk false friends: realizar is "carry out" (not realize),
+      soportar is "put up with" (not support), una solicitud is a job
+      application, and compromiso is a commitment (not compromise).
+  - ref_kind: unit
+    ref: en.b1.u22
+    note: >-
+      Reaction-talk false friends: argumento is the plot (not an argument), un
+      suceso is an event (not success), and sensible means sensitive (not
+      sensible).
+  - ref_kind: unit
+    ref: en.b1.u03
+    note: >-
+      Health false friends: constipado is a cold (not constipated), molestar
+      is to bother (not molest), and embarazada means pregnant (not
+      embarrassed).
 cognate_credits:
+  # One course-wide cognate-credit block (the DB keys cognate_credit by
+  # (l1, ref_kind, course) so the arc lists merge into a single entry).
   - ref_kind: course
     items:
       - "word:en:family"
@@ -220,6 +586,25 @@ cognate_credits:
       - "word:en:concert"
       - "word:en:bus"
       - "word:en:minute"
+      - "word:en:festival"
+      - "word:en:tradition"
+      - "word:en:experience"
+      - "word:en:opinion"
+      - "word:en:possible"
+      - "word:en:decide"
+      - "word:en:future"
+      - "word:en:appointment"
+      - "word:en:forecast"
+      - "word:en:society"
+      - "word:en:responsibility"
+      - "word:en:century"
+      - "word:en:monument"
+      - "word:en:material"
+      - "word:en:process"
+      - "word:en:solution"
+      - "word:en:ethics"
+      - "word:en:dilemma"
+      - "word:en:colleague"
     seed_form: 0
     stability_boost: 0.3
 phoneme_pairs:
@@ -259,3 +644,23 @@ phoneme_pairs:
   - contrast: "s-ɛs"
     minimal_pairs: [["state", "estate"], ["steam", "esteem"], ["sport", "support"]]
     unit: en.a0.u01
+  # Arc 2 (A2) — th contrasts (absent from A1); th-dense units u02/u16/u22 drill them
+  - contrast: "θ-s"
+    minimal_pairs: [["think", "sink"], ["thin", "sin"], ["mouth", "mouse"], ["path", "pass"]]
+    unit: en.a0.u01
+  - contrast: "θ-t"
+    minimal_pairs: [["thing", "ting"], ["three", "tree"], ["thin", "tin"]]
+    unit: en.a0.u01
+  - contrast: "ð-d"
+    minimal_pairs: [["they", "day"], ["then", "den"], ["breathe", "breed"], ["other", "udder"]]
+    unit: en.a0.u01
+  # Arc 3 (B1) — drilled via phonology lessons across u03/u19/u22 (mapped in order)
+  - contrast: "ʃ-ʒ"
+    minimal_pairs: [["pressure", "pleasure"], ["mission", "vision"], ["shore", "genre"]]
+    unit: en.b1.u03
+  - contrast: "stress-pairs"
+    minimal_pairs: [["REcord", "reCORD"], ["PREsent", "preSENT"], ["OBject", "obJECT"]]
+    unit: en.b1.u19
+  - contrast: "əʊ-ɔː"
+    minimal_pairs: [["boat", "bought"], ["coat", "caught"], ["woke", "walk"]]
+    unit: en.b1.u22
