@@ -68,7 +68,7 @@ rsync -av style.py gen_batch.py concepts_a0a1.json \
 #    take days. load-once loop (gen_batch keeps the model resident).
 ssh spark-f62c 'cd ~/projects/image-gen && mkdir -p imagepan_a0a1 && \
   nohup nice -n 15 .venv/bin/python gen_batch.py concepts_a0a1.json \
-    --out imagepan_a0a1 --num 4 --sleep 3 \
+    --out imagepan_a0a1 --num 3 --sleep 3 \
     > imagepan_a0a1/run.log 2>&1 &'
 
 # 3. verify it started (first images appear within a couple minutes) — do NOT wait for it.

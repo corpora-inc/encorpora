@@ -7,7 +7,7 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.21.0] — 2026-07-06
+## [0.20.1] — 2026-07-07
 
 ### Added
 - **Journey words in context.** After a word exercise settles, a compact card

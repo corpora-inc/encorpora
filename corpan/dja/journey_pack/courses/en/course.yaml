@@ -9,7 +9,7 @@ script_track: false
 # V-21/V-22). Other L1s are sparse (deliberate V-5 exception — the ES learner is
 # the v0.1 preview audience; the ×54 fan-out lands in a later i18n wave).
 l1_full_support: [es]
-min_app_version: "0.21.0"
+min_app_version: "0.20.1"
 name: "Journey: English"
 description: "A guided path into English — first sounds, survival phrases, and the everyday foundations of the A1 arc."
 name_localized:
