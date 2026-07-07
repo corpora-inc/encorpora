@@ -1,0 +1,702 @@
+[
+  {
+    "english": "I used to live near the sea.",
+    "text": "I used to live near the sea.",
+    "level": "A2"
+  },
+  {
+    "english": "We used to walk to school together.",
+    "text": "We used to walk to school together.",
+    "level": "A2"
+  },
+  {
+    "english": "She used to have really long hair.",
+    "text": "She used to have really long hair.",
+    "level": "A2"
+  },
+  {
+    "english": "He used to work in a small bakery.",
+    "text": "He used to work in a small bakery.",
+    "level": "A2"
+  },
+  {
+    "english": "I used to be afraid of the dark.",
+    "text": "I used to be afraid of the dark.",
+    "level": "A2"
+  },
+  {
+    "english": "They used to live in the countryside.",
+    "text": "They used to live in the countryside.",
+    "level": "A2"
+  },
+  {
+    "english": "We used to play outside all day.",
+    "text": "We used to play outside all day.",
+    "level": "A2"
+  },
+  {
+    "english": "My grandmother used to sing to me.",
+    "text": "My grandmother used to sing to me.",
+    "level": "A2"
+  },
+  {
+    "english": "We would swim in the lake every summer.",
+    "text": "We would swim in the lake every summer.",
+    "level": "B1"
+  },
+  {
+    "english": "On Sundays my dad would cook a huge breakfast.",
+    "text": "On Sundays my dad would cook a huge breakfast.",
+    "level": "B1"
+  },
+  {
+    "english": "When I was little, I would read under the covers at night.",
+    "text": "When I was little, I would read under the covers at night.",
+    "level": "B1"
+  },
+  {
+    "english": "Every winter we would visit my aunt in the mountains.",
+    "text": "Every winter we would visit my aunt in the mountains.",
+    "level": "B1"
+  },
+  {
+    "english": "I used to think learning a language was impossible.",
+    "text": "I used to think learning a language was impossible.",
+    "level": "B1"
+  },
+  {
+    "english": "There used to be an old cinema on this corner.",
+    "text": "There used to be an old cinema on this corner.",
+    "level": "B1"
+  },
+  {
+    "english": "We didn't use to lock our front door back then.",
+    "text": "We didn't use to lock our front door back then.",
+    "level": "B1"
+  },
+  {
+    "english": "Did you use to play any sports when you were younger?",
+    "text": "Did you use to play any sports when you were younger?",
+    "level": "B1"
+  },
+  {
+    "english": "I used to smoke, but I gave it up two years ago.",
+    "text": "I used to smoke, but I gave it up two years ago.",
+    "level": "B1"
+  },
+  {
+    "english": "She used to travel almost two hours to work each day.",
+    "text": "She used to travel almost two hours to work each day.",
+    "level": "B1"
+  },
+  {
+    "english": "My brother would borrow my clothes without ever asking.",
+    "text": "My brother would borrow my clothes without ever asking.",
+    "level": "B1"
+  },
+  {
+    "english": "We used to spend hours just talking on the phone.",
+    "text": "We used to spend hours just talking on the phone.",
+    "level": "B1"
+  },
+  {
+    "english": "I used to hate coffee, and now I drink it every morning.",
+    "text": "I used to hate coffee, and now I drink it every morning.",
+    "level": "B1"
+  },
+  {
+    "english": "He used to be much more serious than he is now.",
+    "text": "He used to be much more serious than he is now.",
+    "level": "B1"
+  },
+  {
+    "english": "Grandpa would tell us the same stories every Christmas.",
+    "text": "Grandpa would tell us the same stories every Christmas.",
+    "level": "B1"
+  },
+  {
+    "english": "We used to know everyone on our street.",
+    "text": "We used to know everyone on our street.",
+    "level": "B1"
+  },
+  {
+    "english": "I would always get lost in this part of town.",
+    "text": "I would always get lost in this part of town.",
+    "level": "B1"
+  },
+  {
+    "english": "They used to argue about the silliest things.",
+    "text": "They used to argue about the silliest things.",
+    "level": "B1"
+  },
+  {
+    "english": "My mum used to leave the porch light on for me.",
+    "text": "My mum used to leave the porch light on for me.",
+    "level": "B1"
+  },
+  {
+    "english": "We used to have a little dog called Biscuit.",
+    "text": "We used to have a little dog called Biscuit.",
+    "level": "B1"
+  },
+  {
+    "english": "I'm not nearly as fit as I used to be.",
+    "text": "I'm not nearly as fit as I used to be.",
+    "level": "B2"
+  },
+  {
+    "english": "Things aren't quite what they used to be around here.",
+    "text": "Things aren't quite what they used to be around here.",
+    "level": "B2"
+  },
+  {
+    "english": "He would spend whole weekends tinkering with old engines.",
+    "text": "He would spend whole weekends tinkering with old engines.",
+    "level": "B2"
+  },
+  {
+    "english": "Back then, we would make do with whatever we had.",
+    "text": "Back then, we would make do with whatever we had.",
+    "level": "B2"
+  },
+  {
+    "english": "I used to take these quiet mornings completely for granted.",
+    "text": "I used to take these quiet mornings completely for granted.",
+    "level": "B2"
+  },
+  {
+    "english": "She would sit by the window for hours, watching the rain.",
+    "text": "She would sit by the window for hours, watching the rain.",
+    "level": "B2"
+  },
+  {
+    "english": "There didn't use to be so much traffic on this road.",
+    "text": "There didn't use to be so much traffic on this road.",
+    "level": "B2"
+  },
+  {
+    "english": "The train had already left.",
+    "text": "The train had already left.",
+    "level": "A2"
+  },
+  {
+    "english": "She had gone home before I arrived.",
+    "text": "She had gone home before I arrived.",
+    "level": "A2"
+  },
+  {
+    "english": "We had finished dinner by seven.",
+    "text": "We had finished dinner by seven.",
+    "level": "A2"
+  },
+  {
+    "english": "They had never seen the sea before.",
+    "text": "They had never seen the sea before.",
+    "level": "A2"
+  },
+  {
+    "english": "I had forgotten my keys again.",
+    "text": "I had forgotten my keys again.",
+    "level": "A2"
+  },
+  {
+    "english": "He had eaten before the party.",
+    "text": "He had eaten before the party.",
+    "level": "A2"
+  },
+  {
+    "english": "The shop had closed by the time we got there.",
+    "text": "The shop had closed by the time we got there.",
+    "level": "A2"
+  },
+  {
+    "english": "The train had left by the time we reached the station.",
+    "text": "The train had left by the time we reached the station.",
+    "level": "B1"
+  },
+  {
+    "english": "By the time we arrived, the film had already started.",
+    "text": "By the time we arrived, the film had already started.",
+    "level": "B1"
+  },
+  {
+    "english": "She had never tried sushi before that evening.",
+    "text": "She had never tried sushi before that evening.",
+    "level": "B1"
+  },
+  {
+    "english": "When I woke up, it had stopped raining.",
+    "text": "When I woke up, it had stopped raining.",
+    "level": "B1"
+  },
+  {
+    "english": "They had sold all the tickets before we even got in line.",
+    "text": "They had sold all the tickets before we even got in line.",
+    "level": "B1"
+  },
+  {
+    "english": "After he had apologized, everyone felt a bit better.",
+    "text": "After he had apologized, everyone felt a bit better.",
+    "level": "B1"
+  },
+  {
+    "english": "I suddenly realized I had left my phone at home.",
+    "text": "I suddenly realized I had left my phone at home.",
+    "level": "B1"
+  },
+  {
+    "english": "Once we had unpacked, we went straight to the beach.",
+    "text": "Once we had unpacked, we went straight to the beach.",
+    "level": "B1"
+  },
+  {
+    "english": "By lunchtime, she had answered thirty emails.",
+    "text": "By lunchtime, she had answered thirty emails.",
+    "level": "B1"
+  },
+  {
+    "english": "He didn't recognize me because I had cut my hair.",
+    "text": "He didn't recognize me because I had cut my hair.",
+    "level": "B1"
+  },
+  {
+    "english": "We had planned everything before the guests arrived.",
+    "text": "We had planned everything before the guests arrived.",
+    "level": "B1"
+  },
+  {
+    "english": "The garden looked amazing after they had finished it.",
+    "text": "The garden looked amazing after they had finished it.",
+    "level": "B1"
+  },
+  {
+    "english": "I had never been abroad until last year.",
+    "text": "I had never been abroad until last year.",
+    "level": "B1"
+  },
+  {
+    "english": "By the time the doctor came, the pain had gone.",
+    "text": "By the time the doctor came, the pain had gone.",
+    "level": "B1"
+  },
+  {
+    "english": "She had saved for months before she bought the car.",
+    "text": "She had saved for months before she bought the car.",
+    "level": "B1"
+  },
+  {
+    "english": "Before phones, we had relied on paper maps.",
+    "text": "Before phones, we had relied on paper maps.",
+    "level": "B1"
+  },
+  {
+    "english": "They had already met once, years earlier.",
+    "text": "They had already met once, years earlier.",
+    "level": "B1"
+  },
+  {
+    "english": "After I had read the book, I understood the film much better.",
+    "text": "After I had read the book, I understood the film much better.",
+    "level": "B1"
+  },
+  {
+    "english": "We couldn't get in because we had forgotten the tickets.",
+    "text": "We couldn't get in because we had forgotten the tickets.",
+    "level": "B1"
+  },
+  {
+    "english": "By the time I found the recipe, everyone had gone home.",
+    "text": "By the time I found the recipe, everyone had gone home.",
+    "level": "B1"
+  },
+  {
+    "english": "By the time the rescue team arrived, the storm had passed.",
+    "text": "By the time the rescue team arrived, the storm had passed.",
+    "level": "B2"
+  },
+  {
+    "english": "She spoke as if she had rehearsed every single word.",
+    "text": "She spoke as if she had rehearsed every single word.",
+    "level": "B2"
+  },
+  {
+    "english": "Until that talk, I hadn't realized how much he had changed.",
+    "text": "Until that talk, I hadn't realized how much he had changed.",
+    "level": "B2"
+  },
+  {
+    "english": "By the time the news broke, the company had already collapsed.",
+    "text": "By the time the news broke, the company had already collapsed.",
+    "level": "B2"
+  },
+  {
+    "english": "Everything had gone wrong long before we even noticed.",
+    "text": "Everything had gone wrong long before we even noticed.",
+    "level": "B2"
+  },
+  {
+    "english": "He mentioned that he had lived in Japan for a decade.",
+    "text": "He mentioned that he had lived in Japan for a decade.",
+    "level": "B2"
+  },
+  {
+    "english": "The town had changed beyond recognition by the time she returned.",
+    "text": "The town had changed beyond recognition by the time she returned.",
+    "level": "B2"
+  },
+  {
+    "english": "It turned out they had known about the plan all along.",
+    "text": "It turned out they had known about the plan all along.",
+    "level": "B2"
+  },
+  {
+    "english": "I've been waiting for an hour.",
+    "text": "I've been waiting for an hour.",
+    "level": "A2"
+  },
+  {
+    "english": "How long have you been waiting?",
+    "text": "How long have you been waiting?",
+    "level": "A2"
+  },
+  {
+    "english": "She's been sleeping all afternoon.",
+    "text": "She's been sleeping all afternoon.",
+    "level": "A2"
+  },
+  {
+    "english": "It's been raining all day.",
+    "text": "It's been raining all day.",
+    "level": "A2"
+  },
+  {
+    "english": "We've been walking for hours.",
+    "text": "We've been walking for hours.",
+    "level": "A2"
+  },
+  {
+    "english": "I've been learning English for two years.",
+    "text": "I've been learning English for two years.",
+    "level": "A2"
+  },
+  {
+    "english": "They've been playing outside since lunch.",
+    "text": "They've been playing outside since lunch.",
+    "level": "A2"
+  },
+  {
+    "english": "He's been working since early this morning.",
+    "text": "He's been working since early this morning.",
+    "level": "A2"
+  },
+  {
+    "english": "How long have you been learning English?",
+    "text": "How long have you been learning English?",
+    "level": "B1"
+  },
+  {
+    "english": "I've been waiting for the bus for twenty minutes.",
+    "text": "I've been waiting for the bus for twenty minutes.",
+    "level": "B1"
+  },
+  {
+    "english": "She's been studying medicine for three years now.",
+    "text": "She's been studying medicine for three years now.",
+    "level": "B1"
+  },
+  {
+    "english": "We've been living in this flat since 2019.",
+    "text": "We've been living in this flat since 2019.",
+    "level": "B1"
+  },
+  {
+    "english": "How long have you been feeling like this?",
+    "text": "How long have you been feeling like this?",
+    "level": "B1"
+  },
+  {
+    "english": "They've been building that bridge for ages.",
+    "text": "They've been building that bridge for ages.",
+    "level": "B1"
+  },
+  {
+    "english": "I've been trying to reach you all morning.",
+    "text": "I've been trying to reach you all morning.",
+    "level": "B1"
+  },
+  {
+    "english": "He's been saving up for a new bike.",
+    "text": "He's been saving up for a new bike.",
+    "level": "B1"
+  },
+  {
+    "english": "My eyes hurt because I've been staring at a screen all day.",
+    "text": "My eyes hurt because I've been staring at a screen all day.",
+    "level": "B1"
+  },
+  {
+    "english": "How long have you two been going out?",
+    "text": "How long have you two been going out?",
+    "level": "B1"
+  },
+  {
+    "english": "I've been meaning to call you for weeks.",
+    "text": "I've been meaning to call you for weeks.",
+    "level": "B1"
+  },
+  {
+    "english": "She's been feeling much better since the operation.",
+    "text": "She's been feeling much better since the operation.",
+    "level": "B1"
+  },
+  {
+    "english": "We've been driving since dawn and I'm exhausted.",
+    "text": "We've been driving since dawn and I'm exhausted.",
+    "level": "B1"
+  },
+  {
+    "english": "How long have you been playing the guitar?",
+    "text": "How long have you been playing the guitar?",
+    "level": "B1"
+  },
+  {
+    "english": "The kids have been asking about you.",
+    "text": "The kids have been asking about you.",
+    "level": "B1"
+  },
+  {
+    "english": "I've been thinking about changing jobs.",
+    "text": "I've been thinking about changing jobs.",
+    "level": "B1"
+  },
+  {
+    "english": "They've been renovating the house all summer.",
+    "text": "They've been renovating the house all summer.",
+    "level": "B1"
+  },
+  {
+    "english": "You look tired — have you been sleeping badly?",
+    "text": "You look tired — have you been sleeping badly?",
+    "level": "B1"
+  },
+  {
+    "english": "I've been coughing for a week and it won't stop.",
+    "text": "I've been coughing for a week and it won't stop.",
+    "level": "B1"
+  },
+  {
+    "english": "How long has it been raining?",
+    "text": "How long has it been raining?",
+    "level": "B1"
+  },
+  {
+    "english": "I've been putting off this decision for far too long.",
+    "text": "I've been putting off this decision for far too long.",
+    "level": "B2"
+  },
+  {
+    "english": "She's been dealing with a lot of stress at work lately.",
+    "text": "She's been dealing with a lot of stress at work lately.",
+    "level": "B2"
+  },
+  {
+    "english": "How long have you been working towards this goal?",
+    "text": "How long have you been working towards this goal?",
+    "level": "B2"
+  },
+  {
+    "english": "We've been struggling to keep up with the demand.",
+    "text": "We've been struggling to keep up with the demand.",
+    "level": "B2"
+  },
+  {
+    "english": "He's been gradually losing interest in the project.",
+    "text": "He's been gradually losing interest in the project.",
+    "level": "B2"
+  },
+  {
+    "english": "They've been quietly campaigning for change for years.",
+    "text": "They've been quietly campaigning for change for years.",
+    "level": "B2"
+  },
+  {
+    "english": "I've been wondering whether I made the right choice.",
+    "text": "I've been wondering whether I made the right choice.",
+    "level": "B2"
+  },
+  {
+    "english": "My life is very different now.",
+    "text": "My life is very different now.",
+    "level": "A2"
+  },
+  {
+    "english": "I have a lot more free time these days.",
+    "text": "I have a lot more free time these days.",
+    "level": "A2"
+  },
+  {
+    "english": "We live in a bigger house now.",
+    "text": "We live in a bigger house now.",
+    "level": "A2"
+  },
+  {
+    "english": "Now I ride my bike to work.",
+    "text": "Now I ride my bike to work.",
+    "level": "A2"
+  },
+  {
+    "english": "These days I go to bed much earlier.",
+    "text": "These days I go to bed much earlier.",
+    "level": "A2"
+  },
+  {
+    "english": "I feel healthier than before.",
+    "text": "I feel healthier than before.",
+    "level": "A2"
+  },
+  {
+    "english": "Everything is easier now.",
+    "text": "Everything is easier now.",
+    "level": "A2"
+  },
+  {
+    "english": "I used to be shy, but now I love meeting new people.",
+    "text": "I used to be shy, but now I love meeting new people.",
+    "level": "B1"
+  },
+  {
+    "english": "Back then I had no money; now I can finally travel.",
+    "text": "Back then I had no money; now I can finally travel.",
+    "level": "B1"
+  },
+  {
+    "english": "These days I cook at home much more than I used to.",
+    "text": "These days I cook at home much more than I used to.",
+    "level": "B1"
+  },
+  {
+    "english": "My priorities have completely changed since I became a parent.",
+    "text": "My priorities have completely changed since I became a parent.",
+    "level": "B1"
+  },
+  {
+    "english": "I never used to exercise, but now I run every morning.",
+    "text": "I never used to exercise, but now I run every morning.",
+    "level": "B1"
+  },
+  {
+    "english": "Life was slower before we all had smartphones.",
+    "text": "Life was slower before we all had smartphones.",
+    "level": "B1"
+  },
+  {
+    "english": "I've grown a lot more patient over the years.",
+    "text": "I've grown a lot more patient over the years.",
+    "level": "B1"
+  },
+  {
+    "english": "We used to rent, but now we own our place.",
+    "text": "We used to rent, but now we own our place.",
+    "level": "B1"
+  },
+  {
+    "english": "Since moving to the city, I've become far more independent.",
+    "text": "Since moving to the city, I've become far more independent.",
+    "level": "B1"
+  },
+  {
+    "english": "I used to worry about everything; now I try to let go.",
+    "text": "I used to worry about everything; now I try to let go.",
+    "level": "B1"
+  },
+  {
+    "english": "The town has grown so much since I was a kid.",
+    "text": "The town has grown so much since I was a kid.",
+    "level": "B1"
+  },
+  {
+    "english": "These days I value my free time far more.",
+    "text": "These days I value my free time far more.",
+    "level": "B1"
+  },
+  {
+    "english": "I've learned to say no, which I could never do before.",
+    "text": "I've learned to say no, which I could never do before.",
+    "level": "B1"
+  },
+  {
+    "english": "My taste in music has changed completely.",
+    "text": "My taste in music has changed completely.",
+    "level": "B1"
+  },
+  {
+    "english": "I used to dream about the future; now I try to enjoy today.",
+    "text": "I used to dream about the future; now I try to enjoy today.",
+    "level": "B1"
+  },
+  {
+    "english": "We've become much closer since the kids left home.",
+    "text": "We've become much closer since the kids left home.",
+    "level": "B1"
+  },
+  {
+    "english": "I've started reading again after years away from books.",
+    "text": "I've started reading again after years away from books.",
+    "level": "B1"
+  },
+  {
+    "english": "Everything felt harder before I asked for help.",
+    "text": "Everything felt harder before I asked for help.",
+    "level": "B1"
+  },
+  {
+    "english": "I used to chase money; now I chase time.",
+    "text": "I used to chase money; now I chase time.",
+    "level": "B1"
+  },
+  {
+    "english": "Compared to a few years ago, I'm a completely different person.",
+    "text": "Compared to a few years ago, I'm a completely different person.",
+    "level": "B1"
+  },
+  {
+    "english": "Looking back, I barely recognize the person I used to be.",
+    "text": "Looking back, I barely recognize the person I used to be.",
+    "level": "B2"
+  },
+  {
+    "english": "My whole outlook on life has shifted over the past decade.",
+    "text": "My whole outlook on life has shifted over the past decade.",
+    "level": "B2"
+  },
+  {
+    "english": "I've gradually come to appreciate the quiet life.",
+    "text": "I've gradually come to appreciate the quiet life.",
+    "level": "B2"
+  },
+  {
+    "english": "Where I once craved excitement, I now crave stability.",
+    "text": "Where I once craved excitement, I now crave stability.",
+    "level": "B2"
+  },
+  {
+    "english": "These days I measure success very differently than I once did.",
+    "text": "These days I measure success very differently than I once did.",
+    "level": "B2"
+  },
+  {
+    "english": "The version of me from ten years ago would be amazed.",
+    "text": "The version of me from ten years ago would be amazed.",
+    "level": "B2"
+  },
+  {
+    "english": "Somewhere along the way, my ambitions quietly changed.",
+    "text": "Somewhere along the way, my ambitions quietly changed.",
+    "level": "B2"
+  },
+  {
+    "english": "I've made my peace with the choices I once regretted.",
+    "text": "I've made my peace with the choices I once regretted.",
+    "level": "B2"
+  }
+]

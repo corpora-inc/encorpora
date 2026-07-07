@@ -23,6 +23,14 @@ type Phase =
   | { kind: "result"; outcome: PlacementOutcome }
   | { kind: "pact" }
 
+/** The CEFR band of the arc a start unit lives in — a concrete "where" for
+ *  the result screen, derived from the graph (no engine-type change needed). */
+function arcLabelFor(runtime: JourneyRuntime, startUnitId: string): string | null {
+  const unit = runtime.graph.units.find((u) => u.unitId === startUnitId)
+  if (!unit) return null
+  return runtime.graph.arcs.find((a) => a.arcId === unit.arcId)?.cefr ?? null
+}
+
 export function PlacementFlow(props: {
   runtime: JourneyRuntime
   courseKey: CourseKey
@@ -148,7 +156,12 @@ export function PlacementFlow(props: {
           onResult={onProbeResult}
         />
       ) : phase.kind === "result" ? (
-        <PlacementResult outcome={phase.outcome} unitName={props.unitName} onContinue={afterResult} />
+        <PlacementResult
+          outcome={phase.outcome}
+          unitName={props.unitName}
+          arcLabel={arcLabelFor(props.runtime, phase.outcome.startUnitId)}
+          onContinue={afterResult}
+        />
       ) : (
         <div className="flex w-full max-w-[26rem] flex-col items-center gap-5 text-center" data-testid="journey-pact">
           <div className="text-2xl font-bold text-foreground">{t("journey.streak.pactTitle")}</div>

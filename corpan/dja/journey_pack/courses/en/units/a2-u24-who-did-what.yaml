@@ -1,0 +1,73 @@
+id: en.a2.u24
+arc: en.arc2
+theme: "Who did what?"
+cando:
+  - key: events
+    text: "Can ask and answer detailed questions about a recent event — who did something, what happened, and why — choosing the right word order for subject and object questions."
+vocab_band: { lo: 1, hi: 4268 }
+phrase_domains: [social, civic]
+skills:
+  - id: en.skill.questions-adv
+    kind: grammar
+    title: "Subject vs object questions"
+    b: -1.0
+    prereqs: [en.skill.be-questions, en.skill.jobs]
+grammar_nodes: [en.gn.question-words-deep]
+items:
+  - ref: "phrase:base:17780"  # Who is your favorite writer?
+    skills: [en.skill.questions-adv]
+    importance: 3
+    probe: true
+    b: -1.0
+  - ref: "phrase:base:9679"  # What did you do yesterday?
+    skills: [en.skill.questions-adv]
+    importance: 3
+    probe: true
+    b: -1.0
+  - ref: "phrase:base:20379"  # What happened at the beginning of the story?
+    skills: [en.skill.questions-adv]
+    importance: 3
+    probe: true
+    b: -1.0
+  - ref: "phrase:base:14464"  # Who are you meeting this afternoon?
+    skills: [en.skill.questions-adv]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:10397"  # Why did they close the park early?
+    skills: [en.skill.questions-adv]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20319"  # When did you meet your best friend?
+    skills: [en.skill.questions-adv]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:news"
+    skills: [en.skill.questions-adv]
+    importance: 2
+  - ref: "word:en:who"
+    skills: [en.skill.questions-adv]
+    importance: 2
+  - ref: "word:en:someone"
+    skills: [en.skill.questions-adv]
+    importance: 2
+  - ref: "word:en:everyone"
+    skills: [en.skill.questions-adv]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [social, civic]
+      level: A2
+      count: 10
+      skills: [en.skill.questions-adv]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

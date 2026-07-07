@@ -242,12 +242,16 @@ async function driveOneCard(h: SmokeHandle): Promise<void> {
   const answer = items[0]
 
   const settleThenAdvance = async () => {
+    // Explicit-button cards (intro_echo / flip_recall Continue) advance the
+    // instant they're pressed, so the card may already be gone; wait for
+    // EITHER a settled record or the card changing, then advance if it stayed.
     await waitFor(
-      () => h.runtime.currentSettled(),
+      () => (h.runtime.current()?.cardId !== card.cardId || h.runtime.currentSettled() ? true : null),
       () =>
         `settle ${t} (cur=${h.runtime.current()?.cardId} stampC=${!!byTestId("journey-stamp-correct")} stampI=${!!byTestId("journey-stamp-incorrect")} tiles=${[...dom.window.document.querySelectorAll("[data-journey-tile]")].map((b) => `"${b.textContent}"[${(b.className || "").includes("emerald") ? "C" : (b.className || "").includes("red") ? "W" : "-"}]`).join(",")})`,
       6000,
     )
+    if (h.runtime.current()?.cardId !== card.cardId) return // already auto-advanced
     h.runtime.advance()
   }
 
@@ -320,8 +324,9 @@ async function driveOneCard(h: SmokeHandle): Promise<void> {
       break
     }
     case "flip_recall": {
+      // reveal → Continue (no self-assessment buttons anymore, contract #5)
       click(await waitFor(() => byTestId("journey-flip", scope()), "flip"))
-      click(await waitFor(() => byTestId("journey-flip-knew", scope()), "knew it"))
+      click(await waitFor(() => byTestId("journey-flip-continue", scope()), "flip continue"))
       break
     }
     case "intro_echo": {

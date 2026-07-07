@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Nota de gramática",
-      "tryIt": "Experimente"
+      "tryIt": "Experimente",
+      "contrastLabel": "Comparado com o seu idioma"
+    },
+    "word": {
+      "inContext": "No contexto",
+      "meaningShow": "Significado",
+      "meaningHide": "Ocultar"
     },
     "checkpoint": {
       "title": "Checkpoint",
@@ -980,7 +986,8 @@
       "prelit": "Você começa com {{count}} itens já conhecidos.",
       "redo": "Reavaliar meu nível",
       "aboveTitle": "Você está além deste curso",
-      "aboveBody": "Este curso cobre por enquanto material iniciante, e você está acima disso. Você ainda pode explorá-lo — novos níveis estão a caminho."
+      "aboveBody": "Este curso cobre por enquanto material iniciante, e você está acima disso. Você ainda pode explorá-lo — novos níveis estão a caminho.",
+      "aboveFrontier": "Você está à frente da maior parte deste curso — começando em {{unit}}."
     },
     "path": {
       "title": "Seu caminho",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Escuta sem as mãos",
       "viewPath": "Ver caminho",
       "redoPlacement": "Reavaliar meu nível"
+    },
+    "wordPack": {
+      "title": "Significados das palavras",
+      "body": "Veja o que as palavras significam em {{language}} enquanto avança.",
+      "add": "Adicionar ({{size}})",
+      "dismiss": "Agora não",
+      "downloading": "Adicionando… {{percent}}%",
+      "failed": "Não foi possível adicionar",
+      "retry": "Tentar de novo"
     }
   }
 }

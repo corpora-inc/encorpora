@@ -376,3 +376,736 @@ nodes:
     note: >-
       Join ideas: "I like tea and coffee. It's small but nice. I stayed
       home because I was tired."
+
+  # ==================== Arc 2 — A2 "Everyday" (orders 44–83) ====================
+  # --- en.a2.u01 Back then ---
+  - id: en.gn.past-cont
+    skill: en.skill.past-narration
+    order: 44
+    cefr: A2
+    title: "Past continuous"
+    note: >-
+      Use was or were plus an -ing verb for something in progress at a past
+      moment: "I was cooking when you called." It sets the scene rather than
+      reporting a finished event.
+  - id: en.gn.past-simple-vs-cont
+    skill: en.skill.past-narration
+    order: 45
+    cefr: A2
+    title: "Interrupted past"
+    note: >-
+      A longer background action (was or were + -ing) is often cut short by a
+      quick one in the past simple, joined by when or while: "I was reading
+      when the lights went out."
+  # --- en.a2.u02 The way things were ---
+  - id: en.gn.used-to
+    skill: en.skill.used-to
+    order: 46
+    cefr: A2
+    title: "used to"
+    note: >-
+      "Used to" describes a past habit or state that no longer holds: "I used
+      to live in Lima." The verb after it stays bare — used to live, not used
+      to lived.
+  # --- en.a2.u03 Have you ever? ---
+  - id: en.gn.pres-perf-exp
+    skill: en.skill.experiences
+    order: 47
+    cefr: A2
+    title: "Present perfect: experience"
+    note: >-
+      Have or has plus a past participle talks about life experience without
+      saying when: "I have visited Rome." The moment is not the point — the
+      experience is.
+  - id: en.gn.pres-perf-been-gone
+    skill: en.skill.experiences
+    order: 48
+    cefr: A2
+    title: "been vs gone"
+    note: >-
+      "Has been to" means went and came back; "has gone to" means still there:
+      "She has been to Paris" against "She has gone to Paris."
+  # --- en.a2.u04 So far ---
+  - id: en.gn.pres-perf-yet-already
+    skill: en.skill.completion
+    order: 49
+    cefr: A2
+    title: "already / yet / just"
+    note: >-
+      Already marks something done sooner than expected, yet asks or denies in
+      questions and negatives, and just points to the very recent past: "I've
+      just eaten. Have you finished yet?"
+  - id: en.gn.for-since
+    skill: en.skill.completion
+    order: 50
+    cefr: A2
+    title: "for / since"
+    note: >-
+      For measures a length of time (for two years); since names the point it
+      started (since 2020). Both pair naturally with the present perfect.
+  # --- en.a2.u05 Then and now ---
+  - id: en.gn.pres-perf-vs-past
+    skill: en.skill.past-vs-perfect
+    order: 51
+    cefr: A2
+    title: "Present perfect vs past simple"
+    note: >-
+      A finished time word (yesterday, last week) calls for the past simple;
+      an unfinished or unstated time leans on the present perfect. "I saw it
+      yesterday" but "I have seen it."
+  # --- en.a2.u06 What will happen ---
+  - id: en.gn.will-predict
+    skill: en.skill.predictions
+    order: 52
+    cefr: A2
+    title: "will (predictions)"
+    note: >-
+      Will plus a bare verb states a prediction or a fact about the future:
+      "It will rain later." The form stays the same from person to person.
+  - id: en.gn.will-decide-offer
+    skill: en.skill.predictions
+    order: 53
+    cefr: A2
+    title: "will (decisions & offers)"
+    note: >-
+      Reach for will when you decide, offer, or promise as you speak: "I'll
+      help you. I'll get it." The choice is made in the moment.
+  # --- en.a2.u07 Making plans ---
+  - id: en.gn.will-vs-going-to
+    skill: en.skill.arrangements
+    order: 54
+    cefr: A2
+    title: "will vs going to"
+    note: >-
+      Going to fits a plan already in mind or evidence you can see; will fits
+      a prediction or an on-the-spot decision: "We're going to paint" against
+      "I'll paint it."
+  - id: en.gn.pres-cont-future
+    skill: en.skill.arrangements
+    order: 55
+    cefr: A2
+    title: "Present continuous for arrangements"
+    note: >-
+      The present continuous can point to a fixed arrangement with a set time:
+      "I'm meeting Ana at six." The time word keeps it from sounding like right
+      now.
+  # --- en.a2.u08 When and if ---
+  - id: en.gn.time-clauses
+    skill: en.skill.conditions
+    order: 56
+    cefr: A2
+    title: "Future time clauses"
+    note: >-
+      After when, as soon as, before, or after, English uses a present tense
+      for future meaning: "When I arrive, I'll call you" — not "when I will
+      arrive."
+  - id: en.gn.cond-zero
+    skill: en.skill.conditions
+    order: 57
+    cefr: A2
+    title: "Zero conditional"
+    note: >-
+      If plus present, present, for things that are generally true: "If you
+      heat ice, it melts." Both halves stay in the present.
+  - id: en.gn.cond-first
+    skill: en.skill.conditions
+    order: 58
+    cefr: A2
+    title: "First conditional"
+    note: >-
+      If plus present, will, for a real future possibility: "If it rains,
+      we'll stay in." The will stays out of the if-half.
+  # --- en.a2.u09 Good advice ---
+  - id: en.gn.should-advice
+    skill: en.skill.advice
+    order: 59
+    cefr: A2
+    title: "should / shouldn't"
+    note: >-
+      Should and shouldn't offer advice or an opinion, followed by a bare
+      verb: "You should rest. You shouldn't skip breakfast."
+  # --- en.a2.u10 Rules and obligations ---
+  - id: en.gn.have-to
+    skill: en.skill.obligation
+    order: 60
+    cefr: A2
+    title: "have to / don't have to"
+    note: >-
+      Have to states an obligation; don't have to says there is none — not
+      that something is forbidden: "I have to work" against "You don't have to
+      come."
+  - id: en.gn.must-mustnt
+    skill: en.skill.obligation
+    order: 61
+    cefr: A2
+    title: "must / mustn't"
+    note: >-
+      Must marks a strong rule; mustn't marks a prohibition, which is a
+      different idea from don't have to: "You mustn't park here."
+  # --- en.a2.u11 Could you help? ---
+  - id: en.gn.could-past-polite
+    skill: en.skill.polite-requests
+    order: 62
+    cefr: A2
+    title: "could"
+    note: >-
+      Could looks back at a past ability ("I could swim at five") and softens
+      a request in the present ("Could you help me?").
+  - id: en.gn.would-like-offers
+    skill: en.skill.polite-requests
+    order: 63
+    cefr: A2
+    title: "would you like…?"
+    note: >-
+      "Would you like…?" offers politely and "I'd like…" asks for something
+      gently: "Would you like a coffee? I'd like to book a table."
+  # --- en.a2.u12 It might rain ---
+  - id: en.gn.might-may
+    skill: en.skill.possibility
+    order: 64
+    cefr: A2
+    title: "might / may"
+    note: >-
+      Might and may point to possibility rather than certainty: "It might
+      rain. She may be late." Both leave the outcome open.
+  # --- en.a2.u13 How much? How many? ---
+  - id: en.gn.count-uncount
+    skill: en.skill.quantity
+    order: 65
+    cefr: A2
+    title: "Countable & uncountable"
+    note: >-
+      Some nouns — water, money, rice — are treated as a mass: no plural -s
+      and no "a" in front. Others count one by one as usual.
+  - id: en.gn.much-many-alot
+    skill: en.skill.quantity
+    order: 66
+    cefr: A2
+    title: "much / many / a lot of"
+    note: >-
+      Many pairs with countable nouns, much with uncountable ones, and a lot
+      of works comfortably with both: "many books, much time, a lot of
+      either."
+  # --- en.a2.u14 A little more ---
+  - id: en.gn.few-little
+    skill: en.skill.quantity-fine
+    order: 67
+    cefr: A2
+    title: "(a) few / (a) little"
+    note: >-
+      A few goes with countable nouns and a little with uncountable ones; drop
+      the "a" and few or little hints at not enough: "a few friends" against
+      "few friends."
+  - id: en.gn.too-enough
+    skill: en.skill.quantity-fine
+    order: 68
+    cefr: A2
+    title: "too / enough"
+    note: >-
+      Too before an adjective says more than you want (too hot); enough comes
+      after an adjective but before a noun (warm enough, enough time).
+  # --- en.a2.u15 As good as it gets ---
+  - id: en.gn.as-as
+    skill: en.skill.comparison-adv
+    order: 69
+    cefr: A2
+    title: "as … as"
+    note: >-
+      "As … as" marks two things as equal (as tall as me), and "not as … as"
+      marks one as less: "It's not as cheap as before."
+  - id: en.gn.comp-adverbs
+    skill: en.skill.comparison-adv
+    order: 70
+    cefr: A2
+    title: "Comparative adverbs"
+    note: >-
+      To compare how something is done, use more, -er, or an irregular form
+      with than: "She types more quickly. He runs faster. They play better
+      than us."
+  # --- en.a2.u16 Doing it well ---
+  - id: en.gn.adv-manner
+    skill: en.skill.adverbs
+    order: 71
+    cefr: A2
+    title: "Adverbs of manner"
+    note: >-
+      Add -ly to describe how an action happens: "She speaks slowly." A few
+      keep their own shape — well, fast, hard.
+  - id: en.gn.adv-degree
+    skill: en.skill.adverbs
+    order: 72
+    cefr: A2
+    title: "Adverbs of degree"
+    note: >-
+      Very, really, quite, and too sit before an adjective to turn it up or
+      down: "really tired, quite good, too late."
+  # --- en.a2.u17 I love cooking ---
+  - id: en.gn.gerund-after-verbs
+    skill: en.skill.gerunds
+    order: 73
+    cefr: A2
+    title: "verb + -ing"
+    note: >-
+      After like, love, hate, enjoy, mind, and stop, the next verb takes -ing:
+      "I enjoy cooking. Do you mind waiting?"
+  # --- en.a2.u18 I want to learn ---
+  - id: en.gn.infinitive-after-verbs
+    skill: en.skill.infinitives
+    order: 74
+    cefr: A2
+    title: "verb + to-infinitive"
+    note: >-
+      After want, need, hope, decide, and would like, the next verb takes
+      "to": "I want to go. She decided to stay."
+  - id: en.gn.infinitive-purpose
+    skill: en.skill.infinitives
+    order: 75
+    cefr: A2
+    title: "Infinitive of purpose"
+    note: >-
+      "To + verb" answers why you did something: "I came to help." It carries
+      the sense of "in order to."
+  # --- en.a2.u19 Turn it on ---
+  - id: en.gn.phrasal-verbs-1
+    skill: en.skill.phrasal-verbs
+    order: 76
+    cefr: A2
+    title: "Phrasal verbs I"
+    note: >-
+      A verb plus a small particle can shift the meaning: get up, turn on,
+      look for, put on. The pair works as a single idea.
+  - id: en.gn.verb-prep-collocations
+    skill: en.skill.phrasal-verbs
+    order: 77
+    cefr: A2
+    title: "verb + preposition"
+    note: >-
+      Certain verbs travel with a fixed preposition: listen to, wait for, look
+      at, depend on. The pairing is worth learning whole.
+  # --- en.a2.u20 The one that works ---
+  - id: en.gn.rel-who-which
+    skill: en.skill.relative-clauses
+    order: 78
+    cefr: A2
+    title: "Relative clauses (defining)"
+    note: >-
+      Use who for people and which or that for things to add essential detail:
+      "the man who lives here, the bag that fits."
+  # --- en.a2.u21 Mine and yours ---
+  - id: en.gn.poss-pron
+    skill: en.skill.possession-adv
+    order: 79
+    cefr: A2
+    title: "Possessive pronouns"
+    note: >-
+      Mine, yours, his, hers, ours, and theirs stand alone with no noun after
+      them: "That book is mine."
+  - id: en.gn.reflexive
+    skill: en.skill.possession-adv
+    order: 80
+    cefr: A2
+    title: "Reflexive pronouns"
+    note: >-
+      When the subject and object are the same, use myself, yourself, herself,
+      and the rest: "I hurt myself. Help yourselves."
+  # --- en.a2.u22 Because and although ---
+  - id: en.gn.so-because-although
+    skill: en.skill.connectors-adv
+    order: 81
+    cefr: A2
+    title: "so / because / although"
+    note: >-
+      So introduces a result, because a reason, and although a contrast: "It
+      was late, so we left. We stayed because it was warm, although it rained."
+  # --- en.a2.u23 Getting around ---
+  - id: en.gn.prep-movement
+    skill: en.skill.navigation
+    order: 82
+    cefr: A2
+    title: "Prepositions of movement"
+    note: >-
+      Into, out of, through, across, along, past, and over describe direction
+      of travel rather than a fixed place: "walk through the park, across the
+      bridge."
+  # --- en.a2.u24 Who did what? ---
+  - id: en.gn.question-words-deep
+    skill: en.skill.questions-adv
+    order: 83
+    cefr: A2
+    title: "Subject vs object questions"
+    note: >-
+      When the question word is the subject, skip do: "Who called you?" When
+      it's the object, keep it: "Who did you call?" Compare "What happened?"
+
+  # ================== Arc 3 — B1 "Independence" (orders 84–125) ==================
+  # --- en.b1.u01 Once upon a time ---
+  - id: en.gn.narrative-tenses
+    skill: en.skill.storytelling
+    order: 84
+    cefr: B1
+    title: "Telling a story in the past"
+    note: >-
+      A story weaves the past simple for events, the past continuous for
+      background, and sequencers like first, then, and finally to move it
+      along: "I was walking home when I saw her, so I stopped."
+  - id: en.gn.used-to-vs-would
+    skill: en.skill.storytelling
+    order: 85
+    cefr: B1
+    title: "used to / would (past habits)"
+    note: >-
+      Both used to and would replay repeated past actions: "We would swim
+      every summer." For past states, though, used to carries them and would
+      does not.
+  # --- en.b1.u02 Before that ---
+  - id: en.gn.past-perfect
+    skill: en.skill.before-that
+    order: 86
+    cefr: B1
+    title: "Past perfect"
+    note: >-
+      Had plus a past participle marks the earlier of two past events: "The
+      train had left when I arrived." It steps one moment further back.
+  - id: en.gn.past-perfect-vs-past
+    skill: en.skill.before-that
+    order: 87
+    cefr: B1
+    title: "Order of past events"
+    note: >-
+      The past perfect marks the step that came first; after before, after, or
+      by the time, the order is often clear enough on its own: "After she
+      left, we ate."
+  # --- en.b1.u03 How long? ---
+  - id: en.gn.pres-perf-cont
+    skill: en.skill.duration
+    order: 88
+    cefr: B1
+    title: "Present perfect continuous"
+    note: >-
+      Have or has been plus -ing describes an action still running or just
+      stopped: "I've been waiting for an hour." It leans on the length of the
+      activity.
+  - id: en.gn.perf-cont-vs-simple
+    skill: en.skill.duration
+    order: 89
+    cefr: B1
+    title: "Result or duration?"
+    note: >-
+      "I've painted the room" points at the finished result; "I've been
+      painting" points at the activity, which may still be going. One counts
+      the outcome, the other the effort.
+  # --- en.b1.u04 The best ever ---
+  - id: en.gn.superl-perf-ever
+    skill: en.skill.life-highlights
+    order: 90
+    cefr: B1
+    title: "The best I've ever…"
+    note: >-
+      A superlative teams up with the present perfect and ever to rank an
+      experience: "It's the best film I have ever seen."
+  - id: en.gn.articles-deep
+    skill: en.skill.life-highlights
+    order: 91
+    cefr: B1
+    title: "Articles: the finer rules"
+    note: >-
+      The marks something unique, a superlative, or a river; the zero article
+      suits meals, languages, and most streets; a or an fits jobs and rates:
+      "the fastest, breakfast, twice a day."
+    late_acquired: true
+  # --- en.b1.u05 This time tomorrow ---
+  - id: en.gn.future-cont
+    skill: en.skill.future-detail
+    order: 92
+    cefr: B1
+    title: "Future continuous"
+    note: >-
+      Will be plus -ing pictures an action in progress at a future moment:
+      "This time tomorrow I'll be flying."
+  - id: en.gn.shall-suggest
+    skill: en.skill.future-detail
+    order: 93
+    cefr: B1
+    title: "Shall we…?"
+    note: >-
+      Shall with I or we offers or suggests: "Shall we start? Shall I open the
+      window?"
+  # --- en.b1.u06 What would you do? ---
+  - id: en.gn.cond-second
+    skill: en.skill.hypotheticals
+    order: 94
+    cefr: B1
+    title: "Second conditional"
+    note: >-
+      If plus a past form, then would plus a verb, imagines a present or future
+      that isn't real: "If I had more time, I would travel."
+  - id: en.gn.cond-first-vs-second
+    skill: en.skill.hypotheticals
+    order: 95
+    cefr: B1
+    title: "Real or imagined?"
+    note: >-
+      The first conditional weighs a possible plan; the second imagines
+      something unlikely: "If it rains, we'll stay in" against "If I won the
+      lottery, I'd travel."
+  # --- en.b1.u07 I wish ---
+  - id: en.gn.wish-past
+    skill: en.skill.wishes
+    order: 96
+    cefr: B1
+    title: "wish + past"
+    note: >-
+      Wishes about the present use past forms: "I wish I had a garden. I wish
+      I could stay." The past shape signals it isn't so.
+  - id: en.gn.if-only
+    skill: en.skill.wishes
+    order: 97
+    cefr: B1
+    title: "If only"
+    note: >-
+      "If only" sharpens a wish into something more heartfelt: "If only it were
+      warmer." It runs on the same past-form machinery as wish.
+  # --- en.b1.u08 Just in case ---
+  - id: en.gn.unless
+    skill: en.skill.contingency
+    order: 98
+    cefr: B1
+    title: "unless"
+    note: >-
+      Unless means if…not: "We'll miss it unless we leave now." One word
+      carries the whole negative condition.
+  - id: en.gn.in-case-as-long-as
+    skill: en.skill.contingency
+    order: 99
+    cefr: B1
+    title: "in case / as long as"
+    note: >-
+      In case prepares for a possibility ("take an umbrella in case it rains");
+      as long as sets a condition ("you can stay as long as you're quiet").
+  # --- en.b1.u09 It must be… ---
+  - id: en.gn.modal-deduction
+    skill: en.skill.deduction
+    order: 100
+    cefr: B1
+    title: "must / might / can't be"
+    note: >-
+      Modals can weigh how sure you are: "It must be cold out. She can't be
+      home yet. He might be busy." The verb reflects the evidence.
+  # --- en.b1.u10 School days ---
+  - id: en.gn.had-to
+    skill: en.skill.obligation-time
+    order: 101
+    cefr: B1
+    title: "had to / will have to"
+    note: >-
+      Obligation shifts through time: "I had to wear a uniform" looks back,
+      "You'll have to book early" looks ahead.
+  - id: en.gn.be-allowed-to
+    skill: en.skill.obligation-time
+    order: 102
+    cefr: B1
+    title: "be allowed to"
+    note: >-
+      "Be allowed to" expresses permission in any tense: "We weren't allowed
+      to talk in class. You're allowed to park here."
+  # --- en.b1.u11 Let me help ---
+  - id: en.gn.make-let
+    skill: en.skill.getting-people-to
+    order: 103
+    cefr: B1
+    title: "make / let + bare verb"
+    note: >-
+      After make and let, the object is followed by a bare verb with no "to":
+      "They made us wait. She let me drive."
+  - id: en.gn.verb-obj-inf
+    skill: en.skill.getting-people-to
+    order: 104
+    cefr: B1
+    title: "want someone to do"
+    note: >-
+      Verbs like want, ask, tell, and expect take an object and then a
+      to-infinitive: "I want you to listen. She asked me to wait."
+  # --- en.b1.u12 How it's made ---
+  - id: en.gn.passive-present
+    skill: en.skill.processes
+    order: 105
+    cefr: B1
+    title: "Present passive"
+    note: >-
+      Be plus a past participle shifts focus onto what happens rather than who
+      does it: "Rice is grown here." The doer can stay unnamed.
+  # --- en.b1.u13 It was built ---
+  - id: en.gn.passive-past
+    skill: en.skill.history-passive
+    order: 106
+    cefr: B1
+    title: "Past passive"
+    note: >-
+      The past passive pairs was or were with a past participle: "The bridge
+      was built in 1900. The letters were sent yesterday."
+  - id: en.gn.passive-by
+    skill: en.skill.history-passive
+    order: 107
+    cefr: B1
+    title: "by + doer"
+    note: >-
+      Name the doer with "by" only when that detail is the news: "It was
+      painted by my sister." Otherwise the passive can leave it out.
+  # --- en.b1.u14 He said that… ---
+  - id: en.gn.reported-statements
+    skill: en.skill.reporting
+    order: 108
+    cefr: B1
+    title: "Reported speech: statements"
+    note: >-
+      To report what someone said, step the tense back one notch: "I'm tired"
+      becomes "She said (that) she was tired."
+  - id: en.gn.say-vs-tell
+    skill: en.skill.reporting
+    order: 109
+    cefr: B1
+    title: "say / tell"
+    note: >-
+      Tell wants a person right after it (tell me); say does not (say that…):
+      "She told me the news" but "She said the news was good."
+  # --- en.b1.u15 She asked me… ---
+  - id: en.gn.reported-questions
+    skill: en.skill.reporting-questions
+    order: 110
+    cefr: B1
+    title: "Reported questions"
+    note: >-
+      Reported questions drop the question word order and read like statements:
+      "Where do you live?" becomes "He asked where I lived." Use if or whether
+      for yes-no ones.
+  - id: en.gn.reported-commands
+    skill: en.skill.reporting-questions
+    order: 111
+    cefr: B1
+    title: "Reported requests & commands"
+    note: >-
+      Report a request or order with tell or ask plus an object and a
+      to-infinitive: "She told me to wait. He asked us not to call."
+  # --- en.b1.u16 The place where… ---
+  - id: en.gn.rel-where-whose
+    skill: en.skill.defining-things
+    order: 112
+    cefr: B1
+    title: "Relatives: where / whose"
+    note: >-
+      Where points to a place and whose to a possessor: "the town where I grew
+      up, the writer whose book won."
+  - id: en.gn.rel-object-omit
+    skill: en.skill.defining-things
+    order: 113
+    cefr: B1
+    title: "Dropping the relative"
+    note: >-
+      When the relative word is the object, English lets you drop it: "the
+      film we watched" works as well as "the film that we watched."
+  # --- en.b1.u17 Stop to think ---
+  - id: en.gn.verb-patterns-contrast
+    skill: en.skill.verb-patterns
+    order: 114
+    cefr: B1
+    title: "remember / stop / try + -ing or to"
+    note: >-
+      With remember, stop, and try, the pattern changes the meaning: "stop
+      smoking" (quit) against "stop to smoke" (pause in order to).
+  - id: en.gn.verb-patterns-more
+    skill: en.skill.verb-patterns
+    order: 115
+    cefr: B1
+    title: "suggest / avoid / mind / keep"
+    note: >-
+      Suggest, avoid, mind, and keep all take -ing: "I suggest leaving early.
+      Keep trying. I don't mind waiting."
+  # --- en.b1.u18 Figure it out ---
+  - id: en.gn.phrasal-separable
+    skill: en.skill.phrasal-mastery
+    order: 116
+    cefr: B1
+    title: "Separable phrasal verbs"
+    note: >-
+      Some phrasal verbs split around the object, and a pronoun sits in the
+      middle: "turn the light on" or "turn it on."
+  - id: en.gn.phrasal-verbs-2
+    skill: en.skill.phrasal-mastery
+    order: 117
+    cefr: B1
+    title: "Phrasal verbs II"
+    note: >-
+      More everyday pairs — find out, give up, carry on, look after, run out
+      of, sort out — carry meanings you can't guess from the parts.
+  # --- en.b1.u19 On the other hand ---
+  - id: en.gn.conn-discourse
+    skill: en.skill.discourse
+    order: 118
+    cefr: B1
+    title: "however / therefore / instead"
+    note: >-
+      However, therefore, and instead link one sentence to the next: "It was
+      late. However, we kept going."
+  - id: en.gn.in-order-to
+    skill: en.skill.discourse
+    order: 119
+    cefr: B1
+    title: "in order to / so that"
+    note: >-
+      "In order to" and "so that" spell out purpose in a fuller way: "in order
+      to save time, so that everyone can hear."
+  # --- en.b1.u20 Isn't it? ---
+  - id: en.gn.echo-so-neither
+    skill: en.skill.small-talk
+    order: 120
+    cefr: B1
+    title: "So do I / Neither do I"
+    note: >-
+      Agree by echoing the helper verb: "I love it." "So do I." Positive echoes
+      take so, negative ones take neither.
+  - id: en.gn.question-tags
+    skill: en.skill.small-talk
+    order: 121
+    cefr: B1
+    title: "Question tags"
+    note: >-
+      A tag mirrors the helper verb and flips its sign: "It's cold, isn't it?
+      You don't mind, do you?"
+    late_acquired: true
+  # --- en.b1.u21 Somebody, somewhere ---
+  - id: en.gn.indef-pronouns
+    skill: en.skill.indefinites
+    order: 122
+    cefr: B1
+    title: "somebody / anything / nowhere"
+    note: >-
+      Combine some-, any-, no-, and every- with body, thing, and where, and
+      follow the same some/any polarity: "someone called, but nobody
+      answered."
+  # --- en.b1.u22 Bored or boring? ---
+  - id: en.gn.adj-ed-ing
+    skill: en.skill.reactions
+    order: 123
+    cefr: B1
+    title: "-ed or -ing adjectives"
+    note: >-
+      The -ing form describes what causes a feeling; the -ed form describes
+      the feeling itself: "the film is boring, so I'm bored."
+  # --- en.b1.u23 Too good to miss ---
+  - id: en.gn.too-to-so-that
+    skill: en.skill.results
+    order: 124
+    cefr: B1
+    title: "too…to / so…that"
+    note: >-
+      "Too … to" and "so … that" build a result into the adjective: "too tired
+      to drive, so tired that I slept."
+  # --- en.b1.u24 Could you tell me…? ---
+  - id: en.gn.indirect-questions
+    skill: en.skill.polite-inquiry
+    order: 125
+    cefr: B1
+    title: "Could you tell me where…?"
+    note: >-
+      Inside a polite frame the inner question un-inverts: "Where is the
+      station?" becomes "Could you tell me where the station is?"

@@ -6,10 +6,11 @@
 import { useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { isRTL } from "../../../util/convert"
-import type { ResolvedItem } from "../../content/resolve.ts"
+import type { ResolvedExample, ResolvedItem } from "../../content/resolve.ts"
 
 export function EtymologyGemCard(props: {
   item: ResolvedItem
+  example?: ResolvedExample | null
   targetLang: string
   nativeLang?: string
   onContinue: (latencyMs: number) => void
@@ -19,6 +20,7 @@ export function EtymologyGemCard(props: {
   const extras = props.item.extras?.kind === "word" ? props.item.extras : null
   const paragraph = extras?.explanationNative ?? extras?.explanationTarget ?? null
   const paragraphLang = extras?.explanationNative ? (props.nativeLang ?? props.targetLang) : props.targetLang
+  const example = props.example?.phrase
 
   return (
     <div className="flex w-full max-w-[26rem] flex-col items-center gap-5 text-center" data-testid="journey-rare-gem">
@@ -43,6 +45,29 @@ export function EtymologyGemCard(props: {
       ) : (
         <p className="text-sm text-muted-foreground">{t("journey.rare.delight.didYouNotice")}</p>
       )}
+      {example ? (
+        <div className="flex w-full flex-col gap-0.5 border-t border-border/60 pt-4 text-start">
+          <div className="text-[0.65rem] font-semibold uppercase tracking-wide text-muted-foreground">
+            {t("journey.word.inContext")}
+          </div>
+          <div
+            lang={props.targetLang}
+            dir={isRTL(props.targetLang) ? "rtl" : "ltr"}
+            className="text-base leading-snug text-foreground"
+          >
+            {example.target.text}
+          </div>
+          {example.native?.text ? (
+            <div
+              lang={props.nativeLang}
+              dir={props.nativeLang && isRTL(props.nativeLang) ? "rtl" : "ltr"}
+              className="text-sm text-muted-foreground"
+            >
+              {example.native.text}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       <button
         type="button"
         onClick={() => props.onContinue(Date.now() - startedAt.current)}

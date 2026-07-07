@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "Note de grammaire",
-      "tryIt": "Essayez"
+      "tryIt": "Essayez",
+      "contrastLabel": "Comparé à votre langue"
+    },
+    "word": {
+      "inContext": "En contexte",
+      "meaningShow": "Signification",
+      "meaningHide": "Masquer"
+    },
+    "wordPack": {
+      "title": "Significations des mots",
+      "body": "Lisez ce que les mots signifient en {{language}} au fil de votre progression.",
+      "add": "Ajouter ({{size}})",
+      "dismiss": "Pas maintenant",
+      "downloading": "Ajout en cours… {{percent}} %",
+      "failed": "Impossible d'ajouter",
+      "retry": "Réessayer"
     },
     "checkpoint": {
       "title": "Point d'étape",
@@ -980,7 +995,8 @@
       "prelit": "Vous commencez avec {{count}} éléments déjà connus.",
       "redo": "Revérifier mon niveau",
       "aboveTitle": "Vous dépassez ce cours",
-      "aboveBody": "Ce cours couvre pour l'instant le niveau débutant, et vous êtes au-delà. Vous pouvez tout de même l'explorer — de nouveaux niveaux arrivent."
+      "aboveBody": "Ce cours couvre pour l'instant le niveau débutant, et vous êtes au-delà. Vous pouvez tout de même l'explorer — de nouveaux niveaux arrivent.",
+      "aboveFrontier": "Vous devancez la plupart de ce cours — départ à {{unit}}."
     },
     "path": {
       "title": "Votre parcours",

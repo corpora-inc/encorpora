@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Tala sa balarila",
-      "tryIt": "Subukan"
+      "tryIt": "Subukan",
+      "contrastLabel": "Kumpara sa iyong wika"
+    },
+    "word": {
+      "inContext": "Sa konteksto",
+      "meaningShow": "Kahulugan",
+      "meaningHide": "Itago"
     },
     "checkpoint": {
       "title": "Checkpoint",
@@ -980,7 +986,17 @@
       "prelit": "Magsisimula ka nang may {{count}} aytem na alam mo na.",
       "redo": "Suriin ulit ang antas ko",
       "aboveTitle": "Lampas ka na sa kursong ito",
-      "aboveBody": "Sa ngayon, panimulang nilalaman ang saklaw ng kursong ito, at lampas ka na roon. Puwede mo pa rin itong tuklasin — parating na ang mga bagong antas."
+      "aboveBody": "Sa ngayon, panimulang nilalaman ang saklaw ng kursong ito, at lampas ka na roon. Puwede mo pa rin itong tuklasin — parating na ang mga bagong antas.",
+      "aboveFrontier": "Nauna ka na sa karamihan ng kursong ito — magsisimula sa {{unit}}."
+    },
+    "wordPack": {
+      "title": "Mga kahulugan ng salita",
+      "body": "Basahin ang kahulugan ng mga salita sa {{language}} habang nag-aaral ka.",
+      "add": "Idagdag ({{size}})",
+      "dismiss": "Hindi muna",
+      "downloading": "Idinaragdag… {{percent}}%",
+      "failed": "Hindi naidagdag",
+      "retry": "Subukan muli"
     },
     "path": {
       "title": "Ang landas mo",

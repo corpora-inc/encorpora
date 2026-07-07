@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Nyelvtani jegyzet",
-      "tryIt": "Próbáld ki"
+      "tryIt": "Próbáld ki",
+      "contrastLabel": "Összevetve az anyanyelveddel"
+    },
+    "word": {
+      "inContext": "Szövegkörnyezetben",
+      "meaningShow": "Jelentés",
+      "meaningHide": "Elrejtés"
     },
     "checkpoint": {
       "title": "Ellenőrzőpont",
@@ -980,7 +986,8 @@
       "prelit": "{{count}} már ismert elemmel indulsz.",
       "redo": "Szintem újraellenőrzése",
       "aboveTitle": "Túl vagy ezen a kurzuson",
-      "aboveBody": "Ez a kurzus egyelőre kezdő anyagot fed le, te pedig felette jársz. Attól még felfedezheted — új szintek érkeznek."
+      "aboveBody": "Ez a kurzus egyelőre kezdő anyagot fed le, te pedig felette jársz. Attól még felfedezheted — új szintek érkeznek.",
+      "aboveFrontier": "A kurzus nagy részén már túl vagy — kezdés itt: {{unit}}."
     },
     "path": {
       "title": "Az utad",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Kihangosított hallgatás",
       "viewPath": "Út megtekintése",
       "redoPlacement": "Szintem újraellenőrzése"
+    },
+    "wordPack": {
+      "title": "Szójelentések",
+      "body": "Olvasd el, mit jelentenek a szavak {{language}} nyelven, útközben.",
+      "add": "Hozzáadás ({{size}})",
+      "dismiss": "Most nem",
+      "downloading": "Hozzáadás… {{percent}}%",
+      "failed": "Nem sikerült hozzáadni",
+      "retry": "Próbáld újra"
     }
   }
 }

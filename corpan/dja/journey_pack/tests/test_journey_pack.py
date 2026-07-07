@@ -95,11 +95,72 @@ class PipelineTests(unittest.TestCase):
             core_db=CORE_DB, packs_dir=PACKS_DIR, recipes_path=RECIPES,
         )
 
-    def test_all_twenty_gates_run_and_pass(self) -> None:
+    def test_all_gates_run_and_pass(self) -> None:
         report = self._validate(self.tmp)
-        self.assertEqual([g.id for g in report], [f"V-{i}" for i in range(1, 21)])
+        self.assertEqual([g.id for g in report], [f"V-{i}" for i in range(1, 23)])
         self.assertFalse(v.has_errors(report),
                          [f"{g.id}: {g.errors}" for g in report if g.errors])
+
+    def test_word_glosses_present_v21(self) -> None:
+        # Every word item carries wg.<word> in en + es (l1_full_support).
+        db = sqlite3.connect(self.tmp / "journey_en" / "data" / "course.sqlite3")
+        words = [r[0] for r in db.execute(
+            "SELECT ref_id FROM items WHERE kind = 'word'")]
+        self.assertTrue(words)
+        for w in words:
+            for lang in ("en", "es"):
+                row = db.execute(
+                    "SELECT 1 FROM strings WHERE key = ? AND lang = ?",
+                    (f"wg.{w}", lang),
+                ).fetchone()
+                self.assertIsNotNone(row, f"wg.{w} missing in {lang}")
+        # l1_full_support rode into pack_meta for the validator to read.
+        meta = {r[0]: r[1] for r in db.execute("SELECT * FROM pack_meta")}
+        self.assertEqual(meta.get("l1_full_support"), "es")
+        db.close()
+
+    def test_missing_word_gloss_fails_v21(self) -> None:
+        dist2 = self.tmp / "gloss_hole"
+        shutil.copytree(self.tmp / "journey_en", dist2 / "journey_en")
+        shutil.copy(self.zip_path, dist2 / self.zip_path.name)
+        db = sqlite3.connect(dist2 / "journey_en" / "data" / "course.sqlite3")
+        # Drop one word's es gloss — the native-only lookup has no en fallback,
+        # so this is a real hole, not a soft degrade.
+        w = db.execute("SELECT ref_id FROM items WHERE kind='word' LIMIT 1").fetchone()[0]
+        db.execute("DELETE FROM strings WHERE key = ? AND lang = 'es'", (f"wg.{w}",))
+        db.commit()
+        db.close()
+        report = self._validate(dist2)
+        v21 = next(g for g in report if g.id == "V-21")
+        self.assertTrue(any("es" in e for e in v21.errors), v21.errors)
+
+    def test_missing_phrase_translation_fails_v22(self) -> None:
+        # The bundled corpus is es-complete, so craft the hole in a THROWAWAY
+        # corpus copy: remove one course phrase's es row, then validate the
+        # (unchanged) pack against that copy. The entry still exists (V-1
+        # passes) — only its es translation is gone, isolating V-22.
+        db = sqlite3.connect(self.tmp / "journey_en" / "data" / "course.sqlite3")
+        target_eid = int(db.execute(
+            "SELECT ref_id FROM items WHERE kind='phrase' AND source='base' "
+            "ORDER BY intro_order LIMIT 1").fetchone()[0])
+        db.close()
+        corpus_copy = self.tmp / "corpus_no_es.sqlite3"
+        shutil.copy(CORE_DB, corpus_copy)
+        cdb = sqlite3.connect(corpus_copy)
+        es_id = cdb.execute(
+            "SELECT id FROM cor_language WHERE code='es'").fetchone()[0]
+        cdb.execute(
+            "DELETE FROM cor_translation WHERE entry_id = ? AND language_id = ?",
+            (target_eid, es_id))
+        cdb.commit()
+        cdb.close()
+        report = v.validate(
+            target="en", course_dir=FIXTURE_COURSE, dist_dir=self.tmp,
+            core_db=corpus_copy, packs_dir=PACKS_DIR, recipes_path=RECIPES,
+        )
+        v22 = next(g for g in report if g.id == "V-22")
+        self.assertTrue(
+            any(f"phrase:base:{target_eid}" in e for e in v22.errors), v22.errors)
 
     def test_pack_shape(self) -> None:
         db = sqlite3.connect(self.tmp / "journey_en" / "data" / "course.sqlite3")

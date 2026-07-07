@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "Nota de gramática",
-      "tryIt": "Experimenta"
+      "tryIt": "Experimenta",
+      "contrastLabel": "Em comparação com a tua língua"
+    },
+    "word": {
+      "inContext": "Em contexto",
+      "meaningShow": "Significado",
+      "meaningHide": "Ocultar"
+    },
+    "wordPack": {
+      "title": "Significados das palavras",
+      "body": "Lê o que as palavras significam em {{language}} à medida que avanças.",
+      "add": "Adicionar ({{size}})",
+      "dismiss": "Agora não",
+      "downloading": "A adicionar… {{percent}}%",
+      "failed": "Não foi possível adicionar",
+      "retry": "Tentar novamente"
     },
     "checkpoint": {
       "title": "Checkpoint",
@@ -980,7 +995,8 @@
       "prelit": "Começas com {{count}} itens já conhecidos.",
       "redo": "Voltar a verificar o meu nível",
       "aboveTitle": "Estás além deste curso",
-      "aboveBody": "Este curso cobre por agora material de iniciação, e tu estás acima disso. Podes explorá-lo na mesma — vêm aí novos níveis."
+      "aboveBody": "Este curso cobre por agora material de iniciação, e tu estás acima disso. Podes explorá-lo na mesma — vêm aí novos níveis.",
+      "aboveFrontier": "Estás à frente da maior parte deste curso — a começar em {{unit}}."
     },
     "path": {
       "title": "O teu caminho",

@@ -1,0 +1,83 @@
+id: en.b1.u27
+arc: en.arc3
+theme: "Big questions"
+cando:
+  - key: big-questions
+    text: "Can take a stance on a big question, support it with a hypothetical and a reason, and connect the ideas with however/therefore and a deduction."
+vocab_band: { lo: 1, hi: 5860 }
+phrase_domains: [culture, civic]
+skills:
+  - id: en.skill.big-questions
+    kind: function
+    title: "Big questions"
+    b: -0.1
+    prereqs: [en.skill.hypotheticals, en.skill.discourse]
+grammar_nodes: []
+items:
+  - ref: "phrase:base:9490"  # I wish everyone felt welcome in this community.
+    skills: [en.skill.big-questions]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:21467"  # They believe in protecting the environment.
+    skills: [en.skill.big-questions]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:10375"  # If I had time, I would paint more often.
+    skills: [en.skill.big-questions]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:17004"  # The city is crowded; however, it’s full of energy.
+    skills: [en.skill.big-questions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13442"  # Nothing will change if we don’t act.
+    skills: [en.skill.big-questions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:10707"  # We should respect other people’s opinions.
+    skills: [en.skill.big-questions]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:believe"
+    skills: [en.skill.big-questions]
+    importance: 2
+  - ref: "word:en:society"
+    skills: [en.skill.big-questions]
+    importance: 2
+  - ref: "word:en:freedom"
+    skills: [en.skill.big-questions]
+    importance: 2
+  - ref: "word:en:argue"
+    skills: [en.skill.big-questions]
+    importance: 2
+  - ref: "word:en:ethics"
+    skills: [en.skill.big-questions]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [culture, civic]
+      level: B1
+      count: 10
+      skills: [en.skill.big-questions]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: B1
+      count: 8
+      skills: [en.skill.big-questions]
+      importance: 2
+      substitutable: true
+lessons: [core, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: earthgate
+  config: { itemset: unit }

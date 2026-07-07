@@ -8,6 +8,8 @@
 
 import { test, beforeEach } from "node:test"
 import assert from "node:assert/strict"
+import type { EngineCard } from "./engine/index.ts"
+import type { SttReadiness } from "./runtime.ts"
 
 if (typeof globalThis.localStorage === "undefined") {
   const bag = new Map<string, string>()
@@ -42,13 +44,30 @@ function countingQuota(log: QuotaLog) {
   }
 }
 
-async function makeRuntime(opts: { sttOk?: boolean; badEntryIds?: number[] } = {}) {
+async function makeRuntime(
+  opts: {
+    sttOk?: boolean
+    sttReadiness?: SttReadiness
+    badEntryIds?: number[]
+    /** Drop the native (es) face from every entry — exercises the
+     *  translation-integrity guard (contract #2/#3). */
+    stripNative?: boolean
+  } = {},
+) {
   const harness = await makeEngine({ arcs: 1, unitsPerArc: 2, skillsPerUnit: 2, itemsPerSkill: 6 })
   const deps = makeRuntimeFixtureDeps(harness.graph)
   if (opts.badEntryIds) {
     const orig = deps.getEntryById
     deps.getEntryById = async (id, src) =>
       opts.badEntryIds!.includes(id) ? null : orig(id, src)
+  }
+  if (opts.stripNative) {
+    const orig = deps.getEntryById
+    deps.getEntryById = async (id, src) => {
+      const e = await orig(id, src)
+      if (!e) return e
+      return { ...e, translations: e.translations.filter((t) => t.language_code !== "es") }
+    }
   }
   const resolver = createResolver(deps, FIXTURE_RUNTIME_CTX)
   const quotaLog: QuotaLog = { notes: 0 }
@@ -66,8 +85,36 @@ async function makeRuntime(opts: { sttOk?: boolean; badEntryIds?: number[] } = {
     record: (e) => events.push(e),
     log: (event, data) => logs.push({ event, data }),
     sttAvailable: opts.sttOk === undefined ? undefined : async () => opts.sttOk === true,
+    sttReadiness:
+      opts.sttReadiness === undefined ? undefined : async () => opts.sttReadiness as SttReadiness,
   })
   return { runtime, harness, quotaLog, events, logs, deps }
+}
+
+/** A native speak_echo EngineCard over a fixture item — fed to
+ *  runtime.prepareEngineCard to exercise the STT swap policy directly (a raw
+ *  speak_echo card is otherwise rare in the feed). */
+function speakEchoCard(graph: { items: Record<string, { ref: unknown }> }, itemId: string, specId: string): EngineCard {
+  const item = graph.items[itemId]
+  return {
+    spec: {
+      specId,
+      activityType: "speak_echo",
+      itemRefs: [item.ref as EngineCard["spec"]["itemRefs"][number]],
+      targetLang: "en",
+      modelNeeds: ["stt"],
+      timeboxSec: 25,
+    },
+    meta: {
+      pool: "due",
+      strand: "output",
+      form: 2,
+      estSec: 25,
+      provider: "native",
+      celebration: "normal",
+      coolDownCandidate: false,
+    },
+  }
 }
 
 /** Place as a fresh zero-beginner so the feed starts producing. */
@@ -257,4 +304,99 @@ test("exercise prepared payload carries distractors for choice cards", async () 
     await new Promise((r) => setTimeout(r, 2))
   }
   assert.fail("never saw a choice card")
+})
+
+test("translation-integrity guard (contract #2/#3): no same-language card when the native face is absent", async () => {
+  const { runtime } = await makeRuntime({ stripNative: true })
+  await startFeed(runtime)
+  let checked = 0
+  for (let guard = 0; guard < 80 && checked < 20; guard++) {
+    const card = runtime.current()
+    if (!card) {
+      await new Promise((r) => setTimeout(r, 5))
+      continue
+    }
+    if (card.kind === "exercise") {
+      const at = card.spec.activityType
+      // choice_pick / flip_recall surface a native face on BOTH directions —
+      // never emitted for a native-less item (swapped to a target-only form).
+      assert.notEqual(at, "choice_pick", "choice_pick must swap when native is absent")
+      assert.notEqual(at, "flip_recall", "flip_recall must swap when native is absent")
+      // only translation forms carry toNative/toTarget; everything else is targetOnly
+      const dir = card.spec.params?.direction
+      assert.ok(
+        dir === undefined || dir === "targetOnly",
+        `native-less card carries translation direction ${String(dir)}`,
+      )
+      // text-axis match_pairs needs native on each item → falls back to audio
+      if (at === "match_pairs") {
+        assert.equal(card.spec.params?.axis, "text-audio", "match_pairs must use the audio axis")
+      }
+      assert.ok(
+        card.prepared.items.every((i) => !i.native),
+        "the fixture stripped every native face",
+      )
+      checked += 1
+      runtime.submitResult(card.cardId, answer(card.prepared.engine))
+      runtime.advance()
+    } else if (card.kind === "checkpoint") {
+      runtime.checkpointChoice(card.cardId, "continue")
+    } else if (card.kind === "blockIntro" || card.kind === "welcomeBack") {
+      runtime.completePresentation(card.cardId)
+    } else {
+      runtime.abandonCurrent()
+    }
+    await new Promise((r) => setTimeout(r, 2))
+  }
+  assert.ok(checked > 0, "saw exercise cards over a native-less corpus")
+})
+
+test("STT three-state policy (contract #4): unsupported swaps, model-missing keeps, installed keeps", async () => {
+  for (const [state, expectSwap] of [
+    ["unsupported", true],
+    ["modelMissing", false],
+    ["installed", false],
+  ] as const) {
+    const { runtime, harness } = await makeRuntime({ sttReadiness: state })
+    await startFeed(runtime)
+    const itemId = Object.keys(harness.graph.items)[0]
+    const card = await runtime.prepareEngineCard(speakEchoCard(harness.graph, itemId, `spk-${state}`))
+    assert.ok(card && card.kind === "exercise", `${state}: prepared an exercise`)
+    if (expectSwap) {
+      assert.equal(card.spec.activityType, "listen_type", `${state}: speak_echo swaps to listen_type`)
+      assert.equal(card.prepared.sttFallback, true, `${state}: swap carries sttFallback`)
+    } else {
+      assert.equal(card.spec.activityType, "speak_echo", `${state}: speak_echo is kept`)
+      assert.ok(!card.prepared.sttFallback, `${state}: no sttFallback`)
+    }
+    await runtime.endSession("quit")
+  }
+})
+
+test("STT decline flow (contract #4): declining the install swaps the rest of the session", async () => {
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "modelMissing" })
+  await startFeed(runtime)
+  const itemId = Object.keys(harness.graph.items)[0]
+
+  // model-missing before a decline: speak_echo is kept (SpeakEcho offers install)
+  const before = await runtime.prepareEngineCard(speakEchoCard(harness.graph, itemId, "spk-before"))
+  assert.ok(before && before.kind === "exercise")
+  assert.equal(before.spec.activityType, "speak_echo")
+
+  // decline arrives on the current card
+  const cur = runtime.current()
+  assert.ok(cur, "a current card is mounted")
+  runtime.submitResult(cur!.cardId, {
+    specId: cur!.cardId,
+    score: 1,
+    perItem: [],
+    durationMs: 100,
+    detail: { flags: { sttDeclined: true } },
+  })
+
+  // after the decline: further speak_echo cards swap to listen_type
+  const after = await runtime.prepareEngineCard(speakEchoCard(harness.graph, itemId, "spk-after"))
+  assert.ok(after && after.kind === "exercise")
+  assert.equal(after.spec.activityType, "listen_type", "post-decline speak_echo swaps")
+  assert.equal(after.prepared.sttFallback, true)
 })

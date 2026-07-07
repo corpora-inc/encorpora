@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "文法筆記",
-      "tryIt": "試一試"
+      "tryIt": "試一試",
+      "contrastLabel": "和你的語言比較"
+    },
+    "word": {
+      "inContext": "情境例句",
+      "meaningShow": "詞義",
+      "meaningHide": "隱藏"
     },
     "checkpoint": {
       "title": "檢查點",
@@ -980,7 +986,8 @@
       "prelit": "你已帶著 {{count}} 個已掌握的內容起步。",
       "redo": "重新測一次程度",
       "aboveTitle": "你已經超出了這門課",
-      "aboveBody": "這門課目前涵蓋入門內容，而你的程度在它之上。你仍可以瀏覽它——新的級別正在路上。"
+      "aboveBody": "這門課目前涵蓋入門內容，而你的程度在它之上。你仍可以瀏覽它——新的級別正在路上。",
+      "aboveFrontier": "你的程度已經超越這門課的大部分內容——從 {{unit}} 開始。"
     },
     "path": {
       "title": "你的路",
@@ -1051,6 +1058,15 @@
       "listeningMode": "免提聽力模式",
       "viewPath": "查看路徑",
       "redoPlacement": "重新測一次程度"
+    },
+    "wordPack": {
+      "title": "單字詞義包",
+      "body": "邊學邊看單字在{{language}}中的意思。",
+      "add": "新增（{{size}}）",
+      "dismiss": "現在不要",
+      "downloading": "新增中…{{percent}}%",
+      "failed": "新增失敗",
+      "retry": "再試一次"
     }
   }
 }

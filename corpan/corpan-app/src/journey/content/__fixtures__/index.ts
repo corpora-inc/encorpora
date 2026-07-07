@@ -155,6 +155,15 @@ function courseItems(): CourseItem[] {
   }
   out.push(
     { id: "word:en:coffee", kind: "word", source: "en", refId: "coffee", b: -0.6, skills: [SKILL_NUM] },
+    // Same-skill (SKILL_NUM) word neighbours WITH es glosses — the gloss
+    // distractor pool for coffee's toNative card.
+    { id: "word:en:tea", kind: "word", source: "en", refId: "tea", b: -0.55, skills: [SKILL_NUM] },
+    { id: "word:en:milk", kind: "word", source: "en", refId: "milk", b: -0.5, skills: [SKILL_NUM] },
+    // A gloss TWIN: "cafe" also glosses to "el café" — must be rejected as a
+    // coffee distractor (answer-gloss collision under a different key).
+    { id: "word:en:cafe", kind: "word", source: "en", refId: "cafe", b: -0.58, skills: [SKILL_NUM] },
+    // A word with NO es gloss (wg.friend has only en) — native stays undefined
+    // (no en fallback) and it is never a same-language distractor.
     { id: "word:en:friend", kind: "word", source: "en", refId: "friend", b: -0.5, skills: [SKILL_GREET] },
     { id: "char:hanzipan:愛", kind: "char", source: "hanzipan", refId: "愛", b: 0.4, skills: [SKILL_GREET] },
     { id: `segment:${BOOK_ID}:ch01-002`, kind: "segment", source: BOOK_ID, refId: "ch01-002", b: 0.1, skills: [SKILL_PRESENT] },
@@ -207,6 +216,18 @@ function buildCoursePackDb(): DatabaseSync {
     null,
     JSON.stringify({ contrast: "iː-ɪ", minimalPairs: [["ship", "sheep"], ["sit", "seat"], ["chip", "cheap"]] }),
   )
+  // es contrastive_note on the present-simple node — the grammar-depth overlay
+  // rendered inside the grammar card for an ES learner.
+  db.prepare(
+    "INSERT INTO l1_overlays (l1, overlay_type, ref_kind, ref_id, string_key, payload_json) VALUES (?,?,?,?,?,?)",
+  ).run(
+    "es",
+    "contrastive_note",
+    "grammarNode",
+    "en.gn.present-simple-3sg",
+    "ovl.es.present-3sg.note",
+    null,
+  )
   const insStr = db.prepare("INSERT INTO strings (key, lang, text) VALUES (?,?,?)")
   insStr.run("gn.en.gn.present-simple-3sg.title", "en", "Third-person -s")
   insStr.run("gn.en.gn.present-simple-3sg.title", "es", "La -s de tercera persona")
@@ -220,11 +241,31 @@ function buildCoursePackDb(): DatabaseSync {
     "es",
     "Con he, she o it, el verbo en presente simple lleva -s: she works, he eats.",
   )
+  // Contrastive-note copy is authored per L1 (es here). Native-only: no en row,
+  // proving getStringForLang selects the learner's language, not a fallback.
+  insStr.run(
+    "ovl.es.present-3sg.note",
+    "es",
+    "En español el verbo ya marca la persona, así que la -s inglesa se olvida fácil: recuerda \"she works\", no \"she work\".",
+  )
   insStr.run("gn.en.gn.noteless.title", "en", "Noteless node")
   insStr.run("gn.en.gn.greetings.title", "en", "Greetings")
   insStr.run("gn.en.gn.greetings.title", "es", "Saludos")
   insStr.run("gn.en.gn.greetings.note", "en", "Greetings open a conversation: hello, good morning, welcome.")
   insStr.run("gn.en.gn.greetings.note", "es", "Los saludos abren una conversación: hello, good morning, welcome.")
+  // Word glosses (wg.<word>): the native FACE of word cards (contract #1). en
+  // is the disambiguating gloss (or the word itself); es is the learner face.
+  // `friend` carries ONLY en — exercising the native-only lookup's no-fallback
+  // rule (native must stay undefined, never "friend").
+  const insGloss = (word: string, en: string, es?: string) => {
+    insStr.run(`wg.${word}`, "en", en)
+    if (es) insStr.run(`wg.${word}`, "es", es)
+  }
+  insGloss("coffee", "coffee", "el café")
+  insGloss("tea", "tea", "el té")
+  insGloss("milk", "milk", "la leche")
+  insGloss("cafe", "cafe", "el café")
+  insGloss("friend", "friend") // en only — no es face
   return db
 }
 
@@ -287,6 +328,41 @@ function buildHanzipanDb(): DatabaseSync {
     "愛",
     JSON.stringify({ strokes: ["M 1 1", "M 2 2"], medians: [[[1, 1]], [[2, 2]]] }),
   )
+  return db
+}
+
+// ----------------------------------------------------------------- imagepan
+//
+// Language-neutral concept image pack (research/images.md). Loose WebP files
+// keyed by concept; the SQLite index maps concept key → picture file + the
+// curated visually-confusable distractor group (each sibling with its OWN
+// picture, denormalized into distractors_json — one point lookup per card).
+
+function buildImagepanDb(): DatabaseSync {
+  const db = new DatabaseSync(":memory:")
+  db.exec(`
+    CREATE TABLE concept (
+      key TEXT PRIMARY KEY,
+      word TEXT NOT NULL,
+      sense_gloss TEXT,
+      cefr TEXT,
+      domain TEXT,
+      file TEXT NOT NULL,
+      distractors_json TEXT NOT NULL
+    );
+    CREATE INDEX concept_word ON concept(word);
+  `)
+  const ins = db.prepare(
+    "INSERT INTO concept (key, word, sense_gloss, cefr, domain, file, distractors_json) VALUES (?,?,?,?,?,?,?)",
+  )
+  const sib = (key: string, word: string) => ({ key, word, file: `images/${key}.webp` })
+  // Drink cluster — the word→picture path (runtime upgrades a `coffee` word
+  // card to a picture choice). Each has ≥1 distractor picture.
+  ins.run("coffee", "coffee", "coffee", "A1", "drink", "images/coffee.webp", JSON.stringify([sib("tea", "tea"), sib("milk", "milk")]))
+  ins.run("tea", "tea", "tea", "A1", "drink", "images/tea.webp", JSON.stringify([sib("coffee", "coffee"), sib("milk", "milk")]))
+  ins.run("milk", "milk", "milk", "A1", "drink", "images/milk.webp", JSON.stringify([sib("coffee", "coffee"), sib("tea", "tea")]))
+  // A concept with NO distractor pictures — exercises the distractor-less path.
+  ins.run("obj_bicycle", "bicycle", "bicycle", "A1", "vehicle", "images/obj_bicycle.webp", "[]")
   return db
 }
 
@@ -365,6 +441,7 @@ export class FixtureDeps implements ResolverDeps {
   readonly coursePack = buildCoursePackDb()
   readonly wordpan = buildWordpanDb()
   readonly hanzipan = buildHanzipanDb()
+  readonly imagepan = buildImagepanDb()
   private opts: FixtureOptions
   /** Test hook: force queryPackDb to throw for a packId (db_error path). */
   corruptPacks = new Set<string>([CORRUPT_PACK_ID])
@@ -415,6 +492,7 @@ export class FixtureDeps implements ResolverDeps {
     if (packId === FIXTURE_CTX.courseId) return this.coursePack
     if (packId === WORDPACK_ID) return this.wordpan
     if (packId === "hanzipan") return this.hanzipan
+    if (packId === "imagepan") return this.imagepan
     return null
   }
 

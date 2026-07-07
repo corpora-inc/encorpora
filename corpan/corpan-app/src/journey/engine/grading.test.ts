@@ -147,6 +147,28 @@ test("aggregateBinned clamp (R9): Again→Hard, Easy→Good, Hard/Good pass thro
   assert.equal(binned({}), 3)
 })
 
+test("verdict-less flip_recall is Good-clamped (contract #5): never Again, never Easy", () => {
+  const fr = (over: Partial<GradeInput>) =>
+    grade({ issued: issued({ activityType: "flip_recall", guessable: true }), ...over })
+  // reveal→continue emits no self-verdict; whatever outcome the renderer reports
+  // is clamped to [Hard, Good] via aggregateBinned semantics (engine-owned).
+  assert.equal(fr({ per: per({ outcome: "fail" }) }).grade, 2, "fail → Hard, never Again")
+  assert.equal(fr({ per: per({ outcome: "partial" }) }).grade, 2)
+  assert.equal(
+    fr({ per: per({ outcome: "pass", latencyMs: 100 }), cardReps: 0 }).grade,
+    3,
+    "fast firstTry pass → Good, never Easy",
+  )
+  // a legacy self-verdict still routes the selfReport rows (defensive)
+  assert.equal(
+    grade({
+      issued: issued({ activityType: "flip_recall" }),
+      per: per({ detail: { selfReport: "never-learned" } }),
+    }).grade,
+    "forget",
+  )
+})
+
 test("item-level detail wins over result-level per field", () => {
   const g = toGrade({
     result: { score: 1, detail: { selfReport: "never-learned" } },

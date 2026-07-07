@@ -12,7 +12,7 @@ import type {
   ActivitySpec,
 } from "../contentPacks/activityContract.ts"
 import type { CheckpointSummary, EngineCard } from "./engine/index.ts"
-import type { ResolvedItem } from "./content/resolve.ts"
+import type { ResolvedExample, ResolvedItem } from "./content/resolve.ts"
 import type { DistractorSet } from "./content/distractors.ts"
 
 export type RareVariant = "delight" | "etymology" | "timeCapsule" | "miniGame" | "storyChapter"
@@ -33,6 +33,11 @@ export interface PreparedExercise {
   /** speak_echo degraded to listen_type (§6.3) — results carry
    *  flags.sttUnavailable so the engine stops scheduling STT today. */
   sttFallback?: boolean
+  /** words-in-context: a real corpus phrase carrying items[0] when it is a word
+   *  the learner has met before. Feeds the post-answer enrichment line, the
+   *  etymology gem's usage line, and the context-cloze form. Absent on first
+   *  exposures / when no short containing phrase exists. */
+  example?: ResolvedExample
 }
 
 export interface PackPoster {

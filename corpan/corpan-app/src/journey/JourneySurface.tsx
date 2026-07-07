@@ -70,10 +70,17 @@ export function JourneySurface(props: JourneySurfaceProps) {
     return () => setPopInCapabilityHost(null)
   }, [props.capabilityHost])
 
-  // Freeze Home's scroller exactly like activeGame does (§1.1).
+  // Freeze Home's scroller exactly like activeGame does (§1.1), and lock the
+  // background from scrolling under this fixed overlay (the phantom-scrollbar
+  // report) — same pattern as the paywall overlays.
   useEffect(() => {
     document.body.setAttribute("data-experience-active", "journey")
-    return () => document.body.removeAttribute("data-experience-active")
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.removeAttribute("data-experience-active")
+      document.body.style.overflow = prevOverflow
+    }
   }, [])
 
   useEffect(() => {
@@ -151,7 +158,10 @@ export function JourneySurface(props: JourneySurfaceProps) {
             onOpenPath={() => setPathOpen(true)}
             onRedoPlacement={() => setPlacementOpen(true)}
           />
-          <div className="relative min-h-0 flex-1">
+          <div
+            className="relative min-h-0 flex-1"
+            style={{ paddingBottom: "max(env(safe-area-inset-bottom), 0.5rem)" }}
+          >
             <FeedScroller
               runtime={runtime}
               courseKey={courseKey}
@@ -176,6 +186,7 @@ export function JourneySurface(props: JourneySurfaceProps) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 24 }}
+            style={{ paddingTop: "max(var(--safe-top), 0.5rem)" }}
           >
             <div className="flex h-11 items-center justify-between px-3">
               <div className="text-sm font-semibold text-foreground">{t("journey.path.title")}</div>
@@ -188,7 +199,10 @@ export function JourneySurface(props: JourneySurfaceProps) {
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="flex flex-1 justify-center overflow-y-auto px-5 py-4">
+            <div
+              className="flex flex-1 justify-center overflow-y-auto px-5 py-4"
+              style={{ paddingBottom: "max(env(safe-area-inset-bottom), 1rem)" }}
+            >
               <PathViz
                 graph={runtime.graph}
                 currentUnitId={snapshot?.position.unitId ?? null}

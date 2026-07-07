@@ -1,0 +1,101 @@
+id: en.a2.u10
+arc: en.arc2
+theme: "Rules and obligations"
+cando:
+  - key: rules
+    text: "Can explain the rules of a place and say what is required, allowed, or forbidden, using have to, must, and mustn't."
+vocab_band: { lo: 1, hi: 4170 }
+phrase_domains: [business, civic, education]
+skills:
+  - id: en.skill.obligation
+    kind: grammar
+    title: "Obligation: have to & must"
+    b: -1.4
+    prereqs: [en.skill.advice, en.skill.jobs]
+grammar_nodes: [en.gn.have-to, en.gn.must-mustnt]
+items:
+  - ref: "phrase:base:23281"  # She must study today.
+    skills: [en.skill.obligation]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:26175"  # You have to pay for the ticket.
+    skills: [en.skill.obligation]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:17237"  # Every student must wear a uniform.
+    skills: [en.skill.obligation]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:16731"  # The red light means we must stop.
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11768"  # Each student must bring a pencil to class.
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12684"  # We have to finish this project by tomorrow.
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:9580"  # All the employees must attend the meeting tomorrow.
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-work-office-basics:0"  # The meeting starts in ten minutes.
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-work-office-basics:1"  # Could you share your screen?
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-work-office-basics:5"  # I'll take notes.
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-work-office-basics:9"  # Are we recording this?
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-work-office-basics:39"  # Please confirm you got this.
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-work-office-basics:82"  # Could you turn on your camera?
+    skills: [en.skill.obligation]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:rule"
+    skills: [en.skill.obligation]
+    importance: 2
+  - ref: "word:en:must"
+    skills: [en.skill.obligation]
+    importance: 2
+  - ref: "word:en:allowed"
+    skills: [en.skill.obligation]
+    importance: 2
+  - ref: "word:en:sign"
+    skills: [en.skill.obligation]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [business, civic, education]
+      level: A2
+      count: 10
+      skills: [en.skill.obligation]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

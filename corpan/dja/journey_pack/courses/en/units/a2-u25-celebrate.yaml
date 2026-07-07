@@ -1,0 +1,83 @@
+id: en.a2.u25
+arc: en.arc2
+theme: "Celebrate!"
+cando:
+  - key: celebrations
+    text: "Can describe a celebration from their culture, compare it with others, and say what they enjoy about it."
+vocab_band: { lo: 1, hi: 4275 }
+phrase_domains: [culture]
+skills:
+  - id: en.skill.celebrations
+    kind: function
+    title: "Celebrations & festivals"
+    b: -1.1
+    prereqs: [en.skill.experiences, en.skill.comparison-adv]
+items:
+  - ref: "phrase:base:10541"  # See you later at the party!
+    skills: [en.skill.celebrations]
+    importance: 3
+    probe: true
+    b: -1.1
+  - ref: "phrase:base:1703"  # I bought a little gift for you.
+    skills: [en.skill.celebrations]
+    importance: 3
+    probe: true
+    b: -1.1
+  - ref: "phrase:base:19447"  # We went to a festival in the park.
+    skills: [en.skill.celebrations]
+    importance: 3
+    probe: true
+    b: -1.1
+  - ref: "phrase:base:14510"  # Having dinner together is a family tradition.
+    skills: [en.skill.celebrations]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:9963"  # Have you ever cooked Indian food?
+    skills: [en.skill.celebrations]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:14440"  # This restaurant serves the best pizza in town!
+    skills: [en.skill.celebrations]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:19114"  # There’s a big festival in our town every summer.
+    skills: [en.skill.celebrations]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:festival"
+    skills: [en.skill.celebrations]
+    importance: 2
+  - ref: "word:en:celebrate"
+    skills: [en.skill.celebrations]
+    importance: 2
+  - ref: "word:en:tradition"
+    skills: [en.skill.celebrations]
+    importance: 2
+  - ref: "word:en:gift"
+    skills: [en.skill.celebrations]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [culture]
+      level: A2
+      count: 10
+      skills: [en.skill.celebrations]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: A2
+      count: 12
+      skills: [en.skill.celebrations]
+      importance: 2
+      substitutable: true
+lessons: [core, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: earthgate
+  config: { itemset: unit }

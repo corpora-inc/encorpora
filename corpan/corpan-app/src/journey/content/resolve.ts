@@ -80,6 +80,11 @@ export type ResolvedExtras =
       lateAcquired: boolean
       /** Exemplar phrases carrying the node, resolved (§2.5). */
       exemplars: ResolvedItem[]
+      /** L1-contrastive note (l1_overlays contrastive_note) for the active
+       *  native language, when authored — e.g. how English adverb placement
+       *  differs from Spanish. Absent on single-language stacks or unauthored
+       *  L1s. Rendered beneath the rule card (grammar depth). */
+      contrastiveNote?: string
     }
   | {
       kind: "phoneme"
@@ -88,7 +93,19 @@ export type ResolvedExtras =
       /** From l1_overlays phoneme_pair payload for the active L1. */
       minimalPairs: [string, string][]
     }
-  | { kind: "concept"; imageSrc?: string } // imagepan — absent in v0.1 (D10.6)
+  | {
+      kind: "concept"
+      /** corpan-pack:// URL of the concept's picture, when imagepan is
+       *  installed (D10.6). Absent otherwise. */
+      imageSrc?: string
+      /** The sense gloss (e.g. "bank (money)") — disambiguates the depicted
+       *  sense; build-time provenance, surfaced as an a11y label. */
+      senseGloss?: string
+      /** Curated visually-confusable siblings, each with its OWN picture — the
+       *  picture-choice distractor pool (§2.7). Only siblings that shipped an
+       *  image appear here. */
+      distractors?: { key: string; word: string; imageSrc: string }[]
+    }
 
 export interface ResolvedItem {
   ref: ItemRef
@@ -192,10 +209,27 @@ export interface DistractorCandidateRow {
   b: number | null
 }
 
+/** A real corpus phrase carrying a word — the "in context" example (words-in-
+ *  context). `phrase` is a fully resolved phrase item (target + native faces);
+ *  `word` is the lowercased surface word it contains. */
+export interface ResolvedExample {
+  phrase: ResolvedItem
+  word: string
+}
+
 export interface Resolver {
   resolveItems(refs: ItemRef[]): Promise<ResolveOutcome>
   /** §2.3 lazy path — HanziWriter stroke JSON, own small LRU. */
   resolveCharStrokes(char: string): Promise<unknown | null>
+  /**
+   * Words-in-context: the shortest bundled-corpus phrase whose target-language
+   * text CONTAINS `word`, or null when none is found. Deterministic (seeded
+   * scan) + cached per word (negatives cached too). Reuses the item resolver /
+   * item cache; the candidate SQL is LIMIT-guarded and the resolve scan is
+   * bounded. Kills the "very → muy over and over" feel by showing a word inside
+   * a real sentence once it has been met.
+   */
+  exampleFor(word: string): Promise<ResolvedExample | null>
   /** Session end / stack switch / pack install events (§3.2). */
   invalidate(): void
   /** @internal distractor candidate-ROW cache (§3.2, 32 entries) — owned
@@ -230,7 +264,23 @@ export const SQL = {
   phonemeOverlay:
     "SELECT payload_json, string_key FROM l1_overlays WHERE l1 = ? AND overlay_type = 'phoneme_pair' " +
     "AND ref_kind = 'item' AND ref_id = ? LIMIT 1",
+  contrastiveNote:
+    "SELECT string_key FROM l1_overlays WHERE l1 = ? AND overlay_type = 'contrastive_note' " +
+    "AND ref_kind = 'grammarNode' AND ref_id = ? LIMIT 1",
+  // Earliest-introduced corpus phrases — the candidate pool the word-in-context
+  // example scan walks (§ words-in-context). No phrase TEXT lives in the course
+  // pack (phrases reference the core corpus by ref_id), so membership is checked
+  // after resolving a bounded, seeded slice of these. Bounded to a small page
+  // (the earliest/most-frequent phrases are where common words like "very"
+  // recur — exactly the ones the owner saw repeated in isolation).
+  phraseCandidates:
+    "SELECT kind, source, ref_id FROM items WHERE kind = 'phrase' ORDER BY intro_order LIMIT 60",
   strings: "SELECT lang, text FROM strings WHERE key = ? LIMIT 60",
+  // imagepan concept lookup (§2.7). The distractor group + their image files
+  // are denormalized into distractors_json on this row, so ONE point lookup
+  // resolves the whole picture-choice card (no dynamic IN clause).
+  conceptImage:
+    "SELECT word, sense_gloss, cefr, file, distractors_json FROM concept WHERE key = ? LIMIT 1",
 } as const
 
 export function sqlLimit(sql: string): number {
@@ -323,9 +373,15 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
   const pool = new SharedBytePool(4 * 1024 * 1024)
   const items = new LruCache<ResolvedItem>({ maxEntries: 500, pool })
   const strings = new LruCache<string | null>({ maxEntries: 2000 })
+  // Native-ONLY string lookups (word glosses, §2.2). Keyed by (lang, key) so
+  // the same key resolves independently per language with NO en fallback.
+  const stringsByLang = new LruCache<string | null>({ maxEntries: 2000 })
   const segmentFiles = new LruCache<SegmentFileMaps>({ maxEntries: 4, pool })
   const charStrokes = new LruCache<unknown>({ maxEntries: 50 })
   const distractorPools = new LruCache<DistractorCandidateRow[]>({ maxEntries: 32 })
+  // Word → in-context example phrase (words-in-context). Negatives cached so a
+  // word with no short containing phrase isn't re-scanned every repetition.
+  const examples = new LruCache<ResolvedExample | null>({ maxEntries: 200 })
 
   async function query(
     packId: string,
@@ -360,6 +416,29 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
     const picked = pickPreferred(byLang, preferred)
     const value = picked ? picked.text : null
     strings.set(cacheKey, value)
+    return value
+  }
+
+  /**
+   * Native-ONLY string lookup — returns the `lang` row of `key` verbatim, or
+   * null when that exact language row is absent. Deliberately does NOT walk the
+   * en fallback (unlike getString): word glosses (`wg.<word>`) are the native
+   * FACE of an exercise, and falling back to English would render an ES learner
+   * an English→English word card (contract #1). Absent ⇒ native stays undefined
+   * and the runtime guard reroutes the card.
+   */
+  async function getStringForLang(key: string, lang: string): Promise<string | null> {
+    const cacheKey = `${ctx.courseId} ${lang} ${key}`
+    if (stringsByLang.has(cacheKey)) return stringsByLang.get(cacheKey) ?? null
+    const rows = await query(ctx.courseId, SQL.strings, [key])
+    let value: string | null = null
+    for (const r of rows) {
+      if (String(r.lang ?? "") === lang) {
+        value = String(r.text ?? "") || null
+        break
+      }
+    }
+    stringsByLang.set(cacheKey, value)
     return value
   }
 
@@ -410,7 +489,16 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
       key: itemRefKey(ref),
       kind: "word",
       target: { text: ref.id, ttsText: ref.id },
-      // `native` is NEVER set for words — no word-translation table exists.
+    }
+    // Native FACE = the course-pack word gloss `wg.<word>` at nativeLang, via a
+    // native-ONLY lookup (no en fallback — contract #1). This is what lets an ES
+    // learner see ship→"el barco" instead of an English→English card. Absent ⇒
+    // native stays undefined and the runtime guard reroutes the card. (Distinct
+    // from the wordpan explanation paragraph below, which feeds long-press
+    // gems, not the exercise face.)
+    if (ctx.nativeLang) {
+      const gloss = await getStringForLang(`wg.${ref.id}`, ctx.nativeLang)
+      if (gloss) item.native = { text: gloss, ttsText: gloss }
     }
     const packId = ctx.nativeLang
       ? deps.findInstalledWordPack(ctx.nativeLang, ctx.targetLang)
@@ -601,6 +689,27 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
     // A grammar card without an exemplar is a blank card (§2.5).
     if (exemplars.length === 0) return miss("row_absent")
 
+    const extras: ResolvedExtras = {
+      kind: "grammarNode",
+      title,
+      note,
+      lateAcquired: Number(row.late_acquired ?? 0) === 1,
+      exemplars,
+    }
+    // L1-contrastive note (§2.8): how this rule differs from the learner's
+    // native language. Depth degrades — its absence never blanks the card.
+    if (ctx.nativeLang) {
+      try {
+        const ovl = await query(ctx.courseId, SQL.contrastiveNote, [ctx.nativeLang, ref.id])
+        const skey = ovl[0]?.string_key
+        if (skey) {
+          const noteText = await getStringForLang(String(skey), ctx.nativeLang)
+          if (noteText) extras.contrastiveNote = noteText
+        }
+      } catch (err) {
+        log("journey_content_contrastive_error", { node: ref.id, error: String(err) })
+      }
+    }
     const first = exemplars[0]
     const item: ResolvedItem = {
       ref,
@@ -610,13 +719,7 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
       // extras (§2.5 — the node has no target-language text of its own).
       target: { text: first.target.text, ttsText: first.target.ttsText },
       level: row.cefr != null ? String(row.cefr) : undefined,
-      extras: {
-        kind: "grammarNode",
-        title,
-        note,
-        lateAcquired: Number(row.late_acquired ?? 0) === 1,
-        exemplars,
-      },
+      extras,
     }
     return { ok: true, item }
   }
@@ -652,16 +755,49 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
   }
 
   async function resolveConcept(ref: ItemRef): Promise<OneOutcome> {
-    // v0.1: imagepan does not ship (D10.6/D11); this path is exercised only
-    // by tests until it lands (§2.7). Image bytes then ride <OfflineImage>.
+    // §2.7: imagepan is language-neutral. Not installed ⇒ pack_not_installed
+    // (the runtime never emits media:'image' params without it, so this path is
+    // exercised only by tests until the pack lands). When installed: the target
+    // FACE is the concept word; the picture + distractor pictures ride extras.
     if (!deps.findInstalledPack("imagepan")) return miss("pack_not_installed")
+    const rows = await query("imagepan", SQL.conceptImage, [ref.id])
+    if (rows.length === 0) return miss("row_absent")
+    const row = rows[0]
+    const word = String(row.word ?? ref.id)
+    const extras: ResolvedExtras = { kind: "concept" }
+    const file = row.file != null ? String(row.file) : ""
+    if (file) extras.imageSrc = deps.packFileUrl("imagepan", file)
+    const gloss = row.sense_gloss != null ? String(row.sense_gloss) : ""
+    if (gloss) extras.senseGloss = gloss
+    try {
+      const raw = row.distractors_json != null ? String(row.distractors_json) : ""
+      const parsed = raw ? (JSON.parse(raw) as unknown) : []
+      if (Array.isArray(parsed)) {
+        const ds: { key: string; word: string; imageSrc: string }[] = []
+        for (const d of parsed) {
+          const dk = String((d as { key?: unknown })?.key ?? "")
+          const dfile = String((d as { file?: unknown })?.file ?? "")
+          if (dk && dfile) {
+            ds.push({
+              key: dk,
+              word: String((d as { word?: unknown })?.word ?? dk),
+              imageSrc: deps.packFileUrl("imagepan", dfile),
+            })
+          }
+        }
+        if (ds.length > 0) extras.distractors = ds
+      }
+    } catch (err) {
+      log("journey_content_concept_distractors_error", { key: ref.id, error: String(err) })
+    }
     const item: ResolvedItem = {
       ref,
       key: itemRefKey(ref),
       kind: "concept",
-      target: { text: ref.id, ttsText: ref.id },
-      extras: { kind: "concept" },
+      target: { text: word, ttsText: word },
+      extras,
     }
+    if (row.cefr != null && String(row.cefr)) item.level = String(row.cefr)
     return { ok: true, item }
   }
 
@@ -774,17 +910,87 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
     }
   }
 
+  /** Whitespace/punctuation-split membership over the target text. Unicode
+   *  letter/number tokens, lowercased — script-agnostic (target may be non-
+   *  Latin), so "One coffee, please" contains "coffee" but not "cof". */
+  function containsWord(text: string, word: string): boolean {
+    if (!word) return false
+    return text
+      .toLowerCase()
+      .split(/[^\p{L}\p{N}]+/u)
+      .includes(word)
+  }
+
+  const EXAMPLE_MAX_SCAN = 48
+  const EXAMPLE_SHORT_ENOUGH = 24
+
+  async function exampleFor(word: string): Promise<ResolvedExample | null> {
+    const key = (word || "").toLowerCase()
+    if (!key) return null
+    const cached = examples.get(key)
+    if (cached !== undefined) return cached
+    let best: ResolvedExample | null = null
+    let bestLen = Infinity
+    try {
+      // Direct query (not the logging `query()` wrapper): a full page here is
+      // the intended candidate pool, not the silent-cap truncation that warning
+      // is meant to catch.
+      const limit = sqlLimit(SQL.phraseCandidates)
+      const res = await deps.queryPackDb({
+        packId: ctx.courseId,
+        sql: SQL.phraseCandidates,
+        params: [],
+        maxRows: limit,
+      })
+      const cands = res.rows.map((r) => ({
+        source: String(r.source ?? "base"),
+        id: String(r.ref_id ?? ""),
+      }))
+      // Seeded shuffle so the SAME word always yields the SAME example (a
+      // learner should re-meet a word in a stable sentence, not a new one each
+      // time — deterministic, spec §0.4 no unseeded randomness).
+      const rng = mulberry32(fnv1a32(`example ${key}`))
+      for (let i = cands.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1))
+        ;[cands[i], cands[j]] = [cands[j], cands[i]]
+      }
+      let scanned = 0
+      for (const c of cands) {
+        if (scanned >= EXAMPLE_MAX_SCAN) break
+        scanned++
+        const one = await resolveOne({ kind: "phrase", source: c.source, id: c.id }, [])
+        if (!one.ok) continue
+        const phrase = one.item
+        if (!containsWord(phrase.target.text, key)) continue
+        const len = phrase.target.text.length
+        if (len < bestLen) {
+          best = { phrase, word: key }
+          bestLen = len
+        }
+        // A short, clean sentence is ideal — stop early rather than resolve on.
+        if (len <= EXAMPLE_SHORT_ENOUGH) break
+      }
+    } catch (err) {
+      log("journey_content_example_error", { word: key, error: String(err) })
+    }
+    examples.set(key, best)
+    return best
+  }
+
   function invalidate(): void {
     items.clear()
     strings.clear()
+    stringsByLang.clear()
     segmentFiles.clear()
     charStrokes.clear()
     distractorPools.clear()
+    examples.clear()
   }
 
   return {
     resolveItems,
     resolveCharStrokes,
+    exampleFor,
     invalidate,
     poolCacheGet: (key) => distractorPools.get(key),
     poolCacheSet: (key, rows) => distractorPools.set(key, rows),

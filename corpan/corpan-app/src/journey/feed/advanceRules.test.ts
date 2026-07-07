@@ -28,9 +28,9 @@ const exercise = (activityType: string, params?: Record<string, unknown>): FeedC
   return { kind: "exercise", cardId: "s1", spec, prepared }
 }
 
-test("choice_pick: swipe in swipe mode, auto+800 in auto mode", () => {
+test("choice_pick: swipe in swipe mode, auto+900 in auto (default) mode", () => {
   assert.deepEqual(advanceRule(exercise("choice_pick"), "swipe"), { kind: "swipe" })
-  assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 800 })
+  assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 900 })
 })
 
 test("failed cards never auto-advance", () => {
@@ -41,7 +41,7 @@ test("listen cards: listening run arms auto even in swipe mode", () => {
   assert.deepEqual(advanceRule(exercise("listen_pick"), "swipe"), { kind: "swipe" })
   assert.deepEqual(advanceRule(exercise("listen_pick"), "swipe", { listeningRun: true }), {
     kind: "auto",
-    delayMs: 800,
+    delayMs: 900,
   })
 })
 
@@ -49,9 +49,11 @@ test("speak_echo auto-advances within the block regardless of mode", () => {
   assert.deepEqual(advanceRule(exercise("speak_echo"), "swipe"), { kind: "auto", delayMs: 1000 })
 })
 
-test("intro_echo: swipe mode swipes; auto mode waits 1500ms (time to echo aloud)", () => {
-  assert.deepEqual(advanceRule(exercise("intro_echo"), "swipe"), { kind: "swipe" })
-  assert.deepEqual(advanceRule(exercise("intro_echo"), "auto"), { kind: "auto", delayMs: 1500 })
+test("intro_echo + flip_recall are button-advance in every mode (explicit press)", () => {
+  for (const type of ["intro_echo", "flip_recall"] as const) {
+    assert.deepEqual(advanceRule(exercise(type), "swipe"), { kind: "button" }, type)
+    assert.deepEqual(advanceRule(exercise(type), "auto"), { kind: "button" }, type)
+  }
 })
 
 test("manual-only cards stay manual in every mode", () => {

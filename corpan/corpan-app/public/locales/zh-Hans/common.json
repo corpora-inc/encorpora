@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "语法笔记",
-      "tryIt": "试一试"
+      "tryIt": "试一试",
+      "contrastLabel": "与你的语言对比"
+    },
+    "word": {
+      "inContext": "语境例句",
+      "meaningShow": "含义",
+      "meaningHide": "隐藏"
+    },
+    "wordPack": {
+      "title": "词义包",
+      "body": "边学边看看这些单词在{{language}}里是什么意思。",
+      "add": "添加 ({{size}})",
+      "dismiss": "暂不",
+      "downloading": "添加中… {{percent}}%",
+      "failed": "添加失败",
+      "retry": "重试"
     },
     "checkpoint": {
       "title": "检查点",
@@ -980,7 +995,8 @@
       "prelit": "你已带着 {{count}} 个已掌握的内容起步。",
       "redo": "重新测一次水平",
       "aboveTitle": "你已经超出了这门课",
-      "aboveBody": "这门课目前涵盖入门内容，而你的水平在它之上。你仍可以浏览它——新的级别正在路上。"
+      "aboveBody": "这门课目前涵盖入门内容，而你的水平在它之上。你仍可以浏览它——新的级别正在路上。",
+      "aboveFrontier": "你已经超过了这门课程的大部分内容——将从 {{unit}} 开始。"
     },
     "path": {
       "title": "你的路",

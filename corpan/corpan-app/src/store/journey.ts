@@ -100,7 +100,10 @@ export const useJourneyStore = create<JourneyState>()(
     (set, get) => ({
       byCourse: {},
       learningDays: [],
-      advanceMode: "swipe",
+      // Default AUTO so hands-off learners flow (contract #6): settled answer
+      // cards auto-advance; swipe stays available as a manual override, and
+      // the overflow menu lets power users switch to pure swipe.
+      advanceMode: "auto",
       juiceIntensity: "full",
       soundsEnabled: true,
       streakPactAnswered: false,
@@ -172,7 +175,7 @@ export const useJourneyStore = create<JourneyState>()(
     }),
     {
       name: "corpan-journey-v1",
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({
         byCourse: s.byCourse,
@@ -182,7 +185,14 @@ export const useJourneyStore = create<JourneyState>()(
         soundsEnabled: s.soundsEnabled,
         streakPactAnswered: s.streakPactAnswered,
       }),
-      migrate: (state: unknown, _version: number) => state as JourneyState, // v1 no-op
+      migrate: (state: unknown, version: number) => {
+        const s = state as JourneyState
+        // v0.1 preview persisted the old "swipe" default, which made cards
+        // dead-end (owner report). Flip the preview cohort to the new "auto"
+        // default; deliberate choosers can switch back in the overflow menu.
+        if (version < 2 && s && s.advanceMode === "swipe") s.advanceMode = "auto"
+        return s
+      },
     },
   ),
 )

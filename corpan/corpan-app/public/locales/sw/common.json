@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Dokezo la sarufi",
-      "tryIt": "Jaribu"
+      "tryIt": "Jaribu",
+      "contrastLabel": "Ikilinganishwa na lugha yako"
+    },
+    "word": {
+      "inContext": "Katika muktadha",
+      "meaningShow": "Maana",
+      "meaningHide": "Ficha"
     },
     "checkpoint": {
       "title": "Kituo cha ukaguzi",
@@ -980,7 +986,8 @@
       "prelit": "Unaanza na vitu {{count}} unavyovijua tayari.",
       "redo": "Kagua kiwango changu tena",
       "aboveTitle": "Umepita kozi hii",
-      "aboveBody": "Kozi hii kwa sasa inashughulikia maudhui ya waanzilishi, na wewe uko juu yake. Bado unaweza kuichunguza — viwango vipya vinakuja."
+      "aboveBody": "Kozi hii kwa sasa inashughulikia maudhui ya waanzilishi, na wewe uko juu yake. Bado unaweza kuichunguza — viwango vipya vinakuja.",
+      "aboveFrontier": "Uko mbele ya sehemu kubwa ya kozi hii — utaanzia {{unit}}."
     },
     "path": {
       "title": "Njia yako",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Kusikiliza bila mikono",
       "viewPath": "Ona njia",
       "redoPlacement": "Kagua kiwango changu tena"
+    },
+    "wordPack": {
+      "title": "Maana za maneno",
+      "body": "Soma maana za maneno kwa {{language}} unapoendelea.",
+      "add": "Ongeza ({{size}})",
+      "dismiss": "Sio sasa",
+      "downloading": "Inaongeza… {{percent}}%",
+      "failed": "Imeshindwa kuongeza",
+      "retry": "Jaribu tena"
     }
   }
 }

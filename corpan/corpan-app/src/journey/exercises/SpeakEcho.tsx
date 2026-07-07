@@ -7,9 +7,13 @@
 // Hard when overallScore ≥ 0.45) are ENGINE rules — the raw evidence passes
 // through untouched. Mic release is the capability's dispose() duty.
 //
-// STT-unavailable specs never reach this renderer in the feed (the runtime
-// swaps them to listen_type, §6.3); if availability degrades mid-mount the
-// capability itself reports flags.sttUnavailable.
+// STT three-state policy (V0.2-PLAN contract #4): whisper UNSUPPORTED specs
+// never reach this renderer (the runtime swaps them to listen_type, §6.3).
+// SUPPORTED but model-not-installed DOES reach here — modelPolicy
+// "offer-install" makes cap-pronounce show an inline install offer; on
+// decline it settles flags.sttDeclined and the runtime stops scheduling
+// speak cards this session. If availability degrades mid-mount the capability
+// reports flags.sttUnavailable.
 
 import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
@@ -42,7 +46,10 @@ export function SpeakEcho(props: ExerciseProps) {
           lang: props.spec.targetLang,
           romanization: props.showRomanization ? answer.target.romanization : undefined,
           nativeText: answer.native?.text,
-          modelPolicy: "installed-only",
+          // Runtime (contract #4) mounts speak_echo even when whisper is
+          // SUPPORTED but the model isn't installed — the capability shows an
+          // inline install offer; decline emits flags.sttDeclined.
+          modelPolicy: "offer-install",
           maxAttempts:
             typeof props.spec.params?.maxAttempts === "number" ? props.spec.params.maxAttempts : 2,
           startPaused: true,

@@ -264,6 +264,19 @@ const mount = (
     clearTimebox()
   }
 
+  const settleDeclined = () => {
+    if (settle.settled()) return
+    // User waved off the model install (offer-install policy). The runtime
+    // reads flags.sttDeclined and stops scheduling speak cards this session
+    // (V0.2-PLAN contract #4) — distinct from sttUnavailable (host degraded).
+    settle.settle(
+      makeAbandonedResult(spec, clock.activeMs(), {
+        flags: { sttDeclined: true },
+      }),
+    )
+    clearTimebox()
+  }
+
   const clearTimebox = () => {
     if (timeboxTimer !== null) {
       clearTimeout(timeboxTimer)
@@ -392,35 +405,84 @@ const mount = (
     }
   }
 
+  // Inline offer surface (offer-install policy): what it is + model size +
+  // one Install button (live progress) + a quiet decline. Decline settles
+  // sttDeclined; a successful install flows straight into the scoring round
+  // on the same mount (no remount).
   const renderInstallPrompt = (modelFolder: string) => {
     const m = visibleModels().find((v) => v.folder === modelFolder)
+    const sizeMB = String(m?.approxSizeMB ?? 0)
+    const btnLabel = () => tt("installOfferButton", { size: sizeMB })
+
+    // Neutralize the mic affordance while offering — no dangling spinner
+    // behind the offer; the mic returns once the model is ready.
+    micBtn.hidden = true
+    micLabel.hidden = true
+    clearError()
+
     const prompt = document.createElement("div")
     prompt.className = "capPron-install"
     prompt.innerHTML = `
-      <button class="capPron-install-btn" type="button">
-        ${escapeHtml(tt("loadingModel"))} · ~${m?.approxSizeMB ?? "?"} MB
-      </button>
+      <p class="capPron-install-title">${escapeHtml(tt("installOfferTitle"))}</p>
+      <button class="capPron-install-btn" type="button">${escapeHtml(btnLabel())}</button>
+      <button class="capPron-install-decline" type="button">${escapeHtml(
+        tt("installOfferDecline"),
+      )}</button>
     `
     root.querySelector(".capPron-stage")?.appendChild(prompt)
-    prompt
-      .querySelector<HTMLButtonElement>(".capPron-install-btn")!
-      .addEventListener("click", async () => {
-        try {
-          prompt.classList.add("capPron-install--busy")
-          await stt!.installModel!({ model: modelFolder })
-          await tryPrepareOnce(stt!, modelFolder, {
-            timeoutMs: 180_000,
-            label: "Loading model",
-          })
-          modelReady = true
-          prompt.remove()
-          setUiState("idle")
-        } catch (err) {
-          console.error("[cap-pronounce] inline install failed:", err)
-          prompt.classList.remove("capPron-install--busy")
-          showError(formatErr(err))
-        }
-      })
+
+    const installBtn = prompt.querySelector<HTMLButtonElement>(".capPron-install-btn")!
+    const declineBtn = prompt.querySelector<HTMLButtonElement>(".capPron-install-decline")!
+
+    declineBtn.addEventListener("click", () => {
+      if (settle.settled()) return
+      settleDeclined()
+      prompt.remove()
+    })
+
+    installBtn.addEventListener("click", async () => {
+      if (settle.settled() || prompt.classList.contains("capPron-install--busy")) return
+      prompt.classList.add("capPron-install--busy")
+      installBtn.disabled = true
+      declineBtn.disabled = true
+      try {
+        await stt!.installModel!(
+          { model: modelFolder, ...(m?.downloadUrl ? { downloadUrl: m.downloadUrl } : {}) },
+          (ev) => {
+            if (disposed) return
+            if (ev.phase === "downloading") {
+              const pct =
+                typeof ev.fraction === "number"
+                  ? Math.round(clamp01(ev.fraction) * 100)
+                  : 0
+              installBtn.textContent = tt("installDownloading", { percent: String(pct) })
+            } else if (ev.phase === "verifying") {
+              installBtn.textContent = tt("installVerifying")
+            }
+          },
+        )
+        if (disposed) return
+        await tryPrepareOnce(stt!, modelFolder, {
+          timeoutMs: (m?.approxSizeMB ?? 0) >= 1000 ? 180_000 : 60_000,
+          label: `Loading ${m?.label ?? "model"} model`,
+        })
+        if (disposed) return
+        modelReady = true
+        prompt.remove()
+        micBtn.hidden = false
+        micLabel.hidden = false
+        setUiState("idle")
+        if (!paused && params.autoSpeakFirst) speak(params.lang, params.text ?? "")
+      } catch (err) {
+        if (disposed) return
+        console.error("[cap-pronounce] inline install failed:", err)
+        prompt.classList.remove("capPron-install--busy")
+        installBtn.disabled = false
+        declineBtn.disabled = false
+        installBtn.textContent = btnLabel()
+        showError(tt("errInstallFailed", { error: formatErr(err) }))
+      }
+    })
   }
 
   void boot()
@@ -475,6 +537,20 @@ const checkAvailability = async (
       state: "unavailable",
       reason: `whisper cannot score ${params.lang}`,
     }
+  }
+  // Native-support probe (cheap, local, no download). Distinguishes
+  // "unsupported" (native lib can't load — x86 Chromebook via ARC, degraded
+  // build) from "needs-model" (supported, just missing the GGUF). iOS and
+  // Android both answer this from `is_available`. A THROW here is a bridge
+  // hiccup, not a definitive "no" — fall through to the model probe rather
+  // than mislabel a transient failure as permanently unsupported.
+  try {
+    const supported = await stt.isAvailable()
+    if (!supported) {
+      return { state: "unavailable", reason: "whisper stt not available on this device" }
+    }
+  } catch (err) {
+    console.warn("[cap-pronounce] isAvailable probe failed:", err)
   }
   // Cheap local probe only — NEVER downloads or loads models here.
   try {

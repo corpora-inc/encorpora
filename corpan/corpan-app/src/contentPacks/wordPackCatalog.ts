@@ -272,8 +272,16 @@ export function findWordPackForPair(
     nativeLang: string,
     targetLang: string,
 ): WordPackCatalogEntry | undefined {
-    const n = baseLang(nativeLang);
     const t = baseLang(targetLang);
+    // Exact native-code match first so regional/script flavors don't collide
+    // (`pt-BR` must not resolve `pt-PT`; `zh-Hans` must not resolve `zh-Hant`).
+    const exact = packs.find(
+        (p) =>
+            p.nativeLang === nativeLang && baseLang(p.targetLang) === t,
+    );
+    if (exact) return exact;
+    // Fall back to base-subtag match so `es-MX` still resolves the `es` pack.
+    const n = baseLang(nativeLang);
     return packs.find(
         (p) => baseLang(p.nativeLang) === n && baseLang(p.targetLang) === t,
     );

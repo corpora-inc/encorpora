@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Slovnična opomba",
-      "tryIt": "Poskusi"
+      "tryIt": "Poskusi",
+      "contrastLabel": "V primerjavi s tvojim jezikom"
+    },
+    "word": {
+      "inContext": "V kontekstu",
+      "meaningShow": "Pomen",
+      "meaningHide": "Skrij"
     },
     "checkpoint": {
       "title": "Kontrolna točka",
@@ -980,7 +986,17 @@
       "prelit": "Začneš s {{count}} že znanimi elementi.",
       "redo": "Znova preveri mojo raven",
       "aboveTitle": "Ta tečaj si že prerasel",
-      "aboveBody": "Ta tečaj zaenkrat pokriva začetniško snov, ti pa si nad njo. Vseeno ga lahko raziščeš — nove ravni prihajajo."
+      "aboveBody": "Ta tečaj zaenkrat pokriva začetniško snov, ti pa si nad njo. Vseeno ga lahko raziščeš — nove ravni prihajajo.",
+      "aboveFrontier": "Pred večino tega tečaja si — začenjaš pri {{unit}}."
+    },
+    "wordPack": {
+      "title": "Pomeni besed",
+      "body": "Med potjo beri pomene besed v jeziku {{language}}.",
+      "add": "Dodaj ({{size}})",
+      "dismiss": "Ne zdaj",
+      "downloading": "Dodajanje… {{percent}} %",
+      "failed": "Dodajanje ni uspelo",
+      "retry": "Poskusi znova"
     },
     "path": {
       "title": "Tvoja pot",

@@ -7,6 +7,65 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.1] — 2026-07-07
+
+### Added
+- **Journey words in context.** After a word exercise settles, a compact card
+  shows that word inside a real corpus phrase (with its translation) plus a
+  tap-to-expand meaning/etymology snippet — killing the "see the same word
+  translated over and over" feel. For a share of repeats, a met word is
+  practiced as fill-the-word-in-a-real-sentence rather than in isolation
+  (grading still tracks the word itself).
+- **Journey etymology gems gained a usage line.** The rare word-story card now
+  shows the word used in a real sentence beneath its origin paragraph.
+- **Journey grammar cards show a contrast with your language.** When the course
+  carries an L1 contrastive note (e.g. how English adverb placement differs from
+  Spanish), it renders beneath the rule for that learner's language.
+- **On-device tutor-moment design + prompt foundation.** A tested, framework-free
+  prompt builder for an end-of-lesson Qwen3 recap in the target language; the
+  live streaming card is specified and deferred (see
+  `docs/journey/specs/llm-cards.md`) pending an LLM runtime seam and on-device
+  verification.
+
+### Changed
+- **Journey speak cards now reach real pronunciation scoring.** When on-device
+  speech scoring is supported but the model isn't installed yet, the speak card
+  shows an inline install offer (what it is, download size, one-tap install with
+  progress) instead of silently swapping to typing. Declining stops speak cards
+  for the rest of the session; installing flows straight into hold-to-record
+  whisper scoring with per-word feedback.
+- **Journey word cards show the learner's own language.** Word exercises now
+  resolve a native-language gloss from the course pack (e.g. an ES learner sees
+  "ship" paired with "el barco", and choose-the-translation distractors are
+  other words' Spanish glosses), instead of an English word matched to itself.
+  When a gloss is absent, the card reroutes rather than showing a same-language
+  pair.
+- **Match-the-pairs cards show several pairs.** A pairs card now presents a set
+  of 4–6 items to match (drawn from the unit and neighbouring material), not a
+  single trivial pair; each pair is scored on its own.
+- **Journey cards flow hands-free.** Answered cards now advance on their own
+  after a brief countdown (with a tap-to-pause ring), and Continue on an intro
+  or flashcard advances the instant you press it — no more settling on a card
+  with nothing happening until you discover the swipe. Swipe still works as a
+  manual override and to look back.
+- **Flashcard (flip) cards drop the self-rating.** Reveal the answer, hear it,
+  and continue — no "did you know it?" buttons.
+- **Journey clears the notch and gesture bar.** The top ribbon sits below the
+  status bar and content clears the home indicator on edge-to-edge phones; the
+  page behind the Journey no longer scrolls under it.
+- **Placement result names where you landed.** It shows the concrete unit and
+  its level; when you place past the current content it says so honestly and
+  starts you at the deepest unit rather than an empty screen.
+
+### Fixed
+- **No more fake "correct" on intro cards.** Listen-and-echo intros settle
+  neutrally — they never stamp a green check or celebrate a card that was never
+  graded.
+- **Choose-the-translation and match-pairs never show one language on both
+  sides.** If a needed translation face is missing the card falls back to a
+  listening form instead of a same-language card, and match-pairs always pairs
+  the target with your language.
+
 ## [0.20.0] - 2026-07-06
 
 ### Added

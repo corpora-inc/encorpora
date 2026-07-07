@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "Notatka gramatyczna",
-      "tryIt": "Spróbuj"
+      "tryIt": "Spróbuj",
+      "contrastLabel": "W porównaniu z twoim językiem"
+    },
+    "word": {
+      "inContext": "W kontekście",
+      "meaningShow": "Znaczenie",
+      "meaningHide": "Ukryj"
+    },
+    "wordPack": {
+      "title": "Znaczenia słów",
+      "body": "Czytaj znaczenia słów w {{language}} w trakcie nauki.",
+      "add": "Dodaj ({{size}})",
+      "dismiss": "Nie teraz",
+      "downloading": "Dodawanie… {{percent}}%",
+      "failed": "Nie udało się dodać",
+      "retry": "Spróbuj ponownie"
     },
     "checkpoint": {
       "title": "Punkt kontrolny",
@@ -980,7 +995,8 @@
       "prelit": "Zaczynasz z {{count}} znanymi już elementami.",
       "redo": "Sprawdź mój poziom ponownie",
       "aboveTitle": "Jesteś ponad tym kursem",
-      "aboveBody": "Ten kurs obejmuje na razie materiał dla początkujących, a ty jesteś wyżej. Możesz go mimo to przejrzeć — nowe poziomy są w drodze."
+      "aboveBody": "Ten kurs obejmuje na razie materiał dla początkujących, a ty jesteś wyżej. Możesz go mimo to przejrzeć — nowe poziomy są w drodze.",
+      "aboveFrontier": "Jesteś przed większością tego kursu — zaczynasz od {{unit}}."
     },
     "path": {
       "title": "Twoja ścieżka",

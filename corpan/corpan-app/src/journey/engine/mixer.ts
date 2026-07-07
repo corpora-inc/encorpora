@@ -9,6 +9,8 @@ import {
   DEFAULT_CHECKPOINT_CADENCE,
   ITEM_MIN_GAP,
   ITEM_MIN_GAP_RELAXED,
+  MATCH_PAIRS_MAX_ITEMS,
+  MATCH_PAIRS_MIN_ITEMS,
   MAX_FUN_PER_10,
   MAX_LEECH_PER_BATCH,
   LEECH_SERVE_P,
@@ -255,6 +257,66 @@ function makeSlot(
   }
 }
 
+/** Defect #2: a match_pairs card needs several items so the renderer shows
+ *  multiple pairs. Draw compatible companions for `primaryItemId` from its own
+ *  unit(s) and the immediately-prior unit — same item kind, not Suspended, not
+ *  already used this batch, and respecting the item-gap floor against recent
+ *  emits. Prefers already-seen items (a pairing reviews known material) but
+ *  fills with fresh ones. Deterministic under the session PRNG. Returns up to
+ *  MATCH_PAIRS_MAX_ITEMS − 1 companions (fewer when the band is thin). */
+function matchPairsCompanions(bag: MixerBag, primaryItemId: string, slots: Slot[]): string[] {
+  const { gidx, session } = bag
+  const primary = gidx.graph.items[primaryItemId]
+  if (!primary) return []
+  const kind = primary.kind
+
+  const used = new Set<string>([primaryItemId])
+  for (const s of slots) for (const id of s.itemIds) used.add(id)
+
+  const ordinals = new Set<number>()
+  for (const skillId of primary.skillIds) {
+    const unitId = gidx.graph.skills[skillId]?.unitId
+    const ord = unitId !== undefined ? gidx.unitPos.get(unitId) : undefined
+    if (ord !== undefined) {
+      ordinals.add(ord)
+      if (ord - 1 >= 0) ordinals.add(ord - 1)
+    }
+  }
+  if (ordinals.size === 0) ordinals.add(bag.course.position.unitOrdinal)
+
+  const pos = session.emitIndex + slots.length
+  const candidates: string[] = []
+  for (const ord of [...ordinals].sort((a, b) => a - b)) {
+    const unit = gidx.units[ord]
+    if (!unit) continue
+    for (const skillId of unit.skillIds) {
+      for (const id of gidx.skillItems.get(skillId) ?? []) {
+        if (used.has(id)) continue
+        const item = gidx.graph.items[id]
+        if (!item || item.kind !== kind) continue
+        const card = bag.cards.get(id)
+        if (card && (card.flags & 8) !== 0) continue // Suspended — never served
+        const last = session.lastEmit.get(id)
+        if (last !== undefined && pos - last < ITEM_MIN_GAP) continue
+        used.add(id)
+        candidates.push(id)
+      }
+    }
+  }
+  if (candidates.length === 0) return []
+
+  const seen = candidates.filter((id) => (bag.cards.get(id)?.fsrs.reps ?? 0) > 0)
+  const fresh = candidates.filter((id) => (bag.cards.get(id)?.fsrs.reps ?? 0) === 0)
+  session.rng.shuffle(seen)
+  session.rng.shuffle(fresh)
+  const ordered = [...seen, ...fresh]
+  const want =
+    MATCH_PAIRS_MIN_ITEMS -
+    1 +
+    session.rng.int(MATCH_PAIRS_MAX_ITEMS - MATCH_PAIRS_MIN_ITEMS + 1)
+  return ordered.slice(0, want)
+}
+
 function modelKey(modelNeeds: ModelNeed[], pinTail?: boolean): number {
   if (pinTail) return 9
   if (modelNeeds.includes("llm")) return 3
@@ -390,7 +452,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     const leechItem = card ? isLeech(card) : false
     if (leechItem && leechServed >= MAX_LEECH_PER_BATCH) return null
     if (leechItem && bag.session.rng.next() > LEECH_SERVE_P) return null // §5.7 containment
-    const t = chooseActivityType(bag, cons, itemId, form, {
+    const typeOpts: TypeChoiceOpts = {
       pool,
       biasStrand,
       strandWeights,
@@ -400,9 +462,27 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       // Cross-batch §5.4 seed: the first slot of a batch avoids the previous
       // batch's tail type (the seam was previously unchecked — W10/W4 fix b).
       avoidType: slots[slots.length - 1]?.activityType ?? bag.session.lastBatchTailType ?? undefined,
-    })
+    }
+    const t = chooseActivityType(bag, cons, itemId, form, typeOpts)
     if (!t) return null
-    const slot = makeSlot(bag, itemId, t, pool, extra)
+    let slot = makeSlot(bag, itemId, t, pool, extra)
+    // Defect #2: a match_pairs card must carry several items so the renderer
+    // shows multiple pairs — never the one-pair collapse. A single-item
+    // presentation (debut intro / unscored) OR a band too thin to form even
+    // one extra pair re-picks a different activity type instead.
+    if (t.activityType === "match_pairs") {
+      const companions =
+        slot.debutIntro || slot.unscored ? [] : matchPairsCompanions(bag, itemId, slots)
+      if (companions.length >= 1) {
+        slot.itemIds = [itemId, ...companions]
+      } else {
+        const alt = chooseActivityType(bag, cons, itemId, form, {
+          ...typeOpts,
+          avoidType: "match_pairs",
+        })
+        if (alt && alt.activityType !== "match_pairs") slot = makeSlot(bag, itemId, alt, pool, extra)
+      }
+    }
     slots.push(slot)
     if (leechItem) leechServed += 1
     if (pool === "fun") funServed += 1

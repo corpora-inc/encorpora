@@ -1,0 +1,86 @@
+id: en.b1.u01
+arc: en.arc3
+theme: "Once upon a time"
+cando:
+  - key: story
+    text: "Can tell a story that weaves background details with the events that happened, in order."
+  - key: past-habits
+    text: "Can describe past habits and routines that are no longer true, using used to and would."
+vocab_band: { lo: 1, hi: 4300 }
+phrase_domains: [culture, social]
+skills:
+  - id: en.skill.storytelling
+    kind: grammar
+    title: "Storytelling"
+    b: -0.8
+    prereqs: [en.skill.past-vs-perfect]
+grammar_nodes: [en.gn.narrative-tenses, en.gn.used-to-vs-would]
+items:
+  - ref: "phrase:base:17567"  # When I saw her, she was crying.
+    skills: [en.skill.storytelling]
+    importance: 3
+    probe: true
+    b: -0.8
+  - ref: "phrase:base:17181"  # A song played on the radio while we drove.
+    skills: [en.skill.storytelling]
+    importance: 3
+    probe: true
+    b: -0.8
+  - ref: "phrase:phrase-life-then-and-now:10"  # When I was little, I would read under the covers at night.
+    skills: [en.skill.storytelling]
+    importance: 3
+    probe: true
+    b: -0.8
+  - ref: "phrase:base:15380"  # When I was a child, I loved playing outside.
+    skills: [en.skill.storytelling]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:9058"  # She used to sing in a choir.
+    skills: [en.skill.storytelling]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-then-and-now:24"  # I would always get lost in this part of town.
+    skills: [en.skill.storytelling]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:once"
+    skills: [en.skill.storytelling]
+    importance: 2
+  - ref: "word:en:meanwhile"
+    skills: [en.skill.storytelling]
+    importance: 2
+  - ref: "word:en:childhood"
+    skills: [en.skill.storytelling]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [culture, social]
+      level: B1
+      count: 10
+      skills: [en.skill.storytelling]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: B1
+      count: 8
+      skills: [en.skill.storytelling]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: B1
+      count: 8
+      skills: [en.skill.storytelling]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: earthgate
+  config: { itemset: unit }

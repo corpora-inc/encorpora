@@ -14,7 +14,25 @@ Content changes to the authored `courses/en/` tree (the shippable unit is
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-07-06
+
 ### Added
+- **Arcs 2 + 3 authored: A2 "Everyday" (28 units) + B1 "Independence" (30 units).**
+  The course grows 30 → 88 units (2,328 items, 125 grammar nodes, 86 skills,
+  92 checkpoints), corpus-pinned throughout, with 69 new Spanish contrastive
+  notes, new cognate credits, and /θ ð ʃ-ʒ/ + stress-shift phoneme drills.
+  Placement now has headroom through B1. Three grammar gap packs
+  (`phrase-life-then-and-now`, `phrase-life-what-if`,
+  `phrase-social-small-talk`) supply structures the base corpus lacks.
+- **Course strings + word glosses complete in all 54 languages** (V-5 green):
+  846 keys per language — unit themes, can-dos, grammar notes, overlay-derived
+  notes, and `wg.*` word glosses — translated natively, no English fallback.
+- **Spanish word glosses `wg.<word>` (v0.2, contract #1).** Natural, course-
+  sense-disambiguated es glosses for all 140 word items (e.g. `ship`→"el barco"
+  in the sounds unit, `saw`→"vio" in the irregular-past unit, `order`→"pedir"
+  in Eating out), plus `en` entries (the word, or a disambiguating gloss). These
+  are the native FACE of word exercises — an ES learner no longer sees an
+  English→English word card. `course.yaml` declares `l1_full_support: [es]`.
 - journey_en v0.1 course sources (Journey W7, authoring.md): 30 authored
   units — 2 Launchpad (`en.a0.u01` sounds, `en.a0.u02` survival kit) + 28
   A1 units through the arc exam (`en.a1.u28`) — with skills, can-dos,

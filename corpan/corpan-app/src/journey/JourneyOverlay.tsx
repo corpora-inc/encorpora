@@ -22,6 +22,7 @@ import {
   type GoalIntensityKey,
 } from "./JourneySurface.tsx"
 import { journeyStreakPorts, buildJourneyDeps, type BuiltJourney } from "./runtimeWiring.ts"
+import { WordPackOfferBanner } from "./WordPackOfferBanner.tsx"
 import type { SpeakFn } from "./exercises/types.ts"
 
 /** The user's journey target: first stack language after the primary
@@ -113,16 +114,33 @@ export function JourneyOverlay(props: {
   })
 
   return (
-    <JourneySurface
-      deps={built.deps}
-      capabilityHost={built.capabilityHost}
-      speak={speak}
-      dir={dir()}
-      showRomanization={showRomanization}
-      dailyGoal={shape.dailyGoal}
-      targetLangName={targetLangName}
-      streakPorts={journeyStreakPorts()}
-      onLaunchPack={props.onLaunchPack}
-    />
+    <>
+      <JourneySurface
+        deps={built.deps}
+        capabilityHost={built.capabilityHost}
+        speak={speak}
+        dir={dir()}
+        showRomanization={showRomanization}
+        dailyGoal={shape.dailyGoal}
+        targetLangName={targetLangName}
+        streakPorts={journeyStreakPorts()}
+        onLaunchPack={props.onLaunchPack}
+      />
+      {/* Consent-first word-explanation offer. Renders nothing unless the
+          learner's (native→target) pair has an installable pack. Pinned as an
+          understated bottom banner, above the feed's own chrome. */}
+      {nativeLang && nativeLang !== built.targetLang ? (
+        <div
+          className="pointer-events-none fixed inset-x-0 bottom-20 z-[1060] flex justify-center px-4"
+          dir={dir()}
+        >
+          <WordPackOfferBanner
+            nativeLang={nativeLang}
+            targetLang={built.targetLang}
+            onInstalled={built.onWordPackInstalled}
+          />
+        </div>
+      ) : null}
+    </>
   )
 }

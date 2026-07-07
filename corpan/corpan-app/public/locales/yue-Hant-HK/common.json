@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "文法筆記",
-      "tryIt": "試吓"
+      "tryIt": "試吓",
+      "contrastLabel": "同你嘅語言比較"
+    },
+    "word": {
+      "inContext": "喺句子入面",
+      "meaningShow": "意思",
+      "meaningHide": "隱藏"
     },
     "checkpoint": {
       "title": "檢查站",
@@ -980,7 +986,8 @@
       "prelit": "你帶住 {{count}} 個已經識嘅嘢起步。",
       "redo": "再測一次程度",
       "aboveTitle": "你已經超越咗呢個課程",
-      "aboveBody": "呢個課程而家涵蓋入門內容，而你嘅程度喺佢之上。你都可以睇吓——新級別就快嚟。"
+      "aboveBody": "呢個課程而家涵蓋入門內容，而你嘅程度喺佢之上。你都可以睇吓——新級別就快嚟。",
+      "aboveFrontier": "你已經超前過呢個課程大部分內容——由 {{unit}} 開始。"
     },
     "path": {
       "title": "你條路",
@@ -1035,6 +1042,15 @@
     "popin": {
       "pronounceTitle": "讀吓佢",
       "close": "閂"
+    },
+    "wordPack": {
+      "title": "字義包",
+      "body": "邊學邊睇單字喺{{language}}入面嘅意思。",
+      "add": "加入（{{size}}）",
+      "dismiss": "而家唔使喇",
+      "downloading": "加緊入去…{{percent}}%",
+      "failed": "加唔到",
+      "retry": "再試多次"
     },
     "settings": {
       "title": "Journey 選項",

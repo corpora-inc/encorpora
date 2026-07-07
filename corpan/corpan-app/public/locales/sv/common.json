@@ -928,7 +928,13 @@
     },
     "grammar": {
       "noteLabel": "Grammatikanteckning",
-      "tryIt": "Prova"
+      "tryIt": "Prova",
+      "contrastLabel": "Jämfört med ditt språk"
+    },
+    "word": {
+      "inContext": "I sammanhang",
+      "meaningShow": "Betydelse",
+      "meaningHide": "Dölj"
     },
     "checkpoint": {
       "title": "Kontrollpunkt",
@@ -980,7 +986,8 @@
       "prelit": "Du börjar med {{count}} saker du redan kan.",
       "redo": "Kolla min nivå igen",
       "aboveTitle": "Du är förbi den här kursen",
-      "aboveBody": "Kursen täcker för närvarande nybörjarmaterial, och du ligger över det. Du kan ändå utforska den — nya nivåer är på väg."
+      "aboveBody": "Kursen täcker för närvarande nybörjarmaterial, och du ligger över det. Du kan ändå utforska den — nya nivåer är på väg.",
+      "aboveFrontier": "Du ligger före det mesta av den här kursen — du börjar vid {{unit}}."
     },
     "path": {
       "title": "Din väg",
@@ -1051,6 +1058,15 @@
       "listeningMode": "Handsfree-lyssning",
       "viewPath": "Visa vägen",
       "redoPlacement": "Kolla min nivå igen"
+    },
+    "wordPack": {
+      "title": "Ordbetydelser",
+      "body": "Läs vad orden betyder på {{language}} medan du går vidare.",
+      "add": "Lägg till ({{size}})",
+      "dismiss": "Inte nu",
+      "downloading": "Lägger till… {{percent}}%",
+      "failed": "Kunde inte lägga till",
+      "retry": "Försök igen"
     }
   }
 }

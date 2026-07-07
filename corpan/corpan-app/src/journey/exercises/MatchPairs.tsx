@@ -1,21 +1,17 @@
 // src/journey/exercises/MatchPairs.tsx — match the pairs (feed-ux §4 row 6).
-// Multi-item card: `perItem` outcome per pair; each wrong pairing counts one
-// miss against that pair's item only; the card completes when all pairs
-// match. text-text axis (target↔native) or text-audio.
+// Multi-item card (4–6 pairs): `perItem` outcome per pair; each wrong pairing
+// counts one miss against that pair's item only; the card completes when all
+// pairs match. Columns come from faces.matchColumns (contract #2): the text
+// axis is ALWAYS target↔native — the right side never falls back to target
+// text (that was the EN→EN pairs bug).
 
 import { useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Volume2 } from "lucide-react"
 import { isRTL } from "../../util/convert"
-import { seededShuffle } from "../content/distractors.ts"
+import { matchColumns, type MatchSide } from "./faces.ts"
 import type { ActivityItemResult } from "../../contentPacks/activityContract"
 import type { ExerciseProps, ResolvedItem } from "./types.ts"
-
-interface Side {
-  key: string
-  label: string
-  audio?: boolean
-}
 
 export function MatchPairs(props: ExerciseProps) {
   const { t } = useTranslation()
@@ -28,36 +24,33 @@ export function MatchPairs(props: ExerciseProps) {
   const missesRef = useRef(new Map<string, number>())
   const doneRef = useRef(false)
 
-  const leftSides: Side[] = useMemo(
+  const columns = useMemo(
     () =>
-      seededShuffle(
-        `${props.cardId}-l`,
-        items.map((i) => ({ key: i.key, label: i.target.text, audio: audioAxis })),
+      matchColumns(
+        items,
+        audioAxis ? "text-audio" : "text-text",
+        props.cardId,
+        props.spec.targetLang,
+        props.spec.nativeLang,
       ),
-    [items, props.cardId, audioAxis],
+    [items, audioAxis, props.cardId, props.spec.targetLang, props.spec.nativeLang],
   )
-  const rightSides: Side[] = useMemo(
-    () =>
-      seededShuffle(
-        `${props.cardId}-r`,
-        items.map((i) => ({
-          key: i.key,
-          label: audioAxis ? i.target.text : (i.native?.text ?? i.target.text),
-        })),
-      ),
-    [items, props.cardId, audioAxis],
-  )
+
+  const usable = useMemo(() => {
+    const keep = new Set(columns.usableKeys)
+    return items.filter((i) => keep.has(i.key))
+  }, [items, columns.usableKeys])
 
   const byKey = useMemo(() => {
     const m = new Map<string, ResolvedItem>()
-    for (const i of items) m.set(i.key, i)
+    for (const i of usable) m.set(i.key, i)
     return m
-  }, [items])
+  }, [usable])
 
   const finish = () => {
     if (doneRef.current) return
     doneRef.current = true
-    const perItem: ActivityItemResult[] = items.map((i) => {
+    const perItem: ActivityItemResult[] = usable.map((i) => {
       const misses = missesRef.current.get(i.key) ?? 0
       return {
         itemRef: i.ref,
@@ -67,13 +60,13 @@ export function MatchPairs(props: ExerciseProps) {
     })
     const passed = perItem.filter((p) => p.outcome === "pass").length
     props.onOutcome({
-      correct: passed / Math.max(items.length, 1),
+      correct: passed / Math.max(usable.length, 1),
       perItem,
       latencyMs: Date.now() - startedAt.current,
     })
   }
 
-  const pickLeft = (side: Side) => {
+  const pickLeft = (side: MatchSide) => {
     if (matched.includes(side.key) || props.mode === "review") return
     setLeft(side.key)
     if (side.audio) {
@@ -82,13 +75,13 @@ export function MatchPairs(props: ExerciseProps) {
     }
   }
 
-  const pickRight = (side: Side) => {
+  const pickRight = (side: MatchSide) => {
     if (!left || matched.includes(side.key) || props.mode === "review") return
     if (side.key === left) {
       const next = [...matched, side.key]
       setMatched(next)
       setLeft(null)
-      if (next.length === items.length) finish()
+      if (next.length === usable.length) finish()
     } else {
       missesRef.current.set(left, (missesRef.current.get(left) ?? 0) + 1)
       setWrongFlash(side.key)
@@ -97,7 +90,8 @@ export function MatchPairs(props: ExerciseProps) {
     }
   }
 
-  const dir = isRTL(props.spec.targetLang) ? "rtl" : "ltr"
+  const leftDir = isRTL(columns.leftLang) ? "rtl" : "ltr"
+  const rightDir = isRTL(columns.rightLang) ? "rtl" : "ltr"
   const review = props.mode === "review"
 
   const tileCls = (state: "idle" | "selected" | "matched" | "wrong") =>
@@ -116,12 +110,12 @@ export function MatchPairs(props: ExerciseProps) {
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.matchPairs")}</div>
       <div className="flex w-full gap-3" data-testid="journey-match-grid">
-        <div className="flex flex-1 flex-col gap-2" dir={dir}>
-          {leftSides.map((s) => (
+        <div className="flex flex-1 flex-col gap-2" dir={leftDir} lang={columns.leftLang}>
+          {columns.left.map((s) => (
             <button
               key={s.key}
               type="button"
-              lang={props.spec.targetLang}
+              lang={columns.leftLang}
               disabled={review || matched.includes(s.key)}
               onClick={() => pickLeft(s)}
               data-journey-pair-left={s.key}
@@ -137,11 +131,12 @@ export function MatchPairs(props: ExerciseProps) {
             </button>
           ))}
         </div>
-        <div className="flex flex-1 flex-col gap-2" dir={audioAxis ? dir : undefined}>
-          {rightSides.map((s) => (
+        <div className="flex flex-1 flex-col gap-2" dir={rightDir} lang={columns.rightLang}>
+          {columns.right.map((s) => (
             <button
               key={s.key}
               type="button"
+              lang={columns.rightLang}
               disabled={review || matched.includes(s.key)}
               onClick={() => pickRight(s)}
               data-journey-pair-right={s.key}

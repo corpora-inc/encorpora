@@ -126,6 +126,43 @@ test("lazy priorKnown seeding: no cards at finalize; first encounter creates Eas
   assert.ok(seeded > 0, "a placement-seeded card was created lazily on encounter")
 })
 
+test("placement summary (defect #9): high-θ learner skips into a later arc; zero-beginner starts at 0", async () => {
+  // wide-band, multi-arc pack (2 arcs × 3 units): an all-below-1.0 responder
+  // places deep in the course (never above-content, ceiling b = 3).
+  const strong = await runPlacement((b) => b < 1.0, {
+    arcs: 2,
+    unitsPerArc: 3,
+    bMin: -3,
+    bMax: 3,
+  })
+  assert.equal(strong.outcome.record.outcome, "placed")
+  const p = strong.outcome.placement
+  assert.equal(p.aboveContent, false)
+  assert.ok(p.unitOrdinal > 0, `placed at unit ordinal ${p.unitOrdinal}`)
+  assert.ok(p.arcOrdinal >= 1, `placed past arc 0 into arc ${p.arcOrdinal}`)
+  assert.equal(p.unitsSkipped, p.unitOrdinal, "unitsSkipped = units before the placed unit")
+  assert.equal(p.skillsSkipped, strong.outcome.unlockedSkills.length)
+  assert.equal(p.unitId, strong.outcome.startUnitId)
+  assert.equal(p.cefr, strong.h.graph.arcs[p.arcOrdinal].cefr)
+
+  // zero-beginner: start of the course, nothing skipped past
+  const h = await makeEngine({ arcs: 2, unitsPerArc: 3 })
+  h.engine.startSession()
+  const zb = h.engine.startPlacement("zero-beginner").finalize()
+  assert.equal(zb.placement.aboveContent, false)
+  assert.equal(zb.placement.unitOrdinal, 0)
+  assert.equal(zb.placement.arcOrdinal, 0)
+  assert.equal(zb.placement.unitsSkipped, 0)
+  assert.equal(zb.placement.skillsSkipped, 0)
+  assert.equal(zb.placement.unitId, h.graph.units[0].unitId)
+})
+
+test("above-content placement summary flags the ceiling (R10)", async () => {
+  const { outcome } = await runPlacement(() => true, { bMax: -1 })
+  assert.equal(outcome.record.outcome, "above-content")
+  assert.equal(outcome.placement.aboveContent, true)
+})
+
 test("probe results never create cards and never enter grading", async () => {
   const { h, transcript } = await runPlacement(() => true, { bMax: 0.5 })
   assert.ok(transcript.length > 0)

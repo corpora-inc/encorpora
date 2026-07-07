@@ -8,6 +8,7 @@ import { isRTL } from "../../util/convert"
 import { normalizedEquals } from "../content/normalize.ts"
 import { cardRng } from "../content/rng.ts"
 import { tokenizePhrase } from "../../util/wordTokens"
+import { clozeContext } from "./clozeContext.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import { TypeInput } from "./common/TypeInput.tsx"
@@ -24,14 +25,30 @@ export function Cloze(props: ExerciseProps) {
   const [hint, setHint] = useState<string | null>(null)
   const bank = props.spec.params?.mode !== "type"
 
-  const words = useMemo(
+  // Words-in-context: when the runtime blanked a WORD inside a real corpus
+  // phrase, render that phrase (not the bare word) with the word blanked. The
+  // graded item is still items[0] (the word), so the answer === the word.
+  const ctx = useMemo(
+    () => clozeContext(props.spec.params, props.spec.targetLang),
+    [props.spec.params, props.spec.targetLang],
+  )
+
+  const plainWords = useMemo(
     () =>
-      tokenizePhrase(answer.target.text, props.spec.targetLang).filter((w) => w.isWord),
+      tokenizePhrase(answer.target.text, props.spec.targetLang)
+        .filter((w) => w.isWord)
+        .map((w) => w.text),
     [answer.target.text, props.spec.targetLang],
   )
-  const rawIndex = typeof props.spec.params?.blankIndex === "number" ? props.spec.params.blankIndex : 0
+  const words = ctx ? ctx.words : plainWords
+  const rawIndex = ctx
+    ? ctx.blankIndex
+    : typeof props.spec.params?.blankIndex === "number"
+      ? props.spec.params.blankIndex
+      : 0
   const blankIndex = Math.min(Math.max(rawIndex, 0), Math.max(words.length - 1, 0))
-  const blankWord = words[blankIndex]?.text ?? answer.target.text
+  const blankWord = ctx ? ctx.blankWord : words[blankIndex] ?? answer.target.text
+  const nativeLine = ctx ? ctx.native : answer.native?.text
 
   const tiles = useMemo(() => {
     if (!bank) return []
@@ -49,7 +66,7 @@ export function Cloze(props: ExerciseProps) {
   const sentence = useMemo(() => {
     const parts: string[] = []
     for (let i = 0; i < words.length; i++) {
-      parts.push(i === blankIndex && !answered ? "____" : words[i].text)
+      parts.push(i === blankIndex && !answered ? "____" : words[i])
     }
     return parts.join(" ")
   }, [words, blankIndex, answered])
@@ -70,13 +87,13 @@ export function Cloze(props: ExerciseProps) {
       >
         {sentence}
       </div>
-      {answer.native ? (
+      {nativeLine ? (
         <div
           lang={props.spec.nativeLang}
           dir={props.spec.nativeLang && isRTL(props.spec.nativeLang) ? "rtl" : "ltr"}
           className="text-sm text-muted-foreground"
         >
-          {answer.native.text}
+          {nativeLine}
         </div>
       ) : null}
       {bank ? (

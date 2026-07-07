@@ -33,6 +33,7 @@ import type {
 import {
   contentMissingResult,
   type ResolveContext,
+  type ResolvedExample,
   type ResolvedItem,
   type Resolver,
   type ResolverDeps,
@@ -114,6 +115,16 @@ const STRAND_TO_TAG: Record<string, "mfi" | "mfo" | "lfl" | "fd"> = {
 
 // ---------------------------------------------------------------------- deps
 
+/** STT three-state policy (contract #4):
+ *  - `unsupported`  — no STT api / device can't run whisper → swap speak_echo
+ *                     to listen_type (as before).
+ *  - `modelMissing` — whisper supported but no model on disk → KEEP speak_echo
+ *                     (SpeakEcho renders an inline install offer); a
+ *                     `detail.flags.sttDeclined` result then swaps the rest of
+ *                     the session.
+ *  - `installed`    — a model is present → full scoring round. */
+export type SttReadiness = "unsupported" | "modelMissing" | "installed"
+
 export interface JourneyRuntimeDeps {
   engine: JourneyEngine
   resolver: Resolver
@@ -126,8 +137,14 @@ export interface JourneyRuntimeDeps {
   now?: () => number
   record?: RecordFn
   streakPorts?: StreakPorts
-  /** Cheap STT availability probe (feed-ux §6.3). Absent ⇒ unavailable. */
+  /** Cheap STT availability probe (feed-ux §6.3). Absent ⇒ unavailable.
+   *  Legacy boolean form: true ⇒ installed, false ⇒ unsupported. Prefer
+   *  `sttReadiness` for the three-state policy (contract #4). */
   sttAvailable?: () => Promise<boolean>
+  /** Three-state STT probe (contract #4): whisper unsupported vs supported but
+   *  the model isn't installed vs installed. Takes precedence over
+   *  `sttAvailable`. Cheap + cached at the wiring layer. */
+  sttReadiness?: () => Promise<SttReadiness>
   /** Kick the model load early (blockIntro overlaps load with reading). */
   sttPrepare?: () => Promise<void>
   /** W5 wiring: invalidate the resolver on pack-install events too (W10). */
@@ -172,7 +189,9 @@ export interface JourneyRuntime {
   needsPlacement(): boolean
   startPlacement(mode: "probe" | "zero-beginner"): PlacementController
   prepareEngineCard(ec: EngineCard): Promise<FeedCard | null>
-  finishPlacement(outcome: PlacementOutcome): void
+  /** Records the placement + refills the feed. Returns the same outcome (now
+   *  carrying the concrete `placement` summary) so the surface can render it. */
+  finishPlacement(outcome: PlacementOutcome): PlacementOutcome
   declinePlacement(): void
   // pack anchors (§6.1)
   launchPackActivity(
@@ -231,7 +250,11 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   const impressions = new Set<string>()
   const settled = new Set<string>()
   let combo = 0
-  let sttOk = false
+  let sttState: SttReadiness = "unsupported"
+  // Set once a speak card returns detail.flags.sttDeclined: the learner turned
+  // down the inline model install, so the rest of the session swaps speak_echo
+  // to listen_type (contract #4).
+  let sttDeclined = false
   let blockRemaining = 0 // stt cards left in the announced block
   let pendingPack: { cardId: string; packId: string } | null = null
   let position = 0
@@ -251,9 +274,16 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     for (const fn of listeners) fn()
   }
 
+  // Whether the mixer may still schedule STT cards: installed, or supported +
+  // model-missing before a decline (we keep speak_echo so the inline install
+  // offer can appear). Once unsupported or declined, STT leaves the feed and
+  // any queued speak_echo is swapped (see reswapDeclinedSpeakCards).
+  const sttUsable = (): boolean =>
+    sttState === "installed" || (sttState === "modelMissing" && !sttDeclined)
+
   const constraints = (): FeedConstraints => ({
     availableProviders: deps.constraints?.availableProviders ?? ["native"],
-    modelsAvailable: deps.constraints?.modelsAvailable ?? (sttOk ? ["stt", "tts"] : ["tts"]),
+    modelsAvailable: deps.constraints?.modelsAvailable ?? (sttUsable() ? ["stt", "tts"] : ["tts"]),
     excludeActivityTypes: deps.constraints?.excludeActivityTypes,
     timeboxSec: deps.constraints?.timeboxSec,
     checkpointCadence: deps.constraints?.checkpointCadence,
@@ -270,14 +300,73 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
 
   // ------------------------------------------------------------- preparation
 
+  /** A card is a translation form when one face is native and the other target
+   *  (contract #2/#3): choice_pick + flip_recall always; match_pairs only on
+   *  its default text axis (the audio axis pairs target text ↔ target audio).
+   *  Only translation forms carry an explicit toNative/toTarget direction;
+   *  everything else is targetOnly. */
+  const isTranslationForm = (activityType: string, params: Record<string, unknown>): boolean => {
+    if (activityType === "choice_pick" || activityType === "flip_recall") return true
+    if (activityType === "match_pairs") return params.axis !== "text-audio"
+    return false
+  }
+
   const pickDirection = (
-    spec: ActivitySpec,
+    specId: string,
+    activityType: string,
+    params: Record<string, unknown>,
     answer: ResolvedItem,
   ): "toNative" | "toTarget" | "targetOnly" => {
-    const p = spec.params?.direction
+    const p = params.direction
     if (p === "toNative" || p === "toTarget" || p === "targetOnly") return p
+    if (!isTranslationForm(activityType, params)) return "targetOnly"
     if (!deps.ctx.nativeLang || !answer.native) return "targetOnly"
-    return cardRng(spec.specId)() < 0.5 ? "toNative" : "toTarget"
+    return cardRng(specId)() < 0.5 ? "toNative" : "toTarget"
+  }
+
+  /** Target-only fallback an emitted translation form swaps to when the item
+   *  has no native face — renderable from the target text alone. */
+  const targetOnlyFallback = (specId: string): "cloze" | "word_order" =>
+    cardRng(`${specId}:ttfallback`)() < 0.5 ? "cloze" : "word_order"
+
+  /** Deterministic share of eligible first-exposure word choice cards that
+   *  become PICTURE choices when imagepan is installed. Pictures are strongest
+   *  at first exposure (research/images.md §1); the rest stay text so the
+   *  learner still meets the written word. */
+  const IMAGE_CHOICE_SHARE = 0.6
+
+  /**
+   * Picture-choice upgrade (feed-ux §4 row 1, media:'image'). A first-exposure
+   * WORD choice card, when the imagepan pack is installed and the word maps to a
+   * concept with a picture + ≥1 distractor picture, becomes a picture choice a
+   * deterministic share of the time. items[0] stays the WORD (grading/mastery
+   * unchanged — the picture only replaces the presentation). Never for probes.
+   * Returns the image params to merge, or null (stays a normal card).
+   */
+  async function maybeImageChoice(
+    ec: EngineCard,
+    answer: ResolvedItem,
+    activityType: string,
+  ): Promise<{
+    answerImageSrc: string
+    imageDistractors: { key: string; word: string; imageSrc: string }[]
+    answerAlt: string
+  } | null> {
+    if (answer.kind !== "word") return null
+    if (activityType !== "choice_pick") return null
+    if (ec.meta.pool === "probe" || ec.spec.params?.probe === true) return null
+    if (ec.meta.pool !== "new") return null // first exposures only
+    if (!deps.resolverDeps.findInstalledPack("imagepan")) return null
+    if (cardRng(`${ec.spec.specId}:imgchoice`)() >= IMAGE_CHOICE_SHARE) return null
+    const out = await deps.resolver.resolveItems([
+      { kind: "concept", source: "imagepan", id: answer.ref.id.toLowerCase() },
+    ])
+    const cItem = out.resolved[0]
+    if (!cItem || cItem.extras?.kind !== "concept") return null
+    const imageSrc = cItem.extras.imageSrc
+    const ds = cItem.extras.distractors ?? []
+    if (!imageSrc || ds.length < 1) return null
+    return { answerImageSrc: imageSrc, imageDistractors: ds, answerAlt: cItem.extras.senseGloss ?? answer.target.text }
   }
 
   async function prepareExercise(ec: EngineCard): Promise<FeedCard | null> {
@@ -291,22 +380,96 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       deps.engine.applyResult(contentMissingResult(spec.specId))
       return null
     }
-    const answer = outcome.resolved[0]
-    resolvedByCard.set(spec.specId, outcome.resolved.map((i) => i.key))
+    let resolved = outcome.resolved
+    const answer = resolved[0]
+    resolvedByCard.set(spec.specId, resolved.map((i) => i.key))
 
-    const direction = pickDirection(spec, answer)
-    const params: Record<string, unknown> = { ...(spec.params ?? {}), direction }
+    // -- Translation-integrity guard (contract #2/#3) -----------------------
+    // A translation-form card must NEVER be emitted for an item whose native
+    // face is absent (else the renderer collapses to identical-language
+    // prompt/answer). Swap the activity type (the sttFallback pattern), or —
+    // for match_pairs — drop native-less items / fall back to the audio axis.
+    let activityType = spec.activityType
+    const params: Record<string, unknown> = { ...(spec.params ?? {}) }
+    const nativeLang = deps.ctx.nativeLang
+
+    // -- Picture choice (imagepan) — takes precedence over the translation
+    // guard + words-in-context: the picture IS the meaning (L1-free), so a
+    // missing native face is irrelevant. items[0] stays the WORD (grading
+    // unchanged); only the presentation becomes a 2×2 image grid.
+    const imageChoice = await maybeImageChoice(ec, answer, activityType)
+    if (imageChoice) {
+      activityType = "choice_pick"
+      params.media = "image"
+      params.answerImageSrc = imageChoice.answerImageSrc
+      params.imageDistractors = imageChoice.imageDistractors
+      params.answerAlt = imageChoice.answerAlt
+    } else if (activityType === "choice_pick" || activityType === "flip_recall") {
+      if (!nativeLang || !answer.native) {
+        activityType = targetOnlyFallback(spec.specId)
+        delete params.direction
+      }
+    } else if (activityType === "match_pairs" && params.axis !== "text-audio") {
+      if (!nativeLang) {
+        params.axis = "text-audio"
+      } else {
+        const withNative = resolved.filter((i) => !!i.native)
+        if (withNative.length >= 2) resolved = withNative
+        else params.axis = "text-audio"
+      }
+    }
+
+    // -- Words in context (depth) -------------------------------------------
+    // A word the learner has already met (graded rep, not a debut exposure)
+    // gets a real corpus phrase that CONTAINS it. Surfaced two ways:
+    //   • always as the post-answer enrichment line (prepared.example);
+    //   • for a deterministic share of reps, as a fill-the-word-in-context
+    //     cloze — items[0] stays the WORD, so grading/mastery is unchanged,
+    //     only the presentation moves from the bare word to a live sentence.
+    let example: ResolvedExample | undefined
+    const graded = ec.meta.unscored !== true
+    // The etymology gem is unscored but earns its usage line too. Skipped in
+    // picture mode — the card is a picture, and the cloze conversion below would
+    // otherwise clobber it.
+    const wantExample =
+      !imageChoice && answer.kind === "word" && (graded || ec.meta.rareVariant === "etymology")
+    if (wantExample) {
+      const found = await deps.resolver.exampleFor(answer.target.text)
+      if (found) {
+        example = found
+        const convertible =
+          graded &&
+          (activityType === "choice_pick" ||
+            activityType === "flip_recall" ||
+            activityType === "cloze")
+        if (convertible && cardRng(`${spec.specId}:ctxcloze`)() < 1 / 3) {
+          activityType = "cloze"
+          params.mode = "type"
+          params.contextPhrase = found.phrase.target.text
+          if (found.phrase.native?.text) params.contextNative = found.phrase.native.text
+          params.contextWord = answer.target.text
+          delete params.direction
+        }
+      }
+    }
+
+    // Picture options are language-neutral, so there is no answer/prompt
+    // direction to pick — the prompt is simply the target word.
+    const direction = imageChoice
+      ? "targetOnly"
+      : pickDirection(spec.specId, activityType, params, answer)
+    params.direction = direction
     const targetB = typeof params.b_distractor === "number" ? params.b_distractor : 0
 
     // cloze defaults to bank mode; the blank index is seeded when unset.
     let blankIndex: number | undefined
     let answerTokens: string[] | undefined
-    if (spec.activityType === "cloze" || spec.activityType === "word_order") {
+    if (activityType === "cloze" || activityType === "word_order") {
       const tokens = tokenizePhrase(answer.target.text, spec.targetLang)
         .filter((t) => t.isWord)
         .map((t) => t.text)
       answerTokens = tokens
-      if (spec.activityType === "cloze") {
+      if (activityType === "cloze") {
         if (params.mode !== "type") params.mode = "bank"
         const fromParams = typeof params.blankIndex === "number" ? params.blankIndex : undefined
         blankIndex =
@@ -320,17 +483,22 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     }
 
     let distractors: DistractorSet | null = null
-    const req = buildDistractorRequest({
-      activityType: spec.activityType,
-      cardId: spec.specId,
-      answer,
-      ctx: deps.ctx,
-      targetB,
-      recentKeys: recentKeys(),
-      params,
-      answerTokens,
-      blankIndex,
-    })
+    // Picture-choice carries its OWN distractor pictures in params (from the
+    // concept's curated visually-confusable siblings) — the text sampler is not
+    // consulted.
+    const req = imageChoice
+      ? null
+      : buildDistractorRequest({
+          activityType,
+          cardId: spec.specId,
+          answer,
+          ctx: deps.ctx,
+          targetB,
+          recentKeys: recentKeys(),
+          params,
+          answerTokens,
+          blankIndex,
+        })
     if (req) {
       distractors = await sampleDistractors(req, deps.resolver, deps.resolverDeps, deps.ctx)
       // §3.3 floor: a choice card with < 2 total options drops pre-mount.
@@ -341,14 +509,21 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       }
     }
 
+    const finalSpec: ActivitySpec = {
+      ...spec,
+      activityType,
+      params,
+      itemRefs: resolved.map((i) => i.ref),
+    }
     const preparedEx: PreparedExercise = {
-      spec: { ...spec, params },
+      spec: finalSpec,
       engine: ec,
-      items: outcome.resolved,
+      items: resolved,
       distractors,
       blankIndex,
       direction,
     }
+    if (example) preparedEx.example = example
     return {
       kind: "exercise",
       cardId: spec.specId,
@@ -398,10 +573,13 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         rare,
       }
     }
-    if (t === "speak_echo" && !sttOk) {
-      // §6.3 failure path: transparently re-render as listen_type; the
-      // result carries flags.sttUnavailable so the engine stops scheduling
-      // STT today. Mapping stays 1:1 — same items, same specId.
+    if (t === "speak_echo" && !sttUsable()) {
+      // Contract #4: swap to listen_type only when STT is unusable — whisper
+      // unsupported, or supported-but-model-missing AFTER the learner declined
+      // the inline install. Supported-with-model or model-missing-before-decline
+      // KEEP speak_echo (SpeakEcho renders the install offer / records). The
+      // result carries flags.sttUnavailable so the engine stops scheduling STT
+      // today. Mapping stays 1:1 — same items, same specId.
       const swapped: EngineCard = {
         ...ec,
         spec: { ...ec.spec, activityType: "listen_type", modelNeeds: undefined },
@@ -428,8 +606,10 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         const ec = rawQueue.shift()
         if (!ec) break
         // blockIntro synthesis (the ONLY runtime-synthesized card, R5):
-        // a modelNeeds run boundary gets an intro; a lone stt card too.
-        if (isSttCard(ec) && sttOk && blockRemaining === 0) {
+        // a modelNeeds run boundary gets an intro; a lone stt card too. Only
+        // when a model is actually resident to warm (installed) — a
+        // model-missing card carries its own inline install offer instead.
+        if (isSttCard(ec) && sttState === "installed" && blockRemaining === 0) {
           let runLen = 1
           for (const peeked of rawQueue) {
             if (isSttCard(peeked)) runLen += 1
@@ -466,12 +646,36 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     notify()
   }
 
+  /** Contract #4: after a decline, re-map every still-queued speak_echo to its
+   *  listen_type fallback (index 0 is the settling card the decline arrived on;
+   *  it completes as-is). sttUsable() is now false, so mapEngineCard swaps. */
+  async function reswapDeclinedSpeakCards(): Promise<void> {
+    for (let i = 1; i < prepared.length; i++) {
+      const c = prepared[i]
+      if (
+        c.kind === "exercise" &&
+        c.prepared.engine.spec.activityType === "speak_echo" &&
+        !c.prepared.sttFallback
+      ) {
+        const remapped = await mapEngineCard(c.prepared.engine)
+        if (remapped && prepared[i]?.cardId === c.cardId) prepared[i] = remapped
+      }
+    }
+    notify()
+  }
+
   // -------------------------------------------------------------- lifecycle
 
   async function start(trigger: "landing" | "home_hero" | "deeplink" | "resume") {
     await deps.engine.load()
     deps.engine.tickDay()
-    sttOk = deps.sttAvailable ? await deps.sttAvailable().catch(() => false) : false
+    sttState = deps.sttReadiness
+      ? await deps.sttReadiness().catch(() => "unsupported" as SttReadiness)
+      : deps.sttAvailable
+        ? (await deps.sttAvailable().catch(() => false))
+          ? "installed"
+          : "unsupported"
+        : "unsupported"
     const s = deps.engine.startSession()
     started = true
     stats.startedAt = now()
@@ -530,6 +734,14 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     const card = prepared[0]
     if (!card || card.cardId !== cardId || settled.has(cardId)) return null
     settled.add(cardId)
+
+    // Contract #4 decline flow: the learner turned down the inline model
+    // install on a speak card. Stop scheduling STT and swap every still-queued
+    // speak_echo to listen_type for the rest of the session.
+    if (r.detail?.flags?.sttDeclined === true && !sttDeclined) {
+      sttDeclined = true
+      void reswapDeclinedSpeakCards()
+    }
 
     // blockIntro / welcomeBack are runtime-synthesized — never sent to the engine.
     const engineIssued =
@@ -683,7 +895,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     return !meta?.placementDone && !meta?.placementDeclined
   }
 
-  function finishPlacement(outcome: PlacementOutcome): void {
+  function finishPlacement(outcome: PlacementOutcome): PlacementOutcome {
     store().updateCourse(deps.courseKey, { placementDone: true })
     record({
       type: "placement_final",
@@ -693,8 +905,12 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       itemsUsed: outcome.record.asked.length,
       durationMs: 0,
       priorKnownSeeded: outcome.unlockedSkills.length,
+      aboveContent: outcome.placement.aboveContent,
+      unitsSkipped: outcome.placement.unitsSkipped,
+      skillsSkipped: outcome.placement.skillsSkipped,
     })
     void fillQueue()
+    return outcome
   }
 
   function declinePlacement(): void {

@@ -5,6 +5,7 @@ target_lang: en
 version: 0.0.1
 launchpad_units: 1
 script_track: false
+l1_full_support: [es]   # exercises gates V-21 (word glosses) + V-22 (phrase L1)
 min_app_version: "0.9.0"
 name: "Journey: English (fixture)"
 description: "Tiny fixture course used by the pack-pipeline tests."

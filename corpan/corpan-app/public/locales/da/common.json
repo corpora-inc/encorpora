@@ -928,7 +928,22 @@
     },
     "grammar": {
       "noteLabel": "Grammatiknote",
-      "tryIt": "Prøv det"
+      "tryIt": "Prøv det",
+      "contrastLabel": "Sammenlignet med dit sprog"
+    },
+    "word": {
+      "inContext": "I sammenhæng",
+      "meaningShow": "Betydning",
+      "meaningHide": "Skjul"
+    },
+    "wordPack": {
+      "title": "Ordbetydninger",
+      "body": "Læs, hvad ordene betyder på {{language}}, mens du lærer.",
+      "add": "Tilføj ({{size}})",
+      "dismiss": "Ikke nu",
+      "downloading": "Tilføjer… {{percent}}%",
+      "failed": "Kunne ikke tilføjes",
+      "retry": "Prøv igen"
     },
     "checkpoint": {
       "title": "Checkpoint",
@@ -980,7 +995,8 @@
       "prelit": "Du starter med {{count}} ting, du allerede kan.",
       "redo": "Tjek mit niveau igen",
       "aboveTitle": "Du er forbi dette kursus",
-      "aboveBody": "Kurset dækker indtil videre begynderstof, og du ligger over det. Du kan stadig udforske det — nye niveauer er på vej."
+      "aboveBody": "Kurset dækker indtil videre begynderstof, og du ligger over det. Du kan stadig udforske det — nye niveauer er på vej.",
+      "aboveFrontier": "Du er foran størstedelen af dette kursus — du starter ved {{unit}}."
     },
     "path": {
       "title": "Din vej",

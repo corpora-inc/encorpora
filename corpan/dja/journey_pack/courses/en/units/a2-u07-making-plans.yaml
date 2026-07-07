@@ -1,0 +1,76 @@
+id: en.a2.u07
+arc: en.arc2
+theme: "Making plans"
+cando:
+  - key: plans
+    text: "Can talk about a plan already made, choosing going to over will."
+  - key: arrangements
+    text: "Can state a fixed arrangement with a time, using the present continuous."
+vocab_band: { lo: 1, hi: 4149 }
+phrase_domains: [everyday, business, social]
+skills:
+  - id: en.skill.arrangements
+    kind: grammar
+    title: "Making plans"
+    b: -1.4
+    prereqs: [en.skill.predictions, en.skill.plans]
+grammar_nodes: [en.gn.will-vs-going-to, en.gn.pres-cont-future]
+items:
+  - ref: "phrase:base:10283"  # We are meeting tonight.
+    skills: [en.skill.arrangements]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:17650"  # We are meeting friends on Saturday evening.
+    skills: [en.skill.arrangements]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:13658"  # We’re going to see a concert this weekend.
+    skills: [en.skill.arrangements]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:14439"  # We are meeting at the restaurant at 7 p.m.
+    skills: [en.skill.arrangements]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:15820"  # I’m going to visit my family this weekend.
+    skills: [en.skill.arrangements]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13222"  # What are you doing next weekend?
+    skills: [en.skill.arrangements]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:14263"  # I have a meeting tomorrow morning.
+    skills: [en.skill.arrangements]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:appointment"
+    skills: [en.skill.arrangements]
+    importance: 2
+  - ref: "word:en:meeting"
+    skills: [en.skill.arrangements]
+    importance: 2
+  - ref: "word:en:tonight"
+    skills: [en.skill.arrangements]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, business, social]
+      level: A2
+      count: 10
+      skills: [en.skill.arrangements]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }
