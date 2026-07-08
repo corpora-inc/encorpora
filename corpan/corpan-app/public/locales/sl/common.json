@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Želite vodeno pot?",
+      "title": "Kako se želite učiti {{lang}}?",
       "subtitle": "Journey vam vsak dan postreže mešanico novega gradiva in ponavljanja v {{lang}} — kartico za kartico.",
       "guided": {
-        "label": "Začnite Journey",
-        "desc": "Vodena dnevna seja, ki se vam prilagaja"
+        "label": "Vodena dnevna pot",
+        "desc": "Kratka dnevna seja, načrtovana za vas."
       },
       "explore": {
-        "label": "Raje raziskujem po svoje",
-        "desc": "Journey lahko kadar koli začnete na zaslonu Domov"
+        "label": "Lastno tempo",
+        "desc": "Sami brskajte po zgodbah, vajah in igrah."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Namesti ({{size}})",
     "installing": "Nameščanje…",
     "installed": "Nameščeno",
-    "retry": "Poskusi znova"
+    "retry": "Poskusi znova",
+    "explains": "Besede v {{language}}"
   },
   "journey": {
     "name": "Journey",

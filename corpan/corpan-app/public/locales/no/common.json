@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Vil du ha en guidet vei?",
+      "title": "Hvordan vil du lære {{lang}}?",
       "subtitle": "Journey serverer en daglig blanding av nytt stoff og repetisjon på {{lang}} – ett kort om gangen.",
       "guided": {
-        "label": "Start Journey",
-        "desc": "En guidet daglig økt som tilpasser seg deg"
+        "label": "Guidet daglig vei",
+        "desc": "En kort daglig økt, planlagt for deg."
       },
       "explore": {
-        "label": "Jeg utforsker på egen hånd",
-        "desc": "Du kan starte Journey når som helst fra Hjem"
+        "label": "I eget tempo",
+        "desc": "Bla selv gjennom historier, øvelser og spill."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Installer ({{size}})",
     "installing": "Installerer…",
     "installed": "Installert",
-    "retry": "Prøv igjen"
+    "retry": "Prøv igjen",
+    "explains": "{{language}}-ord"
   },
   "journey": {
     "name": "Journey",

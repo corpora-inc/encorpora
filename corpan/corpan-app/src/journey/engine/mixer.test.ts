@@ -6,10 +6,38 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { DAY_MS } from "./clock.ts"
-import type { EngineCard } from "./types.ts"
+import type { ActivityTemplate, CourseGraph, EngineCard, ItemRef } from "./types.ts"
+import { makeFixtureGraph, nativeTemplates } from "./__fixtures__/fixtureGraph.ts"
 import { makeEngine, playBatch, type Harness } from "./__fixtures__/harness.ts"
 
 const CONS = { availableProviders: ["native"] }
+
+/** Fixture graph whose single-token kinds (word/phoneme) carry the SAME native
+ *  template set (choice_pick, cloze, word_order, …) so the mixer's selection
+ *  gate — not a template shortfall — is what keeps cloze/word_order off them.
+ *  Retags every item of skill index `k` inside each unit to `kind`. */
+function graphWithKind(
+  kind: ItemRef["kind"],
+  opts: Parameters<typeof makeFixtureGraph>[0] = {},
+  everyN = 2,
+): CourseGraph {
+  const graph = makeFixtureGraph({ withLessons: false, ...opts })
+  const templates: ActivityTemplate[] = [...graph.activityTemplates]
+  // Mirror every native phrase template onto the new kind so type choice has
+  // the full menu (incl. the multi-token cloze/word_order it must NOT pick).
+  for (const t of nativeTemplates(kind)) templates.push(t)
+  graph.activityTemplates = templates
+  let flipped = 0
+  for (const item of Object.values(graph.items)) {
+    // retag every Nth item so both kinds coexist in the pools
+    if (flipped % everyN === 0) {
+      item.kind = kind
+      item.ref = { kind, source: item.ref.source, id: item.ref.id } as ItemRef
+    }
+    flipped += 1
+  }
+  return graph
+}
 
 function modelKey(card: EngineCard): number {
   const m = card.spec.modelNeeds ?? []
@@ -255,6 +283,85 @@ test("recipe variety: an A1 session surfaces ≥4 distinct activity types (defec
     h.clock.advance(DAY_MS)
   }
   assert.ok(types.size >= 4, `distinct activity types (${types.size}): ${[...types].join(", ")}`)
+})
+
+test("selection gate: single-token WORD items never get cloze/word_order", async () => {
+  const graph = graphWithKind("word", { unitsPerArc: 3, itemsPerSkill: 8 })
+  const h = await makeEngine({}, graph)
+  let wordCards = 0
+  let sawWordChoice = false
+  for (let day = 0; day < 3; day++) {
+    h.engine.startSession()
+    for (let b = 0; b < 4; b++) {
+      const cards = h.engine.nextFeedItems(10, CONS)
+      if (cards.length === 0) break
+      for (const c of cards) {
+        const kinds = new Set(c.spec.itemRefs.map((r) => r.kind))
+        if (!kinds.has("word")) continue
+        wordCards += 1
+        assert.notEqual(c.spec.activityType, "cloze", "word item must never get cloze")
+        assert.notEqual(c.spec.activityType, "word_order", "word item must never get word_order")
+        if (c.spec.activityType === "choice_pick" || c.spec.activityType === "listen_pick") {
+          sawWordChoice = true
+        }
+      }
+      playBatch(h.engine, cards, (_c, i) => i % 4 !== 3)
+    }
+    h.clock.advance(DAY_MS)
+  }
+  assert.ok(wordCards > 0, "session surfaced word cards")
+  assert.ok(sawWordChoice, "word items rerouted to a valid recognition activity")
+})
+
+test("selection gate: single-token PHONEME items never get cloze/word_order", async () => {
+  // Phonemes are a minority (every 4th item) so enough vocab accumulates to
+  // clear the anti-domination deferral and let phoneme cards actually surface,
+  // exercising the type gate rather than the deferral.
+  const graph = graphWithKind("phoneme", { unitsPerArc: 4, itemsPerSkill: 10 }, 4)
+  const h = await makeEngine({}, graph)
+  let phonemeCards = 0
+  for (let day = 0; day < 10; day++) {
+    h.engine.startSession()
+    for (let b = 0; b < 4; b++) {
+      const cards = h.engine.nextFeedItems(10, CONS)
+      if (cards.length === 0) break
+      for (const c of cards) {
+        if (!c.spec.itemRefs.some((r) => r.kind === "phoneme")) continue
+        phonemeCards += 1
+        assert.notEqual(c.spec.activityType, "cloze")
+        assert.notEqual(c.spec.activityType, "word_order")
+      }
+      playBatch(h.engine, cards, (_c, i) => i % 4 !== 3)
+    }
+    h.clock.advance(DAY_MS)
+  }
+  assert.ok(phonemeCards > 0, "session surfaced phoneme cards")
+})
+
+test("phoneme intake never dominates the opening feed (deferred + capped)", async () => {
+  const graph = graphWithKind("phoneme", { unitsPerArc: 3, itemsPerSkill: 8 })
+  const h = await makeEngine({}, graph)
+  // Opening session for a fresh beginner: count new (debut) phoneme vs total.
+  h.engine.startSession()
+  let openingNewPhoneme = 0
+  let openingNew = 0
+  for (let b = 0; b < 3; b++) {
+    const cards = h.engine.nextFeedItems(10, CONS)
+    if (cards.length === 0) break
+    for (const c of cards) {
+      if (c.meta.pool !== "new") continue
+      openingNew += 1
+      if (c.spec.itemRefs.some((r) => r.kind === "phoneme")) openingNewPhoneme += 1
+    }
+    playBatch(h.engine, cards)
+  }
+  assert.ok(openingNew > 0, "opening session introduced new items")
+  // A beginner with <12 seen vocab must not be drilled on phoneme contrasts.
+  assert.equal(
+    openingNewPhoneme,
+    0,
+    `phonemes flooded the opening feed (${openingNewPhoneme}/${openingNew} new cards)`,
+  )
 })
 
 test("newPerDay caps completed debuts per local day", async () => {

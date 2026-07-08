@@ -404,6 +404,40 @@ test("token mode: bank tokens come from candidate faces, never the sentence", as
   assert.equal(JSON.stringify(set), JSON.stringify(again))
 })
 
+test("token mode: never emits the same normalized text twice (no dup tiles)", async () => {
+  // A word_order / cloze-bank board must never show two identical distractor
+  // tiles (issue #1, token angle). The sampler dedups by normalized surface
+  // across the whole set — assert it over many seeds and blank positions.
+  const { deps, resolver } = fresh()
+  for (let i = 0; i < 200; i++) {
+    const answer = await resolveOne(resolver, {
+      kind: "phrase",
+      source: "base",
+      id: String(PHRASE_IDS[i % PHRASE_IDS.length]),
+    })
+    const answerTokens = wordsOf(answer.target.text, "en")
+    const set = await sampleDistractors(
+      {
+        cardId: `tok-dedup-${i}`,
+        answer,
+        answerLang: "en",
+        count: 4,
+        targetB: 0,
+        pool: i % 2 === 0 ? "sameSkill" : "nearTheta",
+        recentKeys: new Set(),
+        answerTokens,
+        blankIndex: i % 3,
+        mode: "token",
+      },
+      resolver,
+      deps,
+      CTX,
+    )
+    const norms = set.distractors.map((d) => normalizeAnswer(d.text, "en"))
+    assert.equal(new Set(norms).size, norms.length, `case ${i}: dup token ${norms.join(",")}`)
+  }
+})
+
 // ------------------------------------------------------ elimination order
 
 test("eliminationOrder is worst-fit first (descending |b − targetB|)", async () => {

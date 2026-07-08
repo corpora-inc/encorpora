@@ -97,9 +97,109 @@ class PipelineTests(unittest.TestCase):
 
     def test_all_gates_run_and_pass(self) -> None:
         report = self._validate(self.tmp)
-        self.assertEqual([g.id for g in report], [f"V-{i}" for i in range(1, 23)])
+        self.assertEqual([g.id for g in report], [f"V-{i}" for i in range(1, 25)])
         self.assertFalse(v.has_errors(report),
                          [f"{g.id}: {g.errors}" for g in report if g.errors])
+
+    def test_opener_is_communicative_first_v23(self) -> None:
+        # The fixture opener (lowest-index launchpad unit) LEADS with
+        # communicative words/phrases; phonemes trail and stay a minority.
+        db = sqlite3.connect(self.tmp / "journey_en" / "data" / "course.sqlite3")
+        opener = db.execute(
+            "SELECT u.id FROM units u JOIN arcs a ON a.id = u.arc_id "
+            "WHERE a.arc_index = 0 ORDER BY u.unit_index LIMIT 1"
+        ).fetchone()[0]
+        kinds = [r[0] for r in db.execute(
+            "SELECT kind FROM items WHERE unit_id = ? ORDER BY intro_order", (opener,))]
+        db.close()
+        self.assertTrue(kinds)
+        # the LEADING window the learner meets is communicative (word/phrase)
+        self.assertTrue(all(k in ("phrase", "word") for k in kinds[:5]), kinds[:5])
+        # phonemes are a minority (<=50%) and at least two real phrases exist
+        self.assertLessEqual(kinds.count("phoneme"), 0.5 * len(kinds))
+        self.assertGreaterEqual(kinds.count("phrase"), 2)
+
+    def test_phoneme_lead_fails_v23(self) -> None:
+        # Force a phoneme to the FRONT of the opener's intro_order — the learner
+        # would meet minimal-pair drilling first. V-23 must reject it.
+        dist2 = self.tmp / "phoneme_lead"
+        shutil.copytree(self.tmp / "journey_en", dist2 / "journey_en")
+        shutil.copy(self.zip_path, dist2 / self.zip_path.name)
+        db = sqlite3.connect(dist2 / "journey_en" / "data" / "course.sqlite3")
+        opener = db.execute(
+            "SELECT u.id FROM units u JOIN arcs a ON a.id = u.arc_id "
+            "WHERE a.arc_index = 0 ORDER BY u.unit_index LIMIT 1"
+        ).fetchone()[0]
+        # Give the opener's phoneme items the earliest intro_orders (negative),
+        # so the leading window is all phonemes.
+        phon = [r[0] for r in db.execute(
+            "SELECT id FROM items WHERE unit_id = ? AND kind='phoneme'", (opener,))]
+        self.assertTrue(phon, "fixture opener has no phoneme to hoist")
+        for i, pid in enumerate(phon):
+            db.execute("UPDATE items SET intro_order = ? WHERE id = ?", (-100 + i, pid))
+        db.commit()
+        db.close()
+        report = self._validate(dist2)
+        v23 = next(g for g in report if g.id == "V-23")
+        self.assertTrue(
+            any("non-communicative" in e for e in v23.errors), v23.errors)
+
+    def test_phoneme_dominated_opener_fails_v23(self) -> None:
+        # An opener that is >50% phoneme items is backwards even in a
+        # single-launchpad course. Delete the opener's communicative items down
+        # to a phoneme-dominated remainder and re-validate.
+        dist2 = self.tmp / "phoneme_heavy"
+        shutil.copytree(self.tmp / "journey_en", dist2 / "journey_en")
+        shutil.copy(self.zip_path, dist2 / self.zip_path.name)
+        db = sqlite3.connect(dist2 / "journey_en" / "data" / "course.sqlite3")
+        opener = db.execute(
+            "SELECT u.id FROM units u JOIN arcs a ON a.id = u.arc_id "
+            "WHERE a.arc_index = 0 ORDER BY u.unit_index LIMIT 1"
+        ).fetchone()[0]
+        # Re-home all but one communicative item OUT of the opener (into an
+        # arc-1 unit) so phonemes dominate — without deleting rows (which would
+        # dangle lesson/probe refs and trip other gates).
+        keep = db.execute(
+            "SELECT id FROM items WHERE unit_id = ? AND kind IN ('word','phrase') "
+            "ORDER BY intro_order LIMIT 1", (opener,)).fetchone()[0]
+        db.execute(
+            "UPDATE items SET unit_id = 'en.a1.u02' "
+            "WHERE unit_id = ? AND kind IN ('word','phrase') AND id != ?",
+            (opener, keep))
+        db.commit()
+        db.close()
+        report = self._validate(dist2)
+        v23 = next(g for g in report if g.id == "V-23")
+        self.assertTrue(any("50%" in e for e in v23.errors), v23.errors)
+
+    def test_degenerate_single_token_phrase_fails_v24(self) -> None:
+        # A phrase item whose target text is a single token produces a
+        # degenerate cloze/word_order — V-24 must catch it. Point an existing
+        # phrase item at a base entry whose en face is one word ("Bye!").
+        db = sqlite3.connect(self.tmp / "journey_en" / "data" / "course.sqlite3")
+        one_word = db.execute(
+            "SELECT ref_id FROM items WHERE kind='phrase' AND source='base' "
+            "ORDER BY intro_order LIMIT 1").fetchone()[0]
+        db.close()
+        # Craft the hole in a throwaway corpus copy: overwrite that entry's en
+        # face with a single token, so V-24 sees a one-token phrase target.
+        corpus_copy = self.tmp / "corpus_one_token.sqlite3"
+        shutil.copy(CORE_DB, corpus_copy)
+        cdb = sqlite3.connect(corpus_copy)
+        en_id = cdb.execute(
+            "SELECT id FROM cor_language WHERE code='en'").fetchone()[0]
+        cdb.execute(
+            "UPDATE cor_translation SET text = 'Bye' "
+            "WHERE entry_id = ? AND language_id = ?", (int(one_word), en_id))
+        cdb.commit()
+        cdb.close()
+        report = v.validate(
+            target="en", course_dir=FIXTURE_COURSE, dist_dir=self.tmp,
+            core_db=corpus_copy, packs_dir=PACKS_DIR, recipes_path=RECIPES,
+        )
+        v24 = next(g for g in report if g.id == "V-24")
+        self.assertTrue(
+            any(f"phrase:base:{one_word}" in e for e in v24.errors), v24.errors)
 
     def test_word_glosses_present_v21(self) -> None:
         # Every word item carries wg.<word> in en + es (l1_full_support).

@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "ガイド付きの道はいかがですか？",
+      "title": "{{lang}}をどのように学びたいですか？",
       "subtitle": "Journey は{{lang}}の新しい内容と復習を毎日ミックスして、1枚ずつお届けします。",
       "guided": {
-        "label": "Journey を始める",
-        "desc": "あなたに合わせて調整される毎日のガイド付きセッション"
+        "label": "ガイド付きの毎日の学習",
+        "desc": "あなたのために計画された、短い毎日のセッション。"
       },
       "explore": {
-        "label": "自分で探索する",
-        "desc": "Journey はホームからいつでも始められます"
+        "label": "自分のペースで",
+        "desc": "物語、ドリル、ゲームを自分で見て回りましょう。"
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "インストール（{{size}}）",
     "installing": "インストール中…",
     "installed": "インストール済み",
-    "retry": "再試行"
+    "retry": "再試行",
+    "explains": "{{language}}の単語"
   },
   "journey": {
     "name": "Journey",

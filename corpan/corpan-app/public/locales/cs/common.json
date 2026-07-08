@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Chcete vedenou cestu?",
+      "title": "Jak se chcete učit {{lang}}?",
       "subtitle": "Journey vám každý den nabídne mix nového materiálu a opakování v {{lang}} — kartu po kartě.",
       "guided": {
-        "label": "Začít Journey",
-        "desc": "Vedená denní lekce, která se vám přizpůsobí"
+        "label": "Vedená denní cesta",
+        "desc": "Krátká denní lekce naplánovaná právě pro vás."
       },
       "explore": {
-        "label": "Budu objevovat po svém",
-        "desc": "Journey můžete kdykoli začít z obrazovky Domů"
+        "label": "Vlastním tempem",
+        "desc": "Procházejte příběhy, cvičení a hry sami."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Nainstalovat ({{size}})",
     "installing": "Instalace…",
     "installed": "Nainstalováno",
-    "retry": "Zkusit znovu"
+    "retry": "Zkusit znovu",
+    "explains": "Slova v jazyce {{language}}"
   },
   "journey": {
     "name": "Journey",

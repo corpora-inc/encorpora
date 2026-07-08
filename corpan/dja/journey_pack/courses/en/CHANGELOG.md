@@ -14,6 +14,25 @@ Content changes to the authored `courses/en/` tree (the shippable unit is
 
 ## [Unreleased]
 
+## [0.2.1] — 2026-07-08
+
+### Changed
+- **Communicative-first launchpad reorder.** A brand-new learner's first
+  ~30 minutes were pronunciation minimal-pair drills (jam/yam, sheep/ship,
+  berry/very, …) — the opener was the phoneme-heavy "sounds of English" unit,
+  seen before hello, please, or thank you. The launchpad is reordered so the
+  opener (`en.a0.u01`, "Survival kit") now LEADS with high-frequency, usable
+  language: courtesy words (hello, please, thanks, yes, no, sorry, help) then
+  greeting/courtesy phrases (Good morning, Thank you, Nice to meet you, How are
+  you?, See you later, I am sorry, Can you help?). The phonology unit
+  ("The sounds of English") moves to `en.a0.u02` as reinforcement AFTER the
+  communicative opener, and the es-overlay `phoneme_pairs` now home there. The
+  first ~30 items the learner meets are all communicative; the first phoneme
+  appears only in the second unit. Three core greetings were pulled up from
+  `en.a1.u01` into the opener (backfilled there with See you soon / Goodbye,
+  see you later). New `wg.no` / `wg.sorry` glosses and the `greet` can-do added
+  across all 54 locales.
+
 ## [0.2.0] — 2026-07-06
 
 ### Added

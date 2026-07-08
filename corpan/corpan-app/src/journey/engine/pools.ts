@@ -2,6 +2,16 @@
 // construction (engine.md §5.2, adaptivity §5.2 verbatim).
 
 import { FUN_POOL_R_MIN, REPAIR_ACC_BELOW, REPAIR_DEMOTED_WINDOW_DAYS } from "./constants.ts"
+
+/** Phoneme (pronunciation minimal-pair) intake guard for the NEW pool. Phonics
+ *  must never flood the opening feed — a beginner should meet communicative
+ *  vocab first, not drill the same ~5 contrast words endlessly. Minimal-pair
+ *  items are DEFERRED until the learner has met at least this many non-phoneme
+ *  vocab items (have a scored card), and even then take at most
+ *  PHONEME_NEW_POOL_MAX_SHARE of any single NEW pool. (Kept local to pools.ts
+ *  to respect file ownership; promote to constants.ts on integration.) */
+const PHONEME_NEW_POOL_MIN_SEEN = 12
+const PHONEME_NEW_POOL_MAX_SHARE = 0.25
 import type { GraphIndex } from "./graph.ts"
 import { isSuspended, type Mastery } from "./mastery.ts"
 import type { Scheduler } from "./scheduler.ts"
@@ -79,11 +89,34 @@ export function buildPools(input: PoolsInput): Pools {
   // boosts jump the queue head (§5.7 / §5.9).
   const newCap = Math.max(0, course.newPerDay - course.newIntroducedToday)
   const newPool: string[] = []
+  // Phoneme (pronunciation minimal-pair) domination guard: a beginner must not
+  // drill the same ~5 contrast words endlessly before meeting core vocab
+  // (defect: "jam/sheep seen 10× in 30 min"). Phonemes are DEFERRED entirely
+  // until the learner has met enough non-phoneme vocab, then capped to a small
+  // share of any one NEW pool. Communicative content leads; phonics trickles.
+  const seenNonPhoneme = (() => {
+    let n = 0
+    for (const card of cards.values()) {
+      if (card.fsrs.reps === 0) continue
+      if (graph.items[card.itemId]?.kind === "phoneme") continue
+      n += 1
+    }
+    return n
+  })()
+  const phonemesDeferred = seenNonPhoneme < PHONEME_NEW_POOL_MIN_SEEN
+  let phonemesInPool = 0
+  const phonemeShareCap = (): number => Math.floor(newCap * PHONEME_NEW_POOL_MAX_SHARE)
   const pushNew = (itemId: string): void => {
     if (newPool.length >= newCap) return
     if (cards.has(itemId)) return
     if (session.debuts.has(itemId)) return
     if (newPool.includes(itemId)) return
+    if (graph.items[itemId]?.kind === "phoneme") {
+      // never flood the opening feed with minimal-pair contrasts
+      if (phonemesDeferred) return
+      if (phonemesInPool >= phonemeShareCap()) return
+      phonemesInPool += 1
+    }
     newPool.push(itemId)
   }
   for (const itemId of course.newBoost) pushNew(itemId)

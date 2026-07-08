@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Möchtest du einen geführten Weg?",
+      "title": "Wie möchtest du {{lang}} lernen?",
       "subtitle": "Die Journey serviert dir täglich eine Mischung aus neuem Material und Wiederholung in {{lang}} – Karte für Karte.",
       "guided": {
-        "label": "Journey starten",
-        "desc": "Eine geführte tägliche Session, die sich dir anpasst"
+        "label": "Geführter täglicher Weg",
+        "desc": "Eine kurze tägliche Session, für dich geplant."
       },
       "explore": {
-        "label": "Ich erkunde lieber selbst",
-        "desc": "Du kannst die Journey jederzeit über Start beginnen"
+        "label": "Im eigenen Tempo",
+        "desc": "Durchstöbere Geschichten, Übungen und Spiele selbst."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Installieren ({{size}})",
     "installing": "Wird installiert…",
     "installed": "Installiert",
-    "retry": "Erneut versuchen"
+    "retry": "Erneut versuchen",
+    "explains": "Wörter auf {{language}}"
   },
   "journey": {
     "name": "Journey",

@@ -419,15 +419,15 @@
       }
     },
     "journey": {
-      "title": "Gusto mo ba ng gabay na landas?",
+      "title": "Paano mo gustong matutunan ang {{lang}}?",
       "subtitle": "Araw-araw, naghahain ang Journey ng halo ng bagong materyal at review sa {{lang}} — isang kard sa bawat pagkakataon.",
       "guided": {
-        "label": "Simulan ang Journey",
-        "desc": "Isang gabay na pang-araw-araw na session na umaangkop sa iyo"
+        "label": "Gabay na pang-araw-araw na landas",
+        "desc": "Isang maikling pang-araw-araw na session, pinaplano para sa iyo."
       },
       "explore": {
-        "label": "Mag-e-explore ako nang mag-isa",
-        "desc": "Puwede mong simulan ang Journey anumang oras mula sa Home"
+        "label": "Sa sarili mong bilis",
+        "desc": "Mag-browse ng mga kwento, ehersisyo at laro nang mag-isa."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "I-install ({{size}})",
     "installing": "Ini-install…",
     "installed": "Naka-install na",
-    "retry": "Subukan muli"
+    "retry": "Subukan muli",
+    "explains": "Mga salita sa {{language}}"
   },
   "journey": {
     "name": "Journey",

@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Norite vedamo kelio?",
+      "title": "Kaip norite mokytis {{lang}} kalbos?",
       "subtitle": "Journey kasdien pateikia naujos medžiagos ir kartojimo derinį {{lang}} kalba — kortelė po kortelės.",
       "guided": {
-        "label": "Pradėti Journey",
-        "desc": "Vedama kasdienė sesija, kuri prisitaiko prie jūsų"
+        "label": "Vedamas kasdienis kelias",
+        "desc": "Trumpas kasdienis užsiėmimas, suplanuotas jums."
       },
       "explore": {
-        "label": "Tyrinėsiu savarankiškai",
-        "desc": "Journey galite pradėti bet kada iš ekrano „Pradžia“"
+        "label": "Savarankiškai",
+        "desc": "Naršykite istorijas, pratimus ir žaidimus patys."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Įdiegti ({{size}})",
     "installing": "Diegiama…",
     "installed": "Įdiegta",
-    "retry": "Bandyti dar kartą"
+    "retry": "Bandyti dar kartą",
+    "explains": "{{language}} kalbos žodžiai"
   },
   "journey": {
     "name": "Journey",

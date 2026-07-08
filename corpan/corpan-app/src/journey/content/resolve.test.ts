@@ -238,6 +238,52 @@ test("exampleFor: empty word ⇒ null, no query", async () => {
   assert.equal(await resolver.exampleFor(""), null)
 })
 
+test("exampleFor: a ONE-WORD 'phrase' is rejected (needs real context, ≥2 tokens)", async () => {
+  // A word that only appears as its own bare one-word phrase must NOT become a
+  // cloze context — blanking it leaves "____" with nothing to read (issue #2).
+  // exampleFor requires the containing phrase to carry ≥2 word tokens.
+  class OneWordDeps extends FixtureDeps {
+    async getEntryById(entryId: number, source: string) {
+      if (entryId === 777) {
+        return {
+          entry_id: 777,
+          level: "A1",
+          domains: ["misc"],
+          translations: [
+            { language_code: "en", text: "Jam", romanization: "" },
+            { language_code: "es", text: "mermelada", romanization: "" },
+          ],
+          source,
+        }
+      }
+      return super.getEntryById(entryId, source)
+    }
+    async queryPackDb(q: {
+      packId: string
+      sql: string
+      params?: unknown[]
+      maxRows?: number
+    }) {
+      // The candidate scan (phraseCandidates) returns ONLY the one-word phrase.
+      if (q.sql.includes("FROM items WHERE kind = 'phrase' ORDER BY intro_order")) {
+        return {
+          columns: ["kind", "source", "ref_id"],
+          rows: [{ kind: "phrase", source: "base", ref_id: "777" }],
+        }
+      }
+      return super.queryPackDb(q)
+    }
+  }
+  const deps = new OneWordDeps()
+  const resolver = createResolver(deps, FIXTURE_CTX)
+  // Sanity: the phrase itself resolves and DOES contain the word...
+  const { resolved } = await resolver.resolveItems([phraseRef(777)])
+  assert.equal(resolved[0].target.text, "Jam")
+  // ...but it is a single token, so it is not offered as an in-context example.
+  const ex = await resolver.exampleFor("jam")
+  assert.equal(ex, null, "one-word phrase must not be a cloze context")
+})
+
 test("char: hanzipan row + native-first etymology + pinyin romanization", async () => {
   const { resolver } = fresh()
   const { resolved } = await resolver.resolveItems([

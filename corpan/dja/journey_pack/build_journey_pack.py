@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import sqlite3
 import sys
 import zipfile
@@ -447,7 +448,16 @@ class Corpus:
         if conds:
             sql += "WHERE " + " AND ".join(conds) + " "
         sql += "ORDER BY e.id"
-        return [(int(r[0]), str(r[1])) for r in self.db.execute(sql, params)]
+        # Exclude single-token phrases: a one-word phrase ("Bye!") produces a
+        # degenerate one-blank cloze / one-tile word_order (gate V-24). Auto
+        # phrase fills are cloze/word_order fodder, so skip them here — one-word
+        # vocabulary belongs in word: items.
+        _tok = re.compile(r"[^\W\d_]+(?:'[^\W\d_]+)?", re.UNICODE)
+        return [
+            (int(r[0]), str(r[1]))
+            for r in self.db.execute(sql, params)
+            if len(_tok.findall(str(r[1]))) >= 2
+        ]
 
 
 class WordUniverse:
@@ -672,10 +682,14 @@ def resolve_items(c: Course, corpus: Corpus) -> None:
                      _seed_b(n.cefr, None, None), None, n.title, n.order)
 
     # ---- mint phoneme items (union of overlay phoneme_pair contrasts) ----
-    launchpad_units = [
-        u for u in c.units if c.arc_by_id[u.arc].index == 0
-    ]
-    default_phon_unit = launchpad_units[0] if launchpad_units else None
+    # Communicative-first (V-23): phonemes must NOT default into the FIRST
+    # launchpad unit (the learner's opener). Prefer the LAST launchpad unit so
+    # unmapped contrasts land in a later phonology slot, never the opener.
+    launchpad_units = sorted(
+        (u for u in c.units if c.arc_by_id[u.arc].index == 0),
+        key=lambda u: c.unit_index[u.id],
+    )
+    default_phon_unit = launchpad_units[-1] if launchpad_units else None
     seen_contrasts: Dict[str, UnitYaml] = {}
     for ov in c.overlays:
         for pp in ov.phoneme_pairs:

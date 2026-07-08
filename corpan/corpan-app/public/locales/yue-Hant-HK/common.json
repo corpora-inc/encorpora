@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "想唔想要一條引導之路？",
+      "title": "你想點學{{lang}}？",
       "subtitle": "Journey 每日以 {{lang}} 為你送上新內容同溫習嘅組合 — 每次一張卡。",
       "guided": {
-        "label": "開始 Journey",
-        "desc": "一個會適應你嘅每日引導課節"
+        "label": "引導式每日路徑",
+        "desc": "為你安排好嘅簡短每日課節。"
       },
       "explore": {
-        "label": "我想自己慢慢探索",
-        "desc": "你隨時可以喺主頁開始 Journey"
+        "label": "自己嘅節奏",
+        "desc": "自己瀏覽故事、練習同遊戲。"
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "安裝（{{size}}）",
     "installing": "安裝緊…",
     "installed": "已安裝",
-    "retry": "再試"
+    "retry": "再試",
+    "explains": "{{language}}詞彙"
   },
   "journey": {
     "name": "Journey",

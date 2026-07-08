@@ -180,7 +180,6 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
             goalIntensity: "intensive",
             levels: ALL,
             rate: 0.9,
-            landing: { kind: "experience", packId: PHRASE_PACK_ID },
             preloadPacks: PRELOAD_READERS,
           }),
         next: "pickLearning",
@@ -205,19 +204,19 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       {
         id: "native",
         labelKey: "onboarding.calibrate.enjoyNative",
-        apply: (c) => c.patch({ levels: ALL, rate: 1.0, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ALL, rate: 1.0, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
         id: "comfortable",
         labelKey: "onboarding.calibrate.enjoyComfortable",
-        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
         id: "improving",
         labelKey: "onboarding.calibrate.enjoyImproving",
-        apply: (c) => c.patch({ levels: ["A0", "A1", "A2", "B1"], rate: 0.8, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ["A0", "A1", "A2", "B1"], rate: 0.8, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
@@ -225,7 +224,7 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
         // doesn't read yet, or a young child). Gentlest: A0 + slowest speech.
         id: "just_starting",
         labelKey: "onboarding.calibrate.enjoyJustStarting",
-        apply: (c) => c.patch({ levels: ["A0"], rate: 0.5, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ["A0"], rate: 0.5, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
     ],
@@ -248,27 +247,29 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       {
         id: "never",
         labelKey: "onboarding.calibrate.learnNever",
-        apply: (c) => c.patch({ levels: ["A0"], rate: 0.6, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
+        apply: (c) => c.patch({ levels: ["A0"], rate: 0.6 }),
         next: "journeyOptIn",
       },
       {
         id: "a_little",
         labelKey: "onboarding.calibrate.learnLittle",
-        apply: (c) => c.patch({ levels: ["A0", "A1", "A2"], rate: 0.7, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
+        apply: (c) => c.patch({ levels: ["A0", "A1", "A2"], rate: 0.7 }),
         next: "journeyOptIn",
       },
       {
         id: "advanced",
         labelKey: "onboarding.calibrate.learnAdvanced",
-        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
+        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9 }),
         next: "journeyOptIn",
       },
     ],
   },
 
-  // ── Journey opt-in (W10): the learner path's guided-daily-path fork. Pure
+  // ── How to learn (W10): the learner path's fork between the guided Journey
+  //    (the primary, planned-for-you happy path) and self-paced browsing. Pure
   //    data nodes (no engine change); commit honors `journeyOptIn` with a
-  //    `{ kind: "journey" }` landing intent. ──
+  //    `{ kind: "journey" }` landing intent. Guided is listed first on
+  //    purpose — it reads as the default way to learn. ──
   journeyOptIn: {
     kind: "question",
     id: "journeyOptIn",
@@ -329,13 +330,13 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       {
         id: "under_13",
         labelKey: "onboarding.calibrate.childUnder13",
-        apply: (c) => c.patch({ ageBand: "under_13", levels: ["A0"], rate: 0.5, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ ageBand: "under_13", levels: ["A0"], rate: 0.5, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
         id: "teen",
         labelKey: "onboarding.calibrate.childTeen",
-        apply: (c) => c.patch({ ageBand: "teen", levels: ["A0", "A1"], rate: 0.6, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ ageBand: "teen", levels: ["A0", "A1"], rate: 0.6, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
     ],

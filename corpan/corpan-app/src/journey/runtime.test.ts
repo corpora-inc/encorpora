@@ -117,6 +117,34 @@ function speakEchoCard(graph: { items: Record<string, { ref: unknown }> }, itemI
   }
 }
 
+/** A native EngineCard of `activityType` over a single-token WORD ref — fed to
+ *  prepareEngineCard to exercise the degenerate multi-token reroute guard. */
+function wordCard(
+  activityType: string,
+  word: string,
+  specId: string,
+  nativeLang?: string,
+): EngineCard {
+  return {
+    spec: {
+      specId,
+      activityType,
+      itemRefs: [{ kind: "word", source: "en", id: word }],
+      targetLang: "en",
+      ...(nativeLang ? { nativeLang } : {}),
+    } as EngineCard["spec"],
+    meta: {
+      pool: "due",
+      strand: "language",
+      form: 1,
+      estSec: 20,
+      provider: "native",
+      celebration: "normal",
+      coolDownCandidate: false,
+    },
+  }
+}
+
 /** Place as a fresh zero-beginner so the feed starts producing. */
 async function startFeed(runtime: Awaited<ReturnType<typeof makeRuntime>>["runtime"]) {
   const { needsPlacement } = await runtime.start("home_hero")
@@ -399,4 +427,131 @@ test("STT decline flow (contract #4): declining the install swaps the rest of th
   assert.ok(after && after.kind === "exercise")
   assert.equal(after.spec.activityType, "listen_type", "post-decline speak_echo swaps")
   assert.equal(after.prepared.sttFallback, true)
+})
+
+test("degenerate guard: a cloze on a single-token word reroutes (no broken blank)", async () => {
+  const { runtime, logs } = await makeRuntime()
+  await startFeed(runtime)
+  // "jam" resolves to a 1-token target with no native face → cloze is
+  // degenerate; the runtime reroutes to a renderable target-only activity.
+  const card = await runtime.prepareEngineCard(wordCard("cloze", "jam", "clz-jam"))
+  assert.ok(card && card.kind === "exercise", "reroute emits a card, never null")
+  assert.notEqual(card.spec.activityType, "cloze", "single-token cloze must reroute")
+  assert.notEqual(card.spec.activityType, "word_order")
+  assert.equal(card.spec.params?.blankIndex, undefined, "no stale cloze blank left behind")
+  assert.ok(
+    logs.some((l) => l.event === "journey_degenerate_reroute"),
+    "reroute is logged",
+  )
+})
+
+test("degenerate guard: word_order on a single-token word reroutes to a valid activity", async () => {
+  const { runtime } = await makeRuntime()
+  await startFeed(runtime)
+  const card = await runtime.prepareEngineCard(wordCard("word_order", "ship", "wo-ship"))
+  assert.ok(card && card.kind === "exercise")
+  assert.notEqual(card.spec.activityType, "word_order")
+  assert.notEqual(card.spec.activityType, "cloze")
+})
+
+test("degenerate guard: a multi-token phrase cloze is untouched", async () => {
+  const { runtime } = await makeRuntime()
+  await startFeed(runtime)
+  // fixture phrases resolve to "alpha bravo N" (≥2 tokens) → cloze is fine.
+  const itemId = Object.keys((await makeRuntime()).harness.graph.items)[0]
+  const phraseCloze: EngineCard = {
+    spec: {
+      specId: "clz-phrase",
+      activityType: "cloze",
+      itemRefs: [runtime.graph.items[itemId].ref],
+      targetLang: "en",
+      nativeLang: "es",
+    } as EngineCard["spec"],
+    meta: {
+      pool: "due",
+      strand: "language",
+      form: 1,
+      estSec: 20,
+      provider: "native",
+      celebration: "normal",
+      coolDownCandidate: false,
+    },
+  }
+  const card = await runtime.prepareEngineCard(phraseCloze)
+  assert.ok(card && card.kind === "exercise")
+  assert.equal(card.spec.activityType, "cloze", "multi-token phrase keeps cloze")
+})
+
+test("redo (§3.4): clearSettled re-opens a completed exercise for a fresh answer", async () => {
+  const { runtime, quotaLog } = await makeRuntime()
+  await startFeed(runtime)
+  // complete one exercise into history
+  let doneCard: string | null = null
+  for (let guard = 0; guard < 40 && !doneCard; guard++) {
+    const card = runtime.current()
+    if (!card) {
+      await new Promise((r) => setTimeout(r, 5))
+      continue
+    }
+    if (card.kind === "exercise") {
+      runtime.submitResult(card.cardId, answer(card.prepared.engine))
+      runtime.advance()
+      doneCard = card.cardId
+    } else if (card.kind === "checkpoint") {
+      runtime.checkpointChoice(card.cardId, "continue")
+    } else {
+      runtime.abandonCurrent()
+    }
+    await new Promise((r) => setTimeout(r, 2))
+  }
+  assert.ok(doneCard, "completed an exercise into history")
+  const rec = runtime.history().find((h) => h.card.cardId === doneCard)
+  assert.ok(rec && rec.result, "history holds the answered record")
+
+  // clearSettled re-opens it; the record's result is wiped so it renders fresh.
+  const cleared = runtime.clearSettled(doneCard!)
+  assert.equal(cleared, true, "clearSettled reports it cleared a settled card")
+  const rec2 = runtime.history().find((h) => h.card.cardId === doneCard)
+  assert.equal(rec2?.result, null, "cleared record starts fresh (no stored answer)")
+
+  // a redo answer re-grades the item but never re-debits the daily gate.
+  const notesBefore = quotaLog.notes
+  const redoRec = runtime.history().find((h) => h.card.cardId === doneCard)!
+  const info = runtime.submitResult(doneCard!, answer(redoRec.card.kind === "exercise" ? redoRec.card.prepared.engine : (redoRec.card as unknown as EngineCard)))
+  assert.ok(info, "redo submit is accepted")
+  assert.equal(info!.debited, false, "a redo never debits the gate")
+  assert.equal(quotaLog.notes, notesBefore, "quota unchanged by a redo")
+  const rec3 = runtime.history().find((h) => h.card.cardId === doneCard)
+  assert.ok(rec3?.result, "the redo answer is stored back on the record")
+})
+
+test("redo: clearSettled is a no-op for an unsettled or unknown card", async () => {
+  const { runtime } = await makeRuntime()
+  await startFeed(runtime)
+  assert.equal(runtime.clearSettled("does-not-exist"), false)
+  const cur = runtime.current()
+  if (cur) assert.equal(runtime.clearSettled(cur.cardId), false, "current unsettled card is not clearable")
+})
+
+test("STT decline (contract #4): declining advances the current card (never stuck)", async () => {
+  const { runtime } = await makeRuntime({ sttReadiness: "modelMissing" })
+  await startFeed(runtime)
+  const cur = runtime.current()
+  assert.ok(cur, "a current card is mounted")
+  const historyBefore = runtime.history().length
+  runtime.submitResult(cur!.cardId, {
+    specId: cur!.cardId,
+    score: 1,
+    perItem: [],
+    durationMs: 100,
+    detail: { flags: { sttDeclined: true } },
+  })
+  // the declined card must have advanced on its own — no manual swipe needed.
+  assert.equal(
+    runtime.currentSettled(),
+    null,
+    "declined card does not linger as a settled-but-mounted card",
+  )
+  assert.equal(runtime.history().length, historyBefore + 1, "declined card advanced into history")
+  assert.notEqual(runtime.current()?.cardId, cur!.cardId, "feed moved off the dead speak card")
 })

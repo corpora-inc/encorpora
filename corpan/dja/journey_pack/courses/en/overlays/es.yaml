@@ -610,50 +610,50 @@ cognate_credits:
 phoneme_pairs:
   - contrast: "iː-ɪ"
     minimal_pairs: [["sheep", "ship"], ["leave", "live"], ["beat", "bit"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "ʊ-uː"
     minimal_pairs: [["full", "fool"], ["pull", "pool"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "æ-ʌ"
     minimal_pairs: [["cat", "cut"], ["bat", "but"], ["ankle", "uncle"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "ɑː-ɜː"
     minimal_pairs: [["heart", "hurt"], ["far", "fur"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "b-v"
     minimal_pairs: [["berry", "very"], ["ban", "van"], ["boat", "vote"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "dʒ-j"
     minimal_pairs: [["jam", "yam"], ["jet", "yet"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "ʃ-tʃ"
     minimal_pairs: [["ship", "chip"], ["share", "chair"], ["wash", "watch"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "s-z"
     minimal_pairs: [["ice", "eyes"], ["price", "prize"], ["Sue", "zoo"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "n-ŋ"
     minimal_pairs: [["thin", "thing"], ["sin", "sing"], ["ban", "bang"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "t-d"
     minimal_pairs: [["heart", "hard"], ["bet", "bed"], ["sent", "send"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "h-Ø"
     minimal_pairs: [["hear", "ear"], ["hold", "old"], ["hat", "at"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "s-ɛs"
     minimal_pairs: [["state", "estate"], ["steam", "esteem"], ["sport", "support"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   # Arc 2 (A2) — th contrasts (absent from A1); th-dense units u02/u16/u22 drill them
   - contrast: "θ-s"
     minimal_pairs: [["think", "sink"], ["thin", "sin"], ["mouth", "mouse"], ["path", "pass"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "θ-t"
     minimal_pairs: [["thing", "ting"], ["three", "tree"], ["thin", "tin"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   - contrast: "ð-d"
     minimal_pairs: [["they", "day"], ["then", "den"], ["breathe", "breed"], ["other", "udder"]]
-    unit: en.a0.u01
+    unit: en.a0.u02
   # Arc 3 (B1) — drilled via phonology lessons across u03/u19/u22 (mapped in order)
   - contrast: "ʃ-ʒ"
     minimal_pairs: [["pressure", "pleasure"], ["mission", "vision"], ["shore", "genre"]]

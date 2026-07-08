@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Rehberli bir yol ister misiniz?",
+      "title": "{{lang}} dilini nasıl öğrenmek istersiniz?",
       "subtitle": "Journey, {{lang}} dilinde her gün yeni içerik ve tekrar karışımı sunar — her seferinde bir kart.",
       "guided": {
-        "label": "Journey'i başlat",
-        "desc": "Size uyum sağlayan rehberli günlük bir oturum"
+        "label": "Rehberli günlük yol",
+        "desc": "Sizin için planlanmış kısa bir günlük oturum."
       },
       "explore": {
-        "label": "Kendi başıma keşfedeceğim",
-        "desc": "Journey'i istediğiniz zaman Ana sayfadan başlatabilirsiniz"
+        "label": "Kendi hızınızda",
+        "desc": "Hikayeleri, alıştırmaları ve oyunları kendiniz keşfedin."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Yükle ({{size}})",
     "installing": "Yükleniyor…",
     "installed": "Yüklendi",
-    "retry": "Tekrar dene"
+    "retry": "Tekrar dene",
+    "explains": "{{language}} kelimeleri"
   },
   "journey": {
     "name": "Journey",

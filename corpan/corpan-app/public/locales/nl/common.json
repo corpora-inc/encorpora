@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Wil je een begeleid pad?",
+      "title": "Hoe wil je {{lang}} leren?",
       "subtitle": "De Journey serveert dagelijks een mix van nieuw materiaal en herhaling in {{lang}} — kaart voor kaart.",
       "guided": {
-        "label": "Begin de Journey",
-        "desc": "Een begeleide dagelijkse sessie die zich aan jou aanpast"
+        "label": "Begeleid dagelijks pad",
+        "desc": "Een korte dagelijkse sessie, voor jou gepland."
       },
       "explore": {
-        "label": "Ik verken liever zelf",
-        "desc": "Je kunt de Journey op elk moment starten vanuit Home"
+        "label": "Eigen tempo",
+        "desc": "Blader zelf door verhalen, oefeningen en spellen."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Installeren ({{size}})",
     "installing": "Installeren…",
     "installed": "Geïnstalleerd",
-    "retry": "Opnieuw proberen"
+    "retry": "Opnieuw proberen",
+    "explains": "{{language}} woorden"
   },
   "journey": {
     "name": "Journey",

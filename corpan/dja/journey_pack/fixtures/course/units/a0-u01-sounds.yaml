@@ -1,23 +1,52 @@
 id: en.a0.u01
 arc: en.arc0
-theme: "First sounds"
+theme: "First words and sounds"
+# Fixture opener is communicative-first (gate V-23): greeting/courtesy WORDS
+# lead (they sort ahead of phonemes by frequency rank), the two phrases follow,
+# and the overlay's minimal-pair phonemes trail. Single-launchpad fixture, so
+# the phonemes stay here (no later launchpad unit to home them) — V-23 holds
+# this shape to the leading-window + <=50%-phoneme rules.
 cando:
   - key: sounds
     text: "Can recognize and repeat the core vowel and consonant contrasts of English."
+  - key: greet
+    text: "Can say hello, please, and thanks in everyday moments."
 skills:
   - id: en.skill.core-sounds
     kind: phonology
     title: "Core sound contrasts"
     b: -3.5
 items:
+  - ref: "word:en:hello"
+    skills: [en.skill.core-sounds]
+    importance: 3
+    probe: true
+    b: -3.5
+  - ref: "word:en:please"
+    skills: [en.skill.core-sounds]
+    importance: 3
+    probe: true
+    b: -3.5
+  - ref: "word:en:thanks"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+  - ref: "word:en:yes"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
+  - ref: "word:en:sorry"
+    skills: [en.skill.core-sounds]
+    importance: 2
+    b: -3.5
   - ref: "phrase:base:460"        # Everything is all right now.
     skills: [en.skill.core-sounds]
     importance: 3
-    probe: true
+    substitutable: true
   - ref: "phrase:base:5779"       # I'm ready now.
     skills: [en.skill.core-sounds]
     importance: 3
-    probe: true
+    substitutable: true
 lessons: [phonology, review]
 boss:
   pass_score: 0.8

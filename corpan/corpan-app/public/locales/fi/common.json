@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Haluatko ohjatun polun?",
+      "title": "Miten haluat oppia kieltä {{lang}}?",
       "subtitle": "Journey tarjoaa joka päivä sekoituksen uutta materiaalia ja kertausta kielellä {{lang}} — kortti kerrallaan.",
       "guided": {
-        "label": "Aloita Journey",
-        "desc": "Ohjattu päivittäinen sessio, joka mukautuu sinuun"
+        "label": "Ohjattu päivittäinen polku",
+        "desc": "Lyhyt päivittäinen sessio, suunniteltu sinulle."
       },
       "explore": {
-        "label": "Tutkin omin päin",
-        "desc": "Voit aloittaa Journeyn milloin tahansa Koti-näkymästä"
+        "label": "Omaan tahtiin",
+        "desc": "Selaa tarinoita, harjoituksia ja pelejä itse."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Asenna ({{size}})",
     "installing": "Asennetaan…",
     "installed": "Asennettu",
-    "retry": "Yritä uudelleen"
+    "retry": "Yritä uudelleen",
+    "explains": "{{language}} sanat"
   },
   "journey": {
     "name": "Journey",

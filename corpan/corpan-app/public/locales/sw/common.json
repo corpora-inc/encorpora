@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Unataka njia ya kuongozwa?",
+      "title": "Unataka kujifunza {{lang}} vipi?",
       "subtitle": "Journey hukuletea kila siku mchanganyiko wa maudhui mapya na marudio katika {{lang}} — kadi moja baada ya nyingine.",
       "guided": {
-        "label": "Anza Journey",
-        "desc": "Kipindi cha kila siku cha kuongozwa kinachoendana nawe"
+        "label": "Njia ya kila siku iliyoongozwa",
+        "desc": "Kipindi kifupi cha kila siku, kilichopangwa kwa ajili yako."
       },
       "explore": {
-        "label": "Nitachunguza mwenyewe",
-        "desc": "Unaweza kuanza Journey wakati wowote kutoka Nyumbani"
+        "label": "Kwa kasi yako mwenyewe",
+        "desc": "Vinjari hadithi, mazoezi na michezo mwenyewe."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Sakinisha ({{size}})",
     "installing": "Inasakinisha…",
     "installed": "Imesakinishwa",
-    "retry": "Jaribu tena"
+    "retry": "Jaribu tena",
+    "explains": "Maneno ya {{language}}"
   },
   "journey": {
     "name": "Journey",

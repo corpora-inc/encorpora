@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Queres um caminho guiado?",
+      "title": "Como queres aprender {{lang}}?",
       "subtitle": "O Journey serve todos os dias uma mistura de material novo e revisão em {{lang}} — um cartão de cada vez.",
       "guided": {
-        "label": "Começar o Journey",
-        "desc": "Uma sessão diária guiada que se adapta a ti"
+        "label": "Percurso diário guiado",
+        "desc": "Uma sessão diária curta, planeada para ti."
       },
       "explore": {
-        "label": "Vou explorar por minha conta",
-        "desc": "Podes começar o Journey a qualquer momento a partir do Início"
+        "label": "Ao teu ritmo",
+        "desc": "Explora histórias, exercícios e jogos por tua conta."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Instalar ({{size}})",
     "installing": "A instalar…",
     "installed": "Instalado",
-    "retry": "Tentar novamente"
+    "retry": "Tentar novamente",
+    "explains": "Palavras em {{language}}"
   },
   "journey": {
     "name": "Journey",

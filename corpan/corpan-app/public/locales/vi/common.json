@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Bạn muốn một con đường có dẫn lối?",
+      "title": "Bạn muốn học {{lang}} theo cách nào?",
       "subtitle": "Mỗi ngày, Journey mang đến sự kết hợp giữa nội dung mới và ôn tập bằng {{lang}} — mỗi lần một thẻ.",
       "guided": {
-        "label": "Bắt đầu Journey",
-        "desc": "Một phiên học hằng ngày có dẫn lối, thích ứng với bạn"
+        "label": "Lộ trình hằng ngày có dẫn lối",
+        "desc": "Một phiên học ngắn hằng ngày, được lên kế hoạch sẵn cho bạn."
       },
       "explore": {
-        "label": "Tôi sẽ tự khám phá",
-        "desc": "Bạn có thể bắt đầu Journey bất cứ lúc nào từ Trang chủ"
+        "label": "Tự học theo nhịp độ riêng",
+        "desc": "Tự mình khám phá truyện, bài luyện tập và trò chơi."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Cài đặt ({{size}})",
     "installing": "Đang cài đặt…",
     "installed": "Đã cài đặt",
-    "retry": "Thử lại"
+    "retry": "Thử lại",
+    "explains": "Từ vựng {{language}}"
   },
   "journey": {
     "name": "Journey",

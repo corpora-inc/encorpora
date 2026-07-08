@@ -1,6 +1,8 @@
-id: en.a0.u01
+id: en.a0.u02
 arc: en.arc0
 theme: "The sounds of English"
+# Phonology reinforcement (V-23): minimal-pair contrasts land HERE, after the
+# communicative opener (en.a0.u01), never as the learner's first experience.
 cando:
   - key: sounds
     text: "Can hear and copy the core vowel and consonant contrasts of English."
@@ -9,6 +11,7 @@ skills:
     kind: phonology
     title: "Core sound contrasts"
     b: -3.5
+    prereqs: [en.skill.survival]
 items:
   - ref: "phrase:base:460"  # Everything is all right now.
     skills: [en.skill.core-sounds]

@@ -26,19 +26,11 @@ items:
     importance: 3
     probe: true
     b: -3.4
-  - ref: "phrase:base:21687"  # How are you?
+  - ref: "phrase:base:22082"  # Hi, how are you?
     skills: [en.skill.greetings]
     importance: 3
     probe: true
     b: -3.4
-  - ref: "phrase:base:27293"  # Hello
-    skills: [en.skill.greetings]
-    importance: 3
-    substitutable: true
-  - ref: "phrase:base:27300"  # Good morning
-    skills: [en.skill.greetings]
-    importance: 3
-    substitutable: true
   - ref: "phrase:base:27301"  # Good afternoon
     skills: [en.skill.greetings]
     importance: 3
@@ -59,20 +51,14 @@ items:
     skills: [en.skill.greetings]
     importance: 3
     substitutable: true
-  - ref: "phrase:base:22082"  # Hi, how are you?
+  - ref: "phrase:base:27299"  # See you soon
     skills: [en.skill.greetings]
     importance: 3
     substitutable: true
-  - ref: "phrase:base:27298"  # See you later
+  - ref: "phrase:base:24683"  # Goodbye, see you later.
     skills: [en.skill.greetings]
     importance: 3
     substitutable: true
-  - ref: "word:en:hello"
-    skills: [en.skill.greetings]
-    importance: 2
-  - ref: "word:en:name"
-    skills: [en.skill.greetings]
-    importance: 2
   - ref: "word:en:morning"
     skills: [en.skill.greetings]
     importance: 2

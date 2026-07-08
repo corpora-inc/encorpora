@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Mahu laluan berpandu?",
+      "title": "Bagaimana anda mahu belajar {{lang}}?",
       "subtitle": "Journey menghidangkan campuran bahan baharu dan ulang kaji dalam {{lang}} setiap hari — kad demi kad.",
       "guided": {
-        "label": "Mulakan Journey",
-        "desc": "Sesi harian berpandu yang menyesuaikan diri dengan anda"
+        "label": "Laluan harian berpandu",
+        "desc": "Sesi harian ringkas yang dirancang untuk anda."
       },
       "explore": {
-        "label": "Saya akan meneroka sendiri",
-        "desc": "Anda boleh memulakan Journey pada bila-bila masa dari Laman utama"
+        "label": "Ikut rentak sendiri",
+        "desc": "Terokai cerita, latihan dan permainan sendiri."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Pasang ({{size}})",
     "installing": "Memasang…",
     "installed": "Dipasang",
-    "retry": "Cuba lagi"
+    "retry": "Cuba lagi",
+    "explains": "Perkataan {{language}}"
   },
   "journey": {
     "name": "Journey",

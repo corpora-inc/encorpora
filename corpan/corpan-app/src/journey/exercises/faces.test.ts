@@ -10,6 +10,7 @@ import {
   flipFaces,
   matchColumns,
 } from "./faces.ts"
+import { normalizeAnswer } from "../content/normalize.ts"
 import type { ResolvedItem } from "../content/resolve.ts"
 
 const item = (id: string, target: string, native?: string): ResolvedItem => ({
@@ -114,6 +115,67 @@ test("matchColumns text-audio: both sides target (audio vs text is not a transla
   assert.equal(c.leftLang, "es")
   assert.equal(c.rightLang, "es")
   assert.ok(c.left.every((s) => s.audio === true))
+})
+
+// --- defect: "Une las parejas" with a duplicate tile (issue #1) -----------
+//
+// A match board must NEVER show the same choice text twice — across EITHER
+// column, and after the independent per-column shuffles. Two distinct items
+// can collide on the target surface (a case/diacritic twin) or on the native
+// gloss (two words that both gloss the same). The colliding item is dropped.
+
+test("matchColumns text-text: never shows the same NATIVE gloss twice", () => {
+  // "barco" and "bote" both gloss to "boat" — the right column would show
+  // "boat" twice (the duplicate tile bug). One item must be dropped.
+  const items = [item("a", "barco", "boat"), item("b", "bote", "boat"), item("c", "casa", "house")]
+  const c = matchColumns(items, "text-text", "seed", "es", "en")
+  const rights = c.right.map((s) => s.label)
+  assert.equal(new Set(rights).size, rights.length, `dup right tile: ${rights.join(",")}`)
+  const lefts = c.left.map((s) => s.label)
+  assert.equal(new Set(lefts).size, lefts.length, `dup left tile: ${lefts.join(",")}`)
+  assert.equal(c.usableKeys.length, 2) // "bote" (later dup) dropped
+})
+
+test("matchColumns text-text: never shows the same TARGET word twice (case twin)", () => {
+  // "Hola" and "hola" fold to the same target surface — the left column would
+  // show it twice. The later item is dropped.
+  const items = [item("a", "Hola", "hi"), item("b", "hola", "hey"), item("c", "casa", "house")]
+  const c = matchColumns(items, "text-text", "seed", "es", "en")
+  const lefts = c.left.map((s) => normalizeAnswer(s.label, "es"))
+  assert.equal(new Set(lefts).size, lefts.length, `dup left tile: ${lefts.join(",")}`)
+  assert.equal(c.usableKeys.length, 2)
+})
+
+test("matchColumns: NO tile text repeats across a whole seeded board (property)", () => {
+  // A pathological set with many colliding glosses. Whatever survives, every
+  // rendered left label is unique AND every rendered right label is unique —
+  // for many seeds (the columns shuffle independently).
+  const items = [
+    item("a", "barco", "boat"),
+    item("b", "bote", "boat"), // native twin of a
+    item("c", "gato", "cat"),
+    item("d", "Gato", "kitty"), // target twin of c
+    item("e", "perro", "dog"),
+    item("f", "casa", "house"),
+  ]
+  for (let s = 0; s < 40; s++) {
+    const c = matchColumns(items, "text-text", `board-${s}`, "es", "en")
+    const lefts = c.left.map((x) => normalizeAnswer(x.label, "es"))
+    const rights = c.right.map((x) => normalizeAnswer(x.label, "en"))
+    assert.equal(new Set(lefts).size, lefts.length, `seed ${s}: dup left ${lefts.join(",")}`)
+    assert.equal(new Set(rights).size, rights.length, `seed ${s}: dup right ${rights.join(",")}`)
+    // usableKeys, left, right stay 1:1 (dedup never desyncs the columns).
+    assert.equal(c.left.length, c.usableKeys.length)
+    assert.equal(c.right.length, c.usableKeys.length)
+  }
+})
+
+test("matchColumns text-audio: never shows the same target word twice on the right", () => {
+  const items = [item("a", "gato", "cat"), item("b", "Gato", "kitty"), item("c", "perro", "dog")]
+  const c = matchColumns(items, "text-audio", "seed", "es", "en")
+  const rights = c.right.map((s) => normalizeAnswer(s.label, "es"))
+  assert.equal(new Set(rights).size, rights.length, `dup right tile: ${rights.join(",")}`)
+  assert.equal(c.usableKeys.length, 2)
 })
 
 /* -------------------------------------------------------------- flip_recall */
