@@ -262,8 +262,11 @@ def main() -> None:
     ap.add_argument("--channel", default="preview", choices=["preview", "stable"])
     ap.add_argument("--min-app-version", default=DEFAULT_MIN_APP_VERSION)
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--profile", default=None,
-                    help="AWS named profile (else AWS_PROFILE, else ~/.env keys).")
+    ap.add_argument("--profile", default="corpan-publisher",
+                    help="AWS named profile (default: corpan-publisher, the "
+                         "prod S3/CloudFront publisher in ~/.aws/credentials). "
+                         "The legacy ~/.env AWS_ACCESS_KEY is STALE — use the "
+                         "profile. Pass --profile '' to fall back to env/.env.")
     args = ap.parse_args()
 
     try:
