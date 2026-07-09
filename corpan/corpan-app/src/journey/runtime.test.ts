@@ -454,6 +454,52 @@ test("degenerate guard: word_order on a single-token word reroutes to a valid ac
   assert.notEqual(card.spec.activityType, "cloze")
 })
 
+/** A cloze EngineCard over a single-token word carrying a preset contextPhrase
+ *  in spec.params — exercises the context-cloze exemption in the token guard. */
+function contextClozeCard(word: string, contextPhrase: string, specId: string): EngineCard {
+  return {
+    spec: {
+      specId,
+      activityType: "cloze",
+      itemRefs: [{ kind: "word", source: "en", id: word }],
+      targetLang: "en",
+      nativeLang: "es",
+      params: { contextPhrase, contextWord: word, mode: "type" },
+    } as EngineCard["spec"],
+    meta: {
+      pool: "due",
+      strand: "language",
+      form: 1,
+      estSec: 20,
+      provider: "native",
+      celebration: "normal",
+      coolDownCandidate: false,
+    },
+  }
+}
+
+test("degenerate guard: context-cloze with a single-token contextPhrase reroutes", async () => {
+  const { runtime, logs } = await makeRuntime()
+  await startFeed(runtime)
+  // The exemption is validated by the phrase's OWN token count, not by the mere
+  // presence of the property — a context-cloze whose sentence collapsed to one
+  // token is itself degenerate and must reroute (adversarial-review MEDIUM).
+  const card = await runtime.prepareEngineCard(contextClozeCard("jam", "cat", "ctx-clz-degen"))
+  assert.ok(card && card.kind === "exercise")
+  assert.notEqual(card.spec.activityType, "cloze", "degenerate context-cloze must reroute")
+  assert.ok(logs.some((l) => l.event === "journey_degenerate_reroute"))
+})
+
+test("degenerate guard: context-cloze with a real multi-token sentence stays a cloze", async () => {
+  const { runtime } = await makeRuntime()
+  await startFeed(runtime)
+  const card = await runtime.prepareEngineCard(
+    contextClozeCard("jam", "I love toast with jam", "ctx-clz-ok"),
+  )
+  assert.ok(card && card.kind === "exercise")
+  assert.equal(card.spec.activityType, "cloze", "valid multi-token context-cloze is preserved")
+})
+
 test("degenerate guard: a multi-token phrase cloze is untouched", async () => {
   const { runtime } = await makeRuntime()
   await startFeed(runtime)

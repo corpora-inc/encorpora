@@ -458,23 +458,35 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       }
     }
 
-    // -- Degenerate multi-token guard (belt-and-suspenders to the mixer's
-    // selection gate). A cloze needs ≥2 tokens to have a non-trivial blank; a
-    // word_order needs ≥2 tokens to reorder. If a prepared cloze/word_order
-    // still resolves to <2 answer tokens (e.g. a single-word phrase, or a
-    // context-cloze whose phrase collapsed), REROUTE to a valid single-token
-    // activity rather than emit a broken card. Prefer reroute (keeps the feed
-    // fed); drop only when nothing renders. Runs before direction/distractor
-    // so both are computed against the final activityType. Context-cloze keeps
-    // its own phrase, so it is exempt (it blanks a word inside a real sentence).
-    if (
-      (activityType === "cloze" || activityType === "word_order") &&
-      params.contextPhrase === undefined
-    ) {
-      const answerTokenCount = tokenizePhrase(answer.target.text, spec.targetLang).filter(
-        (t) => t.isWord,
-      ).length
-      if (answerTokenCount < 2) {
+    // -- Degenerate multi-token guard. This is the AUTHORITATIVE, token-based,
+    // kind-INDEPENDENT gate: the mixer's selection gate (mixer.ts) can only
+    // reason about item.kind — it has no resolved text, and `textLen` is a
+    // character count, not a token count — so a phrase/segment/grammarNode item
+    // whose resolved target happens to be a single token can still arrive here
+    // as a cloze/word_order. A cloze needs ≥2 tokens for a non-trivial blank; a
+    // word_order needs ≥2 tokens to reorder. So we count tokens on the RESOLVED
+    // text (works for every kind) and REROUTE to a valid single-token activity
+    // rather than emit a broken card. Prefer reroute (keeps the feed fed); drop
+    // only when nothing renders. Runs before direction/distractor so both are
+    // computed against the final activityType.
+    //
+    // A context-cloze blanks a word inside a real sentence, so it is exempt —
+    // but ONLY when that sentence is genuinely multi-token. We validate the
+    // contextPhrase's own token count (not merely that the property is present),
+    // so a context-cloze whose phrase collapsed/was unset is itself treated as
+    // degenerate and rerouted.
+    if (activityType === "cloze" || activityType === "word_order") {
+      const contextPhrase =
+        typeof params.contextPhrase === "string" ? params.contextPhrase : ""
+      const contextTokenCount = contextPhrase
+        ? tokenizePhrase(contextPhrase, spec.targetLang).filter((t) => t.isWord).length
+        : 0
+      // A cloze with a real ≥2-token sentence around the blank is well-formed.
+      const isValidContextCloze = activityType === "cloze" && contextTokenCount >= 2
+      const answerTokenCount = isValidContextCloze
+        ? contextTokenCount
+        : tokenizePhrase(answer.target.text, spec.targetLang).filter((t) => t.isWord).length
+      if (!isValidContextCloze && answerTokenCount < 2) {
         const canTranslate = !!nativeLang && !!answer.native
         // choice_pick reads a native prompt and renders one word cleanly; with
         // no native face, listen_type (type-what-you-hear) is a valid

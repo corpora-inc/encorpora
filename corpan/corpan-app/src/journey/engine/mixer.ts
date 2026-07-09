@@ -195,7 +195,14 @@ const MULTI_TOKEN_ACTIVITY_TYPES = new Set(["cloze", "word_order"])
 
 /** Item kinds whose resolved target is always ONE token — no phrase to blank
  *  or reorder. `phrase`/`segment` carry real sentences; `grammarNode` renders
- *  its own exemplars, so only the single-lexeme kinds are gated here. */
+ *  its own exemplars, so only the single-lexeme kinds are gated here.
+ *
+ *  This is a best-effort FRONT filter only: selection runs before resolution,
+ *  so it can reason about `kind` but not the resolved token count (a `phrase`
+ *  whose text collapses to one token can't be detected here — `textLen` is
+ *  characters, not tokens). The AUTHORITATIVE, kind-independent token guard
+ *  lives in runtime.ts::prepareExercise, which counts tokens on the resolved
+ *  text and reroutes any degenerate cloze/word_order regardless of kind. */
 const SINGLE_TOKEN_KINDS = new Set<string>(["word", "char", "phoneme"])
 
 function isSingleTokenKind(kind: string): boolean {
