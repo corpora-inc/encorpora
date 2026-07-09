@@ -1,3 +1,10 @@
 # Brysbaert concreteness norms — downloaded at build time, never shipped (research/images.md §1.1)
 data/
 candidates_a0a1/
+
+# Build output (the pack itself + its zip). The publisher rebuilds from
+# verdicts.json + the curated candidates, so the artifact stays out of git —
+# same convention as dja/journey_pack/dist/. verdicts.json (the owner's picks)
+# IS tracked; the derived pack is not.
+dist/
+*.zip

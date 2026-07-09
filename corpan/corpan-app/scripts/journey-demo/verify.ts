@@ -200,6 +200,33 @@ async function main(): Promise<void> {
   )
   if (completed < 10) fail(`completed ${completed} < 10 cards`)
   if (runtime.history().length < 10) fail("history ring not filled")
+
+  // -------------------------------------------------- imagepan concept proof
+  // Prove the picture-choice content path end-to-end over the SAME demo ports:
+  // the resolver returns a `concept` item with a corpan-pack:// imageSrc + a
+  // distractor picture. This is what runtime.maybeImageChoice consumes to
+  // upgrade a first-exposure word card to a media:'image' ChoicePick. (The
+  // device serves the real WebP over the corpan-pack scheme; the demo URL is
+  // intentionally the same shape but points at an absent file — the SHAPE is
+  // the contract being proven here.)
+  const conceptOut = await deps.resolver.resolveItems([
+    { kind: "concept", source: "imagepan", id: "coffee" },
+  ])
+  const cItem = conceptOut.resolved[0]
+  if (!cItem || cItem.extras?.kind !== "concept") {
+    fail(`concept resolve: expected a concept item, got ${JSON.stringify(conceptOut)}`)
+  }
+  const cx = cItem.extras as { imageSrc?: string; distractors?: unknown[] }
+  if (cx.imageSrc !== "/journey-demo/absent/imagepan/images/coffee.webp") {
+    fail(`concept resolve: unexpected imageSrc ${cx.imageSrc}`)
+  }
+  if (!Array.isArray(cx.distractors) || cx.distractors.length < 1) {
+    fail(`concept resolve: expected >= 1 distractor picture, got ${JSON.stringify(cx.distractors)}`)
+  }
+  console.log(
+    `[journey-demo verify] imagepan concept OK — imageSrc + ${cx.distractors.length} distractor picture(s)`,
+  )
+
   console.log("[journey-demo verify] PASS — >= 10 cards over the precomputed JSON ports")
   process.exit(0)
 }

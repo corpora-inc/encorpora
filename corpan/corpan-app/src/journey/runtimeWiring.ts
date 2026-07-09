@@ -22,9 +22,11 @@ import {
 } from "../contentPacks/journeyPackCatalog"
 import { getAppVersion } from "../lib/appVersion"
 import { useCatalogStore } from "../store/catalog"
+import { useDataPacksStore } from "../store/dataPacks"
 import { useEntitlementStore } from "../store/entitlements"
 import { useJourneyPacksStore } from "../store/journeyPacks"
 import { useProgressStore } from "../store/progress"
+import { ensureImagePackInstalled } from "../util/imagePack"
 import {
   installJourneyPack,
   isJourneyPackInstalled,
@@ -359,9 +361,22 @@ export async function buildJourneyDeps(opts: {
   }
   const baseOf = (c: string) => (c || "").split("-")[0]
 
+  // Best-effort lazy auto-install of the language-neutral concept-picture pack
+  // (imagepan). This is the ONLY thing that flips on Journey's picture-choice
+  // upgrade in production. It NEVER throws and fails soft to "not installed":
+  // offline, no image-pack index, no compatible entry, or an install error all
+  // leave imagepan unregistered → the resolver's findInstalledPack("imagepan")
+  // gate stays false → Journey emits normal text cards, exactly as before the
+  // pack existed. Awaited so the in-memory registry is primed before the first
+  // card resolves (the resolver's gate is synchronous); a slow/absent index is
+  // bounded by the catalog fetch's own timeout+retry.
+  await ensureImagePackInstalled()
+
   const resolverDeps = buildResolverDeps(hostApi, {
     findInstalledPack: (pid) =>
-      pid === packId || !!useJourneyPacksStore.getState().get(pid),
+      pid === packId ||
+      !!useJourneyPacksStore.getState().get(pid) ||
+      useDataPacksStore.getState().has(pid),
     // The confirmed-installed (native→target) pair pack for this session. The
     // ResolveContext pair is fixed, so we answer for the matching pair only
     // (base-subtag compare) and return null otherwise — never a guessed id.

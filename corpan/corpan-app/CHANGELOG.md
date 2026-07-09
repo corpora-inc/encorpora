@@ -7,6 +7,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey picture-choice lights up when the `imagepan` pack is available.**
+  The concept-picture pack is now delivered end-to-end: it auto-installs from
+  its own CloudFront index the first time a Journey session opens, registers in
+  a new installed-data-pack registry, and its WebP images serve over the
+  existing `corpan-pack://` scheme. First-exposure word cards then upgrade to
+  picture choices. Fully graceful: when the pack is not published (or the device
+  is offline), Journey serves normal text cards exactly as before — the wiring
+  ships inert.
+
 ## [0.20.2] — 2026-07-08
 
 ### Fixed
