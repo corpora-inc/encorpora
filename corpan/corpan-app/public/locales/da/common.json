@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Vil du have en guidet vej?",
+      "title": "Hvordan vil du lære {{lang}}?",
       "subtitle": "Journey serverer hver dag en blanding af nyt materiale og repetition på {{lang}} – ét kort ad gangen.",
       "guided": {
-        "label": "Start Journey",
-        "desc": "En guidet daglig session, der tilpasser sig dig"
+        "label": "Guidet daglig vej",
+        "desc": "En kort daglig session, planlagt til dig."
       },
       "explore": {
-        "label": "Jeg udforsker på egen hånd",
-        "desc": "Du kan starte Journey når som helst fra Hjem"
+        "label": "I dit eget tempo",
+        "desc": "Gennemse historier, øvelser og spil på egen hånd."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Installer ({{size}})",
     "installing": "Installerer…",
     "installed": "Installeret",
-    "retry": "Prøv igen"
+    "retry": "Prøv igen",
+    "explains": "Ord på {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "listeningMode": "Håndfri lytning",
       "viewPath": "Se vejen",
       "redoPlacement": "Tjek mit niveau igen"
+    },
+    "imagePack": {
+      "title": "Tilføj billeder",
+      "body": "Lær nogle ord med billeder i stedet for tekst.",
+      "dismiss": "Ikke nu",
+      "add": "Tilføj ({{size}})",
+      "downloading": "Tilføjer… {{percent}}%",
+      "retry": "Prøv igen",
+      "failed": "Kunne ikke tilføjes"
     }
   }
 }

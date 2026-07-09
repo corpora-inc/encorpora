@@ -74,6 +74,30 @@ function rowsResult(rows: Record<string, unknown>[]): PackDbResult {
   return { columns: rows[0] ? Object.keys(rows[0]) : [], rows }
 }
 
+/** A tiny built-in imagepan concept table so the browser demo can prove the
+ *  picture-choice path (SQL.conceptImage) end-to-end over the SAME JSON ports —
+ *  no sqlite, no pack files. Language-neutral, keyed by concept word (§2.7).
+ *  `file`/distractor `file` are pack-relative; packFileUrl builds the (demo,
+ *  intentionally 404) corpan-pack:// URL, matching the device shape exactly. */
+const DEMO_IMAGEPAN: Record<
+  string,
+  { word: string; sense_gloss: string; cefr: string; file: string; distractors_json: string }
+> = (() => {
+  const sib = (k: string) => ({ key: k, word: k, file: `images/${k}.webp` })
+  const row = (k: string, sibs: string[]) => ({
+    word: k,
+    sense_gloss: k,
+    cefr: "A1",
+    file: `images/${k}.webp`,
+    distractors_json: JSON.stringify(sibs.map(sib)),
+  })
+  return {
+    coffee: row("coffee", ["tea", "milk"]),
+    tea: row("tea", ["coffee", "milk"]),
+    milk: row("milk", ["coffee", "tea"]),
+  }
+})()
+
 /** Answer the resolver/distractor SQL registry from the precomputed tables. */
 export function makeDemoQueryPackDb(data: DemoCourseData): QueryPackDb {
   const { strings, grammarNodes, l1Overlays, items, itemSkills } = data.tables
@@ -102,6 +126,10 @@ export function makeDemoQueryPackDb(data: DemoCourseData): QueryPackDb {
       case SQL.grammarNode: {
         const row = grammarNodes[String(params[0])]
         return rowsResult(row ? [row] : [])
+      }
+      case SQL.conceptImage: {
+        const c = DEMO_IMAGEPAN[String(params[0])]
+        return rowsResult(c ? [{ ...c, key: String(params[0]) }] : [])
       }
       case SQL.grammarExemplars: {
         const skillId = String(params[0])
@@ -219,8 +247,13 @@ export function buildDemoDeps(
     packFileUrl: (packId, relPath) => `/journey-demo/absent/${packId}/${relPath}`,
     findInstalledWordPack: () => null,
     findInstalledNarrationPack: () => null,
+    // "imagepan" is treated as installed in the demo so the picture-choice
+    // path (SQL.conceptImage) resolves, proving the concept resolver + the
+    // runtime's maybeImageChoice emission over the SAME ports the device uses.
     findInstalledPack: (packId) =>
-      packId === ctx.courseId || installedSources.has(packId),
+      packId === ctx.courseId ||
+      packId === "imagepan" ||
+      installedSources.has(packId),
     log,
   }
 

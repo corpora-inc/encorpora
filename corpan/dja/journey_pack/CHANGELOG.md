@@ -8,6 +8,19 @@ pack is the shippable unit; see `corpan/docs/journey/specs/course-pack.md`
 ## [Unreleased]
 
 ### Added
+- **Communicative-first launchpad gates (V-23, V-24).** **V-23** fails the
+  build if the learner's opener (lowest-index launchpad unit) leads with
+  non-communicative items, is >50% phoneme items, or (when a later launchpad
+  unit exists to home them) carries any phoneme drills at all — so a course
+  can never again ship minimal-pair drilling before greetings/courtesy.
+  **V-24** fails the build if any `phrase`/`segment` item resolves to a single
+  token (a degenerate one-blank cloze / one-tile word_order the runtime cannot
+  reroute). Both read the built items, so they are native-language-agnostic.
+  `Corpus.candidate_pool()` now also drops single-token phrases so auto-fill
+  never injects a V-24 defect; the default phoneme home is the LAST launchpad
+  unit (never the opener). Fixture course + tests updated.
+
+### Added
 - **Word glosses + full-L1 coverage gates (Journey v0.2, contract #1).**
   `course.yaml` gains `l1_full_support` (the L1s carrying a complete native
   face); it rides into `pack_meta`. `wg.<word>` gloss keys flow through

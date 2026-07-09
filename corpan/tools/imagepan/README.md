@@ -105,12 +105,46 @@ ATTRIBUTION.md}` (loose WebP files + a small SQLite concept index). rembg
 background removal is used when installed (skipped gracefully otherwise), objects
 resized to 384², WebP q75-80. A coverage + size-budget report prints at the end.
 
-## App-side (already wired, ships inert)
+## 5. Publish to CloudFront (owner authorizes)
+```
+python publish_image_pack.py --dry-run          # prints the index entry, no upload
+python publish_image_pack.py --channel stable    # actually uploads (AWS creds required)
+```
+Mirrors `dja/journey_pack/publish_journey_pack.py`: same bucket
+(`corpan-prod` / us-east-2), immutable versioned zip, accumulate-merged
+`index.json`. Two S3 objects are written under `artifacts/corpan/imagepan/`,
+served at:
+
+    https://d38iwc9748jekz.cloudfront.net/corpan/imagepan/imagepan-<version>.zip
+    https://d38iwc9748jekz.cloudfront.net/corpan/imagepan/index.json
+
+The zip is IMMUTABLE — a same-version re-publish with different content hard-
+aborts; bump `manifest.json` `version` to ship changes. `--channel preview`
+(the default) keeps the pack dev-only until it is promoted to `stable`.
+Credentials: `--profile <name>` / `$AWS_PROFILE`, else `~/.env`
+(`AWS_ACCESS_KEY`/`AWS_SECRET_ACCESS_KEY`). Nothing publishes without running
+this explicitly.
+
+## App-side delivery (wired; ships inert until the pack is published)
+- Index parser: `corpan-app/src/contentPacks/imagePackCatalog.ts` (clone of
+  `journeyPackCatalog.ts`; polls the CloudFront `index.json` above).
+- Lazy auto-install + sync recognition: `corpan-app/src/util/imagePack.ts`
+  (`ensureImagePackInstalled`) registers the pack in
+  `corpan-app/src/store/dataPacks.ts` (a generic installed-data-pack registry).
+  `journey/runtimeWiring.ts` calls `ensureImagePackInstalled()` when a session
+  opens and composes `findInstalledPack("imagepan")` over the registry.
+- Native asset serving: the `corpan-pack://` scheme handler in
+  `plugins/tauri-plugin-game-packs/src/lib.rs` already serves
+  `corpan-packs/imagepan/images/<key>.webp` as `image/webp` (no change needed).
 - Resolver `concept` arm: `corpan-app/src/journey/content/resolve.ts`
-  (`resolveConcept`, `SQL.conceptImage`).
+  (`SQL.conceptImage` → `data/index.sqlite3`, db name "main").
 - Picture-choice render: `corpan-app/src/journey/exercises/imageChoice.ts` (pure
   tile builder) + the `media:'image'` branch in `ChoicePick.tsx`.
 - Emission: `runtime.ts` upgrades a fraction of first-exposure word cards to
   picture-choice when imagepan is installed (`maybeImageChoice`).
-All are guarded by `findInstalledPack("imagepan")` — no behavior change until the
-pack is published.
+
+GRACEFUL DEGRADE: every arm fails soft. No published `index.json`, an
+unreachable index, or an install error all leave imagepan unregistered →
+`findInstalledPack("imagepan")` stays false → Journey serves normal text cards,
+exactly as before the pack existed. This is why the wiring can ship in 0.20.2
+before the pack is published.

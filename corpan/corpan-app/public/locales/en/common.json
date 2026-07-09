@@ -419,15 +419,15 @@
       }
     },
     "journey": {
-      "title": "Want a guided path?",
+      "title": "How do you want to learn {{lang}}?",
       "subtitle": "The Journey serves a daily mix of new material and review in {{lang}} — one card at a time.",
       "guided": {
-        "label": "Start the Journey",
-        "desc": "A guided daily session that adapts to you"
+        "label": "Guided daily path",
+        "desc": "A short daily session, planned for you."
       },
       "explore": {
-        "label": "I'll explore on my own",
-        "desc": "You can start the Journey anytime from Home"
+        "label": "Self-paced",
+        "desc": "Browse stories, drills and games yourself."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Install ({{size}})",
     "installing": "Installing…",
     "installed": "Installed",
-    "retry": "Try again"
+    "retry": "Try again",
+    "explains": "{{language}} words"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Adding… {{percent}}%",
       "failed": "Couldn’t add",
       "retry": "Try again"
+    },
+    "imagePack": {
+      "title": "Add pictures",
+      "body": "Learn some words with pictures instead of text.",
+      "dismiss": "Not now",
+      "add": "Add ({{size}})",
+      "downloading": "Adding… {{percent}}%",
+      "retry": "Try again",
+      "failed": "Couldn't add"
     }
   }
 }

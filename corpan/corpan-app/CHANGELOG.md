@@ -7,6 +7,86 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey offers the `imagepan` picture pack with one-tap consent (no silent
+  download).** When a compatible concept-picture pack is available in the index
+  but not yet installed, an understated in-feed offer appears ("Add pictures")
+  showing the download size read **dynamically** from the catalog entry
+  (`sizeMb`) — ready for the pack to grow to thousands of images. **Install**
+  downloads with a progress bar, registers in the installed-data-pack registry,
+  and picture exercises begin mid-session (the resolver is invalidated, no
+  restart). **Not now** is remembered persistently so the offer never nags. Its
+  WebP images serve over the existing `corpan-pack://` scheme. Fully graceful:
+  an already-installed pack lights up from the first card with no re-consent,
+  and when the index is unreachable / the pack is absent there is no offer and
+  no image cards — normal text cards exactly as before.
+
+### Changed
+- **imagepan is no longer auto-installed on first Journey open.** The prior
+  silent ~1 MB download is replaced by the consent offer above; Journey only
+  *recognizes* an imagepan that is already on disk at session start.
+
+## [0.20.2] — 2026-07-08
+
+### Fixed
+- **Journey no longer serves degenerate exercises.** Single-token items (e.g.
+  "jam", "ship") could be dealt as a fill-the-gap with no gap or a
+  tap-in-order with a single tile. The activity mixer now never assigns
+  `cloze`/`word_order` to single-token item kinds, and a runtime safety net
+  reroutes any that slip through to a coherent activity instead of rendering a
+  broken card.
+- **Match-the-pairs never shows the same tile twice.** Two items sharing a
+  target surface or a native gloss could produce duplicate tiles that the
+  independent column shuffles let sit side by side; columns are now de-duplicated
+  before the pair cap.
+- **Cloze/word-order render gracefully when context is thin** instead of a bare
+  "____" or a one-tile "reorder": they fall back to a reveal-and-continue card.
+- **No more blank card after a correct answer, and nothing is clipped by the
+  device safe area.** The feed's next-card peek is now a thin affordance sliver
+  (never an empty content card) and the feed respects `safe-area-inset`.
+- **You can redo a completed exercise.** Scrolling back to a finished card now
+  clears its answer so you can try it again; the retry re-grades as an extra rep
+  without re-charging quota, streak, or stats.
+- **Journey reuses an already-installed Whisper model** instead of offering a
+  redundant download. Speech scoring now discovers a usable model already on the
+  device (shared with pronunciation-coach) and prepares it, only offering an
+  install when nothing usable exists anywhere.
+- **STT install progress now shows on Android.** `hostApi.stt.installModel` now
+  passes a Tauri `Channel` (`onEvent`) alongside the existing `install_progress`
+  plugin listener. Android delivers download progress only through that channel,
+  so without it the "Install" button ran the download silently and looked dead.
+  iOS keeps using the plugin-event path (the extra arg is ignored there).
+- **Declining speech ("Not now") no longer strands you** on a dead speak card —
+  the card settles and advances immediately (and remaining speak cards swap to
+  the typed fallback for the session).
+- **Swipe-to-skip is reliable.** The confirm window was widened and a clear
+  "swipe again to skip" hint added, so one confirmed double-swipe advances
+  instead of requiring many swipes.
+- **Word-explanation packs say which language they explain.** Settings now shows,
+  under "Explicaciones en español", a second line naming the explained language
+  (e.g. "English words"), read from the pack's `targetLang` metadata — so a
+  learner of several languages can tell EN from a future DE pack. No language is
+  hardcoded.
+
+### Changed
+- **A brand-new learner starts with useful language, not pronunciation drills.**
+  The Journey EN launchpad is reordered communicative-first: greetings and
+  courtesy (hello, please, thank you, yes, no, how are you…) come first;
+  minimal-pair sound contrasts (ship/sheep, jam/yam…) move to a later phonology
+  unit. The engine also keeps pronunciation-contrast items from dominating the
+  opening feed.
+- **Onboarding: the guided Journey now reads as the primary way to learn.** The
+  learner-path fork is reframed from "Want a guided path?" (an opt-in) to "How
+  do you want to learn {{lang}}?", with **Guided daily path** listed first and
+  **Self-paced** second, each with a one-line subtitle.
+
+### Removed
+- **Onboarding: dead-code landing presets.** The comfort/level calibration
+  screens (enjoy/learn/child) and the polyglot fork option wrote a `landing`
+  intent into the draft that nothing read — the final "Where should we begin?"
+  question and Journey opt-in always determine the landing. Removed for a single
+  source of truth. No behavior change.
+
 ## [0.20.1] — 2026-07-07
 
 ### Added

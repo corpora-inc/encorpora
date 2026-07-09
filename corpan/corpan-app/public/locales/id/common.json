@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Ingin jalur terpandu?",
+      "title": "Bagaimana Anda ingin belajar {{lang}}?",
       "subtitle": "Journey menyajikan campuran harian materi baru dan pengulangan dalam {{lang}} — kartu demi kartu.",
       "guided": {
-        "label": "Mulai Journey",
-        "desc": "Sesi harian terpandu yang menyesuaikan dengan Anda"
+        "label": "Jalur harian terpandu",
+        "desc": "Sesi harian singkat, direncanakan khusus untuk Anda."
       },
       "explore": {
-        "label": "Saya akan menjelajah sendiri",
-        "desc": "Anda dapat memulai Journey kapan saja dari Beranda"
+        "label": "Sesuai kecepatan Anda",
+        "desc": "Jelajahi cerita, latihan, dan permainan sendiri."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Pasang ({{size}})",
     "installing": "Memasang…",
     "installed": "Terpasang",
-    "retry": "Coba lagi"
+    "retry": "Coba lagi",
+    "explains": "Kata dalam {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Menambahkan… {{percent}}%",
       "failed": "Gagal menambahkan",
       "retry": "Coba lagi"
+    },
+    "imagePack": {
+      "title": "Tambahkan gambar",
+      "body": "Pelajari beberapa kata dengan gambar, bukan teks.",
+      "dismiss": "Nanti saja",
+      "add": "Tambahkan ({{size}})",
+      "downloading": "Menambahkan… {{percent}}%",
+      "retry": "Coba lagi",
+      "failed": "Gagal menambahkan"
     }
   }
 }

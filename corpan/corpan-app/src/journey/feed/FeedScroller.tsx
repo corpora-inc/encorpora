@@ -28,7 +28,10 @@ import { WelcomeBackCard } from "./WelcomeBackCard.tsx"
 import { CapabilityCard } from "../cards/CapabilityCard.tsx"
 
 const SWIPE_COMMIT_PX = 90
-const SKIP_CONFIRM_MS = 1500
+// Double-swipe skip confirm window. Widened from 1500ms → 2500ms so ONE
+// deliberate second swipe reliably confirms a skip (the old window was so tight
+// that the second swipe routinely landed after it lapsed, forcing many swipes).
+const SKIP_CONFIRM_MS = 2500
 
 export interface FeedScrollerProps {
   runtime: JourneyRuntime
@@ -49,6 +52,7 @@ export function FeedScroller(props: FeedScrollerProps) {
   const [, force] = useState(0)
   const [backIndex, setBackIndex] = useState(0) // 0 = live, N = N pages back
   const [skipArmedAt, setSkipArmedAt] = useState(0)
+  const skipTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [revealed, setRevealed] = useState<Record<string, boolean>>({})
   const [listeningRun, setListeningRun] = useState(false)
   const [autoCountdown, setAutoCountdown] = useState(false)
@@ -56,6 +60,20 @@ export function FeedScroller(props: FeedScrollerProps) {
   const controls = useAnimationControls()
 
   useEffect(() => runtime.subscribe(() => force((v) => v + 1)), [runtime])
+
+  // Disarm a pending skip whenever the live card changes — an armed skip must
+  // never carry over to the NEXT card (that race made skip land on the wrong
+  // card). Also cleans the timer on unmount.
+  const currentId = runtime.current()?.cardId
+  useEffect(() => {
+    if (skipTimer.current) clearTimeout(skipTimer.current)
+    skipTimer.current = null
+    setSkipArmedAt(0)
+    return () => {
+      if (skipTimer.current) clearTimeout(skipTimer.current)
+      skipTimer.current = null
+    }
+  }, [currentId])
 
   const current = runtime.current()
   const next = runtime.next()
@@ -152,21 +170,42 @@ export function FeedScroller(props: FeedScrollerProps) {
     }
     const rule = advanceRule(current, advanceMode)
     if (rule.kind === "manual" && current.kind !== "packActivity") return
-    // incomplete card: double-swipe skip semantics (§3.5)
+    // incomplete card: double-swipe skip semantics (§3.5). The SECOND swipe
+    // within the (widened) confirm window skips; the first arms + shows the
+    // "swipe again to skip" hint. A timer clears the arm so the window is
+    // authoritative (no stale Date.now() math at render), making a single
+    // confirmed double-swipe reliably advance.
     const now = Date.now()
     if (skipArmedAt && now - skipArmedAt <= SKIP_CONFIRM_MS) {
+      if (skipTimer.current) clearTimeout(skipTimer.current)
+      skipTimer.current = null
       setSkipArmedAt(0)
       runtime.abandonCurrent()
     } else {
       setSkipArmedAt(now)
+      if (skipTimer.current) clearTimeout(skipTimer.current)
+      skipTimer.current = setTimeout(() => {
+        skipTimer.current = null
+        setSkipArmedAt(0)
+      }, SKIP_CONFIRM_MS)
       void controls.start({ y: [0, -24, 0], transition: { duration: 0.3 } })
     }
   }, [backIndex, current, settled, advanceMode, skipArmedAt, runtime, doAdvance, controls])
 
   const onBackGesture = useCallback(() => {
     const max = history.length
-    setBackIndex((i) => Math.min(i + 1, max))
-  }, [history.length])
+    setBackIndex((i) => {
+      const nextIndex = Math.min(i + 1, max)
+      // Scrolling BACK to a completed exercise clears its one-way settled gate
+      // so the learner can redo it — even a previously-correct one (§3.4). The
+      // review render then becomes interactive (see renderCard mode below).
+      if (nextIndex > 0) {
+        const rec = history[history.length - nextIndex]
+        if (rec) runtime.clearSettled(rec.card.cardId)
+      }
+      return nextIndex
+    })
+  }, [history, runtime])
 
   // keyboard + wheel
   useEffect(() => {
@@ -200,18 +239,19 @@ export function FeedScroller(props: FeedScrollerProps) {
   const quota = runtime.peekQuota()
   const cardsToday = useJourneyStore((s) => s.byCourse[props.courseKey]?.cardsToday.count ?? 0)
 
-  const renderCard = (card: FeedCard, mode: "live" | "review") => {
+  const renderCard = (card: FeedCard, mode: "live" | "review" | "redo") => {
+    const hostMode = mode === "redo" ? "live" : mode
     switch (card.kind) {
       case "exercise": {
         const body = (
           <ActivityCardHost
             key={card.cardId}
             card={card}
-            mode={mode}
+            mode={hostMode}
             combo={stats.combo}
             speak={props.speak}
             showRomanization={props.showRomanization}
-            active={mode === "live" && backIndex === 0}
+            active={(mode === "live" && backIndex === 0) || mode === "redo"}
             onResult={(r) => submit(card.cardId, r)}
             onRequestAdvance={() => requestAdvance(card)}
           />
@@ -225,8 +265,9 @@ export function FeedScroller(props: FeedScrollerProps) {
         ) : (
           body
         )
-        if (!card.rare || mode === "review") {
-          if (card.rare === "timeCapsule" && mode === "review") return framed
+        // review + redo render the plain (framed) exercise — no rare
+        // celebration overlays on a scroll-back or a redo attempt.
+        if (!card.rare || mode !== "live") {
           return framed
         }
         if (card.rare === "etymology") {
@@ -338,9 +379,17 @@ export function FeedScroller(props: FeedScrollerProps) {
     }
   }
 
-  // read-only back page (§3.4)
+  // read-only back page (§3.4). An exercise/pack card whose result was cleared
+  // (by onBackGesture → runtime.clearSettled) becomes a REDO: interactive
+  // again so the learner can re-answer it.
   const backRecord: CompletedCard | null =
     backIndex > 0 ? (history[history.length - backIndex] ?? null) : null
+  const backRedoable =
+    !!backRecord &&
+    backRecord.result === null &&
+    (backRecord.card.kind === "exercise" ||
+      backRecord.card.kind === "packActivity" ||
+      backRecord.card.kind === "capability")
 
   const listeningPill =
     backIndex === 0 &&
@@ -357,6 +406,12 @@ export function FeedScroller(props: FeedScrollerProps) {
       className="relative flex h-full w-full flex-col overflow-hidden touch-none"
       onWheel={onWheel}
       data-testid="journey-feed"
+      // Respect the device safe area so no card is clipped at the bottom
+      // (notch / home-indicator). Uses env() with a 0 fallback on desktop.
+      style={{
+        paddingBottom: "env(safe-area-inset-bottom, 0px)",
+        paddingTop: "env(safe-area-inset-top, 0px)",
+      }}
     >
       <motion.div
         className="flex h-full w-full flex-col"
@@ -379,10 +434,14 @@ export function FeedScroller(props: FeedScrollerProps) {
               exit={{ y: 40, opacity: 0 }}
               transition={{ type: "spring", stiffness: 320, damping: 32 }}
             >
-              <FeedCardFrame card={backRecord.card} settled review>
-                <div className="pointer-events-none w-full opacity-90">
-                  {renderCard(backRecord.card, "review")}
-                </div>
+              <FeedCardFrame card={backRecord.card} settled={!backRedoable} review={!backRedoable}>
+                {backRedoable ? (
+                  <div className="w-full">{renderCard(backRecord.card, "redo")}</div>
+                ) : (
+                  <div className="pointer-events-none w-full opacity-90">
+                    {renderCard(backRecord.card, "review")}
+                  </div>
+                )}
               </FeedCardFrame>
             </motion.div>
           ) : current ? (
@@ -423,19 +482,26 @@ export function FeedScroller(props: FeedScrollerProps) {
         </AnimatePresence>
       </motion.div>
 
-      {/* next-card peek after completion (§3.1 step 4) */}
+      {/* next-card peek after completion (§3.1 step 4): a thin affordance sliver
+          hinting the next card is ready — NOT a full empty card. Carries a grip
+          bar so it never reads as a blank content card, and it sits above the
+          safe-area inset (env inset lives on the container) so it is never
+          clipped. Only shown when a real next card exists. */}
       {settled && next && backIndex === 0 ? (
         <motion.div
-          className="pointer-events-none absolute inset-x-6 bottom-0 h-[12%] rounded-t-2xl border border-b-0 border-border bg-card/80"
+          className="pointer-events-none absolute inset-x-6 bottom-0 flex h-[9%] items-start justify-center rounded-t-2xl border border-b-0 border-border bg-card/80 pt-2"
           initial={{ y: 60 }}
           animate={{ y: 24 }}
           aria-hidden
-        />
+        >
+          <div className="h-1 w-9 rounded-full bg-muted-foreground/40" />
+        </motion.div>
       ) : null}
 
-      {/* skip hint (§3.5 first forward-swipe on incomplete card) */}
+      {/* skip hint (§3.5 first forward-swipe on incomplete card) — armed state
+          is cleared by a timer, so its truthiness alone is authoritative */}
       <AnimatePresence>
-        {skipArmedAt > 0 && Date.now() - skipArmedAt <= SKIP_CONFIRM_MS ? (
+        {skipArmedAt > 0 ? (
           <motion.div
             key="skip-hint"
             className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center"

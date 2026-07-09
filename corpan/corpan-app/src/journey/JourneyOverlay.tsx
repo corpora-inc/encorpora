@@ -23,6 +23,7 @@ import {
 } from "./JourneySurface.tsx"
 import { journeyStreakPorts, buildJourneyDeps, type BuiltJourney } from "./runtimeWiring.ts"
 import { WordPackOfferBanner } from "./WordPackOfferBanner.tsx"
+import { ImagePackOfferBanner } from "./ImagePackOfferBanner.tsx"
 import type { SpeakFn } from "./exercises/types.ts"
 
 /** The user's journey target: first stack language after the primary
@@ -141,6 +142,16 @@ export function JourneyOverlay(props: {
           />
         </div>
       ) : null}
+      {/* Consent-first picture-pack offer (language-neutral). Renders nothing
+          unless a compatible imagepan is available in the index but not yet
+          installed. Stacked just above the wordpan slot so the two never
+          overlap; both self-hide when there is nothing to offer. */}
+      <div
+        className="pointer-events-none fixed inset-x-0 bottom-36 z-[1060] flex justify-center px-4"
+        dir={dir()}
+      >
+        <ImagePackOfferBanner onInstalled={built.onImagePackInstalled} />
+      </div>
     </>
   )
 }

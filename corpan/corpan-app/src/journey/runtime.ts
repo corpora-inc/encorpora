@@ -178,6 +178,11 @@ export interface JourneyRuntime {
   advance(): void
   /** Settle a presentation-only card (blockIntro Ready / welcomeBack). */
   completePresentation(cardId: string): void
+  /** Clear a card's one-way `settled` gate so it can be answered again. Used
+   *  when the learner scrolls BACK to a completed exercise to redo it — even a
+   *  previously-correct one (feed-ux §3.4). Idempotent; no-op for an unsettled
+   *  or unknown card. Returns true when a settled record was actually cleared. */
+  clearSettled(cardId: string): boolean
   abandonCurrent(): void
   peekQuota(): { remaining: number; limit: number }
   sessionStats(): SessionStats
@@ -450,6 +455,55 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
           params.contextWord = answer.target.text
           delete params.direction
         }
+      }
+    }
+
+    // -- Degenerate multi-token guard. This is the AUTHORITATIVE, token-based,
+    // kind-INDEPENDENT gate: the mixer's selection gate (mixer.ts) can only
+    // reason about item.kind — it has no resolved text, and `textLen` is a
+    // character count, not a token count — so a phrase/segment/grammarNode item
+    // whose resolved target happens to be a single token can still arrive here
+    // as a cloze/word_order. A cloze needs ≥2 tokens for a non-trivial blank; a
+    // word_order needs ≥2 tokens to reorder. So we count tokens on the RESOLVED
+    // text (works for every kind) and REROUTE to a valid single-token activity
+    // rather than emit a broken card. Prefer reroute (keeps the feed fed); drop
+    // only when nothing renders. Runs before direction/distractor so both are
+    // computed against the final activityType.
+    //
+    // A context-cloze blanks a word inside a real sentence, so it is exempt —
+    // but ONLY when that sentence is genuinely multi-token. We validate the
+    // contextPhrase's own token count (not merely that the property is present),
+    // so a context-cloze whose phrase collapsed/was unset is itself treated as
+    // degenerate and rerouted.
+    if (activityType === "cloze" || activityType === "word_order") {
+      const contextPhrase =
+        typeof params.contextPhrase === "string" ? params.contextPhrase : ""
+      const contextTokenCount = contextPhrase
+        ? tokenizePhrase(contextPhrase, spec.targetLang).filter((t) => t.isWord).length
+        : 0
+      // A cloze with a real ≥2-token sentence around the blank is well-formed.
+      const isValidContextCloze = activityType === "cloze" && contextTokenCount >= 2
+      const answerTokenCount = isValidContextCloze
+        ? contextTokenCount
+        : tokenizePhrase(answer.target.text, spec.targetLang).filter((t) => t.isWord).length
+      if (!isValidContextCloze && answerTokenCount < 2) {
+        const canTranslate = !!nativeLang && !!answer.native
+        // choice_pick reads a native prompt and renders one word cleanly; with
+        // no native face, listen_type (type-what-you-hear) is a valid
+        // target-only single-word activity that needs no distractor sampling.
+        // Both grade the SAME item, so mastery is unaffected — only the surface
+        // changes from a broken blank/reorder to a renderable card.
+        activityType = canTranslate ? "choice_pick" : "listen_type"
+        delete params.mode
+        delete params.blankIndex
+        delete params.contextPhrase
+        delete params.contextNative
+        delete params.contextWord
+        if (!canTranslate) delete params.direction
+        log("journey_degenerate_reroute", {
+          specId: spec.specId,
+          to: activityType,
+        })
       }
     }
 
@@ -731,6 +785,39 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   }
 
   function submitResult(cardId: string, r: ActivityResult): SubmitInfo | null {
+    // A redo: the learner scrolled back to a completed exercise (cleared via
+    // clearSettled) and answered it again. It is NOT prepared[0]. Re-grade it
+    // through the engine as an ordinary extra rep (legitimate practice — the
+    // engine handles repeated reps), but never re-debit the daily gate,
+    // re-bump streak/cardsCompleted, or re-run the settle→advance window
+    // (feed-ux §3.4). The history record's result is refreshed in place.
+    if (prepared[0]?.cardId !== cardId && !settled.has(cardId)) {
+      const rec = historyRing.find((h) => h.card.cardId === cardId)
+      if (rec && (rec.card.kind === "exercise" || rec.card.kind === "packActivity" || rec.card.kind === "capability")) {
+        settled.add(cardId)
+        const apply = deps.engine.applyResult(r)
+        rec.result = r
+        record({
+          type: "activity_result",
+          specId: r.specId,
+          activityType: specOf(rec.card)?.activityType ?? "unknown",
+          provider:
+            rec.card.kind === "packActivity" ? "pack" : rec.card.kind === "capability" ? "capability" : "native",
+          providerId: rec.card.kind === "packActivity" ? rec.card.packId : undefined,
+          slot: POOL_TO_SLOT[rec.card.kind === "exercise" ? rec.card.prepared.engine.meta.pool : "flex"] ?? "flex",
+          strand:
+            STRAND_TO_TAG[rec.card.kind === "exercise" ? rec.card.prepared.engine.meta.strand : "fluency"] ?? "fd",
+          score: r.score,
+          durationMs: r.durationMs,
+          abandoned: r.abandoned,
+          items: apply.items,
+          redo: true,
+        })
+        notify()
+        return { apply, combo, streak: null, debited: false }
+      }
+    }
+
     const card = prepared[0]
     if (!card || card.cardId !== cardId || settled.has(cardId)) return null
     settled.add(cardId)
@@ -738,7 +825,8 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     // Contract #4 decline flow: the learner turned down the inline model
     // install on a speak card. Stop scheduling STT and swap every still-queued
     // speak_echo to listen_type for the rest of the session.
-    if (r.detail?.flags?.sttDeclined === true && !sttDeclined) {
+    const declined = r.detail?.flags?.sttDeclined === true
+    if (declined && !sttDeclined) {
       sttDeclined = true
       void reswapDeclinedSpeakCards()
     }
@@ -827,6 +915,10 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
 
     const tier: 0 | 1 | 2 | 3 = card.kind === "exercise" && card.rare ? 3 : 0
     settleCard(card, result, tier)
+    // Contract #4: a decline must not leave the learner stuck on a dead speak
+    // card. We already swapped the rest of the session to listen_type; advance
+    // THIS card immediately so the feed moves on without a manual swipe.
+    if (declined) advance()
     return { apply, combo, streak, debited }
   }
 
@@ -962,6 +1054,24 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       settled.add(cardId)
       settleCard(card, null, 0)
       advance()
+    },
+    clearSettled: (cardId) => {
+      if (!settled.has(cardId)) return false
+      // Only exercise/pack cards are re-answerable — presentation faces
+      // (blockIntro/welcomeBack/checkpoint) have no answer to redo.
+      const rec = historyRing.find((h) => h.card.cardId === cardId)
+      const kind = rec?.card.kind
+      if (rec && kind !== "exercise" && kind !== "packActivity" && kind !== "capability") {
+        return false
+      }
+      settled.delete(cardId)
+      impressions.delete(cardId)
+      // Wipe the stored answer so the re-presented card starts clean; the
+      // engine already recorded the prior result (a redo is not double-graded
+      // against the daily gate — clearSettled never touches quota).
+      if (rec) rec.result = null
+      notify()
+      return true
     },
     abandonCurrent,
     peekQuota: () => ({ remaining: deps.quota.remaining(), limit: deps.quota.limit() }),

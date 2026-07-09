@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Vols un camí guiat?",
+      "title": "Com vols aprendre {{lang}}?",
       "subtitle": "El Journey et serveix cada dia una barreja de material nou i repàs en {{lang}} — targeta a targeta.",
       "guided": {
-        "label": "Comença el Journey",
-        "desc": "Una sessió diària guiada que s'adapta a tu"
+        "label": "Camí diari guiat",
+        "desc": "Una sessió diària curta, pensada per a tu."
       },
       "explore": {
-        "label": "Exploraré pel meu compte",
-        "desc": "Pots començar el Journey quan vulguis des d'Inici"
+        "label": "Al teu ritme",
+        "desc": "Explora històries, exercicis i jocs pel teu compte."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Instal·la ({{size}})",
     "installing": "Instal·lant…",
     "installed": "Instal·lat",
-    "retry": "Torna-ho a provar"
+    "retry": "Torna-ho a provar",
+    "explains": "Paraules en {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Afegint… {{percent}}%",
       "failed": "No s'ha pogut afegir",
       "retry": "Torna-ho a provar"
+    },
+    "imagePack": {
+      "title": "Afegeix imatges",
+      "body": "Aprèn algunes paraules amb imatges en lloc de text.",
+      "dismiss": "Ara no",
+      "add": "Afegeix ({{size}})",
+      "downloading": "Afegint… {{percent}}%",
+      "retry": "Torna-ho a provar",
+      "failed": "No s'ha pogut afegir"
     }
   }
 }

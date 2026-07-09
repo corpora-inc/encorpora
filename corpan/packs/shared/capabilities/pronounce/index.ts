@@ -23,7 +23,12 @@ import {
   makeAbandonedResult,
 } from "@shared/capabilities/core"
 import { isWhisperSupported } from "./src/whisperLangs"
-import { visibleModels, visibleDefaultModel } from "./src/modelRegistry"
+import {
+  allFolders,
+  modelByFolder,
+  visibleModels,
+  visibleDefaultModel,
+} from "./src/modelRegistry"
 import {
   bindPushToTalk,
   createPushToTalkRecorder,
@@ -77,6 +82,86 @@ export interface CapPronounceParams {
 
 const readParams = (spec: ActivitySpec): CapPronounceParams =>
   (spec.params ?? {}) as unknown as CapPronounceParams
+
+/** Find a Whisper model that is ALREADY installed on this device, across
+ *  EVERY folder the pack knows — not just the tiny default. This is what lets
+ *  Journey reuse the big model a user already installed via pronunciation-coach:
+ *  both packs go through the same `hostApi.stt` seam and the same
+ *  `modelRegistry` folders, so an install by one is visible to the other.
+ *
+ *  Preference order:
+ *    1. The model the native context currently has LOADED (`getStatus().model`)
+ *       — zero-cost to reuse, no re-load.
+ *    2. The largest already-installed model (better transcription quality).
+ *
+ *  Robust to hosts where `listInstalled` is missing or returns a non-canonical
+ *  shape (an older Android bridge answers `{ installed: [...] }` rather than
+ *  `{ models: [...] }`): in that case we fall back to per-folder
+ *  `validateModel`, which pronunciation-coach trusts as reliable on every
+ *  shipped host. Returns `null` when nothing usable is installed anywhere. */
+const pickInstalledModelFolder = async (
+  stt: CapabilityHostApi["stt"],
+): Promise<string | null> => {
+  if (!stt) return null
+  const folders = allFolders()
+
+  // Prefer the currently-loaded model — reusing it skips a re-prepare.
+  let loadedFolder: string | null = null
+  try {
+    const status = await stt.getStatus?.()
+    if (status?.model && folders.includes(status.model)) {
+      loadedFolder = status.model
+    }
+  } catch (err) {
+    console.warn("[cap-pronounce] getStatus probe failed:", err)
+  }
+
+  const usable = new Set<string>()
+  if (loadedFolder) usable.add(loadedFolder)
+
+  // Primary probe: listInstalled with the canonical `{ models: [{valid}] }`
+  // shape. Guarded so a mis-shaped/absent response doesn't throw us out.
+  if (stt.listInstalled) {
+    try {
+      const res = await stt.listInstalled({ models: folders })
+      const models = Array.isArray(res?.models) ? res.models : []
+      for (const m of models) {
+        if (m?.valid && typeof m.model === "string") usable.add(m.model)
+      }
+    } catch (err) {
+      console.warn("[cap-pronounce] listInstalled probe failed:", err)
+    }
+  }
+
+  // Fallback probe: if listInstalled told us nothing usable (missing on this
+  // host, or the non-canonical shape), validate each folder directly.
+  if (usable.size === 0 && stt.validateModel) {
+    for (const folder of folders) {
+      try {
+        const v = await stt.validateModel({ model: folder })
+        if (v?.valid) usable.add(folder)
+      } catch (err) {
+        console.warn(`[cap-pronounce] validateModel(${folder}) failed:`, err)
+      }
+    }
+  }
+
+  if (usable.size === 0) return null
+  if (loadedFolder && usable.has(loadedFolder)) return loadedFolder
+
+  // Pick the largest installed model — a user who installed the big Whisper
+  // gets it, not the 75 MB Tiny.
+  let best: string | null = null
+  let bestSize = -1
+  for (const folder of usable) {
+    const size = modelByFolder(folder)?.approxSizeMB ?? 0
+    if (size > bestSize) {
+      bestSize = size
+      best = folder
+    }
+  }
+  return best
+}
 
 type Attempt = {
   verdict: PronounceVerdict
@@ -133,6 +218,11 @@ const mount = (
   let disposed = false
   let paused = params.startPaused === true
   let modelReady = false
+  // The folder actually prepared/loaded for scoring — an already-installed
+  // model wins over the tiny default (shared with pronunciation-coach). Falls
+  // back to the visible default's folder for scoring-param keying until boot
+  // resolves which model is really loaded.
+  let activeModelFolder = visibleDefaultModel().folder
   let interacted = false
   let hintsUsed = 0 // replays of the target TTS
   let firstRecordLatencyMs: number | null = null
@@ -341,9 +431,10 @@ const mount = (
 
     recorder = createPushToTalkRecorder(stt, {
       model: () => {
-        // Best-effort: whatever the host has loaded; the visible default's
-        // folder is the scoring-params key fallback.
-        return visibleDefaultModel().folder
+        // The model actually prepared for this mount — a reused install from
+        // pronunciation-coach, or the freshly-installed default. Scoring params
+        // are keyed per (lang, model), so this must be the real folder.
+        return activeModelFolder
       },
       onState: (s) => {
         if (disposed) return
@@ -382,26 +473,46 @@ const mount = (
     // prepare() is LOCAL-ONLY — never downloads (parlometron rule). A module
     // finding its model unexpectedly absent settles sttUnavailable unless the
     // consumer opted into the inline install prompt (pop-in surface).
+    //
+    // SHARE THE INSTALLED MODEL: probe EVERY known folder first, so a big
+    // Whisper the user already installed (e.g. via pronunciation-coach — same
+    // hostApi.stt seam + same modelRegistry folders) is reused, never a
+    // redundant 75 MB download offer. Only if nothing usable is installed
+    // anywhere do we fall back to the default install offer.
+    const installedFolder = await pickInstalledModelFolder(stt)
+    if (disposed) return
+    if (installedFolder) {
+      const m = modelByFolder(installedFolder)
+      try {
+        await tryPrepareOnce(stt, installedFolder, {
+          timeoutMs: (m?.approxSizeMB ?? 0) >= 1000 ? 180_000 : 60_000,
+          label: `Loading ${m?.label ?? "model"} model`,
+        })
+        if (disposed) return
+        activeModelFolder = installedFolder
+        modelReady = true
+        setUiState("idle")
+        if (!paused && params.autoSpeakFirst) {
+          speak(params.lang, params.text ?? "")
+        }
+        return
+      } catch (err) {
+        // Reported installed but wouldn't load (corrupt on disk / insufficient
+        // memory). Fall through to the offer/unavailable paths rather than
+        // silently wedging on a dead mic.
+        console.error(
+          `[cap-pronounce] prepare of installed model ${installedFolder} failed:`,
+          err,
+        )
+      }
+    }
+
+    // Nothing usable installed anywhere (or the installed one failed to load).
     const model = visibleDefaultModel()
-    try {
-      await tryPrepareOnce(stt, model.folder, {
-        timeoutMs: model.approxSizeMB >= 1000 ? 180_000 : 60_000,
-        label: `Loading ${model.label} model`,
-      })
-      if (disposed) return
-      modelReady = true
-      setUiState("idle")
-      if (!paused && params.autoSpeakFirst) {
-        speak(params.lang, params.text ?? "")
-      }
-    } catch (err) {
-      if (disposed) return
-      if (params.modelPolicy === "offer-install" && stt.installModel) {
-        renderInstallPrompt(model.folder)
-      } else {
-        console.error("[cap-pronounce] model prepare failed:", err)
-        settleSttUnavailable()
-      }
+    if (params.modelPolicy === "offer-install" && stt.installModel) {
+      renderInstallPrompt(model.folder)
+    } else {
+      settleSttUnavailable()
     }
   }
 
@@ -467,6 +578,7 @@ const mount = (
           label: `Loading ${m?.label ?? "model"} model`,
         })
         if (disposed) return
+        activeModelFolder = modelFolder
         modelReady = true
         prompt.remove()
         micBtn.hidden = false

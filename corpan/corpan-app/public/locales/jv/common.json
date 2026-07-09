@@ -419,15 +419,15 @@
       }
     },
     "journey": {
-      "title": "Pengin dalan sing dituntun?",
+      "title": "Kepengin sinau {{lang}} kepiye?",
       "subtitle": "Journey saben dina nyuguhake campuran materi anyar lan ulangan nganggo {{lang}} — kertu mbaka kertu.",
       "guided": {
-        "label": "Miwiti Journey",
-        "desc": "Sesi tuntunan saben dina sing ngepasake karo sampeyan"
+        "label": "Dalan tuntunan saben dina",
+        "desc": "Sesi cendhak saben dina, direncanakake khusus kanggo sampeyan."
       },
       "explore": {
-        "label": "Aku njelajah dhewe wae",
-        "desc": "Journey bisa diwiwiti kapan wae saka Ngarep"
+        "label": "Miturut kacepetanmu dhewe",
+        "desc": "Jelajahi crita, latihan, lan game dhewe."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Pasang ({{size}})",
     "installing": "Masang…",
     "installed": "Wis dipasang",
-    "retry": "Coba maneh"
+    "retry": "Coba maneh",
+    "explains": "Tembung {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Nambahake… {{percent}}%",
       "failed": "Ora bisa ditambahake",
       "retry": "Coba maneh"
+    },
+    "imagePack": {
+      "title": "Tambahake gambar",
+      "body": "Sinau sawetara tembung nganggo gambar tinimbang teks.",
+      "dismiss": "Ora saiki",
+      "add": "Tambahake ({{size}})",
+      "downloading": "Nambahake… {{percent}}%",
+      "retry": "Coba maneh",
+      "failed": "Gagal nambahake"
     }
   }
 }

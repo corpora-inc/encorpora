@@ -1,6 +1,7 @@
 {
   "arc.en.arc0.title": "Launchpad",
   "arc.en.arc1.title": "Foundations",
+  "cando.en.a0.u01.greet": "Can say hello, please, and thanks in everyday moments.",
   "cando.en.a0.u01.sounds": "Can recognize and repeat the core vowel and consonant contrasts of English.",
   "cando.en.a1.u02.everyday-objects": "Can name common everyday objects and ask for them.",
   "cando.en.a1.u02.introduce": "Can give their name and say simple things about themselves.",
@@ -24,14 +25,19 @@
   "skill.en.skill.core-sounds.title": "Core sound contrasts",
   "skill.en.skill.everyday-words.title": "Everyday words",
   "skill.en.skill.present-simple.title": "Present simple",
-  "unit.en.a0.u01.theme": "First sounds",
+  "unit.en.a0.u01.theme": "First words and sounds",
   "unit.en.a1.u02.theme": "This is me",
   "unit.en.a1.u03.theme": "Every day",
   "wg.a": "a",
   "wg.and": "and",
+  "wg.hello": "hello",
   "wg.in": "in",
   "wg.of": "of",
+  "wg.please": "please",
+  "wg.sorry": "sorry",
+  "wg.thanks": "thanks",
   "wg.the": "the",
   "wg.to": "to",
-  "wg.water": "water"
+  "wg.water": "water",
+  "wg.yes": "yes"
 }

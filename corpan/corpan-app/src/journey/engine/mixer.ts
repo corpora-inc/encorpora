@@ -185,6 +185,30 @@ interface TypeChoiceOpts {
   avoidType?: string
 }
 
+/** Activity types that need a multi-token target to be renderable: cloze
+ *  blanks one of ≥2 tokens; word_order shuffles ≥2 tokens. A single-word item
+ *  ("jam", "ship") produces a degenerate one-blank cloze or a one-tile
+ *  "reorder" — never assign these to inherently single-token items
+ *  (defect: degenerate exercises). Gated at SELECTION so the feed reroutes to
+ *  a valid activity (choice_pick / flip_recall / …) instead of dropping. */
+const MULTI_TOKEN_ACTIVITY_TYPES = new Set(["cloze", "word_order"])
+
+/** Item kinds whose resolved target is always ONE token — no phrase to blank
+ *  or reorder. `phrase`/`segment` carry real sentences; `grammarNode` renders
+ *  its own exemplars, so only the single-lexeme kinds are gated here.
+ *
+ *  This is a best-effort FRONT filter only: selection runs before resolution,
+ *  so it can reason about `kind` but not the resolved token count (a `phrase`
+ *  whose text collapses to one token can't be detected here — `textLen` is
+ *  characters, not tokens). The AUTHORITATIVE, kind-independent token guard
+ *  lives in runtime.ts::prepareExercise, which counts tokens on the resolved
+ *  text and reroutes any degenerate cloze/word_order regardless of kind. */
+const SINGLE_TOKEN_KINDS = new Set<string>(["word", "char", "phoneme"])
+
+function isSingleTokenKind(kind: string): boolean {
+  return SINGLE_TOKEN_KINDS.has(kind)
+}
+
 function chooseActivityType(
   bag: MixerBag,
   cons: NormalizedConstraints,
@@ -195,6 +219,7 @@ function chooseActivityType(
   const item = bag.gidx.graph.items[itemId]
   if (!item) return undefined
   const all = bag.gidx.templatesByKind.get(item.kind) ?? []
+  const singleToken = isSingleTokenKind(item.kind)
   const formsToTry: (0 | 1 | 2)[] =
     form === 2 ? [2, 1, 0] : form === 1 ? [1, 0] : [0]
   for (const f of formsToTry) {
@@ -202,6 +227,8 @@ function chooseActivityType(
       (t) =>
         t.form === f &&
         templateUsable(t, cons) &&
+        // Never a multi-token activity on a single-token item (degenerate card).
+        !(singleToken && MULTI_TOKEN_ACTIVITY_TYPES.has(t.activityType)) &&
         (opts.pool !== "fun" || (t.funWeight ?? 0) > 0) &&
         (!opts.restrict || opts.restrict.includes(t.activityType)) &&
         (!opts.leechItem || leechTypeAllowed(bag.course, itemId, t.activityType)),

@@ -95,7 +95,9 @@ async function main(): Promise<void> {
     stdin: {
       contents:
         `export { buildDemoDeps } from ${JSON.stringify(path.resolve(APP, "src/journey/demo/wiring.ts"))}\n` +
-        `export { createJourneyRuntime } from ${JSON.stringify(path.resolve(APP, "src/journey/runtime.ts"))}\n`,
+        `export { createJourneyRuntime } from ${JSON.stringify(path.resolve(APP, "src/journey/runtime.ts"))}\n` +
+        `export { matchImagePackOffer } from ${JSON.stringify(path.resolve(APP, "src/journey/imagePackProvision.ts"))}\n` +
+        `export { useDataPacksStore } from ${JSON.stringify(path.resolve(APP, "src/store/dataPacks.ts"))}\n`,
       resolveDir: APP,
       loader: "ts",
     },
@@ -200,6 +202,93 @@ async function main(): Promise<void> {
   )
   if (completed < 10) fail(`completed ${completed} < 10 cards`)
   if (runtime.history().length < 10) fail("history ring not filled")
+
+  // -------------------------------------------------- imagepan concept proof
+  // Prove the picture-choice content path end-to-end over the SAME demo ports:
+  // the resolver returns a `concept` item with a corpan-pack:// imageSrc + a
+  // distractor picture. This is what runtime.maybeImageChoice consumes to
+  // upgrade a first-exposure word card to a media:'image' ChoicePick. (The
+  // device serves the real WebP over the corpan-pack scheme; the demo URL is
+  // intentionally the same shape but points at an absent file — the SHAPE is
+  // the contract being proven here.)
+  const conceptOut = await deps.resolver.resolveItems([
+    { kind: "concept", source: "imagepan", id: "coffee" },
+  ])
+  const cItem = conceptOut.resolved[0]
+  if (!cItem || cItem.extras?.kind !== "concept") {
+    fail(`concept resolve: expected a concept item, got ${JSON.stringify(conceptOut)}`)
+  }
+  const cx = cItem.extras as { imageSrc?: string; distractors?: unknown[] }
+  if (cx.imageSrc !== "/journey-demo/absent/imagepan/images/coffee.webp") {
+    fail(`concept resolve: unexpected imageSrc ${cx.imageSrc}`)
+  }
+  if (!Array.isArray(cx.distractors) || cx.distractors.length < 1) {
+    fail(`concept resolve: expected >= 1 distractor picture, got ${JSON.stringify(cx.distractors)}`)
+  }
+  console.log(
+    `[journey-demo verify] imagepan concept OK — imageSrc + ${cx.distractors.length} distractor picture(s)`,
+  )
+
+  // -------------------------------------------- imagepan CONSENT-OFFER proof
+  // Prove the one-tap offer gate end-to-end WITHOUT any silent download: the
+  // pure availability resolver offers a compatible index entry (with a
+  // dynamic sizeMb to show), a Decline is persisted so it never re-offers, and
+  // an incompatible/absent index yields no offer (graceful degrade). This is
+  // the exact logic the ImagePackOfferBanner drives; only the click is DOM.
+  const idxEntry = {
+    id: "imagepan",
+    kind: "image-pack",
+    name: "Picture concepts",
+    version: "0.1.0",
+    zipUrl: "https://cdn.example/imagepan-0.1.0.zip",
+    sizeMb: 1.4,
+    conceptCount: 95,
+    channel: "stable",
+  }
+  const goodCatalog = { version: 1, generatedAt: "x", packs: [idxEntry] }
+  const offer = mod.matchImagePackOffer(goodCatalog, "1.0.0", false)
+  if (!offer || offer.id !== "imagepan") {
+    fail(`image offer: expected a compatible entry, got ${JSON.stringify(offer)}`)
+  }
+  if (!(offer.sizeMb > 0)) {
+    fail(`image offer: size must be shown dynamically from the entry, got sizeMb=${offer.sizeMb}`)
+  }
+  // Never auto-download → the pack starts UNregistered (ships inert).
+  const dp = mod.useDataPacksStore.getState()
+  if (dp.has("imagepan")) fail("image offer: imagepan must NOT be pre-registered (no silent install)")
+  // Decline is remembered so we don't nag next session.
+  dp.decline("imagepan")
+  if (!mod.useDataPacksStore.getState().isDeclined("imagepan")) {
+    fail("image offer: a decline must be persisted")
+  }
+  // Accept path: registering flips the resolver's sync recognition gate.
+  mod.useDataPacksStore.getState().register({
+    id: "imagepan",
+    version: offer.version,
+    installedAt: new Date().toISOString(),
+    source: "catalog",
+  })
+  if (!mod.useDataPacksStore.getState().has("imagepan")) {
+    fail("image offer: an accepted install must flip findInstalledPack('imagepan')")
+  }
+  // Graceful degrade: no catalog / preview-only-in-prod ⇒ no offer.
+  if (mod.matchImagePackOffer(null, "1.0.0", false) !== null) {
+    fail("image offer: an unreachable index must yield no offer")
+  }
+  const previewOnly = {
+    version: 1,
+    generatedAt: "x",
+    packs: [{ ...idxEntry, channel: "preview" }],
+  }
+  if (mod.matchImagePackOffer(previewOnly, "1.0.0", false) !== null) {
+    fail("image offer: a preview-only entry must be hidden from a non-dev build")
+  }
+  // reset so nothing leaks into a re-run of the same process
+  mod.useDataPacksStore.setState({ installed: {}, declined: {} })
+  console.log(
+    `[journey-demo verify] imagepan offer OK — one-tap consent (size ≈${idxEntry.sizeMb} MB), decline persisted, degrade clean`,
+  )
+
   console.log("[journey-demo verify] PASS — >= 10 cards over the precomputed JSON ports")
   process.exit(0)
 }

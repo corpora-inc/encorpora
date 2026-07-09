@@ -921,6 +921,13 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
       .includes(word)
   }
 
+  /** Count of letter/number tokens — the same whitespace/punctuation split as
+   *  containsWord, so "One coffee, please" is 3 and a bare "jam" is 1. Used to
+   *  reject a degenerate one-word "context" phrase for the cloze scan. */
+  function countWords(text: string): number {
+    return text.split(/[^\p{L}\p{N}]+/u).filter((t) => t.length > 0).length
+  }
+
   const EXAMPLE_MAX_SCAN = 48
   const EXAMPLE_SHORT_ENOUGH = 24
 
@@ -962,6 +969,11 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
         if (!one.ok) continue
         const phrase = one.item
         if (!containsWord(phrase.target.text, key)) continue
+        // The example must carry REAL surrounding context — a one-word "phrase"
+        // (rare, malformed corpus) blanks to a bare "____", the degenerate cloze
+        // the renderer defends against. Require ≥2 word tokens so the word is
+        // met inside an actual sentence (words-in-context intent).
+        if (countWords(phrase.target.text) < 2) continue
         const len = phrase.target.text.length
         if (len < bestLen) {
           best = { phrase, word: key }

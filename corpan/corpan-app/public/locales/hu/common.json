@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Szeretnél egy vezetett utat?",
+      "title": "Hogyan szeretnéd tanulni a(z) {{lang}} nyelvet?",
       "subtitle": "A Journey minden nap új anyagok és ismétlés keverékét kínálja {{lang}} nyelven — kártyáról kártyára.",
       "guided": {
-        "label": "Kezdd el a Journey-t",
-        "desc": "Vezetett napi foglalkozás, amely hozzád igazodik"
+        "label": "Vezetett napi útvonal",
+        "desc": "Rövid napi foglalkozás, neked megtervezve."
       },
       "explore": {
-        "label": "Inkább magamtól fedezem fel",
-        "desc": "A Journey-t bármikor elindíthatod a Kezdőlapról"
+        "label": "Saját tempóban",
+        "desc": "Böngéssz magad a történetek, gyakorlatok és játékok között."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Telepítés ({{size}})",
     "installing": "Telepítés…",
     "installed": "Telepítve",
-    "retry": "Újra"
+    "retry": "Újra",
+    "explains": "{{language}} szavak"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Hozzáadás… {{percent}}%",
       "failed": "Nem sikerült hozzáadni",
       "retry": "Próbáld újra"
+    },
+    "imagePack": {
+      "title": "Képek hozzáadása",
+      "body": "Tanulj néhány szót szöveg helyett képekkel.",
+      "dismiss": "Most nem",
+      "add": "Hozzáadás ({{size}})",
+      "downloading": "Hozzáadás… {{percent}}%",
+      "retry": "Próbáld újra",
+      "failed": "Sikertelen hozzáadás"
     }
   }
 }

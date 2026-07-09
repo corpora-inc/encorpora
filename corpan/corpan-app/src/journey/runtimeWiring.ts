@@ -22,9 +22,11 @@ import {
 } from "../contentPacks/journeyPackCatalog"
 import { getAppVersion } from "../lib/appVersion"
 import { useCatalogStore } from "../store/catalog"
+import { useDataPacksStore } from "../store/dataPacks"
 import { useEntitlementStore } from "../store/entitlements"
 import { useJourneyPacksStore } from "../store/journeyPacks"
 import { useProgressStore } from "../store/progress"
+import { ensureImagePackRegistered } from "../util/imagePack"
 import {
   installJourneyPack,
   isJourneyPackInstalled,
@@ -259,6 +261,12 @@ export interface BuiltJourney {
    *  pack id after a user-approved install so the resolver picks up the new
    *  word-explanation enrichment without a restart. */
   onWordPackInstalled: (installedPackId: string) => void
+  /** Consent seam for the inline imagepan offer: call after a user-approved
+   *  image-pack install so the resolver's `findInstalledPack("imagepan")` gate
+   *  lights up and picture exercises appear without a restart. The banner has
+   *  already registered the pack in the dataPacks store; this only invalidates
+   *  the resolver. Idempotent. */
+  onImagePackInstalled: () => void
 }
 
 /** Ensure the course pack for `targetLang` is installed; returns its pack id.
@@ -359,9 +367,22 @@ export async function buildJourneyDeps(opts: {
   }
   const baseOf = (c: string) => (c || "").split("-")[0]
 
+  // Recognize an ALREADY-INSTALLED language-neutral concept-picture pack
+  // (imagepan) so its picture-choice upgrade lights up from the first card.
+  // This NEVER downloads — the download is a one-tap consent offer surfaced by
+  // the inline ImagePackOfferBanner (the owner's standing rule: never silently
+  // pull a pack, and imagepan grows to thousands of images). It fails soft to
+  // "not installed": no pack on disk → the resolver's findInstalledPack(
+  // "imagepan") gate stays false → Journey emits normal text cards, exactly as
+  // before the pack existed. Awaited so the in-memory registry is primed before
+  // the first card resolves (the resolver's gate is synchronous).
+  await ensureImagePackRegistered()
+
   const resolverDeps = buildResolverDeps(hostApi, {
     findInstalledPack: (pid) =>
-      pid === packId || !!useJourneyPacksStore.getState().get(pid),
+      pid === packId ||
+      !!useJourneyPacksStore.getState().get(pid) ||
+      useDataPacksStore.getState().has(pid),
     // The confirmed-installed (native→target) pair pack for this session. The
     // ResolveContext pair is fixed, so we answer for the matching pair only
     // (base-subtag compare) and return null otherwise — never a guessed id.
@@ -388,6 +409,14 @@ export async function buildJourneyDeps(opts: {
   const onWordPackInstalled = (installedId: string): void => {
     if (!installedId || installedPairId.current === installedId) return
     installedPairId.current = installedId
+    resolver.invalidate()
+  }
+
+  // Consent seam for the inline imagepan offer. The banner has already
+  // registered the pack in the dataPacks store (so findInstalledPack lights
+  // up); we only invalidate so the just-downloaded pictures surface without a
+  // restart. Idempotent — a redundant call is a harmless cache flush.
+  const onImagePackInstalled = (): void => {
     resolver.invalidate()
   }
 
@@ -441,5 +470,6 @@ export async function buildJourneyDeps(opts: {
     targetLang,
     packId,
     onWordPackInstalled,
+    onImagePackInstalled,
   }
 }

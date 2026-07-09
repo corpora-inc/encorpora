@@ -10,7 +10,10 @@ import { cardRng } from "../content/rng.ts"
 import { tokenizePhrase } from "../../util/wordTokens"
 import { clozeContext } from "./clozeContext.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
+import { AudioButton } from "./common/AudioButton.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
+import { TargetText } from "./common/TargetText.tsx"
+import { hasClozeContext } from "./common/tokenGuards.ts"
 import { TypeInput } from "./common/TypeInput.tsx"
 import type { ExerciseProps } from "./types.ts"
 
@@ -50,6 +53,13 @@ export function Cloze(props: ExerciseProps) {
   const blankWord = ctx ? ctx.blankWord : words[blankIndex] ?? answer.target.text
   const nativeLine = ctx ? ctx.native : answer.native?.text
 
+  // Defense (contract): a cloze needs SURROUNDING context — blanking the only
+  // word leaves a bare "____" with nothing to read ("completa el hueco" that is
+  // just "jam"). Team 1 gates single-token kinds upstream and resolve.ts
+  // supplies a context phrase when one exists, but a lone-word residual must
+  // never render a context-free blank. Degrade to a flashcard reveal instead.
+  const hasContext = hasClozeContext(words.length)
+
   const tiles = useMemo(() => {
     if (!bank) return []
     const out: Tile[] = (props.distractors?.distractors ?? []).map((d, i) => ({
@@ -74,6 +84,35 @@ export function Cloze(props: ExerciseProps) {
   const settle = (ok: boolean) => {
     if (ok) setDone(true)
     props.onOutcome({ correct: ok, latencyMs: Date.now() - startedAt.current })
+  }
+
+  // Degenerate input (no surrounding context): reveal, never a bare blank.
+  if (!hasContext) {
+    return (
+      <div className="flex w-full flex-col items-center gap-6" data-testid="journey-cloze-degraded">
+        {nativeLine ? (
+          <div
+            lang={props.spec.nativeLang}
+            dir={props.spec.nativeLang && isRTL(props.spec.nativeLang) ? "rtl" : "ltr"}
+            className="text-xl font-semibold text-foreground"
+          >
+            {nativeLine}
+          </div>
+        ) : null}
+        <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} />
+        <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} />
+        {props.mode === "live" && !done ? (
+          <button
+            type="button"
+            data-testid="journey-cloze-continue"
+            onClick={() => settle(true)}
+            className="min-h-12 w-full rounded-xl bg-[hsl(var(--journey-accent,262_80%_58%))] text-base font-semibold text-white"
+          >
+            {t("journey.exercise.continue")}
+          </button>
+        ) : null}
+      </div>
+    )
   }
 
   return (

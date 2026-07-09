@@ -1,4 +1,4 @@
-import { addPluginListener, invoke } from "@tauri-apps/api/core"
+import { addPluginListener, invoke, Channel } from "@tauri-apps/api/core"
 import { listen } from "@tauri-apps/api/event"
 
 import {
@@ -630,25 +630,42 @@ export const createHostApi = (packId?: string): HostApi => {
       }
     },
     installModel: async (opts, onProgress) => {
+      // Progress is delivered by TWO different native mechanisms and we wire
+      // BOTH so the caller sees a live download on every platform:
+      //   • iOS  — `STTPlugin.installModel` calls `trigger("install_progress")`,
+      //            picked up by `addPluginListener`.
+      //   • Android — `SttPlugin.installModel` sends into the `onEvent` Tauri
+      //            `Channel` passed IN the invoke args; it never triggers a
+      //            plugin event. Without a channel the Android install ran but
+      //            emitted no progress, so the button sat there looking dead
+      //            ("Instalar does nothing"). We now always pass a channel.
+      // The two paths report the same phases; a caller only ever receives one
+      // of them, so no dedup is needed.
       let unlisten: (() => void) | null = null
+      const emit = (event: SttInstallProgress) => {
+        if (!onProgress) return
+        try {
+          onProgress(event)
+        } catch (error) {
+          console.error("[stt] install progress handler threw:", error)
+        }
+      }
       if (onProgress) {
         try {
           const handle = await addPluginListener<SttInstallProgress>(
             "stt",
             "install_progress",
-            (event) => {
-              try {
-                onProgress(event)
-              } catch (error) {
-                console.error("[stt] install_progress handler threw:", error)
-              }
-            },
+            emit,
           )
           unlisten = () => handle.unregister()
         } catch (error) {
           console.error("[stt] addPluginListener install_progress failed:", error)
         }
       }
+      // Android progress channel. Harmless on iOS (the arg is simply unused by
+      // the @objc handler, which reads only `model`/`downloadUrl`).
+      const onEvent = new Channel<SttInstallProgress>()
+      onEvent.onmessage = emit
       try {
         return await invoke<{
           installed: boolean
@@ -657,6 +674,7 @@ export const createHostApi = (packId?: string): HostApi => {
         }>("plugin:stt|install_model", {
           model: opts.model,
           downloadUrl: opts.downloadUrl,
+          onEvent,
         })
       } catch (error) {
         throw sttRejectionToError(error)

@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Chcete vedenú cestu?",
+      "title": "Ako sa chcete učiť {{lang}}?",
       "subtitle": "Journey vám každý deň ponúkne mix nového materiálu a opakovania v {{lang}} — kartu po karte.",
       "guided": {
-        "label": "Začať Journey",
-        "desc": "Vedená denná lekcia, ktorá sa vám prispôsobí"
+        "label": "Vedená denná cesta",
+        "desc": "Krátka denná lekcia, naplánovaná pre vás."
       },
       "explore": {
-        "label": "Preskúmam to po svojom",
-        "desc": "Journey môžete kedykoľvek spustiť z obrazovky Domov"
+        "label": "Vlastným tempom",
+        "desc": "Prehliadajte si príbehy, cvičenia a hry sami."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Nainštalovať ({{size}})",
     "installing": "Inštaluje sa…",
     "installed": "Nainštalované",
-    "retry": "Skúsiť znova"
+    "retry": "Skúsiť znova",
+    "explains": "Slová v {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "listeningMode": "Počúvanie bez rúk",
       "viewPath": "Zobraziť cestu",
       "redoPlacement": "Znova overiť moju úroveň"
+    },
+    "imagePack": {
+      "title": "Pridať obrázky",
+      "body": "Učte sa slová pomocou obrázkov namiesto textu.",
+      "dismiss": "Teraz nie",
+      "add": "Pridať ({{size}})",
+      "downloading": "Pridáva sa… {{percent}}%",
+      "retry": "Skúsiť znova",
+      "failed": "Nepodarilo sa pridať"
     }
   }
 }

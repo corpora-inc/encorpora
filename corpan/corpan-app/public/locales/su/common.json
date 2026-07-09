@@ -419,15 +419,15 @@
       }
     },
     "journey": {
-      "title": "Hoyong jalan anu dipandu?",
+      "title": "Kumaha anjeun hoyong diajar {{lang}}?",
       "subtitle": "Journey nyayogikeun campuran matéri anyar sareng pangulangan unggal dinten dina {{lang}} — kartu demi kartu.",
       "guided": {
-        "label": "Mimitian Journey",
-        "desc": "Sesi harian dipandu anu nyaluyukeun diri ka anjeun"
+        "label": "Jalur harian dipandu",
+        "desc": "Sesi harian anu singget, dirarancang pikeun anjeun."
       },
       "explore": {
-        "label": "Abdi badé ngajajah nyalira",
-        "desc": "Anjeun tiasa ngamimitian Journey iraha waé ti Imah"
+        "label": "Lampah sorangan",
+        "desc": "Jelajah carita, latihan, sareng kaulinan ku sorangan."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Pasang ({{size}})",
     "installing": "Masang…",
     "installed": "Dipasang",
-    "retry": "Cobian deui"
+    "retry": "Cobian deui",
+    "explains": "Kecap {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Nambahkeun… {{percent}}%",
       "failed": "Teu bisa ditambahkeun",
       "retry": "Cobian deui"
+    },
+    "imagePack": {
+      "title": "Tambahkeun gambar",
+      "body": "Diajar kecap ku gambar tinimbang téks.",
+      "dismiss": "Ulah ayeuna",
+      "add": "Tambahkeun ({{size}})",
+      "downloading": "Nambahkeun… {{percent}}%",
+      "retry": "Cobian deui",
+      "failed": "Gagal nambahkeun"
     }
   }
 }

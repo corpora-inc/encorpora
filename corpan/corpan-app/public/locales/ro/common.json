@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Vrei un drum ghidat?",
+      "title": "Cum vrei să înveți {{lang}}?",
       "subtitle": "Journey-ul îți oferă zilnic un mix de material nou și recapitulare în {{lang}} — card cu card.",
       "guided": {
-        "label": "Începe Journey-ul",
-        "desc": "O sesiune zilnică ghidată care se adaptează la tine"
+        "label": "Traseu zilnic ghidat",
+        "desc": "O sesiune zilnică scurtă, planificată pentru tine."
       },
       "explore": {
-        "label": "Explorez pe cont propriu",
-        "desc": "Poți începe Journey-ul oricând de pe ecranul Acasă"
+        "label": "În ritm propriu",
+        "desc": "Explorează singur povești, exerciții și jocuri."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Instalează ({{size}})",
     "installing": "Se instalează…",
     "installed": "Instalat",
-    "retry": "Încearcă din nou"
+    "retry": "Încearcă din nou",
+    "explains": "Cuvinte în {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Se adaugă… {{percent}}%",
       "failed": "Nu s-a putut adăuga",
       "retry": "Încearcă din nou"
+    },
+    "imagePack": {
+      "title": "Adaugă imagini",
+      "body": "Învață cuvinte cu imagini în loc de text.",
+      "dismiss": "Nu acum",
+      "add": "Adaugă ({{size}})",
+      "downloading": "Se adaugă… {{percent}}%",
+      "retry": "Încearcă din nou",
+      "failed": "Nu s-a putut adăuga"
     }
   }
 }

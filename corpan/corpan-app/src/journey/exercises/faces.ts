@@ -9,6 +9,7 @@
 //     target-vs-target nonsense (Team A guards upstream; this is depth).
 
 import { seededShuffle } from "../content/distractors.ts"
+import { normalizeAnswer } from "../content/normalize.ts"
 import type { ResolvedItem } from "../content/resolve.ts"
 
 export type Direction = "toNative" | "toTarget" | "targetOnly"
@@ -113,6 +114,40 @@ export interface MatchColumns {
 /** Max pairs rendered on one match card (Team A supplies 4–6-item sets). */
 export const MATCH_MAX_PAIRS = 6
 
+/**
+ * Keep only items whose column labels are all UNIQUE across the board — a match
+ * card must NEVER show the same choice text twice (defect: "Une las parejas"
+ * with a duplicate tile). Two distinct items can resolve to the same target
+ * surface (a case/diacritic twin) OR the same native gloss (e.g. two words that
+ * both gloss to "el barco"); either collision makes a tile ambiguous — tapping
+ * one "el barco" when its twin is the true pair reads as a wrong answer. We drop
+ * the LATER colliding item (spec order preserved) rather than render the dupe.
+ * `labels` are the concrete column strings for one item, in the language each
+ * column surfaces in (so normalization folds case/punctuation/diacritics the
+ * same way the answer-collision check does).
+ */
+function dedupByLabels(
+  items: ResolvedItem[],
+  labelsOf: (item: ResolvedItem) => { label: string; lang: string }[],
+): ResolvedItem[] {
+  const seen: Set<string>[] = []
+  const kept: ResolvedItem[] = []
+  outer: for (const item of items) {
+    const labels = labelsOf(item)
+    while (seen.length < labels.length) seen.push(new Set<string>())
+    const norms = labels.map((l) => normalizeAnswer(l.label, l.lang))
+    // Reject if ANY column's label already appeared, OR the item's own two
+    // labels are identical after folding (a degenerate self-collision).
+    if (new Set(norms).size !== norms.length) continue
+    for (let c = 0; c < norms.length; c++) {
+      if (seen[c].has(norms[c])) continue outer
+    }
+    for (let c = 0; c < norms.length; c++) seen[c].add(norms[c])
+    kept.push(item)
+  }
+  return kept
+}
+
 export function matchColumns(
   items: ResolvedItem[],
   axis: MatchAxis,
@@ -124,19 +159,30 @@ export function matchColumns(
   // legitimate translation pairing, so degrade to the audio form rather than
   // render target-vs-target (contract #2). The gate keys on the resolved
   // native FACE, not on nativeLang (which is only a display hint).
-  const usableText = items.filter((i) => hasNativeFace(i, targetLang, nativeLang)).slice(0, MATCH_MAX_PAIRS)
+  const natLang = natLangOf(nativeLang)
+  const withNative = items.filter((i) => hasNativeFace(i, targetLang, nativeLang))
+  // Dedup BEFORE capping so a dropped dupe doesn't cost the board a real pair.
+  const usableText = dedupByLabels(withNative, (i) => [
+    { label: i.target.text, lang: targetLang },
+    { label: i.native!.text, lang: natLang },
+  ]).slice(0, MATCH_MAX_PAIRS)
   if (axis === "text-text" && usableText.length > 0) {
     return {
       usableKeys: usableText.map((i) => i.key),
       left: seededShuffle(`${cardId}-l`, usableText.map((i) => ({ key: i.key, label: i.target.text }))),
       right: seededShuffle(`${cardId}-r`, usableText.map((i) => ({ key: i.key, label: i.native!.text }))),
       leftLang: targetLang,
-      rightLang: natLangOf(nativeLang),
+      rightLang: natLang,
     }
   }
   // Audio form: hear the target (left), match to the written target (right).
-  // Identical language is fine here — one side is audio, not text.
-  const usable = items.slice(0, MATCH_MAX_PAIRS)
+  // Identical language is fine here — one side is audio, not text — but the
+  // WRITTEN target column still must not show the same word twice, so dedup on
+  // the target surface (both columns carry it here).
+  const usable = dedupByLabels(items, (i) => [{ label: i.target.text, lang: targetLang }]).slice(
+    0,
+    MATCH_MAX_PAIRS,
+  )
   return {
     usableKeys: usable.map((i) => i.key),
     left: seededShuffle(`${cardId}-l`, usable.map((i) => ({ key: i.key, label: i.target.text, audio: true }))),

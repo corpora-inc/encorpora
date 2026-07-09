@@ -342,15 +342,15 @@
       }
     },
     "journey": {
-      "title": "Quer um caminho guiado?",
+      "title": "Como você quer aprender {{lang}}?",
       "subtitle": "O Journey traz uma mistura diária de material novo e revisão em {{lang}} — um cartão por vez.",
       "guided": {
-        "label": "Começar o Journey",
-        "desc": "Uma sessão diária guiada que se adapta a você"
+        "label": "Caminho diário guiado",
+        "desc": "Uma sessão diária curta, planejada para você."
       },
       "explore": {
-        "label": "Vou explorar por conta própria",
-        "desc": "Você pode começar o Journey a qualquer momento pelo Início"
+        "label": "No seu ritmo",
+        "desc": "Explore histórias, exercícios e jogos por conta própria."
       }
     }
   },
@@ -871,7 +871,8 @@
     "install": "Instalar ({{size}})",
     "installing": "Instalando…",
     "installed": "Instalado",
-    "retry": "Tentar de novo"
+    "retry": "Tentar de novo",
+    "explains": "Palavras em {{language}}"
   },
   "journey": {
     "name": "Journey",
@@ -1067,6 +1068,15 @@
       "downloading": "Adicionando… {{percent}}%",
       "failed": "Não foi possível adicionar",
       "retry": "Tentar de novo"
+    },
+    "imagePack": {
+      "title": "Adicionar imagens",
+      "body": "Aprenda palavras com imagens em vez de texto.",
+      "dismiss": "Agora não",
+      "add": "Adicionar ({{size}})",
+      "downloading": "Adicionando… {{percent}}%",
+      "retry": "Tentar novamente",
+      "failed": "Não foi possível adicionar"
     }
   }
 }

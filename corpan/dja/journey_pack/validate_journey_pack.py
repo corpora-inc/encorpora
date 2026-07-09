@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Journey course-pack validator — THE merged gate list V-1..V-22.
+"""Journey course-pack validator — THE merged gate list V-1..V-24.
+
+V-23/V-24 (Journey v0.2.x) keep the launchpad communicative-first: V-23 fails
+a backwards opener (phoneme-dominated / non-communicative first items), V-24
+fails degenerate single-token cloze/word_order targets. Both read the built
+items, so they are native-language-agnostic.
 
 V-21/V-22 (Journey v0.2) enforce full native-face coverage for the
 `course.yaml: l1_full_support` languages: V-21 = word glosses (`wg.<word>`),
@@ -735,6 +740,103 @@ def validate(
             for l1 in l1_full:
                 if not corpus.has_translation(eid, l1):
                     g.err(f"{it['id']}: no {l1} cor_translation row in the corpus")
+
+    # ---- V-23 Launchpad opener is communicative-first ----
+    # The learner's FIRST unit (launchpad, lowest unit_index) must OPEN with
+    # high-frequency, immediately-useful language — greetings and courtesy —
+    # NOT pronunciation minimal-pair drilling. This is what the FURIOUS ES
+    # beginner hit: 30 minutes of ship/sheep/jam before ever seeing hello or
+    # thank you. The gate is L1-agnostic (reads the built items), so it holds
+    # for every native language, not just the ES preview overlay.
+    #
+    # Enforced, in intro_order:
+    #   (1) the LEADING window is communicative (word/phrase) — always;
+    #   (2) phonemes are dominated (<=50% of the opener) — always;
+    #   (3) NO phonemes in the opener at all — whenever a LATER launchpad unit
+    #       exists to home them (the actionable "route to a later unit" fix).
+    #       A single-launchpad course has nowhere else in the launchpad, so it
+    #       is held to (1)+(2) only.
+    g = gate("V-23", "Launchpad opener is communicative-first")
+    launch_units = sorted(
+        (u for u in pack.units if u["arc_index"] == 0),
+        key=lambda u: u["unit_index"],
+    )
+    if not launch_units:
+        g.err("no launchpad (arc index 0) unit — nowhere for the opener to live")
+    else:
+        opener = launch_units[0]
+        has_later_launchpad = len(launch_units) > 1
+        op_items = [i for i in pack.items if i["unit_id"] == opener["id"]]
+        op_items.sort(key=lambda i: i["intro_order"])
+        n = len(op_items)
+        if n == 0:
+            g.err(f"opener unit {opener['id']} has no items")
+        else:
+            phon = sum(1 for i in op_items if i["kind"] == "phoneme")
+            if has_later_launchpad and phon > 0:
+                g.err(
+                    f"opener unit {opener['id']} carries {phon} phoneme item(s) — "
+                    "minimal-pair drilling must not be the learner's first "
+                    "experience; route phoneme_pairs to a later launchpad unit"
+                )
+            if phon > 0.5 * n:
+                g.err(
+                    f"opener unit {opener['id']} is {phon}/{n} phoneme items "
+                    "(>50%) — the opener must be dominated by communicative "
+                    "vocabulary, not pronunciation drills"
+                )
+            # (1) The LEADING items the learner meets must be communicative
+            # (word/phrase), never phoneme/grammarNode probes.
+            window = op_items[: min(5, n)]
+            non_comm = sorted({i["kind"] for i in window
+                               if i["kind"] not in ("phrase", "word")})
+            if non_comm:
+                g.err(
+                    f"opener unit {opener['id']}: the first {len(window)} items "
+                    f"include non-communicative kinds {non_comm} — the opener "
+                    "must lead with greetings/courtesy phrases and words"
+                )
+            # At least a couple of real communicative phrases in the opener, so
+            # it is not a bare word list either.
+            phrases = sum(1 for i in op_items if i["kind"] == "phrase")
+            if phrases < 2:
+                g.err(
+                    f"opener unit {opener['id']} has only {phrases} phrase "
+                    "item(s) — a communicative opener needs high-frequency "
+                    "phrases (hello / thank you / please …), not just words"
+                )
+
+    # ---- V-24 No degenerate single-token cloze/word_order targets ----
+    # cloze blanks one of >=2 tokens; word_order shuffles >=2 tokens. A phrase
+    # (or segment) item whose resolved target is a SINGLE token produces a
+    # one-blank cloze or a one-tile word_order — a degenerate exercise. The
+    # runtime reroutes single-token KINDS (word/char/phoneme) away from these
+    # activities, but it treats every phrase as multi-token, so a one-word
+    # phrase is a latent defect only a build gate can catch. Flag it here.
+    g = gate("V-24", "No degenerate single-token cloze/word_order targets")
+    tok_re = re.compile(r"[^\W\d_]+(?:'[^\W\d_]+)?", re.UNICODE)
+    for it in pack.items:
+        if it["kind"] not in ("phrase", "segment"):
+            continue
+        text = None
+        if it["kind"] == "phrase" and it["source"] == "base":
+            text = corpus.entry_text(int(it["ref_id"]))
+        elif it["kind"] == "phrase":
+            try:
+                texts = corpus.phrase_pack_texts(it["source"])
+                idx = int(it["ref_id"])
+                text = texts[idx] if 0 <= idx < len(texts) else None
+            except Exception:
+                text = None
+        if not text:
+            # V-1 already reports unresolvable refs; skip here.
+            continue
+        if len(tok_re.findall(text)) < 2:
+            g.err(
+                f"{it['id']}: target {text!r} is a single token — a "
+                "cloze/word_order card on it is degenerate; use a word: item "
+                "for one-word vocabulary, or pin a multi-word phrase"
+            )
 
     return report
 

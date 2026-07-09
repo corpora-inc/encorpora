@@ -10,6 +10,16 @@ the Journey `speak_echo` card + pop-in sheet consume it, Wave 2).
 
 ## 0.1.0 — Unreleased
 
+- **Boot now REUSES an already-installed Whisper model instead of offering a
+  redundant download.** The boot flow first probes every known model folder
+  (`allFolders`) via `stt.listInstalled` — with a `stt.validateModel` fallback
+  for hosts whose `listInstalled` is absent or returns the legacy
+  `{ installed: [...] }` shape — and prepares the currently-loaded model, else
+  the largest installed one. A user who installed the big Whisper via
+  pronunciation-coach (same `hostApi.stt` seam + same `modelRegistry` folders)
+  now has Journey score against it. The 75 MB Tiny install offer appears ONLY
+  when nothing usable is installed anywhere. Scoring params are keyed off the
+  actually-prepared folder (`activeModelFolder`), not the default.
 - Journey offer-install surface (V0.2-PLAN contract #4): `modelPolicy:
   "offer-install"` renders an inline offer (what it is + model size + one
   Install button with live download/verify progress + a quiet decline). Decline
