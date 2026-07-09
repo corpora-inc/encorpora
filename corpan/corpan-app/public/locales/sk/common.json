@@ -1068,6 +1068,15 @@
       "listeningMode": "Počúvanie bez rúk",
       "viewPath": "Zobraziť cestu",
       "redoPlacement": "Znova overiť moju úroveň"
+    },
+    "imagePack": {
+      "title": "Pridať obrázky",
+      "body": "Učte sa slová pomocou obrázkov namiesto textu.",
+      "dismiss": "Teraz nie",
+      "add": "Pridať ({{size}})",
+      "downloading": "Pridáva sa… {{percent}}%",
+      "retry": "Skúsiť znova",
+      "failed": "Nepodarilo sa pridať"
     }
   }
 }

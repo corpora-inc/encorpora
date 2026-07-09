@@ -1068,6 +1068,15 @@
       "downloading": "Bezig met toevoegen… {{percent}}%",
       "failed": "Kon niet worden toegevoegd",
       "retry": "Opnieuw proberen"
+    },
+    "imagePack": {
+      "title": "Afbeeldingen toevoegen",
+      "body": "Leer sommige woorden met afbeeldingen in plaats van tekst.",
+      "dismiss": "Niet nu",
+      "add": "Toevoegen ({{size}})",
+      "downloading": "Bezig met toevoegen… {{percent}}%",
+      "retry": "Opnieuw proberen",
+      "failed": "Toevoegen mislukt"
     }
   }
 }

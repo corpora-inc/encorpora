@@ -1068,6 +1068,15 @@
       "listeningMode": "免提聽力模式",
       "viewPath": "睇路線",
       "redoPlacement": "再測一次程度"
+    },
+    "imagePack": {
+      "title": "加入圖片",
+      "body": "用圖片嚟學吓生字，唔使淨係睇文字。",
+      "dismiss": "而家唔使",
+      "add": "加入（{{size}}）",
+      "downloading": "加緊…{{percent}}%",
+      "retry": "再試一次",
+      "failed": "加入唔到"
     }
   }
 }

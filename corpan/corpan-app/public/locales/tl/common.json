@@ -1068,6 +1068,15 @@
       "listeningMode": "Hands-free na pakikinig",
       "viewPath": "Tingnan ang landas",
       "redoPlacement": "Suriin ulit ang antas ko"
+    },
+    "imagePack": {
+      "title": "Magdagdag ng mga larawan",
+      "body": "Matuto ng ilang salita gamit ang mga larawan sa halip na teksto.",
+      "dismiss": "Huwag muna",
+      "add": "Idagdag ({{size}})",
+      "downloading": "Idinaragdag… {{percent}}%",
+      "retry": "Subukan ulit",
+      "failed": "Hindi maidagdag"
     }
   }
 }

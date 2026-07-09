@@ -1068,6 +1068,15 @@
       "listeningMode": "핸즈프리 듣기",
       "viewPath": "경로 보기",
       "redoPlacement": "레벨 다시 확인하기"
+    },
+    "imagePack": {
+      "title": "사진 추가하기",
+      "body": "텍스트 대신 사진으로 단어를 배워보세요.",
+      "dismiss": "나중에 하기",
+      "add": "추가 ({{size}})",
+      "downloading": "추가하는 중… {{percent}}%",
+      "retry": "다시 시도하기",
+      "failed": "추가하지 못했습니다"
     }
   }
 }

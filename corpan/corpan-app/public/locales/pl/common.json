@@ -1068,6 +1068,15 @@
       "listeningMode": "Słuchanie bez rąk",
       "viewPath": "Zobacz ścieżkę",
       "redoPlacement": "Sprawdź mój poziom ponownie"
+    },
+    "imagePack": {
+      "title": "Dodaj obrazki",
+      "body": "Poznawaj słowa dzięki obrazkom zamiast tekstu.",
+      "dismiss": "Nie teraz",
+      "add": "Dodaj ({{size}})",
+      "downloading": "Dodawanie… {{percent}}%",
+      "retry": "Spróbuj ponownie",
+      "failed": "Nie udało się dodać"
     }
   }
 }

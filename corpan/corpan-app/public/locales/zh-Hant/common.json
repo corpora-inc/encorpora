@@ -1068,6 +1068,15 @@
       "downloading": "新增中…{{percent}}%",
       "failed": "新增失敗",
       "retry": "再試一次"
+    },
+    "imagePack": {
+      "title": "新增圖片",
+      "body": "透過圖片學習一些單字，而非文字。",
+      "dismiss": "暫不",
+      "add": "新增（{{size}}）",
+      "downloading": "新增中…{{percent}}%",
+      "retry": "再試一次",
+      "failed": "新增失敗"
     }
   }
 }

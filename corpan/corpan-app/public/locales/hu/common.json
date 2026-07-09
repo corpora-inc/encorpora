@@ -1068,6 +1068,15 @@
       "downloading": "Hozzáadás… {{percent}}%",
       "failed": "Nem sikerült hozzáadni",
       "retry": "Próbáld újra"
+    },
+    "imagePack": {
+      "title": "Képek hozzáadása",
+      "body": "Tanulj néhány szót szöveg helyett képekkel.",
+      "dismiss": "Most nem",
+      "add": "Hozzáadás ({{size}})",
+      "downloading": "Hozzáadás… {{percent}}%",
+      "retry": "Próbáld újra",
+      "failed": "Sikertelen hozzáadás"
     }
   }
 }

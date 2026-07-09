@@ -1068,6 +1068,15 @@
       "listeningMode": "Écoute mains libres",
       "viewPath": "Voir le parcours",
       "redoPlacement": "Revérifier mon niveau"
+    },
+    "imagePack": {
+      "title": "Ajouter des images",
+      "body": "Apprenez des mots avec des images plutôt qu'avec du texte.",
+      "dismiss": "Pas maintenant",
+      "add": "Ajouter ({{size}})",
+      "downloading": "Ajout en cours… {{percent}} %",
+      "retry": "Réessayer",
+      "failed": "Échec de l'ajout"
     }
   }
 }

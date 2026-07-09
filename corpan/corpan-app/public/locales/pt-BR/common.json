@@ -1068,6 +1068,15 @@
       "downloading": "Adicionando… {{percent}}%",
       "failed": "Não foi possível adicionar",
       "retry": "Tentar de novo"
+    },
+    "imagePack": {
+      "title": "Adicionar imagens",
+      "body": "Aprenda palavras com imagens em vez de texto.",
+      "dismiss": "Agora não",
+      "add": "Adicionar ({{size}})",
+      "downloading": "Adicionando… {{percent}}%",
+      "retry": "Tentar novamente",
+      "failed": "Não foi possível adicionar"
     }
   }
 }

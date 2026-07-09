@@ -1068,6 +1068,15 @@
       "listeningMode": "Håndfri lytting",
       "viewPath": "Se veien",
       "redoPlacement": "Sjekk nivået mitt på nytt"
+    },
+    "imagePack": {
+      "title": "Legg til bilder",
+      "body": "Lær noen ord med bilder i stedet for tekst.",
+      "dismiss": "Ikke nå",
+      "add": "Legg til ({{size}})",
+      "downloading": "Legger til… {{percent}} %",
+      "retry": "Prøv igjen",
+      "failed": "Kunne ikke legge til"
     }
   }
 }

@@ -1068,6 +1068,15 @@
       "listeningMode": "免提听力模式",
       "viewPath": "查看路径",
       "redoPlacement": "重新测一次水平"
+    },
+    "imagePack": {
+      "title": "添加图片",
+      "body": "用图片学习一些单词，而不是文字。",
+      "dismiss": "暂不",
+      "add": "添加（{{size}}）",
+      "downloading": "正在添加…{{percent}}%",
+      "retry": "重试",
+      "failed": "添加失败"
     }
   }
 }

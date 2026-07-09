@@ -1068,6 +1068,15 @@
       "listeningMode": "Slušanje bez ruku",
       "viewPath": "Prikaži put",
       "redoPlacement": "Ponovno provjeri moju razinu"
+    },
+    "imagePack": {
+      "title": "Dodaj slike",
+      "body": "Naučite neke riječi uz slike umjesto teksta.",
+      "dismiss": "Ne sada",
+      "add": "Dodaj ({{size}})",
+      "downloading": "Dodavanje… {{percent}}%",
+      "retry": "Pokušaj ponovno",
+      "failed": "Dodavanje nije uspjelo"
     }
   }
 }
