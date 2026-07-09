@@ -6,6 +6,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
+## [0.1.0] — 2026-07-08
+
+### Added
+- **Published to CloudFront (stable).** `imagepan-0.1.0.zip` (95 concepts,
+  1.01 MB, `minAppVersion` 0.20.2) live at
+  `d38iwc9748jekz.cloudfront.net/corpan/imagepan/` — image-choice exercises
+  light up OTA on 0.20.2+ devices.
+
 ## [Unreleased]
 
 ### Added
