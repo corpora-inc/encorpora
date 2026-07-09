@@ -31,7 +31,7 @@ function findInstalledPack(pid: string): boolean {
 }
 
 beforeEach(() => {
-  useDataPacksStore.setState({ installed: {} })
+  useDataPacksStore.setState({ installed: {}, declined: {} })
 })
 
 test("imagepan is NOT recognized until registered (ships inert)", () => {
@@ -73,4 +73,36 @@ test("registry is generic — a second data pack coexists", () => {
   assert.equal(findInstalledPack("imagepan"), true)
   assert.equal(findInstalledPack("otherpan"), true)
   assert.equal(findInstalledPack("nope"), false)
+})
+
+// -------------------------------------------------- consent-offer decline flag
+// The persisted decline is how the one-tap install offer (ImagePackOfferBanner)
+// avoids nagging every session.
+
+test("decline is remembered; undecline clears it (offer can re-surface)", () => {
+  const st = useDataPacksStore.getState()
+  assert.equal(st.isDeclined("imagepan"), false)
+  st.decline("imagepan")
+  assert.equal(useDataPacksStore.getState().isDeclined("imagepan"), true)
+  useDataPacksStore.getState().undecline("imagepan")
+  assert.equal(useDataPacksStore.getState().isDeclined("imagepan"), false)
+})
+
+test("decline is idempotent and independent of the installed registry", () => {
+  const st = useDataPacksStore.getState()
+  st.decline("imagepan")
+  st.decline("imagepan")
+  assert.equal(useDataPacksStore.getState().isDeclined("imagepan"), true)
+  // declining never registers the pack (no silent install side effect)
+  assert.equal(useDataPacksStore.getState().has("imagepan"), false)
+  // undecline of an unknown id is a no-op
+  useDataPacksStore.getState().undecline("nonesuch")
+  assert.equal(useDataPacksStore.getState().isDeclined("imagepan"), true)
+})
+
+test("declining one pack does not decline another (keyed by id)", () => {
+  const st = useDataPacksStore.getState()
+  st.decline("imagepan")
+  assert.equal(useDataPacksStore.getState().isDeclined("imagepan"), true)
+  assert.equal(useDataPacksStore.getState().isDeclined("otherpan"), false)
 })

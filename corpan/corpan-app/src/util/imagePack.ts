@@ -16,21 +16,20 @@
 // the single place the id, install, disk-probe, and lazy auto-install live so
 // Journey and any future surface resolve the same canonical pack.
 //
-// GRACEFUL DEGRADE is load-bearing: `ensureImagePackInstalled` NEVER throws and
-// returns false on every failure path (offline, no catalog entry, install
-// error). A false result means imagepan stays unregistered → the resolver's
-// `findInstalledPack("imagepan")` gate is false → Journey emits normal text
-// cards, exactly as before the pack existed.
+// CONSENT-FIRST, NOT SILENT: imagepan is NEVER auto-downloaded. The owner's
+// standing rule is to ask before pulling any pack down (and the pack grows to
+// thousands of images). `ensureImagePackRegistered` only recognizes a pack
+// that is ALREADY on disk (register the in-memory mirror so the resolver's sync
+// gate lights up); the DOWNLOAD is offered to the learner by the inline
+// ImagePackOfferBanner (mirrors the wordpan offer). See imagePackProvision.ts.
+//
+// GRACEFUL DEGRADE is load-bearing: `ensureImagePackRegistered` NEVER throws
+// and returns false on every failure path. A false result means imagepan stays
+// unregistered → the resolver's `findInstalledPack("imagepan")` gate is false →
+// Journey emits normal text cards, exactly as before the pack existed.
 
 import { invoke } from "@tauri-apps/api/core"
 
-import {
-  fetchImagePackCatalog,
-  findImagePack,
-  visibleImagePacks,
-} from "../contentPacks/imagePackCatalog"
-import { getAppVersion } from "../lib/appVersion"
-import { useCatalogStore } from "../store/catalog"
 import { useDataPacksStore } from "../store/dataPacks"
 
 /** The one canonical imagepan pack id. */
@@ -83,58 +82,54 @@ export async function installImagePack(
 }
 
 /**
- * Best-effort lazy auto-install of imagepan (a system data pack). Called when a
- * Journey session opens. Resolution order, each step failing SOFT to the next
- * (and the whole function failing soft to `false`):
+ * Recognize an ALREADY-INSTALLED imagepan (no download, no consent needed).
+ * Called when a Journey session opens. Resolution order, each step failing SOFT
+ * to the next (and the whole function failing soft to `false`):
  *
  *   1. Already registered in this session's in-memory store → true.
  *   2. On disk (survived a previous install / app restart) → register + true.
- *   3. In the image-pack index and app-version/channel compatible → install,
- *      register, true.
- *   4. Anything else (offline, no index, no entry, install error) → false.
+ *   3. Anything else (never installed, probe hiccup) → false.
  *
- * NEVER throws. A `false` result is the graceful-degrade path: the resolver's
- * `findInstalledPack("imagepan")` gate stays false and Journey ships inert.
+ * This function DELIBERATELY does not touch the catalog and NEVER downloads —
+ * the download is a one-tap consent offer (imagePackProvision.ts +
+ * ImagePackOfferBanner). NEVER throws. A `false` result is the graceful-degrade
+ * path: the resolver's `findInstalledPack("imagepan")` gate stays false and
+ * Journey ships inert until the learner accepts the offer.
  *
  * Returns whether imagepan is installed-and-registered after the call.
  */
-export async function ensureImagePackInstalled(): Promise<boolean> {
+export async function ensureImagePackRegistered(): Promise<boolean> {
   const store = useDataPacksStore.getState()
 
   // 1. Fast path: already registered this session.
   if (store.has(IMAGE_PACK_ID)) return true
 
   // 2. On-disk probe (offline-friendly). Register the in-memory mirror so the
-  //    resolver's SYNC gate lights up immediately.
+  //    resolver's SYNC gate lights up immediately — an already-installed pack
+  //    enriches from the first card with no network and no re-consent.
   try {
     if (await isImagePackInstalled()) {
       registerFromDisk(await readImagePackVersion())
       return true
     }
   } catch {
-    // A probe hiccup just means "not confirmed on disk" — try the catalog.
+    // A probe hiccup just means "not confirmed on disk" — ship inert.
   }
+  return false
+}
 
-  // 3. Catalog-driven install. Every failure below resolves to `false`.
-  try {
-    const catalog = await fetchImagePackCatalog()
-    if (!catalog) return false
-    const appVersion = await getAppVersion()
-    const devMode = useCatalogStore.getState().devMode
-    const entry = findImagePack(visibleImagePacks(catalog, appVersion, devMode))
-    if (!entry) return false
-    await installImagePack(entry.zipUrl, entry.sha256 ?? null)
-    useDataPacksStore.getState().register({
-      id: IMAGE_PACK_ID,
-      version: entry.version,
-      installedAt: new Date().toISOString(),
-      source: "catalog",
-    })
-    return true
-  } catch (err) {
-    console.warn("[imagePack] auto-install skipped:", err)
-    return false
-  }
+/**
+ * Consent seam for the inline offer: after a user-approved install completes,
+ * register the in-memory mirror so the resolver's `findInstalledPack("imagepan")`
+ * gate lights up this session (the runtime also invalidates the resolver).
+ */
+export function registerInstalledImagePack(version: string): void {
+  useDataPacksStore.getState().register({
+    id: IMAGE_PACK_ID,
+    version,
+    installedAt: new Date().toISOString(),
+    source: "catalog",
+  })
 }
 
 /** Read the installed pack version from pack_meta; null when unreadable. */

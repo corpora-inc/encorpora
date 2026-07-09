@@ -8,14 +8,23 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
-- **Journey picture-choice lights up when the `imagepan` pack is available.**
-  The concept-picture pack is now delivered end-to-end: it auto-installs from
-  its own CloudFront index the first time a Journey session opens, registers in
-  a new installed-data-pack registry, and its WebP images serve over the
-  existing `corpan-pack://` scheme. First-exposure word cards then upgrade to
-  picture choices. Fully graceful: when the pack is not published (or the device
-  is offline), Journey serves normal text cards exactly as before — the wiring
-  ships inert.
+- **Journey offers the `imagepan` picture pack with one-tap consent (no silent
+  download).** When a compatible concept-picture pack is available in the index
+  but not yet installed, an understated in-feed offer appears ("Add pictures")
+  showing the download size read **dynamically** from the catalog entry
+  (`sizeMb`) — ready for the pack to grow to thousands of images. **Install**
+  downloads with a progress bar, registers in the installed-data-pack registry,
+  and picture exercises begin mid-session (the resolver is invalidated, no
+  restart). **Not now** is remembered persistently so the offer never nags. Its
+  WebP images serve over the existing `corpan-pack://` scheme. Fully graceful:
+  an already-installed pack lights up from the first card with no re-consent,
+  and when the index is unreachable / the pack is absent there is no offer and
+  no image cards — normal text cards exactly as before.
+
+### Changed
+- **imagepan is no longer auto-installed on first Journey open.** The prior
+  silent ~1 MB download is replaced by the consent offer above; Journey only
+  *recognizes* an imagepan that is already on disk at session start.
 
 ## [0.20.2] — 2026-07-08
 

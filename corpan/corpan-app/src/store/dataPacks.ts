@@ -34,11 +34,23 @@ type DataPacksState = {
     /** Keyed by `InstalledDataPack.id`. */
     installed: Record<string, InstalledDataPack>;
 
+    /** Pack ids the learner declined the install offer for. Persisted so the
+     *  consent-first offer (e.g. ImagePackOfferBanner) is not re-shown every
+     *  session. Cleared by `undecline` (e.g. a Settings re-offer). */
+    declined: Record<string, true>;
+
     /** Register a freshly installed pack (or overwrite a prior version). */
     register: (pack: InstalledDataPack) => void;
 
     /** Drop a pack from the registry. Does NOT delete files. */
     unregister: (id: string) => void;
+
+    /** Remember that the learner declined this pack's install offer. */
+    decline: (id: string) => void;
+    /** Forget a prior decline so the offer can surface again. */
+    undecline: (id: string) => void;
+    /** True when the learner declined this pack's offer. */
+    isDeclined: (id: string) => boolean;
 
     /** Selectors. */
     list: () => InstalledDataPack[];
@@ -51,6 +63,7 @@ export const useDataPacksStore = create<DataPacksState>()(
     persist(
         (set, get) => ({
             installed: {},
+            declined: {},
 
             register: (pack) =>
                 set((s) => ({
@@ -65,15 +78,44 @@ export const useDataPacksStore = create<DataPacksState>()(
                     return { installed: next };
                 }),
 
+            decline: (id) =>
+                set((s) =>
+                    s.declined[id]
+                        ? s
+                        : { declined: { ...s.declined, [id]: true } },
+                ),
+
+            undecline: (id) =>
+                set((s) => {
+                    if (!(id in s.declined)) return s;
+                    const next = { ...s.declined };
+                    delete next[id];
+                    return { declined: next };
+                }),
+
+            isDeclined: (id) => id in get().declined,
+
             list: () => Object.values(get().installed),
             get: (id) => get().installed[id],
             has: (id) => id in get().installed,
         }),
         {
             name: "corpan-data-packs-v1",
-            version: 1,
+            version: 2,
             storage: createJSONStorage(() => localStorage),
-            partialize: (state) => ({ installed: state.installed }),
+            partialize: (state) => ({
+                installed: state.installed,
+                declined: state.declined,
+            }),
+            migrate: (persisted, _version) => {
+                // v1 persisted only `installed`; seed the new `declined` map.
+                const p = (persisted ?? {}) as Partial<DataPacksState>;
+                return {
+                    ...p,
+                    installed: p.installed ?? {},
+                    declined: p.declined ?? {},
+                } as DataPacksState;
+            },
         },
     ),
 );
