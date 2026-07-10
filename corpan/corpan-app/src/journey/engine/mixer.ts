@@ -12,7 +12,6 @@ import {
   MATCH_PAIRS_MAX_ITEMS,
   MATCH_PAIRS_MIN_ITEMS,
   MAX_FUN_PER_10,
-  FUN_WINDDOWN_CAP,
   MAX_LEECH_PER_BATCH,
   LEECH_SERVE_P,
   CONSTRAINT_REPAIR_PASSES,
@@ -462,7 +461,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   const pools = buildPools(bag)
   const quota = adjustQuotas(course, session.flow.mode, pools.dueCount)
   const slots: Slot[] = []
-  const cursor = { due: 0, new: 0, repair: 0, trickle: 0, fun: 0 }
+  const cursor = { due: 0, new: 0, repair: 0, trickle: 0, fun: 0, frontier: 0 }
   const stage = gidx.stageOfUnit(course.position.unitOrdinal)
   const biasStrand = mostDeficientStrand(course, bag.day, stage)
   const strandWeights = strandControlWeights(course, bag.day, stage)
@@ -613,14 +612,16 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   }
 
   // -- 2. fill remaining slots ---------------------------------------------------
-  const poolOrder: { tag: "due" | "new" | "repair" | "fun" | "trickle"; list: string[] }[] = [
+  type FillTag = "due" | "new" | "repair" | "fun" | "trickle" | "frontier"
+  const poolOrder: { tag: FillTag; list: string[] }[] = [
     { tag: "due", list: pools.due },
     { tag: "new", list: pools.new },
     { tag: "repair", list: pools.repair },
     { tag: "fun", list: pools.fun },
     { tag: "trickle", list: pools.trickle },
+    { tag: "frontier", list: pools.frontier },
   ]
-  const remaining = (tag: "due" | "new" | "repair" | "fun" | "trickle"): number => {
+  const remaining = (tag: FillTag): number => {
     const entry = poolOrder.find((p) => p.tag === tag)
     return entry ? entry.list.length - cursor[tag] : 0
   }
@@ -661,25 +662,15 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       session.pendingDebutRecognitions.push(entry) // type unavailable; retry later
     }
 
-    // Session wind-down (fixes the "checkpoint keeps reloading" loop): when the
-    // day's real work is exhausted — no due, no repair, no fresh intake (new
-    // debt-paused or the new pool drained) and no trickle backlog — FUN is the
-    // only pool left. Left unbounded it recycles the same strong-known items
-    // forever and re-pins a cadence checkpoint every 10 cards. So once the
-    // per-session FUN cool-down is spent, stop serving fun → the batch empties →
-    // the feed exhausts gracefully ("caught up") instead of looping.
-    const realWorkRemains =
-      remaining("due") > 0 ||
-      remaining("repair") > 0 ||
-      remaining("trickle") > 0 ||
-      (!quota.debt && remaining("new") > 0)
+    // Infinite feed (doom-scroll to fluency): FUN is a bounded VARIETY garnish
+    // (≤ MAX_FUN_PER_10 per batch), never a shutdown timer. The old wind-down
+    // (serve N fun then exhaust to "caught up") is gone — a learner who keeps
+    // going must NEVER dead-end mid-journey.
     const funAllowed =
-      remaining("fun") > 0 &&
-      funServed < Math.max(1, Math.ceil(n / 10)) * MAX_FUN_PER_10 &&
-      (realWorkRemains || session.funServedSession < FUN_WINDDOWN_CAP)
+      remaining("fun") > 0 && funServed < Math.max(1, Math.ceil(n / 10)) * MAX_FUN_PER_10
 
-    const weights: [("due" | "new" | "repair" | "fun" | "trickle"), number][] = []
-    const push = (tag: "due" | "new" | "repair" | "fun" | "trickle", w: number): void => {
+    const weights: [FillTag, number][] = []
+    const push = (tag: FillTag, w: number): void => {
       if (tag === "fun" && !funAllowed) return
       if (w > 0 && remaining(tag) > 0) weights.push([tag, w])
     }
@@ -702,6 +693,31 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       backlogs.sort((a, b) => b[1] - a[1])
       if (backlogs[0][1] > 0) push(backlogs[0][0], quota.flex)
     }
+
+    // ---- continuation (the INFINITE tail) --------------------------------
+    // The normal quota pools are drained (the day's target is met and nothing
+    // is due). Instead of winding down, PULL THE FRONTIER FORWARD: the eager
+    // learner keeps unlocking the next reachable units' fresh material (the
+    // per-day NEW throttle is a SOFT milestone here, not a hard wall), still
+    // debt-gated (never bury a real backlog) and still DAG-gated by the pool
+    // builder. When even the frontier is exhausted (all reachable material met),
+    // REVISIT strong-known items through the FULL activity menu (not the funWeight
+    // subset) with escalating form and strict anti-repeat — varied spaced review,
+    // never the "fun:match_pairs forever" loop. This continuation runs ONLY when
+    // nothing higher-priority is left, so the normal daily path — and every golden
+    // transcript — is untouched. The lone true terminal is genuinely-empty
+    // content (no frontier AND no strong-known to revisit), reached via `break`
+    // (fail-safe: never mid-journey).
+    let continuationRevisit = false
+    if (weights.length === 0) {
+      if (!quota.debt && remaining("frontier") > 0) {
+        push("frontier", 1)
+      } else if (remaining("fun") > 0) {
+        // full-menu revisit of a strong-known item (bypasses the fun garnish cap)
+        weights.push(["fun", 1])
+        continuationRevisit = true
+      }
+    }
     if (weights.length === 0) break
 
     const tag = weightedPick(rng, weights)
@@ -720,8 +736,10 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       edgeUsed += 1
     }
 
-    if (tag === "new") {
-      // debut ladder: intro (unscored) → recognition, same session
+    if (tag === "new" || tag === "frontier") {
+      // debut ladder: intro (unscored) → recognition, same session. Frontier
+      // items are un-carded next-unit material and ride the SAME ladder — a
+      // binger meets brand-new words with the proper intro→recognition scaffold.
       const stage = session.debuts.get(itemId) ?? 0
       if (stage === 0) {
         const slot = tryIssue(itemId, "new", 0, { debutIntro: true, unscored: true })
@@ -729,6 +747,19 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
         continue
       }
       continue // stages 1/2 ride pendingDebutRecognitions / are done
+    }
+
+    if (continuationRevisit) {
+      // Revisit a strong-known item as a DUE-style review: full activity menu +
+      // escalating form + anti-repeat (the previous slot's type is avoided in
+      // tryIssue). This is what breaks the single-funWeight-template repetition —
+      // the item cycles through choice_pick / cloze / flip_recall / … not just
+      // match_pairs. SRS is untouched: this re-exposes an already-mastered item
+      // and grades it like any review; it never manufactures NEW spacing debt.
+      const card = bag.cards.get(itemId)
+      const form = card ? chooseForm(card, session.flow.mode, rOf(itemId), rng) : 0
+      tryIssue(itemId, "due", form)
+      continue
     }
 
     if (tag === "trickle") {
@@ -758,8 +789,16 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   }
 
   // -- 3.5 cadence checkpoint (R5) -------------------------------------------------
+  // A cadence checkpoint is a MILESTONE, not a gate: an occasional dopamine beat
+  // ("you hit your goal — keep going?") that ALWAYS leads to more varied content
+  // on Continuar (the infinite frontier below). It never re-pins identically
+  // (checkpointId carries the incrementing cadenceEmitted) and never appears
+  // back-to-back with no real content between — it only fires when THIS batch
+  // carried at least one real (content) card, so a lone-checkpoint batch is
+  // impossible.
   const emittedAfter = session.emitIndex + slots.length
-  if (slots.length > 0 && emittedAfter >= (session.cadenceEmitted + 1) * cons.cadence) {
+  const hasRealContent = slots.some((s) => s.itemIds.length > 0)
+  if (hasRealContent && emittedAfter >= (session.cadenceEmitted + 1) * cons.cadence) {
     session.cadenceEmitted += 1
     const unit = gidx.units[course.position.unitOrdinal]
     slots.push({

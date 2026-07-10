@@ -8,6 +8,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Journey is an infinite feed — doom-scroll to fluency.** The lesson feed no
+  longer winds down to a "caught up" screen. Once you hit the day's goal, an
+  eager learner who keeps going gets fresh, varied cards indefinitely: the next
+  units' new words are pulled forward (respecting prerequisites), difficulty
+  escalates as you master material, and activities and items rotate so you never
+  see the same word or the same exercise twice in a row. Your daily target is now
+  a milestone you can blow past, not a wall. The only time the feed ends is when
+  there is genuinely no material left to serve. (Spaced repetition is unchanged:
+  reviews still come due on schedule and the review-debt brake still protects you
+  — only new-word exploration and variety are uncapped for a continuing learner.)
 - **Journey is speak-first when Whisper is available.** When on-device speech
   recognition is usable, production and echo moments become live, Whisper-graded
   speaking instead of tap/type: the new-word "listen & echo" debut and a strong
@@ -28,10 +38,10 @@ Conventions: `corpan/CHANGELOGS.md`.
 - **Checkpoints no longer loop forever once you're caught up.** When the day's
   goal was met and nothing was due, the session could serve the same known-item
   practice endlessly and re-show a checkpoint every few cards — tapping
-  "Continue" appeared to reload the same screen with no way to finish. The
-  session now serves a short, bounded cool-down of light practice and then winds
-  down gracefully to a clear "caught up" state, so "Continue" always makes real
-  progress or ends the session.
+  "Continue" appeared to reload the same screen with no way to finish. A
+  checkpoint is now a genuine milestone that never repeats identically and never
+  appears twice with no real content between; tapping "Continue" always advances
+  into fresh, varied cards (see the infinite-feed change above).
 - **The next-card hint no longer looks like a blank drawer.** After a correct
   answer the "swipe up to continue" affordance was a card-coloured sliver pinned
   to the bottom and nudged down 24px, so on gesture-nav phones it read as an

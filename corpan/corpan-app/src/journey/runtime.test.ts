@@ -254,6 +254,46 @@ test("R12: only debut cards debit the gate; reviews and checkpoints never do", a
   assert.equal(quotaLog.notes, debuts)
 })
 
+// Infinite feed at the runtime seam (doom-scroll to fluency): a binger who keeps
+// tapping "Continuar" past the daily target NEVER hits the "caught up" dead-end
+// mid-journey. Even on a TINY fixture corpus the revisit-continuation keeps the
+// feed producing fresh cards; runtime.current() never goes empty while there is
+// any material to serve.
+test("infinite feed: a long binge never dead-ends (Continuar always yields more)", { timeout: 20_000 }, async () => {
+  const { runtime } = await makeRuntime()
+  await startFeed(runtime)
+  let served = 0
+  let emptyStalls = 0
+  for (let guard = 0; guard < 400 && served < 120; guard++) {
+    const card = runtime.current()
+    if (!card) {
+      // may be a transient async-prep gap; retry a few times, but a true dead-end
+      // (persistent empty) is the failure this test guards against.
+      emptyStalls += 1
+      // a persistent empty (never refilling) IS the dead-end this test guards.
+      assert.ok(emptyStalls < 30, "feed went persistently empty mid-binge (dead-end)")
+      await new Promise((r) => setTimeout(r, 5))
+      continue
+    }
+    emptyStalls = 0
+    if (card.kind === "exercise") {
+      runtime.submitResult(card.cardId, answer(card.prepared.engine))
+      runtime.advance()
+      served += 1
+    } else if (card.kind === "checkpoint") {
+      runtime.checkpointChoice(card.cardId, "continue") // "Continuar"
+    } else if (card.kind === "blockIntro" || card.kind === "welcomeBack") {
+      runtime.completePresentation(card.cardId)
+    } else {
+      runtime.abandonCurrent()
+    }
+    await new Promise((r) => setTimeout(r, 1))
+  }
+  // The binge kept flowing well past any single-day new target on the tiny
+  // fixture — the feed is infinite, not a wind-down.
+  assert.ok(served >= 120, `feed dead-ended after only ${served} cards (expected an unbounded stream)`)
+})
+
 test("abandon: no per-item evidence, abandoned flag set, no quota debit", async () => {
   const { runtime, quotaLog } = await makeRuntime()
   await startFeed(runtime)

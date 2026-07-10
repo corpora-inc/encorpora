@@ -81,12 +81,26 @@ export const REPLAY_MIN_GAP = 3
 export const ITEM_MIN_GAP = 3
 export const ITEM_MIN_GAP_RELAXED = 2
 export const MAX_FUN_PER_10 = 1
-// Session wind-down: when the day's real work is done (new target met, no
-// due/repair/trickle) FUN is the only pool left and would recycle forever,
-// re-pinning a cadence checkpoint every 10 cards (the "checkpoint keeps
-// reloading" stuck state). Serve at most this many FUN cards as a cool-down for
-// the whole session, then let the feed EXHAUST gracefully ("caught up").
-export const FUN_WINDDOWN_CAP = 6
+// Doom-scroll-to-fluency: the feed is INFINITE. When the day's real work is done
+// (new target met, no due/repair/trickle) the eager learner who keeps going gets
+// FRESH frontier material — the NEXT reachable units' new items — pulled forward,
+// plus a rotating fun/variety stream. NEVER a wind-down-to-terminal.
+//
+// Continuation stream: once the normal quota pools drain, the mixer serves a
+// bounded slice of FUN per batch (a variety beat) but always co-serves frontier
+// NEW so the feed keeps advancing — fun is a garnish, never the whole meal.
+export const CONTINUATION_FUN_PER_BATCH = 2
+// Frontier pull-forward horizon: how many units AHEAD of the position cursor an
+// eager continuing learner can unlock new material from IN ONE SITTING, provided
+// each unit's prereq skills are already reachable (DAG-gated, §6 position rules).
+// The per-day NEW throttle is a SOFT milestone the binger blows past; the DAG is
+// the hard wall. Position itself does NOT move here — that stays checkpoint-gated
+// (SRS integrity), so spacing still governs REVIEWS; only NEW exploration uncaps.
+export const FRONTIER_LOOKAHEAD_UNITS = 3
+// Anti-repeat for the continuation stream: consecutive cards must differ in item
+// AND (where the type menu allows) activity type. This window is how far back the
+// mixer looks to escalate form/variety as a run of continuations grows.
+export const CONTINUATION_VARIETY_WINDOW = 3
 export const MAX_LEECH_PER_BATCH = 1
 /** A match_pairs card carries 4–6 items so the renderer shows multiple pairs
  *  (never the one-pair collapse, defect #2). Companions are drawn from the

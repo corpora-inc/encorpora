@@ -1,7 +1,12 @@
 // journey/engine/pools.ts — DUE/REPLAY/NEW/REPAIR/TRICKLE/FUN pool
 // construction (engine.md §5.2, adaptivity §5.2 verbatim).
 
-import { FUN_POOL_R_MIN, REPAIR_ACC_BELOW, REPAIR_DEMOTED_WINDOW_DAYS } from "./constants.ts"
+import {
+  FRONTIER_LOOKAHEAD_UNITS,
+  FUN_POOL_R_MIN,
+  REPAIR_ACC_BELOW,
+  REPAIR_DEMOTED_WINDOW_DAYS,
+} from "./constants.ts"
 
 /** Phoneme (pronunciation minimal-pair) intake guard for the NEW pool. Phonics
  *  must never flood the opening feed — a beginner should meet communicative
@@ -36,6 +41,18 @@ export interface Pools {
   repair: string[]
   trickle: string[]
   fun: string[]
+  /** Frontier NEW items pulled forward for the EAGER CONTINUING learner — the
+   *  next reachable units' fresh material, beyond the per-day throttle AND
+   *  beyond the position cursor, DAG-gated (§6 position rules). This is what
+   *  makes the feed INFINITE: a binger who blows past the daily target keeps
+   *  unlocking new words/units in one sitting. Ordered by introOrder so intake
+   *  stays prescriptive. The mixer draws from this ONLY as a continuation
+   *  fallback (after the quota pools drain), so the normal daily path — and
+   *  every golden transcript — is byte-identical. Position does NOT move here;
+   *  that stays checkpoint-gated so spacing still governs REVIEWS (SRS
+   *  integrity). Empty only when there is genuinely no reachable material left
+   *  (true end of shipped content) — the ONLY acceptable terminal. */
+  frontier: string[]
   dueCount: number
   /** Retrievability snapshot for items touched during pool build. */
   r: Map<string, number>
@@ -191,12 +208,70 @@ export function buildPools(input: PoolsInput): Pools {
     }
   }
 
+  // ---- FRONTIER (eager continuation) ------------------------------------
+  // The INFINITE-feed pool: fresh new material from the position unit AND the
+  // next reachable units, WITHOUT the per-day cap and WITHOUT the position
+  // ceiling — but still DAG-gated. A unit's items are frontier-eligible only
+  // when every prereq skill (transitive) of the item's skills is already
+  // reachable (levelOf ≥ 1), which is the same gate normal intake uses, just
+  // extended a few units ahead. This lets a binger keep unlocking new words in
+  // one sitting while the prerequisite graph is still honored. Excludes items
+  // already in the (capped) new pool / already carded / already debuting so it
+  // is a strict superset tail, never a duplicate. Ordered by introOrder.
+  //
+  // SRS TRADEOFF (deliberate): the per-day NEW_PER_DAY throttle is a SOFT
+  // milestone for the eager continuing learner — the frontier ignores it so a
+  // binger keeps exploring. Spacing still governs REVIEWS (the DUE pool comes
+  // due on the FSRS schedule, and the debt brake above still zeroes intake when
+  // review debt is high), but it does NOT gate NEW exploration. A learner who
+  // introduces far more than NEW_PER_DAY in one sitting will owe more reviews
+  // tomorrow; that debt is then absorbed by the DUE pool + debt brake, not by
+  // capping the feed. Retention is protected by scheduling those reviews, not by
+  // rationing new intake.
+  const frontier: string[] = []
+  const inNewPool = new Set(newPool)
+  const maxFrontierUnit = Math.min(
+    gidx.units.length - 1,
+    course.position.unitOrdinal + FRONTIER_LOOKAHEAD_UNITS,
+  )
+  const skillReachable = (skillId: string): boolean => {
+    // the skill itself is at least introduced, OR all its transitive prereqs
+    // are (the item can be met without a missing upstream dependency).
+    if (mastery.levelOf(skillId, nowMs) >= 1) return true
+    for (const p of gidx.prereqClosure.get(skillId) ?? []) {
+      if (mastery.levelOf(p, nowMs) < 1) return false
+    }
+    return true
+  }
+  // Phonics never enter the frontier: the eager continuation stream pulls
+  // COMMUNICATIVE vocab forward for the binger. Minimal-pair contrasts still
+  // arrive through the normal capped NEW pool on subsequent days (the phoneme
+  // anti-domination guard) — the frontier never floods the feed with them.
+  for (const itemId of gidx.itemsByIntro) {
+    const item = graph.items[itemId]
+    if (!item) continue
+    if (cards.has(itemId) || session.debuts.has(itemId) || inNewPool.has(itemId)) continue
+    if (item.kind === "phoneme") continue
+    let eligible = false
+    for (const skillId of item.skillIds) {
+      const unitId = graph.skills[skillId]?.unitId
+      const ordinal = gidx.unitPos.get(unitId ?? "") ?? Number.POSITIVE_INFINITY
+      if (ordinal > maxFrontierUnit) continue
+      if (skillReachable(skillId)) {
+        eligible = true
+        break
+      }
+    }
+    if (eligible) frontier.push(itemId)
+  }
+
   return {
     due: due.map((d) => d.itemId),
     new: newPool,
     repair: repair.map((x) => x.itemId),
     trickle,
     fun,
+    frontier,
     dueCount: due.length,
     r,
   }
