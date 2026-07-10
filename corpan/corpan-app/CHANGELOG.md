@@ -7,6 +7,21 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **The next-card hint no longer looks like a blank drawer.** After a correct
+  answer the "swipe up to continue" affordance was a card-coloured sliver pinned
+  to the bottom and nudged down 24px, so on gesture-nav phones it read as an
+  empty card clipped by the home indicator. It is now a gently bouncing upward
+  chevron sitting fully above the safe-area inset — an unmistakable "swipe up"
+  cue, never a blank box — and it hides while a card is auto-advancing.
+- **A word's meaning shows inline when it is the only extra.** For a word with a
+  meaning but no in-context example (e.g. a number like "one"), the enrichment
+  card used to be just a lone collapsed "meaning" toggle in an empty-looking box;
+  the meaning now expands by default so the card carries real content. Words that
+  also have an in-context example keep the tap-to-expand meaning as before.
+
+## [0.20.2] — 2026-07-08
+
 ### Added
 - **Journey offers the `imagepan` picture pack with one-tap consent (no silent
   download).** When a compatible concept-picture pack is available in the index
@@ -25,8 +40,6 @@ Conventions: `corpan/CHANGELOGS.md`.
 - **imagepan is no longer auto-installed on first Journey open.** The prior
   silent ~1 MB download is replaced by the consent offer above; Journey only
   *recognizes* an imagepan that is already on disk at session start.
-
-## [0.20.2] — 2026-07-08
 
 ### Fixed
 - **Journey no longer serves degenerate exercises.** Single-token items (e.g.

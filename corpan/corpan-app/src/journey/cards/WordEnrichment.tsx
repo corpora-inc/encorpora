@@ -17,11 +17,14 @@ export function WordEnrichment(props: {
   nativeLang?: string
 }) {
   const { t } = useTranslation()
-  const [open, setOpen] = useState(false)
   const model = wordEnrichment(props.item, props.example, {
     targetLang: props.targetLang,
     nativeLang: props.nativeLang,
   })
+  // When the meaning is the ONLY enrichment (no in-context example — e.g. a
+  // number like "one"), expand it by default so the card carries real content
+  // instead of a lone collapsed toggle that reads as an empty box.
+  const [open, setOpen] = useState(!!model && !model.example && !!model.explanation)
   if (!model) return null
 
   return (
