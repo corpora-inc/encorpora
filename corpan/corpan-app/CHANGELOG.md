@@ -8,6 +8,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **The Journey feed now feels like a premium object in the hand.** A tactile
+  juice pass across the whole scroll: correct answers land with a soft haptic
+  and a warmer, felt-mallet chime whose pitch rises as your streak climbs; the
+  card-to-card advance gets a hair snappier at high combo and exhales back to
+  calm when the streak breaks. A small ambient momentum gauge in the corner
+  fills and warms with your run — no shouting number, you read your streak off
+  the feel. Celebration bursts are now sparse and refined rather than confetti
+  spam. The live-speaking card is elevated: a breathing mic cue, a framed
+  waveform surface, and the pronunciation confidence read now resolves in a beat
+  after the ✓/✗ and fills with the accent colour on a strong score. Every part
+  is reduced-motion and sound-off first-class — the feed is fully understandable
+  silent and still, and haptics honour the same setting as sound.
 - **Journey is an infinite feed — doom-scroll to fluency.** The lesson feed no
   longer winds down to a "caught up" screen. Once you hit the day's goal, an
   eager learner who keeps going gets fresh, varied cards indefinitely: the next

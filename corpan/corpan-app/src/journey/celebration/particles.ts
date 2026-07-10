@@ -30,11 +30,13 @@ function step(): void {
   for (const p of particles) {
     p.x += p.vx
     p.y += p.vy
-    p.vy += 0.18 // gravity
-    p.vx *= 0.985
+    p.vy += 0.14 // gentler gravity — a slow, premium drift, not a firework
+    p.vx *= 0.98
     p.life -= 1
-    g.globalAlpha = Math.max(0, Math.min(1, p.life / 30))
-    g.fillStyle = `hsl(${p.hue}, 85%, 62%)`
+    // Soft, monochrome-accent glow: lower saturation + a slower fade read as
+    // refined rather than confetti-loud.
+    g.globalAlpha = Math.max(0, Math.min(0.85, p.life / 40))
+    g.fillStyle = `hsl(${p.hue}, 70%, 60%)`
     g.beginPath()
     g.arc(p.x, p.y, p.size, 0, Math.PI * 2)
     g.fill()
@@ -51,19 +53,22 @@ export function burst(
   opts: { count?: number; hue?: number } = {},
 ): void {
   activeCanvas = canvas
-  const count = Math.min(opts.count ?? 28, 80)
+  // Premium confetti is barely confetti: sparse by default, and dense counts
+  // (reserved by the caller for tier ≥2 milestones) still stay tasteful.
+  const count = Math.min(opts.count ?? 14, 44)
   const hue = opts.hue ?? 262 // app purple fallback
   for (let i = 0; i < count; i++) {
     const angle = Math.random() * Math.PI * 2
-    const speed = 2 + Math.random() * 5
+    // a soft upward puff, not a wide firework spray
+    const speed = 1.4 + Math.random() * 3.2
     particles.push({
       x,
       y,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed - 2.5,
-      life: 24 + Math.random() * 22,
-      size: 2 + Math.random() * 3,
-      hue: hue + (Math.random() * 40 - 20),
+      vx: Math.cos(angle) * speed * 0.8,
+      vy: Math.sin(angle) * speed - 2.2,
+      life: 30 + Math.random() * 24,
+      size: 1.4 + Math.random() * 2.2, // smaller, finer motes
+      hue: hue + (Math.random() * 24 - 12), // tight, near-monochrome accent
     })
   }
   if (!raf) raf = requestAnimationFrame(step)

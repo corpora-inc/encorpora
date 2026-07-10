@@ -5,11 +5,13 @@
 // wheel + keyboard (↑/↓/Space) for desktop.
 
 import { useCallback, useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion, useAnimationControls } from "framer-motion"
+import { AnimatePresence, motion, useAnimationControls, useReducedMotion } from "framer-motion"
 import { ChevronsUp } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { ActivityResult, ActivitySpec } from "../../contentPacks/activityContract"
 import { celebrate, skipCelebration } from "../celebration/CelebrationLayer.tsx"
+import { ComboCounter } from "../celebration/ComboCounter.tsx"
+import { cardTransition } from "./cardTransition.ts"
 import { useJourneyStore } from "../../store/journey.ts"
 import type { CompletedCard, FeedCard, SessionStats } from "../types.ts"
 import type { JourneyRuntime } from "../runtime.ts"
@@ -59,6 +61,7 @@ export function FeedScroller(props: FeedScrollerProps) {
   const [autoCountdown, setAutoCountdown] = useState(false)
   const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const controls = useAnimationControls()
+  const reducedMotion = !!useReducedMotion()
 
   useEffect(() => runtime.subscribe(() => force((v) => v + 1)), [runtime])
 
@@ -237,6 +240,9 @@ export function FeedScroller(props: FeedScrollerProps) {
   )
 
   const stats: SessionStats = runtime.sessionStats()
+  // Combo-reactive card-to-card spring (§3.1): the advance gets a hair snappier
+  // as the streak climbs; reduced-motion collapses it to a cross-fade.
+  const advanceTransition = cardTransition(stats.combo, reducedMotion)
   const quota = runtime.peekQuota()
   const cardsToday = useJourneyStore((s) => s.byCourse[props.courseKey]?.cardsToday.count ?? 0)
 
@@ -430,10 +436,10 @@ export function FeedScroller(props: FeedScrollerProps) {
             <motion.div
               key={`back-${backRecord.card.cardId}`}
               className="h-full w-full"
-              initial={{ y: -40, opacity: 0 }}
+              initial={reducedMotion ? { opacity: 0 } : { y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 40, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+              exit={reducedMotion ? { opacity: 0 } : { y: 40, opacity: 0 }}
+              transition={advanceTransition}
             >
               <FeedCardFrame card={backRecord.card} settled={!backRedoable} review={!backRedoable}>
                 {backRedoable ? (
@@ -450,10 +456,10 @@ export function FeedScroller(props: FeedScrollerProps) {
               key={current.cardId}
               className="h-full w-full"
               data-journey-current={current.cardId}
-              initial={{ y: 80, opacity: 0 }}
+              initial={reducedMotion ? { opacity: 0 } : { y: 80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -80, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+              exit={reducedMotion ? { opacity: 0 } : { y: -80, opacity: 0 }}
+              transition={advanceTransition}
             >
               <FeedCardFrame card={current} settled={settled} review={false}>
                 {renderCard(current, "live")}
@@ -544,6 +550,16 @@ export function FeedScroller(props: FeedScrollerProps) {
           className="absolute bottom-6 end-6 h-8 w-8 animate-pulse rounded-full border-2 border-[hsl(var(--journey-accent,262_80%_58%))]"
           aria-label={t("journey.settings.listeningMode")}
         />
+      ) : null}
+
+      {/* ambient momentum gauge (§3.5): a small squared bar in the top-trailing
+          corner that fills + warms with the streak and exhales on a break — the
+          learner reads their momentum off the feel, not a number. Fixed overlay,
+          never jolts the layout; hidden below combo 2. */}
+      {backIndex === 0 ? (
+        <div className="pointer-events-none absolute end-3 top-3">
+          <ComboCounter combo={stats.combo} />
+        </div>
       ) : null}
 
       {/* viewed-earlier depth chip */}

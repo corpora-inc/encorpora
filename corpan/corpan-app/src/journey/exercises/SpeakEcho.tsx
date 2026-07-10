@@ -16,6 +16,8 @@
 // reports flags.sttUnavailable.
 
 import { useEffect, useRef } from "react"
+import { motion, useReducedMotion } from "framer-motion"
+import { Mic } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { ActivityResult as ContractResult } from "../../contentPacks/activityContract"
 import type { CapabilityHandle } from "@shared/capabilities/core"
@@ -25,6 +27,7 @@ import type { ExerciseProps } from "./types.ts"
 
 export function SpeakEcho(props: ExerciseProps) {
   const { t } = useTranslation()
+  const reduced = useReducedMotion()
   const answer = props.items[0]
   const containerRef = useRef<HTMLDivElement | null>(null)
   const handleRef = useRef<CapabilityHandle | null>(null)
@@ -84,13 +87,29 @@ export function SpeakEcho(props: ExerciseProps) {
 
   return (
     <div className="flex w-full flex-col items-center gap-4">
-      <div className="text-sm text-muted-foreground">{t("journey.exercise.speakNow")}</div>
+      {/* A quiet mic cue that gently breathes toward the live surface below —
+          the signature "speak, and the words light up" moment (§3.6). It's a
+          call to ACT (not read-back status). Reduced-motion holds it still. */}
+      <motion.div
+        className="flex items-center gap-2 text-sm text-muted-foreground"
+        animate={props.active && props.mode !== "review" && !reduced ? { opacity: [0.6, 1, 0.6] } : { opacity: 1 }}
+        transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+      >
+        <Mic className="h-4 w-4" aria-hidden />
+        <span>{t("journey.exercise.speakNow")}</span>
+      </motion.div>
       {props.mode === "review" ? (
         <div lang={props.spec.targetLang} className="text-2xl font-semibold text-foreground">
           {answer.target.text}
         </div>
       ) : (
-        <div ref={containerRef} className="min-h-56 w-full" data-testid="journey-speak-echo" />
+        // Squared-off premium frame around the live waveform surface so the
+        // Whisper read reads as the signature object it is.
+        <div
+          ref={containerRef}
+          className="min-h-56 w-full rounded-lg border border-border/60 bg-card/40 p-3"
+          data-testid="journey-speak-echo"
+        />
       )}
     </div>
   )
