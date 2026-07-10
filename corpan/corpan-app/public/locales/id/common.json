@@ -927,6 +927,10 @@
       "newWord": "Kata baru",
       "newPhrase": "Frasa baru"
     },
+    "interlude": {
+      "gameCue": "Game kilat · satu frasa",
+      "readerCue": "Bacaan singkat · satu bagian"
+    },
     "grammar": {
       "noteLabel": "Catatan tata bahasa",
       "tryIt": "Coba",

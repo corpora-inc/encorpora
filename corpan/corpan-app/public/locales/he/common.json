@@ -927,6 +927,10 @@
       "newWord": "מילה חדשה",
       "newPhrase": "משפט חדש"
     },
+    "interlude": {
+      "gameCue": "משחק מהיר · משפט אחד",
+      "readerCue": "קריאה קצרה · קטע אחד"
+    },
     "grammar": {
       "noteLabel": "הערת דקדוק",
       "tryIt": "נסה",

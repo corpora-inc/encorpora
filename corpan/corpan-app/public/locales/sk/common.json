@@ -1077,6 +1077,10 @@
       "downloading": "Pridáva sa… {{percent}}%",
       "retry": "Skúsiť znova",
       "failed": "Nepodarilo sa pridať"
+    },
+    "interlude": {
+      "gameCue": "Rýchla hra · jedna fráza",
+      "readerCue": "Rýchle čítanie · jeden úryvok"
     }
   }
 }

@@ -1077,6 +1077,10 @@
       "downloading": "Lisätään… {{percent}} %",
       "retry": "Yritä uudelleen",
       "failed": "Lisääminen epäonnistui"
+    },
+    "interlude": {
+      "gameCue": "Pikapeli · yksi fraasi",
+      "readerCue": "Pikaluku · yksi katkelma"
     }
   }
 }

@@ -927,6 +927,10 @@
       "newWord": "新しい単語",
       "newPhrase": "新しいフレーズ"
     },
+    "interlude": {
+      "gameCue": "ミニゲーム · フレーズ1つ",
+      "readerCue": "ミニ読書 · 1パッセージ"
+    },
     "grammar": {
       "noteLabel": "文法ノート",
       "tryIt": "やってみよう",

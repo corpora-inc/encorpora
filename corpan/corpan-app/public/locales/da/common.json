@@ -1077,6 +1077,10 @@
       "downloading": "Tilføjer… {{percent}}%",
       "retry": "Prøv igen",
       "failed": "Kunne ikke tilføjes"
+    },
+    "interlude": {
+      "gameCue": "Hurtigt spil · én sætning",
+      "readerCue": "Hurtig læsning · ét afsnit"
     }
   }
 }

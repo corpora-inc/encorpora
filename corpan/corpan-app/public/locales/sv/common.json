@@ -1077,6 +1077,10 @@
       "downloading": "Lägger till… {{percent}}%",
       "retry": "Försök igen",
       "failed": "Det gick inte att lägga till"
+    },
+    "interlude": {
+      "gameCue": "Snabbt spel · en fras",
+      "readerCue": "Snabb läsning · ett avsnitt"
     }
   }
 }

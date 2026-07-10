@@ -927,6 +927,10 @@
       "newWord": "Tembung anyar",
       "newPhrase": "Frasa anyar"
     },
+    "interlude": {
+      "gameCue": "Game cepet · siji frasa",
+      "readerCue": "Wacan cepet · siji bagean"
+    },
     "grammar": {
       "noteLabel": "Cathetan paramasastra",
       "tryIt": "Coba",

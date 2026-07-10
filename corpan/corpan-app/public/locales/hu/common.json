@@ -927,6 +927,10 @@
       "newWord": "Új szó",
       "newPhrase": "Új mondat"
     },
+    "interlude": {
+      "gameCue": "Gyors játék · egy mondat",
+      "readerCue": "Gyors olvasás · egy szövegrész"
+    },
     "grammar": {
       "noteLabel": "Nyelvtani jegyzet",
       "tryIt": "Próbáld ki",

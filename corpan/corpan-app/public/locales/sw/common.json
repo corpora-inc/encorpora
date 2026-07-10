@@ -1077,6 +1077,10 @@
       "downloading": "Inaongeza… {{percent}}%",
       "retry": "Jaribu tena",
       "failed": "Imeshindwa kuongeza"
+    },
+    "interlude": {
+      "gameCue": "Mchezo wa haraka · fungu moja",
+      "readerCue": "Usomaji wa haraka · kifungu kimoja"
     }
   }
 }

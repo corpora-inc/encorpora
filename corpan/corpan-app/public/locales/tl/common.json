@@ -1077,6 +1077,10 @@
       "downloading": "Idinaragdag… {{percent}}%",
       "retry": "Subukan ulit",
       "failed": "Hindi maidagdag"
+    },
+    "interlude": {
+      "gameCue": "Mabilis na laro · isang parirala",
+      "readerCue": "Mabilis na pagbasa · isang bahagi"
     }
   }
 }

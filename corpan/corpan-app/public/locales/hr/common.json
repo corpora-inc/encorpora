@@ -927,6 +927,10 @@
       "newWord": "Nova riječ",
       "newPhrase": "Nova fraza"
     },
+    "interlude": {
+      "gameCue": "Brza igra · jedna fraza",
+      "readerCue": "Kratko čitanje · jedan odlomak"
+    },
     "grammar": {
       "noteLabel": "Gramatička bilješka",
       "tryIt": "Probaj",

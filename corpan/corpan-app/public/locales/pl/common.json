@@ -1077,6 +1077,10 @@
       "downloading": "Dodawanie… {{percent}}%",
       "retry": "Spróbuj ponownie",
       "failed": "Nie udało się dodać"
+    },
+    "interlude": {
+      "gameCue": "Szybka gra · jedna fraza",
+      "readerCue": "Szybkie czytanie · jeden fragment"
     }
   }
 }

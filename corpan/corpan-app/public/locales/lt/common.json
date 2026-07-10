@@ -1077,6 +1077,10 @@
       "downloading": "Pridedama… {{percent}} %",
       "retry": "Bandyti dar kartą",
       "failed": "Nepavyko pridėti"
+    },
+    "interlude": {
+      "gameCue": "Greitas žaidimas · viena frazė",
+      "readerCue": "Greitas skaitymas · viena ištrauka"
     }
   }
 }

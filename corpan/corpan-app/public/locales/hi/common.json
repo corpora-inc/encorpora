@@ -927,6 +927,10 @@
       "newWord": "नया शब्द",
       "newPhrase": "नया वाक्य"
     },
+    "interlude": {
+      "gameCue": "झटपट खेल · एक वाक्य",
+      "readerCue": "झटपट पठन · एक अंश"
+    },
     "grammar": {
       "noteLabel": "व्याकरण नोट",
       "tryIt": "आज़माएँ",

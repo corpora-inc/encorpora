@@ -927,6 +927,10 @@
       "newWord": "Nouveau mot",
       "newPhrase": "Nouvelle phrase"
     },
+    "interlude": {
+      "gameCue": "Petit jeu · une phrase",
+      "readerCue": "Petite lecture · un passage"
+    },
     "grammar": {
       "noteLabel": "Note de grammaire",
       "tryIt": "Essayez",
