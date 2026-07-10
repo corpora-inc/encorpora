@@ -60,6 +60,13 @@ export type FeedCard =
       engine: EngineCard
       poster: PackPoster
       rare?: "miniGame" | "storyChapter"
+      /** A "sip"-sized drop-in (PREMIUM_SCROLL §2.2/§4): a lightweight pack that
+       *  drills the injected phrase in ~20–45s, then returns to the scroll. The
+       *  feed renders it as a compact InterludePoster instead of a full-height
+       *  game launch. Heavy 3D tent-poles (§2.4) are NOT interludes — they keep
+       *  the full poster + cold mount. Derived by the runtime from the activity's
+       *  estimated duration + provider (never invented by a pack). */
+      interlude?: boolean
     }
   | { kind: "capability"; cardId: string; capabilityId: string; spec: ActivitySpec; engine: EngineCard; prepared: PreparedExercise | null }
   | { kind: "blockIntro"; cardId: string; modelNeeds: ("stt" | "llm")[]; blockLen: number }

@@ -8,6 +8,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Game interludes in the scroll — drop into a game for one phrase, then keep
+  scrolling.** A lightweight pack activity (e.g. Lingo Hero) that drills the
+  phrase you're on now shows as a compact "sip" card — a small squared-off
+  poster with a Play affordance reading "Quick game · one phrase" — instead of a
+  full-height game launch. Tap it, play one round for the injected phrase, and
+  the feed grades your result and scrolls straight on. Heavy 3D drop-ins stay a
+  full poster + cold mount. A repeated lightweight interlude now warm-mounts
+  (its code stays resident between launches) so it opens instantly with no
+  loading gap; a pack error can't break the scroll around it. (`InterludePoster`,
+  `PackActivityCard` interlude branch, runtime `interlude` flag on packActivity
+  cards, `ContentPackHost` warm-mount LRU seam.) New i18n keys
+  `journey.interlude.gameCue` / `journey.interlude.readerCue`.
 - **The Journey feed now feels like a premium object in the hand.** A tactile
   juice pass across the whole scroll: correct answers land with a soft haptic
   and a warmer, felt-mallet chime whose pitch rises as your streak climbs; the

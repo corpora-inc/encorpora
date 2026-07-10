@@ -21,11 +21,11 @@
         "lfl",
         "fd"
       ],
-      "typicalDurationSec": 90,
+      "typicalDurationSec": 40,
       "requiredHostApis": [
         "journey"
       ]
     }
   ],
-  "devRevision": "2026-06-24T03:30:00.000Z"
+  "devRevision": "2026-07-10T00:00:00.000Z"
 }

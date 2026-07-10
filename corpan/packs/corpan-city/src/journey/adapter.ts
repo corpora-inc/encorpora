@@ -8,11 +8,16 @@
  * frozen city contracts, the NPC/quest flow, Track state, economy and
  * multiplayer are untouched; city standalone keeps all of it.
  *
- * Evidence rules (R9, normative): perItem is emitted ONLY for tools with
- * genuine per-entry verdicts (the reserved `detail["item:<entryId>"]`
- * convention — no city tool emits it yet, so today every tool reports
- * SCORE-ONLY, `perItem: []`). Aggregate scores are NEVER binned into
- * fabricated per-item outcomes.
+ * Evidence rules (R9, normative): perItem prefers GENUINE per-entry verdicts
+ * (the reserved `detail["item:<entryId>"]` convention). When a tool emits none
+ * of those AND the spec scheduled EXACTLY ONE item (the Journey interlude
+ * "drill one phrase" case, PREMIUM_SCROLL §4.2), the adapter bins the aggregate
+ * `score` into that single item's outcome and stamps the reserved
+ * `aggregateBinned` flag — the engine then clamps any derived FSRS grade to
+ * [Hard, Good] (grading.ts, R9), so the one phrase the interlude taught gets
+ * real per-item evidence instead of being lost as score-only. Multi-item rounds
+ * with no per-entry verdicts still report SCORE-ONLY (`perItem: []`) — an
+ * aggregate over several items is NEVER fanned out into fabricated per-item rows.
  */
 
 import {
@@ -139,6 +144,24 @@ export function toActivityResult(
     const outcome: ActivityOutcome =
       value >= 1 ? "pass" : value > 0 ? "partial" : "fail"
     perItem.push({ itemRef: ref, outcome })
+  }
+
+  // SINGLE-ITEM AGGREGATE BINNING (R9, the interlude "one phrase" case): when a
+  // tool emits NO genuine per-entry verdicts but the spec scheduled exactly one
+  // phrase, the round's aggregate score IS that one phrase's evidence. Bin it and
+  // flag `aggregateBinned` so the engine clamps the derived grade to [Hard, Good]
+  // — never fabricating an Easy/Again from an aggregate. A completed round only
+  // (an aborted round already carries `abandoned`, and binning a bail as a graded
+  // hit would misinform FSRS).
+  const scheduled = [...refByEntryId.values()]
+  if (perItem.length === 0 && scheduled.length === 1 && plus.outcome !== "aborted") {
+    const s = clamp01(plus.score)
+    const outcome: ActivityOutcome = s >= 0.8 ? "pass" : s > 0 ? "partial" : "fail"
+    perItem.push({
+      itemRef: scheduled[0],
+      outcome,
+      detail: { flags: { aggregateBinned: true } },
+    })
   }
 
   return {

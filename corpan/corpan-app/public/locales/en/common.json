@@ -1077,6 +1077,10 @@
       "downloading": "Adding… {{percent}}%",
       "retry": "Try again",
       "failed": "Couldn't add"
+    },
+    "interlude": {
+      "gameCue": "Quick game · one phrase",
+      "readerCue": "Quick read · one passage"
     }
   }
 }

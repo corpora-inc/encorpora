@@ -241,6 +241,24 @@ const RAW_BATCH = 6
 const HISTORY_RING = 20
 const RECENT_KEY_CARDS = 10
 
+// Interlude classification (PREMIUM_SCROLL §2.2/§4.4). A packActivity is a
+// "sip"-sized INTERLUDE — rendered as a compact InterludePoster + eligible for
+// warm-mount — when it is quick (short estimated duration) AND not one of the
+// heavy 3D tent-pole packs (§2.4), which keep the full poster and a cold mount.
+// The threshold tracks the manifest `typicalDurationSec` the engine carries as
+// `estSec` (lingo-hero=40s interlude; a 3D scene drop-in is minutes).
+const INTERLUDE_MAX_EST_SEC = 75
+// Providers whose mount is a heavy 3D world (Babylon): never a sip, even if a
+// single-scene drop-in is short. These are the §2.4 tent-poles.
+const HEAVY_3D_PROVIDERS = new Set(["world_plaza", "world-plaza", "corpan_city", "corpan-city"])
+
+/** Is this pack-activity a lightweight "sip" interlude vs a heavy drop-in? */
+function isInterludeCard(ec: EngineCard): boolean {
+  if (HEAVY_3D_PROVIDERS.has(ec.meta.provider)) return false
+  const est = ec.meta.estSec ?? ec.spec.timeboxSec ?? Number.POSITIVE_INFINITY
+  return est <= INTERLUDE_MAX_EST_SEC
+}
+
 // Speak-first (§ core): when a Whisper model is usable, production/echo moments
 // become live, Whisper-graded speaking. intro_echo ALWAYS upgrades (the debut is
 // scored from the start). listen_type upgrades a strong deterministic SHARE —
@@ -646,6 +664,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         engine: ec,
         poster: { name: ec.meta.provider },
         rare,
+        interlude: isInterludeCard(ec),
       }
     }
     if (t === "speak_echo" && !sttUsable()) {

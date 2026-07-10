@@ -180,6 +180,58 @@ function wordCard(
   }
 }
 
+/** A pack (provider) EngineCard over a phrase ref — fed to prepareEngineCard to
+ *  exercise the packActivity mapping + the interlude classifier. */
+function packCard(
+  provider: string,
+  specId: string,
+  estSec: number,
+): EngineCard {
+  return {
+    spec: {
+      specId,
+      activityType: `${provider}:round`,
+      itemRefs: [{ kind: "phrase", source: "base", id: "1" }],
+      targetLang: "es",
+      nativeLang: "en",
+      timeboxSec: estSec,
+    } as EngineCard["spec"],
+    meta: {
+      pool: "due",
+      strand: "fluency",
+      form: 1,
+      estSec,
+      provider,
+      celebration: "normal",
+      coolDownCandidate: false,
+    },
+  }
+}
+
+test("packActivity mapping: a quick lightweight pack is flagged as an interlude", async () => {
+  const { runtime } = await makeRuntime()
+  const card = await runtime.prepareEngineCard(packCard("lingo_hero", "lh-1", 40))
+  assert.ok(card && card.kind === "packActivity", "maps to a packActivity card")
+  assert.equal(card.interlude, true, "a 40s lingo_hero round is a sip interlude")
+})
+
+test("packActivity mapping: a heavy 3D pack is NOT an interlude, even when short", async () => {
+  const { runtime } = await makeRuntime()
+  const cityCard = await runtime.prepareEngineCard(packCard("corpan_city", "cc-1", 30))
+  assert.ok(cityCard && cityCard.kind === "packActivity")
+  assert.equal(cityCard.interlude, false, "corpan_city is a 3D tent-pole, never a sip")
+  const plazaCard = await runtime.prepareEngineCard(packCard("world_plaza", "wp-1", 45))
+  assert.ok(plazaCard && plazaCard.kind === "packActivity")
+  assert.equal(plazaCard.interlude, false, "world_plaza is a 3D tent-pole, never a sip")
+})
+
+test("packActivity mapping: a long-duration pack activity is NOT an interlude", async () => {
+  const { runtime } = await makeRuntime()
+  const card = await runtime.prepareEngineCard(packCard("some_reader", "rd-1", 200))
+  assert.ok(card && card.kind === "packActivity")
+  assert.equal(card.interlude, false, "a 200s activity is a full drop-in, not a sip")
+})
+
 /** Place as a fresh zero-beginner so the feed starts producing. */
 async function startFeed(runtime: Awaited<ReturnType<typeof makeRuntime>>["runtime"]) {
   const { needsPlacement } = await runtime.start("home_hero")
