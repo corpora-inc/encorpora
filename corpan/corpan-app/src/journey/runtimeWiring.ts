@@ -21,6 +21,7 @@ import {
   visibleJourneyPacks,
 } from "../contentPacks/journeyPackCatalog"
 import { getAppVersion } from "../lib/appVersion"
+import { isAndroid } from "../util/browser"
 import { useCatalogStore } from "../store/catalog"
 import { useDataPacksStore } from "../store/dataPacks"
 import { useEntitlementStore } from "../store/entitlements"
@@ -112,9 +113,23 @@ export function buildResolverDeps(
   // async from Rust, so we keep a primed cache. Unprimed packs return a
   // corpan-pack:// path in the canonical shape; priming happens on first use.
   const baseUrlCache = new Map<string, string>()
+  // Platform-correct base for the `corpan-pack` custom scheme. Android + Windows
+  // serve it as `http://corpan-pack.localhost/`; macOS/iOS/Linux use
+  // `corpan-pack://localhost/` (see src-tauri content_packs.rs `base_url` doc).
+  // packFileUrl must be SYNC (ResolverDeps contract), and an <img src> built with
+  // the wrong scheme silently fails to load — so the synchronous SEED must
+  // already be correct, not just the async manifest-URL refinement below (which
+  // could land after the first image card renders → broken images on Android).
+  const packSchemeBase = (packId: string): string => {
+    const ua = (typeof navigator !== "undefined" && navigator.userAgent) || ""
+    const httpScheme = isAndroid() || /Windows/i.test(ua)
+    return httpScheme
+      ? `http://corpan-pack.localhost/${packId}/`
+      : `corpan-pack://localhost/${packId}/`
+  }
   const prime = (packId: string): void => {
     if (baseUrlCache.has(packId)) return
-    baseUrlCache.set(packId, `corpan-pack://localhost/${packId}/`)
+    baseUrlCache.set(packId, packSchemeBase(packId))
     void getInstalledManifestUrl(packId)
       .then((manifestUrl) => {
         baseUrlCache.set(packId, new URL(".", manifestUrl).toString())

@@ -28,9 +28,9 @@ const exercise = (activityType: string, params?: Record<string, unknown>): FeedC
   return { kind: "exercise", cardId: "s1", spec, prepared }
 }
 
-test("choice_pick: swipe in swipe mode, auto+900 in auto (default) mode", () => {
+test("choice_pick: swipe in swipe mode, auto+2200 in auto (default) mode", () => {
   assert.deepEqual(advanceRule(exercise("choice_pick"), "swipe"), { kind: "swipe" })
-  assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 900 })
+  assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
 })
 
 test("failed cards never auto-advance", () => {
@@ -41,7 +41,7 @@ test("listen cards: listening run arms auto even in swipe mode", () => {
   assert.deepEqual(advanceRule(exercise("listen_pick"), "swipe"), { kind: "swipe" })
   assert.deepEqual(advanceRule(exercise("listen_pick"), "swipe", { listeningRun: true }), {
     kind: "auto",
-    delayMs: 900,
+    delayMs: 2200,
   })
 })
 

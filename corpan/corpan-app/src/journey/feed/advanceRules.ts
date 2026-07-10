@@ -14,7 +14,7 @@ export type AdvanceRule =
 
 /** Answer-tap cards auto-advance this long after settle, riding the existing
  *  countdown ring (contract #6). Snappy but leaves time to read the stamp. */
-export const ANSWER_AUTO_MS = 900
+export const ANSWER_AUTO_MS = 2200
 
 const LISTEN_TYPES = new Set(["listen_pick", "listen_type"])
 
