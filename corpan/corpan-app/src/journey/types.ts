@@ -33,6 +33,10 @@ export interface PreparedExercise {
   /** speak_echo degraded to listen_type (§6.3) — results carry
    *  flags.sttUnavailable so the engine stops scheduling STT today. */
   sttFallback?: boolean
+  /** Speak-first: an intro_echo/listen_type card upgraded to Whisper-graded
+   *  speak_echo because STT is usable. Reverted (with the rest of the session)
+   *  on an sttDeclined result so a learner who can't speak is never trapped. */
+  sttUpgraded?: boolean
   /** words-in-context: a real corpus phrase carrying items[0] when it is a word
    *  the learner has met before. Feeds the post-answer enrichment line, the
    *  etymology gem's usage line, and the context-cloze form. Absent on first

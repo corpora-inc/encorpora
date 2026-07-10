@@ -169,6 +169,44 @@
   cursor: progress;
 }
 
+/* Live mic waveform — reads "I'm listening to you NOW". Bars are driven by the
+   host's real per-buffer RMS; when the host ships no level signal the
+   --idle modifier keeps them gently breathing. Squared-off, compact. */
+.capPron-wave {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  height: 28px;
+  width: 100%;
+  max-width: 180px;
+}
+.capPron-wave[hidden] { display: none; }
+.capPron-wave-bar {
+  width: 4px;
+  height: 12%;
+  border-radius: 2px;
+  background: var(--capPron-bad, #dc2626);
+  transition: height 90ms ease-out;
+}
+/* No real level signal: a soft symmetric breathing so recording still feels
+   live (no fabricated amplitude — purely decorative). */
+.capPron-wave--idle .capPron-wave-bar {
+  transition: none;
+  animation: capPron-wave-idle 1.1s ease-in-out infinite;
+}
+.capPron-wave--idle .capPron-wave-bar:nth-child(2n) { animation-delay: 0.18s; }
+.capPron-wave--idle .capPron-wave-bar:nth-child(3n) { animation-delay: 0.36s; }
+.capPron-wave--idle .capPron-wave-bar:nth-child(4n) { animation-delay: 0.52s; }
+@keyframes capPron-wave-idle {
+  0%, 100% { height: 20%; }
+  50%      { height: 68%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .capPron-wave--idle .capPron-wave-bar { animation: none; height: 34%; }
+  .capPron-wave-bar { transition: none; }
+}
+
 .capPron-spinner {
   display: inline-block;
   width: var(--capPron-spinner-size, 22px);

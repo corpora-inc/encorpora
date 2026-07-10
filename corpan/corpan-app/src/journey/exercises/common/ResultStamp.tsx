@@ -6,8 +6,14 @@ import { AnimatePresence, motion } from "framer-motion"
 import { Check, X } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
-export function ResultStamp(props: { state: "correct" | "incorrect" | null }) {
+export function ResultStamp(props: {
+  state: "correct" | "incorrect" | null
+  /** Whisper accuracy 0..100 for a speak_echo settle — a quick confidence read
+   *  beside the ✓/✗ (feed-ux vibes). Omit for non-spoken cards. */
+  confidence?: number | null
+}) {
   const { t } = useTranslation()
+  const hasConfidence = typeof props.confidence === "number"
   return (
     <AnimatePresence>
       {props.state && (
@@ -33,6 +39,17 @@ export function ResultStamp(props: { state: "correct" | "incorrect" | null }) {
               ? t("journey.exercise.correct")
               : t("journey.exercise.incorrect")}
           </span>
+          {hasConfidence ? (
+            // A glanceable accuracy read. Rendered as a locale-neutral "NN%"
+            // number badge (no new translation key — intuitive-not-explainy).
+            <span
+              data-testid="journey-stamp-confidence"
+              className="rounded-md bg-muted px-1.5 py-0.5 text-xs font-semibold tabular-nums text-muted-foreground"
+              aria-label={`${Math.round(props.confidence as number)}%`}
+            >
+              {Math.round(props.confidence as number)}%
+            </span>
+          ) : null}
         </motion.div>
       )}
     </AnimatePresence>

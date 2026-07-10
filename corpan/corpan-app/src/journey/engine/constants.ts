@@ -71,11 +71,22 @@ export const STRAND_BIAS_WEIGHT = 3
 export const STRAND_CONTROL_EXPONENT = 1.5
 export const STRAND_CONTROL_MIN = 0.15
 export const STRAND_CONTROL_MAX = 5
+// Speak-first: when a Whisper model is INSTALLED, the output (speaking) strand's
+// template weight is multiplied by this so installing STT visibly increases live
+// speaking beyond the flat stage target. Applied on top of the proportional
+// control law, then re-clamped to STRAND_CONTROL_MAX so it can never dominate.
+export const STT_INSTALLED_OUTPUT_WEIGHT = 1.8
 export const LANGUAGE_SHARE_HARD_CAP = 0.65 // over last40 ⇒ force 2 input/fluency slots
 export const REPLAY_MIN_GAP = 3
 export const ITEM_MIN_GAP = 3
 export const ITEM_MIN_GAP_RELAXED = 2
 export const MAX_FUN_PER_10 = 1
+// Session wind-down: when the day's real work is done (new target met, no
+// due/repair/trickle) FUN is the only pool left and would recycle forever,
+// re-pinning a cadence checkpoint every 10 cards (the "checkpoint keeps
+// reloading" stuck state). Serve at most this many FUN cards as a cool-down for
+// the whole session, then let the feed EXHAUST gracefully ("caught up").
+export const FUN_WINDDOWN_CAP = 6
 export const MAX_LEECH_PER_BATCH = 1
 /** A match_pairs card carries 4–6 items so the renderer shows multiple pairs
  *  (never the one-pair collapse, defect #2). Companions are drawn from the

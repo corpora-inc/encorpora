@@ -8,7 +8,7 @@ import assert from "node:assert/strict"
 import { DAY_MS } from "./clock.ts"
 import type { ActivityTemplate, CourseGraph, EngineCard, ItemRef } from "./types.ts"
 import { makeFixtureGraph, nativeTemplates } from "./__fixtures__/fixtureGraph.ts"
-import { makeEngine, playBatch, type Harness } from "./__fixtures__/harness.ts"
+import { answer, makeEngine, playBatch, type Harness } from "./__fixtures__/harness.ts"
 
 const CONS = { availableProviders: ["native"] }
 
@@ -374,4 +374,90 @@ test("newPerDay caps completed debuts per local day", async () => {
   }
   const snap = h.engine.getCourseSnapshot()
   assert.ok(snap.newRemainingToday >= 0, `over-introduced: ${snap.newRemainingToday}`)
+})
+
+// Regression (checkpoint-loop, "Continuar reloads the same checkpoint"): once
+// the day's real work is exhausted (new target met + no due/repair/trickle), the
+// FUN pool is the only thing left. It must NOT recycle forever, re-pinning a
+// cadence checkpoint every 10 cards — the session serves a bounded FUN cool-down
+// then the feed EXHAUSTS ("caught up") so the surface reaches its terminal state.
+test("session winds down to feed-exhaustion instead of looping fun + cadence checkpoints", async () => {
+  const h = await makeEngine({ arcs: 2, unitsPerArc: 3, skillsPerUnit: 2, itemsPerSkill: 6, withLessons: false })
+
+  // Drive the day until intake is met and nothing is due (mirrors the reported
+  // "28/20 · 0 revisões" state): answer every real card, skip presentation faces.
+  h.engine.startSession()
+  let exhausted = false
+  let checkpointsSeen = 0
+  for (let i = 0; i < 200; i++) {
+    const batch = h.engine.nextFeedItems(6, { ...CONS, modelsAvailable: ["tts"] })
+    if (batch.length === 0) {
+      exhausted = true
+      break
+    }
+    for (const c of batch) {
+      const t = c.spec.activityType
+      if (t === "checkpoint_summary") checkpointsSeen += 1
+      if (t === "checkpoint_summary" || t === "jump_offer") continue
+      h.engine.applyResult(answer(c, { pass: true }))
+    }
+  }
+
+  assert.ok(exhausted, "feed reached graceful exhaustion (never looped forever)")
+  // Cadence fires ~every 10 cards of REAL work; an unbounded loop produced 30+.
+  // The bounded wind-down keeps this well under a dozen for the whole session.
+  assert.ok(
+    checkpointsSeen < 12,
+    `cadence checkpoints unbounded (${checkpointsSeen}) — the loop is back`,
+  )
+})
+
+// Speak-first mix (§ core, upweight): a resident Whisper model (sttInstalled)
+// up-weights the OUTPUT (speaking) strand at slot selection, so installing STT
+// visibly increases live speaking beyond the flat stage target. The stock
+// fixture only carries speak_echo at form 2 (rarely reached), so we add a
+// form-0 output template competing head-to-head with the form-0 language
+// template — the only difference between runs is the sttInstalled flag.
+test("sttInstalled up-weights the output (speaking) strand in the mix", async () => {
+  const buildGraph = (): CourseGraph => {
+    const graph = makeFixtureGraph({ arcs: 2, unitsPerArc: 3, skillsPerUnit: 2, itemsPerSkill: 8, withLessons: false })
+    graph.activityTemplates = [
+      ...graph.activityTemplates,
+      // A speaking activity available at the EASY form so selection actually
+      // reaches it (no STT model gate on selection beyond modelsAvailable).
+      { activityType: "speak_echo", itemKind: "phrase", form: 0, strand: "output", guessable: false, estSec: 18, modelNeeds: ["stt"], provider: "native" },
+    ]
+    return graph
+  }
+
+  const countSpeak = async (sttInstalled: boolean): Promise<number> => {
+    const h = await makeEngine({}, buildGraph())
+    let speak = 0
+    for (let day = 0; day < 3; day++) {
+      h.engine.startSession()
+      for (let b = 0; b < 8; b++) {
+        const batch = h.engine.nextFeedItems(8, {
+          ...CONS,
+          modelsAvailable: ["stt", "tts"],
+          sttInstalled,
+        })
+        if (batch.length === 0) break
+        for (const c of batch) {
+          const t = c.spec.activityType
+          if (t === "speak_echo") speak += 1
+          if (t === "checkpoint_summary" || t === "jump_offer") continue
+          h.engine.applyResult(answer(c, { pass: true }))
+        }
+      }
+      h.clock.advance(DAY_MS)
+      h.engine.tickDay()
+    }
+    return speak
+  }
+
+  const off = await countSpeak(false)
+  const on = await countSpeak(true)
+  // Identical graph + RNG stream; the only lever is the installed up-weight,
+  // which must yield strictly more speaking.
+  assert.ok(on > off, `installed STT did not increase speaking (on=${on} off=${off})`)
 })

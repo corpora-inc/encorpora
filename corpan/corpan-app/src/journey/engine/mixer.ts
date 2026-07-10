@@ -12,6 +12,7 @@ import {
   MATCH_PAIRS_MAX_ITEMS,
   MATCH_PAIRS_MIN_ITEMS,
   MAX_FUN_PER_10,
+  FUN_WINDDOWN_CAP,
   MAX_LEECH_PER_BATCH,
   LEECH_SERVE_P,
   CONSTRAINT_REPAIR_PASSES,
@@ -24,6 +25,8 @@ import {
   STRUGGLE_NEW_CUT,
   STRUGGLE_NEW_FLOOR,
   STRAND_BIAS_WEIGHT,
+  STRAND_CONTROL_MAX,
+  STT_INSTALLED_OUTPUT_WEIGHT,
   JUMP_CRUISE_SESSIONS,
   JUMP_OFFER_INTERVAL_DAYS,
 } from "./constants.ts"
@@ -114,6 +117,7 @@ interface NormalizedConstraints {
   exclude: Set<string>
   timeboxSec?: number
   cadence: number
+  sttInstalled: boolean
 }
 
 function normalizeConstraints(c?: FeedConstraints): NormalizedConstraints {
@@ -125,6 +129,7 @@ function normalizeConstraints(c?: FeedConstraints): NormalizedConstraints {
     exclude: new Set(c?.excludeActivityTypes ?? []),
     timeboxSec: c?.timeboxSec,
     cadence: c?.checkpointCadence ?? DEFAULT_CHECKPOINT_CADENCE,
+    sttInstalled: c?.sttInstalled === true,
   }
 }
 
@@ -249,6 +254,12 @@ function chooseActivityType(
         // strand keeps the spec's ×1.5 floor (engine.md §5.3.3)
         let w = opts.strandWeights ? opts.strandWeights[STRAND_INDEX[t.strand]] : 1
         if (t.strand === opts.biasStrand) w = Math.max(w, STRAND_BIAS_WEIGHT)
+        // Speak-first: a resident Whisper model up-weights the OUTPUT strand so
+        // installing STT visibly increases live speaking beyond the flat target.
+        // Re-clamped to the control ceiling so it can never crowd out the rest.
+        if (cons.sttInstalled && t.strand === "output") {
+          w = Math.min(STRAND_CONTROL_MAX, w * STT_INSTALLED_OUTPUT_WEIGHT)
+        }
         return [t, w] as const
       }),
     )
@@ -512,7 +523,10 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     }
     slots.push(slot)
     if (leechItem) leechServed += 1
-    if (pool === "fun") funServed += 1
+    if (pool === "fun") {
+      funServed += 1
+      session.funServedSession += 1
+    }
     if (forceInputFluencyBudget > 0 && (slot.strand === "input" || slot.strand === "fluency")) {
       forceInputFluencyBudget -= 1
     }
@@ -647,15 +661,33 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       session.pendingDebutRecognitions.push(entry) // type unavailable; retry later
     }
 
+    // Session wind-down (fixes the "checkpoint keeps reloading" loop): when the
+    // day's real work is exhausted — no due, no repair, no fresh intake (new
+    // debt-paused or the new pool drained) and no trickle backlog — FUN is the
+    // only pool left. Left unbounded it recycles the same strong-known items
+    // forever and re-pins a cadence checkpoint every 10 cards. So once the
+    // per-session FUN cool-down is spent, stop serving fun → the batch empties →
+    // the feed exhausts gracefully ("caught up") instead of looping.
+    const realWorkRemains =
+      remaining("due") > 0 ||
+      remaining("repair") > 0 ||
+      remaining("trickle") > 0 ||
+      (!quota.debt && remaining("new") > 0)
+    const funAllowed =
+      remaining("fun") > 0 &&
+      funServed < Math.max(1, Math.ceil(n / 10)) * MAX_FUN_PER_10 &&
+      (realWorkRemains || session.funServedSession < FUN_WINDDOWN_CAP)
+
     const weights: [("due" | "new" | "repair" | "fun" | "trickle"), number][] = []
     const push = (tag: "due" | "new" | "repair" | "fun" | "trickle", w: number): void => {
+      if (tag === "fun" && !funAllowed) return
       if (w > 0 && remaining(tag) > 0) weights.push([tag, w])
     }
     const trickleBacklog = !quota.debt && remaining("trickle") > 0
     push("due", quota.review)
     push("new", quota.debt ? 0 : trickleBacklog ? quota.new * 0.5 : quota.new)
     push("repair", quota.repair)
-    push("fun", funServed < Math.max(1, Math.ceil(n / 10)) * MAX_FUN_PER_10 ? quota.fun : 0)
+    push("fun", quota.fun)
     // flex → largest normalized backlog (trickle preferred when nonempty);
     // the placed-backlog TRICKLE shares the NEW quota (both are intake) and
     // absorbs its overflow — that is how the §4.3.3 backlog actually drains

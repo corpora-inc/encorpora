@@ -114,23 +114,25 @@
     {
       "cards": [
         "stack-1:journey_en:4:8|cloze|repair|f1",
-        "stack-1:journey_en:4:9|listen_pick|repair|f0",
-        "stack-1:journey_en:4:10|match_pairs|fun|f0",
+        "stack-1:journey_en:4:9|flip_recall|repair|f1",
+        "stack-1:journey_en:4:10|cloze|repair|f1",
         "stack-1:journey_en:4:11|choice_pick|replay|f0",
-        "stack-1:journey_en:4:12|speak_echo|repair|f2",
+        "stack-1:journey_en:4:12|match_pairs|fun|f0",
         "stack-1:journey_en:4:13|speak_echo|repair|f2",
-        "stack-1:journey_en:4:14|checkpoint_summary|checkpoint|f0"
+        "stack-1:journey_en:4:14|speak_echo|repair|f2",
+        "stack-1:journey_en:4:15|checkpoint_summary|checkpoint|f0"
       ],
       "grades": [
         "phrase:base:1014=3",
-        "phrase:base:1003=3",
-        "phrase:base:1015=3,phrase:base:1004=3,phrase:base:1012=3,phrase:base:1009=3",
+        "phrase:base:1016=3",
+        "phrase:base:1002=3",
         "phrase:base:1008=1",
+        "phrase:base:1015=3,phrase:base:1004=3,phrase:base:1012=3,phrase:base:1009=3",
         "phrase:base:1006=3",
         "phrase:base:1013=3",
         ""
       ],
-      "theta": -1.698309
+      "theta": -1.589024
     }
   ],
   "placed-intermediate": [

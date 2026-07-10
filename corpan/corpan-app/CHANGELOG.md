@@ -7,7 +7,31 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Journey is speak-first when Whisper is available.** When on-device speech
+  recognition is usable, production and echo moments become live, Whisper-graded
+  speaking instead of tap/type: the new-word "listen & echo" debut and a strong
+  share of "type what you hear" cards now ask you to say it aloud and are scored
+  by Whisper. Installing a Whisper model also visibly increases how often live
+  speaking appears in the mix. Fully graceful — if you can't speak right now,
+  declining the mic reverts the whole session back to typing, and no card ever
+  forces speech with no way out. Some typing practice is always kept for variety.
+- **A live mic waveform while you speak.** The pronunciation card now shows a
+  small animated waveform driven by your real microphone level, so it reads
+  unmistakably as "I'm listening to you now." Hosts without a level signal fall
+  back to a gentle breathing animation; respects reduced-motion.
+- **A confidence read on spoken answers.** After a graded speaking card, a small
+  accuracy percentage appears beside the ✓/✗ — a quick, satisfying read of how
+  close your pronunciation was, not just pass/fail.
+
 ### Fixed
+- **Checkpoints no longer loop forever once you're caught up.** When the day's
+  goal was met and nothing was due, the session could serve the same known-item
+  practice endlessly and re-show a checkpoint every few cards — tapping
+  "Continue" appeared to reload the same screen with no way to finish. The
+  session now serves a short, bounded cool-down of light practice and then winds
+  down gracefully to a clear "caught up" state, so "Continue" always makes real
+  progress or ends the session.
 - **The next-card hint no longer looks like a blank drawer.** After a correct
   answer the "swipe up to continue" affordance was a card-coloured sliver pinned
   to the bottom and nudged down 24px, so on gesture-nav phones it read as an

@@ -117,6 +117,41 @@ function speakEchoCard(graph: { items: Record<string, { ref: unknown }> }, itemI
   }
 }
 
+/** A native intro_echo / listen_type EngineCard over a fixture item — fed to
+ *  prepareEngineCard to exercise the speak-first UPGRADE seam (§ core). */
+function echoTypeCard(
+  graph: { items: Record<string, { ref: unknown }> },
+  activityType: "intro_echo" | "listen_type",
+  itemId: string,
+  specId: string,
+  meta: Partial<EngineCard["meta"]> = {},
+): EngineCard {
+  const item = graph.items[itemId]
+  return {
+    spec: {
+      specId,
+      activityType,
+      itemRefs: [item.ref as EngineCard["spec"]["itemRefs"][number]],
+      targetLang: "en",
+      timeboxSec: 12,
+      // intro_echo debuts carry params.intro; the upgrade must preserve the
+      // debut identity so quota debiting is unchanged.
+      ...(activityType === "intro_echo" ? { params: { intro: true } } : {}),
+    } as EngineCard["spec"],
+    meta: {
+      pool: activityType === "intro_echo" ? "new" : "due",
+      strand: activityType === "intro_echo" ? "input" : "language",
+      form: activityType === "intro_echo" ? 0 : 2,
+      estSec: 12,
+      provider: "native",
+      celebration: "normal",
+      coolDownCandidate: false,
+      ...(activityType === "intro_echo" ? { unscored: true } : {}),
+      ...meta,
+    },
+  }
+}
+
 /** A native EngineCard of `activityType` over a single-token WORD ref — fed to
  *  prepareEngineCard to exercise the degenerate multi-token reroute guard. */
 function wordCard(
@@ -427,6 +462,123 @@ test("STT decline flow (contract #4): declining the install swaps the rest of th
   assert.ok(after && after.kind === "exercise")
   assert.equal(after.spec.activityType, "listen_type", "post-decline speak_echo swaps")
   assert.equal(after.prepared.sttFallback, true)
+})
+
+// -------------------------------------------------------------- speak-first
+// (§ core): when STT is usable, production/echo moments become Whisper-graded
+// speaking. intro_echo ALWAYS upgrades; listen_type upgrades a strong share.
+// Unsupported/declined must NEVER upgrade (a learner who can't speak is never
+// trapped — the graceful fallback is sacred).
+
+test("speak-first: intro_echo upgrades to speak_echo when STT usable, not when unsupported", async () => {
+  const itemOf = (h: { graph: { items: Record<string, unknown> } }) => Object.keys(h.graph.items)[0]
+
+  for (const state of ["installed", "modelMissing"] as const) {
+    const { runtime, harness, logs } = await makeRuntime({ sttReadiness: state })
+    await startFeed(runtime)
+    const card = await runtime.prepareEngineCard(
+      echoTypeCard(harness.graph, "intro_echo", itemOf(harness), `intro-${state}`),
+    )
+    assert.ok(card && card.kind === "exercise", `${state}: prepared an exercise`)
+    assert.equal(card.spec.activityType, "speak_echo", `${state}: intro_echo upgrades to speak_echo`)
+    assert.equal(card.prepared.sttUpgraded, true, `${state}: carries sttUpgraded`)
+    assert.equal(card.spec.modelNeeds?.includes("stt"), true, `${state}: needs stt`)
+    // the debut identity (params.intro) survives so quota debiting is unchanged
+    assert.equal(card.spec.params?.intro, true, `${state}: still a debut`)
+    assert.ok(
+      logs.some((l) => l.event === "journey_speak_upgrade" && l.data.from === "intro_echo"),
+      `${state}: upgrade logged`,
+    )
+    await runtime.endSession("quit")
+  }
+
+  // unsupported: NEVER upgrade — intro_echo stays a listen-and-echo debut.
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "unsupported" })
+  await startFeed(runtime)
+  const card = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "intro_echo", itemOf(harness), "intro-unsupported"),
+  )
+  assert.ok(card && card.kind === "exercise")
+  assert.equal(card.spec.activityType, "intro_echo", "unsupported: no upgrade")
+  assert.ok(!card.prepared.sttUpgraded, "unsupported: not marked upgraded")
+})
+
+test("speak-first: a strong share of listen_type upgrades to speak_echo when STT usable", async () => {
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "installed" })
+  await startFeed(runtime)
+  const itemIds = Object.keys(harness.graph.items)
+  let upgraded = 0
+  let kept = 0
+  // Many distinct specIds → the deterministic per-card share splits speak vs type.
+  for (let i = 0; i < 40; i++) {
+    const itemId = itemIds[i % itemIds.length]
+    const card = await runtime.prepareEngineCard(
+      echoTypeCard(harness.graph, "listen_type", itemId, `lt-${i}`),
+    )
+    assert.ok(card && card.kind === "exercise")
+    if (card.spec.activityType === "speak_echo") {
+      assert.equal(card.prepared.sttUpgraded, true)
+      upgraded += 1
+    } else {
+      assert.equal(card.spec.activityType, "listen_type", "kept cards stay listen_type")
+      kept += 1
+    }
+  }
+  // Speaking should DOMINATE production, but some typing variety is preserved.
+  assert.ok(upgraded > kept, `speaking should dominate (upgraded=${upgraded} kept=${kept})`)
+  assert.ok(kept > 0, `some listen_type variety preserved (kept=${kept})`)
+})
+
+test("speak-first: unsupported never upgrades listen_type", async () => {
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "unsupported" })
+  await startFeed(runtime)
+  const itemIds = Object.keys(harness.graph.items)
+  for (let i = 0; i < 12; i++) {
+    const card = await runtime.prepareEngineCard(
+      echoTypeCard(harness.graph, "listen_type", itemIds[i % itemIds.length], `lt-uns-${i}`),
+    )
+    assert.ok(card && card.kind === "exercise")
+    assert.equal(card.spec.activityType, "listen_type", "unsupported: listen_type never upgrades")
+  }
+})
+
+test("speak-first: declining the install reverts queued UPGRADED speak cards too (never trapped)", async () => {
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "modelMissing" })
+  await startFeed(runtime)
+  const itemIds = Object.keys(harness.graph.items)
+
+  // Queue an upgraded intro_echo (always upgrades) so it sits in `prepared`.
+  const upgradedIntro = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "intro_echo", itemIds[0], "intro-decl"),
+  )
+  assert.ok(upgradedIntro && upgradedIntro.kind === "exercise")
+  assert.equal(upgradedIntro.spec.activityType, "speak_echo", "pre-decline: intro upgraded to speak")
+
+  // Decline arrives on the CURRENT card.
+  const cur = runtime.current()
+  assert.ok(cur, "a current card is mounted")
+  runtime.submitResult(cur!.cardId, {
+    specId: cur!.cardId,
+    score: 1,
+    perItem: [],
+    durationMs: 100,
+    detail: { flags: { sttDeclined: true } },
+  })
+
+  // After the decline: further echo/type cards are NO LONGER upgraded — they
+  // revert to their non-speaking form so the learner is never forced to speak.
+  const afterIntro = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "intro_echo", itemIds[0], "intro-after-decl"),
+  )
+  assert.ok(afterIntro && afterIntro.kind === "exercise")
+  assert.equal(afterIntro.spec.activityType, "intro_echo", "post-decline: intro no longer upgrades")
+  assert.ok(!afterIntro.prepared.sttUpgraded, "post-decline: not marked upgraded")
+
+  const afterType = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "listen_type", itemIds[0], "lt-after-decl"),
+  )
+  assert.ok(afterType && afterType.kind === "exercise")
+  assert.equal(afterType.spec.activityType, "listen_type", "post-decline: listen_type stays typing")
 })
 
 test("degenerate guard: a cloze on a single-token word reroutes (no broken blank)", async () => {

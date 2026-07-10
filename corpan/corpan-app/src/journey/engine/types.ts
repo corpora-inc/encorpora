@@ -222,6 +222,12 @@ export interface SessionState {
   lastBatchTailType: string | null
   /** Cadence checkpoints emitted so far this session (§5.4 step 3.5). */
   cadenceEmitted: number
+  /** FUN (strong-known variety) cards served this session. When the day's real
+   *  work is done (new target met, no due/repair/trickle), fun is the only pool
+   *  left and would otherwise recycle forever — so the session serves at most
+   *  FUN_WINDDOWN_CAP of it as a cool-down, then the feed exhausts gracefully
+   *  ("caught up") instead of looping the same cards + cadence checkpoint. */
+  funServedSession: number
   /** Checkpoint batches attempted this session (one boss attempt/session). */
   bossAttempted: Set<string>
   /** Active unit-boss / arc-gate tally. */
@@ -365,6 +371,10 @@ export interface FeedConstraints {
   excludeActivityTypes?: string[]
   timeboxSec?: number
   checkpointCadence?: number
+  /** True only when a Whisper model is actually INSTALLED on disk (not merely
+   *  supported-but-missing). The mixer up-weights the output (speaking) strand
+   *  so installing STT visibly increases live speaking (§ speak-first). */
+  sttInstalled?: boolean
 }
 
 export interface ApplyOutcome {
