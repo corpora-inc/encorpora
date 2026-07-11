@@ -56,7 +56,13 @@ export function advanceRule(
   // fast learners flick on instantly, readers take their time.
   if (hasReadableMeaning(card)) return { kind: "swipe" }
   const t = card.spec.activityType
-  if (t === "speak_echo") return { kind: "auto", delayMs: 1000 } // hands/mouth busy
+  // speak_echo is an explicit-completion card: the learner records (and
+  // re-records as much as they like — the cap-pronounce mic stays live), reads
+  // the per-word + score feedback, then presses the card's own Continue. That
+  // press settles + advances immediately in every mode (contract #6 (a)) — the
+  // card never auto-yanks the feedback away mid-read, and a low score never
+  // needs the double-swipe skip (the old brick).
+  if (t === "speak_echo") return { kind: "button" }
   // Explicit-completion cards: the learner presses Continue (intro_echo) or
   // reveals + continues (flip_recall). That press advances immediately in
   // every mode (contract #6 (a)) — no lingering settled card to swipe past.

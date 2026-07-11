@@ -7,6 +7,27 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Journey's SPEAK card is now parlometron-grade.** The card mounts the same
+  cap-pronounce surface the standalone pronunciation coach uses, but Journey
+  never themed it — so on the dark feed the target phrase rendered near-black
+  ("Where are you from?" was barely visible), the per-word pronunciation pills
+  and the overall %-score banner came out light-theme-on-dark, and the card read
+  as a blank box with a plain mic. Fixed by mapping the whole `--capPron-*`
+  surface onto Journey's design tokens (dark-mode aware for free): the phrase is
+  now a high-contrast hero, each word is coloured by how well it was said, and
+  the overall score shows prominently — the same feedback as the coach, by
+  construction (single source of truth, not a stripped custom UI).
+- **Speaking no longer bricks you.** A low score used to leave the card in an
+  un-settled limbo whose only exit was a double-swipe "swipe again to skip"
+  (≈5 flicks). The card now shows an unmistakable **Continue** the moment you've
+  had a go, and the mic stays live so **Try again** is simply speaking again —
+  unlimited re-records, and a low score never traps you. speak_echo is now a
+  clean button-advance card (one press settles + moves on).
+- Removed the redundant Journey-side "Speak now" mic cue that sat above the
+  capability's own mic stage (the capability renders the full mic + live
+  waveform itself).
+
 ## [0.20.4] — 2026-07-11
 
 ### Fixed

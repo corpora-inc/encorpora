@@ -56,6 +56,10 @@ test("word card with a meaning/etymology waits for a swipe — never auto-advanc
   assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "swipe" })
   // A word with no meaning still auto-advances fast (no regression).
   assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
+  // A speak card carrying a meaning still waits for a deliberate action (it is
+  // already button-advance below, but the meaning branch must not regress it to
+  // an auto-yank).
+  assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "swipe" })
 })
 
 test("failed cards never auto-advance", () => {
@@ -70,12 +74,17 @@ test("listen cards: listening run arms auto even in swipe mode", () => {
   })
 })
 
-test("speak_echo auto-advances within the block regardless of mode", () => {
-  assert.deepEqual(advanceRule(exercise("speak_echo"), "swipe"), { kind: "auto", delayMs: 1000 })
+test("speak_echo is button-advance in every mode — the card's own Continue settles + advances", () => {
+  // The cap-pronounce round stays open for unlimited re-records; the learner
+  // reads the per-word + score feedback, then presses Continue. A low score
+  // must never fall back to the double-swipe skip brick — so even a "failed"
+  // speak resolves to an explicit action, not an auto-yank.
+  assert.deepEqual(advanceRule(exercise("speak_echo"), "swipe"), { kind: "button" })
+  assert.deepEqual(advanceRule(exercise("speak_echo"), "auto"), { kind: "button" })
 })
 
-test("intro_echo + flip_recall are button-advance in every mode (explicit press)", () => {
-  for (const type of ["intro_echo", "flip_recall"] as const) {
+test("intro_echo + flip_recall + speak_echo are button-advance in every mode (explicit press)", () => {
+  for (const type of ["intro_echo", "flip_recall", "speak_echo"] as const) {
     assert.deepEqual(advanceRule(exercise(type), "swipe"), { kind: "button" }, type)
     assert.deepEqual(advanceRule(exercise(type), "auto"), { kind: "button" }, type)
   }

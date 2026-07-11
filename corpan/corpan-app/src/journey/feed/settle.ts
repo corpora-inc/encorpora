@@ -5,6 +5,28 @@
 
 export type SettleAttempt = "first" | "retry" | "failed"
 
+/**
+ * speak_echo owns its OWN retry loop inside the cap-pronounce round (the mic
+ * stays live between attempts; the learner re-records freely, reads the
+ * per-word + score feedback, then presses the card's Continue). So its
+ * onOutcome is a FINAL, single-shot decision — never a first miss to route
+ * through the tap/type scaffold (which would flash "incorrect" and demand a
+ * second Continue press on a low score: the old speak brick). Everything else
+ * keeps the scaffold retry.
+ */
+export function isSingleShotSettle(activityType: string): boolean {
+  return activityType === "speak_echo"
+}
+
+/**
+ * The settle attempt tier for a single-shot card given its pass fraction: a
+ * pass (≥ 0.6) settles as `first`, a low score as `failed`. Either way it
+ * settles in ONE call — the learner is never trapped by a low score.
+ */
+export function singleShotAttempt(fraction: number): SettleAttempt {
+  return fraction >= 0.6 ? "first" : "failed"
+}
+
 export interface StampInput {
   attempt: SettleAttempt
   /** 0..1 fraction of the card answered correctly. */

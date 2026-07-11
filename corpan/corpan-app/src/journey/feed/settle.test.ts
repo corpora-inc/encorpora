@@ -3,7 +3,13 @@
 
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { celebrationFor, settleOk, settleStamp } from "./settle.ts"
+import {
+  celebrationFor,
+  isSingleShotSettle,
+  settleOk,
+  settleStamp,
+  singleShotAttempt,
+} from "./settle.ts"
 
 test("unscored card never shows a correct/incorrect stamp", () => {
   // The exact intro_echo path: emits correct:true, first attempt.
@@ -52,6 +58,27 @@ test("clean fast first-try is tier 1; a hinted/slow pass is a quiet tier 0", () 
     celebrationFor({ attempt: "retry", fraction: 1, unscored: false, fast: true, hintsUsed: 1, combo: 0 }),
     { tier: 0 },
   )
+})
+
+test("speak_echo is single-shot (owns its own in-card retry); tap/type cards are not", () => {
+  assert.equal(isSingleShotSettle("speak_echo"), true)
+  // Tap/type cards keep the miss-scaffold retry.
+  assert.equal(isSingleShotSettle("choice_pick"), false)
+  assert.equal(isSingleShotSettle("listen_type"), false)
+  assert.equal(isSingleShotSettle("cloze"), false)
+})
+
+test("single-shot settle grades in ONE call — a low score never traps (settles failed, not a scaffold miss)", () => {
+  // A pass settles as a clean first-try.
+  assert.equal(singleShotAttempt(1), "first")
+  assert.equal(singleShotAttempt(0.6), "first")
+  // A low score settles straight to failed — NOT a first miss that would demand
+  // a second Continue press (the old speak brick). One press always moves on.
+  assert.equal(singleShotAttempt(0.59), "failed")
+  assert.equal(singleShotAttempt(0), "failed")
+  // Either outcome is a terminal settle attempt, so onOutcome resolves the card
+  // in a single call — the Continue press advances immediately.
+  assert.notEqual(singleShotAttempt(0.4), "retry")
 })
 
 test("every 5th perfect combo carries the combo count", () => {

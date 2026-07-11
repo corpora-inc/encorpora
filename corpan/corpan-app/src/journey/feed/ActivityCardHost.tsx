@@ -16,7 +16,7 @@ import { rendererFor } from "../exercises/index.ts"
 import type { ExerciseMode, SpeakFn } from "../exercises/types.ts"
 import { ResultStamp } from "../exercises/common/ResultStamp.tsx"
 import { WordEnrichment } from "../cards/WordEnrichment.tsx"
-import { celebrationFor, settleOk, settleStamp } from "./settle.ts"
+import { celebrationFor, isSingleShotSettle, settleOk, settleStamp, singleShotAttempt } from "./settle.ts"
 import type { FeedCard, RawOutcome, ScaffoldState } from "../types.ts"
 
 const FAST_MS = 6000
@@ -107,6 +107,9 @@ export function ActivityCardHost(props: {
   }
 
   const isMultiItem = prepared.items.length > 1 && prepared.spec.activityType === "match_pairs"
+  // speak_echo owns its OWN retry loop inside the cap-pronounce round, so its
+  // onOutcome is a FINAL, single-shot decision — see isSingleShotSettle.
+  const singleShot = isSingleShotSettle(prepared.spec.activityType)
 
   const onOutcome = (outcome: RawOutcome) => {
     if (doneRef.current) return
@@ -117,6 +120,14 @@ export function ActivityCardHost(props: {
     }
     const passed =
       typeof outcome.correct === "number" ? outcome.correct >= 0.6 : outcome.correct === true
+    if (singleShot) {
+      // Best-attempt score already reflects the learner's practice; grade it
+      // straight through in one shot. No scaffold retry, never trapped.
+      const fraction =
+        typeof outcome.correct === "number" ? outcome.correct : outcome.correct ? 1 : 0
+      settle(outcome, singleShotAttempt(fraction))
+      return
+    }
     if (passed || isMultiItem) {
       settle(outcome, scaffold.misses === 0 ? "first" : "retry")
       return
