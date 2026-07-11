@@ -50,6 +50,11 @@ export function advanceRule(
       break
   }
   if (card.rare) return { kind: "manual" } // anticipation is never rushed
+  // A settled word card carrying a meaning/etymology paragraph is a READING
+  // beat — never auto-advance it out from under the learner (a 50-word etymology
+  // in 2.2s is unreadable). Wait for a deliberate swipe (the chevron cues it);
+  // fast learners flick on instantly, readers take their time.
+  if (hasReadableMeaning(card)) return { kind: "swipe" }
   const t = card.spec.activityType
   if (t === "speak_echo") return { kind: "auto", delayMs: 1000 } // hands/mouth busy
   // Explicit-completion cards: the learner presses Continue (intro_echo) or
@@ -68,4 +73,14 @@ export function advanceRule(
 /** Listening-run detection (§3.2): ≥2 consecutive listen_* cards queued. */
 export function isListeningRunStart(current: FeedCard, next: FeedCard | null): boolean {
   return isListeningCard(current) && next !== null && isListeningCard(next)
+}
+
+/** A word exercise whose resolved item carries a wordpan meaning/etymology
+ *  paragraph. The post-answer enrichment renders real reading (often 40–60
+ *  words), so the settled card must not auto-advance — the learner reads and
+ *  swipes on when ready. (Function declaration → hoisted; safe to call above.) */
+function hasReadableMeaning(card: FeedCard): boolean {
+  if (card.kind !== "exercise") return false
+  const extras = card.prepared.items[0]?.extras
+  return extras?.kind === "word" && !!(extras.explanationNative || extras.explanationTarget)
 }
