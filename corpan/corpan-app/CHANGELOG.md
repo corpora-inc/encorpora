@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.3] — 2026-07-10
+
 ### Added
 - **Game interludes in the scroll — drop into a game for one phrase, then keep
   scrolling.** A lightweight pack activity (e.g. Lingo Hero) that drills the
