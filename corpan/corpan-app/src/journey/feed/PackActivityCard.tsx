@@ -52,6 +52,7 @@ export function PackActivityCard(props: {
       <InterludePoster
         poster={poster}
         rare={card.rare}
+        interludeKind={card.interludeKind}
         pending={props.pending}
         onPlay={props.onPlay}
       />

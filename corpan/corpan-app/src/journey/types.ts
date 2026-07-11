@@ -67,6 +67,10 @@ export type FeedCard =
        *  the full poster + cold mount. Derived by the runtime from the activity's
        *  estimated duration + provider (never invented by a pack). */
       interlude?: boolean
+      /** For an interlude, whether it is a GAME spike or a READER breath
+       *  (PREMIUM_SCROLL §2.2/§2.3) — drives the compact poster's cue/icon
+       *  independently of the rare-variant path. Absent on non-interludes. */
+      interludeKind?: "game" | "reader"
     }
   | { kind: "capability"; cardId: string; capabilityId: string; spec: ActivitySpec; engine: EngineCard; prepared: PreparedExercise | null }
   | { kind: "blockIntro"; cardId: string; modelNeeds: ("stt" | "llm")[]; blockLen: number }

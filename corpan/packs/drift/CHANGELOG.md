@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Wired into the app as an auto-installing system pack: the Journey mixer now
+  schedules `drift:read` as a reader interlude, discovered from this manifest's
+  `activities` via the app's catalog (`web/data/packs.json` + catalog-v3).
+
 ## [0.1.0] - 2026-07-10
 
 ### Added

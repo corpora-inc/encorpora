@@ -23,6 +23,7 @@ import {
 import { getAppVersion } from "../lib/appVersion"
 import { isAndroid } from "../util/browser"
 import { useCatalogStore } from "../store/catalog"
+import { useGamesStore } from "../store/games"
 import { useDataPacksStore } from "../store/dataPacks"
 import { useEntitlementStore } from "../store/entitlements"
 import { useJourneyPacksStore } from "../store/journeyPacks"
@@ -38,6 +39,7 @@ import { isWordPackInstalled, wordPackIdCandidates } from "../util/wordPack"
 import type { CapabilityHostApi } from "@shared/capabilities/core"
 import { allFolders } from "@shared/capabilities/pronounce/src/modelRegistry"
 import { createJourneyEngine, itemCardCodec, systemClock } from "./engine/index.ts"
+import { buildInterludeProviders } from "./interludeRegistry.ts"
 import { createResolver, type ResolveContext, type ResolverDeps } from "./content/resolve.ts"
 import { createJourneyQuota } from "./quota.ts"
 import { courseKeyOf, localDayOf } from "../store/journey.ts"
@@ -446,6 +448,17 @@ export async function buildJourneyDeps(opts: {
     isSubscribed: () => useEntitlementStore.getState().subscription.active,
   })
 
+  // Installed interlude packs (game spikes + reader breaths), classified from
+  // the live app catalog by packType and keyed by their declared `activities`
+  // (PREMIUM_SCROLL §2.2/§2.3). The SystemPackInstaller auto-installs the tiny
+  // core interludes (wordfall, drift) so this is non-empty on a fresh device
+  // without any nagging prompt. Snapshotted at session build — a mid-session
+  // install lights up next session (a resolver-style invalidate is overkill for
+  // a variety garnish).
+  const catalog = useCatalogStore.getState().catalog
+  const installedIds = new Set(Object.keys(useGamesStore.getState().games))
+  const interludes = buildInterludeProviders(catalog, installedIds)
+
   const deps: JourneyRuntimeDeps = {
     engine,
     resolver,
@@ -454,8 +467,15 @@ export async function buildJourneyDeps(opts: {
     graph,
     courseKey: courseKeyOf(opts.stackId, courseId),
     quota,
-    ...(opts.checkpointCadence !== undefined
-      ? { constraints: { checkpointCadence: opts.checkpointCadence } }
+    ...((opts.checkpointCadence !== undefined || interludes.length > 0)
+      ? {
+          constraints: {
+            ...(opts.checkpointCadence !== undefined
+              ? { checkpointCadence: opts.checkpointCadence }
+              : {}),
+            ...(interludes.length > 0 ? { interludes } : {}),
+          },
+        }
       : {}),
     record: localAnalyticsRecord(courseId),
     streakPorts: journeyStreakPorts(),

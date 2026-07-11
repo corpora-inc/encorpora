@@ -219,6 +219,24 @@ function readManifestLocalized(pack) {
   return out;
 }
 
+// Pull the pack's `activities` (Journey activity declarations) off its
+// manifest.json and forward them VERBATIM into the catalog entry
+// (activity-contract.md §4.3). This is how the Journey scheduler discovers
+// which installed packs can serve as interludes and what item kinds each
+// consumes (e.g. wordfall:catch, drift:read, lingo_hero:round). Returns `{}`
+// when the manifest is missing or declares no activities.
+function readManifestActivities(pack) {
+  const manifest = readManifest(pack);
+  if (
+    manifest &&
+    Array.isArray(manifest.activities) &&
+    manifest.activities.length > 0
+  ) {
+    return { activities: manifest.activities };
+  }
+  return {};
+}
+
 // Single source of truth for experience names + blurbs: the existing
 // `experiences.<id>.{name, blurb}` keys in
 // `corpan/corpan-app/public/locales/<lang>/common.json`. Translators have
@@ -438,6 +456,7 @@ function buildPages(outputDir) {
     ...pack,
     version: readManifestVersion(pack),
     ...readManifestLocalized(pack),
+    ...readManifestActivities(pack),
   }));
   packsData.forEach(assertCatalogHostCompatibility);
   assertVersionedCompatibilityRoutes(packsData);
@@ -617,6 +636,14 @@ function buildPages(outputDir) {
       ...(pack.maxAppVersion ? { maxAppVersion: pack.maxAppVersion } : {}),
       channel: pack.channel || "stable",
       packType: pack.packType || "game",
+      // System packs auto-install on launch (SystemPackInstaller) — no user
+      // action. Tiny core interludes (wordfall, drift) ride this path so they
+      // are present the moment the Journey scroll wants to schedule one.
+      ...(pack.systemPack === true ? { systemPack: true } : {}),
+      // Journey activity declarations (forwarded verbatim from the manifest by
+      // readManifestActivities) — lets the Journey scheduler discover which
+      // installed packs can serve as game/reader interludes.
+      ...(pack.activities ? { activities: pack.activities } : {}),
       ...(Array.isArray(pack.platforms) && pack.platforms.length > 0
         ? { platforms: pack.platforms }
         : {}),

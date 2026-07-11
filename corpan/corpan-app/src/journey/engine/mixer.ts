@@ -15,6 +15,12 @@ import {
   MAX_LEECH_PER_BATCH,
   LEECH_SERVE_P,
   CONSTRAINT_REPAIR_PASSES,
+  GAME_INTERLUDE_MIN_GAP,
+  GAME_INTERLUDE_JITTER,
+  READER_INTERLUDE_MIN_GAP,
+  READER_INTERLUDE_JITTER,
+  INTERLUDE_BACK_TO_BACK_FLOOR,
+  INTERLUDE_HOT_COMBO,
   NEAR_WIN_R_MIN,
   OPENER_R_MAX,
   OPENER_R_MIN,
@@ -57,6 +63,7 @@ import type {
   CourseState,
   EngineCard,
   FeedConstraints,
+  InterludeProvider,
   IssuedCard,
   ItemCard,
   PoolTag,
@@ -108,6 +115,9 @@ interface Slot {
   leech?: boolean
   pinTail?: boolean
   checkpointId?: string
+  /** Set on an interlude slot (PREMIUM_SCROLL §2.2/§2.3) so finalize can update
+   *  the session's interlude cadence bookkeeping against the ACTUAL position. */
+  interlude?: "game" | "reader"
 }
 
 interface NormalizedConstraints {
@@ -117,11 +127,18 @@ interface NormalizedConstraints {
   timeboxSec?: number
   cadence: number
   sttInstalled: boolean
+  interludes: InterludeProvider[]
+  combo: number
 }
 
 function normalizeConstraints(c?: FeedConstraints): NormalizedConstraints {
   const providers = new Set(c?.availableProviders ?? [])
   providers.add("native")
+  // An interlude pack's provider is implicitly available (it was installed +
+  // declared) — fold it into the provider set so its slot survives the
+  // template/provider filters even when the caller only listed "native".
+  const interludes = c?.interludes ?? []
+  for (const il of interludes) providers.add(il.provider)
   return {
     providers,
     models: new Set<ModelNeed>(c?.modelsAvailable ?? ["stt", "llm", "tts"]),
@@ -129,6 +146,8 @@ function normalizeConstraints(c?: FeedConstraints): NormalizedConstraints {
     timeboxSec: c?.timeboxSec,
     cadence: c?.checkpointCadence ?? DEFAULT_CHECKPOINT_CADENCE,
     sttInstalled: c?.sttInstalled === true,
+    interludes,
+    combo: c?.combo ?? 0,
   }
 }
 
@@ -360,6 +379,102 @@ function modelKey(modelNeeds: ModelNeed[], pinTail?: boolean): number {
   if (modelNeeds.includes("stt")) return 2
   if (modelNeeds.includes("tts")) return 1
   return 0
+}
+
+/**
+ * Interlude scheduling (PREMIUM_SCROLL §2.2/§2.3, the variety engine). Given the
+ * installed interlude packs (game + reader) and the session's cadence
+ * bookkeeping, decide whether THIS batch should carry an interlude and, if so,
+ * WHICH kind — then bind it to a featured item. Returns the slot to append, or
+ * null (no interlude this batch).
+ *
+ * Selection rules (encoded as preferences, not hard walls):
+ *  - never two interludes back-to-back (INTERLUDE_BACK_TO_BACK_FLOOR);
+ *  - a game spike is eligible on its own ~1-in-12–18 cadence; a reader breath on
+ *    its ~1-in-20–30 cadence (each with a small seeded jitter so it isn't
+ *    metronomic);
+ *  - when both are eligible, pick by arousal: a HOT combo (cruise / high combo)
+ *    prefers a reader (comedown); a COLD stretch (struggle / combo 0) prefers a
+ *    game (re-ignite); otherwise whichever is more "overdue" against its own
+ *    cadence.
+ * The featured item is the learner's CURRENT phrase: the first real content slot
+ * already placed in this batch (so wordfall drills / drift features exactly what
+ * the scroll is teaching right now). Item-kind is matched against the pack's
+ * declared `itemKinds`.
+ */
+function chooseInterlude(
+  bag: MixerBag,
+  cons: NormalizedConstraints,
+  slots: Slot[],
+  combo: number,
+): Slot | null {
+  const interludes = cons.interludes
+  if (interludes.length === 0) return null
+
+  const { session } = bag
+  const posAfter = session.emitIndex + slots.length // where the interlude would sit
+
+  // Back-to-back floor: at least a few fast core cards since the last interlude.
+  if (session.lastInterludeEmit >= 0 && posAfter - session.lastInterludeEmit < INTERLUDE_BACK_TO_BACK_FLOOR) {
+    return null
+  }
+
+  // A featured item to bind — the current phrase (first real content slot this
+  // batch). Interludes ride real content; a contentless batch gets none.
+  const featured = slots.find(
+    (s) => s.itemIds.length > 0 && !s.checkpoint && s.pool !== "checkpoint" && s.pool !== "jump",
+  )
+  if (!featured) return null
+  const featuredId = featured.itemIds[0]
+  const featuredKind = bag.gidx.graph.items[featuredId]?.kind
+  if (!featuredKind) return null
+
+  const consumes = (il: InterludeProvider): boolean => il.itemKinds.includes(featuredKind)
+  const games = interludes.filter((il) => il.kind === "game" && consumes(il))
+  const readers = interludes.filter((il) => il.kind === "reader" && consumes(il))
+
+  // Own-cadence eligibility (with a small seeded jitter off the session PRNG so
+  // the exact spike card isn't metronomic — deterministic under the session seed).
+  const gameGap = GAME_INTERLUDE_MIN_GAP + (GAME_INTERLUDE_JITTER > 0 ? session.rng.int(GAME_INTERLUDE_JITTER + 1) : 0)
+  const readerGap = READER_INTERLUDE_MIN_GAP + (READER_INTERLUDE_JITTER > 0 ? session.rng.int(READER_INTERLUDE_JITTER + 1) : 0)
+  const gameSince = session.lastGameInterludeEmit < 0 ? Infinity : posAfter - session.lastGameInterludeEmit
+  const readerSince = session.lastReaderInterludeEmit < 0 ? Infinity : posAfter - session.lastReaderInterludeEmit
+  const gameEligible = games.length > 0 && gameSince >= gameGap
+  const readerEligible = readers.length > 0 && readerSince >= readerGap
+  if (!gameEligible && !readerEligible) return null
+
+  // Arousal-aware pick when both are eligible.
+  const hot = combo >= INTERLUDE_HOT_COMBO || session.flow.mode === "cruise"
+  const cold = combo === 0 || session.flow.mode === "struggle"
+  let kind: "game" | "reader"
+  if (gameEligible && readerEligible) {
+    if (hot) kind = "reader"
+    else if (cold) kind = "game"
+    // otherwise: whichever is more overdue against its own cadence
+    else kind = gameSince - gameGap >= readerSince - readerGap ? "game" : "reader"
+  } else {
+    kind = gameEligible ? "game" : "reader"
+  }
+
+  const pool = kind === "game" ? games : readers
+  const il = pool[bag.session.rng.int(pool.length)]
+  if (!il) return null
+
+  return {
+    itemIds: [featuredId],
+    activityType: il.activityType,
+    form: 1,
+    pool: "fun",
+    strand: "fluency",
+    guessable: false,
+    estSec: il.estSec,
+    modelNeeds: [],
+    provider: il.provider,
+    celebration: "normal",
+    unscored: kind === "reader", // a reader interlude is unscored (segments read)
+    pinTail: true, // sit at the batch tail, after the content it features
+    interlude: kind,
+  }
 }
 
 /** Lesson recipe slot → pool + candidate items (engine.md §5.10). The debt
@@ -788,6 +903,19 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     }
   }
 
+  // -- 3.4 interlude scheduling (PREMIUM_SCROLL §2.2/§2.3) -------------------------
+  // Drop in a game spike / reader breath among the installed interlude packs,
+  // chosen by kind (game vs reader) from their DECLARED activities — never a
+  // hardcoded provider. At most one per batch; bound to the current phrase; the
+  // variety engine's cadence + never-two-back-to-back rules live in
+  // chooseInterlude. It sits at the batch tail (pinTail) after the content it
+  // features, and only when the batch actually carried that content.
+  const interludeSlot = chooseInterlude(bag, cons, slots, cons.combo)
+  if (interludeSlot) slots.push(interludeSlot)
+  // Session bookkeeping (lastInterludeEmit / lastGame/ReaderInterludeEmit) is
+  // updated in finalize() against the ACTUAL emitted position — the pinTail
+  // partition + later add/drop steps can shift a slot's index.
+
   // -- 3.5 cadence checkpoint (R5) -------------------------------------------------
   // A cadence checkpoint is a MILESTONE, not a gate: an occasional dopamine beat
   // ("you hit your goal — keep going?") that ALWAYS leads to more varied content
@@ -1089,7 +1217,11 @@ function enforceItemGapFinal(bag: MixerBag, slots: Slot[]): void {
   const posOf = (i: number): number => bag.session.emitIndex + i
   for (let i = 0; i < slots.length; i++) {
     const s = slots[i]
-    if (s.itemIds.length === 0 || s.checkpoint) continue
+    // An interlude DELIBERATELY re-features the current phrase (the item a
+    // content slot just taught) — it is exempt from the same-item gap, exactly
+    // as it is from adjacency (a game round / reader passage over the same
+    // phrase is the whole point).
+    if (s.itemIds.length === 0 || s.checkpoint || s.interlude) continue
     const violates = (idx: number): boolean => {
       for (const itemId of slots[idx].itemIds) {
         let prev = bag.session.lastEmit.get(itemId)
@@ -1154,6 +1286,14 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
       params.b_distractor = session.flow.mode === "cruise" ? course.theta : course.theta - 0.5
     }
     if (s.debutIntro) params.intro = true
+    // Interlude cadence bookkeeping against the ACTUAL emitted position
+    // (PREMIUM_SCROLL §2.2/§2.3): the pinTail partition can shift a slot's
+    // index, so we record it here, not at scheduling time.
+    if (s.interlude) {
+      session.lastInterludeEmit = position
+      if (s.interlude === "game") session.lastGameInterludeEmit = position
+      else session.lastReaderInterludeEmit = position
+    }
     const issued: IssuedCard = {
       specId,
       activityType: s.activityType,
@@ -1170,14 +1310,20 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
       checkpointId: s.checkpointId,
     }
     session.issued.set(specId, issued)
-    for (const itemId of s.itemIds) {
-      session.lastEmit.set(itemId, position)
-      if (s.isReplay) session.replayedItems.add(itemId) // one replay per session
-      const card = bag.cards.get(itemId)
-      if (card && isLeech(card)) recordLeechServing(course, itemId, s.activityType)
-    }
-    if (s.itemIds.length > 0) {
-      pushLast40(session, { activityType: s.activityType, strand: s.strand, itemIds: [...s.itemIds] })
+    // An interlude re-features an already-emitted item as a pack round/passage;
+    // it must NOT overwrite that item's true spacing (lastEmit) or count toward
+    // the strand/type recency last40 window — those track native graded
+    // exposures. Everything else (issued map, wire card) is emitted normally.
+    if (!s.interlude) {
+      for (const itemId of s.itemIds) {
+        session.lastEmit.set(itemId, position)
+        if (s.isReplay) session.replayedItems.add(itemId) // one replay per session
+        const card = bag.cards.get(itemId)
+        if (card && isLeech(card)) recordLeechServing(course, itemId, s.activityType)
+      }
+      if (s.itemIds.length > 0) {
+        pushLast40(session, { activityType: s.activityType, strand: s.strand, itemIds: [...s.itemIds] })
+      }
     }
     if (s.debutIntro && s.itemIds.length === 1) {
       session.pendingDebutRecognitions.push({
@@ -1209,6 +1355,8 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
         // Presentation-only exposure for the surface (W10/W4 fix a): the
         // IssuedCard already carried this; the wire card now does too.
         ...(s.unscored ? { unscored: true } : {}),
+        // Interlude kind (game spike / reader breath) for the compact poster.
+        ...(s.interlude ? { interludeKind: s.interlude } : {}),
       },
     })
   }

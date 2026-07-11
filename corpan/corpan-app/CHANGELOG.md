@@ -20,6 +20,20 @@ Conventions: `corpan/CHANGELOGS.md`.
   `PackActivityCard` interlude branch, runtime `interlude` flag on packActivity
   cards, `ContentPackHost` warm-mount LRU seam.) New i18n keys
   `journey.interlude.gameCue` / `journey.interlude.readerCue`.
+- **Wordfall (game) and Drift (reader) now appear as scheduled interludes in the
+  Journey scroll.** The scroll drops in a Wordfall catch-the-meaning spike every
+  ~12–18 cards and a Drift micro-story breath every ~20–30 — both drilling the
+  phrase you're on now, then scrolling on. The mixer's interlude selection is no
+  longer hardcoded to one pack: it picks among whatever interlude-capable packs
+  are installed, classified as a game spike or a reader breath by their catalog
+  `packType` and keyed by their declared `activities` (a hot combo pulls a
+  reader comedown, a cold stretch a game re-ignite; never two interludes
+  back-to-back). Both packs auto-install as tiny system packs (no nagging
+  prompt). (`journey/interludeRegistry.ts`, mixer `chooseInterlude` +
+  `FeedConstraints.interludes`/`combo`, `runtimeWiring` interlude registry,
+  `packType` on `CatalogGame`, `web/pages/build.js` forwards manifest
+  `activities` + `systemPack` into catalog-v3, `web/data/packs.json` entries.)
+  No new i18n keys (reuses the interlude cues above).
 - **The Journey feed now feels like a premium object in the hand.** A tactile
   juice pass across the whole scroll: correct answers land with a soft haptic
   and a warmer, felt-mallet chime whose pitch rises as your streak climbs; the

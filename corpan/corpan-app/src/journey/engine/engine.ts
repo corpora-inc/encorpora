@@ -174,6 +174,9 @@ export function createJourneyEngine(deps: {
       checkpointRun: null,
       gauntletRun: null,
       modeTally: { cruise: 0, normal: 0, struggle: 0 },
+      lastInterludeEmit: -1,
+      lastGameInterludeEmit: -1,
+      lastReaderInterludeEmit: -1,
     }
   }
 

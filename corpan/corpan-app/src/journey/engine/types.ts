@@ -237,6 +237,18 @@ export interface SessionState {
   gauntletRun: GauntletRun | null
   /** Flow modes observed per scored card (cruise-dominance bookkeeping). */
   modeTally: { cruise: number; normal: number; struggle: number }
+
+  // -- interlude cadence bookkeeping (PREMIUM_SCROLL §2.2/§2.3) --
+  /** emitIndex of the last interlude slot (game OR reader), or -1 if none yet.
+   *  Enforces the "never two interludes back-to-back" floor + the minimum-gap
+   *  between spikes. */
+  lastInterludeEmit: number
+  /** emitIndex of the last GAME interlude specifically (its own ~1-in-12–18
+   *  cadence). -1 if none yet. */
+  lastGameInterludeEmit: number
+  /** emitIndex of the last READER interlude specifically (its own ~1-in-20–30
+   *  cadence). -1 if none yet. */
+  lastReaderInterludeEmit: number
 }
 
 // ------------------------------------------------------------------ CourseGraph
@@ -355,6 +367,10 @@ export interface EngineCard {
       summary: CheckpointSummary
     }
     coolDownCandidate: boolean
+    /** Set on a scheduled INTERLUDE pack card (PREMIUM_SCROLL §2.2/§2.3): a
+     *  game spike vs a reader breath. Drives the compact InterludePoster's cue/
+     *  icon (game vs reader) independently of the rare-variant path. */
+    interludeKind?: "game" | "reader"
   }
 }
 
@@ -366,8 +382,29 @@ export interface CheckpointSummary {
   passScore: number
 }
 
+/** An installed pack that can serve as a Journey interlude (PREMIUM_SCROLL
+ *  §2.2/§2.3). Built at wiring time from the catalog `activities` declarations
+ *  of installed packs (activity-contract.md §4.3) — the mixer picks among these
+ *  by `kind` (a game spike vs a reader breath) instead of any hardcoded
+ *  provider. `activityType` is the namespaced `<packId>:<name>` the launched
+ *  ActivitySpec carries; `provider` is the packId (== the FeedCard's packId). */
+export interface InterludeProvider {
+  provider: string
+  kind: "game" | "reader"
+  activityType: string
+  itemKinds: string[]
+  estSec: number
+}
+
 export interface FeedConstraints {
   availableProviders: string[]
+  /** Installed interlude-capable packs, game + reader. Absent/empty ⇒ the
+   *  mixer schedules NO pack interludes (native-only feed). */
+  interludes?: InterludeProvider[]
+  /** The learner's CURRENT combo (runtime-owned; feeds the interlude
+   *  variety engine — a hot combo prefers a reader breath, a cold stretch a
+   *  game spike). Absent ⇒ treated as 0. */
+  combo?: number
   modelsAvailable?: ("stt" | "llm" | "tts")[]
   excludeActivityTypes?: string[]
   timeboxSec?: number

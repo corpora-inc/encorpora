@@ -19,12 +19,15 @@ export function InterludePoster(props: {
   poster: PackPoster
   /** "miniGame" | "storyChapter" — a reader interlude reads "one passage". */
   rare?: "miniGame" | "storyChapter"
+  /** Scheduled interludes carry the kind directly (a drift reader has no
+   *  storyChapter rare-variant); it wins over the rare inference. */
+  interludeKind?: "game" | "reader"
   pending: boolean
   onPlay: () => void
 }) {
   const { t } = useTranslation()
-  const { poster, rare } = props
-  const isReader = rare === "storyChapter"
+  const { poster, rare, interludeKind } = props
+  const isReader = interludeKind ? interludeKind === "reader" : rare === "storyChapter"
   // One-line cue, never layout-jolting (fixed within the card, not in-flow).
   const cue = isReader
     ? t("journey.interlude.readerCue")

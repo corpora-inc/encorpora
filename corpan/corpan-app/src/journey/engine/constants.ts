@@ -218,6 +218,25 @@ export const LEGENDARY_ITEMS_MIN = 12
 export const LEGENDARY_ITEMS_MAX = 16
 export const LEGENDARY_MISTAKES_ALLOWED = 2
 
+// ---- interlude cadence (PREMIUM_SCROLL §2.2/§2.3) -----------------------------------
+// A game interlude is a spike (~1 in 12–18 cards); a reader interlude is a
+// down-tempo breath (~1 in 20–30). These are the felt-cadence MINIMUMS the
+// mixer schedules toward: an interlude of a given kind is eligible only once
+// its own gap since the last one of that kind is met, AND the shared floor
+// below has passed (never two interludes back-to-back; a spike needs ≥ a few
+// fast core cards to spike from). Deterministic-safe: a small seeded jitter
+// spreads the exact card so the cadence never feels metronomic.
+export const GAME_INTERLUDE_MIN_GAP = 12
+export const GAME_INTERLUDE_JITTER = 6 // → effective 12–18
+export const READER_INTERLUDE_MIN_GAP = 20
+export const READER_INTERLUDE_JITTER = 10 // → effective 20–30
+/** Never two interludes back-to-back: at least this many cards must separate
+ *  ANY two interludes (game or reader), regardless of their own cadences. */
+export const INTERLUDE_BACK_TO_BACK_FLOOR = 4
+/** Combo at/above which the learner is "hot" → prefer a reader breath
+ *  (comedown); a cold stretch (combo 0) → prefer a game spike (re-ignite). */
+export const INTERLUDE_HOT_COMBO = 4
+
 // ---- session / welcomeBack (engine.md §4.1) -----------------------------------------
 export const WELCOME_BACK_GAP_DAYS = 7
 

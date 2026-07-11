@@ -43,6 +43,10 @@ export type CatalogGame = {
    * Lets us ship Library/reader UX updates without an app-store release. */
   systemPack?: boolean
 
+  /** Pack shape: "game" | "reader" | "narration" | "data" | … Used by the
+   *  Journey interlude registry to classify a game spike vs a reader breath. */
+  packType?: string
+
   // ── Recommendation metadata (catalog-driven so new packs can be added,
   //    prioritized, and surfaced WITHOUT an app release). All optional; the
   //    app falls back to `@/experiences/registry` for built-ins / older
@@ -726,6 +730,7 @@ export const filterCatalogForApp = (
       imageUrl: entry.imageUrl,
       purchase: entry.purchase,
       systemPack: entry.systemPack,
+      packType: entry.packType,
       categories: entry.categories,
       goodForClass: entry.goodForClass,
       recommendOrder: entry.recommendOrder,

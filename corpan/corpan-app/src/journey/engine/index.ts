@@ -37,6 +37,7 @@ export {
   type EngineCard,
   type CheckpointSummary,
   type FeedConstraints,
+  type InterludeProvider,
   type ApplyOutcome,
   type DayRollover,
   type CourseSnapshot,

@@ -324,6 +324,12 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
 
   const constraints = (): FeedConstraints => ({
     availableProviders: deps.constraints?.availableProviders ?? ["native"],
+    // Installed interlude packs (game + reader) + the live combo drive the
+    // mixer's variety engine (PREMIUM_SCROLL §2.2/§2.3). The combo is the
+    // runtime's authoritative counter (submitResult below) — a hot combo pulls a
+    // reader breath, a cold stretch a game spike.
+    ...(deps.constraints?.interludes ? { interludes: deps.constraints.interludes } : {}),
+    combo,
     modelsAvailable: deps.constraints?.modelsAvailable ?? (sttUsable() ? ["stt", "tts"] : ["tts"]),
     excludeActivityTypes: deps.constraints?.excludeActivityTypes,
     timeboxSec: deps.constraints?.timeboxSec,
@@ -665,6 +671,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         poster: { name: ec.meta.provider },
         rare,
         interlude: isInterludeCard(ec),
+        ...(ec.meta.interludeKind ? { interludeKind: ec.meta.interludeKind } : {}),
       }
     }
     if (t === "speak_echo" && !sttUsable()) {

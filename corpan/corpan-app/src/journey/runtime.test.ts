@@ -8,8 +8,9 @@
 
 import { test, beforeEach } from "node:test"
 import assert from "node:assert/strict"
-import type { EngineCard } from "./engine/index.ts"
-import type { SttReadiness } from "./runtime.ts"
+import type { EngineCard, InterludeProvider } from "./engine/index.ts"
+import type { SttReadiness, ActivitySessionPort } from "./runtime.ts"
+import type { ActivityResult, ActivitySpec } from "../contentPacks/activityContract.ts"
 
 if (typeof globalThis.localStorage === "undefined") {
   const bag = new Map<string, string>()
@@ -52,6 +53,10 @@ async function makeRuntime(
     /** Drop the native (es) face from every entry — exercises the
      *  translation-integrity guard (contract #2/#3). */
     stripNative?: boolean
+    /** Installed interlude packs the mixer may schedule (game + reader). */
+    interludes?: InterludeProvider[]
+    /** Single-owner activity session for pack launches (launchPackActivity). */
+    activitySession?: ActivitySessionPort
   } = {},
 ) {
   const harness = await makeEngine({ arcs: 1, unitsPerArc: 2, skillsPerUnit: 2, itemsPerSkill: 6 })
@@ -87,6 +92,8 @@ async function makeRuntime(
     sttAvailable: opts.sttOk === undefined ? undefined : async () => opts.sttOk === true,
     sttReadiness:
       opts.sttReadiness === undefined ? undefined : async () => opts.sttReadiness as SttReadiness,
+    ...(opts.interludes ? { constraints: { interludes: opts.interludes } } : {}),
+    ...(opts.activitySession ? { activitySession: opts.activitySession } : {}),
   })
   return { runtime, harness, quotaLog, events, logs, deps }
 }
@@ -844,4 +851,131 @@ test("STT decline (contract #4): declining advances the current card (never stuc
   )
   assert.equal(runtime.history().length, historyBefore + 1, "declined card advanced into history")
   assert.notEqual(runtime.current()?.cardId, cur!.cardId, "feed moved off the dead speak card")
+})
+
+// ---------------------------------------------------------------------------
+// Interludes end-to-end (PREMIUM_SCROLL §2.2/§2.3): the two installed core
+// interludes (wordfall = game, drift = reader) are SCHEDULED by the mixer into
+// a real feed, each renders as a compact packActivity INTERLUDE card, launches
+// with a real ActivitySpec through launchPackActivity, returns an
+// ActivityResult, settles, and the feed scrolls on.
+
+const WORDFALL_IL: InterludeProvider = {
+  provider: "wordfall",
+  kind: "game",
+  activityType: "wordfall:catch",
+  itemKinds: ["phrase", "word"],
+  estSec: 30,
+}
+const DRIFT_IL: InterludeProvider = {
+  provider: "drift",
+  kind: "reader",
+  activityType: "drift:read",
+  itemKinds: ["phrase"],
+  estSec: 30,
+}
+
+/** A stub single-owner activity session that captures the launched spec and
+ *  synthesizes a terminal ActivityResult on demand (mirrors what a real pack
+ *  reports back through hostApi.journey.reportResult). */
+function stubActivitySession(): ActivitySessionPort & {
+  launched: Array<{ packId: string; spec: ActivitySpec }>
+  complete: (score: number) => void
+} {
+  let onResult:
+    | ((result: ActivityResult, meta: { synthesized: boolean; receivedAt: number }) => void)
+    | null = null
+  let current: { packId: string; spec: ActivitySpec } | null = null
+  const launched: Array<{ packId: string; spec: ActivitySpec }> = []
+  return {
+    launched,
+    begin(packId, spec, callbacks) {
+      current = { packId, spec }
+      launched.push(current)
+      onResult = callbacks.onResult
+      return true
+    },
+    end() {
+      onResult = null
+      current = null
+    },
+    complete(score: number) {
+      if (!onResult || !current) return
+      const spec = current.spec
+      onResult(
+        {
+          specId: spec.specId,
+          score,
+          perItem: spec.itemRefs.map((itemRef) => ({ itemRef, outcome: "pass" as const })),
+          durationMs: 3000,
+        },
+        { synthesized: false, receivedAt: 0 },
+      )
+    },
+  }
+}
+
+test("interludes: wordfall (game) AND drift (reader) launch with a spec and scroll on", async () => {
+  const session = stubActivitySession()
+  const { runtime } = await makeRuntime({
+    interludes: [WORDFALL_IL, DRIFT_IL],
+    activitySession: session,
+  })
+  await startFeed(runtime)
+
+  const launchedProviders = new Set<string>()
+  let interludeCardsSeen = 0
+
+  for (let guard = 0; guard < 400 && launchedProviders.size < 2; guard++) {
+    const card = runtime.current()
+    if (!card) {
+      await new Promise((r) => setTimeout(r, 3))
+      continue
+    }
+    if (card.kind === "packActivity") {
+      interludeCardsSeen += 1
+      // Both wordfall + drift are sip interludes (30s, not heavy 3D).
+      assert.equal(card.interlude, true, `${card.packId} renders as a compact interlude poster`)
+      assert.equal(
+        card.interludeKind,
+        card.packId === "drift" ? "reader" : "game",
+        "the poster knows game vs reader kind",
+      )
+      assert.match(card.spec.activityType, /^(wordfall|drift):/)
+      assert.equal(card.spec.itemRefs.length, 1, "interlude features the current phrase")
+
+      const historyBefore = runtime.history().length
+      // The feed hands the pack an ActivitySpec (never re-implements routing).
+      const ok = runtime.launchPackActivity(card, (packId, spec) => {
+        assert.equal(packId, card.packId)
+        assert.equal(spec.specId, card.spec.specId)
+      })
+      assert.equal(ok, true, "launchPackActivity accepted the interlude spec")
+      assert.equal(runtime.packReturnPending(), card.cardId, "awaiting the pack result")
+      // The pack plays one round for the phrase and reports a terminal result.
+      session.complete(card.packId === "drift" ? 1 : 0.9)
+      runtime.advance()
+      assert.equal(runtime.history().length, historyBefore + 1, "interlude settled into history")
+      launchedProviders.add(card.packId)
+    } else if (card.kind === "exercise") {
+      runtime.submitResult(card.cardId, answer(card.prepared.engine))
+      runtime.advance()
+    } else if (card.kind === "checkpoint") {
+      runtime.checkpointChoice(card.cardId, "continue")
+    } else if (card.kind === "blockIntro" || card.kind === "welcomeBack") {
+      runtime.completePresentation(card.cardId)
+    } else {
+      runtime.abandonCurrent()
+    }
+    await new Promise((r) => setTimeout(r, 1))
+  }
+
+  assert.ok(interludeCardsSeen >= 2, `saw ${interludeCardsSeen} interlude cards`)
+  assert.ok(launchedProviders.has("wordfall"), "a wordfall game interlude launched + settled")
+  assert.ok(launchedProviders.has("drift"), "a drift reader interlude launched + settled")
+  // Every launched spec was a real namespaced pack activity over one phrase.
+  for (const l of session.launched) {
+    assert.match(l.spec.activityType, /^(wordfall|drift):/)
+    assert.equal(l.spec.itemRefs.length, 1)
+  }
 })
