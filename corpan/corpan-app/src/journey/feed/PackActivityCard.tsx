@@ -14,6 +14,7 @@ import { Play } from "lucide-react"
 import { OfflineImage } from "@/components/ui/OfflineImage"
 import { useCatalogStore } from "@/store/catalog"
 import { useGamesStore } from "@/store/games"
+import { InterludePoster } from "./InterludePoster.tsx"
 import type { FeedCard, PackPoster } from "../types.ts"
 
 /** Poster identity: installed-game name → catalog (localized) name → the
@@ -42,6 +43,22 @@ export function PackActivityCard(props: {
   const { t } = useTranslation()
   const { card } = props
   const poster = usePosterIdentity(card.packId, card.poster)
+
+  // A "sip"-sized interlude (PREMIUM_SCROLL §2.2) renders as the compact
+  // InterludePoster — a quick drop-in, not a full-height game launch. The heavy
+  // full poster below stays for the §2.4 3D tent-poles + non-interlude anchors.
+  if (card.interlude) {
+    return (
+      <InterludePoster
+        poster={poster}
+        rare={card.rare}
+        interludeKind={card.interludeKind}
+        pending={props.pending}
+        onPlay={props.onPlay}
+      />
+    )
+  }
+
   const title =
     card.rare === "storyChapter"
       ? t("journey.rare.story.unlocked")

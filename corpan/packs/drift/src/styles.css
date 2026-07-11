@@ -1,0 +1,162 @@
+/* Drift — a calm micro-story reader. Cooler visual temperature than the
+   exercise cards; squared-off (8px), compact-mobile, reduced-motion safe. */
+
+.drift-root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --drift-hue: 205;
+  --drift-accent: hsl(var(--drift-hue) 70% 68%);
+  --drift-accent-soft: hsl(var(--drift-hue) 55% 78%);
+  --drift-ink: hsl(var(--drift-hue) 30% 92%);
+  --drift-ink-dim: hsl(var(--drift-hue) 20% 66%);
+  color: var(--drift-ink);
+}
+
+.drift-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  /* Cool, deep, calm gradient — the "comedown" temperature. */
+  background:
+    radial-gradient(120% 90% at 50% 12%, hsl(var(--drift-hue) 45% 22%) 0%, hsl(var(--drift-hue) 55% 10%) 55%, hsl(var(--drift-hue) 60% 6%) 100%);
+}
+
+/* --- Motif layer: evocative elements that resolve per beat ---------------- */
+.drift-motifs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.drift-motif {
+  position: absolute;
+  font-size: clamp(48px, 22vw, 180px);
+  line-height: 1;
+  color: var(--drift-accent);
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  transition: opacity 1400ms ease, transform 1600ms ease;
+  filter: drop-shadow(0 0 24px hsl(var(--drift-hue) 80% 60% / 0.35));
+}
+.drift-motif.is-on { opacity: 0.16; transform: translateY(0) scale(1); }
+.drift-motif--dawn    { top: 6%;  left: 50%; transform: translateX(-50%) translateY(14px); }
+.drift-motif--dawn.is-on { transform: translateX(-50%) translateY(0); }
+.drift-motif--lantern { top: 18%; right: 12%; }
+.drift-motif--stars   { top: 12%; left: 14%; font-size: clamp(28px, 10vw, 90px); }
+.drift-motif--snow    { top: 8%;  left: 30%; }
+.drift-motif--tide    { bottom: 20%; left: 50%; transform: translateX(-50%) translateY(14px); }
+.drift-motif--tide.is-on { transform: translateX(-50%) translateY(0); }
+.drift-motif--door    { top: 20%; left: 50%; transform: translateX(-50%) translateY(14px); }
+.drift-motif--door.is-on { transform: translateX(-50%) translateY(0); }
+
+.drift-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 30%, hsl(var(--drift-hue) 60% 6% / 0.55) 100%);
+}
+
+/* --- Prose ---------------------------------------------------------------- */
+.drift-scrim {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 6vw, 48px);
+}
+.drift-prose {
+  max-width: 34rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3vw, 26px);
+}
+.drift-line {
+  margin: 0;
+  font-size: clamp(20px, 5.5vw, 30px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--drift-ink-dim);
+  transition: color 700ms ease, transform 700ms ease;
+}
+.drift-line.is-reading {
+  color: var(--drift-ink);
+  transform: translateY(-2px);
+}
+.drift-word {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0 1px;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+.drift-word:hover { color: var(--drift-accent-soft); }
+.drift-word.is-tapped {
+  color: hsl(var(--drift-hue) 60% 12%);
+  background: var(--drift-accent);
+}
+.drift-empty { color: var(--drift-ink-dim); font-size: 28px; }
+
+/* --- Gloss reveal --------------------------------------------------------- */
+.drift-gloss {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(84px, 16vh, 120px);
+  transform: translate(-50%, 8px);
+  max-width: 80%;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: hsl(var(--drift-hue) 30% 96% / 0.94);
+  color: hsl(var(--drift-hue) 40% 16%);
+  font-size: clamp(14px, 4vw, 17px);
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 240ms ease, transform 240ms ease;
+  pointer-events: none;
+}
+.drift-gloss.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* --- Controls ------------------------------------------------------------- */
+.drift-controls {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: clamp(14px, 4vw, 22px);
+  padding-bottom: max(clamp(14px, 4vw, 22px), env(safe-area-inset-bottom));
+}
+.drift-btn {
+  appearance: none;
+  border: 1px solid hsl(var(--drift-hue) 40% 70% / 0.4);
+  background: hsl(var(--drift-hue) 40% 96% / 0.08);
+  color: var(--drift-ink);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+.drift-btn:hover { background: hsl(var(--drift-hue) 40% 96% / 0.16); }
+.drift-sound.is-on {
+  background: var(--drift-accent);
+  border-color: var(--drift-accent);
+  color: hsl(var(--drift-hue) 60% 12%);
+}
+.drift-sound-glyph { font-size: 15px; line-height: 1; }
+
+/* --- Reduced motion: no drift, no parallax — instant, still --------------- */
+@media (prefers-reduced-motion: reduce) {
+  .drift-motif,
+  .drift-line,
+  .drift-gloss { transition-duration: 0.01ms !important; }
+  .drift-motif.is-on { opacity: 0.14; transform: none; }
+}

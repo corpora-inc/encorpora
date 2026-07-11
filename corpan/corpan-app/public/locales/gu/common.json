@@ -927,6 +927,10 @@
       "newWord": "નવો શબ્દ",
       "newPhrase": "નવું વાક્ય"
     },
+    "interlude": {
+      "gameCue": "ઝડપી રમત · એક વાક્ય",
+      "readerCue": "ઝડપી વાંચન · એક ફકરો"
+    },
     "grammar": {
       "noteLabel": "વ્યાકરણ નોંધ",
       "tryIt": "અજમાવો",

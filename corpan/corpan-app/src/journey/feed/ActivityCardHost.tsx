@@ -37,6 +37,9 @@ export function ActivityCardHost(props: {
   const startedAt = useRef(Date.now())
   const [scaffold, setScaffold] = useState<ScaffoldState>({ misses: 0, hintUsed: false })
   const [stamp, setStamp] = useState<"correct" | "incorrect" | null>(null)
+  // Whisper accuracy 0..100 for a spoken settle — surfaced beside the stamp as a
+  // quick confidence read (vibes). Null for tap/type cards.
+  const [confidence, setConfidence] = useState<number | null>(null)
   const [showAnswer, setShowAnswer] = useState(false)
   const [settledOk, setSettledOk] = useState<boolean | null>(null)
   const doneRef = useRef(false)
@@ -80,6 +83,14 @@ export function ActivityCardHost(props: {
     const ok = settleOk(attempt, fraction)
     setSettledOk(ok)
     setStamp(settleStamp({ attempt, fraction, unscored }))
+    // A spoken settle carries a Whisper accuracy in the stt envelope — surface
+    // it as a 0..100 confidence read beside the stamp (only for scored speech).
+    const sttScore = outcome.detail?.stt?.overallScore
+    setConfidence(
+      !unscored && prepared.spec.activityType === "speak_echo" && typeof sttScore === "number"
+        ? Math.round(sttScore * 100)
+        : null,
+    )
     props.onResult(result)
     if (props.mode === "live") {
       const deco = celebrationFor({
@@ -157,7 +168,7 @@ export function ActivityCardHost(props: {
         review={props.mode === "review" ? { correct: settledOk ?? true } : null}
       />
       <div className="min-h-8">
-        <ResultStamp state={stamp} />
+        <ResultStamp state={stamp} confidence={confidence} />
       </div>
       {settledOk !== null && props.mode !== "probe" && prepared.items[0]?.kind === "word" ? (
         <WordEnrichment

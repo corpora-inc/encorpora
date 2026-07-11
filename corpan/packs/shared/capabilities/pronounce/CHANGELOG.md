@@ -10,6 +10,12 @@ the Journey `speak_echo` card + pop-in sheet consume it, Wave 2).
 
 ## 0.1.0 — Unreleased
 
+- **Live mic waveform while recording.** The stage now shows a compact,
+  squared-off bar waveform driven by the host's real per-buffer mic RMS
+  (`stt.subscribeAudioLevel`) — a short scrolling amplitude history that reads
+  "I'm listening to you now." Hosts that don't ship the level signal degrade to
+  a gentle CSS breathing animation; `prefers-reduced-motion` is honoured. The
+  subscription is opened on `recording` and torn down on idle/scoring/dispose.
 - **Boot now REUSES an already-installed Whisper model instead of offering a
   redundant download.** The boot flow first probes every known model folder
   (`allFolders`) via `stt.listInstalled` — with a `stt.validateModel` fallback

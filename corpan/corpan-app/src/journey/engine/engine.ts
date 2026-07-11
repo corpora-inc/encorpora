@@ -169,10 +169,14 @@ export function createJourneyEngine(deps: {
       scaffoldItemId: null,
       lastBatchTailType: null,
       cadenceEmitted: 0,
+      funServedSession: 0,
       bossAttempted: new Set(),
       checkpointRun: null,
       gauntletRun: null,
       modeTally: { cruise: 0, normal: 0, struggle: 0 },
+      lastInterludeEmit: -1,
+      lastGameInterludeEmit: -1,
+      lastReaderInterludeEmit: -1,
     }
   }
 

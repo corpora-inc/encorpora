@@ -7,6 +7,95 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.3] — 2026-07-10
+
+### Added
+- **Game interludes in the scroll — drop into a game for one phrase, then keep
+  scrolling.** A lightweight pack activity (e.g. Lingo Hero) that drills the
+  phrase you're on now shows as a compact "sip" card — a small squared-off
+  poster with a Play affordance reading "Quick game · one phrase" — instead of a
+  full-height game launch. Tap it, play one round for the injected phrase, and
+  the feed grades your result and scrolls straight on. Heavy 3D drop-ins stay a
+  full poster + cold mount. A repeated lightweight interlude now warm-mounts
+  (its code stays resident between launches) so it opens instantly with no
+  loading gap; a pack error can't break the scroll around it. (`InterludePoster`,
+  `PackActivityCard` interlude branch, runtime `interlude` flag on packActivity
+  cards, `ContentPackHost` warm-mount LRU seam.) New i18n keys
+  `journey.interlude.gameCue` / `journey.interlude.readerCue`.
+- **Wordfall (game) and Drift (reader) now appear as scheduled interludes in the
+  Journey scroll.** The scroll drops in a Wordfall catch-the-meaning spike every
+  ~12–18 cards and a Drift micro-story breath every ~20–30 — both drilling the
+  phrase you're on now, then scrolling on. The mixer's interlude selection is no
+  longer hardcoded to one pack: it picks among whatever interlude-capable packs
+  are installed, classified as a game spike or a reader breath by their catalog
+  `packType` and keyed by their declared `activities` (a hot combo pulls a
+  reader comedown, a cold stretch a game re-ignite; never two interludes
+  back-to-back). Both packs auto-install as tiny system packs (no nagging
+  prompt). (`journey/interludeRegistry.ts`, mixer `chooseInterlude` +
+  `FeedConstraints.interludes`/`combo`, `runtimeWiring` interlude registry,
+  `packType` on `CatalogGame`, `web/pages/build.js` forwards manifest
+  `activities` + `systemPack` into catalog-v3, `web/data/packs.json` entries.)
+  No new i18n keys (reuses the interlude cues above).
+- **The Journey feed now feels like a premium object in the hand.** A tactile
+  juice pass across the whole scroll: correct answers land with a soft haptic
+  and a warmer, felt-mallet chime whose pitch rises as your streak climbs; the
+  card-to-card advance gets a hair snappier at high combo and exhales back to
+  calm when the streak breaks. A small ambient momentum gauge in the corner
+  fills and warms with your run — no shouting number, you read your streak off
+  the feel. Celebration bursts are now sparse and refined rather than confetti
+  spam. The live-speaking card is elevated: a breathing mic cue, a framed
+  waveform surface, and the pronunciation confidence read now resolves in a beat
+  after the ✓/✗ and fills with the accent colour on a strong score. Every part
+  is reduced-motion and sound-off first-class — the feed is fully understandable
+  silent and still, and haptics honour the same setting as sound.
+- **Journey is an infinite feed — doom-scroll to fluency.** The lesson feed no
+  longer winds down to a "caught up" screen. Once you hit the day's goal, an
+  eager learner who keeps going gets fresh, varied cards indefinitely: the next
+  units' new words are pulled forward (respecting prerequisites), difficulty
+  escalates as you master material, and activities and items rotate so you never
+  see the same word or the same exercise twice in a row. Your daily target is now
+  a milestone you can blow past, not a wall. The only time the feed ends is when
+  there is genuinely no material left to serve. (Spaced repetition is unchanged:
+  reviews still come due on schedule and the review-debt brake still protects you
+  — only new-word exploration and variety are uncapped for a continuing learner.)
+- **Journey is speak-first when Whisper is available.** When on-device speech
+  recognition is usable, production and echo moments become live, Whisper-graded
+  speaking instead of tap/type: the new-word "listen & echo" debut and a strong
+  share of "type what you hear" cards now ask you to say it aloud and are scored
+  by Whisper. Installing a Whisper model also visibly increases how often live
+  speaking appears in the mix. Fully graceful — if you can't speak right now,
+  declining the mic reverts the whole session back to typing, and no card ever
+  forces speech with no way out. Some typing practice is always kept for variety.
+- **A live mic waveform while you speak.** The pronunciation card now shows a
+  small animated waveform driven by your real microphone level, so it reads
+  unmistakably as "I'm listening to you now." Hosts without a level signal fall
+  back to a gentle breathing animation; respects reduced-motion.
+- **A confidence read on spoken answers.** After a graded speaking card, a small
+  accuracy percentage appears beside the ✓/✗ — a quick, satisfying read of how
+  close your pronunciation was, not just pass/fail.
+
+### Fixed
+- **Checkpoints no longer loop forever once you're caught up.** When the day's
+  goal was met and nothing was due, the session could serve the same known-item
+  practice endlessly and re-show a checkpoint every few cards — tapping
+  "Continue" appeared to reload the same screen with no way to finish. A
+  checkpoint is now a genuine milestone that never repeats identically and never
+  appears twice with no real content between; tapping "Continue" always advances
+  into fresh, varied cards (see the infinite-feed change above).
+- **The next-card hint no longer looks like a blank drawer.** After a correct
+  answer the "swipe up to continue" affordance was a card-coloured sliver pinned
+  to the bottom and nudged down 24px, so on gesture-nav phones it read as an
+  empty card clipped by the home indicator. It is now a gently bouncing upward
+  chevron sitting fully above the safe-area inset — an unmistakable "swipe up"
+  cue, never a blank box — and it hides while a card is auto-advancing.
+- **A word's meaning shows inline when it is the only extra.** For a word with a
+  meaning but no in-context example (e.g. a number like "one"), the enrichment
+  card used to be just a lone collapsed "meaning" toggle in an empty-looking box;
+  the meaning now expands by default so the card carries real content. Words that
+  also have an in-context example keep the tap-to-expand meaning as before.
+
+## [0.20.2] — 2026-07-08
+
 ### Added
 - **Journey offers the `imagepan` picture pack with one-tap consent (no silent
   download).** When a compatible concept-picture pack is available in the index
@@ -25,8 +114,6 @@ Conventions: `corpan/CHANGELOGS.md`.
 - **imagepan is no longer auto-installed on first Journey open.** The prior
   silent ~1 MB download is replaced by the consent offer above; Journey only
   *recognizes* an imagepan that is already on disk at session start.
-
-## [0.20.2] — 2026-07-08
 
 ### Fixed
 - **Journey no longer serves degenerate exercises.** Single-token items (e.g.

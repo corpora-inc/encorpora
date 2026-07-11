@@ -83,6 +83,9 @@ export interface CapPronounceParams {
 const readParams = (spec: ActivitySpec): CapPronounceParams =>
   (spec.params ?? {}) as unknown as CapPronounceParams
 
+/** Bar count for the live mic waveform (a short scrolling amplitude history). */
+const WAVE_BARS = 15
+
 /** Find a Whisper model that is ALREADY installed on this device, across
  *  EVERY folder the pack knows — not just the tiny default. This is what lets
  *  Journey reuse the big model a user already installed via pronunciation-coach:
@@ -201,6 +204,9 @@ const mount = (
     </div>
     <div class="capPron-stage">
       ${badge ? `<span class="capPron-lang-badge">${escapeHtml(badge)}</span>` : ""}
+      <div class="capPron-wave" data-cappron-wave hidden aria-hidden="true">
+        ${Array.from({ length: WAVE_BARS }, () => `<span class="capPron-wave-bar"></span>`).join("")}
+      </div>
       <button class="capPron-mic" type="button" disabled>
         <span class="capPron-mic-icon">●</span>
       </button>
@@ -214,6 +220,61 @@ const mount = (
   const micIcon = root.querySelector<HTMLSpanElement>(".capPron-mic-icon")!
   const micLabel = root.querySelector<HTMLDivElement>(".capPron-mic-label")!
   const errorEl = root.querySelector<HTMLDivElement>(".capPron-error")!
+  const waveEl = root.querySelector<HTMLDivElement>("[data-cappron-wave]")!
+  const waveBars = Array.from(waveEl.querySelectorAll<HTMLSpanElement>(".capPron-wave-bar"))
+
+  // Live "I'm listening to you NOW" waveform. Driven by the host's real per-
+  // buffer mic RMS (subscribeAudioLevel) when the host ships it; otherwise the
+  // .capPron-wave--idle CSS keeps the bars gently breathing so recording still
+  // reads as live. The bars are a short scrolling history of amplitude.
+  let unsubLevel: (() => void) | null = null
+  const waveHistory = new Array(WAVE_BARS).fill(0)
+  const paintWave = () => {
+    for (let i = 0; i < waveBars.length; i++) {
+      const v = waveHistory[i] ?? 0
+      // 12%..100% height so a bar is always visible; ease the low end up.
+      const h = 12 + Math.round(Math.min(1, Math.sqrt(v)) * 88)
+      waveBars[i].style.height = `${h}%`
+    }
+  }
+  const startWave = () => {
+    waveEl.hidden = false
+    waveHistory.fill(0)
+    paintWave()
+    if (unsubLevel) return
+    const subscribe = stt?.subscribeAudioLevel
+    if (!subscribe) {
+      // No real level signal from this host build — fall back to the CSS idle
+      // breathing so the learner still sees a live "listening" state.
+      waveEl.classList.add("capPron-wave--idle")
+      return
+    }
+    waveEl.classList.remove("capPron-wave--idle")
+    void subscribe((e) => {
+        if (disposed || uiState !== "recording") return
+        waveHistory.shift()
+        waveHistory.push(Math.max(0, Math.min(1, e.rms)))
+        paintWave()
+      })
+      .then((off) => {
+        if (disposed || uiState !== "recording") {
+          off()
+          return
+        }
+        unsubLevel = off
+      })
+      .catch(() => {
+        waveEl.classList.add("capPron-wave--idle")
+      })
+  }
+  const stopWave = () => {
+    waveEl.hidden = true
+    waveEl.classList.remove("capPron-wave--idle")
+    if (unsubLevel) {
+      unsubLevel()
+      unsubLevel = null
+    }
+  }
 
   let disposed = false
   let paused = params.startPaused === true
@@ -257,15 +318,18 @@ const mount = (
       micIcon.textContent = "●"
       micLabel.textContent = modelReady ? tt("holdToSpeak") : tt("loadingModel")
       micBtn.disabled = !modelReady || paused || settle.settled()
+      stopWave()
     } else if (next === "recording") {
       micBtn.classList.add("recording")
       micIcon.textContent = "■"
       micLabel.textContent = tt("listeningReleaseToStop")
+      startWave()
     } else if (next === "scoring") {
       micBtn.classList.add("scoring")
       micIcon.innerHTML = `<span class="capPron-spinner"></span>`
       micLabel.textContent = tt("scoring")
       micBtn.disabled = true
+      stopWave()
     }
   }
 
@@ -631,6 +695,7 @@ const mount = (
         else settle.settle(makeAbandonedResult(spec, clock.activeMs()))
       }
       unbindMic?.()
+      stopWave()
       recorder?.dispose()
       root.remove()
     },

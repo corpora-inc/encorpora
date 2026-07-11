@@ -1077,6 +1077,10 @@
       "downloading": "추가하는 중… {{percent}}%",
       "retry": "다시 시도하기",
       "failed": "추가하지 못했습니다"
+    },
+    "interlude": {
+      "gameCue": "빠른 게임 · 한 문장",
+      "readerCue": "빠른 읽기 · 한 문단"
     }
   }
 }

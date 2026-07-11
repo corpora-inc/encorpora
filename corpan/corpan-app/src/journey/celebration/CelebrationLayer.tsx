@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next"
 import { useJourneyStore, type JuiceIntensity } from "../../store/journey.ts"
 import { burst, clearParticles } from "./particles.ts"
 import { playChime, playFlourish } from "./sounds.ts"
+import { fireHaptic, registerHapticGate, type HapticGate } from "./haptics.ts"
 
 export type CelebrationTier = 0 | 1 | 2 | 3
 export type MilestoneKind = "unitComplete" | "wordsLearned" | "streakDay" | "placementDone"
@@ -57,6 +58,15 @@ export function CelebrationLayer(): JSX.Element {
     intensity === "full" && reducedMotion ? "reduced" : intensity
   const sounds = soundsEnabled && effective !== "minimal"
 
+  // The haptic gate mirrors the sound/haptic setting (soundsEnabled) and honors
+  // reduced-motion + minimal intensity (§3.2). Published to the module so the
+  // miss path (playSoftMiss) can buzz with the same gate — no prop drilling.
+  const hapticGate: HapticGate = {
+    enabled: soundsEnabled,
+    reducedMotion: !!reducedMotion,
+    intensity: effective,
+  }
+
   useEffect(() => {
     emit = (m) => {
       if (timerRef.current) clearTimeout(timerRef.current)
@@ -68,6 +78,12 @@ export function CelebrationLayer(): JSX.Element {
         if (m.tier === 0) playChime(m.comboCount ?? 0)
         else playFlourish(m.comboCount ?? 0)
       }
+      // Haptics: a `land` on any correct resolve; a richer `combo` tick at a
+      // combo milestone (every 5th, carried on the event by settle.ts). Gated +
+      // capability-checked inside fireHaptic — a no-op on desktop / when off.
+      const isComboMilestone =
+        typeof m.comboCount === "number" && m.comboCount >= 5 && m.comboCount % 5 === 0
+      fireHaptic(isComboMilestone ? "combo" : "land", hapticGate)
       if (m.tier >= 1 && effective === "full" && canvasRef.current && rootRef.current) {
         const canvas = canvasRef.current
         const rect = rootRef.current.getBoundingClientRect()
@@ -76,7 +92,8 @@ export function CelebrationLayer(): JSX.Element {
         const anchor = m.anchorEl?.getBoundingClientRect()
         const x = anchor ? anchor.left + anchor.width / 2 - rect.left : rect.width / 2
         const y = anchor ? anchor.top + anchor.height / 2 - rect.top : rect.height / 2
-        burst(canvas, x, y, { count: m.tier >= 2 ? 60 : 28 })
+        // Sparse + premium; a genuine milestone (tier ≥2) earns a denser puff.
+        burst(canvas, x, y, { count: m.tier >= 2 ? 30 : 14 })
       }
       timerRef.current = setTimeout(() => {
         setMoment((prev) => {
@@ -95,13 +112,18 @@ export function CelebrationLayer(): JSX.Element {
         return null
       })
     }
+    // Publish the live gate so the miss path (playSoftMiss → fireHapticAmbient)
+    // buzzes with the same reduced-motion + sound/haptic gating.
+    registerHapticGate(hapticGate)
     return () => {
       emit = null
       skipActive = null
+      registerHapticGate(null)
       if (timerRef.current) clearTimeout(timerRef.current)
       clearParticles()
     }
-  }, [effective, sounds])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [effective, sounds, reducedMotion, soundsEnabled])
 
   const milestoneLabel = (m: ActiveMoment): string => {
     switch (m.milestone) {

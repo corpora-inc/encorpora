@@ -8,8 +8,9 @@
 
 import { test, beforeEach } from "node:test"
 import assert from "node:assert/strict"
-import type { EngineCard } from "./engine/index.ts"
-import type { SttReadiness } from "./runtime.ts"
+import type { EngineCard, InterludeProvider } from "./engine/index.ts"
+import type { SttReadiness, ActivitySessionPort } from "./runtime.ts"
+import type { ActivityResult, ActivitySpec } from "../contentPacks/activityContract.ts"
 
 if (typeof globalThis.localStorage === "undefined") {
   const bag = new Map<string, string>()
@@ -52,6 +53,10 @@ async function makeRuntime(
     /** Drop the native (es) face from every entry — exercises the
      *  translation-integrity guard (contract #2/#3). */
     stripNative?: boolean
+    /** Installed interlude packs the mixer may schedule (game + reader). */
+    interludes?: InterludeProvider[]
+    /** Single-owner activity session for pack launches (launchPackActivity). */
+    activitySession?: ActivitySessionPort
   } = {},
 ) {
   const harness = await makeEngine({ arcs: 1, unitsPerArc: 2, skillsPerUnit: 2, itemsPerSkill: 6 })
@@ -87,6 +92,8 @@ async function makeRuntime(
     sttAvailable: opts.sttOk === undefined ? undefined : async () => opts.sttOk === true,
     sttReadiness:
       opts.sttReadiness === undefined ? undefined : async () => opts.sttReadiness as SttReadiness,
+    ...(opts.interludes ? { constraints: { interludes: opts.interludes } } : {}),
+    ...(opts.activitySession ? { activitySession: opts.activitySession } : {}),
   })
   return { runtime, harness, quotaLog, events, logs, deps }
 }
@@ -113,6 +120,41 @@ function speakEchoCard(graph: { items: Record<string, { ref: unknown }> }, itemI
       provider: "native",
       celebration: "normal",
       coolDownCandidate: false,
+    },
+  }
+}
+
+/** A native intro_echo / listen_type EngineCard over a fixture item — fed to
+ *  prepareEngineCard to exercise the speak-first UPGRADE seam (§ core). */
+function echoTypeCard(
+  graph: { items: Record<string, { ref: unknown }> },
+  activityType: "intro_echo" | "listen_type",
+  itemId: string,
+  specId: string,
+  meta: Partial<EngineCard["meta"]> = {},
+): EngineCard {
+  const item = graph.items[itemId]
+  return {
+    spec: {
+      specId,
+      activityType,
+      itemRefs: [item.ref as EngineCard["spec"]["itemRefs"][number]],
+      targetLang: "en",
+      timeboxSec: 12,
+      // intro_echo debuts carry params.intro; the upgrade must preserve the
+      // debut identity so quota debiting is unchanged.
+      ...(activityType === "intro_echo" ? { params: { intro: true } } : {}),
+    } as EngineCard["spec"],
+    meta: {
+      pool: activityType === "intro_echo" ? "new" : "due",
+      strand: activityType === "intro_echo" ? "input" : "language",
+      form: activityType === "intro_echo" ? 0 : 2,
+      estSec: 12,
+      provider: "native",
+      celebration: "normal",
+      coolDownCandidate: false,
+      ...(activityType === "intro_echo" ? { unscored: true } : {}),
+      ...meta,
     },
   }
 }
@@ -144,6 +186,58 @@ function wordCard(
     },
   }
 }
+
+/** A pack (provider) EngineCard over a phrase ref — fed to prepareEngineCard to
+ *  exercise the packActivity mapping + the interlude classifier. */
+function packCard(
+  provider: string,
+  specId: string,
+  estSec: number,
+): EngineCard {
+  return {
+    spec: {
+      specId,
+      activityType: `${provider}:round`,
+      itemRefs: [{ kind: "phrase", source: "base", id: "1" }],
+      targetLang: "es",
+      nativeLang: "en",
+      timeboxSec: estSec,
+    } as EngineCard["spec"],
+    meta: {
+      pool: "due",
+      strand: "fluency",
+      form: 1,
+      estSec,
+      provider,
+      celebration: "normal",
+      coolDownCandidate: false,
+    },
+  }
+}
+
+test("packActivity mapping: a quick lightweight pack is flagged as an interlude", async () => {
+  const { runtime } = await makeRuntime()
+  const card = await runtime.prepareEngineCard(packCard("lingo_hero", "lh-1", 40))
+  assert.ok(card && card.kind === "packActivity", "maps to a packActivity card")
+  assert.equal(card.interlude, true, "a 40s lingo_hero round is a sip interlude")
+})
+
+test("packActivity mapping: a heavy 3D pack is NOT an interlude, even when short", async () => {
+  const { runtime } = await makeRuntime()
+  const cityCard = await runtime.prepareEngineCard(packCard("corpan_city", "cc-1", 30))
+  assert.ok(cityCard && cityCard.kind === "packActivity")
+  assert.equal(cityCard.interlude, false, "corpan_city is a 3D tent-pole, never a sip")
+  const plazaCard = await runtime.prepareEngineCard(packCard("world_plaza", "wp-1", 45))
+  assert.ok(plazaCard && plazaCard.kind === "packActivity")
+  assert.equal(plazaCard.interlude, false, "world_plaza is a 3D tent-pole, never a sip")
+})
+
+test("packActivity mapping: a long-duration pack activity is NOT an interlude", async () => {
+  const { runtime } = await makeRuntime()
+  const card = await runtime.prepareEngineCard(packCard("some_reader", "rd-1", 200))
+  assert.ok(card && card.kind === "packActivity")
+  assert.equal(card.interlude, false, "a 200s activity is a full drop-in, not a sip")
+})
 
 /** Place as a fresh zero-beginner so the feed starts producing. */
 async function startFeed(runtime: Awaited<ReturnType<typeof makeRuntime>>["runtime"]) {
@@ -217,6 +311,46 @@ test("R12: only debut cards debit the gate; reviews and checkpoints never do", a
   }
   assert.ok(debuts > 0, "session should introduce new items")
   assert.equal(quotaLog.notes, debuts)
+})
+
+// Infinite feed at the runtime seam (doom-scroll to fluency): a binger who keeps
+// tapping "Continuar" past the daily target NEVER hits the "caught up" dead-end
+// mid-journey. Even on a TINY fixture corpus the revisit-continuation keeps the
+// feed producing fresh cards; runtime.current() never goes empty while there is
+// any material to serve.
+test("infinite feed: a long binge never dead-ends (Continuar always yields more)", { timeout: 20_000 }, async () => {
+  const { runtime } = await makeRuntime()
+  await startFeed(runtime)
+  let served = 0
+  let emptyStalls = 0
+  for (let guard = 0; guard < 400 && served < 120; guard++) {
+    const card = runtime.current()
+    if (!card) {
+      // may be a transient async-prep gap; retry a few times, but a true dead-end
+      // (persistent empty) is the failure this test guards against.
+      emptyStalls += 1
+      // a persistent empty (never refilling) IS the dead-end this test guards.
+      assert.ok(emptyStalls < 30, "feed went persistently empty mid-binge (dead-end)")
+      await new Promise((r) => setTimeout(r, 5))
+      continue
+    }
+    emptyStalls = 0
+    if (card.kind === "exercise") {
+      runtime.submitResult(card.cardId, answer(card.prepared.engine))
+      runtime.advance()
+      served += 1
+    } else if (card.kind === "checkpoint") {
+      runtime.checkpointChoice(card.cardId, "continue") // "Continuar"
+    } else if (card.kind === "blockIntro" || card.kind === "welcomeBack") {
+      runtime.completePresentation(card.cardId)
+    } else {
+      runtime.abandonCurrent()
+    }
+    await new Promise((r) => setTimeout(r, 1))
+  }
+  // The binge kept flowing well past any single-day new target on the tiny
+  // fixture — the feed is infinite, not a wind-down.
+  assert.ok(served >= 120, `feed dead-ended after only ${served} cards (expected an unbounded stream)`)
 })
 
 test("abandon: no per-item evidence, abandoned flag set, no quota debit", async () => {
@@ -429,6 +563,123 @@ test("STT decline flow (contract #4): declining the install swaps the rest of th
   assert.equal(after.prepared.sttFallback, true)
 })
 
+// -------------------------------------------------------------- speak-first
+// (§ core): when STT is usable, production/echo moments become Whisper-graded
+// speaking. intro_echo ALWAYS upgrades; listen_type upgrades a strong share.
+// Unsupported/declined must NEVER upgrade (a learner who can't speak is never
+// trapped — the graceful fallback is sacred).
+
+test("speak-first: intro_echo upgrades to speak_echo when STT usable, not when unsupported", async () => {
+  const itemOf = (h: { graph: { items: Record<string, unknown> } }) => Object.keys(h.graph.items)[0]
+
+  for (const state of ["installed", "modelMissing"] as const) {
+    const { runtime, harness, logs } = await makeRuntime({ sttReadiness: state })
+    await startFeed(runtime)
+    const card = await runtime.prepareEngineCard(
+      echoTypeCard(harness.graph, "intro_echo", itemOf(harness), `intro-${state}`),
+    )
+    assert.ok(card && card.kind === "exercise", `${state}: prepared an exercise`)
+    assert.equal(card.spec.activityType, "speak_echo", `${state}: intro_echo upgrades to speak_echo`)
+    assert.equal(card.prepared.sttUpgraded, true, `${state}: carries sttUpgraded`)
+    assert.equal(card.spec.modelNeeds?.includes("stt"), true, `${state}: needs stt`)
+    // the debut identity (params.intro) survives so quota debiting is unchanged
+    assert.equal(card.spec.params?.intro, true, `${state}: still a debut`)
+    assert.ok(
+      logs.some((l) => l.event === "journey_speak_upgrade" && l.data.from === "intro_echo"),
+      `${state}: upgrade logged`,
+    )
+    await runtime.endSession("quit")
+  }
+
+  // unsupported: NEVER upgrade — intro_echo stays a listen-and-echo debut.
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "unsupported" })
+  await startFeed(runtime)
+  const card = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "intro_echo", itemOf(harness), "intro-unsupported"),
+  )
+  assert.ok(card && card.kind === "exercise")
+  assert.equal(card.spec.activityType, "intro_echo", "unsupported: no upgrade")
+  assert.ok(!card.prepared.sttUpgraded, "unsupported: not marked upgraded")
+})
+
+test("speak-first: a strong share of listen_type upgrades to speak_echo when STT usable", async () => {
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "installed" })
+  await startFeed(runtime)
+  const itemIds = Object.keys(harness.graph.items)
+  let upgraded = 0
+  let kept = 0
+  // Many distinct specIds → the deterministic per-card share splits speak vs type.
+  for (let i = 0; i < 40; i++) {
+    const itemId = itemIds[i % itemIds.length]
+    const card = await runtime.prepareEngineCard(
+      echoTypeCard(harness.graph, "listen_type", itemId, `lt-${i}`),
+    )
+    assert.ok(card && card.kind === "exercise")
+    if (card.spec.activityType === "speak_echo") {
+      assert.equal(card.prepared.sttUpgraded, true)
+      upgraded += 1
+    } else {
+      assert.equal(card.spec.activityType, "listen_type", "kept cards stay listen_type")
+      kept += 1
+    }
+  }
+  // Speaking should DOMINATE production, but some typing variety is preserved.
+  assert.ok(upgraded > kept, `speaking should dominate (upgraded=${upgraded} kept=${kept})`)
+  assert.ok(kept > 0, `some listen_type variety preserved (kept=${kept})`)
+})
+
+test("speak-first: unsupported never upgrades listen_type", async () => {
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "unsupported" })
+  await startFeed(runtime)
+  const itemIds = Object.keys(harness.graph.items)
+  for (let i = 0; i < 12; i++) {
+    const card = await runtime.prepareEngineCard(
+      echoTypeCard(harness.graph, "listen_type", itemIds[i % itemIds.length], `lt-uns-${i}`),
+    )
+    assert.ok(card && card.kind === "exercise")
+    assert.equal(card.spec.activityType, "listen_type", "unsupported: listen_type never upgrades")
+  }
+})
+
+test("speak-first: declining the install reverts queued UPGRADED speak cards too (never trapped)", async () => {
+  const { runtime, harness } = await makeRuntime({ sttReadiness: "modelMissing" })
+  await startFeed(runtime)
+  const itemIds = Object.keys(harness.graph.items)
+
+  // Queue an upgraded intro_echo (always upgrades) so it sits in `prepared`.
+  const upgradedIntro = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "intro_echo", itemIds[0], "intro-decl"),
+  )
+  assert.ok(upgradedIntro && upgradedIntro.kind === "exercise")
+  assert.equal(upgradedIntro.spec.activityType, "speak_echo", "pre-decline: intro upgraded to speak")
+
+  // Decline arrives on the CURRENT card.
+  const cur = runtime.current()
+  assert.ok(cur, "a current card is mounted")
+  runtime.submitResult(cur!.cardId, {
+    specId: cur!.cardId,
+    score: 1,
+    perItem: [],
+    durationMs: 100,
+    detail: { flags: { sttDeclined: true } },
+  })
+
+  // After the decline: further echo/type cards are NO LONGER upgraded — they
+  // revert to their non-speaking form so the learner is never forced to speak.
+  const afterIntro = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "intro_echo", itemIds[0], "intro-after-decl"),
+  )
+  assert.ok(afterIntro && afterIntro.kind === "exercise")
+  assert.equal(afterIntro.spec.activityType, "intro_echo", "post-decline: intro no longer upgrades")
+  assert.ok(!afterIntro.prepared.sttUpgraded, "post-decline: not marked upgraded")
+
+  const afterType = await runtime.prepareEngineCard(
+    echoTypeCard(harness.graph, "listen_type", itemIds[0], "lt-after-decl"),
+  )
+  assert.ok(afterType && afterType.kind === "exercise")
+  assert.equal(afterType.spec.activityType, "listen_type", "post-decline: listen_type stays typing")
+})
+
 test("degenerate guard: a cloze on a single-token word reroutes (no broken blank)", async () => {
   const { runtime, logs } = await makeRuntime()
   await startFeed(runtime)
@@ -600,4 +851,131 @@ test("STT decline (contract #4): declining advances the current card (never stuc
   )
   assert.equal(runtime.history().length, historyBefore + 1, "declined card advanced into history")
   assert.notEqual(runtime.current()?.cardId, cur!.cardId, "feed moved off the dead speak card")
+})
+
+// ---------------------------------------------------------------------------
+// Interludes end-to-end (PREMIUM_SCROLL §2.2/§2.3): the two installed core
+// interludes (wordfall = game, drift = reader) are SCHEDULED by the mixer into
+// a real feed, each renders as a compact packActivity INTERLUDE card, launches
+// with a real ActivitySpec through launchPackActivity, returns an
+// ActivityResult, settles, and the feed scrolls on.
+
+const WORDFALL_IL: InterludeProvider = {
+  provider: "wordfall",
+  kind: "game",
+  activityType: "wordfall:catch",
+  itemKinds: ["phrase", "word"],
+  estSec: 30,
+}
+const DRIFT_IL: InterludeProvider = {
+  provider: "drift",
+  kind: "reader",
+  activityType: "drift:read",
+  itemKinds: ["phrase"],
+  estSec: 30,
+}
+
+/** A stub single-owner activity session that captures the launched spec and
+ *  synthesizes a terminal ActivityResult on demand (mirrors what a real pack
+ *  reports back through hostApi.journey.reportResult). */
+function stubActivitySession(): ActivitySessionPort & {
+  launched: Array<{ packId: string; spec: ActivitySpec }>
+  complete: (score: number) => void
+} {
+  let onResult:
+    | ((result: ActivityResult, meta: { synthesized: boolean; receivedAt: number }) => void)
+    | null = null
+  let current: { packId: string; spec: ActivitySpec } | null = null
+  const launched: Array<{ packId: string; spec: ActivitySpec }> = []
+  return {
+    launched,
+    begin(packId, spec, callbacks) {
+      current = { packId, spec }
+      launched.push(current)
+      onResult = callbacks.onResult
+      return true
+    },
+    end() {
+      onResult = null
+      current = null
+    },
+    complete(score: number) {
+      if (!onResult || !current) return
+      const spec = current.spec
+      onResult(
+        {
+          specId: spec.specId,
+          score,
+          perItem: spec.itemRefs.map((itemRef) => ({ itemRef, outcome: "pass" as const })),
+          durationMs: 3000,
+        },
+        { synthesized: false, receivedAt: 0 },
+      )
+    },
+  }
+}
+
+test("interludes: wordfall (game) AND drift (reader) launch with a spec and scroll on", async () => {
+  const session = stubActivitySession()
+  const { runtime } = await makeRuntime({
+    interludes: [WORDFALL_IL, DRIFT_IL],
+    activitySession: session,
+  })
+  await startFeed(runtime)
+
+  const launchedProviders = new Set<string>()
+  let interludeCardsSeen = 0
+
+  for (let guard = 0; guard < 400 && launchedProviders.size < 2; guard++) {
+    const card = runtime.current()
+    if (!card) {
+      await new Promise((r) => setTimeout(r, 3))
+      continue
+    }
+    if (card.kind === "packActivity") {
+      interludeCardsSeen += 1
+      // Both wordfall + drift are sip interludes (30s, not heavy 3D).
+      assert.equal(card.interlude, true, `${card.packId} renders as a compact interlude poster`)
+      assert.equal(
+        card.interludeKind,
+        card.packId === "drift" ? "reader" : "game",
+        "the poster knows game vs reader kind",
+      )
+      assert.match(card.spec.activityType, /^(wordfall|drift):/)
+      assert.equal(card.spec.itemRefs.length, 1, "interlude features the current phrase")
+
+      const historyBefore = runtime.history().length
+      // The feed hands the pack an ActivitySpec (never re-implements routing).
+      const ok = runtime.launchPackActivity(card, (packId, spec) => {
+        assert.equal(packId, card.packId)
+        assert.equal(spec.specId, card.spec.specId)
+      })
+      assert.equal(ok, true, "launchPackActivity accepted the interlude spec")
+      assert.equal(runtime.packReturnPending(), card.cardId, "awaiting the pack result")
+      // The pack plays one round for the phrase and reports a terminal result.
+      session.complete(card.packId === "drift" ? 1 : 0.9)
+      runtime.advance()
+      assert.equal(runtime.history().length, historyBefore + 1, "interlude settled into history")
+      launchedProviders.add(card.packId)
+    } else if (card.kind === "exercise") {
+      runtime.submitResult(card.cardId, answer(card.prepared.engine))
+      runtime.advance()
+    } else if (card.kind === "checkpoint") {
+      runtime.checkpointChoice(card.cardId, "continue")
+    } else if (card.kind === "blockIntro" || card.kind === "welcomeBack") {
+      runtime.completePresentation(card.cardId)
+    } else {
+      runtime.abandonCurrent()
+    }
+    await new Promise((r) => setTimeout(r, 1))
+  }
+
+  assert.ok(interludeCardsSeen >= 2, `saw ${interludeCardsSeen} interlude cards`)
+  assert.ok(launchedProviders.has("wordfall"), "a wordfall game interlude launched + settled")
+  assert.ok(launchedProviders.has("drift"), "a drift reader interlude launched + settled")
+  // Every launched spec was a real namespaced pack activity over one phrase.
+  for (const l of session.launched) {
+    assert.match(l.spec.activityType, /^(wordfall|drift):/)
+    assert.equal(l.spec.itemRefs.length, 1)
+  }
 })

@@ -8,7 +8,7 @@ import assert from "node:assert/strict"
 import { DAY_MS } from "./clock.ts"
 import type { ActivityTemplate, CourseGraph, EngineCard, ItemRef } from "./types.ts"
 import { makeFixtureGraph, nativeTemplates } from "./__fixtures__/fixtureGraph.ts"
-import { makeEngine, playBatch, type Harness } from "./__fixtures__/harness.ts"
+import { answer, makeEngine, playBatch, type Harness } from "./__fixtures__/harness.ts"
 
 const CONS = { availableProviders: ["native"] }
 
@@ -374,4 +374,203 @@ test("newPerDay caps completed debuts per local day", async () => {
   }
   const snap = h.engine.getCourseSnapshot()
   assert.ok(snap.newRemainingToday >= 0, `over-introduced: ${snap.newRemainingToday}`)
+})
+
+// Infinite feed (doom-scroll to fluency): the OPPOSITE of the retired wind-down.
+// A learner who keeps continuing past the daily target must NEVER dead-end
+// mid-journey and must NEVER see degenerate repetition. Once the day's normal
+// work is met, the FRONTIER pulls forward — the next reachable units' fresh
+// material — and every card differs from the last (item AND, where the menu
+// allows, activity type). The only acceptable terminal is a genuinely-empty
+// corpus, which this graph (a bounded fixture) eventually reaches AFTER pulling
+// far past the position unit — never at the daily target.
+test("infinite feed: keeps producing fresh, varied cards past the daily target (never dead-ends mid-journey)", async () => {
+  const h = await makeEngine({ arcs: 2, unitsPerArc: 3, skillsPerUnit: 2, itemsPerSkill: 6, withLessons: false })
+
+  h.engine.startSession()
+  const startUnit = h.engine.getCourseSnapshot().position.unitOrdinal
+  let realCardsAfterTarget = 0
+  let targetMetAtCard = -1
+  let dueEverExhausted = false
+  const seenUnitsAhead = new Set<number>()
+  // Card-level sequence (one entry per card) for anti-repeat: consecutive cards
+  // must differ in their item set and — where the type menu allows — activity.
+  const cardSeq: { items: string[]; type: string; modelKey: number }[] = []
+  // Full emitted-stream item positions (INCLUDING checkpoints as positions) —
+  // the ITEM_MIN_GAP contract measured on the real stream.
+  const lastItemPos = new Map<string, number>()
+  let streamPos = 0
+  let minItemGap = Infinity
+  let realCardCount = 0
+  let batches = 0
+  let checkpointsSeen = 0
+
+  for (let i = 0; i < 60; i++) {
+    const batch = h.engine.nextFeedItems(10, { ...CONS, modelsAvailable: ["tts"] })
+    if (batch.length === 0) break // true content-exhaustion terminal (fail-safe)
+    batches += 1
+    const snap = h.engine.getCourseSnapshot()
+    if (snap.newRemainingToday === 0 && snap.dueCount === 0) {
+      dueEverExhausted = true
+      if (targetMetAtCard < 0) targetMetAtCard = realCardCount
+    }
+    for (const c of batch) {
+      const t = c.spec.activityType
+      // every emitted card advances the stream position (item-gap contract)
+      const items = c.spec.itemRefs.map((ref) => `${ref.kind}:${ref.source}:${ref.id}`)
+      for (const it of items) {
+        const prev = lastItemPos.get(it)
+        if (prev !== undefined) minItemGap = Math.min(minItemGap, streamPos - prev)
+        lastItemPos.set(it, streamPos)
+      }
+      streamPos += 1
+      if (t === "checkpoint_summary") checkpointsSeen += 1
+      if (t === "checkpoint_summary" || t === "jump_offer") continue
+      // checkpoint/jump batches are §5.10-exempt from adjacency (returned as-is)
+      const antiRepeatEligible = c.meta.pool !== "checkpoint" && c.meta.pool !== "jump"
+      realCardCount += 1
+      if (antiRepeatEligible) cardSeq.push({ items, type: t, modelKey: modelKey(c) })
+      // which unit does this item belong to? (frontier pull-forward evidence)
+      for (const ref of c.spec.itemRefs) {
+        const itemId = Object.keys(h.graph.items).find(
+          (id) =>
+            h.graph.items[id].ref.kind === ref.kind &&
+            h.graph.items[id].ref.source === ref.source &&
+            h.graph.items[id].ref.id === ref.id,
+        )
+        const skillId = itemId ? h.graph.items[itemId].skillIds[0] : undefined
+        const unitId = skillId ? h.graph.skills[skillId]?.unitId : undefined
+        const ord = h.graph.units.findIndex((u) => u.unitId === unitId)
+        if (ord > startUnit) seenUnitsAhead.add(ord)
+      }
+      if (targetMetAtCard >= 0) realCardsAfterTarget += 1
+      h.engine.applyResult(answer(c, { pass: true }))
+    }
+  }
+
+  // 1. Never dead-ends at the daily target: after the target was met, the feed
+  //    kept producing a long run of real cards (frontier pull-forward).
+  assert.ok(dueEverExhausted, "the daily target was reached (precondition for the test)")
+  assert.ok(
+    realCardsAfterTarget > 20,
+    `feed dead-ended near the daily target (only ${realCardsAfterTarget} real cards after)`,
+  )
+  // 2. Frontier pull-forward: the binger unlocked material from units AHEAD of
+  //    the position cursor in one sitting (position itself stays checkpoint-gated).
+  assert.ok(
+    seenUnitsAhead.size > 0,
+    "frontier never pulled a next-unit's material forward (feed stalled on the position unit)",
+  )
+  // 3. No degenerate repetition: the same item never appears within the
+  //    ITEM_MIN_GAP_RELAXED (2) floor of the emitted stream (the old
+  //    fun:match_pairs loop replayed the same item back-to-back), and consecutive
+  //    same-activity only occurs where the mixer logged a relaxation (thin type
+  //    menus) or inside a mandated model block (§5.4 step 6 exemption).
+  assert.ok(
+    minItemGap >= 2,
+    `an item repeated within gap ${minItemGap} < 2 — degenerate item repetition`,
+  )
+  let typeRepeats = 0
+  for (let k = 1; k < cardSeq.length; k++) {
+    if (cardSeq[k].type !== cardSeq[k - 1].type) continue
+    if (cardSeq[k].modelKey !== 0 || cardSeq[k - 1].modelKey !== 0) continue
+    typeRepeats += 1
+  }
+  assert.ok(
+    typeRepeats <= h.engine.getTelemetry().relaxations,
+    `consecutive same-activity (${typeRepeats}) beyond logged relaxations (${h.engine.getTelemetry().relaxations})`,
+  )
+  // 4. Cadence checkpoints stay milestones (never the old every-10-forever loop);
+  //    with real content flowing they pace out, not pile up.
+  assert.ok(checkpointsSeen >= 1, "at least one milestone checkpoint over a long run")
+  assert.ok(batches > 6, `served ${batches} batches of continuous content`)
+})
+
+// Frontier DAG gate: pull-forward respects prerequisites — it never surfaces a
+// unit whose prereq skills the learner hasn't reached, even for an eager binger.
+test("frontier pull-forward is DAG-gated (never unlocks past unreached prereqs)", async () => {
+  // chained units: unit u's skill k requires unit u-1's skill k. With the
+  // position cursor pinned (no checkpoints to pass ⇒ no advance), the frontier's
+  // OWN horizon (position + FRONTIER_LOOKAHEAD_UNITS, DAG-gated) is what bounds
+  // reach — a fresh binger cannot skip the whole chained DAG in one sitting.
+  const h = await makeEngine({ arcs: 3, unitsPerArc: 3, skillsPerUnit: 2, itemsPerSkill: 6, chainUnits: true, withLessons: false, withCheckpoints: false })
+  h.engine.startSession()
+  const reached = new Set<number>()
+  for (let i = 0; i < 40; i++) {
+    const batch = h.engine.nextFeedItems(10, { ...CONS, modelsAvailable: ["tts"] })
+    if (batch.length === 0) break
+    for (const c of batch) {
+      if (c.spec.activityType === "checkpoint_summary" || c.spec.activityType === "jump_offer") continue
+      for (const ref of c.spec.itemRefs) {
+        const itemId = Object.keys(h.graph.items).find(
+          (id) =>
+            h.graph.items[id].ref.kind === ref.kind &&
+            h.graph.items[id].ref.source === ref.source &&
+            h.graph.items[id].ref.id === ref.id,
+        )
+        const skillId = itemId ? h.graph.items[itemId].skillIds[0] : undefined
+        const unitId = skillId ? h.graph.skills[skillId]?.unitId : undefined
+        const ord = h.graph.units.findIndex((u) => u.unitId === unitId)
+        if (ord >= 0) reached.add(ord)
+      }
+      h.engine.applyResult(answer(c, { pass: true }))
+    }
+  }
+  // A fresh binger cannot skip the whole chained DAG in one sitting: the deepest
+  // units (whose prereqs are still unreached) never surface.
+  const maxReached = Math.max(...reached)
+  assert.ok(
+    maxReached < h.graph.units.length - 1,
+    `binger reached the final unit (${maxReached}/${h.graph.units.length - 1}) — DAG gate breached`,
+  )
+})
+
+// Speak-first mix (§ core, upweight): a resident Whisper model (sttInstalled)
+// up-weights the OUTPUT (speaking) strand at slot selection, so installing STT
+// visibly increases live speaking beyond the flat stage target. The stock
+// fixture only carries speak_echo at form 2 (rarely reached), so we add a
+// form-0 output template competing head-to-head with the form-0 language
+// template — the only difference between runs is the sttInstalled flag.
+test("sttInstalled up-weights the output (speaking) strand in the mix", async () => {
+  const buildGraph = (): CourseGraph => {
+    const graph = makeFixtureGraph({ arcs: 2, unitsPerArc: 3, skillsPerUnit: 2, itemsPerSkill: 8, withLessons: false })
+    graph.activityTemplates = [
+      ...graph.activityTemplates,
+      // A speaking activity available at the EASY form so selection actually
+      // reaches it (no STT model gate on selection beyond modelsAvailable).
+      { activityType: "speak_echo", itemKind: "phrase", form: 0, strand: "output", guessable: false, estSec: 18, modelNeeds: ["stt"], provider: "native" },
+    ]
+    return graph
+  }
+
+  const countSpeak = async (sttInstalled: boolean): Promise<number> => {
+    const h = await makeEngine({}, buildGraph())
+    let speak = 0
+    for (let day = 0; day < 3; day++) {
+      h.engine.startSession()
+      for (let b = 0; b < 8; b++) {
+        const batch = h.engine.nextFeedItems(8, {
+          ...CONS,
+          modelsAvailable: ["stt", "tts"],
+          sttInstalled,
+        })
+        if (batch.length === 0) break
+        for (const c of batch) {
+          const t = c.spec.activityType
+          if (t === "speak_echo") speak += 1
+          if (t === "checkpoint_summary" || t === "jump_offer") continue
+          h.engine.applyResult(answer(c, { pass: true }))
+        }
+      }
+      h.clock.advance(DAY_MS)
+      h.engine.tickDay()
+    }
+    return speak
+  }
+
+  const off = await countSpeak(false)
+  const on = await countSpeak(true)
+  // Identical graph + RNG stream; the only lever is the installed up-weight,
+  // which must yield strictly more speaking.
+  assert.ok(on > off, `installed STT did not increase speaking (on=${on} off=${off})`)
 })

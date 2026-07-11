@@ -15,6 +15,12 @@ import {
   MAX_LEECH_PER_BATCH,
   LEECH_SERVE_P,
   CONSTRAINT_REPAIR_PASSES,
+  GAME_INTERLUDE_MIN_GAP,
+  GAME_INTERLUDE_JITTER,
+  READER_INTERLUDE_MIN_GAP,
+  READER_INTERLUDE_JITTER,
+  INTERLUDE_BACK_TO_BACK_FLOOR,
+  INTERLUDE_HOT_COMBO,
   NEAR_WIN_R_MIN,
   OPENER_R_MAX,
   OPENER_R_MIN,
@@ -24,6 +30,8 @@ import {
   STRUGGLE_NEW_CUT,
   STRUGGLE_NEW_FLOOR,
   STRAND_BIAS_WEIGHT,
+  STRAND_CONTROL_MAX,
+  STT_INSTALLED_OUTPUT_WEIGHT,
   JUMP_CRUISE_SESSIONS,
   JUMP_OFFER_INTERVAL_DAYS,
 } from "./constants.ts"
@@ -55,6 +63,7 @@ import type {
   CourseState,
   EngineCard,
   FeedConstraints,
+  InterludeProvider,
   IssuedCard,
   ItemCard,
   PoolTag,
@@ -106,6 +115,9 @@ interface Slot {
   leech?: boolean
   pinTail?: boolean
   checkpointId?: string
+  /** Set on an interlude slot (PREMIUM_SCROLL §2.2/§2.3) so finalize can update
+   *  the session's interlude cadence bookkeeping against the ACTUAL position. */
+  interlude?: "game" | "reader"
 }
 
 interface NormalizedConstraints {
@@ -114,17 +126,28 @@ interface NormalizedConstraints {
   exclude: Set<string>
   timeboxSec?: number
   cadence: number
+  sttInstalled: boolean
+  interludes: InterludeProvider[]
+  combo: number
 }
 
 function normalizeConstraints(c?: FeedConstraints): NormalizedConstraints {
   const providers = new Set(c?.availableProviders ?? [])
   providers.add("native")
+  // An interlude pack's provider is implicitly available (it was installed +
+  // declared) — fold it into the provider set so its slot survives the
+  // template/provider filters even when the caller only listed "native".
+  const interludes = c?.interludes ?? []
+  for (const il of interludes) providers.add(il.provider)
   return {
     providers,
     models: new Set<ModelNeed>(c?.modelsAvailable ?? ["stt", "llm", "tts"]),
     exclude: new Set(c?.excludeActivityTypes ?? []),
     timeboxSec: c?.timeboxSec,
     cadence: c?.checkpointCadence ?? DEFAULT_CHECKPOINT_CADENCE,
+    sttInstalled: c?.sttInstalled === true,
+    interludes,
+    combo: c?.combo ?? 0,
   }
 }
 
@@ -249,6 +272,12 @@ function chooseActivityType(
         // strand keeps the spec's ×1.5 floor (engine.md §5.3.3)
         let w = opts.strandWeights ? opts.strandWeights[STRAND_INDEX[t.strand]] : 1
         if (t.strand === opts.biasStrand) w = Math.max(w, STRAND_BIAS_WEIGHT)
+        // Speak-first: a resident Whisper model up-weights the OUTPUT strand so
+        // installing STT visibly increases live speaking beyond the flat target.
+        // Re-clamped to the control ceiling so it can never crowd out the rest.
+        if (cons.sttInstalled && t.strand === "output") {
+          w = Math.min(STRAND_CONTROL_MAX, w * STT_INSTALLED_OUTPUT_WEIGHT)
+        }
         return [t, w] as const
       }),
     )
@@ -352,6 +381,102 @@ function modelKey(modelNeeds: ModelNeed[], pinTail?: boolean): number {
   return 0
 }
 
+/**
+ * Interlude scheduling (PREMIUM_SCROLL §2.2/§2.3, the variety engine). Given the
+ * installed interlude packs (game + reader) and the session's cadence
+ * bookkeeping, decide whether THIS batch should carry an interlude and, if so,
+ * WHICH kind — then bind it to a featured item. Returns the slot to append, or
+ * null (no interlude this batch).
+ *
+ * Selection rules (encoded as preferences, not hard walls):
+ *  - never two interludes back-to-back (INTERLUDE_BACK_TO_BACK_FLOOR);
+ *  - a game spike is eligible on its own ~1-in-12–18 cadence; a reader breath on
+ *    its ~1-in-20–30 cadence (each with a small seeded jitter so it isn't
+ *    metronomic);
+ *  - when both are eligible, pick by arousal: a HOT combo (cruise / high combo)
+ *    prefers a reader (comedown); a COLD stretch (struggle / combo 0) prefers a
+ *    game (re-ignite); otherwise whichever is more "overdue" against its own
+ *    cadence.
+ * The featured item is the learner's CURRENT phrase: the first real content slot
+ * already placed in this batch (so wordfall drills / drift features exactly what
+ * the scroll is teaching right now). Item-kind is matched against the pack's
+ * declared `itemKinds`.
+ */
+function chooseInterlude(
+  bag: MixerBag,
+  cons: NormalizedConstraints,
+  slots: Slot[],
+  combo: number,
+): Slot | null {
+  const interludes = cons.interludes
+  if (interludes.length === 0) return null
+
+  const { session } = bag
+  const posAfter = session.emitIndex + slots.length // where the interlude would sit
+
+  // Back-to-back floor: at least a few fast core cards since the last interlude.
+  if (session.lastInterludeEmit >= 0 && posAfter - session.lastInterludeEmit < INTERLUDE_BACK_TO_BACK_FLOOR) {
+    return null
+  }
+
+  // A featured item to bind — the current phrase (first real content slot this
+  // batch). Interludes ride real content; a contentless batch gets none.
+  const featured = slots.find(
+    (s) => s.itemIds.length > 0 && !s.checkpoint && s.pool !== "checkpoint" && s.pool !== "jump",
+  )
+  if (!featured) return null
+  const featuredId = featured.itemIds[0]
+  const featuredKind = bag.gidx.graph.items[featuredId]?.kind
+  if (!featuredKind) return null
+
+  const consumes = (il: InterludeProvider): boolean => il.itemKinds.includes(featuredKind)
+  const games = interludes.filter((il) => il.kind === "game" && consumes(il))
+  const readers = interludes.filter((il) => il.kind === "reader" && consumes(il))
+
+  // Own-cadence eligibility (with a small seeded jitter off the session PRNG so
+  // the exact spike card isn't metronomic — deterministic under the session seed).
+  const gameGap = GAME_INTERLUDE_MIN_GAP + (GAME_INTERLUDE_JITTER > 0 ? session.rng.int(GAME_INTERLUDE_JITTER + 1) : 0)
+  const readerGap = READER_INTERLUDE_MIN_GAP + (READER_INTERLUDE_JITTER > 0 ? session.rng.int(READER_INTERLUDE_JITTER + 1) : 0)
+  const gameSince = session.lastGameInterludeEmit < 0 ? Infinity : posAfter - session.lastGameInterludeEmit
+  const readerSince = session.lastReaderInterludeEmit < 0 ? Infinity : posAfter - session.lastReaderInterludeEmit
+  const gameEligible = games.length > 0 && gameSince >= gameGap
+  const readerEligible = readers.length > 0 && readerSince >= readerGap
+  if (!gameEligible && !readerEligible) return null
+
+  // Arousal-aware pick when both are eligible.
+  const hot = combo >= INTERLUDE_HOT_COMBO || session.flow.mode === "cruise"
+  const cold = combo === 0 || session.flow.mode === "struggle"
+  let kind: "game" | "reader"
+  if (gameEligible && readerEligible) {
+    if (hot) kind = "reader"
+    else if (cold) kind = "game"
+    // otherwise: whichever is more overdue against its own cadence
+    else kind = gameSince - gameGap >= readerSince - readerGap ? "game" : "reader"
+  } else {
+    kind = gameEligible ? "game" : "reader"
+  }
+
+  const pool = kind === "game" ? games : readers
+  const il = pool[bag.session.rng.int(pool.length)]
+  if (!il) return null
+
+  return {
+    itemIds: [featuredId],
+    activityType: il.activityType,
+    form: 1,
+    pool: "fun",
+    strand: "fluency",
+    guessable: false,
+    estSec: il.estSec,
+    modelNeeds: [],
+    provider: il.provider,
+    celebration: "normal",
+    unscored: kind === "reader", // a reader interlude is unscored (segments read)
+    pinTail: true, // sit at the batch tail, after the content it features
+    interlude: kind,
+  }
+}
+
 /** Lesson recipe slot → pool + candidate items (engine.md §5.10). The debt
  *  brake still applies inside a lesson — a recipe never overrides safety. */
 function lessonSlotItem(
@@ -451,7 +576,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   const pools = buildPools(bag)
   const quota = adjustQuotas(course, session.flow.mode, pools.dueCount)
   const slots: Slot[] = []
-  const cursor = { due: 0, new: 0, repair: 0, trickle: 0, fun: 0 }
+  const cursor = { due: 0, new: 0, repair: 0, trickle: 0, fun: 0, frontier: 0 }
   const stage = gidx.stageOfUnit(course.position.unitOrdinal)
   const biasStrand = mostDeficientStrand(course, bag.day, stage)
   const strandWeights = strandControlWeights(course, bag.day, stage)
@@ -512,7 +637,10 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     }
     slots.push(slot)
     if (leechItem) leechServed += 1
-    if (pool === "fun") funServed += 1
+    if (pool === "fun") {
+      funServed += 1
+      session.funServedSession += 1
+    }
     if (forceInputFluencyBudget > 0 && (slot.strand === "input" || slot.strand === "fluency")) {
       forceInputFluencyBudget -= 1
     }
@@ -599,14 +727,16 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   }
 
   // -- 2. fill remaining slots ---------------------------------------------------
-  const poolOrder: { tag: "due" | "new" | "repair" | "fun" | "trickle"; list: string[] }[] = [
+  type FillTag = "due" | "new" | "repair" | "fun" | "trickle" | "frontier"
+  const poolOrder: { tag: FillTag; list: string[] }[] = [
     { tag: "due", list: pools.due },
     { tag: "new", list: pools.new },
     { tag: "repair", list: pools.repair },
     { tag: "fun", list: pools.fun },
     { tag: "trickle", list: pools.trickle },
+    { tag: "frontier", list: pools.frontier },
   ]
-  const remaining = (tag: "due" | "new" | "repair" | "fun" | "trickle"): number => {
+  const remaining = (tag: FillTag): number => {
     const entry = poolOrder.find((p) => p.tag === tag)
     return entry ? entry.list.length - cursor[tag] : 0
   }
@@ -647,15 +777,23 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       session.pendingDebutRecognitions.push(entry) // type unavailable; retry later
     }
 
-    const weights: [("due" | "new" | "repair" | "fun" | "trickle"), number][] = []
-    const push = (tag: "due" | "new" | "repair" | "fun" | "trickle", w: number): void => {
+    // Infinite feed (doom-scroll to fluency): FUN is a bounded VARIETY garnish
+    // (≤ MAX_FUN_PER_10 per batch), never a shutdown timer. The old wind-down
+    // (serve N fun then exhaust to "caught up") is gone — a learner who keeps
+    // going must NEVER dead-end mid-journey.
+    const funAllowed =
+      remaining("fun") > 0 && funServed < Math.max(1, Math.ceil(n / 10)) * MAX_FUN_PER_10
+
+    const weights: [FillTag, number][] = []
+    const push = (tag: FillTag, w: number): void => {
+      if (tag === "fun" && !funAllowed) return
       if (w > 0 && remaining(tag) > 0) weights.push([tag, w])
     }
     const trickleBacklog = !quota.debt && remaining("trickle") > 0
     push("due", quota.review)
     push("new", quota.debt ? 0 : trickleBacklog ? quota.new * 0.5 : quota.new)
     push("repair", quota.repair)
-    push("fun", funServed < Math.max(1, Math.ceil(n / 10)) * MAX_FUN_PER_10 ? quota.fun : 0)
+    push("fun", quota.fun)
     // flex → largest normalized backlog (trickle preferred when nonempty);
     // the placed-backlog TRICKLE shares the NEW quota (both are intake) and
     // absorbs its overflow — that is how the §4.3.3 backlog actually drains
@@ -669,6 +807,31 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       ]
       backlogs.sort((a, b) => b[1] - a[1])
       if (backlogs[0][1] > 0) push(backlogs[0][0], quota.flex)
+    }
+
+    // ---- continuation (the INFINITE tail) --------------------------------
+    // The normal quota pools are drained (the day's target is met and nothing
+    // is due). Instead of winding down, PULL THE FRONTIER FORWARD: the eager
+    // learner keeps unlocking the next reachable units' fresh material (the
+    // per-day NEW throttle is a SOFT milestone here, not a hard wall), still
+    // debt-gated (never bury a real backlog) and still DAG-gated by the pool
+    // builder. When even the frontier is exhausted (all reachable material met),
+    // REVISIT strong-known items through the FULL activity menu (not the funWeight
+    // subset) with escalating form and strict anti-repeat — varied spaced review,
+    // never the "fun:match_pairs forever" loop. This continuation runs ONLY when
+    // nothing higher-priority is left, so the normal daily path — and every golden
+    // transcript — is untouched. The lone true terminal is genuinely-empty
+    // content (no frontier AND no strong-known to revisit), reached via `break`
+    // (fail-safe: never mid-journey).
+    let continuationRevisit = false
+    if (weights.length === 0) {
+      if (!quota.debt && remaining("frontier") > 0) {
+        push("frontier", 1)
+      } else if (remaining("fun") > 0) {
+        // full-menu revisit of a strong-known item (bypasses the fun garnish cap)
+        weights.push(["fun", 1])
+        continuationRevisit = true
+      }
     }
     if (weights.length === 0) break
 
@@ -688,8 +851,10 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       edgeUsed += 1
     }
 
-    if (tag === "new") {
-      // debut ladder: intro (unscored) → recognition, same session
+    if (tag === "new" || tag === "frontier") {
+      // debut ladder: intro (unscored) → recognition, same session. Frontier
+      // items are un-carded next-unit material and ride the SAME ladder — a
+      // binger meets brand-new words with the proper intro→recognition scaffold.
       const stage = session.debuts.get(itemId) ?? 0
       if (stage === 0) {
         const slot = tryIssue(itemId, "new", 0, { debutIntro: true, unscored: true })
@@ -697,6 +862,19 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
         continue
       }
       continue // stages 1/2 ride pendingDebutRecognitions / are done
+    }
+
+    if (continuationRevisit) {
+      // Revisit a strong-known item as a DUE-style review: full activity menu +
+      // escalating form + anti-repeat (the previous slot's type is avoided in
+      // tryIssue). This is what breaks the single-funWeight-template repetition —
+      // the item cycles through choice_pick / cloze / flip_recall / … not just
+      // match_pairs. SRS is untouched: this re-exposes an already-mastered item
+      // and grades it like any review; it never manufactures NEW spacing debt.
+      const card = bag.cards.get(itemId)
+      const form = card ? chooseForm(card, session.flow.mode, rOf(itemId), rng) : 0
+      tryIssue(itemId, "due", form)
+      continue
     }
 
     if (tag === "trickle") {
@@ -725,9 +903,30 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     }
   }
 
+  // -- 3.4 interlude scheduling (PREMIUM_SCROLL §2.2/§2.3) -------------------------
+  // Drop in a game spike / reader breath among the installed interlude packs,
+  // chosen by kind (game vs reader) from their DECLARED activities — never a
+  // hardcoded provider. At most one per batch; bound to the current phrase; the
+  // variety engine's cadence + never-two-back-to-back rules live in
+  // chooseInterlude. It sits at the batch tail (pinTail) after the content it
+  // features, and only when the batch actually carried that content.
+  const interludeSlot = chooseInterlude(bag, cons, slots, cons.combo)
+  if (interludeSlot) slots.push(interludeSlot)
+  // Session bookkeeping (lastInterludeEmit / lastGame/ReaderInterludeEmit) is
+  // updated in finalize() against the ACTUAL emitted position — the pinTail
+  // partition + later add/drop steps can shift a slot's index.
+
   // -- 3.5 cadence checkpoint (R5) -------------------------------------------------
+  // A cadence checkpoint is a MILESTONE, not a gate: an occasional dopamine beat
+  // ("you hit your goal — keep going?") that ALWAYS leads to more varied content
+  // on Continuar (the infinite frontier below). It never re-pins identically
+  // (checkpointId carries the incrementing cadenceEmitted) and never appears
+  // back-to-back with no real content between — it only fires when THIS batch
+  // carried at least one real (content) card, so a lone-checkpoint batch is
+  // impossible.
   const emittedAfter = session.emitIndex + slots.length
-  if (slots.length > 0 && emittedAfter >= (session.cadenceEmitted + 1) * cons.cadence) {
+  const hasRealContent = slots.some((s) => s.itemIds.length > 0)
+  if (hasRealContent && emittedAfter >= (session.cadenceEmitted + 1) * cons.cadence) {
     session.cadenceEmitted += 1
     const unit = gidx.units[course.position.unitOrdinal]
     slots.push({
@@ -1018,7 +1217,11 @@ function enforceItemGapFinal(bag: MixerBag, slots: Slot[]): void {
   const posOf = (i: number): number => bag.session.emitIndex + i
   for (let i = 0; i < slots.length; i++) {
     const s = slots[i]
-    if (s.itemIds.length === 0 || s.checkpoint) continue
+    // An interlude DELIBERATELY re-features the current phrase (the item a
+    // content slot just taught) — it is exempt from the same-item gap, exactly
+    // as it is from adjacency (a game round / reader passage over the same
+    // phrase is the whole point).
+    if (s.itemIds.length === 0 || s.checkpoint || s.interlude) continue
     const violates = (idx: number): boolean => {
       for (const itemId of slots[idx].itemIds) {
         let prev = bag.session.lastEmit.get(itemId)
@@ -1083,6 +1286,14 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
       params.b_distractor = session.flow.mode === "cruise" ? course.theta : course.theta - 0.5
     }
     if (s.debutIntro) params.intro = true
+    // Interlude cadence bookkeeping against the ACTUAL emitted position
+    // (PREMIUM_SCROLL §2.2/§2.3): the pinTail partition can shift a slot's
+    // index, so we record it here, not at scheduling time.
+    if (s.interlude) {
+      session.lastInterludeEmit = position
+      if (s.interlude === "game") session.lastGameInterludeEmit = position
+      else session.lastReaderInterludeEmit = position
+    }
     const issued: IssuedCard = {
       specId,
       activityType: s.activityType,
@@ -1099,14 +1310,20 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
       checkpointId: s.checkpointId,
     }
     session.issued.set(specId, issued)
-    for (const itemId of s.itemIds) {
-      session.lastEmit.set(itemId, position)
-      if (s.isReplay) session.replayedItems.add(itemId) // one replay per session
-      const card = bag.cards.get(itemId)
-      if (card && isLeech(card)) recordLeechServing(course, itemId, s.activityType)
-    }
-    if (s.itemIds.length > 0) {
-      pushLast40(session, { activityType: s.activityType, strand: s.strand, itemIds: [...s.itemIds] })
+    // An interlude re-features an already-emitted item as a pack round/passage;
+    // it must NOT overwrite that item's true spacing (lastEmit) or count toward
+    // the strand/type recency last40 window — those track native graded
+    // exposures. Everything else (issued map, wire card) is emitted normally.
+    if (!s.interlude) {
+      for (const itemId of s.itemIds) {
+        session.lastEmit.set(itemId, position)
+        if (s.isReplay) session.replayedItems.add(itemId) // one replay per session
+        const card = bag.cards.get(itemId)
+        if (card && isLeech(card)) recordLeechServing(course, itemId, s.activityType)
+      }
+      if (s.itemIds.length > 0) {
+        pushLast40(session, { activityType: s.activityType, strand: s.strand, itemIds: [...s.itemIds] })
+      }
     }
     if (s.debutIntro && s.itemIds.length === 1) {
       session.pendingDebutRecognitions.push({
@@ -1138,6 +1355,8 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
         // Presentation-only exposure for the surface (W10/W4 fix a): the
         // IssuedCard already carried this; the wire card now does too.
         ...(s.unscored ? { unscored: true } : {}),
+        // Interlude kind (game spike / reader breath) for the compact poster.
+        ...(s.interlude ? { interludeKind: s.interlude } : {}),
       },
     })
   }

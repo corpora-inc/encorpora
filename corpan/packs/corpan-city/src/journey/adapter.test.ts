@@ -164,6 +164,78 @@ describe("journey adapter — spec parsing + field mapping (contract §6.3)", ()
     expect(result.perItem[2].itemRef.source).toBe("travel-pack")
   })
 
+  it("single scheduled item + no item:* detail → aggregate-binned perItem (R9, interlude drill)", () => {
+    const spec = makeSpec({ itemRefs: [ref("42", "travel-pack")] })
+    const { refByEntryId } = buildChallengeInputs(spec)
+    const plus = {
+      challengeId: spec.specId,
+      toolId: "fast-translate",
+      playerId: "player-local",
+      score: 0.9,
+      detail: { score: 0.9, xp: 8 }, // aggregate only — no item:* keys
+      xp: [],
+      completedAt: Date.now(),
+      offline: true,
+      rewards: { xp: 8, coins: 0, items: [] },
+      outcome: "completed",
+    } as unknown as ChallengeResultPlus
+    const result = toActivityResult(spec, plus, 30_000, refByEntryId)
+    expect(ActivityResultSchema.safeParse(result).success).toBe(true)
+    expect(result.perItem).toHaveLength(1)
+    expect(result.perItem[0].itemRef.id).toBe("42")
+    expect(result.perItem[0].itemRef.source).toBe("travel-pack")
+    expect(result.perItem[0].outcome).toBe("pass")
+    // The reserved flag that makes the engine clamp the grade to [Hard, Good].
+    expect(result.perItem[0].detail?.flags?.aggregateBinned).toBe(true)
+  })
+
+  it("single-item binning maps a low score to fail and a mid score to partial", () => {
+    const spec = makeSpec({ itemRefs: [ref("7")] })
+    const { refByEntryId } = buildChallengeInputs(spec)
+    const mk = (score: number, outcome: string = "completed") =>
+      ({
+        challengeId: spec.specId,
+        toolId: "fast-translate",
+        playerId: "p",
+        score,
+        detail: { score },
+        xp: [],
+        completedAt: Date.now(),
+        offline: true,
+        rewards: { xp: 0, coins: 0, items: [] },
+        outcome,
+      }) as unknown as ChallengeResultPlus
+    expect(
+      toActivityResult(spec, mk(0.5), 1000, refByEntryId).perItem[0].outcome,
+    ).toBe("partial")
+    expect(
+      toActivityResult(spec, mk(0), 1000, refByEntryId).perItem[0].outcome,
+    ).toBe("fail")
+    // An aborted single-item round stays SCORE-ONLY (abandoned, no binned hit).
+    const aborted = toActivityResult(spec, mk(0, "aborted"), 1000, refByEntryId)
+    expect(aborted.perItem).toEqual([])
+    expect(aborted.abandoned).toBe(true)
+  })
+
+  it("MULTI-item round with no item:* detail stays score-only (never fans out)", () => {
+    const spec = makeSpec({ itemRefs: [ref("1"), ref("2"), ref("3")] })
+    const { refByEntryId } = buildChallengeInputs(spec)
+    const plus = {
+      challengeId: spec.specId,
+      toolId: "fast-translate",
+      playerId: "p",
+      score: 0.7,
+      detail: { score: 0.7 },
+      xp: [],
+      completedAt: Date.now(),
+      offline: true,
+      rewards: { xp: 0, coins: 0, items: [] },
+      outcome: "completed",
+    } as unknown as ChallengeResultPlus
+    const result = toActivityResult(spec, plus, 40_000, refByEntryId)
+    expect(result.perItem).toEqual([])
+  })
+
   it("maps outcome 'aborted' → abandoned: true and clamps score", () => {
     const spec = makeSpec()
     const { refByEntryId } = buildChallengeInputs(spec)

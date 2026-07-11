@@ -1077,6 +1077,10 @@
       "downloading": "Legger til… {{percent}} %",
       "retry": "Prøv igjen",
       "failed": "Kunne ikke legge til"
+    },
+    "interlude": {
+      "gameCue": "Raskt spill · én frase",
+      "readerCue": "Rask lesing · ett avsnitt"
     }
   }
 }

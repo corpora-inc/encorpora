@@ -71,11 +71,36 @@ export const STRAND_BIAS_WEIGHT = 3
 export const STRAND_CONTROL_EXPONENT = 1.5
 export const STRAND_CONTROL_MIN = 0.15
 export const STRAND_CONTROL_MAX = 5
+// Speak-first: when a Whisper model is INSTALLED, the output (speaking) strand's
+// template weight is multiplied by this so installing STT visibly increases live
+// speaking beyond the flat stage target. Applied on top of the proportional
+// control law, then re-clamped to STRAND_CONTROL_MAX so it can never dominate.
+export const STT_INSTALLED_OUTPUT_WEIGHT = 1.8
 export const LANGUAGE_SHARE_HARD_CAP = 0.65 // over last40 ⇒ force 2 input/fluency slots
 export const REPLAY_MIN_GAP = 3
 export const ITEM_MIN_GAP = 3
 export const ITEM_MIN_GAP_RELAXED = 2
 export const MAX_FUN_PER_10 = 1
+// Doom-scroll-to-fluency: the feed is INFINITE. When the day's real work is done
+// (new target met, no due/repair/trickle) the eager learner who keeps going gets
+// FRESH frontier material — the NEXT reachable units' new items — pulled forward,
+// plus a rotating fun/variety stream. NEVER a wind-down-to-terminal.
+//
+// Continuation stream: once the normal quota pools drain, the mixer serves a
+// bounded slice of FUN per batch (a variety beat) but always co-serves frontier
+// NEW so the feed keeps advancing — fun is a garnish, never the whole meal.
+export const CONTINUATION_FUN_PER_BATCH = 2
+// Frontier pull-forward horizon: how many units AHEAD of the position cursor an
+// eager continuing learner can unlock new material from IN ONE SITTING, provided
+// each unit's prereq skills are already reachable (DAG-gated, §6 position rules).
+// The per-day NEW throttle is a SOFT milestone the binger blows past; the DAG is
+// the hard wall. Position itself does NOT move here — that stays checkpoint-gated
+// (SRS integrity), so spacing still governs REVIEWS; only NEW exploration uncaps.
+export const FRONTIER_LOOKAHEAD_UNITS = 3
+// Anti-repeat for the continuation stream: consecutive cards must differ in item
+// AND (where the type menu allows) activity type. This window is how far back the
+// mixer looks to escalate form/variety as a run of continuations grows.
+export const CONTINUATION_VARIETY_WINDOW = 3
 export const MAX_LEECH_PER_BATCH = 1
 /** A match_pairs card carries 4–6 items so the renderer shows multiple pairs
  *  (never the one-pair collapse, defect #2). Companions are drawn from the
@@ -192,6 +217,25 @@ export const CRUISE_SESSION_MIN_SCORED = 8
 export const LEGENDARY_ITEMS_MIN = 12
 export const LEGENDARY_ITEMS_MAX = 16
 export const LEGENDARY_MISTAKES_ALLOWED = 2
+
+// ---- interlude cadence (PREMIUM_SCROLL §2.2/§2.3) -----------------------------------
+// A game interlude is a spike (~1 in 12–18 cards); a reader interlude is a
+// down-tempo breath (~1 in 20–30). These are the felt-cadence MINIMUMS the
+// mixer schedules toward: an interlude of a given kind is eligible only once
+// its own gap since the last one of that kind is met, AND the shared floor
+// below has passed (never two interludes back-to-back; a spike needs ≥ a few
+// fast core cards to spike from). Deterministic-safe: a small seeded jitter
+// spreads the exact card so the cadence never feels metronomic.
+export const GAME_INTERLUDE_MIN_GAP = 12
+export const GAME_INTERLUDE_JITTER = 6 // → effective 12–18
+export const READER_INTERLUDE_MIN_GAP = 20
+export const READER_INTERLUDE_JITTER = 10 // → effective 20–30
+/** Never two interludes back-to-back: at least this many cards must separate
+ *  ANY two interludes (game or reader), regardless of their own cadences. */
+export const INTERLUDE_BACK_TO_BACK_FLOOR = 4
+/** Combo at/above which the learner is "hot" → prefer a reader breath
+ *  (comedown); a cold stretch (combo 0) → prefer a game spike (re-ignite). */
+export const INTERLUDE_HOT_COMBO = 4
 
 // ---- session / welcomeBack (engine.md §4.1) -----------------------------------------
 export const WELCOME_BACK_GAP_DAYS = 7

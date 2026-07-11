@@ -5,10 +5,13 @@
 // wheel + keyboard (↑/↓/Space) for desktop.
 
 import { useCallback, useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion, useAnimationControls } from "framer-motion"
+import { AnimatePresence, motion, useAnimationControls, useReducedMotion } from "framer-motion"
+import { ChevronsUp } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { ActivityResult, ActivitySpec } from "../../contentPacks/activityContract"
 import { celebrate, skipCelebration } from "../celebration/CelebrationLayer.tsx"
+import { ComboCounter } from "../celebration/ComboCounter.tsx"
+import { cardTransition } from "./cardTransition.ts"
 import { useJourneyStore } from "../../store/journey.ts"
 import type { CompletedCard, FeedCard, SessionStats } from "../types.ts"
 import type { JourneyRuntime } from "../runtime.ts"
@@ -58,6 +61,7 @@ export function FeedScroller(props: FeedScrollerProps) {
   const [autoCountdown, setAutoCountdown] = useState(false)
   const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const controls = useAnimationControls()
+  const reducedMotion = !!useReducedMotion()
 
   useEffect(() => runtime.subscribe(() => force((v) => v + 1)), [runtime])
 
@@ -236,6 +240,9 @@ export function FeedScroller(props: FeedScrollerProps) {
   )
 
   const stats: SessionStats = runtime.sessionStats()
+  // Combo-reactive card-to-card spring (§3.1): the advance gets a hair snappier
+  // as the streak climbs; reduced-motion collapses it to a cross-fade.
+  const advanceTransition = cardTransition(stats.combo, reducedMotion)
   const quota = runtime.peekQuota()
   const cardsToday = useJourneyStore((s) => s.byCourse[props.courseKey]?.cardsToday.count ?? 0)
 
@@ -429,10 +436,10 @@ export function FeedScroller(props: FeedScrollerProps) {
             <motion.div
               key={`back-${backRecord.card.cardId}`}
               className="h-full w-full"
-              initial={{ y: -40, opacity: 0 }}
+              initial={reducedMotion ? { opacity: 0 } : { y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 40, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+              exit={reducedMotion ? { opacity: 0 } : { y: 40, opacity: 0 }}
+              transition={advanceTransition}
             >
               <FeedCardFrame card={backRecord.card} settled={!backRedoable} review={!backRedoable}>
                 {backRedoable ? (
@@ -449,10 +456,10 @@ export function FeedScroller(props: FeedScrollerProps) {
               key={current.cardId}
               className="h-full w-full"
               data-journey-current={current.cardId}
-              initial={{ y: 80, opacity: 0 }}
+              initial={reducedMotion ? { opacity: 0 } : { y: 80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -80, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+              exit={reducedMotion ? { opacity: 0 } : { y: -80, opacity: 0 }}
+              transition={advanceTransition}
             >
               <FeedCardFrame card={current} settled={settled} review={false}>
                 {renderCard(current, "live")}
@@ -482,19 +489,25 @@ export function FeedScroller(props: FeedScrollerProps) {
         </AnimatePresence>
       </motion.div>
 
-      {/* next-card peek after completion (§3.1 step 4): a thin affordance sliver
-          hinting the next card is ready — NOT a full empty card. Carries a grip
-          bar so it never reads as a blank content card, and it sits above the
-          safe-area inset (env inset lives on the container) so it is never
-          clipped. Only shown when a real next card exists. */}
-      {settled && next && backIndex === 0 ? (
+      {/* next-card affordance after completion (§3.1 step 4): a gently bouncing
+          upward chevron that reads unambiguously as "swipe up to continue" — NOT
+          a card-colored drawer (the old bottom sliver read as a blank clipped
+          card on gesture-nav phones). Sits fully above the container's
+          safe-area inset (bottom-4), so it is never clipped by the home
+          indicator / gesture bar. Only shown when a real next card exists and
+          the card is not auto-advancing on its own. */}
+      {settled && next && backIndex === 0 && !autoCountdown ? (
         <motion.div
-          className="pointer-events-none absolute inset-x-6 bottom-0 flex h-[9%] items-start justify-center rounded-t-2xl border border-b-0 border-border bg-card/80 pt-2"
-          initial={{ y: 60 }}
-          animate={{ y: 24 }}
+          className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, -6, 0] }}
+          transition={{
+            opacity: { duration: 0.3 },
+            y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" },
+          }}
           aria-hidden
         >
-          <div className="h-1 w-9 rounded-full bg-muted-foreground/40" />
+          <ChevronsUp className="h-6 w-6 text-muted-foreground/50" />
         </motion.div>
       ) : null}
 
@@ -537,6 +550,16 @@ export function FeedScroller(props: FeedScrollerProps) {
           className="absolute bottom-6 end-6 h-8 w-8 animate-pulse rounded-full border-2 border-[hsl(var(--journey-accent,262_80%_58%))]"
           aria-label={t("journey.settings.listeningMode")}
         />
+      ) : null}
+
+      {/* ambient momentum gauge (§3.5): a small squared bar in the top-trailing
+          corner that fills + warms with the streak and exhales on a break — the
+          learner reads their momentum off the feel, not a number. Fixed overlay,
+          never jolts the layout; hidden below combo 2. */}
+      {backIndex === 0 ? (
+        <div className="pointer-events-none absolute end-3 top-3">
+          <ComboCounter combo={stats.combo} />
+        </div>
       ) : null}
 
       {/* viewed-earlier depth chip */}

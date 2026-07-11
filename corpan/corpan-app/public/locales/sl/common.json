@@ -1077,6 +1077,10 @@
       "downloading": "Dodajanje… {{percent}}%",
       "retry": "Poskusi znova",
       "failed": "Dodajanje ni uspelo"
+    },
+    "interlude": {
+      "gameCue": "Hitra igra · ena fraza",
+      "readerCue": "Hitro branje · en odlomek"
     }
   }
 }

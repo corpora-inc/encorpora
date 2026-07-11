@@ -28,6 +28,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   fallback, and Leitner retirement.
 
 ### Changed
+- **Manifest declares `lingo_hero:round` as a ~40s one-phrase interlude.**
+  `typicalDurationSec` lowered 90→40 so the Journey feed slots and renders it as
+  a compact "sip"-sized interlude (drop in for one phrase, then scroll on)
+  rather than a full-height game launch. No gameplay change — a journey launch
+  can still pass `params.rounds`; the default one-phrase drill is the interlude
+  case the feed schedules.
 - **Leitner store retired under journey launches (D11).** In journey mode
   `initLearning` wires the journey reporter instead of the SRS selector and
   never writes `WordStatsStore` — FSRS (the host engine) is the one scheduler.

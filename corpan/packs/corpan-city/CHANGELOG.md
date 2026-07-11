@@ -20,10 +20,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   economy for journey launches). Terminal results ride `hostApi.journey` with
   the `corpan:activity-result` event rail as fallback; unsupported tool ids
   abandon("unsupported") + exit.
-- **R9 evidence rule enforced:** `perItem` is emitted ONLY for genuine
-  per-entry verdicts (the reserved `detail["item:<entryId>"]` convention —
-  unimplemented city-side today), so every current tool reports score-only.
-  Aggregate scores are never binned into fabricated per-item outcomes.
+- **R9 evidence rule enforced:** `perItem` prefers genuine per-entry verdicts
+  (the reserved `detail["item:<entryId>"]` convention). When a tool emits none
+  AND the spec scheduled exactly ONE item — the Journey interlude "drill one
+  phrase" case — the round's aggregate score is binned into that single item's
+  outcome with the reserved `aggregateBinned` flag (the engine clamps the
+  derived FSRS grade to [Hard, Good]), so the one phrase a feed interlude teaches
+  gets real per-item evidence instead of being lost as score-only. Multi-item
+  rounds with no per-entry verdicts still report score-only; an aggregate over
+  several items is never fanned out into fabricated per-item rows. Aborted rounds
+  stay score-only + `abandoned`.
 - Manifest `activities`: all 20 implemented challenge tools declared for the
   Journey scheduler (STT tools carry `modelNeeds: ["stt"]`).
 - Vendored contract copy `src/sdk/activityContract.ts` (generated — synced by

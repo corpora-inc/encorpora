@@ -33,6 +33,10 @@ export interface PreparedExercise {
   /** speak_echo degraded to listen_type (§6.3) — results carry
    *  flags.sttUnavailable so the engine stops scheduling STT today. */
   sttFallback?: boolean
+  /** Speak-first: an intro_echo/listen_type card upgraded to Whisper-graded
+   *  speak_echo because STT is usable. Reverted (with the rest of the session)
+   *  on an sttDeclined result so a learner who can't speak is never trapped. */
+  sttUpgraded?: boolean
   /** words-in-context: a real corpus phrase carrying items[0] when it is a word
    *  the learner has met before. Feeds the post-answer enrichment line, the
    *  etymology gem's usage line, and the context-cloze form. Absent on first
@@ -56,6 +60,17 @@ export type FeedCard =
       engine: EngineCard
       poster: PackPoster
       rare?: "miniGame" | "storyChapter"
+      /** A "sip"-sized drop-in (PREMIUM_SCROLL §2.2/§4): a lightweight pack that
+       *  drills the injected phrase in ~20–45s, then returns to the scroll. The
+       *  feed renders it as a compact InterludePoster instead of a full-height
+       *  game launch. Heavy 3D tent-poles (§2.4) are NOT interludes — they keep
+       *  the full poster + cold mount. Derived by the runtime from the activity's
+       *  estimated duration + provider (never invented by a pack). */
+      interlude?: boolean
+      /** For an interlude, whether it is a GAME spike or a READER breath
+       *  (PREMIUM_SCROLL §2.2/§2.3) — drives the compact poster's cue/icon
+       *  independently of the rare-variant path. Absent on non-interludes. */
+      interludeKind?: "game" | "reader"
     }
   | { kind: "capability"; cardId: string; capabilityId: string; spec: ActivitySpec; engine: EngineCard; prepared: PreparedExercise | null }
   | { kind: "blockIntro"; cardId: string; modelNeeds: ("stt" | "llm")[]; blockLen: number }

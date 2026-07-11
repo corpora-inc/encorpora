@@ -1077,6 +1077,10 @@
       "downloading": "Nambahkeun… {{percent}}%",
       "retry": "Cobian deui",
       "failed": "Gagal nambahkeun"
+    },
+    "interlude": {
+      "gameCue": "Kaulinan gancang · hiji frasa",
+      "readerCue": "Maca gancang · hiji bagian"
     }
   }
 }

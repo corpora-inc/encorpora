@@ -241,6 +241,32 @@ const RAW_BATCH = 6
 const HISTORY_RING = 20
 const RECENT_KEY_CARDS = 10
 
+// Interlude classification (PREMIUM_SCROLL §2.2/§4.4). A packActivity is a
+// "sip"-sized INTERLUDE — rendered as a compact InterludePoster + eligible for
+// warm-mount — when it is quick (short estimated duration) AND not one of the
+// heavy 3D tent-pole packs (§2.4), which keep the full poster and a cold mount.
+// The threshold tracks the manifest `typicalDurationSec` the engine carries as
+// `estSec` (lingo-hero=40s interlude; a 3D scene drop-in is minutes).
+const INTERLUDE_MAX_EST_SEC = 75
+// Providers whose mount is a heavy 3D world (Babylon): never a sip, even if a
+// single-scene drop-in is short. These are the §2.4 tent-poles.
+const HEAVY_3D_PROVIDERS = new Set(["world_plaza", "world-plaza", "corpan_city", "corpan-city"])
+
+/** Is this pack-activity a lightweight "sip" interlude vs a heavy drop-in? */
+function isInterludeCard(ec: EngineCard): boolean {
+  if (HEAVY_3D_PROVIDERS.has(ec.meta.provider)) return false
+  const est = ec.meta.estSec ?? ec.spec.timeboxSec ?? Number.POSITIVE_INFINITY
+  return est <= INTERLUDE_MAX_EST_SEC
+}
+
+// Speak-first (§ core): when a Whisper model is usable, production/echo moments
+// become live, Whisper-graded speaking. intro_echo ALWAYS upgrades (the debut is
+// scored from the start). listen_type upgrades a strong deterministic SHARE —
+// "say it and continue" becomes "say it and be graded" — while the rest stay
+// type-what-you-hear so the learner still practices typing. The share is high
+// (speaking should dominate production when Whisper is present) but not total.
+const LISTEN_TYPE_SPEAK_UPGRADE_SHARE = 0.75
+
 export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   const now = deps.now ?? (() => Date.now())
   const record: RecordFn = deps.record ?? (() => {})
@@ -286,12 +312,31 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   const sttUsable = (): boolean =>
     sttState === "installed" || (sttState === "modelMissing" && !sttDeclined)
 
+  // Speak-first upgrade decision (§ core). intro_echo ALWAYS upgrades (score the
+  // debut). listen_type upgrades a deterministic per-card SHARE — the rest stay
+  // type-what-you-hear so the learner keeps a typing channel. Deterministic in
+  // specId so a card's identity is stable across re-maps (decline reverts cleanly).
+  const shouldUpgradeToSpeak = (from: string, specId: string): boolean => {
+    if (from === "intro_echo") return true
+    if (from === "listen_type") return cardRng(`${specId}:speakup`)() < LISTEN_TYPE_SPEAK_UPGRADE_SHARE
+    return false
+  }
+
   const constraints = (): FeedConstraints => ({
     availableProviders: deps.constraints?.availableProviders ?? ["native"],
+    // Installed interlude packs (game + reader) + the live combo drive the
+    // mixer's variety engine (PREMIUM_SCROLL §2.2/§2.3). The combo is the
+    // runtime's authoritative counter (submitResult below) — a hot combo pulls a
+    // reader breath, a cold stretch a game spike.
+    ...(deps.constraints?.interludes ? { interludes: deps.constraints.interludes } : {}),
+    combo,
     modelsAvailable: deps.constraints?.modelsAvailable ?? (sttUsable() ? ["stt", "tts"] : ["tts"]),
     excludeActivityTypes: deps.constraints?.excludeActivityTypes,
     timeboxSec: deps.constraints?.timeboxSec,
     checkpointCadence: deps.constraints?.checkpointCadence,
+    // Speak-first: only a truly resident model up-weights the speaking strand —
+    // supported-but-missing keeps the flat target (the install offer still runs).
+    sttInstalled: sttState === "installed",
   })
 
   const recentKeys = (): Set<string> => {
@@ -625,6 +670,8 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         engine: ec,
         poster: { name: ec.meta.provider },
         rare,
+        interlude: isInterludeCard(ec),
+        ...(ec.meta.interludeKind ? { interludeKind: ec.meta.interludeKind } : {}),
       }
     }
     if (t === "speak_echo" && !sttUsable()) {
@@ -640,6 +687,35 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       }
       const card = await prepareExercise(swapped)
       if (card && card.kind === "exercise") card.prepared.sttFallback = true
+      return card
+    }
+    // Speak-first UPGRADE (§ core, the reverse of the swap above): when STT is
+    // usable, production/echo moments become Whisper-graded speaking. This is
+    // the same 1:1 seam as the swap — mint a speak_echo EngineCard over the same
+    // items/specId, then prepare it. It flows through the SAME graceful paths as
+    // any native speak_echo: SpeakEcho renders the inline install offer when the
+    // model is merely supported-but-missing, and a decline (sttDeclined) both
+    // reverts THIS card and swaps the rest of the session back (never trapped).
+    if ((t === "intro_echo" || t === "listen_type") && sttUsable() && shouldUpgradeToSpeak(t, ec.spec.specId)) {
+      const upgraded: EngineCard = {
+        ...ec,
+        spec: { ...ec.spec, activityType: "speak_echo", modelNeeds: ["stt"] },
+        // We deliberately do NOT flip the engine's `unscored` bit or `strand`:
+        // both live on the already-minted IssuedCard and are read authoritatively
+        // by applyResult (unscored intro debuts stay presentation-tier in the
+        // FSRS ladder — the recognition that follows does the real grading; the
+        // strand tally credits the engine's original strand). The upgrade is a
+        // PRESENTATION change: the learner SPEAKS and gets a live Whisper
+        // confidence read instead of tapping/typing. It never fabricates a
+        // premature mastery grade. The mix-level speaking up-weight is a separate
+        // lever (the sttInstalled OUTPUT multiplier at slot selection).
+        meta: { ...ec.meta },
+      }
+      const card = await prepareExercise(upgraded)
+      if (card && card.kind === "exercise") {
+        card.prepared.sttUpgraded = true
+        log("journey_speak_upgrade", { specId: ec.spec.specId, from: t })
+      }
       return card
     }
     return prepareExercise(ec)
@@ -700,15 +776,20 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     notify()
   }
 
-  /** Contract #4: after a decline, re-map every still-queued speak_echo to its
-   *  listen_type fallback (index 0 is the settling card the decline arrived on;
-   *  it completes as-is). sttUsable() is now false, so mapEngineCard swaps. */
+  /** Contract #4: after a decline, re-map every still-queued card that is
+   *  CURRENTLY presenting as speak_echo — whether it was a native speak_echo or
+   *  a speak-first UPGRADE of an intro_echo/listen_type. sttUsable() is now
+   *  false, so mapEngineCard swaps native speak_echo → listen_type and no longer
+   *  upgrades the echo/type cards, reverting them to their non-speaking form
+   *  (index 0 is the settling card the decline arrived on; it completes as-is).
+   *  Keying off the rendered activityType (not the engine origin) is what makes
+   *  the upgrade revert too, so a learner who can't speak is never trapped. */
   async function reswapDeclinedSpeakCards(): Promise<void> {
     for (let i = 1; i < prepared.length; i++) {
       const c = prepared[i]
       if (
         c.kind === "exercise" &&
-        c.prepared.engine.spec.activityType === "speak_echo" &&
+        c.spec.activityType === "speak_echo" &&
         !c.prepared.sttFallback
       ) {
         const remapped = await mapEngineCard(c.prepared.engine)

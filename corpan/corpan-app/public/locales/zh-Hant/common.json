@@ -1077,6 +1077,10 @@
       "downloading": "新增中…{{percent}}%",
       "retry": "再試一次",
       "failed": "新增失敗"
+    },
+    "interlude": {
+      "gameCue": "快速遊戲 · 一個短語",
+      "readerCue": "快速閱讀 · 一段文字"
     }
   }
 }
