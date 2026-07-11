@@ -7,6 +7,7 @@ import assert from "node:assert/strict"
 import { advanceRule, isListeningCard, isListeningRunStart } from "./advanceRules.ts"
 import type { FeedCard, PreparedExercise } from "../types.ts"
 import type { EngineCard } from "../engine/index.ts"
+import type { ResolvedItem } from "../content/resolve.ts"
 
 const engineCard = (activityType: string): EngineCard => ({
   spec: { specId: "s1", activityType, itemRefs: [], targetLang: "en" },
@@ -30,6 +31,30 @@ const exercise = (activityType: string, params?: Record<string, unknown>): FeedC
 
 test("choice_pick: swipe in swipe mode, auto+2200 in auto (default) mode", () => {
   assert.deepEqual(advanceRule(exercise("choice_pick"), "swipe"), { kind: "swipe" })
+  assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
+})
+
+const withMeaning = (activityType: string): FeedCard => {
+  const c = exercise(activityType)
+  if (c.kind === "exercise") {
+    c.prepared.items = [
+      {
+        kind: "word",
+        target: { text: "welcome" },
+        extras: { kind: "word", explanationNative: "Del inglés antiguo wilcuma…" },
+      } as unknown as ResolvedItem,
+    ]
+  }
+  return c
+}
+
+test("word card with a meaning/etymology waits for a swipe — never auto-advances", () => {
+  // A 50-word etymology must not be yanked away on the 2.2s timer; the learner
+  // reads and swipes on. Holds across exercise types, even in auto mode.
+  assert.deepEqual(advanceRule(withMeaning("choice_pick"), "auto"), { kind: "swipe" })
+  assert.deepEqual(advanceRule(withMeaning("listen_type"), "auto"), { kind: "swipe" })
+  assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "swipe" })
+  // A word with no meaning still auto-advances fast (no regression).
   assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
 })
 
