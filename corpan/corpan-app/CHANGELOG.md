@@ -7,6 +7,23 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.4] — 2026-07-11
+
+### Fixed
+- **Removed the "Why this card?" popover that could trap you.** Its long-press
+  gesture collided with hold-to-speak (a speak card *is* a press-and-hold), so
+  holding the mic summoned the explainer, it covered the mic, and every retry
+  re-summoned it. It was also read-back status copy the design avoids. Gone.
+- **No more phantom scrollbar over the Journey feed.** The CSS that freezes
+  Home's scroller behind a full-screen experience only matched
+  `data-experience-active="true"`, but the Journey surface tags it `"journey"` —
+  so Home stayed scrollable and Android painted its overlay scrollbar through the
+  opaque overlay. The selector now matches any active experience.
+- **A meaning/etymology you can actually read.** A settled word card showing a
+  wordpan meaning/etymology paragraph no longer auto-advances after 2.2s — it
+  waits for a swipe, so a 40–60 word etymology is readable. Cards with no meaning
+  still auto-advance fast.
+
 ## [0.20.3] — 2026-07-10
 
 ### Added
