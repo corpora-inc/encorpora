@@ -42,6 +42,22 @@ Conventions: `corpan/CHANGELOGS.md`.
   no theme). The path view's arc headers likewise show the CEFR band instead of
   the internal arc id.
 
+### Changed
+- **Settings selectors are sleek now, not stacks of fat wrapping pills.** Text
+  size, speech rate and theme were chunky buttons that wrapped to two rows once
+  labels were localized ("Pequeño / Mediano / Semi Grande / Grande / Muy
+  Grande"). They're now a shared slim **segmented control** (`SegmentedControl`)
+  that lives on one row and scrolls horizontally rather than ever wrapping.
+  Text size dropped its long words entirely for a visual **A-ramp** (five "A"s
+  at increasing sizes — language-agnostic, the size name rides along only as the
+  a11y label). CEFR levels became one non-wrapping scroll track too. Squared-off
+  8px corners; compact on phone, roomier on iPad. No new strings.
+- **Every bottom drawer is much easier to grab and swipe away on mobile.** The
+  drag handle was a thin 100×8px pill; the shared drawer now renders a
+  full-width, ≥44px-tall grab band around it, so swiping down anywhere across
+  the top dismisses. Fixed once in the shared `DrawerContent`, so every drawer
+  (voice tuning, phrase packs, quick settings, …) inherits it.
+
 ## [0.20.4] — 2026-07-11
 
 ### Fixed
