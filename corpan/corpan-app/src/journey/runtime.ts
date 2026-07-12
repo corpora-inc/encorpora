@@ -44,6 +44,7 @@ import {
   type DistractorSet,
 } from "./content/distractors.ts"
 import { cardRng } from "./content/rng.ts"
+import { glyphForWord, numeralDistractors } from "./exercises/glyphs.ts"
 import { tokenizePhrase } from "../util/wordTokens.ts"
 import { useJourneyStore, type CourseKey } from "../store/journey.ts"
 import {
@@ -305,12 +306,16 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     for (const fn of listeners) fn()
   }
 
-  // Whether the mixer may still schedule STT cards: installed, or supported +
-  // model-missing before a decline (we keep speak_echo so the inline install
-  // offer can appear). Once unsupported or declined, STT leaves the feed and
-  // any queued speak_echo is swapped (see reswapDeclinedSpeakCards).
-  const sttUsable = (): boolean =>
-    sttState === "installed" || (sttState === "modelMissing" && !sttDeclined)
+  // Whether the mixer may drive SPEAKING: only when a Whisper model is actually
+  // INSTALLED. We deliberately do NOT treat "supported-but-model-missing" as
+  // usable: that path walled a day-one beginner behind a ~75 MB inline install
+  // offer (often on the 2nd card, for a word like "one") — and the download is
+  // brittle on top of it. Per FIRST_PRINCIPLES.md, production/speaking never
+  // walls the feed behind a download; a speak card degrades to a listening
+  // comprehension form until the learner deliberately installs the model.
+  // (`sttDeclined` is now vestigial but kept so the decline plumbing still
+  // compiles; nothing schedules an install offer to decline.)
+  const sttUsable = (): boolean => sttState === "installed"
 
   // Speak-first upgrade decision (§ core). intro_echo ALWAYS upgrades (score the
   // debut). listen_type upgrades a deterministic per-card SHARE — the rest stay
@@ -386,6 +391,33 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   const IMAGE_CHOICE_SHARE = 0.6
 
   /**
+   * Numeral GLYPH-choice (FIRST_PRINCIPLES.md — "meaning by glyph"). A
+   * first-exposure NUMBER word becomes a HEAR→tap-the-digit comprehension beat:
+   * the universal Arabic numeral IS the meaning, so no image pack and no L1 text
+   * are needed. Highest presentation precedence (tried before pictures/text).
+   * items[0] stays the WORD (grading/mastery unchanged). Never for probes.
+   * Returns the glyph params to merge, or null (not a mapped number word).
+   */
+  function maybeGlyphChoice(
+    ec: EngineCard,
+    answer: ResolvedItem,
+    activityType: string,
+  ): { answerGlyph: string; glyphDistractors: string[] } | null {
+    if (answer.kind !== "word") return null
+    // Any audio-first recognition debut (choice_pick OR listen_pick) upgrades to
+    // a glyph card for a number — "hear the number, tap the digit" beats
+    // "hear it, match the spelling". The caller sets activityType to choice_pick.
+    if (activityType !== "choice_pick" && activityType !== "listen_pick") return null
+    if (ec.meta.pool === "probe" || ec.spec.params?.probe === true) return null
+    if (ec.meta.pool !== "new") return null // first exposures only
+    const glyph = glyphForWord(ec.spec.targetLang, answer.target.text)
+    if (!glyph) return null
+    const glyphDistractors = numeralDistractors(ec.spec.targetLang, glyph, ec.spec.specId, 3)
+    if (glyphDistractors.length < 1) return null
+    return { answerGlyph: glyph, glyphDistractors }
+  }
+
+  /**
    * Picture-choice upgrade (feed-ux §4 row 1, media:'image'). A first-exposure
    * WORD choice card, when the imagepan pack is installed and the word maps to a
    * concept with a picture + ≥1 distractor picture, becomes a picture choice a
@@ -443,29 +475,53 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     const params: Record<string, unknown> = { ...(spec.params ?? {}) }
     const nativeLang = deps.ctx.nativeLang
 
-    // -- Picture choice (imagepan) — takes precedence over the translation
-    // guard + words-in-context: the picture IS the meaning (L1-free), so a
-    // missing native face is irrelevant. items[0] stays the WORD (grading
-    // unchanged); only the presentation becomes a 2×2 image grid.
-    const imageChoice = await maybeImageChoice(ec, answer, activityType)
-    if (imageChoice) {
+    // -- Numeral GLYPH choice (FIRST_PRINCIPLES.md) — HIGHEST precedence: a
+    // number word's meaning is a universal digit, so this beats pictures and
+    // text and needs no pack. HEAR the target number → tap the numeral.
+    const glyphChoice = maybeGlyphChoice(ec, answer, activityType)
+    let imageChoice: Awaited<ReturnType<typeof maybeImageChoice>> = null
+    if (glyphChoice) {
       activityType = "choice_pick"
-      params.media = "image"
-      params.answerImageSrc = imageChoice.answerImageSrc
-      params.imageDistractors = imageChoice.imageDistractors
-      params.answerAlt = imageChoice.answerAlt
-    } else if (activityType === "choice_pick" || activityType === "flip_recall") {
-      if (!nativeLang || !answer.native) {
-        activityType = targetOnlyFallback(spec.specId)
-        delete params.direction
-      }
-    } else if (activityType === "match_pairs" && params.axis !== "text-audio") {
-      if (!nativeLang) {
-        params.axis = "text-audio"
-      } else {
-        const withNative = resolved.filter((i) => !!i.native)
-        if (withNative.length >= 2) resolved = withNative
-        else params.axis = "text-audio"
+      params.media = "glyph"
+      params.answerGlyph = glyphChoice.answerGlyph
+      params.glyphDistractors = glyphChoice.glyphDistractors
+    } else {
+      // -- Picture choice (imagepan) — takes precedence over the translation
+      // guard + words-in-context: the picture IS the meaning (L1-free), so a
+      // missing native face is irrelevant. items[0] stays the WORD (grading
+      // unchanged); only the presentation becomes a 2×2 image grid.
+      imageChoice = await maybeImageChoice(ec, answer, activityType)
+      if (imageChoice) {
+        activityType = "choice_pick"
+        params.media = "image"
+        params.answerImageSrc = imageChoice.answerImageSrc
+        params.imageDistractors = imageChoice.imageDistractors
+        params.answerAlt = imageChoice.answerAlt
+      } else if (activityType === "choice_pick" || activityType === "flip_recall") {
+        if (!nativeLang || !answer.native) {
+          activityType = targetOnlyFallback(spec.specId)
+          delete params.direction
+        } else if (
+          ec.meta.pool === "new" &&
+          activityType === "choice_pick" &&
+          params.direction === undefined
+        ) {
+          // First-principles (FIRST_PRINCIPLES.md): a first exposure is an
+          // audio-first COMPREHENSION beat — you HEAR (and see) the target and
+          // pick its meaning (toNative). Never a silent read-the-native,
+          // pick-the-target-spelling drill (toTarget) on a debut. The paired
+          // ChoicePick change auto-plays the target whenever it is the prompt,
+          // so this card is heard, not just read.
+          params.direction = "toNative"
+        }
+      } else if (activityType === "match_pairs" && params.axis !== "text-audio") {
+        if (!nativeLang) {
+          params.axis = "text-audio"
+        } else {
+          const withNative = resolved.filter((i) => !!i.native)
+          if (withNative.length >= 2) resolved = withNative
+          else params.axis = "text-audio"
+        }
       }
     }
 
@@ -482,7 +538,10 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     // picture mode — the card is a picture, and the cloze conversion below would
     // otherwise clobber it.
     const wantExample =
-      !imageChoice && answer.kind === "word" && (graded || ec.meta.rareVariant === "etymology")
+      !imageChoice &&
+      !glyphChoice &&
+      answer.kind === "word" &&
+      (graded || ec.meta.rareVariant === "etymology")
     if (wantExample) {
       const found = await deps.resolver.exampleFor(answer.target.text)
       if (found) {
@@ -554,7 +613,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
 
     // Picture options are language-neutral, so there is no answer/prompt
     // direction to pick — the prompt is simply the target word.
-    const direction = imageChoice
+    const direction = imageChoice || glyphChoice
       ? "targetOnly"
       : pickDirection(spec.specId, activityType, params, answer)
     params.direction = direction
@@ -585,7 +644,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     // Picture-choice carries its OWN distractor pictures in params (from the
     // concept's curated visually-confusable siblings) — the text sampler is not
     // consulted.
-    const req = imageChoice
+    const req = imageChoice || glyphChoice
       ? null
       : buildDistractorRequest({
           activityType,

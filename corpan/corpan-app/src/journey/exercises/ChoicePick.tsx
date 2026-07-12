@@ -10,6 +10,7 @@ import { isRTL } from "../../util/convert"
 import { cardRng } from "../content/rng.ts"
 import { choiceAnswerText, choicePickFaces, type Direction } from "./faces.ts"
 import { buildImageTiles } from "./imageChoice.ts"
+import { buildGlyphTiles, GLYPH_ANSWER_TILE_ID } from "./glyphs.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
@@ -56,16 +57,29 @@ export function ChoicePick(props: ExerciseProps) {
   const playedRef = useRef(false)
 
   const imageMode = isImageChoice(props)
+  const glyphMode = props.spec.params?.media === "glyph"
   const tiles = useMemo(() => buildChoiceTiles(props), [props.cardId]) // eslint-disable-line react-hooks/exhaustive-deps
   const imageTiles = useMemo(
     () => (imageMode ? buildImageTiles(props.spec.params, props.cardId) : []),
     [imageMode, props.cardId], // eslint-disable-line react-hooks/exhaustive-deps
   )
+  const glyphTiles = useMemo(
+    () => (glyphMode ? buildGlyphTiles(props.spec.params, props.cardId) : []),
+    [glyphMode, props.cardId], // eslint-disable-line react-hooks/exhaustive-deps
+  )
 
   // Listening form / picture-choice: hear the target once on arrival (never on
   // pre-mount). Picture-choice is hear+read → tap the matching picture.
   useEffect(() => {
-    const wantsAudio = imageMode || faces.promptMode === "audio"
+    // Audio-first (FIRST_PRINCIPLES.md): play the target whenever it IS the
+    // prompt — the audio-fallback mode, picture-choice, AND the toNative
+    // comprehension form (see+hear the target, pick the meaning). Only a
+    // toTarget card (prompt is the learner's native language) stays silent.
+    const wantsAudio =
+      imageMode ||
+      glyphMode ||
+      faces.promptMode === "audio" ||
+      faces.promptLang === props.spec.targetLang
     if (wantsAudio && props.active && props.mode !== "review" && !playedRef.current) {
       playedRef.current = true
       void props.speak(props.spec.targetLang, answer.target.ttsText)
@@ -145,6 +159,59 @@ export function ChoicePick(props: ExerciseProps) {
     )
   }
 
+  // ---- Numeral GLYPH choice (FIRST_PRINCIPLES.md): HEAR the target number,
+  // tap the universal digit. Audio is the hero (auto-plays on arrival, big
+  // replay); the written word is revealed only AFTER answering, so the beat is
+  // pure listening comprehension, not reading. Language-neutral — no L1 text.
+  if (glyphMode && glyphTiles.length > 0) {
+    const revealed = props.mode === "review" || picked !== null
+    return (
+      <div className="flex w-full flex-col items-center gap-8">
+        <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
+        <div
+          className="grid w-full max-w-xs grid-cols-2 gap-3"
+          role="listbox"
+          data-testid="journey-glyph-tiles"
+        >
+          {glyphTiles.map((tile) => {
+            const state = revealed
+              ? tile.id === GLYPH_ANSWER_TILE_ID
+                ? "correct"
+                : tile.id === picked
+                  ? "wrong"
+                  : null
+              : null
+            return (
+              <button
+                key={tile.id}
+                type="button"
+                disabled={disabled}
+                onClick={() => pick(tile.id)}
+                data-journey-tile={tile.id}
+                className={[
+                  // Squared-off 8px corners (design standard), big tabular digit.
+                  "flex aspect-square items-center justify-center rounded-lg border text-5xl font-bold tabular-nums transition-all active:scale-[0.97]",
+                  state === "correct"
+                    ? "border-emerald-500/70 bg-emerald-500/10 text-emerald-500"
+                    : state === "wrong"
+                      ? "border-red-500/60 bg-red-500/10 text-red-400"
+                      : "border-border bg-card text-foreground hover:bg-muted",
+                ].join(" ")}
+              >
+                {tile.glyph}
+              </button>
+            )
+          })}
+        </div>
+        {revealed ? (
+          <div lang={props.spec.targetLang} className="text-lg font-medium text-muted-foreground">
+            {answer.target.text}
+          </div>
+        ) : null}
+      </div>
+    )
+  }
+
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">
@@ -155,7 +222,14 @@ export function ChoicePick(props: ExerciseProps) {
       {faces.promptMode === "audio" ? (
         <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
       ) : faces.promptLang === props.spec.targetLang ? (
-        <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} />
+        // Comprehension form (toNative): the target is the hero AND it is heard.
+        // Audio auto-plays on arrival (see effect above); this gives a
+        // first-class, repeatable replay / slow-replay so listening is central,
+        // not a one-shot the learner can miss (FIRST_PRINCIPLES.md — hear always).
+        <div className="flex flex-col items-center gap-4">
+          <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} />
+          <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} />
+        </div>
       ) : (
         <div
           lang={faces.promptLang}
