@@ -559,15 +559,12 @@ export function FeedScroller(props: FeedScrollerProps) {
         </div>
       ) : null}
 
-      {/* auto-advance countdown ring (tap to pause) */}
-      {autoCountdown && (listeningRun || advanceMode === "auto") ? (
-        <button
-          type="button"
-          onClick={clearAuto}
-          className="absolute bottom-6 end-6 h-8 w-8 animate-pulse rounded-full border-2 border-[hsl(var(--journey-accent,262_80%_58%))]"
-          aria-label={t("journey.settings.listeningMode")}
-        />
-      ) : null}
+      {/* No auto-advance "countdown ring" here: the pulsing purple circle in the
+          bottom corner read as a weak, meaningless blip on every correct. The
+          juicy celebration now carries the reward + transition feedback, and the
+          auto-advance timer runs on its own (a back-swipe still pauses it). The
+          `autoCountdown` state is kept only to hide the advance chevron during an
+          auto beat (above), so the chevron doesn't flash before the card jumps. */}
 
       {/* ambient momentum gauge (§3.5): a small squared bar in the top-trailing
           corner that fills + warms with the streak and exhales on a break — the
