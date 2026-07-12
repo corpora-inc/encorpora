@@ -510,22 +510,21 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     const params: Record<string, unknown> = { ...(spec.params ?? {}) }
     const nativeLang = deps.ctx.nativeLang
 
-    // -- Empty grammar-note guard --------------------------------------------
-    // A grammar_note is ONLY meaningful for a real grammarNode item carrying an
-    // authored note. A plain vocab word (or a node with no note) reaching here
-    // renders a USELESS empty "NOTA DE GRAMÁTICA" shell titled with the bare
-    // word (the "grammar note for 'one'" defect — no content, looks broken).
-    // Reroute to a normal vocab card BEFORE the glyph/image/direction logic
-    // below, so the reroute still gets the best surface (a number → a glyph
-    // card, etc.). Same graded item; only the presentation changes.
+    // -- Grammar-note SUPPRESSION (communicative-first) ----------------------
+    // The explicit "NOTA DE GRAMÁTICA" lecture card (an L1 grammar panel + a
+    // mini drill) repeatedly read as low-value: even when the note is correctly
+    // derived (e.g. "My" → the possessive-adjectives node) and localized, an
+    // explain-then-drill card clashes with the audio-first, communicative feel —
+    // and the embedded bank drill can land with no distractors (no way to be
+    // wrong). So we route grammar_node items to a normal graded card (the same
+    // item, better surface: a number → a glyph card, a picturable word → an
+    // image pick, etc.) instead of the lecture. The authored grammar content
+    // stays in the pack; re-enable a grammar surface here when it earns its
+    // place (real drill with distractors + a tighter, in-context presentation).
     if (activityType === "grammar_note") {
-      const gn = answer.extras?.kind === "grammarNode" ? answer.extras : null
-      const note = gn && typeof (gn as { note?: unknown }).note === "string" ? (gn as { note: string }).note : ""
-      if (note.trim().length === 0) {
-        activityType = "choice_pick"
-        delete params.drill
-        log("journey_degenerate_reroute", { specId: spec.specId, from: "grammar_note", to: activityType })
-      }
+      activityType = "choice_pick"
+      delete params.drill
+      log("journey_degenerate_reroute", { specId: spec.specId, from: "grammar_note", to: activityType })
     }
 
     // -- Numeral GLYPH choice (FIRST_PRINCIPLES.md) — HIGHEST precedence: a
