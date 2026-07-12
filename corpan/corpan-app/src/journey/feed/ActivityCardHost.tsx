@@ -178,13 +178,14 @@ export function ActivityCardHost(props: {
         active={props.active}
         review={props.mode === "review" ? { correct: settledOk ?? true } : null}
       />
-      {/* Feedback row: the stamp stays centered; the post-answer word (?) rides
-          the trailing edge of this ALREADY-reserved min-h-8 band, absolutely
-          positioned so it never adds height — the exercise never reflows when a
-          word settles (it opens its explanation as a floating overlay, W3). */}
+      {/* Feedback row: the stamp stays centered; the word (?) hint rides the
+          trailing edge of this ALREADY-reserved min-h-8 band, absolutely
+          positioned so it never adds height — the exercise never reflows. The
+          hint shows BEFORE and after answering (most useful during the
+          exercise); it opens its explanation in a Drawer, never inline. */}
       <div className="relative flex min-h-8 w-full items-center justify-center">
         <ResultStamp state={stamp} confidence={confidence} />
-        {settledOk !== null && props.mode !== "probe" && prepared.items[0]?.kind === "word" ? (
+        {props.mode !== "probe" && prepared.items[0]?.kind === "word" ? (
           <div className="absolute end-0 top-1/2 -translate-y-1/2">
             <WordEnrichment
               item={prepared.items[0]}

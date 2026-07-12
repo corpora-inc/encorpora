@@ -37,12 +37,19 @@ const baseSubtag = (l: string): string => (l.split("-")[0] || l).toLowerCase()
 
 /**
  * Native-safe, region-tolerant explanation selection — shared by the (?) overlay
- * and the etymology gem so both obey ONE rule: an ES→EN learner reads the
- * Spanish paragraph, never the English etymology. The target-language paragraph
- * is surfaced ONLY when it IS the learner's language: a single-language stack
- * (no nativeLang), or native/target sharing a base subtag (en vs en-GB). Region
- * tolerance is already applied upstream when populating explanationNative
- * (resolve.ts matches pt == pt-BR); this keeps the render side honest.
+ * and the etymology gem so both obey ONE hard rule: an ES→EN learner NEVER sees
+ * the English (target) etymology. The native paragraph is preferred; the target
+ * paragraph is surfaced ONLY when the target genuinely IS the learner's language
+ * (an explicit native whose base subtag equals the target's — en vs en-GB).
+ *
+ * When there is no native-language paragraph AND native differs from target (or
+ * native is unknown), we return null — the caller then falls back to the native
+ * gloss + in-context example, or shows nothing, but never an English wall. This
+ * is deliberately stricter than a plain "no L1 ⇒ target" fallback: on-device,
+ * that fallback surfaced "…from Old English an…" to a Spanish learner (the
+ * number "one" carried only a target paragraph, and nativeLang was empty in that
+ * path). Region tolerance for the NATIVE paragraph is already applied upstream
+ * when populating explanationNative (resolve.ts matches pt == pt-BR).
  */
 export function selectWordParagraph(
   item: ResolvedItem,
@@ -54,8 +61,8 @@ export function selectWordParagraph(
   if (extras.explanationNative && nativeLang) {
     return { text: extras.explanationNative, lang: nativeLang }
   }
-  const sameLang = !nativeLang || baseSubtag(nativeLang) === baseSubtag(targetLang)
-  if (extras.explanationTarget && sameLang) {
+  const targetIsNative = !!nativeLang && baseSubtag(nativeLang) === baseSubtag(targetLang)
+  if (extras.explanationTarget && targetIsNative) {
     return { text: extras.explanationTarget, lang: targetLang }
   }
   return null
