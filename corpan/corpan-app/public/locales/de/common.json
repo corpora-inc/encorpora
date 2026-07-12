@@ -958,6 +958,20 @@
       "arcGate": "Bogen-Tor"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfekt",
+        "nice": "Stark",
+        "brilliant": "Brillant",
+        "boom": "Bumm",
+        "nailed": "Volltreffer",
+        "unstoppable": "Unaufhaltsam",
+        "onFire": "In Flammen",
+        "yes": "Ja!",
+        "clean": "Sauber",
+        "sharp": "Scharf",
+        "wow": "Wow",
+        "magic": "Magisch"
+      },
       "combo": "{{count}} in Folge",
       "perfect": "Perfekt",
       "wordsLearned": "{{count}} Wörter gelernt",

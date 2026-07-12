@@ -953,6 +953,20 @@
       "arcGate": "Vrata luka"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Savršeno",
+        "nice": "Bravo",
+        "brilliant": "Sjajno",
+        "boom": "Bum",
+        "nailed": "Pogodak",
+        "unstoppable": "Nezaustavljiv",
+        "onFire": "U vatri",
+        "yes": "Da!",
+        "clean": "Čisto",
+        "sharp": "Oštro",
+        "wow": "Vau",
+        "magic": "Čarobno"
+      },
       "combo": "{{count}} zaredom",
       "perfect": "Savršeno",
       "wordsLearned": "{{count}} naučenih riječi",

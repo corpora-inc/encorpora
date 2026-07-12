@@ -958,6 +958,20 @@
       "arcGate": "Kaaren portti"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Täydellistä",
+        "nice": "Hienoa",
+        "brilliant": "Loistavaa",
+        "boom": "Pum",
+        "nailed": "Osui",
+        "unstoppable": "Pysäyttämätön",
+        "onFire": "Tulessa",
+        "yes": "Kyllä!",
+        "clean": "Puhdas",
+        "sharp": "Terävä",
+        "wow": "Vau",
+        "magic": "Taikaa"
+      },
       "combo": "{{count}} putkeen",
       "perfect": "Täydellistä",
       "wordsLearned": "{{count}} sanaa opittu",

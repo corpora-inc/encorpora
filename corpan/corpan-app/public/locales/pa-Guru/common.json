@@ -949,6 +949,20 @@
       "arcGate": "ਕਮਾਨ ਦਾ ਦਰਵਾਜ਼ਾ"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "ਸੰਪੂਰਨ",
+        "nice": "ਵਧੀਆ",
+        "brilliant": "ਸ਼ਾਨਦਾਰ",
+        "boom": "ਧਮਾਕਾ",
+        "nailed": "ਨਿਸ਼ਾਨੇ ’ਤੇ",
+        "unstoppable": "ਅਜੇਤੂ",
+        "onFire": "ਅੱਗ ’ਤੇ",
+        "yes": "ਹਾਂ!",
+        "clean": "ਸਾਫ਼",
+        "sharp": "ਤਿੱਖਾ",
+        "wow": "ਵਾਹ",
+        "magic": "ਜਾਦੂ"
+      },
       "combo": "ਲਗਾਤਾਰ {{count}}",
       "perfect": "ਕਮਾਲ",
       "wordsLearned": "{{count}} ਸ਼ਬਦ ਸਿੱਖੇ",

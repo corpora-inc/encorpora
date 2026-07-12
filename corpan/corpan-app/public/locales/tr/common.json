@@ -949,6 +949,20 @@
       "arcGate": "Yay kapısı"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Mükemmel",
+        "nice": "Güzel",
+        "brilliant": "Harika",
+        "boom": "Güm",
+        "nailed": "Tam isabet",
+        "unstoppable": "Durdurulamaz",
+        "onFire": "Alev aldın",
+        "yes": "Evet!",
+        "clean": "Tertemiz",
+        "sharp": "Keskin",
+        "wow": "Vay",
+        "magic": "Sihir"
+      },
       "combo": "Üst üste {{count}}",
       "perfect": "Mükemmel",
       "wordsLearned": "{{count}} kelime öğrenildi",

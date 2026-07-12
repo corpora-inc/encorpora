@@ -949,6 +949,20 @@
       "arcGate": "Porta d'arc"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfecte",
+        "nice": "Bé",
+        "brilliant": "Brillant",
+        "boom": "Bum",
+        "nailed": "Encertat",
+        "unstoppable": "Imparable",
+        "onFire": "En ratxa",
+        "yes": "Sí!",
+        "clean": "Impecable",
+        "sharp": "Agut",
+        "wow": "Uau",
+        "magic": "Màgic"
+      },
       "combo": "{{count}} seguides",
       "perfect": "Perfecte",
       "wordsLearned": "{{count}} paraules apreses",

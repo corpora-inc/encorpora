@@ -953,6 +953,20 @@
       "arcGate": "Ívkapu"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Tökéletes",
+        "nice": "Szép",
+        "brilliant": "Zseniális",
+        "boom": "Bumm",
+        "nailed": "Telitalálat",
+        "unstoppable": "Megállíthatatlan",
+        "onFire": "Lángolsz",
+        "yes": "Igen!",
+        "clean": "Tiszta",
+        "sharp": "Éles",
+        "wow": "Hűha",
+        "magic": "Varázslat"
+      },
       "combo": "{{count}} egymás után",
       "perfect": "Tökéletes",
       "wordsLearned": "{{count}} szó megtanulva",

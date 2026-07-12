@@ -949,6 +949,20 @@
       "arcGate": "ประตูอาร์ค"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "สมบูรณ์แบบ",
+        "nice": "เยี่ยม",
+        "brilliant": "ยอดเยี่ยม",
+        "boom": "ตูม",
+        "nailed": "เข้าเป้า",
+        "unstoppable": "หยุดไม่อยู่",
+        "onFire": "มาแรง",
+        "yes": "ใช่เลย!",
+        "clean": "สะอาดหมดจด",
+        "sharp": "เฉียบ",
+        "wow": "ว้าว",
+        "magic": "มหัศจรรย์"
+      },
       "combo": "{{count}} ติดต่อกัน",
       "perfect": "เยี่ยมมาก",
       "wordsLearned": "เรียนรู้ {{count}} คำแล้ว",

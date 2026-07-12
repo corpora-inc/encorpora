@@ -949,6 +949,20 @@
       "arcGate": "চাপ-দুয়ার"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "নিখুঁত",
+        "nice": "দারুণ",
+        "brilliant": "অসাধারণ",
+        "boom": "ধুম",
+        "nailed": "একদম ঠিক",
+        "unstoppable": "অপ্রতিরোধ্য",
+        "onFire": "আগুন ঝরছে",
+        "yes": "হ্যাঁ!",
+        "clean": "ঝকঝকে",
+        "sharp": "ধারালো",
+        "wow": "বাহ",
+        "magic": "জাদু"
+      },
       "combo": "পরপর {{count}}",
       "perfect": "দুর্দান্ত",
       "wordsLearned": "{{count}}টি শব্দ শেখা হলো",

@@ -953,6 +953,20 @@
       "arcGate": "Gerbang busur"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Sempurna",
+        "nice": "Bagus",
+        "brilliant": "Cemerlang",
+        "boom": "Dor",
+        "nailed": "Tepat sasaran",
+        "unstoppable": "Tak terbendung",
+        "onFire": "Membara",
+        "yes": "Ya!",
+        "clean": "Bersih",
+        "sharp": "Tajam",
+        "wow": "Wah",
+        "magic": "Ajaib"
+      },
       "combo": "{{count}} beruntun",
       "perfect": "Sempurna",
       "wordsLearned": "{{count}} kata dipelajari",

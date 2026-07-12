@@ -962,6 +962,20 @@
       "arcGate": "שער הקשת"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "מושלם",
+        "nice": "יפה",
+        "brilliant": "מבריק",
+        "boom": "בום",
+        "nailed": "בול",
+        "unstoppable": "בלתי ניתן לעצירה",
+        "onFire": "בוער",
+        "yes": "כן!",
+        "clean": "נקי",
+        "sharp": "חד",
+        "wow": "וואו",
+        "magic": "קסם"
+      },
       "combo": "{{count}} ברצף",
       "perfect": "מושלם",
       "wordsLearned": "{{count}} מילים נלמדו",

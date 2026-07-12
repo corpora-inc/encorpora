@@ -949,6 +949,20 @@
       "arcGate": "Порта на дъгата"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Перфектно",
+        "nice": "Браво",
+        "brilliant": "Блестящо",
+        "boom": "Бум",
+        "nailed": "Точно",
+        "unstoppable": "Неудържим",
+        "onFire": "В огъня",
+        "yes": "Да!",
+        "clean": "Чисто",
+        "sharp": "Остро",
+        "wow": "Уау",
+        "magic": "Магия"
+      },
       "combo": "{{count}} поред",
       "perfect": "Перфектно",
       "wordsLearned": "{{count}} научени думи",

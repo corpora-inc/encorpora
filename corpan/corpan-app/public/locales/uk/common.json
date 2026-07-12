@@ -949,6 +949,20 @@
       "arcGate": "Брама дуги"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Ідеально",
+        "nice": "Чудово",
+        "brilliant": "Блискуче",
+        "boom": "Бум",
+        "nailed": "У ціль",
+        "unstoppable": "Не спинити",
+        "onFire": "У вогні",
+        "yes": "Так!",
+        "clean": "Чисто",
+        "sharp": "Гостро",
+        "wow": "Вау",
+        "magic": "Магія"
+      },
       "combo": "{{count}} поспіль",
       "perfect": "Ідеально",
       "wordsLearned": "{{count}} слів вивчено",

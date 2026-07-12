@@ -958,6 +958,20 @@
       "arcGate": "Brána oblouku"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfektní",
+        "nice": "Dobré",
+        "brilliant": "Skvělé",
+        "boom": "Bum",
+        "nailed": "Trefa",
+        "unstoppable": "Nezastavitelný",
+        "onFire": "V ohni",
+        "yes": "Ano!",
+        "clean": "Čisté",
+        "sharp": "Ostré",
+        "wow": "Wow",
+        "magic": "Kouzelné"
+      },
       "combo": "{{count}} v řadě",
       "perfect": "Perfektní",
       "wordsLearned": "{{count}} slov naučeno",

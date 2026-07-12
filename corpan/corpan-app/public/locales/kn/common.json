@@ -949,6 +949,20 @@
       "arcGate": "ಕಮಾನು ಬಾಗಿಲು"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "ಪರಿಪೂರ್ಣ",
+        "nice": "ಚೆನ್ನಾಗಿದೆ",
+        "brilliant": "ಅದ್ಭುತ",
+        "boom": "ಢಂ",
+        "nailed": "ಗುರಿ ತಪ್ಪಿಲ್ಲ",
+        "unstoppable": "ತಡೆಯಲಾಗದು",
+        "onFire": "ಬೆಂಕಿಯಲ್ಲಿ",
+        "yes": "ಹೌದು!",
+        "clean": "ಸ್ವಚ್ಛ",
+        "sharp": "ಹರಿತ",
+        "wow": "ವಾವ್",
+        "magic": "ಮಾಂತ್ರಿಕ"
+      },
       "combo": "ಸತತ {{count}}",
       "perfect": "ಅದ್ಭುತ",
       "wordsLearned": "{{count}} ಪದ ಕಲಿತಿರಿ",

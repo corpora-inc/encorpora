@@ -944,6 +944,20 @@
       "arcGate": "قوس دا دروازہ"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "کامل",
+        "nice": "سوہنا",
+        "brilliant": "شاندار",
+        "boom": "دھماکہ",
+        "nailed": "نشانے تے",
+        "unstoppable": "ناقابلِ روک",
+        "onFire": "اگ لگی",
+        "yes": "ہاں!",
+        "clean": "صاف",
+        "sharp": "تِکھا",
+        "wow": "واہ",
+        "magic": "جادو"
+      },
       "combo": "لگاتار {{count}}",
       "perfect": "کمال",
       "wordsLearned": "{{count}} لفظ سکھے",

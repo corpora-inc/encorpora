@@ -958,6 +958,20 @@
       "arcGate": "Bueport"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfekt",
+        "nice": "Flot",
+        "brilliant": "Brillant",
+        "boom": "Bum",
+        "nailed": "Ramt",
+        "unstoppable": "Ustoppelig",
+        "onFire": "I brand",
+        "yes": "Ja!",
+        "clean": "Rent",
+        "sharp": "Skarpt",
+        "wow": "Wow",
+        "magic": "Magi"
+      },
       "combo": "{{count}} i træk",
       "perfect": "Perfekt",
       "wordsLearned": "{{count}} ord lært",

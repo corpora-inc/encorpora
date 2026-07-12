@@ -949,6 +949,20 @@
       "arcGate": "चाप ढोका"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "उत्तम",
+        "nice": "राम्रो",
+        "brilliant": "अद्भुत",
+        "boom": "धमाका",
+        "nailed": "ठ्याक्कै",
+        "unstoppable": "रोक्नै नसकिने",
+        "onFire": "आगोमा",
+        "yes": "हो!",
+        "clean": "सफा",
+        "sharp": "धारिलो",
+        "wow": "वाह",
+        "magic": "जादु"
+      },
       "combo": "लगातार {{count}}",
       "perfect": "उत्कृष्ट",
       "wordsLearned": "{{count}} शब्द सिकियो",

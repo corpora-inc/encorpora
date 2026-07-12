@@ -7,6 +7,23 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Every correct answer now earns a juicy, escalating celebration.** The tier-1
+  correct moment was a tiny "Perfect" pill that rendered *behind* the card. It is
+  now a big, springy **praise-word splash** drawn above everything and legible
+  over any background (gradient fill + stroke + glow), pulling from a pool of ~12
+  fresh exclamations (localized in all ~54 languages) with a non-repeating
+  sampler — so you keep playing to see the next word. Behind it, a pluggable
+  **effect registry** (`journey/celebration/effects/`) rotates through distinct
+  CSS-3D flourishes — upgraded colorful confetti, tumbling 3D shards, a
+  perspective badge punch, a shockwave-ring starburst, and a neon word-pop — with
+  no per-answer 3D engine. The rotation is **combo-weighted**: calm at combo 1,
+  building through 3D spins and a confetti finale + screen-punch by combo 8-10+.
+  A clean fast first-try adds a **gold** bonus sparkle. Sound builds too (a gentle
+  chime early, blooming into the ascending flourish as the streak climbs). Honors
+  `juiceIntensity` (minimal = quiet text only, reduced/reduced-motion = gentle
+  no-3D fallback) and never reflows the card.
+
 ### Fixed
 - **The turtle (slow-audio) button actually slows the audio down.** The Android
   TTS plugin was reshaping the caller's rate with an opinionated curve, so a

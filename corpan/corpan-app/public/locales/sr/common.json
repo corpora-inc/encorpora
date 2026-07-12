@@ -949,6 +949,20 @@
       "arcGate": "Капија лука"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Савршено",
+        "nice": "Браво",
+        "brilliant": "Сјајно",
+        "boom": "Бум",
+        "nailed": "Погодак",
+        "unstoppable": "Незаустављив",
+        "onFire": "У ватри",
+        "yes": "Да!",
+        "clean": "Чисто",
+        "sharp": "Оштро",
+        "wow": "Вау",
+        "magic": "Магија"
+      },
       "combo": "{{count}} заредом",
       "perfect": "Савршено",
       "wordsLearned": "{{count}} научених речи",

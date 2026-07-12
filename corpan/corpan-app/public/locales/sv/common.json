@@ -949,6 +949,20 @@
       "arcGate": "Bågport"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfekt",
+        "nice": "Bra",
+        "brilliant": "Briljant",
+        "boom": "Bom",
+        "nailed": "Prick",
+        "unstoppable": "Ostoppbar",
+        "onFire": "I elden",
+        "yes": "Ja!",
+        "clean": "Rent",
+        "sharp": "Skarpt",
+        "wow": "Wow",
+        "magic": "Magi"
+      },
       "combo": "{{count}} i rad",
       "perfect": "Perfekt",
       "wordsLearned": "{{count}} ord inlärda",

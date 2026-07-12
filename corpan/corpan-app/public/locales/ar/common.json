@@ -949,6 +949,20 @@
       "arcGate": "بوابة القوس"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "مثالي",
+        "nice": "رائع",
+        "brilliant": "عبقري",
+        "boom": "بوم",
+        "nailed": "أصبت",
+        "unstoppable": "لا يُوقَف",
+        "onFire": "مشتعل",
+        "yes": "نعم!",
+        "clean": "نظيف",
+        "sharp": "حاد",
+        "wow": "واو",
+        "magic": "سحر"
+      },
       "combo": "{{count}} على التوالي",
       "perfect": "ممتاز",
       "wordsLearned": "تعلمت {{count}} كلمة",

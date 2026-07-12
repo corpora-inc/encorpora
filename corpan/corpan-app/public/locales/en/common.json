@@ -949,6 +949,20 @@
       "arcGate": "Arc gate"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfect",
+        "nice": "Nice",
+        "brilliant": "Brilliant",
+        "boom": "Boom",
+        "nailed": "Nailed it",
+        "unstoppable": "Unstoppable",
+        "onFire": "On fire",
+        "yes": "Yes!",
+        "clean": "Clean",
+        "sharp": "Sharp",
+        "wow": "Wow",
+        "magic": "Magic"
+      },
       "combo": "{{count}} in a row",
       "perfect": "Perfect",
       "wordsLearned": "{{count}} words learned",

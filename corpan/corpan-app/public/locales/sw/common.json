@@ -949,6 +949,20 @@
       "arcGate": "Lango la tao"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Kamili",
+        "nice": "Vizuri",
+        "brilliant": "Angavu",
+        "boom": "Vumba",
+        "nailed": "Umeipata",
+        "unstoppable": "Hausimamishwi",
+        "onFire": "Unawaka",
+        "yes": "Ndiyo!",
+        "clean": "Safi",
+        "sharp": "Kali",
+        "wow": "Lo",
+        "magic": "Uchawi"
+      },
       "combo": "{{count}} mfululizo",
       "perfect": "Kamili",
       "wordsLearned": "Maneno {{count}} yamejifunzwa",

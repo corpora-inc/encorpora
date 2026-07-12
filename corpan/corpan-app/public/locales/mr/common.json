@@ -958,6 +958,20 @@
       "arcGate": "कमान द्वार"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "परफेक्ट",
+        "nice": "छान",
+        "brilliant": "अप्रतिम",
+        "boom": "धमाका",
+        "nailed": "अगदी बरोबर",
+        "unstoppable": "अजिंक्य",
+        "onFire": "आगीत",
+        "yes": "हो!",
+        "clean": "स्वच्छ",
+        "sharp": "धारदार",
+        "wow": "वाह",
+        "magic": "जादू"
+      },
       "combo": "सलग {{count}}",
       "perfect": "उत्तम",
       "wordsLearned": "{{count}} शब्द शिकलात",

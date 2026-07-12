@@ -962,6 +962,20 @@
       "arcGate": "Porte d'arc"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Parfait",
+        "nice": "Bien joué",
+        "brilliant": "Brillant",
+        "boom": "Boum",
+        "nailed": "Dans le mille",
+        "unstoppable": "Inarrêtable",
+        "onFire": "En feu",
+        "yes": "Oui !",
+        "clean": "Impeccable",
+        "sharp": "Affûté",
+        "wow": "Waouh",
+        "magic": "Magique"
+      },
       "combo": "{{count}} d'affilée",
       "perfect": "Parfait",
       "wordsLearned": "{{count}} mots appris",

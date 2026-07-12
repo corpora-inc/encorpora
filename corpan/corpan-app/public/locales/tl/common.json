@@ -949,6 +949,20 @@
       "arcGate": "Tarangkahan ng arko"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perpekto",
+        "nice": "Galing",
+        "brilliant": "Napakahusay",
+        "boom": "Bam",
+        "nailed": "Tumpak",
+        "unstoppable": "Di mapipigilan",
+        "onFire": "Nag-aapoy",
+        "yes": "Oo!",
+        "clean": "Malinis",
+        "sharp": "Matalas",
+        "wow": "Wow",
+        "magic": "Mahika"
+      },
       "combo": "{{count}} nang sunud-sunod",
       "perfect": "Perpekto",
       "wordsLearned": "{{count}} salitang natutunan",

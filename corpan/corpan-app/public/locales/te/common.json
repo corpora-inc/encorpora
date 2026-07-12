@@ -949,6 +949,20 @@
       "arcGate": "విల్లు ద్వారం"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "పర్ఫెక్ట్",
+        "nice": "బాగుంది",
+        "brilliant": "అద్భుతం",
+        "boom": "ఢమాల్",
+        "nailed": "గురి తప్పలేదు",
+        "unstoppable": "ఆపలేనిది",
+        "onFire": "రగులుతోంది",
+        "yes": "అవును!",
+        "clean": "శుభ్రం",
+        "sharp": "పదునైన",
+        "wow": "వావ్",
+        "magic": "మ్యాజిక్"
+      },
       "combo": "వరుసగా {{count}}",
       "perfect": "అద్భుతం",
       "wordsLearned": "{{count}} పదాలు నేర్చుకున్నారు",
