@@ -949,6 +949,20 @@
       "arcGate": "வளைவு வாயில்"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "சரியானது",
+        "nice": "அருமை",
+        "brilliant": "அபாரம்",
+        "boom": "டமால்",
+        "nailed": "குறி தப்பவில்லை",
+        "unstoppable": "தடுக்க முடியாது",
+        "onFire": "தீயில்",
+        "yes": "ஆம்!",
+        "clean": "சுத்தம்",
+        "sharp": "கூர்மை",
+        "wow": "அடடா",
+        "magic": "மாயம்"
+      },
       "combo": "தொடர்ச்சியாக {{count}}",
       "perfect": "அருமை",
       "wordsLearned": "{{count}} சொற்கள் கற்றீர்கள்",

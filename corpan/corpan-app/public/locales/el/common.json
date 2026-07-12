@@ -949,6 +949,20 @@
       "arcGate": "Πύλη τόξου"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Τέλειο",
+        "nice": "Ωραία",
+        "brilliant": "Λαμπρό",
+        "boom": "Μπαμ",
+        "nailed": "Το πέτυχες",
+        "unstoppable": "Ασταμάτητος",
+        "onFire": "Στη φωτιά",
+        "yes": "Ναι!",
+        "clean": "Καθαρό",
+        "sharp": "Κοφτερό",
+        "wow": "Ουάου",
+        "magic": "Μαγικό"
+      },
       "combo": "{{count}} στη σειρά",
       "perfect": "Τέλεια",
       "wordsLearned": "{{count}} λέξεις έμαθες",

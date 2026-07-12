@@ -949,6 +949,20 @@
       "arcGate": "아크 관문"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "완벽해요",
+        "nice": "좋아요",
+        "brilliant": "멋져요",
+        "boom": "팡",
+        "nailed": "명중",
+        "unstoppable": "막을 수 없어요",
+        "onFire": "불타올라요",
+        "yes": "좋았어요!",
+        "clean": "깔끔해요",
+        "sharp": "예리해요",
+        "wow": "우와",
+        "magic": "마법 같아요"
+      },
       "combo": "{{count}}연속",
       "perfect": "완벽해요",
       "wordsLearned": "단어 {{count}}개 학습",

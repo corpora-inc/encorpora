@@ -949,6 +949,20 @@
       "arcGate": "Cổng cung"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Hoàn hảo",
+        "nice": "Tốt lắm",
+        "brilliant": "Xuất sắc",
+        "boom": "Bùm",
+        "nailed": "Trúng phóc",
+        "unstoppable": "Không cản nổi",
+        "onFire": "Bùng cháy",
+        "yes": "Tuyệt!",
+        "clean": "Gọn gàng",
+        "sharp": "Sắc bén",
+        "wow": "Ồ",
+        "magic": "Kỳ diệu"
+      },
       "combo": "{{count}} liên tiếp",
       "perfect": "Hoàn hảo",
       "wordsLearned": "Đã học {{count}} từ",

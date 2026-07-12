@@ -949,6 +949,20 @@
       "arcGate": "Gapura busur"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Sampurna",
+        "nice": "Sae",
+        "brilliant": "Hébat",
+        "boom": "Dor",
+        "nailed": "Pas pisan",
+        "unstoppable": "Teu kaeureunan",
+        "onFire": "Keur panas",
+        "yes": "Enya!",
+        "clean": "Beresih",
+        "sharp": "Seukeut",
+        "wow": "Wah",
+        "magic": "Sihir"
+      },
       "combo": "{{count}} nyambung",
       "perfect": "Sampurna",
       "wordsLearned": "{{count}} kecap diajar",

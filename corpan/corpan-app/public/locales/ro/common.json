@@ -949,6 +949,20 @@
       "arcGate": "Poarta arcului"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfect",
+        "nice": "Bravo",
+        "brilliant": "Genial",
+        "boom": "Bum",
+        "nailed": "Fix la țintă",
+        "unstoppable": "De neoprit",
+        "onFire": "În flăcări",
+        "yes": "Da!",
+        "clean": "Impecabil",
+        "sharp": "Ascuțit",
+        "wow": "Uau",
+        "magic": "Magic"
+      },
       "combo": "{{count}} la rând",
       "perfect": "Perfect",
       "wordsLearned": "{{count}} cuvinte învățate",

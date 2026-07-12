@@ -958,6 +958,20 @@
       "arcGate": "Врата дуги"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Идеально",
+        "nice": "Отлично",
+        "brilliant": "Блестяще",
+        "boom": "Бум",
+        "nailed": "В точку",
+        "unstoppable": "Не остановить",
+        "onFire": "В ударе",
+        "yes": "Да!",
+        "clean": "Чисто",
+        "sharp": "Остро",
+        "wow": "Вау",
+        "magic": "Магия"
+      },
       "combo": "{{count}} подряд",
       "perfect": "Идеально",
       "wordsLearned": "Выучено слов: {{count}}",

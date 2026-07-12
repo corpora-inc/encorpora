@@ -953,6 +953,20 @@
       "arcGate": "કમાન દ્વાર"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "સંપૂર્ણ",
+        "nice": "સરસ",
+        "brilliant": "શાનદાર",
+        "boom": "ધડાકો",
+        "nailed": "બરાબર નિશાન",
+        "unstoppable": "અજેય",
+        "onFire": "આગ ઝરતું",
+        "yes": "હા!",
+        "clean": "ચોખ્ખું",
+        "sharp": "તીક્ષ્ણ",
+        "wow": "વાહ",
+        "magic": "જાદુ"
+      },
       "combo": "સળંગ {{count}}",
       "perfect": "શાનદાર",
       "wordsLearned": "{{count}} શબ્દો શીખ્યા",

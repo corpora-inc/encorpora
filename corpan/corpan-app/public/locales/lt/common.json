@@ -944,6 +944,20 @@
       "arcGate": "Lanko vartai"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Tobula",
+        "nice": "Puiku",
+        "brilliant": "Genialu",
+        "boom": "Bum",
+        "nailed": "Pataikei",
+        "unstoppable": "Nesustabdomas",
+        "onFire": "Liepsnoji",
+        "yes": "Taip!",
+        "clean": "Švaru",
+        "sharp": "Aštru",
+        "wow": "Oho",
+        "magic": "Magija"
+      },
       "combo": "{{count}} iš eilės",
       "perfect": "Puiku",
       "wordsLearned": "Išmokta {{count}} žodžių",

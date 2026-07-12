@@ -949,6 +949,20 @@
       "arcGate": "دروازهٔ کمان"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "عالی",
+        "nice": "خوب",
+        "brilliant": "درخشان",
+        "boom": "بوم",
+        "nailed": "زدی به هدف",
+        "unstoppable": "توقف‌ناپذیر",
+        "onFire": "آتشین",
+        "yes": "بله!",
+        "clean": "تمیز",
+        "sharp": "تیز",
+        "wow": "واو",
+        "magic": "جادو"
+      },
       "combo": "{{count}} پشت سر هم",
       "perfect": "عالی",
       "wordsLearned": "{{count}} واژه آموختی",

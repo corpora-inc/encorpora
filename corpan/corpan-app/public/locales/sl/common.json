@@ -949,6 +949,20 @@
       "arcGate": "Vrata loka"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Popolno",
+        "nice": "Dobro",
+        "brilliant": "Odlično",
+        "boom": "Bum",
+        "nailed": "Zadeto",
+        "unstoppable": "Neustavljiv",
+        "onFire": "V ognju",
+        "yes": "Ja!",
+        "clean": "Čisto",
+        "sharp": "Ostro",
+        "wow": "Vau",
+        "magic": "Čarobno"
+      },
       "combo": "{{count}} zapored",
       "perfect": "Odlično",
       "wordsLearned": "{{count}} naučenih besed",

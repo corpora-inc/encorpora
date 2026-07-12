@@ -962,6 +962,20 @@
       "arcGate": "चाप द्वार"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "एकदम सही",
+        "nice": "बढ़िया",
+        "brilliant": "शानदार",
+        "boom": "धमाका",
+        "nailed": "निशाने पर",
+        "unstoppable": "अजेय",
+        "onFire": "आग पर",
+        "yes": "हाँ!",
+        "clean": "साफ़",
+        "sharp": "तेज़",
+        "wow": "वाह",
+        "magic": "जादू"
+      },
       "combo": "लगातार {{count}}",
       "perfect": "बहुत बढ़िया",
       "wordsLearned": "{{count}} शब्द सीखे",

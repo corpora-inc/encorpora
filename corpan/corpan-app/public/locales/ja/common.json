@@ -962,6 +962,20 @@
       "arcGate": "アークの門"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "完璧",
+        "nice": "いいね",
+        "brilliant": "見事",
+        "boom": "ドン",
+        "nailed": "大当たり",
+        "unstoppable": "止まらない",
+        "onFire": "絶好調",
+        "yes": "やった！",
+        "clean": "鮮やか",
+        "sharp": "鋭い",
+        "wow": "すごい",
+        "magic": "マジック"
+      },
       "combo": "{{count}}連続",
       "perfect": "パーフェクト",
       "wordsLearned": "{{count}} 語を習得",

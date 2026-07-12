@@ -949,6 +949,20 @@
       "arcGate": "Boogpoort"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfect",
+        "nice": "Goed",
+        "brilliant": "Briljant",
+        "boom": "Boem",
+        "nailed": "Raak",
+        "unstoppable": "Niet te stoppen",
+        "onFire": "In vuur en vlam",
+        "yes": "Ja!",
+        "clean": "Netjes",
+        "sharp": "Scherp",
+        "wow": "Wauw",
+        "magic": "Magisch"
+      },
       "combo": "{{count}} op rij",
       "perfect": "Perfect",
       "wordsLearned": "{{count}} woorden geleerd",

@@ -953,6 +953,20 @@
       "arcGate": "Porta dell'arco"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfetto",
+        "nice": "Bravo",
+        "brilliant": "Brillante",
+        "boom": "Bum",
+        "nailed": "Centrato",
+        "unstoppable": "Inarrestabile",
+        "onFire": "Infuocato",
+        "yes": "Sì!",
+        "clean": "Impeccabile",
+        "sharp": "Acuto",
+        "wow": "Wow",
+        "magic": "Magico"
+      },
       "combo": "{{count}} di fila",
       "perfect": "Perfetto",
       "wordsLearned": "{{count}} parole imparate",

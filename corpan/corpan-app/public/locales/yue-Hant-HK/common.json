@@ -949,6 +949,20 @@
       "arcGate": "篇章之門"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "完美",
+        "nice": "唔錯",
+        "brilliant": "出色",
+        "boom": "砰",
+        "nailed": "中咗",
+        "unstoppable": "停唔到",
+        "onFire": "火力全開",
+        "yes": "啱晒！",
+        "clean": "乾淨利落",
+        "sharp": "犀利",
+        "wow": "嘩",
+        "magic": "神咗"
+      },
       "combo": "連續 {{count}} 個",
       "perfect": "完美",
       "wordsLearned": "學識咗 {{count}} 個字",

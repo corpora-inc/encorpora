@@ -958,6 +958,20 @@
       "arcGate": "Brama łuku"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Idealnie",
+        "nice": "Nieźle",
+        "brilliant": "Genialnie",
+        "boom": "Bum",
+        "nailed": "Trafiony",
+        "unstoppable": "Nie do zatrzymania",
+        "onFire": "W ogniu",
+        "yes": "Tak!",
+        "clean": "Czysto",
+        "sharp": "Ostro",
+        "wow": "Wow",
+        "magic": "Magia"
+      },
       "combo": "{{count}} z rzędu",
       "perfect": "Idealnie",
       "wordsLearned": "{{count}} słów opanowanych",
