@@ -103,7 +103,9 @@ export function MatchPairs(props: ExerciseProps) {
 
   const tileCls = (state: "idle" | "selected" | "matched" | "wrong") =>
     [
-      "min-h-12 flex-1 rounded-xl border px-3 py-2.5 text-start text-base font-medium transition-colors",
+      // Flex-center so a label that wraps to two lines sits centered in the pill
+      // (not left-aligned + top-heavy). leading-snug keeps two lines compact.
+      "flex min-h-12 flex-1 items-center justify-center text-balance rounded-xl border px-3 py-2.5 text-center text-base font-medium leading-snug transition-colors",
       state === "matched"
         ? "border-emerald-500/50 bg-emerald-500/10 text-muted-foreground"
         : state === "selected"

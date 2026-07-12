@@ -288,3 +288,19 @@ async function applyFallbackShims(
 
     return { text, langPrefix };
 }
+
+/**
+ * Stop any in-flight speech immediately (browser + native). Called when the
+ * Journey feed advances so a card's audio never bleeds into the next card
+ * ("hearing the last exercise on the next one"). Safe/no-op when nothing plays.
+ */
+export async function stopSpeech(): Promise<void> {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
+    try {
+        await invoke("plugin:tts|stop");
+    } catch {
+        // native stop unavailable on some builds; ignore
+    }
+}

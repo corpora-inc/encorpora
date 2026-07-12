@@ -16,6 +16,7 @@ import { useJourneyStore } from "../../store/journey.ts"
 import type { CompletedCard, FeedCard, SessionStats } from "../types.ts"
 import type { JourneyRuntime } from "../runtime.ts"
 import type { SpeakFn } from "../exercises/types.ts"
+import { stopSpeech } from "../../util/speak"
 import { advanceRule, isListeningCard, isListeningRunStart } from "./advanceRules.ts"
 import { ActivityCardHost } from "./ActivityCardHost.tsx"
 import { BlockIntroCard } from "./BlockIntroCard.tsx"
@@ -86,6 +87,10 @@ export function FeedScroller(props: FeedScrollerProps) {
   const doAdvance = useCallback(() => {
     clearAuto()
     skipCelebration()
+    // Stop lingering audio so the leaving card's speech never bleeds into the
+    // next card ("hearing the last exercise on the next one"). The arriving
+    // card starts its own auto-play fresh.
+    void stopSpeech()
     runtime.advance()
   }, [runtime, clearAuto])
 
@@ -159,6 +164,7 @@ export function FeedScroller(props: FeedScrollerProps) {
     // skips it — abandonCurrent advances the feed. The old double-swipe "swipe
     // again to skip" arming bounced the card back and demanded a second fast
     // swipe; it read as a cock-block mid-scroll, not a feature.
+    void stopSpeech()
     runtime.abandonCurrent()
   }, [backIndex, current, settled, advanceMode, runtime, doAdvance])
 
