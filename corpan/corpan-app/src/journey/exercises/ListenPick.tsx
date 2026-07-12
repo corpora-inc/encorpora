@@ -61,14 +61,14 @@ export function ListenPick(props: ExerciseProps) {
   const answered = picked !== null || props.mode === "review"
 
   return (
-    <div className="flex w-full flex-col items-center gap-6">
+    <div className="flex w-full flex-col items-center gap-4">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.pickWhatYouHear")}</div>
       <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
       {/* Concept image (imagepan) — reserved box (placeholder pre-answer so it
           can't spoil the answer), image swaps in place on answer: no reflow. */}
       {conceptImageSrc ? (
         <div
-          className="flex h-32 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-40"
+          className="flex h-24 w-full max-w-[10rem] items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-32"
           data-testid="journey-listen-image"
         >
           {answered ? (

@@ -450,7 +450,12 @@ export function FeedScroller(props: FeedScrollerProps) {
                 {backRedoable ? (
                   <div className="w-full">{renderCard(backRecord.card, "redo")}</div>
                 ) : (
-                  <div className="pointer-events-none w-full opacity-90">
+                  // NOT pointer-events-none: a reviewed card must still let the
+                  // learner REPLAY audio and open the (?) hint (hear + get hints
+                  // before AND after answering). Re-answering is already blocked
+                  // because each exercise disables its own answer controls in
+                  // review mode — so only the answer tiles are inert, not audio.
+                  <div className="w-full opacity-90">
                     {renderCard(backRecord.card, "review")}
                   </div>
                 )}
