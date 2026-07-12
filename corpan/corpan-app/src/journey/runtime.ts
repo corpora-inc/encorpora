@@ -503,6 +503,24 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     const params: Record<string, unknown> = { ...(spec.params ?? {}) }
     const nativeLang = deps.ctx.nativeLang
 
+    // -- Empty grammar-note guard --------------------------------------------
+    // A grammar_note is ONLY meaningful for a real grammarNode item carrying an
+    // authored note. A plain vocab word (or a node with no note) reaching here
+    // renders a USELESS empty "NOTA DE GRAMÁTICA" shell titled with the bare
+    // word (the "grammar note for 'one'" defect — no content, looks broken).
+    // Reroute to a normal vocab card BEFORE the glyph/image/direction logic
+    // below, so the reroute still gets the best surface (a number → a glyph
+    // card, etc.). Same graded item; only the presentation changes.
+    if (activityType === "grammar_note") {
+      const gn = answer.extras?.kind === "grammarNode" ? answer.extras : null
+      const note = gn && typeof (gn as { note?: unknown }).note === "string" ? (gn as { note: string }).note : ""
+      if (note.trim().length === 0) {
+        activityType = "choice_pick"
+        delete params.drill
+        log("journey_degenerate_reroute", { specId: spec.specId, from: "grammar_note", to: activityType })
+      }
+    }
+
     // -- Numeral GLYPH choice (FIRST_PRINCIPLES.md) — HIGHEST precedence: a
     // number word's meaning is a universal digit, so this beats pictures and
     // text and needs no pack. HEAR the target number → tap the numeral.
