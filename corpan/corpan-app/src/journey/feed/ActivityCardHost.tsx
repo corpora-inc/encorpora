@@ -178,17 +178,23 @@ export function ActivityCardHost(props: {
         active={props.active}
         review={props.mode === "review" ? { correct: settledOk ?? true } : null}
       />
-      <div className="min-h-8">
+      {/* Feedback row: the stamp stays centered; the post-answer word (?) rides
+          the trailing edge of this ALREADY-reserved min-h-8 band, absolutely
+          positioned so it never adds height — the exercise never reflows when a
+          word settles (it opens its explanation as a floating overlay, W3). */}
+      <div className="relative flex min-h-8 w-full items-center justify-center">
         <ResultStamp state={stamp} confidence={confidence} />
+        {settledOk !== null && props.mode !== "probe" && prepared.items[0]?.kind === "word" ? (
+          <div className="absolute end-0 top-1/2 -translate-y-1/2">
+            <WordEnrichment
+              item={prepared.items[0]}
+              example={prepared.example}
+              targetLang={prepared.spec.targetLang}
+              nativeLang={prepared.spec.nativeLang}
+            />
+          </div>
+        ) : null}
       </div>
-      {settledOk !== null && props.mode !== "probe" && prepared.items[0]?.kind === "word" ? (
-        <WordEnrichment
-          item={prepared.items[0]}
-          example={prepared.example}
-          targetLang={prepared.spec.targetLang}
-          nativeLang={prepared.spec.nativeLang}
-        />
-      ) : null}
       {showAnswer ? (
         <div className="flex w-full flex-col items-center gap-1 rounded-xl bg-muted px-4 py-3 text-center">
           <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">

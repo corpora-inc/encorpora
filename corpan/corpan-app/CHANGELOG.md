@@ -8,6 +8,22 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **Word explanations no longer shove the exercise around — and speak the
+  learner's language.** The post-answer word depth (in-context example +
+  wordpan meaning/etymology) used to auto-render *inline below the exercise* the
+  moment you answered, reflowing the whole card (on a compact glyph-number card
+  it clipped the audio button at the top) — and its etymology paragraph could
+  come out in the *target* language (an English "…from Old English an…" shown to
+  a Spanish speaker). Now the exercise never moves: a small **(?)** rides the
+  already-reserved feedback row (only when there is something to show), and
+  tapping it opens the explanation as a **floating overlay** (portaled above the
+  feed's transformed cards, reduced-motion aware) that never reflows anything.
+  The overlay text is **native-first and region-tolerant** (`es-419` matches
+  `es`); a non-English native never sees the target-language etymology as the
+  primary text — they get the native paragraph, or their native gloss + the
+  in-context example. Applied consistently to the etymology-gem rare card and to
+  the auto-advance "reading beat" rule (a card only holds for a swipe when a
+  native-safe paragraph will actually appear).
 - **Journey's SPEAK card is now parlometron-grade.** The card mounts the same
   cap-pronounce surface the standalone pronunciation coach uses, but Journey
   never themed it — so on the dark feed the target phrase rendered near-black

@@ -46,10 +46,10 @@ test("wordEnrichment: example only (no wordpan) surfaces the in-context line", (
   assert.equal(m!.example?.target, "One coffee, please")
   assert.equal(m!.example?.native, "un café, por favor")
   assert.equal(m!.example?.nativeLang, "es")
-  assert.equal(m!.explanation, undefined)
+  assert.equal(m!.meaning, undefined)
 })
 
-test("wordEnrichment: wordpan native-first paragraph selection", () => {
+test("wordEnrichment: wordpan native-first paragraph + native gloss headline", () => {
   const m = wordEnrichment(
     word({
       kind: "word",
@@ -59,18 +59,40 @@ test("wordEnrichment: wordpan native-first paragraph selection", () => {
     null,
     LANGS,
   )
-  assert.equal(m!.explanation?.lang, "es")
-  assert.equal(m!.explanation?.text, "Café tostado…")
+  assert.equal(m!.meaning?.lang, "es")
+  assert.equal(m!.meaning?.paragraph, "Café tostado…")
+  assert.equal(m!.gloss, "el café")
 })
 
-test("wordEnrichment: no L1 ⇒ falls back to target-language paragraph", () => {
+test("wordEnrichment: no L1 ⇒ target-language paragraph is the learner's language", () => {
   const m = wordEnrichment(
     word({ kind: "word", explanationNative: "Café…", explanationTarget: "Roasted beans…" }),
     null,
     { targetLang: "en" },
   )
-  assert.equal(m!.explanation?.lang, "en")
-  assert.equal(m!.explanation?.text, "Roasted beans…")
+  assert.equal(m!.meaning?.lang, "en")
+  assert.equal(m!.meaning?.paragraph, "Roasted beans…")
+  // No native stack ⇒ no gloss headline.
+  assert.equal(m!.gloss, undefined)
+})
+
+test("wordEnrichment: ES→EN with ONLY English etymology ⇒ null (never an English wall)", () => {
+  // The device bug: a non-English native must not be shown the target etymology.
+  const m = wordEnrichment(
+    word({ kind: "word", explanationTarget: "from Old English an…" }),
+    null,
+    LANGS,
+  )
+  assert.equal(m, null)
+})
+
+test("wordEnrichment: region-tolerant — es-419 native still rejects the English paragraph", () => {
+  const m = wordEnrichment(
+    word({ kind: "word", explanationTarget: "from Old English an…" }),
+    null,
+    { targetLang: "en", nativeLang: "es-419" },
+  )
+  assert.equal(m, null)
 })
 
 test("wordEnrichment: both example and meaning present together", () => {
@@ -80,5 +102,5 @@ test("wordEnrichment: both example and meaning present together", () => {
     LANGS,
   )
   assert.ok(m!.example)
-  assert.ok(m!.explanation)
+  assert.ok(m!.meaning)
 })

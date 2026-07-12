@@ -5,6 +5,7 @@
 
 import type { AdvanceMode } from "../../store/journey.ts"
 import type { FeedCard } from "../types.ts"
+import { selectWordParagraph } from "../cards/wordEnrichment.ts"
 
 export type AdvanceRule =
   | { kind: "manual" } // checkpoint / rare reveal / poster / blockIntro
@@ -81,12 +82,18 @@ export function isListeningRunStart(current: FeedCard, next: FeedCard | null): b
   return isListeningCard(current) && next !== null && isListeningCard(next)
 }
 
-/** A word exercise whose resolved item carries a wordpan meaning/etymology
- *  paragraph. The post-answer enrichment renders real reading (often 40–60
- *  words), so the settled card must not auto-advance — the learner reads and
- *  swipes on when ready. (Function declaration → hoisted; safe to call above.) */
+/** A word exercise whose resolved item offers a NATIVE-SAFE explanation
+ *  paragraph — i.e. one that will actually light the post-answer (?) (40–60
+ *  words of real reading, in the learner's own language; the English etymology
+ *  a non-English native never sees does NOT count). Such a card holds for a
+ *  deliberate swipe so the (?) stays reachable and its overlay isn't yanked out
+ *  from under a reader by the 2.2s auto timer. (Hoisted; safe to call above.) */
 function hasReadableMeaning(card: FeedCard): boolean {
   if (card.kind !== "exercise") return false
-  const extras = card.prepared.items[0]?.extras
-  return extras?.kind === "word" && !!(extras.explanationNative || extras.explanationTarget)
+  const item = card.prepared.items[0]
+  if (item?.kind !== "word") return false
+  return !!selectWordParagraph(item, {
+    targetLang: card.spec.targetLang,
+    nativeLang: card.spec.nativeLang,
+  })
 }

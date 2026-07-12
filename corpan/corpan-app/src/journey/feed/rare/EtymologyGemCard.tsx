@@ -7,6 +7,7 @@ import { useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { isRTL } from "../../../util/convert"
 import type { ResolvedExample, ResolvedItem } from "../../content/resolve.ts"
+import { selectWordParagraph } from "../../cards/wordEnrichment.ts"
 
 export function EtymologyGemCard(props: {
   item: ResolvedItem
@@ -17,9 +18,16 @@ export function EtymologyGemCard(props: {
 }) {
   const { t } = useTranslation()
   const startedAt = useRef(Date.now())
-  const extras = props.item.extras?.kind === "word" ? props.item.extras : null
-  const paragraph = extras?.explanationNative ?? extras?.explanationTarget ?? null
-  const paragraphLang = extras?.explanationNative ? (props.nativeLang ?? props.targetLang) : props.targetLang
+  // Native-safe, region-tolerant selection (shared with the (?) overlay): an
+  // ES→EN learner reads the Spanish paragraph, never the English etymology. When
+  // no native-language paragraph exists we show the didYouNotice line instead of
+  // an English wall.
+  const picked = selectWordParagraph(props.item, {
+    targetLang: props.targetLang,
+    nativeLang: props.nativeLang,
+  })
+  const paragraph = picked?.text ?? null
+  const paragraphLang = picked?.lang ?? props.targetLang
   const example = props.example?.phrase
 
   return (

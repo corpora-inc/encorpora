@@ -37,6 +37,10 @@ test("choice_pick: swipe in swipe mode, auto+2200 in auto (default) mode", () =>
 const withMeaning = (activityType: string): FeedCard => {
   const c = exercise(activityType)
   if (c.kind === "exercise") {
+    // An explanationNative only exists on an L1 stack — carry the native lang so
+    // the native-safe selector actually picks the Spanish paragraph.
+    c.spec = { ...c.spec, nativeLang: "es" }
+    c.prepared.spec = c.spec
     c.prepared.items = [
       {
         kind: "word",
@@ -60,6 +64,24 @@ test("word card with a meaning/etymology waits for a swipe — never auto-advanc
   // already button-advance below, but the meaning branch must not regress it to
   // an auto-yank).
   assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "swipe" })
+})
+
+test("ES→EN word with ONLY English etymology does NOT hold (no (?) shows)", () => {
+  // The English paragraph is never surfaced to a non-English native, so the card
+  // is a plain answer-tap card — it must auto-advance, not stall on swipe.
+  const c = exercise("choice_pick")
+  if (c.kind === "exercise") {
+    c.spec = { ...c.spec, nativeLang: "es" }
+    c.prepared.spec = c.spec
+    c.prepared.items = [
+      {
+        kind: "word",
+        target: { text: "one" },
+        extras: { kind: "word", explanationTarget: "from Old English an…" },
+      } as unknown as ResolvedItem,
+    ]
+  }
+  assert.deepEqual(advanceRule(c, "auto"), { kind: "auto", delayMs: 2200 })
 })
 
 test("failed cards never auto-advance", () => {
