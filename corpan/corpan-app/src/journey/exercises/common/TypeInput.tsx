@@ -23,16 +23,20 @@ export function TypeInput(props: {
   }
   return (
     <div className="flex w-full flex-col gap-2">
-      {props.hint ? (
-        <div className="text-sm text-muted-foreground" data-testid="journey-type-hint">
-          {t("journey.exercise.hint")}: <span lang={props.lang}>{props.hint}</span>
-        </div>
-      ) : null}
+      {/* No-reflow (ReservedSlot.tsx): the scaffold's first-letter hint fills a
+          reserved line held from mount, so revealing it never pushes the input
+          down. */}
+      <div className="min-h-5 text-sm text-muted-foreground" data-testid="journey-type-hint">
+        {props.hint ? (
+          <>
+            {t("journey.exercise.hint")}: <span lang={props.lang}>{props.hint}</span>
+          </>
+        ) : null}
+      </div>
       {/* Stack input over the Check button, both full-width: a side-by-side row
-          clipped the button off the right edge on a phone (the flex row
-          overflowed the card). Stacking never clips and is the cleaner mobile
-          pattern. */}
+          clipped the button off the right edge on a phone. */}
       <div className="flex w-full flex-col gap-2" dir={isRTL(props.lang) ? "rtl" : "ltr"}>
+
         <input
           ref={inputRef}
           value={value}

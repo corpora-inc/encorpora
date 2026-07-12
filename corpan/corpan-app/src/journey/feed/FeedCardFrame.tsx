@@ -9,6 +9,13 @@
 // press), so it obscured the mic and re-summoned itself on every retry — and it
 // was read-back status copy the design bans. State is shown through the card
 // itself, not narrated.
+//
+// NO-REFLOW INVARIANT: this frame vertically centers the card column, so any
+// height change to a card's content re-centers it and shifts the interactive
+// region. Feedback that appears on answer must therefore be reserved-in-place
+// or floated — NEVER a new flow child. The `settled` scale below is a transform
+// (no layout cost) and the settled ✓ / review chip are absolute / present from
+// mount. See exercises/common/ReservedSlot.tsx for the shared contract.
 
 import { AnimatePresence, motion } from "framer-motion"
 import { useTranslation } from "react-i18next"

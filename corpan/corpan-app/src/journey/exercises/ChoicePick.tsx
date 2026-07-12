@@ -13,6 +13,7 @@ import { buildImageTiles } from "./imageChoice.ts"
 import { buildGlyphTiles, GLYPH_ANSWER_TILE_ID } from "./glyphs.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import { TargetText } from "./common/TargetText.tsx"
 import type { ExerciseProps } from "./types.ts"
@@ -257,8 +258,14 @@ export function ChoicePick(props: ExerciseProps) {
         disabled={disabled}
         onPick={pick}
       />
-      {props.mode === "live" && props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
-        <ScaffoldHint used={false} onUse={useScaffold} />
+      {/* No-reflow: the hint offer lives in a reserved slot held from mount, so
+          it fills in place on a first miss and never shoves the tiles. */}
+      {props.mode === "live" ? (
+        <ReservedSlot minH="min-h-9">
+          {props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
+            <ScaffoldHint used={false} onUse={useScaffold} />
+          ) : null}
+        </ReservedSlot>
       ) : null}
     </div>
   )

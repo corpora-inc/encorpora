@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next"
 import { isRTL } from "../../util/convert"
 import { flipFaces, type Direction } from "./faces.ts"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { TargetText } from "./common/TargetText.tsx"
 import type { ExerciseProps } from "./types.ts"
 
@@ -120,15 +121,21 @@ export function FlipRecall(props: ExerciseProps) {
           )}
         </motion.div>
       )}
-      {flipped && props.mode === "live" && !doneRef.current ? (
-        <button
-          type="button"
-          onClick={settle}
-          data-testid="journey-flip-continue"
-          className="min-h-12 w-full rounded-xl bg-[hsl(var(--journey-accent,262_80%_58%))] text-base font-semibold text-white"
-        >
-          {t("journey.exercise.continue")}
-        </button>
+      {/* No-reflow: the Continue lives in a reserved slot held from mount, so
+          the reveal-then-Continue beat never shifts the prompt/flip above it. */}
+      {props.mode === "live" ? (
+        <ReservedSlot minH="min-h-12">
+          {flipped && !doneRef.current ? (
+            <button
+              type="button"
+              onClick={settle}
+              data-testid="journey-flip-continue"
+              className="min-h-12 w-full rounded-xl bg-[hsl(var(--journey-accent,262_80%_58%))] text-base font-semibold text-white"
+            >
+              {t("journey.exercise.continue")}
+            </button>
+          ) : null}
+        </ReservedSlot>
       ) : null}
     </div>
   )

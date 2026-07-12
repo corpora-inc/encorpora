@@ -11,6 +11,7 @@ import { tokenizePhrase } from "../../util/wordTokens"
 import { clozeContext } from "./clozeContext.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import { TargetText } from "./common/TargetText.tsx"
 import { hasClozeContext } from "./common/tokenGuards.ts"
@@ -158,14 +159,19 @@ export function Cloze(props: ExerciseProps) {
           onSubmit={(typed) => settle(normalizedEquals(typed, blankWord, props.spec.targetLang))}
         />
       )}
-      {props.mode === "live" && props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
-        <ScaffoldHint
-          used={false}
-          onUse={() => {
-            setHint(blankWord.slice(0, 1))
-            props.onHintUsed()
-          }}
-        />
+      {/* No-reflow: reserved hint slot held from mount (see ReservedSlot). */}
+      {props.mode === "live" ? (
+        <ReservedSlot minH="min-h-9">
+          {props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
+            <ScaffoldHint
+              used={false}
+              onUse={() => {
+                setHint(blankWord.slice(0, 1))
+                props.onHintUsed()
+              }}
+            />
+          ) : null}
+        </ReservedSlot>
       ) : null}
     </div>
   )

@@ -82,6 +82,15 @@ Conventions: `corpan/CHANGELOGS.md`.
   presentation only). No pack, or a word with no picture, falls back to today's
   text — nothing ever shows a broken image. The image sits in a reserved box so
   the card never jumps when it appears.
+### Changed
+- **The Journey card holds perfectly still when you answer.** Global no-reflow
+  invariant across every exercise: the prompt and the tiles/input never move the
+  instant you commit an answer. Feedback that used to shove the card — a "what
+  you heard" reveal, the answer line, a Continue button, the hint offer — now
+  fills space reserved up-front (so it appears in place) or floats as an overlay
+  (the fail "answer was…" note). Success still fires the full celebration
+  (particles/haptics/chime); a miss stays a gentle in-place cue. Codified as a
+  shared `ReservedSlot` contract so future cards inherit it.
 
 ## [0.20.4] — 2026-07-11
 

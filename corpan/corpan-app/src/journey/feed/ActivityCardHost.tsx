@@ -196,15 +196,26 @@ export function ActivityCardHost(props: {
           </div>
         ) : null}
       </div>
+      {/* Answer reveal on a double-miss FAIL. No-reflow invariant (see
+          exercises/common/ReservedSlot.tsx): this is a FLOATING toast pinned to
+          the card frame's lower area (overlay, rule (d)) — it participates in NO
+          layout flow, so the prompt + tiles stay exactly where they were when
+          the learner missed (never a new panel that shoves the card up). The
+          correct answer is already shown in-place by the exercise (a green tile
+          / an in-place reveal); this only adds the gentle "come back" note.
+          Anchors to FeedCardFrame's relative root; bottom-16 clears the feed's
+          bottom affordances (chevron / skip hint). */}
       {showAnswer ? (
-        <div className="flex w-full flex-col items-center gap-1 rounded-xl bg-muted px-4 py-3 text-center">
-          <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            {t("journey.exercise.answerWas")}
+        <div className="pointer-events-none absolute inset-x-0 bottom-16 z-10 flex justify-center px-5">
+          <div className="flex max-w-full flex-col items-center gap-1 rounded-lg bg-muted/95 px-4 py-3 text-center shadow-lg backdrop-blur">
+            <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              {t("journey.exercise.answerWas")}
+            </div>
+            <div lang={prepared.spec.targetLang} className="text-lg font-semibold text-foreground">
+              {prepared.items[0].target.text}
+            </div>
+            <div className="text-sm text-muted-foreground">{t("journey.exercise.comeBackNote")}</div>
           </div>
-          <div lang={prepared.spec.targetLang} className="text-lg font-semibold text-foreground">
-            {prepared.items[0].target.text}
-          </div>
-          <div className="text-sm text-muted-foreground">{t("journey.exercise.comeBackNote")}</div>
         </div>
       ) : null}
     </div>

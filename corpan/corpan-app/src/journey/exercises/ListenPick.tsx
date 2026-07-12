@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next"
 import { cardRng } from "../content/rng.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import type { ExerciseProps } from "./types.ts"
 
@@ -19,7 +20,6 @@ export function ListenPick(props: ExerciseProps) {
   const [picked, setPicked] = useState<string | null>(null)
   const [eliminated, setEliminated] = useState<string[]>([])
   const playedRef = useRef(false)
-  const hideText = props.spec.params?.hideTextUntilAnswer !== false
 
   const tiles = useMemo(() => {
     const out: Tile[] = (props.distractors?.distractors ?? []).map((d, i) => ({
@@ -64,6 +64,8 @@ export function ListenPick(props: ExerciseProps) {
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.pickWhatYouHear")}</div>
       <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
+      {/* Concept image (imagepan) — reserved box (placeholder pre-answer so it
+          can't spoil the answer), image swaps in place on answer: no reflow. */}
       {conceptImageSrc ? (
         <div
           className="flex h-32 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-40"
@@ -80,11 +82,16 @@ export function ListenPick(props: ExerciseProps) {
           )}
         </div>
       ) : null}
-      {!hideText || answered ? (
-        <div lang={props.spec.targetLang} className="text-lg font-medium text-foreground">
-          {answered ? answer.target.text : null}
-        </div>
-      ) : null}
+      {/* No-reflow: a reserved line for the "what you heard" reveal — present
+          (empty) from mount, filled in place on answer so the tiles never
+          shift when the target text appears. */}
+      <ReservedSlot minH="min-h-7">
+        {answered ? (
+          <div lang={props.spec.targetLang} className="text-lg font-medium text-foreground">
+            {answer.target.text}
+          </div>
+        ) : null}
+      </ReservedSlot>
       <AnswerTiles
         tiles={tiles.map((tile) => ({
           ...tile,
@@ -95,18 +102,23 @@ export function ListenPick(props: ExerciseProps) {
         disabled={disabled}
         onPick={pick}
       />
-      {props.mode === "live" && props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
-        <ScaffoldHint
-          used={false}
-          onUse={() => {
-            const order = props.distractors?.eliminationOrder ?? []
-            const next = order.find((i) => !eliminated.includes(`d${i}`))
-            if (next !== undefined) {
-              setEliminated((e) => [...e, `d${next}`])
-              props.onHintUsed()
-            }
-          }}
-        />
+      {/* No-reflow: reserved hint slot held from mount (see ReservedSlot). */}
+      {props.mode === "live" ? (
+        <ReservedSlot minH="min-h-9">
+          {props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
+            <ScaffoldHint
+              used={false}
+              onUse={() => {
+                const order = props.distractors?.eliminationOrder ?? []
+                const next = order.find((i) => !eliminated.includes(`d${i}`))
+                if (next !== undefined) {
+                  setEliminated((e) => [...e, `d${next}`])
+                  props.onHintUsed()
+                }
+              }}
+            />
+          ) : null}
+        </ReservedSlot>
       ) : null}
     </div>
   )
