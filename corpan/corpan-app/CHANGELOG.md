@@ -34,6 +34,13 @@ Conventions: `corpan/CHANGELOGS.md`.
   They now ride a normal-flow row below the feed — only in the feed (never over
   placement/loading), only one offer visible at a time, clear of every CTA and
   the safe-area inset. Consent-first behavior is unchanged.
+- **Journey shows the unit's real name, not its internal id.** The feed header
+  and placement result displayed the raw unit id (`en.a0.u01`); they now show the
+  localized unit theme (e.g. "Kit de supervivencia" / "Survival kit") in the
+  learner's language, sourced from the course pack's `unit.<id>.theme` strings
+  (region-tolerant, falling back to English then the raw id only if a pack ships
+  no theme). The path view's arc headers likewise show the CEFR band instead of
+  the internal arc id.
 
 ## [0.20.4] — 2026-07-11
 

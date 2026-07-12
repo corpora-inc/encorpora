@@ -123,6 +123,7 @@ export function JourneyOverlay(props: {
       showRomanization={showRomanization}
       dailyGoal={shape.dailyGoal}
       targetLangName={targetLangName}
+      unitName={built.unitName}
       streakPorts={journeyStreakPorts()}
       onLaunchPack={props.onLaunchPack}
       offerSlot={

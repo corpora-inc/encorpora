@@ -680,3 +680,83 @@ export async function loadCourseGraphFromPack(
     queryJourney(packId, sql, params, maxRows)
   return loadCourseGraph(queryFn, opts)
 }
+
+/* -------------------------------------------------------------------------- */
+/*  unit display names (localized `theme` strings)                            */
+/* -------------------------------------------------------------------------- */
+
+const UNIT_THEME_KEY = /^unit\.(.+)\.theme$/
+
+/** Region-tolerant base subtag ("pt-BR" → "pt"), lower-cased. */
+function langBase(lang: string): string {
+  return lang.toLowerCase().split("-")[0]
+}
+
+/**
+ * Load the localized unit display names (`unit.<id>.theme` in the pack's
+ * `strings` table), selected for the learner's UI language. Region-tolerant:
+ * exact UI-language row → base-subtag row (es-ES ↔ es) → `en` → dropped. The
+ * internal unit id (`en.a0.u01`) must NEVER reach the user, so the resolver
+ * this feeds falls back to the raw id only when a pack ships no theme at all.
+ *
+ * Rows are filtered to the UI-language / base / `en` candidates in SQL so the
+ * result stays far under the Rust row cap even for a full A0–C2 course.
+ */
+export async function loadUnitThemes(
+  query: JourneyQueryFn,
+  uiLang: string,
+): Promise<Map<string, string>> {
+  const uiLower = uiLang.toLowerCase()
+  const uiBase = langBase(uiLang)
+  const candidates = [...new Set([uiLower, uiBase, "en"].filter(Boolean))]
+  const placeholders = candidates.map(() => "?").join(", ")
+  const rows = await query(
+    "SELECT key, lang, text FROM strings WHERE key LIKE 'unit.%.theme' AND " +
+      `lower(lang) IN (${placeholders})`,
+    candidates,
+    2000,
+  )
+
+  // Group each unit's available theme rows by (lower-cased) language.
+  const byUnit = new Map<string, Map<string, string>>()
+  for (const r of rows) {
+    const m = UNIT_THEME_KEY.exec(asStr(r.key))
+    if (!m) continue
+    const lang = asStr(r.lang).toLowerCase()
+    const text = asStr(r.text)
+    if (!lang || !text) continue
+    let byLang = byUnit.get(m[1])
+    if (!byLang) byUnit.set(m[1], (byLang = new Map()))
+    byLang.set(lang, text)
+  }
+
+  // Preference walk mirrors resolve.ts::pickPreferred (native/UI-first, en
+  // fallback) but tolerant of a region tag on either side.
+  const out = new Map<string, string>()
+  for (const [unitId, byLang] of byUnit) {
+    const picked =
+      byLang.get(uiLower) ??
+      [...byLang].find(([l]) => langBase(l) === uiBase)?.[1] ??
+      [...byLang].find(([l]) => langBase(l) === "en")?.[1] ??
+      null
+    if (picked) out.set(unitId, picked)
+  }
+  return out
+}
+
+/** Production entry point: load unit themes from an installed pack. Failures
+ *  (missing table on an old pack, query error) degrade to an empty map — the
+ *  caller's resolver then shows the raw id, never a crash. */
+export async function loadUnitThemesFromPack(
+  packId: string,
+  uiLang: string,
+): Promise<Map<string, string>> {
+  try {
+    return await loadUnitThemes(
+      (sql, params, maxRows) => queryJourney(packId, sql, params, maxRows),
+      uiLang,
+    )
+  } catch {
+    return new Map()
+  }
+}
