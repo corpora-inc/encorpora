@@ -81,9 +81,9 @@ export function InterludePoster(props: {
           <Play className="h-4 w-4" aria-label={cta} />
         </div>
       </motion.button>
-      <div className="text-xs text-muted-foreground">
-        {t("journey.exercise.skipHint")}
-      </div>
+      {/* No "swipe again to skip" here: it would show on ARRIVAL, before any
+          swipe — wrong ("again"?) and redundant. The FeedScroller shows that
+          hint only once the first forward-swipe ARMS the skip (§3.5). */}
     </div>
   )
 }
