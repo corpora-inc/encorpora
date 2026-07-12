@@ -9,14 +9,19 @@ import { useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Volume2 } from "lucide-react"
 import { isRTL } from "../../util/convert"
-import { matchColumns, type MatchSide } from "./faces.ts"
+import { matchColumns, matchImageColumns, type MatchSide } from "./faces.ts"
 import type { ActivityItemResult } from "../../contentPacks/activityContract"
 import type { ExerciseProps, ResolvedItem } from "./types.ts"
 
 export function MatchPairs(props: ExerciseProps) {
   const { t } = useTranslation()
   const startedAt = useRef(Date.now())
+  const imageAxis = props.spec.params?.axis === "image"
   const audioAxis = props.spec.params?.axis === "text-audio"
+  const imageByKey = useMemo(
+    () => (props.spec.params?.imageByKey ?? {}) as Record<string, string>,
+    [props.spec.params?.imageByKey],
+  )
   const items = props.items
   const [left, setLeft] = useState<string | null>(null)
   const [matched, setMatched] = useState<string[]>([])
@@ -26,14 +31,16 @@ export function MatchPairs(props: ExerciseProps) {
 
   const columns = useMemo(
     () =>
-      matchColumns(
-        items,
-        audioAxis ? "text-audio" : "text-text",
-        props.cardId,
-        props.spec.targetLang,
-        props.spec.nativeLang,
-      ),
-    [items, audioAxis, props.cardId, props.spec.targetLang, props.spec.nativeLang],
+      imageAxis
+        ? matchImageColumns(items, imageByKey, props.cardId, props.spec.targetLang)
+        : matchColumns(
+            items,
+            audioAxis ? "text-audio" : "text-text",
+            props.cardId,
+            props.spec.targetLang,
+            props.spec.nativeLang,
+          ),
+    [items, imageAxis, imageByKey, audioAxis, props.cardId, props.spec.targetLang, props.spec.nativeLang],
   )
 
   const usable = useMemo(() => {
@@ -121,7 +128,14 @@ export function MatchPairs(props: ExerciseProps) {
               data-journey-pair-left={s.key}
               className={tileCls(matched.includes(s.key) || review ? "matched" : left === s.key ? "selected" : "idle")}
             >
-              {s.audio ? (
+              {s.imageSrc ? (
+                // Picture pair (research/images.md): a reserved, aspect-locked
+                // thumbnail — no reflow on load — that plays the word on tap.
+                <span className="flex items-center justify-center gap-2">
+                  <img src={s.imageSrc} alt={s.label} className="h-14 w-14 shrink-0 object-contain" />
+                  <Volume2 className="h-4 w-4 shrink-0 text-muted-foreground" />
+                </span>
+              ) : s.audio ? (
                 <span className="flex items-center gap-2">
                   <Volume2 className="h-4 w-4" /> {matched.includes(s.key) || review ? s.label : "•••"}
                 </span>

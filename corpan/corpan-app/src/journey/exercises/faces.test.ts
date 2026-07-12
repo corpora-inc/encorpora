@@ -9,6 +9,7 @@ import {
   choicePickFaces,
   flipFaces,
   matchColumns,
+  matchImageColumns,
 } from "./faces.ts"
 import { normalizeAnswer } from "../content/normalize.ts"
 import type { ResolvedItem } from "../content/resolve.ts"
@@ -212,6 +213,40 @@ test("flipFaces: missing native → target-only flashcard (reveal has audio)", (
   assert.equal(f.revealIsTarget, true)
   assert.equal(f.promptLang, "es")
   assert.equal(f.revealLang, "es")
+})
+
+/* --------------------------------------------------------- matchImageColumns */
+
+const IMG = (k: string) => `corpan-pack://localhost/imagepan/images/${k}.webp`
+
+test("matchImageColumns: left is pictures (+audio), right is the target word", () => {
+  const items = [item("coffee", "coffee", "café"), item("tea", "tea", "té")]
+  const images = { "word:es:coffee": IMG("coffee"), "word:es:tea": IMG("tea") }
+  const c = matchImageColumns(items, images, "seed", "es")
+  assert.equal(c.usableKeys.length, 2)
+  // every left tile carries a picture + plays audio; no picture on the right
+  for (const s of c.left) {
+    assert.ok(s.imageSrc?.startsWith("corpan-pack://"), "left tile has a picture")
+    assert.equal(s.audio, true, "left picture plays the word on tap")
+  }
+  for (const s of c.right) assert.equal(s.imageSrc, undefined, "right tile is text")
+  assert.deepEqual([...c.right.map((s) => s.label)].sort(), ["coffee", "tea"])
+  assert.equal(c.leftLang, "es")
+  assert.equal(c.rightLang, "es")
+})
+
+test("matchImageColumns: only items WITH a picture form pairs", () => {
+  const items = [item("coffee", "coffee"), item("tea", "tea"), item("milk", "milk")]
+  const images = { "word:es:coffee": IMG("coffee"), "word:es:milk": IMG("milk") }
+  const c = matchImageColumns(items, images, "seed", "es")
+  assert.deepEqual(c.usableKeys.sort(), ["word:es:coffee", "word:es:milk"])
+})
+
+test("matchImageColumns: never repeats a written target on the right (case twin)", () => {
+  const items = [item("a", "Té"), item("b", "té")]
+  const images = { "word:es:a": IMG("a"), "word:es:b": IMG("b") }
+  const c = matchImageColumns(items, images, "seed", "es")
+  assert.equal(c.usableKeys.length, 1, "the case twin is dropped, not doubled")
 })
 
 test("flipFaces + matchColumns: resolved native face survives an absent nativeLang", () => {

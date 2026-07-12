@@ -99,6 +99,9 @@ export interface MatchSide {
   label: string
   /** Left side of a text-audio card plays audio instead of showing text. */
   audio?: boolean
+  /** Left side of an IMAGE card shows this picture instead of text (the label
+   *  becomes its a11y alt). */
+  imageSrc?: string
 }
 
 export interface MatchColumns {
@@ -186,6 +189,39 @@ export function matchColumns(
   return {
     usableKeys: usable.map((i) => i.key),
     left: seededShuffle(`${cardId}-l`, usable.map((i) => ({ key: i.key, label: i.target.text, audio: true }))),
+    right: seededShuffle(`${cardId}-r`, usable.map((i) => ({ key: i.key, label: i.target.text }))),
+    leftLang: targetLang,
+    rightLang: targetLang,
+  }
+}
+
+/**
+ * Picture match-pairs (research/images.md — imagepan): pair the board's WORD
+ * items to their pictures. LEFT column = pictures (each plays the word on tap —
+ * audio-first), RIGHT column = the written target word. Language-neutral, so no
+ * native face is needed; `images` maps an item KEY → its picture src, and only
+ * items present in it (i.e. that shipped art) form pairs. The written-target
+ * column still must not repeat, so we dedup on the target surface. Degrades to
+ * the text/audio axes (matchColumns) when fewer than two items have pictures —
+ * the runtime makes that call before choosing this axis.
+ */
+export function matchImageColumns(
+  items: ResolvedItem[],
+  images: Record<string, string>,
+  cardId: string,
+  targetLang: string,
+): MatchColumns {
+  const withImage = items.filter((i) => !!images[i.key])
+  const usable = dedupByLabels(withImage, (i) => [{ label: i.target.text, lang: targetLang }]).slice(
+    0,
+    MATCH_MAX_PAIRS,
+  )
+  return {
+    usableKeys: usable.map((i) => i.key),
+    left: seededShuffle(
+      `${cardId}-l`,
+      usable.map((i) => ({ key: i.key, label: i.target.text, imageSrc: images[i.key], audio: true })),
+    ),
     right: seededShuffle(`${cardId}-r`, usable.map((i) => ({ key: i.key, label: i.target.text }))),
     leftLang: targetLang,
     rightLang: targetLang,
