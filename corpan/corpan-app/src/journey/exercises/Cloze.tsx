@@ -11,6 +11,7 @@ import { tokenizePhrase } from "../../util/wordTokens"
 import { clozeContext } from "./clozeContext.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ConceptImage } from "./common/ConceptImage.tsx"
 import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import { TargetText } from "./common/TargetText.tsx"
@@ -28,6 +29,11 @@ export function Cloze(props: ExerciseProps) {
   const [picked, setPicked] = useState<string | null>(null)
   const [hint, setHint] = useState<string | null>(null)
   const bank = props.spec.params?.mode !== "type"
+  // Picture-cloze cue (imagepan): when the blanked word has a concept picture,
+  // show it above the sentence so the image — not a native gloss — cues the
+  // missing word. Absent (or on a text-only stack) ⇒ a plain cloze.
+  const cueImageSrc = typeof props.spec.params?.cueImageSrc === "string" ? props.spec.params.cueImageSrc : ""
+  const cueImageAlt = typeof props.spec.params?.cueAlt === "string" ? props.spec.params.cueAlt : ""
 
   // Words-in-context: when the runtime blanked a WORD inside a real corpus
   // phrase, render that phrase (not the bare word) with the word blanked. The
@@ -119,6 +125,7 @@ export function Cloze(props: ExerciseProps) {
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.fillTheBlank")}</div>
+      {cueImageSrc ? <ConceptImage src={cueImageSrc} alt={cueImageAlt} size="cue" /> : null}
       <div
         lang={props.spec.targetLang}
         dir={isRTL(props.spec.targetLang) ? "rtl" : "ltr"}

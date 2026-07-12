@@ -6,8 +6,10 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { isRTL } from "../../util/convert"
 import { cardRng } from "../content/rng.ts"
+import { buildImageTiles } from "./imageChoice.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ImageTiles } from "./common/ImageTiles.tsx"
 import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import type { ExerciseProps } from "./types.ts"
@@ -21,6 +23,18 @@ export function ListenPick(props: ExerciseProps) {
   const [picked, setPicked] = useState<string | null>(null)
   const [eliminated, setEliminated] = useState<string[]>([])
   const playedRef = useRef(false)
+
+  // FLAGSHIP — HEAR → pick the picture (media:'image'): audio auto-plays the
+  // target, the learner taps the matching picture from a 2×2 grid (no written
+  // word until answered). Options are the concept's sibling pictures — the text
+  // sampler is not consulted. Degrades to the text tiles below if the concept
+  // shipped too few pictures to fill a grid.
+  const imageMode = props.spec.params?.media === "image"
+  const imageTiles = useMemo(
+    () => (imageMode ? buildImageTiles(props.spec.params, props.cardId) : []),
+    [imageMode, props.cardId], // eslint-disable-line react-hooks/exhaustive-deps
+  )
+  const pictures = imageMode && imageTiles.length > 0
 
   const tiles = useMemo(() => {
     const out: Tile[] = (props.distractors?.distractors ?? []).map((d, i) => ({
@@ -65,9 +79,11 @@ export function ListenPick(props: ExerciseProps) {
     <div className="flex w-full flex-col items-center gap-4">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.pickWhatYouHear")}</div>
       <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
-      {/* Concept image (imagepan) — reserved box (placeholder pre-answer so it
-          can't spoil the answer), image swaps in place on answer: no reflow. */}
-      {conceptImageSrc ? (
+      {/* Concept image (imagepan) — the TEXT-path enrichment box (reserved,
+          placeholder pre-answer so it can't spoil the answer; the image swaps in
+          place on answer → no reflow). Skipped in pictures mode, where the
+          OPTIONS themselves are the imagery. */}
+      {!pictures && conceptImageSrc ? (
         <div
           className="flex h-24 w-full max-w-[10rem] items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-32"
           data-testid="journey-listen-image"
@@ -84,18 +100,16 @@ export function ListenPick(props: ExerciseProps) {
         </div>
       ) : null}
       {/* No-reflow: a reserved line for the "what you heard" reveal — present
-          (empty) from mount, filled in place on answer so the tiles never
-          shift when the target text appears. */}
+          (empty) from mount, filled in place on answer so the tiles never shift.
+          Shown in BOTH modes: the target confirms WHAT you heard; the native
+          gloss confirms the MEANING ("Where are you from?" → "¿De dónde eres?").
+          Omitted when native == target (same-language edge). */}
       <ReservedSlot minH="min-h-14">
         {answered ? (
           <div className="flex flex-col items-center gap-0.5">
             <div lang={props.spec.targetLang} className="text-lg font-medium text-foreground">
               {answer.target.text}
             </div>
-            {/* Also show the NATIVE gloss on reveal: hearing + seeing the target
-                confirms WHAT you heard; the native line confirms you understood
-                the MEANING ("Where are you from?" → "¿De dónde eres?"). Omitted
-                when native == target (same-language edge). */}
             {answer.native && answer.native.text !== answer.target.text ? (
               <div
                 lang={props.spec.nativeLang}
@@ -108,18 +122,32 @@ export function ListenPick(props: ExerciseProps) {
           </div>
         ) : null}
       </ReservedSlot>
-      <AnswerTiles
-        tiles={tiles.map((tile) => ({
-          ...tile,
-          eliminated: eliminated.includes(tile.id),
-          state: answered ? (tile.id === ANSWER_ID ? "correct" : tile.id === picked ? "wrong" : null) : null,
-        }))}
-        lang={props.spec.targetLang}
-        disabled={disabled}
-        onPick={pick}
-      />
-      {/* No-reflow: reserved hint slot held from mount (see ReservedSlot). */}
-      {props.mode === "live" ? (
+      {/* FLAGSHIP pictures mode: HEAR → tap the matching picture (no written word
+          until the reveal above). Text mode: pick the written word. */}
+      {pictures ? (
+        <ImageTiles
+          tiles={imageTiles}
+          answerId={ANSWER_ID}
+          picked={picked}
+          answered={answered}
+          disabled={disabled}
+          onPick={pick}
+        />
+      ) : (
+        <AnswerTiles
+          tiles={tiles.map((tile) => ({
+            ...tile,
+            eliminated: eliminated.includes(tile.id),
+            state: answered ? (tile.id === ANSWER_ID ? "correct" : tile.id === picked ? "wrong" : null) : null,
+          }))}
+          lang={props.spec.targetLang}
+          disabled={disabled}
+          onPick={pick}
+        />
+      )}
+      {/* No-reflow: reserved hint slot held from mount (see ReservedSlot). Text
+          mode only — picture options have no distractor-elimination scaffold. */}
+      {!pictures && props.mode === "live" ? (
         <ReservedSlot minH="min-h-9">
           {props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
             <ScaffoldHint

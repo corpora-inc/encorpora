@@ -43,6 +43,7 @@ import {
   sampleDistractors,
   type DistractorSet,
 } from "./content/distractors.ts"
+import { planImageMode, type ConceptImagery } from "./content/imageMode.ts"
 import { cardRng } from "./content/rng.ts"
 import { glyphForWord, numeralDistractors } from "./exercises/glyphs.ts"
 import { tokenizePhrase } from "../util/wordTokens.ts"
@@ -391,12 +392,6 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   const targetOnlyFallback = (specId: string): "cloze" | "word_order" =>
     cardRng(`${specId}:ttfallback`)() < 0.5 ? "cloze" : "word_order"
 
-  /** Deterministic share of eligible first-exposure word choice cards that
-   *  become PICTURE choices when imagepan is installed. Pictures are strongest
-   *  at first exposure (research/images.md §1); the rest stay text so the
-   *  learner still meets the written word. */
-  const IMAGE_CHOICE_SHARE = 0.6
-
   /**
    * Numeral GLYPH-choice (FIRST_PRINCIPLES.md — "meaning by glyph"). A
    * first-exposure NUMBER word becomes a HEAR→tap-the-digit comprehension beat:
@@ -425,37 +420,49 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   }
 
   /**
-   * Picture-choice upgrade (feed-ux §4 row 1, media:'image'). A first-exposure
-   * WORD choice card, when the imagepan pack is installed and the word maps to a
-   * concept with a picture + ≥1 distractor picture, becomes a picture choice a
-   * deterministic share of the time. items[0] stays the WORD (grading/mastery
-   * unchanged — the picture only replaces the presentation). Never for probes.
-   * Returns the image params to merge, or null (stays a normal card).
+   * Resolve a word's concept imagery (imagepan) into the pure planner's input —
+   * or null when the pack is absent, the item is not a word, or the concept
+   * shipped no picture. ONE point lookup, cached by the resolver, shared by
+   * every picture variant below (planImageMode + the picture-cloze cue). The
+   * L1-free routing decision itself lives in content/imageMode.ts.
    */
-  async function maybeImageChoice(
-    ec: EngineCard,
-    answer: ResolvedItem,
-    activityType: string,
-  ): Promise<{
-    answerImageSrc: string
-    imageDistractors: { key: string; word: string; imageSrc: string }[]
-    answerAlt: string
-  } | null> {
+  async function resolveConceptImagery(answer: ResolvedItem): Promise<ConceptImagery | null> {
     if (answer.kind !== "word") return null
-    if (activityType !== "choice_pick") return null
-    if (ec.meta.pool === "probe" || ec.spec.params?.probe === true) return null
-    if (ec.meta.pool !== "new") return null // first exposures only
     if (!deps.resolverDeps.findInstalledPack("imagepan")) return null
-    if (cardRng(`${ec.spec.specId}:imgchoice`)() >= IMAGE_CHOICE_SHARE) return null
     const out = await deps.resolver.resolveItems([
       { kind: "concept", source: "imagepan", id: answer.ref.id.toLowerCase() },
     ])
-    const cItem = out.resolved[0]
-    if (!cItem || cItem.extras?.kind !== "concept") return null
-    const imageSrc = cItem.extras.imageSrc
-    const ds = cItem.extras.distractors ?? []
-    if (!imageSrc || ds.length < 1) return null
-    return { answerImageSrc: imageSrc, imageDistractors: ds, answerAlt: cItem.extras.senseGloss ?? answer.target.text }
+    const c = out.resolved[0]
+    if (!c || c.extras?.kind !== "concept" || !c.extras.imageSrc) return null
+    return {
+      imageSrc: c.extras.imageSrc,
+      senseGloss: c.extras.senseGloss ?? answer.target.text,
+      distractors: c.extras.distractors ?? [],
+    }
+  }
+
+  /** Minimum imaged items for a picture MATCH board (§3.3: a pairing needs ≥2). */
+  const MATCH_IMAGE_MIN = 2
+
+  /**
+   * Picture match-pairs (imagepan): resolve each WORD item's concept picture and
+   * return a key→src map when ENOUGH of the board has art (≥2). Null otherwise,
+   * so the runtime falls back to the text/audio match axes. Opportunistic — a
+   * whole imaged board is rare on today's ~95-concept pack, but the seam is
+   * ready as imagepan grows.
+   */
+  async function resolveMatchImages(items: ResolvedItem[]): Promise<Record<string, string> | null> {
+    if (!deps.resolverDeps.findInstalledPack("imagepan")) return null
+    const images: Record<string, string> = {}
+    for (const it of items) {
+      if (it.kind !== "word") continue
+      const out = await deps.resolver.resolveItems([
+        { kind: "concept", source: "imagepan", id: it.ref.id.toLowerCase() },
+      ])
+      const c = out.resolved[0]
+      if (c && c.extras?.kind === "concept" && c.extras.imageSrc) images[it.key] = c.extras.imageSrc
+    }
+    return Object.keys(images).length >= MATCH_IMAGE_MIN ? images : null
   }
 
   /** Presentation activity types that show a concept picture as the MEANING —
@@ -531,49 +538,69 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     // number word's meaning is a universal digit, so this beats pictures and
     // text and needs no pack. HEAR the target number → tap the numeral.
     const glyphChoice = maybeGlyphChoice(ec, answer, activityType)
-    let imageChoice: Awaited<ReturnType<typeof maybeImageChoice>> = null
+
+    // -- Picture routing (imagepan) — only when glyph did NOT fire (a numeral
+    // beats a picture for a number word). Takes precedence over the translation
+    // guard + words-in-context: the picture IS the meaning (L1-free), so a missing
+    // native face is irrelevant. The answer item is UNCHANGED (grading/mastery
+    // identical); only the PRESENTATION becomes pictures. The pure planner
+    // (content/imageMode.ts) owns the WHICH-variant decision; the runtime resolves
+    // imagery (once, so the picture-cloze cue below reuses it), applies the params
+    // patch, and honors `optionsAreImages` (suppress the text sampler).
+    const imagery = glyphChoice ? null : await resolveConceptImagery(answer)
+    const imagePlan = glyphChoice
+      ? null
+      : planImageMode({
+          activityType,
+          pool: ec.meta.pool,
+          isProbe: ec.meta.pool === "probe" || ec.spec.params?.probe === true,
+          specId: spec.specId,
+          concept: imagery,
+        })
+    const optionsAreImages = imagePlan?.optionsAreImages === true
+    // Picture match-pairs is a separate, multi-item axis (each item needs its
+    // own picture), resolved here rather than through the single-answer planner.
+    const matchImages =
+      !glyphChoice && activityType === "match_pairs" && params.axis !== "text-audio"
+        ? await resolveMatchImages(resolved)
+        : null
+
     if (glyphChoice) {
+      // HEAR the number → tap the numeral (media:'glyph').
       activityType = "choice_pick"
       params.media = "glyph"
       params.answerGlyph = glyphChoice.answerGlyph
       params.glyphDistractors = glyphChoice.glyphDistractors
-    } else {
-      // -- Picture choice (imagepan) — takes precedence over the translation
-      // guard + words-in-context: the picture IS the meaning (L1-free), so a
-      // missing native face is irrelevant. items[0] stays the WORD (grading
-      // unchanged); only the presentation becomes a 2×2 image grid.
-      imageChoice = await maybeImageChoice(ec, answer, activityType)
-      if (imageChoice) {
-        activityType = "choice_pick"
-        params.media = "image"
-        params.answerImageSrc = imageChoice.answerImageSrc
-        params.imageDistractors = imageChoice.imageDistractors
-        params.answerAlt = imageChoice.answerAlt
-      } else if (activityType === "choice_pick" || activityType === "flip_recall") {
-        if (!nativeLang || !answer.native) {
-          activityType = targetOnlyFallback(spec.specId)
-          delete params.direction
-        } else if (
-          ec.meta.pool === "new" &&
-          activityType === "choice_pick" &&
-          params.direction === undefined
-        ) {
-          // First-principles (FIRST_PRINCIPLES.md): a first exposure is an
-          // audio-first COMPREHENSION beat — you HEAR (and see) the target and
-          // pick its meaning (toNative). Never a silent read-the-native,
-          // pick-the-target-spelling drill (toTarget) on a debut. The paired
-          // ChoicePick change auto-plays the target whenever it is the prompt,
-          // so this card is heard, not just read.
-          params.direction = "toNative"
-        }
-      } else if (activityType === "match_pairs" && params.axis !== "text-audio") {
-        if (!nativeLang) {
-          params.axis = "text-audio"
-        } else {
-          const withNative = resolved.filter((i) => !!i.native)
-          if (withNative.length >= 2) resolved = withNative
-          else params.axis = "text-audio"
-        }
+    } else if (imagePlan) {
+      Object.assign(params, imagePlan.params)
+    } else if (matchImages) {
+      // Pictures ↔ words: language-neutral, so no native filter / audio fallback.
+      params.axis = "image"
+      params.imageByKey = matchImages
+    } else if (activityType === "choice_pick" || activityType === "flip_recall") {
+      if (!nativeLang || !answer.native) {
+        activityType = targetOnlyFallback(spec.specId)
+        delete params.direction
+      } else if (
+        ec.meta.pool === "new" &&
+        activityType === "choice_pick" &&
+        params.direction === undefined
+      ) {
+        // First-principles (FIRST_PRINCIPLES.md): a first exposure is an
+        // audio-first COMPREHENSION beat — you HEAR (and see) the target and
+        // pick its meaning (toNative). Never a silent read-the-native,
+        // pick-the-target-spelling drill (toTarget) on a debut. The paired
+        // ChoicePick change auto-plays the target whenever it is the prompt,
+        // so this card is heard, not just read.
+        params.direction = "toNative"
+      }
+    } else if (activityType === "match_pairs" && params.axis !== "text-audio") {
+      if (!nativeLang) {
+        params.axis = "text-audio"
+      } else {
+        const withNative = resolved.filter((i) => !!i.native)
+        if (withNative.length >= 2) resolved = withNative
+        else params.axis = "text-audio"
       }
     }
 
@@ -587,11 +614,11 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     let example: ResolvedExample | undefined
     const graded = ec.meta.unscored !== true
     // The etymology gem is unscored but earns its usage line too. Skipped in
-    // picture mode — the card is a picture, and the cloze conversion below would
-    // otherwise clobber it.
+    // picture mode — the card is already a picture variant, and the cloze
+    // conversion below would otherwise clobber it.
     const wantExample =
-      !imageChoice &&
       !glyphChoice &&
+      !imagePlan &&
       answer.kind === "word" &&
       (graded || ec.meta.rareVariant === "etymology")
     if (wantExample) {
@@ -610,6 +637,13 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
           if (found.phrase.native?.text) params.contextNative = found.phrase.native.text
           params.contextWord = answer.target.text
           delete params.direction
+          // Picture-cloze cue (imagepan): when the blanked word has a concept
+          // picture, show it above the sentence so the IMAGE cues the missing
+          // word (L1-free) instead of leaning on the native gloss.
+          if (imagery) {
+            params.cueImageSrc = imagery.imageSrc
+            params.cueAlt = imagery.senseGloss ?? answer.target.text
+          }
         }
       }
     }
@@ -663,11 +697,14 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       }
     }
 
-    // Picture options are language-neutral, so there is no answer/prompt
-    // direction to pick — the prompt is simply the target word.
-    const direction = imageChoice || glyphChoice
+    // Glyph options are language-neutral (targetOnly). A picture plan already
+    // fixed its own direction (targetOnly for picture options; toTarget for a
+    // picture prompt). Otherwise pick per the form.
+    const direction = glyphChoice
       ? "targetOnly"
-      : pickDirection(spec.specId, activityType, params, answer)
+      : imagePlan
+        ? (params.direction as "toNative" | "toTarget" | "targetOnly")
+        : pickDirection(spec.specId, activityType, params, answer)
     params.direction = direction
     const targetB = typeof params.b_distractor === "number" ? params.b_distractor : 0
 
@@ -693,10 +730,11 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     }
 
     let distractors: DistractorSet | null = null
-    // Picture-choice carries its OWN distractor pictures in params (from the
-    // concept's curated visually-confusable siblings) — the text sampler is not
-    // consulted.
-    const req = imageChoice || glyphChoice
+    // Glyph + picture-OPTION cards carry their OWN tap targets (numerals / the
+    // concept's curated sibling pictures) in params, so the text sampler is not
+    // consulted. A picture-PROMPT card (image → word) still needs WORD options,
+    // so it keeps the sampler (optionsAreImages === false).
+    const req = glyphChoice || optionsAreImages
       ? null
       : buildDistractorRequest({
           activityType,
@@ -724,7 +762,14 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     // debut / listen reveal shows the concept picture as the meaning when one
     // exists. items[0] is still the WORD (grading unchanged); the renderer keeps
     // the target word + audio and degrades to plain text when this is absent.
-    if (!imageChoice && answer.kind === "word" && IMAGE_REVEAL_TYPES.has(activityType)) {
+    // Skipped when the card is ALREADY a picture/glyph tiles card (params.media
+    // set) — e.g. a listen_pick that became a HEAR→pick-the-picture flagship
+    // already shows imagery; reuse the imagery resolved above (cache-cheap).
+    if (
+      params.media === undefined &&
+      answer.kind === "word" &&
+      IMAGE_REVEAL_TYPES.has(activityType)
+    ) {
       const conceptImage = await maybeConceptImage(answer)
       if (conceptImage) {
         params.conceptImageSrc = conceptImage.imageSrc

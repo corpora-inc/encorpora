@@ -108,6 +108,15 @@ Conventions: `corpan/CHANGELOGS.md`.
   presentation only). No pack, or a word with no picture, falls back to today's
   text — nothing ever shows a broken image. The image sits in a reserved box so
   the card never jumps when it appears.
+- **Picture-choice, picture match-pairs, and picture cloze.** Beyond the reveals
+  above, whole exercises are now driven by the image (imagepan): *hear → pick the
+  picture* (a listening card's options become a 2×2 picture grid), *picture →
+  pick the word* and *word → pick the picture* on first exposures, *picture
+  match-pairs*, and a *picture cloze* whose blanked word is cued by its picture.
+  Audio-first and pair-agnostic; each slots into today's scheduling with no
+  engine change, falls back to text where a word has no art, and rides reserved,
+  aspect-locked boxes so an async or missing picture never reflows a card. No new
+  UI copy.
 ### Changed
 - **The Journey card holds perfectly still when you answer.** Global no-reflow
   invariant across every exercise: the prompt and the tiles/input never move the
