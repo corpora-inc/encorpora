@@ -7,6 +7,7 @@
 import { useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
+import { RotateCw } from "lucide-react"
 import { isRTL } from "../../util/convert"
 import { flipFaces, type Direction } from "./faces.ts"
 import { AudioButton } from "./common/AudioButton.tsx"
@@ -70,59 +71,60 @@ export function FlipRecall(props: ExerciseProps) {
 
   return (
     <div className="flex w-full flex-col items-center gap-6">
-      {/* The "toca para revelar" label lives ON the tap-to-reveal button below
-          (the affordance); a duplicate caption here was redundant AND stayed on
-          screen after the flip. */}
       {promptFace}
-      {hasImage ? (
-        <div
-          className="flex h-40 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-48"
-          data-testid="journey-flip-image"
-        >
-          {flipped ? (
-            <img
-              src={conceptImageSrc}
-              alt={conceptImageAlt}
-              className="h-full w-full object-contain"
-            />
-          ) : (
-            <div aria-hidden className="h-full w-full bg-muted/60" />
-          )}
-        </div>
-      ) : null}
-      {!flipped ? (
-        <motion.button
-          type="button"
-          whileTap={{ scale: 0.97 }}
-          onClick={reveal}
-          data-testid="journey-flip"
-          className="min-h-24 w-full rounded-2xl border border-dashed border-border text-sm text-muted-foreground hover:bg-muted"
-        >
-          {t("journey.exercise.flipToReveal")}
-        </motion.button>
-      ) : (
+      {/* ONE tappable flashcard: tap the CARD ITSELF (not a little phrase) and
+          it flips in 3D to reveal the target word + its picture + audio. Front =
+          "toca para revelar"; back = the meaning. No separate button, no empty
+          placeholder box above it. */}
+      <div className="w-full max-w-xs" style={{ perspective: "1200px" }}>
         <motion.div
-          initial={props.mode === "review" ? false : { rotateX: -80, opacity: 0 }}
-          animate={{ rotateX: 0, opacity: 1 }}
-          className="flex min-h-24 w-full flex-col items-center justify-center gap-3 rounded-2xl bg-muted px-4 py-5"
-          data-testid="journey-flip-reveal"
+          className="relative h-52 w-full"
+          style={{ transformStyle: "preserve-3d" }}
+          animate={{ rotateY: flipped ? 180 : 0 }}
+          transition={props.mode === "review" ? { duration: 0 } : { type: "spring", stiffness: 240, damping: 26 }}
         >
-          {faces.revealIsTarget ? (
-            <>
-              <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} size="md" />
-              <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} />
-            </>
-          ) : (
-            <div
-              lang={faces.revealLang}
-              dir={isRTL(faces.revealLang) ? "rtl" : "ltr"}
-              className="text-2xl font-semibold text-foreground"
-            >
-              {faces.revealText}
-            </div>
-          )}
+          {/* FRONT — the whole face is the tap target */}
+          <button
+            type="button"
+            onClick={reveal}
+            disabled={flipped}
+            data-testid="journey-flip"
+            style={{ backfaceVisibility: "hidden" }}
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-border bg-card/50 text-sm text-muted-foreground active:scale-[0.99]"
+          >
+            <RotateCw className="h-6 w-6 opacity-50" />
+            {t("journey.exercise.flipToReveal")}
+          </button>
+          {/* BACK — the revealed meaning: picture + target word + audio */}
+          <div
+            style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-2xl bg-muted px-4 py-4"
+            data-testid="journey-flip-reveal"
+          >
+            {hasImage ? (
+              <img
+                src={conceptImageSrc}
+                alt={conceptImageAlt}
+                className="h-24 w-auto max-w-[8rem] rounded-lg object-contain"
+              />
+            ) : null}
+            {faces.revealIsTarget ? (
+              <>
+                <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} size="md" />
+                <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} />
+              </>
+            ) : (
+              <div
+                lang={faces.revealLang}
+                dir={isRTL(faces.revealLang) ? "rtl" : "ltr"}
+                className="text-2xl font-semibold text-foreground"
+              >
+                {faces.revealText}
+              </div>
+            )}
+          </div>
         </motion.div>
-      )}
+      </div>
       {/* No-reflow: the Continue lives in a reserved slot held from mount, so
           the reveal-then-Continue beat never shifts the prompt/flip above it. */}
       {props.mode === "live" ? (

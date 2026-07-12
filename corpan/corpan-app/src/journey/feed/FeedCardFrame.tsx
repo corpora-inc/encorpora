@@ -17,9 +17,8 @@
 // (no layout cost) and the settled ✓ / review chip are absolute / present from
 // mount. See exercises/common/ReservedSlot.tsx for the shared contract.
 
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
-import { Check } from "lucide-react"
 import type { FeedCard } from "../types.ts"
 
 export function FeedCardFrame(props: {
@@ -48,18 +47,10 @@ export function FeedCardFrame(props: {
         ) : null}
         {props.children}
       </motion.div>
-      <AnimatePresence>
-        {props.settled && !props.review && (
-          <motion.div
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute end-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-          >
-            <Check className="h-5 w-5" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* No top-right "settled" checkmark here: the exercise already shows a
+          single result stamp ("✓ Correcto") in ActivityCardHost's feedback row.
+          Two green checks in different places (top-right + underneath) was
+          redundant and confusing — one verdict, one place. */}
     </div>
   )
 }
