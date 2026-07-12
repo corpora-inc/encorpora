@@ -41,6 +41,15 @@ export function ListenPick(props: ExerciseProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.active])
 
+  // Concept picture (imagepan) — revealed WITH the written answer so the meaning
+  // lands as an image. Wired by the runtime only when one exists; absent → the
+  // plain text reveal. Hidden until answered (it would spoil "pick what you
+  // hear"), but its box is RESERVED up front so revealing never reflows.
+  const conceptImageSrc =
+    typeof props.spec.params?.conceptImageSrc === "string" ? props.spec.params.conceptImageSrc : ""
+  const conceptImageAlt =
+    typeof props.spec.params?.conceptImageAlt === "string" ? props.spec.params.conceptImageAlt : ""
+
   const disabled = props.mode === "review" || picked === ANSWER_ID
 
   const pick = (id: string) => {
@@ -55,6 +64,22 @@ export function ListenPick(props: ExerciseProps) {
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.pickWhatYouHear")}</div>
       <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
+      {conceptImageSrc ? (
+        <div
+          className="flex h-32 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-40"
+          data-testid="journey-listen-image"
+        >
+          {answered ? (
+            <img
+              src={conceptImageSrc}
+              alt={conceptImageAlt}
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            <div aria-hidden className="h-full w-full bg-muted/60" />
+          )}
+        </div>
+      ) : null}
       {!hideText || answered ? (
         <div lang={props.spec.targetLang} className="text-lg font-medium text-foreground">
           {answered ? answer.target.text : null}

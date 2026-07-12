@@ -73,6 +73,16 @@ Conventions: `corpan/CHANGELOGS.md`.
   the top dismisses. Fixed once in the shared `DrawerContent`, so every drawer
   (voice tuning, phrase packs, quick settings, …) inherits it.
 
+### Added
+- **Journey exercises show pictures where we have them.** When the imagepan pack
+  is installed and a word maps to a concept picture, the flip card reveals that
+  picture as the meaning (image = meaning, revealed on flip), a new-word intro
+  leads with the picture, and a "pick what you hear" card reveals it with the
+  answer. The word and its audio stay; grading is unchanged (the picture is
+  presentation only). No pack, or a word with no picture, falls back to today's
+  text — nothing ever shows a broken image. The image sits in a reserved box so
+  the card never jumps when it appears.
+
 ## [0.20.4] — 2026-07-11
 
 ### Fixed

@@ -43,6 +43,17 @@ export function FlipRecall(props: ExerciseProps) {
     props.onOutcome({ correct: true, latencyMs: Date.now() - startedAt.current })
   }
 
+  // Concept picture (imagepan) as the MEANING of the reveal. Wired by the
+  // runtime only when a picture exists; absent → today's plain text reveal.
+  // The image = meaning, so it must NOT show before the flip (that would spoil
+  // the recall) — but its box is RESERVED up front (a subtle placeholder) so
+  // revealing swaps the image in place with zero layout jump.
+  const conceptImageSrc =
+    typeof props.spec.params?.conceptImageSrc === "string" ? props.spec.params.conceptImageSrc : ""
+  const conceptImageAlt =
+    typeof props.spec.params?.conceptImageAlt === "string" ? props.spec.params.conceptImageAlt : ""
+  const hasImage = conceptImageSrc.length > 0
+
   const promptFace = faces.promptIsTarget ? (
     <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} />
   ) : (
@@ -60,6 +71,22 @@ export function FlipRecall(props: ExerciseProps) {
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.flipToReveal")}</div>
       {promptFace}
+      {hasImage ? (
+        <div
+          className="flex h-40 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-48"
+          data-testid="journey-flip-image"
+        >
+          {flipped ? (
+            <img
+              src={conceptImageSrc}
+              alt={conceptImageAlt}
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            <div aria-hidden className="h-full w-full bg-muted/60" />
+          )}
+        </div>
+      ) : null}
       {!flipped ? (
         <motion.button
           type="button"

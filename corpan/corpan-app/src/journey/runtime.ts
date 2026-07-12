@@ -451,6 +451,34 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     return { answerImageSrc: imageSrc, imageDistractors: ds, answerAlt: cItem.extras.senseGloss ?? answer.target.text }
   }
 
+  /** Presentation activity types that show a concept picture as the MEANING —
+   *  a premium image reveal (flip_recall), a debut image (intro_echo), a
+   *  reveal-after-answer image (listen_pick). Unlike picture-CHOICE the word
+   *  stays the graded item; the picture only enriches the render. */
+  const IMAGE_REVEAL_TYPES = new Set(["flip_recall", "intro_echo", "listen_pick"])
+
+  /**
+   * Single-picture concept lookup for a WORD (imagepan) — the presentation
+   * enrichment behind IMAGE_REVEAL_TYPES. Mirrors maybeImageChoice's concept
+   * resolve but wants only the HERO image (no distractor pool, no share gate,
+   * no first-exposure restriction): the picture IS the meaning, shown on the
+   * flip reveal / word intro / listen reveal whenever one exists. items[0]
+   * stays the WORD (grading/mastery unchanged). Zero DB cost when imagepan is
+   * absent (the early return), so it degrades to today's text everywhere.
+   */
+  async function maybeConceptImage(
+    answer: ResolvedItem,
+  ): Promise<{ imageSrc: string; alt: string } | null> {
+    if (answer.kind !== "word") return null
+    if (!deps.resolverDeps.findInstalledPack("imagepan")) return null
+    const out = await deps.resolver.resolveItems([
+      { kind: "concept", source: "imagepan", id: answer.ref.id.toLowerCase() },
+    ])
+    const cItem = out.resolved[0]
+    if (!cItem || cItem.extras?.kind !== "concept" || !cItem.extras.imageSrc) return null
+    return { imageSrc: cItem.extras.imageSrc, alt: cItem.extras.senseGloss ?? answer.target.text }
+  }
+
   async function prepareExercise(ec: EngineCard): Promise<FeedCard | null> {
     const spec = ec.spec
     const outcome = await deps.resolver.resolveItems(spec.itemRefs)
@@ -664,6 +692,19 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         log("journey_content_missing", { specId: spec.specId, missing: ["distractor_shortfall"] })
         deps.engine.applyResult(contentMissingResult(spec.specId))
         return null
+      }
+    }
+
+    // -- Concept image reveal (imagepan) — a PRESENTATION enrichment for the
+    // final activity type (never a choice conversion): the flip reveal / word
+    // debut / listen reveal shows the concept picture as the meaning when one
+    // exists. items[0] is still the WORD (grading unchanged); the renderer keeps
+    // the target word + audio and degrades to plain text when this is absent.
+    if (!imageChoice && answer.kind === "word" && IMAGE_REVEAL_TYPES.has(activityType)) {
+      const conceptImage = await maybeConceptImage(answer)
+      if (conceptImage) {
+        params.conceptImageSrc = conceptImage.imageSrc
+        params.conceptImageAlt = conceptImage.alt
       }
     }
 

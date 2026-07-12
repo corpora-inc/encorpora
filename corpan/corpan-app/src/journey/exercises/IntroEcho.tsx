@@ -26,11 +26,31 @@ export function IntroEcho(props: ExerciseProps) {
 
   const isWord = answer.kind === "word" || answer.kind === "char"
 
+  // Concept picture (imagepan) as the debut hero — meaning shown as an image.
+  // Wired by the runtime only when one exists; absent → today's text debut.
+  // The <img> lives in a fixed-size box so an async load never reflows the card.
+  const conceptImageSrc =
+    typeof props.spec.params?.conceptImageSrc === "string" ? props.spec.params.conceptImageSrc : ""
+  const conceptImageAlt =
+    typeof props.spec.params?.conceptImageAlt === "string" ? props.spec.params.conceptImageAlt : ""
+
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <div className="rounded-full bg-[hsl(var(--journey-accent,262_80%_58%)/0.12)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground">
         {isWord ? t("journey.intro.newWord") : t("journey.intro.newPhrase")}
       </div>
+      {conceptImageSrc ? (
+        <div
+          className="flex h-40 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-48"
+          data-testid="journey-intro-image"
+        >
+          <img
+            src={conceptImageSrc}
+            alt={conceptImageAlt}
+            className="h-full w-full object-contain"
+          />
+        </div>
+      ) : null}
       <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} />
       {answer.native ? (
         <div
