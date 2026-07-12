@@ -115,43 +115,55 @@ export function JourneyOverlay(props: {
   })
 
   return (
+    <JourneySurface
+      deps={built.deps}
+      capabilityHost={built.capabilityHost}
+      speak={speak}
+      dir={dir()}
+      showRomanization={showRomanization}
+      dailyGoal={shape.dailyGoal}
+      targetLangName={targetLangName}
+      streakPorts={journeyStreakPorts()}
+      onLaunchPack={props.onLaunchPack}
+      offerSlot={
+        <JourneyOffers
+          nativeLang={nativeLang}
+          targetLang={built.targetLang}
+          onWordPackInstalled={built.onWordPackInstalled}
+          onImagePackInstalled={built.onImagePackInstalled}
+        />
+      }
+    />
+  )
+}
+
+/** Consent-first pack offers, rendered as ONE understated in-feed row (never a
+ *  fixed overlay — JourneySurface flows this below the feed). Only ever shows a
+ *  single offer at a time: the word-explanation offer takes priority for a
+ *  (native→target) learner; the language-neutral picture offer fills in only
+ *  when the word offer has nothing to show. Each banner self-hides when its pack
+ *  is unavailable / already installed / dismissed, so most sessions show none. */
+function JourneyOffers(props: {
+  nativeLang?: string
+  targetLang: string
+  onWordPackInstalled: (packId: string) => void
+  onImagePackInstalled: (version: string) => void
+}) {
+  const [wordShown, setWordShown] = useState(false)
+  const canWord = !!props.nativeLang && props.nativeLang !== props.targetLang
+  return (
     <>
-      <JourneySurface
-        deps={built.deps}
-        capabilityHost={built.capabilityHost}
-        speak={speak}
-        dir={dir()}
-        showRomanization={showRomanization}
-        dailyGoal={shape.dailyGoal}
-        targetLangName={targetLangName}
-        streakPorts={journeyStreakPorts()}
-        onLaunchPack={props.onLaunchPack}
-      />
-      {/* Consent-first word-explanation offer. Renders nothing unless the
-          learner's (native→target) pair has an installable pack. Pinned as an
-          understated bottom banner, above the feed's own chrome. */}
-      {nativeLang && nativeLang !== built.targetLang ? (
-        <div
-          className="pointer-events-none fixed inset-x-0 bottom-20 z-[1060] flex justify-center px-4"
-          dir={dir()}
-        >
-          <WordPackOfferBanner
-            nativeLang={nativeLang}
-            targetLang={built.targetLang}
-            onInstalled={built.onWordPackInstalled}
-          />
-        </div>
+      {canWord ? (
+        <WordPackOfferBanner
+          nativeLang={props.nativeLang}
+          targetLang={props.targetLang}
+          onInstalled={props.onWordPackInstalled}
+          onVisibilityChange={setWordShown}
+        />
       ) : null}
-      {/* Consent-first picture-pack offer (language-neutral). Renders nothing
-          unless a compatible imagepan is available in the index but not yet
-          installed. Stacked just above the wordpan slot so the two never
-          overlap; both self-hide when there is nothing to offer. */}
-      <div
-        className="pointer-events-none fixed inset-x-0 bottom-36 z-[1060] flex justify-center px-4"
-        dir={dir()}
-      >
-        <ImagePackOfferBanner onInstalled={built.onImagePackInstalled} />
-      </div>
+      {!wordShown ? (
+        <ImagePackOfferBanner onInstalled={props.onImagePackInstalled} />
+      ) : null}
     </>
   )
 }

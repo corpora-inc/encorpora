@@ -27,6 +27,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 - Removed the redundant Journey-side "Speak now" mic cue that sat above the
   capability's own mic stage (the capability renders the full mic + live
   waveform itself).
+- **Pack offers no longer wall the Journey.** The word-pack and picture-pack
+  offers were `position: fixed` banners pinned to the viewport bottom, so they
+  floated over the placement "Continue", the streak-pact buttons, and the live
+  exercise card (covering a card's own "Not now"), and overlapped each other.
+  They now ride a normal-flow row below the feed — only in the feed (never over
+  placement/loading), only one offer visible at a time, clear of every CTA and
+  the safe-area inset. Consent-first behavior is unchanged.
 
 ## [0.20.4] — 2026-07-11
 

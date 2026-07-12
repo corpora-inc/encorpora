@@ -64,11 +64,15 @@ export function WordPackOfferBanner({
   nativeLang,
   targetLang,
   onInstalled,
+  onVisibilityChange,
 }: {
   nativeLang?: string
   targetLang: string
   /** Called with the installed pack id once the download completes cleanly. */
   onInstalled: (packId: string) => void
+  /** Reports whether this banner is actually showing, so a parent rail can keep
+   *  only one offer visible at a time. */
+  onVisibilityChange?: (visible: boolean) => void
 }) {
   const { t, i18n } = useTranslation()
   const catalog = useWordPackCatalogStore((s) => s.catalog)
@@ -115,11 +119,19 @@ export function WordPackOfferBanner({
     }
   }, [state.stage, entry, onInstalled])
 
-  if (!entry || hidden) return null
-  if (installedProbe !== false) return null // installed, or still probing
-  if (isDismissed(entry.id)) return null
-  // Data-saver / very slow link: stay quiet (only when not mid-install).
-  if (!state.active && suppressForConnection()) return null
+  // Single source of truth for "is this banner showing", mirrored to the parent
+  // rail so it can suppress the lower-priority offer (never two stacked).
+  const visible =
+    !!entry &&
+    !hidden &&
+    installedProbe === false &&
+    !isDismissed(entry.id) &&
+    !(!state.active && suppressForConnection())
+  useEffect(() => {
+    onVisibilityChange?.(visible)
+  }, [visible, onVisibilityChange])
+
+  if (!visible || !entry) return null
 
   const name = resolveLocalized(entry.nameLocalized, entry.name, i18n.language)
   const langName = t(`languages.${nativeLang}`, {

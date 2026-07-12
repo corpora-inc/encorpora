@@ -12,7 +12,7 @@
 //      /></ErrorBoundary> : null}
 //   Exit rides `corpan:journey-exit` (dispatched here; App closes the surface).
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { X } from "lucide-react"
@@ -52,6 +52,10 @@ export interface JourneySurfaceProps {
   capabilityHost?: CapabilityHostApi | null
   streakPorts?: StreakPorts
   onLaunchPack?: (packId: string, spec: ActivitySpec) => void
+  /** Understated, consent-first pack offers. Rendered in normal flow BELOW the
+   *  feed (never over placement/loading/error, never over the card) so it can
+   *  cover no CTA and jolt no layout — see JourneyOverlay. */
+  offerSlot?: ReactNode
   /** Debug/test seam: observe the live runtime once the session starts. */
   onRuntimeReady?: (runtime: JourneyRuntime) => void
 }
@@ -174,6 +178,18 @@ export function JourneySurface(props: JourneySurfaceProps) {
               onLaunchPack={props.onLaunchPack}
             />
           </div>
+          {/* Consent-first pack offers ride here — a normal-flow row that owns
+              its own space BELOW the feed, so it can never overlap the active
+              card or its CTAs. Feed-only by construction (this branch never runs
+              during placement/loading). */}
+          {props.offerSlot ? (
+            <div
+              className="shrink-0 px-4 pt-1"
+              style={{ paddingBottom: "max(env(safe-area-inset-bottom), 0.5rem)" }}
+            >
+              {props.offerSlot}
+            </div>
+          ) : null}
         </>
       )}
       <CelebrationLayer />
