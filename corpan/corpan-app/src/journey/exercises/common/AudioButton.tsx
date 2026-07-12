@@ -1,11 +1,13 @@
 // src/journey/exercises/common/AudioButton.tsx — play / replay / slow-replay.
-// Replays are free and unmetered (feed-ux §7.2). Rate is the UI's call: the
-// TTS backend plays faithfully at whatever rate we ask (no reshaping curve), so
-// these constants ARE the speeds heard. Normal replay = 1.0×; the turtle = 0.5×
-// — deliberately below the app's ~0.7× default playback so "slow" is audibly
-// slower than what auto-plays on arrival, not the same speed.
+// Replays are free and unmetered (feed-ux §7.2). Rate is the UI's call: the TTS
+// backend plays faithfully at whatever rate we ask (no reshaping curve), so
+// these constants ARE the request — but the ENGINE's own response is non-linear.
+// Measured on-device (Google TTS): rate 1.0→1.00× duration, 0.7→1.19× (the app's
+// default auto-play), 0.5→1.36×, 0.3→1.60×, 0.1→1.86× (saturates + gets choppy).
+// So the turtle asks 0.3 to land a clear ~1.6× slow-down — plainly slower than
+// both the 1.0 replay and the 0.7 auto-play, without the sub-0.2 choppiness.
 const NORMAL_RATE = 1
-const SLOW_RATE = 0.5
+const SLOW_RATE = 0.3
 
 import { useState } from "react"
 import { useTranslation } from "react-i18next"

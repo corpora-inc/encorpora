@@ -8,6 +8,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **The turtle (slow-audio) button actually slows the audio down.** The Android
+  TTS plugin was reshaping the caller's rate with an opinionated curve, so a
+  0.7× "slow" request came out ~0.87× — imperceptible. The plugin now plays
+  faithfully at whatever rate it's handed (clamped only to a safe range); rate
+  is the UI's decision. Measured against the real engine (which compresses its
+  own slow side), the turtle now asks 0.3× to land a clear ~1.6× slow-down —
+  plainly slower than both normal replay and the default auto-play. This fixes
+  slow-replay everywhere it's used, not just Journey.
 - **Play works on a scrolled-back pack interlude.** After you played a mini-game
   interlude (e.g. Corpan City) the feed advanced past its poster, so scrolling
   back up and tapping **Play** did nothing — the graded-launch guard rejects a
