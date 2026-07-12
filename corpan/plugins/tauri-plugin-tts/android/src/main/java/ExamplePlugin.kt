@@ -66,8 +66,11 @@ private fun mapWebRateToAndroid(
   if (abs(w - W_DEF) < 1e-6f) return A_DEF
 
   return if (w < W_DEF) {
-    // keep the "slow" curve gentle
-    val t = (ln((w / W_MIN).toDouble()) / ln((W_DEF / W_MIN).toDouble())).toFloat()
+    // Slow side: LINEAR so "what you ask is what you get". The old log curve
+    // was too gentle — a 0.7× turtle mapped to ~0.87× Android, which is not
+    // audibly slower (the "turtle does nothing" bug). A straight ramp from the
+    // padded floor to 1.0 makes 0.7× ≈ 0.72× — a clear, deliberate slow-down.
+    val t = (w - W_MIN) / (W_DEF - W_MIN)
     lo + t * (A_DEF - lo)
   } else {
     // compress fast side harder
