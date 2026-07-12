@@ -8,6 +8,24 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **Play works on a scrolled-back pack interlude.** After you played a mini-game
+  interlude (e.g. Corpan City) the feed advanced past its poster, so scrolling
+  back up and tapping **Play** did nothing — the graded-launch guard rejects a
+  card the feed has already consumed. A scrolled-back poster (reviewed or
+  skipped) now **replays** the pack for free practice (no re-grade, no re-advance,
+  no quota debit), so Play is never a dead button.
+- **Dictation no longer shows its answer twice.** On a correct *type-what-you-hear*
+  solve the target phrase printed in both the big reveal line **and** the
+  now-disabled input (which already holds exactly what you typed). The reveal
+  line now fills only in review mode (where the remounted input is empty); on a
+  live solve the input is the single answer surface. No layout shifts (the
+  reserved slot is unchanged).
+- **Flashcard flip is a real flip, with one result check.** The recall card is
+  now a single tappable 3D card — tap the card face itself (not a small "tap to
+  reveal" phrase) and it spring-flips to the meaning (concept image + target word
+  + audio). And a correct answer shows **one** check ("Correcto") underneath, not
+  a second one in the top-right — the redundant settled ✓ on the card frame is
+  gone (it only ever appeared live, never on review, which was inconsistent).
 - **Word explanations no longer shove the exercise around — and speak the
   learner's language.** The word depth (in-context example + wordpan
   meaning/etymology) used to auto-render *inline below the exercise* the moment
