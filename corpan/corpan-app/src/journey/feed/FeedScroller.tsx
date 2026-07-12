@@ -441,7 +441,12 @@ export function FeedScroller(props: FeedScrollerProps) {
               exit={reducedMotion ? { opacity: 0 } : { y: 40, opacity: 0 }}
               transition={advanceTransition}
             >
-              <FeedCardFrame card={backRecord.card} settled={!backRedoable} review={!backRedoable}>
+              <FeedCardFrame
+                card={backRecord.card}
+                settled={!backRedoable}
+                review={!backRedoable}
+                reviewLabel={`${t("journey.exercise.reviewedEarlier")} · ${backIndex}/${history.length}`}
+              >
                 {backRedoable ? (
                   <div className="w-full">{renderCard(backRecord.card, "redo")}</div>
                 ) : (
@@ -562,14 +567,9 @@ export function FeedScroller(props: FeedScrollerProps) {
         </div>
       ) : null}
 
-      {/* viewed-earlier depth chip */}
-      {backIndex > 0 ? (
-        <div className="absolute inset-x-0 top-3 flex justify-center">
-          <div className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">
-            {t("journey.exercise.reviewedEarlier")} · {backIndex}/{history.length}
-          </div>
-        </div>
-      ) : null}
+      {/* The "reviewed earlier · N/M" depth chip now renders IN-FLOW inside the
+          card (FeedCardFrame reviewLabel), so it can never float over / cover the
+          exercise on scroll-back (the old absolute top chip did). */}
     </div>
   )
 }

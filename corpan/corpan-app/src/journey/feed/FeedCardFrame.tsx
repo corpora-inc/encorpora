@@ -26,6 +26,10 @@ export function FeedCardFrame(props: {
   card: FeedCard
   settled: boolean
   review: boolean
+  /** In-flow "reviewed earlier · N/M" label for a scrolled-back card. Rendered
+   *  as an in-flow chip at the top of the centered column (NOT an absolute float
+   *  over the card — that overlapped the exercise on return). */
+  reviewLabel?: string
   children: React.ReactNode
 }) {
   const { t } = useTranslation()
@@ -37,9 +41,9 @@ export function FeedCardFrame(props: {
         animate={{ scale: props.settled ? 0.98 : 1 }}
         transition={{ type: "spring", stiffness: 320, damping: 32 }}
       >
-        {props.review ? (
+        {props.reviewLabel || props.review ? (
           <div className="mb-3 rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-            {t("journey.exercise.reviewedEarlier")}
+            {props.reviewLabel ?? t("journey.exercise.reviewedEarlier")}
           </div>
         ) : null}
         {props.children}
