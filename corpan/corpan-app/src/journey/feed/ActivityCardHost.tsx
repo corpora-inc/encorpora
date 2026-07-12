@@ -102,6 +102,14 @@ export function ActivityCardHost(props: {
         combo: props.combo,
       })
       if (deco) void celebrate(deco)
+      // Tune the ears on EVERY exercise: on a scored pass, speak the target
+      // aloud as the reward + reinforcement — the learner hears what they just
+      // got right (word-order, cloze, choice, etc. all gain this in one place,
+      // not per-card). speak_echo owns the mic + its own audio, so skip it; an
+      // unscored debut already auto-played on arrival.
+      if (ok && !unscored && prepared.spec.activityType !== "speak_echo") {
+        void props.speak(prepared.spec.targetLang, prepared.items[0].target.ttsText)
+      }
       props.onRequestAdvance()
     }
   }

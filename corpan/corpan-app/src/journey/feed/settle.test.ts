@@ -45,18 +45,22 @@ test("a miss never celebrates", () => {
   )
 })
 
-test("clean fast first-try is tier 1; a hinted/slow pass is a quiet tier 0", () => {
+test("EVERY pass celebrates (tier 1) and carries the combo — juice on every correct", () => {
+  // clean fast first-try: celebrates + flagged perfect for bonus flair.
   assert.deepEqual(
     celebrationFor({ attempt: "first", fraction: 1, unscored: false, fast: true, hintsUsed: 0, combo: 0 }),
-    { tier: 1 },
+    { tier: 1, comboCount: 1, perfect: true },
   )
+  // a SLOW pass still celebrates (was a silent tier 0 — the "word-order felt
+  // dead" bug); just not flagged perfect.
   assert.deepEqual(
     celebrationFor({ attempt: "first", fraction: 1, unscored: false, fast: false, hintsUsed: 0, combo: 0 }),
-    { tier: 0 },
+    { tier: 1, comboCount: 1, perfect: false },
   )
+  // a hinted retry pass still celebrates.
   assert.deepEqual(
-    celebrationFor({ attempt: "retry", fraction: 1, unscored: false, fast: true, hintsUsed: 1, combo: 0 }),
-    { tier: 0 },
+    celebrationFor({ attempt: "retry", fraction: 1, unscored: false, fast: true, hintsUsed: 1, combo: 2 }),
+    { tier: 1, comboCount: 3, perfect: false },
   )
 })
 
@@ -81,10 +85,11 @@ test("single-shot settle grades in ONE call — a low score never traps (settles
   assert.notEqual(singleShotAttempt(0.4), "retry")
 })
 
-test("every 5th perfect combo carries the combo count", () => {
-  // combo before this card = 4 → comboNow = 5 → combo moment.
+test("combo count is always carried so the effect layer can escalate", () => {
+  // combo before this card = 4 → comboNow = 5. The effect layer reads comboCount
+  // to grow the celebration (a combo-5 answer is juicier than a combo-1).
   assert.deepEqual(
     celebrationFor({ attempt: "first", fraction: 1, unscored: false, fast: true, hintsUsed: 0, combo: 4 }),
-    { tier: 1, comboCount: 5 },
+    { tier: 1, comboCount: 5, perfect: true },
   )
 })

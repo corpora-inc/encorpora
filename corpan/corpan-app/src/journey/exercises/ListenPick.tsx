@@ -4,6 +4,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
+import { isRTL } from "../../util/convert"
 import { cardRng } from "../content/rng.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
@@ -85,10 +86,25 @@ export function ListenPick(props: ExerciseProps) {
       {/* No-reflow: a reserved line for the "what you heard" reveal — present
           (empty) from mount, filled in place on answer so the tiles never
           shift when the target text appears. */}
-      <ReservedSlot minH="min-h-7">
+      <ReservedSlot minH="min-h-14">
         {answered ? (
-          <div lang={props.spec.targetLang} className="text-lg font-medium text-foreground">
-            {answer.target.text}
+          <div className="flex flex-col items-center gap-0.5">
+            <div lang={props.spec.targetLang} className="text-lg font-medium text-foreground">
+              {answer.target.text}
+            </div>
+            {/* Also show the NATIVE gloss on reveal: hearing + seeing the target
+                confirms WHAT you heard; the native line confirms you understood
+                the MEANING ("Where are you from?" → "¿De dónde eres?"). Omitted
+                when native == target (same-language edge). */}
+            {answer.native && answer.native.text !== answer.target.text ? (
+              <div
+                lang={props.spec.nativeLang}
+                dir={props.spec.nativeLang && isRTL(props.spec.nativeLang) ? "rtl" : "ltr"}
+                className="text-sm text-muted-foreground"
+              >
+                {answer.native.text}
+              </div>
+            ) : null}
           </div>
         ) : null}
       </ReservedSlot>
