@@ -49,9 +49,13 @@ export function ListenType(props: ExerciseProps) {
       <div className="text-sm text-muted-foreground">{t("journey.exercise.typeWhatYouHear")}</div>
       <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
       {/* No-reflow: a reserved line for the answer reveal — present (empty) from
-          mount, filled in place once solved so the input never shifts. */}
+          mount. Filled ONLY in review mode (fresh remount → the input is empty,
+          so this is the sole place the answer shows). On a LIVE correct solve
+          the disabled input already holds exactly what the learner typed (== the
+          answer), so filling this too would print the same phrase twice — the
+          "title shows twice" bug. On a fail the host floats the answer instead. */}
       <ReservedSlot minH="min-h-8">
-        {props.mode === "review" || done ? (
+        {props.mode === "review" ? (
           <div lang={props.spec.targetLang} className="text-xl font-semibold text-foreground">
             {answer.target.text}
           </div>
