@@ -31,10 +31,6 @@ import { WelcomeBackCard } from "./WelcomeBackCard.tsx"
 import { CapabilityCard } from "../cards/CapabilityCard.tsx"
 
 const SWIPE_COMMIT_PX = 90
-// Double-swipe skip confirm window. Widened from 1500ms → 2500ms so ONE
-// deliberate second swipe reliably confirms a skip (the old window was so tight
-// that the second swipe routinely landed after it lapsed, forcing many swipes).
-const SKIP_CONFIRM_MS = 2500
 
 export interface FeedScrollerProps {
   runtime: JourneyRuntime
@@ -54,8 +50,6 @@ export function FeedScroller(props: FeedScrollerProps) {
   const advanceMode = useJourneyStore((s) => s.advanceMode)
   const [, force] = useState(0)
   const [backIndex, setBackIndex] = useState(0) // 0 = live, N = N pages back
-  const [skipArmedAt, setSkipArmedAt] = useState(0)
-  const skipTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [revealed, setRevealed] = useState<Record<string, boolean>>({})
   const [listeningRun, setListeningRun] = useState(false)
   const [autoCountdown, setAutoCountdown] = useState(false)
@@ -65,19 +59,6 @@ export function FeedScroller(props: FeedScrollerProps) {
 
   useEffect(() => runtime.subscribe(() => force((v) => v + 1)), [runtime])
 
-  // Disarm a pending skip whenever the live card changes — an armed skip must
-  // never carry over to the NEXT card (that race made skip land on the wrong
-  // card). Also cleans the timer on unmount.
-  const currentId = runtime.current()?.cardId
-  useEffect(() => {
-    if (skipTimer.current) clearTimeout(skipTimer.current)
-    skipTimer.current = null
-    setSkipArmedAt(0)
-    return () => {
-      if (skipTimer.current) clearTimeout(skipTimer.current)
-      skipTimer.current = null
-    }
-  }, [currentId])
 
   const current = runtime.current()
   const next = runtime.next()
@@ -174,27 +155,12 @@ export function FeedScroller(props: FeedScrollerProps) {
     }
     const rule = advanceRule(current, advanceMode)
     if (rule.kind === "manual" && current.kind !== "packActivity") return
-    // incomplete card: double-swipe skip semantics (§3.5). The SECOND swipe
-    // within the (widened) confirm window skips; the first arms + shows the
-    // "swipe again to skip" hint. A timer clears the arm so the window is
-    // authoritative (no stale Date.now() math at render), making a single
-    // confirmed double-swipe reliably advance.
-    const now = Date.now()
-    if (skipArmedAt && now - skipArmedAt <= SKIP_CONFIRM_MS) {
-      if (skipTimer.current) clearTimeout(skipTimer.current)
-      skipTimer.current = null
-      setSkipArmedAt(0)
-      runtime.abandonCurrent()
-    } else {
-      setSkipArmedAt(now)
-      if (skipTimer.current) clearTimeout(skipTimer.current)
-      skipTimer.current = setTimeout(() => {
-        skipTimer.current = null
-        setSkipArmedAt(0)
-      }, SKIP_CONFIRM_MS)
-      void controls.start({ y: [0, -24, 0], transition: { duration: 0.3 } })
-    }
-  }, [backIndex, current, settled, advanceMode, skipArmedAt, runtime, doAdvance, controls])
+    // Single-swipe skip (premium): a forward swipe on an incomplete card just
+    // skips it — abandonCurrent advances the feed. The old double-swipe "swipe
+    // again to skip" arming bounced the card back and demanded a second fast
+    // swipe; it read as a cock-block mid-scroll, not a feature.
+    runtime.abandonCurrent()
+  }, [backIndex, current, settled, advanceMode, runtime, doAdvance])
 
   const onBackGesture = useCallback(() => {
     const max = history.length
@@ -528,23 +494,8 @@ export function FeedScroller(props: FeedScrollerProps) {
         </motion.div>
       ) : null}
 
-      {/* skip hint (§3.5 first forward-swipe on incomplete card) — armed state
-          is cleared by a timer, so its truthiness alone is authoritative */}
-      <AnimatePresence>
-        {skipArmedAt > 0 ? (
-          <motion.div
-            key="skip-hint"
-            className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-          >
-            <div className="rounded-full bg-muted px-3.5 py-1.5 text-xs font-medium text-muted-foreground">
-              {t("journey.exercise.skipHint")}
-            </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {/* No "swipe again to skip" hint: a forward swipe on an incomplete card
+          now skips in one gesture (see onForwardGesture). */}
 
       {/* hands-free listening pill (§3.2) */}
       {listeningPill ? (
