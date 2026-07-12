@@ -70,7 +70,9 @@ export function FlipRecall(props: ExerciseProps) {
 
   return (
     <div className="flex w-full flex-col items-center gap-6">
-      <div className="text-sm text-muted-foreground">{t("journey.exercise.flipToReveal")}</div>
+      {/* The "toca para revelar" label lives ON the tap-to-reveal button below
+          (the affordance); a duplicate caption here was redundant AND stayed on
+          screen after the flip. */}
       {promptFace}
       {hasImage ? (
         <div
