@@ -28,7 +28,11 @@ export function TypeInput(props: {
           {t("journey.exercise.hint")}: <span lang={props.lang}>{props.hint}</span>
         </div>
       ) : null}
-      <div className="flex w-full items-stretch gap-2" dir={isRTL(props.lang) ? "rtl" : "ltr"}>
+      {/* Stack input over the Check button, both full-width: a side-by-side row
+          clipped the button off the right edge on a phone (the flex row
+          overflowed the card). Stacking never clips and is the cleaner mobile
+          pattern. */}
+      <div className="flex w-full flex-col gap-2" dir={isRTL(props.lang) ? "rtl" : "ltr"}>
         <input
           ref={inputRef}
           value={value}
@@ -44,14 +48,14 @@ export function TypeInput(props: {
           spellCheck={false}
           placeholder={t("journey.exercise.typeHere")}
           data-testid="journey-type-input"
-          className="min-h-12 flex-1 rounded-xl border border-border bg-card px-4 text-base text-foreground outline-none focus:border-[hsl(var(--journey-accent,262_80%_58%))]"
+          className="min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 text-base text-foreground outline-none focus:border-[hsl(var(--journey-accent,262_80%_58%))]"
         />
         <button
           type="button"
           onClick={submit}
           disabled={props.disabled || value.trim().length === 0}
           data-testid="journey-type-submit"
-          className="rounded-xl bg-[hsl(var(--journey-accent,262_80%_58%))] px-5 text-sm font-semibold text-white disabled:opacity-40"
+          className="min-h-12 w-full rounded-xl bg-[hsl(var(--journey-accent,262_80%_58%))] px-5 text-base font-semibold text-white disabled:opacity-40"
         >
           {t("journey.exercise.check")}
         </button>
