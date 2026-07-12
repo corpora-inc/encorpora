@@ -5,7 +5,6 @@
 
 import type { AdvanceMode } from "../../store/journey.ts"
 import type { FeedCard } from "../types.ts"
-import { selectWordParagraph } from "../cards/wordEnrichment.ts"
 
 export type AdvanceRule =
   | { kind: "manual" } // checkpoint / rare reveal / poster / blockIntro
@@ -51,11 +50,13 @@ export function advanceRule(
       break
   }
   if (card.rare) return { kind: "manual" } // anticipation is never rushed
-  // A settled word card carrying a meaning/etymology paragraph is a READING
-  // beat — never auto-advance it out from under the learner (a 50-word etymology
-  // in 2.2s is unreadable). Wait for a deliberate swipe (the chevron cues it);
-  // fast learners flick on instantly, readers take their time.
-  if (hasReadableMeaning(card)) return { kind: "swipe" }
+  // NOTE: word meaning/etymology no longer renders inline — it lives behind an
+  // on-demand (?) overlay that never reflows the card (WordEnrichment). So there
+  // is no inline "reading beat" to hold the card open for anymore; an
+  // explicit-completion card (intro_echo / flip_recall / speak_echo) must
+  // ALWAYS advance on its Continue press. (The old `hasReadableMeaning → swipe`
+  // hold ran before the button rules below and silently broke Continue for any
+  // word that had an explanation — the "Continuar does nothing" bug.)
   const t = card.spec.activityType
   // speak_echo is an explicit-completion card: the learner records (and
   // re-records as much as they like — the cap-pronounce mic stays live), reads
@@ -80,20 +81,4 @@ export function advanceRule(
 /** Listening-run detection (§3.2): ≥2 consecutive listen_* cards queued. */
 export function isListeningRunStart(current: FeedCard, next: FeedCard | null): boolean {
   return isListeningCard(current) && next !== null && isListeningCard(next)
-}
-
-/** A word exercise whose resolved item offers a NATIVE-SAFE explanation
- *  paragraph — i.e. one that will actually light the post-answer (?) (40–60
- *  words of real reading, in the learner's own language; the English etymology
- *  a non-English native never sees does NOT count). Such a card holds for a
- *  deliberate swipe so the (?) stays reachable and its overlay isn't yanked out
- *  from under a reader by the 2.2s auto timer. (Hoisted; safe to call above.) */
-function hasReadableMeaning(card: FeedCard): boolean {
-  if (card.kind !== "exercise") return false
-  const item = card.prepared.items[0]
-  if (item?.kind !== "word") return false
-  return !!selectWordParagraph(item, {
-    targetLang: card.spec.targetLang,
-    nativeLang: card.spec.nativeLang,
-  })
 }

@@ -52,36 +52,18 @@ const withMeaning = (activityType: string): FeedCard => {
   return c
 }
 
-test("word card with a meaning/etymology waits for a swipe — never auto-advances", () => {
-  // A 50-word etymology must not be yanked away on the 2.2s timer; the learner
-  // reads and swipes on. Holds across exercise types, even in auto mode.
-  assert.deepEqual(advanceRule(withMeaning("choice_pick"), "auto"), { kind: "swipe" })
-  assert.deepEqual(advanceRule(withMeaning("listen_type"), "auto"), { kind: "swipe" })
-  assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "swipe" })
-  // A word with no meaning still auto-advances fast (no regression).
-  assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
-  // A speak card carrying a meaning still waits for a deliberate action (it is
-  // already button-advance below, but the meaning branch must not regress it to
-  // an auto-yank).
-  assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "swipe" })
-})
-
-test("ES→EN word with ONLY English etymology does NOT hold (no (?) shows)", () => {
-  // The English paragraph is never surfaced to a non-English native, so the card
-  // is a plain answer-tap card — it must auto-advance, not stall on swipe.
-  const c = exercise("choice_pick")
-  if (c.kind === "exercise") {
-    c.spec = { ...c.spec, nativeLang: "es" }
-    c.prepared.spec = c.spec
-    c.prepared.items = [
-      {
-        kind: "word",
-        target: { text: "one" },
-        extras: { kind: "word", explanationTarget: "from Old English an…" },
-      } as unknown as ResolvedItem,
-    ]
-  }
-  assert.deepEqual(advanceRule(c, "auto"), { kind: "auto", delayMs: 2200 })
+test("word card with a meaning/etymology advances normally — no reading hold", () => {
+  // The meaning/etymology no longer renders inline: it opens in an on-demand (?)
+  // overlay that never reflows the card, so there is no "reading beat" to hold
+  // the card open for. A word-with-meaning card advances exactly like any other.
+  assert.deepEqual(advanceRule(withMeaning("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
+  assert.deepEqual(advanceRule(withMeaning("choice_pick"), "swipe"), { kind: "swipe" })
+  // Explicit-completion cards ALWAYS advance on their Continue press, even when
+  // the word carries an explanation — this is the "Continuar does nothing" fix
+  // (the old reading-hold ran first and silently downgraded these to swipe).
+  assert.deepEqual(advanceRule(withMeaning("intro_echo"), "swipe"), { kind: "button" })
+  assert.deepEqual(advanceRule(withMeaning("flip_recall"), "swipe"), { kind: "button" })
+  assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "button" })
 })
 
 test("failed cards never auto-advance", () => {
