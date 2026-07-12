@@ -204,6 +204,13 @@ export interface JourneyRuntime {
     card: Extract<FeedCard, { kind: "packActivity" }>,
     launch: (packId: string, spec: ActivitySpec) => void,
   ): boolean
+  /** Re-mount a pack from a scrolled-back poster for free practice (no
+   *  grading / advance / quota debit). See the impl for why "Play" would
+   *  otherwise be dead on a poster the feed has scrolled past. */
+  replayPackActivity(
+    card: Extract<FeedCard, { kind: "packActivity" }>,
+    launch: (packId: string, spec: ActivitySpec) => void,
+  ): boolean
   packReturnPending(): string | null
   // jump / legendary passthrough
   acceptJumpOffer(cardId: string): boolean
@@ -1179,6 +1186,31 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     return true
   }
 
+  /** Replay a pack interlude from a SCROLLED-BACK poster. On first play the card
+   *  already settled + advanced the feed, so a replay must NOT re-grade,
+   *  re-advance, re-debit quota, or re-record a rare — it just re-mounts the
+   *  pack for free practice. Returning only clears the pending flag (a bare
+   *  notify, since there's no result to submit). Without this a played poster's
+   *  "Play" is a dead button: launchPackActivity's prepared[0] guard rejects it
+   *  because the feed has moved on. Refused only while another launch is live. */
+  function replayPackActivity(
+    card: Extract<FeedCard, { kind: "packActivity" }>,
+    launch: (packId: string, spec: ActivitySpec) => void,
+  ): boolean {
+    if (pendingPack) return false
+    const ok = activitySession.begin(card.packId, card.spec, {
+      onResult: () => {
+        pendingPack = null
+        notify()
+      },
+    })
+    if (!ok) return false
+    pendingPack = { cardId: card.cardId, packId: card.packId }
+    notify()
+    launch(card.packId, card.spec)
+    return true
+  }
+
   // --------------------------------------------------------------- placement
 
   function needsPlacement(): boolean {
@@ -1318,6 +1350,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     finishPlacement,
     declinePlacement,
     launchPackActivity,
+    replayPackActivity,
     packReturnPending: () => pendingPack?.cardId ?? null,
     acceptJumpOffer: (cardId) => {
       const card = prepared[0]

@@ -342,7 +342,14 @@ export function FeedScroller(props: FeedScrollerProps) {
             card={card}
             pending={runtime.packReturnPending() === card.cardId}
             onPlay={() => {
-              runtime.launchPackActivity(card, (packId, spec) => props.onLaunchPack?.(packId, spec))
+              const launch = (packId: string, spec: ActivitySpec) =>
+                props.onLaunchPack?.(packId, spec)
+              // Current poster → graded launch (advances the feed). A
+              // scrolled-back poster (review/redo) was already consumed, so the
+              // graded path's guard would reject it — replay it for free
+              // practice instead, so "Play" is never a dead button.
+              if (mode === "live") runtime.launchPackActivity(card, launch)
+              else runtime.replayPackActivity(card, launch)
             }}
           />
         )
