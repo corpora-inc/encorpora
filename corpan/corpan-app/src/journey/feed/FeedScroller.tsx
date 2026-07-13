@@ -9,7 +9,7 @@ import { AnimatePresence, motion, useAnimationControls, useReducedMotion } from 
 import { ChevronsUp } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { ActivityResult, ActivitySpec } from "../../contentPacks/activityContract"
-import { celebrate, skipCelebration } from "../celebration/CelebrationLayer.tsx"
+import { celebrate } from "../celebration/CelebrationLayer.tsx"
 import { ComboCounter } from "../celebration/ComboCounter.tsx"
 import { cardTransition } from "./cardTransition.ts"
 import { useJourneyStore } from "../../store/journey.ts"
@@ -86,7 +86,11 @@ export function FeedScroller(props: FeedScrollerProps) {
 
   const doAdvance = useCallback(() => {
     clearAuto()
-    skipCelebration()
+    // Do NOT cut the celebration on advance. It's a host-level overlay,
+    // independent of the card, so it plays out over the transition (juicy +
+    // game-like). Cutting it here meant a fast answer→advance (common on tap
+    // cards) killed the celebration before it showed — and the abrupt cut read
+    // as a "ghost flash" on the way out. A new correct simply replaces it.
     // Stop lingering audio so the leaving card's speech never bleeds into the
     // next card ("hearing the last exercise on the next one"). The arriving
     // card starts its own auto-play fresh.
