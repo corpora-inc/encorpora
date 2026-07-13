@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Wähle deine Themen",
+      "availableSummary": "{{count}} Phrasenpakete verfügbar · ~{{size}} MB",
+      "installAll": "Alle installieren",
+      "chooseIndividually": "Einzeln auswählen",
+      "installing": "{{current}} von {{total}} wird installiert…",
+      "someFailed": "{{count}} Paket(e) konnten nicht installiert werden. Du kannst es im Tab „Pakete“ erneut versuchen.",
+      "allInstalled": "Du hast die Starter-Phrasenpakete bereits.",
+      "installed": "Installiert",
       "loading": "Laden…",
       "selectAll": "Alles auswählen ({{count}})",
       "clearAll": "Leeren",

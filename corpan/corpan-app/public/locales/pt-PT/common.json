@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Escolhe os teus tópicos",
+      "availableSummary": "{{count}} pacotes de frases disponíveis · ~{{size}} MB",
+      "installAll": "Instalar tudo",
+      "chooseIndividually": "Escolher individualmente",
+      "installing": "A instalar {{current}} de {{total}}…",
+      "someFailed": "Não foi possível instalar {{count}} pacote(s). Pode tentar novamente no separador Pacotes.",
+      "allInstalled": "Já tem os pacotes de frases iniciais.",
+      "installed": "Instalado",
       "loading": "A carregar…",
       "selectAll": "Selecionar tudo ({{count}})",
       "clearAll": "Limpar",

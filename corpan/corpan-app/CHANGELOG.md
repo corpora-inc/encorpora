@@ -7,6 +7,23 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Onboarding is shorter and no longer asks about prior knowledge twice.** The
+  learner path used to ask "Have you studied {{lang}} before?" (calibrateLearn)
+  and then a second "Where should we start? — I'm new / I know some"
+  (journeyPlacementOffer) screen. The second screen is removed: the guided
+  Journey's placement is now derived from the calibration answer
+  (`onboarding/placement.ts` — total beginner → start at unit 1, any prior
+  exposure → let the Journey's own PlacementFlow probe). One fewer tap on the
+  primary growth path; every remaining question drives real behavior.
+- **Phrase-pack onboarding step is a one-tap consent-to-download.** The default
+  view is now a single summary line ("N phrase packs available · ~X MB") plus a
+  prominent **Install all** button, with progress ("Installing N of M…") and a
+  partial-failure notice. The à-la-carte per-pack grid is still one tap away via
+  **Choose individually** (for low-bandwidth users and future paid packs). A
+  pack that fails to download is dropped from the active set so the main loop
+  never samples a pack that isn't on disk (`contentPacks/phrasePackInstall.ts`).
+
 ### Added
 - A small audio manager (`util/audioManager.ts`) now tracks the single active
   spoken utterance app-wide (estimate-based, upgraded to a real completion

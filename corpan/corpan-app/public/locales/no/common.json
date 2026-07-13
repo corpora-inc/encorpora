@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Velg temaer",
+      "availableSummary": "{{count}} frasepakker tilgjengelige · ~{{size}} MB",
+      "installAll": "Installer alle",
+      "chooseIndividually": "Velg enkeltvis",
+      "installing": "Installerer {{current}} av {{total}}…",
+      "someFailed": "{{count}} pakke(r) kunne ikke installeres. Du kan prøve igjen fra Pakker-fanen.",
+      "allInstalled": "Du har allerede startpakkene med fraser.",
+      "installed": "Installert",
       "loading": "Laster…",
       "selectAll": "Velg alle ({{count}})",
       "clearAll": "Tøm",

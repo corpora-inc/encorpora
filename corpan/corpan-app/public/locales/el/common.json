@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Διάλεξε θέματα",
+      "availableSummary": "{{count}} πακέτα φράσεων διαθέσιμα · ~{{size}} MB",
+      "installAll": "Εγκατάσταση όλων",
+      "chooseIndividually": "Επιλογή ενός-ενός",
+      "installing": "Εγκατάσταση {{current}} από {{total}}…",
+      "someFailed": "Δεν ήταν δυνατή η εγκατάσταση {{count}} πακέτου/-ων. Μπορείτε να δοκιμάσετε ξανά από την καρτέλα Πακέτα.",
+      "allInstalled": "Έχετε ήδη τα αρχικά πακέτα φράσεων.",
+      "installed": "Εγκαταστάθηκε",
       "loading": "Φόρτωση…",
       "selectAll": "Επιλογή όλων ({{count}})",
       "clearAll": "Καθαρισμός",

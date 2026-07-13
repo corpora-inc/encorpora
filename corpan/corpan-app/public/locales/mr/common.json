@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "विषय निवडा",
+      "availableSummary": "{{count}} वाक्प्रचार पॅक उपलब्ध · ~{{size}} MB",
+      "installAll": "सर्व इंस्टॉल करा",
+      "chooseIndividually": "स्वतंत्रपणे निवडा",
+      "installing": "{{total}} पैकी {{current}} इंस्टॉल होत आहे…",
+      "someFailed": "{{count}} पॅक इंस्टॉल करता आले नाहीत. तुम्ही Packs टॅबमधून पुन्हा प्रयत्न करू शकता.",
+      "allInstalled": "तुमच्याकडे आधीच स्टार्टर वाक्प्रचार पॅक आहेत.",
+      "installed": "इंस्टॉल केले",
       "loading": "लोड होत आहे…",
       "selectAll": "सर्व निवडा ({{count}})",
       "clearAll": "साफ करा",

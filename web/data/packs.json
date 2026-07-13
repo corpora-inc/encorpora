@@ -455,7 +455,7 @@
     "minAppVersion": "0.20.3",
     "v1Listed": false,
     "channel": "stable",
-    "packType": "reader",
+    "packType": "game",
     "purchase": {
       "type": "free"
     },

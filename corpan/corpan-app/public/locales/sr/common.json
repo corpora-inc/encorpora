@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Изабери теме",
+      "availableSummary": "Доступно пакета фраза: {{count}} · ~{{size}} MB",
+      "installAll": "Инсталирај све",
+      "chooseIndividually": "Изабери појединачно",
+      "installing": "Инсталирање {{current}} од {{total}}…",
+      "someFailed": "Није могуће инсталирати пакете: {{count}}. Можете покушати поново на картици Пакети.",
+      "allInstalled": "Већ имате почетне пакете фраза.",
+      "installed": "Инсталирано",
       "loading": "Учитавање…",
       "selectAll": "Изабери све ({{count}})",
       "clearAll": "Очисти",

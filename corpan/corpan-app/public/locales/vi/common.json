@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Chọn chủ đề",
+      "availableSummary": "{{count}} gói cụm từ có sẵn · ~{{size}} MB",
+      "installAll": "Cài đặt tất cả",
+      "chooseIndividually": "Chọn từng gói",
+      "installing": "Đang cài đặt {{current}} trên {{total}}…",
+      "someFailed": "Không thể cài đặt {{count}} gói. Bạn có thể thử lại từ tab Gói.",
+      "allInstalled": "Bạn đã có các gói cụm từ khởi đầu.",
+      "installed": "Đã cài đặt",
       "loading": "Đang tải…",
       "selectAll": "Chọn tất cả ({{count}})",
       "clearAll": "Xóa",

@@ -44,8 +44,8 @@ const registerGame = () => {
       const nativeLocale = hostApi.getStackConfig().languages?.[0]
 
       const seed = Date.now()
-      const drift = createDrift(container, hostApi, spec, seed)
-      // Localize the two chrome strings once the shell is in the DOM.
+      const drift = createDrift(container, hostApi, spec, seed, nativeLocale)
+      // Localize the chrome strings once the shell is in the DOM.
       applyUiStrings(container, nativeLocale)
       scope.__drift = drift
 

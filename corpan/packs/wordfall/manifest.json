@@ -2,7 +2,7 @@
   "id": "wordfall",
   "channel": "preview",
   "name": "Wordfall",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Words rain down; catch the one that means what's shown up top before it hits the floor. A fast, juicy catch-the-meaning spike built as a Journey scroll interlude.",
   "entry": "dist/app.js",
   "styles": [

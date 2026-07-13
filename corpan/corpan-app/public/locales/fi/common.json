@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Valitse aiheesi",
+      "availableSummary": "Saatavilla {{count}} fraasipakettia · ~{{size}} MB",
+      "installAll": "Asenna kaikki",
+      "chooseIndividually": "Valitse yksitellen",
+      "installing": "Asennetaan {{current}}/{{total}}…",
+      "someFailed": "{{count}} pakettia ei voitu asentaa. Voit yrittää uudelleen Paketit-välilehdellä.",
+      "allInstalled": "Sinulla on jo aloitusfraasipaketit.",
+      "installed": "Asennettu",
       "loading": "Ladataan…",
       "selectAll": "Valitse kaikki ({{count}})",
       "clearAll": "Tyhjennä",

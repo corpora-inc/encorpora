@@ -2,7 +2,7 @@
   "id": "corpan_city",
   "channel": "preview",
   "name": "Corpan City",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
@@ -381,5 +381,5 @@
     "su": "Di Corpan City, papanggih jeung karakter AI sareng pamaén nyata, nuturkeun lalampahan pribadi, sarta ngarobah unggal papanggihan janten pelajaran basa.",
     "tl": "Sa Corpan City, makilala ang mga karakter na AI at totoong manlalaro, sundan ang isang personal na paglalakbay, at gawing aralin sa wika ang bawat pakikipagtagpo."
   },
-  "devRevision": "2026-07-13T00:57:42.719Z"
+  "devRevision": "2026-07-13T06:52:40.762Z"
 }

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "اپنے موضوع چنو",
+      "availableSummary": "{{count}} جملیاں دے پیکج دستیاب · ~{{size}} MB",
+      "installAll": "سارے انسٹال کرو",
+      "chooseIndividually": "اک اک کر کے چنو",
+      "installing": "{{total}} وچّوں {{current}} انسٹال ہو رہیا اے…",
+      "someFailed": "{{count}} پیکج انسٹال نہیں ہو سکے۔ تُسیں پیکج ٹیب توں دوبارہ کوشش کر سکدے او۔",
+      "allInstalled": "تہاڈے کول پہلاں توں شروعاتی جملیاں دے پیکج موجود نيں۔",
+      "installed": "انسٹال شدہ",
       "loading": "لوڈ ہو ریا اے…",
       "selectAll": "ساریاں چنو ({{count}})",
       "clearAll": "صاف کرو",

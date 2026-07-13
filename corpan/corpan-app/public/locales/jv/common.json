@@ -370,6 +370,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik sampeyan",
+      "availableSummary": "{{count}} paket frasa kasedhiya · ~{{size}} MB",
+      "installAll": "Pasang kabeh",
+      "chooseIndividually": "Pilih siji-siji",
+      "installing": "Masang {{current}} saka {{total}}…",
+      "someFailed": "{{count}} paket ora bisa dipasang. Sampeyan bisa nyoba maneh saka tab Paket.",
+      "allInstalled": "Sampeyan wis duwe paket frasa wiwitan.",
+      "installed": "Kepasang",
       "loading": "Ngundhuh paket…",
       "selectAll": "Pilih kabeh ({{count}})",
       "clearAll": "Bersihkan pilihan",

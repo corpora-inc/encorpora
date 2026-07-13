@@ -370,6 +370,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik anjeun",
+      "availableSummary": "{{count}} pakét frasa sayaga · ~{{size}} MB",
+      "installAll": "Pasang sadaya",
+      "chooseIndividually": "Pilih hiji-hiji",
+      "installing": "Masang {{current}} tina {{total}}…",
+      "someFailed": "{{count}} pakét teu tiasa dipasang. Anjeun tiasa nyobian deui tina tab Pakét.",
+      "allInstalled": "Anjeun parantos gaduh pakét frasa awal.",
+      "installed": "Kapasang",
       "loading": "Ngamuat paket…",
       "selectAll": "Pilih sadayana ({{count}})",
       "clearAll": "Hapus pilihan",

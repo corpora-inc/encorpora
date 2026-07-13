@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "विषयहरू छान्नुहोस्",
+      "availableSummary": "{{count}} वाक्यांश प्याक उपलब्ध · ~{{size}} MB",
+      "installAll": "सबै इन्स्टल गर्नुहोस्",
+      "chooseIndividually": "छुट्टाछुट्टै छान्नुहोस्",
+      "installing": "{{total}} मध्ये {{current}} इन्स्टल हुँदैछ…",
+      "someFailed": "{{count}} प्याक इन्स्टल गर्न सकिएन। तपाईं Packs ट्याबबाट पुनः प्रयास गर्न सक्नुहुन्छ।",
+      "allInstalled": "तपाईंसँग पहिले नै स्टार्टर वाक्यांश प्याकहरू छन्।",
+      "installed": "इन्स्टल भयो",
       "loading": "लोड हुँदै…",
       "selectAll": "सबै छान्नुहोस् ({{count}})",
       "clearAll": "खाली",

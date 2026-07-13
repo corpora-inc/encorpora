@@ -370,6 +370,13 @@
     },
     "phrasePacks": {
       "hero": "Pick your topics",
+      "availableSummary": "{{count}} phrase packs available · ~{{size}} MB",
+      "installAll": "Install all",
+      "chooseIndividually": "Choose individually",
+      "installing": "Installing {{current}} of {{total}}…",
+      "someFailed": "{{count}} pack(s) couldn't be installed. You can retry from the Packs tab.",
+      "allInstalled": "You already have the starter phrase packs.",
+      "installed": "Installed",
       "loading": "Loading packs…",
       "selectAll": "Select all ({{count}})",
       "clearAll": "Clear selection",

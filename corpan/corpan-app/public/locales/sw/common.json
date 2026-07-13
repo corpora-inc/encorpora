@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Chagua mada zako",
+      "availableSummary": "Vifurushi {{count}} vya misemo vinapatikana · ~{{size}} MB",
+      "installAll": "Sakinisha vyote",
+      "chooseIndividually": "Chagua kimoja kimoja",
+      "installing": "Inasakinisha {{current}} kati ya {{total}}…",
+      "someFailed": "Vifurushi {{count}} havikuweza kusakinishwa. Unaweza kujaribu tena kutoka kichupo cha Vifurushi.",
+      "allInstalled": "Tayari una vifurushi vya kuanzia vya misemo.",
+      "installed": "Kimesakinishwa",
       "loading": "Inapakia…",
       "selectAll": "Chagua zote ({{count}})",
       "clearAll": "Futa",

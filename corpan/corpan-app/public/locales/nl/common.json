@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Kies je onderwerpen",
+      "availableSummary": "{{count}} zinspakketten beschikbaar · ~{{size}} MB",
+      "installAll": "Alles installeren",
+      "chooseIndividually": "Afzonderlijk kiezen",
+      "installing": "{{current}} van {{total}} wordt geïnstalleerd…",
+      "someFailed": "{{count}} pakket(ten) konden niet worden geïnstalleerd. Je kunt het opnieuw proberen op het tabblad Pakketten.",
+      "allInstalled": "Je hebt de starterzinspakketten al.",
+      "installed": "Geïnstalleerd",
       "loading": "Laden…",
       "selectAll": "Alles selecteren ({{count}})",
       "clearAll": "Wissen",

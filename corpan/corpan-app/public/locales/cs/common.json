@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Vyber si témata",
+      "availableSummary": "Dostupné balíčky frází: {{count}} · ~{{size}} MB",
+      "installAll": "Nainstalovat vše",
+      "chooseIndividually": "Vybrat jednotlivě",
+      "installing": "Instaluje se {{current}} z {{total}}…",
+      "someFailed": "Nepodařilo se nainstalovat balíčky: {{count}}. Můžete to zkusit znovu na kartě Balíčky.",
+      "allInstalled": "Základní balíčky frází už máte.",
+      "installed": "Nainstalováno",
       "loading": "Načítání…",
       "selectAll": "Vybrat vše ({{count}})",
       "clearAll": "Vymazat",

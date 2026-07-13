@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Izberi svoje teme",
+      "availableSummary": "Na voljo je paketov fraz: {{count}} · ~{{size}} MB",
+      "installAll": "Namesti vse",
+      "chooseIndividually": "Izberi posamično",
+      "installing": "Nameščanje {{current}} od {{total}}…",
+      "someFailed": "Paketov ni bilo mogoče namestiti: {{count}}. Poskusite znova na zavihku Paketi.",
+      "allInstalled": "Začetne pakete fraz že imate.",
+      "installed": "Nameščeno",
       "loading": "Nalaganje…",
       "selectAll": "Izberi vse ({{count}})",
       "clearAll": "Počisti",

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Избери теми",
+      "availableSummary": "Налични пакета с фрази: {{count}} · ~{{size}} МБ",
+      "installAll": "Инсталирай всички",
+      "chooseIndividually": "Избери поотделно",
+      "installing": "Инсталиране на {{current}} от {{total}}…",
+      "someFailed": "Не успяхме да инсталираме пакети: {{count}}. Можете да опитате отново от раздела „Пакети“.",
+      "allInstalled": "Вече имате началните пакети с фрази.",
+      "installed": "Инсталирано",
       "loading": "Зареждане…",
       "selectAll": "Избери всички ({{count}})",
       "clearAll": "Изчисти",

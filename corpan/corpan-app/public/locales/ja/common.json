@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "テーマを選ぼう",
+      "availableSummary": "フレーズパック {{count}} 個が利用可能 · ~{{size}} MB",
+      "installAll": "すべてインストール",
+      "chooseIndividually": "個別に選ぶ",
+      "installing": "{{total}} 個中 {{current}} 個をインストール中…",
+      "someFailed": "{{count}} 個のパックをインストールできませんでした。「パック」タブから再試行できます。",
+      "allInstalled": "スターターのフレーズパックはすでにお持ちです。",
+      "installed": "インストール済み",
       "loading": "読み込み中…",
       "selectAll": "すべて選択 ({{count}})",
       "clearAll": "クリア",

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik kamu",
+      "availableSummary": "{{count}} paket frasa tersedia · ~{{size}} MB",
+      "installAll": "Instal semua",
+      "chooseIndividually": "Pilih satu per satu",
+      "installing": "Menginstal {{current}} dari {{total}}…",
+      "someFailed": "{{count}} paket tidak dapat diinstal. Anda dapat mencoba lagi dari tab Paket.",
+      "allInstalled": "Anda sudah memiliki paket frasa awal.",
+      "installed": "Terpasang",
       "loading": "Memuat…",
       "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Hapus",

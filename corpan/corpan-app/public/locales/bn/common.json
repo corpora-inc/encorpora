@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "বিষয় বেছে নিন",
+      "availableSummary": "{{count}}টি বাক্যাংশ প্যাক উপলব্ধ · ~{{size}} MB",
+      "installAll": "সব ইনস্টল করুন",
+      "chooseIndividually": "আলাদাভাবে বেছে নিন",
+      "installing": "{{total}}টির মধ্যে {{current}}টি ইনস্টল হচ্ছে…",
+      "someFailed": "{{count}}টি প্যাক ইনস্টল করা যায়নি। আপনি Packs ট্যাব থেকে আবার চেষ্টা করতে পারেন।",
+      "allInstalled": "আপনার কাছে ইতিমধ্যে স্টার্টার বাক্যাংশ প্যাকগুলি আছে।",
+      "installed": "ইনস্টল হয়েছে",
       "loading": "লোড হচ্ছে…",
       "selectAll": "সব নির্বাচন ({{count}})",
       "clearAll": "মুছুন",

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "주제를 골라 보세요",
+      "availableSummary": "어구 팩 {{count}}개 이용 가능 · ~{{size}} MB",
+      "installAll": "모두 설치",
+      "chooseIndividually": "개별 선택",
+      "installing": "{{total}}개 중 {{current}}개 설치 중…",
+      "someFailed": "{{count}}개의 팩을 설치하지 못했어요. 팩 탭에서 다시 시도할 수 있어요.",
+      "allInstalled": "이미 기본 어구 팩을 가지고 계세요.",
+      "installed": "설치됨",
       "loading": "불러오는 중…",
       "selectAll": "전체 선택 ({{count}})",
       "clearAll": "지우기",

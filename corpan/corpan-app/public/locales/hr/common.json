@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Odaberi teme",
+      "availableSummary": "Dostupno paketa fraza: {{count}} · ~{{size}} MB",
+      "installAll": "Instaliraj sve",
+      "chooseIndividually": "Odaberi pojedinačno",
+      "installing": "Instaliranje {{current}} od {{total}}…",
+      "someFailed": "Nije moguće instalirati pakete: {{count}}. Možete pokušati ponovno na kartici Paketi.",
+      "allInstalled": "Već imate početne pakete fraza.",
+      "installed": "Instalirano",
       "loading": "Učitavanje…",
       "selectAll": "Odaberi sve ({{count}})",
       "clearAll": "Očisti",

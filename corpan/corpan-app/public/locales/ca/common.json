@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Tria els teus temes",
+      "availableSummary": "{{count}} paquets de frases disponibles · ~{{size}} MB",
+      "installAll": "Instal·la-ho tot",
+      "chooseIndividually": "Tria individualment",
+      "installing": "S'està instal·lant {{current}} de {{total}}…",
+      "someFailed": "No s'han pogut instal·lar {{count}} paquet(s). Pots tornar-ho a provar des de la pestanya Paquets.",
+      "allInstalled": "Ja tens els paquets de frases inicials.",
+      "installed": "Instal·lat",
       "loading": "Carregant…",
       "selectAll": "Selecciona-ho tot ({{count}})",
       "clearAll": "Esborra",

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "בחר נושאים",
+      "availableSummary": "{{count}} חבילות ביטויים זמינות · ~{{size}} MB",
+      "installAll": "התקן הכול",
+      "chooseIndividually": "בחירה פרטנית",
+      "installing": "מתקין {{current}} מתוך {{total}}…",
+      "someFailed": "לא ניתן היה להתקין {{count}} חבילות. אפשר לנסות שוב מלשונית החבילות.",
+      "allInstalled": "כבר יש לך את חבילות הביטויים להתחלה.",
+      "installed": "מותקן",
       "loading": "טוען…",
       "selectAll": "בחר הכל ({{count}})",
       "clearAll": "נקה",

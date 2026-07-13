@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Scegli i tuoi argomenti",
+      "availableSummary": "{{count}} pacchetti di frasi disponibili · ~{{size}} MB",
+      "installAll": "Installa tutto",
+      "chooseIndividually": "Scegli singolarmente",
+      "installing": "Installazione di {{current}} di {{total}}…",
+      "someFailed": "Impossibile installare {{count}} pacchetto/i. Puoi riprovare dalla scheda Pacchetti.",
+      "allInstalled": "Hai già i pacchetti di frasi iniziali.",
+      "installed": "Installato",
       "loading": "Caricamento…",
       "selectAll": "Seleziona tutto ({{count}})",
       "clearAll": "Cancella",

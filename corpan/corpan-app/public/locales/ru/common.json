@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Выбери темы",
+      "availableSummary": "Доступно наборов фраз: {{count}} · ~{{size}} МБ",
+      "installAll": "Установить все",
+      "chooseIndividually": "Выбрать по отдельности",
+      "installing": "Установка {{current}} из {{total}}…",
+      "someFailed": "Не удалось установить наборы: {{count}}. Повторите попытку на вкладке «Наборы».",
+      "allInstalled": "У вас уже есть стартовые наборы фраз.",
+      "installed": "Установлено",
       "loading": "Загрузка…",
       "selectAll": "Выбрать всё ({{count}})",
       "clearAll": "Очистить",

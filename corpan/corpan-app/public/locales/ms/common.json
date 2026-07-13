@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik anda",
+      "availableSummary": "{{count}} pek frasa tersedia · ~{{size}} MB",
+      "installAll": "Pasang semua",
+      "chooseIndividually": "Pilih satu persatu",
+      "installing": "Memasang {{current}} daripada {{total}}…",
+      "someFailed": "{{count}} pek tidak dapat dipasang. Anda boleh cuba semula dari tab Pek.",
+      "allInstalled": "Anda sudah mempunyai pek frasa permulaan.",
+      "installed": "Dipasang",
       "loading": "Memuat…",
       "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Padam",

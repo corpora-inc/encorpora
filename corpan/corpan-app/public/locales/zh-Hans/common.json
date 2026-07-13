@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "选择你的主题",
+      "availableSummary": "{{count}} 个短语包可用 · ~{{size}} MB",
+      "installAll": "全部安装",
+      "chooseIndividually": "逐个选择",
+      "installing": "正在安装第 {{current}}/{{total}} 个…",
+      "someFailed": "有 {{count}} 个短语包无法安装。你可以在「包」标签页中重试。",
+      "allInstalled": "你已经拥有入门短语包。",
+      "installed": "已安装",
       "loading": "加载中…",
       "selectAll": "全选 ({{count}})",
       "clearAll": "清除",

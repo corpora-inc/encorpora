@@ -7,6 +7,7 @@ import { useCatalogStore } from "@/store/catalog"
 import { trackOnboardingCompleted, trackOnboardingLaunch } from "@/util/analytics"
 import { bestFitExperience } from "./bestFit"
 import { resolveLanding, WHAT_TO_START_INTEREST, type WhatToStart } from "./resolveLanding"
+import { derivePlacement } from "./placement"
 import type { OnboardingGraph, NodeCtx } from "./types"
 
 /** The phrase experience pack id (Phase 3). Until it exists as a pack, the
@@ -269,7 +270,13 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
   //    (the primary, planned-for-you happy path) and self-paced browsing. Pure
   //    data nodes (no engine change); commit honors `journeyOptIn` with a
   //    `{ kind: "journey" }` landing intent. Guided is listed first on
-  //    purpose — it reads as the default way to learn. ──
+  //    purpose — it reads as the default way to learn.
+  //
+  //    Placement is DERIVED from the `calibrateLearn` answer we already have
+  //    (see `derivePlacement`) instead of asking a redundant second "are you
+  //    new / do you know some?" screen — CTO feedback: onboarding asked twice
+  //    whether the user knows the language. A total beginner (A0-only) starts
+  //    at unit 1; any prior exposure is probed by the live PlacementFlow. ──
   journeyOptIn: {
     kind: "question",
     id: "journeyOptIn",
@@ -281,39 +288,20 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
         id: "guided",
         labelKey: "onboarding.journey.guided.label",
         descKey: "onboarding.journey.guided.desc",
-        apply: (c) => c.patch({ journeyOptIn: true }),
-        next: "journeyPlacementOffer",
+        apply: (c) =>
+          c.patch({ journeyOptIn: true, journeyPlacement: derivePlacement(c.draft.levels) }),
+        next: "pickPhrasePacks",
       },
       {
         id: "explore",
         labelKey: "onboarding.journey.explore.label",
         descKey: "onboarding.journey.explore.desc",
-        next: "pickPhrasePacks",
-      },
-    ],
-  },
-
-  // ── Placement offer — reuses the journey surface's own placement copy
-  //    (journey.placement.*, already shipped in all locales). "I'm new"
-  //    pre-declines the in-surface probe offer; "I know some" leaves the
-  //    real probe to PlacementFlow (probe cards need the live engine). ──
-  journeyPlacementOffer: {
-    kind: "question",
-    id: "journeyPlacementOffer",
-    titleKey: "journey.placement.offerTitle",
-    subtitleKey: "journey.placement.offerBody",
-    interpolate: (c) => ({ lang: targetLabel(c) }),
-    options: [
-      {
-        id: "startNew",
-        labelKey: "journey.placement.startNew",
-        apply: (c) => c.patch({ journeyPlacement: "zero-beginner" }),
-        next: "pickPhrasePacks",
-      },
-      {
-        id: "placeMe",
-        labelKey: "journey.placement.placeMe",
-        apply: (c) => c.patch({ journeyPlacement: "probe" }),
+        // Explicitly clear the opt-in: without this, guided → Back → explore
+        // leaves a stale `journeyOptIn: true` in the draft (Back never rolls
+        // the draft back), which would skip `whatToStart` and land the
+        // explorer in the journey feed. (Stale `journeyPlacement` is harmless:
+        // commit only reads it when `journeyOptIn` is truthy.)
+        apply: (c) => c.patch({ journeyOptIn: false }),
         next: "pickPhrasePacks",
       },
     ],

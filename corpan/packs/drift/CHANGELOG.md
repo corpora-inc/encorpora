@@ -7,10 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-13
+
 ### Added
+- **Light game loop.** Drift is no longer a passive reader — it now plays a real,
+  scored loop while keeping the calm drifting vibe:
+  - Narration **auto-plays on entry** (no Listen toggle to start); the old toggle
+    is now a **mute** control. Sound is delegated to `hostApi.speak`, so the app's
+    global sound setting still gates audio; pacing uses a spoken-word estimate
+    (`speechTiming.ts`, mirrors the host's audioManager) and never overlaps
+    utterances or hangs a user-instant exit.
+  - After each narrated beat, a gentle **"which word did you hear?"** challenge
+    floats up: the target word is spoken, 3–4 candidate words drift in as tap
+    chips (≥44px), grounded in the beat just heard. Reuses the existing
+    beat/token/gloss model — pair-agnostic, multilingual, no new content.
+  - **Real scoring:** answers are tracked and reported as a proper
+    `ActivityResult` (`session.ts`) — per-item `pass`/`fail` verdicts streamed via
+    `reportItem` for spec-scheduled phrases (random-fill beats stay scenery, like
+    wordfall's top-up tiles), a `score = correct/faced` aggregate, and
+    `detail.numbers`. The journey engine can now grade the phrases a drift featured.
+  - **Completion:** on the natural end it reports the terminal result then scrolls
+    on; a **Done** tap mid-run is an abandon (`journey.abandon("user_exit")`) so
+    the host synthesizes the abandoned result from buffered items — the pack never
+    fakes a terminal result. Exit/Done is always instant (turbo-scroll).
+  - Gentle, buzzer-free feedback in the drift aesthetic; reduced-motion safe.
+  - **Honest evidence guards:** while muted, beats narrate silently and NO
+    challenge is posed (a "which word did you hear?" guess would stream junk
+    pass/fail evidence); unsegmented han/kana lines (whole-sentence tokens)
+    are never posed as tap-the-word targets, and the speech-pacing estimate
+    counts CJK glyphs (≈2 per spoken word) so the challenge utterance never
+    tramples a Chinese/Japanese narration.
+  - New in-pack chrome string "Which word did you hear?" localized for ~54 locales;
+    unit tests for challenge generation/scoring, the reporting contract, and
+    speech-timing (`npm test`).
 - Wired into the app as an auto-installing system pack: the Journey mixer now
-  schedules `drift:read` as a reader interlude, discovered from this manifest's
+  schedules `drift:read` as an interlude, discovered from this manifest's
   `activities` via the app's catalog (`web/data/packs.json` + catalog-v3).
+
+### Changed
+- Reclassified in the app catalog from `packType: "reader"` to `"game"`
+  (`web/data/packs.json`). This is load-bearing, not cosmetic: the mixer marks
+  reader interludes `unscored` and `apply.ts` discards grading for unscored
+  slots — as a game, Drift's real per-item results now feed FSRS, it fills the
+  spike (game) cadence slot, and the interlude poster shows the "quick game"
+  cue.
 
 ### Fixed
 - `minAppVersion` raised to `0.20.3` (was `0.17.0`) — the premium-scroll Journey

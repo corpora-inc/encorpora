@@ -1,7 +1,7 @@
 {
   "id": "drift",
   "name": "Drift",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A calm, serial micro-story reader: a few lines of target-language prose that the scene reacts to, tap any word for its meaning, optional narration with word highlighting",
   "entry": "dist/app.js",
   "styles": [

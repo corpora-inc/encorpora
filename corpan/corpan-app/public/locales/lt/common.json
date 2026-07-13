@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Pasirink temas",
+      "availableSummary": "Galimų frazių paketų: {{count}} · ~{{size}} MB",
+      "installAll": "Įdiegti visus",
+      "chooseIndividually": "Rinktis po vieną",
+      "installing": "Diegiama {{current}} iš {{total}}…",
+      "someFailed": "Nepavyko įdiegti paketų: {{count}}. Galite bandyti dar kartą skirtuke „Paketai“.",
+      "allInstalled": "Pradinius frazių paketus jau turite.",
+      "installed": "Įdiegta",
       "loading": "Įkeliama…",
       "selectAll": "Pažymėti viską ({{count}})",
       "clearAll": "Išvalyti",

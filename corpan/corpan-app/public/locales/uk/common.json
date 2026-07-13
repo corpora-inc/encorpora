@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Обери теми",
+      "availableSummary": "Доступно наборів фраз: {{count}} · ~{{size}} МБ",
+      "installAll": "Встановити всі",
+      "chooseIndividually": "Вибрати окремо",
+      "installing": "Встановлення {{current}} з {{total}}…",
+      "someFailed": "Не вдалося встановити набори: {{count}}. Спробуйте ще раз на вкладці «Набори».",
+      "allInstalled": "У вас уже є стартові набори фраз.",
+      "installed": "Встановлено",
       "loading": "Завантаження…",
       "selectAll": "Вибрати все ({{count}})",
       "clearAll": "Очистити",

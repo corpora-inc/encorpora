@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "اپنے موضوعات منتخب کریں",
+      "availableSummary": "{{count}} جملوں کے پیکجز دستیاب · ~{{size}} MB",
+      "installAll": "سب انسٹال کریں",
+      "chooseIndividually": "انفرادی طور پر منتخب کریں",
+      "installing": "{{total}} میں سے {{current}} انسٹال ہو رہا ہے…",
+      "someFailed": "{{count}} پیکج انسٹال نہیں ہو سکے۔ آپ پیکجز ٹیب سے دوبارہ کوشش کر سکتے ہیں۔",
+      "allInstalled": "آپ کے پاس پہلے سے ابتدائی جملوں کے پیکجز موجود ہیں۔",
+      "installed": "انسٹال شدہ",
       "loading": "لوڈ ہو رہا ہے…",
       "selectAll": "سب منتخب کریں ({{count}})",
       "clearAll": "صاف کریں",

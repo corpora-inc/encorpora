@@ -1,33 +1,40 @@
 // src/components/OnboardingPickPhrasePacks.tsx
 //
-// Onboarding step 3 (zero-indexed): pick which starter phrase packs to
-// install. Reads `catalog.onboardingStarterPackIds` (catalog-driven so we
-// can re-curate without app rebuilds — see PHRASE_PACK_AUTHORING.md).
+// Onboarding step 3 (zero-indexed): install starter phrase packs. Reads
+// `catalog.onboardingStarterPackIds` (catalog-driven so we can re-curate
+// without app rebuilds — see PHRASE_PACK_AUTHORING.md).
+//
+// SIMPLIFIED happy path (CTO feedback): most people don't want to pick topics
+// one by one — they want to consent to a download. So the default view is a
+// single summary line ("N phrase packs available · ~X MB") + one prominent
+// "Install all" button. The à-la-carte pick-and-choose grid is still one tap
+// away behind "Choose individually" for low-bandwidth users (and, someday,
+// paid packs). "Not now" always advances without installing.
 //
 // Behavior:
 //   - Catalog still loading → render a calm skeleton until it lands.
-//   - Catalog loaded & starter list empty → render a friendly placeholder
-//     so the step still occupies its place in the wizard. The earlier
-//     auto-skip-on-empty pattern broke back-navigation: pressing Back from
-//     TTS would land here, auto-advance forward, and trap the user. Always
-//     render so Back works, and let "Continue" in the header advance.
-//   - User toggles which packs to install; "Install all" pre-selects every
-//     starter; "Skip for now" advances without installing.
-//   - On Continue: write selected IDs to the active stack's `phrasePackIds`
-//     (so they're active the instant they finish installing), then kick off
-//     `installPackBatch` and advance to TTS. The batch install runs in the
-//     background while the user moves through the rest of onboarding.
+//   - Catalog loaded & starter list empty → friendly placeholder so the step
+//     still occupies its place in the wizard (auto-skip-on-empty broke Back).
+//   - "Install all" activates + downloads the not-installed, entitled starter
+//     packs (see `planInstallAll`), showing "Installing N of M…" progress and
+//     surfacing any partial failure. A pack that fails to download is dropped
+//     from the active set (see `reconcileActiveAfterBatch`) so the main loop
+//     never samples a pack that isn't on disk.
+//   - Offline: remember the selection and advance; the install runs after the
+//     user reconnects (onboarding never blocks on the network to progress).
 //
 // Visual rhythm matches OnboardingPickPrimary's calm aesthetic: generous
 // hero, single accent color, no marketing copy, scalable on iPad / desktop.
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import {
+    AlertTriangle,
     BookOpen,
     Check,
     Languages,
     Library,
+    Loader2,
     Package,
     Sparkles,
 } from "lucide-react";
@@ -37,15 +44,22 @@ import { OnboardingShell } from "@/onboarding/OnboardingShell";
 import { Button } from "@/components/ui/button";
 import type { OnboardingStepProps } from "@/onboarding/types";
 import { useInstallContext } from "@/contentPacks/InstallContext";
+import {
+    planInstallAll,
+    reconcileActiveAfterBatch,
+} from "@/contentPacks/phrasePackInstall";
 import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useCatalogStore } from "@/store/catalog";
 import { useEntitlementStore } from "@/store/entitlements";
+import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { useSettingsStore } from "@/store/settings";
 import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
 
 const STEP_TTS = 4;
 const STEP_PICK_LEARNING = 2;
+
+type Phase = "idle" | "installing" | "failed";
 
 export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepProps = {}) {
     const { t } = useTranslation();
@@ -58,10 +72,12 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
     const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
 
     const { starterPacks } = usePhrasePackCatalog();
-    const { installPackBatch } = useInstallContext();
+    const { installPackBatch, batchProgress } = useInstallContext();
     const subscriptionActive = useEntitlementStore(
         (s) => s.subscription?.active ?? false,
     );
+    // Packs already on disk — excluded from the "you don't have these yet" set.
+    const installedById = usePhrasePacksStore((s) => s.installed);
 
     // Kick the catalog if we don't have one yet AND we're online. Offline
     // first-boot is rare but we don't want to thrash retries.
@@ -69,45 +85,11 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
         if (!lastFetched && !isFetching && isOnline) void fetchCatalog();
     }, [lastFetched, isFetching, isOnline, fetchCatalog]);
 
-    // Local selection state: keyed by pack id. Seeded with **every
-    // starter pack pre-checked** — the overwhelming majority of new
-    // users want the whole shelf turned on, and the few who want to
-    // narrow can uncheck individual cards (or "Deselect all" to
-    // start fresh). The publisher's `defaultSelectedIds` is
-    // intentionally ignored here; it's still surfaced in places
-    // that need a curated subset (e.g. the Stacks tab's first-run
-    // suggestion) but onboarding goes with all-on.
-    const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
-    const hasSeededRef = useRef(false);
-    useEffect(() => {
-        if (starterPacks.length > 0 && !hasSeededRef.current) {
-            setSelectedIds(new Set(starterPacks.map((p) => p.id)));
-            hasSeededRef.current = true;
-        }
-    }, [starterPacks]);
-
-    const totalSizeMb = useMemo(
-        () =>
-            starterPacks
-                .filter((p) => selectedIds.has(p.id))
-                .reduce((sum, p) => sum + (p.sizeMb ?? 0), 0),
-        [starterPacks, selectedIds],
-    );
-
-    const togglePack = (id: string) => {
-        setSelectedIds((prev) => {
-            const next = new Set(prev);
-            if (next.has(id)) next.delete(id);
-            else next.add(id);
-            return next;
-        });
-    };
-
-    const installAll = () => {
-        setSelectedIds(new Set(starterPacks.map((p) => p.id)));
-    };
-
-    const clearAll = () => setSelectedIds(new Set());
+    // Two views: the summary-first happy path (default) and the à-la-carte
+    // grid revealed by "Choose individually".
+    const [expanded, setExpanded] = useState(false);
+    const [phase, setPhase] = useState<Phase>("idle");
+    const [failedCount, setFailedCount] = useState(0);
 
     // Entitlement gate for onboarding installs: free packs always pass;
     // subscription-gated IAP packs pass only when the user is already
@@ -124,31 +106,118 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
         return subscriptionGated && subscriptionActive;
     };
 
+    // The one-tap set: starter packs the user doesn't already have AND is
+    // allowed to install here, plus the total download size to disclose.
+    const installedIds = useMemo(
+        () => Object.keys(installedById),
+        [installedById],
+    );
+    const plan = useMemo(
+        () => planInstallAll(starterPacks, installedIds, canInstallInOnboarding),
+        // canInstallInOnboarding closes over subscriptionActive; list it so the
+        // plan recomputes if the user's entitlement flips mid-onboarding.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [starterPacks, installedIds, subscriptionActive],
+    );
+
+    // À-la-carte selection: seeded to the not-installed set (every available
+    // pack pre-checked) — the few who open the grid usually want to narrow,
+    // not start from empty.
+    const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+    const hasSeededRef = useRef(false);
+    useEffect(() => {
+        if (plan.available.length > 0 && !hasSeededRef.current) {
+            setSelectedIds(new Set(plan.available.map((p) => p.id)));
+            hasSeededRef.current = true;
+        }
+    }, [plan.available]);
+
+    const selectedSizeMb = useMemo(
+        () =>
+            starterPacks
+                .filter((p) => selectedIds.has(p.id))
+                .reduce((sum, p) => sum + (p.sizeMb ?? 0), 0),
+        [starterPacks, selectedIds],
+    );
+
+    const togglePack = (id: string) => {
+        setSelectedIds((prev) => {
+            const next = new Set(prev);
+            if (next.has(id)) next.delete(id);
+            else next.add(id);
+            return next;
+        });
+    };
+
+    const selectAll = () =>
+        setSelectedIds(new Set(plan.available.map((p) => p.id)));
+    const clearAll = () => setSelectedIds(new Set());
+
     const advance = onAdvance ?? (() => setStep(STEP_TTS));
 
-    const handleContinue = async () => {
-        const chosen = starterPacks.filter((p) => selectedIds.has(p.id));
-        const installable = chosen.filter(canInstallInOnboarding);
-        if (installable.length === 0) {
+    // Guards the post-await tail of `runInstall`: if the user skipped ahead
+    // (or went Back) while the batch was downloading, this component is
+    // unmounted and the captured `advance` closure is STALE — calling it
+    // would yank the user to TTS from wherever they are and push a duplicate
+    // entry onto the wizard's back-stack. Store reconciliation still runs
+    // (it's navigation-independent); only UI state + navigation are skipped.
+    const mountedRef = useRef(true);
+    useEffect(() => {
+        mountedRef.current = true;
+        return () => {
+            mountedRef.current = false;
+        };
+    }, []);
+
+    // The shared install path for both "Install all" and "Continue" (grid).
+    // Activates optimistically, then reconciles out any pack that failed to
+    // download so the main loop never samples a pack that isn't on disk.
+    const runInstall = async (packs: PhrasePackCatalogEntry[]) => {
+        if (packs.length === 0) {
             advance();
             return;
         }
-        // Activate only entitled packs so the main loop never tries to
-        // sample from a pack the user shouldn't have.
-        setPhrasePackIds(installable.map((p) => p.id));
-        // Kick off the install in the background only if online. When
-        // offline, just remember the selection — the user can re-trigger
-        // from Settings → Packs after reconnecting. Avoids burning a noisy
-        // install error during the calm onboarding finish.
-        if (isOnline) {
-            void installPackBatch(installable);
+        // MERGE with the already-active set (setPhrasePackIds dedupes):
+        // `packs` deliberately excludes already-installed packs, so a plain
+        // replace would silently DEACTIVATE packs the user already has —
+        // e.g. retrying after a partial failure would drop the packs that
+        // succeeded the first time.
+        const prevActive = useSettingsStore.getState().phrasePackIds ?? [];
+        const activated = [...prevActive, ...packs.map((p) => p.id)];
+        setPhrasePackIds(activated); // optimistic activation
+        // Offline: remember the selection and move on — the user can finish
+        // the install from Settings → Packs after reconnecting. Onboarding
+        // must never depend on a network request to make forward progress.
+        if (!isOnline) {
+            advance();
+            return;
         }
-        advance();
+        setPhase("installing");
+        const res = await installPackBatch(packs);
+        setPhrasePackIds(reconcileActiveAfterBatch(activated, res));
+        if (!mountedRef.current) return; // user skipped/backed out mid-batch
+        if (res.failed.length > 0) {
+            setFailedCount(res.failed.length);
+            setPhase("failed");
+        } else {
+            advance();
+        }
+    };
+
+    const handleContinueSelected = () => {
+        const chosen = starterPacks.filter(
+            (p) =>
+                selectedIds.has(p.id) &&
+                canInstallInOnboarding(p) &&
+                !installedById[p.id],
+        );
+        void runInstall(chosen);
     };
 
     const hasStarter = starterPacks.length > 0;
     const allSelected =
-        hasStarter && starterPacks.every((p) => selectedIds.has(p.id));
+        plan.available.length > 0 &&
+        plan.available.every((p) => selectedIds.has(p.id));
     const anyPaidUnlocked = starterPacks.some(
         (p) =>
             p.purchase?.type === "iap" &&
@@ -158,30 +227,82 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
     );
     const showSubscriptionNudge = anyPaidUnlocked && !subscriptionActive;
 
+    // "Not now" — the always-reachable skip (also keeps the user un-trapped
+    // while a background install runs).
+    const skipLink = (
+        <button
+            type="button"
+            onClick={advance}
+            className="mt-2 w-full text-center text-xs text-muted-foreground/80 hover:text-foreground transition-colors"
+        >
+            {t("common.skip", { defaultValue: "Skip" })}
+        </button>
+    );
+
+    let footer: ReactNode;
+    if (phase === "installing") {
+        footer = (
+            <>
+                <Button className="w-full !h-12" disabled>
+                    <Loader2 size={16} className="animate-spin me-2" />
+                    {t("onboarding.phrasePacks.installing", {
+                        defaultValue: "Installing {{current}} of {{total}}…",
+                        current: batchProgress?.current ?? 1,
+                        total: batchProgress?.total ?? plan.available.length,
+                    })}
+                </Button>
+                {skipLink}
+            </>
+        );
+    } else if (phase === "failed") {
+        footer = (
+            <Button className="w-full !h-12" onClick={advance}>
+                {t("onboarding.continue")}
+            </Button>
+        );
+    } else if (expanded) {
+        footer = (
+            <Button
+                className="w-full !h-12"
+                aria-label="Continue"
+                onClick={handleContinueSelected}
+            >
+                {t("onboarding.continue")}
+            </Button>
+        );
+    } else if (lastFetched && hasStarter && plan.available.length > 0) {
+        footer = (
+            <>
+                <Button
+                    className="w-full !h-12"
+                    onClick={() => void runInstall(plan.available)}
+                >
+                    {t("onboarding.phrasePacks.installAll", {
+                        defaultValue: "Install all",
+                    })}
+                </Button>
+                {skipLink}
+            </>
+        );
+    } else {
+        // Loading / offline / empty / nothing-to-install → a plain advance.
+        footer = (
+            <Button
+                className="w-full !h-12"
+                aria-label="Continue"
+                onClick={advance}
+            >
+                {t("onboarding.continue")}
+            </Button>
+        );
+    }
+
     return (
         <OnboardingShell
             canBack
             onBack={onBack ?? (() => setStep(STEP_PICK_LEARNING))}
             maxWidthClass="max-w-3xl"
-            footer={
-                // No Skip: Continue with nothing selected installs nothing (==
-                // skip). One button matches the rest of the onboarding footers.
-                //
-                // Continue is ALWAYS enabled. It used to be gated on the
-                // phrase-pack catalog having loaded — but when that fetch hung
-                // or failed while online, the button stayed disabled forever
-                // and trapped the user mid-onboarding, unable to reach the
-                // offline-capable app (the embedded corpus works with zero
-                // network). Onboarding must never depend on a network request
-                // to make forward progress.
-                <Button
-                    className="w-full !h-12"
-                    aria-label="Continue"
-                    onClick={handleContinue}
-                >
-                    {t("onboarding.continue")}
-                </Button>
-            }
+            footer={footer}
         >
             <h1 className="text-center text-2xl font-bold text-foreground">
                 {t("onboarding.phrasePacks.hero", { defaultValue: "Pick your topics" })}
@@ -222,7 +343,7 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
 
                     {/* Empty state — catalog loaded but no starter packs.
                         Keep the step in the flow so Back works across the
-                        wizard; the header's "Continue" button advances to
+                        wizard; the footer's "Continue" button advances to
                         TTS as if nothing was selected. */}
                     {lastFetched && !hasStarter && (
                         <div className="mx-auto max-w-md rounded-lg border border-dashed border-border bg-muted/30 px-5 py-8 text-center">
@@ -258,76 +379,154 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
                                     />
                                 </div>
                             )}
-                            {/* Install-all / clear-all summary chip */}
-                            <div className="flex items-center justify-between mb-4 sm:mb-5">
-                                <button
-                                    type="button"
-                                    onClick={allSelected ? clearAll : installAll}
-                                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-400/60 bg-purple-500/[0.06] text-purple-500 text-xs font-medium hover:border-purple-400/90 hover:bg-purple-500/[0.10] transition-colors"
-                                >
-                                    {allSelected ? (
+
+                            {/* Partial-failure notice from the last batch. */}
+                            {phase === "failed" && (
+                                <div className="mb-4 mx-auto max-w-md flex items-start gap-2 rounded-lg border border-amber-400/50 bg-amber-500/[0.07] px-4 py-3 text-xs text-muted-foreground">
+                                    <AlertTriangle
+                                        size={14}
+                                        className="mt-0.5 shrink-0 text-amber-500"
+                                        aria-hidden="true"
+                                    />
+                                    <span>
+                                        {t("onboarding.phrasePacks.someFailed", {
+                                            defaultValue:
+                                                "{{count}} pack(s) couldn't be installed. You can retry from the Packs tab.",
+                                            count: failedCount,
+                                        })}
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* ── Happy path: one summary line + Install all ── */}
+                            {!expanded && (
+                                <div className="mx-auto max-w-md text-center">
+                                    {plan.available.length > 0 ? (
                                         <>
-                                            <Check size={14} />
-                                            {t(
-                                                "onboarding.phrasePacks.clearAll",
-                                                { defaultValue: "Clear" },
+                                            <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/50 bg-purple-500/[0.06] px-4 py-2 text-sm font-medium text-foreground">
+                                                <Sparkles
+                                                    size={15}
+                                                    className="text-purple-500"
+                                                    aria-hidden="true"
+                                                />
+                                                <span className="tabular-nums">
+                                                    {t(
+                                                        "onboarding.phrasePacks.availableSummary",
+                                                        {
+                                                            defaultValue:
+                                                                "{{count}} phrase packs available · ~{{size}} MB",
+                                                            count: plan.available.length,
+                                                            size: plan.totalSizeMb.toFixed(1),
+                                                        },
+                                                    )}
+                                                </span>
+                                            </div>
+                                            {phase === "idle" && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setExpanded(true)}
+                                                    className="mt-5 block mx-auto text-sm text-purple-500 hover:text-purple-400 underline underline-offset-4 transition-colors"
+                                                >
+                                                    {t(
+                                                        "onboarding.phrasePacks.chooseIndividually",
+                                                        {
+                                                            defaultValue:
+                                                                "Choose individually",
+                                                        },
+                                                    )}
+                                                </button>
                                             )}
                                         </>
                                     ) : (
-                                        <>
-                                            <Sparkles size={14} />
+                                        <p className="text-sm text-muted-foreground py-6">
                                             {t(
-                                                "onboarding.phrasePacks.selectAll",
+                                                "onboarding.phrasePacks.allInstalled",
                                                 {
                                                     defaultValue:
-                                                        "Select all ({{count}})",
-                                                    count: starterPacks.length,
+                                                        "You already have the starter phrase packs.",
                                                 },
                                             )}
-                                        </>
-                                    )}
-                                </button>
-                                <span className="text-xs text-muted-foreground tabular-nums">
-                                    {selectedIds.size > 0 && (
-                                        <>
-                                            {selectedIds.size}
-                                            {totalSizeMb > 0 && (
-                                                <span className="ml-1">
-                                                    · ~{totalSizeMb.toFixed(1)} MB
-                                                </span>
-                                            )}
-                                        </>
-                                    )}
-                                </span>
-                            </div>
-
-                            {/* Card grid */}
-                            <ul
-                                role="listbox"
-                                aria-label="Starter phrase packs"
-                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 list-none p-0 m-0"
-                            >
-                                {starterPacks.map((pack) => (
-                                    <PhrasePackOnboardingCard
-                                        key={pack.id}
-                                        pack={pack}
-                                        selected={selectedIds.has(pack.id)}
-                                        onToggle={() => togglePack(pack.id)}
-                                    />
-                                ))}
-                            </ul>
-
-                            {/* Subscription nudge (collapsed; sub flow lives in PacksListing) */}
-                            {showSubscriptionNudge && (
-                                <div className="mt-6 mx-auto max-w-md rounded-lg border border-purple-400/40 bg-purple-500/[0.05] px-4 py-3 text-center text-xs text-muted-foreground">
-                                    {t(
-                                        "onboarding.phrasePacks.subscriptionNudge",
-                                        {
-                                            defaultValue:
-                                                "Some packs are included with Corpán Plus — you can upgrade later in Settings → Packs.",
-                                        },
+                                        </p>
                                     )}
                                 </div>
+                            )}
+
+                            {/* ── À-la-carte: the full pick-and-choose grid ── */}
+                            {expanded && (
+                                <>
+                                    {/* Select-all / clear-all + running size */}
+                                    <div className="flex items-center justify-between mb-4 sm:mb-5">
+                                        <button
+                                            type="button"
+                                            onClick={allSelected ? clearAll : selectAll}
+                                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-400/60 bg-purple-500/[0.06] text-purple-500 text-xs font-medium hover:border-purple-400/90 hover:bg-purple-500/[0.10] transition-colors"
+                                        >
+                                            {allSelected ? (
+                                                <>
+                                                    <Check size={14} />
+                                                    {t(
+                                                        "onboarding.phrasePacks.clearAll",
+                                                        { defaultValue: "Clear" },
+                                                    )}
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Sparkles size={14} />
+                                                    {t(
+                                                        "onboarding.phrasePacks.selectAll",
+                                                        {
+                                                            defaultValue:
+                                                                "Select all ({{count}})",
+                                                            count: plan.available.length,
+                                                        },
+                                                    )}
+                                                </>
+                                            )}
+                                        </button>
+                                        <span className="text-xs text-muted-foreground tabular-nums">
+                                            {selectedIds.size > 0 && (
+                                                <>
+                                                    {selectedIds.size}
+                                                    {selectedSizeMb > 0 && (
+                                                        <span className="ml-1">
+                                                            · ~{selectedSizeMb.toFixed(1)} MB
+                                                        </span>
+                                                    )}
+                                                </>
+                                            )}
+                                        </span>
+                                    </div>
+
+                                    {/* Card grid */}
+                                    <ul
+                                        role="listbox"
+                                        aria-label="Starter phrase packs"
+                                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 list-none p-0 m-0"
+                                    >
+                                        {starterPacks.map((pack) => (
+                                            <PhrasePackOnboardingCard
+                                                key={pack.id}
+                                                pack={pack}
+                                                selected={selectedIds.has(pack.id)}
+                                                installed={!!installedById[pack.id]}
+                                                onToggle={() => togglePack(pack.id)}
+                                            />
+                                        ))}
+                                    </ul>
+
+                                    {/* Subscription nudge (collapsed; sub flow lives in PacksListing) */}
+                                    {showSubscriptionNudge && (
+                                        <div className="mt-6 mx-auto max-w-md rounded-lg border border-purple-400/40 bg-purple-500/[0.05] px-4 py-3 text-center text-xs text-muted-foreground">
+                                            {t(
+                                                "onboarding.phrasePacks.subscriptionNudge",
+                                                {
+                                                    defaultValue:
+                                                        "Some packs are included with Corpán Plus — you can upgrade later in Settings → Packs.",
+                                                },
+                                            )}
+                                        </div>
+                                    )}
+                                </>
                             )}
                         </>
                     )}
@@ -344,10 +543,12 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
 function PhrasePackOnboardingCard({
     pack,
     selected,
+    installed = false,
     onToggle,
 }: {
     pack: PhrasePackCatalogEntry;
     selected: boolean;
+    installed?: boolean;
     onToggle: () => void;
 }) {
     const { t } = useTranslation();
@@ -447,6 +648,14 @@ function PhrasePackOnboardingCard({
                                 t("onboarding.phrasePacks.paid", {
                                     defaultValue: "Paid",
                                 })}
+                        </span>
+                    )}
+                    {installed && (
+                        <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full border border-emerald-400/60 bg-emerald-500/[0.08] text-emerald-600">
+                            <Check size={10} strokeWidth={3} aria-hidden="true" />
+                            {t("onboarding.phrasePacks.installed", {
+                                defaultValue: "Installed",
+                            })}
                         </span>
                     )}
                 </div>

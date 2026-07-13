@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Välj dina ämnen",
+      "availableSummary": "{{count}} frispaket tillgängliga · ~{{size}} MB",
+      "installAll": "Installera alla",
+      "chooseIndividually": "Välj individuellt",
+      "installing": "Installerar {{current}} av {{total}}…",
+      "someFailed": "{{count}} paket kunde inte installeras. Du kan försöka igen från fliken Paket.",
+      "allInstalled": "Du har redan startpaketen med fraser.",
+      "installed": "Installerat",
       "loading": "Laddar…",
       "selectAll": "Välj alla ({{count}})",
       "clearAll": "Rensa",

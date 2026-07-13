@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Alege-ți subiectele",
+      "availableSummary": "{{count}} pachete de fraze disponibile · ~{{size}} MB",
+      "installAll": "Instalează tot",
+      "chooseIndividually": "Alege individual",
+      "installing": "Se instalează {{current}} din {{total}}…",
+      "someFailed": "{{count}} pachet(e) nu au putut fi instalate. Poți reîncerca din fila Pachete.",
+      "allInstalled": "Ai deja pachetele de fraze de start.",
+      "installed": "Instalat",
       "loading": "Se încarcă…",
       "selectAll": "Selectează tot ({{count}})",
       "clearAll": "Șterge",

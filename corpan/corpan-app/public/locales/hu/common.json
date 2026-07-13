@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Válassz témákat",
+      "availableSummary": "{{count}} kifejezéscsomag érhető el · ~{{size}} MB",
+      "installAll": "Összes telepítése",
+      "chooseIndividually": "Egyenkénti kiválasztás",
+      "installing": "Telepítés: {{current}}/{{total}}…",
+      "someFailed": "{{count}} csomagot nem sikerült telepíteni. Újrapróbálhatod a Csomagok lapon.",
+      "allInstalled": "A kezdő kifejezéscsomagok már megvannak.",
+      "installed": "Telepítve",
       "loading": "Betöltés…",
       "selectAll": "Mindet kijelölni ({{count}})",
       "clearAll": "Törlés",

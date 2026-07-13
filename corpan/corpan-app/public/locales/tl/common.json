@@ -370,6 +370,13 @@
     },
     "phrasePacks": {
       "hero": "Pumili ng iyong mga paksa",
+      "availableSummary": "{{count}} phrase pack ang available · ~{{size}} MB",
+      "installAll": "I-install lahat",
+      "chooseIndividually": "Pumili nang isa-isa",
+      "installing": "Ini-install ang {{current}} ng {{total}}…",
+      "someFailed": "Hindi ma-install ang {{count}} pack. Maaari kang mag-retry mula sa tab na Packs.",
+      "allInstalled": "Mayroon ka nang mga panimulang phrase pack.",
+      "installed": "Naka-install",
       "loading": "Naglo-load ng mga pack…",
       "selectAll": "Pumili ng lahat ({{count}})",
       "clearAll": "I-clear ang pagpili",

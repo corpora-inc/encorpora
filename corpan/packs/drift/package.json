@@ -6,6 +6,10 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
+    "test:challenge": "node test/challenge.spec.mjs",
+    "test:session": "node test/session.spec.mjs",
+    "test:speechTiming": "node test/speechTiming.spec.mjs",
+    "test": "npm run test:challenge && npm run test:session && npm run test:speechTiming",
     "preview": "vite preview",
     "pack": "node scripts/pack.mjs",
     "pack:all": "npm run build && node scripts/pack.mjs"

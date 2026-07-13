@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Vælg dine emner",
+      "availableSummary": "{{count}} sætningspakker tilgængelige · ~{{size}} MB",
+      "installAll": "Installer alle",
+      "chooseIndividually": "Vælg enkeltvis",
+      "installing": "Installerer {{current}} af {{total}}…",
+      "someFailed": "{{count}} pakke(r) kunne ikke installeres. Du kan prøve igen fra fanen Pakker.",
+      "allInstalled": "Du har allerede startsætningspakkerne.",
+      "installed": "Installeret",
       "loading": "Indlæser…",
       "selectAll": "Vælg alle ({{count}})",
       "clearAll": "Ryd",

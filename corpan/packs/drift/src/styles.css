@@ -121,6 +121,75 @@
 }
 .drift-gloss.is-on { opacity: 1; transform: translate(-50%, 0); }
 
+/* --- Challenge: "which word did you hear?" -------------------------------- */
+.drift-challenge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 3vw, 18px);
+  padding: 0 clamp(16px, 5vw, 32px) clamp(6px, 2vw, 12px);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+.drift-challenge.is-on { opacity: 1; transform: translateY(0); }
+.drift-prompt {
+  margin: 0;
+  font-size: clamp(14px, 4vw, 17px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--drift-ink-dim);
+  text-align: center;
+}
+.drift-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 16px);
+  max-width: 34rem;
+}
+.drift-chip {
+  appearance: none;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--drift-hue) 45% 70% / 0.45);
+  background: hsl(var(--drift-hue) 40% 96% / 0.08);
+  color: var(--drift-ink);
+  font-size: clamp(16px, 4.6vw, 20px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  /* Adrift: each chip bobs on its own gentle, staggered rhythm. */
+  animation: drift-bob 4200ms ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -900ms);
+  transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease,
+    opacity 200ms ease, transform 200ms ease;
+}
+.drift-chip:hover { background: hsl(var(--drift-hue) 40% 96% / 0.16); }
+.drift-chip:disabled { cursor: default; }
+.drift-chip.is-right {
+  background: var(--drift-accent);
+  border-color: var(--drift-accent);
+  color: hsl(var(--drift-hue) 60% 12%);
+  animation: none;
+  transform: translateY(-2px) scale(1.02);
+}
+.drift-chip.is-wrong {
+  border-color: hsl(var(--drift-hue) 30% 60% / 0.5);
+  color: var(--drift-ink-dim);
+  opacity: 0.6;
+  animation: none;
+}
+.drift-chip.is-dim { opacity: 0.4; animation: none; }
+
+@keyframes drift-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
 /* --- Controls ------------------------------------------------------------- */
 .drift-controls {
   position: relative;
@@ -157,6 +226,8 @@
 @media (prefers-reduced-motion: reduce) {
   .drift-motif,
   .drift-line,
-  .drift-gloss { transition-duration: 0.01ms !important; }
+  .drift-gloss,
+  .drift-challenge { transition-duration: 0.01ms !important; }
   .drift-motif.is-on { opacity: 0.14; transform: none; }
+  .drift-chip { animation: none !important; }
 }

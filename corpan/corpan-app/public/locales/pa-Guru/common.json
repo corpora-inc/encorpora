@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "ਆਪਣੇ ਵਿਸ਼ੇ ਚੁਣੋ",
+      "availableSummary": "{{count}} ਵਾਕਾਂਸ਼ ਪੈਕ ਉਪਲਬਧ · ~{{size}} MB",
+      "installAll": "ਸਾਰੇ ਇੰਸਟਾਲ ਕਰੋ",
+      "chooseIndividually": "ਵੱਖ-ਵੱਖ ਚੁਣੋ",
+      "installing": "{{total}} ਵਿੱਚੋਂ {{current}} ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ…",
+      "someFailed": "{{count}} ਪੈਕ ਇੰਸਟਾਲ ਨਹੀਂ ਹੋ ਸਕੇ। ਤੁਸੀਂ Packs ਟੈਬ ਤੋਂ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰ ਸਕਦੇ ਹੋ।",
+      "allInstalled": "ਤੁਹਾਡੇ ਕੋਲ ਪਹਿਲਾਂ ਹੀ ਸਟਾਰਟਰ ਵਾਕਾਂਸ਼ ਪੈਕ ਹਨ।",
+      "installed": "ਇੰਸਟਾਲ ਹੋ ਗਿਆ",
       "loading": "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…",
       "selectAll": "ਸਾਰੇ ਚੁਣੋ ({{count}})",
       "clearAll": "ਮਿਟਾਓ",

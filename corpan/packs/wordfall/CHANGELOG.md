@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-13
+
 ### Added
 - Wired into the app as an auto-installing system pack: the Journey mixer now
   schedules `wordfall:catch` as a game interlude, discovered from this manifest's

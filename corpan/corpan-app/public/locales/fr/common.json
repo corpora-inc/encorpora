@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Choisis tes sujets",
+      "availableSummary": "{{count}} packs de phrases disponibles · ~{{size}} Mo",
+      "installAll": "Tout installer",
+      "chooseIndividually": "Choisir individuellement",
+      "installing": "Installation de {{current}} sur {{total}}…",
+      "someFailed": "{{count}} pack(s) n'ont pas pu être installés. Vous pouvez réessayer depuis l'onglet Packs.",
+      "allInstalled": "Vous avez déjà les packs de phrases de départ.",
+      "installed": "Installé",
       "loading": "Chargement…",
       "selectAll": "Tout sélectionner ({{count}})",
       "clearAll": "Effacer",

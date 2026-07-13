@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Wybierz tematy",
+      "availableSummary": "Dostępne pakiety fraz: {{count}} · ~{{size}} MB",
+      "installAll": "Zainstaluj wszystkie",
+      "chooseIndividually": "Wybierz pojedynczo",
+      "installing": "Instalowanie {{current}} z {{total}}…",
+      "someFailed": "Nie udało się zainstalować pakietów: {{count}}. Możesz spróbować ponownie na karcie Pakiety.",
+      "allInstalled": "Masz już startowe pakiety fraz.",
+      "installed": "Zainstalowano",
       "loading": "Ładowanie…",
       "selectAll": "Zaznacz wszystko ({{count}})",
       "clearAll": "Wyczyść",

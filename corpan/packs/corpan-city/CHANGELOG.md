@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-13
+
 ### Added
 - **Journey activity adapter (`corpan_city:<toolId>`, activity-contract §6.3 /
   R9).** A journey launch (`initialState.activity`) mounts ONE challenge from

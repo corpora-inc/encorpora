@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Konularını seç",
+      "availableSummary": "{{count}} ifade paketi mevcut · ~{{size}} MB",
+      "installAll": "Tümünü yükle",
+      "chooseIndividually": "Tek tek seç",
+      "installing": "{{total}} paketten {{current}}. yükleniyor…",
+      "someFailed": "{{count}} paket yüklenemedi. Paketler sekmesinden yeniden deneyebilirsiniz.",
+      "allInstalled": "Başlangıç ifade paketlerine zaten sahipsiniz.",
+      "installed": "Yüklendi",
       "loading": "Yükleniyor…",
       "selectAll": "Tümünü seç ({{count}})",
       "clearAll": "Temizle",

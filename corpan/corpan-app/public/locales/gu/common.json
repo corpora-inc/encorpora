@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "વિષય પસંદ કરો",
+      "availableSummary": "{{count}} શબ્દસમૂહ પૅક ઉપલબ્ધ · ~{{size}} MB",
+      "installAll": "બધા ઇન્સ્ટૉલ કરો",
+      "chooseIndividually": "અલગ-અલગ પસંદ કરો",
+      "installing": "{{total}} માંથી {{current}} ઇન્સ્ટૉલ થઈ રહ્યું છે…",
+      "someFailed": "{{count}} પૅક ઇન્સ્ટૉલ થઈ શક્યા નથી. તમે Packs ટૅબમાંથી ફરી પ્રયાસ કરી શકો છો.",
+      "allInstalled": "તમારી પાસે પહેલેથી જ સ્ટાર્ટર શબ્દસમૂહ પૅક છે.",
+      "installed": "ઇન્સ્ટૉલ થયું",
       "loading": "લોડ થઈ રહ્યું છે…",
       "selectAll": "બધાં પસંદ કરો ({{count}})",
       "clearAll": "સાફ કરો",

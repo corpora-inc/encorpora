@@ -208,6 +208,13 @@
     },
     "phrasePacks": {
       "hero": "اختر مواضيعك",
+      "availableSummary": "{{count}} حزمة عبارات متاحة · ~{{size}} MB",
+      "installAll": "تثبيت الكل",
+      "chooseIndividually": "الاختيار فرديًا",
+      "installing": "جارٍ تثبيت {{current}} من {{total}}…",
+      "someFailed": "تعذّر تثبيت {{count}} حزمة. يمكنك المحاولة مرة أخرى من تبويب الحزم.",
+      "allInstalled": "لديك بالفعل حزم العبارات المبدئية.",
+      "installed": "مُثبَّتة",
       "loading": "جارٍ التحميل…",
       "selectAll": "تحديد الكل ({{count}})",
       "clearAll": "مسح",
