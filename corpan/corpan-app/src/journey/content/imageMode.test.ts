@@ -110,8 +110,41 @@ test("deterministic per specId (stable card identity across re-maps)", () => {
 })
 
 test("other activity types are never picture-routed by the planner", () => {
-  for (const at of ["cloze", "word_order", "match_pairs", "flip_recall", "speak_echo", "intro_echo"]) {
+  for (const at of ["cloze", "word_order", "match_pairs", "flip_recall", "speak_echo"]) {
     const plan = planImageMode({ activityType: at, pool: "new", isProbe: false, specId: "x", concept: CONCEPT })
     assert.equal(plan, null, `${at} is not planner-routed`)
   }
+})
+
+test("intro_echo → HEAR→tap-the-picture EVERY time siblings exist (no share gate, unlike listen)", () => {
+  const b = scan({ activityType: "intro_echo", pool: "new", isProbe: false, concept: CONCEPT })
+  // The debut always upgrades when imagery allows — no text bucket.
+  assert.deepEqual(b, { intro_image: 200 })
+})
+
+test("intro_echo with NO sibling pictures ⇒ null (degrades to hero/text; options need ≥2 tiles)", () => {
+  const b = scan({ activityType: "intro_echo", pool: "new", isProbe: false, concept: CONCEPT_NO_SIBS })
+  assert.deepEqual(b, { text: 200 })
+})
+
+test("intro_echo probe never becomes a picture card", () => {
+  const b = scan({ activityType: "intro_echo", pool: "new", isProbe: true, concept: CONCEPT })
+  assert.deepEqual(b, { text: 200 })
+})
+
+test("intro_image carries image-option params + suppresses the text sampler", () => {
+  const plan = planImageMode({
+    activityType: "intro_echo",
+    pool: "new",
+    isProbe: false,
+    specId: "intro-1",
+    concept: CONCEPT,
+  })
+  assert.ok(plan)
+  assert.equal(plan!.variant, "intro_image")
+  assert.equal(plan!.optionsAreImages, true)
+  assert.equal(plan!.params.media, "image")
+  assert.equal(plan!.params.answerImageSrc, src("coffee"))
+  assert.deepEqual(plan!.params.imageDistractors, CONCEPT.distractors)
+  assert.equal(plan!.params.direction, "targetOnly")
 })

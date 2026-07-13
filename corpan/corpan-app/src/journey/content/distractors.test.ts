@@ -512,7 +512,20 @@ test("distractorNeed implements the §4.7 table", () => {
   assert.equal(distractorNeed("match_pairs"), null) // seededShuffle only
   assert.equal(distractorNeed("flip_recall"), null)
   assert.equal(distractorNeed("speak_echo"), null)
-  assert.equal(distractorNeed("intro_echo"), null)
+  // intro_echo — the interactive DEBUT samples native-gloss meaning tiles
+  // (HEAR→tap-the-meaning), always toNative (native answer, target prompt).
+  assert.deepEqual(distractorNeed("intro_echo"), {
+    mode: "item",
+    count: 3,
+    answerLang: "native",
+    promptLang: "target",
+  })
+  assert.deepEqual(distractorNeed("intro_echo", { choices: 3 }), {
+    mode: "item",
+    count: 2,
+    answerLang: "native",
+    promptLang: "target",
+  })
   // grammar_note inherits its embedded drill's row
   assert.deepEqual(
     distractorNeed("grammar_note", {
@@ -600,6 +613,44 @@ test("toNative word card: distractors are other words' es glosses", async () => 
   }
   const texts = set.distractors.map((d) => d.text).sort()
   assert.deepEqual(texts, ["el té", "la leche"])
+})
+
+test("intro_echo word DEBUT: buildDistractorRequest samples native-gloss meaning tiles", async () => {
+  const { deps, resolver } = fresh()
+  // coffee — the debut hears the target, taps its native meaning (el café),
+  // with other words' es glosses as distractors (same toNative pool as choice).
+  const answer = await resolveOne(resolver, { kind: "word", source: "en", id: "coffee" })
+  const req = buildDistractorRequest({
+    activityType: "intro_echo",
+    cardId: "intro-1",
+    answer,
+    ctx: CTX,
+    targetB: -0.55,
+    recentKeys: new Set(),
+    params: { choices: 3, intro: true },
+  })
+  assert.ok(req)
+  assert.equal(req.answerLang, "es") // native meaning tiles
+  assert.equal(req.promptLang, "en") // the heard target
+  const set = await sampleDistractors(req, resolver, deps, CTX)
+  assert.equal(set.shortfall, 0)
+  const texts = set.distractors.map((d) => d.text).sort()
+  assert.deepEqual(texts, ["el té", "la leche"])
+})
+
+test("intro_echo on a single-language stack ⇒ no request (degrades to passive)", async () => {
+  const { resolver } = fresh()
+  const answer = await resolveOne(resolver, { kind: "word", source: "en", id: "coffee" })
+  const req = buildDistractorRequest({
+    activityType: "intro_echo",
+    cardId: "intro-solo",
+    answer,
+    ctx: { courseId: "journey_en", targetLang: "en" }, // no nativeLang
+    targetB: 0,
+    recentKeys: new Set(),
+    params: { intro: true },
+  })
+  assert.equal(req, null)
 })
 
 test("toNative word card: deterministic across fresh resolvers", async () => {
