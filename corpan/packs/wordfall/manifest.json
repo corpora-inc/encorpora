@@ -10,7 +10,7 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "minAppVersion": "0.17.0",
+  "minAppVersion": "0.20.3",
   "activities": [
     {
       "activityType": "wordfall:catch",

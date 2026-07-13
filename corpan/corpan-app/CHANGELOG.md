@@ -53,6 +53,12 @@ Conventions: `corpan/CHANGELOGS.md`.
   no-3D fallback) and never reflows the card.
 
 ### Fixed
+- **The paywall's offer-code field renders dark on the dark paywall in light
+  mode.** The "Offer or affiliate code" input filled with `bg-background` — a
+  token the paywall's scoped palette never overrode — so in light mode it drew a
+  white field on the near-black surface. The paywall now owns its own
+  `--background` and sets `color-scheme: dark`, so the field and native control
+  chrome render for the dark surface regardless of the app/OS theme.
 - **"Punto de control" no longer appears several times in a row.** The Journey
   cadence checkpoint had no back-to-back floor and a fragile catch-up tally: a
   boss batch or a large content batch could leave the emit position leading the
