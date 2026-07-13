@@ -353,7 +353,8 @@
       "subtitle": "Journey serverer en daglig blanding av nytt stoff og repetisjon på {{lang}} – ett kort om gangen.",
       "guided": {
         "label": "Guidet daglig vei",
-        "desc": "En kort daglig økt, planlagt for deg."
+        "desc": "En kort daglig økt, planlagt for deg.",
+        "unavailable": "Den veiledede banen er ennå ikke tilgjengelig for {{lang}}."
       },
       "explore": {
         "label": "I eget tempo",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Du er à jour for nå",
       "loading": "Gjør klar kortene dine…",
-      "loadError": "Journey kunne ikke lastes. Prøv igjen fra Hjem."
+      "loadError": "Journey kunne ikke lastes. Prøv igjen fra Hjem.",
+      "retry": "Prøv igjen"
     },
     "popin": {
       "pronounceTitle": "Uttal det",

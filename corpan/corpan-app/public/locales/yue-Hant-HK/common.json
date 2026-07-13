@@ -353,7 +353,8 @@
       "subtitle": "Journey 每日以 {{lang}} 為你送上新內容同溫習嘅組合 — 每次一張卡。",
       "guided": {
         "label": "引導式每日路徑",
-        "desc": "為你安排好嘅簡短每日課節。"
+        "desc": "為你安排好嘅簡短每日課節。",
+        "unavailable": "{{lang}} 嘅引導課程仲未推出。"
       },
       "explore": {
         "label": "自己嘅節奏",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "而家你已經學晒",
       "loading": "準備緊你嘅卡…",
-      "loadError": "Journey 載入唔到。請由主頁再試。"
+      "loadError": "Journey 載入唔到。請由主頁再試。",
+      "retry": "再試一次"
     },
     "popin": {
       "pronounceTitle": "讀吓佢",

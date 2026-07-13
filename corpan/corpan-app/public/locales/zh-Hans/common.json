@@ -353,7 +353,8 @@
       "subtitle": "Journey 每天以 {{lang}} 提供新内容与复习的组合 — 一次一张卡。",
       "guided": {
         "label": "引导式每日路径",
-        "desc": "为你规划好的简短每日学习。"
+        "desc": "为你规划好的简短每日学习。",
+        "unavailable": "{{lang}} 的引导式路径尚未推出。"
       },
       "explore": {
         "label": "自主节奏",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "目前你都学完了",
       "loading": "正在准备你的卡片…",
-      "loadError": "Journey 加载失败。请从主页重试。"
+      "loadError": "Journey 加载失败。请从主页重试。",
+      "retry": "重试"
     },
     "popin": {
       "pronounceTitle": "读一读",

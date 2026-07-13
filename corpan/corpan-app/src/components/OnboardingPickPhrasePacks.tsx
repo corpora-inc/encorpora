@@ -15,6 +15,18 @@
 //   - Catalog still loading → render a calm skeleton until it lands.
 //   - Catalog loaded & starter list empty → friendly placeholder so the step
 //     still occupies its place in the wizard (auto-skip-on-empty broke Back).
+//   - Catalog loaded, starter list non-empty, but EVERY starter pack is
+//     already installed (`planInstallAll` plan is empty) → CTO feedback: the
+//     user should never see this step at all, it should silently advance.
+//     Catalog fetch is async (not guaranteed to have landed by the time the
+//     onboarding graph transitions into this node), so the skip is decided
+//     HERE, in a layout effect, once the real installed-registry + catalog
+//     state is actually known — not in the graph. Guarded by
+//     `Draft.phrasePacksAutoSkipped` so a Back navigation into an
+//     already-skipped step doesn't bounce the user forward again (see that
+//     field's doc); on a guarded re-entry the pre-existing "already have
+//     these" message + Continue renders instead, same as the empty-list case
+//     above.
 //   - "Install all" activates + downloads the not-installed, entitled starter
 //     packs (see `planInstallAll`), showing "Installing N of M…" progress and
 //     surfacing any partial failure. A pack that fails to download is dropped
@@ -26,7 +38,7 @@
 // Visual rhythm matches OnboardingPickPrimary's calm aesthetic: generous
 // hero, single accent color, no marketing copy, scalable on iPad / desktop.
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import {
     AlertTriangle,
@@ -47,6 +59,7 @@ import { useInstallContext } from "@/contentPacks/InstallContext";
 import {
     planInstallAll,
     reconcileActiveAfterBatch,
+    shouldAutoSkipPhrasePacks,
 } from "@/contentPacks/phrasePackInstall";
 import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
@@ -61,7 +74,12 @@ const STEP_PICK_LEARNING = 2;
 
 type Phase = "idle" | "installing" | "failed";
 
-export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepProps = {}) {
+export function OnboardingPickPhrasePacks({
+    onAdvance,
+    onBack,
+    phrasePacksAutoSkipped,
+    markPhrasePacksAutoSkipped,
+}: OnboardingStepProps = {}) {
     const { t } = useTranslation();
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setPhrasePackIds = useSettingsStore((s) => s.setPhrasePackIds);
@@ -215,6 +233,52 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
     };
 
     const hasStarter = starterPacks.length > 0;
+
+    // Silent auto-skip (CTO feedback): once the catalog + installed-registry
+    // state we need actually lands (it's async — see the file header), if
+    // nothing is left to install, advance without ever painting this screen.
+    // `useLayoutEffect` (not passive), same trick as OnboardingEngine's
+    // terminal-node commit, so the skip is decided before the browser paints
+    // — no flash of the "already have these" message on the way through.
+    // Guarded twice: `autoSkipFiredRef` stops a second advance() within this
+    // same mount (e.g. a re-render before the navigation commits);
+    // `phrasePacksAutoSkipped` — persisted on the onboarding draft, NOT
+    // component state, so it survives this step unmounting — stops it from
+    // firing again if Back later lands the user back on this step. Without
+    // that second guard, Back → auto-advance → forward would trap the user
+    // in a bounce loop they could never escape (the empty-starter-list case
+    // above hit this exact failure mode, which is why THAT case renders a
+    // placeholder instead of auto-skipping). On a guarded re-entry this step
+    // falls through to its normal "already have these" message + Continue.
+    const autoSkipFiredRef = useRef(false);
+    useLayoutEffect(() => {
+        if (
+            autoSkipFiredRef.current ||
+            !shouldAutoSkipPhrasePacks({
+                lastFetched,
+                hasStarter,
+                planAvailableCount: plan.available.length,
+                phase,
+                expanded,
+                alreadySkipped: !!phrasePacksAutoSkipped,
+            })
+        ) {
+            return;
+        }
+        autoSkipFiredRef.current = true;
+        markPhrasePacksAutoSkipped?.();
+        advance();
+    }, [
+        phrasePacksAutoSkipped,
+        markPhrasePacksAutoSkipped,
+        phase,
+        expanded,
+        lastFetched,
+        hasStarter,
+        plan.available.length,
+        advance,
+    ]);
+
     const allSelected =
         plan.available.length > 0 &&
         plan.available.every((p) => selectedIds.has(p.id));

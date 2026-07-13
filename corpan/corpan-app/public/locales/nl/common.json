@@ -353,7 +353,8 @@
       "subtitle": "De Journey serveert dagelijks een mix van nieuw materiaal en herhaling in {{lang}} — kaart voor kaart.",
       "guided": {
         "label": "Begeleid dagelijks pad",
-        "desc": "Een korte dagelijkse sessie, voor jou gepland."
+        "desc": "Een korte dagelijkse sessie, voor jou gepland.",
+        "unavailable": "Het begeleide pad is nog niet beschikbaar voor {{lang}}."
       },
       "explore": {
         "label": "Eigen tempo",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "Je bent voorlopig bij",
       "loading": "Je kaarten worden voorbereid…",
-      "loadError": "De Journey kon niet laden. Probeer het opnieuw vanaf Home."
+      "loadError": "De Journey kon niet laden. Probeer het opnieuw vanaf Home.",
+      "retry": "Opnieuw proberen"
     },
     "popin": {
       "pronounceTitle": "Spreek het uit",

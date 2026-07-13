@@ -64,6 +64,37 @@ npm run tauri <android>/<ios> dev
 
 When the Tauri shell opens, you can complete the onboarding flow to create your first stack and begin exploring sentences.
 
+#### Point a Tauri dev build at a local pack catalog
+
+Current app builds (>= 0.10.0) install packs from the **v3** catalog
+exclusively (`src/lib/offlineCache/resources.ts`); `VITE_GAME_CATALOG_URL`
+only feeds a legacy v1/v2 fallback that's rarely reached. To test packs from
+a local server, export `VITE_GAME_CATALOG_V3_URL` in the *same shell* before
+the tauri command:
+
+```bash
+VITE_GAME_CATALOG_V3_URL=http://10.0.0.49:8000/corpan/packs/catalog-v3.json \
+  npm run tauri android dev
+```
+
+- The served JSON must be **v3-shaped**: `{ "version": 3, "generatedAt": "...",
+  "packs": [...] }`, with each entry's `minAppVersion` satisfied by the
+  running app's version (see `package.json` `version`). A v1 array (plain
+  `catalog.json`) fails to parse as v3 and silently falls back to
+  production — it won't error, it'll just look like the override "didn't
+  take."
+- Android debug builds allow cleartext (`http://`) traffic
+  (`usesCleartextTraffic` is `true` for the `debug` build type in
+  `src-tauri/gen/android/app/build.gradle.kts`; release builds keep it
+  `false`), so a plain `http://<lan-ip>:<port>` URL works as-is on a
+  same-LAN device — no HTTPS or `adb reverse` needed. If the device can't
+  reach the host over LAN (different subnet, VPN, isolated guest wifi), use
+  `adb reverse tcp:8000 tcp:8000` and point the URL at
+  `http://localhost:8000/...` instead (`localhost` cleartext is always
+  allowed).
+- The override is DEV-gated in code (`import.meta.env.DEV`) — it's a no-op
+  in release/production builds regardless of what's in the environment.
+
 ## Building for Production
 - Bundle the web assets only: `npm run build`
 - Create a native desktop bundle (msi, dmg, AppImage, etc.): `npm run tauri build`

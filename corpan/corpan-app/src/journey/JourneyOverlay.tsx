@@ -47,12 +47,17 @@ export function JourneyOverlay(props: {
 
   const [built, setBuilt] = useState<BuiltJourney | null>(null)
   const [error, setError] = useState<string | null>(null)
+  // Bumped by Retry to re-run the build effect after a transient failure (e.g. a
+  // course pack that was momentarily unreachable / not yet installed).
+  const [attempt, setAttempt] = useState(0)
 
   const targetLang = journeyTargetLang(languages)
   const nativeLang = languages[0]
 
   useEffect(() => {
     let cancelled = false
+    setError(null)
+    setBuilt(null)
     buildJourneyDeps({
       stackId: stackId || "default",
       targetLang,
@@ -70,11 +75,12 @@ export function JourneyOverlay(props: {
     return () => {
       cancelled = true
     }
-    // Rebuild only per overlay mount — App unmounts us on exit.
+    // Rebuild per overlay mount and per Retry (`attempt`). App unmounts us on exit.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [attempt])
 
   const exit = () => window.dispatchEvent(new CustomEvent(JOURNEY_EXIT_EVENT))
+  const retry = () => setAttempt((a) => a + 1)
 
   if (error) {
     return (
@@ -84,13 +90,23 @@ export function JourneyOverlay(props: {
         data-testid="journey-overlay-error"
       >
         <div className="text-lg font-semibold text-foreground">{t("journey.feed.loadError")}</div>
-        <button
-          type="button"
-          onClick={exit}
-          className="min-h-11 rounded-xl border border-border bg-card px-5 text-sm font-medium text-foreground"
-        >
-          {t("journey.chrome.home")}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={retry}
+            data-testid="journey-overlay-retry"
+            className="min-h-11 rounded-xl bg-purple-600 px-5 text-sm font-semibold text-white transition-colors hover:bg-purple-500"
+          >
+            {t("journey.feed.retry")}
+          </button>
+          <button
+            type="button"
+            onClick={exit}
+            className="min-h-11 rounded-xl border border-border bg-card px-5 text-sm font-medium text-foreground"
+          >
+            {t("journey.chrome.home")}
+          </button>
+        </div>
       </div>
     )
   }

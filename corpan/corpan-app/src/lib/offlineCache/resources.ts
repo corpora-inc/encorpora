@@ -49,11 +49,34 @@ export const QUOTA_CONFIG_POLICY: JsonCachePolicy = { ttlMs: 21_600_000, schema:
 
 const CATALOG_V3_URL = "https://encorpora.io/corpan/packs/catalog-v3.json"
 
-/** Raw `CatalogV3` body — cached UNfiltered (§3.2 row 1). */
+/** Raw `CatalogV3` body — cached UNfiltered (§3.2 row 1).
+ *
+ * `VITE_GAME_CATALOG_V3_URL` lets a dev point a Tauri dev build (desktop OR
+ * mobile — `npm run tauri android dev` / `npm run tauri ios dev`) at a local
+ * pack catalog server instead of production, e.g.:
+ *
+ *   VITE_GAME_CATALOG_V3_URL=http://10.0.0.49:8000/corpan/packs/catalog-v3.json \
+ *     npm run tauri android dev
+ *
+ * This is the URL that actually matters for pack installs on this app
+ * version — `VITE_GAME_CATALOG_URL` (contentPacks/catalog.ts) only feeds the
+ * legacy v1/v2 fallback path, which current (>= 0.10.0) app builds only ever
+ * reach if the v3 fetch itself fails. The served body must be v3-shaped
+ * (`{ version: 3, generatedAt, packs: [...] }`, each pack with a
+ * `minAppVersion` this build satisfies) — `parseCatalogV3` silently drops
+ * anything else, and the read-time filter never clobbers a good cached
+ * catalog with an empty one (see `applyRaw` in store/catalog.ts), so a
+ * malformed override can look like "still hitting production" rather than
+ * erroring.
+ *
+ * DEV-gated: ignored in release builds so a stray env var can never divert
+ * a production install away from `CATALOG_V3_URL`. */
 export const catalogV3Resource: JsonResource<CatalogV3> = {
   key: "catalog-v3",
   url: () => {
-    const envUrl = import.meta.env.VITE_GAME_CATALOG_V3_URL
+    const envUrl = import.meta.env.DEV
+      ? import.meta.env.VITE_GAME_CATALOG_V3_URL
+      : undefined
     return typeof envUrl === "string" && envUrl.length > 0 ? envUrl : CATALOG_V3_URL
   },
   parse: parseCatalogV3,
@@ -77,7 +100,9 @@ export function visibleCatalog(
 export const phrasePackCatalogResource: JsonResource<PhrasePackCatalog> = {
   key: "phrase-pack-catalog",
   url: () => {
-    const envUrl = import.meta.env.VITE_PHRASE_PACK_CATALOG_URL
+    const envUrl = import.meta.env.DEV
+      ? import.meta.env.VITE_PHRASE_PACK_CATALOG_URL
+      : undefined
     return typeof envUrl === "string" && envUrl.length > 0
       ? envUrl
       : DEFAULT_PHRASE_PACK_CATALOG_URL
@@ -91,7 +116,9 @@ export const phrasePackCatalogResource: JsonResource<PhrasePackCatalog> = {
 export const wordPackIndexResource: JsonResource<WordPackCatalog> = {
   key: "word-pack-index",
   url: () => {
-    const envUrl = import.meta.env.VITE_WORD_PACK_CATALOG_URL
+    const envUrl = import.meta.env.DEV
+      ? import.meta.env.VITE_WORD_PACK_CATALOG_URL
+      : undefined
     return typeof envUrl === "string" && envUrl.length > 0
       ? envUrl
       : DEFAULT_WORD_PACK_CATALOG_URL

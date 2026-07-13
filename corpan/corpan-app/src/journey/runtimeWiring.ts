@@ -17,8 +17,7 @@ import { beginActivitySession, endActivitySession } from "../contentPacks/activi
 import { createHostApi } from "../contentPacks/hostApi"
 import {
   fetchJourneyPackCatalog,
-  findJourneyPackForTarget,
-  visibleJourneyPacks,
+  resolveJourneyPackForTarget,
 } from "../contentPacks/journeyPackCatalog"
 import { getAppVersion } from "../lib/appVersion"
 import { isAndroid } from "../util/browser"
@@ -307,11 +306,9 @@ async function ensureJourneyPackInstalled(targetLang: string): Promise<string> {
   const catalog = await fetchJourneyPackCatalog()
   if (!catalog) throw new Error(`[journey] no course pack installed for ${targetLang} and the index is unreachable`)
   const appVersion = await getAppVersion()
-  const devMode = useCatalogStore.getState().devMode
-  const entry = findJourneyPackForTarget(
-    visibleJourneyPacks(catalog, appVersion, devMode),
-    targetLang,
-  )
+  // Channel policy (stable preferred, preview fallback) lives in the shared
+  // selection seam so every journey entry point agrees.
+  const entry = resolveJourneyPackForTarget(catalog, targetLang, appVersion)
   if (!entry) throw new Error(`[journey] no course pack available for ${targetLang}`)
   await installJourneyPack(entry.id, entry.zipUrl, entry.sha256 ?? null)
   // Register the install (phrasePacks pattern) so cold-start renders offline.

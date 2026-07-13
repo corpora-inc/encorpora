@@ -31,7 +31,12 @@ journey_pack/
 python3 build_journey_pack.py en                        # courses/en → dist/
 python3 validate_journey_pack.py en [--json]            # all gates, rc!=0 on error
 python3 publish_journey_pack.py en --dry-run            # gate + print index entry
-python3 publish_journey_pack.py en --channel preview    # real publish (operator)
+python3 publish_journey_pack.py en                      # real publish (operator);
+                                                          # channel defaults per-target
+                                                          # (CHANNEL_DEFAULTS in the
+                                                          # script) — journey_en → stable
+                                                          # since the 0.20.6 promotion;
+                                                          # pass --channel to override
 
 # fixture chain (what the tests run)
 python3 build_journey_pack.py en --course-dir fixtures/course --out fixtures/dist

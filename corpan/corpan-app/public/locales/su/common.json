@@ -430,7 +430,8 @@
       "subtitle": "Journey nyayogikeun campuran matéri anyar sareng pangulangan unggal dinten dina {{lang}} — kartu demi kartu.",
       "guided": {
         "label": "Jalur harian dipandu",
-        "desc": "Sesi harian anu singget, dirarancang pikeun anjeun."
+        "desc": "Sesi harian anu singget, dirarancang pikeun anjeun.",
+        "unavailable": "Jalur nu dipandu tacan sayagi pikeun {{lang}}."
       },
       "explore": {
         "label": "Lampah sorangan",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "Ayeuna mah geus bérés kabéh",
       "loading": "Nyiapkeun kartu anjeun…",
-      "loadError": "Journey teu bisa dimuat. Cobian deui ti Imah."
+      "loadError": "Journey teu bisa dimuat. Cobian deui ti Imah.",
+      "retry": "Cobian deui"
     },
     "popin": {
       "pronounceTitle": "Ucapkeun",

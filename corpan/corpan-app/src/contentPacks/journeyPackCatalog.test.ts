@@ -32,6 +32,11 @@ let findJourneyPackForTarget: (
   packs: Entry[],
   targetLang: string,
 ) => Entry | undefined
+let resolveJourneyPackForTarget: (
+  catalog: Catalog,
+  targetLang: string,
+  appVersion: string,
+) => Entry | undefined
 let DEFAULT_JOURNEY_PACK_CATALOG_URL: string
 let SUPPORTED_JOURNEY_SCHEMA_VERSIONS: Set<number>
 
@@ -54,6 +59,7 @@ before(async () => {
   parseJourneyPackCatalog = mod.parseJourneyPackCatalog
   visibleJourneyPacks = mod.visibleJourneyPacks
   findJourneyPackForTarget = mod.findJourneyPackForTarget
+  resolveJourneyPackForTarget = mod.resolveJourneyPackForTarget
   DEFAULT_JOURNEY_PACK_CATALOG_URL = mod.DEFAULT_JOURNEY_PACK_CATALOG_URL
   SUPPORTED_JOURNEY_SCHEMA_VERSIONS = mod.SUPPORTED_JOURNEY_SCHEMA_VERSIONS
 })
@@ -143,6 +149,77 @@ test("findJourneyPackForTarget: exact match first, then base subtag", () => {
   // base-subtag fallback when no exact entry exists
   assert.equal(findJourneyPackForTarget(packs, "pt-PT")?.id, "journey_pt")
   assert.equal(findJourneyPackForTarget(packs, "zh-Hans"), undefined)
+})
+
+test("resolveJourneyPackForTarget: prefers stable when both channels exist", () => {
+  const c = parseJourneyPackCatalog(
+    catalog([
+      entry({ id: "journey_en_preview", targetLang: "en", channel: "preview" }),
+      entry({ id: "journey_en_stable", targetLang: "en", channel: "stable" }),
+    ]),
+  )
+  assert.ok(c)
+  assert.equal(resolveJourneyPackForTarget(c, "en", "1.0.0")?.id, "journey_en_stable")
+})
+
+test("resolveJourneyPackForTarget: falls back to preview when no stable exists", () => {
+  const c = parseJourneyPackCatalog(
+    catalog([entry({ id: "journey_en", targetLang: "en", channel: "preview" })]),
+  )
+  assert.ok(c)
+  // The exact production repro: EN target, only a preview-channel pack.
+  assert.equal(resolveJourneyPackForTarget(c, "en", "1.0.0")?.id, "journey_en")
+})
+
+test("resolveJourneyPackForTarget: an unset channel counts as stable", () => {
+  const c = parseJourneyPackCatalog(
+    catalog([
+      { ...entry({ id: "journey_en_default", targetLang: "en" }), channel: undefined },
+      entry({ id: "journey_en_preview", targetLang: "en", channel: "preview" }),
+    ]),
+  )
+  assert.ok(c)
+  assert.equal(resolveJourneyPackForTarget(c, "en", "1.0.0")?.id, "journey_en_default")
+})
+
+test("resolveJourneyPackForTarget: compat gates hold for BOTH channels", () => {
+  // A preview pack that fails minAppVersion / schemaVersion must NOT be offered
+  // as a fallback — an app never downloads a course it cannot run.
+  const tooNew = parseJourneyPackCatalog(
+    catalog([entry({ id: "journey_en", targetLang: "en", channel: "preview", minAppVersion: "99.0.0" })]),
+  )
+  assert.ok(tooNew)
+  assert.equal(resolveJourneyPackForTarget(tooNew, "en", "1.0.0"), undefined)
+
+  const badSchema = parseJourneyPackCatalog(
+    catalog([{ ...entry({ id: "journey_en", targetLang: "en", channel: "preview" }), schemaVersion: 999 }]),
+  )
+  assert.ok(badSchema)
+  assert.equal(resolveJourneyPackForTarget(badSchema, "en", "1.0.0"), undefined)
+})
+
+test("resolveJourneyPackForTarget: base-subtag fallback + preview honored together", () => {
+  const c = parseJourneyPackCatalog(
+    catalog([entry({ id: "journey_pt", targetLang: "pt", channel: "preview" })]),
+  )
+  assert.ok(c)
+  assert.equal(resolveJourneyPackForTarget(c, "pt-BR", "1.0.0")?.id, "journey_pt")
+})
+
+test("onboarding availability decision: undefined ⇒ no guided offer", () => {
+  // The onboarding guided opt-in is gated on `!!resolveJourneyPackForTarget`.
+  // No pack for the target (only an incompatible one) ⇒ decision is "unavailable".
+  const c = parseJourneyPackCatalog(
+    catalog([entry({ id: "journey_fr", targetLang: "fr", channel: "stable" })]),
+  )
+  assert.ok(c)
+  assert.equal(!!resolveJourneyPackForTarget(c, "en", "1.0.0"), false)
+  // ...but a published preview pack for the target ⇒ "available".
+  const c2 = parseJourneyPackCatalog(
+    catalog([entry({ id: "journey_en", targetLang: "en", channel: "preview" })]),
+  )
+  assert.ok(c2)
+  assert.equal(!!resolveJourneyPackForTarget(c2, "en", "1.0.0"), true)
 })
 
 test("constants line up with the publisher", () => {

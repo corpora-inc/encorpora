@@ -353,7 +353,8 @@
       "subtitle": "Journey serverar en daglig mix av nytt material och repetition på {{lang}} — ett kort i taget.",
       "guided": {
         "label": "Guidad daglig väg",
-        "desc": "Ett kort dagligt pass, planerat åt dig."
+        "desc": "Ett kort dagligt pass, planerat åt dig.",
+        "unavailable": "Den guidade vägen är inte tillgänglig för {{lang}} ännu."
       },
       "explore": {
         "label": "I egen takt",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "Du är i fas för tillfället",
       "loading": "Förbereder dina kort…",
-      "loadError": "Journey kunde inte laddas. Försök igen från Hem."
+      "loadError": "Journey kunde inte laddas. Försök igen från Hem.",
+      "retry": "Försök igen"
     },
     "popin": {
       "pronounceTitle": "Uttala det",

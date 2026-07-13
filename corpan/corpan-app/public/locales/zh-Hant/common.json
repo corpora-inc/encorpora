@@ -353,7 +353,8 @@
       "subtitle": "Journey 每天以 {{lang}} 提供新內容與複習的組合 — 一次一張卡。",
       "guided": {
         "label": "引導式每日路徑",
-        "desc": "為你規劃好的簡短每日學習。"
+        "desc": "為你規劃好的簡短每日學習。",
+        "unavailable": "{{lang}} 的引導式路徑尚未推出。"
       },
       "explore": {
         "label": "自主節奏",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "目前你都學完了",
       "loading": "正在準備你的卡片…",
-      "loadError": "Journey 載入失敗。請從首頁重試。"
+      "loadError": "Journey 載入失敗。請從首頁重試。",
+      "retry": "再試一次"
     },
     "popin": {
       "pronounceTitle": "唸一唸",

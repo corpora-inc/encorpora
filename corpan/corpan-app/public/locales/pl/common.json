@@ -353,7 +353,8 @@
       "subtitle": "Journey codziennie serwuje mieszankę nowego materiału i powtórek w języku {{lang}} — karta po karcie.",
       "guided": {
         "label": "Prowadzona ścieżka codzienna",
-        "desc": "Krótka codzienna sesja, zaplanowana dla Ciebie."
+        "desc": "Krótka codzienna sesja, zaplanowana dla Ciebie.",
+        "unavailable": "Ścieżka z przewodnikiem nie jest jeszcze dostępna dla {{lang}}."
       },
       "explore": {
         "label": "Własne tempo",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Na razie wszystko nadrobione",
       "loading": "Przygotowuję twoje karty…",
-      "loadError": "Journey nie mogło się załadować. Spróbuj ponownie ze Startu."
+      "loadError": "Journey nie mogło się załadować. Spróbuj ponownie ze Startu.",
+      "retry": "Spróbuj ponownie"
     },
     "popin": {
       "pronounceTitle": "Wymów to",

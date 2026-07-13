@@ -353,7 +353,8 @@
       "subtitle": "Journey는 매일 {{lang}}의 새로운 내용과 복습을 알맞게 섞어 카드 한 장씩 제공해 드립니다.",
       "guided": {
         "label": "매일 안내되는 학습 경로",
-        "desc": "고객님을 위해 계획된 짧은 매일 학습 세션입니다."
+        "desc": "고객님을 위해 계획된 짧은 매일 학습 세션입니다.",
+        "unavailable": "{{lang}}용 가이드 학습은 아직 제공되지 않습니다."
       },
       "explore": {
         "label": "자율 학습",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "지금은 모두 마쳤어요",
       "loading": "카드를 준비하고 있어요…",
-      "loadError": "Journey를 불러오지 못했어요. 홈에서 다시 시도해 주세요."
+      "loadError": "Journey를 불러오지 못했어요. 홈에서 다시 시도해 주세요.",
+      "retry": "다시 시도하세요"
     },
     "popin": {
       "pronounceTitle": "발음해 보기",

@@ -353,7 +353,8 @@
       "subtitle": "El Journey te sirve cada día una mezcla de material nuevo y repaso en {{lang}} — tarjeta a tarjeta.",
       "guided": {
         "label": "Ruta diaria guiada",
-        "desc": "Una sesión diaria breve, planificada para ti."
+        "desc": "Una sesión diaria breve, planificada para ti.",
+        "unavailable": "La ruta guiada aún no está disponible para {{lang}}."
       },
       "explore": {
         "label": "A tu ritmo",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Estás al día por ahora",
       "loading": "Preparando tus tarjetas…",
-      "loadError": "El Journey no pudo cargarse. Inténtalo desde Inicio."
+      "loadError": "El Journey no pudo cargarse. Inténtalo desde Inicio.",
+      "retry": "Inténtalo de nuevo"
     },
     "popin": {
       "pronounceTitle": "Pronúncialo",

@@ -353,7 +353,8 @@
       "subtitle": "Journey tarjoaa joka päivä sekoituksen uutta materiaalia ja kertausta kielellä {{lang}} — kortti kerrallaan.",
       "guided": {
         "label": "Ohjattu päivittäinen polku",
-        "desc": "Lyhyt päivittäinen sessio, suunniteltu sinulle."
+        "desc": "Lyhyt päivittäinen sessio, suunniteltu sinulle.",
+        "unavailable": "Ohjattu polku ei ole vielä saatavilla kielelle {{lang}}."
       },
       "explore": {
         "label": "Omaan tahtiin",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Olet ajan tasalla toistaiseksi",
       "loading": "Valmistellaan korttejasi…",
-      "loadError": "Journey ei latautunut. Yritä uudelleen Kodista."
+      "loadError": "Journey ei latautunut. Yritä uudelleen Kodista.",
+      "retry": "Yritä uudelleen"
     },
     "popin": {
       "pronounceTitle": "Äännä se",

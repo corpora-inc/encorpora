@@ -430,7 +430,8 @@
       "subtitle": "The Journey serves a daily mix of new material and review in {{lang}} — one card at a time.",
       "guided": {
         "label": "Guided daily path",
-        "desc": "A short daily session, planned for you."
+        "desc": "A short daily session, planned for you.",
+        "unavailable": "The guided path isn't available for {{lang}} yet."
       },
       "explore": {
         "label": "Self-paced",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "You're caught up for now",
       "loading": "Preparing your cards…",
-      "loadError": "The Journey couldn't load. Try again from Home."
+      "loadError": "The Journey couldn't load. Try again from Home.",
+      "retry": "Try again"
     },
     "popin": {
       "pronounceTitle": "Pronounce it",

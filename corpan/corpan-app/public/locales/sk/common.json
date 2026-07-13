@@ -353,7 +353,8 @@
       "subtitle": "Journey vám každý deň ponúkne mix nového materiálu a opakovania v {{lang}} — kartu po karte.",
       "guided": {
         "label": "Vedená denná cesta",
-        "desc": "Krátka denná lekcia, naplánovaná pre vás."
+        "desc": "Krátka denná lekcia, naplánovaná pre vás.",
+        "unavailable": "Sprevádzaná cesta zatiaľ nie je dostupná pre {{lang}}."
       },
       "explore": {
         "label": "Vlastným tempom",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Zatiaľ máš všetko",
       "loading": "Pripravujem tvoje karty…",
-      "loadError": "Journey sa nepodarilo načítať. Skús to znova z Domova."
+      "loadError": "Journey sa nepodarilo načítať. Skús to znova z Domova.",
+      "retry": "Skúsiť znova"
     },
     "popin": {
       "pronounceTitle": "Vyslov to",

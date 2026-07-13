@@ -353,7 +353,8 @@
       "subtitle": "Journey vam vsak dan postreže mešanico novega gradiva in ponavljanja v {{lang}} — kartico za kartico.",
       "guided": {
         "label": "Vodena dnevna pot",
-        "desc": "Kratka dnevna seja, načrtovana za vas."
+        "desc": "Kratka dnevna seja, načrtovana za vas.",
+        "unavailable": "Vodena pot za {{lang}} še ni na voljo."
       },
       "explore": {
         "label": "Lastno tempo",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Zaenkrat si na tekočem",
       "loading": "Pripravljam tvoje kartice…",
-      "loadError": "Journeyja ni bilo mogoče naložiti. Poskusi znova z Domov."
+      "loadError": "Journeyja ni bilo mogoče naložiti. Poskusi znova z Domov.",
+      "retry": "Poskusi znova"
     },
     "popin": {
       "pronounceTitle": "Izgovori",

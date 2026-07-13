@@ -353,7 +353,8 @@
       "subtitle": "Journey kasdien pateikia naujos medžiagos ir kartojimo derinį {{lang}} kalba — kortelė po kortelės.",
       "guided": {
         "label": "Vedamas kasdienis kelias",
-        "desc": "Trumpas kasdienis užsiėmimas, suplanuotas jums."
+        "desc": "Trumpas kasdienis užsiėmimas, suplanuotas jums.",
+        "unavailable": "Vedamas kelias dar nepasiekiamas kalbai {{lang}}."
       },
       "explore": {
         "label": "Savarankiškai",
@@ -1055,7 +1056,8 @@
     "feed": {
       "caughtUp": "Kol kas viską spėjai",
       "loading": "Ruošiamos tavo kortelės…",
-      "loadError": "Journey nepavyko įkelti. Bandyk dar kartą iš Pradžios."
+      "loadError": "Journey nepavyko įkelti. Bandyk dar kartą iš Pradžios.",
+      "retry": "Bandykite dar kartą"
     },
     "popin": {
       "pronounceTitle": "Ištark",

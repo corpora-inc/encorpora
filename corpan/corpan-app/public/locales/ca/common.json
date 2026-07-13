@@ -353,7 +353,8 @@
       "subtitle": "El Journey et serveix cada dia una barreja de material nou i repàs en {{lang}} — targeta a targeta.",
       "guided": {
         "label": "Camí diari guiat",
-        "desc": "Una sessió diària curta, pensada per a tu."
+        "desc": "Una sessió diària curta, pensada per a tu.",
+        "unavailable": "El camí guiat encara no està disponible per a {{lang}}."
       },
       "explore": {
         "label": "Al teu ritme",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "Estàs al dia de moment",
       "loading": "Preparant les teves targetes…",
-      "loadError": "El Journey no s'ha pogut carregar. Torna-ho a provar des de l'Inici."
+      "loadError": "El Journey no s'ha pogut carregar. Torna-ho a provar des de l'Inici.",
+      "retry": "Torna-ho a provar"
     },
     "popin": {
       "pronounceTitle": "Pronuncia-ho",

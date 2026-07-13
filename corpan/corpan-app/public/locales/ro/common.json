@@ -353,7 +353,8 @@
       "subtitle": "Journey-ul îți oferă zilnic un mix de material nou și recapitulare în {{lang}} — card cu card.",
       "guided": {
         "label": "Traseu zilnic ghidat",
-        "desc": "O sesiune zilnică scurtă, planificată pentru tine."
+        "desc": "O sesiune zilnică scurtă, planificată pentru tine.",
+        "unavailable": "Traseul ghidat nu este încă disponibil pentru {{lang}}."
       },
       "explore": {
         "label": "În ritm propriu",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "Ești la zi deocamdată",
       "loading": "Îți pregătim cardurile…",
-      "loadError": "Journey nu s-a putut încărca. Încearcă din nou de pe Acasă."
+      "loadError": "Journey nu s-a putut încărca. Încearcă din nou de pe Acasă.",
+      "retry": "Încearcă din nou"
     },
     "popin": {
       "pronounceTitle": "Pronunță",

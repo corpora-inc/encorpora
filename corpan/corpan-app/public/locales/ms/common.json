@@ -353,7 +353,8 @@
       "subtitle": "Journey menghidangkan campuran bahan baharu dan ulang kaji dalam {{lang}} setiap hari — kad demi kad.",
       "guided": {
         "label": "Laluan harian berpandu",
-        "desc": "Sesi harian ringkas yang dirancang untuk anda."
+        "desc": "Sesi harian ringkas yang dirancang untuk anda.",
+        "unavailable": "Laluan berpandu belum tersedia untuk {{lang}}."
       },
       "explore": {
         "label": "Ikut rentak sendiri",
@@ -1055,7 +1056,8 @@
     "feed": {
       "caughtUp": "Buat masa ini anda terkini",
       "loading": "Menyediakan kad anda…",
-      "loadError": "Journey tidak dapat dimuatkan. Cuba lagi dari Laman utama."
+      "loadError": "Journey tidak dapat dimuatkan. Cuba lagi dari Laman utama.",
+      "retry": "Cuba lagi"
     },
     "popin": {
       "pronounceTitle": "Sebutkannya",

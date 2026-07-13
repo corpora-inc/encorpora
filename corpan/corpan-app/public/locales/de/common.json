@@ -353,7 +353,8 @@
       "subtitle": "Die Journey serviert dir täglich eine Mischung aus neuem Material und Wiederholung in {{lang}} – Karte für Karte.",
       "guided": {
         "label": "Geführter täglicher Weg",
-        "desc": "Eine kurze tägliche Session, für dich geplant."
+        "desc": "Eine kurze tägliche Session, für dich geplant.",
+        "unavailable": "Der geführte Pfad ist für {{lang}} noch nicht verfügbar."
       },
       "explore": {
         "label": "Im eigenen Tempo",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Du bist erst mal auf dem Laufenden",
       "loading": "Deine Karten werden vorbereitet…",
-      "loadError": "Die Journey konnte nicht geladen werden. Versuch es vom Startbildschirm aus."
+      "loadError": "Die Journey konnte nicht geladen werden. Versuch es vom Startbildschirm aus.",
+      "retry": "Erneut versuchen"
     },
     "popin": {
       "pronounceTitle": "Sprich es aus",

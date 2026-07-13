@@ -353,7 +353,8 @@
       "subtitle": "A Journey minden nap új anyagok és ismétlés keverékét kínálja {{lang}} nyelven — kártyáról kártyára.",
       "guided": {
         "label": "Vezetett napi útvonal",
-        "desc": "Rövid napi foglalkozás, neked megtervezve."
+        "desc": "Rövid napi foglalkozás, neked megtervezve.",
+        "unavailable": "A vezetett útvonal még nem érhető el ehhez: {{lang}}."
       },
       "explore": {
         "label": "Saját tempóban",
@@ -1064,7 +1065,8 @@
     "feed": {
       "caughtUp": "Egyelőre naprakész vagy",
       "loading": "Kártyáid előkészítése…",
-      "loadError": "A Journey nem töltődött be. Próbáld újra a Kezdőlapról."
+      "loadError": "A Journey nem töltődött be. Próbáld újra a Kezdőlapról.",
+      "retry": "Próbáld újra"
     },
     "popin": {
       "pronounceTitle": "Ejtsd ki",

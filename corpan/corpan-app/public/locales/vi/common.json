@@ -353,7 +353,8 @@
       "subtitle": "Mỗi ngày, Journey mang đến sự kết hợp giữa nội dung mới và ôn tập bằng {{lang}} — mỗi lần một thẻ.",
       "guided": {
         "label": "Lộ trình hằng ngày có dẫn lối",
-        "desc": "Một phiên học ngắn hằng ngày, được lên kế hoạch sẵn cho bạn."
+        "desc": "Một phiên học ngắn hằng ngày, được lên kế hoạch sẵn cho bạn.",
+        "unavailable": "Lộ trình có hướng dẫn chưa khả dụng cho {{lang}}."
       },
       "explore": {
         "label": "Tự học theo nhịp độ riêng",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "Hiện tại bạn đã học hết",
       "loading": "Đang chuẩn bị thẻ của bạn…",
-      "loadError": "Không tải được Journey. Thử lại từ Trang chủ."
+      "loadError": "Không tải được Journey. Thử lại từ Trang chủ.",
+      "retry": "Thử lại"
     },
     "popin": {
       "pronounceTitle": "Phát âm thử",

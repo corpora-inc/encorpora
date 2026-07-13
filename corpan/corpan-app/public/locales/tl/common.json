@@ -430,7 +430,8 @@
       "subtitle": "Araw-araw, naghahain ang Journey ng halo ng bagong materyal at review sa {{lang}} — isang kard sa bawat pagkakataon.",
       "guided": {
         "label": "Gabay na pang-araw-araw na landas",
-        "desc": "Isang maikling pang-araw-araw na session, pinaplano para sa iyo."
+        "desc": "Isang maikling pang-araw-araw na session, pinaplano para sa iyo.",
+        "unavailable": "Hindi pa available ang gabay na landas para sa {{lang}}."
       },
       "explore": {
         "label": "Sa sarili mong bilis",
@@ -1069,7 +1070,8 @@
     "feed": {
       "caughtUp": "Tapos ka na sa ngayon",
       "loading": "Inihahanda ang mga kard mo…",
-      "loadError": "Hindi ma-load ang Journey. Subukan ulit mula sa Home."
+      "loadError": "Hindi ma-load ang Journey. Subukan ulit mula sa Home.",
+      "retry": "Subukan muli"
     },
     "popin": {
       "pronounceTitle": "Bigkasin ito",

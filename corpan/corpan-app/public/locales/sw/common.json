@@ -353,7 +353,8 @@
       "subtitle": "Journey hukuletea kila siku mchanganyiko wa maudhui mapya na marudio katika {{lang}} — kadi moja baada ya nyingine.",
       "guided": {
         "label": "Njia ya kila siku iliyoongozwa",
-        "desc": "Kipindi kifupi cha kila siku, kilichopangwa kwa ajili yako."
+        "desc": "Kipindi kifupi cha kila siku, kilichopangwa kwa ajili yako.",
+        "unavailable": "Njia inayoongozwa bado haipatikani kwa {{lang}}."
       },
       "explore": {
         "label": "Kwa kasi yako mwenyewe",
@@ -1060,7 +1061,8 @@
     "feed": {
       "caughtUp": "Kwa sasa umemaliza yote",
       "loading": "Kadi zako zinaandaliwa…",
-      "loadError": "Journey haikuweza kupakiwa. Jaribu tena kutoka Nyumbani."
+      "loadError": "Journey haikuweza kupakiwa. Jaribu tena kutoka Nyumbani.",
+      "retry": "Jaribu tena"
     },
     "popin": {
       "pronounceTitle": "Litamke",

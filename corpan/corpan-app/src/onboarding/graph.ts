@@ -8,6 +8,7 @@ import { trackOnboardingCompleted, trackOnboardingLaunch } from "@/util/analytic
 import { bestFitExperience } from "./bestFit"
 import { resolveLanding, WHAT_TO_START_INTEREST, type WhatToStart } from "./resolveLanding"
 import { derivePlacement } from "./placement"
+import { isJourneyPackAvailableForTarget } from "@/journey/journeyAvailability"
 import type { OnboardingGraph, NodeCtx } from "./types"
 
 /** The phrase experience pack id (Phase 3). Until it exists as a pack, the
@@ -288,6 +289,14 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
         id: "guided",
         labelKey: "onboarding.journey.guided.label",
         descKey: "onboarding.journey.guided.desc",
+        // Don't offer a dead-end: the guided path needs a course pack (stable or
+        // a preview fallback) for the target language. Optimistic — enabled
+        // while the index check is in flight; if none is published the option
+        // renders disabled with `unavailableKey`. Uses the raw language CODE
+        // from settings (targets() yields display names) — same target the
+        // Journey overlay builds against (languages[1] ?? languages[0]).
+        available: () => isJourneyPackAvailableForTarget(journeyTargetCode()),
+        unavailableKey: "onboarding.journey.guided.unavailable",
         apply: (c) =>
           c.patch({ journeyOptIn: true, journeyPlacement: derivePlacement(c.draft.levels) }),
         next: "pickPhrasePacks",
@@ -421,4 +430,12 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
 function targetLabel(c: NodeCtx): string {
   const targets = c.targets()
   return targets[0] ?? c.primary()
+}
+
+/** The Journey target language CODE (not display name) — languages[1] after the
+ *  primary, else the single studied language. Mirrors `journeyTargetLang` in
+ *  JourneyOverlay so the availability check gates on the same course pack. */
+function journeyTargetCode(): string {
+  const langs = useSettingsStore.getState().languages
+  return langs[1] ?? langs[0] ?? "en"
 }

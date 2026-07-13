@@ -23,6 +23,16 @@ Conventions: `corpan/CHANGELOGS.md`.
   **Choose individually** (for low-bandwidth users and future paid packs). A
   pack that fails to download is dropped from the active set so the main loop
   never samples a pack that isn't on disk (`contentPacks/phrasePackInstall.ts`).
+- **Phrase-pack onboarding step now skips itself silently when every starter
+  pack is already installed**, instead of showing a "you already have the
+  starter phrase packs" message with a lone Continue button (CTO feedback: the
+  user should never see that screen). The catalog/installed-registry check is
+  async, so the skip is decided in the step itself once that state actually
+  lands (`shouldAutoSkipPhrasePacks` in `contentPacks/phrasePackInstall.ts`),
+  not in the onboarding graph; a draft-persisted guard
+  (`Draft.phrasePacksAutoSkipped`) stops Back navigation into the step from
+  re-triggering the skip and bouncing the user forward again — a guarded
+  re-entry still shows the original message + Continue as a fallback.
 
 ### Added
 - A small audio manager (`util/audioManager.ts`) now tracks the single active
@@ -37,6 +47,20 @@ Conventions: `corpan/CHANGELOGS.md`.
   gets friction added to it.
 
 ### Fixed
+- **Guided onboarding no longer dead-ends on Home when the only course pack for
+  the target language is preview-channel.** Three changes: (1) a shared journey
+  course-pack selection seam (`resolveJourneyPackForTarget` in
+  `contentPacks/journeyPackCatalog.ts`) now prefers a stable-channel pack but
+  falls back to a compatible preview-channel one when no stable pack exists for
+  the target — course packs are content, not experiments (compat gates
+  `minAppVersion`/`schemaVersion` still hold for both channels; the fallback is
+  logged, not surfaced). Every journey entry point (runtime install, Home hero
+  gating, onboarding) routes through it. (2) The onboarding guided opt-in now
+  checks course-pack availability for the chosen language (optimistic, never
+  blocks the flow) and renders the guided option disabled with a localized note
+  when none is published, instead of offering a path that dies at the feed.
+  (3) The Journey load-error screen gains a **Try again** action that re-attempts
+  the deps build, alongside the existing Home exit.
 - **Pack Play buttons (wordfall, drift, corpán-city, …) no longer permanently
   stop responding after a crash or an odd exit from a long journey session.**
   A pack launch was gated by an internal "one pack at a time" flag that was
