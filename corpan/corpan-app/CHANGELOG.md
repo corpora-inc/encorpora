@@ -8,6 +8,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **The new-word debut is now an interactive comprehension beat.** First exposure
+  used to be a passive show-and-tell (see word + picture + meaning, hear it,
+  Continue). It now invites you to *prove* the link: HEAR the target, then TAP its
+  meaning — a concept **picture** grid when the word has sibling images, a
+  universal **numeral** for a number word, or **native-gloss text tiles**
+  otherwise. It stays gentle and unscored: a wrong tap simply reveals the answer
+  (the right tile lights up, the word + meaning appear) with no red "wrong" and no
+  penalty — the memory card is still created at your first *scored* rep. When
+  there's nothing tappable to offer, it degrades to today's passive debut. Audio
+  still auto-plays on arrival; nothing reflows on reveal.
 - **Every correct answer now earns a juicy, escalating celebration.** The tier-1
   correct moment was a tiny "Perfect" pill that rendered *behind* the card. It is
   now a big, springy **praise-word splash** drawn above everything and legible

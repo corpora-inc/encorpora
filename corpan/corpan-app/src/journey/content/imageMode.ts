@@ -33,7 +33,7 @@ export interface ConceptImagery {
   distractors: { key: string; word: string; imageSrc: string }[]
 }
 
-export type ImageVariant = "listen_image" | "choice_image" | "image_word"
+export type ImageVariant = "listen_image" | "choice_image" | "image_word" | "intro_image"
 
 export interface ImageModePlan {
   variant: ImageVariant
@@ -101,6 +101,18 @@ export function planImageMode(input: {
     if (!hasImageOptions) return null
     if (cardRng(`${specId}:imglisten`)() >= IMAGE_LISTEN_SHARE) return null
     return { variant: "listen_image", params: imageOptionParams(concept), optionsAreImages: true }
+  }
+
+  // intro_echo — the WORD DEBUT becomes a HEAR→tap-the-picture comprehension
+  // beat when the concept ships sibling pictures. Like listen_image, but with NO
+  // share gate: a first exposure should be interactive (tap the meaning)
+  // whenever imagery allows, not a passive show-and-tell. Falls back (null) to
+  // the passive picture hero / native-text tiles when there are no siblings to
+  // offer as options. The card stays UNSCORED — the runtime keeps activityType
+  // 'intro_echo' and only merges these picture params.
+  if (activityType === "intro_echo") {
+    if (!hasImageOptions) return null
+    return { variant: "intro_image", params: imageOptionParams(concept), optionsAreImages: true }
   }
 
   // choice_pick — pictures are strongest at first exposure (research §1), so

@@ -36,7 +36,12 @@ function imagepanDb(): InstanceType<typeof DatabaseSync> {
     "CREATE TABLE concept (key TEXT PRIMARY KEY, word TEXT NOT NULL, sense_gloss TEXT, cefr TEXT, domain TEXT, file TEXT NOT NULL, distractors_json TEXT NOT NULL)",
   )
   const ins = db.prepare("INSERT INTO concept VALUES (?,?,?,?,?,?,?)")
+  const sib = (k: string) => ({ key: k, word: k, file: `images/${k}.webp` })
+  // coffee ships NO sibling pictures → a picture-OPTIONS grid can't be built, so
+  // the debut stays the passive picture HERO (conceptImageSrc).
   ins.run("coffee", "coffee", "coffee", "A1", "drink", "images/coffee.webp", JSON.stringify([]))
+  // tea ships sibling pictures → the debut becomes a HEAR→tap-the-picture card.
+  ins.run("tea", "tea", "tea", "A1", "drink", "images/tea.webp", JSON.stringify([sib("coffee"), sib("milk")]))
   return db
 }
 
@@ -108,14 +113,33 @@ beforeEach(() => {
   useJourneyStore.setState({ byCourse: {}, learningDays: [] })
 })
 
-test("intro_echo word gets conceptImageSrc when imagepan is installed", async () => {
+test("intro_echo debut WITHOUT sibling pictures ⇒ passive picture HERO (conceptImageSrc)", async () => {
   const { runtime } = await makeRuntime(true)
   const card = await runtime.prepareEngineCard(wordCard("intro_echo", "coffee"))
   assert.ok(card && card.kind === "exercise")
   assert.equal(card.spec.activityType, "intro_echo")
+  // No sibling pictures → no picture-OPTIONS grid → the hero image path.
+  assert.equal(card.spec.params?.media, undefined)
   assert.equal(card.spec.params?.conceptImageSrc, "corpan-pack://localhost/imagepan/images/coffee.webp")
   // items[0] STAYS the word — grading/mastery unchanged.
   assert.deepEqual(card.prepared.items[0].ref, { kind: "word", source: "en", id: "coffee" })
+})
+
+test("intro_echo debut WITH sibling pictures ⇒ HEAR→tap-the-picture (media:'image')", async () => {
+  const { runtime } = await makeRuntime(true)
+  const card = await runtime.prepareEngineCard(wordCard("intro_echo", "tea"))
+  assert.ok(card && card.kind === "exercise")
+  // The debut KEEPS its unscored type — only the presentation becomes pictures.
+  assert.equal(card.spec.activityType, "intro_echo")
+  assert.equal(card.spec.params?.media, "image")
+  assert.equal(card.spec.params?.answerImageSrc, "corpan-pack://localhost/imagepan/images/tea.webp")
+  const ds = card.spec.params?.imageDistractors as unknown[]
+  assert.ok(Array.isArray(ds) && ds.length >= 1)
+  // Picture options carry their own tiles → no hero image, no text sampler.
+  assert.equal(card.spec.params?.conceptImageSrc, undefined)
+  assert.equal(card.prepared.distractors, null)
+  // items[0] STAYS the word — grading/mastery unchanged.
+  assert.deepEqual(card.prepared.items[0].ref, { kind: "word", source: "en", id: "tea" })
 })
 
 test("flip_recall word (with a native face) gets conceptImageSrc", async () => {

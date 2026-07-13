@@ -406,10 +406,17 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     activityType: string,
   ): { answerGlyph: string; glyphDistractors: string[] } | null {
     if (answer.kind !== "word") return null
-    // Any audio-first recognition debut (choice_pick OR listen_pick) upgrades to
-    // a glyph card for a number — "hear the number, tap the digit" beats
-    // "hear it, match the spelling". The caller sets activityType to choice_pick.
-    if (activityType !== "choice_pick" && activityType !== "listen_pick") return null
+    // Any audio-first recognition debut (choice_pick, listen_pick, OR the
+    // intro_echo word DEBUT) upgrades to a glyph card for a number — "hear the
+    // number, tap the digit" beats "hear it, match the spelling". The choice/
+    // listen callers become a choice_pick; intro_echo keeps its own type (the
+    // glyph grid renders inside the unscored debut).
+    if (
+      activityType !== "choice_pick" &&
+      activityType !== "listen_pick" &&
+      activityType !== "intro_echo"
+    )
+      return null
     if (ec.meta.pool === "probe" || ec.spec.params?.probe === true) return null
     if (ec.meta.pool !== "new") return null // first exposures only
     const glyph = glyphForWord(ec.spec.targetLang, answer.target.text)
@@ -566,8 +573,12 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         : null
 
     if (glyphChoice) {
-      // HEAR the number → tap the numeral (media:'glyph').
-      activityType = "choice_pick"
+      // HEAR the number → tap the numeral (media:'glyph'). A choice_pick /
+      // listen_pick origin becomes a scored choice_pick; the intro_echo DEBUT
+      // KEEPS its own unscored type (the FSRS card is created at the first
+      // scored exposure), so the glyph grid renders inside IntroEcho — tappable,
+      // but penalty-free by construction.
+      if (activityType !== "intro_echo") activityType = "choice_pick"
       params.media = "glyph"
       params.answerGlyph = glyphChoice.answerGlyph
       params.glyphDistractors = glyphChoice.glyphDistractors
@@ -749,8 +760,15 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
         })
     if (req) {
       distractors = await sampleDistractors(req, deps.resolver, deps.resolverDeps, deps.ctx)
-      // §3.3 floor: a choice card with < 2 total options drops pre-mount.
-      if (req.mode === "item" && distractors.distractors.length < 1) {
+      // §3.3 floor: a choice card with < 2 total options drops pre-mount. EXCEPT
+      // the intro_echo DEBUT — an unscored first-exposure must NEVER drop on a
+      // thin distractor pool; it degrades in the renderer to the passive
+      // show-and-tell (graceful degrade), so keep the (possibly empty) set.
+      if (
+        req.mode === "item" &&
+        activityType !== "intro_echo" &&
+        distractors.distractors.length < 1
+      ) {
         log("journey_content_missing", { specId: spec.specId, missing: ["distractor_shortfall"] })
         deps.engine.applyResult(contentMissingResult(spec.specId))
         return null
