@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `activities` via the app's catalog (`web/data/packs.json` + catalog-v3).
 - `nameLocalized` / `descriptionLocalized` added to the manifest for all ~54
   app locales.
+- Journey-session mount now speaks the target phrase once, right as the first
+  round appears, so ears engage before the first tap (gated by the in-pack
+  sound toggle, same as the spoken catch reward).
 
 ### Fixed
 - `minAppVersion` raised to `0.20.3` (was `0.17.0`) — the premium-scroll Journey
@@ -21,6 +24,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The pack ZIP is now actually built and published by `deploy-pages.yml`;
   previously the catalog advertised `wordfall.zip` but the workflow never
   produced it. (Wordfall stays `channel: preview` — dev-only — until promoted.)
+- Audio lifecycle: `Sfx` never closed its `AudioContext` and `finish()`'s
+  second note was a bare `setTimeout` that could fire ~120ms after
+  `Game.dispose()` — an orphaned glitch blip heard on the next journey card.
+  `Sfx.dispose()` now closes the context and cancels pending notes; called
+  from `Game.dispose()`. The final spoken catch (`hostApi.speak`, fire-and-
+  forget by contract) could also get cut off mid-word: `endRun()` now waits
+  (estimated, capped ~1.8s) for it to likely finish before dispatching
+  `corpan:exit`, since the host's teardown stops speech immediately after.
+- Long falling phrases could overflow a tile sideways past the lane/viewport
+  edge (tiles are canvas-drawn — no DOM text wrap). Tile text now auto-shrinks
+  and wraps (up to 2 lines, ellipsized as a last resort) to always fit its lane.
+- Falling tiles could overlap/occlude each other (varied per-tile fall speed
+  let a same-lane tile catch up to the one above it; wide tiles could also
+  bleed into a neighboring lane), sometimes hiding the correct answer. Tiles
+  now spawn in strict, viewport-width-aware lanes with a per-lane vertical
+  gap sized to each tile's real (possibly wrapped) height, and every tile in
+  a round falls at the same speed — the correct answer is always fully
+  visible and tappable. Round-to-round difficulty ramp (intensity + progress)
+  is unchanged; only the per-tile speed *variance* was removed.
 
 ## [0.1.0] - 2026-07-10
 

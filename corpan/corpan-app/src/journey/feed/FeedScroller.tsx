@@ -17,6 +17,7 @@ import type { CompletedCard, FeedCard, SessionStats } from "../types.ts"
 import type { JourneyRuntime } from "../runtime.ts"
 import type { SpeakFn } from "../exercises/types.ts"
 import { stopSpeech } from "../../util/speak"
+import { waitForActiveUtterance } from "../../util/audioManager"
 import { advanceRule, isListeningCard, isListeningRunStart } from "./advanceRules.ts"
 import { ActivityCardHost } from "./ActivityCardHost.tsx"
 import { BlockIntroCard } from "./BlockIntroCard.tsx"
@@ -78,35 +79,65 @@ export function FeedScroller(props: FeedScrollerProps) {
     if (current && !isListeningCard(current)) setListeningRun(false)
   }, [current, next])
 
+  // Bumped by clearAuto() (and therefore at the top of every doAdvance call)
+  // so an in-flight APP-initiated wait below can tell it's been superseded —
+  // by a user-initiated advance, a fresh auto-advance arming, or any other
+  // clearAuto() — and must not fire its deferred stopSpeech()/runtime.advance()
+  // against a card that has already moved on (that stale stop would cut the
+  // ARRIVING card's fresh autoplay mid-word: a swipe-during-wait regression).
+  const advanceGen = useRef(0)
+
   const clearAuto = useCallback(() => {
     if (autoTimer.current) clearTimeout(autoTimer.current)
     autoTimer.current = null
     setAutoCountdown(false)
+    advanceGen.current += 1
   }, [])
 
-  const doAdvance = useCallback(() => {
+  const doAdvance = useCallback((opts?: { userInitiated?: boolean }) => {
     clearAuto()
+    const gen = advanceGen.current
     // Do NOT cut the celebration on advance. It's a host-level overlay,
     // independent of the card, so it plays out over the transition (juicy +
     // game-like). Cutting it here meant a fast answer→advance (common on tap
     // cards) killed the celebration before it showed — and the abrupt cut read
     // as a "ghost flash" on the way out. A new correct simply replaces it.
-    // Stop lingering audio so the leaving card's speech never bleeds into the
-    // next card ("hearing the last exercise on the next one"). The arriving
-    // card starts its own auto-play fresh.
-    void stopSpeech()
-    runtime.advance()
+    if (opts?.userInitiated) {
+      // Turbo-scroll principle: a deliberate swipe/tap forward is INSTANT,
+      // full stop — it may cut audio (anti-bleed: a leaving card's speech
+      // must never bleed into the next card). Never add friction here.
+      void stopSpeech()
+      runtime.advance()
+      return
+    }
+    // APP-initiated advance (auto-advance timer, or settle → onRequestAdvance
+    // via requestAdvance below): let a just-fired reward utterance actually
+    // finish — bounded — before the app stops speech and moves on. Cutting a
+    // reward utterance off to rush along reads as the app hurrying the
+    // learner off their own correct answer; a no-op (instant) when nothing
+    // is playing. The arriving card still starts its own auto-play fresh.
+    void waitForActiveUtterance().then(() => {
+      // Superseded by a later advance (e.g. the user swiped forward while
+      // this wait was in flight) — bail without touching speech/runtime; the
+      // superseding call already handled both.
+      if (advanceGen.current !== gen) return
+      void stopSpeech()
+      runtime.advance()
+    })
   }, [runtime, clearAuto])
 
-  // Explicit-button cards (intro_echo / flip_recall Continue) advance the
-  // instant the learner presses — no lingering settled card to swipe past
-  // (contract #6 (a)). The host calls this from onRequestAdvance after settle;
-  // answer-tap cards return a non-"button" rule and are ignored here (their
-  // countdown-ring auto-advance is armed by the effect below).
+  // Explicit-button cards (intro_echo / flip_recall / speak_echo Continue)
+  // advance the instant the learner presses — no lingering settled card to
+  // swipe past (contract #6 (a)). Treat it as user-initiated so it's
+  // turbo-scroll instant (ActivityCardHost's settle() already skips its own
+  // waitForActiveUtterance() gate for these same activity types before
+  // calling onRequestAdvance). Answer-tap cards return a non-"button" rule
+  // and are ignored here (their countdown-ring auto-advance is armed by the
+  // effect below).
   const requestAdvance = useCallback(
     (card: FeedCard) => {
       if (backIndex !== 0) return
-      if (advanceRule(card, advanceMode).kind === "button") doAdvance()
+      if (advanceRule(card, advanceMode).kind === "button") doAdvance({ userInitiated: true })
     },
     [advanceMode, backIndex, doAdvance],
   )
@@ -159,7 +190,7 @@ export function FeedScroller(props: FeedScrollerProps) {
       return
     }
     if (settled) {
-      doAdvance()
+      doAdvance({ userInitiated: true })
       return
     }
     const rule = advanceRule(current, advanceMode)

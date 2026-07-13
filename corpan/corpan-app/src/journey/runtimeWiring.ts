@@ -37,8 +37,8 @@ import {
   readJourneyPackMeta,
 } from "../util/journeyPack"
 import { isWordPackInstalled, wordPackIdCandidates } from "../util/wordPack"
-import type { CapabilityHostApi } from "@shared/capabilities/core"
-import { allFolders } from "@shared/capabilities/pronounce/src/modelRegistry"
+import type { CapabilityHostApi, CapabilitySttApi } from "@shared/capabilities/core"
+import { useSttStore } from "../store/stt"
 import { createJourneyEngine, itemCardCodec, systemClock } from "./engine/index.ts"
 import { buildInterludeProviders } from "./interludeRegistry.ts"
 import { createResolver, type ResolveContext, type ResolverDeps } from "./content/resolve.ts"
@@ -65,31 +65,20 @@ export function journeyCourseIdFor(targetLang: string): string {
 
 /**
  * Three-state STT probe (contract #4). Cheap + local — never downloads or
- * loads a model. `isAvailable()` answers "can this device run whisper at all"
- * (unsupported); `listInstalled()` answers "is a model on disk"
- * (installed vs modelMissing). Mirrors cap-pronounce's own readiness probe so
- * the two never disagree; a bridge throw degrades to a safe default rather
- * than mislabeling a transient failure as permanently unsupported.
+ * loads a model. Delegates to the ONE probe in `store/stt.ts`
+ * (`refreshInstalled`) so journey, the pronounce capability, and the store can
+ * never disagree about what's installed (R5). A bridge throw degrades to a safe
+ * default inside the store rather than mislabeling a transient failure as
+ * permanently unsupported.
  */
 export async function probeSttReadiness(
   stt: HostApi["stt"] | undefined,
 ): Promise<SttReadiness> {
-  if (!stt) return "unsupported"
-  let supported = true
-  try {
-    supported = await stt.isAvailable()
-  } catch {
-    // transient bridge hiccup — fall through to the model probe
-    supported = true
-  }
-  if (!supported) return "unsupported"
-  if (!stt.listInstalled) return "installed" // legacy host: keep old semantics
-  try {
-    const res = await stt.listInstalled({ models: allFolders() })
-    return res.models.some((m) => m.valid) ? "installed" : "modelMissing"
-  } catch {
-    return "modelMissing"
-  }
+  const store = useSttStore.getState()
+  await store.refreshInstalled((stt as unknown as CapabilitySttApi) ?? null).catch(() => {})
+  const readiness = useSttStore.getState().readiness
+  if (readiness === "unsupported") return "unsupported"
+  return readiness === "installed" ? "installed" : "modelMissing"
 }
 
 /**
@@ -243,6 +232,19 @@ export function capabilityHostFromHostApi(hostApi: HostApi): CapabilityHostApi {
     getStackConfig: () => hostApi.getStackConfig(),
     ...(hostApi.stopSpeech ? { stopSpeech: hostApi.stopSpeech } : {}),
     ...(hostApi.stt ? { stt: hostApi.stt as unknown as CapabilityHostApi["stt"] } : {}),
+    // Single-source-of-truth model seam (WS-B / R5): a capability resolves the
+    // model the app already picked (preferred → loaded → largest installed) and
+    // reports what it prepared, instead of re-probing and disagreeing. Only wired
+    // when the host has an stt seam at all — otherwise there is no model to speak of.
+    ...(hostApi.stt
+      ? {
+          sttModel: {
+            resolveFolder: () => useSttStore.getState().resolveModelFolder(),
+            notePrepared: (folder: string) =>
+              useSttStore.getState().noteEngineLoaded(folder),
+          },
+        }
+      : {}),
     ...(hostApi.queryPackDb
       ? {
           queryPackDb: async (q: {
@@ -385,6 +387,11 @@ export async function buildJourneyDeps(opts: {
 
   const hostApi = createHostApi()
 
+  // Re-read the pack-side model preference at each session build so a model the
+  // user switched to in parlometron propagates into journey (R5). The store
+  // never writes the pack's key; this is a one-way read.
+  useSttStore.getState().syncPreferredFromParlometron()
+
   // wordpan (native→target word-explanation) enrichment. The resolver's
   // word-enrichment (native meaning paragraph + etymology gems) only lights up
   // when the (native→target) pair pack is installed. We NEVER auto-download it
@@ -507,8 +514,22 @@ export async function buildJourneyDeps(opts: {
       let cached: Promise<SttReadiness> | null = null
       return () => (cached ??= probeSttReadiness(hostApi.stt))
     })(),
+    // Warm the model early (blockIntro overlaps the load with reading). ALWAYS
+    // through the store's single-flight ensurePrepared, which resolves a
+    // concrete installed folder FIRST and never issues a bare `prepare()` — the
+    // bare-prepare path is exactly what unloaded a resident big model and
+    // reported MODEL_NOT_INSTALLED (the recurrence the CTO kept hitting).
     sttPrepare: async () => {
-      await hostApi.stt?.prepare().catch(() => undefined)
+      await useSttStore
+        .getState()
+        .ensurePrepared((hostApi.stt as unknown as CapabilitySttApi) ?? null)
+        .catch(() => undefined)
+    },
+    // Mic-priming card shows AT MOST ONCE ever (R2): seen once we've recorded
+    // its impression OR the mic permission was already granted anywhere.
+    micIntroSeen: () => {
+      const s = useSttStore.getState()
+      return !!s.micIntroShownAt || s.micPermissionGranted
     },
     log: (event, data) => resolverDeps.log?.(event, data),
     activitySession: activitySessionPort,

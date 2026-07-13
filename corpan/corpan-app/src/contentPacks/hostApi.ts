@@ -12,6 +12,7 @@ import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import { useEntitlementStore } from "@/store/entitlements"
+import { useSttStore } from "@/store/stt"
 import { usePaywallStore } from "@/store/paywall"
 import type { PaywallSurface } from "@/store/paywall"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
@@ -569,12 +570,31 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     startSession: async (opts) => {
       try {
-        return await invoke<SttStartSessionResult>(
+        const res = await invoke<SttStartSessionResult>(
           "plugin:stt|start_session",
           { args: opts },
         )
+        // A started session means the mic permission was granted (R2 — this is
+        // the one place both journey AND packs open a mic, so it's the single
+        // truthful signal for "mic primed"). Best-effort; never block the round.
+        if (res?.started) {
+          try {
+            useSttStore.getState().noteMicGranted()
+          } catch (e) {
+            console.error("[stt] noteMicGranted failed:", e)
+          }
+        }
+        return res
       } catch (error) {
-        throw sttRejectionToError(error)
+        const e = sttRejectionToError(error)
+        if (e.code === "MIC_PERMISSION_DENIED") {
+          try {
+            useSttStore.getState().noteMicDenied()
+          } catch (err) {
+            console.error("[stt] noteMicDenied failed:", err)
+          }
+        }
+        throw e
       }
     },
     stopSession: async (opts) => {

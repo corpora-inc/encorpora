@@ -8,8 +8,13 @@
 export class Sfx {
   private ctx: AudioContext | null = null
   enabled = true
+  private disposed = false
+  /** Pending `setTimeout` handles (e.g. finish()'s second note) — cancelled on
+   *  dispose() so a scheduled blip never fires after the game is torn down. */
+  private pendingTimers = new Set<ReturnType<typeof setTimeout>>()
 
   private ac(): AudioContext | null {
+    if (this.disposed) return null
     if (!this.enabled) return null
     if (typeof window === "undefined") return null
     const Ctor =
@@ -43,6 +48,17 @@ export class Sfx {
     osc.stop(now + durMs / 1000 + 0.02)
   }
 
+  /** setTimeout that self-unregisters and is a no-op if dispose() already ran
+   *  (or runs before it fires). */
+  private schedule(fn: () => void, delayMs: number): void {
+    const id = setTimeout(() => {
+      this.pendingTimers.delete(id)
+      if (this.disposed) return
+      fn()
+    }, delayMs)
+    this.pendingTimers.add(id)
+  }
+
   /** Clean catch — pitch rises a little with combo depth. */
   catchGood(comboDepth = 0): void {
     const base = 523 // C5
@@ -58,6 +74,29 @@ export class Sfx {
   /** Run complete — a brief two-note resolve. */
   finish(): void {
     this.blip(659, 140, 0.12, "triangle")
-    setTimeout(() => this.blip(880, 220, 0.12, "triangle"), 120)
+    this.schedule(() => this.blip(880, 220, 0.12, "triangle"), 120)
+  }
+
+  /**
+   * Tear down: cancel any pending scheduled note (finish()'s second blip is
+   * the one that outlives a fast return-to-journey — Game.dispose() used to
+   * never call this, so the note fired ~120ms later into a torn-down game, an
+   * orphaned glitch on the next card) and close the AudioContext. Idempotent;
+   * safe to call even if the context was never created.
+   */
+  dispose(): void {
+    if (this.disposed) return
+    this.disposed = true
+    for (const id of this.pendingTimers) clearTimeout(id)
+    this.pendingTimers.clear()
+    const ctx = this.ctx
+    this.ctx = null
+    if (ctx && ctx.state !== "closed") {
+      try {
+        void ctx.close()
+      } catch {
+        /* already closing/closed, or unsupported — ignore */
+      }
+    }
   }
 }

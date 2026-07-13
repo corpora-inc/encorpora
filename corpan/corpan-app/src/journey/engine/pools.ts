@@ -18,7 +18,7 @@ import {
 const PHONEME_NEW_POOL_MIN_SEEN = 12
 const PHONEME_NEW_POOL_MAX_SHARE = 0.25
 import type { GraphIndex } from "./graph.ts"
-import { isSuspended, type Mastery } from "./mastery.ts"
+import { isRetired, isSuspended, type Mastery } from "./mastery.ts"
 import type { Scheduler } from "./scheduler.ts"
 import { CardFlags, type CourseState, type ItemCard, type SessionState, type SkillScalars } from "./types.ts"
 
@@ -53,6 +53,14 @@ export interface Pools {
    *  integrity). Empty only when there is genuinely no reachable material left
    *  (true end of shipped content) — the ONLY acceptable terminal. */
   frontier: string[]
+  /** RETIRED items (R-A) available for a LAST-RESORT continuation revisit — used
+   *  by the mixer ONLY when frontier AND non-retired strong-known are both
+   *  exhausted (a fully-mastered finite pool). This keeps the infinite feed from
+   *  dead-ending on a binger who has nailed everything, while guaranteeing a
+   *  retired item is never served WHILE any fresh / less-mastered material
+   *  exists (R-B). On a real (large) pack the frontier is effectively inexhaustible,
+   *  so this fallback never fires; it is the true end-of-content safety net. */
+  retired: string[]
   dueCount: number
   /** Retrievability snapshot for items touched during pool build. */
   r: Map<string, number>
@@ -62,11 +70,14 @@ export function duePriority(r: number, importance: number, lapses: number): numb
   return (1 - r) * importance * (1 + 0.1 * lapses)
 }
 
-/** Count of cards due ≤ day (suspended excluded) — the backlog metric. */
+/** Count of cards due ≤ day (suspended + retired excluded) — the backlog metric.
+ *  Retired items (R-A) must NOT inflate the debt backlog: a twice-nailed word is
+ *  done, not owed, so freed capacity pulls FRESH intake (R-B) rather than tripping
+ *  the debt brake on cards that will never be served. */
 export function dueCount(cards: Map<string, ItemCard>, day: number): number {
   let n = 0
   for (const card of cards.values()) {
-    if (isSuspended(card)) continue
+    if (isSuspended(card) || isRetired(card)) continue
     if (card.fsrs.reps > 0 && card.fsrs.due <= day) n += 1
   }
   return n
@@ -88,7 +99,9 @@ export function buildPools(input: PoolsInput): Pools {
   // ---- DUE --------------------------------------------------------------
   const due: { itemId: string; p: number }[] = []
   for (const card of cards.values()) {
-    if (isSuspended(card)) continue
+    // Retired items (R-A) leave the DUE loop alongside suspended ones: a
+    // twice-nailed word stops recycling so unseen/frontier material leads.
+    if (isSuspended(card) || isRetired(card)) continue
     if (card.fsrs.reps === 0 || card.fsrs.due > day) continue
     const item = graph.items[card.itemId]
     if (!item) continue
@@ -175,7 +188,7 @@ export function buildPools(input: PoolsInput): Pools {
   for (const skillId of repairSkills) {
     for (const itemId of gidx.skillItems.get(skillId) ?? []) {
       const card = cards.get(itemId)
-      if (!card || card.fsrs.reps === 0 || isSuspended(card) || repairSeen.has(itemId)) continue
+      if (!card || card.fsrs.reps === 0 || isSuspended(card) || isRetired(card) || repairSeen.has(itemId)) continue
       repairSeen.add(itemId)
       repair.push({ itemId, oneMinusR: 1 - rOf(card) })
     }
@@ -199,13 +212,31 @@ export function buildPools(input: PoolsInput): Pools {
     if ((t.funWeight ?? 0) > 0) hasFunTemplates.add(t.itemKind)
   }
   const fun: string[] = []
+  // Retired items eligible for the last-resort continuation revisit (see the
+  // Pools.retired doc). Reviewed + not suspended; ordered by introOrder so the
+  // terminal revisit stays deterministic and prescriptive.
+  const retired: string[] = []
   if (hasFunTemplates.size > 0) {
     for (const card of cards.values()) {
       if (isSuspended(card) || card.fsrs.reps === 0) continue
       const item = graph.items[card.itemId]
       if (!item || !hasFunTemplates.has(item.kind)) continue
+      if (isRetired(card)) {
+        // Retired items (R-A) never re-enter FUN: mastered variety is served
+        // only until a word is twice-nailed. They are held here for the
+        // end-of-content fallback ONLY (never while fresh material remains).
+        retired.push(card.itemId)
+        continue
+      }
       if (rOf(card) > FUN_POOL_R_MIN) fun.push(card.itemId)
     }
+    // Round-robin the terminal revisit by LEAST-RECENTLY-SERVED first: the mixer
+    // walks this list from the front each batch, so ordering by lastEmit spreads
+    // serves EVENLY across the whole retired set (never the "same 11 items 100×"
+    // starvation the front-of-insertion-order caused) and maximizes spacing.
+    retired.sort(
+      (a, b) => (session.lastEmit.get(a) ?? -1) - (session.lastEmit.get(b) ?? -1),
+    )
   }
 
   // ---- FRONTIER (eager continuation) ------------------------------------
@@ -272,6 +303,7 @@ export function buildPools(input: PoolsInput): Pools {
     trickle,
     fun,
     frontier,
+    retired,
     dueCount: due.length,
     r,
   }

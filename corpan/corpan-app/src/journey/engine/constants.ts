@@ -89,6 +89,15 @@ export const REPLAY_MIN_GAP = 3
 export const ITEM_MIN_GAP = 3
 export const ITEM_MIN_GAP_RELAXED = 2
 export const MAX_FUN_PER_10 = 1
+// Success-based RETIREMENT (R-A): after this many CONSECUTIVE perfect completions
+// (score ≥ 0.95, no hints — mirrors the runtime combo), an item is RETIRED and
+// stops being served (excluded from DUE/FUN/REPAIR + continuation-revisit + the
+// debt backlog). Breadth-first (R-B): a twice-nailed word gives up its slot to
+// unseen/frontier material instead of being recycled forever. A genuine FSRS
+// forget/lapse un-retires it (rare long-interval review at most). FSRS integrity
+// is preserved — only genuinely strong performance retires; any miss resets the
+// counter and a lapse both resets AND un-retires.
+export const RETIRE_PERFECT_STREAK = 2
 // Doom-scroll-to-fluency: the feed is INFINITE. When the day's real work is done
 // (new target met, no due/repair/trickle) the eager learner who keeps going gets
 // FRESH frontier material — the NEXT reachable units' new items — pulled forward,

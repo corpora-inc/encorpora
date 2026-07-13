@@ -7,6 +7,106 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- A small audio manager (`util/audioManager.ts`) now tracks the single active
+  spoken utterance app-wide (estimate-based, upgraded to a real completion
+  signal on the browser Web Speech backend). Journey's feed routes through it
+  so an APP-initiated advance (auto-advance timer, or settle → request-advance
+  on an answer-tap card) waits — capped, ~2s max — for a just-fired reward
+  utterance to actually finish before stopping speech and moving on, instead
+  of cutting it mid-word to rush along. A USER-initiated advance (swipe/tap,
+  and the explicit-completion Continue press on intro_echo / flip_recall /
+  speak_echo) stays fully instant and may still cut audio — turbo-scroll never
+  gets friction added to it.
+
+### Fixed
+- **Pack Play buttons (wordfall, drift, corpán-city, …) no longer permanently
+  stop responding after a crash or an odd exit from a long journey session.**
+  A pack launch was gated by an internal "one pack at a time" flag that was
+  only ever cleared by a terminal result arriving from the pack — so a pack
+  that exited without one (a crash/reload, `corpan:exit` with no matching
+  `corpan:activity-result`, or a `corpan-city` vs `corpan_city` id-format
+  mismatch the host was wrongly rejecting as "wrong pack") left EVERY future
+  pack card's Play button silently dead until the whole session ended. Fixed
+  three ways: the host now finalizes an orphaned pack session (as abandoned,
+  keeping any partial progress already reported) on every `corpan:exit`, not
+  just on full journey teardown; a relaunch attempt for a different pack card
+  self-heals a wedged one instead of refusing forever, and skipping past a
+  stuck pack card now clears its session immediately; and pack id comparisons
+  are normalized (hyphen/underscore) so a genuine result is never dropped for
+  a formatting mismatch in the first place.
+- Celebration chimes (`journey/celebration/sounds.ts`) now also drop while
+  NATIVE TTS is speaking, not just browser Web Speech — the chime-vs-speech
+  guard used to check only `speechSynthesis.speaking`, which native playback
+  (macOS/iOS/Android) never touches, so a chime could talk over native speech.
+- **The Journey feed no longer serves the same mastered words forever.** Items
+  you nail perfectly twice in a row (score ≥ 0.95, no hints) are now RETIRED:
+  they stop coming back through reviews, the strong-known "fun" variety pool, and
+  the continuation stream, so brand-new and less-practised material leads instead
+  of a handful of words ("sheep / ship / berry / jam") repeating dozens of times.
+  Retired items no longer count toward the review-debt backlog either, so freed
+  capacity pulls fresh vocab forward. A genuine forget or lapse un-retires a word
+  so it can return to normal spacing. The infinite feed still never dead-ends: on
+  a fully-mastered finite pack the feed round-robins retired words as a spaced,
+  varied last resort (least-recently-seen first) — only ever when there is
+  genuinely nothing new left.
+- **Journey pronunciation now uses your installed Whisper model and never
+  offers a redundant download.** A new single-source-of-truth store
+  (`store/stt.ts`) owns the installed models, the preferred/active model, and
+  the mic state. Journey's early model warm-up used to call the STT plugin with
+  NO model, which the native default resolved to the tiny model — unloading the
+  bigger model you'd installed (e.g. via Parlometron) and then reporting it
+  "not installed", walling the speak card behind a fresh download. Warm-up now
+  always resolves a concrete installed folder first (preferred → loaded →
+  largest installed) and never issues a bare prepare; the pronounce capability
+  reuses that same resolution through a host seam. An installed model that
+  transiently fails to load now retries through the memory-settle window instead
+  of falling back to a tiny-model install offer.
+- **The "Corpán uses the microphone…" priming card now shows at most once,
+  ever.** It's persisted, marked shown on first impression, and pre-seeded for
+  existing pronunciation users so they never see it again. The model warm-up
+  still runs at every speaking run — it no longer depends on the card.
+- **Speaking cards no longer rush you.** After a scored attempt the feedback
+  now DWELLS — a great score no longer app-advances instantly; you read your
+  per-word feedback and continue on your own tap (a generous attempt cap still
+  backstops a runaway). A recording interrupted by scrolling away surfaces a
+  gentle "recording stopped — hold to try again" notice instead of silently
+  producing nothing, and a lost scoring callback can no longer leave the spinner
+  stuck. The speak card also no longer clips long phrases / per-word pill rows.
+- **Android internal-test launcher icon was cropped/zoomed.** Android release
+  builds now ship the curated launcher icon set instead of the CI-regenerated
+  full-bleed icons: the release workflow overlays the curated, git-tracked
+  mipmap set (`src-tauri/icons/android/`) over the freshly generated
+  `res/mipmap-*` after `tauri icon` runs, so Play internal-test builds ship
+  the vetted icons. No change to iOS icon generation.
+- **`Cargo.toml` had drifted to 0.20.1** while `package.json`/`tauri.conf.json`
+  were already at 0.20.5 — `bump-app-version.mjs` matched the *exact* current
+  version string across all three files, so once one file drifted the script
+  silently stopped updating it. Set `Cargo.toml`/`Cargo.lock` back in lockstep
+  at 0.20.5 and made the bump script match each file's version line
+  structurally (not against a shared `current` string) and fail loudly
+  (nonzero exit, no partial writes) if any of the three can't be found/updated.
+- **Android 16 KB page-size compatibility: `libcorpan_lib.so` (the Rust
+  cdylib) is now actually 16 KB-aligned.** `src-tauri/.cargo/config.toml`
+  already carried `-Wl,-z,max-page-size=16384` rustflags for every Android
+  target, but they were being silently dropped: tauri-cli's Android build
+  path (`cargo_mobile2`) sets its own `CARGO_TARGET_<TRIPLE>_RUSTFLAGS`
+  environment variable to inject `-landroid`/`-lOpenSLES`, and a
+  `CARGO_TARGET_*_RUSTFLAGS` env var *replaces* config.toml's `rustflags`
+  array wholesale rather than merging with it — so the max-page-size flags
+  never reached the linker, and the shipped `.so` came out 4 KB-aligned
+  (`p_align = 0x1000`), tripping Play Console's "This app isn't 16 KB
+  compatible" check on 16 KB-page hardware (Galaxy S25 Ultra, Pixel 9+).
+  `src-tauri/build.rs` now emits the page-size linker flags via
+  `cargo:rustc-link-arg` when targeting Android, which Cargo always appends
+  to the link line regardless of what RUSTFLAGS resolves to — immune to
+  being clobbered. Verified: `libcorpan_lib.so`'s LOAD segments now report
+  `p_align = 0x4000` (was `0x1000`). `libwhisper-jni.so` (STT plugin,
+  whisper.cpp) and the packaged `libc++_shared.so` were already correctly
+  16 KB-aligned (explicit `target_link_options` in the STT plugin's
+  CMakeLists.txt, and NDK 28.2+'s prebuilt libc++_shared respectively) —
+  Play's on-device warning for those two was stale/from an older build.
+
 ## [0.20.5] - 2026-07-12
 
 ### Changed

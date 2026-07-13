@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Android + iOS: a bare `prepare()` with NO model no longer unloads a bigger
+  resident model.** When `prepare()` is called without a `model` and a model is
+  already loaded, both platforms now keep the resident model (report it ready)
+  instead of resolving the argument to the tiny default (`ggml-tiny.bin`),
+  unloading the resident model, and then — because the swap branch dropped it —
+  reporting `MODEL_NOT_INSTALLED`. This is the native backstop for the journey
+  warm-up recurrence; the JS side also stopped issuing bare prepares. Guard is
+  narrow: an explicit model argument is unaffected.
+
 ### Changed
 - **Android + iOS: model install now verifies bytes on disk instead of
   immediately running a native load test.** Download completion now does

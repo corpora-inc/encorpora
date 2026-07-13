@@ -226,6 +226,17 @@ export interface CapabilityHostApi {
   // Optional — feature-detect, degrade gracefully:
   stopSpeech?(): Promise<void>
   stt?: CapabilitySttApi
+  /** Single-source-of-truth model seam (WS-B / R5). The app wires this to its
+   *  `stt` store so a capability reuses the app's already-resolved model folder
+   *  (preferred → loaded → largest installed) and reports back what it actually
+   *  prepared — instead of each capability re-probing and disagreeing. Absent on
+   *  packs / mocks, in which case the capability falls back to its own probe
+   *  (`pickInstalledModelFolder`). `resolveFolder()` returns null when nothing
+   *  usable is installed (the capability then offers an install, per policy). */
+  sttModel?: {
+    resolveFolder(): string | null
+    notePrepared(folder: string): void
+  }
   queryPackDb?(q: {
     sql: string
     params?: unknown[]

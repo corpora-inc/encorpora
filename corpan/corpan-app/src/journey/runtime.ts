@@ -149,6 +149,11 @@ export interface JourneyRuntimeDeps {
   sttReadiness?: () => Promise<SttReadiness>
   /** Kick the model load early (blockIntro overlaps load with reading). */
   sttPrepare?: () => Promise<void>
+  /** Has the mic-priming card already been shown (or the mic already granted)?
+   *  When true the runtime keeps the block bookkeeping + model warm-up but
+   *  does NOT synthesize the blockIntro card — it shows AT MOST ONCE ever (R2).
+   *  Absent ⇒ treated as not-seen (card may show). */
+  micIntroSeen?: () => boolean
   /** W5 wiring: invalidate the resolver on pack-install events too (W10). */
   log?: (event: string, data: Record<string, unknown>) => void
   /** The single-owner activity session (activity-contract §3.2, R8). */
@@ -250,6 +255,25 @@ const RAW_BATCH = 6
 const HISTORY_RING = 20
 const RECENT_KEY_CARDS = 10
 
+// Un-wedge pack launching (WS-F). `pendingPack` gates every pack-anchor
+// launch until the activity session's onResult ingests a terminal
+// ActivityResult. A pack that never delivers one — a crash, a reload, a
+// corpan:exit with no corpan:activity-result, or (before the WS-F fix) a
+// packId hyphen/underscore mismatch ingestResult rejected — left this set
+// forever, silently disabling every future pack Play button (see
+// launchPackActivity/replayPackActivity below for the recovery). The SAME
+// card's Play button is already disabled by the feed while pending
+// (packReturnPending()), so STALE_SAME_CARD_PACK_MS only backstops a
+// same-card relaunch that somehow bypassed the UI — it is deliberately
+// generous so it can never cut off a genuinely active, long-running game.
+// A DIFFERENT card reaching the launch guard needs no wall-clock check at
+// all: the feed can only be interactive again (letting the user tap a
+// DIFFERENT pack's Play) once the previous pack's overlay has actually
+// closed (a mounted pack overlay covers/disables the feed), so a
+// still-set pendingPack referencing that OLD card is proof of a wedge, not
+// a live session — see the "different card" branch below.
+const STALE_SAME_CARD_PACK_MS = 3 * 60_000
+
 // Interlude classification (PREMIUM_SCROLL §2.2/§4.4). A packActivity is a
 // "sip"-sized INTERLUDE — rendered as a compact InterludePoster + eligible for
 // warm-mount — when it is quick (short estimated duration) AND not one of the
@@ -296,7 +320,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
   // to listen_type (contract #4).
   let sttDeclined = false
   let blockRemaining = 0 // stt cards left in the announced block
-  let pendingPack: { cardId: string; packId: string } | null = null
+  let pendingPack: { cardId: string; packId: string; since: number } | null = null
   let position = 0
   let started = false
   let filling = false
@@ -933,13 +957,20 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
             else break
           }
           blockRemaining = runLen
-          prepared.push({
-            kind: "blockIntro",
-            cardId: `bi-${ec.spec.specId}`,
-            modelNeeds: ["stt"],
-            blockLen: runLen,
-          })
+          // Warm the model at EVERY speaking-run boundary, independent of the
+          // card — nothing functional depends on the priming card being shown.
           void deps.sttPrepare?.().catch(() => {})
+          // The mic-priming card shows AT MOST ONCE ever (R2). Once seen, we
+          // still do the bookkeeping + warm-up above; we just don't re-synthesize
+          // the card.
+          if (!(deps.micIntroSeen?.() ?? false)) {
+            prepared.push({
+              kind: "blockIntro",
+              cardId: `bi-${ec.spec.specId}`,
+              modelNeeds: ["stt"],
+              blockLen: runLen,
+            })
+          }
         }
         if (isSttCard(ec) && blockRemaining > 0) blockRemaining -= 1
         const card = await mapEngineCard(ec)
@@ -1204,6 +1235,17 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       advance()
       return
     }
+    // Un-wedge (WS-F): skipping the very card `pendingPack` is still tracking
+    // means its pack overlay already closed off-screen without a terminal
+    // result (the feed can't be forward-swiped past a card whose overlay is
+    // still covering it) — end the orphaned session now instead of leaving
+    // every future pack Play button gated until the next launch attempt's
+    // watchdog runs (see launchPackActivity). Idempotent; a no-op when the
+    // pack's own onResult already cleared it normally.
+    if (pendingPack?.cardId === card.cardId) {
+      activitySession.end()
+      pendingPack = null
+    }
     submitResult(card.cardId, {
       specId: card.cardId, // cardId === spec.specId for engine-issued cards
       score: 0,
@@ -1216,11 +1258,38 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
 
   // ------------------------------------------------------------- pack anchor
 
+  /** WS-F watchdog: true when a still-set pendingPack must no longer block a
+   *  launch FOR `forCardId`. A DIFFERENT card reaching here needs no
+   *  wall-clock check at all — see STALE_SAME_CARD_PACK_MS's comment for why
+   *  that's structurally safe, not a race. The SAME card only self-heals
+   *  after the generous backstop window (the UI already disables that card's
+   *  own Play button via packReturnPending() while genuinely pending). */
+  function pendingPackIsStale(forCardId: string): boolean {
+    if (!pendingPack) return false
+    if (pendingPack.cardId !== forCardId) return true
+    return now() - pendingPack.since >= STALE_SAME_CARD_PACK_MS
+  }
+
   function launchPackActivity(
     card: Extract<FeedCard, { kind: "packActivity" }>,
     launch: (packId: string, spec: ActivitySpec) => void,
   ): boolean {
-    if (prepared[0]?.cardId !== card.cardId || pendingPack) return false
+    if (prepared[0]?.cardId !== card.cardId) return false
+    if (pendingPack) {
+      if (!pendingPackIsStale(card.cardId)) return false
+      // Wedged, not live (see pendingPackIsStale/STALE_SAME_CARD_PACK_MS):
+      // activitySession.begin() below already finalizes a still-open
+      // previous session as abandoned before opening the new one
+      // (activitySchemas.ts's belt-and-braces guard) — recovery just needs
+      // us to stop gating on our OWN stale bookkeeping so that self-heal can
+      // actually run. Logged so a wedge is visible even when the learner
+      // never happens to retry.
+      log("journey_pack_wedge_recovered", {
+        staleCardId: pendingPack.cardId,
+        stalePackId: pendingPack.packId,
+        staleAgeMs: now() - pendingPack.since,
+      })
+    }
     const ok = activitySession.begin(card.packId, card.spec, {
       // The feed consumes THIS callback and never re-implements routing (R8);
       // synthesized (abandon/teardown) results arrive through the same path.
@@ -1241,7 +1310,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       abandonCurrent()
       return false
     }
-    pendingPack = { cardId: card.cardId, packId: card.packId }
+    pendingPack = { cardId: card.cardId, packId: card.packId, since: now() }
     // ---- pack-anchor launch debit (R12: the second and last debit rule).
     deps.quota.note()
     launch(card.packId, card.spec)
@@ -1259,7 +1328,19 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
     card: Extract<FeedCard, { kind: "packActivity" }>,
     launch: (packId: string, spec: ActivitySpec) => void,
   ): boolean {
-    if (pendingPack) return false
+    // WS-F watchdog: same reasoning as launchPackActivity — a still-set
+    // pendingPack for a DIFFERENT card is a wedge (proof the prior overlay
+    // already closed), not a live session; the same card only backstops
+    // after the generous window.
+    if (pendingPack) {
+      if (!pendingPackIsStale(card.cardId)) return false
+      log("journey_pack_wedge_recovered", {
+        staleCardId: pendingPack.cardId,
+        stalePackId: pendingPack.packId,
+        staleAgeMs: now() - pendingPack.since,
+        replay: true,
+      })
+    }
     const ok = activitySession.begin(card.packId, card.spec, {
       onResult: () => {
         pendingPack = null
@@ -1267,7 +1348,7 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
       },
     })
     if (!ok) return false
-    pendingPack = { cardId: card.cardId, packId: card.packId }
+    pendingPack = { cardId: card.cardId, packId: card.packId, since: now() }
     notify()
     launch(card.packId, card.spec)
     return true

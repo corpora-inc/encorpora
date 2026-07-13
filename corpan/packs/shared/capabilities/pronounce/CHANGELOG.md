@@ -10,6 +10,31 @@ the Journey `speak_echo` card + pop-in sheet consume it, Wave 2).
 
 ## 0.1.0 — Unreleased
 
+- **`sttModel` host seam + single model-pick source.** The installed-model
+  resolution (`pickInstalledModelFolder`, plus new pure `pickBestFolder` /
+  `probeInstalledFolders`) moved to `src/modelPick.ts` so a host's stt store and
+  this capability share ONE implementation. `boot()` now consults
+  `hostApi.sttModel?.resolveFolder()` first (reusing the app's already-resolved
+  model) and reports back via `notePrepared()`, falling back to its own probe on
+  hosts without the seam.
+- **Never offers the tiny model over an installed one (R1).** `boot()` prepares
+  the installed/resolved model with `prepareWithMemoryRetry` (10×1.5s) instead of
+  a single shot, so a transient `INSUFFICIENT_MEMORY` from the native headroom
+  gate no longer misreads as "not installed" and falls through to a redundant
+  download offer. An installed model that genuinely won't load now settles
+  `sttUnavailable` rather than offering tiny. `checkAvailability` probes every
+  known folder (not just the memory-visible subset).
+- **`settleOnTopBand` param (default true).** Consumers can keep the round OPEN
+  after a top-band attempt so feedback dwells (Journey passes `false`); the pack
+  keeps its instant-settle pacing by default.
+- **Scroll-away + stuck-spinner robustness (R3).** A recording cancelled by
+  `pause()` (scroll-away) now surfaces a muted `recordingCancelled` notice on
+  `resume()` instead of vanishing; a scoring backstop timer recovers to idle
+  with an error if the recorder's callback is ever lost. New hand-authored
+  `recordingCancelled` string across all locales. Remount hygiene clears any
+  stale `.capPron-root` on mount; a scoped `.capPron-flow` layout (opt-in via the
+  mount container class) lets the surface grow in normal document flow so long
+  phrases / pill rows are never clipped.
 - **`onAttempt` param.** A new optional `params.onAttempt(v)` fires after every
   scored attempt (with `{ overall, band, silent }`) BEFORE any auto-settle, so a
   host can reveal its own inline retry / continue controls while the round stays

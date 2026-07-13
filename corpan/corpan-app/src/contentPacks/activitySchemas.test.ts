@@ -368,3 +368,118 @@ test("event rail: validated CustomEvents funnel into the same ingest; junk is dr
     delete (globalThis as { window?: unknown }).window
   }
 })
+
+// --- corpan:exit teardown (WS-F un-wedge) ---------------------------------------
+
+test("corpan:exit finalizes a still-open session as abandoned (crash / dropped result)", () => {
+  const w = new EventTarget() as EventTarget & { dispatchEvent: (e: Event) => boolean }
+  ;(globalThis as { window?: unknown }).window = w
+  const uninstall = m.installActivityResultEventRail()
+  try {
+    const { results } = begin()
+    m.ingestItem("lingo_hero", item("1", "pass"))
+    // The pack crashed / the overlay was torn down without ever calling
+    // reportResult — App.tsx/ContentPackHost dispatch corpan:exit on every
+    // overlay exit regardless. Nothing else in this module currently listens
+    // for it; if it stopped finalizing, the session (and the host's
+    // pendingPack launch-gate, runtime.ts) would wedge forever.
+    w.dispatchEvent(new CustomEvent("corpan:exit"))
+    assert.equal(results.length, 1)
+    assert.equal(results[0].result.abandoned, true)
+    assert.equal(results[0].meta.synthesized, true)
+    assert.equal(results[0].meta.reason, "user_exit")
+    assert.equal(results[0].result.perItem.length, 1) // buffered evidence kept
+    assert.equal(m.isActiveFor("lingo_hero"), false)
+  } finally {
+    uninstall()
+    delete (globalThis as { window?: unknown }).window
+  }
+})
+
+test("corpan:exit after a normal terminal result is a harmless no-op (idempotent)", () => {
+  const w = new EventTarget() as EventTarget & { dispatchEvent: (e: Event) => boolean }
+  ;(globalThis as { window?: unknown }).window = w
+  const uninstall = m.installActivityResultEventRail()
+  try {
+    const { results } = begin()
+    m.ingestResult("lingo_hero", result({ score: 1 }))
+    w.dispatchEvent(new CustomEvent("corpan:exit"))
+    assert.equal(results.length, 1) // no second (synthesized) result appended
+    assert.equal(results[0].result.score, 1)
+    assert.equal(results[0].meta.synthesized, false)
+  } finally {
+    uninstall()
+    delete (globalThis as { window?: unknown }).window
+  }
+})
+
+test("corpan:exit with no journey session active never throws", () => {
+  const w = new EventTarget() as EventTarget & { dispatchEvent: (e: Event) => boolean }
+  ;(globalThis as { window?: unknown }).window = w
+  const uninstall = m.installActivityResultEventRail()
+  try {
+    assert.doesNotThrow(() => w.dispatchEvent(new CustomEvent("corpan:exit")))
+  } finally {
+    uninstall()
+    delete (globalThis as { window?: unknown }).window
+  }
+})
+
+// --- packId normalization (WS-F) -------------------------------------------------
+
+test("ingestResult accepts a hyphen/underscore packId variant of the launching pack", () => {
+  const { results } = begin(undefined, "corpan_city")
+  // The provider reports back with the OPPOSITE separator convention — a
+  // real drift seen between a manifest id and a provider's own string, never
+  // a different pack. Must not be dropped as "result from wrong pack".
+  assert.equal(m.ingestResult("corpan-city", result()), true)
+  assert.equal(results.length, 1)
+  assert.equal(results[0].result.score, 0.5)
+})
+
+test("isActiveFor / activeSpecFor also normalize packId separators", () => {
+  begin(undefined, "corpan-city")
+  assert.equal(m.isActiveFor("corpan_city"), true)
+  assert.equal(m.activeSpecFor("corpan_city")?.specId, spec().specId)
+  assert.equal(m.ingestItem("corpan_city", item("1")), true)
+})
+
+test("packId normalization never conflates two genuinely different packs", () => {
+  begin(undefined, "lingo_hero")
+  assert.equal(m.isActiveFor("corpan_city"), false)
+  assert.equal(m.ingestResult("corpan_city", result()), false) // still wrong pack
+  m.endActivitySession()
+})
+
+// --- relaunch-after-wedge (WS-F) --------------------------------------------------
+
+test("relaunch after a wedge: a fresh begin() for a NEW pack finalizes the orphaned one first", () => {
+  // Simulates runtime.ts's pendingPackIsStale watchdog: the first pack
+  // (corpan_city) crashed — no reportResult, no corpan:exit ever reached this
+  // module — leaving its session open. The learner backs out (the feed
+  // becomes interactive again) and taps Play on a DIFFERENT pack. Once
+  // runtime.ts stops gating that on its OWN stale `pendingPack` bookkeeping,
+  // beginActivitySession's existing belt-and-braces guard (a still-open
+  // session finalized before the new one opens) is what actually recovers —
+  // this pins that guarantee at the module boundary.
+  const stuck = begin(undefined, "corpan_city")
+  m.ingestItem("corpan_city", item("1", "pass"))
+  assert.equal(m.isActiveFor("corpan_city"), true)
+
+  const fresh = begin({ specId: "js-fresh-0001" }, "wordfall")
+  assert.equal(fresh.ok, true)
+
+  // The orphaned session got its synthesized abandon — pendingPack's owner
+  // (runtime.ts) would clear its bookkeeping from exactly this callback.
+  assert.equal(stuck.results.length, 1)
+  assert.equal(stuck.results[0].result.abandoned, true)
+  assert.equal(stuck.results[0].meta.synthesized, true)
+  assert.equal(stuck.results[0].result.perItem.length, 1)
+
+  // The new pack is live and can complete normally.
+  assert.equal(m.isActiveFor("wordfall"), true)
+  assert.equal(m.isActiveFor("corpan_city"), false)
+  assert.equal(m.ingestResult("wordfall", result({ specId: "js-fresh-0001" })), true)
+  assert.equal(fresh.results.length, 1)
+  assert.equal(fresh.results[0].meta.synthesized, false)
+})

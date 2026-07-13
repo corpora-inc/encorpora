@@ -11,6 +11,7 @@ import {
   JUMP_THETA_BONUS,
   PLACED_ACC_EWMA,
   REPLAY_MIN_GAP,
+  RETIRE_PERFECT_STREAK,
 } from "./constants.ts"
 import { pushFlow } from "./flow.ts"
 import { ratchetForm } from "./forms.ts"
@@ -184,16 +185,40 @@ export function applyResult(bag: ApplyBag, r: ActivityResult): ApplyOutcome {
     if (priorKnown) card.flags |= CardFlags.PriorKnown
 
     if (grade === "forget") {
+      // Genuine FSRS forget → the item is no longer known: reset the perfect
+      // streak and UN-RETIRE (R-A: a forgotten item may return to scheduling).
       card.fsrs = bag.scheduler.forget(card, bag.nowMs)
+      card.fsrs.perfect = 0
+      card.flags &= ~CardFlags.Retired
       outcome.grades.push({ itemId, grade })
       bag.persistCard(itemId)
       touchedItems.push(itemId)
       return
     }
 
+    // R-A retirement bookkeeping (computed around scheduler.next, which returns
+    // a FRESH fsrs object without the counter — we re-stamp it below).
+    const prevPerfect = card.fsrs.perfect ?? 0
+    const lapsesBefore = card.fsrs.lapses
     card.fsrs = bag.scheduler.next(card, bag.nowMs, grade).fsrs
+    const lapsed = card.fsrs.lapses > lapsesBefore
     const passed = grade >= 2 // "Hard is never a fail"
     ratchetForm(card, issued.form, issued.guessable, passed)
+
+    // A perfect completion mirrors the runtime combo (score ≥ 0.95, no hints)
+    // AND this item itself passed cleanly. Two in a row RETIRE the item so it
+    // stops being served (breadth-first). Any miss resets the streak; a genuine
+    // FSRS lapse both resets AND un-retires (rare long-interval return).
+    const itemHints = per?.hintsUsed ?? 0
+    const itemPassedClean = per ? per.outcome === "pass" : passed
+    const perfect = itemPassedClean && itemHints === 0 && r.score >= 0.95
+    const itemMissed = per ? per.outcome === "fail" : grade === 1
+    card.fsrs.perfect = perfect ? prevPerfect + 1 : itemMissed || lapsed ? 0 : prevPerfect
+    if (perfect && card.fsrs.perfect >= RETIRE_PERFECT_STREAK) {
+      card.flags |= CardFlags.Retired
+    } else if (lapsed) {
+      card.flags &= ~CardFlags.Retired
+    }
 
     outcome.grades.push({ itemId, grade })
     outcome.items.push({

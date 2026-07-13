@@ -27,6 +27,12 @@ export interface ItemCard {
     reps: number
     lapses: number
     state: 0 | 1 | 2 | 3       // ts-fsrs State: New|Learning|Review|Relearning
+    /** Consecutive PERFECT completions (score ≥ 0.95, no hints — mirrors the
+     *  runtime combo). At RETIRE_PERFECT_STREAK the card is RETIRED (breadth-
+     *  first: a twice-nailed item stops recycling so unseen material leads).
+     *  Reset to 0 on any miss/lapse. Optional for backward-compat: an older
+     *  persisted card with no counter decodes to 0 (persistence/types.ts). */
+    perfect?: number
   }
   flags: number                // CardFlags bitfield
   form: 0 | 1 | 2              // highest form PASSED
@@ -37,6 +43,11 @@ export const CardFlags = {
   PlacementSeeded: 2,
   Leech: 4,
   Suspended: 8,
+  /** RETIRED (R-A): reached RETIRE_PERFECT_STREAK perfect completions. Excluded
+   *  from the DUE/FUN/REPAIR pools + continuation-revisit + debt backlog so
+   *  mastered items stop being served forever; a genuine FSRS forget/lapse
+   *  clears it (rare long-interval return at most). */
+  Retired: 16,
 } as const
 
 // -------------------------------------------------------- review-log read model

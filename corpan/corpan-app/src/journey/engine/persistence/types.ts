@@ -45,9 +45,17 @@ export function parseItemCard(raw: unknown): ItemCard | null {
   // reviewed cards must carry sane FSRS memory state
   if (f.state !== 0 && (f.s <= 0 || f.d < 1 || f.d > 10)) return null
   if (f.state === 0 && (f.d < 0 || f.d > 10)) return null
+  // Consecutive-perfect retirement counter (R-A). Additive/optional: pre-
+  // retirement cards carry no counter and decode WITHOUT the field (treated as
+  // 0 everywhere via `?? 0`), so an untouched card round-trips byte-identically
+  // — no schema bump, and a mid-streak counter (> 0) is preserved across reload.
+  const fsrs: ItemCard["fsrs"] = {
+    s: f.s, d: f.d, due: f.due, last: f.last, reps: f.reps, lapses: f.lapses, state: f.state,
+  }
+  if (isInt(f.perfect) && f.perfect > 0) fsrs.perfect = f.perfect
   return {
     itemId: rec.itemId,
-    fsrs: { s: f.s, d: f.d, due: f.due, last: f.last, reps: f.reps, lapses: f.lapses, state: f.state },
+    fsrs,
     flags: rec.flags,
     form: rec.form,
   }

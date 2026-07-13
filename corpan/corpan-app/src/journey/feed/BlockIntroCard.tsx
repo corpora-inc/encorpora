@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { Mic } from "lucide-react"
+import { useSttStore } from "../../store/stt"
 
 export function BlockIntroCard(props: {
   blockLen: number
@@ -16,6 +17,13 @@ export function BlockIntroCard(props: {
 }) {
   const { t } = useTranslation()
   const [warm, setWarm] = useState(props.prepared == null)
+
+  // Mark the mic-priming card as SHOWN on its first impression, so it renders
+  // AT MOST ONCE ever (R2). Idempotent: noteMicIntroShown only sets the stamp
+  // when it's still null, so a scroll-back re-mount is a harmless no-op.
+  useEffect(() => {
+    useSttStore.getState().noteMicIntroShown()
+  }, [])
 
   useEffect(() => {
     let alive = true

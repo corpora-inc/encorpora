@@ -38,6 +38,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   rail, unmount race) + field-mapping tests, validated against the app's
   contract Zod schemas.
 
+### Fixed
+- **Journey entry could fall through to the full 3D world (welcome screen +
+  language chooser) and boot the on-device LLM instead of the micro-challenge**
+  when `initialState.activity` went missing upstream of the pack. `main.ts`'s
+  mount now also checks `hostApi.journey.isActive()` — the host's own
+  authoritative "this mount is a Journey launch" marker — and recovers the
+  real spec from `hostApi.journey.getSpec()` when `initialState.activity` is
+  absent; a Journey mount can never reach `startGame()` (the world/LLM path)
+  anymore. Added `journey/adapter.ts#synthesizeFallbackActivitySpec` as a
+  last-resort, UI-free micro-challenge (no welcome/chooser) for the
+  (practically unreachable) case where even the host rail has no spec.
+
 ### Removed
 - **"Which one doesn't belong?" (odd-one-out) disabled** pending a solvable
   rebuild. It grouped corpus entries by their opaque DOMAIN tag

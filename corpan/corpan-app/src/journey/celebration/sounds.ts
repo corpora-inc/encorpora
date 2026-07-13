@@ -3,6 +3,7 @@
 // (checked, dropped — not queued). Web Audio only, no assets.
 
 import { fireHapticAmbient } from "./haptics.ts"
+import { isUtteranceActive } from "../../util/audioManager.ts"
 
 let ctx: AudioContext | null = null
 
@@ -23,6 +24,11 @@ function audioCtx(): AudioContext | null {
 }
 
 function ttsSpeaking(): boolean {
+  // `speechSynthesis.speaking` only sees BROWSER TTS; native (macOS/iOS/
+  // Android) speech never touches it. isUtteranceActive() covers native too
+  // (estimate-based — see audioManager.ts), so a chime is dropped whichever
+  // backend is currently talking.
+  if (isUtteranceActive()) return true
   try {
     return typeof speechSynthesis !== "undefined" && speechSynthesis.speaking
   } catch {

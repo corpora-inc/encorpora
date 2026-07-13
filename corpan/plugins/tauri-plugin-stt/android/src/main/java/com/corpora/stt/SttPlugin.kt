@@ -662,6 +662,20 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             invoke.resolve(ret); return
         }
 
+        // Defense-in-depth (WS-B): a bare prepare() with NO model must NOT
+        // clobber a bigger resident model with the tiny default. If a model is
+        // already loaded and the caller didn't name one, keep the resident model
+        // — never unload it, never fall through to DEFAULT_MODEL (ggml-tiny).
+        // Native backstop for the journey warm-up recurrence.
+        if (args.model == null) {
+            val resident = if (ctx?.isAlive == true) loadedModel else null
+            if (resident != null) {
+                Log.i(TAG, "prepare(null) — keeping resident model: $resident")
+                val ret = JSObject(); ret.put("ready", true); ret.put("model", resident)
+                invoke.resolve(ret); return
+            }
+        }
+
         if (ctx?.isAlive == true && loadedModel == name) {
             val ret = JSObject(); ret.put("ready", true); ret.put("model", name)
             invoke.resolve(ret); return

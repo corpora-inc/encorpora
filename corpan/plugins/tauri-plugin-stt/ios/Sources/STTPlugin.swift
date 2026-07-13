@@ -1404,6 +1404,23 @@ private final class WhisperManager {
     // message; the caller is expected to surface an install flow.
     // ---------------------------------------------------------------------
     func prepare(model requested: String?, completion: @escaping (PreparePayload) -> Void) {
+        // Defense-in-depth (WS-B): a bare prepare() with NO model must NEVER
+        // clobber a bigger resident model with the tiny default. If a model is
+        // already loaded and the caller didn't name one, keep the resident model
+        // — report it ready, never unload it, never fall through to
+        // Self.defaultModel (ggml-tiny). This is the native backstop for the
+        // recurrence where journey's warm-up called prepare() with no model,
+        // unloading the user's 547 MB model and then reporting MODEL_NOT_INSTALLED.
+        if requested == nil {
+            let resident = self.queue.sync { self.ctx != nil ? self.loadedModel : nil }
+            if let resident {
+                sttLog("Whisper | prepare(nil) — keeping resident model:", resident)
+                completion(
+                    PreparePayload(
+                        ready: true, model: resident, message: nil, code: nil))
+                return
+            }
+        }
         let modelName = requested ?? Self.defaultModel
         sttLog("Whisper | prepare requested (local-only):", modelName)
         sttMemSnapshot("prepare-entry: \(modelName)")

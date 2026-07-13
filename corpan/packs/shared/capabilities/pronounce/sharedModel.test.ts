@@ -242,3 +242,118 @@ describe("cap-pronounce — shares an already-installed model (fix #1)", () => {
     container.remove()
   })
 })
+
+describe("cap-pronounce — sttModel seam (single source of truth, R5)", () => {
+  it("uses the host's sttModel.resolveFolder without re-probing", async () => {
+    const prepared: string[] = []
+    const notePrepared: string[] = []
+    const stt: CapabilitySttApi = {
+      isAvailable: async () => true,
+      // The PROBE reports NOTHING installed — only the seam knows the folder.
+      getStatus: async () => ({
+        available: true,
+        prepared: false,
+        model: null,
+        recording: false,
+        message: null,
+      }),
+      prepare: async (o) => {
+        const f = o?.model ?? DEFAULT_FOLDER
+        prepared.push(f)
+        return { ready: true, model: f }
+      },
+      startSession: async (o) => ({ started: true, sessionId: o.sessionId }),
+      stopSession: async (o) => makeMockTranscription(o.sessionId, "hola mundo", "es"),
+      cancelSession: async () => {},
+      listInstalled: async () => ({ models: [] }),
+      validateModel: async (o) => ({
+        model: o?.model ?? DEFAULT_FOLDER,
+        valid: false,
+        problems: ["missing"],
+      }),
+      releaseAudio: async () => {},
+    }
+    const host: CapabilityHostApi = {
+      speak: async () => {},
+      getStackConfig: () => ({
+        languages: ["en", "es"],
+        rate: 1,
+        showRomanization: true,
+        levels: ["A0", "A1"],
+      }),
+      stopSpeech: async () => {},
+      stt,
+      sttModel: {
+        resolveFolder: () => BIG_FOLDER,
+        notePrepared: (f) => notePrepared.push(f),
+      },
+    }
+    const { container, handle } = mountIn(host, makeSpec())
+    await micReady(container)
+    // Seam won: prepared the BIG model the store resolved, no install offer,
+    // and reported back what it prepared.
+    expect(container.querySelector(".capPron-install")).toBeNull()
+    expect(prepared).toContain(BIG_FOLDER)
+    expect(notePrepared).toContain(BIG_FOLDER)
+    handle.dispose()
+    container.remove()
+  })
+})
+
+describe("cap-pronounce — never offers tiny over an installed model (R1)", () => {
+  it("an installed model that won't load settles unavailable, no tiny offer", async () => {
+    const prepared: string[] = []
+    let installCalls = 0
+    const stt: CapabilitySttApi = {
+      isAvailable: async () => true,
+      getStatus: async () => ({
+        available: true,
+        prepared: false,
+        model: null,
+        recording: false,
+        message: null,
+      }),
+      // Reports the big model installed, but it will not load (corrupt on disk).
+      prepare: async (o) => {
+        const f = o?.model ?? DEFAULT_FOLDER
+        prepared.push(f)
+        return { ready: false, model: f, message: "corrupt", code: "LOAD_FAILED" as const }
+      },
+      startSession: async (o) => ({ started: true, sessionId: o.sessionId }),
+      stopSession: async (o) => makeMockTranscription(o.sessionId, "hola mundo", "es"),
+      cancelSession: async () => {},
+      listInstalled: async (o) => ({
+        models: o.models
+          .filter((m) => m === BIG_FOLDER)
+          .map((m) => ({ model: m, valid: true, problems: [], sizeBytes: 1, isLoaded: false })),
+      }),
+      installModel: async () => {
+        installCalls += 1
+        return { installed: true, model: DEFAULT_FOLDER, alreadyInstalled: false }
+      },
+      releaseAudio: async () => {},
+    }
+    const host: CapabilityHostApi = {
+      speak: async () => {},
+      getStackConfig: () => ({
+        languages: ["en", "es"],
+        rate: 1,
+        showRomanization: true,
+        levels: ["A0", "A1"],
+      }),
+      stopSpeech: async () => {},
+      stt,
+    }
+    const { container, handle } = mountIn(host, makeSpec())
+    const result = await handle.result
+    // Degrades (sttUnavailable) instead of offering to download the 75 MB tiny.
+    expect(result.abandoned).toBe(true)
+    expect(result.detail?.flags?.sttUnavailable).toBe(true)
+    expect(container.querySelector(".capPron-install")).toBeNull()
+    expect(installCalls).toBe(0)
+    // It tried the installed big model, never the tiny default.
+    expect(prepared).toContain(BIG_FOLDER)
+    expect(prepared).not.toContain(DEFAULT_FOLDER)
+    container.remove()
+  })
+})

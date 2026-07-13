@@ -48,7 +48,7 @@ import {
   rollRare,
   type LessonBag,
 } from "./lessons.ts"
-import type { Mastery } from "./mastery.ts"
+import { isRetired, type Mastery } from "./mastery.ts"
 import { buildPools, isLeech, type Pools } from "./pools.ts"
 import { weightedPick } from "./rng.ts"
 import type { Scheduler } from "./scheduler.ts"
@@ -352,7 +352,7 @@ function matchPairsCompanions(bag: MixerBag, primaryItemId: string, slots: Slot[
         const item = gidx.graph.items[id]
         if (!item || item.kind !== kind) continue
         const card = bag.cards.get(id)
-        if (card && (card.flags & 8) !== 0) continue // Suspended — never served
+        if (card && ((card.flags & 8) !== 0 || isRetired(card))) continue // Suspended / Retired — never served
         const last = session.lastEmit.get(id)
         if (last !== undefined && pos - last < ITEM_MIN_GAP) continue
         used.add(id)
@@ -516,7 +516,7 @@ function lessonSlotItem(
             if (debt) continue
             return { itemId, pool: "new" }
           }
-          if ((card.flags & 8) !== 0) continue // Suspended — never served
+          if ((card.flags & 8) !== 0 || isRetired(card)) continue // Suspended / Retired — never served
           if (card.fsrs.reps > 0) return { itemId, pool: "due" }
         }
       }
@@ -577,7 +577,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   const pools = buildPools(bag)
   const quota = adjustQuotas(course, session.flow.mode, pools.dueCount)
   const slots: Slot[] = []
-  const cursor = { due: 0, new: 0, repair: 0, trickle: 0, fun: 0, frontier: 0 }
+  const cursor = { due: 0, new: 0, repair: 0, trickle: 0, fun: 0, frontier: 0, retired: 0 }
   const stage = gidx.stageOfUnit(course.position.unitOrdinal)
   const biasStrand = mostDeficientStrand(course, bag.day, stage)
   const strandWeights = strandControlWeights(course, bag.day, stage)
@@ -599,9 +599,14 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     form: 0 | 1 | 2,
     extra?: Partial<Slot>,
     restrict?: string[],
+    /** Last-resort continuation only: permit a RETIRED item to be revisited
+     *  (frontier + non-retired strong-known exhausted). Suspended is NEVER
+     *  overridable. */
+    allowRetired = false,
   ): Slot | null => {
     const card = bag.cards.get(itemId)
     if (card && (card.flags & 8) !== 0) return null // Suspended — never served
+    if (card && !allowRetired && isRetired(card)) return null // Retired — only last-resort revisit
     const leechItem = card ? isLeech(card) : false
     if (leechItem && leechServed >= MAX_LEECH_PER_BATCH) return null
     if (leechItem && bag.session.rng.next() > LEECH_SERVE_P) return null // §5.7 containment
@@ -653,7 +658,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     let best: string | null = null
     let bestR = -1
     for (const card of bag.cards.values()) {
-      if (card.fsrs.reps === 0 || (card.flags & 8) !== 0) continue
+      if (card.fsrs.reps === 0 || (card.flags & 8) !== 0 || isRetired(card)) continue
       const r = rOf(card.itemId)
       if (r >= OPENER_R_MIN && r <= OPENER_R_MAX && r > bestR) {
         const t = chooseActivityType(bag, cons, card.itemId, card.form, {
@@ -684,7 +689,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     let win: string | null = null
     let winR = -1
     for (const card of bag.cards.values()) {
-      if (card.fsrs.reps === 0 || card.itemId === failedItem || (card.flags & 8) !== 0) continue
+      if (card.fsrs.reps === 0 || card.itemId === failedItem || (card.flags & 8) !== 0 || isRetired(card)) continue
       const r = rOf(card.itemId)
       if (r >= NEAR_WIN_R_MIN && r < 1 && r > winR) {
         win = card.itemId
@@ -728,7 +733,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   }
 
   // -- 2. fill remaining slots ---------------------------------------------------
-  type FillTag = "due" | "new" | "repair" | "fun" | "trickle" | "frontier"
+  type FillTag = "due" | "new" | "repair" | "fun" | "trickle" | "frontier" | "retired"
   const poolOrder: { tag: FillTag; list: string[] }[] = [
     { tag: "due", list: pools.due },
     { tag: "new", list: pools.new },
@@ -736,6 +741,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     { tag: "fun", list: pools.fun },
     { tag: "trickle", list: pools.trickle },
     { tag: "frontier", list: pools.frontier },
+    { tag: "retired", list: pools.retired },
   ]
   const remaining = (tag: FillTag): number => {
     const entry = poolOrder.find((p) => p.tag === tag)
@@ -825,6 +831,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     // content (no frontier AND no strong-known to revisit), reached via `break`
     // (fail-safe: never mid-journey).
     let continuationRevisit = false
+    let revisitRetired = false
     if (weights.length === 0) {
       if (!quota.debt && remaining("frontier") > 0) {
         push("frontier", 1)
@@ -832,6 +839,16 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
         // full-menu revisit of a strong-known item (bypasses the fun garnish cap)
         weights.push(["fun", 1])
         continuationRevisit = true
+      } else if (remaining("retired") > 0) {
+        // TRUE end-of-content fallback: frontier AND non-retired strong-known are
+        // both exhausted (a binger has nailed everything reachable). Rather than
+        // dead-ending the infinite feed, revisit a fully-mastered (RETIRED) item
+        // as a spaced full-menu review. This is the ONLY path that serves a
+        // retired item, and only when there is genuinely nothing else — so
+        // mastered words are never recycled WHILE fresh material exists (R-B).
+        weights.push(["retired", 1])
+        continuationRevisit = true
+        revisitRetired = true
       }
     }
     if (weights.length === 0) break
@@ -873,8 +890,17 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       // match_pairs. SRS is untouched: this re-exposes an already-mastered item
       // and grades it like any review; it never manufactures NEW spacing debt.
       const card = bag.cards.get(itemId)
-      const form = card ? chooseForm(card, session.flow.mode, rOf(itemId), rng) : 0
-      tryIssue(itemId, "due", form)
+      // A retired revisit is the true end-of-content garnish: prioritise VARIETY
+      // over difficulty. chooseForm would escalate a fully-mastered item to the
+      // production form, where a model-less host collapses to a single usable
+      // type (e.g. listen_type) → a same-type run. Serve it at a low, rotating
+      // form (0/1) so the wide recognition/recall menu keeps the terminal varied.
+      const form = revisitRetired
+        ? (rng.int(2) as 0 | 1)
+        : card
+          ? chooseForm(card, session.flow.mode, rOf(itemId), rng)
+          : 0
+      tryIssue(itemId, "due", form, undefined, undefined, revisitRetired)
       continue
     }
 
@@ -882,6 +908,9 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
       tryIssue(itemId, "trickle", 0)
       continue
     }
+    // "retired" is always routed through the continuationRevisit branch above;
+    // this guard makes that unreachable case explicit (and narrows the type).
+    if (tag === "retired") continue
 
     const card = bag.cards.get(itemId)
     const form = card ? chooseForm(card, session.flow.mode, rOf(itemId), rng) : 0
