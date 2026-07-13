@@ -16,6 +16,25 @@ export type JsonCachePolicy = {
   /** Schema stamp for the persisted record — bump to invalidate old shapes
    *  (storage semantics: mismatch reads as miss, lib/storage/index.ts). */
   schema?: number
+  /** Never send If-None-Match/If-Modified-Since on revalidation, even once a
+   *  prior 200 gave us validators to send.
+   *
+   *  Those headers aren't CORS-safelisted, so sending them cross-origin
+   *  forces the browser to preflight with an OPTIONS request first. Verified
+   *  against production (2026-07-13): CloudFront/S3
+   *  (d38iwc9748jekz.cloudfront.net) answers OPTIONS with 403, and GitHub
+   *  Pages/Fastly (encorpora.io) answers with 405 — both still send
+   *  `access-control-allow-origin: *`, but the non-2xx status fails the
+   *  preflight regardless, so the browser never sends the real request.
+   *  `fetchJsonFresh` already recovers by dropping the header on retry
+   *  (catalogFetch.ts), so this was self-healing, not a hard outage — but it
+   *  meant EVERY revalidation against these origins paid for one guaranteed-
+   *  to-fail OPTIONS round trip + a backoff sleep before the plain-GET retry
+   *  that actually succeeds, and the intended 304 fast path never fired (a
+   *  plain retry has no conditional headers, so it's always a full 200).
+   *  Set this once a resource's origin is known not to answer preflight;
+   *  simple GETs (no custom headers) aren't preflighted and work fine. */
+  skipConditionalGet?: boolean
 }
 
 export type JsonResource<T> = {

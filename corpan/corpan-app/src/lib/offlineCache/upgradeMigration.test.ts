@@ -268,7 +268,7 @@ test("seed notifies subscribers — a store that raced ahead of migrate still hy
   assert.equal(value.stale, true, "an old lastFetched reads as stale (revalidates when online)")
 })
 
-test("phrase-pack upgrade: raw body seeds VERBATIM with validators; first online revalidation can 304", async () => {
+test("phrase-pack upgrade: raw body seeds VERBATIM with validators; revalidation withholds them (skipConditionalGet)", async () => {
   const backing = new Map<string, StoredCell>()
   bootSession(backing, { online: false })
 
@@ -284,8 +284,12 @@ test("phrase-pack upgrade: raw body seeds VERBATIM with validators; first online
   const record = backing.get("phrase-pack-catalog")!.value as {
     validators: { etag?: string; lastModified?: string }
   }
-  // The legacy validators describe exactly this body — carried over so the
-  // first post-upgrade revalidation is a 0-byte 304.
+  // The legacy validators are carried over into the seeded record (harmless
+  // to keep around), even though phrasePackCatalogResource's CATALOG_POLICY
+  // sets `skipConditionalGet: true` and so never actually sends them — this
+  // CDN fails the CORS preflight If-None-Match would trigger (verified
+  // 2026-07-13: CloudFront/S3 answers OPTIONS with 403 despite a permissive
+  // access-control-allow-origin on the GET).
   assert.equal(record.validators.etag, '"phrase-etag"')
 
   // Offline cold start: the body renders from the seed (normalized through
@@ -300,13 +304,16 @@ test("phrase-pack upgrade: raw body seeds VERBATIM with validators; first online
   assert.equal(pack.version, "0.1.0")
   assert.equal(pack.zipUrl, PHRASE_BODY.packs[0].zipUrl)
 
-  // Back online, stale → background revalidation FORWARDS the seeded
-  // validators and a 304 refreshes fetchedAt without data churn.
+  // Back online, stale → background revalidation runs WITHOUT the seeded
+  // validators (skipConditionalGet). A real server can't 304 an unconditional
+  // GET, so this is always a full 200 — that's the whole point: we trade the
+  // (currently unreachable, since the CDN 403s the preflight) 304 fast path
+  // for a request that browsers cross-origin will actually let through.
   const NOW = 1_700_009_999_999
   const online = bootSession(backing, {
     online: true,
     now: NOW,
-    respond: () => ({ status: "unchanged", validators: { etag: '"phrase-etag"' } }),
+    respond: () => ({ status: "ok", data: PHRASE_BODY, validators: { etag: '"phrase-etag-2"' } }),
   })
   const served = await mod.cachedFetch(mod.phrasePackCatalogResource)
   assert.ok(served)
@@ -318,8 +325,12 @@ test("phrase-pack upgrade: raw body seeds VERBATIM with validators; first online
     await new Promise((r) => setTimeout(r, 5))
   }
   assert.equal(online.networkCalls.length, 1)
-  assert.equal(online.networkCalls[0].validators?.etag, '"phrase-etag"')
-  // 304 path persists the refreshed fetchedAt.
+  assert.equal(
+    online.networkCalls[0].validators,
+    undefined,
+    "no If-None-Match/If-Modified-Since sent — this CDN fails the CORS preflight they'd trigger",
+  )
+  // Full-200 path persists the refreshed fetchedAt (and the new etag).
   while (
     (backing.get("phrase-pack-catalog")!.value as { fetchedAt: number }).fetchedAt !== NOW &&
     Date.now() < deadline
@@ -330,4 +341,8 @@ test("phrase-pack upgrade: raw body seeds VERBATIM with validators; first online
     (backing.get("phrase-pack-catalog")!.value as { fetchedAt: number }).fetchedAt,
     NOW,
   )
+  const refreshed = backing.get("phrase-pack-catalog")!.value as {
+    validators: { etag?: string }
+  }
+  assert.equal(refreshed.validators.etag, '"phrase-etag-2"')
 })

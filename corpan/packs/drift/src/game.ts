@@ -10,10 +10,12 @@ import type { SceneMotif } from "./content/stories"
 import {
   buildChallenges,
   isCorrectPick,
+  normalizeWord,
   type Challenge,
   type ChallengeAnswer,
 } from "./challenge"
 import { DriftSession } from "./session"
+import { EtymologyResolver } from "./etymology"
 import { estimateSpeechDurationMs, waitForEstimatedSpeech } from "./speechTiming"
 import { uiString } from "./i18n/strings"
 
@@ -63,11 +65,17 @@ export class Drift {
   private challengesByBeat = new Map<number, Challenge>()
   private answers: ChallengeAnswer[] = []
   private session: DriftSession | null = null
+  private etymology: EtymologyResolver | null = null
+  /** Monotonic tap id so a stale async etymology fetch never fills a newer card. */
+  private cardToken = 0
 
   private beatEls: HTMLElement[] = []
   private wordEls: HTMLElement[][] = [] // [beatIndex][tokenIndex]
 
   private muted = false
+  /** Set when host TTS rejects (no TTS plugin / speech unsupported) — from then
+   *  on challenges use the VISUAL variant, since the learner can't hear a word. */
+  private audioUnavailable = false
   private finished = false
   private disposed = false
   private timers: number[] = []
@@ -111,6 +119,15 @@ export class Drift {
           <button class="drift-btn drift-done" type="button" data-i18n="done">Done</button>
         </div>
         <div class="drift-gloss" role="status" aria-live="polite" hidden></div>
+        <div class="drift-card" role="dialog" aria-live="polite" hidden>
+          <button class="drift-card-close" type="button" aria-label="✕">✕</button>
+          <p class="drift-card-word"></p>
+          <p class="drift-card-gloss"></p>
+          <div class="drift-card-origin" hidden>
+            <p class="drift-card-origin-label"></p>
+            <p class="drift-card-origin-text"></p>
+          </div>
+        </div>
       </div>
     `
     this.root = root
@@ -125,6 +142,16 @@ export class Drift {
     this.soundBtn.addEventListener("click", () => this.toggleMute())
     ;(root.querySelector(".drift-done") as HTMLButtonElement).addEventListener("click", () =>
       this.exit(),
+    )
+    // Word-tap gloss via ONE delegated listener on the prose (robust on mobile
+    // webview: survives text swaps, no per-span handler to detach, and taps on a
+    // word's punctuation/child still resolve via closest()). This replaces the
+    // per-span `click` handlers, which (a) were skipped whenever a token's gloss
+    // was empty — dead taps on immersion stacks — and (b) re-ran on every render.
+    this.proseEl.addEventListener("click", (e) => this.onProseTap(e))
+    ;(root.querySelector(".drift-card-close") as HTMLButtonElement).addEventListener(
+      "click",
+      () => this.hideCard(),
     )
     this.container.appendChild(root)
   }
@@ -141,6 +168,12 @@ export class Drift {
       return
     }
     this.stage.style.setProperty("--drift-hue", String(this.story.scene.hue))
+    // Word-origin resolver: reads an installed `wordpan_<native>_en` pack for
+    // etymology when reachable (capability-checked; degrades to plain gloss).
+    this.etymology = new EtymologyResolver(this.hostApi, {
+      targetLang: this.story.targetLang,
+      nativeLang: this.story.nativeLang,
+    })
     this.renderStory(this.story)
 
     // Build the light challenges + (in a journey launch) the reporting session.
@@ -174,9 +207,14 @@ export class Drift {
         const w = document.createElement("span")
         w.className = "drift-word"
         w.textContent = tok.text
-        if (tok.gloss) {
-          w.addEventListener("click", () => this.showGloss(tok.gloss as string, w))
-        }
+        // Carry the tap payload on the element; the delegated listener reads it.
+        // ALWAYS tappable (even with an empty gloss) — the tap still highlights,
+        // focuses the word, and can surface etymology. Discoverability: the dotted
+        // underline (styles.css) signals a word is tappable on touch devices.
+        w.dataset.gloss = tok.gloss ?? ""
+        w.dataset.word = normalizeWord(tok.text)
+        w.setAttribute("role", "button")
+        w.tabIndex = 0
         line.appendChild(w)
         tokenEls.push(w)
       })
@@ -197,11 +235,15 @@ export class Drift {
       await this.speakLine(beat.targetText)
       if (this.disposed || this.finished) return
 
-      // A challenge only makes sense when the learner could actually HEAR the
-      // target word — while muted, drift stays a pure calm reader (guessed
-      // answers would stream junk pass/fail evidence into the journey engine).
+      // Always pose the beat's challenge. Sound-on → the AUDIO variant ("which
+      // word did you hear?"); muted (or when audio can't be heard) → the VISUAL
+      // variant ("which word is missing?"), a fill-the-gap recognition task that
+      // needs no TTS. BOTH are honest recognition evidence and are scored — the
+      // muted user gets a real game, not the old silent passive reader. (Junk
+      // guessing was the old worry; a visible gap + real word chips is a genuine
+      // task, not a blind guess, so its pass/fail is legitimate.)
       const challenge = this.challengesByBeat.get(bi)
-      if (challenge && !this.muted) {
+      if (challenge) {
         const done = await this.runChallenge(challenge)
         if (!done || this.disposed || this.finished) return
       } else {
@@ -222,7 +264,9 @@ export class Drift {
     try {
       await this.hostApi.speak(this.story?.targetLang ?? "", text)
     } catch {
-      /* host may reject when globally muted — pacing still holds below */
+      // Host rejected: no TTS on this build. Pacing still holds below, and from
+      // now on challenges use the visual variant (the word can't be heard).
+      this.audioUnavailable = true
     }
     if (this.disposed || this.finished) return
     await waitForEstimatedSpeech(
@@ -233,20 +277,28 @@ export class Drift {
   }
 
   /**
-   * Present one challenge: speak the target word, float the candidate chips,
-   * await a tap. Resolves true when answered, false if aborted (exit/dispose).
+   * Present one challenge, float the candidate chips, await a tap. Two variants:
+   *  - AUDIO (sound on): speak the target word, prompt "which word did you hear?".
+   *  - VISUAL (muted / no TTS): blank the target word in the just-read beat,
+   *    prompt "which word is missing?" — a no-audio fill-the-gap recognition task.
+   * Resolves true when answered, false if aborted (exit/dispose).
    */
   private async runChallenge(ch: Challenge): Promise<boolean> {
-    // Speak the target word alone (grounded in the beat just heard).
-    if (!this.muted) await this.speakWord(ch.targetWord)
+    const visual = this.muted || this.audioUnavailable
+    if (!visual) await this.speakWord(ch.targetWord) // audio variant grounds on sound
     if (this.disposed || this.finished) return false
 
+    this.setPrompt(visual ? "missing" : "heard")
+    const gap = visual ? this.openGap(ch) : null
     this.renderOptions(ch)
     this.showChallenge(true)
 
     const presentedAt = performance.now()
     const pick = await this.awaitPick()
-    if (pick == null) return false // aborted
+    if (pick == null) {
+      if (gap) this.restoreGap(gap)
+      return false // aborted
+    }
 
     const correct = isCorrectPick(pick, ch.targetWord)
     const latencyMs = performance.now() - presentedAt
@@ -254,6 +306,7 @@ export class Drift {
     this.session?.noteAnswer(ch.itemRef, correct, latencyMs)
 
     this.markVerdict(pick, ch.targetWord, correct)
+    if (gap) this.restoreGap(gap) // reveal the real word back in the beat line
     if (ch.targetGloss) this.showGlossText(ch.targetGloss)
     await this.pause(FEEDBACK_MS)
     if (this.disposed || this.finished) return false
@@ -261,6 +314,35 @@ export class Drift {
     this.showChallenge(false)
     this.optionsEl.innerHTML = ""
     return true
+  }
+
+  /** Localize the challenge prompt for the active variant. */
+  private setPrompt(key: "heard" | "missing") {
+    this.promptEl.textContent = uiString(key, this.nativeLocale)
+  }
+
+  /**
+   * VISUAL variant: blank the target word where it sits in the just-read beat,
+   * so the learner reads the sentence with a gap and picks the missing word.
+   * Returns the slot (element + original text) to restore, or null if the word
+   * isn't found in the rendered beat (then the chips stand alone — still valid).
+   */
+  private openGap(ch: Challenge): { el: HTMLElement; text: string } | null {
+    const slots = this.wordEls[ch.beatIndex] ?? []
+    const el = slots.find(
+      (w) => normalizeWord(w.textContent ?? "") === normalizeWord(ch.targetWord),
+    )
+    if (!el) return null
+    const text = el.textContent ?? ""
+    el.classList.add("drift-word--gap")
+    el.textContent = "•••"
+    return { el, text }
+  }
+
+  /** Restore a blanked word slot to its real text. */
+  private restoreGap(slot: { el: HTMLElement; text: string }) {
+    slot.el.textContent = slot.text
+    slot.el.classList.remove("drift-word--gap")
   }
 
   private renderOptions(ch: Challenge) {
@@ -341,14 +423,81 @@ export class Drift {
     el.classList.add("is-on")
   }
 
-  // ---- Gloss reveal (tap any word, or challenge feedback) -----------------
-  private showGloss(gloss: string, anchor: HTMLElement) {
-    if (!gloss) return
+  // ---- Word tap → meaning + origin card -----------------------------------
+  /** Delegated prose tap: resolve the tapped word and reveal its card. */
+  private onProseTap(e: Event) {
+    const target = e.target as HTMLElement | null
+    const word = target?.closest?.(".drift-word") as HTMLElement | null
+    if (!word) return
+    // A blanked challenge slot is a game target, not a gloss anchor — ignore it.
+    if (word.classList.contains("drift-word--gap")) return
+    this.showWordCard(word)
+  }
+
+  /**
+   * Reveal a calm card for a tapped word: the word, its meaning (native gloss),
+   * and — when a word pack is reachable — its ORIGIN paragraph, fetched async so
+   * the meaning shows instantly and the origin fills in when it arrives.
+   */
+  private showWordCard(anchor: HTMLElement) {
+    const word = anchor.dataset.word || normalizeWord(anchor.textContent ?? "")
+    const gloss = anchor.dataset.gloss ?? ""
+
     this.beatEls.forEach((l) =>
       l.querySelectorAll(".drift-word").forEach((w) => w.classList.remove("is-tapped")),
     )
     anchor.classList.add("is-tapped")
-    this.showGlossText(gloss)
+
+    const card = this.root.querySelector(".drift-card") as HTMLElement
+    const wordEl = card.querySelector(".drift-card-word") as HTMLElement
+    const glossEl = card.querySelector(".drift-card-gloss") as HTMLElement
+    const originWrap = card.querySelector(".drift-card-origin") as HTMLElement
+    wordEl.textContent = word
+    glossEl.textContent = gloss
+    glossEl.hidden = !gloss
+    originWrap.hidden = true
+    ;(card.querySelector(".drift-card-origin-text") as HTMLElement).textContent = ""
+
+    card.hidden = false
+    void card.offsetWidth
+    card.classList.add("is-on")
+    const token = ++this.cardToken
+    this.scheduleCardHide(token, 5200)
+
+    // Fetch etymology (capability-checked inside the resolver). Only fill the
+    // card if it's still showing THIS word (a newer tap bumps cardToken).
+    if (this.etymology?.enabled) {
+      void this.etymology.lookup(word).then((origin) => {
+        if (this.disposed || token !== this.cardToken || !origin) return
+        ;(card.querySelector(".drift-card-origin-label") as HTMLElement).textContent =
+          uiString("origin", this.nativeLocale)
+        ;(card.querySelector(".drift-card-origin-text") as HTMLElement).textContent =
+          origin.paragraph
+        originWrap.hidden = false
+        this.scheduleCardHide(token, 9000) // origin needs reading time
+      })
+    }
+  }
+
+  /** Auto-hide the card after `ms`, unless a newer tap has superseded `token`. */
+  private scheduleCardHide(token: number, ms: number) {
+    const t = window.setTimeout(() => {
+      if (token === this.cardToken) this.hideCard()
+    }, ms)
+    this.timers.push(t)
+  }
+
+  private hideCard() {
+    const card = this.root.querySelector(".drift-card") as HTMLElement
+    this.cardToken++ // cancel any pending fill/hide for the current card
+    card.classList.remove("is-on")
+    this.beatEls.forEach((l) =>
+      l.querySelectorAll(".drift-word").forEach((w) => w.classList.remove("is-tapped")),
+    )
+    const t = window.setTimeout(() => {
+      card.hidden = true
+    }, 260)
+    this.timers.push(t)
   }
 
   private showGlossText(gloss: string) {
@@ -382,7 +531,8 @@ export class Drift {
     try {
       await this.hostApi.speak(this.story?.targetLang ?? "", word)
     } catch {
-      /* muted host — the chips are still shown, learner reads them */
+      // No TTS on this build — next challenge falls over to the visual variant.
+      this.audioUnavailable = true
     }
     if (this.disposed || this.finished) return
     await waitForEstimatedSpeech(

@@ -34,12 +34,29 @@ import type { JsonCachePolicy, JsonResource } from "./types.ts"
 /** 5 min — matches the CDN's max-age=300 and the historical store TTLs. */
 export const CATALOG_TTL_MS = 300_000
 
-/** Policy for every catalog-shaped resource (§3.2 rows 1-4). */
-export const CATALOG_POLICY: JsonCachePolicy = { ttlMs: CATALOG_TTL_MS, schema: 1 }
+/** Policy for every catalog-shaped resource (§3.2 rows 1-4).
+ *
+ *  `skipConditionalGet: true` — every current catalog origin (CloudFront/S3
+ *  for phrase-packs & word-packs, GitHub Pages/Fastly for catalog-v3) fails
+ *  the CORS preflight that If-None-Match/If-Modified-Since would trigger
+ *  (verified 2026-07-13: OPTIONS → 403 on CloudFront, 405 on Fastly, despite
+ *  both answering plain GETs with `access-control-allow-origin: *`). See
+ *  `skipConditionalGet` in types.ts for the full story. Flip back to false
+ *  for a resource once its origin's CORS config is confirmed to answer
+ *  OPTIONS with 2xx. */
+export const CATALOG_POLICY: JsonCachePolicy = {
+  ttlMs: CATALOG_TTL_MS,
+  schema: 1,
+  skipConditionalGet: true,
+}
 
 /** The journey course-pack index (D6) uses the same policy; the resource
  *  itself lives with journeyPackCatalog.ts (W6's module). */
-export const JOURNEY_PACK_INDEX_POLICY: JsonCachePolicy = { ttlMs: CATALOG_TTL_MS, schema: 1 }
+export const JOURNEY_PACK_INDEX_POLICY: JsonCachePolicy = {
+  ttlMs: CATALOG_TTL_MS,
+  schema: 1,
+  skipConditionalGet: true,
+}
 
 /** 6 h — parity with util/remoteQuotaConfig.ts (its sync-boot localStorage
  *  fast path stays; only the background refresh migrates here in phase 2). */

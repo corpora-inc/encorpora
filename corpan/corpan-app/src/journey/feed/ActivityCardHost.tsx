@@ -12,7 +12,7 @@ import type {
 } from "../../contentPacks/activityContract"
 import { celebrate } from "../celebration/CelebrationLayer.tsx"
 import { playSoftMiss } from "../celebration/sounds.ts"
-import { waitForActiveUtterance } from "../../util/audioManager.ts"
+import { endUtterance, waitForActiveUtterance } from "../../util/audioManager.ts"
 import { rendererFor } from "../exercises/index.ts"
 import type { ExerciseMode, SpeakFn } from "../exercises/types.ts"
 import { ResultStamp } from "../exercises/common/ResultStamp.tsx"
@@ -112,7 +112,24 @@ export function ActivityCardHost(props: {
         hintsUsed: hintsRef.current,
         combo: props.combo,
       })
-      if (deco) void celebrate(deco)
+      if (deco) {
+        // Clear stale utterance tracking before the chime check. sounds.ts's
+        // ttsSpeaking() gate (wave-1 audio manager) drops the celebration
+        // chime whenever isUtteranceActive() reads true — but that flag is an
+        // ESTIMATE (word-count based, no true onend on native TTS; see
+        // audioManager.ts), so it can outlive the card's own mount-autoplay
+        // prompt (choice_pick toNative/audio-fallback, listen_pick, image/
+        // glyph modes all autoplay on arrival) by seconds. A learner who
+        // answers correctly while that stale estimate is still "active" got a
+        // visual splash but NO chime — read as "no celebration" on a device.
+        // The prompt has already served its purpose the instant the learner
+        // commits an answer, so it can never legitimately gate THIS card's
+        // reward chime; clearing it here is a no-op for genuinely-relevant
+        // audio, since the reward speak() below registers its own fresh
+        // utterance right after.
+        endUtterance()
+        void celebrate(deco)
+      }
       // Tune the ears on EVERY exercise: on a scored pass, speak the target
       // aloud as the reward + reinforcement — the learner hears what they just
       // got right (word-order, cloze, choice, etc. all gain this in one place,

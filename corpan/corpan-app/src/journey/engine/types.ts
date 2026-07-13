@@ -240,6 +240,11 @@ export interface SessionState {
    *  a wind-down/shutdown — it is capped per batch (MAX_FUN_PER_10), never for
    *  the whole session. This counter is retained for debug/telemetry. */
   funServedSession: number
+  /** Pronunciation-drill (phoneme + minimal-pair word) intake serves this
+   *  session. The mixer enforces PHONEME_MAX_PER_SESSION against it so phonics
+   *  can never dominate a sitting (the "jam 10× in 30 min" defect). Never
+   *  persisted; reset each session. */
+  phonemeServedSession: number
   /** Checkpoint batches attempted this session (one boss attempt/session). */
   bossAttempted: Set<string>
   /** Active unit-boss / arc-gate tally. */

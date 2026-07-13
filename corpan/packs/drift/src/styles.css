@@ -92,12 +92,32 @@
   cursor: pointer;
   border-radius: 6px;
   padding: 0 1px;
+  /* Discoverable tap affordance for touch devices (no hover there): a subtle
+     dotted underline signals every word is tappable — the CTO didn't know. */
+  text-decoration: underline dotted hsl(var(--drift-hue) 50% 72% / 0.55);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  /* Reliable taps in the Android/iOS webview: `manipulation` drops the 300ms
+     double-tap delay and stops the gesture layer from swallowing the tap; the
+     transparent highlight hides the grey Android flash. Root cause of the
+     "tapping does nothing" report was partly a tap that never registered. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: color 180ms ease, background-color 180ms ease;
 }
 .drift-word:hover { color: var(--drift-accent-soft); }
 .drift-word.is-tapped {
   color: hsl(var(--drift-hue) 60% 12%);
   background: var(--drift-accent);
+  text-decoration: none;
+}
+/* Fill-the-missing-word: the blanked slot in the muted (visual) challenge. */
+.drift-word--gap {
+  color: var(--drift-accent);
+  text-decoration: none;
+  border-bottom: 2px dashed var(--drift-accent);
+  letter-spacing: 0.12em;
+  cursor: default;
 }
 .drift-empty { color: var(--drift-ink-dim); font-size: 28px; }
 
@@ -120,6 +140,74 @@
   pointer-events: none;
 }
 .drift-gloss.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* --- Word card: meaning + origin (etymology) reveal ----------------------- */
+.drift-card {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(84px, 16vh, 120px);
+  transform: translate(-50%, 10px);
+  width: min(92%, 30rem);
+  max-height: 56vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 18px 18px;
+  border-radius: 14px;
+  background: hsl(var(--drift-hue) 34% 96% / 0.97);
+  color: hsl(var(--drift-hue) 40% 16%);
+  box-shadow: 0 12px 44px hsl(var(--drift-hue) 60% 6% / 0.5);
+  text-align: left;
+  opacity: 0;
+  transition: opacity 240ms ease, transform 240ms ease;
+  z-index: 3;
+}
+.drift-card.is-on { opacity: 1; transform: translate(-50%, 0); }
+.drift-card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: hsl(var(--drift-hue) 28% 88%);
+  color: hsl(var(--drift-hue) 40% 32%);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.drift-card-word {
+  margin: 0 34px 4px 0;
+  font-size: clamp(18px, 5vw, 22px);
+  font-weight: 700;
+}
+.drift-card-gloss {
+  margin: 0;
+  font-size: clamp(15px, 4.2vw, 17px);
+  font-weight: 600;
+  color: hsl(var(--drift-hue) 30% 30%);
+}
+.drift-card-origin {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid hsl(var(--drift-hue) 30% 82%);
+}
+.drift-card-origin-label {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--drift-hue) 55% 40%);
+}
+.drift-card-origin-text {
+  margin: 0;
+  font-size: clamp(14px, 4vw, 16px);
+  line-height: 1.5;
+  color: hsl(var(--drift-hue) 35% 22%);
+}
 
 /* --- Challenge: "which word did you hear?" -------------------------------- */
 .drift-challenge {
@@ -227,6 +315,7 @@
   .drift-motif,
   .drift-line,
   .drift-gloss,
+  .drift-card,
   .drift-challenge { transition-duration: 0.01ms !important; }
   .drift-motif.is-on { opacity: 0.14; transform: none; }
   .drift-chip { animation: none !important; }

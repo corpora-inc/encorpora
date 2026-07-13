@@ -39,6 +39,22 @@ export type HostApi = {
    *  per source. Older hosts ignore the extra argument. */
   getEntryById?: (entryId: number, source?: string) => Promise<EntryOut>
   /**
+   * Read-only SQL against ANOTHER installed content pack's bundled SQLite DB
+   * (host command `content_packs_query_db`). Present on real hosts; absent in
+   * the mock and on pre-DB hosts, so Drift capability-detects
+   * (`typeof hostApi.queryPackDb === "function"`) and degrades when missing.
+   * Drift uses it to read a `wordpan_<native>_en` word-explanation pack (the
+   * same table Phrase Flip long-press reads) for word ORIGIN/etymology. A query
+   * against an uninstalled pack REJECTS, so every call is wrapped in try/catch.
+   */
+  queryPackDb?: (query: {
+    packId?: string
+    dbName?: string
+    sql: string
+    params?: unknown[]
+    maxRows?: number
+  }) => Promise<{ columns: string[]; rows: Array<Record<string, unknown>> }>
+  /**
    * Journey activity seam (typed rail, activity-contract §3). Present when
    * `__CORPAN_HOST_CAPS.journey >= 1`; feature-detect
    * (`hostApi.journey?.isActive()`). The `corpan:activity-result` window

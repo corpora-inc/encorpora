@@ -7,6 +7,54 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **A placed (e.g. B1) learner is no longer drilled on A0 pronunciation
+  minimal-pairs before communicative vocab.** The feed served the "sounds"
+  unit's contrast words — jam/ship/sheep/very/berry/yet — and phoneme drills
+  heavily, ahead of high-frequency phrases like "please"/"thank you". Two engine
+  gaps: (1) the phonics anti-domination guard only recognized `kind:"phoneme"`
+  items, so the minimal-pair WORDS (`kind:"word"` in a phonology skill) slipped
+  through, and (2) the guard covered only the NEW pool while a placed learner's
+  intake flows through the placed-backlog TRICKLE pool, which had no guard.
+  Pronunciation drills are now identified structurally (phoneme items PLUS
+  minimal-pair words in any phonology skill), suppressed entirely from a PLACED
+  learner's intake (they resurface only on a genuine failure), and hard-capped
+  per session for everyone (`journey/engine/{graph,pools,mixer,constants}.ts`).
+- **The first Journey load after onboarding no longer flashes an error screen
+  for transient/corruption reasons.** On a fresh install the course-pack install
+  could be triggered twice at once (Home-hero prefetch + the journey mount, or a
+  StrictMode double-invoke / rapid Retry), and the Rust installer uses fixed
+  per-pack staging/download paths with no lock — so the two installs clobbered
+  each other's staging dir (surfacing `Manifest not found in pack`) and download
+  zip (surfacing `database disk image is malformed` when the loader opened a
+  half-written `course.sqlite3`). Installs are now single-flighted per pack id,
+  integrity-verified (manifest resolves AND `pack_meta` reads back) after
+  download, and internally retried with jittered backoff before the error screen
+  is ever shown; the Retry button stays as the final fallback
+  (`util/journeyPack.ts`, `journey/runtimeWiring.ts`).
+- **Catalog offline-cache revalidation no longer hammers the network (~2×/second)
+  when a catalog is persistently failing.** Each revalidation trigger (interval /
+  foreground / a flapping `online` event storm) used to re-enter a fresh fetch
+  burst with no memory of prior failures. A per-resource consecutive-failure
+  cooldown (exponential, capped at 5 min, jittered) now bounds the retry rate and
+  resets on any successful response; cache-serving semantics are unchanged — a
+  cooldown skip serves the last-good record exactly like a failed revalidation
+  (`lib/offlineCache/jsonCache.ts`).
+- **A correct answer's celebration chime could go silently missing** on any
+  audio-first card (`choice_pick` toNative/audio-fallback, `listen_pick`,
+  image/glyph modes) if the learner answered while the card's own
+  mount-autoplay prompt was still inside its estimated speaking window. The
+  wave-1 audio manager's `ttsSpeaking()` gate (`journey/celebration/sounds.ts`)
+  now also reads `isUtteranceActive()`, an ESTIMATE (word-count based; native
+  TTS has no true "finished" signal) that can read "active" for seconds after
+  the real audio has actually stopped — silently dropping the chime while the
+  visual splash still fired, which reads as "no celebration" on a device. Live
+  device verification (choice_pick "Elige la traducción" in both directions)
+  found the celebration mechanism itself intact — this was the one confirmed
+  gap. `ActivityCardHost.settle()` now clears stale utterance tracking right
+  before a celebration fires, so a decaying prompt-audio estimate can never
+  swallow the fresh correct-answer chime (`journey/feed/ActivityCardHost.tsx`).
+
 ### Changed
 - **Onboarding is shorter and no longer asks about prior knowledge twice.** The
   learner path used to ask "Have you studied {{lang}} before?" (calibrateLearn)
@@ -47,6 +95,26 @@ Conventions: `corpan/CHANGELOGS.md`.
   gets friction added to it.
 
 ### Fixed
+- **Catalog revalidation (game packs, phrase packs, word packs) no longer opens
+  every background refresh with a guaranteed-to-fail CORS preflight.** Once a
+  catalog resource holds a stored ETag, `offlineCache/jsonCache.ts` sent
+  `If-None-Match` on every revalidation — a non-safelisted header that forces
+  the browser to preflight with `OPTIONS` first. Verified against production:
+  CloudFront/S3 (phrase-packs, word-packs) answers `OPTIONS` with 403, and
+  GitHub Pages/Fastly (`catalog-v3.json`) answers with 405 — both still send
+  `access-control-allow-origin: *`, but the non-2xx status fails the preflight
+  regardless, so the browser never sends the real request. `fetchJsonFresh`
+  already recovered on retry (a plain GET has no custom headers, so it isn't
+  preflighted), which is why installs kept working in production — but every
+  single revalidation paid for one doomed OPTIONS round trip + a backoff sleep
+  first, and the intended 304 fast path never actually fired (the retry that
+  succeeds carries no conditional headers, so it's always a full re-download).
+  Added an opt-in `skipConditionalGet` policy flag (`offlineCache/types.ts`)
+  and set it on the catalog/journey-index policies (`offlineCache/resources.ts`)
+  so these known-non-preflighting origins are never sent conditional headers in
+  the first place — same bytes on the wire, one fewer guaranteed-failing
+  request and console error on every poll. `contentPacks/catalogFetch.ts`'s
+  generic conditional-GET support is untouched for origins that do support it.
 - **Guided onboarding no longer dead-ends on Home when the only course pack for
   the target language is preview-channel.** Three changes: (1) a shared journey
   course-pack selection seam (`resolveJourneyPackForTarget` in

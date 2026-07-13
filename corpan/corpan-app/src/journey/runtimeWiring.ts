@@ -29,11 +29,11 @@ import { useJourneyPacksStore } from "../store/journeyPacks"
 import { useProgressStore } from "../store/progress"
 import { ensureImagePackRegistered } from "../util/imagePack"
 import {
-  installJourneyPack,
-  isJourneyPackInstalled,
+  installJourneyPackVerified,
   loadCourseGraphFromPack,
   loadUnitThemesFromPack,
   readJourneyPackMeta,
+  verifyJourneyPackReadable,
 } from "../util/journeyPack"
 import { isWordPackInstalled, wordPackIdCandidates } from "../util/wordPack"
 import type { CapabilityHostApi, CapabilitySttApi } from "@shared/capabilities/core"
@@ -292,16 +292,20 @@ export interface BuiltJourney {
   onImagePackInstalled: () => void
 }
 
-/** Ensure the course pack for `targetLang` is installed; returns its pack id.
- *  Resolution order: installed registry → disk probe → catalog install. */
+/** Ensure the course pack for `targetLang` is installed AND its DB reads back;
+ *  returns its pack id. Resolution order: installed registry → disk probe →
+ *  catalog install. The "already installed" fast paths verify the pack is
+ *  actually READABLE (manifest + pack_meta), not merely present on disk — a
+ *  manifest-present-but-malformed pack (the transient corruption we guard
+ *  against) is treated as "needs (re)install" so the loader never boots on it. */
 async function ensureJourneyPackInstalled(targetLang: string): Promise<string> {
   const derived = journeyCourseIdFor(targetLang)
   const registry = useJourneyPacksStore.getState()
   const registered = registry
     .list()
     .find((p) => p.targetLang.toLowerCase() === targetLang.toLowerCase())
-  if (registered && (await isJourneyPackInstalled(registered.id))) return registered.id
-  if (await isJourneyPackInstalled(derived)) return derived
+  if (registered && (await verifyJourneyPackReadable(registered.id))) return registered.id
+  if (await verifyJourneyPackReadable(derived)) return derived
 
   const catalog = await fetchJourneyPackCatalog()
   if (!catalog) throw new Error(`[journey] no course pack installed for ${targetLang} and the index is unreachable`)
@@ -310,7 +314,10 @@ async function ensureJourneyPackInstalled(targetLang: string): Promise<string> {
   // selection seam so every journey entry point agrees.
   const entry = resolveJourneyPackForTarget(catalog, targetLang, appVersion)
   if (!entry) throw new Error(`[journey] no course pack available for ${targetLang}`)
-  await installJourneyPack(entry.id, entry.zipUrl, entry.sha256 ?? null)
+  // Atomic + integrity-verified + internally retried (single-flighted per pack
+  // id): a transient blip or a corrupt download is retried BEFORE the error
+  // screen; JourneyOverlay's Retry button stays the final fallback.
+  await installJourneyPackVerified(entry.id, entry.zipUrl, entry.sha256 ?? null)
   // Register the install (phrasePacks pattern) so cold-start renders offline.
   const meta = await readJourneyPackMeta(entry.id)
   useJourneyPacksStore.getState().register({

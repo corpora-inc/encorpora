@@ -74,6 +74,7 @@ function makeBag(): { bag: ApplyBag; session: SessionState; course: CourseState;
     lastBatchTailType: null,
     cadenceEmitted: 0,
     funServedSession: 0,
+    phonemeServedSession: 0,
     bossAttempted: new Set(),
     checkpointRun: null,
     gauntletRun: null,

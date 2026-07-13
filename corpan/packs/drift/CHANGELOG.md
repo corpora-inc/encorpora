@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-13
+
+### Added
+- **Etymology on a word tap (CTO ask: "the etymologies of all the words").**
+  Tapping a story word now opens a calm, drift-styled card with the word, its
+  meaning (native gloss), and — when reachable — its **Origin**: the senses +
+  etymology paragraph read from an installed `wordpan_<native>_en` word pack (the
+  same `word_explanation` table Phrase Flip's long-press uses), fetched via the
+  existing `hostApi.queryPackDb` seam. Fully **capability-checked** (`etymology.ts`
+  `EtymologyResolver`): absent seam, no installed pack, or a non-English target
+  (the packs key English words) → the card just shows the meaning, no error. New
+  in-pack `origin` string localized for ~54 locales.
+- **Muted mode is now a real game, not a passive reader.** When narration is
+  muted (or can't be heard — the likely cause of the CTO's "no game" report), each
+  beat now poses a **VISUAL fill-the-missing-word** challenge: the target word is
+  blanked in the just-read line and the learner taps the missing word from the
+  same chips. No audio required, and it is **honest, scored recognition evidence**
+  — reported through `session.ts` exactly like the sound-on variant (a visible gap
+  + real word chips is a genuine task, not a blind guess). Sound-on users keep the
+  **tap-the-word-you-HEARD** variant. New localized `missing` prompt (~54 locales).
+
+### Fixed
+- **Dead word taps on mobile (Android/iOS webview).** Tapping a word reportedly
+  did nothing on device. Root causes fixed: (1) the per-word tap handler was only
+  attached when the token had a non-empty gloss, so words with an empty gloss
+  (missing native translation / immersion stacks) were **silently untappable** —
+  taps are now handled by ONE delegated listener on the prose so **every** word
+  responds; (2) no touch **affordance** — words now carry a subtle dotted
+  underline so the reader knows they're tappable (the CTO didn't); (3) tap
+  reliability — `touch-action: manipulation` drops the 300ms delay and stops the
+  gesture layer swallowing taps, and `-webkit-tap-highlight-color` hides the grey
+  flash.
+
 ## [0.2.0] - 2026-07-13
 
 ### Added

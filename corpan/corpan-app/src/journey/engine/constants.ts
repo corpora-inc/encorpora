@@ -98,6 +98,25 @@ export const MAX_FUN_PER_10 = 1
 // is preserved — only genuinely strong performance retires; any miss resets the
 // counter and a lapse both resets AND un-retires.
 export const RETIRE_PERFECT_STREAK = 2
+// ---- phoneme / minimal-pair intake guard (pronunciation drills) -------------
+// Pronunciation drills = phoneme-kind items PLUS the minimal-pair WORD items
+// that live in a phonology skill (jam/ship/sheep/very/berry/yet). They must
+// NEVER flood the opening feed — a learner meets communicative vocab first,
+// not the same ~10 contrast words endlessly (CTO: "jam 1000× before please").
+// Three-layer guard (pools.ts + mixer.ts):
+//   1. DEFER: withheld from the NEW pool until the learner has met at least
+//      PHONEME_NEW_POOL_MIN_SEEN non-phoneme vocab items (scored cards).
+//   2. SHARE: even then, at most PHONEME_NEW_POOL_MAX_SHARE of any one NEW pool.
+//   3. HARD SESSION CAP: at most PHONEME_MAX_PER_SESSION drill serves per
+//      session, regardless of pool — a felt ceiling so a zero-beginner can't
+//      get "jam/sheep 10× in 30 min".
+// PLACED learners get ZERO fresh phoneme intake: a B1-placed user already
+// provisionally knows the A0 sounds unit, so its drills are suppressed from
+// intake entirely (pools.ts) and resurface only through a genuine failure
+// (repair/replay), never as opening spotlight cards.
+export const PHONEME_NEW_POOL_MIN_SEEN = 12
+export const PHONEME_NEW_POOL_MAX_SHARE = 0.25
+export const PHONEME_MAX_PER_SESSION = 6
 // Doom-scroll-to-fluency: the feed is INFINITE. When the day's real work is done
 // (new target met, no due/repair/trickle) the eager learner who keeps going gets
 // FRESH frontier material — the NEXT reachable units' new items — pulled forward,

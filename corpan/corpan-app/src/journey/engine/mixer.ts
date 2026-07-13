@@ -14,6 +14,7 @@ import {
   MAX_FUN_PER_10,
   MAX_LEECH_PER_BATCH,
   LEECH_SERVE_P,
+  PHONEME_MAX_PER_SESSION,
   CONSTRAINT_REPAIR_PASSES,
   GAME_INTERLUDE_MIN_GAP,
   GAME_INTERLUDE_JITTER,
@@ -349,6 +350,10 @@ function matchPairsCompanions(bag: MixerBag, primaryItemId: string, slots: Slot[
     for (const skillId of unit.skillIds) {
       for (const id of gidx.skillItems.get(skillId) ?? []) {
         if (used.has(id)) continue
+        // Never pad a match grid with pronunciation drills (phoneme/minimal-pair
+        // words) — they must not leak into a communicative card as companions,
+        // bypassing the intake guard + per-session cap (CTO defect containment).
+        if (gidx.phonemeDrillItems.has(id) && !gidx.phonemeDrillItems.has(primaryItemId)) continue
         const item = gidx.graph.items[id]
         if (!item || item.kind !== kind) continue
         const card = bag.cards.get(id)
@@ -607,6 +612,19 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     const card = bag.cards.get(itemId)
     if (card && (card.flags & 8) !== 0) return null // Suspended — never served
     if (card && !allowRetired && isRetired(card)) return null // Retired — only last-resort revisit
+    // Hard per-session ceiling on pronunciation drills (phoneme + minimal-pair
+    // words): phonics never dominates a sitting. Failure-driven re-teach
+    // (scaffold/replay) is exempt — a learner who missed a contrast still gets
+    // it back — but every INTAKE pool honors the cap.
+    const isPhonemeDrill = bag.gidx.phonemeDrillItems.has(itemId)
+    if (
+      isPhonemeDrill &&
+      pool !== "scaffold" &&
+      pool !== "replay" &&
+      bag.session.phonemeServedSession >= PHONEME_MAX_PER_SESSION
+    ) {
+      return null
+    }
     const leechItem = card ? isLeech(card) : false
     if (leechItem && leechServed >= MAX_LEECH_PER_BATCH) return null
     if (leechItem && bag.session.rng.next() > LEECH_SERVE_P) return null // §5.7 containment
@@ -643,6 +661,7 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
     }
     slots.push(slot)
     if (leechItem) leechServed += 1
+    if (isPhonemeDrill) bag.session.phonemeServedSession += 1
     if (pool === "fun") {
       funServed += 1
       session.funServedSession += 1

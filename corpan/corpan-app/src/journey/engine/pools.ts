@@ -4,19 +4,11 @@
 import {
   FRONTIER_LOOKAHEAD_UNITS,
   FUN_POOL_R_MIN,
+  PHONEME_NEW_POOL_MAX_SHARE,
+  PHONEME_NEW_POOL_MIN_SEEN,
   REPAIR_ACC_BELOW,
   REPAIR_DEMOTED_WINDOW_DAYS,
 } from "./constants.ts"
-
-/** Phoneme (pronunciation minimal-pair) intake guard for the NEW pool. Phonics
- *  must never flood the opening feed — a beginner should meet communicative
- *  vocab first, not drill the same ~5 contrast words endlessly. Minimal-pair
- *  items are DEFERRED until the learner has met at least this many non-phoneme
- *  vocab items (have a scored card), and even then take at most
- *  PHONEME_NEW_POOL_MAX_SHARE of any single NEW pool. (Kept local to pools.ts
- *  to respect file ownership; promote to constants.ts on integration.) */
-const PHONEME_NEW_POOL_MIN_SEEN = 12
-const PHONEME_NEW_POOL_MAX_SHARE = 0.25
 import type { GraphIndex } from "./graph.ts"
 import { isRetired, isSuspended, type Mastery } from "./mastery.ts"
 import type { Scheduler } from "./scheduler.ts"
@@ -119,16 +111,23 @@ export function buildPools(input: PoolsInput): Pools {
   // boosts jump the queue head (§5.7 / §5.9).
   const newCap = Math.max(0, course.newPerDay - course.newIntroducedToday)
   const newPool: string[] = []
-  // Phoneme (pronunciation minimal-pair) domination guard: a beginner must not
-  // drill the same ~5 contrast words endlessly before meeting core vocab
-  // (defect: "jam/sheep seen 10× in 30 min"). Phonemes are DEFERRED entirely
-  // until the learner has met enough non-phoneme vocab, then capped to a small
+  // Pronunciation-drill domination guard: a learner must not drill the same
+  // ~10 contrast words endlessly before meeting core vocab (defect: "jam 1000×
+  // before please/thank you"). The set gidx.phonemeDrillItems covers BOTH the
+  // phoneme-kind contrast items AND the minimal-pair WORD items in a phonology
+  // skill (jam/ship/sheep/very/berry/yet) — the old kind==="phoneme" test
+  // missed the latter, which is exactly what the CTO saw. Drills are DEFERRED
+  // until the learner has met enough non-drill vocab, then capped to a small
   // share of any one NEW pool. Communicative content leads; phonics trickles.
+  const isPlacedSkill = (skillId: string): boolean =>
+    input.skills.get(skillId)?.placedAt !== undefined
+  const inPlacedSkill = (itemId: string): boolean =>
+    (graph.items[itemId]?.skillIds ?? []).some(isPlacedSkill)
   const seenNonPhoneme = (() => {
     let n = 0
     for (const card of cards.values()) {
       if (card.fsrs.reps === 0) continue
-      if (graph.items[card.itemId]?.kind === "phoneme") continue
+      if (gidx.phonemeDrillItems.has(card.itemId)) continue
       n += 1
     }
     return n
@@ -141,8 +140,11 @@ export function buildPools(input: PoolsInput): Pools {
     if (cards.has(itemId)) return
     if (session.debuts.has(itemId)) return
     if (newPool.includes(itemId)) return
-    if (graph.items[itemId]?.kind === "phoneme") {
-      // never flood the opening feed with minimal-pair contrasts
+    if (gidx.phonemeDrillItems.has(itemId)) {
+      // A PLACED learner already provisionally knows the sounds unit — never
+      // pull A0 pronunciation drills into fresh intake (they resurface only on
+      // a genuine failure via repair/replay). Everyone else: defer + share-cap.
+      if (inPlacedSkill(itemId)) return
       if (phonemesDeferred) return
       if (phonemesInPool >= phonemeShareCap()) return
       phonemesInPool += 1
@@ -200,6 +202,13 @@ export function buildPools(input: PoolsInput): Pools {
   for (const [skillId, scalars] of input.skills) {
     if (scalars.placedAt === undefined) continue
     for (const itemId of gidx.skillItems.get(skillId) ?? []) {
+      // Pronunciation drills are NEVER placed-backlog intake: a placed learner
+      // provisionally knows the sounds unit. Without this, a B1-placed user's
+      // A0 phonology skill dumps every minimal-pair word (jam/ship/sheep …) and
+      // phoneme contrast into TRICKLE — the dominant intake pool — so the feed
+      // spotlights phonics before communicative vocab (the CTO defect). They
+      // resurface only through a real failure (repair/replay), never here.
+      if (gidx.phonemeDrillItems.has(itemId)) continue
       if (!cards.has(itemId) && !session.debuts.has(itemId)) trickle.push(itemId)
     }
   }
@@ -282,7 +291,7 @@ export function buildPools(input: PoolsInput): Pools {
     const item = graph.items[itemId]
     if (!item) continue
     if (cards.has(itemId) || session.debuts.has(itemId) || inNewPool.has(itemId)) continue
-    if (item.kind === "phoneme") continue
+    if (gidx.phonemeDrillItems.has(itemId)) continue
     let eligible = false
     for (const skillId of item.skillIds) {
       const unitId = graph.skills[skillId]?.unitId
