@@ -2,7 +2,7 @@
 // mode 'bank' (token tiles from the W5 sampler) or 'type'. Tokenization via
 // util/wordTokens.tokenizePhrase — the ONE tokenizer (R14 rule).
 
-import { useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { isRTL } from "../../util/convert"
 import { normalizedEquals } from "../content/normalize.ts"
@@ -34,6 +34,22 @@ export function Cloze(props: ExerciseProps) {
   // missing word. Absent (or on a text-only stack) ⇒ a plain cloze.
   const cueImageSrc = typeof props.spec.params?.cueImageSrc === "string" ? props.spec.params.cueImageSrc : ""
   const cueImageAlt = typeof props.spec.params?.cueAlt === "string" ? props.spec.params.cueAlt : ""
+
+  // Add the ear (audio-first): speak the WHOLE phrase on arrival (a cloze was
+  // eyes-only). For a word-in-context blank the spoken phrase is the surrounding
+  // sentence; otherwise it's the item's own phrase. Replayable below.
+  const spokenPhrase =
+    typeof props.spec.params?.contextPhrase === "string" && props.spec.params.contextPhrase
+      ? (props.spec.params.contextPhrase as string)
+      : answer.target.ttsText
+  const playedRef = useRef(false)
+  useEffect(() => {
+    if (props.active && props.mode !== "review" && !playedRef.current) {
+      playedRef.current = true
+      void props.speak(props.spec.targetLang, spokenPhrase)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.active])
 
   // Words-in-context: when the runtime blanked a WORD inside a real corpus
   // phrase, render that phrase (not the bare word) with the word blanked. The
@@ -134,6 +150,7 @@ export function Cloze(props: ExerciseProps) {
       >
         {sentence}
       </div>
+      <AudioButton speak={props.speak} lang={props.spec.targetLang} text={spokenPhrase} />
       {nativeLine ? (
         <div
           lang={props.spec.nativeLang}

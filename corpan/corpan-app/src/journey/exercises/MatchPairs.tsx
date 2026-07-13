@@ -76,10 +76,11 @@ export function MatchPairs(props: ExerciseProps) {
   const pickLeft = (side: MatchSide) => {
     if (matched.includes(side.key) || props.mode === "review") return
     setLeft(side.key)
-    if (side.audio) {
-      const item = byKey.get(side.key)
-      if (item) void props.speak(props.spec.targetLang, item.target.ttsText)
-    }
+    // Ear + mouth: speak the TARGET phrase whenever you touch a target tile
+    // (the left column is always the target side — matchColumns contract). Few
+    // exercises should be eyes-only; hearing it on every pairing tunes the ear.
+    const item = byKey.get(side.key)
+    if (item) void props.speak(props.spec.targetLang, item.target.ttsText)
   }
 
   const pickRight = (side: MatchSide) => {
