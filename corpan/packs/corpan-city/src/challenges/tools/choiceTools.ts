@@ -388,6 +388,16 @@ export const trueFalse: ToolImpl = {
 
 /* ================================================================== *
  * odd-one-out — three share a domain, one doesn't. Tap the intruder.
+ *
+ * DISABLED (pending a solvable rebuild). This groups corpus entries by their
+ * opaque DOMAIN tag (travel/food/business) and asks the player to tap the
+ * intruder, but the category is never shown and corpus domains don't visibly
+ * cluster from the phrases — so it's unsolvable by reasoning. It is intentionally
+ * left OUT of `choiceToolList` (below) so the registry never runs it, filtered
+ * out of NPC/quest selection via `DISABLED_TOOL_IDS` in ../registry, and its
+ * Journey activity is removed from manifest.json — it can never be scheduled. The
+ * implementation is kept for a future rebuild with a VISIBLE/obvious semantic or
+ * concept-image category. Do NOT re-add to `choiceToolList` until then.
  * ================================================================== */
 export const oddOneOut: ToolImpl = {
   id: "odd-one-out",
@@ -490,7 +500,9 @@ export const choiceToolList: ToolImpl[] = [
   tapTranslation,
   listenChoose,
   trueFalse,
-  oddOneOut,
+  // oddOneOut — DISABLED pending a solvable rebuild (unsolvable-by-reasoning:
+  // groups by opaque domain tag, category never shown). See its definition above
+  // and DISABLED_TOOL_IDS in ../registry. Kept exported for the future rebuild.
   numberDrill,
 ]
 

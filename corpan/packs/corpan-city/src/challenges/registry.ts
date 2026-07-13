@@ -43,6 +43,29 @@ const IMPLEMENTED: ToolImpl[] = [
 const REGISTRY = new Map<ChallengeToolId, ToolImpl>()
 for (const tool of IMPLEMENTED) REGISTRY.set(tool.id, tool)
 
+/**
+ * Tools that are intentionally DISABLED — not scheduled by Journey and not
+ * offered by NPCs/quests — pending a rebuild. The single source of truth read by
+ * the NPC/quest selection filter (`resolveToolWhitelist`) and `availableToolIds`.
+ *
+ * `odd-one-out`: unsolvable-by-reasoning today — it groups corpus entries by their
+ * opaque DOMAIN tag (travel/food/business) but the category is never shown and the
+ * phrases don't visibly cluster, so the intruder can't be deduced. The impl is
+ * kept (`oddOneOut` in ./tools/choiceTools, left OUT of `choiceToolList`) for a
+ * future rebuild with a VISIBLE/obvious semantic or concept-image category. Its
+ * Journey activity is also removed from manifest.json so the host can't schedule
+ * it. To re-enable: rebuild the tool, re-add it to `choiceToolList` + manifest,
+ * and drop it from this set.
+ */
+export const DISABLED_TOOL_IDS: ReadonlySet<ChallengeToolId> = new Set<ChallengeToolId>([
+  "odd-one-out",
+])
+
+/** True if the tool id is intentionally disabled (see {@link DISABLED_TOOL_IDS}). */
+export function isDisabledTool(id: ChallengeToolId): boolean {
+  return DISABLED_TOOL_IDS.has(id)
+}
+
 /** Legacy id → new tool that fulfils the same intent. */
 const LEGACY_ALIAS: Partial<Record<ChallengeToolId, ChallengeToolId>> = {
   "pronunciation-duel": "read-aloud",
@@ -75,6 +98,7 @@ export function isCrossLanguageTool(id: ChallengeToolId): boolean {
 export function availableToolIds(): ChallengeToolId[] {
   const ids = new Set<ChallengeToolId>(REGISTRY.keys())
   for (const k of Object.keys(LEGACY_ALIAS) as ChallengeToolId[]) ids.add(k)
+  for (const disabled of DISABLED_TOOL_IDS) ids.delete(disabled)
   return [...ids]
 }
 

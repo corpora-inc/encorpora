@@ -121,19 +121,6 @@
       ]
     },
     {
-      "activityType": "corpan_city:odd-one-out",
-      "itemKinds": [
-        "phrase"
-      ],
-      "strands": [
-        "lfl"
-      ],
-      "typicalDurationSec": 60,
-      "requiredHostApis": [
-        "journey"
-      ]
-    },
-    {
       "activityType": "corpan_city:memory-pairs",
       "itemKinds": [
         "phrase"
@@ -394,5 +381,5 @@
     "su": "Di Corpan City, papanggih jeung karakter AI sareng pamaén nyata, nuturkeun lalampahan pribadi, sarta ngarobah unggal papanggihan janten pelajaran basa.",
     "tl": "Sa Corpan City, makilala ang mga karakter na AI at totoong manlalaro, sundan ang isang personal na paglalakbay, at gawing aralin sa wika ang bawat pakikipagtagpo."
   },
-  "devRevision": "2026-07-12T21:49:47.422Z"
+  "devRevision": "2026-07-13T00:57:42.719Z"
 }
