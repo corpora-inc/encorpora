@@ -182,6 +182,57 @@ test("word: wordpan pair is selected per the CURRENT native (fr learner ⇒ fr p
   assert.equal(extras.explanationTarget, "Coffee is the drink brewed from roasted beans.")
 })
 
+test("word: native explanation is region-tolerant (pt learner ⇒ pt-BR paragraph, not English)", async () => {
+  // A Portuguese learner's nativeLang is generic "pt", but the wordpan pack's
+  // rows are coded "pt-BR". Base-subtag matching must surface the Portuguese
+  // paragraph as the native explanation instead of silently falling back to the
+  // English (target) one.
+  const db = new DatabaseSync(":memory:")
+  db.exec(
+    "CREATE TABLE word_explanation (word TEXT, language_code TEXT, paragraph TEXT, PRIMARY KEY (word, language_code))",
+  )
+  const ins = db.prepare("INSERT INTO word_explanation VALUES (?,?,?)")
+  ins.run("coffee", "pt-BR", "O café é a bebida preparada a partir de grãos torrados.")
+  ins.run("coffee", "en", "Coffee is the drink brewed from roasted beans.")
+
+  const deps: ResolverDeps = {
+    getEntryById: async () => null,
+    getRandomEntries: async () => [],
+    queryPackDb: async (q) => {
+      if (q.packId !== "wordpan_pt_BR_en") return { columns: [], rows: [] }
+      const rows = db.prepare(q.sql).all(...((q.params ?? []) as never[])) as Record<
+        string,
+        unknown
+      >[]
+      return { columns: rows.length ? Object.keys(rows[0]) : [], rows }
+    },
+    fetchPackText: async () => {
+      throw new Error("n/a")
+    },
+    packFileUrl: () => "",
+    // Prod resolves pt→pt-BR at the pack layer (WORD_PACK_BASE_DEFAULT); here we
+    // simulate that so the test isolates the row-level base-tolerant lookup.
+    findInstalledWordPack: (n, t) => (n === "pt" && t === "en" ? "wordpan_pt_BR_en" : null),
+    findInstalledNarrationPack: () => null,
+    findInstalledPack: () => true,
+  }
+  const resolver = createResolver(deps, {
+    courseId: "journey_en",
+    targetLang: "en",
+    nativeLang: "pt",
+  })
+  const { resolved } = await resolver.resolveItems([
+    { kind: "word", source: "en", id: "coffee" },
+  ])
+  const extras = resolved[0].extras as {
+    kind: "word"
+    explanationNative?: string
+    explanationTarget?: string
+  }
+  assert.equal(extras.explanationNative, "O café é a bebida preparada a partir de grãos torrados.")
+  assert.equal(extras.explanationTarget, "Coffee is the drink brewed from roasted beans.")
+})
+
 test("word: surface-form gap in wordpan ⇒ still resolves, extras absent", async () => {
   const { resolver } = fresh()
   const { resolved, missing } = await resolver.resolveItems([

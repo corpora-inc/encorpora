@@ -879,7 +879,7 @@
     "tagline": "Tvoja vedená cesta, kartu po karte",
     "heroCard": {
       "title": "Tvoja Journey",
-      "progress": "{{unit}} · {{count}} kariet do dnešného cieľa"
+      "progress": "{{unit}} · ešte {{count}} do ďalšieho míľnika"
     },
     "heroCta": {
       "start": "Začni svoju Journey",
@@ -948,21 +948,36 @@
     },
     "checkpoint": {
       "title": "Kontrolný bod",
-      "summary": "{{new}} nových · {{reviews}} opakovaní · najlepšia séria {{combo}}",
+      "summaryNew": "{{count}} nových",
+      "summaryReviews": "{{count}} opakovaní",
       "done": "Pre dnešok stačí",
       "keepGoing": "Pokračovať",
-      "dailyRing": "{{done}}/{{goal}} dnes",
+      "dailyRing": "{{count}} v tejto relácii",
       "deepSession": "To bola poriadna dávka — tvoje opakovania sú aj tak naplánované.",
-      "streakTicked": "Deň {{count}} ✓",
+      "streakTicked": "{{count}} za sebou ✓",
       "boss": "Výzva lekcie",
       "arcGate": "Brána oblúka"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfektné",
+        "nice": "Dobré",
+        "brilliant": "Skvelé",
+        "boom": "Bum",
+        "nailed": "Trafené",
+        "unstoppable": "Nezastaviteľný",
+        "onFire": "V plameňoch",
+        "yes": "Áno!",
+        "clean": "Čisté",
+        "sharp": "Ostré",
+        "wow": "Wau",
+        "magic": "Kúzelné"
+      },
       "combo": "{{count}} v rade",
       "perfect": "Perfektné",
       "wordsLearned": "{{count}} slov naučených",
       "unitComplete": "Lekcia dokončená: {{name}}",
-      "streakDay": "Deň {{count}}",
+      "streakDay": "{{count}} za sebou",
       "placementDone": "Úroveň určená"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Držať sériu?",
-      "pactBody": "Jedna karta denne ju udrží nažive. Ak deň vynecháš, môže ťa zachrániť deň oddychu — každý týždeň jeden získaš.",
+      "pactBody": "Udrž si tempo. Deň voľna pokryje výpadok — jeden získaš každý týždeň.",
       "pactAccept": "Idem do toho",
       "pactDecline": "Nie, ďakujem",
-      "days": "{{count}} dní",
+      "days": "{{count}} za sebou",
       "restDayEarned": "Deň oddychu získaný",
       "restDayUsed": "{{day}} bol deň oddychu",
       "repairTitle": "Obnov svoju sériu",

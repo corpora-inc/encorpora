@@ -879,7 +879,7 @@
     "tagline": "Your guided path, one card at a time",
     "heroCard": {
       "title": "Your Journey",
-      "progress": "{{unit}} · {{count}} cards to today's goal"
+      "progress": "{{unit}} · {{count}} to your next milestone"
     },
     "heroCta": {
       "start": "Start your Journey",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "Checkpoint",
-      "summary": "{{new}} new · {{reviews}} reviews · best combo {{combo}}",
+      "summaryNew": "{{count}} new",
+      "summaryReviews": "{{count}} reviews",
       "done": "Done for now",
       "keepGoing": "Keep going",
-      "dailyRing": "{{done}}/{{goal}} today",
+      "dailyRing": "{{count}} this session",
       "deepSession": "That's a deep session — your reviews are scheduled either way.",
-      "streakTicked": "Day {{count}} ✓",
+      "streakTicked": "{{count}} in a row ✓",
       "boss": "Unit challenge",
       "arcGate": "Arc gate"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfect",
+        "nice": "Nice",
+        "brilliant": "Brilliant",
+        "boom": "Boom",
+        "nailed": "Nailed it",
+        "unstoppable": "Unstoppable",
+        "onFire": "On fire",
+        "yes": "Yes!",
+        "clean": "Clean",
+        "sharp": "Sharp",
+        "wow": "Wow",
+        "magic": "Magic"
+      },
       "combo": "{{count}} in a row",
       "perfect": "Perfect",
       "wordsLearned": "{{count}} words learned",
       "unitComplete": "Unit complete: {{name}}",
-      "streakDay": "Day {{count}}",
+      "streakDay": "{{count}} in a row",
       "placementDone": "You're placed"
     },
     "rare": {
@@ -1001,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "Keep a streak?",
-      "pactBody": "One card a day keeps it alive. Miss a day and a rest day may cover you — you earn one each week.",
+      "pactBody": "Keep your momentum going. A rest day covers a gap — you earn one each week.",
       "pactAccept": "Count me in",
       "pactDecline": "No thanks",
-      "days": "{{count}} days",
+      "days": "{{count}} in a row",
       "restDayEarned": "Rest day earned",
       "restDayUsed": "{{day}} was a rest day",
       "repairTitle": "Pick your streak back up",

@@ -879,7 +879,7 @@
     "tagline": "Njia yako ya kuongozwa, kadi baada ya kadi",
     "heroCard": {
       "title": "Journey yako",
-      "progress": "{{unit}} · kadi {{count}} hadi lengo la leo"
+      "progress": "{{unit}} · {{count}} hadi hatua yako inayofuata"
     },
     "heroCta": {
       "start": "Anza Journey yako",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "Kituo cha ukaguzi",
-      "summary": "{{new}} mpya · {{reviews}} marudio · mfululizo bora {{combo}}",
+      "summaryNew": "{{count}} mpya",
+      "summaryReviews": "{{count}} marudio",
       "done": "Inatosha kwa leo",
       "keepGoing": "Endelea",
-      "dailyRing": "{{done}}/{{goal}} leo",
+      "dailyRing": "{{count}} kipindi hiki",
       "deepSession": "Kikao cha kina kweli — marudio yako yamepangwa vyovyote vile.",
-      "streakTicked": "Siku {{count}} ✓",
+      "streakTicked": "{{count}} mfululizo ✓",
       "boss": "Changamoto ya kipengele",
       "arcGate": "Lango la tao"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Kamili",
+        "nice": "Vizuri",
+        "brilliant": "Angavu",
+        "boom": "Vumba",
+        "nailed": "Umeipata",
+        "unstoppable": "Hausimamishwi",
+        "onFire": "Unawaka",
+        "yes": "Ndiyo!",
+        "clean": "Safi",
+        "sharp": "Kali",
+        "wow": "Lo",
+        "magic": "Uchawi"
+      },
       "combo": "{{count}} mfululizo",
       "perfect": "Kamili",
       "wordsLearned": "Maneno {{count}} yamejifunzwa",
       "unitComplete": "Kipengele kimekamilika: {{name}}",
-      "streakDay": "Siku {{count}}",
+      "streakDay": "{{count}} mfululizo",
       "placementDone": "Kiwango kimewekwa"
     },
     "rare": {
@@ -1001,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "Tuweke mfululizo?",
-      "pactBody": "Kadi moja kwa siku huifanya iendelee kuishi. Ukikosa siku moja, siku ya mapumziko inaweza kukufunika — unapata moja kila wiki.",
+      "pactBody": "Dumisha kasi yako. Siku ya mapumziko hufunika pengo — unapata moja kila wiki.",
       "pactAccept": "Niko tayari",
       "pactDecline": "Hapana, asante",
-      "days": "Siku {{count}}",
+      "days": "{{count}} mfululizo",
       "restDayEarned": "Siku ya mapumziko imepatikana",
       "restDayUsed": "{{day}} ilikuwa siku ya mapumziko",
       "repairTitle": "Rudisha mfululizo wako",

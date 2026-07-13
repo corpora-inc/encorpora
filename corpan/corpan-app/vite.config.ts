@@ -86,10 +86,31 @@ export default defineConfig(async () => ({
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
   resolve: {
+    // Force a SINGLE React copy. Without this, vite's dev dep pre-bundling
+    // gives @dnd-kit/core its own React instance → "Invalid hook call
+    // (more than one copy of React)" → useSensor's useMemo reads a null
+    // dispatcher and the whole app crashes to a blank root on the onboarding
+    // language-order picker (LanguageSelectOrder). Dev-only (prod bundles
+    // react into one vendor chunk), but it hard-blocks local device testing.
+    dedupe: ["react", "react-dom"],
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       "@shared": fileURLToPath(new URL("../packs/shared", import.meta.url)),
     },
+  },
+
+  // Pre-bundle the dnd-kit packages together with the app's React so they
+  // share one dispatcher (pairs with resolve.dedupe above).
+  optimizeDeps: {
+    include: [
+      "react",
+      "react-dom",
+      "react-dom/client",
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/modifiers",
+      "@dnd-kit/utilities",
+    ],
   },
 
   clearScreen: false,

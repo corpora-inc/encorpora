@@ -879,7 +879,7 @@
     "tagline": "Ang gabay mong landas, kard-kard",
     "heroCard": {
       "title": "Ang iyong Journey",
-      "progress": "{{unit}} · {{count}} kard na lang sa target ngayon"
+      "progress": "{{unit}} · {{count}} pa hanggang susunod mong milestone"
     },
     "heroCta": {
       "start": "Simulan ang iyong Journey",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "Checkpoint",
-      "summary": "{{new}} bago · {{reviews}} balik-aral · pinakamahabang sunod {{combo}}",
+      "summaryNew": "{{count}} bago",
+      "summaryReviews": "{{count}} balik-aral",
       "done": "Tama na muna ngayon",
       "keepGoing": "Ituloy pa",
-      "dailyRing": "{{done}}/{{goal}} ngayon",
+      "dailyRing": "{{count}} ngayong session",
       "deepSession": "Ang lalim ng session na ito — nakatakda pa rin ang mga balik-aral mo.",
-      "streakTicked": "Araw {{count}} ✓",
+      "streakTicked": "{{count}} sunod-sunod ✓",
       "boss": "Hamon ng yunit",
       "arcGate": "Tarangkahan ng arko"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perpekto",
+        "nice": "Galing",
+        "brilliant": "Napakahusay",
+        "boom": "Bam",
+        "nailed": "Tumpak",
+        "unstoppable": "Di mapipigilan",
+        "onFire": "Nag-aapoy",
+        "yes": "Oo!",
+        "clean": "Malinis",
+        "sharp": "Matalas",
+        "wow": "Wow",
+        "magic": "Mahika"
+      },
       "combo": "{{count}} nang sunud-sunod",
       "perfect": "Perpekto",
       "wordsLearned": "{{count}} salitang natutunan",
       "unitComplete": "Tapos na ang yunit: {{name}}",
-      "streakDay": "Araw {{count}}",
+      "streakDay": "{{count}} sunod-sunod",
       "placementDone": "Natukoy na ang antas"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Magpanatili ng streak?",
-      "pactBody": "Isang kard kada araw ang nagpapanatili rito. Kapag nalaktawan mo ang isang araw, maaaring sumalo ang rest day — kumikita ka ng isa bawat linggo.",
+      "pactBody": "Panatilihin ang iyong momentum. May araw ng pahinga na pumupuno sa puwang — kumikita ka ng isa kada linggo.",
       "pactAccept": "Sali ako",
       "pactDecline": "Hindi, salamat",
-      "days": "{{count}} araw",
+      "days": "{{count}} sunod-sunod",
       "restDayEarned": "Nakakuha ng rest day",
       "restDayUsed": "Rest day ang {{day}}",
       "repairTitle": "Bawiin ang streak mo",

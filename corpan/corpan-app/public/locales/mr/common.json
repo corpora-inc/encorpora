@@ -879,7 +879,7 @@
     "tagline": "तुमची मार्गदर्शित वाट, कार्डामागून कार्ड",
     "heroCard": {
       "title": "तुमचा Journey",
-      "progress": "{{unit}} · आजच्या ध्येयापर्यंत {{count}} कार्डे"
+      "progress": "{{unit}} · पुढच्या टप्प्यापर्यंत {{count}}"
     },
     "heroCta": {
       "start": "तुमचा Journey सुरू करा",
@@ -948,21 +948,36 @@
     },
     "checkpoint": {
       "title": "चेकपॉइंट",
-      "summary": "{{new}} नवीन · {{reviews}} उजळण्या · सर्वोत्तम मालिका {{combo}}",
+      "summaryNew": "{{count}} नवीन",
+      "summaryReviews": "{{count}} उजळणी",
       "done": "आजपुरते पुरे",
       "keepGoing": "पुढे चला",
-      "dailyRing": "आज {{done}}/{{goal}}",
+      "dailyRing": "या सत्रात {{count}}",
       "deepSession": "किती सखोल सत्र — तुमच्या उजळण्या कशाही झाल्या तरी ठरलेल्या आहेत.",
-      "streakTicked": "दिवस {{count}} ✓",
+      "streakTicked": "सलग {{count}} ✓",
       "boss": "घटक आव्हान",
       "arcGate": "कमान द्वार"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "परफेक्ट",
+        "nice": "छान",
+        "brilliant": "अप्रतिम",
+        "boom": "धमाका",
+        "nailed": "अगदी बरोबर",
+        "unstoppable": "अजिंक्य",
+        "onFire": "आगीत",
+        "yes": "हो!",
+        "clean": "स्वच्छ",
+        "sharp": "धारदार",
+        "wow": "वाह",
+        "magic": "जादू"
+      },
       "combo": "सलग {{count}}",
       "perfect": "उत्तम",
       "wordsLearned": "{{count}} शब्द शिकलात",
       "unitComplete": "घटक पूर्ण: {{name}}",
-      "streakDay": "दिवस {{count}}",
+      "streakDay": "सलग {{count}}",
       "placementDone": "पातळी ठरली"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "मालिका ठेवूया?",
-      "pactBody": "दिवसाला एक कार्ड तिला जिवंत ठेवते. एखादा दिवस चुकला तर विश्रांतीचा दिवस वाचवू शकतो — दर आठवड्याला एक मिळतो.",
+      "pactBody": "तुमचा वेग टिकवा. विश्रांतीचा दिवस खंड भरून काढतो — दर आठवड्याला एक मिळतो.",
       "pactAccept": "मी तयार आहे",
       "pactDecline": "नको, धन्यवाद",
-      "days": "{{count}} दिवस",
+      "days": "सलग {{count}}",
       "restDayEarned": "विश्रांतीचा दिवस कमावला",
       "restDayUsed": "{{day}} हा विश्रांतीचा दिवस होता",
       "repairTitle": "तुमची मालिका परत मिळवा",

@@ -879,7 +879,7 @@
     "tagline": "เส้นทางพร้อมไกด์ของคุณ ทีละการ์ด",
     "heroCard": {
       "title": "Journey ของคุณ",
-      "progress": "{{unit}} · อีก {{count}} การ์ดถึงเป้าหมายวันนี้"
+      "progress": "{{unit}} · อีก {{count}} ถึงหมุดหมายถัดไป"
     },
     "heroCta": {
       "start": "เริ่ม Journey ของคุณ",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "จุดตรวจ",
-      "summary": "ใหม่ {{new}} · ทบทวน {{reviews}} · สถิติต่อเนื่องดีสุด {{combo}}",
+      "summaryNew": "{{count}} ใหม่",
+      "summaryReviews": "{{count}} ทบทวน",
       "done": "พอแค่นี้สำหรับวันนี้",
       "keepGoing": "ไปต่อ",
-      "dailyRing": "วันนี้ {{done}}/{{goal}}",
+      "dailyRing": "{{count}} ในเซสชันนี้",
       "deepSession": "เป็นเซสชันที่ลึกมาก — การทบทวนของคุณถูกจัดตารางไว้แล้วไม่ว่าอย่างไร",
-      "streakTicked": "วันที่ {{count}} ✓",
+      "streakTicked": "{{count}} ครั้งติดต่อกัน ✓",
       "boss": "ด่านท้าทายประจำบท",
       "arcGate": "ประตูอาร์ค"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "สมบูรณ์แบบ",
+        "nice": "เยี่ยม",
+        "brilliant": "ยอดเยี่ยม",
+        "boom": "ตูม",
+        "nailed": "เข้าเป้า",
+        "unstoppable": "หยุดไม่อยู่",
+        "onFire": "มาแรง",
+        "yes": "ใช่เลย!",
+        "clean": "สะอาดหมดจด",
+        "sharp": "เฉียบ",
+        "wow": "ว้าว",
+        "magic": "มหัศจรรย์"
+      },
       "combo": "{{count}} ติดต่อกัน",
       "perfect": "เยี่ยมมาก",
       "wordsLearned": "เรียนรู้ {{count}} คำแล้ว",
       "unitComplete": "จบบทเรียน: {{name}}",
-      "streakDay": "วันที่ {{count}}",
+      "streakDay": "{{count}} ครั้งติดต่อกัน",
       "placementDone": "กำหนดระดับแล้ว"
     },
     "rare": {
@@ -1001,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "รักษาสถิติต่อเนื่องไหม?",
-      "pactBody": "การ์ดวันละใบทำให้มันมีชีวิตอยู่ พลาดวันไหนวันพักอาจช่วยคุณได้ — คุณได้รับหนึ่งวันทุกสัปดาห์",
+      "pactBody": "รักษาโมเมนตัมของคุณไว้ วันพักช่วยเติมช่องว่าง — คุณได้รับหนึ่งวันทุกสัปดาห์",
       "pactAccept": "เอาด้วย",
       "pactDecline": "ไม่เป็นไร ขอบคุณ",
-      "days": "{{count}} วัน",
+      "days": "{{count}} ครั้งติดต่อกัน",
       "restDayEarned": "ได้รับวันพัก",
       "restDayUsed": "{{day}} เป็นวันพัก",
       "repairTitle": "กู้สถิติของคุณกลับมา",

@@ -5,6 +5,7 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { DAY_MS, epochDayFromMs } from "./clock.ts"
+import { NEW_PER_DAY_MAX } from "./constants.ts"
 import { tickOneDay, type DailyBag } from "./daily.ts"
 import { buildGraphIndex } from "./graph.ts"
 import { createMastery } from "./mastery.ts"
@@ -98,12 +99,15 @@ test("weekly newPerDay adaptation: down on backlog, up on cruise; ≤1 adjust pe
   assert.equal(course.newPerDay, Math.round(12 * 0.8), "no second adjustment within 7 days")
 })
 
-test("throttle-up needs near-zero backlog AND >50% cruise share; clamps [4,30]", () => {
+test("throttle-up needs near-zero backlog AND >50% cruise share; clamps [4, NEW_PER_DAY_MAX]", () => {
   const { bag, course } = makeDailyBag()
   course.backlogRing = [0, 0, 0, 0, 0, 0, 0]
-  course.newPerDay = 28
+  // just under the ceiling so ×1.2 overshoots and the clamp binds — proves the
+  // intensive ceiling is lifted (was hard-capped at 30) but still finite.
+  course.newPerDay = 90
   tickOneDay(bag, DAY) // cruiseShare 3/4 > 0.5
-  assert.equal(course.newPerDay, 30, "×1.2 then clamped at 30")
+  assert.equal(course.newPerDay, NEW_PER_DAY_MAX, "×1.2 then clamped at the ceiling")
+  assert.ok(NEW_PER_DAY_MAX >= 80, "grinder ceiling lifted well past the legacy 30")
 })
 
 test("announcement hysteresis: one transition per level change; announcedLevel updated", () => {

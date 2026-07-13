@@ -95,6 +95,30 @@ function wordChoiceCard(specId: string, word: string, pool: "new" | "due" | "pro
   }
 }
 
+/** A raw native intro_echo (WORD DEBUT) EngineCard, fed to prepareEngineCard. */
+function wordIntroCard(specId: string, word: string): EngineCard {
+  return {
+    spec: {
+      specId,
+      activityType: "intro_echo",
+      itemRefs: [{ kind: "word", source: "en", id: word }],
+      targetLang: "en",
+      nativeLang: "es",
+      params: { intro: true },
+    },
+    meta: {
+      pool: "new",
+      strand: "language",
+      form: 0,
+      estSec: 12,
+      provider: "native",
+      celebration: "normal",
+      coolDownCandidate: false,
+      unscored: true,
+    },
+  }
+}
+
 /** A specId whose deterministic gate (`<id>:imgchoice` < 0.6) PASSES. */
 function passingSpecId(): string {
   for (let i = 0; i < 500; i++) {
@@ -121,6 +145,32 @@ test("installed imagepan: a first-exposure word choice becomes a picture choice"
   assert.deepEqual(card.prepared.items[0].ref, { kind: "word", source: "en", id: "coffee" })
   // No text distractor set was sampled for the picture card.
   assert.equal(card.prepared.distractors, null)
+})
+
+test("intro_echo DEBUT with sibling pictures ⇒ HEAR→tap-the-picture, type stays intro_echo (no share gate)", async () => {
+  const { runtime } = await makeImgRuntime(true)
+  // No passingSpecId needed — the debut always upgrades when siblings exist.
+  const card = await runtime.prepareEngineCard(wordIntroCard("intro-coffee", "coffee"))
+  assert.ok(card && card.kind === "exercise")
+  // The unscored debut KEEPS its type — only the presentation becomes pictures.
+  assert.equal(card.spec.activityType, "intro_echo")
+  assert.equal(card.spec.params?.media, "image")
+  assert.equal(card.spec.params?.answerImageSrc, "corpan-pack://localhost/imagepan/images/coffee.webp")
+  const ds = card.spec.params?.imageDistractors as unknown[]
+  assert.ok(Array.isArray(ds) && ds.length >= 1)
+  // items[0] STAYS the word; picture options carry their own tiles (no sampler).
+  assert.deepEqual(card.prepared.items[0].ref, { kind: "word", source: "en", id: "coffee" })
+  assert.equal(card.prepared.distractors, null)
+})
+
+test("intro_echo DEBUT never drops on a thin pool (unscored → degrades, never content-missing)", async () => {
+  const { runtime } = await makeImgRuntime(false) // no imagepan
+  // 'xylophone' has no concept + (in this single-skill fixture) a thin gloss
+  // pool; an intro_echo must still render — never a dropped card.
+  const card = await runtime.prepareEngineCard(wordIntroCard("intro-xylophone", "xylophone"))
+  assert.ok(card && card.kind === "exercise")
+  assert.equal(card.spec.activityType, "intro_echo")
+  assert.notEqual(card.spec.params?.media, "image")
 })
 
 test("no imagepan pack ⇒ never a picture choice (wiring ships inert)", async () => {

@@ -73,6 +73,12 @@ export function PathViz(props: {
     }
     return [...byArc.entries()]
   }, [units])
+  // Arc header shows the CEFR band (A1, B2…), never the internal arc id —
+  // same concrete "where" the placement result uses (PlacementResult.arcLabel).
+  const arcCefr = useMemo(
+    () => new Map(props.graph.arcs.map((a) => [a.arcId, a.cefr])),
+    [props.graph],
+  )
 
   return (
     <div className="flex w-full max-w-[26rem] flex-col gap-6" data-testid="journey-path">
@@ -80,7 +86,7 @@ export function PathViz(props: {
       {arcs.map(([arcId, arcUnits]) => (
         <div key={arcId} className="flex flex-col gap-2">
           <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            {t("journey.path.arc", { name: arcId })}
+            {t("journey.path.arc", { name: arcCefr.get(arcId) ?? arcId })}
           </div>
           <div className="flex flex-col gap-1.5">
             {arcUnits.map((u) => (

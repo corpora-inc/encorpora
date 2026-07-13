@@ -99,7 +99,9 @@ export function PackActivityCard(props: {
         <Play className="h-5 w-5" />
         {cta}
       </button>
-      <div className="text-xs text-muted-foreground">{t("journey.exercise.skipHint")}</div>
+      {/* The "swipe again to skip" hint is shown by FeedScroller once the first
+          forward-swipe arms the skip — not on arrival (it would read "again"
+          before you've swiped once). */}
     </div>
   )
 }

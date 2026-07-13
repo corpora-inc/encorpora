@@ -78,6 +78,12 @@ export interface CapPronounceParams {
   /** Speak the target once on first resume (default false). */
   autoSpeakFirst?: boolean
   startPaused?: boolean
+  /** Fired after EVERY scored attempt (before any auto-settle), so a host can
+   *  reveal its own inline retry / continue affordances while the cap-pronounce
+   *  round stays open. Silent attempts (mic heard nothing) still fire with
+   *  `silent: true`. The one-shot `result` contract is unchanged — this is a
+   *  progress notification, not a settle. */
+  onAttempt?: (v: { overall: number; band: "top" | "mid" | "low"; silent: boolean }) => void
 }
 
 const readParams = (spec: ActivitySpec): CapPronounceParams =>
@@ -459,6 +465,17 @@ const mount = (
       speak,
     })
     attempts.push({ verdict, result })
+    // Notify the host of this attempt (Journey reveals its inline Continue /
+    // Try again controls off this) BEFORE any auto-settle below.
+    try {
+      params.onAttempt?.({
+        overall: verdict.overall,
+        band: verdict.band,
+        silent: verdict.silent,
+      })
+    } catch (err) {
+      console.error("[cap-pronounce] onAttempt threw:", err)
+    }
     // Silent attempts (mic heard nothing) don't burn the attempt budget —
     // the user never actually tried the phrase (pack streak precedent).
     const realAttempts = attempts.filter((a) => !a.verdict.silent).length

@@ -35,7 +35,15 @@ export const PLACED_ACC_EWMA = 0.75 // provisional Practiced floor (§4.3.2)
 // ---- new-intake throttle + debt brake (adaptivity §5.5, pedagogy §12.2) -----
 export const NEW_PER_DAY_DEFAULT = 12
 export const NEW_PER_DAY_MIN = 4
-export const NEW_PER_DAY_MAX = 30
+// Intake ceiling. This is a SOFT throttle for the eager grinder, NOT a pace cap:
+// an intensive autodidact must be able to introduce many new items per session
+// without an artificial calendar ceiling. It stays finite on purpose — unseen
+// items may never pile on top of a review debt. The real guardrails are the
+// debt-brake (mixer.ts: DEBT_BRAKE_RATIO ⇒ new = 0 under backlog), the struggle
+// cut, and FSRS due scheduling; the weekly throttle only walks newPerDay toward
+// this bound when the queue is clear. Raised from the legacy 30 (which throttled
+// grinders long before any review debt existed).
+export const NEW_PER_DAY_MAX = 100
 export const CAPACITY_EWMA_ALPHA = 0.15
 export const CAPACITY_SEED = 40
 export const BACKLOG_RING_SIZE = 7
@@ -233,6 +241,12 @@ export const READER_INTERLUDE_JITTER = 10 // → effective 20–30
 /** Never two interludes back-to-back: at least this many cards must separate
  *  ANY two interludes (game or reader), regardless of their own cadences. */
 export const INTERLUDE_BACK_TO_BACK_FLOOR = 4
+/** Never several checkpoints back-to-back: at least this many cards must
+ *  separate ANY two checkpoints (cadence "Punto de control" OR a boss/arc
+ *  checkpoint). Checkpoints are milestones — space them well. Sits safely below
+ *  the default checkpoint cadence (10) so it never suppresses the normal beat,
+ *  only the over-fire (catch-up drain / boss-after-cadence seam). */
+export const CHECKPOINT_BACK_TO_BACK_FLOOR = 8
 /** Combo at/above which the learner is "hot" → prefer a reader breath
  *  (comedown); a cold stretch (combo 0) → prefer a game spike (re-ignite). */
 export const INTERLUDE_HOT_COMBO = 4

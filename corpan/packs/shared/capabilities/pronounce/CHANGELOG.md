@@ -10,6 +10,12 @@ the Journey `speak_echo` card + pop-in sheet consume it, Wave 2).
 
 ## 0.1.0 — Unreleased
 
+- **`onAttempt` param.** A new optional `params.onAttempt(v)` fires after every
+  scored attempt (with `{ overall, band, silent }`) BEFORE any auto-settle, so a
+  host can reveal its own inline retry / continue controls while the round stays
+  open. The one-shot `result` contract is unchanged — this is a progress
+  notification, not a settle. Journey's `speak_echo` card uses it to surface a
+  Continue button after the first real attempt (mic stays live for re-records).
 - **Live mic waveform while recording.** The stage now shows a compact,
   squared-off bar waveform driven by the host's real per-buffer mic RMS
   (`stt.subscribeAudioLevel`) — a short scrolling amplitude history that reads

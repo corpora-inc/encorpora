@@ -37,6 +37,10 @@ test("choice_pick: swipe in swipe mode, auto+2200 in auto (default) mode", () =>
 const withMeaning = (activityType: string): FeedCard => {
   const c = exercise(activityType)
   if (c.kind === "exercise") {
+    // An explanationNative only exists on an L1 stack — carry the native lang so
+    // the native-safe selector actually picks the Spanish paragraph.
+    c.spec = { ...c.spec, nativeLang: "es" }
+    c.prepared.spec = c.spec
     c.prepared.items = [
       {
         kind: "word",
@@ -48,14 +52,18 @@ const withMeaning = (activityType: string): FeedCard => {
   return c
 }
 
-test("word card with a meaning/etymology waits for a swipe — never auto-advances", () => {
-  // A 50-word etymology must not be yanked away on the 2.2s timer; the learner
-  // reads and swipes on. Holds across exercise types, even in auto mode.
-  assert.deepEqual(advanceRule(withMeaning("choice_pick"), "auto"), { kind: "swipe" })
-  assert.deepEqual(advanceRule(withMeaning("listen_type"), "auto"), { kind: "swipe" })
-  assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "swipe" })
-  // A word with no meaning still auto-advances fast (no regression).
-  assert.deepEqual(advanceRule(exercise("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
+test("word card with a meaning/etymology advances normally — no reading hold", () => {
+  // The meaning/etymology no longer renders inline: it opens in an on-demand (?)
+  // overlay that never reflows the card, so there is no "reading beat" to hold
+  // the card open for. A word-with-meaning card advances exactly like any other.
+  assert.deepEqual(advanceRule(withMeaning("choice_pick"), "auto"), { kind: "auto", delayMs: 2200 })
+  assert.deepEqual(advanceRule(withMeaning("choice_pick"), "swipe"), { kind: "swipe" })
+  // Explicit-completion cards ALWAYS advance on their Continue press, even when
+  // the word carries an explanation — this is the "Continuar does nothing" fix
+  // (the old reading-hold ran first and silently downgraded these to swipe).
+  assert.deepEqual(advanceRule(withMeaning("intro_echo"), "swipe"), { kind: "button" })
+  assert.deepEqual(advanceRule(withMeaning("flip_recall"), "swipe"), { kind: "button" })
+  assert.deepEqual(advanceRule(withMeaning("speak_echo"), "auto"), { kind: "button" })
 })
 
 test("failed cards never auto-advance", () => {
@@ -70,12 +78,17 @@ test("listen cards: listening run arms auto even in swipe mode", () => {
   })
 })
 
-test("speak_echo auto-advances within the block regardless of mode", () => {
-  assert.deepEqual(advanceRule(exercise("speak_echo"), "swipe"), { kind: "auto", delayMs: 1000 })
+test("speak_echo is button-advance in every mode — the card's own Continue settles + advances", () => {
+  // The cap-pronounce round stays open for unlimited re-records; the learner
+  // reads the per-word + score feedback, then presses Continue. A low score
+  // must never fall back to the double-swipe skip brick — so even a "failed"
+  // speak resolves to an explicit action, not an auto-yank.
+  assert.deepEqual(advanceRule(exercise("speak_echo"), "swipe"), { kind: "button" })
+  assert.deepEqual(advanceRule(exercise("speak_echo"), "auto"), { kind: "button" })
 })
 
-test("intro_echo + flip_recall are button-advance in every mode (explicit press)", () => {
-  for (const type of ["intro_echo", "flip_recall"] as const) {
+test("intro_echo + flip_recall + speak_echo are button-advance in every mode (explicit press)", () => {
+  for (const type of ["intro_echo", "flip_recall", "speak_echo"] as const) {
     assert.deepEqual(advanceRule(exercise(type), "swipe"), { kind: "button" }, type)
     assert.deepEqual(advanceRule(exercise(type), "auto"), { kind: "button" }, type)
   }

@@ -50,13 +50,21 @@ export function advanceRule(
       break
   }
   if (card.rare) return { kind: "manual" } // anticipation is never rushed
-  // A settled word card carrying a meaning/etymology paragraph is a READING
-  // beat — never auto-advance it out from under the learner (a 50-word etymology
-  // in 2.2s is unreadable). Wait for a deliberate swipe (the chevron cues it);
-  // fast learners flick on instantly, readers take their time.
-  if (hasReadableMeaning(card)) return { kind: "swipe" }
+  // NOTE: word meaning/etymology no longer renders inline — it lives behind an
+  // on-demand (?) overlay that never reflows the card (WordEnrichment). So there
+  // is no inline "reading beat" to hold the card open for anymore; an
+  // explicit-completion card (intro_echo / flip_recall / speak_echo) must
+  // ALWAYS advance on its Continue press. (The old `hasReadableMeaning → swipe`
+  // hold ran before the button rules below and silently broke Continue for any
+  // word that had an explanation — the "Continuar does nothing" bug.)
   const t = card.spec.activityType
-  if (t === "speak_echo") return { kind: "auto", delayMs: 1000 } // hands/mouth busy
+  // speak_echo is an explicit-completion card: the learner records (and
+  // re-records as much as they like — the cap-pronounce mic stays live), reads
+  // the per-word + score feedback, then presses the card's own Continue. That
+  // press settles + advances immediately in every mode (contract #6 (a)) — the
+  // card never auto-yanks the feedback away mid-read, and a low score never
+  // needs the double-swipe skip (the old brick).
+  if (t === "speak_echo") return { kind: "button" }
   // Explicit-completion cards: the learner presses Continue (intro_echo) or
   // reveals + continues (flip_recall). That press advances immediately in
   // every mode (contract #6 (a)) — no lingering settled card to swipe past.
@@ -73,14 +81,4 @@ export function advanceRule(
 /** Listening-run detection (§3.2): ≥2 consecutive listen_* cards queued. */
 export function isListeningRunStart(current: FeedCard, next: FeedCard | null): boolean {
   return isListeningCard(current) && next !== null && isListeningCard(next)
-}
-
-/** A word exercise whose resolved item carries a wordpan meaning/etymology
- *  paragraph. The post-answer enrichment renders real reading (often 40–60
- *  words), so the settled card must not auto-advance — the learner reads and
- *  swipes on when ready. (Function declaration → hoisted; safe to call above.) */
-function hasReadableMeaning(card: FeedCard): boolean {
-  if (card.kind !== "exercise") return false
-  const extras = card.prepared.items[0]?.extras
-  return extras?.kind === "word" && !!(extras.explanationNative || extras.explanationTarget)
 }

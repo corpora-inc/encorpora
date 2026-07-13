@@ -879,7 +879,7 @@
     "tagline": "Η καθοδηγούμενη διαδρομή σου, κάρτα την κάρτα",
     "heroCard": {
       "title": "Το Journey σου",
-      "progress": "{{unit}} · {{count}} κάρτες ως τον σημερινό στόχο"
+      "progress": "{{unit}} · {{count}} για το επόμενο ορόσημο"
     },
     "heroCta": {
       "start": "Ξεκίνα το Journey σου",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "Σημείο ελέγχου",
-      "summary": "{{new}} νέα · {{reviews}} επαναλήψεις · καλύτερο σερί {{combo}}",
+      "summaryNew": "{{count}} νέες",
+      "summaryReviews": "{{count}} επαναλήψεις",
       "done": "Αρκετά για σήμερα",
       "keepGoing": "Συνεχίζω",
-      "dailyRing": "{{done}}/{{goal}} σήμερα",
+      "dailyRing": "{{count}} σε αυτή τη συνεδρία",
       "deepSession": "Τι βαθιά συνεδρία — οι επαναλήψεις σου είναι έτσι κι αλλιώς προγραμματισμένες.",
-      "streakTicked": "Ημέρα {{count}} ✓",
+      "streakTicked": "{{count}} στη σειρά ✓",
       "boss": "Πρόκληση ενότητας",
       "arcGate": "Πύλη τόξου"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Τέλειο",
+        "nice": "Ωραία",
+        "brilliant": "Λαμπρό",
+        "boom": "Μπαμ",
+        "nailed": "Το πέτυχες",
+        "unstoppable": "Ασταμάτητος",
+        "onFire": "Στη φωτιά",
+        "yes": "Ναι!",
+        "clean": "Καθαρό",
+        "sharp": "Κοφτερό",
+        "wow": "Ουάου",
+        "magic": "Μαγικό"
+      },
       "combo": "{{count}} στη σειρά",
       "perfect": "Τέλεια",
       "wordsLearned": "{{count}} λέξεις έμαθες",
       "unitComplete": "Ενότητα ολοκληρώθηκε: {{name}}",
-      "streakDay": "Ημέρα {{count}}",
+      "streakDay": "{{count}} στη σειρά",
       "placementDone": "Το επίπεδο βρέθηκε"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Κρατάμε σερί;",
-      "pactBody": "Μία κάρτα τη μέρα το κρατά ζωντανό. Αν χάσεις μια μέρα, μια μέρα ξεκούρασης μπορεί να σε καλύψει — κερδίζεις μία κάθε εβδομάδα.",
+      "pactBody": "Κράτησε τη φόρα σου. Μια μέρα ξεκούρασης καλύπτει ένα κενό — κερδίζεις μία κάθε εβδομάδα.",
       "pactAccept": "Μέσα",
       "pactDecline": "Όχι, ευχαριστώ",
-      "days": "{{count}} ημέρες",
+      "days": "{{count}} στη σειρά",
       "restDayEarned": "Μέρα ξεκούρασης κερδισμένη",
       "restDayUsed": "Η {{day}} ήταν μέρα ξεκούρασης",
       "repairTitle": "Ξαναπιάσε το σερί σου",

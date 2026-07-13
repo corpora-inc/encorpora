@@ -879,7 +879,7 @@
     "tagline": "A vezetett utad, kártyáról kártyára",
     "heroCard": {
       "title": "A te Journey-d",
-      "progress": "{{unit}} · {{count}} kártya a mai célig"
+      "progress": "{{unit}} · még {{count}} a következő mérföldkőig"
     },
     "heroCta": {
       "start": "Kezdd el a Journey-d",
@@ -943,21 +943,36 @@
     },
     "checkpoint": {
       "title": "Ellenőrzőpont",
-      "summary": "{{new}} új · {{reviews}} ismétlés · legjobb sorozat {{combo}}",
+      "summaryNew": "{{count}} új",
+      "summaryReviews": "{{count}} ismétlés",
       "done": "Mára ennyi",
       "keepGoing": "Tovább",
-      "dailyRing": "{{done}}/{{goal}} ma",
+      "dailyRing": "{{count}} ebben a munkamenetben",
       "deepSession": "Micsoda elmélyült gyakorlás — az ismétléseid így is, úgy is be vannak ütemezve.",
-      "streakTicked": "{{count}}. nap ✓",
+      "streakTicked": "{{count}} egymás után ✓",
       "boss": "Egységpróba",
       "arcGate": "Ívkapu"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Tökéletes",
+        "nice": "Szép",
+        "brilliant": "Zseniális",
+        "boom": "Bumm",
+        "nailed": "Telitalálat",
+        "unstoppable": "Megállíthatatlan",
+        "onFire": "Lángolsz",
+        "yes": "Igen!",
+        "clean": "Tiszta",
+        "sharp": "Éles",
+        "wow": "Hűha",
+        "magic": "Varázslat"
+      },
       "combo": "{{count}} egymás után",
       "perfect": "Tökéletes",
       "wordsLearned": "{{count}} szó megtanulva",
       "unitComplete": "Egység kész: {{name}}",
-      "streakDay": "{{count}}. nap",
+      "streakDay": "{{count}} egymás után",
       "placementDone": "Szint megállapítva"
     },
     "rare": {
@@ -1005,10 +1020,10 @@
     },
     "streak": {
       "pactTitle": "Vezessünk sorozatot?",
-      "pactBody": "Napi egy kártya életben tartja. Ha kihagysz egy napot, egy pihenőnap fedezhet — hetente egyet szerzel.",
+      "pactBody": "Tartsd a lendületet. Egy pihenőnap kitölti a kihagyást — hetente egyet szerzel.",
       "pactAccept": "Benne vagyok",
       "pactDecline": "Köszönöm, nem",
-      "days": "{{count}} nap",
+      "days": "{{count}} egymás után",
       "restDayEarned": "Pihenőnap megszerezve",
       "restDayUsed": "{{day}} pihenőnap volt",
       "repairTitle": "Vedd fel újra a sorozatod",

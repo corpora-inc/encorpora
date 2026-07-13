@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `nameLocalized` / `descriptionLocalized` added to the manifest for all ~54
   app locales.
 
+### Fixed
+- `minAppVersion` raised to `0.20.3` (was `0.17.0`) — the premium-scroll Journey
+  interlude host that runs `wordfall:catch` first shipped in 0.20.3, so pre-0.20.3
+  apps can't use the pack and should not see it.
+- The pack ZIP is now actually built and published by `deploy-pages.yml`;
+  previously the catalog advertised `wordfall.zip` but the workflow never
+  produced it. (Wordfall stays `channel: preview` — dev-only — until promoted.)
+
 ## [0.1.0] - 2026-07-10
 
 ### Added

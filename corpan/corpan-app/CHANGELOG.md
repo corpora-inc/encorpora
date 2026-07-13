@@ -7,6 +7,186 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.5] - 2026-07-12
+
+### Changed
+- **Journey reframed from a daily drip to an intensive, mastery-driven program.**
+  Calendar / "day N" framing is gone from the copy: the hero progress line points
+  to your next milestone, the checkpoint ring and streak read as momentum
+  ("{{count}} this session", "{{count}} in a row") rather than a day number, and
+  the streak pact drops the "one card a day / miss a day" language. The
+  checkpoint ring no longer overflows (a single momentum number, not "229/20"),
+  and the recap hides the all-zeros "0 new · 0 reviews" line. The artificial
+  new-word ceiling is lifted for grinders (`NEW_PER_DAY_MAX` 30 → 100; intensive
+  learners seed a high daily intake) — but the FSRS spacing + debt-brake still
+  guard against cramming unseen words on top of a review backlog.
+- **New-word first exposure is now interactive.** The debut card was a passive
+  see-hear-Continue; it's now a hear → tap-the-meaning comprehension beat (a
+  concept-picture grid, a numeral glyph grid for numbers, or native-gloss tiles),
+  audio-first and unscored (a wrong tap only reveals — no penalty).
+
+### Added
+- **The new-word debut is now an interactive comprehension beat.** First exposure
+  used to be a passive show-and-tell (see word + picture + meaning, hear it,
+  Continue). It now invites you to *prove* the link: HEAR the target, then TAP its
+  meaning — a concept **picture** grid when the word has sibling images, a
+  universal **numeral** for a number word, or **native-gloss text tiles**
+  otherwise. It stays gentle and unscored: a wrong tap simply reveals the answer
+  (the right tile lights up, the word + meaning appear) with no red "wrong" and no
+  penalty — the memory card is still created at your first *scored* rep. When
+  there's nothing tappable to offer, it degrades to today's passive debut. Audio
+  still auto-plays on arrival; nothing reflows on reveal.
+- **Every correct answer now earns a juicy, escalating celebration.** The tier-1
+  correct moment was a tiny "Perfect" pill that rendered *behind* the card. It is
+  now a big, springy **praise-word splash** drawn above everything — a polished
+  combo callout in a display-tight, ExtraBold, top-lit gradient with layered
+  legibility shadows + a colored bloom (crisp on the dark feed, legible over any
+  card), sized in `vw` so it never wraps or clips — pulling from a pool of ~12
+  fresh exclamations (localized in all ~54 languages) with a non-repeating
+  sampler — so you keep playing to see the next word. Behind it, a pluggable
+  **effect registry** (`journey/celebration/effects/`) rotates through distinct
+  CSS-3D flourishes — upgraded colorful confetti, tumbling 3D shards, a
+  perspective badge punch, a shockwave-ring starburst, and a neon word-pop — with
+  no per-answer 3D engine. The rotation is **combo-weighted**: calm at combo 1,
+  building through 3D spins and a confetti finale + screen-punch by combo 8-10+.
+  A clean fast first-try adds a **gold** bonus sparkle. Sound builds too (a gentle
+  chime early, blooming into the ascending flourish as the streak climbs). Honors
+  `juiceIntensity` (minimal = quiet text only, reduced/reduced-motion = gentle
+  no-3D fallback) and never reflows the card.
+
+### Fixed
+- **The paywall's offer-code field renders dark on the dark paywall in light
+  mode.** The "Offer or affiliate code" input filled with `bg-background` — a
+  token the paywall's scoped palette never overrode — so in light mode it drew a
+  white field on the near-black surface. The paywall now owns its own
+  `--background` and sets `color-scheme: dark`, so the field and native control
+  chrome render for the dark surface regardless of the app/OS theme.
+- **"Punto de control" no longer appears several times in a row.** The Journey
+  cadence checkpoint had no back-to-back floor and a fragile catch-up tally: a
+  boss batch or a large content batch could leave the emit position leading the
+  emitted-cadence count by more than one cadence, after which every short batch
+  drained one owed checkpoint at its tail. The milestone now snaps its tally to
+  the actual stream position and honours a minimum-gap floor, spanning the
+  boss-after-cadence seam, so checkpoints stay spaced milestones.
+- **The turtle (slow-audio) button actually slows the audio down.** The Android
+  TTS plugin was reshaping the caller's rate with an opinionated curve, so a
+  0.7× "slow" request came out ~0.87× — imperceptible. The plugin now plays
+  faithfully at whatever rate it's handed (clamped only to a safe range); rate
+  is the UI's decision. Measured against the real engine (which compresses its
+  own slow side), the turtle now asks 0.3× to land a clear ~1.6× slow-down —
+  plainly slower than both normal replay and the default auto-play. This fixes
+  slow-replay everywhere it's used, not just Journey.
+- **Play works on a scrolled-back pack interlude.** After you played a mini-game
+  interlude (e.g. Corpan City) the feed advanced past its poster, so scrolling
+  back up and tapping **Play** did nothing — the graded-launch guard rejects a
+  card the feed has already consumed. A scrolled-back poster (reviewed or
+  skipped) now **replays** the pack for free practice (no re-grade, no re-advance,
+  no quota debit), so Play is never a dead button.
+- **Dictation no longer shows its answer twice.** On a correct *type-what-you-hear*
+  solve the target phrase printed in both the big reveal line **and** the
+  now-disabled input (which already holds exactly what you typed). The reveal
+  line now fills only in review mode (where the remounted input is empty); on a
+  live solve the input is the single answer surface. No layout shifts (the
+  reserved slot is unchanged).
+- **Flashcard flip is a real flip, with one result check.** The recall card is
+  now a single tappable 3D card — tap the card face itself (not a small "tap to
+  reveal" phrase) and it spring-flips to the meaning (concept image + target word
+  + audio). And a correct answer shows **one** check ("Correcto") underneath, not
+  a second one in the top-right — the redundant settled ✓ on the card frame is
+  gone (it only ever appeared live, never on review, which was inconsistent).
+- **Word explanations no longer shove the exercise around — and speak the
+  learner's language.** The word depth (in-context example + wordpan
+  meaning/etymology) used to auto-render *inline below the exercise* the moment
+  you answered, reflowing the whole card (on a compact glyph-number card it
+  clipped the audio button at the top) — and its etymology paragraph could come
+  out in the *target* language (an English "…from Old English an…" shown to a
+  Spanish speaker). Now the exercise never moves: a small **(?)** rides the
+  already-reserved feedback row (before AND after answering — a hint is most
+  useful during the exercise), and tapping it opens the explanation in the shared
+  **Drawer** (big grab band, swipe-down, tap-scrim to close). The text is
+  **native-safe and region-tolerant** (`es-419` matches `es`): a non-English
+  native is shown the native paragraph, or their native gloss + the in-context
+  example — and *never* the target-language etymology (no native paragraph ⇒ no
+  paragraph, rather than an English wall). The etymology-gem rare card obeys the
+  same rule.
+- **Journey's SPEAK card is now parlometron-grade.** The card mounts the same
+  cap-pronounce surface the standalone pronunciation coach uses, but Journey
+  never themed it — so on the dark feed the target phrase rendered near-black
+  ("Where are you from?" was barely visible), the per-word pronunciation pills
+  and the overall %-score banner came out light-theme-on-dark, and the card read
+  as a blank box with a plain mic. Fixed by mapping the whole `--capPron-*`
+  surface onto Journey's design tokens (dark-mode aware for free): the phrase is
+  now a high-contrast hero, each word is coloured by how well it was said, and
+  the overall score shows prominently — the same feedback as the coach, by
+  construction (single source of truth, not a stripped custom UI).
+- **Speaking no longer bricks you.** A low score used to leave the card in an
+  un-settled limbo whose only exit was a double-swipe "swipe again to skip"
+  (≈5 flicks). The card now shows an unmistakable **Continue** the moment you've
+  had a go, and the mic stays live so **Try again** is simply speaking again —
+  unlimited re-records, and a low score never traps you. speak_echo is now a
+  clean button-advance card (one press settles + moves on).
+- Removed the redundant Journey-side "Speak now" mic cue that sat above the
+  capability's own mic stage (the capability renders the full mic + live
+  waveform itself).
+- **Pack offers no longer wall the Journey.** The word-pack and picture-pack
+  offers were `position: fixed` banners pinned to the viewport bottom, so they
+  floated over the placement "Continue", the streak-pact buttons, and the live
+  exercise card (covering a card's own "Not now"), and overlapped each other.
+  They now ride a normal-flow row below the feed — only in the feed (never over
+  placement/loading), only one offer visible at a time, clear of every CTA and
+  the safe-area inset. Consent-first behavior is unchanged.
+- **Journey shows the unit's real name, not its internal id.** The feed header
+  and placement result displayed the raw unit id (`en.a0.u01`); they now show the
+  localized unit theme (e.g. "Kit de supervivencia" / "Survival kit") in the
+  learner's language, sourced from the course pack's `unit.<id>.theme` strings
+  (region-tolerant, falling back to English then the raw id only if a pack ships
+  no theme). The path view's arc headers likewise show the CEFR band instead of
+  the internal arc id.
+
+### Changed
+- **Settings selectors are sleek now, not stacks of fat wrapping pills.** Text
+  size, speech rate and theme were chunky buttons that wrapped to two rows once
+  labels were localized ("Pequeño / Mediano / Semi Grande / Grande / Muy
+  Grande"). They're now a shared slim **segmented control** (`SegmentedControl`)
+  that lives on one row and scrolls horizontally rather than ever wrapping.
+  Text size dropped its long words entirely for a visual **A-ramp** (five "A"s
+  at increasing sizes — language-agnostic, the size name rides along only as the
+  a11y label). CEFR levels became one non-wrapping scroll track too. Squared-off
+  8px corners; compact on phone, roomier on iPad. No new strings.
+- **Every bottom drawer is much easier to grab and swipe away on mobile.** The
+  drag handle was a thin 100×8px pill; the shared drawer now renders a
+  full-width, ≥44px-tall grab band around it, so swiping down anywhere across
+  the top dismisses. Fixed once in the shared `DrawerContent`, so every drawer
+  (voice tuning, phrase packs, quick settings, …) inherits it.
+
+### Added
+- **Journey exercises show pictures where we have them.** When the imagepan pack
+  is installed and a word maps to a concept picture, the flip card reveals that
+  picture as the meaning (image = meaning, revealed on flip), a new-word intro
+  leads with the picture, and a "pick what you hear" card reveals it with the
+  answer. The word and its audio stay; grading is unchanged (the picture is
+  presentation only). No pack, or a word with no picture, falls back to today's
+  text — nothing ever shows a broken image. The image sits in a reserved box so
+  the card never jumps when it appears.
+- **Picture-choice, picture match-pairs, and picture cloze.** Beyond the reveals
+  above, whole exercises are now driven by the image (imagepan): *hear → pick the
+  picture* (a listening card's options become a 2×2 picture grid), *picture →
+  pick the word* and *word → pick the picture* on first exposures, *picture
+  match-pairs*, and a *picture cloze* whose blanked word is cued by its picture.
+  Audio-first and pair-agnostic; each slots into today's scheduling with no
+  engine change, falls back to text where a word has no art, and rides reserved,
+  aspect-locked boxes so an async or missing picture never reflows a card. No new
+  UI copy.
+### Changed
+- **The Journey card holds perfectly still when you answer.** Global no-reflow
+  invariant across every exercise: the prompt and the tiles/input never move the
+  instant you commit an answer. Feedback that used to shove the card — a "what
+  you heard" reveal, the answer line, a Continue button, the hint offer — now
+  fills space reserved up-front (so it appears in place) or floats as an overlay
+  (the fail "answer was…" note). Success still fires the full celebration
+  (particles/haptics/chime); a miss stays a gentle in-place cue. Codified as a
+  shared `ReservedSlot` contract so future cards inherit it.
+
 ## [0.20.4] — 2026-07-11
 
 ### Fixed

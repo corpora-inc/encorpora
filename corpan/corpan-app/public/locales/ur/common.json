@@ -879,7 +879,7 @@
     "tagline": "آپ کا رہنمائی شدہ راستہ، کارڈ بہ کارڈ",
     "heroCard": {
       "title": "آپ کا Journey",
-      "progress": "{{unit}} · آج کے ہدف تک {{count}} کارڈ"
+      "progress": "{{unit}} · اگلے سنگِ میل تک {{count}}"
     },
     "heroCta": {
       "start": "اپنا Journey شروع کریں",
@@ -948,21 +948,36 @@
     },
     "checkpoint": {
       "title": "چیک پوائنٹ",
-      "summary": "{{new}} نئے · {{reviews}} دہرائیاں · بہترین سلسلہ {{combo}}",
+      "summaryNew": "{{count}} نئی",
+      "summaryReviews": "{{count}} دہرائی",
       "done": "آج کے لیے کافی",
       "keepGoing": "جاری رکھیں",
-      "dailyRing": "آج {{done}}/{{goal}}",
+      "dailyRing": "{{count}} اس سیشن میں",
       "deepSession": "کیا گہرا سیشن تھا — آپ کی دہرائیاں بہرحال طے شدہ ہیں۔",
-      "streakTicked": "دن {{count}} ✓",
+      "streakTicked": "لگاتار {{count}} ✓",
       "boss": "یونٹ چیلنج",
       "arcGate": "قوس کا دروازہ"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "بالکل درست",
+        "nice": "بہت خوب",
+        "brilliant": "شاندار",
+        "boom": "دھماکہ",
+        "nailed": "نشانے پر",
+        "unstoppable": "ناقابلِ شکست",
+        "onFire": "آگ لگی",
+        "yes": "ہاں!",
+        "clean": "صاف",
+        "sharp": "تیز",
+        "wow": "واہ",
+        "magic": "جادو"
+      },
       "combo": "لگاتار {{count}}",
       "perfect": "بہترین",
       "wordsLearned": "{{count}} الفاظ سیکھے",
       "unitComplete": "یونٹ مکمل: {{name}}",
-      "streakDay": "دن {{count}}",
+      "streakDay": "لگاتار {{count}}",
       "placementDone": "سطح طے ہو گئی"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "سلسلہ رکھیں؟",
-      "pactBody": "روزانہ ایک کارڈ اسے زندہ رکھتا ہے۔ اگر ایک دن چھوٹ جائے تو آرام کا دن آپ کو بچا سکتا ہے — ہر ہفتے ایک ملتا ہے۔",
+      "pactBody": "اپنی رفتار برقرار رکھیں۔ ایک آرام کا دن خلا پُر کر دیتا ہے — ہر ہفتے ایک ملتا ہے۔",
       "pactAccept": "میں تیار ہوں",
       "pactDecline": "نہیں، شکریہ",
-      "days": "{{count}} دن",
+      "days": "لگاتار {{count}}",
       "restDayEarned": "آرام کا دن حاصل ہوا",
       "restDayUsed": "{{day}} آرام کا دن تھا",
       "repairTitle": "اپنا سلسلہ واپس پائیں",

@@ -2,7 +2,7 @@
 // mode 'bank' (token tiles from the W5 sampler) or 'type'. Tokenization via
 // util/wordTokens.tokenizePhrase — the ONE tokenizer (R14 rule).
 
-import { useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { isRTL } from "../../util/convert"
 import { normalizedEquals } from "../content/normalize.ts"
@@ -11,6 +11,8 @@ import { tokenizePhrase } from "../../util/wordTokens"
 import { clozeContext } from "./clozeContext.ts"
 import { AnswerTiles, type Tile } from "./common/AnswerTiles.tsx"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ConceptImage } from "./common/ConceptImage.tsx"
+import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import { TargetText } from "./common/TargetText.tsx"
 import { hasClozeContext } from "./common/tokenGuards.ts"
@@ -27,6 +29,27 @@ export function Cloze(props: ExerciseProps) {
   const [picked, setPicked] = useState<string | null>(null)
   const [hint, setHint] = useState<string | null>(null)
   const bank = props.spec.params?.mode !== "type"
+  // Picture-cloze cue (imagepan): when the blanked word has a concept picture,
+  // show it above the sentence so the image — not a native gloss — cues the
+  // missing word. Absent (or on a text-only stack) ⇒ a plain cloze.
+  const cueImageSrc = typeof props.spec.params?.cueImageSrc === "string" ? props.spec.params.cueImageSrc : ""
+  const cueImageAlt = typeof props.spec.params?.cueAlt === "string" ? props.spec.params.cueAlt : ""
+
+  // Add the ear (audio-first): speak the WHOLE phrase on arrival (a cloze was
+  // eyes-only). For a word-in-context blank the spoken phrase is the surrounding
+  // sentence; otherwise it's the item's own phrase. Replayable below.
+  const spokenPhrase =
+    typeof props.spec.params?.contextPhrase === "string" && props.spec.params.contextPhrase
+      ? (props.spec.params.contextPhrase as string)
+      : answer.target.ttsText
+  const playedRef = useRef(false)
+  useEffect(() => {
+    if (props.active && props.mode !== "review" && !playedRef.current) {
+      playedRef.current = true
+      void props.speak(props.spec.targetLang, spokenPhrase)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.active])
 
   // Words-in-context: when the runtime blanked a WORD inside a real corpus
   // phrase, render that phrase (not the bare word) with the word blanked. The
@@ -118,6 +141,7 @@ export function Cloze(props: ExerciseProps) {
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.fillTheBlank")}</div>
+      {cueImageSrc ? <ConceptImage src={cueImageSrc} alt={cueImageAlt} size="cue" /> : null}
       <div
         lang={props.spec.targetLang}
         dir={isRTL(props.spec.targetLang) ? "rtl" : "ltr"}
@@ -126,6 +150,7 @@ export function Cloze(props: ExerciseProps) {
       >
         {sentence}
       </div>
+      <AudioButton speak={props.speak} lang={props.spec.targetLang} text={spokenPhrase} />
       {nativeLine ? (
         <div
           lang={props.spec.nativeLang}
@@ -158,14 +183,19 @@ export function Cloze(props: ExerciseProps) {
           onSubmit={(typed) => settle(normalizedEquals(typed, blankWord, props.spec.targetLang))}
         />
       )}
-      {props.mode === "live" && props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
-        <ScaffoldHint
-          used={false}
-          onUse={() => {
-            setHint(blankWord.slice(0, 1))
-            props.onHintUsed()
-          }}
-        />
+      {/* No-reflow: reserved hint slot held from mount (see ReservedSlot). */}
+      {props.mode === "live" ? (
+        <ReservedSlot minH="min-h-9">
+          {props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
+            <ScaffoldHint
+              used={false}
+              onUse={() => {
+                setHint(blankWord.slice(0, 1))
+                props.onHintUsed()
+              }}
+            />
+          ) : null}
+        </ReservedSlot>
       ) : null}
     </div>
   )

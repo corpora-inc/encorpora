@@ -510,7 +510,22 @@ export function createResolver(deps: ResolverDeps, ctx: ResolveContext): Resolve
         for (const r of rows) {
           byLang.set(String(r.language_code ?? ""), String(r.paragraph ?? ""))
         }
-        const explanationNative = ctx.nativeLang ? byLang.get(ctx.nativeLang) : undefined
+        // Native lookup is REGION-TOLERANT: the learner's nativeLang ("pt") may
+        // not exactly equal the pack's row code ("pt-BR"), and vice versa. Match
+        // the exact code first, then any non-target row whose base subtag equals
+        // the native base — so a Portuguese learner gets the Portuguese
+        // paragraph instead of silently falling back to English.
+        const baseSubtag = (l: string): string => l.split("-")[0]
+        let explanationNative = ctx.nativeLang ? byLang.get(ctx.nativeLang) : undefined
+        if (!explanationNative && ctx.nativeLang) {
+          const nb = baseSubtag(ctx.nativeLang)
+          for (const [lc, para] of byLang) {
+            if (lc !== ctx.targetLang && para && baseSubtag(lc) === nb) {
+              explanationNative = para
+              break
+            }
+          }
+        }
         const explanationTarget = byLang.get(ctx.targetLang)
         if (explanationNative || explanationTarget) {
           const extras: ResolvedExtras = { kind: "word" }

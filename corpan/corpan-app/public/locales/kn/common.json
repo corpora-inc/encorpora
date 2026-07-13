@@ -879,7 +879,7 @@
     "tagline": "ನಿಮ್ಮ ಮಾರ್ಗದರ್ಶಿತ ಹಾದಿ, ಕಾರ್ಡ್‌ನಿಂದ ಕಾರ್ಡ್",
     "heroCard": {
       "title": "ನಿಮ್ಮ Journey",
-      "progress": "{{unit}} · ಇಂದಿನ ಗುರಿಗೆ {{count}} ಕಾರ್ಡ್‌ಗಳು"
+      "progress": "{{unit}} · ಮುಂದಿನ ಮೈಲಿಗಲ್ಲಿಗೆ {{count}}"
     },
     "heroCta": {
       "start": "ನಿಮ್ಮ Journey ಆರಂಭಿಸಿ",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "ಚೆಕ್‌ಪಾಯಿಂಟ್",
-      "summary": "{{new}} ಹೊಸ · {{reviews}} ಪುನರಾವೃತ್ತಿ · ಅತ್ಯುತ್ತಮ ಸರಣಿ {{combo}}",
+      "summaryNew": "{{count}} ಹೊಸ",
+      "summaryReviews": "{{count}} ಪುನರಾವಲೋಕನ",
       "done": "ಇಂದಿಗೆ ಸಾಕು",
       "keepGoing": "ಮುಂದುವರಿಸಿ",
-      "dailyRing": "ಇಂದು {{done}}/{{goal}}",
+      "dailyRing": "ಈ ಅವಧಿಯಲ್ಲಿ {{count}}",
       "deepSession": "ಎಂತಹ ಆಳವಾದ ಅಭ್ಯಾಸ — ನಿಮ್ಮ ಪುನರಾವೃತ್ತಿಗಳು ಹೇಗಿದ್ದರೂ ನಿಗದಿಯಾಗಿವೆ.",
-      "streakTicked": "ದಿನ {{count}} ✓",
+      "streakTicked": "ಸತತ {{count}} ✓",
       "boss": "ಘಟಕ ಸವಾಲು",
       "arcGate": "ಕಮಾನು ಬಾಗಿಲು"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "ಪರಿಪೂರ್ಣ",
+        "nice": "ಚೆನ್ನಾಗಿದೆ",
+        "brilliant": "ಅದ್ಭುತ",
+        "boom": "ಢಂ",
+        "nailed": "ಗುರಿ ತಪ್ಪಿಲ್ಲ",
+        "unstoppable": "ತಡೆಯಲಾಗದು",
+        "onFire": "ಬೆಂಕಿಯಲ್ಲಿ",
+        "yes": "ಹೌದು!",
+        "clean": "ಸ್ವಚ್ಛ",
+        "sharp": "ಹರಿತ",
+        "wow": "ವಾವ್",
+        "magic": "ಮಾಂತ್ರಿಕ"
+      },
       "combo": "ಸತತ {{count}}",
       "perfect": "ಅದ್ಭುತ",
       "wordsLearned": "{{count}} ಪದ ಕಲಿತಿರಿ",
       "unitComplete": "ಘಟಕ ಪೂರ್ಣ: {{name}}",
-      "streakDay": "ದಿನ {{count}}",
+      "streakDay": "ಸತತ {{count}}",
       "placementDone": "ಹಂತ ನಿಗದಿಯಾಯಿತು"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "ಸರಣಿ ಇಟ್ಟುಕೊಳ್ಳೋಣವೇ?",
-      "pactBody": "ದಿನಕ್ಕೊಂದು ಕಾರ್ಡ್ ಅದನ್ನು ಜೀವಂತವಾಗಿರಿಸುತ್ತದೆ. ಒಂದು ದಿನ ತಪ್ಪಿದರೆ ವಿಶ್ರಾಂತಿ ದಿನ ರಕ್ಷಿಸಬಹುದು — ಪ್ರತಿ ವಾರ ಒಂದು ಗಳಿಸುತ್ತೀರಿ.",
+      "pactBody": "ನಿಮ್ಮ ವೇಗವನ್ನು ಉಳಿಸಿಕೊಳ್ಳಿ. ವಿಶ್ರಾಂತಿ ದಿನ ಒಂದು ಅಂತರವನ್ನು ತುಂಬುತ್ತದೆ — ವಾರಕ್ಕೆ ಒಂದು ಸಿಗುತ್ತದೆ.",
       "pactAccept": "ನಾನು ಸಿದ್ಧ",
       "pactDecline": "ಬೇಡ, ಧನ್ಯವಾದ",
-      "days": "{{count}} ದಿನಗಳು",
+      "days": "ಸತತ {{count}}",
       "restDayEarned": "ವಿಶ್ರಾಂತಿ ದಿನ ಗಳಿಸಿದಿರಿ",
       "restDayUsed": "{{day}} ವಿಶ್ರಾಂತಿ ದಿನವಾಗಿತ್ತು",
       "repairTitle": "ನಿಮ್ಮ ಸರಣಿಯನ್ನು ಮರಳಿ ಪಡೆಯಿರಿ",

@@ -879,7 +879,7 @@
     "tagline": "Twoja prowadzona ścieżka, karta po karcie",
     "heroCard": {
       "title": "Twoje Journey",
-      "progress": "{{unit}} · {{count}} kart do dzisiejszego celu"
+      "progress": "{{unit}} · jeszcze {{count}} do kolejnego kamienia milowego"
     },
     "heroCta": {
       "start": "Rozpocznij swoje Journey",
@@ -948,21 +948,36 @@
     },
     "checkpoint": {
       "title": "Punkt kontrolny",
-      "summary": "{{new}} nowych · {{reviews}} powtórek · najlepsza seria {{combo}}",
+      "summaryNew": "{{count}} nowych",
+      "summaryReviews": "{{count}} powtórek",
       "done": "Na dziś wystarczy",
       "keepGoing": "Idę dalej",
-      "dailyRing": "{{done}}/{{goal}} dzisiaj",
+      "dailyRing": "{{count}} w tej sesji",
       "deepSession": "Solidna sesja — twoje powtórki i tak są zaplanowane.",
-      "streakTicked": "Dzień {{count}} ✓",
+      "streakTicked": "{{count}} z rzędu ✓",
       "boss": "Wyzwanie rozdziału",
       "arcGate": "Brama łuku"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Idealnie",
+        "nice": "Nieźle",
+        "brilliant": "Genialnie",
+        "boom": "Bum",
+        "nailed": "Trafiony",
+        "unstoppable": "Nie do zatrzymania",
+        "onFire": "W ogniu",
+        "yes": "Tak!",
+        "clean": "Czysto",
+        "sharp": "Ostro",
+        "wow": "Wow",
+        "magic": "Magia"
+      },
       "combo": "{{count}} z rzędu",
       "perfect": "Idealnie",
       "wordsLearned": "{{count}} słów opanowanych",
       "unitComplete": "Rozdział ukończony: {{name}}",
-      "streakDay": "Dzień {{count}}",
+      "streakDay": "{{count}} z rzędu",
       "placementDone": "Poziom ustalony"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Prowadzić serię?",
-      "pactBody": "Jedna karta dziennie utrzymuje ją przy życiu. Jeśli opuścisz dzień, dzień odpoczynku może cię uratować — zdobywasz jeden co tydzień.",
+      "pactBody": "Utrzymaj tempo. Dzień odpoczynku pokrywa przerwę — zdobywasz jeden co tydzień.",
       "pactAccept": "Wchodzę w to",
       "pactDecline": "Nie, dziękuję",
-      "days": "{{count}} dni",
+      "days": "{{count}} z rzędu",
       "restDayEarned": "Dzień odpoczynku zdobyty",
       "restDayUsed": "{{day}} był dniem odpoczynku",
       "repairTitle": "Odbuduj swoją serię",

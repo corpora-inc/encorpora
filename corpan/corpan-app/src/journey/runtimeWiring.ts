@@ -33,6 +33,7 @@ import {
   installJourneyPack,
   isJourneyPackInstalled,
   loadCourseGraphFromPack,
+  loadUnitThemesFromPack,
   readJourneyPackMeta,
 } from "../util/journeyPack"
 import { isWordPackInstalled, wordPackIdCandidates } from "../util/wordPack"
@@ -274,6 +275,10 @@ export interface BuiltJourney {
   /** Authoritative target language (pack_meta.target_lang casing). */
   targetLang: string
   packId: string
+  /** unitId → localized display name ("theme") in the learner's UI language
+   *  (§2.1 `unit.<id>.theme`). Falls back to the raw unit id only when the pack
+   *  ships no theme for that unit — internal ids never surface otherwise. */
+  unitName: (unitId: string) => string
   /** Consent seam for the inline wordpan offer: call with the installed pair
    *  pack id after a user-approved install so the resolver picks up the new
    *  word-explanation enrichment without a restart. */
@@ -362,11 +367,21 @@ export async function buildJourneyDeps(opts: {
   targetLang: string
   nativeLang?: string
   checkpointCadence?: number
+  /** Fresh-course intake seed from the learner's goalIntensity (SESSION_SHAPES). */
+  newPerDay?: number
 }): Promise<BuiltJourney> {
   const packId = await ensureJourneyPackInstalled(opts.targetLang)
   const graph = await loadCourseGraphFromPack(packId)
   const targetLang = graph.targetLang || opts.targetLang
   const courseId = graph.courseId
+
+  // Localized unit display names for the chrome/placement/path (§2.1). The UI
+  // language is languages[0] — nativeLang when the stack has one, else the
+  // (single) target language. Themes are read once at build; the resolver falls
+  // back to the raw unit id only when a pack ships none for a unit.
+  const uiLang = opts.nativeLang ?? targetLang
+  const unitThemes = await loadUnitThemesFromPack(packId, uiLang)
+  const unitName = (unitId: string): string => unitThemes.get(unitId) ?? unitId
 
   const hostApi = createHostApi()
 
@@ -442,6 +457,7 @@ export async function buildJourneyDeps(opts: {
     graph,
     persistence: createJourneyPersistence(opts.stackId, courseId, itemCardCodec),
     clock: systemClock,
+    ...(opts.newPerDay !== undefined ? { newPerDayDefault: opts.newPerDay } : {}),
   })
 
   const quota = await createJourneyQuota({
@@ -504,6 +520,7 @@ export async function buildJourneyDeps(opts: {
     capabilityHost: capabilityHostFromHostApi(hostApi),
     targetLang,
     packId,
+    unitName,
     onWordPackInstalled,
     onImagePackInstalled,
   }

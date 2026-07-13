@@ -9,16 +9,26 @@
 // press), so it obscured the mic and re-summoned itself on every retry — and it
 // was read-back status copy the design bans. State is shown through the card
 // itself, not narrated.
+//
+// NO-REFLOW INVARIANT: this frame vertically centers the card column, so any
+// height change to a card's content re-centers it and shifts the interactive
+// region. Feedback that appears on answer must therefore be reserved-in-place
+// or floated — NEVER a new flow child. The `settled` scale below is a transform
+// (no layout cost) and the settled ✓ / review chip are absolute / present from
+// mount. See exercises/common/ReservedSlot.tsx for the shared contract.
 
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
-import { Check } from "lucide-react"
 import type { FeedCard } from "../types.ts"
 
 export function FeedCardFrame(props: {
   card: FeedCard
   settled: boolean
   review: boolean
+  /** In-flow "reviewed earlier · N/M" label for a scrolled-back card. Rendered
+   *  as an in-flow chip at the top of the centered column (NOT an absolute float
+   *  over the card — that overlapped the exercise on return). */
+  reviewLabel?: string
   children: React.ReactNode
 }) {
   const { t } = useTranslation()
@@ -30,25 +40,17 @@ export function FeedCardFrame(props: {
         animate={{ scale: props.settled ? 0.98 : 1 }}
         transition={{ type: "spring", stiffness: 320, damping: 32 }}
       >
-        {props.review ? (
+        {props.reviewLabel || props.review ? (
           <div className="mb-3 rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-            {t("journey.exercise.reviewedEarlier")}
+            {props.reviewLabel ?? t("journey.exercise.reviewedEarlier")}
           </div>
         ) : null}
         {props.children}
       </motion.div>
-      <AnimatePresence>
-        {props.settled && !props.review && (
-          <motion.div
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute end-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-          >
-            <Check className="h-5 w-5" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* No top-right "settled" checkmark here: the exercise already shows a
+          single result stamp ("✓ Correcto") in ActivityCardHost's feedback row.
+          Two green checks in different places (top-right + underneath) was
+          redundant and confusing — one verdict, one place. */}
     </div>
   )
 }

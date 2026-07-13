@@ -879,7 +879,7 @@
     "tagline": "Votre parcours guidé, carte après carte",
     "heroCard": {
       "title": "Votre Journey",
-      "progress": "{{unit}} · {{count}} cartes avant l'objectif du jour"
+      "progress": "{{unit}} · {{count}} avant le prochain jalon"
     },
     "heroCta": {
       "start": "Commencer votre Journey",
@@ -952,21 +952,36 @@
     },
     "checkpoint": {
       "title": "Point d'étape",
-      "summary": "{{new}} nouveaux · {{reviews}} révisions · meilleure série {{combo}}",
+      "summaryNew": "{{count}} nouvelles",
+      "summaryReviews": "{{count}} révisions",
       "done": "C'est bon pour aujourd'hui",
       "keepGoing": "Continuer",
-      "dailyRing": "{{done}}/{{goal}} aujourd'hui",
+      "dailyRing": "{{count}} cette séance",
       "deepSession": "Belle séance en profondeur — vos révisions sont planifiées quoi qu'il arrive.",
-      "streakTicked": "Jour {{count}} ✓",
+      "streakTicked": "{{count}} d'affilée ✓",
       "boss": "Défi d'unité",
       "arcGate": "Porte d'arc"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Parfait",
+        "nice": "Bien joué",
+        "brilliant": "Brillant",
+        "boom": "Boum",
+        "nailed": "Dans le mille",
+        "unstoppable": "Inarrêtable",
+        "onFire": "En feu",
+        "yes": "Oui !",
+        "clean": "Impeccable",
+        "sharp": "Affûté",
+        "wow": "Waouh",
+        "magic": "Magique"
+      },
       "combo": "{{count}} d'affilée",
       "perfect": "Parfait",
       "wordsLearned": "{{count}} mots appris",
       "unitComplete": "Unité terminée : {{name}}",
-      "streakDay": "Jour {{count}}",
+      "streakDay": "{{count}} d'affilée",
       "placementDone": "Niveau trouvé"
     },
     "rare": {
@@ -1014,10 +1029,10 @@
     },
     "streak": {
       "pactTitle": "On garde une série ?",
-      "pactBody": "Une carte par jour la maintient en vie. Si vous manquez un jour, un jour de repos peut vous couvrir — vous en gagnez un par semaine.",
+      "pactBody": "Garde ton élan. Un jour de repos comble un manque — tu en gagnes un chaque semaine.",
       "pactAccept": "Je suis partant",
       "pactDecline": "Non merci",
-      "days": "{{count}} jours",
+      "days": "{{count}} d'affilée",
       "restDayEarned": "Jour de repos gagné",
       "restDayUsed": "{{day}} était un jour de repos",
       "repairTitle": "Reprenez votre série",

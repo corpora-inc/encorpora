@@ -9,13 +9,14 @@ import { AnimatePresence, motion, useAnimationControls, useReducedMotion } from 
 import { ChevronsUp } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { ActivityResult, ActivitySpec } from "../../contentPacks/activityContract"
-import { celebrate, skipCelebration } from "../celebration/CelebrationLayer.tsx"
+import { celebrate } from "../celebration/CelebrationLayer.tsx"
 import { ComboCounter } from "../celebration/ComboCounter.tsx"
 import { cardTransition } from "./cardTransition.ts"
 import { useJourneyStore } from "../../store/journey.ts"
 import type { CompletedCard, FeedCard, SessionStats } from "../types.ts"
 import type { JourneyRuntime } from "../runtime.ts"
 import type { SpeakFn } from "../exercises/types.ts"
+import { stopSpeech } from "../../util/speak"
 import { advanceRule, isListeningCard, isListeningRunStart } from "./advanceRules.ts"
 import { ActivityCardHost } from "./ActivityCardHost.tsx"
 import { BlockIntroCard } from "./BlockIntroCard.tsx"
@@ -31,10 +32,6 @@ import { WelcomeBackCard } from "./WelcomeBackCard.tsx"
 import { CapabilityCard } from "../cards/CapabilityCard.tsx"
 
 const SWIPE_COMMIT_PX = 90
-// Double-swipe skip confirm window. Widened from 1500ms → 2500ms so ONE
-// deliberate second swipe reliably confirms a skip (the old window was so tight
-// that the second swipe routinely landed after it lapsed, forcing many swipes).
-const SKIP_CONFIRM_MS = 2500
 
 export interface FeedScrollerProps {
   runtime: JourneyRuntime
@@ -54,8 +51,6 @@ export function FeedScroller(props: FeedScrollerProps) {
   const advanceMode = useJourneyStore((s) => s.advanceMode)
   const [, force] = useState(0)
   const [backIndex, setBackIndex] = useState(0) // 0 = live, N = N pages back
-  const [skipArmedAt, setSkipArmedAt] = useState(0)
-  const skipTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [revealed, setRevealed] = useState<Record<string, boolean>>({})
   const [listeningRun, setListeningRun] = useState(false)
   const [autoCountdown, setAutoCountdown] = useState(false)
@@ -65,19 +60,6 @@ export function FeedScroller(props: FeedScrollerProps) {
 
   useEffect(() => runtime.subscribe(() => force((v) => v + 1)), [runtime])
 
-  // Disarm a pending skip whenever the live card changes — an armed skip must
-  // never carry over to the NEXT card (that race made skip land on the wrong
-  // card). Also cleans the timer on unmount.
-  const currentId = runtime.current()?.cardId
-  useEffect(() => {
-    if (skipTimer.current) clearTimeout(skipTimer.current)
-    skipTimer.current = null
-    setSkipArmedAt(0)
-    return () => {
-      if (skipTimer.current) clearTimeout(skipTimer.current)
-      skipTimer.current = null
-    }
-  }, [currentId])
 
   const current = runtime.current()
   const next = runtime.next()
@@ -104,7 +86,15 @@ export function FeedScroller(props: FeedScrollerProps) {
 
   const doAdvance = useCallback(() => {
     clearAuto()
-    skipCelebration()
+    // Do NOT cut the celebration on advance. It's a host-level overlay,
+    // independent of the card, so it plays out over the transition (juicy +
+    // game-like). Cutting it here meant a fast answer→advance (common on tap
+    // cards) killed the celebration before it showed — and the abrupt cut read
+    // as a "ghost flash" on the way out. A new correct simply replaces it.
+    // Stop lingering audio so the leaving card's speech never bleeds into the
+    // next card ("hearing the last exercise on the next one"). The arriving
+    // card starts its own auto-play fresh.
+    void stopSpeech()
     runtime.advance()
   }, [runtime, clearAuto])
 
@@ -174,27 +164,13 @@ export function FeedScroller(props: FeedScrollerProps) {
     }
     const rule = advanceRule(current, advanceMode)
     if (rule.kind === "manual" && current.kind !== "packActivity") return
-    // incomplete card: double-swipe skip semantics (§3.5). The SECOND swipe
-    // within the (widened) confirm window skips; the first arms + shows the
-    // "swipe again to skip" hint. A timer clears the arm so the window is
-    // authoritative (no stale Date.now() math at render), making a single
-    // confirmed double-swipe reliably advance.
-    const now = Date.now()
-    if (skipArmedAt && now - skipArmedAt <= SKIP_CONFIRM_MS) {
-      if (skipTimer.current) clearTimeout(skipTimer.current)
-      skipTimer.current = null
-      setSkipArmedAt(0)
-      runtime.abandonCurrent()
-    } else {
-      setSkipArmedAt(now)
-      if (skipTimer.current) clearTimeout(skipTimer.current)
-      skipTimer.current = setTimeout(() => {
-        skipTimer.current = null
-        setSkipArmedAt(0)
-      }, SKIP_CONFIRM_MS)
-      void controls.start({ y: [0, -24, 0], transition: { duration: 0.3 } })
-    }
-  }, [backIndex, current, settled, advanceMode, skipArmedAt, runtime, doAdvance, controls])
+    // Single-swipe skip (premium): a forward swipe on an incomplete card just
+    // skips it — abandonCurrent advances the feed. The old double-swipe "swipe
+    // again to skip" arming bounced the card back and demanded a second fast
+    // swipe; it read as a cock-block mid-scroll, not a feature.
+    void stopSpeech()
+    runtime.abandonCurrent()
+  }, [backIndex, current, settled, advanceMode, runtime, doAdvance])
 
   const onBackGesture = useCallback(() => {
     const max = history.length
@@ -342,7 +318,14 @@ export function FeedScroller(props: FeedScrollerProps) {
             card={card}
             pending={runtime.packReturnPending() === card.cardId}
             onPlay={() => {
-              runtime.launchPackActivity(card, (packId, spec) => props.onLaunchPack?.(packId, spec))
+              const launch = (packId: string, spec: ActivitySpec) =>
+                props.onLaunchPack?.(packId, spec)
+              // Current poster → graded launch (advances the feed). A
+              // scrolled-back poster (review/redo) was already consumed, so the
+              // graded path's guard would reject it — replay it for free
+              // practice instead, so "Play" is never a dead button.
+              if (mode === "live") runtime.launchPackActivity(card, launch)
+              else runtime.replayPackActivity(card, launch)
             }}
           />
         )
@@ -441,11 +424,21 @@ export function FeedScroller(props: FeedScrollerProps) {
               exit={reducedMotion ? { opacity: 0 } : { y: 40, opacity: 0 }}
               transition={advanceTransition}
             >
-              <FeedCardFrame card={backRecord.card} settled={!backRedoable} review={!backRedoable}>
+              <FeedCardFrame
+                card={backRecord.card}
+                settled={!backRedoable}
+                review={!backRedoable}
+                reviewLabel={`${t("journey.exercise.reviewedEarlier")} · ${backIndex}/${history.length}`}
+              >
                 {backRedoable ? (
                   <div className="w-full">{renderCard(backRecord.card, "redo")}</div>
                 ) : (
-                  <div className="pointer-events-none w-full opacity-90">
+                  // NOT pointer-events-none: a reviewed card must still let the
+                  // learner REPLAY audio and open the (?) hint (hear + get hints
+                  // before AND after answering). Re-answering is already blocked
+                  // because each exercise disables its own answer controls in
+                  // review mode — so only the answer tiles are inert, not audio.
+                  <div className="w-full opacity-90">
                     {renderCard(backRecord.card, "review")}
                   </div>
                 )}
@@ -511,23 +504,8 @@ export function FeedScroller(props: FeedScrollerProps) {
         </motion.div>
       ) : null}
 
-      {/* skip hint (§3.5 first forward-swipe on incomplete card) — armed state
-          is cleared by a timer, so its truthiness alone is authoritative */}
-      <AnimatePresence>
-        {skipArmedAt > 0 ? (
-          <motion.div
-            key="skip-hint"
-            className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-          >
-            <div className="rounded-full bg-muted px-3.5 py-1.5 text-xs font-medium text-muted-foreground">
-              {t("journey.exercise.skipHint")}
-            </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {/* No "swipe again to skip" hint: a forward swipe on an incomplete card
+          now skips in one gesture (see onForwardGesture). */}
 
       {/* hands-free listening pill (§3.2) */}
       {listeningPill ? (
@@ -542,15 +520,12 @@ export function FeedScroller(props: FeedScrollerProps) {
         </div>
       ) : null}
 
-      {/* auto-advance countdown ring (tap to pause) */}
-      {autoCountdown && (listeningRun || advanceMode === "auto") ? (
-        <button
-          type="button"
-          onClick={clearAuto}
-          className="absolute bottom-6 end-6 h-8 w-8 animate-pulse rounded-full border-2 border-[hsl(var(--journey-accent,262_80%_58%))]"
-          aria-label={t("journey.settings.listeningMode")}
-        />
-      ) : null}
+      {/* No auto-advance "countdown ring" here: the pulsing purple circle in the
+          bottom corner read as a weak, meaningless blip on every correct. The
+          juicy celebration now carries the reward + transition feedback, and the
+          auto-advance timer runs on its own (a back-swipe still pauses it). The
+          `autoCountdown` state is kept only to hide the advance chevron during an
+          auto beat (above), so the chevron doesn't flash before the card jumps. */}
 
       {/* ambient momentum gauge (§3.5): a small squared bar in the top-trailing
           corner that fills + warms with the streak and exhales on a break — the
@@ -562,14 +537,9 @@ export function FeedScroller(props: FeedScrollerProps) {
         </div>
       ) : null}
 
-      {/* viewed-earlier depth chip */}
-      {backIndex > 0 ? (
-        <div className="absolute inset-x-0 top-3 flex justify-center">
-          <div className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">
-            {t("journey.exercise.reviewedEarlier")} · {backIndex}/{history.length}
-          </div>
-        </div>
-      ) : null}
+      {/* The "reviewed earlier · N/M" depth chip now renders IN-FLOW inside the
+          card (FeedCardFrame reviewLabel), so it can never float over / cover the
+          exercise on scroll-back (the old absolute top chip did). */}
     </div>
   )
 }

@@ -879,7 +879,7 @@
     "tagline": "ਤੁਹਾਡਾ ਰਾਹਨੁਮਾਈ ਵਾਲਾ ਰਾਹ, ਕਾਰਡ ਤੋਂ ਕਾਰਡ",
     "heroCard": {
       "title": "ਤੁਹਾਡਾ Journey",
-      "progress": "{{unit}} · ਅੱਜ ਦੇ ਟੀਚੇ ਤੱਕ {{count}} ਕਾਰਡ"
+      "progress": "{{unit}} · ਅਗਲੇ ਮੀਲ-ਪੱਥਰ ਤੱਕ {{count}}"
     },
     "heroCta": {
       "start": "ਆਪਣਾ Journey ਸ਼ੁਰੂ ਕਰੋ",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "ਚੈੱਕਪੁਆਇੰਟ",
-      "summary": "{{new}} ਨਵੇਂ · {{reviews}} ਦੁਹਰਾਈਆਂ · ਸਭ ਤੋਂ ਵਧੀਆ ਲੜੀ {{combo}}",
+      "summaryNew": "{{count}} ਨਵੀਆਂ",
+      "summaryReviews": "{{count}} ਦੁਹਰਾਈਆਂ",
       "done": "ਅੱਜ ਲਈ ਬੱਸ",
       "keepGoing": "ਜਾਰੀ ਰੱਖੋ",
-      "dailyRing": "ਅੱਜ {{done}}/{{goal}}",
+      "dailyRing": "ਇਸ ਸੈਸ਼ਨ ਵਿੱਚ {{count}}",
       "deepSession": "ਕਿੰਨਾ ਡੂੰਘਾ ਸੈਸ਼ਨ — ਤੁਹਾਡੀਆਂ ਦੁਹਰਾਈਆਂ ਹਰ ਹਾਲ ਵਿੱਚ ਤੈਅ ਹਨ।",
-      "streakTicked": "ਦਿਨ {{count}} ✓",
+      "streakTicked": "ਲਗਾਤਾਰ {{count}} ✓",
       "boss": "ਯੂਨਿਟ ਚੁਣੌਤੀ",
       "arcGate": "ਕਮਾਨ ਦਾ ਦਰਵਾਜ਼ਾ"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "ਸੰਪੂਰਨ",
+        "nice": "ਵਧੀਆ",
+        "brilliant": "ਸ਼ਾਨਦਾਰ",
+        "boom": "ਧਮਾਕਾ",
+        "nailed": "ਨਿਸ਼ਾਨੇ ’ਤੇ",
+        "unstoppable": "ਅਜੇਤੂ",
+        "onFire": "ਅੱਗ ’ਤੇ",
+        "yes": "ਹਾਂ!",
+        "clean": "ਸਾਫ਼",
+        "sharp": "ਤਿੱਖਾ",
+        "wow": "ਵਾਹ",
+        "magic": "ਜਾਦੂ"
+      },
       "combo": "ਲਗਾਤਾਰ {{count}}",
       "perfect": "ਕਮਾਲ",
       "wordsLearned": "{{count}} ਸ਼ਬਦ ਸਿੱਖੇ",
       "unitComplete": "ਯੂਨਿਟ ਪੂਰੀ: {{name}}",
-      "streakDay": "ਦਿਨ {{count}}",
+      "streakDay": "ਲਗਾਤਾਰ {{count}}",
       "placementDone": "ਪੱਧਰ ਤੈਅ ਹੋਇਆ"
     },
     "rare": {
@@ -1001,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "ਲੜੀ ਰੱਖੀਏ?",
-      "pactBody": "ਰੋਜ਼ ਇੱਕ ਕਾਰਡ ਇਸਨੂੰ ਜ਼ਿੰਦਾ ਰੱਖਦਾ ਹੈ। ਜੇ ਦਿਨ ਖੁੰਝ ਜਾਵੇ ਤਾਂ ਆਰਾਮ ਦਾ ਦਿਨ ਬਚਾ ਸਕਦਾ ਹੈ — ਹਰ ਹਫ਼ਤੇ ਇੱਕ ਮਿਲਦਾ ਹੈ।",
+      "pactBody": "ਆਪਣੀ ਰਫ਼ਤਾਰ ਬਣਾਈ ਰੱਖੋ। ਇੱਕ ਆਰਾਮ ਦਾ ਦਿਨ ਖਲਾਅ ਭਰ ਦਿੰਦਾ ਹੈ — ਹਰ ਹਫ਼ਤੇ ਇੱਕ ਮਿਲਦਾ ਹੈ।",
       "pactAccept": "ਮੈਂ ਤਿਆਰ ਹਾਂ",
       "pactDecline": "ਨਹੀਂ, ਧੰਨਵਾਦ",
-      "days": "{{count}} ਦਿਨ",
+      "days": "ਲਗਾਤਾਰ {{count}}",
       "restDayEarned": "ਆਰਾਮ ਦਾ ਦਿਨ ਕਮਾਇਆ",
       "restDayUsed": "{{day}} ਆਰਾਮ ਦਾ ਦਿਨ ਸੀ",
       "repairTitle": "ਆਪਣੀ ਲੜੀ ਵਾਪਸ ਲਓ",

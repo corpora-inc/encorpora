@@ -30,13 +30,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   rounds with no per-entry verdicts still report score-only; an aggregate over
   several items is never fanned out into fabricated per-item rows. Aborted rounds
   stay score-only + `abandoned`.
-- Manifest `activities`: all 20 implemented challenge tools declared for the
+- Manifest `activities`: the implemented challenge tools declared for the
   Journey scheduler (STT tools carry `modelNeeds: ["stt"]`).
 - Vendored contract copy `src/sdk/activityContract.ts` (generated — synced by
   `node packs/sdk/sync-contract.mjs`).
 - `src/journey/adapter.test.ts`: fixture journey mounts (abort path, event
   rail, unmount race) + field-mapping tests, validated against the app's
   contract Zod schemas.
+
+### Removed
+- **"Which one doesn't belong?" (odd-one-out) disabled** pending a solvable
+  rebuild. It grouped corpus entries by their opaque DOMAIN tag
+  (travel/food/business) and asked the player to tap the intruder, but the
+  category was never shown and the phrases don't visibly cluster — so it was
+  unsolvable by reasoning. Removed from the Journey manifest `activities`, from
+  the runnable `choiceToolList`, and filtered out of all NPC/quest tool
+  selection (`DISABLED_TOOL_IDS` in `challenges/registry`); it can no longer be
+  scheduled. The implementation is kept for a future rebuild with a
+  visible/obvious semantic or concept-image category.
 
 ### Changed
 - `runChallenge` partial-spec merge additionally honors `challengeId`

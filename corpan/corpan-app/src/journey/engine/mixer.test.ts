@@ -6,7 +6,9 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { DAY_MS } from "./clock.ts"
-import type { ActivityTemplate, CourseGraph, EngineCard, ItemRef } from "./types.ts"
+import { CHECKPOINT_BACK_TO_BACK_FLOOR, DEBT_BRAKE_RATIO, NEW_PER_DAY_MAX } from "./constants.ts"
+import { adjustQuotas, isDebtBrakeActive } from "./mixer.ts"
+import type { ActivityTemplate, CourseGraph, CourseState, EngineCard, ItemRef } from "./types.ts"
 import { makeFixtureGraph, nativeTemplates } from "./__fixtures__/fixtureGraph.ts"
 import { answer, makeEngine, playBatch, type Harness } from "./__fixtures__/harness.ts"
 
@@ -404,6 +406,9 @@ test("infinite feed: keeps producing fresh, varied cards past the daily target (
   let realCardCount = 0
   let batches = 0
   let checkpointsSeen = 0
+  // Stream positions of every emitted "Punto de control" (checkpoint_summary)
+  // card — used to assert milestones never fire several times in a row.
+  const checkpointPositions: number[] = []
 
   for (let i = 0; i < 60; i++) {
     const batch = h.engine.nextFeedItems(10, { ...CONS, modelsAvailable: ["tts"] })
@@ -423,8 +428,11 @@ test("infinite feed: keeps producing fresh, varied cards past the daily target (
         if (prev !== undefined) minItemGap = Math.min(minItemGap, streamPos - prev)
         lastItemPos.set(it, streamPos)
       }
+      if (t === "checkpoint_summary") {
+        checkpointsSeen += 1
+        checkpointPositions.push(streamPos)
+      }
       streamPos += 1
-      if (t === "checkpoint_summary") checkpointsSeen += 1
       if (t === "checkpoint_summary" || t === "jump_offer") continue
       // checkpoint/jump batches are §5.10-exempt from adjacency (returned as-is)
       const antiRepeatEligible = c.meta.pool !== "checkpoint" && c.meta.pool !== "jump"
@@ -484,6 +492,18 @@ test("infinite feed: keeps producing fresh, varied cards past the daily target (
   //    with real content flowing they pace out, not pile up.
   assert.ok(checkpointsSeen >= 1, "at least one milestone checkpoint over a long run")
   assert.ok(batches > 6, `served ${batches} batches of continuous content`)
+  // 5. Never several "Punto de control" checkpoints back-to-back: with the
+  //    cross-batch floor (+ snapped catch-up tally), consecutive checkpoint
+  //    positions in the emitted stream stay at least CHECKPOINT_BACK_TO_BACK_FLOOR
+  //    apart — the over-fire (one boss/overshoot leaving a per-batch drain) is gone.
+  assert.ok(checkpointPositions.length >= 2, "several milestone checkpoints over a long run")
+  for (let k = 1; k < checkpointPositions.length; k++) {
+    const gap = checkpointPositions[k] - checkpointPositions[k - 1]
+    assert.ok(
+      gap >= CHECKPOINT_BACK_TO_BACK_FLOOR,
+      `checkpoints ${gap} apart must be >= ${CHECKPOINT_BACK_TO_BACK_FLOOR} (no "Punto de control" run) — positions ${checkpointPositions.join(",")}`,
+    )
+  }
 })
 
 // Frontier DAG gate: pull-forward respects prerequisites — it never surfaces a
@@ -573,4 +593,31 @@ test("sttInstalled up-weights the output (speaking) strand in the mix", async ()
   // Identical graph + RNG stream; the only lever is the installed up-weight,
   // which must yield strictly more speaking.
   assert.ok(on > off, `installed STT did not increase speaking (on=${on} off=${off})`)
+})
+
+// Intensive-intake guardrail: lifting NEW_PER_DAY_MAX (grinders start with a high
+// newPerDay) must NOT let unseen items pile on top of a review debt. The intake
+// ceiling is a SOFT throttle; the debt-brake is the hard guardrail and still
+// zeroes NEW, handing the freed quota to reviews — the feed yields, never
+// dead-ends on new.
+test("raised intake ceiling still yields to reviews: debt-brake zeroes NEW even at a high newPerDay", () => {
+  // A grinder seeded at the raised ceiling.
+  const course = {
+    newPerDay: NEW_PER_DAY_MAX,
+    dailyCapacityEwma: 40,
+    sessionsPerDayEwma: 1,
+  } as unknown as CourseState
+
+  // No backlog → intake flows (new quota is positive), so the ceiling is real.
+  const clear = adjustQuotas(course, "normal", 0)
+  assert.equal(clear.debt, false, "no backlog ⇒ brake off")
+  assert.ok(clear.new > 0, "with no review debt, new intake is served")
+
+  // A review avalanche past 1.5×capacity → brake binds regardless of newPerDay.
+  const dueAvalanche = Math.ceil(DEBT_BRAKE_RATIO * course.dailyCapacityEwma) + 1
+  assert.ok(isDebtBrakeActive(course, dueAvalanche), "backlog past the ratio engages the brake")
+  const braked = adjustQuotas(course, "normal", dueAvalanche)
+  assert.equal(braked.debt, true, "brake active under backlog")
+  assert.equal(braked.new, 0, "debt-brake zeroes NEW no matter how high the ceiling is")
+  assert.ok(braked.review > clear.review, "the freed intake quota burns the review backlog down")
 })

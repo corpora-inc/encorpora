@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next"
 import { normalizedEquals } from "../content/normalize.ts"
 import { tokenizePhrase } from "../../util/wordTokens"
 import { AudioButton } from "./common/AudioButton.tsx"
+import { ReservedSlot } from "./common/ReservedSlot.tsx"
 import { ScaffoldHint } from "./common/ScaffoldHint.tsx"
 import { TypeInput } from "./common/TypeInput.tsx"
 import type { ExerciseProps } from "./types.ts"
@@ -47,19 +48,32 @@ export function ListenType(props: ExerciseProps) {
     <div className="flex w-full flex-col items-center gap-6">
       <div className="text-sm text-muted-foreground">{t("journey.exercise.typeWhatYouHear")}</div>
       <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
-      {props.mode === "review" || done ? (
-        <div lang={props.spec.targetLang} className="text-xl font-semibold text-foreground">
-          {answer.target.text}
-        </div>
-      ) : null}
+      {/* No-reflow: a reserved line for the answer reveal — present (empty) from
+          mount. Filled ONLY in review mode (fresh remount → the input is empty,
+          so this is the sole place the answer shows). On a LIVE correct solve
+          the disabled input already holds exactly what the learner typed (== the
+          answer), so filling this too would print the same phrase twice — the
+          "title shows twice" bug. On a fail the host floats the answer instead. */}
+      <ReservedSlot minH="min-h-8">
+        {props.mode === "review" ? (
+          <div lang={props.spec.targetLang} className="text-xl font-semibold text-foreground">
+            {answer.target.text}
+          </div>
+        ) : null}
+      </ReservedSlot>
       <TypeInput
         lang={props.spec.targetLang}
         disabled={done || props.mode === "review"}
         hint={hint}
         onSubmit={submit}
       />
-      {props.mode === "live" && props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
-        <ScaffoldHint used={false} onUse={revealFirstWord} />
+      {/* No-reflow: reserved hint slot held from mount (see ReservedSlot). */}
+      {props.mode === "live" ? (
+        <ReservedSlot minH="min-h-9">
+          {props.scaffold.misses === 1 && !props.scaffold.hintUsed ? (
+            <ScaffoldHint used={false} onUse={revealFirstWord} />
+          ) : null}
+        </ReservedSlot>
       ) : null}
     </div>
   )

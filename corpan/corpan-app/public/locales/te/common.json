@@ -879,7 +879,7 @@
     "tagline": "మీ మార్గదర్శక బాట, కార్డు వెంట కార్డు",
     "heroCard": {
       "title": "మీ Journey",
-      "progress": "{{unit}} · నేటి లక్ష్యానికి {{count}} కార్డులు"
+      "progress": "{{unit}} · తదుపరి మైలురాయికి {{count}}"
     },
     "heroCta": {
       "start": "మీ Journey ప్రారంభించండి",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "చెక్‌పాయింట్",
-      "summary": "{{new}} కొత్తవి · {{reviews}} పునశ్చరణలు · ఉత్తమ వరుస {{combo}}",
+      "summaryNew": "{{count}} కొత్తవి",
+      "summaryReviews": "{{count}} పునఃసమీక్షలు",
       "done": "ఈరోజుకి చాలు",
       "keepGoing": "కొనసాగించండి",
-      "dailyRing": "ఈరోజు {{done}}/{{goal}}",
+      "dailyRing": "ఈ సెషన్‌లో {{count}}",
       "deepSession": "ఎంత లోతైన సెషన్ — మీ పునశ్చరణలు ఎలాగైనా షెడ్యూల్ అయ్యాయి.",
-      "streakTicked": "రోజు {{count}} ✓",
+      "streakTicked": "వరుసగా {{count}} ✓",
       "boss": "యూనిట్ సవాలు",
       "arcGate": "విల్లు ద్వారం"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "పర్ఫెక్ట్",
+        "nice": "బాగుంది",
+        "brilliant": "అద్భుతం",
+        "boom": "ఢమాల్",
+        "nailed": "గురి తప్పలేదు",
+        "unstoppable": "ఆపలేనిది",
+        "onFire": "రగులుతోంది",
+        "yes": "అవును!",
+        "clean": "శుభ్రం",
+        "sharp": "పదునైన",
+        "wow": "వావ్",
+        "magic": "మ్యాజిక్"
+      },
       "combo": "వరుసగా {{count}}",
       "perfect": "అద్భుతం",
       "wordsLearned": "{{count}} పదాలు నేర్చుకున్నారు",
       "unitComplete": "యూనిట్ పూర్తి: {{name}}",
-      "streakDay": "రోజు {{count}}",
+      "streakDay": "వరుసగా {{count}}",
       "placementDone": "స్థాయి నిర్ణయమైంది"
     },
     "rare": {
@@ -1001,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "వరుస కొనసాగిద్దామా?",
-      "pactBody": "రోజుకో కార్డు దాన్ని సజీవంగా ఉంచుతుంది. ఒక రోజు తప్పిపోతే విశ్రాంతి రోజు కాపాడగలదు — ప్రతి వారం ఒకటి సంపాదిస్తారు.",
+      "pactBody": "మీ వేగాన్ని కొనసాగించండి. విశ్రాంతి రోజు ఖాళీని పూరిస్తుంది — ప్రతి వారం ఒకటి లభిస్తుంది.",
       "pactAccept": "నేను సిద్ధం",
       "pactDecline": "వద్దు, ధన్యవాదాలు",
-      "days": "{{count}} రోజులు",
+      "days": "వరుసగా {{count}}",
       "restDayEarned": "విశ్రాంతి రోజు సంపాదించారు",
       "restDayUsed": "{{day}} విశ్రాంతి రోజు",
       "repairTitle": "మీ వరుసను తిరిగి పొందండి",

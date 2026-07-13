@@ -879,7 +879,7 @@
     "tagline": "El teu camí guiat, targeta a targeta",
     "heroCard": {
       "title": "El teu Journey",
-      "progress": "{{unit}} · {{count}} targetes per a l'objectiu d'avui"
+      "progress": "{{unit}} · {{count}} per a la propera fita"
     },
     "heroCta": {
       "start": "Comença el teu Journey",
@@ -939,21 +939,36 @@
     },
     "checkpoint": {
       "title": "Punt de control",
-      "summary": "{{new}} noves · {{reviews}} repassos · millor ratxa {{combo}}",
+      "summaryNew": "{{count}} noves",
+      "summaryReviews": "{{count}} repassos",
       "done": "Prou per avui",
       "keepGoing": "Continua",
-      "dailyRing": "{{done}}/{{goal}} avui",
+      "dailyRing": "{{count}} en aquesta sessió",
       "deepSession": "Quina sessió tan profunda — els teus repassos queden programats igualment.",
-      "streakTicked": "Dia {{count}} ✓",
+      "streakTicked": "{{count}} seguits ✓",
       "boss": "Repte d'unitat",
       "arcGate": "Porta d'arc"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfecte",
+        "nice": "Bé",
+        "brilliant": "Brillant",
+        "boom": "Bum",
+        "nailed": "Encertat",
+        "unstoppable": "Imparable",
+        "onFire": "En ratxa",
+        "yes": "Sí!",
+        "clean": "Impecable",
+        "sharp": "Agut",
+        "wow": "Uau",
+        "magic": "Màgic"
+      },
       "combo": "{{count}} seguides",
       "perfect": "Perfecte",
       "wordsLearned": "{{count}} paraules apreses",
       "unitComplete": "Unitat completada: {{name}}",
-      "streakDay": "Dia {{count}}",
+      "streakDay": "{{count}} seguits",
       "placementDone": "Nivell trobat"
     },
     "rare": {
@@ -1001,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "Mantenim una ratxa?",
-      "pactBody": "Una targeta al dia la manté viva. Si faltes un dia, un dia de descans et pot cobrir: en guanyes un cada setmana.",
+      "pactBody": "Mantén l'impuls. Un dia de descans cobreix un buit: en guanyes un cada setmana.",
       "pactAccept": "Compta amb mi",
       "pactDecline": "No, gràcies",
-      "days": "{{count}} dies",
+      "days": "{{count}} seguits",
       "restDayEarned": "Dia de descans guanyat",
       "restDayUsed": "{{day}} va ser un dia de descans",
       "repairTitle": "Recupera la teva ratxa",

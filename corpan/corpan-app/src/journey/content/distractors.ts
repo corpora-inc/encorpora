@@ -389,6 +389,20 @@ export function distractorNeed(
         answerLang: "target",
         promptLang: "target",
       }
+    case "intro_echo":
+      // The WORD DEBUT (unscored) becomes a HEAR→tap-the-meaning comprehension
+      // beat: tiles are native-gloss MEANINGS, sampled exactly like a toNative
+      // choice_pick (native answer, target prompt). This is ONLY the fallback
+      // when the debut has no concept picture / numeral glyph to tap — those
+      // carry their own tiles and never reach the sampler. Degrades to the
+      // passive show-and-tell when the native face is unavailable
+      // (buildDistractorRequest returns null on a single-language stack).
+      return {
+        mode: "item",
+        count: Math.max(1, num("choices", 4) - 1),
+        answerLang: "native",
+        promptLang: "target",
+      }
     case "cloze": {
       if (params?.mode !== "bank") return null // 'type' = free input
       return {
@@ -414,7 +428,7 @@ export function distractorNeed(
       return distractorNeed(drill.activityType, drill.params)
     }
     // listen_type (free input), match_pairs (seededShuffle only),
-    // flip_recall (self-verdict), speak_echo (STT), intro_echo (unscored):
+    // flip_recall (self-verdict), speak_echo (STT): nothing from the sampler.
     default:
       return null
   }

@@ -12,7 +12,7 @@
 //      /></ErrorBoundary> : null}
 //   Exit rides `corpan:journey-exit` (dispatched here; App closes the surface).
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { X } from "lucide-react"
@@ -30,11 +30,15 @@ import { displayStreak, type StreakPorts } from "./streakV2.ts"
 import { useJourneyStore } from "../store/journey.ts"
 import { useJourneyRuntime, type JourneyRuntime, type JourneyRuntimeDeps } from "./runtime.ts"
 
-/** goalIntensity → session shape (feed-ux §3.7). Tunable constants, ONE place. */
+/** goalIntensity → session shape (feed-ux §3.7). Tunable constants, ONE place.
+ *  `newPerDay` seeds the engine's intake throttle for a fresh course — an
+ *  intensive learner starts able to introduce far more new items per session
+ *  (the throttle still adapts to backlog and the debt-brake still zeroes it
+ *  under a review debt; this only lifts the artificial starting cap). */
 export const SESSION_SHAPES = {
-  casual: { dailyGoal: 10, checkpointCadence: 8 },
-  daily: { dailyGoal: 20, checkpointCadence: 10 },
-  intensive: { dailyGoal: 40, checkpointCadence: 12 },
+  casual: { dailyGoal: 10, checkpointCadence: 8, newPerDay: 8 },
+  daily: { dailyGoal: 20, checkpointCadence: 10, newPerDay: 12 },
+  intensive: { dailyGoal: 40, checkpointCadence: 12, newPerDay: 40 },
 } as const
 
 export type GoalIntensityKey = keyof typeof SESSION_SHAPES
@@ -52,6 +56,10 @@ export interface JourneySurfaceProps {
   capabilityHost?: CapabilityHostApi | null
   streakPorts?: StreakPorts
   onLaunchPack?: (packId: string, spec: ActivitySpec) => void
+  /** Understated, consent-first pack offers. Rendered in normal flow BELOW the
+   *  feed (never over placement/loading/error, never over the card) so it can
+   *  cover no CTA and jolt no layout — see JourneyOverlay. */
+  offerSlot?: ReactNode
   /** Debug/test seam: observe the live runtime once the session starts. */
   onRuntimeReady?: (runtime: JourneyRuntime) => void
 }
@@ -174,6 +182,18 @@ export function JourneySurface(props: JourneySurfaceProps) {
               onLaunchPack={props.onLaunchPack}
             />
           </div>
+          {/* Consent-first pack offers ride here — a normal-flow row that owns
+              its own space BELOW the feed, so it can never overlap the active
+              card or its CTAs. Feed-only by construction (this branch never runs
+              during placement/loading). */}
+          {props.offerSlot ? (
+            <div
+              className="shrink-0 px-4 pt-1"
+              style={{ paddingBottom: "max(env(safe-area-inset-bottom), 0.5rem)" }}
+            >
+              {props.offerSlot}
+            </div>
+          ) : null}
         </>
       )}
       <CelebrationLayer />

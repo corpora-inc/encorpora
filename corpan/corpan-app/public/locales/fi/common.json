@@ -879,7 +879,7 @@
     "tagline": "Ohjattu polkusi, kortti kerrallaan",
     "heroCard": {
       "title": "Sinun Journeysi",
-      "progress": "{{unit}} · {{count}} korttia päivän tavoitteeseen"
+      "progress": "{{unit}} · {{count}} seuraavaan virstanpylvääseen"
     },
     "heroCta": {
       "start": "Aloita Journeysi",
@@ -948,21 +948,36 @@
     },
     "checkpoint": {
       "title": "Tarkistuspiste",
-      "summary": "{{new}} uutta · {{reviews}} kertausta · paras putki {{combo}}",
+      "summaryNew": "{{count}} uutta",
+      "summaryReviews": "{{count}} kertausta",
       "done": "Riittää tältä päivältä",
       "keepGoing": "Jatka",
-      "dailyRing": "{{done}}/{{goal}} tänään",
+      "dailyRing": "{{count}} tässä istunnossa",
       "deepSession": "Melkoinen syväsessio — kertauksesi on joka tapauksessa aikataulutettu.",
-      "streakTicked": "Päivä {{count}} ✓",
+      "streakTicked": "{{count}} putkeen ✓",
       "boss": "Yksikköhaaste",
       "arcGate": "Kaaren portti"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Täydellistä",
+        "nice": "Hienoa",
+        "brilliant": "Loistavaa",
+        "boom": "Pum",
+        "nailed": "Osui",
+        "unstoppable": "Pysäyttämätön",
+        "onFire": "Tulessa",
+        "yes": "Kyllä!",
+        "clean": "Puhdas",
+        "sharp": "Terävä",
+        "wow": "Vau",
+        "magic": "Taikaa"
+      },
       "combo": "{{count}} putkeen",
       "perfect": "Täydellistä",
       "wordsLearned": "{{count}} sanaa opittu",
       "unitComplete": "Yksikkö valmis: {{name}}",
-      "streakDay": "Päivä {{count}}",
+      "streakDay": "{{count}} putkeen",
       "placementDone": "Taso löytyi"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Pidetäänkö putkea?",
-      "pactBody": "Yksi kortti päivässä pitää sen elossa. Jos päivä jää väliin, lepopäivä voi paikata — ansaitset yhden joka viikko.",
+      "pactBody": "Pidä vauhti yllä. Lepopäivä paikkaa aukon — ansaitset yhden joka viikko.",
       "pactAccept": "Olen mukana",
       "pactDecline": "Ei kiitos",
-      "days": "{{count}} päivää",
+      "days": "{{count}} putkeen",
       "restDayEarned": "Lepopäivä ansaittu",
       "restDayUsed": "{{day}} oli lepopäivä",
       "repairTitle": "Nosta putkesi takaisin",

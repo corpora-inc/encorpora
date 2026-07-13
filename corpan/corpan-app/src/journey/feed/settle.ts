@@ -5,6 +5,28 @@
 
 export type SettleAttempt = "first" | "retry" | "failed"
 
+/**
+ * speak_echo owns its OWN retry loop inside the cap-pronounce round (the mic
+ * stays live between attempts; the learner re-records freely, reads the
+ * per-word + score feedback, then presses the card's Continue). So its
+ * onOutcome is a FINAL, single-shot decision — never a first miss to route
+ * through the tap/type scaffold (which would flash "incorrect" and demand a
+ * second Continue press on a low score: the old speak brick). Everything else
+ * keeps the scaffold retry.
+ */
+export function isSingleShotSettle(activityType: string): boolean {
+  return activityType === "speak_echo"
+}
+
+/**
+ * The settle attempt tier for a single-shot card given its pass fraction: a
+ * pass (≥ 0.6) settles as `first`, a low score as `failed`. Either way it
+ * settles in ONE call — the learner is never trapped by a low score.
+ */
+export function singleShotAttempt(fraction: number): SettleAttempt {
+  return fraction >= 0.6 ? "first" : "failed"
+}
+
 export interface StampInput {
   attempt: SettleAttempt
   /** 0..1 fraction of the card answered correctly. */
@@ -40,19 +62,28 @@ export interface CelebrationInput {
   combo: number
 }
 
-export type CelebrationDecision = { tier: 0 | 1; comboCount?: number } | null
+export type CelebrationDecision = {
+  tier: 0 | 1
+  comboCount: number
+  /** A clean, fast, hint-free first try (≥0.95) — earns extra flair on top of
+   *  the combo-scaled base. NOT a gate: an ordinary pass still celebrates. */
+  perfect: boolean
+} | null
 
 /**
- * The celebration a settled LIVE card fires, or `null` for none. Unscored and
- * non-passing cards never celebrate (acknowledging mere exposure as a win, or
- * celebrating a miss, is dishonest). A clean fast first-try is tier 1 (with a
- * combo count at every 5th); any other pass is a quiet tier 0.
+ * The celebration a settled LIVE card fires, or `null` for none. Only two things
+ * suppress it: an UNSCORED card (celebrating mere exposure is dishonest) and a
+ * NON-PASS (celebrating a miss is dishonest). EVERYTHING ELSE CELEBRATES — this
+ * is the dopamine loop: every correct answer gets juice, and it ESCALATES with
+ * the streak (the effect layer reads `comboCount` to grow a small combo-1 pop
+ * into combo-10 explosions, block-game style). The old logic only lit up a
+ * "perfect" fast first-try and left every slower/hinted correct silent (tier 0
+ * = no visual) — which is why a deliberate card like word-order felt dead. We
+ * always carry `comboCount`, and flag `perfect` for a bonus flourish (bonus, not
+ * a gate).
  */
 export function celebrationFor(i: CelebrationInput): CelebrationDecision {
   if (i.unscored || !settleOk(i.attempt, i.fraction)) return null
   const perfect = i.attempt === "first" && i.fast && i.hintsUsed === 0 && i.fraction >= 0.95
-  const comboNow = i.combo + 1
-  const comboMoment = perfect && comboNow >= 5 && comboNow % 5 === 0
-  if (!perfect && !comboMoment) return { tier: 0 }
-  return comboMoment ? { tier: 1, comboCount: comboNow } : { tier: 1 }
+  return { tier: 1, comboCount: i.combo + 1, perfect }
 }

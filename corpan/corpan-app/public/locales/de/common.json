@@ -879,7 +879,7 @@
     "tagline": "Dein geführter Weg, Karte für Karte",
     "heroCard": {
       "title": "Deine Journey",
-      "progress": "{{unit}} · {{count}} Karten bis zum Tagesziel"
+      "progress": "{{unit}} · noch {{count}} bis zum nächsten Meilenstein"
     },
     "heroCta": {
       "start": "Starte deine Journey",
@@ -948,21 +948,36 @@
     },
     "checkpoint": {
       "title": "Checkpoint",
-      "summary": "{{new}} neu · {{reviews}} Wiederholungen · beste Serie {{combo}}",
+      "summaryNew": "{{count}} neu",
+      "summaryReviews": "{{count}} Wiederholungen",
       "done": "Genug für heute",
       "keepGoing": "Weitermachen",
-      "dailyRing": "{{done}}/{{goal}} heute",
+      "dailyRing": "{{count}} in dieser Sitzung",
       "deepSession": "Das war eine intensive Runde — deine Wiederholungen sind so oder so eingeplant.",
-      "streakTicked": "Tag {{count}} ✓",
+      "streakTicked": "{{count}} in Folge ✓",
       "boss": "Einheiten-Challenge",
       "arcGate": "Bogen-Tor"
     },
     "celebrate": {
+      "praise": {
+        "perfect": "Perfekt",
+        "nice": "Stark",
+        "brilliant": "Brillant",
+        "boom": "Bumm",
+        "nailed": "Volltreffer",
+        "unstoppable": "Unaufhaltsam",
+        "onFire": "In Flammen",
+        "yes": "Ja!",
+        "clean": "Sauber",
+        "sharp": "Scharf",
+        "wow": "Wow",
+        "magic": "Magisch"
+      },
       "combo": "{{count}} in Folge",
       "perfect": "Perfekt",
       "wordsLearned": "{{count}} Wörter gelernt",
       "unitComplete": "Einheit geschafft: {{name}}",
-      "streakDay": "Tag {{count}}",
+      "streakDay": "{{count}} in Folge",
       "placementDone": "Eingestuft"
     },
     "rare": {
@@ -1010,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Eine Serie führen?",
-      "pactBody": "Eine Karte pro Tag hält sie am Leben. Verpasst du einen Tag, kann ein Ruhetag einspringen — du verdienst jede Woche einen.",
+      "pactBody": "Halte deinen Schwung. Ein Ruhetag deckt eine Lücke ab — du verdienst jede Woche einen.",
       "pactAccept": "Ich bin dabei",
       "pactDecline": "Nein danke",
-      "days": "{{count}} Tage",
+      "days": "{{count}} in Folge",
       "restDayEarned": "Ruhetag verdient",
       "restDayUsed": "{{day}} war ein Ruhetag",
       "repairTitle": "Hol dir deine Serie zurück",
