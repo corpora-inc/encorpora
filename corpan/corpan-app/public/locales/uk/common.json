@@ -879,7 +879,7 @@
     "tagline": "Твій керований шлях, картка за карткою",
     "heroCard": {
       "title": "Твій Journey",
-      "progress": "{{unit}} · {{count}} карток до сьогоднішньої мети"
+      "progress": "{{unit}} · ще {{count}} до наступної віхи"
     },
     "heroCta": {
       "start": "Розпочни свій Journey",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Контрольна точка",
-      "summary": "{{new}} нових · {{reviews}} повторень · найкраща серія {{combo}}",
+      "summaryNew": "{{count}} нових",
+      "summaryReviews": "{{count}} повторень",
       "done": "На сьогодні досить",
       "keepGoing": "Продовжити",
-      "dailyRing": "{{done}}/{{goal}} сьогодні",
+      "dailyRing": "{{count}} за цю сесію",
       "deepSession": "Оце так глибока сесія — твої повторення все одно заплановані.",
-      "streakTicked": "День {{count}} ✓",
+      "streakTicked": "{{count}} поспіль ✓",
       "boss": "Випробування розділу",
       "arcGate": "Брама дуги"
     },
@@ -953,7 +954,7 @@
       "perfect": "Ідеально",
       "wordsLearned": "{{count}} слів вивчено",
       "unitComplete": "Розділ завершено: {{name}}",
-      "streakDay": "День {{count}}",
+      "streakDay": "{{count}} поспіль",
       "placementDone": "Рівень визначено"
     },
     "rare": {
@@ -1001,10 +1002,10 @@
     },
     "streak": {
       "pactTitle": "Вести серію?",
-      "pactBody": "Одна картка на день тримає її живою. Пропустиш день — день відпочинку може тебе прикрити; щотижня ти заробляєш один.",
+      "pactBody": "Тримай темп. День відпочинку покриє пропуск — ти отримуєш один щотижня.",
       "pactAccept": "Я в ділі",
       "pactDecline": "Ні, дякую",
-      "days": "{{count}} днів",
+      "days": "{{count}} поспіль",
       "restDayEarned": "День відпочинку зароблено",
       "restDayUsed": "{{day}} був днем відпочинку",
       "repairTitle": "Понови свою серію",

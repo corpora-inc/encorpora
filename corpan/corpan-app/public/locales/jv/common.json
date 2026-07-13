@@ -879,7 +879,7 @@
     "tagline": "Dalan tuntunanmu, kertu mbaka kertu",
     "heroCard": {
       "title": "Journey-mu",
-      "progress": "{{unit}} · {{count}} kertu nganti target dina iki"
+      "progress": "{{unit}} · {{count}} maneh tekan tonggak sabanjuré"
     },
     "heroCta": {
       "start": "Miwiti Journey-mu",
@@ -943,12 +943,13 @@
     },
     "checkpoint": {
       "title": "Pos priksa",
-      "summary": "{{new}} anyar · {{reviews}} pengulangan · rentetan paling apik {{combo}}",
+      "summaryNew": "{{count}} anyar",
+      "summaryReviews": "{{count}} mbaleni",
       "done": "Cukup kanggo dina iki",
       "keepGoing": "Terus wae",
-      "dailyRing": "{{done}}/{{goal}} dina iki",
+      "dailyRing": "{{count}} sesi iki",
       "deepSession": "Sesi sing jero tenan — pengulanganmu tetep dijadwal.",
-      "streakTicked": "Dina {{count}} ✓",
+      "streakTicked": "{{count}} tanpa pedhot ✓",
       "boss": "Tantangan unit",
       "arcGate": "Gapura busur"
     },
@@ -957,7 +958,7 @@
       "perfect": "Sampurna",
       "wordsLearned": "{{count}} tembung disinaoni",
       "unitComplete": "Unit rampung: {{name}}",
-      "streakDay": "Dina {{count}}",
+      "streakDay": "{{count}} tanpa pedhot",
       "placementDone": "Tingkat wis ditemtokake"
     },
     "rare": {
@@ -1005,10 +1006,10 @@
     },
     "streak": {
       "pactTitle": "Njaga rentetan?",
-      "pactBody": "Sakertu sedina njaga tetep urip. Yen kliwatan sedina, dina ngaso bisa nulungi — saben minggu entuk siji.",
+      "pactBody": "Jaga momentummu. Dina ngaso nutup sela — sampeyan oleh siji saben minggu.",
       "pactAccept": "Aku melu",
       "pactDecline": "Ora, matur nuwun",
-      "days": "{{count}} dina",
+      "days": "{{count}} tanpa pedhot",
       "restDayEarned": "Dina ngaso entuk",
       "restDayUsed": "{{day}} iku dina ngaso",
       "repairTitle": "Balekake rentetanmu",

@@ -879,7 +879,7 @@
     "tagline": "Din guidede vej, kort for kort",
     "heroCard": {
       "title": "Din Journey",
-      "progress": "{{unit}} · {{count}} kort til dagens mål"
+      "progress": "{{unit}} · {{count}} til næste milepæl"
     },
     "heroCta": {
       "start": "Start din Journey",
@@ -948,12 +948,13 @@
     },
     "checkpoint": {
       "title": "Checkpoint",
-      "summary": "{{new}} nye · {{reviews}} repetitioner · bedste stime {{combo}}",
+      "summaryNew": "{{count}} nye",
+      "summaryReviews": "{{count}} gentagelser",
       "done": "Nok for i dag",
       "keepGoing": "Fortsæt",
-      "dailyRing": "{{done}}/{{goal}} i dag",
+      "dailyRing": "{{count}} i denne session",
       "deepSession": "Sikke en dyb session — dine repetitioner er planlagt uanset hvad.",
-      "streakTicked": "Dag {{count}} ✓",
+      "streakTicked": "{{count}} i træk ✓",
       "boss": "Enhedsudfordring",
       "arcGate": "Bueport"
     },
@@ -962,7 +963,7 @@
       "perfect": "Perfekt",
       "wordsLearned": "{{count}} ord lært",
       "unitComplete": "Enhed fuldført: {{name}}",
-      "streakDay": "Dag {{count}}",
+      "streakDay": "{{count}} i træk",
       "placementDone": "Niveau fundet"
     },
     "rare": {
@@ -1010,10 +1011,10 @@
     },
     "streak": {
       "pactTitle": "Skal vi holde en stime?",
-      "pactBody": "Ét kort om dagen holder den i live. Misser du en dag, kan en hviledag dække dig — du optjener én hver uge.",
+      "pactBody": "Hold dit momentum. En hviledag dækker et hul — du optjener én hver uge.",
       "pactAccept": "Jeg er med",
       "pactDecline": "Nej tak",
-      "days": "{{count}} dage",
+      "days": "{{count}} i træk",
       "restDayEarned": "Hviledag optjent",
       "restDayUsed": "{{day}} var en hviledag",
       "repairTitle": "Saml din stime op igen",

@@ -1,7 +1,8 @@
 // src/journey/StreakChipV2.tsx — journey-aware streak chip (feed-ux §1.8).
 // Extends StreakChip semantics, never forks them: governed by the same
 // corpan-streak-enabled consent key; renders flame + count + rest-day dots;
-// nothing at streak 0. Copy discipline: "{{count}} days" — no loss framing.
+// nothing at streak 0. Copy discipline: momentum framing ("{{count}} in a row")
+// — no calendar/day framing, no loss framing.
 
 import { useTranslation } from "react-i18next"
 import { Flame } from "lucide-react"

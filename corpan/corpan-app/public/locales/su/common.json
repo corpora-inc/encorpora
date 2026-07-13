@@ -879,7 +879,7 @@
     "tagline": "Jalan dipandu anjeun, kartu demi kartu",
     "heroCard": {
       "title": "Journey anjeun",
-      "progress": "{{unit}} · {{count}} kartu ka target poé ieu"
+      "progress": "{{unit}} · {{count}} deui ka tonggak salajengna"
     },
     "heroCta": {
       "start": "Mimitian Journey anjeun",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Pos pamariksaan",
-      "summary": "{{new}} anyar · {{reviews}} pangulangan · runtuyan pangalusna {{combo}}",
+      "summaryNew": "{{count}} anyar",
+      "summaryReviews": "{{count}} ngulang",
       "done": "Cekap kanggo poé ieu",
       "keepGoing": "Teruskeun",
-      "dailyRing": "{{done}}/{{goal}} poé ieu",
+      "dailyRing": "{{count}} sési ieu",
       "deepSession": "Sesi nu jero pisan — pangulangan anjeun tetep dijadwalkeun.",
-      "streakTicked": "Poé {{count}} ✓",
+      "streakTicked": "{{count}} berturut ✓",
       "boss": "Tangtangan unit",
       "arcGate": "Gapura busur"
     },
@@ -953,7 +954,7 @@
       "perfect": "Sampurna",
       "wordsLearned": "{{count}} kecap diajar",
       "unitComplete": "Unit réngsé: {{name}}",
-      "streakDay": "Poé {{count}}",
+      "streakDay": "{{count}} berturut",
       "placementDone": "Tingkat ditangtukeun"
     },
     "rare": {
@@ -1001,10 +1002,10 @@
     },
     "streak": {
       "pactTitle": "Ngajaga runtuyan?",
-      "pactBody": "Sakartu sapoé ngajaga tetep hirup. Upami kaliwat sapoé, poé reureuh bisa nutupan — unggal minggu meunang hiji.",
+      "pactBody": "Jaga sumanget anjeun. Poé istirahat nutupan celah — anjeun kéngingkeun hiji unggal minggu.",
       "pactAccept": "Kuring milu",
       "pactDecline": "Henteu, nuhun",
-      "days": "{{count}} poé",
+      "days": "{{count}} berturut",
       "restDayEarned": "Poé reureuh kapimilik",
       "restDayUsed": "{{day}} téh poé reureuh",
       "repairTitle": "Pulangkeun runtuyan anjeun",

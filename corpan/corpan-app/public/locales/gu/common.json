@@ -879,7 +879,7 @@
     "tagline": "તમારો માર્ગદર્શિત રસ્તો, કાર્ડ પછી કાર્ડ",
     "heroCard": {
       "title": "તમારો Journey",
-      "progress": "{{unit}} · આજના લક્ષ્ય સુધી {{count}} કાર્ડ"
+      "progress": "{{unit}} · આગલા સીમાચિહ્ન સુધી {{count}}"
     },
     "heroCta": {
       "start": "તમારો Journey શરૂ કરો",
@@ -943,12 +943,13 @@
     },
     "checkpoint": {
       "title": "ચેકપોઇન્ટ",
-      "summary": "{{new}} નવા · {{reviews}} પુનરાવર્તનો · શ્રેષ્ઠ શ્રેણી {{combo}}",
+      "summaryNew": "{{count}} નવી",
+      "summaryReviews": "{{count}} પુનરાવર્તન",
       "done": "આજ માટે બસ",
       "keepGoing": "આગળ વધો",
-      "dailyRing": "આજે {{done}}/{{goal}}",
+      "dailyRing": "આ સત્રમાં {{count}}",
       "deepSession": "કેટલું ઊંડું સત્ર — તમારાં પુનરાવર્તનો ગમે તેમ નિર્ધારિત છે.",
-      "streakTicked": "દિવસ {{count}} ✓",
+      "streakTicked": "સળંગ {{count}} ✓",
       "boss": "એકમ પડકાર",
       "arcGate": "કમાન દ્વાર"
     },
@@ -957,7 +958,7 @@
       "perfect": "શાનદાર",
       "wordsLearned": "{{count}} શબ્દો શીખ્યા",
       "unitComplete": "એકમ પૂર્ણ: {{name}}",
-      "streakDay": "દિવસ {{count}}",
+      "streakDay": "સળંગ {{count}}",
       "placementDone": "સ્તર નક્કી થયું"
     },
     "rare": {
@@ -1005,10 +1006,10 @@
     },
     "streak": {
       "pactTitle": "શ્રેણી રાખીએ?",
-      "pactBody": "રોજ એક કાર્ડ તેને જીવંત રાખે છે. એક દિવસ ચૂકી જાઓ તો આરામનો દિવસ બચાવી શકે — દર અઠવાડિયે એક મળે છે.",
+      "pactBody": "તમારો વેગ જાળવો. આરામનો દિવસ ખૂટતું પૂરે છે — દર અઠવાડિયે એક મળે છે.",
       "pactAccept": "હું તૈયાર છું",
       "pactDecline": "ના, આભાર",
-      "days": "{{count}} દિવસ",
+      "days": "સળંગ {{count}}",
       "restDayEarned": "આરામનો દિવસ કમાયો",
       "restDayUsed": "{{day}} આરામનો દિવસ હતો",
       "repairTitle": "તમારી શ્રેણી પાછી મેળવો",

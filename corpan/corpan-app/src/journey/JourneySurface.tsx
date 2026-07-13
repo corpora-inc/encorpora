@@ -30,11 +30,15 @@ import { displayStreak, type StreakPorts } from "./streakV2.ts"
 import { useJourneyStore } from "../store/journey.ts"
 import { useJourneyRuntime, type JourneyRuntime, type JourneyRuntimeDeps } from "./runtime.ts"
 
-/** goalIntensity → session shape (feed-ux §3.7). Tunable constants, ONE place. */
+/** goalIntensity → session shape (feed-ux §3.7). Tunable constants, ONE place.
+ *  `newPerDay` seeds the engine's intake throttle for a fresh course — an
+ *  intensive learner starts able to introduce far more new items per session
+ *  (the throttle still adapts to backlog and the debt-brake still zeroes it
+ *  under a review debt; this only lifts the artificial starting cap). */
 export const SESSION_SHAPES = {
-  casual: { dailyGoal: 10, checkpointCadence: 8 },
-  daily: { dailyGoal: 20, checkpointCadence: 10 },
-  intensive: { dailyGoal: 40, checkpointCadence: 12 },
+  casual: { dailyGoal: 10, checkpointCadence: 8, newPerDay: 8 },
+  daily: { dailyGoal: 20, checkpointCadence: 10, newPerDay: 12 },
+  intensive: { dailyGoal: 40, checkpointCadence: 12, newPerDay: 40 },
 } as const
 
 export type GoalIntensityKey = keyof typeof SESSION_SHAPES

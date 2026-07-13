@@ -35,7 +35,15 @@ export const PLACED_ACC_EWMA = 0.75 // provisional Practiced floor (§4.3.2)
 // ---- new-intake throttle + debt brake (adaptivity §5.5, pedagogy §12.2) -----
 export const NEW_PER_DAY_DEFAULT = 12
 export const NEW_PER_DAY_MIN = 4
-export const NEW_PER_DAY_MAX = 30
+// Intake ceiling. This is a SOFT throttle for the eager grinder, NOT a pace cap:
+// an intensive autodidact must be able to introduce many new items per session
+// without an artificial calendar ceiling. It stays finite on purpose — unseen
+// items may never pile on top of a review debt. The real guardrails are the
+// debt-brake (mixer.ts: DEBT_BRAKE_RATIO ⇒ new = 0 under backlog), the struggle
+// cut, and FSRS due scheduling; the weekly throttle only walks newPerDay toward
+// this bound when the queue is clear. Raised from the legacy 30 (which throttled
+// grinders long before any review debt existed).
+export const NEW_PER_DAY_MAX = 100
 export const CAPACITY_EWMA_ALPHA = 0.15
 export const CAPACITY_SEED = 40
 export const BACKLOG_RING_SIZE = 7

@@ -879,7 +879,7 @@
     "tagline": "आपकी मार्गदर्शित राह, कार्ड दर कार्ड",
     "heroCard": {
       "title": "आपका Journey",
-      "progress": "{{unit}} · आज के लक्ष्य तक {{count}} कार्ड"
+      "progress": "{{unit}} · अगले पड़ाव तक {{count}}"
     },
     "heroCta": {
       "start": "अपना Journey शुरू करें",
@@ -952,12 +952,13 @@
     },
     "checkpoint": {
       "title": "चेकपॉइंट",
-      "summary": "{{new}} नए · {{reviews}} दोहराव · सर्वश्रेष्ठ शृंखला {{combo}}",
+      "summaryNew": "{{count}} नई",
+      "summaryReviews": "{{count}} दोहराव",
       "done": "आज के लिए बस",
       "keepGoing": "जारी रखें",
-      "dailyRing": "आज {{done}}/{{goal}}",
+      "dailyRing": "इस सत्र में {{count}}",
       "deepSession": "कितना गहरा सत्र — आपके दोहराव वैसे भी निर्धारित हैं।",
-      "streakTicked": "दिन {{count}} ✓",
+      "streakTicked": "लगातार {{count}} ✓",
       "boss": "इकाई चुनौती",
       "arcGate": "चाप द्वार"
     },
@@ -966,7 +967,7 @@
       "perfect": "बहुत बढ़िया",
       "wordsLearned": "{{count}} शब्द सीखे",
       "unitComplete": "इकाई पूरी: {{name}}",
-      "streakDay": "दिन {{count}}",
+      "streakDay": "लगातार {{count}}",
       "placementDone": "स्तर तय हुआ"
     },
     "rare": {
@@ -1014,10 +1015,10 @@
     },
     "streak": {
       "pactTitle": "शृंखला रखें?",
-      "pactBody": "रोज़ एक कार्ड इसे ज़िंदा रखता है। एक दिन छूट जाए तो विश्राम दिवस बचा सकता है — हर हफ़्ते एक मिलता है।",
+      "pactBody": "अपनी गति बनाए रखें। एक विश्राम दिन कमी को भर देता है — हर हफ्ते एक मिलता है।",
       "pactAccept": "मैं तैयार हूँ",
       "pactDecline": "नहीं, धन्यवाद",
-      "days": "{{count}} दिन",
+      "days": "लगातार {{count}}",
       "restDayEarned": "विश्राम दिवस अर्जित",
       "restDayUsed": "{{day}} विश्राम दिवस था",
       "repairTitle": "अपनी शृंखला वापस पाएँ",

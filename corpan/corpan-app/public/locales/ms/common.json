@@ -879,7 +879,7 @@
     "tagline": "Laluan berpandu anda, kad demi kad",
     "heroCard": {
       "title": "Journey anda",
-      "progress": "{{unit}} · {{count}} kad ke sasaran hari ini"
+      "progress": "{{unit}} · {{count}} lagi ke pencapaian seterusnya"
     },
     "heroCta": {
       "start": "Mulakan Journey anda",
@@ -934,12 +934,13 @@
     },
     "checkpoint": {
       "title": "Pusat pemeriksaan",
-      "summary": "{{new}} baharu · {{reviews}} ulang kaji · rentetan terbaik {{combo}}",
+      "summaryNew": "{{count}} baharu",
+      "summaryReviews": "{{count}} ulasan",
       "done": "Cukup untuk hari ini",
       "keepGoing": "Teruskan",
-      "dailyRing": "{{done}}/{{goal}} hari ini",
+      "dailyRing": "{{count}} sesi ini",
       "deepSession": "Sesi yang mendalam — ulang kaji anda tetap dijadualkan.",
-      "streakTicked": "Hari {{count}} ✓",
+      "streakTicked": "{{count}} berturut-turut ✓",
       "boss": "Cabaran unit",
       "arcGate": "Pintu gerbang arka"
     },
@@ -948,7 +949,7 @@
       "perfect": "Sempurna",
       "wordsLearned": "{{count}} perkataan dipelajari",
       "unitComplete": "Unit selesai: {{name}}",
-      "streakDay": "Hari {{count}}",
+      "streakDay": "{{count}} berturut-turut",
       "placementDone": "Tahap ditentukan"
     },
     "rare": {
@@ -996,10 +997,10 @@
     },
     "streak": {
       "pactTitle": "Kekalkan rentetan?",
-      "pactBody": "Satu kad sehari mengekalkannya hidup. Jika tertinggal sehari, hari rehat boleh melindungi anda — anda peroleh satu setiap minggu.",
+      "pactBody": "Kekalkan momentum anda. Hari rehat menampung jurang — anda peroleh satu setiap minggu.",
       "pactAccept": "Saya setuju",
       "pactDecline": "Tidak, terima kasih",
-      "days": "{{count}} hari",
+      "days": "{{count}} berturut-turut",
       "restDayEarned": "Hari rehat diperoleh",
       "restDayUsed": "{{day}} ialah hari rehat",
       "repairTitle": "Dapatkan semula rentetan anda",

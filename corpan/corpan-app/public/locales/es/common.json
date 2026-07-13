@@ -879,7 +879,7 @@
     "tagline": "Tu camino guiado, tarjeta a tarjeta",
     "heroCard": {
       "title": "Tu Journey",
-      "progress": "{{unit}} · {{count}} tarjetas para la meta de hoy"
+      "progress": "{{unit}} · {{count}} para tu próximo hito"
     },
     "heroCta": {
       "start": "Empieza tu Journey",
@@ -948,12 +948,13 @@
     },
     "checkpoint": {
       "title": "Punto de control",
-      "summary": "{{new}} nuevas · {{reviews}} repasos · mejor racha {{combo}}",
+      "summaryNew": "{{count}} nuevas",
+      "summaryReviews": "{{count}} repasos",
       "done": "Por hoy está bien",
       "keepGoing": "Seguir",
-      "dailyRing": "{{done}}/{{goal}} hoy",
+      "dailyRing": "{{count}} en esta sesión",
       "deepSession": "Qué sesión tan profunda: tus repasos quedan programados igualmente.",
-      "streakTicked": "Día {{count}} ✓",
+      "streakTicked": "{{count}} seguidas ✓",
       "boss": "Reto de unidad",
       "arcGate": "Puerta de arco"
     },
@@ -962,7 +963,7 @@
       "perfect": "Perfecto",
       "wordsLearned": "{{count}} palabras aprendidas",
       "unitComplete": "Unidad completada: {{name}}",
-      "streakDay": "Día {{count}}",
+      "streakDay": "{{count}} seguidas",
       "placementDone": "Ya tienes tu nivel"
     },
     "rare": {
@@ -1010,10 +1011,10 @@
     },
     "streak": {
       "pactTitle": "¿Mantenemos una racha?",
-      "pactBody": "Una tarjeta al día la mantiene viva. Si fallas un día, un día de descanso puede cubrirte: ganas uno cada semana.",
+      "pactBody": "Mantén tu impulso. Un día de descanso cubre un hueco: ganas uno cada semana.",
       "pactAccept": "Cuenta conmigo",
       "pactDecline": "No, gracias",
-      "days": "{{count}} días",
+      "days": "{{count}} seguidas",
       "restDayEarned": "Día de descanso ganado",
       "restDayUsed": "{{day}} fue un día de descanso",
       "repairTitle": "Recupera tu racha",

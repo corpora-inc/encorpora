@@ -7,6 +7,27 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Journey reframed from a daily drip to an intensive, mastery-driven program.**
+  Calendar/"day N" framing is gone from the copy: the hero progress line points
+  to your next milestone, the checkpoint ring and streak read as momentum
+  ("{{count}} this session", "{{count}} in a row") rather than a day number, and
+  the streak pact drops the "one card a day / miss a day" language. The real
+  spaced-repetition pedagogy is untouched — FSRS due scheduling, the debt-brake,
+  and the struggle-cut still govern reviews.
+- **Lifted the artificial new-intake ceiling for grinders.** `NEW_PER_DAY_MAX`
+  raised 30 → 100 and intensive learners now seed a high `newPerDay`, so an
+  autodidact isn't throttled at 30 new items/day. Unseen items still can't pile
+  on top of a review debt: the debt-brake zeroes new intake under backlog, which
+  a test now pins alongside the raised ceiling.
+
+### Fixed
+- **Checkpoint card no longer looks broken during a long session.** The ring
+  showed `229/20` (an absurd overflow) — it's now a single non-overflowing
+  momentum number. The recap dropped the all-zeros "0 new · 0 reviews · best
+  combo 0" line; it shows only the work that actually happened and hides when
+  there's nothing to report.
+
 ## [0.20.4] — 2026-07-11
 
 ### Fixed

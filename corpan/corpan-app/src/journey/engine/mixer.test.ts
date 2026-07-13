@@ -6,7 +6,9 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { DAY_MS } from "./clock.ts"
-import type { ActivityTemplate, CourseGraph, EngineCard, ItemRef } from "./types.ts"
+import { DEBT_BRAKE_RATIO, NEW_PER_DAY_MAX } from "./constants.ts"
+import { adjustQuotas, isDebtBrakeActive } from "./mixer.ts"
+import type { ActivityTemplate, CourseGraph, CourseState, EngineCard, ItemRef } from "./types.ts"
 import { makeFixtureGraph, nativeTemplates } from "./__fixtures__/fixtureGraph.ts"
 import { answer, makeEngine, playBatch, type Harness } from "./__fixtures__/harness.ts"
 
@@ -573,4 +575,31 @@ test("sttInstalled up-weights the output (speaking) strand in the mix", async ()
   // Identical graph + RNG stream; the only lever is the installed up-weight,
   // which must yield strictly more speaking.
   assert.ok(on > off, `installed STT did not increase speaking (on=${on} off=${off})`)
+})
+
+// Intensive-intake guardrail: lifting NEW_PER_DAY_MAX (grinders start with a high
+// newPerDay) must NOT let unseen items pile on top of a review debt. The intake
+// ceiling is a SOFT throttle; the debt-brake is the hard guardrail and still
+// zeroes NEW, handing the freed quota to reviews — the feed yields, never
+// dead-ends on new.
+test("raised intake ceiling still yields to reviews: debt-brake zeroes NEW even at a high newPerDay", () => {
+  // A grinder seeded at the raised ceiling.
+  const course = {
+    newPerDay: NEW_PER_DAY_MAX,
+    dailyCapacityEwma: 40,
+    sessionsPerDayEwma: 1,
+  } as unknown as CourseState
+
+  // No backlog → intake flows (new quota is positive), so the ceiling is real.
+  const clear = adjustQuotas(course, "normal", 0)
+  assert.equal(clear.debt, false, "no backlog ⇒ brake off")
+  assert.ok(clear.new > 0, "with no review debt, new intake is served")
+
+  // A review avalanche past 1.5×capacity → brake binds regardless of newPerDay.
+  const dueAvalanche = Math.ceil(DEBT_BRAKE_RATIO * course.dailyCapacityEwma) + 1
+  assert.ok(isDebtBrakeActive(course, dueAvalanche), "backlog past the ratio engages the brake")
+  const braked = adjustQuotas(course, "normal", dueAvalanche)
+  assert.equal(braked.debt, true, "brake active under backlog")
+  assert.equal(braked.new, 0, "debt-brake zeroes NEW no matter how high the ceiling is")
+  assert.ok(braked.review > clear.review, "the freed intake quota burns the review backlog down")
 })

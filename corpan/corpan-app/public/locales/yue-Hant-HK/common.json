@@ -879,7 +879,7 @@
     "tagline": "你嘅引導之路，一卡一步",
     "heroCard": {
       "title": "你嘅 Journey",
-      "progress": "{{unit}} · 仲有 {{count}} 張卡就到今日目標"
+      "progress": "{{unit}} · 距離下個里程碑仲差 {{count}}"
     },
     "heroCta": {
       "start": "開始你嘅 Journey",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "檢查站",
-      "summary": "{{new}} 新學 · {{reviews}} 溫習 · 最佳連擊 {{combo}}",
+      "summaryNew": "新 {{count}}",
+      "summaryReviews": "溫習 {{count}}",
       "done": "今日夠鐘收工",
       "keepGoing": "繼續學",
-      "dailyRing": "今日 {{done}}/{{goal}}",
+      "dailyRing": "今次 {{count}}",
       "deepSession": "真係好深入嘅一課——你嘅溫習點都已經排好。",
-      "streakTicked": "第 {{count}} 日 ✓",
+      "streakTicked": "連續 {{count}} 次 ✓",
       "boss": "單元挑戰",
       "arcGate": "篇章之門"
     },
@@ -953,7 +954,7 @@
       "perfect": "完美",
       "wordsLearned": "學識咗 {{count}} 個字",
       "unitComplete": "單元完成：{{name}}",
-      "streakDay": "第 {{count}} 日",
+      "streakDay": "連續 {{count}} 次",
       "placementDone": "定咗級喇"
     },
     "rare": {
@@ -1001,10 +1002,10 @@
     },
     "streak": {
       "pactTitle": "要唔要保持連續紀錄？",
-      "pactBody": "每日一張卡就可以維持。走漏咗一日，休息日可以幫你補返——每個禮拜賺一個。",
+      "pactBody": "保持你嘅衝勁。休息日可以填補空檔 — 每星期賺到一日。",
       "pactAccept": "計埋我",
       "pactDecline": "唔使喇",
-      "days": "{{count}} 日",
+      "days": "連續 {{count}} 次",
       "restDayEarned": "賺咗休息日",
       "restDayUsed": "{{day}} 係休息日",
       "repairTitle": "攞返你嘅連續紀錄",

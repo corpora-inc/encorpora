@@ -879,7 +879,7 @@
     "tagline": "Твоят воден път, карта по карта",
     "heroCard": {
       "title": "Твоят Journey",
-      "progress": "{{unit}} · {{count}} карти до днешната цел"
+      "progress": "{{unit}} · още {{count}} до следващата цел"
     },
     "heroCta": {
       "start": "Започни своя Journey",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Контролна точка",
-      "summary": "{{new}} нови · {{reviews}} преговора · най-добра серия {{combo}}",
+      "summaryNew": "{{count}} нови",
+      "summaryReviews": "{{count}} прегледа",
       "done": "Стига за днес",
       "keepGoing": "Продължавам",
-      "dailyRing": "{{done}}/{{goal}} днес",
+      "dailyRing": "{{count}} в тази сесия",
       "deepSession": "Каква задълбочена сесия — преговорите ти така или иначе са планирани.",
-      "streakTicked": "Ден {{count}} ✓",
+      "streakTicked": "{{count}} поред ✓",
       "boss": "Изпитание на урока",
       "arcGate": "Порта на дъгата"
     },
@@ -953,7 +954,7 @@
       "perfect": "Перфектно",
       "wordsLearned": "{{count}} научени думи",
       "unitComplete": "Урок завършен: {{name}}",
-      "streakDay": "Ден {{count}}",
+      "streakDay": "{{count}} поред",
       "placementDone": "Нивото е определено"
     },
     "rare": {
@@ -1001,10 +1002,10 @@
     },
     "streak": {
       "pactTitle": "Да поддържаме серия?",
-      "pactBody": "Една карта на ден я поддържа жива. Пропуснеш ли ден, почивен ден може да те покрие — печелиш по един всяка седмица.",
+      "pactBody": "Поддържай устрема си. Ден за почивка покрива пропуск — печелиш по един всяка седмица.",
       "pactAccept": "Разчитайте на мен",
       "pactDecline": "Не, благодаря",
-      "days": "{{count}} дни",
+      "days": "{{count}} поред",
       "restDayEarned": "Почивен ден спечелен",
       "restDayUsed": "{{day}} беше почивен ден",
       "repairTitle": "Възстанови серията си",

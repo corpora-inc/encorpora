@@ -879,7 +879,7 @@
     "tagline": "Con đường có dẫn lối của bạn, từng thẻ một",
     "heroCard": {
       "title": "Journey của bạn",
-      "progress": "{{unit}} · còn {{count}} thẻ đến mục tiêu hôm nay"
+      "progress": "{{unit}} · còn {{count}} đến cột mốc tiếp theo"
     },
     "heroCta": {
       "start": "Bắt đầu Journey của bạn",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Điểm dừng",
-      "summary": "{{new}} mới · {{reviews}} lần ôn · chuỗi tốt nhất {{combo}}",
+      "summaryNew": "{{count}} mới",
+      "summaryReviews": "{{count}} ôn tập",
       "done": "Hôm nay vậy là đủ",
       "keepGoing": "Tiếp tục",
-      "dailyRing": "Hôm nay {{done}}/{{goal}}",
+      "dailyRing": "{{count}} trong phiên này",
       "deepSession": "Một buổi học thật sâu — các lần ôn của bạn dù sao cũng đã được lên lịch.",
-      "streakTicked": "Ngày {{count}} ✓",
+      "streakTicked": "{{count}} liên tiếp ✓",
       "boss": "Thử thách bài học",
       "arcGate": "Cổng cung"
     },
@@ -953,7 +954,7 @@
       "perfect": "Hoàn hảo",
       "wordsLearned": "Đã học {{count}} từ",
       "unitComplete": "Hoàn thành bài: {{name}}",
-      "streakDay": "Ngày {{count}}",
+      "streakDay": "{{count}} liên tiếp",
       "placementDone": "Đã xác định trình độ"
     },
     "rare": {
@@ -1001,10 +1002,10 @@
     },
     "streak": {
       "pactTitle": "Giữ một chuỗi ngày nhé?",
-      "pactBody": "Mỗi ngày một thẻ giữ nó sống. Lỡ một ngày, một ngày nghỉ có thể che chở bạn — mỗi tuần bạn kiếm được một ngày.",
+      "pactBody": "Giữ vững đà của bạn. Một ngày nghỉ bù cho khoảng trống — mỗi tuần bạn nhận được một ngày.",
       "pactAccept": "Tôi tham gia",
       "pactDecline": "Không, cảm ơn",
-      "days": "{{count}} ngày",
+      "days": "{{count}} liên tiếp",
       "restDayEarned": "Đã nhận ngày nghỉ",
       "restDayUsed": "{{day}} là ngày nghỉ",
       "repairTitle": "Lấy lại chuỗi ngày của bạn",

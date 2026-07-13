@@ -879,7 +879,7 @@
     "tagline": "Tvoj vođeni put, karticu po karticu",
     "heroCard": {
       "title": "Tvoj Journey",
-      "progress": "{{unit}} · {{count}} kartica do današnjeg cilja"
+      "progress": "{{unit}} · još {{count}} do sljedeće prekretnice"
     },
     "heroCta": {
       "start": "Započni svoj Journey",
@@ -943,12 +943,13 @@
     },
     "checkpoint": {
       "title": "Kontrolna točka",
-      "summary": "{{new}} novih · {{reviews}} ponavljanja · najbolji niz {{combo}}",
+      "summaryNew": "{{count}} novih",
+      "summaryReviews": "{{count}} ponavljanja",
       "done": "Dosta za danas",
       "keepGoing": "Nastavi",
-      "dailyRing": "{{done}}/{{goal}} danas",
+      "dailyRing": "{{count}} u ovoj sesiji",
       "deepSession": "Kakva temeljita seansa — tvoja su ponavljanja ionako zakazana.",
-      "streakTicked": "Dan {{count}} ✓",
+      "streakTicked": "{{count}} zaredom ✓",
       "boss": "Izazov cjeline",
       "arcGate": "Vrata luka"
     },
@@ -957,7 +958,7 @@
       "perfect": "Savršeno",
       "wordsLearned": "{{count}} naučenih riječi",
       "unitComplete": "Cjelina dovršena: {{name}}",
-      "streakDay": "Dan {{count}}",
+      "streakDay": "{{count}} zaredom",
       "placementDone": "Razina određena"
     },
     "rare": {
@@ -1014,10 +1015,10 @@
     },
     "streak": {
       "pactTitle": "Držimo niz?",
-      "pactBody": "Jedna kartica dnevno drži ga na životu. Propustiš li dan, dan odmora te može pokriti — svaki tjedan zaradiš jedan.",
+      "pactBody": "Zadrži zamah. Dan odmora pokriva prazninu — jedan zaradiš svaki tjedan.",
       "pactAccept": "Računajte na mene",
       "pactDecline": "Ne, hvala",
-      "days": "{{count}} dana",
+      "days": "{{count}} zaredom",
       "restDayEarned": "Dan odmora zarađen",
       "restDayUsed": "{{day}} je bio dan odmora",
       "repairTitle": "Vrati svoj niz",

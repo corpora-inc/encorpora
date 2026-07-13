@@ -879,7 +879,7 @@
     "tagline": "Jalur terpandu milikmu, kartu demi kartu",
     "heroCard": {
       "title": "Journey-mu",
-      "progress": "{{unit}} · {{count}} kartu menuju target hari ini"
+      "progress": "{{unit}} · {{count}} lagi menuju tonggak berikutnya"
     },
     "heroCta": {
       "start": "Mulai Journey-mu",
@@ -943,12 +943,13 @@
     },
     "checkpoint": {
       "title": "Pos pemeriksaan",
-      "summary": "{{new}} baru · {{reviews}} pengulangan · rentetan terbaik {{combo}}",
+      "summaryNew": "{{count}} baru",
+      "summaryReviews": "{{count}} ulasan",
       "done": "Cukup untuk hari ini",
       "keepGoing": "Lanjut terus",
-      "dailyRing": "{{done}}/{{goal}} hari ini",
+      "dailyRing": "{{count}} sesi ini",
       "deepSession": "Sesi yang dalam — pengulanganmu tetap terjadwal apa pun yang terjadi.",
-      "streakTicked": "Hari {{count}} ✓",
+      "streakTicked": "{{count}} beruntun ✓",
       "boss": "Tantangan unit",
       "arcGate": "Gerbang busur"
     },
@@ -957,7 +958,7 @@
       "perfect": "Sempurna",
       "wordsLearned": "{{count}} kata dipelajari",
       "unitComplete": "Unit selesai: {{name}}",
-      "streakDay": "Hari {{count}}",
+      "streakDay": "{{count}} beruntun",
       "placementDone": "Level ditentukan"
     },
     "rare": {
@@ -1005,10 +1006,10 @@
     },
     "streak": {
       "pactTitle": "Jaga rentetan?",
-      "pactBody": "Satu kartu sehari menjaganya tetap hidup. Jika terlewat sehari, hari istirahat bisa menutupinya — kamu mendapat satu tiap minggu.",
+      "pactBody": "Jaga momentummu. Hari istirahat menutup jeda — kamu dapat satu setiap minggu.",
       "pactAccept": "Aku ikut",
       "pactDecline": "Tidak, terima kasih",
-      "days": "{{count}} hari",
+      "days": "{{count}} beruntun",
       "restDayEarned": "Hari istirahat didapat",
       "restDayUsed": "{{day}} adalah hari istirahat",
       "repairTitle": "Ambil kembali rentetanmu",

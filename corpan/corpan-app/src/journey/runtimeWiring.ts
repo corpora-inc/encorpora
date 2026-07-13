@@ -362,6 +362,8 @@ export async function buildJourneyDeps(opts: {
   targetLang: string
   nativeLang?: string
   checkpointCadence?: number
+  /** Fresh-course intake seed from the learner's goalIntensity (SESSION_SHAPES). */
+  newPerDay?: number
 }): Promise<BuiltJourney> {
   const packId = await ensureJourneyPackInstalled(opts.targetLang)
   const graph = await loadCourseGraphFromPack(packId)
@@ -442,6 +444,7 @@ export async function buildJourneyDeps(opts: {
     graph,
     persistence: createJourneyPersistence(opts.stackId, courseId, itemCardCodec),
     clock: systemClock,
+    ...(opts.newPerDay !== undefined ? { newPerDayDefault: opts.newPerDay } : {}),
   })
 
   const quota = await createJourneyQuota({

@@ -879,7 +879,7 @@
     "tagline": "你的引导之路，一卡一步",
     "heroCard": {
       "title": "你的 Journey",
-      "progress": "{{unit}} · 距今日目标还有 {{count}} 张卡片"
+      "progress": "{{unit}} · 距下一个里程碑还差 {{count}}"
     },
     "heroCta": {
       "start": "开始你的 Journey",
@@ -948,12 +948,13 @@
     },
     "checkpoint": {
       "title": "检查点",
-      "summary": "{{new}} 新学 · {{reviews}} 复习 · 最佳连击 {{combo}}",
+      "summaryNew": "新 {{count}}",
+      "summaryReviews": "复习 {{count}}",
       "done": "今天到此为止",
       "keepGoing": "继续学",
-      "dailyRing": "今日 {{done}}/{{goal}}",
+      "dailyRing": "本次 {{count}}",
       "deepSession": "真是一次深度学习——你的复习无论如何都已排好。",
-      "streakTicked": "第 {{count}} 天 ✓",
+      "streakTicked": "连续 {{count}} 次 ✓",
       "boss": "单元挑战",
       "arcGate": "篇章之门"
     },
@@ -962,7 +963,7 @@
       "perfect": "完美",
       "wordsLearned": "已学会 {{count}} 个单词",
       "unitComplete": "单元完成：{{name}}",
-      "streakDay": "第 {{count}} 天",
+      "streakDay": "连续 {{count}} 次",
       "placementDone": "定级完成"
     },
     "rare": {
@@ -1010,10 +1011,10 @@
     },
     "streak": {
       "pactTitle": "要保持连续记录吗？",
-      "pactBody": "每天一张卡片就能维持它。错过一天时，休息日可以帮你补上——每周可赚得一个。",
+      "pactBody": "保持你的势头。休息日能填补空档 — 每周可获得一个。",
       "pactAccept": "算我一个",
       "pactDecline": "不用了",
-      "days": "{{count}} 天",
+      "days": "连续 {{count}} 次",
       "restDayEarned": "获得休息日",
       "restDayUsed": "{{day}} 是休息日",
       "repairTitle": "找回你的连续记录",

@@ -879,7 +879,7 @@
     "tagline": "Drumul tău ghidat, card cu card",
     "heroCard": {
       "title": "Journey-ul tău",
-      "progress": "{{unit}} · {{count}} carduri până la ținta de azi"
+      "progress": "{{unit}} · încă {{count}} până la următoarea etapă"
     },
     "heroCta": {
       "start": "Începe Journey-ul tău",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Punct de control",
-      "summary": "{{new}} noi · {{reviews}} recapitulări · cea mai bună serie {{combo}}",
+      "summaryNew": "{{count}} noi",
+      "summaryReviews": "{{count}} recapitulări",
       "done": "Gata pentru azi",
       "keepGoing": "Mergi mai departe",
-      "dailyRing": "{{done}}/{{goal}} azi",
+      "dailyRing": "{{count}} în această sesiune",
       "deepSession": "Ce sesiune intensă — recapitulările tale sunt oricum programate.",
-      "streakTicked": "Ziua {{count}} ✓",
+      "streakTicked": "{{count}} la rând ✓",
       "boss": "Provocarea unității",
       "arcGate": "Poarta arcului"
     },
@@ -953,7 +954,7 @@
       "perfect": "Perfect",
       "wordsLearned": "{{count}} cuvinte învățate",
       "unitComplete": "Unitate finalizată: {{name}}",
-      "streakDay": "Ziua {{count}}",
+      "streakDay": "{{count}} la rând",
       "placementDone": "Nivel stabilit"
     },
     "rare": {
@@ -1001,10 +1002,10 @@
     },
     "streak": {
       "pactTitle": "Ținem o serie?",
-      "pactBody": "Un card pe zi o ține în viață. Dacă ratezi o zi, o zi de odihnă te poate acoperi — câștigi una pe săptămână.",
+      "pactBody": "Păstrează-ți avântul. O zi de odihnă acoperă o pauză — câștigi una în fiecare săptămână.",
       "pactAccept": "Contați pe mine",
       "pactDecline": "Nu, mulțumesc",
-      "days": "{{count}} zile",
+      "days": "{{count}} la rând",
       "restDayEarned": "Zi de odihnă câștigată",
       "restDayUsed": "{{day}} a fost zi de odihnă",
       "repairTitle": "Reia-ți seria",
