@@ -177,6 +177,7 @@ export function createJourneyEngine(deps: {
       lastInterludeEmit: -1,
       lastGameInterludeEmit: -1,
       lastReaderInterludeEmit: -1,
+      lastCheckpointEmit: -1,
     }
   }
 

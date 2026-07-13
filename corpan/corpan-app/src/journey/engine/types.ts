@@ -249,6 +249,11 @@ export interface SessionState {
   /** emitIndex of the last READER interlude specifically (its own ~1-in-20–30
    *  cadence). -1 if none yet. */
   lastReaderInterludeEmit: number
+  /** emitIndex of the last emitted checkpoint (cadence "Punto de control" OR a
+   *  boss/arc checkpoint slot), or -1 if none yet. Enforces the "never several
+   *  checkpoints back-to-back" floor (CHECKPOINT_BACK_TO_BACK_FLOOR) across
+   *  batches — mirrors lastInterludeEmit. */
+  lastCheckpointEmit: number
 }
 
 // ------------------------------------------------------------------ CourseGraph

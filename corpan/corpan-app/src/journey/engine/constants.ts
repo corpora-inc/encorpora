@@ -233,6 +233,12 @@ export const READER_INTERLUDE_JITTER = 10 // → effective 20–30
 /** Never two interludes back-to-back: at least this many cards must separate
  *  ANY two interludes (game or reader), regardless of their own cadences. */
 export const INTERLUDE_BACK_TO_BACK_FLOOR = 4
+/** Never several checkpoints back-to-back: at least this many cards must
+ *  separate ANY two checkpoints (cadence "Punto de control" OR a boss/arc
+ *  checkpoint). Checkpoints are milestones — space them well. Sits safely below
+ *  the default checkpoint cadence (10) so it never suppresses the normal beat,
+ *  only the over-fire (catch-up drain / boss-after-cadence seam). */
+export const CHECKPOINT_BACK_TO_BACK_FLOOR = 8
 /** Combo at/above which the learner is "hot" → prefer a reader breath
  *  (comedown); a cold stretch (combo 0) → prefer a game spike (re-ignite). */
 export const INTERLUDE_HOT_COMBO = 4

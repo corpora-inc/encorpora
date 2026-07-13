@@ -80,6 +80,7 @@ function makeBag(): { bag: ApplyBag; session: SessionState; course: CourseState;
     lastInterludeEmit: -1,
     lastGameInterludeEmit: -1,
     lastReaderInterludeEmit: -1,
+    lastCheckpointEmit: -1,
   }
   const persisted: string[] = []
   const bag: ApplyBag = {

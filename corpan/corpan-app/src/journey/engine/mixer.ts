@@ -20,6 +20,7 @@ import {
   READER_INTERLUDE_MIN_GAP,
   READER_INTERLUDE_JITTER,
   INTERLUDE_BACK_TO_BACK_FLOOR,
+  CHECKPOINT_BACK_TO_BACK_FLOOR,
   INTERLUDE_HOT_COMBO,
   NEAR_WIN_R_MIN,
   OPENER_R_MAX,
@@ -926,8 +927,21 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   // impossible.
   const emittedAfter = session.emitIndex + slots.length
   const hasRealContent = slots.some((s) => s.itemIds.length > 0)
-  if (hasRealContent && emittedAfter >= (session.cadenceEmitted + 1) * cons.cadence) {
-    session.cadenceEmitted += 1
+  // Back-to-back floor: at least CHECKPOINT_BACK_TO_BACK_FLOOR real cards since
+  // the last checkpoint (cadence OR boss) — mirrors the interlude floor. Without
+  // it, a single overshoot/boss-advance leaves emitIndex leading cadenceEmitted
+  // by more than one cadence and EVERY following short batch appended a
+  // checkpoint at its tail → "Punto de control" several times in a row.
+  const checkpointFloorOk =
+    session.lastCheckpointEmit < 0 || emittedAfter - session.lastCheckpointEmit >= CHECKPOINT_BACK_TO_BACK_FLOOR
+  let checkpointAppended = false
+  if (hasRealContent && checkpointFloorOk && emittedAfter >= (session.cadenceEmitted + 1) * cons.cadence) {
+    // Snap the emitted-cadence tally to the ACTUAL position (not += 1): a boss
+    // batch that returned early, or a large content batch that overshot several
+    // cadence multiples at once, must NOT leave a backlog of "owed" checkpoints
+    // draining one-per-batch. lastCheckpointEmit is stamped in finalize().
+    session.cadenceEmitted = Math.floor(emittedAfter / cons.cadence)
+    checkpointAppended = true
     const unit = gidx.units[course.position.unitOrdinal]
     slots.push({
       itemIds: [],
@@ -959,7 +973,10 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
   }
 
   // -- 4. Jump checkpoint offer (§5.9) ----------------------------------------------
+  // Don't stack two interstitials at the same tail: if a cadence checkpoint was
+  // just appended, hold the jump offer for a later batch.
   const jumpEligible =
+    !checkpointAppended &&
     !quota.debt &&
     !session.jumpOfferedThisSession &&
     bag.day - course.jump.lastOfferedDay >= JUMP_OFFER_INTERVAL_DAYS &&
@@ -1293,6 +1310,14 @@ function finalize(bag: MixerBag, slots: Slot[]): EngineCard[] {
       session.lastInterludeEmit = position
       if (s.interlude === "game") session.lastGameInterludeEmit = position
       else session.lastReaderInterludeEmit = position
+    }
+    // Checkpoint back-to-back bookkeeping against the ACTUAL emitted position
+    // (same pinTail/stablePartition caveat as the interlude stamp above). Covers
+    // BOTH the cadence "Punto de control" (s.checkpoint set, pool "checkpoint")
+    // AND boss/arc checkpoint slots — so the cross-batch floor also spans the
+    // boss-after-cadence seam.
+    if (s.checkpoint || s.pool === "checkpoint") {
+      session.lastCheckpointEmit = position
     }
     const issued: IssuedCard = {
       specId,

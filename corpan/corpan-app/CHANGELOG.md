@@ -7,6 +7,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **"Punto de control" no longer appears several times in a row.** The Journey
+  cadence checkpoint had no back-to-back floor and a fragile catch-up tally: a
+  boss batch or a large content batch could leave `emitIndex` leading the
+  emitted-cadence count by more than one cadence, after which every short batch
+  drained one owed checkpoint at its tail. The milestone now snaps its tally to
+  the actual stream position and honours a minimum-gap floor
+  (`CHECKPOINT_BACK_TO_BACK_FLOOR`), spanning the boss-after-cadence seam, so
+  checkpoints stay spaced milestones.
+
 ## [0.20.4] — 2026-07-11
 
 ### Fixed
