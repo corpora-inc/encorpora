@@ -322,51 +322,75 @@ export function CelebrationLayer() {
   )
 }
 
+// A tuned display stack: the platform's best UI/display face first (SF Pro on
+// iOS, Roboto/system on Android), so the heavy weight renders sharp rather than
+// clunky. No web font to load — stays instant + on-brand (the app is system-font).
+const PRAISE_FONT =
+  '"SF Pro Display", "SF Pro Text", "Segoe UI Variable Display", "Segoe UI", ' +
+  "system-ui, Roboto, -apple-system, BlinkMacSystemFont, sans-serif"
+
 /**
- * The praise-word splash: springy, ABOVE the card, legible over any background
- * (gradient fill + dark stroke + glow). It ESCALATES: tasteful/small at combo 1
- * (it now fires on EVERY correct — it must not feel spammy), swelling toward a
- * bold explosion by combo 8-10+. A clean fast first-try (`perfect`) takes a
- * distinct GOLD accent as a bonus. Overlay-only — participates in no layout flow.
+ * The praise-word splash: a polished combo callout, ABOVE the card, legible over
+ * any background. Premium typography — an ExtraBold, display-tight, top-lit
+ * gradient word with layered legibility shadows + a colored bloom (NO text-stroke,
+ * which muddied the glyphs). It ESCALATES: tasteful/small at combo 1 (it fires on
+ * EVERY correct — never spammy), swelling to a bold callout by combo 8-10+. A
+ * clean fast first-try (`perfect`) turns premium GOLD. Overlay-only — no layout
+ * flow; sized in `vw` + `nowrap` so it never wraps or clips on any screen.
  */
 function PraiseSplash(props: { label: string; combo: number; perfect?: boolean }) {
   const reduced = useReducedMotion()
   const m = comboMomentum(props.combo)
   // Perfect answers get a premium gold; otherwise the combo-warmed accent.
   const hue = props.perfect ? 44 : warmHue(props.combo)
-  // Small at combo 1 (~2.1rem), growing to a bold ~3.8rem by deep combos —
-  // the build-up IS the hook. Glow + stroke firm up with the streak too.
-  const fontRem = 2.1 + 1.7 * m
-  const glow = (0.3 + 0.55 * m) * (props.perfect ? 1.25 : 1)
+  // Responsive size: scales with the combo AND the viewport, capped both ends so
+  // it always looks intentional — never tiny, never clipped, never tablet-huge.
+  const sizeVw = 9 + 5.5 * m // 9vw (combo 1) → ~14.5vw (deep combo)
+  const maxRem = 2.5 + 1.7 * m // cap so it stays elegant on wide screens
+  // Display tracking tightens as it grows (bigger type wants tighter spacing).
+  const tracking = -0.035 - 0.02 * m
+  const glow = (0.4 + 0.5 * m) * (props.perfect ? 1.3 : 1)
   return (
-    <div className="absolute inset-x-0 top-[34%] z-20 flex justify-center px-6">
+    <div className="absolute inset-x-0 top-[34%] z-20 flex justify-center px-8">
       <motion.div
-        initial={
+        initial={reduced ? { opacity: 0, scale: 1 } : { opacity: 0, scale: 0.62, y: 6 }}
+        animate={reduced ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1, y: 0 }}
+        exit={
           reduced
-            ? { opacity: 0, scale: 1 }
-            : { opacity: 0, scale: 0.5 + 0.1 * (1 - m), rotate: -5 + 3 * m }
+            ? { opacity: 0, transition: { duration: 0.18 } }
+            : // A clean, quick eased fade-lift on exit — no spring bounce, so it
+              // reads smooth (not a flash) now that the advance no longer cuts it.
+              { opacity: 0, scale: 1.05, y: -10, transition: { duration: 0.26, ease: [0.4, 0, 0.2, 1] } }
         }
-        animate={reduced ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1, rotate: 0 }}
-        exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 1.18 + 0.18 * m, y: -16 }}
         transition={
           reduced
             ? { duration: 0.15 }
-            : // Snappier + bouncier as the combo climbs (a firmer "punch").
-              { type: "spring", stiffness: 460 + 160 * m, damping: 15 - 3 * m, mass: 0.7 }
+            : // A firm spring "punch" on entry, snappier as the combo climbs.
+              { type: "spring", stiffness: 500 + 150 * m, damping: 17 - 2 * m, mass: 0.8 }
         }
         style={{
-          fontSize: `clamp(1.9rem, ${fontRem}rem, 5rem)`,
-          fontWeight: 900,
-          letterSpacing: "-0.02em",
+          fontFamily: PRAISE_FONT,
+          fontSize: `clamp(1.7rem, ${sizeVw}vw, ${maxRem}rem)`,
+          fontWeight: 800,
+          letterSpacing: `${tracking}em`,
           lineHeight: 1,
           textAlign: "center",
+          whiteSpace: "nowrap",
           color: "transparent",
-          backgroundImage: `linear-gradient(180deg, hsl(${hue} 95% 74%), hsl(${hue + 18} 88% 52%))`,
+          // A top-lit sheen: bright core → accent, so it reads glossy + premium
+          // and stays crisp on the dark feed.
+          backgroundImage: `linear-gradient(178deg, #ffffff 0%, hsl(${hue} 100% 90%) 40%, hsl(${hue} 92% 64%) 100%)`,
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
-          WebkitTextStroke: "2.5px rgba(20,10,40,0.42)",
-          paintOrder: "stroke fill",
-          filter: `drop-shadow(0 3px 14px rgba(0,0,0,0.4)) drop-shadow(0 0 ${22 + 16 * m}px hsl(${hue} 92% 60% / ${glow}))`,
+          WebkitFontSmoothing: "antialiased",
+          textRendering: "optimizeLegibility",
+          // Layered shadows do the legibility work the stroke used to (cleaner):
+          // a tight contact shadow reads over light card content, a soft depth
+          // shadow gives it body, and a colored bloom makes it feel alive.
+          filter:
+            `drop-shadow(0 1px 0.5px rgba(0,0,0,0.55)) ` +
+            `drop-shadow(0 3px 12px rgba(0,0,0,0.42)) ` +
+            `drop-shadow(0 0 ${18 + 20 * m}px hsl(${hue} 95% 62% / ${glow}))`,
         }}
       >
         {props.label}

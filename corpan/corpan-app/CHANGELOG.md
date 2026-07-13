@@ -10,8 +10,10 @@ Conventions: `corpan/CHANGELOGS.md`.
 ### Added
 - **Every correct answer now earns a juicy, escalating celebration.** The tier-1
   correct moment was a tiny "Perfect" pill that rendered *behind* the card. It is
-  now a big, springy **praise-word splash** drawn above everything and legible
-  over any background (gradient fill + stroke + glow), pulling from a pool of ~12
+  now a big, springy **praise-word splash** drawn above everything — a polished
+  combo callout in a display-tight, ExtraBold, top-lit gradient with layered
+  legibility shadows + a colored bloom (crisp on the dark feed, legible over any
+  card), sized in `vw` so it never wraps or clips — pulling from a pool of ~12
   fresh exclamations (localized in all ~54 languages) with a non-repeating
   sampler — so you keep playing to see the next word. Behind it, a pluggable
   **effect registry** (`journey/celebration/effects/`) rotates through distinct
