@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.5] - 2026-07-12
+
 ### Changed
 - **Journey reframed from a daily drip to an intensive, mastery-driven program.**
   Calendar / "day N" framing is gone from the copy: the hero progress line points
