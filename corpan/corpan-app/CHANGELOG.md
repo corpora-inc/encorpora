@@ -25,6 +25,13 @@ Conventions: `corpan/CHANGELOGS.md`.
   no-3D fallback) and never reflows the card.
 
 ### Fixed
+- **"Punto de control" no longer appears several times in a row.** The Journey
+  cadence checkpoint had no back-to-back floor and a fragile catch-up tally: a
+  boss batch or a large content batch could leave the emit position leading the
+  emitted-cadence count by more than one cadence, after which every short batch
+  drained one owed checkpoint at its tail. The milestone now snaps its tally to
+  the actual stream position and honours a minimum-gap floor, spanning the
+  boss-after-cadence seam, so checkpoints stay spaced milestones.
 - **The turtle (slow-audio) button actually slows the audio down.** The Android
   TTS plugin was reshaping the caller's rate with an opinionated curve, so a
   0.7× "slow" request came out ~0.87× — imperceptible. The plugin now plays
