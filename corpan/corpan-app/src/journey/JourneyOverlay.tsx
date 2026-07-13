@@ -58,6 +58,7 @@ export function JourneyOverlay(props: {
       targetLang,
       ...(nativeLang && nativeLang !== targetLang ? { nativeLang } : {}),
       checkpointCadence: shape.checkpointCadence,
+      newPerDay: shape.newPerDay,
     })
       .then((b) => {
         if (!cancelled) setBuilt(b)

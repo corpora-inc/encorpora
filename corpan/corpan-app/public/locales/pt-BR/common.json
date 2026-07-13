@@ -879,7 +879,7 @@
     "tagline": "Seu caminho guiado, um cartão por vez",
     "heroCard": {
       "title": "Seu Journey",
-      "progress": "{{unit}} · {{count}} cartões para a meta de hoje"
+      "progress": "{{unit}} · {{count}} até o próximo marco"
     },
     "heroCta": {
       "start": "Comece seu Journey",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Checkpoint",
-      "summary": "{{new}} novos · {{reviews}} revisões · melhor sequência {{combo}}",
+      "summaryNew": "{{count}} novas",
+      "summaryReviews": "{{count}} revisões",
       "done": "Por hoje chega",
       "keepGoing": "Continuar",
-      "dailyRing": "{{done}}/{{goal}} hoje",
+      "dailyRing": "{{count}} nesta sessão",
       "deepSession": "Que sessão profunda — suas revisões ficam agendadas de qualquer forma.",
-      "streakTicked": "Dia {{count}} ✓",
+      "streakTicked": "{{count}} seguidas ✓",
       "boss": "Desafio da unidade",
       "arcGate": "Portal do arco"
     },
@@ -967,7 +968,7 @@
       "perfect": "Perfeito",
       "wordsLearned": "{{count}} palavras aprendidas",
       "unitComplete": "Unidade concluída: {{name}}",
-      "streakDay": "Dia {{count}}",
+      "streakDay": "{{count}} seguidas",
       "placementDone": "Nível definido"
     },
     "rare": {
@@ -1015,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "Manter uma sequência?",
-      "pactBody": "Um cartão por dia a mantém viva. Se você faltar um dia, um dia de descanso pode cobrir — você ganha um por semana.",
+      "pactBody": "Mantenha seu ritmo. Um dia de descanso cobre uma falha — você ganha um por semana.",
       "pactAccept": "Pode contar comigo",
       "pactDecline": "Não, obrigado",
-      "days": "{{count}} dias",
+      "days": "{{count}} seguidas",
       "restDayEarned": "Dia de descanso ganho",
       "restDayUsed": "{{day}} foi um dia de descanso",
       "repairTitle": "Recupere sua sequência",

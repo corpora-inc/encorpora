@@ -879,7 +879,7 @@
     "tagline": "Jouw begeleide pad, kaart voor kaart",
     "heroCard": {
       "title": "Jouw Journey",
-      "progress": "{{unit}} · {{count}} kaarten tot het doel van vandaag"
+      "progress": "{{unit}} · nog {{count}} tot je volgende mijlpaal"
     },
     "heroCta": {
       "start": "Begin je Journey",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Checkpoint",
-      "summary": "{{new}} nieuw · {{reviews}} herhalingen · beste reeks {{combo}}",
+      "summaryNew": "{{count}} nieuw",
+      "summaryReviews": "{{count}} herhalingen",
       "done": "Genoeg voor vandaag",
       "keepGoing": "Doorgaan",
-      "dailyRing": "{{done}}/{{goal}} vandaag",
+      "dailyRing": "{{count}} deze sessie",
       "deepSession": "Wat een diepe sessie — je herhalingen staan hoe dan ook ingepland.",
-      "streakTicked": "Dag {{count}} ✓",
+      "streakTicked": "{{count}} op rij ✓",
       "boss": "Eenheidsuitdaging",
       "arcGate": "Boogpoort"
     },
@@ -967,7 +968,7 @@
       "perfect": "Perfect",
       "wordsLearned": "{{count}} woorden geleerd",
       "unitComplete": "Eenheid voltooid: {{name}}",
-      "streakDay": "Dag {{count}}",
+      "streakDay": "{{count}} op rij",
       "placementDone": "Niveau bepaald"
     },
     "rare": {
@@ -1015,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "Een reeks bijhouden?",
-      "pactBody": "Eén kaart per dag houdt hem in leven. Mis je een dag, dan kan een rustdag je dekken — je verdient er elke week één.",
+      "pactBody": "Houd je vaart erin. Een rustdag vult een gat op — je verdient er elke week een.",
       "pactAccept": "Ik doe mee",
       "pactDecline": "Nee, bedankt",
-      "days": "{{count}} dagen",
+      "days": "{{count}} op rij",
       "restDayEarned": "Rustdag verdiend",
       "restDayUsed": "{{day}} was een rustdag",
       "repairTitle": "Pak je reeks weer op",

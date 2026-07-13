@@ -7,6 +7,22 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Journey reframed from a daily drip to an intensive, mastery-driven program.**
+  Calendar / "day N" framing is gone from the copy: the hero progress line points
+  to your next milestone, the checkpoint ring and streak read as momentum
+  ("{{count}} this session", "{{count}} in a row") rather than a day number, and
+  the streak pact drops the "one card a day / miss a day" language. The
+  checkpoint ring no longer overflows (a single momentum number, not "229/20"),
+  and the recap hides the all-zeros "0 new · 0 reviews" line. The artificial
+  new-word ceiling is lifted for grinders (`NEW_PER_DAY_MAX` 30 → 100; intensive
+  learners seed a high daily intake) — but the FSRS spacing + debt-brake still
+  guard against cramming unseen words on top of a review backlog.
+- **New-word first exposure is now interactive.** The debut card was a passive
+  see-hear-Continue; it's now a hear → tap-the-meaning comprehension beat (a
+  concept-picture grid, a numeral glyph grid for numbers, or native-gloss tiles),
+  audio-first and unscored (a wrong tap only reveals — no penalty).
+
 ### Added
 - **The new-word debut is now an interactive comprehension beat.** First exposure
   used to be a passive show-and-tell (see word + picture + meaning, hear it,

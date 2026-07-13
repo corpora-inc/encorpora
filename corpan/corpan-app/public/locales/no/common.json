@@ -879,7 +879,7 @@
     "tagline": "Din guidede vei, kort for kort",
     "heroCard": {
       "title": "Din Journey",
-      "progress": "{{unit}} · {{count}} kort til dagens mål"
+      "progress": "{{unit}} · {{count}} til neste milepæl"
     },
     "heroCta": {
       "start": "Start din Journey",
@@ -948,12 +948,13 @@
     },
     "checkpoint": {
       "title": "Sjekkpunkt",
-      "summary": "{{new}} nye · {{reviews}} repetisjoner · beste rekke {{combo}}",
+      "summaryNew": "{{count}} nye",
+      "summaryReviews": "{{count}} repetisjoner",
       "done": "Nok for i dag",
       "keepGoing": "Fortsett",
-      "dailyRing": "{{done}}/{{goal}} i dag",
+      "dailyRing": "{{count}} denne økten",
       "deepSession": "For en grundig økt — repetisjonene dine er uansett planlagt.",
-      "streakTicked": "Dag {{count}} ✓",
+      "streakTicked": "{{count}} på rad ✓",
       "boss": "Enhetsutfordring",
       "arcGate": "Bueport"
     },
@@ -976,7 +977,7 @@
       "perfect": "Perfekt",
       "wordsLearned": "{{count}} ord lært",
       "unitComplete": "Enhet fullført: {{name}}",
-      "streakDay": "Dag {{count}}",
+      "streakDay": "{{count}} på rad",
       "placementDone": "Nivå funnet"
     },
     "rare": {
@@ -1024,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Holde en rekke?",
-      "pactBody": "Ett kort om dagen holder den i live. Går du glipp av en dag, kan en hviledag dekke deg — du tjener én hver uke.",
+      "pactBody": "Hold på farten. En hviledag dekker et hull — du tjener én hver uke.",
       "pactAccept": "Jeg er med",
       "pactDecline": "Nei takk",
-      "days": "{{count}} dager",
+      "days": "{{count}} på rad",
       "restDayEarned": "Hviledag opptjent",
       "restDayUsed": "{{day}} var en hviledag",
       "repairTitle": "Ta opp rekken din igjen",

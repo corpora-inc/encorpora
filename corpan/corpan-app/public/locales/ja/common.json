@@ -879,7 +879,7 @@
     "tagline": "導かれる学びの道、1枚ずつ",
     "heroCard": {
       "title": "あなたの Journey",
-      "progress": "{{unit}} · 今日の目標まであと {{count}} 枚"
+      "progress": "{{unit}} · 次の節目まであと {{count}}"
     },
     "heroCta": {
       "start": "Journey を始める",
@@ -952,12 +952,13 @@
     },
     "checkpoint": {
       "title": "チェックポイント",
-      "summary": "新規 {{new}} · 復習 {{reviews}} · 最高コンボ {{combo}}",
+      "summaryNew": "新規 {{count}}",
+      "summaryReviews": "復習 {{count}}",
       "done": "今日はここまで",
       "keepGoing": "続ける",
-      "dailyRing": "今日 {{done}}/{{goal}}",
+      "dailyRing": "このセッションで {{count}}",
       "deepSession": "じっくり学べましたね — 復習はいずれにせよ予定されています。",
-      "streakTicked": "{{count}}日目 ✓",
+      "streakTicked": "{{count}} 連続 ✓",
       "boss": "ユニットチャレンジ",
       "arcGate": "アークの門"
     },
@@ -980,7 +981,7 @@
       "perfect": "パーフェクト",
       "wordsLearned": "{{count}} 語を習得",
       "unitComplete": "ユニット完了: {{name}}",
-      "streakDay": "{{count}}日目",
+      "streakDay": "{{count}} 連続",
       "placementDone": "レベル判定完了"
     },
     "rare": {
@@ -1028,10 +1029,10 @@
     },
     "streak": {
       "pactTitle": "連続記録をつけますか？",
-      "pactBody": "1日1枚で続きます。1日逃しても、休息日がカバーしてくれることがあります — 毎週1つ獲得できます。",
+      "pactBody": "勢いを保ちましょう。休息日が空白を埋めます — 毎週1つ獲得できます。",
       "pactAccept": "やってみる",
       "pactDecline": "遠慮しておく",
-      "days": "{{count}}日",
+      "days": "{{count}} 連続",
       "restDayEarned": "休息日を獲得",
       "restDayUsed": "{{day}} は休息日でした",
       "repairTitle": "連続記録を取り戻そう",

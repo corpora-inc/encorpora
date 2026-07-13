@@ -879,7 +879,7 @@
     "tagline": "تُہاڈا رہنمائی والا راہ، کارڈ توں کارڈ",
     "heroCard": {
       "title": "تُہاڈا Journey",
-      "progress": "{{unit}} · اَج دے ٹیچے تک {{count}} کارڈ"
+      "progress": "{{unit}} · اگلے سنگِ میل تک {{count}}"
     },
     "heroCta": {
       "start": "اپنا Journey شروع کرو",
@@ -934,12 +934,13 @@
     },
     "checkpoint": {
       "title": "چیک پوائنٹ",
-      "summary": "{{new}} نویں · {{reviews}} دہرائیاں · سب توں ودھیا لڑی {{combo}}",
+      "summaryNew": "{{count}} نویں",
+      "summaryReviews": "{{count}} دُہرائیاں",
       "done": "اَج لئی بس",
       "keepGoing": "اگے ودھو",
-      "dailyRing": "اَج {{done}}/{{goal}}",
+      "dailyRing": "{{count}} اس سیشن وچ",
       "deepSession": "کنا ڈونگا سیشن — تُہاڈیاں دہرائیاں ہر حال وچ طے نیں۔",
-      "streakTicked": "دن {{count}} ✓",
+      "streakTicked": "لگاتار {{count}} ✓",
       "boss": "یونٹ چیلنج",
       "arcGate": "قوس دا دروازہ"
     },
@@ -962,7 +963,7 @@
       "perfect": "کمال",
       "wordsLearned": "{{count}} لفظ سکھے",
       "unitComplete": "یونٹ مکمل: {{name}}",
-      "streakDay": "دن {{count}}",
+      "streakDay": "لگاتار {{count}}",
       "placementDone": "پدھر طے ہو گیا"
     },
     "rare": {
@@ -1010,10 +1011,10 @@
     },
     "streak": {
       "pactTitle": "لڑی رکھیے؟",
-      "pactBody": "روز اک کارڈ ایہنوں زندہ رکھدا اے۔ جے دن چھُٹ جاوے تے آرام دا دن بچا سکدا اے — ہر ہفتے اک ملدا اے۔",
+      "pactBody": "اپݨی رفتار قائم رکھو۔ اک آرام دا دن خلا پُر کردا اے — ہر ہفتے اک ملدا اے۔",
       "pactAccept": "میں تیار آں",
       "pactDecline": "نہیں، شکریہ",
-      "days": "{{count}} دن",
+      "days": "لگاتار {{count}}",
       "restDayEarned": "آرام دا دن کمایا",
       "restDayUsed": "{{day}} آرام دا دن سی",
       "repairTitle": "اپنی لڑی واپس لوو",

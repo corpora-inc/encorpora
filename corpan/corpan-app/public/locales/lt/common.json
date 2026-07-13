@@ -879,7 +879,7 @@
     "tagline": "Tavo vedamas kelias, kortelė po kortelės",
     "heroCard": {
       "title": "Tavo Journey",
-      "progress": "{{unit}} · {{count}} kortelės iki šios dienos tikslo"
+      "progress": "{{unit}} · dar {{count}} iki kito etapo"
     },
     "heroCta": {
       "start": "Pradėk savo Journey",
@@ -934,12 +934,13 @@
     },
     "checkpoint": {
       "title": "Kontrolinis taškas",
-      "summary": "{{new}} naujų · {{reviews}} kartojimų · geriausia serija {{combo}}",
+      "summaryNew": "{{count}} nauji",
+      "summaryReviews": "{{count}} kartojimai",
       "done": "Šiandienai užteks",
       "keepGoing": "Tęsti toliau",
-      "dailyRing": "{{done}}/{{goal}} šiandien",
+      "dailyRing": "{{count}} šioje sesijoje",
       "deepSession": "Koks gilus užsiėmimas — tavo kartojimai vis tiek suplanuoti.",
-      "streakTicked": "Diena {{count}} ✓",
+      "streakTicked": "{{count}} iš eilės ✓",
       "boss": "Skyriaus iššūkis",
       "arcGate": "Lanko vartai"
     },
@@ -962,7 +963,7 @@
       "perfect": "Puiku",
       "wordsLearned": "Išmokta {{count}} žodžių",
       "unitComplete": "Skyrius baigtas: {{name}}",
-      "streakDay": "Diena {{count}}",
+      "streakDay": "{{count}} iš eilės",
       "placementDone": "Lygis nustatytas"
     },
     "rare": {
@@ -1010,10 +1011,10 @@
     },
     "streak": {
       "pactTitle": "Laikyti seriją?",
-      "pactBody": "Viena kortelė per dieną ją išlaiko gyvą. Jei praleisi dieną, poilsio diena gali tave pridengti — kas savaitę užsidirbi vieną.",
+      "pactBody": "Išlaikyk pagreitį. Poilsio diena užpildo spragą — vieną gauni kiekvieną savaitę.",
       "pactAccept": "Aš už",
       "pactDecline": "Ne, ačiū",
-      "days": "{{count}} d.",
+      "days": "{{count}} iš eilės",
       "restDayEarned": "Poilsio diena užtarnauta",
       "restDayUsed": "{{day}} buvo poilsio diena",
       "repairTitle": "Atgauk savo seriją",

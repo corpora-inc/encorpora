@@ -94,8 +94,13 @@ export function createJourneyEngine(deps: {
   graph: CourseGraph
   persistence: JourneyPersistence
   clock: Clock
+  /** Fresh-course intake seed (goalIntensity → SESSION_SHAPES.newPerDay). The
+   *  weekly throttle + debt-brake still govern it; this only sets the starting
+   *  ceiling so an intensive learner isn't paced by the casual default. */
+  newPerDayDefault?: number
 }): JourneyEngine {
   const { key, persistence, clock } = deps
+  const newPerDaySeed = deps.newPerDayDefault ?? NEW_PER_DAY_DEFAULT
   const gidx: GraphIndex = buildGraphIndex(deps.graph)
   const scheduler: Scheduler = createScheduler()
   const cards = new Map<string, ItemCard>()
@@ -123,7 +128,7 @@ export function createJourneyEngine(deps: {
         unitId: firstUnit?.unitId ?? "",
         unitOrdinal: 0,
       },
-      newPerDay: NEW_PER_DAY_DEFAULT,
+      newPerDay: newPerDaySeed,
       newIntroducedToday: 0,
       dailyCapacityEwma: CAPACITY_SEED,
       backlogRing: [],

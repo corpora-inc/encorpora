@@ -879,7 +879,7 @@
     "tagline": "Tvá vedená cesta, kartu po kartě",
     "heroCard": {
       "title": "Tvoje Journey",
-      "progress": "{{unit}} · {{count}} karet do dnešního cíle"
+      "progress": "{{unit}} · ještě {{count}} do dalšího milníku"
     },
     "heroCta": {
       "start": "Začni svou Journey",
@@ -948,12 +948,13 @@
     },
     "checkpoint": {
       "title": "Kontrolní bod",
-      "summary": "{{new}} nových · {{reviews}} opakování · nejlepší série {{combo}}",
+      "summaryNew": "{{count}} nových",
+      "summaryReviews": "{{count}} opakování",
       "done": "Pro dnešek stačí",
       "keepGoing": "Pokračovat",
-      "dailyRing": "{{done}}/{{goal}} dnes",
+      "dailyRing": "{{count}} v této relaci",
       "deepSession": "To byla pořádná porce — tvá opakování jsou tak jako tak naplánovaná.",
-      "streakTicked": "Den {{count}} ✓",
+      "streakTicked": "{{count}} v řadě ✓",
       "boss": "Výzva lekce",
       "arcGate": "Brána oblouku"
     },
@@ -976,7 +977,7 @@
       "perfect": "Perfektní",
       "wordsLearned": "{{count}} slov naučeno",
       "unitComplete": "Lekce dokončena: {{name}}",
-      "streakDay": "Den {{count}}",
+      "streakDay": "{{count}} v řadě",
       "placementDone": "Úroveň určena"
     },
     "rare": {
@@ -1024,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Držet sérii?",
-      "pactBody": "Jedna karta denně ji udrží naživu. Když den vynecháš, může tě zachránit den odpočinku — každý týden jeden získáš.",
+      "pactBody": "Udrž si tempo. Den volna pokryje výpadek — jeden získáš každý týden.",
       "pactAccept": "Jdu do toho",
       "pactDecline": "Ne, díky",
-      "days": "{{count}} dní",
+      "days": "{{count}} v řadě",
       "restDayEarned": "Den odpočinku získán",
       "restDayUsed": "{{day}} byl den odpočinku",
       "repairTitle": "Obnov svou sérii",

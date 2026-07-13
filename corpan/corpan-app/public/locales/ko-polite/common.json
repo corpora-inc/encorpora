@@ -879,7 +879,7 @@
     "tagline": "안내를 따라가는 길, 카드 한 장씩",
     "heroCard": {
       "title": "나의 Journey",
-      "progress": "{{unit}} · 오늘 목표까지 카드 {{count}}장"
+      "progress": "{{unit}} · 다음 이정표까지 {{count}}개"
     },
     "heroCta": {
       "start": "Journey 시작하기",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "체크포인트",
-      "summary": "새로 {{new}} · 복습 {{reviews}} · 최고 연속 {{combo}}",
+      "summaryNew": "새 항목 {{count}}",
+      "summaryReviews": "복습 {{count}}",
       "done": "오늘은 여기까지",
       "keepGoing": "계속하기",
-      "dailyRing": "오늘 {{done}}/{{goal}}",
+      "dailyRing": "이번 세션 {{count}}",
       "deepSession": "정말 깊이 있는 학습이었어요 — 복습은 어차피 예약되어 있어요.",
-      "streakTicked": "{{count}}일째 ✓",
+      "streakTicked": "{{count}}회 연속 ✓",
       "boss": "단원 도전",
       "arcGate": "아크 관문"
     },
@@ -967,7 +968,7 @@
       "perfect": "완벽해요",
       "wordsLearned": "단어 {{count}}개 학습",
       "unitComplete": "단원 완료: {{name}}",
-      "streakDay": "{{count}}일째",
+      "streakDay": "{{count}}회 연속",
       "placementDone": "레벨이 정해졌어요"
     },
     "rare": {
@@ -1024,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "연속 기록을 이어 갈까요?",
-      "pactBody": "하루 한 장이면 이어져요. 하루를 놓치면 휴식일이 대신해 줄 수 있어요 — 매주 하나씩 얻어요.",
+      "pactBody": "리듬을 이어가세요. 휴식일이 빈자리를 채워줍니다 — 매주 하나씩 얻어요.",
       "pactAccept": "함께할게요",
       "pactDecline": "괜찮아요",
-      "days": "{{count}}일",
+      "days": "{{count}}회 연속",
       "restDayEarned": "휴식일 획득",
       "restDayUsed": "{{day}}은 휴식일이었어요",
       "repairTitle": "연속 기록 되찾기",

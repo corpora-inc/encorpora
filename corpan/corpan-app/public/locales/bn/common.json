@@ -879,7 +879,7 @@
     "tagline": "আপনার নির্দেশিত পথ, কার্ডের পর কার্ড",
     "heroCard": {
       "title": "আপনার Journey",
-      "progress": "{{unit}} · আজকের লক্ষ্য পর্যন্ত {{count}}টি কার্ড"
+      "progress": "{{unit}} · পরবর্তী লক্ষ্যে আর {{count}}টি"
     },
     "heroCta": {
       "start": "আপনার Journey শুরু করুন",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "চেকপয়েন্ট",
-      "summary": "{{new}} নতুন · {{reviews}} পুনরালোচনা · সেরা ধারা {{combo}}",
+      "summaryNew": "{{count}} নতুন",
+      "summaryReviews": "{{count}} পুনরালোচনা",
       "done": "আজকের মতো যথেষ্ট",
       "keepGoing": "চালিয়ে যান",
-      "dailyRing": "আজ {{done}}/{{goal}}",
+      "dailyRing": "এই সেশনে {{count}}",
       "deepSession": "কী গভীর একটি সেশন — আপনার পুনরালোচনা যেভাবেই হোক নির্ধারিত আছে।",
-      "streakTicked": "দিন {{count}} ✓",
+      "streakTicked": "টানা {{count}}টি ✓",
       "boss": "ইউনিট চ্যালেঞ্জ",
       "arcGate": "চাপ-দুয়ার"
     },
@@ -967,7 +968,7 @@
       "perfect": "দুর্দান্ত",
       "wordsLearned": "{{count}}টি শব্দ শেখা হলো",
       "unitComplete": "ইউনিট সম্পূর্ণ: {{name}}",
-      "streakDay": "দিন {{count}}",
+      "streakDay": "টানা {{count}}টি",
       "placementDone": "স্তর নির্ধারিত"
     },
     "rare": {
@@ -1015,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "একটি ধারা রাখবেন?",
-      "pactBody": "দিনে একটি কার্ড এটিকে জীবিত রাখে। একদিন বাদ গেলে বিশ্রামের দিন আপনাকে রক্ষা করতে পারে — প্রতি সপ্তাহে একটি অর্জন করবেন।",
+      "pactBody": "গতি ধরে রাখো। একটি বিশ্রামের দিন ফাঁক পূরণ করে — প্রতি সপ্তাহে একটি করে পাও।",
       "pactAccept": "আমি রাজি",
       "pactDecline": "না, ধন্যবাদ",
-      "days": "{{count}} দিন",
+      "days": "টানা {{count}}টি",
       "restDayEarned": "বিশ্রামের দিন অর্জিত",
       "restDayUsed": "{{day}} ছিল বিশ্রামের দিন",
       "repairTitle": "আপনার ধারা ফিরিয়ে আনুন",

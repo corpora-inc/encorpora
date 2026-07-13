@@ -879,7 +879,7 @@
     "tagline": "Tvoja vodena pot, kartico za kartico",
     "heroCard": {
       "title": "Tvoj Journey",
-      "progress": "{{unit}} · {{count}} kartic do današnjega cilja"
+      "progress": "{{unit}} · še {{count}} do naslednjega mejnika"
     },
     "heroCta": {
       "start": "Začni svoj Journey",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Kontrolna točka",
-      "summary": "{{new}} novih · {{reviews}} ponovitev · najboljši niz {{combo}}",
+      "summaryNew": "{{count}} novih",
+      "summaryReviews": "{{count}} ponovitev",
       "done": "Za danes dovolj",
       "keepGoing": "Nadaljuj",
-      "dailyRing": "{{done}}/{{goal}} danes",
+      "dailyRing": "{{count}} v tej seji",
       "deepSession": "Kakšna poglobljena seja — tvoje ponovitve so tako ali tako načrtovane.",
-      "streakTicked": "Dan {{count}} ✓",
+      "streakTicked": "{{count}} zapored ✓",
       "boss": "Izziv enote",
       "arcGate": "Vrata loka"
     },
@@ -967,7 +968,7 @@
       "perfect": "Odlično",
       "wordsLearned": "{{count}} naučenih besed",
       "unitComplete": "Enota končana: {{name}}",
-      "streakDay": "Dan {{count}}",
+      "streakDay": "{{count}} zapored",
       "placementDone": "Raven določena"
     },
     "rare": {
@@ -1024,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Držimo niz?",
-      "pactBody": "Ena kartica na dan ga ohranja živega. Če dan izpustiš, te lahko pokrije dan počitka — vsak teden si prislužiš enega.",
+      "pactBody": "Ohrani zagon. Dan počitka pokrije vrzel — enega prislužiš vsak teden.",
       "pactAccept": "Zraven sem",
       "pactDecline": "Ne, hvala",
-      "days": "{{count}} dni",
+      "days": "{{count}} zapored",
       "restDayEarned": "Dan počitka prislužen",
       "restDayUsed": "{{day}} je bil dan počitka",
       "repairTitle": "Obnovi svoj niz",

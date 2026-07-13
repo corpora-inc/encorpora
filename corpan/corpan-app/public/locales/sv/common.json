@@ -879,7 +879,7 @@
     "tagline": "Din guidade väg, kort för kort",
     "heroCard": {
       "title": "Din Journey",
-      "progress": "{{unit}} · {{count}} kort kvar till dagens mål"
+      "progress": "{{unit}} · {{count}} till nästa milstolpe"
     },
     "heroCta": {
       "start": "Börja din Journey",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Kontrollpunkt",
-      "summary": "{{new}} nya · {{reviews}} repetitioner · bästa svit {{combo}}",
+      "summaryNew": "{{count}} nya",
+      "summaryReviews": "{{count}} repetitioner",
       "done": "Klart för i dag",
       "keepGoing": "Fortsätt",
-      "dailyRing": "{{done}}/{{goal}} i dag",
+      "dailyRing": "{{count}} den här sessionen",
       "deepSession": "Vilket djupt pass — dina repetitioner är schemalagda oavsett.",
-      "streakTicked": "Dag {{count}} ✓",
+      "streakTicked": "{{count}} i rad ✓",
       "boss": "Enhetsutmaning",
       "arcGate": "Bågport"
     },
@@ -967,7 +968,7 @@
       "perfect": "Perfekt",
       "wordsLearned": "{{count}} ord inlärda",
       "unitComplete": "Enhet klar: {{name}}",
-      "streakDay": "Dag {{count}}",
+      "streakDay": "{{count}} i rad",
       "placementDone": "Nivå hittad"
     },
     "rare": {
@@ -1015,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "Hålla en svit?",
-      "pactBody": "Ett kort om dagen håller den vid liv. Missar du en dag kan en vilodag täcka dig — du tjänar en varje vecka.",
+      "pactBody": "Håll farten uppe. En vilodag täcker en lucka — du tjänar en varje vecka.",
       "pactAccept": "Jag är med",
       "pactDecline": "Nej tack",
-      "days": "{{count}} dagar",
+      "days": "{{count}} i rad",
       "restDayEarned": "Vilodag intjänad",
       "restDayUsed": "{{day}} var en vilodag",
       "repairTitle": "Ta upp din svit igen",

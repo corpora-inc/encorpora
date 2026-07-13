@@ -879,7 +879,7 @@
     "tagline": "مسیر هدایت‌شدهٔ تو، کارت به کارت",
     "heroCard": {
       "title": "Journey تو",
-      "progress": "{{unit}} · {{count}} کارت تا هدف امروز"
+      "progress": "{{unit}} · {{count}} تا نقطهٔ عطف بعدی"
     },
     "heroCta": {
       "start": "Journey خود را شروع کن",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "ایست بازرسی",
-      "summary": "{{new}} جدید · {{reviews}} مرور · بهترین زنجیره {{combo}}",
+      "summaryNew": "{{count}} جدید",
+      "summaryReviews": "{{count}} مرور",
       "done": "برای امروز کافی است",
       "keepGoing": "ادامه بده",
-      "dailyRing": "{{done}}/{{goal}} امروز",
+      "dailyRing": "{{count}} در این نشست",
       "deepSession": "چه جلسهٔ عمیقی — مرورهای تو در هر صورت برنامه‌ریزی شده‌اند.",
-      "streakTicked": "روز {{count}} ✓",
+      "streakTicked": "{{count}} پیاپی ✓",
       "boss": "چالش واحد",
       "arcGate": "دروازهٔ کمان"
     },
@@ -967,7 +968,7 @@
       "perfect": "عالی",
       "wordsLearned": "{{count}} واژه آموختی",
       "unitComplete": "واحد کامل شد: {{name}}",
-      "streakDay": "روز {{count}}",
+      "streakDay": "{{count}} پیاپی",
       "placementDone": "سطح تو مشخص شد"
     },
     "rare": {
@@ -1015,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "زنجیره نگه داریم؟",
-      "pactBody": "روزی یک کارت آن را زنده نگه می‌دارد. اگر روزی را از دست بدهی، یک روز استراحت می‌تواند پوششت دهد — هر هفته یکی به دست می‌آوری.",
+      "pactBody": "شتابت را حفظ کن. یک روز استراحت جای خالی را پر می‌کند — هر هفته یکی به دست می‌آوری.",
       "pactAccept": "پایه‌ام",
       "pactDecline": "نه، ممنون",
-      "days": "{{count}} روز",
+      "days": "{{count}} پیاپی",
       "restDayEarned": "روز استراحت به دست آمد",
       "restDayUsed": "{{day}} روز استراحت بود",
       "repairTitle": "زنجیره‌ات را پس بگیر",

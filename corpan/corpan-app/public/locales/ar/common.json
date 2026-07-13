@@ -879,7 +879,7 @@
     "tagline": "دربك الموجَّه، بطاقة تلو بطاقة",
     "heroCard": {
       "title": "رحلتك Journey",
-      "progress": "{{unit}} · {{count}} بطاقة حتى هدف اليوم"
+      "progress": "{{unit}} · {{count}} حتى محطتك التالية"
     },
     "heroCta": {
       "start": "ابدأ Journey الخاص بك",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "نقطة تفتيش",
-      "summary": "{{new}} جديدة · {{reviews}} مراجعات · أفضل سلسلة {{combo}}",
+      "summaryNew": "{{count}} جديدة",
+      "summaryReviews": "{{count}} مراجعات",
       "done": "يكفي لليوم",
       "keepGoing": "أكمل",
-      "dailyRing": "{{done}}/{{goal}} اليوم",
+      "dailyRing": "{{count}} في هذه الجلسة",
       "deepSession": "يا لها من جلسة عميقة — مراجعاتك مجدولة على أي حال.",
-      "streakTicked": "اليوم {{count}} ✓",
+      "streakTicked": "{{count}} على التوالي ✓",
       "boss": "تحدي الوحدة",
       "arcGate": "بوابة القوس"
     },
@@ -967,7 +968,7 @@
       "perfect": "ممتاز",
       "wordsLearned": "تعلمت {{count}} كلمة",
       "unitComplete": "اكتملت الوحدة: {{name}}",
-      "streakDay": "اليوم {{count}}",
+      "streakDay": "{{count}} على التوالي",
       "placementDone": "تم تحديد مستواك"
     },
     "rare": {
@@ -1015,10 +1016,10 @@
     },
     "streak": {
       "pactTitle": "نحافظ على سلسلة؟",
-      "pactBody": "بطاقة واحدة يوميًا تبقيها حية. إن فاتك يوم، قد يغطيك يوم راحة — تكسب واحدًا كل أسبوع.",
+      "pactBody": "حافظ على زخمك. يغطي يوم الراحة أي انقطاع — تكسب واحدًا كل أسبوع.",
       "pactAccept": "أنا معك",
       "pactDecline": "لا، شكرًا",
-      "days": "{{count}} يومًا",
+      "days": "{{count}} على التوالي",
       "restDayEarned": "كسبت يوم راحة",
       "restDayUsed": "كان {{day}} يوم راحة",
       "repairTitle": "استعد سلسلتك",

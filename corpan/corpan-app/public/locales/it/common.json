@@ -879,7 +879,7 @@
     "tagline": "Il tuo percorso guidato, una carta alla volta",
     "heroCard": {
       "title": "Il tuo Journey",
-      "progress": "{{unit}} · {{count}} carte all'obiettivo di oggi"
+      "progress": "{{unit}} · {{count}} al prossimo traguardo"
     },
     "heroCta": {
       "start": "Inizia il tuo Journey",
@@ -943,12 +943,13 @@
     },
     "checkpoint": {
       "title": "Checkpoint",
-      "summary": "{{new}} nuove · {{reviews}} ripassi · miglior serie {{combo}}",
+      "summaryNew": "{{count}} nuove",
+      "summaryReviews": "{{count}} ripassi",
       "done": "Basta per oggi",
       "keepGoing": "Vai avanti",
-      "dailyRing": "{{done}}/{{goal}} oggi",
+      "dailyRing": "{{count}} in questa sessione",
       "deepSession": "Che sessione intensa — i tuoi ripassi sono comunque programmati.",
-      "streakTicked": "Giorno {{count}} ✓",
+      "streakTicked": "{{count}} di fila ✓",
       "boss": "Sfida di unità",
       "arcGate": "Porta dell'arco"
     },
@@ -971,7 +972,7 @@
       "perfect": "Perfetto",
       "wordsLearned": "{{count}} parole imparate",
       "unitComplete": "Unità completata: {{name}}",
-      "streakDay": "Giorno {{count}}",
+      "streakDay": "{{count}} di fila",
       "placementDone": "Livello trovato"
     },
     "rare": {
@@ -1019,10 +1020,10 @@
     },
     "streak": {
       "pactTitle": "Teniamo una serie?",
-      "pactBody": "Una carta al giorno la tiene viva. Se salti un giorno, un giorno di riposo può coprirti: ne guadagni uno a settimana.",
+      "pactBody": "Mantieni lo slancio. Un giorno di riposo copre un vuoto: ne guadagni uno ogni settimana.",
       "pactAccept": "Ci sto",
       "pactDecline": "No grazie",
-      "days": "{{count}} giorni",
+      "days": "{{count}} di fila",
       "restDayEarned": "Giorno di riposo guadagnato",
       "restDayUsed": "{{day}} è stato un giorno di riposo",
       "repairTitle": "Riprenditi la tua serie",

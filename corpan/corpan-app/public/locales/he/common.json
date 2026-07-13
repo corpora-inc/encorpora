@@ -879,7 +879,7 @@
     "tagline": "הדרך המודרכת שלך, קלף אחר קלף",
     "heroCard": {
       "title": "ה-Journey שלך",
-      "progress": "{{unit}} · {{count}} קלפים עד יעד היום"
+      "progress": "{{unit}} · {{count}} עד היעד הבא"
     },
     "heroCta": {
       "start": "התחל את ה-Journey שלך",
@@ -952,12 +952,13 @@
     },
     "checkpoint": {
       "title": "נקודת ביקורת",
-      "summary": "{{new}} חדשים · {{reviews}} חזרות · הרצף הטוב ביותר {{combo}}",
+      "summaryNew": "{{count}} חדשות",
+      "summaryReviews": "{{count}} חזרות",
       "done": "מספיק להיום",
       "keepGoing": "להמשיך",
-      "dailyRing": "{{done}}/{{goal}} היום",
+      "dailyRing": "{{count}} במפגש הזה",
       "deepSession": "איזה תרגול מעמיק — החזרות שלך מתוזמנות בכל מקרה.",
-      "streakTicked": "יום {{count}} ✓",
+      "streakTicked": "{{count}} ברצף ✓",
       "boss": "אתגר יחידה",
       "arcGate": "שער הקשת"
     },
@@ -980,7 +981,7 @@
       "perfect": "מושלם",
       "wordsLearned": "{{count}} מילים נלמדו",
       "unitComplete": "יחידה הושלמה: {{name}}",
-      "streakDay": "יום {{count}}",
+      "streakDay": "{{count}} ברצף",
       "placementDone": "הרמה נקבעה"
     },
     "rare": {
@@ -1028,10 +1029,10 @@
     },
     "streak": {
       "pactTitle": "לשמור על רצף?",
-      "pactBody": "קלף אחד ביום שומר עליו חי. אם תפספס יום, יום מנוחה יכול לכסות עליך — אתה מרוויח אחד בכל שבוע.",
+      "pactBody": "שמור על המומנטום. יום מנוחה מכסה פער — אתה מרוויח אחד בכל שבוע.",
       "pactAccept": "אני בפנים",
       "pactDecline": "לא תודה",
-      "days": "{{count}} ימים",
+      "days": "{{count}} ברצף",
       "restDayEarned": "יום מנוחה הושג",
       "restDayUsed": "{{day}} היה יום מנוחה",
       "repairTitle": "החזר את הרצף שלך",

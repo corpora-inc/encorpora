@@ -879,7 +879,7 @@
     "tagline": "Rehberli yolun, kart kart",
     "heroCard": {
       "title": "Senin Journey'in",
-      "progress": "{{unit}} · bugünkü hedefe {{count}} kart"
+      "progress": "{{unit}} · sonraki dönüm noktana {{count}}"
     },
     "heroCta": {
       "start": "Journey'ine başla",
@@ -939,12 +939,13 @@
     },
     "checkpoint": {
       "title": "Kontrol noktası",
-      "summary": "{{new}} yeni · {{reviews}} tekrar · en iyi seri {{combo}}",
+      "summaryNew": "{{count}} yeni",
+      "summaryReviews": "{{count}} tekrar",
       "done": "Bugünlük bu kadar",
       "keepGoing": "Devam et",
-      "dailyRing": "Bugün {{done}}/{{goal}}",
+      "dailyRing": "bu oturumda {{count}}",
       "deepSession": "Ne derin bir oturum — tekrarların zaten planlandı.",
-      "streakTicked": "Gün {{count}} ✓",
+      "streakTicked": "üst üste {{count}} ✓",
       "boss": "Ünite sınavı",
       "arcGate": "Yay kapısı"
     },
@@ -967,7 +968,7 @@
       "perfect": "Mükemmel",
       "wordsLearned": "{{count}} kelime öğrenildi",
       "unitComplete": "Ünite tamamlandı: {{name}}",
-      "streakDay": "Gün {{count}}",
+      "streakDay": "üst üste {{count}}",
       "placementDone": "Seviyen belirlendi"
     },
     "rare": {
@@ -1024,10 +1025,10 @@
     },
     "streak": {
       "pactTitle": "Seri tutalım mı?",
-      "pactBody": "Günde bir kart onu canlı tutar. Bir gün kaçırırsan bir dinlenme günü seni kurtarabilir — her hafta bir tane kazanırsın.",
+      "pactBody": "İvmeni koru. Bir dinlenme günü boşluğu kapatır — her hafta bir tane kazanırsın.",
       "pactAccept": "Ben varım",
       "pactDecline": "Hayır, teşekkürler",
-      "days": "{{count}} gün",
+      "days": "üst üste {{count}}",
       "restDayEarned": "Dinlenme günü kazanıldı",
       "restDayUsed": "{{day}} dinlenme günüydü",
       "repairTitle": "Serini geri kazan",
