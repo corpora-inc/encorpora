@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik anda",
+      "availableSummary": "{{count}} pek frasa tersedia · ~{{size}} MB",
+      "installAll": "Pasang semua",
+      "chooseIndividually": "Pilih satu persatu",
+      "installing": "Memasang {{current}} daripada {{total}}…",
+      "someFailed": "{{count}} pek tidak dapat dipasang. Anda boleh cuba semula dari tab Pek.",
+      "allInstalled": "Anda sudah mempunyai pek frasa permulaan.",
+      "installed": "Dipasang",
       "loading": "Memuat…",
       "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Padam",
@@ -346,7 +353,8 @@
       "subtitle": "Journey menghidangkan campuran bahan baharu dan ulang kaji dalam {{lang}} setiap hari — kad demi kad.",
       "guided": {
         "label": "Laluan harian berpandu",
-        "desc": "Sesi harian ringkas yang dirancang untuk anda."
+        "desc": "Sesi harian ringkas yang dirancang untuk anda.",
+        "unavailable": "Laluan berpandu belum tersedia untuk {{lang}}."
       },
       "explore": {
         "label": "Ikut rentak sendiri",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Termasuk dengan Plus",
     "installFailedTitle": "Pemasangan gagal",
+    "updateUnavailableTitle": "Kemas kini tidak tersedia",
+    "updateUnavailableDetail": "Muat turun ini tidak sepadan dengan yang kami jangkakan. Sila cuba lagi kemudian.",
     "installStuckDetail": "Tiada kemajuan buat seketika. Semak sambungan anda dan cuba lagi.",
     "installStuckTitle": "Muat turun terhenti",
     "openPack": "Buka {{name}}",
@@ -1048,7 +1058,8 @@
     "feed": {
       "caughtUp": "Buat masa ini anda terkini",
       "loading": "Menyediakan kad anda…",
-      "loadError": "Journey tidak dapat dimuatkan. Cuba lagi dari Laman utama."
+      "loadError": "Journey tidak dapat dimuatkan. Cuba lagi dari Laman utama.",
+      "retry": "Cuba lagi"
     },
     "popin": {
       "pronounceTitle": "Sebutkannya",

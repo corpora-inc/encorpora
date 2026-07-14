@@ -39,6 +39,7 @@ import type {
   ItemRef,
   JourneyHostApi,
 } from "../sdk/activityContract"
+import { readStack, defaultPairFor } from "../entry/stackAdapter"
 
 /** The pack's REGISTERED id (underscore form — installer rule). */
 export const PACK_ID = "corpan_city"
@@ -221,6 +222,34 @@ function sourceAwareHost(
       }
       return out
     },
+  }
+}
+
+/**
+ * DEFENSE IN DEPTH (WS-D): a generic, silent micro-challenge for the case
+ * where `main.ts` knows this mount is a Journey launch
+ * (`hostApi.journey.isActive()` is true — the host's own authoritative
+ * marker, activity-contract.ts) but no real {@link ActivitySpec} could be
+ * recovered — neither `initialState.activity` nor `hostApi.journey.getSpec()`
+ * (which is non-null whenever `isActive()` is true, so this path should be
+ * unreachable in production; it exists purely so a malformed/legacy host can
+ * never regress a journey mount into the full 3D world's premium welcome +
+ * language chooser + on-device LLM boot). Derives the pair EXACTLY like the
+ * single-target auto-resolve (`defaultPairFor`) — no chooser, no welcome
+ * screen, no UI at all — and picks a simple, dependency-free tool (tap the
+ * correct translation) so it never depends on STT/TTS being ready.
+ */
+export function synthesizeFallbackActivitySpec(hostApi: unknown): ActivitySpec {
+  const pair = defaultPairFor(readStack(hostApi))
+  // Mirrors the engine's own `js-<epochMs>-<rand4>` specId convention (see the
+  // `specId` doc above) so two calls in the same millisecond never collide.
+  const rand4 = Math.random().toString(36).slice(2, 6)
+  return {
+    specId: `${PACK_ID}-fallback-${Date.now()}-${rand4}`,
+    activityType: `${TYPE_PREFIX}fast-translate`,
+    itemRefs: [],
+    targetLang: pair.target,
+    ...(pair.native !== pair.target ? { nativeLang: pair.native } : {}),
   }
 }
 

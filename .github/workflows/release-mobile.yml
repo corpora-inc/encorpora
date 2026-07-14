@@ -380,6 +380,16 @@ jobs:
           # res/mipmap-* launcher icons are gitignored (generated) — regenerate
           # them so the installed app isn't iconless.
           npx tauri icon src-tauri/icons/512x512_white.png
+          # CI-regenerated icons (from the full-bleed 512x512_white.png source)
+          # have produced wrong-looking launcher icons. Overlay the curated,
+          # known-good mipmap set that's checked into git at
+          # src-tauri/icons/android/ over the freshly generated ones, so
+          # release builds ship the vetted icons instead of the raw regen.
+          for density in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
+            mkdir -p "src-tauri/gen/android/app/src/main/res/mipmap-$density"
+            cp src-tauri/icons/android/mipmap-$density/*.png \
+              "src-tauri/gen/android/app/src/main/res/mipmap-$density/"
+          done
           npx tauri android build --ci --aab \
             -c '{"bundle":{"android":{"versionCode":'"$VERSION_CODE"'}}}'
 

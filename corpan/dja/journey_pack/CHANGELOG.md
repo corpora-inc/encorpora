@@ -7,6 +7,21 @@ pack is the shippable unit; see `corpan/docs/journey/specs/course-pack.md`
 
 ## [Unreleased]
 
+### Changed
+- **`journey_en` promoted to the stable channel (CTO decision, 0.20.6
+  release).** `publish_journey_pack.py` gains a per-target `CHANNEL_DEFAULTS`
+  map (new: `--channel` now defaults to `None` and resolves via
+  `CHANNEL_DEFAULTS.get(target, "preview")`); `en` is now mapped to
+  `"stable"` so the next `publish_journey_pack.py en` invocation (no flag
+  needed) stamps `channel: "stable"` in the index entry — matching the
+  client's exact accepted string (`journeyPackCatalog.ts` `visibleJourneyPacks()`
+  only hides `channel === "preview"`; any other value, including "stable" or
+  absent, is visible). Unlisted future targets still default to `"preview"`.
+  No app change (course-pack.md §7.3: "Promotion to stable = index-entry edit
+  (publisher flag)"). NOT yet published — this only changes what the next
+  publish run will stamp; someone with AWS creds must still run the
+  publisher to update the live `index.json`.
+
 ### Added
 - **Communicative-first launchpad gates (V-23, V-24).** **V-23** fails the
   build if the learner's opener (lowest-index launchpad unit) leads with

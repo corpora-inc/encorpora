@@ -4,7 +4,8 @@
 
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { chimeRung } from "./sounds.ts"
+import { chimeRung, ttsSpeaking } from "./sounds.ts"
+import { beginUtterance, endUtterance, _resetAudioManagerForTests } from "../../util/audioManager.ts"
 
 test("pitch never falls with combo depth, and keeps climbing across octaves", () => {
   const rungs = [0, 1, 2, 3, 4, 5, 6, 8, 12, 18].map(chimeRung)
@@ -31,4 +32,27 @@ test("climb caps at +2 octaves (never shrill)", () => {
 
 test("depth 0 is the base note", () => {
   assert.equal(chimeRung(0), 523.25)
+})
+
+// Celebration-trigger coverage (wave-1 audio manager regression risk): the
+// ttsSpeaking() gate now also reads the estimate-based isUtteranceActive()
+// (native TTS has no true onend signal — see audioManager.ts), which can
+// stay "active" for seconds after a card's own mount-autoplay prompt
+// (choice_pick toNative/audio-fallback, listen_pick, image/glyph modes) has
+// actually finished. ActivityCardHost.settle() defuses this by calling
+// endUtterance() right before firing a celebration, so a stale prompt-audio
+// estimate can never silently swallow the fresh correct-answer chime.
+test("a stale (but still-estimated-active) utterance suppresses the chime gate", () => {
+  _resetAudioManagerForTests()
+  assert.equal(ttsSpeaking(), false, "nothing tracked ⇒ chime is never dropped")
+  beginUtterance("hola buenos dias como estas hoy amigo", 1) // long prompt, still "active"
+  assert.equal(ttsSpeaking(), true, "an in-window estimate reads as speaking ⇒ would drop the chime")
+})
+
+test("endUtterance() clears a stale estimate so the chime gate reopens — the settle() fix", () => {
+  _resetAudioManagerForTests()
+  beginUtterance("hola buenos dias como estas hoy amigo", 1)
+  assert.equal(ttsSpeaking(), true, "precondition: the stale estimate is still gating")
+  endUtterance() // exactly what settle() now does before celebrate()
+  assert.equal(ttsSpeaking(), false, "cleared ⇒ the correct-answer chime is never silently dropped")
 })

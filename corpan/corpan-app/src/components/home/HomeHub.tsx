@@ -44,12 +44,7 @@ import { PHRASE_PACK_ID, PHRASE_FLIP_IMAGE } from "@/experiences/phraseFlip"
 import { useJourneyPacksStore } from "@/store/journeyPacks"
 import { useJourneyStore, courseKeyOf } from "@/store/journey"
 import { packIdForTarget } from "@/util/journeyPack"
-import {
-  fetchJourneyPackCatalog,
-  findJourneyPackForTarget,
-  visibleJourneyPacks,
-} from "@/contentPacks/journeyPackCatalog"
-import { getAppVersion } from "@/lib/appVersion"
+import { isJourneyPackAvailableForTarget } from "@/journey/journeyAvailability"
 
 /** Per-experience icon — fallback when the catalog has no artwork. */
 const EXP_ICON: Record<string, LucideIcon> = {
@@ -155,19 +150,9 @@ export function HomeHub({
     if (journeyInstalled) return
     let cancelled = false
     void (async () => {
-      try {
-        const cat = await fetchJourneyPackCatalog()
-        if (!cat || cancelled) return
-        const appVersion = await getAppVersion()
-        const devMode = useCatalogStore.getState().devMode
-        const entry = findJourneyPackForTarget(
-          visibleJourneyPacks(cat, appVersion, devMode),
-          journeyTarget,
-        )
-        if (!cancelled) setJourneyInCatalog(!!entry)
-      } catch {
-        /* offline / index unreachable — installed-only gating stands */
-      }
+      // Shared selection seam: stable preferred, preview fallback, compat gates.
+      const available = await isJourneyPackAvailableForTarget(journeyTarget)
+      if (!cancelled) setJourneyInCatalog(available)
     })()
     return () => {
       cancelled = true

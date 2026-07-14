@@ -208,6 +208,13 @@
     },
     "phrasePacks": {
       "hero": "اختر مواضيعك",
+      "availableSummary": "{{count}} حزمة عبارات متاحة · ~{{size}} MB",
+      "installAll": "تثبيت الكل",
+      "chooseIndividually": "الاختيار فرديًا",
+      "installing": "جارٍ تثبيت {{current}} من {{total}}…",
+      "someFailed": "تعذّر تثبيت {{count}} حزمة. يمكنك المحاولة مرة أخرى من تبويب الحزم.",
+      "allInstalled": "لديك بالفعل حزم العبارات المبدئية.",
+      "installed": "مُثبَّتة",
       "loading": "جارٍ التحميل…",
       "selectAll": "تحديد الكل ({{count}})",
       "clearAll": "مسح",
@@ -346,7 +353,8 @@
       "subtitle": "يقدّم لك Journey يوميًا مزيجًا من المواد الجديدة والمراجعة بـ {{lang}} — بطاقة تلو بطاقة.",
       "guided": {
         "label": "درب يومي موجَّه",
-        "desc": "جلسة يومية قصيرة، مخطَّطة من أجلك."
+        "desc": "جلسة يومية قصيرة، مخطَّطة من أجلك.",
+        "unavailable": "المسار الموجّه غير متاح للـ {{lang}} بعد."
       },
       "explore": {
         "label": "بالوتيرة التي تناسبك",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "مضمن مع Plus",
     "installFailedTitle": "فشل التثبيت",
+    "updateUnavailableTitle": "التحديث غير متاح",
+    "updateUnavailableDetail": "لم تتطابق هذه التنزيلة مع ما كنا نتوقعه. يُرجى المحاولة لاحقًا.",
     "installStuckDetail": "لا يوجد تقدم منذ فترة. تحقق من اتصالك وحاول مرة أخرى.",
     "installStuckTitle": "توقف التنزيل",
     "openPack": "فتح {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "أنت مواكب حتى الآن",
       "loading": "نجهّز بطاقاتك…",
-      "loadError": "تعذّر تحميل Journey. حاول مجددًا من الرئيسية."
+      "loadError": "تعذّر تحميل Journey. حاول مجددًا من الرئيسية.",
+      "retry": "حاول مرة أخرى"
     },
     "popin": {
       "pronounceTitle": "انطقها",

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Alege-ți subiectele",
+      "availableSummary": "{{count}} pachete de fraze disponibile · ~{{size}} MB",
+      "installAll": "Instalează tot",
+      "chooseIndividually": "Alege individual",
+      "installing": "Se instalează {{current}} din {{total}}…",
+      "someFailed": "{{count}} pachet(e) nu au putut fi instalate. Poți reîncerca din fila Pachete.",
+      "allInstalled": "Ai deja pachetele de fraze de start.",
+      "installed": "Instalat",
       "loading": "Se încarcă…",
       "selectAll": "Selectează tot ({{count}})",
       "clearAll": "Șterge",
@@ -346,7 +353,8 @@
       "subtitle": "Journey-ul îți oferă zilnic un mix de material nou și recapitulare în {{lang}} — card cu card.",
       "guided": {
         "label": "Traseu zilnic ghidat",
-        "desc": "O sesiune zilnică scurtă, planificată pentru tine."
+        "desc": "O sesiune zilnică scurtă, planificată pentru tine.",
+        "unavailable": "Traseul ghidat nu este încă disponibil pentru {{lang}}."
       },
       "explore": {
         "label": "În ritm propriu",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclus cu Plus",
     "installFailedTitle": "Instalare eșuată",
+    "updateUnavailableTitle": "Actualizare indisponibilă",
+    "updateUnavailableDetail": "Această descărcare nu a corespuns cu ce așteptam. Încearcă din nou mai târziu.",
     "installStuckDetail": "Fără progres de ceva timp. Verifică-ți conexiunea și încearcă din nou.",
     "installStuckTitle": "Descărcare blocată",
     "openPack": "Deschide {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "Ești la zi deocamdată",
       "loading": "Îți pregătim cardurile…",
-      "loadError": "Journey nu s-a putut încărca. Încearcă din nou de pe Acasă."
+      "loadError": "Journey nu s-a putut încărca. Încearcă din nou de pe Acasă.",
+      "retry": "Încearcă din nou"
     },
     "popin": {
       "pronounceTitle": "Pronunță",

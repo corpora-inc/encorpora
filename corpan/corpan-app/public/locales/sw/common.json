@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Chagua mada zako",
+      "availableSummary": "Vifurushi {{count}} vya misemo vinapatikana · ~{{size}} MB",
+      "installAll": "Sakinisha vyote",
+      "chooseIndividually": "Chagua kimoja kimoja",
+      "installing": "Inasakinisha {{current}} kati ya {{total}}…",
+      "someFailed": "Vifurushi {{count}} havikuweza kusakinishwa. Unaweza kujaribu tena kutoka kichupo cha Vifurushi.",
+      "allInstalled": "Tayari una vifurushi vya kuanzia vya misemo.",
+      "installed": "Kimesakinishwa",
       "loading": "Inapakia…",
       "selectAll": "Chagua zote ({{count}})",
       "clearAll": "Futa",
@@ -346,7 +353,8 @@
       "subtitle": "Journey hukuletea kila siku mchanganyiko wa maudhui mapya na marudio katika {{lang}} — kadi moja baada ya nyingine.",
       "guided": {
         "label": "Njia ya kila siku iliyoongozwa",
-        "desc": "Kipindi kifupi cha kila siku, kilichopangwa kwa ajili yako."
+        "desc": "Kipindi kifupi cha kila siku, kilichopangwa kwa ajili yako.",
+        "unavailable": "Njia inayoongozwa bado haipatikani kwa {{lang}}."
       },
       "explore": {
         "label": "Kwa kasi yako mwenyewe",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Imejumuishwa na Plus",
     "installFailedTitle": "Usakinishaji umeshindwa",
+    "updateUnavailableTitle": "Sasisho halipatikani",
+    "updateUnavailableDetail": "Upakuaji huu haukulingana na tulichotarajia. Tafadhali jaribu tena baadaye.",
     "installStuckDetail": "Hakuna maendeleo kwa muda. Angalia muunganisho wako na ujaribu tena.",
     "installStuckTitle": "Upakuaji umesimama",
     "openPack": "Fungua {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "Kwa sasa umemaliza yote",
       "loading": "Kadi zako zinaandaliwa…",
-      "loadError": "Journey haikuweza kupakiwa. Jaribu tena kutoka Nyumbani."
+      "loadError": "Journey haikuweza kupakiwa. Jaribu tena kutoka Nyumbani.",
+      "retry": "Jaribu tena"
     },
     "popin": {
       "pronounceTitle": "Litamke",

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Valitse aiheesi",
+      "availableSummary": "Saatavilla {{count}} fraasipakettia · ~{{size}} MB",
+      "installAll": "Asenna kaikki",
+      "chooseIndividually": "Valitse yksitellen",
+      "installing": "Asennetaan {{current}}/{{total}}…",
+      "someFailed": "{{count}} pakettia ei voitu asentaa. Voit yrittää uudelleen Paketit-välilehdellä.",
+      "allInstalled": "Sinulla on jo aloitusfraasipaketit.",
+      "installed": "Asennettu",
       "loading": "Ladataan…",
       "selectAll": "Valitse kaikki ({{count}})",
       "clearAll": "Tyhjennä",
@@ -346,7 +353,8 @@
       "subtitle": "Journey tarjoaa joka päivä sekoituksen uutta materiaalia ja kertausta kielellä {{lang}} — kortti kerrallaan.",
       "guided": {
         "label": "Ohjattu päivittäinen polku",
-        "desc": "Lyhyt päivittäinen sessio, suunniteltu sinulle."
+        "desc": "Lyhyt päivittäinen sessio, suunniteltu sinulle.",
+        "unavailable": "Ohjattu polku ei ole vielä saatavilla kielelle {{lang}}."
       },
       "explore": {
         "label": "Omaan tahtiin",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Sisältyy Plus-tilaukseen",
     "installFailedTitle": "Asennus epäonnistui",
+    "updateUnavailableTitle": "Päivitys ei ole saatavilla",
+    "updateUnavailableDetail": "Tämä lataus ei vastannut odotettua. Yritä myöhemmin uudelleen.",
     "installStuckDetail": "Ei edistystä vähään aikaan. Tarkista yhteytesi ja yritä uudelleen.",
     "installStuckTitle": "Lataus pysähtyi",
     "openPack": "Avaa {{name}}",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Olet ajan tasalla toistaiseksi",
       "loading": "Valmistellaan korttejasi…",
-      "loadError": "Journey ei latautunut. Yritä uudelleen Kodista."
+      "loadError": "Journey ei latautunut. Yritä uudelleen Kodista.",
+      "retry": "Yritä uudelleen"
     },
     "popin": {
       "pronounceTitle": "Äännä se",

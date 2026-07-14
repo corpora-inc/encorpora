@@ -155,3 +155,10 @@ export function createMastery(deps: MasteryDeps): Mastery {
 export function isSuspended(card: ItemCard): boolean {
   return (card.flags & CardFlags.Suspended) !== 0
 }
+
+/** Retired cards (R-A: RETIRE_PERFECT_STREAK perfect completions) are excluded
+ *  from serving pools + the debt backlog exactly like suspended ones — helper
+ *  shared by pools/mixer so a twice-nailed item stops recycling (breadth-first). */
+export function isRetired(card: ItemCard): boolean {
+  return (card.flags & CardFlags.Retired) !== 0
+}

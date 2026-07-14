@@ -29,13 +29,14 @@ export type Scene = {
   motifs: SceneMotif[]
 }
 
-// A small serial set. `motifs.length` is the beat count (2–3) — deliberately
-// short so a Drift is a 20–40s comedown, never a chapter.
+// A small serial set. `motifs.length` is the beat count — 5–6 beats so a
+// "catch the drift" run has real length (narrate → catch, ~90s total), while
+// the calm night-water aesthetic keeps it a comedown, not a chapter.
 export const SCENES: Scene[] = [
-  { id: "first-light", hue: 205, motifs: ["dawn", "lantern", "stars"] },
-  { id: "quiet-tide", hue: 190, motifs: ["tide", "stars", "lantern"] },
-  { id: "slow-snow", hue: 225, motifs: ["snow", "lantern"] },
-  { id: "open-door", hue: 210, motifs: ["door", "dawn", "stars"] },
+  { id: "first-light", hue: 205, motifs: ["dawn", "lantern", "tide", "stars", "lantern"] },
+  { id: "quiet-tide", hue: 190, motifs: ["tide", "lantern", "stars", "tide", "lantern", "dawn"] },
+  { id: "slow-snow", hue: 225, motifs: ["snow", "lantern", "stars", "snow", "lantern"] },
+  { id: "open-door", hue: 210, motifs: ["door", "dawn", "lantern", "tide", "stars", "lantern"] },
 ]
 
 /** Deterministic-ish pick so a standalone session rotates through the serial. */

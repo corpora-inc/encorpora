@@ -12,6 +12,7 @@ import type {
 } from "../../contentPacks/activityContract"
 import { celebrate } from "../celebration/CelebrationLayer.tsx"
 import { playSoftMiss } from "../celebration/sounds.ts"
+import { endUtterance, waitForActiveUtterance } from "../../util/audioManager.ts"
 import { rendererFor } from "../exercises/index.ts"
 import type { ExerciseMode, SpeakFn } from "../exercises/types.ts"
 import { ResultStamp } from "../exercises/common/ResultStamp.tsx"
@@ -20,6 +21,16 @@ import { celebrationFor, isSingleShotSettle, settleOk, settleStamp, singleShotAt
 import type { FeedCard, RawOutcome, ScaffoldState } from "../types.ts"
 
 const FAST_MS = 6000
+
+// Explicit-completion cards (advanceRules.ts "button" rule): the learner's
+// Continue press IS the advance request — contract #6(a) ("that press
+// advances immediately in every mode", the historical "Continuar does
+// nothing" bug). Treat it exactly like a user-initiated swipe: request the
+// advance immediately, no waitForActiveUtterance() gate. FeedScroller's
+// requestAdvance mirrors this by calling doAdvance({ userInitiated: true })
+// for the same set of activity types. Keep this list in sync with
+// advanceRules.ts's `button` cases.
+const EXPLICIT_ADVANCE_TYPES = new Set(["speak_echo", "intro_echo", "flip_recall"])
 
 export function ActivityCardHost(props: {
   card: Extract<FeedCard, { kind: "exercise" }>
@@ -101,16 +112,61 @@ export function ActivityCardHost(props: {
         hintsUsed: hintsRef.current,
         combo: props.combo,
       })
-      if (deco) void celebrate(deco)
+      if (deco) {
+        // Clear stale utterance tracking before the chime check. sounds.ts's
+        // ttsSpeaking() gate (wave-1 audio manager) drops the celebration
+        // chime whenever isUtteranceActive() reads true — but that flag is an
+        // ESTIMATE (word-count based, no true onend on native TTS; see
+        // audioManager.ts), so it can outlive the card's own mount-autoplay
+        // prompt (choice_pick toNative/audio-fallback, listen_pick, image/
+        // glyph modes all autoplay on arrival) by seconds. A learner who
+        // answers correctly while that stale estimate is still "active" got a
+        // visual splash but NO chime — read as "no celebration" on a device.
+        // The prompt has already served its purpose the instant the learner
+        // commits an answer, so it can never legitimately gate THIS card's
+        // reward chime; clearing it here is a no-op for genuinely-relevant
+        // audio, since the reward speak() below registers its own fresh
+        // utterance right after.
+        endUtterance()
+        void celebrate(deco)
+      }
       // Tune the ears on EVERY exercise: on a scored pass, speak the target
       // aloud as the reward + reinforcement — the learner hears what they just
       // got right (word-order, cloze, choice, etc. all gain this in one place,
       // not per-card). speak_echo owns the mic + its own audio, so skip it; an
-      // unscored debut already auto-played on arrival.
-      if (ok && !unscored && prepared.spec.activityType !== "speak_echo") {
+      // unscored debut already auto-played on arrival. flip_recall ALSO skips
+      // it: FlipRecall.reveal() already speaks the target the instant the card
+      // is flipped, so the answer was spoken as part of completing the card —
+      // a repeat here is a pure duplicate, and since flip_recall advances
+      // instantly (EXPLICIT_ADVANCE_TYPES below, no waitForActiveUtterance
+      // gate), that duplicate utterance would bleed audibly into the NEXT
+      // card instead of just being redundant. The card keeps its own
+      // AudioButton for an intentional replay. General rule: settle only
+      // re-speaks the answer when it wasn't already spoken as part of
+      // completing the card (see EXPLICIT_ADVANCE_TYPES cards above — intro_echo
+      // needs no extra check since debut intros are always `unscored`, and
+      // speak_echo is excluded outright).
+      if (ok && !unscored && prepared.spec.activityType !== "speak_echo" && prepared.spec.activityType !== "flip_recall") {
         void props.speak(prepared.spec.targetLang, prepared.items[0].target.ttsText)
       }
-      props.onRequestAdvance()
+      if (EXPLICIT_ADVANCE_TYPES.has(prepared.spec.activityType)) {
+        // The Continue press that got us into settle() IS the user's
+        // deliberate advance — turbo-scroll instant, same as a swipe. Do NOT
+        // wait for any live utterance (a stale IntroEcho autoplay/replay or
+        // FlipRecall reveal-speak would otherwise stall this press up to
+        // ~2s, on top of another ~2s in FeedScroller's doAdvance).
+        props.onRequestAdvance()
+      } else {
+        // APP-initiated advance: let a just-fired reward (or answer-reveal)
+        // utterance actually finish — bounded — before asking the host to move
+        // on. Cutting it mid-word read as the app rushing the learner off their
+        // own correct answer. A no-op (instant) when nothing is playing, so
+        // cards with no reward speech advance exactly as before. A USER-
+        // initiated forward swipe/tap stays instant (FeedScroller's
+        // onForwardGesture keeps its unconditional stopSpeech) — this only
+        // guards the app-driven request-advance path.
+        void waitForActiveUtterance().then(() => props.onRequestAdvance())
+      }
     }
   }
 
@@ -167,8 +223,21 @@ export function ActivityCardHost(props: {
     return null
   }
 
+  // Bottom-CTA composition (intro_echo debut): the renderer wants the REAL
+  // height FeedCardFrame's flex-1 column offers, so its content can center in
+  // the space ABOVE a bottom-anchored Continue (IntroEcho roots are `grow`).
+  // `grow` (flex-basis:auto) — not flex-1/basis-0 — so inside an auto-height
+  // parent (PlacementCard's column, the boss-banner wrapper) this is inert and
+  // the card keeps its natural height. Other card types keep the hugging
+  // block that FeedCardFrame centers (the no-reflow invariant is untouched:
+  // the height is claimed at mount and never changes on answer).
+  const fillHeight = prepared.spec.activityType === "intro_echo"
+
   return (
-    <div className="flex w-full flex-col items-center gap-4" data-testid={`journey-card-${prepared.spec.activityType}`}>
+    <div
+      className={`flex w-full flex-col items-center gap-4${fillHeight ? " grow" : ""}`}
+      data-testid={`journey-card-${prepared.spec.activityType}`}
+    >
       <Renderer
         cardId={card.cardId}
         spec={prepared.spec}

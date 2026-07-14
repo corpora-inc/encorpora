@@ -96,6 +96,10 @@ export function SpeakEcho(props: ExerciseProps) {
           // SUPPORTED but the model isn't installed — the capability shows an
           // inline install offer; decline emits flags.sttDeclined.
           modelPolicy: "offer-install",
+          // A great score must DWELL, not app-advance instantly (R4): the
+          // learner sees their feedback and taps Continue (or the 12-attempt
+          // backstop below). User-initiated advance always wins (turbo-scroll).
+          settleOnTopBand: false,
           // The learner controls when they're done via the inline Continue, so
           // the round stays open for unlimited re-records (parlometron's retry
           // loop). A generous cap only backstops a runaway; Continue is the
@@ -153,12 +157,13 @@ export function SpeakEcho(props: ExerciseProps) {
     <div className="flex w-full flex-col items-center gap-3">
       {/* The cap-pronounce surface: readable target phrase, live waveform,
           per-word pills + overall %-score, "heard you say" playback — the full
-          parlometron feedback, themed to Journey. absolute-positioned root
-          fills this sized, relative frame. */}
+          parlometron feedback, themed to Journey. `.capPron-flow` roots it in
+          normal document flow so the root grows with its content (a long phrase
+          + full pill rows never clip); min-height keeps a stable card. */}
       <div
         ref={containerRef}
         style={CAP_PRON_THEME}
-        className="relative min-h-72 w-full overflow-hidden rounded-lg border border-border/60 bg-card/40"
+        className="capPron-flow relative w-full rounded-lg border border-border/60 bg-card/40"
         data-testid="journey-speak-echo"
       />
       {/* After a real attempt: an unmistakable Continue (speak again to retry —

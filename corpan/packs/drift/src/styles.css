@@ -1,5 +1,6 @@
-/* Drift — a calm micro-story reader. Cooler visual temperature than the
-   exercise cards; squared-off (8px), compact-mobile, reduced-motion safe. */
+/* Drift — "Catch the Drift". A calm night-water scene where word-lanterns drift
+   across a slow current and you catch the right one before it's lost. Cool
+   temperature, squared HUD, compact-mobile, reduced-motion safe, no h-overflow. */
 
 .drift-root {
   position: absolute;
@@ -7,7 +8,8 @@
   overflow: hidden;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --drift-hue: 205;
-  --drift-accent: hsl(var(--drift-hue) 70% 68%);
+  --drift-accent: hsl(var(--drift-hue) 72% 66%);
+  --drift-gold: hsl(42 92% 66%);
   --drift-accent-soft: hsl(var(--drift-hue) 55% 78%);
   --drift-ink: hsl(var(--drift-hue) 30% 92%);
   --drift-ink-dim: hsl(var(--drift-hue) 20% 66%);
@@ -19,21 +21,24 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  /* Cool, deep, calm gradient — the "comedown" temperature. */
   background:
-    radial-gradient(120% 90% at 50% 12%, hsl(var(--drift-hue) 45% 22%) 0%, hsl(var(--drift-hue) 55% 10%) 55%, hsl(var(--drift-hue) 60% 6%) 100%);
+    radial-gradient(120% 90% at 50% 8%, hsl(var(--drift-hue) 45% 20%) 0%, hsl(var(--drift-hue) 55% 9%) 55%, hsl(var(--drift-hue) 62% 5%) 100%);
+  transition: filter 900ms ease;
 }
+/* Streak-6 "combo bloom": the whole scene warms ~15°. */
+.drift-stage.is-bloom { filter: hue-rotate(-15deg) saturate(1.08) brightness(1.04); }
 
-/* --- Motif layer: evocative elements that resolve per beat ---------------- */
+/* --- Motif layer: rides the same slow current as the lanterns --------------- */
 .drift-motifs {
   position: absolute;
-  inset: 0;
+  inset: -8% -12%;
   pointer-events: none;
   overflow: hidden;
+  animation: drift-current 46s linear infinite;
 }
 .drift-motif {
   position: absolute;
-  font-size: clamp(48px, 22vw, 180px);
+  font-size: clamp(44px, 20vw, 170px);
   line-height: 1;
   color: var(--drift-accent);
   opacity: 0;
@@ -41,94 +46,418 @@
   transition: opacity 1400ms ease, transform 1600ms ease;
   filter: drop-shadow(0 0 24px hsl(var(--drift-hue) 80% 60% / 0.35));
 }
-.drift-motif.is-on { opacity: 0.16; transform: translateY(0) scale(1); }
-.drift-motif--dawn    { top: 6%;  left: 50%; transform: translateX(-50%) translateY(14px); }
+.drift-motif.is-on { opacity: 0.15; transform: translateY(0) scale(1); }
+.drift-motif--dawn    { top: 5%;  left: 50%; transform: translateX(-50%) translateY(14px); }
 .drift-motif--dawn.is-on { transform: translateX(-50%) translateY(0); }
-.drift-motif--lantern { top: 18%; right: 12%; }
-.drift-motif--stars   { top: 12%; left: 14%; font-size: clamp(28px, 10vw, 90px); }
-.drift-motif--snow    { top: 8%;  left: 30%; }
-.drift-motif--tide    { bottom: 20%; left: 50%; transform: translateX(-50%) translateY(14px); }
+.drift-motif--lantern { top: 14%; right: 14%; }
+.drift-motif--stars   { top: 10%; left: 16%; font-size: clamp(26px, 9vw, 84px); }
+.drift-motif--snow    { top: 7%;  left: 32%; }
+.drift-motif--tide    { bottom: 26%; left: 50%; transform: translateX(-50%) translateY(14px); }
 .drift-motif--tide.is-on { transform: translateX(-50%) translateY(0); }
-.drift-motif--door    { top: 20%; left: 50%; transform: translateX(-50%) translateY(14px); }
+.drift-motif--door    { top: 16%; left: 50%; transform: translateX(-50%) translateY(14px); }
 .drift-motif--door.is-on { transform: translateX(-50%) translateY(0); }
+
+@keyframes drift-current {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-6%); }
+}
 
 .drift-veil {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent 30%, hsl(var(--drift-hue) 60% 6% / 0.55) 100%);
+  background: linear-gradient(to bottom, transparent 24%, hsl(var(--drift-hue) 60% 5% / 0.6) 100%);
 }
 
-/* --- Prose ---------------------------------------------------------------- */
+/* --- HUD: score chip + river-dot strand ------------------------------------ */
+.drift-hud {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(10px, env(safe-area-inset-top)) 14px 4px;
+  gap: 10px;
+}
+.drift-river {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 70%;
+}
+.drift-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: hsl(var(--drift-hue) 40% 96% / 0.18);
+  transition: background-color 400ms ease, box-shadow 400ms ease, transform 400ms ease;
+}
+.drift-dot.is-filled {
+  background: var(--drift-gold);
+  box-shadow: 0 0 10px hsl(42 92% 66% / 0.7);
+  transform: scale(1.15);
+}
+.drift-score {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 44px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: hsl(var(--drift-hue) 40% 96% / 0.1);
+  border: 1px solid hsl(var(--drift-hue) 45% 70% / 0.35);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: var(--drift-gold);
+}
+.drift-score-num { display: inline-block; }
+.drift-score-num.is-bump { animation: drift-bump 340ms ease; }
+@keyframes drift-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+/* --- Prose + standing translation ----------------------------------------- */
 .drift-scrim {
   position: relative;
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(20px, 6vw, 48px);
+  gap: clamp(10px, 3vw, 18px);
+  padding: clamp(14px, 5vw, 40px);
+  min-height: 0;
 }
 .drift-prose {
   max-width: 34rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: clamp(14px, 3vw, 26px);
+  gap: clamp(8px, 2vw, 16px);
 }
 .drift-line {
   margin: 0;
-  font-size: clamp(20px, 5.5vw, 30px);
+  font-size: clamp(18px, 5vw, 28px);
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 1.5;
   letter-spacing: 0.01em;
-  color: var(--drift-ink-dim);
-  transition: color 700ms ease, transform 700ms ease;
+  color: hsl(var(--drift-hue) 20% 52%);
+  transition: color 700ms ease, transform 700ms ease, opacity 700ms ease;
+  opacity: 0.5;
 }
 .drift-line.is-reading {
   color: var(--drift-ink);
-  transform: translateY(-2px);
+  opacity: 1;
+  transform: translateY(-1px);
 }
+.drift-standing {
+  margin: 0;
+  min-height: 1.3em;
+  max-width: 32rem;
+  text-align: center;
+  font-size: clamp(14px, 4vw, 18px);
+  font-weight: 600;
+  color: var(--drift-accent-soft);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.drift-standing.is-on { opacity: 0.92; }
+
 .drift-word {
   cursor: pointer;
   border-radius: 6px;
   padding: 0 1px;
+  text-decoration: underline dotted hsl(var(--drift-hue) 50% 72% / 0.5);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: color 180ms ease, background-color 180ms ease;
 }
 .drift-word:hover { color: var(--drift-accent-soft); }
+/* Word-sweep highlight that rides the narration. */
+.drift-word.is-reading-word {
+  color: hsl(var(--drift-hue) 60% 12%);
+  background: var(--drift-accent-soft);
+  text-decoration: none;
+}
 .drift-word.is-tapped {
   color: hsl(var(--drift-hue) 60% 12%);
   background: var(--drift-accent);
+  text-decoration: none;
+}
+/* The cloze gap — opens in BOTH variants (silent-device proof). */
+.drift-word--gap {
+  color: var(--drift-accent);
+  text-decoration: none;
+  border-bottom: 2px dashed var(--drift-accent);
+  letter-spacing: 0.12em;
+  cursor: default;
+}
+.drift-word.is-restored { animation: drift-restore 800ms ease; }
+@keyframes drift-restore {
+  0% { color: var(--drift-gold); text-shadow: 0 0 12px hsl(42 92% 66% / 0.8); }
+  100% { color: inherit; text-shadow: none; }
 }
 .drift-empty { color: var(--drift-ink-dim); font-size: 28px; }
 
-/* --- Gloss reveal --------------------------------------------------------- */
-.drift-gloss {
+/* --- Lane: word-lanterns drift across the current -------------------------- */
+.drift-lanewrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+}
+.drift-hint {
+  margin: 0;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: hsl(var(--drift-hue) 40% 96% / 0.12);
+  color: var(--drift-ink);
+  font-size: clamp(13px, 3.6vw, 15px);
+  font-weight: 600;
+  animation: drift-hint-rise 520ms ease;
+}
+@keyframes drift-hint-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.drift-lane {
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  height: 132px;
+  overflow: hidden;
+}
+.drift-lantern {
+  position: absolute;
+  left: 0;
+  top: calc(28px + var(--lane, 0) * 58px);
+  transform: translateY(-50%) translateX(120%);
+  appearance: none;
+  min-height: 48px;
+  min-width: 48px;
+  max-width: 60%;
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--drift-hue) 60% 74% / 0.5);
+  background: radial-gradient(120% 120% at 50% 30%, hsl(var(--drift-hue) 55% 40% / 0.55), hsl(var(--drift-hue) 60% 24% / 0.6));
+  box-shadow: 0 0 18px hsl(var(--drift-hue) 80% 60% / 0.35), inset 0 0 12px hsl(var(--drift-hue) 70% 80% / 0.25);
+  color: var(--drift-ink);
+  font-size: clamp(15px, 4.4vw, 19px);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  animation: drift-bob 3800ms ease-in-out infinite;
+}
+.drift-lane.is-paused .drift-lantern { animation-play-state: paused; }
+.drift-lantern.is-pulse { animation: drift-bob 3800ms ease-in-out infinite, drift-pulse 1400ms ease-out 2; }
+.drift-lantern.is-caught {
+  background: radial-gradient(120% 120% at 50% 30%, hsl(42 92% 72%), hsl(42 90% 52%));
+  border-color: var(--drift-gold);
+  color: hsl(42 60% 14%);
+  box-shadow: 0 0 30px hsl(42 92% 66% / 0.85);
+  animation: drift-kindle 620ms ease-out forwards;
+}
+.drift-lantern.is-taught {
+  border-color: var(--drift-gold);
+  box-shadow: 0 0 22px hsl(42 92% 66% / 0.7);
+  color: var(--drift-gold);
+}
+.drift-lantern.is-missed { animation: drift-sink 700ms ease-in forwards; }
+.drift-lantern.is-gone { opacity: 0; }
+@keyframes drift-bob {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -6px; }
+}
+@keyframes drift-pulse {
+  0% { box-shadow: 0 0 18px hsl(var(--drift-hue) 80% 60% / 0.35); }
+  50% { box-shadow: 0 0 34px hsl(var(--drift-hue) 85% 70% / 0.9); }
+  100% { box-shadow: 0 0 18px hsl(var(--drift-hue) 80% 60% / 0.35); }
+}
+@keyframes drift-kindle {
+  0% { transform: translateY(-50%) scale(1); }
+  45% { transform: translateY(-50%) scale(1.18); }
+  100% { transform: translateY(-50%) scale(1.05); }
+}
+@keyframes drift-sink {
+  0% { opacity: 1; }
+  100% { opacity: 0.25; transform: translateY(-30%) scale(0.9); filter: blur(1px); }
+}
+
+/* Floating "+N" on a catch. */
+.drift-plus {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--drift-gold);
+  text-shadow: 0 0 12px hsl(42 92% 66% / 0.8);
+  opacity: 0;
+}
+.drift-plus.is-on { animation: drift-plus-up 1050ms ease-out forwards; }
+@keyframes drift-plus-up {
+  0% { opacity: 0; transform: translate(-50%, 6px) scale(0.8); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -34px) scale(1.1); }
+}
+
+/* Reduced-motion depleting glow bar (stands in for drift distance). */
+.drift-bar {
+  width: min(60%, 18rem);
+  height: 5px;
+  border-radius: 999px;
+  background: hsl(var(--drift-hue) 40% 96% / 0.14);
+  overflow: hidden;
+}
+.drift-bar span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: var(--drift-accent);
+}
+
+/* Window chrome: streak ember, multiplier, replay. */
+.drift-window-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 30px;
+}
+.drift-streak {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--drift-gold);
+}
+.drift-mult {
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--drift-gold);
+  color: hsl(42 60% 14%);
+  font-size: 13px;
+  font-weight: 800;
+}
+.drift-replay {
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--drift-hue) 45% 70% / 0.45);
+  background: hsl(var(--drift-hue) 40% 96% / 0.1);
+  color: var(--drift-ink);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- Word card: phrase translation + meaning + origin --------------------- */
+.drift-card {
   position: absolute;
   left: 50%;
   bottom: clamp(84px, 16vh, 120px);
-  transform: translate(-50%, 8px);
-  max-width: 80%;
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: hsl(var(--drift-hue) 30% 96% / 0.94);
+  transform: translate(-50%, 10px);
+  width: min(92%, 30rem);
+  max-height: 60vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 18px 18px;
+  border-radius: 14px;
+  background: hsl(var(--drift-hue) 34% 96% / 0.98);
   color: hsl(var(--drift-hue) 40% 16%);
-  font-size: clamp(14px, 4vw, 17px);
-  font-weight: 600;
-  text-align: center;
+  box-shadow: 0 12px 44px hsl(var(--drift-hue) 60% 6% / 0.5);
+  text-align: left;
   opacity: 0;
   transition: opacity 240ms ease, transform 240ms ease;
-  pointer-events: none;
+  /* Above the end-screen overlay (z 6) so end-screen review taps show on top. */
+  z-index: 7;
 }
-.drift-gloss.is-on { opacity: 1; transform: translate(-50%, 0); }
+.drift-card.is-on { opacity: 1; transform: translate(-50%, 0); }
+.drift-card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: hsl(var(--drift-hue) 28% 88%);
+  color: hsl(var(--drift-hue) 40% 32%);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.drift-card-word {
+  margin: 0 34px 8px 0;
+  font-size: clamp(20px, 5.5vw, 25px);
+  font-weight: 800;
+}
+.drift-card-phrase {
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: hsl(var(--drift-hue) 45% 88% / 0.7);
+}
+.drift-card-phrase-label,
+.drift-card-origin-label {
+  margin: 0 0 3px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--drift-hue) 55% 40%);
+}
+.drift-card-phrase-text {
+  margin: 0;
+  font-size: clamp(15px, 4.2vw, 17px);
+  font-weight: 700;
+  color: hsl(var(--drift-hue) 40% 20%);
+}
+.drift-card-gloss {
+  margin: 0 0 4px;
+  font-size: clamp(14px, 4vw, 16px);
+  font-weight: 600;
+  color: hsl(var(--drift-hue) 30% 30%);
+}
+.drift-card-origin {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid hsl(var(--drift-hue) 30% 82%);
+}
+.drift-card-origin-text {
+  margin: 0;
+  font-size: clamp(14px, 4vw, 16px);
+  line-height: 1.5;
+  color: hsl(var(--drift-hue) 35% 22%);
+}
 
-/* --- Controls ------------------------------------------------------------- */
+/* --- Controls -------------------------------------------------------------- */
 .drift-controls {
   position: relative;
   display: flex;
   gap: 10px;
   justify-content: center;
-  padding: clamp(14px, 4vw, 22px);
-  padding-bottom: max(clamp(14px, 4vw, 22px), env(safe-area-inset-bottom));
+  padding: clamp(12px, 3.5vw, 20px);
+  padding-bottom: max(clamp(12px, 3.5vw, 20px), env(safe-area-inset-bottom));
 }
 .drift-btn {
   appearance: none;
@@ -143,6 +472,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 .drift-btn:hover { background: hsl(var(--drift-hue) 40% 96% / 0.16); }
@@ -153,10 +484,109 @@
 }
 .drift-sound-glyph { font-size: 15px; line-height: 1; }
 
-/* --- Reduced motion: no drift, no parallax — instant, still --------------- */
+/* --- End screen ------------------------------------------------------------ */
+.drift-end {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: hsl(var(--drift-hue) 60% 5% / 0.86);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+.drift-end.is-on { opacity: 1; }
+.drift-end-inner {
+  width: min(92%, 26rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.drift-end-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--drift-ink-dim);
+}
+.drift-end-score {
+  margin: 0;
+  font-size: clamp(40px, 14vw, 60px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--drift-gold);
+  text-shadow: 0 0 26px hsl(42 92% 66% / 0.5);
+  font-variant-numeric: tabular-nums;
+}
+.drift-end-stars {
+  display: flex;
+  gap: 10px;
+  font-size: clamp(28px, 9vw, 38px);
+  color: hsl(var(--drift-hue) 25% 40%);
+}
+.drift-end-stars span { transition: transform 300ms ease, color 300ms ease; }
+.drift-end-stars span.is-lit {
+  color: var(--drift-gold);
+  text-shadow: 0 0 18px hsl(42 92% 66% / 0.8);
+  transform: scale(1.2);
+}
+.drift-end-line {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--drift-ink);
+}
+.drift-end-review {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  max-width: 100%;
+}
+.drift-lantern--review {
+  position: static;
+  transform: none;
+  animation: none;
+  max-width: 46%;
+  min-height: 44px;
+}
+.drift-end-best {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--drift-accent-soft);
+}
+.drift-end-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+.drift-again {
+  background: var(--drift-accent);
+  border-color: var(--drift-accent);
+  color: hsl(var(--drift-hue) 60% 12%);
+}
+
+/* --- Reduced motion: no drift, no parallax, static row + glow bar ---------- */
 @media (prefers-reduced-motion: reduce) {
+  .drift-motifs { animation: none !important; }
   .drift-motif,
   .drift-line,
-  .drift-gloss { transition-duration: 0.01ms !important; }
+  .drift-standing,
+  .drift-card,
+  .drift-end { transition-duration: 0.01ms !important; }
   .drift-motif.is-on { opacity: 0.14; transform: none; }
+  .drift-lantern,
+  .drift-lantern.is-pulse { animation: none !important; }
+  .drift-plus.is-on { animation-duration: 0.01ms !important; }
+}
+.drift-root.is-reduced .drift-lantern {
+  transform: translateY(-50%);
+  opacity: 1;
 }

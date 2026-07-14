@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Pasirink temas",
+      "availableSummary": "Galimų frazių paketų: {{count}} · ~{{size}} MB",
+      "installAll": "Įdiegti visus",
+      "chooseIndividually": "Rinktis po vieną",
+      "installing": "Diegiama {{current}} iš {{total}}…",
+      "someFailed": "Nepavyko įdiegti paketų: {{count}}. Galite bandyti dar kartą skirtuke „Paketai“.",
+      "allInstalled": "Pradinius frazių paketus jau turite.",
+      "installed": "Įdiegta",
       "loading": "Įkeliama…",
       "selectAll": "Pažymėti viską ({{count}})",
       "clearAll": "Išvalyti",
@@ -346,7 +353,8 @@
       "subtitle": "Journey kasdien pateikia naujos medžiagos ir kartojimo derinį {{lang}} kalba — kortelė po kortelės.",
       "guided": {
         "label": "Vedamas kasdienis kelias",
-        "desc": "Trumpas kasdienis užsiėmimas, suplanuotas jums."
+        "desc": "Trumpas kasdienis užsiėmimas, suplanuotas jums.",
+        "unavailable": "Vedamas kelias dar nepasiekiamas kalbai {{lang}}."
       },
       "explore": {
         "label": "Savarankiškai",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Įtraukta su Plus",
     "installFailedTitle": "Diegimas nepavyko",
+    "updateUnavailableTitle": "Atnaujinimas neprieinamas",
+    "updateUnavailableDetail": "Šis atsisiuntimas neatitiko to, ko tikėjomės. Bandykite dar kartą vėliau.",
     "installStuckDetail": "Kurį laiką nebuvo jokios pažangos. Patikrinkite ryšį ir bandykite dar kartą.",
     "installStuckTitle": "Atsisiuntimas sustojo",
     "openPack": "Atidaryti {{name}}",
@@ -1048,7 +1058,8 @@
     "feed": {
       "caughtUp": "Kol kas viską spėjai",
       "loading": "Ruošiamos tavo kortelės…",
-      "loadError": "Journey nepavyko įkelti. Bandyk dar kartą iš Pradžios."
+      "loadError": "Journey nepavyko įkelti. Bandyk dar kartą iš Pradžios.",
+      "retry": "Bandykite dar kartą"
     },
     "popin": {
       "pronounceTitle": "Ištark",

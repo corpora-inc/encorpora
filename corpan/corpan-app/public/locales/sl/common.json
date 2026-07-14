@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Izberi svoje teme",
+      "availableSummary": "Na voljo je paketov fraz: {{count}} · ~{{size}} MB",
+      "installAll": "Namesti vse",
+      "chooseIndividually": "Izberi posamično",
+      "installing": "Nameščanje {{current}} od {{total}}…",
+      "someFailed": "Paketov ni bilo mogoče namestiti: {{count}}. Poskusite znova na zavihku Paketi.",
+      "allInstalled": "Začetne pakete fraz že imate.",
+      "installed": "Nameščeno",
       "loading": "Nalaganje…",
       "selectAll": "Izberi vse ({{count}})",
       "clearAll": "Počisti",
@@ -346,7 +353,8 @@
       "subtitle": "Journey vam vsak dan postreže mešanico novega gradiva in ponavljanja v {{lang}} — kartico za kartico.",
       "guided": {
         "label": "Vodena dnevna pot",
-        "desc": "Kratka dnevna seja, načrtovana za vas."
+        "desc": "Kratka dnevna seja, načrtovana za vas.",
+        "unavailable": "Vodena pot za {{lang}} še ni na voljo."
       },
       "explore": {
         "label": "Lastno tempo",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Vključeno s Plus",
     "installFailedTitle": "Namestitev ni uspela",
+    "updateUnavailableTitle": "Posodobitev ni na voljo",
+    "updateUnavailableDetail": "Ta prenos se ni ujemal s tem, kar smo pričakovali. Poskusite znova pozneje.",
     "installStuckDetail": "Že nekaj časa ni napredka. Preverite povezavo in poskusite znova.",
     "installStuckTitle": "Prenos se je zataknil",
     "openPack": "Odpri {{name}}",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Zaenkrat si na tekočem",
       "loading": "Pripravljam tvoje kartice…",
-      "loadError": "Journeyja ni bilo mogoče naložiti. Poskusi znova z Domov."
+      "loadError": "Journeyja ni bilo mogoče naložiti. Poskusi znova z Domov.",
+      "retry": "Poskusi znova"
     },
     "popin": {
       "pronounceTitle": "Izgovori",

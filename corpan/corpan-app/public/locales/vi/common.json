@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Chọn chủ đề",
+      "availableSummary": "{{count}} gói cụm từ có sẵn · ~{{size}} MB",
+      "installAll": "Cài đặt tất cả",
+      "chooseIndividually": "Chọn từng gói",
+      "installing": "Đang cài đặt {{current}} trên {{total}}…",
+      "someFailed": "Không thể cài đặt {{count}} gói. Bạn có thể thử lại từ tab Gói.",
+      "allInstalled": "Bạn đã có các gói cụm từ khởi đầu.",
+      "installed": "Đã cài đặt",
       "loading": "Đang tải…",
       "selectAll": "Chọn tất cả ({{count}})",
       "clearAll": "Xóa",
@@ -346,7 +353,8 @@
       "subtitle": "Mỗi ngày, Journey mang đến sự kết hợp giữa nội dung mới và ôn tập bằng {{lang}} — mỗi lần một thẻ.",
       "guided": {
         "label": "Lộ trình hằng ngày có dẫn lối",
-        "desc": "Một phiên học ngắn hằng ngày, được lên kế hoạch sẵn cho bạn."
+        "desc": "Một phiên học ngắn hằng ngày, được lên kế hoạch sẵn cho bạn.",
+        "unavailable": "Lộ trình có hướng dẫn chưa khả dụng cho {{lang}}."
       },
       "explore": {
         "label": "Tự học theo nhịp độ riêng",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Đã bao gồm trong Plus",
     "installFailedTitle": "Cài đặt thất bại",
+    "updateUnavailableTitle": "Không có bản cập nhật",
+    "updateUnavailableDetail": "Bản tải xuống này không khớp với những gì chúng tôi mong đợi. Vui lòng thử lại sau.",
     "installStuckDetail": "Không có tiến triển trong một thời gian. Kiểm tra kết nối của bạn và thử lại.",
     "installStuckTitle": "Tải xuống bị kẹt",
     "openPack": "Mở {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "Hiện tại bạn đã học hết",
       "loading": "Đang chuẩn bị thẻ của bạn…",
-      "loadError": "Không tải được Journey. Thử lại từ Trang chủ."
+      "loadError": "Không tải được Journey. Thử lại từ Trang chủ.",
+      "retry": "Thử lại"
     },
     "popin": {
       "pronounceTitle": "Phát âm thử",

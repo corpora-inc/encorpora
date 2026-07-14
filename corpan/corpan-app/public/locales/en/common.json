@@ -370,6 +370,13 @@
     },
     "phrasePacks": {
       "hero": "Pick your topics",
+      "availableSummary": "{{count}} phrase packs available · ~{{size}} MB",
+      "installAll": "Install all",
+      "chooseIndividually": "Choose individually",
+      "installing": "Installing {{current}} of {{total}}…",
+      "someFailed": "{{count}} pack(s) couldn't be installed. You can retry from the Packs tab.",
+      "allInstalled": "You already have the starter phrase packs.",
+      "installed": "Installed",
       "loading": "Loading packs…",
       "selectAll": "Select all ({{count}})",
       "clearAll": "Clear selection",
@@ -423,7 +430,8 @@
       "subtitle": "The Journey serves a daily mix of new material and review in {{lang}} — one card at a time.",
       "guided": {
         "label": "Guided daily path",
-        "desc": "A short daily session, planned for you."
+        "desc": "A short daily session, planned for you.",
+        "unavailable": "The guided path isn't available for {{lang}} yet."
       },
       "explore": {
         "label": "Self-paced",
@@ -659,6 +667,8 @@
     "installStuckTitle": "Download stalled",
     "installStuckDetail": "No progress for a while. Check your connection and try again.",
     "installFailedTitle": "Install failed",
+    "updateUnavailableTitle": "Update unavailable",
+    "updateUnavailableDetail": "This download didn't match what we expected. Please try again later.",
     "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "Tap 7 times to unlock manifest installs.",
     "devUnlockToast": "Developer Packs unlocked.",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "You're caught up for now",
       "loading": "Preparing your cards…",
-      "loadError": "The Journey couldn't load. Try again from Home."
+      "loadError": "The Journey couldn't load. Try again from Home.",
+      "retry": "Try again"
     },
     "popin": {
       "pronounceTitle": "Pronounce it",

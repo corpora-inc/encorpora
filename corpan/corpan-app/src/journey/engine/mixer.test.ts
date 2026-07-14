@@ -94,7 +94,12 @@ test("mixer invariants hold across 3 simulated weeks of seeded batches", async (
       if (cards.length === 0) break
       batches += 1
       adjacency += checkBatchInvariants(h, cards, `day ${day} batch ${b}`)
-      playBatch(h.engine, cards, (_c, i) => i % 5 !== 4) // 80% pass
+      // 80% pass at score 0.9 — a clean pass that is NOT "perfect" (< 0.95), so
+      // this plumbing sweep never trips R-A retirement (which would exhaust the
+      // tiny fixture pool). Retirement has its own dedicated tests below.
+      cards.forEach((c, i) =>
+        h.engine.applyResult(answer(c, i % 5 !== 4 ? { score: 0.9 } : { pass: false })),
+      )
     }
     h.clock.advance(DAY_MS)
   }
@@ -148,7 +153,9 @@ test("debt brake: a due avalanche zeroes NEW intake", async () => {
     for (let b = 0; b < 4; b++) {
       const cards = h.engine.nextFeedItems(10, CONS)
       if (cards.length === 0) break
-      playBatch(h.engine, cards)
+      // pass at 0.9 (clean but NOT perfect): items stay in FSRS rotation and
+      // build a real avalanche instead of retiring out of the debt backlog (R-A).
+      cards.forEach((c) => h.engine.applyResult(answer(c, { score: 0.9 })))
     }
     h.clock.advance(DAY_MS)
   }
@@ -168,7 +175,7 @@ test("debt brake: a due avalanche zeroes NEW intake", async () => {
         assert.notEqual(c.meta.pool, "trickle", "debt brake pauses TRICKLE")
       }
     }
-    playBatch(h.engine, cards)
+    cards.forEach((c) => h.engine.applyResult(answer(c, { score: 0.9 })))
   }
   assert.ok(brakedBatches >= 1, "at least the first batch ran under the brake")
 })
@@ -433,11 +440,19 @@ test("infinite feed: keeps producing fresh, varied cards past the daily target (
         checkpointPositions.push(streamPos)
       }
       streamPos += 1
-      if (t === "checkpoint_summary" || t === "jump_offer") continue
+      // A skipped card (cadence checkpoint face, jump offer, or a §5.10-exempt
+      // boss-checkpoint exercise) visually SEPARATES the exercises around it —
+      // insert a sequence break so the two reals it sits between are never
+      // counted as "same-activity back-to-back" (they aren't, on screen).
+      if (t === "checkpoint_summary" || t === "jump_offer") {
+        cardSeq.push({ items: [], type: " break", modelKey: -1 })
+        continue
+      }
       // checkpoint/jump batches are §5.10-exempt from adjacency (returned as-is)
       const antiRepeatEligible = c.meta.pool !== "checkpoint" && c.meta.pool !== "jump"
       realCardCount += 1
       if (antiRepeatEligible) cardSeq.push({ items, type: t, modelKey: modelKey(c) })
+      else cardSeq.push({ items: [], type: " break", modelKey: -1 })
       // which unit does this item belong to? (frontier pull-forward evidence)
       for (const ref of c.spec.itemRefs) {
         const itemId = Object.keys(h.graph.items).find(
@@ -620,4 +635,53 @@ test("raised intake ceiling still yields to reviews: debt-brake zeroes NEW even 
   assert.equal(braked.debt, true, "brake active under backlog")
   assert.equal(braked.new, 0, "debt-brake zeroes NEW no matter how high the ceiling is")
   assert.ok(braked.review > clear.review, "the freed intake quota burns the review backlog down")
+})
+
+test("R-A/R-B: a perfect grinder retires mastered items and the feed stays breadth-first", async () => {
+  // A large-ish reachable pool (2×3×2×8 = 96 items) so breadth is observable.
+  const h = await makeEngine({ unitsPerArc: 3, itemsPerSkill: 8 })
+  const focusServes = new Map<string, number>() // scored serves where the item is the card's FOCUS
+  const distinct = new Set<string>()
+  for (let day = 0; day < 20; day++) {
+    h.engine.startSession()
+    for (let b = 0; b < 6; b++) {
+      const cards = h.engine.nextFeedItems(10, CONS)
+      if (cards.length === 0) break
+      for (const c of cards) {
+        if (c.meta.unscored || c.spec.itemRefs.length === 0) continue
+        for (const ref of c.spec.itemRefs) distinct.add(`${ref.kind}:${ref.source}:${ref.id}`)
+        const focus = c.spec.itemRefs[0]
+        const key = `${focus.kind}:${focus.source}:${focus.id}`
+        focusServes.set(key, (focusServes.get(key) ?? 0) + 1)
+      }
+      // Answer EVERY card perfectly (score 1, no hints) — the pathological
+      // grinder the CTO complained about: the OLD engine served the same ~10
+      // mastered words 10,000,000× while the rest starved. This harness is
+      // position-LOCKED (no boss checkpoints resolved), so the reachable pool is
+      // finite — the worst case for concentration.
+      cards.forEach((c) => h.engine.applyResult(answer(c, { score: 1 })))
+    }
+    h.clock.advance(DAY_MS)
+  }
+  const serves = [...focusServes.values()].sort((a, b) => b - a)
+  const total = serves.reduce((a, b) => a + b, 0)
+  const maxServes = serves[0]
+  const median = serves[Math.floor(serves.length / 2)]
+  // R-B: breadth — the grinder swept a WIDE slice of the pool (many distinct
+  // words), not a handful over and over. "1000 words seen 10×", not "10 words
+  // seen 10,000,000×".
+  assert.ok(distinct.size >= 60, `only ${distinct.size} distinct items served — feed is not breadth-first`)
+  // R-A/R-B: no item HOGS the feed. Retirement + the least-recently-served
+  // terminal round-robin keep serves EVENLY spread: even on this finite locked
+  // pool the busiest word stays within a small multiple of the median, never the
+  // old runaway (a single word dominating ~all serves).
+  assert.ok(
+    maxServes <= 3 * median + 10,
+    `an item was the focus of ${maxServes} scored cards (median ${median}) — serves are concentrated, not breadth-first`,
+  )
+  // The busiest single item is a small fraction of ALL serves (no dominance).
+  assert.ok(
+    maxServes < 0.1 * total,
+    `the busiest item took ${maxServes}/${total} serves — one word is dominating the feed`,
+  )
 })

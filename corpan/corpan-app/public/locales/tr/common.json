@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Konularını seç",
+      "availableSummary": "{{count}} ifade paketi mevcut · ~{{size}} MB",
+      "installAll": "Tümünü yükle",
+      "chooseIndividually": "Tek tek seç",
+      "installing": "{{total}} paketten {{current}}. yükleniyor…",
+      "someFailed": "{{count}} paket yüklenemedi. Paketler sekmesinden yeniden deneyebilirsiniz.",
+      "allInstalled": "Başlangıç ifade paketlerine zaten sahipsiniz.",
+      "installed": "Yüklendi",
       "loading": "Yükleniyor…",
       "selectAll": "Tümünü seç ({{count}})",
       "clearAll": "Temizle",
@@ -346,7 +353,8 @@
       "subtitle": "Journey, {{lang}} dilinde her gün yeni içerik ve tekrar karışımı sunar — her seferinde bir kart.",
       "guided": {
         "label": "Rehberli günlük yol",
-        "desc": "Sizin için planlanmış kısa bir günlük oturum."
+        "desc": "Sizin için planlanmış kısa bir günlük oturum.",
+        "unavailable": "Rehberli yol {{lang}} için henüz kullanılamıyor."
       },
       "explore": {
         "label": "Kendi hızınızda",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plus'a dahil",
     "installFailedTitle": "Yükleme başarısız oldu",
+    "updateUnavailableTitle": "Güncelleme kullanılamıyor",
+    "updateUnavailableDetail": "Bu indirme beklediğimizle eşleşmedi. Lütfen daha sonra tekrar deneyin.",
     "installStuckDetail": "Bir süredir ilerleme yok. Bağlantınızı kontrol edin ve tekrar deneyin.",
     "installStuckTitle": "İndirme durdu",
     "openPack": "{{name}}'i aç",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Şimdilik günceldesin",
       "loading": "Kartların hazırlanıyor…",
-      "loadError": "Journey yüklenemedi. Ana sayfadan tekrar dene."
+      "loadError": "Journey yüklenemedi. Ana sayfadan tekrar dene.",
+      "retry": "Tekrar dene"
     },
     "popin": {
       "pronounceTitle": "Telaffuz et",

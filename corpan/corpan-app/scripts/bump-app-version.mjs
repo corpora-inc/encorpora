@@ -22,6 +22,7 @@ if (!arg) {
 const pkgPath = "package.json"
 const tauriPath = "src-tauri/tauri.conf.json"
 const cargoPath = "src-tauri/Cargo.toml"
+const cargoLockPath = "src-tauri/Cargo.lock"
 
 const pkg = JSON.parse(readFileSync(pkgPath, "utf8"))
 const current = pkg.version
@@ -42,23 +43,57 @@ if (next === current) {
   process.exit(1)
 }
 
-// package.json — surgical (preserve formatting via a targeted replace).
-writeFileSync(pkgPath, readFileSync(pkgPath, "utf8").replace(
-  new RegExp(`("version"\\s*:\\s*)"${current.replace(/\./g, "\\.")}"`),
-  `$1"${next}"`,
-))
+// Compute `path`'s new content (which must contain exactly one capture
+// group for the text preceding the version) by replacing whatever semver is
+// currently there with `next`. Structural — matches on shape, not on the
+// exact `current` string — so a file that's already drifted from
+// package.json's version still gets updated instead of silently left alone
+// (the previous exact-string-match approach is what caused Cargo.toml to
+// desync from package.json/tauri.conf.json without any error). Exits
+// nonzero if the pattern isn't found or the content doesn't actually
+// change, so drift can never again pass silently.
+function bumped(path, pattern, label) {
+  const before = readFileSync(path, "utf8")
+  if (!pattern.test(before)) {
+    console.error(`bump-app-version: could not find a ${label} version line in ${path}`)
+    process.exit(1)
+  }
+  const after = before.replace(pattern, `$1"${next}"`)
+  if (after === before) {
+    console.error(`bump-app-version: ${path} version line unchanged after replace (already ${next}?) — refusing to silently no-op`)
+    process.exit(1)
+  }
+  return after
+}
 
+// Compute all three replacements before writing anything, so a bad file
+// (missing/malformed version line) fails loudly with zero side effects
+// instead of leaving the three files bumped out of lockstep.
+const pkgNext = bumped(pkgPath, /("version"\s*:\s*)"\d+\.\d+\.\d+"/, "package.json")
 // tauri.conf.json — the top-level "version" (drives iOS/Android bundle version).
-writeFileSync(tauriPath, readFileSync(tauriPath, "utf8").replace(
-  new RegExp(`("version"\\s*:\\s*)"${current.replace(/\./g, "\\.")}"`),
-  `$1"${next}"`,
-))
+const tauriNext = bumped(tauriPath, /("version"\s*:\s*)"\d+\.\d+\.\d+"/, "tauri.conf.json")
+// src-tauri/Cargo.toml — the first `version = "..."` under [package] (the
+// package version). Anchored to line start so it can't match a dependency's
+// `version = "..."` further down the file.
+const cargoNext = bumped(cargoPath, /(^version\s*=\s*)"\d+\.\d+\.\d+"/m, "Cargo.toml")
+// src-tauri/Cargo.lock — the `[[package]]` block for the app crate itself
+// (`name = "corpan"`), not any dependency that happens to share a version
+// number. Cargo doesn't auto-sync this file when Cargo.toml's version
+// changes; leaving it stale is exactly the drift this script exists to
+// prevent (Cargo.lock disagreeing with Cargo.toml/package.json/
+// tauri.conf.json across an app release). Anchored to the
+// `[[package]]\nname = "corpan"\nversion = "..."` shape so it can't match
+// a same-named dependency elsewhere in the lockfile.
+const cargoLockNext = bumped(
+  cargoLockPath,
+  /(\[\[package\]\]\nname = "corpan"\nversion = )"\d+\.\d+\.\d+"/,
+  "Cargo.lock",
+)
 
-// src-tauri/Cargo.toml — the first `version = "..."` (the package version).
-writeFileSync(cargoPath, readFileSync(cargoPath, "utf8").replace(
-  new RegExp(`(^version\\s*=\\s*)"${current.replace(/\./g, "\\.")}"`, "m"),
-  `$1"${next}"`,
-))
+writeFileSync(pkgPath, pkgNext)
+writeFileSync(tauriPath, tauriNext)
+writeFileSync(cargoPath, cargoNext)
+writeFileSync(cargoLockPath, cargoLockNext)
 
-console.log(`bumped ${current} -> ${next} in package.json, tauri.conf.json, Cargo.toml`)
+console.log(`bumped -> ${next} in package.json, tauri.conf.json, Cargo.toml, Cargo.lock`)
 console.log("next: commit, then push / open a PR. Merging to main triggers the release build.")

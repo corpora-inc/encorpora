@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Vælg dine emner",
+      "availableSummary": "{{count}} sætningspakker tilgængelige · ~{{size}} MB",
+      "installAll": "Installer alle",
+      "chooseIndividually": "Vælg enkeltvis",
+      "installing": "Installerer {{current}} af {{total}}…",
+      "someFailed": "{{count}} pakke(r) kunne ikke installeres. Du kan prøve igen fra fanen Pakker.",
+      "allInstalled": "Du har allerede startsætningspakkerne.",
+      "installed": "Installeret",
       "loading": "Indlæser…",
       "selectAll": "Vælg alle ({{count}})",
       "clearAll": "Ryd",
@@ -346,7 +353,8 @@
       "subtitle": "Journey serverer hver dag en blanding af nyt materiale og repetition på {{lang}} – ét kort ad gangen.",
       "guided": {
         "label": "Guidet daglig vej",
-        "desc": "En kort daglig session, planlagt til dig."
+        "desc": "En kort daglig session, planlagt til dig.",
+        "unavailable": "Den guidede vej er endnu ikke tilgængelig for {{lang}}."
       },
       "explore": {
         "label": "I dit eget tempo",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inkluderet med Plus",
     "installFailedTitle": "Installation mislykkedes",
+    "updateUnavailableTitle": "Opdatering ikke tilgængelig",
+    "updateUnavailableDetail": "Denne download matchede ikke det, vi forventede. Prøv igen senere.",
     "installStuckDetail": "Ingen fremskridt i et stykke tid. Tjek din forbindelse og prøv igen.",
     "installStuckTitle": "Download stoppet",
     "openPack": "Åbn {{name}}",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Du er ajour for nu",
       "loading": "Gør dine kort klar…",
-      "loadError": "Journey kunne ikke indlæses. Prøv igen fra Hjem."
+      "loadError": "Journey kunne ikke indlæses. Prøv igen fra Hjem.",
+      "retry": "Prøv igen"
     },
     "popin": {
       "pronounceTitle": "Udtal det",

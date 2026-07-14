@@ -55,6 +55,22 @@ let IMPORTANCE_WEIGHT: Record<number, number>
 let packIdForTarget: (t: string) => string
 let devDownloadUrlForPack: (id: string) => string
 
+type InvokeFn = (cmd: string, args?: Record<string, unknown>) => Promise<unknown>
+let installJourneyPack: (id: string, zipUrl?: string, sha?: string | null) => Promise<void>
+let installJourneyPackVerified: (
+  id: string,
+  zipUrl?: string,
+  sha?: string | null,
+  opts?: {
+    maxAttempts?: number
+    sleep?: (ms: number) => Promise<void>
+    rand?: () => number
+  },
+) => Promise<void>
+let journeyInstallBackoffMs: (retry: number, rand?: () => number) => number
+let setInvoke: (fn: InvokeFn | null) => void
+let resetInstallSingleflight: () => void
+
 before(async () => {
   const { build } = await import("esbuild")
   const res = await build({
@@ -75,6 +91,132 @@ before(async () => {
   IMPORTANCE_WEIGHT = mod.IMPORTANCE_WEIGHT
   packIdForTarget = mod.packIdForTarget
   devDownloadUrlForPack = mod.devDownloadUrlForPack
+  installJourneyPack = mod.installJourneyPack
+  installJourneyPackVerified = mod.installJourneyPackVerified
+  journeyInstallBackoffMs = mod.journeyInstallBackoffMs
+  setInvoke = mod.__setJourneyPackInvokeForTests
+  resetInstallSingleflight = mod.__resetJourneyInstallSingleflightForTests
+})
+
+/* -------------------------- atomic install harness ------------------------- */
+
+const VALID_META = [
+  { key: "course_id", value: "journey_en" },
+  { key: "target_lang", value: "en" },
+  { key: "content_version", value: "0.1.0" },
+  { key: "schema_version", value: "1" },
+  { key: "unit_count", value: "3" },
+  { key: "item_count", value: "41" },
+]
+
+/** Scriptable `invoke` fake: records every command, drives install success and
+ *  the `pack_meta` read that post-install verification depends on. */
+function makeFakeInvoke() {
+  const calls: Array<{ cmd: string; args?: Record<string, unknown> }> = []
+  const state = {
+    install: (): Promise<unknown> => Promise.resolve({}),
+    // Rows returned for the pack_meta read (readJourneyPackMeta). Empty ⇒ meta
+    // unreadable ⇒ verification fails (mimics a truncated/malformed DB).
+    metaRows: (): Array<Record<string, unknown>> => VALID_META,
+  }
+  const invoke: InvokeFn = async (cmd, args) => {
+    calls.push({ cmd, args })
+    if (cmd === "content_packs_install_from_url") return state.install()
+    if (cmd === "content_packs_query_db") {
+      return { columns: ["key", "value"], rows: state.metaRows() }
+    }
+    if (cmd === "content_packs_get_manifest_url") return "corpan-pack://localhost/journey_en/manifest.json"
+    throw new Error(`unexpected command ${cmd}`)
+  }
+  const installCalls = () => calls.filter((c) => c.cmd === "content_packs_install_from_url")
+  return { calls, state, invoke, installCalls }
+}
+
+test("installJourneyPack single-flights concurrent installs of the same pack", async () => {
+  const f = makeFakeInvoke()
+  setInvoke(f.invoke)
+  resetInstallSingleflight()
+  try {
+    let release!: () => void
+    const gate = new Promise<unknown>((r) => {
+      release = () => r({})
+    })
+    f.state.install = () => gate
+
+    // Two concurrent installs (Home-hero prefetch vs journey mount) must share
+    // ONE underlying install — the shared Rust staging path is otherwise raced.
+    const p1 = installJourneyPack("journey_en", "https://cdn.test/journey_en.zip")
+    const p2 = installJourneyPack("journey_en", "https://cdn.test/journey_en.zip")
+    release()
+    await Promise.all([p1, p2])
+    assert.equal(f.installCalls().length, 1, "concurrent installs coalesced")
+
+    // After settlement the slot is freed: a fresh install runs again.
+    await installJourneyPack("journey_en", "https://cdn.test/journey_en.zip")
+    assert.equal(f.installCalls().length, 2, "post-settlement install not blocked")
+  } finally {
+    setInvoke(null)
+  }
+})
+
+test("installJourneyPackVerified retries a failed integrity check, then succeeds", async () => {
+  const f = makeFakeInvoke()
+  setInvoke(f.invoke)
+  resetInstallSingleflight()
+  try {
+    // First two verifications see an unreadable pack (empty pack_meta), the
+    // third reads back cleanly — mirrors a transient corrupt install healing on
+    // re-download.
+    let verify = 0
+    f.state.metaRows = () => {
+      verify += 1
+      return verify < 3 ? [] : VALID_META
+    }
+    const sleeps: number[] = []
+    await installJourneyPackVerified("journey_en", "https://cdn.test/journey_en.zip", null, {
+      sleep: async (ms) => {
+        sleeps.push(ms)
+      },
+      rand: () => 0.5,
+    })
+    assert.equal(f.installCalls().length, 3, "re-downloaded until integrity passed")
+    assert.equal(sleeps.length, 2, "backed off before each of the 2 retries")
+    assert.ok(sleeps.every((ms) => ms > 0), "backoff waited between attempts")
+  } finally {
+    setInvoke(null)
+  }
+})
+
+test("installJourneyPackVerified throws after exhausting attempts (Retry is the fallback)", async () => {
+  const f = makeFakeInvoke()
+  setInvoke(f.invoke)
+  resetInstallSingleflight()
+  try {
+    f.state.metaRows = () => [] // never readable
+    await assert.rejects(
+      installJourneyPackVerified("journey_en", "https://cdn.test/journey_en.zip", null, {
+        maxAttempts: 2,
+        sleep: async () => {},
+      }),
+      (err: Error) => {
+        assert.ok(err instanceof JourneyPackIntegrityError, String(err))
+        return true
+      },
+    )
+    assert.equal(f.installCalls().length, 2, "exactly maxAttempts installs tried")
+  } finally {
+    setInvoke(null)
+  }
+})
+
+test("journeyInstallBackoffMs grows exponentially with full jitter and caps", () => {
+  const hi = (retry: number) => journeyInstallBackoffMs(retry, () => 1)
+  assert.equal(hi(1), 400) // base
+  assert.equal(hi(2), 800)
+  assert.equal(hi(3), 1600)
+  assert.equal(hi(10), 4000) // capped at JOURNEY_INSTALL_BACKOFF_CAP_MS
+  // Full jitter: rand=0 halves the ceiling.
+  assert.equal(journeyInstallBackoffMs(1, () => 0), 200)
 })
 
 /** node:sqlite-backed query fn emulating content_packs_query_db, with a

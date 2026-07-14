@@ -6,6 +6,7 @@ import {
   buildChallengeInputs,
   toActivityResult,
   mountJourneyChallenge,
+  synthesizeFallbackActivitySpec,
 } from "./adapter"
 import type { ChallengeResultPlus } from "@corpan-city/contracts"
 import type {
@@ -335,5 +336,48 @@ describe("journey adapter — fixture journey mount (world never boots)", () => 
     handle.unmount()
     await new Promise((r) => setTimeout(r, 300))
     expect(reported.results).toEqual([])
+  })
+})
+
+describe("journey adapter — synthesizeFallbackActivitySpec (WS-D defense in depth)", () => {
+  it("no host at all → schema-valid spec on the DEFAULT_PAIR target (es), no UI", () => {
+    const spec = synthesizeFallbackActivitySpec(undefined)
+    expect(ActivitySpecSchema.safeParse(spec).success).toBe(true)
+    expect(spec.activityType).toBe("corpan_city:fast-translate")
+    expect(spec.itemRefs).toEqual([])
+    expect(spec.targetLang).toBe("es")
+    // No stack at all → defaultPairFor's immersion branch (native mirrors
+    // target); nativeLang is correctly omitted (matches `pairFor`'s existing,
+    // separately-relied-on semantics — see `src/entry/index.ts`).
+    expect(spec.nativeLang).toBeUndefined()
+    // parseJourneyToolId must resolve it — it has to actually be runnable.
+    expect(parseJourneyToolId(spec.activityType)).toBe("fast-translate")
+  })
+
+  it("derives the pair from the live stack (multi-target → FIRST target, no chooser)", () => {
+    const host = {
+      getStackConfig: () => ({
+        activeStackId: "s1",
+        languages: ["fr", "de", "it"],
+      }),
+    }
+    const spec = synthesizeFallbackActivitySpec(host)
+    expect(spec.targetLang).toBe("de") // languages[1] — the first target
+    expect(spec.nativeLang).toBe("fr")
+  })
+
+  it("single-language (immersion) stack → target===native and nativeLang omitted", () => {
+    const host = {
+      getStackConfig: () => ({ activeStackId: "s1", languages: ["ja"] }),
+    }
+    const spec = synthesizeFallbackActivitySpec(host)
+    expect(spec.targetLang).toBe("ja")
+    expect(spec.nativeLang).toBeUndefined()
+  })
+
+  it("mints a fresh specId per call", () => {
+    const a = synthesizeFallbackActivitySpec(undefined)
+    const b = synthesizeFallbackActivitySpec(undefined)
+    expect(a.specId).not.toBe(b.specId)
   })
 })

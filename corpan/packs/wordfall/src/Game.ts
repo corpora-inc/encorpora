@@ -23,9 +23,14 @@ import type { ActivitySpec } from "./sdk/activityContract"
 import { resolveRound, buildDistractors, type RoundContent } from "./content"
 import { WordfallSession, type CatchOutcome } from "./journey/session"
 import { Sfx } from "./audio"
+import { layoutTileText, tileHeightFor, TILE_LINE_HEIGHT, type Measurer } from "./tileLayout"
+import { estimateSpeechDurationMs, waitForEstimatedSpeech } from "./speechTiming"
 
 type Tile = {
   text: string
+  /** wrapped/shrunk render lines (layoutTileText) — always ≥1. */
+  lines: string[]
+  fontPx: number
   isTarget: boolean
   x: number // center px
   y: number // top px
@@ -43,11 +48,18 @@ type PreparedRound = {
 }
 
 const TILE_H = 52
+const TILE_GUTTER = 14 // px clearance from each lane edge — tiles never bleed into a neighboring lane
+const TILE_VGAP = 46 // px air gap between two tiles sharing a lane
 const FLOOR_MARGIN = 24
 const PROMPT_SAFE_TOP = 92 // px reserved for the prompt overlay
 const REDUCED_MOTION =
   typeof window !== "undefined" &&
   window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+// Cap on how long endRun() will wait for the final spoken catch to (likely)
+// finish before dispatching corpan:exit — the host's teardown calls
+// hostApi.stopSpeech() right after, so exit never hangs indefinitely on a bad
+// duration estimate.
+const EXIT_SPEECH_WAIT_CAP_MS = 1800
 
 export type GameOptions = {
   /** Present ⇒ interlude mode: content + reporting come from the session. */
@@ -88,6 +100,12 @@ export class Game {
   private caught = 0
   private facedRounds = 0
   private intensity = 0.15
+
+  // Tracks the most recent hostApi.speak() call so endRun() can estimate
+  // whether it has likely finished before dispatching corpan:exit (hostApi
+  // speak is fire-and-forget — no completion signal; see speechTiming.ts).
+  private lastSpeakAt = 0
+  private lastSpeakEstimatedMs = 0
 
   // Current round
   private tiles: Tile[] = []
@@ -288,54 +306,113 @@ export class Game {
     this.roundResolved = false
     this.promptWordEl.textContent = round.content.promptText
     this.spawnTiles(round)
+
+    // Journey-session mount: speak the target phrase once, right as the very
+    // first round appears, so ears engage before the learner taps anything
+    // (every subsequent round already gets its spoken reward on a correct
+    // catch — see hitTile — so this is a one-time entry beat, not a repeat).
+    if (this.opts.session && this.roundIndex === 0) {
+      this.speakTarget(round.content.targetLang, round.content.targetText)
+    }
+  }
+
+  /** Best-effort spoken target, gated by this pack's sound toggle. Tracks
+   *  when it fired so endRun() can estimate whether it's likely still
+   *  audible before the host cuts speech on exit. */
+  private speakTarget(lang: string, text: string): void {
+    if (!this.sfx.enabled) return
+    try {
+      this.lastSpeakAt = performance.now()
+      this.lastSpeakEstimatedMs = estimateSpeechDurationMs(text)
+      this.hostApi.speak(lang, text)
+    } catch {
+      /* speak is best-effort */
+    }
+  }
+
+  private measureTile: Measurer = (text, fontPx) => {
+    this.ctx.font = tileFont(fontPx)
+    return this.ctx.measureText(text).width
   }
 
   private spawnTiles(round: PreparedRound) {
     this.tiles = []
-    this.ctx.font = tileFont()
     const labels: Array<{ text: string; isTarget: boolean }> = [
       { text: round.content.targetText, isTarget: true },
       ...round.distractors.map((d) => ({ text: d, isTarget: false })),
     ]
     shuffle(labels)
 
-    // Fall speed escalates with round progress + configured intensity.
+    // Fall speed escalates ROUND-TO-ROUND with progress + configured
+    // intensity — but EVERY tile within a round falls at this SAME speed.
+    // Per-tile speed variance used to let two tiles in the same lane catch up
+    // to one another and occlude each other; uniform speed preserves
+    // whatever vertical gap tiles spawned with for the whole round (see the
+    // lane cursor below), so the correct answer is always fully visible and
+    // tappable.
     const ramp = Number.isFinite(this.roundsTotal)
       ? this.roundIndex / Math.max(1, this.roundsTotal)
       : Math.min(1, this.roundIndex / 12)
-    const baseSpeed = 70 + this.intensity * 120 + ramp * 130 // px/sec
-    const floorY = this.height - FLOOR_MARGIN
+    const vy = 70 + this.intensity * 120 + ramp * 130 // px/sec, uniform this round
 
-    // Stagger tiles across columns + a small vertical spread so several are in
-    // the air at once (the catch-vs-avoid tension) but all reach the floor
-    // within the ~4–7s round budget.
-    const cols = Math.max(2, Math.min(labels.length, 3))
+    // Lane layout: each label gets a fixed horizontal lane (never a random
+    // x) so tiles in DIFFERENT lanes can never overlap regardless of height
+    // or vertical position — the fix for occlusion is geometric, not lucky
+    // timing. Lane count adapts DOWN on a narrow viewport (never up past 3)
+    // so a lane is never forced narrower than the tile's own minimum
+    // tap-target width — that's what "never overflow horizontally" actually
+    // requires; excess labels simply stack in the same lane instead (still
+    // non-overlapping — see the lane cursor below).
+    const TILE_MIN_W = 96
+    const minLaneWidth = TILE_MIN_W + TILE_GUTTER * 2
+    const maxColsForWidth = Math.max(1, Math.floor(this.width / minLaneWidth))
+    const cols = Math.max(1, Math.min(labels.length, 3, maxColsForWidth))
+    const laneW = this.width / cols
+    const laneMaxWidth = Math.max(40, laneW - TILE_GUTTER * 2)
+
+    // Lane-collision-aware spawn: a per-lane vertical cursor so tiles sharing
+    // a lane (labels.length > cols) stack with a gap sized to THEIR OWN
+    // (possibly multi-line, wrapped) height — never an assumed fixed height.
+    const laneCursorTop = new Array<number>(cols).fill(PROMPT_SAFE_TOP)
+
     labels.forEach((lab, i) => {
-      this.ctx.font = tileFont()
-      const w = Math.min(
-        this.width - 28,
-        Math.max(96, this.ctx.measureText(lab.text).width + 40)
-      )
+      const { lines, fontPx } = layoutTileText(lab.text, laneMaxWidth, this.measureTile)
+      this.ctx.font = tileFont(fontPx)
+      const longestLine = Math.max(...lines.map((l) => this.ctx.measureText(l).width))
+      const w = clamp(longestLine + 40, TILE_MIN_W, laneMaxWidth)
+      const h = tileHeightFor(lines.length, TILE_H)
+
       const col = i % cols
-      const laneW = this.width / cols
-      const x = laneW * col + laneW / 2
-      const jitter = (Math.random() - 0.5) * (laneW - w) * 0.5
-      const startY = PROMPT_SAFE_TOP - TILE_H - i * (TILE_H + 46) - Math.random() * 40
+      const laneLeft = laneW * col
+      // A small jitter for visual life, strictly bounded so the tile can
+      // never cross out of its own lane.
+      const jitterRange = Math.max(0, laneW - w - TILE_GUTTER * 2)
+      const jitter = jitterRange > 0 ? (Math.random() - 0.5) * jitterRange : 0
+      const x = clamp(
+        laneLeft + laneW / 2 + jitter,
+        laneLeft + TILE_GUTTER + w / 2,
+        laneLeft + laneW - TILE_GUTTER - w / 2
+      )
+
+      const top = laneCursorTop[col] - h
+      laneCursorTop[col] = top - TILE_VGAP
+
       this.tiles.push({
         text: lab.text,
+        lines,
+        fontPx,
         isTarget: lab.isTarget,
-        x: clamp(x + jitter, w / 2 + 8, this.width - w / 2 - 8),
-        y: startY,
+        x,
+        y: top,
         w,
-        h: TILE_H,
-        vy: baseSpeed * (0.9 + Math.random() * 0.25),
+        h,
+        vy,
         wobble: Math.random() * Math.PI * 2,
         state: "falling",
         anim: 0,
       })
       if (lab.isTarget) this.spawnedTargetAt = performance.now()
     })
-    void floorY
   }
 
   // ------------------------------------------------------------- input
@@ -375,16 +452,7 @@ export class Game {
       this.bestCombo = Math.max(this.bestCombo, this.combo)
       this.sfx.catchGood(this.combo)
       // Speak the caught target (honors host TTS + this pack's sound toggle).
-      if (this.sfx.enabled) {
-        try {
-          this.hostApi.speak(
-            this.activeRound.content.targetLang,
-            this.activeRound.content.targetText
-          )
-        } catch {
-          /* speak is best-effort */
-        }
-      }
+      this.speakTarget(this.activeRound.content.targetLang, this.activeRound.content.targetText)
       this.resolveRound("caught", latency)
     } else {
       t.state = "shattered"
@@ -433,12 +501,25 @@ export class Game {
       // Interlude: report terminal result ONCE, then ask the host to exit.
       this.sfx.finish()
       this.opts.session.finish()
-      window.dispatchEvent(new CustomEvent("corpan:exit"))
+      // The host's teardown (on corpan:exit → unmount) calls
+      // hostApi.stopSpeech() right away — if the last round was a catch,
+      // that speak() (fired ~380ms ago in hitTile, via the resolveRound
+      // savor-beat delay) may still be mid-utterance. hostApi.speak() has no
+      // completion signal (fire-and-forget by contract), so wait out its
+      // estimated remaining duration, capped, rather than cut it off.
+      void this.waitForFinalSpeech().then(() => {
+        if (this.disposed) return
+        window.dispatchEvent(new CustomEvent("corpan:exit"))
+      })
       return
     }
     // Standalone: show a "play again" card (endless).
     this.sfx.finish()
     this.showDoneCard()
+  }
+
+  private async waitForFinalSpeech(): Promise<void> {
+    await waitForEstimatedSpeech(this.lastSpeakAt, this.lastSpeakEstimatedMs, EXIT_SPEECH_WAIT_CAP_MS)
   }
 
   // ------------------------------------------------------------- render loop
@@ -494,7 +575,6 @@ export class Game {
     ctx.lineTo(this.width, floorY)
     ctx.stroke()
 
-    ctx.font = tileFont()
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
 
@@ -530,7 +610,13 @@ export class Game {
       ctx.strokeStyle = stroke
       ctx.stroke()
       ctx.fillStyle = "#eef0ff"
-      ctx.fillText(t.text, 0, 1)
+      ctx.font = tileFont(t.fontPx)
+      const lineH = TILE_LINE_HEIGHT
+      let ly = -((t.lines.length - 1) * lineH) / 2
+      for (const line of t.lines) {
+        ctx.fillText(line, 0, ly + 1)
+        ly += lineH
+      }
       ctx.restore()
     }
   }
@@ -622,6 +708,11 @@ export class Game {
     } catch {
       /* best effort */
     }
+    // Close the AudioContext and cancel any pending scheduled note (e.g. the
+    // second blip of a finish() resolve mid-flight) — otherwise it fires
+    // ~120ms later into an already-torn-down game, an orphaned glitch on
+    // whatever the journey feed shows next.
+    this.sfx.dispose()
     this.root.remove()
   }
 }
@@ -637,8 +728,8 @@ function safeStackConfig(hostApi: HostApi): { languages: string[] } {
   }
 }
 
-function tileFont(): string {
-  return "700 20px system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+function tileFont(px: number = 20): string {
+  return `700 ${px}px system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif`
 }
 
 function shuffle<T>(arr: T[]): void {

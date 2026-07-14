@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "विषय चुनें",
+      "availableSummary": "{{count}} वाक्यांश पैक उपलब्ध · ~{{size}} MB",
+      "installAll": "सभी इंस्टॉल करें",
+      "chooseIndividually": "अलग-अलग चुनें",
+      "installing": "{{total}} में से {{current}} इंस्टॉल हो रहा है…",
+      "someFailed": "{{count}} पैक इंस्टॉल नहीं हो सके। आप Packs टैब से पुनः प्रयास कर सकते हैं।",
+      "allInstalled": "आपके पास पहले से ही स्टार्टर वाक्यांश पैक हैं।",
+      "installed": "इंस्टॉल हो गया",
       "loading": "लोड हो रहा है…",
       "selectAll": "सभी चुनें ({{count}})",
       "clearAll": "साफ़ करें",
@@ -346,7 +353,8 @@
       "subtitle": "Journey हर दिन {{lang}} में नई सामग्री और दोहराव का मिश्रण पेश करता है — कार्ड दर कार्ड।",
       "guided": {
         "label": "मार्गदर्शित दैनिक राह",
-        "desc": "आपके लिए बनाया गया एक छोटा दैनिक सत्र।"
+        "desc": "आपके लिए बनाया गया एक छोटा दैनिक सत्र।",
+        "unavailable": "{{lang}} के लिए गाइडेड पथ अभी उपलब्ध नहीं है।"
       },
       "explore": {
         "label": "अपनी गति से",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plus के साथ शामिल",
     "installFailedTitle": "इंस्टॉल विफल",
+    "updateUnavailableTitle": "अपडेट उपलब्ध नहीं है",
+    "updateUnavailableDetail": "यह डाउनलोड वैसा नहीं था जैसा हमें अपेक्षित था। कृपया बाद में फिर से प्रयास करें।",
     "installStuckDetail": "कुछ समय से कोई प्रगति नहीं हुई है। अपना कनेक्शन जाँचें और फिर से प्रयास करें।",
     "installStuckTitle": "डाउनलोड रुका हुआ",
     "openPack": "{{name}} खोलें",
@@ -1066,7 +1076,8 @@
     "feed": {
       "caughtUp": "फ़िलहाल आप अप-टू-डेट हैं",
       "loading": "आपके कार्ड तैयार हो रहे हैं…",
-      "loadError": "Journey लोड नहीं हो सका। होम से फिर कोशिश करें।"
+      "loadError": "Journey लोड नहीं हो सका। होम से फिर कोशिश करें।",
+      "retry": "फिर से कोशिश करें"
     },
     "popin": {
       "pronounceTitle": "इसका उच्चारण करें",

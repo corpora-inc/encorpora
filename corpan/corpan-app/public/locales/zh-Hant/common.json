@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "選擇你的主題",
+      "availableSummary": "{{count}} 個短語包可用 · ~{{size}} MB",
+      "installAll": "全部安裝",
+      "chooseIndividually": "逐個選擇",
+      "installing": "正在安裝第 {{current}}/{{total}} 個…",
+      "someFailed": "有 {{count}} 個短語包無法安裝。你可以在「包」分頁中重試。",
+      "allInstalled": "你已經擁有入門短語包。",
+      "installed": "已安裝",
       "loading": "載入中…",
       "selectAll": "全選 ({{count}})",
       "clearAll": "清除",
@@ -346,7 +353,8 @@
       "subtitle": "Journey 每天以 {{lang}} 提供新內容與複習的組合 — 一次一張卡。",
       "guided": {
         "label": "引導式每日路徑",
-        "desc": "為你規劃好的簡短每日學習。"
+        "desc": "為你規劃好的簡短每日學習。",
+        "unavailable": "{{lang}} 的引導式路徑尚未推出。"
       },
       "explore": {
         "label": "自主節奏",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plus 方案內含",
     "installFailedTitle": "安裝失敗",
+    "updateUnavailableTitle": "更新暫不可用",
+    "updateUnavailableDetail": "此下載內容與預期不符。請稍後再試。",
     "installStuckDetail": "一段時間沒有進度。請檢查您的連線並重試。",
     "installStuckTitle": "下載停滯",
     "openPack": "開啟 {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "目前你都學完了",
       "loading": "正在準備你的卡片…",
-      "loadError": "Journey 載入失敗。請從首頁重試。"
+      "loadError": "Journey 載入失敗。請從首頁重試。",
+      "retry": "再試一次"
     },
     "popin": {
       "pronounceTitle": "唸一唸",

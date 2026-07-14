@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Vyber si témata",
+      "availableSummary": "Dostupné balíčky frází: {{count}} · ~{{size}} MB",
+      "installAll": "Nainstalovat vše",
+      "chooseIndividually": "Vybrat jednotlivě",
+      "installing": "Instaluje se {{current}} z {{total}}…",
+      "someFailed": "Nepodařilo se nainstalovat balíčky: {{count}}. Můžete to zkusit znovu na kartě Balíčky.",
+      "allInstalled": "Základní balíčky frází už máte.",
+      "installed": "Nainstalováno",
       "loading": "Načítání…",
       "selectAll": "Vybrat vše ({{count}})",
       "clearAll": "Vymazat",
@@ -346,7 +353,8 @@
       "subtitle": "Journey vám každý den nabídne mix nového materiálu a opakování v {{lang}} — kartu po kartě.",
       "guided": {
         "label": "Vedená denní cesta",
-        "desc": "Krátká denní lekce naplánovaná právě pro vás."
+        "desc": "Krátká denní lekce naplánovaná právě pro vás.",
+        "unavailable": "Vedená cesta zatím není pro {{lang}} k dispozici."
       },
       "explore": {
         "label": "Vlastním tempem",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Součástí Plus",
     "installFailedTitle": "Instalace selhala",
+    "updateUnavailableTitle": "Aktualizace není k dispozici",
+    "updateUnavailableDetail": "Toto stažení neodpovídalo tomu, co jsme očekávali. Zkuste to prosím znovu později.",
     "installStuckDetail": "Po nějakou dobu žádný pokrok. Zkontrolujte připojení a zkuste to znovu.",
     "installStuckTitle": "Stahování se zastavilo",
     "openPack": "Otevřít {{name}}",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Prozatím máš hotovo",
       "loading": "Připravuji tvé karty…",
-      "loadError": "Journey se nepodařilo načíst. Zkus to znovu z Domů."
+      "loadError": "Journey se nepodařilo načíst. Zkus to znovu z Domů.",
+      "retry": "Zkusit znovu"
     },
     "popin": {
       "pronounceTitle": "Vyslov to",

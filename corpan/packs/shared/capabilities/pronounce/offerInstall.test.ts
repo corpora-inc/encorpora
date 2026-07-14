@@ -273,6 +273,56 @@ describe("cap-pronounce — offer-install flow (contract #4)", () => {
   })
 })
 
+describe("cap-pronounce — feedback dwell (R4 / settleOnTopBand)", () => {
+  const recordOnce = async (container: HTMLElement) => {
+    const mic = await waitFor(
+      () => {
+        const b = container.querySelector<HTMLButtonElement>(".capPron-mic")
+        return b && !b.disabled ? b : null
+      },
+      3000,
+      "mic enabled",
+    )
+    mic.dispatchEvent(pointerEvt("pointerdown"))
+    await wait(30)
+    mic.dispatchEvent(pointerEvt("pointerup"))
+  }
+
+  it("settleOnTopBand:false → a top-band attempt does NOT auto-settle", async () => {
+    const { host } = makeInstallHost({ overallScore: 0.95, startInstalled: true })
+    const { container, handle } = mountIn(
+      host,
+      makeSpec({ settleOnTopBand: false, maxAttempts: 12 }),
+    )
+    await recordOnce(container)
+    await wait(40)
+    // The round stays OPEN so the great score can dwell — the learner advances
+    // on their own Continue, never an app-initiated instant advance.
+    let settled = false
+    void handle.result.then(() => {
+      settled = true
+    })
+    await wait(60)
+    expect(settled).toBe(false)
+    // Continue (dispose) then settles on the best (top-band) attempt.
+    handle.dispose()
+    const result = await handle.result
+    expect(result.detail?.stt?.overallScore).toBeGreaterThan(0.85)
+    container.remove()
+  })
+
+  it("default (settleOnTopBand true) → a top-band attempt auto-settles", async () => {
+    const { host } = makeInstallHost({ overallScore: 0.95, startInstalled: true })
+    const { container, handle } = mountIn(host, makeSpec({ maxAttempts: 12 }))
+    await recordOnce(container)
+    // Pack pacing preserved: a top-band attempt settles immediately (no dwell).
+    const result = await handle.result
+    expect(result.abandoned).toBeUndefined()
+    expect(result.perItem[0]?.outcome).toBe("pass")
+    container.remove()
+  })
+})
+
 describe("cap-pronounce — availability truth (contract #4)", () => {
   it("supported + no model → needs-model", async () => {
     const host = createMockCapabilityHost({ stt: { installedModels: [] } })

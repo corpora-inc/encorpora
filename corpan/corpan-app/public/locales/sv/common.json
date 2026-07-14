@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Välj dina ämnen",
+      "availableSummary": "{{count}} frispaket tillgängliga · ~{{size}} MB",
+      "installAll": "Installera alla",
+      "chooseIndividually": "Välj individuellt",
+      "installing": "Installerar {{current}} av {{total}}…",
+      "someFailed": "{{count}} paket kunde inte installeras. Du kan försöka igen från fliken Paket.",
+      "allInstalled": "Du har redan startpaketen med fraser.",
+      "installed": "Installerat",
       "loading": "Laddar…",
       "selectAll": "Välj alla ({{count}})",
       "clearAll": "Rensa",
@@ -346,7 +353,8 @@
       "subtitle": "Journey serverar en daglig mix av nytt material och repetition på {{lang}} — ett kort i taget.",
       "guided": {
         "label": "Guidad daglig väg",
-        "desc": "Ett kort dagligt pass, planerat åt dig."
+        "desc": "Ett kort dagligt pass, planerat åt dig.",
+        "unavailable": "Den guidade vägen är inte tillgänglig för {{lang}} ännu."
       },
       "explore": {
         "label": "I egen takt",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Ingår med Plus",
     "installFailedTitle": "Installationen misslyckades",
+    "updateUnavailableTitle": "Uppdatering ej tillgänglig",
+    "updateUnavailableDetail": "Den här nedladdningen matchade inte det vi förväntade oss. Försök igen senare.",
     "installStuckDetail": "Inga framsteg på ett tag. Kontrollera din anslutning och försök igen.",
     "installStuckTitle": "Nedladdning pausad",
     "openPack": "Öppna {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "Du är i fas för tillfället",
       "loading": "Förbereder dina kort…",
-      "loadError": "Journey kunde inte laddas. Försök igen från Hem."
+      "loadError": "Journey kunde inte laddas. Försök igen från Hem.",
+      "retry": "Försök igen"
     },
     "popin": {
       "pronounceTitle": "Uttala det",

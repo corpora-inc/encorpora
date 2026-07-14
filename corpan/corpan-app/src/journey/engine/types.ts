@@ -27,6 +27,12 @@ export interface ItemCard {
     reps: number
     lapses: number
     state: 0 | 1 | 2 | 3       // ts-fsrs State: New|Learning|Review|Relearning
+    /** Consecutive PERFECT completions (score ≥ 0.95, no hints — mirrors the
+     *  runtime combo). At RETIRE_PERFECT_STREAK the card is RETIRED (breadth-
+     *  first: a twice-nailed item stops recycling so unseen material leads).
+     *  Reset to 0 on any miss/lapse. Optional for backward-compat: an older
+     *  persisted card with no counter decodes to 0 (persistence/types.ts). */
+    perfect?: number
   }
   flags: number                // CardFlags bitfield
   form: 0 | 1 | 2              // highest form PASSED
@@ -37,6 +43,12 @@ export const CardFlags = {
   PlacementSeeded: 2,
   Leech: 4,
   Suspended: 8,
+  /** RETIRED (R-A): reached RETIRE_PERFECT_STREAK perfect completions. Excluded
+   *  from the DUE/FUN/REPAIR pools + debt backlog so mastered items stop being
+   *  served from the normal feed. NOT permanent: once its retrievability decays
+   *  (RETIRED_REVIEW_R_BELOW) the mixer serves a rare confirmatory review; a
+   *  genuine FSRS forget/lapse there clears this flag (un-retire). */
+  Retired: 16,
 } as const
 
 // -------------------------------------------------------- review-log read model
@@ -229,6 +241,17 @@ export interface SessionState {
    *  a wind-down/shutdown — it is capped per batch (MAX_FUN_PER_10), never for
    *  the whole session. This counter is retained for debug/telemetry. */
   funServedSession: number
+  /** Pronunciation-drill (phoneme + minimal-pair word) intake serves this
+   *  session. The mixer enforces PHONEME_MAX_PER_SESSION against it so phonics
+   *  can never dominate a sitting (the "jam 10× in 30 min" defect). Never
+   *  persisted; reset each session. */
+  phonemeServedSession: number
+  /** Rare long-interval RETIRED-review serves this session (R-A un-retire path).
+   *  The mixer caps it at RETIRED_REVIEW_MAX_PER_SESSION so a retired item whose
+   *  memory decayed gets at most one confirmatory review per session — the
+   *  production path by which a retired item can lapse and un-retire. Never
+   *  persisted; reset each session. */
+  retiredReviewsSession: number
   /** Checkpoint batches attempted this session (one boss attempt/session). */
   bossAttempted: Set<string>
   /** Active unit-boss / arc-gate tally. */

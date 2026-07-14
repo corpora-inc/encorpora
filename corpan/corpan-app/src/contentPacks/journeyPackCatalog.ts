@@ -206,6 +206,21 @@ function compareVersions(a: string, b: string): number {
     return 0;
 }
 
+/** Compatibility gates that hold regardless of channel: an app must never see
+ *  (let alone download) a course it can't run. `minAppVersion` keeps an old app
+ *  off a newer course; the `schemaVersion` gate keeps it off a course DB it
+ *  cannot read (course-pack.md §7.2). Channel is deliberately NOT gated here —
+ *  callers decide channel policy on top of these hard gates. */
+function passesCompatGates(
+    p: JourneyPackCatalogEntry,
+    appVersion: string,
+): boolean {
+    if (p.minAppVersion && compareVersions(appVersion, p.minAppVersion) < 0) {
+        return false;
+    }
+    return SUPPORTED_JOURNEY_SCHEMA_VERSIONS.has(p.schemaVersion);
+}
+
 /** Filter a parsed catalog down to entries the current app can use. Honors
  *  `minAppVersion`, `channel` (preview hidden from non-dev), and the
  *  `schemaVersion` gate — an incompatible course is filtered out BEFORE any
@@ -216,16 +231,8 @@ export function visibleJourneyPacks(
     devMode: boolean,
 ): JourneyPackCatalogEntry[] {
     return catalog.packs.filter((p) => {
-        if (
-            p.minAppVersion &&
-            compareVersions(appVersion, p.minAppVersion) < 0
-        ) {
-            return false;
-        }
+        if (!passesCompatGates(p, appVersion)) return false;
         if (!devMode && p.channel === "preview") return false;
-        if (!SUPPORTED_JOURNEY_SCHEMA_VERSIONS.has(p.schemaVersion)) {
-            return false;
-        }
         return true;
     });
 }
@@ -251,4 +258,44 @@ export function findJourneyPackForTarget(
     if (exact) return exact;
     const base = baseLang(targetLang).toLowerCase();
     return packs.find((p) => baseLang(p.targetLang).toLowerCase() === base);
+}
+
+/**
+ * THE selection seam for "which installable course pack teaches `targetLang`?".
+ * Every journey entry point (runtime pack install, Home hero gating, onboarding
+ * availability) routes through here so they can never disagree on channel
+ * policy.
+ *
+ * Policy: honor the hard compatibility gates (`minAppVersion`, `schemaVersion`)
+ * for BOTH channels, then PREFER a stable-channel pack. If the target has no
+ * stable pack but does have a compatible preview one, fall back to the preview
+ * pack — course packs are content, not experiments, so a preview course beats a
+ * dead-end (logged, no user-facing notice). An unset `channel` counts as stable
+ * (the publisher default). Returns undefined when nothing compatible teaches the
+ * target.
+ */
+export function resolveJourneyPackForTarget(
+    catalog: JourneyPackCatalog,
+    targetLang: string,
+    appVersion: string,
+): JourneyPackCatalogEntry | undefined {
+    const compatible = catalog.packs.filter((p) =>
+        passesCompatGates(p, appVersion),
+    );
+    const stable = findJourneyPackForTarget(
+        compatible.filter((p) => p.channel !== "preview"),
+        targetLang,
+    );
+    if (stable) return stable;
+    const preview = findJourneyPackForTarget(
+        compatible.filter((p) => p.channel === "preview"),
+        targetLang,
+    );
+    if (preview) {
+        console.info(
+            `[journey] no stable course pack for ${targetLang}; ` +
+                `falling back to preview pack ${preview.id}`,
+        );
+    }
+    return preview;
 }

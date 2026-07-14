@@ -13,7 +13,7 @@
  * CTO: `journey/store` calls `loadCourseGraphFromPack(packId)` and hands the
  * result to the engine.
  */
-import { invoke } from "@tauri-apps/api/core"
+import { invoke as tauriInvoke } from "@tauri-apps/api/core"
 
 import {
   ACTIVITY_TYPES,
@@ -21,6 +21,21 @@ import {
   type ItemRef,
   type PackActivityDeclaration,
 } from "../contentPacks/activityContract"
+
+/* -------------------------------------------------------------------------- */
+/*  invoke seam                                                               */
+/* -------------------------------------------------------------------------- */
+
+/** Tauri command seam. Production uses the real `invoke`; the headless install
+ *  tests (single-flight, integrity retry) swap in a scripted fake so the atomic
+ *  install path is exercised without a Tauri runtime. */
+type InvokeFn = <T = unknown>(cmd: string, args?: Record<string, unknown>) => Promise<T>
+let invokeImpl: InvokeFn = tauriInvoke as InvokeFn
+
+/** Test hook: override (or, with `null`, restore) the `invoke` seam. */
+export function __setJourneyPackInvokeForTests(fn: InvokeFn | null): void {
+  invokeImpl = fn ?? (tauriInvoke as InvokeFn)
+}
 
 /* -------------------------------------------------------------------------- */
 /*  ids + install plumbing                                                    */
@@ -47,11 +62,40 @@ export function devDownloadUrlForPack(packId: string): string {
 /** True when the pack is installed on disk (manifest resolvable). */
 export async function isJourneyPackInstalled(packId: string): Promise<boolean> {
   try {
-    await invoke("content_packs_get_manifest_url", { packId })
+    await invokeImpl("content_packs_get_manifest_url", { packId })
     return true
   } catch {
     return false
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  atomic install: single-flight + integrity-verified retry                  */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * In-flight installs keyed by packId — single-flight so a Home-hero prefetch
+ * and the journey mount (or a StrictMode double-invoke / a rapid Retry tap)
+ * can never run two concurrent installs of the SAME pack.
+ *
+ * WHY THIS MATTERS: the Rust installer (`content_packs.rs::download_and_install`)
+ * uses FIXED per-pack paths — `.{packId}.download.zip` and `.{packId}.staging`
+ * — with no lock. Two concurrent installs therefore clobber each other:
+ *   • both `fs::File::create` the SAME `.download.zip` (truncating) and one may
+ *     `remove_dir_all(&staging)` while the other is mid-extract, so the loser's
+ *     `find_pack_root` sees a staging dir with no manifest → the observed
+ *     "Manifest not found in pack";
+ *   • the finalize swap (final→backup, staging→final) interleaves, so the
+ *     loader can open a half-moved / truncated `course.sqlite3` → the observed
+ *     "database disk image is malformed".
+ * Coalescing here removes the race at its source; the Rust swap is otherwise
+ * atomic for a lone install.
+ */
+const inFlightInstalls = new Map<string, Promise<void>>()
+
+/** Test hook: forget in-flight install slots (simulates a cold start). */
+export function __resetJourneyInstallSingleflightForTests(): void {
+  inFlightInstalls.clear()
 }
 
 /**
@@ -60,24 +104,121 @@ export async function isJourneyPackInstalled(packId: string): Promise<boolean> {
  * We pass an EXPLICIT `packId` so the installer never derives an id from the
  * version-suffixed filename (`journey_en-0.1.0.zip` would otherwise
  * mis-derive `journey_en_0_1_0` — the exact wordpan bug-avoidance).
+ *
+ * Single-flighted per packId (see `inFlightInstalls`): concurrent callers share
+ * one download+extract+finalize instead of racing over the shared staging path.
  */
 export async function installJourneyPack(
   packId: string,
   zipUrl?: string,
   expectedSha256?: string | null,
 ): Promise<void> {
-  const downloadUrl =
-    zipUrl ?? (import.meta.env.DEV ? devDownloadUrlForPack(packId) : "")
-  if (!downloadUrl) {
-    throw new Error(
-      `[journeyPack] no download URL for ${packId} — the journey-pack index must provide a zipUrl`,
-    )
-  }
-  await invoke("content_packs_install_from_url", {
-    packId,
-    downloadUrl,
-    expectedSha256: expectedSha256 ?? null,
+  const existing = inFlightInstalls.get(packId)
+  if (existing) return existing
+  const run = (async () => {
+    const downloadUrl =
+      zipUrl ?? (import.meta.env.DEV ? devDownloadUrlForPack(packId) : "")
+    if (!downloadUrl) {
+      throw new Error(
+        `[journeyPack] no download URL for ${packId} — the journey-pack index must provide a zipUrl`,
+      )
+    }
+    await invokeImpl("content_packs_install_from_url", {
+      packId,
+      downloadUrl,
+      expectedSha256: expectedSha256 ?? null,
+    })
+  })()
+  const guarded = run.finally(() => {
+    inFlightInstalls.delete(packId)
   })
+  inFlightInstalls.set(packId, guarded)
+  return guarded
+}
+
+/**
+ * Integrity gate run AFTER an install and BEFORE the loader ever queries the
+ * pack: the manifest must resolve AND `pack_meta` must read back (which proves
+ * `course.sqlite3` opened and is neither truncated nor malformed). This is
+ * cheaper than a full `loadCourseGraph` and catches BOTH observed corruption
+ * signatures — a manifest-less partial extract and a malformed DB — before they
+ * can surface as an error screen. `readJourneyPackMeta` never throws (it maps
+ * every failure, including a "database disk image is malformed" query error, to
+ * null), so this never throws either. A PRAGMA quick_check would be stricter but
+ * the `pack_meta` read (open + read a real table) already detects truncation and
+ * malformation at a fraction of the cost on a full-course DB.
+ */
+export async function verifyJourneyPackReadable(packId: string): Promise<boolean> {
+  return (await readJourneyPackMeta(packId)) != null
+}
+
+/** Attempts before the internal retry gives up and the caller's Retry button
+ *  becomes the final fallback. */
+export const JOURNEY_INSTALL_MAX_ATTEMPTS = 3
+/** Backoff base/cap for the internal install retry (full-jitter, like
+ *  `catalogFetch.backoffDelayMs`). */
+export const JOURNEY_INSTALL_BACKOFF_BASE_MS = 400
+export const JOURNEY_INSTALL_BACKOFF_CAP_MS = 4_000
+
+export type JourneyInstallOptions = {
+  /** Override attempt count (tests). */
+  maxAttempts?: number
+  /** Injected sleep (tests assert the backoff schedule without real waits). */
+  sleep?: (ms: number) => Promise<void>
+  /** Injected RNG for deterministic jitter (tests). */
+  rand?: () => number
+  /** Observability hook fired before each backed-off retry. */
+  onRetry?: (attempt: number, err: unknown) => void
+}
+
+/** Full-jitter backoff delay for install retry `attempt` (1-based retry index). */
+export function journeyInstallBackoffMs(
+  retry: number,
+  rand: () => number = Math.random,
+): number {
+  const exp = Math.min(
+    JOURNEY_INSTALL_BACKOFF_CAP_MS,
+    JOURNEY_INSTALL_BACKOFF_BASE_MS * 2 ** Math.max(0, retry - 1),
+  )
+  return Math.round(exp * (0.5 + 0.5 * rand()))
+}
+
+/**
+ * Install + verify with bounded, backed-off internal retry (course-pack.md
+ * §7.3). Each attempt re-downloads through the atomic Rust staging path and
+ * then verifies the DB actually reads; a transient network blip or a corrupt
+ * download is retried HERE — before the journey error screen is ever shown.
+ * Throws only after exhausting every attempt (then JourneyOverlay's Retry
+ * button is the final, user-driven fallback). Single-flight in
+ * `installJourneyPack` still coalesces concurrent installs of the same pack.
+ */
+export async function installJourneyPackVerified(
+  packId: string,
+  zipUrl?: string,
+  expectedSha256?: string | null,
+  opts: JourneyInstallOptions = {},
+): Promise<void> {
+  const maxAttempts = Math.max(1, opts.maxAttempts ?? JOURNEY_INSTALL_MAX_ATTEMPTS)
+  const sleep = opts.sleep ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms)))
+  const rand = opts.rand ?? Math.random
+  let lastErr: unknown
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    if (attempt > 0) {
+      opts.onRetry?.(attempt, lastErr)
+      await sleep(journeyInstallBackoffMs(attempt, rand))
+    }
+    try {
+      await installJourneyPack(packId, zipUrl, expectedSha256)
+      if (await verifyJourneyPackReadable(packId)) return
+      lastErr = new JourneyPackIntegrityError(
+        `[journeyPack] ${packId} failed post-install integrity check ` +
+          "(pack_meta unreadable — truncated or malformed pack)",
+      )
+    } catch (err) {
+      lastErr = err
+    }
+  }
+  throw lastErr instanceof Error ? lastErr : new Error(String(lastErr))
 }
 
 type QueryResult = {
@@ -95,7 +236,7 @@ export async function queryJourney<T = Record<string, unknown>>(
   params: unknown[],
   maxRows = 1000,
 ): Promise<T[]> {
-  const result = await invoke<QueryResult>("content_packs_query_db", {
+  const result = await invokeImpl<QueryResult>("content_packs_query_db", {
     packId,
     dbName: "main",
     sql,

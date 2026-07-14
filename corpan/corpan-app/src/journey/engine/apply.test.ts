@@ -7,17 +7,18 @@ import assert from "node:assert/strict"
 import { applyResult, type ApplyBag } from "./apply.ts"
 import { DAY_MS } from "./clock.ts"
 import { buildGraphIndex } from "./graph.ts"
+import { nextFeedItems, type MixerBag, type MixerTelemetry } from "./mixer.ts"
+import { buildPools } from "./pools.ts"
 import { createMastery } from "./mastery.ts"
 import { createRng } from "./rng.ts"
 import { createScheduler } from "./scheduler.ts"
-import type { CourseState, IssuedCard, ItemCard, SessionState, SkillScalars } from "./types.ts"
+import { CardFlags, type CourseGraph, type CourseState, type IssuedCard, type ItemCard, type SessionState, type SkillScalars } from "./types.ts"
 import { makeFixtureGraph } from "./__fixtures__/fixtureGraph.ts"
 
 const DAY = 20_000
 const NOW = DAY * DAY_MS + 12 * 3_600_000
 
-function makeBag(): { bag: ApplyBag; session: SessionState; course: CourseState; cards: Map<string, ItemCard>; persisted: string[] } {
-  const graph = makeFixtureGraph()
+function makeBag(graph: CourseGraph = makeFixtureGraph()): { bag: ApplyBag; session: SessionState; course: CourseState; cards: Map<string, ItemCard>; persisted: string[] } {
   const gidx = buildGraphIndex(graph)
   const scheduler = createScheduler()
   const cards = new Map<string, ItemCard>()
@@ -73,6 +74,8 @@ function makeBag(): { bag: ApplyBag; session: SessionState; course: CourseState;
     lastBatchTailType: null,
     cadenceEmitted: 0,
     funServedSession: 0,
+    phonemeServedSession: 0,
+    retiredReviewsSession: 0,
     bossAttempted: new Set(),
     checkpointRun: null,
     gauntletRun: null,
@@ -311,4 +314,264 @@ test("unscored intro cards never grade", () => {
   const out = applyResult(bag, { specId: spec.specId, score: 1, perItem: [{ itemRef: refOf(ids[0]), outcome: "pass" }], durationMs: 4000 })
   assert.equal(out.grades.length, 0)
   assert.equal(cards.size, 0)
+})
+
+// ---- R-A success-based retirement (breadth-first; stop serving mastered words) ----
+
+const isRetiredFlag = (c: ItemCard): boolean => (c.flags & CardFlags.Retired) !== 0
+
+/** A perfect completion: score ≥ 0.95, item passed, no hints (mirrors combo). */
+function perfect(bag: ApplyBag, session: SessionState, id: string, form: 0 | 1 | 2 = 1): void {
+  const spec = issue(session, [id], { form, activityType: "cloze" })
+  applyResult(bag, {
+    specId: spec.specId,
+    score: 1,
+    perItem: [{ itemRef: refOf(id), outcome: "pass", latencyMs: 4000, hintsUsed: 0 }],
+    durationMs: 4000,
+  })
+}
+
+test("R-A: two consecutive perfect completions RETIRE the item; one does not", () => {
+  const { bag, session, cards } = makeBag()
+  perfect(bag, session, ids[0])
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 1, "one perfect ⇒ streak 1")
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), false, "one perfect must NOT retire")
+  perfect(bag, session, ids[0])
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 2, "two perfect ⇒ streak 2")
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), true, "two perfect ⇒ RETIRED")
+})
+
+test("R-A: a miss resets the perfect streak (no premature retirement)", () => {
+  const { bag, session, cards } = makeBag()
+  perfect(bag, session, ids[0])
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 1)
+  // a fail resets the counter to 0
+  const miss = issue(session, [ids[0]], { form: 1, activityType: "cloze" })
+  applyResult(bag, { specId: miss.specId, score: 0, perItem: [{ itemRef: refOf(ids[0]), outcome: "fail" }], durationMs: 4000 })
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 0, "miss resets streak")
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), false)
+  // one more perfect only gets back to streak 1 — still not retired
+  perfect(bag, session, ids[0])
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 1)
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), false, "streak must rebuild from scratch")
+})
+
+test("R-A: a hinted or sub-0.95 pass is NOT perfect (streak does not advance)", () => {
+  const { bag, session, cards } = makeBag()
+  // clean pass first ⇒ streak 1
+  perfect(bag, session, ids[0])
+  // a pass WITH a hint must not advance the streak (leaves it unchanged)
+  const hinted = issue(session, [ids[0]], { form: 1, activityType: "cloze" })
+  applyResult(bag, { specId: hinted.specId, score: 1, perItem: [{ itemRef: refOf(ids[0]), outcome: "pass", latencyMs: 4000, hintsUsed: 1 }], durationMs: 4000 })
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 1, "hinted pass leaves streak unchanged")
+  // a low-score pass (< 0.95) likewise does not advance
+  const lowScore = issue(session, [ids[1]], { form: 1, activityType: "cloze" })
+  applyResult(bag, { specId: lowScore.specId, score: 0.9, perItem: [{ itemRef: refOf(ids[1]), outcome: "pass", latencyMs: 4000, hintsUsed: 0 }], durationMs: 4000 })
+  assert.equal(cards.get(ids[1])!.fsrs.perfect ?? 0, 0, "sub-0.95 pass never perfect")
+  assert.equal(isRetiredFlag(cards.get(ids[1])!), false)
+})
+
+test("R-A: a genuine FSRS forget UN-RETIRES and resets the streak", () => {
+  const { bag, session, cards } = makeBag()
+  perfect(bag, session, ids[0])
+  perfect(bag, session, ids[0])
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), true)
+  // forget (the runtime signals it via a self-report "never-learned" — §4.5)
+  const spec = issue(session, [ids[0]], { form: 0, activityType: "choice_pick", guessable: true })
+  applyResult(bag, {
+    specId: spec.specId,
+    score: 0,
+    perItem: [{ itemRef: refOf(ids[0]), outcome: "fail", detail: { selfReport: "never-learned" } }],
+    durationMs: 4000,
+  })
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), false, "forget un-retires")
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 0, "forget resets streak")
+})
+
+test("R-A: a genuine FSRS lapse UN-RETIRES (rare long-interval review that fails)", () => {
+  const { bag, session, cards } = makeBag()
+  perfect(bag, session, ids[0])
+  perfect(bag, session, ids[0])
+  const card = cards.get(ids[0])!
+  assert.equal(isRetiredFlag(card), true)
+  const lapsesBefore = card.fsrs.lapses
+  // the retired card comes due much later and is FAILED (Again) ⇒ a real lapse
+  const spec = issue(session, [ids[0]], { form: 1, activityType: "cloze" })
+  applyResult(bag, { specId: spec.specId, score: 0, perItem: [{ itemRef: refOf(ids[0]), outcome: "fail" }], durationMs: 4000 })
+  assert.ok(cards.get(ids[0])!.fsrs.lapses > lapsesBefore, "the review lapsed")
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), false, "a lapse un-retires")
+  assert.equal(cards.get(ids[0])!.fsrs.perfect, 0)
+})
+
+test("R-A: buildPools excludes a retired card from DUE/FUN/REPAIR — only the retired fallback holds it", () => {
+  const { bag, session, cards } = makeBag()
+  // ids[0]: two perfect completions ⇒ RETIRED (strong, high R).
+  perfect(bag, session, ids[0])
+  perfect(bag, session, ids[0])
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), true)
+  // ids[1]: one perfect completion ⇒ strong-known but NOT retired (control).
+  perfect(bag, session, ids[1])
+  assert.equal(isRetiredFlag(cards.get(ids[1])!), false)
+
+  const pools = buildPools(bag)
+  // the retired item is gone from every serving pool the mixer draws from...
+  assert.ok(!pools.due.includes(ids[0]), "retired excluded from DUE")
+  assert.ok(!pools.fun.includes(ids[0]), "retired excluded from FUN")
+  assert.ok(!pools.repair.includes(ids[0]), "retired excluded from REPAIR")
+  assert.ok(!pools.new.includes(ids[0]), "retired never re-enters NEW")
+  // ...and is held ONLY in the last-resort retired revisit list.
+  assert.ok(pools.retired.includes(ids[0]), "retired held for the end-of-content fallback")
+  // the non-retired strong-known control still flows through FUN (proving the
+  // exclusion is retirement, not merely a low-R filter).
+  assert.ok(pools.fun.includes(ids[1]), "a non-retired strong-known item still appears in FUN")
+  assert.ok(!pools.retired.includes(ids[1]), "a non-retired item is not in the retired fallback")
+})
+
+// ---- R-A un-retire REACHABILITY via the production serve path (mixer) ----------
+// The un-retire path (apply.ts) is only meaningful if a retired item can actually
+// be SERVED to fail. These tests drive the REAL mixer (nextFeedItems mints the
+// spec) — never a hand-rolled issue() — proving retirement is not a one-way door.
+
+const emptyTelemetry = (): MixerTelemetry => ({ batches: 0, relaxations: 0, shortfalls: 0, lastShortfallReason: null })
+
+/** A MixerBag over an ApplyBag's shared engine state, at an (optionally later) clock. */
+function mixerBagFrom(
+  bag: ApplyBag,
+  session: SessionState,
+  course: CourseState,
+  cards: Map<string, ItemCard>,
+  nowMs = bag.nowMs,
+  day = bag.day,
+): MixerBag {
+  return {
+    gidx: bag.gidx,
+    course,
+    session,
+    cards,
+    skills: bag.skills,
+    mastery: bag.mastery,
+    scheduler: bag.scheduler,
+    nowMs,
+    day,
+    telemetry: emptyTelemetry(),
+  }
+}
+
+/** Reset the session's mixer-side bookkeeping for a fresh serving session. */
+function resetServing(session: SessionState): void {
+  session.emitIndex = 0
+  session.lastEmit = new Map()
+  session.openerServed = false
+  session.issued = new Map()
+  session.retiredReviewsSession = 0
+}
+
+const idKey = (r: { kind: string; source: string; id: string }): string => `${r.kind}:${r.source}:${r.id}`
+const CONS = { availableProviders: ["native"] }
+
+test("R-A: a DECAYED retired item is served by the mixer as a rare review, and failing it UN-RETIRES (via mixer, not force-issue)", () => {
+  const { bag, session, course, cards } = makeBag()
+  // Retire ids[0] with two consecutive perfect completions.
+  perfect(bag, session, ids[0])
+  perfect(bag, session, ids[0])
+  const card = cards.get(ids[0])!
+  assert.equal(isRetiredFlag(card), true, "precondition: item retired")
+
+  // Advance far past its (long) FSRS interval so memory decays below the
+  // retired-review bound and it comes due — the rare-review eligibility gate.
+  const laterDay = DAY + 200
+  const laterMs = laterDay * DAY_MS + 12 * 3_600_000
+  assert.ok(card.fsrs.due <= laterDay, "precondition: retired card is past due")
+  assert.ok(
+    bag.scheduler.retrievability(card, laterMs) < 0.7,
+    "precondition: retrievability decayed below RETIRED_REVIEW_R_BELOW",
+  )
+
+  resetServing(session)
+  // PRODUCTION serve path: the real mixer mints the spec.
+  const feed = nextFeedItems(mixerBagFrom(bag, session, course, cards, laterMs, laterDay), 10, CONS)
+  const served = feed.find((c) => c.spec.itemRefs.some((r) => idKey(r) === ids[0]))
+  assert.ok(served, "the mixer SERVED the decayed retired item as a rare review")
+  assert.equal(served!.meta.pool, "due", "served through the normal review/grade path")
+
+  // Fail the served review (Again) → genuine lapse → un-retire.
+  const applyBag: ApplyBag = { ...bag, nowMs: laterMs, day: laterDay }
+  const ref = served!.spec.itemRefs.find((r) => idKey(r) === ids[0])!
+  const lapsesBefore = cards.get(ids[0])!.fsrs.lapses
+  applyResult(applyBag, {
+    specId: served!.spec.specId,
+    score: 0,
+    perItem: [{ itemRef: ref, outcome: "fail" }],
+    durationMs: 4000,
+  })
+  assert.ok(cards.get(ids[0])!.fsrs.lapses > lapsesBefore, "the review lapsed")
+  assert.equal(isRetiredFlag(cards.get(ids[0])!), false, "the failed retired review UN-RETIRED through the mixer path")
+})
+
+test("R-A: the retired review is capped at one per session (variety preserved)", () => {
+  const { bag, session, course, cards } = makeBag()
+  // Retire two items and decay both.
+  perfect(bag, session, ids[0])
+  perfect(bag, session, ids[0])
+  perfect(bag, session, ids[1])
+  perfect(bag, session, ids[1])
+  const laterDay = DAY + 200
+  const laterMs = laterDay * DAY_MS + 12 * 3_600_000
+  resetServing(session)
+  const mixerBag = mixerBagFrom(bag, session, course, cards, laterMs, laterDay)
+  let retiredServes = 0
+  for (let b = 0; b < 3; b++) {
+    const feed = nextFeedItems(mixerBag, 10, CONS)
+    for (const c of feed) {
+      if (c.spec.itemRefs.some((r) => idKey(r) === ids[0] || idKey(r) === ids[1])) retiredServes += 1
+    }
+  }
+  assert.equal(session.retiredReviewsSession, 1, "exactly one retired review consumed for the session")
+  assert.equal(retiredServes, 1, "only one retired item served across the whole session")
+})
+
+// ---- Finding 2: retired fallback works with NO funWeight templates (prod loader) ----
+
+/** Strip funWeight from every template — mirrors the production native loader,
+ *  which emits NO funWeight templates (journeyPack.ts). */
+function graphNoFunWeight(opts: Parameters<typeof makeFixtureGraph>[0] = {}): CourseGraph {
+  const graph = makeFixtureGraph(opts)
+  graph.activityTemplates = graph.activityTemplates.map(({ funWeight: _drop, ...rest }) => rest)
+  return graph
+}
+
+test("Finding 2: with NO funWeight templates the retired fallback populates and the feed does not dead-end when everything is retired", () => {
+  const graph = graphNoFunWeight({ arcs: 1, unitsPerArc: 1, skillsPerUnit: 1, itemsPerSkill: 2, withLessons: false, withCheckpoints: false })
+  assert.ok(graph.activityTemplates.every((t) => (t.funWeight ?? 0) === 0), "fixture mirrors prod: no funWeight templates")
+  const { bag, session, course, cards } = makeBag(graph)
+  const itemIds = Object.keys(graph.items)
+  assert.equal(itemIds.length, 2)
+
+  // Retire the ENTIRE reachable pool (two perfect completions each) — the
+  // end-of-content state a binger reaches.
+  for (const id of itemIds) {
+    perfect(bag, session, id)
+    perfect(bag, session, id)
+    assert.equal(isRetiredFlag(cards.get(id)!), true, `${id} retired`)
+  }
+
+  // FIX proof: the retired fallback populates DESPITE no funWeight template — the
+  // old `if (hasFunTemplates.size > 0)` gate left it empty in prod (dead code).
+  const pools = buildPools(bag)
+  assert.equal(pools.fun.length, 0, "no funWeight ⇒ FUN empty (unchanged)")
+  assert.deepEqual([...pools.retired].sort(), [...itemIds].sort(), "retired fallback holds every retired item")
+
+  // The feed must NOT dead-end: everything reachable is retired/carded, so the
+  // ONLY servable material is the retired fallback. Without the hoist this returns
+  // [] (starvation). Items are still high-R (just reviewed), so the rare-review
+  // trickle is empty and the end-of-content fallback is what fires here.
+  assert.equal(pools.retiredReview.length, 0, "high-R retired items are NOT rare-review candidates yet")
+  resetServing(session)
+  const feed = nextFeedItems(mixerBagFrom(bag, session, course, cards), 10, CONS)
+  assert.ok(feed.length > 0, "feed does not dead-end when everything is retired")
+  const retiredSet = new Set(itemIds)
+  assert.ok(
+    feed.some((c) => c.spec.itemRefs.some((r) => retiredSet.has(idKey(r)))),
+    "a retired item is revisited through the end-of-content fallback",
+  )
 })

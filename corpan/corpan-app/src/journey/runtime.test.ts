@@ -543,6 +543,101 @@ test("STT policy: only an INSTALLED model drives speaking — unsupported AND mo
 // degrades immediately — there is no inline 75 MB install offer to decline, so
 // speak_echo never even mounts when a model isn't installed.)
 
+// Regression test (R2 + the fillQueue double-synthesis race): `micIntroSeen()`
+// is stamped on MOUNT (by the real BlockIntroCard component's effect — not
+// present in this headless harness, so it's always absent/false here, same
+// as a real user's first-ever session before that card has ever mounted).
+// fillQueue()'s while loop only tops `prepared` up to a small low-water mark
+// (3) per pass and is re-entrancy-guarded (`filling`), so under STEADY,
+// one-card-at-a-time consumption a second stt-run boundary is never
+// discovered until well after the first blockIntro has already been
+// consumed — the water mark self-throttles it away. The actual race needs a
+// SINGLE still-in-flight fillQueue() call: its first loop iteration
+// synchronously pushes blockIntro_A to `prepared` and then suspends at
+// `await mapEngineCard(ec)`; if a SECOND raw stt card is unshifted onto the
+// front of `rawQueue` during that suspended window (before the loop's next
+// iteration resumes), the SAME call's next iteration discovers a fresh run
+// boundary while blockIntro_A is still sitting there, un-advanced. We
+// reproduce that exact window with two synchronous (no `await` between them)
+// calls to `requestLegendary`, which unshifts straight onto `rawQueue` and
+// kicks `fillQueue()` — the second call's `void fillQueue()` itself no-ops
+// (the first is still `filling`), but its unshifted card is what the
+// first call's still-suspended loop picks up next.
+test(
+  "R2: blockIntro (mic-priming card) is synthesized at most once, even when a second stt-run boundary is discovered mid-fillQueue while the first blockIntro is still unconsumed",
+  { timeout: 20_000 },
+  async () => {
+    const harness = await makeEngine({ arcs: 1, unitsPerArc: 2, skillsPerUnit: 2, itemsPerSkill: 6 })
+    const deps = makeRuntimeFixtureDeps(harness.graph)
+    const resolver = createResolver(deps, FIXTURE_RUNTIME_CTX)
+    const itemIds = Object.keys(harness.graph.items)
+
+    // The natural engine feed is empty — every card in this test is
+    // injected directly via requestLegendary, so `prepared` starts (and
+    // stays, absent injection) truly empty, which is what lets a single
+    // fillQueue() call span more than one loop iteration below.
+    const wrappedEngine: typeof harness.engine = {
+      ...harness.engine,
+      nextFeedItems: () => [],
+      requestLegendary: (skillId) =>
+        skillId === "A"
+          ? [speakEchoCard(harness.graph, itemIds[0], "stt-A")]
+          : [speakEchoCard(harness.graph, itemIds[1], "stt-B")],
+    }
+
+    const runtime = createJourneyRuntime({
+      engine: wrappedEngine,
+      resolver,
+      resolverDeps: deps,
+      ctx: FIXTURE_RUNTIME_CTX,
+      graph: harness.graph,
+      courseKey: "stack-1::journey_en_blockintro_race",
+      quota: countingQuota({ notes: 0 }),
+      now: () => harness.clock.nowMs(),
+      record: () => {},
+      sttReadiness: async () => "installed",
+    })
+    await startFeed(runtime)
+    assert.equal(runtime.current(), null, "empty engine feed ⇒ nothing prepared yet")
+
+    // Same-tick double injection — deliberately NO await between these two
+    // calls, so both run synchronously back-to-back within one JS turn.
+    runtime.requestLegendary("A")
+    runtime.requestLegendary("B")
+
+    // Let the still-in-flight fillQueue() call (and any chained ones) settle.
+    await new Promise((r) => setTimeout(r, 50))
+
+    const blockIntroCardIds = new Set<string>()
+    for (let guard = 0; guard < 60; guard++) {
+      const card = runtime.current()
+      if (!card) {
+        await new Promise((r) => setTimeout(r, 5))
+        continue
+      }
+      if (card.kind === "blockIntro") {
+        blockIntroCardIds.add(card.cardId)
+        runtime.completePresentation(card.cardId)
+      } else if (card.kind === "exercise") {
+        runtime.submitResult(card.cardId, answer(card.prepared.engine))
+        runtime.advance()
+      } else {
+        runtime.abandonCurrent()
+      }
+      await new Promise((r) => setTimeout(r, 1))
+    }
+
+    // A fresh user still sees the mic-priming card — the fix must not
+    // suppress it outright, only the redundant second one.
+    assert.ok(blockIntroCardIds.has("bi-stt-A"), "the first blockIntro (bi-stt-A) still appears")
+    assert.equal(
+      blockIntroCardIds.size,
+      1,
+      `blockIntro must be synthesized at most once even when a second boundary races in mid-fillQueue, saw ${blockIntroCardIds.size}: ${[...blockIntroCardIds]}`,
+    )
+  },
+)
+
 // -------------------------------------------------------------- speak-first
 // (§ core): when STT is usable, production/echo moments become Whisper-graded
 // speaking. intro_echo ALWAYS upgrades; listen_type upgrades a strong share.

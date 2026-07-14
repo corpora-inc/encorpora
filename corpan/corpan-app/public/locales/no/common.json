@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Velg temaer",
+      "availableSummary": "{{count}} frasepakker tilgjengelige · ~{{size}} MB",
+      "installAll": "Installer alle",
+      "chooseIndividually": "Velg enkeltvis",
+      "installing": "Installerer {{current}} av {{total}}…",
+      "someFailed": "{{count}} pakke(r) kunne ikke installeres. Du kan prøve igjen fra Pakker-fanen.",
+      "allInstalled": "Du har allerede startpakkene med fraser.",
+      "installed": "Installert",
       "loading": "Laster…",
       "selectAll": "Velg alle ({{count}})",
       "clearAll": "Tøm",
@@ -346,7 +353,8 @@
       "subtitle": "Journey serverer en daglig blanding av nytt stoff og repetisjon på {{lang}} – ett kort om gangen.",
       "guided": {
         "label": "Guidet daglig vei",
-        "desc": "En kort daglig økt, planlagt for deg."
+        "desc": "En kort daglig økt, planlagt for deg.",
+        "unavailable": "Den veiledede banen er ennå ikke tilgjengelig for {{lang}}."
       },
       "explore": {
         "label": "I eget tempo",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inkludert med Plus",
     "installFailedTitle": "Installasjon mislyktes",
+    "updateUnavailableTitle": "Oppdatering utilgjengelig",
+    "updateUnavailableDetail": "Denne nedlastingen samsvarte ikke med det vi forventet. Prøv igjen senere.",
     "installStuckDetail": "Ingen fremgang på en stund. Sjekk tilkoblingen din og prøv igjen.",
     "installStuckTitle": "Nedlasting stoppet",
     "openPack": "Åpne {{name}}",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Du er à jour for nå",
       "loading": "Gjør klar kortene dine…",
-      "loadError": "Journey kunne ikke lastes. Prøv igjen fra Hjem."
+      "loadError": "Journey kunne ikke lastes. Prøv igjen fra Hjem.",
+      "retry": "Prøv igjen"
     },
     "popin": {
       "pronounceTitle": "Uttal det",

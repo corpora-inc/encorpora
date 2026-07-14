@@ -29,6 +29,12 @@ const CORPAN_LOGO_SOURCE = path.join(
 
 const basePathWithSlash = '/';
 
+// Absolute origin the catalog's install URLs (manifestUrl/zipUrl/imageUrl) are
+// pinned to. Defaults to production so committed/CI output is unchanged; set
+// SITE_ORIGIN (e.g. http://10.0.0.49:8000) to stage a LOCAL catalog whose URLs
+// point at the local pack server for on-device dev installs.
+const SITE_ORIGIN = (process.env.SITE_ORIGIN || 'https://encorpora.io').replace(/\/$/, '');
+
 function readTemplate(name) {
   const templatePath = path.join(TEMPLATES_DIR, `${name}.html`);
   return fs.readFileSync(templatePath, 'utf-8');
@@ -538,16 +544,16 @@ function buildPages(outputDir) {
   const catalogData = packsData.filter(isV1Pack).map(pack => {
     // Use zipUrl if available, otherwise fallback to manifest
     const manifestUrl = pack.zipUrl
-      ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
+      ? (pack.zipUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.zipUrl}` : pack.zipUrl)
       : (pack.manifestUrl
-        ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
-        : `https://encorpora.io/corpan/packs/${pack.id}.zip`);
+        ? (pack.manifestUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.manifestUrl}` : pack.manifestUrl)
+        : `${SITE_ORIGIN}/corpan/packs/${pack.id}.zip`);
 
     // Get the avatar URL from the processed pack (matches what's copied to assets/)
     const packWithAssets = packsWithAssets.find(p => p.id === pack.id);
     const imageUrl = packWithAssets?.avatarUrl
-      ? (packWithAssets.avatarUrl.startsWith('/') ? `https://encorpora.io${packWithAssets.avatarUrl}` : packWithAssets.avatarUrl)
-      : `https://encorpora.io/assets/${pack.id}-avatar.png`;
+      ? (packWithAssets.avatarUrl.startsWith('/') ? `${SITE_ORIGIN}${packWithAssets.avatarUrl}` : packWithAssets.avatarUrl)
+      : `${SITE_ORIGIN}/assets/${pack.id}-avatar.png`;
 
     return {
       id: pack.id,
@@ -584,14 +590,14 @@ function buildPages(outputDir) {
     .filter((pack) => pack.builtin !== true && pack.packType !== 'data')
     .map(pack => {
     const zipUrl = pack.zipUrl
-      ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
-      : `https://encorpora.io/corpan/packs/${pack.id}.zip`;
+      ? (pack.zipUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.zipUrl}` : pack.zipUrl)
+      : `${SITE_ORIGIN}/corpan/packs/${pack.id}.zip`;
     const manifestUrl = pack.manifestUrl
-      ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
+      ? (pack.manifestUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.manifestUrl}` : pack.manifestUrl)
       : undefined;
     const imageUrl = pack.avatarUrl
-      ? (pack.avatarUrl.startsWith('/') ? `https://encorpora.io${pack.avatarUrl}` : pack.avatarUrl)
-      : `https://encorpora.io/assets/${pack.id}-avatar.png`;
+      ? (pack.avatarUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.avatarUrl}` : pack.avatarUrl)
+      : `${SITE_ORIGIN}/assets/${pack.id}-avatar.png`;
 
     // Merge `experiences.<id>.{name, blurb}` translations from every locale's
     // common.json into the catalog so the Home picker can render localized

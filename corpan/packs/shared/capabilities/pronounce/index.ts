@@ -29,10 +29,13 @@ import {
   visibleModels,
   visibleDefaultModel,
 } from "./src/modelRegistry"
+import { pickInstalledModelFolder } from "./src/modelPick"
 import {
   bindPushToTalk,
   createPushToTalkRecorder,
+  prepareWithMemoryRetry,
   tryPrepareOnce,
+  TRANSCRIBE_TIMEOUT_MS,
   type PushToTalkRecorder,
 } from "./src/recorder"
 import {
@@ -75,6 +78,11 @@ export interface CapPronounceParams {
   modelPolicy?: "installed-only" | "offer-install"
   /** Attempts allowed before auto-settle (default 3; best attempt wins). */
   maxAttempts?: number
+  /** Auto-settle the round the instant an attempt lands in the top band
+   *  (default TRUE — the pack's proven pacing). Journey passes FALSE so a great
+   *  score DWELLS: the learner sees their feedback and advances on their own
+   *  Continue (never an app-initiated instant advance — R4). */
+  settleOnTopBand?: boolean
   /** Speak the target once on first resume (default false). */
   autoSpeakFirst?: boolean
   startPaused?: boolean
@@ -92,85 +100,10 @@ const readParams = (spec: ActivitySpec): CapPronounceParams =>
 /** Bar count for the live mic waveform (a short scrolling amplitude history). */
 const WAVE_BARS = 15
 
-/** Find a Whisper model that is ALREADY installed on this device, across
- *  EVERY folder the pack knows — not just the tiny default. This is what lets
- *  Journey reuse the big model a user already installed via pronunciation-coach:
- *  both packs go through the same `hostApi.stt` seam and the same
- *  `modelRegistry` folders, so an install by one is visible to the other.
- *
- *  Preference order:
- *    1. The model the native context currently has LOADED (`getStatus().model`)
- *       — zero-cost to reuse, no re-load.
- *    2. The largest already-installed model (better transcription quality).
- *
- *  Robust to hosts where `listInstalled` is missing or returns a non-canonical
- *  shape (an older Android bridge answers `{ installed: [...] }` rather than
- *  `{ models: [...] }`): in that case we fall back to per-folder
- *  `validateModel`, which pronunciation-coach trusts as reliable on every
- *  shipped host. Returns `null` when nothing usable is installed anywhere. */
-const pickInstalledModelFolder = async (
-  stt: CapabilityHostApi["stt"],
-): Promise<string | null> => {
-  if (!stt) return null
-  const folders = allFolders()
-
-  // Prefer the currently-loaded model — reusing it skips a re-prepare.
-  let loadedFolder: string | null = null
-  try {
-    const status = await stt.getStatus?.()
-    if (status?.model && folders.includes(status.model)) {
-      loadedFolder = status.model
-    }
-  } catch (err) {
-    console.warn("[cap-pronounce] getStatus probe failed:", err)
-  }
-
-  const usable = new Set<string>()
-  if (loadedFolder) usable.add(loadedFolder)
-
-  // Primary probe: listInstalled with the canonical `{ models: [{valid}] }`
-  // shape. Guarded so a mis-shaped/absent response doesn't throw us out.
-  if (stt.listInstalled) {
-    try {
-      const res = await stt.listInstalled({ models: folders })
-      const models = Array.isArray(res?.models) ? res.models : []
-      for (const m of models) {
-        if (m?.valid && typeof m.model === "string") usable.add(m.model)
-      }
-    } catch (err) {
-      console.warn("[cap-pronounce] listInstalled probe failed:", err)
-    }
-  }
-
-  // Fallback probe: if listInstalled told us nothing usable (missing on this
-  // host, or the non-canonical shape), validate each folder directly.
-  if (usable.size === 0 && stt.validateModel) {
-    for (const folder of folders) {
-      try {
-        const v = await stt.validateModel({ model: folder })
-        if (v?.valid) usable.add(folder)
-      } catch (err) {
-        console.warn(`[cap-pronounce] validateModel(${folder}) failed:`, err)
-      }
-    }
-  }
-
-  if (usable.size === 0) return null
-  if (loadedFolder && usable.has(loadedFolder)) return loadedFolder
-
-  // Pick the largest installed model — a user who installed the big Whisper
-  // gets it, not the 75 MB Tiny.
-  let best: string | null = null
-  let bestSize = -1
-  for (const folder of usable) {
-    const size = modelByFolder(folder)?.approxSizeMB ?? 0
-    if (size > bestSize) {
-      bestSize = size
-      best = folder
-    }
-  }
-  return best
-}
+// Model-pick (which installed Whisper folder to reuse — never the tiny default
+// over a resident big model) now lives in `./src/modelPick` so the app's stt
+// store and this capability share ONE implementation (WS-B / R5). Here we only
+// consume it as the fallback when the host exposes no `sttModel` seam.
 
 type Attempt = {
   verdict: PronounceVerdict
@@ -182,8 +115,14 @@ const mount = (
   hostApi: CapabilityHostApi,
   spec: ActivitySpec,
 ): CapabilityHandle => {
+  // Remount hygiene: a fast scroll-back/redo can re-enter mount() before the
+  // previous root's dispose() finished, leaving a stale, absolutely-positioned
+  // .capPron-root layered under the fresh one. Clear any leftover first.
+  container.querySelectorAll(".capPron-root").forEach((el) => el.remove())
+
   const params = readParams(spec)
   const settle = createSettleOnce()
+  const settleOnTopBand = params.settleOnTopBand !== false
   const clock = createActiveClock(undefined, params.startPaused === true)
   const uiLang = hostApi.getStackConfig().languages[0] || "en"
   const tt = (key: CapPronounceStringKey, p?: Record<string, string>) =>
@@ -218,6 +157,7 @@ const mount = (
       </button>
       <div class="capPron-mic-label">${escapeHtml(tt("bootLoading"))}</div>
       <div class="capPron-error" hidden></div>
+      <div class="capPron-notice" hidden></div>
     </div>
   `
   container.appendChild(root)
@@ -226,6 +166,7 @@ const mount = (
   const micIcon = root.querySelector<HTMLSpanElement>(".capPron-mic-icon")!
   const micLabel = root.querySelector<HTMLDivElement>(".capPron-mic-label")!
   const errorEl = root.querySelector<HTMLDivElement>(".capPron-error")!
+  const noticeEl = root.querySelector<HTMLDivElement>(".capPron-notice")!
   const waveEl = root.querySelector<HTMLDivElement>("[data-cappron-wave]")!
   const waveBars = Array.from(waveEl.querySelectorAll<HTMLSpanElement>(".capPron-wave-bar"))
 
@@ -298,6 +239,13 @@ const mount = (
   let unbindMic: (() => void) | null = null
   let uiState: "idle" | "recording" | "scoring" = "idle"
   let timeboxTimer: ReturnType<typeof setTimeout> | null = null
+  // Set when a recording is cancelled because the card scrolled away (pause());
+  // resume() then surfaces a gentle "hold to try again" notice (R3).
+  let cancelledWhileAway = false
+  // Belt-and-braces backstop: if scoring never resolves (recorder callback lost
+  // on a degraded bridge), force back to idle with an error so the spinner can
+  // never stick forever (R3).
+  let scoringBackstop: ReturnType<typeof setTimeout> | null = null
 
   const stt = hostApi.stt
 
@@ -315,9 +263,28 @@ const mount = (
     errorEl.textContent = ""
     errorEl.hidden = true
   }
+  // A muted, non-error notice (distinct from the red error slot) — used for the
+  // scroll-away recording-cancelled hint (R3).
+  const showNotice = (message: string) => {
+    noticeEl.textContent = message
+    noticeEl.hidden = false
+  }
+  const clearNotice = () => {
+    noticeEl.textContent = ""
+    noticeEl.hidden = true
+  }
+  const clearScoringBackstop = () => {
+    if (scoringBackstop !== null) {
+      clearTimeout(scoringBackstop)
+      scoringBackstop = null
+    }
+  }
 
   const setUiState = (next: "idle" | "recording" | "scoring") => {
     uiState = next
+    // Any state transition clears a pending scoring backstop; the scoring
+    // branch below re-arms it.
+    clearScoringBackstop()
     micBtn.classList.remove("recording", "scoring")
     micBtn.disabled = false
     if (next === "idle") {
@@ -329,6 +296,7 @@ const mount = (
       micBtn.classList.add("recording")
       micIcon.textContent = "■"
       micLabel.textContent = tt("listeningReleaseToStop")
+      clearNotice()
       startWave()
     } else if (next === "scoring") {
       micBtn.classList.add("scoring")
@@ -336,6 +304,16 @@ const mount = (
       micLabel.textContent = tt("scoring")
       micBtn.disabled = true
       stopWave()
+      // If neither onResult nor onError fires (lost bridge callback), recover to
+      // idle with an error rather than spin forever. The recorder's own
+      // stopSession race already times out at TRANSCRIBE_TIMEOUT_MS; give it a
+      // small grace beyond that before we intervene.
+      scoringBackstop = setTimeout(() => {
+        scoringBackstop = null
+        if (disposed || settle.settled() || uiState !== "scoring") return
+        showError(tt("errScoringFailed", { error: tt("scoring") }))
+        setUiState("idle")
+      }, TRANSCRIBE_TIMEOUT_MS + 5000)
     }
   }
 
@@ -479,7 +457,10 @@ const mount = (
     // Silent attempts (mic heard nothing) don't burn the attempt budget —
     // the user never actually tried the phrase (pack streak precedent).
     const realAttempts = attempts.filter((a) => !a.verdict.silent).length
-    if (realAttempts >= maxAttempts || verdict.band === "top") {
+    // Auto-settle when the attempt budget is spent, OR on a top-band attempt
+    // ONLY when the consumer opted into that pacing (the pack does; Journey does
+    // NOT — a great score must DWELL, advancing on the learner's Continue — R4).
+    if (realAttempts >= maxAttempts || (verdict.band === "top" && settleOnTopBand)) {
       settleMeasured()
     }
   }
@@ -542,6 +523,7 @@ const mount = (
       onStart: () => {
         interacted = true
         clearError()
+        clearNotice()
         clearResultSlots(card)
         if (firstRecordLatencyMs === null) firstRecordLatencyMs = clock.activeMs()
         void recorder!.start({ text: params.text ?? "", lang: params.lang })
@@ -555,40 +537,63 @@ const mount = (
     // finding its model unexpectedly absent settles sttUnavailable unless the
     // consumer opted into the inline install prompt (pop-in surface).
     //
-    // SHARE THE INSTALLED MODEL: probe EVERY known folder first, so a big
-    // Whisper the user already installed (e.g. via pronunciation-coach — same
-    // hostApi.stt seam + same modelRegistry folders) is reused, never a
-    // redundant 75 MB download offer. Only if nothing usable is installed
-    // anywhere do we fall back to the default install offer.
-    const installedFolder = await pickInstalledModelFolder(stt)
+    // SHARE THE INSTALLED MODEL through the single source of truth: consult the
+    // host's `sttModel` seam FIRST (the app's stt store already resolved
+    // preferred → loaded → largest installed), then fall back to our own probe
+    // for hosts without the seam (packs). Either way a big Whisper the user
+    // already installed is reused, never a redundant 75 MB download offer.
+    const seamFolder = hostApi.sttModel?.resolveFolder?.() ?? null
+    const installedFolder = seamFolder ?? (await pickInstalledModelFolder(stt))
     if (disposed) return
     if (installedFolder) {
       const m = modelByFolder(installedFolder)
       try {
-        await tryPrepareOnce(stt, installedFolder, {
+        // prepareWithMemoryRetry, not a single shot: the native headroom gate
+        // returns a TRANSIENT INSUFFICIENT_MEMORY while iOS reclaims the pages
+        // of a just-unloaded model. A single try mislabeled that transient as
+        // "not installed" and fell through to a tiny-download offer — the exact
+        // recurrence. Retry through it (10×1.5s), surfacing "loading" meanwhile.
+        await prepareWithMemoryRetry(stt, installedFolder, {
           timeoutMs: (m?.approxSizeMB ?? 0) >= 1000 ? 180_000 : 60_000,
           label: `Loading ${m?.label ?? "model"} model`,
+          onWait: () => {
+            micLabel.textContent = tt("loadingModel")
+          },
         })
         if (disposed) return
         activeModelFolder = installedFolder
         modelReady = true
+        // Report back to the single source of truth so the store's active model
+        // + engine state track what we actually loaded.
+        try {
+          hostApi.sttModel?.notePrepared?.(installedFolder)
+        } catch (err) {
+          console.error("[cap-pronounce] sttModel.notePrepared failed:", err)
+        }
         setUiState("idle")
         if (!paused && params.autoSpeakFirst) {
           speak(params.lang, params.text ?? "")
         }
         return
       } catch (err) {
-        // Reported installed but wouldn't load (corrupt on disk / insufficient
-        // memory). Fall through to the offer/unavailable paths rather than
-        // silently wedging on a dead mic.
+        // An INSTALLED model that still won't load (corrupt on disk / genuine
+        // OOM after all retries). We must NOT offer to download tiny over a
+        // model the user already has — surface it and settle unavailable so the
+        // runtime degrades, never a redundant install offer (R1).
         console.error(
           `[cap-pronounce] prepare of installed model ${installedFolder} failed:`,
           err,
         )
+        if (disposed) return
+        showError(tt("errScoringFailed", { error: formatErr(err) }))
+        settleSttUnavailable()
+        return
       }
     }
 
-    // Nothing usable installed anywhere (or the installed one failed to load).
+    // Nothing usable installed ANYWHERE (installedFolder === null): only now is
+    // the install offer legal. renderInstallPrompt never fires when a model is
+    // installed (the branch above returns).
     const model = visibleDefaultModel()
     if (params.modelPolicy === "offer-install" && stt.installModel) {
       renderInstallPrompt(model.folder)
@@ -688,7 +693,10 @@ const mount = (
       paused = true
       clock.pause()
       clearTimebox()
-      // Cancel any in-flight recording — mic released (§2 contract).
+      // A recording interrupted by scroll-away must still release the mic (iOS
+      // indicator rule) — but flag it so resume() surfaces a notice instead of
+      // silently eating the attempt (R3).
+      if (uiState === "recording") cancelledWhileAway = true
       recorder?.cancel()
       if (uiState === "recording") setUiState("idle")
       micBtn.disabled = true
@@ -699,6 +707,12 @@ const mount = (
       clock.resume()
       armTimebox()
       setUiState(uiState)
+      // Surface the scroll-away cancellation as a gentle, non-error hint so the
+      // learner knows why nothing scored and how to retry (R3).
+      if (cancelledWhileAway) {
+        cancelledWhileAway = false
+        showNotice(tt("recordingCancelled"))
+      }
       if (!interacted && params.autoSpeakFirst && modelReady) {
         speak(params.lang, params.text ?? "")
       }
@@ -707,6 +721,7 @@ const mount = (
       if (disposed) return
       disposed = true
       clearTimebox()
+      clearScoringBackstop()
       if (!settle.settled()) {
         if (attempts.length > 0) settle.settle(buildResult())
         else settle.settle(makeAbandonedResult(spec, clock.activeMs()))
@@ -746,10 +761,13 @@ const checkAvailability = async (
   } catch (err) {
     console.warn("[cap-pronounce] isAvailable probe failed:", err)
   }
-  // Cheap local probe only — NEVER downloads or loads models here.
+  // Cheap local probe only — NEVER downloads or loads models here. Probe EVERY
+  // known folder (not just the memory-VISIBLE subset): a big model the user
+  // installed on a capable device must count as "ready" even when the same
+  // registry hides bigger cards on a smaller device (R1).
   try {
     if (stt.listInstalled) {
-      const folders = visibleModels().map((m) => m.folder)
+      const folders = allFolders()
       const installed = await stt.listInstalled({ models: folders })
       const usable = installed.models.some((m) => m.valid)
       if (!usable) {

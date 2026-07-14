@@ -19,6 +19,17 @@ export interface GraphIndex {
   itemsByIntro: string[]
   /** Per-skill item ids sorted by introOrder. */
   skillItems: Map<string, string[]>
+  /** Skills that teach pronunciation — those holding ≥1 phoneme-kind item.
+   *  The pack loader drops skill.kind, so "is this a phonology skill?" is
+   *  derived here from item kinds. A phonology skill's WORD items are
+   *  minimal-pair drills (jam/ship/sheep …), NOT communicative vocab. */
+  phonologySkills: Set<string>
+  /** Pronunciation-drill items: every phoneme-kind item PLUS the minimal-pair
+   *  WORD items that live in a phonology skill. The intake guard (pools.ts +
+   *  mixer.ts) defers, caps, and (for placed learners) suppresses these so
+   *  communicative high-frequency content leads the feed — the "jam before
+   *  please/thank you" defect. */
+  phonemeDrillItems: Set<string>
   /** Placement probe bank: probe-eligible items (skills with <2 probes are
    *  excluded with a console warning — engine.md §2.6, never a throw). */
   probeBank: { itemId: string; b: number; skillIds: string[] }[]
@@ -113,6 +124,25 @@ export function buildGraphIndex(graph: CourseGraph): GraphIndex {
   if (!Number.isFinite(maxB)) maxB = 0
   if (!Number.isFinite(minB)) minB = 0
 
+  // Phonology skills + pronunciation-drill items (loader-independent — derived
+  // from item kinds since skill.kind is not carried in the read model). A
+  // phonology skill holds at least one phoneme-kind item; its WORD items are
+  // minimal-pair drills (jam/ship/sheep/very/berry/yet), which the plain
+  // kind==="phoneme" test misses. Both are gated together by the intake guard.
+  const phonologySkills = new Set<string>()
+  for (const item of Object.values(graph.items)) {
+    if (item.kind !== "phoneme") continue
+    for (const s of item.skillIds) phonologySkills.add(s)
+  }
+  const phonemeDrillItems = new Set<string>()
+  for (const [itemId, item] of Object.entries(graph.items)) {
+    if (item.kind === "phoneme") {
+      phonemeDrillItems.add(itemId)
+    } else if (item.kind === "word" && item.skillIds.some((s) => phonologySkills.has(s))) {
+      phonemeDrillItems.add(itemId)
+    }
+  }
+
   const templatesByKind = new Map<string, ActivityTemplate[]>()
   for (const t of graph.activityTemplates) {
     const arr = templatesByKind.get(t.itemKind) ?? []
@@ -132,6 +162,8 @@ export function buildGraphIndex(graph: CourseGraph): GraphIndex {
     rootSkills,
     itemsByIntro,
     skillItems,
+    phonologySkills,
+    phonemeDrillItems,
     probeBank,
     maxB,
     minB,

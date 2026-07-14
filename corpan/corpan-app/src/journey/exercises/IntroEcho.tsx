@@ -136,57 +136,75 @@ export function IntroEcho(props: ExerciseProps) {
     )
 
     return (
-      <div className="flex w-full flex-col items-center gap-5">
-        {badge}
-        <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
-        {mode === "image" ? (
-          <ImageTiles
-            tiles={imageTiles}
-            answerId={IMAGE_ANSWER_TILE_ID}
-            picked={null}
-            answered={revealedOrReview}
-            disabled={revealedOrReview}
-            onPick={reveal}
-          />
-        ) : mode === "glyph" ? (
-          <div
-            className="grid w-full max-w-xs grid-cols-2 gap-3"
-            role="listbox"
-            data-testid="journey-glyph-tiles"
-          >
-            {glyphTiles.map((tile) => {
-              const state = introTileState(revealedOrReview, tile.id, GLYPH_ANSWER_TILE_ID)
-              return (
-                <button
-                  key={tile.id}
-                  type="button"
-                  disabled={revealedOrReview}
-                  onClick={() => reveal()}
-                  data-journey-tile={tile.id}
-                  className={[
-                    "flex aspect-square items-center justify-center rounded-lg border text-5xl font-bold tabular-nums transition-all active:scale-[0.97]",
-                    state === "correct"
-                      ? "border-emerald-500/70 bg-emerald-500/10 text-emerald-500"
-                      : "border-border bg-card text-foreground hover:bg-muted",
-                  ].join(" ")}
-                >
-                  {tile.glyph}
-                </button>
-              )
-            })}
-          </div>
-        ) : (
-          <AnswerTiles
-            tiles={textTiles.map((tile) => ({
-              ...tile,
-              state: introTileState(revealedOrReview, tile.id, INTRO_ANSWER_TILE_ID),
-            }))}
-            lang={props.spec.nativeLang ?? props.spec.targetLang}
-            disabled={revealedOrReview}
-            onPick={reveal}
-          />
-        )}
-        {revealSlot}
+      // Balanced composition on tall viewports (feed-ux): the content cluster
+      // centers in the space ABOVE the Continue button, which anchors near the
+      // BOTTOM of the card area — instead of the whole card (content+button)
+      // clumping together mid-screen with a dead zone below the button.
+      //
+      // `grow` (flex-grow with flex-basis:auto — NEVER flex-1/basis-0, which
+      // collapses in an auto-height parent like PlacementCard's column) makes
+      // this root absorb the REAL height ActivityCardHost hands down from
+      // FeedCardFrame (see the host's intro_echo `grow`). The earlier
+      // 50dvh-minHeight floor could not do this: natural tile-mode content
+      // already exceeds 50dvh, so the floor was a no-op, the inner flex-1 had
+      // zero slack to distribute, and FeedCardFrame centered the whole block —
+      // pinning content high with the button floating mid-air (the S25U
+      // report). On short screens there is no free space to absorb and the
+      // layout degrades to today's plain stack (min-height:auto keeps content
+      // from ever compressing/overlapping).
+      <div className="flex w-full grow flex-col items-center gap-5">
+        <div className="flex w-full grow flex-col items-center justify-center gap-5">
+          {badge}
+          <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
+          {mode === "image" ? (
+            <ImageTiles
+              tiles={imageTiles}
+              answerId={IMAGE_ANSWER_TILE_ID}
+              picked={null}
+              answered={revealedOrReview}
+              disabled={revealedOrReview}
+              onPick={reveal}
+            />
+          ) : mode === "glyph" ? (
+            <div
+              className="grid w-full max-w-xs grid-cols-2 gap-3"
+              role="listbox"
+              data-testid="journey-glyph-tiles"
+            >
+              {glyphTiles.map((tile) => {
+                const state = introTileState(revealedOrReview, tile.id, GLYPH_ANSWER_TILE_ID)
+                return (
+                  <button
+                    key={tile.id}
+                    type="button"
+                    disabled={revealedOrReview}
+                    onClick={() => reveal()}
+                    data-journey-tile={tile.id}
+                    className={[
+                      "flex aspect-square items-center justify-center rounded-lg border text-5xl font-bold tabular-nums transition-all active:scale-[0.97]",
+                      state === "correct"
+                        ? "border-emerald-500/70 bg-emerald-500/10 text-emerald-500"
+                        : "border-border bg-card text-foreground hover:bg-muted",
+                    ].join(" ")}
+                  >
+                    {tile.glyph}
+                  </button>
+                )
+              })}
+            </div>
+          ) : (
+            <AnswerTiles
+              tiles={textTiles.map((tile) => ({
+                ...tile,
+                state: introTileState(revealedOrReview, tile.id, INTRO_ANSWER_TILE_ID),
+              }))}
+              lang={props.spec.nativeLang ?? props.spec.targetLang}
+              disabled={revealedOrReview}
+              onPick={reveal}
+            />
+          )}
+          {revealSlot}
+        </div>
         {continueButton}
       </div>
     )
@@ -194,25 +212,31 @@ export function IntroEcho(props: ExerciseProps) {
 
   // ---- Passive show-and-tell (graceful degrade): no tappable meaning, so the
   // debut shows the word + picture + native gloss and invites an aloud echo.
+  // Same balanced-composition container as the interactive branch above
+  // (the shared layout pattern for both intro variants — newWord/newPhrase —
+  // and every IntroEcho mode): content centers above a bottom-anchored
+  // Continue, absorbing the real card height via `grow` (see above).
   return (
-    <div className="flex w-full flex-col items-center gap-6">
-      {badge}
-      {conceptImageSrc ? (
-        <div
-          className="flex h-40 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-48"
-          data-testid="journey-intro-image"
-        >
-          <img src={conceptImageSrc} alt={conceptImageAlt} className="h-full w-full object-contain" />
-        </div>
-      ) : null}
-      <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} />
-      {answer.native ? (
-        <div lang={props.spec.nativeLang} dir={nativeDir} className="text-lg text-muted-foreground">
-          {answer.native.text}
-        </div>
-      ) : null}
-      <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
-      <div className="text-sm text-muted-foreground">{t("journey.intro.listenAndEcho")}</div>
+    <div className="flex w-full grow flex-col items-center gap-6">
+      <div className="flex w-full grow flex-col items-center justify-center gap-6">
+        {badge}
+        {conceptImageSrc ? (
+          <div
+            className="flex h-40 w-full max-w-xs items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:h-48"
+            data-testid="journey-intro-image"
+          >
+            <img src={conceptImageSrc} alt={conceptImageAlt} className="h-full w-full object-contain" />
+          </div>
+        ) : null}
+        <TargetText item={answer} lang={props.spec.targetLang} showRomanization={props.showRomanization} />
+        {answer.native ? (
+          <div lang={props.spec.nativeLang} dir={nativeDir} className="text-lg text-muted-foreground">
+            {answer.native.text}
+          </div>
+        ) : null}
+        <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
+        <div className="text-sm text-muted-foreground">{t("journey.intro.listenAndEcho")}</div>
+      </div>
       {continueButton}
     </div>
   )

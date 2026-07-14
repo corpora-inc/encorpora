@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Válassz témákat",
+      "availableSummary": "{{count}} kifejezéscsomag érhető el · ~{{size}} MB",
+      "installAll": "Összes telepítése",
+      "chooseIndividually": "Egyenkénti kiválasztás",
+      "installing": "Telepítés: {{current}}/{{total}}…",
+      "someFailed": "{{count}} csomagot nem sikerült telepíteni. Újrapróbálhatod a Csomagok lapon.",
+      "allInstalled": "A kezdő kifejezéscsomagok már megvannak.",
+      "installed": "Telepítve",
       "loading": "Betöltés…",
       "selectAll": "Mindet kijelölni ({{count}})",
       "clearAll": "Törlés",
@@ -346,7 +353,8 @@
       "subtitle": "A Journey minden nap új anyagok és ismétlés keverékét kínálja {{lang}} nyelven — kártyáról kártyára.",
       "guided": {
         "label": "Vezetett napi útvonal",
-        "desc": "Rövid napi foglalkozás, neked megtervezve."
+        "desc": "Rövid napi foglalkozás, neked megtervezve.",
+        "unavailable": "A vezetett útvonal még nem érhető el ehhez: {{lang}}."
       },
       "explore": {
         "label": "Saját tempóban",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "A Plusz tartalmazza",
     "installFailedTitle": "Telepítés sikertelen",
+    "updateUnavailableTitle": "A frissítés nem érhető el",
+    "updateUnavailableDetail": "Ez a letöltés nem egyezett azzal, amit vártunk. Kérjük, próbáld újra később.",
     "installStuckDetail": "Egy ideje nincs előrelépés. Ellenőrizd a kapcsolatodat, és próbáld újra.",
     "installStuckTitle": "Letöltés megakadt",
     "openPack": "{{name}} megnyitása",
@@ -1057,7 +1067,8 @@
     "feed": {
       "caughtUp": "Egyelőre naprakész vagy",
       "loading": "Kártyáid előkészítése…",
-      "loadError": "A Journey nem töltődött be. Próbáld újra a Kezdőlapról."
+      "loadError": "A Journey nem töltődött be. Próbáld újra a Kezdőlapról.",
+      "retry": "Próbáld újra"
     },
     "popin": {
       "pronounceTitle": "Ejtsd ki",

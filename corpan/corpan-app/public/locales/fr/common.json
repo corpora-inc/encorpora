@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Choisis tes sujets",
+      "availableSummary": "{{count}} packs de phrases disponibles · ~{{size}} Mo",
+      "installAll": "Tout installer",
+      "chooseIndividually": "Choisir individuellement",
+      "installing": "Installation de {{current}} sur {{total}}…",
+      "someFailed": "{{count}} pack(s) n'ont pas pu être installés. Vous pouvez réessayer depuis l'onglet Packs.",
+      "allInstalled": "Vous avez déjà les packs de phrases de départ.",
+      "installed": "Installé",
       "loading": "Chargement…",
       "selectAll": "Tout sélectionner ({{count}})",
       "clearAll": "Effacer",
@@ -346,7 +353,8 @@
       "subtitle": "Le Journey propose chaque jour un mélange de nouveautés et de révisions en {{lang}} — carte après carte.",
       "guided": {
         "label": "Parcours quotidien guidé",
-        "desc": "Une courte session quotidienne, planifiée pour vous."
+        "desc": "Une courte session quotidienne, planifiée pour vous.",
+        "unavailable": "Le parcours guidé n'est pas encore disponible pour {{lang}}."
       },
       "explore": {
         "label": "À votre rythme",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclus avec Plus",
     "installFailedTitle": "Échec de l'installation",
+    "updateUnavailableTitle": "Mise à jour indisponible",
+    "updateUnavailableDetail": "Ce téléchargement ne correspondait pas à ce que nous attendions. Veuillez réessayer plus tard.",
     "installStuckDetail": "Aucun progrès depuis un certain temps. Vérifiez votre connexion et réessayez.",
     "installStuckTitle": "Téléchargement bloqué",
     "openPack": "Ouvrir {{name}}",
@@ -1066,7 +1076,8 @@
     "feed": {
       "caughtUp": "Vous êtes à jour pour le moment",
       "loading": "Préparation de vos cartes…",
-      "loadError": "Le Journey n'a pas pu se charger. Réessayez depuis l'accueil."
+      "loadError": "Le Journey n'a pas pu se charger. Réessayez depuis l'accueil.",
+      "retry": "Réessayer"
     },
     "popin": {
       "pronounceTitle": "Prononcez-le",

@@ -14,6 +14,17 @@ Content changes to the authored `courses/en/` tree (the shippable unit is
 
 ## [Unreleased]
 
+## [1.0.0] — 2026-07-13
+
+### Published
+- Published journey_en 1.0.0 (stable, 2.21 MB, 88 units, 2331 items) — first
+  stable-channel release; production users can now install the English course.
+- Version is 1.0.0 rather than 0.2.2 because the 0.2.1 content pruning removed
+  items relative to the published 0.2.0, and §8 of the course-pack spec
+  requires a MAJOR bump for item removals (validator gate V-17). Content is
+  otherwise the 0.2.1 tree (arcs 2+3, communicative-first launchpad) published
+  with `--min-app-version 0.20.1`.
+
 ## [0.2.1] — 2026-07-08
 
 ### Changed

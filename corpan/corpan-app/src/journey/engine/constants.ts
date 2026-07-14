@@ -89,6 +89,50 @@ export const REPLAY_MIN_GAP = 3
 export const ITEM_MIN_GAP = 3
 export const ITEM_MIN_GAP_RELAXED = 2
 export const MAX_FUN_PER_10 = 1
+// Success-based RETIREMENT (R-A): after this many CONSECUTIVE perfect completions
+// (score ≥ 0.95, no hints — mirrors the runtime combo), an item is RETIRED and
+// stops being served from the normal pools (excluded from DUE/FUN/REPAIR + the
+// debt backlog). Breadth-first (R-B): a twice-nailed word gives up its slot to
+// unseen/frontier material instead of being recycled forever. Retirement is NOT
+// a one-way door: a retired item whose memory genuinely DECAYS earns a rare
+// long-interval confirmatory review (RETIRED_REVIEW_* below, served by the
+// mixer) — a failed review lapses and UN-RETIRES it (apply.ts), a passed one
+// re-confirms retirement and pushes the next check far out via the extended FSRS
+// interval. FSRS integrity is preserved — only genuinely strong performance
+// retires; any miss resets the counter and a lapse both resets AND un-retires.
+export const RETIRE_PERFECT_STREAK = 2
+// Rare long-interval retired-review path (R-A un-retire reachability). A RETIRED
+// item is served again ONLY once its retrievability has dropped below this bound
+// — i.e. well past its FSRS due horizon (desired retention is 0.9, so 0.7 is a
+// genuine long-interval lapse-risk review, not a routine one). This decay gate,
+// plus the per-session cap below, IS the rarity: mastered words are not recycled
+// while still well-remembered. Composes with the end-of-content `retired`
+// fallback pool (pools.ts): that is the pool of LAST RESORT (served only when all
+// fresh + non-retired material is drained); THIS is a scheduled TRICKLE served
+// alongside normal work so the un-retire path is reachable in production.
+export const RETIRED_REVIEW_R_BELOW = 0.7
+// At most this many retired-review serves per session — a tight cap so the
+// breadth-first variety win is preserved (a retired review never crowds the feed).
+export const RETIRED_REVIEW_MAX_PER_SESSION = 1
+// ---- phoneme / minimal-pair intake guard (pronunciation drills) -------------
+// Pronunciation drills = phoneme-kind items PLUS the minimal-pair WORD items
+// that live in a phonology skill (jam/ship/sheep/very/berry/yet). They must
+// NEVER flood the opening feed — a learner meets communicative vocab first,
+// not the same ~10 contrast words endlessly (CTO: "jam 1000× before please").
+// Three-layer guard (pools.ts + mixer.ts):
+//   1. DEFER: withheld from the NEW pool until the learner has met at least
+//      PHONEME_NEW_POOL_MIN_SEEN non-phoneme vocab items (scored cards).
+//   2. SHARE: even then, at most PHONEME_NEW_POOL_MAX_SHARE of any one NEW pool.
+//   3. HARD SESSION CAP: at most PHONEME_MAX_PER_SESSION drill serves per
+//      session, regardless of pool — a felt ceiling so a zero-beginner can't
+//      get "jam/sheep 10× in 30 min".
+// PLACED learners get ZERO fresh phoneme intake: a B1-placed user already
+// provisionally knows the A0 sounds unit, so its drills are suppressed from
+// intake entirely (pools.ts) and resurface only through a genuine failure
+// (repair/replay), never as opening spotlight cards.
+export const PHONEME_NEW_POOL_MIN_SEEN = 12
+export const PHONEME_NEW_POOL_MAX_SHARE = 0.25
+export const PHONEME_MAX_PER_SESSION = 6
 // Doom-scroll-to-fluency: the feed is INFINITE. When the day's real work is done
 // (new target met, no due/repair/trickle) the eager learner who keeps going gets
 // FRESH frontier material — the NEXT reachable units' new items — pulled forward,

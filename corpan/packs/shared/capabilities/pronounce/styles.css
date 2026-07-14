@@ -243,6 +243,37 @@
   text-align: center;
 }
 
+/* Muted, non-error notice (e.g. "recording stopped when you scrolled away").
+   Distinct from the red error slot so a recoverable hint never reads as a
+   failure. */
+.capPron-notice {
+  font-size: 12px;
+  color: var(--capPron-muted, #6b6b78);
+  max-width: 100%;
+  text-align: center;
+}
+.capPron-notice[hidden] { display: none; }
+
+/* ---- Flow layout (Journey speak_echo) ----
+   The capability default roots itself absolutely into a fixed, sized frame
+   (the pack's deck card). Journey mounts it in normal document flow instead,
+   where an absolute root collapses to zero height and its overflow:hidden
+   clips the per-word pill rows / score banner on a long phrase. A consumer
+   opts into flow layout by adding `.capPron-flow` to the mount container; the
+   root then grows with its content. Scoped so the pack's deck layout is
+   untouched — rollback is dropping the class. */
+.capPron-flow .capPron-root {
+  position: relative;
+  inset: auto;
+  height: auto;
+  min-height: 18rem;
+  overflow: visible;
+}
+.capPron-flow .capPron-card {
+  /* No inner scroll box in flow — the root grows, so nothing is clipped. */
+  overflow-y: visible;
+}
+
 .capPron-install {
   display: flex;
   flex-direction: column;

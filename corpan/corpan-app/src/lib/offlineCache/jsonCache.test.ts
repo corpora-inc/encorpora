@@ -223,6 +223,30 @@ test("304 refreshes fetchedAt without data churn (no subscriber noise)", async (
   assert.equal(h.net.calls.length, callsBefore)
 })
 
+test("skipConditionalGet: revalidation never sends validators, even with a prior 200", async () => {
+  // Regression for the CloudFront/S3 + GitHub Pages preflight gap (2026-07-13):
+  // those origins fail OPTIONS outright, so a resource marked
+  // skipConditionalGet must never hand fetchJsonFresh a validators object —
+  // not even once we're holding an etag from an earlier fetch.
+  const h = setup()
+  const resource = makeResource({
+    key: "no-conditional-doc",
+    policy: { ttlMs: 300_000, schema: 1, skipConditionalGet: true },
+  })
+  h.net.queue.push({ kind: "ok", data: { items: ["a"] }, etag: '"e1"' })
+  await cachedFetch(resource)
+  assert.equal(h.net.calls[0]?.validators, undefined)
+
+  h.clock.now += 600_000 // past TTL: forces a revalidation
+  h.net.queue.push({ kind: "ok", data: { items: ["b"] }, etag: '"e2"' })
+  await cachedFetch(resource, { background: false })
+  assert.equal(
+    h.net.calls[1]?.validators,
+    undefined,
+    "no If-None-Match/If-Modified-Since sent despite a stored etag",
+  )
+})
+
 test("network error never deletes the record (stale keeps serving)", async () => {
   const h = setup()
   h.net.queue.push({ kind: "ok", data: { items: ["keep-me"] } })
@@ -312,6 +336,64 @@ test("concurrent cachedFetch for one key coalesce onto one network call", async 
   assert.deepEqual(a?.data, { items: ["once"] })
   assert.deepEqual(b?.data, { items: ["once"] })
   assert.deepEqual(c?.data, { items: ["once"] })
+})
+
+test("failed revalidation backs off: cooldown suppresses the network, success resets it", async () => {
+  const h = setup()
+  // Deterministic cooldown schedule: N-th consecutive failure ⇒ N·1000 ms.
+  __setJsonCacheDepsForTests({
+    fetchJsonFresh: h.net.fetchJsonFresh as never,
+    ns: async () => h.kv,
+    now: () => h.clock.now,
+    isOnline: () => h.online.value,
+    staggerMs: () => 0,
+    backoffMs: (failures: number) => failures * 1000,
+  })
+
+  // Seed a cached record, then age it past TTL so every read below revalidates.
+  h.net.queue.push({ kind: "ok", data: { items: ["seed"] } })
+  await cachedFetch(makeResource())
+  h.clock.now += 600_000
+
+  // First revalidation fails (queue empty ⇒ scripted error). Foreground so the
+  // revalidation is awaited; stale is still served.
+  const r1 = await cachedFetch(makeResource(), { background: false })
+  assert.deepEqual(r1?.data, { items: ["seed"] })
+  const afterFail1 = h.net.calls.length
+
+  // Inside the 1000 ms cooldown: NO network (this is the anti-storm guard).
+  h.clock.now += 500
+  await cachedFetch(makeResource(), { background: false })
+  assert.equal(h.net.calls.length, afterFail1, "cooldown suppressed the network")
+
+  // Cooldown elapsed: one attempt is allowed (fails again ⇒ cooldown grows to 2000).
+  h.clock.now += 600
+  await cachedFetch(makeResource(), { background: false })
+  assert.equal(h.net.calls.length, afterFail1 + 1, "retried once after the cooldown")
+
+  // Grown (2000 ms) cooldown still suppresses at +1500 ms.
+  h.clock.now += 1500
+  await cachedFetch(makeResource(), { background: false })
+  assert.equal(h.net.calls.length, afterFail1 + 1, "grown cooldown still suppressing")
+
+  // force bypasses the cooldown entirely (explicit user pull).
+  const forcedCalls = h.net.calls.length
+  await cachedFetch(makeResource(), { force: true })
+  assert.equal(h.net.calls.length, forcedCalls + 1, "force ignores the cooldown")
+
+  // Recover: advance well past the (now grown) cooldown and serve a body.
+  // Success clears backoff.
+  h.clock.now += 10_000
+  h.net.queue.push({ kind: "ok", data: { items: ["recovered"] } })
+  const r2 = await cachedFetch(makeResource(), { background: false })
+  assert.deepEqual(r2?.data, { items: ["recovered"] })
+
+  // Backoff was reset: the very next stale read hits the network with no wait.
+  h.clock.now += 600_000
+  h.net.queue.push({ kind: "ok", data: { items: ["again"] } })
+  const before = h.net.calls.length
+  await cachedFetch(makeResource(), { background: false })
+  assert.equal(h.net.calls.length, before + 1, "backoff reset after a success")
 })
 
 test("revalidateAll refreshes only stale registered resources, skips offline", async () => {

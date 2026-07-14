@@ -370,6 +370,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik anjeun",
+      "availableSummary": "{{count}} pakét frasa sayaga · ~{{size}} MB",
+      "installAll": "Pasang sadaya",
+      "chooseIndividually": "Pilih hiji-hiji",
+      "installing": "Masang {{current}} tina {{total}}…",
+      "someFailed": "{{count}} pakét teu tiasa dipasang. Anjeun tiasa nyobian deui tina tab Pakét.",
+      "allInstalled": "Anjeun parantos gaduh pakét frasa awal.",
+      "installed": "Kapasang",
       "loading": "Ngamuat paket…",
       "selectAll": "Pilih sadayana ({{count}})",
       "clearAll": "Hapus pilihan",
@@ -423,7 +430,8 @@
       "subtitle": "Journey nyayogikeun campuran matéri anyar sareng pangulangan unggal dinten dina {{lang}} — kartu demi kartu.",
       "guided": {
         "label": "Jalur harian dipandu",
-        "desc": "Sesi harian anu singget, dirarancang pikeun anjeun."
+        "desc": "Sesi harian anu singget, dirarancang pikeun anjeun.",
+        "unavailable": "Jalur nu dipandu tacan sayagi pikeun {{lang}}."
       },
       "explore": {
         "label": "Lampah sorangan",
@@ -659,6 +667,8 @@
     "installStuckTitle": "Unduh terhenti",
     "installStuckDetail": "Teu aya kamajuan pikeun sababaraha waktos. Periksa sambungan anjeun sareng cobian deui.",
     "installFailedTitle": "Pasang gagal",
+    "updateUnavailableTitle": "Apdet teu sayaga",
+    "updateUnavailableDetail": "Undeuran ieu teu cocog jeung nu diarepkeun. Mangga cobian deui engke.",
     "devUnlockTitle": "Paket Pamekar",
     "devUnlockHint": "Ketok 7 kali pikeun ngaleupaskeun pasang manifest.",
     "devUnlockToast": "Paket Pamekar dibuka.",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "Ayeuna mah geus bérés kabéh",
       "loading": "Nyiapkeun kartu anjeun…",
-      "loadError": "Journey teu bisa dimuat. Cobian deui ti Imah."
+      "loadError": "Journey teu bisa dimuat. Cobian deui ti Imah.",
+      "retry": "Cobian deui"
     },
     "popin": {
       "pronounceTitle": "Ucapkeun",

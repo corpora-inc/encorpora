@@ -143,6 +143,20 @@ type Session = {
 let session: Session | null = null
 
 /**
+ * Normalize a pack id's hyphen/underscore form (WS-F un-wedge). A provider's
+ * own `reportResult()`/event-rail packId has been observed to drift from the
+ * id the launch side used — `corpan-city` vs `corpan_city` — never a
+ * DIFFERENT pack, just a different separator convention for the SAME one.
+ * Every packId identity check below runs both sides through this so a
+ * genuine terminal result is never dropped as "result from wrong pack"
+ * purely over formatting drift (which previously left the session open
+ * forever — see runtime.ts's pendingPack watchdog for the launch-side half
+ * of this fix). Pure string normalize; stored ids are never rewritten. */
+function normalizePackId(packId: string): string {
+  return packId.trim().toLowerCase().replace(/-/g, "_")
+}
+
+/**
  * Feed controller calls this IMMEDIATELY BEFORE handleLaunchGame. Returns
  * false when the spec is refused (currently: `modelNeeds` carrying both
  * "stt" and "llm" — mutually exclusive per spec §7; the card is skipped, no
@@ -167,7 +181,11 @@ export function beginActivitySession(
 }
 
 export function isActiveFor(packId: string): boolean {
-  return !!session && !session.terminal && session.packId === packId
+  return (
+    !!session &&
+    !session.terminal &&
+    normalizePackId(session.packId) === normalizePackId(packId)
+  )
 }
 
 export function activeSpecFor(packId: string): ActivitySpec | null {
@@ -191,7 +209,8 @@ export function ingestItem(packId: string, raw: unknown): boolean {
 /** Both rails call this. First terminal wins; everything after is dropped. */
 export function ingestResult(packId: string, raw: unknown): boolean {
   if (!session || session.terminal) return reject("result after terminal / no session", packId)
-  if (session.packId !== packId) return reject("result from wrong pack", packId)
+  if (normalizePackId(session.packId) !== normalizePackId(packId))
+    return reject("result from wrong pack", packId)
   const parsed = ActivityResultSchema.safeParse(raw)
   if (!parsed.success) return reject(`invalid result: ${parsed.error.message}`, packId)
   if (parsed.data.specId !== session.spec.specId)
@@ -257,7 +276,8 @@ function reject(why: string, packId: string): false {
 }
 
 // ============================================================
-// Event rail — `corpan:activity-result` (§3.3, fallback for OTA packs)
+// Event rail — `corpan:activity-result` (§3.3, fallback for OTA packs) +
+// `corpan:exit` teardown synthesis (WS-F un-wedge)
 // ============================================================
 
 let eventRailInstalled = false
@@ -267,6 +287,21 @@ let eventRailInstalled = false
  * boundary, then funneled into the same `ingestResult` as the typed rail
  * (single-owner rule, R8). Idempotent; safe to call in non-window contexts
  * (no-op). Returns an uninstaller (used by tests; the app installs for life).
+ *
+ * Also installs the `corpan:exit` teardown listener (WS-F): App.tsx/
+ * ContentPackHost dispatch `corpan:exit` on EVERY experience-overlay exit —
+ * normal pack completion (after `reportResult`, so `endActivitySession` here
+ * is a no-op: `finalizeAbandoned` only acts on a still-open, non-terminal
+ * session) AND the crash / stuck-pack / dropped-report paths that otherwise
+ * leave the session (and the host's `pendingPack` launch-gate, runtime.ts)
+ * wedged forever. Listening here — inside the single-owner session module,
+ * which we own — rather than requiring every overlay-mount call site to
+ * remember to call `endActivitySession()` guarantees this runs for every
+ * pack exit without editing App.tsx/ContentPackHost (which we don't own).
+ * A no-op outside a journey launch: `endActivitySession()` no-ops with no
+ * open session, matching the standalone-launch behavior everywhere else in
+ * this module. Shares the same install lifecycle/uninstaller as the result
+ * rail so `hostApi.ts`'s existing single call site wires both.
  */
 export function installActivityResultEventRail(): () => void {
   if (typeof window === "undefined" || eventRailInstalled) return () => {}
@@ -279,10 +314,13 @@ export function installActivityResultEventRail(): () => void {
     }
     ingestResult(parsed.data.packId, parsed.data.result)
   }
+  const onExit = () => endActivitySession()
   window.addEventListener("corpan:activity-result", onActivityResult)
+  window.addEventListener("corpan:exit", onExit)
   eventRailInstalled = true
   return () => {
     window.removeEventListener("corpan:activity-result", onActivityResult)
+    window.removeEventListener("corpan:exit", onExit)
     eventRailInstalled = false
   }
 }

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Elige tus temas",
+      "availableSummary": "{{count}} packs de frases disponibles · ~{{size}} MB",
+      "installAll": "Instalar todo",
+      "chooseIndividually": "Elegir individualmente",
+      "installing": "Instalando {{current}} de {{total}}…",
+      "someFailed": "No se pudieron instalar {{count}} pack(s). Puedes reintentar desde la pestaña Packs.",
+      "allInstalled": "Ya tienes los packs de frases iniciales.",
+      "installed": "Instalado",
       "loading": "Cargando…",
       "selectAll": "Seleccionar todo ({{count}})",
       "clearAll": "Limpiar",
@@ -346,7 +353,8 @@
       "subtitle": "El Journey te sirve cada día una mezcla de material nuevo y repaso en {{lang}} — tarjeta a tarjeta.",
       "guided": {
         "label": "Ruta diaria guiada",
-        "desc": "Una sesión diaria breve, planificada para ti."
+        "desc": "Una sesión diaria breve, planificada para ti.",
+        "unavailable": "La ruta guiada aún no está disponible para {{lang}}."
       },
       "explore": {
         "label": "A tu ritmo",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Incluido con Plus",
     "installFailedTitle": "Error de instalación",
+    "updateUnavailableTitle": "Actualización no disponible",
+    "updateUnavailableDetail": "Esta descarga no coincidió con lo que esperábamos. Inténtalo de nuevo más tarde.",
     "installStuckDetail": "Sin progreso desde hace un tiempo. Revisa tu conexión e inténtalo de nuevo.",
     "installStuckTitle": "Descarga estancada",
     "openPack": "Abrir {{name}}",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Estás al día por ahora",
       "loading": "Preparando tus tarjetas…",
-      "loadError": "El Journey no pudo cargarse. Inténtalo desde Inicio."
+      "loadError": "El Journey no pudo cargarse. Inténtalo desde Inicio.",
+      "retry": "Inténtalo de nuevo"
     },
     "popin": {
       "pronounceTitle": "Pronúncialo",

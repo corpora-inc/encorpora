@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Kies je onderwerpen",
+      "availableSummary": "{{count}} zinspakketten beschikbaar · ~{{size}} MB",
+      "installAll": "Alles installeren",
+      "chooseIndividually": "Afzonderlijk kiezen",
+      "installing": "{{current}} van {{total}} wordt geïnstalleerd…",
+      "someFailed": "{{count}} pakket(ten) konden niet worden geïnstalleerd. Je kunt het opnieuw proberen op het tabblad Pakketten.",
+      "allInstalled": "Je hebt de starterzinspakketten al.",
+      "installed": "Geïnstalleerd",
       "loading": "Laden…",
       "selectAll": "Alles selecteren ({{count}})",
       "clearAll": "Wissen",
@@ -346,7 +353,8 @@
       "subtitle": "De Journey serveert dagelijks een mix van nieuw materiaal en herhaling in {{lang}} — kaart voor kaart.",
       "guided": {
         "label": "Begeleid dagelijks pad",
-        "desc": "Een korte dagelijkse sessie, voor jou gepland."
+        "desc": "Een korte dagelijkse sessie, voor jou gepland.",
+        "unavailable": "Het begeleide pad is nog niet beschikbaar voor {{lang}}."
       },
       "explore": {
         "label": "Eigen tempo",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inbegrepen bij Plus",
     "installFailedTitle": "Installatie mislukt",
+    "updateUnavailableTitle": "Update niet beschikbaar",
+    "updateUnavailableDetail": "Deze download kwam niet overeen met wat we verwachtten. Probeer het later opnieuw.",
     "installStuckDetail": "Al een tijdje geen voortgang. Controleer je verbinding en probeer het opnieuw.",
     "installStuckTitle": "Download vastgelopen",
     "openPack": "Open {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "Je bent voorlopig bij",
       "loading": "Je kaarten worden voorbereid…",
-      "loadError": "De Journey kon niet laden. Probeer het opnieuw vanaf Home."
+      "loadError": "De Journey kon niet laden. Probeer het opnieuw vanaf Home.",
+      "retry": "Opnieuw proberen"
     },
     "popin": {
       "pronounceTitle": "Spreek het uit",

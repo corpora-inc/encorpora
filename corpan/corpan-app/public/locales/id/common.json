@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik kamu",
+      "availableSummary": "{{count}} paket frasa tersedia · ~{{size}} MB",
+      "installAll": "Instal semua",
+      "chooseIndividually": "Pilih satu per satu",
+      "installing": "Menginstal {{current}} dari {{total}}…",
+      "someFailed": "{{count}} paket tidak dapat diinstal. Anda dapat mencoba lagi dari tab Paket.",
+      "allInstalled": "Anda sudah memiliki paket frasa awal.",
+      "installed": "Terpasang",
       "loading": "Memuat…",
       "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Hapus",
@@ -346,7 +353,8 @@
       "subtitle": "Journey menyajikan campuran harian materi baru dan pengulangan dalam {{lang}} — kartu demi kartu.",
       "guided": {
         "label": "Jalur harian terpandu",
-        "desc": "Sesi harian singkat, direncanakan khusus untuk Anda."
+        "desc": "Sesi harian singkat, direncanakan khusus untuk Anda.",
+        "unavailable": "Jalur terpandu belum tersedia untuk {{lang}}."
       },
       "explore": {
         "label": "Sesuai kecepatan Anda",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Termasuk dalam Plus",
     "installFailedTitle": "Instalasi gagal",
+    "updateUnavailableTitle": "Pembaruan tidak tersedia",
+    "updateUnavailableDetail": "Unduhan ini tidak sesuai dengan yang kami harapkan. Silakan coba lagi nanti.",
     "installStuckDetail": "Tidak ada kemajuan selama beberapa waktu. Periksa koneksi Anda dan coba lagi.",
     "installStuckTitle": "Unduhan terhenti",
     "openPack": "Buka {{name}}",
@@ -1057,7 +1067,8 @@
     "feed": {
       "caughtUp": "Untuk saat ini kamu sudah selesai",
       "loading": "Menyiapkan kartumu…",
-      "loadError": "Journey gagal dimuat. Coba lagi dari Beranda."
+      "loadError": "Journey gagal dimuat. Coba lagi dari Beranda.",
+      "retry": "Coba lagi"
     },
     "popin": {
       "pronounceTitle": "Ucapkan",

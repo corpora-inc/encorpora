@@ -9,6 +9,7 @@
 // volatile). Concurrency is the shared single-flight map.
 
 import {
+  backoffDelayMs,
   fetchJsonFresh as realFetchJsonFresh,
   jitter,
   type FreshnessResult,
@@ -45,7 +46,29 @@ type JsonCacheDeps = {
   isOnline: () => boolean
   /** Per-resource stagger for revalidateAll (fleet kindness). */
   staggerMs: () => number
+  /** Cooldown (ms) before another revalidation is allowed after `failures`
+   *  consecutive failures. Full-jitter exponential with a cap — see
+   *  `JSON_REVALIDATE_BACKOFF_*`. Injected in tests for a deterministic
+   *  schedule. */
+  backoffMs: (failures: number) => number
 }
+
+/** Failure-cooldown base/cap for catalog revalidation. WHY: `revalidate` has
+ *  no memory of consecutive failures, so a persistently-failing catalog paired
+ *  with frequent triggers (interval + foreground + a flapping `online` event
+ *  storm) re-enters a fresh `fetchJsonFresh` burst on every signal — each burst
+ *  is up to 3 attempts at ~500 ms backoff, i.e. the ~2 requests/second hammering
+ *  observed in the field. The cooldown bounds the NEXT burst to an
+ *  exponentially-growing, jittered, capped window; a success resets it. Cache
+ *  semantics are untouched — a cooldown skip serves cache exactly like a failed
+ *  revalidation (the record is never clobbered). */
+export const JSON_REVALIDATE_BACKOFF_BASE_MS = 2_000
+export const JSON_REVALIDATE_BACKOFF_CAP_MS = 300_000
+
+/** Per-key consecutive-failure cooldown state. Reset on any HTTP response
+ *  (200/304 both prove the origin is reachable). */
+type BackoffState = { failures: number; nextAttemptAt: number }
+const backoff = new Map<string, BackoffState>()
 
 let defaultNs: KVLike | undefined
 const defaultDeps: JsonCacheDeps = {
@@ -62,6 +85,13 @@ const defaultDeps: JsonCacheDeps = {
   now: () => Date.now(),
   isOnline: () => (typeof navigator === "undefined" ? true : navigator.onLine),
   staggerMs: () => jitter(600, 0.8),
+  backoffMs: (failures) =>
+    // Reuse the proven full-jitter backoff; `failures` is 1-based here.
+    backoffDelayMs(
+      failures - 1,
+      JSON_REVALIDATE_BACKOFF_BASE_MS,
+      JSON_REVALIDATE_BACKOFF_CAP_MS,
+    ),
 }
 
 let deps: JsonCacheDeps = { ...defaultDeps }
@@ -74,6 +104,7 @@ export function __resetJsonCacheForTests(): void {
   deps = { ...defaultDeps }
   subscribers.clear()
   registry.clear()
+  backoff.clear()
 }
 
 /* ------------------------------- subscribers ------------------------------ */
@@ -163,10 +194,25 @@ async function revalidate<T>(
   existing: { record: StoredJsonRecord; data: T } | undefined,
   opts: { force?: boolean },
 ): Promise<CachedJson<T> | undefined> {
+  // Failure cooldown: after consecutive failures, skip the network until the
+  // backoff window elapses (an explicit `force` — user pull — always tries).
+  // This is what bounds the retry rate: without it, every trigger re-enters a
+  // fresh fetch burst on a persistently-failing catalog. A skip serves cache
+  // exactly like a failed revalidation would, so cache semantics are preserved.
+  const state = backoff.get(resource.key)
+  if (!opts.force && state && deps.now() < state.nextAttemptAt) {
+    return undefined
+  }
   return singleflight(`json:${resource.key}`, async () => {
     // Conditional validators only when we hold a body to 304 against; a
-    // forced refresh always re-fetches the full body.
-    const validators = !opts.force && existing ? existing.record.validators : undefined
+    // forced refresh always re-fetches the full body. Also withheld when the
+    // resource's origin is known not to answer CORS preflight (see
+    // `skipConditionalGet` in types.ts) — sending them there just buys a
+    // guaranteed-to-fail OPTIONS round trip before the plain-GET retry.
+    const validators =
+      !opts.force && existing && !resource.policy.skipConditionalGet
+        ? existing.record.validators
+        : undefined
     try {
       const result = await deps.fetchJsonFresh<T>(resource.url(), {
         parse: resource.parse,
@@ -174,6 +220,9 @@ async function revalidate<T>(
         timeoutMs: resource.policy.timeoutMs,
         maxAttempts: resource.policy.maxAttempts,
       })
+      // A FreshnessResult (200 or 304) means the origin answered — clear any
+      // consecutive-failure cooldown so we return to normal cadence.
+      backoff.delete(resource.key)
       const now = deps.now()
       if (result.status === "unchanged") {
         if (!existing) return undefined // stray 304 against no cache: treat as failure
@@ -198,7 +247,14 @@ async function revalidate<T>(
       return value
     } catch (err) {
       // A throw means KEEP THE CACHE (catalogFetch contract). Loud log,
-      // silent UI (offline-cache.md §7.3).
+      // silent UI (offline-cache.md §7.3). Record the failure so the next
+      // revalidation is held off by an exponentially-growing, capped, jittered
+      // cooldown — this is the backoff that stops the ~2×/s retry storm.
+      const failures = (backoff.get(resource.key)?.failures ?? 0) + 1
+      backoff.set(resource.key, {
+        failures,
+        nextAttemptAt: deps.now() + deps.backoffMs(failures),
+      })
       console.warn(`[offlineCache] revalidation failed for "${resource.key}":`, err)
       return undefined
     }

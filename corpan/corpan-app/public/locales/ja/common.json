@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "テーマを選ぼう",
+      "availableSummary": "フレーズパック {{count}} 個が利用可能 · ~{{size}} MB",
+      "installAll": "すべてインストール",
+      "chooseIndividually": "個別に選ぶ",
+      "installing": "{{total}} 個中 {{current}} 個をインストール中…",
+      "someFailed": "{{count}} 個のパックをインストールできませんでした。「パック」タブから再試行できます。",
+      "allInstalled": "スターターのフレーズパックはすでにお持ちです。",
+      "installed": "インストール済み",
       "loading": "読み込み中…",
       "selectAll": "すべて選択 ({{count}})",
       "clearAll": "クリア",
@@ -346,7 +353,8 @@
       "subtitle": "Journey は{{lang}}の新しい内容と復習を毎日ミックスして、1枚ずつお届けします。",
       "guided": {
         "label": "ガイド付きの毎日の学習",
-        "desc": "あなたのために計画された、短い毎日のセッション。"
+        "desc": "あなたのために計画された、短い毎日のセッション。",
+        "unavailable": "{{lang}} のガイド付きコースはまだ利用できません。"
       },
       "explore": {
         "label": "自分のペースで",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plusに含まれています",
     "installFailedTitle": "インストール失敗",
+    "updateUnavailableTitle": "アップデートは利用できません",
+    "updateUnavailableDetail": "このダウンロードは想定していた内容と一致しませんでした。しばらくしてからもう一度お試しください。",
     "installStuckDetail": "しばらく進捗がありません。接続を確認して再試行してください。",
     "installStuckTitle": "ダウンロードが停止しました",
     "openPack": "{{name}}を開く",
@@ -1066,7 +1076,8 @@
     "feed": {
       "caughtUp": "今のところ全部終わりました",
       "loading": "カードを準備中…",
-      "loadError": "Journey を読み込めませんでした。ホームからやり直してください。"
+      "loadError": "Journey を読み込めませんでした。ホームからやり直してください。",
+      "retry": "もう一度試す"
     },
     "popin": {
       "pronounceTitle": "発音してみよう",

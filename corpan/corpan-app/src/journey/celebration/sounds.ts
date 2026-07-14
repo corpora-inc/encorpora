@@ -3,6 +3,7 @@
 // (checked, dropped — not queued). Web Audio only, no assets.
 
 import { fireHapticAmbient } from "./haptics.ts"
+import { isUtteranceActive } from "../../util/audioManager.ts"
 
 let ctx: AudioContext | null = null
 
@@ -22,7 +23,18 @@ function audioCtx(): AudioContext | null {
   return ctx
 }
 
-function ttsSpeaking(): boolean {
+// Exported for testability (celebration-trigger coverage in sounds.test.ts):
+// this is the exact gate playChime/playFlourish/playSoftMiss consult, and the
+// one ActivityCardHost.settle() now defuses via endUtterance() right before a
+// celebration fires — see the comment there for why a STALE isUtteranceActive()
+// estimate (word-count based, no true onend on native TTS) must never be
+// allowed to silently swallow a fresh correct-answer chime.
+export function ttsSpeaking(): boolean {
+  // `speechSynthesis.speaking` only sees BROWSER TTS; native (macOS/iOS/
+  // Android) speech never touches it. isUtteranceActive() covers native too
+  // (estimate-based — see audioManager.ts), so a chime is dropped whichever
+  // backend is currently talking.
+  if (isUtteranceActive()) return true
   try {
     return typeof speechSynthesis !== "undefined" && speechSynthesis.speaking
   } catch {

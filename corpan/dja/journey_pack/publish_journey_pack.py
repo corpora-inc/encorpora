@@ -6,8 +6,11 @@ publisher mechanics, relocated in-repo (the out-of-repo wordpan publisher is a
 documented mistake) and hardened: validation-gated, immutable zips,
 accumulate-merge index.
 
-usage: python3 publish_journey_pack.py <target> [--dry-run] [--channel preview]
+usage: python3 publish_journey_pack.py <target> [--dry-run] [--channel preview|stable]
 e.g.:  python3 publish_journey_pack.py en
+       (channel defaults to CHANNEL_DEFAULTS[target], "preview" if unlisted —
+       journey_en defaults to "stable" as of the 0.20.6 promotion; pass
+       --channel explicitly to override)
 
 Steps (idempotent):
   1. build or verify dist/journey_<target>-<ver>.zip (fresh-rebuild sha check
@@ -49,6 +52,18 @@ CDN_BASE = "https://d38iwc9748jekz.cloudfront.net/corpan/journey-packs"
 ZIP_CACHE = "public,max-age=31536000,immutable"
 INDEX_CACHE = "public,max-age=300"
 DEFAULT_MIN_APP_VERSION = "0.9.0"
+
+# Fallback channel when --channel is not passed. course-pack.md §7.3:
+# "Promotion to stable = index-entry edit (publisher flag), no app change."
+# New targets are unproven and MUST default to preview (devMode-only) until a
+# CTO promotion decision flips them here. journey_en was promoted for the
+# 0.20.6 release (index currently shows journey_en 0.2.0 / channel preview at
+# https://d38iwc9748jekz.cloudfront.net/corpan/journey-packs/index.json —
+# next publish of `en` stamps stable unless --channel overrides it).
+DEFAULT_CHANNEL = "preview"
+CHANNEL_DEFAULTS: Dict[str, str] = {
+    "en": "stable",
+}
 
 
 class PublishError(Exception):
@@ -276,7 +291,9 @@ def main() -> None:
     ap.add_argument("target")
     ap.add_argument("--course-dir", type=Path, default=None)
     ap.add_argument("--out", type=Path, default=HERE / "dist")
-    ap.add_argument("--channel", default="preview", choices=["preview", "stable"])
+    ap.add_argument("--channel", default=None, choices=["preview", "stable"],
+                    help="Overrides CHANNEL_DEFAULTS[target] (falls back to "
+                         f"{DEFAULT_CHANNEL!r} for unlisted targets).")
     ap.add_argument("--min-app-version", default=DEFAULT_MIN_APP_VERSION)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--allow-stale", action="store_true")
@@ -284,12 +301,14 @@ def main() -> None:
                     help="AWS named profile (else AWS_PROFILE, else ~/.env keys).")
     args = ap.parse_args()
 
+    channel = args.channel or CHANNEL_DEFAULTS.get(args.target, DEFAULT_CHANNEL)
+
     course_dir = args.course_dir or (HERE / "courses" / args.target)
     try:
         info = step_build_or_verify(args.target, course_dir, args.out,
                                     args.allow_stale)
         step_validate(args.target, course_dir, args.out)
-        entry = build_index_entry(info, args.channel, args.min_app_version)
+        entry = build_index_entry(info, channel, args.min_app_version)
         if args.dry_run:
             print("\n--dry-run: would publish the following index entry:")
             print(json.dumps(entry, ensure_ascii=False, indent=2))

@@ -94,6 +94,19 @@ if (import.meta.env.DEV) installDevDebug();
   },
 };
 
+// DEV-only visual layout harness (src/dev/LayoutHarness.tsx): renders one
+// journey feed card through the EXACT production wrapper chain for phone-size
+// layout screenshots. `?layoutHarness=<variant>` on the dev server only; the
+// DEV guard + dynamic import keep it out of production bundles entirely.
+const layoutHarnessVariant = import.meta.env.DEV
+  ? new URLSearchParams(window.location.search).get("layoutHarness")
+  : null;
+const LayoutHarness = layoutHarnessVariant
+  ? React.lazy(() =>
+      import("./dev/LayoutHarness").then((m) => ({ default: m.LayoutHarness })),
+    )
+  : null;
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     {/* App-wide motion baseline: one tasteful easing/duration is the DEFAULT for
@@ -102,7 +115,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         smoothness lever — so we never ship ad-hoc half-baked tweens. */}
     <MotionConfig reducedMotion="user" transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}>
       <LanguageSynchronizer>
-        <App />
+        {LayoutHarness && layoutHarnessVariant ? (
+          <React.Suspense fallback={null}>
+            <LayoutHarness variant={layoutHarnessVariant} />
+          </React.Suspense>
+        ) : (
+          <App />
+        )}
       </LanguageSynchronizer>
     </MotionConfig>
   </React.StrictMode>

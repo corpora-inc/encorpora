@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Escolhe os teus tópicos",
+      "availableSummary": "{{count}} pacotes de frases disponíveis · ~{{size}} MB",
+      "installAll": "Instalar tudo",
+      "chooseIndividually": "Escolher individualmente",
+      "installing": "A instalar {{current}} de {{total}}…",
+      "someFailed": "Não foi possível instalar {{count}} pacote(s). Pode tentar novamente no separador Pacotes.",
+      "allInstalled": "Já tem os pacotes de frases iniciais.",
+      "installed": "Instalado",
       "loading": "A carregar…",
       "selectAll": "Selecionar tudo ({{count}})",
       "clearAll": "Limpar",
@@ -346,7 +353,8 @@
       "subtitle": "O Journey serve todos os dias uma mistura de material novo e revisão em {{lang}} — um cartão de cada vez.",
       "guided": {
         "label": "Percurso diário guiado",
-        "desc": "Uma sessão diária curta, planeada para ti."
+        "desc": "Uma sessão diária curta, planeada para ti.",
+        "unavailable": "O percurso guiado ainda não está disponível para {{lang}}."
       },
       "explore": {
         "label": "Ao teu ritmo",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Incluído com Plus",
     "installFailedTitle": "Instalação falhou",
+    "updateUnavailableTitle": "Atualização indisponível",
+    "updateUnavailableDetail": "Esta transferência não correspondeu ao que esperávamos. Tente novamente mais tarde.",
     "installStuckDetail": "Sem progresso há algum tempo. Verifique a sua ligação e tente novamente.",
     "installStuckTitle": "Descarregamento parado",
     "openPack": "Abrir {{name}}",
@@ -1062,7 +1072,8 @@
     "feed": {
       "caughtUp": "Estás em dia por agora",
       "loading": "A preparar os teus cartões…",
-      "loadError": "O Journey não carregou. Tenta de novo a partir do Início."
+      "loadError": "O Journey não carregou. Tenta de novo a partir do Início.",
+      "retry": "Tentar novamente"
     },
     "popin": {
       "pronounceTitle": "Pronuncia-o",

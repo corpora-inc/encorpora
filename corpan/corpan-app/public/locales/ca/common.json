@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Tria els teus temes",
+      "availableSummary": "{{count}} paquets de frases disponibles · ~{{size}} MB",
+      "installAll": "Instal·la-ho tot",
+      "chooseIndividually": "Tria individualment",
+      "installing": "S'està instal·lant {{current}} de {{total}}…",
+      "someFailed": "No s'han pogut instal·lar {{count}} paquet(s). Pots tornar-ho a provar des de la pestanya Paquets.",
+      "allInstalled": "Ja tens els paquets de frases inicials.",
+      "installed": "Instal·lat",
       "loading": "Carregant…",
       "selectAll": "Selecciona-ho tot ({{count}})",
       "clearAll": "Esborra",
@@ -346,7 +353,8 @@
       "subtitle": "El Journey et serveix cada dia una barreja de material nou i repàs en {{lang}} — targeta a targeta.",
       "guided": {
         "label": "Camí diari guiat",
-        "desc": "Una sessió diària curta, pensada per a tu."
+        "desc": "Una sessió diària curta, pensada per a tu.",
+        "unavailable": "El camí guiat encara no està disponible per a {{lang}}."
       },
       "explore": {
         "label": "Al teu ritme",
@@ -623,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclòs amb Plus",
     "installFailedTitle": "Instal·lació fallida",
+    "updateUnavailableTitle": "Actualització no disponible",
+    "updateUnavailableDetail": "Aquesta baixada no coincidia amb el que esperàvem. Torneu-ho a provar més tard.",
     "installStuckDetail": "Sense progrés des de fa una estona. Comprova la teva connexió i torna a intentar-ho.",
     "installStuckTitle": "Descàrrega encallada",
     "openPack": "Obre {{name}}",
@@ -1053,7 +1063,8 @@
     "feed": {
       "caughtUp": "Estàs al dia de moment",
       "loading": "Preparant les teves targetes…",
-      "loadError": "El Journey no s'ha pogut carregar. Torna-ho a provar des de l'Inici."
+      "loadError": "El Journey no s'ha pogut carregar. Torna-ho a provar des de l'Inici.",
+      "retry": "Torna-ho a provar"
     },
     "popin": {
       "pronounceTitle": "Pronuncia-ho",
