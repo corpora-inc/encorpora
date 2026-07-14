@@ -223,8 +223,21 @@ export function ActivityCardHost(props: {
     return null
   }
 
+  // Bottom-CTA composition (intro_echo debut): the renderer wants the REAL
+  // height FeedCardFrame's flex-1 column offers, so its content can center in
+  // the space ABOVE a bottom-anchored Continue (IntroEcho roots are `grow`).
+  // `grow` (flex-basis:auto) — not flex-1/basis-0 — so inside an auto-height
+  // parent (PlacementCard's column, the boss-banner wrapper) this is inert and
+  // the card keeps its natural height. Other card types keep the hugging
+  // block that FeedCardFrame centers (the no-reflow invariant is untouched:
+  // the height is claimed at mount and never changes on answer).
+  const fillHeight = prepared.spec.activityType === "intro_echo"
+
   return (
-    <div className="flex w-full flex-col items-center gap-4" data-testid={`journey-card-${prepared.spec.activityType}`}>
+    <div
+      className={`flex w-full flex-col items-center gap-4${fillHeight ? " grow" : ""}`}
+      data-testid={`journey-card-${prepared.spec.activityType}`}
+    >
       <Renderer
         cardId={card.cardId}
         spec={prepared.spec}

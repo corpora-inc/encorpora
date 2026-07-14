@@ -26,18 +26,25 @@ Conventions: `corpan/CHANGELOGS.md`.
   so no other card doubles up (`journey/feed/ActivityCardHost.tsx`).
 - **The "Frase nueva" / "Palabra nueva" debut card no longer sits high on tall
   phones with a big dead zone below its Continue button.** `IntroEcho`'s
-  content (badge/audio/tiles or picture+text) and its Continue button rendered
-  as one short block that `FeedCardFrame` centers as a whole — on a short
-  block that leaves equal padding above and below in principle, but read as
-  unbalanced in practice on tall viewports (e.g. Galaxy S25 Ultra) since the
-  button, not the empty space, is what a learner's eye anchors to. Both
-  `IntroEcho` layout branches (interactive tile modes and the passive
-  show-and-tell — the shared container for both `newWord` and `newPhrase`)
-  now give the card a `50dvh` height floor and center the content group in the
-  space above a bottom-pinned Continue button, instead of centering
-  content+button together as one clump. The floor is viewport-relative (no
-  hardcoded pixels) and is a no-op once natural content exceeds it, so short
-  screens keep today's plain stacked layout (`journey/exercises/IntroEcho.tsx`).
+  content and its Continue button rendered as one content-hugging block that
+  `FeedCardFrame` centers as a whole, so the button floated mid-air with a
+  large dead zone under it on tall viewports (e.g. Galaxy S25 Ultra). A first
+  attempt gave the card a `50dvh` height floor to center content above a
+  bottom-pinned Continue — verified ineffective on-device and in phone-size
+  screenshots: the tile mode's natural content already exceeds 50dvh, so the
+  floor was a no-op and the inner flex centering had zero slack to distribute.
+  The debut card now absorbs the REAL height the feed frame offers instead of
+  guessing with a viewport unit: `ActivityCardHost` lets an `intro_echo` card
+  grow to the full `FeedCardFrame` column (flex-grow with `flex-basis:auto`,
+  so it stays inert inside auto-height parents like the placement flow), and
+  both `IntroEcho` branches (interactive tiles and the passive show-and-tell —
+  `newWord` and `newPhrase` alike) grow with it, centering the content cluster
+  in the space above a Continue anchored near the bottom with modest breathing
+  room. Verified by screenshot at 412x915 and 360x640 through the production
+  wrapper chain (dev-only `?layoutHarness=` entry, `src/dev/LayoutHarness.tsx`):
+  balanced on tall screens, unchanged plain stack on short ones, and other card
+  types (choice/flip) pixel-identical (`journey/exercises/IntroEcho.tsx`,
+  `journey/feed/ActivityCardHost.tsx`).
 - **A placed (e.g. B1) learner is no longer drilled on A0 pronunciation
   minimal-pairs before communicative vocab.** The feed served the "sounds"
   unit's contrast words — jam/ship/sheep/very/berry/yet — and phoneme drills

@@ -137,14 +137,23 @@ export function IntroEcho(props: ExerciseProps) {
 
     return (
       // Balanced composition on tall viewports (feed-ux): the content cluster
-      // centers in the space ABOVE the Continue button instead of the whole
-      // card (content+button) clumping together and floating mid-screen,
-      // which left a big dead zone below the button. minHeight is a
-      // viewport-relative floor (never a hardcoded px), so it's a no-op on
-      // short screens where natural content already exceeds it — the layout
-      // degrades to today's plain stack in that case.
-      <div className="flex w-full flex-col items-center gap-5" style={{ minHeight: "50dvh" }}>
-        <div className="flex w-full flex-1 flex-col items-center justify-center gap-5">
+      // centers in the space ABOVE the Continue button, which anchors near the
+      // BOTTOM of the card area — instead of the whole card (content+button)
+      // clumping together mid-screen with a dead zone below the button.
+      //
+      // `grow` (flex-grow with flex-basis:auto — NEVER flex-1/basis-0, which
+      // collapses in an auto-height parent like PlacementCard's column) makes
+      // this root absorb the REAL height ActivityCardHost hands down from
+      // FeedCardFrame (see the host's intro_echo `grow`). The earlier
+      // 50dvh-minHeight floor could not do this: natural tile-mode content
+      // already exceeds 50dvh, so the floor was a no-op, the inner flex-1 had
+      // zero slack to distribute, and FeedCardFrame centered the whole block —
+      // pinning content high with the button floating mid-air (the S25U
+      // report). On short screens there is no free space to absorb and the
+      // layout degrades to today's plain stack (min-height:auto keeps content
+      // from ever compressing/overlapping).
+      <div className="flex w-full grow flex-col items-center gap-5">
+        <div className="flex w-full grow flex-col items-center justify-center gap-5">
           {badge}
           <AudioButton speak={props.speak} lang={props.spec.targetLang} text={answer.target.ttsText} size="lg" />
           {mode === "image" ? (
@@ -205,10 +214,11 @@ export function IntroEcho(props: ExerciseProps) {
   // debut shows the word + picture + native gloss and invites an aloud echo.
   // Same balanced-composition container as the interactive branch above
   // (the shared layout pattern for both intro variants — newWord/newPhrase —
-  // and every IntroEcho mode): content centers above a bottom Continue.
+  // and every IntroEcho mode): content centers above a bottom-anchored
+  // Continue, absorbing the real card height via `grow` (see above).
   return (
-    <div className="flex w-full flex-col items-center gap-6" style={{ minHeight: "50dvh" }}>
-      <div className="flex w-full flex-1 flex-col items-center justify-center gap-6">
+    <div className="flex w-full grow flex-col items-center gap-6">
+      <div className="flex w-full grow flex-col items-center justify-center gap-6">
         {badge}
         {conceptImageSrc ? (
           <div
