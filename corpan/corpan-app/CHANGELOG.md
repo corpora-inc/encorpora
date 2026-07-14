@@ -8,6 +8,36 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **The "Toca para revelar" (flip-to-reveal) card no longer speaks the target
+  word a second time over the NEXT card.** `FlipRecall.reveal()` already
+  speaks the revealed word the instant the card is flipped; `ActivityCardHost.
+  settle()`'s reward-speak (on every scored pass, "tune the ears" reinforcement)
+  spoke it again on the Continue press — and since `flip_recall` is an
+  explicit-advance type (Continue requests the feed advance immediately, no
+  wait for the utterance to finish, by design for turbo-scroll), that second
+  utterance played out audibly over the following card instead. `settle()` now
+  skips its reward re-speak for `flip_recall` the same way it already does for
+  `speak_echo`; the card's own `AudioButton` still offers an explicit replay.
+  Audited every other exercise type for the same "spoken during interaction +
+  again on settle" shape — `intro_echo`'s reveal-tap speaks too, but debut
+  intros are always `unscored` so the reward re-speak was already skipped for
+  it; every other type only speaks on arrival (the prompt) or mid-interaction
+  on a non-completing action, never on the action that produces the outcome —
+  so no other card doubles up (`journey/feed/ActivityCardHost.tsx`).
+- **The "Frase nueva" / "Palabra nueva" debut card no longer sits high on tall
+  phones with a big dead zone below its Continue button.** `IntroEcho`'s
+  content (badge/audio/tiles or picture+text) and its Continue button rendered
+  as one short block that `FeedCardFrame` centers as a whole — on a short
+  block that leaves equal padding above and below in principle, but read as
+  unbalanced in practice on tall viewports (e.g. Galaxy S25 Ultra) since the
+  button, not the empty space, is what a learner's eye anchors to. Both
+  `IntroEcho` layout branches (interactive tile modes and the passive
+  show-and-tell — the shared container for both `newWord` and `newPhrase`)
+  now give the card a `50dvh` height floor and center the content group in the
+  space above a bottom-pinned Continue button, instead of centering
+  content+button together as one clump. The floor is viewport-relative (no
+  hardcoded pixels) and is a no-op once natural content exceeds it, so short
+  screens keep today's plain stacked layout (`journey/exercises/IntroEcho.tsx`).
 - **A placed (e.g. B1) learner is no longer drilled on A0 pronunciation
   minimal-pairs before communicative vocab.** The feed served the "sounds"
   unit's contrast words — jam/ship/sheep/very/berry/yet — and phoneme drills

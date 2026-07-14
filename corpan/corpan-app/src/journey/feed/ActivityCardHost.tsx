@@ -134,8 +134,19 @@ export function ActivityCardHost(props: {
       // aloud as the reward + reinforcement — the learner hears what they just
       // got right (word-order, cloze, choice, etc. all gain this in one place,
       // not per-card). speak_echo owns the mic + its own audio, so skip it; an
-      // unscored debut already auto-played on arrival.
-      if (ok && !unscored && prepared.spec.activityType !== "speak_echo") {
+      // unscored debut already auto-played on arrival. flip_recall ALSO skips
+      // it: FlipRecall.reveal() already speaks the target the instant the card
+      // is flipped, so the answer was spoken as part of completing the card —
+      // a repeat here is a pure duplicate, and since flip_recall advances
+      // instantly (EXPLICIT_ADVANCE_TYPES below, no waitForActiveUtterance
+      // gate), that duplicate utterance would bleed audibly into the NEXT
+      // card instead of just being redundant. The card keeps its own
+      // AudioButton for an intentional replay. General rule: settle only
+      // re-speaks the answer when it wasn't already spoken as part of
+      // completing the card (see EXPLICIT_ADVANCE_TYPES cards above — intro_echo
+      // needs no extra check since debut intros are always `unscored`, and
+      // speak_echo is excluded outright).
+      if (ok && !unscored && prepared.spec.activityType !== "speak_echo" && prepared.spec.activityType !== "flip_recall") {
         void props.speak(prepared.spec.targetLang, prepared.items[0].target.ttsText)
       }
       if (EXPLICIT_ADVANCE_TYPES.has(prepared.spec.activityType)) {
