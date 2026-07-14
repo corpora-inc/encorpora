@@ -102,6 +102,26 @@ const spec = {
   assert(result.abandoned === undefined, "a natural result is not abandoned")
 }
 
+// ---------------------------------------------------------------- (a2) hints + extras
+
+{
+  const host = fakeHost()
+  const s = new DriftSession(spec, host)
+  s.noteAnswer(ref(1), true, 400, 0)   // clean catch
+  s.noteAnswer(ref(2), false, 8000, 1) // word-card pause during the window → hintsUsed 1
+  assert(host.calls.items[0].hintsUsed === 0, "clean catch reports hintsUsed 0")
+  assert(host.calls.items[1].hintsUsed === 1, "a paused window reports hintsUsed 1")
+
+  s.setExtras({ arcadeScore: 840, bestStreak: 4, driftOuts: 1, stars: 2 })
+  const result = s.buildResult(false)
+  assert(result.detail.numbers.arcadeScore === 840, "arcadeScore folded into detail.numbers")
+  assert(result.detail.numbers.bestStreak === 4, "bestStreak folded into detail.numbers")
+  assert(result.detail.numbers.stars === 2, "stars folded into detail.numbers")
+  assert(result.detail.numbers.faced === 2 && result.detail.numbers.correct === 1,
+    "engine-facing faced/correct still present alongside the extras")
+  assert(Math.abs(result.score - 0.5) < 1e-9, "score stays caught/faced, uninflated by arcadeScore")
+}
+
 // ---------------------------------------------------------------- (d)
 
 {

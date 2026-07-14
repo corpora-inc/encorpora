@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.20.6] - 2026-07-14
+
 ### Fixed
 - **The "Toca para revelar" (flip-to-reveal) card no longer speaks the target
   word a second time over the NEXT card.** `FlipRecall.reveal()` already

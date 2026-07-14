@@ -20,6 +20,13 @@ import type { ItemRef } from "./sdk/activityContract"
 
 export const MIN_OPTIONS = 2
 export const MAX_OPTIONS = 4
+/**
+ * How long a "catch" window stays open — the lanterns' crossing budget. The
+ * catch window opens at min(TTS settle, cap); this is the drift time the player
+ * has to tap the right lantern. Generous on purpose (calm brief). Consumed by
+ * lantern.ts (crossing math) and game.ts (window timeout).
+ */
+export const CHALLENGE_WINDOW_MS = 8000
 /** A candidate word must be at least this many characters to be worth hearing. */
 export const MIN_WORD_LEN = 2
 /** Longest chip-friendly candidate for whitespace-segmented scripts. */
@@ -122,7 +129,7 @@ function pickIndex(rng: () => number, len: number): number {
 }
 
 /** Fisher–Yates using the seeded rng (does not mutate the input). */
-function shuffle<T>(items: readonly T[], rng: () => number): T[] {
+export function shuffle<T>(items: readonly T[], rng: () => number): T[] {
   const a = items.slice()
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1))

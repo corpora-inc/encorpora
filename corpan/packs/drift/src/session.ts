@@ -46,6 +46,8 @@ export class DriftSession {
   private faced = 0
   private correct = 0
   private reported = false
+  /** Presentation-layer run metrics folded into the terminal detail.numbers. */
+  private extras: Record<string, number> = {}
 
   constructor(spec: ActivitySpec, hostApi: HostApi) {
     this.spec = spec
@@ -58,7 +60,12 @@ export class DriftSession {
    * an FSRS per-item verdict (reportItem) only when the challenge's beat came
    * from a SPEC itemRef the engine scheduled.
    */
-  noteAnswer(itemRef: ItemRef | undefined, correct: boolean, latencyMs: number): void {
+  noteAnswer(
+    itemRef: ItemRef | undefined,
+    correct: boolean,
+    latencyMs: number,
+    hintsUsed = 0,
+  ): void {
     this.faced += 1
     if (correct) this.correct += 1
     if (!itemRef) return
@@ -68,7 +75,7 @@ export class DriftSession {
       itemRef,
       outcome: correct ? "pass" : "fail",
       latencyMs: Math.max(0, Math.round(latencyMs)),
-      hintsUsed: 0,
+      hintsUsed: Math.max(0, Math.round(hintsUsed)),
     }
     if (!this.itemsByKey.has(key)) this.itemOrder.push(key)
     this.itemsByKey.set(key, item)
@@ -76,6 +83,17 @@ export class DriftSession {
       this.hostApi.journey?.reportItem(item)
     } catch (err) {
       console.warn("[drift journey] reportItem failed:", err)
+    }
+  }
+
+  /**
+   * Fold presentation-layer run metrics (arcadeScore, bestStreak, driftOuts,
+   * stars) into the terminal detail.numbers. Additive only — the engine-facing
+   * `score` stays caught/faced. Call before finish().
+   */
+  setExtras(extras: Record<string, number>): void {
+    for (const [k, v] of Object.entries(extras)) {
+      if (typeof v === "number" && Number.isFinite(v)) this.extras[k] = v
     }
   }
 
@@ -91,7 +109,7 @@ export class DriftSession {
       specId: this.spec.specId,
       score: this.faced > 0 ? clamp01(this.correct / this.faced) : 0,
       perItem,
-      detail: { numbers: { faced: this.faced, correct: this.correct } },
+      detail: { numbers: { faced: this.faced, correct: this.correct, ...this.extras } },
       durationMs: Math.max(0, Date.now() - this.startedAt),
       ...(abandoned ? { abandoned: true } : {}),
     }

@@ -1,8 +1,8 @@
 {
   "id": "drift",
   "name": "Drift",
-  "version": "0.3.0",
-  "description": "A calm, serial micro-story reader: a few lines of target-language prose that the scene reacts to, tap any word for its meaning, optional narration with word highlighting",
+  "version": "0.4.0",
+  "description": "Catch the words before they drift away — a calm night-water game: story beats narrate with the translation standing beneath, then word-lanterns drift across the current and you catch the one you heard (or the one missing from the line). Tap any word for its phrase translation, meaning, and origin.",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
@@ -26,7 +26,7 @@
       "typicalDurationSec": 30
     }
   ],
-  "devRevision": "2026-07-13T00:00:00.000Z",
+  "devRevision": "2026-07-14T00:00:00.000Z",
   "nameLocalized": {
     "ar": "دريفت",
     "bg": "Drift",
