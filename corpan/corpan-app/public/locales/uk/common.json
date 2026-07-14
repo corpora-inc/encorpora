@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Входить у Plus",
     "installFailedTitle": "Не вдалося встановити",
+    "updateUnavailableTitle": "Оновлення недоступне",
+    "updateUnavailableDetail": "Це завантаження не відповідало тому, що ми очікували. Спробуйте ще раз пізніше.",
     "installStuckDetail": "Тривалий час немає прогресу. Перевірте з'єднання та спробуйте ще раз.",
     "installStuckTitle": "Завантаження зупинилося",
     "openPack": "Відкрити {{name}}",

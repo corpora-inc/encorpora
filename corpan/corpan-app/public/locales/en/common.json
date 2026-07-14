@@ -667,6 +667,8 @@
     "installStuckTitle": "Download stalled",
     "installStuckDetail": "No progress for a while. Check your connection and try again.",
     "installFailedTitle": "Install failed",
+    "updateUnavailableTitle": "Update unavailable",
+    "updateUnavailableDetail": "This download didn't match what we expected. Please try again later.",
     "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "Tap 7 times to unlock manifest installs.",
     "devUnlockToast": "Developer Packs unlocked.",

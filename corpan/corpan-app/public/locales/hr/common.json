@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Uključeno uz Plus",
     "installFailedTitle": "Instalacija neuspješna",
+    "updateUnavailableTitle": "Ažuriranje nije dostupno",
+    "updateUnavailableDetail": "Ovo preuzimanje nije odgovaralo onome što smo očekivali. Pokušajte ponovno kasnije.",
     "installStuckDetail": "Nema napretka neko vrijeme. Provjerite svoju vezu i pokušajte ponovno.",
     "installStuckTitle": "Preuzimanje zaustavljeno",
     "openPack": "Otvori {{name}}",

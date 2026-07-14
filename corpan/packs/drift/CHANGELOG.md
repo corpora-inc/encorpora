@@ -7,6 +7,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-07-14
+
+### Changed
+- **Drift is now "Catch the Drift" — the name IS the mechanic.** Words no longer
+  sit still: each story beat auto-narrates (with a word-sweep highlight riding
+  the narration) and its native translation stands **permanently beneath the
+  line**; then 3–4 glowing **word-lanterns drift** across a slow night-water
+  current and you **catch (tap)** the one carrying the target word before it
+  drifts off the edge. Catching it kindles the lantern gold with a ripple and a
+  floating **+N**; a miss (wrong tap or drift-out) never buzzes and never
+  subtracts — the correct lantern just kindles as it drifts on (teach-back). The
+  "why is it even called drift" complaint is answered by the mechanic itself;
+  the catalog tagline is now **"Catch the words before they drift away"**
+  (localized ~54 locales), and the motif layer rides the same current.
+- **A run now has a goal and an ending.** Live **score** chip, a **streak**
+  ember with ×1.5 (streak 3) / ×2 (streak 6, "combo bloom" warms the scene), a
+  **river-dot** progress strand, and an **end screen** with the final score,
+  1–3 **stars kindling** on accuracy, a "N/M caught · best streak K" line, a
+  tappable **review row** of the words you met, and **Drift again** / Done.
+  Scenes extended to **5–6 beats** so a run runs ~90s.
+
+### Added
+- **Tapping a word now pays off RICH and INSTANTLY (CTO ask).** The word card
+  shows, synchronously from data already on the beat: the **word**, the
+  **phrase's translation** (labeled — this was wrongly dropped in 0.3.0), and
+  the word's own meaning when it differs; the **Origin** (etymology) paragraph
+  fills in asynchronously when a `wordpan_<native>_en` pack answers, and the
+  card is already rich without it. Opening the card during a catch window pauses
+  the drift (freezes the timer, honest `hintsUsed: 1`) and resumes on close.
+- **Arcade scoring** (`score.ts`): 100 + up to 50 early-catch bonus × the
+  lantern's remaining crossing, × streak multiplier — a real skill knob where
+  early catches pay more and a last-second catch still pays the floor. Wrong/
+  drift-out is always 0, never a deduction. Per-scene personal best in
+  localStorage. Pure + unit-tested (`test/score.spec.mjs`).
+- **Lantern spawn/timing model** (`lantern.ts`): deterministic seeded lane +
+  stagger layout, the guaranteed-early-win first spawn (the correct lantern
+  launches first and pulses so the player scores within seconds), and the
+  remaining-fraction math. Pure + unit-tested (`test/lantern.spec.mjs`).
+- **First-launch hint chip** ("Catch the word you hear" / "Catch the missing
+  word"), shown for the first three runs and fading on the first catch. Seven
+  new in-pack strings localized across ~54 locales (`hintCatch`,
+  `hintCatchMissing`, `phrase`, `again`, `score`, `bestStreak`, `caught`), plus
+  a free **↻ replay** chip that re-speaks the target during a window (sound on).
+
+### Fixed
+- **The game is now fully playable with SOUND OFF / on a silenced phone.** The
+  cloze gap (`•••`) opens in **both** variants at every window, so a muted ringer
+  degrades to exactly the muted game — recognition is solvable from the visible
+  gap alone; audio only adds, it never carries. Narration can never gate play:
+  the catch window opens at `min(speech settle, 4.2s cap)`; a TTS rejection
+  latches the visual variant for the rest of the run. Lanterns are ≥48px pill
+  targets caught on **pointerdown** (a moving target must not depend on
+  down+up landing on the same pixel), `touch-action: manipulation` throughout.
+- `prefers-reduced-motion`: lanterns render as a static bobbing row with a
+  depleting glow bar standing in for drift distance — same window, same scoring;
+  the ambient current freezes.
+
+### Reporting
+- `session.ts` extended additively (journey contract unchanged): `noteAnswer`
+  gains an optional `hintsUsed`; the terminal `detail.numbers` now also carries
+  `arcadeScore`, `bestStreak`, `driftOuts`, and `stars`. The engine-facing
+  `score` stays **caught/faced** accuracy (uninflated by the arcade score).
+  Per-item `pass`/`fail` still streams via `reportItem` for spec itemRefs only;
+  early Done is still an `abandon("user_exit")`; a "Drift again" replay never
+  re-reports.
+
 ## [0.3.0] - 2026-07-13
 
 ### Added

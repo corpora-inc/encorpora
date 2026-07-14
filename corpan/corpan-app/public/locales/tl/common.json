@@ -667,6 +667,8 @@
     "installStuckTitle": "Nakatigil ang pag-download",
     "installStuckDetail": "Walang progreso sa loob ng ilang sandali. Suriin ang iyong koneksyon at subukan muli.",
     "installFailedTitle": "Nabigong i-install",
+    "updateUnavailableTitle": "Hindi available ang update",
+    "updateUnavailableDetail": "Ang download na ito ay hindi tumugma sa inaasahan namin. Pakisubukang muli sa ibang pagkakataon.",
     "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "I-tap nang 7 beses para i-unlock ang manifest installs.",
     "devUnlockToast": "Naka-unlock ang Developer Packs.",

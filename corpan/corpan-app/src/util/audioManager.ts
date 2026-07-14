@@ -66,6 +66,18 @@ export function isUtteranceActive(): boolean {
 }
 
 /**
+ * The id of the currently-tracked active utterance, if any. Lets a caller
+ * that's about to do async work (e.g. stopSpeech() awaiting a native stop
+ * call) capture "which utterance I'm stopping" up front and later end only
+ * that id — so a new utterance that begins mid-await (e.g. the next card's
+ * autoplay) isn't wiped out by a stale unscoped endUtterance() once the
+ * await resolves.
+ */
+export function getActiveUtteranceId(): number | undefined {
+  return active?.id
+}
+
+/**
  * Resolve once the active utterance is believed to be finished, capped at
  * `capMs` so an app-initiated advance can never hang on a bad estimate.
  * Safe/instant no-op when nothing is playing or it has already elapsed.

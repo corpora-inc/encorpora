@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Įtraukta su Plus",
     "installFailedTitle": "Diegimas nepavyko",
+    "updateUnavailableTitle": "Atnaujinimas neprieinamas",
+    "updateUnavailableDetail": "Šis atsisiuntimas neatitiko to, ko tikėjomės. Bandykite dar kartą vėliau.",
     "installStuckDetail": "Kurį laiką nebuvo jokios pažangos. Patikrinkite ryšį ir bandykite dar kartą.",
     "installStuckTitle": "Atsisiuntimas sustojo",
     "openPack": "Atidaryti {{name}}",

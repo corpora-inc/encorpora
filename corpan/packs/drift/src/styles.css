@@ -386,7 +386,8 @@
   text-align: left;
   opacity: 0;
   transition: opacity 240ms ease, transform 240ms ease;
-  z-index: 4;
+  /* Above the end-screen overlay (z 6) so end-screen review taps show on top. */
+  z-index: 7;
 }
 .drift-card.is-on { opacity: 1; transform: translate(-50%, 0); }
 .drift-card-close {

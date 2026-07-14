@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plus સાથે શામેલ",
     "installFailedTitle": "ઇન્સ્ટોલ નિષ્ફળ",
+    "updateUnavailableTitle": "અપડેટ ઉપલબ્ધ નથી",
+    "updateUnavailableDetail": "આ ડાઉનલોડ અમે અપેક્ષા રાખી હતી તેની સાથે મેળ ખાતું નહોતું. કૃપા કરી પછીથી ફરી પ્રયાસ કરો.",
     "installStuckDetail": "થોડા સમયથી કોઈ પ્રગતિ નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
     "installStuckTitle": "ડાઉનલોડ અટકી ગયું",
     "openPack": "{{name}} ખોલો",

@@ -11,7 +11,7 @@ import { invoke } from "@tauri-apps/api/core";
 
 import { getVoicesCached } from "@/util/tts-voices";
 import { maybeApplySerbianFallback } from "@/util/serbianFallback";
-import { beginUtterance, endUtterance } from "@/util/audioManager";
+import { beginUtterance, endUtterance, getActiveUtteranceId } from "@/util/audioManager";
 
 type UAOS = "macos" | "ios" | "android" | "other";
 
@@ -335,6 +335,15 @@ async function applyFallbackShims(
  * ("hearing the last exercise on the next one"). Safe/no-op when nothing plays.
  */
 export async function stopSpeech(): Promise<void> {
+    // Capture which utterance we're stopping BEFORE the async native `stop`
+    // call below, and end only that id once it resolves. A user-advance
+    // fires `void stopSpeech()` and the next card's autoplay can call
+    // beginUtterance() for a NEW utterance before the native stop resolves;
+    // an unscoped endUtterance() in `finally` would then wipe the new
+    // utterance's tracking instead of the one we actually just cut. Scoping
+    // by id lets a later-registered utterance survive this race.
+    const idToEnd = getActiveUtteranceId();
+
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
         window.speechSynthesis.cancel();
     }
@@ -343,9 +352,16 @@ export async function stopSpeech(): Promise<void> {
     } catch {
         // native stop unavailable on some builds; ignore
     } finally {
-        // Whatever was tracked as "active" just got cut — clear it so a
-        // subsequent waitForActiveUtterance() doesn't ride out a now-silent
-        // estimate.
-        endUtterance();
+        // Whatever was tracked as "active" at entry just got cut — clear
+        // it (and only it) so a subsequent waitForActiveUtterance() doesn't
+        // ride out a now-silent estimate, without touching a newer
+        // utterance that may have started registering while we awaited.
+        // If nothing was active at entry, there's nothing to end here —
+        // in particular, do NOT call the no-id endUtterance(), which would
+        // unconditionally clear whatever is active NOW (e.g. a new
+        // utterance that began mid-await), reintroducing the same race.
+        if (idToEnd !== undefined) {
+            endUtterance(idToEnd);
+        }
     }
 }

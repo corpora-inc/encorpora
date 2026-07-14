@@ -44,9 +44,10 @@ export const CardFlags = {
   Leech: 4,
   Suspended: 8,
   /** RETIRED (R-A): reached RETIRE_PERFECT_STREAK perfect completions. Excluded
-   *  from the DUE/FUN/REPAIR pools + continuation-revisit + debt backlog so
-   *  mastered items stop being served forever; a genuine FSRS forget/lapse
-   *  clears it (rare long-interval return at most). */
+   *  from the DUE/FUN/REPAIR pools + debt backlog so mastered items stop being
+   *  served from the normal feed. NOT permanent: once its retrievability decays
+   *  (RETIRED_REVIEW_R_BELOW) the mixer serves a rare confirmatory review; a
+   *  genuine FSRS forget/lapse there clears this flag (un-retire). */
   Retired: 16,
 } as const
 
@@ -245,6 +246,12 @@ export interface SessionState {
    *  can never dominate a sitting (the "jam 10× in 30 min" defect). Never
    *  persisted; reset each session. */
   phonemeServedSession: number
+  /** Rare long-interval RETIRED-review serves this session (R-A un-retire path).
+   *  The mixer caps it at RETIRED_REVIEW_MAX_PER_SESSION so a retired item whose
+   *  memory decayed gets at most one confirmatory review per session — the
+   *  production path by which a retired item can lapse and un-retire. Never
+   *  persisted; reset each session. */
+  retiredReviewsSession: number
   /** Checkpoint batches attempted this session (one boss attempt/session). */
   bossAttempted: Set<string>
   /** Active unit-boss / arc-gate tally. */

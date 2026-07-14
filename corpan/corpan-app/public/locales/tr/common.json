@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plus'a dahil",
     "installFailedTitle": "Yükleme başarısız oldu",
+    "updateUnavailableTitle": "Güncelleme kullanılamıyor",
+    "updateUnavailableDetail": "Bu indirme beklediğimizle eşleşmedi. Lütfen daha sonra tekrar deneyin.",
     "installStuckDetail": "Bir süredir ilerleme yok. Bağlantınızı kontrol edin ve tekrar deneyin.",
     "installStuckTitle": "İndirme durdu",
     "openPack": "{{name}}'i aç",

@@ -667,7 +667,8 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         // already loaded and the caller didn't name one, keep the resident model
         // — never unload it, never fall through to DEFAULT_MODEL (ggml-tiny).
         // Native backstop for the journey warm-up recurrence.
-        if (args.model == null) {
+        val bareCall = args.model == null
+        if (bareCall) {
             val resident = if (ctx?.isAlive == true) loadedModel else null
             if (resident != null) {
                 Log.i(TAG, "prepare(null) — keeping resident model: $resident")
@@ -683,6 +684,26 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
 
         scope.launch {
             nativeMutex.withLock {
+                // Re-check under the lock: the fast-path guards above run
+                // before we acquire the mutex, so a bare prepare() can race
+                // an in-flight named prepare() for a bigger model — the
+                // fast-path "keep resident" check above sees nothing loaded
+                // yet, then by the time this coroutine gets the mutex the
+                // other call has finished loading its (non-default) model.
+                // Re-run the keep-resident guard here, under the lock, for
+                // bare calls before falling through to the ordinary
+                // "already loaded this exact model" check (which compares
+                // against DEFAULT_MODEL for a bare call and would otherwise
+                // treat any non-default resident model as swappable).
+                if (bareCall) {
+                    val resident = if (ctx?.isAlive == true) loadedModel else null
+                    if (resident != null) {
+                        Log.i(TAG, "prepare(null) under lock — keeping resident model: $resident")
+                        val ret = JSObject(); ret.put("ready", true); ret.put("model", resident)
+                        invoke.resolve(ret); return@launch
+                    }
+                }
+
                 // Re-check under the lock: the fast-path guard above runs
                 // before we acquire the mutex, so two near-simultaneous
                 // prepare() calls can both reach here. If a sibling call

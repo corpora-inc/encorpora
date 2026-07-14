@@ -442,7 +442,7 @@
   {
     "id": "drift",
     "name": "Drift",
-    "description": "A calm, serial micro-story reader: a few lines of target-language prose that the scene reacts to, tap any word for its meaning, optional narration with word highlighting.",
+    "description": "Catch the words before they drift away: a calm night-water game where story beats narrate with the translation standing beneath, then word-lanterns drift across the current and you catch the one you heard. Tap any word for its phrase translation, meaning, and origin.",
     "status": "prototype",
     "listed": true,
     "webListed": false,
@@ -471,7 +471,7 @@
     ],
     "recommendOrder": 3,
     "kidFriendly": true,
-    "tagline": "A few calm lines of story, then scroll on."
+    "tagline": "Catch the words before they drift away."
   },
   {
     "id": "world_radio",

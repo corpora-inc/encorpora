@@ -667,6 +667,8 @@
     "installStuckTitle": "Unduh terhenti",
     "installStuckDetail": "Teu aya kamajuan pikeun sababaraha waktos. Periksa sambungan anjeun sareng cobian deui.",
     "installFailedTitle": "Pasang gagal",
+    "updateUnavailableTitle": "Apdet teu sayaga",
+    "updateUnavailableDetail": "Undeuran ieu teu cocog jeung nu diarepkeun. Mangga cobian deui engke.",
     "devUnlockTitle": "Paket Pamekar",
     "devUnlockHint": "Ketok 7 kali pikeun ngaleupaskeun pasang manifest.",
     "devUnlockToast": "Paket Pamekar dibuka.",

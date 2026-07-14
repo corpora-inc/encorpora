@@ -963,7 +963,18 @@ export function createJourneyRuntime(deps: JourneyRuntimeDeps): JourneyRuntime {
           // The mic-priming card shows AT MOST ONCE ever (R2). Once seen, we
           // still do the bookkeeping + warm-up above; we just don't re-synthesize
           // the card.
-          if (!(deps.micIntroSeen?.() ?? false)) {
+          //
+          // `micIntroSeen()` alone isn't enough: it's stamped on MOUNT
+          // (BlockIntroCard's effect), not on synthesis/enqueue. A later
+          // stt-run boundary — reached later in this very fillQueue pass, or
+          // in a subsequent one — can land before the FIRST blockIntro has
+          // ever been mounted (still sitting unread deeper in `prepared`),
+          // and `micIntroSeen()` would still report false. Treat "a
+          // blockIntro is already queued" as seen too, so at most one is
+          // ever present in `prepared` at a time — closes that gap without
+          // needing extra session state.
+          const blockIntroAlreadyQueued = prepared.some((c) => c.kind === "blockIntro")
+          if (!blockIntroAlreadyQueued && !(deps.micIntroSeen?.() ?? false)) {
             prepared.push({
               kind: "blockIntro",
               cardId: `bi-${ec.spec.specId}`,

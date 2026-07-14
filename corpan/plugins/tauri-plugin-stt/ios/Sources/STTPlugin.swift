@@ -1411,7 +1411,8 @@ private final class WhisperManager {
         // Self.defaultModel (ggml-tiny). This is the native backstop for the
         // recurrence where journey's warm-up called prepare() with no model,
         // unloading the user's 547 MB model and then reporting MODEL_NOT_INSTALLED.
-        if requested == nil {
+        let bareCall = requested == nil
+        if bareCall {
             let resident = self.queue.sync { self.ctx != nil ? self.loadedModel : nil }
             if let resident {
                 sttLog("Whisper | prepare(nil) — keeping resident model:", resident)
@@ -1442,6 +1443,28 @@ private final class WhisperManager {
                         ready: false, model: modelName,
                         message: "Plugin released", code: "LOAD_FAILED"))
                 return
+            }
+
+            // Re-check under the serialized chain: the fast-path guard
+            // above runs before this call's turn in `prepareChain`, so a
+            // bare prepare() can race an in-flight named prepare() for a
+            // bigger model — the fast-path "keep resident" check saw
+            // nothing loaded yet, but by the time this task's turn comes
+            // the other call has finished loading its (non-default)
+            // model. Re-run the keep-resident guard here before falling
+            // through to the "already loaded this exact model" check
+            // below, which compares against Self.defaultModel for a bare
+            // call and would otherwise treat any non-default resident
+            // model as swappable.
+            if bareCall {
+                let resident = self.queue.sync { self.ctx != nil ? self.loadedModel : nil }
+                if let resident {
+                    sttLog("Whisper | prepare(nil) under chain — keeping resident model:", resident)
+                    completion(
+                        PreparePayload(
+                            ready: true, model: resident, message: nil, code: nil))
+                    return
+                }
             }
 
             // Already loaded?

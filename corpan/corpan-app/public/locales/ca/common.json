@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclòs amb Plus",
     "installFailedTitle": "Instal·lació fallida",
+    "updateUnavailableTitle": "Actualització no disponible",
+    "updateUnavailableDetail": "Aquesta baixada no coincidia amb el que esperàvem. Torneu-ho a provar més tard.",
     "installStuckDetail": "Sense progrés des de fa una estona. Comprova la teva connexió i torna a intentar-ho.",
     "installStuckTitle": "Descàrrega encallada",
     "openPack": "Obre {{name}}",

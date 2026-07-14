@@ -8,6 +8,7 @@ import {
   PHONEME_NEW_POOL_MIN_SEEN,
   REPAIR_ACC_BELOW,
   REPAIR_DEMOTED_WINDOW_DAYS,
+  RETIRED_REVIEW_R_BELOW,
 } from "./constants.ts"
 import type { GraphIndex } from "./graph.ts"
 import { isRetired, isSuspended, type Mastery } from "./mastery.ts"
@@ -51,8 +52,20 @@ export interface Pools {
    *  dead-ending on a binger who has nailed everything, while guaranteeing a
    *  retired item is never served WHILE any fresh / less-mastered material
    *  exists (R-B). On a real (large) pack the frontier is effectively inexhaustible,
-   *  so this fallback never fires; it is the true end-of-content safety net. */
+   *  so this fallback never fires; it is the true end-of-content safety net.
+   *  Served through the FULL activity menu (not funWeight templates), so — unlike
+   *  FUN — it is populated regardless of whether the pack ships funWeight
+   *  templates (the production native loader ships none). */
   retired: string[]
+  /** RETIRED items whose memory has genuinely DECAYED (retrievability below
+   *  RETIRED_REVIEW_R_BELOW, well past their FSRS due) — the rare long-interval
+   *  confirmatory-review candidates (R-A un-retire path). The mixer serves at most
+   *  RETIRED_REVIEW_MAX_PER_SESSION of these per session as a normal review,
+   *  ALONGSIDE fresh work (a scheduled TRICKLE, not the end-of-content fallback):
+   *  a failed review lapses + un-retires (apply.ts). Ordered by retrievability
+   *  ascending (most-decayed / most-overdue first). Distinct from `retired` above,
+   *  with which it composes: fallback = pool of last resort; this = trickle. */
+  retiredReview: string[]
   dueCount: number
   /** Retrievability snapshot for items touched during pool build. */
   r: Map<string, number>
@@ -214,39 +227,51 @@ export function buildPools(input: PoolsInput): Pools {
   }
   trickle.sort((a, b) => graph.items[a].introOrder - graph.items[b].introOrder)
 
-  // ---- FUN --------------------------------------------------------------
-  // Strong-known items (R > 0.9) served through funWeight templates.
+  // ---- FUN + RETIRED ----------------------------------------------------
+  // FUN = strong-known items (R > 0.9) served THROUGH funWeight templates, so it
+  // is gated on a funWeight template of the item's kind existing. The RETIRED
+  // pools are NOT: retired items are served through the FULL activity menu (the
+  // mixer's continuation revisit + the rare retired-review), never funWeight
+  // templates. The production native loader (journeyPack.ts / runtimeWiring.ts)
+  // emits templates with NO funWeight, so the old `if (hasFunTemplates.size > 0)`
+  // gate left BOTH retired pools permanently empty — the end-of-content
+  // anti-starvation fallback and the un-retire path were dead code in prod. So
+  // the retired collection is hoisted OUT of that gate; only FUN stays gated.
   const hasFunTemplates = new Set<string>()
   for (const t of graph.activityTemplates) {
     if ((t.funWeight ?? 0) > 0) hasFunTemplates.add(t.itemKind)
   }
   const fun: string[] = []
-  // Retired items eligible for the last-resort continuation revisit (see the
-  // Pools.retired doc). Reviewed + not suspended; ordered by introOrder so the
-  // terminal revisit stays deterministic and prescriptive.
+  // Retired items held for the last-resort continuation revisit (Pools.retired).
   const retired: string[] = []
-  if (hasFunTemplates.size > 0) {
-    for (const card of cards.values()) {
-      if (isSuspended(card) || card.fsrs.reps === 0) continue
-      const item = graph.items[card.itemId]
-      if (!item || !hasFunTemplates.has(item.kind)) continue
-      if (isRetired(card)) {
-        // Retired items (R-A) never re-enter FUN: mastered variety is served
-        // only until a word is twice-nailed. They are held here for the
-        // end-of-content fallback ONLY (never while fresh material remains).
-        retired.push(card.itemId)
-        continue
+  // Retired items whose memory has decayed — rare confirmatory-review candidates
+  // (Pools.retiredReview): reviewed, not suspended, past due AND R < the decay
+  // bound. This is the scheduled trickle that makes the un-retire path reachable.
+  const retiredReview: string[] = []
+  for (const card of cards.values()) {
+    if (isSuspended(card) || card.fsrs.reps === 0) continue
+    const item = graph.items[card.itemId]
+    if (!item) continue
+    if (isRetired(card)) {
+      // Retired items (R-A) never re-enter FUN: mastered variety is served only
+      // until a word is twice-nailed. They live in the end-of-content fallback,
+      // and — once memory decays — in the rare retired-review trickle.
+      retired.push(card.itemId)
+      if (card.fsrs.due <= day && rOf(card) < RETIRED_REVIEW_R_BELOW) {
+        retiredReview.push(card.itemId)
       }
-      if (rOf(card) > FUN_POOL_R_MIN) fun.push(card.itemId)
+      continue
     }
-    // Round-robin the terminal revisit by LEAST-RECENTLY-SERVED first: the mixer
-    // walks this list from the front each batch, so ordering by lastEmit spreads
-    // serves EVENLY across the whole retired set (never the "same 11 items 100×"
-    // starvation the front-of-insertion-order caused) and maximizes spacing.
-    retired.sort(
-      (a, b) => (session.lastEmit.get(a) ?? -1) - (session.lastEmit.get(b) ?? -1),
-    )
+    // FUN needs a funWeight template of this item's kind (it is served THROUGH it).
+    if (hasFunTemplates.has(item.kind) && rOf(card) > FUN_POOL_R_MIN) fun.push(card.itemId)
   }
+  // Round-robin the terminal revisit by LEAST-RECENTLY-SERVED first: the mixer
+  // walks this list from the front each batch, so ordering by lastEmit spreads
+  // serves EVENLY across the whole retired set (never the "same 11 items 100×"
+  // starvation the front-of-insertion-order caused) and maximizes spacing.
+  retired.sort((a, b) => (session.lastEmit.get(a) ?? -1) - (session.lastEmit.get(b) ?? -1))
+  // Most-decayed (lowest retrievability = most overdue) retired item reviewed first.
+  retiredReview.sort((a, b) => (r.get(a) ?? 0) - (r.get(b) ?? 0))
 
   // ---- FRONTIER (eager continuation) ------------------------------------
   // The INFINITE-feed pool: fresh new material from the position unit AND the
@@ -313,6 +338,7 @@ export function buildPools(input: PoolsInput): Pools {
     fun,
     frontier,
     retired,
+    retiredReview,
     dueCount: due.length,
     r,
   }

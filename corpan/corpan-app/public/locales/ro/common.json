@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclus cu Plus",
     "installFailedTitle": "Instalare eșuată",
+    "updateUnavailableTitle": "Actualizare indisponibilă",
+    "updateUnavailableDetail": "Această descărcare nu a corespuns cu ce așteptam. Încearcă din nou mai târziu.",
     "installStuckDetail": "Fără progres de ceva timp. Verifică-ți conexiunea și încearcă din nou.",
     "installStuckTitle": "Descărcare blocată",
     "openPack": "Deschide {{name}}",

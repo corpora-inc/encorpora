@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "כלול עם Plus",
     "installFailedTitle": "ההתקנה נכשלה",
+    "updateUnavailableTitle": "העדכון אינו זמין",
+    "updateUnavailableDetail": "ההורדה הזו לא תאמה את מה שציפינו לו. אנא נסו שוב מאוחר יותר.",
     "installStuckDetail": "אין התקדמות מזה זמן מה. בדוק את החיבור שלך ונסה שוב.",
     "installStuckTitle": "ההורדה נתקעה",
     "openPack": "פתח את {{name}}",

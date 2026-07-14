@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "مضمن مع Plus",
     "installFailedTitle": "فشل التثبيت",
+    "updateUnavailableTitle": "التحديث غير متاح",
+    "updateUnavailableDetail": "لم تتطابق هذه التنزيلة مع ما كنا نتوقعه. يُرجى المحاولة لاحقًا.",
     "installStuckDetail": "لا يوجد تقدم منذ فترة. تحقق من اتصالك وحاول مرة أخرى.",
     "installStuckTitle": "توقف التنزيل",
     "openPack": "فتح {{name}}",

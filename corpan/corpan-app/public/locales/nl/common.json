@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inbegrepen bij Plus",
     "installFailedTitle": "Installatie mislukt",
+    "updateUnavailableTitle": "Update niet beschikbaar",
+    "updateUnavailableDetail": "Deze download kwam niet overeen met wat we verwachtten. Probeer het later opnieuw.",
     "installStuckDetail": "Al een tijdje geen voortgang. Controleer je verbinding en probeer het opnieuw.",
     "installStuckTitle": "Download vastgelopen",
     "openPack": "Open {{name}}",

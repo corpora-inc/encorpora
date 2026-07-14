@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "پلس نال شامل",
     "installFailedTitle": "انسٹالیشن ناکام ہو گئی",
+    "updateUnavailableTitle": "اپڈیٹ دستیاب نہیں ہے",
+    "updateUnavailableDetail": "ایہہ ڈاؤن لوڈ اوہدے نال میل نہیں کھاندا جس دی سانوں توقع سی۔ کِرپا کر کے بعد وچ دوبارہ کوشش کرو۔",
     "installStuckDetail": "کُجھ دیر توں کوئی ترقی نہیں ہوئی۔ اپنا کنکشن چیک کرو تے دوبارہ کوشش کرو۔",
     "installStuckTitle": "ڈاؤن لوڈ رُک گیا",
     "openPack": "{{name}} کھولو",

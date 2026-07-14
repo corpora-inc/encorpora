@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inkluderet med Plus",
     "installFailedTitle": "Installation mislykkedes",
+    "updateUnavailableTitle": "Opdatering ikke tilgængelig",
+    "updateUnavailableDetail": "Denne download matchede ikke det, vi forventede. Prøv igen senere.",
     "installStuckDetail": "Ingen fremskridt i et stykke tid. Tjek din forbindelse og prøv igen.",
     "installStuckTitle": "Download stoppet",
     "openPack": "Åbn {{name}}",

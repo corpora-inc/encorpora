@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Termasuk dengan Plus",
     "installFailedTitle": "Pemasangan gagal",
+    "updateUnavailableTitle": "Kemas kini tidak tersedia",
+    "updateUnavailableDetail": "Muat turun ini tidak sepadan dengan yang kami jangkakan. Sila cuba lagi kemudian.",
     "installStuckDetail": "Tiada kemajuan buat seketika. Semak sambungan anda dan cuba lagi.",
     "installStuckTitle": "Muat turun terhenti",
     "openPack": "Buka {{name}}",

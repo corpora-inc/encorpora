@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Incluído com Plus",
     "installFailedTitle": "Falha na instalação",
+    "updateUnavailableTitle": "Atualização indisponível",
+    "updateUnavailableDetail": "Este download não correspondeu ao que esperávamos. Tente novamente mais tarde.",
     "installStuckDetail": "Sem progresso por um tempo. Verifique sua conexão e tente novamente.",
     "installStuckTitle": "Download travado",
     "openPack": "Abrir {{name}}",

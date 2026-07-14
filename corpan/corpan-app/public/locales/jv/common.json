@@ -667,6 +667,8 @@
     "installStuckTitle": "Unduhan mandheg",
     "installStuckDetail": "Ora ana kemajuan kanggo sawetara wektu. Priksa sambungan sampeyan lan coba maneh.",
     "installFailedTitle": "Instal gagal",
+    "updateUnavailableTitle": "Nganyari ora kasedhiya",
+    "updateUnavailableDetail": "Undhuhan iki ora cocog karo sing dikarepake. Coba maneh mengko.",
     "devUnlockTitle": "Paket Pengembang",
     "devUnlockHint": "Ketuk 7 kali kanggo mbukak instalasi manifest.",
     "devUnlockToast": "Paket Pengembang dibukak.",

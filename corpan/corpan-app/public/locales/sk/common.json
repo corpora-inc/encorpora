@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Zahrnuté v Plus",
     "installFailedTitle": "Inštalácia zlyhala",
+    "updateUnavailableTitle": "Aktualizácia nie je k dispozícii",
+    "updateUnavailableDetail": "Toto stiahnutie nezodpovedalo tomu, čo sme očakávali. Skúste to prosím znova neskôr.",
     "installStuckDetail": "Žiadny pokrok už nejaký čas. Skontrolujte svoje pripojenie a skúste to znova.",
     "installStuckTitle": "Sťahovanie sa zastavilo",
     "openPack": "Otvoriť {{name}}",

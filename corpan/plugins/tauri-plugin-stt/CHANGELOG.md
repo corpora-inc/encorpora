@@ -16,6 +16,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   reporting `MODEL_NOT_INSTALLED`. This is the native backstop for the journey
   warm-up recurrence; the JS side also stopped issuing bare prepares. Guard is
   narrow: an explicit model argument is unaffected.
+- **Android + iOS: closed a race in the above keep-resident guard.** The
+  guard only ran on the fast path, BEFORE serialization (the Android
+  `nativeMutex` / iOS `prepareChain`) — so a bare `prepare()` racing an
+  in-flight named `prepare()` for a bigger model could still slip past it: by
+  the time the bare call reached the serialized section, the re-check there
+  compared only `loadedModel == name` (`name` defaulted to the tiny model for
+  a bare call), which doesn't match the just-loaded bigger model, so the
+  bare call proceeded to swap it out anyway. The "caller passed nil" fact is
+  now carried into the serialized section and the keep-resident check re-runs
+  there too: if a model is already resident by the time the bare call gets
+  the lock/its turn in the chain, it's returned as ready instead of falling
+  through to the swap-to-default path. Both platforms stay symmetric
+  (`android/.../SttPlugin.kt`, `ios/Sources/STTPlugin.swift`).
 
 ### Changed
 - **Android + iOS: model install now verifies bytes on disk instead of

@@ -15,6 +15,7 @@ import {
   MAX_LEECH_PER_BATCH,
   LEECH_SERVE_P,
   PHONEME_MAX_PER_SESSION,
+  RETIRED_REVIEW_MAX_PER_SESSION,
   CONSTRAINT_REPAIR_PASSES,
   GAME_INTERLUDE_MIN_GAP,
   GAME_INTERLUDE_JITTER,
@@ -748,6 +749,34 @@ export function nextFeedItems(bag: MixerBag, n = DEFAULT_BATCH_SIZE, constraints
         rng,
       )
       tryIssue(pick.itemId, pick.pool, form, undefined, restricted.length > 0 ? restricted : undefined)
+    }
+  }
+
+  // -- 1.75 rare retired-review trickle (R-A un-retire path) ---------------------
+  // A RETIRED item whose memory has genuinely DECAYED (retrievability below
+  // RETIRED_REVIEW_R_BELOW — well past its FSRS due horizon; pools.retiredReview)
+  // earns at most RETIRED_REVIEW_MAX_PER_SESSION confirmatory review(s) per
+  // session, routed through the NORMAL review/grade path (pool "due"). This is the
+  // PRODUCTION path by which a retired item can lapse and UN-RETIRE (apply.ts):
+  // without it, a retired item is served only at true end-of-content, so it never
+  // lapses and retirement is a one-way door. It is a scheduled TRICKLE — served
+  // alongside normal work, DISTINCT from and composing with the end-of-content
+  // `retired` fallback (the pool of last resort below). Rarity comes from the decay
+  // gate + the tight per-session cap, not a dice roll, so the un-retire path is
+  // deterministically reachable in production.
+  if (session.retiredReviewsSession < RETIRED_REVIEW_MAX_PER_SESSION) {
+    for (const itemId of pools.retiredReview) {
+      if (slots.length >= n) break
+      if (slots.some((s) => s.itemIds.includes(itemId))) continue
+      const last = session.lastEmit.get(itemId)
+      if (last !== undefined && session.emitIndex + slots.length - last < ITEM_MIN_GAP) continue
+      // Low, rotating form (0/1) keeps the confirmatory review on the wide
+      // recognition/recall menu (variety), matching the retired-revisit garnish.
+      const slot = tryIssue(itemId, "due", rng.int(2) as 0 | 1, undefined, undefined, true)
+      if (slot) {
+        session.retiredReviewsSession += 1
+        break
+      }
     }
   }
 

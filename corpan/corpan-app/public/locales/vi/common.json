@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Đã bao gồm trong Plus",
     "installFailedTitle": "Cài đặt thất bại",
+    "updateUnavailableTitle": "Không có bản cập nhật",
+    "updateUnavailableDetail": "Bản tải xuống này không khớp với những gì chúng tôi mong đợi. Vui lòng thử lại sau.",
     "installStuckDetail": "Không có tiến triển trong một thời gian. Kiểm tra kết nối của bạn và thử lại.",
     "installStuckTitle": "Tải xuống bị kẹt",
     "openPack": "Mở {{name}}",

@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Περιλαμβάνεται με το Plus",
     "installFailedTitle": "Η εγκατάσταση απέτυχε",
+    "updateUnavailableTitle": "Η ενημέρωση δεν είναι διαθέσιμη",
+    "updateUnavailableDetail": "Αυτή η λήψη δεν αντιστοιχούσε σε αυτό που περιμέναμε. Δοκιμάστε ξανά αργότερα.",
     "installStuckDetail": "Καμία πρόοδος για λίγο. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "installStuckTitle": "Η λήψη έχει κολλήσει",
     "openPack": "Άνοιγμα {{name}}",

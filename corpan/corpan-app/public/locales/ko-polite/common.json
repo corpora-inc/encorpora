@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plus에 포함됨",
     "installFailedTitle": "설치 실패",
+    "updateUnavailableTitle": "업데이트를 사용할 수 없습니다",
+    "updateUnavailableDetail": "다운로드한 내용이 예상과 일치하지 않았습니다. 나중에 다시 시도해 주세요.",
     "installStuckDetail": "한동안 진행되지 않고 있습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
     "installStuckTitle": "다운로드 중단됨",
     "openPack": "{{name}} 열기",

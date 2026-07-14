@@ -176,6 +176,7 @@ export function createJourneyEngine(deps: {
       cadenceEmitted: 0,
       funServedSession: 0,
       phonemeServedSession: 0,
+      retiredReviewsSession: 0,
       bossAttempted: new Set(),
       checkpointRun: null,
       gauntletRun: null,

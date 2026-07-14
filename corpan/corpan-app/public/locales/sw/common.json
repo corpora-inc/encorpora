@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Imejumuishwa na Plus",
     "installFailedTitle": "Usakinishaji umeshindwa",
+    "updateUnavailableTitle": "Sasisho halipatikani",
+    "updateUnavailableDetail": "Upakuaji huu haukulingana na tulichotarajia. Tafadhali jaribu tena baadaye.",
     "installStuckDetail": "Hakuna maendeleo kwa muda. Angalia muunganisho wako na ujaribu tena.",
     "installStuckTitle": "Upakuaji umesimama",
     "openPack": "Fungua {{name}}",

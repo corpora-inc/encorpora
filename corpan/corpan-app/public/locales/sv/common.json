@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Ingår med Plus",
     "installFailedTitle": "Installationen misslyckades",
+    "updateUnavailableTitle": "Uppdatering ej tillgänglig",
+    "updateUnavailableDetail": "Den här nedladdningen matchade inte det vi förväntade oss. Försök igen senare.",
     "installStuckDetail": "Inga framsteg på ett tag. Kontrollera din anslutning och försök igen.",
     "installStuckTitle": "Nedladdning pausad",
     "openPack": "Öppna {{name}}",

@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Включено с Plus",
     "installFailedTitle": "Инсталацията неуспешна",
+    "updateUnavailableTitle": "Актуализацията не е налична",
+    "updateUnavailableDetail": "Това изтегляне не съответства на очакваното. Моля, опитайте отново по-късно.",
     "installStuckDetail": "Няма напредък от известно време. Проверете връзката си и опитайте отново.",
     "installStuckTitle": "Изтеглянето е спряло",
     "openPack": "Отвори {{name}}",

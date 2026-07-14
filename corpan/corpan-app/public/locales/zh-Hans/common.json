@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Corpán Plus 包含",
     "installFailedTitle": "安装失败",
+    "updateUnavailableTitle": "更新暂不可用",
+    "updateUnavailableDetail": "此下载内容与预期不符。请稍后重试。",
     "installStuckDetail": "一段时间内没有进展。请检查您的连接并重试。",
     "installStuckTitle": "下载停滞",
     "openPack": "打开{{name}}",

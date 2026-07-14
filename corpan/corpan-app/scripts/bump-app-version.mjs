@@ -22,6 +22,7 @@ if (!arg) {
 const pkgPath = "package.json"
 const tauriPath = "src-tauri/tauri.conf.json"
 const cargoPath = "src-tauri/Cargo.toml"
+const cargoLockPath = "src-tauri/Cargo.lock"
 
 const pkg = JSON.parse(readFileSync(pkgPath, "utf8"))
 const current = pkg.version
@@ -75,10 +76,24 @@ const tauriNext = bumped(tauriPath, /("version"\s*:\s*)"\d+\.\d+\.\d+"/, "tauri.
 // package version). Anchored to line start so it can't match a dependency's
 // `version = "..."` further down the file.
 const cargoNext = bumped(cargoPath, /(^version\s*=\s*)"\d+\.\d+\.\d+"/m, "Cargo.toml")
+// src-tauri/Cargo.lock — the `[[package]]` block for the app crate itself
+// (`name = "corpan"`), not any dependency that happens to share a version
+// number. Cargo doesn't auto-sync this file when Cargo.toml's version
+// changes; leaving it stale is exactly the drift this script exists to
+// prevent (Cargo.lock disagreeing with Cargo.toml/package.json/
+// tauri.conf.json across an app release). Anchored to the
+// `[[package]]\nname = "corpan"\nversion = "..."` shape so it can't match
+// a same-named dependency elsewhere in the lockfile.
+const cargoLockNext = bumped(
+  cargoLockPath,
+  /(\[\[package\]\]\nname = "corpan"\nversion = )"\d+\.\d+\.\d+"/,
+  "Cargo.lock",
+)
 
 writeFileSync(pkgPath, pkgNext)
 writeFileSync(tauriPath, tauriNext)
 writeFileSync(cargoPath, cargoNext)
+writeFileSync(cargoLockPath, cargoLockNext)
 
-console.log(`bumped -> ${next} in package.json, tauri.conf.json, Cargo.toml`)
+console.log(`bumped -> ${next} in package.json, tauri.conf.json, Cargo.toml, Cargo.lock`)
 console.log("next: commit, then push / open a PR. Merging to main triggers the release build.")

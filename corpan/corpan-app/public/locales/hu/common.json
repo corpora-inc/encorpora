@@ -631,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "A Plusz tartalmazza",
     "installFailedTitle": "Telepítés sikertelen",
+    "updateUnavailableTitle": "A frissítés nem érhető el",
+    "updateUnavailableDetail": "Ez a letöltés nem egyezett azzal, amit vártunk. Kérjük, próbáld újra később.",
     "installStuckDetail": "Egy ideje nincs előrelépés. Ellenőrizd a kapcsolatodat, és próbáld újra.",
     "installStuckTitle": "Letöltés megakadt",
     "openPack": "{{name}} megnyitása",

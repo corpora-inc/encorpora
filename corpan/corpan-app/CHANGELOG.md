@@ -7,6 +7,66 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **The pack updater no longer lies about success and loops forever when a
+  catalog entry drifts from what its origin actually serves.** Reproduced
+  live: the catalog advertised `drift` 0.3.0 but its `manifestUrl`/`zipUrl`
+  pointed at a stale origin still serving 0.1.0. `installPack()` recorded
+  whatever version the DOWNLOADED manifest declared — `expectedVersion` was
+  used only as a fallback, never validated — so the install "succeeded" (a
+  green checkmark in the progress dialog) while the installed version stayed
+  0.1.0, and `SystemPackInstaller` (which auto-installs system packs like
+  `drift`/`wordfall` silently, no UI) re-attempted the same doomed install on
+  every catalog refresh, forever, with no visible signal. `installPack()` now
+  throws `PackVersionMismatchError` (logging expected-vs-got) whenever a
+  catalog-driven install/update's downloaded manifest version disagrees with
+  the catalog's `expectedVersion`, for both the manifest.json and .zip/native
+  install paths — no success is recorded and nothing on disk/in the store is
+  replaced. `SystemPackInstaller` gained a per-session loop guard (a version
+  that already failed isn't re-attempted until the catalog advertises a NEW
+  version) plus a defensive downgrade guard before `addGame`. The
+  user-facing Update button (`PackActions` → `InstallContext` →
+  `InstallProgressDialog`) now surfaces a real localized "Update unavailable"
+  error state instead of a raw error string or a false success (new
+  `packs.updateUnavailableTitle`/`packs.updateUnavailableDetail` keys, all 54
+  locales). Also fixed a related gap while in this code: the phrase-pack
+  batch/"Install all" path (`InstallContext.installPackBatch`) forwarded
+  `expectedVersion` but silently dropped `sha256`, so a batch-installed
+  phrase pack skipped the native sha256 hard-fail-on-mismatch check a
+  single-pack install already got — extracted `buildCatalogInstallArgs()`
+  (`contentPacks/installArgs.ts`) so every catalog-driven install call site
+  forwards sha256 the same way. Note: catalog-v3 (game/reader packs) has no
+  `sha256` field in its schema or publisher (`web/pages/build.js`) today, so
+  those packs still get no on-device hash enforcement — a real pipeline gap,
+  not something fixable from the app side alone.
+  (`contentPacks/install.ts`, `contentPacks/systemPackInstallPlan.ts`,
+  `contentPacks/installArgs.ts`, `contentPacks/InstallContext.tsx`,
+  `components/SystemPackInstaller.tsx`,
+  `components/packs/InstallProgressDialog.tsx`)
+- **Item retirement (R-A) is no longer a one-way door, and its end-of-content
+  safety net is no longer dead code in production.** After two consecutive
+  perfect completions an item RETIRES and stops being served from the normal
+  feed (breadth-first: mastered words yield their slot to fresh material). Two
+  gaps made the documented un-retire-on-lapse path unreachable in prod: (1) a
+  retired item was excluded from EVERY serving path, so it could never be shown,
+  never lapse, and never un-retire — the un-retire code only ran under test
+  force-issue; (2) the end-of-content retired-revisit fallback was collected only
+  when the pack shipped `funWeight` activity templates, but the production native
+  loader emits none, so the fallback pool was permanently empty and a binger who
+  mastered all reachable content could dead-end the "infinite" feed. Fixed both:
+  the retired-item collection is hoisted out of the `funWeight` gate (retired
+  items are served through the FULL activity menu, not fun templates, so they no
+  longer depend on a fun template existing); and a new rare long-interval
+  retired-review trickle serves a retired item ONE confirmatory review per
+  session once its FSRS retrievability decays below 0.7 (well past due) — a
+  failed review lapses and un-retires it, a passed one re-confirms retirement and
+  pushes the next check far out. Rarity comes from the decay gate plus the tight
+  per-session cap (the CTO's aggressive 2-perfect retirement rule is unchanged),
+  and the trickle composes with the fallback (scheduled trickle vs. pool of last
+  resort). New tests reach un-retire through the real mixer serve path, not a
+  harness force-issue. (`journey/engine/pools.ts`, `journey/engine/mixer.ts`,
+  `journey/engine/constants.ts`, `journey/engine/types.ts`, `journey/engine/engine.ts`)
+
 ## [0.20.6] - 2026-07-14
 
 ### Fixed
@@ -254,6 +314,49 @@ Conventions: `corpan/CHANGELOGS.md`.
   16 KB-aligned (explicit `target_link_options` in the STT plugin's
   CMakeLists.txt, and NDK 28.2+'s prebuilt libc++_shared respectively) —
   Play's on-device warning for those two was stale/from an older build.
+- **`Cargo.lock` had drifted to `corpan` 0.20.5 while `package.json`/
+  `tauri.conf.json`/`Cargo.toml` were already at 0.20.6** — the 0.20.5 fix for
+  the sibling `Cargo.toml`-drift bug made `bump-app-version.mjs` match each
+  of those three files' version line structurally, but never touched
+  `Cargo.lock`'s own `[[package]] name = "corpan"` entry, which Cargo doesn't
+  auto-sync on a manual edit. Ran `cargo update -p corpan` to bring the lock
+  back in sync, and extended `bump-app-version.mjs` to also rewrite
+  `Cargo.lock`'s app-package version line (anchored to the
+  `[[package]]` / `name = "corpan"` / `version = "..."` shape so it can't
+  touch a same-named dependency), with the same fail-loudly-with-zero-
+  side-effects behavior as the other three files
+  (`scripts/bump-app-version.mjs`).
+- **`stopSpeech()` could wipe the tracking for a card's audio that hadn't
+  even started playing yet.** Its `finally` called `audioManager`'s
+  `endUtterance()` with no id, unconditionally clearing whatever utterance
+  was CURRENTLY active — but between the (awaited) native stop call starting
+  and resolving, a user-advance's `void stopSpeech()` could race the next
+  card's autoplay `beginUtterance()`, which registers synchronously and thus
+  can land before the native stop resolves. The stale `finally` then wiped
+  the NEW utterance's tracking, so a subsequent `waitForActiveUtterance()`
+  returned instantly instead of riding out the new card's audio.
+  `stopSpeech()` now captures the active utterance id (`audioManager`'s new
+  `getActiveUtteranceId()`) at entry, before the async native stop call, and
+  ends only that id — a later-registered utterance survives. New
+  `audioManager.test.ts` cases cover the exact interleaving, plus the
+  companion case where nothing was active at entry (`util/speak.ts`,
+  `util/audioManager.ts`, `util/audioManager.test.ts`).
+- **A second mic-priming ("blockIntro") card could be queued while the
+  first was still unseen, even though it's meant to show at most once
+  ever.** `micIntroSeen()` is stamped on the card's MOUNT, not on synthesis —
+  so `fillQueue()` could discover a later stt-run boundary and synthesize
+  another blockIntro while the first one was still sitting, un-mounted, in
+  `prepared`. `fillQueue()` now also treats "a blockIntro is already present
+  in `prepared`" as seen when deciding whether to synthesize a new one, so at
+  most one is ever queued at a time; the block-warm-up bookkeeping and model
+  prewarm still run on every boundary regardless. A fresh user still sees the
+  card once (`journey/runtime.ts`).
+- **Android `hdpi` launcher icons (`ic_launcher.png`/`ic_launcher_round.png`)
+  were 49×49 instead of the required 72×72**, alongside correctly-sized
+  mdpi/xhdpi/xxhdpi/xxxhdpi (48/96/144/192). Regenerated both from the
+  curated xxxhdpi (192px) source via high-quality (Lanczos) downscale;
+  verified all five densities are now correctly sized
+  (`src-tauri/icons/android/mipmap-hdpi/`).
 
 ## [0.20.5] - 2026-07-12
 
