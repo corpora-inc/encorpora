@@ -39,9 +39,9 @@ Current identifiers (`rg -n 'Builder::new\("' corpan/plugins/*/src/lib.rs`):
 | `tauri-plugin-subscriptions` | `subscriptions` | `tauri-plugin-subscriptions` |
 | `tauri-plugin-game-packs` | **`game_packs`** | `tauri-plugin-game-packs` |
 
-Twelve crates declare `links` repo-wide (the two above plus
+Twelve crates declare `links` repo-wide: the ten above, plus
 `homeschool-offline`'s `tauri-plugin-ios-share` and the vendored
-`llama-cpp-sys-2`, which declares `links = "llama"`). All distinct.
+`llama-cpp-sys-2` (which declares `links = "llama"`). All distinct.
 
 ## Who depends on the identifiers — verified call sites
 

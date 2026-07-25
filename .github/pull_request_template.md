@@ -33,9 +33,9 @@ adversarial-review gate truncates the diff at 200000 bytes
       `src-tauri/Cargo.toml`. (A misplaced `[patch]` is ignored **silently** —
       it once reverted the vendored `ndk-context` fork and crashed 7+ users with
       no failing test.)
-- [ ] **Strings.** Every new user-visible string exists in all 88 locales under
-      `corpan/corpan-app/public/locales/`. `npm run check:i18n` runs inside
-      `npm run build` and fails on any missing key.
+- [ ] **Strings.** Every new user-visible string exists in every locale directory
+      under `corpan/corpan-app/public/locales/` (54 today). `npm run check:i18n`
+      runs inside `npm run build` and fails on any missing key.
 - [ ] **Curriculum.** No skill id renamed or reused. Grade changes are metadata
       only. Fraction/decimal answers use exact rationals, never floats. Any skill
       promoted to `active` has a passing generator binding **and** a registered,
