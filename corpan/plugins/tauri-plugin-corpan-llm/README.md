@@ -78,7 +78,7 @@ tauri::Builder::default()
 Packs do not invoke the plugin directly — they go through the host wrapper,
 `corpan-app/src/contentPacks/hostApi.ts` (`llm.chat` / `llm.unload`). The canonical
 consumer is Tutomaton: `corpan/packs/tutomaton/src/chat.ts`, with model/RAM tiering in
-`src/languageManager.ts`.
+`src/modelTiering.ts` and `src/modelManager.ts`.
 
 ## Known gaps
 

@@ -14,11 +14,11 @@ App ID it was issued for; signing a different bundle id with it fails, and if it
 succeed App Store Connect would reject the upload because the binary's bundle id does
 not match the app record.
 
-**Do not use a wildcard App ID either.** A wildcard (`com.corpora.*`) cannot back an
-App Store Connect app record and cannot carry the capabilities a shipping app needs —
-In-App Purchase, Push Notifications, App Groups and Sign in with Apple all require an
-**explicit** App ID. A wildcard profile gets you a build that installs locally and then
-dies at upload or the first purchase call.
+**Do not use a wildcard App ID either.** A wildcard App ID (`com.corpora.*`) cannot
+carry the capabilities a shipping app needs — In-App Purchase, Push Notifications,
+App Groups and Sign in with Apple all require an **explicit** App ID. A wildcard
+profile gets you a build that installs locally and then dies at the first purchase
+call.
 
 The real procedure, once:
 

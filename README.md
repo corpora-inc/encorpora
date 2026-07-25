@@ -16,15 +16,15 @@ squash-merge to `main`. See [AGENTS.md](AGENTS.md) for the worker loop and the g
 - **Corpán Packs** (`corpan/packs/`) — the pack system and the packs themselves:
   games, readers, an on-device LLM tutor, a multiplayer city. Packs deploy
   over-the-air on merge to `main` and are versioned against app floors.
-- **Dynawalla: Apprentice of Numbers** (`dynawalla/`) — the newest product, in
-  early construction: children's mathematics, grades 1–6 plus an introduction to
-  pre-algebra, set in an ancient-futurist world of astrolabes, gears and
+- **Dynawalla: Apprentice of Numbers** (`dynawalla/`, planned — not yet on `main`)
+  — the newest product: children's mathematics, grades 1–6 plus an introduction
+  to pre-algebra, set in an ancient-futurist world of astrolabes, gears and
   mechanical computers.
 - **Books & publishing** (`books/`) — the authored source for narration packs.
 - **Site** (`web/`) — encorpora.io, built and deployed to GitHub Pages.
 
-Corpán and Dynawalla share `main` and share the native/Tauri plugin layer under
-`corpan/plugins/`. Path filters decide what CI runs for a given change.
+Corpán and Dynawalla share `main`, and Dynawalla will share the native/Tauri plugin
+layer under `corpan/plugins/`. Path filters decide what CI runs for a given change.
 
 ## Live Demos
 
@@ -67,7 +67,8 @@ See [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md) for deployment architecture.
 Read [AGENTS.md](AGENTS.md) first — it is the runbook, and it applies to humans and
 agents alike.
 
-Licensing is not yet decided; see [LICENSE.md](LICENSE.md) before you fork.
+This repository carries no license file yet — see
+[LICENSING-TODO.md](LICENSING-TODO.md) for the open question.
 
 ## Community
 

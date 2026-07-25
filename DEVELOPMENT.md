@@ -17,12 +17,12 @@ encorpora/
 │   ├── packs/           # Pluggable language learning packs
 │   │   ├── sdk/         # Pack development SDK
 │   │   └── hover-runner/ # Reference pack
-│   ├── plugins/         # Tauri/Rust plugin crates (shared with Dynawalla)
+│   ├── plugins/         # Tauri/Rust plugin crates (to be shared with Dynawalla)
 │   └── dja/             # Django content management system
 │       ├── cor/         # Core models (Entry, Translation, Pack)
 │       └── db.sqlite3   # Development database
 │
-├── dynawalla/           # Dynawalla: Apprentice of Numbers — children's maths (new)
+├── dynawalla/           # (planned, not yet on main) Dynawalla: Apprentice of Numbers
 │
 ├── web/io/                  # Marketing website (Next.js)
 │   └── out/             # Built static site

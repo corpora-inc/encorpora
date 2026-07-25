@@ -73,8 +73,8 @@ changes nothing.
 
 | What | Where it lives | How to read it |
 |---|---|---|
-| Required status checks (`ci-gate`, `adversarial-review`, `hygiene`) + strict up-to-date | **Classic branch protection** | `gh api repos/corpora-inc/encorpora/branches/main/protection` |
-| Block deletion, block force-push, linear history | **Ruleset `11721169`** (`main`) | `gh api repos/corpora-inc/encorpora/rulesets/11721169` |
+| Required status checks (`ci-gate`, `adversarial-review`, `hygiene`) + strict up-to-date + linear history | **Classic branch protection** | `gh api repos/corpora-inc/encorpora/branches/main/protection` |
+| Block deletion, block force-push | **Ruleset `11721169`** (`main`) | `gh api repos/corpora-inc/encorpora/rulesets/11721169` |
 | Merge queue (squash, ALLGREEN grouping) | **Ruleset `18008260`** (`main merge queue`) | `gh api repos/corpora-inc/encorpora/rulesets/18008260` |
 
 > **The trap:** anyone told to "edit the main ruleset" to add or remove a required
@@ -84,15 +84,18 @@ changes nothing.
 > protection**; change them there.
 
 Neither ruleset has bypass actors (`current_user_can_bypass: never`), so a force-push
-to `main` requires disabling enforcement via the API and re-enabling it after.
+to `main` requires disabling enforcement via the API and re-enabling it after — and
+classic protection independently sets `allow_force_pushes: false` /
+`allow_deletions: false`, so both objects must be relaxed and both re-armed afterwards.
 
 ## Two products, one trunk
 
 `main` carries **Corpán** (language learning, `corpan/`) and **Dynawalla: Apprentice
-of Numbers** (children's mathematics, `dynawalla/`, bundle `inc.corpora.dynawalla`,
-in early construction). One repo, one trunk, one queue. They share the
-native/Rust/Tauri-plugin layer under `corpan/plugins/`; their frontends may diverge
-freely.
+of Numbers** (children's mathematics, bundle `inc.corpora.dynawalla`). One repo, one
+trunk, one queue. Dynawalla will live at top-level `dynawalla/` — that directory does
+not exist on `main` yet, and neither does a `dynawalla` path filter in `ci.yml`.
+Dynawalla is to share the native/Rust/Tauri-plugin layer under `corpan/plugins/`;
+their frontends may diverge freely.
 
 Path filters are what make constant merging safe here: a PR that only touches
 `dynawalla/**` must not run Corpán's build, and vice versa. **Path-gate every
@@ -101,8 +104,8 @@ workflow you add.**
 > **The single most important CI fact in this repo:** a path-gated job must never
 > become its own *required status context*. A required context that does not report
 > is not "skipped" — GitHub waits for it forever, and the merge queue blocks
-> permanently for every PR that does not touch that path. Dynawalla adds its jobs as
-> **inputs to the existing `ci-gate` aggregate**, which always reports; `ci-gate`
+> permanently for every PR that does not touch that path. Dynawalla's jobs must be
+> added as **inputs to the existing `ci-gate` aggregate**, which always reports; `ci-gate`
 > passes when its skipped sub-jobs are skipped and its run sub-jobs are green. Do not
 > add a fourth required context. If you think you need one, you need a new job inside
 > `ci-gate` instead.
