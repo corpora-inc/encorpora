@@ -13,15 +13,40 @@ The old "long-lived integration branch, big-bang squash" methodology is
 **dead**. Do not restore it, do not cite it, do not open a branch that
 accumulates weeks of work.
 
+### Relationship to `AGENTS.md`
+
+`AGENTS.md` owns the process: the board, the gates, the pack checklist, the
+fail-forward policy. **This file owns the procedure**, and it wins wherever the
+two overlap — `AGENTS.md` predates the 2026-07-25 trunk law and still carries
+two instructions that are now wrong:
+
+| `AGENTS.md` says | Correct today |
+| --- | --- |
+| `git worktree add ../wt-<issue> …` | worktree goes at `$WT_ROOT/<branch>`, outside the repo, named for the branch (§0) |
+| "**Auto-merge.** Enable it (`gh pr merge --squash --auto`)" | **do not merge**; the CTO merges (§10) |
+
+`AGENTS.md` also states the pack floor as "Corpán 0.19.2 today"; it is **0.20.6**
+(`corpan/corpan-app/src-tauri/tauri.conf.json`). Reconciling `AGENTS.md` is
+tracked separately — until it lands, follow this file.
+
 ## 0. Ground rules
 
-- The primary checkout at `/Users/skyl/Code/corpora/encorpora` is **read-only**.
-  Read from it, run read-only git in it, never edit or check out in it.
-- Every worktree goes **outside** the repo directory:
-  `/Users/skyl/Code/corpora/wt/<branch>`. Worktrees nested inside the repo bloat
-  every search and get left behind (27 are nested there today).
+- The primary checkout is **read-only**. Read from it, run read-only git in it,
+  never edit or check out in it.
+- Every worktree goes **outside** the repo directory, at `$WT_ROOT/<branch>`.
+  Worktrees nested inside the repo bloat every search and get left behind (27
+  are nested there today).
 - Path-gate anything you add to CI. That is what makes constant merging safe in
   a monorepo.
+
+Derive the paths; do not hardcode a home directory. These are the same two the
+`worktree-guard` hook computes, and they resolve correctly from inside a
+worktree as well as from the primary checkout:
+
+```bash
+REPO="$(dirname "$(cd "$(git rev-parse --git-common-dir)" && pwd -P)")"
+WT_ROOT="$(dirname "$REPO")/wt"
+```
 
 ## 1. `git -C` discipline — read this before your first git command
 
@@ -29,7 +54,7 @@ accumulates weeks of work.
 like
 
 ```bash
-cd /Users/skyl/Code/corpora/encorpora && git checkout -b feature   # WRONG
+cd "$REPO" && git checkout -b feature   # WRONG
 ```
 
 operates on the **primary checkout**, not on your worktree, even if a previous
@@ -39,7 +64,7 @@ onto the primary checkout, off any branch anyone was tracking.
 Use an explicit `-C` on every single git invocation:
 
 ```bash
-WT=/Users/skyl/Code/corpora/wt/<branch>
+WT="$WT_ROOT/<branch>"
 git -C "$WT" status
 git -C "$WT" add -A
 git -C "$WT" commit -m "..."
@@ -56,9 +81,8 @@ purpose (`AGENTS.md`).
 ## 3. Worktree
 
 ```bash
-REPO=/Users/skyl/Code/corpora/encorpora
 BR=<verb>-<short-slug>            # e.g. fix-catalog-dedupe, add-stargate-zh
-WT=/Users/skyl/Code/corpora/wt/$BR
+WT="$WT_ROOT/$BR"                 # $REPO/$WT_ROOT from §0
 
 git -C "$REPO" fetch origin
 git -C "$REPO" worktree add -b "$BR" "$WT" origin/main

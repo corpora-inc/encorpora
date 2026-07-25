@@ -6,6 +6,14 @@ Gate the native changes in $ARGUMENTS (a crate path, or the current branch's
 diff under `native/`, `*/src-tauri/`, `corpan/plugins/`). Use the
 `native-gatekeeper` agent; report each check with its actual output.
 
+No required check compiles Rust. `.github/workflows/ios-native.yml` is the only
+workflow that does — path-gated on `corpan/plugins/**/{ios,src}/**`,
+`**/Cargo.toml`, `**/build.rs`; it cross-builds each plugin for
+`aarch64-apple-ios` (which is what compiles its Swift). It is **advisory**, not
+in the required set, so read it yourself (`gh pr checks <PR>`); a red run will
+not block the merge. Android, clippy and fmt run nowhere in CI. Everything below
+is local-only.
+
 ```bash
 cargo fmt --check --manifest-path <crate>/Cargo.toml
 cargo clippy --manifest-path <crate>/Cargo.toml --all-targets -- -D warnings

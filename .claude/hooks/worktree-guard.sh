@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # SessionStart advisory for the encorpora monorepo. WARNS, NEVER BLOCKS.
+# Nothing in .claude/ blocks anything — see .claude/README.md.
 #
 # Trunk-based development is the law here: worktree -> PR -> adversarial review
 # -> squash-merge. Agents merge to main constantly, so a hook that can halt a
@@ -29,15 +30,24 @@ printf 'worktree-guard\n'
 # 1. The primary checkout on main is read-only by convention: it is the
 #    reference tree everyone reads from and the one that gets fast-forwarded
 #    after a merge. Editing it strands work outside any PR.
-if [ "${here}" = "${primary}" ] && [ "${branch}" = "main" ]; then
-  printf '  ! primary checkout on main (%s) — treat as READ-ONLY.\n' "${primary}"
+#
+#    Match the whole tree, not just its root — a session is routinely opened
+#    with a package subdirectory as the project dir (corpan/packs/<pack>), and
+#    that is still the primary checkout.
+case "${here}" in
+  "${primary}"|"${primary}"/*) in_primary=1 ;;
+  *) in_primary=0 ;;
+esac
+
+printf '  cwd %s  (branch %s)\n' "${here}" "${branch}"
+
+if [ "${in_primary}" = 1 ] && [ "${branch}" = "main" ]; then
+  printf '  ! inside the primary checkout on main (%s) — treat as READ-ONLY.\n' "${primary}"
   printf '    Work belongs in a worktree:\n'
   printf '      git -C %s fetch origin\n' "${primary}"
   printf '      git -C %s worktree add -b <branch> %s/<branch> origin/main\n' "${primary}" "${wt_root}"
   printf '    Then drive it as `git -C %s/<branch> ...` — a bare `cd <repo> && git`\n' "${wt_root}"
   printf '    in a later tool call lands back here, because cwd resets between calls.\n'
-else
-  printf '  cwd %s  (branch %s)\n' "${here}" "${branch}"
 fi
 
 # 2. Worktree sprawl. Measured 2026-07-25: 35 registered, 27 of them nested

@@ -114,6 +114,42 @@ your diff caused. What matters for a gate:
 
 ---
 
+## What CI actually runs (read before you assume the checklist below is the gate)
+
+The three **required** checks on `main` are `ci-gate`, `adversarial-review`, and
+`hygiene`. **None of them compiles Rust.** `ci-gate` has no native job at all —
+`.github/workflows/ci.yml` sets a `native` filter output, but nothing consumes it
+yet, so `native/`, `*/src-tauri/` and `corpan/plugins/` changes pass `ci-gate`
+without being built.
+
+The only workflow in the repo that compiles the native layer is
+**`.github/workflows/ios-native.yml`**:
+
+- Path-gated on `corpan/plugins/**/ios/**`, `corpan/plugins/**/src/**`,
+  `corpan/plugins/**/Cargo.toml`, `corpan/plugins/**/build.rs`, and the workflow
+  file itself. A change to `corpan/corpan-app/src-tauri/` or `native/` does not
+  trigger it.
+- Runs on `macos-14`. For every `corpan/plugins/*/` that has both an `ios/`
+  directory and a `Cargo.toml`, it runs `cargo build --target aarch64-apple-ios`
+  from that plugin directory — which is what makes swift-rs compile the plugin's
+  Swift package from its build script. `tauri-plugin-stt` is skipped (its Swift
+  links a prebuilt xcframework that is not in the repo).
+- Android is **not** built anywhere in CI. Neither is clippy, `cargo fmt`, or any
+  `cargo test`.
+
+**`ios-native` is advisory, not required.** It is not in the branch-protection
+required set, so a red run does not block the merge and the merge queue will not
+notice it. Read it by hand:
+
+```bash
+gh pr checks <PR> --repo corpora-inc/encorpora        # ios-native appears here
+gh run view <run-id> --repo corpora-inc/encorpora --log-failed
+```
+
+Everything else below is local-only. If you do not run it, nobody does.
+
+---
+
 ## Checklist
 
 **1. Format.**

@@ -19,18 +19,26 @@ corpan/plugins/*/ios/.build/
 corpan/games/
 .DS_Store
 
-# Claude Code control plane: the shared, reviewed agent config IS source code
-# (agents/skills/hooks/commands/settings.json). Everything else under .claude/
-# is per-machine scratch — session state, per-user permission overrides, and the
-# agent worktree checkouts (36G locally today), none of it history-of-record.
-.claude/*
-!.claude/agents/
-!.claude/skills/
-!.claude/hooks/
-!.claude/commands/
-!.claude/settings.json
-.claude/settings.local.json
-.claude/worktrees/
+# Claude Code control plane: the shared, reviewed agent config at the REPO ROOT
+# IS source code (agents/skills/hooks/commands/settings.json). Everything else
+# under any .claude/ is per-machine scratch — session state, per-user permission
+# overrides, and the agent worktree checkouts (36G locally today).
+#
+# Order matters. The unanchored first rule keeps NESTED .claude/ dirs ignored at
+# every depth (corpan/.claude/ and corpan/corpan-app/.claude/ exist today); the
+# root dir is then re-included so the negations below it can take effect at all
+# (git will not descend into an excluded directory).
+.claude/
+!/.claude/
+/.claude/*
+!/.claude/agents/
+!/.claude/skills/
+!/.claude/hooks/
+!/.claude/commands/
+!/.claude/settings.json
+!/.claude/README.md
+/.claude/settings.local.json
+/.claude/worktrees/
 
 # Raw TTS WAV files (large, kept locally for A/B comparison only)
 **/audio/*/wav/
