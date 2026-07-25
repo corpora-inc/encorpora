@@ -10,12 +10,25 @@ body:
       placeholder: e.g. Juice Squeeze combo counter resets a frame too early on level-up.
     validations:
       required: true
+  # Two products share this monorepo now. GitHub issue forms cannot offer
+  # user-selectable *labels*, so this dropdown is the form-level equivalent —
+  # it does not introduce a label namespace. Labels stay near-zero (AGENTS.md).
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      description: Leave blank if it's neither or both.
+      options:
+        - Corpán
+        - Dynawalla
+    validations:
+      required: false
   - type: input
     id: where
     attributes:
       label: Where
       description: Pack / app / file / screen. Wherever you noticed it.
-      placeholder: e.g. corpan/packs/juice-squeeze, or "app settings screen"
+      placeholder: e.g. corpan/packs/juice-squeeze, dynawalla/curriculum, or "app settings screen"
     validations:
       required: false
   - type: textarea

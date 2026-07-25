@@ -18,7 +18,19 @@ web/io/.next/
 corpan/plugins/*/ios/.build/
 corpan/games/
 .DS_Store
-.claude/
+
+# Claude Code control plane: the shared, reviewed agent config IS source code
+# (agents/skills/hooks/commands/settings.json). Everything else under .claude/
+# is per-machine scratch — session state, per-user permission overrides, and the
+# agent worktree checkouts (36G locally today), none of it history-of-record.
+.claude/*
+!.claude/agents/
+!.claude/skills/
+!.claude/hooks/
+!.claude/commands/
+!.claude/settings.json
+.claude/settings.local.json
+.claude/worktrees/
 
 # Raw TTS WAV files (large, kept locally for A/B comparison only)
 **/audio/*/wav/
