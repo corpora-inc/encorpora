@@ -1,6 +1,7 @@
 # Corpán Plus — overnight build handoff (2026-05-28)
 
-Branch: **`moonshot-15-plus-v2`** (encorpora) + **`master`** (ttsctl, pushed).
+Status: **historical record** — this work has shipped. Kept for the reasoning, not
+as instructions. Owner: founder.
 All commits typecheck clean (`corpan-app` `tsc --noEmit` exits 0). Nothing was
 run against production S3/catalog. No app-store submission touched.
 

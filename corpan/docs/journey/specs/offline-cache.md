@@ -1,6 +1,6 @@
 # Journey Spec — Shared Offline-First Cache Layer (D12)
 
-**Status: v1.0 implementable. Owner: CTO/integrator. Branch: `journey`.**
+**Status: v1.0 implementable. Owner: CTO/integrator.**
 Implements `ARCHITECTURE.md` D12 (operator directive, 2026-07-03): *everything works
 offline; being online only means things quietly get fresher.* One shared cache layer —
 cache-first, revalidate-when-appropriate — used by HomeHub, the three catalogs, Journey

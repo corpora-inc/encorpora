@@ -1,6 +1,6 @@
 # Journey — North Star
 
-**Status: v1.0 (design phase complete). Owner: CTO/integrator agent. Branch: `journey`.**
+**Status: v1.0 (design phase complete). Owner: CTO/integrator agent.**
 Design record: `ARCHITECTURE.md` (D1–D14) + `CTO-RESOLUTIONS.md` (binding panel rulings)
 + eight reconciled specs under `specs/`. Build plan: `BUILD-PLAN.md`.
 

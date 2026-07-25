@@ -30,7 +30,7 @@ checklists as the work.
 - **Versioning**: promote `CHANGELOG.md` `[Unreleased]` → `[0.1.0] - <date>` per
   `corpan/CHANGELOGS.md`; the manifest `version` and the changelog heading must
   match.
-- **Publish path**: a `corpan-city` block in `.github/workflows/hover-runner-pages.yml`
+- **Publish path**: a `corpan-city` block in `.github/workflows/deploy-pages.yml`
   (build → zip → copy into `web/io/out`), then a `catalog-v3` entry pushed via the
   existing `infra/patch-catalog.py` / S3+CloudFront flow.
 
@@ -366,7 +366,7 @@ Just promote.
 
 **E. Pack ZIP + publish wiring**
 - [ ] `corpan-city` build+zip+copy block added to
-      `.github/workflows/hover-runner-pages.yml` (zip = `manifest.json` + `dist/`;
+      `.github/workflows/deploy-pages.yml` (zip = `manifest.json` + `dist/`;
       copy `manifest.json`, `dist/`, and the `corpan-city.zip` into
       `web/io/out/corpan/packs/...`, mirroring the `world-radio` block). Reuse a
       `scripts/pack.mjs` (copy world-radio's) if you want `npm run pack`.
@@ -409,7 +409,7 @@ Just promote.
 2. **Artwork** (D): script the in-engine hero capture via `window.__wpScene`;
    produce `corpan_city-avatar.png`; wire it into the `web/io` asset deploy.
 3. **Wire the pack into GH Pages** (E): add the `corpan-city` block to
-   `hover-runner-pages.yml`; merge to `main`; confirm the ZIP + manifest URLs are
+   `deploy-pages.yml`; merge to `main`; confirm the ZIP + manifest URLs are
    live.
 4. **Preview-channel soak** (F, channel=`preview`): publish the catalog-v3 entry
    as `preview` first → only dev-mode apps see it → run the §7-G smoke on a real

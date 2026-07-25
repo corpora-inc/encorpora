@@ -1,6 +1,7 @@
 # Journey — Phase 3 Build Plan
 
-**Status: v1.0. Owner: CTO/integrator. Branch: `journey`.**
+**Status: v1.0. Owner: CTO/integrator.** Work lands on `main` via short-lived
+branches and PRs — see the root `AGENTS.md`.
 Rule zero: every workstream owns an **exclusive path set** — no two teams touch the
 same file. Shared seams (`contentPacks/types.ts`, `hostApi.ts`, `App.tsx`, locales,
 `quotas.ts`) belong to W0 or W10 only. Each workstream builds from its spec; specs are

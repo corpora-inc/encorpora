@@ -62,16 +62,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   immediately (time-to-first-token preserved); the tail flushes before
   `llm-done`. Byte-identical to the frontend, which concatenates `token` strings.
 
-### Added
-- **Live system-prompt override** for on-device A/B with no rebuild: env
-  `CORPAN_LLM_SYSPROMPT` or `adb shell setprop debug.corpan.sysprompt "..."`.
-  `"none"` drops all system messages (bare model); a non-empty string replaces
-  every system message's content; empty/unset = unchanged. Measures how much the
-  ~850-token grounded prompt costs in prefill (the whole ~43s on Android) and how
-  the tutor behaves with little/no priming. NOTE: this only lifts the per-turn
-  prefill *floor* — the real Android cost is that `run_chat` re-prefills system +
-  full history every turn (no KV-cache reuse), so latency grows each round and
-  hard-errors at `n_ctx` 4096; iOS Metal just hides it. See `ANDROID_PERF.md`.
+### Added, then removed before release
+- **Live system-prompt override** — **not present in any released version.** Added
+  as a temporary diagnostic and **removed in `1d38ffc2c` (2026-05-31)**, before
+  0.1.0 was cut; KV-cache prefix reuse (below) replaced what it measured. There is
+  no system-prompt override knob in the plugin, and nothing reads
+  `CORPAN_LLM_SYSPROMPT` or `debug.corpan.sysprompt`. What it did, for the record:
+  `"none"` dropped all system messages (bare model); a non-empty string replaced
+  every system message's content; empty/unset was unchanged. It measured how much
+  the ~850-token grounded prompt costs in prefill (the whole ~43s on Android) and
+  how the tutor behaves with little/no priming — but it only lifted the per-turn
+  prefill *floor*. The real Android cost was that `run_chat` re-prefilled system +
+  full history every turn (no KV-cache reuse), so latency grew each round and
+  hard-errored at `n_ctx` 4096; iOS Metal just hid it. See `ANDROID_PERF.md`.
 
 ### Added
 - **KV-cache prefix reuse across turns.** The actor now holds ONE persistent

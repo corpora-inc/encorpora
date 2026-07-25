@@ -1,22 +1,28 @@
 # Encorpora Development Guide
 
-This monorepo contains multiple projects related to language learning through the Corpán ecosystem.
+This monorepo contains Corpora Inc's products and everything they ship on: the
+Corpán language-learning app, the Dynawalla mathematics app, the pack system, the
+content pipeline, and the site.
+
+Development is trunk-based. Read [AGENTS.md](AGENTS.md) before you open a PR.
 
 ## Repository Structure
 
 ```
 encorpora/
-├── corpan/              # Corpán mobile/desktop app (Tauri + React)
+├── corpan/              # Corpán — language learning (Tauri + React)
 │   ├── corpan-app/      # Main application
 │   │   ├── src/         # React frontend
 │   │   └── src-tauri/   # Rust backend
-│   └── packs/           # Pluggable language learning packs
-│       ├── sdk/         # Pack development SDK
-│       └── hover-runner/ # Reference pack
+│   ├── packs/           # Pluggable language learning packs
+│   │   ├── sdk/         # Pack development SDK
+│   │   └── hover-runner/ # Reference pack
+│   ├── plugins/         # Tauri/Rust plugin crates (shared with Dynawalla)
+│   └── dja/             # Django content management system
+│       ├── cor/         # Core models (Entry, Translation, Pack)
+│       └── db.sqlite3   # Development database
 │
-├── dja/                 # Django content management system
-│   ├── cor/             # Core models (Entry, Translation, Pack)
-│   └── db.sqlite3       # Development database
+├── dynawalla/           # Dynawalla: Apprentice of Numbers — children's maths (new)
 │
 ├── web/io/                  # Marketing website (Next.js)
 │   └── out/             # Built static site
@@ -62,7 +68,7 @@ npm run tauri build
 
 See `corpan/CLAUDE.md` for detailed app development guide.
 
-### 2. Django CMS (`dja/`)
+### 2. Django CMS (`corpan/dja/`)
 
 Content management system for creating language learning content.
 
@@ -73,7 +79,7 @@ Content management system for creating language learning content.
 
 **Development:**
 ```bash
-cd dja
+cd corpan/dja
 
 # Run dev server
 python manage.py runserver
@@ -171,7 +177,7 @@ npm run tauri dev  # Run with hot reload
 ### Adding Content
 
 ```bash
-cd dja
+cd corpan/dja
 python manage.py runserver
 # Use admin at http://localhost:8000/admin
 # Create Entries, Translations, Packs
@@ -219,10 +225,12 @@ This builds:
 
 ### Deploy to GitHub Pages
 
-GitHub Actions automatically deploys on push:
-- Workflow: `.github/workflows/hover-runner-pages.yml`
-- Triggers: Changes to `web/io/`, `web/pages/`, `corpan/packs/`, or workflow
+GitHub Actions automatically deploys on push to `main`:
+- Workflow: `.github/workflows/deploy-pages.yml`
+- Triggers: changes to `web/io/`, `web/pages/`, `corpan/packs/`, or the workflow
 - Output: `https://encorpora.io/`
+
+A merge to `main` **is** the deploy. Nobody uploads pack zips by hand.
 
 ### Build Corpán App
 
@@ -304,7 +312,7 @@ npm run dev
 - **web/pages/DEVELOPMENT.md**: Pages site development
 - **corpan/CLAUDE.md**: Corpán app development
 - **corpan/packs/sdk/README.md**: Game development
-- **dja/README.md**: Django CMS (if exists)
+- **corpan/dja/README.md**: Django CMS (if exists)
 
 ## Architecture Notes
 
@@ -339,7 +347,7 @@ npm run dev
 
 2. **Choose your project:**
    - **App development**: Go to `corpan/corpan-app/`
-   - **Content management**: Go to `dja/`
+   - **Content management**: Go to `corpan/dja/`
    - **Website**: Run `npm install && npm run dev` from root
    - **Game development**: Go to `corpan/packs/`
 

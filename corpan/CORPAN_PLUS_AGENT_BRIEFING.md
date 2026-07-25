@@ -6,8 +6,9 @@ NOT exercised on a real phone with StoreKit. This document is everything I know
 and was thinking. Read it fully before changing anything — several pieces look
 removable but aren't.
 
-Branch: **`moonshot-15-plus-v2`** (encorpora repo at `/home/skyl/encorpora`).
-ttsctl work is on **`master`** (pushed, `/home/skyl/projects/ttsctl`).
+Status: **historical record** — the Corpán Plus work described here has shipped on
+`main`. Read it for the reasoning and the traps, not as a set of instructions.
+Owner: founder. ttsctl is a separate repo (`master`).
 Quick status doc: `CORPAN_PLUS_HANDOFF.md`. This doc is the deep version.
 
 ---

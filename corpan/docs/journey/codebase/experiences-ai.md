@@ -211,8 +211,10 @@ minP, repeatPenalty, presencePenalty, maxTokens, `stop[]`, `noThink` (seeds empt
 device-class signal), `llm_load {modelPackId, gpuLayers?, contextSize?}`, `llm_stop`, `llm_unload`,
 `llm_query_pack_db` (**stub/TODO** — packs use `hostApi.queryPackDb` instead). Host wrapper:
 `corpan-app/src/contentPacks/hostApi.ts:334-480` (buffers tokens, `onDone(fullText, {totalTokens,
-elapsedMs})`; `llm.unload` frees the ~2.5 GB buffer at :299). Debug knobs: `debug.corpan.llm_threads`,
-`debug.corpan.sysprompt` sysprops for on-device A/B without rebuild.
+elapsedMs})`; `llm.unload` frees the ~2.5 GB buffer at :299). Debug knob: the
+`debug.corpan.llm_threads` sysprop (or `CORPAN_LLM_THREADS` env) for on-device thread-count A/B
+without rebuild. (A companion `debug.corpan.sysprompt` override existed briefly and was
+**removed in `1d38ffc2c`** — there is no runtime system-prompt override today.)
 
 ### 2.2 `tauri-plugin-stt` (whisper.cpp **pronunciation scorer**, not dictation)
 
