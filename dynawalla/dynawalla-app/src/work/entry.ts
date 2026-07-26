@@ -125,11 +125,26 @@ export interface EntryModel {
    * bumps `rebuffed` so the surface can acknowledge it.
    */
   press(state: EntryState, key: EntryKey): EntryState
-  /** May this state be committed? An empty answer is not an answer. */
-  complete(state: EntryState): boolean
   keys(schema: AnswerSchema): readonly KeyCap[]
   /** The exact value, or `null` when the state is not committable. */
   value(state: EntryState, schema: AnswerSchema): AnswerValue | null
+}
+
+/**
+ * May this state be committed? Exactly "there is a value", and derived rather
+ * than declared.
+ *
+ * There used to be a second method, `complete(state)`, which took no schema and
+ * therefore could not ask the questions `value` refuses on. It said `2/0` was
+ * committable — `num !== "" && den !== ""` — while `value` returned `null` at
+ * the zero-denominator guard, and it said an out-of-range choice ordinal was
+ * committable while `value` refused the index. The commit control read the
+ * first and `commit()` read the second, so a child got a live Check plate that
+ * did nothing at all: no verdict, no hint, no undo, no way to see what was
+ * wrong. Two statements of one predicate is one statement too many.
+ */
+export function entryComplete(model: EntryModel, state: EntryState, schema: AnswerSchema): boolean {
+  return model.value(state, schema) !== null
 }
 
 // ── shared field mechanics ───────────────────────────────────────────────────
@@ -284,11 +299,6 @@ export const integerEntry: EntryModel = {
 
   press: pressGlyph,
 
-  complete(state: EntryState): boolean {
-    // A lone separator is not an answer. At least one digit, wherever it sits.
-    return /\d/.test(focused(state)?.text ?? "")
-  },
-
   keys(schema: AnswerSchema): readonly KeyCap[] {
     // Calculator order, three wide. A child who has used a number pad already
     // knows where 7 is, and delete sits under the thumb. The bottom-left cell is
@@ -348,12 +358,16 @@ function fractionFields(schema: Extract<AnswerSchema, { kind: "fraction" }>): En
  * it when the schema says mixed numbers. Three decisions worth stating.
  *
  * **The denominator is never optional.** A fraction with an empty denominator is
- * not a number, so `complete` is false and `value` is `null` — the Check plate
- * is disabled rather than the app inventing a 1.
+ * not a number, so `value` is `null` — the Check plate is disabled rather than
+ * the app inventing a 1.
  *
  * **Zero is not a denominator.** `2/0` is refused at `value()`, not at the
  * keypad: a child part-way through typing `2/05` has a bare `0` in the field for
- * one keystroke, and refusing the key would make the field un-typeable.
+ * one keystroke, and refusing the key would make the field un-typeable. The
+ * Check plate reads `value` (`entryComplete`), so the refusal reaches it: it
+ * used to read a separate `complete` that only asked whether the field was
+ * non-empty, which lit the plate on `2/0` and then did nothing when it was
+ * pressed.
  *
  * **`2/4` is not silently `1/2`.** The value carries what the child *wrote*;
  * whether an unsimplified equivalent counts is
@@ -390,13 +404,6 @@ export const fractionEntry: EntryModel = {
     return pressGlyph(state, key)
   },
 
-  complete(state: EntryState): boolean {
-    // Numerator and denominator both written. The whole part of a mixed number
-    // may be left empty — "three quarters" is a legal answer to a mixed-number
-    // item, and making a child write `0 3/4` is the app grading notation.
-    return textOf(state, FIELD_NUM) !== "" && textOf(state, FIELD_DEN) !== ""
-  },
-
   keys(): readonly KeyCap[] {
     return [...calculatorRows(), ...bottomRow({ kind: "advance" })]
   },
@@ -405,6 +412,9 @@ export const fractionEntry: EntryModel = {
     if (schema.kind !== "fraction") return null
     const num = textOf(state, FIELD_NUM)
     const den = textOf(state, FIELD_DEN)
+    // Numerator and denominator both written. The whole part of a mixed number
+    // may be left empty — "three quarters" is a legal answer to a mixed-number
+    // item, and making a child write `0 3/4` is the app grading notation.
     if (num === "" || den === "") return null
     const denominator = BigInt(den)
     // Not a number. Refused here rather than at the keypad — see above.
@@ -430,11 +440,17 @@ export const FIELD_CHOICE = "choice"
 /**
  * `choice` — one field holding the ordinal of the option that is selected.
  *
- * It is a field like any other, so the surface, the keyboard and `complete` need
- * no special case; what makes it a choice is that the only thing which writes to
- * it is `{ kind: "focus" }`, which the option controls send. Digit keys select by
- * ordinal — `2` picks the second option — which is free keyboard operation and
- * costs nothing, but it is not the taught path and no string mentions it.
+ * It is a field like any other, so the surface and the keyboard need no special
+ * case; what makes it a choice is that the only thing which writes to it is
+ * `{ kind: "focus" }`, which the option controls send.
+ *
+ * **A bare digit writes nothing.** It used to: `9` on a four-option list wrote
+ * ordinal 8, a value no option corresponds to, and `value()` then refused it —
+ * so the selection silently vanished and the Check plate went dead. The model
+ * cannot bound the ordinal, because `press` has no schema and the option count
+ * is on the schema. The control that *does* have it is `ChoiceAnswer`, which
+ * takes 1..k on the group itself along with the arrow keys the ARIA radiogroup
+ * pattern requires, and sends the same `focus` key every tap sends.
  *
  * There is no keypad. A closed list is answered by pointing at it, and a numeric
  * pad under four options invites typing an answer that is not one of them.
@@ -454,20 +470,15 @@ export const choiceEntry: EntryModel = {
       case "focus":
         // The option's ordinal, not a field index: there is exactly one field.
         return key.field < 0 ? state : replaceField(state, 0, String(key.field))
-      case "glyph": {
-        const ordinal = isDigit(key.glyph) ? Number(key.glyph) : 0
-        return ordinal < 1 ? state : replaceField(state, 0, String(ordinal - 1))
-      }
       case "delete":
       case "clear":
         return textOf(state, FIELD_CHOICE) === "" ? state : replaceField(state, 0, "")
+      case "glyph":
       case "advance":
+        // See above: an unbounded ordinal is worse than no shortcut, and the
+        // bounded one lives on the group.
         return state
     }
-  },
-
-  complete(state: EntryState): boolean {
-    return textOf(state, FIELD_CHOICE) !== ""
   },
 
   keys(): readonly KeyCap[] {
@@ -586,10 +597,6 @@ export const columnEntry: EntryModel = {
       }
     }
     return pressGlyph(state, key)
-  },
-
-  complete(state: EntryState): boolean {
-    return columnDigits(state) !== null
   },
 
   keys(): readonly KeyCap[] {

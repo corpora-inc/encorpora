@@ -167,6 +167,13 @@ export function answerEquals(a: AnswerValue, b: AnswerValue): boolean {
  * child cannot type `0.5` into it, and a skill that genuinely wants both notations
  * lists the second one in `Exercise.answer.alsoAccept`, where the curriculum can
  * see it.
+ *
+ * **This is on the judging path**, and it has to be: `GeneratorFamily.check` calls
+ * it, so `equivalence` is a knob that does something. It shipped as one that did
+ * not — `check` compared with `answerEquals` and nothing in the program reached
+ * here — which would have marked every child who wrote `2/4` on a skill that
+ * accepts any equivalent wrong. A family that reaches for `answerEquals` in its
+ * checker is declining a decision the curriculum already made.
  */
 export function answerAccepted(
   schema: AnswerSchema,
@@ -240,10 +247,46 @@ export function schemaDefect(schema: AnswerSchema): string | null {
       if (new Set(schema.parts).size !== schema.parts.length) return "fraction schema repeats a part";
       return null;
     }
-    case "choice":
+    case "choice": {
       if (schema.options.length !== schema.k) {
         return `choice schema declares k=${String(schema.k)} and carries ${String(schema.options.length)} option(s)`;
       }
+      // Two options of the same value are two right answers, or two wrong ones,
+      // and an item with either is the "contradictory, ambiguous or degenerate"
+      // case this program forbids outright. Compared as **exact rationals**, not
+      // as the strings they are written as: `1/2` and `{ value: 1/2,
+      // decimalPlaces: 1 }` write as `1/2` and `0.5` and are the same number, so
+      // a child choosing the second of them is right and marked wrong. Value
+      // equality subsumes written collision — two options that write alike are
+      // equal fractions or equal decimals, so they are equal here first.
+      for (let i = 0; i < schema.options.length; i++) {
+        for (let j = i + 1; j < schema.options.length; j++) {
+          const a = schema.options[i];
+          const b = schema.options[j];
+          if (a === undefined || b === undefined) continue;
+          if (rationalEq(choiceOptionValue(a), choiceOptionValue(b))) {
+            return `choice schema offers option ${String(i + 1)} and option ${String(j + 1)} as the same number`;
+          }
+        }
+      }
       return null;
+    }
   }
+}
+
+/**
+ * The exact value of a drawn option, whichever way it is written.
+ *
+ * Both kinds are numbers, so "are these two options the same option" is one
+ * rational comparison and never a string one.
+ */
+export function choiceOptionValue(option: ChoiceOption): Rational {
+  if (option.kind === "number") return option.value;
+  const written: FractionValue = {
+    kind: "fraction",
+    num: option.num,
+    den: option.den,
+    ...(option.whole === undefined ? {} : { whole: option.whole }),
+  };
+  return fractionRational(written);
 }

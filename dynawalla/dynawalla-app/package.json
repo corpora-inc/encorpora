@@ -17,7 +17,8 @@
     "bench:generate": "node --experimental-strip-types --no-warnings=ExperimentalWarning tools/bench-generate.mjs",
     "bench:loop": "node tools/bench-loop.mjs",
     "bench:reactions": "node tools/bench-reactions.mjs",
-    "drive:locate": "node tools/drive-locate.mjs"
+    "drive:locate": "node tools/drive-locate.mjs",
+    "drive:schemas": "node tools/drive-schemas.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",

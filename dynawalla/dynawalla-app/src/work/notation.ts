@@ -65,13 +65,32 @@ export function writeChoiceOption(option: ChoiceOption): string {
  * `mark` of `denominator` parts past `from`. A whole number is written as one —
  * `2`, never `2/1` — because the line is drawn in whole units and the tick a
  * child is pointing at is one of them.
+ *
+ * **`BigInt`, not `Math.trunc(mark / denominator)`.** The first cut divided in
+ * floats. It was exact for every spec `repSpecDefect` admits — the 24-interval
+ * cap keeps both operands small — but that is a bound in another module holding
+ * up a correctness property here, and the rule this file is written under is
+ * that nothing on the path from a number to the characters a child reads goes
+ * through a float. `repSpecDefect` guarantees safe integers, so `BigInt` is
+ * total on them.
+ *
+ * **A negative position is written the way `fractionRational` reads one.** The
+ * sign rides on the whole part — "negative two and three quarters" is `-2 - 3/4`
+ * — so a quarter to the right of `-3` is `-2 3/4` and never `-3 1/4`, which is
+ * a different number (`-13/4`) in the notation the answer layer speaks. The
+ * naive `from + trunc(mark/den)` wrote the second one. No V1 content has a
+ * negative origin; `repSpecDefect` permits one, and the first integer line would
+ * have read the label off by half a unit.
  */
 export function writeLinePosition(from: number, mark: number, denominator: number): string {
-  const units = Math.trunc(mark / denominator)
-  const rest = mark - units * denominator
-  const whole = from + units
-  if (rest === 0) return String(whole)
-  return whole === 0
-    ? writeFraction(BigInt(rest), BigInt(denominator))
-    : writeFraction(BigInt(rest), BigInt(denominator), BigInt(whole))
+  const den = BigInt(denominator)
+  // The position as one exact fraction: `(from·den + mark) / den`.
+  const total = BigInt(from) * den + BigInt(mark)
+  const negative = total < 0n
+  const magnitude = negative ? -total : total
+  const whole = magnitude / den
+  const rest = magnitude - whole * den
+  const signed = (n: bigint): bigint => (negative ? -n : n)
+  if (rest === 0n) return signed(whole).toString()
+  return whole === 0n ? writeFraction(signed(rest), den) : writeFraction(rest, den, signed(whole))
 }

@@ -6,7 +6,7 @@
  */
 
 import { add as ratAdd, cmp, toString as rationalToString } from "../../math/rational.ts";
-import { answerEquals } from "../../types/answer.ts";
+import { answerEquals, schemaDefect } from "../../types/answer.ts";
 import type { Exercise } from "../../types/exercise.ts";
 import { fingerprintItem, serializeExercise } from "../../serialize.ts";
 import { fnv1a64Hex } from "../../rng/hash.ts";
@@ -183,6 +183,22 @@ export function cg11(_context: ValidationContext, samples: readonly LevelSample[
     if (family === undefined) continue;
     for (const exercise of sample.exercises) {
       checked += 1;
+      // The renderer's precondition, run over real generated output. Without
+      // this, a `choice` schema carrying two options of the same value — two
+      // right answers, or two wrong ones, on the same card — reaches a child's
+      // screen: `schemaDefect` is only called by the app's entry models, which
+      // throw at `init`, and a card that throws while drawing is a blank cell.
+      // No family emits `choice` yet, which is exactly why the check belongs
+      // here before one does.
+      //
+      // First, and then `continue`: an item that cannot be drawn is not an item
+      // whose checker is worth interrogating, and the mal-rules the checker runs
+      // are written against the schema kinds the family declares.
+      const defect = schemaDefect(exercise.schema);
+      if (defect !== null) {
+        findings.push(fail("CG-11", `the answer schema cannot be drawn — ${defect}`, exercise.exerciseId));
+        continue;
+      }
       if (!family.check(exercise, exercise.answer.canonical).correct) {
         findings.push(fail("CG-11", "checker rejects its own canonical answer", exercise.exerciseId));
       }
@@ -202,7 +218,9 @@ export function cg11(_context: ValidationContext, samples: readonly LevelSample[
     }
   }
 
-  return resultOf("CG-11", "checker self-consistency", findings, [`${String(checked)} items checked`]);
+  return resultOf("CG-11", "checker self-consistency and drawable schemas", findings, [
+    `${String(checked)} items checked`,
+  ]);
 }
 
 /**

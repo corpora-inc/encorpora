@@ -14,9 +14,16 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 import { strings } from "../app/strings.ts"
-import { repSpecDefect, REP_BALANCE_SCALE, REP_NUMBER_LINE, V1_REPRESENTATIONS } from "./curriculum.ts"
-import type { RepSpec } from "./curriculum.ts"
-import { writeLinePosition } from "./notation.ts"
+import {
+  exact,
+  fractionRational,
+  repSpecDefect,
+  REP_BALANCE_SCALE,
+  REP_NUMBER_LINE,
+  V1_REPRESENTATIONS,
+} from "./curriculum.ts"
+import type { Rational, RepSpec } from "./curriculum.ts"
+import { writeLinePosition, MIXED_GAP } from "./notation.ts"
 import {
   representationDefect,
   CONTRAST_REPRESENTATIONS,
@@ -31,6 +38,10 @@ const numberLine = read("ui/NumberLine.tsx")
 const balance = read("ui/BalanceScale.tsx")
 const dispatch = read("ui/Representation.tsx")
 const workCss = read("work.css")
+// The browser driver. Two claims below are geometry, which no regex over a
+// component can hold: they are measured in `drive-schemas.mjs`, and what is
+// asserted here is that the measurement is still in it.
+const driver = read("../../tools/drive-schemas.mjs")
 
 const spec = (rep: string, params: Record<string, number>): RepSpec => ({ rep, params })
 
@@ -116,7 +127,16 @@ test("the line's intervals are flex, never a percentage of a float", () => {
   assert.match(numberLine, /className="flex-1"/, "the intervals are not equal flex spacers")
   assert.match(numberLine, /relative w-0/, "a tick with width pushes its neighbours")
   assert.ok(!/%`/.test(numberLine), "the line positions something by percentage")
-  assert.ok(!/\/ intervals/.test(numberLine), "the line divides to place something")
+
+  // No division anywhere in the component, not just the one literal
+  // `/ intervals` this guard used to name. It was written against a string the
+  // file never contained while `String(from + i / denominator)` — a float
+  // division, on the tick labels — sat eleven lines away from it. A binary `/`
+  // is spaced under this repo's formatter and a Tailwind fraction (`w-1/2`) is
+  // not, so what is rejected is a spaced slash outside a comment.
+  const code = numberLine.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "")
+  const divide = /\S \/ \S/.exec(code)
+  assert.equal(divide, null, `the line divides to place something: ${String(divide?.[0])}`)
 })
 
 test("whole ticks and part ticks differ by height, and the index by shape", () => {
@@ -152,6 +172,47 @@ test("the beam has three positions and no fourth", () => {
   assert.match(balance, /left === right \? "level" : left > right \? "left" : "right"/)
 })
 
+test("the heavier pan goes down, which is the only thing the scale is for", () => {
+  // This shipped backwards, and the mirror-image assertion above is equally
+  // true of the correct pair and its inverse — so the *sign* is asserted here,
+  // derived rather than copied out of the file it is checking.
+  //
+  // CSS `rotate(a)` is `x' = x·cos a − y·sin a, y' = x·sin a + y·cos a` in a
+  // space where y grows downward, so it turns clockwise on screen. The beam's
+  // origin is `50% 0`, putting its left end at `x = −L, y = 0`; under
+  // `rotate(a)` that end moves to `y' = −L·sin a`. A positive angle therefore
+  // gives a *smaller* y, and a smaller y is higher up the screen.
+  //
+  // `BalanceScale.tsx` names the state `left > right` "left", and
+  // `strings.practice.balanceLeft` says the left pan is *lower*. Lower means a
+  // larger y at the left end, which means `sin a < 0`, which means the angle on
+  // `.dw-beam-left` is negative. The pan's counter-rotation is the negation of
+  // whatever the beam does, which the test above already pins.
+  const angleOf = (side: "left" | "right"): number => {
+    const match = new RegExp(`\\.dw-beam-${side}\\s*\\{[^}]*rotate\\((-?[\\d.]+)deg\\)`).exec(workCss)
+    assert.ok(match !== null, `work.css has no .dw-beam-${side}`)
+    return Number(match[1])
+  }
+  assert.ok(
+    angleOf("left") < 0,
+    "the left-heavy beam turns anticlockwise, which lifts the left end — the heavier pan rises",
+  )
+  assert.ok(
+    angleOf("right") > 0,
+    "the right-heavy beam turns clockwise, which lifts the right end — the heavier pan rises",
+  )
+  // The state the sign is derived from: change either of these and the
+  // derivation above stops holding, so they are asserted together.
+  assert.match(balance, /tilt === "left" \? "dw-beam-left"/)
+  assert.equal(strings.practice.balanceLeft, "The left pan is lower.")
+  assert.equal(strings.practice.balanceRight, "The right pan is lower.")
+  // …and the drawn geometry is measured in a browser, which is the only place
+  // this can be checked rather than argued: `tools/drive-schemas.mjs` reads the
+  // two pans' `getBoundingClientRect().top` on `balance-left` and
+  // `balance-right` and fails when the heavier one is not the lower one.
+  assert.match(driver, /panTops/, "the driver no longer measures the pans")
+})
+
 test("reduced motion stops the beam rather than shortening its swing", () => {
   // A branch, not a degradation. `work.css`'s reduced block must turn the
   // transition off outright, so the beam arrives already tilted.
@@ -180,6 +241,64 @@ test("both representations carry their whole meaning in words", () => {
   for (const key of ["balanceLevel", "balanceLeft", "balanceRight"] as const) {
     assert.ok(balance.includes(`strings.practice.${key}`), `the scale never says ${key}`)
   }
+})
+
+test("a written position means, to the answer layer, the number it is", () => {
+  // The round trip that matters, and the one that was broken: whatever
+  // `writeLinePosition` writes, `fractionRational` — the function the whole
+  // answer layer reads a mixed number with — has to give back the position that
+  // was asked for. It is checked over every spec `repSpecDefect` admits inside a
+  // sweep, rather than at three hand-picked points, because the failure was a
+  // *sign* convention and hand-picked points were all non-negative.
+  //
+  // `-3 1/4` was what a quarter to the right of `-3` used to be written as, and
+  // `fractionRational` reads that as `-3 − 1/4` = `-13/4`. The position is
+  // `-11/4`. Half a unit out, in the one notation a child would type back.
+  const parse = (written: string): Rational => {
+    const mixed = new RegExp(`^(-?\\d+)${MIXED_GAP}(-?\\d+)/(\\d+)$`).exec(written)
+    if (mixed !== null) {
+      return fractionRational({
+        kind: "fraction",
+        whole: BigInt(mixed[1] ?? "0"),
+        num: BigInt(mixed[2] ?? "0"),
+        den: BigInt(mixed[3] ?? "1"),
+      })
+    }
+    const bare = /^(-?\d+)\/(\d+)$/.exec(written)
+    if (bare !== null) {
+      return fractionRational({ kind: "fraction", num: BigInt(bare[1] ?? "0"), den: BigInt(bare[2] ?? "1") })
+    }
+    assert.match(written, /^-?\d+$/, `a position nothing can read back: ${written}`)
+    return exact.rational(BigInt(written))
+  }
+
+  let checked = 0
+  for (let from = -4; from <= 4; from++) {
+    for (let to = from + 1; to <= from + 6; to++) {
+      for (const denominator of [1, 2, 3, 4, 5, 8, 12]) {
+        for (let mark = 0; mark <= (to - from) * denominator; mark++) {
+          if (repSpecDefect(REP_NUMBER_LINE, { from, to, denominator, mark }) !== null) continue
+          const written = writeLinePosition(from, mark, denominator)
+          const expected = exact.rational(BigInt(from) * BigInt(denominator) + BigInt(mark), BigInt(denominator))
+          assert.ok(
+            exact.eq(parse(written), expected),
+            `${written} at from=${String(from)} mark=${String(mark)}/${String(denominator)} is not ${exact.toString(expected)}`,
+          )
+          checked += 1
+        }
+      }
+    }
+  }
+  assert.ok(checked > 500, `only ${String(checked)} positions were checked`)
+
+  // The three the driver reads off the screen, pinned by hand.
+  assert.equal(writeLinePosition(0, 3, 4), "3/4")
+  assert.equal(writeLinePosition(2, 3, 1), "5")
+  assert.equal(writeLinePosition(0, 5, 3), `1${MIXED_GAP}2/3`)
+  // …and the negative origin, written the way the answer layer reads it.
+  assert.equal(writeLinePosition(-3, 1, 4), `-2${MIXED_GAP}3/4`)
+  assert.equal(writeLinePosition(-3, 0, 4), "-3")
+  assert.equal(writeLinePosition(-1, 1, 4), "-3/4")
 })
 
 test("the line says where the index is, in the notation the answer is written in", () => {

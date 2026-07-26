@@ -314,6 +314,26 @@ test("CG-11: a checker that accepts a distractor fails", () => {
         : ({ ...sample.family, check: () => ({ correct: false }) } as AnyGeneratorFamily),
   }));
   assertFails(cg11(healthy, rejecting), "rejects its own canonical answer");
+
+  // …and an item whose schema cannot be drawn fails here too, before it reaches
+  // a surface that would throw on it. A `choice` set with the same number twice
+  // is two right answers on one card; nothing emits one today, which is why the
+  // gate has to be standing when something does.
+  const undrawable: LevelSample[] = samples.map((sample) => ({
+    ...sample,
+    exercises: sample.exercises.map((exercise) => ({
+      ...exercise,
+      schema: {
+        kind: "choice" as const,
+        k: 2 as const,
+        options: [
+          { kind: "fraction" as const, num: 1n, den: 2n },
+          { kind: "number" as const, value: rational(1n, 2n), decimalPlaces: 1 },
+        ],
+      },
+    })),
+  }));
+  assertFails(cg11(healthy, undrawable), "the same number")
 });
 
 test("CG-12: a mal-rule that reproduces the correct answer fails", () => {

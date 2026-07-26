@@ -150,6 +150,20 @@
      the gap would invite reading its size off a picture that is not to scale,
      and the idea is binary: the two sides hold the same, or they do not.
 
+     **The sign is the whole representation, and it shipped backwards.** CSS
+     `rotate(a)` is `x' = x·cos a − y·sin a, y' = x·sin a + y·cos a` in a space
+     where y grows *downward*, so a positive angle turns clockwise on screen.
+     About `transform-origin: 50% 0`, the beam's left end sits at `x = −L,
+     y = 0`, so under `rotate(a)` it moves to `y' = −L·sin a`: a positive angle
+     gives a *smaller* y and lifts the left end. `.dw-beam-left` is the state
+     `BalanceScale.tsx` picks when `left > right`, whose text alternative reads
+     "The left pan is lower" — so it must be the *negative* angle. It was `+6deg`
+     and drew the heavier pan 21.8 px above the lighter one at 390 px: a scale
+     saying, in the one picture whose entire job is that `=` is a relation, that
+     the side with more in it rises. `drive-schemas.mjs` measures the drawn pan
+     tops now, because a regex over these four rules cannot tell the correct
+     pair from its mirror.
+
      The pans counter-rotate by the same angle about the point they hang from,
      so they stay upright on a tilted beam — which is what a real balance does,
      and what keeps the numerals in them readable without tilting your head.
@@ -166,19 +180,19 @@
   }
 
   .dw-beam-left {
-    transform: rotate(6deg);
+    transform: rotate(-6deg);
   }
 
   .dw-beam-left .dw-pan {
-    transform: rotate(-6deg);
+    transform: rotate(6deg);
   }
 
   .dw-beam-right {
-    transform: rotate(-6deg);
+    transform: rotate(6deg);
   }
 
   .dw-beam-right .dw-pan {
-    transform: rotate(6deg);
+    transform: rotate(-6deg);
   }
 
   /* The branch. Zero travel, no particles — the keyframes contain opacity and

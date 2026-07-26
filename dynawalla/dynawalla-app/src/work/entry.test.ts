@@ -10,6 +10,7 @@ import {
   columnEntry,
   columnMarkId,
   decimalCapacity,
+  entryComplete,
   entryKeyFromKeyboard,
   entryModelFor,
   fieldText,
@@ -24,7 +25,7 @@ import {
   FIELD_WHOLE,
 } from "./entry.ts"
 import type { EntryModel, EntryState } from "./entry.ts"
-import { writeDecimal, writeFraction, writeLinePosition, MIXED_GAP } from "./notation.ts"
+import { writeChoiceOption, writeDecimal, writeLinePosition, MIXED_GAP } from "./notation.ts"
 
 const FOUR_DIGITS: AnswerSchema = { kind: "integer", digits: 4, decimalPlaces: 0 }
 
@@ -90,8 +91,8 @@ test("delete removes one digit; clear removes all; neither goes below empty", ()
 })
 
 test("an empty field is not committable; one digit is", () => {
-  assert.equal(integerEntry.complete(integerEntry.init(FOUR_DIGITS)), false)
-  assert.equal(integerEntry.complete(typed("0")), true)
+  assert.equal(entryComplete(integerEntry, integerEntry.init(FOUR_DIGITS), FOUR_DIGITS), false)
+  assert.equal(entryComplete(integerEntry, typed("0"), FOUR_DIGITS), true)
 })
 
 test("the value is exact, and leading zeros are typing rather than arithmetic", () => {
@@ -166,12 +167,12 @@ test("one separator, only where there are places for one", () => {
 
 test("a lone separator is not an answer", () => {
   const bare = type(integerEntry, TENTHS, ".")
-  assert.equal(integerEntry.complete(bare), false)
+  assert.equal(entryComplete(integerEntry, bare, TENTHS), false)
   assert.equal(integerEntry.value(bare, TENTHS), null)
   // …but a separator with a digit after it is: `.5` is one half, written the way
   // a child writes it.
   const half = type(integerEntry, TENTHS, ".5")
-  assert.equal(integerEntry.complete(half), true)
+  assert.equal(entryComplete(integerEntry, half, TENTHS), true)
   assert.deepEqual(integerEntry.value(half, TENTHS), { kind: "integer", value: exact.rational(1n, 2n) })
   // And a trailing separator is the number in front of it.
   assert.deepEqual(integerEntry.value(type(integerEntry, TENTHS, "3."), TENTHS), {
@@ -276,13 +277,13 @@ test("a negative mixed number is two and a third *below* zero", () => {
 
 test("a whole part left empty is the fraction, not a zero a child must write", () => {
   const state = type(fractionEntry, MIXED, "/3/4")
-  assert.equal(fractionEntry.complete(state), true)
+  assert.equal(entryComplete(fractionEntry, state, FRACTION), true)
   assert.deepEqual(fractionEntry.value(state, MIXED), { kind: "fraction", num: 3n, den: 4n })
 })
 
 test("a fraction with no denominator is not a number, so it cannot be committed", () => {
   const half = type(fractionEntry, FRACTION, "1")
-  assert.equal(fractionEntry.complete(half), false, "the Check plate is off, not the answer wrong")
+  assert.equal(entryComplete(fractionEntry, half, FRACTION), false, "the Check plate is off, not the answer wrong")
   assert.equal(fractionEntry.value(half, FRACTION), null)
 })
 
@@ -292,8 +293,15 @@ test("zero is refused as a denominator at the value, never at the key", () => {
   const zero = type(fractionEntry, FRACTION, "2/0")
   assert.equal(namedFieldText(zero, FIELD_DEN), "0", "the key landed")
   assert.equal(fractionEntry.value(zero, FRACTION), null, "and 2/0 is not a number")
+  // …and the Check plate follows. `complete` used to be a second predicate that
+  // took no schema and only asked whether the fields were non-empty, so `2/0`
+  // lit the plate and `commit`'s own `value === null` guard then turned round
+  // and did nothing: a live control, no verdict, no hint, no undo, nothing at
+  // all to read. Measured in the browser as `{complete:"true", value:""}`.
+  assert.equal(entryComplete(fractionEntry, zero, FRACTION), false, "the Check plate would go live and dead")
   const fifth = type(fractionEntry, FRACTION, "5", zero)
   assert.deepEqual(fractionEntry.value(fifth, FRACTION), { kind: "fraction", num: 2n, den: 5n })
+  assert.equal(entryComplete(fractionEntry, fifth, FRACTION), true)
 })
 
 test("a full field carries the next digit on; the last refuses it", () => {
@@ -345,7 +353,7 @@ const CHOICE: AnswerSchema = { kind: "choice", k: 3, options: OPTIONS }
 test("a choice is answered by pointing at it, and there is no keypad under it", () => {
   assert.deepEqual(choiceEntry.keys(CHOICE), [], "a numeric pad invites an answer that is not on the list")
   const state = choiceEntry.press(choiceEntry.init(CHOICE), { kind: "focus", field: 1 })
-  assert.equal(choiceEntry.complete(state), true)
+  assert.equal(entryComplete(choiceEntry, state, CHOICE), true)
   assert.deepEqual(choiceEntry.value(state, CHOICE), { kind: "choice", index: 1 })
 })
 
@@ -354,16 +362,63 @@ test("choosing again replaces it; delete unmakes it", () => {
   state = choiceEntry.press(state, { kind: "focus", field: 0 })
   assert.deepEqual(choiceEntry.value(state, CHOICE), { kind: "choice", index: 0 })
   state = choiceEntry.press(state, { kind: "delete" })
-  assert.equal(choiceEntry.complete(state), false)
+  assert.equal(entryComplete(choiceEntry, state, CHOICE), false)
   assert.equal(choiceEntry.value(state, CHOICE), null)
 })
 
-test("an index no option corresponds to is not an answer", () => {
-  // Not reachable through the surface; reachable through a stale state and a
-  // re-rendered card, and judged silently against whichever option the checker
-  // happened to hold.
+test("an index no option corresponds to is not an answer, and cannot be committed", () => {
+  // Reachable through a stale state and a re-rendered card, and judged silently
+  // against whichever option the checker happened to hold.
   const state = choiceEntry.press(choiceEntry.init(CHOICE), { kind: "focus", field: 7 })
   assert.equal(choiceEntry.value(state, CHOICE), null)
+  // The Check plate goes with it. It did not: `complete` was `text !== ""`, so
+  // the plate lit on an ordinal naming no option and did nothing when pressed.
+  assert.equal(entryComplete(choiceEntry, state, CHOICE), false)
+})
+
+test("a bare digit writes no ordinal, because the model cannot bound one", () => {
+  // The digit shortcut used to live here: `9` wrote ordinal 8 into a
+  // three-option list, `value` refused it, and the child's selection silently
+  // vanished under a Check plate that had gone dead. `press` has no schema and
+  // the option count is on the schema, so the bounded shortcut is on the group
+  // in `ChoiceAnswer.tsx`, which has both.
+  const chosen = choiceEntry.press(choiceEntry.init(CHOICE), { kind: "focus", field: 1 })
+  for (const glyph of ["1", "2", "9"] as const) {
+    assert.equal(choiceEntry.press(chosen, { kind: "glyph", glyph }), chosen, `${glyph} moved the selection`)
+  }
+  assert.deepEqual(choiceEntry.value(chosen, CHOICE), { kind: "choice", index: 1 })
+})
+
+test("two options that read alike are one option, and a schema with two is refused", () => {
+  // Not a comment on a hand-written constant — the check that makes it true.
+  // Compared as exact rationals, so `1/2` and a decimal option worth `0.5` are
+  // caught as well as two identical fractions: an item with two right answers is
+  // the degenerate case this program forbids outright, and `schemaDefect` is
+  // where a generator's mistake becomes a red gate instead of a blank cell.
+  const twice: ChoiceOption[] = [
+    { kind: "fraction", num: 1n, den: 2n },
+    { kind: "fraction", num: 1n, den: 2n },
+  ]
+  assert.throws(() => choiceEntry.init({ kind: "choice", k: 2, options: twice }), /the same number/)
+
+  const written: ChoiceOption[] = [
+    { kind: "fraction", num: 1n, den: 2n },
+    { kind: "number", value: exact.rational(1n, 2n), decimalPlaces: 1 },
+  ]
+  assert.throws(
+    () => choiceEntry.init({ kind: "choice", k: 2, options: written }),
+    /the same number/,
+    "1/2 and 0.5 are two ways to write one option",
+  )
+  // A mixed number against the improper fraction it equals is the same trap.
+  const mixed: ChoiceOption[] = [
+    { kind: "fraction", num: 7n, den: 4n },
+    { kind: "fraction", num: 3n, den: 4n, whole: 1n },
+  ]
+  assert.throws(() => choiceEntry.init({ kind: "choice", k: 2, options: mixed }), /the same number/)
+
+  // …and a legitimate set is not refused.
+  assert.equal(choiceEntry.init(CHOICE).fields.length, 1)
 })
 
 test("a choice schema carrying the wrong number of options is refused outright", () => {
@@ -375,14 +430,22 @@ test("a choice schema carrying the wrong number of options is refused outright",
   )
 })
 
-test("every option can be written, and no two of a set read the same", () => {
-  const written = OPTIONS.map((option) =>
-    option.kind === "fraction"
-      ? writeFraction(option.num, option.den, option.whole)
-      : writeDecimal(option.value, option.decimalPlaces),
-  )
-  assert.deepEqual(written, ["1/2", "1/3", "0.75"])
-  assert.equal(new Set(written).size, written.length, "two options that read alike are one option")
+test("every option is written by the function that draws it", () => {
+  // `writeChoiceOption` and nothing else: this test used to inline a second copy
+  // of its body, so the function every drawn option actually goes through
+  // (`ChoiceAnswer.tsx`, twice) had no coverage at all — it could have returned
+  // the empty string and the suite would have stayed green.
+  assert.deepEqual(OPTIONS.map(writeChoiceOption), ["1/2", "1/3", "0.75"])
+  assert.equal(writeChoiceOption({ kind: "fraction", num: 3n, den: 4n, whole: 1n }), `1${MIXED_GAP}3/4`)
+  assert.equal(writeChoiceOption({ kind: "number", value: exact.rational(3n), decimalPlaces: 0 }), "3")
+
+  // The fallback. A third of a unit does not fit two decimal places, so
+  // `writeDecimal` returns `null` and the option falls back to the exact
+  // rational rather than to a rounded lie — a generator that emits a value its
+  // own declared places cannot hold is a bug, and `0.33` on the screen would
+  // hide it behind a number that is nearly right.
+  assert.equal(writeDecimal(exact.rational(1n, 3n), 2), null)
+  assert.equal(writeChoiceOption({ kind: "number", value: exact.rational(1n, 3n), decimalPlaces: 2 }), "1/3")
 })
 
 // ── columnAlgorithm ─────────────────────────────────────────────────────────
@@ -429,14 +492,14 @@ test("5001 − 2798 = 2203, written into the grid", () => {
 test("a blank leading column is a shorter number; a blank inside is not a number", () => {
   const short = type(columnEntry, BORROW, "513")
   assert.equal(columnDigits(short), "315")
-  assert.equal(columnEntry.complete(short), true)
+  assert.equal(entryComplete(columnEntry, short, BORROW), true)
 
   // `3 _ 5` could be 305 or 35 and the app must not pick: uncommittable, which
   // is visible, rather than silently wrong.
   const gapped = columnEntry.press(type(columnEntry, BORROW, "513"), { kind: "focus", field: 1 })
   const hole = columnEntry.press(gapped, { kind: "delete" })
   assert.equal(columnDigits(hole), null)
-  assert.equal(columnEntry.complete(hole), false)
+  assert.equal(entryComplete(columnEntry, hole, BORROW), false)
   assert.equal(columnEntry.value(hole, BORROW), null)
 })
 
@@ -517,12 +580,23 @@ test("the registry draws all four V1 schemas, and says so once", () => {
   ])
 })
 
-test("no key commits — committing is a separate, explicit action", () => {
+test("a keypad is glyphs, delete, advance and held cells — nothing that answers", () => {
+  // This used to assert `cap.kind !== "commit"`, which the `KeyCap` union makes
+  // true of every value it admits — the compiler already forbade what the test
+  // checked, so it could not fail. What it is about is that the pad writes and
+  // nothing else, which is a statement about the caps that do exist: no cap
+  // carries a value, so no key can put an answer on the slate a child did not
+  // type. That committing is a separate control is `surface.test.ts`'s, which
+  // can see how `Practice.tsx` wires the two.
   for (const schema of [FOUR_DIGITS, TENTHS, FRACTION, CHOICE, BORROW]) {
     const model = entryModelFor(schema)
     assert.ok(model !== undefined)
     for (const cap of model.keys(schema)) {
-      assert.notEqual(cap.kind, "commit")
+      assert.ok(
+        cap.kind === "glyph" || cap.kind === "delete" || cap.kind === "advance" || cap.kind === "blank",
+        `the pad grew a ${cap.kind} key`,
+      )
+      if (cap.kind === "glyph") assert.match(cap.glyph, /^[\d.]$/)
     }
   }
 })

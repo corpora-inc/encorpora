@@ -38,9 +38,16 @@ export function EntryCell({
 }) {
   const base =
     "numeral rounded-cut-sm flex items-center justify-center border-b-2 transition-colors duration-[var(--dw-motion-quick)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dw-focus)] disabled:opacity-40"
+  // Both tones are the same target on the same scale. The mark used to be
+  // `min-h-8 min-w-8` — 32 × 32 CSS px at every viewport, off the token scale
+  // entirely, so it neither came down with the rest of the surface nor was
+  // covered by `surface.test.ts`'s cell-size check, which reads the tokens. It
+  // is the *smallest* thing on the work surface and a six-year-old's first
+  // regrouping goes into it. What makes it read as the lighter hand of a
+  // regrouping is type: `text-sm` in `ink-muted`, not a smaller box.
   const size =
     tone === "mark"
-      ? "text-ink-muted min-h-8 min-w-8 text-sm"
+      ? "text-ink-muted min-h-[var(--dw-cell-height)] min-w-[var(--dw-cell-width)] text-sm"
       : "text-ink min-h-[var(--dw-cell-height)] min-w-[var(--dw-cell-width)] text-[length:var(--dw-numeral-size)]"
   // The cell being written into is named by a solid brass rule, the others by a
   // hairline. Never by colour alone and never by a fill: a filled cell reads as

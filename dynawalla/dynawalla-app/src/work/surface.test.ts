@@ -33,6 +33,9 @@ const fraction = read("ui/FractionAnswer.tsx")
 const choice = read("ui/ChoiceAnswer.tsx")
 const grid = read("ui/ColumnGrid.tsx")
 const answerSurface = read("ui/AnswerSurface.tsx")
+// The browser driver. What a source regex cannot hold — focus really moving,
+// a cell's drawn size — is measured there, and asserted here to still be in it.
+const driver = read("../../tools/drive-schemas.mjs")
 
 test("the slate reservation in CSS matches the ladder it was computed from", () => {
   // Written in two languages, so they can drift. One numeral column per digit
@@ -276,6 +279,34 @@ test("keyboard and keypad take the same table, so a key cannot work in one and n
   assert.ok(!/glyphFromKey/.test(practice))
 })
 
+test("committing is a control of its own, never a key", () => {
+  // The keypad writes; the plate commits. `Keypad.tsx` is handed `press` and
+  // nothing else, so there is no path from a keystroke to a verdict, and the
+  // plate is handed `commitNow` and is the only thing that is.
+  assert.match(practice, /<Keypad[\s\S]*?onKey=\{press\}/, "the keypad is wired to something other than press")
+  assert.ok(!/commit/.test(keypad), "the keypad reaches the commit path")
+  assert.match(practice, /<Plate onPress=\{commitNow\}/)
+})
+
+test("the choice group is operable from the keyboard, and always has a way in", () => {
+  // `role="radio"` on a `<button>` gets no arrow navigation from the platform —
+  // the ARIA pattern says the author supplies it — and this shipped with a
+  // roving `tabIndex` and no key handler at all, so a keyboard user tabbed in,
+  // was selected on the first option and could never reach the second.
+  assert.match(choice, /onKeyDown=\{/, "the radiogroup has no key handler")
+  for (const key of ["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", "Home", "End"]) {
+    assert.ok(choice.includes(`"${key}"`), `the radiogroup does not answer ${key}`)
+  }
+  // The roving stop is keyed off a *bounded* index. It was keyed off the raw
+  // selection, so a stale out-of-range ordinal made every option `tabIndex={-1}`
+  // and the whole group unreachable — measured as [-1, -1, -1, -1].
+  assert.match(choice, /const stop = selected < 0 \? 0 : selected/)
+  assert.match(choice, /tabIndex=\{index === stop \? 0 : -1\}/)
+  assert.match(choice, /parsed >= 0 && parsed < count/, "an out-of-range ordinal is drawn as a selection")
+  // …and the arrow keys are driven in a real browser, where focus is real.
+  assert.match(driver, /window\.__dw\.arrow\(/, "the driver no longer presses the arrow keys")
+})
+
 test("focus is visible on every cell a child can reach, and the current one is named", () => {
   // Two things, both needed: `focus-visible` is where the keyboard is, and
   // `aria-current` is where the *keypad* is writing.
@@ -291,25 +322,41 @@ test("focus is visible on every cell a child can reach, and the current one is n
 })
 
 test("an answer cell is a target a child can hit, at every viewport height", () => {
-  // Computed from the same vertical scale the keypad's floor is. A fraction cell
-  // and a column cell are the smallest things a finger has to land on here.
-  assert.match(cell, /min-h-\[var\(--dw-cell-height\)\]/)
-  assert.match(cell, /min-w-\[var\(--dw-cell-width\)\]/)
+  // Every tone, on the same scale. The regrouping cell was `min-h-8 min-w-8` —
+  // 32 × 32 px flat, off `--dw-cell-*` entirely — so it neither came down with
+  // the surface nor was covered here, and it is the smallest thing on the
+  // screen: the cell a six-year-old writes their first borrow into.
+  assert.equal(
+    [...cell.matchAll(/min-h-\[var\(--dw-cell-height\)\]/g)].length,
+    2,
+    "a cell tone is off the token scale",
+  )
+  assert.equal([...cell.matchAll(/min-w-\[var\(--dw-cell-width\)\]/g)].length, 2)
+  const cellCode = cell.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "")
+  assert.ok(!/min-[hw]-\d/.test(cellCode), "a cell is sized by a fixed utility instead of the scale")
+
   const heights = [...tokens.matchAll(/--dw-cell-height:\s*([\d.]+)rem/g)].map((m) => Number(m[1]) * 16)
   const widths = [...tokens.matchAll(/--dw-cell-width:\s*([\d.]+)rem/g)].map((m) => Number(m[1]) * 16)
   assert.equal(heights.length, widths.length)
   assert.ok(heights.length >= 3, "the cell scale does not come down with the rest of the surface")
 
-  // The width is set by how many columns must fit inside 320 px, so the two
-  // constraints are checked together: a hittable diagonal, and six columns that
-  // fit at the narrowest width this app ships to.
+  // The floor, derived rather than picked. The keypad's own bar — 2 cm, 75.6 px
+  // at the 96 dpi CSS reference — cannot be met on the horizontal axis here and
+  // saying otherwise would be the comment lying about the number: six columns
+  // and the decimal gutter have to fit inside 320 px less the frame's 16 px
+  // either side, so `6w + 8 ≤ 288` caps a cell at 46 px wide, and the row would
+  // then fill the frame edge to edge with nothing to spare. So the cell is held
+  // to WCAG 2.2 AA 2.5.8 (24 × 24 CSS px, which is the criterion that admits a
+  // dense grid) on both axes, and on the vertical axis — where nothing competes
+  // for the space — to 40 px, the line box `--dw-numeral-size` needs at the
+  // shortest rung. A cell that met neither would be a target this test could not
+  // distinguish from one that did.
   for (const [i, height] of heights.entries()) {
     const width = widths[i] ?? 0
-    assert.ok(
-      Math.hypot(width, height) >= 40,
-      `a ${String(width)} × ${String(height)} cell is under the floor`,
-    )
-    assert.ok(6 * width + 5 * 4 <= 320 - 2 * 16, `six columns of ${String(width)} px do not fit in 320 px`)
+    assert.ok(width >= 24, `a ${String(width)} px wide cell is under WCAG 2.5.8's 24 px`)
+    assert.ok(height >= 24, `a ${String(height)} px tall cell is under WCAG 2.5.8's 24 px`)
+    assert.ok(height >= 40, `a ${String(height)} px tall cell wastes the axis nothing constrains`)
+    assert.ok(6 * width + 8 <= 320 - 2 * 16, `six columns of ${String(width)} px do not fit in 320 px`)
   }
 })
 

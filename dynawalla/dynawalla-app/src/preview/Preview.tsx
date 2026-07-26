@@ -168,8 +168,10 @@ export function Preview() {
           const model = entryModelFor(specimen.schema)
           const state = states[specimen.id]
           if (model === undefined || state === undefined) return null
-          const complete = model.complete(state)
           const value = model.value(state, specimen.schema)
+          // Exactly what the Check plate reads (`entryComplete` / `committable`),
+          // so the driver measuring `data-complete` is measuring the plate.
+          const complete = value !== null
           return (
             <section
               key={specimen.id}

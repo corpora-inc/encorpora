@@ -43,6 +43,20 @@ export function NumberLine({ spec }: { spec: RepSpec }) {
   const mark = spec.params["mark"] ?? 0
   const intervals = (to - from) * denominator
 
+  // Every tick, with the whole number it is labelled by — counted rather than
+  // divided. `from + i / denominator` was a float division on the one path that
+  // must not have one: it is exact under the 24-interval cap, but the cap lives
+  // in `repSpecDefect` and a bound in another module is not a reason to divide
+  // here. The counter steps once per whole tick, which is the same statement in
+  // integers.
+  const ticks: { whole: boolean; label: string | null }[] = []
+  let unit = from
+  for (let i = 0; i <= intervals; i++) {
+    const whole = i % denominator === 0
+    ticks.push({ whole, label: whole ? String(unit) : null })
+    if (whole) unit += 1
+  }
+
   const label = fill(strings.practice.lineAlt, {
     from,
     to,
@@ -65,8 +79,7 @@ export function NumberLine({ spec }: { spec: RepSpec }) {
       <div className="border-line-strong absolute top-8 right-5 left-5 border-t-2" />
 
       <div className="absolute top-8 right-5 left-5 flex">
-        {Array.from({ length: intervals + 1 }, (_, i) => {
-          const whole = i % denominator === 0
+        {ticks.map(({ whole, label: tickLabel }, i) => {
           return (
             <Fragment key={`t${String(i)}`}>
               <span className="relative w-0">
@@ -80,11 +93,11 @@ export function NumberLine({ spec }: { spec: RepSpec }) {
                     turns the line into a wall of numerals at 320 px and buries
                     the thing being taught — where this number sits between two
                     whole ones. */}
-                {whole ? (
+                {tickLabel === null ? null : (
                   <span className="numeral text-ink-muted absolute top-4 left-0 -translate-x-1/2 text-xs">
-                    {String(from + i / denominator)}
+                    {tickLabel}
                   </span>
-                ) : null}
+                )}
                 {i === mark ? (
                   <span className="dw-line-index absolute bottom-1 left-0 block -translate-x-1/2" />
                 ) : null}

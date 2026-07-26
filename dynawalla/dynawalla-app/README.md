@@ -19,7 +19,7 @@ Node 24 (`.nvmrc`).
 | `npm run tsc` | typecheck: the app, the tests, and the build's own config |
 | `npm run lint` | eslint |
 | `npm run build` | production bundle |
-| `node tools/drive-schemas.mjs` | drives every answer schema and representation in a real browser (needs `npm run dev`) |
+| `npm run drive:schemas` | drives every answer schema and representation in a real browser, and measures what it drew (needs `npm run dev`) |
 | `node tools/drive-locate.mjs` | drives the practice loop to the Stage-2 contrast pair |
 
 Three tsconfigs, because they need different globals. `tsconfig.json` is browser
@@ -60,8 +60,19 @@ one page. **Not** a route and **not** in the shipped bundle — `vite build` inp
 CG-8 is bidirectional, and a renderer nobody has drawn is a renderer nobody has
 checked. Three bugs were found by looking at this page: a phantom answer rule
 above the column grid, a mark row half a cell off its digits, and a balance beam
-that swung off its own fulcrum. `tools/drive-schemas.mjs` drives it headlessly
-and photographs it in both themes at 320 px and 390 px.
+that swung off its own fulcrum. `npm run drive:schemas` drives it headlessly and
+photographs it in both themes at 320 px and 390 px.
+
+**Looking is not enough, so the driver measures.** A balance beam tipping the
+wrong way is legible in a screenshot and was still missed in one; the driver now
+reads `getBoundingClientRect()` off the drawn pans and fails when the heavier one
+is not the lower one, reads the number line's index as a fraction of the rule and
+fails when it is not standing on its own tick, presses the arrow keys at the
+choice group and fails when focus does not move, and re-runs every target-size
+check at 320 px, where the cells are smallest. A regex over a component cannot
+express any of those, and `representation.test.ts` — which is regex over source —
+had asserted only that the two beam angles were mirror images, which the inverted
+pair satisfies exactly as well as the correct one.
 
 ## Design tokens
 

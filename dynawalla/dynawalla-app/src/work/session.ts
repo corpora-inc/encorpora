@@ -237,11 +237,19 @@ export function pressKey(state: SessionState, key: EntryKey): SessionState {
   return entry === state.entry ? state : { ...state, entry }
 }
 
-/** May this state be committed? Drives the commit control's disabled attribute. */
+/**
+ * May this state be committed? Drives the commit control's disabled attribute.
+ *
+ * The same question `commit` asks, asked once: this used to call a separate
+ * `EntryModel.complete(state)` that took no schema, so it lit the plate on `2/0`
+ * and on an out-of-range choice ordinal while `commit`'s `submitted(state) ===
+ * null` guard turned round and did nothing. A live control that does nothing is
+ * the worst thing on this surface — no verdict, no hint, no undo, nothing to
+ * read.
+ */
 export function committable(state: SessionState): boolean {
   if (state.feedback !== null || state.entry === null || state.card.kind !== "problem") return false
-  const model = entryModelFor(state.card.exercise.schema)
-  return model !== undefined && model.complete(state.entry)
+  return submitted(state) !== null
 }
 
 /** The exact value currently entered, or `null`. */

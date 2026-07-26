@@ -93,11 +93,20 @@ function columnCells(
       <Fragment key={`${row}${String(column)}`}>
         <div className="flex w-[var(--dw-cell-width)] items-end justify-center">
           {field === undefined ? (
-            <span aria-hidden="true" className="block min-h-8" />
+            <span aria-hidden="true" className="block min-h-[var(--dw-cell-height)]" />
           ) : (
             <EntryCell
               field={field}
-              label={placeLabel(column, schema.decimalPlaces)}
+              // The row is in the label, not only in the enclosing group's name:
+              // several screen readers announce a group once, on entry, and a
+              // child stepping cell by cell otherwise hears "1000, 100, 10" and
+              // then "1000, 100, 10, 1" with nothing to say which row they are
+              // in — and the two rows mean entirely different things.
+              label={
+                row === "mark"
+                  ? `${strings.practice.regroup} ${placeLabel(column, schema.decimalPlaces)}`
+                  : placeLabel(column, schema.decimalPlaces)
+              }
               current={entry.focus === index}
               onFocus={() => {
                 onKey({ kind: "focus", field: index })

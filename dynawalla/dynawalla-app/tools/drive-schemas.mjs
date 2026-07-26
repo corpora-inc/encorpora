@@ -112,6 +112,18 @@ window.__dw = {
     for (const c of text) window.__dw.key(c);
     await window.__dw.frame();
   },
+  // The same, by key *name*, so Escape and Backspace can be sent too.
+  press: async (id, keys) => {
+    window.__dw.focusCase(id);
+    await window.__dw.frame();
+    for (const k of keys) window.__dw.key(k);
+    await window.__dw.frame();
+  },
+  tapCell: async (id, i) => {
+    const cell = window.__dw.section(id).querySelectorAll("[data-dw-entry]")[i];
+    cell.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
+    await window.__dw.frame();
+  },
   state: (id) => {
     const el = window.__dw.section(id);
     return el === null ? null : { complete: el.dataset.complete, value: el.dataset.value };
@@ -123,12 +135,37 @@ window.__dw = {
       text: el.textContent.trim(),
       current: el.getAttribute("aria-current") === "true",
       checked: el.getAttribute("aria-checked"),
+      tab: el.tabIndex,
       w: Math.round(el.getBoundingClientRect().width),
       h: Math.round(el.getBoundingClientRect().height),
     })),
   overflow: () => ({ doc: document.documentElement.scrollWidth, win: window.innerWidth }),
   barWidth: (id) =>
     window.__dw.section(id)?.querySelector(".border-line-strong")?.getBoundingClientRect().width ?? 0,
+  // The drawn geometry. Both of the claims below are things a regex over a
+  // component cannot see, and both were wrong in a shipped build while every
+  // source-level check was green.
+  panTops: (id) =>
+    [...(window.__dw.section(id)?.querySelectorAll(".dw-pan") ?? [])].map(
+      (el) => Math.round(el.getBoundingClientRect().top * 10) / 10,
+    ),
+  // Where the index sits along the rule, as a fraction of its width. The rule is
+  // the first .border-line-strong in the section; the index is the triangle.
+  indexAt: (id) => {
+    const section = window.__dw.section(id);
+    const rule = section?.querySelector(".border-line-strong")?.getBoundingClientRect();
+    const tip = section?.querySelector(".dw-line-index")?.getBoundingClientRect();
+    if (rule === undefined || tip === undefined || rule.width === 0) return null;
+    return Math.round(((tip.left + tip.width / 2 - rule.left) / rule.width) * 10000) / 10000;
+  },
+  arrow: async (id, key) => {
+    const options = [...window.__dw.section(id).querySelectorAll("[role=radio]")];
+    options[0].focus();
+    await window.__dw.frame();
+    options[0].dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
+    await window.__dw.frame();
+    return options.indexOf(document.activeElement);
+  },
 };
 "ok"`
 
@@ -167,6 +204,23 @@ async function run() {
   check(JSON.parse(state).value.includes('"n":"51"'), "12.75 parses to 51/4")
 
   // ── fraction: two cells over a bar, both named ────────────────────────────
+  // A written zero denominator first, from the specimen's initial focus.
+  // `complete` and `value` were two predicates and this is where they
+  // disagreed: the plate went live and `commit` returned the state unchanged,
+  // so a child tapped Check and nothing at all happened — no verdict, no hint,
+  // no undo. Measured here as `{complete:"true", value:""}`.
+  await evaluate("window.__dw.type('fraction', '2/0')")
+  state = JSON.parse(await evaluate("JSON.stringify(window.__dw.state('fraction'))"))
+  note(`fraction after typing 2/0 → ${JSON.stringify(state)}`)
+  check(
+    state.complete === "false" && state.value === "",
+    "2/0 is not committable, so the Check plate stays dark",
+  )
+  // Clear, and put the caret back on the numerator by tapping it — Escape wipes
+  // the fields and leaves the focus where it was.
+  await evaluate("window.__dw.press('fraction', ['Escape'])")
+  await evaluate("window.__dw.tapCell('fraction', 0)")
+
   await evaluate("window.__dw.type('fraction', '3/4')")
   state = await evaluate("JSON.stringify(window.__dw.state('fraction'))")
   note(`fraction after typing 3/4 → ${state}`)
@@ -202,8 +256,13 @@ async function run() {
   cells = JSON.parse(await evaluate("JSON.stringify(window.__dw.cells('column-borrow'))"))
   note(`column cells: ${JSON.stringify(cells.map((c) => `${c.label}:${c.text || "_"}`))}`)
   check(
-    cells.filter((c) => c.h > 40).map((c) => c.label).join(",") === "1000,100,10,1",
+    cells.filter((c) => !c.label.startsWith("Regrouping")).map((c) => c.label).join(",") === "1000,100,10,1",
     "the digit cells are named by their place, most significant first",
+  )
+  check(
+    cells.filter((c) => c.label.startsWith("Regrouping")).map((c) => c.label).join(",") ===
+      "Regrouping 1000,Regrouping 100,Regrouping 10",
+    "a regrouping cell says which row it is in, not only which column",
   )
 
   // ── choice: a radio group, and chosen is not carried by colour ────────────
@@ -226,6 +285,48 @@ async function run() {
     `every option is a target a child can hit (${cells.map((c) => c.h).join(", ")})`,
   )
 
+  // The group is keyboard operable. `role="radio"` on a `<button>` gets no
+  // arrow navigation from the platform — the ARIA pattern says the author
+  // supplies it, and this shipped without one: a keyboard user tabbed in,
+  // landed on the first option, was selected on focus, and could never reach the
+  // second.
+  for (const [key, expected] of [
+    ["ArrowDown", 1],
+    ["ArrowRight", 1],
+    ["ArrowUp", 3],
+    ["Home", 0],
+    ["End", 3],
+  ]) {
+    const landed = await evaluate(`window.__dw.arrow('choice', ${JSON.stringify(key)})`)
+    check(landed === expected, `${key} from option 1 moves focus to option ${String(expected + 1)} (got ${String(landed + 1)})`)
+  }
+  const digit = await evaluate(
+    "(async () => { window.__dw.section('choice').querySelectorAll('[role=radio]')[0].focus();" +
+      " await window.__dw.frame();" +
+      " window.__dw.section('choice').querySelectorAll('[role=radio]')[0]" +
+      "  .dispatchEvent(new KeyboardEvent('keydown', { key: '3', bubbles: true }));" +
+      " await window.__dw.frame();" +
+      " return JSON.parse(window.__dw.section('choice').dataset.value || 'null') })()",
+  )
+  note(`choice after pressing 3 on the group → ${JSON.stringify(digit)}`)
+  check(digit?.index === 2, "a digit selects by ordinal, bounded by the option count")
+
+  // …and an ordinal naming no option cannot be written at all, so the group can
+  // never lose its tab stop. It could: with a stale out-of-range selection every
+  // option was `tabIndex=-1` and the whole group was unreachable.
+  await evaluate("window.__dw.press('choice', ['9'])")
+  cells = JSON.parse(await evaluate("JSON.stringify(window.__dw.cells('choice'))"))
+  state = JSON.parse(await evaluate("JSON.stringify(window.__dw.state('choice'))"))
+  note(`choice after a window '9': tabIndex ${JSON.stringify(cells.map((c) => c.tab))}, state ${JSON.stringify(state)}`)
+  check(
+    cells.filter((c) => c.tab === 0).length === 1,
+    `the group has exactly one tab stop (${cells.map((c) => c.tab).join(", ")})`,
+  )
+  check(
+    state.complete === "true" && state.value.includes('"index":2'),
+    "a digit that names no option leaves the answer alone",
+  )
+
   // ── representations: the text alternative is the whole meaning ────────────
   for (const [id, expected] of [
     ["line-quarters", "Marked at 3/4"],
@@ -238,6 +339,44 @@ async function run() {
     const label = await evaluate(`window.__dw.label(${JSON.stringify(id)}, '[role=img]')`)
     note(`${id}: ${JSON.stringify(label)}`)
     check(label !== null && label.includes(expected), `${id} says "${expected}"`)
+  }
+
+  // ── the geometry, which is the only place a mis-drawn picture shows ───────
+  // The beam shipped tipping the *wrong way*: `.dw-beam-left { rotate(6deg) }`
+  // is a clockwise turn in a y-down space, which lifts the left end, and
+  // `tilt === "left"` is the state whose text alternative says the left pan is
+  // lower. On `balance-left` (17 against 12) the heavier pan was drawn 21.8 px
+  // above the lighter one. Nothing in `representation.test.ts` could see it —
+  // every check there is a regex over the component's source — so the drawn pan
+  // tops are measured here.
+  for (const [id, heavier] of [
+    ["balance-left", 0],
+    ["balance-right", 1],
+  ]) {
+    const tops = await evaluate(`JSON.stringify(window.__dw.panTops(${JSON.stringify(id)}))`)
+    const [left, right] = JSON.parse(tops)
+    note(`${id}: pan tops ${String(left)} / ${String(right)}`)
+    // A larger `top` is further down the screen.
+    check(
+      heavier === 0 ? left > right : right > left,
+      `${id} draws the heavier pan lower (${String(left)} / ${String(right)})`,
+    )
+  }
+  const levelTops = JSON.parse(await evaluate("JSON.stringify(window.__dw.panTops('balance-level'))"))
+  note(`balance-level: pan tops ${levelTops.join(" / ")}`)
+  check(levelTops[0] === levelTops[1], "equal pans hang level")
+
+  // The index sits on the tick it is labelled with: `mark / intervals` of the
+  // rule's width, compared as an exact fraction rather than a float literal.
+  for (const [id, mark, intervals] of [
+    ["line-quarters", 3, 4],
+    ["line-thirds", 5, 6],
+    ["line-wholes", 3, 6],
+  ]) {
+    const at = await evaluate(`window.__dw.indexAt(${JSON.stringify(id)})`)
+    note(`${id}: the index sits at ${String(at)} of the rule, and stands on ${String(mark)}/${String(intervals)}`)
+    // Sub-pixel: the rule is ~292 px, so half a pixel is 0.0018 of it.
+    check(Math.abs(at * intervals - mark) < 0.01, `${id} draws the index on its own tick`)
   }
 
   const unrenderable = await evaluate("window.__dw.section('unrenderable').querySelectorAll('*').length")
@@ -264,6 +403,25 @@ async function run() {
   let overflow = JSON.parse(await evaluate("JSON.stringify(window.__dw.overflow())"))
   note(`320 px: document ${String(overflow.doc)} px in a ${String(overflow.win)} px window`)
   check(overflow.doc <= overflow.win, "nothing overflows sideways at 320 px")
+
+  // The size checks run again *here*, which is where the cells are smallest —
+  // the token scale comes down with the viewport, so measuring only at 390 px
+  // ran the check at the width least likely to fail it. WCAG 2.2 AA (2.5.8) is
+  // 24 × 24 CSS px; the vertical axis, which nothing competes for, holds 40.
+  for (const id of ["column-borrow", "column-carry", "fraction", "mixed"]) {
+    const small = JSON.parse(await evaluate(`JSON.stringify(window.__dw.cells(${JSON.stringify(id)}))`))
+    note(`320 px ${id} cells: ${small.map((c) => `${c.label}=${String(c.w)}x${String(c.h)}`).join(", ")}`)
+    check(
+      small.every((c) => c.w >= 24 && c.h >= 40),
+      `${id}: every cell is a target a child can hit at 320 px (${small.map((c) => `${String(c.w)}x${String(c.h)}`).join(", ")})`,
+    )
+  }
+  const options320 = JSON.parse(await evaluate("JSON.stringify(window.__dw.cells('choice'))"))
+  check(
+    options320.every((c) => c.h >= 44),
+    `320 px: every option is still a target (${options320.map((c) => c.h).join(", ")})`,
+  )
+
   console.log(`screenshot: ${await shot("02-light-320")}`)
 
   await evaluate(
