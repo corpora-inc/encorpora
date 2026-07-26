@@ -704,9 +704,10 @@ jobs:
     name: native · fmt + compile + clippy
     needs: changes
     if: needs.changes.outputs.native == 'true'
-    # Measured: 7m18s stone cold, ~2m warm. 30 is headroom for a cold cache on
-    # a slow runner while still catching a hang, rather than burning 45 minutes
-    # of queue time before anyone notices.
+    # Measured on ubuntu-latest: 7m18s stone cold, 4m09s on a full cache match.
+    # 30 is headroom over the cold number on a slow runner while still catching
+    # a hang, rather than burning 45 minutes of queue time before anyone
+    # notices. See the cache step for where the warm time actually goes.
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
