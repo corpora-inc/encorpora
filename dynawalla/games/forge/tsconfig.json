@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "useDefineForClassFields": true,
+
+    /* Source imports carry the `.ts` extension so the same files run unmodified
+       under `node --experimental-strip-types --test`, which resolves ESM
+       specifiers literally. `erasableSyntaxOnly` keeps enums / namespaces /
+       parameter properties out — Node's type stripper cannot handle them. */
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+
+    /* `noUncheckedIndexedAccess` is deliberately OFF here and nowhere else in
+       this tree: the render loop indexes Float32Array particle columns tens of
+       thousands of times per frame and every one of those reads is provably in
+       bounds. Exactness that actually matters — every quantity a player can
+       see or compare — lives in `core/` as BigInt and is covered by tests.
+       There is not one float in an answer, a cost, or a comparison. */
+    "noUncheckedIndexedAccess": false,
+
+    "types": ["vite/client"]
+  },
+  "include": ["src", "vite.config.ts"],
+  "exclude": ["src/**/*.test.ts"]
+}

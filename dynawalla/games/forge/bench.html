@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FORGE — frame budget</title>
+    <style>
+      body {
+        margin: 0;
+        background: #07050a;
+        color: #e8e2d6;
+        font: 13px/1.6 ui-monospace, Menlo, monospace;
+      }
+      #out {
+        padding: 16px;
+        white-space: pre;
+      }
+      #stage {
+        position: absolute;
+        left: -4000px;
+        top: 0;
+        width: 1280px;
+        height: 900px;
+      }
+      b {
+        color: #ffbc4a;
+      }
+      .bad {
+        color: #ff6a4a;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <div id="out">measuring…</div>
+    <script type="module" src="/tools/bench.ts"></script>
+  </body>
+</html>
