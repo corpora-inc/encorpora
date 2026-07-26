@@ -10,11 +10,11 @@ Everything `.github/workflows/release-dynawalla.yml` needs before it can ship
 
 | | |
 |---|---|
-| Local build viability | **proven** — see the PR that added the workflow |
+| Local build viability | **proven, unsigned** — a release AAB and an iOS device archive were both built from this tree. The iOS archive needed `CODE_SIGNING_ALLOWED: NO`, because no App ID exists for `inc.corpora.dynawalla` yet and no provisioning profile can cover it. **A signed archive has never been produced.** |
 | App Store Connect app record | **does not exist** (founder, browser-only) |
 | Play app record | **does not exist** (founder, browser-only) |
-| The two new credentials | **do not exist** |
-| The workflow end to end | **never executed** |
+| The four new credentials | **do not exist** |
+| The workflow end to end | **never executed** — everything from `Import signing certificate` / `Sign the AAB` onward, including both upload and both verification steps, is unrun |
 
 The workflow **fails hard** on a missing secret rather than skipping with a
 warning, so until the list below is complete a release run is a red X that
@@ -130,10 +130,19 @@ here would mean moving Corpán's live secrets too. It is a follow-up.
   *before* building, so a wrong profile costs seconds rather than an hour.
 - Reads the finished IPA and AAB back and asserts the bundle id / applicationId,
   the build number, `targetSdk`, `ITSAppUsesNonExemptEncryption`, the iOS SDK
-  version, the absence of tracking APIs and of the forbidden Android
-  permissions, and the presence of native debug symbols.
-- After each upload, queries App Store Connect and Play and fails if the build
-  is not actually there.
+  version, the App Store icon's absence of an alpha channel (ITMS-90717), the
+  absence of tracking APIs and of the forbidden Android permissions, and the
+  presence of native debug symbols.
+  Every one of those absence checks first proves its input was readable — an
+  assertion whose "pass" branch is reachable when the file is missing is not an
+  assertion.
+- After each upload, queries App Store Connect and Play and fails unless **this
+  run** put the build there. Presence is not enough: the build number is
+  minutes-since-epoch, so the duplicate these checks exist to catch is already
+  on the store under the wanted number. TestFlight requires the build's
+  `uploadedDate` to be at or after the moment the run started; Play snapshots
+  the track *before* the upload and requires the versionCode to have been
+  **added**.
 
 ## Build numbers
 
@@ -146,4 +155,26 @@ reject that at the end of a long job rather than at PR time.
 
 Two runs cannot compute the same minute because `concurrency.group` is a single
 constant for this workflow, so releases never overlap and one run takes far
-longer than a minute. The post-upload verification catches a duplicate anyway.
+longer than a minute. If that ever stops holding, the post-upload verification
+does catch the duplicate — but only because both verifiers correlate the build
+with **this run** (TestFlight: `uploadedDate` ≥ the run's start; Play: the
+versionCode was absent from a pre-upload snapshot of the track). A presence-only
+check would have passed on exactly that duplicate, because a colliding build
+already carries the number being looked for.
+
+**The cost of that constant concurrency group.** GitHub's queue depth per
+concurrency group is one: when a run queues behind an in-progress run, any
+*previously pending* run in the group is **cancelled**. With a ~60-minute iOS
+job, three version bumps merged inside an hour means the middle release never
+ships, and it is reported as `cancelled` rather than `failure`.
+
+That is accepted deliberately. Removing the constant group re-opens the
+same-minute collision, and the fix for that —
+`max(preflight_highest + 1, minutes_since_epoch)` behind a store-querying
+preflight — is a change to the number-generation scheme that
+`RELEASE_ENGINEERING.md` and RISKS R-12 both reserve for its own PR and its own
+verification run. This workflow has never executed end to end, so a preflight
+added here could not be verified either.
+
+**If a release is dropped this way:** push the tag `dynawalla-v<version>` for
+the skipped version, or re-run from the Actions tab via `workflow_dispatch`.

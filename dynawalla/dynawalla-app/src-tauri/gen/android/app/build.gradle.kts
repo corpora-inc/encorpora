@@ -9,8 +9,11 @@
 // regenerates buildSrc and the gitignored parts.
 //
 // DRIFT WARNING: because init will not overwrite it, a Tauri CLI upgrade that
-// changes the template leaves this file behind silently. On a CLI bump, diff
-// this against a freshly generated project and re-curate.
+// changes the template leaves this file behind silently. The
+// `dynawalla-android-gen` job in .github/workflows/ci.yml is the gate for
+// that: it regenerates the template into a scratch tree and diffs it against
+// ../../../../android-template-baseline/. When it goes red, fold the new
+// template's additions into THIS file and re-record the baseline.
 
 import java.util.Properties
 

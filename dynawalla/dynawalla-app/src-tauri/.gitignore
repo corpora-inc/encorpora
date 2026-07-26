@@ -13,11 +13,16 @@ target/
 # Tauri gives Android no template hook — there is no `bundle.android.template`
 # to match the iOS one (checked against the config schema), so an Android build
 # decision has nowhere to live except the generated Gradle file itself. So a
-# two-file allowlist is tracked, and everything else in gen/ is ignored.
+# THREE-file allowlist is tracked, and everything else in gen/ is ignored.
 #
 # This is safe because `tauri android init` does NOT overwrite a file that
 # already exists (verified by experiment): CI re-inits to regenerate buildSrc,
-# the res/ tree and the launcher mipmaps, and the two files below survive.
+# the res/ tree and the launcher mipmaps, and the three files below survive.
+#
+# That same "never overwrites" property is what makes these files go STALE
+# silently on a @tauri-apps/cli bump. The `dynawalla-android-gen` job in
+# ci.yml is the gate for it: it regenerates the template into a scratch tree
+# and diffs it against ../android-template-baseline/.
 #
 # The iOS side needs no allowlist: `bundle.iOS.template` points the CLI at the
 # committed src-tauri/ios/project.yml, so gen/apple can stay fully generated.

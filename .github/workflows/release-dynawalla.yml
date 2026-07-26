@@ -20,9 +20,10 @@ name: Release · Dynawalla mobile (TestFlight + Play internal)
 #                     iOS 26 SDK.
 #   NOT EXECUTED    — everything from "Import signing certificate" onward, and
 #                     both upload/verify steps. The App Store Connect and Play
-#                     app records do not exist yet and neither do the two new
+#                     app records do not exist yet and neither do the FOUR new
 #                     credentials, so this workflow has never run end to end.
-#                     See dynawalla/docs/STORE.md for the founder actions.
+#                     See dynawalla/docs/STORE.md for the founder actions and
+#                     dynawalla/dynawalla-app/RELEASE_SETUP.md for the secrets.
 
 on:
   push:
@@ -43,8 +44,28 @@ on:
 
 concurrency:
   # Serialises every release of THIS app, and never cancels an in-flight
-  # upload. This is also what makes the build number collision-free: see the
-  # gate job.
+  # upload.
+  #
+  # TRADE-OFF, ACCEPTED DELIBERATELY — read this before changing the cadence.
+  # GitHub's queue depth for a concurrency group is ONE. When a run is queued
+  # behind an in-progress run in the same group, any PREVIOUSLY pending run in
+  # that group is cancelled. The iOS job takes ~60 minutes, so three version
+  # bumps merged inside one hour means the MIDDLE release is cancelled and
+  # never ships — reported as `cancelled`, not `failure`, which is quiet.
+  #
+  # It is accepted here because the alternative is worse today: dropping the
+  # constant group would let two runs compute the same minutes-since-epoch
+  # build number (RISKS R-12), and the fix for THAT —
+  # `max(preflight_highest + 1, minutes_since_epoch)` behind a store-querying
+  # preflight — is a change to the number-generation scheme that
+  # RELEASE_ENGINEERING.md and RISKS R-12 both say needs its own PR and its own
+  # verification run. This workflow has never executed, so a preflight added
+  # here could not be verified either. A silently-dropped release is
+  # recoverable in one command; a duplicate build number is a 60-minute red X.
+  #
+  # RECOVERY when a release is dropped this way: push the tag
+  # `dynawalla-v<version>` for the skipped version, or re-run via
+  # workflow_dispatch. Both re-enter this group and ship.
   group: release-dynawalla
   cancel-in-progress: false
 
@@ -65,10 +86,14 @@ jobs:
   gate:
     name: Gate · release intent + build number
     runs-on: ubuntu-latest
+    # It runs `fetch-depth: 0` on every push to main, so it is the one job here
+    # that executes constantly. Bound it.
+    timeout-minutes: 10
     outputs:
       release: ${{ steps.decide.outputs.release }}
       version: ${{ steps.decide.outputs.version }}
       build_number: ${{ steps.decide.outputs.build_number }}
+      run_started: ${{ steps.decide.outputs.run_started }}
       do_ios: ${{ steps.decide.outputs.do_ios }}
       do_android: ${{ steps.decide.outputs.do_android }}
     steps:
@@ -133,17 +158,28 @@ jobs:
           # CFBundleVersion, and because the upload is the last step of a long
           # macOS job you find out an hour in.
           #
-          # The same-minute collision that this scheme has in principle cannot
-          # happen here: `concurrency.group` above is a single constant, so two
-          # runs of this workflow never overlap, and one run takes far longer
-          # than a minute. The post-upload verification steps catch it anyway
-          # if that assumption ever stops holding.
+          # The same-minute collision that this scheme has in principle is held
+          # off by `concurrency.group` above being a single constant: two runs
+          # of this workflow never overlap and one run takes far longer than a
+          # minute. If that ever stops holding, the post-upload verification
+          # DOES catch it — but only because of RUN_STARTED below. Presence of
+          # the build number on the store is not evidence; a colliding build
+          # number is already there. Both verifiers therefore require the build
+          # to have been ADDED by this run.
           BUILD_NUMBER=$(( $(date +%s) / 60 ))
           if [ "$BUILD_NUMBER" -lt 29000000 ] || [ "$BUILD_NUMBER" -gt 2100000000 ]; then
             echo "::error::computed build number $BUILD_NUMBER is outside the sane range — check the runner clock"
             exit 1
           fi
           echo "build_number=$BUILD_NUMBER" >> "$GITHUB_OUTPUT"
+
+          # The instant this run began, in epoch seconds. Threaded into the
+          # TestFlight verifier as the floor for `uploadedDate`: a build
+          # carrying our CFBundleVersion but uploaded BEFORE this moment is a
+          # pre-existing collision, not our upload. Taken here, in the gate, so
+          # both platform jobs share one clock reading.
+          RUN_STARTED=$(date -u +%s)
+          echo "run_started=$RUN_STARTED" >> "$GITHUB_OUTPUT"
 
           echo "release=$RELEASE" >> "$GITHUB_OUTPUT"
           echo "do_ios=$([ "$RELEASE" = true ] && { [ "$PLATFORMS" = both ] || [ "$PLATFORMS" = ios ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
@@ -221,8 +257,15 @@ jobs:
       - name: Select newest Xcode
         run: |
           set -euo pipefail
-          XC=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)
+          # `XC=$(ls ... | sort | tail)` under `set -e` + `pipefail` ABORTS when
+          # the glob matches nothing (ls exits non-zero, pipefail propagates it,
+          # the assignment fails) — so the `|| XC=/Applications/Xcode.app`
+          # fallback below was unreachable. Verified: the whole step exited 1
+          # without printing the fallback. `|| true` makes the fallback real.
+          XC=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1 || true)
           [ -n "$XC" ] || XC=/Applications/Xcode.app
+          test -d "$XC/Contents/Developer" \
+            || { echo "::error::no usable Xcode at $XC"; exit 1; }
           sudo xcode-select -s "$XC/Contents/Developer"
           xcodebuild -version
 
@@ -247,8 +290,13 @@ jobs:
         with:
           workspaces: dynawalla/dynawalla-app/src-tauri
 
+      # Third-party actions that touch live credentials are pinned to a commit
+      # SHA, not a tag: a tag is mutable, and this is the SECOND workflow in
+      # this repository to feed the live Corpora Apple certificate and Play
+      # service account through one. The trailing comment is the tag that SHA
+      # resolved from — bump both together, deliberately.
       - name: Import signing certificate
-        uses: apple-actions/import-codesign-certs@v3
+        uses: apple-actions/import-codesign-certs@63fff01cd422d4b7b855d40ca1e9d34d2de9427d # v3
         with:
           # Reused from Corpán: `Apple Distribution: Corpora Inc` is team-wide
           # and signs any bundle id in team F9AV5HKF6N. The PROFILE is what is
@@ -257,10 +305,16 @@ jobs:
           p12-password: ${{ secrets.APPLE_DIST_CERT_PASSWORD }}
 
       - name: Install provisioning profile
+        # The secret arrives through `env:`, never interpolated into the script
+        # TEXT. `${{ secrets.X }}` inside `run:` is substituted before bash sees
+        # it, so the value becomes part of the command line — visible to `ps`,
+        # and a value containing shell metacharacters would be interpreted.
+        env:
+          PROFILE_B64: ${{ secrets.DYNAWALLA_APPLE_PROVISIONING_PROFILE }}
         run: |
           set -euo pipefail
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          echo "${{ secrets.DYNAWALLA_APPLE_PROVISIONING_PROFILE }}" | base64 --decode \
+          printf '%s' "$PROFILE_B64" | base64 --decode \
             > ~/Library/MobileDevice/Provisioning\ Profiles/dynawalla.mobileprovision
           # Prove the profile is really for THIS bundle id before spending an
           # hour discovering it at export time. A profile copied from another
@@ -289,8 +343,12 @@ jobs:
         # the CI working copy is changed; nothing is committed.
         run: |
           set -euo pipefail
+          # Delimiter is 0x01, not `|`: IOS_PROFILE_NAME is interpolated into
+          # the replacement, and a `|` in a future profile name would end the
+          # s/// expression and turn this into a silent no-op (the `grep -q`
+          # assertion below would then be the only thing that caught it).
           sed -i '' \
-            -e "s|^        CODE_SIGN_STYLE: Automatic|        CODE_SIGN_STYLE: Manual\n        PROVISIONING_PROFILE_SPECIFIER: \"${IOS_PROFILE_NAME}\"\n        CODE_SIGN_IDENTITY: \"Apple Distribution\"|" \
+            -e $'s\001^        CODE_SIGN_STYLE: Automatic\001        CODE_SIGN_STYLE: Manual\\\n        PROVISIONING_PROFILE_SPECIFIER: "'"${IOS_PROFILE_NAME}"$'"\\\n        CODE_SIGN_IDENTITY: "Apple Distribution"\001' \
             src-tauri/ios/project.yml
           grep -n 'CODE_SIGN_STYLE\|PROVISIONING_PROFILE_SPECIFIER\|CODE_SIGN_IDENTITY' src-tauri/ios/project.yml
           grep -q 'CODE_SIGN_STYLE: Manual' src-tauri/ios/project.yml \
@@ -376,7 +434,18 @@ jobs:
           WORK="$RUNNER_TEMP/ipa"
           rm -rf "$WORK" && mkdir -p "$WORK"
           unzip -q "$IPA" -d "$WORK"
-          PLIST=$(ls -d "$WORK"/Payload/*.app/Info.plist | head -1)
+          APPS=("$WORK"/Payload/*.app)
+          [ "${#APPS[@]}" -eq 1 ] || { echo "::error::expected exactly one .app in Payload, found ${#APPS[@]}"; exit 1; }
+          APP="${APPS[0]}"
+          PLIST="$APP/Info.plist"
+          # Every assertion below reads this file. If it is missing, the
+          # PlistBuddy-based checks abort under `set -e` but the two
+          # ABSENCE checks (NSUserTrackingUsageDescription, tracking symbols)
+          # would report a clean pass on an unreadable input — the same
+          # fail-open shape as the `grep -q` bug this file already fixed. So
+          # prove the input exists ONCE, up front, and never again rely on a
+          # missing file happening to abort somewhere else first.
+          test -f "$PLIST" || { echo "::error::no Info.plist at $PLIST"; exit 1; }
           ID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$PLIST")
           SHORT=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PLIST")
           FULL=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$PLIST")
@@ -399,25 +468,121 @@ jobs:
           # A Kids-eligible app must never link the tracking frameworks
           # (docs/STORE.md). A dependency can add them without a repo change,
           # so assert on the binary rather than on the manifest.
-          BIN=$(ls -d "$WORK"/Payload/*.app | head -1)
-          BIN="$BIN/$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$PLIST")"
-          # `grep -q` is deliberately NOT used in any pipeline in this file.
-          # It exits on the first match, the producer takes SIGPIPE, and under
-          # `set -o pipefail` the pipeline returns 141 — which reads as "no
-          # match". On this particular check that silently turns a compliance
-          # failure into a pass. Verified: the identical `unzip -l | grep -q`
-          # below returned 141 on a real AAB whose symbols were present.
-          if nm -u "$BIN" 2>/dev/null | grep -E 'ATTrackingManager|ASIdentifierManager' >/dev/null; then
+          #
+          # THIS IS AN ABSENCE CHECK, and an absence check is only as good as
+          # the evidence that its input was read. The first version of this
+          # line was `nm -u "$BIN" 2>/dev/null | grep -E ... >/dev/null` with
+          # $BIN unvalidated: a wrong path made nm fail, `2>/dev/null` ate the
+          # error, empty output matched nothing, and the compliance gate
+          # reported CLEAN. Reproduced with BIN=/nonexistent. That is the same
+          # fail-open shape as the `grep -q`/SIGPIPE bug this file was written
+          # to fix, surviving inside the fixed line. So: prove the file exists,
+          # let nm's stderr through, and require nm to have produced output
+          # before treating "no match" as a pass.
+          #
+          # `grep -q` is also deliberately NOT used in any pipeline in this
+          # file: it exits on the first match, the producer takes SIGPIPE, and
+          # under `set -o pipefail` the pipeline returns 141 — which reads as
+          # "no match". Verified: the identical `unzip -l | grep -q` in the
+          # Android job returned 141 on a real AAB whose symbols were present.
+          BIN="$APP/$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$PLIST")"
+          test -f "$BIN" || { echo "::error::executable not found at $BIN"; exit 1; }
+          SYMBOLS=$(nm -u "$BIN")
+          [ -n "$SYMBOLS" ] \
+            || { echo "::error::nm read no undefined symbols from $BIN — the absence checks below would be vacuous"; exit 1; }
+          if printf '%s\n' "$SYMBOLS" | grep -E 'ATTrackingManager|ASIdentifierManager' >/dev/null; then
             echo "::error::the binary references App Tracking Transparency / IDFA"
             exit 1
           fi
+          echo "ATT/IDFA check: PASS (against $(printf '%s\n' "$SYMBOLS" | wc -l | tr -d ' ') undefined symbols)"
           if /usr/libexec/PlistBuddy -c 'Print :NSUserTrackingUsageDescription' "$PLIST" >/dev/null 2>&1; then
             echo "::error::Info.plist declares NSUserTrackingUsageDescription"
             exit 1
           fi
 
+          # ITMS-90717: "The app icon can't contain an alpha channel." It is a
+          # classic first-upload rejector, it is the property this PR
+          # researched hardest, and it depends on Tauri CLI behaviour that a
+          # version bump can change — so assert it on the artifact rather than
+          # trusting the note in the comment above.
+          #
+          # WHAT IS NOT ASSERTED, and why: the loose AppIcon*.png at the .app
+          # root are Apple's CgBI-optimised PNGs and are ALWAYS colour type 6
+          # (verified on a real archive from this tree: AppIcon60x60@2x.png is
+          # 120x120 colourtype=6, chunks CgBI,IHDR). Asserting "colour type
+          # != 6" on those would fail every compliant release. The App Store
+          # icon lives in the compiled asset catalog, which is what Apple
+          # actually inspects, so read it back with assetutil.
+          python3 - "$APP" "$(pwd)/src-tauri/gen/apple/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png" <<'PY'
+          import json, os, struct, subprocess, sys
+
+          app, source_marketing = sys.argv[1], sys.argv[2]
+
+          def colour_type(path):
+              """PNG colour type, walking chunks (Apple prepends CgBI)."""
+              data = open(path, "rb").read()
+              if data[:8] != b"\x89PNG\r\n\x1a\n":
+                  sys.exit(f"::error::{path} is not a PNG")
+              off = 8
+              while off + 8 <= len(data):
+                  length = struct.unpack(">I", data[off:off + 4])[0]
+                  if data[off + 4:off + 8] == b"IHDR":
+                      w, h, _bd, ct = struct.unpack(">IIBB", data[off + 8:off + 18])
+                      return w, h, ct
+                  off += 12 + length
+              sys.exit(f"::error::{path} has no IHDR chunk")
+
+          # 1. The source the asset catalog is compiled from. `tauri ios init`
+          #    flattens it out of the RGBA icons/icon.png that
+          #    `generate_context!` requires; a CLI change that stopped doing so
+          #    would land here first.
+          if not os.path.isfile(source_marketing):
+              sys.exit(f"::error::no generated marketing icon at {source_marketing}")
+          w, h, ct = colour_type(source_marketing)
+          print(f"marketing icon source: {w}x{h} colourtype {ct}")
+          if (w, h) != (1024, 1024):
+              sys.exit(f"::error::marketing icon is {w}x{h}, App Store requires 1024x1024")
+          if ct in (4, 6):
+              sys.exit("::error::marketing icon carries an alpha channel — ITMS-90717 will reject the upload")
+
+          # 2. The compiled catalog inside the artifact. This is the object App
+          #    Store Connect inspects.
+          car = os.path.join(app, "Assets.car")
+          if not os.path.isfile(car):
+              sys.exit(f"::error::no Assets.car in {app} — the icon assertion would be vacuous")
+          info = json.loads(subprocess.run(
+              ["assetutil", "--info", car], check=True, capture_output=True, text=True
+          ).stdout)
+          icons = [e for e in info if e.get("Name") == "AppIcon" and e.get("RenditionName")]
+          if not icons:
+              sys.exit("::error::Assets.car carries no AppIcon renditions")
+          marketing = [e for e in icons if e.get("Idiom") == "marketing"]
+          if not marketing:
+              sys.exit("::error::Assets.car carries no marketing (App Store) AppIcon rendition")
+          for entry in marketing:
+              if entry.get("Opaque") is not True:
+                  sys.exit(
+                      f"::error::the App Store icon rendition {entry.get('RenditionName')} in "
+                      "Assets.car is not opaque — ITMS-90717 will reject the upload"
+                  )
+          print(f"App Store icon check: PASS ({len(icons)} AppIcon renditions, "
+                f"{len(marketing)} marketing, all opaque)")
+          PY
+
+      # Keep the artifact even when a later step fails. A red X at "verify"
+      # otherwise throws away a 60-minute macOS build, and the IPA is the only
+      # thing that can be inspected afterwards.
+      - name: Keep the IPA
+        if: always() && steps.ipa.outputs.ipa != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: dynawalla-ios-${{ needs.gate.outputs.build_number }}
+          path: ${{ steps.ipa.outputs.ipa }}
+          retention-days: 14
+          if-no-files-found: warn
+
       - name: Upload to TestFlight
-        uses: apple-actions/upload-testflight-build@v3
+        uses: apple-actions/upload-testflight-build@9fd28d4e690396e43caca69cef54cccccce77034 # v3
         with:
           app-path: ${{ steps.ipa.outputs.ipa }}
           issuer-id: ${{ secrets.ASC_ISSUER_ID }}
@@ -428,12 +593,19 @@ jobs:
         # The upload action succeeds when Apple accepts the TRANSFER. Apple can
         # still reject the package during processing, and that rejection
         # arrives by email, not by exit code. Read it back.
+        #
+        # ASC_MIN_UPLOADED_DATE is what makes this a real check. CFBundleVersion
+        # is minutes-since-epoch, so a colliding run's build already carries the
+        # version we are looking for — "a build with this version exists" would
+        # pass on the very duplicate it is meant to catch. The verifier requires
+        # `uploadedDate` to be at or after the moment this run started.
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
           ASC_BUNDLE_ID: ${{ env.BUNDLE_ID }}
           ASC_BUILD_VERSION: ${{ steps.ipa.outputs.cfbundleversion }}
+          ASC_MIN_UPLOADED_DATE: ${{ needs.gate.outputs.run_started }}
         run: |
           set -euo pipefail
           python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
@@ -581,9 +753,23 @@ jobs:
           echo "${BUNDLETOOL_SHA256}  $RUNNER_TEMP/bundletool.jar" | sha256sum -c -
 
           MANIFEST=$(java -jar "$RUNNER_TEMP/bundletool.jar" dump manifest --bundle "$AAB")
-          echo "$MANIFEST" | head -5
+          # Every assertion below is a grep over $MANIFEST. An empty $MANIFEST
+          # makes the FORBIDDEN-PERMISSION check pass vacuously, so establish
+          # once that there is something to read (the applicationId check would
+          # abort first today, but that is an accident of ordering, not a
+          # guarantee).
+          [ -n "$MANIFEST" ] \
+            || { echo "::error::bundletool produced an empty manifest dump for $AAB"; exit 1; }
 
-          extract() { echo "$MANIFEST" | grep -oE "$1=\"[^\"]*\"" | head -1 | cut -d'"' -f2; }
+          # `sed -n`, never `head`. `head -N` exits as soon as it has its lines,
+          # the producer takes SIGPIPE, and under `set -o pipefail` the pipeline
+          # returns 141 and aborts the job with no diagnostic. Reproduced on a
+          # 728 kB string: `echo "$MANIFEST" | head -5` -> 141. `grep -m1` has
+          # the SAME defect (also reproduced, also 141) — it stops reading after
+          # the match, so it is not the fix. `sed -n` and `cut` read to EOF.
+          printf '%s\n' "$MANIFEST" | sed -n '1,5p'
+
+          extract() { printf '%s\n' "$MANIFEST" | grep -oE "$1=\"[^\"]*\"" | sed -n '1p' | cut -d'"' -f2; }
           PKG=$(extract 'package')
           CODE=$(extract 'android:versionCode')
           MIN=$(extract 'android:minSdkVersion')
@@ -600,12 +786,12 @@ jobs:
           # Play Data safety says nothing is collected. Assert it on the MERGED
           # manifest, because a dependency contributes permissions the app
           # never wrote (docs/STORE.md G-06).
-          if echo "$MANIFEST" | grep -E 'com\.google\.android\.gms\.permission\.AD_ID|ACCESS_(COARSE|FINE|BACKGROUND)_LOCATION|READ_PHONE_STATE|READ_PHONE_NUMBERS' >/dev/null; then
+          if printf '%s\n' "$MANIFEST" | grep -E 'com\.google\.android\.gms\.permission\.AD_ID|ACCESS_(COARSE|FINE|BACKGROUND)_LOCATION|READ_PHONE_STATE|READ_PHONE_NUMBERS' >/dev/null; then
             echo "::error::the merged manifest requests a permission a child-directed app must not have"
-            echo "$MANIFEST" | grep -oE 'uses-permission android:name="[^"]+"' | sort -u
+            printf '%s\n' "$MANIFEST" | grep -oE 'uses-permission android:name="[^"]+"' | sort -u
             exit 1
           fi
-          echo "$MANIFEST" | grep -oE 'uses-permission android:name="[^"]+"' | sort -u
+          printf '%s\n' "$MANIFEST" | grep -oE 'uses-permission android:name="[^"]+"' | sort -u
 
           # Native debug symbols for Play crash symbolication. Comes from
           # `debugSymbolLevel = "SYMBOL_TABLE"` plus `debug = 1, strip = false`
@@ -618,28 +804,70 @@ jobs:
 
       - name: Sign the AAB with the upload key
         working-directory: dynawalla/dynawalla-app
+        # Secrets arrive through `env:`, never interpolated into the script
+        # TEXT — `${{ secrets.X }}` in a `run:` block is substituted before
+        # bash sees it, so the value ends up in the command line. For the store
+        # password that also meant it sat on jarsigner's argv, readable by any
+        # process on the runner; `-storepass:env` reads it from the environment
+        # instead (verified against a throwaway keystore: signs and verifies).
         env:
           AAB: ${{ steps.aab.outputs.aab }}
+          KEYSTORE_B64: ${{ secrets.DYNAWALLA_ANDROID_KEYSTORE_B64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.DYNAWALLA_ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.DYNAWALLA_ANDROID_KEY_ALIAS }}
         run: |
           set -euo pipefail
-          echo "${{ secrets.DYNAWALLA_ANDROID_KEYSTORE_B64 }}" | base64 --decode > "$RUNNER_TEMP/upload-keystore.jks"
+          printf '%s' "$KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/upload-keystore.jks"
           jarsigner -sigalg SHA256withRSA -digestalg SHA-256 \
             -keystore "$RUNNER_TEMP/upload-keystore.jks" \
-            -storepass "${{ secrets.DYNAWALLA_ANDROID_KEYSTORE_PASSWORD }}" \
-            "$AAB" "${{ secrets.DYNAWALLA_ANDROID_KEY_ALIAS }}"
+            -storepass:env KEYSTORE_PASSWORD \
+            "$AAB" "$KEY_ALIAS"
           # Captured rather than piped: jarsigner prints warnings about the
           # certificate chain (expected — the upload key is enrolled in Play
           # App Signing, not chained to a public CA) and `set -o pipefail`
           # would turn a warning into a failure.
           VERIFY=$(jarsigner -verify "$AAB" 2>&1 || true)
-          echo "$VERIFY" | head -5
-          echo "$VERIFY" | grep 'jar verified' >/dev/null \
+          # `sed -n`, not `head`: see the note in the inspect step. jarsigner's
+          # warning block is easily long enough to fill the pipe buffer, and
+          # `echo "$VERIFY" | head -5` returns 141 under pipefail (reproduced).
+          printf '%s\n' "$VERIFY" | sed -n '1,5p'
+          printf '%s\n' "$VERIFY" | grep 'jar verified' >/dev/null \
             || { echo "::error::the signed AAB does not verify"; exit 1; }
           rm -f "$RUNNER_TEMP/upload-keystore.jks"
           echo "AAB signed and verified."
 
+      # Same reason as the IPA: do not throw away a signed artifact because a
+      # later step failed.
+      - name: Keep the AAB
+        if: always() && steps.aab.outputs.aab != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: dynawalla-android-${{ needs.gate.outputs.build_number }}
+          path: dynawalla/dynawalla-app/${{ steps.aab.outputs.aab }}
+          retention-days: 14
+          if-no-files-found: warn
+
+      # Snapshot the track BEFORE the upload. This is what makes the
+      # post-upload check able to detect a duplicate at all: Play keeps the
+      # EXISTING bundle when a duplicate versionCode is submitted, so afterwards
+      # the versionCode is on the track either way. Only "was it added by this
+      # run" distinguishes them.
+      - name: Snapshot the Play internal track
+        id: playbefore
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: ${{ env.BUNDLE_ID }}
+          PLAY_TRACK: internal
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_play_upload.py --snapshot
+
       - name: Upload to Play internal
-        uses: r0adkll/upload-google-play@v1
+        # Pinned to a commit SHA, not the mutable `v1` tag: this action is
+        # handed the live Play service account. Trailing comment is the tag it
+        # resolved from.
+        uses: r0adkll/upload-google-play@e738b9dd8f2476ea806d921b64aacd24f34515a5 # v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: inc.corpora.dynawalla
@@ -655,13 +883,24 @@ jobs:
 
       - name: Verify the build reached the Play internal track
         # The upload action reports success on its own 2xx responses. Read the
-        # track back and assert the versionCode is actually on it.
+        # track back and assert THIS RUN put the versionCode there — presence
+        # alone is satisfied by the duplicate this check exists to catch.
+        #
+        # `pyjwt[crypto]`, not `google-auth`. `google.auth.transport.requests`
+        # is the `google-auth[requests]` EXTRA, so `pip install google-auth`
+        # succeeds and the import then fails at call time with "The requests
+        # library is not installed" — after the AAB is already on the track,
+        # and reported by the old script as "google-auth is not installed",
+        # naming a package that IS installed. Reproduced in a clean venv. The
+        # script now mints the OAuth token with urllib + PyJWT, which is one
+        # dependency fewer and the same one the iOS job already installs.
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
           PLAY_PACKAGE_NAME: ${{ env.BUNDLE_ID }}
           PLAY_TRACK: internal
           PLAY_VERSION_CODE: ${{ needs.gate.outputs.build_number }}
+          PLAY_PRE_UPLOAD_CODES: ${{ steps.playbefore.outputs.version_codes }}
         run: |
           set -euo pipefail
-          python3 -m pip install --quiet --disable-pip-version-check google-auth
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
           python3 .github/scripts/verify_play_upload.py

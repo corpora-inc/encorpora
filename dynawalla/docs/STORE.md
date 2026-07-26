@@ -239,10 +239,29 @@ we want it. Price that uncertainty into R-45.
 
 ## Release trigger
 
-Tag `dynawalla-v*` triggers `release-dynawalla.yml`, which calls the shared reusable
-workflow. `workflow_dispatch` is the fallback. A merge to `main` does **not** trigger a
-release — the old version-bump detector is silently defeated by a batched merge queue
-(`C-11`, RISKS R-14).
+`release-dynawalla.yml` triggers on **a push to `main`**, on the `dynawalla-v*` tag, and
+on `workflow_dispatch`. A push to `main` releases when
+`dynawalla-app/src-tauri/tauri.conf.json`'s `version` changed; the tag path additionally
+asserts the tag matches that version.
+
+The batched-merge-queue defect (`C-11`, RISKS R-14) is fixed rather than avoided: the
+detector compares against **`github.event.before`**, the SHA `main` pointed at before the
+push, not `HEAD^`. The queue merges up to five squashed entries and pushes them together,
+so `HEAD^` is the fourth entry of the batch and a version bump in the first entry is
+invisible to it. `github.event.before` spans the whole batch.
+
+The workflow does **not** yet call a shared reusable workflow; it is standalone until
+that extraction happens (see `RELEASE_ENGINEERING.md` — the extraction's entire risk
+lands on Corpán's live pipeline, so it is its own PR).
+
+**Known trade-off:** `concurrency.group` is a single constant, which serialises releases
+so two runs can never compute the same minutes-since-epoch build number. GitHub's queue
+depth for a concurrency group is one, so a third release queued while a first is still
+running **cancels** the second — reported as `cancelled`, not `failure`. Recovery is to
+push `dynawalla-v<version>` for the skipped version or re-dispatch. Removing the constant
+group depends on the store-querying preflight and
+`max(preflight_highest + 1, minutes_since_epoch)`, which RISKS R-12 reserves for its own
+PR.
 
 Build numbers are minutes-since-epoch and **do not change**. See
 [RELEASE_ENGINEERING.md](RELEASE_ENGINEERING.md) for why, and for the preflight that
